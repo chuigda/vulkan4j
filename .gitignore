@@ -35,7 +35,7 @@ build/
 .DS_Store
 
 # Downloaded vk.xml
-vkxml2java/vk.xml
+/vkxml2java/vk.xml
 
 # Generated .java files
 src/main/java/tech/icey/vk4j/struct/*.java
