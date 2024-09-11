@@ -1,6 +1,6 @@
 from typing import Iterable,Callable
 
-from .entity import Extension, Registry, Entity, Bitmask, Param, Command, Enum, Structure
+from .entity import Extension, Registry, Entity, Bitmask, Command, Enum, Structure
 from .ident import Identifier, ident
 
 
