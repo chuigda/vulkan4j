@@ -140,6 +140,24 @@ class Structure(Entity):
     members: list[Member]
     structextends: list[Identifier]
 
+    has_init_: bool | None = None
+
+    def has_init(self, registry: Registry) -> bool:
+        if self.has_init_ is None:
+            for member in self.members:
+                if member.values is not None:
+                    self.has_init_ = True
+                    break
+                if isinstance(member.type, IdentifierType):
+                    if member.type.identifier in registry.structs:
+                        struct = registry.structs[member.type.identifier]
+                        if struct.has_init(registry):
+                            self.has_init_ = True
+                            break
+            if self.has_init_ is None:
+                self.has_init_ = False
+        return self.has_init_
+
 
 @dataclass
 class Member(Entity):

@@ -11,6 +11,17 @@ import java.lang.reflect.Array;
 import java.util.function.Function;
 
 public final class Create {
+    public static <T, F extends IFactory<T>, A extends Function<MemoryLayout, MemorySegment>>
+    T create(F factory, A allocator) {
+        MemorySegment segment = allocator.apply(factory.layout());
+        return factory.create(segment);
+    }
+
+    public static <T, F extends IFactory<T>>
+    T create(F factory, Arena arena) {
+        return create(factory, arena::allocate);
+    }
+
     public static
     <T, F extends IFactory<T>, A extends Function<MemoryLayout, MemorySegment>>
     Pair<T[], MemorySegment> createArray(F factory, A allocator, int count) {

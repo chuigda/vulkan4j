@@ -2,6 +2,7 @@ package tech.icey.vk4j.datatype;
 
 import tech.icey.vk4j.IFactory;
 import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.util.pointer;
 import tech.icey.vk4j.util.unsigned;
 
 import java.lang.foreign.*;
@@ -20,6 +21,7 @@ import static java.lang.foreign.ValueLayout.*;
 ///     int32_t arr[4];
 ///     int bitfield1 : 24;
 ///     int bitfield2 : 8;
+///     struct Nested *pNested;
 /// };}
 ///
 /// The corresponding Java class would be like this one.
@@ -32,13 +34,13 @@ public record Example(MemorySegment segment) {
     ///     uint32_t b;
     /// };}
     public record Nested(MemorySegment segment) {
-        public static final MemoryLayout LAYOUT = MemoryLayout.structLayout(
+        public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
                 ValueLayout.JAVA_INT.withName("a"),
                 ValueLayout.JAVA_INT.withName("b")
         );
 
-        public static final PathElement PATH$a = PathElement.groupElement(0);
-        public static final PathElement PATH$b = PathElement.groupElement(1);
+        public static final PathElement PATH$a = PathElement.groupElement("a");
+        public static final PathElement PATH$b = PathElement.groupElement("b");
 
         public static final OfInt LAYOUT$a = (OfInt) LAYOUT.select(PATH$a);
         public static final OfInt LAYOUT$b = (OfInt) LAYOUT.select(PATH$b);
@@ -83,25 +85,29 @@ public record Example(MemorySegment segment) {
                 return create(segment);
             }
         }
+
+        public static final NestedFactory FACTORY = new NestedFactory();
     }
 
-    public static final MemoryLayout LAYOUT = MemoryLayout.structLayout(
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
             ValueLayout.JAVA_INT.withName("a"),
             ValueLayout.JAVA_LONG.withName("b"),
             ValueLayout.ADDRESS.withName("c"),
             NativeLayout.C_LONG.withName("d"),
             Nested.LAYOUT.withName("nested"),
             MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("arr"),
-            ValueLayout.JAVA_INT.withName("bitfield$bitfield1_bitfield2")
+            ValueLayout.JAVA_INT.withName("bitfield$bitfield1_bitfield2"),
+            ValueLayout.ADDRESS.withTargetLayout(Nested.LAYOUT).withName("pNested")
     );
 
-    public static final PathElement PATH$a = PathElement.groupElement(0);
-    public static final PathElement PATH$b = PathElement.groupElement(1);
-    public static final PathElement PATH$c = PathElement.groupElement(2);
-    public static final PathElement PATH$d = PathElement.groupElement(3);
-    public static final PathElement PATH$nested = PathElement.groupElement(4);
-    public static final PathElement PATH$arr = PathElement.groupElement(5);
-    public static final PathElement PATH$bitfield$bitfield1_bitfield2 = PathElement.groupElement(6);
+    public static final PathElement PATH$a = PathElement.groupElement("a");
+    public static final PathElement PATH$b = PathElement.groupElement("b");
+    public static final PathElement PATH$c = PathElement.groupElement("c");
+    public static final PathElement PATH$d = PathElement.groupElement("d");
+    public static final PathElement PATH$nested = PathElement.groupElement("nested");
+    public static final PathElement PATH$arr = PathElement.groupElement("arr");
+    public static final PathElement PATH$bitfield$bitfield1_bitfield2 = PathElement.groupElement("bitfield$bitfield1_bitfield2");
+    public static final PathElement PATH$pNested = PathElement.groupElement("pNested");
 
     public static final OfInt LAYOUT$a = (OfInt) LAYOUT.select(PATH$a);
     public static final OfLong LAYOUT$b = (OfLong) LAYOUT.select(PATH$b);
@@ -110,6 +116,7 @@ public record Example(MemorySegment segment) {
     public static final StructLayout LAYOUT$nested = (StructLayout) LAYOUT.select(PATH$nested);
     public static final SequenceLayout LAYOUT$arr = (SequenceLayout) LAYOUT.select(PATH$arr);
     public static final OfInt LAYOUT$bitfield$bitfield1_bitfield2 = (OfInt) LAYOUT.select(PATH$bitfield$bitfield1_bitfield2);
+    public static final AddressLayout LAYOUT$pNested = (AddressLayout) LAYOUT.select(PATH$pNested);
 
     public static final long OFFSET$a = LAYOUT.byteOffset(PATH$a);
     public static final long OFFSET$b = LAYOUT.byteOffset(PATH$b);
@@ -118,6 +125,7 @@ public record Example(MemorySegment segment) {
     public static final long OFFSET$nested = LAYOUT.byteOffset(PATH$nested);
     public static final long OFFSET$arr = LAYOUT.byteOffset(PATH$arr);
     public static final long OFFSET$bitfield$bitfield1_bitfield2 = LAYOUT.byteOffset(PATH$bitfield$bitfield1_bitfield2);
+    public static final long OFFSET$pNested = LAYOUT.byteOffset(PATH$pNested);
 
     public int a() {
         return segment.get(LAYOUT$a, OFFSET$a);
@@ -135,11 +143,11 @@ public record Example(MemorySegment segment) {
         segment.set(LAYOUT$b, OFFSET$b, value);
     }
 
-    public MemorySegment c() {
+    public @pointer("void") MemorySegment c() {
         return segment.get(LAYOUT$c, OFFSET$c);
     }
 
-    public void c(MemorySegment value) {
+    public void c(@pointer("void") MemorySegment value) {
         segment.set(LAYOUT$c, OFFSET$c, value);
     }
 
@@ -195,6 +203,20 @@ public record Example(MemorySegment segment) {
         segment.set(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2, newValue);
     }
 
+    public Nested pNestedSafe() {
+        MemorySegment s = segment.get(LAYOUT$pNested, OFFSET$pNested);
+        if (s.address() == 0) {
+            return null;
+        }
+
+        return new Nested(s);
+    }
+
+    public void pNestedSafe(Nested value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        segment.set(LAYOUT$pNested, OFFSET$pNested, s);
+    }
+
     public static final class ExampleFactory implements IFactory<Example> {
         @Override
         public Class<Example> clazz() {
@@ -217,4 +239,6 @@ public record Example(MemorySegment segment) {
             return create(segment);
         }
     }
+
+    public static final ExampleFactory FACTORY = new ExampleFactory();
 }

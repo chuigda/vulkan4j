@@ -1,7 +1,10 @@
 package tech.icey.vk4j;
 
+import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class NativeLayout {
     public static final ValueLayout C_SIZE_T = ValueLayout.ADDRESS;
@@ -49,5 +52,28 @@ public final class NativeLayout {
         } else {
             segment.set(ValueLayout.JAVA_LONG, offset, value);
         }
+    }
+
+    /// Unlike {@link java.lang.foreign.MemoryLayout#structLayout MemoryLayout.structLayout},
+    /// this function will automatically compute and add padding to the layout to ensure that each
+    /// element is properly aligned. The resulting layout should be the same with a C struct layout.
+    public static MemoryLayout structLayout(MemoryLayout... elements) {
+        long currentSize = 0;
+        List<MemoryLayout> paddedElements = new ArrayList<>();
+
+        for (MemoryLayout element : elements) {
+            long alignment = element.byteAlignment();
+            long padding = (alignment - (currentSize % alignment)) % alignment;
+            if (padding != 0) {
+                paddedElements.add(MemoryLayout.paddingLayout(padding));
+                currentSize += padding;
+            }
+
+            paddedElements.add(element);
+            currentSize += element.byteSize();
+        }
+
+        MemoryLayout[] paddedElementsArray = paddedElements.toArray(new MemoryLayout[0]);
+        return MemoryLayout.structLayout(paddedElementsArray);
     }
 }
