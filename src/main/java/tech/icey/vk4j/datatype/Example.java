@@ -26,6 +26,7 @@ import static java.lang.foreign.ValueLayout.*;
 ///     int bitfield2 : 8;
 ///     int32_t *pInt;
 ///     struct Nested *pNested;
+///     struct Nested nestedArr[4];
 /// };}
 ///
 /// The corresponding Java class would be like this one.
@@ -102,7 +103,8 @@ public record Example(MemorySegment segment) {
             MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("arr"),
             ValueLayout.JAVA_INT.withName("bitfield$bitfield1_bitfield2"),
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pInt"),
-            ValueLayout.ADDRESS.withTargetLayout(Nested.LAYOUT).withName("pNested")
+            ValueLayout.ADDRESS.withTargetLayout(Nested.LAYOUT).withName("pNested"),
+            MemoryLayout.sequenceLayout(4, Nested.LAYOUT).withName("nestedArr")
     );
 
     public static final PathElement PATH$a = PathElement.groupElement("a");
@@ -114,6 +116,7 @@ public record Example(MemorySegment segment) {
     public static final PathElement PATH$bitfield$bitfield1_bitfield2 = PathElement.groupElement("bitfield$bitfield1_bitfield2");
     public static final PathElement PATH$pInt = PathElement.groupElement("pInt");
     public static final PathElement PATH$pNested = PathElement.groupElement("pNested");
+    public static final PathElement PATH$nestedArr = PathElement.groupElement("nestedArr");
 
     public static final OfInt LAYOUT$a = (OfInt) LAYOUT.select(PATH$a);
     public static final OfLong LAYOUT$b = (OfLong) LAYOUT.select(PATH$b);
@@ -124,6 +127,7 @@ public record Example(MemorySegment segment) {
     public static final OfInt LAYOUT$bitfield$bitfield1_bitfield2 = (OfInt) LAYOUT.select(PATH$bitfield$bitfield1_bitfield2);
     public static final AddressLayout LAYOUT$pInt = (AddressLayout) LAYOUT.select(PATH$pInt);
     public static final AddressLayout LAYOUT$pNested = (AddressLayout) LAYOUT.select(PATH$pNested);
+    public static final SequenceLayout LAYOUT$nestedArr = (SequenceLayout) LAYOUT.select(PATH$nestedArr);
 
     public static final long OFFSET$a = LAYOUT.byteOffset(PATH$a);
     public static final long OFFSET$b = LAYOUT.byteOffset(PATH$b);
@@ -134,6 +138,7 @@ public record Example(MemorySegment segment) {
     public static final long OFFSET$bitfield$bitfield1_bitfield2 = LAYOUT.byteOffset(PATH$bitfield$bitfield1_bitfield2);
     public static final long OFFSET$pInt = LAYOUT.byteOffset(PATH$pInt);
     public static final long OFFSET$pNested = LAYOUT.byteOffset(PATH$pNested);
+    public static final long OFFSET$nestedArr = LAYOUT.byteOffset(PATH$nestedArr);
 
     public int a() {
         return segment.get(LAYOUT$a, OFFSET$a);
@@ -247,6 +252,40 @@ public record Example(MemorySegment segment) {
     @unsafe
     public void pNestedRaw(MemorySegment value) {
         segment.set(LAYOUT$pNested, OFFSET$pNested, value);
+    }
+
+    public Nested[] nestedArr() {
+        MemorySegment s = segment.asSlice(OFFSET$nestedArr, LAYOUT$nestedArr.byteSize());
+        Nested[] arr = new Nested[(int)LAYOUT$nestedArr.elementCount()];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = new Nested(s.asSlice(i * Nested.LAYOUT.byteSize(), Nested.LAYOUT.byteSize()));
+        }
+        return arr;
+    }
+
+    public void nestedArr(Nested[] value) {
+        MemorySegment s = segment.asSlice(OFFSET$nestedArr, LAYOUT$nestedArr.byteSize());
+        for (int i = 0; i < value.length; i++) {
+            MemorySegment.copy(value[i].segment(), 0, s, i * Nested.LAYOUT.byteSize(), Nested.LAYOUT.byteSize());
+        }
+    }
+
+    public Nested nestArrAt(long index) {
+        MemorySegment s = segment.asSlice(OFFSET$nestedArr, LAYOUT$nestedArr.byteSize());
+        return new Nested(s.asSlice(index * Nested.LAYOUT.byteSize(), Nested.LAYOUT.byteSize()));
+    }
+
+    public void nestArrAt(long index, Nested value) {
+        MemorySegment s = segment.asSlice(OFFSET$nestedArr, LAYOUT$nestedArr.byteSize());
+        MemorySegment.copy(value.segment(), 0, s, index * Nested.LAYOUT.byteSize(), Nested.LAYOUT.byteSize());
+    }
+
+    public MemorySegment nestedArrRaw() {
+        return segment.asSlice(OFFSET$nestedArr, LAYOUT$nestedArr.byteSize());
+    }
+
+    public void nestedArrRaw(MemorySegment value) {
+        MemorySegment.copy(value, 0, segment, OFFSET$nestedArr, LAYOUT$nestedArr.byteSize());
     }
 
     public static final class ExampleFactory implements IFactory<Example> {
