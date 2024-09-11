@@ -7,17 +7,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class NativeLayout {
+    /// Memory layout of current JVM platform C {@code size_t} type.
+    ///
+    /// Currently, this field is set to {@link ValueLayout#ADDRESS}, whose JavaDoc claims that it
+    /// has the same size and alignment with a C {@code size_t} type.
     public static final ValueLayout C_SIZE_T = ValueLayout.ADDRESS;
     public static final int POINTER_SIZE = (int) C_SIZE_T.byteSize();
 
+    /// Memory layout of current JVM platform C {@code long} type.
+    ///
+    /// Currently, all 32bit platforms will use {@link ValueLayout#JAVA_INT}. For 64bit platforms,
+    /// Windows will use {@link ValueLayout#JAVA_INT}, while other platforms will use
+    /// {@link ValueLayout#JAVA_LONG}.
+    ///
+    /// The detection algorithm came from LWJGL3.
+    /// @see <a href="https://github.com/LWJGL/lwjgl3/blob/813400f21ebfce5a9e1566cbf8ff96ca1d8f4921/modules/lwjgl/core/src/main/java/org/lwjgl/system/Pointer.java">lwjgl/core/src/main/java/org/lwgjl/system/Pointer.java</a>
     public static final ValueLayout C_LONG;
     public static final int C_LONG_SIZE;
 
     static {
-        // See:
-        //
-        // https://en.cppreference.com/w/cpp/language/types#Data_models
-        // https://github.com/LWJGL/lwjgl3/blob/813400f21ebfce5a9e1566cbf8ff96ca1d8f4921/modules/lwjgl/core/src/main/java/org/lwjgl/system/Pointer.java#L34
         if (POINTER_SIZE == 4) {
             // On typical 32bit platforms, long is 4 bytes
             C_LONG = ValueLayout.JAVA_INT;
@@ -54,9 +62,9 @@ public final class NativeLayout {
         }
     }
 
-    /// Unlike {@link java.lang.foreign.MemoryLayout#structLayout MemoryLayout.structLayout},
-    /// this function will automatically compute and add padding to the layout to ensure that each
-    /// element is properly aligned. The resulting layout should be the same with a C struct layout.
+    /// Unlike {@link MemoryLayout#structLayout MemoryLayout.structLayout}, this function will
+    /// automatically compute and add padding to the layout to ensure that each element is properly
+    /// aligned. The resulting layout should be the same with a C struct layout.
     public static MemoryLayout structLayout(MemoryLayout... elements) {
         long currentSize = 0;
         List<MemoryLayout> paddedElements = new ArrayList<>();
