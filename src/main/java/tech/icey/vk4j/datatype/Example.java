@@ -2,7 +2,10 @@ package tech.icey.vk4j.datatype;
 
 import tech.icey.vk4j.IFactory;
 import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.array.IntArray;
+import tech.icey.vk4j.ptr.IntPtr;
 import tech.icey.vk4j.util.pointer;
+import tech.icey.vk4j.util.unsafe;
 import tech.icey.vk4j.util.unsigned;
 
 import java.lang.foreign.*;
@@ -21,6 +24,7 @@ import static java.lang.foreign.ValueLayout.*;
 ///     int32_t arr[4];
 ///     int bitfield1 : 24;
 ///     int bitfield2 : 8;
+///     int32_t *pInt;
 ///     struct Nested *pNested;
 /// };}
 ///
@@ -97,6 +101,7 @@ public record Example(MemorySegment segment) {
             Nested.LAYOUT.withName("nested"),
             MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("arr"),
             ValueLayout.JAVA_INT.withName("bitfield$bitfield1_bitfield2"),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pInt"),
             ValueLayout.ADDRESS.withTargetLayout(Nested.LAYOUT).withName("pNested")
     );
 
@@ -107,6 +112,7 @@ public record Example(MemorySegment segment) {
     public static final PathElement PATH$nested = PathElement.groupElement("nested");
     public static final PathElement PATH$arr = PathElement.groupElement("arr");
     public static final PathElement PATH$bitfield$bitfield1_bitfield2 = PathElement.groupElement("bitfield$bitfield1_bitfield2");
+    public static final PathElement PATH$pInt = PathElement.groupElement("pInt");
     public static final PathElement PATH$pNested = PathElement.groupElement("pNested");
 
     public static final OfInt LAYOUT$a = (OfInt) LAYOUT.select(PATH$a);
@@ -116,6 +122,7 @@ public record Example(MemorySegment segment) {
     public static final StructLayout LAYOUT$nested = (StructLayout) LAYOUT.select(PATH$nested);
     public static final SequenceLayout LAYOUT$arr = (SequenceLayout) LAYOUT.select(PATH$arr);
     public static final OfInt LAYOUT$bitfield$bitfield1_bitfield2 = (OfInt) LAYOUT.select(PATH$bitfield$bitfield1_bitfield2);
+    public static final AddressLayout LAYOUT$pInt = (AddressLayout) LAYOUT.select(PATH$pInt);
     public static final AddressLayout LAYOUT$pNested = (AddressLayout) LAYOUT.select(PATH$pNested);
 
     public static final long OFFSET$a = LAYOUT.byteOffset(PATH$a);
@@ -125,6 +132,7 @@ public record Example(MemorySegment segment) {
     public static final long OFFSET$nested = LAYOUT.byteOffset(PATH$nested);
     public static final long OFFSET$arr = LAYOUT.byteOffset(PATH$arr);
     public static final long OFFSET$bitfield$bitfield1_bitfield2 = LAYOUT.byteOffset(PATH$bitfield$bitfield1_bitfield2);
+    public static final long OFFSET$pInt = LAYOUT.byteOffset(PATH$pInt);
     public static final long OFFSET$pNested = LAYOUT.byteOffset(PATH$pNested);
 
     public int a() {
@@ -167,20 +175,12 @@ public record Example(MemorySegment segment) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$nested, LAYOUT$nested.byteSize());
     }
 
-    public int[] arr() {
-        return segment.asSlice(OFFSET$arr, LAYOUT$arr).toArray(ValueLayout.JAVA_INT);
+    public IntArray arr() {
+        return new IntArray(segment.asSlice(OFFSET$arr, LAYOUT$arr), LAYOUT$arr.elementCount());
     }
 
-    public void arr(int[] value) {
-        MemorySegment.copy(MemorySegment.ofArray(value), 0, segment, OFFSET$arr, LAYOUT$arr.byteSize());
-    }
-
-    public int arrAt(int index) {
-        return segment.get(JAVA_INT, OFFSET$arr + index * JAVA_INT.byteSize());
-    }
-
-    public void arrAt(int index, int value) {
-        segment.set(JAVA_INT, OFFSET$arr + index * JAVA_INT.byteSize(), value);
+    public void arr(IntArray value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$arr, LAYOUT$arr.byteSize());
     }
 
     public int bitfield1() {
@@ -203,7 +203,30 @@ public record Example(MemorySegment segment) {
         segment.set(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2, newValue);
     }
 
-    public Nested pNestedSafe() {
+    public IntPtr pInt() {
+        MemorySegment s = segment.get(LAYOUT$pInt, OFFSET$pInt);
+        if (s.address() == 0) {
+            return null;
+        }
+
+        return new IntPtr(s);
+    }
+
+    public void pInt(IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        segment.set(LAYOUT$pInt, OFFSET$pInt, s);
+    }
+
+    public MemorySegment pIntRaw() {
+        return segment.get(LAYOUT$pInt, OFFSET$pInt);
+    }
+
+    @unsafe
+    public void pIntRaw(MemorySegment value) {
+        segment.set(LAYOUT$pInt, OFFSET$pInt, value);
+    }
+
+    public Nested pNested() {
         MemorySegment s = segment.get(LAYOUT$pNested, OFFSET$pNested);
         if (s.address() == 0) {
             return null;
@@ -212,9 +235,18 @@ public record Example(MemorySegment segment) {
         return new Nested(s);
     }
 
-    public void pNestedSafe(Nested value) {
+    public void pNested(Nested value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         segment.set(LAYOUT$pNested, OFFSET$pNested, s);
+    }
+
+    public MemorySegment pNestedRaw() {
+        return segment.get(LAYOUT$pNested, OFFSET$pNested);
+    }
+
+    @unsafe
+    public void pNestedRaw(MemorySegment value) {
+        segment.set(LAYOUT$pNested, OFFSET$pNested, value);
     }
 
     public static final class ExampleFactory implements IFactory<Example> {
