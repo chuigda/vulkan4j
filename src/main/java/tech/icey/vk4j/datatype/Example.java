@@ -1,0 +1,220 @@
+package tech.icey.vk4j.datatype;
+
+import tech.icey.vk4j.IFactory;
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.util.unsigned;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+/// This class is an example, showing how C struct is represented in vk4j
+///
+/// Given the follow C struct
+/// {@snippet lang=c :
+/// struct Example {
+///     int32_t a;
+///     uint64_t b;
+///     void *c;
+///     long d;
+///     struct Nested nested;
+///     int32_t arr[4];
+///     int bitfield1 : 24;
+///     int bitfield2 : 8;
+/// };}
+///
+/// The corresponding Java class would be like this one.
+public record Example(MemorySegment segment) {
+    /// Nested struct in Example
+    ///
+    /// {@snippet lang=c :
+    /// struct Nested {
+    ///     uint32_t a;
+    ///     uint32_t b;
+    /// };}
+    public record Nested(MemorySegment segment) {
+        public static final MemoryLayout LAYOUT = MemoryLayout.structLayout(
+                ValueLayout.JAVA_INT.withName("a"),
+                ValueLayout.JAVA_INT.withName("b")
+        );
+
+        public static final PathElement PATH$a = PathElement.groupElement(0);
+        public static final PathElement PATH$b = PathElement.groupElement(1);
+
+        public static final OfInt LAYOUT$a = (OfInt) LAYOUT.select(PATH$a);
+        public static final OfInt LAYOUT$b = (OfInt) LAYOUT.select(PATH$b);
+
+        public static final long OFFSET$a = LAYOUT.byteOffset(PATH$a);
+        public static final long OFFSET$b = LAYOUT.byteOffset(PATH$b);
+
+        public @unsigned int a() {
+            return segment.get(LAYOUT$a, OFFSET$a);
+        }
+
+        public void a(@unsigned int value) {
+            segment.set(LAYOUT$a, OFFSET$a, value);
+        }
+
+        public @unsigned int b() {
+            return segment.get(LAYOUT$b, OFFSET$b);
+        }
+
+        public void b(@unsigned int value) {
+            segment.set(LAYOUT$b, OFFSET$b, value);
+        }
+
+        public static final class NestedFactory implements IFactory<Nested> {
+            @Override
+            public Class<Nested> clazz() {
+                return Nested.class;
+            }
+
+            @Override
+            public MemoryLayout layout() {
+                return LAYOUT;
+            }
+
+            @Override
+            public Nested create(MemorySegment segment) {
+                return new Nested(segment);
+            }
+
+            @Override
+            public Nested createUninit(MemorySegment segment) {
+                return create(segment);
+            }
+        }
+    }
+
+    public static final MemoryLayout LAYOUT = MemoryLayout.structLayout(
+            ValueLayout.JAVA_INT.withName("a"),
+            ValueLayout.JAVA_LONG.withName("b"),
+            ValueLayout.ADDRESS.withName("c"),
+            NativeLayout.C_LONG.withName("d"),
+            Nested.LAYOUT.withName("nested"),
+            MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("arr"),
+            ValueLayout.JAVA_INT.withName("bitfield$bitfield1_bitfield2")
+    );
+
+    public static final PathElement PATH$a = PathElement.groupElement(0);
+    public static final PathElement PATH$b = PathElement.groupElement(1);
+    public static final PathElement PATH$c = PathElement.groupElement(2);
+    public static final PathElement PATH$d = PathElement.groupElement(3);
+    public static final PathElement PATH$nested = PathElement.groupElement(4);
+    public static final PathElement PATH$arr = PathElement.groupElement(5);
+    public static final PathElement PATH$bitfield$bitfield1_bitfield2 = PathElement.groupElement(6);
+
+    public static final OfInt LAYOUT$a = (OfInt) LAYOUT.select(PATH$a);
+    public static final OfLong LAYOUT$b = (OfLong) LAYOUT.select(PATH$b);
+    public static final AddressLayout LAYOUT$c = (AddressLayout) LAYOUT.select(PATH$c);
+    public static final ValueLayout LAYOUT$d = (ValueLayout) LAYOUT.select(PATH$d);
+    public static final StructLayout LAYOUT$nested = (StructLayout) LAYOUT.select(PATH$nested);
+    public static final SequenceLayout LAYOUT$arr = (SequenceLayout) LAYOUT.select(PATH$arr);
+    public static final OfInt LAYOUT$bitfield$bitfield1_bitfield2 = (OfInt) LAYOUT.select(PATH$bitfield$bitfield1_bitfield2);
+
+    public static final long OFFSET$a = LAYOUT.byteOffset(PATH$a);
+    public static final long OFFSET$b = LAYOUT.byteOffset(PATH$b);
+    public static final long OFFSET$c = LAYOUT.byteOffset(PATH$c);
+    public static final long OFFSET$d = LAYOUT.byteOffset(PATH$d);
+    public static final long OFFSET$nested = LAYOUT.byteOffset(PATH$nested);
+    public static final long OFFSET$arr = LAYOUT.byteOffset(PATH$arr);
+    public static final long OFFSET$bitfield$bitfield1_bitfield2 = LAYOUT.byteOffset(PATH$bitfield$bitfield1_bitfield2);
+
+    public int a() {
+        return segment.get(LAYOUT$a, OFFSET$a);
+    }
+
+    public void a(int value) {
+        segment.set(LAYOUT$a, OFFSET$a, value);
+    }
+
+    public @unsigned long b() {
+        return segment.get(LAYOUT$b, OFFSET$b);
+    }
+
+    public void b(@unsigned long value) {
+        segment.set(LAYOUT$b, OFFSET$b, value);
+    }
+
+    public MemorySegment c() {
+        return segment.get(LAYOUT$c, OFFSET$c);
+    }
+
+    public void c(MemorySegment value) {
+        segment.set(LAYOUT$c, OFFSET$c, value);
+    }
+
+    public long d() {
+        return NativeLayout.readCLong(segment, OFFSET$d);
+    }
+
+    public void d(long value) {
+        NativeLayout.writeCLong(segment, OFFSET$d, value);
+    }
+
+    public Nested nested() {
+        return new Nested(segment.asSlice(OFFSET$nested, LAYOUT$nested));
+    }
+
+    public void nested(Nested value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$nested, LAYOUT$nested.byteSize());
+    }
+
+    public int[] arr() {
+        return segment.asSlice(OFFSET$arr, LAYOUT$arr).toArray(ValueLayout.JAVA_INT);
+    }
+
+    public void arr(int[] value) {
+        MemorySegment.copy(MemorySegment.ofArray(value), 0, segment, OFFSET$arr, LAYOUT$arr.byteSize());
+    }
+
+    public int arrAt(int index) {
+        return segment.get(JAVA_INT, OFFSET$arr + index * JAVA_INT.byteSize());
+    }
+
+    public void arrAt(int index, int value) {
+        segment.set(JAVA_INT, OFFSET$arr + index * JAVA_INT.byteSize(), value);
+    }
+
+    public int bitfield1() {
+        return segment.get(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2) >> 8;
+    }
+
+    public void bitfield1(int value) {
+        int original = segment.get(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2);
+        int newValue = (value << 8) | (original & 0xFF);
+        segment.set(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2, newValue);
+    }
+
+    public int bitfield2() {
+        return segment.get(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2) & 0xFF;
+    }
+
+    public void bitfield2(int value) {
+        int original = segment.get(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2);
+        int newValue = (original & 0xFFFFFF00) | value;
+        segment.set(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2, newValue);
+    }
+
+    public static final class ExampleFactory implements IFactory<Example> {
+        @Override
+        public Class<Example> clazz() {
+            return Example.class;
+        }
+
+        @Override
+        public MemoryLayout layout() {
+            return Example.LAYOUT;
+        }
+
+        @Override
+        public Example create(MemorySegment segment) {
+            return new Example(segment);
+        }
+
+        @Override
+        public Example createUninit(MemorySegment segment) {
+            // For types without field default values, this method is trivial
+            return create(segment);
+        }
+    }
+}

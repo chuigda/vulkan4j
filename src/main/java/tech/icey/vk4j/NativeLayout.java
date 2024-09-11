@@ -1,5 +1,6 @@
 package tech.icey.vk4j;
 
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
 public final class NativeLayout {
@@ -32,5 +33,21 @@ public final class NativeLayout {
         }
 
         C_LONG_SIZE = (int) C_LONG.byteSize();
+    }
+
+    public static long readCLong(MemorySegment segment, long offset) {
+        if (C_LONG == ValueLayout.JAVA_INT) {
+            return segment.get(ValueLayout.JAVA_INT, offset);
+        } else {
+            return segment.get(ValueLayout.JAVA_LONG, offset);
+        }
+    }
+
+    public static void writeCLong(MemorySegment segment, long offset, long value) {
+        if (C_LONG == ValueLayout.JAVA_INT) {
+            segment.set(ValueLayout.JAVA_INT, offset, (int) value);
+        } else {
+            segment.set(ValueLayout.JAVA_LONG, offset, value);
+        }
     }
 }
