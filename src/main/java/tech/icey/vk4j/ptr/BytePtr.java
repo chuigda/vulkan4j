@@ -4,11 +4,11 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
 public record BytePtr(MemorySegment segment) {
-    byte read() {
+    public byte read() {
         return segment.get(ValueLayout.JAVA_BYTE, 0);
     }
 
-    void write(byte value) {
+    public void write(byte value) {
         segment.set(ValueLayout.JAVA_BYTE, 0, value);
     }
 }

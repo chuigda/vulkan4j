@@ -61,6 +61,15 @@ void dump_example(struct Example const* example) {
         example->nestedArr[2].a,
         example->nestedArr[3].b
     );
+
+    if (example->pInt) {
+        printf("    *example->pInt = %d\n", *example->pInt);
+    }
+
+    if (example->pNested) {
+        printf("    example->pNested->a = %u\n", example->pNested->a);
+        printf("    example->pNested->b = %u\n", example->pNested->b);
+    }
 }
 
 void dump_int_array(int32_t const* arr, int32_t count) {

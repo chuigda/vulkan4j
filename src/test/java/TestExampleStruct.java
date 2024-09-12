@@ -1,6 +1,8 @@
 import tech.icey.vk4j.Create;
 import tech.icey.vk4j.array.IntArray;
 import tech.icey.vk4j.datatype.Example;
+import tech.icey.vk4j.ptr.IntPtr;
+
 import static tech.icey.vk4j.datatype.Example.Nested;
 
 import java.lang.foreign.Arena;
@@ -27,10 +29,14 @@ public class TestExampleStruct {
             assert arr.get(2) == 1919;
             assert arr.get(3) == 810;
 
+            IntPtr pInt = IntArray.allocate(arena, 1).ptr();
+            pInt.write(314159);
+            example.pInt(pInt);
+
             Nested nested = Create.create(Example.Nested.FACTORY, arena);
             assert nested != null;
-            nested.a(114);
-            nested.b(514);
+            nested.a(26);
+            nested.b(535);
 
             example.pNested(nested);
 

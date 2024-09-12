@@ -4,11 +4,11 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
 public record IntPtr(MemorySegment segment) {
-    int read() {
+    public int read() {
         return segment.get(ValueLayout.JAVA_INT, 0);
     }
 
-    void write(int value) {
+    public void write(int value) {
         segment.set(ValueLayout.JAVA_INT, 0, value);
     }
 }
