@@ -32,7 +32,7 @@ import static java.lang.foreign.ValueLayout.*;
 ///
 /// The corresponding Java class would be like this one.
 public record Example(MemorySegment segment) {
-    /// Nested struct in Example
+    /// Nested struct in {@link Example}
     ///
     /// {@snippet lang=c :
     /// struct Nested {
