@@ -37,5 +37,10 @@ build/
 # Downloaded vk.xml
 /vkxml2java/vk.xml
 
-# Generated .java files
+# Generated .java files (temporal, will be removed in the future)
 src/main/java/tech/icey/vk4j/struct/*.java
+
+# nativedrill generated native code
+nativedrill/*.o
+nativedrill/*.so
+nativedrill/*.dll

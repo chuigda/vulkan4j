@@ -9,6 +9,7 @@ import tech.icey.vk4j.util.unsafe;
 import tech.icey.vk4j.util.unsigned;
 
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
 
 /// This class is an example, showing how C struct is represented in vk4j
@@ -23,7 +24,7 @@ import static java.lang.foreign.ValueLayout.*;
 ///     struct Nested nested;
 ///     int32_t arr[4];
 ///     int bitfield1 : 24;
-///     int bitfield2 : 8;
+///     unsigned bitfield2 : 8;
 ///     int32_t *pInt;
 ///     struct Nested *pNested;
 ///     struct Nested nestedArr[4];
@@ -188,23 +189,24 @@ public record Example(MemorySegment segment) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$arr, LAYOUT$arr.byteSize());
     }
 
+    // bitfield implementation stolen from https://docs.rs/vulkanalia-sys/0.25.0/src/vulkanalia_sys/bitfields.rs.html
     public int bitfield1() {
-        return segment.get(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2) >> 8;
+        return segment.get(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2) & 0x00FF_FFFF;
     }
 
     public void bitfield1(int value) {
         int original = segment.get(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2);
-        int newValue = (value << 8) | (original & 0xFF);
+        int newValue = (value & 0x00FF_FFFF) | (original & 0xFF00_0000);
         segment.set(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2, newValue);
     }
 
-    public int bitfield2() {
-        return segment.get(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2) & 0xFF;
+    public @unsigned int bitfield2() {
+        return segment.get(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2) >> 24;
     }
 
-    public void bitfield2(int value) {
+    public void bitfield2(@unsigned int value) {
         int original = segment.get(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2);
-        int newValue = (original & 0xFFFFFF00) | value;
+        int newValue = (value << 24) | (original & 0x00FF_FFFF);
         segment.set(LAYOUT$bitfield$bitfield1_bitfield2, OFFSET$bitfield$bitfield1_bitfield2, newValue);
     }
 

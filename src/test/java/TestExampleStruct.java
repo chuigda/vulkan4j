@@ -4,19 +4,23 @@ import tech.icey.vk4j.datatype.Example;
 import static tech.icey.vk4j.datatype.Example.Nested;
 
 import java.lang.foreign.Arena;
-import java.lang.foreign.ValueLayout;
-import java.util.Arrays;
 
 public class TestExampleStruct {
     public static void main(String[] args) {
         try (Arena arena = Arena.ofConfined()) {
             Example example = Create.create(Example.FACTORY, arena);
+            example.a(114514);
+            example.b(1919810);
+            example.d(7355608);
 
             IntArray arr = example.arr();
             arr.set(0, 114);
             arr.set(1, 514);
             arr.set(2, 1919);
             arr.set(3, 810);
+
+            example.bitfield1(1145);
+            example.bitfield2(224);
 
             assert arr.get(0) == 114;
             assert arr.get(1) == 514;
@@ -35,8 +39,17 @@ public class TestExampleStruct {
             assert fetched.a() == 114;
             assert fetched.b() == 514;
 
-            System.err.println(Arrays.toString(nested.segment().toArray(ValueLayout.JAVA_BYTE)));
-            System.err.println(Arrays.toString(example.segment().toArray(ValueLayout.JAVA_BYTE)));
+            Libdrill.dump_example(example);
         }
+    }
+
+    private static String toHexString(byte[] array) {
+        var sb = new StringBuilder();
+
+        for (byte b : array) {
+            sb.append(String.format("%02X ", b));
+        }
+
+        return sb.toString();
     }
 }
