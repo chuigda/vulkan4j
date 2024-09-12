@@ -125,15 +125,18 @@ def extract_bitmask(e: Element) -> Bitmask:
     name = ident(get_attr(e, 'name'))
     api = None
     bitflags = list(map(extract_bitflag, filter(lambda it: 'alias' not in it.attributes, e.getElementsByTagName('enum'))))
+    bitwidth_str = get_attr(e, 'bitwidth')
+    bitwidth = int(bitwidth_str, 0) if bitwidth_str is not None else None
 
-    return Bitmask(name, api, bitflags)
+    return Bitmask(name, api, bitflags, bitwidth, None)
 
 
 def extract_bitmask_type(e: Element) -> Bitmask:
     name = ident(get_element_text(find(e, 'name')))
     api = get_attr(e, 'api')
+    require_flagbits = ident(get_attr(e, 'requires')) if 'requires' in e.attributes else None
 
-    return Bitmask(name, api, bitflags=[])
+    return Bitmask(name, api, bitflags=[], bitwidth=None, require_flagbits=require_flagbits)
 
 
 def extract_bitflag(e: Element) -> Bitflag:

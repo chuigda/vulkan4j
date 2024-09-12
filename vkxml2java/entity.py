@@ -43,7 +43,8 @@ class Entity:
 @dataclass
 class Bitmask(Entity):
     bitflags: list[Bitflag]
-
+    bitwidth: int | None
+    require_flagbits: Identifier | None
 
 @dataclass
 class Bitflag(Entity):

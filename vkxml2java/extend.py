@@ -43,6 +43,7 @@ def get_variant_value(ext: RequireValue, extnumber: int | None) -> int | None:
 
     if ext.extnumber is None and extnumber is None:
         return None
+
     if ext.offset is None:
         return None
 

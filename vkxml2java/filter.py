@@ -26,7 +26,7 @@ def filter_registry(registry: Registry) -> Registry:
 
 def filter_bitflags(bitmask: Bitmask) -> Bitmask:
     bitflags = list(filter(lambda bitflag: bitflag.is_vulkan_api(), bitmask.bitflags))
-    return Bitmask(bitmask.name, bitmask.api, bitflags)
+    return Bitmask(bitmask.name, bitmask.api, bitflags, bitmask.bitwidth, bitmask.require_flagbits)
 
 
 def filter_params(command: Command) -> Command:
@@ -63,6 +63,7 @@ def get_unsupported_entities(registry: Registry) -> set[Identifier]:
         for command in extension.require.commands:
             ret.add(command)
         for type_ in extension.require.types:
+            print(f'UNSUPPORTED {type_} BECAUSE unsupported extension {extension.name}')
             ret.add(ident(type_))
 
     vulkan_versions, non_vulkan_versions = partition(registry.versions.values(), lambda ver: ver.is_vulkan_api())
@@ -70,6 +71,7 @@ def get_unsupported_entities(registry: Registry) -> set[Identifier]:
     for version in vulkan_versions:
         for command in version.require.commands:
             vulkan_entities.add(command)
+        print(version.name, version.require.types)
         for type_ in version.require.types:
             vulkan_entities.add(ident(type_))
 
@@ -80,6 +82,7 @@ def get_unsupported_entities(registry: Registry) -> set[Identifier]:
         for type_ in version.require.types:
             type1 = ident(type_)
             if type1 not in vulkan_entities:
+                print(f'UNSUPPORTED {type_} BECAUSE non-vulkan version {version.name}')
                 ret.add(type1)
 
     return ret

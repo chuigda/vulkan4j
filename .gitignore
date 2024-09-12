@@ -38,6 +38,7 @@ build/
 /vkxml2java/vk.xml
 
 # Generated .java files (temporal, will be removed in the future)
+src/main/java/tech/icey/vk4j/bitmask/*.java
 src/main/java/tech/icey/vk4j/datatype/*.java
 !src/src/main/java/tech/icey/vk4j/datatype/Example.java
 src/main/java/tech/icey/vk4j/enumtype/*.java
