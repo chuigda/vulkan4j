@@ -135,6 +135,7 @@ def extract_bitmask_type(e: Element) -> Bitmask:
     name = ident(get_element_text(find(e, 'name')))
     api = get_attr(e, 'api')
 
+    # TODO: XML attribute "requires" and "bitvalues" seems to be used interchangeably, but we want to double check on this
     if 'requires' in e.attributes:
         require_flagbits = ident(e.getAttribute('requires'))
     elif 'bitvalues' in e.attributes:

@@ -290,7 +290,6 @@ KNOWN_TYPES: dict[str, CType] = {
 
     # X11
     'Display': CTYPE_PVOID,
-    # TODO: need an option to support 32-bit platform
     'RROutput': CTYPE_LONG,
     'VisualID': CTYPE_LONG,
     'Window': CTYPE_LONG,
