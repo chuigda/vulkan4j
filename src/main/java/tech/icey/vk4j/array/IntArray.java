@@ -2,7 +2,7 @@ package tech.icey.vk4j.array;
 
 import tech.icey.vk4j.ptr.IntPtr;
 import tech.icey.vk4j.util.Function2;
-import tech.icey.vk4j.util.unsafe;
+import tech.icey.vk4j.annotations.unsafe;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryLayout;

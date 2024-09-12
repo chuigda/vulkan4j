@@ -4,9 +4,9 @@ import tech.icey.vk4j.IFactory;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.array.IntArray;
 import tech.icey.vk4j.ptr.IntPtr;
-import tech.icey.vk4j.util.pointer;
-import tech.icey.vk4j.util.unsafe;
-import tech.icey.vk4j.util.unsigned;
+import tech.icey.vk4j.annotations.pointer;
+import tech.icey.vk4j.annotations.unsafe;
+import tech.icey.vk4j.annotations.unsigned;
 
 import java.lang.foreign.*;
 
@@ -157,11 +157,11 @@ public record Example(MemorySegment segment) {
         segment.set(LAYOUT$b, OFFSET$b, value);
     }
 
-    public @pointer("void") MemorySegment c() {
+    public @pointer("void*") MemorySegment c() {
         return segment.get(LAYOUT$c, OFFSET$c);
     }
 
-    public void c(@pointer("void") MemorySegment value) {
+    public void c(@pointer("void*") MemorySegment value) {
         segment.set(LAYOUT$c, OFFSET$c, value);
     }
 

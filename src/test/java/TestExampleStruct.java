@@ -45,6 +45,12 @@ public class TestExampleStruct {
             assert fetched.a() == 114;
             assert fetched.b() == 514;
 
+            Nested[] nestedArr = example.nestedArr();
+            nestedArr[0].a(42);
+            nestedArr[1].b(84);
+            nestedArr[2].a(13);
+            nestedArr[3].b(26);
+
             Libdrill.dump_example(example);
         }
     }

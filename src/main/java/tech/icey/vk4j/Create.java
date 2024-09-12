@@ -33,15 +33,15 @@ public final class Create {
     }
 
     public static
-    <T, F extends IFactory<T>, N, A extends Function2<MemoryLayout, N, MemorySegment>>
-    Pair<T[], MemorySegment> createArray(F factory, A allocator, N count) {
+    <T, F extends IFactory<T>, A extends Function2<MemoryLayout, Long, MemorySegment>>
+    Pair<T[], MemorySegment> createArray(F factory, A allocator, long count) {
         MemorySegment segment = allocator.apply(factory.layout(), count);
         return impCreateArray(factory, segment, (int) count);
     }
 
     public static
     <T, F extends IFactory<T>>
-    Pair<T[], MemorySegment> createArray(F factory, Arena arena, int count) {
+    Pair<T[], MemorySegment> createArray(F factory, Arena arena, long count) {
         return createArray(factory, arena::allocate, count);
     }
 
