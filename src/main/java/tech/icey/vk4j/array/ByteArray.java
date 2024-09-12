@@ -33,7 +33,7 @@ public record ByteArray(MemorySegment segment) {
 
     @unsafe
     public static ByteArray ofPtr(BytePtr ptr, long size) {
-        MemorySegment transmuted = ptr.segment().asSlice(0, size);
+        MemorySegment transmuted = ptr.segment().reinterpret(size);
         return new ByteArray(transmuted);
     }
 }

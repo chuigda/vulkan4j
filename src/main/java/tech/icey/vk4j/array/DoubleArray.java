@@ -33,7 +33,7 @@ public record DoubleArray(MemorySegment segment, long size) {
 
     @unsafe
     public static DoubleArray ofPtr(DoublePtr ptr, long size) {
-        MemorySegment transmuted = ptr.segment().asSlice(0, ValueLayout.JAVA_DOUBLE.byteSize() * size);
+        MemorySegment transmuted = ptr.segment().reinterpret(size * ValueLayout.JAVA_DOUBLE.byteSize());
         return new DoubleArray(transmuted, size);
     }
 }

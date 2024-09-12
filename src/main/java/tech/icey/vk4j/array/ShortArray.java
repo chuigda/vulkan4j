@@ -33,7 +33,7 @@ public record ShortArray(MemorySegment segment, long size) {
 
     @unsafe
     public static ShortArray ofPtr(ShortPtr ptr, long size) {
-        MemorySegment transmuted = ptr.segment().asSlice(0, ValueLayout.JAVA_SHORT.byteSize() * size);
+        MemorySegment transmuted = ptr.segment().reinterpret(size * ValueLayout.JAVA_SHORT.byteSize());
         return new ShortArray(transmuted, size);
     }
 }

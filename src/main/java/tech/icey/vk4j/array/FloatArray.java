@@ -33,7 +33,7 @@ public record FloatArray(MemorySegment segment, long size) {
 
     @unsafe
     public static FloatArray ofPtr(FloatPtr ptr, long size) {
-        MemorySegment transmuted = ptr.segment().asSlice(0, ValueLayout.JAVA_FLOAT.byteSize() * size);
+        MemorySegment transmuted = ptr.segment().reinterpret(size * ValueLayout.JAVA_FLOAT.byteSize());
         return new FloatArray(transmuted, size);
     }
 }
