@@ -424,6 +424,7 @@ def extract_member(e: Element) -> Member:
 def extract_version(e: Element) -> Version:
     name = ident(get_attr(e, 'name'))
     api = get_attr(e, 'api')
+
     number = float(get_attr(e, 'number'))
     require = extract_require(findall(e, 'require'))
 

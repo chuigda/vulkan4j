@@ -52,6 +52,7 @@ UNSUPPORTED_EXTENSIONS: set[str] = {
 
 
 def get_unsupported_entities(registry: Registry) -> set[Identifier]:
+    print('  computing unsupported entities')
     ret: set[Identifier] = set()
 
     unsupported_extensions: Iterable[Extension] = filter(
@@ -63,15 +64,21 @@ def get_unsupported_entities(registry: Registry) -> set[Identifier]:
         for command in extension.require.commands:
             ret.add(command)
         for type_ in extension.require.types:
-            print(f'UNSUPPORTED {type_} BECAUSE unsupported extension {extension.name}')
+            print(f'    UNSUPPORTED {type_} BECAUSE unsupported extension {extension.name}')
             ret.add(ident(type_))
 
+    unsupported_extensions_set: set[Identifier] = set(map(lambda x: x.name, unsupported_extensions))
     vulkan_versions, non_vulkan_versions = partition(registry.versions.values(), lambda ver: ver.is_vulkan_api())
     vulkan_entities: set[Identifier] = set()
+
+    for extension in registry.extensions.values():
+        if extension.name not in unsupported_extensions_set:
+            for type_ in extension.require.types:
+                vulkan_entities.add(ident(type_))
+
     for version in vulkan_versions:
         for command in version.require.commands:
             vulkan_entities.add(command)
-        print(version.name, version.require.types)
         for type_ in version.require.types:
             vulkan_entities.add(ident(type_))
 
@@ -82,9 +89,10 @@ def get_unsupported_entities(registry: Registry) -> set[Identifier]:
         for type_ in version.require.types:
             type1 = ident(type_)
             if type1 not in vulkan_entities:
-                print(f'UNSUPPORTED {type_} BECAUSE non-vulkan version {version.name}')
+                print(f'    UNSUPPORTED {type_} BECAUSE non-vulkan version {version.name}')
                 ret.add(type1)
 
+    print('')
     return ret
 
 

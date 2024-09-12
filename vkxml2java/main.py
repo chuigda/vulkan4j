@@ -10,9 +10,13 @@ from vkxml2java.ident import ident
 
 
 def application_start():
+    print('parsing xml')
     tree = parse('vk.xml')
+
+    print('extracting registry')
     registry = extract_registry(tree)
 
+    print('filtering registry')
     registry = filter_registry(registry)
     extend_registry(registry)
 
@@ -29,23 +33,14 @@ def application_start():
     #     with open(f'../src/main/java/tech/icey/vk4j/enumtype/{enum.name}.java', 'w') as f:
     #         f.write(source)
 
+    print('generating bitmasks')
     for bitmask in registry.bitmasks.values():
-        # print('------------')
-        # if bitmask.require_flagbits is not None:
-        #     print(f'{bitmask.name} <- {bitmask.require_flagbits.value}')
-        # elif bitmask.bitwidth is not None:
-        #     print(f'{bitmask.name} ({bitmask.bitwidth} bits)')
-        # else:
-        #     print(bitmask.name)
-        #
-        # for flag in bitmask.bitflags:
-        #     print(f'    {flag.name} = {flag.value}')
-
         if 'FlagBits' in bitmask.name.value:
             continue
 
         source = generate_bitmask(registry, bitmask)
         with open(f'../src/main/java/tech/icey/vk4j/bitmask/{bitmask.name}.java', 'w') as f:
+            print(f'  generating {bitmask.name}')
             f.write(source)
 
     with open(f'../src/main/java/tech/icey/vk4j/Constants.java', 'w') as f:
