@@ -7,6 +7,11 @@ struct Nested {
     uint32_t b;
 };
 
+enum ExampleEnum {
+    EXAMPLE_ENUM_VALUE1 = 0,
+    EXAMPLE_ENUM_VALUE2 = 1
+};
+
 struct Example {
     int32_t a;
     uint64_t b;
@@ -19,6 +24,7 @@ struct Example {
     int32_t *pInt;
     struct Nested *pNested;
     struct Nested nestedArr[4];
+    enum ExampleEnum e;
 };
 
 void dump_example(struct Example const* example) {
@@ -41,7 +47,8 @@ void dump_example(struct Example const* example) {
         "  example->nestedArr[0].a = %u\n"
         "  example->nestedArr[1].b = %u\n"
         "  example->nestedArr[2].a = %u\n"
-        "  example->nestedArr[3].b = %u\n",
+        "  example->nestedArr[3].b = %u\n"
+        "  example->e = %d\n",
         example->a,
         example->b,
         example->c,
@@ -59,7 +66,8 @@ void dump_example(struct Example const* example) {
         example->nestedArr[0].a,
         example->nestedArr[1].b,
         example->nestedArr[2].a,
-        example->nestedArr[3].b
+        example->nestedArr[3].b,
+        example->e
     );
 
     if (example->pInt) {

@@ -1,12 +1,11 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import tech.icey.vk4j.IDataTypeFactory;
 import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.annotations.*;
 import tech.icey.vk4j.array.IntArray;
+import tech.icey.vk4j.enumtype.ExampleEnum;
 import tech.icey.vk4j.ptr.IntPtr;
-import tech.icey.vk4j.annotations.pointer;
-import tech.icey.vk4j.annotations.unsafe;
-import tech.icey.vk4j.annotations.unsigned;
 
 import java.lang.foreign.*;
 
@@ -28,6 +27,7 @@ import static java.lang.foreign.ValueLayout.*;
 ///     int32_t *pInt;
 ///     struct Nested *pNested;
 ///     struct Nested nestedArr[4];
+///     enum ExampleEnum e;
 /// };}
 ///
 /// The corresponding Java class would be like this one.
@@ -70,7 +70,7 @@ public record Example(MemorySegment segment) {
             segment.set(LAYOUT$b, OFFSET$b, value);
         }
 
-        public static final class NestedFactory implements IFactory<Nested> {
+        public static final class NestedFactory implements IDataTypeFactory<Nested> {
             @Override
             public Class<Nested> clazz() {
                 return Nested.class;
@@ -105,7 +105,8 @@ public record Example(MemorySegment segment) {
             ValueLayout.JAVA_INT.withName("bitfield$bitfield1_bitfield2"),
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pInt"),
             ValueLayout.ADDRESS.withTargetLayout(Nested.LAYOUT).withName("pNested"),
-            MemoryLayout.sequenceLayout(4, Nested.LAYOUT).withName("nestedArr")
+            MemoryLayout.sequenceLayout(4, Nested.LAYOUT).withName("nestedArr"),
+            ValueLayout.JAVA_INT.withName("e")
     );
 
     public static final PathElement PATH$a = PathElement.groupElement("a");
@@ -118,6 +119,7 @@ public record Example(MemorySegment segment) {
     public static final PathElement PATH$pInt = PathElement.groupElement("pInt");
     public static final PathElement PATH$pNested = PathElement.groupElement("pNested");
     public static final PathElement PATH$nestedArr = PathElement.groupElement("nestedArr");
+    public static final PathElement PATH$e = PathElement.groupElement("e");
 
     public static final OfInt LAYOUT$a = (OfInt) LAYOUT.select(PATH$a);
     public static final OfLong LAYOUT$b = (OfLong) LAYOUT.select(PATH$b);
@@ -129,6 +131,7 @@ public record Example(MemorySegment segment) {
     public static final AddressLayout LAYOUT$pInt = (AddressLayout) LAYOUT.select(PATH$pInt);
     public static final AddressLayout LAYOUT$pNested = (AddressLayout) LAYOUT.select(PATH$pNested);
     public static final SequenceLayout LAYOUT$nestedArr = (SequenceLayout) LAYOUT.select(PATH$nestedArr);
+    public static final OfInt LAYOUT$e = (OfInt) LAYOUT.select(PATH$e);
 
     public static final long OFFSET$a = LAYOUT.byteOffset(PATH$a);
     public static final long OFFSET$b = LAYOUT.byteOffset(PATH$b);
@@ -140,6 +143,7 @@ public record Example(MemorySegment segment) {
     public static final long OFFSET$pInt = LAYOUT.byteOffset(PATH$pInt);
     public static final long OFFSET$pNested = LAYOUT.byteOffset(PATH$pNested);
     public static final long OFFSET$nestedArr = LAYOUT.byteOffset(PATH$nestedArr);
+    public static final long OFFSET$e = LAYOUT.byteOffset(PATH$e);
 
     public int a() {
         return segment.get(LAYOUT$a, OFFSET$a);
@@ -290,7 +294,15 @@ public record Example(MemorySegment segment) {
         MemorySegment.copy(value, 0, segment, OFFSET$nestedArr, LAYOUT$nestedArr.byteSize());
     }
 
-    public static final class ExampleFactory implements IFactory<Example> {
+    public @enumtype(ExampleEnum.class) int e() {
+        return segment.get(LAYOUT$e, OFFSET$e);
+    }
+
+    public void e(@enumtype(ExampleEnum.class) int value) {
+        segment.set(LAYOUT$e, OFFSET$e, value);
+    }
+
+    public static final class ExampleFactory implements IDataTypeFactory<Example> {
         @Override
         public Class<Example> clazz() {
             return Example.class;

@@ -6,7 +6,9 @@ from ..entity import Registry, Constant
 
 def generate_constants(registry: Registry, constants: Iterable[Constant]) -> str:
     return f'''package tech.icey.vk4j;
-    
+
+import tech.icey.vk4j.annotations.*;
+
 public final class Constants {{
 {'\n'.join(map(lambda constant: generate_constant(registry, constant), constants))}
 }}

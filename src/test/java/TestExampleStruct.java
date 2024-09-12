@@ -1,6 +1,7 @@
 import tech.icey.vk4j.Create;
 import tech.icey.vk4j.array.IntArray;
 import tech.icey.vk4j.datatype.Example;
+import tech.icey.vk4j.enumtype.ExampleEnum;
 import tech.icey.vk4j.ptr.IntPtr;
 
 import static tech.icey.vk4j.datatype.Example.Nested;
@@ -51,6 +52,7 @@ public class TestExampleStruct {
             nestedArr[2].a(13);
             nestedArr[3].b(26);
 
+            example.e(ExampleEnum.EXAMPLE_ENUM_VALUE2.value);
             Libdrill.dump_example(example);
         }
     }

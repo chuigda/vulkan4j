@@ -67,14 +67,15 @@ class CFixedIntType(CType):
     unsigned: bool
 
     def java_type(self) -> str:
+        unsigned_prefix = '@unsigned ' if self.unsigned else ''
         if self.c_name == 'char' or self.byte_size == 1:
-            return 'byte'
+            return f'{unsigned_prefix}byte'
         elif self.byte_size == 2:
-            return 'short'
+            return f'{unsigned_prefix}short'
         elif self.byte_size == 4:
-            return 'int'
+            return f'{unsigned_prefix}int'
         elif self.byte_size == 8:
-            return 'long'
+            return f'{unsigned_prefix}long'
         else:
             raise Exception(f'unsupported byte size: {self.byte_size}')
 
@@ -218,7 +219,7 @@ CTYPE_LONG: CType = CPlatformDependentIntType('long', 'LayoutExtra.C_LONG', 'lon
 CTYPE_SIZET: CType = CPlatformDependentIntType('size_t', 'LayoutExtra.C_SIZE_T', 'long')
 
 CTYPE_VOID: CType = CVoidType()
-CTYPE_PVOID: CType = CPointerType(CTYPE_INT8, False)
+CTYPE_PVOID: CType = CPointerType(CTYPE_VOID, False)
 
 
 KNOWN_TYPES: dict[str, CType] = {

@@ -8,7 +8,7 @@ def generate_struct(registry: Registry, struct: Structure) -> str:
 
     struct_layout = generate_struct_layout(registry, struct.members, member_types_lowered)
 
-    return f'''package tech.icey.vk4j.struct;
+    return f'''package tech.icey.vk4j.datatype;
 
 import java.lang.foreign.*;
 import tech.icey.vk4j.*;
@@ -56,7 +56,7 @@ def generate_struct_layout(registry: Registry, members: list[Member], member_typ
 
             member_types_lowered.append(ctype)
 
-    ret = 'MemoryLayout.structLayout(\n'
+    ret = 'NativeLayout.structLayout(\n'
     for (i, layout) in enumerate(field_layouts):
         if i == len(field_layouts) - 1:
             ret += f'        {layout}\n'

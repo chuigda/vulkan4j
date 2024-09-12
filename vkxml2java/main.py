@@ -1,6 +1,6 @@
 from xml.dom.minidom import parse
 
-from vkxml2java.codegen.struct import generate_struct
+from vkxml2java.codegen.enum import generate_enum
 from vkxml2java.codegen.constant import generate_constants
 from vkxml2java.extract import extract_registry
 from vkxml2java.filter import filter_registry
@@ -14,12 +14,17 @@ def application_start():
     registry = filter_registry(registry)
     extend_registry(registry)
 
-    for struct in registry.structs.values():
-        if struct.name.value.startswith('VkVideo'):
-            break
+    # for struct in registry.structs.values():
+    #     if struct.name.value.startswith('VkVideo'):
+    #         break
+    #
+    #     source = generate_struct(registry, struct)
+    #     with open(f'../src/main/java/tech/icey/vk4j/datatype/{struct.name}.java', 'w') as f:
+    #         f.write(source)
 
-        source = generate_struct(registry, struct)
-        with open(f'../src/main/java/tech/icey/vk4j/struct/{struct.name}.java', 'w') as f:
+    for enum in registry.enums.values():
+        source = generate_enum(enum)
+        with open(f'../src/main/java/tech/icey/vk4j/enumtype/{enum.name}.java', 'w') as f:
             f.write(source)
 
     with open(f'../src/main/java/tech/icey/vk4j/Constants.java', 'w') as f:
