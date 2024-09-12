@@ -13,18 +13,21 @@ def generate_bitmask(registry: Registry, bitmask: Bitmask) -> str:
         if bitmask.require_flagbits not in registry.bitmasks:
             raise ValueError(f'{bitmask.require_flagbits.value}, required by type {bitmask.name}, is not found in registry')
 
+        print(f'    replacing Flag type {bitmask.name} with FlagBits type {bitmask.require_flagbits}')
         content_bitmask = registry.bitmasks[bitmask.require_flagbits]
 
-    if bitmask.bitwidth == 64:
+    if content_bitmask.bitwidth == 64:
         bitmask_type = CTYPE_INT64
-    elif bitmask.bitwidth == 32 or bitmask.bitwidth is None:
+        postfix = 'L'
+    elif content_bitmask.bitwidth == 32 or content_bitmask.bitwidth is None:
         bitmask_type = CTYPE_INT32
+        postfix = ''
     else:
-        raise ValueError(f'unsupported bitwidth: {bitmask.bitwidth}')
+        raise ValueError(f'unsupported bitwidth: {content_bitmask.bitwidth}')
 
     return f'''package tech.icey.vk4j.bitmask;
 
 public final class {bitmask_name} {{
-{'\n'.join(f'    public static final {bitmask_type.java_type()} {flag.name} = {flag.value};' for flag in content_bitmask.bitflags)}
+{'\n'.join(f'    public static final {bitmask_type.java_type()} {flag.name} = {flag.value}{postfix};' for flag in content_bitmask.bitflags)}
 }}
 '''

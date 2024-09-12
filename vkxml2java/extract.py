@@ -134,7 +134,13 @@ def extract_bitmask(e: Element) -> Bitmask:
 def extract_bitmask_type(e: Element) -> Bitmask:
     name = ident(get_element_text(find(e, 'name')))
     api = get_attr(e, 'api')
-    require_flagbits = ident(get_attr(e, 'requires')) if 'requires' in e.attributes else None
+
+    if 'requires' in e.attributes:
+        require_flagbits = ident(e.getAttribute('requires'))
+    elif 'bitvalues' in e.attributes:
+        require_flagbits = ident(e.getAttribute('bitvalues'))
+    else:
+        require_flagbits = None
 
     return Bitmask(name, api, bitflags=[], bitwidth=None, require_flagbits=require_flagbits)
 
