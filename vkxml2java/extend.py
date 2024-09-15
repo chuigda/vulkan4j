@@ -12,6 +12,7 @@ def extend_registry(registry: Registry):
     for extension in registry.extensions.values():
         for ext in extension.require.values:
             extend_bitmask(ext, registry.bitmasks, added)
+            extend_enum(ext, registry.enums, added, extension.number)
 
 
 def extend_bitmask(ext: RequireValue, bitmasks: dict[str, Bitmask], added: set[Entity]):
