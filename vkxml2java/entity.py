@@ -1,12 +1,12 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
-from typing import Callable
 
 from .vktype import Type, IdentifierType
 
 
 @dataclass
 class Registry:
+    aliases: dict[str, Typedef] = field(default_factory=dict)
     bitmasks: dict[str, Bitmask] = field(default_factory=dict)
     constants: dict[str, Constant] = field(default_factory=dict)
     commands: dict[str, Command] = field(default_factory=dict)
@@ -27,6 +27,17 @@ class Entity:
 
     def is_vulkan_api(self) -> bool:
         return 'vulkan' in self.api.split(',') if self.api is not None else True
+
+    def __eq__(self, other) -> bool:
+        return self.name == other.name
+
+    def __hash__(self):
+        return hash(self.name)
+
+
+@dataclass
+class Typedef(Entity):
+    type: IdentifierType
 
     def __eq__(self, other) -> bool:
         return self.name == other.name

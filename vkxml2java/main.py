@@ -28,7 +28,7 @@ def application_start():
 
     print('generating structs')
     for struct in registry.structs.values():
-        if 'VkVideo' in struct.name:
+        if 'Video' in struct.name:
             print(f'    skipping {struct.name}')
             continue
         print(f'    generating {struct.name}')
@@ -38,6 +38,10 @@ def application_start():
 
     print('generating unions')
     for union in registry.unions.values():
+        if 'Video' in union.name:
+            print(f'    skipping {union.name}')
+            continue
+
         print(f'    generating {union.name}')
         source = generate_structure(registry, union)
         with open(f'../src/main/java/tech/icey/vk4j/datatype/{union.name}.java', 'w') as f:
@@ -45,7 +49,7 @@ def application_start():
 
     print('generating bitmasks')
     for bitmask in registry.bitmasks.values():
-        if 'FlagBits' in bitmask.name.value:
+        if 'FlagBits' in bitmask.name:
             continue
 
         source = generate_bitmask(registry, bitmask)

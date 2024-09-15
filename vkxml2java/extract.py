@@ -10,6 +10,13 @@ def extract_registry(tree: Document) -> Registry:
     type_nodes = tree.getElementsByTagName('types')[0].getElementsByTagName('type')
     enums_nodes = tree.getElementsByTagName('enums')
 
+    aliases: dict[str, Typedef] = {}
+    for type_node in type_nodes:
+        if 'alias' not in type_node.attributes or 'name' not in type_node.attributes:
+            continue
+        alias = extract_typedef(type_node)
+        aliases[alias.name] = alias
+
     bitmasks: dict[str, Bitmask] = {}
     for bitmask_node in enums_nodes:
         if bitmask_node.hasAttribute('type') and bitmask_node.getAttribute('type') == 'bitmask':
@@ -107,6 +114,7 @@ def extract_registry(tree: Document) -> Registry:
             versions[version.name] = version
 
     return Registry(
+        aliases,
         bitmasks,
         constants,
         commands,
@@ -119,6 +127,14 @@ def extract_registry(tree: Document) -> Registry:
         unions,
         versions
     )
+
+
+def extract_typedef(e: Element) -> Typedef:
+    name = get_attr(e, 'name')
+    api = get_attr(e, 'api')
+    type_ = IdentifierType(get_attr(e, 'alias'))
+
+    return Typedef(name, api, type_)
 
 
 def extract_bitmask(e: Element) -> Bitmask:

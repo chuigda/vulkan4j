@@ -180,9 +180,9 @@ class CFixedIntType(CNonRefType):
 
     def vk4j_array_type(self) -> str:
         unsigned_prefix = '@unsigned ' if self.unsigned else ''
-        return f'{unsigned_prefix}{self.vk4j_array_type_nosign()}'
+        return f'{unsigned_prefix}{self.vk4j_array_type_no_sign()}'
 
-    def vk4j_array_type_nosign(self) -> str:
+    def vk4j_array_type_no_sign(self) -> str:
         if self.c_name == 'char' or self.byte_size == 1:
             return 'ByteArray'
         elif self.byte_size == 2:
@@ -478,6 +478,8 @@ def lower_str_type(registry: Registry, ident_type: IdentifierType) -> CType:
     if ident in KNOWN_TYPES:
         ret = KNOWN_TYPES[ident]
         return ret
+    elif ident in registry.aliases:
+        return lower_type(registry, registry.aliases[ident].type)
     elif ident in registry.enums:
         return CEnumType(ident)
     elif ident in registry.bitmasks:

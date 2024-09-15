@@ -22,12 +22,12 @@ def generate_array_accessor(type_: CArrayType, member: Member) -> str:
 
 
 def generate_array_nonref_type_accessor(element_type: CNonRefType, member: Member) -> str:
-    return f'''public MemorySegment {member.name}Raw() {{
+    return f'''    public MemorySegment {member.name}Raw() {{
         return segment.asSlice(OFFSET${member.name}, LAYOUT${member.name}.byteSize());
     }}
         
     public {element_type.vk4j_array_type()} {member.name}(int index) {{
-        return new {element_type.vk4j_array_type()}({member.name}Raw(), LAYOUT${member.name}.elementCount());
+        return new {element_type.vk4j_array_type_no_sign()}({member.name}Raw(), LAYOUT${member.name}.elementCount());
     }}
     
     public void {member.name}({element_type.vk4j_array_type()} value) {{
@@ -36,7 +36,7 @@ def generate_array_nonref_type_accessor(element_type: CNonRefType, member: Membe
 
 
 def generate_array_ref_type_accessor(element_type: CStructType | CUnionType | CHandleType, member: Member) -> str:
-    return f'''public MemorySegment {member.name}Raw() {{
+    return f'''    public MemorySegment {member.name}Raw() {{
         return segment.asSlice(OFFSET${member.name}, LAYOUT${member.name}.byteSize());
     }}
         
@@ -79,7 +79,7 @@ def generate_array_enum_type_accessor(element_type: CEnumType, member: Member) -
     }}
     
     public {new_elem_type.vk4j_array_type()} {member.name}() {{
-        return new {new_elem_type.vk4j_array_type_nosign()}({member.name}Raw(), LAYOUT${member.name}.elementCount());
+        return new {new_elem_type.vk4j_array_type_no_sign()}({member.name}Raw(), LAYOUT${member.name}.elementCount());
     }}
     
     public void {member.name}({new_elem_type.vk4j_array_type()} value) {{

@@ -66,11 +66,11 @@ def generate_p_enum_type_accessor(pointee_type: CEnumType, member: Member) -> st
 
 
 
-    return f'''    public @pointer(target={pointee_type.name}.class) MemorySegment {member.name}Raw() {{
+    return f'''    public @pointer(target={pointee_type.non_flagbits_type_name()}.class) MemorySegment {member.name}Raw() {{
         return segment.get(LAYOUT${member.name}, OFFSET${member.name});
     }}
     
-    public void {member.name}Raw(@pointer(target={pointee_type.name}.class) MemorySegment value) {{
+    public void {member.name}Raw(@pointer(target={pointee_type.non_flagbits_type_name()}.class) MemorySegment value) {{
         segment.set(LAYOUT${member.name}, OFFSET${member.name}, value);
     }}
     

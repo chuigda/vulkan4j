@@ -9,6 +9,7 @@ def filter_registry(registry: Registry) -> Registry:
     filter_supported_entities = lambda entity: entity.name not in unsupported_entities and entity.is_vulkan_api()
 
     return Registry(
+        aliases=registry.aliases,
         bitmasks=iter2dict(filter(filter_supported_entities, map(filter_bitflags, registry.bitmasks.values()))),
         constants=iter2dict(filter(filter_supported_entities, registry.constants.values())),
         commands=iter2dict(filter(filter_supported_entities, map(filter_params, registry.commands.values()))),
