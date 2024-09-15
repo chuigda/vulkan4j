@@ -23,4 +23,4 @@ def generate_constant(registry: Registry, constant: Constant) -> str:
             .replace('LL', '')
             .replace('L', '')
             .replace('U', ''))
-    return f'    public static final {ctype.java_raw_type()} {constant.name} = {expr};'
+    return f'    public static final {ctype.java_type()} {constant.name} = {expr};'

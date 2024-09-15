@@ -1,5 +1,4 @@
-from .ctype import lower_type, CType, CPlatformDependentIntType, CStructType, CUnionType, CFixedIntType, CArrayType, \
-    CFloatType, CEnumType
+from .ctype import *
 from .dependency import *
 from ..entity import Structure, Member, Registry
 
@@ -20,9 +19,12 @@ def generate_struct(registry: Registry, struct: Structure) -> str:
         dependencies
     )
 
+    dep_list = list(dependencies)
+    dep_list.sort()
+
     return f'''package tech.icey.vk4j.datatype;
 
-{'\n'.join(dependencies)}
+{'\n'.join(dep_list)}
 
 public record {struct.name}(MemorySegment segment) {{
     public static final MemoryLayout LAYOUT = {struct_layout};
@@ -169,52 +171,20 @@ def generate_struct_member_accessor(members: list[Member], member_types_lowered:
             next_ = members[i + 1]
             assert current.bits is not None and current.bits == 24 and next_.bits == 8
 
-            ret += f'''    public int {current.name}() {{
-        return segment.get(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name}) >> 8;
-    }}
-
-    public void {current.name}(int value) {{
-        int original = segment.get(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name});
-        int newValue = (value << 8) | (original & 0xFF);
-        segment.set(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name}, newValue);
-    }}
-
-    public int {next_.name}() {{
-        return segment.get(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name}) & 0xFF;
-    }}
-
-    public void {next_.name}(int value) {{
-        int original = segment.get(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name});
-        int newValue = (original & 0xFF00) | value;
-        segment.set(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name}, newValue);
-    }}\n\n'''
+            ret += generate_bitfield_accessor(current, next_)
             i += 2
         else:
             ctype = member_types_lowered[i]
             if isinstance(ctype, CPlatformDependentIntType):
-                ret += f'''    public long {current.name}() {{
-        return segment.get(LAYOUT${current.name}, OFFSET${current.name});
-    }}
-
-    public void {current.name}(long value) {{
-        segment.set(LAYOUT${current.name}, OFFSET${current.name}, value);
-    }}\n\n'''
+                ret += generate_platform_dependent_int_accessor(current)
             elif isinstance(ctype, CStructType) or isinstance(ctype, CUnionType):
-                ret += f'''    public {ctype.java_raw_type()} {current.name}() {{
-        return new {ctype.java_raw_type()}(segment.asSlice(OFFSET${current.name}, LAYOUT${current.name}));
-    }}
-
-    public void {current.name}({ctype.java_raw_type()} value) {{
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET${current.name}, LAYOUT${current.name}.byteSize());
-    }}\n\n'''
-            elif isinstance(ctype, CFixedIntType) or isinstance(ctype, CEnumType):
-                ret += f'''    public {ctype.java_raw_type()} {current.name}() {{
-        return segment.get(LAYOUT${current.name}, OFFSET${current.name});
-    }}
-
-    public void {current.name}({ctype.java_raw_type()} value) {{
-        segment.set(LAYOUT${current.name}, OFFSET${current.name}, value);
-    }}\n\n'''
+                ret += generate_datatype_accessor(ctype, current)
+            elif isinstance(ctype, CFixedIntType):
+                ret += generate_fixed_int_type_accessor(ctype, current)
+            elif isinstance(ctype, CEnumType):
+                ret += generate_enum_accessor(ctype, current)
+            elif isinstance(ctype, CPointerType):
+                ret += generate_pointer_accessor(ctype, current)
             elif isinstance(ctype, CArrayType):
                 if not isinstance(ctype.element, CFixedIntType) and not isinstance(ctype.element, CFloatType) and not isinstance(ctype.element, CEnumType):
                     # TODO: consider correctly supporting these things
@@ -222,19 +192,19 @@ def generate_struct_member_accessor(members: list[Member], member_types_lowered:
                     i += 1
                     continue
 
-                ret += f'''    public {ctype.java_raw_type()} {current.name}() {{
+                ret += f'''    public {ctype.java_type()} {current.name}() {{
         return segment.asSlice(OFFSET${current.name}, LAYOUT${current.name}).toArray({ctype.element.java_layout()});
     }}
 
-    public void {current.name}({ctype.java_raw_type()} value) {{
+    public void {current.name}({ctype.java_type()} value) {{
         MemorySegment.copy(MemorySegment.ofArray(value), 0, segment, OFFSET${current.name}, LAYOUT${current.name}.byteSize());
     }}
 
-    public {ctype.element.java_raw_type()} {current.name}At(int index) {{
+    public {ctype.element.java_type()} {current.name}At(int index) {{
         return segment.get({ctype.element.java_layout()}, OFFSET${current.name} + index * {ctype.element.java_layout()}.byteSize());
     }}
 
-    public void {current.name}At(int index, {ctype.element.java_raw_type()} value) {{
+    public void {current.name}At(int index, {ctype.element.java_type()} value) {{
         segment.set({ctype.element.java_layout()}, OFFSET${current.name} + index * {ctype.element.java_layout()}.byteSize(), value);
     }}\n\n'''
             else:
@@ -264,3 +234,73 @@ def generate_struct_factory(struct: Structure) -> str:
     }}
 
     public static final {struct.name}Factory FACTORY = new {struct.name}Factory();'''
+
+
+def generate_bitfield_accessor(current: Member, next_: Member) -> str:
+    return f'''    public int {current.name}() {{
+        return segment.get(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name}) >> 8;
+    }}
+
+    public void {current.name}(int value) {{
+        int original = segment.get(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name});
+        int newValue = (value << 8) | (original & 0xFF);
+        segment.set(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name}, newValue);
+    }}
+
+    public int {next_.name}() {{
+        return segment.get(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name}) & 0xFF;
+    }}
+
+    public void {next_.name}(int value) {{
+        int original = segment.get(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name});
+        int newValue = (original & 0xFF00) | value;
+        segment.set(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name}, newValue);
+    }}\n\n'''
+
+
+def generate_platform_dependent_int_accessor(member: Member) -> str:
+    return f'''    public long {member.name}() {{
+        return NativeLayout.readCLong(segment, OFFSET${member.name});
+    }}
+
+    public void {member.name}(long value) {{
+        NativeLayout.writeCLong(segment, OFFSET${member.name}, value);
+    }}\n\n'''
+
+
+def generate_datatype_accessor(type_: CStructType | CUnionType, member: Member) -> str:
+    return f'''    public {type_.java_type()} {member.name}() {{
+        return new {type_.java_type()}(segment.asSlice(OFFSET${member.name}, LAYOUT${member.name}));
+    }}
+
+    public void {member.name}({type_.java_type()} value) {{
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET${member.name}, LAYOUT${member.name}.byteSize());
+    }}\n\n'''
+
+
+def generate_fixed_int_type_accessor(type_: CFixedIntType, member: Member) -> str:
+    return f'''    public {type_.java_type()} {member.name}() {{
+        return segment.get(LAYOUT${member.name}, OFFSET${member.name});
+    }}
+
+    public void {member.name}({type_.java_type()} value) {{
+        segment.set(LAYOUT${member.name}, OFFSET${member.name}, value);
+    }}\n\n'''
+
+
+def generate_enum_accessor(type_: CEnumType, member: Member) -> str:
+    return f'''    public {type_.java_type()} {member.name}() {{
+        return {type_.java_type()}.fromInt(segment.get(LAYOUT${member.name}, OFFSET${member.name}));
+    }}
+
+    public void {member.name}({type_.java_type()} value) {{
+        segment.set(LAYOUT${member.name}, OFFSET${member.name}, value.value());
+    }}\n\n'''
+
+
+def generate_pointer_accessor(type_: CPointerType, member: Member) -> str:
+    pass
+
+
+def generate_array_type_accessor(type_: CArrayType, member: Member) -> str:
+    pass

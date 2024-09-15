@@ -8,7 +8,7 @@ from ..vktype import Type, IdentifierType, ArrayType, PointerType
 
 @dataclass
 class CType:
-    def java_raw_type(self) -> str:
+    def java_type(self) -> str:
         raise NotImplementedError()
 
     def java_layout(self) -> str:
@@ -17,13 +17,22 @@ class CType:
     def java_layout_type(self) -> str:
         raise NotImplementedError()
 
+    def c_type(self) -> str:
+        raise NotImplementedError()
+
 
 @dataclass
 class CPointerType(CType):
     pointee: CType
     const: bool
+    comment: str | None = None
 
-    def java_raw_type(self) -> str:
+    def java_type(self) -> str:
+        if self.comment is not None:
+            return f'@pointer(comment="{self.comment}") MemorySegment'
+        elif self.pointee == CTYPE_VOID:
+            return '@pointer(comment="void*") MemorySegment'
+
         return 'MemorySegment'
 
     def java_layout(self) -> str:
@@ -35,12 +44,15 @@ class CPointerType(CType):
     def java_layout_type(self) -> str:
         return 'AddressLayout'
 
+    def c_type(self) -> str:
+        return f'{self.pointee.c_type()}*'
+
 
 @dataclass
 class CHandleType(CType):
     handle_type_name: Identifier
 
-    def java_raw_type(self) -> str:
+    def java_type(self) -> str:
         return f'@pointer({self.handle_type_name}.class) MemorySegment'
 
     def java_layout(self) -> str:
@@ -49,19 +61,41 @@ class CHandleType(CType):
     def java_layout_type(self) -> str:
         return 'AddressLayout'
 
+    def c_type(self) -> str:
+        return f'{self.handle_type_name}'
+
 
 @dataclass
 class CEnumType(CType):
     name: str
+    bitwidth: int | None = None
 
-    def java_raw_type(self) -> str:
-        return 'int'
+    def java_type(self) -> str:
+        if self.bitwidth is None or self.bitwidth == 32:
+            return f'@enumtype({self.name}.class) int'
+        elif self.bitwidth == 64:
+            return f'@enumtype({self.name}.class) long'
+        else:
+            raise Exception(f'unsupported bitwidth: {self.bitwidth}')
 
     def java_layout(self) -> str:
-        return 'ValueLayout.JAVA_INT'
+        if self.bitwidth is None or self.bitwidth == 32:
+            return 'ValueLayout.JAVA_INT'
+        elif self.bitwidth == 64:
+            return 'ValueLayout.JAVA_LONG'
+        else:
+            raise Exception(f'unsupported bitwidth: {self.bitwidth}')
 
     def java_layout_type(self) -> str:
-        return 'OfInt'
+        if self.bitwidth is None or self.bitwidth == 32:
+            return 'OfInt'
+        elif self.bitwidth == 64:
+            return 'OfLong'
+        else:
+            raise Exception(f'unsupported bitwidth: {self.bitwidth}')
+
+    def c_type(self) -> str:
+        return f'enum {self.name}'
 
 
 @dataclass
@@ -69,14 +103,17 @@ class CArrayType(CType):
     element: CType
     size: int | str
 
-    def java_raw_type(self) -> str:
-        return f'{self.element.java_raw_type()}[]'
+    def java_type(self) -> str:
+        return f'{self.element.java_type()}[]'
 
     def java_layout(self) -> str:
         return f'MemoryLayout.sequenceLayout({self.size}, {self.element.java_layout()})'
 
     def java_layout_type(self) -> str:
         return 'SequenceLayout'
+
+    def c_type(self) -> str:
+        return f'{self.element.c_type()}[{self.size}]'
 
 
 @dataclass
@@ -85,7 +122,7 @@ class CFixedIntType(CType):
     byte_size: int
     unsigned: bool
 
-    def java_raw_type(self) -> str:
+    def java_type(self) -> str:
         unsigned_prefix = '@unsigned ' if self.unsigned else ''
         if self.c_name == 'char' or self.byte_size == 1:
             return f'{unsigned_prefix}byte'
@@ -122,6 +159,9 @@ class CFixedIntType(CType):
         else:
             raise Exception(f'unsupported byte size: {self.byte_size}')
 
+    def c_type(self) -> str:
+        return self.c_name
+
 
 @dataclass
 class CPlatformDependentIntType(CType):
@@ -129,7 +169,7 @@ class CPlatformDependentIntType(CType):
     java_layout_: str
     java_type_: str
 
-    def java_raw_type(self) -> str:
+    def java_type(self) -> str:
         return self.java_type_
 
     def java_layout(self) -> str:
@@ -138,12 +178,15 @@ class CPlatformDependentIntType(CType):
     def java_layout_type(self) -> str:
         raise Exception(f'should not call `java_layout_type` on platform dependent int')
 
+    def c_type(self) -> str:
+        return self.c_name
+
 
 @dataclass
 class CFloatType(CType):
     byte_size: int
 
-    def java_raw_type(self) -> str:
+    def java_type(self) -> str:
         if self.byte_size == 4:
             return 'float'
         elif self.byte_size == 8:
@@ -167,10 +210,13 @@ class CFloatType(CType):
         else:
             raise Exception(f'unsupported byte size: {self.byte_size}')
 
+    def c_type(self) -> str:
+        return 'float' if self.byte_size == 4 else 'double'
+
 
 @dataclass
 class CBoolType(CType):
-    def java_raw_type(self) -> str:
+    def java_type(self) -> str:
         return 'boolean'
 
     def java_layout(self) -> str:
@@ -179,12 +225,15 @@ class CBoolType(CType):
     def java_layout_type(self) -> str:
         return 'OfBoolean'
 
+    def c_type(self) -> str:
+        return 'bool'
+
 
 @dataclass
 class CStructType(CType):
     name: str
 
-    def java_raw_type(self) -> str:
+    def java_type(self) -> str:
         return self.name
 
     def java_layout(self) -> str:
@@ -193,12 +242,15 @@ class CStructType(CType):
     def java_layout_type(self) -> str:
         return 'StructLayout'
 
+    def c_type(self) -> str:
+        return f'struct {self.name}'
+
 
 @dataclass
 class CUnionType(CType):
     name: str
 
-    def java_raw_type(self) -> str:
+    def java_type(self) -> str:
         return self.name
 
     def java_layout(self) -> str:
@@ -207,12 +259,15 @@ class CUnionType(CType):
     def java_layout_type(self) -> str:
         return 'UnionLayout'
 
+    def c_type(self) -> str:
+        return f'union {self.name}'
+
 
 @dataclass
 class CVoidType(CType):
     pass
 
-    def java_raw_type(self) -> str:
+    def java_type(self) -> str:
         return 'void'
 
     def java_layout(self) -> str:
@@ -220,6 +275,9 @@ class CVoidType(CType):
 
     def java_layout_type(self) -> str:
         raise Exception(f'should not call `java_layout_type` on void')
+
+    def c_type(self) -> str:
+        return 'void'
 
 
 CTYPE_INT8: CType = CFixedIntType('int8_t', 1, False)
@@ -352,9 +410,13 @@ def lower_identifier_type(
         if ret == CTYPE_LONG or ret == CTYPE_SIZET:
             dependencies.add(TECH_ICEY_VK4J_NATIVE_LAYOUT)
         return ret
-    elif ident in registry.enums or ident in registry.bitmasks:
+    elif ident in registry.enums:
         dependencies.add(TECH_ICEY_VK4J_ENUMTYPE)
         return CEnumType(ident.value)
+    elif ident in registry.bitmasks:
+        dependencies.add(TECH_ICEY_VK4J_ENUMTYPE)
+        bitmask = registry.bitmasks[ident]
+        return CEnumType(ident.value, bitmask.bitwidth)
     elif ident in registry.structs:
         return CStructType(ident.value)
     elif ident in registry.unions:
@@ -362,8 +424,9 @@ def lower_identifier_type(
     elif ident in registry.handles:
         dependencies.add(TECH_ICEY_VK4J_HANDLE)
         return CHandleType(ident)
-
     elif ident in registry.functions:
-        return CPointerType(CTYPE_VOID, False)
+        fn = registry.functions[ident]
+        comment = f'{fn.name}'
+        return CPointerType(CTYPE_VOID, False, comment)
     else:
         raise Exception(f'unknown type: {ident}')
