@@ -462,11 +462,11 @@ def lower_type(registry: Registry, type_: Type) -> CType:
     if isinstance(type_, IdentifierType):
         return lower_str_type(registry, type_)
     elif isinstance(type_, ArrayType):
-        if not type_.length.value.isnumeric():
+        if not type_.length.isnumeric():
             if type_.length not in registry.constants:
-                raise Exception(f'array typed referred to an unknown constant: {type_.length.value}')
+                raise Exception(f'array typed referred to an unknown constant: {type_.length}')
         element_type = lower_type(registry, type_.element)
-        return CArrayType(element_type, type_.length.value)
+        return CArrayType(element_type, type_.length)
     elif isinstance(type_, PointerType):
         pointee = lower_type(registry, type_.pointee)
         return CPointerType(pointee, type_.const)
@@ -474,20 +474,19 @@ def lower_type(registry: Registry, type_: Type) -> CType:
 
 def lower_str_type(registry: Registry, ident_type: IdentifierType) -> CType:
     ident = ident_type.str
-    ident_value = ident.value
 
-    if ident_value in KNOWN_TYPES:
-        ret = KNOWN_TYPES[ident_value]
+    if ident in KNOWN_TYPES:
+        ret = KNOWN_TYPES[ident]
         return ret
     elif ident in registry.enums:
-        return CEnumType(ident.value)
+        return CEnumType(ident)
     elif ident in registry.bitmasks:
         bitmask = registry.bitmasks[ident]
-        return CEnumType(ident.value, bitmask.bitwidth)
+        return CEnumType(ident, bitmask.bitwidth)
     elif ident in registry.structs:
-        return CStructType(ident.value)
+        return CStructType(ident)
     elif ident in registry.unions:
-        return CUnionType(ident.value)
+        return CUnionType(ident)
     elif ident in registry.handles:
         return CHandleType(ident)
     elif ident in registry.functions:

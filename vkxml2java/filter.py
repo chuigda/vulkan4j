@@ -43,11 +43,7 @@ def filter_members(structure: Structure) -> Structure:
     return Structure(structure.name, structure.api, members, structure.structextends)
 
 
-UNSUPPORTED_EXTENSIONS: set[str] = {
-    # TODO: these two extensions have two types defined in very weird manner
-    'VK_NV_ray_tracing',
-    'VK_NV_cooperative_matrix'
-}
+UNSUPPORTED_EXTENSIONS: set[str] = set()
 
 
 def get_unsupported_entities(registry: Registry) -> set[str]:

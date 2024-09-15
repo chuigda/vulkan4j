@@ -16,7 +16,7 @@ public final class Constants {{
 
 
 def generate_constant(registry: Registry, constant: Constant) -> str:
-    ctype = lower_type(registry, constant.type, set())
+    ctype = lower_type(registry, constant.type)
     expr = (constant.expr
             .replace('ULL', '')
             .replace('UL', '')
