@@ -68,21 +68,21 @@ public record VkShaderResourceUsageAMD(MemorySegment segment) {
         segment.set(LAYOUT$ldsSizePerLocalWorkGroup, OFFSET$ldsSizePerLocalWorkGroup, value);
     }
 
-    public long ldsUsageSizeInBytes() {
-        return NativeLayout.readCLong(segment, OFFSET$ldsUsageSizeInBytes);
-    }
+    public @unsigned long ldsUsageSizeInBytes() {
+            return NativeLayout.readCSizeT(segment, OFFSET$ldsUsageSizeInBytes);
+        }
+    
+        public void ldsUsageSizeInBytes(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$ldsUsageSizeInBytes, value);
+        }
 
-    public void ldsUsageSizeInBytes(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$ldsUsageSizeInBytes, value);
-    }
-
-    public long scratchMemUsageInBytes() {
-        return NativeLayout.readCLong(segment, OFFSET$scratchMemUsageInBytes);
-    }
-
-    public void scratchMemUsageInBytes(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$scratchMemUsageInBytes, value);
-    }
+    public @unsigned long scratchMemUsageInBytes() {
+            return NativeLayout.readCSizeT(segment, OFFSET$scratchMemUsageInBytes);
+        }
+    
+        public void scratchMemUsageInBytes(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$scratchMemUsageInBytes, value);
+        }
 
 
     public static final class VkShaderResourceUsageAMDFactory implements IDataTypeFactory<VkShaderResourceUsageAMD> {

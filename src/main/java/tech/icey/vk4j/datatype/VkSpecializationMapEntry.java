@@ -53,13 +53,13 @@ public record VkSpecializationMapEntry(MemorySegment segment) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
     }
 
-    public long size() {
-        return NativeLayout.readCLong(segment, OFFSET$size);
-    }
-
-    public void size(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$size, value);
-    }
+    public @unsigned long size() {
+            return NativeLayout.readCSizeT(segment, OFFSET$size);
+        }
+    
+        public void size(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$size, value);
+        }
 
 
     public static final class VkSpecializationMapEntryFactory implements IDataTypeFactory<VkSpecializationMapEntry> {

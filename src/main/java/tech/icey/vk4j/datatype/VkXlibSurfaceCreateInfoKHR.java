@@ -79,12 +79,12 @@ public record VkXlibSurfaceCreateInfoKHR(MemorySegment segment) {
     }
 
     public long window() {
-        return NativeLayout.readCLong(segment, OFFSET$window);
-    }
-
-    public void window(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$window, value);
-    }
+            return NativeLayout.readCLong(segment, OFFSET$window);
+        }
+    
+        public void window(long value) {
+            NativeLayout.writeCLong(segment, OFFSET$window, value);
+        }
 
 
     public static final class VkXlibSurfaceCreateInfoKHRFactory implements IDataTypeFactory<VkXlibSurfaceCreateInfoKHR> {

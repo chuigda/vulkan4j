@@ -70,13 +70,13 @@ public record VkValidationCacheCreateInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public long initialDataSize() {
-        return NativeLayout.readCLong(segment, OFFSET$initialDataSize);
-    }
-
-    public void initialDataSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$initialDataSize, value);
-    }
+    public @unsigned long initialDataSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$initialDataSize);
+        }
+    
+        public void initialDataSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$initialDataSize, value);
+        }
 
     public @pointer(comment="void*") MemorySegment pInitialData() {
         return segment.get(LAYOUT$pInitialData, OFFSET$pInitialData);

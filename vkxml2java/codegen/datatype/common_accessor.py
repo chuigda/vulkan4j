@@ -24,15 +24,25 @@ def generate_bitfield_accessor(current: Member, next_: Member) -> str:
     }}\n\n'''
 
 
-def generate_platform_dependent_int_accessor(member: Member) -> str:
-    # TODO: fuck
-    return f'''    public long {member.name}() {{
-        return NativeLayout.readCLong(segment, OFFSET${member.name});
-    }}
-
-    public void {member.name}(long value) {{
-        NativeLayout.writeCLong(segment, OFFSET${member.name}, value);
-    }}\n\n'''
+def generate_platform_dependent_int_accessor(type_: CType, member: Member) -> str:
+    if type_ == CTYPE_LONG:
+        return f'''    public long {member.name}() {{
+            return NativeLayout.readCLong(segment, OFFSET${member.name});
+        }}
+    
+        public void {member.name}(long value) {{
+            NativeLayout.writeCLong(segment, OFFSET${member.name}, value);
+        }}\n\n'''
+    elif type_ == CTYPE_SIZET:
+        return f'''    public @unsigned long {member.name}() {{
+            return NativeLayout.readCSizeT(segment, OFFSET${member.name});
+        }}
+    
+        public void {member.name}(@unsigned long value) {{
+            NativeLayout.writeCSizeT(segment, OFFSET${member.name}, value);
+        }}\n\n'''
+    else:
+        raise ValueError(f'Unsupported platform dependent int type: {type_}')
 
 
 def generate_ref_type_accessor(type_: CStructType | CUnionType | CHandleType, member: Member) -> str:

@@ -54,13 +54,13 @@ public record VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public long combinedImageSamplerDensityMapDescriptorSize() {
-        return NativeLayout.readCLong(segment, OFFSET$combinedImageSamplerDensityMapDescriptorSize);
-    }
-
-    public void combinedImageSamplerDensityMapDescriptorSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$combinedImageSamplerDensityMapDescriptorSize, value);
-    }
+    public @unsigned long combinedImageSamplerDensityMapDescriptorSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$combinedImageSamplerDensityMapDescriptorSize);
+        }
+    
+        public void combinedImageSamplerDensityMapDescriptorSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$combinedImageSamplerDensityMapDescriptorSize, value);
+        }
 
 
     public static final class VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXTFactory implements IDataTypeFactory<VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT> {

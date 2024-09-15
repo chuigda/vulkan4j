@@ -58,13 +58,13 @@ public record VkDescriptorSetLayoutHostMappingInfoVALVE(MemorySegment segment) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public long descriptorOffset() {
-        return NativeLayout.readCLong(segment, OFFSET$descriptorOffset);
-    }
-
-    public void descriptorOffset(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$descriptorOffset, value);
-    }
+    public @unsigned long descriptorOffset() {
+            return NativeLayout.readCSizeT(segment, OFFSET$descriptorOffset);
+        }
+    
+        public void descriptorOffset(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$descriptorOffset, value);
+        }
 
     public @unsigned int descriptorSize() {
         return segment.get(LAYOUT$descriptorSize, OFFSET$descriptorSize);

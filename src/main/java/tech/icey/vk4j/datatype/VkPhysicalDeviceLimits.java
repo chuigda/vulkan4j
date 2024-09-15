@@ -993,13 +993,13 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
         segment.set(LAYOUT$viewportSubPixelBits, OFFSET$viewportSubPixelBits, value);
     }
 
-    public long minMemoryMapAlignment() {
-        return NativeLayout.readCLong(segment, OFFSET$minMemoryMapAlignment);
-    }
-
-    public void minMemoryMapAlignment(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$minMemoryMapAlignment, value);
-    }
+    public @unsigned long minMemoryMapAlignment() {
+            return NativeLayout.readCSizeT(segment, OFFSET$minMemoryMapAlignment);
+        }
+    
+        public void minMemoryMapAlignment(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$minMemoryMapAlignment, value);
+        }
 
     public @unsigned long minTexelBufferOffsetAlignment() {
         return segment.get(LAYOUT$minTexelBufferOffsetAlignment, OFFSET$minTexelBufferOffsetAlignment);

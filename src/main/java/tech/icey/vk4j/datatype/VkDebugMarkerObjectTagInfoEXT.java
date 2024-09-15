@@ -94,13 +94,13 @@ public record VkDebugMarkerObjectTagInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$tagName, OFFSET$tagName, value);
     }
 
-    public long tagSize() {
-        return NativeLayout.readCLong(segment, OFFSET$tagSize);
-    }
-
-    public void tagSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$tagSize, value);
-    }
+    public @unsigned long tagSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$tagSize);
+        }
+    
+        public void tagSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$tagSize, value);
+        }
 
     public @pointer(comment="void*") MemorySegment pTag() {
         return segment.get(LAYOUT$pTag, OFFSET$pTag);

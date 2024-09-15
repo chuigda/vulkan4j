@@ -80,21 +80,21 @@ public record VkDescriptorUpdateTemplateEntry(MemorySegment segment) {
         segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
     }
 
-    public long offset() {
-        return NativeLayout.readCLong(segment, OFFSET$offset);
-    }
+    public @unsigned long offset() {
+            return NativeLayout.readCSizeT(segment, OFFSET$offset);
+        }
+    
+        public void offset(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$offset, value);
+        }
 
-    public void offset(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$offset, value);
-    }
-
-    public long stride() {
-        return NativeLayout.readCLong(segment, OFFSET$stride);
-    }
-
-    public void stride(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$stride, value);
-    }
+    public @unsigned long stride() {
+            return NativeLayout.readCSizeT(segment, OFFSET$stride);
+        }
+    
+        public void stride(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$stride, value);
+        }
 
 
     public static final class VkDescriptorUpdateTemplateEntryFactory implements IDataTypeFactory<VkDescriptorUpdateTemplateEntry> {

@@ -161,13 +161,13 @@ public record VkCudaLaunchInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$sharedMemBytes, OFFSET$sharedMemBytes, value);
     }
 
-    public long paramCount() {
-        return NativeLayout.readCLong(segment, OFFSET$paramCount);
-    }
-
-    public void paramCount(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$paramCount, value);
-    }
+    public @unsigned long paramCount() {
+            return NativeLayout.readCSizeT(segment, OFFSET$paramCount);
+        }
+    
+        public void paramCount(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$paramCount, value);
+        }
 
     public @pointer(comment="void*") MemorySegment pParams() {
         return segment.get(LAYOUT$pParams, OFFSET$pParams);
@@ -177,13 +177,13 @@ public record VkCudaLaunchInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$pParams, OFFSET$pParams, value);
     }
 
-    public long extraCount() {
-        return NativeLayout.readCLong(segment, OFFSET$extraCount);
-    }
-
-    public void extraCount(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$extraCount, value);
-    }
+    public @unsigned long extraCount() {
+            return NativeLayout.readCSizeT(segment, OFFSET$extraCount);
+        }
+    
+        public void extraCount(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$extraCount, value);
+        }
 
     public @pointer(comment="void*") MemorySegment pExtras() {
         return segment.get(LAYOUT$pExtras, OFFSET$pExtras);

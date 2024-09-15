@@ -236,157 +236,157 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
         segment.set(LAYOUT$maxEmbeddedImmutableSamplers, OFFSET$maxEmbeddedImmutableSamplers, value);
     }
 
-    public long bufferCaptureReplayDescriptorDataSize() {
-        return NativeLayout.readCLong(segment, OFFSET$bufferCaptureReplayDescriptorDataSize);
-    }
+    public @unsigned long bufferCaptureReplayDescriptorDataSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$bufferCaptureReplayDescriptorDataSize);
+        }
+    
+        public void bufferCaptureReplayDescriptorDataSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$bufferCaptureReplayDescriptorDataSize, value);
+        }
 
-    public void bufferCaptureReplayDescriptorDataSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$bufferCaptureReplayDescriptorDataSize, value);
-    }
+    public @unsigned long imageCaptureReplayDescriptorDataSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$imageCaptureReplayDescriptorDataSize);
+        }
+    
+        public void imageCaptureReplayDescriptorDataSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$imageCaptureReplayDescriptorDataSize, value);
+        }
 
-    public long imageCaptureReplayDescriptorDataSize() {
-        return NativeLayout.readCLong(segment, OFFSET$imageCaptureReplayDescriptorDataSize);
-    }
+    public @unsigned long imageViewCaptureReplayDescriptorDataSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$imageViewCaptureReplayDescriptorDataSize);
+        }
+    
+        public void imageViewCaptureReplayDescriptorDataSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$imageViewCaptureReplayDescriptorDataSize, value);
+        }
 
-    public void imageCaptureReplayDescriptorDataSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$imageCaptureReplayDescriptorDataSize, value);
-    }
+    public @unsigned long samplerCaptureReplayDescriptorDataSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$samplerCaptureReplayDescriptorDataSize);
+        }
+    
+        public void samplerCaptureReplayDescriptorDataSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$samplerCaptureReplayDescriptorDataSize, value);
+        }
 
-    public long imageViewCaptureReplayDescriptorDataSize() {
-        return NativeLayout.readCLong(segment, OFFSET$imageViewCaptureReplayDescriptorDataSize);
-    }
+    public @unsigned long accelerationStructureCaptureReplayDescriptorDataSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$accelerationStructureCaptureReplayDescriptorDataSize);
+        }
+    
+        public void accelerationStructureCaptureReplayDescriptorDataSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$accelerationStructureCaptureReplayDescriptorDataSize, value);
+        }
 
-    public void imageViewCaptureReplayDescriptorDataSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$imageViewCaptureReplayDescriptorDataSize, value);
-    }
+    public @unsigned long samplerDescriptorSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$samplerDescriptorSize);
+        }
+    
+        public void samplerDescriptorSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$samplerDescriptorSize, value);
+        }
 
-    public long samplerCaptureReplayDescriptorDataSize() {
-        return NativeLayout.readCLong(segment, OFFSET$samplerCaptureReplayDescriptorDataSize);
-    }
+    public @unsigned long combinedImageSamplerDescriptorSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$combinedImageSamplerDescriptorSize);
+        }
+    
+        public void combinedImageSamplerDescriptorSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$combinedImageSamplerDescriptorSize, value);
+        }
 
-    public void samplerCaptureReplayDescriptorDataSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$samplerCaptureReplayDescriptorDataSize, value);
-    }
+    public @unsigned long sampledImageDescriptorSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$sampledImageDescriptorSize);
+        }
+    
+        public void sampledImageDescriptorSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$sampledImageDescriptorSize, value);
+        }
 
-    public long accelerationStructureCaptureReplayDescriptorDataSize() {
-        return NativeLayout.readCLong(segment, OFFSET$accelerationStructureCaptureReplayDescriptorDataSize);
-    }
+    public @unsigned long storageImageDescriptorSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$storageImageDescriptorSize);
+        }
+    
+        public void storageImageDescriptorSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$storageImageDescriptorSize, value);
+        }
 
-    public void accelerationStructureCaptureReplayDescriptorDataSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$accelerationStructureCaptureReplayDescriptorDataSize, value);
-    }
+    public @unsigned long uniformTexelBufferDescriptorSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$uniformTexelBufferDescriptorSize);
+        }
+    
+        public void uniformTexelBufferDescriptorSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$uniformTexelBufferDescriptorSize, value);
+        }
 
-    public long samplerDescriptorSize() {
-        return NativeLayout.readCLong(segment, OFFSET$samplerDescriptorSize);
-    }
+    public @unsigned long robustUniformTexelBufferDescriptorSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$robustUniformTexelBufferDescriptorSize);
+        }
+    
+        public void robustUniformTexelBufferDescriptorSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$robustUniformTexelBufferDescriptorSize, value);
+        }
 
-    public void samplerDescriptorSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$samplerDescriptorSize, value);
-    }
+    public @unsigned long storageTexelBufferDescriptorSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$storageTexelBufferDescriptorSize);
+        }
+    
+        public void storageTexelBufferDescriptorSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$storageTexelBufferDescriptorSize, value);
+        }
 
-    public long combinedImageSamplerDescriptorSize() {
-        return NativeLayout.readCLong(segment, OFFSET$combinedImageSamplerDescriptorSize);
-    }
+    public @unsigned long robustStorageTexelBufferDescriptorSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$robustStorageTexelBufferDescriptorSize);
+        }
+    
+        public void robustStorageTexelBufferDescriptorSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$robustStorageTexelBufferDescriptorSize, value);
+        }
 
-    public void combinedImageSamplerDescriptorSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$combinedImageSamplerDescriptorSize, value);
-    }
+    public @unsigned long uniformBufferDescriptorSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$uniformBufferDescriptorSize);
+        }
+    
+        public void uniformBufferDescriptorSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$uniformBufferDescriptorSize, value);
+        }
 
-    public long sampledImageDescriptorSize() {
-        return NativeLayout.readCLong(segment, OFFSET$sampledImageDescriptorSize);
-    }
+    public @unsigned long robustUniformBufferDescriptorSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$robustUniformBufferDescriptorSize);
+        }
+    
+        public void robustUniformBufferDescriptorSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$robustUniformBufferDescriptorSize, value);
+        }
 
-    public void sampledImageDescriptorSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$sampledImageDescriptorSize, value);
-    }
+    public @unsigned long storageBufferDescriptorSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$storageBufferDescriptorSize);
+        }
+    
+        public void storageBufferDescriptorSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$storageBufferDescriptorSize, value);
+        }
 
-    public long storageImageDescriptorSize() {
-        return NativeLayout.readCLong(segment, OFFSET$storageImageDescriptorSize);
-    }
+    public @unsigned long robustStorageBufferDescriptorSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$robustStorageBufferDescriptorSize);
+        }
+    
+        public void robustStorageBufferDescriptorSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$robustStorageBufferDescriptorSize, value);
+        }
 
-    public void storageImageDescriptorSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$storageImageDescriptorSize, value);
-    }
+    public @unsigned long inputAttachmentDescriptorSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$inputAttachmentDescriptorSize);
+        }
+    
+        public void inputAttachmentDescriptorSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$inputAttachmentDescriptorSize, value);
+        }
 
-    public long uniformTexelBufferDescriptorSize() {
-        return NativeLayout.readCLong(segment, OFFSET$uniformTexelBufferDescriptorSize);
-    }
-
-    public void uniformTexelBufferDescriptorSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$uniformTexelBufferDescriptorSize, value);
-    }
-
-    public long robustUniformTexelBufferDescriptorSize() {
-        return NativeLayout.readCLong(segment, OFFSET$robustUniformTexelBufferDescriptorSize);
-    }
-
-    public void robustUniformTexelBufferDescriptorSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$robustUniformTexelBufferDescriptorSize, value);
-    }
-
-    public long storageTexelBufferDescriptorSize() {
-        return NativeLayout.readCLong(segment, OFFSET$storageTexelBufferDescriptorSize);
-    }
-
-    public void storageTexelBufferDescriptorSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$storageTexelBufferDescriptorSize, value);
-    }
-
-    public long robustStorageTexelBufferDescriptorSize() {
-        return NativeLayout.readCLong(segment, OFFSET$robustStorageTexelBufferDescriptorSize);
-    }
-
-    public void robustStorageTexelBufferDescriptorSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$robustStorageTexelBufferDescriptorSize, value);
-    }
-
-    public long uniformBufferDescriptorSize() {
-        return NativeLayout.readCLong(segment, OFFSET$uniformBufferDescriptorSize);
-    }
-
-    public void uniformBufferDescriptorSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$uniformBufferDescriptorSize, value);
-    }
-
-    public long robustUniformBufferDescriptorSize() {
-        return NativeLayout.readCLong(segment, OFFSET$robustUniformBufferDescriptorSize);
-    }
-
-    public void robustUniformBufferDescriptorSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$robustUniformBufferDescriptorSize, value);
-    }
-
-    public long storageBufferDescriptorSize() {
-        return NativeLayout.readCLong(segment, OFFSET$storageBufferDescriptorSize);
-    }
-
-    public void storageBufferDescriptorSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$storageBufferDescriptorSize, value);
-    }
-
-    public long robustStorageBufferDescriptorSize() {
-        return NativeLayout.readCLong(segment, OFFSET$robustStorageBufferDescriptorSize);
-    }
-
-    public void robustStorageBufferDescriptorSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$robustStorageBufferDescriptorSize, value);
-    }
-
-    public long inputAttachmentDescriptorSize() {
-        return NativeLayout.readCLong(segment, OFFSET$inputAttachmentDescriptorSize);
-    }
-
-    public void inputAttachmentDescriptorSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$inputAttachmentDescriptorSize, value);
-    }
-
-    public long accelerationStructureDescriptorSize() {
-        return NativeLayout.readCLong(segment, OFFSET$accelerationStructureDescriptorSize);
-    }
-
-    public void accelerationStructureDescriptorSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$accelerationStructureDescriptorSize, value);
-    }
+    public @unsigned long accelerationStructureDescriptorSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$accelerationStructureDescriptorSize);
+        }
+    
+        public void accelerationStructureDescriptorSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$accelerationStructureDescriptorSize, value);
+        }
 
     public @unsigned long maxSamplerDescriptorBufferRange() {
         return segment.get(LAYOUT$maxSamplerDescriptorBufferRange, OFFSET$maxSamplerDescriptorBufferRange);

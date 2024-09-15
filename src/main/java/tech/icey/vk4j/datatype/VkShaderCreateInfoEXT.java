@@ -130,13 +130,13 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$codeType, OFFSET$codeType, value);
     }
 
-    public long codeSize() {
-        return NativeLayout.readCLong(segment, OFFSET$codeSize);
-    }
-
-    public void codeSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$codeSize, value);
-    }
+    public @unsigned long codeSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$codeSize);
+        }
+    
+        public void codeSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$codeSize, value);
+        }
 
     public @pointer(comment="void*") MemorySegment pCode() {
         return segment.get(LAYOUT$pCode, OFFSET$pCode);

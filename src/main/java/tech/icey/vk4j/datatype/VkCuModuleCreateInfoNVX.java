@@ -58,13 +58,13 @@ public record VkCuModuleCreateInfoNVX(MemorySegment segment) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public long dataSize() {
-        return NativeLayout.readCLong(segment, OFFSET$dataSize);
-    }
-
-    public void dataSize(long value) {
-        NativeLayout.writeCLong(segment, OFFSET$dataSize, value);
-    }
+    public @unsigned long dataSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$dataSize);
+        }
+    
+        public void dataSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$dataSize, value);
+        }
 
     public @pointer(comment="void*") MemorySegment pData() {
         return segment.get(LAYOUT$pData, OFFSET$pData);
