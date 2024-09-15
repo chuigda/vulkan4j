@@ -1,0 +1,199 @@
+package tech.icey.vk4j.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotations.*;
+import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.IDataTypeFactory;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
+
+public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment) {
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("type"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("mode"),
+        ValueLayout.ADDRESS.withName("srcAccelerationStructure"),
+        ValueLayout.ADDRESS.withName("dstAccelerationStructure"),
+        ValueLayout.JAVA_INT.withName("geometryCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkAccelerationStructureGeometryKHR.LAYOUT).withName("pGeometries"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkAccelerationStructureGeometryKHR.LAYOUT)).withName("ppGeometries"),
+        VkDeviceOrHostAddressKHR.LAYOUT.withName("scratchData")
+    );
+
+    public static final PathElement PATH$sType = PathElement.groupElement(0);
+    public static final PathElement PATH$pNext = PathElement.groupElement(1);
+    public static final PathElement PATH$type = PathElement.groupElement(2);
+    public static final PathElement PATH$flags = PathElement.groupElement(3);
+    public static final PathElement PATH$mode = PathElement.groupElement(4);
+    public static final PathElement PATH$srcAccelerationStructure = PathElement.groupElement(5);
+    public static final PathElement PATH$dstAccelerationStructure = PathElement.groupElement(6);
+    public static final PathElement PATH$geometryCount = PathElement.groupElement(7);
+    public static final PathElement PATH$pGeometries = PathElement.groupElement(8);
+    public static final PathElement PATH$ppGeometries = PathElement.groupElement(9);
+    public static final PathElement PATH$scratchData = PathElement.groupElement(10);
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
+    public static final AddressLayout LAYOUT$srcAccelerationStructure = (AddressLayout) LAYOUT.select(PATH$srcAccelerationStructure);
+    public static final AddressLayout LAYOUT$dstAccelerationStructure = (AddressLayout) LAYOUT.select(PATH$dstAccelerationStructure);
+    public static final OfInt LAYOUT$geometryCount = (OfInt) LAYOUT.select(PATH$geometryCount);
+    public static final AddressLayout LAYOUT$pGeometries = (AddressLayout) LAYOUT.select(PATH$pGeometries);
+    public static final AddressLayout LAYOUT$ppGeometries = (AddressLayout) LAYOUT.select(PATH$ppGeometries);
+    public static final UnionLayout LAYOUT$scratchData = (UnionLayout) LAYOUT.select(PATH$scratchData);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$mode = LAYOUT.byteOffset(PATH$mode);
+    public static final long OFFSET$srcAccelerationStructure = LAYOUT.byteOffset(PATH$srcAccelerationStructure);
+    public static final long OFFSET$dstAccelerationStructure = LAYOUT.byteOffset(PATH$dstAccelerationStructure);
+    public static final long OFFSET$geometryCount = LAYOUT.byteOffset(PATH$geometryCount);
+    public static final long OFFSET$pGeometries = LAYOUT.byteOffset(PATH$pGeometries);
+    public static final long OFFSET$ppGeometries = LAYOUT.byteOffset(PATH$ppGeometries);
+    public static final long OFFSET$scratchData = LAYOUT.byteOffset(PATH$scratchData);
+
+    public VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public @enumtype(VkAccelerationStructureTypeKHR.class) int type() {
+        return segment.get(LAYOUT$type, OFFSET$type);
+    }
+
+    public void type(@enumtype(VkAccelerationStructureTypeKHR.class) int value) {
+        segment.set(LAYOUT$type, OFFSET$type, value);
+    }
+
+    public @enumtype(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @enumtype(VkBuildAccelerationStructureModeKHR.class) int mode() {
+        return segment.get(LAYOUT$mode, OFFSET$mode);
+    }
+
+    public void mode(@enumtype(VkBuildAccelerationStructureModeKHR.class) int value) {
+        segment.set(LAYOUT$mode, OFFSET$mode, value);
+    }
+
+    public VkAccelerationStructureKHR srcAccelerationStructure() {
+        return new VkAccelerationStructureKHR(segment.asSlice(OFFSET$srcAccelerationStructure, LAYOUT$srcAccelerationStructure));
+    }
+
+    public void srcAccelerationStructure(VkAccelerationStructureKHR value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcAccelerationStructure, LAYOUT$srcAccelerationStructure.byteSize());
+    }
+
+    public VkAccelerationStructureKHR dstAccelerationStructure() {
+        return new VkAccelerationStructureKHR(segment.asSlice(OFFSET$dstAccelerationStructure, LAYOUT$dstAccelerationStructure));
+    }
+
+    public void dstAccelerationStructure(VkAccelerationStructureKHR value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstAccelerationStructure, LAYOUT$dstAccelerationStructure.byteSize());
+    }
+
+    public @unsigned int geometryCount() {
+        return segment.get(LAYOUT$geometryCount, OFFSET$geometryCount);
+    }
+
+    public void geometryCount(@unsigned int value) {
+        segment.set(LAYOUT$geometryCount, OFFSET$geometryCount, value);
+    }
+
+    public @pointer(comment="VkAccelerationStructureGeometryKHR*") MemorySegment pGeometriesRaw() {
+        return segment.get(LAYOUT$pGeometries, OFFSET$pGeometries);
+    }
+
+    public void pGeometriesRaw(@pointer(comment="VkAccelerationStructureGeometryKHR*") MemorySegment value) {
+        segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
+    }
+    
+    public VkAccelerationStructureGeometryKHR pGeometries() {
+        MemorySegment s = pGeometriesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkAccelerationStructureGeometryKHR(s);
+    }
+
+    public void pGeometries(VkAccelerationStructureGeometryKHR value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pGeometriesRaw(s);
+    }
+
+    public @pointer(comment="void**") MemorySegment ppGeometries() {
+        return segment.get(LAYOUT$ppGeometries, OFFSET$ppGeometries);
+    }
+
+    public void ppGeometries(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$ppGeometries, OFFSET$ppGeometries, value);
+    }
+
+    public VkDeviceOrHostAddressKHR scratchData() {
+        return new VkDeviceOrHostAddressKHR(segment.asSlice(OFFSET$scratchData, LAYOUT$scratchData));
+    }
+
+    public void scratchData(VkDeviceOrHostAddressKHR value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$scratchData, LAYOUT$scratchData.byteSize());
+    }
+
+
+    public static final class VkAccelerationStructureBuildGeometryInfoKHRFactory implements IDataTypeFactory<VkAccelerationStructureBuildGeometryInfoKHR> {
+        @Override
+        public Class<VkAccelerationStructureBuildGeometryInfoKHR> clazz() {
+            return VkAccelerationStructureBuildGeometryInfoKHR.class;
+        } 
+
+        @Override
+        public MemoryLayout layout() {
+            return VkAccelerationStructureBuildGeometryInfoKHR.LAYOUT;
+        }
+
+        @Override
+        public VkAccelerationStructureBuildGeometryInfoKHR create(MemorySegment segment) {
+            return createUninit(segment);
+        }
+        
+        @Override
+        public VkAccelerationStructureBuildGeometryInfoKHR createUninit(MemorySegment segment) {
+            return new VkAccelerationStructureBuildGeometryInfoKHR(segment);
+        }
+    }
+
+    public static final VkAccelerationStructureBuildGeometryInfoKHRFactory FACTORY = new VkAccelerationStructureBuildGeometryInfoKHRFactory();
+}

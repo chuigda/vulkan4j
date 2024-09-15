@@ -1,0 +1,174 @@
+package tech.icey.vk4j.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotations.*;
+import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.IDataTypeFactory;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
+
+public record VkPhysicalDeviceAccelerationStructurePropertiesKHR(MemorySegment segment) {
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("maxGeometryCount"),
+        ValueLayout.JAVA_LONG.withName("maxInstanceCount"),
+        ValueLayout.JAVA_LONG.withName("maxPrimitiveCount"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorAccelerationStructures"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindAccelerationStructures"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetAccelerationStructures"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindAccelerationStructures"),
+        ValueLayout.JAVA_INT.withName("minAccelerationStructureScratchOffsetAlignment")
+    );
+
+    public static final PathElement PATH$sType = PathElement.groupElement(0);
+    public static final PathElement PATH$pNext = PathElement.groupElement(1);
+    public static final PathElement PATH$maxGeometryCount = PathElement.groupElement(2);
+    public static final PathElement PATH$maxInstanceCount = PathElement.groupElement(3);
+    public static final PathElement PATH$maxPrimitiveCount = PathElement.groupElement(4);
+    public static final PathElement PATH$maxPerStageDescriptorAccelerationStructures = PathElement.groupElement(5);
+    public static final PathElement PATH$maxPerStageDescriptorUpdateAfterBindAccelerationStructures = PathElement.groupElement(6);
+    public static final PathElement PATH$maxDescriptorSetAccelerationStructures = PathElement.groupElement(7);
+    public static final PathElement PATH$maxDescriptorSetUpdateAfterBindAccelerationStructures = PathElement.groupElement(8);
+    public static final PathElement PATH$minAccelerationStructureScratchOffsetAlignment = PathElement.groupElement(9);
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$maxGeometryCount = (OfLong) LAYOUT.select(PATH$maxGeometryCount);
+    public static final OfLong LAYOUT$maxInstanceCount = (OfLong) LAYOUT.select(PATH$maxInstanceCount);
+    public static final OfLong LAYOUT$maxPrimitiveCount = (OfLong) LAYOUT.select(PATH$maxPrimitiveCount);
+    public static final OfInt LAYOUT$maxPerStageDescriptorAccelerationStructures = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorAccelerationStructures);
+    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindAccelerationStructures = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorUpdateAfterBindAccelerationStructures);
+    public static final OfInt LAYOUT$maxDescriptorSetAccelerationStructures = (OfInt) LAYOUT.select(PATH$maxDescriptorSetAccelerationStructures);
+    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindAccelerationStructures = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindAccelerationStructures);
+    public static final OfInt LAYOUT$minAccelerationStructureScratchOffsetAlignment = (OfInt) LAYOUT.select(PATH$minAccelerationStructureScratchOffsetAlignment);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$maxGeometryCount = LAYOUT.byteOffset(PATH$maxGeometryCount);
+    public static final long OFFSET$maxInstanceCount = LAYOUT.byteOffset(PATH$maxInstanceCount);
+    public static final long OFFSET$maxPrimitiveCount = LAYOUT.byteOffset(PATH$maxPrimitiveCount);
+    public static final long OFFSET$maxPerStageDescriptorAccelerationStructures = LAYOUT.byteOffset(PATH$maxPerStageDescriptorAccelerationStructures);
+    public static final long OFFSET$maxPerStageDescriptorUpdateAfterBindAccelerationStructures = LAYOUT.byteOffset(PATH$maxPerStageDescriptorUpdateAfterBindAccelerationStructures);
+    public static final long OFFSET$maxDescriptorSetAccelerationStructures = LAYOUT.byteOffset(PATH$maxDescriptorSetAccelerationStructures);
+    public static final long OFFSET$maxDescriptorSetUpdateAfterBindAccelerationStructures = LAYOUT.byteOffset(PATH$maxDescriptorSetUpdateAfterBindAccelerationStructures);
+    public static final long OFFSET$minAccelerationStructureScratchOffsetAlignment = LAYOUT.byteOffset(PATH$minAccelerationStructureScratchOffsetAlignment);
+
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public @unsigned long maxGeometryCount() {
+        return segment.get(LAYOUT$maxGeometryCount, OFFSET$maxGeometryCount);
+    }
+
+    public void maxGeometryCount(@unsigned long value) {
+        segment.set(LAYOUT$maxGeometryCount, OFFSET$maxGeometryCount, value);
+    }
+
+    public @unsigned long maxInstanceCount() {
+        return segment.get(LAYOUT$maxInstanceCount, OFFSET$maxInstanceCount);
+    }
+
+    public void maxInstanceCount(@unsigned long value) {
+        segment.set(LAYOUT$maxInstanceCount, OFFSET$maxInstanceCount, value);
+    }
+
+    public @unsigned long maxPrimitiveCount() {
+        return segment.get(LAYOUT$maxPrimitiveCount, OFFSET$maxPrimitiveCount);
+    }
+
+    public void maxPrimitiveCount(@unsigned long value) {
+        segment.set(LAYOUT$maxPrimitiveCount, OFFSET$maxPrimitiveCount, value);
+    }
+
+    public @unsigned int maxPerStageDescriptorAccelerationStructures() {
+        return segment.get(LAYOUT$maxPerStageDescriptorAccelerationStructures, OFFSET$maxPerStageDescriptorAccelerationStructures);
+    }
+
+    public void maxPerStageDescriptorAccelerationStructures(@unsigned int value) {
+        segment.set(LAYOUT$maxPerStageDescriptorAccelerationStructures, OFFSET$maxPerStageDescriptorAccelerationStructures, value);
+    }
+
+    public @unsigned int maxPerStageDescriptorUpdateAfterBindAccelerationStructures() {
+        return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindAccelerationStructures, OFFSET$maxPerStageDescriptorUpdateAfterBindAccelerationStructures);
+    }
+
+    public void maxPerStageDescriptorUpdateAfterBindAccelerationStructures(@unsigned int value) {
+        segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindAccelerationStructures, OFFSET$maxPerStageDescriptorUpdateAfterBindAccelerationStructures, value);
+    }
+
+    public @unsigned int maxDescriptorSetAccelerationStructures() {
+        return segment.get(LAYOUT$maxDescriptorSetAccelerationStructures, OFFSET$maxDescriptorSetAccelerationStructures);
+    }
+
+    public void maxDescriptorSetAccelerationStructures(@unsigned int value) {
+        segment.set(LAYOUT$maxDescriptorSetAccelerationStructures, OFFSET$maxDescriptorSetAccelerationStructures, value);
+    }
+
+    public @unsigned int maxDescriptorSetUpdateAfterBindAccelerationStructures() {
+        return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindAccelerationStructures, OFFSET$maxDescriptorSetUpdateAfterBindAccelerationStructures);
+    }
+
+    public void maxDescriptorSetUpdateAfterBindAccelerationStructures(@unsigned int value) {
+        segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindAccelerationStructures, OFFSET$maxDescriptorSetUpdateAfterBindAccelerationStructures, value);
+    }
+
+    public @unsigned int minAccelerationStructureScratchOffsetAlignment() {
+        return segment.get(LAYOUT$minAccelerationStructureScratchOffsetAlignment, OFFSET$minAccelerationStructureScratchOffsetAlignment);
+    }
+
+    public void minAccelerationStructureScratchOffsetAlignment(@unsigned int value) {
+        segment.set(LAYOUT$minAccelerationStructureScratchOffsetAlignment, OFFSET$minAccelerationStructureScratchOffsetAlignment, value);
+    }
+
+
+    public static final class VkPhysicalDeviceAccelerationStructurePropertiesKHRFactory implements IDataTypeFactory<VkPhysicalDeviceAccelerationStructurePropertiesKHR> {
+        @Override
+        public Class<VkPhysicalDeviceAccelerationStructurePropertiesKHR> clazz() {
+            return VkPhysicalDeviceAccelerationStructurePropertiesKHR.class;
+        } 
+
+        @Override
+        public MemoryLayout layout() {
+            return VkPhysicalDeviceAccelerationStructurePropertiesKHR.LAYOUT;
+        }
+
+        @Override
+        public VkPhysicalDeviceAccelerationStructurePropertiesKHR create(MemorySegment segment) {
+            return createUninit(segment);
+        }
+        
+        @Override
+        public VkPhysicalDeviceAccelerationStructurePropertiesKHR createUninit(MemorySegment segment) {
+            return new VkPhysicalDeviceAccelerationStructurePropertiesKHR(segment);
+        }
+    }
+
+    public static final VkPhysicalDeviceAccelerationStructurePropertiesKHRFactory FACTORY = new VkPhysicalDeviceAccelerationStructurePropertiesKHRFactory();
+}

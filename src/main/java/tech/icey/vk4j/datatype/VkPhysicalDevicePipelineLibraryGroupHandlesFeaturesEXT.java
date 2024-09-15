@@ -1,0 +1,90 @@
+package tech.icey.vk4j.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotations.*;
+import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.IDataTypeFactory;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
+
+public record VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(MemorySegment segment) {
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("pipelineLibraryGroupHandles")
+    );
+
+    public static final PathElement PATH$sType = PathElement.groupElement(0);
+    public static final PathElement PATH$pNext = PathElement.groupElement(1);
+    public static final PathElement PATH$pipelineLibraryGroupHandles = PathElement.groupElement(2);
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$pipelineLibraryGroupHandles = (OfInt) LAYOUT.select(PATH$pipelineLibraryGroupHandles);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$pipelineLibraryGroupHandles = LAYOUT.byteOffset(PATH$pipelineLibraryGroupHandles);
+
+    public VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_LIBRARY_GROUP_HANDLES_FEATURES_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public @unsigned int pipelineLibraryGroupHandles() {
+        return segment.get(LAYOUT$pipelineLibraryGroupHandles, OFFSET$pipelineLibraryGroupHandles);
+    }
+
+    public void pipelineLibraryGroupHandles(@unsigned int value) {
+        segment.set(LAYOUT$pipelineLibraryGroupHandles, OFFSET$pipelineLibraryGroupHandles, value);
+    }
+
+
+    public static final class VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXTFactory implements IDataTypeFactory<VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT> {
+        @Override
+        public Class<VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT> clazz() {
+            return VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT.class;
+        } 
+
+        @Override
+        public MemoryLayout layout() {
+            return VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT.LAYOUT;
+        }
+
+        @Override
+        public VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT create(MemorySegment segment) {
+            return createUninit(segment);
+        }
+        
+        @Override
+        public VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT createUninit(MemorySegment segment) {
+            return new VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(segment);
+        }
+    }
+
+    public static final VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXTFactory FACTORY = new VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXTFactory();
+}

@@ -1,0 +1,90 @@
+package tech.icey.vk4j.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotations.*;
+import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.IDataTypeFactory;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
+
+public record VkSurfaceFullScreenExclusiveWin32InfoEXT(MemorySegment segment) {
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("hmonitor")
+    );
+
+    public static final PathElement PATH$sType = PathElement.groupElement(0);
+    public static final PathElement PATH$pNext = PathElement.groupElement(1);
+    public static final PathElement PATH$hmonitor = PathElement.groupElement(2);
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$hmonitor = (AddressLayout) LAYOUT.select(PATH$hmonitor);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$hmonitor = LAYOUT.byteOffset(PATH$hmonitor);
+
+    public VkSurfaceFullScreenExclusiveWin32InfoEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment hmonitor() {
+        return segment.get(LAYOUT$hmonitor, OFFSET$hmonitor);
+    }
+
+    public void hmonitor(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$hmonitor, OFFSET$hmonitor, value);
+    }
+
+
+    public static final class VkSurfaceFullScreenExclusiveWin32InfoEXTFactory implements IDataTypeFactory<VkSurfaceFullScreenExclusiveWin32InfoEXT> {
+        @Override
+        public Class<VkSurfaceFullScreenExclusiveWin32InfoEXT> clazz() {
+            return VkSurfaceFullScreenExclusiveWin32InfoEXT.class;
+        } 
+
+        @Override
+        public MemoryLayout layout() {
+            return VkSurfaceFullScreenExclusiveWin32InfoEXT.LAYOUT;
+        }
+
+        @Override
+        public VkSurfaceFullScreenExclusiveWin32InfoEXT create(MemorySegment segment) {
+            return createUninit(segment);
+        }
+        
+        @Override
+        public VkSurfaceFullScreenExclusiveWin32InfoEXT createUninit(MemorySegment segment) {
+            return new VkSurfaceFullScreenExclusiveWin32InfoEXT(segment);
+        }
+    }
+
+    public static final VkSurfaceFullScreenExclusiveWin32InfoEXTFactory FACTORY = new VkSurfaceFullScreenExclusiveWin32InfoEXTFactory();
+}

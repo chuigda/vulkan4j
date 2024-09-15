@@ -1,0 +1,222 @@
+package tech.icey.vk4j.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotations.*;
+import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.IDataTypeFactory;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
+
+public record VkPhysicalDeviceVulkan11Features(MemorySegment segment) {
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("storageBuffer16BitAccess"),
+        ValueLayout.JAVA_INT.withName("uniformAndStorageBuffer16BitAccess"),
+        ValueLayout.JAVA_INT.withName("storagePushConstant16"),
+        ValueLayout.JAVA_INT.withName("storageInputOutput16"),
+        ValueLayout.JAVA_INT.withName("multiview"),
+        ValueLayout.JAVA_INT.withName("multiviewGeometryShader"),
+        ValueLayout.JAVA_INT.withName("multiviewTessellationShader"),
+        ValueLayout.JAVA_INT.withName("variablePointersStorageBuffer"),
+        ValueLayout.JAVA_INT.withName("variablePointers"),
+        ValueLayout.JAVA_INT.withName("protectedMemory"),
+        ValueLayout.JAVA_INT.withName("samplerYcbcrConversion"),
+        ValueLayout.JAVA_INT.withName("shaderDrawParameters")
+    );
+
+    public static final PathElement PATH$sType = PathElement.groupElement(0);
+    public static final PathElement PATH$pNext = PathElement.groupElement(1);
+    public static final PathElement PATH$storageBuffer16BitAccess = PathElement.groupElement(2);
+    public static final PathElement PATH$uniformAndStorageBuffer16BitAccess = PathElement.groupElement(3);
+    public static final PathElement PATH$storagePushConstant16 = PathElement.groupElement(4);
+    public static final PathElement PATH$storageInputOutput16 = PathElement.groupElement(5);
+    public static final PathElement PATH$multiview = PathElement.groupElement(6);
+    public static final PathElement PATH$multiviewGeometryShader = PathElement.groupElement(7);
+    public static final PathElement PATH$multiviewTessellationShader = PathElement.groupElement(8);
+    public static final PathElement PATH$variablePointersStorageBuffer = PathElement.groupElement(9);
+    public static final PathElement PATH$variablePointers = PathElement.groupElement(10);
+    public static final PathElement PATH$protectedMemory = PathElement.groupElement(11);
+    public static final PathElement PATH$samplerYcbcrConversion = PathElement.groupElement(12);
+    public static final PathElement PATH$shaderDrawParameters = PathElement.groupElement(13);
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$storageBuffer16BitAccess = (OfInt) LAYOUT.select(PATH$storageBuffer16BitAccess);
+    public static final OfInt LAYOUT$uniformAndStorageBuffer16BitAccess = (OfInt) LAYOUT.select(PATH$uniformAndStorageBuffer16BitAccess);
+    public static final OfInt LAYOUT$storagePushConstant16 = (OfInt) LAYOUT.select(PATH$storagePushConstant16);
+    public static final OfInt LAYOUT$storageInputOutput16 = (OfInt) LAYOUT.select(PATH$storageInputOutput16);
+    public static final OfInt LAYOUT$multiview = (OfInt) LAYOUT.select(PATH$multiview);
+    public static final OfInt LAYOUT$multiviewGeometryShader = (OfInt) LAYOUT.select(PATH$multiviewGeometryShader);
+    public static final OfInt LAYOUT$multiviewTessellationShader = (OfInt) LAYOUT.select(PATH$multiviewTessellationShader);
+    public static final OfInt LAYOUT$variablePointersStorageBuffer = (OfInt) LAYOUT.select(PATH$variablePointersStorageBuffer);
+    public static final OfInt LAYOUT$variablePointers = (OfInt) LAYOUT.select(PATH$variablePointers);
+    public static final OfInt LAYOUT$protectedMemory = (OfInt) LAYOUT.select(PATH$protectedMemory);
+    public static final OfInt LAYOUT$samplerYcbcrConversion = (OfInt) LAYOUT.select(PATH$samplerYcbcrConversion);
+    public static final OfInt LAYOUT$shaderDrawParameters = (OfInt) LAYOUT.select(PATH$shaderDrawParameters);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$storageBuffer16BitAccess = LAYOUT.byteOffset(PATH$storageBuffer16BitAccess);
+    public static final long OFFSET$uniformAndStorageBuffer16BitAccess = LAYOUT.byteOffset(PATH$uniformAndStorageBuffer16BitAccess);
+    public static final long OFFSET$storagePushConstant16 = LAYOUT.byteOffset(PATH$storagePushConstant16);
+    public static final long OFFSET$storageInputOutput16 = LAYOUT.byteOffset(PATH$storageInputOutput16);
+    public static final long OFFSET$multiview = LAYOUT.byteOffset(PATH$multiview);
+    public static final long OFFSET$multiviewGeometryShader = LAYOUT.byteOffset(PATH$multiviewGeometryShader);
+    public static final long OFFSET$multiviewTessellationShader = LAYOUT.byteOffset(PATH$multiviewTessellationShader);
+    public static final long OFFSET$variablePointersStorageBuffer = LAYOUT.byteOffset(PATH$variablePointersStorageBuffer);
+    public static final long OFFSET$variablePointers = LAYOUT.byteOffset(PATH$variablePointers);
+    public static final long OFFSET$protectedMemory = LAYOUT.byteOffset(PATH$protectedMemory);
+    public static final long OFFSET$samplerYcbcrConversion = LAYOUT.byteOffset(PATH$samplerYcbcrConversion);
+    public static final long OFFSET$shaderDrawParameters = LAYOUT.byteOffset(PATH$shaderDrawParameters);
+
+    public VkPhysicalDeviceVulkan11Features(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_FEATURES);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public @unsigned int storageBuffer16BitAccess() {
+        return segment.get(LAYOUT$storageBuffer16BitAccess, OFFSET$storageBuffer16BitAccess);
+    }
+
+    public void storageBuffer16BitAccess(@unsigned int value) {
+        segment.set(LAYOUT$storageBuffer16BitAccess, OFFSET$storageBuffer16BitAccess, value);
+    }
+
+    public @unsigned int uniformAndStorageBuffer16BitAccess() {
+        return segment.get(LAYOUT$uniformAndStorageBuffer16BitAccess, OFFSET$uniformAndStorageBuffer16BitAccess);
+    }
+
+    public void uniformAndStorageBuffer16BitAccess(@unsigned int value) {
+        segment.set(LAYOUT$uniformAndStorageBuffer16BitAccess, OFFSET$uniformAndStorageBuffer16BitAccess, value);
+    }
+
+    public @unsigned int storagePushConstant16() {
+        return segment.get(LAYOUT$storagePushConstant16, OFFSET$storagePushConstant16);
+    }
+
+    public void storagePushConstant16(@unsigned int value) {
+        segment.set(LAYOUT$storagePushConstant16, OFFSET$storagePushConstant16, value);
+    }
+
+    public @unsigned int storageInputOutput16() {
+        return segment.get(LAYOUT$storageInputOutput16, OFFSET$storageInputOutput16);
+    }
+
+    public void storageInputOutput16(@unsigned int value) {
+        segment.set(LAYOUT$storageInputOutput16, OFFSET$storageInputOutput16, value);
+    }
+
+    public @unsigned int multiview() {
+        return segment.get(LAYOUT$multiview, OFFSET$multiview);
+    }
+
+    public void multiview(@unsigned int value) {
+        segment.set(LAYOUT$multiview, OFFSET$multiview, value);
+    }
+
+    public @unsigned int multiviewGeometryShader() {
+        return segment.get(LAYOUT$multiviewGeometryShader, OFFSET$multiviewGeometryShader);
+    }
+
+    public void multiviewGeometryShader(@unsigned int value) {
+        segment.set(LAYOUT$multiviewGeometryShader, OFFSET$multiviewGeometryShader, value);
+    }
+
+    public @unsigned int multiviewTessellationShader() {
+        return segment.get(LAYOUT$multiviewTessellationShader, OFFSET$multiviewTessellationShader);
+    }
+
+    public void multiviewTessellationShader(@unsigned int value) {
+        segment.set(LAYOUT$multiviewTessellationShader, OFFSET$multiviewTessellationShader, value);
+    }
+
+    public @unsigned int variablePointersStorageBuffer() {
+        return segment.get(LAYOUT$variablePointersStorageBuffer, OFFSET$variablePointersStorageBuffer);
+    }
+
+    public void variablePointersStorageBuffer(@unsigned int value) {
+        segment.set(LAYOUT$variablePointersStorageBuffer, OFFSET$variablePointersStorageBuffer, value);
+    }
+
+    public @unsigned int variablePointers() {
+        return segment.get(LAYOUT$variablePointers, OFFSET$variablePointers);
+    }
+
+    public void variablePointers(@unsigned int value) {
+        segment.set(LAYOUT$variablePointers, OFFSET$variablePointers, value);
+    }
+
+    public @unsigned int protectedMemory() {
+        return segment.get(LAYOUT$protectedMemory, OFFSET$protectedMemory);
+    }
+
+    public void protectedMemory(@unsigned int value) {
+        segment.set(LAYOUT$protectedMemory, OFFSET$protectedMemory, value);
+    }
+
+    public @unsigned int samplerYcbcrConversion() {
+        return segment.get(LAYOUT$samplerYcbcrConversion, OFFSET$samplerYcbcrConversion);
+    }
+
+    public void samplerYcbcrConversion(@unsigned int value) {
+        segment.set(LAYOUT$samplerYcbcrConversion, OFFSET$samplerYcbcrConversion, value);
+    }
+
+    public @unsigned int shaderDrawParameters() {
+        return segment.get(LAYOUT$shaderDrawParameters, OFFSET$shaderDrawParameters);
+    }
+
+    public void shaderDrawParameters(@unsigned int value) {
+        segment.set(LAYOUT$shaderDrawParameters, OFFSET$shaderDrawParameters, value);
+    }
+
+
+    public static final class VkPhysicalDeviceVulkan11FeaturesFactory implements IDataTypeFactory<VkPhysicalDeviceVulkan11Features> {
+        @Override
+        public Class<VkPhysicalDeviceVulkan11Features> clazz() {
+            return VkPhysicalDeviceVulkan11Features.class;
+        } 
+
+        @Override
+        public MemoryLayout layout() {
+            return VkPhysicalDeviceVulkan11Features.LAYOUT;
+        }
+
+        @Override
+        public VkPhysicalDeviceVulkan11Features create(MemorySegment segment) {
+            return createUninit(segment);
+        }
+        
+        @Override
+        public VkPhysicalDeviceVulkan11Features createUninit(MemorySegment segment) {
+            return new VkPhysicalDeviceVulkan11Features(segment);
+        }
+    }
+
+    public static final VkPhysicalDeviceVulkan11FeaturesFactory FACTORY = new VkPhysicalDeviceVulkan11FeaturesFactory();
+}
