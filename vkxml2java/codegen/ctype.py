@@ -326,14 +326,14 @@ class CVoidType(CType):
         return 'void'
 
 
-CTYPE_INT8: CType = CFixedIntType('int8_t', 1, False)
-CTYPE_INT16: CType = CFixedIntType('int16_t', 2, False)
-CTYPE_INT32: CType = CFixedIntType('int32_t', 4, False)
-CTYPE_INT64: CType = CFixedIntType('int64_t', 8, False)
-CTYPE_UINT8: CType = CFixedIntType('uint8_t', 1, True)
-CTYPE_UINT16: CType = CFixedIntType('uint16_t', 2, True)
-CTYPE_UINT32: CType = CFixedIntType('uint32_t', 4, True)
-CTYPE_UINT64: CType = CFixedIntType('uint64_t', 8, True)
+CTYPE_INT8: CFixedIntType = CFixedIntType('int8_t', 1, False)
+CTYPE_INT16: CFixedIntType = CFixedIntType('int16_t', 2, False)
+CTYPE_INT32: CFixedIntType = CFixedIntType('int32_t', 4, False)
+CTYPE_INT64: CFixedIntType = CFixedIntType('int64_t', 8, False)
+CTYPE_UINT8: CFixedIntType = CFixedIntType('uint8_t', 1, True)
+CTYPE_UINT16: CFixedIntType = CFixedIntType('uint16_t', 2, True)
+CTYPE_UINT32: CFixedIntType = CFixedIntType('uint32_t', 4, True)
+CTYPE_UINT64: CFixedIntType = CFixedIntType('uint64_t', 8, True)
 CTYPE_FLOAT: CType = CFloatType(4)
 CTYPE_DOUBLE: CType = CFloatType(8)
 
