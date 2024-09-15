@@ -14,6 +14,8 @@ def generate_pointer_accessor(type_: CPointerType, member: Member) -> str:
         return generate_p_enum_type_accessor(pointee_type, member)
     elif isinstance(pointee_type, CStructType) or isinstance(pointee_type, CUnionType) or isinstance(pointee_type, CHandleType):
         return generate_p_ref_type_accessor(pointee_type, member)
+    else:
+        raise ValueError(f'Unsupported pointee type: {pointee_type}')
 
 
 def generate_pvoid_accessor(member: Member) -> str:

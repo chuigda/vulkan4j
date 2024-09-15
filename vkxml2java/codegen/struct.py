@@ -1,6 +1,7 @@
 from ..entity import Structure, Member, Registry
 from .datatype.common_accessor import *
 from .datatype.ptr_accessor import generate_pointer_accessor
+from .datatype.array_accessor import generate_array_accessor
 
 def generate_struct(registry: Registry, struct: Structure) -> str:
     member_types_lowered: list[CType | None] = []
@@ -185,30 +186,9 @@ def generate_struct_member_accessor(members: list[Member], member_types_lowered:
             elif isinstance(ctype, CPointerType):
                 ret += generate_pointer_accessor(ctype, current)
             elif isinstance(ctype, CArrayType):
-                if not isinstance(ctype.element, CFixedIntType) and not isinstance(ctype.element, CFloatType) and not isinstance(ctype.element, CEnumType):
-                    # TODO: consider correctly supporting these things
-                    print(f'Only fixed-size arrays of fixed-size primitive types are supported, provided {ctype.element} {current.name}')
-                    i += 1
-                    continue
-
-                ret += f'''    public {ctype.java_type()} {current.name}() {{
-        return segment.asSlice(OFFSET${current.name}, LAYOUT${current.name}).toArray({ctype.element.java_layout()});
-    }}
-
-    public void {current.name}({ctype.java_type()} value) {{
-        MemorySegment.copy(MemorySegment.ofArray(value), 0, segment, OFFSET${current.name}, LAYOUT${current.name}.byteSize());
-    }}
-
-    public {ctype.element.java_type()} {current.name}At(int index) {{
-        return segment.get({ctype.element.java_layout()}, OFFSET${current.name} + index * {ctype.element.java_layout()}.byteSize());
-    }}
-
-    public void {current.name}At(int index, {ctype.element.java_type()} value) {{
-        segment.set({ctype.element.java_layout()}, OFFSET${current.name} + index * {ctype.element.java_layout()}.byteSize(), value);
-    }}\n\n'''
+                ret += generate_array_accessor(ctype, current)
             else:
-                print(f'Unsupported member type {ctype} {current.name}')
-
+                raise ValueError(f'Unsupported type: {ctype}')
             i += 1
 
     return ret
