@@ -75,7 +75,7 @@ def generate_p_enum_type_accessor(pointee_type: CEnumType, member: Member) -> st
     }}
     
     public {int_type.vk4j_ptr_type()} {member.name}() {{
-        return new {int_type.vk4j_ptr_type()}({member.name}Raw());
+        return new {int_type.vk4j_ptr_type_no_sign()}({member.name}Raw());
     }}
     
     public void {member.name}({int_type.vk4j_ptr_type()} value) {{

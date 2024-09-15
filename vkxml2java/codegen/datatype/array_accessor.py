@@ -67,10 +67,21 @@ def generate_array_ref_type_accessor(element_type: CStructType | CUnionType | CH
 
 
 def generate_array_enum_type_accessor(element_type: CEnumType, member: Member) -> str:
-    return f'''    public {element_type.java_type()} {member.name}(int index) {{
-        return {element_type.java_type()}.fromInt(segment.get(LAYOUT${member.name}, OFFSET${member.name} + index * LAYOUT${member.name}.elementSize()));
+    if element_type.bitwidth is None or element_type.bitwidth == 32:
+        new_elem_type = CTYPE_INT32
+    elif element_type.bitwidth == 64:
+        new_elem_type = CTYPE_INT64
+    else:
+        raise ValueError(f'Unsupported bitwidth for enum type: {element_type.bitwidth}')
+
+    return f'''    public MemorySegment {member.name}Raw() {{
+        return segment.asSlice(OFFSET${member.name}, LAYOUT${member.name}.byteSize());
     }}
     
-    public void {member.name}(int index, {element_type.java_type()} value) {{
-        segment.set(LAYOUT${member.name}, OFFSET${member.name} + index * LAYOUT${member.name}.elementSize(), value.value());
+    public {new_elem_type.vk4j_array_type()} {member.name}() {{
+        return new {new_elem_type.vk4j_array_type_nosign()}({member.name}Raw(), LAYOUT${member.name}.elementCount());
+    }}
+    
+    public void {member.name}({new_elem_type.vk4j_array_type()} value) {{
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET${member.name}, LAYOUT${member.name}.byteSize());
     }}\n\n'''

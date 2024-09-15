@@ -7,6 +7,8 @@ TECH_ICEY_VK4J_ENUMTYPE = 'import tech.icey.vk4j.enumtype.*;'
 TECH_ICEY_VK4J_DATATYPE = 'import tech.icey.vk4j.datatype.*;'
 TECH_ICEY_VK4J_HANDLE = 'import tech.icey.vk4j.handle.*;'
 TECH_ICEY_VK4J_STRUCTURE_TYPE = 'import tech.icey.vk4j.enumtype.StructureType;'
+TECH_ICEY_VK4J_ARRAY = 'import tech.icey.vk4j.array.*;'
+TECH_ICEY_VK4J_PTR = 'import tech.icey.vk4j.ptr.*;'
 
 # static imports
 JAVA_LANG_FOREIGN_VALUE_LAYOUT = 'import static java.lang.foreign.ValueLayout.*;'

@@ -9,7 +9,9 @@ def generate_struct(registry: Registry, struct: Structure) -> str:
         JAVA_LANG_FOREIGN,
         JAVA_LANG_FOREIGN_VALUE_LAYOUT,
         TECH_ICEY_VK4J_CONSTANTS,
-        TECH_ICEY_VK4J_NATIVE_LAYOUT
+        TECH_ICEY_VK4J_NATIVE_LAYOUT,
+        TECH_ICEY_VK4J_ANNOTATIONS,
+        'import tech.icey.vk4j.IDataTypeFactory;'
     }
 
     struct_layout = generate_struct_layout(
@@ -179,9 +181,7 @@ def generate_struct_member_accessor(members: list[Member], member_types_lowered:
                 ret += generate_platform_dependent_int_accessor(current)
             elif isinstance(ctype, CStructType) or isinstance(ctype, CUnionType) or isinstance(ctype, CHandleType):
                 ret += generate_ref_type_accessor(ctype, current)
-            elif isinstance(ctype, CFixedIntType):
-                ret += generate_fixed_type_accessor(ctype, current)
-            elif isinstance(ctype, CFloatType):
+            elif isinstance(ctype, CFixedIntType) or isinstance(ctype, CFloatType):
                 ret += generate_fixed_type_accessor(ctype, current)
             elif isinstance(ctype, CEnumType):
                 ret += generate_enum_accessor(ctype, current)
@@ -197,7 +197,7 @@ def generate_struct_member_accessor(members: list[Member], member_types_lowered:
 
 
 def generate_struct_factory(struct: Structure) -> str:
-    return f'''    public static final class {struct.name}Factory implements IStructFactory<{struct.name}> {{
+    return f'''    public static final class {struct.name}Factory implements IDataTypeFactory<{struct.name}> {{
         @Override
         public Class<{struct.name}> clazz() {{
             return {struct.name}.class;
@@ -210,6 +210,11 @@ def generate_struct_factory(struct: Structure) -> str:
 
         @Override
         public {struct.name} create(MemorySegment segment) {{
+            return createUninit(segment);
+        }}
+        
+        @Override
+        public {struct.name} createUninit(MemorySegment segment) {{
             return new {struct.name}(segment);
         }}
     }}

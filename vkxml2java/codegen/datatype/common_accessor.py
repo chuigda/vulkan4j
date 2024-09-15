@@ -25,6 +25,7 @@ def generate_bitfield_accessor(current: Member, next_: Member) -> str:
 
 
 def generate_platform_dependent_int_accessor(member: Member) -> str:
+    # TODO: fuck
     return f'''    public long {member.name}() {{
         return NativeLayout.readCLong(segment, OFFSET${member.name});
     }}
@@ -56,9 +57,9 @@ def generate_fixed_type_accessor(type_: CFixedIntType | CFloatType, member: Memb
 
 def generate_enum_accessor(type_: CEnumType, member: Member) -> str:
     return f'''    public {type_.java_type()} {member.name}() {{
-        return {type_.java_type()}.fromInt(segment.get(LAYOUT${member.name}, OFFSET${member.name}));
+        return segment.get(LAYOUT${member.name}, OFFSET${member.name});
     }}
 
     public void {member.name}({type_.java_type()} value) {{
-        segment.set(LAYOUT${member.name}, OFFSET${member.name}, value.value());
+        segment.set(LAYOUT${member.name}, OFFSET${member.name}, value);
     }}\n\n'''

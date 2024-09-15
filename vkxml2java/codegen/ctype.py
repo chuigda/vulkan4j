@@ -120,7 +120,13 @@ class CNonRefType(CType):
     def vk4j_array_type(self) -> str:
         raise NotImplementedError()
 
+    def vk4j_array_type_no_sign(self) -> str:
+        raise NotImplementedError()
+
     def vk4j_ptr_type(self) -> str:
+        raise NotImplementedError()
+
+    def vk4j_ptr_type_no_sign(self) -> str:
         raise NotImplementedError()
 
 
@@ -172,27 +178,35 @@ class CFixedIntType(CNonRefType):
 
     def vk4j_array_type(self) -> str:
         unsigned_prefix = '@unsigned ' if self.unsigned else ''
+        return f'{unsigned_prefix}{self.vk4j_array_type_nosign()}'
+
+    def vk4j_array_type_nosign(self) -> str:
         if self.c_name == 'char' or self.byte_size == 1:
-            return f'{unsigned_prefix}ByteArray'
+            return 'ByteArray'
         elif self.byte_size == 2:
-            return f'{unsigned_prefix}DoubleArray'
+            return 'DoubleArray'
         elif self.byte_size == 4:
-            return f'{unsigned_prefix}IntArray'
+            return 'IntArray'
         elif self.byte_size == 8:
-            return f'{unsigned_prefix}LongArray'
+            return 'LongArray'
         else:
             raise Exception(f'unsupported byte size: {self.byte_size}')
 
     def vk4j_ptr_type(self) -> str:
         unsigned_prefix = '@unsigned ' if self.unsigned else ''
+        return f'{unsigned_prefix}{self.vk4j_ptr_type_no_sign()}'
+
+    def vk4j_ptr_type_no_sign(self) -> str:
         if self.c_name == 'char' or self.byte_size == 1:
-            return f'{unsigned_prefix}BytePtr'
+            return f'BytePtr'
         elif self.byte_size == 2:
-            return f'{unsigned_prefix}ShortPtr'
+            return f'ShortPtr'
         elif self.byte_size == 4:
-            return f'{unsigned_prefix}IntPtr'
+            return f'IntPtr'
         elif self.byte_size == 8:
-            return f'{unsigned_prefix}LongPtr'
+            return f'LongPtr'
+        else:
+            raise Exception(f'unsupported byte size: {self.byte_size}')
 
 
 @dataclass
@@ -218,7 +232,13 @@ class CPlatformDependentIntType(CNonRefType):
     def vk4j_array_type(self) -> str:
         return self.array_name
 
+    def vk4j_array_type_no_sign(self) -> str:
+        return self.array_name
+
     def vk4j_ptr_type(self) -> str:
+        return self.ptr_name
+
+    def vk4j_ptr_type_no_sign(self) -> str:
         return self.ptr_name
 
 
@@ -256,7 +276,13 @@ class CFloatType(CNonRefType):
     def vk4j_array_type(self) -> str:
         return 'FloatArray' if self.byte_size == 4 else 'DoubleArray'
 
+    def vk4j_array_type_no_sign(self) -> str:
+        return 'FloatArray' if self.byte_size == 4 else 'DoubleArray'
+
     def vk4j_ptr_type(self) -> str:
+        return 'FloatPtr' if self.byte_size == 4 else 'DoublePtr'
+
+    def vk4j_ptr_type_no_sign(self) -> str:
         return 'FloatPtr' if self.byte_size == 4 else 'DoublePtr'
 
 
@@ -438,9 +464,15 @@ def lower_type(registry: Registry, type_: Type, dependencies: set[str]) -> CType
             if type_.length not in registry.constants:
                 raise Exception(f'array typed referred to an unknown constant: {type_.length.value}')
             dependencies.add(TECH_ICEY_VK4J_CONSTANTS)
-        return CArrayType(lower_type(registry, type_.element, dependencies), type_.length.value)
+        element_type = lower_type(registry, type_.element, dependencies)
+        if isinstance(element_type, CNonRefType) or isinstance(element_type, CEnumType):
+            dependencies.add(TECH_ICEY_VK4J_ARRAY)
+        return CArrayType(element_type, type_.length.value)
     elif isinstance(type_, PointerType):
-        return CPointerType(lower_type(registry, type_.pointee, dependencies), type_.const)
+        pointee = lower_type(registry, type_.pointee, dependencies)
+        if isinstance(pointee, CNonRefType) or isinstance(pointee, CEnumType):
+            dependencies.add(TECH_ICEY_VK4J_PTR)
+        return CPointerType(pointee, type_.const)
 
 
 def lower_identifier_type(
