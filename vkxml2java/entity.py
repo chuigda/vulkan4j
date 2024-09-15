@@ -2,33 +2,28 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Callable
 
-from .ident import Identifier
 from .vktype import Type, IdentifierType
 
 
 @dataclass
 class Registry:
-    bitmasks: dict[Identifier, Bitmask] = field(default_factory=dict)
-    constants: dict[Identifier, Constant] = field(default_factory=dict)
-    commands: dict[Identifier, Command] = field(default_factory=dict)
-    command_aliases: dict[Identifier, Identifier] = field(default_factory=dict)
-    enums: dict[Identifier, Enum] = field(default_factory=dict)
-    extensions: dict[Identifier, Extension] = field(default_factory=dict)
-    functions: dict[Identifier, Function] = field(default_factory=dict)
-    handles: dict[Identifier, Handle] = field(default_factory=dict)
-    structs: dict[Identifier, Structure] = field(default_factory=dict)
-    unions: dict[Identifier, Structure] = field(default_factory=dict)
-    versions: dict[Identifier, Version] = field(default_factory=dict)
+    bitmasks: dict[str, Bitmask] = field(default_factory=dict)
+    constants: dict[str, Constant] = field(default_factory=dict)
+    commands: dict[str, Command] = field(default_factory=dict)
+    command_aliases: dict[str, str] = field(default_factory=dict)
+    enums: dict[str, Enum] = field(default_factory=dict)
+    extensions: dict[str, Extension] = field(default_factory=dict)
+    functions: dict[str, Function] = field(default_factory=dict)
+    handles: dict[str, Handle] = field(default_factory=dict)
+    structs: dict[str, Structure] = field(default_factory=dict)
+    unions: dict[str, Structure] = field(default_factory=dict)
+    versions: dict[str, Version] = field(default_factory=dict)
 
 
 @dataclass
 class Entity:
-    name: Identifier
+    name: str
     api: str | None
-
-    def rename(self, transform: Callable[[str], str]):
-        if self.name.renamed is None:
-            self.name.renamed = transform(self.name.value)
 
     def is_vulkan_api(self) -> bool:
         return 'vulkan' in self.api.split(',') if self.api is not None else True
@@ -44,7 +39,7 @@ class Entity:
 class Bitmask(Entity):
     bitflags: list[Bitflag]
     bitwidth: int | None
-    require_flagbits: Identifier | None
+    require_flagbits: str | None
 
 @dataclass
 class Bitflag(Entity):
@@ -67,13 +62,13 @@ class Constant(Entity):
 class Command(Entity):
     params: list[Param]
     result: Type
-    successcodes: list[Identifier]
-    errorcodes: list[Identifier]
+    successcodes: list[str]
+    errorcodes: list[str]
 
     def copy(self) -> Command:
         return Command(self.name, self.api, self.params, self.result, self.successcodes, self.errorcodes)
 
-    def copy_rename(self, new_name: Identifier) -> Command:
+    def copy_rename(self, new_name: str) -> Command:
         ret = self.copy()
         ret.name = new_name
         return ret
@@ -81,14 +76,14 @@ class Command(Entity):
 
 @dataclass
 class CommandAlias(Entity):
-    alias: Identifier
+    alias: str
 
 
 @dataclass
 class Param(Entity):
     type: Type
-    len: Identifier | None
-    arglen: list[Identifier] | None
+    len: str | None
+    arglen: list[str] | None
     optional: bool
 
 
@@ -139,7 +134,7 @@ class Handle(Entity):
 @dataclass
 class Structure(Entity):
     members: list[Member]
-    structextends: list[Identifier]
+    structextends: list[str]
 
     has_init_: bool | None = None
     is_union: bool = False
@@ -151,8 +146,8 @@ class Structure(Entity):
                     self.has_init_ = True
                     break
                 if isinstance(member.type, IdentifierType):
-                    if member.type.identifier in registry.structs:
-                        struct = registry.structs[member.type.identifier]
+                    if member.type.str in registry.structs:
+                        struct = registry.structs[member.type.str]
                         if struct.has_init(registry):
                             self.has_init_ = True
                             break
@@ -164,8 +159,8 @@ class Structure(Entity):
 @dataclass
 class Member(Entity):
     type: Type
-    values: Identifier | None
-    len: list[Identifier] | None
+    values: str | None
+    len: list[str] | None
     altlen: str
     optional: bool
     bits: int | None
@@ -179,14 +174,14 @@ class Version(Entity):
 
 @dataclass
 class Require:
-    commands: set[Identifier]
+    commands: set[str]
     types: set[str]
     values: list[RequireValue]
 
 
 @dataclass
 class RequireValue(Entity):
-    extends: Identifier
+    extends: str
     value: int | None
     bitpos: int | None
     extnumber: int | None

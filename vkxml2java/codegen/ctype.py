@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 
 from ..entity import Registry
-from ..ident import Identifier
 from ..vktype import Type, IdentifierType, ArrayType, PointerType
 
 
@@ -49,10 +48,10 @@ class CPointerType(CType):
 
 @dataclass
 class CHandleType(CType):
-    name: Identifier
+    name: str
 
     def java_type(self) -> str:
-        return self.name.value
+        return self.name
 
     def java_layout(self) -> str:
         return 'ValueLayout.ADDRESS'
@@ -461,7 +460,7 @@ KNOWN_TYPES: dict[str, CType] = {
 
 def lower_type(registry: Registry, type_: Type) -> CType:
     if isinstance(type_, IdentifierType):
-        return lower_identifier_type(registry, type_)
+        return lower_str_type(registry, type_)
     elif isinstance(type_, ArrayType):
         if not type_.length.value.isnumeric():
             if type_.length not in registry.constants:
@@ -473,8 +472,8 @@ def lower_type(registry: Registry, type_: Type) -> CType:
         return CPointerType(pointee, type_.const)
 
 
-def lower_identifier_type(registry: Registry, ident_type: IdentifierType) -> CType:
-    ident = ident_type.identifier
+def lower_str_type(registry: Registry, ident_type: IdentifierType) -> CType:
+    ident = ident_type.str
     ident_value = ident.value
 
     if ident_value in KNOWN_TYPES:

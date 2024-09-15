@@ -1,5 +1,4 @@
 from .entity import Registry, Entity, RequireValue, Bitmask, Bitflag, Enum, Variant
-from .ident import Identifier
 
 
 def extend_registry(registry: Registry):
@@ -15,7 +14,7 @@ def extend_registry(registry: Registry):
             extend_bitmask(ext, registry.bitmasks, added)
 
 
-def extend_bitmask(ext: RequireValue, bitmasks: dict[Identifier, Bitmask], added: set[Entity]):
+def extend_bitmask(ext: RequireValue, bitmasks: dict[str, Bitmask], added: set[Entity]):
     bitmask = bitmasks.get(ext.extends)
     bitpos = ext.bitpos
 
@@ -27,7 +26,7 @@ def extend_bitmask(ext: RequireValue, bitmasks: dict[Identifier, Bitmask], added
             bitmask.bitflags.append(bitflag)
 
 
-def extend_enum(ext: RequireValue, enums: dict[Identifier, Enum], added: set[Entity], extnumber: int | None):
+def extend_enum(ext: RequireValue, enums: dict[str, Enum], added: set[Entity], extnumber: int | None):
     enum = enums.get(ext.extends)
     value = get_variant_value(ext, extnumber)
     if enum is not None and value is not None:

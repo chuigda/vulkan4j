@@ -1,8 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass
 
-from .ident import Identifier
-
 
 @dataclass
 class Type:
@@ -11,13 +9,13 @@ class Type:
 
 @dataclass
 class IdentifierType(Type):
-    identifier: Identifier
+    str: str
 
 
 @dataclass
 class ArrayType(Type):
     element: Type
-    length: Identifier
+    length: str
 
 
 @dataclass

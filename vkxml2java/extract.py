@@ -2,7 +2,6 @@ import re
 from typing import Pattern
 from xml.dom.minidom import Element, Node, Document
 
-from .ident import *
 from .entity import *
 from .vktype import *
 
@@ -11,7 +10,7 @@ def extract_registry(tree: Document) -> Registry:
     type_nodes = tree.getElementsByTagName('types')[0].getElementsByTagName('type')
     enums_nodes = tree.getElementsByTagName('enums')
 
-    bitmasks: dict[Identifier, Bitmask] = {}
+    bitmasks: dict[str, Bitmask] = {}
     for bitmask_node in enums_nodes:
         if bitmask_node.hasAttribute('type') and bitmask_node.getAttribute('type') == 'bitmask':
             bitmask = extract_bitmask(bitmask_node)
@@ -26,7 +25,7 @@ def extract_registry(tree: Document) -> Registry:
                 bitmasks[bitmask.name] = bitmask
 
     command_nodes = tree.getElementsByTagName('commands')[0].getElementsByTagName('command')
-    commands: dict[Identifier, Command] = {}
+    commands: dict[str, Command] = {}
     for command_node in command_nodes:
         if command_node.hasAttribute('alias'):
             continue
@@ -37,7 +36,7 @@ def extract_registry(tree: Document) -> Registry:
         command = extract_command(command_node)
         commands[command.name] = command
 
-    command_aliases: dict[Identifier, Identifier] = {}
+    command_aliases: dict[str, str] = {}
     for command_node in command_nodes:
         if command_node.hasAttribute('alias'):
             command_alias = extract_command_alias(command_node)
@@ -46,7 +45,7 @@ def extract_registry(tree: Document) -> Registry:
 
             command_aliases[command_alias.name] = command_alias.alias
 
-    constants: dict[Identifier, Constant] = {}
+    constants: dict[str, Constant] = {}
     for enums_node in enums_nodes:
         if 'name' in enums_node.attributes and enums_node.getAttribute('name') == 'API Constants':
             for constant_node in enums_node.getElementsByTagName('enum'):
@@ -56,18 +55,18 @@ def extract_registry(tree: Document) -> Registry:
                 constant = extract_constant(constant_node)
                 constants[constant.name] = constant
 
-    enums: dict[Identifier, Enum] = {}
+    enums: dict[str, Enum] = {}
     for enums_node in enums_nodes:
         if 'type' in enums_node.attributes and enums_node.getAttribute('type') == 'enum':
             enum = extract_enum(enums_node)
             enums[enum.name] = enum
 
-    extensions: dict[Identifier, Extension] = {}
+    extensions: dict[str, Extension] = {}
     for extension_node in tree.getElementsByTagName('extensions')[0].getElementsByTagName('extension'):
         extension = extract_extension(extension_node)
         extensions[extension.name] = extension
 
-    functions: dict[Identifier, Function] = {}
+    functions: dict[str, Function] = {}
     for function_node in type_nodes:
         if ('category' in function_node.attributes
                 and function_node.getAttribute('category') == 'funcpointer'
@@ -75,7 +74,7 @@ def extract_registry(tree: Document) -> Registry:
             function = extract_function(function_node)
             functions[function.name] = function
 
-    handles: dict[Identifier, Handle] = {}
+    handles: dict[str, Handle] = {}
     for handle_node in type_nodes:
         if ('category' in handle_node.attributes
                 and handle_node.getAttribute('category') == 'handle'
@@ -83,8 +82,8 @@ def extract_registry(tree: Document) -> Registry:
             handle = extract_handle(handle_node)
             handles[handle.name] = handle
 
-    structs: dict[Identifier, Structure] = {}
-    unions: dict[Identifier, Structure] = {}
+    structs: dict[str, Structure] = {}
+    unions: dict[str, Structure] = {}
 
     for structure_node in type_nodes:
         if 'alias' in structure_node.attributes:
@@ -101,7 +100,7 @@ def extract_registry(tree: Document) -> Registry:
             structure.is_union = True
             unions[structure.name] = structure
 
-    versions: dict[Identifier, Version] = {}
+    versions: dict[str, Version] = {}
     for version_node in tree.getElementsByTagName('feature'):
         if 'api' in version_node.attributes:
             version = extract_version(version_node)
@@ -123,7 +122,7 @@ def extract_registry(tree: Document) -> Registry:
 
 
 def extract_bitmask(e: Element) -> Bitmask:
-    name = ident(get_attr(e, 'name'))
+    name = get_attr(e, 'name')
     api = None
     bitflags = list(map(extract_bitflag, filter(lambda it: 'alias' not in it.attributes, e.getElementsByTagName('enum'))))
     bitwidth_str = get_attr(e, 'bitwidth')
@@ -133,14 +132,14 @@ def extract_bitmask(e: Element) -> Bitmask:
 
 
 def extract_bitmask_type(e: Element) -> Bitmask:
-    name = ident(get_element_text(find(e, 'name')))
+    name = get_element_text(find(e, 'name'))
     api = get_attr(e, 'api')
 
     # TODO: XML attribute "requires" and "bitvalues" seems to be used interchangeably, but we want to double check on this
     if 'requires' in e.attributes:
-        require_flagbits = ident(e.getAttribute('requires'))
+        require_flagbits = e.getAttribute('requires')
     elif 'bitvalues' in e.attributes:
-        require_flagbits = ident(e.getAttribute('bitvalues'))
+        require_flagbits = e.getAttribute('bitvalues')
     else:
         require_flagbits = None
 
@@ -148,7 +147,7 @@ def extract_bitmask_type(e: Element) -> Bitmask:
 
 
 def extract_bitflag(e: Element) -> Bitflag:
-    name = ident(get_attr(e, 'name'))
+    name = get_attr(e, 'name')
     api = None
     if e.hasAttribute('bitpos'):
         bitpos = int(e.getAttribute('bitpos'), 0)
@@ -162,18 +161,18 @@ def extract_bitflag(e: Element) -> Bitflag:
 def extract_command(e: Element) -> Command:
     proto = find(e, 'proto')
 
-    name = ident(get_element_text(find(proto, 'name')))
+    name = get_element_text(find(proto, 'name'))
     api = get_attr(e, 'api')
     params = list(filter(lambda x: x is not None, map(extract_param, findall(e, 'param'))))
     result = extract_type(find(proto, 'type'))
 
     if e.hasAttribute('successcodes'):
-        successcodes = list(map(ident, get_attr(e, 'successcodes').split(',')))
+        successcodes = list(get_attr(e, 'successcodes').split(','))
     else:
         successcodes = []
 
     if e.hasAttribute('errorcodes'):
-        errorcodes = list(map(ident, get_attr(e, 'errorcodes').split(',')))
+        errorcodes = list(get_attr(e, 'errorcodes').split(','))
     else:
         errorcodes = []
 
@@ -184,13 +183,13 @@ def extract_param(e: Element) -> Param | None:
     if e.parentNode.tagName == 'implicitexternsyncparams':
         return None
 
-    name = ident(get_element_text(find(e, 'name')))
+    name = get_element_text(find(e, 'name'))
     api = get_attr(e, 'api')
     type_ = extract_type(find(e, 'type'))
 
     if e.hasAttribute('len'):
-        len_ = ident(e.getAttribute('len'))
-        arglen = list(map(ident, e.getAttribute('len').split('->')))
+        len_ = e.getAttribute('len')
+        arglen = list(e.getAttribute('len').split('->'))
     else:
         len_ = None
         arglen = None
@@ -201,8 +200,8 @@ def extract_param(e: Element) -> Param | None:
 
 
 def extract_command_alias(e: Element) -> CommandAlias:
-    name = ident(get_attr(e, 'name'))
-    alias = ident(get_attr(e, 'alias'))
+    name = get_attr(e, 'name')
+    alias = get_attr(e, 'alias')
 
     return CommandAlias(name=name, api=None, alias=alias)
 
@@ -224,14 +223,14 @@ def extract_constant(e: Element) -> Constant:
     else:
         type_str = 'int32_t'
 
-    name = ident(name_str)
+    name = name_str
     api = get_attr(e, 'api')
 
-    return Constant(name, api, IdentifierType(ident(type_str)), value_str)
+    return Constant(name, api, IdentifierType(type_str), value_str)
 
 
 def extract_enum(e: Element) -> Enum:
-    name = ident(get_attr(e, 'name'))
+    name = get_attr(e, 'name')
     api = get_attr(e, 'api')
     variants = list(
         map(
@@ -244,7 +243,7 @@ def extract_enum(e: Element) -> Enum:
 
 
 def extract_variant(e: Element) -> Variant:
-    name = ident(get_attr(e, 'name'))
+    name = get_attr(e, 'name')
     api = get_attr(e, 'api')
     value = int(get_attr(e, 'value'), 0)
 
@@ -267,7 +266,7 @@ def extract_type(e: Element) -> Type:
         else:
             return [part]
 
-    identifier = ident(get_element_text(e))
+    identifier = get_element_text(e)
 
     parent: Element | None = e.parentNode
     if parent is not None:
@@ -283,9 +282,9 @@ def extract_type(e: Element) -> Type:
 
         if len(length_texts) != 0:
             lengths: list[str] = list(reversed(sum(map(map_array_length_part, length_texts), [])))
-            array_type = ArrayType(IdentifierType(identifier), ident(lengths[0]))
+            array_type = ArrayType(IdentifierType(identifier), lengths[0])
             for length in lengths[1:]:
-                array_type = ArrayType(array_type, ident(length))
+                array_type = ArrayType(array_type, length)
             return array_type
 
     next_node = text_content(e.nextSibling).strip()
@@ -303,7 +302,7 @@ def extract_type(e: Element) -> Type:
 
 
 def extract_extension(e: Element) -> Extension:
-    name = ident(get_attr(e, 'name'))
+    name = get_attr(e, 'name')
     api = get_attr(e, 'api')
 
     number = int(get_attr(e, 'number'), 0)
@@ -327,13 +326,13 @@ def extract_extension(e: Element) -> Extension:
 
 
 def extract_require(elements: list[Element]) -> Require:
-    commands: set[Identifier] = set()
+    commands: set[str] = set()
     types: set[str] = set()
     values: list[RequireValue] = []
 
     for e in elements:
         for command_node in findall(e, 'command'):
-            commands.add(ident(get_attr(command_node, 'name')))
+            commands.add(get_attr(command_node, 'name'))
         for type_node in findall(e, 'type'):
             types.add(get_attr(type_node, 'name'))
         for value_node in findall(e, 'enum'):
@@ -352,9 +351,9 @@ def extract_require_value(e: Element) -> RequireValue | None:
     if value_str is not None and value_str.startswith('"'):
         return None
 
-    name = ident(get_attr(e, 'name'))
+    name = get_attr(e, 'name')
     api = get_attr(e, 'api')
-    extends = ident(get_attr(e, 'extends'))
+    extends = get_attr(e, 'extends')
     value = int(value_str, 0) if value_str is not None else None
     bitpos = int(get_attr(e, 'bitpos')) if 'bitpos' in e.attributes else None
     extnumber = int(get_attr(e, 'extnumber')) if 'extnumber' in e.attributes else None
@@ -365,7 +364,7 @@ def extract_require_value(e: Element) -> RequireValue | None:
 
 
 def extract_function(e: Element) -> Function:
-    name = ident(get_element_text(find(e, 'name')))
+    name = get_element_text(find(e, 'name'))
     api = get_attr(e, 'api')
     params = list(map(extract_param, findall(e, 'param')))
 
@@ -375,11 +374,11 @@ def extract_function(e: Element) -> Function:
     if type_str == 'void':
         result = None
     elif type_str == 'void*':
-        result = PointerType(IdentifierType(ident('void')), False)
+        result = PointerType(IdentifierType('void'), False)
     elif type_str == 'VkBool32':
-        result = IdentifierType(ident('VkBool32'))
+        result = IdentifierType('VkBool32')
     elif type_str == 'PFN_vkVoidFunction':
-        result = IdentifierType(ident('PFN_vkVoidFunction'))
+        result = IdentifierType('PFN_vkVoidFunction')
     else:
         raise Exception(f'unsupported function pointer result type: {type_str}')
 
@@ -387,7 +386,7 @@ def extract_function(e: Element) -> Function:
 
 
 def extract_handle(e: Element) -> Handle:
-    name = ident(get_element_text(find(e, 'name')))
+    name = get_element_text(find(e, 'name'))
     api = get_attr(e, 'api')
     dispatchable = 'NON_DISPATCHABLE' not in get_element_text(find(e, 'type'))
 
@@ -395,14 +394,11 @@ def extract_handle(e: Element) -> Handle:
 
 
 def extract_structure(e: Element) -> Structure:
-    name = ident(get_attr(e, 'name'))
+    name = get_attr(e, 'name')
     api = get_attr(e, 'api')
     members = list(map(extract_member, findall(e, 'member')))
     structextends = list(
-        map(
-            ident,
-            get_attr(e, 'structextends').split(',')
-        )
+        get_attr(e, 'structextends').split(',')
     ) if 'structextends' in e.attributes else []
 
     return Structure(name, api, members, structextends)
@@ -412,11 +408,11 @@ BITS_REGEX: Pattern = re.compile(r':(\d+)$')
 
 
 def extract_member(e: Element) -> Member:
-    name = ident(get_element_text(find(e, 'name')))
+    name = get_element_text(find(e, 'name'))
     api = get_attr(e, 'api')
     type_ = extract_type(find(e, 'type'))
-    values = ident(get_attr(e, 'values')) if 'values' in e.attributes else None
-    len_ = list(map(ident, get_attr(e, 'len').split(','))) if 'len' in e.attributes else []
+    values = get_attr(e, 'values') if 'values' in e.attributes else None
+    len_ = list(get_attr(e, 'len').split(',')) if 'len' in e.attributes else []
     altlen = get_attr(e, 'altlen')
     optional = get_attr(e, 'optional') == 'true'
 
@@ -430,7 +426,7 @@ def extract_member(e: Element) -> Member:
 
 
 def extract_version(e: Element) -> Version:
-    name = ident(get_attr(e, 'name'))
+    name = get_attr(e, 'name')
     api = get_attr(e, 'api')
 
     number = float(get_attr(e, 'number'))

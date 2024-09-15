@@ -15,28 +15,38 @@ def application_start():
     tree = parse('vk.xml')
 
     print('extracting registry')
-    registry = extract_registry(tree)
+    unfiltered_registry = extract_registry(tree)
 
     print('filtering registry')
-    registry = filter_registry(registry)
+    registry = filter_registry(unfiltered_registry)
+
     extend_registry(registry)
 
+    print('\'VkAccelerationStructureMatrixMotionInstanceNV\' in registry.structs =',
+          'VkAccelerationStructureMatrixMotionInstanceNV' in registry.structs)
+    print(registry.structs['VkAccelerationStructureMatrixMotionInstanceNV'])
+
+    structs = list(registry.structs.values())
+
     print('generating structs')
-    for struct in registry.structs.values():
-        if 'VkVideo' in struct.name.value:
+    for i in range(0, len(structs)):
+        struct = structs[i]
+
+        if 'VkVideo' in struct.name:
+            print(f'    skipping {struct.name}')
             break
 
         print(f'    generating {struct.name}')
-        source = generate_structure(registry, struct)
-        with open(f'../src/main/java/tech/icey/vk4j/datatype/{struct.name}.java', 'w') as f:
-            f.write(source)
+        # source = generate_structure(registry, struct)
+        # with open(f'../src/main/java/tech/icey/vk4j/datatype/{struct.name}.java', 'w') as f:
+        #     f.write(source)
 
     print('generating unions')
     for union in registry.unions.values():
         print(f'    generating {union.name}')
-        source = generate_structure(registry, union)
-        with open(f'../src/main/java/tech/icey/vk4j/datatype/{union.name}.java', 'w') as f:
-            f.write(source)
+        # source = generate_structure(registry, union)
+        # with open(f'../src/main/java/tech/icey/vk4j/datatype/{union.name}.java', 'w') as f:
+        #     f.write(source)
 
     # print('generating bitmasks')
     # for bitmask in registry.bitmasks.values():

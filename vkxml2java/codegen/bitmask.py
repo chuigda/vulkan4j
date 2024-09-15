@@ -3,7 +3,7 @@ from ..entity import Bitmask, Registry
 
 
 def generate_bitmask(registry: Registry, bitmask: Bitmask) -> str:
-    if 'FlagBits' in bitmask.name.value:
+    if 'FlagBits' in bitmask.name:
         raise ValueError('FlagBits types should not be generated, instead they should be referred by normal Flag types')
 
     bitmask_name = bitmask.name
@@ -11,7 +11,7 @@ def generate_bitmask(registry: Registry, bitmask: Bitmask) -> str:
     content_bitmask = bitmask
     if bitmask.require_flagbits is not None:
         if bitmask.require_flagbits not in registry.bitmasks:
-            raise ValueError(f'{bitmask.require_flagbits.value}, required by type {bitmask.name}, is not found in registry')
+            raise ValueError(f'{bitmask.require_flagbits}, required by type {bitmask.name}, is not found in registry')
 
         print(f'    replacing Flag type {bitmask.name} with FlagBits type {bitmask.require_flagbits}')
         content_bitmask = registry.bitmasks[bitmask.require_flagbits]
