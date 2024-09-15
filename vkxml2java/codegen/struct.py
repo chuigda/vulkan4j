@@ -299,7 +299,39 @@ def generate_enum_accessor(type_: CEnumType, member: Member) -> str:
 
 
 def generate_pointer_accessor(type_: CPointerType, member: Member) -> str:
-    pass
+    pointee_type = type_.pointee
+    if pointee_type == CTYPE_VOID:
+        return generate_pvoid_accessor(member)
+    elif isinstance(pointee_type, CFixedIntType):
+        return generate_p_fixed_int_type_accessor(pointee_type, member)
+
+
+def generate_pvoid_accessor(member: Member) -> str:
+    return f'''    public @pointer(comment="void*") MemoryAddress {member.name}() {{
+        return segment.get(LAYOUT${member.name}, OFFSET${member.name});
+    }}
+
+    public void {member.name}(@pointer(comment="void*") MemoryAddress value) {{
+        segment.set(LAYOUT${member.name}, OFFSET${member.name}, value);
+    }}\n\n'''
+
+
+def generate_p_fixed_int_type_accessor(pointee_type: CFixedIntType, member: Member) -> str:
+    return f'''    public @pointer(comment="{pointee_type.c_type()}*") MemoryAddress {member.name}Raw() {{
+        return segment.get(LAYOUT${member.name}, OFFSET${member.name});
+    }}
+
+    public void {member.name}Raw(@pointer(comment="{pointee_type.c_type()}*") MemoryAddress value) {{
+        segment.set(LAYOUT${member.name}, OFFSET${member.name}, value);
+    }}
+    
+    public {pointee_type.vk4j_ptr_type()} {member.name}() {{
+        return new {pointee_type.vk4j_ptr_type()}({member.name}Raw());
+    }}
+
+    public void {member.name}({pointee_type.vk4j_ptr_type()} value) {{
+        {member.name}Raw(value.segment());
+    }}\n\n'''
 
 
 def generate_array_type_accessor(type_: CArrayType, member: Member) -> str:

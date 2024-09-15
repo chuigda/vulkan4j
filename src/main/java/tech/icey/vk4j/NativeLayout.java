@@ -62,6 +62,14 @@ public final class NativeLayout {
         }
     }
 
+    public static long readCSizeT(MemorySegment segment, long offset) {
+        return segment.get(ValueLayout.ADDRESS, offset).address();
+    }
+
+    public static void writeCSizeT(MemorySegment segment, long offset, long value) {
+        segment.set(ValueLayout.ADDRESS, offset, MemorySegment.ofAddress(value));
+    }
+
     /// Unlike {@link MemoryLayout#structLayout MemoryLayout.structLayout}, this function will
     /// automatically compute and add padding to the layout to ensure that each element is properly
     /// aligned. The resulting layout should be the same with a C struct layout.

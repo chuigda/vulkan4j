@@ -116,8 +116,16 @@ class CArrayType(CType):
         return f'{self.element.c_type()}[{self.size}]'
 
 
+class CNonRefType(CType):
+    def vk4j_array_type(self) -> str:
+        raise NotImplementedError()
+
+    def vk4j_ptr_type(self) -> str:
+        raise NotImplementedError()
+
+
 @dataclass
-class CFixedIntType(CType):
+class CFixedIntType(CNonRefType):
     c_name: str
     byte_size: int
     unsigned: bool
@@ -162,10 +170,36 @@ class CFixedIntType(CType):
     def c_type(self) -> str:
         return self.c_name
 
+    def vk4j_array_type(self) -> str:
+        unsigned_prefix = '@unsigned ' if self.unsigned else ''
+        if self.c_name == 'char' or self.byte_size == 1:
+            return f'{unsigned_prefix}ByteArray'
+        elif self.byte_size == 2:
+            return f'{unsigned_prefix}DoubleArray'
+        elif self.byte_size == 4:
+            return f'{unsigned_prefix}IntArray'
+        elif self.byte_size == 8:
+            return f'{unsigned_prefix}LongArray'
+        else:
+            raise Exception(f'unsupported byte size: {self.byte_size}')
+
+    def vk4j_ptr_type(self) -> str:
+        unsigned_prefix = '@unsigned ' if self.unsigned else ''
+        if self.c_name == 'char' or self.byte_size == 1:
+            return f'{unsigned_prefix}BytePtr'
+        elif self.byte_size == 2:
+            return f'{unsigned_prefix}ShortPtr'
+        elif self.byte_size == 4:
+            return f'{unsigned_prefix}IntPtr'
+        elif self.byte_size == 8:
+            return f'{unsigned_prefix}LongPtr'
+
 
 @dataclass
-class CPlatformDependentIntType(CType):
+class CPlatformDependentIntType(CNonRefType):
     c_name: str
+    array_name: str
+    ptr_name: str
     java_layout_: str
     java_type_: str
 
@@ -181,9 +215,15 @@ class CPlatformDependentIntType(CType):
     def c_type(self) -> str:
         return self.c_name
 
+    def vk4j_array_type(self) -> str:
+        return self.array_name
+
+    def vk4j_ptr_type(self) -> str:
+        return self.ptr_name
+
 
 @dataclass
-class CFloatType(CType):
+class CFloatType(CNonRefType):
     byte_size: int
 
     def java_type(self) -> str:
@@ -212,6 +252,12 @@ class CFloatType(CType):
 
     def c_type(self) -> str:
         return 'float' if self.byte_size == 4 else 'double'
+
+    def vk4j_array_type(self) -> str:
+        return 'FloatArray' if self.byte_size == 4 else 'DoubleArray'
+
+    def vk4j_ptr_type(self) -> str:
+        return 'FloatPtr' if self.byte_size == 4 else 'DoublePtr'
 
 
 @dataclass
@@ -292,8 +338,8 @@ CTYPE_FLOAT: CType = CFloatType(4)
 CTYPE_DOUBLE: CType = CFloatType(8)
 
 CTYPE_INT: CType = CTYPE_INT32
-CTYPE_LONG: CType = CPlatformDependentIntType('long', 'NativeLayout.C_LONG', 'long')
-CTYPE_SIZET: CType = CPlatformDependentIntType('size_t', 'NativeLayout.C_SIZE_T', '@unsigned long')
+CTYPE_LONG: CType = CPlatformDependentIntType('long', 'CLongArray', 'CLongPtr', 'NativeLayout.C_LONG', 'long')
+CTYPE_SIZET: CType = CPlatformDependentIntType('size_t', 'CSizeTArray', 'CSizeTPtr', 'NativeLayout.C_SIZE_T', '@unsigned long')
 
 CTYPE_VOID: CType = CVoidType()
 CTYPE_PVOID: CType = CPointerType(CTYPE_VOID, False)
