@@ -15,7 +15,7 @@ def generate_pointer_accessor(type_: CPointerType, member: Member) -> str:
     elif isinstance(pointee_type, CStructType) or isinstance(pointee_type, CUnionType) or isinstance(pointee_type, CHandleType):
         return generate_p_ref_type_accessor(pointee_type, member)
     else:
-        raise ValueError(f'Unsupported pointee type: {pointee_type}')
+        return generic_generic_ptr_accessor(type_, member)
 
 
 def generate_pvoid_accessor(member: Member) -> str:
@@ -103,4 +103,14 @@ def generate_p_ref_type_accessor(pointee_type: CStructType | CUnionType | CHandl
     public void {member.name}({pointee_type.java_type()} value) {{
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         {member.name}Raw(s);
+    }}\n\n'''
+
+
+def generic_generic_ptr_accessor(pointer_type: CPointerType, member: Member) -> str:
+    return f'''    public @pointer(comment="{pointer_type.c_type()}") MemorySegment {member.name}Raw() {{
+        return segment.get(LAYOUT${member.name}, OFFSET${member.name});
+    }}
+
+    public void {member.name}Raw(@pointer(comment="{pointer_type.c_type()}") MemorySegment value) {{
+        segment.set(LAYOUT${member.name}, OFFSET${member.name}, value);
     }}\n\n'''

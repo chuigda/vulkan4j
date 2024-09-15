@@ -34,7 +34,7 @@ def generate_platform_dependent_int_accessor(member: Member) -> str:
     }}\n\n'''
 
 
-def generate_datatype_accessor(type_: CStructType | CUnionType, member: Member) -> str:
+def generate_ref_type_accessor(type_: CStructType | CUnionType | CHandleType, member: Member) -> str:
     return f'''    public {type_.java_type()} {member.name}() {{
         return new {type_.java_type()}(segment.asSlice(OFFSET${member.name}, LAYOUT${member.name}));
     }}
@@ -44,7 +44,7 @@ def generate_datatype_accessor(type_: CStructType | CUnionType, member: Member) 
     }}\n\n'''
 
 
-def generate_fixed_int_type_accessor(type_: CFixedIntType, member: Member) -> str:
+def generate_fixed_type_accessor(type_: CFixedIntType | CFloatType, member: Member) -> str:
     return f'''    public {type_.java_type()} {member.name}() {{
         return segment.get(LAYOUT${member.name}, OFFSET${member.name});
     }}

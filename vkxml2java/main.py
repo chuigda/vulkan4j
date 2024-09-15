@@ -4,6 +4,7 @@ from vkxml2java.codegen.enum import generate_enum
 from vkxml2java.codegen.constant import generate_constants
 from vkxml2java.codegen.bitmask import generate_bitmask
 from vkxml2java.codegen.handle import generate_handle
+from vkxml2java.codegen.struct import generate_struct
 from vkxml2java.extract import extract_registry
 from vkxml2java.filter import filter_registry
 from vkxml2java.extend import extend_registry
@@ -20,13 +21,15 @@ def application_start():
     registry = filter_registry(registry)
     extend_registry(registry)
 
-    # for struct in registry.structs.values():
-    #     if struct.name.value.startswith('VkVideo'):
-    #         break
-    #
-    #     source = generate_struct(registry, struct)
-    #     with open(f'../src/main/java/tech/icey/vk4j/datatype/{struct.name}.java', 'w') as f:
-    #         f.write(source)
+    print('generating structs')
+    for struct in registry.structs.values():
+        if 'VkVideo' in struct.name.value:
+            break
+
+        print(f'    generating {struct.name}')
+        source = generate_struct(registry, struct)
+        with open(f'../src/main/java/tech/icey/vk4j/datatype/{struct.name}.java', 'w') as f:
+            f.write(source)
 
     # print('generating bitmasks')
     # for bitmask in registry.bitmasks.values():
@@ -48,10 +51,10 @@ def application_start():
     # with open(f'../src/main/java/tech/icey/vk4j/Constants.java', 'w') as f:
     #     f.write(generate_constants(registry, registry.constants.values()))
 
-    for handle in registry.handles.values():
-        source = generate_handle(handle)
-        with open(f'../src/main/java/tech/icey/vk4j/handle/{handle.name}.java', 'w') as f:
-            f.write(source)
+    # for handle in registry.handles.values():
+    #     source = generate_handle(handle)
+    #     with open(f'../src/main/java/tech/icey/vk4j/handle/{handle.name}.java', 'w') as f:
+    #         f.write(source)
 
 
 if __name__ == '__main__':

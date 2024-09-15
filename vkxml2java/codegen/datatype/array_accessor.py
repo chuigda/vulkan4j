@@ -4,7 +4,12 @@ from ...entity import Member
 
 def generate_array_accessor(type_: CArrayType, member: Member) -> str:
     element_type = type_.element
-    if isinstance(element_type, CNonRefType):
+    if isinstance(element_type, CArrayType):
+        # try to flatten the array
+        new_size = f'{type_.size} * {element_type.size}'
+        new_type = CArrayType(element=element_type.element, size=new_size)
+        return generate_array_accessor(new_type, member)
+    elif isinstance(element_type, CNonRefType):
         return generate_array_nonref_type_accessor(element_type, member)
     elif isinstance(element_type, CStructType) \
             or isinstance(element_type, CUnionType) \
@@ -12,6 +17,8 @@ def generate_array_accessor(type_: CArrayType, member: Member) -> str:
         return generate_array_ref_type_accessor(element_type, member)
     elif isinstance(element_type, CEnumType):
         return generate_array_enum_type_accessor(element_type, member)
+    else:
+        raise ValueError(f'Unsupported array element type: {element_type} for member {member.name}')
 
 
 def generate_array_nonref_type_accessor(element_type: CNonRefType, member: Member) -> str:

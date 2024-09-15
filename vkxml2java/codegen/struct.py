@@ -177,10 +177,12 @@ def generate_struct_member_accessor(members: list[Member], member_types_lowered:
             ctype = member_types_lowered[i]
             if isinstance(ctype, CPlatformDependentIntType):
                 ret += generate_platform_dependent_int_accessor(current)
-            elif isinstance(ctype, CStructType) or isinstance(ctype, CUnionType):
-                ret += generate_datatype_accessor(ctype, current)
+            elif isinstance(ctype, CStructType) or isinstance(ctype, CUnionType) or isinstance(ctype, CHandleType):
+                ret += generate_ref_type_accessor(ctype, current)
             elif isinstance(ctype, CFixedIntType):
-                ret += generate_fixed_int_type_accessor(ctype, current)
+                ret += generate_fixed_type_accessor(ctype, current)
+            elif isinstance(ctype, CFloatType):
+                ret += generate_fixed_type_accessor(ctype, current)
             elif isinstance(ctype, CEnumType):
                 ret += generate_enum_accessor(ctype, current)
             elif isinstance(ctype, CPointerType):

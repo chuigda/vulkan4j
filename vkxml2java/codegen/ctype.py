@@ -45,15 +45,15 @@ class CPointerType(CType):
         return 'AddressLayout'
 
     def c_type(self) -> str:
-        return f'{self.pointee.c_type()}*'
+        return f'{self.pointee.c_type()} {'const' if self.const else ''}*'
 
 
 @dataclass
 class CHandleType(CType):
-    handle_type_name: Identifier
+    name: Identifier
 
     def java_type(self) -> str:
-        return f'@pointer({self.handle_type_name}.class) MemorySegment'
+        return f'@pointer({self.name}.class) MemorySegment'
 
     def java_layout(self) -> str:
         return 'ValueLayout.ADDRESS'
@@ -62,7 +62,7 @@ class CHandleType(CType):
         return 'AddressLayout'
 
     def c_type(self) -> str:
-        return f'{self.handle_type_name}'
+        return f'{self.name}'
 
 
 @dataclass
