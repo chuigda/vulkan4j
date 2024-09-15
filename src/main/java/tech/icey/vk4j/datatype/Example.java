@@ -161,11 +161,11 @@ public record Example(MemorySegment segment) {
         segment.set(LAYOUT$b, OFFSET$b, value);
     }
 
-    public @pointer("void*") MemorySegment c() {
+    public @pointer(comment ="void*") MemorySegment c() {
         return segment.get(LAYOUT$c, OFFSET$c);
     }
 
-    public void c(@pointer("void*") MemorySegment value) {
+    public void c(@pointer(comment ="void*") MemorySegment value) {
         segment.set(LAYOUT$c, OFFSET$c, value);
     }
 

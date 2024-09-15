@@ -1,21 +1,28 @@
 from .ctype import lower_type, CType, CPlatformDependentIntType, CStructType, CUnionType, CFixedIntType, CArrayType, \
     CFloatType, CEnumType
+from .dependency import *
 from ..entity import Structure, Member, Registry
 
 
 def generate_struct(registry: Registry, struct: Structure) -> str:
     member_types_lowered: list[CType | None] = []
+    dependencies: set[str] = {
+        JAVA_LANG_FOREIGN,
+        JAVA_LANG_FOREIGN_VALUE_LAYOUT,
+        TECH_ICEY_VK4J_CONSTANTS,
+        TECH_ICEY_VK4J_NATIVE_LAYOUT
+    }
 
-    struct_layout = generate_struct_layout(registry, struct.members, member_types_lowered)
+    struct_layout = generate_struct_layout(
+        registry,
+        struct.members,
+        member_types_lowered,
+        dependencies
+    )
 
     return f'''package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import tech.icey.vk4j.*;
-
-import static java.lang.foreign.ValueLayout.*;
-import static tech.icey.vk4j.Constants.*;
-
+{'\n'.join(dependencies)}
 
 public record {struct.name}(MemorySegment segment) {{
     public static final MemoryLayout LAYOUT = {struct_layout};
@@ -32,7 +39,12 @@ public record {struct.name}(MemorySegment segment) {{
 }}
 '''
 
-def generate_struct_layout(registry: Registry, members: list[Member], member_types_lowered: list[CType | None]) -> str:
+def generate_struct_layout(
+        registry: Registry,
+        members: list[Member],
+        member_types_lowered: list[CType | None],
+        dependencies: set[str]
+) -> str:
     field_layouts = []
 
     i = 0
@@ -50,7 +62,7 @@ def generate_struct_layout(registry: Registry, members: list[Member], member_typ
             member_types_lowered.append(None)
             member_types_lowered.append(None)
         else:
-            ctype = lower_type(registry, current.type)
+            ctype = lower_type(registry, current.type, dependencies)
             field_layouts.append(f'{ctype.java_layout()}.withName("{current.name}")')
             i = i + 1
 
@@ -188,19 +200,19 @@ def generate_struct_member_accessor(members: list[Member], member_types_lowered:
         segment.set(LAYOUT${current.name}, OFFSET${current.name}, value);
     }}\n\n'''
             elif isinstance(ctype, CStructType) or isinstance(ctype, CUnionType):
-                ret += f'''    public {ctype.java_type()} {current.name}() {{
-        return new {ctype.java_type()}(segment.asSlice(OFFSET${current.name}, LAYOUT${current.name}));
+                ret += f'''    public {ctype.java_raw_type()} {current.name}() {{
+        return new {ctype.java_raw_type()}(segment.asSlice(OFFSET${current.name}, LAYOUT${current.name}));
     }}
 
-    public void {current.name}({ctype.java_type()} value) {{
+    public void {current.name}({ctype.java_raw_type()} value) {{
         MemorySegment.copy(value.segment(), 0, segment, OFFSET${current.name}, LAYOUT${current.name}.byteSize());
     }}\n\n'''
             elif isinstance(ctype, CFixedIntType) or isinstance(ctype, CEnumType):
-                ret += f'''    public {ctype.java_type()} {current.name}() {{
+                ret += f'''    public {ctype.java_raw_type()} {current.name}() {{
         return segment.get(LAYOUT${current.name}, OFFSET${current.name});
     }}
 
-    public void {current.name}({ctype.java_type()} value) {{
+    public void {current.name}({ctype.java_raw_type()} value) {{
         segment.set(LAYOUT${current.name}, OFFSET${current.name}, value);
     }}\n\n'''
             elif isinstance(ctype, CArrayType):
@@ -210,19 +222,19 @@ def generate_struct_member_accessor(members: list[Member], member_types_lowered:
                     i += 1
                     continue
 
-                ret += f'''    public {ctype.java_type()} {current.name}() {{
+                ret += f'''    public {ctype.java_raw_type()} {current.name}() {{
         return segment.asSlice(OFFSET${current.name}, LAYOUT${current.name}).toArray({ctype.element.java_layout()});
     }}
 
-    public void {current.name}({ctype.java_type()} value) {{
+    public void {current.name}({ctype.java_raw_type()} value) {{
         MemorySegment.copy(MemorySegment.ofArray(value), 0, segment, OFFSET${current.name}, LAYOUT${current.name}.byteSize());
     }}
 
-    public {ctype.element.java_type()} {current.name}At(int index) {{
+    public {ctype.element.java_raw_type()} {current.name}At(int index) {{
         return segment.get({ctype.element.java_layout()}, OFFSET${current.name} + index * {ctype.element.java_layout()}.byteSize());
     }}
 
-    public void {current.name}At(int index, {ctype.element.java_type()} value) {{
+    public void {current.name}At(int index, {ctype.element.java_raw_type()} value) {{
         segment.set({ctype.element.java_layout()}, OFFSET${current.name} + index * {ctype.element.java_layout()}.byteSize(), value);
     }}\n\n'''
             else:

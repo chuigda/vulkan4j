@@ -16,11 +16,11 @@ public final class Constants {{
 
 
 def generate_constant(registry: Registry, constant: Constant) -> str:
-    ctype = lower_type(registry, constant.type)
+    ctype = lower_type(registry, constant.type, set())
     expr = (constant.expr
             .replace('ULL', '')
             .replace('UL', '')
             .replace('LL', '')
             .replace('L', '')
             .replace('U', ''))
-    return f'    public static final {ctype.java_type()} {constant.name} = {expr};'
+    return f'    public static final {ctype.java_raw_type()} {constant.name} = {expr};'

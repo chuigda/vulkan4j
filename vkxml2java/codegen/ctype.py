@@ -1,12 +1,14 @@
 from dataclasses import dataclass
 
+from .dependency import *
 from ..entity import Registry
+from ..ident import Identifier
 from ..vktype import Type, IdentifierType, ArrayType, PointerType
 
 
 @dataclass
 class CType:
-    def java_type(self) -> str:
+    def java_raw_type(self) -> str:
         raise NotImplementedError()
 
     def java_layout(self) -> str:
@@ -21,8 +23,25 @@ class CPointerType(CType):
     pointee: CType
     const: bool
 
-    def java_type(self) -> str:
+    def java_raw_type(self) -> str:
         return 'MemorySegment'
+
+    def java_layout(self) -> str:
+        if self.pointee == CTYPE_VOID:
+            return 'ValueLayout.ADDRESS'
+        else:
+            return 'ValueLayout.ADDRESS.withTargetLayout(' + self.pointee.java_layout() + ')'
+
+    def java_layout_type(self) -> str:
+        return 'AddressLayout'
+
+
+@dataclass
+class CHandleType(CType):
+    handle_type_name: Identifier
+
+    def java_raw_type(self) -> str:
+        return f'@pointer({self.handle_type_name}.class) MemorySegment'
 
     def java_layout(self) -> str:
         return 'ValueLayout.ADDRESS'
@@ -35,7 +54,7 @@ class CPointerType(CType):
 class CEnumType(CType):
     name: str
 
-    def java_type(self) -> str:
+    def java_raw_type(self) -> str:
         return 'int'
 
     def java_layout(self) -> str:
@@ -50,8 +69,8 @@ class CArrayType(CType):
     element: CType
     size: int | str
 
-    def java_type(self) -> str:
-        return f'{self.element.java_type()}[]'
+    def java_raw_type(self) -> str:
+        return f'{self.element.java_raw_type()}[]'
 
     def java_layout(self) -> str:
         return f'MemoryLayout.sequenceLayout({self.size}, {self.element.java_layout()})'
@@ -66,7 +85,7 @@ class CFixedIntType(CType):
     byte_size: int
     unsigned: bool
 
-    def java_type(self) -> str:
+    def java_raw_type(self) -> str:
         unsigned_prefix = '@unsigned ' if self.unsigned else ''
         if self.c_name == 'char' or self.byte_size == 1:
             return f'{unsigned_prefix}byte'
@@ -110,7 +129,7 @@ class CPlatformDependentIntType(CType):
     java_layout_: str
     java_type_: str
 
-    def java_type(self) -> str:
+    def java_raw_type(self) -> str:
         return self.java_type_
 
     def java_layout(self) -> str:
@@ -124,7 +143,7 @@ class CPlatformDependentIntType(CType):
 class CFloatType(CType):
     byte_size: int
 
-    def java_type(self) -> str:
+    def java_raw_type(self) -> str:
         if self.byte_size == 4:
             return 'float'
         elif self.byte_size == 8:
@@ -151,7 +170,7 @@ class CFloatType(CType):
 
 @dataclass
 class CBoolType(CType):
-    def java_type(self) -> str:
+    def java_raw_type(self) -> str:
         return 'boolean'
 
     def java_layout(self) -> str:
@@ -165,7 +184,7 @@ class CBoolType(CType):
 class CStructType(CType):
     name: str
 
-    def java_type(self) -> str:
+    def java_raw_type(self) -> str:
         return self.name
 
     def java_layout(self) -> str:
@@ -179,7 +198,7 @@ class CStructType(CType):
 class CUnionType(CType):
     name: str
 
-    def java_type(self) -> str:
+    def java_raw_type(self) -> str:
         return self.name
 
     def java_layout(self) -> str:
@@ -193,7 +212,7 @@ class CUnionType(CType):
 class CVoidType(CType):
     pass
 
-    def java_type(self) -> str:
+    def java_raw_type(self) -> str:
         return 'void'
 
     def java_layout(self) -> str:
@@ -215,8 +234,8 @@ CTYPE_FLOAT: CType = CFloatType(4)
 CTYPE_DOUBLE: CType = CFloatType(8)
 
 CTYPE_INT: CType = CTYPE_INT32
-CTYPE_LONG: CType = CPlatformDependentIntType('long', 'LayoutExtra.C_LONG', 'long')
-CTYPE_SIZET: CType = CPlatformDependentIntType('size_t', 'LayoutExtra.C_SIZE_T', 'long')
+CTYPE_LONG: CType = CPlatformDependentIntType('long', 'NativeLayout.C_LONG', 'long')
+CTYPE_SIZET: CType = CPlatformDependentIntType('size_t', 'NativeLayout.C_SIZE_T', '@unsigned long')
 
 CTYPE_VOID: CType = CVoidType()
 CTYPE_PVOID: CType = CPointerType(CTYPE_VOID, False)
@@ -307,33 +326,44 @@ KNOWN_TYPES: dict[str, CType] = {
 }
 
 
-def lower_type(registry: Registry, type: Type) -> CType:
-    if isinstance(type, IdentifierType):
-        return lower_identifier_type(registry, type)
-    elif isinstance(type, ArrayType):
-        if not type.length.value.isnumeric():
-            if type.length not in registry.constants:
-                raise Exception(f'array typed referred to an unknown constant: {type.length.value}')
-        return CArrayType(lower_type(registry, type.element), type.length.value)
-    elif isinstance(type, PointerType):
-        return CPointerType(lower_type(registry, type.pointee), type.const)
+def lower_type(registry: Registry, type_: Type, dependencies: set[str]) -> CType:
+    if isinstance(type_, IdentifierType):
+        return lower_identifier_type(registry, type_, dependencies)
+    elif isinstance(type_, ArrayType):
+        if not type_.length.value.isnumeric():
+            if type_.length not in registry.constants:
+                raise Exception(f'array typed referred to an unknown constant: {type_.length.value}')
+            dependencies.add(TECH_ICEY_VK4J_CONSTANTS)
+        return CArrayType(lower_type(registry, type_.element, dependencies), type_.length.value)
+    elif isinstance(type_, PointerType):
+        return CPointerType(lower_type(registry, type_.pointee, dependencies), type_.const)
 
 
-def lower_identifier_type(registry: Registry, ident_type: IdentifierType) -> CType:
+def lower_identifier_type(
+        registry: Registry,
+        ident_type: IdentifierType,
+        dependencies: set[str]
+) -> CType:
     ident = ident_type.identifier
     ident_value = ident.value
 
     if ident_value in KNOWN_TYPES:
-        return KNOWN_TYPES[ident_value]
+        ret = KNOWN_TYPES[ident_value]
+        if ret == CTYPE_LONG or ret == CTYPE_SIZET:
+            dependencies.add(TECH_ICEY_VK4J_NATIVE_LAYOUT)
+        return ret
     elif ident in registry.enums or ident in registry.bitmasks:
+        dependencies.add(TECH_ICEY_VK4J_ENUMTYPE)
         return CEnumType(ident.value)
     elif ident in registry.structs:
         return CStructType(ident.value)
     elif ident in registry.unions:
         return CUnionType(ident.value)
     elif ident in registry.handles:
-        return CPointerType(CTYPE_PVOID, False)
+        dependencies.add(TECH_ICEY_VK4J_HANDLE)
+        return CHandleType(ident)
+
     elif ident in registry.functions:
-        return CPointerType(CTYPE_PVOID, False)
+        return CPointerType(CTYPE_VOID, False)
     else:
         raise Exception(f'unknown type: {ident}')
