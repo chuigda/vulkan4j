@@ -43,6 +43,8 @@ src/main/java/tech/icey/vk4j/datatype/*.java
 !src/src/main/java/tech/icey/vk4j/datatype/Example.java
 src/main/java/tech/icey/vk4j/enumtype/*.java
 !src/main/java/tech/icey/vk4j/enumtype/ExampleEnum.java
+src/main/java/tech/icey/vk4j/handle/*.java
+!src/main/java/tech/icey/vk4j/handle/ExampleHandle.java
 
 # nativedrill generated native code
 nativedrill/*.o
