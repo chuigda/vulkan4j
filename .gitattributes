@@ -1,0 +1,4 @@
+src/main/java/tech/icey/vk4j/bitmask/*.java linguist-vendored
+src/main/java/tech/icey/vk4j/datatype/*.java linguist-vendored
+src/main/java/tech/icey/vk4j/enumtype/*.java linguist-vendored
+src/main/java/tech/icey/vk4j/handle/*.java linguist-vendored
