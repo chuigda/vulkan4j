@@ -142,6 +142,7 @@ class Structure(Entity):
     structextends: list[Identifier]
 
     has_init_: bool | None = None
+    is_union: bool = False
 
     def has_init(self, registry: Registry) -> bool:
         if self.has_init_ is None:

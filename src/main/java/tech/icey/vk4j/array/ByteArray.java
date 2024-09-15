@@ -9,10 +9,10 @@ import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
-public record ByteArray(MemorySegment segment) {
+public record ByteArray(MemorySegment segment, long size) {
     public static <A extends Function2<MemoryLayout, Long, MemorySegment>>
     ByteArray allocate(A allocator, long size) {
-        return new ByteArray(allocator.apply(ValueLayout.JAVA_BYTE, size));
+        return new ByteArray(allocator.apply(ValueLayout.JAVA_BYTE, size), size);
     }
 
     public static ByteArray allocate(Arena arena, long size) {
@@ -34,6 +34,6 @@ public record ByteArray(MemorySegment segment) {
     @unsafe
     public static ByteArray ofPtr(BytePtr ptr, long size) {
         MemorySegment transmuted = ptr.segment().reinterpret(size);
-        return new ByteArray(transmuted);
+        return new ByteArray(transmuted, size);
     }
 }

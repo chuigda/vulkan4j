@@ -92,4 +92,8 @@ public final class NativeLayout {
         MemoryLayout[] paddedElementsArray = paddedElements.toArray(new MemoryLayout[0]);
         return MemoryLayout.structLayout(paddedElementsArray);
     }
+
+    public static MemoryLayout unionLayout(MemoryLayout... elements) {
+        return MemoryLayout.unionLayout(elements);
+    }
 }

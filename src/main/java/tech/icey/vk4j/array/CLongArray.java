@@ -9,10 +9,10 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 
-public record CLongArray(MemorySegment segment) {
+public record CLongArray(MemorySegment segment, long size) {
     public static <A extends Function2<MemoryLayout, Long, MemorySegment>>
     CLongArray allocate(A allocator, long size) {
-        return new CLongArray(allocator.apply(NativeLayout.C_LONG, size));
+        return new CLongArray(allocator.apply(NativeLayout.C_LONG, size), size);
     }
 
     public static CLongArray allocate(Arena arena, long size) {
@@ -34,6 +34,6 @@ public record CLongArray(MemorySegment segment) {
     @unsafe
     public static CLongArray ofPtr(CLongPtr ptr, long size) {
         MemorySegment transmuted = ptr.segment().reinterpret(size);
-        return new CLongArray(transmuted);
+        return new CLongArray(transmuted, size);
     }
 }

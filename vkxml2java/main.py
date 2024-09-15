@@ -4,7 +4,7 @@ from vkxml2java.codegen.enum import generate_enum
 from vkxml2java.codegen.constant import generate_constants
 from vkxml2java.codegen.bitmask import generate_bitmask
 from vkxml2java.codegen.handle import generate_handle
-from vkxml2java.codegen.struct import generate_struct
+from vkxml2java.codegen.structure import generate_structure
 from vkxml2java.extract import extract_registry
 from vkxml2java.filter import filter_registry
 from vkxml2java.extend import extend_registry
@@ -27,8 +27,15 @@ def application_start():
             break
 
         print(f'    generating {struct.name}')
-        source = generate_struct(registry, struct)
+        source = generate_structure(registry, struct)
         with open(f'../src/main/java/tech/icey/vk4j/datatype/{struct.name}.java', 'w') as f:
+            f.write(source)
+
+    print('generating unions')
+    for union in registry.unions.values():
+        print(f'    generating {union.name}')
+        source = generate_structure(registry, union)
+        with open(f'../src/main/java/tech/icey/vk4j/datatype/{union.name}.java', 'w') as f:
             f.write(source)
 
     # print('generating bitmasks')

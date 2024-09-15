@@ -9,10 +9,10 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 
-public record CSizeTArray(MemorySegment segment) {
+public record CSizeTArray(MemorySegment segment, long size) {
     public static <A extends Function2<MemoryLayout, Long, MemorySegment>>
     CSizeTArray allocate(A allocator, long size) {
-        return new CSizeTArray(allocator.apply(NativeLayout.C_SIZE_T, size));
+        return new CSizeTArray(allocator.apply(NativeLayout.C_SIZE_T, size), size);
     }
 
     public static CSizeTArray allocate(Arena arena, long size) {
@@ -34,6 +34,6 @@ public record CSizeTArray(MemorySegment segment) {
     @unsafe
     public static CSizeTArray ofPtr(CSizeTPtr ptr, long size) {
         MemorySegment transmuted = ptr.segment().reinterpret(size);
-        return new CSizeTArray(transmuted);
+        return new CSizeTArray(transmuted, size);
     }
 }

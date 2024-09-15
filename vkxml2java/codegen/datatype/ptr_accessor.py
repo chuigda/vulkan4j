@@ -48,7 +48,7 @@ def generate_p_nonref_type_accessor(pointee_type: CNonRefType, member: Member) -
     }}
     
     public {pointee_type.vk4j_ptr_type()} {member.name}() {{
-        return new {pointee_type.vk4j_ptr_type()}({member.name}Raw());
+        return new {pointee_type.vk4j_ptr_type_no_sign()}({member.name}Raw());
     }}
 
     public void {member.name}({pointee_type.vk4j_ptr_type()} value) {{

@@ -3,12 +3,13 @@ from .datatype.common_accessor import *
 from .datatype.ptr_accessor import generate_pointer_accessor
 from .datatype.array_accessor import generate_array_accessor
 
-def generate_struct(registry: Registry, struct: Structure) -> str:
+def generate_structure(registry: Registry, structure: Structure) -> str:
     member_types_lowered: list[CType | None] = []
 
-    struct_layout = generate_struct_layout(
+    struct_layout = generate_structure_layout(
         registry,
-        struct.members,
+        structure,
+        structure.members,
         member_types_lowered
     )
 
@@ -29,23 +30,24 @@ import tech.icey.vk4j.IDataTypeFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
-public record {struct.name}(MemorySegment segment) {{
+public record {structure.name}(MemorySegment segment) {{
     public static final MemoryLayout LAYOUT = {struct_layout};
 
-{generate_struct_path_element(struct.members)}
-{generate_struct_member_layout(struct.members, member_types_lowered)}
-{generate_struct_member_offset(struct.members)}
-    public {struct.name}(MemorySegment segment) {{
-        this.segment = segment;{generate_member_init(struct.members)}
+{generate_structure_path_element(structure.members)}
+{generate_structure_member_layout(structure.members, member_types_lowered)}
+{generate_structure_member_offset(structure.members)}
+    public {structure.name}(MemorySegment segment) {{
+        this.segment = segment;{generate_member_init(structure.members)}
     }}
 
-{generate_struct_member_accessor(struct.members, member_types_lowered)}
-{generate_struct_factory(struct)}
+{generate_structure_member_accessor(structure.members, member_types_lowered)}
+{generate_structure_factory(structure)}
 }}
 '''
 
-def generate_struct_layout(
+def generate_structure_layout(
         registry: Registry,
+        structure: Structure,
         members: list[Member],
         member_types_lowered: list[CType | None]
 ) -> str:
@@ -72,7 +74,9 @@ def generate_struct_layout(
 
             member_types_lowered.append(ctype)
 
-    ret = 'NativeLayout.structLayout(\n'
+    layout_creator = 'NativeLayout.unionLayout' if structure.is_union else 'NativeLayout.structLayout'
+
+    ret = f'{layout_creator}(\n'
     for (i, layout) in enumerate(field_layouts):
         if i == len(field_layouts) - 1:
             ret += f'        {layout}\n'
@@ -82,7 +86,7 @@ def generate_struct_layout(
     return ret
 
 
-def generate_struct_path_element(members: list[Member]) -> str:
+def generate_structure_path_element(members: list[Member]) -> str:
     ret = ''
     group_element_idx = 0
 
@@ -105,7 +109,7 @@ def generate_struct_path_element(members: list[Member]) -> str:
     return ret
 
 
-def generate_struct_member_layout(members: list[Member], member_types_lowered: list[CType | None]) -> str:
+def generate_structure_member_layout(members: list[Member], member_types_lowered: list[CType | None]) -> str:
     ret = ''
 
     i = 0
@@ -130,7 +134,7 @@ def generate_struct_member_layout(members: list[Member], member_types_lowered: l
     return ret
 
 
-def generate_struct_member_offset(members: list[Member]) -> str:
+def generate_structure_member_offset(members: list[Member]) -> str:
     ret = ''
 
     i = 0
@@ -161,7 +165,7 @@ def generate_member_init(members: list[Member]) -> str:
     return ret
 
 
-def generate_struct_member_accessor(members: list[Member], member_types_lowered: list[CType | None]) -> str:
+def generate_structure_member_accessor(members: list[Member], member_types_lowered: list[CType | None]) -> str:
     ret = ''
 
     i = 0
@@ -196,7 +200,7 @@ def generate_struct_member_accessor(members: list[Member], member_types_lowered:
     return ret
 
 
-def generate_struct_factory(struct: Structure) -> str:
+def generate_structure_factory(struct: Structure) -> str:
     return f'''    public static final class {struct.name}Factory implements IDataTypeFactory<{struct.name}> {{
         @Override
         public Class<{struct.name}> clazz() {{

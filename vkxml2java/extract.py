@@ -98,6 +98,7 @@ def extract_registry(tree: Document) -> Registry:
             structs[structure.name] = structure
         elif structure_node.getAttribute('category') == 'union':
             structure = extract_structure(structure_node)
+            structure.is_union = True
             unions[structure.name] = structure
 
     versions: dict[Identifier, Version] = {}

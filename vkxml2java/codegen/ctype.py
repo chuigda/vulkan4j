@@ -52,7 +52,7 @@ class CHandleType(CType):
     name: Identifier
 
     def java_type(self) -> str:
-        return f'@pointer(target={self.name}.class) MemorySegment'
+        return self.name.value
 
     def java_layout(self) -> str:
         return 'ValueLayout.ADDRESS'
@@ -236,13 +236,13 @@ class CPlatformDependentIntType(CNonRefType):
         return self.array_name
 
     def vk4j_array_type_no_sign(self) -> str:
-        return self.array_name
+        return self.array_name.replace('@unsigned ', '')
 
     def vk4j_ptr_type(self) -> str:
         return self.ptr_name
 
     def vk4j_ptr_type_no_sign(self) -> str:
-        return self.ptr_name
+        return self.ptr_name.replace('@unsigned ', '')
 
 
 @dataclass
