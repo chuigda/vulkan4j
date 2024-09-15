@@ -5,28 +5,29 @@ from .datatype.array_accessor import generate_array_accessor
 
 def generate_struct(registry: Registry, struct: Structure) -> str:
     member_types_lowered: list[CType | None] = []
-    dependencies: set[str] = {
-        JAVA_LANG_FOREIGN,
-        JAVA_LANG_FOREIGN_VALUE_LAYOUT,
-        TECH_ICEY_VK4J_CONSTANTS,
-        TECH_ICEY_VK4J_NATIVE_LAYOUT,
-        TECH_ICEY_VK4J_ANNOTATIONS,
-        'import tech.icey.vk4j.IDataTypeFactory;'
-    }
 
     struct_layout = generate_struct_layout(
         registry,
         struct.members,
-        member_types_lowered,
-        dependencies
+        member_types_lowered
     )
-
-    dep_list = list(dependencies)
-    dep_list.sort()
 
     return f'''package tech.icey.vk4j.datatype;
 
-{'\n'.join(dep_list)}
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotations.*;
+import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.IDataTypeFactory;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record {struct.name}(MemorySegment segment) {{
     public static final MemoryLayout LAYOUT = {struct_layout};
@@ -46,8 +47,7 @@ public record {struct.name}(MemorySegment segment) {{
 def generate_struct_layout(
         registry: Registry,
         members: list[Member],
-        member_types_lowered: list[CType | None],
-        dependencies: set[str]
+        member_types_lowered: list[CType | None]
 ) -> str:
     field_layouts = []
 
@@ -66,7 +66,7 @@ def generate_struct_layout(
             member_types_lowered.append(None)
             member_types_lowered.append(None)
         else:
-            ctype = lower_type(registry, current.type, dependencies)
+            ctype = lower_type(registry, current.type)
             field_layouts.append(f'{ctype.java_layout()}.withName("{current.name}")')
             i = i + 1
 

@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 
-from .dependency import *
 from ..entity import Registry
 from ..ident import Identifier
 from ..vktype import Type, IdentifierType, ArrayType, PointerType
@@ -53,7 +52,7 @@ class CHandleType(CType):
     name: Identifier
 
     def java_type(self) -> str:
-        return f'@pointer({self.name}.class) MemorySegment'
+        return f'@pointer(target={self.name}.class) MemorySegment'
 
     def java_layout(self) -> str:
         return 'ValueLayout.ADDRESS'
@@ -71,10 +70,11 @@ class CEnumType(CType):
     bitwidth: int | None = None
 
     def java_type(self) -> str:
+        name = self.non_flagbits_type_name()
         if self.bitwidth is None or self.bitwidth == 32:
-            return f'@enumtype({self.name}.class) int'
+            return f'@enumtype({name}.class) int'
         elif self.bitwidth == 64:
-            return f'@enumtype({self.name}.class) long'
+            return f'@enumtype({name}.class) long'
         else:
             raise Exception(f'unsupported bitwidth: {self.bitwidth}')
 
@@ -96,6 +96,9 @@ class CEnumType(CType):
 
     def c_type(self) -> str:
         return f'enum {self.name}'
+
+    def non_flagbits_type_name(self) -> str:
+        return self.name.replace('FlagBits', 'Flags')
 
 
 @dataclass
@@ -456,43 +459,30 @@ KNOWN_TYPES: dict[str, CType] = {
 }
 
 
-def lower_type(registry: Registry, type_: Type, dependencies: set[str]) -> CType:
+def lower_type(registry: Registry, type_: Type) -> CType:
     if isinstance(type_, IdentifierType):
-        return lower_identifier_type(registry, type_, dependencies)
+        return lower_identifier_type(registry, type_)
     elif isinstance(type_, ArrayType):
         if not type_.length.value.isnumeric():
             if type_.length not in registry.constants:
                 raise Exception(f'array typed referred to an unknown constant: {type_.length.value}')
-            dependencies.add(TECH_ICEY_VK4J_CONSTANTS)
-        element_type = lower_type(registry, type_.element, dependencies)
-        if isinstance(element_type, CNonRefType) or isinstance(element_type, CEnumType):
-            dependencies.add(TECH_ICEY_VK4J_ARRAY)
+        element_type = lower_type(registry, type_.element)
         return CArrayType(element_type, type_.length.value)
     elif isinstance(type_, PointerType):
-        pointee = lower_type(registry, type_.pointee, dependencies)
-        if isinstance(pointee, CNonRefType) or isinstance(pointee, CEnumType):
-            dependencies.add(TECH_ICEY_VK4J_PTR)
+        pointee = lower_type(registry, type_.pointee)
         return CPointerType(pointee, type_.const)
 
 
-def lower_identifier_type(
-        registry: Registry,
-        ident_type: IdentifierType,
-        dependencies: set[str]
-) -> CType:
+def lower_identifier_type(registry: Registry, ident_type: IdentifierType) -> CType:
     ident = ident_type.identifier
     ident_value = ident.value
 
     if ident_value in KNOWN_TYPES:
         ret = KNOWN_TYPES[ident_value]
-        if ret == CTYPE_LONG or ret == CTYPE_SIZET:
-            dependencies.add(TECH_ICEY_VK4J_NATIVE_LAYOUT)
         return ret
     elif ident in registry.enums:
-        dependencies.add(TECH_ICEY_VK4J_ENUMTYPE)
         return CEnumType(ident.value)
     elif ident in registry.bitmasks:
-        dependencies.add(TECH_ICEY_VK4J_ENUMTYPE)
         bitmask = registry.bitmasks[ident]
         return CEnumType(ident.value, bitmask.bitwidth)
     elif ident in registry.structs:
@@ -500,7 +490,6 @@ def lower_identifier_type(
     elif ident in registry.unions:
         return CUnionType(ident.value)
     elif ident in registry.handles:
-        dependencies.add(TECH_ICEY_VK4J_HANDLE)
         return CHandleType(ident)
     elif ident in registry.functions:
         fn = registry.functions[ident]
