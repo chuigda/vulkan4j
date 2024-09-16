@@ -6,7 +6,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
-public final class CArena implements Arena {
+public final class LibcArena implements Arena {
     private static final FunctionDescriptor DESCRIPTOR$aligned_alloc = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
             NativeLayout.C_SIZE_T,
@@ -22,7 +22,15 @@ public final class CArena implements Arena {
     private static final MethodHandle HANDLE$free =
             Loader.loadFunction("free", DESCRIPTOR$free);
 
-    private CArena() {}
+    private LibcArena() {}
+
+    public void free(MemorySegment ms) {
+        try {
+            HANDLE$free.invokeExact(ms);
+        } catch (Throwable _) {
+            throw new RuntimeException("Failed to free memory");
+        }
+    }
 
     @Override
     public MemorySegment allocate(long byteSize, long byteAlignment) {
@@ -56,5 +64,5 @@ public final class CArena implements Arena {
         throw new UnsupportedOperationException("Cannot close CArena");
     }
 
-    public static final CArena INSTANCE = new CArena();
+    public static final LibcArena INSTANCE = new LibcArena();
 }

@@ -465,7 +465,7 @@ KNOWN_TYPES: dict[str, CType] = {
 
 def lower_type(registry: Registry, type_: Type) -> CType:
     if isinstance(type_, IdentifierType):
-        return lower_str_type(registry, type_)
+        return lower_ident_type(registry, type_)
     elif isinstance(type_, ArrayType):
         if not type_.length.isnumeric():
             if type_.length not in registry.constants:
@@ -477,7 +477,7 @@ def lower_type(registry: Registry, type_: Type) -> CType:
         return CPointerType(pointee, type_.const)
 
 
-def lower_str_type(registry: Registry, ident_type: IdentifierType) -> CType:
+def lower_ident_type(registry: Registry, ident_type: IdentifierType) -> CType:
     ident = ident_type.ident
 
     if ident in KNOWN_TYPES:
