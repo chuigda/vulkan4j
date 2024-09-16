@@ -15,6 +15,8 @@ def generate_commands(registry: Registry):
     device_commands = list(filter(lambda command: get_command_type(registry, command) == CommandType.DEVICE, non_video_commands))
 
     generate_command_class_file(registry, static_commands, 'StaticCommands')
+    generate_command_class_file(registry, entry_commands, 'EntryCommands')
+    generate_command_class_file(registry, instance_commands, 'InstanceCommands')
 
 
 def generate_command_class_file(registry: Registry, commands: list[Command], class_name: str):
@@ -30,7 +32,7 @@ def generate_command_class_file(registry: Registry, commands: list[Command], cla
         command_result_types.append(result_type[0])
 
     command_handles = [generate_command_handle(command) for command in commands]
-    command_loads = [generate_command_load(registry, command) for command in commands]
+    command_loads = [generate_command_load(command) for command in commands]
 
     command_wrappers = []
     for command, param_types, result_type in zip(commands, command_param_types, command_result_types):
@@ -43,6 +45,7 @@ import java.lang.invoke.MethodHandle;
 
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.annotations.*;
+import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
@@ -93,11 +96,8 @@ def generate_command_handle(command: Command) -> str:
     return f'''    public final @nullable MethodHandle HANDLE${command.name};'''
 
 
-def generate_command_load(registry: Registry, command: Command) -> str:
-    if get_command_type(registry, command) == CommandType.INSTANCE:
-        return f'''        HANDLE${command.name} = instanceLoader.apply(\"{command.name}\", DESCRIPTOR${command.name});'''
-    else:
-        return f'''        HANDLE${command.name} = loader.apply(\"{command.name}\", DESCRIPTOR${command.name});'''
+def generate_command_load(command: Command) -> str:
+    return f'''        HANDLE${command.name} = loader.apply(\"{command.name}\", DESCRIPTOR${command.name});'''
 
 
 def generate_command_wrapper(command: Command, param_types: list[CType], result_type: CType) -> str:
@@ -106,7 +106,7 @@ def generate_command_wrapper(command: Command, param_types: list[CType], result_
         params.append(f'{param_type.java_type()} {param.name}')
     param_names = list(map(lambda p: p.name, command.params))
 
-    invoke_expr = f'HANDLE${command.name}.invoke({", ".join(param_names)})'
+    invoke_expr = f'HANDLE${command.name}.invokeExact({", ".join(param_names)})'
 
     if result_type == CTYPE_VOID:
         return f'''    public void {command.name}({', '.join(params)}) {{
@@ -132,7 +132,7 @@ def generate_result_convert(result_type: CType, fncall: str) -> str:
     elif isinstance(result_type, CHandleType):
         return f'new {result_type.java_type()}((MemorySegment) {fncall})'
     elif isinstance(result_type, CEnumType):
-        return f'new {result_type.java_type_no_annotation()}({fncall})'
+        return f'({result_type.java_type_no_annotation()}) {fncall}'
     elif isinstance(result_type, CArrayType):
         array_type = flatten_array(result_type)
         if isinstance(array_type.element, CNonRefType):

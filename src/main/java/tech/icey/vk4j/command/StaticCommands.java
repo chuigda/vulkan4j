@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.annotations.*;
+import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
@@ -33,7 +34,7 @@ public final class StaticCommands {
 
     public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetDeviceProcAddr(VkDevice device, MemorySegment pName) {
         try {
-            return (MemorySegment) HANDLE$vkGetDeviceProcAddr.invoke(device, pName);
+            return (MemorySegment) HANDLE$vkGetDeviceProcAddr.invokeExact(device, pName);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
@@ -41,7 +42,7 @@ public final class StaticCommands {
 
     public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetInstanceProcAddr(VkInstance instance, MemorySegment pName) {
         try {
-            return (MemorySegment) HANDLE$vkGetInstanceProcAddr.invoke(instance, pName);
+            return (MemorySegment) HANDLE$vkGetInstanceProcAddr.invokeExact(instance, pName);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
