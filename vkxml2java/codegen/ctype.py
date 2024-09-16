@@ -109,6 +109,11 @@ class CArrayType(CType):
         return f'{self.element.java_type()}[]'
 
     def java_layout(self) -> str:
+        if isinstance(self.element, CArrayType):
+            # try to flatten the array
+            new_size = f'{self.size} * {self.element.size}'
+            new_type = CArrayType(self.element.element, new_size)
+            return new_type.java_layout()
         return f'MemoryLayout.sequenceLayout({self.size}, {self.element.java_layout()})'
 
     def java_layout_type(self) -> str:

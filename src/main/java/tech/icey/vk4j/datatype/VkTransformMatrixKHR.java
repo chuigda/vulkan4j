@@ -17,7 +17,7 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkTransformMatrixKHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        MemoryLayout.sequenceLayout(3, MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT)).withName("matrix")
+        MemoryLayout.sequenceLayout(3 * 4, ValueLayout.JAVA_FLOAT).withName("matrix")
     );
 
     public static final PathElement PATH$matrix = PathElement.groupElement(0);
