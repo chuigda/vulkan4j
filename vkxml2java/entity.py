@@ -157,8 +157,8 @@ class Structure(Entity):
                     self.has_init_ = True
                     break
                 if isinstance(member.type, IdentifierType):
-                    if member.type.str in registry.structs:
-                        struct = registry.structs[member.type.str]
+                    if member.type.ident in registry.structs:
+                        struct = registry.structs[member.type.ident]
                         if struct.has_init(registry):
                             self.has_init_ = True
                             break

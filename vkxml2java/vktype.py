@@ -9,7 +9,7 @@ class Type:
 
 @dataclass
 class IdentifierType(Type):
-    str: str
+    ident: str
 
 
 @dataclass

@@ -478,7 +478,7 @@ def lower_type(registry: Registry, type_: Type) -> CType:
 
 
 def lower_str_type(registry: Registry, ident_type: IdentifierType) -> CType:
-    ident = ident_type.str
+    ident = ident_type.ident
 
     if ident in KNOWN_TYPES:
         ret = KNOWN_TYPES[ident]
