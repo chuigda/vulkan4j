@@ -99,6 +99,14 @@ class CEnumType(CType):
     def non_flagbits_type_name(self) -> str:
         return self.name.replace('FlagBits', 'Flags')
 
+    def java_type_no_annotation(self) -> str:
+        if self.bitwidth is None or self.bitwidth == 32:
+            return f'int'
+        elif self.bitwidth == 64:
+            return f'long'
+        else:
+            raise Exception(f'unsupported bitwidth: {self.bitwidth}')
+
 
 @dataclass
 class CArrayType(CType):
@@ -106,7 +114,7 @@ class CArrayType(CType):
     size: int | str
 
     def java_type(self) -> str:
-        return f'{self.element.java_type()}[]'
+        raise Exception('should not call java_type on array')
 
     def java_layout(self) -> str:
         if isinstance(self.element, CArrayType):
@@ -123,7 +131,19 @@ class CArrayType(CType):
         return f'{self.element.c_type()}[{self.size}]'
 
 
+def flatten_array(type_: CArrayType) -> CArrayType:
+    if isinstance(type_.element, CArrayType):
+        new_size = f'{type_.size} * {type_.element.size}'
+        new_type = CArrayType(type_.element.element, new_size)
+        return flatten_array(new_type)
+    else:
+        return type_
+
+
 class CNonRefType(CType):
+    def java_type_no_sign(self):
+        raise NotImplementedError()
+
     def vk4j_array_type(self) -> str:
         raise NotImplementedError()
 
@@ -153,6 +173,18 @@ class CFixedIntType(CNonRefType):
             return f'{unsigned_prefix}int'
         elif self.byte_size == 8:
             return f'{unsigned_prefix}long'
+        else:
+            raise Exception(f'unsupported byte size: {self.byte_size}')
+
+    def java_type_no_sign(self) -> str:
+        if self.c_name == 'char' or self.byte_size == 1:
+            return 'byte'
+        elif self.byte_size == 2:
+            return 'short'
+        elif self.byte_size == 4:
+            return 'int'
+        elif self.byte_size == 8:
+            return 'long'
         else:
             raise Exception(f'unsupported byte size: {self.byte_size}')
 
@@ -227,6 +259,9 @@ class CPlatformDependentIntType(CNonRefType):
     def java_type(self) -> str:
         return self.java_type_
 
+    def java_type_no_sign(self) -> str:
+        return self.java_type_.replace('@unsigned ', '')
+
     def java_layout(self) -> str:
         return self.java_layout_
 
@@ -260,6 +295,9 @@ class CFloatType(CNonRefType):
             return 'double'
         else:
             raise Exception(f'unsupported byte size: {self.byte_size}')
+
+    def java_type_no_sign(self) -> str:
+        return self.java_type()
 
     def java_layout(self) -> str:
         if self.byte_size == 4:

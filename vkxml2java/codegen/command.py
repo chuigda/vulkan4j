@@ -1,10 +1,7 @@
 from __future__ import annotations
-
-from collections.abc import Iterable
-from dataclasses import dataclass
 from enum import Enum as PythonEnum
 
-from .ctype import CType, lower_type, CTYPE_VOID
+from .ctype import *
 from ..entity import Registry, Command
 from ..vktype import IdentifierType
 
@@ -13,7 +10,6 @@ def generate_commands(registry: Registry):
     non_video_commands = list(filter(lambda command: 'video' not in command.name and 'Video' not in command.name, registry.commands.values()))
 
     static_commands = list(filter(lambda command: get_command_type(registry, command) == CommandType.STATIC, non_video_commands))
-
     entry_commands = list(filter(lambda command: get_command_type(registry, command) == CommandType.ENTRY, non_video_commands))
     instance_commands = list(filter(lambda command: get_command_type(registry, command) == CommandType.INSTANCE, non_video_commands))
     device_commands = list(filter(lambda command: get_command_type(registry, command) == CommandType.DEVICE, non_video_commands))
@@ -22,12 +18,23 @@ def generate_commands(registry: Registry):
 
 
 def generate_command_class_file(registry: Registry, commands: list[Command], class_name: str):
-    param_types = []
-    result_type = []
+    command_param_types: list[list[CType]] = []
+    command_result_types: list[CType] = []
 
-    command_descriptors = [generate_command_descriptor(registry, command, param_types, result_type) for command in commands]
+    command_descriptors = []
+    for command in commands:
+        param_types = []
+        result_type = []
+        command_descriptors.append(generate_command_descriptor(registry, command, param_types, result_type))
+        command_param_types.append(param_types)
+        command_result_types.append(result_type[0])
+
     command_handles = [generate_command_handle(command) for command in commands]
     command_loads = [generate_command_load(registry, command) for command in commands]
+
+    command_wrappers = []
+    for command, param_types, result_type in zip(commands, command_param_types, command_result_types):
+        command_wrappers.append(generate_command_wrapper(command, param_types, result_type))
 
     content = f'''package tech.icey.vk4j.command;
 
@@ -36,7 +43,9 @@ import java.lang.invoke.MethodHandle;
 
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.annotations.*;
+import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.util.Function2;
 
 public final class {class_name} {{
@@ -46,7 +55,8 @@ public final class {class_name} {{
     public {class_name}(Function2<String, FunctionDescriptor, MethodHandle> loader) {{
 {'\n'.join(command_loads)}
     }}
-}}
+
+{'\n'.join(command_wrappers)}}}
 '''
 
     with open(f'../src/main/java/tech/icey/vk4j/command/{class_name}.java', 'w') as file:
@@ -88,6 +98,53 @@ def generate_command_load(registry: Registry, command: Command) -> str:
         return f'''        HANDLE${command.name} = instanceLoader.apply(\"{command.name}\", DESCRIPTOR${command.name});'''
     else:
         return f'''        HANDLE${command.name} = loader.apply(\"{command.name}\", DESCRIPTOR${command.name});'''
+
+
+def generate_command_wrapper(command: Command, param_types: list[CType], result_type: CType) -> str:
+    params = []
+    for (param_type, param) in zip(param_types, command.params):
+        params.append(f'{param_type.java_type()} {param.name}')
+    param_names = list(map(lambda p: p.name, command.params))
+
+    invoke_expr = f'HANDLE${command.name}.invoke({", ".join(param_names)})'
+
+    if result_type == CTYPE_VOID:
+        return f'''    public void {command.name}({', '.join(params)}) {{
+        try {{
+            {invoke_expr};
+        }} catch (Throwable t) {{
+            throw new RuntimeException(t);
+        }}
+    }}\n'''
+    else:
+        return f'''    public {result_type.java_type()} {command.name}({', '.join(params)}) {{
+        try {{
+            return {generate_result_convert(result_type, invoke_expr)};
+        }} catch (Throwable t) {{
+            throw new RuntimeException(t);
+        }}
+    }}\n'''
+
+
+def generate_result_convert(result_type: CType, fncall: str) -> str:
+    if isinstance(result_type, CPointerType):
+        return f'(MemorySegment) {fncall}'
+    elif isinstance(result_type, CHandleType):
+        return f'new {result_type.java_type()}((MemorySegment) {fncall})'
+    elif isinstance(result_type, CEnumType):
+        return f'new {result_type.java_type_no_annotation()}({fncall})'
+    elif isinstance(result_type, CArrayType):
+        array_type = flatten_array(result_type)
+        if isinstance(array_type.element, CNonRefType):
+            raise NotImplementedError()
+        else:
+            raise NotImplementedError()
+    elif isinstance(result_type, CNonRefType):
+        return f'({result_type.java_type_no_sign()}) {fncall}'
+    elif isinstance(result_type, CStructType) or isinstance(result_type, CUnionType):
+        return f'new {result_type.name}((MemorySegment) {fncall})'
+    else:
+        raise ValueError(f'Unsupported result type: {result_type}')
 
 
 class CommandType(PythonEnum):

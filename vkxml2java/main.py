@@ -26,7 +26,7 @@ def application_start():
     # print('generating constants')
     # with open(f'../src/main/java/tech/icey/vk4j/Constants.java', 'w') as f:
     #     f.write(generate_constants(registry, registry.constants.values()))
-
+    #
     # print('generating structs')
     # for struct in registry.structs.values():
     #     if 'Video' in struct.name:
