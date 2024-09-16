@@ -50,7 +50,7 @@ public record VkBaseOutStructure(MemorySegment segment) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
     
-    public VkBaseOutStructure pNext() {
+    public @nullable VkBaseOutStructure pNext() {
         MemorySegment s = pNextRaw();
         if (s.address() == 0) {
             return null;
@@ -58,7 +58,7 @@ public record VkBaseOutStructure(MemorySegment segment) {
         return new VkBaseOutStructure(s);
     }
 
-    public void pNext(VkBaseOutStructure value) {
+    public void pNext(@nullable VkBaseOutStructure value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNextRaw(s);
     }

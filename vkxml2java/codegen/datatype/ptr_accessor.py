@@ -64,8 +64,6 @@ def generate_p_enum_type_accessor(pointee_type: CEnumType, member: Member) -> st
     else:
         raise ValueError(f'Unsupported bitwidth for enum type: {pointee_type.bitwidth}')
 
-
-
     return f'''    public @pointer(target={pointee_type.non_flagbits_type_name()}.class) MemorySegment {member.name}Raw() {{
         return segment.get(LAYOUT${member.name}, OFFSET${member.name});
     }}
@@ -74,12 +72,18 @@ def generate_p_enum_type_accessor(pointee_type: CEnumType, member: Member) -> st
         segment.set(LAYOUT${member.name}, OFFSET${member.name}, value);
     }}
     
-    public {int_type.vk4j_ptr_type()} {member.name}() {{
-        return new {int_type.vk4j_ptr_type_no_sign()}({member.name}Raw());
+    public @nullable {int_type.vk4j_ptr_type()} {member.name}() {{
+        MemorySegment s = {member.name}Raw();
+        if (s.address() == 0) {{
+            return null;
+        }}
+        
+        return new {int_type.vk4j_ptr_type_no_sign()}(s);
     }}
     
-    public void {member.name}({int_type.vk4j_ptr_type()} value) {{
-        {member.name}Raw(value.segment());
+    public void {member.name}(@nullable {int_type.vk4j_ptr_type()} value) {{
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        {member.name}Raw(s);
     }}\n\n'''
 
 
@@ -92,7 +96,7 @@ def generate_p_ref_type_accessor(pointee_type: CStructType | CUnionType | CHandl
         segment.set(LAYOUT${member.name}, OFFSET${member.name}, value);
     }}
     
-    public {pointee_type.java_type()} {member.name}() {{
+    public @nullable {pointee_type.java_type()} {member.name}() {{
         MemorySegment s = {member.name}Raw();
         if (s.address() == 0) {{
             return null;
@@ -100,7 +104,7 @@ def generate_p_ref_type_accessor(pointee_type: CStructType | CUnionType | CHandl
         return new {pointee_type.java_type()}(s);
     }}
 
-    public void {member.name}({pointee_type.java_type()} value) {{
+    public void {member.name}(@nullable {pointee_type.java_type()} value) {{
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         {member.name}Raw(s);
     }}\n\n'''

@@ -107,7 +107,7 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
         segment.set(LAYOUT$pSplitInstanceBindRegions, OFFSET$pSplitInstanceBindRegions, value);
     }
     
-    public VkRect2D pSplitInstanceBindRegions() {
+    public @nullable VkRect2D pSplitInstanceBindRegions() {
         MemorySegment s = pSplitInstanceBindRegionsRaw();
         if (s.address() == 0) {
             return null;
@@ -115,7 +115,7 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
         return new VkRect2D(s);
     }
 
-    public void pSplitInstanceBindRegions(VkRect2D value) {
+    public void pSplitInstanceBindRegions(@nullable VkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSplitInstanceBindRegionsRaw(s);
     }

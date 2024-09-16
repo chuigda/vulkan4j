@@ -87,7 +87,7 @@ public record VkOpticalFlowExecuteInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
     
-    public VkRect2D pRegions() {
+    public @nullable VkRect2D pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {
             return null;
@@ -95,7 +95,7 @@ public record VkOpticalFlowExecuteInfoNV(MemorySegment segment) {
         return new VkRect2D(s);
     }
 
-    public void pRegions(VkRect2D value) {
+    public void pRegions(@nullable VkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
     }

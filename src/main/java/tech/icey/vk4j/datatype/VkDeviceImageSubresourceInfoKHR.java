@@ -67,7 +67,7 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
     
-    public VkImageCreateInfo pCreateInfo() {
+    public @nullable VkImageCreateInfo pCreateInfo() {
         MemorySegment s = pCreateInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -75,7 +75,7 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
         return new VkImageCreateInfo(s);
     }
 
-    public void pCreateInfo(VkImageCreateInfo value) {
+    public void pCreateInfo(@nullable VkImageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCreateInfoRaw(s);
     }
@@ -88,7 +88,7 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pSubresource, OFFSET$pSubresource, value);
     }
     
-    public VkImageSubresource2KHR pSubresource() {
+    public @nullable VkImageSubresource2KHR pSubresource() {
         MemorySegment s = pSubresourceRaw();
         if (s.address() == 0) {
             return null;
@@ -96,7 +96,7 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
         return new VkImageSubresource2KHR(s);
     }
 
-    public void pSubresource(VkImageSubresource2KHR value) {
+    public void pSubresource(@nullable VkImageSubresource2KHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSubresourceRaw(s);
     }

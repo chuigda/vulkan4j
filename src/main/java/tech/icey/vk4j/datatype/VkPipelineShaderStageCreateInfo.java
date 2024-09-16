@@ -119,7 +119,7 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
     }
     
-    public VkSpecializationInfo pSpecializationInfo() {
+    public @nullable VkSpecializationInfo pSpecializationInfo() {
         MemorySegment s = pSpecializationInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -127,7 +127,7 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) {
         return new VkSpecializationInfo(s);
     }
 
-    public void pSpecializationInfo(VkSpecializationInfo value) {
+    public void pSpecializationInfo(@nullable VkSpecializationInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSpecializationInfoRaw(s);
     }

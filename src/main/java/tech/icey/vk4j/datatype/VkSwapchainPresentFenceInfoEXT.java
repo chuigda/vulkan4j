@@ -75,7 +75,7 @@ public record VkSwapchainPresentFenceInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pFences, OFFSET$pFences, value);
     }
     
-    public VkFence pFences() {
+    public @nullable VkFence pFences() {
         MemorySegment s = pFencesRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkSwapchainPresentFenceInfoEXT(MemorySegment segment) {
         return new VkFence(s);
     }
 
-    public void pFences(VkFence value) {
+    public void pFences(@nullable VkFence value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFencesRaw(s);
     }

@@ -87,7 +87,7 @@ public record VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) {
         segment.set(LAYOUT$pDeviceRenderAreas, OFFSET$pDeviceRenderAreas, value);
     }
     
-    public VkRect2D pDeviceRenderAreas() {
+    public @nullable VkRect2D pDeviceRenderAreas() {
         MemorySegment s = pDeviceRenderAreasRaw();
         if (s.address() == 0) {
             return null;
@@ -95,7 +95,7 @@ public record VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) {
         return new VkRect2D(s);
     }
 
-    public void pDeviceRenderAreas(VkRect2D value) {
+    public void pDeviceRenderAreas(@nullable VkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDeviceRenderAreasRaw(s);
     }

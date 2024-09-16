@@ -95,12 +95,18 @@ public record VkPipelineRenderingCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pColorAttachmentFormats, OFFSET$pColorAttachmentFormats, value);
     }
     
-    public IntPtr pColorAttachmentFormats() {
-        return new IntPtr(pColorAttachmentFormatsRaw());
+    public @nullable IntPtr pColorAttachmentFormats() {
+        MemorySegment s = pColorAttachmentFormatsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pColorAttachmentFormats(IntPtr value) {
-        pColorAttachmentFormatsRaw(value.segment());
+    public void pColorAttachmentFormats(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pColorAttachmentFormatsRaw(s);
     }
 
     public @enumtype(VkFormat.class) int depthAttachmentFormat() {

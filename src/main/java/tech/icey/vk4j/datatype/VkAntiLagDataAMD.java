@@ -87,7 +87,7 @@ public record VkAntiLagDataAMD(MemorySegment segment) {
         segment.set(LAYOUT$pPresentationInfo, OFFSET$pPresentationInfo, value);
     }
     
-    public VkAntiLagPresentationInfoAMD pPresentationInfo() {
+    public @nullable VkAntiLagPresentationInfoAMD pPresentationInfo() {
         MemorySegment s = pPresentationInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -95,7 +95,7 @@ public record VkAntiLagDataAMD(MemorySegment segment) {
         return new VkAntiLagPresentationInfoAMD(s);
     }
 
-    public void pPresentationInfo(VkAntiLagPresentationInfoAMD value) {
+    public void pPresentationInfo(@nullable VkAntiLagPresentationInfoAMD value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPresentationInfoRaw(s);
     }

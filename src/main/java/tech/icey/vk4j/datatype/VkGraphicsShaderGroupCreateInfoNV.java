@@ -83,7 +83,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
     
-    public VkPipelineShaderStageCreateInfo pStages() {
+    public @nullable VkPipelineShaderStageCreateInfo pStages() {
         MemorySegment s = pStagesRaw();
         if (s.address() == 0) {
             return null;
@@ -91,7 +91,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) {
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
-    public void pStages(VkPipelineShaderStageCreateInfo value) {
+    public void pStages(@nullable VkPipelineShaderStageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStagesRaw(s);
     }
@@ -104,7 +104,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$pVertexInputState, OFFSET$pVertexInputState, value);
     }
     
-    public VkPipelineVertexInputStateCreateInfo pVertexInputState() {
+    public @nullable VkPipelineVertexInputStateCreateInfo pVertexInputState() {
         MemorySegment s = pVertexInputStateRaw();
         if (s.address() == 0) {
             return null;
@@ -112,7 +112,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) {
         return new VkPipelineVertexInputStateCreateInfo(s);
     }
 
-    public void pVertexInputState(VkPipelineVertexInputStateCreateInfo value) {
+    public void pVertexInputState(@nullable VkPipelineVertexInputStateCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexInputStateRaw(s);
     }
@@ -125,7 +125,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$pTessellationState, OFFSET$pTessellationState, value);
     }
     
-    public VkPipelineTessellationStateCreateInfo pTessellationState() {
+    public @nullable VkPipelineTessellationStateCreateInfo pTessellationState() {
         MemorySegment s = pTessellationStateRaw();
         if (s.address() == 0) {
             return null;
@@ -133,7 +133,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) {
         return new VkPipelineTessellationStateCreateInfo(s);
     }
 
-    public void pTessellationState(VkPipelineTessellationStateCreateInfo value) {
+    public void pTessellationState(@nullable VkPipelineTessellationStateCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTessellationStateRaw(s);
     }

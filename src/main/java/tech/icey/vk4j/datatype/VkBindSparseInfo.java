@@ -107,7 +107,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
     
-    public VkSemaphore pWaitSemaphores() {
+    public @nullable VkSemaphore pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.address() == 0) {
             return null;
@@ -115,7 +115,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
         return new VkSemaphore(s);
     }
 
-    public void pWaitSemaphores(VkSemaphore value) {
+    public void pWaitSemaphores(@nullable VkSemaphore value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoresRaw(s);
     }
@@ -136,7 +136,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
         segment.set(LAYOUT$pBufferBinds, OFFSET$pBufferBinds, value);
     }
     
-    public VkSparseBufferMemoryBindInfo pBufferBinds() {
+    public @nullable VkSparseBufferMemoryBindInfo pBufferBinds() {
         MemorySegment s = pBufferBindsRaw();
         if (s.address() == 0) {
             return null;
@@ -144,7 +144,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
         return new VkSparseBufferMemoryBindInfo(s);
     }
 
-    public void pBufferBinds(VkSparseBufferMemoryBindInfo value) {
+    public void pBufferBinds(@nullable VkSparseBufferMemoryBindInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferBindsRaw(s);
     }
@@ -165,7 +165,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
         segment.set(LAYOUT$pImageOpaqueBinds, OFFSET$pImageOpaqueBinds, value);
     }
     
-    public VkSparseImageOpaqueMemoryBindInfo pImageOpaqueBinds() {
+    public @nullable VkSparseImageOpaqueMemoryBindInfo pImageOpaqueBinds() {
         MemorySegment s = pImageOpaqueBindsRaw();
         if (s.address() == 0) {
             return null;
@@ -173,7 +173,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
         return new VkSparseImageOpaqueMemoryBindInfo(s);
     }
 
-    public void pImageOpaqueBinds(VkSparseImageOpaqueMemoryBindInfo value) {
+    public void pImageOpaqueBinds(@nullable VkSparseImageOpaqueMemoryBindInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageOpaqueBindsRaw(s);
     }
@@ -194,7 +194,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
         segment.set(LAYOUT$pImageBinds, OFFSET$pImageBinds, value);
     }
     
-    public VkSparseImageMemoryBindInfo pImageBinds() {
+    public @nullable VkSparseImageMemoryBindInfo pImageBinds() {
         MemorySegment s = pImageBindsRaw();
         if (s.address() == 0) {
             return null;
@@ -202,7 +202,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
         return new VkSparseImageMemoryBindInfo(s);
     }
 
-    public void pImageBinds(VkSparseImageMemoryBindInfo value) {
+    public void pImageBinds(@nullable VkSparseImageMemoryBindInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageBindsRaw(s);
     }
@@ -223,7 +223,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
         segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
     
-    public VkSemaphore pSignalSemaphores() {
+    public @nullable VkSemaphore pSignalSemaphores() {
         MemorySegment s = pSignalSemaphoresRaw();
         if (s.address() == 0) {
             return null;
@@ -231,7 +231,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
         return new VkSemaphore(s);
     }
 
-    public void pSignalSemaphores(VkSemaphore value) {
+    public void pSignalSemaphores(@nullable VkSemaphore value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoresRaw(s);
     }

@@ -99,7 +99,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
         segment.set(LAYOUT$pDiscardRectangles, OFFSET$pDiscardRectangles, value);
     }
     
-    public VkRect2D pDiscardRectangles() {
+    public @nullable VkRect2D pDiscardRectangles() {
         MemorySegment s = pDiscardRectanglesRaw();
         if (s.address() == 0) {
             return null;
@@ -107,7 +107,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
         return new VkRect2D(s);
     }
 
-    public void pDiscardRectangles(VkRect2D value) {
+    public void pDiscardRectangles(@nullable VkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDiscardRectanglesRaw(s);
     }

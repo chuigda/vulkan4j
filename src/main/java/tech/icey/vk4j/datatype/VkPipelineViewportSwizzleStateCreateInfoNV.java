@@ -87,7 +87,7 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
         segment.set(LAYOUT$pViewportSwizzles, OFFSET$pViewportSwizzles, value);
     }
     
-    public VkViewportSwizzleNV pViewportSwizzles() {
+    public @nullable VkViewportSwizzleNV pViewportSwizzles() {
         MemorySegment s = pViewportSwizzlesRaw();
         if (s.address() == 0) {
             return null;
@@ -95,7 +95,7 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
         return new VkViewportSwizzleNV(s);
     }
 
-    public void pViewportSwizzles(VkViewportSwizzleNV value) {
+    public void pViewportSwizzles(@nullable VkViewportSwizzleNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewportSwizzlesRaw(s);
     }

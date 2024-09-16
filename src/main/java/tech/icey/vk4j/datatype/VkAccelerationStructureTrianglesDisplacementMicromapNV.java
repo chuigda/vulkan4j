@@ -227,7 +227,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
         segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
     }
     
-    public VkMicromapUsageEXT pUsageCounts() {
+    public @nullable VkMicromapUsageEXT pUsageCounts() {
         MemorySegment s = pUsageCountsRaw();
         if (s.address() == 0) {
             return null;
@@ -235,7 +235,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
         return new VkMicromapUsageEXT(s);
     }
 
-    public void pUsageCounts(VkMicromapUsageEXT value) {
+    public void pUsageCounts(@nullable VkMicromapUsageEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pUsageCountsRaw(s);
     }

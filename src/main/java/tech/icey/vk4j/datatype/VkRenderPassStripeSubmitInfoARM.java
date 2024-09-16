@@ -75,7 +75,7 @@ public record VkRenderPassStripeSubmitInfoARM(MemorySegment segment) {
         segment.set(LAYOUT$pStripeSemaphoreInfos, OFFSET$pStripeSemaphoreInfos, value);
     }
     
-    public VkSemaphoreSubmitInfo pStripeSemaphoreInfos() {
+    public @nullable VkSemaphoreSubmitInfo pStripeSemaphoreInfos() {
         MemorySegment s = pStripeSemaphoreInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkRenderPassStripeSubmitInfoARM(MemorySegment segment) {
         return new VkSemaphoreSubmitInfo(s);
     }
 
-    public void pStripeSemaphoreInfos(VkSemaphoreSubmitInfo value) {
+    public void pStripeSemaphoreInfos(@nullable VkSemaphoreSubmitInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStripeSemaphoreInfosRaw(s);
     }

@@ -63,12 +63,18 @@ public record VkBindMemoryStatusKHR(MemorySegment segment) {
         segment.set(LAYOUT$pResult, OFFSET$pResult, value);
     }
     
-    public IntPtr pResult() {
-        return new IntPtr(pResultRaw());
+    public @nullable IntPtr pResult() {
+        MemorySegment s = pResultRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pResult(IntPtr value) {
-        pResultRaw(value.segment());
+    public void pResult(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pResultRaw(s);
     }
 
 

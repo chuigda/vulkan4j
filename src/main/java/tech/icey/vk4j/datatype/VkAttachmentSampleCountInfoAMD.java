@@ -79,12 +79,18 @@ public record VkAttachmentSampleCountInfoAMD(MemorySegment segment) {
         segment.set(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples, value);
     }
     
-    public IntPtr pColorAttachmentSamples() {
-        return new IntPtr(pColorAttachmentSamplesRaw());
+    public @nullable IntPtr pColorAttachmentSamples() {
+        MemorySegment s = pColorAttachmentSamplesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pColorAttachmentSamples(IntPtr value) {
-        pColorAttachmentSamplesRaw(value.segment());
+    public void pColorAttachmentSamples(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pColorAttachmentSamplesRaw(s);
     }
 
     public @enumtype(VkSampleCountFlags.class) int depthStencilAttachmentSamples() {

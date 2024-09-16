@@ -91,12 +91,18 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         segment.set(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts, value);
     }
     
-    public IntPtr pCopySrcLayouts() {
-        return new IntPtr(pCopySrcLayoutsRaw());
+    public @nullable IntPtr pCopySrcLayouts() {
+        MemorySegment s = pCopySrcLayoutsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pCopySrcLayouts(IntPtr value) {
-        pCopySrcLayoutsRaw(value.segment());
+    public void pCopySrcLayouts(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCopySrcLayoutsRaw(s);
     }
 
     public @unsigned int copyDstLayoutCount() {
@@ -115,12 +121,18 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
     }
     
-    public IntPtr pCopyDstLayouts() {
-        return new IntPtr(pCopyDstLayoutsRaw());
+    public @nullable IntPtr pCopyDstLayouts() {
+        MemorySegment s = pCopyDstLayoutsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pCopyDstLayouts(IntPtr value) {
-        pCopyDstLayoutsRaw(value.segment());
+    public void pCopyDstLayouts(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCopyDstLayoutsRaw(s);
     }
 
     public MemorySegment optimalTilingLayoutUUIDRaw() {

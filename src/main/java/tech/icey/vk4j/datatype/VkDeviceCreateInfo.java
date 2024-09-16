@@ -107,7 +107,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos, value);
     }
     
-    public VkDeviceQueueCreateInfo pQueueCreateInfos() {
+    public @nullable VkDeviceQueueCreateInfo pQueueCreateInfos() {
         MemorySegment s = pQueueCreateInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -115,7 +115,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) {
         return new VkDeviceQueueCreateInfo(s);
     }
 
-    public void pQueueCreateInfos(VkDeviceQueueCreateInfo value) {
+    public void pQueueCreateInfos(@nullable VkDeviceQueueCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueCreateInfosRaw(s);
     }
@@ -160,7 +160,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures, value);
     }
     
-    public VkPhysicalDeviceFeatures pEnabledFeatures() {
+    public @nullable VkPhysicalDeviceFeatures pEnabledFeatures() {
         MemorySegment s = pEnabledFeaturesRaw();
         if (s.address() == 0) {
             return null;
@@ -168,7 +168,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) {
         return new VkPhysicalDeviceFeatures(s);
     }
 
-    public void pEnabledFeatures(VkPhysicalDeviceFeatures value) {
+    public void pEnabledFeatures(@nullable VkPhysicalDeviceFeatures value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pEnabledFeaturesRaw(s);
     }

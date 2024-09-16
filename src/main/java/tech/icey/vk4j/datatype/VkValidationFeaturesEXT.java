@@ -83,12 +83,18 @@ public record VkValidationFeaturesEXT(MemorySegment segment) {
         segment.set(LAYOUT$pEnabledValidationFeatures, OFFSET$pEnabledValidationFeatures, value);
     }
     
-    public IntPtr pEnabledValidationFeatures() {
-        return new IntPtr(pEnabledValidationFeaturesRaw());
+    public @nullable IntPtr pEnabledValidationFeatures() {
+        MemorySegment s = pEnabledValidationFeaturesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pEnabledValidationFeatures(IntPtr value) {
-        pEnabledValidationFeaturesRaw(value.segment());
+    public void pEnabledValidationFeatures(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pEnabledValidationFeaturesRaw(s);
     }
 
     public @unsigned int disabledValidationFeatureCount() {
@@ -107,12 +113,18 @@ public record VkValidationFeaturesEXT(MemorySegment segment) {
         segment.set(LAYOUT$pDisabledValidationFeatures, OFFSET$pDisabledValidationFeatures, value);
     }
     
-    public IntPtr pDisabledValidationFeatures() {
-        return new IntPtr(pDisabledValidationFeaturesRaw());
+    public @nullable IntPtr pDisabledValidationFeatures() {
+        MemorySegment s = pDisabledValidationFeaturesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pDisabledValidationFeatures(IntPtr value) {
-        pDisabledValidationFeaturesRaw(value.segment());
+    public void pDisabledValidationFeatures(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDisabledValidationFeaturesRaw(s);
     }
 
 

@@ -87,7 +87,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pAddressInfos, OFFSET$pAddressInfos, value);
     }
     
-    public VkDeviceFaultAddressInfoEXT pAddressInfos() {
+    public @nullable VkDeviceFaultAddressInfoEXT pAddressInfos() {
         MemorySegment s = pAddressInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -95,7 +95,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
         return new VkDeviceFaultAddressInfoEXT(s);
     }
 
-    public void pAddressInfos(VkDeviceFaultAddressInfoEXT value) {
+    public void pAddressInfos(@nullable VkDeviceFaultAddressInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAddressInfosRaw(s);
     }
@@ -108,7 +108,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pVendorInfos, OFFSET$pVendorInfos, value);
     }
     
-    public VkDeviceFaultVendorInfoEXT pVendorInfos() {
+    public @nullable VkDeviceFaultVendorInfoEXT pVendorInfos() {
         MemorySegment s = pVendorInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -116,7 +116,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
         return new VkDeviceFaultVendorInfoEXT(s);
     }
 
-    public void pVendorInfos(VkDeviceFaultVendorInfoEXT value) {
+    public void pVendorInfos(@nullable VkDeviceFaultVendorInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVendorInfosRaw(s);
     }

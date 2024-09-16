@@ -57,7 +57,7 @@ public record VkSpecializationInfo(MemorySegment segment) {
         segment.set(LAYOUT$pMapEntries, OFFSET$pMapEntries, value);
     }
     
-    public VkSpecializationMapEntry pMapEntries() {
+    public @nullable VkSpecializationMapEntry pMapEntries() {
         MemorySegment s = pMapEntriesRaw();
         if (s.address() == 0) {
             return null;
@@ -65,7 +65,7 @@ public record VkSpecializationInfo(MemorySegment segment) {
         return new VkSpecializationMapEntry(s);
     }
 
-    public void pMapEntries(VkSpecializationMapEntry value) {
+    public void pMapEntries(@nullable VkSpecializationMapEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMapEntriesRaw(s);
     }

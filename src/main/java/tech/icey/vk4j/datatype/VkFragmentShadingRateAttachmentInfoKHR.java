@@ -67,7 +67,7 @@ public record VkFragmentShadingRateAttachmentInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pFragmentShadingRateAttachment, OFFSET$pFragmentShadingRateAttachment, value);
     }
     
-    public VkAttachmentReference2 pFragmentShadingRateAttachment() {
+    public @nullable VkAttachmentReference2 pFragmentShadingRateAttachment() {
         MemorySegment s = pFragmentShadingRateAttachmentRaw();
         if (s.address() == 0) {
             return null;
@@ -75,7 +75,7 @@ public record VkFragmentShadingRateAttachmentInfoKHR(MemorySegment segment) {
         return new VkAttachmentReference2(s);
     }
 
-    public void pFragmentShadingRateAttachment(VkAttachmentReference2 value) {
+    public void pFragmentShadingRateAttachment(@nullable VkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFragmentShadingRateAttachmentRaw(s);
     }

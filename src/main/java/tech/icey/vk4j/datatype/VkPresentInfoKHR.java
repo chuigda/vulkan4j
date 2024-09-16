@@ -91,7 +91,7 @@ public record VkPresentInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
     
-    public VkSemaphore pWaitSemaphores() {
+    public @nullable VkSemaphore pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.address() == 0) {
             return null;
@@ -99,7 +99,7 @@ public record VkPresentInfoKHR(MemorySegment segment) {
         return new VkSemaphore(s);
     }
 
-    public void pWaitSemaphores(VkSemaphore value) {
+    public void pWaitSemaphores(@nullable VkSemaphore value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoresRaw(s);
     }
@@ -120,7 +120,7 @@ public record VkPresentInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pSwapchains, OFFSET$pSwapchains, value);
     }
     
-    public VkSwapchainKHR pSwapchains() {
+    public @nullable VkSwapchainKHR pSwapchains() {
         MemorySegment s = pSwapchainsRaw();
         if (s.address() == 0) {
             return null;
@@ -128,7 +128,7 @@ public record VkPresentInfoKHR(MemorySegment segment) {
         return new VkSwapchainKHR(s);
     }
 
-    public void pSwapchains(VkSwapchainKHR value) {
+    public void pSwapchains(@nullable VkSwapchainKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSwapchainsRaw(s);
     }
@@ -157,12 +157,18 @@ public record VkPresentInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pResults, OFFSET$pResults, value);
     }
     
-    public IntPtr pResults() {
-        return new IntPtr(pResultsRaw());
+    public @nullable IntPtr pResults() {
+        MemorySegment s = pResultsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pResults(IntPtr value) {
-        pResultsRaw(value.segment());
+    public void pResults(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pResultsRaw(s);
     }
 
 

@@ -107,7 +107,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$pTokens, OFFSET$pTokens, value);
     }
     
-    public VkIndirectCommandsLayoutTokenNV pTokens() {
+    public @nullable VkIndirectCommandsLayoutTokenNV pTokens() {
         MemorySegment s = pTokensRaw();
         if (s.address() == 0) {
             return null;
@@ -115,7 +115,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
         return new VkIndirectCommandsLayoutTokenNV(s);
     }
 
-    public void pTokens(VkIndirectCommandsLayoutTokenNV value) {
+    public void pTokens(@nullable VkIndirectCommandsLayoutTokenNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTokensRaw(s);
     }

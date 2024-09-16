@@ -199,12 +199,18 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
         segment.set(LAYOUT$pIndexTypes, OFFSET$pIndexTypes, value);
     }
     
-    public IntPtr pIndexTypes() {
-        return new IntPtr(pIndexTypesRaw());
+    public @nullable IntPtr pIndexTypes() {
+        MemorySegment s = pIndexTypesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pIndexTypes(IntPtr value) {
-        pIndexTypesRaw(value.segment());
+    public void pIndexTypes(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pIndexTypesRaw(s);
     }
 
     public @pointer(comment="uint32_t*") MemorySegment pIndexTypeValuesRaw() {

@@ -91,7 +91,7 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) {
         segment.set(LAYOUT$pSemaphores, OFFSET$pSemaphores, value);
     }
     
-    public VkSemaphore pSemaphores() {
+    public @nullable VkSemaphore pSemaphores() {
         MemorySegment s = pSemaphoresRaw();
         if (s.address() == 0) {
             return null;
@@ -99,7 +99,7 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) {
         return new VkSemaphore(s);
     }
 
-    public void pSemaphores(VkSemaphore value) {
+    public void pSemaphores(@nullable VkSemaphore value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSemaphoresRaw(s);
     }

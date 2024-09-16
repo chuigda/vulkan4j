@@ -95,7 +95,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pViewports, OFFSET$pViewports, value);
     }
     
-    public VkViewport pViewports() {
+    public @nullable VkViewport pViewports() {
         MemorySegment s = pViewportsRaw();
         if (s.address() == 0) {
             return null;
@@ -103,7 +103,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) {
         return new VkViewport(s);
     }
 
-    public void pViewports(VkViewport value) {
+    public void pViewports(@nullable VkViewport value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewportsRaw(s);
     }
@@ -124,7 +124,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pScissors, OFFSET$pScissors, value);
     }
     
-    public VkRect2D pScissors() {
+    public @nullable VkRect2D pScissors() {
         MemorySegment s = pScissorsRaw();
         if (s.address() == 0) {
             return null;
@@ -132,7 +132,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) {
         return new VkRect2D(s);
     }
 
-    public void pScissors(VkRect2D value) {
+    public void pScissors(@nullable VkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pScissorsRaw(s);
     }

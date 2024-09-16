@@ -63,7 +63,7 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pRenderPassFeedback, OFFSET$pRenderPassFeedback, value);
     }
     
-    public VkRenderPassCreationFeedbackInfoEXT pRenderPassFeedback() {
+    public @nullable VkRenderPassCreationFeedbackInfoEXT pRenderPassFeedback() {
         MemorySegment s = pRenderPassFeedbackRaw();
         if (s.address() == 0) {
             return null;
@@ -71,7 +71,7 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(MemorySegment segment) {
         return new VkRenderPassCreationFeedbackInfoEXT(s);
     }
 
-    public void pRenderPassFeedback(VkRenderPassCreationFeedbackInfoEXT value) {
+    public void pRenderPassFeedback(@nullable VkRenderPassCreationFeedbackInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRenderPassFeedbackRaw(s);
     }

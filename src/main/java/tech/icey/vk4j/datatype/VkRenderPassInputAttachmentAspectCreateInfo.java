@@ -75,7 +75,7 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(MemorySegment segment)
         segment.set(LAYOUT$pAspectReferences, OFFSET$pAspectReferences, value);
     }
     
-    public VkInputAttachmentAspectReference pAspectReferences() {
+    public @nullable VkInputAttachmentAspectReference pAspectReferences() {
         MemorySegment s = pAspectReferencesRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(MemorySegment segment)
         return new VkInputAttachmentAspectReference(s);
     }
 
-    public void pAspectReferences(VkInputAttachmentAspectReference value) {
+    public void pAspectReferences(@nullable VkInputAttachmentAspectReference value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAspectReferencesRaw(s);
     }

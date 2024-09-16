@@ -87,7 +87,7 @@ public record VkDirectDriverLoadingListLUNARG(MemorySegment segment) {
         segment.set(LAYOUT$pDrivers, OFFSET$pDrivers, value);
     }
     
-    public VkDirectDriverLoadingInfoLUNARG pDrivers() {
+    public @nullable VkDirectDriverLoadingInfoLUNARG pDrivers() {
         MemorySegment s = pDriversRaw();
         if (s.address() == 0) {
             return null;
@@ -95,7 +95,7 @@ public record VkDirectDriverLoadingListLUNARG(MemorySegment segment) {
         return new VkDirectDriverLoadingInfoLUNARG(s);
     }
 
-    public void pDrivers(VkDirectDriverLoadingInfoLUNARG value) {
+    public void pDrivers(@nullable VkDirectDriverLoadingInfoLUNARG value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDriversRaw(s);
     }

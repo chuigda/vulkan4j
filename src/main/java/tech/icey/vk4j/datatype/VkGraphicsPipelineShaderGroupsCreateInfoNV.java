@@ -83,7 +83,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
     
-    public VkGraphicsShaderGroupCreateInfoNV pGroups() {
+    public @nullable VkGraphicsShaderGroupCreateInfoNV pGroups() {
         MemorySegment s = pGroupsRaw();
         if (s.address() == 0) {
             return null;
@@ -91,7 +91,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         return new VkGraphicsShaderGroupCreateInfoNV(s);
     }
 
-    public void pGroups(VkGraphicsShaderGroupCreateInfoNV value) {
+    public void pGroups(@nullable VkGraphicsShaderGroupCreateInfoNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGroupsRaw(s);
     }
@@ -112,7 +112,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         segment.set(LAYOUT$pPipelines, OFFSET$pPipelines, value);
     }
     
-    public VkPipeline pPipelines() {
+    public @nullable VkPipeline pPipelines() {
         MemorySegment s = pPipelinesRaw();
         if (s.address() == 0) {
             return null;
@@ -120,7 +120,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         return new VkPipeline(s);
     }
 
-    public void pPipelines(VkPipeline value) {
+    public void pPipelines(@nullable VkPipeline value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelinesRaw(s);
     }

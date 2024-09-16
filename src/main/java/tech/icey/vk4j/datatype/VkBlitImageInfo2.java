@@ -127,7 +127,7 @@ public record VkBlitImageInfo2(MemorySegment segment) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
     
-    public VkImageBlit2 pRegions() {
+    public @nullable VkImageBlit2 pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {
             return null;
@@ -135,7 +135,7 @@ public record VkBlitImageInfo2(MemorySegment segment) {
         return new VkImageBlit2(s);
     }
 
-    public void pRegions(VkImageBlit2 value) {
+    public void pRegions(@nullable VkImageBlit2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
     }

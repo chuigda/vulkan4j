@@ -87,7 +87,7 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
         segment.set(LAYOUT$pCustomSampleOrders, OFFSET$pCustomSampleOrders, value);
     }
     
-    public VkCoarseSampleOrderCustomNV pCustomSampleOrders() {
+    public @nullable VkCoarseSampleOrderCustomNV pCustomSampleOrders() {
         MemorySegment s = pCustomSampleOrdersRaw();
         if (s.address() == 0) {
             return null;
@@ -95,7 +95,7 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
         return new VkCoarseSampleOrderCustomNV(s);
     }
 
-    public void pCustomSampleOrders(VkCoarseSampleOrderCustomNV value) {
+    public void pCustomSampleOrders(@nullable VkCoarseSampleOrderCustomNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCustomSampleOrdersRaw(s);
     }

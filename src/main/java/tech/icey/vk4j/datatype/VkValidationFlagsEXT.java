@@ -75,12 +75,18 @@ public record VkValidationFlagsEXT(MemorySegment segment) {
         segment.set(LAYOUT$pDisabledValidationChecks, OFFSET$pDisabledValidationChecks, value);
     }
     
-    public IntPtr pDisabledValidationChecks() {
-        return new IntPtr(pDisabledValidationChecksRaw());
+    public @nullable IntPtr pDisabledValidationChecks() {
+        MemorySegment s = pDisabledValidationChecksRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pDisabledValidationChecks(IntPtr value) {
-        pDisabledValidationChecksRaw(value.segment());
+    public void pDisabledValidationChecks(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDisabledValidationChecksRaw(s);
     }
 
 

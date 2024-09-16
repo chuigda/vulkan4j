@@ -143,7 +143,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$pStreams, OFFSET$pStreams, value);
     }
     
-    public VkIndirectCommandsStreamNV pStreams() {
+    public @nullable VkIndirectCommandsStreamNV pStreams() {
         MemorySegment s = pStreamsRaw();
         if (s.address() == 0) {
             return null;
@@ -151,7 +151,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
         return new VkIndirectCommandsStreamNV(s);
     }
 
-    public void pStreams(VkIndirectCommandsStreamNV value) {
+    public void pStreams(@nullable VkIndirectCommandsStreamNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStreamsRaw(s);
     }

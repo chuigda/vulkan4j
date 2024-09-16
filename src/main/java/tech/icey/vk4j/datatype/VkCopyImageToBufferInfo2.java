@@ -111,7 +111,7 @@ public record VkCopyImageToBufferInfo2(MemorySegment segment) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
     
-    public VkBufferImageCopy2 pRegions() {
+    public @nullable VkBufferImageCopy2 pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {
             return null;
@@ -119,7 +119,7 @@ public record VkCopyImageToBufferInfo2(MemorySegment segment) {
         return new VkBufferImageCopy2(s);
     }
 
-    public void pRegions(VkBufferImageCopy2 value) {
+    public void pRegions(@nullable VkBufferImageCopy2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
     }

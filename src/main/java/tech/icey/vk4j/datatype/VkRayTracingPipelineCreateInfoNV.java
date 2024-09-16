@@ -111,7 +111,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
     
-    public VkPipelineShaderStageCreateInfo pStages() {
+    public @nullable VkPipelineShaderStageCreateInfo pStages() {
         MemorySegment s = pStagesRaw();
         if (s.address() == 0) {
             return null;
@@ -119,7 +119,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) {
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
-    public void pStages(VkPipelineShaderStageCreateInfo value) {
+    public void pStages(@nullable VkPipelineShaderStageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStagesRaw(s);
     }
@@ -140,7 +140,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
     
-    public VkRayTracingShaderGroupCreateInfoNV pGroups() {
+    public @nullable VkRayTracingShaderGroupCreateInfoNV pGroups() {
         MemorySegment s = pGroupsRaw();
         if (s.address() == 0) {
             return null;
@@ -148,7 +148,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) {
         return new VkRayTracingShaderGroupCreateInfoNV(s);
     }
 
-    public void pGroups(VkRayTracingShaderGroupCreateInfoNV value) {
+    public void pGroups(@nullable VkRayTracingShaderGroupCreateInfoNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGroupsRaw(s);
     }

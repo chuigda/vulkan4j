@@ -87,12 +87,18 @@ public record VkPipelineDynamicStateCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pDynamicStates, OFFSET$pDynamicStates, value);
     }
     
-    public IntPtr pDynamicStates() {
-        return new IntPtr(pDynamicStatesRaw());
+    public @nullable IntPtr pDynamicStates() {
+        MemorySegment s = pDynamicStatesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pDynamicStates(IntPtr value) {
-        pDynamicStatesRaw(value.segment());
+    public void pDynamicStates(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDynamicStatesRaw(s);
     }
 
 

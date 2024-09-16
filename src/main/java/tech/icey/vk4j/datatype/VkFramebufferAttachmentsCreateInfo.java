@@ -75,7 +75,7 @@ public record VkFramebufferAttachmentsCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pAttachmentImageInfos, OFFSET$pAttachmentImageInfos, value);
     }
     
-    public VkFramebufferAttachmentImageInfo pAttachmentImageInfos() {
+    public @nullable VkFramebufferAttachmentImageInfo pAttachmentImageInfos() {
         MemorySegment s = pAttachmentImageInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkFramebufferAttachmentsCreateInfo(MemorySegment segment) {
         return new VkFramebufferAttachmentImageInfo(s);
     }
 
-    public void pAttachmentImageInfos(VkFramebufferAttachmentImageInfo value) {
+    public void pAttachmentImageInfos(@nullable VkFramebufferAttachmentImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentImageInfosRaw(s);
     }

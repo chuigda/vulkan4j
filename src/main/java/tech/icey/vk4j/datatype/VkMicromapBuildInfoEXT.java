@@ -143,7 +143,7 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
     }
     
-    public VkMicromapUsageEXT pUsageCounts() {
+    public @nullable VkMicromapUsageEXT pUsageCounts() {
         MemorySegment s = pUsageCountsRaw();
         if (s.address() == 0) {
             return null;
@@ -151,7 +151,7 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) {
         return new VkMicromapUsageEXT(s);
     }
 
-    public void pUsageCounts(VkMicromapUsageEXT value) {
+    public void pUsageCounts(@nullable VkMicromapUsageEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pUsageCountsRaw(s);
     }

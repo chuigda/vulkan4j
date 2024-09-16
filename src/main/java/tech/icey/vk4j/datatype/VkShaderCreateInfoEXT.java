@@ -178,7 +178,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
     
-    public VkDescriptorSetLayout pSetLayouts() {
+    public @nullable VkDescriptorSetLayout pSetLayouts() {
         MemorySegment s = pSetLayoutsRaw();
         if (s.address() == 0) {
             return null;
@@ -186,7 +186,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
         return new VkDescriptorSetLayout(s);
     }
 
-    public void pSetLayouts(VkDescriptorSetLayout value) {
+    public void pSetLayouts(@nullable VkDescriptorSetLayout value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSetLayoutsRaw(s);
     }
@@ -207,7 +207,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
     
-    public VkPushConstantRange pPushConstantRanges() {
+    public @nullable VkPushConstantRange pPushConstantRanges() {
         MemorySegment s = pPushConstantRangesRaw();
         if (s.address() == 0) {
             return null;
@@ -215,7 +215,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
         return new VkPushConstantRange(s);
     }
 
-    public void pPushConstantRanges(VkPushConstantRange value) {
+    public void pPushConstantRanges(@nullable VkPushConstantRange value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPushConstantRangesRaw(s);
     }
@@ -228,7 +228,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
     }
     
-    public VkSpecializationInfo pSpecializationInfo() {
+    public @nullable VkSpecializationInfo pSpecializationInfo() {
         MemorySegment s = pSpecializationInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -236,7 +236,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
         return new VkSpecializationInfo(s);
     }
 
-    public void pSpecializationInfo(VkSpecializationInfo value) {
+    public void pSpecializationInfo(@nullable VkSpecializationInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSpecializationInfoRaw(s);
     }

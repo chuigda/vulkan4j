@@ -99,7 +99,7 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
     
-    public VkSampleLocationEXT pSampleLocations() {
+    public @nullable VkSampleLocationEXT pSampleLocations() {
         MemorySegment s = pSampleLocationsRaw();
         if (s.address() == 0) {
             return null;
@@ -107,7 +107,7 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) {
         return new VkSampleLocationEXT(s);
     }
 
-    public void pSampleLocations(VkSampleLocationEXT value) {
+    public void pSampleLocations(@nullable VkSampleLocationEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSampleLocationsRaw(s);
     }

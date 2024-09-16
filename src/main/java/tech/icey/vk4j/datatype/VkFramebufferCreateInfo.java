@@ -111,7 +111,7 @@ public record VkFramebufferCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
     
-    public VkImageView pAttachments() {
+    public @nullable VkImageView pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.address() == 0) {
             return null;
@@ -119,7 +119,7 @@ public record VkFramebufferCreateInfo(MemorySegment segment) {
         return new VkImageView(s);
     }
 
-    public void pAttachments(VkImageView value) {
+    public void pAttachments(@nullable VkImageView value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
     }

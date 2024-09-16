@@ -87,7 +87,7 @@ public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) {
         segment.set(LAYOUT$pDepthStencilResolveAttachment, OFFSET$pDepthStencilResolveAttachment, value);
     }
     
-    public VkAttachmentReference2 pDepthStencilResolveAttachment() {
+    public @nullable VkAttachmentReference2 pDepthStencilResolveAttachment() {
         MemorySegment s = pDepthStencilResolveAttachmentRaw();
         if (s.address() == 0) {
             return null;
@@ -95,7 +95,7 @@ public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) {
         return new VkAttachmentReference2(s);
     }
 
-    public void pDepthStencilResolveAttachment(VkAttachmentReference2 value) {
+    public void pDepthStencilResolveAttachment(@nullable VkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDepthStencilResolveAttachmentRaw(s);
     }

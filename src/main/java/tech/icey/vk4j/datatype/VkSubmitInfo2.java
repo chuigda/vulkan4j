@@ -103,7 +103,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
         segment.set(LAYOUT$pWaitSemaphoreInfos, OFFSET$pWaitSemaphoreInfos, value);
     }
     
-    public VkSemaphoreSubmitInfo pWaitSemaphoreInfos() {
+    public @nullable VkSemaphoreSubmitInfo pWaitSemaphoreInfos() {
         MemorySegment s = pWaitSemaphoreInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -111,7 +111,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
         return new VkSemaphoreSubmitInfo(s);
     }
 
-    public void pWaitSemaphoreInfos(VkSemaphoreSubmitInfo value) {
+    public void pWaitSemaphoreInfos(@nullable VkSemaphoreSubmitInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoreInfosRaw(s);
     }
@@ -132,7 +132,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
         segment.set(LAYOUT$pCommandBufferInfos, OFFSET$pCommandBufferInfos, value);
     }
     
-    public VkCommandBufferSubmitInfo pCommandBufferInfos() {
+    public @nullable VkCommandBufferSubmitInfo pCommandBufferInfos() {
         MemorySegment s = pCommandBufferInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -140,7 +140,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
         return new VkCommandBufferSubmitInfo(s);
     }
 
-    public void pCommandBufferInfos(VkCommandBufferSubmitInfo value) {
+    public void pCommandBufferInfos(@nullable VkCommandBufferSubmitInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCommandBufferInfosRaw(s);
     }
@@ -161,7 +161,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
         segment.set(LAYOUT$pSignalSemaphoreInfos, OFFSET$pSignalSemaphoreInfos, value);
     }
     
-    public VkSemaphoreSubmitInfo pSignalSemaphoreInfos() {
+    public @nullable VkSemaphoreSubmitInfo pSignalSemaphoreInfos() {
         MemorySegment s = pSignalSemaphoreInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -169,7 +169,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
         return new VkSemaphoreSubmitInfo(s);
     }
 
-    public void pSignalSemaphoreInfos(VkSemaphoreSubmitInfo value) {
+    public void pSignalSemaphoreInfos(@nullable VkSemaphoreSubmitInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoreInfosRaw(s);
     }

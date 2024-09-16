@@ -63,7 +63,7 @@ public record VkDeviceBufferMemoryRequirements(MemorySegment segment) {
         segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
     
-    public VkBufferCreateInfo pCreateInfo() {
+    public @nullable VkBufferCreateInfo pCreateInfo() {
         MemorySegment s = pCreateInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -71,7 +71,7 @@ public record VkDeviceBufferMemoryRequirements(MemorySegment segment) {
         return new VkBufferCreateInfo(s);
     }
 
-    public void pCreateInfo(VkBufferCreateInfo value) {
+    public void pCreateInfo(@nullable VkBufferCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCreateInfoRaw(s);
     }

@@ -83,7 +83,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pAttachmentInitialSampleLocations, OFFSET$pAttachmentInitialSampleLocations, value);
     }
     
-    public VkAttachmentSampleLocationsEXT pAttachmentInitialSampleLocations() {
+    public @nullable VkAttachmentSampleLocationsEXT pAttachmentInitialSampleLocations() {
         MemorySegment s = pAttachmentInitialSampleLocationsRaw();
         if (s.address() == 0) {
             return null;
@@ -91,7 +91,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) {
         return new VkAttachmentSampleLocationsEXT(s);
     }
 
-    public void pAttachmentInitialSampleLocations(VkAttachmentSampleLocationsEXT value) {
+    public void pAttachmentInitialSampleLocations(@nullable VkAttachmentSampleLocationsEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentInitialSampleLocationsRaw(s);
     }
@@ -112,7 +112,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pPostSubpassSampleLocations, OFFSET$pPostSubpassSampleLocations, value);
     }
     
-    public VkSubpassSampleLocationsEXT pPostSubpassSampleLocations() {
+    public @nullable VkSubpassSampleLocationsEXT pPostSubpassSampleLocations() {
         MemorySegment s = pPostSubpassSampleLocationsRaw();
         if (s.address() == 0) {
             return null;
@@ -120,7 +120,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) {
         return new VkSubpassSampleLocationsEXT(s);
     }
 
-    public void pPostSubpassSampleLocations(VkSubpassSampleLocationsEXT value) {
+    public void pPostSubpassSampleLocations(@nullable VkSubpassSampleLocationsEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPostSubpassSampleLocationsRaw(s);
     }

@@ -75,7 +75,7 @@ public record VkLayerSettingsCreateInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pSettings, OFFSET$pSettings, value);
     }
     
-    public VkLayerSettingEXT pSettings() {
+    public @nullable VkLayerSettingEXT pSettings() {
         MemorySegment s = pSettingsRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkLayerSettingsCreateInfoEXT(MemorySegment segment) {
         return new VkLayerSettingEXT(s);
     }
 
-    public void pSettings(VkLayerSettingEXT value) {
+    public void pSettings(@nullable VkLayerSettingEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSettingsRaw(s);
     }

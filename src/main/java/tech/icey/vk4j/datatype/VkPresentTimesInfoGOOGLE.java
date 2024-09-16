@@ -75,7 +75,7 @@ public record VkPresentTimesInfoGOOGLE(MemorySegment segment) {
         segment.set(LAYOUT$pTimes, OFFSET$pTimes, value);
     }
     
-    public VkPresentTimeGOOGLE pTimes() {
+    public @nullable VkPresentTimeGOOGLE pTimes() {
         MemorySegment s = pTimesRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkPresentTimesInfoGOOGLE(MemorySegment segment) {
         return new VkPresentTimeGOOGLE(s);
     }
 
-    public void pTimes(VkPresentTimeGOOGLE value) {
+    public void pTimes(@nullable VkPresentTimeGOOGLE value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTimesRaw(s);
     }

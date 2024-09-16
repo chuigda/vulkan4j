@@ -111,7 +111,7 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pDescriptorWrites, OFFSET$pDescriptorWrites, value);
     }
     
-    public VkWriteDescriptorSet pDescriptorWrites() {
+    public @nullable VkWriteDescriptorSet pDescriptorWrites() {
         MemorySegment s = pDescriptorWritesRaw();
         if (s.address() == 0) {
             return null;
@@ -119,7 +119,7 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) {
         return new VkWriteDescriptorSet(s);
     }
 
-    public void pDescriptorWrites(VkWriteDescriptorSet value) {
+    public void pDescriptorWrites(@nullable VkWriteDescriptorSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorWritesRaw(s);
     }

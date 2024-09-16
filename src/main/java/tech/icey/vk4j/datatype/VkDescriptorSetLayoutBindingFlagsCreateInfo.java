@@ -75,12 +75,18 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(MemorySegment segment)
         segment.set(LAYOUT$pBindingFlags, OFFSET$pBindingFlags, value);
     }
     
-    public IntPtr pBindingFlags() {
-        return new IntPtr(pBindingFlagsRaw());
+    public @nullable IntPtr pBindingFlags() {
+        MemorySegment s = pBindingFlagsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pBindingFlags(IntPtr value) {
-        pBindingFlagsRaw(value.segment());
+    public void pBindingFlags(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pBindingFlagsRaw(s);
     }
 
 

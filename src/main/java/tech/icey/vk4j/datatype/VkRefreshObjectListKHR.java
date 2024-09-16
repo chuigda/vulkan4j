@@ -75,7 +75,7 @@ public record VkRefreshObjectListKHR(MemorySegment segment) {
         segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
     
-    public VkRefreshObjectKHR pObjects() {
+    public @nullable VkRefreshObjectKHR pObjects() {
         MemorySegment s = pObjectsRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkRefreshObjectListKHR(MemorySegment segment) {
         return new VkRefreshObjectKHR(s);
     }
 
-    public void pObjects(VkRefreshObjectKHR value) {
+    public void pObjects(@nullable VkRefreshObjectKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pObjectsRaw(s);
     }

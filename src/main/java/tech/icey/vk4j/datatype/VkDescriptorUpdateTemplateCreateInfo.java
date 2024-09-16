@@ -107,7 +107,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries, value);
     }
     
-    public VkDescriptorUpdateTemplateEntry pDescriptorUpdateEntries() {
+    public @nullable VkDescriptorUpdateTemplateEntry pDescriptorUpdateEntries() {
         MemorySegment s = pDescriptorUpdateEntriesRaw();
         if (s.address() == 0) {
             return null;
@@ -115,7 +115,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) {
         return new VkDescriptorUpdateTemplateEntry(s);
     }
 
-    public void pDescriptorUpdateEntries(VkDescriptorUpdateTemplateEntry value) {
+    public void pDescriptorUpdateEntries(@nullable VkDescriptorUpdateTemplateEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorUpdateEntriesRaw(s);
     }

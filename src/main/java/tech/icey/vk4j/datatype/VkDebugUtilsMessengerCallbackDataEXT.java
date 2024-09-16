@@ -155,7 +155,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
         segment.set(LAYOUT$pQueueLabels, OFFSET$pQueueLabels, value);
     }
     
-    public VkDebugUtilsLabelEXT pQueueLabels() {
+    public @nullable VkDebugUtilsLabelEXT pQueueLabels() {
         MemorySegment s = pQueueLabelsRaw();
         if (s.address() == 0) {
             return null;
@@ -163,7 +163,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
         return new VkDebugUtilsLabelEXT(s);
     }
 
-    public void pQueueLabels(VkDebugUtilsLabelEXT value) {
+    public void pQueueLabels(@nullable VkDebugUtilsLabelEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueLabelsRaw(s);
     }
@@ -184,7 +184,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
         segment.set(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels, value);
     }
     
-    public VkDebugUtilsLabelEXT pCmdBufLabels() {
+    public @nullable VkDebugUtilsLabelEXT pCmdBufLabels() {
         MemorySegment s = pCmdBufLabelsRaw();
         if (s.address() == 0) {
             return null;
@@ -192,7 +192,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
         return new VkDebugUtilsLabelEXT(s);
     }
 
-    public void pCmdBufLabels(VkDebugUtilsLabelEXT value) {
+    public void pCmdBufLabels(@nullable VkDebugUtilsLabelEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCmdBufLabelsRaw(s);
     }
@@ -213,7 +213,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
         segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
     
-    public VkDebugUtilsObjectNameInfoEXT pObjects() {
+    public @nullable VkDebugUtilsObjectNameInfoEXT pObjects() {
         MemorySegment s = pObjectsRaw();
         if (s.address() == 0) {
             return null;
@@ -221,7 +221,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
         return new VkDebugUtilsObjectNameInfoEXT(s);
     }
 
-    public void pObjects(VkDebugUtilsObjectNameInfoEXT value) {
+    public void pObjects(@nullable VkDebugUtilsObjectNameInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pObjectsRaw(s);
     }

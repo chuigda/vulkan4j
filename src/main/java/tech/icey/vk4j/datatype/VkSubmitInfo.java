@@ -95,7 +95,7 @@ public record VkSubmitInfo(MemorySegment segment) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
     
-    public VkSemaphore pWaitSemaphores() {
+    public @nullable VkSemaphore pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.address() == 0) {
             return null;
@@ -103,7 +103,7 @@ public record VkSubmitInfo(MemorySegment segment) {
         return new VkSemaphore(s);
     }
 
-    public void pWaitSemaphores(VkSemaphore value) {
+    public void pWaitSemaphores(@nullable VkSemaphore value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoresRaw(s);
     }
@@ -116,12 +116,18 @@ public record VkSubmitInfo(MemorySegment segment) {
         segment.set(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask, value);
     }
     
-    public IntPtr pWaitDstStageMask() {
-        return new IntPtr(pWaitDstStageMaskRaw());
+    public @nullable IntPtr pWaitDstStageMask() {
+        MemorySegment s = pWaitDstStageMaskRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pWaitDstStageMask(IntPtr value) {
-        pWaitDstStageMaskRaw(value.segment());
+    public void pWaitDstStageMask(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pWaitDstStageMaskRaw(s);
     }
 
     public @unsigned int commandBufferCount() {
@@ -140,7 +146,7 @@ public record VkSubmitInfo(MemorySegment segment) {
         segment.set(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers, value);
     }
     
-    public VkCommandBuffer pCommandBuffers() {
+    public @nullable VkCommandBuffer pCommandBuffers() {
         MemorySegment s = pCommandBuffersRaw();
         if (s.address() == 0) {
             return null;
@@ -148,7 +154,7 @@ public record VkSubmitInfo(MemorySegment segment) {
         return new VkCommandBuffer(s);
     }
 
-    public void pCommandBuffers(VkCommandBuffer value) {
+    public void pCommandBuffers(@nullable VkCommandBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCommandBuffersRaw(s);
     }
@@ -169,7 +175,7 @@ public record VkSubmitInfo(MemorySegment segment) {
         segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
     
-    public VkSemaphore pSignalSemaphores() {
+    public @nullable VkSemaphore pSignalSemaphores() {
         MemorySegment s = pSignalSemaphoresRaw();
         if (s.address() == 0) {
             return null;
@@ -177,7 +183,7 @@ public record VkSubmitInfo(MemorySegment segment) {
         return new VkSemaphore(s);
     }
 
-    public void pSignalSemaphores(VkSemaphore value) {
+    public void pSignalSemaphores(@nullable VkSemaphore value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoresRaw(s);
     }

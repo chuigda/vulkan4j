@@ -103,7 +103,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
     
-    public VkAttachmentDescription pAttachments() {
+    public @nullable VkAttachmentDescription pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.address() == 0) {
             return null;
@@ -111,7 +111,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
         return new VkAttachmentDescription(s);
     }
 
-    public void pAttachments(VkAttachmentDescription value) {
+    public void pAttachments(@nullable VkAttachmentDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
     }
@@ -132,7 +132,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pSubpasses, OFFSET$pSubpasses, value);
     }
     
-    public VkSubpassDescription pSubpasses() {
+    public @nullable VkSubpassDescription pSubpasses() {
         MemorySegment s = pSubpassesRaw();
         if (s.address() == 0) {
             return null;
@@ -140,7 +140,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
         return new VkSubpassDescription(s);
     }
 
-    public void pSubpasses(VkSubpassDescription value) {
+    public void pSubpasses(@nullable VkSubpassDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSubpassesRaw(s);
     }
@@ -161,7 +161,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pDependencies, OFFSET$pDependencies, value);
     }
     
-    public VkSubpassDependency pDependencies() {
+    public @nullable VkSubpassDependency pDependencies() {
         MemorySegment s = pDependenciesRaw();
         if (s.address() == 0) {
             return null;
@@ -169,7 +169,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
         return new VkSubpassDependency(s);
     }
 
-    public void pDependencies(VkSubpassDependency value) {
+    public void pDependencies(@nullable VkSubpassDependency value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDependenciesRaw(s);
     }

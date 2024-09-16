@@ -50,12 +50,18 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) {
         segment.set(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes, value);
     }
     
-    public IntPtr pDescriptorTypes() {
-        return new IntPtr(pDescriptorTypesRaw());
+    public @nullable IntPtr pDescriptorTypes() {
+        MemorySegment s = pDescriptorTypesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pDescriptorTypes(IntPtr value) {
-        pDescriptorTypesRaw(value.segment());
+    public void pDescriptorTypes(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDescriptorTypesRaw(s);
     }
 
 

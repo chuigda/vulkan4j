@@ -75,12 +75,18 @@ public record VkImageFormatListCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pViewFormats, OFFSET$pViewFormats, value);
     }
     
-    public IntPtr pViewFormats() {
-        return new IntPtr(pViewFormatsRaw());
+    public @nullable IntPtr pViewFormats() {
+        MemorySegment s = pViewFormatsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pViewFormats(IntPtr value) {
-        pViewFormatsRaw(value.segment());
+    public void pViewFormats(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pViewFormatsRaw(s);
     }
 
 

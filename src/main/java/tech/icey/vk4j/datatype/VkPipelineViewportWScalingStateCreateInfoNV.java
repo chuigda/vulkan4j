@@ -87,7 +87,7 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment)
         segment.set(LAYOUT$pViewportWScalings, OFFSET$pViewportWScalings, value);
     }
     
-    public VkViewportWScalingNV pViewportWScalings() {
+    public @nullable VkViewportWScalingNV pViewportWScalings() {
         MemorySegment s = pViewportWScalingsRaw();
         if (s.address() == 0) {
             return null;
@@ -95,7 +95,7 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment)
         return new VkViewportWScalingNV(s);
     }
 
-    public void pViewportWScalings(VkViewportWScalingNV value) {
+    public void pViewportWScalings(@nullable VkViewportWScalingNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewportWScalingsRaw(s);
     }

@@ -74,7 +74,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         segment.set(LAYOUT$pSampler, OFFSET$pSampler, value);
     }
     
-    public VkSampler pSampler() {
+    public @nullable VkSampler pSampler() {
         MemorySegment s = pSamplerRaw();
         if (s.address() == 0) {
             return null;
@@ -82,7 +82,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         return new VkSampler(s);
     }
 
-    public void pSampler(VkSampler value) {
+    public void pSampler(@nullable VkSampler value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSamplerRaw(s);
     }
@@ -95,7 +95,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         segment.set(LAYOUT$pCombinedImageSampler, OFFSET$pCombinedImageSampler, value);
     }
     
-    public VkDescriptorImageInfo pCombinedImageSampler() {
+    public @nullable VkDescriptorImageInfo pCombinedImageSampler() {
         MemorySegment s = pCombinedImageSamplerRaw();
         if (s.address() == 0) {
             return null;
@@ -103,7 +103,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         return new VkDescriptorImageInfo(s);
     }
 
-    public void pCombinedImageSampler(VkDescriptorImageInfo value) {
+    public void pCombinedImageSampler(@nullable VkDescriptorImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCombinedImageSamplerRaw(s);
     }
@@ -116,7 +116,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         segment.set(LAYOUT$pInputAttachmentImage, OFFSET$pInputAttachmentImage, value);
     }
     
-    public VkDescriptorImageInfo pInputAttachmentImage() {
+    public @nullable VkDescriptorImageInfo pInputAttachmentImage() {
         MemorySegment s = pInputAttachmentImageRaw();
         if (s.address() == 0) {
             return null;
@@ -124,7 +124,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         return new VkDescriptorImageInfo(s);
     }
 
-    public void pInputAttachmentImage(VkDescriptorImageInfo value) {
+    public void pInputAttachmentImage(@nullable VkDescriptorImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pInputAttachmentImageRaw(s);
     }
@@ -137,7 +137,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         segment.set(LAYOUT$pSampledImage, OFFSET$pSampledImage, value);
     }
     
-    public VkDescriptorImageInfo pSampledImage() {
+    public @nullable VkDescriptorImageInfo pSampledImage() {
         MemorySegment s = pSampledImageRaw();
         if (s.address() == 0) {
             return null;
@@ -145,7 +145,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         return new VkDescriptorImageInfo(s);
     }
 
-    public void pSampledImage(VkDescriptorImageInfo value) {
+    public void pSampledImage(@nullable VkDescriptorImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSampledImageRaw(s);
     }
@@ -158,7 +158,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         segment.set(LAYOUT$pStorageImage, OFFSET$pStorageImage, value);
     }
     
-    public VkDescriptorImageInfo pStorageImage() {
+    public @nullable VkDescriptorImageInfo pStorageImage() {
         MemorySegment s = pStorageImageRaw();
         if (s.address() == 0) {
             return null;
@@ -166,7 +166,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         return new VkDescriptorImageInfo(s);
     }
 
-    public void pStorageImage(VkDescriptorImageInfo value) {
+    public void pStorageImage(@nullable VkDescriptorImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStorageImageRaw(s);
     }
@@ -179,7 +179,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         segment.set(LAYOUT$pUniformTexelBuffer, OFFSET$pUniformTexelBuffer, value);
     }
     
-    public VkDescriptorAddressInfoEXT pUniformTexelBuffer() {
+    public @nullable VkDescriptorAddressInfoEXT pUniformTexelBuffer() {
         MemorySegment s = pUniformTexelBufferRaw();
         if (s.address() == 0) {
             return null;
@@ -187,7 +187,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         return new VkDescriptorAddressInfoEXT(s);
     }
 
-    public void pUniformTexelBuffer(VkDescriptorAddressInfoEXT value) {
+    public void pUniformTexelBuffer(@nullable VkDescriptorAddressInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pUniformTexelBufferRaw(s);
     }
@@ -200,7 +200,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         segment.set(LAYOUT$pStorageTexelBuffer, OFFSET$pStorageTexelBuffer, value);
     }
     
-    public VkDescriptorAddressInfoEXT pStorageTexelBuffer() {
+    public @nullable VkDescriptorAddressInfoEXT pStorageTexelBuffer() {
         MemorySegment s = pStorageTexelBufferRaw();
         if (s.address() == 0) {
             return null;
@@ -208,7 +208,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         return new VkDescriptorAddressInfoEXT(s);
     }
 
-    public void pStorageTexelBuffer(VkDescriptorAddressInfoEXT value) {
+    public void pStorageTexelBuffer(@nullable VkDescriptorAddressInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStorageTexelBufferRaw(s);
     }
@@ -221,7 +221,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         segment.set(LAYOUT$pUniformBuffer, OFFSET$pUniformBuffer, value);
     }
     
-    public VkDescriptorAddressInfoEXT pUniformBuffer() {
+    public @nullable VkDescriptorAddressInfoEXT pUniformBuffer() {
         MemorySegment s = pUniformBufferRaw();
         if (s.address() == 0) {
             return null;
@@ -229,7 +229,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         return new VkDescriptorAddressInfoEXT(s);
     }
 
-    public void pUniformBuffer(VkDescriptorAddressInfoEXT value) {
+    public void pUniformBuffer(@nullable VkDescriptorAddressInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pUniformBufferRaw(s);
     }
@@ -242,7 +242,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         segment.set(LAYOUT$pStorageBuffer, OFFSET$pStorageBuffer, value);
     }
     
-    public VkDescriptorAddressInfoEXT pStorageBuffer() {
+    public @nullable VkDescriptorAddressInfoEXT pStorageBuffer() {
         MemorySegment s = pStorageBufferRaw();
         if (s.address() == 0) {
             return null;
@@ -250,7 +250,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         return new VkDescriptorAddressInfoEXT(s);
     }
 
-    public void pStorageBuffer(VkDescriptorAddressInfoEXT value) {
+    public void pStorageBuffer(@nullable VkDescriptorAddressInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStorageBufferRaw(s);
     }

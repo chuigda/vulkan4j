@@ -131,7 +131,7 @@ public record VkRenderingInfo(MemorySegment segment) {
         segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
     
-    public VkRenderingAttachmentInfo pColorAttachments() {
+    public @nullable VkRenderingAttachmentInfo pColorAttachments() {
         MemorySegment s = pColorAttachmentsRaw();
         if (s.address() == 0) {
             return null;
@@ -139,7 +139,7 @@ public record VkRenderingInfo(MemorySegment segment) {
         return new VkRenderingAttachmentInfo(s);
     }
 
-    public void pColorAttachments(VkRenderingAttachmentInfo value) {
+    public void pColorAttachments(@nullable VkRenderingAttachmentInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentsRaw(s);
     }
@@ -152,7 +152,7 @@ public record VkRenderingInfo(MemorySegment segment) {
         segment.set(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment, value);
     }
     
-    public VkRenderingAttachmentInfo pDepthAttachment() {
+    public @nullable VkRenderingAttachmentInfo pDepthAttachment() {
         MemorySegment s = pDepthAttachmentRaw();
         if (s.address() == 0) {
             return null;
@@ -160,7 +160,7 @@ public record VkRenderingInfo(MemorySegment segment) {
         return new VkRenderingAttachmentInfo(s);
     }
 
-    public void pDepthAttachment(VkRenderingAttachmentInfo value) {
+    public void pDepthAttachment(@nullable VkRenderingAttachmentInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDepthAttachmentRaw(s);
     }
@@ -173,7 +173,7 @@ public record VkRenderingInfo(MemorySegment segment) {
         segment.set(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment, value);
     }
     
-    public VkRenderingAttachmentInfo pStencilAttachment() {
+    public @nullable VkRenderingAttachmentInfo pStencilAttachment() {
         MemorySegment s = pStencilAttachmentRaw();
         if (s.address() == 0) {
             return null;
@@ -181,7 +181,7 @@ public record VkRenderingInfo(MemorySegment segment) {
         return new VkRenderingAttachmentInfo(s);
     }
 
-    public void pStencilAttachment(VkRenderingAttachmentInfo value) {
+    public void pStencilAttachment(@nullable VkRenderingAttachmentInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStencilAttachmentRaw(s);
     }

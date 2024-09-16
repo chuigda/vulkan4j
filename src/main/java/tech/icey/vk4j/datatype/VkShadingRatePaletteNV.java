@@ -50,12 +50,18 @@ public record VkShadingRatePaletteNV(MemorySegment segment) {
         segment.set(LAYOUT$pShadingRatePaletteEntries, OFFSET$pShadingRatePaletteEntries, value);
     }
     
-    public IntPtr pShadingRatePaletteEntries() {
-        return new IntPtr(pShadingRatePaletteEntriesRaw());
+    public @nullable IntPtr pShadingRatePaletteEntries() {
+        MemorySegment s = pShadingRatePaletteEntriesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pShadingRatePaletteEntries(IntPtr value) {
-        pShadingRatePaletteEntriesRaw(value.segment());
+    public void pShadingRatePaletteEntries(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pShadingRatePaletteEntriesRaw(s);
     }
 
 

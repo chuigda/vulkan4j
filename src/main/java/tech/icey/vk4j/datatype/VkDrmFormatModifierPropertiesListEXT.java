@@ -75,7 +75,7 @@ public record VkDrmFormatModifierPropertiesListEXT(MemorySegment segment) {
         segment.set(LAYOUT$pDrmFormatModifierProperties, OFFSET$pDrmFormatModifierProperties, value);
     }
     
-    public VkDrmFormatModifierPropertiesEXT pDrmFormatModifierProperties() {
+    public @nullable VkDrmFormatModifierPropertiesEXT pDrmFormatModifierProperties() {
         MemorySegment s = pDrmFormatModifierPropertiesRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkDrmFormatModifierPropertiesListEXT(MemorySegment segment) {
         return new VkDrmFormatModifierPropertiesEXT(s);
     }
 
-    public void pDrmFormatModifierProperties(VkDrmFormatModifierPropertiesEXT value) {
+    public void pDrmFormatModifierProperties(@nullable VkDrmFormatModifierPropertiesEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDrmFormatModifierPropertiesRaw(s);
     }

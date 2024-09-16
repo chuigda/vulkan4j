@@ -143,7 +143,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
     }
     
-    public VkAccelerationStructureGeometryKHR pGeometries() {
+    public @nullable VkAccelerationStructureGeometryKHR pGeometries() {
         MemorySegment s = pGeometriesRaw();
         if (s.address() == 0) {
             return null;
@@ -151,7 +151,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         return new VkAccelerationStructureGeometryKHR(s);
     }
 
-    public void pGeometries(VkAccelerationStructureGeometryKHR value) {
+    public void pGeometries(@nullable VkAccelerationStructureGeometryKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGeometriesRaw(s);
     }

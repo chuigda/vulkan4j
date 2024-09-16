@@ -87,7 +87,7 @@ public record VkDescriptorSetAllocateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
     
-    public VkDescriptorSetLayout pSetLayouts() {
+    public @nullable VkDescriptorSetLayout pSetLayouts() {
         MemorySegment s = pSetLayoutsRaw();
         if (s.address() == 0) {
             return null;
@@ -95,7 +95,7 @@ public record VkDescriptorSetAllocateInfo(MemorySegment segment) {
         return new VkDescriptorSetLayout(s);
     }
 
-    public void pSetLayouts(VkDescriptorSetLayout value) {
+    public void pSetLayouts(@nullable VkDescriptorSetLayout value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSetLayoutsRaw(s);
     }

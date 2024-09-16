@@ -123,7 +123,7 @@ public record VkResolveImageInfo2(MemorySegment segment) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
     
-    public VkImageResolve2 pRegions() {
+    public @nullable VkImageResolve2 pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {
             return null;
@@ -131,7 +131,7 @@ public record VkResolveImageInfo2(MemorySegment segment) {
         return new VkImageResolve2(s);
     }
 
-    public void pRegions(VkImageResolve2 value) {
+    public void pRegions(@nullable VkImageResolve2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
     }

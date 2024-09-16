@@ -87,7 +87,7 @@ public record VkDescriptorSetLayoutCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pBindings, OFFSET$pBindings, value);
     }
     
-    public VkDescriptorSetLayoutBinding pBindings() {
+    public @nullable VkDescriptorSetLayoutBinding pBindings() {
         MemorySegment s = pBindingsRaw();
         if (s.address() == 0) {
             return null;
@@ -95,7 +95,7 @@ public record VkDescriptorSetLayoutCreateInfo(MemorySegment segment) {
         return new VkDescriptorSetLayoutBinding(s);
     }
 
-    public void pBindings(VkDescriptorSetLayoutBinding value) {
+    public void pBindings(@nullable VkDescriptorSetLayoutBinding value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBindingsRaw(s);
     }

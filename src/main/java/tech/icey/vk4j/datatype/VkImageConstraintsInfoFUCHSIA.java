@@ -83,7 +83,7 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) {
         segment.set(LAYOUT$pFormatConstraints, OFFSET$pFormatConstraints, value);
     }
     
-    public VkImageFormatConstraintsInfoFUCHSIA pFormatConstraints() {
+    public @nullable VkImageFormatConstraintsInfoFUCHSIA pFormatConstraints() {
         MemorySegment s = pFormatConstraintsRaw();
         if (s.address() == 0) {
             return null;
@@ -91,7 +91,7 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) {
         return new VkImageFormatConstraintsInfoFUCHSIA(s);
     }
 
-    public void pFormatConstraints(VkImageFormatConstraintsInfoFUCHSIA value) {
+    public void pFormatConstraints(@nullable VkImageFormatConstraintsInfoFUCHSIA value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFormatConstraintsRaw(s);
     }

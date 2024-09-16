@@ -75,7 +75,7 @@ public record VkPresentRegionsKHR(MemorySegment segment) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
     
-    public VkPresentRegionKHR pRegions() {
+    public @nullable VkPresentRegionKHR pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkPresentRegionsKHR(MemorySegment segment) {
         return new VkPresentRegionKHR(s);
     }
 
-    public void pRegions(VkPresentRegionKHR value) {
+    public void pRegions(@nullable VkPresentRegionKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
     }

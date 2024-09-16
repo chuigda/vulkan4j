@@ -95,7 +95,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs, value);
     }
     
-    public VkDeviceMemory pAcquireSyncs() {
+    public @nullable VkDeviceMemory pAcquireSyncs() {
         MemorySegment s = pAcquireSyncsRaw();
         if (s.address() == 0) {
             return null;
@@ -103,7 +103,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
         return new VkDeviceMemory(s);
     }
 
-    public void pAcquireSyncs(VkDeviceMemory value) {
+    public void pAcquireSyncs(@nullable VkDeviceMemory value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAcquireSyncsRaw(s);
     }
@@ -156,7 +156,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs, value);
     }
     
-    public VkDeviceMemory pReleaseSyncs() {
+    public @nullable VkDeviceMemory pReleaseSyncs() {
         MemorySegment s = pReleaseSyncsRaw();
         if (s.address() == 0) {
             return null;
@@ -164,7 +164,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
         return new VkDeviceMemory(s);
     }
 
-    public void pReleaseSyncs(VkDeviceMemory value) {
+    public void pReleaseSyncs(@nullable VkDeviceMemory value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pReleaseSyncsRaw(s);
     }

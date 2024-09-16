@@ -95,7 +95,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pVertexBindingDescriptions, OFFSET$pVertexBindingDescriptions, value);
     }
     
-    public VkVertexInputBindingDescription pVertexBindingDescriptions() {
+    public @nullable VkVertexInputBindingDescription pVertexBindingDescriptions() {
         MemorySegment s = pVertexBindingDescriptionsRaw();
         if (s.address() == 0) {
             return null;
@@ -103,7 +103,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) {
         return new VkVertexInputBindingDescription(s);
     }
 
-    public void pVertexBindingDescriptions(VkVertexInputBindingDescription value) {
+    public void pVertexBindingDescriptions(@nullable VkVertexInputBindingDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexBindingDescriptionsRaw(s);
     }
@@ -124,7 +124,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pVertexAttributeDescriptions, OFFSET$pVertexAttributeDescriptions, value);
     }
     
-    public VkVertexInputAttributeDescription pVertexAttributeDescriptions() {
+    public @nullable VkVertexInputAttributeDescription pVertexAttributeDescriptions() {
         MemorySegment s = pVertexAttributeDescriptionsRaw();
         if (s.address() == 0) {
             return null;
@@ -132,7 +132,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) {
         return new VkVertexInputAttributeDescription(s);
     }
 
-    public void pVertexAttributeDescriptions(VkVertexInputAttributeDescription value) {
+    public void pVertexAttributeDescriptions(@nullable VkVertexInputAttributeDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexAttributeDescriptionsRaw(s);
     }

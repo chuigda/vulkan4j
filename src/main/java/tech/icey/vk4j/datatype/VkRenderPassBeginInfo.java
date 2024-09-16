@@ -111,7 +111,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) {
         segment.set(LAYOUT$pClearValues, OFFSET$pClearValues, value);
     }
     
-    public VkClearValue pClearValues() {
+    public @nullable VkClearValue pClearValues() {
         MemorySegment s = pClearValuesRaw();
         if (s.address() == 0) {
             return null;
@@ -119,7 +119,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) {
         return new VkClearValue(s);
     }
 
-    public void pClearValues(VkClearValue value) {
+    public void pClearValues(@nullable VkClearValue value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pClearValuesRaw(s);
     }

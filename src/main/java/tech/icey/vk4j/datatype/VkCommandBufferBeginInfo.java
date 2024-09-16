@@ -75,7 +75,7 @@ public record VkCommandBufferBeginInfo(MemorySegment segment) {
         segment.set(LAYOUT$pInheritanceInfo, OFFSET$pInheritanceInfo, value);
     }
     
-    public VkCommandBufferInheritanceInfo pInheritanceInfo() {
+    public @nullable VkCommandBufferInheritanceInfo pInheritanceInfo() {
         MemorySegment s = pInheritanceInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkCommandBufferBeginInfo(MemorySegment segment) {
         return new VkCommandBufferInheritanceInfo(s);
     }
 
-    public void pInheritanceInfo(VkCommandBufferInheritanceInfo value) {
+    public void pInheritanceInfo(@nullable VkCommandBufferInheritanceInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pInheritanceInfoRaw(s);
     }

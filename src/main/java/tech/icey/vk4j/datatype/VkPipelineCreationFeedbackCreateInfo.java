@@ -71,7 +71,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pPipelineCreationFeedback, OFFSET$pPipelineCreationFeedback, value);
     }
     
-    public VkPipelineCreationFeedback pPipelineCreationFeedback() {
+    public @nullable VkPipelineCreationFeedback pPipelineCreationFeedback() {
         MemorySegment s = pPipelineCreationFeedbackRaw();
         if (s.address() == 0) {
             return null;
@@ -79,7 +79,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) {
         return new VkPipelineCreationFeedback(s);
     }
 
-    public void pPipelineCreationFeedback(VkPipelineCreationFeedback value) {
+    public void pPipelineCreationFeedback(@nullable VkPipelineCreationFeedback value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineCreationFeedbackRaw(s);
     }
@@ -100,7 +100,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pPipelineStageCreationFeedbacks, OFFSET$pPipelineStageCreationFeedbacks, value);
     }
     
-    public VkPipelineCreationFeedback pPipelineStageCreationFeedbacks() {
+    public @nullable VkPipelineCreationFeedback pPipelineStageCreationFeedbacks() {
         MemorySegment s = pPipelineStageCreationFeedbacksRaw();
         if (s.address() == 0) {
             return null;
@@ -108,7 +108,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) {
         return new VkPipelineCreationFeedback(s);
     }
 
-    public void pPipelineStageCreationFeedbacks(VkPipelineCreationFeedback value) {
+    public void pPipelineStageCreationFeedbacks(@nullable VkPipelineCreationFeedback value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineStageCreationFeedbacksRaw(s);
     }

@@ -75,12 +75,18 @@ public record VkSurfacePresentModeCompatibilityEXT(MemorySegment segment) {
         segment.set(LAYOUT$pPresentModes, OFFSET$pPresentModes, value);
     }
     
-    public IntPtr pPresentModes() {
-        return new IntPtr(pPresentModesRaw());
+    public @nullable IntPtr pPresentModes() {
+        MemorySegment s = pPresentModesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pPresentModes(IntPtr value) {
-        pPresentModesRaw(value.segment());
+    public void pPresentModes(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pPresentModesRaw(s);
     }
 
 

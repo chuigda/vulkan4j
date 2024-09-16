@@ -131,7 +131,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
         segment.set(LAYOUT$pImageInfo, OFFSET$pImageInfo, value);
     }
     
-    public VkDescriptorImageInfo pImageInfo() {
+    public @nullable VkDescriptorImageInfo pImageInfo() {
         MemorySegment s = pImageInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -139,7 +139,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
         return new VkDescriptorImageInfo(s);
     }
 
-    public void pImageInfo(VkDescriptorImageInfo value) {
+    public void pImageInfo(@nullable VkDescriptorImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageInfoRaw(s);
     }
@@ -152,7 +152,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
         segment.set(LAYOUT$pBufferInfo, OFFSET$pBufferInfo, value);
     }
     
-    public VkDescriptorBufferInfo pBufferInfo() {
+    public @nullable VkDescriptorBufferInfo pBufferInfo() {
         MemorySegment s = pBufferInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -160,7 +160,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
         return new VkDescriptorBufferInfo(s);
     }
 
-    public void pBufferInfo(VkDescriptorBufferInfo value) {
+    public void pBufferInfo(@nullable VkDescriptorBufferInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferInfoRaw(s);
     }
@@ -173,7 +173,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
         segment.set(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView, value);
     }
     
-    public VkBufferView pTexelBufferView() {
+    public @nullable VkBufferView pTexelBufferView() {
         MemorySegment s = pTexelBufferViewRaw();
         if (s.address() == 0) {
             return null;
@@ -181,7 +181,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
         return new VkBufferView(s);
     }
 
-    public void pTexelBufferView(VkBufferView value) {
+    public void pTexelBufferView(@nullable VkBufferView value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTexelBufferViewRaw(s);
     }

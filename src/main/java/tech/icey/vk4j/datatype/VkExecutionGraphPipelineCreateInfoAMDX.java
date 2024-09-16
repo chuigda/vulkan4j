@@ -103,7 +103,7 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
     
-    public VkPipelineShaderStageCreateInfo pStages() {
+    public @nullable VkPipelineShaderStageCreateInfo pStages() {
         MemorySegment s = pStagesRaw();
         if (s.address() == 0) {
             return null;
@@ -111,7 +111,7 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) {
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
-    public void pStages(VkPipelineShaderStageCreateInfo value) {
+    public void pStages(@nullable VkPipelineShaderStageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStagesRaw(s);
     }
@@ -124,7 +124,7 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) {
         segment.set(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo, value);
     }
     
-    public VkPipelineLibraryCreateInfoKHR pLibraryInfo() {
+    public @nullable VkPipelineLibraryCreateInfoKHR pLibraryInfo() {
         MemorySegment s = pLibraryInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -132,7 +132,7 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) {
         return new VkPipelineLibraryCreateInfoKHR(s);
     }
 
-    public void pLibraryInfo(VkPipelineLibraryCreateInfoKHR value) {
+    public void pLibraryInfo(@nullable VkPipelineLibraryCreateInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLibraryInfoRaw(s);
     }

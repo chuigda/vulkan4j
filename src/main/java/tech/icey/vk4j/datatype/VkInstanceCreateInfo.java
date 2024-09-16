@@ -91,7 +91,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo, value);
     }
     
-    public VkApplicationInfo pApplicationInfo() {
+    public @nullable VkApplicationInfo pApplicationInfo() {
         MemorySegment s = pApplicationInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -99,7 +99,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) {
         return new VkApplicationInfo(s);
     }
 
-    public void pApplicationInfo(VkApplicationInfo value) {
+    public void pApplicationInfo(@nullable VkApplicationInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pApplicationInfoRaw(s);
     }

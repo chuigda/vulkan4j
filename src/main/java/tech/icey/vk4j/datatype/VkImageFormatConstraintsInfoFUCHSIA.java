@@ -123,7 +123,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) {
         segment.set(LAYOUT$pColorSpaces, OFFSET$pColorSpaces, value);
     }
     
-    public VkSysmemColorSpaceFUCHSIA pColorSpaces() {
+    public @nullable VkSysmemColorSpaceFUCHSIA pColorSpaces() {
         MemorySegment s = pColorSpacesRaw();
         if (s.address() == 0) {
             return null;
@@ -131,7 +131,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) {
         return new VkSysmemColorSpaceFUCHSIA(s);
     }
 
-    public void pColorSpaces(VkSysmemColorSpaceFUCHSIA value) {
+    public void pColorSpaces(@nullable VkSysmemColorSpaceFUCHSIA value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorSpacesRaw(s);
     }

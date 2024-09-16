@@ -67,7 +67,7 @@ public record VkDeviceImageMemoryRequirements(MemorySegment segment) {
         segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
     
-    public VkImageCreateInfo pCreateInfo() {
+    public @nullable VkImageCreateInfo pCreateInfo() {
         MemorySegment s = pCreateInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -75,7 +75,7 @@ public record VkDeviceImageMemoryRequirements(MemorySegment segment) {
         return new VkImageCreateInfo(s);
     }
 
-    public void pCreateInfo(VkImageCreateInfo value) {
+    public void pCreateInfo(@nullable VkImageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCreateInfoRaw(s);
     }

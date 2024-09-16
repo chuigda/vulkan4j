@@ -86,7 +86,7 @@ public record VkDescriptorSetLayoutBinding(MemorySegment segment) {
         segment.set(LAYOUT$pImmutableSamplers, OFFSET$pImmutableSamplers, value);
     }
     
-    public VkSampler pImmutableSamplers() {
+    public @nullable VkSampler pImmutableSamplers() {
         MemorySegment s = pImmutableSamplersRaw();
         if (s.address() == 0) {
             return null;
@@ -94,7 +94,7 @@ public record VkDescriptorSetLayoutBinding(MemorySegment segment) {
         return new VkSampler(s);
     }
 
-    public void pImmutableSamplers(VkSampler value) {
+    public void pImmutableSamplers(@nullable VkSampler value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImmutableSamplersRaw(s);
     }

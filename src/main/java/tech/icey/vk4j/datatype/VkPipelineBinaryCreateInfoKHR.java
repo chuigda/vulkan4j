@@ -71,7 +71,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo, value);
     }
     
-    public VkPipelineBinaryKeysAndDataKHR pKeysAndDataInfo() {
+    public @nullable VkPipelineBinaryKeysAndDataKHR pKeysAndDataInfo() {
         MemorySegment s = pKeysAndDataInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -79,7 +79,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) {
         return new VkPipelineBinaryKeysAndDataKHR(s);
     }
 
-    public void pKeysAndDataInfo(VkPipelineBinaryKeysAndDataKHR value) {
+    public void pKeysAndDataInfo(@nullable VkPipelineBinaryKeysAndDataKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pKeysAndDataInfoRaw(s);
     }
@@ -100,7 +100,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pPipelineCreateInfo, OFFSET$pPipelineCreateInfo, value);
     }
     
-    public VkPipelineCreateInfoKHR pPipelineCreateInfo() {
+    public @nullable VkPipelineCreateInfoKHR pPipelineCreateInfo() {
         MemorySegment s = pPipelineCreateInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -108,7 +108,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) {
         return new VkPipelineCreateInfoKHR(s);
     }
 
-    public void pPipelineCreateInfo(VkPipelineCreateInfoKHR value) {
+    public void pPipelineCreateInfo(@nullable VkPipelineCreateInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineCreateInfoRaw(s);
     }

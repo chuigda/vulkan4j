@@ -75,7 +75,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(MemorySegment segment)
         segment.set(LAYOUT$pLayeredApis, OFFSET$pLayeredApis, value);
     }
     
-    public VkPhysicalDeviceLayeredApiPropertiesKHR pLayeredApis() {
+    public @nullable VkPhysicalDeviceLayeredApiPropertiesKHR pLayeredApis() {
         MemorySegment s = pLayeredApisRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(MemorySegment segment)
         return new VkPhysicalDeviceLayeredApiPropertiesKHR(s);
     }
 
-    public void pLayeredApis(VkPhysicalDeviceLayeredApiPropertiesKHR value) {
+    public void pLayeredApis(@nullable VkPhysicalDeviceLayeredApiPropertiesKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLayeredApisRaw(s);
     }

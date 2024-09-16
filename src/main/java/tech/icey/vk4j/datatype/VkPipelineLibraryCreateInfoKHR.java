@@ -75,7 +75,7 @@ public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pLibraries, OFFSET$pLibraries, value);
     }
     
-    public VkPipeline pLibraries() {
+    public @nullable VkPipeline pLibraries() {
         MemorySegment s = pLibrariesRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) {
         return new VkPipeline(s);
     }
 
-    public void pLibraries(VkPipeline value) {
+    public void pLibraries(@nullable VkPipeline value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLibrariesRaw(s);
     }

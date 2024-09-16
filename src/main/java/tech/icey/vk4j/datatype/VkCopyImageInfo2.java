@@ -123,7 +123,7 @@ public record VkCopyImageInfo2(MemorySegment segment) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
     
-    public VkImageCopy2 pRegions() {
+    public @nullable VkImageCopy2 pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {
             return null;
@@ -131,7 +131,7 @@ public record VkCopyImageInfo2(MemorySegment segment) {
         return new VkImageCopy2(s);
     }
 
-    public void pRegions(VkImageCopy2 value) {
+    public void pRegions(@nullable VkImageCopy2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
     }

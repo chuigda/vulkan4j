@@ -75,7 +75,7 @@ public record VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segme
         segment.set(LAYOUT$pVertexBindingDivisors, OFFSET$pVertexBindingDivisors, value);
     }
     
-    public VkVertexInputBindingDivisorDescriptionKHR pVertexBindingDivisors() {
+    public @nullable VkVertexInputBindingDivisorDescriptionKHR pVertexBindingDivisors() {
         MemorySegment s = pVertexBindingDivisorsRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segme
         return new VkVertexInputBindingDivisorDescriptionKHR(s);
     }
 
-    public void pVertexBindingDivisors(VkVertexInputBindingDivisorDescriptionKHR value) {
+    public void pVertexBindingDivisors(@nullable VkVertexInputBindingDivisorDescriptionKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexBindingDivisorsRaw(s);
     }

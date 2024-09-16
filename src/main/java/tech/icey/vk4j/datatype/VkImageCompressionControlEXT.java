@@ -87,12 +87,18 @@ public record VkImageCompressionControlEXT(MemorySegment segment) {
         segment.set(LAYOUT$pFixedRateFlags, OFFSET$pFixedRateFlags, value);
     }
     
-    public IntPtr pFixedRateFlags() {
-        return new IntPtr(pFixedRateFlagsRaw());
+    public @nullable IntPtr pFixedRateFlags() {
+        MemorySegment s = pFixedRateFlagsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        
+        return new IntPtr(s);
     }
     
-    public void pFixedRateFlags(IntPtr value) {
-        pFixedRateFlagsRaw(value.segment());
+    public void pFixedRateFlags(@nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pFixedRateFlagsRaw(s);
     }
 
 

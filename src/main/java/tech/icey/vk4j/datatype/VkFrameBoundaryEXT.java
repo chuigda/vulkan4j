@@ -118,7 +118,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
         segment.set(LAYOUT$pImages, OFFSET$pImages, value);
     }
     
-    public VkImage pImages() {
+    public @nullable VkImage pImages() {
         MemorySegment s = pImagesRaw();
         if (s.address() == 0) {
             return null;
@@ -126,7 +126,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
         return new VkImage(s);
     }
 
-    public void pImages(VkImage value) {
+    public void pImages(@nullable VkImage value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImagesRaw(s);
     }
@@ -147,7 +147,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
         segment.set(LAYOUT$pBuffers, OFFSET$pBuffers, value);
     }
     
-    public VkBuffer pBuffers() {
+    public @nullable VkBuffer pBuffers() {
         MemorySegment s = pBuffersRaw();
         if (s.address() == 0) {
             return null;
@@ -155,7 +155,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
         return new VkBuffer(s);
     }
 
-    public void pBuffers(VkBuffer value) {
+    public void pBuffers(@nullable VkBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBuffersRaw(s);
     }

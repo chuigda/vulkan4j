@@ -74,7 +74,7 @@ public record VkCoarseSampleOrderCustomNV(MemorySegment segment) {
         segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
     
-    public VkCoarseSampleLocationNV pSampleLocations() {
+    public @nullable VkCoarseSampleLocationNV pSampleLocations() {
         MemorySegment s = pSampleLocationsRaw();
         if (s.address() == 0) {
             return null;
@@ -82,7 +82,7 @@ public record VkCoarseSampleOrderCustomNV(MemorySegment segment) {
         return new VkCoarseSampleLocationNV(s);
     }
 
-    public void pSampleLocations(VkCoarseSampleLocationNV value) {
+    public void pSampleLocations(@nullable VkCoarseSampleLocationNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSampleLocationsRaw(s);
     }

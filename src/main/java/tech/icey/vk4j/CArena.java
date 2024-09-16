@@ -26,14 +26,24 @@ public final class CArena implements Arena {
 
     @Override
     public MemorySegment allocate(long byteSize, long byteAlignment) {
+        if (byteSize <= 0 || byteAlignment <= 0 || (byteAlignment & (byteAlignment - 1)) != 0) {
+            throw new IllegalArgumentException("Invalid byte size or alignment");
+        }
+
+        MemorySegment ms;
         try {
-            MemorySegment ms = (MemorySegment) HANDLE$aligned_alloc.invokeExact(byteAlignment, byteSize);
-            ms = ms.reinterpret(byteSize);
-            ms.fill((byte) 0);
-            return ms;
+            ms = (MemorySegment) HANDLE$aligned_alloc.invokeExact(byteAlignment, byteSize);
         } catch (Throwable _) {
             throw new RuntimeException("Failed to allocate memory");
         }
+
+        if (ms.address() == 0) {
+            throw new OutOfMemoryError("Failed allocating memory with aligned_alloc");
+        }
+
+        ms = ms.reinterpret(byteSize);
+        ms.fill((byte) 0);
+        return ms;
     }
 
     @Override

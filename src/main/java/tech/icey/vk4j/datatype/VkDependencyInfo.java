@@ -103,7 +103,7 @@ public record VkDependencyInfo(MemorySegment segment) {
         segment.set(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers, value);
     }
     
-    public VkMemoryBarrier2 pMemoryBarriers() {
+    public @nullable VkMemoryBarrier2 pMemoryBarriers() {
         MemorySegment s = pMemoryBarriersRaw();
         if (s.address() == 0) {
             return null;
@@ -111,7 +111,7 @@ public record VkDependencyInfo(MemorySegment segment) {
         return new VkMemoryBarrier2(s);
     }
 
-    public void pMemoryBarriers(VkMemoryBarrier2 value) {
+    public void pMemoryBarriers(@nullable VkMemoryBarrier2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMemoryBarriersRaw(s);
     }
@@ -132,7 +132,7 @@ public record VkDependencyInfo(MemorySegment segment) {
         segment.set(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers, value);
     }
     
-    public VkBufferMemoryBarrier2 pBufferMemoryBarriers() {
+    public @nullable VkBufferMemoryBarrier2 pBufferMemoryBarriers() {
         MemorySegment s = pBufferMemoryBarriersRaw();
         if (s.address() == 0) {
             return null;
@@ -140,7 +140,7 @@ public record VkDependencyInfo(MemorySegment segment) {
         return new VkBufferMemoryBarrier2(s);
     }
 
-    public void pBufferMemoryBarriers(VkBufferMemoryBarrier2 value) {
+    public void pBufferMemoryBarriers(@nullable VkBufferMemoryBarrier2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferMemoryBarriersRaw(s);
     }
@@ -161,7 +161,7 @@ public record VkDependencyInfo(MemorySegment segment) {
         segment.set(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers, value);
     }
     
-    public VkImageMemoryBarrier2 pImageMemoryBarriers() {
+    public @nullable VkImageMemoryBarrier2 pImageMemoryBarriers() {
         MemorySegment s = pImageMemoryBarriersRaw();
         if (s.address() == 0) {
             return null;
@@ -169,7 +169,7 @@ public record VkDependencyInfo(MemorySegment segment) {
         return new VkImageMemoryBarrier2(s);
     }
 
-    public void pImageMemoryBarriers(VkImageMemoryBarrier2 value) {
+    public void pImageMemoryBarriers(@nullable VkImageMemoryBarrier2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageMemoryBarriersRaw(s);
     }

@@ -75,7 +75,7 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(MemorySegment
         segment.set(LAYOUT$pPerViewRenderAreas, OFFSET$pPerViewRenderAreas, value);
     }
     
-    public VkRect2D pPerViewRenderAreas() {
+    public @nullable VkRect2D pPerViewRenderAreas() {
         MemorySegment s = pPerViewRenderAreasRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(MemorySegment
         return new VkRect2D(s);
     }
 
-    public void pPerViewRenderAreas(VkRect2D value) {
+    public void pPerViewRenderAreas(@nullable VkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPerViewRenderAreasRaw(s);
     }

@@ -98,7 +98,7 @@ public record VkSubpassDescription(MemorySegment segment) {
         segment.set(LAYOUT$pInputAttachments, OFFSET$pInputAttachments, value);
     }
     
-    public VkAttachmentReference pInputAttachments() {
+    public @nullable VkAttachmentReference pInputAttachments() {
         MemorySegment s = pInputAttachmentsRaw();
         if (s.address() == 0) {
             return null;
@@ -106,7 +106,7 @@ public record VkSubpassDescription(MemorySegment segment) {
         return new VkAttachmentReference(s);
     }
 
-    public void pInputAttachments(VkAttachmentReference value) {
+    public void pInputAttachments(@nullable VkAttachmentReference value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pInputAttachmentsRaw(s);
     }
@@ -127,7 +127,7 @@ public record VkSubpassDescription(MemorySegment segment) {
         segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
     
-    public VkAttachmentReference pColorAttachments() {
+    public @nullable VkAttachmentReference pColorAttachments() {
         MemorySegment s = pColorAttachmentsRaw();
         if (s.address() == 0) {
             return null;
@@ -135,7 +135,7 @@ public record VkSubpassDescription(MemorySegment segment) {
         return new VkAttachmentReference(s);
     }
 
-    public void pColorAttachments(VkAttachmentReference value) {
+    public void pColorAttachments(@nullable VkAttachmentReference value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentsRaw(s);
     }
@@ -148,7 +148,7 @@ public record VkSubpassDescription(MemorySegment segment) {
         segment.set(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments, value);
     }
     
-    public VkAttachmentReference pResolveAttachments() {
+    public @nullable VkAttachmentReference pResolveAttachments() {
         MemorySegment s = pResolveAttachmentsRaw();
         if (s.address() == 0) {
             return null;
@@ -156,7 +156,7 @@ public record VkSubpassDescription(MemorySegment segment) {
         return new VkAttachmentReference(s);
     }
 
-    public void pResolveAttachments(VkAttachmentReference value) {
+    public void pResolveAttachments(@nullable VkAttachmentReference value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResolveAttachmentsRaw(s);
     }
@@ -169,7 +169,7 @@ public record VkSubpassDescription(MemorySegment segment) {
         segment.set(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment, value);
     }
     
-    public VkAttachmentReference pDepthStencilAttachment() {
+    public @nullable VkAttachmentReference pDepthStencilAttachment() {
         MemorySegment s = pDepthStencilAttachmentRaw();
         if (s.address() == 0) {
             return null;
@@ -177,7 +177,7 @@ public record VkSubpassDescription(MemorySegment segment) {
         return new VkAttachmentReference(s);
     }
 
-    public void pDepthStencilAttachment(VkAttachmentReference value) {
+    public void pDepthStencilAttachment(@nullable VkAttachmentReference value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDepthStencilAttachmentRaw(s);
     }

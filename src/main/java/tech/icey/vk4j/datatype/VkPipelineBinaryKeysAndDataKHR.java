@@ -54,7 +54,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) {
         segment.set(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys, value);
     }
     
-    public VkPipelineBinaryKeyKHR pPipelineBinaryKeys() {
+    public @nullable VkPipelineBinaryKeyKHR pPipelineBinaryKeys() {
         MemorySegment s = pPipelineBinaryKeysRaw();
         if (s.address() == 0) {
             return null;
@@ -62,7 +62,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) {
         return new VkPipelineBinaryKeyKHR(s);
     }
 
-    public void pPipelineBinaryKeys(VkPipelineBinaryKeyKHR value) {
+    public void pPipelineBinaryKeys(@nullable VkPipelineBinaryKeyKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineBinaryKeysRaw(s);
     }
@@ -75,7 +75,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) {
         segment.set(LAYOUT$pPipelineBinaryData, OFFSET$pPipelineBinaryData, value);
     }
     
-    public VkPipelineBinaryDataKHR pPipelineBinaryData() {
+    public @nullable VkPipelineBinaryDataKHR pPipelineBinaryData() {
         MemorySegment s = pPipelineBinaryDataRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) {
         return new VkPipelineBinaryDataKHR(s);
     }
 
-    public void pPipelineBinaryData(VkPipelineBinaryDataKHR value) {
+    public void pPipelineBinaryData(@nullable VkPipelineBinaryDataKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineBinaryDataRaw(s);
     }

@@ -63,7 +63,7 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pSubpassFeedback, OFFSET$pSubpassFeedback, value);
     }
     
-    public VkRenderPassSubpassFeedbackInfoEXT pSubpassFeedback() {
+    public @nullable VkRenderPassSubpassFeedbackInfoEXT pSubpassFeedback() {
         MemorySegment s = pSubpassFeedbackRaw();
         if (s.address() == 0) {
             return null;
@@ -71,7 +71,7 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(MemorySegment segment) {
         return new VkRenderPassSubpassFeedbackInfoEXT(s);
     }
 
-    public void pSubpassFeedback(VkRenderPassSubpassFeedbackInfoEXT value) {
+    public void pSubpassFeedback(@nullable VkRenderPassSubpassFeedbackInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSubpassFeedbackRaw(s);
     }

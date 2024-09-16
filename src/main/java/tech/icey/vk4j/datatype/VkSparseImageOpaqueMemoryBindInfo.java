@@ -62,7 +62,7 @@ public record VkSparseImageOpaqueMemoryBindInfo(MemorySegment segment) {
         segment.set(LAYOUT$pBinds, OFFSET$pBinds, value);
     }
     
-    public VkSparseMemoryBind pBinds() {
+    public @nullable VkSparseMemoryBind pBinds() {
         MemorySegment s = pBindsRaw();
         if (s.address() == 0) {
             return null;
@@ -70,7 +70,7 @@ public record VkSparseImageOpaqueMemoryBindInfo(MemorySegment segment) {
         return new VkSparseMemoryBind(s);
     }
 
-    public void pBinds(VkSparseMemoryBind value) {
+    public void pBinds(@nullable VkSparseMemoryBind value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBindsRaw(s);
     }

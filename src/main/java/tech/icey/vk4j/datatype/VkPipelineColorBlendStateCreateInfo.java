@@ -115,7 +115,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
     
-    public VkPipelineColorBlendAttachmentState pAttachments() {
+    public @nullable VkPipelineColorBlendAttachmentState pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.address() == 0) {
             return null;
@@ -123,7 +123,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
         return new VkPipelineColorBlendAttachmentState(s);
     }
 
-    public void pAttachments(VkPipelineColorBlendAttachmentState value) {
+    public void pAttachments(@nullable VkPipelineColorBlendAttachmentState value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
     }

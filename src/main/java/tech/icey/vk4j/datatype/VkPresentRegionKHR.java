@@ -50,7 +50,7 @@ public record VkPresentRegionKHR(MemorySegment segment) {
         segment.set(LAYOUT$pRectangles, OFFSET$pRectangles, value);
     }
     
-    public VkRectLayerKHR pRectangles() {
+    public @nullable VkRectLayerKHR pRectangles() {
         MemorySegment s = pRectanglesRaw();
         if (s.address() == 0) {
             return null;
@@ -58,7 +58,7 @@ public record VkPresentRegionKHR(MemorySegment segment) {
         return new VkRectLayerKHR(s);
     }
 
-    public void pRectangles(VkRectLayerKHR value) {
+    public void pRectangles(@nullable VkRectLayerKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRectanglesRaw(s);
     }

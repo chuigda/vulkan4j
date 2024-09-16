@@ -119,7 +119,7 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets, value);
     }
     
-    public VkDescriptorSet pDescriptorSets() {
+    public @nullable VkDescriptorSet pDescriptorSets() {
         MemorySegment s = pDescriptorSetsRaw();
         if (s.address() == 0) {
             return null;
@@ -127,7 +127,7 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) {
         return new VkDescriptorSet(s);
     }
 
-    public void pDescriptorSets(VkDescriptorSet value) {
+    public void pDescriptorSets(@nullable VkDescriptorSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorSetsRaw(s);
     }

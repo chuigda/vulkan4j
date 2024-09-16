@@ -99,7 +99,7 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$pPoolSizes, OFFSET$pPoolSizes, value);
     }
     
-    public VkDescriptorPoolSize pPoolSizes() {
+    public @nullable VkDescriptorPoolSize pPoolSizes() {
         MemorySegment s = pPoolSizesRaw();
         if (s.address() == 0) {
             return null;
@@ -107,7 +107,7 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) {
         return new VkDescriptorPoolSize(s);
     }
 
-    public void pPoolSizes(VkDescriptorPoolSize value) {
+    public void pPoolSizes(@nullable VkDescriptorPoolSize value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPoolSizesRaw(s);
     }

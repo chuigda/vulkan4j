@@ -75,7 +75,7 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
         segment.set(LAYOUT$pFragmentDensityOffsets, OFFSET$pFragmentDensityOffsets, value);
     }
     
-    public VkOffset2D pFragmentDensityOffsets() {
+    public @nullable VkOffset2D pFragmentDensityOffsets() {
         MemorySegment s = pFragmentDensityOffsetsRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +83,7 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
         return new VkOffset2D(s);
     }
 
-    public void pFragmentDensityOffsets(VkOffset2D value) {
+    public void pFragmentDensityOffsets(@nullable VkOffset2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFragmentDensityOffsetsRaw(s);
     }
