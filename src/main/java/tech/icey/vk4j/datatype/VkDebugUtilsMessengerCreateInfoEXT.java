@@ -95,11 +95,11 @@ public record VkDebugUtilsMessengerCreateInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$messageType, OFFSET$messageType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pfnUserCallback() {
+    public @pointer(comment="PFN_vkDebugUtilsMessengerCallbackEXT") MemorySegment pfnUserCallback() {
         return segment.get(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback);
     }
 
-    public void pfnUserCallback(@pointer(comment="void*") MemorySegment value) {
+    public void pfnUserCallback(@pointer(comment="PFN_vkDebugUtilsMessengerCallbackEXT") MemorySegment value) {
         segment.set(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback, value);
     }
 

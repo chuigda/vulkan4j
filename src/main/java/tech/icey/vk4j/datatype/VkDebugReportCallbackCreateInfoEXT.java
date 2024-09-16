@@ -71,11 +71,11 @@ public record VkDebugReportCallbackCreateInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pfnCallback() {
+    public @pointer(comment="PFN_vkDebugReportCallbackEXT") MemorySegment pfnCallback() {
         return segment.get(LAYOUT$pfnCallback, OFFSET$pfnCallback);
     }
 
-    public void pfnCallback(@pointer(comment="void*") MemorySegment value) {
+    public void pfnCallback(@pointer(comment="PFN_vkDebugReportCallbackEXT") MemorySegment value) {
         segment.set(LAYOUT$pfnCallback, OFFSET$pfnCallback, value);
     }
 

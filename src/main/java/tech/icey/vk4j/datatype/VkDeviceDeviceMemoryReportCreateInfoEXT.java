@@ -71,11 +71,11 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pfnUserCallback() {
+    public @pointer(comment="PFN_vkDeviceMemoryReportCallbackEXT") MemorySegment pfnUserCallback() {
         return segment.get(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback);
     }
 
-    public void pfnUserCallback(@pointer(comment="void*") MemorySegment value) {
+    public void pfnUserCallback(@pointer(comment="PFN_vkDeviceMemoryReportCallbackEXT") MemorySegment value) {
         segment.set(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback, value);
     }
 

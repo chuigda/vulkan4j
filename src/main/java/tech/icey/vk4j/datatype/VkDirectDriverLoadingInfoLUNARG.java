@@ -67,11 +67,11 @@ public record VkDirectDriverLoadingInfoLUNARG(MemorySegment segment) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pfnGetInstanceProcAddr() {
+    public @pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") MemorySegment pfnGetInstanceProcAddr() {
         return segment.get(LAYOUT$pfnGetInstanceProcAddr, OFFSET$pfnGetInstanceProcAddr);
     }
 
-    public void pfnGetInstanceProcAddr(@pointer(comment="void*") MemorySegment value) {
+    public void pfnGetInstanceProcAddr(@pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") MemorySegment value) {
         segment.set(LAYOUT$pfnGetInstanceProcAddr, OFFSET$pfnGetInstanceProcAddr, value);
     }
 

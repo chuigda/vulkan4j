@@ -5,7 +5,7 @@ from ...entity import Member
 def generate_pointer_accessor(type_: CPointerType, member: Member) -> str:
     pointee_type = type_.pointee
     if pointee_type == CTYPE_VOID:
-        return generate_pvoid_accessor(member)
+        return generate_pvoid_accessor(type_, member)
     elif isinstance(pointee_type, CPointerType):
         return generate_pp_accessor(member)
     elif isinstance(pointee_type, CNonRefType):
@@ -18,12 +18,14 @@ def generate_pointer_accessor(type_: CPointerType, member: Member) -> str:
         return generic_generic_ptr_accessor(type_, member)
 
 
-def generate_pvoid_accessor(member: Member) -> str:
-    return f'''    public @pointer(comment="void*") MemorySegment {member.name}() {{
+def generate_pvoid_accessor(type_: CPointerType, member: Member) -> str:
+    comment = type_.comment if type_.comment is not None else 'void*'
+
+    return f'''    public @pointer(comment="{comment}") MemorySegment {member.name}() {{
         return segment.get(LAYOUT${member.name}, OFFSET${member.name});
     }}
 
-    public void {member.name}(@pointer(comment="void*") MemorySegment value) {{
+    public void {member.name}(@pointer(comment="{comment}") MemorySegment value) {{
         segment.set(LAYOUT${member.name}, OFFSET${member.name}, value);
     }}\n\n'''
 
