@@ -62,11 +62,11 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) {
     public MemorySegment heapBudgetRaw() {
         return segment.asSlice(OFFSET$heapBudget, LAYOUT$heapBudget.byteSize());
     }
-        
-    public @unsigned LongArray heapBudget(int index) {
+
+    public @unsigned LongArray heapBudget() {
         return new LongArray(heapBudgetRaw(), LAYOUT$heapBudget.elementCount());
     }
-    
+
     public void heapBudget(@unsigned LongArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapBudget, LAYOUT$heapBudget.byteSize());
     }
@@ -74,11 +74,11 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) {
     public MemorySegment heapUsageRaw() {
         return segment.asSlice(OFFSET$heapUsage, LAYOUT$heapUsage.byteSize());
     }
-        
-    public @unsigned LongArray heapUsage(int index) {
+
+    public @unsigned LongArray heapUsage() {
         return new LongArray(heapUsageRaw(), LAYOUT$heapUsage.elementCount());
     }
-    
+
     public void heapUsage(@unsigned LongArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapUsage, LAYOUT$heapUsage.byteSize());
     }

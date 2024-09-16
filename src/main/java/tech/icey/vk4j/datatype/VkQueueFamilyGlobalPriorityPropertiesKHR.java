@@ -70,11 +70,11 @@ public record VkQueueFamilyGlobalPriorityPropertiesKHR(MemorySegment segment) {
     public MemorySegment prioritiesRaw() {
         return segment.asSlice(OFFSET$priorities, LAYOUT$priorities.byteSize());
     }
-    
+
     public IntArray priorities() {
         return new IntArray(prioritiesRaw(), LAYOUT$priorities.elementCount());
     }
-    
+
     public void priorities(IntArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$priorities, LAYOUT$priorities.byteSize());
     }

@@ -37,11 +37,11 @@ public record VkExtensionProperties(MemorySegment segment) {
     public MemorySegment extensionNameRaw() {
         return segment.asSlice(OFFSET$extensionName, LAYOUT$extensionName.byteSize());
     }
-        
-    public ByteArray extensionName(int index) {
+
+    public ByteArray extensionName() {
         return new ByteArray(extensionNameRaw(), LAYOUT$extensionName.elementCount());
     }
-    
+
     public void extensionName(ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extensionName, LAYOUT$extensionName.byteSize());
     }

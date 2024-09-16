@@ -16,7 +16,7 @@ import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkClearColorValue(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
         MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("float32"),
         MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("int32"),
         MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("uint32")
@@ -41,11 +41,11 @@ public record VkClearColorValue(MemorySegment segment) {
     public MemorySegment float32Raw() {
         return segment.asSlice(OFFSET$float32, LAYOUT$float32.byteSize());
     }
-        
-    public FloatArray float32(int index) {
+
+    public FloatArray float32() {
         return new FloatArray(float32Raw(), LAYOUT$float32.elementCount());
     }
-    
+
     public void float32(FloatArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$float32, LAYOUT$float32.byteSize());
     }
@@ -53,11 +53,11 @@ public record VkClearColorValue(MemorySegment segment) {
     public MemorySegment int32Raw() {
         return segment.asSlice(OFFSET$int32, LAYOUT$int32.byteSize());
     }
-        
-    public IntArray int32(int index) {
+
+    public IntArray int32() {
         return new IntArray(int32Raw(), LAYOUT$int32.elementCount());
     }
-    
+
     public void int32(IntArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$int32, LAYOUT$int32.byteSize());
     }
@@ -65,11 +65,11 @@ public record VkClearColorValue(MemorySegment segment) {
     public MemorySegment uint32Raw() {
         return segment.asSlice(OFFSET$uint32, LAYOUT$uint32.byteSize());
     }
-        
-    public @unsigned IntArray uint32(int index) {
+
+    public @unsigned IntArray uint32() {
         return new IntArray(uint32Raw(), LAYOUT$uint32.elementCount());
     }
-    
+
     public void uint32(@unsigned IntArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$uint32, LAYOUT$uint32.byteSize());
     }

@@ -78,7 +78,7 @@ public record VkImageBlit2(MemorySegment segment) {
     public MemorySegment srcOffsetsRaw() {
         return segment.asSlice(OFFSET$srcOffsets, LAYOUT$srcOffsets.byteSize());
     }
-        
+
     public VkOffset3D[] srcOffsets() {
         MemorySegment s = srcOffsetsRaw();
         VkOffset3D[] arr = new VkOffset3D[(int)LAYOUT$srcOffsets.elementCount()];
@@ -87,7 +87,7 @@ public record VkImageBlit2(MemorySegment segment) {
         }
         return arr;
     }
-    
+
     public void srcOffsets(VkOffset3D[] value) {
         MemorySegment s = srcOffsetsRaw();
         for (int i = 0; i < value.length; i++) {
@@ -99,7 +99,7 @@ public record VkImageBlit2(MemorySegment segment) {
         MemorySegment s = srcOffsetsRaw();
         return new VkOffset3D(s.asSlice(index * LAYOUT$srcOffsets.byteSize(), LAYOUT$srcOffsets.byteSize()));
     }
-    
+
     public void srcOffsetsAt(long index, VkOffset3D value) {
         MemorySegment.copy(value.segment(), 0, srcOffsetsRaw(), index * LAYOUT$srcOffsets.byteSize(), LAYOUT$srcOffsets.byteSize());
     }
@@ -115,7 +115,7 @@ public record VkImageBlit2(MemorySegment segment) {
     public MemorySegment dstOffsetsRaw() {
         return segment.asSlice(OFFSET$dstOffsets, LAYOUT$dstOffsets.byteSize());
     }
-        
+
     public VkOffset3D[] dstOffsets() {
         MemorySegment s = dstOffsetsRaw();
         VkOffset3D[] arr = new VkOffset3D[(int)LAYOUT$dstOffsets.elementCount()];
@@ -124,7 +124,7 @@ public record VkImageBlit2(MemorySegment segment) {
         }
         return arr;
     }
-    
+
     public void dstOffsets(VkOffset3D[] value) {
         MemorySegment s = dstOffsetsRaw();
         for (int i = 0; i < value.length; i++) {
@@ -136,7 +136,7 @@ public record VkImageBlit2(MemorySegment segment) {
         MemorySegment s = dstOffsetsRaw();
         return new VkOffset3D(s.asSlice(index * LAYOUT$dstOffsets.byteSize(), LAYOUT$dstOffsets.byteSize()));
     }
-    
+
     public void dstOffsetsAt(long index, VkOffset3D value) {
         MemorySegment.copy(value.segment(), 0, dstOffsetsRaw(), index * LAYOUT$dstOffsets.byteSize(), LAYOUT$dstOffsets.byteSize());
     }

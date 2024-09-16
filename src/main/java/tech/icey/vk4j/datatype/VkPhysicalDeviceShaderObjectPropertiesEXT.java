@@ -62,11 +62,11 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(MemorySegment segment) {
     public MemorySegment shaderBinaryUUIDRaw() {
         return segment.asSlice(OFFSET$shaderBinaryUUID, LAYOUT$shaderBinaryUUID.byteSize());
     }
-        
-    public @unsigned ByteArray shaderBinaryUUID(int index) {
+
+    public @unsigned ByteArray shaderBinaryUUID() {
         return new ByteArray(shaderBinaryUUIDRaw(), LAYOUT$shaderBinaryUUID.elementCount());
     }
-    
+
     public void shaderBinaryUUID(@unsigned ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$shaderBinaryUUID, LAYOUT$shaderBinaryUUID.byteSize());
     }

@@ -16,7 +16,7 @@ import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkAccelerationStructureGeometryDataKHR(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
         VkAccelerationStructureGeometryTrianglesDataKHR.LAYOUT.withName("triangles"),
         VkAccelerationStructureGeometryAabbsDataKHR.LAYOUT.withName("aabbs"),
         VkAccelerationStructureGeometryInstancesDataKHR.LAYOUT.withName("instances")

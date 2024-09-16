@@ -74,7 +74,7 @@ public record VkPhysicalDeviceGroupProperties(MemorySegment segment) {
     public MemorySegment physicalDevicesRaw() {
         return segment.asSlice(OFFSET$physicalDevices, LAYOUT$physicalDevices.byteSize());
     }
-        
+
     public VkPhysicalDevice[] physicalDevices() {
         MemorySegment s = physicalDevicesRaw();
         VkPhysicalDevice[] arr = new VkPhysicalDevice[(int)LAYOUT$physicalDevices.elementCount()];
@@ -83,7 +83,7 @@ public record VkPhysicalDeviceGroupProperties(MemorySegment segment) {
         }
         return arr;
     }
-    
+
     public void physicalDevices(VkPhysicalDevice[] value) {
         MemorySegment s = physicalDevicesRaw();
         for (int i = 0; i < value.length; i++) {
@@ -95,7 +95,7 @@ public record VkPhysicalDeviceGroupProperties(MemorySegment segment) {
         MemorySegment s = physicalDevicesRaw();
         return new VkPhysicalDevice(s.asSlice(index * LAYOUT$physicalDevices.byteSize(), LAYOUT$physicalDevices.byteSize()));
     }
-    
+
     public void physicalDevicesAt(long index, VkPhysicalDevice value) {
         MemorySegment.copy(value.segment(), 0, physicalDevicesRaw(), index * LAYOUT$physicalDevices.byteSize(), LAYOUT$physicalDevices.byteSize());
     }

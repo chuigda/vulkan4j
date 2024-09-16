@@ -94,11 +94,11 @@ public record VkPerformanceCounterKHR(MemorySegment segment) {
     public MemorySegment uuidRaw() {
         return segment.asSlice(OFFSET$uuid, LAYOUT$uuid.byteSize());
     }
-        
-    public @unsigned ByteArray uuid(int index) {
+
+    public @unsigned ByteArray uuid() {
         return new ByteArray(uuidRaw(), LAYOUT$uuid.elementCount());
     }
-    
+
     public void uuid(@unsigned ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$uuid, LAYOUT$uuid.byteSize());
     }

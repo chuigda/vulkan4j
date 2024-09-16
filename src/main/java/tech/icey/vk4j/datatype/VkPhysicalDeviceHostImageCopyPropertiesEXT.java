@@ -126,11 +126,11 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
     public MemorySegment optimalTilingLayoutUUIDRaw() {
         return segment.asSlice(OFFSET$optimalTilingLayoutUUID, LAYOUT$optimalTilingLayoutUUID.byteSize());
     }
-        
-    public @unsigned ByteArray optimalTilingLayoutUUID(int index) {
+
+    public @unsigned ByteArray optimalTilingLayoutUUID() {
         return new ByteArray(optimalTilingLayoutUUIDRaw(), LAYOUT$optimalTilingLayoutUUID.elementCount());
     }
-    
+
     public void optimalTilingLayoutUUID(@unsigned ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$optimalTilingLayoutUUID, LAYOUT$optimalTilingLayoutUUID.byteSize());
     }

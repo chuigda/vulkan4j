@@ -90,11 +90,11 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment
     public MemorySegment sampleLocationCoordinateRangeRaw() {
         return segment.asSlice(OFFSET$sampleLocationCoordinateRange, LAYOUT$sampleLocationCoordinateRange.byteSize());
     }
-        
-    public FloatArray sampleLocationCoordinateRange(int index) {
+
+    public FloatArray sampleLocationCoordinateRange() {
         return new FloatArray(sampleLocationCoordinateRangeRaw(), LAYOUT$sampleLocationCoordinateRange.elementCount());
     }
-    
+
     public void sampleLocationCoordinateRange(FloatArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationCoordinateRange, LAYOUT$sampleLocationCoordinateRange.byteSize());
     }

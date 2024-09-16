@@ -53,7 +53,7 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
     public MemorySegment memoryTypesRaw() {
         return segment.asSlice(OFFSET$memoryTypes, LAYOUT$memoryTypes.byteSize());
     }
-        
+
     public VkMemoryType[] memoryTypes() {
         MemorySegment s = memoryTypesRaw();
         VkMemoryType[] arr = new VkMemoryType[(int)LAYOUT$memoryTypes.elementCount()];
@@ -62,7 +62,7 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
         }
         return arr;
     }
-    
+
     public void memoryTypes(VkMemoryType[] value) {
         MemorySegment s = memoryTypesRaw();
         for (int i = 0; i < value.length; i++) {
@@ -74,7 +74,7 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
         MemorySegment s = memoryTypesRaw();
         return new VkMemoryType(s.asSlice(index * LAYOUT$memoryTypes.byteSize(), LAYOUT$memoryTypes.byteSize()));
     }
-    
+
     public void memoryTypesAt(long index, VkMemoryType value) {
         MemorySegment.copy(value.segment(), 0, memoryTypesRaw(), index * LAYOUT$memoryTypes.byteSize(), LAYOUT$memoryTypes.byteSize());
     }
@@ -90,7 +90,7 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
     public MemorySegment memoryHeapsRaw() {
         return segment.asSlice(OFFSET$memoryHeaps, LAYOUT$memoryHeaps.byteSize());
     }
-        
+
     public VkMemoryHeap[] memoryHeaps() {
         MemorySegment s = memoryHeapsRaw();
         VkMemoryHeap[] arr = new VkMemoryHeap[(int)LAYOUT$memoryHeaps.elementCount()];
@@ -99,7 +99,7 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
         }
         return arr;
     }
-    
+
     public void memoryHeaps(VkMemoryHeap[] value) {
         MemorySegment s = memoryHeapsRaw();
         for (int i = 0; i < value.length; i++) {
@@ -111,7 +111,7 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
         MemorySegment s = memoryHeapsRaw();
         return new VkMemoryHeap(s.asSlice(index * LAYOUT$memoryHeaps.byteSize(), LAYOUT$memoryHeaps.byteSize()));
     }
-    
+
     public void memoryHeapsAt(long index, VkMemoryHeap value) {
         MemorySegment.copy(value.segment(), 0, memoryHeapsRaw(), index * LAYOUT$memoryHeaps.byteSize(), LAYOUT$memoryHeaps.byteSize());
     }

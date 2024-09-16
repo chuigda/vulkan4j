@@ -70,11 +70,11 @@ public record VkPipelineBinaryKeyKHR(MemorySegment segment) {
     public MemorySegment keyRaw() {
         return segment.asSlice(OFFSET$key, LAYOUT$key.byteSize());
     }
-        
-    public @unsigned ByteArray key(int index) {
+
+    public @unsigned ByteArray key() {
         return new ByteArray(keyRaw(), LAYOUT$key.elementCount());
     }
-    
+
     public void key(@unsigned ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$key, LAYOUT$key.byteSize());
     }

@@ -16,7 +16,7 @@ import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkPipelineExecutableStatisticValueKHR(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
         ValueLayout.JAVA_INT.withName("b32"),
         ValueLayout.JAVA_LONG.withName("i64"),
         ValueLayout.JAVA_LONG.withName("u64"),

@@ -25,11 +25,11 @@ def generate_array_nonref_type_accessor(element_type: CNonRefType, member: Membe
     return f'''    public MemorySegment {member.name}Raw() {{
         return segment.asSlice(OFFSET${member.name}, LAYOUT${member.name}.byteSize());
     }}
-        
-    public {element_type.vk4j_array_type()} {member.name}(int index) {{
+
+    public {element_type.vk4j_array_type()} {member.name}() {{
         return new {element_type.vk4j_array_type_no_sign()}({member.name}Raw(), LAYOUT${member.name}.elementCount());
     }}
-    
+
     public void {member.name}({element_type.vk4j_array_type()} value) {{
         MemorySegment.copy(value.segment(), 0, segment, OFFSET${member.name}, LAYOUT${member.name}.byteSize());
     }}\n\n'''
@@ -39,7 +39,7 @@ def generate_array_ref_type_accessor(element_type: CStructType | CUnionType | CH
     return f'''    public MemorySegment {member.name}Raw() {{
         return segment.asSlice(OFFSET${member.name}, LAYOUT${member.name}.byteSize());
     }}
-        
+
     public {element_type.name}[] {member.name}() {{
         MemorySegment s = {member.name}Raw();
         {element_type.name}[] arr = new {element_type.name}[(int)LAYOUT${member.name}.elementCount()];
@@ -48,7 +48,7 @@ def generate_array_ref_type_accessor(element_type: CStructType | CUnionType | CH
         }}
         return arr;
     }}
-    
+
     public void {member.name}({element_type.name}[] value) {{
         MemorySegment s = {member.name}Raw();
         for (int i = 0; i < value.length; i++) {{
@@ -60,7 +60,7 @@ def generate_array_ref_type_accessor(element_type: CStructType | CUnionType | CH
         MemorySegment s = {member.name}Raw();
         return new {element_type.name}(s.asSlice(index * LAYOUT${member.name}.byteSize(), LAYOUT${member.name}.byteSize()));
     }}
-    
+
     public void {member.name}At(long index, {element_type.name} value) {{
         MemorySegment.copy(value.segment(), 0, {member.name}Raw(), index * LAYOUT${member.name}.byteSize(), LAYOUT${member.name}.byteSize());
     }}\n\n'''
@@ -77,11 +77,11 @@ def generate_array_enum_type_accessor(element_type: CEnumType, member: Member) -
     return f'''    public MemorySegment {member.name}Raw() {{
         return segment.asSlice(OFFSET${member.name}, LAYOUT${member.name}.byteSize());
     }}
-    
+
     public {new_elem_type.vk4j_array_type()} {member.name}() {{
         return new {new_elem_type.vk4j_array_type_no_sign()}({member.name}Raw(), LAYOUT${member.name}.elementCount());
     }}
-    
+
     public void {member.name}({new_elem_type.vk4j_array_type()} value) {{
         MemorySegment.copy(value.segment(), 0, segment, OFFSET${member.name}, LAYOUT${member.name}.byteSize());
     }}\n\n'''

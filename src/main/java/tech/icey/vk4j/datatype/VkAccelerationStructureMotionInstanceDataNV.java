@@ -16,7 +16,7 @@ import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkAccelerationStructureMotionInstanceDataNV(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
         VkAccelerationStructureInstanceKHR.LAYOUT.withName("staticInstance"),
         VkAccelerationStructureMatrixMotionInstanceNV.LAYOUT.withName("matrixMotionInstance"),
         VkAccelerationStructureSRTMotionInstanceNV.LAYOUT.withName("srtMotionInstance")

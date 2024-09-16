@@ -131,11 +131,11 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
     public MemorySegment blendConstantsRaw() {
         return segment.asSlice(OFFSET$blendConstants, LAYOUT$blendConstants.byteSize());
     }
-        
-    public FloatArray blendConstants(int index) {
+
+    public FloatArray blendConstants() {
         return new FloatArray(blendConstantsRaw(), LAYOUT$blendConstants.elementCount());
     }
-    
+
     public void blendConstants(FloatArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$blendConstants, LAYOUT$blendConstants.byteSize());
     }

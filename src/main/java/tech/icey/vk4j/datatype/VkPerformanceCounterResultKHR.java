@@ -16,7 +16,7 @@ import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkPerformanceCounterResultKHR(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
         ValueLayout.JAVA_INT.withName("int32"),
         ValueLayout.JAVA_LONG.withName("int64"),
         ValueLayout.JAVA_INT.withName("uint32"),

@@ -868,11 +868,11 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     public MemorySegment maxComputeWorkGroupCountRaw() {
         return segment.asSlice(OFFSET$maxComputeWorkGroupCount, LAYOUT$maxComputeWorkGroupCount.byteSize());
     }
-        
-    public @unsigned IntArray maxComputeWorkGroupCount(int index) {
+
+    public @unsigned IntArray maxComputeWorkGroupCount() {
         return new IntArray(maxComputeWorkGroupCountRaw(), LAYOUT$maxComputeWorkGroupCount.elementCount());
     }
-    
+
     public void maxComputeWorkGroupCount(@unsigned IntArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupCount, LAYOUT$maxComputeWorkGroupCount.byteSize());
     }
@@ -888,11 +888,11 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     public MemorySegment maxComputeWorkGroupSizeRaw() {
         return segment.asSlice(OFFSET$maxComputeWorkGroupSize, LAYOUT$maxComputeWorkGroupSize.byteSize());
     }
-        
-    public @unsigned IntArray maxComputeWorkGroupSize(int index) {
+
+    public @unsigned IntArray maxComputeWorkGroupSize() {
         return new IntArray(maxComputeWorkGroupSizeRaw(), LAYOUT$maxComputeWorkGroupSize.elementCount());
     }
-    
+
     public void maxComputeWorkGroupSize(@unsigned IntArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupSize, LAYOUT$maxComputeWorkGroupSize.byteSize());
     }
@@ -964,11 +964,11 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     public MemorySegment maxViewportDimensionsRaw() {
         return segment.asSlice(OFFSET$maxViewportDimensions, LAYOUT$maxViewportDimensions.byteSize());
     }
-        
-    public @unsigned IntArray maxViewportDimensions(int index) {
+
+    public @unsigned IntArray maxViewportDimensions() {
         return new IntArray(maxViewportDimensionsRaw(), LAYOUT$maxViewportDimensions.elementCount());
     }
-    
+
     public void maxViewportDimensions(@unsigned IntArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxViewportDimensions, LAYOUT$maxViewportDimensions.byteSize());
     }
@@ -976,11 +976,11 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     public MemorySegment viewportBoundsRangeRaw() {
         return segment.asSlice(OFFSET$viewportBoundsRange, LAYOUT$viewportBoundsRange.byteSize());
     }
-        
-    public FloatArray viewportBoundsRange(int index) {
+
+    public FloatArray viewportBoundsRange() {
         return new FloatArray(viewportBoundsRangeRaw(), LAYOUT$viewportBoundsRange.elementCount());
     }
-    
+
     public void viewportBoundsRange(FloatArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$viewportBoundsRange, LAYOUT$viewportBoundsRange.byteSize());
     }
@@ -1244,11 +1244,11 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     public MemorySegment pointSizeRangeRaw() {
         return segment.asSlice(OFFSET$pointSizeRange, LAYOUT$pointSizeRange.byteSize());
     }
-        
-    public FloatArray pointSizeRange(int index) {
+
+    public FloatArray pointSizeRange() {
         return new FloatArray(pointSizeRangeRaw(), LAYOUT$pointSizeRange.elementCount());
     }
-    
+
     public void pointSizeRange(FloatArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$pointSizeRange, LAYOUT$pointSizeRange.byteSize());
     }
@@ -1256,11 +1256,11 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     public MemorySegment lineWidthRangeRaw() {
         return segment.asSlice(OFFSET$lineWidthRange, LAYOUT$lineWidthRange.byteSize());
     }
-        
-    public FloatArray lineWidthRange(int index) {
+
+    public FloatArray lineWidthRange() {
         return new FloatArray(lineWidthRangeRaw(), LAYOUT$lineWidthRange.elementCount());
     }
-    
+
     public void lineWidthRange(FloatArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$lineWidthRange, LAYOUT$lineWidthRange.byteSize());
     }

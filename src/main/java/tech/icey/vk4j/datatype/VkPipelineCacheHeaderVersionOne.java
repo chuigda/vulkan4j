@@ -81,11 +81,11 @@ public record VkPipelineCacheHeaderVersionOne(MemorySegment segment) {
     public MemorySegment pipelineCacheUUIDRaw() {
         return segment.asSlice(OFFSET$pipelineCacheUUID, LAYOUT$pipelineCacheUUID.byteSize());
     }
-        
-    public @unsigned ByteArray pipelineCacheUUID(int index) {
+
+    public @unsigned ByteArray pipelineCacheUUID() {
         return new ByteArray(pipelineCacheUUIDRaw(), LAYOUT$pipelineCacheUUID.elementCount());
     }
-    
+
     public void pipelineCacheUUID(@unsigned ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, LAYOUT$pipelineCacheUUID.byteSize());
     }

@@ -58,11 +58,11 @@ public record VkPipelinePropertiesIdentifierEXT(MemorySegment segment) {
     public MemorySegment pipelineIdentifierRaw() {
         return segment.asSlice(OFFSET$pipelineIdentifier, LAYOUT$pipelineIdentifier.byteSize());
     }
-        
-    public @unsigned ByteArray pipelineIdentifier(int index) {
+
+    public @unsigned ByteArray pipelineIdentifier() {
         return new ByteArray(pipelineIdentifierRaw(), LAYOUT$pipelineIdentifier.elementCount());
     }
-    
+
     public void pipelineIdentifier(@unsigned ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineIdentifier, LAYOUT$pipelineIdentifier.byteSize());
     }

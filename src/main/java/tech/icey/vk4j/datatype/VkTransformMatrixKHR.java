@@ -33,11 +33,11 @@ public record VkTransformMatrixKHR(MemorySegment segment) {
     public MemorySegment matrixRaw() {
         return segment.asSlice(OFFSET$matrix, LAYOUT$matrix.byteSize());
     }
-        
-    public FloatArray matrix(int index) {
+
+    public FloatArray matrix() {
         return new FloatArray(matrixRaw(), LAYOUT$matrix.elementCount());
     }
-    
+
     public void matrix(FloatArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$matrix, LAYOUT$matrix.byteSize());
     }

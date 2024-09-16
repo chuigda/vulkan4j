@@ -114,11 +114,11 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
     public MemorySegment deviceUUIDRaw() {
         return segment.asSlice(OFFSET$deviceUUID, LAYOUT$deviceUUID.byteSize());
     }
-        
-    public @unsigned ByteArray deviceUUID(int index) {
+
+    public @unsigned ByteArray deviceUUID() {
         return new ByteArray(deviceUUIDRaw(), LAYOUT$deviceUUID.elementCount());
     }
-    
+
     public void deviceUUID(@unsigned ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceUUID, LAYOUT$deviceUUID.byteSize());
     }
@@ -126,11 +126,11 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
     public MemorySegment driverUUIDRaw() {
         return segment.asSlice(OFFSET$driverUUID, LAYOUT$driverUUID.byteSize());
     }
-        
-    public @unsigned ByteArray driverUUID(int index) {
+
+    public @unsigned ByteArray driverUUID() {
         return new ByteArray(driverUUIDRaw(), LAYOUT$driverUUID.elementCount());
     }
-    
+
     public void driverUUID(@unsigned ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverUUID, LAYOUT$driverUUID.byteSize());
     }
@@ -138,11 +138,11 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
     public MemorySegment deviceLUIDRaw() {
         return segment.asSlice(OFFSET$deviceLUID, LAYOUT$deviceLUID.byteSize());
     }
-        
-    public @unsigned ByteArray deviceLUID(int index) {
+
+    public @unsigned ByteArray deviceLUID() {
         return new ByteArray(deviceLUIDRaw(), LAYOUT$deviceLUID.elementCount());
     }
-    
+
     public void deviceLUID(@unsigned ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceLUID, LAYOUT$deviceLUID.byteSize());
     }

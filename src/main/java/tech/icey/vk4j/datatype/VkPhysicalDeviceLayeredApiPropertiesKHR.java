@@ -94,11 +94,11 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(MemorySegment segment) {
     public MemorySegment deviceNameRaw() {
         return segment.asSlice(OFFSET$deviceName, LAYOUT$deviceName.byteSize());
     }
-        
-    public ByteArray deviceName(int index) {
+
+    public ByteArray deviceName() {
         return new ByteArray(deviceNameRaw(), LAYOUT$deviceName.elementCount());
     }
-    
+
     public void deviceName(ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceName, LAYOUT$deviceName.byteSize());
     }

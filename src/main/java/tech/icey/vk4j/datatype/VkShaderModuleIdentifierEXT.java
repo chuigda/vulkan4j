@@ -70,11 +70,11 @@ public record VkShaderModuleIdentifierEXT(MemorySegment segment) {
     public MemorySegment identifierRaw() {
         return segment.asSlice(OFFSET$identifier, LAYOUT$identifier.byteSize());
     }
-        
-    public @unsigned ByteArray identifier(int index) {
+
+    public @unsigned ByteArray identifier() {
         return new ByteArray(identifierRaw(), LAYOUT$identifier.elementCount());
     }
-    
+
     public void identifier(@unsigned ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$identifier, LAYOUT$identifier.byteSize());
     }

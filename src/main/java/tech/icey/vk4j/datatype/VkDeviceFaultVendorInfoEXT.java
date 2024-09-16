@@ -41,11 +41,11 @@ public record VkDeviceFaultVendorInfoEXT(MemorySegment segment) {
     public MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, LAYOUT$description.byteSize());
     }
-        
-    public ByteArray description(int index) {
+
+    public ByteArray description() {
         return new ByteArray(descriptionRaw(), LAYOUT$description.elementCount());
     }
-    
+
     public void description(ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, LAYOUT$description.byteSize());
     }

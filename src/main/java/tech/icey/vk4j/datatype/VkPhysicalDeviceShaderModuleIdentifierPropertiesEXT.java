@@ -58,11 +58,11 @@ public record VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(MemorySegment 
     public MemorySegment shaderModuleIdentifierAlgorithmUUIDRaw() {
         return segment.asSlice(OFFSET$shaderModuleIdentifierAlgorithmUUID, LAYOUT$shaderModuleIdentifierAlgorithmUUID.byteSize());
     }
-        
-    public @unsigned ByteArray shaderModuleIdentifierAlgorithmUUID(int index) {
+
+    public @unsigned ByteArray shaderModuleIdentifierAlgorithmUUID() {
         return new ByteArray(shaderModuleIdentifierAlgorithmUUIDRaw(), LAYOUT$shaderModuleIdentifierAlgorithmUUID.elementCount());
     }
-    
+
     public void shaderModuleIdentifierAlgorithmUUID(@unsigned ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$shaderModuleIdentifierAlgorithmUUID, LAYOUT$shaderModuleIdentifierAlgorithmUUID.byteSize());
     }

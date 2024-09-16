@@ -82,11 +82,11 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment s
     public MemorySegment combinerOpsRaw() {
         return segment.asSlice(OFFSET$combinerOps, LAYOUT$combinerOps.byteSize());
     }
-    
+
     public IntArray combinerOps() {
         return new IntArray(combinerOpsRaw(), LAYOUT$combinerOps.elementCount());
     }
-    
+
     public void combinerOps(IntArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$combinerOps, LAYOUT$combinerOps.byteSize());
     }

@@ -62,11 +62,11 @@ public record VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) {
     public MemorySegment presentMaskRaw() {
         return segment.asSlice(OFFSET$presentMask, LAYOUT$presentMask.byteSize());
     }
-        
-    public @unsigned IntArray presentMask(int index) {
+
+    public @unsigned IntArray presentMask() {
         return new IntArray(presentMaskRaw(), LAYOUT$presentMask.elementCount());
     }
-    
+
     public void presentMask(@unsigned IntArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$presentMask, LAYOUT$presentMask.byteSize());
     }

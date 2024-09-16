@@ -78,11 +78,11 @@ public record VkDebugUtilsLabelEXT(MemorySegment segment) {
     public MemorySegment colorRaw() {
         return segment.asSlice(OFFSET$color, LAYOUT$color.byteSize());
     }
-        
-    public FloatArray color(int index) {
+
+    public FloatArray color() {
         return new FloatArray(colorRaw(), LAYOUT$color.elementCount());
     }
-    
+
     public void color(FloatArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$color, LAYOUT$color.byteSize());
     }

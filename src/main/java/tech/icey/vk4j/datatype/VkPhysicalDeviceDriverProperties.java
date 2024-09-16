@@ -78,11 +78,11 @@ public record VkPhysicalDeviceDriverProperties(MemorySegment segment) {
     public MemorySegment driverNameRaw() {
         return segment.asSlice(OFFSET$driverName, LAYOUT$driverName.byteSize());
     }
-        
-    public ByteArray driverName(int index) {
+
+    public ByteArray driverName() {
         return new ByteArray(driverNameRaw(), LAYOUT$driverName.elementCount());
     }
-    
+
     public void driverName(ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverName, LAYOUT$driverName.byteSize());
     }
@@ -90,11 +90,11 @@ public record VkPhysicalDeviceDriverProperties(MemorySegment segment) {
     public MemorySegment driverInfoRaw() {
         return segment.asSlice(OFFSET$driverInfo, LAYOUT$driverInfo.byteSize());
     }
-        
-    public ByteArray driverInfo(int index) {
+
+    public ByteArray driverInfo() {
         return new ByteArray(driverInfoRaw(), LAYOUT$driverInfo.elementCount());
     }
-    
+
     public void driverInfo(ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverInfo, LAYOUT$driverInfo.byteSize());
     }

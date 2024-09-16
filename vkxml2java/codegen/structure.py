@@ -3,6 +3,7 @@ from .datatype.common_accessor import *
 from .datatype.ptr_accessor import generate_pointer_accessor
 from .datatype.array_accessor import generate_array_accessor
 
+
 def generate_structure(registry: Registry, structure: Structure) -> str:
     member_types_lowered: list[CType | None] = []
 

@@ -105,11 +105,11 @@ public record VkShaderStatisticsInfoAMD(MemorySegment segment) {
     public MemorySegment computeWorkGroupSizeRaw() {
         return segment.asSlice(OFFSET$computeWorkGroupSize, LAYOUT$computeWorkGroupSize.byteSize());
     }
-        
-    public @unsigned IntArray computeWorkGroupSize(int index) {
+
+    public @unsigned IntArray computeWorkGroupSize() {
         return new IntArray(computeWorkGroupSizeRaw(), LAYOUT$computeWorkGroupSize.elementCount());
     }
-    
+
     public void computeWorkGroupSize(@unsigned IntArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$computeWorkGroupSize, LAYOUT$computeWorkGroupSize.byteSize());
     }

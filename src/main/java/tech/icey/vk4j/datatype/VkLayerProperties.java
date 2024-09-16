@@ -45,11 +45,11 @@ public record VkLayerProperties(MemorySegment segment) {
     public MemorySegment layerNameRaw() {
         return segment.asSlice(OFFSET$layerName, LAYOUT$layerName.byteSize());
     }
-        
-    public ByteArray layerName(int index) {
+
+    public ByteArray layerName() {
         return new ByteArray(layerNameRaw(), LAYOUT$layerName.elementCount());
     }
-    
+
     public void layerName(ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$layerName, LAYOUT$layerName.byteSize());
     }
@@ -73,11 +73,11 @@ public record VkLayerProperties(MemorySegment segment) {
     public MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, LAYOUT$description.byteSize());
     }
-        
-    public ByteArray description(int index) {
+
+    public ByteArray description() {
         return new ByteArray(descriptionRaw(), LAYOUT$description.elementCount());
     }
-    
+
     public void description(ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, LAYOUT$description.byteSize());
     }

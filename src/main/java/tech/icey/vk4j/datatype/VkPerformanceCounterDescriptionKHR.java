@@ -78,11 +78,11 @@ public record VkPerformanceCounterDescriptionKHR(MemorySegment segment) {
     public MemorySegment nameRaw() {
         return segment.asSlice(OFFSET$name, LAYOUT$name.byteSize());
     }
-        
-    public ByteArray name(int index) {
+
+    public ByteArray name() {
         return new ByteArray(nameRaw(), LAYOUT$name.elementCount());
     }
-    
+
     public void name(ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, LAYOUT$name.byteSize());
     }
@@ -90,11 +90,11 @@ public record VkPerformanceCounterDescriptionKHR(MemorySegment segment) {
     public MemorySegment categoryRaw() {
         return segment.asSlice(OFFSET$category, LAYOUT$category.byteSize());
     }
-        
-    public ByteArray category(int index) {
+
+    public ByteArray category() {
         return new ByteArray(categoryRaw(), LAYOUT$category.elementCount());
     }
-    
+
     public void category(ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$category, LAYOUT$category.byteSize());
     }
@@ -102,11 +102,11 @@ public record VkPerformanceCounterDescriptionKHR(MemorySegment segment) {
     public MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, LAYOUT$description.byteSize());
     }
-        
-    public ByteArray description(int index) {
+
+    public ByteArray description() {
         return new ByteArray(descriptionRaw(), LAYOUT$description.elementCount());
     }
-    
+
     public void description(ByteArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, LAYOUT$description.byteSize());
     }

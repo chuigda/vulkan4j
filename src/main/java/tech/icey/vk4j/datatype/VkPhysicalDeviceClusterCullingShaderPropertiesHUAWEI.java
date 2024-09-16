@@ -70,11 +70,11 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(MemorySegment
     public MemorySegment maxWorkGroupCountRaw() {
         return segment.asSlice(OFFSET$maxWorkGroupCount, LAYOUT$maxWorkGroupCount.byteSize());
     }
-        
-    public @unsigned IntArray maxWorkGroupCount(int index) {
+
+    public @unsigned IntArray maxWorkGroupCount() {
         return new IntArray(maxWorkGroupCountRaw(), LAYOUT$maxWorkGroupCount.elementCount());
     }
-    
+
     public void maxWorkGroupCount(@unsigned IntArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxWorkGroupCount, LAYOUT$maxWorkGroupCount.byteSize());
     }
@@ -82,11 +82,11 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(MemorySegment
     public MemorySegment maxWorkGroupSizeRaw() {
         return segment.asSlice(OFFSET$maxWorkGroupSize, LAYOUT$maxWorkGroupSize.byteSize());
     }
-        
-    public @unsigned IntArray maxWorkGroupSize(int index) {
+
+    public @unsigned IntArray maxWorkGroupSize() {
         return new IntArray(maxWorkGroupSizeRaw(), LAYOUT$maxWorkGroupSize.elementCount());
     }
-    
+
     public void maxWorkGroupSize(@unsigned IntArray value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxWorkGroupSize, LAYOUT$maxWorkGroupSize.byteSize());
     }
