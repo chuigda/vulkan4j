@@ -1,7 +1,6 @@
 import tech.icey.vk4j.Create;
 import tech.icey.vk4j.Loader;
 import tech.icey.vk4j.array.ByteArray;
-import tech.icey.vk4j.array.IntArray;
 import tech.icey.vk4j.command.EntryCommands;
 import tech.icey.vk4j.command.InstanceCommands;
 import tech.icey.vk4j.command.StaticCommands;
@@ -29,9 +28,9 @@ public class TestBasic {
 
         try (Arena arena = Arena.ofConfined()) {
             var applicationInfo = Create.create(VkApplicationInfo.FACTORY, arena);
-            applicationInfo.pApplicationName(ByteArray.allocateUtf8(arena, "Hello, Vulkan!").ptr());
+            applicationInfo.pApplicationName(ByteArray.allocateUtf8(arena, "Hello, Vulkan!"));
             applicationInfo.applicationVersion(1);
-            applicationInfo.pEngineName(ByteArray.allocateUtf8(arena, "vk4j").ptr());
+            applicationInfo.pEngineName(ByteArray.allocateUtf8(arena, "vk4j"));
             applicationInfo.engineVersion(1);
 
             var instanceCreateInfo = Create.create(VkInstanceCreateInfo.FACTORY, arena);
@@ -50,11 +49,10 @@ public class TestBasic {
                 if (fnptrSegment.address() == 0) {
                     return null;
                 }
-
                 return Loader.nativeLinker.downcallHandle(fnptrSegment, descriptor);
             });
 
-            IntPtr pPhysicalDeviceCount = IntArray.allocate(arena, 1).ptr();
+            IntPtr pPhysicalDeviceCount = IntPtr.allocate(arena);
             pPhysicalDeviceCount.write(8);
             var physicalDevices = Create.createArray(VkPhysicalDevice.FACTORY, arena, 8).first;
             result = instanceCommands.vkEnumeratePhysicalDevices(instance, pPhysicalDeviceCount, physicalDevices[0]);
