@@ -12,6 +12,7 @@
     <groupId>tech.icey.vk4j</groupId>
     <artifactId>vk4j</artifactId>
     <version>${revision}</version>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>22</maven.compiler.source>
