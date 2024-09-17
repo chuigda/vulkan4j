@@ -73,6 +73,9 @@ public final class NativeLayout {
     /// Unlike {@link MemoryLayout#structLayout MemoryLayout.structLayout}, this function will
     /// automatically compute and add padding to the layout to ensure that each element is properly
     /// aligned. The resulting layout should be the same with a C struct layout.
+    ///
+    /// @param elements the elements of the struct
+    /// @return the struct layout
     public static MemoryLayout structLayout(MemoryLayout... elements) {
         long currentSize = 0;
         long maxAlignment = 0;
@@ -104,6 +107,7 @@ public final class NativeLayout {
         return MemoryLayout.structLayout(paddedElementsArray);
     }
 
+    /// Currently forwards to {@link MemoryLayout#unionLayout}.
     public static MemoryLayout unionLayout(MemoryLayout... elements) {
         return MemoryLayout.unionLayout(elements);
     }

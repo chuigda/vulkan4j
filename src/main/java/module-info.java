@@ -1,3 +1,3 @@
 module tech.icey.vk4j {
-    requires java.base;
+    requires java.desktop;
 }
