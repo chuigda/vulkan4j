@@ -9,6 +9,7 @@ import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.util.Function2;
 
 public final class StaticCommands {
@@ -32,17 +33,17 @@ public final class StaticCommands {
         HANDLE$vkGetInstanceProcAddr = loader.apply("vkGetInstanceProcAddr", DESCRIPTOR$vkGetInstanceProcAddr);
     }
 
-    public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetDeviceProcAddr(VkDevice device, MemorySegment pName) {
+    public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetDeviceProcAddr(VkDevice device, BytePtr pName) {
         try {
-            return (MemorySegment) HANDLE$vkGetDeviceProcAddr.invokeExact(device, pName);
+            return (MemorySegment) HANDLE$vkGetDeviceProcAddr.invoke(device, pName.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetInstanceProcAddr(VkInstance instance, MemorySegment pName) {
+    public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetInstanceProcAddr(VkInstance instance, BytePtr pName) {
         try {
-            return (MemorySegment) HANDLE$vkGetInstanceProcAddr.invokeExact(instance, pName);
+            return (MemorySegment) HANDLE$vkGetInstanceProcAddr.invoke(instance, pName.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }

@@ -9,6 +9,7 @@ import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.util.Function2;
 
 public final class EntryCommands {
@@ -49,33 +50,33 @@ public final class EntryCommands {
         HANDLE$vkEnumerateInstanceExtensionProperties = loader.apply("vkEnumerateInstanceExtensionProperties", DESCRIPTOR$vkEnumerateInstanceExtensionProperties);
     }
 
-    public @enumtype(VkResult.class) int vkCreateInstance(MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pInstance) {
+    public @enumtype(VkResult.class) int vkCreateInstance(VkInstanceCreateInfo pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pInstance) {
         try {
-            return (int) HANDLE$vkCreateInstance.invokeExact(pCreateInfo, pAllocator, pInstance);
+            return (int) HANDLE$vkCreateInstance.invoke(pCreateInfo.segment(), pAllocator.segment(), pInstance);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkEnumerateInstanceVersion(MemorySegment pApiVersion) {
+    public @enumtype(VkResult.class) int vkEnumerateInstanceVersion(@unsigned IntPtr pApiVersion) {
         try {
-            return (int) HANDLE$vkEnumerateInstanceVersion.invokeExact(pApiVersion);
+            return (int) HANDLE$vkEnumerateInstanceVersion.invoke(pApiVersion.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkEnumerateInstanceLayerProperties(MemorySegment pPropertyCount, MemorySegment pProperties) {
+    public @enumtype(VkResult.class) int vkEnumerateInstanceLayerProperties(@unsigned IntPtr pPropertyCount, VkLayerProperties pProperties) {
         try {
-            return (int) HANDLE$vkEnumerateInstanceLayerProperties.invokeExact(pPropertyCount, pProperties);
+            return (int) HANDLE$vkEnumerateInstanceLayerProperties.invoke(pPropertyCount.segment(), pProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkEnumerateInstanceExtensionProperties(MemorySegment pLayerName, MemorySegment pPropertyCount, MemorySegment pProperties) {
+    public @enumtype(VkResult.class) int vkEnumerateInstanceExtensionProperties(BytePtr pLayerName, @unsigned IntPtr pPropertyCount, VkExtensionProperties pProperties) {
         try {
-            return (int) HANDLE$vkEnumerateInstanceExtensionProperties.invokeExact(pLayerName, pPropertyCount, pProperties);
+            return (int) HANDLE$vkEnumerateInstanceExtensionProperties.invoke(pLayerName.segment(), pPropertyCount.segment(), pProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }

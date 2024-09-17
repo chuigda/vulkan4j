@@ -9,6 +9,7 @@ import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.util.Function2;
 
 public final class InstanceCommands {
@@ -771,217 +772,217 @@ public final class InstanceCommands {
         HANDLE$vkGetDrmDisplayEXT = loader.apply("vkGetDrmDisplayEXT", DESCRIPTOR$vkGetDrmDisplayEXT);
     }
 
-    public void vkDestroyInstance(VkInstance instance, MemorySegment pAllocator) {
+    public void vkDestroyInstance(VkInstance instance, VkAllocationCallbacks pAllocator) {
         try {
-            HANDLE$vkDestroyInstance.invokeExact(instance, pAllocator);
+            HANDLE$vkDestroyInstance.invoke(instance, pAllocator.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkEnumeratePhysicalDevices(VkInstance instance, MemorySegment pPhysicalDeviceCount, MemorySegment pPhysicalDevices) {
+    public @enumtype(VkResult.class) int vkEnumeratePhysicalDevices(VkInstance instance, @unsigned IntPtr pPhysicalDeviceCount, MemorySegment pPhysicalDevices) {
         try {
-            return (int) HANDLE$vkEnumeratePhysicalDevices.invokeExact(instance, pPhysicalDeviceCount, pPhysicalDevices);
+            return (int) HANDLE$vkEnumeratePhysicalDevices.invoke(instance, pPhysicalDeviceCount.segment(), pPhysicalDevices);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkGetPhysicalDeviceProperties(VkPhysicalDevice physicalDevice, MemorySegment pProperties) {
+    public void vkGetPhysicalDeviceProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceProperties pProperties) {
         try {
-            HANDLE$vkGetPhysicalDeviceProperties.invokeExact(physicalDevice, pProperties);
+            HANDLE$vkGetPhysicalDeviceProperties.invoke(physicalDevice, pProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkGetPhysicalDeviceQueueFamilyProperties(VkPhysicalDevice physicalDevice, MemorySegment pQueueFamilyPropertyCount, MemorySegment pQueueFamilyProperties) {
+    public void vkGetPhysicalDeviceQueueFamilyProperties(VkPhysicalDevice physicalDevice, @unsigned IntPtr pQueueFamilyPropertyCount, VkQueueFamilyProperties pQueueFamilyProperties) {
         try {
-            HANDLE$vkGetPhysicalDeviceQueueFamilyProperties.invokeExact(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties);
+            HANDLE$vkGetPhysicalDeviceQueueFamilyProperties.invoke(physicalDevice, pQueueFamilyPropertyCount.segment(), pQueueFamilyProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkGetPhysicalDeviceMemoryProperties(VkPhysicalDevice physicalDevice, MemorySegment pMemoryProperties) {
+    public void vkGetPhysicalDeviceMemoryProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties pMemoryProperties) {
         try {
-            HANDLE$vkGetPhysicalDeviceMemoryProperties.invokeExact(physicalDevice, pMemoryProperties);
+            HANDLE$vkGetPhysicalDeviceMemoryProperties.invoke(physicalDevice, pMemoryProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkGetPhysicalDeviceFeatures(VkPhysicalDevice physicalDevice, MemorySegment pFeatures) {
+    public void vkGetPhysicalDeviceFeatures(VkPhysicalDevice physicalDevice, VkPhysicalDeviceFeatures pFeatures) {
         try {
-            HANDLE$vkGetPhysicalDeviceFeatures.invokeExact(physicalDevice, pFeatures);
+            HANDLE$vkGetPhysicalDeviceFeatures.invoke(physicalDevice, pFeatures.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkGetPhysicalDeviceFormatProperties(VkPhysicalDevice physicalDevice, @enumtype(VkFormat.class) int format, MemorySegment pFormatProperties) {
+    public void vkGetPhysicalDeviceFormatProperties(VkPhysicalDevice physicalDevice, @enumtype(VkFormat.class) int format, VkFormatProperties pFormatProperties) {
         try {
-            HANDLE$vkGetPhysicalDeviceFormatProperties.invokeExact(physicalDevice, format, pFormatProperties);
+            HANDLE$vkGetPhysicalDeviceFormatProperties.invoke(physicalDevice, format, pFormatProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetPhysicalDeviceImageFormatProperties(VkPhysicalDevice physicalDevice, @enumtype(VkFormat.class) int format, @enumtype(VkImageType.class) int type, @enumtype(VkImageTiling.class) int tiling, @enumtype(VkImageUsageFlags.class) int usage, @enumtype(VkImageCreateFlags.class) int flags, MemorySegment pImageFormatProperties) {
+    public @enumtype(VkResult.class) int vkGetPhysicalDeviceImageFormatProperties(VkPhysicalDevice physicalDevice, @enumtype(VkFormat.class) int format, @enumtype(VkImageType.class) int type, @enumtype(VkImageTiling.class) int tiling, @enumtype(VkImageUsageFlags.class) int usage, @enumtype(VkImageCreateFlags.class) int flags, VkImageFormatProperties pImageFormatProperties) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceImageFormatProperties.invokeExact(physicalDevice, format, type, tiling, usage, flags, pImageFormatProperties);
+            return (int) HANDLE$vkGetPhysicalDeviceImageFormatProperties.invoke(physicalDevice, format, type, tiling, usage, flags, pImageFormatProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateDevice(VkPhysicalDevice physicalDevice, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pDevice) {
+    public @enumtype(VkResult.class) int vkCreateDevice(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pDevice) {
         try {
-            return (int) HANDLE$vkCreateDevice.invokeExact(physicalDevice, pCreateInfo, pAllocator, pDevice);
+            return (int) HANDLE$vkCreateDevice.invoke(physicalDevice, pCreateInfo.segment(), pAllocator.segment(), pDevice);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkEnumerateDeviceLayerProperties(VkPhysicalDevice physicalDevice, MemorySegment pPropertyCount, MemorySegment pProperties) {
+    public @enumtype(VkResult.class) int vkEnumerateDeviceLayerProperties(VkPhysicalDevice physicalDevice, @unsigned IntPtr pPropertyCount, VkLayerProperties pProperties) {
         try {
-            return (int) HANDLE$vkEnumerateDeviceLayerProperties.invokeExact(physicalDevice, pPropertyCount, pProperties);
+            return (int) HANDLE$vkEnumerateDeviceLayerProperties.invoke(physicalDevice, pPropertyCount.segment(), pProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkEnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, MemorySegment pLayerName, MemorySegment pPropertyCount, MemorySegment pProperties) {
+    public @enumtype(VkResult.class) int vkEnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, BytePtr pLayerName, @unsigned IntPtr pPropertyCount, VkExtensionProperties pProperties) {
         try {
-            return (int) HANDLE$vkEnumerateDeviceExtensionProperties.invokeExact(physicalDevice, pLayerName, pPropertyCount, pProperties);
+            return (int) HANDLE$vkEnumerateDeviceExtensionProperties.invoke(physicalDevice, pLayerName.segment(), pPropertyCount.segment(), pProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkGetPhysicalDeviceSparseImageFormatProperties(VkPhysicalDevice physicalDevice, @enumtype(VkFormat.class) int format, @enumtype(VkImageType.class) int type, @enumtype(VkSampleCountFlags.class) int samples, @enumtype(VkImageUsageFlags.class) int usage, @enumtype(VkImageTiling.class) int tiling, MemorySegment pPropertyCount, MemorySegment pProperties) {
+    public void vkGetPhysicalDeviceSparseImageFormatProperties(VkPhysicalDevice physicalDevice, @enumtype(VkFormat.class) int format, @enumtype(VkImageType.class) int type, @enumtype(VkSampleCountFlags.class) int samples, @enumtype(VkImageUsageFlags.class) int usage, @enumtype(VkImageTiling.class) int tiling, @unsigned IntPtr pPropertyCount, VkSparseImageFormatProperties pProperties) {
         try {
-            HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties.invokeExact(physicalDevice, format, type, samples, usage, tiling, pPropertyCount, pProperties);
+            HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties.invoke(physicalDevice, format, type, samples, usage, tiling, pPropertyCount.segment(), pProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateAndroidSurfaceKHR(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public @enumtype(VkResult.class) int vkCreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pSurface) {
         try {
-            return (int) HANDLE$vkCreateAndroidSurfaceKHR.invokeExact(instance, pCreateInfo, pAllocator, pSurface);
+            return (int) HANDLE$vkCreateAndroidSurfaceKHR.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pSurface);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice, MemorySegment pPropertyCount, MemorySegment pProperties) {
+    public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice, @unsigned IntPtr pPropertyCount, VkDisplayPropertiesKHR pProperties) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceDisplayPropertiesKHR.invokeExact(physicalDevice, pPropertyCount, pProperties);
+            return (int) HANDLE$vkGetPhysicalDeviceDisplayPropertiesKHR.invoke(physicalDevice, pPropertyCount.segment(), pProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice, MemorySegment pPropertyCount, MemorySegment pProperties) {
+    public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice, @unsigned IntPtr pPropertyCount, VkDisplayPlanePropertiesKHR pProperties) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceDisplayPlanePropertiesKHR.invokeExact(physicalDevice, pPropertyCount, pProperties);
+            return (int) HANDLE$vkGetPhysicalDeviceDisplayPlanePropertiesKHR.invoke(physicalDevice, pPropertyCount.segment(), pProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, @unsigned int planeIndex, MemorySegment pDisplayCount, MemorySegment pDisplays) {
+    public @enumtype(VkResult.class) int vkGetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, @unsigned int planeIndex, @unsigned IntPtr pDisplayCount, MemorySegment pDisplays) {
         try {
-            return (int) HANDLE$vkGetDisplayPlaneSupportedDisplaysKHR.invokeExact(physicalDevice, planeIndex, pDisplayCount, pDisplays);
+            return (int) HANDLE$vkGetDisplayPlaneSupportedDisplaysKHR.invoke(physicalDevice, planeIndex, pDisplayCount.segment(), pDisplays);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, MemorySegment pPropertyCount, MemorySegment pProperties) {
+    public @enumtype(VkResult.class) int vkGetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, @unsigned IntPtr pPropertyCount, VkDisplayModePropertiesKHR pProperties) {
         try {
-            return (int) HANDLE$vkGetDisplayModePropertiesKHR.invokeExact(physicalDevice, display, pPropertyCount, pProperties);
+            return (int) HANDLE$vkGetDisplayModePropertiesKHR.invoke(physicalDevice, display, pPropertyCount.segment(), pProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pMode) {
+    public @enumtype(VkResult.class) int vkCreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pMode) {
         try {
-            return (int) HANDLE$vkCreateDisplayModeKHR.invokeExact(physicalDevice, display, pCreateInfo, pAllocator, pMode);
+            return (int) HANDLE$vkCreateDisplayModeKHR.invoke(physicalDevice, display, pCreateInfo.segment(), pAllocator.segment(), pMode);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetDisplayPlaneCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkDisplayModeKHR mode, @unsigned int planeIndex, MemorySegment pCapabilities) {
+    public @enumtype(VkResult.class) int vkGetDisplayPlaneCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkDisplayModeKHR mode, @unsigned int planeIndex, VkDisplayPlaneCapabilitiesKHR pCapabilities) {
         try {
-            return (int) HANDLE$vkGetDisplayPlaneCapabilitiesKHR.invokeExact(physicalDevice, mode, planeIndex, pCapabilities);
+            return (int) HANDLE$vkGetDisplayPlaneCapabilitiesKHR.invoke(physicalDevice, mode, planeIndex, pCapabilities.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateDisplayPlaneSurfaceKHR(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public @enumtype(VkResult.class) int vkCreateDisplayPlaneSurfaceKHR(VkInstance instance, VkDisplaySurfaceCreateInfoKHR pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pSurface) {
         try {
-            return (int) HANDLE$vkCreateDisplayPlaneSurfaceKHR.invokeExact(instance, pCreateInfo, pAllocator, pSurface);
+            return (int) HANDLE$vkCreateDisplayPlaneSurfaceKHR.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pSurface);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkDestroySurfaceKHR(VkInstance instance, VkSurfaceKHR surface, MemorySegment pAllocator) {
+    public void vkDestroySurfaceKHR(VkInstance instance, VkSurfaceKHR surface, VkAllocationCallbacks pAllocator) {
         try {
-            HANDLE$vkDestroySurfaceKHR.invokeExact(instance, surface, pAllocator);
+            HANDLE$vkDestroySurfaceKHR.invoke(instance, surface, pAllocator.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, @unsigned int queueFamilyIndex, VkSurfaceKHR surface, MemorySegment pSupported) {
+    public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, @unsigned int queueFamilyIndex, VkSurfaceKHR surface, @unsigned IntPtr pSupported) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceSurfaceSupportKHR.invokeExact(physicalDevice, queueFamilyIndex, surface, pSupported);
+            return (int) HANDLE$vkGetPhysicalDeviceSurfaceSupportKHR.invoke(physicalDevice, queueFamilyIndex, surface, pSupported.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, MemorySegment pSurfaceCapabilities) {
+    public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, VkSurfaceCapabilitiesKHR pSurfaceCapabilities) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceSurfaceCapabilitiesKHR.invokeExact(physicalDevice, surface, pSurfaceCapabilities);
+            return (int) HANDLE$vkGetPhysicalDeviceSurfaceCapabilitiesKHR.invoke(physicalDevice, surface, pSurfaceCapabilities.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, MemorySegment pSurfaceFormatCount, MemorySegment pSurfaceFormats) {
+    public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, @unsigned IntPtr pSurfaceFormatCount, VkSurfaceFormatKHR pSurfaceFormats) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceSurfaceFormatsKHR.invokeExact(physicalDevice, surface, pSurfaceFormatCount, pSurfaceFormats);
+            return (int) HANDLE$vkGetPhysicalDeviceSurfaceFormatsKHR.invoke(physicalDevice, surface, pSurfaceFormatCount.segment(), pSurfaceFormats.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, MemorySegment pPresentModeCount, MemorySegment pPresentModes) {
+    public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, @unsigned IntPtr pPresentModeCount, MemorySegment pPresentModes) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceSurfacePresentModesKHR.invokeExact(physicalDevice, surface, pPresentModeCount, pPresentModes);
+            return (int) HANDLE$vkGetPhysicalDeviceSurfacePresentModesKHR.invoke(physicalDevice, surface, pPresentModeCount.segment(), pPresentModes);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateViSurfaceNN(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public @enumtype(VkResult.class) int vkCreateViSurfaceNN(VkInstance instance, VkViSurfaceCreateInfoNN pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pSurface) {
         try {
-            return (int) HANDLE$vkCreateViSurfaceNN.invokeExact(instance, pCreateInfo, pAllocator, pSurface);
+            return (int) HANDLE$vkCreateViSurfaceNN.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pSurface);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateWaylandSurfaceKHR(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public @enumtype(VkResult.class) int vkCreateWaylandSurfaceKHR(VkInstance instance, VkWaylandSurfaceCreateInfoKHR pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pSurface) {
         try {
-            return (int) HANDLE$vkCreateWaylandSurfaceKHR.invokeExact(instance, pCreateInfo, pAllocator, pSurface);
+            return (int) HANDLE$vkCreateWaylandSurfaceKHR.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pSurface);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
@@ -989,15 +990,15 @@ public final class InstanceCommands {
 
     public @unsigned int vkGetPhysicalDeviceWaylandPresentationSupportKHR(VkPhysicalDevice physicalDevice, @unsigned int queueFamilyIndex, @pointer(comment="void*") MemorySegment display) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceWaylandPresentationSupportKHR.invokeExact(physicalDevice, queueFamilyIndex, display);
+            return (int) HANDLE$vkGetPhysicalDeviceWaylandPresentationSupportKHR.invoke(physicalDevice, queueFamilyIndex, display);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateWin32SurfaceKHR(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public @enumtype(VkResult.class) int vkCreateWin32SurfaceKHR(VkInstance instance, VkWin32SurfaceCreateInfoKHR pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pSurface) {
         try {
-            return (int) HANDLE$vkCreateWin32SurfaceKHR.invokeExact(instance, pCreateInfo, pAllocator, pSurface);
+            return (int) HANDLE$vkCreateWin32SurfaceKHR.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pSurface);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
@@ -1005,15 +1006,15 @@ public final class InstanceCommands {
 
     public @unsigned int vkGetPhysicalDeviceWin32PresentationSupportKHR(VkPhysicalDevice physicalDevice, @unsigned int queueFamilyIndex) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceWin32PresentationSupportKHR.invokeExact(physicalDevice, queueFamilyIndex);
+            return (int) HANDLE$vkGetPhysicalDeviceWin32PresentationSupportKHR.invoke(physicalDevice, queueFamilyIndex);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateXlibSurfaceKHR(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public @enumtype(VkResult.class) int vkCreateXlibSurfaceKHR(VkInstance instance, VkXlibSurfaceCreateInfoKHR pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pSurface) {
         try {
-            return (int) HANDLE$vkCreateXlibSurfaceKHR.invokeExact(instance, pCreateInfo, pAllocator, pSurface);
+            return (int) HANDLE$vkCreateXlibSurfaceKHR.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pSurface);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
@@ -1021,15 +1022,15 @@ public final class InstanceCommands {
 
     public @unsigned int vkGetPhysicalDeviceXlibPresentationSupportKHR(VkPhysicalDevice physicalDevice, @unsigned int queueFamilyIndex, MemorySegment dpy, long visualID) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceXlibPresentationSupportKHR.invokeExact(physicalDevice, queueFamilyIndex, dpy, visualID);
+            return (int) HANDLE$vkGetPhysicalDeviceXlibPresentationSupportKHR.invoke(physicalDevice, queueFamilyIndex, dpy, visualID);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateXcbSurfaceKHR(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public @enumtype(VkResult.class) int vkCreateXcbSurfaceKHR(VkInstance instance, VkXcbSurfaceCreateInfoKHR pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pSurface) {
         try {
-            return (int) HANDLE$vkCreateXcbSurfaceKHR.invokeExact(instance, pCreateInfo, pAllocator, pSurface);
+            return (int) HANDLE$vkCreateXcbSurfaceKHR.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pSurface);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
@@ -1037,15 +1038,15 @@ public final class InstanceCommands {
 
     public @unsigned int vkGetPhysicalDeviceXcbPresentationSupportKHR(VkPhysicalDevice physicalDevice, @unsigned int queueFamilyIndex, @pointer(comment="void*") MemorySegment connection, @unsigned int visual_id) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceXcbPresentationSupportKHR.invokeExact(physicalDevice, queueFamilyIndex, connection, visual_id);
+            return (int) HANDLE$vkGetPhysicalDeviceXcbPresentationSupportKHR.invoke(physicalDevice, queueFamilyIndex, connection, visual_id);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateDirectFBSurfaceEXT(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public @enumtype(VkResult.class) int vkCreateDirectFBSurfaceEXT(VkInstance instance, VkDirectFBSurfaceCreateInfoEXT pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pSurface) {
         try {
-            return (int) HANDLE$vkCreateDirectFBSurfaceEXT.invokeExact(instance, pCreateInfo, pAllocator, pSurface);
+            return (int) HANDLE$vkCreateDirectFBSurfaceEXT.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pSurface);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
@@ -1053,31 +1054,31 @@ public final class InstanceCommands {
 
     public @unsigned int vkGetPhysicalDeviceDirectFBPresentationSupportEXT(VkPhysicalDevice physicalDevice, @unsigned int queueFamilyIndex, @pointer(comment="void*") MemorySegment dfb) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceDirectFBPresentationSupportEXT.invokeExact(physicalDevice, queueFamilyIndex, dfb);
+            return (int) HANDLE$vkGetPhysicalDeviceDirectFBPresentationSupportEXT.invoke(physicalDevice, queueFamilyIndex, dfb);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateImagePipeSurfaceFUCHSIA(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public @enumtype(VkResult.class) int vkCreateImagePipeSurfaceFUCHSIA(VkInstance instance, VkImagePipeSurfaceCreateInfoFUCHSIA pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pSurface) {
         try {
-            return (int) HANDLE$vkCreateImagePipeSurfaceFUCHSIA.invokeExact(instance, pCreateInfo, pAllocator, pSurface);
+            return (int) HANDLE$vkCreateImagePipeSurfaceFUCHSIA.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pSurface);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateStreamDescriptorSurfaceGGP(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public @enumtype(VkResult.class) int vkCreateStreamDescriptorSurfaceGGP(VkInstance instance, VkStreamDescriptorSurfaceCreateInfoGGP pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pSurface) {
         try {
-            return (int) HANDLE$vkCreateStreamDescriptorSurfaceGGP.invokeExact(instance, pCreateInfo, pAllocator, pSurface);
+            return (int) HANDLE$vkCreateStreamDescriptorSurfaceGGP.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pSurface);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateScreenSurfaceQNX(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public @enumtype(VkResult.class) int vkCreateScreenSurfaceQNX(VkInstance instance, VkScreenSurfaceCreateInfoQNX pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pSurface) {
         try {
-            return (int) HANDLE$vkCreateScreenSurfaceQNX.invokeExact(instance, pCreateInfo, pAllocator, pSurface);
+            return (int) HANDLE$vkCreateScreenSurfaceQNX.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pSurface);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
@@ -1085,119 +1086,119 @@ public final class InstanceCommands {
 
     public @unsigned int vkGetPhysicalDeviceScreenPresentationSupportQNX(VkPhysicalDevice physicalDevice, @unsigned int queueFamilyIndex, @pointer(comment="void*") MemorySegment window) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceScreenPresentationSupportQNX.invokeExact(physicalDevice, queueFamilyIndex, window);
+            return (int) HANDLE$vkGetPhysicalDeviceScreenPresentationSupportQNX.invoke(physicalDevice, queueFamilyIndex, window);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateDebugReportCallbackEXT(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pCallback) {
+    public @enumtype(VkResult.class) int vkCreateDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackCreateInfoEXT pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pCallback) {
         try {
-            return (int) HANDLE$vkCreateDebugReportCallbackEXT.invokeExact(instance, pCreateInfo, pAllocator, pCallback);
+            return (int) HANDLE$vkCreateDebugReportCallbackEXT.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pCallback);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkDestroyDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackEXT callback, MemorySegment pAllocator) {
+    public void vkDestroyDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackEXT callback, VkAllocationCallbacks pAllocator) {
         try {
-            HANDLE$vkDestroyDebugReportCallbackEXT.invokeExact(instance, callback, pAllocator);
+            HANDLE$vkDestroyDebugReportCallbackEXT.invoke(instance, callback, pAllocator.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkDebugReportMessageEXT(VkInstance instance, @enumtype(VkDebugReportFlagsEXT.class) int flags, @enumtype(VkDebugReportObjectTypeEXT.class) int objectType, @unsigned long object, @unsigned long location, int messageCode, MemorySegment pLayerPrefix, MemorySegment pMessage) {
+    public void vkDebugReportMessageEXT(VkInstance instance, @enumtype(VkDebugReportFlagsEXT.class) int flags, @enumtype(VkDebugReportObjectTypeEXT.class) int objectType, @unsigned long object, @unsigned long location, int messageCode, BytePtr pLayerPrefix, BytePtr pMessage) {
         try {
-            HANDLE$vkDebugReportMessageEXT.invokeExact(instance, flags, objectType, object, location, messageCode, pLayerPrefix, pMessage);
+            HANDLE$vkDebugReportMessageEXT.invoke(instance, flags, objectType, object, location, messageCode, pLayerPrefix.segment(), pMessage.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetPhysicalDeviceExternalImageFormatPropertiesNV(VkPhysicalDevice physicalDevice, @enumtype(VkFormat.class) int format, @enumtype(VkImageType.class) int type, @enumtype(VkImageTiling.class) int tiling, @enumtype(VkImageUsageFlags.class) int usage, @enumtype(VkImageCreateFlags.class) int flags, @enumtype(VkExternalMemoryHandleTypeFlagsNV.class) int externalHandleType, MemorySegment pExternalImageFormatProperties) {
+    public @enumtype(VkResult.class) int vkGetPhysicalDeviceExternalImageFormatPropertiesNV(VkPhysicalDevice physicalDevice, @enumtype(VkFormat.class) int format, @enumtype(VkImageType.class) int type, @enumtype(VkImageTiling.class) int tiling, @enumtype(VkImageUsageFlags.class) int usage, @enumtype(VkImageCreateFlags.class) int flags, @enumtype(VkExternalMemoryHandleTypeFlagsNV.class) int externalHandleType, VkExternalImageFormatPropertiesNV pExternalImageFormatProperties) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceExternalImageFormatPropertiesNV.invokeExact(physicalDevice, format, type, tiling, usage, flags, externalHandleType, pExternalImageFormatProperties);
+            return (int) HANDLE$vkGetPhysicalDeviceExternalImageFormatPropertiesNV.invoke(physicalDevice, format, type, tiling, usage, flags, externalHandleType, pExternalImageFormatProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkGetPhysicalDeviceFeatures2(VkPhysicalDevice physicalDevice, MemorySegment pFeatures) {
+    public void vkGetPhysicalDeviceFeatures2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceFeatures2 pFeatures) {
         try {
-            HANDLE$vkGetPhysicalDeviceFeatures2.invokeExact(physicalDevice, pFeatures);
+            HANDLE$vkGetPhysicalDeviceFeatures2.invoke(physicalDevice, pFeatures.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkGetPhysicalDeviceProperties2(VkPhysicalDevice physicalDevice, MemorySegment pProperties) {
+    public void vkGetPhysicalDeviceProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceProperties2 pProperties) {
         try {
-            HANDLE$vkGetPhysicalDeviceProperties2.invokeExact(physicalDevice, pProperties);
+            HANDLE$vkGetPhysicalDeviceProperties2.invoke(physicalDevice, pProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkGetPhysicalDeviceFormatProperties2(VkPhysicalDevice physicalDevice, @enumtype(VkFormat.class) int format, MemorySegment pFormatProperties) {
+    public void vkGetPhysicalDeviceFormatProperties2(VkPhysicalDevice physicalDevice, @enumtype(VkFormat.class) int format, VkFormatProperties2 pFormatProperties) {
         try {
-            HANDLE$vkGetPhysicalDeviceFormatProperties2.invokeExact(physicalDevice, format, pFormatProperties);
+            HANDLE$vkGetPhysicalDeviceFormatProperties2.invoke(physicalDevice, format, pFormatProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetPhysicalDeviceImageFormatProperties2(VkPhysicalDevice physicalDevice, MemorySegment pImageFormatInfo, MemorySegment pImageFormatProperties) {
+    public @enumtype(VkResult.class) int vkGetPhysicalDeviceImageFormatProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceImageFormatInfo2 pImageFormatInfo, VkImageFormatProperties2 pImageFormatProperties) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceImageFormatProperties2.invokeExact(physicalDevice, pImageFormatInfo, pImageFormatProperties);
+            return (int) HANDLE$vkGetPhysicalDeviceImageFormatProperties2.invoke(physicalDevice, pImageFormatInfo.segment(), pImageFormatProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkGetPhysicalDeviceQueueFamilyProperties2(VkPhysicalDevice physicalDevice, MemorySegment pQueueFamilyPropertyCount, MemorySegment pQueueFamilyProperties) {
+    public void vkGetPhysicalDeviceQueueFamilyProperties2(VkPhysicalDevice physicalDevice, @unsigned IntPtr pQueueFamilyPropertyCount, VkQueueFamilyProperties2 pQueueFamilyProperties) {
         try {
-            HANDLE$vkGetPhysicalDeviceQueueFamilyProperties2.invokeExact(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties);
+            HANDLE$vkGetPhysicalDeviceQueueFamilyProperties2.invoke(physicalDevice, pQueueFamilyPropertyCount.segment(), pQueueFamilyProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkGetPhysicalDeviceMemoryProperties2(VkPhysicalDevice physicalDevice, MemorySegment pMemoryProperties) {
+    public void vkGetPhysicalDeviceMemoryProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties2 pMemoryProperties) {
         try {
-            HANDLE$vkGetPhysicalDeviceMemoryProperties2.invokeExact(physicalDevice, pMemoryProperties);
+            HANDLE$vkGetPhysicalDeviceMemoryProperties2.invoke(physicalDevice, pMemoryProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkGetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, MemorySegment pFormatInfo, MemorySegment pPropertyCount, MemorySegment pProperties) {
+    public void vkGetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2 pFormatInfo, @unsigned IntPtr pPropertyCount, VkSparseImageFormatProperties2 pProperties) {
         try {
-            HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties2.invokeExact(physicalDevice, pFormatInfo, pPropertyCount, pProperties);
+            HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties2.invoke(physicalDevice, pFormatInfo.segment(), pPropertyCount.segment(), pProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkGetPhysicalDeviceExternalBufferProperties(VkPhysicalDevice physicalDevice, MemorySegment pExternalBufferInfo, MemorySegment pExternalBufferProperties) {
+    public void vkGetPhysicalDeviceExternalBufferProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo pExternalBufferInfo, VkExternalBufferProperties pExternalBufferProperties) {
         try {
-            HANDLE$vkGetPhysicalDeviceExternalBufferProperties.invokeExact(physicalDevice, pExternalBufferInfo, pExternalBufferProperties);
+            HANDLE$vkGetPhysicalDeviceExternalBufferProperties.invoke(physicalDevice, pExternalBufferInfo.segment(), pExternalBufferProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkGetPhysicalDeviceExternalSemaphoreProperties(VkPhysicalDevice physicalDevice, MemorySegment pExternalSemaphoreInfo, MemorySegment pExternalSemaphoreProperties) {
+    public void vkGetPhysicalDeviceExternalSemaphoreProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalSemaphoreInfo pExternalSemaphoreInfo, VkExternalSemaphoreProperties pExternalSemaphoreProperties) {
         try {
-            HANDLE$vkGetPhysicalDeviceExternalSemaphoreProperties.invokeExact(physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties);
+            HANDLE$vkGetPhysicalDeviceExternalSemaphoreProperties.invoke(physicalDevice, pExternalSemaphoreInfo.segment(), pExternalSemaphoreProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkGetPhysicalDeviceExternalFenceProperties(VkPhysicalDevice physicalDevice, MemorySegment pExternalFenceInfo, MemorySegment pExternalFenceProperties) {
+    public void vkGetPhysicalDeviceExternalFenceProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalFenceInfo pExternalFenceInfo, VkExternalFenceProperties pExternalFenceProperties) {
         try {
-            HANDLE$vkGetPhysicalDeviceExternalFenceProperties.invokeExact(physicalDevice, pExternalFenceInfo, pExternalFenceProperties);
+            HANDLE$vkGetPhysicalDeviceExternalFenceProperties.invoke(physicalDevice, pExternalFenceInfo.segment(), pExternalFenceProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
@@ -1205,7 +1206,7 @@ public final class InstanceCommands {
 
     public @enumtype(VkResult.class) int vkReleaseDisplayEXT(VkPhysicalDevice physicalDevice, VkDisplayKHR display) {
         try {
-            return (int) HANDLE$vkReleaseDisplayEXT.invokeExact(physicalDevice, display);
+            return (int) HANDLE$vkReleaseDisplayEXT.invoke(physicalDevice, display);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
@@ -1213,7 +1214,7 @@ public final class InstanceCommands {
 
     public @enumtype(VkResult.class) int vkAcquireXlibDisplayEXT(VkPhysicalDevice physicalDevice, MemorySegment dpy, VkDisplayKHR display) {
         try {
-            return (int) HANDLE$vkAcquireXlibDisplayEXT.invokeExact(physicalDevice, dpy, display);
+            return (int) HANDLE$vkAcquireXlibDisplayEXT.invoke(physicalDevice, dpy, display);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
@@ -1221,119 +1222,119 @@ public final class InstanceCommands {
 
     public @enumtype(VkResult.class) int vkGetRandROutputDisplayEXT(VkPhysicalDevice physicalDevice, MemorySegment dpy, long rrOutput, MemorySegment pDisplay) {
         try {
-            return (int) HANDLE$vkGetRandROutputDisplayEXT.invokeExact(physicalDevice, dpy, rrOutput, pDisplay);
+            return (int) HANDLE$vkGetRandROutputDisplayEXT.invoke(physicalDevice, dpy, rrOutput, pDisplay);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceCapabilities2EXT(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, MemorySegment pSurfaceCapabilities) {
+    public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceCapabilities2EXT(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, VkSurfaceCapabilities2EXT pSurfaceCapabilities) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceSurfaceCapabilities2EXT.invokeExact(physicalDevice, surface, pSurfaceCapabilities);
+            return (int) HANDLE$vkGetPhysicalDeviceSurfaceCapabilities2EXT.invoke(physicalDevice, surface, pSurfaceCapabilities.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkEnumeratePhysicalDeviceGroups(VkInstance instance, MemorySegment pPhysicalDeviceGroupCount, MemorySegment pPhysicalDeviceGroupProperties) {
+    public @enumtype(VkResult.class) int vkEnumeratePhysicalDeviceGroups(VkInstance instance, @unsigned IntPtr pPhysicalDeviceGroupCount, VkPhysicalDeviceGroupProperties pPhysicalDeviceGroupProperties) {
         try {
-            return (int) HANDLE$vkEnumeratePhysicalDeviceGroups.invokeExact(instance, pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties);
+            return (int) HANDLE$vkEnumeratePhysicalDeviceGroups.invoke(instance, pPhysicalDeviceGroupCount.segment(), pPhysicalDeviceGroupProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateIOSSurfaceMVK(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public @enumtype(VkResult.class) int vkCreateIOSSurfaceMVK(VkInstance instance, VkIOSSurfaceCreateInfoMVK pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pSurface) {
         try {
-            return (int) HANDLE$vkCreateIOSSurfaceMVK.invokeExact(instance, pCreateInfo, pAllocator, pSurface);
+            return (int) HANDLE$vkCreateIOSSurfaceMVK.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pSurface);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateMacOSSurfaceMVK(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public @enumtype(VkResult.class) int vkCreateMacOSSurfaceMVK(VkInstance instance, VkMacOSSurfaceCreateInfoMVK pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pSurface) {
         try {
-            return (int) HANDLE$vkCreateMacOSSurfaceMVK.invokeExact(instance, pCreateInfo, pAllocator, pSurface);
+            return (int) HANDLE$vkCreateMacOSSurfaceMVK.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pSurface);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateMetalSurfaceEXT(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public @enumtype(VkResult.class) int vkCreateMetalSurfaceEXT(VkInstance instance, VkMetalSurfaceCreateInfoEXT pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pSurface) {
         try {
-            return (int) HANDLE$vkCreateMetalSurfaceEXT.invokeExact(instance, pCreateInfo, pAllocator, pSurface);
+            return (int) HANDLE$vkCreateMetalSurfaceEXT.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pSurface);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceCapabilities2KHR(VkPhysicalDevice physicalDevice, MemorySegment pSurfaceInfo, MemorySegment pSurfaceCapabilities) {
+    public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceCapabilities2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo, VkSurfaceCapabilities2KHR pSurfaceCapabilities) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceSurfaceCapabilities2KHR.invokeExact(physicalDevice, pSurfaceInfo, pSurfaceCapabilities);
+            return (int) HANDLE$vkGetPhysicalDeviceSurfaceCapabilities2KHR.invoke(physicalDevice, pSurfaceInfo.segment(), pSurfaceCapabilities.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, MemorySegment pSurfaceInfo, MemorySegment pSurfaceFormatCount, MemorySegment pSurfaceFormats) {
+    public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo, @unsigned IntPtr pSurfaceFormatCount, VkSurfaceFormat2KHR pSurfaceFormats) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceSurfaceFormats2KHR.invokeExact(physicalDevice, pSurfaceInfo, pSurfaceFormatCount, pSurfaceFormats);
+            return (int) HANDLE$vkGetPhysicalDeviceSurfaceFormats2KHR.invoke(physicalDevice, pSurfaceInfo.segment(), pSurfaceFormatCount.segment(), pSurfaceFormats.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayProperties2KHR(VkPhysicalDevice physicalDevice, MemorySegment pPropertyCount, MemorySegment pProperties) {
+    public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayProperties2KHR(VkPhysicalDevice physicalDevice, @unsigned IntPtr pPropertyCount, VkDisplayProperties2KHR pProperties) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceDisplayProperties2KHR.invokeExact(physicalDevice, pPropertyCount, pProperties);
+            return (int) HANDLE$vkGetPhysicalDeviceDisplayProperties2KHR.invoke(physicalDevice, pPropertyCount.segment(), pProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayPlaneProperties2KHR(VkPhysicalDevice physicalDevice, MemorySegment pPropertyCount, MemorySegment pProperties) {
+    public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayPlaneProperties2KHR(VkPhysicalDevice physicalDevice, @unsigned IntPtr pPropertyCount, VkDisplayPlaneProperties2KHR pProperties) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceDisplayPlaneProperties2KHR.invokeExact(physicalDevice, pPropertyCount, pProperties);
+            return (int) HANDLE$vkGetPhysicalDeviceDisplayPlaneProperties2KHR.invoke(physicalDevice, pPropertyCount.segment(), pProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetDisplayModeProperties2KHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, MemorySegment pPropertyCount, MemorySegment pProperties) {
+    public @enumtype(VkResult.class) int vkGetDisplayModeProperties2KHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, @unsigned IntPtr pPropertyCount, VkDisplayModeProperties2KHR pProperties) {
         try {
-            return (int) HANDLE$vkGetDisplayModeProperties2KHR.invokeExact(physicalDevice, display, pPropertyCount, pProperties);
+            return (int) HANDLE$vkGetDisplayModeProperties2KHR.invoke(physicalDevice, display, pPropertyCount.segment(), pProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetDisplayPlaneCapabilities2KHR(VkPhysicalDevice physicalDevice, MemorySegment pDisplayPlaneInfo, MemorySegment pCapabilities) {
+    public @enumtype(VkResult.class) int vkGetDisplayPlaneCapabilities2KHR(VkPhysicalDevice physicalDevice, VkDisplayPlaneInfo2KHR pDisplayPlaneInfo, VkDisplayPlaneCapabilities2KHR pCapabilities) {
         try {
-            return (int) HANDLE$vkGetDisplayPlaneCapabilities2KHR.invokeExact(physicalDevice, pDisplayPlaneInfo, pCapabilities);
+            return (int) HANDLE$vkGetDisplayPlaneCapabilities2KHR.invoke(physicalDevice, pDisplayPlaneInfo.segment(), pCapabilities.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkSetDebugUtilsObjectNameEXT(VkDevice device, MemorySegment pNameInfo) {
+    public @enumtype(VkResult.class) int vkSetDebugUtilsObjectNameEXT(VkDevice device, VkDebugUtilsObjectNameInfoEXT pNameInfo) {
         try {
-            return (int) HANDLE$vkSetDebugUtilsObjectNameEXT.invokeExact(device, pNameInfo);
+            return (int) HANDLE$vkSetDebugUtilsObjectNameEXT.invoke(device, pNameInfo.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkSetDebugUtilsObjectTagEXT(VkDevice device, MemorySegment pTagInfo) {
+    public @enumtype(VkResult.class) int vkSetDebugUtilsObjectTagEXT(VkDevice device, VkDebugUtilsObjectTagInfoEXT pTagInfo) {
         try {
-            return (int) HANDLE$vkSetDebugUtilsObjectTagEXT.invokeExact(device, pTagInfo);
+            return (int) HANDLE$vkSetDebugUtilsObjectTagEXT.invoke(device, pTagInfo.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkQueueBeginDebugUtilsLabelEXT(VkQueue queue, MemorySegment pLabelInfo) {
+    public void vkQueueBeginDebugUtilsLabelEXT(VkQueue queue, VkDebugUtilsLabelEXT pLabelInfo) {
         try {
-            HANDLE$vkQueueBeginDebugUtilsLabelEXT.invokeExact(queue, pLabelInfo);
+            HANDLE$vkQueueBeginDebugUtilsLabelEXT.invoke(queue, pLabelInfo.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
@@ -1341,23 +1342,23 @@ public final class InstanceCommands {
 
     public void vkQueueEndDebugUtilsLabelEXT(VkQueue queue) {
         try {
-            HANDLE$vkQueueEndDebugUtilsLabelEXT.invokeExact(queue);
+            HANDLE$vkQueueEndDebugUtilsLabelEXT.invoke(queue);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkQueueInsertDebugUtilsLabelEXT(VkQueue queue, MemorySegment pLabelInfo) {
+    public void vkQueueInsertDebugUtilsLabelEXT(VkQueue queue, VkDebugUtilsLabelEXT pLabelInfo) {
         try {
-            HANDLE$vkQueueInsertDebugUtilsLabelEXT.invokeExact(queue, pLabelInfo);
+            HANDLE$vkQueueInsertDebugUtilsLabelEXT.invoke(queue, pLabelInfo.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkCmdBeginDebugUtilsLabelEXT(VkCommandBuffer commandBuffer, MemorySegment pLabelInfo) {
+    public void vkCmdBeginDebugUtilsLabelEXT(VkCommandBuffer commandBuffer, VkDebugUtilsLabelEXT pLabelInfo) {
         try {
-            HANDLE$vkCmdBeginDebugUtilsLabelEXT.invokeExact(commandBuffer, pLabelInfo);
+            HANDLE$vkCmdBeginDebugUtilsLabelEXT.invoke(commandBuffer, pLabelInfo.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
@@ -1365,55 +1366,55 @@ public final class InstanceCommands {
 
     public void vkCmdEndDebugUtilsLabelEXT(VkCommandBuffer commandBuffer) {
         try {
-            HANDLE$vkCmdEndDebugUtilsLabelEXT.invokeExact(commandBuffer);
+            HANDLE$vkCmdEndDebugUtilsLabelEXT.invoke(commandBuffer);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkCmdInsertDebugUtilsLabelEXT(VkCommandBuffer commandBuffer, MemorySegment pLabelInfo) {
+    public void vkCmdInsertDebugUtilsLabelEXT(VkCommandBuffer commandBuffer, VkDebugUtilsLabelEXT pLabelInfo) {
         try {
-            HANDLE$vkCmdInsertDebugUtilsLabelEXT.invokeExact(commandBuffer, pLabelInfo);
+            HANDLE$vkCmdInsertDebugUtilsLabelEXT.invoke(commandBuffer, pLabelInfo.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateDebugUtilsMessengerEXT(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pMessenger) {
+    public @enumtype(VkResult.class) int vkCreateDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerCreateInfoEXT pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pMessenger) {
         try {
-            return (int) HANDLE$vkCreateDebugUtilsMessengerEXT.invokeExact(instance, pCreateInfo, pAllocator, pMessenger);
+            return (int) HANDLE$vkCreateDebugUtilsMessengerEXT.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pMessenger);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkDestroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT messenger, MemorySegment pAllocator) {
+    public void vkDestroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT messenger, VkAllocationCallbacks pAllocator) {
         try {
-            HANDLE$vkDestroyDebugUtilsMessengerEXT.invokeExact(instance, messenger, pAllocator);
+            HANDLE$vkDestroyDebugUtilsMessengerEXT.invoke(instance, messenger, pAllocator.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public void vkSubmitDebugUtilsMessageEXT(VkInstance instance, @enumtype(VkDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity, @enumtype(VkDebugUtilsMessageTypeFlagsEXT.class) int messageTypes, MemorySegment pCallbackData) {
+    public void vkSubmitDebugUtilsMessageEXT(VkInstance instance, @enumtype(VkDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity, @enumtype(VkDebugUtilsMessageTypeFlagsEXT.class) int messageTypes, VkDebugUtilsMessengerCallbackDataEXT pCallbackData) {
         try {
-            HANDLE$vkSubmitDebugUtilsMessageEXT.invokeExact(instance, messageSeverity, messageTypes, pCallbackData);
+            HANDLE$vkSubmitDebugUtilsMessageEXT.invoke(instance, messageSeverity, messageTypes, pCallbackData.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkCreateHeadlessSurfaceEXT(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+    public @enumtype(VkResult.class) int vkCreateHeadlessSurfaceEXT(VkInstance instance, VkHeadlessSurfaceCreateInfoEXT pCreateInfo, VkAllocationCallbacks pAllocator, MemorySegment pSurface) {
         try {
-            return (int) HANDLE$vkCreateHeadlessSurfaceEXT.invokeExact(instance, pCreateInfo, pAllocator, pSurface);
+            return (int) HANDLE$vkCreateHeadlessSurfaceEXT.invoke(instance, pCreateInfo.segment(), pAllocator.segment(), pSurface);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @enumtype(VkResult.class) int vkGetPhysicalDeviceToolProperties(VkPhysicalDevice physicalDevice, MemorySegment pToolCount, MemorySegment pToolProperties) {
+    public @enumtype(VkResult.class) int vkGetPhysicalDeviceToolProperties(VkPhysicalDevice physicalDevice, @unsigned IntPtr pToolCount, VkPhysicalDeviceToolProperties pToolProperties) {
         try {
-            return (int) HANDLE$vkGetPhysicalDeviceToolProperties.invokeExact(physicalDevice, pToolCount, pToolProperties);
+            return (int) HANDLE$vkGetPhysicalDeviceToolProperties.invoke(physicalDevice, pToolCount.segment(), pToolProperties.segment());
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
@@ -1421,7 +1422,7 @@ public final class InstanceCommands {
 
     public @enumtype(VkResult.class) int vkAcquireDrmDisplayEXT(VkPhysicalDevice physicalDevice, int drmFd, VkDisplayKHR display) {
         try {
-            return (int) HANDLE$vkAcquireDrmDisplayEXT.invokeExact(physicalDevice, drmFd, display);
+            return (int) HANDLE$vkAcquireDrmDisplayEXT.invoke(physicalDevice, drmFd, display);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
@@ -1429,7 +1430,7 @@ public final class InstanceCommands {
 
     public @enumtype(VkResult.class) int vkGetDrmDisplayEXT(VkPhysicalDevice physicalDevice, int drmFd, @unsigned int connectorId, MemorySegment display) {
         try {
-            return (int) HANDLE$vkGetDrmDisplayEXT.invokeExact(physicalDevice, drmFd, connectorId, display);
+            return (int) HANDLE$vkGetDrmDisplayEXT.invoke(physicalDevice, drmFd, connectorId, display);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }

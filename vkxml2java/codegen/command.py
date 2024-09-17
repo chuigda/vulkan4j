@@ -49,6 +49,7 @@ import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.util.Function2;
 
 public final class {class_name} {{
@@ -103,10 +104,14 @@ def generate_command_load(command: Command) -> str:
 def generate_command_wrapper(command: Command, param_types: list[CType], result_type: CType) -> str:
     params = []
     for (param_type, param) in zip(param_types, command.params):
-        params.append(f'{param_type.java_type()} {param.name}')
+        params.append(f'{generate_input_output_type(param_type)} {param.name}')
     param_names = list(map(lambda p: p.name, command.params))
 
-    invoke_expr = f'HANDLE${command.name}.invokeExact({", ".join(param_names)})'
+    invoke_args = []
+    for (param_type, param_name) in zip(param_types, param_names):
+        invoke_args.append(generate_input_convert(param_type, param_name))
+
+    invoke_expr = f'HANDLE${command.name}.invoke({", ".join(invoke_args)})'
 
     if result_type == CTYPE_VOID:
         return f'''    public void {command.name}({', '.join(params)}) {{
@@ -117,22 +122,48 @@ def generate_command_wrapper(command: Command, param_types: list[CType], result_
         }}
     }}\n'''
     else:
-        return f'''    public {result_type.java_type()} {command.name}({', '.join(params)}) {{
+        return f'''    public {generate_input_output_type(result_type)} {command.name}({', '.join(params)}) {{
         try {{
-            return {generate_result_convert(result_type, invoke_expr)};
+{generate_result_convert(result_type, invoke_expr)}
         }} catch (Throwable t) {{
             throw new RuntimeException(t);
         }}
     }}\n'''
 
 
+def generate_input_output_type(type_: CType) -> str:
+    if isinstance(type_, CPointerType):
+        if isinstance(type_.pointee, CNonRefType):
+            return type_.pointee.vk4j_ptr_type()
+        elif isinstance(type_.pointee, CStructType) or isinstance(type_.pointee, CUnionType):
+            return f'{type_.pointee.java_type()}'
+    return type_.java_type()
+
+
+def generate_input_convert(type_: CType, input_param: str):
+    if isinstance(type_, CPointerType):
+        if isinstance(type_.pointee, CNonRefType):
+            return f'{input_param}.segment()'
+        elif isinstance(type_.pointee, CStructType) or isinstance(type_.pointee, CUnionType):
+            return f'{input_param}.segment()'
+    return input_param
+
+
 def generate_result_convert(result_type: CType, fncall: str) -> str:
     if isinstance(result_type, CPointerType):
-        return f'(MemorySegment) {fncall}'
+        if isinstance(result_type.pointee, CNonRefType):
+            return f'''            MemorySegment s = (MemorySegment) {fncall};
+            return s.address() == 0 ? null : new {result_type.pointee.vk4j_ptr_type()}(s);'''
+        elif isinstance(result_type.pointee, CStructType) or isinstance(result_type.pointee, CUnionType):
+            return f'''            MemorySegment s = (MemorySegment) {fncall};
+            return s.address() == 0 ? null : new {result_type.pointee.java_type()}(s);'''
+        else:
+            return f'            return (MemorySegment) {fncall};'
     elif isinstance(result_type, CHandleType):
-        return f'new {result_type.java_type()}((MemorySegment) {fncall})'
+        return f'''            MemorySegment s = (MemorySegment) {fncall};
+            return s.address() == 0 ? null : new {result_type.java_type()}(s);'''
     elif isinstance(result_type, CEnumType):
-        return f'({result_type.java_type_no_annotation()}) {fncall}'
+        return f'            return ({result_type.java_type_no_annotation()}) {fncall};'
     elif isinstance(result_type, CArrayType):
         array_type = flatten_array(result_type)
         if isinstance(array_type.element, CNonRefType):
@@ -140,9 +171,9 @@ def generate_result_convert(result_type: CType, fncall: str) -> str:
         else:
             raise NotImplementedError()
     elif isinstance(result_type, CNonRefType):
-        return f'({result_type.java_type_no_sign()}) {fncall}'
+        return f'            return ({result_type.java_type_no_sign()}) {fncall};'
     elif isinstance(result_type, CStructType) or isinstance(result_type, CUnionType):
-        return f'new {result_type.name}((MemorySegment) {fncall})'
+        return f'            return new {result_type.name}((MemorySegment) {fncall});'
     else:
         raise ValueError(f'Unsupported result type: {result_type}')
 
