@@ -24,11 +24,11 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment)
         ValueLayout.ADDRESS.withTargetLayout(VkViewportWScalingNV.LAYOUT).withName("pViewportWScalings")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$viewportWScalingEnable = PathElement.groupElement(2);
-    public static final PathElement PATH$viewportCount = PathElement.groupElement(3);
-    public static final PathElement PATH$pViewportWScalings = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$viewportWScalingEnable = PathElement.groupElement("viewportWScalingEnable");
+    public static final PathElement PATH$viewportCount = PathElement.groupElement("viewportCount");
+    public static final PathElement PATH$pViewportWScalings = PathElement.groupElement("pViewportWScalings");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

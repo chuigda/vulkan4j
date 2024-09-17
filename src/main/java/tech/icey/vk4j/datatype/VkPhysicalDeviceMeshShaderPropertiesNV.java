@@ -34,21 +34,21 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("meshOutputPerPrimitiveGranularity")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$maxDrawMeshTasksCount = PathElement.groupElement(2);
-    public static final PathElement PATH$maxTaskWorkGroupInvocations = PathElement.groupElement(3);
-    public static final PathElement PATH$maxTaskWorkGroupSize = PathElement.groupElement(4);
-    public static final PathElement PATH$maxTaskTotalMemorySize = PathElement.groupElement(5);
-    public static final PathElement PATH$maxTaskOutputCount = PathElement.groupElement(6);
-    public static final PathElement PATH$maxMeshWorkGroupInvocations = PathElement.groupElement(7);
-    public static final PathElement PATH$maxMeshWorkGroupSize = PathElement.groupElement(8);
-    public static final PathElement PATH$maxMeshTotalMemorySize = PathElement.groupElement(9);
-    public static final PathElement PATH$maxMeshOutputVertices = PathElement.groupElement(10);
-    public static final PathElement PATH$maxMeshOutputPrimitives = PathElement.groupElement(11);
-    public static final PathElement PATH$maxMeshMultiviewViewCount = PathElement.groupElement(12);
-    public static final PathElement PATH$meshOutputPerVertexGranularity = PathElement.groupElement(13);
-    public static final PathElement PATH$meshOutputPerPrimitiveGranularity = PathElement.groupElement(14);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxDrawMeshTasksCount = PathElement.groupElement("maxDrawMeshTasksCount");
+    public static final PathElement PATH$maxTaskWorkGroupInvocations = PathElement.groupElement("maxTaskWorkGroupInvocations");
+    public static final PathElement PATH$maxTaskWorkGroupSize = PathElement.groupElement("maxTaskWorkGroupSize");
+    public static final PathElement PATH$maxTaskTotalMemorySize = PathElement.groupElement("maxTaskTotalMemorySize");
+    public static final PathElement PATH$maxTaskOutputCount = PathElement.groupElement("maxTaskOutputCount");
+    public static final PathElement PATH$maxMeshWorkGroupInvocations = PathElement.groupElement("maxMeshWorkGroupInvocations");
+    public static final PathElement PATH$maxMeshWorkGroupSize = PathElement.groupElement("maxMeshWorkGroupSize");
+    public static final PathElement PATH$maxMeshTotalMemorySize = PathElement.groupElement("maxMeshTotalMemorySize");
+    public static final PathElement PATH$maxMeshOutputVertices = PathElement.groupElement("maxMeshOutputVertices");
+    public static final PathElement PATH$maxMeshOutputPrimitives = PathElement.groupElement("maxMeshOutputPrimitives");
+    public static final PathElement PATH$maxMeshMultiviewViewCount = PathElement.groupElement("maxMeshMultiviewViewCount");
+    public static final PathElement PATH$meshOutputPerVertexGranularity = PathElement.groupElement("meshOutputPerVertexGranularity");
+    public static final PathElement PATH$meshOutputPerPrimitiveGranularity = PathElement.groupElement("meshOutputPerPrimitiveGranularity");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -24,11 +24,11 @@ public record VkPhysicalDeviceSparseProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("residencyNonResidentStrict")
     );
 
-    public static final PathElement PATH$residencyStandard2DBlockShape = PathElement.groupElement(0);
-    public static final PathElement PATH$residencyStandard2DMultisampleBlockShape = PathElement.groupElement(1);
-    public static final PathElement PATH$residencyStandard3DBlockShape = PathElement.groupElement(2);
-    public static final PathElement PATH$residencyAlignedMipSize = PathElement.groupElement(3);
-    public static final PathElement PATH$residencyNonResidentStrict = PathElement.groupElement(4);
+    public static final PathElement PATH$residencyStandard2DBlockShape = PathElement.groupElement("residencyStandard2DBlockShape");
+    public static final PathElement PATH$residencyStandard2DMultisampleBlockShape = PathElement.groupElement("residencyStandard2DMultisampleBlockShape");
+    public static final PathElement PATH$residencyStandard3DBlockShape = PathElement.groupElement("residencyStandard3DBlockShape");
+    public static final PathElement PATH$residencyAlignedMipSize = PathElement.groupElement("residencyAlignedMipSize");
+    public static final PathElement PATH$residencyNonResidentStrict = PathElement.groupElement("residencyNonResidentStrict");
 
     public static final OfInt LAYOUT$residencyStandard2DBlockShape = (OfInt) LAYOUT.select(PATH$residencyStandard2DBlockShape);
     public static final OfInt LAYOUT$residencyStandard2DMultisampleBlockShape = (OfInt) LAYOUT.select(PATH$residencyStandard2DMultisampleBlockShape);

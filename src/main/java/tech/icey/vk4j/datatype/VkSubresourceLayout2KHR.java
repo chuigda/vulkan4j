@@ -22,9 +22,9 @@ public record VkSubresourceLayout2KHR(MemorySegment segment) {
         VkSubresourceLayout.LAYOUT.withName("subresourceLayout")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$subresourceLayout = PathElement.groupElement(2);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$subresourceLayout = PathElement.groupElement("subresourceLayout");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -22,9 +22,9 @@ public record VkPushConstantRange(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("size")
     );
 
-    public static final PathElement PATH$stageFlags = PathElement.groupElement(0);
-    public static final PathElement PATH$offset = PathElement.groupElement(1);
-    public static final PathElement PATH$size = PathElement.groupElement(2);
+    public static final PathElement PATH$stageFlags = PathElement.groupElement("stageFlags");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
 
     public static final OfInt LAYOUT$stageFlags = (OfInt) LAYOUT.select(PATH$stageFlags);
     public static final OfInt LAYOUT$offset = (OfInt) LAYOUT.select(PATH$offset);

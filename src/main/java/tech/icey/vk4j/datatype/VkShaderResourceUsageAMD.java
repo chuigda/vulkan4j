@@ -24,11 +24,11 @@ public record VkShaderResourceUsageAMD(MemorySegment segment) {
         NativeLayout.C_SIZE_T.withName("scratchMemUsageInBytes")
     );
 
-    public static final PathElement PATH$numUsedVgprs = PathElement.groupElement(0);
-    public static final PathElement PATH$numUsedSgprs = PathElement.groupElement(1);
-    public static final PathElement PATH$ldsSizePerLocalWorkGroup = PathElement.groupElement(2);
-    public static final PathElement PATH$ldsUsageSizeInBytes = PathElement.groupElement(3);
-    public static final PathElement PATH$scratchMemUsageInBytes = PathElement.groupElement(4);
+    public static final PathElement PATH$numUsedVgprs = PathElement.groupElement("numUsedVgprs");
+    public static final PathElement PATH$numUsedSgprs = PathElement.groupElement("numUsedSgprs");
+    public static final PathElement PATH$ldsSizePerLocalWorkGroup = PathElement.groupElement("ldsSizePerLocalWorkGroup");
+    public static final PathElement PATH$ldsUsageSizeInBytes = PathElement.groupElement("ldsUsageSizeInBytes");
+    public static final PathElement PATH$scratchMemUsageInBytes = PathElement.groupElement("scratchMemUsageInBytes");
 
     public static final OfInt LAYOUT$numUsedVgprs = (OfInt) LAYOUT.select(PATH$numUsedVgprs);
     public static final OfInt LAYOUT$numUsedSgprs = (OfInt) LAYOUT.select(PATH$numUsedSgprs);

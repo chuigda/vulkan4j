@@ -25,12 +25,12 @@ public record VkDeviceQueueCreateInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT).withName("pQueuePriorities")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$queueFamilyIndex = PathElement.groupElement(3);
-    public static final PathElement PATH$queueCount = PathElement.groupElement(4);
-    public static final PathElement PATH$pQueuePriorities = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$queueFamilyIndex = PathElement.groupElement("queueFamilyIndex");
+    public static final PathElement PATH$queueCount = PathElement.groupElement("queueCount");
+    public static final PathElement PATH$pQueuePriorities = PathElement.groupElement("pQueuePriorities");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

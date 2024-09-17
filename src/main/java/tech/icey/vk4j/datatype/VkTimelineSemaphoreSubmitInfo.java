@@ -25,12 +25,12 @@ public record VkTimelineSemaphoreSubmitInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pSignalSemaphoreValues")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$waitSemaphoreValueCount = PathElement.groupElement(2);
-    public static final PathElement PATH$pWaitSemaphoreValues = PathElement.groupElement(3);
-    public static final PathElement PATH$signalSemaphoreValueCount = PathElement.groupElement(4);
-    public static final PathElement PATH$pSignalSemaphoreValues = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$waitSemaphoreValueCount = PathElement.groupElement("waitSemaphoreValueCount");
+    public static final PathElement PATH$pWaitSemaphoreValues = PathElement.groupElement("pWaitSemaphoreValues");
+    public static final PathElement PATH$signalSemaphoreValueCount = PathElement.groupElement("signalSemaphoreValueCount");
+    public static final PathElement PATH$pSignalSemaphoreValues = PathElement.groupElement("pSignalSemaphoreValues");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

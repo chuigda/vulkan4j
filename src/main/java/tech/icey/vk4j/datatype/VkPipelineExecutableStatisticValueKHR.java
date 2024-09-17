@@ -23,10 +23,10 @@ public record VkPipelineExecutableStatisticValueKHR(MemorySegment segment) {
         ValueLayout.JAVA_DOUBLE.withName("f64")
     );
 
-    public static final PathElement PATH$b32 = PathElement.groupElement(0);
-    public static final PathElement PATH$i64 = PathElement.groupElement(1);
-    public static final PathElement PATH$u64 = PathElement.groupElement(2);
-    public static final PathElement PATH$f64 = PathElement.groupElement(3);
+    public static final PathElement PATH$b32 = PathElement.groupElement("b32");
+    public static final PathElement PATH$i64 = PathElement.groupElement("i64");
+    public static final PathElement PATH$u64 = PathElement.groupElement("u64");
+    public static final PathElement PATH$f64 = PathElement.groupElement("f64");
 
     public static final OfInt LAYOUT$b32 = (OfInt) LAYOUT.select(PATH$b32);
     public static final OfLong LAYOUT$i64 = (OfLong) LAYOUT.select(PATH$i64);

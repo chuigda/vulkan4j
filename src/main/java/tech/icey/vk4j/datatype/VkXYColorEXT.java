@@ -21,8 +21,8 @@ public record VkXYColorEXT(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("y")
     );
 
-    public static final PathElement PATH$x = PathElement.groupElement(0);
-    public static final PathElement PATH$y = PathElement.groupElement(1);
+    public static final PathElement PATH$x = PathElement.groupElement("x");
+    public static final PathElement PATH$y = PathElement.groupElement("y");
 
     public static final OfFloat LAYOUT$x = (OfFloat) LAYOUT.select(PATH$x);
     public static final OfFloat LAYOUT$y = (OfFloat) LAYOUT.select(PATH$y);

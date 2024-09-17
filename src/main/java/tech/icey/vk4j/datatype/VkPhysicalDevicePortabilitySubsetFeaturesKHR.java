@@ -36,23 +36,23 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(MemorySegment segment
         ValueLayout.JAVA_INT.withName("vertexAttributeAccessBeyondStride")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$constantAlphaColorBlendFactors = PathElement.groupElement(2);
-    public static final PathElement PATH$events = PathElement.groupElement(3);
-    public static final PathElement PATH$imageViewFormatReinterpretation = PathElement.groupElement(4);
-    public static final PathElement PATH$imageViewFormatSwizzle = PathElement.groupElement(5);
-    public static final PathElement PATH$imageView2DOn3DImage = PathElement.groupElement(6);
-    public static final PathElement PATH$multisampleArrayImage = PathElement.groupElement(7);
-    public static final PathElement PATH$mutableComparisonSamplers = PathElement.groupElement(8);
-    public static final PathElement PATH$pointPolygons = PathElement.groupElement(9);
-    public static final PathElement PATH$samplerMipLodBias = PathElement.groupElement(10);
-    public static final PathElement PATH$separateStencilMaskRef = PathElement.groupElement(11);
-    public static final PathElement PATH$shaderSampleRateInterpolationFunctions = PathElement.groupElement(12);
-    public static final PathElement PATH$tessellationIsolines = PathElement.groupElement(13);
-    public static final PathElement PATH$tessellationPointMode = PathElement.groupElement(14);
-    public static final PathElement PATH$triangleFans = PathElement.groupElement(15);
-    public static final PathElement PATH$vertexAttributeAccessBeyondStride = PathElement.groupElement(16);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$constantAlphaColorBlendFactors = PathElement.groupElement("constantAlphaColorBlendFactors");
+    public static final PathElement PATH$events = PathElement.groupElement("events");
+    public static final PathElement PATH$imageViewFormatReinterpretation = PathElement.groupElement("imageViewFormatReinterpretation");
+    public static final PathElement PATH$imageViewFormatSwizzle = PathElement.groupElement("imageViewFormatSwizzle");
+    public static final PathElement PATH$imageView2DOn3DImage = PathElement.groupElement("imageView2DOn3DImage");
+    public static final PathElement PATH$multisampleArrayImage = PathElement.groupElement("multisampleArrayImage");
+    public static final PathElement PATH$mutableComparisonSamplers = PathElement.groupElement("mutableComparisonSamplers");
+    public static final PathElement PATH$pointPolygons = PathElement.groupElement("pointPolygons");
+    public static final PathElement PATH$samplerMipLodBias = PathElement.groupElement("samplerMipLodBias");
+    public static final PathElement PATH$separateStencilMaskRef = PathElement.groupElement("separateStencilMaskRef");
+    public static final PathElement PATH$shaderSampleRateInterpolationFunctions = PathElement.groupElement("shaderSampleRateInterpolationFunctions");
+    public static final PathElement PATH$tessellationIsolines = PathElement.groupElement("tessellationIsolines");
+    public static final PathElement PATH$tessellationPointMode = PathElement.groupElement("tessellationPointMode");
+    public static final PathElement PATH$triangleFans = PathElement.groupElement("triangleFans");
+    public static final PathElement PATH$vertexAttributeAccessBeyondStride = PathElement.groupElement("vertexAttributeAccessBeyondStride");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

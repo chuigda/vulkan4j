@@ -22,9 +22,9 @@ public record VkClearColorValue(MemorySegment segment) {
         MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("uint32")
     );
 
-    public static final PathElement PATH$float32 = PathElement.groupElement(0);
-    public static final PathElement PATH$int32 = PathElement.groupElement(1);
-    public static final PathElement PATH$uint32 = PathElement.groupElement(2);
+    public static final PathElement PATH$float32 = PathElement.groupElement("float32");
+    public static final PathElement PATH$int32 = PathElement.groupElement("int32");
+    public static final PathElement PATH$uint32 = PathElement.groupElement("uint32");
 
     public static final SequenceLayout LAYOUT$float32 = (SequenceLayout) LAYOUT.select(PATH$float32);
     public static final SequenceLayout LAYOUT$int32 = (SequenceLayout) LAYOUT.select(PATH$int32);

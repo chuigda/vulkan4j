@@ -21,8 +21,8 @@ public record VkClearDepthStencilValue(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("stencil")
     );
 
-    public static final PathElement PATH$depth = PathElement.groupElement(0);
-    public static final PathElement PATH$stencil = PathElement.groupElement(1);
+    public static final PathElement PATH$depth = PathElement.groupElement("depth");
+    public static final PathElement PATH$stencil = PathElement.groupElement("stencil");
 
     public static final OfFloat LAYOUT$depth = (OfFloat) LAYOUT.select(PATH$depth);
     public static final OfInt LAYOUT$stencil = (OfInt) LAYOUT.select(PATH$stencil);

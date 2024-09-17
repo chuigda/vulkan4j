@@ -23,10 +23,10 @@ public record VkQueueFamilyProperties(MemorySegment segment) {
         VkExtent3D.LAYOUT.withName("minImageTransferGranularity")
     );
 
-    public static final PathElement PATH$queueFlags = PathElement.groupElement(0);
-    public static final PathElement PATH$queueCount = PathElement.groupElement(1);
-    public static final PathElement PATH$timestampValidBits = PathElement.groupElement(2);
-    public static final PathElement PATH$minImageTransferGranularity = PathElement.groupElement(3);
+    public static final PathElement PATH$queueFlags = PathElement.groupElement("queueFlags");
+    public static final PathElement PATH$queueCount = PathElement.groupElement("queueCount");
+    public static final PathElement PATH$timestampValidBits = PathElement.groupElement("timestampValidBits");
+    public static final PathElement PATH$minImageTransferGranularity = PathElement.groupElement("minImageTransferGranularity");
 
     public static final OfInt LAYOUT$queueFlags = (OfInt) LAYOUT.select(PATH$queueFlags);
     public static final OfInt LAYOUT$queueCount = (OfInt) LAYOUT.select(PATH$queueCount);

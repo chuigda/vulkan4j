@@ -22,9 +22,9 @@ public record VkExtent3D(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("depth")
     );
 
-    public static final PathElement PATH$width = PathElement.groupElement(0);
-    public static final PathElement PATH$height = PathElement.groupElement(1);
-    public static final PathElement PATH$depth = PathElement.groupElement(2);
+    public static final PathElement PATH$width = PathElement.groupElement("width");
+    public static final PathElement PATH$height = PathElement.groupElement("height");
+    public static final PathElement PATH$depth = PathElement.groupElement("depth");
 
     public static final OfInt LAYOUT$width = (OfInt) LAYOUT.select(PATH$width);
     public static final OfInt LAYOUT$height = (OfInt) LAYOUT.select(PATH$height);

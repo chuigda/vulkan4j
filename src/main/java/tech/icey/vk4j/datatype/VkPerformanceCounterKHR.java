@@ -25,12 +25,12 @@ public record VkPerformanceCounterKHR(MemorySegment segment) {
         MemoryLayout.sequenceLayout(VK_UUID_SIZE, ValueLayout.JAVA_BYTE).withName("uuid")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$unit = PathElement.groupElement(2);
-    public static final PathElement PATH$scope = PathElement.groupElement(3);
-    public static final PathElement PATH$storage = PathElement.groupElement(4);
-    public static final PathElement PATH$uuid = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$unit = PathElement.groupElement("unit");
+    public static final PathElement PATH$scope = PathElement.groupElement("scope");
+    public static final PathElement PATH$storage = PathElement.groupElement("storage");
+    public static final PathElement PATH$uuid = PathElement.groupElement("uuid");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

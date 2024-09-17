@@ -21,8 +21,8 @@ public record VkDescriptorPoolSize(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("descriptorCount")
     );
 
-    public static final PathElement PATH$type = PathElement.groupElement(0);
-    public static final PathElement PATH$descriptorCount = PathElement.groupElement(1);
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final OfInt LAYOUT$descriptorCount = (OfInt) LAYOUT.select(PATH$descriptorCount);

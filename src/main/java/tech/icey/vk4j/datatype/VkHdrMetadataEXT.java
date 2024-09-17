@@ -29,16 +29,16 @@ public record VkHdrMetadataEXT(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("maxFrameAverageLightLevel")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$displayPrimaryRed = PathElement.groupElement(2);
-    public static final PathElement PATH$displayPrimaryGreen = PathElement.groupElement(3);
-    public static final PathElement PATH$displayPrimaryBlue = PathElement.groupElement(4);
-    public static final PathElement PATH$whitePoint = PathElement.groupElement(5);
-    public static final PathElement PATH$maxLuminance = PathElement.groupElement(6);
-    public static final PathElement PATH$minLuminance = PathElement.groupElement(7);
-    public static final PathElement PATH$maxContentLightLevel = PathElement.groupElement(8);
-    public static final PathElement PATH$maxFrameAverageLightLevel = PathElement.groupElement(9);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$displayPrimaryRed = PathElement.groupElement("displayPrimaryRed");
+    public static final PathElement PATH$displayPrimaryGreen = PathElement.groupElement("displayPrimaryGreen");
+    public static final PathElement PATH$displayPrimaryBlue = PathElement.groupElement("displayPrimaryBlue");
+    public static final PathElement PATH$whitePoint = PathElement.groupElement("whitePoint");
+    public static final PathElement PATH$maxLuminance = PathElement.groupElement("maxLuminance");
+    public static final PathElement PATH$minLuminance = PathElement.groupElement("minLuminance");
+    public static final PathElement PATH$maxContentLightLevel = PathElement.groupElement("maxContentLightLevel");
+    public static final PathElement PATH$maxFrameAverageLightLevel = PathElement.groupElement("maxFrameAverageLightLevel");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -24,11 +24,11 @@ public record VkPhysicalDeviceShaderTileImageFeaturesEXT(MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("shaderTileImageStencilReadAccess")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$shaderTileImageColorReadAccess = PathElement.groupElement(2);
-    public static final PathElement PATH$shaderTileImageDepthReadAccess = PathElement.groupElement(3);
-    public static final PathElement PATH$shaderTileImageStencilReadAccess = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shaderTileImageColorReadAccess = PathElement.groupElement("shaderTileImageColorReadAccess");
+    public static final PathElement PATH$shaderTileImageDepthReadAccess = PathElement.groupElement("shaderTileImageDepthReadAccess");
+    public static final PathElement PATH$shaderTileImageStencilReadAccess = PathElement.groupElement("shaderTileImageStencilReadAccess");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

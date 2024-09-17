@@ -24,11 +24,11 @@ public record VkPhysicalDeviceShadingRateImagePropertiesNV(MemorySegment segment
         ValueLayout.JAVA_INT.withName("shadingRateMaxCoarseSamples")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$shadingRateTexelSize = PathElement.groupElement(2);
-    public static final PathElement PATH$shadingRatePaletteSize = PathElement.groupElement(3);
-    public static final PathElement PATH$shadingRateMaxCoarseSamples = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shadingRateTexelSize = PathElement.groupElement("shadingRateTexelSize");
+    public static final PathElement PATH$shadingRatePaletteSize = PathElement.groupElement("shadingRatePaletteSize");
+    public static final PathElement PATH$shadingRateMaxCoarseSamples = PathElement.groupElement("shadingRateMaxCoarseSamples");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

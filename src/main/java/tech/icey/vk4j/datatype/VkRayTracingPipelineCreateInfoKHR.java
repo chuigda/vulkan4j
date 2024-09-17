@@ -33,20 +33,20 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("basePipelineIndex")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$stageCount = PathElement.groupElement(3);
-    public static final PathElement PATH$pStages = PathElement.groupElement(4);
-    public static final PathElement PATH$groupCount = PathElement.groupElement(5);
-    public static final PathElement PATH$pGroups = PathElement.groupElement(6);
-    public static final PathElement PATH$maxPipelineRayRecursionDepth = PathElement.groupElement(7);
-    public static final PathElement PATH$pLibraryInfo = PathElement.groupElement(8);
-    public static final PathElement PATH$pLibraryInterface = PathElement.groupElement(9);
-    public static final PathElement PATH$pDynamicState = PathElement.groupElement(10);
-    public static final PathElement PATH$layout = PathElement.groupElement(11);
-    public static final PathElement PATH$basePipelineHandle = PathElement.groupElement(12);
-    public static final PathElement PATH$basePipelineIndex = PathElement.groupElement(13);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$stageCount = PathElement.groupElement("stageCount");
+    public static final PathElement PATH$pStages = PathElement.groupElement("pStages");
+    public static final PathElement PATH$groupCount = PathElement.groupElement("groupCount");
+    public static final PathElement PATH$pGroups = PathElement.groupElement("pGroups");
+    public static final PathElement PATH$maxPipelineRayRecursionDepth = PathElement.groupElement("maxPipelineRayRecursionDepth");
+    public static final PathElement PATH$pLibraryInfo = PathElement.groupElement("pLibraryInfo");
+    public static final PathElement PATH$pLibraryInterface = PathElement.groupElement("pLibraryInterface");
+    public static final PathElement PATH$pDynamicState = PathElement.groupElement("pDynamicState");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+    public static final PathElement PATH$basePipelineHandle = PathElement.groupElement("basePipelineHandle");
+    public static final PathElement PATH$basePipelineIndex = PathElement.groupElement("basePipelineIndex");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

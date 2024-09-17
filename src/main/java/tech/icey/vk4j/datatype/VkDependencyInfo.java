@@ -28,15 +28,15 @@ public record VkDependencyInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkImageMemoryBarrier2.LAYOUT).withName("pImageMemoryBarriers")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$dependencyFlags = PathElement.groupElement(2);
-    public static final PathElement PATH$memoryBarrierCount = PathElement.groupElement(3);
-    public static final PathElement PATH$pMemoryBarriers = PathElement.groupElement(4);
-    public static final PathElement PATH$bufferMemoryBarrierCount = PathElement.groupElement(5);
-    public static final PathElement PATH$pBufferMemoryBarriers = PathElement.groupElement(6);
-    public static final PathElement PATH$imageMemoryBarrierCount = PathElement.groupElement(7);
-    public static final PathElement PATH$pImageMemoryBarriers = PathElement.groupElement(8);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$dependencyFlags = PathElement.groupElement("dependencyFlags");
+    public static final PathElement PATH$memoryBarrierCount = PathElement.groupElement("memoryBarrierCount");
+    public static final PathElement PATH$pMemoryBarriers = PathElement.groupElement("pMemoryBarriers");
+    public static final PathElement PATH$bufferMemoryBarrierCount = PathElement.groupElement("bufferMemoryBarrierCount");
+    public static final PathElement PATH$pBufferMemoryBarriers = PathElement.groupElement("pBufferMemoryBarriers");
+    public static final PathElement PATH$imageMemoryBarrierCount = PathElement.groupElement("imageMemoryBarrierCount");
+    public static final PathElement PATH$pImageMemoryBarriers = PathElement.groupElement("pImageMemoryBarriers");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

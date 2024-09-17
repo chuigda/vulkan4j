@@ -21,8 +21,8 @@ public record VkDisplayModePropertiesKHR(MemorySegment segment) {
         VkDisplayModeParametersKHR.LAYOUT.withName("parameters")
     );
 
-    public static final PathElement PATH$displayMode = PathElement.groupElement(0);
-    public static final PathElement PATH$parameters = PathElement.groupElement(1);
+    public static final PathElement PATH$displayMode = PathElement.groupElement("displayMode");
+    public static final PathElement PATH$parameters = PathElement.groupElement("parameters");
 
     public static final AddressLayout LAYOUT$displayMode = (AddressLayout) LAYOUT.select(PATH$displayMode);
     public static final StructLayout LAYOUT$parameters = (StructLayout) LAYOUT.select(PATH$parameters);

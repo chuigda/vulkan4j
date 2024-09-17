@@ -30,17 +30,17 @@ public record VkAttachmentDescription2(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("finalLayout")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$format = PathElement.groupElement(3);
-    public static final PathElement PATH$samples = PathElement.groupElement(4);
-    public static final PathElement PATH$loadOp = PathElement.groupElement(5);
-    public static final PathElement PATH$storeOp = PathElement.groupElement(6);
-    public static final PathElement PATH$stencilLoadOp = PathElement.groupElement(7);
-    public static final PathElement PATH$stencilStoreOp = PathElement.groupElement(8);
-    public static final PathElement PATH$initialLayout = PathElement.groupElement(9);
-    public static final PathElement PATH$finalLayout = PathElement.groupElement(10);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$samples = PathElement.groupElement("samples");
+    public static final PathElement PATH$loadOp = PathElement.groupElement("loadOp");
+    public static final PathElement PATH$storeOp = PathElement.groupElement("storeOp");
+    public static final PathElement PATH$stencilLoadOp = PathElement.groupElement("stencilLoadOp");
+    public static final PathElement PATH$stencilStoreOp = PathElement.groupElement("stencilStoreOp");
+    public static final PathElement PATH$initialLayout = PathElement.groupElement("initialLayout");
+    public static final PathElement PATH$finalLayout = PathElement.groupElement("finalLayout");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

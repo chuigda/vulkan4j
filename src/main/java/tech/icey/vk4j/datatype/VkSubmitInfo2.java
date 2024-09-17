@@ -28,15 +28,15 @@ public record VkSubmitInfo2(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkSemaphoreSubmitInfo.LAYOUT).withName("pSignalSemaphoreInfos")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$waitSemaphoreInfoCount = PathElement.groupElement(3);
-    public static final PathElement PATH$pWaitSemaphoreInfos = PathElement.groupElement(4);
-    public static final PathElement PATH$commandBufferInfoCount = PathElement.groupElement(5);
-    public static final PathElement PATH$pCommandBufferInfos = PathElement.groupElement(6);
-    public static final PathElement PATH$signalSemaphoreInfoCount = PathElement.groupElement(7);
-    public static final PathElement PATH$pSignalSemaphoreInfos = PathElement.groupElement(8);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$waitSemaphoreInfoCount = PathElement.groupElement("waitSemaphoreInfoCount");
+    public static final PathElement PATH$pWaitSemaphoreInfos = PathElement.groupElement("pWaitSemaphoreInfos");
+    public static final PathElement PATH$commandBufferInfoCount = PathElement.groupElement("commandBufferInfoCount");
+    public static final PathElement PATH$pCommandBufferInfos = PathElement.groupElement("pCommandBufferInfos");
+    public static final PathElement PATH$signalSemaphoreInfoCount = PathElement.groupElement("signalSemaphoreInfoCount");
+    public static final PathElement PATH$pSignalSemaphoreInfos = PathElement.groupElement("pSignalSemaphoreInfos");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

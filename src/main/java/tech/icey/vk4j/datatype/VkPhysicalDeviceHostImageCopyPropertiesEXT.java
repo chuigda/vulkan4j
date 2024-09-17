@@ -27,14 +27,14 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("identicalMemoryTypeRequirements")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$copySrcLayoutCount = PathElement.groupElement(2);
-    public static final PathElement PATH$pCopySrcLayouts = PathElement.groupElement(3);
-    public static final PathElement PATH$copyDstLayoutCount = PathElement.groupElement(4);
-    public static final PathElement PATH$pCopyDstLayouts = PathElement.groupElement(5);
-    public static final PathElement PATH$optimalTilingLayoutUUID = PathElement.groupElement(6);
-    public static final PathElement PATH$identicalMemoryTypeRequirements = PathElement.groupElement(7);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$copySrcLayoutCount = PathElement.groupElement("copySrcLayoutCount");
+    public static final PathElement PATH$pCopySrcLayouts = PathElement.groupElement("pCopySrcLayouts");
+    public static final PathElement PATH$copyDstLayoutCount = PathElement.groupElement("copyDstLayoutCount");
+    public static final PathElement PATH$pCopyDstLayouts = PathElement.groupElement("pCopyDstLayouts");
+    public static final PathElement PATH$optimalTilingLayoutUUID = PathElement.groupElement("optimalTilingLayoutUUID");
+    public static final PathElement PATH$identicalMemoryTypeRequirements = PathElement.groupElement("identicalMemoryTypeRequirements");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

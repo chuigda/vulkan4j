@@ -27,14 +27,14 @@ public record VkMemoryToImageCopyEXT(MemorySegment segment) {
         VkExtent3D.LAYOUT.withName("imageExtent")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$pHostPointer = PathElement.groupElement(2);
-    public static final PathElement PATH$memoryRowLength = PathElement.groupElement(3);
-    public static final PathElement PATH$memoryImageHeight = PathElement.groupElement(4);
-    public static final PathElement PATH$imageSubresource = PathElement.groupElement(5);
-    public static final PathElement PATH$imageOffset = PathElement.groupElement(6);
-    public static final PathElement PATH$imageExtent = PathElement.groupElement(7);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pHostPointer = PathElement.groupElement("pHostPointer");
+    public static final PathElement PATH$memoryRowLength = PathElement.groupElement("memoryRowLength");
+    public static final PathElement PATH$memoryImageHeight = PathElement.groupElement("memoryImageHeight");
+    public static final PathElement PATH$imageSubresource = PathElement.groupElement("imageSubresource");
+    public static final PathElement PATH$imageOffset = PathElement.groupElement("imageOffset");
+    public static final PathElement PATH$imageExtent = PathElement.groupElement("imageExtent");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

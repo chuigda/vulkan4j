@@ -21,8 +21,8 @@ public record VkOffset2D(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("y")
     );
 
-    public static final PathElement PATH$x = PathElement.groupElement(0);
-    public static final PathElement PATH$y = PathElement.groupElement(1);
+    public static final PathElement PATH$x = PathElement.groupElement("x");
+    public static final PathElement PATH$y = PathElement.groupElement("y");
 
     public static final OfInt LAYOUT$x = (OfInt) LAYOUT.select(PATH$x);
     public static final OfInt LAYOUT$y = (OfInt) LAYOUT.select(PATH$y);

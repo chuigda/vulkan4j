@@ -29,16 +29,16 @@ public record VkSubpassDescription(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pPreserveAttachments")
     );
 
-    public static final PathElement PATH$flags = PathElement.groupElement(0);
-    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement(1);
-    public static final PathElement PATH$inputAttachmentCount = PathElement.groupElement(2);
-    public static final PathElement PATH$pInputAttachments = PathElement.groupElement(3);
-    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement(4);
-    public static final PathElement PATH$pColorAttachments = PathElement.groupElement(5);
-    public static final PathElement PATH$pResolveAttachments = PathElement.groupElement(6);
-    public static final PathElement PATH$pDepthStencilAttachment = PathElement.groupElement(7);
-    public static final PathElement PATH$preserveAttachmentCount = PathElement.groupElement(8);
-    public static final PathElement PATH$pPreserveAttachments = PathElement.groupElement(9);
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("pipelineBindPoint");
+    public static final PathElement PATH$inputAttachmentCount = PathElement.groupElement("inputAttachmentCount");
+    public static final PathElement PATH$pInputAttachments = PathElement.groupElement("pInputAttachments");
+    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("colorAttachmentCount");
+    public static final PathElement PATH$pColorAttachments = PathElement.groupElement("pColorAttachments");
+    public static final PathElement PATH$pResolveAttachments = PathElement.groupElement("pResolveAttachments");
+    public static final PathElement PATH$pDepthStencilAttachment = PathElement.groupElement("pDepthStencilAttachment");
+    public static final PathElement PATH$preserveAttachmentCount = PathElement.groupElement("preserveAttachmentCount");
+    public static final PathElement PATH$pPreserveAttachments = PathElement.groupElement("pPreserveAttachments");
 
     public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$pipelineBindPoint = (OfInt) LAYOUT.select(PATH$pipelineBindPoint);

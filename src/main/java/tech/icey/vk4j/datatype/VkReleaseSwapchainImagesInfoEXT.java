@@ -24,11 +24,11 @@ public record VkReleaseSwapchainImagesInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pImageIndices")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$swapchain = PathElement.groupElement(2);
-    public static final PathElement PATH$imageIndexCount = PathElement.groupElement(3);
-    public static final PathElement PATH$pImageIndices = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$swapchain = PathElement.groupElement("swapchain");
+    public static final PathElement PATH$imageIndexCount = PathElement.groupElement("imageIndexCount");
+    public static final PathElement PATH$pImageIndices = PathElement.groupElement("pImageIndices");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -22,9 +22,9 @@ public record VkSparseImageFormatProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("flags")
     );
 
-    public static final PathElement PATH$aspectMask = PathElement.groupElement(0);
-    public static final PathElement PATH$imageGranularity = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
+    public static final PathElement PATH$imageGranularity = PathElement.groupElement("imageGranularity");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
 
     public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
     public static final StructLayout LAYOUT$imageGranularity = (StructLayout) LAYOUT.select(PATH$imageGranularity);

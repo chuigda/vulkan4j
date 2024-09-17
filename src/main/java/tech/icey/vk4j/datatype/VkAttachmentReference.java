@@ -21,8 +21,8 @@ public record VkAttachmentReference(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("layout")
     );
 
-    public static final PathElement PATH$attachment = PathElement.groupElement(0);
-    public static final PathElement PATH$layout = PathElement.groupElement(1);
+    public static final PathElement PATH$attachment = PathElement.groupElement("attachment");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
 
     public static final OfInt LAYOUT$attachment = (OfInt) LAYOUT.select(PATH$attachment);
     public static final OfInt LAYOUT$layout = (OfInt) LAYOUT.select(PATH$layout);

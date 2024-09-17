@@ -25,12 +25,12 @@ public record VkImageBlit2(MemorySegment segment) {
         MemoryLayout.sequenceLayout(2, VkOffset3D.LAYOUT).withName("dstOffsets")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$srcSubresource = PathElement.groupElement(2);
-    public static final PathElement PATH$srcOffsets = PathElement.groupElement(3);
-    public static final PathElement PATH$dstSubresource = PathElement.groupElement(4);
-    public static final PathElement PATH$dstOffsets = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcSubresource = PathElement.groupElement("srcSubresource");
+    public static final PathElement PATH$srcOffsets = PathElement.groupElement("srcOffsets");
+    public static final PathElement PATH$dstSubresource = PathElement.groupElement("dstSubresource");
+    public static final PathElement PATH$dstOffsets = PathElement.groupElement("dstOffsets");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

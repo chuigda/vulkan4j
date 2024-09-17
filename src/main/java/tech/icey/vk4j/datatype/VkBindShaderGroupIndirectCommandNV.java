@@ -20,7 +20,7 @@ public record VkBindShaderGroupIndirectCommandNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("groupIndex")
     );
 
-    public static final PathElement PATH$groupIndex = PathElement.groupElement(0);
+    public static final PathElement PATH$groupIndex = PathElement.groupElement("groupIndex");
 
     public static final OfInt LAYOUT$groupIndex = (OfInt) LAYOUT.select(PATH$groupIndex);
 

@@ -25,12 +25,12 @@ public record VkCopyMemoryToImageIndirectCommandNV(MemorySegment segment) {
         VkExtent3D.LAYOUT.withName("imageExtent")
     );
 
-    public static final PathElement PATH$srcAddress = PathElement.groupElement(0);
-    public static final PathElement PATH$bufferRowLength = PathElement.groupElement(1);
-    public static final PathElement PATH$bufferImageHeight = PathElement.groupElement(2);
-    public static final PathElement PATH$imageSubresource = PathElement.groupElement(3);
-    public static final PathElement PATH$imageOffset = PathElement.groupElement(4);
-    public static final PathElement PATH$imageExtent = PathElement.groupElement(5);
+    public static final PathElement PATH$srcAddress = PathElement.groupElement("srcAddress");
+    public static final PathElement PATH$bufferRowLength = PathElement.groupElement("bufferRowLength");
+    public static final PathElement PATH$bufferImageHeight = PathElement.groupElement("bufferImageHeight");
+    public static final PathElement PATH$imageSubresource = PathElement.groupElement("imageSubresource");
+    public static final PathElement PATH$imageOffset = PathElement.groupElement("imageOffset");
+    public static final PathElement PATH$imageExtent = PathElement.groupElement("imageExtent");
 
     public static final OfLong LAYOUT$srcAddress = (OfLong) LAYOUT.select(PATH$srcAddress);
     public static final OfInt LAYOUT$bufferRowLength = (OfInt) LAYOUT.select(PATH$bufferRowLength);

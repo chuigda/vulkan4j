@@ -27,14 +27,14 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pStreamStrides")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement(3);
-    public static final PathElement PATH$tokenCount = PathElement.groupElement(4);
-    public static final PathElement PATH$pTokens = PathElement.groupElement(5);
-    public static final PathElement PATH$streamCount = PathElement.groupElement(6);
-    public static final PathElement PATH$pStreamStrides = PathElement.groupElement(7);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("pipelineBindPoint");
+    public static final PathElement PATH$tokenCount = PathElement.groupElement("tokenCount");
+    public static final PathElement PATH$pTokens = PathElement.groupElement("pTokens");
+    public static final PathElement PATH$streamCount = PathElement.groupElement("streamCount");
+    public static final PathElement PATH$pStreamStrides = PathElement.groupElement("pStreamStrides");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -24,11 +24,11 @@ public record VkDecompressMemoryRegionNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("decompressionMethod")
     );
 
-    public static final PathElement PATH$srcAddress = PathElement.groupElement(0);
-    public static final PathElement PATH$dstAddress = PathElement.groupElement(1);
-    public static final PathElement PATH$compressedSize = PathElement.groupElement(2);
-    public static final PathElement PATH$decompressedSize = PathElement.groupElement(3);
-    public static final PathElement PATH$decompressionMethod = PathElement.groupElement(4);
+    public static final PathElement PATH$srcAddress = PathElement.groupElement("srcAddress");
+    public static final PathElement PATH$dstAddress = PathElement.groupElement("dstAddress");
+    public static final PathElement PATH$compressedSize = PathElement.groupElement("compressedSize");
+    public static final PathElement PATH$decompressedSize = PathElement.groupElement("decompressedSize");
+    public static final PathElement PATH$decompressionMethod = PathElement.groupElement("decompressionMethod");
 
     public static final OfLong LAYOUT$srcAddress = (OfLong) LAYOUT.select(PATH$srcAddress);
     public static final OfLong LAYOUT$dstAddress = (OfLong) LAYOUT.select(PATH$dstAddress);

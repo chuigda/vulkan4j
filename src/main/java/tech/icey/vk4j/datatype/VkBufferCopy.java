@@ -22,9 +22,9 @@ public record VkBufferCopy(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("size")
     );
 
-    public static final PathElement PATH$srcOffset = PathElement.groupElement(0);
-    public static final PathElement PATH$dstOffset = PathElement.groupElement(1);
-    public static final PathElement PATH$size = PathElement.groupElement(2);
+    public static final PathElement PATH$srcOffset = PathElement.groupElement("srcOffset");
+    public static final PathElement PATH$dstOffset = PathElement.groupElement("dstOffset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
 
     public static final OfLong LAYOUT$srcOffset = (OfLong) LAYOUT.select(PATH$srcOffset);
     public static final OfLong LAYOUT$dstOffset = (OfLong) LAYOUT.select(PATH$dstOffset);

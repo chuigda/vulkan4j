@@ -24,11 +24,11 @@ public record VkColorBlendAdvancedEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("clampResults")
     );
 
-    public static final PathElement PATH$advancedBlendOp = PathElement.groupElement(0);
-    public static final PathElement PATH$srcPremultiplied = PathElement.groupElement(1);
-    public static final PathElement PATH$dstPremultiplied = PathElement.groupElement(2);
-    public static final PathElement PATH$blendOverlap = PathElement.groupElement(3);
-    public static final PathElement PATH$clampResults = PathElement.groupElement(4);
+    public static final PathElement PATH$advancedBlendOp = PathElement.groupElement("advancedBlendOp");
+    public static final PathElement PATH$srcPremultiplied = PathElement.groupElement("srcPremultiplied");
+    public static final PathElement PATH$dstPremultiplied = PathElement.groupElement("dstPremultiplied");
+    public static final PathElement PATH$blendOverlap = PathElement.groupElement("blendOverlap");
+    public static final PathElement PATH$clampResults = PathElement.groupElement("clampResults");
 
     public static final OfInt LAYOUT$advancedBlendOp = (OfInt) LAYOUT.select(PATH$advancedBlendOp);
     public static final OfInt LAYOUT$srcPremultiplied = (OfInt) LAYOUT.select(PATH$srcPremultiplied);

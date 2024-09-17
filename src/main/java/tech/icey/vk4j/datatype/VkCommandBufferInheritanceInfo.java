@@ -27,14 +27,14 @@ public record VkCommandBufferInheritanceInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("pipelineStatistics")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$renderPass = PathElement.groupElement(2);
-    public static final PathElement PATH$subpass = PathElement.groupElement(3);
-    public static final PathElement PATH$framebuffer = PathElement.groupElement(4);
-    public static final PathElement PATH$occlusionQueryEnable = PathElement.groupElement(5);
-    public static final PathElement PATH$queryFlags = PathElement.groupElement(6);
-    public static final PathElement PATH$pipelineStatistics = PathElement.groupElement(7);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$renderPass = PathElement.groupElement("renderPass");
+    public static final PathElement PATH$subpass = PathElement.groupElement("subpass");
+    public static final PathElement PATH$framebuffer = PathElement.groupElement("framebuffer");
+    public static final PathElement PATH$occlusionQueryEnable = PathElement.groupElement("occlusionQueryEnable");
+    public static final PathElement PATH$queryFlags = PathElement.groupElement("queryFlags");
+    public static final PathElement PATH$pipelineStatistics = PathElement.groupElement("pipelineStatistics");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

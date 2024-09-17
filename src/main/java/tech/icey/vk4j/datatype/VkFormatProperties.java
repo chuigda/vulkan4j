@@ -22,9 +22,9 @@ public record VkFormatProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("bufferFeatures")
     );
 
-    public static final PathElement PATH$linearTilingFeatures = PathElement.groupElement(0);
-    public static final PathElement PATH$optimalTilingFeatures = PathElement.groupElement(1);
-    public static final PathElement PATH$bufferFeatures = PathElement.groupElement(2);
+    public static final PathElement PATH$linearTilingFeatures = PathElement.groupElement("linearTilingFeatures");
+    public static final PathElement PATH$optimalTilingFeatures = PathElement.groupElement("optimalTilingFeatures");
+    public static final PathElement PATH$bufferFeatures = PathElement.groupElement("bufferFeatures");
 
     public static final OfInt LAYOUT$linearTilingFeatures = (OfInt) LAYOUT.select(PATH$linearTilingFeatures);
     public static final OfInt LAYOUT$optimalTilingFeatures = (OfInt) LAYOUT.select(PATH$optimalTilingFeatures);

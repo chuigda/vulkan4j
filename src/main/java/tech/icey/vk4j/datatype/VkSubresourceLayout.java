@@ -24,11 +24,11 @@ public record VkSubresourceLayout(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("depthPitch")
     );
 
-    public static final PathElement PATH$offset = PathElement.groupElement(0);
-    public static final PathElement PATH$size = PathElement.groupElement(1);
-    public static final PathElement PATH$rowPitch = PathElement.groupElement(2);
-    public static final PathElement PATH$arrayPitch = PathElement.groupElement(3);
-    public static final PathElement PATH$depthPitch = PathElement.groupElement(4);
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$rowPitch = PathElement.groupElement("rowPitch");
+    public static final PathElement PATH$arrayPitch = PathElement.groupElement("arrayPitch");
+    public static final PathElement PATH$depthPitch = PathElement.groupElement("depthPitch");
 
     public static final OfLong LAYOUT$offset = (OfLong) LAYOUT.select(PATH$offset);
     public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);

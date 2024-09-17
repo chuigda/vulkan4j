@@ -29,16 +29,16 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pTexelBufferView")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$dstSet = PathElement.groupElement(2);
-    public static final PathElement PATH$dstBinding = PathElement.groupElement(3);
-    public static final PathElement PATH$dstArrayElement = PathElement.groupElement(4);
-    public static final PathElement PATH$descriptorCount = PathElement.groupElement(5);
-    public static final PathElement PATH$descriptorType = PathElement.groupElement(6);
-    public static final PathElement PATH$pImageInfo = PathElement.groupElement(7);
-    public static final PathElement PATH$pBufferInfo = PathElement.groupElement(8);
-    public static final PathElement PATH$pTexelBufferView = PathElement.groupElement(9);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$dstSet = PathElement.groupElement("dstSet");
+    public static final PathElement PATH$dstBinding = PathElement.groupElement("dstBinding");
+    public static final PathElement PATH$dstArrayElement = PathElement.groupElement("dstArrayElement");
+    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
+    public static final PathElement PATH$descriptorType = PathElement.groupElement("descriptorType");
+    public static final PathElement PATH$pImageInfo = PathElement.groupElement("pImageInfo");
+    public static final PathElement PATH$pBufferInfo = PathElement.groupElement("pBufferInfo");
+    public static final PathElement PATH$pTexelBufferView = PathElement.groupElement("pTexelBufferView");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

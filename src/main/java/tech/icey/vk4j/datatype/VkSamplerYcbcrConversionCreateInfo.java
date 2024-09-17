@@ -29,16 +29,16 @@ public record VkSamplerYcbcrConversionCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("forceExplicitReconstruction")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$format = PathElement.groupElement(2);
-    public static final PathElement PATH$ycbcrModel = PathElement.groupElement(3);
-    public static final PathElement PATH$ycbcrRange = PathElement.groupElement(4);
-    public static final PathElement PATH$components = PathElement.groupElement(5);
-    public static final PathElement PATH$xChromaOffset = PathElement.groupElement(6);
-    public static final PathElement PATH$yChromaOffset = PathElement.groupElement(7);
-    public static final PathElement PATH$chromaFilter = PathElement.groupElement(8);
-    public static final PathElement PATH$forceExplicitReconstruction = PathElement.groupElement(9);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$ycbcrModel = PathElement.groupElement("ycbcrModel");
+    public static final PathElement PATH$ycbcrRange = PathElement.groupElement("ycbcrRange");
+    public static final PathElement PATH$components = PathElement.groupElement("components");
+    public static final PathElement PATH$xChromaOffset = PathElement.groupElement("xChromaOffset");
+    public static final PathElement PATH$yChromaOffset = PathElement.groupElement("yChromaOffset");
+    public static final PathElement PATH$chromaFilter = PathElement.groupElement("chromaFilter");
+    public static final PathElement PATH$forceExplicitReconstruction = PathElement.groupElement("forceExplicitReconstruction");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

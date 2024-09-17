@@ -27,14 +27,14 @@ public record VkBufferImageCopy2(MemorySegment segment) {
         VkExtent3D.LAYOUT.withName("imageExtent")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$bufferOffset = PathElement.groupElement(2);
-    public static final PathElement PATH$bufferRowLength = PathElement.groupElement(3);
-    public static final PathElement PATH$bufferImageHeight = PathElement.groupElement(4);
-    public static final PathElement PATH$imageSubresource = PathElement.groupElement(5);
-    public static final PathElement PATH$imageOffset = PathElement.groupElement(6);
-    public static final PathElement PATH$imageExtent = PathElement.groupElement(7);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$bufferOffset = PathElement.groupElement("bufferOffset");
+    public static final PathElement PATH$bufferRowLength = PathElement.groupElement("bufferRowLength");
+    public static final PathElement PATH$bufferImageHeight = PathElement.groupElement("bufferImageHeight");
+    public static final PathElement PATH$imageSubresource = PathElement.groupElement("imageSubresource");
+    public static final PathElement PATH$imageOffset = PathElement.groupElement("imageOffset");
+    public static final PathElement PATH$imageExtent = PathElement.groupElement("imageExtent");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

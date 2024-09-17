@@ -23,10 +23,10 @@ public record VkPhysicalDevice4444FormatsFeaturesEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("formatA4B4G4R4")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$formatA4R4G4B4 = PathElement.groupElement(2);
-    public static final PathElement PATH$formatA4B4G4R4 = PathElement.groupElement(3);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$formatA4R4G4B4 = PathElement.groupElement("formatA4R4G4B4");
+    public static final PathElement PATH$formatA4B4G4R4 = PathElement.groupElement("formatA4B4G4R4");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

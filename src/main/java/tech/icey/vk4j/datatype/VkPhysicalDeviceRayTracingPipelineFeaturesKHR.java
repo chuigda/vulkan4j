@@ -26,13 +26,13 @@ public record VkPhysicalDeviceRayTracingPipelineFeaturesKHR(MemorySegment segmen
         ValueLayout.JAVA_INT.withName("rayTraversalPrimitiveCulling")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$rayTracingPipeline = PathElement.groupElement(2);
-    public static final PathElement PATH$rayTracingPipelineShaderGroupHandleCaptureReplay = PathElement.groupElement(3);
-    public static final PathElement PATH$rayTracingPipelineShaderGroupHandleCaptureReplayMixed = PathElement.groupElement(4);
-    public static final PathElement PATH$rayTracingPipelineTraceRaysIndirect = PathElement.groupElement(5);
-    public static final PathElement PATH$rayTraversalPrimitiveCulling = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$rayTracingPipeline = PathElement.groupElement("rayTracingPipeline");
+    public static final PathElement PATH$rayTracingPipelineShaderGroupHandleCaptureReplay = PathElement.groupElement("rayTracingPipelineShaderGroupHandleCaptureReplay");
+    public static final PathElement PATH$rayTracingPipelineShaderGroupHandleCaptureReplayMixed = PathElement.groupElement("rayTracingPipelineShaderGroupHandleCaptureReplayMixed");
+    public static final PathElement PATH$rayTracingPipelineTraceRaysIndirect = PathElement.groupElement("rayTracingPipelineTraceRaysIndirect");
+    public static final PathElement PATH$rayTraversalPrimitiveCulling = PathElement.groupElement("rayTraversalPrimitiveCulling");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

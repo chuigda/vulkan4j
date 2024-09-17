@@ -25,12 +25,12 @@ public record VkCopyBufferInfo2(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkBufferCopy2.LAYOUT).withName("pRegions")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$srcBuffer = PathElement.groupElement(2);
-    public static final PathElement PATH$dstBuffer = PathElement.groupElement(3);
-    public static final PathElement PATH$regionCount = PathElement.groupElement(4);
-    public static final PathElement PATH$pRegions = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcBuffer = PathElement.groupElement("srcBuffer");
+    public static final PathElement PATH$dstBuffer = PathElement.groupElement("dstBuffer");
+    public static final PathElement PATH$regionCount = PathElement.groupElement("regionCount");
+    public static final PathElement PATH$pRegions = PathElement.groupElement("pRegions");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

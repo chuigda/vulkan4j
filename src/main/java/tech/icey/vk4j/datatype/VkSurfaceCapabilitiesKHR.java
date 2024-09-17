@@ -29,16 +29,16 @@ public record VkSurfaceCapabilitiesKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("supportedUsageFlags")
     );
 
-    public static final PathElement PATH$minImageCount = PathElement.groupElement(0);
-    public static final PathElement PATH$maxImageCount = PathElement.groupElement(1);
-    public static final PathElement PATH$currentExtent = PathElement.groupElement(2);
-    public static final PathElement PATH$minImageExtent = PathElement.groupElement(3);
-    public static final PathElement PATH$maxImageExtent = PathElement.groupElement(4);
-    public static final PathElement PATH$maxImageArrayLayers = PathElement.groupElement(5);
-    public static final PathElement PATH$supportedTransforms = PathElement.groupElement(6);
-    public static final PathElement PATH$currentTransform = PathElement.groupElement(7);
-    public static final PathElement PATH$supportedCompositeAlpha = PathElement.groupElement(8);
-    public static final PathElement PATH$supportedUsageFlags = PathElement.groupElement(9);
+    public static final PathElement PATH$minImageCount = PathElement.groupElement("minImageCount");
+    public static final PathElement PATH$maxImageCount = PathElement.groupElement("maxImageCount");
+    public static final PathElement PATH$currentExtent = PathElement.groupElement("currentExtent");
+    public static final PathElement PATH$minImageExtent = PathElement.groupElement("minImageExtent");
+    public static final PathElement PATH$maxImageExtent = PathElement.groupElement("maxImageExtent");
+    public static final PathElement PATH$maxImageArrayLayers = PathElement.groupElement("maxImageArrayLayers");
+    public static final PathElement PATH$supportedTransforms = PathElement.groupElement("supportedTransforms");
+    public static final PathElement PATH$currentTransform = PathElement.groupElement("currentTransform");
+    public static final PathElement PATH$supportedCompositeAlpha = PathElement.groupElement("supportedCompositeAlpha");
+    public static final PathElement PATH$supportedUsageFlags = PathElement.groupElement("supportedUsageFlags");
 
     public static final OfInt LAYOUT$minImageCount = (OfInt) LAYOUT.select(PATH$minImageCount);
     public static final OfInt LAYOUT$maxImageCount = (OfInt) LAYOUT.select(PATH$maxImageCount);

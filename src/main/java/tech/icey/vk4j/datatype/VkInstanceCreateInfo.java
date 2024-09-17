@@ -27,14 +27,14 @@ public record VkInstanceCreateInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)).withName("ppEnabledExtensionNames")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$pApplicationInfo = PathElement.groupElement(3);
-    public static final PathElement PATH$enabledLayerCount = PathElement.groupElement(4);
-    public static final PathElement PATH$ppEnabledLayerNames = PathElement.groupElement(5);
-    public static final PathElement PATH$enabledExtensionCount = PathElement.groupElement(6);
-    public static final PathElement PATH$ppEnabledExtensionNames = PathElement.groupElement(7);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$pApplicationInfo = PathElement.groupElement("pApplicationInfo");
+    public static final PathElement PATH$enabledLayerCount = PathElement.groupElement("enabledLayerCount");
+    public static final PathElement PATH$ppEnabledLayerNames = PathElement.groupElement("ppEnabledLayerNames");
+    public static final PathElement PATH$enabledExtensionCount = PathElement.groupElement("enabledExtensionCount");
+    public static final PathElement PATH$ppEnabledExtensionNames = PathElement.groupElement("ppEnabledExtensionNames");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
@@ -90,7 +90,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) {
     public void pApplicationInfoRaw(@pointer(comment="VkApplicationInfo*") MemorySegment value) {
         segment.set(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo, value);
     }
-    
+
     public @nullable VkApplicationInfo pApplicationInfo() {
         MemorySegment s = pApplicationInfoRaw();
         if (s.address() == 0) {
@@ -141,7 +141,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) {
         @Override
         public Class<VkInstanceCreateInfo> clazz() {
             return VkInstanceCreateInfo.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {
@@ -152,7 +152,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) {
         public VkInstanceCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkInstanceCreateInfo createUninit(MemorySegment segment) {
             return new VkInstanceCreateInfo(segment);

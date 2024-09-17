@@ -33,20 +33,20 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkSpecializationInfo.LAYOUT).withName("pSpecializationInfo")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$stage = PathElement.groupElement(3);
-    public static final PathElement PATH$nextStage = PathElement.groupElement(4);
-    public static final PathElement PATH$codeType = PathElement.groupElement(5);
-    public static final PathElement PATH$codeSize = PathElement.groupElement(6);
-    public static final PathElement PATH$pCode = PathElement.groupElement(7);
-    public static final PathElement PATH$pName = PathElement.groupElement(8);
-    public static final PathElement PATH$setLayoutCount = PathElement.groupElement(9);
-    public static final PathElement PATH$pSetLayouts = PathElement.groupElement(10);
-    public static final PathElement PATH$pushConstantRangeCount = PathElement.groupElement(11);
-    public static final PathElement PATH$pPushConstantRanges = PathElement.groupElement(12);
-    public static final PathElement PATH$pSpecializationInfo = PathElement.groupElement(13);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$stage = PathElement.groupElement("stage");
+    public static final PathElement PATH$nextStage = PathElement.groupElement("nextStage");
+    public static final PathElement PATH$codeType = PathElement.groupElement("codeType");
+    public static final PathElement PATH$codeSize = PathElement.groupElement("codeSize");
+    public static final PathElement PATH$pCode = PathElement.groupElement("pCode");
+    public static final PathElement PATH$pName = PathElement.groupElement("pName");
+    public static final PathElement PATH$setLayoutCount = PathElement.groupElement("setLayoutCount");
+    public static final PathElement PATH$pSetLayouts = PathElement.groupElement("pSetLayouts");
+    public static final PathElement PATH$pushConstantRangeCount = PathElement.groupElement("pushConstantRangeCount");
+    public static final PathElement PATH$pPushConstantRanges = PathElement.groupElement("pPushConstantRanges");
+    public static final PathElement PATH$pSpecializationInfo = PathElement.groupElement("pSpecializationInfo");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

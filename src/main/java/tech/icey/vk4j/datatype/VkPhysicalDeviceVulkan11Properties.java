@@ -36,23 +36,23 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("maxMemoryAllocationSize")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$deviceUUID = PathElement.groupElement(2);
-    public static final PathElement PATH$driverUUID = PathElement.groupElement(3);
-    public static final PathElement PATH$deviceLUID = PathElement.groupElement(4);
-    public static final PathElement PATH$deviceNodeMask = PathElement.groupElement(5);
-    public static final PathElement PATH$deviceLUIDValid = PathElement.groupElement(6);
-    public static final PathElement PATH$subgroupSize = PathElement.groupElement(7);
-    public static final PathElement PATH$subgroupSupportedStages = PathElement.groupElement(8);
-    public static final PathElement PATH$subgroupSupportedOperations = PathElement.groupElement(9);
-    public static final PathElement PATH$subgroupQuadOperationsInAllStages = PathElement.groupElement(10);
-    public static final PathElement PATH$pointClippingBehavior = PathElement.groupElement(11);
-    public static final PathElement PATH$maxMultiviewViewCount = PathElement.groupElement(12);
-    public static final PathElement PATH$maxMultiviewInstanceIndex = PathElement.groupElement(13);
-    public static final PathElement PATH$protectedNoFault = PathElement.groupElement(14);
-    public static final PathElement PATH$maxPerSetDescriptors = PathElement.groupElement(15);
-    public static final PathElement PATH$maxMemoryAllocationSize = PathElement.groupElement(16);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$deviceUUID = PathElement.groupElement("deviceUUID");
+    public static final PathElement PATH$driverUUID = PathElement.groupElement("driverUUID");
+    public static final PathElement PATH$deviceLUID = PathElement.groupElement("deviceLUID");
+    public static final PathElement PATH$deviceNodeMask = PathElement.groupElement("deviceNodeMask");
+    public static final PathElement PATH$deviceLUIDValid = PathElement.groupElement("deviceLUIDValid");
+    public static final PathElement PATH$subgroupSize = PathElement.groupElement("subgroupSize");
+    public static final PathElement PATH$subgroupSupportedStages = PathElement.groupElement("subgroupSupportedStages");
+    public static final PathElement PATH$subgroupSupportedOperations = PathElement.groupElement("subgroupSupportedOperations");
+    public static final PathElement PATH$subgroupQuadOperationsInAllStages = PathElement.groupElement("subgroupQuadOperationsInAllStages");
+    public static final PathElement PATH$pointClippingBehavior = PathElement.groupElement("pointClippingBehavior");
+    public static final PathElement PATH$maxMultiviewViewCount = PathElement.groupElement("maxMultiviewViewCount");
+    public static final PathElement PATH$maxMultiviewInstanceIndex = PathElement.groupElement("maxMultiviewInstanceIndex");
+    public static final PathElement PATH$protectedNoFault = PathElement.groupElement("protectedNoFault");
+    public static final PathElement PATH$maxPerSetDescriptors = PathElement.groupElement("maxPerSetDescriptors");
+    public static final PathElement PATH$maxMemoryAllocationSize = PathElement.groupElement("maxMemoryAllocationSize");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

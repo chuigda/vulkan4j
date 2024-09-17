@@ -23,10 +23,10 @@ public record VkShaderModuleIdentifierEXT(MemorySegment segment) {
         MemoryLayout.sequenceLayout(VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT, ValueLayout.JAVA_BYTE).withName("identifier")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$identifierSize = PathElement.groupElement(2);
-    public static final PathElement PATH$identifier = PathElement.groupElement(3);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$identifierSize = PathElement.groupElement("identifierSize");
+    public static final PathElement PATH$identifier = PathElement.groupElement("identifier");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

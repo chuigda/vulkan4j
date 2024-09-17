@@ -47,7 +47,7 @@ def application_start():
     #     source = generate_structure(registry, union)
     #     with open(f'../src/main/java/tech/icey/vk4j/datatype/{union.name}.java', 'w') as f:
     #         f.write(source)
-    #
+
     # print('generating bitmasks')
     # for bitmask in registry.bitmasks.values():
     #     if 'FlagBits' in bitmask.name:

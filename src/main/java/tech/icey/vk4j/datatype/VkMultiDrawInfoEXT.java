@@ -21,8 +21,8 @@ public record VkMultiDrawInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("vertexCount")
     );
 
-    public static final PathElement PATH$firstVertex = PathElement.groupElement(0);
-    public static final PathElement PATH$vertexCount = PathElement.groupElement(1);
+    public static final PathElement PATH$firstVertex = PathElement.groupElement("firstVertex");
+    public static final PathElement PATH$vertexCount = PathElement.groupElement("vertexCount");
 
     public static final OfInt LAYOUT$firstVertex = (OfInt) LAYOUT.select(PATH$firstVertex);
     public static final OfInt LAYOUT$vertexCount = (OfInt) LAYOUT.select(PATH$vertexCount);

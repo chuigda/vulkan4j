@@ -22,9 +22,9 @@ public record VkMicromapUsageEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("format")
     );
 
-    public static final PathElement PATH$count = PathElement.groupElement(0);
-    public static final PathElement PATH$subdivisionLevel = PathElement.groupElement(1);
-    public static final PathElement PATH$format = PathElement.groupElement(2);
+    public static final PathElement PATH$count = PathElement.groupElement("count");
+    public static final PathElement PATH$subdivisionLevel = PathElement.groupElement("subdivisionLevel");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
 
     public static final OfInt LAYOUT$count = (OfInt) LAYOUT.select(PATH$count);
     public static final OfInt LAYOUT$subdivisionLevel = (OfInt) LAYOUT.select(PATH$subdivisionLevel);

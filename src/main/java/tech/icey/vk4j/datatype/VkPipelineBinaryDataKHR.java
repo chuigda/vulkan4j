@@ -21,8 +21,8 @@ public record VkPipelineBinaryDataKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pData")
     );
 
-    public static final PathElement PATH$dataSize = PathElement.groupElement(0);
-    public static final PathElement PATH$pData = PathElement.groupElement(1);
+    public static final PathElement PATH$dataSize = PathElement.groupElement("dataSize");
+    public static final PathElement PATH$pData = PathElement.groupElement("pData");
 
     public static final AddressLayout LAYOUT$pData = (AddressLayout) LAYOUT.select(PATH$pData);
 

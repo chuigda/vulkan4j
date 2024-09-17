@@ -24,11 +24,11 @@ public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkAttachmentReference2.LAYOUT).withName("pDepthStencilResolveAttachment")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$depthResolveMode = PathElement.groupElement(2);
-    public static final PathElement PATH$stencilResolveMode = PathElement.groupElement(3);
-    public static final PathElement PATH$pDepthStencilResolveAttachment = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$depthResolveMode = PathElement.groupElement("depthResolveMode");
+    public static final PathElement PATH$stencilResolveMode = PathElement.groupElement("stencilResolveMode");
+    public static final PathElement PATH$pDepthStencilResolveAttachment = PathElement.groupElement("pDepthStencilResolveAttachment");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

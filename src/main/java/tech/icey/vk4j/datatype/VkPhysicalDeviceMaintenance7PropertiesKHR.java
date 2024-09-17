@@ -29,16 +29,16 @@ public record VkPhysicalDeviceMaintenance7PropertiesKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindTotalBuffersDynamic")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$robustFragmentShadingRateAttachmentAccess = PathElement.groupElement(2);
-    public static final PathElement PATH$separateDepthStencilAttachmentAccess = PathElement.groupElement(3);
-    public static final PathElement PATH$maxDescriptorSetTotalUniformBuffersDynamic = PathElement.groupElement(4);
-    public static final PathElement PATH$maxDescriptorSetTotalStorageBuffersDynamic = PathElement.groupElement(5);
-    public static final PathElement PATH$maxDescriptorSetTotalBuffersDynamic = PathElement.groupElement(6);
-    public static final PathElement PATH$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic = PathElement.groupElement(7);
-    public static final PathElement PATH$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic = PathElement.groupElement(8);
-    public static final PathElement PATH$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic = PathElement.groupElement(9);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$robustFragmentShadingRateAttachmentAccess = PathElement.groupElement("robustFragmentShadingRateAttachmentAccess");
+    public static final PathElement PATH$separateDepthStencilAttachmentAccess = PathElement.groupElement("separateDepthStencilAttachmentAccess");
+    public static final PathElement PATH$maxDescriptorSetTotalUniformBuffersDynamic = PathElement.groupElement("maxDescriptorSetTotalUniformBuffersDynamic");
+    public static final PathElement PATH$maxDescriptorSetTotalStorageBuffersDynamic = PathElement.groupElement("maxDescriptorSetTotalStorageBuffersDynamic");
+    public static final PathElement PATH$maxDescriptorSetTotalBuffersDynamic = PathElement.groupElement("maxDescriptorSetTotalBuffersDynamic");
+    public static final PathElement PATH$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic = PathElement.groupElement("maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic");
+    public static final PathElement PATH$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic = PathElement.groupElement("maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic");
+    public static final PathElement PATH$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic = PathElement.groupElement("maxDescriptorSetUpdateAfterBindTotalBuffersDynamic");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

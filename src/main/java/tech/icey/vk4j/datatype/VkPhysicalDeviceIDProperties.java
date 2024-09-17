@@ -26,13 +26,13 @@ public record VkPhysicalDeviceIDProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("deviceLUIDValid")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$deviceUUID = PathElement.groupElement(2);
-    public static final PathElement PATH$driverUUID = PathElement.groupElement(3);
-    public static final PathElement PATH$deviceLUID = PathElement.groupElement(4);
-    public static final PathElement PATH$deviceNodeMask = PathElement.groupElement(5);
-    public static final PathElement PATH$deviceLUIDValid = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$deviceUUID = PathElement.groupElement("deviceUUID");
+    public static final PathElement PATH$driverUUID = PathElement.groupElement("driverUUID");
+    public static final PathElement PATH$deviceLUID = PathElement.groupElement("deviceLUID");
+    public static final PathElement PATH$deviceNodeMask = PathElement.groupElement("deviceNodeMask");
+    public static final PathElement PATH$deviceLUIDValid = PathElement.groupElement("deviceLUIDValid");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

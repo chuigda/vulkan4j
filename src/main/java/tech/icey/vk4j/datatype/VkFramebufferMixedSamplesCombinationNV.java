@@ -25,12 +25,12 @@ public record VkFramebufferMixedSamplesCombinationNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("colorSamples")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$coverageReductionMode = PathElement.groupElement(2);
-    public static final PathElement PATH$rasterizationSamples = PathElement.groupElement(3);
-    public static final PathElement PATH$depthStencilSamples = PathElement.groupElement(4);
-    public static final PathElement PATH$colorSamples = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$coverageReductionMode = PathElement.groupElement("coverageReductionMode");
+    public static final PathElement PATH$rasterizationSamples = PathElement.groupElement("rasterizationSamples");
+    public static final PathElement PATH$depthStencilSamples = PathElement.groupElement("depthStencilSamples");
+    public static final PathElement PATH$colorSamples = PathElement.groupElement("colorSamples");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

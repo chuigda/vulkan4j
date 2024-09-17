@@ -26,13 +26,13 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(MemorySegment seg
         ValueLayout.JAVA_INT.withName("descriptorBindingAccelerationStructureUpdateAfterBind")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$accelerationStructure = PathElement.groupElement(2);
-    public static final PathElement PATH$accelerationStructureCaptureReplay = PathElement.groupElement(3);
-    public static final PathElement PATH$accelerationStructureIndirectBuild = PathElement.groupElement(4);
-    public static final PathElement PATH$accelerationStructureHostCommands = PathElement.groupElement(5);
-    public static final PathElement PATH$descriptorBindingAccelerationStructureUpdateAfterBind = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$accelerationStructure = PathElement.groupElement("accelerationStructure");
+    public static final PathElement PATH$accelerationStructureCaptureReplay = PathElement.groupElement("accelerationStructureCaptureReplay");
+    public static final PathElement PATH$accelerationStructureIndirectBuild = PathElement.groupElement("accelerationStructureIndirectBuild");
+    public static final PathElement PATH$accelerationStructureHostCommands = PathElement.groupElement("accelerationStructureHostCommands");
+    public static final PathElement PATH$descriptorBindingAccelerationStructureUpdateAfterBind = PathElement.groupElement("descriptorBindingAccelerationStructureUpdateAfterBind");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

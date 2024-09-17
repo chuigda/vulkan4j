@@ -24,11 +24,11 @@ public record VkCommandBufferAllocateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("commandBufferCount")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$commandPool = PathElement.groupElement(2);
-    public static final PathElement PATH$level = PathElement.groupElement(3);
-    public static final PathElement PATH$commandBufferCount = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$commandPool = PathElement.groupElement("commandPool");
+    public static final PathElement PATH$level = PathElement.groupElement("level");
+    public static final PathElement PATH$commandBufferCount = PathElement.groupElement("commandBufferCount");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

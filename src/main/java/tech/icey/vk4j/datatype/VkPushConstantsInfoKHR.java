@@ -26,13 +26,13 @@ public record VkPushConstantsInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pValues")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$layout = PathElement.groupElement(2);
-    public static final PathElement PATH$stageFlags = PathElement.groupElement(3);
-    public static final PathElement PATH$offset = PathElement.groupElement(4);
-    public static final PathElement PATH$size = PathElement.groupElement(5);
-    public static final PathElement PATH$pValues = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+    public static final PathElement PATH$stageFlags = PathElement.groupElement("stageFlags");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$pValues = PathElement.groupElement("pValues");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

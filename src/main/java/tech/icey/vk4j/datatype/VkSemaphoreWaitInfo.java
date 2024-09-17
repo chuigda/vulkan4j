@@ -25,12 +25,12 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pValues")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$semaphoreCount = PathElement.groupElement(3);
-    public static final PathElement PATH$pSemaphores = PathElement.groupElement(4);
-    public static final PathElement PATH$pValues = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$semaphoreCount = PathElement.groupElement("semaphoreCount");
+    public static final PathElement PATH$pSemaphores = PathElement.groupElement("pSemaphores");
+    public static final PathElement PATH$pValues = PathElement.groupElement("pValues");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

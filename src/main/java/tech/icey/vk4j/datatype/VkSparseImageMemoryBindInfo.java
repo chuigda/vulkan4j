@@ -22,9 +22,9 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkSparseImageMemoryBind.LAYOUT).withName("pBinds")
     );
 
-    public static final PathElement PATH$image = PathElement.groupElement(0);
-    public static final PathElement PATH$bindCount = PathElement.groupElement(1);
-    public static final PathElement PATH$pBinds = PathElement.groupElement(2);
+    public static final PathElement PATH$image = PathElement.groupElement("image");
+    public static final PathElement PATH$bindCount = PathElement.groupElement("bindCount");
+    public static final PathElement PATH$pBinds = PathElement.groupElement("pBinds");
 
     public static final AddressLayout LAYOUT$image = (AddressLayout) LAYOUT.select(PATH$image);
     public static final OfInt LAYOUT$bindCount = (OfInt) LAYOUT.select(PATH$bindCount);

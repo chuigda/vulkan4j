@@ -28,15 +28,15 @@ public record VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) {
         VkExtent2D.LAYOUT.withName("maxDstExtent")
     );
 
-    public static final PathElement PATH$supportedAlpha = PathElement.groupElement(0);
-    public static final PathElement PATH$minSrcPosition = PathElement.groupElement(1);
-    public static final PathElement PATH$maxSrcPosition = PathElement.groupElement(2);
-    public static final PathElement PATH$minSrcExtent = PathElement.groupElement(3);
-    public static final PathElement PATH$maxSrcExtent = PathElement.groupElement(4);
-    public static final PathElement PATH$minDstPosition = PathElement.groupElement(5);
-    public static final PathElement PATH$maxDstPosition = PathElement.groupElement(6);
-    public static final PathElement PATH$minDstExtent = PathElement.groupElement(7);
-    public static final PathElement PATH$maxDstExtent = PathElement.groupElement(8);
+    public static final PathElement PATH$supportedAlpha = PathElement.groupElement("supportedAlpha");
+    public static final PathElement PATH$minSrcPosition = PathElement.groupElement("minSrcPosition");
+    public static final PathElement PATH$maxSrcPosition = PathElement.groupElement("maxSrcPosition");
+    public static final PathElement PATH$minSrcExtent = PathElement.groupElement("minSrcExtent");
+    public static final PathElement PATH$maxSrcExtent = PathElement.groupElement("maxSrcExtent");
+    public static final PathElement PATH$minDstPosition = PathElement.groupElement("minDstPosition");
+    public static final PathElement PATH$maxDstPosition = PathElement.groupElement("maxDstPosition");
+    public static final PathElement PATH$minDstExtent = PathElement.groupElement("minDstExtent");
+    public static final PathElement PATH$maxDstExtent = PathElement.groupElement("maxDstExtent");
 
     public static final OfInt LAYOUT$supportedAlpha = (OfInt) LAYOUT.select(PATH$supportedAlpha);
     public static final StructLayout LAYOUT$minSrcPosition = (StructLayout) LAYOUT.select(PATH$minSrcPosition);

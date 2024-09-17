@@ -22,9 +22,9 @@ public record VkSpecializationMapEntry(MemorySegment segment) {
         NativeLayout.C_SIZE_T.withName("size")
     );
 
-    public static final PathElement PATH$constantID = PathElement.groupElement(0);
-    public static final PathElement PATH$offset = PathElement.groupElement(1);
-    public static final PathElement PATH$size = PathElement.groupElement(2);
+    public static final PathElement PATH$constantID = PathElement.groupElement("constantID");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
 
     public static final OfInt LAYOUT$constantID = (OfInt) LAYOUT.select(PATH$constantID);
     public static final OfInt LAYOUT$offset = (OfInt) LAYOUT.select(PATH$offset);

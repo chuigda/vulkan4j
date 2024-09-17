@@ -20,7 +20,7 @@ public record VkRefreshCycleDurationGOOGLE(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("refreshDuration")
     );
 
-    public static final PathElement PATH$refreshDuration = PathElement.groupElement(0);
+    public static final PathElement PATH$refreshDuration = PathElement.groupElement("refreshDuration");
 
     public static final OfLong LAYOUT$refreshDuration = (OfLong) LAYOUT.select(PATH$refreshDuration);
 

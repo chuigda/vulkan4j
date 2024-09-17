@@ -21,8 +21,8 @@ public record VkDisplayPlanePropertiesKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("currentStackIndex")
     );
 
-    public static final PathElement PATH$currentDisplay = PathElement.groupElement(0);
-    public static final PathElement PATH$currentStackIndex = PathElement.groupElement(1);
+    public static final PathElement PATH$currentDisplay = PathElement.groupElement("currentDisplay");
+    public static final PathElement PATH$currentStackIndex = PathElement.groupElement("currentStackIndex");
 
     public static final AddressLayout LAYOUT$currentDisplay = (AddressLayout) LAYOUT.select(PATH$currentDisplay);
     public static final OfInt LAYOUT$currentStackIndex = (OfInt) LAYOUT.select(PATH$currentStackIndex);

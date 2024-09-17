@@ -38,25 +38,25 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("basePipelineIndex")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$stageCount = PathElement.groupElement(3);
-    public static final PathElement PATH$pStages = PathElement.groupElement(4);
-    public static final PathElement PATH$pVertexInputState = PathElement.groupElement(5);
-    public static final PathElement PATH$pInputAssemblyState = PathElement.groupElement(6);
-    public static final PathElement PATH$pTessellationState = PathElement.groupElement(7);
-    public static final PathElement PATH$pViewportState = PathElement.groupElement(8);
-    public static final PathElement PATH$pRasterizationState = PathElement.groupElement(9);
-    public static final PathElement PATH$pMultisampleState = PathElement.groupElement(10);
-    public static final PathElement PATH$pDepthStencilState = PathElement.groupElement(11);
-    public static final PathElement PATH$pColorBlendState = PathElement.groupElement(12);
-    public static final PathElement PATH$pDynamicState = PathElement.groupElement(13);
-    public static final PathElement PATH$layout = PathElement.groupElement(14);
-    public static final PathElement PATH$renderPass = PathElement.groupElement(15);
-    public static final PathElement PATH$subpass = PathElement.groupElement(16);
-    public static final PathElement PATH$basePipelineHandle = PathElement.groupElement(17);
-    public static final PathElement PATH$basePipelineIndex = PathElement.groupElement(18);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$stageCount = PathElement.groupElement("stageCount");
+    public static final PathElement PATH$pStages = PathElement.groupElement("pStages");
+    public static final PathElement PATH$pVertexInputState = PathElement.groupElement("pVertexInputState");
+    public static final PathElement PATH$pInputAssemblyState = PathElement.groupElement("pInputAssemblyState");
+    public static final PathElement PATH$pTessellationState = PathElement.groupElement("pTessellationState");
+    public static final PathElement PATH$pViewportState = PathElement.groupElement("pViewportState");
+    public static final PathElement PATH$pRasterizationState = PathElement.groupElement("pRasterizationState");
+    public static final PathElement PATH$pMultisampleState = PathElement.groupElement("pMultisampleState");
+    public static final PathElement PATH$pDepthStencilState = PathElement.groupElement("pDepthStencilState");
+    public static final PathElement PATH$pColorBlendState = PathElement.groupElement("pColorBlendState");
+    public static final PathElement PATH$pDynamicState = PathElement.groupElement("pDynamicState");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+    public static final PathElement PATH$renderPass = PathElement.groupElement("renderPass");
+    public static final PathElement PATH$subpass = PathElement.groupElement("subpass");
+    public static final PathElement PATH$basePipelineHandle = PathElement.groupElement("basePipelineHandle");
+    public static final PathElement PATH$basePipelineIndex = PathElement.groupElement("basePipelineIndex");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

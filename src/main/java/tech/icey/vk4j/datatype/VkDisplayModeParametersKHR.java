@@ -21,8 +21,8 @@ public record VkDisplayModeParametersKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("refreshRate")
     );
 
-    public static final PathElement PATH$visibleRegion = PathElement.groupElement(0);
-    public static final PathElement PATH$refreshRate = PathElement.groupElement(1);
+    public static final PathElement PATH$visibleRegion = PathElement.groupElement("visibleRegion");
+    public static final PathElement PATH$refreshRate = PathElement.groupElement("refreshRate");
 
     public static final StructLayout LAYOUT$visibleRegion = (StructLayout) LAYOUT.select(PATH$visibleRegion);
     public static final OfInt LAYOUT$refreshRate = (OfInt) LAYOUT.select(PATH$refreshRate);

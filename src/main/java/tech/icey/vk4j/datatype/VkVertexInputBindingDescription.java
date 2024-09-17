@@ -22,9 +22,9 @@ public record VkVertexInputBindingDescription(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("inputRate")
     );
 
-    public static final PathElement PATH$binding = PathElement.groupElement(0);
-    public static final PathElement PATH$stride = PathElement.groupElement(1);
-    public static final PathElement PATH$inputRate = PathElement.groupElement(2);
+    public static final PathElement PATH$binding = PathElement.groupElement("binding");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
+    public static final PathElement PATH$inputRate = PathElement.groupElement("inputRate");
 
     public static final OfInt LAYOUT$binding = (OfInt) LAYOUT.select(PATH$binding);
     public static final OfInt LAYOUT$stride = (OfInt) LAYOUT.select(PATH$stride);

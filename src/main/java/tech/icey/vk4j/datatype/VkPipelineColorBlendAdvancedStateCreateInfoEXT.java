@@ -24,11 +24,11 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(MemorySegment segme
         ValueLayout.JAVA_INT.withName("blendOverlap")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$srcPremultiplied = PathElement.groupElement(2);
-    public static final PathElement PATH$dstPremultiplied = PathElement.groupElement(3);
-    public static final PathElement PATH$blendOverlap = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcPremultiplied = PathElement.groupElement("srcPremultiplied");
+    public static final PathElement PATH$dstPremultiplied = PathElement.groupElement("dstPremultiplied");
+    public static final PathElement PATH$blendOverlap = PathElement.groupElement("blendOverlap");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

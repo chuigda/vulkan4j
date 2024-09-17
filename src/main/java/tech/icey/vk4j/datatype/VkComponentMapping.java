@@ -23,10 +23,10 @@ public record VkComponentMapping(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("a")
     );
 
-    public static final PathElement PATH$r = PathElement.groupElement(0);
-    public static final PathElement PATH$g = PathElement.groupElement(1);
-    public static final PathElement PATH$b = PathElement.groupElement(2);
-    public static final PathElement PATH$a = PathElement.groupElement(3);
+    public static final PathElement PATH$r = PathElement.groupElement("r");
+    public static final PathElement PATH$g = PathElement.groupElement("g");
+    public static final PathElement PATH$b = PathElement.groupElement("b");
+    public static final PathElement PATH$a = PathElement.groupElement("a");
 
     public static final OfInt LAYOUT$r = (OfInt) LAYOUT.select(PATH$r);
     public static final OfInt LAYOUT$g = (OfInt) LAYOUT.select(PATH$g);

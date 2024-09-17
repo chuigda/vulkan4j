@@ -26,13 +26,13 @@ public record VkAccelerationStructureInfoNV(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkGeometryNV.LAYOUT).withName("pGeometries")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$type = PathElement.groupElement(2);
-    public static final PathElement PATH$flags = PathElement.groupElement(3);
-    public static final PathElement PATH$instanceCount = PathElement.groupElement(4);
-    public static final PathElement PATH$geometryCount = PathElement.groupElement(5);
-    public static final PathElement PATH$pGeometries = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$instanceCount = PathElement.groupElement("instanceCount");
+    public static final PathElement PATH$geometryCount = PathElement.groupElement("geometryCount");
+    public static final PathElement PATH$pGeometries = PathElement.groupElement("pGeometries");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

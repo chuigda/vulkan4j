@@ -23,10 +23,10 @@ public record VkDrawIndirectCommand(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("firstInstance")
     );
 
-    public static final PathElement PATH$vertexCount = PathElement.groupElement(0);
-    public static final PathElement PATH$instanceCount = PathElement.groupElement(1);
-    public static final PathElement PATH$firstVertex = PathElement.groupElement(2);
-    public static final PathElement PATH$firstInstance = PathElement.groupElement(3);
+    public static final PathElement PATH$vertexCount = PathElement.groupElement("vertexCount");
+    public static final PathElement PATH$instanceCount = PathElement.groupElement("instanceCount");
+    public static final PathElement PATH$firstVertex = PathElement.groupElement("firstVertex");
+    public static final PathElement PATH$firstInstance = PathElement.groupElement("firstInstance");
 
     public static final OfInt LAYOUT$vertexCount = (OfInt) LAYOUT.select(PATH$vertexCount);
     public static final OfInt LAYOUT$instanceCount = (OfInt) LAYOUT.select(PATH$instanceCount);

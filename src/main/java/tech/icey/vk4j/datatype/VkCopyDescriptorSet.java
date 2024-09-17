@@ -28,15 +28,15 @@ public record VkCopyDescriptorSet(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("descriptorCount")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$srcSet = PathElement.groupElement(2);
-    public static final PathElement PATH$srcBinding = PathElement.groupElement(3);
-    public static final PathElement PATH$srcArrayElement = PathElement.groupElement(4);
-    public static final PathElement PATH$dstSet = PathElement.groupElement(5);
-    public static final PathElement PATH$dstBinding = PathElement.groupElement(6);
-    public static final PathElement PATH$dstArrayElement = PathElement.groupElement(7);
-    public static final PathElement PATH$descriptorCount = PathElement.groupElement(8);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcSet = PathElement.groupElement("srcSet");
+    public static final PathElement PATH$srcBinding = PathElement.groupElement("srcBinding");
+    public static final PathElement PATH$srcArrayElement = PathElement.groupElement("srcArrayElement");
+    public static final PathElement PATH$dstSet = PathElement.groupElement("dstSet");
+    public static final PathElement PATH$dstBinding = PathElement.groupElement("dstBinding");
+    public static final PathElement PATH$dstArrayElement = PathElement.groupElement("dstArrayElement");
+    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

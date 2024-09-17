@@ -30,17 +30,17 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(MemorySegment 
         ValueLayout.JAVA_INT.withName("minIndirectCommandsBufferOffsetAlignment")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$maxGraphicsShaderGroupCount = PathElement.groupElement(2);
-    public static final PathElement PATH$maxIndirectSequenceCount = PathElement.groupElement(3);
-    public static final PathElement PATH$maxIndirectCommandsTokenCount = PathElement.groupElement(4);
-    public static final PathElement PATH$maxIndirectCommandsStreamCount = PathElement.groupElement(5);
-    public static final PathElement PATH$maxIndirectCommandsTokenOffset = PathElement.groupElement(6);
-    public static final PathElement PATH$maxIndirectCommandsStreamStride = PathElement.groupElement(7);
-    public static final PathElement PATH$minSequencesCountBufferOffsetAlignment = PathElement.groupElement(8);
-    public static final PathElement PATH$minSequencesIndexBufferOffsetAlignment = PathElement.groupElement(9);
-    public static final PathElement PATH$minIndirectCommandsBufferOffsetAlignment = PathElement.groupElement(10);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxGraphicsShaderGroupCount = PathElement.groupElement("maxGraphicsShaderGroupCount");
+    public static final PathElement PATH$maxIndirectSequenceCount = PathElement.groupElement("maxIndirectSequenceCount");
+    public static final PathElement PATH$maxIndirectCommandsTokenCount = PathElement.groupElement("maxIndirectCommandsTokenCount");
+    public static final PathElement PATH$maxIndirectCommandsStreamCount = PathElement.groupElement("maxIndirectCommandsStreamCount");
+    public static final PathElement PATH$maxIndirectCommandsTokenOffset = PathElement.groupElement("maxIndirectCommandsTokenOffset");
+    public static final PathElement PATH$maxIndirectCommandsStreamStride = PathElement.groupElement("maxIndirectCommandsStreamStride");
+    public static final PathElement PATH$minSequencesCountBufferOffsetAlignment = PathElement.groupElement("minSequencesCountBufferOffsetAlignment");
+    public static final PathElement PATH$minSequencesIndexBufferOffsetAlignment = PathElement.groupElement("minSequencesIndexBufferOffsetAlignment");
+    public static final PathElement PATH$minIndirectCommandsBufferOffsetAlignment = PathElement.groupElement("minIndirectCommandsBufferOffsetAlignment");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

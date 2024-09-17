@@ -21,8 +21,8 @@ public record VkExtensionProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("specVersion")
     );
 
-    public static final PathElement PATH$extensionName = PathElement.groupElement(0);
-    public static final PathElement PATH$specVersion = PathElement.groupElement(1);
+    public static final PathElement PATH$extensionName = PathElement.groupElement("extensionName");
+    public static final PathElement PATH$specVersion = PathElement.groupElement("specVersion");
 
     public static final SequenceLayout LAYOUT$extensionName = (SequenceLayout) LAYOUT.select(PATH$extensionName);
     public static final OfInt LAYOUT$specVersion = (OfInt) LAYOUT.select(PATH$specVersion);

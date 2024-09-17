@@ -28,15 +28,15 @@ public record VkFramebufferAttachmentImageInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pViewFormats")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$usage = PathElement.groupElement(3);
-    public static final PathElement PATH$width = PathElement.groupElement(4);
-    public static final PathElement PATH$height = PathElement.groupElement(5);
-    public static final PathElement PATH$layerCount = PathElement.groupElement(6);
-    public static final PathElement PATH$viewFormatCount = PathElement.groupElement(7);
-    public static final PathElement PATH$pViewFormats = PathElement.groupElement(8);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$usage = PathElement.groupElement("usage");
+    public static final PathElement PATH$width = PathElement.groupElement("width");
+    public static final PathElement PATH$height = PathElement.groupElement("height");
+    public static final PathElement PATH$layerCount = PathElement.groupElement("layerCount");
+    public static final PathElement PATH$viewFormatCount = PathElement.groupElement("viewFormatCount");
+    public static final PathElement PATH$pViewFormats = PathElement.groupElement("pViewFormats");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

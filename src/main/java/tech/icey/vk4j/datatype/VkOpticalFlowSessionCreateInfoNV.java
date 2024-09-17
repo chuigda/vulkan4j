@@ -30,17 +30,17 @@ public record VkOpticalFlowSessionCreateInfoNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("flags")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$width = PathElement.groupElement(2);
-    public static final PathElement PATH$height = PathElement.groupElement(3);
-    public static final PathElement PATH$imageFormat = PathElement.groupElement(4);
-    public static final PathElement PATH$flowVectorFormat = PathElement.groupElement(5);
-    public static final PathElement PATH$costFormat = PathElement.groupElement(6);
-    public static final PathElement PATH$outputGridSize = PathElement.groupElement(7);
-    public static final PathElement PATH$hintGridSize = PathElement.groupElement(8);
-    public static final PathElement PATH$performanceLevel = PathElement.groupElement(9);
-    public static final PathElement PATH$flags = PathElement.groupElement(10);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$width = PathElement.groupElement("width");
+    public static final PathElement PATH$height = PathElement.groupElement("height");
+    public static final PathElement PATH$imageFormat = PathElement.groupElement("imageFormat");
+    public static final PathElement PATH$flowVectorFormat = PathElement.groupElement("flowVectorFormat");
+    public static final PathElement PATH$costFormat = PathElement.groupElement("costFormat");
+    public static final PathElement PATH$outputGridSize = PathElement.groupElement("outputGridSize");
+    public static final PathElement PATH$hintGridSize = PathElement.groupElement("hintGridSize");
+    public static final PathElement PATH$performanceLevel = PathElement.groupElement("performanceLevel");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -25,12 +25,12 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(MemorySegment
         ValueLayout.JAVA_LONG.withName("indirectBufferOffsetAlignment")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$maxWorkGroupCount = PathElement.groupElement(2);
-    public static final PathElement PATH$maxWorkGroupSize = PathElement.groupElement(3);
-    public static final PathElement PATH$maxOutputClusterCount = PathElement.groupElement(4);
-    public static final PathElement PATH$indirectBufferOffsetAlignment = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxWorkGroupCount = PathElement.groupElement("maxWorkGroupCount");
+    public static final PathElement PATH$maxWorkGroupSize = PathElement.groupElement("maxWorkGroupSize");
+    public static final PathElement PATH$maxOutputClusterCount = PathElement.groupElement("maxOutputClusterCount");
+    public static final PathElement PATH$indirectBufferOffsetAlignment = PathElement.groupElement("indirectBufferOffsetAlignment");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

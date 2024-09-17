@@ -23,10 +23,10 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
         MemoryLayout.sequenceLayout(VK_MAX_MEMORY_HEAPS, VkMemoryHeap.LAYOUT).withName("memoryHeaps")
     );
 
-    public static final PathElement PATH$memoryTypeCount = PathElement.groupElement(0);
-    public static final PathElement PATH$memoryTypes = PathElement.groupElement(1);
-    public static final PathElement PATH$memoryHeapCount = PathElement.groupElement(2);
-    public static final PathElement PATH$memoryHeaps = PathElement.groupElement(3);
+    public static final PathElement PATH$memoryTypeCount = PathElement.groupElement("memoryTypeCount");
+    public static final PathElement PATH$memoryTypes = PathElement.groupElement("memoryTypes");
+    public static final PathElement PATH$memoryHeapCount = PathElement.groupElement("memoryHeapCount");
+    public static final PathElement PATH$memoryHeaps = PathElement.groupElement("memoryHeaps");
 
     public static final OfInt LAYOUT$memoryTypeCount = (OfInt) LAYOUT.select(PATH$memoryTypeCount);
     public static final SequenceLayout LAYOUT$memoryTypes = (SequenceLayout) LAYOUT.select(PATH$memoryTypes);

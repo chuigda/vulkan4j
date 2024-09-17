@@ -29,16 +29,16 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("set")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$descriptorUpdateEntryCount = PathElement.groupElement(3);
-    public static final PathElement PATH$pDescriptorUpdateEntries = PathElement.groupElement(4);
-    public static final PathElement PATH$templateType = PathElement.groupElement(5);
-    public static final PathElement PATH$descriptorSetLayout = PathElement.groupElement(6);
-    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement(7);
-    public static final PathElement PATH$pipelineLayout = PathElement.groupElement(8);
-    public static final PathElement PATH$set = PathElement.groupElement(9);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$descriptorUpdateEntryCount = PathElement.groupElement("descriptorUpdateEntryCount");
+    public static final PathElement PATH$pDescriptorUpdateEntries = PathElement.groupElement("pDescriptorUpdateEntries");
+    public static final PathElement PATH$templateType = PathElement.groupElement("templateType");
+    public static final PathElement PATH$descriptorSetLayout = PathElement.groupElement("descriptorSetLayout");
+    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("pipelineBindPoint");
+    public static final PathElement PATH$pipelineLayout = PathElement.groupElement("pipelineLayout");
+    public static final PathElement PATH$set = PathElement.groupElement("set");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

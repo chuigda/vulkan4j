@@ -29,16 +29,16 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("accelerationStructure")
     );
 
-    public static final PathElement PATH$pSampler = PathElement.groupElement(0);
-    public static final PathElement PATH$pCombinedImageSampler = PathElement.groupElement(1);
-    public static final PathElement PATH$pInputAttachmentImage = PathElement.groupElement(2);
-    public static final PathElement PATH$pSampledImage = PathElement.groupElement(3);
-    public static final PathElement PATH$pStorageImage = PathElement.groupElement(4);
-    public static final PathElement PATH$pUniformTexelBuffer = PathElement.groupElement(5);
-    public static final PathElement PATH$pStorageTexelBuffer = PathElement.groupElement(6);
-    public static final PathElement PATH$pUniformBuffer = PathElement.groupElement(7);
-    public static final PathElement PATH$pStorageBuffer = PathElement.groupElement(8);
-    public static final PathElement PATH$accelerationStructure = PathElement.groupElement(9);
+    public static final PathElement PATH$pSampler = PathElement.groupElement("pSampler");
+    public static final PathElement PATH$pCombinedImageSampler = PathElement.groupElement("pCombinedImageSampler");
+    public static final PathElement PATH$pInputAttachmentImage = PathElement.groupElement("pInputAttachmentImage");
+    public static final PathElement PATH$pSampledImage = PathElement.groupElement("pSampledImage");
+    public static final PathElement PATH$pStorageImage = PathElement.groupElement("pStorageImage");
+    public static final PathElement PATH$pUniformTexelBuffer = PathElement.groupElement("pUniformTexelBuffer");
+    public static final PathElement PATH$pStorageTexelBuffer = PathElement.groupElement("pStorageTexelBuffer");
+    public static final PathElement PATH$pUniformBuffer = PathElement.groupElement("pUniformBuffer");
+    public static final PathElement PATH$pStorageBuffer = PathElement.groupElement("pStorageBuffer");
+    public static final PathElement PATH$accelerationStructure = PathElement.groupElement("accelerationStructure");
 
     public static final AddressLayout LAYOUT$pSampler = (AddressLayout) LAYOUT.select(PATH$pSampler);
     public static final AddressLayout LAYOUT$pCombinedImageSampler = (AddressLayout) LAYOUT.select(PATH$pCombinedImageSampler);

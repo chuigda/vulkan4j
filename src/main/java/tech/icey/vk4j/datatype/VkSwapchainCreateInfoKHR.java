@@ -37,24 +37,24 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("oldSwapchain")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$surface = PathElement.groupElement(3);
-    public static final PathElement PATH$minImageCount = PathElement.groupElement(4);
-    public static final PathElement PATH$imageFormat = PathElement.groupElement(5);
-    public static final PathElement PATH$imageColorSpace = PathElement.groupElement(6);
-    public static final PathElement PATH$imageExtent = PathElement.groupElement(7);
-    public static final PathElement PATH$imageArrayLayers = PathElement.groupElement(8);
-    public static final PathElement PATH$imageUsage = PathElement.groupElement(9);
-    public static final PathElement PATH$imageSharingMode = PathElement.groupElement(10);
-    public static final PathElement PATH$queueFamilyIndexCount = PathElement.groupElement(11);
-    public static final PathElement PATH$pQueueFamilyIndices = PathElement.groupElement(12);
-    public static final PathElement PATH$preTransform = PathElement.groupElement(13);
-    public static final PathElement PATH$compositeAlpha = PathElement.groupElement(14);
-    public static final PathElement PATH$presentMode = PathElement.groupElement(15);
-    public static final PathElement PATH$clipped = PathElement.groupElement(16);
-    public static final PathElement PATH$oldSwapchain = PathElement.groupElement(17);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$surface = PathElement.groupElement("surface");
+    public static final PathElement PATH$minImageCount = PathElement.groupElement("minImageCount");
+    public static final PathElement PATH$imageFormat = PathElement.groupElement("imageFormat");
+    public static final PathElement PATH$imageColorSpace = PathElement.groupElement("imageColorSpace");
+    public static final PathElement PATH$imageExtent = PathElement.groupElement("imageExtent");
+    public static final PathElement PATH$imageArrayLayers = PathElement.groupElement("imageArrayLayers");
+    public static final PathElement PATH$imageUsage = PathElement.groupElement("imageUsage");
+    public static final PathElement PATH$imageSharingMode = PathElement.groupElement("imageSharingMode");
+    public static final PathElement PATH$queueFamilyIndexCount = PathElement.groupElement("queueFamilyIndexCount");
+    public static final PathElement PATH$pQueueFamilyIndices = PathElement.groupElement("pQueueFamilyIndices");
+    public static final PathElement PATH$preTransform = PathElement.groupElement("preTransform");
+    public static final PathElement PATH$compositeAlpha = PathElement.groupElement("compositeAlpha");
+    public static final PathElement PATH$presentMode = PathElement.groupElement("presentMode");
+    public static final PathElement PATH$clipped = PathElement.groupElement("clipped");
+    public static final PathElement PATH$oldSwapchain = PathElement.groupElement("oldSwapchain");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

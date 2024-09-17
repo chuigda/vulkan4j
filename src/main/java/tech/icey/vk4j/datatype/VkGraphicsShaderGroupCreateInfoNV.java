@@ -25,12 +25,12 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkPipelineTessellationStateCreateInfo.LAYOUT).withName("pTessellationState")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$stageCount = PathElement.groupElement(2);
-    public static final PathElement PATH$pStages = PathElement.groupElement(3);
-    public static final PathElement PATH$pVertexInputState = PathElement.groupElement(4);
-    public static final PathElement PATH$pTessellationState = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$stageCount = PathElement.groupElement("stageCount");
+    public static final PathElement PATH$pStages = PathElement.groupElement("pStages");
+    public static final PathElement PATH$pVertexInputState = PathElement.groupElement("pVertexInputState");
+    public static final PathElement PATH$pTessellationState = PathElement.groupElement("pTessellationState");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

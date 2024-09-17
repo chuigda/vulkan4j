@@ -22,9 +22,9 @@ public record VkClearRect(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("layerCount")
     );
 
-    public static final PathElement PATH$rect = PathElement.groupElement(0);
-    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement(1);
-    public static final PathElement PATH$layerCount = PathElement.groupElement(2);
+    public static final PathElement PATH$rect = PathElement.groupElement("rect");
+    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("baseArrayLayer");
+    public static final PathElement PATH$layerCount = PathElement.groupElement("layerCount");
 
     public static final StructLayout LAYOUT$rect = (StructLayout) LAYOUT.select(PATH$rect);
     public static final OfInt LAYOUT$baseArrayLayer = (OfInt) LAYOUT.select(PATH$baseArrayLayer);

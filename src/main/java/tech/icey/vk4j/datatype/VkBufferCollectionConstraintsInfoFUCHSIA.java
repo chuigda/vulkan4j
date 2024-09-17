@@ -26,13 +26,13 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("minBufferCountForSharedSlack")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$minBufferCount = PathElement.groupElement(2);
-    public static final PathElement PATH$maxBufferCount = PathElement.groupElement(3);
-    public static final PathElement PATH$minBufferCountForCamping = PathElement.groupElement(4);
-    public static final PathElement PATH$minBufferCountForDedicatedSlack = PathElement.groupElement(5);
-    public static final PathElement PATH$minBufferCountForSharedSlack = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$minBufferCount = PathElement.groupElement("minBufferCount");
+    public static final PathElement PATH$maxBufferCount = PathElement.groupElement("maxBufferCount");
+    public static final PathElement PATH$minBufferCountForCamping = PathElement.groupElement("minBufferCountForCamping");
+    public static final PathElement PATH$minBufferCountForDedicatedSlack = PathElement.groupElement("minBufferCountForDedicatedSlack");
+    public static final PathElement PATH$minBufferCountForSharedSlack = PathElement.groupElement("minBufferCountForSharedSlack");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

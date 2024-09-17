@@ -27,14 +27,14 @@ public record VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(MemorySegment 
         ValueLayout.JAVA_INT.withName("advancedBlendAllOperations")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$advancedBlendMaxColorAttachments = PathElement.groupElement(2);
-    public static final PathElement PATH$advancedBlendIndependentBlend = PathElement.groupElement(3);
-    public static final PathElement PATH$advancedBlendNonPremultipliedSrcColor = PathElement.groupElement(4);
-    public static final PathElement PATH$advancedBlendNonPremultipliedDstColor = PathElement.groupElement(5);
-    public static final PathElement PATH$advancedBlendCorrelatedOverlap = PathElement.groupElement(6);
-    public static final PathElement PATH$advancedBlendAllOperations = PathElement.groupElement(7);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$advancedBlendMaxColorAttachments = PathElement.groupElement("advancedBlendMaxColorAttachments");
+    public static final PathElement PATH$advancedBlendIndependentBlend = PathElement.groupElement("advancedBlendIndependentBlend");
+    public static final PathElement PATH$advancedBlendNonPremultipliedSrcColor = PathElement.groupElement("advancedBlendNonPremultipliedSrcColor");
+    public static final PathElement PATH$advancedBlendNonPremultipliedDstColor = PathElement.groupElement("advancedBlendNonPremultipliedDstColor");
+    public static final PathElement PATH$advancedBlendCorrelatedOverlap = PathElement.groupElement("advancedBlendCorrelatedOverlap");
+    public static final PathElement PATH$advancedBlendAllOperations = PathElement.groupElement("advancedBlendAllOperations");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

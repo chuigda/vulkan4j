@@ -24,11 +24,11 @@ public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment s
         ValueLayout.JAVA_INT.withName("fragmentShaderShadingRateInterlock")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$fragmentShaderSampleInterlock = PathElement.groupElement(2);
-    public static final PathElement PATH$fragmentShaderPixelInterlock = PathElement.groupElement(3);
-    public static final PathElement PATH$fragmentShaderShadingRateInterlock = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$fragmentShaderSampleInterlock = PathElement.groupElement("fragmentShaderSampleInterlock");
+    public static final PathElement PATH$fragmentShaderPixelInterlock = PathElement.groupElement("fragmentShaderPixelInterlock");
+    public static final PathElement PATH$fragmentShaderShadingRateInterlock = PathElement.groupElement("fragmentShaderShadingRateInterlock");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

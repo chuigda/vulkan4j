@@ -30,17 +30,17 @@ public record VkBufferMemoryBarrier2(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("size")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$srcStageMask = PathElement.groupElement(2);
-    public static final PathElement PATH$srcAccessMask = PathElement.groupElement(3);
-    public static final PathElement PATH$dstStageMask = PathElement.groupElement(4);
-    public static final PathElement PATH$dstAccessMask = PathElement.groupElement(5);
-    public static final PathElement PATH$srcQueueFamilyIndex = PathElement.groupElement(6);
-    public static final PathElement PATH$dstQueueFamilyIndex = PathElement.groupElement(7);
-    public static final PathElement PATH$buffer = PathElement.groupElement(8);
-    public static final PathElement PATH$offset = PathElement.groupElement(9);
-    public static final PathElement PATH$size = PathElement.groupElement(10);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcStageMask = PathElement.groupElement("srcStageMask");
+    public static final PathElement PATH$srcAccessMask = PathElement.groupElement("srcAccessMask");
+    public static final PathElement PATH$dstStageMask = PathElement.groupElement("dstStageMask");
+    public static final PathElement PATH$dstAccessMask = PathElement.groupElement("dstAccessMask");
+    public static final PathElement PATH$srcQueueFamilyIndex = PathElement.groupElement("srcQueueFamilyIndex");
+    public static final PathElement PATH$dstQueueFamilyIndex = PathElement.groupElement("dstQueueFamilyIndex");
+    public static final PathElement PATH$buffer = PathElement.groupElement("buffer");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

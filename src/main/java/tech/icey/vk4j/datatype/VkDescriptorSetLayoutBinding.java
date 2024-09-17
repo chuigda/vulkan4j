@@ -24,11 +24,11 @@ public record VkDescriptorSetLayoutBinding(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pImmutableSamplers")
     );
 
-    public static final PathElement PATH$binding = PathElement.groupElement(0);
-    public static final PathElement PATH$descriptorType = PathElement.groupElement(1);
-    public static final PathElement PATH$descriptorCount = PathElement.groupElement(2);
-    public static final PathElement PATH$stageFlags = PathElement.groupElement(3);
-    public static final PathElement PATH$pImmutableSamplers = PathElement.groupElement(4);
+    public static final PathElement PATH$binding = PathElement.groupElement("binding");
+    public static final PathElement PATH$descriptorType = PathElement.groupElement("descriptorType");
+    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
+    public static final PathElement PATH$stageFlags = PathElement.groupElement("stageFlags");
+    public static final PathElement PATH$pImmutableSamplers = PathElement.groupElement("pImmutableSamplers");
 
     public static final OfInt LAYOUT$binding = (OfInt) LAYOUT.select(PATH$binding);
     public static final OfInt LAYOUT$descriptorType = (OfInt) LAYOUT.select(PATH$descriptorType);

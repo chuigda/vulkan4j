@@ -23,10 +23,10 @@ public record VkDispatchGraphInfoAMDX(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("payloadStride")
     );
 
-    public static final PathElement PATH$nodeIndex = PathElement.groupElement(0);
-    public static final PathElement PATH$payloadCount = PathElement.groupElement(1);
-    public static final PathElement PATH$payloads = PathElement.groupElement(2);
-    public static final PathElement PATH$payloadStride = PathElement.groupElement(3);
+    public static final PathElement PATH$nodeIndex = PathElement.groupElement("nodeIndex");
+    public static final PathElement PATH$payloadCount = PathElement.groupElement("payloadCount");
+    public static final PathElement PATH$payloads = PathElement.groupElement("payloads");
+    public static final PathElement PATH$payloadStride = PathElement.groupElement("payloadStride");
 
     public static final OfInt LAYOUT$nodeIndex = (OfInt) LAYOUT.select(PATH$nodeIndex);
     public static final OfInt LAYOUT$payloadCount = (OfInt) LAYOUT.select(PATH$payloadCount);

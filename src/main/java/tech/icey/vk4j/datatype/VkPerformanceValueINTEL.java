@@ -21,8 +21,8 @@ public record VkPerformanceValueINTEL(MemorySegment segment) {
         VkPerformanceValueDataINTEL.LAYOUT.withName("data")
     );
 
-    public static final PathElement PATH$type = PathElement.groupElement(0);
-    public static final PathElement PATH$data = PathElement.groupElement(1);
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$data = PathElement.groupElement("data");
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final UnionLayout LAYOUT$data = (UnionLayout) LAYOUT.select(PATH$data);

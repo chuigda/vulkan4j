@@ -24,11 +24,11 @@ public record VkImageCopy(MemorySegment segment) {
         VkExtent3D.LAYOUT.withName("extent")
     );
 
-    public static final PathElement PATH$srcSubresource = PathElement.groupElement(0);
-    public static final PathElement PATH$srcOffset = PathElement.groupElement(1);
-    public static final PathElement PATH$dstSubresource = PathElement.groupElement(2);
-    public static final PathElement PATH$dstOffset = PathElement.groupElement(3);
-    public static final PathElement PATH$extent = PathElement.groupElement(4);
+    public static final PathElement PATH$srcSubresource = PathElement.groupElement("srcSubresource");
+    public static final PathElement PATH$srcOffset = PathElement.groupElement("srcOffset");
+    public static final PathElement PATH$dstSubresource = PathElement.groupElement("dstSubresource");
+    public static final PathElement PATH$dstOffset = PathElement.groupElement("dstOffset");
+    public static final PathElement PATH$extent = PathElement.groupElement("extent");
 
     public static final StructLayout LAYOUT$srcSubresource = (StructLayout) LAYOUT.select(PATH$srcSubresource);
     public static final StructLayout LAYOUT$srcOffset = (StructLayout) LAYOUT.select(PATH$srcOffset);

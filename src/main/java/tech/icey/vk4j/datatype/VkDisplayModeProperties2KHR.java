@@ -22,9 +22,9 @@ public record VkDisplayModeProperties2KHR(MemorySegment segment) {
         VkDisplayModePropertiesKHR.LAYOUT.withName("displayModeProperties")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$displayModeProperties = PathElement.groupElement(2);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$displayModeProperties = PathElement.groupElement("displayModeProperties");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

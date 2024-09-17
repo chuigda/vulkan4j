@@ -27,14 +27,14 @@ public record VkRayTracingShaderGroupCreateInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pShaderGroupCaptureReplayHandle")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$type = PathElement.groupElement(2);
-    public static final PathElement PATH$generalShader = PathElement.groupElement(3);
-    public static final PathElement PATH$closestHitShader = PathElement.groupElement(4);
-    public static final PathElement PATH$anyHitShader = PathElement.groupElement(5);
-    public static final PathElement PATH$intersectionShader = PathElement.groupElement(6);
-    public static final PathElement PATH$pShaderGroupCaptureReplayHandle = PathElement.groupElement(7);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$generalShader = PathElement.groupElement("generalShader");
+    public static final PathElement PATH$closestHitShader = PathElement.groupElement("closestHitShader");
+    public static final PathElement PATH$anyHitShader = PathElement.groupElement("anyHitShader");
+    public static final PathElement PATH$intersectionShader = PathElement.groupElement("intersectionShader");
+    public static final PathElement PATH$pShaderGroupCaptureReplayHandle = PathElement.groupElement("pShaderGroupCaptureReplayHandle");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -31,18 +31,18 @@ public record VkPipelineDepthStencilStateCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("maxDepthBounds")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$depthTestEnable = PathElement.groupElement(3);
-    public static final PathElement PATH$depthWriteEnable = PathElement.groupElement(4);
-    public static final PathElement PATH$depthCompareOp = PathElement.groupElement(5);
-    public static final PathElement PATH$depthBoundsTestEnable = PathElement.groupElement(6);
-    public static final PathElement PATH$stencilTestEnable = PathElement.groupElement(7);
-    public static final PathElement PATH$front = PathElement.groupElement(8);
-    public static final PathElement PATH$back = PathElement.groupElement(9);
-    public static final PathElement PATH$minDepthBounds = PathElement.groupElement(10);
-    public static final PathElement PATH$maxDepthBounds = PathElement.groupElement(11);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$depthTestEnable = PathElement.groupElement("depthTestEnable");
+    public static final PathElement PATH$depthWriteEnable = PathElement.groupElement("depthWriteEnable");
+    public static final PathElement PATH$depthCompareOp = PathElement.groupElement("depthCompareOp");
+    public static final PathElement PATH$depthBoundsTestEnable = PathElement.groupElement("depthBoundsTestEnable");
+    public static final PathElement PATH$stencilTestEnable = PathElement.groupElement("stencilTestEnable");
+    public static final PathElement PATH$front = PathElement.groupElement("front");
+    public static final PathElement PATH$back = PathElement.groupElement("back");
+    public static final PathElement PATH$minDepthBounds = PathElement.groupElement("minDepthBounds");
+    public static final PathElement PATH$maxDepthBounds = PathElement.groupElement("maxDepthBounds");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

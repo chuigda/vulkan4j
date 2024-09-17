@@ -38,25 +38,25 @@ public record VkPhysicalDeviceFloatControlsProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("shaderRoundingModeRTZFloat64")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$denormBehaviorIndependence = PathElement.groupElement(2);
-    public static final PathElement PATH$roundingModeIndependence = PathElement.groupElement(3);
-    public static final PathElement PATH$shaderSignedZeroInfNanPreserveFloat16 = PathElement.groupElement(4);
-    public static final PathElement PATH$shaderSignedZeroInfNanPreserveFloat32 = PathElement.groupElement(5);
-    public static final PathElement PATH$shaderSignedZeroInfNanPreserveFloat64 = PathElement.groupElement(6);
-    public static final PathElement PATH$shaderDenormPreserveFloat16 = PathElement.groupElement(7);
-    public static final PathElement PATH$shaderDenormPreserveFloat32 = PathElement.groupElement(8);
-    public static final PathElement PATH$shaderDenormPreserveFloat64 = PathElement.groupElement(9);
-    public static final PathElement PATH$shaderDenormFlushToZeroFloat16 = PathElement.groupElement(10);
-    public static final PathElement PATH$shaderDenormFlushToZeroFloat32 = PathElement.groupElement(11);
-    public static final PathElement PATH$shaderDenormFlushToZeroFloat64 = PathElement.groupElement(12);
-    public static final PathElement PATH$shaderRoundingModeRTEFloat16 = PathElement.groupElement(13);
-    public static final PathElement PATH$shaderRoundingModeRTEFloat32 = PathElement.groupElement(14);
-    public static final PathElement PATH$shaderRoundingModeRTEFloat64 = PathElement.groupElement(15);
-    public static final PathElement PATH$shaderRoundingModeRTZFloat16 = PathElement.groupElement(16);
-    public static final PathElement PATH$shaderRoundingModeRTZFloat32 = PathElement.groupElement(17);
-    public static final PathElement PATH$shaderRoundingModeRTZFloat64 = PathElement.groupElement(18);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$denormBehaviorIndependence = PathElement.groupElement("denormBehaviorIndependence");
+    public static final PathElement PATH$roundingModeIndependence = PathElement.groupElement("roundingModeIndependence");
+    public static final PathElement PATH$shaderSignedZeroInfNanPreserveFloat16 = PathElement.groupElement("shaderSignedZeroInfNanPreserveFloat16");
+    public static final PathElement PATH$shaderSignedZeroInfNanPreserveFloat32 = PathElement.groupElement("shaderSignedZeroInfNanPreserveFloat32");
+    public static final PathElement PATH$shaderSignedZeroInfNanPreserveFloat64 = PathElement.groupElement("shaderSignedZeroInfNanPreserveFloat64");
+    public static final PathElement PATH$shaderDenormPreserveFloat16 = PathElement.groupElement("shaderDenormPreserveFloat16");
+    public static final PathElement PATH$shaderDenormPreserveFloat32 = PathElement.groupElement("shaderDenormPreserveFloat32");
+    public static final PathElement PATH$shaderDenormPreserveFloat64 = PathElement.groupElement("shaderDenormPreserveFloat64");
+    public static final PathElement PATH$shaderDenormFlushToZeroFloat16 = PathElement.groupElement("shaderDenormFlushToZeroFloat16");
+    public static final PathElement PATH$shaderDenormFlushToZeroFloat32 = PathElement.groupElement("shaderDenormFlushToZeroFloat32");
+    public static final PathElement PATH$shaderDenormFlushToZeroFloat64 = PathElement.groupElement("shaderDenormFlushToZeroFloat64");
+    public static final PathElement PATH$shaderRoundingModeRTEFloat16 = PathElement.groupElement("shaderRoundingModeRTEFloat16");
+    public static final PathElement PATH$shaderRoundingModeRTEFloat32 = PathElement.groupElement("shaderRoundingModeRTEFloat32");
+    public static final PathElement PATH$shaderRoundingModeRTEFloat64 = PathElement.groupElement("shaderRoundingModeRTEFloat64");
+    public static final PathElement PATH$shaderRoundingModeRTZFloat16 = PathElement.groupElement("shaderRoundingModeRTZFloat16");
+    public static final PathElement PATH$shaderRoundingModeRTZFloat32 = PathElement.groupElement("shaderRoundingModeRTZFloat32");
+    public static final PathElement PATH$shaderRoundingModeRTZFloat64 = PathElement.groupElement("shaderRoundingModeRTZFloat64");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

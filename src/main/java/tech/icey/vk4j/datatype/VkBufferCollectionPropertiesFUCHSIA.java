@@ -32,19 +32,19 @@ public record VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("suggestedYChromaOffset")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$memoryTypeBits = PathElement.groupElement(2);
-    public static final PathElement PATH$bufferCount = PathElement.groupElement(3);
-    public static final PathElement PATH$createInfoIndex = PathElement.groupElement(4);
-    public static final PathElement PATH$sysmemPixelFormat = PathElement.groupElement(5);
-    public static final PathElement PATH$formatFeatures = PathElement.groupElement(6);
-    public static final PathElement PATH$sysmemColorSpaceIndex = PathElement.groupElement(7);
-    public static final PathElement PATH$samplerYcbcrConversionComponents = PathElement.groupElement(8);
-    public static final PathElement PATH$suggestedYcbcrModel = PathElement.groupElement(9);
-    public static final PathElement PATH$suggestedYcbcrRange = PathElement.groupElement(10);
-    public static final PathElement PATH$suggestedXChromaOffset = PathElement.groupElement(11);
-    public static final PathElement PATH$suggestedYChromaOffset = PathElement.groupElement(12);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$memoryTypeBits = PathElement.groupElement("memoryTypeBits");
+    public static final PathElement PATH$bufferCount = PathElement.groupElement("bufferCount");
+    public static final PathElement PATH$createInfoIndex = PathElement.groupElement("createInfoIndex");
+    public static final PathElement PATH$sysmemPixelFormat = PathElement.groupElement("sysmemPixelFormat");
+    public static final PathElement PATH$formatFeatures = PathElement.groupElement("formatFeatures");
+    public static final PathElement PATH$sysmemColorSpaceIndex = PathElement.groupElement("sysmemColorSpaceIndex");
+    public static final PathElement PATH$samplerYcbcrConversionComponents = PathElement.groupElement("samplerYcbcrConversionComponents");
+    public static final PathElement PATH$suggestedYcbcrModel = PathElement.groupElement("suggestedYcbcrModel");
+    public static final PathElement PATH$suggestedYcbcrRange = PathElement.groupElement("suggestedYcbcrRange");
+    public static final PathElement PATH$suggestedXChromaOffset = PathElement.groupElement("suggestedXChromaOffset");
+    public static final PathElement PATH$suggestedYChromaOffset = PathElement.groupElement("suggestedYChromaOffset");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

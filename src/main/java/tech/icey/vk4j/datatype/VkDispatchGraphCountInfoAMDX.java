@@ -22,9 +22,9 @@ public record VkDispatchGraphCountInfoAMDX(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("stride")
     );
 
-    public static final PathElement PATH$count = PathElement.groupElement(0);
-    public static final PathElement PATH$infos = PathElement.groupElement(1);
-    public static final PathElement PATH$stride = PathElement.groupElement(2);
+    public static final PathElement PATH$count = PathElement.groupElement("count");
+    public static final PathElement PATH$infos = PathElement.groupElement("infos");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
 
     public static final OfInt LAYOUT$count = (OfInt) LAYOUT.select(PATH$count);
     public static final UnionLayout LAYOUT$infos = (UnionLayout) LAYOUT.select(PATH$infos);

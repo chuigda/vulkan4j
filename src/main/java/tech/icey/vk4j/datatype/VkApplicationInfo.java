@@ -26,13 +26,13 @@ public record VkApplicationInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("apiVersion")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$pApplicationName = PathElement.groupElement(2);
-    public static final PathElement PATH$applicationVersion = PathElement.groupElement(3);
-    public static final PathElement PATH$pEngineName = PathElement.groupElement(4);
-    public static final PathElement PATH$engineVersion = PathElement.groupElement(5);
-    public static final PathElement PATH$apiVersion = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pApplicationName = PathElement.groupElement("pApplicationName");
+    public static final PathElement PATH$applicationVersion = PathElement.groupElement("applicationVersion");
+    public static final PathElement PATH$pEngineName = PathElement.groupElement("pEngineName");
+    public static final PathElement PATH$engineVersion = PathElement.groupElement("engineVersion");
+    public static final PathElement PATH$apiVersion = PathElement.groupElement("apiVersion");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

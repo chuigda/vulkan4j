@@ -22,9 +22,9 @@ public record VkRenderPassSubpassFeedbackInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("postMergeIndex")
     );
 
-    public static final PathElement PATH$subpassMergeStatus = PathElement.groupElement(0);
-    public static final PathElement PATH$description = PathElement.groupElement(1);
-    public static final PathElement PATH$postMergeIndex = PathElement.groupElement(2);
+    public static final PathElement PATH$subpassMergeStatus = PathElement.groupElement("subpassMergeStatus");
+    public static final PathElement PATH$description = PathElement.groupElement("description");
+    public static final PathElement PATH$postMergeIndex = PathElement.groupElement("postMergeIndex");
 
     public static final OfInt LAYOUT$subpassMergeStatus = (OfInt) LAYOUT.select(PATH$subpassMergeStatus);
     public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);

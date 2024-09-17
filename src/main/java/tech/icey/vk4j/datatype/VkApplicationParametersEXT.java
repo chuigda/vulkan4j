@@ -25,12 +25,12 @@ public record VkApplicationParametersEXT(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("value")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$vendorID = PathElement.groupElement(2);
-    public static final PathElement PATH$deviceID = PathElement.groupElement(3);
-    public static final PathElement PATH$key = PathElement.groupElement(4);
-    public static final PathElement PATH$value = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$vendorID = PathElement.groupElement("vendorID");
+    public static final PathElement PATH$deviceID = PathElement.groupElement("deviceID");
+    public static final PathElement PATH$key = PathElement.groupElement("key");
+    public static final PathElement PATH$value = PathElement.groupElement("value");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

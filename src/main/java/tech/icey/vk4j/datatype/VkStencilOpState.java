@@ -26,13 +26,13 @@ public record VkStencilOpState(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("reference")
     );
 
-    public static final PathElement PATH$failOp = PathElement.groupElement(0);
-    public static final PathElement PATH$passOp = PathElement.groupElement(1);
-    public static final PathElement PATH$depthFailOp = PathElement.groupElement(2);
-    public static final PathElement PATH$compareOp = PathElement.groupElement(3);
-    public static final PathElement PATH$compareMask = PathElement.groupElement(4);
-    public static final PathElement PATH$writeMask = PathElement.groupElement(5);
-    public static final PathElement PATH$reference = PathElement.groupElement(6);
+    public static final PathElement PATH$failOp = PathElement.groupElement("failOp");
+    public static final PathElement PATH$passOp = PathElement.groupElement("passOp");
+    public static final PathElement PATH$depthFailOp = PathElement.groupElement("depthFailOp");
+    public static final PathElement PATH$compareOp = PathElement.groupElement("compareOp");
+    public static final PathElement PATH$compareMask = PathElement.groupElement("compareMask");
+    public static final PathElement PATH$writeMask = PathElement.groupElement("writeMask");
+    public static final PathElement PATH$reference = PathElement.groupElement("reference");
 
     public static final OfInt LAYOUT$failOp = (OfInt) LAYOUT.select(PATH$failOp);
     public static final OfInt LAYOUT$passOp = (OfInt) LAYOUT.select(PATH$passOp);

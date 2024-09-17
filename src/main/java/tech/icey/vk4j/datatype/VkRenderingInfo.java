@@ -29,16 +29,16 @@ public record VkRenderingInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkRenderingAttachmentInfo.LAYOUT).withName("pStencilAttachment")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$renderArea = PathElement.groupElement(3);
-    public static final PathElement PATH$layerCount = PathElement.groupElement(4);
-    public static final PathElement PATH$viewMask = PathElement.groupElement(5);
-    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement(6);
-    public static final PathElement PATH$pColorAttachments = PathElement.groupElement(7);
-    public static final PathElement PATH$pDepthAttachment = PathElement.groupElement(8);
-    public static final PathElement PATH$pStencilAttachment = PathElement.groupElement(9);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$renderArea = PathElement.groupElement("renderArea");
+    public static final PathElement PATH$layerCount = PathElement.groupElement("layerCount");
+    public static final PathElement PATH$viewMask = PathElement.groupElement("viewMask");
+    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("colorAttachmentCount");
+    public static final PathElement PATH$pColorAttachments = PathElement.groupElement("pColorAttachments");
+    public static final PathElement PATH$pDepthAttachment = PathElement.groupElement("pDepthAttachment");
+    public static final PathElement PATH$pStencilAttachment = PathElement.groupElement("pStencilAttachment");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

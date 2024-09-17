@@ -25,12 +25,12 @@ public record VkPhysicalDevice16BitStorageFeatures(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("storageInputOutput16")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$storageBuffer16BitAccess = PathElement.groupElement(2);
-    public static final PathElement PATH$uniformAndStorageBuffer16BitAccess = PathElement.groupElement(3);
-    public static final PathElement PATH$storagePushConstant16 = PathElement.groupElement(4);
-    public static final PathElement PATH$storageInputOutput16 = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$storageBuffer16BitAccess = PathElement.groupElement("storageBuffer16BitAccess");
+    public static final PathElement PATH$uniformAndStorageBuffer16BitAccess = PathElement.groupElement("uniformAndStorageBuffer16BitAccess");
+    public static final PathElement PATH$storagePushConstant16 = PathElement.groupElement("storagePushConstant16");
+    public static final PathElement PATH$storageInputOutput16 = PathElement.groupElement("storageInputOutput16");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

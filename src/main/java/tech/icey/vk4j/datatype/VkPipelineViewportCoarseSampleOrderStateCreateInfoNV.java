@@ -24,11 +24,11 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
         ValueLayout.ADDRESS.withTargetLayout(VkCoarseSampleOrderCustomNV.LAYOUT).withName("pCustomSampleOrders")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$sampleOrderType = PathElement.groupElement(2);
-    public static final PathElement PATH$customSampleOrderCount = PathElement.groupElement(3);
-    public static final PathElement PATH$pCustomSampleOrders = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$sampleOrderType = PathElement.groupElement("sampleOrderType");
+    public static final PathElement PATH$customSampleOrderCount = PathElement.groupElement("customSampleOrderCount");
+    public static final PathElement PATH$pCustomSampleOrders = PathElement.groupElement("pCustomSampleOrders");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -21,8 +21,8 @@ public record VkSurfaceFormatKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("colorSpace")
     );
 
-    public static final PathElement PATH$format = PathElement.groupElement(0);
-    public static final PathElement PATH$colorSpace = PathElement.groupElement(1);
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$colorSpace = PathElement.groupElement("colorSpace");
 
     public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
     public static final OfInt LAYOUT$colorSpace = (OfInt) LAYOUT.select(PATH$colorSpace);

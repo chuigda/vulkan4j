@@ -28,15 +28,15 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pReleaseKeys")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$acquireCount = PathElement.groupElement(2);
-    public static final PathElement PATH$pAcquireSyncs = PathElement.groupElement(3);
-    public static final PathElement PATH$pAcquireKeys = PathElement.groupElement(4);
-    public static final PathElement PATH$pAcquireTimeouts = PathElement.groupElement(5);
-    public static final PathElement PATH$releaseCount = PathElement.groupElement(6);
-    public static final PathElement PATH$pReleaseSyncs = PathElement.groupElement(7);
-    public static final PathElement PATH$pReleaseKeys = PathElement.groupElement(8);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$acquireCount = PathElement.groupElement("acquireCount");
+    public static final PathElement PATH$pAcquireSyncs = PathElement.groupElement("pAcquireSyncs");
+    public static final PathElement PATH$pAcquireKeys = PathElement.groupElement("pAcquireKeys");
+    public static final PathElement PATH$pAcquireTimeouts = PathElement.groupElement("pAcquireTimeouts");
+    public static final PathElement PATH$releaseCount = PathElement.groupElement("releaseCount");
+    public static final PathElement PATH$pReleaseSyncs = PathElement.groupElement("pReleaseSyncs");
+    public static final PathElement PATH$pReleaseKeys = PathElement.groupElement("pReleaseKeys");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

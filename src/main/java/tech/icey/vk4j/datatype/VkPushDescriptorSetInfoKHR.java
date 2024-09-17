@@ -26,13 +26,13 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkWriteDescriptorSet.LAYOUT).withName("pDescriptorWrites")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$stageFlags = PathElement.groupElement(2);
-    public static final PathElement PATH$layout = PathElement.groupElement(3);
-    public static final PathElement PATH$set = PathElement.groupElement(4);
-    public static final PathElement PATH$descriptorWriteCount = PathElement.groupElement(5);
-    public static final PathElement PATH$pDescriptorWrites = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$stageFlags = PathElement.groupElement("stageFlags");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+    public static final PathElement PATH$set = PathElement.groupElement("set");
+    public static final PathElement PATH$descriptorWriteCount = PathElement.groupElement("descriptorWriteCount");
+    public static final PathElement PATH$pDescriptorWrites = PathElement.groupElement("pDescriptorWrites");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

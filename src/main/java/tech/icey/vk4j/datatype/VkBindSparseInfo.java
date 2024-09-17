@@ -31,18 +31,18 @@ public record VkBindSparseInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pSignalSemaphores")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$waitSemaphoreCount = PathElement.groupElement(2);
-    public static final PathElement PATH$pWaitSemaphores = PathElement.groupElement(3);
-    public static final PathElement PATH$bufferBindCount = PathElement.groupElement(4);
-    public static final PathElement PATH$pBufferBinds = PathElement.groupElement(5);
-    public static final PathElement PATH$imageOpaqueBindCount = PathElement.groupElement(6);
-    public static final PathElement PATH$pImageOpaqueBinds = PathElement.groupElement(7);
-    public static final PathElement PATH$imageBindCount = PathElement.groupElement(8);
-    public static final PathElement PATH$pImageBinds = PathElement.groupElement(9);
-    public static final PathElement PATH$signalSemaphoreCount = PathElement.groupElement(10);
-    public static final PathElement PATH$pSignalSemaphores = PathElement.groupElement(11);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$waitSemaphoreCount = PathElement.groupElement("waitSemaphoreCount");
+    public static final PathElement PATH$pWaitSemaphores = PathElement.groupElement("pWaitSemaphores");
+    public static final PathElement PATH$bufferBindCount = PathElement.groupElement("bufferBindCount");
+    public static final PathElement PATH$pBufferBinds = PathElement.groupElement("pBufferBinds");
+    public static final PathElement PATH$imageOpaqueBindCount = PathElement.groupElement("imageOpaqueBindCount");
+    public static final PathElement PATH$pImageOpaqueBinds = PathElement.groupElement("pImageOpaqueBinds");
+    public static final PathElement PATH$imageBindCount = PathElement.groupElement("imageBindCount");
+    public static final PathElement PATH$pImageBinds = PathElement.groupElement("pImageBinds");
+    public static final PathElement PATH$signalSemaphoreCount = PathElement.groupElement("signalSemaphoreCount");
+    public static final PathElement PATH$pSignalSemaphores = PathElement.groupElement("pSignalSemaphores");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

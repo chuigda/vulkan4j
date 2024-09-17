@@ -20,7 +20,7 @@ public record VkSetStateFlagsIndirectCommandNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("data")
     );
 
-    public static final PathElement PATH$data = PathElement.groupElement(0);
+    public static final PathElement PATH$data = PathElement.groupElement("data");
 
     public static final OfInt LAYOUT$data = (OfInt) LAYOUT.select(PATH$data);
 

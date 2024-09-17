@@ -26,13 +26,13 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
         ValueLayout.ADDRESS.withName("pData")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$name = PathElement.groupElement(2);
-    public static final PathElement PATH$description = PathElement.groupElement(3);
-    public static final PathElement PATH$isText = PathElement.groupElement(4);
-    public static final PathElement PATH$dataSize = PathElement.groupElement(5);
-    public static final PathElement PATH$pData = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$name = PathElement.groupElement("name");
+    public static final PathElement PATH$description = PathElement.groupElement("description");
+    public static final PathElement PATH$isText = PathElement.groupElement("isText");
+    public static final PathElement PATH$dataSize = PathElement.groupElement("dataSize");
+    public static final PathElement PATH$pData = PathElement.groupElement("pData");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -23,10 +23,10 @@ public record VkImageSubresourceLayers(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("layerCount")
     );
 
-    public static final PathElement PATH$aspectMask = PathElement.groupElement(0);
-    public static final PathElement PATH$mipLevel = PathElement.groupElement(1);
-    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement(2);
-    public static final PathElement PATH$layerCount = PathElement.groupElement(3);
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
+    public static final PathElement PATH$mipLevel = PathElement.groupElement("mipLevel");
+    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("baseArrayLayer");
+    public static final PathElement PATH$layerCount = PathElement.groupElement("layerCount");
 
     public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
     public static final OfInt LAYOUT$mipLevel = (OfInt) LAYOUT.select(PATH$mipLevel);

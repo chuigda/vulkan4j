@@ -37,24 +37,24 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
         ValueLayout.ADDRESS.withName("micromap")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$displacementBiasAndScaleFormat = PathElement.groupElement(2);
-    public static final PathElement PATH$displacementVectorFormat = PathElement.groupElement(3);
-    public static final PathElement PATH$displacementBiasAndScaleBuffer = PathElement.groupElement(4);
-    public static final PathElement PATH$displacementBiasAndScaleStride = PathElement.groupElement(5);
-    public static final PathElement PATH$displacementVectorBuffer = PathElement.groupElement(6);
-    public static final PathElement PATH$displacementVectorStride = PathElement.groupElement(7);
-    public static final PathElement PATH$displacedMicromapPrimitiveFlags = PathElement.groupElement(8);
-    public static final PathElement PATH$displacedMicromapPrimitiveFlagsStride = PathElement.groupElement(9);
-    public static final PathElement PATH$indexType = PathElement.groupElement(10);
-    public static final PathElement PATH$indexBuffer = PathElement.groupElement(11);
-    public static final PathElement PATH$indexStride = PathElement.groupElement(12);
-    public static final PathElement PATH$baseTriangle = PathElement.groupElement(13);
-    public static final PathElement PATH$usageCountsCount = PathElement.groupElement(14);
-    public static final PathElement PATH$pUsageCounts = PathElement.groupElement(15);
-    public static final PathElement PATH$ppUsageCounts = PathElement.groupElement(16);
-    public static final PathElement PATH$micromap = PathElement.groupElement(17);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$displacementBiasAndScaleFormat = PathElement.groupElement("displacementBiasAndScaleFormat");
+    public static final PathElement PATH$displacementVectorFormat = PathElement.groupElement("displacementVectorFormat");
+    public static final PathElement PATH$displacementBiasAndScaleBuffer = PathElement.groupElement("displacementBiasAndScaleBuffer");
+    public static final PathElement PATH$displacementBiasAndScaleStride = PathElement.groupElement("displacementBiasAndScaleStride");
+    public static final PathElement PATH$displacementVectorBuffer = PathElement.groupElement("displacementVectorBuffer");
+    public static final PathElement PATH$displacementVectorStride = PathElement.groupElement("displacementVectorStride");
+    public static final PathElement PATH$displacedMicromapPrimitiveFlags = PathElement.groupElement("displacedMicromapPrimitiveFlags");
+    public static final PathElement PATH$displacedMicromapPrimitiveFlagsStride = PathElement.groupElement("displacedMicromapPrimitiveFlagsStride");
+    public static final PathElement PATH$indexType = PathElement.groupElement("indexType");
+    public static final PathElement PATH$indexBuffer = PathElement.groupElement("indexBuffer");
+    public static final PathElement PATH$indexStride = PathElement.groupElement("indexStride");
+    public static final PathElement PATH$baseTriangle = PathElement.groupElement("baseTriangle");
+    public static final PathElement PATH$usageCountsCount = PathElement.groupElement("usageCountsCount");
+    public static final PathElement PATH$pUsageCounts = PathElement.groupElement("pUsageCounts");
+    public static final PathElement PATH$ppUsageCounts = PathElement.groupElement("ppUsageCounts");
+    public static final PathElement PATH$micromap = PathElement.groupElement("micromap");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -23,10 +23,10 @@ public record VkVertexInputAttributeDescription(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("offset")
     );
 
-    public static final PathElement PATH$location = PathElement.groupElement(0);
-    public static final PathElement PATH$binding = PathElement.groupElement(1);
-    public static final PathElement PATH$format = PathElement.groupElement(2);
-    public static final PathElement PATH$offset = PathElement.groupElement(3);
+    public static final PathElement PATH$location = PathElement.groupElement("location");
+    public static final PathElement PATH$binding = PathElement.groupElement("binding");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
 
     public static final OfInt LAYOUT$location = (OfInt) LAYOUT.select(PATH$location);
     public static final OfInt LAYOUT$binding = (OfInt) LAYOUT.select(PATH$binding);

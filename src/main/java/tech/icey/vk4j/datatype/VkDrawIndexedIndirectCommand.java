@@ -24,11 +24,11 @@ public record VkDrawIndexedIndirectCommand(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("firstInstance")
     );
 
-    public static final PathElement PATH$indexCount = PathElement.groupElement(0);
-    public static final PathElement PATH$instanceCount = PathElement.groupElement(1);
-    public static final PathElement PATH$firstIndex = PathElement.groupElement(2);
-    public static final PathElement PATH$vertexOffset = PathElement.groupElement(3);
-    public static final PathElement PATH$firstInstance = PathElement.groupElement(4);
+    public static final PathElement PATH$indexCount = PathElement.groupElement("indexCount");
+    public static final PathElement PATH$instanceCount = PathElement.groupElement("instanceCount");
+    public static final PathElement PATH$firstIndex = PathElement.groupElement("firstIndex");
+    public static final PathElement PATH$vertexOffset = PathElement.groupElement("vertexOffset");
+    public static final PathElement PATH$firstInstance = PathElement.groupElement("firstInstance");
 
     public static final OfInt LAYOUT$indexCount = (OfInt) LAYOUT.select(PATH$indexCount);
     public static final OfInt LAYOUT$instanceCount = (OfInt) LAYOUT.select(PATH$instanceCount);

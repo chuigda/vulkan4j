@@ -23,10 +23,10 @@ public record VkAccelerationStructureInstanceKHR(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("accelerationStructureReference")
     );
 
-    public static final PathElement PATH$transform = PathElement.groupElement(0);
-    public static final PathElement PATH$bitfield$instanceCustomIndex_mask = PathElement.groupElement(1);
-    public static final PathElement PATH$bitfield$instanceShaderBindingTableRecordOffset_flags = PathElement.groupElement(2);
-    public static final PathElement PATH$accelerationStructureReference = PathElement.groupElement(3);
+    public static final PathElement PATH$transform = PathElement.groupElement("transform");
+    public static final PathElement PATH$bitfield$instanceCustomIndex_mask = PathElement.groupElement("bitfield$instanceCustomIndex_mask");
+    public static final PathElement PATH$bitfield$instanceShaderBindingTableRecordOffset_flags = PathElement.groupElement("bitfield$instanceShaderBindingTableRecordOffset_flags");
+    public static final PathElement PATH$accelerationStructureReference = PathElement.groupElement("accelerationStructureReference");
 
     public static final StructLayout LAYOUT$transform = (StructLayout) LAYOUT.select(PATH$transform);
     public static final OfInt LAYOUT$bitfield$instanceCustomIndex_mask = (OfInt) LAYOUT.select(PATH$bitfield$instanceCustomIndex_mask);

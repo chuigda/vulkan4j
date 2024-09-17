@@ -26,13 +26,13 @@ public record VkSubpassDependency(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("dependencyFlags")
     );
 
-    public static final PathElement PATH$srcSubpass = PathElement.groupElement(0);
-    public static final PathElement PATH$dstSubpass = PathElement.groupElement(1);
-    public static final PathElement PATH$srcStageMask = PathElement.groupElement(2);
-    public static final PathElement PATH$dstStageMask = PathElement.groupElement(3);
-    public static final PathElement PATH$srcAccessMask = PathElement.groupElement(4);
-    public static final PathElement PATH$dstAccessMask = PathElement.groupElement(5);
-    public static final PathElement PATH$dependencyFlags = PathElement.groupElement(6);
+    public static final PathElement PATH$srcSubpass = PathElement.groupElement("srcSubpass");
+    public static final PathElement PATH$dstSubpass = PathElement.groupElement("dstSubpass");
+    public static final PathElement PATH$srcStageMask = PathElement.groupElement("srcStageMask");
+    public static final PathElement PATH$dstStageMask = PathElement.groupElement("dstStageMask");
+    public static final PathElement PATH$srcAccessMask = PathElement.groupElement("srcAccessMask");
+    public static final PathElement PATH$dstAccessMask = PathElement.groupElement("dstAccessMask");
+    public static final PathElement PATH$dependencyFlags = PathElement.groupElement("dependencyFlags");
 
     public static final OfInt LAYOUT$srcSubpass = (OfInt) LAYOUT.select(PATH$srcSubpass);
     public static final OfInt LAYOUT$dstSubpass = (OfInt) LAYOUT.select(PATH$dstSubpass);

@@ -21,8 +21,8 @@ public record VkMemoryHeap(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("flags")
     );
 
-    public static final PathElement PATH$size = PathElement.groupElement(0);
-    public static final PathElement PATH$flags = PathElement.groupElement(1);
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
 
     public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
     public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);

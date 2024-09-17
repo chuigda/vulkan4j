@@ -22,9 +22,9 @@ public record VkDrmFormatModifierProperties2EXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("drmFormatModifierTilingFeatures")
     );
 
-    public static final PathElement PATH$drmFormatModifier = PathElement.groupElement(0);
-    public static final PathElement PATH$drmFormatModifierPlaneCount = PathElement.groupElement(1);
-    public static final PathElement PATH$drmFormatModifierTilingFeatures = PathElement.groupElement(2);
+    public static final PathElement PATH$drmFormatModifier = PathElement.groupElement("drmFormatModifier");
+    public static final PathElement PATH$drmFormatModifierPlaneCount = PathElement.groupElement("drmFormatModifierPlaneCount");
+    public static final PathElement PATH$drmFormatModifierTilingFeatures = PathElement.groupElement("drmFormatModifierTilingFeatures");
 
     public static final OfLong LAYOUT$drmFormatModifier = (OfLong) LAYOUT.select(PATH$drmFormatModifier);
     public static final OfInt LAYOUT$drmFormatModifierPlaneCount = (OfInt) LAYOUT.select(PATH$drmFormatModifierPlaneCount);

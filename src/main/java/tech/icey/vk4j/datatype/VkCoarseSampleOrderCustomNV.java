@@ -23,10 +23,10 @@ public record VkCoarseSampleOrderCustomNV(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkCoarseSampleLocationNV.LAYOUT).withName("pSampleLocations")
     );
 
-    public static final PathElement PATH$shadingRate = PathElement.groupElement(0);
-    public static final PathElement PATH$sampleCount = PathElement.groupElement(1);
-    public static final PathElement PATH$sampleLocationCount = PathElement.groupElement(2);
-    public static final PathElement PATH$pSampleLocations = PathElement.groupElement(3);
+    public static final PathElement PATH$shadingRate = PathElement.groupElement("shadingRate");
+    public static final PathElement PATH$sampleCount = PathElement.groupElement("sampleCount");
+    public static final PathElement PATH$sampleLocationCount = PathElement.groupElement("sampleLocationCount");
+    public static final PathElement PATH$pSampleLocations = PathElement.groupElement("pSampleLocations");
 
     public static final OfInt LAYOUT$shadingRate = (OfInt) LAYOUT.select(PATH$shadingRate);
     public static final OfInt LAYOUT$sampleCount = (OfInt) LAYOUT.select(PATH$sampleCount);

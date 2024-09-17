@@ -22,9 +22,9 @@ public record VkPhysicalDevicePipelinePropertiesFeaturesEXT(MemorySegment segmen
         ValueLayout.JAVA_INT.withName("pipelinePropertiesIdentifier")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$pipelinePropertiesIdentifier = PathElement.groupElement(2);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pipelinePropertiesIdentifier = PathElement.groupElement("pipelinePropertiesIdentifier");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

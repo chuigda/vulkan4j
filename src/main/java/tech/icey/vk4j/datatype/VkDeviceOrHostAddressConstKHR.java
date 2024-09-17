@@ -21,8 +21,8 @@ public record VkDeviceOrHostAddressConstKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("hostAddress")
     );
 
-    public static final PathElement PATH$deviceAddress = PathElement.groupElement(0);
-    public static final PathElement PATH$hostAddress = PathElement.groupElement(1);
+    public static final PathElement PATH$deviceAddress = PathElement.groupElement("deviceAddress");
+    public static final PathElement PATH$hostAddress = PathElement.groupElement("hostAddress");
 
     public static final OfLong LAYOUT$deviceAddress = (OfLong) LAYOUT.select(PATH$deviceAddress);
     public static final AddressLayout LAYOUT$hostAddress = (AddressLayout) LAYOUT.select(PATH$hostAddress);

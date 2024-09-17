@@ -28,15 +28,15 @@ public record VkBlitImageInfo2(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("filter")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$srcImage = PathElement.groupElement(2);
-    public static final PathElement PATH$srcImageLayout = PathElement.groupElement(3);
-    public static final PathElement PATH$dstImage = PathElement.groupElement(4);
-    public static final PathElement PATH$dstImageLayout = PathElement.groupElement(5);
-    public static final PathElement PATH$regionCount = PathElement.groupElement(6);
-    public static final PathElement PATH$pRegions = PathElement.groupElement(7);
-    public static final PathElement PATH$filter = PathElement.groupElement(8);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcImage = PathElement.groupElement("srcImage");
+    public static final PathElement PATH$srcImageLayout = PathElement.groupElement("srcImageLayout");
+    public static final PathElement PATH$dstImage = PathElement.groupElement("dstImage");
+    public static final PathElement PATH$dstImageLayout = PathElement.groupElement("dstImageLayout");
+    public static final PathElement PATH$regionCount = PathElement.groupElement("regionCount");
+    public static final PathElement PATH$pRegions = PathElement.groupElement("pRegions");
+    public static final PathElement PATH$filter = PathElement.groupElement("filter");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

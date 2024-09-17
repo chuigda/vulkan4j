@@ -27,14 +27,14 @@ public record VkPipelineColorBlendAttachmentState(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("colorWriteMask")
     );
 
-    public static final PathElement PATH$blendEnable = PathElement.groupElement(0);
-    public static final PathElement PATH$srcColorBlendFactor = PathElement.groupElement(1);
-    public static final PathElement PATH$dstColorBlendFactor = PathElement.groupElement(2);
-    public static final PathElement PATH$colorBlendOp = PathElement.groupElement(3);
-    public static final PathElement PATH$srcAlphaBlendFactor = PathElement.groupElement(4);
-    public static final PathElement PATH$dstAlphaBlendFactor = PathElement.groupElement(5);
-    public static final PathElement PATH$alphaBlendOp = PathElement.groupElement(6);
-    public static final PathElement PATH$colorWriteMask = PathElement.groupElement(7);
+    public static final PathElement PATH$blendEnable = PathElement.groupElement("blendEnable");
+    public static final PathElement PATH$srcColorBlendFactor = PathElement.groupElement("srcColorBlendFactor");
+    public static final PathElement PATH$dstColorBlendFactor = PathElement.groupElement("dstColorBlendFactor");
+    public static final PathElement PATH$colorBlendOp = PathElement.groupElement("colorBlendOp");
+    public static final PathElement PATH$srcAlphaBlendFactor = PathElement.groupElement("srcAlphaBlendFactor");
+    public static final PathElement PATH$dstAlphaBlendFactor = PathElement.groupElement("dstAlphaBlendFactor");
+    public static final PathElement PATH$alphaBlendOp = PathElement.groupElement("alphaBlendOp");
+    public static final PathElement PATH$colorWriteMask = PathElement.groupElement("colorWriteMask");
 
     public static final OfInt LAYOUT$blendEnable = (OfInt) LAYOUT.select(PATH$blendEnable);
     public static final OfInt LAYOUT$srcColorBlendFactor = (OfInt) LAYOUT.select(PATH$srcColorBlendFactor);

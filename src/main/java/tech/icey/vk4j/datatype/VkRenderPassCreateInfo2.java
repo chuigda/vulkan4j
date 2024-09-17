@@ -30,17 +30,17 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCorrelatedViewMasks")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$attachmentCount = PathElement.groupElement(3);
-    public static final PathElement PATH$pAttachments = PathElement.groupElement(4);
-    public static final PathElement PATH$subpassCount = PathElement.groupElement(5);
-    public static final PathElement PATH$pSubpasses = PathElement.groupElement(6);
-    public static final PathElement PATH$dependencyCount = PathElement.groupElement(7);
-    public static final PathElement PATH$pDependencies = PathElement.groupElement(8);
-    public static final PathElement PATH$correlatedViewMaskCount = PathElement.groupElement(9);
-    public static final PathElement PATH$pCorrelatedViewMasks = PathElement.groupElement(10);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$attachmentCount = PathElement.groupElement("attachmentCount");
+    public static final PathElement PATH$pAttachments = PathElement.groupElement("pAttachments");
+    public static final PathElement PATH$subpassCount = PathElement.groupElement("subpassCount");
+    public static final PathElement PATH$pSubpasses = PathElement.groupElement("pSubpasses");
+    public static final PathElement PATH$dependencyCount = PathElement.groupElement("dependencyCount");
+    public static final PathElement PATH$pDependencies = PathElement.groupElement("pDependencies");
+    public static final PathElement PATH$correlatedViewMaskCount = PathElement.groupElement("correlatedViewMaskCount");
+    public static final PathElement PATH$pCorrelatedViewMasks = PathElement.groupElement("pCorrelatedViewMasks");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

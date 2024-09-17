@@ -22,9 +22,9 @@ public record VkAccelerationStructureMotionInstanceNV(MemorySegment segment) {
         VkAccelerationStructureMotionInstanceDataNV.LAYOUT.withName("data")
     );
 
-    public static final PathElement PATH$type = PathElement.groupElement(0);
-    public static final PathElement PATH$flags = PathElement.groupElement(1);
-    public static final PathElement PATH$data = PathElement.groupElement(2);
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$data = PathElement.groupElement("data");
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);

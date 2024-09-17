@@ -33,20 +33,20 @@ public record VkPhysicalDeviceVulkan11Features(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("shaderDrawParameters")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$storageBuffer16BitAccess = PathElement.groupElement(2);
-    public static final PathElement PATH$uniformAndStorageBuffer16BitAccess = PathElement.groupElement(3);
-    public static final PathElement PATH$storagePushConstant16 = PathElement.groupElement(4);
-    public static final PathElement PATH$storageInputOutput16 = PathElement.groupElement(5);
-    public static final PathElement PATH$multiview = PathElement.groupElement(6);
-    public static final PathElement PATH$multiviewGeometryShader = PathElement.groupElement(7);
-    public static final PathElement PATH$multiviewTessellationShader = PathElement.groupElement(8);
-    public static final PathElement PATH$variablePointersStorageBuffer = PathElement.groupElement(9);
-    public static final PathElement PATH$variablePointers = PathElement.groupElement(10);
-    public static final PathElement PATH$protectedMemory = PathElement.groupElement(11);
-    public static final PathElement PATH$samplerYcbcrConversion = PathElement.groupElement(12);
-    public static final PathElement PATH$shaderDrawParameters = PathElement.groupElement(13);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$storageBuffer16BitAccess = PathElement.groupElement("storageBuffer16BitAccess");
+    public static final PathElement PATH$uniformAndStorageBuffer16BitAccess = PathElement.groupElement("uniformAndStorageBuffer16BitAccess");
+    public static final PathElement PATH$storagePushConstant16 = PathElement.groupElement("storagePushConstant16");
+    public static final PathElement PATH$storageInputOutput16 = PathElement.groupElement("storageInputOutput16");
+    public static final PathElement PATH$multiview = PathElement.groupElement("multiview");
+    public static final PathElement PATH$multiviewGeometryShader = PathElement.groupElement("multiviewGeometryShader");
+    public static final PathElement PATH$multiviewTessellationShader = PathElement.groupElement("multiviewTessellationShader");
+    public static final PathElement PATH$variablePointersStorageBuffer = PathElement.groupElement("variablePointersStorageBuffer");
+    public static final PathElement PATH$variablePointers = PathElement.groupElement("variablePointers");
+    public static final PathElement PATH$protectedMemory = PathElement.groupElement("protectedMemory");
+    public static final PathElement PATH$samplerYcbcrConversion = PathElement.groupElement("samplerYcbcrConversion");
+    public static final PathElement PATH$shaderDrawParameters = PathElement.groupElement("shaderDrawParameters");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

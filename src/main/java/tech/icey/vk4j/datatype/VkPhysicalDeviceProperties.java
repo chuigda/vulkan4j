@@ -28,15 +28,15 @@ public record VkPhysicalDeviceProperties(MemorySegment segment) {
         VkPhysicalDeviceSparseProperties.LAYOUT.withName("sparseProperties")
     );
 
-    public static final PathElement PATH$apiVersion = PathElement.groupElement(0);
-    public static final PathElement PATH$driverVersion = PathElement.groupElement(1);
-    public static final PathElement PATH$vendorID = PathElement.groupElement(2);
-    public static final PathElement PATH$deviceID = PathElement.groupElement(3);
-    public static final PathElement PATH$deviceType = PathElement.groupElement(4);
-    public static final PathElement PATH$deviceName = PathElement.groupElement(5);
-    public static final PathElement PATH$pipelineCacheUUID = PathElement.groupElement(6);
-    public static final PathElement PATH$limits = PathElement.groupElement(7);
-    public static final PathElement PATH$sparseProperties = PathElement.groupElement(8);
+    public static final PathElement PATH$apiVersion = PathElement.groupElement("apiVersion");
+    public static final PathElement PATH$driverVersion = PathElement.groupElement("driverVersion");
+    public static final PathElement PATH$vendorID = PathElement.groupElement("vendorID");
+    public static final PathElement PATH$deviceID = PathElement.groupElement("deviceID");
+    public static final PathElement PATH$deviceType = PathElement.groupElement("deviceType");
+    public static final PathElement PATH$deviceName = PathElement.groupElement("deviceName");
+    public static final PathElement PATH$pipelineCacheUUID = PathElement.groupElement("pipelineCacheUUID");
+    public static final PathElement PATH$limits = PathElement.groupElement("limits");
+    public static final PathElement PATH$sparseProperties = PathElement.groupElement("sparseProperties");
 
     public static final OfInt LAYOUT$apiVersion = (OfInt) LAYOUT.select(PATH$apiVersion);
     public static final OfInt LAYOUT$driverVersion = (OfInt) LAYOUT.select(PATH$driverVersion);

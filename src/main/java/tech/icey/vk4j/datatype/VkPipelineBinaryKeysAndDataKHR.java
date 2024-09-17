@@ -22,9 +22,9 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkPipelineBinaryDataKHR.LAYOUT).withName("pPipelineBinaryData")
     );
 
-    public static final PathElement PATH$binaryCount = PathElement.groupElement(0);
-    public static final PathElement PATH$pPipelineBinaryKeys = PathElement.groupElement(1);
-    public static final PathElement PATH$pPipelineBinaryData = PathElement.groupElement(2);
+    public static final PathElement PATH$binaryCount = PathElement.groupElement("binaryCount");
+    public static final PathElement PATH$pPipelineBinaryKeys = PathElement.groupElement("pPipelineBinaryKeys");
+    public static final PathElement PATH$pPipelineBinaryData = PathElement.groupElement("pPipelineBinaryData");
 
     public static final OfInt LAYOUT$binaryCount = (OfInt) LAYOUT.select(PATH$binaryCount);
     public static final AddressLayout LAYOUT$pPipelineBinaryKeys = (AddressLayout) LAYOUT.select(PATH$pPipelineBinaryKeys);

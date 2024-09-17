@@ -26,13 +26,13 @@ public record VkDebugUtilsObjectTagInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pTag")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$objectType = PathElement.groupElement(2);
-    public static final PathElement PATH$objectHandle = PathElement.groupElement(3);
-    public static final PathElement PATH$tagName = PathElement.groupElement(4);
-    public static final PathElement PATH$tagSize = PathElement.groupElement(5);
-    public static final PathElement PATH$pTag = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$objectType = PathElement.groupElement("objectType");
+    public static final PathElement PATH$objectHandle = PathElement.groupElement("objectHandle");
+    public static final PathElement PATH$tagName = PathElement.groupElement("tagName");
+    public static final PathElement PATH$tagSize = PathElement.groupElement("tagSize");
+    public static final PathElement PATH$pTag = PathElement.groupElement("pTag");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -25,12 +25,12 @@ public record VkAabbPositionsKHR(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("maxZ")
     );
 
-    public static final PathElement PATH$minX = PathElement.groupElement(0);
-    public static final PathElement PATH$minY = PathElement.groupElement(1);
-    public static final PathElement PATH$minZ = PathElement.groupElement(2);
-    public static final PathElement PATH$maxX = PathElement.groupElement(3);
-    public static final PathElement PATH$maxY = PathElement.groupElement(4);
-    public static final PathElement PATH$maxZ = PathElement.groupElement(5);
+    public static final PathElement PATH$minX = PathElement.groupElement("minX");
+    public static final PathElement PATH$minY = PathElement.groupElement("minY");
+    public static final PathElement PATH$minZ = PathElement.groupElement("minZ");
+    public static final PathElement PATH$maxX = PathElement.groupElement("maxX");
+    public static final PathElement PATH$maxY = PathElement.groupElement("maxY");
+    public static final PathElement PATH$maxZ = PathElement.groupElement("maxZ");
 
     public static final OfFloat LAYOUT$minX = (OfFloat) LAYOUT.select(PATH$minX);
     public static final OfFloat LAYOUT$minY = (OfFloat) LAYOUT.select(PATH$minY);

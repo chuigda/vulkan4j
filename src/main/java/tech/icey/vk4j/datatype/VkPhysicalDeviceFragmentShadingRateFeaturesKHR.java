@@ -24,11 +24,11 @@ public record VkPhysicalDeviceFragmentShadingRateFeaturesKHR(MemorySegment segme
         ValueLayout.JAVA_INT.withName("attachmentFragmentShadingRate")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$pipelineFragmentShadingRate = PathElement.groupElement(2);
-    public static final PathElement PATH$primitiveFragmentShadingRate = PathElement.groupElement(3);
-    public static final PathElement PATH$attachmentFragmentShadingRate = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pipelineFragmentShadingRate = PathElement.groupElement("pipelineFragmentShadingRate");
+    public static final PathElement PATH$primitiveFragmentShadingRate = PathElement.groupElement("primitiveFragmentShadingRate");
+    public static final PathElement PATH$attachmentFragmentShadingRate = PathElement.groupElement("attachmentFragmentShadingRate");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

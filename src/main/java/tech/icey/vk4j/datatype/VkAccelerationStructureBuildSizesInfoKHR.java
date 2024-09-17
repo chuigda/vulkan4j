@@ -24,11 +24,11 @@ public record VkAccelerationStructureBuildSizesInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("buildScratchSize")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$accelerationStructureSize = PathElement.groupElement(2);
-    public static final PathElement PATH$updateScratchSize = PathElement.groupElement(3);
-    public static final PathElement PATH$buildScratchSize = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$accelerationStructureSize = PathElement.groupElement("accelerationStructureSize");
+    public static final PathElement PATH$updateScratchSize = PathElement.groupElement("updateScratchSize");
+    public static final PathElement PATH$buildScratchSize = PathElement.groupElement("buildScratchSize");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

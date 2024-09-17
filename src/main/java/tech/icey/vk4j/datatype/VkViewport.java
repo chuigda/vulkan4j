@@ -25,12 +25,12 @@ public record VkViewport(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("maxDepth")
     );
 
-    public static final PathElement PATH$x = PathElement.groupElement(0);
-    public static final PathElement PATH$y = PathElement.groupElement(1);
-    public static final PathElement PATH$width = PathElement.groupElement(2);
-    public static final PathElement PATH$height = PathElement.groupElement(3);
-    public static final PathElement PATH$minDepth = PathElement.groupElement(4);
-    public static final PathElement PATH$maxDepth = PathElement.groupElement(5);
+    public static final PathElement PATH$x = PathElement.groupElement("x");
+    public static final PathElement PATH$y = PathElement.groupElement("y");
+    public static final PathElement PATH$width = PathElement.groupElement("width");
+    public static final PathElement PATH$height = PathElement.groupElement("height");
+    public static final PathElement PATH$minDepth = PathElement.groupElement("minDepth");
+    public static final PathElement PATH$maxDepth = PathElement.groupElement("maxDepth");
 
     public static final OfFloat LAYOUT$x = (OfFloat) LAYOUT.select(PATH$x);
     public static final OfFloat LAYOUT$y = (OfFloat) LAYOUT.select(PATH$y);

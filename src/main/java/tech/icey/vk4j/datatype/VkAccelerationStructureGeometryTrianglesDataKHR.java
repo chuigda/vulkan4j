@@ -28,15 +28,15 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segm
         VkDeviceOrHostAddressConstKHR.LAYOUT.withName("transformData")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$vertexFormat = PathElement.groupElement(2);
-    public static final PathElement PATH$vertexData = PathElement.groupElement(3);
-    public static final PathElement PATH$vertexStride = PathElement.groupElement(4);
-    public static final PathElement PATH$maxVertex = PathElement.groupElement(5);
-    public static final PathElement PATH$indexType = PathElement.groupElement(6);
-    public static final PathElement PATH$indexData = PathElement.groupElement(7);
-    public static final PathElement PATH$transformData = PathElement.groupElement(8);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$vertexFormat = PathElement.groupElement("vertexFormat");
+    public static final PathElement PATH$vertexData = PathElement.groupElement("vertexData");
+    public static final PathElement PATH$vertexStride = PathElement.groupElement("vertexStride");
+    public static final PathElement PATH$maxVertex = PathElement.groupElement("maxVertex");
+    public static final PathElement PATH$indexType = PathElement.groupElement("indexType");
+    public static final PathElement PATH$indexData = PathElement.groupElement("indexData");
+    public static final PathElement PATH$transformData = PathElement.groupElement("transformData");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

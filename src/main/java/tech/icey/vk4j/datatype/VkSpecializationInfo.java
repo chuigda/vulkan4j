@@ -23,10 +23,10 @@ public record VkSpecializationInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pData")
     );
 
-    public static final PathElement PATH$mapEntryCount = PathElement.groupElement(0);
-    public static final PathElement PATH$pMapEntries = PathElement.groupElement(1);
-    public static final PathElement PATH$dataSize = PathElement.groupElement(2);
-    public static final PathElement PATH$pData = PathElement.groupElement(3);
+    public static final PathElement PATH$mapEntryCount = PathElement.groupElement("mapEntryCount");
+    public static final PathElement PATH$pMapEntries = PathElement.groupElement("pMapEntries");
+    public static final PathElement PATH$dataSize = PathElement.groupElement("dataSize");
+    public static final PathElement PATH$pData = PathElement.groupElement("pData");
 
     public static final OfInt LAYOUT$mapEntryCount = (OfInt) LAYOUT.select(PATH$mapEntryCount);
     public static final AddressLayout LAYOUT$pMapEntries = (AddressLayout) LAYOUT.select(PATH$pMapEntries);

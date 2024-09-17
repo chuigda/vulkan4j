@@ -27,14 +27,14 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkSysmemColorSpaceFUCHSIA.LAYOUT).withName("pColorSpaces")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$imageCreateInfo = PathElement.groupElement(2);
-    public static final PathElement PATH$requiredFormatFeatures = PathElement.groupElement(3);
-    public static final PathElement PATH$flags = PathElement.groupElement(4);
-    public static final PathElement PATH$sysmemPixelFormat = PathElement.groupElement(5);
-    public static final PathElement PATH$colorSpaceCount = PathElement.groupElement(6);
-    public static final PathElement PATH$pColorSpaces = PathElement.groupElement(7);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$imageCreateInfo = PathElement.groupElement("imageCreateInfo");
+    public static final PathElement PATH$requiredFormatFeatures = PathElement.groupElement("requiredFormatFeatures");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$sysmemPixelFormat = PathElement.groupElement("sysmemPixelFormat");
+    public static final PathElement PATH$colorSpaceCount = PathElement.groupElement("colorSpaceCount");
+    public static final PathElement PATH$pColorSpaces = PathElement.groupElement("pColorSpaces");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

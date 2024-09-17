@@ -27,14 +27,14 @@ public record VkAccelerationStructureCreateInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("deviceAddress")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$createFlags = PathElement.groupElement(2);
-    public static final PathElement PATH$buffer = PathElement.groupElement(3);
-    public static final PathElement PATH$offset = PathElement.groupElement(4);
-    public static final PathElement PATH$size = PathElement.groupElement(5);
-    public static final PathElement PATH$type = PathElement.groupElement(6);
-    public static final PathElement PATH$deviceAddress = PathElement.groupElement(7);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$createFlags = PathElement.groupElement("createFlags");
+    public static final PathElement PATH$buffer = PathElement.groupElement("buffer");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$deviceAddress = PathElement.groupElement("deviceAddress");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

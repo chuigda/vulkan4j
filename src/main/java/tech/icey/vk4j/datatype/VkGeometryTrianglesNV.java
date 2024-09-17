@@ -32,19 +32,19 @@ public record VkGeometryTrianglesNV(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("transformOffset")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$vertexData = PathElement.groupElement(2);
-    public static final PathElement PATH$vertexOffset = PathElement.groupElement(3);
-    public static final PathElement PATH$vertexCount = PathElement.groupElement(4);
-    public static final PathElement PATH$vertexStride = PathElement.groupElement(5);
-    public static final PathElement PATH$vertexFormat = PathElement.groupElement(6);
-    public static final PathElement PATH$indexData = PathElement.groupElement(7);
-    public static final PathElement PATH$indexOffset = PathElement.groupElement(8);
-    public static final PathElement PATH$indexCount = PathElement.groupElement(9);
-    public static final PathElement PATH$indexType = PathElement.groupElement(10);
-    public static final PathElement PATH$transformData = PathElement.groupElement(11);
-    public static final PathElement PATH$transformOffset = PathElement.groupElement(12);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$vertexData = PathElement.groupElement("vertexData");
+    public static final PathElement PATH$vertexOffset = PathElement.groupElement("vertexOffset");
+    public static final PathElement PATH$vertexCount = PathElement.groupElement("vertexCount");
+    public static final PathElement PATH$vertexStride = PathElement.groupElement("vertexStride");
+    public static final PathElement PATH$vertexFormat = PathElement.groupElement("vertexFormat");
+    public static final PathElement PATH$indexData = PathElement.groupElement("indexData");
+    public static final PathElement PATH$indexOffset = PathElement.groupElement("indexOffset");
+    public static final PathElement PATH$indexCount = PathElement.groupElement("indexCount");
+    public static final PathElement PATH$indexType = PathElement.groupElement("indexType");
+    public static final PathElement PATH$transformData = PathElement.groupElement("transformData");
+    public static final PathElement PATH$transformOffset = PathElement.groupElement("transformOffset");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

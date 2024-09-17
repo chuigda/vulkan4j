@@ -23,10 +23,10 @@ public record VkConformanceVersion(MemorySegment segment) {
         ValueLayout.JAVA_BYTE.withName("patch")
     );
 
-    public static final PathElement PATH$major = PathElement.groupElement(0);
-    public static final PathElement PATH$minor = PathElement.groupElement(1);
-    public static final PathElement PATH$subminor = PathElement.groupElement(2);
-    public static final PathElement PATH$patch = PathElement.groupElement(3);
+    public static final PathElement PATH$major = PathElement.groupElement("major");
+    public static final PathElement PATH$minor = PathElement.groupElement("minor");
+    public static final PathElement PATH$subminor = PathElement.groupElement("subminor");
+    public static final PathElement PATH$patch = PathElement.groupElement("patch");
 
     public static final OfByte LAYOUT$major = (OfByte) LAYOUT.select(PATH$major);
     public static final OfByte LAYOUT$minor = (OfByte) LAYOUT.select(PATH$minor);

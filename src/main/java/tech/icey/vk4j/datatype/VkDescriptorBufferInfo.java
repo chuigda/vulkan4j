@@ -22,9 +22,9 @@ public record VkDescriptorBufferInfo(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("range")
     );
 
-    public static final PathElement PATH$buffer = PathElement.groupElement(0);
-    public static final PathElement PATH$offset = PathElement.groupElement(1);
-    public static final PathElement PATH$range = PathElement.groupElement(2);
+    public static final PathElement PATH$buffer = PathElement.groupElement("buffer");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$range = PathElement.groupElement("range");
 
     public static final AddressLayout LAYOUT$buffer = (AddressLayout) LAYOUT.select(PATH$buffer);
     public static final OfLong LAYOUT$offset = (OfLong) LAYOUT.select(PATH$offset);

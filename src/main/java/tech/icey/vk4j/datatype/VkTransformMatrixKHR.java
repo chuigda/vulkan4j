@@ -20,7 +20,7 @@ public record VkTransformMatrixKHR(MemorySegment segment) {
         MemoryLayout.sequenceLayout(3 * 4, ValueLayout.JAVA_FLOAT).withName("matrix")
     );
 
-    public static final PathElement PATH$matrix = PathElement.groupElement(0);
+    public static final PathElement PATH$matrix = PathElement.groupElement("matrix");
 
     public static final SequenceLayout LAYOUT$matrix = (SequenceLayout) LAYOUT.select(PATH$matrix);
 

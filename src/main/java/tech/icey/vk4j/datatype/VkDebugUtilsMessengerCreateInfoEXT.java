@@ -26,13 +26,13 @@ public record VkDebugUtilsMessengerCreateInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pUserData")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$messageSeverity = PathElement.groupElement(3);
-    public static final PathElement PATH$messageType = PathElement.groupElement(4);
-    public static final PathElement PATH$pfnUserCallback = PathElement.groupElement(5);
-    public static final PathElement PATH$pUserData = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$messageSeverity = PathElement.groupElement("messageSeverity");
+    public static final PathElement PATH$messageType = PathElement.groupElement("messageType");
+    public static final PathElement PATH$pfnUserCallback = PathElement.groupElement("pfnUserCallback");
+    public static final PathElement PATH$pUserData = PathElement.groupElement("pUserData");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

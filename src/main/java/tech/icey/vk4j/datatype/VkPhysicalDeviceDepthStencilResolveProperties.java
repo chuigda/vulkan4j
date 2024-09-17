@@ -25,12 +25,12 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(MemorySegment segmen
         ValueLayout.JAVA_INT.withName("independentResolve")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$supportedDepthResolveModes = PathElement.groupElement(2);
-    public static final PathElement PATH$supportedStencilResolveModes = PathElement.groupElement(3);
-    public static final PathElement PATH$independentResolveNone = PathElement.groupElement(4);
-    public static final PathElement PATH$independentResolve = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$supportedDepthResolveModes = PathElement.groupElement("supportedDepthResolveModes");
+    public static final PathElement PATH$supportedStencilResolveModes = PathElement.groupElement("supportedStencilResolveModes");
+    public static final PathElement PATH$independentResolveNone = PathElement.groupElement("independentResolveNone");
+    public static final PathElement PATH$independentResolve = PathElement.groupElement("independentResolve");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

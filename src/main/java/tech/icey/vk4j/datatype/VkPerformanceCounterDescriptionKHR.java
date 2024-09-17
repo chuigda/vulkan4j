@@ -25,12 +25,12 @@ public record VkPerformanceCounterDescriptionKHR(MemorySegment segment) {
         MemoryLayout.sequenceLayout(VK_MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$name = PathElement.groupElement(3);
-    public static final PathElement PATH$category = PathElement.groupElement(4);
-    public static final PathElement PATH$description = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$name = PathElement.groupElement("name");
+    public static final PathElement PATH$category = PathElement.groupElement("category");
+    public static final PathElement PATH$description = PathElement.groupElement("description");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -24,11 +24,11 @@ public record VkLayerSettingEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pValues")
     );
 
-    public static final PathElement PATH$pLayerName = PathElement.groupElement(0);
-    public static final PathElement PATH$pSettingName = PathElement.groupElement(1);
-    public static final PathElement PATH$type = PathElement.groupElement(2);
-    public static final PathElement PATH$valueCount = PathElement.groupElement(3);
-    public static final PathElement PATH$pValues = PathElement.groupElement(4);
+    public static final PathElement PATH$pLayerName = PathElement.groupElement("pLayerName");
+    public static final PathElement PATH$pSettingName = PathElement.groupElement("pSettingName");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$valueCount = PathElement.groupElement("valueCount");
+    public static final PathElement PATH$pValues = PathElement.groupElement("pValues");
 
     public static final AddressLayout LAYOUT$pLayerName = (AddressLayout) LAYOUT.select(PATH$pLayerName);
     public static final AddressLayout LAYOUT$pSettingName = (AddressLayout) LAYOUT.select(PATH$pSettingName);

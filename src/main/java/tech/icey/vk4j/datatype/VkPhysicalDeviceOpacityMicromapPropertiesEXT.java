@@ -23,10 +23,10 @@ public record VkPhysicalDeviceOpacityMicromapPropertiesEXT(MemorySegment segment
         ValueLayout.JAVA_INT.withName("maxOpacity4StateSubdivisionLevel")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$maxOpacity2StateSubdivisionLevel = PathElement.groupElement(2);
-    public static final PathElement PATH$maxOpacity4StateSubdivisionLevel = PathElement.groupElement(3);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxOpacity2StateSubdivisionLevel = PathElement.groupElement("maxOpacity2StateSubdivisionLevel");
+    public static final PathElement PATH$maxOpacity4StateSubdivisionLevel = PathElement.groupElement("maxOpacity4StateSubdivisionLevel");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

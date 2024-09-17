@@ -25,12 +25,12 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(MemorySegment segment) {
         MemoryLayout.sequenceLayout(VK_MAX_PHYSICAL_DEVICE_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("deviceName")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$vendorID = PathElement.groupElement(2);
-    public static final PathElement PATH$deviceID = PathElement.groupElement(3);
-    public static final PathElement PATH$layeredAPI = PathElement.groupElement(4);
-    public static final PathElement PATH$deviceName = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$vendorID = PathElement.groupElement("vendorID");
+    public static final PathElement PATH$deviceID = PathElement.groupElement("deviceID");
+    public static final PathElement PATH$layeredAPI = PathElement.groupElement("layeredAPI");
+    public static final PathElement PATH$deviceName = PathElement.groupElement("deviceName");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

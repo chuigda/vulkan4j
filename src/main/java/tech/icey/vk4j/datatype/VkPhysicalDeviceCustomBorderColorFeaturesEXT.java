@@ -23,10 +23,10 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(MemorySegment segment
         ValueLayout.JAVA_INT.withName("customBorderColorWithoutFormat")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$customBorderColors = PathElement.groupElement(2);
-    public static final PathElement PATH$customBorderColorWithoutFormat = PathElement.groupElement(3);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$customBorderColors = PathElement.groupElement("customBorderColors");
+    public static final PathElement PATH$customBorderColorWithoutFormat = PathElement.groupElement("customBorderColorWithoutFormat");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

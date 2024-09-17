@@ -34,21 +34,21 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pIndexTypeValues")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$tokenType = PathElement.groupElement(2);
-    public static final PathElement PATH$stream = PathElement.groupElement(3);
-    public static final PathElement PATH$offset = PathElement.groupElement(4);
-    public static final PathElement PATH$vertexBindingUnit = PathElement.groupElement(5);
-    public static final PathElement PATH$vertexDynamicStride = PathElement.groupElement(6);
-    public static final PathElement PATH$pushconstantPipelineLayout = PathElement.groupElement(7);
-    public static final PathElement PATH$pushconstantShaderStageFlags = PathElement.groupElement(8);
-    public static final PathElement PATH$pushconstantOffset = PathElement.groupElement(9);
-    public static final PathElement PATH$pushconstantSize = PathElement.groupElement(10);
-    public static final PathElement PATH$indirectStateFlags = PathElement.groupElement(11);
-    public static final PathElement PATH$indexTypeCount = PathElement.groupElement(12);
-    public static final PathElement PATH$pIndexTypes = PathElement.groupElement(13);
-    public static final PathElement PATH$pIndexTypeValues = PathElement.groupElement(14);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$tokenType = PathElement.groupElement("tokenType");
+    public static final PathElement PATH$stream = PathElement.groupElement("stream");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$vertexBindingUnit = PathElement.groupElement("vertexBindingUnit");
+    public static final PathElement PATH$vertexDynamicStride = PathElement.groupElement("vertexDynamicStride");
+    public static final PathElement PATH$pushconstantPipelineLayout = PathElement.groupElement("pushconstantPipelineLayout");
+    public static final PathElement PATH$pushconstantShaderStageFlags = PathElement.groupElement("pushconstantShaderStageFlags");
+    public static final PathElement PATH$pushconstantOffset = PathElement.groupElement("pushconstantOffset");
+    public static final PathElement PATH$pushconstantSize = PathElement.groupElement("pushconstantSize");
+    public static final PathElement PATH$indirectStateFlags = PathElement.groupElement("indirectStateFlags");
+    public static final PathElement PATH$indexTypeCount = PathElement.groupElement("indexTypeCount");
+    public static final PathElement PATH$pIndexTypes = PathElement.groupElement("pIndexTypes");
+    public static final PathElement PATH$pIndexTypeValues = PathElement.groupElement("pIndexTypeValues");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

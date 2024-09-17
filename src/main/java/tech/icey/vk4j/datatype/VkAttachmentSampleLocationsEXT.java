@@ -21,8 +21,8 @@ public record VkAttachmentSampleLocationsEXT(MemorySegment segment) {
         VkSampleLocationsInfoEXT.LAYOUT.withName("sampleLocationsInfo")
     );
 
-    public static final PathElement PATH$attachmentIndex = PathElement.groupElement(0);
-    public static final PathElement PATH$sampleLocationsInfo = PathElement.groupElement(1);
+    public static final PathElement PATH$attachmentIndex = PathElement.groupElement("attachmentIndex");
+    public static final PathElement PATH$sampleLocationsInfo = PathElement.groupElement("sampleLocationsInfo");
 
     public static final OfInt LAYOUT$attachmentIndex = (OfInt) LAYOUT.select(PATH$attachmentIndex);
     public static final StructLayout LAYOUT$sampleLocationsInfo = (StructLayout) LAYOUT.select(PATH$sampleLocationsInfo);

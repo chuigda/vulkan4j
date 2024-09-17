@@ -26,13 +26,13 @@ public record VkPhysicalDeviceImageFormatInfo2(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("flags")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$format = PathElement.groupElement(2);
-    public static final PathElement PATH$type = PathElement.groupElement(3);
-    public static final PathElement PATH$tiling = PathElement.groupElement(4);
-    public static final PathElement PATH$usage = PathElement.groupElement(5);
-    public static final PathElement PATH$flags = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$tiling = PathElement.groupElement("tiling");
+    public static final PathElement PATH$usage = PathElement.groupElement("usage");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

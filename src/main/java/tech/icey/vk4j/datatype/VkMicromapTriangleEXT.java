@@ -22,9 +22,9 @@ public record VkMicromapTriangleEXT(MemorySegment segment) {
         ValueLayout.JAVA_SHORT.withName("format")
     );
 
-    public static final PathElement PATH$dataOffset = PathElement.groupElement(0);
-    public static final PathElement PATH$subdivisionLevel = PathElement.groupElement(1);
-    public static final PathElement PATH$format = PathElement.groupElement(2);
+    public static final PathElement PATH$dataOffset = PathElement.groupElement("dataOffset");
+    public static final PathElement PATH$subdivisionLevel = PathElement.groupElement("subdivisionLevel");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
 
     public static final OfInt LAYOUT$dataOffset = (OfInt) LAYOUT.select(PATH$dataOffset);
     public static final OfShort LAYOUT$subdivisionLevel = (OfShort) LAYOUT.select(PATH$subdivisionLevel);

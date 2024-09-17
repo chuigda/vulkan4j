@@ -22,9 +22,9 @@ public record VkStridedDeviceAddressRegionKHR(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("size")
     );
 
-    public static final PathElement PATH$deviceAddress = PathElement.groupElement(0);
-    public static final PathElement PATH$stride = PathElement.groupElement(1);
-    public static final PathElement PATH$size = PathElement.groupElement(2);
+    public static final PathElement PATH$deviceAddress = PathElement.groupElement("deviceAddress");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
 
     public static final OfLong LAYOUT$deviceAddress = (OfLong) LAYOUT.select(PATH$deviceAddress);
     public static final OfLong LAYOUT$stride = (OfLong) LAYOUT.select(PATH$stride);

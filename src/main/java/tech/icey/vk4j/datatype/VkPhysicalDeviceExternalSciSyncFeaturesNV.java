@@ -25,12 +25,12 @@ public record VkPhysicalDeviceExternalSciSyncFeaturesNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("sciSyncExport")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$sciSyncFence = PathElement.groupElement(2);
-    public static final PathElement PATH$sciSyncSemaphore = PathElement.groupElement(3);
-    public static final PathElement PATH$sciSyncImport = PathElement.groupElement(4);
-    public static final PathElement PATH$sciSyncExport = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$sciSyncFence = PathElement.groupElement("sciSyncFence");
+    public static final PathElement PATH$sciSyncSemaphore = PathElement.groupElement("sciSyncSemaphore");
+    public static final PathElement PATH$sciSyncImport = PathElement.groupElement("sciSyncImport");
+    public static final PathElement PATH$sciSyncExport = PathElement.groupElement("sciSyncExport");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

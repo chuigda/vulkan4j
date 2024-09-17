@@ -26,13 +26,13 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("persistentContent")
     );
 
-    public static final PathElement PATH$display = PathElement.groupElement(0);
-    public static final PathElement PATH$displayName = PathElement.groupElement(1);
-    public static final PathElement PATH$physicalDimensions = PathElement.groupElement(2);
-    public static final PathElement PATH$physicalResolution = PathElement.groupElement(3);
-    public static final PathElement PATH$supportedTransforms = PathElement.groupElement(4);
-    public static final PathElement PATH$planeReorderPossible = PathElement.groupElement(5);
-    public static final PathElement PATH$persistentContent = PathElement.groupElement(6);
+    public static final PathElement PATH$display = PathElement.groupElement("display");
+    public static final PathElement PATH$displayName = PathElement.groupElement("displayName");
+    public static final PathElement PATH$physicalDimensions = PathElement.groupElement("physicalDimensions");
+    public static final PathElement PATH$physicalResolution = PathElement.groupElement("physicalResolution");
+    public static final PathElement PATH$supportedTransforms = PathElement.groupElement("supportedTransforms");
+    public static final PathElement PATH$planeReorderPossible = PathElement.groupElement("planeReorderPossible");
+    public static final PathElement PATH$persistentContent = PathElement.groupElement("persistentContent");
 
     public static final AddressLayout LAYOUT$display = (AddressLayout) LAYOUT.select(PATH$display);
     public static final AddressLayout LAYOUT$displayName = (AddressLayout) LAYOUT.select(PATH$displayName);

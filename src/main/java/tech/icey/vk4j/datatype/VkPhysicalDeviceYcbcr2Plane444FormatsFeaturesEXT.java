@@ -22,9 +22,9 @@ public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(MemorySegment seg
         ValueLayout.JAVA_INT.withName("ycbcr2plane444Formats")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$ycbcr2plane444Formats = PathElement.groupElement(2);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$ycbcr2plane444Formats = PathElement.groupElement("ycbcr2plane444Formats");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

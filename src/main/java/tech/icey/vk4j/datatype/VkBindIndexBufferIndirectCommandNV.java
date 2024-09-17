@@ -22,9 +22,9 @@ public record VkBindIndexBufferIndirectCommandNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("indexType")
     );
 
-    public static final PathElement PATH$bufferAddress = PathElement.groupElement(0);
-    public static final PathElement PATH$size = PathElement.groupElement(1);
-    public static final PathElement PATH$indexType = PathElement.groupElement(2);
+    public static final PathElement PATH$bufferAddress = PathElement.groupElement("bufferAddress");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$indexType = PathElement.groupElement("indexType");
 
     public static final OfLong LAYOUT$bufferAddress = (OfLong) LAYOUT.select(PATH$bufferAddress);
     public static final OfInt LAYOUT$size = (OfInt) LAYOUT.select(PATH$size);

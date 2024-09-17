@@ -22,9 +22,9 @@ public record VkCoarseSampleLocationNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("sample")
     );
 
-    public static final PathElement PATH$pixelX = PathElement.groupElement(0);
-    public static final PathElement PATH$pixelY = PathElement.groupElement(1);
-    public static final PathElement PATH$sample = PathElement.groupElement(2);
+    public static final PathElement PATH$pixelX = PathElement.groupElement("pixelX");
+    public static final PathElement PATH$pixelY = PathElement.groupElement("pixelY");
+    public static final PathElement PATH$sample = PathElement.groupElement("sample");
 
     public static final OfInt LAYOUT$pixelX = (OfInt) LAYOUT.select(PATH$pixelX);
     public static final OfInt LAYOUT$pixelY = (OfInt) LAYOUT.select(PATH$pixelY);

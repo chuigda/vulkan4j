@@ -24,11 +24,11 @@ public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("numPhases")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$filterCenter = PathElement.groupElement(2);
-    public static final PathElement PATH$filterSize = PathElement.groupElement(3);
-    public static final PathElement PATH$numPhases = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$filterCenter = PathElement.groupElement("filterCenter");
+    public static final PathElement PATH$filterSize = PathElement.groupElement("filterSize");
+    public static final PathElement PATH$numPhases = PathElement.groupElement("numPhases");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

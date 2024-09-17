@@ -34,21 +34,21 @@ public record VkImageCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("initialLayout")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$imageType = PathElement.groupElement(3);
-    public static final PathElement PATH$format = PathElement.groupElement(4);
-    public static final PathElement PATH$extent = PathElement.groupElement(5);
-    public static final PathElement PATH$mipLevels = PathElement.groupElement(6);
-    public static final PathElement PATH$arrayLayers = PathElement.groupElement(7);
-    public static final PathElement PATH$samples = PathElement.groupElement(8);
-    public static final PathElement PATH$tiling = PathElement.groupElement(9);
-    public static final PathElement PATH$usage = PathElement.groupElement(10);
-    public static final PathElement PATH$sharingMode = PathElement.groupElement(11);
-    public static final PathElement PATH$queueFamilyIndexCount = PathElement.groupElement(12);
-    public static final PathElement PATH$pQueueFamilyIndices = PathElement.groupElement(13);
-    public static final PathElement PATH$initialLayout = PathElement.groupElement(14);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$imageType = PathElement.groupElement("imageType");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$extent = PathElement.groupElement("extent");
+    public static final PathElement PATH$mipLevels = PathElement.groupElement("mipLevels");
+    public static final PathElement PATH$arrayLayers = PathElement.groupElement("arrayLayers");
+    public static final PathElement PATH$samples = PathElement.groupElement("samples");
+    public static final PathElement PATH$tiling = PathElement.groupElement("tiling");
+    public static final PathElement PATH$usage = PathElement.groupElement("usage");
+    public static final PathElement PATH$sharingMode = PathElement.groupElement("sharingMode");
+    public static final PathElement PATH$queueFamilyIndexCount = PathElement.groupElement("queueFamilyIndexCount");
+    public static final PathElement PATH$pQueueFamilyIndices = PathElement.groupElement("pQueueFamilyIndices");
+    public static final PathElement PATH$initialLayout = PathElement.groupElement("initialLayout");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

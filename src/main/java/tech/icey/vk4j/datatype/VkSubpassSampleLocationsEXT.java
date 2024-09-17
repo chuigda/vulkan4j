@@ -21,8 +21,8 @@ public record VkSubpassSampleLocationsEXT(MemorySegment segment) {
         VkSampleLocationsInfoEXT.LAYOUT.withName("sampleLocationsInfo")
     );
 
-    public static final PathElement PATH$subpassIndex = PathElement.groupElement(0);
-    public static final PathElement PATH$sampleLocationsInfo = PathElement.groupElement(1);
+    public static final PathElement PATH$subpassIndex = PathElement.groupElement("subpassIndex");
+    public static final PathElement PATH$sampleLocationsInfo = PathElement.groupElement("sampleLocationsInfo");
 
     public static final OfInt LAYOUT$subpassIndex = (OfInt) LAYOUT.select(PATH$subpassIndex);
     public static final StructLayout LAYOUT$sampleLocationsInfo = (StructLayout) LAYOUT.select(PATH$sampleLocationsInfo);

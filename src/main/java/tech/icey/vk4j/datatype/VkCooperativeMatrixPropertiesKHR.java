@@ -30,17 +30,17 @@ public record VkCooperativeMatrixPropertiesKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("scope")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$MSize = PathElement.groupElement(2);
-    public static final PathElement PATH$NSize = PathElement.groupElement(3);
-    public static final PathElement PATH$KSize = PathElement.groupElement(4);
-    public static final PathElement PATH$AType = PathElement.groupElement(5);
-    public static final PathElement PATH$BType = PathElement.groupElement(6);
-    public static final PathElement PATH$CType = PathElement.groupElement(7);
-    public static final PathElement PATH$ResultType = PathElement.groupElement(8);
-    public static final PathElement PATH$saturatingAccumulation = PathElement.groupElement(9);
-    public static final PathElement PATH$scope = PathElement.groupElement(10);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$MSize = PathElement.groupElement("MSize");
+    public static final PathElement PATH$NSize = PathElement.groupElement("NSize");
+    public static final PathElement PATH$KSize = PathElement.groupElement("KSize");
+    public static final PathElement PATH$AType = PathElement.groupElement("AType");
+    public static final PathElement PATH$BType = PathElement.groupElement("BType");
+    public static final PathElement PATH$CType = PathElement.groupElement("CType");
+    public static final PathElement PATH$ResultType = PathElement.groupElement("ResultType");
+    public static final PathElement PATH$saturatingAccumulation = PathElement.groupElement("saturatingAccumulation");
+    public static final PathElement PATH$scope = PathElement.groupElement("scope");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

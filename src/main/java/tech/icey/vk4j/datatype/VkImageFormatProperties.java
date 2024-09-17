@@ -24,11 +24,11 @@ public record VkImageFormatProperties(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("maxResourceSize")
     );
 
-    public static final PathElement PATH$maxExtent = PathElement.groupElement(0);
-    public static final PathElement PATH$maxMipLevels = PathElement.groupElement(1);
-    public static final PathElement PATH$maxArrayLayers = PathElement.groupElement(2);
-    public static final PathElement PATH$sampleCounts = PathElement.groupElement(3);
-    public static final PathElement PATH$maxResourceSize = PathElement.groupElement(4);
+    public static final PathElement PATH$maxExtent = PathElement.groupElement("maxExtent");
+    public static final PathElement PATH$maxMipLevels = PathElement.groupElement("maxMipLevels");
+    public static final PathElement PATH$maxArrayLayers = PathElement.groupElement("maxArrayLayers");
+    public static final PathElement PATH$sampleCounts = PathElement.groupElement("sampleCounts");
+    public static final PathElement PATH$maxResourceSize = PathElement.groupElement("maxResourceSize");
 
     public static final StructLayout LAYOUT$maxExtent = (StructLayout) LAYOUT.select(PATH$maxExtent);
     public static final OfInt LAYOUT$maxMipLevels = (OfInt) LAYOUT.select(PATH$maxMipLevels);

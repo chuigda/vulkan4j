@@ -33,20 +33,20 @@ public record VkTraceRaysIndirectCommand2KHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("depth")
     );
 
-    public static final PathElement PATH$raygenShaderRecordAddress = PathElement.groupElement(0);
-    public static final PathElement PATH$raygenShaderRecordSize = PathElement.groupElement(1);
-    public static final PathElement PATH$missShaderBindingTableAddress = PathElement.groupElement(2);
-    public static final PathElement PATH$missShaderBindingTableSize = PathElement.groupElement(3);
-    public static final PathElement PATH$missShaderBindingTableStride = PathElement.groupElement(4);
-    public static final PathElement PATH$hitShaderBindingTableAddress = PathElement.groupElement(5);
-    public static final PathElement PATH$hitShaderBindingTableSize = PathElement.groupElement(6);
-    public static final PathElement PATH$hitShaderBindingTableStride = PathElement.groupElement(7);
-    public static final PathElement PATH$callableShaderBindingTableAddress = PathElement.groupElement(8);
-    public static final PathElement PATH$callableShaderBindingTableSize = PathElement.groupElement(9);
-    public static final PathElement PATH$callableShaderBindingTableStride = PathElement.groupElement(10);
-    public static final PathElement PATH$width = PathElement.groupElement(11);
-    public static final PathElement PATH$height = PathElement.groupElement(12);
-    public static final PathElement PATH$depth = PathElement.groupElement(13);
+    public static final PathElement PATH$raygenShaderRecordAddress = PathElement.groupElement("raygenShaderRecordAddress");
+    public static final PathElement PATH$raygenShaderRecordSize = PathElement.groupElement("raygenShaderRecordSize");
+    public static final PathElement PATH$missShaderBindingTableAddress = PathElement.groupElement("missShaderBindingTableAddress");
+    public static final PathElement PATH$missShaderBindingTableSize = PathElement.groupElement("missShaderBindingTableSize");
+    public static final PathElement PATH$missShaderBindingTableStride = PathElement.groupElement("missShaderBindingTableStride");
+    public static final PathElement PATH$hitShaderBindingTableAddress = PathElement.groupElement("hitShaderBindingTableAddress");
+    public static final PathElement PATH$hitShaderBindingTableSize = PathElement.groupElement("hitShaderBindingTableSize");
+    public static final PathElement PATH$hitShaderBindingTableStride = PathElement.groupElement("hitShaderBindingTableStride");
+    public static final PathElement PATH$callableShaderBindingTableAddress = PathElement.groupElement("callableShaderBindingTableAddress");
+    public static final PathElement PATH$callableShaderBindingTableSize = PathElement.groupElement("callableShaderBindingTableSize");
+    public static final PathElement PATH$callableShaderBindingTableStride = PathElement.groupElement("callableShaderBindingTableStride");
+    public static final PathElement PATH$width = PathElement.groupElement("width");
+    public static final PathElement PATH$height = PathElement.groupElement("height");
+    public static final PathElement PATH$depth = PathElement.groupElement("depth");
 
     public static final OfLong LAYOUT$raygenShaderRecordAddress = (OfLong) LAYOUT.select(PATH$raygenShaderRecordAddress);
     public static final OfLong LAYOUT$raygenShaderRecordSize = (OfLong) LAYOUT.select(PATH$raygenShaderRecordSize);

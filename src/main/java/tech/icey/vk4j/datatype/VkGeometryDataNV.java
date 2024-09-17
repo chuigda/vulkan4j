@@ -21,8 +21,8 @@ public record VkGeometryDataNV(MemorySegment segment) {
         VkGeometryAABBNV.LAYOUT.withName("aabbs")
     );
 
-    public static final PathElement PATH$triangles = PathElement.groupElement(0);
-    public static final PathElement PATH$aabbs = PathElement.groupElement(1);
+    public static final PathElement PATH$triangles = PathElement.groupElement("triangles");
+    public static final PathElement PATH$aabbs = PathElement.groupElement("aabbs");
 
     public static final StructLayout LAYOUT$triangles = (StructLayout) LAYOUT.select(PATH$triangles);
     public static final StructLayout LAYOUT$aabbs = (StructLayout) LAYOUT.select(PATH$aabbs);

@@ -21,8 +21,8 @@ public record VkPresentRegionKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkRectLayerKHR.LAYOUT).withName("pRectangles")
     );
 
-    public static final PathElement PATH$rectangleCount = PathElement.groupElement(0);
-    public static final PathElement PATH$pRectangles = PathElement.groupElement(1);
+    public static final PathElement PATH$rectangleCount = PathElement.groupElement("rectangleCount");
+    public static final PathElement PATH$pRectangles = PathElement.groupElement("pRectangles");
 
     public static final OfInt LAYOUT$rectangleCount = (OfInt) LAYOUT.select(PATH$rectangleCount);
     public static final AddressLayout LAYOUT$pRectangles = (AddressLayout) LAYOUT.select(PATH$pRectangles);

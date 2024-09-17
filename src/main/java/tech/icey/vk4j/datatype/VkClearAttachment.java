@@ -22,9 +22,9 @@ public record VkClearAttachment(MemorySegment segment) {
         VkClearValue.LAYOUT.withName("clearValue")
     );
 
-    public static final PathElement PATH$aspectMask = PathElement.groupElement(0);
-    public static final PathElement PATH$colorAttachment = PathElement.groupElement(1);
-    public static final PathElement PATH$clearValue = PathElement.groupElement(2);
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
+    public static final PathElement PATH$colorAttachment = PathElement.groupElement("colorAttachment");
+    public static final PathElement PATH$clearValue = PathElement.groupElement("clearValue");
 
     public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
     public static final OfInt LAYOUT$colorAttachment = (OfInt) LAYOUT.select(PATH$colorAttachment);

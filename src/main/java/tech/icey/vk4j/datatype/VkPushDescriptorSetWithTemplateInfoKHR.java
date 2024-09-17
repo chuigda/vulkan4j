@@ -25,12 +25,12 @@ public record VkPushDescriptorSetWithTemplateInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pData")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$descriptorUpdateTemplate = PathElement.groupElement(2);
-    public static final PathElement PATH$layout = PathElement.groupElement(3);
-    public static final PathElement PATH$set = PathElement.groupElement(4);
-    public static final PathElement PATH$pData = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$descriptorUpdateTemplate = PathElement.groupElement("descriptorUpdateTemplate");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+    public static final PathElement PATH$set = PathElement.groupElement("set");
+    public static final PathElement PATH$pData = PathElement.groupElement("pData");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

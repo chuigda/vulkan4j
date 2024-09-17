@@ -23,10 +23,10 @@ public record VkLayerSettingsCreateInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkLayerSettingEXT.LAYOUT).withName("pSettings")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$settingCount = PathElement.groupElement(2);
-    public static final PathElement PATH$pSettings = PathElement.groupElement(3);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$settingCount = PathElement.groupElement("settingCount");
+    public static final PathElement PATH$pSettings = PathElement.groupElement("pSettings");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

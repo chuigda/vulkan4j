@@ -22,9 +22,9 @@ public record VkAccelerationStructureMotionInstanceDataNV(MemorySegment segment)
         VkAccelerationStructureSRTMotionInstanceNV.LAYOUT.withName("srtMotionInstance")
     );
 
-    public static final PathElement PATH$staticInstance = PathElement.groupElement(0);
-    public static final PathElement PATH$matrixMotionInstance = PathElement.groupElement(1);
-    public static final PathElement PATH$srtMotionInstance = PathElement.groupElement(2);
+    public static final PathElement PATH$staticInstance = PathElement.groupElement("staticInstance");
+    public static final PathElement PATH$matrixMotionInstance = PathElement.groupElement("matrixMotionInstance");
+    public static final PathElement PATH$srtMotionInstance = PathElement.groupElement("srtMotionInstance");
 
     public static final StructLayout LAYOUT$staticInstance = (StructLayout) LAYOUT.select(PATH$staticInstance);
     public static final StructLayout LAYOUT$matrixMotionInstance = (StructLayout) LAYOUT.select(PATH$matrixMotionInstance);

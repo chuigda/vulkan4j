@@ -22,9 +22,9 @@ public record VkCopyMemoryIndirectCommandNV(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("size")
     );
 
-    public static final PathElement PATH$srcAddress = PathElement.groupElement(0);
-    public static final PathElement PATH$dstAddress = PathElement.groupElement(1);
-    public static final PathElement PATH$size = PathElement.groupElement(2);
+    public static final PathElement PATH$srcAddress = PathElement.groupElement("srcAddress");
+    public static final PathElement PATH$dstAddress = PathElement.groupElement("dstAddress");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
 
     public static final OfLong LAYOUT$srcAddress = (OfLong) LAYOUT.select(PATH$srcAddress);
     public static final OfLong LAYOUT$dstAddress = (OfLong) LAYOUT.select(PATH$dstAddress);

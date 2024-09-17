@@ -23,10 +23,10 @@ public record VkCheckpointDataNV(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pCheckpointMarker")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$stage = PathElement.groupElement(2);
-    public static final PathElement PATH$pCheckpointMarker = PathElement.groupElement(3);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$stage = PathElement.groupElement("stage");
+    public static final PathElement PATH$pCheckpointMarker = PathElement.groupElement("pCheckpointMarker");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

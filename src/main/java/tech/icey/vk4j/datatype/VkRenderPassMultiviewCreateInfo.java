@@ -27,14 +27,14 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCorrelationMasks")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$subpassCount = PathElement.groupElement(2);
-    public static final PathElement PATH$pViewMasks = PathElement.groupElement(3);
-    public static final PathElement PATH$dependencyCount = PathElement.groupElement(4);
-    public static final PathElement PATH$pViewOffsets = PathElement.groupElement(5);
-    public static final PathElement PATH$correlationMaskCount = PathElement.groupElement(6);
-    public static final PathElement PATH$pCorrelationMasks = PathElement.groupElement(7);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$subpassCount = PathElement.groupElement("subpassCount");
+    public static final PathElement PATH$pViewMasks = PathElement.groupElement("pViewMasks");
+    public static final PathElement PATH$dependencyCount = PathElement.groupElement("dependencyCount");
+    public static final PathElement PATH$pViewOffsets = PathElement.groupElement("pViewOffsets");
+    public static final PathElement PATH$correlationMaskCount = PathElement.groupElement("correlationMaskCount");
+    public static final PathElement PATH$pCorrelationMasks = PathElement.groupElement("pCorrelationMasks");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

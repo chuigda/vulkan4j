@@ -22,9 +22,9 @@ public record VkDrawMeshTasksIndirectCommandEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("groupCountZ")
     );
 
-    public static final PathElement PATH$groupCountX = PathElement.groupElement(0);
-    public static final PathElement PATH$groupCountY = PathElement.groupElement(1);
-    public static final PathElement PATH$groupCountZ = PathElement.groupElement(2);
+    public static final PathElement PATH$groupCountX = PathElement.groupElement("groupCountX");
+    public static final PathElement PATH$groupCountY = PathElement.groupElement("groupCountY");
+    public static final PathElement PATH$groupCountZ = PathElement.groupElement("groupCountZ");
 
     public static final OfInt LAYOUT$groupCountX = (OfInt) LAYOUT.select(PATH$groupCountX);
     public static final OfInt LAYOUT$groupCountY = (OfInt) LAYOUT.select(PATH$groupCountY);

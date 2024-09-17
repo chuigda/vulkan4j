@@ -26,13 +26,13 @@ public record VkRenderPassBeginInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkClearValue.LAYOUT).withName("pClearValues")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$renderPass = PathElement.groupElement(2);
-    public static final PathElement PATH$framebuffer = PathElement.groupElement(3);
-    public static final PathElement PATH$renderArea = PathElement.groupElement(4);
-    public static final PathElement PATH$clearValueCount = PathElement.groupElement(5);
-    public static final PathElement PATH$pClearValues = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$renderPass = PathElement.groupElement("renderPass");
+    public static final PathElement PATH$framebuffer = PathElement.groupElement("framebuffer");
+    public static final PathElement PATH$renderArea = PathElement.groupElement("renderArea");
+    public static final PathElement PATH$clearValueCount = PathElement.groupElement("clearValueCount");
+    public static final PathElement PATH$pClearValues = PathElement.groupElement("pClearValues");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

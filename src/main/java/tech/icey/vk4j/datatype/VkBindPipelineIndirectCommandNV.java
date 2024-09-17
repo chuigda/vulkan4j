@@ -20,7 +20,7 @@ public record VkBindPipelineIndirectCommandNV(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("pipelineAddress")
     );
 
-    public static final PathElement PATH$pipelineAddress = PathElement.groupElement(0);
+    public static final PathElement PATH$pipelineAddress = PathElement.groupElement("pipelineAddress");
 
     public static final OfLong LAYOUT$pipelineAddress = (OfLong) LAYOUT.select(PATH$pipelineAddress);
 

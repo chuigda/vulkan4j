@@ -22,9 +22,9 @@ public record VkRefreshObjectKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("flags")
     );
 
-    public static final PathElement PATH$objectType = PathElement.groupElement(0);
-    public static final PathElement PATH$objectHandle = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
+    public static final PathElement PATH$objectType = PathElement.groupElement("objectType");
+    public static final PathElement PATH$objectHandle = PathElement.groupElement("objectHandle");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
 
     public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
     public static final OfLong LAYOUT$objectHandle = (OfLong) LAYOUT.select(PATH$objectHandle);

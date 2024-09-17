@@ -38,25 +38,25 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(MemorySegment seg
         ValueLayout.JAVA_INT.withName("fragmentShadingRateStrictMultiplyCombiner")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$minFragmentShadingRateAttachmentTexelSize = PathElement.groupElement(2);
-    public static final PathElement PATH$maxFragmentShadingRateAttachmentTexelSize = PathElement.groupElement(3);
-    public static final PathElement PATH$maxFragmentShadingRateAttachmentTexelSizeAspectRatio = PathElement.groupElement(4);
-    public static final PathElement PATH$primitiveFragmentShadingRateWithMultipleViewports = PathElement.groupElement(5);
-    public static final PathElement PATH$layeredShadingRateAttachments = PathElement.groupElement(6);
-    public static final PathElement PATH$fragmentShadingRateNonTrivialCombinerOps = PathElement.groupElement(7);
-    public static final PathElement PATH$maxFragmentSize = PathElement.groupElement(8);
-    public static final PathElement PATH$maxFragmentSizeAspectRatio = PathElement.groupElement(9);
-    public static final PathElement PATH$maxFragmentShadingRateCoverageSamples = PathElement.groupElement(10);
-    public static final PathElement PATH$maxFragmentShadingRateRasterizationSamples = PathElement.groupElement(11);
-    public static final PathElement PATH$fragmentShadingRateWithShaderDepthStencilWrites = PathElement.groupElement(12);
-    public static final PathElement PATH$fragmentShadingRateWithSampleMask = PathElement.groupElement(13);
-    public static final PathElement PATH$fragmentShadingRateWithShaderSampleMask = PathElement.groupElement(14);
-    public static final PathElement PATH$fragmentShadingRateWithConservativeRasterization = PathElement.groupElement(15);
-    public static final PathElement PATH$fragmentShadingRateWithFragmentShaderInterlock = PathElement.groupElement(16);
-    public static final PathElement PATH$fragmentShadingRateWithCustomSampleLocations = PathElement.groupElement(17);
-    public static final PathElement PATH$fragmentShadingRateStrictMultiplyCombiner = PathElement.groupElement(18);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$minFragmentShadingRateAttachmentTexelSize = PathElement.groupElement("minFragmentShadingRateAttachmentTexelSize");
+    public static final PathElement PATH$maxFragmentShadingRateAttachmentTexelSize = PathElement.groupElement("maxFragmentShadingRateAttachmentTexelSize");
+    public static final PathElement PATH$maxFragmentShadingRateAttachmentTexelSizeAspectRatio = PathElement.groupElement("maxFragmentShadingRateAttachmentTexelSizeAspectRatio");
+    public static final PathElement PATH$primitiveFragmentShadingRateWithMultipleViewports = PathElement.groupElement("primitiveFragmentShadingRateWithMultipleViewports");
+    public static final PathElement PATH$layeredShadingRateAttachments = PathElement.groupElement("layeredShadingRateAttachments");
+    public static final PathElement PATH$fragmentShadingRateNonTrivialCombinerOps = PathElement.groupElement("fragmentShadingRateNonTrivialCombinerOps");
+    public static final PathElement PATH$maxFragmentSize = PathElement.groupElement("maxFragmentSize");
+    public static final PathElement PATH$maxFragmentSizeAspectRatio = PathElement.groupElement("maxFragmentSizeAspectRatio");
+    public static final PathElement PATH$maxFragmentShadingRateCoverageSamples = PathElement.groupElement("maxFragmentShadingRateCoverageSamples");
+    public static final PathElement PATH$maxFragmentShadingRateRasterizationSamples = PathElement.groupElement("maxFragmentShadingRateRasterizationSamples");
+    public static final PathElement PATH$fragmentShadingRateWithShaderDepthStencilWrites = PathElement.groupElement("fragmentShadingRateWithShaderDepthStencilWrites");
+    public static final PathElement PATH$fragmentShadingRateWithSampleMask = PathElement.groupElement("fragmentShadingRateWithSampleMask");
+    public static final PathElement PATH$fragmentShadingRateWithShaderSampleMask = PathElement.groupElement("fragmentShadingRateWithShaderSampleMask");
+    public static final PathElement PATH$fragmentShadingRateWithConservativeRasterization = PathElement.groupElement("fragmentShadingRateWithConservativeRasterization");
+    public static final PathElement PATH$fragmentShadingRateWithFragmentShaderInterlock = PathElement.groupElement("fragmentShadingRateWithFragmentShaderInterlock");
+    public static final PathElement PATH$fragmentShadingRateWithCustomSampleLocations = PathElement.groupElement("fragmentShadingRateWithCustomSampleLocations");
+    public static final PathElement PATH$fragmentShadingRateStrictMultiplyCombiner = PathElement.groupElement("fragmentShadingRateStrictMultiplyCombiner");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

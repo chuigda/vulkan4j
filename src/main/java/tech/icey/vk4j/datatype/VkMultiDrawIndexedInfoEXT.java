@@ -22,9 +22,9 @@ public record VkMultiDrawIndexedInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("vertexOffset")
     );
 
-    public static final PathElement PATH$firstIndex = PathElement.groupElement(0);
-    public static final PathElement PATH$indexCount = PathElement.groupElement(1);
-    public static final PathElement PATH$vertexOffset = PathElement.groupElement(2);
+    public static final PathElement PATH$firstIndex = PathElement.groupElement("firstIndex");
+    public static final PathElement PATH$indexCount = PathElement.groupElement("indexCount");
+    public static final PathElement PATH$vertexOffset = PathElement.groupElement("vertexOffset");
 
     public static final OfInt LAYOUT$firstIndex = (OfInt) LAYOUT.select(PATH$firstIndex);
     public static final OfInt LAYOUT$indexCount = (OfInt) LAYOUT.select(PATH$indexCount);

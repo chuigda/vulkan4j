@@ -25,12 +25,12 @@ public record VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segmen
         ValueLayout.JAVA_SHORT.withName("lineStipplePattern")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$lineRasterizationMode = PathElement.groupElement(2);
-    public static final PathElement PATH$stippledLineEnable = PathElement.groupElement(3);
-    public static final PathElement PATH$lineStippleFactor = PathElement.groupElement(4);
-    public static final PathElement PATH$lineStipplePattern = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$lineRasterizationMode = PathElement.groupElement("lineRasterizationMode");
+    public static final PathElement PATH$stippledLineEnable = PathElement.groupElement("stippledLineEnable");
+    public static final PathElement PATH$lineStippleFactor = PathElement.groupElement("lineStippleFactor");
+    public static final PathElement PATH$lineStipplePattern = PathElement.groupElement("lineStipplePattern");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

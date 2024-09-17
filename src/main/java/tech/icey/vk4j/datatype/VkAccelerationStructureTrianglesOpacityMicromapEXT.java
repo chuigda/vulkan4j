@@ -29,16 +29,16 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment s
         ValueLayout.ADDRESS.withName("micromap")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$indexType = PathElement.groupElement(2);
-    public static final PathElement PATH$indexBuffer = PathElement.groupElement(3);
-    public static final PathElement PATH$indexStride = PathElement.groupElement(4);
-    public static final PathElement PATH$baseTriangle = PathElement.groupElement(5);
-    public static final PathElement PATH$usageCountsCount = PathElement.groupElement(6);
-    public static final PathElement PATH$pUsageCounts = PathElement.groupElement(7);
-    public static final PathElement PATH$ppUsageCounts = PathElement.groupElement(8);
-    public static final PathElement PATH$micromap = PathElement.groupElement(9);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$indexType = PathElement.groupElement("indexType");
+    public static final PathElement PATH$indexBuffer = PathElement.groupElement("indexBuffer");
+    public static final PathElement PATH$indexStride = PathElement.groupElement("indexStride");
+    public static final PathElement PATH$baseTriangle = PathElement.groupElement("baseTriangle");
+    public static final PathElement PATH$usageCountsCount = PathElement.groupElement("usageCountsCount");
+    public static final PathElement PATH$pUsageCounts = PathElement.groupElement("pUsageCounts");
+    public static final PathElement PATH$ppUsageCounts = PathElement.groupElement("ppUsageCounts");
+    public static final PathElement PATH$micromap = PathElement.groupElement("micromap");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

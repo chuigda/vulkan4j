@@ -24,11 +24,11 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
         ValueLayout.ADDRESS.withTargetLayout(VkSubresourceLayout.LAYOUT).withName("pPlaneLayouts")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$drmFormatModifier = PathElement.groupElement(2);
-    public static final PathElement PATH$drmFormatModifierPlaneCount = PathElement.groupElement(3);
-    public static final PathElement PATH$pPlaneLayouts = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$drmFormatModifier = PathElement.groupElement("drmFormatModifier");
+    public static final PathElement PATH$drmFormatModifierPlaneCount = PathElement.groupElement("drmFormatModifierPlaneCount");
+    public static final PathElement PATH$pPlaneLayouts = PathElement.groupElement("pPlaneLayouts");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

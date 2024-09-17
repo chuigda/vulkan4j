@@ -32,19 +32,19 @@ public record VkPipelineRasterizationStateCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("lineWidth")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$depthClampEnable = PathElement.groupElement(3);
-    public static final PathElement PATH$rasterizerDiscardEnable = PathElement.groupElement(4);
-    public static final PathElement PATH$polygonMode = PathElement.groupElement(5);
-    public static final PathElement PATH$cullMode = PathElement.groupElement(6);
-    public static final PathElement PATH$frontFace = PathElement.groupElement(7);
-    public static final PathElement PATH$depthBiasEnable = PathElement.groupElement(8);
-    public static final PathElement PATH$depthBiasConstantFactor = PathElement.groupElement(9);
-    public static final PathElement PATH$depthBiasClamp = PathElement.groupElement(10);
-    public static final PathElement PATH$depthBiasSlopeFactor = PathElement.groupElement(11);
-    public static final PathElement PATH$lineWidth = PathElement.groupElement(12);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$depthClampEnable = PathElement.groupElement("depthClampEnable");
+    public static final PathElement PATH$rasterizerDiscardEnable = PathElement.groupElement("rasterizerDiscardEnable");
+    public static final PathElement PATH$polygonMode = PathElement.groupElement("polygonMode");
+    public static final PathElement PATH$cullMode = PathElement.groupElement("cullMode");
+    public static final PathElement PATH$frontFace = PathElement.groupElement("frontFace");
+    public static final PathElement PATH$depthBiasEnable = PathElement.groupElement("depthBiasEnable");
+    public static final PathElement PATH$depthBiasConstantFactor = PathElement.groupElement("depthBiasConstantFactor");
+    public static final PathElement PATH$depthBiasClamp = PathElement.groupElement("depthBiasClamp");
+    public static final PathElement PATH$depthBiasSlopeFactor = PathElement.groupElement("depthBiasSlopeFactor");
+    public static final PathElement PATH$lineWidth = PathElement.groupElement("lineWidth");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

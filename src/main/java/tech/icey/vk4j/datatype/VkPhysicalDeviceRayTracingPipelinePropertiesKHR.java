@@ -29,16 +29,16 @@ public record VkPhysicalDeviceRayTracingPipelinePropertiesKHR(MemorySegment segm
         ValueLayout.JAVA_INT.withName("maxRayHitAttributeSize")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$shaderGroupHandleSize = PathElement.groupElement(2);
-    public static final PathElement PATH$maxRayRecursionDepth = PathElement.groupElement(3);
-    public static final PathElement PATH$maxShaderGroupStride = PathElement.groupElement(4);
-    public static final PathElement PATH$shaderGroupBaseAlignment = PathElement.groupElement(5);
-    public static final PathElement PATH$shaderGroupHandleCaptureReplaySize = PathElement.groupElement(6);
-    public static final PathElement PATH$maxRayDispatchInvocationCount = PathElement.groupElement(7);
-    public static final PathElement PATH$shaderGroupHandleAlignment = PathElement.groupElement(8);
-    public static final PathElement PATH$maxRayHitAttributeSize = PathElement.groupElement(9);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shaderGroupHandleSize = PathElement.groupElement("shaderGroupHandleSize");
+    public static final PathElement PATH$maxRayRecursionDepth = PathElement.groupElement("maxRayRecursionDepth");
+    public static final PathElement PATH$maxShaderGroupStride = PathElement.groupElement("maxShaderGroupStride");
+    public static final PathElement PATH$shaderGroupBaseAlignment = PathElement.groupElement("shaderGroupBaseAlignment");
+    public static final PathElement PATH$shaderGroupHandleCaptureReplaySize = PathElement.groupElement("shaderGroupHandleCaptureReplaySize");
+    public static final PathElement PATH$maxRayDispatchInvocationCount = PathElement.groupElement("maxRayDispatchInvocationCount");
+    public static final PathElement PATH$shaderGroupHandleAlignment = PathElement.groupElement("shaderGroupHandleAlignment");
+    public static final PathElement PATH$maxRayHitAttributeSize = PathElement.groupElement("maxRayHitAttributeSize");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

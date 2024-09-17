@@ -21,8 +21,8 @@ public record VkVertexInputBindingDivisorDescriptionKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("divisor")
     );
 
-    public static final PathElement PATH$binding = PathElement.groupElement(0);
-    public static final PathElement PATH$divisor = PathElement.groupElement(1);
+    public static final PathElement PATH$binding = PathElement.groupElement("binding");
+    public static final PathElement PATH$divisor = PathElement.groupElement("divisor");
 
     public static final OfInt LAYOUT$binding = (OfInt) LAYOUT.select(PATH$binding);
     public static final OfInt LAYOUT$divisor = (OfInt) LAYOUT.select(PATH$divisor);

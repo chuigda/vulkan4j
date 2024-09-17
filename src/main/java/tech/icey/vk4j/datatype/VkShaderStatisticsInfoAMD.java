@@ -26,13 +26,13 @@ public record VkShaderStatisticsInfoAMD(MemorySegment segment) {
         MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("computeWorkGroupSize")
     );
 
-    public static final PathElement PATH$shaderStageMask = PathElement.groupElement(0);
-    public static final PathElement PATH$resourceUsage = PathElement.groupElement(1);
-    public static final PathElement PATH$numPhysicalVgprs = PathElement.groupElement(2);
-    public static final PathElement PATH$numPhysicalSgprs = PathElement.groupElement(3);
-    public static final PathElement PATH$numAvailableVgprs = PathElement.groupElement(4);
-    public static final PathElement PATH$numAvailableSgprs = PathElement.groupElement(5);
-    public static final PathElement PATH$computeWorkGroupSize = PathElement.groupElement(6);
+    public static final PathElement PATH$shaderStageMask = PathElement.groupElement("shaderStageMask");
+    public static final PathElement PATH$resourceUsage = PathElement.groupElement("resourceUsage");
+    public static final PathElement PATH$numPhysicalVgprs = PathElement.groupElement("numPhysicalVgprs");
+    public static final PathElement PATH$numPhysicalSgprs = PathElement.groupElement("numPhysicalSgprs");
+    public static final PathElement PATH$numAvailableVgprs = PathElement.groupElement("numAvailableVgprs");
+    public static final PathElement PATH$numAvailableSgprs = PathElement.groupElement("numAvailableSgprs");
+    public static final PathElement PATH$computeWorkGroupSize = PathElement.groupElement("computeWorkGroupSize");
 
     public static final OfInt LAYOUT$shaderStageMask = (OfInt) LAYOUT.select(PATH$shaderStageMask);
     public static final StructLayout LAYOUT$resourceUsage = (StructLayout) LAYOUT.select(PATH$resourceUsage);

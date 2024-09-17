@@ -25,12 +25,12 @@ public record VkDescriptorUpdateTemplateEntry(MemorySegment segment) {
         NativeLayout.C_SIZE_T.withName("stride")
     );
 
-    public static final PathElement PATH$dstBinding = PathElement.groupElement(0);
-    public static final PathElement PATH$dstArrayElement = PathElement.groupElement(1);
-    public static final PathElement PATH$descriptorCount = PathElement.groupElement(2);
-    public static final PathElement PATH$descriptorType = PathElement.groupElement(3);
-    public static final PathElement PATH$offset = PathElement.groupElement(4);
-    public static final PathElement PATH$stride = PathElement.groupElement(5);
+    public static final PathElement PATH$dstBinding = PathElement.groupElement("dstBinding");
+    public static final PathElement PATH$dstArrayElement = PathElement.groupElement("dstArrayElement");
+    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
+    public static final PathElement PATH$descriptorType = PathElement.groupElement("descriptorType");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
 
     public static final OfInt LAYOUT$dstBinding = (OfInt) LAYOUT.select(PATH$dstBinding);
     public static final OfInt LAYOUT$dstArrayElement = (OfInt) LAYOUT.select(PATH$dstArrayElement);

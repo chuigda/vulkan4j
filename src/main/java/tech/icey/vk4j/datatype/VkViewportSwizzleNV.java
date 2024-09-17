@@ -23,10 +23,10 @@ public record VkViewportSwizzleNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("w")
     );
 
-    public static final PathElement PATH$x = PathElement.groupElement(0);
-    public static final PathElement PATH$y = PathElement.groupElement(1);
-    public static final PathElement PATH$z = PathElement.groupElement(2);
-    public static final PathElement PATH$w = PathElement.groupElement(3);
+    public static final PathElement PATH$x = PathElement.groupElement("x");
+    public static final PathElement PATH$y = PathElement.groupElement("y");
+    public static final PathElement PATH$z = PathElement.groupElement("z");
+    public static final PathElement PATH$w = PathElement.groupElement("w");
 
     public static final OfInt LAYOUT$x = (OfInt) LAYOUT.select(PATH$x);
     public static final OfInt LAYOUT$y = (OfInt) LAYOUT.select(PATH$y);

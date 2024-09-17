@@ -31,18 +31,18 @@ public record VkImageMemoryBarrier2(MemorySegment segment) {
         VkImageSubresourceRange.LAYOUT.withName("subresourceRange")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$srcStageMask = PathElement.groupElement(2);
-    public static final PathElement PATH$srcAccessMask = PathElement.groupElement(3);
-    public static final PathElement PATH$dstStageMask = PathElement.groupElement(4);
-    public static final PathElement PATH$dstAccessMask = PathElement.groupElement(5);
-    public static final PathElement PATH$oldLayout = PathElement.groupElement(6);
-    public static final PathElement PATH$newLayout = PathElement.groupElement(7);
-    public static final PathElement PATH$srcQueueFamilyIndex = PathElement.groupElement(8);
-    public static final PathElement PATH$dstQueueFamilyIndex = PathElement.groupElement(9);
-    public static final PathElement PATH$image = PathElement.groupElement(10);
-    public static final PathElement PATH$subresourceRange = PathElement.groupElement(11);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcStageMask = PathElement.groupElement("srcStageMask");
+    public static final PathElement PATH$srcAccessMask = PathElement.groupElement("srcAccessMask");
+    public static final PathElement PATH$dstStageMask = PathElement.groupElement("dstStageMask");
+    public static final PathElement PATH$dstAccessMask = PathElement.groupElement("dstAccessMask");
+    public static final PathElement PATH$oldLayout = PathElement.groupElement("oldLayout");
+    public static final PathElement PATH$newLayout = PathElement.groupElement("newLayout");
+    public static final PathElement PATH$srcQueueFamilyIndex = PathElement.groupElement("srcQueueFamilyIndex");
+    public static final PathElement PATH$dstQueueFamilyIndex = PathElement.groupElement("dstQueueFamilyIndex");
+    public static final PathElement PATH$image = PathElement.groupElement("image");
+    public static final PathElement PATH$subresourceRange = PathElement.groupElement("subresourceRange");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

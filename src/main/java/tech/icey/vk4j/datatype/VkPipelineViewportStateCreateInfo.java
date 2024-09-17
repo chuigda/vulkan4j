@@ -26,13 +26,13 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pScissors")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$viewportCount = PathElement.groupElement(3);
-    public static final PathElement PATH$pViewports = PathElement.groupElement(4);
-    public static final PathElement PATH$scissorCount = PathElement.groupElement(5);
-    public static final PathElement PATH$pScissors = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$viewportCount = PathElement.groupElement("viewportCount");
+    public static final PathElement PATH$pViewports = PathElement.groupElement("pViewports");
+    public static final PathElement PATH$scissorCount = PathElement.groupElement("scissorCount");
+    public static final PathElement PATH$pScissors = PathElement.groupElement("pScissors");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -21,8 +21,8 @@ public record VkViewportWScalingNV(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("ycoeff")
     );
 
-    public static final PathElement PATH$xcoeff = PathElement.groupElement(0);
-    public static final PathElement PATH$ycoeff = PathElement.groupElement(1);
+    public static final PathElement PATH$xcoeff = PathElement.groupElement("xcoeff");
+    public static final PathElement PATH$ycoeff = PathElement.groupElement("ycoeff");
 
     public static final OfFloat LAYOUT$xcoeff = (OfFloat) LAYOUT.select(PATH$xcoeff);
     public static final OfFloat LAYOUT$ycoeff = (OfFloat) LAYOUT.select(PATH$ycoeff);

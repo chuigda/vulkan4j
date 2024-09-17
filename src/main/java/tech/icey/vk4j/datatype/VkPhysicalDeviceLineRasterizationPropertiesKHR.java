@@ -22,9 +22,9 @@ public record VkPhysicalDeviceLineRasterizationPropertiesKHR(MemorySegment segme
         ValueLayout.JAVA_INT.withName("lineSubPixelPrecisionBits")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$lineSubPixelPrecisionBits = PathElement.groupElement(2);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$lineSubPixelPrecisionBits = PathElement.groupElement("lineSubPixelPrecisionBits");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

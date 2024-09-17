@@ -25,12 +25,12 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pSplitInstanceBindRegions")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$deviceIndexCount = PathElement.groupElement(2);
-    public static final PathElement PATH$pDeviceIndices = PathElement.groupElement(3);
-    public static final PathElement PATH$splitInstanceBindRegionCount = PathElement.groupElement(4);
-    public static final PathElement PATH$pSplitInstanceBindRegions = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$deviceIndexCount = PathElement.groupElement("deviceIndexCount");
+    public static final PathElement PATH$pDeviceIndices = PathElement.groupElement("pDeviceIndices");
+    public static final PathElement PATH$splitInstanceBindRegionCount = PathElement.groupElement("splitInstanceBindRegionCount");
+    public static final PathElement PATH$pSplitInstanceBindRegions = PathElement.groupElement("pSplitInstanceBindRegions");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

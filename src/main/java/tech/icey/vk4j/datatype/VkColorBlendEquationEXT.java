@@ -25,12 +25,12 @@ public record VkColorBlendEquationEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("alphaBlendOp")
     );
 
-    public static final PathElement PATH$srcColorBlendFactor = PathElement.groupElement(0);
-    public static final PathElement PATH$dstColorBlendFactor = PathElement.groupElement(1);
-    public static final PathElement PATH$colorBlendOp = PathElement.groupElement(2);
-    public static final PathElement PATH$srcAlphaBlendFactor = PathElement.groupElement(3);
-    public static final PathElement PATH$dstAlphaBlendFactor = PathElement.groupElement(4);
-    public static final PathElement PATH$alphaBlendOp = PathElement.groupElement(5);
+    public static final PathElement PATH$srcColorBlendFactor = PathElement.groupElement("srcColorBlendFactor");
+    public static final PathElement PATH$dstColorBlendFactor = PathElement.groupElement("dstColorBlendFactor");
+    public static final PathElement PATH$colorBlendOp = PathElement.groupElement("colorBlendOp");
+    public static final PathElement PATH$srcAlphaBlendFactor = PathElement.groupElement("srcAlphaBlendFactor");
+    public static final PathElement PATH$dstAlphaBlendFactor = PathElement.groupElement("dstAlphaBlendFactor");
+    public static final PathElement PATH$alphaBlendOp = PathElement.groupElement("alphaBlendOp");
 
     public static final OfInt LAYOUT$srcColorBlendFactor = (OfInt) LAYOUT.select(PATH$srcColorBlendFactor);
     public static final OfInt LAYOUT$dstColorBlendFactor = (OfInt) LAYOUT.select(PATH$dstColorBlendFactor);

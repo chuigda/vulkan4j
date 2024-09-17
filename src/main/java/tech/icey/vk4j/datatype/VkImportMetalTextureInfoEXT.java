@@ -23,10 +23,10 @@ public record VkImportMetalTextureInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("mtlTexture")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$plane = PathElement.groupElement(2);
-    public static final PathElement PATH$mtlTexture = PathElement.groupElement(3);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$plane = PathElement.groupElement("plane");
+    public static final PathElement PATH$mtlTexture = PathElement.groupElement("mtlTexture");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

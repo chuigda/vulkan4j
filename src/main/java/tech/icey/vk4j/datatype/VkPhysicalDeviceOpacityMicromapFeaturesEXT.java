@@ -24,11 +24,11 @@ public record VkPhysicalDeviceOpacityMicromapFeaturesEXT(MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("micromapHostCommands")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$micromap = PathElement.groupElement(2);
-    public static final PathElement PATH$micromapCaptureReplay = PathElement.groupElement(3);
-    public static final PathElement PATH$micromapHostCommands = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$micromap = PathElement.groupElement("micromap");
+    public static final PathElement PATH$micromapCaptureReplay = PathElement.groupElement("micromapCaptureReplay");
+    public static final PathElement PATH$micromapHostCommands = PathElement.groupElement("micromapHostCommands");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

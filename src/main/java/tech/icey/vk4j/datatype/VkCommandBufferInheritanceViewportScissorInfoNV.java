@@ -24,11 +24,11 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
         ValueLayout.ADDRESS.withTargetLayout(VkViewport.LAYOUT).withName("pViewportDepths")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$viewportScissor2D = PathElement.groupElement(2);
-    public static final PathElement PATH$viewportDepthCount = PathElement.groupElement(3);
-    public static final PathElement PATH$pViewportDepths = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$viewportScissor2D = PathElement.groupElement("viewportScissor2D");
+    public static final PathElement PATH$viewportDepthCount = PathElement.groupElement("viewportDepthCount");
+    public static final PathElement PATH$pViewportDepths = PathElement.groupElement("pViewportDepths");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

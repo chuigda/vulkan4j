@@ -26,13 +26,13 @@ public record VkSurfacePresentScalingCapabilitiesEXT(MemorySegment segment) {
         VkExtent2D.LAYOUT.withName("maxScaledImageExtent")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$supportedPresentScaling = PathElement.groupElement(2);
-    public static final PathElement PATH$supportedPresentGravityX = PathElement.groupElement(3);
-    public static final PathElement PATH$supportedPresentGravityY = PathElement.groupElement(4);
-    public static final PathElement PATH$minScaledImageExtent = PathElement.groupElement(5);
-    public static final PathElement PATH$maxScaledImageExtent = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$supportedPresentScaling = PathElement.groupElement("supportedPresentScaling");
+    public static final PathElement PATH$supportedPresentGravityX = PathElement.groupElement("supportedPresentGravityX");
+    public static final PathElement PATH$supportedPresentGravityY = PathElement.groupElement("supportedPresentGravityY");
+    public static final PathElement PATH$minScaledImageExtent = PathElement.groupElement("minScaledImageExtent");
+    public static final PathElement PATH$maxScaledImageExtent = PathElement.groupElement("maxScaledImageExtent");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

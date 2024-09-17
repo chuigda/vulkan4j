@@ -24,11 +24,11 @@ public record VkPastPresentationTimingGOOGLE(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("presentMargin")
     );
 
-    public static final PathElement PATH$presentID = PathElement.groupElement(0);
-    public static final PathElement PATH$desiredPresentTime = PathElement.groupElement(1);
-    public static final PathElement PATH$actualPresentTime = PathElement.groupElement(2);
-    public static final PathElement PATH$earliestPresentTime = PathElement.groupElement(3);
-    public static final PathElement PATH$presentMargin = PathElement.groupElement(4);
+    public static final PathElement PATH$presentID = PathElement.groupElement("presentID");
+    public static final PathElement PATH$desiredPresentTime = PathElement.groupElement("desiredPresentTime");
+    public static final PathElement PATH$actualPresentTime = PathElement.groupElement("actualPresentTime");
+    public static final PathElement PATH$earliestPresentTime = PathElement.groupElement("earliestPresentTime");
+    public static final PathElement PATH$presentMargin = PathElement.groupElement("presentMargin");
 
     public static final OfInt LAYOUT$presentID = (OfInt) LAYOUT.select(PATH$presentID);
     public static final OfLong LAYOUT$desiredPresentTime = (OfLong) LAYOUT.select(PATH$desiredPresentTime);

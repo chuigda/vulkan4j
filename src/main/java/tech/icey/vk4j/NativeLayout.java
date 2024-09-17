@@ -75,10 +75,14 @@ public final class NativeLayout {
     /// aligned. The resulting layout should be the same with a C struct layout.
     public static MemoryLayout structLayout(MemoryLayout... elements) {
         long currentSize = 0;
+        long maxAlignment = 0;
         List<MemoryLayout> paddedElements = new ArrayList<>();
 
         for (MemoryLayout element : elements) {
             long alignment = element.byteAlignment();
+            if (alignment > maxAlignment) {
+                maxAlignment = alignment;
+            }
             long padding = (alignment - (currentSize % alignment)) % alignment;
             if (padding != 0) {
                 paddedElements.add(MemoryLayout.paddingLayout(padding));
@@ -87,6 +91,13 @@ public final class NativeLayout {
 
             paddedElements.add(element);
             currentSize += element.byteSize();
+        }
+
+        if (maxAlignment != 0) {
+            long padding = (maxAlignment - (currentSize % maxAlignment)) % maxAlignment;
+            if (padding != 0) {
+                paddedElements.add(MemoryLayout.paddingLayout(padding));
+            }
         }
 
         MemoryLayout[] paddedElementsArray = paddedElements.toArray(new MemoryLayout[0]);

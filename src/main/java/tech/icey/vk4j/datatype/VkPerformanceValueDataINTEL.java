@@ -24,11 +24,11 @@ public record VkPerformanceValueDataINTEL(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("valueString")
     );
 
-    public static final PathElement PATH$value32 = PathElement.groupElement(0);
-    public static final PathElement PATH$value64 = PathElement.groupElement(1);
-    public static final PathElement PATH$valueFloat = PathElement.groupElement(2);
-    public static final PathElement PATH$valueBool = PathElement.groupElement(3);
-    public static final PathElement PATH$valueString = PathElement.groupElement(4);
+    public static final PathElement PATH$value32 = PathElement.groupElement("value32");
+    public static final PathElement PATH$value64 = PathElement.groupElement("value64");
+    public static final PathElement PATH$valueFloat = PathElement.groupElement("valueFloat");
+    public static final PathElement PATH$valueBool = PathElement.groupElement("valueBool");
+    public static final PathElement PATH$valueString = PathElement.groupElement("valueString");
 
     public static final OfInt LAYOUT$value32 = (OfInt) LAYOUT.select(PATH$value32);
     public static final OfLong LAYOUT$value64 = (OfLong) LAYOUT.select(PATH$value64);

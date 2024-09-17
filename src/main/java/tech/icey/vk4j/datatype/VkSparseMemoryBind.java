@@ -24,11 +24,11 @@ public record VkSparseMemoryBind(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("flags")
     );
 
-    public static final PathElement PATH$resourceOffset = PathElement.groupElement(0);
-    public static final PathElement PATH$size = PathElement.groupElement(1);
-    public static final PathElement PATH$memory = PathElement.groupElement(2);
-    public static final PathElement PATH$memoryOffset = PathElement.groupElement(3);
-    public static final PathElement PATH$flags = PathElement.groupElement(4);
+    public static final PathElement PATH$resourceOffset = PathElement.groupElement("resourceOffset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$memory = PathElement.groupElement("memory");
+    public static final PathElement PATH$memoryOffset = PathElement.groupElement("memoryOffset");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
 
     public static final OfLong LAYOUT$resourceOffset = (OfLong) LAYOUT.select(PATH$resourceOffset);
     public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);

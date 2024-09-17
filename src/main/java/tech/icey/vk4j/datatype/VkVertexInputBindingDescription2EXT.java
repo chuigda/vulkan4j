@@ -25,12 +25,12 @@ public record VkVertexInputBindingDescription2EXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("divisor")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$binding = PathElement.groupElement(2);
-    public static final PathElement PATH$stride = PathElement.groupElement(3);
-    public static final PathElement PATH$inputRate = PathElement.groupElement(4);
-    public static final PathElement PATH$divisor = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$binding = PathElement.groupElement("binding");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
+    public static final PathElement PATH$inputRate = PathElement.groupElement("inputRate");
+    public static final PathElement PATH$divisor = PathElement.groupElement("divisor");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -24,11 +24,11 @@ public record VkDepthBiasInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("depthBiasSlopeFactor")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$depthBiasConstantFactor = PathElement.groupElement(2);
-    public static final PathElement PATH$depthBiasClamp = PathElement.groupElement(3);
-    public static final PathElement PATH$depthBiasSlopeFactor = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$depthBiasConstantFactor = PathElement.groupElement("depthBiasConstantFactor");
+    public static final PathElement PATH$depthBiasClamp = PathElement.groupElement("depthBiasClamp");
+    public static final PathElement PATH$depthBiasSlopeFactor = PathElement.groupElement("depthBiasSlopeFactor");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -23,10 +23,10 @@ public record VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR(MemorySegment 
         ValueLayout.JAVA_INT.withName("computeDerivativeGroupLinear")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$computeDerivativeGroupQuads = PathElement.groupElement(2);
-    public static final PathElement PATH$computeDerivativeGroupLinear = PathElement.groupElement(3);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$computeDerivativeGroupQuads = PathElement.groupElement("computeDerivativeGroupQuads");
+    public static final PathElement PATH$computeDerivativeGroupLinear = PathElement.groupElement("computeDerivativeGroupLinear");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

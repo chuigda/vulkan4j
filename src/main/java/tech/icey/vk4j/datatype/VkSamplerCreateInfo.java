@@ -37,24 +37,24 @@ public record VkSamplerCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("unnormalizedCoordinates")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$magFilter = PathElement.groupElement(3);
-    public static final PathElement PATH$minFilter = PathElement.groupElement(4);
-    public static final PathElement PATH$mipmapMode = PathElement.groupElement(5);
-    public static final PathElement PATH$addressModeU = PathElement.groupElement(6);
-    public static final PathElement PATH$addressModeV = PathElement.groupElement(7);
-    public static final PathElement PATH$addressModeW = PathElement.groupElement(8);
-    public static final PathElement PATH$mipLodBias = PathElement.groupElement(9);
-    public static final PathElement PATH$anisotropyEnable = PathElement.groupElement(10);
-    public static final PathElement PATH$maxAnisotropy = PathElement.groupElement(11);
-    public static final PathElement PATH$compareEnable = PathElement.groupElement(12);
-    public static final PathElement PATH$compareOp = PathElement.groupElement(13);
-    public static final PathElement PATH$minLod = PathElement.groupElement(14);
-    public static final PathElement PATH$maxLod = PathElement.groupElement(15);
-    public static final PathElement PATH$borderColor = PathElement.groupElement(16);
-    public static final PathElement PATH$unnormalizedCoordinates = PathElement.groupElement(17);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$magFilter = PathElement.groupElement("magFilter");
+    public static final PathElement PATH$minFilter = PathElement.groupElement("minFilter");
+    public static final PathElement PATH$mipmapMode = PathElement.groupElement("mipmapMode");
+    public static final PathElement PATH$addressModeU = PathElement.groupElement("addressModeU");
+    public static final PathElement PATH$addressModeV = PathElement.groupElement("addressModeV");
+    public static final PathElement PATH$addressModeW = PathElement.groupElement("addressModeW");
+    public static final PathElement PATH$mipLodBias = PathElement.groupElement("mipLodBias");
+    public static final PathElement PATH$anisotropyEnable = PathElement.groupElement("anisotropyEnable");
+    public static final PathElement PATH$maxAnisotropy = PathElement.groupElement("maxAnisotropy");
+    public static final PathElement PATH$compareEnable = PathElement.groupElement("compareEnable");
+    public static final PathElement PATH$compareOp = PathElement.groupElement("compareOp");
+    public static final PathElement PATH$minLod = PathElement.groupElement("minLod");
+    public static final PathElement PATH$maxLod = PathElement.groupElement("maxLod");
+    public static final PathElement PATH$borderColor = PathElement.groupElement("borderColor");
+    public static final PathElement PATH$unnormalizedCoordinates = PathElement.groupElement("unnormalizedCoordinates");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

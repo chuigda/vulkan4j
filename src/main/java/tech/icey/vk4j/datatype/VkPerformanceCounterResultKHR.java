@@ -25,12 +25,12 @@ public record VkPerformanceCounterResultKHR(MemorySegment segment) {
         ValueLayout.JAVA_DOUBLE.withName("float64")
     );
 
-    public static final PathElement PATH$int32 = PathElement.groupElement(0);
-    public static final PathElement PATH$int64 = PathElement.groupElement(1);
-    public static final PathElement PATH$uint32 = PathElement.groupElement(2);
-    public static final PathElement PATH$uint64 = PathElement.groupElement(3);
-    public static final PathElement PATH$float32 = PathElement.groupElement(4);
-    public static final PathElement PATH$float64 = PathElement.groupElement(5);
+    public static final PathElement PATH$int32 = PathElement.groupElement("int32");
+    public static final PathElement PATH$int64 = PathElement.groupElement("int64");
+    public static final PathElement PATH$uint32 = PathElement.groupElement("uint32");
+    public static final PathElement PATH$uint64 = PathElement.groupElement("uint64");
+    public static final PathElement PATH$float32 = PathElement.groupElement("float32");
+    public static final PathElement PATH$float64 = PathElement.groupElement("float64");
 
     public static final OfInt LAYOUT$int32 = (OfInt) LAYOUT.select(PATH$int32);
     public static final OfLong LAYOUT$int64 = (OfLong) LAYOUT.select(PATH$int64);

@@ -36,23 +36,23 @@ public record VkPhysicalDeviceVulkan13Features(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("maintenance4")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$robustImageAccess = PathElement.groupElement(2);
-    public static final PathElement PATH$inlineUniformBlock = PathElement.groupElement(3);
-    public static final PathElement PATH$descriptorBindingInlineUniformBlockUpdateAfterBind = PathElement.groupElement(4);
-    public static final PathElement PATH$pipelineCreationCacheControl = PathElement.groupElement(5);
-    public static final PathElement PATH$privateData = PathElement.groupElement(6);
-    public static final PathElement PATH$shaderDemoteToHelperInvocation = PathElement.groupElement(7);
-    public static final PathElement PATH$shaderTerminateInvocation = PathElement.groupElement(8);
-    public static final PathElement PATH$subgroupSizeControl = PathElement.groupElement(9);
-    public static final PathElement PATH$computeFullSubgroups = PathElement.groupElement(10);
-    public static final PathElement PATH$synchronization2 = PathElement.groupElement(11);
-    public static final PathElement PATH$textureCompressionASTC_HDR = PathElement.groupElement(12);
-    public static final PathElement PATH$shaderZeroInitializeWorkgroupMemory = PathElement.groupElement(13);
-    public static final PathElement PATH$dynamicRendering = PathElement.groupElement(14);
-    public static final PathElement PATH$shaderIntegerDotProduct = PathElement.groupElement(15);
-    public static final PathElement PATH$maintenance4 = PathElement.groupElement(16);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$robustImageAccess = PathElement.groupElement("robustImageAccess");
+    public static final PathElement PATH$inlineUniformBlock = PathElement.groupElement("inlineUniformBlock");
+    public static final PathElement PATH$descriptorBindingInlineUniformBlockUpdateAfterBind = PathElement.groupElement("descriptorBindingInlineUniformBlockUpdateAfterBind");
+    public static final PathElement PATH$pipelineCreationCacheControl = PathElement.groupElement("pipelineCreationCacheControl");
+    public static final PathElement PATH$privateData = PathElement.groupElement("privateData");
+    public static final PathElement PATH$shaderDemoteToHelperInvocation = PathElement.groupElement("shaderDemoteToHelperInvocation");
+    public static final PathElement PATH$shaderTerminateInvocation = PathElement.groupElement("shaderTerminateInvocation");
+    public static final PathElement PATH$subgroupSizeControl = PathElement.groupElement("subgroupSizeControl");
+    public static final PathElement PATH$computeFullSubgroups = PathElement.groupElement("computeFullSubgroups");
+    public static final PathElement PATH$synchronization2 = PathElement.groupElement("synchronization2");
+    public static final PathElement PATH$textureCompressionASTC_HDR = PathElement.groupElement("textureCompressionASTC_HDR");
+    public static final PathElement PATH$shaderZeroInitializeWorkgroupMemory = PathElement.groupElement("shaderZeroInitializeWorkgroupMemory");
+    public static final PathElement PATH$dynamicRendering = PathElement.groupElement("dynamicRendering");
+    public static final PathElement PATH$shaderIntegerDotProduct = PathElement.groupElement("shaderIntegerDotProduct");
+    public static final PathElement PATH$maintenance4 = PathElement.groupElement("maintenance4");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

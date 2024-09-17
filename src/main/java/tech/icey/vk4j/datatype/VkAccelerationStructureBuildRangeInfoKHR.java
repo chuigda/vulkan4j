@@ -23,10 +23,10 @@ public record VkAccelerationStructureBuildRangeInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("transformOffset")
     );
 
-    public static final PathElement PATH$primitiveCount = PathElement.groupElement(0);
-    public static final PathElement PATH$primitiveOffset = PathElement.groupElement(1);
-    public static final PathElement PATH$firstVertex = PathElement.groupElement(2);
-    public static final PathElement PATH$transformOffset = PathElement.groupElement(3);
+    public static final PathElement PATH$primitiveCount = PathElement.groupElement("primitiveCount");
+    public static final PathElement PATH$primitiveOffset = PathElement.groupElement("primitiveOffset");
+    public static final PathElement PATH$firstVertex = PathElement.groupElement("firstVertex");
+    public static final PathElement PATH$transformOffset = PathElement.groupElement("transformOffset");
 
     public static final OfInt LAYOUT$primitiveCount = (OfInt) LAYOUT.select(PATH$primitiveCount);
     public static final OfInt LAYOUT$primitiveOffset = (OfInt) LAYOUT.select(PATH$primitiveOffset);

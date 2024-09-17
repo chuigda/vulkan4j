@@ -21,8 +21,8 @@ public record VkMemoryType(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("heapIndex")
     );
 
-    public static final PathElement PATH$propertyFlags = PathElement.groupElement(0);
-    public static final PathElement PATH$heapIndex = PathElement.groupElement(1);
+    public static final PathElement PATH$propertyFlags = PathElement.groupElement("propertyFlags");
+    public static final PathElement PATH$heapIndex = PathElement.groupElement("heapIndex");
 
     public static final OfInt LAYOUT$propertyFlags = (OfInt) LAYOUT.select(PATH$propertyFlags);
     public static final OfInt LAYOUT$heapIndex = (OfInt) LAYOUT.select(PATH$heapIndex);

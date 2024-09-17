@@ -28,15 +28,15 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDynamicOffsets")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$stageFlags = PathElement.groupElement(2);
-    public static final PathElement PATH$layout = PathElement.groupElement(3);
-    public static final PathElement PATH$firstSet = PathElement.groupElement(4);
-    public static final PathElement PATH$descriptorSetCount = PathElement.groupElement(5);
-    public static final PathElement PATH$pDescriptorSets = PathElement.groupElement(6);
-    public static final PathElement PATH$dynamicOffsetCount = PathElement.groupElement(7);
-    public static final PathElement PATH$pDynamicOffsets = PathElement.groupElement(8);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$stageFlags = PathElement.groupElement("stageFlags");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+    public static final PathElement PATH$firstSet = PathElement.groupElement("firstSet");
+    public static final PathElement PATH$descriptorSetCount = PathElement.groupElement("descriptorSetCount");
+    public static final PathElement PATH$pDescriptorSets = PathElement.groupElement("pDescriptorSets");
+    public static final PathElement PATH$dynamicOffsetCount = PathElement.groupElement("dynamicOffsetCount");
+    public static final PathElement PATH$pDynamicOffsets = PathElement.groupElement("pDynamicOffsets");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

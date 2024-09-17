@@ -22,9 +22,9 @@ public record VkDeviceFaultAddressInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("addressPrecision")
     );
 
-    public static final PathElement PATH$addressType = PathElement.groupElement(0);
-    public static final PathElement PATH$reportedAddress = PathElement.groupElement(1);
-    public static final PathElement PATH$addressPrecision = PathElement.groupElement(2);
+    public static final PathElement PATH$addressType = PathElement.groupElement("addressType");
+    public static final PathElement PATH$reportedAddress = PathElement.groupElement("reportedAddress");
+    public static final PathElement PATH$addressPrecision = PathElement.groupElement("addressPrecision");
 
     public static final OfInt LAYOUT$addressType = (OfInt) LAYOUT.select(PATH$addressType);
     public static final OfLong LAYOUT$reportedAddress = (OfLong) LAYOUT.select(PATH$reportedAddress);

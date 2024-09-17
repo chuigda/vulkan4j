@@ -21,8 +21,8 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDescriptorTypes")
     );
 
-    public static final PathElement PATH$descriptorTypeCount = PathElement.groupElement(0);
-    public static final PathElement PATH$pDescriptorTypes = PathElement.groupElement(1);
+    public static final PathElement PATH$descriptorTypeCount = PathElement.groupElement("descriptorTypeCount");
+    public static final PathElement PATH$pDescriptorTypes = PathElement.groupElement("pDescriptorTypes");
 
     public static final OfInt LAYOUT$descriptorTypeCount = (OfInt) LAYOUT.select(PATH$descriptorTypeCount);
     public static final AddressLayout LAYOUT$pDescriptorTypes = (AddressLayout) LAYOUT.select(PATH$pDescriptorTypes);

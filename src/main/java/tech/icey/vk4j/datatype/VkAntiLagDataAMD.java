@@ -24,11 +24,11 @@ public record VkAntiLagDataAMD(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkAntiLagPresentationInfoAMD.LAYOUT).withName("pPresentationInfo")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$mode = PathElement.groupElement(2);
-    public static final PathElement PATH$maxFPS = PathElement.groupElement(3);
-    public static final PathElement PATH$pPresentationInfo = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$mode = PathElement.groupElement("mode");
+    public static final PathElement PATH$maxFPS = PathElement.groupElement("maxFPS");
+    public static final PathElement PATH$pPresentationInfo = PathElement.groupElement("pPresentationInfo");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

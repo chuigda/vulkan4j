@@ -21,8 +21,8 @@ public record VkRect2D(MemorySegment segment) {
         VkExtent2D.LAYOUT.withName("extent")
     );
 
-    public static final PathElement PATH$offset = PathElement.groupElement(0);
-    public static final PathElement PATH$extent = PathElement.groupElement(1);
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$extent = PathElement.groupElement("extent");
 
     public static final StructLayout LAYOUT$offset = (StructLayout) LAYOUT.select(PATH$offset);
     public static final StructLayout LAYOUT$extent = (StructLayout) LAYOUT.select(PATH$extent);

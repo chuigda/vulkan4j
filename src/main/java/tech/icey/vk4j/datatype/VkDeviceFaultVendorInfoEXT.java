@@ -22,9 +22,9 @@ public record VkDeviceFaultVendorInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("vendorFaultData")
     );
 
-    public static final PathElement PATH$description = PathElement.groupElement(0);
-    public static final PathElement PATH$vendorFaultCode = PathElement.groupElement(1);
-    public static final PathElement PATH$vendorFaultData = PathElement.groupElement(2);
+    public static final PathElement PATH$description = PathElement.groupElement("description");
+    public static final PathElement PATH$vendorFaultCode = PathElement.groupElement("vendorFaultCode");
+    public static final PathElement PATH$vendorFaultData = PathElement.groupElement("vendorFaultData");
 
     public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
     public static final OfLong LAYOUT$vendorFaultCode = (OfLong) LAYOUT.select(PATH$vendorFaultCode);

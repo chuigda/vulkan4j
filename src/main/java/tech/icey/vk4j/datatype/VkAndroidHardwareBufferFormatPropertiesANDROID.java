@@ -29,16 +29,16 @@ public record VkAndroidHardwareBufferFormatPropertiesANDROID(MemorySegment segme
         ValueLayout.JAVA_INT.withName("suggestedYChromaOffset")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$format = PathElement.groupElement(2);
-    public static final PathElement PATH$externalFormat = PathElement.groupElement(3);
-    public static final PathElement PATH$formatFeatures = PathElement.groupElement(4);
-    public static final PathElement PATH$samplerYcbcrConversionComponents = PathElement.groupElement(5);
-    public static final PathElement PATH$suggestedYcbcrModel = PathElement.groupElement(6);
-    public static final PathElement PATH$suggestedYcbcrRange = PathElement.groupElement(7);
-    public static final PathElement PATH$suggestedXChromaOffset = PathElement.groupElement(8);
-    public static final PathElement PATH$suggestedYChromaOffset = PathElement.groupElement(9);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$externalFormat = PathElement.groupElement("externalFormat");
+    public static final PathElement PATH$formatFeatures = PathElement.groupElement("formatFeatures");
+    public static final PathElement PATH$samplerYcbcrConversionComponents = PathElement.groupElement("samplerYcbcrConversionComponents");
+    public static final PathElement PATH$suggestedYcbcrModel = PathElement.groupElement("suggestedYcbcrModel");
+    public static final PathElement PATH$suggestedYcbcrRange = PathElement.groupElement("suggestedYcbcrRange");
+    public static final PathElement PATH$suggestedXChromaOffset = PathElement.groupElement("suggestedXChromaOffset");
+    public static final PathElement PATH$suggestedYChromaOffset = PathElement.groupElement("suggestedYChromaOffset");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

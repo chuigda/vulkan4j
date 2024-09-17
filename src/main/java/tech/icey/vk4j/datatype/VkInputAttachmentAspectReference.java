@@ -22,9 +22,9 @@ public record VkInputAttachmentAspectReference(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("aspectMask")
     );
 
-    public static final PathElement PATH$subpass = PathElement.groupElement(0);
-    public static final PathElement PATH$inputAttachmentIndex = PathElement.groupElement(1);
-    public static final PathElement PATH$aspectMask = PathElement.groupElement(2);
+    public static final PathElement PATH$subpass = PathElement.groupElement("subpass");
+    public static final PathElement PATH$inputAttachmentIndex = PathElement.groupElement("inputAttachmentIndex");
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
 
     public static final OfInt LAYOUT$subpass = (OfInt) LAYOUT.select(PATH$subpass);
     public static final OfInt LAYOUT$inputAttachmentIndex = (OfInt) LAYOUT.select(PATH$inputAttachmentIndex);

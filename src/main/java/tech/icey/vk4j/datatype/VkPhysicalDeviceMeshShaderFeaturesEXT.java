@@ -26,13 +26,13 @@ public record VkPhysicalDeviceMeshShaderFeaturesEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("meshShaderQueries")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$taskShader = PathElement.groupElement(2);
-    public static final PathElement PATH$meshShader = PathElement.groupElement(3);
-    public static final PathElement PATH$multiviewMeshShader = PathElement.groupElement(4);
-    public static final PathElement PATH$primitiveFragmentShadingRateMeshShader = PathElement.groupElement(5);
-    public static final PathElement PATH$meshShaderQueries = PathElement.groupElement(6);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$taskShader = PathElement.groupElement("taskShader");
+    public static final PathElement PATH$meshShader = PathElement.groupElement("meshShader");
+    public static final PathElement PATH$multiviewMeshShader = PathElement.groupElement("multiviewMeshShader");
+    public static final PathElement PATH$primitiveFragmentShadingRateMeshShader = PathElement.groupElement("primitiveFragmentShadingRateMeshShader");
+    public static final PathElement PATH$meshShaderQueries = PathElement.groupElement("meshShaderQueries");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

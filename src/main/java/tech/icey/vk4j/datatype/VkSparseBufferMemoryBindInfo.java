@@ -22,9 +22,9 @@ public record VkSparseBufferMemoryBindInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkSparseMemoryBind.LAYOUT).withName("pBinds")
     );
 
-    public static final PathElement PATH$buffer = PathElement.groupElement(0);
-    public static final PathElement PATH$bindCount = PathElement.groupElement(1);
-    public static final PathElement PATH$pBinds = PathElement.groupElement(2);
+    public static final PathElement PATH$buffer = PathElement.groupElement("buffer");
+    public static final PathElement PATH$bindCount = PathElement.groupElement("bindCount");
+    public static final PathElement PATH$pBinds = PathElement.groupElement("pBinds");
 
     public static final AddressLayout LAYOUT$buffer = (AddressLayout) LAYOUT.select(PATH$buffer);
     public static final OfInt LAYOUT$bindCount = (OfInt) LAYOUT.select(PATH$bindCount);

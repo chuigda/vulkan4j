@@ -25,12 +25,12 @@ public record VkPhysicalDevicePipelineRobustnessPropertiesEXT(MemorySegment segm
         ValueLayout.JAVA_INT.withName("defaultRobustnessImages")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$defaultRobustnessStorageBuffers = PathElement.groupElement(2);
-    public static final PathElement PATH$defaultRobustnessUniformBuffers = PathElement.groupElement(3);
-    public static final PathElement PATH$defaultRobustnessVertexInputs = PathElement.groupElement(4);
-    public static final PathElement PATH$defaultRobustnessImages = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$defaultRobustnessStorageBuffers = PathElement.groupElement("defaultRobustnessStorageBuffers");
+    public static final PathElement PATH$defaultRobustnessUniformBuffers = PathElement.groupElement("defaultRobustnessUniformBuffers");
+    public static final PathElement PATH$defaultRobustnessVertexInputs = PathElement.groupElement("defaultRobustnessVertexInputs");
+    public static final PathElement PATH$defaultRobustnessImages = PathElement.groupElement("defaultRobustnessImages");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

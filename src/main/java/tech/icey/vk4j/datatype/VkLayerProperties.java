@@ -23,10 +23,10 @@ public record VkLayerProperties(MemorySegment segment) {
         MemoryLayout.sequenceLayout(VK_MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description")
     );
 
-    public static final PathElement PATH$layerName = PathElement.groupElement(0);
-    public static final PathElement PATH$specVersion = PathElement.groupElement(1);
-    public static final PathElement PATH$implementationVersion = PathElement.groupElement(2);
-    public static final PathElement PATH$description = PathElement.groupElement(3);
+    public static final PathElement PATH$layerName = PathElement.groupElement("layerName");
+    public static final PathElement PATH$specVersion = PathElement.groupElement("specVersion");
+    public static final PathElement PATH$implementationVersion = PathElement.groupElement("implementationVersion");
+    public static final PathElement PATH$description = PathElement.groupElement("description");
 
     public static final SequenceLayout LAYOUT$layerName = (SequenceLayout) LAYOUT.select(PATH$layerName);
     public static final OfInt LAYOUT$specVersion = (OfInt) LAYOUT.select(PATH$specVersion);

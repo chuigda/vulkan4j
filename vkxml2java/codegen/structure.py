@@ -100,10 +100,10 @@ def generate_structure_path_element(members: list[Member]) -> str:
             next_ = members[i + 1]
             assert current.bits is not None and current.bits == 24 and next_.bits == 8
 
-            ret += f'    public static final PathElement PATH$bitfield${current.name}_{next_.name} = PathElement.groupElement({group_element_idx});\n'
+            ret += f'    public static final PathElement PATH$bitfield${current.name}_{next_.name} = PathElement.groupElement("bitfield${current.name}_{next_.name}");\n'
             i = i + 2
         else:
-            ret += f'    public static final PathElement PATH${current.name} = PathElement.groupElement({group_element_idx});\n'
+            ret += f'    public static final PathElement PATH${current.name} = PathElement.groupElement("{current.name}");\n'
             i = i + 1
         group_element_idx += 1
 

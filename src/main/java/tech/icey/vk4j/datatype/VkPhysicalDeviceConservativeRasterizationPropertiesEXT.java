@@ -30,17 +30,17 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(MemorySegme
         ValueLayout.JAVA_INT.withName("conservativeRasterizationPostDepthCoverage")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$primitiveOverestimationSize = PathElement.groupElement(2);
-    public static final PathElement PATH$maxExtraPrimitiveOverestimationSize = PathElement.groupElement(3);
-    public static final PathElement PATH$extraPrimitiveOverestimationSizeGranularity = PathElement.groupElement(4);
-    public static final PathElement PATH$primitiveUnderestimation = PathElement.groupElement(5);
-    public static final PathElement PATH$conservativePointAndLineRasterization = PathElement.groupElement(6);
-    public static final PathElement PATH$degenerateTrianglesRasterized = PathElement.groupElement(7);
-    public static final PathElement PATH$degenerateLinesRasterized = PathElement.groupElement(8);
-    public static final PathElement PATH$fullyCoveredFragmentShaderInputVariable = PathElement.groupElement(9);
-    public static final PathElement PATH$conservativeRasterizationPostDepthCoverage = PathElement.groupElement(10);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$primitiveOverestimationSize = PathElement.groupElement("primitiveOverestimationSize");
+    public static final PathElement PATH$maxExtraPrimitiveOverestimationSize = PathElement.groupElement("maxExtraPrimitiveOverestimationSize");
+    public static final PathElement PATH$extraPrimitiveOverestimationSizeGranularity = PathElement.groupElement("extraPrimitiveOverestimationSizeGranularity");
+    public static final PathElement PATH$primitiveUnderestimation = PathElement.groupElement("primitiveUnderestimation");
+    public static final PathElement PATH$conservativePointAndLineRasterization = PathElement.groupElement("conservativePointAndLineRasterization");
+    public static final PathElement PATH$degenerateTrianglesRasterized = PathElement.groupElement("degenerateTrianglesRasterized");
+    public static final PathElement PATH$degenerateLinesRasterized = PathElement.groupElement("degenerateLinesRasterized");
+    public static final PathElement PATH$fullyCoveredFragmentShaderInputVariable = PathElement.groupElement("fullyCoveredFragmentShaderInputVariable");
+    public static final PathElement PATH$conservativeRasterizationPostDepthCoverage = PathElement.groupElement("conservativeRasterizationPostDepthCoverage");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

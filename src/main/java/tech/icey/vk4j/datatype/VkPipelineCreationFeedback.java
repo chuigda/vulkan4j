@@ -21,8 +21,8 @@ public record VkPipelineCreationFeedback(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("duration")
     );
 
-    public static final PathElement PATH$flags = PathElement.groupElement(0);
-    public static final PathElement PATH$duration = PathElement.groupElement(1);
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$duration = PathElement.groupElement("duration");
 
     public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
     public static final OfLong LAYOUT$duration = (OfLong) LAYOUT.select(PATH$duration);

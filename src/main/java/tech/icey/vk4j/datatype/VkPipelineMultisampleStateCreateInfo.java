@@ -28,15 +28,15 @@ public record VkPipelineMultisampleStateCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("alphaToOneEnable")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$flags = PathElement.groupElement(2);
-    public static final PathElement PATH$rasterizationSamples = PathElement.groupElement(3);
-    public static final PathElement PATH$sampleShadingEnable = PathElement.groupElement(4);
-    public static final PathElement PATH$minSampleShading = PathElement.groupElement(5);
-    public static final PathElement PATH$pSampleMask = PathElement.groupElement(6);
-    public static final PathElement PATH$alphaToCoverageEnable = PathElement.groupElement(7);
-    public static final PathElement PATH$alphaToOneEnable = PathElement.groupElement(8);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$rasterizationSamples = PathElement.groupElement("rasterizationSamples");
+    public static final PathElement PATH$sampleShadingEnable = PathElement.groupElement("sampleShadingEnable");
+    public static final PathElement PATH$minSampleShading = PathElement.groupElement("minSampleShading");
+    public static final PathElement PATH$pSampleMask = PathElement.groupElement("pSampleMask");
+    public static final PathElement PATH$alphaToCoverageEnable = PathElement.groupElement("alphaToCoverageEnable");
+    public static final PathElement PATH$alphaToOneEnable = PathElement.groupElement("alphaToOneEnable");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

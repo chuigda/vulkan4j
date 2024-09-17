@@ -25,12 +25,12 @@ public record VkPipelineRobustnessCreateInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("images")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$storageBuffers = PathElement.groupElement(2);
-    public static final PathElement PATH$uniformBuffers = PathElement.groupElement(3);
-    public static final PathElement PATH$vertexInputs = PathElement.groupElement(4);
-    public static final PathElement PATH$images = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$storageBuffers = PathElement.groupElement("storageBuffers");
+    public static final PathElement PATH$uniformBuffers = PathElement.groupElement("uniformBuffers");
+    public static final PathElement PATH$vertexInputs = PathElement.groupElement("vertexInputs");
+    public static final PathElement PATH$images = PathElement.groupElement("images");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

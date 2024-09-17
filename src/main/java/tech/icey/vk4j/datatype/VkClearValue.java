@@ -21,8 +21,8 @@ public record VkClearValue(MemorySegment segment) {
         VkClearDepthStencilValue.LAYOUT.withName("depthStencil")
     );
 
-    public static final PathElement PATH$color = PathElement.groupElement(0);
-    public static final PathElement PATH$depthStencil = PathElement.groupElement(1);
+    public static final PathElement PATH$color = PathElement.groupElement("color");
+    public static final PathElement PATH$depthStencil = PathElement.groupElement("depthStencil");
 
     public static final UnionLayout LAYOUT$color = (UnionLayout) LAYOUT.select(PATH$color);
     public static final StructLayout LAYOUT$depthStencil = (StructLayout) LAYOUT.select(PATH$depthStencil);

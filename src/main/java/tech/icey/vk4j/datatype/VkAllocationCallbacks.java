@@ -25,12 +25,12 @@ public record VkAllocationCallbacks(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pfnInternalFree")
     );
 
-    public static final PathElement PATH$pUserData = PathElement.groupElement(0);
-    public static final PathElement PATH$pfnAllocation = PathElement.groupElement(1);
-    public static final PathElement PATH$pfnReallocation = PathElement.groupElement(2);
-    public static final PathElement PATH$pfnFree = PathElement.groupElement(3);
-    public static final PathElement PATH$pfnInternalAllocation = PathElement.groupElement(4);
-    public static final PathElement PATH$pfnInternalFree = PathElement.groupElement(5);
+    public static final PathElement PATH$pUserData = PathElement.groupElement("pUserData");
+    public static final PathElement PATH$pfnAllocation = PathElement.groupElement("pfnAllocation");
+    public static final PathElement PATH$pfnReallocation = PathElement.groupElement("pfnReallocation");
+    public static final PathElement PATH$pfnFree = PathElement.groupElement("pfnFree");
+    public static final PathElement PATH$pfnInternalAllocation = PathElement.groupElement("pfnInternalAllocation");
+    public static final PathElement PATH$pfnInternalFree = PathElement.groupElement("pfnInternalFree");
 
     public static final AddressLayout LAYOUT$pUserData = (AddressLayout) LAYOUT.select(PATH$pUserData);
     public static final AddressLayout LAYOUT$pfnAllocation = (AddressLayout) LAYOUT.select(PATH$pfnAllocation);

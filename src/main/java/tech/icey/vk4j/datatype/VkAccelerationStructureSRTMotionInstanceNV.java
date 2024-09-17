@@ -24,11 +24,11 @@ public record VkAccelerationStructureSRTMotionInstanceNV(MemorySegment segment) 
         ValueLayout.JAVA_LONG.withName("accelerationStructureReference")
     );
 
-    public static final PathElement PATH$transformT0 = PathElement.groupElement(0);
-    public static final PathElement PATH$transformT1 = PathElement.groupElement(1);
-    public static final PathElement PATH$bitfield$instanceCustomIndex_mask = PathElement.groupElement(2);
-    public static final PathElement PATH$bitfield$instanceShaderBindingTableRecordOffset_flags = PathElement.groupElement(3);
-    public static final PathElement PATH$accelerationStructureReference = PathElement.groupElement(4);
+    public static final PathElement PATH$transformT0 = PathElement.groupElement("transformT0");
+    public static final PathElement PATH$transformT1 = PathElement.groupElement("transformT1");
+    public static final PathElement PATH$bitfield$instanceCustomIndex_mask = PathElement.groupElement("bitfield$instanceCustomIndex_mask");
+    public static final PathElement PATH$bitfield$instanceShaderBindingTableRecordOffset_flags = PathElement.groupElement("bitfield$instanceShaderBindingTableRecordOffset_flags");
+    public static final PathElement PATH$accelerationStructureReference = PathElement.groupElement("accelerationStructureReference");
 
     public static final StructLayout LAYOUT$transformT0 = (StructLayout) LAYOUT.select(PATH$transformT0);
     public static final StructLayout LAYOUT$transformT1 = (StructLayout) LAYOUT.select(PATH$transformT1);

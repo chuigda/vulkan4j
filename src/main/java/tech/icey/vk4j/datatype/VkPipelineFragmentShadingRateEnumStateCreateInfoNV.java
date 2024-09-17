@@ -24,11 +24,11 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment s
         MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_INT).withName("combinerOps")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$shadingRateType = PathElement.groupElement(2);
-    public static final PathElement PATH$shadingRate = PathElement.groupElement(3);
-    public static final PathElement PATH$combinerOps = PathElement.groupElement(4);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shadingRateType = PathElement.groupElement("shadingRateType");
+    public static final PathElement PATH$shadingRate = PathElement.groupElement("shadingRate");
+    public static final PathElement PATH$combinerOps = PathElement.groupElement("combinerOps");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

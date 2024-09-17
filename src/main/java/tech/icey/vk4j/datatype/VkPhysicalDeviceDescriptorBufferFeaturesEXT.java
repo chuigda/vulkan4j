@@ -25,12 +25,12 @@ public record VkPhysicalDeviceDescriptorBufferFeaturesEXT(MemorySegment segment)
         ValueLayout.JAVA_INT.withName("descriptorBufferPushDescriptors")
     );
 
-    public static final PathElement PATH$sType = PathElement.groupElement(0);
-    public static final PathElement PATH$pNext = PathElement.groupElement(1);
-    public static final PathElement PATH$descriptorBuffer = PathElement.groupElement(2);
-    public static final PathElement PATH$descriptorBufferCaptureReplay = PathElement.groupElement(3);
-    public static final PathElement PATH$descriptorBufferImageLayoutIgnored = PathElement.groupElement(4);
-    public static final PathElement PATH$descriptorBufferPushDescriptors = PathElement.groupElement(5);
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$descriptorBuffer = PathElement.groupElement("descriptorBuffer");
+    public static final PathElement PATH$descriptorBufferCaptureReplay = PathElement.groupElement("descriptorBufferCaptureReplay");
+    public static final PathElement PATH$descriptorBufferImageLayoutIgnored = PathElement.groupElement("descriptorBufferImageLayoutIgnored");
+    public static final PathElement PATH$descriptorBufferPushDescriptors = PathElement.groupElement("descriptorBufferPushDescriptors");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
