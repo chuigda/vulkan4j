@@ -11,7 +11,7 @@ public class Main {
             return;
         }
 
-        LibGLFW libGLFW = loadGLFW();
+        LibGLFW libGLFW = initGLFW();
         if (libGLFW == null) {
             return;
         }
@@ -21,7 +21,7 @@ public class Main {
 
         var deviceInfoDialog = new DeviceInfoDialog(List.of(
                 new DeviceInfo("Device A", "南去经三国，东来过五湖"),
-                new DeviceInfo("Device B", "南去经三国，东来过五湖")
+                new DeviceInfo("Device B", "三万里河入东海，五千仞岳上摩天")
         ));
         deviceInfoDialog.setVisible(true);
 
@@ -65,7 +65,7 @@ public class Main {
         return true;
     }
 
-    private static LibGLFW loadGLFW() {
+    private static LibGLFW initGLFW() {
         try {
             LibGLFW libGLFW = new LibGLFW(Loader::loadFunction);
 
