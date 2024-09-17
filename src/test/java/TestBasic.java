@@ -1,5 +1,6 @@
 import tech.icey.vk4j.Create;
 import tech.icey.vk4j.Loader;
+import tech.icey.vk4j.array.ByteArray;
 import tech.icey.vk4j.array.IntArray;
 import tech.icey.vk4j.command.EntryCommands;
 import tech.icey.vk4j.command.InstanceCommands;
@@ -29,8 +30,10 @@ public class TestBasic {
 
         try (Arena arena = Arena.ofConfined()) {
             var applicationInfo = Create.create(VkApplicationInfo.FACTORY, arena);
-            applicationInfo.pApplicationNameRaw(arena.allocateFrom("Hello, Vulkan!"));
-            applicationInfo.pEngineNameRaw(arena.allocateFrom("vk4j"));
+            applicationInfo.pApplicationName(ByteArray.allocateUtf8(arena, "Hello, Vulkan!").ptr());
+            applicationInfo.applicationVersion(1);
+            applicationInfo.pEngineName(ByteArray.allocateUtf8(arena, "vk4j").ptr());
+            applicationInfo.engineVersion(1);
 
             var instanceCreateInfo = Create.create(VkInstanceCreateInfo.FACTORY, arena);
             instanceCreateInfo.pApplicationInfo(applicationInfo);

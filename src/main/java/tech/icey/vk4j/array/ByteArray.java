@@ -19,6 +19,11 @@ public record ByteArray(MemorySegment segment, long size) {
         return allocate(arena::allocate, size);
     }
 
+    public static ByteArray allocateUtf8(Arena arena, String str) {
+        MemorySegment segment = arena.allocateFrom(str);
+        return new ByteArray(segment, segment.byteSize());
+    }
+
     public int get(long index) {
         return segment.get(ValueLayout.JAVA_BYTE, index);
     }
