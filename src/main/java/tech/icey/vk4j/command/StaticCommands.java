@@ -39,7 +39,10 @@ public final class StaticCommands {
             @pointer(target=BytePtr.class) BytePtr pName
     ) {
         try {
-            return (MemorySegment) HANDLE$vkGetDeviceProcAddr.invoke(device.handle(), pName != null ? pName.segment() : MemorySegment.NULL);
+            return (MemorySegment) HANDLE$vkGetDeviceProcAddr.invoke(
+                    device.handle(),
+                    pName != null ? pName.segment() : MemorySegment.NULL
+            );
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
@@ -50,7 +53,10 @@ public final class StaticCommands {
             @pointer(target=BytePtr.class) BytePtr pName
     ) {
         try {
-            return (MemorySegment) HANDLE$vkGetInstanceProcAddr.invoke(instance.handle(), pName != null ? pName.segment() : MemorySegment.NULL);
+            return (MemorySegment) HANDLE$vkGetInstanceProcAddr.invoke(
+                    instance.handle(),
+                    pName != null ? pName.segment() : MemorySegment.NULL
+            );
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }

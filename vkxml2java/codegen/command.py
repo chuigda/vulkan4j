@@ -120,7 +120,9 @@ def generate_command_wrapper(command: Command, param_types: list[CType], result_
     for (param_type, param_name) in zip(param_types, param_names):
         invoke_args.append(generate_input_convert(param_type, param_name))
 
-    invoke_expr = f'HANDLE${command.name}.invoke({", ".join(invoke_args)})'
+    invoke_expr = f'''HANDLE${command.name}.invoke(
+                    {",\n                    ".join(invoke_args)}
+            )'''
 
     if result_type == CTYPE_VOID:
         return f'''    public void {command.name}(
