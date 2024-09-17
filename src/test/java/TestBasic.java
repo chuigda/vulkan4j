@@ -12,12 +12,10 @@ import tech.icey.vk4j.datatype.VkPhysicalDeviceProperties;
 import tech.icey.vk4j.enumtype.VkResult;
 import tech.icey.vk4j.handle.VkInstance;
 import tech.icey.vk4j.handle.VkPhysicalDevice;
-import tech.icey.vk4j.ptr.BytePtr;
 import tech.icey.vk4j.ptr.IntPtr;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
 public class TestBasic {
@@ -76,14 +74,8 @@ public class TestBasic {
                 return;
             }
 
-            var instanceCommands = new InstanceCommands((String functionName, FunctionDescriptor descriptor) -> {
-                MemorySegment functionNameSegment = arena.allocateFrom(functionName);
-                MemorySegment fnptrSegment = staticCommands.vkGetInstanceProcAddr(instance, new BytePtr(functionNameSegment));
-                if (fnptrSegment.address() == 0) {
-                    return null;
-                }
-                return Loader.nativeLinker.downcallHandle(fnptrSegment, descriptor);
-            });
+            var instanceCommands = new InstanceCommands((String functionName, FunctionDescriptor descriptor)
+                    -> libGLFW.glfwGetInstanceProcAddress(instance, functionName, descriptor));
 
             IntPtr pPhysicalDeviceCount = IntPtr.allocate(arena);
             pPhysicalDeviceCount.write(8);
@@ -106,7 +98,7 @@ public class TestBasic {
                 System.out.println("Device name: " + deviceName);
 
                 var apiVersion = properties.apiVersion();
-                System.out.println("API version: " + apiVersion);
+                System.out.println("API version: " + Version.decode(apiVersion));
             }
         }
     }

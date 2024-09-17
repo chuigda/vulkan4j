@@ -26,4 +26,20 @@ public final class Version {
     public static final @unsigned int VK_API_VERSION_1_1 = vkMakeAPIVersion(0, 1, 1, 0);
     public static final @unsigned int VK_API_VERSION_1_2 = vkMakeAPIVersion(0, 1, 2, 0);
     public static final @unsigned int VK_API_VERSION_1_3 = vkMakeAPIVersion(0, 1, 3, 0);
+
+    public record Decoded(@unsigned int variant, @unsigned int major, @unsigned int minor, @unsigned int patch) {
+        @Override
+        public String toString() {
+            return Integer.toUnsignedString(major) + "." + Integer.toUnsignedString(minor) + "." + Integer.toUnsignedString(patch);
+        }
+    }
+
+    public static Decoded decode(@unsigned int version) {
+        return new Decoded(
+                (version >> 29) & 0x7,
+                (version >> 22) & 0x7F,
+                (version >> 12) & 0x3FF,
+                version & 0xFFF
+        );
+    }
 }
