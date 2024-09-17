@@ -12,7 +12,7 @@ import java.lang.foreign.ValueLayout;
 public sealed class BytePtr permits ByteArray {
     protected final MemorySegment segment;
 
-    @unsafe(safety = "The {@code segment} must have at least 1 byte")
+    @unsafe(alt = "BytePtr::allocate")
     public BytePtr(MemorySegment segment) {
         this.segment = segment;
     }

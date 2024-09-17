@@ -12,9 +12,7 @@ import java.lang.foreign.MemorySegment;
 public final class CLongArray extends CLongPtr {
     private final long size;
 
-    @unsafe(safety = "{@code segment} must have at least" +
-                     " {@code size * NativeLayout.C_LONG.byteSize()} bytes and must be properly" +
-                     " aligned")
+    @unsafe(alt = "CLongArray::allocate")
     public CLongArray(MemorySegment segment, long size) {
         super(segment);
         this.size = size;
@@ -41,9 +39,7 @@ public final class CLongArray extends CLongPtr {
         return allocate(arena::allocate, size);
     }
 
-    @unsafe(safety = "{@code ptr.segment()} must have at least" +
-                     " {@code size * NativeLayout.C_LONG.byteSize()} bytes and must be properly" +
-                     " aligned")
+    @unsafe
     public static CLongArray ofPtr(CLongPtr ptr, long size) {
         MemorySegment transmuted = ptr.segment().reinterpret(size);
         return new CLongArray(transmuted, size);

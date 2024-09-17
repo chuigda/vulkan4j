@@ -9,14 +9,17 @@ import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
-public record DoubleArray(MemorySegment segment, long size) {
-    public static <A extends Function2<MemoryLayout, Long, MemorySegment>>
-    DoubleArray allocate(A allocator, long size) {
-        return new DoubleArray(allocator.apply(ValueLayout.JAVA_DOUBLE, size), size);
+public final class DoubleArray extends DoublePtr {
+    private final long size;
+
+    @unsafe(alt = "DoubleArray::allocate")
+    public DoubleArray(MemorySegment segment, long size) {
+        super(segment);
+        this.size = size;
     }
 
-    public static DoubleArray allocate(Arena arena, long size) {
-        return allocate(arena::allocate, size);
+    public long size() {
+        return size;
     }
 
     public double get(long index) {
@@ -29,6 +32,15 @@ public record DoubleArray(MemorySegment segment, long size) {
 
     public DoublePtr ptr() {
         return new DoublePtr(segment);
+    }
+
+    public static <A extends Function2<MemoryLayout, Long, MemorySegment>>
+    DoubleArray allocate(A allocator, long size) {
+        return new DoubleArray(allocator.apply(ValueLayout.JAVA_DOUBLE, size), size);
+    }
+
+    public static DoubleArray allocate(Arena arena, long size) {
+        return allocate(arena::allocate, size);
     }
 
     @unsafe

@@ -7,5 +7,6 @@ package tech.icey.vk4j.annotations;
 /// So this {@code unsafe} is used to indicate that a method, if misused, could cause data
 /// inconsistency, violating assumptions of other parts of the code, etc.
 public @interface unsafe {
-    String safety() default "Warning: unclear safety condition";
+    /// Safe alternative to the annotated method.
+    String alt() default "";
 }

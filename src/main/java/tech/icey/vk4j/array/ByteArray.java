@@ -12,7 +12,7 @@ import java.lang.foreign.ValueLayout;
 public final class ByteArray extends BytePtr {
     private final long size;
 
-    @unsafe(safety = "{@code segment} must have at least {@code size} bytes")
+    @unsafe(alt = "ByteArray::allocate")
     public ByteArray(MemorySegment segment, long size) {
         super(segment);
         this.size = size;
@@ -44,7 +44,7 @@ public final class ByteArray extends BytePtr {
         return new ByteArray(segment, segment.byteSize());
     }
 
-    @unsafe(safety = "{@code ptr.segment()} must have at least {@code size} bytes")
+    @unsafe
     public static ByteArray ofPtr(BytePtr ptr, long size) {
         MemorySegment transmuted = ptr.segment().reinterpret(size);
         return new ByteArray(transmuted, size);

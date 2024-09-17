@@ -12,8 +12,7 @@ import java.lang.foreign.MemorySegment;
 public sealed class CLongPtr permits CLongArray {
     protected final MemorySegment segment;
 
-    @unsafe(safety = "{@code segment} must have at least {@code NativeLayout.C_LONG.byteSize()} " +
-                     "bytes and must be properly aligned")
+    @unsafe(alt = "CLongPtr::allocate")
     public CLongPtr(MemorySegment segment) {
         this.segment = segment;
     }
