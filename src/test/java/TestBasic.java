@@ -6,8 +6,10 @@ import tech.icey.vk4j.command.InstanceCommands;
 import tech.icey.vk4j.command.StaticCommands;
 import tech.icey.vk4j.datatype.VkApplicationInfo;
 import tech.icey.vk4j.datatype.VkInstanceCreateInfo;
+import tech.icey.vk4j.datatype.VkPhysicalDeviceProperties;
 import tech.icey.vk4j.enumtype.VkResult;
 import tech.icey.vk4j.handle.VkInstance;
+import tech.icey.vk4j.handle.VkPhysicalDevice;
 import tech.icey.vk4j.ptr.BytePtr;
 import tech.icey.vk4j.ptr.IntPtr;
 
@@ -29,7 +31,6 @@ public class TestBasic {
             var applicationInfo = Create.create(VkApplicationInfo.FACTORY, arena);
             applicationInfo.pApplicationNameRaw(arena.allocateFrom("Hello, Vulkan!"));
             applicationInfo.pEngineNameRaw(arena.allocateFrom("vk4j"));
-            // applicationInfo.apiVersion(0x1_0_0);
 
             var instanceCreateInfo = Create.create(VkInstanceCreateInfo.FACTORY, arena);
             instanceCreateInfo.pApplicationInfo(applicationInfo);
@@ -52,16 +53,30 @@ public class TestBasic {
                 return Loader.nativeLinker.downcallHandle(fnptrSegment, descriptor);
             });
 
-            IntPtr ptr = IntArray.allocate(arena, 1).ptr();
-            var pPhysicalDevices = arena.allocate(ValueLayout.ADDRESS);
-            result = instanceCommands.vkEnumeratePhysicalDevices(instance, ptr, pPhysicalDevices);
-            if (result != VkResult.VK_SUCCESS) {
+            IntPtr pPhysicalDeviceCount = IntArray.allocate(arena, 1).ptr();
+            pPhysicalDeviceCount.write(8);
+            var pPhysicalDevices = arena.allocate(ValueLayout.ADDRESS, 8);
+            result = instanceCommands.vkEnumeratePhysicalDevices(instance, pPhysicalDeviceCount, pPhysicalDevices);
+            if (result != VkResult.VK_SUCCESS && result != VkResult.VK_INCOMPLETE) {
                 System.out.println("Failed to enumerate physical devices: " + result);
                 return;
             }
 
-            int physicalDeviceCount = ptr.read();
+            int physicalDeviceCount = pPhysicalDeviceCount.read();
             System.out.println("Physical device count: " + physicalDeviceCount);
+
+            for (int i = 0; i < physicalDeviceCount; i++) {
+                var properties = Create.create(VkPhysicalDeviceProperties.FACTORY, arena);
+
+                var physicalDevice = new VkPhysicalDevice(pPhysicalDevices.get(ValueLayout.ADDRESS, i));
+                instanceCommands.vkGetPhysicalDeviceProperties(physicalDevice, properties);
+
+                var deviceName = properties.deviceNameRaw().getString(0);
+                System.out.println("Device name: " + deviceName);
+
+                var apiVersion = properties.apiVersion();
+                System.out.println("API version: " + apiVersion);
+            }
         }
     }
 }
