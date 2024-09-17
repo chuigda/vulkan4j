@@ -152,9 +152,11 @@ def generate_input_convert(type_: CType, input_param: str):
             return f'{input_param} != null ? {input_param}.segment() : MemorySegment.NULL'
 
     if isinstance(type_, CStructType) \
-            or isinstance(type_, CUnionType) \
-            or isinstance(type_, CHandleType):
+            or isinstance(type_, CUnionType):
         return f'{input_param}.segment()'
+
+    if isinstance(type_, CHandleType):
+        return f'{input_param}.handle()'
 
     return input_param
 

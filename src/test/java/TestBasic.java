@@ -38,14 +38,13 @@ public class TestBasic {
             var instanceCreateInfo = Create.create(VkInstanceCreateInfo.FACTORY, arena);
             instanceCreateInfo.pApplicationInfo(applicationInfo);
 
-            var pInstance = arena.allocate(ValueLayout.ADDRESS);
-            int result = entryCommands.vkCreateInstance(instanceCreateInfo, null, pInstance);
+            var instance = Create.create(VkInstance.FACTORY, arena);
+            int result = entryCommands.vkCreateInstance(instanceCreateInfo, null, instance.segment());
             if (result != VkResult.VK_SUCCESS) {
                 System.out.println("Failed to create instance: " + result);
                 return;
             }
 
-            var instance = new VkInstance(pInstance.get(ValueLayout.ADDRESS, 0));
             var instanceCommands = new InstanceCommands((String functionName, FunctionDescriptor descriptor) -> {
                 MemorySegment functionNameSegment = arena.allocateFrom(functionName);
                 MemorySegment fnptrSegment = staticCommands.vkGetInstanceProcAddr(instance, new BytePtr(functionNameSegment));
@@ -58,8 +57,8 @@ public class TestBasic {
 
             IntPtr pPhysicalDeviceCount = IntArray.allocate(arena, 1).ptr();
             pPhysicalDeviceCount.write(8);
-            var pPhysicalDevices = arena.allocate(ValueLayout.ADDRESS, 8);
-            result = instanceCommands.vkEnumeratePhysicalDevices(instance, pPhysicalDeviceCount, pPhysicalDevices);
+            var physicalDevices = Create.createArray(VkPhysicalDevice.FACTORY, arena, 8);
+            result = instanceCommands.vkEnumeratePhysicalDevices(instance, pPhysicalDeviceCount, physicalDevices.second);
             if (result != VkResult.VK_SUCCESS && result != VkResult.VK_INCOMPLETE) {
                 System.out.println("Failed to enumerate physical devices: " + result);
                 return;
@@ -71,7 +70,7 @@ public class TestBasic {
             for (int i = 0; i < physicalDeviceCount; i++) {
                 var properties = Create.create(VkPhysicalDeviceProperties.FACTORY, arena);
 
-                var physicalDevice = new VkPhysicalDevice(pPhysicalDevices.get(ValueLayout.ADDRESS, i));
+                var physicalDevice = physicalDevices.first[i];
                 instanceCommands.vkGetPhysicalDeviceProperties(physicalDevice, properties);
 
                 var deviceName = properties.deviceNameRaw().getString(0);
