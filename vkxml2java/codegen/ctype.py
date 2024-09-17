@@ -107,6 +107,14 @@ class CEnumType(CType):
         else:
             raise Exception(f'unsupported bitwidth: {self.bitwidth}')
 
+    def vk4j_array_type(self) -> str:
+        if self.bitwidth is None or self.bitwidth == 32:
+            return 'IntArray'
+        elif self.bitwidth == 64:
+            return 'LongArray'
+        else:
+            raise Exception(f'unsupported bitwidth: {self.bitwidth}')
+
 
 @dataclass
 class CArrayType(CType):

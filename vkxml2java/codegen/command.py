@@ -17,9 +17,10 @@ def generate_commands(registry: Registry):
     generate_command_class_file(registry, static_commands, 'StaticCommands')
     generate_command_class_file(registry, entry_commands, 'EntryCommands')
     generate_command_class_file(registry, instance_commands, 'InstanceCommands')
+    generate_command_class_file(registry, device_commands, 'DeviceCommands', dual_loader=True)
 
 
-def generate_command_class_file(registry: Registry, commands: list[Command], class_name: str):
+def generate_command_class_file(registry: Registry, commands: list[Command], class_name: str, dual_loader: bool = False):
     command_param_types: list[list[CType]] = []
     command_result_types: list[CType] = []
 
@@ -32,7 +33,7 @@ def generate_command_class_file(registry: Registry, commands: list[Command], cla
         command_result_types.append(result_type[0])
 
     command_handles = [generate_command_handle(command) for command in commands]
-    command_loads = [generate_command_load(command) for command in commands]
+    command_loads = [generate_command_load(registry, command, dual_loader) for command in commands]
 
     command_wrappers = []
     for command, param_types, result_type in zip(commands, command_param_types, command_result_types):
@@ -45,6 +46,7 @@ import java.lang.invoke.MethodHandle;
 
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.annotations.*;
+import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
@@ -56,7 +58,7 @@ public final class {class_name} {{
 {'\n'.join(command_descriptors)}
 {'\n'.join(command_handles)}
 
-    public {class_name}(Function2<String, FunctionDescriptor, MethodHandle> loader) {{
+    public {class_name}(Function2<String, FunctionDescriptor, MethodHandle> loader{', Function2<String, FunctionDescriptor, MethodHandle> instanceLoader' if dual_loader else ''}) {{
 {'\n'.join(command_loads)}
     }}
 
@@ -64,6 +66,7 @@ public final class {class_name} {{
 '''
 
     with open(f'../src/main/java/tech/icey/vk4j/command/{class_name}.java', 'w') as file:
+        print(f'    generating {class_name}.java')
         file.write(content)
 
 
@@ -97,8 +100,14 @@ def generate_command_handle(command: Command) -> str:
     return f'''    public final @nullable MethodHandle HANDLE${command.name};'''
 
 
-def generate_command_load(command: Command) -> str:
-    return f'''        HANDLE${command.name} = loader.apply(\"{command.name}\", DESCRIPTOR${command.name});'''
+def generate_command_load(registry: Registry, command: Command, dual_loader: bool) -> str:
+    if dual_loader:
+        if get_command_type(registry, command) == CommandType.INSTANCE:
+            return f'''        HANDLE${command.name} = instanceLoader.apply(\"{command.name}\", DESCRIPTOR${command.name});'''
+        else:
+            return f'''        HANDLE${command.name} = loader.apply(\"{command.name}\", DESCRIPTOR${command.name});'''
+    else:
+        return f'''        HANDLE${command.name} = loader.apply(\"{command.name}\", DESCRIPTOR${command.name});'''
 
 
 def generate_command_wrapper(command: Command, param_types: list[CType], result_type: CType) -> str:
@@ -143,7 +152,18 @@ def generate_input_output_type(type_: CType) -> str:
                 or isinstance(type_.pointee, CUnionType) \
                 or isinstance(type_.pointee, CHandleType):
             return f'@pointer(target={type_.pointee.java_type()}.class) {type_.pointee.java_type()}'
-    return type_.java_type()
+        else:
+            return type_.java_type()
+    elif isinstance(type_, CArrayType):
+        flattened = flatten_array(type_)
+        if isinstance(flattened.element, CNonRefType):
+            return flattened.element.vk4j_array_type()
+        elif isinstance(flattened.element, CEnumType):
+            return flattened.element.vk4j_array_type()
+        else:
+            return f'{flattened.element.java_type()}[]'
+    else:
+        return type_.java_type()
 
 
 def generate_input_convert(type_: CType, input_param: str):
@@ -157,6 +177,13 @@ def generate_input_convert(type_: CType, input_param: str):
     if isinstance(type_, CStructType) \
             or isinstance(type_, CUnionType):
         return f'{input_param}.segment()'
+
+    if isinstance(type_, CArrayType):
+        flattened = flatten_array(type_)
+        if isinstance(flattened.element, CNonRefType) or isinstance(flattened.element, CEnumType):
+            return f'{input_param}.segment()'
+        else:
+            return f'{input_param} != null && {input_param}.length != 0 ? {input_param}[0].segment() : MemorySegment.NULL'
 
     if isinstance(type_, CHandleType):
         return f'{input_param}.handle()'
