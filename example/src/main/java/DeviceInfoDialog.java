@@ -117,7 +117,6 @@ public final class DeviceInfoDialog extends JDialog {
         this.setContentPane(innerPane);
 
         this.setSize(480, 360);
-        this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
