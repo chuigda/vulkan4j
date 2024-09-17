@@ -9,7 +9,7 @@ import java.util.List;
 public final class UICommons {
     public static final MetalTheme defaultMetalTheme = new DefaultMetalTheme();
 
-    public static final int fontSize = 14;
+    public static final int fontSize = 12;
 
     public static final Font defaultMonospaceFont;
 

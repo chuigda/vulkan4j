@@ -33,32 +33,28 @@ public class Main {
 
     private static boolean loadLibraries() {
         try {
-            System.loadLibrary("glfw");
+            if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+                System.loadLibrary("glfw3");
+            }
+            else {
+                System.loadLibrary("glfw");
+            }
         }
         catch (Throwable throwable) {
-            JOptionPane.showMessageDialog(
-                    null,
-                    "加载 glfw 库失败:\n" + throwable.getMessage(),
-                    "错误",
-                    JOptionPane.ERROR_MESSAGE
-            );
+            showErrorMessage("加载 GLFW 库失败: " + throwable.getMessage());
             return false;
         }
 
         try {
             if (System.getProperty("os.name").toLowerCase().contains("windows")) {
                 System.loadLibrary("vulkan-1");
-            } else {
+            }
+            else {
                 System.loadLibrary("vulkan");
             }
         }
         catch (Throwable throwable) {
-            JOptionPane.showMessageDialog(
-                    null,
-                    "加载 vulkan 库失败:\n" + throwable.getMessage(),
-                    "错误",
-                    JOptionPane.ERROR_MESSAGE
-            );
+            showErrorMessage("加载 Vulkan 库失败: " + throwable.getMessage());
             return false;
         }
 
@@ -70,34 +66,28 @@ public class Main {
             LibGLFW libGLFW = new LibGLFW(Loader::loadFunction);
 
             if (libGLFW.glfwInit() == 0) {
-                JOptionPane.showMessageDialog(
-                        null,
-                        "初始化 GLFW 失败",
-                        "错误",
-                        JOptionPane.ERROR_MESSAGE
-                );
+                showErrorMessage("初始化 GLFW 失败");
                 return null;
             }
 
             if (libGLFW.glfwVulkanSupported() == 0) {
-                JOptionPane.showMessageDialog(
-                        null,
-                        "GLFW 不支持 Vulkan",
-                        "错误",
-                        JOptionPane.ERROR_MESSAGE
-                );
+                showErrorMessage("当前系统上的 GLFW 安装不支持 Vulkan");
                 return null;
             }
 
             return libGLFW;
         } catch (RuntimeException e) {
-            JOptionPane.showMessageDialog(
-                    null,
-                    "加载 glfw 库中的函数失败:\n" + e.getMessage(),
-                    "错误",
-                    JOptionPane.ERROR_MESSAGE
-            );
+            showErrorMessage("加载 GLFW 库中的函数失败: " + e.getMessage());
             return null;
         }
+    }
+
+    private static void showErrorMessage(String errorMessage) {
+        JOptionPane.showMessageDialog(
+                null,
+                "<html><body><p style=\"width: 300px;\">" + errorMessage + "</p></body></html>",
+                "错误",
+                JOptionPane.ERROR_MESSAGE
+        );
     }
 }
