@@ -31,7 +31,7 @@ class CPointerType(CType):
         elif self.pointee == CTYPE_VOID:
             return '@pointer(comment="void*") MemorySegment'
 
-        return 'MemorySegment'
+        return f'@pointer(comment="{self.pointee.c_type()}*") MemorySegment'
 
     def java_layout(self) -> str:
         if self.pointee == CTYPE_VOID:

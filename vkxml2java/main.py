@@ -64,13 +64,13 @@ def application_start():
     #     with open(f'../src/main/java/tech/icey/vk4j/enumtype/{enum.name}.java', 'w') as f:
     #         print(f'  generating {enum.name}')
     #         f.write(source)
-    #
-    # print('generating handles')
-    # for handle in registry.handles.values():
-    #     source = generate_handle(handle)
-    #     print(f'  generating {handle.name}')
-    #     with open(f'../src/main/java/tech/icey/vk4j/handle/{handle.name}.java', 'w') as f:
-    #         f.write(source)
+
+    print('generating handles')
+    for handle in registry.handles.values():
+        source = generate_handle(handle)
+        print(f'  generating {handle.name}')
+        with open(f'../src/main/java/tech/icey/vk4j/handle/{handle.name}.java', 'w') as f:
+            f.write(source)
 
     print('generating commands')
     generate_commands(registry)

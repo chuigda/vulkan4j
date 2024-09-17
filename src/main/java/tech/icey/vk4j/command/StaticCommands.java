@@ -33,17 +33,23 @@ public final class StaticCommands {
         HANDLE$vkGetInstanceProcAddr = loader.apply("vkGetInstanceProcAddr", DESCRIPTOR$vkGetInstanceProcAddr);
     }
 
-    public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetDeviceProcAddr(VkDevice device, BytePtr pName) {
+    public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetDeviceProcAddr(
+            VkDevice device,
+            @pointer(target=BytePtr.class) BytePtr pName
+    ) {
         try {
-            return (MemorySegment) HANDLE$vkGetDeviceProcAddr.invoke(device, pName.segment());
+            return (MemorySegment) HANDLE$vkGetDeviceProcAddr.invoke(device, pName != null ? pName.segment() : MemorySegment.NULL);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetInstanceProcAddr(VkInstance instance, BytePtr pName) {
+    public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetInstanceProcAddr(
+            VkInstance instance,
+            @pointer(target=BytePtr.class) BytePtr pName
+    ) {
         try {
-            return (MemorySegment) HANDLE$vkGetInstanceProcAddr.invoke(instance, pName.segment());
+            return (MemorySegment) HANDLE$vkGetInstanceProcAddr.invoke(instance, pName != null ? pName.segment() : MemorySegment.NULL);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
