@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -195,7 +195,7 @@ public record VkTraceRaysIndirectCommand2KHR(MemorySegment segment) {
     }
 
 
-    public static final class VkTraceRaysIndirectCommand2KHRFactory implements IDataTypeFactory<VkTraceRaysIndirectCommand2KHR> {
+    public static final class VkTraceRaysIndirectCommand2KHRFactory implements IFactory<VkTraceRaysIndirectCommand2KHR> {
         @Override
         public Class<VkTraceRaysIndirectCommand2KHR> clazz() {
             return VkTraceRaysIndirectCommand2KHR.class;

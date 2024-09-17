@@ -4,14 +4,14 @@ import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 
 public record VkMicromapEXT(MemorySegment segment) {
     public MemorySegment handle() {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkMicromapEXTFactory implements IDataTypeFactory<VkMicromapEXT> {
+    public static final class VkMicromapEXTFactory implements IFactory<VkMicromapEXT> {
         @Override
         public Class<VkMicromapEXT> clazz() {
             return VkMicromapEXT.class;

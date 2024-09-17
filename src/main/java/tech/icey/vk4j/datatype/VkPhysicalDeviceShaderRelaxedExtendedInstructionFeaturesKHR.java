@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(Memory
     }
 
 
-    public static final class VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHRFactory implements IDataTypeFactory<VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR> {
+    public static final class VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHRFactory implements IFactory<VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR> clazz() {
             return VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR.class;

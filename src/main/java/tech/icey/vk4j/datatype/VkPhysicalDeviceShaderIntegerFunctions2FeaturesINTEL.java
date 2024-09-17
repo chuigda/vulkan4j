@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(MemorySegment
     }
 
 
-    public static final class VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTELFactory implements IDataTypeFactory<VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL> {
+    public static final class VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTELFactory implements IFactory<VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL> {
         @Override
         public Class<VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL> clazz() {
             return VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.class;

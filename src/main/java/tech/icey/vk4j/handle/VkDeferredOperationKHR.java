@@ -4,14 +4,14 @@ import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 
 public record VkDeferredOperationKHR(MemorySegment segment) {
     public MemorySegment handle() {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkDeferredOperationKHRFactory implements IDataTypeFactory<VkDeferredOperationKHR> {
+    public static final class VkDeferredOperationKHRFactory implements IFactory<VkDeferredOperationKHR> {
         @Override
         public Class<VkDeferredOperationKHR> clazz() {
             return VkDeferredOperationKHR.class;

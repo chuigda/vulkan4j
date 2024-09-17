@@ -23,47 +23,47 @@ def application_start():
 
     extend_registry(registry)
 
-    # print('generating constants')
-    # with open(f'../src/main/java/tech/icey/vk4j/Constants.java', 'w') as f:
-    #     f.write(generate_constants(registry, registry.constants.values()))
-    #
-    # print('generating structs')
-    # for struct in registry.structs.values():
-    #     if 'Video' in struct.name:
-    #         print(f'    skipping {struct.name}')
-    #         continue
-    #     print(f'    generating {struct.name}')
-    #     source = generate_structure(registry, struct)
-    #     with open(f'../src/main/java/tech/icey/vk4j/datatype/{struct.name}.java', 'w') as f:
-    #         f.write(source)
-    #
-    # print('generating unions')
-    # for union in registry.unions.values():
-    #     if 'Video' in union.name:
-    #         print(f'    skipping {union.name}')
-    #         continue
-    #
-    #     print(f'    generating {union.name}')
-    #     source = generate_structure(registry, union)
-    #     with open(f'../src/main/java/tech/icey/vk4j/datatype/{union.name}.java', 'w') as f:
-    #         f.write(source)
+    print('generating constants')
+    with open(f'../src/main/java/tech/icey/vk4j/Constants.java', 'w') as f:
+        f.write(generate_constants(registry, registry.constants.values()))
 
-    # print('generating bitmasks')
-    # for bitmask in registry.bitmasks.values():
-    #     if 'FlagBits' in bitmask.name:
-    #         continue
-    #
-    #     source = generate_bitmask(registry, bitmask)
-    #     with open(f'../src/main/java/tech/icey/vk4j/bitmask/{bitmask.name}.java', 'w') as f:
-    #         print(f'  generating {bitmask.name}')
-    #         f.write(source)
-    #
-    # print('generating enum types')
-    # for enum in registry.enums.values():
-    #     source = generate_enum(enum)
-    #     with open(f'../src/main/java/tech/icey/vk4j/enumtype/{enum.name}.java', 'w') as f:
-    #         print(f'  generating {enum.name}')
-    #         f.write(source)
+    print('generating structs')
+    for struct in registry.structs.values():
+        if 'Video' in struct.name:
+            print(f'    skipping {struct.name}')
+            continue
+        print(f'    generating {struct.name}')
+        source = generate_structure(registry, struct)
+        with open(f'../src/main/java/tech/icey/vk4j/datatype/{struct.name}.java', 'w') as f:
+            f.write(source)
+
+    print('generating unions')
+    for union in registry.unions.values():
+        if 'Video' in union.name:
+            print(f'    skipping {union.name}')
+            continue
+
+        print(f'    generating {union.name}')
+        source = generate_structure(registry, union)
+        with open(f'../src/main/java/tech/icey/vk4j/datatype/{union.name}.java', 'w') as f:
+            f.write(source)
+
+    print('generating bitmasks')
+    for bitmask in registry.bitmasks.values():
+        if 'FlagBits' in bitmask.name:
+            continue
+
+        source = generate_bitmask(registry, bitmask)
+        with open(f'../src/main/java/tech/icey/vk4j/bitmask/{bitmask.name}.java', 'w') as f:
+            print(f'  generating {bitmask.name}')
+            f.write(source)
+
+    print('generating enum types')
+    for enum in registry.enums.values():
+        source = generate_enum(enum)
+        with open(f'../src/main/java/tech/icey/vk4j/enumtype/{enum.name}.java', 'w') as f:
+            print(f'  generating {enum.name}')
+            f.write(source)
 
     print('generating handles')
     for handle in registry.handles.values():

@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -51,7 +51,7 @@ public record VkMemoryType(MemorySegment segment) {
     }
 
 
-    public static final class VkMemoryTypeFactory implements IDataTypeFactory<VkMemoryType> {
+    public static final class VkMemoryTypeFactory implements IFactory<VkMemoryType> {
         @Override
         public Class<VkMemoryType> clazz() {
             return VkMemoryType.class;

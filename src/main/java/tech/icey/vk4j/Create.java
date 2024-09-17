@@ -11,19 +11,19 @@ import java.lang.reflect.Array;
 import java.util.function.Function;
 
 public final class Create {
-    public static <T, F extends IDataTypeFactory<T>, A extends Function<MemoryLayout, MemorySegment>>
+    public static <T, F extends IFactory<T>, A extends Function<MemoryLayout, MemorySegment>>
     T create(F factory, A allocator) {
         MemorySegment segment = allocator.apply(factory.layout());
         return factory.create(segment);
     }
 
-    public static <T, F extends IDataTypeFactory<T>>
+    public static <T, F extends IFactory<T>>
     T create(F factory, Arena arena) {
         return create(factory, arena::allocate);
     }
 
     public static
-    <T, F extends IDataTypeFactory<T>, A extends Function<MemoryLayout, MemorySegment>>
+    <T, F extends IFactory<T>, A extends Function<MemoryLayout, MemorySegment>>
     Pair<T[], MemorySegment> createArray(F factory, A allocator, int count) {
         MemoryLayout layout = factory.layout();
         SequenceLayout arrayLayout = MemoryLayout.sequenceLayout(count, layout);
@@ -33,20 +33,20 @@ public final class Create {
     }
 
     public static
-    <T, F extends IDataTypeFactory<T>, A extends Function2<MemoryLayout, Long, MemorySegment>>
+    <T, F extends IFactory<T>, A extends Function2<MemoryLayout, Long, MemorySegment>>
     Pair<T[], MemorySegment> createArray(F factory, A allocator, long count) {
         MemorySegment segment = allocator.apply(factory.layout(), count);
         return impCreateArray(factory, segment, (int) count);
     }
 
     public static
-    <T, F extends IDataTypeFactory<T>>
+    <T, F extends IFactory<T>>
     Pair<T[], MemorySegment> createArray(F factory, Arena arena, long count) {
         return createArray(factory, arena::allocate, count);
     }
 
     private static
-    <T, F extends IDataTypeFactory<T>> Pair<T[], MemorySegment>
+    <T, F extends IFactory<T>> Pair<T[], MemorySegment>
     impCreateArray(F factory, MemorySegment segment, int count) {
         Object array = Array.newInstance(factory.clazz(), count);
         for (int i = 0; i < count; i++) {

@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -76,7 +76,7 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(MemorySegment segment) 
     }
 
 
-    public static final class VkPhysicalDeviceImage2DViewOf3DFeaturesEXTFactory implements IDataTypeFactory<VkPhysicalDeviceImage2DViewOf3DFeaturesEXT> {
+    public static final class VkPhysicalDeviceImage2DViewOf3DFeaturesEXTFactory implements IFactory<VkPhysicalDeviceImage2DViewOf3DFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceImage2DViewOf3DFeaturesEXT> clazz() {
             return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.class;

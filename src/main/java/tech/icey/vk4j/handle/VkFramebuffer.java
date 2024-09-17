@@ -4,14 +4,14 @@ import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 
 public record VkFramebuffer(MemorySegment segment) {
     public MemorySegment handle() {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkFramebufferFactory implements IDataTypeFactory<VkFramebuffer> {
+    public static final class VkFramebufferFactory implements IFactory<VkFramebuffer> {
         @Override
         public Class<VkFramebuffer> clazz() {
             return VkFramebuffer.class;

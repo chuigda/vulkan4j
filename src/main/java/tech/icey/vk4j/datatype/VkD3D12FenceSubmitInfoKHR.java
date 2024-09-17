@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -116,7 +116,7 @@ public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkD3D12FenceSubmitInfoKHRFactory implements IDataTypeFactory<VkD3D12FenceSubmitInfoKHR> {
+    public static final class VkD3D12FenceSubmitInfoKHRFactory implements IFactory<VkD3D12FenceSubmitInfoKHR> {
         @Override
         public Class<VkD3D12FenceSubmitInfoKHR> clazz() {
             return VkD3D12FenceSubmitInfoKHR.class;

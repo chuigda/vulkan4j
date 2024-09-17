@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -88,7 +88,7 @@ public record VkCopyMicromapToMemoryInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkCopyMicromapToMemoryInfoEXTFactory implements IDataTypeFactory<VkCopyMicromapToMemoryInfoEXT> {
+    public static final class VkCopyMicromapToMemoryInfoEXTFactory implements IFactory<VkCopyMicromapToMemoryInfoEXT> {
         @Override
         public Class<VkCopyMicromapToMemoryInfoEXT> clazz() {
             return VkCopyMicromapToMemoryInfoEXT.class;

@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -89,7 +89,7 @@ public record VkPipelineBinaryHandlesInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineBinaryHandlesInfoKHRFactory implements IDataTypeFactory<VkPipelineBinaryHandlesInfoKHR> {
+    public static final class VkPipelineBinaryHandlesInfoKHRFactory implements IFactory<VkPipelineBinaryHandlesInfoKHR> {
         @Override
         public Class<VkPipelineBinaryHandlesInfoKHR> clazz() {
             return VkPipelineBinaryHandlesInfoKHR.class;

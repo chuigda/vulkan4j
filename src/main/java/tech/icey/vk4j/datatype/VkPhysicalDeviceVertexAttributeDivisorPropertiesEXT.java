@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(MemorySegment 
     }
 
 
-    public static final class VkPhysicalDeviceVertexAttributeDivisorPropertiesEXTFactory implements IDataTypeFactory<VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT> {
+    public static final class VkPhysicalDeviceVertexAttributeDivisorPropertiesEXTFactory implements IFactory<VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT> clazz() {
             return VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.class;

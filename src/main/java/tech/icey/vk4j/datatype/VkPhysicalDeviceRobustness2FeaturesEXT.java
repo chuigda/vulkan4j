@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -88,7 +88,7 @@ public record VkPhysicalDeviceRobustness2FeaturesEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceRobustness2FeaturesEXTFactory implements IDataTypeFactory<VkPhysicalDeviceRobustness2FeaturesEXT> {
+    public static final class VkPhysicalDeviceRobustness2FeaturesEXTFactory implements IFactory<VkPhysicalDeviceRobustness2FeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceRobustness2FeaturesEXT> clazz() {
             return VkPhysicalDeviceRobustness2FeaturesEXT.class;

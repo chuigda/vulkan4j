@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(MemorySegment seg
     }
 
 
-    public static final class VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXTFactory implements IDataTypeFactory<VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT> {
+    public static final class VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXTFactory implements IFactory<VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT> clazz() {
             return VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT.class;

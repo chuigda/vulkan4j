@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -76,7 +76,7 @@ public record VkMemoryGetWin32HandleInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkMemoryGetWin32HandleInfoKHRFactory implements IDataTypeFactory<VkMemoryGetWin32HandleInfoKHR> {
+    public static final class VkMemoryGetWin32HandleInfoKHRFactory implements IFactory<VkMemoryGetWin32HandleInfoKHR> {
         @Override
         public Class<VkMemoryGetWin32HandleInfoKHR> clazz() {
             return VkMemoryGetWin32HandleInfoKHR.class;

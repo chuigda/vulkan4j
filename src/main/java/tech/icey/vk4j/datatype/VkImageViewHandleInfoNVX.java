@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -88,7 +88,7 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) {
     }
 
 
-    public static final class VkImageViewHandleInfoNVXFactory implements IDataTypeFactory<VkImageViewHandleInfoNVX> {
+    public static final class VkImageViewHandleInfoNVXFactory implements IFactory<VkImageViewHandleInfoNVX> {
         @Override
         public Class<VkImageViewHandleInfoNVX> clazz() {
             return VkImageViewHandleInfoNVX.class;

@@ -4,14 +4,14 @@ import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 
 public record VkDescriptorSetLayout(MemorySegment segment) {
     public MemorySegment handle() {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkDescriptorSetLayoutFactory implements IDataTypeFactory<VkDescriptorSetLayout> {
+    public static final class VkDescriptorSetLayoutFactory implements IFactory<VkDescriptorSetLayout> {
         @Override
         public Class<VkDescriptorSetLayout> clazz() {
             return VkDescriptorSetLayout.class;

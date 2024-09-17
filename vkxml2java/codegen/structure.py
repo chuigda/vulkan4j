@@ -27,7 +27,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -202,7 +202,7 @@ def generate_structure_member_accessor(members: list[Member], member_types_lower
 
 
 def generate_structure_factory(struct: Structure) -> str:
-    return f'''    public static final class {struct.name}Factory implements IDataTypeFactory<{struct.name}> {{
+    return f'''    public static final class {struct.name}Factory implements IFactory<{struct.name}> {{
         @Override
         public Class<{struct.name}> clazz() {{
             return {struct.name}.class;

@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,7 +63,7 @@ public record VkPushConstantRange(MemorySegment segment) {
     }
 
 
-    public static final class VkPushConstantRangeFactory implements IDataTypeFactory<VkPushConstantRange> {
+    public static final class VkPushConstantRangeFactory implements IFactory<VkPushConstantRange> {
         @Override
         public Class<VkPushConstantRange> clazz() {
             return VkPushConstantRange.class;

@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -100,7 +100,7 @@ public record VkImportSemaphoreZirconHandleInfoFUCHSIA(MemorySegment segment) {
     }
 
 
-    public static final class VkImportSemaphoreZirconHandleInfoFUCHSIAFactory implements IDataTypeFactory<VkImportSemaphoreZirconHandleInfoFUCHSIA> {
+    public static final class VkImportSemaphoreZirconHandleInfoFUCHSIAFactory implements IFactory<VkImportSemaphoreZirconHandleInfoFUCHSIA> {
         @Override
         public Class<VkImportSemaphoreZirconHandleInfoFUCHSIA> clazz() {
             return VkImportSemaphoreZirconHandleInfoFUCHSIA.class;

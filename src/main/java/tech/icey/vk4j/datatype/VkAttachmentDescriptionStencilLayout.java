@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -76,7 +76,7 @@ public record VkAttachmentDescriptionStencilLayout(MemorySegment segment) {
     }
 
 
-    public static final class VkAttachmentDescriptionStencilLayoutFactory implements IDataTypeFactory<VkAttachmentDescriptionStencilLayout> {
+    public static final class VkAttachmentDescriptionStencilLayoutFactory implements IFactory<VkAttachmentDescriptionStencilLayout> {
         @Override
         public Class<VkAttachmentDescriptionStencilLayout> clazz() {
             return VkAttachmentDescriptionStencilLayout.class;

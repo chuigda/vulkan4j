@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(Memor
     }
 
 
-    public static final class VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXTFactory implements IDataTypeFactory<VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT> {
+    public static final class VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXTFactory implements IFactory<VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT> clazz() {
             return VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.class;

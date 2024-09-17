@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -187,7 +187,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
     }
 
 
-    public static final class VkWriteDescriptorSetFactory implements IDataTypeFactory<VkWriteDescriptorSet> {
+    public static final class VkWriteDescriptorSetFactory implements IFactory<VkWriteDescriptorSet> {
         @Override
         public Class<VkWriteDescriptorSet> clazz() {
             return VkWriteDescriptorSet.class;

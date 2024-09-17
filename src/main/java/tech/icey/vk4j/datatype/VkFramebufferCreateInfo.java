@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -149,7 +149,7 @@ public record VkFramebufferCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkFramebufferCreateInfoFactory implements IDataTypeFactory<VkFramebufferCreateInfo> {
+    public static final class VkFramebufferCreateInfoFactory implements IFactory<VkFramebufferCreateInfo> {
         @Override
         public Class<VkFramebufferCreateInfo> clazz() {
             return VkFramebufferCreateInfo.class;

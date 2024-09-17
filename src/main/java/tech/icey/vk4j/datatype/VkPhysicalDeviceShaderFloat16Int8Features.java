@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -76,7 +76,7 @@ public record VkPhysicalDeviceShaderFloat16Int8Features(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceShaderFloat16Int8FeaturesFactory implements IDataTypeFactory<VkPhysicalDeviceShaderFloat16Int8Features> {
+    public static final class VkPhysicalDeviceShaderFloat16Int8FeaturesFactory implements IFactory<VkPhysicalDeviceShaderFloat16Int8Features> {
         @Override
         public Class<VkPhysicalDeviceShaderFloat16Int8Features> clazz() {
             return VkPhysicalDeviceShaderFloat16Int8Features.class;

@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -138,7 +138,7 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineLayoutCreateInfoFactory implements IDataTypeFactory<VkPipelineLayoutCreateInfo> {
+    public static final class VkPipelineLayoutCreateInfoFactory implements IFactory<VkPipelineLayoutCreateInfo> {
         @Override
         public Class<VkPipelineLayoutCreateInfo> clazz() {
             return VkPipelineLayoutCreateInfo.class;

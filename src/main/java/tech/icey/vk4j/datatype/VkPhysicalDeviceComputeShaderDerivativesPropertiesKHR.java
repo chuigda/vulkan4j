@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR(MemorySegmen
     }
 
 
-    public static final class VkPhysicalDeviceComputeShaderDerivativesPropertiesKHRFactory implements IDataTypeFactory<VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR> {
+    public static final class VkPhysicalDeviceComputeShaderDerivativesPropertiesKHRFactory implements IFactory<VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR> {
         @Override
         public Class<VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR> clazz() {
             return VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.class;

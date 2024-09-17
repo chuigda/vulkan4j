@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -64,7 +64,7 @@ public record VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkBufferUsageFlags2CreateInfoKHRFactory implements IDataTypeFactory<VkBufferUsageFlags2CreateInfoKHR> {
+    public static final class VkBufferUsageFlags2CreateInfoKHRFactory implements IFactory<VkBufferUsageFlags2CreateInfoKHR> {
         @Override
         public Class<VkBufferUsageFlags2CreateInfoKHR> clazz() {
             return VkBufferUsageFlags2CreateInfoKHR.class;

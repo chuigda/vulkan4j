@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -150,7 +150,7 @@ public record VkCommandBufferInheritanceRenderingInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkCommandBufferInheritanceRenderingInfoFactory implements IDataTypeFactory<VkCommandBufferInheritanceRenderingInfo> {
+    public static final class VkCommandBufferInheritanceRenderingInfoFactory implements IFactory<VkCommandBufferInheritanceRenderingInfo> {
         @Override
         public Class<VkCommandBufferInheritanceRenderingInfo> clazz() {
             return VkCommandBufferInheritanceRenderingInfo.class;

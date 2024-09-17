@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -90,7 +90,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) {
     public void pApplicationInfoRaw(@pointer(comment="VkApplicationInfo*") MemorySegment value) {
         segment.set(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo, value);
     }
-
+    
     public @nullable VkApplicationInfo pApplicationInfo() {
         MemorySegment s = pApplicationInfoRaw();
         if (s.address() == 0) {
@@ -137,11 +137,11 @@ public record VkInstanceCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkInstanceCreateInfoFactory implements IDataTypeFactory<VkInstanceCreateInfo> {
+    public static final class VkInstanceCreateInfoFactory implements IFactory<VkInstanceCreateInfo> {
         @Override
         public Class<VkInstanceCreateInfo> clazz() {
             return VkInstanceCreateInfo.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {
@@ -152,7 +152,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) {
         public VkInstanceCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-
+        
         @Override
         public VkInstanceCreateInfo createUninit(MemorySegment segment) {
             return new VkInstanceCreateInfo(segment);

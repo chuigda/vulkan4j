@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -126,7 +126,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
     }
 
 
-    public static final class VkGraphicsPipelineShaderGroupsCreateInfoNVFactory implements IDataTypeFactory<VkGraphicsPipelineShaderGroupsCreateInfoNV> {
+    public static final class VkGraphicsPipelineShaderGroupsCreateInfoNVFactory implements IFactory<VkGraphicsPipelineShaderGroupsCreateInfoNV> {
         @Override
         public Class<VkGraphicsPipelineShaderGroupsCreateInfoNV> clazz() {
             return VkGraphicsPipelineShaderGroupsCreateInfoNV.class;

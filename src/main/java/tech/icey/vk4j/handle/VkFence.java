@@ -4,14 +4,14 @@ import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 
 public record VkFence(MemorySegment segment) {
     public MemorySegment handle() {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkFenceFactory implements IDataTypeFactory<VkFence> {
+    public static final class VkFenceFactory implements IFactory<VkFence> {
         @Override
         public Class<VkFence> clazz() {
             return VkFence.class;

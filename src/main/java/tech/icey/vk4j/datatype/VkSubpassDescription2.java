@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -244,7 +244,7 @@ public record VkSubpassDescription2(MemorySegment segment) {
     }
 
 
-    public static final class VkSubpassDescription2Factory implements IDataTypeFactory<VkSubpassDescription2> {
+    public static final class VkSubpassDescription2Factory implements IFactory<VkSubpassDescription2> {
         @Override
         public Class<VkSubpassDescription2> clazz() {
             return VkSubpassDescription2.class;

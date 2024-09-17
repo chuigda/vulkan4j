@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -103,7 +103,7 @@ public record VkLayerSettingEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkLayerSettingEXTFactory implements IDataTypeFactory<VkLayerSettingEXT> {
+    public static final class VkLayerSettingEXTFactory implements IFactory<VkLayerSettingEXT> {
         @Override
         public Class<VkLayerSettingEXT> clazz() {
             return VkLayerSettingEXT.class;

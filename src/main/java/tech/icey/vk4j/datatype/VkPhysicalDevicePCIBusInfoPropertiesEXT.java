@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -100,7 +100,7 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDevicePCIBusInfoPropertiesEXTFactory implements IDataTypeFactory<VkPhysicalDevicePCIBusInfoPropertiesEXT> {
+    public static final class VkPhysicalDevicePCIBusInfoPropertiesEXTFactory implements IFactory<VkPhysicalDevicePCIBusInfoPropertiesEXT> {
         @Override
         public Class<VkPhysicalDevicePCIBusInfoPropertiesEXT> clazz() {
             return VkPhysicalDevicePCIBusInfoPropertiesEXT.class;

@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -64,7 +64,7 @@ public record VkImageMemoryRequirementsInfo2(MemorySegment segment) {
     }
 
 
-    public static final class VkImageMemoryRequirementsInfo2Factory implements IDataTypeFactory<VkImageMemoryRequirementsInfo2> {
+    public static final class VkImageMemoryRequirementsInfo2Factory implements IFactory<VkImageMemoryRequirementsInfo2> {
         @Override
         public Class<VkImageMemoryRequirementsInfo2> clazz() {
             return VkImageMemoryRequirementsInfo2.class;

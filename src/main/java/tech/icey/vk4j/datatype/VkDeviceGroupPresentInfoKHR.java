@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -96,7 +96,7 @@ public record VkDeviceGroupPresentInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceGroupPresentInfoKHRFactory implements IDataTypeFactory<VkDeviceGroupPresentInfoKHR> {
+    public static final class VkDeviceGroupPresentInfoKHRFactory implements IFactory<VkDeviceGroupPresentInfoKHR> {
         @Override
         public Class<VkDeviceGroupPresentInfoKHR> clazz() {
             return VkDeviceGroupPresentInfoKHR.class;

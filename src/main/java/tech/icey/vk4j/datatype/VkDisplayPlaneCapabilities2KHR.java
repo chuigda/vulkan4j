@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -64,7 +64,7 @@ public record VkDisplayPlaneCapabilities2KHR(MemorySegment segment) {
     }
 
 
-    public static final class VkDisplayPlaneCapabilities2KHRFactory implements IDataTypeFactory<VkDisplayPlaneCapabilities2KHR> {
+    public static final class VkDisplayPlaneCapabilities2KHRFactory implements IFactory<VkDisplayPlaneCapabilities2KHR> {
         @Override
         public Class<VkDisplayPlaneCapabilities2KHR> clazz() {
             return VkDisplayPlaneCapabilities2KHR.class;

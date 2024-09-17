@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -112,7 +112,7 @@ public record VkPerformanceCounterDescriptionKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkPerformanceCounterDescriptionKHRFactory implements IDataTypeFactory<VkPerformanceCounterDescriptionKHR> {
+    public static final class VkPerformanceCounterDescriptionKHRFactory implements IFactory<VkPerformanceCounterDescriptionKHR> {
         @Override
         public Class<VkPerformanceCounterDescriptionKHR> clazz() {
             return VkPerformanceCounterDescriptionKHR.class;

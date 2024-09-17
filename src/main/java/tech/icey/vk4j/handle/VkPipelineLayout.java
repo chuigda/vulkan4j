@@ -4,14 +4,14 @@ import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 
 public record VkPipelineLayout(MemorySegment segment) {
     public MemorySegment handle() {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkPipelineLayoutFactory implements IDataTypeFactory<VkPipelineLayout> {
+    public static final class VkPipelineLayoutFactory implements IFactory<VkPipelineLayout> {
         @Override
         public Class<VkPipelineLayout> clazz() {
             return VkPipelineLayout.class;

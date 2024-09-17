@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceDepthClampZeroOneFeaturesEXT(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceDepthClampZeroOneFeaturesEXTFactory implements IDataTypeFactory<VkPhysicalDeviceDepthClampZeroOneFeaturesEXT> {
+    public static final class VkPhysicalDeviceDepthClampZeroOneFeaturesEXTFactory implements IFactory<VkPhysicalDeviceDepthClampZeroOneFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceDepthClampZeroOneFeaturesEXT> clazz() {
             return VkPhysicalDeviceDepthClampZeroOneFeaturesEXT.class;

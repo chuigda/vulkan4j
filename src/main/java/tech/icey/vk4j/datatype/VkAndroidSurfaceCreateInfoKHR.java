@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -76,7 +76,7 @@ public record VkAndroidSurfaceCreateInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkAndroidSurfaceCreateInfoKHRFactory implements IDataTypeFactory<VkAndroidSurfaceCreateInfoKHR> {
+    public static final class VkAndroidSurfaceCreateInfoKHRFactory implements IFactory<VkAndroidSurfaceCreateInfoKHR> {
         @Override
         public Class<VkAndroidSurfaceCreateInfoKHR> clazz() {
             return VkAndroidSurfaceCreateInfoKHR.class;

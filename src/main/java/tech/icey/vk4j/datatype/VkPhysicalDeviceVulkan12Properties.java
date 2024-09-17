@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -684,7 +684,7 @@ public record VkPhysicalDeviceVulkan12Properties(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceVulkan12PropertiesFactory implements IDataTypeFactory<VkPhysicalDeviceVulkan12Properties> {
+    public static final class VkPhysicalDeviceVulkan12PropertiesFactory implements IFactory<VkPhysicalDeviceVulkan12Properties> {
         @Override
         public Class<VkPhysicalDeviceVulkan12Properties> clazz() {
             return VkPhysicalDeviceVulkan12Properties.class;

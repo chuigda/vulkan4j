@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -117,7 +117,7 @@ public record VkImageBlit(MemorySegment segment) {
     }
 
 
-    public static final class VkImageBlitFactory implements IDataTypeFactory<VkImageBlit> {
+    public static final class VkImageBlitFactory implements IFactory<VkImageBlit> {
         @Override
         public Class<VkImageBlit> clazz() {
             return VkImageBlit.class;

@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -51,7 +51,7 @@ public record VkSubpassSampleLocationsEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkSubpassSampleLocationsEXTFactory implements IDataTypeFactory<VkSubpassSampleLocationsEXT> {
+    public static final class VkSubpassSampleLocationsEXTFactory implements IFactory<VkSubpassSampleLocationsEXT> {
         @Override
         public Class<VkSubpassSampleLocationsEXT> clazz() {
             return VkSubpassSampleLocationsEXT.class;

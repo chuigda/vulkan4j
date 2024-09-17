@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -64,7 +64,7 @@ public record VkMemoryPriorityAllocateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkMemoryPriorityAllocateInfoEXTFactory implements IDataTypeFactory<VkMemoryPriorityAllocateInfoEXT> {
+    public static final class VkMemoryPriorityAllocateInfoEXTFactory implements IFactory<VkMemoryPriorityAllocateInfoEXT> {
         @Override
         public Class<VkMemoryPriorityAllocateInfoEXT> clazz() {
             return VkMemoryPriorityAllocateInfoEXT.class;

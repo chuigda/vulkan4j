@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -175,7 +175,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
     }
 
 
-    public static final class VkSubmitInfo2Factory implements IDataTypeFactory<VkSubmitInfo2> {
+    public static final class VkSubmitInfo2Factory implements IFactory<VkSubmitInfo2> {
         @Override
         public Class<VkSubmitInfo2> clazz() {
             return VkSubmitInfo2.class;

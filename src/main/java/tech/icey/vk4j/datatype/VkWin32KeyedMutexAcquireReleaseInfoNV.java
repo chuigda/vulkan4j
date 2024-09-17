@@ -11,7 +11,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -186,7 +186,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkWin32KeyedMutexAcquireReleaseInfoNVFactory implements IDataTypeFactory<VkWin32KeyedMutexAcquireReleaseInfoNV> {
+    public static final class VkWin32KeyedMutexAcquireReleaseInfoNVFactory implements IFactory<VkWin32KeyedMutexAcquireReleaseInfoNV> {
         @Override
         public Class<VkWin32KeyedMutexAcquireReleaseInfoNV> clazz() {
             return VkWin32KeyedMutexAcquireReleaseInfoNV.class;

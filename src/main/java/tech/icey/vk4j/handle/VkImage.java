@@ -4,14 +4,14 @@ import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
-import tech.icey.vk4j.IDataTypeFactory;
+import tech.icey.vk4j.IFactory;
 
 public record VkImage(MemorySegment segment) {
     public MemorySegment handle() {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkImageFactory implements IDataTypeFactory<VkImage> {
+    public static final class VkImageFactory implements IFactory<VkImage> {
         @Override
         public Class<VkImage> clazz() {
             return VkImage.class;
