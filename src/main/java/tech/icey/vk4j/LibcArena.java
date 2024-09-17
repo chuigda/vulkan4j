@@ -32,6 +32,17 @@ public final class LibcArena implements Arena {
         }
     }
 
+    /// Allocates memory using system libc {@code aligned_alloc}
+    ///
+    /// Note that you're in charge of freeing the memory using {@link LibcArena#free}, otherwise
+    /// there will be a memory leak. Be extra careful when using {@link LibcArena} in combination
+    /// with {@link Create} utility methods;
+    ///
+    /// @param byteSize The size of the memory to allocate
+    /// @param byteAlignment The alignment of the memory to allocate
+    /// @return A {@link MemorySegment} representing the allocated memory
+    /// @throws IllegalArgumentException If the byte size or alignment is invalid
+    /// @throws OutOfMemoryError If the memory allocation fails
     @Override
     public MemorySegment allocate(long byteSize, long byteAlignment) {
         if (byteSize <= 0 || byteAlignment <= 0 || (byteAlignment & (byteAlignment - 1)) != 0) {
