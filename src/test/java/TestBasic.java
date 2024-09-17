@@ -64,9 +64,8 @@ public class TestBasic {
             int physicalDeviceCount = pPhysicalDeviceCount.read();
             System.out.println("Physical device count: " + physicalDeviceCount);
 
+            var properties = Create.create(VkPhysicalDeviceProperties.FACTORY, arena);
             for (int i = 0; i < physicalDeviceCount; i++) {
-                var properties = Create.create(VkPhysicalDeviceProperties.FACTORY, arena);
-
                 var physicalDevice = physicalDevices[i];
                 instanceCommands.vkGetPhysicalDeviceProperties(physicalDevice, properties);
 
