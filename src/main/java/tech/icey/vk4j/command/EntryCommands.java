@@ -53,10 +53,10 @@ public final class EntryCommands {
     public @enumtype(VkResult.class) int vkCreateInstance(
             @pointer(target=VkInstanceCreateInfo.class) VkInstanceCreateInfo pCreateInfo,
             @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(comment="VkInstance*") MemorySegment pInstance
+            @pointer(target=VkInstance.class) VkInstance pInstance
     ) {
         try {
-            return (int) HANDLE$vkCreateInstance.invoke(pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL, pAllocator != null ? pAllocator.segment() : MemorySegment.NULL, pInstance);
+            return (int) HANDLE$vkCreateInstance.invoke(pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL, pAllocator != null ? pAllocator.segment() : MemorySegment.NULL, pInstance != null ? pInstance.segment() : MemorySegment.NULL);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }

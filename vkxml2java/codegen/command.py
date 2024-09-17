@@ -139,7 +139,9 @@ def generate_input_output_type(type_: CType) -> str:
     if isinstance(type_, CPointerType):
         if isinstance(type_.pointee, CNonRefType):
             return f'@pointer(target={type_.pointee.vk4j_ptr_type_no_sign()}.class) {type_.pointee.vk4j_ptr_type()}'
-        elif isinstance(type_.pointee, CStructType) or isinstance(type_.pointee, CUnionType):
+        elif isinstance(type_.pointee, CStructType) \
+                or isinstance(type_.pointee, CUnionType) \
+                or isinstance(type_.pointee, CHandleType):
             return f'@pointer(target={type_.pointee.java_type()}.class) {type_.pointee.java_type()}'
     return type_.java_type()
 
@@ -148,7 +150,8 @@ def generate_input_convert(type_: CType, input_param: str):
     if isinstance(type_, CPointerType):
         if isinstance(type_.pointee, CNonRefType) \
                 or isinstance(type_.pointee, CStructType) \
-                or isinstance(type_.pointee, CUnionType):
+                or isinstance(type_.pointee, CUnionType) \
+                or isinstance(type_.pointee, CHandleType):
             return f'{input_param} != null ? {input_param}.segment() : MemorySegment.NULL'
 
     if isinstance(type_, CStructType) \

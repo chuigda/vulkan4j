@@ -17,7 +17,6 @@ import tech.icey.vk4j.ptr.IntPtr;
 import java.lang.foreign.Arena;
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
 
 public class TestBasic {
     static {
@@ -39,7 +38,7 @@ public class TestBasic {
             instanceCreateInfo.pApplicationInfo(applicationInfo);
 
             var instance = Create.create(VkInstance.FACTORY, arena);
-            int result = entryCommands.vkCreateInstance(instanceCreateInfo, null, instance.segment());
+            int result = entryCommands.vkCreateInstance(instanceCreateInfo, null, instance);
             if (result != VkResult.VK_SUCCESS) {
                 System.out.println("Failed to create instance: " + result);
                 return;
@@ -57,8 +56,8 @@ public class TestBasic {
 
             IntPtr pPhysicalDeviceCount = IntArray.allocate(arena, 1).ptr();
             pPhysicalDeviceCount.write(8);
-            var physicalDevices = Create.createArray(VkPhysicalDevice.FACTORY, arena, 8);
-            result = instanceCommands.vkEnumeratePhysicalDevices(instance, pPhysicalDeviceCount, physicalDevices.second);
+            var physicalDevices = Create.createArray(VkPhysicalDevice.FACTORY, arena, 8).first;
+            result = instanceCommands.vkEnumeratePhysicalDevices(instance, pPhysicalDeviceCount, physicalDevices[0]);
             if (result != VkResult.VK_SUCCESS && result != VkResult.VK_INCOMPLETE) {
                 System.out.println("Failed to enumerate physical devices: " + result);
                 return;
@@ -70,7 +69,7 @@ public class TestBasic {
             for (int i = 0; i < physicalDeviceCount; i++) {
                 var properties = Create.create(VkPhysicalDeviceProperties.FACTORY, arena);
 
-                var physicalDevice = physicalDevices.first[i];
+                var physicalDevice = physicalDevices[i];
                 instanceCommands.vkGetPhysicalDeviceProperties(physicalDevice, properties);
 
                 var deviceName = properties.deviceNameRaw().getString(0);
