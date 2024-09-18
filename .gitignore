@@ -35,7 +35,7 @@ build/
 .DS_Store
 
 # Downloaded vk.xml
-/vkxml2java/vk.xml
+/vk4j/vkxml2java/vk.xml
 
 # Generated .java files (temporal, will be removed in the future)
 
