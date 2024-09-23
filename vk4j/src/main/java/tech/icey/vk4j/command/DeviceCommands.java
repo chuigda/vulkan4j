@@ -645,7 +645,7 @@ public final class DeviceCommands {
 
     public static final FunctionDescriptor DESCRIPTOR$vkCmdSetBlendConstants = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
-            MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT)
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT)
     );
 
     public static final FunctionDescriptor DESCRIPTOR$vkCmdSetDepthBounds = FunctionDescriptor.ofVoid(

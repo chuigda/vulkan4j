@@ -18,7 +18,7 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 public record VkBaseOutStructure(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withTargetLayout(VkBaseOutStructure.LAYOUT).withName("pNext")
+        ValueLayout.ADDRESS.withName("pNext")
     );
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
@@ -49,7 +49,7 @@ public record VkBaseOutStructure(MemorySegment segment) {
     public void pNextRaw(@pointer(comment="VkBaseOutStructure*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
-    
+
     public @nullable VkBaseOutStructure pNext() {
         MemorySegment s = pNextRaw();
         if (s.address() == 0) {
@@ -68,7 +68,7 @@ public record VkBaseOutStructure(MemorySegment segment) {
         @Override
         public Class<VkBaseOutStructure> clazz() {
             return VkBaseOutStructure.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {
@@ -79,7 +79,7 @@ public record VkBaseOutStructure(MemorySegment segment) {
         public VkBaseOutStructure create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBaseOutStructure createUninit(MemorySegment segment) {
             return new VkBaseOutStructure(segment);

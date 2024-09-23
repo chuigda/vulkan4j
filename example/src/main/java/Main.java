@@ -1,25 +1,28 @@
 import tech.icey.glfwmini.LibGLFW;
+import tech.icey.vk4j.Constants;
 import tech.icey.vk4j.Create;
 import tech.icey.vk4j.Loader;
 import tech.icey.vk4j.Version;
 import tech.icey.vk4j.annotations.nullable;
 import tech.icey.vk4j.array.ByteArray;
+import tech.icey.vk4j.array.FloatArray;
+import tech.icey.vk4j.bitmask.VkQueueFlags;
+import tech.icey.vk4j.command.DeviceCommands;
 import tech.icey.vk4j.command.EntryCommands;
 import tech.icey.vk4j.command.InstanceCommands;
 import tech.icey.vk4j.command.StaticCommands;
-import tech.icey.vk4j.datatype.VkApplicationInfo;
-import tech.icey.vk4j.datatype.VkExtensionProperties;
-import tech.icey.vk4j.datatype.VkInstanceCreateInfo;
-import tech.icey.vk4j.datatype.VkPhysicalDeviceProperties;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.VkPhysicalDeviceType;
-import tech.icey.vk4j.handle.VkInstance;
-import tech.icey.vk4j.handle.VkPhysicalDevice;
-import tech.icey.vk4j.handle.VkSurfaceKHR;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.IntPtr;
+import tech.icey.vk4j.util.Function2;
 
 import javax.swing.*;
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+import java.lang.invoke.MethodHandle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,19 +63,22 @@ public class Main {
                 return;
             }
 
-            var instanceCommands = new InstanceCommands((name, descriptor) -> {
-                try (Arena arena1 = Arena.ofConfined()) {
-                    var pName = ByteArray.allocateUtf8(arena1, name);
-                    MemorySegment segment = staticCommands.vkGetInstanceProcAddr(pInstance, pName);
-                    if (segment.address() == 0) {
-                        return null;
-                    }
+            Function2<String, FunctionDescriptor, MethodHandle> instanceLoader =
+                    (String name, FunctionDescriptor descriptor) -> {
+                        try (Arena arena1 = Arena.ofConfined()) {
+                            var nameSegment = ByteArray.allocateUtf8(arena1, name);
+                            MemorySegment segment = staticCommands.vkGetInstanceProcAddr(pInstance, nameSegment);
+                            if (segment.address() == 0) {
+                                return null;
+                            }
 
-                    return Loader.nativeLinker.downcallHandle(segment, descriptor);
-                }
-            });
+                            return Loader.nativeLinker.downcallHandle(segment, descriptor);
+                        }
+                    };
 
-            vkMain(arena, libGLFW, pInstance, instanceCommands);
+            var instanceCommands = new InstanceCommands(instanceLoader);
+
+            vkMain(arena, libGLFW, pInstance, staticCommands, instanceCommands, instanceLoader);
             instanceCommands.vkDestroyInstance(pInstance, null);
         }
 
@@ -84,7 +90,9 @@ public class Main {
             Arena arena,
             LibGLFW libGLFW,
             VkInstance instance,
-            InstanceCommands instanceCommands
+            StaticCommands staticCommands,
+            InstanceCommands instanceCommands,
+            Function2<String, FunctionDescriptor, MethodHandle> instanceLoader
     ) {
         libGLFW.glfwWindowHint(LibGLFW.GLFW_CLIENT_API, LibGLFW.GLFW_NO_API);
         var window = libGLFW.glfwCreateWindow(640, 480, "VkCube4j", MemorySegment.NULL, MemorySegment.NULL);
@@ -120,7 +128,67 @@ public class Main {
             return;
         }
 
-        System.out.println("选中的物理设备: " + physicalDevice);
+        VkQueueFamilyProperties[] queueFamilyProperties = getPhysicalDeviceQueueFamilyProperties(arena, instanceCommands, physicalDevice);
+        if (queueFamilyProperties.length == 0) {
+            showErrorMessage("物理设备 " + physicalDevice + " 没有可用的队列族");
+            return;
+        }
+
+        VkDeviceQueueCreateInfo[] queueCreateInfos = Create.createArray(VkDeviceQueueCreateInfo.FACTORY, arena, queueFamilyProperties.length).first;
+        for (int i = 0; i < queueFamilyProperties.length; i++) {
+            VkQueueFamilyProperties queueFamilyProperty = queueFamilyProperties[i];
+            var pQueuePriorities = FloatArray.allocate(arena, queueFamilyProperty.queueCount());
+            queueCreateInfos[i].queueFamilyIndex(i);
+            queueCreateInfos[i].pQueuePriorities(pQueuePriorities);
+        }
+
+        var ppEnabledExtensionNames = arena.allocate(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE));
+        var khrSwapChain = arena.allocateFrom("VK_KHR_swapchain");
+        ppEnabledExtensionNames.set(ValueLayout.ADDRESS, 0, khrSwapChain);
+
+        var deviceFeatures = Create.create(VkPhysicalDeviceFeatures.FACTORY, arena);
+        var deviceCreateInfo = Create.create(VkDeviceCreateInfo.FACTORY, arena);
+        deviceCreateInfo.pQueueCreateInfos(queueCreateInfos[0]);
+        deviceCreateInfo.pEnabledFeatures(deviceFeatures);
+        deviceCreateInfo.ppEnabledExtensionNames(ppEnabledExtensionNames);
+        deviceCreateInfo.enabledExtensionCount(0);
+
+        var pDevice = Create.create(VkDevice.FACTORY, arena);
+        result = instanceCommands.vkCreateDevice(physicalDevice, deviceCreateInfo, null, pDevice);
+        if (result != 0) {
+            showErrorMessage("创建 Vulkan 设备失败，Vulkan 错误代码：" + result);
+            return;
+        }
+
+        var deviceCommands = new DeviceCommands((name, descriptor) -> {
+            try (Arena arena1 = Arena.ofConfined()) {
+                var nameSegment = ByteArray.allocateUtf8(arena1, name);
+                MemorySegment segment = staticCommands.vkGetDeviceProcAddr(pDevice, nameSegment);
+                if (segment.address() == 0) {
+                    return null;
+                }
+
+                return Loader.nativeLinker.downcallHandle(segment, descriptor);
+            }
+        }, instanceLoader);
+
+        var graphicsQueueFamilyIndex = getGraphicsQueueFamilyIndex(queueFamilyProperties);
+        if (graphicsQueueFamilyIndex == -1) {
+            showErrorMessage("物理设备 " + physicalDevice + " 没有图形队列族");
+            return;
+        }
+
+        var graphicsQueue = Create.create(VkQueue.FACTORY, arena);
+        deviceCommands.vkGetDeviceQueue(pDevice, graphicsQueueFamilyIndex, 0, graphicsQueue);
+
+        var presentationQueueFamilyIndex = getPresentationQueueFamilyIndex(instanceCommands, physicalDevice, pSurface);
+        if (presentationQueueFamilyIndex == -1) {
+            showErrorMessage("物理设备 " + physicalDevice + " 没有展示队列族");
+            return;
+        }
+
+        var presentationQueue = Create.create(VkQueue.FACTORY, arena);
+        deviceCommands.vkGetDeviceQueue(pDevice, presentationQueueFamilyIndex, 0, presentationQueue);
     }
 
     private static @nullable VkPhysicalDevice pickPhysicalDevice(
@@ -187,6 +255,64 @@ public class Main {
         }
 
         return physicalDevices[deviceInfoDialog.selectedDeviceId];
+    }
+
+    private static VkQueueFamilyProperties[] getPhysicalDeviceQueueFamilyProperties(
+            Arena arena,
+            InstanceCommands instanceCommands,
+            VkPhysicalDevice physicalDevice
+    ) {
+        try (Arena arena1 = Arena.ofConfined()) {
+            IntPtr pNumQueueFamilyProperties = IntPtr.allocate(arena1);
+            instanceCommands.vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pNumQueueFamilyProperties, null);
+            int numQueueFamilyProperties = pNumQueueFamilyProperties.read();
+
+            var pQueueFamilyProperties = Create.createArray(VkQueueFamilyProperties.FACTORY, arena, numQueueFamilyProperties).first;
+            instanceCommands.vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pNumQueueFamilyProperties, pQueueFamilyProperties[0]);
+
+            return pQueueFamilyProperties;
+        }
+    }
+
+    private static int getGraphicsQueueFamilyIndex(VkQueueFamilyProperties[] queueFamilyProperties) {
+        for (int i = 0; i < queueFamilyProperties.length; i++) {
+            VkQueueFamilyProperties queueFamilyProperty = queueFamilyProperties[i];
+            if ((queueFamilyProperty.queueFlags() & VkQueueFlags.VK_QUEUE_GRAPHICS_BIT) != 0) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    private static int getPresentationQueueFamilyIndex(
+            InstanceCommands instanceCommands,
+            VkPhysicalDevice physicalDevice,
+            VkSurfaceKHR pSurface
+    ) {
+        try (Arena arena = Arena.ofConfined()) {
+            IntPtr pNumQueueFamilyProperties = IntPtr.allocate(arena);
+            instanceCommands.vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pNumQueueFamilyProperties, null);
+            int numQueueFamilyProperties = pNumQueueFamilyProperties.read();
+
+            var pQueueFamilyProperties = Create.createArray(VkQueueFamilyProperties.FACTORY, arena, numQueueFamilyProperties).first;
+            instanceCommands.vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pNumQueueFamilyProperties, pQueueFamilyProperties[0]);
+
+            for (int i = 0; i < numQueueFamilyProperties; i++) {
+                IntPtr pSupportsPresentation = IntPtr.allocate(arena);
+                int result = instanceCommands.vkGetPhysicalDeviceSurfaceSupportKHR(physicalDevice, i, pSurface, pSupportsPresentation);
+                if (result < 0) {
+                    showErrorMessage("检查物理设备 " + physicalDevice + " 的队列族 " + i + " 是否支持展示失败，Vulkan 错误代码：" + result);
+                    return -1;
+                }
+
+                if (pSupportsPresentation.read() == Constants.VK_TRUE) {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
     }
 
     private static boolean loadLibraries() {
