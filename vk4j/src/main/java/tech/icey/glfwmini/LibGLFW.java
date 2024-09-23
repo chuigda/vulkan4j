@@ -19,6 +19,9 @@ import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
 public final class LibGLFW {
+    public static final int GLFW_CLIENT_API = 0x00022001;
+    public static final int GLFW_NO_API = 0;
+
     public static final FunctionDescriptor DESCRIPTOR$glfwInit = FunctionDescriptor.of(
             ValueLayout.JAVA_INT
     );
@@ -39,6 +42,11 @@ public final class LibGLFW {
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS),
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
+    );
+
+    public static final FunctionDescriptor DESCRIPTOR$glfwWindowHint = FunctionDescriptor.ofVoid(
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
     );
     public static final FunctionDescriptor DESCRIPTOR$glfwCreateWindow = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
@@ -63,6 +71,7 @@ public final class LibGLFW {
     public final MethodHandle HANDLE$glfwVulkanSupported;
     public final MethodHandle HANDLE$glfwGetRequiredInstanceExtensions;
     public final MethodHandle HANDLE$glfwGetInstanceProcAddress;
+    public final MethodHandle HANDLE$glfwWindowHint;
     public final MethodHandle HANDLE$glfwCreateWindow;
     public final MethodHandle HANDLE$glfwCreateWindowSurface;
 
@@ -74,6 +83,7 @@ public final class LibGLFW {
         HANDLE$glfwVulkanSupported = loader.apply("glfwVulkanSupported", DESCRIPTOR$glfwVulkanSupported);
         HANDLE$glfwGetRequiredInstanceExtensions = loader.apply("glfwGetRequiredInstanceExtensions", DESCRIPTOR$glfwGetRequiredInstanceExtensions);
         HANDLE$glfwGetInstanceProcAddress = loader.apply("glfwGetInstanceProcAddress", DESCRIPTOR$glfwGetInstanceProcAddress);
+        HANDLE$glfwWindowHint = loader.apply("glfwWindowHint", DESCRIPTOR$glfwWindowHint);
         HANDLE$glfwCreateWindow = loader.apply("glfwCreateWindow", DESCRIPTOR$glfwCreateWindow);
         HANDLE$glfwCreateWindowSurface = loader.apply("glfwCreateWindowSurface", DESCRIPTOR$glfwCreateWindowSurface);
     }
@@ -138,6 +148,14 @@ public final class LibGLFW {
         }
     }
 
+    public void glfwWindowHint(int hint, int value) {
+        try {
+            HANDLE$glfwWindowHint.invokeExact(hint, value);
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
+        }
+    }
+
     public @pointer(comment="GLFWwindow*") MemorySegment glfwCreateWindow(
             int width,
             int height,
@@ -160,7 +178,15 @@ public final class LibGLFW {
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR surface
     ) {
         try {
-            return (int) HANDLE$glfwCreateWindowSurface.invokeExact(instance.handle(), window, allocator, surface.segment());
+            // TODO: here if we try to "inline" the expression into invokeExact arguments there'll be a
+            // java.lang.invoke.WrongMethodTypeException. Why?
+            MemorySegment allocatorSegment = allocator != null ? allocator.segment() : MemorySegment.NULL;
+            return (int) HANDLE$glfwCreateWindowSurface.invokeExact(
+                    instance.handle(),
+                    window,
+                    allocatorSegment,
+                    surface.segment()
+            );
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }

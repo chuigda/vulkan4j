@@ -14,6 +14,7 @@ import tech.icey.vk4j.datatype.VkPhysicalDeviceProperties;
 import tech.icey.vk4j.enumtype.VkPhysicalDeviceType;
 import tech.icey.vk4j.handle.VkInstance;
 import tech.icey.vk4j.handle.VkPhysicalDevice;
+import tech.icey.vk4j.handle.VkSurfaceKHR;
 import tech.icey.vk4j.ptr.IntPtr;
 
 import javax.swing.*;
@@ -72,6 +73,7 @@ public class Main {
             });
 
             vkMain(arena, libGLFW, pInstance, instanceCommands);
+            instanceCommands.vkDestroyInstance(pInstance, null);
         }
 
         libGLFW.glfwTerminate();
@@ -84,8 +86,22 @@ public class Main {
             VkInstance instance,
             InstanceCommands instanceCommands
     ) {
+        libGLFW.glfwWindowHint(LibGLFW.GLFW_CLIENT_API, LibGLFW.GLFW_NO_API);
+        var window = libGLFW.glfwCreateWindow(640, 480, "VkCube4j", MemorySegment.NULL, MemorySegment.NULL);
+        if (window.address() == 0) {
+            showErrorMessage("创建 GLFW 窗口失败");
+            return;
+        }
+
+        var pSurface = Create.create(VkSurfaceKHR.FACTORY, arena);
+        var result = libGLFW.glfwCreateWindowSurface(instance, window, null, pSurface);
+        if (result != 0) {
+            showErrorMessage("创建 Vulkan 表面失败，Vulkan 错误代码：" + result);
+            return;
+        }
+
         var pPhysicalDeviceCount = IntPtr.allocate(arena);
-        var result = instanceCommands.vkEnumeratePhysicalDevices(instance, pPhysicalDeviceCount, null);
+        result = instanceCommands.vkEnumeratePhysicalDevices(instance, pPhysicalDeviceCount, null);
         if (result < 0) {
             showErrorMessage("枚举物理设备失败，Vulkan 错误代码：" + result);
             return;
