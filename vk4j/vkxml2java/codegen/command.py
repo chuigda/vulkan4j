@@ -83,7 +83,7 @@ def generate_command_descriptor(
     for param in command.params:
         param_types.append(lower_type(registry, param.type))
 
-    param_type_layouts = map(lambda ctype: f'            {ctype.java_layout()}', param_types)
+    param_type_layouts = map(lambda ctype: f'            {ctype.java_param_layout()}', param_types)
 
     if result_type[0] == CTYPE_VOID:
         return f'''    public static final FunctionDescriptor DESCRIPTOR${command.name} = FunctionDescriptor.ofVoid(

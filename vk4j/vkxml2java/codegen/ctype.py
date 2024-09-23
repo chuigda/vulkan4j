@@ -12,6 +12,9 @@ class CType:
     def java_layout(self) -> str:
         raise NotImplementedError()
 
+    def java_param_layout(self) -> str:
+        return self.java_layout()
+
     def java_layout_type(self) -> str:
         raise NotImplementedError()
 
@@ -126,11 +129,13 @@ class CArrayType(CType):
 
     def java_layout(self) -> str:
         if isinstance(self.element, CArrayType):
-            # try to flatten the array
-            new_size = f'{self.size} * {self.element.size}'
-            new_type = CArrayType(self.element.element, new_size)
-            return new_type.java_layout()
+            return flatten_array(self).java_layout()
         return f'MemoryLayout.sequenceLayout({self.size}, {self.element.java_layout()})'
+
+    def java_param_layout(self) -> str:
+        if isinstance(self.element, CArrayType):
+            return flatten_array(self).java_param_layout()
+        return f'ValueLayout.ADDRESS.withTargetLayout({self.element.java_layout()})'
 
     def java_layout_type(self) -> str:
         return 'SequenceLayout'

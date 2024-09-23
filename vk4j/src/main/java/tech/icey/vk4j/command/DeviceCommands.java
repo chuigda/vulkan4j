@@ -2780,7 +2780,7 @@ public final class DeviceCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkCmdSetFragmentShadingRateKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkExtent2D.LAYOUT),
-            MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_INT)
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
     );
 
     public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceFragmentShadingRatesKHR = FunctionDescriptor.of(
@@ -2793,7 +2793,7 @@ public final class DeviceCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkCmdSetFragmentShadingRateEnumNV = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
-            MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_INT)
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
     );
 
     public static final FunctionDescriptor DESCRIPTOR$vkGetAccelerationStructureBuildSizesKHR = FunctionDescriptor.ofVoid(
