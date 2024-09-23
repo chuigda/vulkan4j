@@ -1,9 +1,14 @@
 package tech.icey.glfwmini;
 
 import tech.icey.vk4j.Loader;
+import tech.icey.vk4j.annotations.enumtype;
+import tech.icey.vk4j.annotations.nullable;
 import tech.icey.vk4j.annotations.pointer;
 import tech.icey.vk4j.annotations.unsigned;
+import tech.icey.vk4j.datatype.VkAllocationCallbacks;
+import tech.icey.vk4j.enumtype.VkResult;
 import tech.icey.vk4j.handle.VkInstance;
+import tech.icey.vk4j.handle.VkSurfaceKHR;
 import tech.icey.vk4j.ptr.IntPtr;
 import tech.icey.vk4j.util.Function2;
 
@@ -35,6 +40,21 @@ public final class LibGLFW {
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS),
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
     );
+    public static final FunctionDescriptor DESCRIPTOR$glfwCreateWindow = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+    );
+    public static final FunctionDescriptor DESCRIPTOR$glfwCreateWindowSurface = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
+    );
 
     public final MethodHandle HANDLE$glfwInit;
     public final MethodHandle HANDLE$glfwTerminate;
@@ -43,6 +63,8 @@ public final class LibGLFW {
     public final MethodHandle HANDLE$glfwVulkanSupported;
     public final MethodHandle HANDLE$glfwGetRequiredInstanceExtensions;
     public final MethodHandle HANDLE$glfwGetInstanceProcAddress;
+    public final MethodHandle HANDLE$glfwCreateWindow;
+    public final MethodHandle HANDLE$glfwCreateWindowSurface;
 
     public LibGLFW(Function2<String, FunctionDescriptor, MethodHandle> loader) {
         HANDLE$glfwInit = loader.apply("glfwInit", DESCRIPTOR$glfwInit);
@@ -52,6 +74,8 @@ public final class LibGLFW {
         HANDLE$glfwVulkanSupported = loader.apply("glfwVulkanSupported", DESCRIPTOR$glfwVulkanSupported);
         HANDLE$glfwGetRequiredInstanceExtensions = loader.apply("glfwGetRequiredInstanceExtensions", DESCRIPTOR$glfwGetRequiredInstanceExtensions);
         HANDLE$glfwGetInstanceProcAddress = loader.apply("glfwGetInstanceProcAddress", DESCRIPTOR$glfwGetInstanceProcAddress);
+        HANDLE$glfwCreateWindow = loader.apply("glfwCreateWindow", DESCRIPTOR$glfwCreateWindow);
+        HANDLE$glfwCreateWindowSurface = loader.apply("glfwCreateWindowSurface", DESCRIPTOR$glfwCreateWindowSurface);
     }
 
     public int glfwInit() {
@@ -96,16 +120,49 @@ public final class LibGLFW {
         }
     }
 
-    public MethodHandle glfwGetInstanceProcAddress(VkInstance instance, String procName, FunctionDescriptor descriptor) {
+    public MethodHandle glfwGetInstanceProcAddress(
+            @nullable VkInstance instance,
+            String procName,
+            FunctionDescriptor descriptor
+    ) {
         try (Arena arena = Arena.ofConfined()) {
             MemorySegment s = arena.allocateFrom(procName);
-            MemorySegment ret = (MemorySegment) HANDLE$glfwGetInstanceProcAddress.invokeExact(instance.handle(), s);
+            MemorySegment instanceSegment = instance != null ? instance.handle() : MemorySegment.NULL;
+            MemorySegment ret = (MemorySegment) HANDLE$glfwGetInstanceProcAddress.invokeExact(instanceSegment, s);
             if (ret.address() == 0) {
                 return null;
             }
             return Loader.nativeLinker.downcallHandle(ret, descriptor);
         } catch (Throwable e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public @pointer(comment="GLFWwindow*") MemorySegment glfwCreateWindow(
+            int width,
+            int height,
+            String title,
+            @pointer(comment="GLFWMonitor*") MemorySegment monitor,
+            @pointer(comment="GLFWwindow*") MemorySegment share
+    ) {
+        try (Arena arena = Arena.ofConfined()) {
+            MemorySegment titleSegment = arena.allocateFrom(title);
+            return (MemorySegment) HANDLE$glfwCreateWindow.invokeExact(width, height, titleSegment, monitor, share);
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
+        }
+    }
+
+    public @enumtype(VkResult.class) int glfwCreateWindowSurface(
+            VkInstance instance,
+            @pointer(comment="GLFWwindow*") MemorySegment window,
+            VkAllocationCallbacks allocator,
+            @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR surface
+    ) {
+        try {
+            return (int) HANDLE$glfwCreateWindowSurface.invokeExact(instance.handle(), window, allocator, surface.segment());
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
         }
     }
 }

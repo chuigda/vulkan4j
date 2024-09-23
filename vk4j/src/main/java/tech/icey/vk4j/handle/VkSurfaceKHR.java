@@ -15,7 +15,7 @@ public record VkSurfaceKHR(MemorySegment segment) {
         @Override
         public Class<VkSurfaceKHR> clazz() {
             return VkSurfaceKHR.class;
-        }        
+        }
 
         @Override
         public MemoryLayout layout() {

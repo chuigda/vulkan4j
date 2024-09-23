@@ -1,8 +1,25 @@
 import tech.icey.glfwmini.LibGLFW;
+import tech.icey.vk4j.Create;
 import tech.icey.vk4j.Loader;
+import tech.icey.vk4j.Version;
+import tech.icey.vk4j.annotations.nullable;
+import tech.icey.vk4j.array.ByteArray;
+import tech.icey.vk4j.command.EntryCommands;
+import tech.icey.vk4j.command.InstanceCommands;
 import tech.icey.vk4j.command.StaticCommands;
+import tech.icey.vk4j.datatype.VkApplicationInfo;
+import tech.icey.vk4j.datatype.VkExtensionProperties;
+import tech.icey.vk4j.datatype.VkInstanceCreateInfo;
+import tech.icey.vk4j.datatype.VkPhysicalDeviceProperties;
+import tech.icey.vk4j.enumtype.VkPhysicalDeviceType;
+import tech.icey.vk4j.handle.VkInstance;
+import tech.icey.vk4j.handle.VkPhysicalDevice;
+import tech.icey.vk4j.ptr.IntPtr;
 
 import javax.swing.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -17,18 +34,143 @@ public class Main {
         }
 
         var staticCommands = new StaticCommands(Loader::loadFunctionOrNull);
-        var entryCommands = new StaticCommands(Loader::loadFunctionOrNull);
+        var entryCommands = new EntryCommands(Loader::loadFunctionOrNull);
 
-        var deviceInfoDialog = new DeviceInfoDialog(List.of(
-                new DeviceInfo("Device A", "南去经三国，东来过五湖"),
-                new DeviceInfo("Device B", "三万里河入东海，五千仞岳上摩天")
-        ));
+        try (Arena arena = Arena.ofConfined()) {
+            var pRequiredExtensionCount = IntPtr.allocate(arena);
+            var requiredExtensions = libGLFW.glfwGetRequiredInstanceExtensions(pRequiredExtensionCount);
+
+            var applicationInfo = Create.create(VkApplicationInfo.FACTORY, arena);
+            applicationInfo.pApplicationName(ByteArray.allocateUtf8(arena, "VkCube4j"));
+            applicationInfo.applicationVersion(Version.vkMakeAPIVersion(0, 1, 0, 0));
+            applicationInfo.pEngineName(ByteArray.allocateUtf8(arena, "vulkan4j example engine"));
+            applicationInfo.engineVersion(Version.vkMakeAPIVersion(0, 1, 0, 0));
+            applicationInfo.apiVersion(Version.VK_API_VERSION_1_3);
+
+            var instanceCreateInfo = Create.create(VkInstanceCreateInfo.FACTORY, arena);
+            instanceCreateInfo.pApplicationInfo(applicationInfo);
+            instanceCreateInfo.enabledExtensionCount(pRequiredExtensionCount.read());
+            instanceCreateInfo.ppEnabledExtensionNames(requiredExtensions);
+
+            var pInstance = Create.create(VkInstance.FACTORY, arena);
+            var result = entryCommands.vkCreateInstance(instanceCreateInfo, null, pInstance);
+            if (result != 0) {
+                showErrorMessage("创建 Vulkan 实例失败，Vulkan 错误代码：" + result);
+                return;
+            }
+
+            var instanceCommands = new InstanceCommands((name, descriptor) -> {
+                try (Arena arena1 = Arena.ofConfined()) {
+                    var pName = ByteArray.allocateUtf8(arena1, name);
+                    MemorySegment segment = staticCommands.vkGetInstanceProcAddr(pInstance, pName);
+                    if (segment.address() == 0) {
+                        return null;
+                    }
+
+                    return Loader.nativeLinker.downcallHandle(segment, descriptor);
+                }
+            });
+
+            vkMain(arena, libGLFW, pInstance, instanceCommands);
+        }
+
+        libGLFW.glfwTerminate();
+        System.exit(0);
+    }
+
+    private static void vkMain(
+            Arena arena,
+            LibGLFW libGLFW,
+            VkInstance instance,
+            InstanceCommands instanceCommands
+    ) {
+        var pPhysicalDeviceCount = IntPtr.allocate(arena);
+        var result = instanceCommands.vkEnumeratePhysicalDevices(instance, pPhysicalDeviceCount, null);
+        if (result < 0) {
+            showErrorMessage("枚举物理设备失败，Vulkan 错误代码：" + result);
+            return;
+        }
+
+        int physicalDeviceCount = pPhysicalDeviceCount.read();
+        var physicalDevices = Create.createArray(VkPhysicalDevice.FACTORY, arena, physicalDeviceCount).first;
+        result = instanceCommands.vkEnumeratePhysicalDevices(instance, pPhysicalDeviceCount, physicalDevices[0]);
+        if (result < 0) {
+            showErrorMessage("枚举物理设备失败，Vulkan 错误代码：" + result);
+            return;
+        }
+
+        VkPhysicalDevice physicalDevice = pickPhysicalDevice(instanceCommands, physicalDevices);
+        if (physicalDevice == null) {
+            return;
+        }
+
+        System.out.println("选中的物理设备: " + physicalDevice);
+    }
+
+    private static @nullable VkPhysicalDevice pickPhysicalDevice(
+            InstanceCommands instanceCommands,
+            VkPhysicalDevice[] physicalDevices
+    ) {
+        List<DeviceInfo> deviceInfoList = new ArrayList<>();
+        for (VkPhysicalDevice physicalDevice : physicalDevices) {
+            try (Arena arena1 = Arena.ofConfined()) {
+                VkPhysicalDeviceProperties properties = Create.create(VkPhysicalDeviceProperties.FACTORY, arena1);
+                instanceCommands.vkGetPhysicalDeviceProperties(physicalDevice, properties);
+                String deviceType = switch (properties.deviceType()) {
+                    case VkPhysicalDeviceType.VK_PHYSICAL_DEVICE_TYPE_OTHER -> "其他";
+                    case VkPhysicalDeviceType.VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU -> "集成 GPU";
+                    case VkPhysicalDeviceType.VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU -> "独立 GPU";
+                    case VkPhysicalDeviceType.VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU -> "虚拟 GPU";
+                    case VkPhysicalDeviceType.VK_PHYSICAL_DEVICE_TYPE_CPU -> "CPU";
+                    default -> throw new IllegalStateException("Unexpected value: " + properties.deviceType());
+                };
+
+                var deviceId = Integer.toUnsignedString(properties.deviceID());
+                var vendorId = Integer.toUnsignedString(properties.vendorID());
+                var deviceName = properties.deviceNameRaw().getString(0);
+                var driverVersion = Version.decode(properties.driverVersion());
+
+                IntPtr pNumDeviceExtensions = IntPtr.allocate(arena1);
+                int result = instanceCommands.vkEnumerateDeviceExtensionProperties(physicalDevice, null, pNumDeviceExtensions, null);
+                if (result < 0) {
+                    showErrorMessage("枚举设备 " + deviceName + " 的扩展属性失败，Vulkan 错误代码：" + result);
+                    return null;
+                }
+                int numDeviceExtensions = pNumDeviceExtensions.read();
+                var extensionProperties = Create.createArray(VkExtensionProperties.FACTORY, arena1, numDeviceExtensions).first;
+                result = instanceCommands.vkEnumerateDeviceExtensionProperties(physicalDevice, null, pNumDeviceExtensions, extensionProperties[0]);
+                if (result < 0) {
+                    showErrorMessage("枚举设备 " + deviceName + " 的扩展属性失败，Vulkan 错误代码：" + result);
+                    return null;
+                }
+
+                StringBuilder extensionNames = new StringBuilder();
+                for (int j = 0; j < numDeviceExtensions; j++) {
+                    extensionNames.append(extensionProperties[j].extensionNameRaw().getString(0));
+                    if (j != numDeviceExtensions - 1) {
+                        extensionNames.append(" ");
+                    }
+                }
+
+                deviceInfoList.add(new DeviceInfo(
+                        deviceName,
+                        "设备 ID: " + deviceId + "\n" +
+                                "供应商 ID: " + vendorId + "\n" +
+                                "设备类型: " + deviceType + "\n" +
+                                "驱动版本: " + driverVersion.major() + "." + driverVersion.minor() + "." + driverVersion.patch() + "\n" +
+                                "设备扩展: " + extensionNames
+                ));
+            }
+        }
+
+        var deviceInfoDialog = new DeviceInfoDialog(deviceInfoList);
         deviceInfoDialog.setVisible(true);
 
-        System.err.println("设备选择完成");
-        libGLFW.glfwTerminate();
+        if (deviceInfoDialog.selectedDeviceId == null) {
+            return null;
+        }
 
-        System.exit(0);
+        return physicalDevices[deviceInfoDialog.selectedDeviceId];
     }
 
     private static boolean loadLibraries() {
