@@ -63,6 +63,14 @@ public final class LibGLFW {
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
     );
+    public static final FunctionDescriptor DESCRIPTOR$glfwPollEvents = FunctionDescriptor.ofVoid();
+    public static final FunctionDescriptor DESCRIPTOR$glfwWindowShouldClose = FunctionDescriptor.of(
+            ValueLayout.JAVA_BOOLEAN,
+            ValueLayout.ADDRESS
+    );
+    public static final FunctionDescriptor DESCRIPTOR$glfwDestroyWindow = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+    );
 
     public final MethodHandle HANDLE$glfwInit;
     public final MethodHandle HANDLE$glfwTerminate;
@@ -74,6 +82,9 @@ public final class LibGLFW {
     public final MethodHandle HANDLE$glfwWindowHint;
     public final MethodHandle HANDLE$glfwCreateWindow;
     public final MethodHandle HANDLE$glfwCreateWindowSurface;
+    public final MethodHandle HANDLE$glfwPollEvents;
+    public final MethodHandle HANDLE$glfwWindowShouldClose;
+    public final MethodHandle HANDLE$glfwDestroyWindow;
 
     public LibGLFW(Function2<String, FunctionDescriptor, MethodHandle> loader) {
         HANDLE$glfwInit = loader.apply("glfwInit", DESCRIPTOR$glfwInit);
@@ -86,6 +97,9 @@ public final class LibGLFW {
         HANDLE$glfwWindowHint = loader.apply("glfwWindowHint", DESCRIPTOR$glfwWindowHint);
         HANDLE$glfwCreateWindow = loader.apply("glfwCreateWindow", DESCRIPTOR$glfwCreateWindow);
         HANDLE$glfwCreateWindowSurface = loader.apply("glfwCreateWindowSurface", DESCRIPTOR$glfwCreateWindowSurface);
+        HANDLE$glfwPollEvents = loader.apply("glfwPollEvents", DESCRIPTOR$glfwPollEvents);
+        HANDLE$glfwWindowShouldClose = loader.apply("glfwWindowShouldClose", DESCRIPTOR$glfwWindowShouldClose);
+        HANDLE$glfwDestroyWindow = loader.apply("glfwDestroyWindow", DESCRIPTOR$glfwDestroyWindow);
     }
 
     public int glfwInit() {
@@ -187,6 +201,30 @@ public final class LibGLFW {
                     allocatorSegment,
                     surface.segment()
             );
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
+        }
+    }
+
+    public void glfwPollEvents() {
+        try {
+            HANDLE$glfwPollEvents.invokeExact();
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
+        }
+    }
+
+    public boolean glfwWindowShouldClose(@pointer(comment="GLFWwindow*") MemorySegment window) {
+        try {
+            return (boolean) HANDLE$glfwWindowShouldClose.invokeExact(window);
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
+        }
+    }
+
+    public void glfwDestroyWindow(@pointer(comment="GLFWwindow*") MemorySegment window) {
+        try {
+            HANDLE$glfwDestroyWindow.invokeExact(window);
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }

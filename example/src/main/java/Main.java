@@ -189,6 +189,13 @@ public class Main {
 
         var presentationQueue = Create.create(VkQueue.FACTORY, arena);
         deviceCommands.vkGetDeviceQueue(pDevice, presentationQueueFamilyIndex, 0, presentationQueue);
+
+        while (!libGLFW.glfwWindowShouldClose(window)) {
+            libGLFW.glfwPollEvents();
+        }
+
+        deviceCommands.vkDestroyDevice(pDevice, null);
+        libGLFW.glfwDestroyWindow(window);
     }
 
     private static @nullable VkPhysicalDevice pickPhysicalDevice(
