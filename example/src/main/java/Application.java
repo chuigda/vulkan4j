@@ -3,21 +3,16 @@ import tech.icey.vk4j.Constants;
 import tech.icey.vk4j.Create;
 import tech.icey.vk4j.Loader;
 import tech.icey.vk4j.Version;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.array.ByteArray;
-import tech.icey.vk4j.array.IntArray;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.command.DeviceCommands;
-import tech.icey.vk4j.command.EntryCommands;
-import tech.icey.vk4j.command.InstanceCommands;
-import tech.icey.vk4j.command.StaticCommands;
+import tech.icey.vk4j.command.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.FloatPtr;
-import tech.icey.vk4j.ptr.IntPtr;
+import tech.icey.vk4j.ptr.*;
 
+import java.io.IOException;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
@@ -33,17 +28,37 @@ public class Application implements AutoCloseable {
         if (!createDevice()) return false;
         if (!createSwapchain()) return false;
         if (!createImageViews()) return false;
+        if (!createGraphicsPipeline()) return false;
+        if (!createFramebuffers()) return false;
+        if (!createCommandPool()) return false;
+        if (!createCommandBuffer()) return false;
 
-        return true;
+        return createSyncObjects();
     }
 
     public void mainLoop() {
+        while (!libGLFW.glfwWindowShouldClose(glfwWindow)) {
+            libGLFW.glfwPollEvents();
+            if (!drawFrame()) break;
+        }
+
+        deviceCommands.vkDeviceWaitIdle(device);
     }
 
     public void cleanup() {
         if (debugMessenger != null) {
             instanceCommands.vkDestroyDebugUtilsMessengerEXT(instance, debugMessenger, null);
         }
+        deviceCommands.vkDestroySemaphore(device, imageAvailableSemaphores, null);
+        deviceCommands.vkDestroySemaphore(device, renderFinishedSemaphores, null);
+        deviceCommands.vkDestroyFence(device, inFlightFences, null);
+        deviceCommands.vkDestroyCommandPool(device, commandPool, null);
+        for (var framebuffer : swapchainFramebuffers) {
+            deviceCommands.vkDestroyFramebuffer(device, framebuffer, null);
+        }
+        deviceCommands.vkDestroyPipeline(device, graphicsPipeline, null);
+        deviceCommands.vkDestroyPipelineLayout(device, pipelineLayout, null);
+        deviceCommands.vkDestroyRenderPass(device, renderPass, null);
         for (var imageView : swapchainImageViews) {
             deviceCommands.vkDestroyImageView(device, imageView, null);
         }
@@ -530,15 +545,15 @@ public class Application implements AutoCloseable {
             }
             swapchainImageFormat = surfaceFormat.format();
 
-            VkExtent2D swapExtent;
+            swapExtent = Create.create(VkExtent2D.FACTORY, arena);
             if (surfaceCapabilities.currentExtent().width() != 0xFFFFFFFF) {
-                swapExtent = surfaceCapabilities.currentExtent();
+                swapExtent.width(surfaceCapabilities.currentExtent().width());
+                swapExtent.height(surfaceCapabilities.currentExtent().height());
             }
             else {
                 IntArray wh = IntArray.allocate(localArena, 2);
                 libGLFW.glfwGetWindowSize(glfwWindow, wh);
 
-                swapExtent = Create.create(VkExtent2D.FACTORY, localArena);
                 swapExtent.width(wh.get(0));
                 swapExtent.height(wh.get(1));
 
@@ -641,6 +656,382 @@ public class Application implements AutoCloseable {
         }
     }
 
+    private boolean createGraphicsPipeline() {
+        try (Arena localArena = Arena.ofConfined()) {
+            var shaderModules = createShaderModules(localArena);
+            if (shaderModules == null) {
+                return false;
+            }
+
+            var shaderStageInfos = Create.createArray(VkPipelineShaderStageCreateInfo.FACTORY, localArena, 2).first;
+            shaderStageInfos[0].stage(VkShaderStageFlags.VK_SHADER_STAGE_VERTEX_BIT);
+            shaderStageInfos[0].module(shaderModules[0]);
+            shaderStageInfos[0].pName(ByteArray.allocateUtf8(localArena, "main"));
+            shaderStageInfos[1].stage(VkShaderStageFlags.VK_SHADER_STAGE_FRAGMENT_BIT);
+            shaderStageInfos[1].module(shaderModules[1]);
+            shaderStageInfos[1].pName(ByteArray.allocateUtf8(localArena, "main"));
+
+            @enumtype(VkDynamicState.class) IntArray dynamicStates = IntArray.allocate(localArena, 2);
+            dynamicStates.set(0, VkDynamicState.VK_DYNAMIC_STATE_VIEWPORT);
+            dynamicStates.set(1, VkDynamicState.VK_DYNAMIC_STATE_SCISSOR);
+            var dynamicStateInfo = Create.create(VkPipelineDynamicStateCreateInfo.FACTORY, localArena);
+            dynamicStateInfo.dynamicStateCount(2);
+            dynamicStateInfo.pDynamicStates(dynamicStates);
+
+            var vertexInputInfo = Create.create(VkPipelineVertexInputStateCreateInfo.FACTORY, localArena);
+            var inputAssemblyInfo = Create.create(VkPipelineInputAssemblyStateCreateInfo.FACTORY, localArena);
+            inputAssemblyInfo.topology(VkPrimitiveTopology.VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
+            inputAssemblyInfo.primitiveRestartEnable(Constants.VK_FALSE);
+
+            var viewport = Create.create(VkViewport.FACTORY, localArena);
+            viewport.x(0.0f);
+            viewport.y(0.0f);
+            viewport.width(swapExtent.width());
+            viewport.height(swapExtent.height());
+            viewport.minDepth(0.0f);
+            viewport.maxDepth(1.0f);
+
+            var scissor = Create.create(VkRect2D.FACTORY, localArena);
+            scissor.extent(swapExtent);
+
+            var viewportStateInfo = Create.create(VkPipelineViewportStateCreateInfo.FACTORY, localArena);
+            viewportStateInfo.viewportCount(1);
+            viewportStateInfo.pViewports(viewport);
+            viewportStateInfo.scissorCount(1);
+            viewportStateInfo.pScissors(scissor);
+
+            var rasterizationInfo = Create.create(VkPipelineRasterizationStateCreateInfo.FACTORY, localArena);
+            rasterizationInfo.polygonMode(VkPolygonMode.VK_POLYGON_MODE_FILL);
+            rasterizationInfo.lineWidth(1.0f);
+            rasterizationInfo.cullMode(VkCullModeFlags.VK_CULL_MODE_BACK_BIT);
+            rasterizationInfo.frontFace(VkFrontFace.VK_FRONT_FACE_CLOCKWISE);
+            rasterizationInfo.depthBiasClamp(0.0f);
+            rasterizationInfo.depthBiasSlopeFactor(0.0f);
+
+            var multisampleInfo = Create.create(VkPipelineMultisampleStateCreateInfo.FACTORY, localArena);
+            multisampleInfo.rasterizationSamples(VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT);
+            multisampleInfo.minSampleShading(1.0f);
+
+            var pipelineColorBlendAttachmentState = Create.create(VkPipelineColorBlendAttachmentState.FACTORY, localArena);
+            pipelineColorBlendAttachmentState.colorWriteMask(
+                    VkColorComponentFlags.VK_COLOR_COMPONENT_R_BIT |
+                    VkColorComponentFlags.VK_COLOR_COMPONENT_G_BIT |
+                    VkColorComponentFlags.VK_COLOR_COMPONENT_B_BIT |
+                    VkColorComponentFlags.VK_COLOR_COMPONENT_A_BIT
+            );
+            pipelineColorBlendAttachmentState.srcColorBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ONE);
+            pipelineColorBlendAttachmentState.dstColorBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ZERO);
+            pipelineColorBlendAttachmentState.colorBlendOp(VkBlendOp.VK_BLEND_OP_ADD);
+            pipelineColorBlendAttachmentState.srcAlphaBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ONE);
+            pipelineColorBlendAttachmentState.dstAlphaBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ZERO);
+            pipelineColorBlendAttachmentState.alphaBlendOp(VkBlendOp.VK_BLEND_OP_ADD);
+
+            var pipelineColorBlendStateInfo = Create.create(VkPipelineColorBlendStateCreateInfo.FACTORY, localArena);
+            pipelineColorBlendStateInfo.logicOp(VkLogicOp.VK_LOGIC_OP_COPY);
+            pipelineColorBlendStateInfo.attachmentCount(1);
+            pipelineColorBlendStateInfo.pAttachments(pipelineColorBlendAttachmentState);
+            pipelineColorBlendStateInfo.blendConstants().set(0, 0.0f);
+            pipelineColorBlendStateInfo.blendConstants().set(1, 0.0f);
+            pipelineColorBlendStateInfo.blendConstants().set(2, 0.0f);
+            pipelineColorBlendStateInfo.blendConstants().set(3, 0.0f);
+
+            var pipelineLayoutCreateInfo = Create.create(VkPipelineLayoutCreateInfo.FACTORY, localArena);
+            pipelineLayout = Create.create(VkPipelineLayout.FACTORY, arena);
+            if (deviceCommands.vkCreatePipelineLayout(device, pipelineLayoutCreateInfo, null, pipelineLayout) != VkResult.VK_SUCCESS) {
+                UICommons.showErrorMessage("创建 Vulkan 管线布局失败");
+                return false;
+            }
+
+            var colorAttachmentDescription = Create.create(VkAttachmentDescription.FACTORY, localArena);
+            colorAttachmentDescription.format(swapchainImageFormat);
+            colorAttachmentDescription.samples(VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT);
+            colorAttachmentDescription.loadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_CLEAR);
+            colorAttachmentDescription.storeOp(VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_STORE);
+            colorAttachmentDescription.stencilLoadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_DONT_CARE);
+            colorAttachmentDescription.stencilStoreOp(VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_DONT_CARE);
+            colorAttachmentDescription.initialLayout(VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED);
+            colorAttachmentDescription.finalLayout(VkImageLayout.VK_IMAGE_LAYOUT_PRESENT_SRC_KHR);
+
+            var colorAttachmentReference = Create.create(VkAttachmentReference.FACTORY, localArena);
+            colorAttachmentReference.attachment(0);
+            colorAttachmentReference.layout(VkImageLayout.VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
+
+            var subpassDescription = Create.create(VkSubpassDescription.FACTORY, localArena);
+            subpassDescription.pipelineBindPoint(VkPipelineBindPoint.VK_PIPELINE_BIND_POINT_GRAPHICS);
+            subpassDescription.colorAttachmentCount(1);
+            subpassDescription.pColorAttachments(colorAttachmentReference);
+
+            var subpassDependency = Create.create(VkSubpassDependency.FACTORY, localArena);
+            subpassDependency.srcSubpass(Constants.VK_SUBPASS_EXTERNAL);
+            subpassDependency.dstSubpass(0);
+            subpassDependency.srcStageMask(VkPipelineStageFlags.VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT);
+            subpassDependency.srcAccessMask(0);
+            subpassDependency.dstStageMask(VkPipelineStageFlags.VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT);
+            subpassDependency.dstAccessMask(
+                    VkAccessFlags.VK_ACCESS_COLOR_ATTACHMENT_READ_BIT |
+                    VkAccessFlags.VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT
+            );
+
+            var renderPassCreateInfo = Create.create(VkRenderPassCreateInfo.FACTORY, localArena);
+            renderPassCreateInfo.attachmentCount(1);
+            renderPassCreateInfo.pAttachments(colorAttachmentDescription);
+            renderPassCreateInfo.subpassCount(1);
+            renderPassCreateInfo.pSubpasses(subpassDescription);
+            renderPassCreateInfo.dependencyCount(1);
+            renderPassCreateInfo.pDependencies(subpassDependency);
+
+            renderPass = Create.create(VkRenderPass.FACTORY, arena);
+            var result = deviceCommands.vkCreateRenderPass(device, renderPassCreateInfo, null, renderPass);
+            if (result != VkResult.VK_SUCCESS) {
+                UICommons.showErrorMessage("创建 Vulkan 渲染通道失败：" + result);
+                return false;
+            }
+
+            var graphicsPipelineCreateInfo = Create.create(VkGraphicsPipelineCreateInfo.FACTORY, localArena);
+            graphicsPipelineCreateInfo.stageCount(2);
+            graphicsPipelineCreateInfo.pStages(shaderStageInfos[0]);
+            graphicsPipelineCreateInfo.pVertexInputState(vertexInputInfo);
+            graphicsPipelineCreateInfo.pInputAssemblyState(inputAssemblyInfo);
+            graphicsPipelineCreateInfo.pViewportState(viewportStateInfo);
+            graphicsPipelineCreateInfo.pRasterizationState(rasterizationInfo);
+            graphicsPipelineCreateInfo.pMultisampleState(multisampleInfo);
+            graphicsPipelineCreateInfo.pColorBlendState(pipelineColorBlendStateInfo);
+            graphicsPipelineCreateInfo.pDynamicState(dynamicStateInfo);
+            graphicsPipelineCreateInfo.layout(pipelineLayout);
+            graphicsPipelineCreateInfo.renderPass(renderPass);
+            graphicsPipelineCreateInfo.subpass(0);
+
+            graphicsPipeline = Create.create(VkPipeline.FACTORY, arena);
+            result = deviceCommands.vkCreateGraphicsPipelines(
+                    device,
+                    null,
+                    1,
+                    graphicsPipelineCreateInfo,
+                    null,
+                    graphicsPipeline
+            );
+            if (result != VkResult.VK_SUCCESS) {
+                UICommons.showErrorMessage("创建 Vulkan 图形管线失败：" + result);
+                return false;
+            }
+
+            deviceCommands.vkDestroyShaderModule(device, shaderModules[0], null);
+            deviceCommands.vkDestroyShaderModule(device, shaderModules[1], null);
+            return true;
+        }
+    }
+
+    private VkShaderModule[] createShaderModules(Arena localArena) {
+        try {
+            MemorySegment vertexShaderCode = ShaderUtil.readShaderCode("vert.spv", localArena);
+            MemorySegment fragmentShaderCode = ShaderUtil.readShaderCode("frag.spv", localArena);
+
+            var createInfos = Create.createArray(VkShaderModuleCreateInfo.FACTORY, localArena, 2).first;
+            createInfos[0].codeSize(vertexShaderCode.byteSize());
+            createInfos[0].pCodeRaw(vertexShaderCode);
+            createInfos[1].codeSize(fragmentShaderCode.byteSize());
+            createInfos[1].pCodeRaw(fragmentShaderCode);
+
+            var shaderModules = Create.createArray(VkShaderModule.FACTORY, arena, 2).first;
+            for (int i = 0; i < 2; i++) {
+                var result = deviceCommands.vkCreateShaderModule(device, createInfos[i], null, shaderModules[i]);
+                if (result != VkResult.VK_SUCCESS) {
+                    UICommons.showErrorMessage("创建 Vulkan 着色器模块失败：" + result);
+                    return null;
+                }
+            }
+
+            return shaderModules;
+        } catch (IOException e) {
+            UICommons.showErrorMessage("读取着色器代码失败：" + e);
+            return null;
+        }
+    }
+
+    private boolean createFramebuffers() {
+        swapchainFramebuffers = Create.createArray(VkFramebuffer.FACTORY, arena, swapchainImageViews.length).first;
+        try (Arena localArena = Arena.ofConfined()) {
+            for (int i = 0; i < swapchainImageViews.length; i++) {
+                var framebufferCreateInfo = Create.create(VkFramebufferCreateInfo.FACTORY, localArena);
+                framebufferCreateInfo.renderPass(renderPass);
+                framebufferCreateInfo.attachmentCount(1);
+                framebufferCreateInfo.pAttachments(swapchainImageViews[i]);
+                framebufferCreateInfo.width(swapExtent.width());
+                framebufferCreateInfo.height(swapExtent.height());
+                framebufferCreateInfo.layers(1);
+
+                swapchainFramebuffers[i] = Create.create(VkFramebuffer.FACTORY, arena);
+                var result = deviceCommands.vkCreateFramebuffer(device, framebufferCreateInfo, null, swapchainFramebuffers[i]);
+                if (result != VkResult.VK_SUCCESS) {
+                    UICommons.showErrorMessage("创建 Vulkan 帧缓冲失败：" + result);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }
+
+    private boolean createCommandPool() {
+        try (Arena localArena = Arena.ofConfined()) {
+            var poolCreateInfo = Create.create(VkCommandPoolCreateInfo.FACTORY, localArena);
+            poolCreateInfo.queueFamilyIndex(graphicsQueueFamilyIndex);
+            poolCreateInfo.flags(VkCommandPoolCreateFlags.VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT);
+            poolCreateInfo.queueFamilyIndex(graphicsQueueFamilyIndex);
+
+            commandPool = Create.create(VkCommandPool.FACTORY, arena);
+            var result = deviceCommands.vkCreateCommandPool(device, poolCreateInfo, null, commandPool);
+            if (result != VkResult.VK_SUCCESS) {
+                UICommons.showErrorMessage("创建 Vulkan 命令池失败：" + result);
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+    private boolean createCommandBuffer() {
+        try (Arena localArena = Arena.ofConfined()) {
+            var allocateInfo = Create.create(VkCommandBufferAllocateInfo.FACTORY, localArena);
+            allocateInfo.commandPool(commandPool);
+            allocateInfo.level(VkCommandBufferLevel.VK_COMMAND_BUFFER_LEVEL_PRIMARY);
+            allocateInfo.commandBufferCount(1);
+
+            commandBuffer = Create.create(VkCommandBuffer.FACTORY, arena);
+            var result = deviceCommands.vkAllocateCommandBuffers(device, allocateInfo, commandBuffer);
+            if (result != VkResult.VK_SUCCESS) {
+                UICommons.showErrorMessage("分配 Vulkan 命令缓冲区失败：" + result);
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+    private boolean createSyncObjects() {
+        imageAvailableSemaphores = Create.create(VkSemaphore.FACTORY, arena);
+        renderFinishedSemaphores = Create.create(VkSemaphore.FACTORY, arena);
+        inFlightFences = Create.create(VkFence.FACTORY, arena);
+
+        try (Arena localArena = Arena.ofConfined()) {
+            var semaphoreCreateInfo = Create.create(VkSemaphoreCreateInfo.FACTORY, localArena);
+            var fenceCreateInfo = Create.create(VkFenceCreateInfo.FACTORY, localArena);
+            fenceCreateInfo.flags(VkFenceCreateFlags.VK_FENCE_CREATE_SIGNALED_BIT);
+
+            if (deviceCommands.vkCreateSemaphore(device, semaphoreCreateInfo, null, imageAvailableSemaphores) != VkResult.VK_SUCCESS ||
+                deviceCommands.vkCreateSemaphore(device, semaphoreCreateInfo, null, renderFinishedSemaphores) != VkResult.VK_SUCCESS ||
+                deviceCommands.vkCreateFence(device, fenceCreateInfo, null, inFlightFences) != VkResult.VK_SUCCESS) {
+                UICommons.showErrorMessage("创建 Vulkan 同步对象失败");
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+    private boolean drawFrame() {
+        deviceCommands.vkWaitForFences(device, 1, inFlightFences, Constants.VK_TRUE, 0xFFFFFFFF_FFFFFFFFL);
+        deviceCommands.vkResetFences(device, 1, inFlightFences);
+        try (Arena localArena = Arena.ofConfined()) {
+            @unsigned var pImageIndex = IntPtr.allocate(localArena);
+            deviceCommands.vkAcquireNextImageKHR(
+                    device,
+                    swapchain,
+                    0xFFFFFFFF_FFFFFFFFL,
+                    imageAvailableSemaphores,
+                    null,
+                    pImageIndex
+            );
+
+            deviceCommands.vkResetCommandBuffer(commandBuffer, 0);
+            if (!recordCommandBuffer(pImageIndex.read())) {
+                return false;
+            }
+
+            var submitInfo = Create.create(VkSubmitInfo.FACTORY, localArena);
+            submitInfo.waitSemaphoreCount(1);
+            submitInfo.pWaitSemaphores(imageAvailableSemaphores);
+            var submitInfoWaitStages = IntPtr.allocate(localArena);
+            submitInfoWaitStages.write(VkPipelineStageFlags.VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT);
+            submitInfo.pWaitDstStageMask(submitInfoWaitStages);
+            submitInfo.commandBufferCount(1);
+            submitInfo.pCommandBuffers(commandBuffer);
+            submitInfo.signalSemaphoreCount(1);
+            submitInfo.pSignalSemaphores(renderFinishedSemaphores);
+
+            if (deviceCommands.vkQueueSubmit(graphicsQueue, 1, submitInfo, inFlightFences) != VkResult.VK_SUCCESS) {
+                UICommons.showErrorMessage("提交 Vulkan 命令缓冲区失败");
+                return false;
+            }
+
+            var presentInfo = Create.create(VkPresentInfoKHR.FACTORY, localArena);
+            presentInfo.waitSemaphoreCount(1);
+            presentInfo.pWaitSemaphores(renderFinishedSemaphores);
+            presentInfo.swapchainCount(1);
+            presentInfo.pSwapchains(swapchain);
+            presentInfo.pImageIndices(pImageIndex);
+
+            if (deviceCommands.vkQueuePresentKHR(presentationQueue, presentInfo) != VkResult.VK_SUCCESS) {
+                UICommons.showErrorMessage("提交 Vulkan 命令缓冲区失败");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean recordCommandBuffer(@unsigned int imageIndex) {
+        try (Arena localArena = Arena.ofConfined()) {
+            var beginInfo = Create.create(VkCommandBufferBeginInfo.FACTORY, localArena);
+            beginInfo.flags(VkCommandBufferUsageFlags.VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT);
+
+            var renderPassBeginInfo = Create.create(VkRenderPassBeginInfo.FACTORY, localArena);
+            renderPassBeginInfo.renderPass(renderPass);
+            renderPassBeginInfo.framebuffer(swapchainFramebuffers[imageIndex]);
+            renderPassBeginInfo.renderArea().extent(swapExtent);
+
+            var clearValue = Create.create(VkClearValue.FACTORY, localArena);
+            clearValue.color().float32().set(0, 0.0f);
+            clearValue.color().float32().set(1, 0.0f);
+            clearValue.color().float32().set(2, 0.0f);
+            clearValue.color().float32().set(3, 1.0f);
+
+            renderPassBeginInfo.clearValueCount(1);
+            renderPassBeginInfo.pClearValues(clearValue);
+
+            var viewport = Create.create(VkViewport.FACTORY, localArena);
+            viewport.x(0.0f);
+            viewport.y(0.0f);
+            viewport.width(swapExtent.width());
+            viewport.height(swapExtent.height());
+            viewport.minDepth(0.0f);
+            viewport.maxDepth(1.0f);
+
+            var scissor = Create.create(VkRect2D.FACTORY, localArena);
+            scissor.extent(swapExtent);
+
+            var result = deviceCommands.vkBeginCommandBuffer(commandBuffer, beginInfo);
+            if (result != VkResult.VK_SUCCESS) {
+                UICommons.showErrorMessage("开始 Vulkan 命令缓冲区失败：" + result);
+                return false;
+            }
+
+            deviceCommands.vkCmdBeginRenderPass(commandBuffer, renderPassBeginInfo, VkSubpassContents.VK_SUBPASS_CONTENTS_INLINE);
+            deviceCommands.vkCmdBindPipeline(commandBuffer, VkPipelineBindPoint.VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);
+            deviceCommands.vkCmdSetViewport(commandBuffer, 0, 1, viewport);
+            deviceCommands.vkCmdSetScissor(commandBuffer, 0, 1, scissor);
+            deviceCommands.vkCmdDraw(commandBuffer, 3, 1, 0, 0);
+            deviceCommands.vkCmdEndRenderPass(commandBuffer);
+
+            result = deviceCommands.vkEndCommandBuffer(commandBuffer);
+            if (result != VkResult.VK_SUCCESS) {
+                UICommons.showErrorMessage("结束 Vulkan 命令缓冲区失败：" + result);
+                return false;
+            }
+
+            return true;
+        }
+    }
+
     private MethodHandle loadInstanceCommand(String name, FunctionDescriptor descriptor) {
         try (Arena localArena = Arena.ofConfined()) {
             var nameSegment = ByteArray.allocateUtf8(localArena, name);
@@ -715,8 +1106,18 @@ public class Application implements AutoCloseable {
     private VkQueue presentationQueue;
     private VkSwapchainKHR swapchain;
     private @enumtype(VkFormat.class) int swapchainImageFormat;
+    private VkExtent2D swapExtent;
     private VkImage[] swapchainImages;
     private VkImageView[] swapchainImageViews;
+    private VkPipelineLayout pipelineLayout;
+    private VkRenderPass renderPass;
+    private VkPipeline graphicsPipeline;
+    private VkFramebuffer[] swapchainFramebuffers;
+    private VkCommandPool commandPool;
+    private VkCommandBuffer commandBuffer;
+    private VkSemaphore imageAvailableSemaphores;
+    private VkSemaphore renderFinishedSemaphores;
+    private VkFence inFlightFences;
 
     private static final StaticCommands staticCommands = new StaticCommands(Loader::loadFunctionOrNull);
     private static final EntryCommands entryCommands = new EntryCommands(Loader::loadFunctionOrNull);
