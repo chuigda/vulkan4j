@@ -94,22 +94,8 @@ public class Main {
             InstanceCommands instanceCommands,
             Function2<String, FunctionDescriptor, MethodHandle> instanceLoader
     ) {
-        libGLFW.glfwWindowHint(LibGLFW.GLFW_CLIENT_API, LibGLFW.GLFW_NO_API);
-        var window = libGLFW.glfwCreateWindow(640, 480, "VkCube4j", MemorySegment.NULL, MemorySegment.NULL);
-        if (window.address() == 0) {
-            showErrorMessage("创建 GLFW 窗口失败");
-            return;
-        }
-
-        var pSurface = Create.create(VkSurfaceKHR.FACTORY, arena);
-        var result = libGLFW.glfwCreateWindowSurface(instance, window, null, pSurface);
-        if (result != 0) {
-            showErrorMessage("创建 Vulkan 表面失败，Vulkan 错误代码：" + result);
-            return;
-        }
-
         var pPhysicalDeviceCount = IntPtr.allocate(arena);
-        result = instanceCommands.vkEnumeratePhysicalDevices(instance, pPhysicalDeviceCount, null);
+        var result = instanceCommands.vkEnumeratePhysicalDevices(instance, pPhysicalDeviceCount, null);
         if (result < 0) {
             showErrorMessage("枚举物理设备失败，Vulkan 错误代码：" + result);
             return;
@@ -125,6 +111,20 @@ public class Main {
 
         VkPhysicalDevice physicalDevice = pickPhysicalDevice(instanceCommands, physicalDevices);
         if (physicalDevice == null) {
+            return;
+        }
+
+        libGLFW.glfwWindowHint(LibGLFW.GLFW_CLIENT_API, LibGLFW.GLFW_NO_API);
+        var window = libGLFW.glfwCreateWindow(640, 480, "VkCube4j", MemorySegment.NULL, MemorySegment.NULL);
+        if (window.address() == 0) {
+            showErrorMessage("创建 GLFW 窗口失败");
+            return;
+        }
+
+        var pSurface = Create.create(VkSurfaceKHR.FACTORY, arena);
+        result = libGLFW.glfwCreateWindowSurface(instance, window, null, pSurface);
+        if (result != 0) {
+            showErrorMessage("创建 Vulkan 表面失败，Vulkan 错误代码：" + result);
             return;
         }
 

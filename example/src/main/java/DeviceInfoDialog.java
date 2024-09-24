@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 
 public final class DeviceInfoDialog extends JDialog {
     public DeviceInfoDialog(List<DeviceInfo> deviceInfoList) {
-        super((JFrame) null, "选择 Vulkan 设备", true);
+        super((Dialog) null, "选择 Vulkan 设备", true);
 
         JPanel innerPane = new JPanel();
         GridBagLayout layout = new GridBagLayout();
