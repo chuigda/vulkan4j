@@ -141,7 +141,7 @@ public record VkPipelineRenderingCreateInfo(MemorySegment segment) {
         public VkPipelineRenderingCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineRenderingCreateInfo createUninit(MemorySegment segment) {
             return new VkPipelineRenderingCreateInfo(segment);

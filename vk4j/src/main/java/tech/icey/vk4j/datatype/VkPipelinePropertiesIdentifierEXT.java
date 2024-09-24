@@ -83,7 +83,7 @@ public record VkPipelinePropertiesIdentifierEXT(MemorySegment segment) {
         public VkPipelinePropertiesIdentifierEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelinePropertiesIdentifierEXT createUninit(MemorySegment segment) {
             return new VkPipelinePropertiesIdentifierEXT(segment);

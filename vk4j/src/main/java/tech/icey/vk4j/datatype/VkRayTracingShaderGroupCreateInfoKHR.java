@@ -139,7 +139,7 @@ public record VkRayTracingShaderGroupCreateInfoKHR(MemorySegment segment) {
         public VkRayTracingShaderGroupCreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRayTracingShaderGroupCreateInfoKHR createUninit(MemorySegment segment) {
             return new VkRayTracingShaderGroupCreateInfoKHR(segment);

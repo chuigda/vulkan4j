@@ -123,7 +123,7 @@ public record VkPhysicalDeviceDriverProperties(MemorySegment segment) {
         public VkPhysicalDeviceDriverProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDriverProperties createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDriverProperties(segment);

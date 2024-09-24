@@ -79,7 +79,7 @@ public record VkPhysicalDeviceSurfaceInfo2KHR(MemorySegment segment) {
         public VkPhysicalDeviceSurfaceInfo2KHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceSurfaceInfo2KHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceSurfaceInfo2KHR(segment);

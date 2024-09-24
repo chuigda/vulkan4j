@@ -79,7 +79,7 @@ public record VkSamplerYcbcrConversionImageFormatProperties(MemorySegment segmen
         public VkSamplerYcbcrConversionImageFormatProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSamplerYcbcrConversionImageFormatProperties createUninit(MemorySegment segment) {
             return new VkSamplerYcbcrConversionImageFormatProperties(segment);

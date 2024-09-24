@@ -91,7 +91,7 @@ public record VkImageViewSlicedCreateInfoEXT(MemorySegment segment) {
         public VkImageViewSlicedCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageViewSlicedCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkImageViewSlicedCreateInfoEXT(segment);

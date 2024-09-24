@@ -79,7 +79,7 @@ public record VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(MemorySegment segme
         public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(segment);

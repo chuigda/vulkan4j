@@ -79,7 +79,7 @@ public record VkProtectedSubmitInfo(MemorySegment segment) {
         public VkProtectedSubmitInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkProtectedSubmitInfo createUninit(MemorySegment segment) {
             return new VkProtectedSubmitInfo(segment);

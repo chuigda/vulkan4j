@@ -79,7 +79,7 @@ public record VkDeviceQueueGlobalPriorityCreateInfoKHR(MemorySegment segment) {
         public VkDeviceQueueGlobalPriorityCreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceQueueGlobalPriorityCreateInfoKHR createUninit(MemorySegment segment) {
             return new VkDeviceQueueGlobalPriorityCreateInfoKHR(segment);

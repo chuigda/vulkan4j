@@ -78,7 +78,7 @@ public record VkRectLayerKHR(MemorySegment segment) {
         public VkRectLayerKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRectLayerKHR createUninit(MemorySegment segment) {
             return new VkRectLayerKHR(segment);

@@ -103,7 +103,7 @@ public record VkDisplayPresentInfoKHR(MemorySegment segment) {
         public VkDisplayPresentInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDisplayPresentInfoKHR createUninit(MemorySegment segment) {
             return new VkDisplayPresentInfoKHR(segment);

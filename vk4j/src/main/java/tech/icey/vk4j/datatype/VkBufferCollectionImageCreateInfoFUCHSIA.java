@@ -91,7 +91,7 @@ public record VkBufferCollectionImageCreateInfoFUCHSIA(MemorySegment segment) {
         public VkBufferCollectionImageCreateInfoFUCHSIA create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBufferCollectionImageCreateInfoFUCHSIA createUninit(MemorySegment segment) {
             return new VkBufferCollectionImageCreateInfoFUCHSIA(segment);

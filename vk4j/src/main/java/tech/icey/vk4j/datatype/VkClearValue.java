@@ -66,7 +66,7 @@ public record VkClearValue(MemorySegment segment) {
         public VkClearValue create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkClearValue createUninit(MemorySegment segment) {
             return new VkClearValue(segment);

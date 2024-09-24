@@ -115,7 +115,7 @@ public record VkVertexInputBindingDescription2EXT(MemorySegment segment) {
         public VkVertexInputBindingDescription2EXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkVertexInputBindingDescription2EXT createUninit(MemorySegment segment) {
             return new VkVertexInputBindingDescription2EXT(segment);

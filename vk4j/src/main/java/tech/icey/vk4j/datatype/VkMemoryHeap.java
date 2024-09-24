@@ -66,7 +66,7 @@ public record VkMemoryHeap(MemorySegment segment) {
         public VkMemoryHeap create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMemoryHeap createUninit(MemorySegment segment) {
             return new VkMemoryHeap(segment);

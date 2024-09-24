@@ -115,7 +115,7 @@ public record VkQueryPoolCreateInfo(MemorySegment segment) {
         public VkQueryPoolCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkQueryPoolCreateInfo createUninit(MemorySegment segment) {
             return new VkQueryPoolCreateInfo(segment);

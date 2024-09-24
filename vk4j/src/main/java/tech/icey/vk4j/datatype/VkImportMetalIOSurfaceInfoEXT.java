@@ -79,7 +79,7 @@ public record VkImportMetalIOSurfaceInfoEXT(MemorySegment segment) {
         public VkImportMetalIOSurfaceInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImportMetalIOSurfaceInfoEXT createUninit(MemorySegment segment) {
             return new VkImportMetalIOSurfaceInfoEXT(segment);

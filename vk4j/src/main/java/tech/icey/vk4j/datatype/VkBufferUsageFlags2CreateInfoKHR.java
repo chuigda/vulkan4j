@@ -79,7 +79,7 @@ public record VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) {
         public VkBufferUsageFlags2CreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBufferUsageFlags2CreateInfoKHR createUninit(MemorySegment segment) {
             return new VkBufferUsageFlags2CreateInfoKHR(segment);

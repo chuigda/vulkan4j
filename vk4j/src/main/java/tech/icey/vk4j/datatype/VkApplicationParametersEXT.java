@@ -115,7 +115,7 @@ public record VkApplicationParametersEXT(MemorySegment segment) {
         public VkApplicationParametersEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkApplicationParametersEXT createUninit(MemorySegment segment) {
             return new VkApplicationParametersEXT(segment);

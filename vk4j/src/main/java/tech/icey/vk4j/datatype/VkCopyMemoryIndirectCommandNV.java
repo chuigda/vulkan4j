@@ -78,7 +78,7 @@ public record VkCopyMemoryIndirectCommandNV(MemorySegment segment) {
         public VkCopyMemoryIndirectCommandNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCopyMemoryIndirectCommandNV createUninit(MemorySegment segment) {
             return new VkCopyMemoryIndirectCommandNV(segment);

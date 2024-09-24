@@ -104,7 +104,7 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
         public VkSubpassFragmentDensityMapOffsetEndInfoQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSubpassFragmentDensityMapOffsetEndInfoQCOM createUninit(MemorySegment segment) {
             return new VkSubpassFragmentDensityMapOffsetEndInfoQCOM(segment);

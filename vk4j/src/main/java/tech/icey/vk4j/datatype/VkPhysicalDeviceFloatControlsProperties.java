@@ -271,7 +271,7 @@ public record VkPhysicalDeviceFloatControlsProperties(MemorySegment segment) {
         public VkPhysicalDeviceFloatControlsProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceFloatControlsProperties createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceFloatControlsProperties(segment);

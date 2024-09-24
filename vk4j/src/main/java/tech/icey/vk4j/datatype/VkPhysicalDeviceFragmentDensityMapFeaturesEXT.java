@@ -103,7 +103,7 @@ public record VkPhysicalDeviceFragmentDensityMapFeaturesEXT(MemorySegment segmen
         public VkPhysicalDeviceFragmentDensityMapFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceFragmentDensityMapFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceFragmentDensityMapFeaturesEXT(segment);

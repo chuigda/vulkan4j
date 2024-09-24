@@ -103,7 +103,7 @@ public record VkTilePropertiesQCOM(MemorySegment segment) {
         public VkTilePropertiesQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkTilePropertiesQCOM createUninit(MemorySegment segment) {
             return new VkTilePropertiesQCOM(segment);

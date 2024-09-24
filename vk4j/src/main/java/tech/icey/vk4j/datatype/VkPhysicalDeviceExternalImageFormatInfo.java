@@ -79,7 +79,7 @@ public record VkPhysicalDeviceExternalImageFormatInfo(MemorySegment segment) {
         public VkPhysicalDeviceExternalImageFormatInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceExternalImageFormatInfo createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceExternalImageFormatInfo(segment);

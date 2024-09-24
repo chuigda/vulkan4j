@@ -79,7 +79,7 @@ public record VkPhysicalDeviceTextureCompressionASTCHDRFeatures(MemorySegment se
         public VkPhysicalDeviceTextureCompressionASTCHDRFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceTextureCompressionASTCHDRFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceTextureCompressionASTCHDRFeatures(segment);

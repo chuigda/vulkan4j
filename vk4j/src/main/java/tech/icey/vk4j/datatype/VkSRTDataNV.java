@@ -234,7 +234,7 @@ public record VkSRTDataNV(MemorySegment segment) {
         public VkSRTDataNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSRTDataNV createUninit(MemorySegment segment) {
             return new VkSRTDataNV(segment);

@@ -222,7 +222,7 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) {
         public VkRenderPassCreateInfo2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderPassCreateInfo2 createUninit(MemorySegment segment) {
             return new VkRenderPassCreateInfo2(segment);

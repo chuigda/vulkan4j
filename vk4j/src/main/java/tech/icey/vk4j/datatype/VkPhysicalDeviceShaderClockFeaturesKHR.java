@@ -91,7 +91,7 @@ public record VkPhysicalDeviceShaderClockFeaturesKHR(MemorySegment segment) {
         public VkPhysicalDeviceShaderClockFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderClockFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderClockFeaturesKHR(segment);

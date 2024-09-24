@@ -79,7 +79,7 @@ public record VkQueryPoolPerformanceQueryCreateInfoINTEL(MemorySegment segment) 
         public VkQueryPoolPerformanceQueryCreateInfoINTEL create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkQueryPoolPerformanceQueryCreateInfoINTEL createUninit(MemorySegment segment) {
             return new VkQueryPoolPerformanceQueryCreateInfoINTEL(segment);

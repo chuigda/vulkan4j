@@ -79,7 +79,7 @@ public record VkInitializePerformanceApiInfoINTEL(MemorySegment segment) {
         public VkInitializePerformanceApiInfoINTEL create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkInitializePerformanceApiInfoINTEL createUninit(MemorySegment segment) {
             return new VkInitializePerformanceApiInfoINTEL(segment);

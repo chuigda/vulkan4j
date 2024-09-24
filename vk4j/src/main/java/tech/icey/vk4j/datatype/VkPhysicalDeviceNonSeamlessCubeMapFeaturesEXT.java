@@ -79,7 +79,7 @@ public record VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT(MemorySegment segmen
         public VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT(segment);

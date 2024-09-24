@@ -79,7 +79,7 @@ public record VkSwapchainLatencyCreateInfoNV(MemorySegment segment) {
         public VkSwapchainLatencyCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSwapchainLatencyCreateInfoNV createUninit(MemorySegment segment) {
             return new VkSwapchainLatencyCreateInfoNV(segment);

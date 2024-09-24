@@ -91,7 +91,7 @@ public record VkPipelineIndirectDeviceAddressInfoNV(MemorySegment segment) {
         public VkPipelineIndirectDeviceAddressInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineIndirectDeviceAddressInfoNV createUninit(MemorySegment segment) {
             return new VkPipelineIndirectDeviceAddressInfoNV(segment);

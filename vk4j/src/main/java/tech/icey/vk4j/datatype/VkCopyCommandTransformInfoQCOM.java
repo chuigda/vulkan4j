@@ -79,7 +79,7 @@ public record VkCopyCommandTransformInfoQCOM(MemorySegment segment) {
         public VkCopyCommandTransformInfoQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCopyCommandTransformInfoQCOM createUninit(MemorySegment segment) {
             return new VkCopyCommandTransformInfoQCOM(segment);

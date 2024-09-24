@@ -79,7 +79,7 @@ public record VkDedicatedAllocationBufferCreateInfoNV(MemorySegment segment) {
         public VkDedicatedAllocationBufferCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDedicatedAllocationBufferCreateInfoNV createUninit(MemorySegment segment) {
             return new VkDedicatedAllocationBufferCreateInfoNV(segment);

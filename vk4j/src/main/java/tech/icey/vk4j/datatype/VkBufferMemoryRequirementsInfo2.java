@@ -79,7 +79,7 @@ public record VkBufferMemoryRequirementsInfo2(MemorySegment segment) {
         public VkBufferMemoryRequirementsInfo2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBufferMemoryRequirementsInfo2 createUninit(MemorySegment segment) {
             return new VkBufferMemoryRequirementsInfo2(segment);

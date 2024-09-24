@@ -78,7 +78,7 @@ public record VkDescriptorImageInfo(MemorySegment segment) {
         public VkDescriptorImageInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorImageInfo createUninit(MemorySegment segment) {
             return new VkDescriptorImageInfo(segment);

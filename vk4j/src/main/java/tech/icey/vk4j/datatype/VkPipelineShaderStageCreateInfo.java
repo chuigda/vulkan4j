@@ -148,7 +148,7 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) {
         public VkPipelineShaderStageCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineShaderStageCreateInfo createUninit(MemorySegment segment) {
             return new VkPipelineShaderStageCreateInfo(segment);

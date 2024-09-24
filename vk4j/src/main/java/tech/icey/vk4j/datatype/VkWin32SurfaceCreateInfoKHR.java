@@ -103,7 +103,7 @@ public record VkWin32SurfaceCreateInfoKHR(MemorySegment segment) {
         public VkWin32SurfaceCreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkWin32SurfaceCreateInfoKHR createUninit(MemorySegment segment) {
             return new VkWin32SurfaceCreateInfoKHR(segment);

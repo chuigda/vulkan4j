@@ -66,7 +66,7 @@ public record VkOffset2D(MemorySegment segment) {
         public VkOffset2D create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkOffset2D createUninit(MemorySegment segment) {
             return new VkOffset2D(segment);

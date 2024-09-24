@@ -91,7 +91,7 @@ public record VkPhysicalDeviceProvokingVertexPropertiesEXT(MemorySegment segment
         public VkPhysicalDeviceProvokingVertexPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceProvokingVertexPropertiesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceProvokingVertexPropertiesEXT(segment);

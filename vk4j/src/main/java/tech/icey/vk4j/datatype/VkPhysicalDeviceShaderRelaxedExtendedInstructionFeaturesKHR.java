@@ -79,7 +79,7 @@ public record VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(Memory
         public VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(segment);

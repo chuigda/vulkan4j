@@ -115,7 +115,7 @@ public record VkFramebufferMixedSamplesCombinationNV(MemorySegment segment) {
         public VkFramebufferMixedSamplesCombinationNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkFramebufferMixedSamplesCombinationNV createUninit(MemorySegment segment) {
             return new VkFramebufferMixedSamplesCombinationNV(segment);

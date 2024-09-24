@@ -152,7 +152,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) {
         public VkImageFormatConstraintsInfoFUCHSIA create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageFormatConstraintsInfoFUCHSIA createUninit(MemorySegment segment) {
             return new VkImageFormatConstraintsInfoFUCHSIA(segment);

@@ -135,7 +135,7 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(MemorySegment segmen
         public VkPipelineCoverageModulationStateCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineCoverageModulationStateCreateInfoNV createUninit(MemorySegment segment) {
             return new VkPipelineCoverageModulationStateCreateInfoNV(segment);

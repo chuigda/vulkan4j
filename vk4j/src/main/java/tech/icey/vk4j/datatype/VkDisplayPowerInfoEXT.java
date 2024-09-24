@@ -79,7 +79,7 @@ public record VkDisplayPowerInfoEXT(MemorySegment segment) {
         public VkDisplayPowerInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDisplayPowerInfoEXT createUninit(MemorySegment segment) {
             return new VkDisplayPowerInfoEXT(segment);

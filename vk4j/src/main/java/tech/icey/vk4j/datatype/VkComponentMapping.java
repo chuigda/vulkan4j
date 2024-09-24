@@ -90,7 +90,7 @@ public record VkComponentMapping(MemorySegment segment) {
         public VkComponentMapping create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkComponentMapping createUninit(MemorySegment segment) {
             return new VkComponentMapping(segment);

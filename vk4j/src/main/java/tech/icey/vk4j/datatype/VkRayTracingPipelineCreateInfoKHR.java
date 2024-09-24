@@ -276,7 +276,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) {
         public VkRayTracingPipelineCreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRayTracingPipelineCreateInfoKHR createUninit(MemorySegment segment) {
             return new VkRayTracingPipelineCreateInfoKHR(segment);

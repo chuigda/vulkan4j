@@ -78,7 +78,7 @@ public record VkStridedDeviceAddressRegionKHR(MemorySegment segment) {
         public VkStridedDeviceAddressRegionKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkStridedDeviceAddressRegionKHR createUninit(MemorySegment segment) {
             return new VkStridedDeviceAddressRegionKHR(segment);

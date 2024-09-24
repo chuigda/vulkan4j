@@ -79,7 +79,7 @@ public record VkSwapchainCounterCreateInfoEXT(MemorySegment segment) {
         public VkSwapchainCounterCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSwapchainCounterCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkSwapchainCounterCreateInfoEXT(segment);

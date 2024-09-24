@@ -79,7 +79,7 @@ public record VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(MemorySegmen
         public VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(segment);

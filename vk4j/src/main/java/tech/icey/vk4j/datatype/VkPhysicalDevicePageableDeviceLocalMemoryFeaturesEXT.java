@@ -79,7 +79,7 @@ public record VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(MemorySegment
         public VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(segment);

@@ -103,7 +103,7 @@ public record VkCopyMicromapToMemoryInfoEXT(MemorySegment segment) {
         public VkCopyMicromapToMemoryInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCopyMicromapToMemoryInfoEXT createUninit(MemorySegment segment) {
             return new VkCopyMicromapToMemoryInfoEXT(segment);

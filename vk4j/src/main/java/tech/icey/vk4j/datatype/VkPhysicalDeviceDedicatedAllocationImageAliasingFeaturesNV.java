@@ -79,7 +79,7 @@ public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(MemoryS
         public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(segment);

@@ -115,7 +115,7 @@ public record VkImportFenceFdInfoKHR(MemorySegment segment) {
         public VkImportFenceFdInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImportFenceFdInfoKHR createUninit(MemorySegment segment) {
             return new VkImportFenceFdInfoKHR(segment);

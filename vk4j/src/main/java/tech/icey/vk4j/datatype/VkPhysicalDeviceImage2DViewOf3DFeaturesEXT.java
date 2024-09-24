@@ -91,7 +91,7 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(MemorySegment segment) 
         public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(segment);

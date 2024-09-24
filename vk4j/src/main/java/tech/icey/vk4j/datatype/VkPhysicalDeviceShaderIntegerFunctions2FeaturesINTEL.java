@@ -79,7 +79,7 @@ public record VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(MemorySegment
         public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(segment);

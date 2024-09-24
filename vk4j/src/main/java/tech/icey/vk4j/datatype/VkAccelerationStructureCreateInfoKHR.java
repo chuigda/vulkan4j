@@ -139,7 +139,7 @@ public record VkAccelerationStructureCreateInfoKHR(MemorySegment segment) {
         public VkAccelerationStructureCreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAccelerationStructureCreateInfoKHR createUninit(MemorySegment segment) {
             return new VkAccelerationStructureCreateInfoKHR(segment);

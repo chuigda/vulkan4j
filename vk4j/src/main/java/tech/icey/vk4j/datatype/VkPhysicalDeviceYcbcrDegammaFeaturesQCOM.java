@@ -79,7 +79,7 @@ public record VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(MemorySegment segment) {
         public VkPhysicalDeviceYcbcrDegammaFeaturesQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceYcbcrDegammaFeaturesQCOM createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(segment);

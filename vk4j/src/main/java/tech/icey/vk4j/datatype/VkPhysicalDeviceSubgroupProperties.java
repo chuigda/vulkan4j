@@ -115,7 +115,7 @@ public record VkPhysicalDeviceSubgroupProperties(MemorySegment segment) {
         public VkPhysicalDeviceSubgroupProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceSubgroupProperties createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceSubgroupProperties(segment);

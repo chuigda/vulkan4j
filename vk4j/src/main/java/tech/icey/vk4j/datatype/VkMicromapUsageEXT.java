@@ -78,7 +78,7 @@ public record VkMicromapUsageEXT(MemorySegment segment) {
         public VkMicromapUsageEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMicromapUsageEXT createUninit(MemorySegment segment) {
             return new VkMicromapUsageEXT(segment);

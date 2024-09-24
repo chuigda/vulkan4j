@@ -79,7 +79,7 @@ public record VkPresentFrameTokenGGP(MemorySegment segment) {
         public VkPresentFrameTokenGGP create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPresentFrameTokenGGP createUninit(MemorySegment segment) {
             return new VkPresentFrameTokenGGP(segment);

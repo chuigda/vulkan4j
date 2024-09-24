@@ -140,7 +140,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) {
         public VkRenderPassBeginInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderPassBeginInfo createUninit(MemorySegment segment) {
             return new VkRenderPassBeginInfo(segment);

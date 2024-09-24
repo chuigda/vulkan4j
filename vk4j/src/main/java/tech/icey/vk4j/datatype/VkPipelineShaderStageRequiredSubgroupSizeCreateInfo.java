@@ -79,7 +79,7 @@ public record VkPipelineShaderStageRequiredSubgroupSizeCreateInfo(MemorySegment 
         public VkPipelineShaderStageRequiredSubgroupSizeCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineShaderStageRequiredSubgroupSizeCreateInfo createUninit(MemorySegment segment) {
             return new VkPipelineShaderStageRequiredSubgroupSizeCreateInfo(segment);

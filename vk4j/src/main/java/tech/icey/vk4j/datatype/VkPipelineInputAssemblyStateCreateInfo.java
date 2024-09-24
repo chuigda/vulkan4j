@@ -103,7 +103,7 @@ public record VkPipelineInputAssemblyStateCreateInfo(MemorySegment segment) {
         public VkPipelineInputAssemblyStateCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineInputAssemblyStateCreateInfo createUninit(MemorySegment segment) {
             return new VkPipelineInputAssemblyStateCreateInfo(segment);

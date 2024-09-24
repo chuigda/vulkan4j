@@ -91,7 +91,7 @@ public record VkMultiviewPerViewAttributesInfoNVX(MemorySegment segment) {
         public VkMultiviewPerViewAttributesInfoNVX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMultiviewPerViewAttributesInfoNVX createUninit(MemorySegment segment) {
             return new VkMultiviewPerViewAttributesInfoNVX(segment);

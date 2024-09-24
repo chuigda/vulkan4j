@@ -157,7 +157,7 @@ public record VkImageBlit2(MemorySegment segment) {
         public VkImageBlit2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageBlit2 createUninit(MemorySegment segment) {
             return new VkImageBlit2(segment);

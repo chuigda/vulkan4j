@@ -79,7 +79,7 @@ public record VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV(MemorySegment 
         public VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV createUninit(MemorySegment segment) {
             return new VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV(segment);

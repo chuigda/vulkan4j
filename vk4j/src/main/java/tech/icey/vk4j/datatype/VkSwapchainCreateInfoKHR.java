@@ -267,7 +267,7 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) {
         public VkSwapchainCreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSwapchainCreateInfoKHR createUninit(MemorySegment segment) {
             return new VkSwapchainCreateInfoKHR(segment);

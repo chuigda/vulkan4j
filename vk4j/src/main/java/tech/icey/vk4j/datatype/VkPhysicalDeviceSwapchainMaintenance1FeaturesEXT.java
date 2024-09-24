@@ -79,7 +79,7 @@ public record VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(MemorySegment seg
         public VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(segment);

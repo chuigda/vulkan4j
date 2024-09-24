@@ -176,7 +176,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) {
         public VkDescriptorUpdateTemplateCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorUpdateTemplateCreateInfo createUninit(MemorySegment segment) {
             return new VkDescriptorUpdateTemplateCreateInfo(segment);

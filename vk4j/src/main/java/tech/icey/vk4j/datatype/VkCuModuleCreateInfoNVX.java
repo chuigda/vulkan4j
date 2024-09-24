@@ -90,7 +90,7 @@ public record VkCuModuleCreateInfoNVX(MemorySegment segment) {
         public VkCuModuleCreateInfoNVX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCuModuleCreateInfoNVX createUninit(MemorySegment segment) {
             return new VkCuModuleCreateInfoNVX(segment);

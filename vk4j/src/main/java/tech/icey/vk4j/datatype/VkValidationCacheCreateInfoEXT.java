@@ -102,7 +102,7 @@ public record VkValidationCacheCreateInfoEXT(MemorySegment segment) {
         public VkValidationCacheCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkValidationCacheCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkValidationCacheCreateInfoEXT(segment);

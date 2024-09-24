@@ -78,7 +78,7 @@ public record VkRefreshObjectKHR(MemorySegment segment) {
         public VkRefreshObjectKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRefreshObjectKHR createUninit(MemorySegment segment) {
             return new VkRefreshObjectKHR(segment);

@@ -123,7 +123,7 @@ public record VkDeviceQueueCreateInfo(MemorySegment segment) {
         public VkDeviceQueueCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceQueueCreateInfo createUninit(MemorySegment segment) {
             return new VkDeviceQueueCreateInfo(segment);

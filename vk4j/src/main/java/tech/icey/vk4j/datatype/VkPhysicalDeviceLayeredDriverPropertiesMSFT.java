@@ -79,7 +79,7 @@ public record VkPhysicalDeviceLayeredDriverPropertiesMSFT(MemorySegment segment)
         public VkPhysicalDeviceLayeredDriverPropertiesMSFT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceLayeredDriverPropertiesMSFT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceLayeredDriverPropertiesMSFT(segment);

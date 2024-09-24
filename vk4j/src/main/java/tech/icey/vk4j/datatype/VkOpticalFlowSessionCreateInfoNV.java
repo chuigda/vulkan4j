@@ -175,7 +175,7 @@ public record VkOpticalFlowSessionCreateInfoNV(MemorySegment segment) {
         public VkOpticalFlowSessionCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkOpticalFlowSessionCreateInfoNV createUninit(MemorySegment segment) {
             return new VkOpticalFlowSessionCreateInfoNV(segment);

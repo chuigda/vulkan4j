@@ -79,7 +79,7 @@ public record VkExternalBufferProperties(MemorySegment segment) {
         public VkExternalBufferProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExternalBufferProperties createUninit(MemorySegment segment) {
             return new VkExternalBufferProperties(segment);

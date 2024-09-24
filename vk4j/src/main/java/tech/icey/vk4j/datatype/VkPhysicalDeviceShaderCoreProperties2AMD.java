@@ -91,7 +91,7 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(MemorySegment segment) {
         public VkPhysicalDeviceShaderCoreProperties2AMD create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderCoreProperties2AMD createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderCoreProperties2AMD(segment);

@@ -91,7 +91,7 @@ public record VkCheckpointData2NV(MemorySegment segment) {
         public VkCheckpointData2NV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCheckpointData2NV createUninit(MemorySegment segment) {
             return new VkCheckpointData2NV(segment);

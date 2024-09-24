@@ -79,7 +79,7 @@ public record VkTextureLODGatherFormatPropertiesAMD(MemorySegment segment) {
         public VkTextureLODGatherFormatPropertiesAMD create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkTextureLODGatherFormatPropertiesAMD createUninit(MemorySegment segment) {
             return new VkTextureLODGatherFormatPropertiesAMD(segment);

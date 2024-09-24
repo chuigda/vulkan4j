@@ -79,7 +79,7 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(MemorySegment segment) 
         public VkShaderModuleValidationCacheCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkShaderModuleValidationCacheCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkShaderModuleValidationCacheCreateInfoEXT(segment);

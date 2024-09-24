@@ -272,7 +272,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
         public VkAccelerationStructureTrianglesDisplacementMicromapNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAccelerationStructureTrianglesDisplacementMicromapNV createUninit(MemorySegment segment) {
             return new VkAccelerationStructureTrianglesDisplacementMicromapNV(segment);

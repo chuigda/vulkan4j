@@ -66,7 +66,7 @@ public record VkViewportWScalingNV(MemorySegment segment) {
         public VkViewportWScalingNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkViewportWScalingNV createUninit(MemorySegment segment) {
             return new VkViewportWScalingNV(segment);

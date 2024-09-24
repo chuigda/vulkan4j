@@ -91,7 +91,7 @@ public record VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(MemorySegm
         public VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(segment);

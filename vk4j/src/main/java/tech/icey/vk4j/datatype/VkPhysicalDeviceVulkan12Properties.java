@@ -699,7 +699,7 @@ public record VkPhysicalDeviceVulkan12Properties(MemorySegment segment) {
         public VkPhysicalDeviceVulkan12Properties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceVulkan12Properties createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceVulkan12Properties(segment);

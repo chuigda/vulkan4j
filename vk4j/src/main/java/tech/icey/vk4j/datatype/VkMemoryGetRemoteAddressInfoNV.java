@@ -91,7 +91,7 @@ public record VkMemoryGetRemoteAddressInfoNV(MemorySegment segment) {
         public VkMemoryGetRemoteAddressInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMemoryGetRemoteAddressInfoNV createUninit(MemorySegment segment) {
             return new VkMemoryGetRemoteAddressInfoNV(segment);

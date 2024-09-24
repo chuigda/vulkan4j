@@ -66,7 +66,7 @@ public record VkVertexInputBindingDivisorDescriptionKHR(MemorySegment segment) {
         public VkVertexInputBindingDivisorDescriptionKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkVertexInputBindingDivisorDescriptionKHR createUninit(MemorySegment segment) {
             return new VkVertexInputBindingDivisorDescriptionKHR(segment);

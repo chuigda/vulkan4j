@@ -91,7 +91,7 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(MemorySegment segment) 
         public VkMultisampledRenderToSingleSampledInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMultisampledRenderToSingleSampledInfoEXT createUninit(MemorySegment segment) {
             return new VkMultisampledRenderToSingleSampledInfoEXT(segment);

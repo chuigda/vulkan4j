@@ -103,7 +103,7 @@ public record VkGeometryNV(MemorySegment segment) {
         public VkGeometryNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkGeometryNV createUninit(MemorySegment segment) {
             return new VkGeometryNV(segment);

@@ -114,7 +114,7 @@ public record VkCopyMemoryToImageIndirectCommandNV(MemorySegment segment) {
         public VkCopyMemoryToImageIndirectCommandNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCopyMemoryToImageIndirectCommandNV createUninit(MemorySegment segment) {
             return new VkCopyMemoryToImageIndirectCommandNV(segment);

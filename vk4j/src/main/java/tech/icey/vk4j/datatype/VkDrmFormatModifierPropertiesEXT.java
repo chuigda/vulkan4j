@@ -78,7 +78,7 @@ public record VkDrmFormatModifierPropertiesEXT(MemorySegment segment) {
         public VkDrmFormatModifierPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDrmFormatModifierPropertiesEXT createUninit(MemorySegment segment) {
             return new VkDrmFormatModifierPropertiesEXT(segment);

@@ -78,7 +78,7 @@ public record VkDescriptorBufferInfo(MemorySegment segment) {
         public VkDescriptorBufferInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorBufferInfo createUninit(MemorySegment segment) {
             return new VkDescriptorBufferInfo(segment);

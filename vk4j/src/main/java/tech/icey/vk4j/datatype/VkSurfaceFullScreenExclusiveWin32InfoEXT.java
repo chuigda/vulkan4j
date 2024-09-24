@@ -79,7 +79,7 @@ public record VkSurfaceFullScreenExclusiveWin32InfoEXT(MemorySegment segment) {
         public VkSurfaceFullScreenExclusiveWin32InfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSurfaceFullScreenExclusiveWin32InfoEXT createUninit(MemorySegment segment) {
             return new VkSurfaceFullScreenExclusiveWin32InfoEXT(segment);

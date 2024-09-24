@@ -91,7 +91,7 @@ public record VkImportMetalTextureInfoEXT(MemorySegment segment) {
         public VkImportMetalTextureInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImportMetalTextureInfoEXT createUninit(MemorySegment segment) {
             return new VkImportMetalTextureInfoEXT(segment);

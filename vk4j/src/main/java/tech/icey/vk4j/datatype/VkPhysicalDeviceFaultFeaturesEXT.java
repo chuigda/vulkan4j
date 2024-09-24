@@ -91,7 +91,7 @@ public record VkPhysicalDeviceFaultFeaturesEXT(MemorySegment segment) {
         public VkPhysicalDeviceFaultFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceFaultFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceFaultFeaturesEXT(segment);

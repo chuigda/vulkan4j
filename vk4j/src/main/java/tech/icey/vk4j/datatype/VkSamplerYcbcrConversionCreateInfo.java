@@ -163,7 +163,7 @@ public record VkSamplerYcbcrConversionCreateInfo(MemorySegment segment) {
         public VkSamplerYcbcrConversionCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSamplerYcbcrConversionCreateInfo createUninit(MemorySegment segment) {
             return new VkSamplerYcbcrConversionCreateInfo(segment);

@@ -79,7 +79,7 @@ public record VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(MemorySegment segment)
         public VkPhysicalDeviceYcbcrImageArraysFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceYcbcrImageArraysFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(segment);

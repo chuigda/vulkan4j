@@ -91,7 +91,7 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(MemorySegmen
         public VkCommandBufferInheritanceRenderPassTransformInfoQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCommandBufferInheritanceRenderPassTransformInfoQCOM createUninit(MemorySegment segment) {
             return new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(segment);

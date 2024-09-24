@@ -145,7 +145,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
         public VkDeviceFaultInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceFaultInfoEXT createUninit(MemorySegment segment) {
             return new VkDeviceFaultInfoEXT(segment);

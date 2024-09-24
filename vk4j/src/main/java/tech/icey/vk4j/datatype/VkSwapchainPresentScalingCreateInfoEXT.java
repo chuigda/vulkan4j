@@ -103,7 +103,7 @@ public record VkSwapchainPresentScalingCreateInfoEXT(MemorySegment segment) {
         public VkSwapchainPresentScalingCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSwapchainPresentScalingCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkSwapchainPresentScalingCreateInfoEXT(segment);

@@ -79,7 +79,7 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(MemorySegment s
         public VkPhysicalDeviceCommandBufferInheritanceFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceCommandBufferInheritanceFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(segment);

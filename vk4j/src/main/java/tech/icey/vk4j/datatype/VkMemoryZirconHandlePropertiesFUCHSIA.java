@@ -79,7 +79,7 @@ public record VkMemoryZirconHandlePropertiesFUCHSIA(MemorySegment segment) {
         public VkMemoryZirconHandlePropertiesFUCHSIA create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMemoryZirconHandlePropertiesFUCHSIA createUninit(MemorySegment segment) {
             return new VkMemoryZirconHandlePropertiesFUCHSIA(segment);

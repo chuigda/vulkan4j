@@ -103,7 +103,7 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(Memo
         public VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(segment);

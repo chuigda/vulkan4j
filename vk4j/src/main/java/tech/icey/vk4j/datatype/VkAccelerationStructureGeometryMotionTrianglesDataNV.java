@@ -79,7 +79,7 @@ public record VkAccelerationStructureGeometryMotionTrianglesDataNV(MemorySegment
         public VkAccelerationStructureGeometryMotionTrianglesDataNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAccelerationStructureGeometryMotionTrianglesDataNV createUninit(MemorySegment segment) {
             return new VkAccelerationStructureGeometryMotionTrianglesDataNV(segment);

@@ -80,7 +80,7 @@ public record VkShadingRatePaletteNV(MemorySegment segment) {
         public VkShadingRatePaletteNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkShadingRatePaletteNV createUninit(MemorySegment segment) {
             return new VkShadingRatePaletteNV(segment);

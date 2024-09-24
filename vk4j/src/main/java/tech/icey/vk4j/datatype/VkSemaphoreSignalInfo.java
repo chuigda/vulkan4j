@@ -91,7 +91,7 @@ public record VkSemaphoreSignalInfo(MemorySegment segment) {
         public VkSemaphoreSignalInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSemaphoreSignalInfo createUninit(MemorySegment segment) {
             return new VkSemaphoreSignalInfo(segment);

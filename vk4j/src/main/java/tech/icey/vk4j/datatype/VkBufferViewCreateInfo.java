@@ -127,7 +127,7 @@ public record VkBufferViewCreateInfo(MemorySegment segment) {
         public VkBufferViewCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBufferViewCreateInfo createUninit(MemorySegment segment) {
             return new VkBufferViewCreateInfo(segment);

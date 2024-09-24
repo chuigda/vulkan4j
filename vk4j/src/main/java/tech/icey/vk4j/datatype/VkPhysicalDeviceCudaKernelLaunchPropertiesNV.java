@@ -91,7 +91,7 @@ public record VkPhysicalDeviceCudaKernelLaunchPropertiesNV(MemorySegment segment
         public VkPhysicalDeviceCudaKernelLaunchPropertiesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceCudaKernelLaunchPropertiesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceCudaKernelLaunchPropertiesNV(segment);

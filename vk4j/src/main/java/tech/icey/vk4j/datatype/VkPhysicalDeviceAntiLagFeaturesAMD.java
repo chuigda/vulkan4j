@@ -79,7 +79,7 @@ public record VkPhysicalDeviceAntiLagFeaturesAMD(MemorySegment segment) {
         public VkPhysicalDeviceAntiLagFeaturesAMD create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceAntiLagFeaturesAMD createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceAntiLagFeaturesAMD(segment);

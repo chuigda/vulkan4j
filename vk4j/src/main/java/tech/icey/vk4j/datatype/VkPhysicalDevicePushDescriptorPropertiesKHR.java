@@ -79,7 +79,7 @@ public record VkPhysicalDevicePushDescriptorPropertiesKHR(MemorySegment segment)
         public VkPhysicalDevicePushDescriptorPropertiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevicePushDescriptorPropertiesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDevicePushDescriptorPropertiesKHR(segment);

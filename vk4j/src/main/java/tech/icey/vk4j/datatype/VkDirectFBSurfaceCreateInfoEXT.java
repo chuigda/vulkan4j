@@ -103,7 +103,7 @@ public record VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) {
         public VkDirectFBSurfaceCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDirectFBSurfaceCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkDirectFBSurfaceCreateInfoEXT(segment);

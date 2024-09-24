@@ -135,7 +135,7 @@ public record VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) {
         public VkBindAccelerationStructureMemoryInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBindAccelerationStructureMemoryInfoNV createUninit(MemorySegment segment) {
             return new VkBindAccelerationStructureMemoryInfoNV(segment);

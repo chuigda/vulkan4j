@@ -78,7 +78,7 @@ public record VkBindIndexBufferIndirectCommandNV(MemorySegment segment) {
         public VkBindIndexBufferIndirectCommandNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBindIndexBufferIndirectCommandNV createUninit(MemorySegment segment) {
             return new VkBindIndexBufferIndirectCommandNV(segment);

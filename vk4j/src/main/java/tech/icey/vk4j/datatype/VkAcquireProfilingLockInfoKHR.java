@@ -91,7 +91,7 @@ public record VkAcquireProfilingLockInfoKHR(MemorySegment segment) {
         public VkAcquireProfilingLockInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAcquireProfilingLockInfoKHR createUninit(MemorySegment segment) {
             return new VkAcquireProfilingLockInfoKHR(segment);

@@ -103,7 +103,7 @@ public record VkPhysicalDevice8BitStorageFeatures(MemorySegment segment) {
         public VkPhysicalDevice8BitStorageFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevice8BitStorageFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDevice8BitStorageFeatures(segment);

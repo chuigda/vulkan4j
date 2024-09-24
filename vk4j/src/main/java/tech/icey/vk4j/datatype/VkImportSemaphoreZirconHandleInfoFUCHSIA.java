@@ -115,7 +115,7 @@ public record VkImportSemaphoreZirconHandleInfoFUCHSIA(MemorySegment segment) {
         public VkImportSemaphoreZirconHandleInfoFUCHSIA create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImportSemaphoreZirconHandleInfoFUCHSIA createUninit(MemorySegment segment) {
             return new VkImportSemaphoreZirconHandleInfoFUCHSIA(segment);

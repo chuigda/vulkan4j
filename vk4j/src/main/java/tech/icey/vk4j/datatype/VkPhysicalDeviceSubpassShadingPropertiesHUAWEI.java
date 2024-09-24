@@ -79,7 +79,7 @@ public record VkPhysicalDeviceSubpassShadingPropertiesHUAWEI(MemorySegment segme
         public VkPhysicalDeviceSubpassShadingPropertiesHUAWEI create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceSubpassShadingPropertiesHUAWEI createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceSubpassShadingPropertiesHUAWEI(segment);

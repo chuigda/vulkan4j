@@ -114,7 +114,7 @@ public record VkViewport(MemorySegment segment) {
         public VkViewport create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkViewport createUninit(MemorySegment segment) {
             return new VkViewport(segment);

@@ -126,7 +126,7 @@ public record VkDebugUtilsObjectTagInfoEXT(MemorySegment segment) {
         public VkDebugUtilsObjectTagInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDebugUtilsObjectTagInfoEXT createUninit(MemorySegment segment) {
             return new VkDebugUtilsObjectTagInfoEXT(segment);

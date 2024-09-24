@@ -79,7 +79,7 @@ public record VkPhysicalDeviceMaintenance4Features(MemorySegment segment) {
         public VkPhysicalDeviceMaintenance4Features create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceMaintenance4Features createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceMaintenance4Features(segment);

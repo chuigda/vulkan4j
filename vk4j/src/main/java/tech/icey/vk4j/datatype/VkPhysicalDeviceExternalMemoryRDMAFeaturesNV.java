@@ -79,7 +79,7 @@ public record VkPhysicalDeviceExternalMemoryRDMAFeaturesNV(MemorySegment segment
         public VkPhysicalDeviceExternalMemoryRDMAFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceExternalMemoryRDMAFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceExternalMemoryRDMAFeaturesNV(segment);

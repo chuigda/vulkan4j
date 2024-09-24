@@ -91,7 +91,7 @@ public record VkFenceGetSciSyncInfoNV(MemorySegment segment) {
         public VkFenceGetSciSyncInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkFenceGetSciSyncInfoNV createUninit(MemorySegment segment) {
             return new VkFenceGetSciSyncInfoNV(segment);

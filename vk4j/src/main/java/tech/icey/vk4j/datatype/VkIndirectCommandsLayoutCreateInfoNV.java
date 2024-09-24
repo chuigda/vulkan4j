@@ -160,7 +160,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
         public VkIndirectCommandsLayoutCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkIndirectCommandsLayoutCreateInfoNV createUninit(MemorySegment segment) {
             return new VkIndirectCommandsLayoutCreateInfoNV(segment);

@@ -79,7 +79,7 @@ public record VkPhysicalDeviceCoverageReductionModeFeaturesNV(MemorySegment segm
         public VkPhysicalDeviceCoverageReductionModeFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceCoverageReductionModeFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceCoverageReductionModeFeaturesNV(segment);

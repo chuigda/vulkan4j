@@ -115,7 +115,7 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(MemorySegment segmen
         public VkPhysicalDeviceDepthStencilResolveProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDepthStencilResolveProperties createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDepthStencilResolveProperties(segment);

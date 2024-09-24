@@ -78,7 +78,7 @@ public record VkDeviceFaultAddressInfoEXT(MemorySegment segment) {
         public VkDeviceFaultAddressInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceFaultAddressInfoEXT createUninit(MemorySegment segment) {
             return new VkDeviceFaultAddressInfoEXT(segment);

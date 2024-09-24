@@ -159,7 +159,7 @@ public record VkPipelineMultisampleStateCreateInfo(MemorySegment segment) {
         public VkPipelineMultisampleStateCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineMultisampleStateCreateInfo createUninit(MemorySegment segment) {
             return new VkPipelineMultisampleStateCreateInfo(segment);

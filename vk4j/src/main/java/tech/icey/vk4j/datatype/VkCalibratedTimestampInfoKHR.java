@@ -79,7 +79,7 @@ public record VkCalibratedTimestampInfoKHR(MemorySegment segment) {
         public VkCalibratedTimestampInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCalibratedTimestampInfoKHR createUninit(MemorySegment segment) {
             return new VkCalibratedTimestampInfoKHR(segment);

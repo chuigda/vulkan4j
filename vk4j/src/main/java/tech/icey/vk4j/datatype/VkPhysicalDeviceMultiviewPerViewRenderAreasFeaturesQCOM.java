@@ -79,7 +79,7 @@ public record VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM(MemorySegm
         public VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM(segment);

@@ -91,7 +91,7 @@ public record VkMemoryUnmapInfoKHR(MemorySegment segment) {
         public VkMemoryUnmapInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMemoryUnmapInfoKHR createUninit(MemorySegment segment) {
             return new VkMemoryUnmapInfoKHR(segment);

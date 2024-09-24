@@ -91,7 +91,7 @@ public record VkImagePipeSurfaceCreateInfoFUCHSIA(MemorySegment segment) {
         public VkImagePipeSurfaceCreateInfoFUCHSIA create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImagePipeSurfaceCreateInfoFUCHSIA createUninit(MemorySegment segment) {
             return new VkImagePipeSurfaceCreateInfoFUCHSIA(segment);

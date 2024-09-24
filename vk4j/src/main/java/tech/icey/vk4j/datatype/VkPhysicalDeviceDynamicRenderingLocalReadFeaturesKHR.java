@@ -79,7 +79,7 @@ public record VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHR(MemorySegment
         public VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHR(segment);

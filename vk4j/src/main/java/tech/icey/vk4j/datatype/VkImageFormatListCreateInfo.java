@@ -105,7 +105,7 @@ public record VkImageFormatListCreateInfo(MemorySegment segment) {
         public VkImageFormatListCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageFormatListCreateInfo createUninit(MemorySegment segment) {
             return new VkImageFormatListCreateInfo(segment);

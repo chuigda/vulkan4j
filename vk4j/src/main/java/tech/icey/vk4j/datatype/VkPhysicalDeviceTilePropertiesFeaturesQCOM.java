@@ -79,7 +79,7 @@ public record VkPhysicalDeviceTilePropertiesFeaturesQCOM(MemorySegment segment) 
         public VkPhysicalDeviceTilePropertiesFeaturesQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceTilePropertiesFeaturesQCOM createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceTilePropertiesFeaturesQCOM(segment);

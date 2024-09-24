@@ -103,7 +103,7 @@ public record VkScreenSurfaceCreateInfoQNX(MemorySegment segment) {
         public VkScreenSurfaceCreateInfoQNX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkScreenSurfaceCreateInfoQNX createUninit(MemorySegment segment) {
             return new VkScreenSurfaceCreateInfoQNX(segment);

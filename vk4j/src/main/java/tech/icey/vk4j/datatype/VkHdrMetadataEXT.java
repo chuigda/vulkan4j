@@ -163,7 +163,7 @@ public record VkHdrMetadataEXT(MemorySegment segment) {
         public VkHdrMetadataEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkHdrMetadataEXT createUninit(MemorySegment segment) {
             return new VkHdrMetadataEXT(segment);

@@ -103,7 +103,7 @@ public record VkExternalFenceProperties(MemorySegment segment) {
         public VkExternalFenceProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExternalFenceProperties createUninit(MemorySegment segment) {
             return new VkExternalFenceProperties(segment);

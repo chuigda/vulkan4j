@@ -192,8 +192,7 @@ public final class LibGLFW {
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR surface
     ) {
         try {
-            // TODO: here if we try to "inline" the expression into invokeExact arguments there'll be a
-            // java.lang.invoke.WrongMethodTypeException. Why?
+            // TODO: here if we try to "inline" the expression into invokeExact arguments there'll be a java.lang.invoke.WrongMethodTypeException. Why?
             MemorySegment allocatorSegment = allocator != null ? allocator.segment() : MemorySegment.NULL;
             return (int) HANDLE$glfwCreateWindowSurface.invokeExact(
                     instance.handle(),

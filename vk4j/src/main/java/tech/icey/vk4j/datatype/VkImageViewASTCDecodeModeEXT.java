@@ -79,7 +79,7 @@ public record VkImageViewASTCDecodeModeEXT(MemorySegment segment) {
         public VkImageViewASTCDecodeModeEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageViewASTCDecodeModeEXT createUninit(MemorySegment segment) {
             return new VkImageViewASTCDecodeModeEXT(segment);

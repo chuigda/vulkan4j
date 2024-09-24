@@ -79,7 +79,7 @@ public record VkExportMemoryAllocateInfo(MemorySegment segment) {
         public VkExportMemoryAllocateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExportMemoryAllocateInfo createUninit(MemorySegment segment) {
             return new VkExportMemoryAllocateInfo(segment);

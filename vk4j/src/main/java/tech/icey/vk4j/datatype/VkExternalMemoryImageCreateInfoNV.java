@@ -79,7 +79,7 @@ public record VkExternalMemoryImageCreateInfoNV(MemorySegment segment) {
         public VkExternalMemoryImageCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExternalMemoryImageCreateInfoNV createUninit(MemorySegment segment) {
             return new VkExternalMemoryImageCreateInfoNV(segment);

@@ -132,7 +132,7 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
         public VkPhysicalDeviceMemoryProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceMemoryProperties createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceMemoryProperties(segment);

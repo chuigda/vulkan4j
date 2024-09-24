@@ -127,7 +127,7 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) {
         public VkAcquireNextImageInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAcquireNextImageInfoKHR createUninit(MemorySegment segment) {
             return new VkAcquireNextImageInfoKHR(segment);

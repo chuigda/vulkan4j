@@ -222,7 +222,7 @@ public record VkSubpassDescription(MemorySegment segment) {
         public VkSubpassDescription create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSubpassDescription createUninit(MemorySegment segment) {
             return new VkSubpassDescription(segment);

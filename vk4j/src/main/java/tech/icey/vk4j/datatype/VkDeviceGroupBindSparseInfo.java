@@ -91,7 +91,7 @@ public record VkDeviceGroupBindSparseInfo(MemorySegment segment) {
         public VkDeviceGroupBindSparseInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceGroupBindSparseInfo createUninit(MemorySegment segment) {
             return new VkDeviceGroupBindSparseInfo(segment);

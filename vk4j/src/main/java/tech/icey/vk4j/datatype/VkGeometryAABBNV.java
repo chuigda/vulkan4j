@@ -115,7 +115,7 @@ public record VkGeometryAABBNV(MemorySegment segment) {
         public VkGeometryAABBNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkGeometryAABBNV createUninit(MemorySegment segment) {
             return new VkGeometryAABBNV(segment);

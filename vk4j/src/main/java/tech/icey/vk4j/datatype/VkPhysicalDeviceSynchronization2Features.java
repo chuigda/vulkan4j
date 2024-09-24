@@ -79,7 +79,7 @@ public record VkPhysicalDeviceSynchronization2Features(MemorySegment segment) {
         public VkPhysicalDeviceSynchronization2Features create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceSynchronization2Features createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceSynchronization2Features(segment);

@@ -79,7 +79,7 @@ public record VkOpticalFlowImageFormatInfoNV(MemorySegment segment) {
         public VkOpticalFlowImageFormatInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkOpticalFlowImageFormatInfoNV createUninit(MemorySegment segment) {
             return new VkOpticalFlowImageFormatInfoNV(segment);

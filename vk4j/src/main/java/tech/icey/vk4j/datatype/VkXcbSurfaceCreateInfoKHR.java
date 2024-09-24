@@ -103,7 +103,7 @@ public record VkXcbSurfaceCreateInfoKHR(MemorySegment segment) {
         public VkXcbSurfaceCreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkXcbSurfaceCreateInfoKHR createUninit(MemorySegment segment) {
             return new VkXcbSurfaceCreateInfoKHR(segment);

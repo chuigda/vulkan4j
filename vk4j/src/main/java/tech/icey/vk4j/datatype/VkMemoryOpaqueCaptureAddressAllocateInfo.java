@@ -79,7 +79,7 @@ public record VkMemoryOpaqueCaptureAddressAllocateInfo(MemorySegment segment) {
         public VkMemoryOpaqueCaptureAddressAllocateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMemoryOpaqueCaptureAddressAllocateInfo createUninit(MemorySegment segment) {
             return new VkMemoryOpaqueCaptureAddressAllocateInfo(segment);

@@ -115,7 +115,7 @@ public record VkMemoryBarrier2(MemorySegment segment) {
         public VkMemoryBarrier2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMemoryBarrier2 createUninit(MemorySegment segment) {
             return new VkMemoryBarrier2(segment);

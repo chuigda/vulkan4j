@@ -105,7 +105,7 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(MemorySegment segment)
         public VkDescriptorSetLayoutBindingFlagsCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorSetLayoutBindingFlagsCreateInfo createUninit(MemorySegment segment) {
             return new VkDescriptorSetLayoutBindingFlagsCreateInfo(segment);

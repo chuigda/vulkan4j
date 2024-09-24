@@ -202,7 +202,7 @@ public record VkRenderingInfo(MemorySegment segment) {
         public VkRenderingInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderingInfo createUninit(MemorySegment segment) {
             return new VkRenderingInfo(segment);

@@ -79,7 +79,7 @@ public record VkSubresourceLayout2KHR(MemorySegment segment) {
         public VkSubresourceLayout2KHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSubresourceLayout2KHR createUninit(MemorySegment segment) {
             return new VkSubresourceLayout2KHR(segment);

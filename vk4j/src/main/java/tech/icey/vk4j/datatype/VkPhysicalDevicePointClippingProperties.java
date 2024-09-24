@@ -79,7 +79,7 @@ public record VkPhysicalDevicePointClippingProperties(MemorySegment segment) {
         public VkPhysicalDevicePointClippingProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevicePointClippingProperties createUninit(MemorySegment segment) {
             return new VkPhysicalDevicePointClippingProperties(segment);

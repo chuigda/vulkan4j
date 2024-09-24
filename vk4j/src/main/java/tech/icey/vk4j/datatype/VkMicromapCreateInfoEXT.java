@@ -139,7 +139,7 @@ public record VkMicromapCreateInfoEXT(MemorySegment segment) {
         public VkMicromapCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMicromapCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkMicromapCreateInfoEXT(segment);

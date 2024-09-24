@@ -103,7 +103,7 @@ public record VkDebugUtilsLabelEXT(MemorySegment segment) {
         public VkDebugUtilsLabelEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDebugUtilsLabelEXT createUninit(MemorySegment segment) {
             return new VkDebugUtilsLabelEXT(segment);

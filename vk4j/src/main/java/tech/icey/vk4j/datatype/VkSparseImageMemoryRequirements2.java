@@ -79,7 +79,7 @@ public record VkSparseImageMemoryRequirements2(MemorySegment segment) {
         public VkSparseImageMemoryRequirements2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSparseImageMemoryRequirements2 createUninit(MemorySegment segment) {
             return new VkSparseImageMemoryRequirements2(segment);

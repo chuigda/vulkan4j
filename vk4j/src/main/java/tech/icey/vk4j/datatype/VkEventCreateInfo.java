@@ -79,7 +79,7 @@ public record VkEventCreateInfo(MemorySegment segment) {
         public VkEventCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkEventCreateInfo createUninit(MemorySegment segment) {
             return new VkEventCreateInfo(segment);

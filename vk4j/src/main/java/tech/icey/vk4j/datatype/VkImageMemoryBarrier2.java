@@ -187,7 +187,7 @@ public record VkImageMemoryBarrier2(MemorySegment segment) {
         public VkImageMemoryBarrier2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageMemoryBarrier2 createUninit(MemorySegment segment) {
             return new VkImageMemoryBarrier2(segment);

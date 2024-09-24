@@ -115,7 +115,7 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(MemorySegment segmen
         public VkPhysicalDeviceImageProcessingPropertiesQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceImageProcessingPropertiesQCOM createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceImageProcessingPropertiesQCOM(segment);

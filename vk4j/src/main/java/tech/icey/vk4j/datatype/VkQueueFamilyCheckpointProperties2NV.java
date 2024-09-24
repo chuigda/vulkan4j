@@ -79,7 +79,7 @@ public record VkQueueFamilyCheckpointProperties2NV(MemorySegment segment) {
         public VkQueueFamilyCheckpointProperties2NV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkQueueFamilyCheckpointProperties2NV createUninit(MemorySegment segment) {
             return new VkQueueFamilyCheckpointProperties2NV(segment);

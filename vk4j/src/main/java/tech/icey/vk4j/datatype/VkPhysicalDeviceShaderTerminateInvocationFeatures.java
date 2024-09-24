@@ -79,7 +79,7 @@ public record VkPhysicalDeviceShaderTerminateInvocationFeatures(MemorySegment se
         public VkPhysicalDeviceShaderTerminateInvocationFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderTerminateInvocationFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderTerminateInvocationFeatures(segment);

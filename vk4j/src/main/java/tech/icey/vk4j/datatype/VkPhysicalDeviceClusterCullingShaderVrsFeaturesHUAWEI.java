@@ -79,7 +79,7 @@ public record VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI(MemorySegmen
         public VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI(segment);

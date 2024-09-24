@@ -91,7 +91,7 @@ public record VkAndroidSurfaceCreateInfoKHR(MemorySegment segment) {
         public VkAndroidSurfaceCreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAndroidSurfaceCreateInfoKHR createUninit(MemorySegment segment) {
             return new VkAndroidSurfaceCreateInfoKHR(segment);

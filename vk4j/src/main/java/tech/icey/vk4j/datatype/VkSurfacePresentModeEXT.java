@@ -79,7 +79,7 @@ public record VkSurfacePresentModeEXT(MemorySegment segment) {
         public VkSurfacePresentModeEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSurfacePresentModeEXT createUninit(MemorySegment segment) {
             return new VkSurfacePresentModeEXT(segment);

@@ -78,7 +78,7 @@ public record VkClearRect(MemorySegment segment) {
         public VkClearRect create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkClearRect createUninit(MemorySegment segment) {
             return new VkClearRect(segment);

@@ -91,7 +91,7 @@ public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(MemorySegment segme
         public VkPhysicalDeviceExternalMemorySciBufFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceExternalMemorySciBufFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceExternalMemorySciBufFeaturesNV(segment);

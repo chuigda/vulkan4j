@@ -79,7 +79,7 @@ public record VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR(MemorySegmen
         public VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR(segment);

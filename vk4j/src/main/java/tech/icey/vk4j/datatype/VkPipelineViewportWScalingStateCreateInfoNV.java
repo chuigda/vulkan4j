@@ -116,7 +116,7 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment)
         public VkPipelineViewportWScalingStateCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineViewportWScalingStateCreateInfoNV createUninit(MemorySegment segment) {
             return new VkPipelineViewportWScalingStateCreateInfoNV(segment);

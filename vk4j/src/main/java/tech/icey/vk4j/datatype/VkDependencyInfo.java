@@ -190,7 +190,7 @@ public record VkDependencyInfo(MemorySegment segment) {
         public VkDependencyInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDependencyInfo createUninit(MemorySegment segment) {
             return new VkDependencyInfo(segment);

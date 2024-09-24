@@ -102,7 +102,7 @@ public record VkPastPresentationTimingGOOGLE(MemorySegment segment) {
         public VkPastPresentationTimingGOOGLE create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPastPresentationTimingGOOGLE createUninit(MemorySegment segment) {
             return new VkPastPresentationTimingGOOGLE(segment);

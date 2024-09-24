@@ -54,7 +54,7 @@ public record VkRenderPassCreationFeedbackInfoEXT(MemorySegment segment) {
         public VkRenderPassCreationFeedbackInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderPassCreationFeedbackInfoEXT createUninit(MemorySegment segment) {
             return new VkRenderPassCreationFeedbackInfoEXT(segment);

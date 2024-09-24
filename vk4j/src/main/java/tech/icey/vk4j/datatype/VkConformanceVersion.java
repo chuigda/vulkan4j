@@ -90,7 +90,7 @@ public record VkConformanceVersion(MemorySegment segment) {
         public VkConformanceVersion create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkConformanceVersion createUninit(MemorySegment segment) {
             return new VkConformanceVersion(segment);

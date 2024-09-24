@@ -91,7 +91,7 @@ public record VkHostImageCopyDevicePerformanceQueryEXT(MemorySegment segment) {
         public VkHostImageCopyDevicePerformanceQueryEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkHostImageCopyDevicePerformanceQueryEXT createUninit(MemorySegment segment) {
             return new VkHostImageCopyDevicePerformanceQueryEXT(segment);

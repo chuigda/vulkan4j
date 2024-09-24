@@ -79,7 +79,7 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(MemorySegment segmen
         public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(segment);

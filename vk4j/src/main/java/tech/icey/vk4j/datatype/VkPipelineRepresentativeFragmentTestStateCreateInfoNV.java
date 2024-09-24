@@ -79,7 +79,7 @@ public record VkPipelineRepresentativeFragmentTestStateCreateInfoNV(MemorySegmen
         public VkPipelineRepresentativeFragmentTestStateCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineRepresentativeFragmentTestStateCreateInfoNV createUninit(MemorySegment segment) {
             return new VkPipelineRepresentativeFragmentTestStateCreateInfoNV(segment);

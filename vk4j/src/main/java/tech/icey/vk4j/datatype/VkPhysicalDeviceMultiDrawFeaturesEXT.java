@@ -79,7 +79,7 @@ public record VkPhysicalDeviceMultiDrawFeaturesEXT(MemorySegment segment) {
         public VkPhysicalDeviceMultiDrawFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceMultiDrawFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceMultiDrawFeaturesEXT(segment);

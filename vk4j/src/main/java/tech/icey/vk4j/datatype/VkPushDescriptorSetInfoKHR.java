@@ -140,7 +140,7 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) {
         public VkPushDescriptorSetInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPushDescriptorSetInfoKHR createUninit(MemorySegment segment) {
             return new VkPushDescriptorSetInfoKHR(segment);

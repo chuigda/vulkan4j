@@ -102,7 +102,7 @@ public record VkImageSubresourceRange(MemorySegment segment) {
         public VkImageSubresourceRange create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageSubresourceRange createUninit(MemorySegment segment) {
             return new VkImageSubresourceRange(segment);

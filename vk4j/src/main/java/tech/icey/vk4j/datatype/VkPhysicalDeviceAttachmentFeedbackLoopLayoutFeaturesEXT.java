@@ -79,7 +79,7 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(MemorySegm
         public VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(segment);

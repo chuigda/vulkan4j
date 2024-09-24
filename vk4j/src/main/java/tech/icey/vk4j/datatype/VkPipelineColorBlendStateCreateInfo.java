@@ -156,7 +156,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
         public VkPipelineColorBlendStateCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineColorBlendStateCreateInfo createUninit(MemorySegment segment) {
             return new VkPipelineColorBlendStateCreateInfo(segment);

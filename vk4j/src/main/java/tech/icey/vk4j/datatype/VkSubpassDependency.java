@@ -126,7 +126,7 @@ public record VkSubpassDependency(MemorySegment segment) {
         public VkSubpassDependency create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSubpassDependency createUninit(MemorySegment segment) {
             return new VkSubpassDependency(segment);

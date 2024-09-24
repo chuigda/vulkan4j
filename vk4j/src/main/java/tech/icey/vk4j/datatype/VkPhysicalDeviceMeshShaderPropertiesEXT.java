@@ -419,7 +419,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
         public VkPhysicalDeviceMeshShaderPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceMeshShaderPropertiesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceMeshShaderPropertiesEXT(segment);

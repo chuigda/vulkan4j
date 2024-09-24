@@ -79,7 +79,7 @@ public record VkPerformanceConfigurationAcquireInfoINTEL(MemorySegment segment) 
         public VkPerformanceConfigurationAcquireInfoINTEL create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPerformanceConfigurationAcquireInfoINTEL createUninit(MemorySegment segment) {
             return new VkPerformanceConfigurationAcquireInfoINTEL(segment);

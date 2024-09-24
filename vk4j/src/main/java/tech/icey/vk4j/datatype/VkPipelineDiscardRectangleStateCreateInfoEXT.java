@@ -128,7 +128,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
         public VkPipelineDiscardRectangleStateCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineDiscardRectangleStateCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkPipelineDiscardRectangleStateCreateInfoEXT(segment);

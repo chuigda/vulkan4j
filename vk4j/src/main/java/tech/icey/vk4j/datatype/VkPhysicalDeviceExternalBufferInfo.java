@@ -103,7 +103,7 @@ public record VkPhysicalDeviceExternalBufferInfo(MemorySegment segment) {
         public VkPhysicalDeviceExternalBufferInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceExternalBufferInfo createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceExternalBufferInfo(segment);

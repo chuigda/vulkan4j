@@ -91,7 +91,7 @@ public record VkImageViewAddressPropertiesNVX(MemorySegment segment) {
         public VkImageViewAddressPropertiesNVX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageViewAddressPropertiesNVX createUninit(MemorySegment segment) {
             return new VkImageViewAddressPropertiesNVX(segment);

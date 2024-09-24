@@ -79,7 +79,7 @@ public record VkImportScreenBufferInfoQNX(MemorySegment segment) {
         public VkImportScreenBufferInfoQNX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImportScreenBufferInfoQNX createUninit(MemorySegment segment) {
             return new VkImportScreenBufferInfoQNX(segment);

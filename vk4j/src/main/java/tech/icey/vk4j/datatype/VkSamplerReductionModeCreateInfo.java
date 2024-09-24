@@ -79,7 +79,7 @@ public record VkSamplerReductionModeCreateInfo(MemorySegment segment) {
         public VkSamplerReductionModeCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSamplerReductionModeCreateInfo createUninit(MemorySegment segment) {
             return new VkSamplerReductionModeCreateInfo(segment);

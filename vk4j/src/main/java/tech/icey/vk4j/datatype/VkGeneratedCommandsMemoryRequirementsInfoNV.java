@@ -115,7 +115,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
         public VkGeneratedCommandsMemoryRequirementsInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkGeneratedCommandsMemoryRequirementsInfoNV createUninit(MemorySegment segment) {
             return new VkGeneratedCommandsMemoryRequirementsInfoNV(segment);

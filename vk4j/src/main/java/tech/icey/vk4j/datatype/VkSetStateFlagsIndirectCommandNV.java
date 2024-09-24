@@ -54,7 +54,7 @@ public record VkSetStateFlagsIndirectCommandNV(MemorySegment segment) {
         public VkSetStateFlagsIndirectCommandNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSetStateFlagsIndirectCommandNV createUninit(MemorySegment segment) {
             return new VkSetStateFlagsIndirectCommandNV(segment);

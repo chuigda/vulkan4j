@@ -127,7 +127,7 @@ public record VkComputePipelineCreateInfo(MemorySegment segment) {
         public VkComputePipelineCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkComputePipelineCreateInfo createUninit(MemorySegment segment) {
             return new VkComputePipelineCreateInfo(segment);

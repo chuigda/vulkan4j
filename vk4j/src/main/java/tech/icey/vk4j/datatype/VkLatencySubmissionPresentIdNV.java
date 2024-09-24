@@ -79,7 +79,7 @@ public record VkLatencySubmissionPresentIdNV(MemorySegment segment) {
         public VkLatencySubmissionPresentIdNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkLatencySubmissionPresentIdNV createUninit(MemorySegment segment) {
             return new VkLatencySubmissionPresentIdNV(segment);

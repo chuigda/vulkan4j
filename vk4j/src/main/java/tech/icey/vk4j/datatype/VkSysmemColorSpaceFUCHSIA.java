@@ -79,7 +79,7 @@ public record VkSysmemColorSpaceFUCHSIA(MemorySegment segment) {
         public VkSysmemColorSpaceFUCHSIA create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSysmemColorSpaceFUCHSIA createUninit(MemorySegment segment) {
             return new VkSysmemColorSpaceFUCHSIA(segment);

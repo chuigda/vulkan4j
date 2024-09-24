@@ -114,7 +114,7 @@ public record VkAllocationCallbacks(MemorySegment segment) {
         public VkAllocationCallbacks create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAllocationCallbacks createUninit(MemorySegment segment) {
             return new VkAllocationCallbacks(segment);

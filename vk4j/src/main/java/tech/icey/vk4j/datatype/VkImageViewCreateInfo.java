@@ -139,7 +139,7 @@ public record VkImageViewCreateInfo(MemorySegment segment) {
         public VkImageViewCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageViewCreateInfo createUninit(MemorySegment segment) {
             return new VkImageViewCreateInfo(segment);

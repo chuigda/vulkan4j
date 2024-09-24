@@ -79,7 +79,7 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(Memory
         public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(segment);

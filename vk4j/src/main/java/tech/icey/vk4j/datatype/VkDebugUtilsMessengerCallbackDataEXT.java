@@ -242,7 +242,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
         public VkDebugUtilsMessengerCallbackDataEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDebugUtilsMessengerCallbackDataEXT createUninit(MemorySegment segment) {
             return new VkDebugUtilsMessengerCallbackDataEXT(segment);

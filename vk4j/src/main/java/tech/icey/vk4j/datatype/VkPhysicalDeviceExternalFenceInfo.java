@@ -79,7 +79,7 @@ public record VkPhysicalDeviceExternalFenceInfo(MemorySegment segment) {
         public VkPhysicalDeviceExternalFenceInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceExternalFenceInfo createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceExternalFenceInfo(segment);

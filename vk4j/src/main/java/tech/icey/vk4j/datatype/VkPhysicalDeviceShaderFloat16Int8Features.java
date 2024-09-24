@@ -91,7 +91,7 @@ public record VkPhysicalDeviceShaderFloat16Int8Features(MemorySegment segment) {
         public VkPhysicalDeviceShaderFloat16Int8Features create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderFloat16Int8Features createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderFloat16Int8Features(segment);

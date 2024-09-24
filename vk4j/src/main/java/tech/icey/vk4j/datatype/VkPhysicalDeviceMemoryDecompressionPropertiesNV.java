@@ -91,7 +91,7 @@ public record VkPhysicalDeviceMemoryDecompressionPropertiesNV(MemorySegment segm
         public VkPhysicalDeviceMemoryDecompressionPropertiesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceMemoryDecompressionPropertiesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceMemoryDecompressionPropertiesNV(segment);

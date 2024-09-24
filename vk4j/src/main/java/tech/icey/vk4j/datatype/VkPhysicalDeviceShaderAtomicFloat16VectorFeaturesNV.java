@@ -79,7 +79,7 @@ public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(MemorySegment 
         public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(segment);

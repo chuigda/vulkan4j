@@ -66,7 +66,7 @@ public record VkSurfaceFormatKHR(MemorySegment segment) {
         public VkSurfaceFormatKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSurfaceFormatKHR createUninit(MemorySegment segment) {
             return new VkSurfaceFormatKHR(segment);

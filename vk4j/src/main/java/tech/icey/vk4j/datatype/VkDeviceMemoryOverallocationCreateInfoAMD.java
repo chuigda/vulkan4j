@@ -79,7 +79,7 @@ public record VkDeviceMemoryOverallocationCreateInfoAMD(MemorySegment segment) {
         public VkDeviceMemoryOverallocationCreateInfoAMD create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceMemoryOverallocationCreateInfoAMD createUninit(MemorySegment segment) {
             return new VkDeviceMemoryOverallocationCreateInfoAMD(segment);

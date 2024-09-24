@@ -103,7 +103,7 @@ public record VkExternalSemaphoreProperties(MemorySegment segment) {
         public VkExternalSemaphoreProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExternalSemaphoreProperties createUninit(MemorySegment segment) {
             return new VkExternalSemaphoreProperties(segment);

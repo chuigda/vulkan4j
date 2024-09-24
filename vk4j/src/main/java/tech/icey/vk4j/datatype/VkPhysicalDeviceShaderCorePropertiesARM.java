@@ -103,7 +103,7 @@ public record VkPhysicalDeviceShaderCorePropertiesARM(MemorySegment segment) {
         public VkPhysicalDeviceShaderCorePropertiesARM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderCorePropertiesARM createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderCorePropertiesARM(segment);

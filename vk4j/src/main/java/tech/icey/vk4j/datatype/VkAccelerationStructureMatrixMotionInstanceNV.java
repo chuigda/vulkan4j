@@ -126,7 +126,7 @@ public record VkAccelerationStructureMatrixMotionInstanceNV(MemorySegment segmen
         public VkAccelerationStructureMatrixMotionInstanceNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAccelerationStructureMatrixMotionInstanceNV createUninit(MemorySegment segment) {
             return new VkAccelerationStructureMatrixMotionInstanceNV(segment);

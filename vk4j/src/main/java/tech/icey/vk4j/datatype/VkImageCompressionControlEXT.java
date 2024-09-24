@@ -117,7 +117,7 @@ public record VkImageCompressionControlEXT(MemorySegment segment) {
         public VkImageCompressionControlEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageCompressionControlEXT createUninit(MemorySegment segment) {
             return new VkImageCompressionControlEXT(segment);

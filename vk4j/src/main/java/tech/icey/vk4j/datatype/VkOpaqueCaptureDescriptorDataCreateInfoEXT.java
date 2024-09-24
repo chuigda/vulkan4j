@@ -79,7 +79,7 @@ public record VkOpaqueCaptureDescriptorDataCreateInfoEXT(MemorySegment segment) 
         public VkOpaqueCaptureDescriptorDataCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkOpaqueCaptureDescriptorDataCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkOpaqueCaptureDescriptorDataCreateInfoEXT(segment);

@@ -103,7 +103,7 @@ public record VkBufferCopy2(MemorySegment segment) {
         public VkBufferCopy2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBufferCopy2 createUninit(MemorySegment segment) {
             return new VkBufferCopy2(segment);

@@ -79,7 +79,7 @@ public record VkMemoryMapPlacedInfoEXT(MemorySegment segment) {
         public VkMemoryMapPlacedInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMemoryMapPlacedInfoEXT createUninit(MemorySegment segment) {
             return new VkMemoryMapPlacedInfoEXT(segment);

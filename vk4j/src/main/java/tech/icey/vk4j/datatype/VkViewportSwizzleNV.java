@@ -90,7 +90,7 @@ public record VkViewportSwizzleNV(MemorySegment segment) {
         public VkViewportSwizzleNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkViewportSwizzleNV createUninit(MemorySegment segment) {
             return new VkViewportSwizzleNV(segment);

@@ -235,7 +235,7 @@ public record VkLatencyTimingsFrameReportNV(MemorySegment segment) {
         public VkLatencyTimingsFrameReportNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkLatencyTimingsFrameReportNV createUninit(MemorySegment segment) {
             return new VkLatencyTimingsFrameReportNV(segment);

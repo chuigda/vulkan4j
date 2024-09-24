@@ -79,7 +79,7 @@ public record VkPhysicalDeviceDeviceMemoryReportFeaturesEXT(MemorySegment segmen
         public VkPhysicalDeviceDeviceMemoryReportFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDeviceMemoryReportFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDeviceMemoryReportFeaturesEXT(segment);

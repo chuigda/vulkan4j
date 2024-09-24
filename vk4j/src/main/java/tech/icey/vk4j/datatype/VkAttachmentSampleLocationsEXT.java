@@ -66,7 +66,7 @@ public record VkAttachmentSampleLocationsEXT(MemorySegment segment) {
         public VkAttachmentSampleLocationsEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAttachmentSampleLocationsEXT createUninit(MemorySegment segment) {
             return new VkAttachmentSampleLocationsEXT(segment);

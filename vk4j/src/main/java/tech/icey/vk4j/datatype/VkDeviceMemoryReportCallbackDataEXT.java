@@ -151,7 +151,7 @@ public record VkDeviceMemoryReportCallbackDataEXT(MemorySegment segment) {
         public VkDeviceMemoryReportCallbackDataEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceMemoryReportCallbackDataEXT createUninit(MemorySegment segment) {
             return new VkDeviceMemoryReportCallbackDataEXT(segment);

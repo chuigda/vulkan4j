@@ -104,7 +104,7 @@ public record VkPresentRegionsKHR(MemorySegment segment) {
         public VkPresentRegionsKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPresentRegionsKHR createUninit(MemorySegment segment) {
             return new VkPresentRegionsKHR(segment);

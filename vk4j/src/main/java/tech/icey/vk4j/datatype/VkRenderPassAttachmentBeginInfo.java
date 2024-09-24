@@ -104,7 +104,7 @@ public record VkRenderPassAttachmentBeginInfo(MemorySegment segment) {
         public VkRenderPassAttachmentBeginInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderPassAttachmentBeginInfo createUninit(MemorySegment segment) {
             return new VkRenderPassAttachmentBeginInfo(segment);

@@ -103,7 +103,7 @@ public record VkPhysicalDeviceRobustness2FeaturesEXT(MemorySegment segment) {
         public VkPhysicalDeviceRobustness2FeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceRobustness2FeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceRobustness2FeaturesEXT(segment);

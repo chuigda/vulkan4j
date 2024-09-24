@@ -444,7 +444,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
         public VkPhysicalDeviceDescriptorBufferPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDescriptorBufferPropertiesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDescriptorBufferPropertiesEXT(segment);

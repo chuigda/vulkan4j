@@ -79,7 +79,7 @@ public record VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(MemorySegmen
         public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(segment);

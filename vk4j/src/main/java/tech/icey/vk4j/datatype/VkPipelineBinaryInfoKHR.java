@@ -104,7 +104,7 @@ public record VkPipelineBinaryInfoKHR(MemorySegment segment) {
         public VkPipelineBinaryInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineBinaryInfoKHR createUninit(MemorySegment segment) {
             return new VkPipelineBinaryInfoKHR(segment);

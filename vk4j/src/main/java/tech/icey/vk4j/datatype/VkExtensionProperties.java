@@ -70,7 +70,7 @@ public record VkExtensionProperties(MemorySegment segment) {
         public VkExtensionProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExtensionProperties createUninit(MemorySegment segment) {
             return new VkExtensionProperties(segment);

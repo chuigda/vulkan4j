@@ -99,7 +99,7 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) {
         public VkPhysicalDeviceMemoryBudgetPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceMemoryBudgetPropertiesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceMemoryBudgetPropertiesEXT(segment);

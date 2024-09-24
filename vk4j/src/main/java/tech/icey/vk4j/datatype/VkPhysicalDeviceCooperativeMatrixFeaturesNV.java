@@ -91,7 +91,7 @@ public record VkPhysicalDeviceCooperativeMatrixFeaturesNV(MemorySegment segment)
         public VkPhysicalDeviceCooperativeMatrixFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceCooperativeMatrixFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceCooperativeMatrixFeaturesNV(segment);

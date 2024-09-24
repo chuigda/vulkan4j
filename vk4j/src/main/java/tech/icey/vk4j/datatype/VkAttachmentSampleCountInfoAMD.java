@@ -117,7 +117,7 @@ public record VkAttachmentSampleCountInfoAMD(MemorySegment segment) {
         public VkAttachmentSampleCountInfoAMD create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAttachmentSampleCountInfoAMD createUninit(MemorySegment segment) {
             return new VkAttachmentSampleCountInfoAMD(segment);

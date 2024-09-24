@@ -79,7 +79,7 @@ public record VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(MemorySegment
         public VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(segment);

@@ -98,7 +98,7 @@ public record VkLayerProperties(MemorySegment segment) {
         public VkLayerProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkLayerProperties createUninit(MemorySegment segment) {
             return new VkLayerProperties(segment);

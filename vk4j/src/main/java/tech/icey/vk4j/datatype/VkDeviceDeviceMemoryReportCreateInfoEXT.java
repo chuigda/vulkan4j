@@ -103,7 +103,7 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) {
         public VkDeviceDeviceMemoryReportCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceDeviceMemoryReportCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkDeviceDeviceMemoryReportCreateInfoEXT(segment);

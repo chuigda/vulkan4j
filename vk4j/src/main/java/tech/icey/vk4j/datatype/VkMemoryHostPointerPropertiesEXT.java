@@ -79,7 +79,7 @@ public record VkMemoryHostPointerPropertiesEXT(MemorySegment segment) {
         public VkMemoryHostPointerPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMemoryHostPointerPropertiesEXT createUninit(MemorySegment segment) {
             return new VkMemoryHostPointerPropertiesEXT(segment);

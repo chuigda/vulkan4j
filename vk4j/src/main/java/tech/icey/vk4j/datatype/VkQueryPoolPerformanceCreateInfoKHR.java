@@ -111,7 +111,7 @@ public record VkQueryPoolPerformanceCreateInfoKHR(MemorySegment segment) {
         public VkQueryPoolPerformanceCreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkQueryPoolPerformanceCreateInfoKHR createUninit(MemorySegment segment) {
             return new VkQueryPoolPerformanceCreateInfoKHR(segment);

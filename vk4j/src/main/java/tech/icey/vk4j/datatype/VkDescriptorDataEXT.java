@@ -279,7 +279,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         public VkDescriptorDataEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorDataEXT createUninit(MemorySegment segment) {
             return new VkDescriptorDataEXT(segment);

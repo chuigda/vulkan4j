@@ -199,7 +199,7 @@ public record VkPipelineRasterizationStateCreateInfo(MemorySegment segment) {
         public VkPipelineRasterizationStateCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineRasterizationStateCreateInfo createUninit(MemorySegment segment) {
             return new VkPipelineRasterizationStateCreateInfo(segment);

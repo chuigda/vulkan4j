@@ -209,7 +209,7 @@ public record VkCudaLaunchInfoNV(MemorySegment segment) {
         public VkCudaLaunchInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCudaLaunchInfoNV createUninit(MemorySegment segment) {
             return new VkCudaLaunchInfoNV(segment);

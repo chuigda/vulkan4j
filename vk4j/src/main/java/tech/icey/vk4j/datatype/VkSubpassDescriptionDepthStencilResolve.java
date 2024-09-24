@@ -116,7 +116,7 @@ public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) {
         public VkSubpassDescriptionDepthStencilResolve create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSubpassDescriptionDepthStencilResolve createUninit(MemorySegment segment) {
             return new VkSubpassDescriptionDepthStencilResolve(segment);

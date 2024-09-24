@@ -79,7 +79,7 @@ public record VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(MemorySegment segm
         public VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(segment);

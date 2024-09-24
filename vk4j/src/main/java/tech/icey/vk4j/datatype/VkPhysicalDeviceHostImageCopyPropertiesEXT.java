@@ -171,7 +171,7 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         public VkPhysicalDeviceHostImageCopyPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceHostImageCopyPropertiesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceHostImageCopyPropertiesEXT(segment);

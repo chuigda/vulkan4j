@@ -79,7 +79,7 @@ public record VkPhysicalDeviceInvocationMaskFeaturesHUAWEI(MemorySegment segment
         public VkPhysicalDeviceInvocationMaskFeaturesHUAWEI create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceInvocationMaskFeaturesHUAWEI createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceInvocationMaskFeaturesHUAWEI(segment);

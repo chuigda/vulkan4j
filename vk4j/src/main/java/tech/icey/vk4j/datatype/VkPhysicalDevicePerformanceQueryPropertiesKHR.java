@@ -79,7 +79,7 @@ public record VkPhysicalDevicePerformanceQueryPropertiesKHR(MemorySegment segmen
         public VkPhysicalDevicePerformanceQueryPropertiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevicePerformanceQueryPropertiesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDevicePerformanceQueryPropertiesKHR(segment);

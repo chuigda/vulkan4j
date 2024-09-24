@@ -79,7 +79,7 @@ public record VkPhysicalDevicePipelineCreationCacheControlFeatures(MemorySegment
         public VkPhysicalDevicePipelineCreationCacheControlFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevicePipelineCreationCacheControlFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDevicePipelineCreationCacheControlFeatures(segment);

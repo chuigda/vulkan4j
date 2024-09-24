@@ -139,7 +139,7 @@ public record VkCommandBufferInheritanceInfo(MemorySegment segment) {
         public VkCommandBufferInheritanceInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCommandBufferInheritanceInfo createUninit(MemorySegment segment) {
             return new VkCommandBufferInheritanceInfo(segment);

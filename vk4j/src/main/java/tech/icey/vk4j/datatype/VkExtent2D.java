@@ -66,7 +66,7 @@ public record VkExtent2D(MemorySegment segment) {
         public VkExtent2D create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExtent2D createUninit(MemorySegment segment) {
             return new VkExtent2D(segment);

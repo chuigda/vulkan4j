@@ -103,7 +103,7 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) {
         public VkImageViewHandleInfoNVX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageViewHandleInfoNVX createUninit(MemorySegment segment) {
             return new VkImageViewHandleInfoNVX(segment);

@@ -91,7 +91,7 @@ public record VkDisplayModeCreateInfoKHR(MemorySegment segment) {
         public VkDisplayModeCreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDisplayModeCreateInfoKHR createUninit(MemorySegment segment) {
             return new VkDisplayModeCreateInfoKHR(segment);

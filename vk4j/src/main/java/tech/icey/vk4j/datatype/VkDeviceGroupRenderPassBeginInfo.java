@@ -116,7 +116,7 @@ public record VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) {
         public VkDeviceGroupRenderPassBeginInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceGroupRenderPassBeginInfo createUninit(MemorySegment segment) {
             return new VkDeviceGroupRenderPassBeginInfo(segment);

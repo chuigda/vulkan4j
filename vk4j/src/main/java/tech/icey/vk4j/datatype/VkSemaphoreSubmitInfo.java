@@ -115,7 +115,7 @@ public record VkSemaphoreSubmitInfo(MemorySegment segment) {
         public VkSemaphoreSubmitInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSemaphoreSubmitInfo createUninit(MemorySegment segment) {
             return new VkSemaphoreSubmitInfo(segment);

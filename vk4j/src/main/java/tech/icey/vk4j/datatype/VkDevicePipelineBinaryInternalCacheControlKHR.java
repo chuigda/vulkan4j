@@ -79,7 +79,7 @@ public record VkDevicePipelineBinaryInternalCacheControlKHR(MemorySegment segmen
         public VkDevicePipelineBinaryInternalCacheControlKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDevicePipelineBinaryInternalCacheControlKHR createUninit(MemorySegment segment) {
             return new VkDevicePipelineBinaryInternalCacheControlKHR(segment);

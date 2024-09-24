@@ -91,7 +91,7 @@ public record VkIOSSurfaceCreateInfoMVK(MemorySegment segment) {
         public VkIOSSurfaceCreateInfoMVK create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkIOSSurfaceCreateInfoMVK createUninit(MemorySegment segment) {
             return new VkIOSSurfaceCreateInfoMVK(segment);

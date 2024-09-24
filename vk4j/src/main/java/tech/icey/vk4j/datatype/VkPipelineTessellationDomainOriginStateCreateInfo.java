@@ -79,7 +79,7 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(MemorySegment se
         public VkPipelineTessellationDomainOriginStateCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineTessellationDomainOriginStateCreateInfo createUninit(MemorySegment segment) {
             return new VkPipelineTessellationDomainOriginStateCreateInfo(segment);

@@ -91,7 +91,7 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(MemorySegment 
         public VkAccelerationStructureCaptureDescriptorDataInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAccelerationStructureCaptureDescriptorDataInfoEXT createUninit(MemorySegment segment) {
             return new VkAccelerationStructureCaptureDescriptorDataInfoEXT(segment);

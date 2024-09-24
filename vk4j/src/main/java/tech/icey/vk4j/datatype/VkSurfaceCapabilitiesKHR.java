@@ -162,7 +162,7 @@ public record VkSurfaceCapabilitiesKHR(MemorySegment segment) {
         public VkSurfaceCapabilitiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSurfaceCapabilitiesKHR createUninit(MemorySegment segment) {
             return new VkSurfaceCapabilitiesKHR(segment);

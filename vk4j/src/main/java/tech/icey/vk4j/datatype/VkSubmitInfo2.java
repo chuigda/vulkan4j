@@ -190,7 +190,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
         public VkSubmitInfo2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSubmitInfo2 createUninit(MemorySegment segment) {
             return new VkSubmitInfo2(segment);

@@ -127,7 +127,7 @@ public record VkPushConstantsInfoKHR(MemorySegment segment) {
         public VkPushConstantsInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPushConstantsInfoKHR createUninit(MemorySegment segment) {
             return new VkPushConstantsInfoKHR(segment);

@@ -78,7 +78,7 @@ public record VkDispatchIndirectCommand(MemorySegment segment) {
         public VkDispatchIndirectCommand create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDispatchIndirectCommand createUninit(MemorySegment segment) {
             return new VkDispatchIndirectCommand(segment);

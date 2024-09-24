@@ -103,7 +103,7 @@ public record VkConditionalRenderingBeginInfoEXT(MemorySegment segment) {
         public VkConditionalRenderingBeginInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkConditionalRenderingBeginInfoEXT createUninit(MemorySegment segment) {
             return new VkConditionalRenderingBeginInfoEXT(segment);

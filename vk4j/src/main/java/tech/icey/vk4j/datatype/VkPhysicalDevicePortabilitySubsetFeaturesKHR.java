@@ -247,7 +247,7 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(MemorySegment segment
         public VkPhysicalDevicePortabilitySubsetFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevicePortabilitySubsetFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDevicePortabilitySubsetFeaturesKHR(segment);

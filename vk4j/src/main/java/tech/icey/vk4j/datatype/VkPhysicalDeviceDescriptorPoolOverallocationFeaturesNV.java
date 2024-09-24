@@ -79,7 +79,7 @@ public record VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV(MemorySegme
         public VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV(segment);

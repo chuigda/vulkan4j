@@ -79,7 +79,7 @@ public record VkSurfaceFullScreenExclusiveInfoEXT(MemorySegment segment) {
         public VkSurfaceFullScreenExclusiveInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSurfaceFullScreenExclusiveInfoEXT createUninit(MemorySegment segment) {
             return new VkSurfaceFullScreenExclusiveInfoEXT(segment);

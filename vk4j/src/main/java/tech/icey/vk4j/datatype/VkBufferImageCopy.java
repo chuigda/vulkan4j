@@ -114,7 +114,7 @@ public record VkBufferImageCopy(MemorySegment segment) {
         public VkBufferImageCopy create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBufferImageCopy createUninit(MemorySegment segment) {
             return new VkBufferImageCopy(segment);

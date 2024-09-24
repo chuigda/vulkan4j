@@ -91,7 +91,7 @@ public record VkStreamDescriptorSurfaceCreateInfoGGP(MemorySegment segment) {
         public VkStreamDescriptorSurfaceCreateInfoGGP create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkStreamDescriptorSurfaceCreateInfoGGP createUninit(MemorySegment segment) {
             return new VkStreamDescriptorSurfaceCreateInfoGGP(segment);

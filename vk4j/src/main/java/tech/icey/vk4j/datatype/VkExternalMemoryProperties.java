@@ -78,7 +78,7 @@ public record VkExternalMemoryProperties(MemorySegment segment) {
         public VkExternalMemoryProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExternalMemoryProperties createUninit(MemorySegment segment) {
             return new VkExternalMemoryProperties(segment);

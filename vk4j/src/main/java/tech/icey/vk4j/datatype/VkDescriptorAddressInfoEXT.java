@@ -103,7 +103,7 @@ public record VkDescriptorAddressInfoEXT(MemorySegment segment) {
         public VkDescriptorAddressInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorAddressInfoEXT createUninit(MemorySegment segment) {
             return new VkDescriptorAddressInfoEXT(segment);

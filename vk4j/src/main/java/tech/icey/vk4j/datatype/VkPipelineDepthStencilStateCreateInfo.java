@@ -187,7 +187,7 @@ public record VkPipelineDepthStencilStateCreateInfo(MemorySegment segment) {
         public VkPipelineDepthStencilStateCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineDepthStencilStateCreateInfo createUninit(MemorySegment segment) {
             return new VkPipelineDepthStencilStateCreateInfo(segment);

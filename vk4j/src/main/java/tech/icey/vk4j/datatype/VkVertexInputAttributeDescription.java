@@ -90,7 +90,7 @@ public record VkVertexInputAttributeDescription(MemorySegment segment) {
         public VkVertexInputAttributeDescription create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkVertexInputAttributeDescription createUninit(MemorySegment segment) {
             return new VkVertexInputAttributeDescription(segment);

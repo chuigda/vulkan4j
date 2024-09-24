@@ -79,7 +79,7 @@ public record VkDeviceGroupCommandBufferBeginInfo(MemorySegment segment) {
         public VkDeviceGroupCommandBufferBeginInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceGroupCommandBufferBeginInfo createUninit(MemorySegment segment) {
             return new VkDeviceGroupCommandBufferBeginInfo(segment);

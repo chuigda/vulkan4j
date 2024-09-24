@@ -79,7 +79,7 @@ public record VkAndroidHardwareBufferUsageANDROID(MemorySegment segment) {
         public VkAndroidHardwareBufferUsageANDROID create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAndroidHardwareBufferUsageANDROID createUninit(MemorySegment segment) {
             return new VkAndroidHardwareBufferUsageANDROID(segment);

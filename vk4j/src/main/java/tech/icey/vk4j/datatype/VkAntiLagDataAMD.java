@@ -116,7 +116,7 @@ public record VkAntiLagDataAMD(MemorySegment segment) {
         public VkAntiLagDataAMD create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAntiLagDataAMD createUninit(MemorySegment segment) {
             return new VkAntiLagDataAMD(segment);

@@ -79,7 +79,7 @@ public record VkPhysicalDeviceCubicWeightsFeaturesQCOM(MemorySegment segment) {
         public VkPhysicalDeviceCubicWeightsFeaturesQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceCubicWeightsFeaturesQCOM createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceCubicWeightsFeaturesQCOM(segment);

@@ -116,7 +116,7 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
         public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV createUninit(MemorySegment segment) {
             return new VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(segment);

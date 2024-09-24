@@ -147,7 +147,7 @@ public record VkBufferCreateInfo(MemorySegment segment) {
         public VkBufferCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBufferCreateInfo createUninit(MemorySegment segment) {
             return new VkBufferCreateInfo(segment);

@@ -163,7 +163,7 @@ public record VkCooperativeMatrixPropertiesNV(MemorySegment segment) {
         public VkCooperativeMatrixPropertiesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCooperativeMatrixPropertiesNV createUninit(MemorySegment segment) {
             return new VkCooperativeMatrixPropertiesNV(segment);

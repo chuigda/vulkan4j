@@ -79,7 +79,7 @@ public record VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(MemorySegmen
         public VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(segment);

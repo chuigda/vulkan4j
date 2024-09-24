@@ -103,7 +103,7 @@ public record VkCommandBufferAllocateInfo(MemorySegment segment) {
         public VkCommandBufferAllocateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCommandBufferAllocateInfo createUninit(MemorySegment segment) {
             return new VkCommandBufferAllocateInfo(segment);

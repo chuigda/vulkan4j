@@ -82,7 +82,7 @@ public record VkRenderPassSubpassFeedbackInfoEXT(MemorySegment segment) {
         public VkRenderPassSubpassFeedbackInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderPassSubpassFeedbackInfoEXT createUninit(MemorySegment segment) {
             return new VkRenderPassSubpassFeedbackInfoEXT(segment);

@@ -91,7 +91,7 @@ public record VkAntiLagPresentationInfoAMD(MemorySegment segment) {
         public VkAntiLagPresentationInfoAMD create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAntiLagPresentationInfoAMD createUninit(MemorySegment segment) {
             return new VkAntiLagPresentationInfoAMD(segment);

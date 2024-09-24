@@ -115,7 +115,7 @@ public record VkDescriptorSetLayoutBinding(MemorySegment segment) {
         public VkDescriptorSetLayoutBinding create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorSetLayoutBinding createUninit(MemorySegment segment) {
             return new VkDescriptorSetLayoutBinding(segment);

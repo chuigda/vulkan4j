@@ -115,7 +115,7 @@ public record VkPipelineRobustnessCreateInfoEXT(MemorySegment segment) {
         public VkPipelineRobustnessCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineRobustnessCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkPipelineRobustnessCreateInfoEXT(segment);

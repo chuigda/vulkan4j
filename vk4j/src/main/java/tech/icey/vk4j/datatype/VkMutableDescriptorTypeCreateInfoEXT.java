@@ -104,7 +104,7 @@ public record VkMutableDescriptorTypeCreateInfoEXT(MemorySegment segment) {
         public VkMutableDescriptorTypeCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMutableDescriptorTypeCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkMutableDescriptorTypeCreateInfoEXT(segment);

@@ -79,7 +79,7 @@ public record VkDescriptorSetVariableDescriptorCountLayoutSupport(MemorySegment 
         public VkDescriptorSetVariableDescriptorCountLayoutSupport create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorSetVariableDescriptorCountLayoutSupport createUninit(MemorySegment segment) {
             return new VkDescriptorSetVariableDescriptorCountLayoutSupport(segment);

@@ -99,7 +99,7 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(MemorySegment s
         public VkPipelineShaderStageModuleIdentifierCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineShaderStageModuleIdentifierCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkPipelineShaderStageModuleIdentifierCreateInfoEXT(segment);

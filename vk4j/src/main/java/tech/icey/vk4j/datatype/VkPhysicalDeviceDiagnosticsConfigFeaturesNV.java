@@ -79,7 +79,7 @@ public record VkPhysicalDeviceDiagnosticsConfigFeaturesNV(MemorySegment segment)
         public VkPhysicalDeviceDiagnosticsConfigFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDiagnosticsConfigFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDiagnosticsConfigFeaturesNV(segment);

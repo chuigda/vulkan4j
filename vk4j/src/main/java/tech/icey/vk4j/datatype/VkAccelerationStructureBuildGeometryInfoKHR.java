@@ -188,7 +188,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         public VkAccelerationStructureBuildGeometryInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAccelerationStructureBuildGeometryInfoKHR createUninit(MemorySegment segment) {
             return new VkAccelerationStructureBuildGeometryInfoKHR(segment);

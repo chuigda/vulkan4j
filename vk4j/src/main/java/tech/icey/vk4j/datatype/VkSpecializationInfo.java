@@ -102,7 +102,7 @@ public record VkSpecializationInfo(MemorySegment segment) {
         public VkSpecializationInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSpecializationInfo createUninit(MemorySegment segment) {
             return new VkSpecializationInfo(segment);

@@ -152,7 +152,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) {
         public VkInstanceCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkInstanceCreateInfo createUninit(MemorySegment segment) {
             return new VkInstanceCreateInfo(segment);

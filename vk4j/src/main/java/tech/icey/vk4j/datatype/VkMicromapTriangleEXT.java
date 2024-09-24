@@ -78,7 +78,7 @@ public record VkMicromapTriangleEXT(MemorySegment segment) {
         public VkMicromapTriangleEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMicromapTriangleEXT createUninit(MemorySegment segment) {
             return new VkMicromapTriangleEXT(segment);

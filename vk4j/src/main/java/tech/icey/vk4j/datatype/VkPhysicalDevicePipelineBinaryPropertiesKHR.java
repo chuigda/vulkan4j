@@ -127,7 +127,7 @@ public record VkPhysicalDevicePipelineBinaryPropertiesKHR(MemorySegment segment)
         public VkPhysicalDevicePipelineBinaryPropertiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevicePipelineBinaryPropertiesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDevicePipelineBinaryPropertiesKHR(segment);

@@ -54,7 +54,7 @@ public record VkBindShaderGroupIndirectCommandNV(MemorySegment segment) {
         public VkBindShaderGroupIndirectCommandNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBindShaderGroupIndirectCommandNV createUninit(MemorySegment segment) {
             return new VkBindShaderGroupIndirectCommandNV(segment);

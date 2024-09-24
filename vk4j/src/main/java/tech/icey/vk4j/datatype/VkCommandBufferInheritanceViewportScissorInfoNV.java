@@ -116,7 +116,7 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
         public VkCommandBufferInheritanceViewportScissorInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCommandBufferInheritanceViewportScissorInfoNV createUninit(MemorySegment segment) {
             return new VkCommandBufferInheritanceViewportScissorInfoNV(segment);

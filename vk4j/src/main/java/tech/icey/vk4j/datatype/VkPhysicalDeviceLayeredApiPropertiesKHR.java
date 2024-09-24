@@ -119,7 +119,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(MemorySegment segment) {
         public VkPhysicalDeviceLayeredApiPropertiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceLayeredApiPropertiesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceLayeredApiPropertiesKHR(segment);

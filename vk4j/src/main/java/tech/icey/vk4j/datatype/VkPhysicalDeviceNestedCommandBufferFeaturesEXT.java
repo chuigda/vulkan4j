@@ -103,7 +103,7 @@ public record VkPhysicalDeviceNestedCommandBufferFeaturesEXT(MemorySegment segme
         public VkPhysicalDeviceNestedCommandBufferFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceNestedCommandBufferFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceNestedCommandBufferFeaturesEXT(segment);

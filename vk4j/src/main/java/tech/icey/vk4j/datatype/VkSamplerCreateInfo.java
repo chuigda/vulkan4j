@@ -259,7 +259,7 @@ public record VkSamplerCreateInfo(MemorySegment segment) {
         public VkSamplerCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSamplerCreateInfo createUninit(MemorySegment segment) {
             return new VkSamplerCreateInfo(segment);

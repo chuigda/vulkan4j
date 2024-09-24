@@ -79,7 +79,7 @@ public record VkImageViewUsageCreateInfo(MemorySegment segment) {
         public VkImageViewUsageCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageViewUsageCreateInfo createUninit(MemorySegment segment) {
             return new VkImageViewUsageCreateInfo(segment);

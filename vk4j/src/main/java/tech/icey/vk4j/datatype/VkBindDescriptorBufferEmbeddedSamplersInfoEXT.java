@@ -103,7 +103,7 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(MemorySegment segmen
         public VkBindDescriptorBufferEmbeddedSamplersInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBindDescriptorBufferEmbeddedSamplersInfoEXT createUninit(MemorySegment segment) {
             return new VkBindDescriptorBufferEmbeddedSamplersInfoEXT(segment);

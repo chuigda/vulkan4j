@@ -79,7 +79,7 @@ public record VkSubresourceHostMemcpySizeEXT(MemorySegment segment) {
         public VkSubresourceHostMemcpySizeEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSubresourceHostMemcpySizeEXT createUninit(MemorySegment segment) {
             return new VkSubresourceHostMemcpySizeEXT(segment);

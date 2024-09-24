@@ -115,7 +115,7 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(MemorySeg
         public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(segment);

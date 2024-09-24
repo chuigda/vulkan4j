@@ -91,7 +91,7 @@ public record VkPhysicalDevice4444FormatsFeaturesEXT(MemorySegment segment) {
         public VkPhysicalDevice4444FormatsFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevice4444FormatsFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDevice4444FormatsFeaturesEXT(segment);

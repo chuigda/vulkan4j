@@ -127,7 +127,7 @@ public record VkDebugUtilsMessengerCreateInfoEXT(MemorySegment segment) {
         public VkDebugUtilsMessengerCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDebugUtilsMessengerCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkDebugUtilsMessengerCreateInfoEXT(segment);

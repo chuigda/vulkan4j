@@ -91,7 +91,7 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) {
         public VkExportMetalCommandQueueInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExportMetalCommandQueueInfoEXT createUninit(MemorySegment segment) {
             return new VkExportMetalCommandQueueInfoEXT(segment);

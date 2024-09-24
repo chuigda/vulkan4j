@@ -153,7 +153,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) {
         public VkPipelineViewportStateCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineViewportStateCreateInfo createUninit(MemorySegment segment) {
             return new VkPipelineViewportStateCreateInfo(segment);

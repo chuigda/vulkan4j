@@ -103,7 +103,7 @@ public record VkComputePipelineIndirectBufferInfoNV(MemorySegment segment) {
         public VkComputePipelineIndirectBufferInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkComputePipelineIndirectBufferInfoNV createUninit(MemorySegment segment) {
             return new VkComputePipelineIndirectBufferInfoNV(segment);

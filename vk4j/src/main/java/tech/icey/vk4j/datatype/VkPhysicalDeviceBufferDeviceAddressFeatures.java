@@ -103,7 +103,7 @@ public record VkPhysicalDeviceBufferDeviceAddressFeatures(MemorySegment segment)
         public VkPhysicalDeviceBufferDeviceAddressFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceBufferDeviceAddressFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceBufferDeviceAddressFeatures(segment);

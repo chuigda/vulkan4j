@@ -79,7 +79,7 @@ public record VkPhysicalDeviceDepthClampZeroOneFeaturesEXT(MemorySegment segment
         public VkPhysicalDeviceDepthClampZeroOneFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDepthClampZeroOneFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDepthClampZeroOneFeaturesEXT(segment);

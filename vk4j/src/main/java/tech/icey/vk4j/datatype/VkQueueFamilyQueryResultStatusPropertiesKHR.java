@@ -79,7 +79,7 @@ public record VkQueueFamilyQueryResultStatusPropertiesKHR(MemorySegment segment)
         public VkQueueFamilyQueryResultStatusPropertiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkQueueFamilyQueryResultStatusPropertiesKHR createUninit(MemorySegment segment) {
             return new VkQueueFamilyQueryResultStatusPropertiesKHR(segment);

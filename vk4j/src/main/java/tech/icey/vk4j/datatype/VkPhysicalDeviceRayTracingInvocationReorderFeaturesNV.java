@@ -79,7 +79,7 @@ public record VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(MemorySegmen
         public VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(segment);

@@ -104,7 +104,7 @@ public record VkPresentTimesInfoGOOGLE(MemorySegment segment) {
         public VkPresentTimesInfoGOOGLE create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPresentTimesInfoGOOGLE createUninit(MemorySegment segment) {
             return new VkPresentTimesInfoGOOGLE(segment);

@@ -187,7 +187,7 @@ public record VkPresentInfoKHR(MemorySegment segment) {
         public VkPresentInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPresentInfoKHR createUninit(MemorySegment segment) {
             return new VkPresentInfoKHR(segment);

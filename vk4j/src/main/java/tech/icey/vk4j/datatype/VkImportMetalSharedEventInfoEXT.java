@@ -79,7 +79,7 @@ public record VkImportMetalSharedEventInfoEXT(MemorySegment segment) {
         public VkImportMetalSharedEventInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImportMetalSharedEventInfoEXT createUninit(MemorySegment segment) {
             return new VkImportMetalSharedEventInfoEXT(segment);

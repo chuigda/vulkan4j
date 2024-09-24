@@ -103,7 +103,7 @@ public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) {
         public VkImageViewSampleWeightCreateInfoQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageViewSampleWeightCreateInfoQCOM createUninit(MemorySegment segment) {
             return new VkImageViewSampleWeightCreateInfoQCOM(segment);

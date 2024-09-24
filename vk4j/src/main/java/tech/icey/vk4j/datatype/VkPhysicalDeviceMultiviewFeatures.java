@@ -103,7 +103,7 @@ public record VkPhysicalDeviceMultiviewFeatures(MemorySegment segment) {
         public VkPhysicalDeviceMultiviewFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceMultiviewFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceMultiviewFeatures(segment);

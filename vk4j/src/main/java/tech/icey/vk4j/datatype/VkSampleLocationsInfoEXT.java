@@ -128,7 +128,7 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) {
         public VkSampleLocationsInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSampleLocationsInfoEXT createUninit(MemorySegment segment) {
             return new VkSampleLocationsInfoEXT(segment);

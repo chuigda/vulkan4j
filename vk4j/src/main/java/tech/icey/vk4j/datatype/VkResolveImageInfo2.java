@@ -152,7 +152,7 @@ public record VkResolveImageInfo2(MemorySegment segment) {
         public VkResolveImageInfo2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkResolveImageInfo2 createUninit(MemorySegment segment) {
             return new VkResolveImageInfo2(segment);

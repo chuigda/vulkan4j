@@ -104,7 +104,7 @@ public record VkLayerSettingsCreateInfoEXT(MemorySegment segment) {
         public VkLayerSettingsCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkLayerSettingsCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkLayerSettingsCreateInfoEXT(segment);

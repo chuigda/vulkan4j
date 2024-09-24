@@ -104,7 +104,7 @@ public record VkDeviceImageMemoryRequirements(MemorySegment segment) {
         public VkDeviceImageMemoryRequirements create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceImageMemoryRequirements createUninit(MemorySegment segment) {
             return new VkDeviceImageMemoryRequirements(segment);

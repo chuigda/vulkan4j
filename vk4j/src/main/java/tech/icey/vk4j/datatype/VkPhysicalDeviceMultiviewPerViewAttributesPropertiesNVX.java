@@ -79,7 +79,7 @@ public record VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(MemorySegm
         public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(segment);

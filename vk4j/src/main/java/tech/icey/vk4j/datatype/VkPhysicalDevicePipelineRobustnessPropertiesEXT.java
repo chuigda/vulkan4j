@@ -115,7 +115,7 @@ public record VkPhysicalDevicePipelineRobustnessPropertiesEXT(MemorySegment segm
         public VkPhysicalDevicePipelineRobustnessPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevicePipelineRobustnessPropertiesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDevicePipelineRobustnessPropertiesEXT(segment);

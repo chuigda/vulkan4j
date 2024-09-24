@@ -271,7 +271,7 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(MemorySegment seg
         public VkPhysicalDeviceFragmentShadingRatePropertiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceFragmentShadingRatePropertiesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(segment);

@@ -79,7 +79,7 @@ public record VkPhysicalDeviceImageViewMinLodFeaturesEXT(MemorySegment segment) 
         public VkPhysicalDeviceImageViewMinLodFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceImageViewMinLodFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceImageViewMinLodFeaturesEXT(segment);

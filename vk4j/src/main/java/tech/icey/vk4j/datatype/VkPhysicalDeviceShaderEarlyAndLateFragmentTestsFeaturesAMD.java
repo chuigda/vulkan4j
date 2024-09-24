@@ -79,7 +79,7 @@ public record VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(MemoryS
         public VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(segment);

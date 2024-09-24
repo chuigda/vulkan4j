@@ -90,7 +90,7 @@ public record VkDescriptorSetLayoutHostMappingInfoVALVE(MemorySegment segment) {
         public VkDescriptorSetLayoutHostMappingInfoVALVE create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorSetLayoutHostMappingInfoVALVE createUninit(MemorySegment segment) {
             return new VkDescriptorSetLayoutHostMappingInfoVALVE(segment);

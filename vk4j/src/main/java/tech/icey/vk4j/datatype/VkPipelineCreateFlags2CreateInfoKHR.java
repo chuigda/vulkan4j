@@ -79,7 +79,7 @@ public record VkPipelineCreateFlags2CreateInfoKHR(MemorySegment segment) {
         public VkPipelineCreateFlags2CreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineCreateFlags2CreateInfoKHR createUninit(MemorySegment segment) {
             return new VkPipelineCreateFlags2CreateInfoKHR(segment);

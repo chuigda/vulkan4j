@@ -1337,7 +1337,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
         public VkPhysicalDeviceLimits create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceLimits createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceLimits(segment);

@@ -143,7 +143,7 @@ public record VkValidationFeaturesEXT(MemorySegment segment) {
         public VkValidationFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkValidationFeaturesEXT createUninit(MemorySegment segment) {
             return new VkValidationFeaturesEXT(segment);

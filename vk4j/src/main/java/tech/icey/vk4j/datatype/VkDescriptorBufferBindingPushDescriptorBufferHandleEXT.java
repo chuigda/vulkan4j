@@ -79,7 +79,7 @@ public record VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(MemorySegme
         public VkDescriptorBufferBindingPushDescriptorBufferHandleEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorBufferBindingPushDescriptorBufferHandleEXT createUninit(MemorySegment segment) {
             return new VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(segment);

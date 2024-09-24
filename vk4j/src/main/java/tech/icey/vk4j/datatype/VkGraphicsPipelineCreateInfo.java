@@ -401,7 +401,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
         public VkGraphicsPipelineCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkGraphicsPipelineCreateInfo createUninit(MemorySegment segment) {
             return new VkGraphicsPipelineCreateInfo(segment);

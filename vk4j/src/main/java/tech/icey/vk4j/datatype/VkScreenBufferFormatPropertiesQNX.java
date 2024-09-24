@@ -175,7 +175,7 @@ public record VkScreenBufferFormatPropertiesQNX(MemorySegment segment) {
         public VkScreenBufferFormatPropertiesQNX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkScreenBufferFormatPropertiesQNX createUninit(MemorySegment segment) {
             return new VkScreenBufferFormatPropertiesQNX(segment);

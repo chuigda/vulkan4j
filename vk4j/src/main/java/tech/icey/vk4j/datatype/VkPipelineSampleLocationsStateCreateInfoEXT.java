@@ -91,7 +91,7 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(MemorySegment segment)
         public VkPipelineSampleLocationsStateCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineSampleLocationsStateCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkPipelineSampleLocationsStateCreateInfoEXT(segment);

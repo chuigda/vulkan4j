@@ -103,7 +103,7 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(MemorySegment segm
         public VkRenderingFragmentShadingRateAttachmentInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderingFragmentShadingRateAttachmentInfoKHR createUninit(MemorySegment segment) {
             return new VkRenderingFragmentShadingRateAttachmentInfoKHR(segment);

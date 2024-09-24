@@ -127,7 +127,7 @@ public record VkSurfacePresentScalingCapabilitiesEXT(MemorySegment segment) {
         public VkSurfacePresentScalingCapabilitiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSurfacePresentScalingCapabilitiesEXT createUninit(MemorySegment segment) {
             return new VkSurfacePresentScalingCapabilitiesEXT(segment);

@@ -79,7 +79,7 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(MemorySegment segment) {
         public VkSamplerCaptureDescriptorDataInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSamplerCaptureDescriptorDataInfoEXT createUninit(MemorySegment segment) {
             return new VkSamplerCaptureDescriptorDataInfoEXT(segment);

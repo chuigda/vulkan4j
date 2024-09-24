@@ -79,7 +79,7 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(MemorySegment segment) 
         public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(segment);

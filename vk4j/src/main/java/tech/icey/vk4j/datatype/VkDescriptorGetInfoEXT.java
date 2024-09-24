@@ -91,7 +91,7 @@ public record VkDescriptorGetInfoEXT(MemorySegment segment) {
         public VkDescriptorGetInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorGetInfoEXT createUninit(MemorySegment segment) {
             return new VkDescriptorGetInfoEXT(segment);

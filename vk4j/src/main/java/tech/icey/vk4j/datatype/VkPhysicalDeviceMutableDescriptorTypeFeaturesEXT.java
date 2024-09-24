@@ -79,7 +79,7 @@ public record VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT(MemorySegment seg
         public VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT(segment);

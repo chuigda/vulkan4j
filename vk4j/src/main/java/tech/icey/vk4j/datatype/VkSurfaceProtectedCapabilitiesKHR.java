@@ -79,7 +79,7 @@ public record VkSurfaceProtectedCapabilitiesKHR(MemorySegment segment) {
         public VkSurfaceProtectedCapabilitiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSurfaceProtectedCapabilitiesKHR createUninit(MemorySegment segment) {
             return new VkSurfaceProtectedCapabilitiesKHR(segment);

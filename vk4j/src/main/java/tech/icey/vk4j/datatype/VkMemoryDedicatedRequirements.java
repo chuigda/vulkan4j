@@ -91,7 +91,7 @@ public record VkMemoryDedicatedRequirements(MemorySegment segment) {
         public VkMemoryDedicatedRequirements create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMemoryDedicatedRequirements createUninit(MemorySegment segment) {
             return new VkMemoryDedicatedRequirements(segment);

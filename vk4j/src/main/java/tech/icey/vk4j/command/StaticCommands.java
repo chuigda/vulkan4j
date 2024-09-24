@@ -40,7 +40,7 @@ public final class StaticCommands {
     ) {
         try {
             return (MemorySegment) HANDLE$vkGetDeviceProcAddr.invoke(
-                    device.handle(),
+                    device != null ? device.handle() : MemorySegment.NULL,
                     pName != null ? pName.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -54,7 +54,7 @@ public final class StaticCommands {
     ) {
         try {
             return (MemorySegment) HANDLE$vkGetInstanceProcAddr.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pName != null ? pName.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {

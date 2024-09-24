@@ -79,7 +79,7 @@ public record VkBlitImageCubicWeightsInfoQCOM(MemorySegment segment) {
         public VkBlitImageCubicWeightsInfoQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBlitImageCubicWeightsInfoQCOM createUninit(MemorySegment segment) {
             return new VkBlitImageCubicWeightsInfoQCOM(segment);

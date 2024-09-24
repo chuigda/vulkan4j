@@ -79,7 +79,7 @@ public record VkImageViewMinLodCreateInfoEXT(MemorySegment segment) {
         public VkImageViewMinLodCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageViewMinLodCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkImageViewMinLodCreateInfoEXT(segment);

@@ -102,7 +102,7 @@ public record VkPhysicalDeviceSparseProperties(MemorySegment segment) {
         public VkPhysicalDeviceSparseProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceSparseProperties createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceSparseProperties(segment);

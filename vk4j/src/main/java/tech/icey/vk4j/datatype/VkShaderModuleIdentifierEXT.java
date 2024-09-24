@@ -95,7 +95,7 @@ public record VkShaderModuleIdentifierEXT(MemorySegment segment) {
         public VkShaderModuleIdentifierEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkShaderModuleIdentifierEXT createUninit(MemorySegment segment) {
             return new VkShaderModuleIdentifierEXT(segment);

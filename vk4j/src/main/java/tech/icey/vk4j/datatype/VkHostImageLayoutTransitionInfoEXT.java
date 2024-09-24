@@ -115,7 +115,7 @@ public record VkHostImageLayoutTransitionInfoEXT(MemorySegment segment) {
         public VkHostImageLayoutTransitionInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkHostImageLayoutTransitionInfoEXT createUninit(MemorySegment segment) {
             return new VkHostImageLayoutTransitionInfoEXT(segment);

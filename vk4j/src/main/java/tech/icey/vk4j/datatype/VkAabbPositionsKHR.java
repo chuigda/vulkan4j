@@ -114,7 +114,7 @@ public record VkAabbPositionsKHR(MemorySegment segment) {
         public VkAabbPositionsKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAabbPositionsKHR createUninit(MemorySegment segment) {
             return new VkAabbPositionsKHR(segment);

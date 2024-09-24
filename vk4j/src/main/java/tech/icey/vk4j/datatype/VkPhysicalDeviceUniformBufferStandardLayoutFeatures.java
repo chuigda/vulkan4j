@@ -79,7 +79,7 @@ public record VkPhysicalDeviceUniformBufferStandardLayoutFeatures(MemorySegment 
         public VkPhysicalDeviceUniformBufferStandardLayoutFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceUniformBufferStandardLayoutFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceUniformBufferStandardLayoutFeatures(segment);

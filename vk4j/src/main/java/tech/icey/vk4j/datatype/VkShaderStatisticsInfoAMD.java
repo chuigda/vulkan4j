@@ -130,7 +130,7 @@ public record VkShaderStatisticsInfoAMD(MemorySegment segment) {
         public VkShaderStatisticsInfoAMD create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkShaderStatisticsInfoAMD createUninit(MemorySegment segment) {
             return new VkShaderStatisticsInfoAMD(segment);

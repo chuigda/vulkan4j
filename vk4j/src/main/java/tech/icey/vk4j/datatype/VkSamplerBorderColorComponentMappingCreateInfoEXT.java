@@ -91,7 +91,7 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(MemorySegment se
         public VkSamplerBorderColorComponentMappingCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSamplerBorderColorComponentMappingCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkSamplerBorderColorComponentMappingCreateInfoEXT(segment);

@@ -79,7 +79,7 @@ public record VkPhysicalDeviceLineRasterizationPropertiesKHR(MemorySegment segme
         public VkPhysicalDeviceLineRasterizationPropertiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceLineRasterizationPropertiesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceLineRasterizationPropertiesKHR(segment);

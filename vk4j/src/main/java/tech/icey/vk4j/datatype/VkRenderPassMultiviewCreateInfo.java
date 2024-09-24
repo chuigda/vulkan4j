@@ -163,7 +163,7 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
         public VkRenderPassMultiviewCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderPassMultiviewCreateInfo createUninit(MemorySegment segment) {
             return new VkRenderPassMultiviewCreateInfo(segment);

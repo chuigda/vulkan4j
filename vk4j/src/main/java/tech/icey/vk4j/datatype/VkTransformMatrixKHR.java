@@ -58,7 +58,7 @@ public record VkTransformMatrixKHR(MemorySegment segment) {
         public VkTransformMatrixKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkTransformMatrixKHR createUninit(MemorySegment segment) {
             return new VkTransformMatrixKHR(segment);

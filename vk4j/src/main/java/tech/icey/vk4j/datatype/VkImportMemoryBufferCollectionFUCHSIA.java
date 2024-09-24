@@ -91,7 +91,7 @@ public record VkImportMemoryBufferCollectionFUCHSIA(MemorySegment segment) {
         public VkImportMemoryBufferCollectionFUCHSIA create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImportMemoryBufferCollectionFUCHSIA createUninit(MemorySegment segment) {
             return new VkImportMemoryBufferCollectionFUCHSIA(segment);

@@ -99,7 +99,7 @@ public record VkPipelineColorWriteCreateInfoEXT(MemorySegment segment) {
         public VkPipelineColorWriteCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineColorWriteCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkPipelineColorWriteCreateInfoEXT(segment);

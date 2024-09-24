@@ -79,7 +79,7 @@ public record VkPhysicalDevicePipelineBinaryFeaturesKHR(MemorySegment segment) {
         public VkPhysicalDevicePipelineBinaryFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevicePipelineBinaryFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDevicePipelineBinaryFeaturesKHR(segment);

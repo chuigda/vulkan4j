@@ -119,7 +119,7 @@ public record VkPerformanceCounterKHR(MemorySegment segment) {
         public VkPerformanceCounterKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPerformanceCounterKHR createUninit(MemorySegment segment) {
             return new VkPerformanceCounterKHR(segment);

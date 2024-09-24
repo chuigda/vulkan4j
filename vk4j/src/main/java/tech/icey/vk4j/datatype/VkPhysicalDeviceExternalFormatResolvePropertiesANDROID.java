@@ -103,7 +103,7 @@ public record VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(MemorySegme
         public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(segment);

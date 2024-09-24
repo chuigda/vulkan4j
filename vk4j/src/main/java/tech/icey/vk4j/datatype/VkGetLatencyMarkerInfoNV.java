@@ -104,7 +104,7 @@ public record VkGetLatencyMarkerInfoNV(MemorySegment segment) {
         public VkGetLatencyMarkerInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkGetLatencyMarkerInfoNV createUninit(MemorySegment segment) {
             return new VkGetLatencyMarkerInfoNV(segment);

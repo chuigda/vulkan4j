@@ -200,7 +200,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
         public VkFrameBoundaryEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkFrameBoundaryEXT createUninit(MemorySegment segment) {
             return new VkFrameBoundaryEXT(segment);

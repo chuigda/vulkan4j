@@ -91,7 +91,7 @@ public record VkMemoryAllocateInfo(MemorySegment segment) {
         public VkMemoryAllocateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMemoryAllocateInfo createUninit(MemorySegment segment) {
             return new VkMemoryAllocateInfo(segment);

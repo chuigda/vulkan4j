@@ -114,7 +114,7 @@ public record VkColorBlendEquationEXT(MemorySegment segment) {
         public VkColorBlendEquationEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkColorBlendEquationEXT createUninit(MemorySegment segment) {
             return new VkColorBlendEquationEXT(segment);

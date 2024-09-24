@@ -163,7 +163,7 @@ public record VkDeviceGroupSubmitInfo(MemorySegment segment) {
         public VkDeviceGroupSubmitInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceGroupSubmitInfo createUninit(MemorySegment segment) {
             return new VkDeviceGroupSubmitInfo(segment);

@@ -79,7 +79,7 @@ public record VkMemoryFdPropertiesKHR(MemorySegment segment) {
         public VkMemoryFdPropertiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMemoryFdPropertiesKHR createUninit(MemorySegment segment) {
             return new VkMemoryFdPropertiesKHR(segment);

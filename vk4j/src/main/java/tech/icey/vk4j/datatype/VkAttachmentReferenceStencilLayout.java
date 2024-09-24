@@ -79,7 +79,7 @@ public record VkAttachmentReferenceStencilLayout(MemorySegment segment) {
         public VkAttachmentReferenceStencilLayout create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAttachmentReferenceStencilLayout createUninit(MemorySegment segment) {
             return new VkAttachmentReferenceStencilLayout(segment);

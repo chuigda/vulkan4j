@@ -91,7 +91,7 @@ public record VkAmigoProfilingSubmitInfoSEC(MemorySegment segment) {
         public VkAmigoProfilingSubmitInfoSEC create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAmigoProfilingSubmitInfoSEC createUninit(MemorySegment segment) {
             return new VkAmigoProfilingSubmitInfoSEC(segment);

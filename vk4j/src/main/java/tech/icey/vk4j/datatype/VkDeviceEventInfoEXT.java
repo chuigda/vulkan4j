@@ -79,7 +79,7 @@ public record VkDeviceEventInfoEXT(MemorySegment segment) {
         public VkDeviceEventInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceEventInfoEXT createUninit(MemorySegment segment) {
             return new VkDeviceEventInfoEXT(segment);

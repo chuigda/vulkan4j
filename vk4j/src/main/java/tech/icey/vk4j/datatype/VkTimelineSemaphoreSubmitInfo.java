@@ -131,7 +131,7 @@ public record VkTimelineSemaphoreSubmitInfo(MemorySegment segment) {
         public VkTimelineSemaphoreSubmitInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkTimelineSemaphoreSubmitInfo createUninit(MemorySegment segment) {
             return new VkTimelineSemaphoreSubmitInfo(segment);

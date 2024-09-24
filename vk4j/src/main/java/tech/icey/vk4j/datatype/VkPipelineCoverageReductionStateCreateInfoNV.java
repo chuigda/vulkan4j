@@ -91,7 +91,7 @@ public record VkPipelineCoverageReductionStateCreateInfoNV(MemorySegment segment
         public VkPipelineCoverageReductionStateCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineCoverageReductionStateCreateInfoNV createUninit(MemorySegment segment) {
             return new VkPipelineCoverageReductionStateCreateInfoNV(segment);

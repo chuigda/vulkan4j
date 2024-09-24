@@ -104,7 +104,7 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(MemorySegment segment
         public VkWriteDescriptorSetAccelerationStructureKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkWriteDescriptorSetAccelerationStructureKHR createUninit(MemorySegment segment) {
             return new VkWriteDescriptorSetAccelerationStructureKHR(segment);

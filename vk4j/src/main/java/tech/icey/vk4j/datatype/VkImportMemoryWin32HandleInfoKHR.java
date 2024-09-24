@@ -111,7 +111,7 @@ public record VkImportMemoryWin32HandleInfoKHR(MemorySegment segment) {
         public VkImportMemoryWin32HandleInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImportMemoryWin32HandleInfoKHR createUninit(MemorySegment segment) {
             return new VkImportMemoryWin32HandleInfoKHR(segment);

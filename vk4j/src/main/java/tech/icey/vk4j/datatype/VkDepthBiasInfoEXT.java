@@ -103,7 +103,7 @@ public record VkDepthBiasInfoEXT(MemorySegment segment) {
         public VkDepthBiasInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDepthBiasInfoEXT createUninit(MemorySegment segment) {
             return new VkDepthBiasInfoEXT(segment);

@@ -79,7 +79,7 @@ public record VkSharedPresentSurfaceCapabilitiesKHR(MemorySegment segment) {
         public VkSharedPresentSurfaceCapabilitiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSharedPresentSurfaceCapabilitiesKHR createUninit(MemorySegment segment) {
             return new VkSharedPresentSurfaceCapabilitiesKHR(segment);

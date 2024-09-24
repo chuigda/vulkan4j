@@ -79,7 +79,7 @@ public record VkMultisamplePropertiesEXT(MemorySegment segment) {
         public VkMultisamplePropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMultisamplePropertiesEXT createUninit(MemorySegment segment) {
             return new VkMultisamplePropertiesEXT(segment);

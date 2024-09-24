@@ -79,7 +79,7 @@ public record VkExportMetalDeviceInfoEXT(MemorySegment segment) {
         public VkExportMetalDeviceInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExportMetalDeviceInfoEXT createUninit(MemorySegment segment) {
             return new VkExportMetalDeviceInfoEXT(segment);

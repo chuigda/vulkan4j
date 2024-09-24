@@ -78,7 +78,7 @@ public record VkPushConstantRange(MemorySegment segment) {
         public VkPushConstantRange create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPushConstantRange createUninit(MemorySegment segment) {
             return new VkPushConstantRange(segment);

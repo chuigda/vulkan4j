@@ -79,7 +79,7 @@ public record VkPhysicalDeviceCubicClampFeaturesQCOM(MemorySegment segment) {
         public VkPhysicalDeviceCubicClampFeaturesQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceCubicClampFeaturesQCOM createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceCubicClampFeaturesQCOM(segment);

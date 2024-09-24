@@ -80,7 +80,7 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) {
         public VkMutableDescriptorTypeListEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMutableDescriptorTypeListEXT createUninit(MemorySegment segment) {
             return new VkMutableDescriptorTypeListEXT(segment);

@@ -202,7 +202,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
         public VkWriteDescriptorSet create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkWriteDescriptorSet createUninit(MemorySegment segment) {
             return new VkWriteDescriptorSet(segment);

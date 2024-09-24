@@ -91,7 +91,7 @@ public record VkPipelineExecutableInfoKHR(MemorySegment segment) {
         public VkPipelineExecutableInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineExecutableInfoKHR createUninit(MemorySegment segment) {
             return new VkPipelineExecutableInfoKHR(segment);

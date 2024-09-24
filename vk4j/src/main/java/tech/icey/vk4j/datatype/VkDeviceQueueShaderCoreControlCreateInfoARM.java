@@ -79,7 +79,7 @@ public record VkDeviceQueueShaderCoreControlCreateInfoARM(MemorySegment segment)
         public VkDeviceQueueShaderCoreControlCreateInfoARM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceQueueShaderCoreControlCreateInfoARM createUninit(MemorySegment segment) {
             return new VkDeviceQueueShaderCoreControlCreateInfoARM(segment);

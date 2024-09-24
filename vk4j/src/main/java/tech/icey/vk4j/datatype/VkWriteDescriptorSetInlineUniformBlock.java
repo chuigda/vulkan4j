@@ -91,7 +91,7 @@ public record VkWriteDescriptorSetInlineUniformBlock(MemorySegment segment) {
         public VkWriteDescriptorSetInlineUniformBlock create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkWriteDescriptorSetInlineUniformBlock createUninit(MemorySegment segment) {
             return new VkWriteDescriptorSetInlineUniformBlock(segment);

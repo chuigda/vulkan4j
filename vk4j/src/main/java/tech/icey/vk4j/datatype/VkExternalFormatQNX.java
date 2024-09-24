@@ -79,7 +79,7 @@ public record VkExternalFormatQNX(MemorySegment segment) {
         public VkExternalFormatQNX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExternalFormatQNX createUninit(MemorySegment segment) {
             return new VkExternalFormatQNX(segment);

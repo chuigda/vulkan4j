@@ -79,7 +79,7 @@ public record VkPhysicalDeviceShaderImageFootprintFeaturesNV(MemorySegment segme
         public VkPhysicalDeviceShaderImageFootprintFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderImageFootprintFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderImageFootprintFeaturesNV(segment);

@@ -91,7 +91,7 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(MemorySegment se
         public VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(segment);

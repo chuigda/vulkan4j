@@ -91,7 +91,7 @@ public record VkDescriptorBufferBindingInfoEXT(MemorySegment segment) {
         public VkDescriptorBufferBindingInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorBufferBindingInfoEXT createUninit(MemorySegment segment) {
             return new VkDescriptorBufferBindingInfoEXT(segment);

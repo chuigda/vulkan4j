@@ -91,7 +91,7 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(MemorySegment segment) {
         public VkSamplerBlockMatchWindowCreateInfoQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSamplerBlockMatchWindowCreateInfoQCOM createUninit(MemorySegment segment) {
             return new VkSamplerBlockMatchWindowCreateInfoQCOM(segment);

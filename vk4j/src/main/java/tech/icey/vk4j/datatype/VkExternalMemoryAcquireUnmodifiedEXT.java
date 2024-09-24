@@ -79,7 +79,7 @@ public record VkExternalMemoryAcquireUnmodifiedEXT(MemorySegment segment) {
         public VkExternalMemoryAcquireUnmodifiedEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExternalMemoryAcquireUnmodifiedEXT createUninit(MemorySegment segment) {
             return new VkExternalMemoryAcquireUnmodifiedEXT(segment);

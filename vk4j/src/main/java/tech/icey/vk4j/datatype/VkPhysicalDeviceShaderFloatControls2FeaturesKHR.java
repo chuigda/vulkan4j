@@ -79,7 +79,7 @@ public record VkPhysicalDeviceShaderFloatControls2FeaturesKHR(MemorySegment segm
         public VkPhysicalDeviceShaderFloatControls2FeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderFloatControls2FeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderFloatControls2FeaturesKHR(segment);

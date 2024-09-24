@@ -126,7 +126,7 @@ public record VkStencilOpState(MemorySegment segment) {
         public VkStencilOpState create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkStencilOpState createUninit(MemorySegment segment) {
             return new VkStencilOpState(segment);

@@ -78,7 +78,7 @@ public record VkCoarseSampleLocationNV(MemorySegment segment) {
         public VkCoarseSampleLocationNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCoarseSampleLocationNV createUninit(MemorySegment segment) {
             return new VkCoarseSampleLocationNV(segment);

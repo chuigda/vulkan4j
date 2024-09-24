@@ -79,7 +79,7 @@ public record VkPhysicalDeviceImageAlignmentControlFeaturesMESA(MemorySegment se
         public VkPhysicalDeviceImageAlignmentControlFeaturesMESA create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceImageAlignmentControlFeaturesMESA createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceImageAlignmentControlFeaturesMESA(segment);

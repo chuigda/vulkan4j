@@ -105,7 +105,7 @@ public record VkSwapchainPresentModeInfoEXT(MemorySegment segment) {
         public VkSwapchainPresentModeInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSwapchainPresentModeInfoEXT createUninit(MemorySegment segment) {
             return new VkSwapchainPresentModeInfoEXT(segment);

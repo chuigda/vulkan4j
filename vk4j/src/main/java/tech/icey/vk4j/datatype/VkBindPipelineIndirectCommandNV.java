@@ -54,7 +54,7 @@ public record VkBindPipelineIndirectCommandNV(MemorySegment segment) {
         public VkBindPipelineIndirectCommandNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBindPipelineIndirectCommandNV createUninit(MemorySegment segment) {
             return new VkBindPipelineIndirectCommandNV(segment);

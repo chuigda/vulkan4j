@@ -127,7 +127,7 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(MemorySegment segment)
         public VkPhysicalDeviceShaderEnqueuePropertiesAMDX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderEnqueuePropertiesAMDX createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(segment);

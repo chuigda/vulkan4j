@@ -79,7 +79,7 @@ public record VkOutOfBandQueueTypeInfoNV(MemorySegment segment) {
         public VkOutOfBandQueueTypeInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkOutOfBandQueueTypeInfoNV createUninit(MemorySegment segment) {
             return new VkOutOfBandQueueTypeInfoNV(segment);

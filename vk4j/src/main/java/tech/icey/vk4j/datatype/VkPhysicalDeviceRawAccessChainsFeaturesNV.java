@@ -79,7 +79,7 @@ public record VkPhysicalDeviceRawAccessChainsFeaturesNV(MemorySegment segment) {
         public VkPhysicalDeviceRawAccessChainsFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceRawAccessChainsFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceRawAccessChainsFeaturesNV(segment);

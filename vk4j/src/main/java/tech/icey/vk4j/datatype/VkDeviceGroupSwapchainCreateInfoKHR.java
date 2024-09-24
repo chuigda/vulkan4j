@@ -79,7 +79,7 @@ public record VkDeviceGroupSwapchainCreateInfoKHR(MemorySegment segment) {
         public VkDeviceGroupSwapchainCreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceGroupSwapchainCreateInfoKHR createUninit(MemorySegment segment) {
             return new VkDeviceGroupSwapchainCreateInfoKHR(segment);

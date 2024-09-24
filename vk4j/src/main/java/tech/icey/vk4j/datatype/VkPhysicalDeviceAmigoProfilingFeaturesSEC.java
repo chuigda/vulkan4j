@@ -79,7 +79,7 @@ public record VkPhysicalDeviceAmigoProfilingFeaturesSEC(MemorySegment segment) {
         public VkPhysicalDeviceAmigoProfilingFeaturesSEC create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceAmigoProfilingFeaturesSEC createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceAmigoProfilingFeaturesSEC(segment);

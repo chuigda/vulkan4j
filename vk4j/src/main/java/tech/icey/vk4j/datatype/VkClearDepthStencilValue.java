@@ -66,7 +66,7 @@ public record VkClearDepthStencilValue(MemorySegment segment) {
         public VkClearDepthStencilValue create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkClearDepthStencilValue createUninit(MemorySegment segment) {
             return new VkClearDepthStencilValue(segment);

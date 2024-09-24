@@ -79,7 +79,7 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(MemorySegment segment)
         public VkRenderPassFragmentDensityMapCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderPassFragmentDensityMapCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkRenderPassFragmentDensityMapCreateInfoEXT(segment);

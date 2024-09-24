@@ -79,7 +79,7 @@ public record VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR(MemorySegment
         public VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR(segment);

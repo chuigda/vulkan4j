@@ -79,7 +79,7 @@ public record VkImageMemoryRequirementsInfo2(MemorySegment segment) {
         public VkImageMemoryRequirementsInfo2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageMemoryRequirementsInfo2 createUninit(MemorySegment segment) {
             return new VkImageMemoryRequirementsInfo2(segment);

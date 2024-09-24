@@ -91,7 +91,7 @@ public record VkPipelineTessellationStateCreateInfo(MemorySegment segment) {
         public VkPipelineTessellationStateCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineTessellationStateCreateInfo createUninit(MemorySegment segment) {
             return new VkPipelineTessellationStateCreateInfo(segment);

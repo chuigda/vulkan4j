@@ -79,7 +79,7 @@ public record VkPhysicalDeviceRenderPassStripedFeaturesARM(MemorySegment segment
         public VkPhysicalDeviceRenderPassStripedFeaturesARM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceRenderPassStripedFeaturesARM createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceRenderPassStripedFeaturesARM(segment);

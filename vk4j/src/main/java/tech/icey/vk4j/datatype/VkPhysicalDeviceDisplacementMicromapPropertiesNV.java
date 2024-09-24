@@ -79,7 +79,7 @@ public record VkPhysicalDeviceDisplacementMicromapPropertiesNV(MemorySegment seg
         public VkPhysicalDeviceDisplacementMicromapPropertiesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDisplacementMicromapPropertiesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDisplacementMicromapPropertiesNV(segment);

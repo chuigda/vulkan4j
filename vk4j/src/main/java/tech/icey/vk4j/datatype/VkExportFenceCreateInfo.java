@@ -79,7 +79,7 @@ public record VkExportFenceCreateInfo(MemorySegment segment) {
         public VkExportFenceCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExportFenceCreateInfo createUninit(MemorySegment segment) {
             return new VkExportFenceCreateInfo(segment);

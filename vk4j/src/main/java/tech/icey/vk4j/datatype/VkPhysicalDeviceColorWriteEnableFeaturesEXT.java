@@ -79,7 +79,7 @@ public record VkPhysicalDeviceColorWriteEnableFeaturesEXT(MemorySegment segment)
         public VkPhysicalDeviceColorWriteEnableFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceColorWriteEnableFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceColorWriteEnableFeaturesEXT(segment);

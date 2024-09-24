@@ -104,7 +104,7 @@ public record VkRenderPassStripeSubmitInfoARM(MemorySegment segment) {
         public VkRenderPassStripeSubmitInfoARM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderPassStripeSubmitInfoARM createUninit(MemorySegment segment) {
             return new VkRenderPassStripeSubmitInfoARM(segment);

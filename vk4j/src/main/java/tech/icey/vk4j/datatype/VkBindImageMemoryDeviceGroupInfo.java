@@ -136,7 +136,7 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
         public VkBindImageMemoryDeviceGroupInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBindImageMemoryDeviceGroupInfo createUninit(MemorySegment segment) {
             return new VkBindImageMemoryDeviceGroupInfo(segment);

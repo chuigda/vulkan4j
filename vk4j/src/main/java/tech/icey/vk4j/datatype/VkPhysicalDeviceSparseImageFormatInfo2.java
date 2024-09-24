@@ -127,7 +127,7 @@ public record VkPhysicalDeviceSparseImageFormatInfo2(MemorySegment segment) {
         public VkPhysicalDeviceSparseImageFormatInfo2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceSparseImageFormatInfo2 createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceSparseImageFormatInfo2(segment);

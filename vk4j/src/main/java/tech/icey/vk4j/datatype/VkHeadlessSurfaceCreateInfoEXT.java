@@ -79,7 +79,7 @@ public record VkHeadlessSurfaceCreateInfoEXT(MemorySegment segment) {
         public VkHeadlessSurfaceCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkHeadlessSurfaceCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkHeadlessSurfaceCreateInfoEXT(segment);

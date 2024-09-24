@@ -175,7 +175,7 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(MemorySegme
         public VkPhysicalDeviceConservativeRasterizationPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceConservativeRasterizationPropertiesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceConservativeRasterizationPropertiesEXT(segment);

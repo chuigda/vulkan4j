@@ -91,7 +91,7 @@ public record VkImportMemoryHostPointerInfoEXT(MemorySegment segment) {
         public VkImportMemoryHostPointerInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImportMemoryHostPointerInfoEXT createUninit(MemorySegment segment) {
             return new VkImportMemoryHostPointerInfoEXT(segment);

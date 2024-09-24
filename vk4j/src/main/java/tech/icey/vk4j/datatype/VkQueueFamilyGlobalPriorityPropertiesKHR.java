@@ -95,7 +95,7 @@ public record VkQueueFamilyGlobalPriorityPropertiesKHR(MemorySegment segment) {
         public VkQueueFamilyGlobalPriorityPropertiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkQueueFamilyGlobalPriorityPropertiesKHR createUninit(MemorySegment segment) {
             return new VkQueueFamilyGlobalPriorityPropertiesKHR(segment);

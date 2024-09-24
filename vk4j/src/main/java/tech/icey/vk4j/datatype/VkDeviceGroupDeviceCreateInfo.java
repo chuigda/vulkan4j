@@ -104,7 +104,7 @@ public record VkDeviceGroupDeviceCreateInfo(MemorySegment segment) {
         public VkDeviceGroupDeviceCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceGroupDeviceCreateInfo createUninit(MemorySegment segment) {
             return new VkDeviceGroupDeviceCreateInfo(segment);

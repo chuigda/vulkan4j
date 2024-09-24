@@ -79,7 +79,7 @@ public record VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(MemorySegment 
         public VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(segment);

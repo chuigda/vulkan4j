@@ -79,7 +79,7 @@ public record VkReleaseCapturedPipelineDataInfoKHR(MemorySegment segment) {
         public VkReleaseCapturedPipelineDataInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkReleaseCapturedPipelineDataInfoKHR createUninit(MemorySegment segment) {
             return new VkReleaseCapturedPipelineDataInfoKHR(segment);

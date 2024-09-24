@@ -79,7 +79,7 @@ public record VkPhysicalDeviceImageRobustnessFeatures(MemorySegment segment) {
         public VkPhysicalDeviceImageRobustnessFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceImageRobustnessFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceImageRobustnessFeatures(segment);

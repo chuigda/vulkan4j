@@ -66,7 +66,7 @@ public record VkDescriptorPoolSize(MemorySegment segment) {
         public VkDescriptorPoolSize create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorPoolSize createUninit(MemorySegment segment) {
             return new VkDescriptorPoolSize(segment);

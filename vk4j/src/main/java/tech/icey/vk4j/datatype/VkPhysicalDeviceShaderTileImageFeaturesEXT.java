@@ -103,7 +103,7 @@ public record VkPhysicalDeviceShaderTileImageFeaturesEXT(MemorySegment segment) 
         public VkPhysicalDeviceShaderTileImageFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderTileImageFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderTileImageFeaturesEXT(segment);

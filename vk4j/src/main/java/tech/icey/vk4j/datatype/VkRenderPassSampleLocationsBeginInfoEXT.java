@@ -141,7 +141,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) {
         public VkRenderPassSampleLocationsBeginInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderPassSampleLocationsBeginInfoEXT createUninit(MemorySegment segment) {
             return new VkRenderPassSampleLocationsBeginInfoEXT(segment);

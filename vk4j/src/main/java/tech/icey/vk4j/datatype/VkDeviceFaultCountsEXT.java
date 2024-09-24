@@ -103,7 +103,7 @@ public record VkDeviceFaultCountsEXT(MemorySegment segment) {
         public VkDeviceFaultCountsEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceFaultCountsEXT createUninit(MemorySegment segment) {
             return new VkDeviceFaultCountsEXT(segment);

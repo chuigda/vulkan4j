@@ -163,7 +163,7 @@ public record VkRenderingAttachmentInfo(MemorySegment segment) {
         public VkRenderingAttachmentInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderingAttachmentInfo createUninit(MemorySegment segment) {
             return new VkRenderingAttachmentInfo(segment);

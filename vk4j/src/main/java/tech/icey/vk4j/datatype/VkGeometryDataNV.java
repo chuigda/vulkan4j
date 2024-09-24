@@ -66,7 +66,7 @@ public record VkGeometryDataNV(MemorySegment segment) {
         public VkGeometryDataNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkGeometryDataNV createUninit(MemorySegment segment) {
             return new VkGeometryDataNV(segment);

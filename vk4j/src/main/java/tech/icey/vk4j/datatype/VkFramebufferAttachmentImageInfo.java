@@ -165,7 +165,7 @@ public record VkFramebufferAttachmentImageInfo(MemorySegment segment) {
         public VkFramebufferAttachmentImageInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkFramebufferAttachmentImageInfo createUninit(MemorySegment segment) {
             return new VkFramebufferAttachmentImageInfo(segment);

@@ -79,7 +79,7 @@ public record VkDisplayPlaneProperties2KHR(MemorySegment segment) {
         public VkDisplayPlaneProperties2KHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDisplayPlaneProperties2KHR createUninit(MemorySegment segment) {
             return new VkDisplayPlaneProperties2KHR(segment);

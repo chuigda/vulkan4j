@@ -78,7 +78,7 @@ public record VkDispatchGraphCountInfoAMDX(MemorySegment segment) {
         public VkDispatchGraphCountInfoAMDX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDispatchGraphCountInfoAMDX createUninit(MemorySegment segment) {
             return new VkDispatchGraphCountInfoAMDX(segment);

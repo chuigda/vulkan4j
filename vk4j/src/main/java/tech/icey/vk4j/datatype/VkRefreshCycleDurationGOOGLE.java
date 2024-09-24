@@ -54,7 +54,7 @@ public record VkRefreshCycleDurationGOOGLE(MemorySegment segment) {
         public VkRefreshCycleDurationGOOGLE create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRefreshCycleDurationGOOGLE createUninit(MemorySegment segment) {
             return new VkRefreshCycleDurationGOOGLE(segment);

@@ -79,7 +79,7 @@ public record VkPhysicalDeviceLegacyDitheringFeaturesEXT(MemorySegment segment) 
         public VkPhysicalDeviceLegacyDitheringFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceLegacyDitheringFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceLegacyDitheringFeaturesEXT(segment);

@@ -116,7 +116,7 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
         public VkPipelineViewportSwizzleStateCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineViewportSwizzleStateCreateInfoNV createUninit(MemorySegment segment) {
             return new VkPipelineViewportSwizzleStateCreateInfoNV(segment);

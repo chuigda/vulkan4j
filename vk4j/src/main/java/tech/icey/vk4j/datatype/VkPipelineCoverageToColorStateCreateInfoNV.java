@@ -103,7 +103,7 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(MemorySegment segment) 
         public VkPipelineCoverageToColorStateCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineCoverageToColorStateCreateInfoNV createUninit(MemorySegment segment) {
             return new VkPipelineCoverageToColorStateCreateInfoNV(segment);

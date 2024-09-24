@@ -177,7 +177,7 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) {
         public VkExecutionGraphPipelineCreateInfoAMDX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExecutionGraphPipelineCreateInfoAMDX createUninit(MemorySegment segment) {
             return new VkExecutionGraphPipelineCreateInfoAMDX(segment);

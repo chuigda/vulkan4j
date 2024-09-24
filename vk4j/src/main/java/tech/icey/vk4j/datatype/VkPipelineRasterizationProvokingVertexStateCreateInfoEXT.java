@@ -79,7 +79,7 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(MemorySeg
         public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(segment);

@@ -128,7 +128,7 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) {
         public VkDescriptorPoolCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorPoolCreateInfo createUninit(MemorySegment segment) {
             return new VkDescriptorPoolCreateInfo(segment);

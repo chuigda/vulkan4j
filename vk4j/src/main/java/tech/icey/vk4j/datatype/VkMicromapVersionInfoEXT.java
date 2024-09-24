@@ -87,7 +87,7 @@ public record VkMicromapVersionInfoEXT(MemorySegment segment) {
         public VkMicromapVersionInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMicromapVersionInfoEXT createUninit(MemorySegment segment) {
             return new VkMicromapVersionInfoEXT(segment);

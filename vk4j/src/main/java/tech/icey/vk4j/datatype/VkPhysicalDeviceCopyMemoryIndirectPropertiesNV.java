@@ -79,7 +79,7 @@ public record VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(MemorySegment segme
         public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(segment);

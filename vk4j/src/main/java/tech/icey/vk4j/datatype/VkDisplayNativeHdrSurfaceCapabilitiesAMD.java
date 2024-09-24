@@ -79,7 +79,7 @@ public record VkDisplayNativeHdrSurfaceCapabilitiesAMD(MemorySegment segment) {
         public VkDisplayNativeHdrSurfaceCapabilitiesAMD create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDisplayNativeHdrSurfaceCapabilitiesAMD createUninit(MemorySegment segment) {
             return new VkDisplayNativeHdrSurfaceCapabilitiesAMD(segment);

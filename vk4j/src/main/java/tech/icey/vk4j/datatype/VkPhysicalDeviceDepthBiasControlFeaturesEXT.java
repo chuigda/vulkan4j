@@ -115,7 +115,7 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(MemorySegment segment)
         public VkPhysicalDeviceDepthBiasControlFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDepthBiasControlFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDepthBiasControlFeaturesEXT(segment);

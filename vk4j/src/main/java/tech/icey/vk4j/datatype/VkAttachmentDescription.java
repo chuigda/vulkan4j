@@ -150,7 +150,7 @@ public record VkAttachmentDescription(MemorySegment segment) {
         public VkAttachmentDescription create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAttachmentDescription createUninit(MemorySegment segment) {
             return new VkAttachmentDescription(segment);

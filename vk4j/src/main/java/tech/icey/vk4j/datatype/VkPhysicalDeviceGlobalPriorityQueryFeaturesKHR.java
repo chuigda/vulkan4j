@@ -79,7 +79,7 @@ public record VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR(MemorySegment segme
         public VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR(segment);

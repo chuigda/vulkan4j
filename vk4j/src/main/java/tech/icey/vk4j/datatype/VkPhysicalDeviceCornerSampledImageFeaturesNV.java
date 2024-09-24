@@ -79,7 +79,7 @@ public record VkPhysicalDeviceCornerSampledImageFeaturesNV(MemorySegment segment
         public VkPhysicalDeviceCornerSampledImageFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceCornerSampledImageFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceCornerSampledImageFeaturesNV(segment);

@@ -79,7 +79,7 @@ public record VkRenderPassCreationControlEXT(MemorySegment segment) {
         public VkRenderPassCreationControlEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderPassCreationControlEXT createUninit(MemorySegment segment) {
             return new VkRenderPassCreationControlEXT(segment);

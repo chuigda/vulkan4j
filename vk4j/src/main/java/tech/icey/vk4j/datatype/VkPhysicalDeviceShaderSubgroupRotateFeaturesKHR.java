@@ -91,7 +91,7 @@ public record VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(MemorySegment segm
         public VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(segment);

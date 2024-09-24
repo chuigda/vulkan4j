@@ -79,7 +79,7 @@ public record VkSwapchainPresentBarrierCreateInfoNV(MemorySegment segment) {
         public VkSwapchainPresentBarrierCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSwapchainPresentBarrierCreateInfoNV createUninit(MemorySegment segment) {
             return new VkSwapchainPresentBarrierCreateInfoNV(segment);

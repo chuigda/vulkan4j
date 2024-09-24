@@ -91,7 +91,7 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(MemorySegment se
         public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(segment);

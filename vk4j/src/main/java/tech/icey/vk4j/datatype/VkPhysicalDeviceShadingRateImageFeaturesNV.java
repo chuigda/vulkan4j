@@ -91,7 +91,7 @@ public record VkPhysicalDeviceShadingRateImageFeaturesNV(MemorySegment segment) 
         public VkPhysicalDeviceShadingRateImageFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShadingRateImageFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShadingRateImageFeaturesNV(segment);

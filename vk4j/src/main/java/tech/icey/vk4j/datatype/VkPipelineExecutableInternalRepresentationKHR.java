@@ -134,7 +134,7 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
         public VkPipelineExecutableInternalRepresentationKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineExecutableInternalRepresentationKHR createUninit(MemorySegment segment) {
             return new VkPipelineExecutableInternalRepresentationKHR(segment);

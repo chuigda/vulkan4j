@@ -91,7 +91,7 @@ public record VkSciSyncAttributesInfoNV(MemorySegment segment) {
         public VkSciSyncAttributesInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSciSyncAttributesInfoNV createUninit(MemorySegment segment) {
             return new VkSciSyncAttributesInfoNV(segment);

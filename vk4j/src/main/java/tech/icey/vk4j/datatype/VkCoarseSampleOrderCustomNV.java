@@ -103,7 +103,7 @@ public record VkCoarseSampleOrderCustomNV(MemorySegment segment) {
         public VkCoarseSampleOrderCustomNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCoarseSampleOrderCustomNV createUninit(MemorySegment segment) {
             return new VkCoarseSampleOrderCustomNV(segment);

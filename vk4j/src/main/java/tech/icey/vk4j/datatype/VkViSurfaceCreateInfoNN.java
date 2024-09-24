@@ -91,7 +91,7 @@ public record VkViSurfaceCreateInfoNN(MemorySegment segment) {
         public VkViSurfaceCreateInfoNN create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkViSurfaceCreateInfoNN createUninit(MemorySegment segment) {
             return new VkViSurfaceCreateInfoNN(segment);

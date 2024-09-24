@@ -175,7 +175,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(MemorySegment 
         public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(segment);

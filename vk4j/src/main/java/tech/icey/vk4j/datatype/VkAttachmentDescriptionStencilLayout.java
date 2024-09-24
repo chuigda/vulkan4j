@@ -91,7 +91,7 @@ public record VkAttachmentDescriptionStencilLayout(MemorySegment segment) {
         public VkAttachmentDescriptionStencilLayout create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAttachmentDescriptionStencilLayout createUninit(MemorySegment segment) {
             return new VkAttachmentDescriptionStencilLayout(segment);

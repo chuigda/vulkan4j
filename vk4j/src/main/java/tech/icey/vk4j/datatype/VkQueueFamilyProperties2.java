@@ -79,7 +79,7 @@ public record VkQueueFamilyProperties2(MemorySegment segment) {
         public VkQueueFamilyProperties2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkQueueFamilyProperties2 createUninit(MemorySegment segment) {
             return new VkQueueFamilyProperties2(segment);

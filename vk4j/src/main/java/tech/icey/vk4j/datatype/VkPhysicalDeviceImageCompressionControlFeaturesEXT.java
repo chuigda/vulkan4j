@@ -79,7 +79,7 @@ public record VkPhysicalDeviceImageCompressionControlFeaturesEXT(MemorySegment s
         public VkPhysicalDeviceImageCompressionControlFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceImageCompressionControlFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceImageCompressionControlFeaturesEXT(segment);

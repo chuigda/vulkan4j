@@ -123,7 +123,7 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(MemorySegment segmen
         public VkPhysicalDeviceImageDrmFormatModifierInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceImageDrmFormatModifierInfoEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(segment);

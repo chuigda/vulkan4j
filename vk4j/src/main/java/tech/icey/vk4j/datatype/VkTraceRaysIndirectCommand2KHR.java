@@ -210,7 +210,7 @@ public record VkTraceRaysIndirectCommand2KHR(MemorySegment segment) {
         public VkTraceRaysIndirectCommand2KHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkTraceRaysIndirectCommand2KHR createUninit(MemorySegment segment) {
             return new VkTraceRaysIndirectCommand2KHR(segment);

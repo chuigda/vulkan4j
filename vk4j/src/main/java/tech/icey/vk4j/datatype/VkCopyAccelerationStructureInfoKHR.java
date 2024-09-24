@@ -103,7 +103,7 @@ public record VkCopyAccelerationStructureInfoKHR(MemorySegment segment) {
         public VkCopyAccelerationStructureInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCopyAccelerationStructureInfoKHR createUninit(MemorySegment segment) {
             return new VkCopyAccelerationStructureInfoKHR(segment);

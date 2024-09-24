@@ -187,7 +187,7 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(MemorySegment segme
         public VkPhysicalDeviceTransformFeedbackPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceTransformFeedbackPropertiesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceTransformFeedbackPropertiesEXT(segment);

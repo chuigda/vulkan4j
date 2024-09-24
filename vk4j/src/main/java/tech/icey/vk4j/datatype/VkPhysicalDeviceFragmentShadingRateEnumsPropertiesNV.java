@@ -79,7 +79,7 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(MemorySegment
         public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(segment);

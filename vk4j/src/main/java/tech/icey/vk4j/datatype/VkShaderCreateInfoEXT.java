@@ -257,7 +257,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
         public VkShaderCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkShaderCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkShaderCreateInfoEXT(segment);

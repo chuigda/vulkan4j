@@ -78,7 +78,7 @@ public record VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(MemorySegm
         public VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(segment);

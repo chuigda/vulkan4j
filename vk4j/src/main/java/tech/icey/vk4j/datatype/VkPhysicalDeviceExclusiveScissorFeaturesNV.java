@@ -79,7 +79,7 @@ public record VkPhysicalDeviceExclusiveScissorFeaturesNV(MemorySegment segment) 
         public VkPhysicalDeviceExclusiveScissorFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceExclusiveScissorFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceExclusiveScissorFeaturesNV(segment);

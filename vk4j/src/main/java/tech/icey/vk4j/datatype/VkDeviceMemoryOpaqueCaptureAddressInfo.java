@@ -79,7 +79,7 @@ public record VkDeviceMemoryOpaqueCaptureAddressInfo(MemorySegment segment) {
         public VkDeviceMemoryOpaqueCaptureAddressInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceMemoryOpaqueCaptureAddressInfo createUninit(MemorySegment segment) {
             return new VkDeviceMemoryOpaqueCaptureAddressInfo(segment);

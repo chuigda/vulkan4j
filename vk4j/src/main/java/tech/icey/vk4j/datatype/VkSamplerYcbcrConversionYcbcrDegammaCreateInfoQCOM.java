@@ -91,7 +91,7 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(MemorySegment s
         public VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM createUninit(MemorySegment segment) {
             return new VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(segment);

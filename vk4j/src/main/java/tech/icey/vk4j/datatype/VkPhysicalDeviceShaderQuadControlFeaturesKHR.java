@@ -79,7 +79,7 @@ public record VkPhysicalDeviceShaderQuadControlFeaturesKHR(MemorySegment segment
         public VkPhysicalDeviceShaderQuadControlFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderQuadControlFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderQuadControlFeaturesKHR(segment);

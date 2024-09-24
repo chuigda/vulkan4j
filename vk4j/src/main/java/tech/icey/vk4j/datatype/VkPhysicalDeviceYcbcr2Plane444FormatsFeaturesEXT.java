@@ -79,7 +79,7 @@ public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(MemorySegment seg
         public VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(segment);

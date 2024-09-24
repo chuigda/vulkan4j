@@ -79,7 +79,7 @@ public record VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(MemorySegme
         public VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(segment);

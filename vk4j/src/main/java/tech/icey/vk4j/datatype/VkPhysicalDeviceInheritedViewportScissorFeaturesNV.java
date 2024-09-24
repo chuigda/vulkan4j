@@ -79,7 +79,7 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(MemorySegment s
         public VkPhysicalDeviceInheritedViewportScissorFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceInheritedViewportScissorFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceInheritedViewportScissorFeaturesNV(segment);

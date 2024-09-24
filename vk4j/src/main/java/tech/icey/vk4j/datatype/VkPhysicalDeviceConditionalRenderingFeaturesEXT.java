@@ -91,7 +91,7 @@ public record VkPhysicalDeviceConditionalRenderingFeaturesEXT(MemorySegment segm
         public VkPhysicalDeviceConditionalRenderingFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceConditionalRenderingFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceConditionalRenderingFeaturesEXT(segment);

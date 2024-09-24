@@ -91,7 +91,7 @@ public record VkBindImageMemorySwapchainInfoKHR(MemorySegment segment) {
         public VkBindImageMemorySwapchainInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBindImageMemorySwapchainInfoKHR createUninit(MemorySegment segment) {
             return new VkBindImageMemorySwapchainInfoKHR(segment);

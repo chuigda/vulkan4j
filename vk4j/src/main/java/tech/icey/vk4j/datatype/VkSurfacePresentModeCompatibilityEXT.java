@@ -105,7 +105,7 @@ public record VkSurfacePresentModeCompatibilityEXT(MemorySegment segment) {
         public VkSurfacePresentModeCompatibilityEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSurfacePresentModeCompatibilityEXT createUninit(MemorySegment segment) {
             return new VkSurfacePresentModeCompatibilityEXT(segment);

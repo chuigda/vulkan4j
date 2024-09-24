@@ -104,7 +104,7 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(MemorySegment 
         public VkPipelineViewportExclusiveScissorStateCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineViewportExclusiveScissorStateCreateInfoNV createUninit(MemorySegment segment) {
             return new VkPipelineViewportExclusiveScissorStateCreateInfoNV(segment);

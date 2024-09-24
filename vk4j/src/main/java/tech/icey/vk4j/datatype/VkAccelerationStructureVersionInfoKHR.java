@@ -87,7 +87,7 @@ public record VkAccelerationStructureVersionInfoKHR(MemorySegment segment) {
         public VkAccelerationStructureVersionInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAccelerationStructureVersionInfoKHR createUninit(MemorySegment segment) {
             return new VkAccelerationStructureVersionInfoKHR(segment);

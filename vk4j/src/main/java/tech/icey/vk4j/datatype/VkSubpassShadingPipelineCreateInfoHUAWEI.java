@@ -91,7 +91,7 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(MemorySegment segment) {
         public VkSubpassShadingPipelineCreateInfoHUAWEI create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSubpassShadingPipelineCreateInfoHUAWEI createUninit(MemorySegment segment) {
             return new VkSubpassShadingPipelineCreateInfoHUAWEI(segment);

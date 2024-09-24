@@ -123,7 +123,7 @@ public record VkPipelineExecutableStatisticKHR(MemorySegment segment) {
         public VkPipelineExecutableStatisticKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineExecutableStatisticKHR createUninit(MemorySegment segment) {
             return new VkPipelineExecutableStatisticKHR(segment);

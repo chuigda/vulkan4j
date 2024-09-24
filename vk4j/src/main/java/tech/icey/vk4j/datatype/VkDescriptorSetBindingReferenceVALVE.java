@@ -91,7 +91,7 @@ public record VkDescriptorSetBindingReferenceVALVE(MemorySegment segment) {
         public VkDescriptorSetBindingReferenceVALVE create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorSetBindingReferenceVALVE createUninit(MemorySegment segment) {
             return new VkDescriptorSetBindingReferenceVALVE(segment);

@@ -102,7 +102,7 @@ public record VkImageFormatProperties(MemorySegment segment) {
         public VkImageFormatProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageFormatProperties createUninit(MemorySegment segment) {
             return new VkImageFormatProperties(segment);

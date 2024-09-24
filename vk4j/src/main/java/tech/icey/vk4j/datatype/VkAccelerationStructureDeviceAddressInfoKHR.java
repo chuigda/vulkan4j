@@ -79,7 +79,7 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(MemorySegment segment)
         public VkAccelerationStructureDeviceAddressInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAccelerationStructureDeviceAddressInfoKHR createUninit(MemorySegment segment) {
             return new VkAccelerationStructureDeviceAddressInfoKHR(segment);

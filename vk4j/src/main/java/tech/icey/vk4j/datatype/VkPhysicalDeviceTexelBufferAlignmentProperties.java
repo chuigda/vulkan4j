@@ -115,7 +115,7 @@ public record VkPhysicalDeviceTexelBufferAlignmentProperties(MemorySegment segme
         public VkPhysicalDeviceTexelBufferAlignmentProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceTexelBufferAlignmentProperties createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceTexelBufferAlignmentProperties(segment);

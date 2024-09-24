@@ -129,7 +129,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) {
         public VkPipelineCreationFeedbackCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineCreationFeedbackCreateInfo createUninit(MemorySegment segment) {
             return new VkPipelineCreationFeedbackCreateInfo(segment);

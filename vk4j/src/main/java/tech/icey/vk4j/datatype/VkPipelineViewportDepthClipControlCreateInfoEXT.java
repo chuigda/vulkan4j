@@ -79,7 +79,7 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(MemorySegment segm
         public VkPipelineViewportDepthClipControlCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineViewportDepthClipControlCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkPipelineViewportDepthClipControlCreateInfoEXT(segment);

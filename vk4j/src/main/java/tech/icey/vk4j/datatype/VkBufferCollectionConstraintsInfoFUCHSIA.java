@@ -127,7 +127,7 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(MemorySegment segment) {
         public VkBufferCollectionConstraintsInfoFUCHSIA create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBufferCollectionConstraintsInfoFUCHSIA createUninit(MemorySegment segment) {
             return new VkBufferCollectionConstraintsInfoFUCHSIA(segment);

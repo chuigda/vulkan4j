@@ -102,7 +102,7 @@ public record VkColorBlendAdvancedEXT(MemorySegment segment) {
         public VkColorBlendAdvancedEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkColorBlendAdvancedEXT createUninit(MemorySegment segment) {
             return new VkColorBlendAdvancedEXT(segment);

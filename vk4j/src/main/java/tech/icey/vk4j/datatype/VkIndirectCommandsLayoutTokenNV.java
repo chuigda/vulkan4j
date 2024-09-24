@@ -245,7 +245,7 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
         public VkIndirectCommandsLayoutTokenNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkIndirectCommandsLayoutTokenNV createUninit(MemorySegment segment) {
             return new VkIndirectCommandsLayoutTokenNV(segment);

@@ -131,7 +131,7 @@ public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) {
         public VkD3D12FenceSubmitInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkD3D12FenceSubmitInfoKHR createUninit(MemorySegment segment) {
             return new VkD3D12FenceSubmitInfoKHR(segment);

@@ -79,7 +79,7 @@ public record VkPhysicalDeviceSamplerYcbcrConversionFeatures(MemorySegment segme
         public VkPhysicalDeviceSamplerYcbcrConversionFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceSamplerYcbcrConversionFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceSamplerYcbcrConversionFeatures(segment);

@@ -103,7 +103,7 @@ public record VkBindBufferMemoryInfo(MemorySegment segment) {
         public VkBindBufferMemoryInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBindBufferMemoryInfo createUninit(MemorySegment segment) {
             return new VkBindBufferMemoryInfo(segment);

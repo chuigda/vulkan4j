@@ -79,7 +79,7 @@ public record VkPhysicalDeviceShaderExpectAssumeFeaturesKHR(MemorySegment segmen
         public VkPhysicalDeviceShaderExpectAssumeFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderExpectAssumeFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderExpectAssumeFeaturesKHR(segment);

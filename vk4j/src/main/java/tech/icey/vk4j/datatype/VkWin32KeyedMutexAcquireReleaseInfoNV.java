@@ -201,7 +201,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
         public VkWin32KeyedMutexAcquireReleaseInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkWin32KeyedMutexAcquireReleaseInfoNV createUninit(MemorySegment segment) {
             return new VkWin32KeyedMutexAcquireReleaseInfoNV(segment);

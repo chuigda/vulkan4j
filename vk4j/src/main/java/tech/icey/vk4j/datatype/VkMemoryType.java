@@ -66,7 +66,7 @@ public record VkMemoryType(MemorySegment segment) {
         public VkMemoryType create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMemoryType createUninit(MemorySegment segment) {
             return new VkMemoryType(segment);

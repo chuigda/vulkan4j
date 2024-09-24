@@ -79,7 +79,7 @@ public record VkPhysicalDeviceSchedulingControlsFeaturesARM(MemorySegment segmen
         public VkPhysicalDeviceSchedulingControlsFeaturesARM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceSchedulingControlsFeaturesARM createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceSchedulingControlsFeaturesARM(segment);

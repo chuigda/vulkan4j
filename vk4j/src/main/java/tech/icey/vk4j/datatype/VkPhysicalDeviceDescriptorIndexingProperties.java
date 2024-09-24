@@ -343,7 +343,7 @@ public record VkPhysicalDeviceDescriptorIndexingProperties(MemorySegment segment
         public VkPhysicalDeviceDescriptorIndexingProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDescriptorIndexingProperties createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDescriptorIndexingProperties(segment);

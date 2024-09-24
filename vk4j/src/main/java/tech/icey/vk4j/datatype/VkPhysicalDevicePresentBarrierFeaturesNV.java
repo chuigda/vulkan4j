@@ -79,7 +79,7 @@ public record VkPhysicalDevicePresentBarrierFeaturesNV(MemorySegment segment) {
         public VkPhysicalDevicePresentBarrierFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevicePresentBarrierFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDevicePresentBarrierFeaturesNV(segment);

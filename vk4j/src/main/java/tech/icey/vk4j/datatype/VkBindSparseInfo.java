@@ -252,7 +252,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
         public VkBindSparseInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBindSparseInfo createUninit(MemorySegment segment) {
             return new VkBindSparseInfo(segment);

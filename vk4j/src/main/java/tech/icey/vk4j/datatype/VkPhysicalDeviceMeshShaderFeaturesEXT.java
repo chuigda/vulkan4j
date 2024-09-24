@@ -127,7 +127,7 @@ public record VkPhysicalDeviceMeshShaderFeaturesEXT(MemorySegment segment) {
         public VkPhysicalDeviceMeshShaderFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceMeshShaderFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceMeshShaderFeaturesEXT(segment);

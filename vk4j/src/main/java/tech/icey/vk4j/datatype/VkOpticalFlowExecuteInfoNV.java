@@ -116,7 +116,7 @@ public record VkOpticalFlowExecuteInfoNV(MemorySegment segment) {
         public VkOpticalFlowExecuteInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkOpticalFlowExecuteInfoNV createUninit(MemorySegment segment) {
             return new VkOpticalFlowExecuteInfoNV(segment);

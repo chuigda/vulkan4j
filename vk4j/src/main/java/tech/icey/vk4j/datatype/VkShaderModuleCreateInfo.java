@@ -110,7 +110,7 @@ public record VkShaderModuleCreateInfo(MemorySegment segment) {
         public VkShaderModuleCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkShaderModuleCreateInfo createUninit(MemorySegment segment) {
             return new VkShaderModuleCreateInfo(segment);

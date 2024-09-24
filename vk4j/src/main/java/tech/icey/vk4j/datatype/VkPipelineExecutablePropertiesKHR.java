@@ -123,7 +123,7 @@ public record VkPipelineExecutablePropertiesKHR(MemorySegment segment) {
         public VkPipelineExecutablePropertiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineExecutablePropertiesKHR createUninit(MemorySegment segment) {
             return new VkPipelineExecutablePropertiesKHR(segment);

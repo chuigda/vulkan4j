@@ -79,7 +79,7 @@ public record VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(Memor
         public VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(segment);

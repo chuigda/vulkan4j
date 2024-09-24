@@ -176,7 +176,7 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment s
         public VkAccelerationStructureTrianglesOpacityMicromapEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAccelerationStructureTrianglesOpacityMicromapEXT createUninit(MemorySegment segment) {
             return new VkAccelerationStructureTrianglesOpacityMicromapEXT(segment);

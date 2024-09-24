@@ -79,7 +79,7 @@ public record VkPhysicalDeviceDynamicRenderingFeatures(MemorySegment segment) {
         public VkPhysicalDeviceDynamicRenderingFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDynamicRenderingFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDynamicRenderingFeatures(segment);

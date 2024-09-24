@@ -79,7 +79,7 @@ public record VkSamplerCubicWeightsCreateInfoQCOM(MemorySegment segment) {
         public VkSamplerCubicWeightsCreateInfoQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSamplerCubicWeightsCreateInfoQCOM createUninit(MemorySegment segment) {
             return new VkSamplerCubicWeightsCreateInfoQCOM(segment);

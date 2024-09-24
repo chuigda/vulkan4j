@@ -79,7 +79,7 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT(MemorySegment s
         public VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT(segment);

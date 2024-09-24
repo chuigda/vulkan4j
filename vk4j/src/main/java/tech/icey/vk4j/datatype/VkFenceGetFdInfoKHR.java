@@ -91,7 +91,7 @@ public record VkFenceGetFdInfoKHR(MemorySegment segment) {
         public VkFenceGetFdInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkFenceGetFdInfoKHR createUninit(MemorySegment segment) {
             return new VkFenceGetFdInfoKHR(segment);

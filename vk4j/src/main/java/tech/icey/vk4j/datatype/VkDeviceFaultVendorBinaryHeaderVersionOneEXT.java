@@ -178,7 +178,7 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment
         public VkDeviceFaultVendorBinaryHeaderVersionOneEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceFaultVendorBinaryHeaderVersionOneEXT createUninit(MemorySegment segment) {
             return new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(segment);

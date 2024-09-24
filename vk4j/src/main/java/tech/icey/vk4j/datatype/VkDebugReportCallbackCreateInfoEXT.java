@@ -103,7 +103,7 @@ public record VkDebugReportCallbackCreateInfoEXT(MemorySegment segment) {
         public VkDebugReportCallbackCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDebugReportCallbackCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkDebugReportCallbackCreateInfoEXT(segment);

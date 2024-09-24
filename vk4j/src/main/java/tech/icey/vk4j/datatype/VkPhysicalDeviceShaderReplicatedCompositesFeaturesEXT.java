@@ -79,7 +79,7 @@ public record VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT(MemorySegmen
         public VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT(segment);

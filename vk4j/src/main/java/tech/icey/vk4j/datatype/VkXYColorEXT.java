@@ -66,7 +66,7 @@ public record VkXYColorEXT(MemorySegment segment) {
         public VkXYColorEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkXYColorEXT createUninit(MemorySegment segment) {
             return new VkXYColorEXT(segment);

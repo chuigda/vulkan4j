@@ -103,7 +103,7 @@ public record VkDeviceQueueInfo2(MemorySegment segment) {
         public VkDeviceQueueInfo2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceQueueInfo2 createUninit(MemorySegment segment) {
             return new VkDeviceQueueInfo2(segment);

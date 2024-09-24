@@ -66,7 +66,7 @@ public record VkPresentTimeGOOGLE(MemorySegment segment) {
         public VkPresentTimeGOOGLE create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPresentTimeGOOGLE createUninit(MemorySegment segment) {
             return new VkPresentTimeGOOGLE(segment);

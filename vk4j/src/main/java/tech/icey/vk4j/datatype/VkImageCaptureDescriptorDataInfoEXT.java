@@ -79,7 +79,7 @@ public record VkImageCaptureDescriptorDataInfoEXT(MemorySegment segment) {
         public VkImageCaptureDescriptorDataInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageCaptureDescriptorDataInfoEXT createUninit(MemorySegment segment) {
             return new VkImageCaptureDescriptorDataInfoEXT(segment);

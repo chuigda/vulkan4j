@@ -103,7 +103,7 @@ public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment s
         public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(segment);

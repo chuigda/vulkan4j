@@ -79,7 +79,7 @@ public record VkMemoryPriorityAllocateInfoEXT(MemorySegment segment) {
         public VkMemoryPriorityAllocateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMemoryPriorityAllocateInfoEXT createUninit(MemorySegment segment) {
             return new VkMemoryPriorityAllocateInfoEXT(segment);

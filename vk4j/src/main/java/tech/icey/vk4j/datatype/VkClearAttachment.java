@@ -78,7 +78,7 @@ public record VkClearAttachment(MemorySegment segment) {
         public VkClearAttachment create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkClearAttachment createUninit(MemorySegment segment) {
             return new VkClearAttachment(segment);

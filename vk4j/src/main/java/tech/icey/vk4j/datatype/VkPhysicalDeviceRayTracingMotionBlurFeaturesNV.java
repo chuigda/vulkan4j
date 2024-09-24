@@ -91,7 +91,7 @@ public record VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(MemorySegment segme
         public VkPhysicalDeviceRayTracingMotionBlurFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceRayTracingMotionBlurFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(segment);

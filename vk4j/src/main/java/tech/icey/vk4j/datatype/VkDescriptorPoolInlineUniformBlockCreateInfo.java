@@ -79,7 +79,7 @@ public record VkDescriptorPoolInlineUniformBlockCreateInfo(MemorySegment segment
         public VkDescriptorPoolInlineUniformBlockCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorPoolInlineUniformBlockCreateInfo createUninit(MemorySegment segment) {
             return new VkDescriptorPoolInlineUniformBlockCreateInfo(segment);

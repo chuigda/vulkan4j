@@ -79,7 +79,7 @@ public record VkBaseInStructure(MemorySegment segment) {
         public VkBaseInStructure create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBaseInStructure createUninit(MemorySegment segment) {
             return new VkBaseInStructure(segment);

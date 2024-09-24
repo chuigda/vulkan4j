@@ -79,7 +79,7 @@ public record VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(MemorySegment 
         public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(segment);

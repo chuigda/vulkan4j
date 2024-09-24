@@ -79,7 +79,7 @@ public record VkPhysicalDeviceExternalSemaphoreInfo(MemorySegment segment) {
         public VkPhysicalDeviceExternalSemaphoreInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceExternalSemaphoreInfo createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceExternalSemaphoreInfo(segment);

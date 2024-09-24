@@ -155,7 +155,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
         public VkSetDescriptorBufferOffsetsInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSetDescriptorBufferOffsetsInfoEXT createUninit(MemorySegment segment) {
             return new VkSetDescriptorBufferOffsetsInfoEXT(segment);

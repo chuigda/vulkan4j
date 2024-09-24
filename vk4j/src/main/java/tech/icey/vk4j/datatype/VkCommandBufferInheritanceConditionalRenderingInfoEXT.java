@@ -79,7 +79,7 @@ public record VkCommandBufferInheritanceConditionalRenderingInfoEXT(MemorySegmen
         public VkCommandBufferInheritanceConditionalRenderingInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCommandBufferInheritanceConditionalRenderingInfoEXT createUninit(MemorySegment segment) {
             return new VkCommandBufferInheritanceConditionalRenderingInfoEXT(segment);

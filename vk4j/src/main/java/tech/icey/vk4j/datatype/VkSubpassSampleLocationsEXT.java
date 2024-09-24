@@ -66,7 +66,7 @@ public record VkSubpassSampleLocationsEXT(MemorySegment segment) {
         public VkSubpassSampleLocationsEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSubpassSampleLocationsEXT createUninit(MemorySegment segment) {
             return new VkSubpassSampleLocationsEXT(segment);

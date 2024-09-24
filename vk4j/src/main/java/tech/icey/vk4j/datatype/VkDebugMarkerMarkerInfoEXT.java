@@ -103,7 +103,7 @@ public record VkDebugMarkerMarkerInfoEXT(MemorySegment segment) {
         public VkDebugMarkerMarkerInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDebugMarkerMarkerInfoEXT createUninit(MemorySegment segment) {
             return new VkDebugMarkerMarkerInfoEXT(segment);

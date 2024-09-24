@@ -151,7 +151,7 @@ public record VkCopyDescriptorSet(MemorySegment segment) {
         public VkCopyDescriptorSet create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCopyDescriptorSet createUninit(MemorySegment segment) {
             return new VkCopyDescriptorSet(segment);

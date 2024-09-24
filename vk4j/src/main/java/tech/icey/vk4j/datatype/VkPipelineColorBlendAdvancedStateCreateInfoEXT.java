@@ -103,7 +103,7 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(MemorySegment segme
         public VkPipelineColorBlendAdvancedStateCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineColorBlendAdvancedStateCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkPipelineColorBlendAdvancedStateCreateInfoEXT(segment);

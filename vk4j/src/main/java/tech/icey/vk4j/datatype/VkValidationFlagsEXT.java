@@ -105,7 +105,7 @@ public record VkValidationFlagsEXT(MemorySegment segment) {
         public VkValidationFlagsEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkValidationFlagsEXT createUninit(MemorySegment segment) {
             return new VkValidationFlagsEXT(segment);

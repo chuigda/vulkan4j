@@ -107,7 +107,7 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment s
         public VkPipelineFragmentShadingRateEnumStateCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineFragmentShadingRateEnumStateCreateInfoNV createUninit(MemorySegment segment) {
             return new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(segment);

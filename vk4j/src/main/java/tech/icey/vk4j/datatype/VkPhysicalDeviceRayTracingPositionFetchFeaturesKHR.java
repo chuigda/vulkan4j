@@ -79,7 +79,7 @@ public record VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR(MemorySegment s
         public VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR(segment);

@@ -91,7 +91,7 @@ public record VkAccelerationStructureGeometryAabbsDataKHR(MemorySegment segment)
         public VkAccelerationStructureGeometryAabbsDataKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAccelerationStructureGeometryAabbsDataKHR createUninit(MemorySegment segment) {
             return new VkAccelerationStructureGeometryAabbsDataKHR(segment);

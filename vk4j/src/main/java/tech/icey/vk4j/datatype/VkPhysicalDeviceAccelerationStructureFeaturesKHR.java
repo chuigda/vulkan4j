@@ -127,7 +127,7 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(MemorySegment seg
         public VkPhysicalDeviceAccelerationStructureFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceAccelerationStructureFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceAccelerationStructureFeaturesKHR(segment);

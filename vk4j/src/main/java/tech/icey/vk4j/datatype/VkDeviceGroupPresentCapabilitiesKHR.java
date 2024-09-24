@@ -95,7 +95,7 @@ public record VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) {
         public VkDeviceGroupPresentCapabilitiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceGroupPresentCapabilitiesKHR createUninit(MemorySegment segment) {
             return new VkDeviceGroupPresentCapabilitiesKHR(segment);

@@ -79,7 +79,7 @@ public record VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(MemorySegmen
         public VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(segment);

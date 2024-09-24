@@ -91,7 +91,7 @@ public record VkSemaphoreGetSciSyncInfoNV(MemorySegment segment) {
         public VkSemaphoreGetSciSyncInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSemaphoreGetSciSyncInfoNV createUninit(MemorySegment segment) {
             return new VkSemaphoreGetSciSyncInfoNV(segment);

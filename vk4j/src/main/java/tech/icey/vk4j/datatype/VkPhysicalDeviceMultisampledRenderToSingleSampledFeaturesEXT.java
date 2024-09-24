@@ -79,7 +79,7 @@ public record VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(Memor
         public VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(segment);

@@ -66,7 +66,7 @@ public record VkDeviceOrHostAddressConstAMDX(MemorySegment segment) {
         public VkDeviceOrHostAddressConstAMDX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceOrHostAddressConstAMDX createUninit(MemorySegment segment) {
             return new VkDeviceOrHostAddressConstAMDX(segment);

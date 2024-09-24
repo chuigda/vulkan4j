@@ -79,7 +79,7 @@ public record VkPhysicalDeviceCooperativeMatrixPropertiesKHR(MemorySegment segme
         public VkPhysicalDeviceCooperativeMatrixPropertiesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceCooperativeMatrixPropertiesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceCooperativeMatrixPropertiesKHR(segment);

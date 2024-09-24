@@ -79,7 +79,7 @@ public record VkMemoryRequirements2(MemorySegment segment) {
         public VkMemoryRequirements2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMemoryRequirements2 createUninit(MemorySegment segment) {
             return new VkMemoryRequirements2(segment);

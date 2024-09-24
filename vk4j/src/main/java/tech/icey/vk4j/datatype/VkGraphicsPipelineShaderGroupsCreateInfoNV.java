@@ -141,7 +141,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         public VkGraphicsPipelineShaderGroupsCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkGraphicsPipelineShaderGroupsCreateInfoNV createUninit(MemorySegment segment) {
             return new VkGraphicsPipelineShaderGroupsCreateInfoNV(segment);

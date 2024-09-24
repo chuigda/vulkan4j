@@ -91,7 +91,7 @@ public record VkPhysicalDevicePerStageDescriptorSetFeaturesNV(MemorySegment segm
         public VkPhysicalDevicePerStageDescriptorSetFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevicePerStageDescriptorSetFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDevicePerStageDescriptorSetFeaturesNV(segment);

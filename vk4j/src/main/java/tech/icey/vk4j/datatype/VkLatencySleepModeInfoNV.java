@@ -103,7 +103,7 @@ public record VkLatencySleepModeInfoNV(MemorySegment segment) {
         public VkLatencySleepModeInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkLatencySleepModeInfoNV createUninit(MemorySegment segment) {
             return new VkLatencySleepModeInfoNV(segment);

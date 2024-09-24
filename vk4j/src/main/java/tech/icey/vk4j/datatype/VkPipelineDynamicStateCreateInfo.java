@@ -117,7 +117,7 @@ public record VkPipelineDynamicStateCreateInfo(MemorySegment segment) {
         public VkPipelineDynamicStateCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineDynamicStateCreateInfo createUninit(MemorySegment segment) {
             return new VkPipelineDynamicStateCreateInfo(segment);

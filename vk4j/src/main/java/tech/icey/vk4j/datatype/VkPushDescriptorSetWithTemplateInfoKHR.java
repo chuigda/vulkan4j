@@ -115,7 +115,7 @@ public record VkPushDescriptorSetWithTemplateInfoKHR(MemorySegment segment) {
         public VkPushDescriptorSetWithTemplateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPushDescriptorSetWithTemplateInfoKHR createUninit(MemorySegment segment) {
             return new VkPushDescriptorSetWithTemplateInfoKHR(segment);

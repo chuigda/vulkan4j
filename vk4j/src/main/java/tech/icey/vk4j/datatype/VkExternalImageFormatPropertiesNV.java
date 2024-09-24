@@ -90,7 +90,7 @@ public record VkExternalImageFormatPropertiesNV(MemorySegment segment) {
         public VkExternalImageFormatPropertiesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExternalImageFormatPropertiesNV createUninit(MemorySegment segment) {
             return new VkExternalImageFormatPropertiesNV(segment);

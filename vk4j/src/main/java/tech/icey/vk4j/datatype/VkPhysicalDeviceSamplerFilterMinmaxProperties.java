@@ -91,7 +91,7 @@ public record VkPhysicalDeviceSamplerFilterMinmaxProperties(MemorySegment segmen
         public VkPhysicalDeviceSamplerFilterMinmaxProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceSamplerFilterMinmaxProperties createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceSamplerFilterMinmaxProperties(segment);

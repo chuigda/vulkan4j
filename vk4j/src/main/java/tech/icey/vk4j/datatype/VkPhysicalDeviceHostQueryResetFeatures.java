@@ -79,7 +79,7 @@ public record VkPhysicalDeviceHostQueryResetFeatures(MemorySegment segment) {
         public VkPhysicalDeviceHostQueryResetFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceHostQueryResetFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceHostQueryResetFeatures(segment);

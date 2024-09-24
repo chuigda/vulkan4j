@@ -163,7 +163,7 @@ public record VkAndroidHardwareBufferFormatPropertiesANDROID(MemorySegment segme
         public VkAndroidHardwareBufferFormatPropertiesANDROID create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAndroidHardwareBufferFormatPropertiesANDROID createUninit(MemorySegment segment) {
             return new VkAndroidHardwareBufferFormatPropertiesANDROID(segment);

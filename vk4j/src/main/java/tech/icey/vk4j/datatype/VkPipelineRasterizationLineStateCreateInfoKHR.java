@@ -115,7 +115,7 @@ public record VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segmen
         public VkPipelineRasterizationLineStateCreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineRasterizationLineStateCreateInfoKHR createUninit(MemorySegment segment) {
             return new VkPipelineRasterizationLineStateCreateInfoKHR(segment);

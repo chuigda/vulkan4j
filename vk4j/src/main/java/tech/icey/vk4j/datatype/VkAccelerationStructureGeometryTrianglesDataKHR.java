@@ -151,7 +151,7 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segm
         public VkAccelerationStructureGeometryTrianglesDataKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAccelerationStructureGeometryTrianglesDataKHR createUninit(MemorySegment segment) {
             return new VkAccelerationStructureGeometryTrianglesDataKHR(segment);

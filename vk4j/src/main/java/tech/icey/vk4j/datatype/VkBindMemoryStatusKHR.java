@@ -93,7 +93,7 @@ public record VkBindMemoryStatusKHR(MemorySegment segment) {
         public VkBindMemoryStatusKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBindMemoryStatusKHR createUninit(MemorySegment segment) {
             return new VkBindMemoryStatusKHR(segment);

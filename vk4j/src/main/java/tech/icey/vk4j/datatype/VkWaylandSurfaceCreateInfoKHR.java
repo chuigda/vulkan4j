@@ -103,7 +103,7 @@ public record VkWaylandSurfaceCreateInfoKHR(MemorySegment segment) {
         public VkWaylandSurfaceCreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkWaylandSurfaceCreateInfoKHR createUninit(MemorySegment segment) {
             return new VkWaylandSurfaceCreateInfoKHR(segment);

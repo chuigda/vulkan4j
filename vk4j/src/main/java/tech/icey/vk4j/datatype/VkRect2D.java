@@ -66,7 +66,7 @@ public record VkRect2D(MemorySegment segment) {
         public VkRect2D create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRect2D createUninit(MemorySegment segment) {
             return new VkRect2D(segment);

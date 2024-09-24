@@ -79,7 +79,7 @@ public record VkPhysicalDeviceDiscardRectanglePropertiesEXT(MemorySegment segmen
         public VkPhysicalDeviceDiscardRectanglePropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceDiscardRectanglePropertiesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceDiscardRectanglePropertiesEXT(segment);

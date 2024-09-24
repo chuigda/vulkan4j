@@ -91,7 +91,7 @@ public record VkSparseBufferMemoryBindInfo(MemorySegment segment) {
         public VkSparseBufferMemoryBindInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSparseBufferMemoryBindInfo createUninit(MemorySegment segment) {
             return new VkSparseBufferMemoryBindInfo(segment);

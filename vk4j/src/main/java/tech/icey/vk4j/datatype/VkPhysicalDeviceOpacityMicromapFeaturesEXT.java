@@ -103,7 +103,7 @@ public record VkPhysicalDeviceOpacityMicromapFeaturesEXT(MemorySegment segment) 
         public VkPhysicalDeviceOpacityMicromapFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceOpacityMicromapFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceOpacityMicromapFeaturesEXT(segment);

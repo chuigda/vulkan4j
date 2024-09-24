@@ -79,7 +79,7 @@ public record VkImageAlignmentControlCreateInfoMESA(MemorySegment segment) {
         public VkImageAlignmentControlCreateInfoMESA create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageAlignmentControlCreateInfoMESA createUninit(MemorySegment segment) {
             return new VkImageAlignmentControlCreateInfoMESA(segment);

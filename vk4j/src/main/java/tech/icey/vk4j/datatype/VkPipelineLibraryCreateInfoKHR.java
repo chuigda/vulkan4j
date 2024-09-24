@@ -104,7 +104,7 @@ public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) {
         public VkPipelineLibraryCreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineLibraryCreateInfoKHR createUninit(MemorySegment segment) {
             return new VkPipelineLibraryCreateInfoKHR(segment);

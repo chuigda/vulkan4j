@@ -91,7 +91,7 @@ public record VkExportMemoryWin32HandleInfoNV(MemorySegment segment) {
         public VkExportMemoryWin32HandleInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExportMemoryWin32HandleInfoNV createUninit(MemorySegment segment) {
             return new VkExportMemoryWin32HandleInfoNV(segment);

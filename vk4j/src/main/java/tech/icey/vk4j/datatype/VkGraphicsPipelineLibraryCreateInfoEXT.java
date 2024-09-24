@@ -79,7 +79,7 @@ public record VkGraphicsPipelineLibraryCreateInfoEXT(MemorySegment segment) {
         public VkGraphicsPipelineLibraryCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkGraphicsPipelineLibraryCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkGraphicsPipelineLibraryCreateInfoEXT(segment);

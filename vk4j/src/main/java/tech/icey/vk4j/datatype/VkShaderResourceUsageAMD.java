@@ -100,7 +100,7 @@ public record VkShaderResourceUsageAMD(MemorySegment segment) {
         public VkShaderResourceUsageAMD create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkShaderResourceUsageAMD createUninit(MemorySegment segment) {
             return new VkShaderResourceUsageAMD(segment);

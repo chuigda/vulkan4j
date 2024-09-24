@@ -106,7 +106,7 @@ public record VkPipelineCacheHeaderVersionOne(MemorySegment segment) {
         public VkPipelineCacheHeaderVersionOne create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineCacheHeaderVersionOne createUninit(MemorySegment segment) {
             return new VkPipelineCacheHeaderVersionOne(segment);

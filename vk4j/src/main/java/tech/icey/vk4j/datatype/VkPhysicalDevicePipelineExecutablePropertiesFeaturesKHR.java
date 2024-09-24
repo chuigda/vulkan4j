@@ -79,7 +79,7 @@ public record VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(MemorySegm
         public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(segment);

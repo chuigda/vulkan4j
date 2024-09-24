@@ -143,7 +143,7 @@ public record VkApplicationInfo(MemorySegment segment) {
         public VkApplicationInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkApplicationInfo createUninit(MemorySegment segment) {
             return new VkApplicationInfo(segment);

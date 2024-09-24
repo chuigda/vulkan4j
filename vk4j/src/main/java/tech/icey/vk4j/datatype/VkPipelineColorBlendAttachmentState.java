@@ -138,7 +138,7 @@ public record VkPipelineColorBlendAttachmentState(MemorySegment segment) {
         public VkPipelineColorBlendAttachmentState create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineColorBlendAttachmentState createUninit(MemorySegment segment) {
             return new VkPipelineColorBlendAttachmentState(segment);

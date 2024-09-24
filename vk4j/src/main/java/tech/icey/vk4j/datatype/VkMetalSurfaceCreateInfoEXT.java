@@ -91,7 +91,7 @@ public record VkMetalSurfaceCreateInfoEXT(MemorySegment segment) {
         public VkMetalSurfaceCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMetalSurfaceCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkMetalSurfaceCreateInfoEXT(segment);

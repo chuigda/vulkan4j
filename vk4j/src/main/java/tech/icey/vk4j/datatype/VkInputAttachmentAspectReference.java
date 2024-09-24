@@ -78,7 +78,7 @@ public record VkInputAttachmentAspectReference(MemorySegment segment) {
         public VkInputAttachmentAspectReference create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkInputAttachmentAspectReference createUninit(MemorySegment segment) {
             return new VkInputAttachmentAspectReference(segment);

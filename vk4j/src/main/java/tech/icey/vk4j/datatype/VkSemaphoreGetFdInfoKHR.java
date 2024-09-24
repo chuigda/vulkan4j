@@ -91,7 +91,7 @@ public record VkSemaphoreGetFdInfoKHR(MemorySegment segment) {
         public VkSemaphoreGetFdInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSemaphoreGetFdInfoKHR createUninit(MemorySegment segment) {
             return new VkSemaphoreGetFdInfoKHR(segment);

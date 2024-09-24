@@ -103,7 +103,7 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(MemorySegmen
         public VkPipelineRasterizationConservativeStateCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineRasterizationConservativeStateCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkPipelineRasterizationConservativeStateCreateInfoEXT(segment);

@@ -90,7 +90,7 @@ public record VkClearColorValue(MemorySegment segment) {
         public VkClearColorValue create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkClearColorValue createUninit(MemorySegment segment) {
             return new VkClearColorValue(segment);

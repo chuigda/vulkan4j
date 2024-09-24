@@ -79,7 +79,7 @@ public record VkSemaphoreCreateInfo(MemorySegment segment) {
         public VkSemaphoreCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSemaphoreCreateInfo createUninit(MemorySegment segment) {
             return new VkSemaphoreCreateInfo(segment);

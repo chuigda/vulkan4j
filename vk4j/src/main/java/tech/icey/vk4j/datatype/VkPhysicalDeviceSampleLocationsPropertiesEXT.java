@@ -131,7 +131,7 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment
         public VkPhysicalDeviceSampleLocationsPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceSampleLocationsPropertiesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment);

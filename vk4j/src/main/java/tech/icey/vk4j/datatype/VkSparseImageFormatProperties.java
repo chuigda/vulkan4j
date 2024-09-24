@@ -78,7 +78,7 @@ public record VkSparseImageFormatProperties(MemorySegment segment) {
         public VkSparseImageFormatProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSparseImageFormatProperties createUninit(MemorySegment segment) {
             return new VkSparseImageFormatProperties(segment);

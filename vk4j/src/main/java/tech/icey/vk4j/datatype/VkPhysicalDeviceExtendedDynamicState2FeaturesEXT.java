@@ -103,7 +103,7 @@ public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(MemorySegment seg
         public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(segment);

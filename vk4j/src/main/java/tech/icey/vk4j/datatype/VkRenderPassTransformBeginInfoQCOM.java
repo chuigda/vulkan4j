@@ -79,7 +79,7 @@ public record VkRenderPassTransformBeginInfoQCOM(MemorySegment segment) {
         public VkRenderPassTransformBeginInfoQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderPassTransformBeginInfoQCOM createUninit(MemorySegment segment) {
             return new VkRenderPassTransformBeginInfoQCOM(segment);

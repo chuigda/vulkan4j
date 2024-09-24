@@ -217,7 +217,7 @@ def generate_structure_factory(struct: Structure) -> str:
         public {struct.name} create(MemorySegment segment) {{
             return createUninit(segment);
         }}
-        
+
         @Override
         public {struct.name} createUninit(MemorySegment segment) {{
             return new {struct.name}(segment);

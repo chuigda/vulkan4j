@@ -79,7 +79,7 @@ public record VkPipelineRasterizationStateRasterizationOrderAMD(MemorySegment se
         public VkPipelineRasterizationStateRasterizationOrderAMD create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineRasterizationStateRasterizationOrderAMD createUninit(MemorySegment segment) {
             return new VkPipelineRasterizationStateRasterizationOrderAMD(segment);

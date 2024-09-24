@@ -136,7 +136,7 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) {
         public VkSemaphoreWaitInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSemaphoreWaitInfo createUninit(MemorySegment segment) {
             return new VkSemaphoreWaitInfo(segment);

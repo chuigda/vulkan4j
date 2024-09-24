@@ -104,7 +104,7 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(MemorySegment
         public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM createUninit(MemorySegment segment) {
             return new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(segment);

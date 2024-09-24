@@ -90,7 +90,7 @@ public record VkAccelerationStructureBuildRangeInfoKHR(MemorySegment segment) {
         public VkAccelerationStructureBuildRangeInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAccelerationStructureBuildRangeInfoKHR createUninit(MemorySegment segment) {
             return new VkAccelerationStructureBuildRangeInfoKHR(segment);

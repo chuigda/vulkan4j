@@ -66,7 +66,7 @@ public record VkDeviceOrHostAddressConstKHR(MemorySegment segment) {
         public VkDeviceOrHostAddressConstKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceOrHostAddressConstKHR createUninit(MemorySegment segment) {
             return new VkDeviceOrHostAddressConstKHR(segment);

@@ -79,7 +79,7 @@ public record VkPhysicalDeviceImagelessFramebufferFeatures(MemorySegment segment
         public VkPhysicalDeviceImagelessFramebufferFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceImagelessFramebufferFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceImagelessFramebufferFeatures(segment);

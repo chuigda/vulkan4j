@@ -779,7 +779,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkDestroyInstance.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -794,7 +794,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkEnumeratePhysicalDevices.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pPhysicalDeviceCount != null ? pPhysicalDeviceCount.segment() : MemorySegment.NULL,
                     pPhysicalDevices != null ? pPhysicalDevices.segment() : MemorySegment.NULL
             );
@@ -809,7 +809,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceProperties.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pProperties != null ? pProperties.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -824,7 +824,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceQueueFamilyProperties.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pQueueFamilyPropertyCount != null ? pQueueFamilyPropertyCount.segment() : MemorySegment.NULL,
                     pQueueFamilyProperties != null ? pQueueFamilyProperties.segment() : MemorySegment.NULL
             );
@@ -839,7 +839,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceMemoryProperties.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pMemoryProperties != null ? pMemoryProperties.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -853,7 +853,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceFeatures.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pFeatures != null ? pFeatures.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -868,7 +868,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceFormatProperties.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     format,
                     pFormatProperties != null ? pFormatProperties.segment() : MemorySegment.NULL
             );
@@ -888,7 +888,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceImageFormatProperties.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     format,
                     type,
                     tiling,
@@ -909,7 +909,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateDevice.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pDevice != null ? pDevice.segment() : MemorySegment.NULL
@@ -926,7 +926,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkEnumerateDeviceLayerProperties.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pPropertyCount != null ? pPropertyCount.segment() : MemorySegment.NULL,
                     pProperties != null ? pProperties.segment() : MemorySegment.NULL
             );
@@ -943,7 +943,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkEnumerateDeviceExtensionProperties.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pLayerName != null ? pLayerName.segment() : MemorySegment.NULL,
                     pPropertyCount != null ? pPropertyCount.segment() : MemorySegment.NULL,
                     pProperties != null ? pProperties.segment() : MemorySegment.NULL
@@ -965,7 +965,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     format,
                     type,
                     samples,
@@ -987,7 +987,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateAndroidSurfaceKHR.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pSurface != null ? pSurface.segment() : MemorySegment.NULL
@@ -1004,7 +1004,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceDisplayPropertiesKHR.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pPropertyCount != null ? pPropertyCount.segment() : MemorySegment.NULL,
                     pProperties != null ? pProperties.segment() : MemorySegment.NULL
             );
@@ -1020,7 +1020,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceDisplayPlanePropertiesKHR.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pPropertyCount != null ? pPropertyCount.segment() : MemorySegment.NULL,
                     pProperties != null ? pProperties.segment() : MemorySegment.NULL
             );
@@ -1037,7 +1037,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetDisplayPlaneSupportedDisplaysKHR.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     planeIndex,
                     pDisplayCount != null ? pDisplayCount.segment() : MemorySegment.NULL,
                     pDisplays != null ? pDisplays.segment() : MemorySegment.NULL
@@ -1055,8 +1055,8 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetDisplayModePropertiesKHR.invoke(
-                    physicalDevice.handle(),
-                    display.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
+                    display != null ? display.handle() : MemorySegment.NULL,
                     pPropertyCount != null ? pPropertyCount.segment() : MemorySegment.NULL,
                     pProperties != null ? pProperties.segment() : MemorySegment.NULL
             );
@@ -1074,8 +1074,8 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateDisplayModeKHR.invoke(
-                    physicalDevice.handle(),
-                    display.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
+                    display != null ? display.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pMode != null ? pMode.segment() : MemorySegment.NULL
@@ -1093,8 +1093,8 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetDisplayPlaneCapabilitiesKHR.invoke(
-                    physicalDevice.handle(),
-                    mode.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
+                    mode != null ? mode.handle() : MemorySegment.NULL,
                     planeIndex,
                     pCapabilities != null ? pCapabilities.segment() : MemorySegment.NULL
             );
@@ -1111,7 +1111,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateDisplayPlaneSurfaceKHR.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pSurface != null ? pSurface.segment() : MemorySegment.NULL
@@ -1128,8 +1128,8 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkDestroySurfaceKHR.invoke(
-                    instance.handle(),
-                    surface.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
+                    surface != null ? surface.handle() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -1145,9 +1145,9 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfaceSupportKHR.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     queueFamilyIndex,
-                    surface.handle(),
+                    surface != null ? surface.handle() : MemorySegment.NULL,
                     pSupported != null ? pSupported.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -1162,8 +1162,8 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfaceCapabilitiesKHR.invoke(
-                    physicalDevice.handle(),
-                    surface.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
+                    surface != null ? surface.handle() : MemorySegment.NULL,
                     pSurfaceCapabilities != null ? pSurfaceCapabilities.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -1179,8 +1179,8 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfaceFormatsKHR.invoke(
-                    physicalDevice.handle(),
-                    surface.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
+                    surface != null ? surface.handle() : MemorySegment.NULL,
                     pSurfaceFormatCount != null ? pSurfaceFormatCount.segment() : MemorySegment.NULL,
                     pSurfaceFormats != null ? pSurfaceFormats.segment() : MemorySegment.NULL
             );
@@ -1197,8 +1197,8 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfacePresentModesKHR.invoke(
-                    physicalDevice.handle(),
-                    surface.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
+                    surface != null ? surface.handle() : MemorySegment.NULL,
                     pPresentModeCount != null ? pPresentModeCount.segment() : MemorySegment.NULL,
                     pPresentModes
             );
@@ -1215,7 +1215,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateViSurfaceNN.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pSurface != null ? pSurface.segment() : MemorySegment.NULL
@@ -1233,7 +1233,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateWaylandSurfaceKHR.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pSurface != null ? pSurface.segment() : MemorySegment.NULL
@@ -1250,7 +1250,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceWaylandPresentationSupportKHR.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     queueFamilyIndex,
                     display
             );
@@ -1267,7 +1267,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateWin32SurfaceKHR.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pSurface != null ? pSurface.segment() : MemorySegment.NULL
@@ -1283,7 +1283,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceWin32PresentationSupportKHR.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     queueFamilyIndex
             );
         } catch (Throwable t) {
@@ -1299,7 +1299,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateXlibSurfaceKHR.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pSurface != null ? pSurface.segment() : MemorySegment.NULL
@@ -1317,7 +1317,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceXlibPresentationSupportKHR.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     queueFamilyIndex,
                     dpy,
                     visualID
@@ -1335,7 +1335,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateXcbSurfaceKHR.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pSurface != null ? pSurface.segment() : MemorySegment.NULL
@@ -1353,7 +1353,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceXcbPresentationSupportKHR.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     queueFamilyIndex,
                     connection,
                     visual_id
@@ -1371,7 +1371,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateDirectFBSurfaceEXT.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pSurface != null ? pSurface.segment() : MemorySegment.NULL
@@ -1388,7 +1388,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceDirectFBPresentationSupportEXT.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     queueFamilyIndex,
                     dfb
             );
@@ -1405,7 +1405,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateImagePipeSurfaceFUCHSIA.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pSurface != null ? pSurface.segment() : MemorySegment.NULL
@@ -1423,7 +1423,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateStreamDescriptorSurfaceGGP.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pSurface != null ? pSurface.segment() : MemorySegment.NULL
@@ -1441,7 +1441,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateScreenSurfaceQNX.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pSurface != null ? pSurface.segment() : MemorySegment.NULL
@@ -1458,7 +1458,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceScreenPresentationSupportQNX.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     queueFamilyIndex,
                     window
             );
@@ -1475,7 +1475,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateDebugReportCallbackEXT.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pCallback != null ? pCallback.segment() : MemorySegment.NULL
@@ -1492,8 +1492,8 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkDestroyDebugReportCallbackEXT.invoke(
-                    instance.handle(),
-                    callback.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
+                    callback != null ? callback.handle() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -1513,7 +1513,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkDebugReportMessageEXT.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     flags,
                     objectType,
                     object,
@@ -1539,7 +1539,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceExternalImageFormatPropertiesNV.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     format,
                     type,
                     tiling,
@@ -1559,7 +1559,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceFeatures2.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pFeatures != null ? pFeatures.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -1573,7 +1573,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceProperties2.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pProperties != null ? pProperties.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -1588,7 +1588,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceFormatProperties2.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     format,
                     pFormatProperties != null ? pFormatProperties.segment() : MemorySegment.NULL
             );
@@ -1604,7 +1604,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceImageFormatProperties2.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pImageFormatInfo != null ? pImageFormatInfo.segment() : MemorySegment.NULL,
                     pImageFormatProperties != null ? pImageFormatProperties.segment() : MemorySegment.NULL
             );
@@ -1620,7 +1620,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceQueueFamilyProperties2.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pQueueFamilyPropertyCount != null ? pQueueFamilyPropertyCount.segment() : MemorySegment.NULL,
                     pQueueFamilyProperties != null ? pQueueFamilyProperties.segment() : MemorySegment.NULL
             );
@@ -1635,7 +1635,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceMemoryProperties2.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pMemoryProperties != null ? pMemoryProperties.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -1651,7 +1651,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties2.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pFormatInfo != null ? pFormatInfo.segment() : MemorySegment.NULL,
                     pPropertyCount != null ? pPropertyCount.segment() : MemorySegment.NULL,
                     pProperties != null ? pProperties.segment() : MemorySegment.NULL
@@ -1668,7 +1668,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceExternalBufferProperties.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pExternalBufferInfo != null ? pExternalBufferInfo.segment() : MemorySegment.NULL,
                     pExternalBufferProperties != null ? pExternalBufferProperties.segment() : MemorySegment.NULL
             );
@@ -1684,7 +1684,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceExternalSemaphoreProperties.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pExternalSemaphoreInfo != null ? pExternalSemaphoreInfo.segment() : MemorySegment.NULL,
                     pExternalSemaphoreProperties != null ? pExternalSemaphoreProperties.segment() : MemorySegment.NULL
             );
@@ -1700,7 +1700,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceExternalFenceProperties.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pExternalFenceInfo != null ? pExternalFenceInfo.segment() : MemorySegment.NULL,
                     pExternalFenceProperties != null ? pExternalFenceProperties.segment() : MemorySegment.NULL
             );
@@ -1715,8 +1715,8 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkReleaseDisplayEXT.invoke(
-                    physicalDevice.handle(),
-                    display.handle()
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
+                    display != null ? display.handle() : MemorySegment.NULL
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1730,9 +1730,9 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkAcquireXlibDisplayEXT.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     dpy,
-                    display.handle()
+                    display != null ? display.handle() : MemorySegment.NULL
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1747,7 +1747,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetRandROutputDisplayEXT.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     dpy,
                     rrOutput,
                     pDisplay != null ? pDisplay.segment() : MemorySegment.NULL
@@ -1764,8 +1764,8 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfaceCapabilities2EXT.invoke(
-                    physicalDevice.handle(),
-                    surface.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
+                    surface != null ? surface.handle() : MemorySegment.NULL,
                     pSurfaceCapabilities != null ? pSurfaceCapabilities.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -1780,7 +1780,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkEnumeratePhysicalDeviceGroups.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pPhysicalDeviceGroupCount != null ? pPhysicalDeviceGroupCount.segment() : MemorySegment.NULL,
                     pPhysicalDeviceGroupProperties != null ? pPhysicalDeviceGroupProperties.segment() : MemorySegment.NULL
             );
@@ -1797,7 +1797,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateIOSSurfaceMVK.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pSurface != null ? pSurface.segment() : MemorySegment.NULL
@@ -1815,7 +1815,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateMacOSSurfaceMVK.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pSurface != null ? pSurface.segment() : MemorySegment.NULL
@@ -1833,7 +1833,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateMetalSurfaceEXT.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pSurface != null ? pSurface.segment() : MemorySegment.NULL
@@ -1850,7 +1850,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfaceCapabilities2KHR.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pSurfaceInfo != null ? pSurfaceInfo.segment() : MemorySegment.NULL,
                     pSurfaceCapabilities != null ? pSurfaceCapabilities.segment() : MemorySegment.NULL
             );
@@ -1867,7 +1867,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfaceFormats2KHR.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pSurfaceInfo != null ? pSurfaceInfo.segment() : MemorySegment.NULL,
                     pSurfaceFormatCount != null ? pSurfaceFormatCount.segment() : MemorySegment.NULL,
                     pSurfaceFormats != null ? pSurfaceFormats.segment() : MemorySegment.NULL
@@ -1884,7 +1884,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceDisplayProperties2KHR.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pPropertyCount != null ? pPropertyCount.segment() : MemorySegment.NULL,
                     pProperties != null ? pProperties.segment() : MemorySegment.NULL
             );
@@ -1900,7 +1900,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceDisplayPlaneProperties2KHR.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pPropertyCount != null ? pPropertyCount.segment() : MemorySegment.NULL,
                     pProperties != null ? pProperties.segment() : MemorySegment.NULL
             );
@@ -1917,8 +1917,8 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetDisplayModeProperties2KHR.invoke(
-                    physicalDevice.handle(),
-                    display.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
+                    display != null ? display.handle() : MemorySegment.NULL,
                     pPropertyCount != null ? pPropertyCount.segment() : MemorySegment.NULL,
                     pProperties != null ? pProperties.segment() : MemorySegment.NULL
             );
@@ -1934,7 +1934,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetDisplayPlaneCapabilities2KHR.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pDisplayPlaneInfo != null ? pDisplayPlaneInfo.segment() : MemorySegment.NULL,
                     pCapabilities != null ? pCapabilities.segment() : MemorySegment.NULL
             );
@@ -1949,7 +1949,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkSetDebugUtilsObjectNameEXT.invoke(
-                    device.handle(),
+                    device != null ? device.handle() : MemorySegment.NULL,
                     pNameInfo != null ? pNameInfo.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -1963,7 +1963,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkSetDebugUtilsObjectTagEXT.invoke(
-                    device.handle(),
+                    device != null ? device.handle() : MemorySegment.NULL,
                     pTagInfo != null ? pTagInfo.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -1977,7 +1977,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkQueueBeginDebugUtilsLabelEXT.invoke(
-                    queue.handle(),
+                    queue != null ? queue.handle() : MemorySegment.NULL,
                     pLabelInfo != null ? pLabelInfo.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -1990,7 +1990,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkQueueEndDebugUtilsLabelEXT.invoke(
-                    queue.handle()
+                    queue != null ? queue.handle() : MemorySegment.NULL
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -2003,7 +2003,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkQueueInsertDebugUtilsLabelEXT.invoke(
-                    queue.handle(),
+                    queue != null ? queue.handle() : MemorySegment.NULL,
                     pLabelInfo != null ? pLabelInfo.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -2017,7 +2017,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkCmdBeginDebugUtilsLabelEXT.invoke(
-                    commandBuffer.handle(),
+                    commandBuffer != null ? commandBuffer.handle() : MemorySegment.NULL,
                     pLabelInfo != null ? pLabelInfo.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -2030,7 +2030,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkCmdEndDebugUtilsLabelEXT.invoke(
-                    commandBuffer.handle()
+                    commandBuffer != null ? commandBuffer.handle() : MemorySegment.NULL
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -2043,7 +2043,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkCmdInsertDebugUtilsLabelEXT.invoke(
-                    commandBuffer.handle(),
+                    commandBuffer != null ? commandBuffer.handle() : MemorySegment.NULL,
                     pLabelInfo != null ? pLabelInfo.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -2059,7 +2059,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateDebugUtilsMessengerEXT.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pMessenger != null ? pMessenger.segment() : MemorySegment.NULL
@@ -2076,8 +2076,8 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkDestroyDebugUtilsMessengerEXT.invoke(
-                    instance.handle(),
-                    messenger.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
+                    messenger != null ? messenger.handle() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -2093,7 +2093,7 @@ public final class InstanceCommands {
     ) {
         try {
             HANDLE$vkSubmitDebugUtilsMessageEXT.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     messageSeverity,
                     messageTypes,
                     pCallbackData != null ? pCallbackData.segment() : MemorySegment.NULL
@@ -2111,7 +2111,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreateHeadlessSurfaceEXT.invoke(
-                    instance.handle(),
+                    instance != null ? instance.handle() : MemorySegment.NULL,
                     pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
                     pSurface != null ? pSurface.segment() : MemorySegment.NULL
@@ -2128,7 +2128,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceToolProperties.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     pToolCount != null ? pToolCount.segment() : MemorySegment.NULL,
                     pToolProperties != null ? pToolProperties.segment() : MemorySegment.NULL
             );
@@ -2144,9 +2144,9 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkAcquireDrmDisplayEXT.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     drmFd,
-                    display.handle()
+                    display != null ? display.handle() : MemorySegment.NULL
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -2161,7 +2161,7 @@ public final class InstanceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetDrmDisplayEXT.invoke(
-                    physicalDevice.handle(),
+                    physicalDevice != null ? physicalDevice.handle() : MemorySegment.NULL,
                     drmFd,
                     connectorId,
                     display != null ? display.segment() : MemorySegment.NULL

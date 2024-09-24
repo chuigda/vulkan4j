@@ -95,7 +95,7 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(MemorySegment segm
         public VkPipelineFragmentShadingRateStateCreateInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineFragmentShadingRateStateCreateInfoKHR createUninit(MemorySegment segment) {
             return new VkPipelineFragmentShadingRateStateCreateInfoKHR(segment);

@@ -79,7 +79,7 @@ public record VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(MemorySegment 
         public VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(segment);

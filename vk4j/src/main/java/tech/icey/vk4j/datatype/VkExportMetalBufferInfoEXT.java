@@ -91,7 +91,7 @@ public record VkExportMetalBufferInfoEXT(MemorySegment segment) {
         public VkExportMetalBufferInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExportMetalBufferInfoEXT createUninit(MemorySegment segment) {
             return new VkExportMetalBufferInfoEXT(segment);

@@ -79,7 +79,7 @@ public record VkPipelineCompilerControlCreateInfoAMD(MemorySegment segment) {
         public VkPipelineCompilerControlCreateInfoAMD create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineCompilerControlCreateInfoAMD createUninit(MemorySegment segment) {
             return new VkPipelineCompilerControlCreateInfoAMD(segment);

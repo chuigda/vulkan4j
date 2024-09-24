@@ -79,7 +79,7 @@ public record VkPrivateDataSlotCreateInfo(MemorySegment segment) {
         public VkPrivateDataSlotCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPrivateDataSlotCreateInfo createUninit(MemorySegment segment) {
             return new VkPrivateDataSlotCreateInfo(segment);

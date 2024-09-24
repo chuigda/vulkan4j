@@ -90,7 +90,7 @@ public record VkDrawIndirectCommand(MemorySegment segment) {
         public VkDrawIndirectCommand create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDrawIndirectCommand createUninit(MemorySegment segment) {
             return new VkDrawIndirectCommand(segment);

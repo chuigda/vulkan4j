@@ -139,7 +139,7 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) {
         public VkRenderingInputAttachmentIndexInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderingInputAttachmentIndexInfoKHR createUninit(MemorySegment segment) {
             return new VkRenderingInputAttachmentIndexInfoKHR(segment);

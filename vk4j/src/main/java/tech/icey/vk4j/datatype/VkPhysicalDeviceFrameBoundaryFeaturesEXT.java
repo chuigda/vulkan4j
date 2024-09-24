@@ -79,7 +79,7 @@ public record VkPhysicalDeviceFrameBoundaryFeaturesEXT(MemorySegment segment) {
         public VkPhysicalDeviceFrameBoundaryFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceFrameBoundaryFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceFrameBoundaryFeaturesEXT(segment);

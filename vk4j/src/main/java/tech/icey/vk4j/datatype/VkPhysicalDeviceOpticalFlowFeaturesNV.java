@@ -79,7 +79,7 @@ public record VkPhysicalDeviceOpticalFlowFeaturesNV(MemorySegment segment) {
         public VkPhysicalDeviceOpticalFlowFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceOpticalFlowFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceOpticalFlowFeaturesNV(segment);

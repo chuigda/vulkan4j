@@ -91,7 +91,7 @@ public record VkRenderingFragmentDensityMapAttachmentInfoEXT(MemorySegment segme
         public VkRenderingFragmentDensityMapAttachmentInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderingFragmentDensityMapAttachmentInfoEXT createUninit(MemorySegment segment) {
             return new VkRenderingFragmentDensityMapAttachmentInfoEXT(segment);

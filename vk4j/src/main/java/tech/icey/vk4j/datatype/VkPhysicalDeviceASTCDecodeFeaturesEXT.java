@@ -79,7 +79,7 @@ public record VkPhysicalDeviceASTCDecodeFeaturesEXT(MemorySegment segment) {
         public VkPhysicalDeviceASTCDecodeFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceASTCDecodeFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceASTCDecodeFeaturesEXT(segment);

@@ -116,7 +116,7 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment 
         public VkPipelineViewportShadingRateImageStateCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineViewportShadingRateImageStateCreateInfoNV createUninit(MemorySegment segment) {
             return new VkPipelineViewportShadingRateImageStateCreateInfoNV(segment);

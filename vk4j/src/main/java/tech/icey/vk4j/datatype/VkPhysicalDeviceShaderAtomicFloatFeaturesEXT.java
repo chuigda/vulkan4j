@@ -211,7 +211,7 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(MemorySegment segment
         public VkPhysicalDeviceShaderAtomicFloatFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderAtomicFloatFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(segment);

@@ -91,7 +91,7 @@ public record VkPhysicalDeviceInlineUniformBlockFeatures(MemorySegment segment) 
         public VkPhysicalDeviceInlineUniformBlockFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceInlineUniformBlockFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceInlineUniformBlockFeatures(segment);

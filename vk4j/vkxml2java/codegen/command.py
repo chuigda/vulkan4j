@@ -176,8 +176,7 @@ def generate_input_convert(type_: CType, input_param: str):
                 or isinstance(type_.pointee, CHandleType):
             return f'{input_param} != null ? {input_param}.segment() : MemorySegment.NULL'
 
-    if isinstance(type_, CStructType) \
-            or isinstance(type_, CUnionType):
+    if isinstance(type_, CStructType) or isinstance(type_, CUnionType):
         return f'{input_param}.segment()'
 
     if isinstance(type_, CArrayType):
@@ -188,7 +187,7 @@ def generate_input_convert(type_: CType, input_param: str):
             return f'{input_param} != null && {input_param}.length != 0 ? {input_param}[0].segment() : MemorySegment.NULL'
 
     if isinstance(type_, CHandleType):
-        return f'{input_param}.handle()'
+        return f'{input_param} != null ? {input_param}.handle() : MemorySegment.NULL'
 
     return input_param
 

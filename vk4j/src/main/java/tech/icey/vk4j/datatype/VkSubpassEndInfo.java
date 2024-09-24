@@ -67,7 +67,7 @@ public record VkSubpassEndInfo(MemorySegment segment) {
         public VkSubpassEndInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSubpassEndInfo createUninit(MemorySegment segment) {
             return new VkSubpassEndInfo(segment);

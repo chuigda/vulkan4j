@@ -79,7 +79,7 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(MemorySegment segment) {
         public VkExecutionGraphPipelineScratchSizeAMDX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExecutionGraphPipelineScratchSizeAMDX createUninit(MemorySegment segment) {
             return new VkExecutionGraphPipelineScratchSizeAMDX(segment);

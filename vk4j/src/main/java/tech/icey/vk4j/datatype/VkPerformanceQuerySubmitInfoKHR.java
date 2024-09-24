@@ -79,7 +79,7 @@ public record VkPerformanceQuerySubmitInfoKHR(MemorySegment segment) {
         public VkPerformanceQuerySubmitInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPerformanceQuerySubmitInfoKHR createUninit(MemorySegment segment) {
             return new VkPerformanceQuerySubmitInfoKHR(segment);

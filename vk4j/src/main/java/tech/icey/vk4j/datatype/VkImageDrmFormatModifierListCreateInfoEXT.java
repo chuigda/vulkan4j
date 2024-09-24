@@ -99,7 +99,7 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(MemorySegment segment) {
         public VkImageDrmFormatModifierListCreateInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageDrmFormatModifierListCreateInfoEXT createUninit(MemorySegment segment) {
             return new VkImageDrmFormatModifierListCreateInfoEXT(segment);

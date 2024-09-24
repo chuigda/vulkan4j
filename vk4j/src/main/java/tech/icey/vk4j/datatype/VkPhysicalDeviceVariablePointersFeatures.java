@@ -91,7 +91,7 @@ public record VkPhysicalDeviceVariablePointersFeatures(MemorySegment segment) {
         public VkPhysicalDeviceVariablePointersFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceVariablePointersFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceVariablePointersFeatures(segment);

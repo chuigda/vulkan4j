@@ -91,7 +91,7 @@ public record VkFenceGetWin32HandleInfoKHR(MemorySegment segment) {
         public VkFenceGetWin32HandleInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkFenceGetWin32HandleInfoKHR createUninit(MemorySegment segment) {
             return new VkFenceGetWin32HandleInfoKHR(segment);

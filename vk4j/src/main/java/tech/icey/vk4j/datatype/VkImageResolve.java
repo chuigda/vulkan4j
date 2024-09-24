@@ -102,7 +102,7 @@ public record VkImageResolve(MemorySegment segment) {
         public VkImageResolve create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageResolve createUninit(MemorySegment segment) {
             return new VkImageResolve(segment);

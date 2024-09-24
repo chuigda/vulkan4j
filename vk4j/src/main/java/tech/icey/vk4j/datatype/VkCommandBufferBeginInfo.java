@@ -104,7 +104,7 @@ public record VkCommandBufferBeginInfo(MemorySegment segment) {
         public VkCommandBufferBeginInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCommandBufferBeginInfo createUninit(MemorySegment segment) {
             return new VkCommandBufferBeginInfo(segment);

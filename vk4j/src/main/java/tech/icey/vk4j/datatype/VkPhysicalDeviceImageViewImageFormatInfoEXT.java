@@ -79,7 +79,7 @@ public record VkPhysicalDeviceImageViewImageFormatInfoEXT(MemorySegment segment)
         public VkPhysicalDeviceImageViewImageFormatInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceImageViewImageFormatInfoEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceImageViewImageFormatInfoEXT(segment);

@@ -99,7 +99,7 @@ public record VkBindBufferMemoryDeviceGroupInfo(MemorySegment segment) {
         public VkBindBufferMemoryDeviceGroupInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBindBufferMemoryDeviceGroupInfo createUninit(MemorySegment segment) {
             return new VkBindBufferMemoryDeviceGroupInfo(segment);

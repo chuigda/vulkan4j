@@ -79,7 +79,7 @@ public record VkDescriptorSetLayoutSupport(MemorySegment segment) {
         public VkDescriptorSetLayoutSupport create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorSetLayoutSupport createUninit(MemorySegment segment) {
             return new VkDescriptorSetLayoutSupport(segment);

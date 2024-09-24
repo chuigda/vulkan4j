@@ -99,7 +99,7 @@ public record VkPresentIdKHR(MemorySegment segment) {
         public VkPresentIdKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPresentIdKHR createUninit(MemorySegment segment) {
             return new VkPresentIdKHR(segment);

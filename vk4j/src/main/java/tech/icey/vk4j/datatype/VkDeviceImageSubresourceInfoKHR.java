@@ -117,7 +117,7 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
         public VkDeviceImageSubresourceInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceImageSubresourceInfoKHR createUninit(MemorySegment segment) {
             return new VkDeviceImageSubresourceInfoKHR(segment);

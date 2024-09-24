@@ -79,7 +79,7 @@ public record VkSubpassResolvePerformanceQueryEXT(MemorySegment segment) {
         public VkSubpassResolvePerformanceQueryEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSubpassResolvePerformanceQueryEXT createUninit(MemorySegment segment) {
             return new VkSubpassResolvePerformanceQueryEXT(segment);

@@ -236,7 +236,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
         public VkGeneratedCommandsInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkGeneratedCommandsInfoNV createUninit(MemorySegment segment) {
             return new VkGeneratedCommandsInfoNV(segment);

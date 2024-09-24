@@ -103,7 +103,7 @@ public record VkMappedMemoryRange(MemorySegment segment) {
         public VkMappedMemoryRange create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMappedMemoryRange createUninit(MemorySegment segment) {
             return new VkMappedMemoryRange(segment);

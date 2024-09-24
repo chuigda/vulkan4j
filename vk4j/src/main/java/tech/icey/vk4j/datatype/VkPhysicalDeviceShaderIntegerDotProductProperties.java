@@ -427,7 +427,7 @@ public record VkPhysicalDeviceShaderIntegerDotProductProperties(MemorySegment se
         public VkPhysicalDeviceShaderIntegerDotProductProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderIntegerDotProductProperties createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderIntegerDotProductProperties(segment);

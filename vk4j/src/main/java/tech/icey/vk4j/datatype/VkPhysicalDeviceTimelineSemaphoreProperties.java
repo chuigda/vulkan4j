@@ -79,7 +79,7 @@ public record VkPhysicalDeviceTimelineSemaphoreProperties(MemorySegment segment)
         public VkPhysicalDeviceTimelineSemaphoreProperties create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceTimelineSemaphoreProperties createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceTimelineSemaphoreProperties(segment);

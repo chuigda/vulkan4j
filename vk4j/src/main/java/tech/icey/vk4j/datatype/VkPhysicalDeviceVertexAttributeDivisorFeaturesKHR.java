@@ -91,7 +91,7 @@ public record VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR(MemorySegment se
         public VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR(segment);

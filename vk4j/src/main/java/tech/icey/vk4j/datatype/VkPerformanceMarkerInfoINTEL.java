@@ -79,7 +79,7 @@ public record VkPerformanceMarkerInfoINTEL(MemorySegment segment) {
         public VkPerformanceMarkerInfoINTEL create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPerformanceMarkerInfoINTEL createUninit(MemorySegment segment) {
             return new VkPerformanceMarkerInfoINTEL(segment);

@@ -105,7 +105,7 @@ public record VkLatencySurfaceCapabilitiesNV(MemorySegment segment) {
         public VkLatencySurfaceCapabilitiesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkLatencySurfaceCapabilitiesNV createUninit(MemorySegment segment) {
             return new VkLatencySurfaceCapabilitiesNV(segment);

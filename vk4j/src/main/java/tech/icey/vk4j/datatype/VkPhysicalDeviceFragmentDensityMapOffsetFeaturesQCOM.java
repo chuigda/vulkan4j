@@ -79,7 +79,7 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM(MemorySegment
         public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM(segment);

@@ -99,7 +99,7 @@ public record VkCuFunctionCreateInfoNVX(MemorySegment segment) {
         public VkCuFunctionCreateInfoNVX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCuFunctionCreateInfoNVX createUninit(MemorySegment segment) {
             return new VkCuFunctionCreateInfoNVX(segment);

@@ -115,7 +115,7 @@ public record VkPhysicalDeviceExternalSciSyncFeaturesNV(MemorySegment segment) {
         public VkPhysicalDeviceExternalSciSyncFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceExternalSciSyncFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceExternalSciSyncFeaturesNV(segment);

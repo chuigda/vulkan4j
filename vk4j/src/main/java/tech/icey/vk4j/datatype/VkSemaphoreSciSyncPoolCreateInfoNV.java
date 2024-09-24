@@ -79,7 +79,7 @@ public record VkSemaphoreSciSyncPoolCreateInfoNV(MemorySegment segment) {
         public VkSemaphoreSciSyncPoolCreateInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSemaphoreSciSyncPoolCreateInfoNV createUninit(MemorySegment segment) {
             return new VkSemaphoreSciSyncPoolCreateInfoNV(segment);

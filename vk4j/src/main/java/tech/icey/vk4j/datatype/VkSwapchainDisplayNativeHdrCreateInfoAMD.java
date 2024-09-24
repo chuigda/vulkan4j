@@ -79,7 +79,7 @@ public record VkSwapchainDisplayNativeHdrCreateInfoAMD(MemorySegment segment) {
         public VkSwapchainDisplayNativeHdrCreateInfoAMD create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSwapchainDisplayNativeHdrCreateInfoAMD createUninit(MemorySegment segment) {
             return new VkSwapchainDisplayNativeHdrCreateInfoAMD(segment);

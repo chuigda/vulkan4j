@@ -104,7 +104,7 @@ public record VkSwapchainPresentFenceInfoEXT(MemorySegment segment) {
         public VkSwapchainPresentFenceInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSwapchainPresentFenceInfoEXT createUninit(MemorySegment segment) {
             return new VkSwapchainPresentFenceInfoEXT(segment);

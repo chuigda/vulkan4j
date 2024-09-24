@@ -102,7 +102,7 @@ public record VkDecompressMemoryRegionNV(MemorySegment segment) {
         public VkDecompressMemoryRegionNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDecompressMemoryRegionNV createUninit(MemorySegment segment) {
             return new VkDecompressMemoryRegionNV(segment);

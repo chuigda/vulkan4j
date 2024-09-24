@@ -79,7 +79,7 @@ public record VkSurfaceCapabilitiesPresentBarrierNV(MemorySegment segment) {
         public VkSurfaceCapabilitiesPresentBarrierNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSurfaceCapabilitiesPresentBarrierNV createUninit(MemorySegment segment) {
             return new VkSurfaceCapabilitiesPresentBarrierNV(segment);

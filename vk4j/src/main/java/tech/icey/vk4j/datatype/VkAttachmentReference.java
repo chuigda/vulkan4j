@@ -66,7 +66,7 @@ public record VkAttachmentReference(MemorySegment segment) {
         public VkAttachmentReference create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkAttachmentReference createUninit(MemorySegment segment) {
             return new VkAttachmentReference(segment);

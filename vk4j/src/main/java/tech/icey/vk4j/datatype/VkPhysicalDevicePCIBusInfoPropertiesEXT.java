@@ -115,7 +115,7 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment) {
         public VkPhysicalDevicePCIBusInfoPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevicePCIBusInfoPropertiesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDevicePCIBusInfoPropertiesEXT(segment);

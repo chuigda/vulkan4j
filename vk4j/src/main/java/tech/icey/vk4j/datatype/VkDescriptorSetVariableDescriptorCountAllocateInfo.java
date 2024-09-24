@@ -99,7 +99,7 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(MemorySegment s
         public VkDescriptorSetVariableDescriptorCountAllocateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorSetVariableDescriptorCountAllocateInfo createUninit(MemorySegment segment) {
             return new VkDescriptorSetVariableDescriptorCountAllocateInfo(segment);

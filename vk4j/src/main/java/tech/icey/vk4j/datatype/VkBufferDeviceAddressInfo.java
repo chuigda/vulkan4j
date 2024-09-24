@@ -79,7 +79,7 @@ public record VkBufferDeviceAddressInfo(MemorySegment segment) {
         public VkBufferDeviceAddressInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBufferDeviceAddressInfo createUninit(MemorySegment segment) {
             return new VkBufferDeviceAddressInfo(segment);

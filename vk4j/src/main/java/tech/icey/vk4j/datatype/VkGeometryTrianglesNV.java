@@ -199,7 +199,7 @@ public record VkGeometryTrianglesNV(MemorySegment segment) {
         public VkGeometryTrianglesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkGeometryTrianglesNV createUninit(MemorySegment segment) {
             return new VkGeometryTrianglesNV(segment);

@@ -103,7 +103,7 @@ public record VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(MemorySegment 
         public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(segment);

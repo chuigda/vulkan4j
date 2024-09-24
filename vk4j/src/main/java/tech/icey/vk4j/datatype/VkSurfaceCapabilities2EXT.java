@@ -199,7 +199,7 @@ public record VkSurfaceCapabilities2EXT(MemorySegment segment) {
         public VkSurfaceCapabilities2EXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSurfaceCapabilities2EXT createUninit(MemorySegment segment) {
             return new VkSurfaceCapabilities2EXT(segment);

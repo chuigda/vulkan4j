@@ -103,7 +103,7 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(MemorySegment segment) 
         public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(segment);

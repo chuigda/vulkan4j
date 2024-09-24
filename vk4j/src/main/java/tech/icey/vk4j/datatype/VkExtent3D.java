@@ -78,7 +78,7 @@ public record VkExtent3D(MemorySegment segment) {
         public VkExtent3D create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExtent3D createUninit(MemorySegment segment) {
             return new VkExtent3D(segment);

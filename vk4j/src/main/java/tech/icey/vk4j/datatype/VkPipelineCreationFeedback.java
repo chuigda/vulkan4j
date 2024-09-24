@@ -66,7 +66,7 @@ public record VkPipelineCreationFeedback(MemorySegment segment) {
         public VkPipelineCreationFeedback create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineCreationFeedback createUninit(MemorySegment segment) {
             return new VkPipelineCreationFeedback(segment);

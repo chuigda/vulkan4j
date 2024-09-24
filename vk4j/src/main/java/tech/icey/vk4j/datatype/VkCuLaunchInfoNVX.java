@@ -209,7 +209,7 @@ public record VkCuLaunchInfoNVX(MemorySegment segment) {
         public VkCuLaunchInfoNVX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCuLaunchInfoNVX createUninit(MemorySegment segment) {
             return new VkCuLaunchInfoNVX(segment);

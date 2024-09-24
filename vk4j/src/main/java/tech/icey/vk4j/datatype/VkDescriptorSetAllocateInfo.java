@@ -116,7 +116,7 @@ public record VkDescriptorSetAllocateInfo(MemorySegment segment) {
         public VkDescriptorSetAllocateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDescriptorSetAllocateInfo createUninit(MemorySegment segment) {
             return new VkDescriptorSetAllocateInfo(segment);

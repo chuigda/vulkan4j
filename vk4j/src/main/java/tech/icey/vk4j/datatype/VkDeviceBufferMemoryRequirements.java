@@ -92,7 +92,7 @@ public record VkDeviceBufferMemoryRequirements(MemorySegment segment) {
         public VkDeviceBufferMemoryRequirements create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceBufferMemoryRequirements createUninit(MemorySegment segment) {
             return new VkDeviceBufferMemoryRequirements(segment);

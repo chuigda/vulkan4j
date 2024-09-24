@@ -91,7 +91,7 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(MemorySegment segme
         public VkFilterCubicImageViewImageFormatPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkFilterCubicImageViewImageFormatPropertiesEXT createUninit(MemorySegment segment) {
             return new VkFilterCubicImageViewImageFormatPropertiesEXT(segment);

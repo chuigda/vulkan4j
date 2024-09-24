@@ -79,7 +79,7 @@ public record VkExportFenceSciSyncInfoNV(MemorySegment segment) {
         public VkExportFenceSciSyncInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExportFenceSciSyncInfoNV createUninit(MemorySegment segment) {
             return new VkExportFenceSciSyncInfoNV(segment);

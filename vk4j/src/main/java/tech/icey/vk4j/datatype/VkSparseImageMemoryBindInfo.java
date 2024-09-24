@@ -91,7 +91,7 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) {
         public VkSparseImageMemoryBindInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSparseImageMemoryBindInfo createUninit(MemorySegment segment) {
             return new VkSparseImageMemoryBindInfo(segment);

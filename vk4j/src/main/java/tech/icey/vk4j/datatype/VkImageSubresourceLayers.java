@@ -90,7 +90,7 @@ public record VkImageSubresourceLayers(MemorySegment segment) {
         public VkImageSubresourceLayers create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageSubresourceLayers createUninit(MemorySegment segment) {
             return new VkImageSubresourceLayers(segment);

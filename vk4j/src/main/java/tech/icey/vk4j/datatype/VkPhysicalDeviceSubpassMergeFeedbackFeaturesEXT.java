@@ -79,7 +79,7 @@ public record VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(MemorySegment segm
         public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(segment);

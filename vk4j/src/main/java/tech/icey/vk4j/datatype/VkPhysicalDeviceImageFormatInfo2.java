@@ -127,7 +127,7 @@ public record VkPhysicalDeviceImageFormatInfo2(MemorySegment segment) {
         public VkPhysicalDeviceImageFormatInfo2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceImageFormatInfo2 createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceImageFormatInfo2(segment);

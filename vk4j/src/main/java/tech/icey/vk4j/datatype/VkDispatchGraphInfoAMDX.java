@@ -90,7 +90,7 @@ public record VkDispatchGraphInfoAMDX(MemorySegment segment) {
         public VkDispatchGraphInfoAMDX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDispatchGraphInfoAMDX createUninit(MemorySegment segment) {
             return new VkDispatchGraphInfoAMDX(segment);

@@ -91,7 +91,7 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(MemorySegment segment
         public VkPhysicalDeviceCustomBorderColorFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceCustomBorderColorFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceCustomBorderColorFeaturesEXT(segment);

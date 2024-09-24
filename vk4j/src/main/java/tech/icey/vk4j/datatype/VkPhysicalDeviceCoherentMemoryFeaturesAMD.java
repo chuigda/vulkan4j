@@ -79,7 +79,7 @@ public record VkPhysicalDeviceCoherentMemoryFeaturesAMD(MemorySegment segment) {
         public VkPhysicalDeviceCoherentMemoryFeaturesAMD create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceCoherentMemoryFeaturesAMD createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceCoherentMemoryFeaturesAMD(segment);

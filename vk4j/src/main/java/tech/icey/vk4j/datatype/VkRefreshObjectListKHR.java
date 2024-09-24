@@ -104,7 +104,7 @@ public record VkRefreshObjectListKHR(MemorySegment segment) {
         public VkRefreshObjectListKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRefreshObjectListKHR createUninit(MemorySegment segment) {
             return new VkRefreshObjectListKHR(segment);

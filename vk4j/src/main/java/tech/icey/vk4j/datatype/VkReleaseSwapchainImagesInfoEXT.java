@@ -111,7 +111,7 @@ public record VkReleaseSwapchainImagesInfoEXT(MemorySegment segment) {
         public VkReleaseSwapchainImagesInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkReleaseSwapchainImagesInfoEXT createUninit(MemorySegment segment) {
             return new VkReleaseSwapchainImagesInfoEXT(segment);

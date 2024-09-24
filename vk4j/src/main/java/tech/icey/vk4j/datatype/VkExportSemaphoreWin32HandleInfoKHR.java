@@ -111,7 +111,7 @@ public record VkExportSemaphoreWin32HandleInfoKHR(MemorySegment segment) {
         public VkExportSemaphoreWin32HandleInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExportSemaphoreWin32HandleInfoKHR createUninit(MemorySegment segment) {
             return new VkExportSemaphoreWin32HandleInfoKHR(segment);

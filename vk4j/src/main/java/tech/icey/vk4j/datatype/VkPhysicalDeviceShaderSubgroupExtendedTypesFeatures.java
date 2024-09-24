@@ -79,7 +79,7 @@ public record VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(MemorySegment 
         public VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(segment);

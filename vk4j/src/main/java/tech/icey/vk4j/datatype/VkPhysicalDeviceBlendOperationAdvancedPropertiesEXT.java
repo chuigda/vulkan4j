@@ -139,7 +139,7 @@ public record VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(MemorySegment 
         public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(segment);

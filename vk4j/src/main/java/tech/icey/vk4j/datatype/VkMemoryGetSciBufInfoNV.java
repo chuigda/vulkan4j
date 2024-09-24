@@ -91,7 +91,7 @@ public record VkMemoryGetSciBufInfoNV(MemorySegment segment) {
         public VkMemoryGetSciBufInfoNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMemoryGetSciBufInfoNV createUninit(MemorySegment segment) {
             return new VkMemoryGetSciBufInfoNV(segment);

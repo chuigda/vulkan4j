@@ -79,7 +79,7 @@ public record VkPhysicalDeviceScalarBlockLayoutFeatures(MemorySegment segment) {
         public VkPhysicalDeviceScalarBlockLayoutFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceScalarBlockLayoutFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceScalarBlockLayoutFeatures(segment);

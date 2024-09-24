@@ -127,7 +127,7 @@ public record VkImageCopy2(MemorySegment segment) {
         public VkImageCopy2 create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkImageCopy2 createUninit(MemorySegment segment) {
             return new VkImageCopy2(segment);

@@ -79,7 +79,7 @@ public record VkExternalMemoryBufferCreateInfo(MemorySegment segment) {
         public VkExternalMemoryBufferCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExternalMemoryBufferCreateInfo createUninit(MemorySegment segment) {
             return new VkExternalMemoryBufferCreateInfo(segment);

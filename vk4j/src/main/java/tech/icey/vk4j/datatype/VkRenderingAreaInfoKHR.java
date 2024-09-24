@@ -141,7 +141,7 @@ public record VkRenderingAreaInfoKHR(MemorySegment segment) {
         public VkRenderingAreaInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderingAreaInfoKHR createUninit(MemorySegment segment) {
             return new VkRenderingAreaInfoKHR(segment);

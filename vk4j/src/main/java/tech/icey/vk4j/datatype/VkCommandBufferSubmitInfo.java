@@ -91,7 +91,7 @@ public record VkCommandBufferSubmitInfo(MemorySegment segment) {
         public VkCommandBufferSubmitInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkCommandBufferSubmitInfo createUninit(MemorySegment segment) {
             return new VkCommandBufferSubmitInfo(segment);

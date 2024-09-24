@@ -91,7 +91,7 @@ public record VkDirectDriverLoadingInfoLUNARG(MemorySegment segment) {
         public VkDirectDriverLoadingInfoLUNARG create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDirectDriverLoadingInfoLUNARG createUninit(MemorySegment segment) {
             return new VkDirectDriverLoadingInfoLUNARG(segment);

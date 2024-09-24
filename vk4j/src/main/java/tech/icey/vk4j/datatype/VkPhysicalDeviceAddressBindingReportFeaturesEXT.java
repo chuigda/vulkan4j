@@ -79,7 +79,7 @@ public record VkPhysicalDeviceAddressBindingReportFeaturesEXT(MemorySegment segm
         public VkPhysicalDeviceAddressBindingReportFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceAddressBindingReportFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceAddressBindingReportFeaturesEXT(segment);

@@ -79,7 +79,7 @@ public record VkExternalFormatANDROID(MemorySegment segment) {
         public VkExternalFormatANDROID create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkExternalFormatANDROID createUninit(MemorySegment segment) {
             return new VkExternalFormatANDROID(segment);

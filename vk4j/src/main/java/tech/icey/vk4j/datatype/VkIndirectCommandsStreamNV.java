@@ -66,7 +66,7 @@ public record VkIndirectCommandsStreamNV(MemorySegment segment) {
         public VkIndirectCommandsStreamNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkIndirectCommandsStreamNV createUninit(MemorySegment segment) {
             return new VkIndirectCommandsStreamNV(segment);

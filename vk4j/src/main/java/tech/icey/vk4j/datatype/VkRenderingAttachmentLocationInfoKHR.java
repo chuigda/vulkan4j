@@ -99,7 +99,7 @@ public record VkRenderingAttachmentLocationInfoKHR(MemorySegment segment) {
         public VkRenderingAttachmentLocationInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderingAttachmentLocationInfoKHR createUninit(MemorySegment segment) {
             return new VkRenderingAttachmentLocationInfoKHR(segment);

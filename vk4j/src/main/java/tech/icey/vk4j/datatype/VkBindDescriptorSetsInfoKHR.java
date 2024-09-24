@@ -172,7 +172,7 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) {
         public VkBindDescriptorSetsInfoKHR create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkBindDescriptorSetsInfoKHR createUninit(MemorySegment segment) {
             return new VkBindDescriptorSetsInfoKHR(segment);

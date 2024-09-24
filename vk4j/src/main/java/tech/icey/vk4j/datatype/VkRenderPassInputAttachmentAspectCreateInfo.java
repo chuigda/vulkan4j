@@ -104,7 +104,7 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(MemorySegment segment)
         public VkRenderPassInputAttachmentAspectCreateInfo create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkRenderPassInputAttachmentAspectCreateInfo createUninit(MemorySegment segment) {
             return new VkRenderPassInputAttachmentAspectCreateInfo(segment);

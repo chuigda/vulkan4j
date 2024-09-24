@@ -99,7 +99,7 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(MemorySegment segment) {
         public VkPipelineShaderStageNodeCreateInfoAMDX create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPipelineShaderStageNodeCreateInfoAMDX createUninit(MemorySegment segment) {
             return new VkPipelineShaderStageNodeCreateInfoAMDX(segment);

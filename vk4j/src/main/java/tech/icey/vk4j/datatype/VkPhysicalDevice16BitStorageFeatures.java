@@ -115,7 +115,7 @@ public record VkPhysicalDevice16BitStorageFeatures(MemorySegment segment) {
         public VkPhysicalDevice16BitStorageFeatures create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDevice16BitStorageFeatures createUninit(MemorySegment segment) {
             return new VkPhysicalDevice16BitStorageFeatures(segment);

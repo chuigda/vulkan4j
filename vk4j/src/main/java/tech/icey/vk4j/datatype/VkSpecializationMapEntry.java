@@ -77,7 +77,7 @@ public record VkSpecializationMapEntry(MemorySegment segment) {
         public VkSpecializationMapEntry create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkSpecializationMapEntry createUninit(MemorySegment segment) {
             return new VkSpecializationMapEntry(segment);

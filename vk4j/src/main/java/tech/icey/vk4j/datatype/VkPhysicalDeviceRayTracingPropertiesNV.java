@@ -163,7 +163,7 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(MemorySegment segment) {
         public VkPhysicalDeviceRayTracingPropertiesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceRayTracingPropertiesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceRayTracingPropertiesNV(segment);

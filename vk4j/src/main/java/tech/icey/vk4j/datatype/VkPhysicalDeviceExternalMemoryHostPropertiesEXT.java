@@ -79,7 +79,7 @@ public record VkPhysicalDeviceExternalMemoryHostPropertiesEXT(MemorySegment segm
         public VkPhysicalDeviceExternalMemoryHostPropertiesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceExternalMemoryHostPropertiesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceExternalMemoryHostPropertiesEXT(segment);

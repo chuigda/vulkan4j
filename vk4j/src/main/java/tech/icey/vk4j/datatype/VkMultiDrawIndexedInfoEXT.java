@@ -78,7 +78,7 @@ public record VkMultiDrawIndexedInfoEXT(MemorySegment segment) {
         public VkMultiDrawIndexedInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMultiDrawIndexedInfoEXT createUninit(MemorySegment segment) {
             return new VkMultiDrawIndexedInfoEXT(segment);

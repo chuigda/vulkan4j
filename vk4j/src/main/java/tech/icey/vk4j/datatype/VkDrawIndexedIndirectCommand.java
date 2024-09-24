@@ -102,7 +102,7 @@ public record VkDrawIndexedIndirectCommand(MemorySegment segment) {
         public VkDrawIndexedIndirectCommand create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDrawIndexedIndirectCommand createUninit(MemorySegment segment) {
             return new VkDrawIndexedIndirectCommand(segment);

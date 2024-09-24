@@ -79,7 +79,7 @@ public record VkPhysicalDeviceLinearColorAttachmentFeaturesNV(MemorySegment segm
         public VkPhysicalDeviceLinearColorAttachmentFeaturesNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceLinearColorAttachmentFeaturesNV createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceLinearColorAttachmentFeaturesNV(segment);

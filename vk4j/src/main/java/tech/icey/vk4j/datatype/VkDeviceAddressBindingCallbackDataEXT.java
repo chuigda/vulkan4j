@@ -115,7 +115,7 @@ public record VkDeviceAddressBindingCallbackDataEXT(MemorySegment segment) {
         public VkDeviceAddressBindingCallbackDataEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDeviceAddressBindingCallbackDataEXT createUninit(MemorySegment segment) {
             return new VkDeviceAddressBindingCallbackDataEXT(segment);

@@ -66,7 +66,7 @@ public record VkDrawMeshTasksIndirectCommandNV(MemorySegment segment) {
         public VkDrawMeshTasksIndirectCommandNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkDrawMeshTasksIndirectCommandNV createUninit(MemorySegment segment) {
             return new VkDrawMeshTasksIndirectCommandNV(segment);

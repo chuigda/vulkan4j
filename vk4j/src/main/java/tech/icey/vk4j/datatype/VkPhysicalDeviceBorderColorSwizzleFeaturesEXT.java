@@ -91,7 +91,7 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(MemorySegment segmen
         public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(segment);

@@ -79,7 +79,7 @@ public record VkQueryLowLatencySupportNV(MemorySegment segment) {
         public VkQueryLowLatencySupportNV create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkQueryLowLatencySupportNV createUninit(MemorySegment segment) {
             return new VkQueryLowLatencySupportNV(segment);

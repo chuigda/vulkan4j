@@ -66,7 +66,7 @@ public record VkMultiDrawInfoEXT(MemorySegment segment) {
         public VkMultiDrawInfoEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkMultiDrawInfoEXT createUninit(MemorySegment segment) {
             return new VkMultiDrawInfoEXT(segment);

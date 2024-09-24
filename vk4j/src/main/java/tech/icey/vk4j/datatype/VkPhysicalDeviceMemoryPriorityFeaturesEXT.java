@@ -79,7 +79,7 @@ public record VkPhysicalDeviceMemoryPriorityFeaturesEXT(MemorySegment segment) {
         public VkPhysicalDeviceMemoryPriorityFeaturesEXT create(MemorySegment segment) {
             return createUninit(segment);
         }
-        
+
         @Override
         public VkPhysicalDeviceMemoryPriorityFeaturesEXT createUninit(MemorySegment segment) {
             return new VkPhysicalDeviceMemoryPriorityFeaturesEXT(segment);
