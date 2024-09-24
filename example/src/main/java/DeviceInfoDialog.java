@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public final class DeviceInfoDialog extends JDialog {
+    public record DeviceInfo(String name, String details) {}
+
     public DeviceInfoDialog(List<DeviceInfo> deviceInfoList) {
         super((Dialog) null, "选择 Vulkan 设备", true);
 

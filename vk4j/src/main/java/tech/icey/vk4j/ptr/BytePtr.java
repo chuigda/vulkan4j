@@ -29,6 +29,11 @@ public sealed class BytePtr permits ByteArray {
         segment.set(ValueLayout.JAVA_BYTE, 0, value);
     }
 
+    @unsafe
+    public String readUtf8() {
+        return segment.reinterpret(Long.MAX_VALUE).getString(0);
+    }
+
     public static <A extends Function2<MemoryLayout, Long, MemorySegment>>
     BytePtr allocate(A allocator) {
         return new BytePtr(allocator.apply(ValueLayout.JAVA_BYTE, 1L));

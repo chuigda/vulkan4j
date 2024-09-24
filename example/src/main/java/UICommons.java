@@ -93,4 +93,13 @@ public final class UICommons {
         textArea.setBackground(defaultMetalTheme.getControl());
         textArea.setEditable(false);
     }
+
+    public static void showErrorMessage(String errorMessage) {
+        JOptionPane.showMessageDialog(
+                null,
+                "<html><body><p style=\"width: 300px;\">" + errorMessage + "</p></body></html>",
+                "错误",
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
 }
