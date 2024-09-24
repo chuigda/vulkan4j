@@ -43,7 +43,7 @@ public record VkBaseOutStructure(MemorySegment segment) {
     }
 
     public @pointer(comment="VkBaseOutStructure*") MemorySegment pNextRaw() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+        return segment.get(LAYOUT$pNext, OFFSET$pNext).reinterpret(LAYOUT.byteSize());
     }
 
     public void pNextRaw(@pointer(comment="VkBaseOutStructure*") MemorySegment value) {
