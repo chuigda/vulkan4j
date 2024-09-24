@@ -3,16 +3,14 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-import static tech.icey.vk4j.Constants.*;
+
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSemaphoreWaitInfo(MemorySegment segment) {
@@ -90,7 +88,7 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) {
     public void pSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
         segment.set(LAYOUT$pSemaphores, OFFSET$pSemaphores, value);
     }
-    
+
     public @nullable VkSemaphore pSemaphores() {
         MemorySegment s = pSemaphoresRaw();
         if (s.address() == 0) {
@@ -111,7 +109,7 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) {
     public void pValuesRaw(@pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
-    
+
     public @unsigned LongPtr pValues() {
         return new LongPtr(pValuesRaw());
     }
@@ -125,7 +123,7 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) {
         @Override
         public Class<VkSemaphoreWaitInfo> clazz() {
             return VkSemaphoreWaitInfo.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

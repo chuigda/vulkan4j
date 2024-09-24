@@ -3,16 +3,12 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-import static tech.icey.vk4j.Constants.*;
+
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkWriteDescriptorSet(MemorySegment segment) {
@@ -130,7 +126,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
     public void pImageInfoRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
         segment.set(LAYOUT$pImageInfo, OFFSET$pImageInfo, value);
     }
-    
+
     public @nullable VkDescriptorImageInfo pImageInfo() {
         MemorySegment s = pImageInfoRaw();
         if (s.address() == 0) {
@@ -151,7 +147,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
     public void pBufferInfoRaw(@pointer(comment="VkDescriptorBufferInfo*") MemorySegment value) {
         segment.set(LAYOUT$pBufferInfo, OFFSET$pBufferInfo, value);
     }
-    
+
     public @nullable VkDescriptorBufferInfo pBufferInfo() {
         MemorySegment s = pBufferInfoRaw();
         if (s.address() == 0) {
@@ -172,7 +168,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
     public void pTexelBufferViewRaw(@pointer(comment="VkBufferView*") MemorySegment value) {
         segment.set(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView, value);
     }
-    
+
     public @nullable VkBufferView pTexelBufferView() {
         MemorySegment s = pTexelBufferViewRaw();
         if (s.address() == 0) {
@@ -191,7 +187,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
         @Override
         public Class<VkWriteDescriptorSet> clazz() {
             return VkWriteDescriptorSet.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

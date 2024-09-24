@@ -19,7 +19,7 @@ def generate_structure(registry: Registry, structure: Structure) -> str:
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.datatype.*;

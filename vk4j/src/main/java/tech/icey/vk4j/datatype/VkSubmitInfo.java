@@ -3,16 +3,14 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-import static tech.icey.vk4j.Constants.*;
+
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSubmitInfo(MemorySegment segment) {
@@ -94,7 +92,7 @@ public record VkSubmitInfo(MemorySegment segment) {
     public void pWaitSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
-    
+
     public @nullable VkSemaphore pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.address() == 0) {
@@ -111,20 +109,20 @@ public record VkSubmitInfo(MemorySegment segment) {
     public @pointer(target=VkPipelineStageFlags.class) MemorySegment pWaitDstStageMaskRaw() {
         return segment.get(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask);
     }
-    
+
     public void pWaitDstStageMaskRaw(@pointer(target=VkPipelineStageFlags.class) MemorySegment value) {
         segment.set(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask, value);
     }
-    
+
     public @nullable IntPtr pWaitDstStageMask() {
         MemorySegment s = pWaitDstStageMaskRaw();
         if (s.address() == 0) {
             return null;
         }
-        
+
         return new IntPtr(s);
     }
-    
+
     public void pWaitDstStageMask(@nullable IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitDstStageMaskRaw(s);
@@ -145,7 +143,7 @@ public record VkSubmitInfo(MemorySegment segment) {
     public void pCommandBuffersRaw(@pointer(comment="VkCommandBuffer*") MemorySegment value) {
         segment.set(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers, value);
     }
-    
+
     public @nullable VkCommandBuffer pCommandBuffers() {
         MemorySegment s = pCommandBuffersRaw();
         if (s.address() == 0) {
@@ -174,7 +172,7 @@ public record VkSubmitInfo(MemorySegment segment) {
     public void pSignalSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
-    
+
     public @nullable VkSemaphore pSignalSemaphores() {
         MemorySegment s = pSignalSemaphoresRaw();
         if (s.address() == 0) {
@@ -193,7 +191,7 @@ public record VkSubmitInfo(MemorySegment segment) {
         @Override
         public Class<VkSubmitInfo> clazz() {
             return VkSubmitInfo.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

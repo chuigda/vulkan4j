@@ -3,16 +3,12 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-import static tech.icey.vk4j.Constants.*;
+
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkRenderingInfo(MemorySegment segment) {
@@ -130,7 +126,7 @@ public record VkRenderingInfo(MemorySegment segment) {
     public void pColorAttachmentsRaw(@pointer(comment="VkRenderingAttachmentInfo*") MemorySegment value) {
         segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
-    
+
     public @nullable VkRenderingAttachmentInfo pColorAttachments() {
         MemorySegment s = pColorAttachmentsRaw();
         if (s.address() == 0) {
@@ -151,7 +147,7 @@ public record VkRenderingInfo(MemorySegment segment) {
     public void pDepthAttachmentRaw(@pointer(comment="VkRenderingAttachmentInfo*") MemorySegment value) {
         segment.set(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment, value);
     }
-    
+
     public @nullable VkRenderingAttachmentInfo pDepthAttachment() {
         MemorySegment s = pDepthAttachmentRaw();
         if (s.address() == 0) {
@@ -172,7 +168,7 @@ public record VkRenderingInfo(MemorySegment segment) {
     public void pStencilAttachmentRaw(@pointer(comment="VkRenderingAttachmentInfo*") MemorySegment value) {
         segment.set(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment, value);
     }
-    
+
     public @nullable VkRenderingAttachmentInfo pStencilAttachment() {
         MemorySegment s = pStencilAttachmentRaw();
         if (s.address() == 0) {
@@ -191,7 +187,7 @@ public record VkRenderingInfo(MemorySegment segment) {
         @Override
         public Class<VkRenderingInfo> clazz() {
             return VkRenderingInfo.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

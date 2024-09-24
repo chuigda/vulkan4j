@@ -3,16 +3,12 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-import static tech.icey.vk4j.Constants.*;
+
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSubmitInfo2(MemorySegment segment) {
@@ -102,7 +98,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
     public void pWaitSemaphoreInfosRaw(@pointer(comment="VkSemaphoreSubmitInfo*") MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphoreInfos, OFFSET$pWaitSemaphoreInfos, value);
     }
-    
+
     public @nullable VkSemaphoreSubmitInfo pWaitSemaphoreInfos() {
         MemorySegment s = pWaitSemaphoreInfosRaw();
         if (s.address() == 0) {
@@ -131,7 +127,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
     public void pCommandBufferInfosRaw(@pointer(comment="VkCommandBufferSubmitInfo*") MemorySegment value) {
         segment.set(LAYOUT$pCommandBufferInfos, OFFSET$pCommandBufferInfos, value);
     }
-    
+
     public @nullable VkCommandBufferSubmitInfo pCommandBufferInfos() {
         MemorySegment s = pCommandBufferInfosRaw();
         if (s.address() == 0) {
@@ -160,7 +156,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
     public void pSignalSemaphoreInfosRaw(@pointer(comment="VkSemaphoreSubmitInfo*") MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphoreInfos, OFFSET$pSignalSemaphoreInfos, value);
     }
-    
+
     public @nullable VkSemaphoreSubmitInfo pSignalSemaphoreInfos() {
         MemorySegment s = pSignalSemaphoreInfosRaw();
         if (s.address() == 0) {
@@ -179,7 +175,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
         @Override
         public Class<VkSubmitInfo2> clazz() {
             return VkSubmitInfo2.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

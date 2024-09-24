@@ -1,7 +1,7 @@
 package tech.icey.vk4j.array;
 
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotations.unsafe;
+import tech.icey.vk4j.annotation.unsafe;
 import tech.icey.vk4j.ptr.CSizeTPtr;
 import tech.icey.vk4j.util.Function2;
 

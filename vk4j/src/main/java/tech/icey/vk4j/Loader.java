@@ -1,6 +1,6 @@
 package tech.icey.vk4j;
 
-import tech.icey.vk4j.annotations.nullable;
+import tech.icey.vk4j.annotation.nullable;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.Linker;

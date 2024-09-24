@@ -3,16 +3,13 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-import static tech.icey.vk4j.Constants.*;
+
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
@@ -94,7 +91,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
     public void pAcquireSyncsRaw(@pointer(comment="VkDeviceMemory*") MemorySegment value) {
         segment.set(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs, value);
     }
-    
+
     public @nullable VkDeviceMemory pAcquireSyncs() {
         MemorySegment s = pAcquireSyncsRaw();
         if (s.address() == 0) {
@@ -115,7 +112,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
     public void pAcquireKeysRaw(@pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys, value);
     }
-    
+
     public @unsigned LongPtr pAcquireKeys() {
         return new LongPtr(pAcquireKeysRaw());
     }
@@ -131,7 +128,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
     public void pAcquireTimeoutMillisecondsRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pAcquireTimeoutMilliseconds, OFFSET$pAcquireTimeoutMilliseconds, value);
     }
-    
+
     public @unsigned IntPtr pAcquireTimeoutMilliseconds() {
         return new IntPtr(pAcquireTimeoutMillisecondsRaw());
     }
@@ -155,7 +152,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
     public void pReleaseSyncsRaw(@pointer(comment="VkDeviceMemory*") MemorySegment value) {
         segment.set(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs, value);
     }
-    
+
     public @nullable VkDeviceMemory pReleaseSyncs() {
         MemorySegment s = pReleaseSyncsRaw();
         if (s.address() == 0) {
@@ -176,7 +173,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
     public void pReleaseKeysRaw(@pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys, value);
     }
-    
+
     public @unsigned LongPtr pReleaseKeys() {
         return new LongPtr(pReleaseKeysRaw());
     }
@@ -190,7 +187,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
         @Override
         public Class<VkWin32KeyedMutexAcquireReleaseInfoNV> clazz() {
             return VkWin32KeyedMutexAcquireReleaseInfoNV.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

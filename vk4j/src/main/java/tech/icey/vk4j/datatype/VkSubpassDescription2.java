@@ -3,16 +3,13 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-import static tech.icey.vk4j.Constants.*;
+
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSubpassDescription2(MemorySegment segment) {
@@ -134,7 +131,7 @@ public record VkSubpassDescription2(MemorySegment segment) {
     public void pInputAttachmentsRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
         segment.set(LAYOUT$pInputAttachments, OFFSET$pInputAttachments, value);
     }
-    
+
     public @nullable VkAttachmentReference2 pInputAttachments() {
         MemorySegment s = pInputAttachmentsRaw();
         if (s.address() == 0) {
@@ -163,7 +160,7 @@ public record VkSubpassDescription2(MemorySegment segment) {
     public void pColorAttachmentsRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
         segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
-    
+
     public @nullable VkAttachmentReference2 pColorAttachments() {
         MemorySegment s = pColorAttachmentsRaw();
         if (s.address() == 0) {
@@ -184,7 +181,7 @@ public record VkSubpassDescription2(MemorySegment segment) {
     public void pResolveAttachmentsRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
         segment.set(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments, value);
     }
-    
+
     public @nullable VkAttachmentReference2 pResolveAttachments() {
         MemorySegment s = pResolveAttachmentsRaw();
         if (s.address() == 0) {
@@ -205,7 +202,7 @@ public record VkSubpassDescription2(MemorySegment segment) {
     public void pDepthStencilAttachmentRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
         segment.set(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment, value);
     }
-    
+
     public @nullable VkAttachmentReference2 pDepthStencilAttachment() {
         MemorySegment s = pDepthStencilAttachmentRaw();
         if (s.address() == 0) {
@@ -234,7 +231,7 @@ public record VkSubpassDescription2(MemorySegment segment) {
     public void pPreserveAttachmentsRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments, value);
     }
-    
+
     public @unsigned IntPtr pPreserveAttachments() {
         return new IntPtr(pPreserveAttachmentsRaw());
     }
@@ -248,7 +245,7 @@ public record VkSubpassDescription2(MemorySegment segment) {
         @Override
         public Class<VkSubpassDescription2> clazz() {
             return VkSubpassDescription2.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

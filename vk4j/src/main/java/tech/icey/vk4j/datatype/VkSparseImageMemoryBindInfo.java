@@ -3,17 +3,10 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSparseImageMemoryBindInfo(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -61,7 +54,7 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) {
     public void pBindsRaw(@pointer(comment="VkSparseImageMemoryBind*") MemorySegment value) {
         segment.set(LAYOUT$pBinds, OFFSET$pBinds, value);
     }
-    
+
     public @nullable VkSparseImageMemoryBind pBinds() {
         MemorySegment s = pBindsRaw();
         if (s.address() == 0) {
@@ -80,7 +73,7 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) {
         @Override
         public Class<VkSparseImageMemoryBindInfo> clazz() {
             return VkSparseImageMemoryBindInfo.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

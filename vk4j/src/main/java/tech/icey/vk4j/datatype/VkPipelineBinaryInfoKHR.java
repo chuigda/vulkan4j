@@ -3,16 +3,12 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-import static tech.icey.vk4j.Constants.*;
+
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkPipelineBinaryInfoKHR(MemorySegment segment) {
@@ -74,7 +70,7 @@ public record VkPipelineBinaryInfoKHR(MemorySegment segment) {
     public void pPipelineBinariesRaw(@pointer(comment="VkPipelineBinaryKHR*") MemorySegment value) {
         segment.set(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries, value);
     }
-    
+
     public @nullable VkPipelineBinaryKHR pPipelineBinaries() {
         MemorySegment s = pPipelineBinariesRaw();
         if (s.address() == 0) {
@@ -93,7 +89,7 @@ public record VkPipelineBinaryInfoKHR(MemorySegment segment) {
         @Override
         public Class<VkPipelineBinaryInfoKHR> clazz() {
             return VkPipelineBinaryInfoKHR.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

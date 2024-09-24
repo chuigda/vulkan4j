@@ -3,16 +3,12 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-import static tech.icey.vk4j.Constants.*;
+
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkRenderPassCreateInfo(MemorySegment segment) {
@@ -102,7 +98,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
     public void pAttachmentsRaw(@pointer(comment="VkAttachmentDescription*") MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
-    
+
     public @nullable VkAttachmentDescription pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.address() == 0) {
@@ -131,7 +127,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
     public void pSubpassesRaw(@pointer(comment="VkSubpassDescription*") MemorySegment value) {
         segment.set(LAYOUT$pSubpasses, OFFSET$pSubpasses, value);
     }
-    
+
     public @nullable VkSubpassDescription pSubpasses() {
         MemorySegment s = pSubpassesRaw();
         if (s.address() == 0) {
@@ -160,7 +156,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
     public void pDependenciesRaw(@pointer(comment="VkSubpassDependency*") MemorySegment value) {
         segment.set(LAYOUT$pDependencies, OFFSET$pDependencies, value);
     }
-    
+
     public @nullable VkSubpassDependency pDependencies() {
         MemorySegment s = pDependenciesRaw();
         if (s.address() == 0) {
@@ -179,7 +175,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
         @Override
         public Class<VkRenderPassCreateInfo> clazz() {
             return VkRenderPassCreateInfo.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

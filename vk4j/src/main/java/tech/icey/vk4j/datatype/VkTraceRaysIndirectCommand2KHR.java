@@ -3,17 +3,9 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkTraceRaysIndirectCommand2KHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -199,7 +191,7 @@ public record VkTraceRaysIndirectCommand2KHR(MemorySegment segment) {
         @Override
         public Class<VkTraceRaysIndirectCommand2KHR> clazz() {
             return VkTraceRaysIndirectCommand2KHR.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

@@ -3,16 +3,13 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-import static tech.icey.vk4j.Constants.*;
+
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkRenderPassCreateInfo2(MemorySegment segment) {
@@ -110,7 +107,7 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) {
     public void pAttachmentsRaw(@pointer(comment="VkAttachmentDescription2*") MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
-    
+
     public @nullable VkAttachmentDescription2 pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.address() == 0) {
@@ -139,7 +136,7 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) {
     public void pSubpassesRaw(@pointer(comment="VkSubpassDescription2*") MemorySegment value) {
         segment.set(LAYOUT$pSubpasses, OFFSET$pSubpasses, value);
     }
-    
+
     public @nullable VkSubpassDescription2 pSubpasses() {
         MemorySegment s = pSubpassesRaw();
         if (s.address() == 0) {
@@ -168,7 +165,7 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) {
     public void pDependenciesRaw(@pointer(comment="VkSubpassDependency2*") MemorySegment value) {
         segment.set(LAYOUT$pDependencies, OFFSET$pDependencies, value);
     }
-    
+
     public @nullable VkSubpassDependency2 pDependencies() {
         MemorySegment s = pDependenciesRaw();
         if (s.address() == 0) {
@@ -197,7 +194,7 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) {
     public void pCorrelatedViewMasksRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks, value);
     }
-    
+
     public @unsigned IntPtr pCorrelatedViewMasks() {
         return new IntPtr(pCorrelatedViewMasksRaw());
     }
@@ -211,7 +208,7 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) {
         @Override
         public Class<VkRenderPassCreateInfo2> clazz() {
             return VkRenderPassCreateInfo2.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

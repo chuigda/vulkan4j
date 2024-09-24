@@ -3,16 +3,13 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-import static tech.icey.vk4j.Constants.*;
+
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
@@ -106,7 +103,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
     public void pMessageIdNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pMessageIdName, OFFSET$pMessageIdName, value);
     }
-    
+
     public BytePtr pMessageIdName() {
         return new BytePtr(pMessageIdNameRaw());
     }
@@ -130,7 +127,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
     public void pMessageRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pMessage, OFFSET$pMessage, value);
     }
-    
+
     public BytePtr pMessage() {
         return new BytePtr(pMessageRaw());
     }
@@ -154,7 +151,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
     public void pQueueLabelsRaw(@pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment value) {
         segment.set(LAYOUT$pQueueLabels, OFFSET$pQueueLabels, value);
     }
-    
+
     public @nullable VkDebugUtilsLabelEXT pQueueLabels() {
         MemorySegment s = pQueueLabelsRaw();
         if (s.address() == 0) {
@@ -183,7 +180,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
     public void pCmdBufLabelsRaw(@pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment value) {
         segment.set(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels, value);
     }
-    
+
     public @nullable VkDebugUtilsLabelEXT pCmdBufLabels() {
         MemorySegment s = pCmdBufLabelsRaw();
         if (s.address() == 0) {
@@ -212,7 +209,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
     public void pObjectsRaw(@pointer(comment="VkDebugUtilsObjectNameInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
-    
+
     public @nullable VkDebugUtilsObjectNameInfoEXT pObjects() {
         MemorySegment s = pObjectsRaw();
         if (s.address() == 0) {
@@ -231,7 +228,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
         @Override
         public Class<VkDebugUtilsMessengerCallbackDataEXT> clazz() {
             return VkDebugUtilsMessengerCallbackDataEXT.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

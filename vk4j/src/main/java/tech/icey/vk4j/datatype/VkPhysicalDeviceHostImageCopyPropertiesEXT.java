@@ -3,12 +3,9 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.array.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
@@ -86,20 +83,20 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
     public @pointer(target=VkImageLayout.class) MemorySegment pCopySrcLayoutsRaw() {
         return segment.get(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts);
     }
-    
+
     public void pCopySrcLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
         segment.set(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts, value);
     }
-    
+
     public @nullable IntPtr pCopySrcLayouts() {
         MemorySegment s = pCopySrcLayoutsRaw();
         if (s.address() == 0) {
             return null;
         }
-        
+
         return new IntPtr(s);
     }
-    
+
     public void pCopySrcLayouts(@nullable IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopySrcLayoutsRaw(s);
@@ -116,20 +113,20 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
     public @pointer(target=VkImageLayout.class) MemorySegment pCopyDstLayoutsRaw() {
         return segment.get(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts);
     }
-    
+
     public void pCopyDstLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
         segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
     }
-    
+
     public @nullable IntPtr pCopyDstLayouts() {
         MemorySegment s = pCopyDstLayoutsRaw();
         if (s.address() == 0) {
             return null;
         }
-        
+
         return new IntPtr(s);
     }
-    
+
     public void pCopyDstLayouts(@nullable IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopyDstLayoutsRaw(s);
@@ -160,7 +157,7 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         @Override
         public Class<VkPhysicalDeviceHostImageCopyPropertiesEXT> clazz() {
             return VkPhysicalDeviceHostImageCopyPropertiesEXT.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

@@ -1,6 +1,6 @@
 package tech.icey.vk4j.ptr;
 
-import tech.icey.vk4j.annotations.unsafe;
+import tech.icey.vk4j.annotation.unsafe;
 import tech.icey.vk4j.array.LongArray;
 import tech.icey.vk4j.util.Function2;
 

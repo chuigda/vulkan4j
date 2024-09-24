@@ -3,13 +3,9 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.array.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
@@ -86,7 +82,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
     public void pAddressInfosRaw(@pointer(comment="VkDeviceFaultAddressInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pAddressInfos, OFFSET$pAddressInfos, value);
     }
-    
+
     public @nullable VkDeviceFaultAddressInfoEXT pAddressInfos() {
         MemorySegment s = pAddressInfosRaw();
         if (s.address() == 0) {
@@ -107,7 +103,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
     public void pVendorInfosRaw(@pointer(comment="VkDeviceFaultVendorInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pVendorInfos, OFFSET$pVendorInfos, value);
     }
-    
+
     public @nullable VkDeviceFaultVendorInfoEXT pVendorInfos() {
         MemorySegment s = pVendorInfosRaw();
         if (s.address() == 0) {
@@ -134,7 +130,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
         @Override
         public Class<VkDeviceFaultInfoEXT> clazz() {
             return VkDeviceFaultInfoEXT.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

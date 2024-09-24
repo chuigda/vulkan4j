@@ -3,16 +3,13 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-import static tech.icey.vk4j.Constants.*;
+
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkPresentInfoKHR(MemorySegment segment) {
@@ -90,7 +87,7 @@ public record VkPresentInfoKHR(MemorySegment segment) {
     public void pWaitSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
-    
+
     public @nullable VkSemaphore pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.address() == 0) {
@@ -119,7 +116,7 @@ public record VkPresentInfoKHR(MemorySegment segment) {
     public void pSwapchainsRaw(@pointer(comment="VkSwapchainKHR*") MemorySegment value) {
         segment.set(LAYOUT$pSwapchains, OFFSET$pSwapchains, value);
     }
-    
+
     public @nullable VkSwapchainKHR pSwapchains() {
         MemorySegment s = pSwapchainsRaw();
         if (s.address() == 0) {
@@ -140,7 +137,7 @@ public record VkPresentInfoKHR(MemorySegment segment) {
     public void pImageIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
     }
-    
+
     public @unsigned IntPtr pImageIndices() {
         return new IntPtr(pImageIndicesRaw());
     }
@@ -152,20 +149,20 @@ public record VkPresentInfoKHR(MemorySegment segment) {
     public @pointer(target=VkResult.class) MemorySegment pResultsRaw() {
         return segment.get(LAYOUT$pResults, OFFSET$pResults);
     }
-    
+
     public void pResultsRaw(@pointer(target=VkResult.class) MemorySegment value) {
         segment.set(LAYOUT$pResults, OFFSET$pResults, value);
     }
-    
+
     public @nullable IntPtr pResults() {
         MemorySegment s = pResultsRaw();
         if (s.address() == 0) {
             return null;
         }
-        
+
         return new IntPtr(s);
     }
-    
+
     public void pResults(@nullable IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResultsRaw(s);
@@ -176,7 +173,7 @@ public record VkPresentInfoKHR(MemorySegment segment) {
         @Override
         public Class<VkPresentInfoKHR> clazz() {
             return VkPresentInfoKHR.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {

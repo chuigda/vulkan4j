@@ -1,6 +1,6 @@
 package tech.icey.vk4j;
 
-import tech.icey.vk4j.annotations.unsigned;
+import tech.icey.vk4j.annotation.unsigned;
 
 public final class Version {
     public static @unsigned int vkMakeAPIVersion(

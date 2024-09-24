@@ -4,8 +4,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;

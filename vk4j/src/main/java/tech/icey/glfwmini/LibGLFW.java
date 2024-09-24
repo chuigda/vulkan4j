@@ -1,10 +1,10 @@
 package tech.icey.glfwmini;
 
 import tech.icey.vk4j.Loader;
-import tech.icey.vk4j.annotations.enumtype;
-import tech.icey.vk4j.annotations.nullable;
-import tech.icey.vk4j.annotations.pointer;
-import tech.icey.vk4j.annotations.unsigned;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.nullable;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.annotation.unsigned;
 import tech.icey.vk4j.datatype.VkAllocationCallbacks;
 import tech.icey.vk4j.enumtype.VkResult;
 import tech.icey.vk4j.handle.VkInstance;

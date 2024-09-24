@@ -3,7 +3,7 @@ import tech.icey.vk4j.Constants;
 import tech.icey.vk4j.Create;
 import tech.icey.vk4j.Loader;
 import tech.icey.vk4j.Version;
-import tech.icey.vk4j.annotations.nullable;
+import tech.icey.vk4j.annotation.nullable;
 import tech.icey.vk4j.array.ByteArray;
 import tech.icey.vk4j.array.FloatArray;
 import tech.icey.vk4j.bitmask.VkQueueFlags;

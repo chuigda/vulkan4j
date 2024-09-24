@@ -3,16 +3,11 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotations.*;
-import tech.icey.vk4j.array.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-import static tech.icey.vk4j.Constants.*;
+
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkRenderPassSubpassFeedbackCreateInfoEXT(MemorySegment segment) {
@@ -62,7 +57,7 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(MemorySegment segment) {
     public void pSubpassFeedbackRaw(@pointer(comment="VkRenderPassSubpassFeedbackInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pSubpassFeedback, OFFSET$pSubpassFeedback, value);
     }
-    
+
     public @nullable VkRenderPassSubpassFeedbackInfoEXT pSubpassFeedback() {
         MemorySegment s = pSubpassFeedbackRaw();
         if (s.address() == 0) {
@@ -81,7 +76,7 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(MemorySegment segment) {
         @Override
         public Class<VkRenderPassSubpassFeedbackCreateInfoEXT> clazz() {
             return VkRenderPassSubpassFeedbackCreateInfoEXT.class;
-        } 
+        }
 
         @Override
         public MemoryLayout layout() {
