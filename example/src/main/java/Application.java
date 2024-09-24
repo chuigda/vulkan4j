@@ -1058,9 +1058,9 @@ public class Application implements AutoCloseable {
 
     private static /*VkBool32*/ int debugCallback(
             @enumtype(VkDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity,
-            @enumtype(VkDebugUtilsMessageTypeFlagsEXT.class) int messageType,
+            @enumtype(VkDebugUtilsMessageTypeFlagsEXT.class) int ignoredMessageType,
             @pointer(target=VkDebugUtilsMessengerCallbackDataEXT.class) MemorySegment pCallbackData,
-            @pointer(comment="void*") MemorySegment pUserData
+            @pointer(comment="void*") MemorySegment ignoredPUserData
     ) {
         pCallbackData = pCallbackData.reinterpret(VkDebugUtilsMessengerCallbackDataEXT.LAYOUT.byteSize());
 
