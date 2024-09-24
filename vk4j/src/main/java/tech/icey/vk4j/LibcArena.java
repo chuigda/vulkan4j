@@ -40,7 +40,7 @@ public final class LibcArena implements Arena {
     ///
     /// @param byteSize The size of the memory to allocate
     /// @param byteAlignment The alignment of the memory to allocate
-    /// @return A {@link MemorySegment} representing the allocated memory
+    /// @return A {@link MemorySegment} representing the allocated memory with all bytes zeroed
     /// @throws IllegalArgumentException If the byte size or alignment is invalid
     /// @throws OutOfMemoryError If the memory allocation fails
     @Override

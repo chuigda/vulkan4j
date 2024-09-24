@@ -5,6 +5,7 @@ import tech.icey.vk4j.annotation.enumtype;
 import tech.icey.vk4j.annotation.nullable;
 import tech.icey.vk4j.annotation.pointer;
 import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.array.IntArray;
 import tech.icey.vk4j.datatype.VkAllocationCallbacks;
 import tech.icey.vk4j.enumtype.VkResult;
 import tech.icey.vk4j.handle.VkInstance;
@@ -71,6 +72,11 @@ public final class LibGLFW {
     public static final FunctionDescriptor DESCRIPTOR$glfwDestroyWindow = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS
     );
+    private static final FunctionDescriptor DESCRIPTOR$glfwGetWindowSize = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+    );
 
     public final MethodHandle HANDLE$glfwInit;
     public final MethodHandle HANDLE$glfwTerminate;
@@ -85,6 +91,7 @@ public final class LibGLFW {
     public final MethodHandle HANDLE$glfwPollEvents;
     public final MethodHandle HANDLE$glfwWindowShouldClose;
     public final MethodHandle HANDLE$glfwDestroyWindow;
+    public final MethodHandle HANDLE$glfwGetWindowSize;
 
     public LibGLFW(Function2<String, FunctionDescriptor, MethodHandle> loader) {
         HANDLE$glfwInit = loader.apply("glfwInit", DESCRIPTOR$glfwInit);
@@ -100,6 +107,7 @@ public final class LibGLFW {
         HANDLE$glfwPollEvents = loader.apply("glfwPollEvents", DESCRIPTOR$glfwPollEvents);
         HANDLE$glfwWindowShouldClose = loader.apply("glfwWindowShouldClose", DESCRIPTOR$glfwWindowShouldClose);
         HANDLE$glfwDestroyWindow = loader.apply("glfwDestroyWindow", DESCRIPTOR$glfwDestroyWindow);
+        HANDLE$glfwGetWindowSize = loader.apply("glfwGetWindowSize", DESCRIPTOR$glfwGetWindowSize);
     }
 
     public int glfwInit() {
@@ -224,6 +232,29 @@ public final class LibGLFW {
     public void glfwDestroyWindow(@pointer(comment="GLFWwindow*") MemorySegment window) {
         try {
             HANDLE$glfwDestroyWindow.invokeExact(window);
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
+        }
+    }
+
+    public void glfwGetWindowSize(
+            @pointer(comment="GLFWwindow*") MemorySegment window,
+            IntPtr width,
+            IntPtr height
+    ) {
+        try {
+            HANDLE$glfwGetWindowSize.invokeExact(window, width.segment(), height.segment());
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
+        }
+    }
+
+    public void glfwGetWindowSize(
+            @pointer(comment="GLFWwindow*") MemorySegment window,
+            IntArray wh
+    ) {
+        try {
+            HANDLE$glfwGetWindowSize.invokeExact(window, wh.segment(), wh.segment().asSlice(4, 4));
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }

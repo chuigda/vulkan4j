@@ -3,16 +3,21 @@ import tech.icey.vk4j.Constants;
 import tech.icey.vk4j.Create;
 import tech.icey.vk4j.Loader;
 import tech.icey.vk4j.Version;
+import tech.icey.vk4j.annotation.enumtype;
 import tech.icey.vk4j.annotation.nullable;
+import tech.icey.vk4j.annotation.pointer;
 import tech.icey.vk4j.array.ByteArray;
 import tech.icey.vk4j.array.FloatArray;
+import tech.icey.vk4j.array.IntArray;
+import tech.icey.vk4j.bitmask.VkCompositeAlphaFlagsKHR;
+import tech.icey.vk4j.bitmask.VkImageUsageFlags;
 import tech.icey.vk4j.bitmask.VkQueueFlags;
 import tech.icey.vk4j.command.DeviceCommands;
 import tech.icey.vk4j.command.EntryCommands;
 import tech.icey.vk4j.command.InstanceCommands;
 import tech.icey.vk4j.command.StaticCommands;
 import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.VkPhysicalDeviceType;
+import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.IntPtr;
 import tech.icey.vk4j.util.Function2;
@@ -121,20 +126,20 @@ public class Main {
             return;
         }
 
-        var pSurface = Create.create(VkSurfaceKHR.FACTORY, arena);
-        result = libGLFW.glfwCreateWindowSurface(instance, window, null, pSurface);
+        var surface = Create.create(VkSurfaceKHR.FACTORY, arena);
+        result = libGLFW.glfwCreateWindowSurface(instance, window, null, surface);
         if (result != 0) {
             showErrorMessage("创建 Vulkan 表面失败，Vulkan 错误代码：" + result);
             return;
         }
 
-        VkQueueFamilyProperties[] queueFamilyProperties = getPhysicalDeviceQueueFamilyProperties(arena, instanceCommands, physicalDevice);
+        var queueFamilyProperties = getPhysicalDeviceQueueFamilyProperties(arena, instanceCommands, physicalDevice);
         if (queueFamilyProperties.length == 0) {
             showErrorMessage("物理设备 " + physicalDevice + " 没有可用的队列族");
             return;
         }
 
-        VkDeviceQueueCreateInfo[] queueCreateInfos = Create.createArray(VkDeviceQueueCreateInfo.FACTORY, arena, queueFamilyProperties.length).first;
+        var queueCreateInfos = Create.createArray(VkDeviceQueueCreateInfo.FACTORY, arena, queueFamilyProperties.length).first;
         for (int i = 0; i < queueFamilyProperties.length; i++) {
             VkQueueFamilyProperties queueFamilyProperty = queueFamilyProperties[i];
             var pQueuePriorities = FloatArray.allocate(arena, queueFamilyProperty.queueCount());
@@ -181,7 +186,7 @@ public class Main {
         var graphicsQueue = Create.create(VkQueue.FACTORY, arena);
         deviceCommands.vkGetDeviceQueue(pDevice, graphicsQueueFamilyIndex, 0, graphicsQueue);
 
-        var presentationQueueFamilyIndex = getPresentationQueueFamilyIndex(instanceCommands, physicalDevice, pSurface);
+        var presentationQueueFamilyIndex = getPresentationQueueFamilyIndex(instanceCommands, physicalDevice, surface);
         if (presentationQueueFamilyIndex == -1) {
             showErrorMessage("物理设备 " + physicalDevice + " 没有展示队列族");
             return;
@@ -189,6 +194,53 @@ public class Main {
 
         var presentationQueue = Create.create(VkQueue.FACTORY, arena);
         deviceCommands.vkGetDeviceQueue(pDevice, presentationQueueFamilyIndex, 0, presentationQueue);
+
+        var surfaceCapabilitiesKHR = Create.create(VkSurfaceCapabilitiesKHR.FACTORY, arena);
+        result = instanceCommands.vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice, surface, surfaceCapabilitiesKHR);
+        if (result != 0) {
+            showErrorMessage("获取表面能力失败，Vulkan 错误代码：" + result);
+            return;
+        }
+
+        var numImages = calculateNumImages(surfaceCapabilitiesKHR);
+        var surfaceFormat = calculateSurfaceFormat(instanceCommands, deviceCommands, physicalDevice, surface);
+        if (surfaceFormat == null) {
+            return;
+        }
+        var swapchainExtent = calculateSwapchainExtent(arena, libGLFW, window, surfaceCapabilitiesKHR);
+
+        var swapchainCreateInfo = Create.create(VkSwapchainCreateInfoKHR.FACTORY, arena);
+        swapchainCreateInfo.surface(surface);
+        swapchainCreateInfo.minImageCount(numImages);
+        swapchainCreateInfo.imageFormat(surfaceFormat.imageFormat());
+        swapchainCreateInfo.imageColorSpace(surfaceFormat.colorSpace());
+        swapchainCreateInfo.imageExtent(swapchainExtent);
+        swapchainCreateInfo.imageArrayLayers(1);
+        swapchainCreateInfo.imageUsage(VkImageUsageFlags.VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT);
+        swapchainCreateInfo.imageSharingMode(VkSharingMode.VK_SHARING_MODE_EXCLUSIVE);
+        swapchainCreateInfo.preTransform(surfaceCapabilitiesKHR.currentTransform());
+        swapchainCreateInfo.compositeAlpha(VkCompositeAlphaFlagsKHR.VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR);
+        swapchainCreateInfo.presentMode(VkPresentModeKHR.VK_PRESENT_MODE_FIFO_KHR);
+        swapchainCreateInfo.clipped(Constants.VK_TRUE);
+
+        if (presentationQueueFamilyIndex != graphicsQueueFamilyIndex) {
+            swapchainCreateInfo.imageSharingMode(VkSharingMode.VK_SHARING_MODE_CONCURRENT);
+            swapchainCreateInfo.queueFamilyIndexCount(2);
+            IntArray queueFamilyIndices = IntArray.allocate(arena, 2);
+            queueFamilyIndices.set(0, graphicsQueueFamilyIndex);
+            queueFamilyIndices.set(1, presentationQueueFamilyIndex);
+            swapchainCreateInfo.pQueueFamilyIndices(queueFamilyIndices);
+        }
+        else {
+            swapchainCreateInfo.imageSharingMode(VkSharingMode.VK_SHARING_MODE_EXCLUSIVE);
+        }
+
+        var swapchain = Create.create(VkSwapchainKHR.FACTORY, arena);
+        result = deviceCommands.vkCreateSwapchainKHR(pDevice, swapchainCreateInfo, null, swapchain);
+        if (result != 0) {
+            showErrorMessage("创建交换链失败，Vulkan 错误代码：" + result);
+            return;
+        }
 
         while (!libGLFW.glfwWindowShouldClose(window)) {
             libGLFW.glfwPollEvents();
@@ -248,10 +300,15 @@ public class Main {
                         "设备 ID: " + deviceId + "\n" +
                                 "供应商 ID: " + vendorId + "\n" +
                                 "设备类型: " + deviceType + "\n" +
-                                "驱动版本: " + driverVersion.major() + "." + driverVersion.minor() + "." + driverVersion.patch() + "\n" +
+                                "驱动版本: " + driverVersion + "\n" +
                                 "设备扩展: " + extensionNames
                 ));
             }
+        }
+
+        if (deviceInfoList.isEmpty()) {
+            showErrorMessage("没有找到可用的 Vulkan 设备");
+            return null;
         }
 
         var deviceInfoDialog = new DeviceInfoDialog(deviceInfoList);
@@ -319,6 +376,87 @@ public class Main {
             }
 
             return -1;
+        }
+    }
+
+    private static int calculateNumImages(VkSurfaceCapabilitiesKHR surfaceCapabilitiesKHR) {
+        int maxImages = surfaceCapabilitiesKHR.maxImageCount();
+        int minImages = surfaceCapabilitiesKHR.minImageCount();
+
+        int result = 2;
+        if (maxImages != 0) {
+            result = Math.min(result, maxImages);
+        }
+        result = Math.max(result, minImages);
+        return result;
+    }
+
+    private record SurfaceFormat(@enumtype(VkFormat.class) int imageFormat, @enumtype(VkColorSpaceKHR.class) int colorSpace) {}
+
+    private static SurfaceFormat calculateSurfaceFormat(
+            InstanceCommands instanceCommands,
+            DeviceCommands deviceCommands,
+            VkPhysicalDevice physicalDevice,
+            VkSurfaceKHR surface
+    ) {
+        try (Arena arena = Arena.ofConfined()) {
+            IntPtr pNumFormats = IntPtr.allocate(arena);
+            int result = instanceCommands.vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, pNumFormats, null);
+            if (result != 0) {
+                showErrorMessage("获取物理设备 " + physicalDevice + " 的表面格式失败，Vulkan 错误代码：" + result);
+                return null;
+            }
+            int numFormats = pNumFormats.read();
+
+            var surfaceFormats = Create.createArray(VkSurfaceFormatKHR.FACTORY, arena, numFormats).first;
+            result = instanceCommands.vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, pNumFormats, surfaceFormats[0]);
+            if (result != 0) {
+                showErrorMessage("获取物理设备 " + physicalDevice + " 的表面格式失败，Vulkan 错误代码：" + result);
+                return null;
+            }
+
+            int imageFormat = VkFormat.VK_FORMAT_R8G8B8A8_SRGB;
+            int colorSpace = surfaceFormats[0].colorSpace();
+
+            for (int i = 0; i < numFormats; i++) {
+                VkSurfaceFormatKHR surfaceFormat = surfaceFormats[i];
+                if (surfaceFormat.format() == VkFormat.VK_FORMAT_R8G8B8A8_SRGB &&
+                        surfaceFormat.colorSpace() == VkColorSpaceKHR.VK_COLOR_SPACE_SRGB_NONLINEAR_KHR) {
+                    imageFormat = surfaceFormat.format();
+                    colorSpace = surfaceFormat.colorSpace();
+                    break;
+                }
+            }
+
+            return new SurfaceFormat(imageFormat, colorSpace);
+        }
+    }
+
+    private static VkExtent2D calculateSwapchainExtent(
+            Arena arena,
+            LibGLFW libGLFW,
+            @pointer(comment="GLFWwindow*") MemorySegment glfwWindow,
+            VkSurfaceCapabilitiesKHR surfaceCapabilitiesKHR
+    ) {
+        if (surfaceCapabilitiesKHR.currentExtent().width() != 0xFFFFFFFF) {
+            return surfaceCapabilitiesKHR.currentExtent();
+        } else {
+            VkExtent2D maxExtent = surfaceCapabilitiesKHR.maxImageExtent();
+            VkExtent2D minExtent = surfaceCapabilitiesKHR.minImageExtent();
+
+            var ret = Create.create(VkExtent2D.FACTORY, arena);
+            var wh = IntArray.allocate(arena, 2);
+
+            libGLFW.glfwGetWindowSize(glfwWindow, wh);
+            int width = Math.min(wh.get(0), maxExtent.width());
+            width = Math.max(width, minExtent.width());
+
+            int height = Math.min(wh.get(1), maxExtent.height());
+            height = Math.max(height, minExtent.height());
+
+            ret.width(width);
+            ret.height(height);
+            return ret;
         }
     }
 
