@@ -64,7 +64,7 @@ public record VkDisplayPlaneProperties2KHR(MemorySegment segment) {
     }
 
 
-    public static final class VkDisplayPlaneProperties2KHRFactory implements IFactory<VkDisplayPlaneProperties2KHR> {
+    public static final class Factory implements IFactory<VkDisplayPlaneProperties2KHR> {
         @Override
         public Class<VkDisplayPlaneProperties2KHR> clazz() {
             return VkDisplayPlaneProperties2KHR.class;
@@ -86,5 +86,5 @@ public record VkDisplayPlaneProperties2KHR(MemorySegment segment) {
         }
     }
 
-    public static final VkDisplayPlaneProperties2KHRFactory FACTORY = new VkDisplayPlaneProperties2KHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

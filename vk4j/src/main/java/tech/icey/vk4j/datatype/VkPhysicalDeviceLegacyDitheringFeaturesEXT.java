@@ -64,7 +64,7 @@ public record VkPhysicalDeviceLegacyDitheringFeaturesEXT(MemorySegment segment) 
     }
 
 
-    public static final class VkPhysicalDeviceLegacyDitheringFeaturesEXTFactory implements IFactory<VkPhysicalDeviceLegacyDitheringFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceLegacyDitheringFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceLegacyDitheringFeaturesEXT> clazz() {
             return VkPhysicalDeviceLegacyDitheringFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceLegacyDitheringFeaturesEXT(MemorySegment segment) 
         }
     }
 
-    public static final VkPhysicalDeviceLegacyDitheringFeaturesEXTFactory FACTORY = new VkPhysicalDeviceLegacyDitheringFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

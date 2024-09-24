@@ -64,7 +64,7 @@ public record VkBufferOpaqueCaptureAddressCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkBufferOpaqueCaptureAddressCreateInfoFactory implements IFactory<VkBufferOpaqueCaptureAddressCreateInfo> {
+    public static final class Factory implements IFactory<VkBufferOpaqueCaptureAddressCreateInfo> {
         @Override
         public Class<VkBufferOpaqueCaptureAddressCreateInfo> clazz() {
             return VkBufferOpaqueCaptureAddressCreateInfo.class;
@@ -86,5 +86,5 @@ public record VkBufferOpaqueCaptureAddressCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkBufferOpaqueCaptureAddressCreateInfoFactory FACTORY = new VkBufferOpaqueCaptureAddressCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

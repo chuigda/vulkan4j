@@ -219,7 +219,7 @@ public record VkSRTDataNV(MemorySegment segment) {
     }
 
 
-    public static final class VkSRTDataNVFactory implements IFactory<VkSRTDataNV> {
+    public static final class Factory implements IFactory<VkSRTDataNV> {
         @Override
         public Class<VkSRTDataNV> clazz() {
             return VkSRTDataNV.class;
@@ -241,5 +241,5 @@ public record VkSRTDataNV(MemorySegment segment) {
         }
     }
 
-    public static final VkSRTDataNVFactory FACTORY = new VkSRTDataNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

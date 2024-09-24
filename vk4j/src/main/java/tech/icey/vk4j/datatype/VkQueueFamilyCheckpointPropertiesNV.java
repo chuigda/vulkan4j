@@ -64,7 +64,7 @@ public record VkQueueFamilyCheckpointPropertiesNV(MemorySegment segment) {
     }
 
 
-    public static final class VkQueueFamilyCheckpointPropertiesNVFactory implements IFactory<VkQueueFamilyCheckpointPropertiesNV> {
+    public static final class Factory implements IFactory<VkQueueFamilyCheckpointPropertiesNV> {
         @Override
         public Class<VkQueueFamilyCheckpointPropertiesNV> clazz() {
             return VkQueueFamilyCheckpointPropertiesNV.class;
@@ -86,5 +86,5 @@ public record VkQueueFamilyCheckpointPropertiesNV(MemorySegment segment) {
         }
     }
 
-    public static final VkQueueFamilyCheckpointPropertiesNVFactory FACTORY = new VkQueueFamilyCheckpointPropertiesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

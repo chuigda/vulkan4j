@@ -87,7 +87,7 @@ public record VkPastPresentationTimingGOOGLE(MemorySegment segment) {
     }
 
 
-    public static final class VkPastPresentationTimingGOOGLEFactory implements IFactory<VkPastPresentationTimingGOOGLE> {
+    public static final class Factory implements IFactory<VkPastPresentationTimingGOOGLE> {
         @Override
         public Class<VkPastPresentationTimingGOOGLE> clazz() {
             return VkPastPresentationTimingGOOGLE.class;
@@ -109,5 +109,5 @@ public record VkPastPresentationTimingGOOGLE(MemorySegment segment) {
         }
     }
 
-    public static final VkPastPresentationTimingGOOGLEFactory FACTORY = new VkPastPresentationTimingGOOGLEFactory();
+    public static final Factory FACTORY = new Factory();
 }

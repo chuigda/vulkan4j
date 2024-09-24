@@ -75,7 +75,7 @@ public record VkPipelineExecutableStatisticValueKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineExecutableStatisticValueKHRFactory implements IFactory<VkPipelineExecutableStatisticValueKHR> {
+    public static final class Factory implements IFactory<VkPipelineExecutableStatisticValueKHR> {
         @Override
         public Class<VkPipelineExecutableStatisticValueKHR> clazz() {
             return VkPipelineExecutableStatisticValueKHR.class;
@@ -97,5 +97,5 @@ public record VkPipelineExecutableStatisticValueKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineExecutableStatisticValueKHRFactory FACTORY = new VkPipelineExecutableStatisticValueKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

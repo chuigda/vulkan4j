@@ -256,7 +256,7 @@ public record VkPhysicalDeviceFloatControlsProperties(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceFloatControlsPropertiesFactory implements IFactory<VkPhysicalDeviceFloatControlsProperties> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceFloatControlsProperties> {
         @Override
         public Class<VkPhysicalDeviceFloatControlsProperties> clazz() {
             return VkPhysicalDeviceFloatControlsProperties.class;
@@ -278,5 +278,5 @@ public record VkPhysicalDeviceFloatControlsProperties(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceFloatControlsPropertiesFactory FACTORY = new VkPhysicalDeviceFloatControlsPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

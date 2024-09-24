@@ -76,7 +76,7 @@ public record VkPhysicalDevicePerformanceQueryFeaturesKHR(MemorySegment segment)
     }
 
 
-    public static final class VkPhysicalDevicePerformanceQueryFeaturesKHRFactory implements IFactory<VkPhysicalDevicePerformanceQueryFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDevicePerformanceQueryFeaturesKHR> {
         @Override
         public Class<VkPhysicalDevicePerformanceQueryFeaturesKHR> clazz() {
             return VkPhysicalDevicePerformanceQueryFeaturesKHR.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDevicePerformanceQueryFeaturesKHR(MemorySegment segment)
         }
     }
 
-    public static final VkPhysicalDevicePerformanceQueryFeaturesKHRFactory FACTORY = new VkPhysicalDevicePerformanceQueryFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

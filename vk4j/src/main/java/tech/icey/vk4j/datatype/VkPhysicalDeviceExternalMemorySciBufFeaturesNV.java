@@ -76,7 +76,7 @@ public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(MemorySegment segme
     }
 
 
-    public static final class VkPhysicalDeviceExternalMemorySciBufFeaturesNVFactory implements IFactory<VkPhysicalDeviceExternalMemorySciBufFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceExternalMemorySciBufFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceExternalMemorySciBufFeaturesNV> clazz() {
             return VkPhysicalDeviceExternalMemorySciBufFeaturesNV.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(MemorySegment segme
         }
     }
 
-    public static final VkPhysicalDeviceExternalMemorySciBufFeaturesNVFactory FACTORY = new VkPhysicalDeviceExternalMemorySciBufFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

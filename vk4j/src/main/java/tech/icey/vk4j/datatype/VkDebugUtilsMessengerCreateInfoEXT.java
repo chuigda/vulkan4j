@@ -112,7 +112,7 @@ public record VkDebugUtilsMessengerCreateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDebugUtilsMessengerCreateInfoEXTFactory implements IFactory<VkDebugUtilsMessengerCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkDebugUtilsMessengerCreateInfoEXT> {
         @Override
         public Class<VkDebugUtilsMessengerCreateInfoEXT> clazz() {
             return VkDebugUtilsMessengerCreateInfoEXT.class;
@@ -134,5 +134,5 @@ public record VkDebugUtilsMessengerCreateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDebugUtilsMessengerCreateInfoEXTFactory FACTORY = new VkDebugUtilsMessengerCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

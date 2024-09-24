@@ -11,7 +11,7 @@ public record VkFence(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkFenceFactory implements IFactory<VkFence> {
+    public static final class Factory implements IFactory<VkFence> {
         @Override
         public Class<VkFence> clazz() {
             return VkFence.class;
@@ -33,5 +33,5 @@ public record VkFence(MemorySegment segment) {
         }
     }
 
-    public static final VkFenceFactory FACTORY = new VkFenceFactory();
+    public static final Factory FACTORY = new Factory();
 }

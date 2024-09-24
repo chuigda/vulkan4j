@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderQuadControlFeaturesKHR(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceShaderQuadControlFeaturesKHRFactory implements IFactory<VkPhysicalDeviceShaderQuadControlFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderQuadControlFeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceShaderQuadControlFeaturesKHR> clazz() {
             return VkPhysicalDeviceShaderQuadControlFeaturesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceShaderQuadControlFeaturesKHR(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceShaderQuadControlFeaturesKHRFactory FACTORY = new VkPhysicalDeviceShaderQuadControlFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

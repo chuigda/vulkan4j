@@ -64,7 +64,7 @@ public record VkPhysicalDeviceRawAccessChainsFeaturesNV(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceRawAccessChainsFeaturesNVFactory implements IFactory<VkPhysicalDeviceRawAccessChainsFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceRawAccessChainsFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceRawAccessChainsFeaturesNV> clazz() {
             return VkPhysicalDeviceRawAccessChainsFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceRawAccessChainsFeaturesNV(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceRawAccessChainsFeaturesNVFactory FACTORY = new VkPhysicalDeviceRawAccessChainsFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkAcquireProfilingLockInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkAcquireProfilingLockInfoKHRFactory implements IFactory<VkAcquireProfilingLockInfoKHR> {
+    public static final class Factory implements IFactory<VkAcquireProfilingLockInfoKHR> {
         @Override
         public Class<VkAcquireProfilingLockInfoKHR> clazz() {
             return VkAcquireProfilingLockInfoKHR.class;
@@ -98,5 +98,5 @@ public record VkAcquireProfilingLockInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkAcquireProfilingLockInfoKHRFactory FACTORY = new VkAcquireProfilingLockInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

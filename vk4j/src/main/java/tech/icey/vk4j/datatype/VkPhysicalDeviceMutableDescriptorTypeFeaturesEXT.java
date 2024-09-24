@@ -64,7 +64,7 @@ public record VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT(MemorySegment seg
     }
 
 
-    public static final class VkPhysicalDeviceMutableDescriptorTypeFeaturesEXTFactory implements IFactory<VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT> clazz() {
             return VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT(MemorySegment seg
         }
     }
 
-    public static final VkPhysicalDeviceMutableDescriptorTypeFeaturesEXTFactory FACTORY = new VkPhysicalDeviceMutableDescriptorTypeFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -88,7 +88,7 @@ public record VkAttachmentReference2(MemorySegment segment) {
     }
 
 
-    public static final class VkAttachmentReference2Factory implements IFactory<VkAttachmentReference2> {
+    public static final class Factory implements IFactory<VkAttachmentReference2> {
         @Override
         public Class<VkAttachmentReference2> clazz() {
             return VkAttachmentReference2.class;
@@ -110,5 +110,5 @@ public record VkAttachmentReference2(MemorySegment segment) {
         }
     }
 
-    public static final VkAttachmentReference2Factory FACTORY = new VkAttachmentReference2Factory();
+    public static final Factory FACTORY = new Factory();
 }

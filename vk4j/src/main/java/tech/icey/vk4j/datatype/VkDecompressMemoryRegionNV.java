@@ -87,7 +87,7 @@ public record VkDecompressMemoryRegionNV(MemorySegment segment) {
     }
 
 
-    public static final class VkDecompressMemoryRegionNVFactory implements IFactory<VkDecompressMemoryRegionNV> {
+    public static final class Factory implements IFactory<VkDecompressMemoryRegionNV> {
         @Override
         public Class<VkDecompressMemoryRegionNV> clazz() {
             return VkDecompressMemoryRegionNV.class;
@@ -109,5 +109,5 @@ public record VkDecompressMemoryRegionNV(MemorySegment segment) {
         }
     }
 
-    public static final VkDecompressMemoryRegionNVFactory FACTORY = new VkDecompressMemoryRegionNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

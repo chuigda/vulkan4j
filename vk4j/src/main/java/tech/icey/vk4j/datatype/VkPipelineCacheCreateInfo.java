@@ -87,7 +87,7 @@ public record VkPipelineCacheCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineCacheCreateInfoFactory implements IFactory<VkPipelineCacheCreateInfo> {
+    public static final class Factory implements IFactory<VkPipelineCacheCreateInfo> {
         @Override
         public Class<VkPipelineCacheCreateInfo> clazz() {
             return VkPipelineCacheCreateInfo.class;
@@ -109,5 +109,5 @@ public record VkPipelineCacheCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineCacheCreateInfoFactory FACTORY = new VkPipelineCacheCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

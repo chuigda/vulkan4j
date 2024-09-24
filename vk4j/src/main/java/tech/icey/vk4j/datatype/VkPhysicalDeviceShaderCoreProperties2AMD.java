@@ -76,7 +76,7 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceShaderCoreProperties2AMDFactory implements IFactory<VkPhysicalDeviceShaderCoreProperties2AMD> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderCoreProperties2AMD> {
         @Override
         public Class<VkPhysicalDeviceShaderCoreProperties2AMD> clazz() {
             return VkPhysicalDeviceShaderCoreProperties2AMD.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceShaderCoreProperties2AMDFactory FACTORY = new VkPhysicalDeviceShaderCoreProperties2AMDFactory();
+    public static final Factory FACTORY = new Factory();
 }

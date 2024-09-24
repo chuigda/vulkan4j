@@ -89,7 +89,7 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(MemorySegment 
     }
 
 
-    public static final class VkPipelineViewportExclusiveScissorStateCreateInfoNVFactory implements IFactory<VkPipelineViewportExclusiveScissorStateCreateInfoNV> {
+    public static final class Factory implements IFactory<VkPipelineViewportExclusiveScissorStateCreateInfoNV> {
         @Override
         public Class<VkPipelineViewportExclusiveScissorStateCreateInfoNV> clazz() {
             return VkPipelineViewportExclusiveScissorStateCreateInfoNV.class;
@@ -111,5 +111,5 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(MemorySegment 
         }
     }
 
-    public static final VkPipelineViewportExclusiveScissorStateCreateInfoNVFactory FACTORY = new VkPipelineViewportExclusiveScissorStateCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

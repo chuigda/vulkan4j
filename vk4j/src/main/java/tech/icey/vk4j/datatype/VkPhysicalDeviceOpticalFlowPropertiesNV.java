@@ -184,7 +184,7 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceOpticalFlowPropertiesNVFactory implements IFactory<VkPhysicalDeviceOpticalFlowPropertiesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceOpticalFlowPropertiesNV> {
         @Override
         public Class<VkPhysicalDeviceOpticalFlowPropertiesNV> clazz() {
             return VkPhysicalDeviceOpticalFlowPropertiesNV.class;
@@ -206,5 +206,5 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceOpticalFlowPropertiesNVFactory FACTORY = new VkPhysicalDeviceOpticalFlowPropertiesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -63,7 +63,7 @@ public record VkTraceRaysIndirectCommandKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkTraceRaysIndirectCommandKHRFactory implements IFactory<VkTraceRaysIndirectCommandKHR> {
+    public static final class Factory implements IFactory<VkTraceRaysIndirectCommandKHR> {
         @Override
         public Class<VkTraceRaysIndirectCommandKHR> clazz() {
             return VkTraceRaysIndirectCommandKHR.class;
@@ -85,5 +85,5 @@ public record VkTraceRaysIndirectCommandKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkTraceRaysIndirectCommandKHRFactory FACTORY = new VkTraceRaysIndirectCommandKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

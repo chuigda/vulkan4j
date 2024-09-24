@@ -11,7 +11,7 @@ public record VkOpticalFlowSessionNV(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkOpticalFlowSessionNVFactory implements IFactory<VkOpticalFlowSessionNV> {
+    public static final class Factory implements IFactory<VkOpticalFlowSessionNV> {
         @Override
         public Class<VkOpticalFlowSessionNV> clazz() {
             return VkOpticalFlowSessionNV.class;
@@ -33,5 +33,5 @@ public record VkOpticalFlowSessionNV(MemorySegment segment) {
         }
     }
 
-    public static final VkOpticalFlowSessionNVFactory FACTORY = new VkOpticalFlowSessionNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

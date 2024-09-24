@@ -216,7 +216,7 @@ public record VkImageCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkImageCreateInfoFactory implements IFactory<VkImageCreateInfo> {
+    public static final class Factory implements IFactory<VkImageCreateInfo> {
         @Override
         public Class<VkImageCreateInfo> clazz() {
             return VkImageCreateInfo.class;
@@ -238,5 +238,5 @@ public record VkImageCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkImageCreateInfoFactory FACTORY = new VkImageCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

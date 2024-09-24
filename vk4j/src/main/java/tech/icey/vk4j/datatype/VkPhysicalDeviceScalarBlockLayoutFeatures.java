@@ -64,7 +64,7 @@ public record VkPhysicalDeviceScalarBlockLayoutFeatures(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceScalarBlockLayoutFeaturesFactory implements IFactory<VkPhysicalDeviceScalarBlockLayoutFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceScalarBlockLayoutFeatures> {
         @Override
         public Class<VkPhysicalDeviceScalarBlockLayoutFeatures> clazz() {
             return VkPhysicalDeviceScalarBlockLayoutFeatures.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceScalarBlockLayoutFeatures(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceScalarBlockLayoutFeaturesFactory FACTORY = new VkPhysicalDeviceScalarBlockLayoutFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

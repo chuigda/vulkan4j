@@ -185,7 +185,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkFrameBoundaryEXTFactory implements IFactory<VkFrameBoundaryEXT> {
+    public static final class Factory implements IFactory<VkFrameBoundaryEXT> {
         @Override
         public Class<VkFrameBoundaryEXT> clazz() {
             return VkFrameBoundaryEXT.class;
@@ -207,5 +207,5 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkFrameBoundaryEXTFactory FACTORY = new VkFrameBoundaryEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

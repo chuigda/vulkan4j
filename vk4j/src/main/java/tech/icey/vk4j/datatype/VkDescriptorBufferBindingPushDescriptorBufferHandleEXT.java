@@ -64,7 +64,7 @@ public record VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(MemorySegme
     }
 
 
-    public static final class VkDescriptorBufferBindingPushDescriptorBufferHandleEXTFactory implements IFactory<VkDescriptorBufferBindingPushDescriptorBufferHandleEXT> {
+    public static final class Factory implements IFactory<VkDescriptorBufferBindingPushDescriptorBufferHandleEXT> {
         @Override
         public Class<VkDescriptorBufferBindingPushDescriptorBufferHandleEXT> clazz() {
             return VkDescriptorBufferBindingPushDescriptorBufferHandleEXT.class;
@@ -86,5 +86,5 @@ public record VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(MemorySegme
         }
     }
 
-    public static final VkDescriptorBufferBindingPushDescriptorBufferHandleEXTFactory FACTORY = new VkDescriptorBufferBindingPushDescriptorBufferHandleEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

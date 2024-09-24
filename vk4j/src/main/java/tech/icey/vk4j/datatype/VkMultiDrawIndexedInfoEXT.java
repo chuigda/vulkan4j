@@ -63,7 +63,7 @@ public record VkMultiDrawIndexedInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkMultiDrawIndexedInfoEXTFactory implements IFactory<VkMultiDrawIndexedInfoEXT> {
+    public static final class Factory implements IFactory<VkMultiDrawIndexedInfoEXT> {
         @Override
         public Class<VkMultiDrawIndexedInfoEXT> clazz() {
             return VkMultiDrawIndexedInfoEXT.class;
@@ -85,5 +85,5 @@ public record VkMultiDrawIndexedInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkMultiDrawIndexedInfoEXTFactory FACTORY = new VkMultiDrawIndexedInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkCommandPoolCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkCommandPoolCreateInfoFactory implements IFactory<VkCommandPoolCreateInfo> {
+    public static final class Factory implements IFactory<VkCommandPoolCreateInfo> {
         @Override
         public Class<VkCommandPoolCreateInfo> clazz() {
             return VkCommandPoolCreateInfo.class;
@@ -98,5 +98,5 @@ public record VkCommandPoolCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkCommandPoolCreateInfoFactory FACTORY = new VkCommandPoolCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

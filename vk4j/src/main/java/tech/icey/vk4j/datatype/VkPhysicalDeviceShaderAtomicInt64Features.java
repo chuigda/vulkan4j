@@ -76,7 +76,7 @@ public record VkPhysicalDeviceShaderAtomicInt64Features(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceShaderAtomicInt64FeaturesFactory implements IFactory<VkPhysicalDeviceShaderAtomicInt64Features> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderAtomicInt64Features> {
         @Override
         public Class<VkPhysicalDeviceShaderAtomicInt64Features> clazz() {
             return VkPhysicalDeviceShaderAtomicInt64Features.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceShaderAtomicInt64Features(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceShaderAtomicInt64FeaturesFactory FACTORY = new VkPhysicalDeviceShaderAtomicInt64FeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

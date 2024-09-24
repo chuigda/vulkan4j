@@ -64,7 +64,7 @@ public record VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(MemorySegme
     }
 
 
-    public static final class VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHRFactory implements IFactory<VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR> {
         @Override
         public Class<VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR> clazz() {
             return VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(MemorySegme
         }
     }
 
-    public static final VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHRFactory FACTORY = new VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

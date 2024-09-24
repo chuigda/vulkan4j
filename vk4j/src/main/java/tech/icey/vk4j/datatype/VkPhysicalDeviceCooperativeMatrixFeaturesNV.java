@@ -76,7 +76,7 @@ public record VkPhysicalDeviceCooperativeMatrixFeaturesNV(MemorySegment segment)
     }
 
 
-    public static final class VkPhysicalDeviceCooperativeMatrixFeaturesNVFactory implements IFactory<VkPhysicalDeviceCooperativeMatrixFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceCooperativeMatrixFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceCooperativeMatrixFeaturesNV> clazz() {
             return VkPhysicalDeviceCooperativeMatrixFeaturesNV.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceCooperativeMatrixFeaturesNV(MemorySegment segment)
         }
     }
 
-    public static final VkPhysicalDeviceCooperativeMatrixFeaturesNVFactory FACTORY = new VkPhysicalDeviceCooperativeMatrixFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

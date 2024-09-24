@@ -63,7 +63,7 @@ public record VkClearAttachment(MemorySegment segment) {
     }
 
 
-    public static final class VkClearAttachmentFactory implements IFactory<VkClearAttachment> {
+    public static final class Factory implements IFactory<VkClearAttachment> {
         @Override
         public Class<VkClearAttachment> clazz() {
             return VkClearAttachment.class;
@@ -85,5 +85,5 @@ public record VkClearAttachment(MemorySegment segment) {
         }
     }
 
-    public static final VkClearAttachmentFactory FACTORY = new VkClearAttachmentFactory();
+    public static final Factory FACTORY = new Factory();
 }

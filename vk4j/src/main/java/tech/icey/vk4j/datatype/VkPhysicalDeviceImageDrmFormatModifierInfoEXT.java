@@ -108,7 +108,7 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(MemorySegment segmen
     }
 
 
-    public static final class VkPhysicalDeviceImageDrmFormatModifierInfoEXTFactory implements IFactory<VkPhysicalDeviceImageDrmFormatModifierInfoEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceImageDrmFormatModifierInfoEXT> {
         @Override
         public Class<VkPhysicalDeviceImageDrmFormatModifierInfoEXT> clazz() {
             return VkPhysicalDeviceImageDrmFormatModifierInfoEXT.class;
@@ -130,5 +130,5 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(MemorySegment segmen
         }
     }
 
-    public static final VkPhysicalDeviceImageDrmFormatModifierInfoEXTFactory FACTORY = new VkPhysicalDeviceImageDrmFormatModifierInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

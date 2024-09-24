@@ -64,7 +64,7 @@ public record VkMemoryMapPlacedInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkMemoryMapPlacedInfoEXTFactory implements IFactory<VkMemoryMapPlacedInfoEXT> {
+    public static final class Factory implements IFactory<VkMemoryMapPlacedInfoEXT> {
         @Override
         public Class<VkMemoryMapPlacedInfoEXT> clazz() {
             return VkMemoryMapPlacedInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkMemoryMapPlacedInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkMemoryMapPlacedInfoEXTFactory FACTORY = new VkMemoryMapPlacedInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

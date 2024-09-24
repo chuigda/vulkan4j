@@ -227,7 +227,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDebugUtilsMessengerCallbackDataEXTFactory implements IFactory<VkDebugUtilsMessengerCallbackDataEXT> {
+    public static final class Factory implements IFactory<VkDebugUtilsMessengerCallbackDataEXT> {
         @Override
         public Class<VkDebugUtilsMessengerCallbackDataEXT> clazz() {
             return VkDebugUtilsMessengerCallbackDataEXT.class;
@@ -249,5 +249,5 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDebugUtilsMessengerCallbackDataEXTFactory FACTORY = new VkDebugUtilsMessengerCallbackDataEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

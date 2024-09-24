@@ -64,7 +64,7 @@ public record VkDeviceEventInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceEventInfoEXTFactory implements IFactory<VkDeviceEventInfoEXT> {
+    public static final class Factory implements IFactory<VkDeviceEventInfoEXT> {
         @Override
         public Class<VkDeviceEventInfoEXT> clazz() {
             return VkDeviceEventInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkDeviceEventInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceEventInfoEXTFactory FACTORY = new VkDeviceEventInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

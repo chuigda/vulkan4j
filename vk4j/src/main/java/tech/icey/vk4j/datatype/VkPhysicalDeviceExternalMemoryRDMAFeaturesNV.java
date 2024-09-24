@@ -64,7 +64,7 @@ public record VkPhysicalDeviceExternalMemoryRDMAFeaturesNV(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceExternalMemoryRDMAFeaturesNVFactory implements IFactory<VkPhysicalDeviceExternalMemoryRDMAFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceExternalMemoryRDMAFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceExternalMemoryRDMAFeaturesNV> clazz() {
             return VkPhysicalDeviceExternalMemoryRDMAFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceExternalMemoryRDMAFeaturesNV(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceExternalMemoryRDMAFeaturesNVFactory FACTORY = new VkPhysicalDeviceExternalMemoryRDMAFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

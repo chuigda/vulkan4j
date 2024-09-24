@@ -64,7 +64,7 @@ public record VkDeviceQueueGlobalPriorityCreateInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceQueueGlobalPriorityCreateInfoKHRFactory implements IFactory<VkDeviceQueueGlobalPriorityCreateInfoKHR> {
+    public static final class Factory implements IFactory<VkDeviceQueueGlobalPriorityCreateInfoKHR> {
         @Override
         public Class<VkDeviceQueueGlobalPriorityCreateInfoKHR> clazz() {
             return VkDeviceQueueGlobalPriorityCreateInfoKHR.class;
@@ -86,5 +86,5 @@ public record VkDeviceQueueGlobalPriorityCreateInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceQueueGlobalPriorityCreateInfoKHRFactory FACTORY = new VkDeviceQueueGlobalPriorityCreateInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

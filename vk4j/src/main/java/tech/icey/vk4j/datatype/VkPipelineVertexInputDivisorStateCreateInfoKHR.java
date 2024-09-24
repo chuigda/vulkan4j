@@ -89,7 +89,7 @@ public record VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segme
     }
 
 
-    public static final class VkPipelineVertexInputDivisorStateCreateInfoKHRFactory implements IFactory<VkPipelineVertexInputDivisorStateCreateInfoKHR> {
+    public static final class Factory implements IFactory<VkPipelineVertexInputDivisorStateCreateInfoKHR> {
         @Override
         public Class<VkPipelineVertexInputDivisorStateCreateInfoKHR> clazz() {
             return VkPipelineVertexInputDivisorStateCreateInfoKHR.class;
@@ -111,5 +111,5 @@ public record VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segme
         }
     }
 
-    public static final VkPipelineVertexInputDivisorStateCreateInfoKHRFactory FACTORY = new VkPipelineVertexInputDivisorStateCreateInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

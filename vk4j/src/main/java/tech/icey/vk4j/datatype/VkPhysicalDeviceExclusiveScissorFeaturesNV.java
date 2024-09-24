@@ -64,7 +64,7 @@ public record VkPhysicalDeviceExclusiveScissorFeaturesNV(MemorySegment segment) 
     }
 
 
-    public static final class VkPhysicalDeviceExclusiveScissorFeaturesNVFactory implements IFactory<VkPhysicalDeviceExclusiveScissorFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceExclusiveScissorFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceExclusiveScissorFeaturesNV> clazz() {
             return VkPhysicalDeviceExclusiveScissorFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceExclusiveScissorFeaturesNV(MemorySegment segment) 
         }
     }
 
-    public static final VkPhysicalDeviceExclusiveScissorFeaturesNVFactory FACTORY = new VkPhysicalDeviceExclusiveScissorFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

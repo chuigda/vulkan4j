@@ -64,7 +64,7 @@ public record VkSwapchainCounterCreateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkSwapchainCounterCreateInfoEXTFactory implements IFactory<VkSwapchainCounterCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkSwapchainCounterCreateInfoEXT> {
         @Override
         public Class<VkSwapchainCounterCreateInfoEXT> clazz() {
             return VkSwapchainCounterCreateInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkSwapchainCounterCreateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkSwapchainCounterCreateInfoEXTFactory FACTORY = new VkSwapchainCounterCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -11,7 +11,7 @@ public record VkCommandBuffer(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkCommandBufferFactory implements IFactory<VkCommandBuffer> {
+    public static final class Factory implements IFactory<VkCommandBuffer> {
         @Override
         public Class<VkCommandBuffer> clazz() {
             return VkCommandBuffer.class;
@@ -33,5 +33,5 @@ public record VkCommandBuffer(MemorySegment segment) {
         }
     }
 
-    public static final VkCommandBufferFactory FACTORY = new VkCommandBufferFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceTimelineSemaphoreProperties(MemorySegment segment)
     }
 
 
-    public static final class VkPhysicalDeviceTimelineSemaphorePropertiesFactory implements IFactory<VkPhysicalDeviceTimelineSemaphoreProperties> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceTimelineSemaphoreProperties> {
         @Override
         public Class<VkPhysicalDeviceTimelineSemaphoreProperties> clazz() {
             return VkPhysicalDeviceTimelineSemaphoreProperties.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceTimelineSemaphoreProperties(MemorySegment segment)
         }
     }
 
-    public static final VkPhysicalDeviceTimelineSemaphorePropertiesFactory FACTORY = new VkPhysicalDeviceTimelineSemaphorePropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

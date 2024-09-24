@@ -163,7 +163,7 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment
     }
 
 
-    public static final class VkDeviceFaultVendorBinaryHeaderVersionOneEXTFactory implements IFactory<VkDeviceFaultVendorBinaryHeaderVersionOneEXT> {
+    public static final class Factory implements IFactory<VkDeviceFaultVendorBinaryHeaderVersionOneEXT> {
         @Override
         public Class<VkDeviceFaultVendorBinaryHeaderVersionOneEXT> clazz() {
             return VkDeviceFaultVendorBinaryHeaderVersionOneEXT.class;
@@ -185,5 +185,5 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment
         }
     }
 
-    public static final VkDeviceFaultVendorBinaryHeaderVersionOneEXTFactory FACTORY = new VkDeviceFaultVendorBinaryHeaderVersionOneEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

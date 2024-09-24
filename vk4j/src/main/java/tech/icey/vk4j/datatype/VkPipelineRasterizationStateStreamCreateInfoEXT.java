@@ -76,7 +76,7 @@ public record VkPipelineRasterizationStateStreamCreateInfoEXT(MemorySegment segm
     }
 
 
-    public static final class VkPipelineRasterizationStateStreamCreateInfoEXTFactory implements IFactory<VkPipelineRasterizationStateStreamCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkPipelineRasterizationStateStreamCreateInfoEXT> {
         @Override
         public Class<VkPipelineRasterizationStateStreamCreateInfoEXT> clazz() {
             return VkPipelineRasterizationStateStreamCreateInfoEXT.class;
@@ -98,5 +98,5 @@ public record VkPipelineRasterizationStateStreamCreateInfoEXT(MemorySegment segm
         }
     }
 
-    public static final VkPipelineRasterizationStateStreamCreateInfoEXTFactory FACTORY = new VkPipelineRasterizationStateStreamCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

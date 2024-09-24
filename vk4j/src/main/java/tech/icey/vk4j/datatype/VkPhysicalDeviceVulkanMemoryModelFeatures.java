@@ -88,7 +88,7 @@ public record VkPhysicalDeviceVulkanMemoryModelFeatures(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceVulkanMemoryModelFeaturesFactory implements IFactory<VkPhysicalDeviceVulkanMemoryModelFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceVulkanMemoryModelFeatures> {
         @Override
         public Class<VkPhysicalDeviceVulkanMemoryModelFeatures> clazz() {
             return VkPhysicalDeviceVulkanMemoryModelFeatures.class;
@@ -110,5 +110,5 @@ public record VkPhysicalDeviceVulkanMemoryModelFeatures(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceVulkanMemoryModelFeaturesFactory FACTORY = new VkPhysicalDeviceVulkanMemoryModelFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

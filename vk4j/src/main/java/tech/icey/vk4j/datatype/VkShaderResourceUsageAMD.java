@@ -85,7 +85,7 @@ public record VkShaderResourceUsageAMD(MemorySegment segment) {
         }
 
 
-    public static final class VkShaderResourceUsageAMDFactory implements IFactory<VkShaderResourceUsageAMD> {
+    public static final class Factory implements IFactory<VkShaderResourceUsageAMD> {
         @Override
         public Class<VkShaderResourceUsageAMD> clazz() {
             return VkShaderResourceUsageAMD.class;
@@ -107,5 +107,5 @@ public record VkShaderResourceUsageAMD(MemorySegment segment) {
         }
     }
 
-    public static final VkShaderResourceUsageAMDFactory FACTORY = new VkShaderResourceUsageAMDFactory();
+    public static final Factory FACTORY = new Factory();
 }

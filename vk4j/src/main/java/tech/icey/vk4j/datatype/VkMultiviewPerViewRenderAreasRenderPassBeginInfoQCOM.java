@@ -89,7 +89,7 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(MemorySegment
     }
 
 
-    public static final class VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOMFactory implements IFactory<VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM> {
+    public static final class Factory implements IFactory<VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM> {
         @Override
         public Class<VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM> clazz() {
             return VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.class;
@@ -111,5 +111,5 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(MemorySegment
         }
     }
 
-    public static final VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOMFactory FACTORY = new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

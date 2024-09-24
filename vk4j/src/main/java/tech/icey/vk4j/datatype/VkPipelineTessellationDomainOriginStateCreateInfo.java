@@ -64,7 +64,7 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(MemorySegment se
     }
 
 
-    public static final class VkPipelineTessellationDomainOriginStateCreateInfoFactory implements IFactory<VkPipelineTessellationDomainOriginStateCreateInfo> {
+    public static final class Factory implements IFactory<VkPipelineTessellationDomainOriginStateCreateInfo> {
         @Override
         public Class<VkPipelineTessellationDomainOriginStateCreateInfo> clazz() {
             return VkPipelineTessellationDomainOriginStateCreateInfo.class;
@@ -86,5 +86,5 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(MemorySegment se
         }
     }
 
-    public static final VkPipelineTessellationDomainOriginStateCreateInfoFactory FACTORY = new VkPipelineTessellationDomainOriginStateCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

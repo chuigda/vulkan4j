@@ -87,7 +87,7 @@ public record VkColorBlendAdvancedEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkColorBlendAdvancedEXTFactory implements IFactory<VkColorBlendAdvancedEXT> {
+    public static final class Factory implements IFactory<VkColorBlendAdvancedEXT> {
         @Override
         public Class<VkColorBlendAdvancedEXT> clazz() {
             return VkColorBlendAdvancedEXT.class;
@@ -109,5 +109,5 @@ public record VkColorBlendAdvancedEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkColorBlendAdvancedEXTFactory FACTORY = new VkColorBlendAdvancedEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

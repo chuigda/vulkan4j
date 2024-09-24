@@ -101,7 +101,7 @@ public record VkAntiLagDataAMD(MemorySegment segment) {
     }
 
 
-    public static final class VkAntiLagDataAMDFactory implements IFactory<VkAntiLagDataAMD> {
+    public static final class Factory implements IFactory<VkAntiLagDataAMD> {
         @Override
         public Class<VkAntiLagDataAMD> clazz() {
             return VkAntiLagDataAMD.class;
@@ -123,5 +123,5 @@ public record VkAntiLagDataAMD(MemorySegment segment) {
         }
     }
 
-    public static final VkAntiLagDataAMDFactory FACTORY = new VkAntiLagDataAMDFactory();
+    public static final Factory FACTORY = new Factory();
 }

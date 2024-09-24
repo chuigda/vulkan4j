@@ -64,7 +64,7 @@ public record VkPhysicalDeviceAmigoProfilingFeaturesSEC(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceAmigoProfilingFeaturesSECFactory implements IFactory<VkPhysicalDeviceAmigoProfilingFeaturesSEC> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceAmigoProfilingFeaturesSEC> {
         @Override
         public Class<VkPhysicalDeviceAmigoProfilingFeaturesSEC> clazz() {
             return VkPhysicalDeviceAmigoProfilingFeaturesSEC.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceAmigoProfilingFeaturesSEC(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceAmigoProfilingFeaturesSECFactory FACTORY = new VkPhysicalDeviceAmigoProfilingFeaturesSECFactory();
+    public static final Factory FACTORY = new Factory();
 }

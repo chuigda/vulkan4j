@@ -68,7 +68,7 @@ public record VkPipelinePropertiesIdentifierEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelinePropertiesIdentifierEXTFactory implements IFactory<VkPipelinePropertiesIdentifierEXT> {
+    public static final class Factory implements IFactory<VkPipelinePropertiesIdentifierEXT> {
         @Override
         public Class<VkPipelinePropertiesIdentifierEXT> clazz() {
             return VkPipelinePropertiesIdentifierEXT.class;
@@ -90,5 +90,5 @@ public record VkPipelinePropertiesIdentifierEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelinePropertiesIdentifierEXTFactory FACTORY = new VkPipelinePropertiesIdentifierEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

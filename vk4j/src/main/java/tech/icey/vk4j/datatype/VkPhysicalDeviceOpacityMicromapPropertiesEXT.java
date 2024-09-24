@@ -76,7 +76,7 @@ public record VkPhysicalDeviceOpacityMicromapPropertiesEXT(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceOpacityMicromapPropertiesEXTFactory implements IFactory<VkPhysicalDeviceOpacityMicromapPropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceOpacityMicromapPropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceOpacityMicromapPropertiesEXT> clazz() {
             return VkPhysicalDeviceOpacityMicromapPropertiesEXT.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceOpacityMicromapPropertiesEXT(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceOpacityMicromapPropertiesEXTFactory FACTORY = new VkPhysicalDeviceOpacityMicromapPropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

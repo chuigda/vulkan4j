@@ -89,7 +89,7 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
     }
 
 
-    public static final class VkSubpassFragmentDensityMapOffsetEndInfoQCOMFactory implements IFactory<VkSubpassFragmentDensityMapOffsetEndInfoQCOM> {
+    public static final class Factory implements IFactory<VkSubpassFragmentDensityMapOffsetEndInfoQCOM> {
         @Override
         public Class<VkSubpassFragmentDensityMapOffsetEndInfoQCOM> clazz() {
             return VkSubpassFragmentDensityMapOffsetEndInfoQCOM.class;
@@ -111,5 +111,5 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
         }
     }
 
-    public static final VkSubpassFragmentDensityMapOffsetEndInfoQCOMFactory FACTORY = new VkSubpassFragmentDensityMapOffsetEndInfoQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

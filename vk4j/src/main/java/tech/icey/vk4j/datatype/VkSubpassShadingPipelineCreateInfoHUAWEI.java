@@ -76,7 +76,7 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(MemorySegment segment) {
     }
 
 
-    public static final class VkSubpassShadingPipelineCreateInfoHUAWEIFactory implements IFactory<VkSubpassShadingPipelineCreateInfoHUAWEI> {
+    public static final class Factory implements IFactory<VkSubpassShadingPipelineCreateInfoHUAWEI> {
         @Override
         public Class<VkSubpassShadingPipelineCreateInfoHUAWEI> clazz() {
             return VkSubpassShadingPipelineCreateInfoHUAWEI.class;
@@ -98,5 +98,5 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(MemorySegment segment) {
         }
     }
 
-    public static final VkSubpassShadingPipelineCreateInfoHUAWEIFactory FACTORY = new VkSubpassShadingPipelineCreateInfoHUAWEIFactory();
+    public static final Factory FACTORY = new Factory();
 }

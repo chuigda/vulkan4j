@@ -88,7 +88,7 @@ public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment s
     }
 
 
-    public static final class VkPhysicalDeviceFragmentShaderInterlockFeaturesEXTFactory implements IFactory<VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT> clazz() {
             return VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.class;
@@ -110,5 +110,5 @@ public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment s
         }
     }
 
-    public static final VkPhysicalDeviceFragmentShaderInterlockFeaturesEXTFactory FACTORY = new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

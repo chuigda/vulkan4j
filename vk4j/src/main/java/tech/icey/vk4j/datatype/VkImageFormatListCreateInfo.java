@@ -90,7 +90,7 @@ public record VkImageFormatListCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkImageFormatListCreateInfoFactory implements IFactory<VkImageFormatListCreateInfo> {
+    public static final class Factory implements IFactory<VkImageFormatListCreateInfo> {
         @Override
         public Class<VkImageFormatListCreateInfo> clazz() {
             return VkImageFormatListCreateInfo.class;
@@ -112,5 +112,5 @@ public record VkImageFormatListCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkImageFormatListCreateInfoFactory FACTORY = new VkImageFormatListCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -51,7 +51,7 @@ public record VkIndirectCommandsStreamNV(MemorySegment segment) {
     }
 
 
-    public static final class VkIndirectCommandsStreamNVFactory implements IFactory<VkIndirectCommandsStreamNV> {
+    public static final class Factory implements IFactory<VkIndirectCommandsStreamNV> {
         @Override
         public Class<VkIndirectCommandsStreamNV> clazz() {
             return VkIndirectCommandsStreamNV.class;
@@ -73,5 +73,5 @@ public record VkIndirectCommandsStreamNV(MemorySegment segment) {
         }
     }
 
-    public static final VkIndirectCommandsStreamNVFactory FACTORY = new VkIndirectCommandsStreamNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

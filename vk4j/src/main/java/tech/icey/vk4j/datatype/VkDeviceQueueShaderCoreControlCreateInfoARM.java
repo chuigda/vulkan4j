@@ -64,7 +64,7 @@ public record VkDeviceQueueShaderCoreControlCreateInfoARM(MemorySegment segment)
     }
 
 
-    public static final class VkDeviceQueueShaderCoreControlCreateInfoARMFactory implements IFactory<VkDeviceQueueShaderCoreControlCreateInfoARM> {
+    public static final class Factory implements IFactory<VkDeviceQueueShaderCoreControlCreateInfoARM> {
         @Override
         public Class<VkDeviceQueueShaderCoreControlCreateInfoARM> clazz() {
             return VkDeviceQueueShaderCoreControlCreateInfoARM.class;
@@ -86,5 +86,5 @@ public record VkDeviceQueueShaderCoreControlCreateInfoARM(MemorySegment segment)
         }
     }
 
-    public static final VkDeviceQueueShaderCoreControlCreateInfoARMFactory FACTORY = new VkDeviceQueueShaderCoreControlCreateInfoARMFactory();
+    public static final Factory FACTORY = new Factory();
 }

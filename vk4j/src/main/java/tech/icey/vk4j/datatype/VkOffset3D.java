@@ -63,7 +63,7 @@ public record VkOffset3D(MemorySegment segment) {
     }
 
 
-    public static final class VkOffset3DFactory implements IFactory<VkOffset3D> {
+    public static final class Factory implements IFactory<VkOffset3D> {
         @Override
         public Class<VkOffset3D> clazz() {
             return VkOffset3D.class;
@@ -85,5 +85,5 @@ public record VkOffset3D(MemorySegment segment) {
         }
     }
 
-    public static final VkOffset3DFactory FACTORY = new VkOffset3DFactory();
+    public static final Factory FACTORY = new Factory();
 }

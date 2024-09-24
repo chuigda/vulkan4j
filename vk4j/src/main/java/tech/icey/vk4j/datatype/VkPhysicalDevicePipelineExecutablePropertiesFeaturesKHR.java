@@ -64,7 +64,7 @@ public record VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(MemorySegm
     }
 
 
-    public static final class VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHRFactory implements IFactory<VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR> {
         @Override
         public Class<VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR> clazz() {
             return VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(MemorySegm
         }
     }
 
-    public static final VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHRFactory FACTORY = new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

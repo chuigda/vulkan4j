@@ -77,7 +77,7 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkRenderPassCreationFeedbackCreateInfoEXTFactory implements IFactory<VkRenderPassCreationFeedbackCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkRenderPassCreationFeedbackCreateInfoEXT> {
         @Override
         public Class<VkRenderPassCreationFeedbackCreateInfoEXT> clazz() {
             return VkRenderPassCreationFeedbackCreateInfoEXT.class;
@@ -99,5 +99,5 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkRenderPassCreationFeedbackCreateInfoEXTFactory FACTORY = new VkRenderPassCreationFeedbackCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceTextureCompressionASTCHDRFeatures(MemorySegment se
     }
 
 
-    public static final class VkPhysicalDeviceTextureCompressionASTCHDRFeaturesFactory implements IFactory<VkPhysicalDeviceTextureCompressionASTCHDRFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceTextureCompressionASTCHDRFeatures> {
         @Override
         public Class<VkPhysicalDeviceTextureCompressionASTCHDRFeatures> clazz() {
             return VkPhysicalDeviceTextureCompressionASTCHDRFeatures.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceTextureCompressionASTCHDRFeatures(MemorySegment se
         }
     }
 
-    public static final VkPhysicalDeviceTextureCompressionASTCHDRFeaturesFactory FACTORY = new VkPhysicalDeviceTextureCompressionASTCHDRFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

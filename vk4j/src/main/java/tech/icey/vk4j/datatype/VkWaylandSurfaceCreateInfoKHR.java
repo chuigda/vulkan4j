@@ -88,7 +88,7 @@ public record VkWaylandSurfaceCreateInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkWaylandSurfaceCreateInfoKHRFactory implements IFactory<VkWaylandSurfaceCreateInfoKHR> {
+    public static final class Factory implements IFactory<VkWaylandSurfaceCreateInfoKHR> {
         @Override
         public Class<VkWaylandSurfaceCreateInfoKHR> clazz() {
             return VkWaylandSurfaceCreateInfoKHR.class;
@@ -110,5 +110,5 @@ public record VkWaylandSurfaceCreateInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkWaylandSurfaceCreateInfoKHRFactory FACTORY = new VkWaylandSurfaceCreateInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

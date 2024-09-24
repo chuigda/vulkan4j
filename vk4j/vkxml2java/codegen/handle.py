@@ -15,7 +15,7 @@ public record {handle.name}(MemorySegment segment) {{
         return segment.get(ValueLayout.ADDRESS, 0);
     }}
 
-    public static final class {handle.name}Factory implements IFactory<{handle.name}> {{
+    public static final class Factory implements IFactory<{handle.name}> {{
         @Override
         public Class<{handle.name}> clazz() {{
             return {handle.name}.class;
@@ -37,5 +37,5 @@ public record {handle.name}(MemorySegment segment) {{
         }}
     }}
 
-    public static final {handle.name}Factory FACTORY = new {handle.name}Factory();
+    public static final Factory FACTORY = new Factory();
 }}'''

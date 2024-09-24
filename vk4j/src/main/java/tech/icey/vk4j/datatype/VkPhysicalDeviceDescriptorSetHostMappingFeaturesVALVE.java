@@ -64,7 +64,7 @@ public record VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(MemorySegmen
     }
 
 
-    public static final class VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVEFactory implements IFactory<VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE> {
         @Override
         public Class<VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE> clazz() {
             return VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(MemorySegmen
         }
     }
 
-    public static final VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVEFactory FACTORY = new VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVEFactory();
+    public static final Factory FACTORY = new Factory();
 }

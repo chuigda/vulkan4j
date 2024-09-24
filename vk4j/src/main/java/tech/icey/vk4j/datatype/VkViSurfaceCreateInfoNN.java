@@ -76,7 +76,7 @@ public record VkViSurfaceCreateInfoNN(MemorySegment segment) {
     }
 
 
-    public static final class VkViSurfaceCreateInfoNNFactory implements IFactory<VkViSurfaceCreateInfoNN> {
+    public static final class Factory implements IFactory<VkViSurfaceCreateInfoNN> {
         @Override
         public Class<VkViSurfaceCreateInfoNN> clazz() {
             return VkViSurfaceCreateInfoNN.class;
@@ -98,5 +98,5 @@ public record VkViSurfaceCreateInfoNN(MemorySegment segment) {
         }
     }
 
-    public static final VkViSurfaceCreateInfoNNFactory FACTORY = new VkViSurfaceCreateInfoNNFactory();
+    public static final Factory FACTORY = new Factory();
 }

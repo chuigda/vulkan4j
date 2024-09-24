@@ -89,7 +89,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineBinaryKeysAndDataKHRFactory implements IFactory<VkPipelineBinaryKeysAndDataKHR> {
+    public static final class Factory implements IFactory<VkPipelineBinaryKeysAndDataKHR> {
         @Override
         public Class<VkPipelineBinaryKeysAndDataKHR> clazz() {
             return VkPipelineBinaryKeysAndDataKHR.class;
@@ -111,5 +111,5 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineBinaryKeysAndDataKHRFactory FACTORY = new VkPipelineBinaryKeysAndDataKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

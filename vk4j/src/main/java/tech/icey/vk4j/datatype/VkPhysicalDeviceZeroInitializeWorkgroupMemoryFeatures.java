@@ -64,7 +64,7 @@ public record VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(MemorySegmen
     }
 
 
-    public static final class VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesFactory implements IFactory<VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures> {
         @Override
         public Class<VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures> clazz() {
             return VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(MemorySegmen
         }
     }
 
-    public static final VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesFactory FACTORY = new VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceLayeredDriverPropertiesMSFT(MemorySegment segment)
     }
 
 
-    public static final class VkPhysicalDeviceLayeredDriverPropertiesMSFTFactory implements IFactory<VkPhysicalDeviceLayeredDriverPropertiesMSFT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceLayeredDriverPropertiesMSFT> {
         @Override
         public Class<VkPhysicalDeviceLayeredDriverPropertiesMSFT> clazz() {
             return VkPhysicalDeviceLayeredDriverPropertiesMSFT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceLayeredDriverPropertiesMSFT(MemorySegment segment)
         }
     }
 
-    public static final VkPhysicalDeviceLayeredDriverPropertiesMSFTFactory FACTORY = new VkPhysicalDeviceLayeredDriverPropertiesMSFTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceDiscardRectanglePropertiesEXT(MemorySegment segmen
     }
 
 
-    public static final class VkPhysicalDeviceDiscardRectanglePropertiesEXTFactory implements IFactory<VkPhysicalDeviceDiscardRectanglePropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDiscardRectanglePropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceDiscardRectanglePropertiesEXT> clazz() {
             return VkPhysicalDeviceDiscardRectanglePropertiesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceDiscardRectanglePropertiesEXT(MemorySegment segmen
         }
     }
 
-    public static final VkPhysicalDeviceDiscardRectanglePropertiesEXTFactory FACTORY = new VkPhysicalDeviceDiscardRectanglePropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

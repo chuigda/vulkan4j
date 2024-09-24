@@ -76,7 +76,7 @@ public record VkPhysicalDeviceProvokingVertexPropertiesEXT(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceProvokingVertexPropertiesEXTFactory implements IFactory<VkPhysicalDeviceProvokingVertexPropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceProvokingVertexPropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceProvokingVertexPropertiesEXT> clazz() {
             return VkPhysicalDeviceProvokingVertexPropertiesEXT.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceProvokingVertexPropertiesEXT(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceProvokingVertexPropertiesEXTFactory FACTORY = new VkPhysicalDeviceProvokingVertexPropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -128,7 +128,7 @@ public record VkApplicationInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkApplicationInfoFactory implements IFactory<VkApplicationInfo> {
+    public static final class Factory implements IFactory<VkApplicationInfo> {
         @Override
         public Class<VkApplicationInfo> clazz() {
             return VkApplicationInfo.class;
@@ -150,5 +150,5 @@ public record VkApplicationInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkApplicationInfoFactory FACTORY = new VkApplicationInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

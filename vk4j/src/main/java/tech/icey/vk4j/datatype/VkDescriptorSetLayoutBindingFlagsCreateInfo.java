@@ -90,7 +90,7 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(MemorySegment segment)
     }
 
 
-    public static final class VkDescriptorSetLayoutBindingFlagsCreateInfoFactory implements IFactory<VkDescriptorSetLayoutBindingFlagsCreateInfo> {
+    public static final class Factory implements IFactory<VkDescriptorSetLayoutBindingFlagsCreateInfo> {
         @Override
         public Class<VkDescriptorSetLayoutBindingFlagsCreateInfo> clazz() {
             return VkDescriptorSetLayoutBindingFlagsCreateInfo.class;
@@ -112,5 +112,5 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(MemorySegment segment)
         }
     }
 
-    public static final VkDescriptorSetLayoutBindingFlagsCreateInfoFactory FACTORY = new VkDescriptorSetLayoutBindingFlagsCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

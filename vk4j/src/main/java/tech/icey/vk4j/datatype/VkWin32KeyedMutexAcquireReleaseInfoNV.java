@@ -186,7 +186,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkWin32KeyedMutexAcquireReleaseInfoNVFactory implements IFactory<VkWin32KeyedMutexAcquireReleaseInfoNV> {
+    public static final class Factory implements IFactory<VkWin32KeyedMutexAcquireReleaseInfoNV> {
         @Override
         public Class<VkWin32KeyedMutexAcquireReleaseInfoNV> clazz() {
             return VkWin32KeyedMutexAcquireReleaseInfoNV.class;
@@ -208,5 +208,5 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkWin32KeyedMutexAcquireReleaseInfoNVFactory FACTORY = new VkWin32KeyedMutexAcquireReleaseInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

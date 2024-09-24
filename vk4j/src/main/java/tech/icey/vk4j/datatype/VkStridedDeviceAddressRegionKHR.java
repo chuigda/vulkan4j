@@ -63,7 +63,7 @@ public record VkStridedDeviceAddressRegionKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkStridedDeviceAddressRegionKHRFactory implements IFactory<VkStridedDeviceAddressRegionKHR> {
+    public static final class Factory implements IFactory<VkStridedDeviceAddressRegionKHR> {
         @Override
         public Class<VkStridedDeviceAddressRegionKHR> clazz() {
             return VkStridedDeviceAddressRegionKHR.class;
@@ -85,5 +85,5 @@ public record VkStridedDeviceAddressRegionKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkStridedDeviceAddressRegionKHRFactory FACTORY = new VkStridedDeviceAddressRegionKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

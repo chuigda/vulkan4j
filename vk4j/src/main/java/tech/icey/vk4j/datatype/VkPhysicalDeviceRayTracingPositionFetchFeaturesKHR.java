@@ -64,7 +64,7 @@ public record VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR(MemorySegment s
     }
 
 
-    public static final class VkPhysicalDeviceRayTracingPositionFetchFeaturesKHRFactory implements IFactory<VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR> clazz() {
             return VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR(MemorySegment s
         }
     }
 
-    public static final VkPhysicalDeviceRayTracingPositionFetchFeaturesKHRFactory FACTORY = new VkPhysicalDeviceRayTracingPositionFetchFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

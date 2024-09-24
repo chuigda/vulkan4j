@@ -124,7 +124,7 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkRenderingInputAttachmentIndexInfoKHRFactory implements IFactory<VkRenderingInputAttachmentIndexInfoKHR> {
+    public static final class Factory implements IFactory<VkRenderingInputAttachmentIndexInfoKHR> {
         @Override
         public Class<VkRenderingInputAttachmentIndexInfoKHR> clazz() {
             return VkRenderingInputAttachmentIndexInfoKHR.class;
@@ -146,5 +146,5 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkRenderingInputAttachmentIndexInfoKHRFactory FACTORY = new VkRenderingInputAttachmentIndexInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(MemorySegment segme
     }
 
 
-    public static final class VkPhysicalDeviceRenderPassStripedPropertiesARMFactory implements IFactory<VkPhysicalDeviceRenderPassStripedPropertiesARM> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceRenderPassStripedPropertiesARM> {
         @Override
         public Class<VkPhysicalDeviceRenderPassStripedPropertiesARM> clazz() {
             return VkPhysicalDeviceRenderPassStripedPropertiesARM.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(MemorySegment segme
         }
     }
 
-    public static final VkPhysicalDeviceRenderPassStripedPropertiesARMFactory FACTORY = new VkPhysicalDeviceRenderPassStripedPropertiesARMFactory();
+    public static final Factory FACTORY = new Factory();
 }

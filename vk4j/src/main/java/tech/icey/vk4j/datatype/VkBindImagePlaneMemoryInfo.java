@@ -64,7 +64,7 @@ public record VkBindImagePlaneMemoryInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkBindImagePlaneMemoryInfoFactory implements IFactory<VkBindImagePlaneMemoryInfo> {
+    public static final class Factory implements IFactory<VkBindImagePlaneMemoryInfo> {
         @Override
         public Class<VkBindImagePlaneMemoryInfo> clazz() {
             return VkBindImagePlaneMemoryInfo.class;
@@ -86,5 +86,5 @@ public record VkBindImagePlaneMemoryInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkBindImagePlaneMemoryInfoFactory FACTORY = new VkBindImagePlaneMemoryInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

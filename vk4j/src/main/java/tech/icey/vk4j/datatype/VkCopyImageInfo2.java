@@ -137,7 +137,7 @@ public record VkCopyImageInfo2(MemorySegment segment) {
     }
 
 
-    public static final class VkCopyImageInfo2Factory implements IFactory<VkCopyImageInfo2> {
+    public static final class Factory implements IFactory<VkCopyImageInfo2> {
         @Override
         public Class<VkCopyImageInfo2> clazz() {
             return VkCopyImageInfo2.class;
@@ -159,5 +159,5 @@ public record VkCopyImageInfo2(MemorySegment segment) {
         }
     }
 
-    public static final VkCopyImageInfo2Factory FACTORY = new VkCopyImageInfo2Factory();
+    public static final Factory FACTORY = new Factory();
 }

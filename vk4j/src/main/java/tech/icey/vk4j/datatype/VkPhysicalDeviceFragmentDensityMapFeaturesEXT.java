@@ -88,7 +88,7 @@ public record VkPhysicalDeviceFragmentDensityMapFeaturesEXT(MemorySegment segmen
     }
 
 
-    public static final class VkPhysicalDeviceFragmentDensityMapFeaturesEXTFactory implements IFactory<VkPhysicalDeviceFragmentDensityMapFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceFragmentDensityMapFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceFragmentDensityMapFeaturesEXT> clazz() {
             return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.class;
@@ -110,5 +110,5 @@ public record VkPhysicalDeviceFragmentDensityMapFeaturesEXT(MemorySegment segmen
         }
     }
 
-    public static final VkPhysicalDeviceFragmentDensityMapFeaturesEXTFactory FACTORY = new VkPhysicalDeviceFragmentDensityMapFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

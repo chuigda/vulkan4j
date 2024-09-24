@@ -88,7 +88,7 @@ public record VkPhysicalDeviceExternalBufferInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceExternalBufferInfoFactory implements IFactory<VkPhysicalDeviceExternalBufferInfo> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceExternalBufferInfo> {
         @Override
         public Class<VkPhysicalDeviceExternalBufferInfo> clazz() {
             return VkPhysicalDeviceExternalBufferInfo.class;
@@ -110,5 +110,5 @@ public record VkPhysicalDeviceExternalBufferInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceExternalBufferInfoFactory FACTORY = new VkPhysicalDeviceExternalBufferInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

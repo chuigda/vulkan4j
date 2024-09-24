@@ -76,7 +76,7 @@ public record VkPhysicalDevicePerStageDescriptorSetFeaturesNV(MemorySegment segm
     }
 
 
-    public static final class VkPhysicalDevicePerStageDescriptorSetFeaturesNVFactory implements IFactory<VkPhysicalDevicePerStageDescriptorSetFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDevicePerStageDescriptorSetFeaturesNV> {
         @Override
         public Class<VkPhysicalDevicePerStageDescriptorSetFeaturesNV> clazz() {
             return VkPhysicalDevicePerStageDescriptorSetFeaturesNV.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDevicePerStageDescriptorSetFeaturesNV(MemorySegment segm
         }
     }
 
-    public static final VkPhysicalDevicePerStageDescriptorSetFeaturesNVFactory FACTORY = new VkPhysicalDevicePerStageDescriptorSetFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

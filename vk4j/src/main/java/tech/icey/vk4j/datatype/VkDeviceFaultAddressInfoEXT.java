@@ -63,7 +63,7 @@ public record VkDeviceFaultAddressInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceFaultAddressInfoEXTFactory implements IFactory<VkDeviceFaultAddressInfoEXT> {
+    public static final class Factory implements IFactory<VkDeviceFaultAddressInfoEXT> {
         @Override
         public Class<VkDeviceFaultAddressInfoEXT> clazz() {
             return VkDeviceFaultAddressInfoEXT.class;
@@ -85,5 +85,5 @@ public record VkDeviceFaultAddressInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceFaultAddressInfoEXTFactory FACTORY = new VkDeviceFaultAddressInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

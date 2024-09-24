@@ -64,7 +64,7 @@ public record VkGraphicsPipelineLibraryCreateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkGraphicsPipelineLibraryCreateInfoEXTFactory implements IFactory<VkGraphicsPipelineLibraryCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkGraphicsPipelineLibraryCreateInfoEXT> {
         @Override
         public Class<VkGraphicsPipelineLibraryCreateInfoEXT> clazz() {
             return VkGraphicsPipelineLibraryCreateInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkGraphicsPipelineLibraryCreateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkGraphicsPipelineLibraryCreateInfoEXTFactory FACTORY = new VkGraphicsPipelineLibraryCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

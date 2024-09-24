@@ -76,7 +76,7 @@ public record VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(MemorySegm
     }
 
 
-    public static final class VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXTFactory implements IFactory<VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT> {
         @Override
         public Class<VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT> clazz() {
             return VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(MemorySegm
         }
     }
 
-    public static final VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXTFactory FACTORY = new VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

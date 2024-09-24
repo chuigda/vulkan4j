@@ -88,7 +88,7 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(MemorySegmen
     }
 
 
-    public static final class VkPipelineRasterizationConservativeStateCreateInfoEXTFactory implements IFactory<VkPipelineRasterizationConservativeStateCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkPipelineRasterizationConservativeStateCreateInfoEXT> {
         @Override
         public Class<VkPipelineRasterizationConservativeStateCreateInfoEXT> clazz() {
             return VkPipelineRasterizationConservativeStateCreateInfoEXT.class;
@@ -110,5 +110,5 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(MemorySegmen
         }
     }
 
-    public static final VkPipelineRasterizationConservativeStateCreateInfoEXTFactory FACTORY = new VkPipelineRasterizationConservativeStateCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

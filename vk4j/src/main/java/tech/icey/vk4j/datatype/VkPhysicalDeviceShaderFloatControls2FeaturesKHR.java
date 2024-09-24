@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderFloatControls2FeaturesKHR(MemorySegment segm
     }
 
 
-    public static final class VkPhysicalDeviceShaderFloatControls2FeaturesKHRFactory implements IFactory<VkPhysicalDeviceShaderFloatControls2FeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderFloatControls2FeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceShaderFloatControls2FeaturesKHR> clazz() {
             return VkPhysicalDeviceShaderFloatControls2FeaturesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceShaderFloatControls2FeaturesKHR(MemorySegment segm
         }
     }
 
-    public static final VkPhysicalDeviceShaderFloatControls2FeaturesKHRFactory FACTORY = new VkPhysicalDeviceShaderFloatControls2FeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

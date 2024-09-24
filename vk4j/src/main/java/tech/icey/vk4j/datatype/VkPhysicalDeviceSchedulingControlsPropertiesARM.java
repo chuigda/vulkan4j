@@ -64,7 +64,7 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(MemorySegment segm
     }
 
 
-    public static final class VkPhysicalDeviceSchedulingControlsPropertiesARMFactory implements IFactory<VkPhysicalDeviceSchedulingControlsPropertiesARM> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceSchedulingControlsPropertiesARM> {
         @Override
         public Class<VkPhysicalDeviceSchedulingControlsPropertiesARM> clazz() {
             return VkPhysicalDeviceSchedulingControlsPropertiesARM.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(MemorySegment segm
         }
     }
 
-    public static final VkPhysicalDeviceSchedulingControlsPropertiesARMFactory FACTORY = new VkPhysicalDeviceSchedulingControlsPropertiesARMFactory();
+    public static final Factory FACTORY = new Factory();
 }

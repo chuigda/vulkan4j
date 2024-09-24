@@ -64,7 +64,7 @@ public record VkPhysicalDeviceASTCDecodeFeaturesEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceASTCDecodeFeaturesEXTFactory implements IFactory<VkPhysicalDeviceASTCDecodeFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceASTCDecodeFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceASTCDecodeFeaturesEXT> clazz() {
             return VkPhysicalDeviceASTCDecodeFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceASTCDecodeFeaturesEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceASTCDecodeFeaturesEXTFactory FACTORY = new VkPhysicalDeviceASTCDecodeFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

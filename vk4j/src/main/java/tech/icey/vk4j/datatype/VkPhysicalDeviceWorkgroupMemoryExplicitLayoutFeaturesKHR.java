@@ -100,7 +100,7 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(MemorySeg
     }
 
 
-    public static final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHRFactory implements IFactory<VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR> clazz() {
             return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.class;
@@ -122,5 +122,5 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(MemorySeg
         }
     }
 
-    public static final VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHRFactory FACTORY = new VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

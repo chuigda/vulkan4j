@@ -84,7 +84,7 @@ public record VkPipelineColorWriteCreateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineColorWriteCreateInfoEXTFactory implements IFactory<VkPipelineColorWriteCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkPipelineColorWriteCreateInfoEXT> {
         @Override
         public Class<VkPipelineColorWriteCreateInfoEXT> clazz() {
             return VkPipelineColorWriteCreateInfoEXT.class;
@@ -106,5 +106,5 @@ public record VkPipelineColorWriteCreateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineColorWriteCreateInfoEXTFactory FACTORY = new VkPipelineColorWriteCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -52,7 +52,7 @@ public record VkSubpassEndInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkSubpassEndInfoFactory implements IFactory<VkSubpassEndInfo> {
+    public static final class Factory implements IFactory<VkSubpassEndInfo> {
         @Override
         public Class<VkSubpassEndInfo> clazz() {
             return VkSubpassEndInfo.class;
@@ -74,5 +74,5 @@ public record VkSubpassEndInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkSubpassEndInfoFactory FACTORY = new VkSubpassEndInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

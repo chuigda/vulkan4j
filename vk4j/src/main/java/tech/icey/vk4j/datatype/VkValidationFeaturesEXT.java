@@ -128,7 +128,7 @@ public record VkValidationFeaturesEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkValidationFeaturesEXTFactory implements IFactory<VkValidationFeaturesEXT> {
+    public static final class Factory implements IFactory<VkValidationFeaturesEXT> {
         @Override
         public Class<VkValidationFeaturesEXT> clazz() {
             return VkValidationFeaturesEXT.class;
@@ -150,5 +150,5 @@ public record VkValidationFeaturesEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkValidationFeaturesEXTFactory FACTORY = new VkValidationFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

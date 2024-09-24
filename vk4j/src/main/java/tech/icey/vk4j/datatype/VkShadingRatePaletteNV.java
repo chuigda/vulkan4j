@@ -65,7 +65,7 @@ public record VkShadingRatePaletteNV(MemorySegment segment) {
     }
 
 
-    public static final class VkShadingRatePaletteNVFactory implements IFactory<VkShadingRatePaletteNV> {
+    public static final class Factory implements IFactory<VkShadingRatePaletteNV> {
         @Override
         public Class<VkShadingRatePaletteNV> clazz() {
             return VkShadingRatePaletteNV.class;
@@ -87,5 +87,5 @@ public record VkShadingRatePaletteNV(MemorySegment segment) {
         }
     }
 
-    public static final VkShadingRatePaletteNVFactory FACTORY = new VkShadingRatePaletteNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

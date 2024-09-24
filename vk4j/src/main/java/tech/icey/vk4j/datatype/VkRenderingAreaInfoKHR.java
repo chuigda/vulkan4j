@@ -126,7 +126,7 @@ public record VkRenderingAreaInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkRenderingAreaInfoKHRFactory implements IFactory<VkRenderingAreaInfoKHR> {
+    public static final class Factory implements IFactory<VkRenderingAreaInfoKHR> {
         @Override
         public Class<VkRenderingAreaInfoKHR> clazz() {
             return VkRenderingAreaInfoKHR.class;
@@ -148,5 +148,5 @@ public record VkRenderingAreaInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkRenderingAreaInfoKHRFactory FACTORY = new VkRenderingAreaInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

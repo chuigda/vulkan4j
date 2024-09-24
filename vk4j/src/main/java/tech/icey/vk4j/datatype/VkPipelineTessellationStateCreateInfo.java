@@ -76,7 +76,7 @@ public record VkPipelineTessellationStateCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineTessellationStateCreateInfoFactory implements IFactory<VkPipelineTessellationStateCreateInfo> {
+    public static final class Factory implements IFactory<VkPipelineTessellationStateCreateInfo> {
         @Override
         public Class<VkPipelineTessellationStateCreateInfo> clazz() {
             return VkPipelineTessellationStateCreateInfo.class;
@@ -98,5 +98,5 @@ public record VkPipelineTessellationStateCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineTessellationStateCreateInfoFactory FACTORY = new VkPipelineTessellationStateCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

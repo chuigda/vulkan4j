@@ -96,7 +96,7 @@ public record VkImportMemoryWin32HandleInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkImportMemoryWin32HandleInfoKHRFactory implements IFactory<VkImportMemoryWin32HandleInfoKHR> {
+    public static final class Factory implements IFactory<VkImportMemoryWin32HandleInfoKHR> {
         @Override
         public Class<VkImportMemoryWin32HandleInfoKHR> clazz() {
             return VkImportMemoryWin32HandleInfoKHR.class;
@@ -118,5 +118,5 @@ public record VkImportMemoryWin32HandleInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkImportMemoryWin32HandleInfoKHRFactory FACTORY = new VkImportMemoryWin32HandleInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

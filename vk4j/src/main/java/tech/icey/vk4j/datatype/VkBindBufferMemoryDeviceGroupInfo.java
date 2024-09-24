@@ -84,7 +84,7 @@ public record VkBindBufferMemoryDeviceGroupInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkBindBufferMemoryDeviceGroupInfoFactory implements IFactory<VkBindBufferMemoryDeviceGroupInfo> {
+    public static final class Factory implements IFactory<VkBindBufferMemoryDeviceGroupInfo> {
         @Override
         public Class<VkBindBufferMemoryDeviceGroupInfo> clazz() {
             return VkBindBufferMemoryDeviceGroupInfo.class;
@@ -106,5 +106,5 @@ public record VkBindBufferMemoryDeviceGroupInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkBindBufferMemoryDeviceGroupInfoFactory FACTORY = new VkBindBufferMemoryDeviceGroupInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

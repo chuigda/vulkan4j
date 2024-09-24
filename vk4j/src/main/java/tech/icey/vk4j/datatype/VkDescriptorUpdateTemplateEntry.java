@@ -97,7 +97,7 @@ public record VkDescriptorUpdateTemplateEntry(MemorySegment segment) {
         }
 
 
-    public static final class VkDescriptorUpdateTemplateEntryFactory implements IFactory<VkDescriptorUpdateTemplateEntry> {
+    public static final class Factory implements IFactory<VkDescriptorUpdateTemplateEntry> {
         @Override
         public Class<VkDescriptorUpdateTemplateEntry> clazz() {
             return VkDescriptorUpdateTemplateEntry.class;
@@ -119,5 +119,5 @@ public record VkDescriptorUpdateTemplateEntry(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorUpdateTemplateEntryFactory FACTORY = new VkDescriptorUpdateTemplateEntryFactory();
+    public static final Factory FACTORY = new Factory();
 }

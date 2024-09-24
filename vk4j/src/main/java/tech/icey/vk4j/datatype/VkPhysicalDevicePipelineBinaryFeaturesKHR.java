@@ -64,7 +64,7 @@ public record VkPhysicalDevicePipelineBinaryFeaturesKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDevicePipelineBinaryFeaturesKHRFactory implements IFactory<VkPhysicalDevicePipelineBinaryFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDevicePipelineBinaryFeaturesKHR> {
         @Override
         public Class<VkPhysicalDevicePipelineBinaryFeaturesKHR> clazz() {
             return VkPhysicalDevicePipelineBinaryFeaturesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDevicePipelineBinaryFeaturesKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDevicePipelineBinaryFeaturesKHRFactory FACTORY = new VkPhysicalDevicePipelineBinaryFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkMultiviewPerViewAttributesInfoNVX(MemorySegment segment) {
     }
 
 
-    public static final class VkMultiviewPerViewAttributesInfoNVXFactory implements IFactory<VkMultiviewPerViewAttributesInfoNVX> {
+    public static final class Factory implements IFactory<VkMultiviewPerViewAttributesInfoNVX> {
         @Override
         public Class<VkMultiviewPerViewAttributesInfoNVX> clazz() {
             return VkMultiviewPerViewAttributesInfoNVX.class;
@@ -98,5 +98,5 @@ public record VkMultiviewPerViewAttributesInfoNVX(MemorySegment segment) {
         }
     }
 
-    public static final VkMultiviewPerViewAttributesInfoNVXFactory FACTORY = new VkMultiviewPerViewAttributesInfoNVXFactory();
+    public static final Factory FACTORY = new Factory();
 }

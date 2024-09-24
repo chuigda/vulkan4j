@@ -76,7 +76,7 @@ public record VkImagePipeSurfaceCreateInfoFUCHSIA(MemorySegment segment) {
     }
 
 
-    public static final class VkImagePipeSurfaceCreateInfoFUCHSIAFactory implements IFactory<VkImagePipeSurfaceCreateInfoFUCHSIA> {
+    public static final class Factory implements IFactory<VkImagePipeSurfaceCreateInfoFUCHSIA> {
         @Override
         public Class<VkImagePipeSurfaceCreateInfoFUCHSIA> clazz() {
             return VkImagePipeSurfaceCreateInfoFUCHSIA.class;
@@ -98,5 +98,5 @@ public record VkImagePipeSurfaceCreateInfoFUCHSIA(MemorySegment segment) {
         }
     }
 
-    public static final VkImagePipeSurfaceCreateInfoFUCHSIAFactory FACTORY = new VkImagePipeSurfaceCreateInfoFUCHSIAFactory();
+    public static final Factory FACTORY = new Factory();
 }

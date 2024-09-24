@@ -75,7 +75,7 @@ public record VkDispatchGraphInfoAMDX(MemorySegment segment) {
     }
 
 
-    public static final class VkDispatchGraphInfoAMDXFactory implements IFactory<VkDispatchGraphInfoAMDX> {
+    public static final class Factory implements IFactory<VkDispatchGraphInfoAMDX> {
         @Override
         public Class<VkDispatchGraphInfoAMDX> clazz() {
             return VkDispatchGraphInfoAMDX.class;
@@ -97,5 +97,5 @@ public record VkDispatchGraphInfoAMDX(MemorySegment segment) {
         }
     }
 
-    public static final VkDispatchGraphInfoAMDXFactory FACTORY = new VkDispatchGraphInfoAMDXFactory();
+    public static final Factory FACTORY = new Factory();
 }

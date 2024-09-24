@@ -89,7 +89,7 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(MemorySegment segment)
     }
 
 
-    public static final class VkRenderPassInputAttachmentAspectCreateInfoFactory implements IFactory<VkRenderPassInputAttachmentAspectCreateInfo> {
+    public static final class Factory implements IFactory<VkRenderPassInputAttachmentAspectCreateInfo> {
         @Override
         public Class<VkRenderPassInputAttachmentAspectCreateInfo> clazz() {
             return VkRenderPassInputAttachmentAspectCreateInfo.class;
@@ -111,5 +111,5 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(MemorySegment segment)
         }
     }
 
-    public static final VkRenderPassInputAttachmentAspectCreateInfoFactory FACTORY = new VkRenderPassInputAttachmentAspectCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

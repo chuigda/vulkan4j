@@ -64,7 +64,7 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(MemorySegm
     }
 
 
-    public static final class VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXTFactory implements IFactory<VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT> clazz() {
             return VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(MemorySegm
         }
     }
 
-    public static final VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXTFactory FACTORY = new VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

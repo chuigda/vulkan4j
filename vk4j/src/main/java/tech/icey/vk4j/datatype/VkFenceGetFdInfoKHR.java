@@ -76,7 +76,7 @@ public record VkFenceGetFdInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkFenceGetFdInfoKHRFactory implements IFactory<VkFenceGetFdInfoKHR> {
+    public static final class Factory implements IFactory<VkFenceGetFdInfoKHR> {
         @Override
         public Class<VkFenceGetFdInfoKHR> clazz() {
             return VkFenceGetFdInfoKHR.class;
@@ -98,5 +98,5 @@ public record VkFenceGetFdInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkFenceGetFdInfoKHRFactory FACTORY = new VkFenceGetFdInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkPhysicalDeviceVariablePointersFeatures(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceVariablePointersFeaturesFactory implements IFactory<VkPhysicalDeviceVariablePointersFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceVariablePointersFeatures> {
         @Override
         public Class<VkPhysicalDeviceVariablePointersFeatures> clazz() {
             return VkPhysicalDeviceVariablePointersFeatures.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceVariablePointersFeatures(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceVariablePointersFeaturesFactory FACTORY = new VkPhysicalDeviceVariablePointersFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

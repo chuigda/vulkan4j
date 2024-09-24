@@ -124,7 +124,7 @@ public record VkCommandBufferInheritanceInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkCommandBufferInheritanceInfoFactory implements IFactory<VkCommandBufferInheritanceInfo> {
+    public static final class Factory implements IFactory<VkCommandBufferInheritanceInfo> {
         @Override
         public Class<VkCommandBufferInheritanceInfo> clazz() {
             return VkCommandBufferInheritanceInfo.class;
@@ -146,5 +146,5 @@ public record VkCommandBufferInheritanceInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkCommandBufferInheritanceInfoFactory FACTORY = new VkCommandBufferInheritanceInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

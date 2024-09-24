@@ -64,7 +64,7 @@ public record VkPhysicalDeviceUniformBufferStandardLayoutFeatures(MemorySegment 
     }
 
 
-    public static final class VkPhysicalDeviceUniformBufferStandardLayoutFeaturesFactory implements IFactory<VkPhysicalDeviceUniformBufferStandardLayoutFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceUniformBufferStandardLayoutFeatures> {
         @Override
         public Class<VkPhysicalDeviceUniformBufferStandardLayoutFeatures> clazz() {
             return VkPhysicalDeviceUniformBufferStandardLayoutFeatures.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceUniformBufferStandardLayoutFeatures(MemorySegment 
         }
     }
 
-    public static final VkPhysicalDeviceUniformBufferStandardLayoutFeaturesFactory FACTORY = new VkPhysicalDeviceUniformBufferStandardLayoutFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

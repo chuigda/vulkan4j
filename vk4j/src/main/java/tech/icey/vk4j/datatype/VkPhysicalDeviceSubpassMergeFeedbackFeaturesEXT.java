@@ -64,7 +64,7 @@ public record VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(MemorySegment segm
     }
 
 
-    public static final class VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXTFactory implements IFactory<VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT> clazz() {
             return VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(MemorySegment segm
         }
     }
 
-    public static final VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXTFactory FACTORY = new VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

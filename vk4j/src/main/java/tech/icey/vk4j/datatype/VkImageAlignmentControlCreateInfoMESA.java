@@ -64,7 +64,7 @@ public record VkImageAlignmentControlCreateInfoMESA(MemorySegment segment) {
     }
 
 
-    public static final class VkImageAlignmentControlCreateInfoMESAFactory implements IFactory<VkImageAlignmentControlCreateInfoMESA> {
+    public static final class Factory implements IFactory<VkImageAlignmentControlCreateInfoMESA> {
         @Override
         public Class<VkImageAlignmentControlCreateInfoMESA> clazz() {
             return VkImageAlignmentControlCreateInfoMESA.class;
@@ -86,5 +86,5 @@ public record VkImageAlignmentControlCreateInfoMESA(MemorySegment segment) {
         }
     }
 
-    public static final VkImageAlignmentControlCreateInfoMESAFactory FACTORY = new VkImageAlignmentControlCreateInfoMESAFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(MemorySegmen
     }
 
 
-    public static final class VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNXFactory implements IFactory<VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX> {
         @Override
         public Class<VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX> clazz() {
             return VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(MemorySegmen
         }
     }
 
-    public static final VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNXFactory FACTORY = new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNXFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -101,7 +101,7 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
     }
 
 
-    public static final class VkImageDrmFormatModifierExplicitCreateInfoEXTFactory implements IFactory<VkImageDrmFormatModifierExplicitCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkImageDrmFormatModifierExplicitCreateInfoEXT> {
         @Override
         public Class<VkImageDrmFormatModifierExplicitCreateInfoEXT> clazz() {
             return VkImageDrmFormatModifierExplicitCreateInfoEXT.class;
@@ -123,5 +123,5 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
         }
     }
 
-    public static final VkImageDrmFormatModifierExplicitCreateInfoEXTFactory FACTORY = new VkImageDrmFormatModifierExplicitCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

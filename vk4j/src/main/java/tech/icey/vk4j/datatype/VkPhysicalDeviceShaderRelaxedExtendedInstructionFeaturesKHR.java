@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(Memory
     }
 
 
-    public static final class VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHRFactory implements IFactory<VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR> clazz() {
             return VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(Memory
         }
     }
 
-    public static final VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHRFactory FACTORY = new VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

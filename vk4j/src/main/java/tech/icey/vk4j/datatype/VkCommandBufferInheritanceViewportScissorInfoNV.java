@@ -101,7 +101,7 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
     }
 
 
-    public static final class VkCommandBufferInheritanceViewportScissorInfoNVFactory implements IFactory<VkCommandBufferInheritanceViewportScissorInfoNV> {
+    public static final class Factory implements IFactory<VkCommandBufferInheritanceViewportScissorInfoNV> {
         @Override
         public Class<VkCommandBufferInheritanceViewportScissorInfoNV> clazz() {
             return VkCommandBufferInheritanceViewportScissorInfoNV.class;
@@ -123,5 +123,5 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
         }
     }
 
-    public static final VkCommandBufferInheritanceViewportScissorInfoNVFactory FACTORY = new VkCommandBufferInheritanceViewportScissorInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

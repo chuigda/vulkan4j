@@ -64,7 +64,7 @@ public record VkPhysicalDeviceFrameBoundaryFeaturesEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceFrameBoundaryFeaturesEXTFactory implements IFactory<VkPhysicalDeviceFrameBoundaryFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceFrameBoundaryFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceFrameBoundaryFeaturesEXT> clazz() {
             return VkPhysicalDeviceFrameBoundaryFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceFrameBoundaryFeaturesEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceFrameBoundaryFeaturesEXTFactory FACTORY = new VkPhysicalDeviceFrameBoundaryFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

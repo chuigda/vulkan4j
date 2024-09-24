@@ -116,7 +116,7 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceSampleLocationsPropertiesEXTFactory implements IFactory<VkPhysicalDeviceSampleLocationsPropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceSampleLocationsPropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceSampleLocationsPropertiesEXT> clazz() {
             return VkPhysicalDeviceSampleLocationsPropertiesEXT.class;
@@ -138,5 +138,5 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceSampleLocationsPropertiesEXTFactory FACTORY = new VkPhysicalDeviceSampleLocationsPropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

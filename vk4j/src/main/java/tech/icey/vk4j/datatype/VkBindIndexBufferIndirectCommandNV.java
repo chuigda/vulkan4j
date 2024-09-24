@@ -63,7 +63,7 @@ public record VkBindIndexBufferIndirectCommandNV(MemorySegment segment) {
     }
 
 
-    public static final class VkBindIndexBufferIndirectCommandNVFactory implements IFactory<VkBindIndexBufferIndirectCommandNV> {
+    public static final class Factory implements IFactory<VkBindIndexBufferIndirectCommandNV> {
         @Override
         public Class<VkBindIndexBufferIndirectCommandNV> clazz() {
             return VkBindIndexBufferIndirectCommandNV.class;
@@ -85,5 +85,5 @@ public record VkBindIndexBufferIndirectCommandNV(MemorySegment segment) {
         }
     }
 
-    public static final VkBindIndexBufferIndirectCommandNVFactory FACTORY = new VkBindIndexBufferIndirectCommandNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

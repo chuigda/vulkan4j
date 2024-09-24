@@ -64,7 +64,7 @@ public record VkImageViewASTCDecodeModeEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkImageViewASTCDecodeModeEXTFactory implements IFactory<VkImageViewASTCDecodeModeEXT> {
+    public static final class Factory implements IFactory<VkImageViewASTCDecodeModeEXT> {
         @Override
         public Class<VkImageViewASTCDecodeModeEXT> clazz() {
             return VkImageViewASTCDecodeModeEXT.class;
@@ -86,5 +86,5 @@ public record VkImageViewASTCDecodeModeEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkImageViewASTCDecodeModeEXTFactory FACTORY = new VkImageViewASTCDecodeModeEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkSubresourceHostMemcpySizeEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkSubresourceHostMemcpySizeEXTFactory implements IFactory<VkSubresourceHostMemcpySizeEXT> {
+    public static final class Factory implements IFactory<VkSubresourceHostMemcpySizeEXT> {
         @Override
         public Class<VkSubresourceHostMemcpySizeEXT> clazz() {
             return VkSubresourceHostMemcpySizeEXT.class;
@@ -86,5 +86,5 @@ public record VkSubresourceHostMemcpySizeEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkSubresourceHostMemcpySizeEXTFactory FACTORY = new VkSubresourceHostMemcpySizeEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

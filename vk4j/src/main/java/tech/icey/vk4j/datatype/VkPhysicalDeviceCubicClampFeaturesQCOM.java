@@ -64,7 +64,7 @@ public record VkPhysicalDeviceCubicClampFeaturesQCOM(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceCubicClampFeaturesQCOMFactory implements IFactory<VkPhysicalDeviceCubicClampFeaturesQCOM> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceCubicClampFeaturesQCOM> {
         @Override
         public Class<VkPhysicalDeviceCubicClampFeaturesQCOM> clazz() {
             return VkPhysicalDeviceCubicClampFeaturesQCOM.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceCubicClampFeaturesQCOM(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceCubicClampFeaturesQCOMFactory FACTORY = new VkPhysicalDeviceCubicClampFeaturesQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

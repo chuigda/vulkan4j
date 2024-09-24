@@ -11,7 +11,7 @@ public record VkDisplayModeKHR(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkDisplayModeKHRFactory implements IFactory<VkDisplayModeKHR> {
+    public static final class Factory implements IFactory<VkDisplayModeKHR> {
         @Override
         public Class<VkDisplayModeKHR> clazz() {
             return VkDisplayModeKHR.class;
@@ -33,5 +33,5 @@ public record VkDisplayModeKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkDisplayModeKHRFactory FACTORY = new VkDisplayModeKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

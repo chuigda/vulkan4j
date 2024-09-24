@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(MemorySegment
     }
 
 
-    public static final class VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTELFactory implements IFactory<VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL> {
         @Override
         public Class<VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL> clazz() {
             return VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(MemorySegment
         }
     }
 
-    public static final VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTELFactory FACTORY = new VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTELFactory();
+    public static final Factory FACTORY = new Factory();
 }

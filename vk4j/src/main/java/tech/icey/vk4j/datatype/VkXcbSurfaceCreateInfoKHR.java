@@ -88,7 +88,7 @@ public record VkXcbSurfaceCreateInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkXcbSurfaceCreateInfoKHRFactory implements IFactory<VkXcbSurfaceCreateInfoKHR> {
+    public static final class Factory implements IFactory<VkXcbSurfaceCreateInfoKHR> {
         @Override
         public Class<VkXcbSurfaceCreateInfoKHR> clazz() {
             return VkXcbSurfaceCreateInfoKHR.class;
@@ -110,5 +110,5 @@ public record VkXcbSurfaceCreateInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkXcbSurfaceCreateInfoKHRFactory FACTORY = new VkXcbSurfaceCreateInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -160,7 +160,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(MemorySegment 
     }
 
 
-    public static final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNVFactory implements IFactory<VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV> {
         @Override
         public Class<VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV> clazz() {
             return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV.class;
@@ -182,5 +182,5 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(MemorySegment 
         }
     }
 
-    public static final VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNVFactory FACTORY = new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

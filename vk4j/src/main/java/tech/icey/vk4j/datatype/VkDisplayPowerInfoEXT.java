@@ -64,7 +64,7 @@ public record VkDisplayPowerInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDisplayPowerInfoEXTFactory implements IFactory<VkDisplayPowerInfoEXT> {
+    public static final class Factory implements IFactory<VkDisplayPowerInfoEXT> {
         @Override
         public Class<VkDisplayPowerInfoEXT> clazz() {
             return VkDisplayPowerInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkDisplayPowerInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDisplayPowerInfoEXTFactory FACTORY = new VkDisplayPowerInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

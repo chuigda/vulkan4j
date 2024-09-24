@@ -64,7 +64,7 @@ public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(MemorySegment seg
     }
 
 
-    public static final class VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXTFactory implements IFactory<VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT> clazz() {
             return VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(MemorySegment seg
         }
     }
 
-    public static final VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXTFactory FACTORY = new VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

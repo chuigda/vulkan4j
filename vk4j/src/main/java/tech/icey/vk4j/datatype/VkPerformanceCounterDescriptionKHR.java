@@ -112,7 +112,7 @@ public record VkPerformanceCounterDescriptionKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkPerformanceCounterDescriptionKHRFactory implements IFactory<VkPerformanceCounterDescriptionKHR> {
+    public static final class Factory implements IFactory<VkPerformanceCounterDescriptionKHR> {
         @Override
         public Class<VkPerformanceCounterDescriptionKHR> clazz() {
             return VkPerformanceCounterDescriptionKHR.class;
@@ -134,5 +134,5 @@ public record VkPerformanceCounterDescriptionKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkPerformanceCounterDescriptionKHRFactory FACTORY = new VkPerformanceCounterDescriptionKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

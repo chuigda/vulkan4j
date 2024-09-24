@@ -76,7 +76,7 @@ public record VkLatencySleepInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkLatencySleepInfoNVFactory implements IFactory<VkLatencySleepInfoNV> {
+    public static final class Factory implements IFactory<VkLatencySleepInfoNV> {
         @Override
         public Class<VkLatencySleepInfoNV> clazz() {
             return VkLatencySleepInfoNV.class;
@@ -98,5 +98,5 @@ public record VkLatencySleepInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkLatencySleepInfoNVFactory FACTORY = new VkLatencySleepInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -11,7 +11,7 @@ public record VkIndirectCommandsLayoutNV(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkIndirectCommandsLayoutNVFactory implements IFactory<VkIndirectCommandsLayoutNV> {
+    public static final class Factory implements IFactory<VkIndirectCommandsLayoutNV> {
         @Override
         public Class<VkIndirectCommandsLayoutNV> clazz() {
             return VkIndirectCommandsLayoutNV.class;
@@ -33,5 +33,5 @@ public record VkIndirectCommandsLayoutNV(MemorySegment segment) {
         }
     }
 
-    public static final VkIndirectCommandsLayoutNVFactory FACTORY = new VkIndirectCommandsLayoutNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

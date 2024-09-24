@@ -96,7 +96,7 @@ public record VkReleaseSwapchainImagesInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkReleaseSwapchainImagesInfoEXTFactory implements IFactory<VkReleaseSwapchainImagesInfoEXT> {
+    public static final class Factory implements IFactory<VkReleaseSwapchainImagesInfoEXT> {
         @Override
         public Class<VkReleaseSwapchainImagesInfoEXT> clazz() {
             return VkReleaseSwapchainImagesInfoEXT.class;
@@ -118,5 +118,5 @@ public record VkReleaseSwapchainImagesInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkReleaseSwapchainImagesInfoEXTFactory FACTORY = new VkReleaseSwapchainImagesInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkDescriptorSetVariableDescriptorCountLayoutSupport(MemorySegment 
     }
 
 
-    public static final class VkDescriptorSetVariableDescriptorCountLayoutSupportFactory implements IFactory<VkDescriptorSetVariableDescriptorCountLayoutSupport> {
+    public static final class Factory implements IFactory<VkDescriptorSetVariableDescriptorCountLayoutSupport> {
         @Override
         public Class<VkDescriptorSetVariableDescriptorCountLayoutSupport> clazz() {
             return VkDescriptorSetVariableDescriptorCountLayoutSupport.class;
@@ -86,5 +86,5 @@ public record VkDescriptorSetVariableDescriptorCountLayoutSupport(MemorySegment 
         }
     }
 
-    public static final VkDescriptorSetVariableDescriptorCountLayoutSupportFactory FACTORY = new VkDescriptorSetVariableDescriptorCountLayoutSupportFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -89,7 +89,7 @@ public record VkDrmFormatModifierPropertiesList2EXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDrmFormatModifierPropertiesList2EXTFactory implements IFactory<VkDrmFormatModifierPropertiesList2EXT> {
+    public static final class Factory implements IFactory<VkDrmFormatModifierPropertiesList2EXT> {
         @Override
         public Class<VkDrmFormatModifierPropertiesList2EXT> clazz() {
             return VkDrmFormatModifierPropertiesList2EXT.class;
@@ -111,5 +111,5 @@ public record VkDrmFormatModifierPropertiesList2EXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDrmFormatModifierPropertiesList2EXTFactory FACTORY = new VkDrmFormatModifierPropertiesList2EXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

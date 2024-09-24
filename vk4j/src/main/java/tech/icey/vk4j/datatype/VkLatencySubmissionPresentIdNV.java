@@ -64,7 +64,7 @@ public record VkLatencySubmissionPresentIdNV(MemorySegment segment) {
     }
 
 
-    public static final class VkLatencySubmissionPresentIdNVFactory implements IFactory<VkLatencySubmissionPresentIdNV> {
+    public static final class Factory implements IFactory<VkLatencySubmissionPresentIdNV> {
         @Override
         public Class<VkLatencySubmissionPresentIdNV> clazz() {
             return VkLatencySubmissionPresentIdNV.class;
@@ -86,5 +86,5 @@ public record VkLatencySubmissionPresentIdNV(MemorySegment segment) {
         }
     }
 
-    public static final VkLatencySubmissionPresentIdNVFactory FACTORY = new VkLatencySubmissionPresentIdNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

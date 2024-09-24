@@ -102,7 +102,7 @@ public record VkAttachmentSampleCountInfoAMD(MemorySegment segment) {
     }
 
 
-    public static final class VkAttachmentSampleCountInfoAMDFactory implements IFactory<VkAttachmentSampleCountInfoAMD> {
+    public static final class Factory implements IFactory<VkAttachmentSampleCountInfoAMD> {
         @Override
         public Class<VkAttachmentSampleCountInfoAMD> clazz() {
             return VkAttachmentSampleCountInfoAMD.class;
@@ -124,5 +124,5 @@ public record VkAttachmentSampleCountInfoAMD(MemorySegment segment) {
         }
     }
 
-    public static final VkAttachmentSampleCountInfoAMDFactory FACTORY = new VkAttachmentSampleCountInfoAMDFactory();
+    public static final Factory FACTORY = new Factory();
 }

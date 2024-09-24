@@ -111,7 +111,7 @@ public record VkAccelerationStructureMatrixMotionInstanceNV(MemorySegment segmen
     }
 
 
-    public static final class VkAccelerationStructureMatrixMotionInstanceNVFactory implements IFactory<VkAccelerationStructureMatrixMotionInstanceNV> {
+    public static final class Factory implements IFactory<VkAccelerationStructureMatrixMotionInstanceNV> {
         @Override
         public Class<VkAccelerationStructureMatrixMotionInstanceNV> clazz() {
             return VkAccelerationStructureMatrixMotionInstanceNV.class;
@@ -133,5 +133,5 @@ public record VkAccelerationStructureMatrixMotionInstanceNV(MemorySegment segmen
         }
     }
 
-    public static final VkAccelerationStructureMatrixMotionInstanceNVFactory FACTORY = new VkAccelerationStructureMatrixMotionInstanceNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

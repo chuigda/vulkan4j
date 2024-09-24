@@ -99,7 +99,7 @@ public record VkCopyMemoryToImageIndirectCommandNV(MemorySegment segment) {
     }
 
 
-    public static final class VkCopyMemoryToImageIndirectCommandNVFactory implements IFactory<VkCopyMemoryToImageIndirectCommandNV> {
+    public static final class Factory implements IFactory<VkCopyMemoryToImageIndirectCommandNV> {
         @Override
         public Class<VkCopyMemoryToImageIndirectCommandNV> clazz() {
             return VkCopyMemoryToImageIndirectCommandNV.class;
@@ -121,5 +121,5 @@ public record VkCopyMemoryToImageIndirectCommandNV(MemorySegment segment) {
         }
     }
 
-    public static final VkCopyMemoryToImageIndirectCommandNVFactory FACTORY = new VkCopyMemoryToImageIndirectCommandNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

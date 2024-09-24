@@ -64,7 +64,7 @@ public record VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR(MemorySegment segme
     }
 
 
-    public static final class VkPhysicalDeviceGlobalPriorityQueryFeaturesKHRFactory implements IFactory<VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR> clazz() {
             return VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR(MemorySegment segme
         }
     }
 
-    public static final VkPhysicalDeviceGlobalPriorityQueryFeaturesKHRFactory FACTORY = new VkPhysicalDeviceGlobalPriorityQueryFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

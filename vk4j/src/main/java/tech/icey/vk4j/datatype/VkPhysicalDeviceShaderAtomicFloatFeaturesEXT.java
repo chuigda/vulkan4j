@@ -196,7 +196,7 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXTFactory implements IFactory<VkPhysicalDeviceShaderAtomicFloatFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderAtomicFloatFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceShaderAtomicFloatFeaturesEXT> clazz() {
             return VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.class;
@@ -218,5 +218,5 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceShaderAtomicFloatFeaturesEXTFactory FACTORY = new VkPhysicalDeviceShaderAtomicFloatFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

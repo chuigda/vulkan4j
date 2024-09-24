@@ -76,7 +76,7 @@ public record VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(MemorySegment segme
     }
 
 
-    public static final class VkPhysicalDeviceRayTracingMotionBlurFeaturesNVFactory implements IFactory<VkPhysicalDeviceRayTracingMotionBlurFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceRayTracingMotionBlurFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceRayTracingMotionBlurFeaturesNV> clazz() {
             return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(MemorySegment segme
         }
     }
 
-    public static final VkPhysicalDeviceRayTracingMotionBlurFeaturesNVFactory FACTORY = new VkPhysicalDeviceRayTracingMotionBlurFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

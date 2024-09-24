@@ -88,7 +88,7 @@ public record VkDescriptorAddressInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDescriptorAddressInfoEXTFactory implements IFactory<VkDescriptorAddressInfoEXT> {
+    public static final class Factory implements IFactory<VkDescriptorAddressInfoEXT> {
         @Override
         public Class<VkDescriptorAddressInfoEXT> clazz() {
             return VkDescriptorAddressInfoEXT.class;
@@ -110,5 +110,5 @@ public record VkDescriptorAddressInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorAddressInfoEXTFactory FACTORY = new VkDescriptorAddressInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

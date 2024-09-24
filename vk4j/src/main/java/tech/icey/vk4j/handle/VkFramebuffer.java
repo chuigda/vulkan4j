@@ -11,7 +11,7 @@ public record VkFramebuffer(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkFramebufferFactory implements IFactory<VkFramebuffer> {
+    public static final class Factory implements IFactory<VkFramebuffer> {
         @Override
         public Class<VkFramebuffer> clazz() {
             return VkFramebuffer.class;
@@ -33,5 +33,5 @@ public record VkFramebuffer(MemorySegment segment) {
         }
     }
 
-    public static final VkFramebufferFactory FACTORY = new VkFramebufferFactory();
+    public static final Factory FACTORY = new Factory();
 }

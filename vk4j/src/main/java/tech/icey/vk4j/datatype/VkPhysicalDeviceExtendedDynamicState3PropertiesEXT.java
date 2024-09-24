@@ -64,7 +64,7 @@ public record VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(MemorySegment s
     }
 
 
-    public static final class VkPhysicalDeviceExtendedDynamicState3PropertiesEXTFactory implements IFactory<VkPhysicalDeviceExtendedDynamicState3PropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceExtendedDynamicState3PropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceExtendedDynamicState3PropertiesEXT> clazz() {
             return VkPhysicalDeviceExtendedDynamicState3PropertiesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(MemorySegment s
         }
     }
 
-    public static final VkPhysicalDeviceExtendedDynamicState3PropertiesEXTFactory FACTORY = new VkPhysicalDeviceExtendedDynamicState3PropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

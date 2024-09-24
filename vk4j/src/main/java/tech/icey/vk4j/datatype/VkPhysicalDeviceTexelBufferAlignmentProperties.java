@@ -100,7 +100,7 @@ public record VkPhysicalDeviceTexelBufferAlignmentProperties(MemorySegment segme
     }
 
 
-    public static final class VkPhysicalDeviceTexelBufferAlignmentPropertiesFactory implements IFactory<VkPhysicalDeviceTexelBufferAlignmentProperties> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceTexelBufferAlignmentProperties> {
         @Override
         public Class<VkPhysicalDeviceTexelBufferAlignmentProperties> clazz() {
             return VkPhysicalDeviceTexelBufferAlignmentProperties.class;
@@ -122,5 +122,5 @@ public record VkPhysicalDeviceTexelBufferAlignmentProperties(MemorySegment segme
         }
     }
 
-    public static final VkPhysicalDeviceTexelBufferAlignmentPropertiesFactory FACTORY = new VkPhysicalDeviceTexelBufferAlignmentPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

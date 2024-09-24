@@ -101,7 +101,7 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
     }
 
 
-    public static final class VkPipelineViewportCoarseSampleOrderStateCreateInfoNVFactory implements IFactory<VkPipelineViewportCoarseSampleOrderStateCreateInfoNV> {
+    public static final class Factory implements IFactory<VkPipelineViewportCoarseSampleOrderStateCreateInfoNV> {
         @Override
         public Class<VkPipelineViewportCoarseSampleOrderStateCreateInfoNV> clazz() {
             return VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.class;
@@ -123,5 +123,5 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
         }
     }
 
-    public static final VkPipelineViewportCoarseSampleOrderStateCreateInfoNVFactory FACTORY = new VkPipelineViewportCoarseSampleOrderStateCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

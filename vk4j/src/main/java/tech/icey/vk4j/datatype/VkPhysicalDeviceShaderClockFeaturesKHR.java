@@ -76,7 +76,7 @@ public record VkPhysicalDeviceShaderClockFeaturesKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceShaderClockFeaturesKHRFactory implements IFactory<VkPhysicalDeviceShaderClockFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderClockFeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceShaderClockFeaturesKHR> clazz() {
             return VkPhysicalDeviceShaderClockFeaturesKHR.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceShaderClockFeaturesKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceShaderClockFeaturesKHRFactory FACTORY = new VkPhysicalDeviceShaderClockFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

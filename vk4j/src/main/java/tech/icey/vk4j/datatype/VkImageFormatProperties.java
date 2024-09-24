@@ -87,7 +87,7 @@ public record VkImageFormatProperties(MemorySegment segment) {
     }
 
 
-    public static final class VkImageFormatPropertiesFactory implements IFactory<VkImageFormatProperties> {
+    public static final class Factory implements IFactory<VkImageFormatProperties> {
         @Override
         public Class<VkImageFormatProperties> clazz() {
             return VkImageFormatProperties.class;
@@ -109,5 +109,5 @@ public record VkImageFormatProperties(MemorySegment segment) {
         }
     }
 
-    public static final VkImageFormatPropertiesFactory FACTORY = new VkImageFormatPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

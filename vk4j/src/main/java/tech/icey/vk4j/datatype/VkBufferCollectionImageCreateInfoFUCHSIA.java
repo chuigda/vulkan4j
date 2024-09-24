@@ -76,7 +76,7 @@ public record VkBufferCollectionImageCreateInfoFUCHSIA(MemorySegment segment) {
     }
 
 
-    public static final class VkBufferCollectionImageCreateInfoFUCHSIAFactory implements IFactory<VkBufferCollectionImageCreateInfoFUCHSIA> {
+    public static final class Factory implements IFactory<VkBufferCollectionImageCreateInfoFUCHSIA> {
         @Override
         public Class<VkBufferCollectionImageCreateInfoFUCHSIA> clazz() {
             return VkBufferCollectionImageCreateInfoFUCHSIA.class;
@@ -98,5 +98,5 @@ public record VkBufferCollectionImageCreateInfoFUCHSIA(MemorySegment segment) {
         }
     }
 
-    public static final VkBufferCollectionImageCreateInfoFUCHSIAFactory FACTORY = new VkBufferCollectionImageCreateInfoFUCHSIAFactory();
+    public static final Factory FACTORY = new Factory();
 }

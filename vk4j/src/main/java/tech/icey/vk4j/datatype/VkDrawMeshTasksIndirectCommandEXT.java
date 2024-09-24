@@ -63,7 +63,7 @@ public record VkDrawMeshTasksIndirectCommandEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDrawMeshTasksIndirectCommandEXTFactory implements IFactory<VkDrawMeshTasksIndirectCommandEXT> {
+    public static final class Factory implements IFactory<VkDrawMeshTasksIndirectCommandEXT> {
         @Override
         public Class<VkDrawMeshTasksIndirectCommandEXT> clazz() {
             return VkDrawMeshTasksIndirectCommandEXT.class;
@@ -85,5 +85,5 @@ public record VkDrawMeshTasksIndirectCommandEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDrawMeshTasksIndirectCommandEXTFactory FACTORY = new VkDrawMeshTasksIndirectCommandEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

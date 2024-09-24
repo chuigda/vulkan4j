@@ -75,7 +75,7 @@ public record VkDescriptorSetLayoutHostMappingInfoVALVE(MemorySegment segment) {
     }
 
 
-    public static final class VkDescriptorSetLayoutHostMappingInfoVALVEFactory implements IFactory<VkDescriptorSetLayoutHostMappingInfoVALVE> {
+    public static final class Factory implements IFactory<VkDescriptorSetLayoutHostMappingInfoVALVE> {
         @Override
         public Class<VkDescriptorSetLayoutHostMappingInfoVALVE> clazz() {
             return VkDescriptorSetLayoutHostMappingInfoVALVE.class;
@@ -97,5 +97,5 @@ public record VkDescriptorSetLayoutHostMappingInfoVALVE(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorSetLayoutHostMappingInfoVALVEFactory FACTORY = new VkDescriptorSetLayoutHostMappingInfoVALVEFactory();
+    public static final Factory FACTORY = new Factory();
 }

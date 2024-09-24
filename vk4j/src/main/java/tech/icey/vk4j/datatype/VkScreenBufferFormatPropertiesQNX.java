@@ -160,7 +160,7 @@ public record VkScreenBufferFormatPropertiesQNX(MemorySegment segment) {
     }
 
 
-    public static final class VkScreenBufferFormatPropertiesQNXFactory implements IFactory<VkScreenBufferFormatPropertiesQNX> {
+    public static final class Factory implements IFactory<VkScreenBufferFormatPropertiesQNX> {
         @Override
         public Class<VkScreenBufferFormatPropertiesQNX> clazz() {
             return VkScreenBufferFormatPropertiesQNX.class;
@@ -182,5 +182,5 @@ public record VkScreenBufferFormatPropertiesQNX(MemorySegment segment) {
         }
     }
 
-    public static final VkScreenBufferFormatPropertiesQNXFactory FACTORY = new VkScreenBufferFormatPropertiesQNXFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -121,7 +121,7 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkBindImageMemoryDeviceGroupInfoFactory implements IFactory<VkBindImageMemoryDeviceGroupInfo> {
+    public static final class Factory implements IFactory<VkBindImageMemoryDeviceGroupInfo> {
         @Override
         public Class<VkBindImageMemoryDeviceGroupInfo> clazz() {
             return VkBindImageMemoryDeviceGroupInfo.class;
@@ -143,5 +143,5 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkBindImageMemoryDeviceGroupInfoFactory FACTORY = new VkBindImageMemoryDeviceGroupInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -119,7 +119,7 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
     }
 
 
-    public static final class VkPipelineExecutableInternalRepresentationKHRFactory implements IFactory<VkPipelineExecutableInternalRepresentationKHR> {
+    public static final class Factory implements IFactory<VkPipelineExecutableInternalRepresentationKHR> {
         @Override
         public Class<VkPipelineExecutableInternalRepresentationKHR> clazz() {
             return VkPipelineExecutableInternalRepresentationKHR.class;
@@ -141,5 +141,5 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
         }
     }
 
-    public static final VkPipelineExecutableInternalRepresentationKHRFactory FACTORY = new VkPipelineExecutableInternalRepresentationKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

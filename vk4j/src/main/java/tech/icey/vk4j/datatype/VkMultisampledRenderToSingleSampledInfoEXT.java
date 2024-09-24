@@ -76,7 +76,7 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(MemorySegment segment) 
     }
 
 
-    public static final class VkMultisampledRenderToSingleSampledInfoEXTFactory implements IFactory<VkMultisampledRenderToSingleSampledInfoEXT> {
+    public static final class Factory implements IFactory<VkMultisampledRenderToSingleSampledInfoEXT> {
         @Override
         public Class<VkMultisampledRenderToSingleSampledInfoEXT> clazz() {
             return VkMultisampledRenderToSingleSampledInfoEXT.class;
@@ -98,5 +98,5 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(MemorySegment segment) 
         }
     }
 
-    public static final VkMultisampledRenderToSingleSampledInfoEXTFactory FACTORY = new VkMultisampledRenderToSingleSampledInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceLinearColorAttachmentFeaturesNV(MemorySegment segm
     }
 
 
-    public static final class VkPhysicalDeviceLinearColorAttachmentFeaturesNVFactory implements IFactory<VkPhysicalDeviceLinearColorAttachmentFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceLinearColorAttachmentFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceLinearColorAttachmentFeaturesNV> clazz() {
             return VkPhysicalDeviceLinearColorAttachmentFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceLinearColorAttachmentFeaturesNV(MemorySegment segm
         }
     }
 
-    public static final VkPhysicalDeviceLinearColorAttachmentFeaturesNVFactory FACTORY = new VkPhysicalDeviceLinearColorAttachmentFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

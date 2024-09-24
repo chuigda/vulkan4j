@@ -120,7 +120,7 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(MemorySegment segmen
     }
 
 
-    public static final class VkPipelineCoverageModulationStateCreateInfoNVFactory implements IFactory<VkPipelineCoverageModulationStateCreateInfoNV> {
+    public static final class Factory implements IFactory<VkPipelineCoverageModulationStateCreateInfoNV> {
         @Override
         public Class<VkPipelineCoverageModulationStateCreateInfoNV> clazz() {
             return VkPipelineCoverageModulationStateCreateInfoNV.class;
@@ -142,5 +142,5 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(MemorySegment segmen
         }
     }
 
-    public static final VkPipelineCoverageModulationStateCreateInfoNVFactory FACTORY = new VkPipelineCoverageModulationStateCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

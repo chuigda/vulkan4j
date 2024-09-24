@@ -64,7 +64,7 @@ public record VkExternalMemoryAcquireUnmodifiedEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkExternalMemoryAcquireUnmodifiedEXTFactory implements IFactory<VkExternalMemoryAcquireUnmodifiedEXT> {
+    public static final class Factory implements IFactory<VkExternalMemoryAcquireUnmodifiedEXT> {
         @Override
         public Class<VkExternalMemoryAcquireUnmodifiedEXT> clazz() {
             return VkExternalMemoryAcquireUnmodifiedEXT.class;
@@ -86,5 +86,5 @@ public record VkExternalMemoryAcquireUnmodifiedEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkExternalMemoryAcquireUnmodifiedEXTFactory FACTORY = new VkExternalMemoryAcquireUnmodifiedEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

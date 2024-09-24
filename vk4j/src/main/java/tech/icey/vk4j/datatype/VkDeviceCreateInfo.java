@@ -174,7 +174,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceCreateInfoFactory implements IFactory<VkDeviceCreateInfo> {
+    public static final class Factory implements IFactory<VkDeviceCreateInfo> {
         @Override
         public Class<VkDeviceCreateInfo> clazz() {
             return VkDeviceCreateInfo.class;
@@ -196,5 +196,5 @@ public record VkDeviceCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceCreateInfoFactory FACTORY = new VkDeviceCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

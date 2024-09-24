@@ -64,7 +64,7 @@ public record VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(MemorySegment
     }
 
 
-    public static final class VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXTFactory implements IFactory<VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT> {
         @Override
         public Class<VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT> clazz() {
             return VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(MemorySegment
         }
     }
 
-    public static final VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXTFactory FACTORY = new VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

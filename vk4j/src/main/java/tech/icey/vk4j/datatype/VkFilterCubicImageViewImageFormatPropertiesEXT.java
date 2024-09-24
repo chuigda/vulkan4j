@@ -76,7 +76,7 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(MemorySegment segme
     }
 
 
-    public static final class VkFilterCubicImageViewImageFormatPropertiesEXTFactory implements IFactory<VkFilterCubicImageViewImageFormatPropertiesEXT> {
+    public static final class Factory implements IFactory<VkFilterCubicImageViewImageFormatPropertiesEXT> {
         @Override
         public Class<VkFilterCubicImageViewImageFormatPropertiesEXT> clazz() {
             return VkFilterCubicImageViewImageFormatPropertiesEXT.class;
@@ -98,5 +98,5 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(MemorySegment segme
         }
     }
 
-    public static final VkFilterCubicImageViewImageFormatPropertiesEXTFactory FACTORY = new VkFilterCubicImageViewImageFormatPropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

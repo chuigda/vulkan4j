@@ -64,7 +64,7 @@ public record VkPhysicalDeviceSamplerYcbcrConversionFeatures(MemorySegment segme
     }
 
 
-    public static final class VkPhysicalDeviceSamplerYcbcrConversionFeaturesFactory implements IFactory<VkPhysicalDeviceSamplerYcbcrConversionFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceSamplerYcbcrConversionFeatures> {
         @Override
         public Class<VkPhysicalDeviceSamplerYcbcrConversionFeatures> clazz() {
             return VkPhysicalDeviceSamplerYcbcrConversionFeatures.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceSamplerYcbcrConversionFeatures(MemorySegment segme
         }
     }
 
-    public static final VkPhysicalDeviceSamplerYcbcrConversionFeaturesFactory FACTORY = new VkPhysicalDeviceSamplerYcbcrConversionFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

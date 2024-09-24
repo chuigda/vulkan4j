@@ -64,7 +64,7 @@ public record VkPhysicalDeviceMapMemoryPlacedPropertiesEXT(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceMapMemoryPlacedPropertiesEXTFactory implements IFactory<VkPhysicalDeviceMapMemoryPlacedPropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceMapMemoryPlacedPropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceMapMemoryPlacedPropertiesEXT> clazz() {
             return VkPhysicalDeviceMapMemoryPlacedPropertiesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceMapMemoryPlacedPropertiesEXT(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceMapMemoryPlacedPropertiesEXTFactory FACTORY = new VkPhysicalDeviceMapMemoryPlacedPropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

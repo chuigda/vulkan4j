@@ -88,7 +88,7 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(MemorySegment segment)
     }
 
 
-    public static final class VkOpticalFlowSessionCreatePrivateDataInfoNVFactory implements IFactory<VkOpticalFlowSessionCreatePrivateDataInfoNV> {
+    public static final class Factory implements IFactory<VkOpticalFlowSessionCreatePrivateDataInfoNV> {
         @Override
         public Class<VkOpticalFlowSessionCreatePrivateDataInfoNV> clazz() {
             return VkOpticalFlowSessionCreatePrivateDataInfoNV.class;
@@ -110,5 +110,5 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(MemorySegment segment)
         }
     }
 
-    public static final VkOpticalFlowSessionCreatePrivateDataInfoNVFactory FACTORY = new VkOpticalFlowSessionCreatePrivateDataInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkHostImageCopyDevicePerformanceQueryEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkHostImageCopyDevicePerformanceQueryEXTFactory implements IFactory<VkHostImageCopyDevicePerformanceQueryEXT> {
+    public static final class Factory implements IFactory<VkHostImageCopyDevicePerformanceQueryEXT> {
         @Override
         public Class<VkHostImageCopyDevicePerformanceQueryEXT> clazz() {
             return VkHostImageCopyDevicePerformanceQueryEXT.class;
@@ -98,5 +98,5 @@ public record VkHostImageCopyDevicePerformanceQueryEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkHostImageCopyDevicePerformanceQueryEXTFactory FACTORY = new VkHostImageCopyDevicePerformanceQueryEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

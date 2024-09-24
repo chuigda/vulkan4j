@@ -100,7 +100,7 @@ public record VkDescriptorSetLayoutBinding(MemorySegment segment) {
     }
 
 
-    public static final class VkDescriptorSetLayoutBindingFactory implements IFactory<VkDescriptorSetLayoutBinding> {
+    public static final class Factory implements IFactory<VkDescriptorSetLayoutBinding> {
         @Override
         public Class<VkDescriptorSetLayoutBinding> clazz() {
             return VkDescriptorSetLayoutBinding.class;
@@ -122,5 +122,5 @@ public record VkDescriptorSetLayoutBinding(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorSetLayoutBindingFactory FACTORY = new VkDescriptorSetLayoutBindingFactory();
+    public static final Factory FACTORY = new Factory();
 }

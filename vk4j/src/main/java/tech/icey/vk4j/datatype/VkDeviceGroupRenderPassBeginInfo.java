@@ -101,7 +101,7 @@ public record VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceGroupRenderPassBeginInfoFactory implements IFactory<VkDeviceGroupRenderPassBeginInfo> {
+    public static final class Factory implements IFactory<VkDeviceGroupRenderPassBeginInfo> {
         @Override
         public Class<VkDeviceGroupRenderPassBeginInfo> clazz() {
             return VkDeviceGroupRenderPassBeginInfo.class;
@@ -123,5 +123,5 @@ public record VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceGroupRenderPassBeginInfoFactory FACTORY = new VkDeviceGroupRenderPassBeginInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -184,7 +184,7 @@ public record VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment) {
     }
 
 
-    public static final class VkBufferCollectionPropertiesFUCHSIAFactory implements IFactory<VkBufferCollectionPropertiesFUCHSIA> {
+    public static final class Factory implements IFactory<VkBufferCollectionPropertiesFUCHSIA> {
         @Override
         public Class<VkBufferCollectionPropertiesFUCHSIA> clazz() {
             return VkBufferCollectionPropertiesFUCHSIA.class;
@@ -206,5 +206,5 @@ public record VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment) {
         }
     }
 
-    public static final VkBufferCollectionPropertiesFUCHSIAFactory FACTORY = new VkBufferCollectionPropertiesFUCHSIAFactory();
+    public static final Factory FACTORY = new Factory();
 }

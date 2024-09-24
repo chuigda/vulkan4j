@@ -64,7 +64,7 @@ public record VkRenderPassTransformBeginInfoQCOM(MemorySegment segment) {
     }
 
 
-    public static final class VkRenderPassTransformBeginInfoQCOMFactory implements IFactory<VkRenderPassTransformBeginInfoQCOM> {
+    public static final class Factory implements IFactory<VkRenderPassTransformBeginInfoQCOM> {
         @Override
         public Class<VkRenderPassTransformBeginInfoQCOM> clazz() {
             return VkRenderPassTransformBeginInfoQCOM.class;
@@ -86,5 +86,5 @@ public record VkRenderPassTransformBeginInfoQCOM(MemorySegment segment) {
         }
     }
 
-    public static final VkRenderPassTransformBeginInfoQCOMFactory FACTORY = new VkRenderPassTransformBeginInfoQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

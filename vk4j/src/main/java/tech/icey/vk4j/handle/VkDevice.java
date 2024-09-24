@@ -11,7 +11,7 @@ public record VkDevice(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkDeviceFactory implements IFactory<VkDevice> {
+    public static final class Factory implements IFactory<VkDevice> {
         @Override
         public Class<VkDevice> clazz() {
             return VkDevice.class;
@@ -33,5 +33,5 @@ public record VkDevice(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceFactory FACTORY = new VkDeviceFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceHostQueryResetFeatures(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceHostQueryResetFeaturesFactory implements IFactory<VkPhysicalDeviceHostQueryResetFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceHostQueryResetFeatures> {
         @Override
         public Class<VkPhysicalDeviceHostQueryResetFeatures> clazz() {
             return VkPhysicalDeviceHostQueryResetFeatures.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceHostQueryResetFeatures(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceHostQueryResetFeaturesFactory FACTORY = new VkPhysicalDeviceHostQueryResetFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

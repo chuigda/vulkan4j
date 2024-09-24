@@ -64,7 +64,7 @@ public record VkPhysicalDeviceMaintenance7FeaturesKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceMaintenance7FeaturesKHRFactory implements IFactory<VkPhysicalDeviceMaintenance7FeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceMaintenance7FeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceMaintenance7FeaturesKHR> clazz() {
             return VkPhysicalDeviceMaintenance7FeaturesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceMaintenance7FeaturesKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceMaintenance7FeaturesKHRFactory FACTORY = new VkPhysicalDeviceMaintenance7FeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

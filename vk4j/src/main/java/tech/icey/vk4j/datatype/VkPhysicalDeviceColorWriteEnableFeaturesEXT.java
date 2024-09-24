@@ -64,7 +64,7 @@ public record VkPhysicalDeviceColorWriteEnableFeaturesEXT(MemorySegment segment)
     }
 
 
-    public static final class VkPhysicalDeviceColorWriteEnableFeaturesEXTFactory implements IFactory<VkPhysicalDeviceColorWriteEnableFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceColorWriteEnableFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceColorWriteEnableFeaturesEXT> clazz() {
             return VkPhysicalDeviceColorWriteEnableFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceColorWriteEnableFeaturesEXT(MemorySegment segment)
         }
     }
 
-    public static final VkPhysicalDeviceColorWriteEnableFeaturesEXTFactory FACTORY = new VkPhysicalDeviceColorWriteEnableFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

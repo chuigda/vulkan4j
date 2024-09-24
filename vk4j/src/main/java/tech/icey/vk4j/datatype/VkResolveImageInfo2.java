@@ -137,7 +137,7 @@ public record VkResolveImageInfo2(MemorySegment segment) {
     }
 
 
-    public static final class VkResolveImageInfo2Factory implements IFactory<VkResolveImageInfo2> {
+    public static final class Factory implements IFactory<VkResolveImageInfo2> {
         @Override
         public Class<VkResolveImageInfo2> clazz() {
             return VkResolveImageInfo2.class;
@@ -159,5 +159,5 @@ public record VkResolveImageInfo2(MemorySegment segment) {
         }
     }
 
-    public static final VkResolveImageInfo2Factory FACTORY = new VkResolveImageInfo2Factory();
+    public static final Factory FACTORY = new Factory();
 }

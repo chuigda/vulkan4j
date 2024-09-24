@@ -111,7 +111,7 @@ public record VkStencilOpState(MemorySegment segment) {
     }
 
 
-    public static final class VkStencilOpStateFactory implements IFactory<VkStencilOpState> {
+    public static final class Factory implements IFactory<VkStencilOpState> {
         @Override
         public Class<VkStencilOpState> clazz() {
             return VkStencilOpState.class;
@@ -133,5 +133,5 @@ public record VkStencilOpState(MemorySegment segment) {
         }
     }
 
-    public static final VkStencilOpStateFactory FACTORY = new VkStencilOpStateFactory();
+    public static final Factory FACTORY = new Factory();
 }

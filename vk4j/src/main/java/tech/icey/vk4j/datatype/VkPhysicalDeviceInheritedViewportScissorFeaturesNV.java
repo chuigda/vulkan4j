@@ -64,7 +64,7 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(MemorySegment s
     }
 
 
-    public static final class VkPhysicalDeviceInheritedViewportScissorFeaturesNVFactory implements IFactory<VkPhysicalDeviceInheritedViewportScissorFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceInheritedViewportScissorFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceInheritedViewportScissorFeaturesNV> clazz() {
             return VkPhysicalDeviceInheritedViewportScissorFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(MemorySegment s
         }
     }
 
-    public static final VkPhysicalDeviceInheritedViewportScissorFeaturesNVFactory FACTORY = new VkPhysicalDeviceInheritedViewportScissorFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

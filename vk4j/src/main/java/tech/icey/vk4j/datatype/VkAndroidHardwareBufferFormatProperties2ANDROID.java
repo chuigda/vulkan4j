@@ -148,7 +148,7 @@ public record VkAndroidHardwareBufferFormatProperties2ANDROID(MemorySegment segm
     }
 
 
-    public static final class VkAndroidHardwareBufferFormatProperties2ANDROIDFactory implements IFactory<VkAndroidHardwareBufferFormatProperties2ANDROID> {
+    public static final class Factory implements IFactory<VkAndroidHardwareBufferFormatProperties2ANDROID> {
         @Override
         public Class<VkAndroidHardwareBufferFormatProperties2ANDROID> clazz() {
             return VkAndroidHardwareBufferFormatProperties2ANDROID.class;
@@ -170,5 +170,5 @@ public record VkAndroidHardwareBufferFormatProperties2ANDROID(MemorySegment segm
         }
     }
 
-    public static final VkAndroidHardwareBufferFormatProperties2ANDROIDFactory FACTORY = new VkAndroidHardwareBufferFormatProperties2ANDROIDFactory();
+    public static final Factory FACTORY = new Factory();
 }

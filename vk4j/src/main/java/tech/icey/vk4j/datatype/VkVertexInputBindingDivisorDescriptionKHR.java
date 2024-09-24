@@ -51,7 +51,7 @@ public record VkVertexInputBindingDivisorDescriptionKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkVertexInputBindingDivisorDescriptionKHRFactory implements IFactory<VkVertexInputBindingDivisorDescriptionKHR> {
+    public static final class Factory implements IFactory<VkVertexInputBindingDivisorDescriptionKHR> {
         @Override
         public Class<VkVertexInputBindingDivisorDescriptionKHR> clazz() {
             return VkVertexInputBindingDivisorDescriptionKHR.class;
@@ -73,5 +73,5 @@ public record VkVertexInputBindingDivisorDescriptionKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkVertexInputBindingDivisorDescriptionKHRFactory FACTORY = new VkVertexInputBindingDivisorDescriptionKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -148,7 +148,7 @@ public record VkImageMemoryBarrier(MemorySegment segment) {
     }
 
 
-    public static final class VkImageMemoryBarrierFactory implements IFactory<VkImageMemoryBarrier> {
+    public static final class Factory implements IFactory<VkImageMemoryBarrier> {
         @Override
         public Class<VkImageMemoryBarrier> clazz() {
             return VkImageMemoryBarrier.class;
@@ -170,5 +170,5 @@ public record VkImageMemoryBarrier(MemorySegment segment) {
         }
     }
 
-    public static final VkImageMemoryBarrierFactory FACTORY = new VkImageMemoryBarrierFactory();
+    public static final Factory FACTORY = new Factory();
 }

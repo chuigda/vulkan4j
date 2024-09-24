@@ -11,7 +11,7 @@ public record VkCudaModuleNV(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkCudaModuleNVFactory implements IFactory<VkCudaModuleNV> {
+    public static final class Factory implements IFactory<VkCudaModuleNV> {
         @Override
         public Class<VkCudaModuleNV> clazz() {
             return VkCudaModuleNV.class;
@@ -33,5 +33,5 @@ public record VkCudaModuleNV(MemorySegment segment) {
         }
     }
 
-    public static final VkCudaModuleNVFactory FACTORY = new VkCudaModuleNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

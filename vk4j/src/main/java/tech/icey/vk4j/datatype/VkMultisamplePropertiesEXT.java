@@ -64,7 +64,7 @@ public record VkMultisamplePropertiesEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkMultisamplePropertiesEXTFactory implements IFactory<VkMultisamplePropertiesEXT> {
+    public static final class Factory implements IFactory<VkMultisamplePropertiesEXT> {
         @Override
         public Class<VkMultisamplePropertiesEXT> clazz() {
             return VkMultisamplePropertiesEXT.class;
@@ -86,5 +86,5 @@ public record VkMultisamplePropertiesEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkMultisamplePropertiesEXTFactory FACTORY = new VkMultisamplePropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

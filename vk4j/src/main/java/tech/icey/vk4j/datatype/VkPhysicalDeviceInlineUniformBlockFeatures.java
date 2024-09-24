@@ -76,7 +76,7 @@ public record VkPhysicalDeviceInlineUniformBlockFeatures(MemorySegment segment) 
     }
 
 
-    public static final class VkPhysicalDeviceInlineUniformBlockFeaturesFactory implements IFactory<VkPhysicalDeviceInlineUniformBlockFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceInlineUniformBlockFeatures> {
         @Override
         public Class<VkPhysicalDeviceInlineUniformBlockFeatures> clazz() {
             return VkPhysicalDeviceInlineUniformBlockFeatures.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceInlineUniformBlockFeatures(MemorySegment segment) 
         }
     }
 
-    public static final VkPhysicalDeviceInlineUniformBlockFeaturesFactory FACTORY = new VkPhysicalDeviceInlineUniformBlockFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

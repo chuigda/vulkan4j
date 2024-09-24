@@ -100,7 +100,7 @@ public record VkDeviceAddressBindingCallbackDataEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceAddressBindingCallbackDataEXTFactory implements IFactory<VkDeviceAddressBindingCallbackDataEXT> {
+    public static final class Factory implements IFactory<VkDeviceAddressBindingCallbackDataEXT> {
         @Override
         public Class<VkDeviceAddressBindingCallbackDataEXT> clazz() {
             return VkDeviceAddressBindingCallbackDataEXT.class;
@@ -122,5 +122,5 @@ public record VkDeviceAddressBindingCallbackDataEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceAddressBindingCallbackDataEXTFactory FACTORY = new VkDeviceAddressBindingCallbackDataEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

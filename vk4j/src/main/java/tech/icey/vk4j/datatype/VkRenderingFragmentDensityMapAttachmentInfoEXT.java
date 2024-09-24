@@ -76,7 +76,7 @@ public record VkRenderingFragmentDensityMapAttachmentInfoEXT(MemorySegment segme
     }
 
 
-    public static final class VkRenderingFragmentDensityMapAttachmentInfoEXTFactory implements IFactory<VkRenderingFragmentDensityMapAttachmentInfoEXT> {
+    public static final class Factory implements IFactory<VkRenderingFragmentDensityMapAttachmentInfoEXT> {
         @Override
         public Class<VkRenderingFragmentDensityMapAttachmentInfoEXT> clazz() {
             return VkRenderingFragmentDensityMapAttachmentInfoEXT.class;
@@ -98,5 +98,5 @@ public record VkRenderingFragmentDensityMapAttachmentInfoEXT(MemorySegment segme
         }
     }
 
-    public static final VkRenderingFragmentDensityMapAttachmentInfoEXTFactory FACTORY = new VkRenderingFragmentDensityMapAttachmentInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

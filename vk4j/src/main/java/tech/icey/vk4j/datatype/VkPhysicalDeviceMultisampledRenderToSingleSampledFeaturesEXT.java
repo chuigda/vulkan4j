@@ -64,7 +64,7 @@ public record VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(Memor
     }
 
 
-    public static final class VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXTFactory implements IFactory<VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT> clazz() {
             return VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(Memor
         }
     }
 
-    public static final VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXTFactory FACTORY = new VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

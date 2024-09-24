@@ -64,7 +64,7 @@ public record VkPipelineRepresentativeFragmentTestStateCreateInfoNV(MemorySegmen
     }
 
 
-    public static final class VkPipelineRepresentativeFragmentTestStateCreateInfoNVFactory implements IFactory<VkPipelineRepresentativeFragmentTestStateCreateInfoNV> {
+    public static final class Factory implements IFactory<VkPipelineRepresentativeFragmentTestStateCreateInfoNV> {
         @Override
         public Class<VkPipelineRepresentativeFragmentTestStateCreateInfoNV> clazz() {
             return VkPipelineRepresentativeFragmentTestStateCreateInfoNV.class;
@@ -86,5 +86,5 @@ public record VkPipelineRepresentativeFragmentTestStateCreateInfoNV(MemorySegmen
         }
     }
 
-    public static final VkPipelineRepresentativeFragmentTestStateCreateInfoNVFactory FACTORY = new VkPipelineRepresentativeFragmentTestStateCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

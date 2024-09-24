@@ -64,7 +64,7 @@ public record VkCalibratedTimestampInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkCalibratedTimestampInfoKHRFactory implements IFactory<VkCalibratedTimestampInfoKHR> {
+    public static final class Factory implements IFactory<VkCalibratedTimestampInfoKHR> {
         @Override
         public Class<VkCalibratedTimestampInfoKHR> clazz() {
             return VkCalibratedTimestampInfoKHR.class;
@@ -86,5 +86,5 @@ public record VkCalibratedTimestampInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkCalibratedTimestampInfoKHRFactory FACTORY = new VkCalibratedTimestampInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkSwapchainLatencyCreateInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkSwapchainLatencyCreateInfoNVFactory implements IFactory<VkSwapchainLatencyCreateInfoNV> {
+    public static final class Factory implements IFactory<VkSwapchainLatencyCreateInfoNV> {
         @Override
         public Class<VkSwapchainLatencyCreateInfoNV> clazz() {
             return VkSwapchainLatencyCreateInfoNV.class;
@@ -86,5 +86,5 @@ public record VkSwapchainLatencyCreateInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkSwapchainLatencyCreateInfoNVFactory FACTORY = new VkSwapchainLatencyCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

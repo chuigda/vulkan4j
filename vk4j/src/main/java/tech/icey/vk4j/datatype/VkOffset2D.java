@@ -51,7 +51,7 @@ public record VkOffset2D(MemorySegment segment) {
     }
 
 
-    public static final class VkOffset2DFactory implements IFactory<VkOffset2D> {
+    public static final class Factory implements IFactory<VkOffset2D> {
         @Override
         public Class<VkOffset2D> clazz() {
             return VkOffset2D.class;
@@ -73,5 +73,5 @@ public record VkOffset2D(MemorySegment segment) {
         }
     }
 
-    public static final VkOffset2DFactory FACTORY = new VkOffset2DFactory();
+    public static final Factory FACTORY = new Factory();
 }

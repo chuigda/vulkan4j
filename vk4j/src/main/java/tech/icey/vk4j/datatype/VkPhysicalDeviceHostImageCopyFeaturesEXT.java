@@ -64,7 +64,7 @@ public record VkPhysicalDeviceHostImageCopyFeaturesEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceHostImageCopyFeaturesEXTFactory implements IFactory<VkPhysicalDeviceHostImageCopyFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceHostImageCopyFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceHostImageCopyFeaturesEXT> clazz() {
             return VkPhysicalDeviceHostImageCopyFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceHostImageCopyFeaturesEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceHostImageCopyFeaturesEXTFactory FACTORY = new VkPhysicalDeviceHostImageCopyFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

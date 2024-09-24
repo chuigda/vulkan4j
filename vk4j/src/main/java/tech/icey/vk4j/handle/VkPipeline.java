@@ -11,7 +11,7 @@ public record VkPipeline(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkPipelineFactory implements IFactory<VkPipeline> {
+    public static final class Factory implements IFactory<VkPipeline> {
         @Override
         public Class<VkPipeline> clazz() {
             return VkPipeline.class;
@@ -33,5 +33,5 @@ public record VkPipeline(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineFactory FACTORY = new VkPipelineFactory();
+    public static final Factory FACTORY = new Factory();
 }

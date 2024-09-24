@@ -80,7 +80,7 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceShaderObjectPropertiesEXTFactory implements IFactory<VkPhysicalDeviceShaderObjectPropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderObjectPropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceShaderObjectPropertiesEXT> clazz() {
             return VkPhysicalDeviceShaderObjectPropertiesEXT.class;
@@ -102,5 +102,5 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceShaderObjectPropertiesEXTFactory FACTORY = new VkPhysicalDeviceShaderObjectPropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

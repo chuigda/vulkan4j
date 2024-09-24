@@ -138,7 +138,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineVertexInputStateCreateInfoFactory implements IFactory<VkPipelineVertexInputStateCreateInfo> {
+    public static final class Factory implements IFactory<VkPipelineVertexInputStateCreateInfo> {
         @Override
         public Class<VkPipelineVertexInputStateCreateInfo> clazz() {
             return VkPipelineVertexInputStateCreateInfo.class;
@@ -160,5 +160,5 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineVertexInputStateCreateInfoFactory FACTORY = new VkPipelineVertexInputStateCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

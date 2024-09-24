@@ -133,7 +133,7 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineShaderStageCreateInfoFactory implements IFactory<VkPipelineShaderStageCreateInfo> {
+    public static final class Factory implements IFactory<VkPipelineShaderStageCreateInfo> {
         @Override
         public Class<VkPipelineShaderStageCreateInfo> clazz() {
             return VkPipelineShaderStageCreateInfo.class;
@@ -155,5 +155,5 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineShaderStageCreateInfoFactory FACTORY = new VkPipelineShaderStageCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

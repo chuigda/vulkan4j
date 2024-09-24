@@ -99,7 +99,7 @@ public record VkViewport(MemorySegment segment) {
     }
 
 
-    public static final class VkViewportFactory implements IFactory<VkViewport> {
+    public static final class Factory implements IFactory<VkViewport> {
         @Override
         public Class<VkViewport> clazz() {
             return VkViewport.class;
@@ -121,5 +121,5 @@ public record VkViewport(MemorySegment segment) {
         }
     }
 
-    public static final VkViewportFactory FACTORY = new VkViewportFactory();
+    public static final Factory FACTORY = new Factory();
 }

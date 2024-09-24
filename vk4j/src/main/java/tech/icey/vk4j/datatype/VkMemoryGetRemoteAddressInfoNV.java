@@ -76,7 +76,7 @@ public record VkMemoryGetRemoteAddressInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkMemoryGetRemoteAddressInfoNVFactory implements IFactory<VkMemoryGetRemoteAddressInfoNV> {
+    public static final class Factory implements IFactory<VkMemoryGetRemoteAddressInfoNV> {
         @Override
         public Class<VkMemoryGetRemoteAddressInfoNV> clazz() {
             return VkMemoryGetRemoteAddressInfoNV.class;
@@ -98,5 +98,5 @@ public record VkMemoryGetRemoteAddressInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkMemoryGetRemoteAddressInfoNVFactory FACTORY = new VkMemoryGetRemoteAddressInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

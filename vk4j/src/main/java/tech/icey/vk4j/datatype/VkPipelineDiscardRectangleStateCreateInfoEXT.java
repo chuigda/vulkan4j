@@ -113,7 +113,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
     }
 
 
-    public static final class VkPipelineDiscardRectangleStateCreateInfoEXTFactory implements IFactory<VkPipelineDiscardRectangleStateCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkPipelineDiscardRectangleStateCreateInfoEXT> {
         @Override
         public Class<VkPipelineDiscardRectangleStateCreateInfoEXT> clazz() {
             return VkPipelineDiscardRectangleStateCreateInfoEXT.class;
@@ -135,5 +135,5 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
         }
     }
 
-    public static final VkPipelineDiscardRectangleStateCreateInfoEXTFactory FACTORY = new VkPipelineDiscardRectangleStateCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

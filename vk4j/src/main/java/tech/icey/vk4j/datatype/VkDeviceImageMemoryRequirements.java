@@ -89,7 +89,7 @@ public record VkDeviceImageMemoryRequirements(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceImageMemoryRequirementsFactory implements IFactory<VkDeviceImageMemoryRequirements> {
+    public static final class Factory implements IFactory<VkDeviceImageMemoryRequirements> {
         @Override
         public Class<VkDeviceImageMemoryRequirements> clazz() {
             return VkDeviceImageMemoryRequirements.class;
@@ -111,5 +111,5 @@ public record VkDeviceImageMemoryRequirements(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceImageMemoryRequirementsFactory FACTORY = new VkDeviceImageMemoryRequirementsFactory();
+    public static final Factory FACTORY = new Factory();
 }

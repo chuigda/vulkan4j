@@ -87,7 +87,7 @@ public record VkValidationCacheCreateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkValidationCacheCreateInfoEXTFactory implements IFactory<VkValidationCacheCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkValidationCacheCreateInfoEXT> {
         @Override
         public Class<VkValidationCacheCreateInfoEXT> clazz() {
             return VkValidationCacheCreateInfoEXT.class;
@@ -109,5 +109,5 @@ public record VkValidationCacheCreateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkValidationCacheCreateInfoEXTFactory FACTORY = new VkValidationCacheCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

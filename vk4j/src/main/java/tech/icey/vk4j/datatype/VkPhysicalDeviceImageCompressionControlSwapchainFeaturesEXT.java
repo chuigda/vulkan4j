@@ -64,7 +64,7 @@ public record VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT(Memory
     }
 
 
-    public static final class VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXTFactory implements IFactory<VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT> clazz() {
             return VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT(Memory
         }
     }
 
-    public static final VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXTFactory FACTORY = new VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

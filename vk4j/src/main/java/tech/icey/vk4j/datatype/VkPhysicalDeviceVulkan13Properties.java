@@ -592,7 +592,7 @@ public record VkPhysicalDeviceVulkan13Properties(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceVulkan13PropertiesFactory implements IFactory<VkPhysicalDeviceVulkan13Properties> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceVulkan13Properties> {
         @Override
         public Class<VkPhysicalDeviceVulkan13Properties> clazz() {
             return VkPhysicalDeviceVulkan13Properties.class;
@@ -614,5 +614,5 @@ public record VkPhysicalDeviceVulkan13Properties(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceVulkan13PropertiesFactory FACTORY = new VkPhysicalDeviceVulkan13PropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

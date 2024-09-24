@@ -96,7 +96,7 @@ public record VkQueryPoolPerformanceCreateInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkQueryPoolPerformanceCreateInfoKHRFactory implements IFactory<VkQueryPoolPerformanceCreateInfoKHR> {
+    public static final class Factory implements IFactory<VkQueryPoolPerformanceCreateInfoKHR> {
         @Override
         public Class<VkQueryPoolPerformanceCreateInfoKHR> clazz() {
             return VkQueryPoolPerformanceCreateInfoKHR.class;
@@ -118,5 +118,5 @@ public record VkQueryPoolPerformanceCreateInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkQueryPoolPerformanceCreateInfoKHRFactory FACTORY = new VkQueryPoolPerformanceCreateInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

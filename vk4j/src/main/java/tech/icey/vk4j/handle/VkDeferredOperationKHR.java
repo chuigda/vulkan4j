@@ -11,7 +11,7 @@ public record VkDeferredOperationKHR(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkDeferredOperationKHRFactory implements IFactory<VkDeferredOperationKHR> {
+    public static final class Factory implements IFactory<VkDeferredOperationKHR> {
         @Override
         public Class<VkDeferredOperationKHR> clazz() {
             return VkDeferredOperationKHR.class;
@@ -33,5 +33,5 @@ public record VkDeferredOperationKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkDeferredOperationKHRFactory FACTORY = new VkDeferredOperationKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

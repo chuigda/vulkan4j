@@ -64,7 +64,7 @@ public record VkPhysicalDeviceDepthClampZeroOneFeaturesEXT(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceDepthClampZeroOneFeaturesEXTFactory implements IFactory<VkPhysicalDeviceDepthClampZeroOneFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDepthClampZeroOneFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceDepthClampZeroOneFeaturesEXT> clazz() {
             return VkPhysicalDeviceDepthClampZeroOneFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceDepthClampZeroOneFeaturesEXT(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceDepthClampZeroOneFeaturesEXTFactory FACTORY = new VkPhysicalDeviceDepthClampZeroOneFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

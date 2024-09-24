@@ -175,7 +175,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkRenderPassCreateInfoFactory implements IFactory<VkRenderPassCreateInfo> {
+    public static final class Factory implements IFactory<VkRenderPassCreateInfo> {
         @Override
         public Class<VkRenderPassCreateInfo> clazz() {
             return VkRenderPassCreateInfo.class;
@@ -197,5 +197,5 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkRenderPassCreateInfoFactory FACTORY = new VkRenderPassCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -104,7 +104,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceLayeredApiPropertiesKHRFactory implements IFactory<VkPhysicalDeviceLayeredApiPropertiesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceLayeredApiPropertiesKHR> {
         @Override
         public Class<VkPhysicalDeviceLayeredApiPropertiesKHR> clazz() {
             return VkPhysicalDeviceLayeredApiPropertiesKHR.class;
@@ -126,5 +126,5 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceLayeredApiPropertiesKHRFactory FACTORY = new VkPhysicalDeviceLayeredApiPropertiesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

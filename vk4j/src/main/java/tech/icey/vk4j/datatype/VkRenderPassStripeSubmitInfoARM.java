@@ -89,7 +89,7 @@ public record VkRenderPassStripeSubmitInfoARM(MemorySegment segment) {
     }
 
 
-    public static final class VkRenderPassStripeSubmitInfoARMFactory implements IFactory<VkRenderPassStripeSubmitInfoARM> {
+    public static final class Factory implements IFactory<VkRenderPassStripeSubmitInfoARM> {
         @Override
         public Class<VkRenderPassStripeSubmitInfoARM> clazz() {
             return VkRenderPassStripeSubmitInfoARM.class;
@@ -111,5 +111,5 @@ public record VkRenderPassStripeSubmitInfoARM(MemorySegment segment) {
         }
     }
 
-    public static final VkRenderPassStripeSubmitInfoARMFactory FACTORY = new VkRenderPassStripeSubmitInfoARMFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkBufferUsageFlags2CreateInfoKHRFactory implements IFactory<VkBufferUsageFlags2CreateInfoKHR> {
+    public static final class Factory implements IFactory<VkBufferUsageFlags2CreateInfoKHR> {
         @Override
         public Class<VkBufferUsageFlags2CreateInfoKHR> clazz() {
             return VkBufferUsageFlags2CreateInfoKHR.class;
@@ -86,5 +86,5 @@ public record VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkBufferUsageFlags2CreateInfoKHRFactory FACTORY = new VkBufferUsageFlags2CreateInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

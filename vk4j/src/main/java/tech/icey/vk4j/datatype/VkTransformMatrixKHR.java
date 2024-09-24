@@ -43,7 +43,7 @@ public record VkTransformMatrixKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkTransformMatrixKHRFactory implements IFactory<VkTransformMatrixKHR> {
+    public static final class Factory implements IFactory<VkTransformMatrixKHR> {
         @Override
         public Class<VkTransformMatrixKHR> clazz() {
             return VkTransformMatrixKHR.class;
@@ -65,5 +65,5 @@ public record VkTransformMatrixKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkTransformMatrixKHRFactory FACTORY = new VkTransformMatrixKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

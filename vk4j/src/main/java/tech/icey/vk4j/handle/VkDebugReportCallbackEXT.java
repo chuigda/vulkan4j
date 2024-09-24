@@ -11,7 +11,7 @@ public record VkDebugReportCallbackEXT(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkDebugReportCallbackEXTFactory implements IFactory<VkDebugReportCallbackEXT> {
+    public static final class Factory implements IFactory<VkDebugReportCallbackEXT> {
         @Override
         public Class<VkDebugReportCallbackEXT> clazz() {
             return VkDebugReportCallbackEXT.class;
@@ -33,5 +33,5 @@ public record VkDebugReportCallbackEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDebugReportCallbackEXTFactory FACTORY = new VkDebugReportCallbackEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

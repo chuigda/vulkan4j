@@ -89,7 +89,7 @@ public record VkPresentRegionsKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkPresentRegionsKHRFactory implements IFactory<VkPresentRegionsKHR> {
+    public static final class Factory implements IFactory<VkPresentRegionsKHR> {
         @Override
         public Class<VkPresentRegionsKHR> clazz() {
             return VkPresentRegionsKHR.class;
@@ -111,5 +111,5 @@ public record VkPresentRegionsKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkPresentRegionsKHRFactory FACTORY = new VkPresentRegionsKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

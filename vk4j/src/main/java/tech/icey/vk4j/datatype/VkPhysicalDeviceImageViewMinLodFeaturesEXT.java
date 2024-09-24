@@ -64,7 +64,7 @@ public record VkPhysicalDeviceImageViewMinLodFeaturesEXT(MemorySegment segment) 
     }
 
 
-    public static final class VkPhysicalDeviceImageViewMinLodFeaturesEXTFactory implements IFactory<VkPhysicalDeviceImageViewMinLodFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceImageViewMinLodFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceImageViewMinLodFeaturesEXT> clazz() {
             return VkPhysicalDeviceImageViewMinLodFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceImageViewMinLodFeaturesEXT(MemorySegment segment) 
         }
     }
 
-    public static final VkPhysicalDeviceImageViewMinLodFeaturesEXTFactory FACTORY = new VkPhysicalDeviceImageViewMinLodFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

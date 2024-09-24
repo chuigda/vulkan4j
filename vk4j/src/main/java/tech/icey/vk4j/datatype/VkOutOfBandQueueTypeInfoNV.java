@@ -64,7 +64,7 @@ public record VkOutOfBandQueueTypeInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkOutOfBandQueueTypeInfoNVFactory implements IFactory<VkOutOfBandQueueTypeInfoNV> {
+    public static final class Factory implements IFactory<VkOutOfBandQueueTypeInfoNV> {
         @Override
         public Class<VkOutOfBandQueueTypeInfoNV> clazz() {
             return VkOutOfBandQueueTypeInfoNV.class;
@@ -86,5 +86,5 @@ public record VkOutOfBandQueueTypeInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkOutOfBandQueueTypeInfoNVFactory FACTORY = new VkOutOfBandQueueTypeInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

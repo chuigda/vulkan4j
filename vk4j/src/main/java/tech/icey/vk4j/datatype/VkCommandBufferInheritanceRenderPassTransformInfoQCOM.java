@@ -76,7 +76,7 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(MemorySegmen
     }
 
 
-    public static final class VkCommandBufferInheritanceRenderPassTransformInfoQCOMFactory implements IFactory<VkCommandBufferInheritanceRenderPassTransformInfoQCOM> {
+    public static final class Factory implements IFactory<VkCommandBufferInheritanceRenderPassTransformInfoQCOM> {
         @Override
         public Class<VkCommandBufferInheritanceRenderPassTransformInfoQCOM> clazz() {
             return VkCommandBufferInheritanceRenderPassTransformInfoQCOM.class;
@@ -98,5 +98,5 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(MemorySegmen
         }
     }
 
-    public static final VkCommandBufferInheritanceRenderPassTransformInfoQCOMFactory FACTORY = new VkCommandBufferInheritanceRenderPassTransformInfoQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

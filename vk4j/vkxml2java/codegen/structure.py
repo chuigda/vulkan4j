@@ -202,7 +202,7 @@ def generate_structure_member_accessor(members: list[Member], member_types_lower
 
 
 def generate_structure_factory(struct: Structure) -> str:
-    return f'''    public static final class {struct.name}Factory implements IFactory<{struct.name}> {{
+    return f'''    public static final class Factory implements IFactory<{struct.name}> {{
         @Override
         public Class<{struct.name}> clazz() {{
             return {struct.name}.class;
@@ -224,4 +224,4 @@ def generate_structure_factory(struct: Structure) -> str:
         }}
     }}
 
-    public static final {struct.name}Factory FACTORY = new {struct.name}Factory();'''
+    public static final Factory FACTORY = new Factory();'''

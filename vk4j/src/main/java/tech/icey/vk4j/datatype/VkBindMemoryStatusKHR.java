@@ -78,7 +78,7 @@ public record VkBindMemoryStatusKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkBindMemoryStatusKHRFactory implements IFactory<VkBindMemoryStatusKHR> {
+    public static final class Factory implements IFactory<VkBindMemoryStatusKHR> {
         @Override
         public Class<VkBindMemoryStatusKHR> clazz() {
             return VkBindMemoryStatusKHR.class;
@@ -100,5 +100,5 @@ public record VkBindMemoryStatusKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkBindMemoryStatusKHRFactory FACTORY = new VkBindMemoryStatusKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

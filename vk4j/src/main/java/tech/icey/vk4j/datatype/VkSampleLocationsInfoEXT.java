@@ -113,7 +113,7 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkSampleLocationsInfoEXTFactory implements IFactory<VkSampleLocationsInfoEXT> {
+    public static final class Factory implements IFactory<VkSampleLocationsInfoEXT> {
         @Override
         public Class<VkSampleLocationsInfoEXT> clazz() {
             return VkSampleLocationsInfoEXT.class;
@@ -135,5 +135,5 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkSampleLocationsInfoEXTFactory FACTORY = new VkSampleLocationsInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

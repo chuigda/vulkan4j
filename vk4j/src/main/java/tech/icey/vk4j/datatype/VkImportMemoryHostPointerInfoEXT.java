@@ -76,7 +76,7 @@ public record VkImportMemoryHostPointerInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkImportMemoryHostPointerInfoEXTFactory implements IFactory<VkImportMemoryHostPointerInfoEXT> {
+    public static final class Factory implements IFactory<VkImportMemoryHostPointerInfoEXT> {
         @Override
         public Class<VkImportMemoryHostPointerInfoEXT> clazz() {
             return VkImportMemoryHostPointerInfoEXT.class;
@@ -98,5 +98,5 @@ public record VkImportMemoryHostPointerInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkImportMemoryHostPointerInfoEXTFactory FACTORY = new VkImportMemoryHostPointerInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

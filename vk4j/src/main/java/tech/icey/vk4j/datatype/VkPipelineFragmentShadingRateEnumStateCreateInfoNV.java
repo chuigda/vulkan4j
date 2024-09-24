@@ -92,7 +92,7 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment s
     }
 
 
-    public static final class VkPipelineFragmentShadingRateEnumStateCreateInfoNVFactory implements IFactory<VkPipelineFragmentShadingRateEnumStateCreateInfoNV> {
+    public static final class Factory implements IFactory<VkPipelineFragmentShadingRateEnumStateCreateInfoNV> {
         @Override
         public Class<VkPipelineFragmentShadingRateEnumStateCreateInfoNV> clazz() {
             return VkPipelineFragmentShadingRateEnumStateCreateInfoNV.class;
@@ -114,5 +114,5 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment s
         }
     }
 
-    public static final VkPipelineFragmentShadingRateEnumStateCreateInfoNVFactory FACTORY = new VkPipelineFragmentShadingRateEnumStateCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

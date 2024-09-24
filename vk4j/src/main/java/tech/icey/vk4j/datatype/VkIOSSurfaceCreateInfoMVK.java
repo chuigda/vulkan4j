@@ -76,7 +76,7 @@ public record VkIOSSurfaceCreateInfoMVK(MemorySegment segment) {
     }
 
 
-    public static final class VkIOSSurfaceCreateInfoMVKFactory implements IFactory<VkIOSSurfaceCreateInfoMVK> {
+    public static final class Factory implements IFactory<VkIOSSurfaceCreateInfoMVK> {
         @Override
         public Class<VkIOSSurfaceCreateInfoMVK> clazz() {
             return VkIOSSurfaceCreateInfoMVK.class;
@@ -98,5 +98,5 @@ public record VkIOSSurfaceCreateInfoMVK(MemorySegment segment) {
         }
     }
 
-    public static final VkIOSSurfaceCreateInfoMVKFactory FACTORY = new VkIOSSurfaceCreateInfoMVKFactory();
+    public static final Factory FACTORY = new Factory();
 }

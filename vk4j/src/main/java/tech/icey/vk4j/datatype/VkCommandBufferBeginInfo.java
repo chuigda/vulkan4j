@@ -89,7 +89,7 @@ public record VkCommandBufferBeginInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkCommandBufferBeginInfoFactory implements IFactory<VkCommandBufferBeginInfo> {
+    public static final class Factory implements IFactory<VkCommandBufferBeginInfo> {
         @Override
         public Class<VkCommandBufferBeginInfo> clazz() {
             return VkCommandBufferBeginInfo.class;
@@ -111,5 +111,5 @@ public record VkCommandBufferBeginInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkCommandBufferBeginInfoFactory FACTORY = new VkCommandBufferBeginInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

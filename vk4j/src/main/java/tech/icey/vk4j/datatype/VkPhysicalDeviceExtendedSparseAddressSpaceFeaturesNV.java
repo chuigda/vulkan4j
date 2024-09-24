@@ -64,7 +64,7 @@ public record VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(MemorySegment
     }
 
 
-    public static final class VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNVFactory implements IFactory<VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV> clazz() {
             return VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(MemorySegment
         }
     }
 
-    public static final VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNVFactory FACTORY = new VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

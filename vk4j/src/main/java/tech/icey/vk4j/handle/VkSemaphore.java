@@ -11,7 +11,7 @@ public record VkSemaphore(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkSemaphoreFactory implements IFactory<VkSemaphore> {
+    public static final class Factory implements IFactory<VkSemaphore> {
         @Override
         public Class<VkSemaphore> clazz() {
             return VkSemaphore.class;
@@ -33,5 +33,5 @@ public record VkSemaphore(MemorySegment segment) {
         }
     }
 
-    public static final VkSemaphoreFactory FACTORY = new VkSemaphoreFactory();
+    public static final Factory FACTORY = new Factory();
 }

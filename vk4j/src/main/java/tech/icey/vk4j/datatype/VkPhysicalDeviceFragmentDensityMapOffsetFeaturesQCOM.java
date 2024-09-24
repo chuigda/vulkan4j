@@ -64,7 +64,7 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM(MemorySegment
     }
 
 
-    public static final class VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOMFactory implements IFactory<VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM> {
         @Override
         public Class<VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM> clazz() {
             return VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM(MemorySegment
         }
     }
 
-    public static final VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOMFactory FACTORY = new VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

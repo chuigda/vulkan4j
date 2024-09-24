@@ -88,7 +88,7 @@ public record VkGeometryNV(MemorySegment segment) {
     }
 
 
-    public static final class VkGeometryNVFactory implements IFactory<VkGeometryNV> {
+    public static final class Factory implements IFactory<VkGeometryNV> {
         @Override
         public Class<VkGeometryNV> clazz() {
             return VkGeometryNV.class;
@@ -110,5 +110,5 @@ public record VkGeometryNV(MemorySegment segment) {
         }
     }
 
-    public static final VkGeometryNVFactory FACTORY = new VkGeometryNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -123,7 +123,7 @@ public record VkPipelineColorBlendAttachmentState(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineColorBlendAttachmentStateFactory implements IFactory<VkPipelineColorBlendAttachmentState> {
+    public static final class Factory implements IFactory<VkPipelineColorBlendAttachmentState> {
         @Override
         public Class<VkPipelineColorBlendAttachmentState> clazz() {
             return VkPipelineColorBlendAttachmentState.class;
@@ -145,5 +145,5 @@ public record VkPipelineColorBlendAttachmentState(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineColorBlendAttachmentStateFactory FACTORY = new VkPipelineColorBlendAttachmentStateFactory();
+    public static final Factory FACTORY = new Factory();
 }

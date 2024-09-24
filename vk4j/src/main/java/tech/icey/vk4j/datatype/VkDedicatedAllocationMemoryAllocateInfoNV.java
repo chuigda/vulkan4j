@@ -76,7 +76,7 @@ public record VkDedicatedAllocationMemoryAllocateInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkDedicatedAllocationMemoryAllocateInfoNVFactory implements IFactory<VkDedicatedAllocationMemoryAllocateInfoNV> {
+    public static final class Factory implements IFactory<VkDedicatedAllocationMemoryAllocateInfoNV> {
         @Override
         public Class<VkDedicatedAllocationMemoryAllocateInfoNV> clazz() {
             return VkDedicatedAllocationMemoryAllocateInfoNV.class;
@@ -98,5 +98,5 @@ public record VkDedicatedAllocationMemoryAllocateInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkDedicatedAllocationMemoryAllocateInfoNVFactory FACTORY = new VkDedicatedAllocationMemoryAllocateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

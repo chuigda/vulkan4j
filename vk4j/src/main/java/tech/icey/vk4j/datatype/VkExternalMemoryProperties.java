@@ -63,7 +63,7 @@ public record VkExternalMemoryProperties(MemorySegment segment) {
     }
 
 
-    public static final class VkExternalMemoryPropertiesFactory implements IFactory<VkExternalMemoryProperties> {
+    public static final class Factory implements IFactory<VkExternalMemoryProperties> {
         @Override
         public Class<VkExternalMemoryProperties> clazz() {
             return VkExternalMemoryProperties.class;
@@ -85,5 +85,5 @@ public record VkExternalMemoryProperties(MemorySegment segment) {
         }
     }
 
-    public static final VkExternalMemoryPropertiesFactory FACTORY = new VkExternalMemoryPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

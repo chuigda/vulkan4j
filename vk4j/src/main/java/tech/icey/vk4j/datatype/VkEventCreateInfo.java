@@ -64,7 +64,7 @@ public record VkEventCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkEventCreateInfoFactory implements IFactory<VkEventCreateInfo> {
+    public static final class Factory implements IFactory<VkEventCreateInfo> {
         @Override
         public Class<VkEventCreateInfo> clazz() {
             return VkEventCreateInfo.class;
@@ -86,5 +86,5 @@ public record VkEventCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkEventCreateInfoFactory FACTORY = new VkEventCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkExportMemoryAllocateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkExportMemoryAllocateInfoFactory implements IFactory<VkExportMemoryAllocateInfo> {
+    public static final class Factory implements IFactory<VkExportMemoryAllocateInfo> {
         @Override
         public Class<VkExportMemoryAllocateInfo> clazz() {
             return VkExportMemoryAllocateInfo.class;
@@ -86,5 +86,5 @@ public record VkExportMemoryAllocateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkExportMemoryAllocateInfoFactory FACTORY = new VkExportMemoryAllocateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

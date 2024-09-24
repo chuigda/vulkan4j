@@ -64,7 +64,7 @@ public record VkPhysicalDeviceImageViewImageFormatInfoEXT(MemorySegment segment)
     }
 
 
-    public static final class VkPhysicalDeviceImageViewImageFormatInfoEXTFactory implements IFactory<VkPhysicalDeviceImageViewImageFormatInfoEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceImageViewImageFormatInfoEXT> {
         @Override
         public Class<VkPhysicalDeviceImageViewImageFormatInfoEXT> clazz() {
             return VkPhysicalDeviceImageViewImageFormatInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceImageViewImageFormatInfoEXT(MemorySegment segment)
         }
     }
 
-    public static final VkPhysicalDeviceImageViewImageFormatInfoEXTFactory FACTORY = new VkPhysicalDeviceImageViewImageFormatInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

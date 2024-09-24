@@ -244,7 +244,7 @@ public record VkSamplerCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkSamplerCreateInfoFactory implements IFactory<VkSamplerCreateInfo> {
+    public static final class Factory implements IFactory<VkSamplerCreateInfo> {
         @Override
         public Class<VkSamplerCreateInfo> clazz() {
             return VkSamplerCreateInfo.class;
@@ -266,5 +266,5 @@ public record VkSamplerCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkSamplerCreateInfoFactory FACTORY = new VkSamplerCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

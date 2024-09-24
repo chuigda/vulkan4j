@@ -64,7 +64,7 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(MemorySegment
     }
 
 
-    public static final class VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNVFactory implements IFactory<VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV> {
         @Override
         public Class<VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV> clazz() {
             return VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(MemorySegment
         }
     }
 
-    public static final VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNVFactory FACTORY = new VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

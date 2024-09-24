@@ -64,7 +64,7 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(MemorySegment segment) {
     }
 
 
-    public static final class VkExecutionGraphPipelineScratchSizeAMDXFactory implements IFactory<VkExecutionGraphPipelineScratchSizeAMDX> {
+    public static final class Factory implements IFactory<VkExecutionGraphPipelineScratchSizeAMDX> {
         @Override
         public Class<VkExecutionGraphPipelineScratchSizeAMDX> clazz() {
             return VkExecutionGraphPipelineScratchSizeAMDX.class;
@@ -86,5 +86,5 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(MemorySegment segment) {
         }
     }
 
-    public static final VkExecutionGraphPipelineScratchSizeAMDXFactory FACTORY = new VkExecutionGraphPipelineScratchSizeAMDXFactory();
+    public static final Factory FACTORY = new Factory();
 }

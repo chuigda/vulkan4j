@@ -64,7 +64,7 @@ public record VkExternalFormatANDROID(MemorySegment segment) {
     }
 
 
-    public static final class VkExternalFormatANDROIDFactory implements IFactory<VkExternalFormatANDROID> {
+    public static final class Factory implements IFactory<VkExternalFormatANDROID> {
         @Override
         public Class<VkExternalFormatANDROID> clazz() {
             return VkExternalFormatANDROID.class;
@@ -86,5 +86,5 @@ public record VkExternalFormatANDROID(MemorySegment segment) {
         }
     }
 
-    public static final VkExternalFormatANDROIDFactory FACTORY = new VkExternalFormatANDROIDFactory();
+    public static final Factory FACTORY = new Factory();
 }

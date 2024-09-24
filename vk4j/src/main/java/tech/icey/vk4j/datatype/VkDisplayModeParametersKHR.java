@@ -51,7 +51,7 @@ public record VkDisplayModeParametersKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkDisplayModeParametersKHRFactory implements IFactory<VkDisplayModeParametersKHR> {
+    public static final class Factory implements IFactory<VkDisplayModeParametersKHR> {
         @Override
         public Class<VkDisplayModeParametersKHR> clazz() {
             return VkDisplayModeParametersKHR.class;
@@ -73,5 +73,5 @@ public record VkDisplayModeParametersKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkDisplayModeParametersKHRFactory FACTORY = new VkDisplayModeParametersKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

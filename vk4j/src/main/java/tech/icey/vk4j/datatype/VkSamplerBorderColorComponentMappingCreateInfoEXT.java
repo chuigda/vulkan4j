@@ -76,7 +76,7 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(MemorySegment se
     }
 
 
-    public static final class VkSamplerBorderColorComponentMappingCreateInfoEXTFactory implements IFactory<VkSamplerBorderColorComponentMappingCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkSamplerBorderColorComponentMappingCreateInfoEXT> {
         @Override
         public Class<VkSamplerBorderColorComponentMappingCreateInfoEXT> clazz() {
             return VkSamplerBorderColorComponentMappingCreateInfoEXT.class;
@@ -98,5 +98,5 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(MemorySegment se
         }
     }
 
-    public static final VkSamplerBorderColorComponentMappingCreateInfoEXTFactory FACTORY = new VkSamplerBorderColorComponentMappingCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -11,7 +11,7 @@ public record VkDebugUtilsMessengerEXT(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkDebugUtilsMessengerEXTFactory implements IFactory<VkDebugUtilsMessengerEXT> {
+    public static final class Factory implements IFactory<VkDebugUtilsMessengerEXT> {
         @Override
         public Class<VkDebugUtilsMessengerEXT> clazz() {
             return VkDebugUtilsMessengerEXT.class;
@@ -33,5 +33,5 @@ public record VkDebugUtilsMessengerEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDebugUtilsMessengerEXTFactory FACTORY = new VkDebugUtilsMessengerEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

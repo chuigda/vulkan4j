@@ -76,7 +76,7 @@ public record VkMemoryGetSciBufInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkMemoryGetSciBufInfoNVFactory implements IFactory<VkMemoryGetSciBufInfoNV> {
+    public static final class Factory implements IFactory<VkMemoryGetSciBufInfoNV> {
         @Override
         public Class<VkMemoryGetSciBufInfoNV> clazz() {
             return VkMemoryGetSciBufInfoNV.class;
@@ -98,5 +98,5 @@ public record VkMemoryGetSciBufInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkMemoryGetSciBufInfoNVFactory FACTORY = new VkMemoryGetSciBufInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(MemorySegment se
     }
 
 
-    public static final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXTFactory implements IFactory<VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT> clazz() {
             return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(MemorySegment se
         }
     }
 
-    public static final VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXTFactory FACTORY = new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

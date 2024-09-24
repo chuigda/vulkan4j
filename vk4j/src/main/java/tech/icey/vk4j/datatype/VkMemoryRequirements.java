@@ -63,7 +63,7 @@ public record VkMemoryRequirements(MemorySegment segment) {
     }
 
 
-    public static final class VkMemoryRequirementsFactory implements IFactory<VkMemoryRequirements> {
+    public static final class Factory implements IFactory<VkMemoryRequirements> {
         @Override
         public Class<VkMemoryRequirements> clazz() {
             return VkMemoryRequirements.class;
@@ -85,5 +85,5 @@ public record VkMemoryRequirements(MemorySegment segment) {
         }
     }
 
-    public static final VkMemoryRequirementsFactory FACTORY = new VkMemoryRequirementsFactory();
+    public static final Factory FACTORY = new Factory();
 }

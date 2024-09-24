@@ -76,7 +76,7 @@ public record VkPhysicalDeviceSubgroupSizeControlFeatures(MemorySegment segment)
     }
 
 
-    public static final class VkPhysicalDeviceSubgroupSizeControlFeaturesFactory implements IFactory<VkPhysicalDeviceSubgroupSizeControlFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceSubgroupSizeControlFeatures> {
         @Override
         public Class<VkPhysicalDeviceSubgroupSizeControlFeatures> clazz() {
             return VkPhysicalDeviceSubgroupSizeControlFeatures.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceSubgroupSizeControlFeatures(MemorySegment segment)
         }
     }
 
-    public static final VkPhysicalDeviceSubgroupSizeControlFeaturesFactory FACTORY = new VkPhysicalDeviceSubgroupSizeControlFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

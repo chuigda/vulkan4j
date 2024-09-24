@@ -64,7 +64,7 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(MemorySegment s
     }
 
 
-    public static final class VkPhysicalDeviceCommandBufferInheritanceFeaturesNVFactory implements IFactory<VkPhysicalDeviceCommandBufferInheritanceFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceCommandBufferInheritanceFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceCommandBufferInheritanceFeaturesNV> clazz() {
             return VkPhysicalDeviceCommandBufferInheritanceFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(MemorySegment s
         }
     }
 
-    public static final VkPhysicalDeviceCommandBufferInheritanceFeaturesNVFactory FACTORY = new VkPhysicalDeviceCommandBufferInheritanceFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -89,7 +89,7 @@ public record VkGetLatencyMarkerInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkGetLatencyMarkerInfoNVFactory implements IFactory<VkGetLatencyMarkerInfoNV> {
+    public static final class Factory implements IFactory<VkGetLatencyMarkerInfoNV> {
         @Override
         public Class<VkGetLatencyMarkerInfoNV> clazz() {
             return VkGetLatencyMarkerInfoNV.class;
@@ -111,5 +111,5 @@ public record VkGetLatencyMarkerInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkGetLatencyMarkerInfoNVFactory FACTORY = new VkGetLatencyMarkerInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

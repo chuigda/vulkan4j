@@ -237,7 +237,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkBindSparseInfoFactory implements IFactory<VkBindSparseInfo> {
+    public static final class Factory implements IFactory<VkBindSparseInfo> {
         @Override
         public Class<VkBindSparseInfo> clazz() {
             return VkBindSparseInfo.class;
@@ -259,5 +259,5 @@ public record VkBindSparseInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkBindSparseInfoFactory FACTORY = new VkBindSparseInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkDedicatedAllocationImageCreateInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkDedicatedAllocationImageCreateInfoNVFactory implements IFactory<VkDedicatedAllocationImageCreateInfoNV> {
+    public static final class Factory implements IFactory<VkDedicatedAllocationImageCreateInfoNV> {
         @Override
         public Class<VkDedicatedAllocationImageCreateInfoNV> clazz() {
             return VkDedicatedAllocationImageCreateInfoNV.class;
@@ -86,5 +86,5 @@ public record VkDedicatedAllocationImageCreateInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkDedicatedAllocationImageCreateInfoNVFactory FACTORY = new VkDedicatedAllocationImageCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

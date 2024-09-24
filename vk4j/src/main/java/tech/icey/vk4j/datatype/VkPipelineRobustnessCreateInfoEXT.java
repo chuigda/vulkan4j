@@ -100,7 +100,7 @@ public record VkPipelineRobustnessCreateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineRobustnessCreateInfoEXTFactory implements IFactory<VkPipelineRobustnessCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkPipelineRobustnessCreateInfoEXT> {
         @Override
         public Class<VkPipelineRobustnessCreateInfoEXT> clazz() {
             return VkPipelineRobustnessCreateInfoEXT.class;
@@ -122,5 +122,5 @@ public record VkPipelineRobustnessCreateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineRobustnessCreateInfoEXTFactory FACTORY = new VkPipelineRobustnessCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

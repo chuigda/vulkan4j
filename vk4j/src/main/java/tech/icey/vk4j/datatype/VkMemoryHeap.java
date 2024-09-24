@@ -51,7 +51,7 @@ public record VkMemoryHeap(MemorySegment segment) {
     }
 
 
-    public static final class VkMemoryHeapFactory implements IFactory<VkMemoryHeap> {
+    public static final class Factory implements IFactory<VkMemoryHeap> {
         @Override
         public Class<VkMemoryHeap> clazz() {
             return VkMemoryHeap.class;
@@ -73,5 +73,5 @@ public record VkMemoryHeap(MemorySegment segment) {
         }
     }
 
-    public static final VkMemoryHeapFactory FACTORY = new VkMemoryHeapFactory();
+    public static final Factory FACTORY = new Factory();
 }

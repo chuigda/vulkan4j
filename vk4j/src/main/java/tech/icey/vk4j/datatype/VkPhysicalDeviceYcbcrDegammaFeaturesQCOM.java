@@ -64,7 +64,7 @@ public record VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceYcbcrDegammaFeaturesQCOMFactory implements IFactory<VkPhysicalDeviceYcbcrDegammaFeaturesQCOM> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceYcbcrDegammaFeaturesQCOM> {
         @Override
         public Class<VkPhysicalDeviceYcbcrDegammaFeaturesQCOM> clazz() {
             return VkPhysicalDeviceYcbcrDegammaFeaturesQCOM.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceYcbcrDegammaFeaturesQCOMFactory FACTORY = new VkPhysicalDeviceYcbcrDegammaFeaturesQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

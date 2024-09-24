@@ -51,7 +51,7 @@ public record VkSubpassSampleLocationsEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkSubpassSampleLocationsEXTFactory implements IFactory<VkSubpassSampleLocationsEXT> {
+    public static final class Factory implements IFactory<VkSubpassSampleLocationsEXT> {
         @Override
         public Class<VkSubpassSampleLocationsEXT> clazz() {
             return VkSubpassSampleLocationsEXT.class;
@@ -73,5 +73,5 @@ public record VkSubpassSampleLocationsEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkSubpassSampleLocationsEXTFactory FACTORY = new VkSubpassSampleLocationsEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

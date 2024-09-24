@@ -64,7 +64,7 @@ public record VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV(MemorySegment
     }
 
 
-    public static final class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNVFactory implements IFactory<VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV> clazz() {
             return VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV(MemorySegment
         }
     }
 
-    public static final VkPhysicalDeviceRepresentativeFragmentTestFeaturesNVFactory FACTORY = new VkPhysicalDeviceRepresentativeFragmentTestFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

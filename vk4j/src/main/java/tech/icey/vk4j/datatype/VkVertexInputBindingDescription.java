@@ -63,7 +63,7 @@ public record VkVertexInputBindingDescription(MemorySegment segment) {
     }
 
 
-    public static final class VkVertexInputBindingDescriptionFactory implements IFactory<VkVertexInputBindingDescription> {
+    public static final class Factory implements IFactory<VkVertexInputBindingDescription> {
         @Override
         public Class<VkVertexInputBindingDescription> clazz() {
             return VkVertexInputBindingDescription.class;
@@ -85,5 +85,5 @@ public record VkVertexInputBindingDescription(MemorySegment segment) {
         }
     }
 
-    public static final VkVertexInputBindingDescriptionFactory FACTORY = new VkVertexInputBindingDescriptionFactory();
+    public static final Factory FACTORY = new Factory();
 }

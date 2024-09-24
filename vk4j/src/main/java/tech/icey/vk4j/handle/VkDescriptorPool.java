@@ -11,7 +11,7 @@ public record VkDescriptorPool(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkDescriptorPoolFactory implements IFactory<VkDescriptorPool> {
+    public static final class Factory implements IFactory<VkDescriptorPool> {
         @Override
         public Class<VkDescriptorPool> clazz() {
             return VkDescriptorPool.class;
@@ -33,5 +33,5 @@ public record VkDescriptorPool(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorPoolFactory FACTORY = new VkDescriptorPoolFactory();
+    public static final Factory FACTORY = new Factory();
 }

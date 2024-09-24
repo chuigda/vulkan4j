@@ -100,7 +100,7 @@ public record VkFramebufferMixedSamplesCombinationNV(MemorySegment segment) {
     }
 
 
-    public static final class VkFramebufferMixedSamplesCombinationNVFactory implements IFactory<VkFramebufferMixedSamplesCombinationNV> {
+    public static final class Factory implements IFactory<VkFramebufferMixedSamplesCombinationNV> {
         @Override
         public Class<VkFramebufferMixedSamplesCombinationNV> clazz() {
             return VkFramebufferMixedSamplesCombinationNV.class;
@@ -122,5 +122,5 @@ public record VkFramebufferMixedSamplesCombinationNV(MemorySegment segment) {
         }
     }
 
-    public static final VkFramebufferMixedSamplesCombinationNVFactory FACTORY = new VkFramebufferMixedSamplesCombinationNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

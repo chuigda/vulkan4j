@@ -64,7 +64,7 @@ public record VkExportMetalObjectCreateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkExportMetalObjectCreateInfoEXTFactory implements IFactory<VkExportMetalObjectCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkExportMetalObjectCreateInfoEXT> {
         @Override
         public Class<VkExportMetalObjectCreateInfoEXT> clazz() {
             return VkExportMetalObjectCreateInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkExportMetalObjectCreateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkExportMetalObjectCreateInfoEXTFactory FACTORY = new VkExportMetalObjectCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

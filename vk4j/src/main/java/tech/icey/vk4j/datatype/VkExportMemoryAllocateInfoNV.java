@@ -64,7 +64,7 @@ public record VkExportMemoryAllocateInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkExportMemoryAllocateInfoNVFactory implements IFactory<VkExportMemoryAllocateInfoNV> {
+    public static final class Factory implements IFactory<VkExportMemoryAllocateInfoNV> {
         @Override
         public Class<VkExportMemoryAllocateInfoNV> clazz() {
             return VkExportMemoryAllocateInfoNV.class;
@@ -86,5 +86,5 @@ public record VkExportMemoryAllocateInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkExportMemoryAllocateInfoNVFactory FACTORY = new VkExportMemoryAllocateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

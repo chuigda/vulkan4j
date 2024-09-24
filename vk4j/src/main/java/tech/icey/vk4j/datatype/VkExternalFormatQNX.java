@@ -64,7 +64,7 @@ public record VkExternalFormatQNX(MemorySegment segment) {
     }
 
 
-    public static final class VkExternalFormatQNXFactory implements IFactory<VkExternalFormatQNX> {
+    public static final class Factory implements IFactory<VkExternalFormatQNX> {
         @Override
         public Class<VkExternalFormatQNX> clazz() {
             return VkExternalFormatQNX.class;
@@ -86,5 +86,5 @@ public record VkExternalFormatQNX(MemorySegment segment) {
         }
     }
 
-    public static final VkExternalFormatQNXFactory FACTORY = new VkExternalFormatQNXFactory();
+    public static final Factory FACTORY = new Factory();
 }

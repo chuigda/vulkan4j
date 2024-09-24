@@ -88,7 +88,7 @@ public record VkMappedMemoryRange(MemorySegment segment) {
     }
 
 
-    public static final class VkMappedMemoryRangeFactory implements IFactory<VkMappedMemoryRange> {
+    public static final class Factory implements IFactory<VkMappedMemoryRange> {
         @Override
         public Class<VkMappedMemoryRange> clazz() {
             return VkMappedMemoryRange.class;
@@ -110,5 +110,5 @@ public record VkMappedMemoryRange(MemorySegment segment) {
         }
     }
 
-    public static final VkMappedMemoryRangeFactory FACTORY = new VkMappedMemoryRangeFactory();
+    public static final Factory FACTORY = new Factory();
 }

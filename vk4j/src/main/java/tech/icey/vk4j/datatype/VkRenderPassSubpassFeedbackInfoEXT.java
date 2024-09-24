@@ -67,7 +67,7 @@ public record VkRenderPassSubpassFeedbackInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkRenderPassSubpassFeedbackInfoEXTFactory implements IFactory<VkRenderPassSubpassFeedbackInfoEXT> {
+    public static final class Factory implements IFactory<VkRenderPassSubpassFeedbackInfoEXT> {
         @Override
         public Class<VkRenderPassSubpassFeedbackInfoEXT> clazz() {
             return VkRenderPassSubpassFeedbackInfoEXT.class;
@@ -89,5 +89,5 @@ public record VkRenderPassSubpassFeedbackInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkRenderPassSubpassFeedbackInfoEXTFactory FACTORY = new VkRenderPassSubpassFeedbackInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

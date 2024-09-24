@@ -100,7 +100,7 @@ public record VkQueryPoolCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkQueryPoolCreateInfoFactory implements IFactory<VkQueryPoolCreateInfo> {
+    public static final class Factory implements IFactory<VkQueryPoolCreateInfo> {
         @Override
         public Class<VkQueryPoolCreateInfo> clazz() {
             return VkQueryPoolCreateInfo.class;
@@ -122,5 +122,5 @@ public record VkQueryPoolCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkQueryPoolCreateInfoFactory FACTORY = new VkQueryPoolCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

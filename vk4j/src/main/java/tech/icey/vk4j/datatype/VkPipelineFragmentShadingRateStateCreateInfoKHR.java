@@ -80,7 +80,7 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(MemorySegment segm
     }
 
 
-    public static final class VkPipelineFragmentShadingRateStateCreateInfoKHRFactory implements IFactory<VkPipelineFragmentShadingRateStateCreateInfoKHR> {
+    public static final class Factory implements IFactory<VkPipelineFragmentShadingRateStateCreateInfoKHR> {
         @Override
         public Class<VkPipelineFragmentShadingRateStateCreateInfoKHR> clazz() {
             return VkPipelineFragmentShadingRateStateCreateInfoKHR.class;
@@ -102,5 +102,5 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(MemorySegment segm
         }
     }
 
-    public static final VkPipelineFragmentShadingRateStateCreateInfoKHRFactory FACTORY = new VkPipelineFragmentShadingRateStateCreateInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

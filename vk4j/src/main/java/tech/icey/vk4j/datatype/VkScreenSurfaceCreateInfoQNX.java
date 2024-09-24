@@ -88,7 +88,7 @@ public record VkScreenSurfaceCreateInfoQNX(MemorySegment segment) {
     }
 
 
-    public static final class VkScreenSurfaceCreateInfoQNXFactory implements IFactory<VkScreenSurfaceCreateInfoQNX> {
+    public static final class Factory implements IFactory<VkScreenSurfaceCreateInfoQNX> {
         @Override
         public Class<VkScreenSurfaceCreateInfoQNX> clazz() {
             return VkScreenSurfaceCreateInfoQNX.class;
@@ -110,5 +110,5 @@ public record VkScreenSurfaceCreateInfoQNX(MemorySegment segment) {
         }
     }
 
-    public static final VkScreenSurfaceCreateInfoQNXFactory FACTORY = new VkScreenSurfaceCreateInfoQNXFactory();
+    public static final Factory FACTORY = new Factory();
 }

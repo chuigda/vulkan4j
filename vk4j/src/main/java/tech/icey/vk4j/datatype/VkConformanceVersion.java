@@ -75,7 +75,7 @@ public record VkConformanceVersion(MemorySegment segment) {
     }
 
 
-    public static final class VkConformanceVersionFactory implements IFactory<VkConformanceVersion> {
+    public static final class Factory implements IFactory<VkConformanceVersion> {
         @Override
         public Class<VkConformanceVersion> clazz() {
             return VkConformanceVersion.class;
@@ -97,5 +97,5 @@ public record VkConformanceVersion(MemorySegment segment) {
         }
     }
 
-    public static final VkConformanceVersionFactory FACTORY = new VkConformanceVersionFactory();
+    public static final Factory FACTORY = new Factory();
 }

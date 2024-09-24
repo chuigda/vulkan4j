@@ -76,7 +76,7 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(MemorySegment
     }
 
 
-    public static final class VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXTFactory implements IFactory<VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT> clazz() {
             return VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(MemorySegment
         }
     }
 
-    public static final VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXTFactory FACTORY = new VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

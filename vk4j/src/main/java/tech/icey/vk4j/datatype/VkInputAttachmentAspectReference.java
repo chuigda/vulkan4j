@@ -63,7 +63,7 @@ public record VkInputAttachmentAspectReference(MemorySegment segment) {
     }
 
 
-    public static final class VkInputAttachmentAspectReferenceFactory implements IFactory<VkInputAttachmentAspectReference> {
+    public static final class Factory implements IFactory<VkInputAttachmentAspectReference> {
         @Override
         public Class<VkInputAttachmentAspectReference> clazz() {
             return VkInputAttachmentAspectReference.class;
@@ -85,5 +85,5 @@ public record VkInputAttachmentAspectReference(MemorySegment segment) {
         }
     }
 
-    public static final VkInputAttachmentAspectReferenceFactory FACTORY = new VkInputAttachmentAspectReferenceFactory();
+    public static final Factory FACTORY = new Factory();
 }

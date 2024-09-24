@@ -64,7 +64,7 @@ public record VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(MemorySegmen
     }
 
 
-    public static final class VkPhysicalDeviceRayTracingInvocationReorderFeaturesNVFactory implements IFactory<VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV> clazz() {
             return VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(MemorySegmen
         }
     }
 
-    public static final VkPhysicalDeviceRayTracingInvocationReorderFeaturesNVFactory FACTORY = new VkPhysicalDeviceRayTracingInvocationReorderFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

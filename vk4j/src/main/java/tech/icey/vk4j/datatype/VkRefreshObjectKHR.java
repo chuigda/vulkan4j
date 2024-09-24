@@ -63,7 +63,7 @@ public record VkRefreshObjectKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkRefreshObjectKHRFactory implements IFactory<VkRefreshObjectKHR> {
+    public static final class Factory implements IFactory<VkRefreshObjectKHR> {
         @Override
         public Class<VkRefreshObjectKHR> clazz() {
             return VkRefreshObjectKHR.class;
@@ -85,5 +85,5 @@ public record VkRefreshObjectKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkRefreshObjectKHRFactory FACTORY = new VkRefreshObjectKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

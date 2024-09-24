@@ -76,7 +76,7 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(MemorySegment segm
     }
 
 
-    public static final class VkAccelerationStructureMemoryRequirementsInfoNVFactory implements IFactory<VkAccelerationStructureMemoryRequirementsInfoNV> {
+    public static final class Factory implements IFactory<VkAccelerationStructureMemoryRequirementsInfoNV> {
         @Override
         public Class<VkAccelerationStructureMemoryRequirementsInfoNV> clazz() {
             return VkAccelerationStructureMemoryRequirementsInfoNV.class;
@@ -98,5 +98,5 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(MemorySegment segm
         }
     }
 
-    public static final VkAccelerationStructureMemoryRequirementsInfoNVFactory FACTORY = new VkAccelerationStructureMemoryRequirementsInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

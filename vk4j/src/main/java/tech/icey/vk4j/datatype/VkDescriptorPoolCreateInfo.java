@@ -113,7 +113,7 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkDescriptorPoolCreateInfoFactory implements IFactory<VkDescriptorPoolCreateInfo> {
+    public static final class Factory implements IFactory<VkDescriptorPoolCreateInfo> {
         @Override
         public Class<VkDescriptorPoolCreateInfo> clazz() {
             return VkDescriptorPoolCreateInfo.class;
@@ -135,5 +135,5 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorPoolCreateInfoFactory FACTORY = new VkDescriptorPoolCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

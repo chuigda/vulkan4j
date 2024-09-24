@@ -144,7 +144,7 @@ public record VkPipelineMultisampleStateCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineMultisampleStateCreateInfoFactory implements IFactory<VkPipelineMultisampleStateCreateInfo> {
+    public static final class Factory implements IFactory<VkPipelineMultisampleStateCreateInfo> {
         @Override
         public Class<VkPipelineMultisampleStateCreateInfo> clazz() {
             return VkPipelineMultisampleStateCreateInfo.class;
@@ -166,5 +166,5 @@ public record VkPipelineMultisampleStateCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineMultisampleStateCreateInfoFactory FACTORY = new VkPipelineMultisampleStateCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

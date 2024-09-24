@@ -292,7 +292,7 @@ public record VkPhysicalDeviceDescriptorIndexingFeatures(MemorySegment segment) 
     }
 
 
-    public static final class VkPhysicalDeviceDescriptorIndexingFeaturesFactory implements IFactory<VkPhysicalDeviceDescriptorIndexingFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDescriptorIndexingFeatures> {
         @Override
         public Class<VkPhysicalDeviceDescriptorIndexingFeatures> clazz() {
             return VkPhysicalDeviceDescriptorIndexingFeatures.class;
@@ -314,5 +314,5 @@ public record VkPhysicalDeviceDescriptorIndexingFeatures(MemorySegment segment) 
         }
     }
 
-    public static final VkPhysicalDeviceDescriptorIndexingFeaturesFactory FACTORY = new VkPhysicalDeviceDescriptorIndexingFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

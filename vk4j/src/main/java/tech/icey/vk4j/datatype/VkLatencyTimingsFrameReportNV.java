@@ -220,7 +220,7 @@ public record VkLatencyTimingsFrameReportNV(MemorySegment segment) {
     }
 
 
-    public static final class VkLatencyTimingsFrameReportNVFactory implements IFactory<VkLatencyTimingsFrameReportNV> {
+    public static final class Factory implements IFactory<VkLatencyTimingsFrameReportNV> {
         @Override
         public Class<VkLatencyTimingsFrameReportNV> clazz() {
             return VkLatencyTimingsFrameReportNV.class;
@@ -242,5 +242,5 @@ public record VkLatencyTimingsFrameReportNV(MemorySegment segment) {
         }
     }
 
-    public static final VkLatencyTimingsFrameReportNVFactory FACTORY = new VkLatencyTimingsFrameReportNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

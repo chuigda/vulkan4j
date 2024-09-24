@@ -64,7 +64,7 @@ public record VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(MemorySegment segment)
     }
 
 
-    public static final class VkPhysicalDeviceYcbcrImageArraysFeaturesEXTFactory implements IFactory<VkPhysicalDeviceYcbcrImageArraysFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceYcbcrImageArraysFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceYcbcrImageArraysFeaturesEXT> clazz() {
             return VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(MemorySegment segment)
         }
     }
 
-    public static final VkPhysicalDeviceYcbcrImageArraysFeaturesEXTFactory FACTORY = new VkPhysicalDeviceYcbcrImageArraysFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

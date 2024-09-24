@@ -64,7 +64,7 @@ public record VkBaseInStructure(MemorySegment segment) {
     }
 
 
-    public static final class VkBaseInStructureFactory implements IFactory<VkBaseInStructure> {
+    public static final class Factory implements IFactory<VkBaseInStructure> {
         @Override
         public Class<VkBaseInStructure> clazz() {
             return VkBaseInStructure.class;
@@ -86,5 +86,5 @@ public record VkBaseInStructure(MemorySegment segment) {
         }
     }
 
-    public static final VkBaseInStructureFactory FACTORY = new VkBaseInStructureFactory();
+    public static final Factory FACTORY = new Factory();
 }

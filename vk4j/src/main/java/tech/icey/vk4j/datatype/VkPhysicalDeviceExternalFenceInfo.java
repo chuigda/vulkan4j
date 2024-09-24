@@ -64,7 +64,7 @@ public record VkPhysicalDeviceExternalFenceInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceExternalFenceInfoFactory implements IFactory<VkPhysicalDeviceExternalFenceInfo> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceExternalFenceInfo> {
         @Override
         public Class<VkPhysicalDeviceExternalFenceInfo> clazz() {
             return VkPhysicalDeviceExternalFenceInfo.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceExternalFenceInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceExternalFenceInfoFactory FACTORY = new VkPhysicalDeviceExternalFenceInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPerformanceStreamMarkerInfoINTEL(MemorySegment segment) {
     }
 
 
-    public static final class VkPerformanceStreamMarkerInfoINTELFactory implements IFactory<VkPerformanceStreamMarkerInfoINTEL> {
+    public static final class Factory implements IFactory<VkPerformanceStreamMarkerInfoINTEL> {
         @Override
         public Class<VkPerformanceStreamMarkerInfoINTEL> clazz() {
             return VkPerformanceStreamMarkerInfoINTEL.class;
@@ -86,5 +86,5 @@ public record VkPerformanceStreamMarkerInfoINTEL(MemorySegment segment) {
         }
     }
 
-    public static final VkPerformanceStreamMarkerInfoINTELFactory FACTORY = new VkPerformanceStreamMarkerInfoINTELFactory();
+    public static final Factory FACTORY = new Factory();
 }

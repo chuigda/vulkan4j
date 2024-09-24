@@ -112,7 +112,7 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkExportMetalTextureInfoEXTFactory implements IFactory<VkExportMetalTextureInfoEXT> {
+    public static final class Factory implements IFactory<VkExportMetalTextureInfoEXT> {
         @Override
         public Class<VkExportMetalTextureInfoEXT> clazz() {
             return VkExportMetalTextureInfoEXT.class;
@@ -134,5 +134,5 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkExportMetalTextureInfoEXTFactory FACTORY = new VkExportMetalTextureInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

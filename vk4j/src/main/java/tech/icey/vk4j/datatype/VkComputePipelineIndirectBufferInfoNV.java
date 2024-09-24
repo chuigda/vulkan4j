@@ -88,7 +88,7 @@ public record VkComputePipelineIndirectBufferInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkComputePipelineIndirectBufferInfoNVFactory implements IFactory<VkComputePipelineIndirectBufferInfoNV> {
+    public static final class Factory implements IFactory<VkComputePipelineIndirectBufferInfoNV> {
         @Override
         public Class<VkComputePipelineIndirectBufferInfoNV> clazz() {
             return VkComputePipelineIndirectBufferInfoNV.class;
@@ -110,5 +110,5 @@ public record VkComputePipelineIndirectBufferInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkComputePipelineIndirectBufferInfoNVFactory FACTORY = new VkComputePipelineIndirectBufferInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

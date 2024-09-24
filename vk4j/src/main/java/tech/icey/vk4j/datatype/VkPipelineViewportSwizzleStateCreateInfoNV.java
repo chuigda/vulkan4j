@@ -101,7 +101,7 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
     }
 
 
-    public static final class VkPipelineViewportSwizzleStateCreateInfoNVFactory implements IFactory<VkPipelineViewportSwizzleStateCreateInfoNV> {
+    public static final class Factory implements IFactory<VkPipelineViewportSwizzleStateCreateInfoNV> {
         @Override
         public Class<VkPipelineViewportSwizzleStateCreateInfoNV> clazz() {
             return VkPipelineViewportSwizzleStateCreateInfoNV.class;
@@ -123,5 +123,5 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
         }
     }
 
-    public static final VkPipelineViewportSwizzleStateCreateInfoNVFactory FACTORY = new VkPipelineViewportSwizzleStateCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

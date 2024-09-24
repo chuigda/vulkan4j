@@ -63,7 +63,7 @@ public record VkDispatchIndirectCommand(MemorySegment segment) {
     }
 
 
-    public static final class VkDispatchIndirectCommandFactory implements IFactory<VkDispatchIndirectCommand> {
+    public static final class Factory implements IFactory<VkDispatchIndirectCommand> {
         @Override
         public Class<VkDispatchIndirectCommand> clazz() {
             return VkDispatchIndirectCommand.class;
@@ -85,5 +85,5 @@ public record VkDispatchIndirectCommand(MemorySegment segment) {
         }
     }
 
-    public static final VkDispatchIndirectCommandFactory FACTORY = new VkDispatchIndirectCommandFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkSciSyncAttributesInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkSciSyncAttributesInfoNVFactory implements IFactory<VkSciSyncAttributesInfoNV> {
+    public static final class Factory implements IFactory<VkSciSyncAttributesInfoNV> {
         @Override
         public Class<VkSciSyncAttributesInfoNV> clazz() {
             return VkSciSyncAttributesInfoNV.class;
@@ -98,5 +98,5 @@ public record VkSciSyncAttributesInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkSciSyncAttributesInfoNVFactory FACTORY = new VkSciSyncAttributesInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

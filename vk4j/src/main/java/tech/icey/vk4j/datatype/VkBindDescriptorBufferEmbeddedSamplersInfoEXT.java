@@ -88,7 +88,7 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(MemorySegment segmen
     }
 
 
-    public static final class VkBindDescriptorBufferEmbeddedSamplersInfoEXTFactory implements IFactory<VkBindDescriptorBufferEmbeddedSamplersInfoEXT> {
+    public static final class Factory implements IFactory<VkBindDescriptorBufferEmbeddedSamplersInfoEXT> {
         @Override
         public Class<VkBindDescriptorBufferEmbeddedSamplersInfoEXT> clazz() {
             return VkBindDescriptorBufferEmbeddedSamplersInfoEXT.class;
@@ -110,5 +110,5 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(MemorySegment segmen
         }
     }
 
-    public static final VkBindDescriptorBufferEmbeddedSamplersInfoEXTFactory FACTORY = new VkBindDescriptorBufferEmbeddedSamplersInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

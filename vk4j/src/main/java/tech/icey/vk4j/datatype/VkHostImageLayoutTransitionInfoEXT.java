@@ -100,7 +100,7 @@ public record VkHostImageLayoutTransitionInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkHostImageLayoutTransitionInfoEXTFactory implements IFactory<VkHostImageLayoutTransitionInfoEXT> {
+    public static final class Factory implements IFactory<VkHostImageLayoutTransitionInfoEXT> {
         @Override
         public Class<VkHostImageLayoutTransitionInfoEXT> clazz() {
             return VkHostImageLayoutTransitionInfoEXT.class;
@@ -122,5 +122,5 @@ public record VkHostImageLayoutTransitionInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkHostImageLayoutTransitionInfoEXTFactory FACTORY = new VkHostImageLayoutTransitionInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

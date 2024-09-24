@@ -112,7 +112,7 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkAcquireNextImageInfoKHRFactory implements IFactory<VkAcquireNextImageInfoKHR> {
+    public static final class Factory implements IFactory<VkAcquireNextImageInfoKHR> {
         @Override
         public Class<VkAcquireNextImageInfoKHR> clazz() {
             return VkAcquireNextImageInfoKHR.class;
@@ -134,5 +134,5 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkAcquireNextImageInfoKHRFactory FACTORY = new VkAcquireNextImageInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

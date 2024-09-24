@@ -112,7 +112,7 @@ public record VkPushConstantsInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkPushConstantsInfoKHRFactory implements IFactory<VkPushConstantsInfoKHR> {
+    public static final class Factory implements IFactory<VkPushConstantsInfoKHR> {
         @Override
         public Class<VkPushConstantsInfoKHR> clazz() {
             return VkPushConstantsInfoKHR.class;
@@ -134,5 +134,5 @@ public record VkPushConstantsInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkPushConstantsInfoKHRFactory FACTORY = new VkPushConstantsInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

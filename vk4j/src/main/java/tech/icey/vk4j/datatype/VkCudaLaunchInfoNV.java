@@ -194,7 +194,7 @@ public record VkCudaLaunchInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkCudaLaunchInfoNVFactory implements IFactory<VkCudaLaunchInfoNV> {
+    public static final class Factory implements IFactory<VkCudaLaunchInfoNV> {
         @Override
         public Class<VkCudaLaunchInfoNV> clazz() {
             return VkCudaLaunchInfoNV.class;
@@ -216,5 +216,5 @@ public record VkCudaLaunchInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkCudaLaunchInfoNVFactory FACTORY = new VkCudaLaunchInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

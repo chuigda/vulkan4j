@@ -76,7 +76,7 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(MemorySegment segmen
     }
 
 
-    public static final class VkPhysicalDeviceBorderColorSwizzleFeaturesEXTFactory implements IFactory<VkPhysicalDeviceBorderColorSwizzleFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceBorderColorSwizzleFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceBorderColorSwizzleFeaturesEXT> clazz() {
             return VkPhysicalDeviceBorderColorSwizzleFeaturesEXT.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(MemorySegment segmen
         }
     }
 
-    public static final VkPhysicalDeviceBorderColorSwizzleFeaturesEXTFactory FACTORY = new VkPhysicalDeviceBorderColorSwizzleFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkStreamDescriptorSurfaceCreateInfoGGP(MemorySegment segment) {
     }
 
 
-    public static final class VkStreamDescriptorSurfaceCreateInfoGGPFactory implements IFactory<VkStreamDescriptorSurfaceCreateInfoGGP> {
+    public static final class Factory implements IFactory<VkStreamDescriptorSurfaceCreateInfoGGP> {
         @Override
         public Class<VkStreamDescriptorSurfaceCreateInfoGGP> clazz() {
             return VkStreamDescriptorSurfaceCreateInfoGGP.class;
@@ -98,5 +98,5 @@ public record VkStreamDescriptorSurfaceCreateInfoGGP(MemorySegment segment) {
         }
     }
 
-    public static final VkStreamDescriptorSurfaceCreateInfoGGPFactory FACTORY = new VkStreamDescriptorSurfaceCreateInfoGGPFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -55,7 +55,7 @@ public record VkExtensionProperties(MemorySegment segment) {
     }
 
 
-    public static final class VkExtensionPropertiesFactory implements IFactory<VkExtensionProperties> {
+    public static final class Factory implements IFactory<VkExtensionProperties> {
         @Override
         public Class<VkExtensionProperties> clazz() {
             return VkExtensionProperties.class;
@@ -77,5 +77,5 @@ public record VkExtensionProperties(MemorySegment segment) {
         }
     }
 
-    public static final VkExtensionPropertiesFactory FACTORY = new VkExtensionPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

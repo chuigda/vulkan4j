@@ -64,7 +64,7 @@ public record VkSamplerCubicWeightsCreateInfoQCOM(MemorySegment segment) {
     }
 
 
-    public static final class VkSamplerCubicWeightsCreateInfoQCOMFactory implements IFactory<VkSamplerCubicWeightsCreateInfoQCOM> {
+    public static final class Factory implements IFactory<VkSamplerCubicWeightsCreateInfoQCOM> {
         @Override
         public Class<VkSamplerCubicWeightsCreateInfoQCOM> clazz() {
             return VkSamplerCubicWeightsCreateInfoQCOM.class;
@@ -86,5 +86,5 @@ public record VkSamplerCubicWeightsCreateInfoQCOM(MemorySegment segment) {
         }
     }
 
-    public static final VkSamplerCubicWeightsCreateInfoQCOMFactory FACTORY = new VkSamplerCubicWeightsCreateInfoQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkExternalBufferProperties(MemorySegment segment) {
     }
 
 
-    public static final class VkExternalBufferPropertiesFactory implements IFactory<VkExternalBufferProperties> {
+    public static final class Factory implements IFactory<VkExternalBufferProperties> {
         @Override
         public Class<VkExternalBufferProperties> clazz() {
             return VkExternalBufferProperties.class;
@@ -86,5 +86,5 @@ public record VkExternalBufferProperties(MemorySegment segment) {
         }
     }
 
-    public static final VkExternalBufferPropertiesFactory FACTORY = new VkExternalBufferPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

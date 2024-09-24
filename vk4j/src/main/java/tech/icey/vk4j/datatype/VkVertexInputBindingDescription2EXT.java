@@ -100,7 +100,7 @@ public record VkVertexInputBindingDescription2EXT(MemorySegment segment) {
     }
 
 
-    public static final class VkVertexInputBindingDescription2EXTFactory implements IFactory<VkVertexInputBindingDescription2EXT> {
+    public static final class Factory implements IFactory<VkVertexInputBindingDescription2EXT> {
         @Override
         public Class<VkVertexInputBindingDescription2EXT> clazz() {
             return VkVertexInputBindingDescription2EXT.class;
@@ -122,5 +122,5 @@ public record VkVertexInputBindingDescription2EXT(MemorySegment segment) {
         }
     }
 
-    public static final VkVertexInputBindingDescription2EXTFactory FACTORY = new VkVertexInputBindingDescription2EXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -128,7 +128,7 @@ public record VkPhysicalDeviceToolProperties(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceToolPropertiesFactory implements IFactory<VkPhysicalDeviceToolProperties> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceToolProperties> {
         @Override
         public Class<VkPhysicalDeviceToolProperties> clazz() {
             return VkPhysicalDeviceToolProperties.class;
@@ -150,5 +150,5 @@ public record VkPhysicalDeviceToolProperties(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceToolPropertiesFactory FACTORY = new VkPhysicalDeviceToolPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

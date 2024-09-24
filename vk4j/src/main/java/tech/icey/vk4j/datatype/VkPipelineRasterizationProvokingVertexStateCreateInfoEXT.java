@@ -64,7 +64,7 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(MemorySeg
     }
 
 
-    public static final class VkPipelineRasterizationProvokingVertexStateCreateInfoEXTFactory implements IFactory<VkPipelineRasterizationProvokingVertexStateCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkPipelineRasterizationProvokingVertexStateCreateInfoEXT> {
         @Override
         public Class<VkPipelineRasterizationProvokingVertexStateCreateInfoEXT> clazz() {
             return VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(MemorySeg
         }
     }
 
-    public static final VkPipelineRasterizationProvokingVertexStateCreateInfoEXTFactory FACTORY = new VkPipelineRasterizationProvokingVertexStateCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

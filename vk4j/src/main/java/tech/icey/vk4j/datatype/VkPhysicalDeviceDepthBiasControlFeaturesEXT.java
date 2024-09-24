@@ -100,7 +100,7 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(MemorySegment segment)
     }
 
 
-    public static final class VkPhysicalDeviceDepthBiasControlFeaturesEXTFactory implements IFactory<VkPhysicalDeviceDepthBiasControlFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDepthBiasControlFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceDepthBiasControlFeaturesEXT> clazz() {
             return VkPhysicalDeviceDepthBiasControlFeaturesEXT.class;
@@ -122,5 +122,5 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(MemorySegment segment)
         }
     }
 
-    public static final VkPhysicalDeviceDepthBiasControlFeaturesEXTFactory FACTORY = new VkPhysicalDeviceDepthBiasControlFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

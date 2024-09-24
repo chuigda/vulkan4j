@@ -257,7 +257,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
     }
 
 
-    public static final class VkAccelerationStructureTrianglesDisplacementMicromapNVFactory implements IFactory<VkAccelerationStructureTrianglesDisplacementMicromapNV> {
+    public static final class Factory implements IFactory<VkAccelerationStructureTrianglesDisplacementMicromapNV> {
         @Override
         public Class<VkAccelerationStructureTrianglesDisplacementMicromapNV> clazz() {
             return VkAccelerationStructureTrianglesDisplacementMicromapNV.class;
@@ -279,5 +279,5 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
         }
     }
 
-    public static final VkAccelerationStructureTrianglesDisplacementMicromapNVFactory FACTORY = new VkAccelerationStructureTrianglesDisplacementMicromapNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

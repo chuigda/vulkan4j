@@ -112,7 +112,7 @@ public record VkPhysicalDeviceImageFormatInfo2(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceImageFormatInfo2Factory implements IFactory<VkPhysicalDeviceImageFormatInfo2> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceImageFormatInfo2> {
         @Override
         public Class<VkPhysicalDeviceImageFormatInfo2> clazz() {
             return VkPhysicalDeviceImageFormatInfo2.class;
@@ -134,5 +134,5 @@ public record VkPhysicalDeviceImageFormatInfo2(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceImageFormatInfo2Factory FACTORY = new VkPhysicalDeviceImageFormatInfo2Factory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceImageProcessing2PropertiesQCOM(MemorySegment segme
     }
 
 
-    public static final class VkPhysicalDeviceImageProcessing2PropertiesQCOMFactory implements IFactory<VkPhysicalDeviceImageProcessing2PropertiesQCOM> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceImageProcessing2PropertiesQCOM> {
         @Override
         public Class<VkPhysicalDeviceImageProcessing2PropertiesQCOM> clazz() {
             return VkPhysicalDeviceImageProcessing2PropertiesQCOM.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceImageProcessing2PropertiesQCOM(MemorySegment segme
         }
     }
 
-    public static final VkPhysicalDeviceImageProcessing2PropertiesQCOMFactory FACTORY = new VkPhysicalDeviceImageProcessing2PropertiesQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

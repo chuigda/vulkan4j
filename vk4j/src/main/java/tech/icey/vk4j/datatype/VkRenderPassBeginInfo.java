@@ -125,7 +125,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkRenderPassBeginInfoFactory implements IFactory<VkRenderPassBeginInfo> {
+    public static final class Factory implements IFactory<VkRenderPassBeginInfo> {
         @Override
         public Class<VkRenderPassBeginInfo> clazz() {
             return VkRenderPassBeginInfo.class;
@@ -147,5 +147,5 @@ public record VkRenderPassBeginInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkRenderPassBeginInfoFactory FACTORY = new VkRenderPassBeginInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

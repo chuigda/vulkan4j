@@ -126,7 +126,7 @@ public record VkPipelineRenderingCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineRenderingCreateInfoFactory implements IFactory<VkPipelineRenderingCreateInfo> {
+    public static final class Factory implements IFactory<VkPipelineRenderingCreateInfo> {
         @Override
         public Class<VkPipelineRenderingCreateInfo> clazz() {
             return VkPipelineRenderingCreateInfo.class;
@@ -148,5 +148,5 @@ public record VkPipelineRenderingCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineRenderingCreateInfoFactory FACTORY = new VkPipelineRenderingCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

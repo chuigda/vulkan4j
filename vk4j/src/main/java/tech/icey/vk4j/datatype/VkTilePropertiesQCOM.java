@@ -88,7 +88,7 @@ public record VkTilePropertiesQCOM(MemorySegment segment) {
     }
 
 
-    public static final class VkTilePropertiesQCOMFactory implements IFactory<VkTilePropertiesQCOM> {
+    public static final class Factory implements IFactory<VkTilePropertiesQCOM> {
         @Override
         public Class<VkTilePropertiesQCOM> clazz() {
             return VkTilePropertiesQCOM.class;
@@ -110,5 +110,5 @@ public record VkTilePropertiesQCOM(MemorySegment segment) {
         }
     }
 
-    public static final VkTilePropertiesQCOMFactory FACTORY = new VkTilePropertiesQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

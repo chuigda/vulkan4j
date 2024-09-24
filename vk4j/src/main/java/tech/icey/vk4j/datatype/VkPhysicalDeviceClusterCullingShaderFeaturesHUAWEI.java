@@ -76,7 +76,7 @@ public record VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(MemorySegment s
     }
 
 
-    public static final class VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEIFactory implements IFactory<VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI> {
         @Override
         public Class<VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI> clazz() {
             return VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(MemorySegment s
         }
     }
 
-    public static final VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEIFactory FACTORY = new VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEIFactory();
+    public static final Factory FACTORY = new Factory();
 }

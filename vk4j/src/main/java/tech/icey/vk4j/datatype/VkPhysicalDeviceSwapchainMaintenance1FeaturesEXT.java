@@ -64,7 +64,7 @@ public record VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(MemorySegment seg
     }
 
 
-    public static final class VkPhysicalDeviceSwapchainMaintenance1FeaturesEXTFactory implements IFactory<VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT> clazz() {
             return VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(MemorySegment seg
         }
     }
 
-    public static final VkPhysicalDeviceSwapchainMaintenance1FeaturesEXTFactory FACTORY = new VkPhysicalDeviceSwapchainMaintenance1FeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

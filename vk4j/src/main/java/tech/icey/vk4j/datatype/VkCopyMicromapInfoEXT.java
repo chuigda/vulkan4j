@@ -88,7 +88,7 @@ public record VkCopyMicromapInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkCopyMicromapInfoEXTFactory implements IFactory<VkCopyMicromapInfoEXT> {
+    public static final class Factory implements IFactory<VkCopyMicromapInfoEXT> {
         @Override
         public Class<VkCopyMicromapInfoEXT> clazz() {
             return VkCopyMicromapInfoEXT.class;
@@ -110,5 +110,5 @@ public record VkCopyMicromapInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkCopyMicromapInfoEXTFactory FACTORY = new VkCopyMicromapInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkMemoryPriorityAllocateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkMemoryPriorityAllocateInfoEXTFactory implements IFactory<VkMemoryPriorityAllocateInfoEXT> {
+    public static final class Factory implements IFactory<VkMemoryPriorityAllocateInfoEXT> {
         @Override
         public Class<VkMemoryPriorityAllocateInfoEXT> clazz() {
             return VkMemoryPriorityAllocateInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkMemoryPriorityAllocateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkMemoryPriorityAllocateInfoEXTFactory FACTORY = new VkMemoryPriorityAllocateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

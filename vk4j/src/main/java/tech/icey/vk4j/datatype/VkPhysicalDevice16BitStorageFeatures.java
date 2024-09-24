@@ -100,7 +100,7 @@ public record VkPhysicalDevice16BitStorageFeatures(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDevice16BitStorageFeaturesFactory implements IFactory<VkPhysicalDevice16BitStorageFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDevice16BitStorageFeatures> {
         @Override
         public Class<VkPhysicalDevice16BitStorageFeatures> clazz() {
             return VkPhysicalDevice16BitStorageFeatures.class;
@@ -122,5 +122,5 @@ public record VkPhysicalDevice16BitStorageFeatures(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDevice16BitStorageFeaturesFactory FACTORY = new VkPhysicalDevice16BitStorageFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

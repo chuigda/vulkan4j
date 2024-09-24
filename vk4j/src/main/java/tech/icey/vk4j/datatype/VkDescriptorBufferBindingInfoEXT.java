@@ -76,7 +76,7 @@ public record VkDescriptorBufferBindingInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDescriptorBufferBindingInfoEXTFactory implements IFactory<VkDescriptorBufferBindingInfoEXT> {
+    public static final class Factory implements IFactory<VkDescriptorBufferBindingInfoEXT> {
         @Override
         public Class<VkDescriptorBufferBindingInfoEXT> clazz() {
             return VkDescriptorBufferBindingInfoEXT.class;
@@ -98,5 +98,5 @@ public record VkDescriptorBufferBindingInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorBufferBindingInfoEXTFactory FACTORY = new VkDescriptorBufferBindingInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

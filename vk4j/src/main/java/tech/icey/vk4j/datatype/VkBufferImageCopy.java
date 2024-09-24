@@ -99,7 +99,7 @@ public record VkBufferImageCopy(MemorySegment segment) {
     }
 
 
-    public static final class VkBufferImageCopyFactory implements IFactory<VkBufferImageCopy> {
+    public static final class Factory implements IFactory<VkBufferImageCopy> {
         @Override
         public Class<VkBufferImageCopy> clazz() {
             return VkBufferImageCopy.class;
@@ -121,5 +121,5 @@ public record VkBufferImageCopy(MemorySegment segment) {
         }
     }
 
-    public static final VkBufferImageCopyFactory FACTORY = new VkBufferImageCopyFactory();
+    public static final Factory FACTORY = new Factory();
 }

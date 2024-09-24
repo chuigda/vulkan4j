@@ -101,7 +101,7 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment 
     }
 
 
-    public static final class VkPipelineViewportShadingRateImageStateCreateInfoNVFactory implements IFactory<VkPipelineViewportShadingRateImageStateCreateInfoNV> {
+    public static final class Factory implements IFactory<VkPipelineViewportShadingRateImageStateCreateInfoNV> {
         @Override
         public Class<VkPipelineViewportShadingRateImageStateCreateInfoNV> clazz() {
             return VkPipelineViewportShadingRateImageStateCreateInfoNV.class;
@@ -123,5 +123,5 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment 
         }
     }
 
-    public static final VkPipelineViewportShadingRateImageStateCreateInfoNVFactory FACTORY = new VkPipelineViewportShadingRateImageStateCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -63,7 +63,7 @@ public record VkCoarseSampleLocationNV(MemorySegment segment) {
     }
 
 
-    public static final class VkCoarseSampleLocationNVFactory implements IFactory<VkCoarseSampleLocationNV> {
+    public static final class Factory implements IFactory<VkCoarseSampleLocationNV> {
         @Override
         public Class<VkCoarseSampleLocationNV> clazz() {
             return VkCoarseSampleLocationNV.class;
@@ -85,5 +85,5 @@ public record VkCoarseSampleLocationNV(MemorySegment segment) {
         }
     }
 
-    public static final VkCoarseSampleLocationNVFactory FACTORY = new VkCoarseSampleLocationNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

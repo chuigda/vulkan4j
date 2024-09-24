@@ -64,7 +64,7 @@ public record VkSparseImageMemoryRequirements2(MemorySegment segment) {
     }
 
 
-    public static final class VkSparseImageMemoryRequirements2Factory implements IFactory<VkSparseImageMemoryRequirements2> {
+    public static final class Factory implements IFactory<VkSparseImageMemoryRequirements2> {
         @Override
         public Class<VkSparseImageMemoryRequirements2> clazz() {
             return VkSparseImageMemoryRequirements2.class;
@@ -86,5 +86,5 @@ public record VkSparseImageMemoryRequirements2(MemorySegment segment) {
         }
     }
 
-    public static final VkSparseImageMemoryRequirements2Factory FACTORY = new VkSparseImageMemoryRequirements2Factory();
+    public static final Factory FACTORY = new Factory();
 }

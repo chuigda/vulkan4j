@@ -76,7 +76,7 @@ public record VkCheckpointDataNV(MemorySegment segment) {
     }
 
 
-    public static final class VkCheckpointDataNVFactory implements IFactory<VkCheckpointDataNV> {
+    public static final class Factory implements IFactory<VkCheckpointDataNV> {
         @Override
         public Class<VkCheckpointDataNV> clazz() {
             return VkCheckpointDataNV.class;
@@ -98,5 +98,5 @@ public record VkCheckpointDataNV(MemorySegment segment) {
         }
     }
 
-    public static final VkCheckpointDataNVFactory FACTORY = new VkCheckpointDataNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

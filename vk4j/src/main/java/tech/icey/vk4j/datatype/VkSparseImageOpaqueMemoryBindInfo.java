@@ -76,7 +76,7 @@ public record VkSparseImageOpaqueMemoryBindInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkSparseImageOpaqueMemoryBindInfoFactory implements IFactory<VkSparseImageOpaqueMemoryBindInfo> {
+    public static final class Factory implements IFactory<VkSparseImageOpaqueMemoryBindInfo> {
         @Override
         public Class<VkSparseImageOpaqueMemoryBindInfo> clazz() {
             return VkSparseImageOpaqueMemoryBindInfo.class;
@@ -98,5 +98,5 @@ public record VkSparseImageOpaqueMemoryBindInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkSparseImageOpaqueMemoryBindInfoFactory FACTORY = new VkSparseImageOpaqueMemoryBindInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

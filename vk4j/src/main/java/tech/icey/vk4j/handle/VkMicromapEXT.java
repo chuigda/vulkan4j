@@ -11,7 +11,7 @@ public record VkMicromapEXT(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkMicromapEXTFactory implements IFactory<VkMicromapEXT> {
+    public static final class Factory implements IFactory<VkMicromapEXT> {
         @Override
         public Class<VkMicromapEXT> clazz() {
             return VkMicromapEXT.class;
@@ -33,5 +33,5 @@ public record VkMicromapEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkMicromapEXTFactory FACTORY = new VkMicromapEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

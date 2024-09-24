@@ -64,7 +64,7 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(MemorySegment segment)
     }
 
 
-    public static final class VkRenderPassFragmentDensityMapCreateInfoEXTFactory implements IFactory<VkRenderPassFragmentDensityMapCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkRenderPassFragmentDensityMapCreateInfoEXT> {
         @Override
         public Class<VkRenderPassFragmentDensityMapCreateInfoEXT> clazz() {
             return VkRenderPassFragmentDensityMapCreateInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(MemorySegment segment)
         }
     }
 
-    public static final VkRenderPassFragmentDensityMapCreateInfoEXTFactory FACTORY = new VkRenderPassFragmentDensityMapCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkFenceCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkFenceCreateInfoFactory implements IFactory<VkFenceCreateInfo> {
+    public static final class Factory implements IFactory<VkFenceCreateInfo> {
         @Override
         public Class<VkFenceCreateInfo> clazz() {
             return VkFenceCreateInfo.class;
@@ -86,5 +86,5 @@ public record VkFenceCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkFenceCreateInfoFactory FACTORY = new VkFenceCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

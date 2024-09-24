@@ -75,7 +75,7 @@ public record VkClearColorValue(MemorySegment segment) {
     }
 
 
-    public static final class VkClearColorValueFactory implements IFactory<VkClearColorValue> {
+    public static final class Factory implements IFactory<VkClearColorValue> {
         @Override
         public Class<VkClearColorValue> clazz() {
             return VkClearColorValue.class;
@@ -97,5 +97,5 @@ public record VkClearColorValue(MemorySegment segment) {
         }
     }
 
-    public static final VkClearColorValueFactory FACTORY = new VkClearColorValueFactory();
+    public static final Factory FACTORY = new Factory();
 }

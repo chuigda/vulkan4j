@@ -100,7 +100,7 @@ public record VkApplicationParametersEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkApplicationParametersEXTFactory implements IFactory<VkApplicationParametersEXT> {
+    public static final class Factory implements IFactory<VkApplicationParametersEXT> {
         @Override
         public Class<VkApplicationParametersEXT> clazz() {
             return VkApplicationParametersEXT.class;
@@ -122,5 +122,5 @@ public record VkApplicationParametersEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkApplicationParametersEXTFactory FACTORY = new VkApplicationParametersEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

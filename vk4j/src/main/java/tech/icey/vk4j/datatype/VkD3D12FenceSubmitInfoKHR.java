@@ -116,7 +116,7 @@ public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkD3D12FenceSubmitInfoKHRFactory implements IFactory<VkD3D12FenceSubmitInfoKHR> {
+    public static final class Factory implements IFactory<VkD3D12FenceSubmitInfoKHR> {
         @Override
         public Class<VkD3D12FenceSubmitInfoKHR> clazz() {
             return VkD3D12FenceSubmitInfoKHR.class;
@@ -138,5 +138,5 @@ public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkD3D12FenceSubmitInfoKHRFactory FACTORY = new VkD3D12FenceSubmitInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

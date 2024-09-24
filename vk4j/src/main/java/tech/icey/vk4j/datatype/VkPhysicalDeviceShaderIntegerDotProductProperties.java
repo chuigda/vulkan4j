@@ -412,7 +412,7 @@ public record VkPhysicalDeviceShaderIntegerDotProductProperties(MemorySegment se
     }
 
 
-    public static final class VkPhysicalDeviceShaderIntegerDotProductPropertiesFactory implements IFactory<VkPhysicalDeviceShaderIntegerDotProductProperties> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderIntegerDotProductProperties> {
         @Override
         public Class<VkPhysicalDeviceShaderIntegerDotProductProperties> clazz() {
             return VkPhysicalDeviceShaderIntegerDotProductProperties.class;
@@ -434,5 +434,5 @@ public record VkPhysicalDeviceShaderIntegerDotProductProperties(MemorySegment se
         }
     }
 
-    public static final VkPhysicalDeviceShaderIntegerDotProductPropertiesFactory FACTORY = new VkPhysicalDeviceShaderIntegerDotProductPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

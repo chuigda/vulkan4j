@@ -242,7 +242,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkShaderCreateInfoEXTFactory implements IFactory<VkShaderCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkShaderCreateInfoEXT> {
         @Override
         public Class<VkShaderCreateInfoEXT> clazz() {
             return VkShaderCreateInfoEXT.class;
@@ -264,5 +264,5 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkShaderCreateInfoEXTFactory FACTORY = new VkShaderCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

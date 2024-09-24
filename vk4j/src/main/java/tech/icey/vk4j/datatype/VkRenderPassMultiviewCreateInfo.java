@@ -148,7 +148,7 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkRenderPassMultiviewCreateInfoFactory implements IFactory<VkRenderPassMultiviewCreateInfo> {
+    public static final class Factory implements IFactory<VkRenderPassMultiviewCreateInfo> {
         @Override
         public Class<VkRenderPassMultiviewCreateInfo> clazz() {
             return VkRenderPassMultiviewCreateInfo.class;
@@ -170,5 +170,5 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkRenderPassMultiviewCreateInfoFactory FACTORY = new VkRenderPassMultiviewCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

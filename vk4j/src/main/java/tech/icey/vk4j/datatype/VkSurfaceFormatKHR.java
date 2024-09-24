@@ -51,7 +51,7 @@ public record VkSurfaceFormatKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkSurfaceFormatKHRFactory implements IFactory<VkSurfaceFormatKHR> {
+    public static final class Factory implements IFactory<VkSurfaceFormatKHR> {
         @Override
         public Class<VkSurfaceFormatKHR> clazz() {
             return VkSurfaceFormatKHR.class;
@@ -73,5 +73,5 @@ public record VkSurfaceFormatKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkSurfaceFormatKHRFactory FACTORY = new VkSurfaceFormatKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

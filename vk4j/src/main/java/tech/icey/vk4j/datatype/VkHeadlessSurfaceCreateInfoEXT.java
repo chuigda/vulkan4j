@@ -64,7 +64,7 @@ public record VkHeadlessSurfaceCreateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkHeadlessSurfaceCreateInfoEXTFactory implements IFactory<VkHeadlessSurfaceCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkHeadlessSurfaceCreateInfoEXT> {
         @Override
         public Class<VkHeadlessSurfaceCreateInfoEXT> clazz() {
             return VkHeadlessSurfaceCreateInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkHeadlessSurfaceCreateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkHeadlessSurfaceCreateInfoEXTFactory FACTORY = new VkHeadlessSurfaceCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

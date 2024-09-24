@@ -117,7 +117,7 @@ public record VkImageBlit(MemorySegment segment) {
     }
 
 
-    public static final class VkImageBlitFactory implements IFactory<VkImageBlit> {
+    public static final class Factory implements IFactory<VkImageBlit> {
         @Override
         public Class<VkImageBlit> clazz() {
             return VkImageBlit.class;
@@ -139,5 +139,5 @@ public record VkImageBlit(MemorySegment segment) {
         }
     }
 
-    public static final VkImageBlitFactory FACTORY = new VkImageBlitFactory();
+    public static final Factory FACTORY = new Factory();
 }

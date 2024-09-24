@@ -84,7 +84,7 @@ public record VkRenderingAttachmentLocationInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkRenderingAttachmentLocationInfoKHRFactory implements IFactory<VkRenderingAttachmentLocationInfoKHR> {
+    public static final class Factory implements IFactory<VkRenderingAttachmentLocationInfoKHR> {
         @Override
         public Class<VkRenderingAttachmentLocationInfoKHR> clazz() {
             return VkRenderingAttachmentLocationInfoKHR.class;
@@ -106,5 +106,5 @@ public record VkRenderingAttachmentLocationInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkRenderingAttachmentLocationInfoKHRFactory FACTORY = new VkRenderingAttachmentLocationInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

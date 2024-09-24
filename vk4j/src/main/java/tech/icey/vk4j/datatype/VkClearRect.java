@@ -63,7 +63,7 @@ public record VkClearRect(MemorySegment segment) {
     }
 
 
-    public static final class VkClearRectFactory implements IFactory<VkClearRect> {
+    public static final class Factory implements IFactory<VkClearRect> {
         @Override
         public Class<VkClearRect> clazz() {
             return VkClearRect.class;
@@ -85,5 +85,5 @@ public record VkClearRect(MemorySegment segment) {
         }
     }
 
-    public static final VkClearRectFactory FACTORY = new VkClearRectFactory();
+    public static final Factory FACTORY = new Factory();
 }

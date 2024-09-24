@@ -51,7 +51,7 @@ public record VkDeviceOrHostAddressConstAMDX(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceOrHostAddressConstAMDXFactory implements IFactory<VkDeviceOrHostAddressConstAMDX> {
+    public static final class Factory implements IFactory<VkDeviceOrHostAddressConstAMDX> {
         @Override
         public Class<VkDeviceOrHostAddressConstAMDX> clazz() {
             return VkDeviceOrHostAddressConstAMDX.class;
@@ -73,5 +73,5 @@ public record VkDeviceOrHostAddressConstAMDX(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceOrHostAddressConstAMDXFactory FACTORY = new VkDeviceOrHostAddressConstAMDXFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkExportMemoryWin32HandleInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkExportMemoryWin32HandleInfoNVFactory implements IFactory<VkExportMemoryWin32HandleInfoNV> {
+    public static final class Factory implements IFactory<VkExportMemoryWin32HandleInfoNV> {
         @Override
         public Class<VkExportMemoryWin32HandleInfoNV> clazz() {
             return VkExportMemoryWin32HandleInfoNV.class;
@@ -98,5 +98,5 @@ public record VkExportMemoryWin32HandleInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkExportMemoryWin32HandleInfoNVFactory FACTORY = new VkExportMemoryWin32HandleInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

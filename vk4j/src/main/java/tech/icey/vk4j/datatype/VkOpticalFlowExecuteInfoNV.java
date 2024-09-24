@@ -101,7 +101,7 @@ public record VkOpticalFlowExecuteInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkOpticalFlowExecuteInfoNVFactory implements IFactory<VkOpticalFlowExecuteInfoNV> {
+    public static final class Factory implements IFactory<VkOpticalFlowExecuteInfoNV> {
         @Override
         public Class<VkOpticalFlowExecuteInfoNV> clazz() {
             return VkOpticalFlowExecuteInfoNV.class;
@@ -123,5 +123,5 @@ public record VkOpticalFlowExecuteInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkOpticalFlowExecuteInfoNVFactory FACTORY = new VkOpticalFlowExecuteInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

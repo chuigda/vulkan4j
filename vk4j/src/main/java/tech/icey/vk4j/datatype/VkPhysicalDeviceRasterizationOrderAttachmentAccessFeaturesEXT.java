@@ -88,7 +88,7 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(Memo
     }
 
 
-    public static final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXTFactory implements IFactory<VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT> clazz() {
             return VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT.class;
@@ -110,5 +110,5 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(Memo
         }
     }
 
-    public static final VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXTFactory FACTORY = new VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

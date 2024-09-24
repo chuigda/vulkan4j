@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderImageFootprintFeaturesNV(MemorySegment segme
     }
 
 
-    public static final class VkPhysicalDeviceShaderImageFootprintFeaturesNVFactory implements IFactory<VkPhysicalDeviceShaderImageFootprintFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderImageFootprintFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceShaderImageFootprintFeaturesNV> clazz() {
             return VkPhysicalDeviceShaderImageFootprintFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceShaderImageFootprintFeaturesNV(MemorySegment segme
         }
     }
 
-    public static final VkPhysicalDeviceShaderImageFootprintFeaturesNVFactory FACTORY = new VkPhysicalDeviceShaderImageFootprintFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceCustomBorderColorFeaturesEXTFactory implements IFactory<VkPhysicalDeviceCustomBorderColorFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceCustomBorderColorFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceCustomBorderColorFeaturesEXT> clazz() {
             return VkPhysicalDeviceCustomBorderColorFeaturesEXT.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceCustomBorderColorFeaturesEXTFactory FACTORY = new VkPhysicalDeviceCustomBorderColorFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkImageViewSlicedCreateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkImageViewSlicedCreateInfoEXTFactory implements IFactory<VkImageViewSlicedCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkImageViewSlicedCreateInfoEXT> {
         @Override
         public Class<VkImageViewSlicedCreateInfoEXT> clazz() {
             return VkImageViewSlicedCreateInfoEXT.class;
@@ -98,5 +98,5 @@ public record VkImageViewSlicedCreateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkImageViewSlicedCreateInfoEXTFactory FACTORY = new VkImageViewSlicedCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

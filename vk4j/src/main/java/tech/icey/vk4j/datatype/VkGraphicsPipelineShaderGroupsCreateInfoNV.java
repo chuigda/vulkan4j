@@ -126,7 +126,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
     }
 
 
-    public static final class VkGraphicsPipelineShaderGroupsCreateInfoNVFactory implements IFactory<VkGraphicsPipelineShaderGroupsCreateInfoNV> {
+    public static final class Factory implements IFactory<VkGraphicsPipelineShaderGroupsCreateInfoNV> {
         @Override
         public Class<VkGraphicsPipelineShaderGroupsCreateInfoNV> clazz() {
             return VkGraphicsPipelineShaderGroupsCreateInfoNV.class;
@@ -148,5 +148,5 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         }
     }
 
-    public static final VkGraphicsPipelineShaderGroupsCreateInfoNVFactory FACTORY = new VkGraphicsPipelineShaderGroupsCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

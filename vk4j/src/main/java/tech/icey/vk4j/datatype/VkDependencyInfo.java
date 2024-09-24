@@ -175,7 +175,7 @@ public record VkDependencyInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkDependencyInfoFactory implements IFactory<VkDependencyInfo> {
+    public static final class Factory implements IFactory<VkDependencyInfo> {
         @Override
         public Class<VkDependencyInfo> clazz() {
             return VkDependencyInfo.class;
@@ -197,5 +197,5 @@ public record VkDependencyInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkDependencyInfoFactory FACTORY = new VkDependencyInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -99,7 +99,7 @@ public record VkColorBlendEquationEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkColorBlendEquationEXTFactory implements IFactory<VkColorBlendEquationEXT> {
+    public static final class Factory implements IFactory<VkColorBlendEquationEXT> {
         @Override
         public Class<VkColorBlendEquationEXT> clazz() {
             return VkColorBlendEquationEXT.class;
@@ -121,5 +121,5 @@ public record VkColorBlendEquationEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkColorBlendEquationEXTFactory FACTORY = new VkColorBlendEquationEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

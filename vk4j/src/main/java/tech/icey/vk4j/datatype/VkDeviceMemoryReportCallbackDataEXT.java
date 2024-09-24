@@ -136,7 +136,7 @@ public record VkDeviceMemoryReportCallbackDataEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceMemoryReportCallbackDataEXTFactory implements IFactory<VkDeviceMemoryReportCallbackDataEXT> {
+    public static final class Factory implements IFactory<VkDeviceMemoryReportCallbackDataEXT> {
         @Override
         public Class<VkDeviceMemoryReportCallbackDataEXT> clazz() {
             return VkDeviceMemoryReportCallbackDataEXT.class;
@@ -158,5 +158,5 @@ public record VkDeviceMemoryReportCallbackDataEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceMemoryReportCallbackDataEXTFactory FACTORY = new VkDeviceMemoryReportCallbackDataEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

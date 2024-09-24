@@ -64,7 +64,7 @@ public record VkPhysicalDevicePipelineCreationCacheControlFeatures(MemorySegment
     }
 
 
-    public static final class VkPhysicalDevicePipelineCreationCacheControlFeaturesFactory implements IFactory<VkPhysicalDevicePipelineCreationCacheControlFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDevicePipelineCreationCacheControlFeatures> {
         @Override
         public Class<VkPhysicalDevicePipelineCreationCacheControlFeatures> clazz() {
             return VkPhysicalDevicePipelineCreationCacheControlFeatures.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDevicePipelineCreationCacheControlFeatures(MemorySegment
         }
     }
 
-    public static final VkPhysicalDevicePipelineCreationCacheControlFeaturesFactory FACTORY = new VkPhysicalDevicePipelineCreationCacheControlFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

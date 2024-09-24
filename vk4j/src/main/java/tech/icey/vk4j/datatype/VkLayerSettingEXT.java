@@ -103,7 +103,7 @@ public record VkLayerSettingEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkLayerSettingEXTFactory implements IFactory<VkLayerSettingEXT> {
+    public static final class Factory implements IFactory<VkLayerSettingEXT> {
         @Override
         public Class<VkLayerSettingEXT> clazz() {
             return VkLayerSettingEXT.class;
@@ -125,5 +125,5 @@ public record VkLayerSettingEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkLayerSettingEXTFactory FACTORY = new VkLayerSettingEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

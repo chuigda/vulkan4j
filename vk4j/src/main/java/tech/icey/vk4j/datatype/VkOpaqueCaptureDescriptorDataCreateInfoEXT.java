@@ -64,7 +64,7 @@ public record VkOpaqueCaptureDescriptorDataCreateInfoEXT(MemorySegment segment) 
     }
 
 
-    public static final class VkOpaqueCaptureDescriptorDataCreateInfoEXTFactory implements IFactory<VkOpaqueCaptureDescriptorDataCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkOpaqueCaptureDescriptorDataCreateInfoEXT> {
         @Override
         public Class<VkOpaqueCaptureDescriptorDataCreateInfoEXT> clazz() {
             return VkOpaqueCaptureDescriptorDataCreateInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkOpaqueCaptureDescriptorDataCreateInfoEXT(MemorySegment segment) 
         }
     }
 
-    public static final VkOpaqueCaptureDescriptorDataCreateInfoEXTFactory FACTORY = new VkOpaqueCaptureDescriptorDataCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

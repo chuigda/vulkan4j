@@ -76,7 +76,7 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(MemorySegment segment)
     }
 
 
-    public static final class VkPipelineSampleLocationsStateCreateInfoEXTFactory implements IFactory<VkPipelineSampleLocationsStateCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkPipelineSampleLocationsStateCreateInfoEXT> {
         @Override
         public Class<VkPipelineSampleLocationsStateCreateInfoEXT> clazz() {
             return VkPipelineSampleLocationsStateCreateInfoEXT.class;
@@ -98,5 +98,5 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(MemorySegment segment)
         }
     }
 
-    public static final VkPipelineSampleLocationsStateCreateInfoEXTFactory FACTORY = new VkPipelineSampleLocationsStateCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

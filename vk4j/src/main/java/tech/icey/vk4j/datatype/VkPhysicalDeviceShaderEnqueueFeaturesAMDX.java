@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceShaderEnqueueFeaturesAMDXFactory implements IFactory<VkPhysicalDeviceShaderEnqueueFeaturesAMDX> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderEnqueueFeaturesAMDX> {
         @Override
         public Class<VkPhysicalDeviceShaderEnqueueFeaturesAMDX> clazz() {
             return VkPhysicalDeviceShaderEnqueueFeaturesAMDX.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceShaderEnqueueFeaturesAMDXFactory FACTORY = new VkPhysicalDeviceShaderEnqueueFeaturesAMDXFactory();
+    public static final Factory FACTORY = new Factory();
 }

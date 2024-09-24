@@ -75,7 +75,7 @@ public record VkImageSubresourceLayers(MemorySegment segment) {
     }
 
 
-    public static final class VkImageSubresourceLayersFactory implements IFactory<VkImageSubresourceLayers> {
+    public static final class Factory implements IFactory<VkImageSubresourceLayers> {
         @Override
         public Class<VkImageSubresourceLayers> clazz() {
             return VkImageSubresourceLayers.class;
@@ -97,5 +97,5 @@ public record VkImageSubresourceLayers(MemorySegment segment) {
         }
     }
 
-    public static final VkImageSubresourceLayersFactory FACTORY = new VkImageSubresourceLayersFactory();
+    public static final Factory FACTORY = new Factory();
 }

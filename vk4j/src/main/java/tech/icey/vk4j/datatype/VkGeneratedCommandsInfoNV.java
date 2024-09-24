@@ -221,7 +221,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkGeneratedCommandsInfoNVFactory implements IFactory<VkGeneratedCommandsInfoNV> {
+    public static final class Factory implements IFactory<VkGeneratedCommandsInfoNV> {
         @Override
         public Class<VkGeneratedCommandsInfoNV> clazz() {
             return VkGeneratedCommandsInfoNV.class;
@@ -243,5 +243,5 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkGeneratedCommandsInfoNVFactory FACTORY = new VkGeneratedCommandsInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

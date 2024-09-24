@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(Memory
     }
 
 
-    public static final class VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHRFactory implements IFactory<VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR> clazz() {
             return VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(Memory
         }
     }
 
-    public static final VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHRFactory FACTORY = new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

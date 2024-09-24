@@ -76,7 +76,7 @@ public record VkDirectDriverLoadingInfoLUNARG(MemorySegment segment) {
     }
 
 
-    public static final class VkDirectDriverLoadingInfoLUNARGFactory implements IFactory<VkDirectDriverLoadingInfoLUNARG> {
+    public static final class Factory implements IFactory<VkDirectDriverLoadingInfoLUNARG> {
         @Override
         public Class<VkDirectDriverLoadingInfoLUNARG> clazz() {
             return VkDirectDriverLoadingInfoLUNARG.class;
@@ -98,5 +98,5 @@ public record VkDirectDriverLoadingInfoLUNARG(MemorySegment segment) {
         }
     }
 
-    public static final VkDirectDriverLoadingInfoLUNARGFactory FACTORY = new VkDirectDriverLoadingInfoLUNARGFactory();
+    public static final Factory FACTORY = new Factory();
 }

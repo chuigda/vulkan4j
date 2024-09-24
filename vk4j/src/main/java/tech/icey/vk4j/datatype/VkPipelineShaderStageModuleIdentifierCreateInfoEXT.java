@@ -84,7 +84,7 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(MemorySegment s
     }
 
 
-    public static final class VkPipelineShaderStageModuleIdentifierCreateInfoEXTFactory implements IFactory<VkPipelineShaderStageModuleIdentifierCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkPipelineShaderStageModuleIdentifierCreateInfoEXT> {
         @Override
         public Class<VkPipelineShaderStageModuleIdentifierCreateInfoEXT> clazz() {
             return VkPipelineShaderStageModuleIdentifierCreateInfoEXT.class;
@@ -106,5 +106,5 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(MemorySegment s
         }
     }
 
-    public static final VkPipelineShaderStageModuleIdentifierCreateInfoEXTFactory FACTORY = new VkPipelineShaderStageModuleIdentifierCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

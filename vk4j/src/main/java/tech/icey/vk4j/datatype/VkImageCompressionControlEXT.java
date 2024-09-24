@@ -102,7 +102,7 @@ public record VkImageCompressionControlEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkImageCompressionControlEXTFactory implements IFactory<VkImageCompressionControlEXT> {
+    public static final class Factory implements IFactory<VkImageCompressionControlEXT> {
         @Override
         public Class<VkImageCompressionControlEXT> clazz() {
             return VkImageCompressionControlEXT.class;
@@ -124,5 +124,5 @@ public record VkImageCompressionControlEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkImageCompressionControlEXTFactory FACTORY = new VkImageCompressionControlEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

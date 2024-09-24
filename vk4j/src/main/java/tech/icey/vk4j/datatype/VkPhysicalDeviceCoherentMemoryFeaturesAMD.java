@@ -64,7 +64,7 @@ public record VkPhysicalDeviceCoherentMemoryFeaturesAMD(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceCoherentMemoryFeaturesAMDFactory implements IFactory<VkPhysicalDeviceCoherentMemoryFeaturesAMD> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceCoherentMemoryFeaturesAMD> {
         @Override
         public Class<VkPhysicalDeviceCoherentMemoryFeaturesAMD> clazz() {
             return VkPhysicalDeviceCoherentMemoryFeaturesAMD.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceCoherentMemoryFeaturesAMD(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceCoherentMemoryFeaturesAMDFactory FACTORY = new VkPhysicalDeviceCoherentMemoryFeaturesAMDFactory();
+    public static final Factory FACTORY = new Factory();
 }

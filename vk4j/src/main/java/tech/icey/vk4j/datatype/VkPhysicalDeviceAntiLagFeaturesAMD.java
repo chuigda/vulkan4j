@@ -64,7 +64,7 @@ public record VkPhysicalDeviceAntiLagFeaturesAMD(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceAntiLagFeaturesAMDFactory implements IFactory<VkPhysicalDeviceAntiLagFeaturesAMD> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceAntiLagFeaturesAMD> {
         @Override
         public Class<VkPhysicalDeviceAntiLagFeaturesAMD> clazz() {
             return VkPhysicalDeviceAntiLagFeaturesAMD.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceAntiLagFeaturesAMD(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceAntiLagFeaturesAMDFactory FACTORY = new VkPhysicalDeviceAntiLagFeaturesAMDFactory();
+    public static final Factory FACTORY = new Factory();
 }

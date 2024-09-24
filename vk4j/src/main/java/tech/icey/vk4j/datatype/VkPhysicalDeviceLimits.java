@@ -1322,7 +1322,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceLimitsFactory implements IFactory<VkPhysicalDeviceLimits> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceLimits> {
         @Override
         public Class<VkPhysicalDeviceLimits> clazz() {
             return VkPhysicalDeviceLimits.class;
@@ -1344,5 +1344,5 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceLimitsFactory FACTORY = new VkPhysicalDeviceLimitsFactory();
+    public static final Factory FACTORY = new Factory();
 }

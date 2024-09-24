@@ -88,7 +88,7 @@ public record VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(MemorySegment 
     }
 
 
-    public static final class VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXTFactory implements IFactory<VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT> {
         @Override
         public Class<VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT> clazz() {
             return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.class;
@@ -110,5 +110,5 @@ public record VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(MemorySegment 
         }
     }
 
-    public static final VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXTFactory FACTORY = new VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

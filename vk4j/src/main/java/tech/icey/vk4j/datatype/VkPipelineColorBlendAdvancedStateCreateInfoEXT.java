@@ -88,7 +88,7 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(MemorySegment segme
     }
 
 
-    public static final class VkPipelineColorBlendAdvancedStateCreateInfoEXTFactory implements IFactory<VkPipelineColorBlendAdvancedStateCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkPipelineColorBlendAdvancedStateCreateInfoEXT> {
         @Override
         public Class<VkPipelineColorBlendAdvancedStateCreateInfoEXT> clazz() {
             return VkPipelineColorBlendAdvancedStateCreateInfoEXT.class;
@@ -110,5 +110,5 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(MemorySegment segme
         }
     }
 
-    public static final VkPipelineColorBlendAdvancedStateCreateInfoEXTFactory FACTORY = new VkPipelineColorBlendAdvancedStateCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

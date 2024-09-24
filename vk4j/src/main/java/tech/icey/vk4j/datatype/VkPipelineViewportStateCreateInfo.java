@@ -138,7 +138,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineViewportStateCreateInfoFactory implements IFactory<VkPipelineViewportStateCreateInfo> {
+    public static final class Factory implements IFactory<VkPipelineViewportStateCreateInfo> {
         @Override
         public Class<VkPipelineViewportStateCreateInfo> clazz() {
             return VkPipelineViewportStateCreateInfo.class;
@@ -160,5 +160,5 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineViewportStateCreateInfoFactory FACTORY = new VkPipelineViewportStateCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

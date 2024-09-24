@@ -101,7 +101,7 @@ public record VkDescriptorSetLayoutCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkDescriptorSetLayoutCreateInfoFactory implements IFactory<VkDescriptorSetLayoutCreateInfo> {
+    public static final class Factory implements IFactory<VkDescriptorSetLayoutCreateInfo> {
         @Override
         public Class<VkDescriptorSetLayoutCreateInfo> clazz() {
             return VkDescriptorSetLayoutCreateInfo.class;
@@ -123,5 +123,5 @@ public record VkDescriptorSetLayoutCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorSetLayoutCreateInfoFactory FACTORY = new VkDescriptorSetLayoutCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

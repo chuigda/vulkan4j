@@ -88,7 +88,7 @@ public record VkCoarseSampleOrderCustomNV(MemorySegment segment) {
     }
 
 
-    public static final class VkCoarseSampleOrderCustomNVFactory implements IFactory<VkCoarseSampleOrderCustomNV> {
+    public static final class Factory implements IFactory<VkCoarseSampleOrderCustomNV> {
         @Override
         public Class<VkCoarseSampleOrderCustomNV> clazz() {
             return VkCoarseSampleOrderCustomNV.class;
@@ -110,5 +110,5 @@ public record VkCoarseSampleOrderCustomNV(MemorySegment segment) {
         }
     }
 
-    public static final VkCoarseSampleOrderCustomNVFactory FACTORY = new VkCoarseSampleOrderCustomNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

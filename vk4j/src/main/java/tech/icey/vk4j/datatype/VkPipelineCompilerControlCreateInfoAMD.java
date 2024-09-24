@@ -64,7 +64,7 @@ public record VkPipelineCompilerControlCreateInfoAMD(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineCompilerControlCreateInfoAMDFactory implements IFactory<VkPipelineCompilerControlCreateInfoAMD> {
+    public static final class Factory implements IFactory<VkPipelineCompilerControlCreateInfoAMD> {
         @Override
         public Class<VkPipelineCompilerControlCreateInfoAMD> clazz() {
             return VkPipelineCompilerControlCreateInfoAMD.class;
@@ -86,5 +86,5 @@ public record VkPipelineCompilerControlCreateInfoAMD(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineCompilerControlCreateInfoAMDFactory FACTORY = new VkPipelineCompilerControlCreateInfoAMDFactory();
+    public static final Factory FACTORY = new Factory();
 }

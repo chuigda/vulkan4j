@@ -172,7 +172,7 @@ public record VkPipelineDepthStencilStateCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineDepthStencilStateCreateInfoFactory implements IFactory<VkPipelineDepthStencilStateCreateInfo> {
+    public static final class Factory implements IFactory<VkPipelineDepthStencilStateCreateInfo> {
         @Override
         public Class<VkPipelineDepthStencilStateCreateInfo> clazz() {
             return VkPipelineDepthStencilStateCreateInfo.class;
@@ -194,5 +194,5 @@ public record VkPipelineDepthStencilStateCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineDepthStencilStateCreateInfoFactory FACTORY = new VkPipelineDepthStencilStateCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

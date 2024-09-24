@@ -64,7 +64,7 @@ public record VkPhysicalDeviceNestedCommandBufferPropertiesEXT(MemorySegment seg
     }
 
 
-    public static final class VkPhysicalDeviceNestedCommandBufferPropertiesEXTFactory implements IFactory<VkPhysicalDeviceNestedCommandBufferPropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceNestedCommandBufferPropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceNestedCommandBufferPropertiesEXT> clazz() {
             return VkPhysicalDeviceNestedCommandBufferPropertiesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceNestedCommandBufferPropertiesEXT(MemorySegment seg
         }
     }
 
-    public static final VkPhysicalDeviceNestedCommandBufferPropertiesEXTFactory FACTORY = new VkPhysicalDeviceNestedCommandBufferPropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

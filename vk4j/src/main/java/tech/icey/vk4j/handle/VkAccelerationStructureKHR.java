@@ -11,7 +11,7 @@ public record VkAccelerationStructureKHR(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkAccelerationStructureKHRFactory implements IFactory<VkAccelerationStructureKHR> {
+    public static final class Factory implements IFactory<VkAccelerationStructureKHR> {
         @Override
         public Class<VkAccelerationStructureKHR> clazz() {
             return VkAccelerationStructureKHR.class;
@@ -33,5 +33,5 @@ public record VkAccelerationStructureKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkAccelerationStructureKHRFactory FACTORY = new VkAccelerationStructureKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

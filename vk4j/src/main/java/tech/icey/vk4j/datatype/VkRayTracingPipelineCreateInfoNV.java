@@ -186,7 +186,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkRayTracingPipelineCreateInfoNVFactory implements IFactory<VkRayTracingPipelineCreateInfoNV> {
+    public static final class Factory implements IFactory<VkRayTracingPipelineCreateInfoNV> {
         @Override
         public Class<VkRayTracingPipelineCreateInfoNV> clazz() {
             return VkRayTracingPipelineCreateInfoNV.class;
@@ -208,5 +208,5 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkRayTracingPipelineCreateInfoNVFactory FACTORY = new VkRayTracingPipelineCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

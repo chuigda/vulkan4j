@@ -141,7 +141,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineColorBlendStateCreateInfoFactory implements IFactory<VkPipelineColorBlendStateCreateInfo> {
+    public static final class Factory implements IFactory<VkPipelineColorBlendStateCreateInfo> {
         @Override
         public Class<VkPipelineColorBlendStateCreateInfo> clazz() {
             return VkPipelineColorBlendStateCreateInfo.class;
@@ -163,5 +163,5 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineColorBlendStateCreateInfoFactory FACTORY = new VkPipelineColorBlendStateCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

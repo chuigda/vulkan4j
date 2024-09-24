@@ -51,7 +51,7 @@ public record VkMemoryType(MemorySegment segment) {
     }
 
 
-    public static final class VkMemoryTypeFactory implements IFactory<VkMemoryType> {
+    public static final class Factory implements IFactory<VkMemoryType> {
         @Override
         public Class<VkMemoryType> clazz() {
             return VkMemoryType.class;
@@ -73,5 +73,5 @@ public record VkMemoryType(MemorySegment segment) {
         }
     }
 
-    public static final VkMemoryTypeFactory FACTORY = new VkMemoryTypeFactory();
+    public static final Factory FACTORY = new Factory();
 }

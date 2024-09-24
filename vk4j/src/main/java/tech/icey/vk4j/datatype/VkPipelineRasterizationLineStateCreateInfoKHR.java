@@ -100,7 +100,7 @@ public record VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segmen
     }
 
 
-    public static final class VkPipelineRasterizationLineStateCreateInfoKHRFactory implements IFactory<VkPipelineRasterizationLineStateCreateInfoKHR> {
+    public static final class Factory implements IFactory<VkPipelineRasterizationLineStateCreateInfoKHR> {
         @Override
         public Class<VkPipelineRasterizationLineStateCreateInfoKHR> clazz() {
             return VkPipelineRasterizationLineStateCreateInfoKHR.class;
@@ -122,5 +122,5 @@ public record VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segmen
         }
     }
 
-    public static final VkPipelineRasterizationLineStateCreateInfoKHRFactory FACTORY = new VkPipelineRasterizationLineStateCreateInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

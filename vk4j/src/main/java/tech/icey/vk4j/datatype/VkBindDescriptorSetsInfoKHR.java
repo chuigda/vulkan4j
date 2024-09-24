@@ -157,7 +157,7 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkBindDescriptorSetsInfoKHRFactory implements IFactory<VkBindDescriptorSetsInfoKHR> {
+    public static final class Factory implements IFactory<VkBindDescriptorSetsInfoKHR> {
         @Override
         public Class<VkBindDescriptorSetsInfoKHR> clazz() {
             return VkBindDescriptorSetsInfoKHR.class;
@@ -179,5 +179,5 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkBindDescriptorSetsInfoKHRFactory FACTORY = new VkBindDescriptorSetsInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

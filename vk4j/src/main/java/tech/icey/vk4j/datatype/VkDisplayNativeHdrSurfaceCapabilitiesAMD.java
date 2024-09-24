@@ -64,7 +64,7 @@ public record VkDisplayNativeHdrSurfaceCapabilitiesAMD(MemorySegment segment) {
     }
 
 
-    public static final class VkDisplayNativeHdrSurfaceCapabilitiesAMDFactory implements IFactory<VkDisplayNativeHdrSurfaceCapabilitiesAMD> {
+    public static final class Factory implements IFactory<VkDisplayNativeHdrSurfaceCapabilitiesAMD> {
         @Override
         public Class<VkDisplayNativeHdrSurfaceCapabilitiesAMD> clazz() {
             return VkDisplayNativeHdrSurfaceCapabilitiesAMD.class;
@@ -86,5 +86,5 @@ public record VkDisplayNativeHdrSurfaceCapabilitiesAMD(MemorySegment segment) {
         }
     }
 
-    public static final VkDisplayNativeHdrSurfaceCapabilitiesAMDFactory FACTORY = new VkDisplayNativeHdrSurfaceCapabilitiesAMDFactory();
+    public static final Factory FACTORY = new Factory();
 }

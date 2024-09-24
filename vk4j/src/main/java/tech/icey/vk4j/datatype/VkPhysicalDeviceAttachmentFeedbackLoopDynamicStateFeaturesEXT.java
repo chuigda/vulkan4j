@@ -64,7 +64,7 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(Memo
     }
 
 
-    public static final class VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXTFactory implements IFactory<VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT> clazz() {
             return VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(Memo
         }
     }
 
-    public static final VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXTFactory FACTORY = new VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

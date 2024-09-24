@@ -64,7 +64,7 @@ public record VkSurfaceFullScreenExclusiveInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkSurfaceFullScreenExclusiveInfoEXTFactory implements IFactory<VkSurfaceFullScreenExclusiveInfoEXT> {
+    public static final class Factory implements IFactory<VkSurfaceFullScreenExclusiveInfoEXT> {
         @Override
         public Class<VkSurfaceFullScreenExclusiveInfoEXT> clazz() {
             return VkSurfaceFullScreenExclusiveInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkSurfaceFullScreenExclusiveInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkSurfaceFullScreenExclusiveInfoEXTFactory FACTORY = new VkSurfaceFullScreenExclusiveInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

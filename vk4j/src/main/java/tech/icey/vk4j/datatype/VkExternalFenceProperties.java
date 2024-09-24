@@ -88,7 +88,7 @@ public record VkExternalFenceProperties(MemorySegment segment) {
     }
 
 
-    public static final class VkExternalFencePropertiesFactory implements IFactory<VkExternalFenceProperties> {
+    public static final class Factory implements IFactory<VkExternalFenceProperties> {
         @Override
         public Class<VkExternalFenceProperties> clazz() {
             return VkExternalFenceProperties.class;
@@ -110,5 +110,5 @@ public record VkExternalFenceProperties(MemorySegment segment) {
         }
     }
 
-    public static final VkExternalFencePropertiesFactory FACTORY = new VkExternalFencePropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

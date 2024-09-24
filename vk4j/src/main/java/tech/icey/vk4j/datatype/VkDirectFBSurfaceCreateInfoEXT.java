@@ -88,7 +88,7 @@ public record VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDirectFBSurfaceCreateInfoEXTFactory implements IFactory<VkDirectFBSurfaceCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkDirectFBSurfaceCreateInfoEXT> {
         @Override
         public Class<VkDirectFBSurfaceCreateInfoEXT> clazz() {
             return VkDirectFBSurfaceCreateInfoEXT.class;
@@ -110,5 +110,5 @@ public record VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDirectFBSurfaceCreateInfoEXTFactory FACTORY = new VkDirectFBSurfaceCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

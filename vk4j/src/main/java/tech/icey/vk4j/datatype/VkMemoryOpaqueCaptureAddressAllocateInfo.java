@@ -64,7 +64,7 @@ public record VkMemoryOpaqueCaptureAddressAllocateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkMemoryOpaqueCaptureAddressAllocateInfoFactory implements IFactory<VkMemoryOpaqueCaptureAddressAllocateInfo> {
+    public static final class Factory implements IFactory<VkMemoryOpaqueCaptureAddressAllocateInfo> {
         @Override
         public Class<VkMemoryOpaqueCaptureAddressAllocateInfo> clazz() {
             return VkMemoryOpaqueCaptureAddressAllocateInfo.class;
@@ -86,5 +86,5 @@ public record VkMemoryOpaqueCaptureAddressAllocateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkMemoryOpaqueCaptureAddressAllocateInfoFactory FACTORY = new VkMemoryOpaqueCaptureAddressAllocateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

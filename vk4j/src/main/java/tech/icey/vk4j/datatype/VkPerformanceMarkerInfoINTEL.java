@@ -64,7 +64,7 @@ public record VkPerformanceMarkerInfoINTEL(MemorySegment segment) {
     }
 
 
-    public static final class VkPerformanceMarkerInfoINTELFactory implements IFactory<VkPerformanceMarkerInfoINTEL> {
+    public static final class Factory implements IFactory<VkPerformanceMarkerInfoINTEL> {
         @Override
         public Class<VkPerformanceMarkerInfoINTEL> clazz() {
             return VkPerformanceMarkerInfoINTEL.class;
@@ -86,5 +86,5 @@ public record VkPerformanceMarkerInfoINTEL(MemorySegment segment) {
         }
     }
 
-    public static final VkPerformanceMarkerInfoINTELFactory FACTORY = new VkPerformanceMarkerInfoINTELFactory();
+    public static final Factory FACTORY = new Factory();
 }

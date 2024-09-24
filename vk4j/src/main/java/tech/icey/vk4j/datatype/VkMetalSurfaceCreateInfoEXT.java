@@ -76,7 +76,7 @@ public record VkMetalSurfaceCreateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkMetalSurfaceCreateInfoEXTFactory implements IFactory<VkMetalSurfaceCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkMetalSurfaceCreateInfoEXT> {
         @Override
         public Class<VkMetalSurfaceCreateInfoEXT> clazz() {
             return VkMetalSurfaceCreateInfoEXT.class;
@@ -98,5 +98,5 @@ public record VkMetalSurfaceCreateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkMetalSurfaceCreateInfoEXTFactory FACTORY = new VkMetalSurfaceCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

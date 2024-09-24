@@ -64,7 +64,7 @@ public record VkPhysicalDeviceImagelessFramebufferFeatures(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceImagelessFramebufferFeaturesFactory implements IFactory<VkPhysicalDeviceImagelessFramebufferFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceImagelessFramebufferFeatures> {
         @Override
         public Class<VkPhysicalDeviceImagelessFramebufferFeatures> clazz() {
             return VkPhysicalDeviceImagelessFramebufferFeatures.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceImagelessFramebufferFeatures(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceImagelessFramebufferFeaturesFactory FACTORY = new VkPhysicalDeviceImagelessFramebufferFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

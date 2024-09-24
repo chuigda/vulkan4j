@@ -175,7 +175,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
     }
 
 
-    public static final class VkSubmitInfo2Factory implements IFactory<VkSubmitInfo2> {
+    public static final class Factory implements IFactory<VkSubmitInfo2> {
         @Override
         public Class<VkSubmitInfo2> clazz() {
             return VkSubmitInfo2.class;
@@ -197,5 +197,5 @@ public record VkSubmitInfo2(MemorySegment segment) {
         }
     }
 
-    public static final VkSubmitInfo2Factory FACTORY = new VkSubmitInfo2Factory();
+    public static final Factory FACTORY = new Factory();
 }

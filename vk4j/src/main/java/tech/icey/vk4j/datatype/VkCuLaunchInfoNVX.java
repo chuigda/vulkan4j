@@ -194,7 +194,7 @@ public record VkCuLaunchInfoNVX(MemorySegment segment) {
     }
 
 
-    public static final class VkCuLaunchInfoNVXFactory implements IFactory<VkCuLaunchInfoNVX> {
+    public static final class Factory implements IFactory<VkCuLaunchInfoNVX> {
         @Override
         public Class<VkCuLaunchInfoNVX> clazz() {
             return VkCuLaunchInfoNVX.class;
@@ -216,5 +216,5 @@ public record VkCuLaunchInfoNVX(MemorySegment segment) {
         }
     }
 
-    public static final VkCuLaunchInfoNVXFactory FACTORY = new VkCuLaunchInfoNVXFactory();
+    public static final Factory FACTORY = new Factory();
 }

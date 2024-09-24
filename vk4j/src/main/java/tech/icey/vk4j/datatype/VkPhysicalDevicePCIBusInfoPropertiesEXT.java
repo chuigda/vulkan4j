@@ -100,7 +100,7 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDevicePCIBusInfoPropertiesEXTFactory implements IFactory<VkPhysicalDevicePCIBusInfoPropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDevicePCIBusInfoPropertiesEXT> {
         @Override
         public Class<VkPhysicalDevicePCIBusInfoPropertiesEXT> clazz() {
             return VkPhysicalDevicePCIBusInfoPropertiesEXT.class;
@@ -122,5 +122,5 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDevicePCIBusInfoPropertiesEXTFactory FACTORY = new VkPhysicalDevicePCIBusInfoPropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

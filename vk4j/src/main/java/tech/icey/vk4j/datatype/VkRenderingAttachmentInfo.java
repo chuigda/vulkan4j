@@ -148,7 +148,7 @@ public record VkRenderingAttachmentInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkRenderingAttachmentInfoFactory implements IFactory<VkRenderingAttachmentInfo> {
+    public static final class Factory implements IFactory<VkRenderingAttachmentInfo> {
         @Override
         public Class<VkRenderingAttachmentInfo> clazz() {
             return VkRenderingAttachmentInfo.class;
@@ -170,5 +170,5 @@ public record VkRenderingAttachmentInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkRenderingAttachmentInfoFactory FACTORY = new VkRenderingAttachmentInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

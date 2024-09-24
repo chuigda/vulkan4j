@@ -88,7 +88,7 @@ public record VkPipelineInputAssemblyStateCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineInputAssemblyStateCreateInfoFactory implements IFactory<VkPipelineInputAssemblyStateCreateInfo> {
+    public static final class Factory implements IFactory<VkPipelineInputAssemblyStateCreateInfo> {
         @Override
         public Class<VkPipelineInputAssemblyStateCreateInfo> clazz() {
             return VkPipelineInputAssemblyStateCreateInfo.class;
@@ -110,5 +110,5 @@ public record VkPipelineInputAssemblyStateCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineInputAssemblyStateCreateInfoFactory FACTORY = new VkPipelineInputAssemblyStateCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

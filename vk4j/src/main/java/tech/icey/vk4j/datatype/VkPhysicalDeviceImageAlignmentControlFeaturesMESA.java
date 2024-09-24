@@ -64,7 +64,7 @@ public record VkPhysicalDeviceImageAlignmentControlFeaturesMESA(MemorySegment se
     }
 
 
-    public static final class VkPhysicalDeviceImageAlignmentControlFeaturesMESAFactory implements IFactory<VkPhysicalDeviceImageAlignmentControlFeaturesMESA> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceImageAlignmentControlFeaturesMESA> {
         @Override
         public Class<VkPhysicalDeviceImageAlignmentControlFeaturesMESA> clazz() {
             return VkPhysicalDeviceImageAlignmentControlFeaturesMESA.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceImageAlignmentControlFeaturesMESA(MemorySegment se
         }
     }
 
-    public static final VkPhysicalDeviceImageAlignmentControlFeaturesMESAFactory FACTORY = new VkPhysicalDeviceImageAlignmentControlFeaturesMESAFactory();
+    public static final Factory FACTORY = new Factory();
 }

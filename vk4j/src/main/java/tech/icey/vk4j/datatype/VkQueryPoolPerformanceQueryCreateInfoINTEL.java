@@ -64,7 +64,7 @@ public record VkQueryPoolPerformanceQueryCreateInfoINTEL(MemorySegment segment) 
     }
 
 
-    public static final class VkQueryPoolPerformanceQueryCreateInfoINTELFactory implements IFactory<VkQueryPoolPerformanceQueryCreateInfoINTEL> {
+    public static final class Factory implements IFactory<VkQueryPoolPerformanceQueryCreateInfoINTEL> {
         @Override
         public Class<VkQueryPoolPerformanceQueryCreateInfoINTEL> clazz() {
             return VkQueryPoolPerformanceQueryCreateInfoINTEL.class;
@@ -86,5 +86,5 @@ public record VkQueryPoolPerformanceQueryCreateInfoINTEL(MemorySegment segment) 
         }
     }
 
-    public static final VkQueryPoolPerformanceQueryCreateInfoINTELFactory FACTORY = new VkQueryPoolPerformanceQueryCreateInfoINTELFactory();
+    public static final Factory FACTORY = new Factory();
 }

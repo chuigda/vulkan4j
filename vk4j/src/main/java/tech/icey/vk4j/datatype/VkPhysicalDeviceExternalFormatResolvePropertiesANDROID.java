@@ -88,7 +88,7 @@ public record VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(MemorySegme
     }
 
 
-    public static final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROIDFactory implements IFactory<VkPhysicalDeviceExternalFormatResolvePropertiesANDROID> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceExternalFormatResolvePropertiesANDROID> {
         @Override
         public Class<VkPhysicalDeviceExternalFormatResolvePropertiesANDROID> clazz() {
             return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.class;
@@ -110,5 +110,5 @@ public record VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(MemorySegme
         }
     }
 
-    public static final VkPhysicalDeviceExternalFormatResolvePropertiesANDROIDFactory FACTORY = new VkPhysicalDeviceExternalFormatResolvePropertiesANDROIDFactory();
+    public static final Factory FACTORY = new Factory();
 }

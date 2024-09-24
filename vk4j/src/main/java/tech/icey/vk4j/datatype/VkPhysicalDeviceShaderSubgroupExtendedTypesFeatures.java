@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(MemorySegment 
     }
 
 
-    public static final class VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesFactory implements IFactory<VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures> {
         @Override
         public Class<VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures> clazz() {
             return VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(MemorySegment 
         }
     }
 
-    public static final VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesFactory FACTORY = new VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

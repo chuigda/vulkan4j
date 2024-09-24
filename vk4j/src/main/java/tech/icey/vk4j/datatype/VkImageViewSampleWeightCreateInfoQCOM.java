@@ -88,7 +88,7 @@ public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) {
     }
 
 
-    public static final class VkImageViewSampleWeightCreateInfoQCOMFactory implements IFactory<VkImageViewSampleWeightCreateInfoQCOM> {
+    public static final class Factory implements IFactory<VkImageViewSampleWeightCreateInfoQCOM> {
         @Override
         public Class<VkImageViewSampleWeightCreateInfoQCOM> clazz() {
             return VkImageViewSampleWeightCreateInfoQCOM.class;
@@ -110,5 +110,5 @@ public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) {
         }
     }
 
-    public static final VkImageViewSampleWeightCreateInfoQCOMFactory FACTORY = new VkImageViewSampleWeightCreateInfoQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

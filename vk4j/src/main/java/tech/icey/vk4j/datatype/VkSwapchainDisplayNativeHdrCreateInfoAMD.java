@@ -64,7 +64,7 @@ public record VkSwapchainDisplayNativeHdrCreateInfoAMD(MemorySegment segment) {
     }
 
 
-    public static final class VkSwapchainDisplayNativeHdrCreateInfoAMDFactory implements IFactory<VkSwapchainDisplayNativeHdrCreateInfoAMD> {
+    public static final class Factory implements IFactory<VkSwapchainDisplayNativeHdrCreateInfoAMD> {
         @Override
         public Class<VkSwapchainDisplayNativeHdrCreateInfoAMD> clazz() {
             return VkSwapchainDisplayNativeHdrCreateInfoAMD.class;
@@ -86,5 +86,5 @@ public record VkSwapchainDisplayNativeHdrCreateInfoAMD(MemorySegment segment) {
         }
     }
 
-    public static final VkSwapchainDisplayNativeHdrCreateInfoAMDFactory FACTORY = new VkSwapchainDisplayNativeHdrCreateInfoAMDFactory();
+    public static final Factory FACTORY = new Factory();
 }

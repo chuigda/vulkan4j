@@ -101,7 +101,7 @@ public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) {
     }
 
 
-    public static final class VkSubpassDescriptionDepthStencilResolveFactory implements IFactory<VkSubpassDescriptionDepthStencilResolve> {
+    public static final class Factory implements IFactory<VkSubpassDescriptionDepthStencilResolve> {
         @Override
         public Class<VkSubpassDescriptionDepthStencilResolve> clazz() {
             return VkSubpassDescriptionDepthStencilResolve.class;
@@ -123,5 +123,5 @@ public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) {
         }
     }
 
-    public static final VkSubpassDescriptionDepthStencilResolveFactory FACTORY = new VkSubpassDescriptionDepthStencilResolveFactory();
+    public static final Factory FACTORY = new Factory();
 }

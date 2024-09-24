@@ -64,7 +64,7 @@ public record VkPhysicalDevicePushDescriptorPropertiesKHR(MemorySegment segment)
     }
 
 
-    public static final class VkPhysicalDevicePushDescriptorPropertiesKHRFactory implements IFactory<VkPhysicalDevicePushDescriptorPropertiesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDevicePushDescriptorPropertiesKHR> {
         @Override
         public Class<VkPhysicalDevicePushDescriptorPropertiesKHR> clazz() {
             return VkPhysicalDevicePushDescriptorPropertiesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDevicePushDescriptorPropertiesKHR(MemorySegment segment)
         }
     }
 
-    public static final VkPhysicalDevicePushDescriptorPropertiesKHRFactory FACTORY = new VkPhysicalDevicePushDescriptorPropertiesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

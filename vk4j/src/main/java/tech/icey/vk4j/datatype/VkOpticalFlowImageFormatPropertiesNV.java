@@ -64,7 +64,7 @@ public record VkOpticalFlowImageFormatPropertiesNV(MemorySegment segment) {
     }
 
 
-    public static final class VkOpticalFlowImageFormatPropertiesNVFactory implements IFactory<VkOpticalFlowImageFormatPropertiesNV> {
+    public static final class Factory implements IFactory<VkOpticalFlowImageFormatPropertiesNV> {
         @Override
         public Class<VkOpticalFlowImageFormatPropertiesNV> clazz() {
             return VkOpticalFlowImageFormatPropertiesNV.class;
@@ -86,5 +86,5 @@ public record VkOpticalFlowImageFormatPropertiesNV(MemorySegment segment) {
         }
     }
 
-    public static final VkOpticalFlowImageFormatPropertiesNVFactory FACTORY = new VkOpticalFlowImageFormatPropertiesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

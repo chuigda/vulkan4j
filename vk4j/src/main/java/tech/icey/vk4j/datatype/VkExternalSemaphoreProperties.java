@@ -88,7 +88,7 @@ public record VkExternalSemaphoreProperties(MemorySegment segment) {
     }
 
 
-    public static final class VkExternalSemaphorePropertiesFactory implements IFactory<VkExternalSemaphoreProperties> {
+    public static final class Factory implements IFactory<VkExternalSemaphoreProperties> {
         @Override
         public Class<VkExternalSemaphoreProperties> clazz() {
             return VkExternalSemaphoreProperties.class;
@@ -110,5 +110,5 @@ public record VkExternalSemaphoreProperties(MemorySegment segment) {
         }
     }
 
-    public static final VkExternalSemaphorePropertiesFactory FACTORY = new VkExternalSemaphorePropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

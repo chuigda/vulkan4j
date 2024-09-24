@@ -65,7 +65,7 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkMutableDescriptorTypeListEXTFactory implements IFactory<VkMutableDescriptorTypeListEXT> {
+    public static final class Factory implements IFactory<VkMutableDescriptorTypeListEXT> {
         @Override
         public Class<VkMutableDescriptorTypeListEXT> clazz() {
             return VkMutableDescriptorTypeListEXT.class;
@@ -87,5 +87,5 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkMutableDescriptorTypeListEXTFactory FACTORY = new VkMutableDescriptorTypeListEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceExternalSemaphoreInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceExternalSemaphoreInfoFactory implements IFactory<VkPhysicalDeviceExternalSemaphoreInfo> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceExternalSemaphoreInfo> {
         @Override
         public Class<VkPhysicalDeviceExternalSemaphoreInfo> clazz() {
             return VkPhysicalDeviceExternalSemaphoreInfo.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceExternalSemaphoreInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceExternalSemaphoreInfoFactory FACTORY = new VkPhysicalDeviceExternalSemaphoreInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

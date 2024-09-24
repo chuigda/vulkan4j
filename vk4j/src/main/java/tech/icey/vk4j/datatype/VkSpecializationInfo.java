@@ -87,7 +87,7 @@ public record VkSpecializationInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkSpecializationInfoFactory implements IFactory<VkSpecializationInfo> {
+    public static final class Factory implements IFactory<VkSpecializationInfo> {
         @Override
         public Class<VkSpecializationInfo> clazz() {
             return VkSpecializationInfo.class;
@@ -109,5 +109,5 @@ public record VkSpecializationInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkSpecializationInfoFactory FACTORY = new VkSpecializationInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

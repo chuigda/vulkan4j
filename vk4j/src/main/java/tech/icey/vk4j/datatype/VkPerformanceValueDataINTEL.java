@@ -95,7 +95,7 @@ public record VkPerformanceValueDataINTEL(MemorySegment segment) {
     }
 
 
-    public static final class VkPerformanceValueDataINTELFactory implements IFactory<VkPerformanceValueDataINTEL> {
+    public static final class Factory implements IFactory<VkPerformanceValueDataINTEL> {
         @Override
         public Class<VkPerformanceValueDataINTEL> clazz() {
             return VkPerformanceValueDataINTEL.class;
@@ -117,5 +117,5 @@ public record VkPerformanceValueDataINTEL(MemorySegment segment) {
         }
     }
 
-    public static final VkPerformanceValueDataINTELFactory FACTORY = new VkPerformanceValueDataINTELFactory();
+    public static final Factory FACTORY = new Factory();
 }

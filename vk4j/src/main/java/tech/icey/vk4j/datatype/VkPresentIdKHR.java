@@ -84,7 +84,7 @@ public record VkPresentIdKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkPresentIdKHRFactory implements IFactory<VkPresentIdKHR> {
+    public static final class Factory implements IFactory<VkPresentIdKHR> {
         @Override
         public Class<VkPresentIdKHR> clazz() {
             return VkPresentIdKHR.class;
@@ -106,5 +106,5 @@ public record VkPresentIdKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkPresentIdKHRFactory FACTORY = new VkPresentIdKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

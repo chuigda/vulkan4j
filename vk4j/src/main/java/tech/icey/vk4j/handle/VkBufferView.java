@@ -11,7 +11,7 @@ public record VkBufferView(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkBufferViewFactory implements IFactory<VkBufferView> {
+    public static final class Factory implements IFactory<VkBufferView> {
         @Override
         public Class<VkBufferView> clazz() {
             return VkBufferView.class;
@@ -33,5 +33,5 @@ public record VkBufferView(MemorySegment segment) {
         }
     }
 
-    public static final VkBufferViewFactory FACTORY = new VkBufferViewFactory();
+    public static final Factory FACTORY = new Factory();
 }

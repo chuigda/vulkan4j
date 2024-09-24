@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderTerminateInvocationFeatures(MemorySegment se
     }
 
 
-    public static final class VkPhysicalDeviceShaderTerminateInvocationFeaturesFactory implements IFactory<VkPhysicalDeviceShaderTerminateInvocationFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderTerminateInvocationFeatures> {
         @Override
         public Class<VkPhysicalDeviceShaderTerminateInvocationFeatures> clazz() {
             return VkPhysicalDeviceShaderTerminateInvocationFeatures.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceShaderTerminateInvocationFeatures(MemorySegment se
         }
     }
 
-    public static final VkPhysicalDeviceShaderTerminateInvocationFeaturesFactory FACTORY = new VkPhysicalDeviceShaderTerminateInvocationFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

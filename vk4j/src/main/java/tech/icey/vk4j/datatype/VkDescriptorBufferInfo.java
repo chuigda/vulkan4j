@@ -63,7 +63,7 @@ public record VkDescriptorBufferInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkDescriptorBufferInfoFactory implements IFactory<VkDescriptorBufferInfo> {
+    public static final class Factory implements IFactory<VkDescriptorBufferInfo> {
         @Override
         public Class<VkDescriptorBufferInfo> clazz() {
             return VkDescriptorBufferInfo.class;
@@ -85,5 +85,5 @@ public record VkDescriptorBufferInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorBufferInfoFactory FACTORY = new VkDescriptorBufferInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

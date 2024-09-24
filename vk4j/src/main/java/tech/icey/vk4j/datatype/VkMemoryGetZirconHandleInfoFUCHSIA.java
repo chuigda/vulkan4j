@@ -76,7 +76,7 @@ public record VkMemoryGetZirconHandleInfoFUCHSIA(MemorySegment segment) {
     }
 
 
-    public static final class VkMemoryGetZirconHandleInfoFUCHSIAFactory implements IFactory<VkMemoryGetZirconHandleInfoFUCHSIA> {
+    public static final class Factory implements IFactory<VkMemoryGetZirconHandleInfoFUCHSIA> {
         @Override
         public Class<VkMemoryGetZirconHandleInfoFUCHSIA> clazz() {
             return VkMemoryGetZirconHandleInfoFUCHSIA.class;
@@ -98,5 +98,5 @@ public record VkMemoryGetZirconHandleInfoFUCHSIA(MemorySegment segment) {
         }
     }
 
-    public static final VkMemoryGetZirconHandleInfoFUCHSIAFactory FACTORY = new VkMemoryGetZirconHandleInfoFUCHSIAFactory();
+    public static final Factory FACTORY = new Factory();
 }

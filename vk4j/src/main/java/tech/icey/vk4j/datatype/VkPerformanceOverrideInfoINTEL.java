@@ -88,7 +88,7 @@ public record VkPerformanceOverrideInfoINTEL(MemorySegment segment) {
     }
 
 
-    public static final class VkPerformanceOverrideInfoINTELFactory implements IFactory<VkPerformanceOverrideInfoINTEL> {
+    public static final class Factory implements IFactory<VkPerformanceOverrideInfoINTEL> {
         @Override
         public Class<VkPerformanceOverrideInfoINTEL> clazz() {
             return VkPerformanceOverrideInfoINTEL.class;
@@ -110,5 +110,5 @@ public record VkPerformanceOverrideInfoINTEL(MemorySegment segment) {
         }
     }
 
-    public static final VkPerformanceOverrideInfoINTELFactory FACTORY = new VkPerformanceOverrideInfoINTELFactory();
+    public static final Factory FACTORY = new Factory();
 }

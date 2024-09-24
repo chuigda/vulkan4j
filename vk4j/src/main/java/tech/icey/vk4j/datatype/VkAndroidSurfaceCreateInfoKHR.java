@@ -76,7 +76,7 @@ public record VkAndroidSurfaceCreateInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkAndroidSurfaceCreateInfoKHRFactory implements IFactory<VkAndroidSurfaceCreateInfoKHR> {
+    public static final class Factory implements IFactory<VkAndroidSurfaceCreateInfoKHR> {
         @Override
         public Class<VkAndroidSurfaceCreateInfoKHR> clazz() {
             return VkAndroidSurfaceCreateInfoKHR.class;
@@ -98,5 +98,5 @@ public record VkAndroidSurfaceCreateInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkAndroidSurfaceCreateInfoKHRFactory FACTORY = new VkAndroidSurfaceCreateInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -96,7 +96,7 @@ public record VkExportSemaphoreWin32HandleInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkExportSemaphoreWin32HandleInfoKHRFactory implements IFactory<VkExportSemaphoreWin32HandleInfoKHR> {
+    public static final class Factory implements IFactory<VkExportSemaphoreWin32HandleInfoKHR> {
         @Override
         public Class<VkExportSemaphoreWin32HandleInfoKHR> clazz() {
             return VkExportSemaphoreWin32HandleInfoKHR.class;
@@ -118,5 +118,5 @@ public record VkExportSemaphoreWin32HandleInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkExportSemaphoreWin32HandleInfoKHRFactory FACTORY = new VkExportSemaphoreWin32HandleInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

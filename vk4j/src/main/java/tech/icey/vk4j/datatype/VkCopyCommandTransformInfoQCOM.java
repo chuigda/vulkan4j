@@ -64,7 +64,7 @@ public record VkCopyCommandTransformInfoQCOM(MemorySegment segment) {
     }
 
 
-    public static final class VkCopyCommandTransformInfoQCOMFactory implements IFactory<VkCopyCommandTransformInfoQCOM> {
+    public static final class Factory implements IFactory<VkCopyCommandTransformInfoQCOM> {
         @Override
         public Class<VkCopyCommandTransformInfoQCOM> clazz() {
             return VkCopyCommandTransformInfoQCOM.class;
@@ -86,5 +86,5 @@ public record VkCopyCommandTransformInfoQCOM(MemorySegment segment) {
         }
     }
 
-    public static final VkCopyCommandTransformInfoQCOMFactory FACTORY = new VkCopyCommandTransformInfoQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

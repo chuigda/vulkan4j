@@ -11,7 +11,7 @@ public record VkShaderEXT(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkShaderEXTFactory implements IFactory<VkShaderEXT> {
+    public static final class Factory implements IFactory<VkShaderEXT> {
         @Override
         public Class<VkShaderEXT> clazz() {
             return VkShaderEXT.class;
@@ -33,5 +33,5 @@ public record VkShaderEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkShaderEXTFactory FACTORY = new VkShaderEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDevicePipelinePropertiesFeaturesEXT(MemorySegment segmen
     }
 
 
-    public static final class VkPhysicalDevicePipelinePropertiesFeaturesEXTFactory implements IFactory<VkPhysicalDevicePipelinePropertiesFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDevicePipelinePropertiesFeaturesEXT> {
         @Override
         public Class<VkPhysicalDevicePipelinePropertiesFeaturesEXT> clazz() {
             return VkPhysicalDevicePipelinePropertiesFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDevicePipelinePropertiesFeaturesEXT(MemorySegment segmen
         }
     }
 
-    public static final VkPhysicalDevicePipelinePropertiesFeaturesEXTFactory FACTORY = new VkPhysicalDevicePipelinePropertiesFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

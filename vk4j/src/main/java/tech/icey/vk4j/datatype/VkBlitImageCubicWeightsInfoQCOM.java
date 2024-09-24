@@ -64,7 +64,7 @@ public record VkBlitImageCubicWeightsInfoQCOM(MemorySegment segment) {
     }
 
 
-    public static final class VkBlitImageCubicWeightsInfoQCOMFactory implements IFactory<VkBlitImageCubicWeightsInfoQCOM> {
+    public static final class Factory implements IFactory<VkBlitImageCubicWeightsInfoQCOM> {
         @Override
         public Class<VkBlitImageCubicWeightsInfoQCOM> clazz() {
             return VkBlitImageCubicWeightsInfoQCOM.class;
@@ -86,5 +86,5 @@ public record VkBlitImageCubicWeightsInfoQCOM(MemorySegment segment) {
         }
     }
 
-    public static final VkBlitImageCubicWeightsInfoQCOMFactory FACTORY = new VkBlitImageCubicWeightsInfoQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

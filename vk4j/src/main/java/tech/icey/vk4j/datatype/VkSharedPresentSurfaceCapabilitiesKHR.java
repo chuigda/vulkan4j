@@ -64,7 +64,7 @@ public record VkSharedPresentSurfaceCapabilitiesKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkSharedPresentSurfaceCapabilitiesKHRFactory implements IFactory<VkSharedPresentSurfaceCapabilitiesKHR> {
+    public static final class Factory implements IFactory<VkSharedPresentSurfaceCapabilitiesKHR> {
         @Override
         public Class<VkSharedPresentSurfaceCapabilitiesKHR> clazz() {
             return VkSharedPresentSurfaceCapabilitiesKHR.class;
@@ -86,5 +86,5 @@ public record VkSharedPresentSurfaceCapabilitiesKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkSharedPresentSurfaceCapabilitiesKHRFactory FACTORY = new VkSharedPresentSurfaceCapabilitiesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

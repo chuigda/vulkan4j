@@ -88,7 +88,7 @@ public record VkDeviceQueueInfo2(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceQueueInfo2Factory implements IFactory<VkDeviceQueueInfo2> {
+    public static final class Factory implements IFactory<VkDeviceQueueInfo2> {
         @Override
         public Class<VkDeviceQueueInfo2> clazz() {
             return VkDeviceQueueInfo2.class;
@@ -110,5 +110,5 @@ public record VkDeviceQueueInfo2(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceQueueInfo2Factory FACTORY = new VkDeviceQueueInfo2Factory();
+    public static final Factory FACTORY = new Factory();
 }

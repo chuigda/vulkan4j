@@ -100,7 +100,7 @@ public record VkImportSemaphoreFdInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkImportSemaphoreFdInfoKHRFactory implements IFactory<VkImportSemaphoreFdInfoKHR> {
+    public static final class Factory implements IFactory<VkImportSemaphoreFdInfoKHR> {
         @Override
         public Class<VkImportSemaphoreFdInfoKHR> clazz() {
             return VkImportSemaphoreFdInfoKHR.class;
@@ -122,5 +122,5 @@ public record VkImportSemaphoreFdInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkImportSemaphoreFdInfoKHRFactory FACTORY = new VkImportSemaphoreFdInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

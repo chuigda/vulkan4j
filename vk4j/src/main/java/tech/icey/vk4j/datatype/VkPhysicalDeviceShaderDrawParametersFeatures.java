@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderDrawParametersFeatures(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceShaderDrawParametersFeaturesFactory implements IFactory<VkPhysicalDeviceShaderDrawParametersFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderDrawParametersFeatures> {
         @Override
         public Class<VkPhysicalDeviceShaderDrawParametersFeatures> clazz() {
             return VkPhysicalDeviceShaderDrawParametersFeatures.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceShaderDrawParametersFeatures(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceShaderDrawParametersFeaturesFactory FACTORY = new VkPhysicalDeviceShaderDrawParametersFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

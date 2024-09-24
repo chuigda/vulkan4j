@@ -75,7 +75,7 @@ public record VkDrawIndirectCommand(MemorySegment segment) {
     }
 
 
-    public static final class VkDrawIndirectCommandFactory implements IFactory<VkDrawIndirectCommand> {
+    public static final class Factory implements IFactory<VkDrawIndirectCommand> {
         @Override
         public Class<VkDrawIndirectCommand> clazz() {
             return VkDrawIndirectCommand.class;
@@ -97,5 +97,5 @@ public record VkDrawIndirectCommand(MemorySegment segment) {
         }
     }
 
-    public static final VkDrawIndirectCommandFactory FACTORY = new VkDrawIndirectCommandFactory();
+    public static final Factory FACTORY = new Factory();
 }

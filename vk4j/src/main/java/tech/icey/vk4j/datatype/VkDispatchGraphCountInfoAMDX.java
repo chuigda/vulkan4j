@@ -63,7 +63,7 @@ public record VkDispatchGraphCountInfoAMDX(MemorySegment segment) {
     }
 
 
-    public static final class VkDispatchGraphCountInfoAMDXFactory implements IFactory<VkDispatchGraphCountInfoAMDX> {
+    public static final class Factory implements IFactory<VkDispatchGraphCountInfoAMDX> {
         @Override
         public Class<VkDispatchGraphCountInfoAMDX> clazz() {
             return VkDispatchGraphCountInfoAMDX.class;
@@ -85,5 +85,5 @@ public record VkDispatchGraphCountInfoAMDX(MemorySegment segment) {
         }
     }
 
-    public static final VkDispatchGraphCountInfoAMDXFactory FACTORY = new VkDispatchGraphCountInfoAMDXFactory();
+    public static final Factory FACTORY = new Factory();
 }

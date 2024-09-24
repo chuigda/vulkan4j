@@ -76,7 +76,7 @@ public record VkPhysicalDeviceCudaKernelLaunchPropertiesNV(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceCudaKernelLaunchPropertiesNVFactory implements IFactory<VkPhysicalDeviceCudaKernelLaunchPropertiesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceCudaKernelLaunchPropertiesNV> {
         @Override
         public Class<VkPhysicalDeviceCudaKernelLaunchPropertiesNV> clazz() {
             return VkPhysicalDeviceCudaKernelLaunchPropertiesNV.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceCudaKernelLaunchPropertiesNV(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceCudaKernelLaunchPropertiesNVFactory FACTORY = new VkPhysicalDeviceCudaKernelLaunchPropertiesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

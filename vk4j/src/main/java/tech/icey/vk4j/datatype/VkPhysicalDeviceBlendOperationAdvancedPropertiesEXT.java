@@ -124,7 +124,7 @@ public record VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(MemorySegment 
     }
 
 
-    public static final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXTFactory implements IFactory<VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT> clazz() {
             return VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.class;
@@ -146,5 +146,5 @@ public record VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(MemorySegment 
         }
     }
 
-    public static final VkPhysicalDeviceBlendOperationAdvancedPropertiesEXTFactory FACTORY = new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

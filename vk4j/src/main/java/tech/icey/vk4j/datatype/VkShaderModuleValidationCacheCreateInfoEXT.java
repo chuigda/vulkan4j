@@ -64,7 +64,7 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(MemorySegment segment) 
     }
 
 
-    public static final class VkShaderModuleValidationCacheCreateInfoEXTFactory implements IFactory<VkShaderModuleValidationCacheCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkShaderModuleValidationCacheCreateInfoEXT> {
         @Override
         public Class<VkShaderModuleValidationCacheCreateInfoEXT> clazz() {
             return VkShaderModuleValidationCacheCreateInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(MemorySegment segment) 
         }
     }
 
-    public static final VkShaderModuleValidationCacheCreateInfoEXTFactory FACTORY = new VkShaderModuleValidationCacheCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

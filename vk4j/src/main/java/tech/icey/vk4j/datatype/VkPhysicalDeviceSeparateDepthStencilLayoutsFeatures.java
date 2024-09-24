@@ -64,7 +64,7 @@ public record VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(MemorySegment 
     }
 
 
-    public static final class VkPhysicalDeviceSeparateDepthStencilLayoutsFeaturesFactory implements IFactory<VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures> {
         @Override
         public Class<VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures> clazz() {
             return VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(MemorySegment 
         }
     }
 
-    public static final VkPhysicalDeviceSeparateDepthStencilLayoutsFeaturesFactory FACTORY = new VkPhysicalDeviceSeparateDepthStencilLayoutsFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -121,7 +121,7 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkSemaphoreWaitInfoFactory implements IFactory<VkSemaphoreWaitInfo> {
+    public static final class Factory implements IFactory<VkSemaphoreWaitInfo> {
         @Override
         public Class<VkSemaphoreWaitInfo> clazz() {
             return VkSemaphoreWaitInfo.class;
@@ -143,5 +143,5 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkSemaphoreWaitInfoFactory FACTORY = new VkSemaphoreWaitInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(MemorySegment segme
     }
 
 
-    public static final class VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXTFactory implements IFactory<VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT> clazz() {
             return VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(MemorySegment segme
         }
     }
 
-    public static final VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXTFactory FACTORY = new VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

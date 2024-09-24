@@ -64,7 +64,7 @@ public record VkDescriptorPoolInlineUniformBlockCreateInfo(MemorySegment segment
     }
 
 
-    public static final class VkDescriptorPoolInlineUniformBlockCreateInfoFactory implements IFactory<VkDescriptorPoolInlineUniformBlockCreateInfo> {
+    public static final class Factory implements IFactory<VkDescriptorPoolInlineUniformBlockCreateInfo> {
         @Override
         public Class<VkDescriptorPoolInlineUniformBlockCreateInfo> clazz() {
             return VkDescriptorPoolInlineUniformBlockCreateInfo.class;
@@ -86,5 +86,5 @@ public record VkDescriptorPoolInlineUniformBlockCreateInfo(MemorySegment segment
         }
     }
 
-    public static final VkDescriptorPoolInlineUniformBlockCreateInfoFactory FACTORY = new VkDescriptorPoolInlineUniformBlockCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

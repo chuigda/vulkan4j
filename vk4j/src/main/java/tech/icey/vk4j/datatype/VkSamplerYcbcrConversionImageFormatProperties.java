@@ -64,7 +64,7 @@ public record VkSamplerYcbcrConversionImageFormatProperties(MemorySegment segmen
     }
 
 
-    public static final class VkSamplerYcbcrConversionImageFormatPropertiesFactory implements IFactory<VkSamplerYcbcrConversionImageFormatProperties> {
+    public static final class Factory implements IFactory<VkSamplerYcbcrConversionImageFormatProperties> {
         @Override
         public Class<VkSamplerYcbcrConversionImageFormatProperties> clazz() {
             return VkSamplerYcbcrConversionImageFormatProperties.class;
@@ -86,5 +86,5 @@ public record VkSamplerYcbcrConversionImageFormatProperties(MemorySegment segmen
         }
     }
 
-    public static final VkSamplerYcbcrConversionImageFormatPropertiesFactory FACTORY = new VkSamplerYcbcrConversionImageFormatPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

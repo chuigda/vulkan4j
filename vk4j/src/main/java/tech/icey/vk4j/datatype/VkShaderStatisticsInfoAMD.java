@@ -115,7 +115,7 @@ public record VkShaderStatisticsInfoAMD(MemorySegment segment) {
     }
 
 
-    public static final class VkShaderStatisticsInfoAMDFactory implements IFactory<VkShaderStatisticsInfoAMD> {
+    public static final class Factory implements IFactory<VkShaderStatisticsInfoAMD> {
         @Override
         public Class<VkShaderStatisticsInfoAMD> clazz() {
             return VkShaderStatisticsInfoAMD.class;
@@ -137,5 +137,5 @@ public record VkShaderStatisticsInfoAMD(MemorySegment segment) {
         }
     }
 
-    public static final VkShaderStatisticsInfoAMDFactory FACTORY = new VkShaderStatisticsInfoAMDFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -11,7 +11,7 @@ public record VkPerformanceConfigurationINTEL(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkPerformanceConfigurationINTELFactory implements IFactory<VkPerformanceConfigurationINTEL> {
+    public static final class Factory implements IFactory<VkPerformanceConfigurationINTEL> {
         @Override
         public Class<VkPerformanceConfigurationINTEL> clazz() {
             return VkPerformanceConfigurationINTEL.class;
@@ -33,5 +33,5 @@ public record VkPerformanceConfigurationINTEL(MemorySegment segment) {
         }
     }
 
-    public static final VkPerformanceConfigurationINTELFactory FACTORY = new VkPerformanceConfigurationINTELFactory();
+    public static final Factory FACTORY = new Factory();
 }

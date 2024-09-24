@@ -64,7 +64,7 @@ public record VkPipelineShaderStageRequiredSubgroupSizeCreateInfo(MemorySegment 
     }
 
 
-    public static final class VkPipelineShaderStageRequiredSubgroupSizeCreateInfoFactory implements IFactory<VkPipelineShaderStageRequiredSubgroupSizeCreateInfo> {
+    public static final class Factory implements IFactory<VkPipelineShaderStageRequiredSubgroupSizeCreateInfo> {
         @Override
         public Class<VkPipelineShaderStageRequiredSubgroupSizeCreateInfo> clazz() {
             return VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.class;
@@ -86,5 +86,5 @@ public record VkPipelineShaderStageRequiredSubgroupSizeCreateInfo(MemorySegment 
         }
     }
 
-    public static final VkPipelineShaderStageRequiredSubgroupSizeCreateInfoFactory FACTORY = new VkPipelineShaderStageRequiredSubgroupSizeCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

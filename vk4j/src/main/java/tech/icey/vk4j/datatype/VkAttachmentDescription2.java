@@ -160,7 +160,7 @@ public record VkAttachmentDescription2(MemorySegment segment) {
     }
 
 
-    public static final class VkAttachmentDescription2Factory implements IFactory<VkAttachmentDescription2> {
+    public static final class Factory implements IFactory<VkAttachmentDescription2> {
         @Override
         public Class<VkAttachmentDescription2> clazz() {
             return VkAttachmentDescription2.class;
@@ -182,5 +182,5 @@ public record VkAttachmentDescription2(MemorySegment segment) {
         }
     }
 
-    public static final VkAttachmentDescription2Factory FACTORY = new VkAttachmentDescription2Factory();
+    public static final Factory FACTORY = new Factory();
 }

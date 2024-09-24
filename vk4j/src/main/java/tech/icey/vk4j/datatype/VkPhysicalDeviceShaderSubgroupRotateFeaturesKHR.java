@@ -76,7 +76,7 @@ public record VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(MemorySegment segm
     }
 
 
-    public static final class VkPhysicalDeviceShaderSubgroupRotateFeaturesKHRFactory implements IFactory<VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR> clazz() {
             return VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(MemorySegment segm
         }
     }
 
-    public static final VkPhysicalDeviceShaderSubgroupRotateFeaturesKHRFactory FACTORY = new VkPhysicalDeviceShaderSubgroupRotateFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

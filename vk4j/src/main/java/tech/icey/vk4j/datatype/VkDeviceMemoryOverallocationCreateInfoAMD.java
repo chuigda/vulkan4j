@@ -64,7 +64,7 @@ public record VkDeviceMemoryOverallocationCreateInfoAMD(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceMemoryOverallocationCreateInfoAMDFactory implements IFactory<VkDeviceMemoryOverallocationCreateInfoAMD> {
+    public static final class Factory implements IFactory<VkDeviceMemoryOverallocationCreateInfoAMD> {
         @Override
         public Class<VkDeviceMemoryOverallocationCreateInfoAMD> clazz() {
             return VkDeviceMemoryOverallocationCreateInfoAMD.class;
@@ -86,5 +86,5 @@ public record VkDeviceMemoryOverallocationCreateInfoAMD(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceMemoryOverallocationCreateInfoAMDFactory FACTORY = new VkDeviceMemoryOverallocationCreateInfoAMDFactory();
+    public static final Factory FACTORY = new Factory();
 }

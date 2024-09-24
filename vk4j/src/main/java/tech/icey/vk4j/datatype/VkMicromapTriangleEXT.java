@@ -63,7 +63,7 @@ public record VkMicromapTriangleEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkMicromapTriangleEXTFactory implements IFactory<VkMicromapTriangleEXT> {
+    public static final class Factory implements IFactory<VkMicromapTriangleEXT> {
         @Override
         public Class<VkMicromapTriangleEXT> clazz() {
             return VkMicromapTriangleEXT.class;
@@ -85,5 +85,5 @@ public record VkMicromapTriangleEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkMicromapTriangleEXTFactory FACTORY = new VkMicromapTriangleEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

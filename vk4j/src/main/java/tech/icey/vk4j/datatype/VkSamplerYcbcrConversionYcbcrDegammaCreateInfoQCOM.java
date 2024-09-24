@@ -76,7 +76,7 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(MemorySegment s
     }
 
 
-    public static final class VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOMFactory implements IFactory<VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM> {
+    public static final class Factory implements IFactory<VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM> {
         @Override
         public Class<VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM> clazz() {
             return VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM.class;
@@ -98,5 +98,5 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(MemorySegment s
         }
     }
 
-    public static final VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOMFactory FACTORY = new VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

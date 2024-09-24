@@ -386,7 +386,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkGraphicsPipelineCreateInfoFactory implements IFactory<VkGraphicsPipelineCreateInfo> {
+    public static final class Factory implements IFactory<VkGraphicsPipelineCreateInfo> {
         @Override
         public Class<VkGraphicsPipelineCreateInfo> clazz() {
             return VkGraphicsPipelineCreateInfo.class;
@@ -408,5 +408,5 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkGraphicsPipelineCreateInfoFactory FACTORY = new VkGraphicsPipelineCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

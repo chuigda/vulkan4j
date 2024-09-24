@@ -136,7 +136,7 @@ public record VkCopyDescriptorSet(MemorySegment segment) {
     }
 
 
-    public static final class VkCopyDescriptorSetFactory implements IFactory<VkCopyDescriptorSet> {
+    public static final class Factory implements IFactory<VkCopyDescriptorSet> {
         @Override
         public Class<VkCopyDescriptorSet> clazz() {
             return VkCopyDescriptorSet.class;
@@ -158,5 +158,5 @@ public record VkCopyDescriptorSet(MemorySegment segment) {
         }
     }
 
-    public static final VkCopyDescriptorSetFactory FACTORY = new VkCopyDescriptorSetFactory();
+    public static final Factory FACTORY = new Factory();
 }

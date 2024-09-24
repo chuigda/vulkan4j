@@ -112,7 +112,7 @@ public record VkSurfacePresentScalingCapabilitiesEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkSurfacePresentScalingCapabilitiesEXTFactory implements IFactory<VkSurfacePresentScalingCapabilitiesEXT> {
+    public static final class Factory implements IFactory<VkSurfacePresentScalingCapabilitiesEXT> {
         @Override
         public Class<VkSurfacePresentScalingCapabilitiesEXT> clazz() {
             return VkSurfacePresentScalingCapabilitiesEXT.class;
@@ -134,5 +134,5 @@ public record VkSurfacePresentScalingCapabilitiesEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkSurfacePresentScalingCapabilitiesEXTFactory FACTORY = new VkSurfacePresentScalingCapabilitiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

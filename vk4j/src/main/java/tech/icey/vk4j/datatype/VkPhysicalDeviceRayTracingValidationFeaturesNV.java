@@ -64,7 +64,7 @@ public record VkPhysicalDeviceRayTracingValidationFeaturesNV(MemorySegment segme
     }
 
 
-    public static final class VkPhysicalDeviceRayTracingValidationFeaturesNVFactory implements IFactory<VkPhysicalDeviceRayTracingValidationFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceRayTracingValidationFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceRayTracingValidationFeaturesNV> clazz() {
             return VkPhysicalDeviceRayTracingValidationFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceRayTracingValidationFeaturesNV(MemorySegment segme
         }
     }
 
-    public static final VkPhysicalDeviceRayTracingValidationFeaturesNVFactory FACTORY = new VkPhysicalDeviceRayTracingValidationFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -112,7 +112,7 @@ public record VkRayTracingShaderGroupCreateInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkRayTracingShaderGroupCreateInfoNVFactory implements IFactory<VkRayTracingShaderGroupCreateInfoNV> {
+    public static final class Factory implements IFactory<VkRayTracingShaderGroupCreateInfoNV> {
         @Override
         public Class<VkRayTracingShaderGroupCreateInfoNV> clazz() {
             return VkRayTracingShaderGroupCreateInfoNV.class;
@@ -134,5 +134,5 @@ public record VkRayTracingShaderGroupCreateInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkRayTracingShaderGroupCreateInfoNVFactory FACTORY = new VkRayTracingShaderGroupCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

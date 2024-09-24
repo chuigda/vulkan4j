@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderExpectAssumeFeaturesKHR(MemorySegment segmen
     }
 
 
-    public static final class VkPhysicalDeviceShaderExpectAssumeFeaturesKHRFactory implements IFactory<VkPhysicalDeviceShaderExpectAssumeFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderExpectAssumeFeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceShaderExpectAssumeFeaturesKHR> clazz() {
             return VkPhysicalDeviceShaderExpectAssumeFeaturesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceShaderExpectAssumeFeaturesKHR(MemorySegment segmen
         }
     }
 
-    public static final VkPhysicalDeviceShaderExpectAssumeFeaturesKHRFactory FACTORY = new VkPhysicalDeviceShaderExpectAssumeFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

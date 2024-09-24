@@ -76,7 +76,7 @@ public record VkAntiLagPresentationInfoAMD(MemorySegment segment) {
     }
 
 
-    public static final class VkAntiLagPresentationInfoAMDFactory implements IFactory<VkAntiLagPresentationInfoAMD> {
+    public static final class Factory implements IFactory<VkAntiLagPresentationInfoAMD> {
         @Override
         public Class<VkAntiLagPresentationInfoAMD> clazz() {
             return VkAntiLagPresentationInfoAMD.class;
@@ -98,5 +98,5 @@ public record VkAntiLagPresentationInfoAMD(MemorySegment segment) {
         }
     }
 
-    public static final VkAntiLagPresentationInfoAMDFactory FACTORY = new VkAntiLagPresentationInfoAMDFactory();
+    public static final Factory FACTORY = new Factory();
 }

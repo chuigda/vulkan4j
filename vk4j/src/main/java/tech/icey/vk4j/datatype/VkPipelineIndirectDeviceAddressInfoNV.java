@@ -76,7 +76,7 @@ public record VkPipelineIndirectDeviceAddressInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineIndirectDeviceAddressInfoNVFactory implements IFactory<VkPipelineIndirectDeviceAddressInfoNV> {
+    public static final class Factory implements IFactory<VkPipelineIndirectDeviceAddressInfoNV> {
         @Override
         public Class<VkPipelineIndirectDeviceAddressInfoNV> clazz() {
             return VkPipelineIndirectDeviceAddressInfoNV.class;
@@ -98,5 +98,5 @@ public record VkPipelineIndirectDeviceAddressInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineIndirectDeviceAddressInfoNVFactory FACTORY = new VkPipelineIndirectDeviceAddressInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -100,7 +100,7 @@ public record VkPushDescriptorSetWithTemplateInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkPushDescriptorSetWithTemplateInfoKHRFactory implements IFactory<VkPushDescriptorSetWithTemplateInfoKHR> {
+    public static final class Factory implements IFactory<VkPushDescriptorSetWithTemplateInfoKHR> {
         @Override
         public Class<VkPushDescriptorSetWithTemplateInfoKHR> clazz() {
             return VkPushDescriptorSetWithTemplateInfoKHR.class;
@@ -122,5 +122,5 @@ public record VkPushDescriptorSetWithTemplateInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkPushDescriptorSetWithTemplateInfoKHRFactory FACTORY = new VkPushDescriptorSetWithTemplateInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

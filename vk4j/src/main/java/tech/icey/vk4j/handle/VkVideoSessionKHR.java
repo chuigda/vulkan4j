@@ -11,7 +11,7 @@ public record VkVideoSessionKHR(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkVideoSessionKHRFactory implements IFactory<VkVideoSessionKHR> {
+    public static final class Factory implements IFactory<VkVideoSessionKHR> {
         @Override
         public Class<VkVideoSessionKHR> clazz() {
             return VkVideoSessionKHR.class;
@@ -33,5 +33,5 @@ public record VkVideoSessionKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkVideoSessionKHRFactory FACTORY = new VkVideoSessionKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

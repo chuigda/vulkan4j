@@ -84,7 +84,7 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(MemorySegment s
     }
 
 
-    public static final class VkDescriptorSetVariableDescriptorCountAllocateInfoFactory implements IFactory<VkDescriptorSetVariableDescriptorCountAllocateInfo> {
+    public static final class Factory implements IFactory<VkDescriptorSetVariableDescriptorCountAllocateInfo> {
         @Override
         public Class<VkDescriptorSetVariableDescriptorCountAllocateInfo> clazz() {
             return VkDescriptorSetVariableDescriptorCountAllocateInfo.class;
@@ -106,5 +106,5 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(MemorySegment s
         }
     }
 
-    public static final VkDescriptorSetVariableDescriptorCountAllocateInfoFactory FACTORY = new VkDescriptorSetVariableDescriptorCountAllocateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

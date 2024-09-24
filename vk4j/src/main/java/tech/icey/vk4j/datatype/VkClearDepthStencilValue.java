@@ -51,7 +51,7 @@ public record VkClearDepthStencilValue(MemorySegment segment) {
     }
 
 
-    public static final class VkClearDepthStencilValueFactory implements IFactory<VkClearDepthStencilValue> {
+    public static final class Factory implements IFactory<VkClearDepthStencilValue> {
         @Override
         public Class<VkClearDepthStencilValue> clazz() {
             return VkClearDepthStencilValue.class;
@@ -73,5 +73,5 @@ public record VkClearDepthStencilValue(MemorySegment segment) {
         }
     }
 
-    public static final VkClearDepthStencilValueFactory FACTORY = new VkClearDepthStencilValueFactory();
+    public static final Factory FACTORY = new Factory();
 }

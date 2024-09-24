@@ -160,7 +160,7 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(MemorySegme
     }
 
 
-    public static final class VkPhysicalDeviceConservativeRasterizationPropertiesEXTFactory implements IFactory<VkPhysicalDeviceConservativeRasterizationPropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceConservativeRasterizationPropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceConservativeRasterizationPropertiesEXT> clazz() {
             return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.class;
@@ -182,5 +182,5 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(MemorySegme
         }
     }
 
-    public static final VkPhysicalDeviceConservativeRasterizationPropertiesEXTFactory FACTORY = new VkPhysicalDeviceConservativeRasterizationPropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -51,7 +51,7 @@ public record VkRect2D(MemorySegment segment) {
     }
 
 
-    public static final class VkRect2DFactory implements IFactory<VkRect2D> {
+    public static final class Factory implements IFactory<VkRect2D> {
         @Override
         public Class<VkRect2D> clazz() {
             return VkRect2D.class;
@@ -73,5 +73,5 @@ public record VkRect2D(MemorySegment segment) {
         }
     }
 
-    public static final VkRect2DFactory FACTORY = new VkRect2DFactory();
+    public static final Factory FACTORY = new Factory();
 }

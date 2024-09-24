@@ -76,7 +76,7 @@ public record VkImportMemoryFdInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkImportMemoryFdInfoKHRFactory implements IFactory<VkImportMemoryFdInfoKHR> {
+    public static final class Factory implements IFactory<VkImportMemoryFdInfoKHR> {
         @Override
         public Class<VkImportMemoryFdInfoKHR> clazz() {
             return VkImportMemoryFdInfoKHR.class;
@@ -98,5 +98,5 @@ public record VkImportMemoryFdInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkImportMemoryFdInfoKHRFactory FACTORY = new VkImportMemoryFdInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

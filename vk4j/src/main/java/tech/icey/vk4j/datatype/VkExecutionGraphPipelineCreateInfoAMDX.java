@@ -162,7 +162,7 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) {
     }
 
 
-    public static final class VkExecutionGraphPipelineCreateInfoAMDXFactory implements IFactory<VkExecutionGraphPipelineCreateInfoAMDX> {
+    public static final class Factory implements IFactory<VkExecutionGraphPipelineCreateInfoAMDX> {
         @Override
         public Class<VkExecutionGraphPipelineCreateInfoAMDX> clazz() {
             return VkExecutionGraphPipelineCreateInfoAMDX.class;
@@ -184,5 +184,5 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) {
         }
     }
 
-    public static final VkExecutionGraphPipelineCreateInfoAMDXFactory FACTORY = new VkExecutionGraphPipelineCreateInfoAMDXFactory();
+    public static final Factory FACTORY = new Factory();
 }

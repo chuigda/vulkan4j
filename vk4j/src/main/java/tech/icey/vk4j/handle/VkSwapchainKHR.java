@@ -11,7 +11,7 @@ public record VkSwapchainKHR(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkSwapchainKHRFactory implements IFactory<VkSwapchainKHR> {
+    public static final class Factory implements IFactory<VkSwapchainKHR> {
         @Override
         public Class<VkSwapchainKHR> clazz() {
             return VkSwapchainKHR.class;
@@ -33,5 +33,5 @@ public record VkSwapchainKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkSwapchainKHRFactory FACTORY = new VkSwapchainKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

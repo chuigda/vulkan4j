@@ -64,7 +64,7 @@ public record VkSurfaceCapabilitiesPresentBarrierNV(MemorySegment segment) {
     }
 
 
-    public static final class VkSurfaceCapabilitiesPresentBarrierNVFactory implements IFactory<VkSurfaceCapabilitiesPresentBarrierNV> {
+    public static final class Factory implements IFactory<VkSurfaceCapabilitiesPresentBarrierNV> {
         @Override
         public Class<VkSurfaceCapabilitiesPresentBarrierNV> clazz() {
             return VkSurfaceCapabilitiesPresentBarrierNV.class;
@@ -86,5 +86,5 @@ public record VkSurfaceCapabilitiesPresentBarrierNV(MemorySegment segment) {
         }
     }
 
-    public static final VkSurfaceCapabilitiesPresentBarrierNVFactory FACTORY = new VkSurfaceCapabilitiesPresentBarrierNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

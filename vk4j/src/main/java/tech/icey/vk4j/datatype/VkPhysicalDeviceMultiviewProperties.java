@@ -76,7 +76,7 @@ public record VkPhysicalDeviceMultiviewProperties(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceMultiviewPropertiesFactory implements IFactory<VkPhysicalDeviceMultiviewProperties> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceMultiviewProperties> {
         @Override
         public Class<VkPhysicalDeviceMultiviewProperties> clazz() {
             return VkPhysicalDeviceMultiviewProperties.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceMultiviewProperties(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceMultiviewPropertiesFactory FACTORY = new VkPhysicalDeviceMultiviewPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

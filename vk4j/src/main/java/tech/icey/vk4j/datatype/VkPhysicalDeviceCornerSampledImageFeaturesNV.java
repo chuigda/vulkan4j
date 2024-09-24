@@ -64,7 +64,7 @@ public record VkPhysicalDeviceCornerSampledImageFeaturesNV(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceCornerSampledImageFeaturesNVFactory implements IFactory<VkPhysicalDeviceCornerSampledImageFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceCornerSampledImageFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceCornerSampledImageFeaturesNV> clazz() {
             return VkPhysicalDeviceCornerSampledImageFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceCornerSampledImageFeaturesNV(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceCornerSampledImageFeaturesNVFactory FACTORY = new VkPhysicalDeviceCornerSampledImageFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

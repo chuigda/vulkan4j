@@ -64,7 +64,7 @@ public record VkPrivateDataSlotCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPrivateDataSlotCreateInfoFactory implements IFactory<VkPrivateDataSlotCreateInfo> {
+    public static final class Factory implements IFactory<VkPrivateDataSlotCreateInfo> {
         @Override
         public Class<VkPrivateDataSlotCreateInfo> clazz() {
             return VkPrivateDataSlotCreateInfo.class;
@@ -86,5 +86,5 @@ public record VkPrivateDataSlotCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkPrivateDataSlotCreateInfoFactory FACTORY = new VkPrivateDataSlotCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

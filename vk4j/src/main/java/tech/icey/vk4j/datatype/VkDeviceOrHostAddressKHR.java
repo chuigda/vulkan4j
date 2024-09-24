@@ -51,7 +51,7 @@ public record VkDeviceOrHostAddressKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceOrHostAddressKHRFactory implements IFactory<VkDeviceOrHostAddressKHR> {
+    public static final class Factory implements IFactory<VkDeviceOrHostAddressKHR> {
         @Override
         public Class<VkDeviceOrHostAddressKHR> clazz() {
             return VkDeviceOrHostAddressKHR.class;
@@ -73,5 +73,5 @@ public record VkDeviceOrHostAddressKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceOrHostAddressKHRFactory FACTORY = new VkDeviceOrHostAddressKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

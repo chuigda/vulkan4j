@@ -64,7 +64,7 @@ public record VkExportSemaphoreCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkExportSemaphoreCreateInfoFactory implements IFactory<VkExportSemaphoreCreateInfo> {
+    public static final class Factory implements IFactory<VkExportSemaphoreCreateInfo> {
         @Override
         public Class<VkExportSemaphoreCreateInfo> clazz() {
             return VkExportSemaphoreCreateInfo.class;
@@ -86,5 +86,5 @@ public record VkExportSemaphoreCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkExportSemaphoreCreateInfoFactory FACTORY = new VkExportSemaphoreCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

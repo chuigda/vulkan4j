@@ -76,7 +76,7 @@ public record VkWriteDescriptorSetInlineUniformBlock(MemorySegment segment) {
     }
 
 
-    public static final class VkWriteDescriptorSetInlineUniformBlockFactory implements IFactory<VkWriteDescriptorSetInlineUniformBlock> {
+    public static final class Factory implements IFactory<VkWriteDescriptorSetInlineUniformBlock> {
         @Override
         public Class<VkWriteDescriptorSetInlineUniformBlock> clazz() {
             return VkWriteDescriptorSetInlineUniformBlock.class;
@@ -98,5 +98,5 @@ public record VkWriteDescriptorSetInlineUniformBlock(MemorySegment segment) {
         }
     }
 
-    public static final VkWriteDescriptorSetInlineUniformBlockFactory FACTORY = new VkWriteDescriptorSetInlineUniformBlockFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkExternalImageFormatProperties(MemorySegment segment) {
     }
 
 
-    public static final class VkExternalImageFormatPropertiesFactory implements IFactory<VkExternalImageFormatProperties> {
+    public static final class Factory implements IFactory<VkExternalImageFormatProperties> {
         @Override
         public Class<VkExternalImageFormatProperties> clazz() {
             return VkExternalImageFormatProperties.class;
@@ -86,5 +86,5 @@ public record VkExternalImageFormatProperties(MemorySegment segment) {
         }
     }
 
-    public static final VkExternalImageFormatPropertiesFactory FACTORY = new VkExternalImageFormatPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

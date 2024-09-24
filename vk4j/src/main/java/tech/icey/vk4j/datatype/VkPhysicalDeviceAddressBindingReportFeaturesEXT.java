@@ -64,7 +64,7 @@ public record VkPhysicalDeviceAddressBindingReportFeaturesEXT(MemorySegment segm
     }
 
 
-    public static final class VkPhysicalDeviceAddressBindingReportFeaturesEXTFactory implements IFactory<VkPhysicalDeviceAddressBindingReportFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceAddressBindingReportFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceAddressBindingReportFeaturesEXT> clazz() {
             return VkPhysicalDeviceAddressBindingReportFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceAddressBindingReportFeaturesEXT(MemorySegment segm
         }
     }
 
-    public static final VkPhysicalDeviceAddressBindingReportFeaturesEXTFactory FACTORY = new VkPhysicalDeviceAddressBindingReportFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

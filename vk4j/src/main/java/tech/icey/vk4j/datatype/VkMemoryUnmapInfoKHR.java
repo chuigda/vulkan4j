@@ -76,7 +76,7 @@ public record VkMemoryUnmapInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkMemoryUnmapInfoKHRFactory implements IFactory<VkMemoryUnmapInfoKHR> {
+    public static final class Factory implements IFactory<VkMemoryUnmapInfoKHR> {
         @Override
         public Class<VkMemoryUnmapInfoKHR> clazz() {
             return VkMemoryUnmapInfoKHR.class;
@@ -98,5 +98,5 @@ public record VkMemoryUnmapInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkMemoryUnmapInfoKHRFactory FACTORY = new VkMemoryUnmapInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

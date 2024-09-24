@@ -76,7 +76,7 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(MemorySegment se
     }
 
 
-    public static final class VkPhysicalDeviceRayTracingMaintenance1FeaturesKHRFactory implements IFactory<VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR> clazz() {
             return VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(MemorySegment se
         }
     }
 
-    public static final VkPhysicalDeviceRayTracingMaintenance1FeaturesKHRFactory FACTORY = new VkPhysicalDeviceRayTracingMaintenance1FeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

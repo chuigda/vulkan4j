@@ -11,7 +11,7 @@ public record VkSurfaceKHR(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkSurfaceKHRFactory implements IFactory<VkSurfaceKHR> {
+    public static final class Factory implements IFactory<VkSurfaceKHR> {
         @Override
         public Class<VkSurfaceKHR> clazz() {
             return VkSurfaceKHR.class;
@@ -33,5 +33,5 @@ public record VkSurfaceKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkSurfaceKHRFactory FACTORY = new VkSurfaceKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

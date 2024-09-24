@@ -187,7 +187,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
     }
 
 
-    public static final class VkWriteDescriptorSetFactory implements IFactory<VkWriteDescriptorSet> {
+    public static final class Factory implements IFactory<VkWriteDescriptorSet> {
         @Override
         public Class<VkWriteDescriptorSet> clazz() {
             return VkWriteDescriptorSet.class;
@@ -209,5 +209,5 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
         }
     }
 
-    public static final VkWriteDescriptorSetFactory FACTORY = new VkWriteDescriptorSetFactory();
+    public static final Factory FACTORY = new Factory();
 }

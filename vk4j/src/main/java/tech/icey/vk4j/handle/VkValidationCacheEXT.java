@@ -11,7 +11,7 @@ public record VkValidationCacheEXT(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkValidationCacheEXTFactory implements IFactory<VkValidationCacheEXT> {
+    public static final class Factory implements IFactory<VkValidationCacheEXT> {
         @Override
         public Class<VkValidationCacheEXT> clazz() {
             return VkValidationCacheEXT.class;
@@ -33,5 +33,5 @@ public record VkValidationCacheEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkValidationCacheEXTFactory FACTORY = new VkValidationCacheEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

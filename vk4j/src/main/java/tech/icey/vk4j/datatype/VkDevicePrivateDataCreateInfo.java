@@ -64,7 +64,7 @@ public record VkDevicePrivateDataCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkDevicePrivateDataCreateInfoFactory implements IFactory<VkDevicePrivateDataCreateInfo> {
+    public static final class Factory implements IFactory<VkDevicePrivateDataCreateInfo> {
         @Override
         public Class<VkDevicePrivateDataCreateInfo> clazz() {
             return VkDevicePrivateDataCreateInfo.class;
@@ -86,5 +86,5 @@ public record VkDevicePrivateDataCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkDevicePrivateDataCreateInfoFactory FACTORY = new VkDevicePrivateDataCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -88,7 +88,7 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) {
     }
 
 
-    public static final class VkImageViewHandleInfoNVXFactory implements IFactory<VkImageViewHandleInfoNVX> {
+    public static final class Factory implements IFactory<VkImageViewHandleInfoNVX> {
         @Override
         public Class<VkImageViewHandleInfoNVX> clazz() {
             return VkImageViewHandleInfoNVX.class;
@@ -110,5 +110,5 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) {
         }
     }
 
-    public static final VkImageViewHandleInfoNVXFactory FACTORY = new VkImageViewHandleInfoNVXFactory();
+    public static final Factory FACTORY = new Factory();
 }

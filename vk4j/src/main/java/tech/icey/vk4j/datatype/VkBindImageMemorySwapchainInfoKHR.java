@@ -76,7 +76,7 @@ public record VkBindImageMemorySwapchainInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkBindImageMemorySwapchainInfoKHRFactory implements IFactory<VkBindImageMemorySwapchainInfoKHR> {
+    public static final class Factory implements IFactory<VkBindImageMemorySwapchainInfoKHR> {
         @Override
         public Class<VkBindImageMemorySwapchainInfoKHR> clazz() {
             return VkBindImageMemorySwapchainInfoKHR.class;
@@ -98,5 +98,5 @@ public record VkBindImageMemorySwapchainInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkBindImageMemorySwapchainInfoKHRFactory FACTORY = new VkBindImageMemorySwapchainInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -136,7 +136,7 @@ public record VkBufferMemoryBarrier(MemorySegment segment) {
     }
 
 
-    public static final class VkBufferMemoryBarrierFactory implements IFactory<VkBufferMemoryBarrier> {
+    public static final class Factory implements IFactory<VkBufferMemoryBarrier> {
         @Override
         public Class<VkBufferMemoryBarrier> clazz() {
             return VkBufferMemoryBarrier.class;
@@ -158,5 +158,5 @@ public record VkBufferMemoryBarrier(MemorySegment segment) {
         }
     }
 
-    public static final VkBufferMemoryBarrierFactory FACTORY = new VkBufferMemoryBarrierFactory();
+    public static final Factory FACTORY = new Factory();
 }

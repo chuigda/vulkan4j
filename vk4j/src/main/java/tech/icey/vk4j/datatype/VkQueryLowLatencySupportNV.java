@@ -64,7 +64,7 @@ public record VkQueryLowLatencySupportNV(MemorySegment segment) {
     }
 
 
-    public static final class VkQueryLowLatencySupportNVFactory implements IFactory<VkQueryLowLatencySupportNV> {
+    public static final class Factory implements IFactory<VkQueryLowLatencySupportNV> {
         @Override
         public Class<VkQueryLowLatencySupportNV> clazz() {
             return VkQueryLowLatencySupportNV.class;
@@ -86,5 +86,5 @@ public record VkQueryLowLatencySupportNV(MemorySegment segment) {
         }
     }
 
-    public static final VkQueryLowLatencySupportNVFactory FACTORY = new VkQueryLowLatencySupportNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

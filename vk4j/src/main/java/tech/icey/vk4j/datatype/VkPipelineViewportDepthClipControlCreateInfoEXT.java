@@ -64,7 +64,7 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(MemorySegment segm
     }
 
 
-    public static final class VkPipelineViewportDepthClipControlCreateInfoEXTFactory implements IFactory<VkPipelineViewportDepthClipControlCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkPipelineViewportDepthClipControlCreateInfoEXT> {
         @Override
         public Class<VkPipelineViewportDepthClipControlCreateInfoEXT> clazz() {
             return VkPipelineViewportDepthClipControlCreateInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(MemorySegment segm
         }
     }
 
-    public static final VkPipelineViewportDepthClipControlCreateInfoEXTFactory FACTORY = new VkPipelineViewportDepthClipControlCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

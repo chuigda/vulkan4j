@@ -64,7 +64,7 @@ public record VkDevicePipelineBinaryInternalCacheControlKHR(MemorySegment segmen
     }
 
 
-    public static final class VkDevicePipelineBinaryInternalCacheControlKHRFactory implements IFactory<VkDevicePipelineBinaryInternalCacheControlKHR> {
+    public static final class Factory implements IFactory<VkDevicePipelineBinaryInternalCacheControlKHR> {
         @Override
         public Class<VkDevicePipelineBinaryInternalCacheControlKHR> clazz() {
             return VkDevicePipelineBinaryInternalCacheControlKHR.class;
@@ -86,5 +86,5 @@ public record VkDevicePipelineBinaryInternalCacheControlKHR(MemorySegment segmen
         }
     }
 
-    public static final VkDevicePipelineBinaryInternalCacheControlKHRFactory FACTORY = new VkDevicePipelineBinaryInternalCacheControlKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceFragmentShadingRateKHRFactory implements IFactory<VkPhysicalDeviceFragmentShadingRateKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceFragmentShadingRateKHR> {
         @Override
         public Class<VkPhysicalDeviceFragmentShadingRateKHR> clazz() {
             return VkPhysicalDeviceFragmentShadingRateKHR.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceFragmentShadingRateKHRFactory FACTORY = new VkPhysicalDeviceFragmentShadingRateKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

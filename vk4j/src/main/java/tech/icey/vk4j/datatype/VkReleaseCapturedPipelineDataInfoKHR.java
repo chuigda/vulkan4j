@@ -64,7 +64,7 @@ public record VkReleaseCapturedPipelineDataInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkReleaseCapturedPipelineDataInfoKHRFactory implements IFactory<VkReleaseCapturedPipelineDataInfoKHR> {
+    public static final class Factory implements IFactory<VkReleaseCapturedPipelineDataInfoKHR> {
         @Override
         public Class<VkReleaseCapturedPipelineDataInfoKHR> clazz() {
             return VkReleaseCapturedPipelineDataInfoKHR.class;
@@ -86,5 +86,5 @@ public record VkReleaseCapturedPipelineDataInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkReleaseCapturedPipelineDataInfoKHRFactory FACTORY = new VkReleaseCapturedPipelineDataInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

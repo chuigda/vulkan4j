@@ -84,7 +84,7 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineShaderStageNodeCreateInfoAMDXFactory implements IFactory<VkPipelineShaderStageNodeCreateInfoAMDX> {
+    public static final class Factory implements IFactory<VkPipelineShaderStageNodeCreateInfoAMDX> {
         @Override
         public Class<VkPipelineShaderStageNodeCreateInfoAMDX> clazz() {
             return VkPipelineShaderStageNodeCreateInfoAMDX.class;
@@ -106,5 +106,5 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineShaderStageNodeCreateInfoAMDXFactory FACTORY = new VkPipelineShaderStageNodeCreateInfoAMDXFactory();
+    public static final Factory FACTORY = new Factory();
 }

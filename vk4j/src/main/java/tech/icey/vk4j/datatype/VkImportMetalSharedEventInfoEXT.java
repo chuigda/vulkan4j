@@ -64,7 +64,7 @@ public record VkImportMetalSharedEventInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkImportMetalSharedEventInfoEXTFactory implements IFactory<VkImportMetalSharedEventInfoEXT> {
+    public static final class Factory implements IFactory<VkImportMetalSharedEventInfoEXT> {
         @Override
         public Class<VkImportMetalSharedEventInfoEXT> clazz() {
             return VkImportMetalSharedEventInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkImportMetalSharedEventInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkImportMetalSharedEventInfoEXTFactory FACTORY = new VkImportMetalSharedEventInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

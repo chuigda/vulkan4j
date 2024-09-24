@@ -64,7 +64,7 @@ public record VkQueueFamilyQueryResultStatusPropertiesKHR(MemorySegment segment)
     }
 
 
-    public static final class VkQueueFamilyQueryResultStatusPropertiesKHRFactory implements IFactory<VkQueueFamilyQueryResultStatusPropertiesKHR> {
+    public static final class Factory implements IFactory<VkQueueFamilyQueryResultStatusPropertiesKHR> {
         @Override
         public Class<VkQueueFamilyQueryResultStatusPropertiesKHR> clazz() {
             return VkQueueFamilyQueryResultStatusPropertiesKHR.class;
@@ -86,5 +86,5 @@ public record VkQueueFamilyQueryResultStatusPropertiesKHR(MemorySegment segment)
         }
     }
 
-    public static final VkQueueFamilyQueryResultStatusPropertiesKHRFactory FACTORY = new VkQueueFamilyQueryResultStatusPropertiesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

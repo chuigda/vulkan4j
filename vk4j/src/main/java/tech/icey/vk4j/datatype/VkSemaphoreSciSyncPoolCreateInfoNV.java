@@ -64,7 +64,7 @@ public record VkSemaphoreSciSyncPoolCreateInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkSemaphoreSciSyncPoolCreateInfoNVFactory implements IFactory<VkSemaphoreSciSyncPoolCreateInfoNV> {
+    public static final class Factory implements IFactory<VkSemaphoreSciSyncPoolCreateInfoNV> {
         @Override
         public Class<VkSemaphoreSciSyncPoolCreateInfoNV> clazz() {
             return VkSemaphoreSciSyncPoolCreateInfoNV.class;
@@ -86,5 +86,5 @@ public record VkSemaphoreSciSyncPoolCreateInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkSemaphoreSciSyncPoolCreateInfoNVFactory FACTORY = new VkSemaphoreSciSyncPoolCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

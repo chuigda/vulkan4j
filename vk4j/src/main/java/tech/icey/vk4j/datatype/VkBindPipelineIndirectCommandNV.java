@@ -39,7 +39,7 @@ public record VkBindPipelineIndirectCommandNV(MemorySegment segment) {
     }
 
 
-    public static final class VkBindPipelineIndirectCommandNVFactory implements IFactory<VkBindPipelineIndirectCommandNV> {
+    public static final class Factory implements IFactory<VkBindPipelineIndirectCommandNV> {
         @Override
         public Class<VkBindPipelineIndirectCommandNV> clazz() {
             return VkBindPipelineIndirectCommandNV.class;
@@ -61,5 +61,5 @@ public record VkBindPipelineIndirectCommandNV(MemorySegment segment) {
         }
     }
 
-    public static final VkBindPipelineIndirectCommandNVFactory FACTORY = new VkBindPipelineIndirectCommandNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -88,7 +88,7 @@ public record VkCopyMemoryToAccelerationStructureInfoKHR(MemorySegment segment) 
     }
 
 
-    public static final class VkCopyMemoryToAccelerationStructureInfoKHRFactory implements IFactory<VkCopyMemoryToAccelerationStructureInfoKHR> {
+    public static final class Factory implements IFactory<VkCopyMemoryToAccelerationStructureInfoKHR> {
         @Override
         public Class<VkCopyMemoryToAccelerationStructureInfoKHR> clazz() {
             return VkCopyMemoryToAccelerationStructureInfoKHR.class;
@@ -110,5 +110,5 @@ public record VkCopyMemoryToAccelerationStructureInfoKHR(MemorySegment segment) 
         }
     }
 
-    public static final VkCopyMemoryToAccelerationStructureInfoKHRFactory FACTORY = new VkCopyMemoryToAccelerationStructureInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

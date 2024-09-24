@@ -101,7 +101,7 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment)
     }
 
 
-    public static final class VkPipelineViewportWScalingStateCreateInfoNVFactory implements IFactory<VkPipelineViewportWScalingStateCreateInfoNV> {
+    public static final class Factory implements IFactory<VkPipelineViewportWScalingStateCreateInfoNV> {
         @Override
         public Class<VkPipelineViewportWScalingStateCreateInfoNV> clazz() {
             return VkPipelineViewportWScalingStateCreateInfoNV.class;
@@ -123,5 +123,5 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment)
         }
     }
 
-    public static final VkPipelineViewportWScalingStateCreateInfoNVFactory FACTORY = new VkPipelineViewportWScalingStateCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

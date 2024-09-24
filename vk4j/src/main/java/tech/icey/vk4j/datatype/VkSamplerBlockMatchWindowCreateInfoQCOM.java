@@ -76,7 +76,7 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(MemorySegment segment) {
     }
 
 
-    public static final class VkSamplerBlockMatchWindowCreateInfoQCOMFactory implements IFactory<VkSamplerBlockMatchWindowCreateInfoQCOM> {
+    public static final class Factory implements IFactory<VkSamplerBlockMatchWindowCreateInfoQCOM> {
         @Override
         public Class<VkSamplerBlockMatchWindowCreateInfoQCOM> clazz() {
             return VkSamplerBlockMatchWindowCreateInfoQCOM.class;
@@ -98,5 +98,5 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(MemorySegment segment) {
         }
     }
 
-    public static final VkSamplerBlockMatchWindowCreateInfoQCOMFactory FACTORY = new VkSamplerBlockMatchWindowCreateInfoQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkPhysicalDeviceTransformFeedbackFeaturesEXT(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceTransformFeedbackFeaturesEXTFactory implements IFactory<VkPhysicalDeviceTransformFeedbackFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceTransformFeedbackFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceTransformFeedbackFeaturesEXT> clazz() {
             return VkPhysicalDeviceTransformFeedbackFeaturesEXT.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceTransformFeedbackFeaturesEXT(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceTransformFeedbackFeaturesEXTFactory FACTORY = new VkPhysicalDeviceTransformFeedbackFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

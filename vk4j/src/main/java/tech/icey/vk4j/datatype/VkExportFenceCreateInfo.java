@@ -64,7 +64,7 @@ public record VkExportFenceCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkExportFenceCreateInfoFactory implements IFactory<VkExportFenceCreateInfo> {
+    public static final class Factory implements IFactory<VkExportFenceCreateInfo> {
         @Override
         public Class<VkExportFenceCreateInfo> clazz() {
             return VkExportFenceCreateInfo.class;
@@ -86,5 +86,5 @@ public record VkExportFenceCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkExportFenceCreateInfoFactory FACTORY = new VkExportFenceCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

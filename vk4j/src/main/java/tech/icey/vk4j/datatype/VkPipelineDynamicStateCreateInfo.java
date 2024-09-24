@@ -102,7 +102,7 @@ public record VkPipelineDynamicStateCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineDynamicStateCreateInfoFactory implements IFactory<VkPipelineDynamicStateCreateInfo> {
+    public static final class Factory implements IFactory<VkPipelineDynamicStateCreateInfo> {
         @Override
         public Class<VkPipelineDynamicStateCreateInfo> clazz() {
             return VkPipelineDynamicStateCreateInfo.class;
@@ -124,5 +124,5 @@ public record VkPipelineDynamicStateCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineDynamicStateCreateInfoFactory FACTORY = new VkPipelineDynamicStateCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

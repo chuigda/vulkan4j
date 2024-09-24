@@ -76,7 +76,7 @@ public record VkPhysicalDeviceConditionalRenderingFeaturesEXT(MemorySegment segm
     }
 
 
-    public static final class VkPhysicalDeviceConditionalRenderingFeaturesEXTFactory implements IFactory<VkPhysicalDeviceConditionalRenderingFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceConditionalRenderingFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceConditionalRenderingFeaturesEXT> clazz() {
             return VkPhysicalDeviceConditionalRenderingFeaturesEXT.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceConditionalRenderingFeaturesEXT(MemorySegment segm
         }
     }
 
-    public static final VkPhysicalDeviceConditionalRenderingFeaturesEXTFactory FACTORY = new VkPhysicalDeviceConditionalRenderingFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

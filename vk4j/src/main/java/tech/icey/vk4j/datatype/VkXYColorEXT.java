@@ -51,7 +51,7 @@ public record VkXYColorEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkXYColorEXTFactory implements IFactory<VkXYColorEXT> {
+    public static final class Factory implements IFactory<VkXYColorEXT> {
         @Override
         public Class<VkXYColorEXT> clazz() {
             return VkXYColorEXT.class;
@@ -73,5 +73,5 @@ public record VkXYColorEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkXYColorEXTFactory FACTORY = new VkXYColorEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

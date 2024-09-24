@@ -11,7 +11,7 @@ public record VkRenderPass(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkRenderPassFactory implements IFactory<VkRenderPass> {
+    public static final class Factory implements IFactory<VkRenderPass> {
         @Override
         public Class<VkRenderPass> clazz() {
             return VkRenderPass.class;
@@ -33,5 +33,5 @@ public record VkRenderPass(MemorySegment segment) {
         }
     }
 
-    public static final VkRenderPassFactory FACTORY = new VkRenderPassFactory();
+    public static final Factory FACTORY = new Factory();
 }

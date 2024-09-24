@@ -51,7 +51,7 @@ public record VkDescriptorPoolSize(MemorySegment segment) {
     }
 
 
-    public static final class VkDescriptorPoolSizeFactory implements IFactory<VkDescriptorPoolSize> {
+    public static final class Factory implements IFactory<VkDescriptorPoolSize> {
         @Override
         public Class<VkDescriptorPoolSize> clazz() {
             return VkDescriptorPoolSize.class;
@@ -73,5 +73,5 @@ public record VkDescriptorPoolSize(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorPoolSizeFactory FACTORY = new VkDescriptorPoolSizeFactory();
+    public static final Factory FACTORY = new Factory();
 }

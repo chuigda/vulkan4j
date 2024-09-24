@@ -90,7 +90,7 @@ public record VkSwapchainPresentModeInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkSwapchainPresentModeInfoEXTFactory implements IFactory<VkSwapchainPresentModeInfoEXT> {
+    public static final class Factory implements IFactory<VkSwapchainPresentModeInfoEXT> {
         @Override
         public Class<VkSwapchainPresentModeInfoEXT> clazz() {
             return VkSwapchainPresentModeInfoEXT.class;
@@ -112,5 +112,5 @@ public record VkSwapchainPresentModeInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkSwapchainPresentModeInfoEXTFactory FACTORY = new VkSwapchainPresentModeInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

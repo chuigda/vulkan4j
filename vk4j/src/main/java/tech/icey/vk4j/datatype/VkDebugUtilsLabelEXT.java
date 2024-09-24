@@ -88,7 +88,7 @@ public record VkDebugUtilsLabelEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDebugUtilsLabelEXTFactory implements IFactory<VkDebugUtilsLabelEXT> {
+    public static final class Factory implements IFactory<VkDebugUtilsLabelEXT> {
         @Override
         public Class<VkDebugUtilsLabelEXT> clazz() {
             return VkDebugUtilsLabelEXT.class;
@@ -110,5 +110,5 @@ public record VkDebugUtilsLabelEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDebugUtilsLabelEXTFactory FACTORY = new VkDebugUtilsLabelEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

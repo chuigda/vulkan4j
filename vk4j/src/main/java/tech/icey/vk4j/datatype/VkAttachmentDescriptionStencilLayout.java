@@ -76,7 +76,7 @@ public record VkAttachmentDescriptionStencilLayout(MemorySegment segment) {
     }
 
 
-    public static final class VkAttachmentDescriptionStencilLayoutFactory implements IFactory<VkAttachmentDescriptionStencilLayout> {
+    public static final class Factory implements IFactory<VkAttachmentDescriptionStencilLayout> {
         @Override
         public Class<VkAttachmentDescriptionStencilLayout> clazz() {
             return VkAttachmentDescriptionStencilLayout.class;
@@ -98,5 +98,5 @@ public record VkAttachmentDescriptionStencilLayout(MemorySegment segment) {
         }
     }
 
-    public static final VkAttachmentDescriptionStencilLayoutFactory FACTORY = new VkAttachmentDescriptionStencilLayoutFactory();
+    public static final Factory FACTORY = new Factory();
 }

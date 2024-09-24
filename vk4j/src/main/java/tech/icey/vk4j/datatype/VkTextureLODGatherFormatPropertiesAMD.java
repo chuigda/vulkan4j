@@ -64,7 +64,7 @@ public record VkTextureLODGatherFormatPropertiesAMD(MemorySegment segment) {
     }
 
 
-    public static final class VkTextureLODGatherFormatPropertiesAMDFactory implements IFactory<VkTextureLODGatherFormatPropertiesAMD> {
+    public static final class Factory implements IFactory<VkTextureLODGatherFormatPropertiesAMD> {
         @Override
         public Class<VkTextureLODGatherFormatPropertiesAMD> clazz() {
             return VkTextureLODGatherFormatPropertiesAMD.class;
@@ -86,5 +86,5 @@ public record VkTextureLODGatherFormatPropertiesAMD(MemorySegment segment) {
         }
     }
 
-    public static final VkTextureLODGatherFormatPropertiesAMDFactory FACTORY = new VkTextureLODGatherFormatPropertiesAMDFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkPhysicalDeviceShadingRateImageFeaturesNV(MemorySegment segment) 
     }
 
 
-    public static final class VkPhysicalDeviceShadingRateImageFeaturesNVFactory implements IFactory<VkPhysicalDeviceShadingRateImageFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShadingRateImageFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceShadingRateImageFeaturesNV> clazz() {
             return VkPhysicalDeviceShadingRateImageFeaturesNV.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceShadingRateImageFeaturesNV(MemorySegment segment) 
         }
     }
 
-    public static final VkPhysicalDeviceShadingRateImageFeaturesNVFactory FACTORY = new VkPhysicalDeviceShadingRateImageFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

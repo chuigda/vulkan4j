@@ -160,7 +160,7 @@ public record VkCooperativeMatrixPropertiesKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkCooperativeMatrixPropertiesKHRFactory implements IFactory<VkCooperativeMatrixPropertiesKHR> {
+    public static final class Factory implements IFactory<VkCooperativeMatrixPropertiesKHR> {
         @Override
         public Class<VkCooperativeMatrixPropertiesKHR> clazz() {
             return VkCooperativeMatrixPropertiesKHR.class;
@@ -182,5 +182,5 @@ public record VkCooperativeMatrixPropertiesKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkCooperativeMatrixPropertiesKHRFactory FACTORY = new VkCooperativeMatrixPropertiesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

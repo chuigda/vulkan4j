@@ -64,7 +64,7 @@ public record VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(MemorySegment se
     }
 
 
-    public static final class VkPhysicalDeviceLegacyVertexAttributesFeaturesEXTFactory implements IFactory<VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT> clazz() {
             return VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(MemorySegment se
         }
     }
 
-    public static final VkPhysicalDeviceLegacyVertexAttributesFeaturesEXTFactory FACTORY = new VkPhysicalDeviceLegacyVertexAttributesFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

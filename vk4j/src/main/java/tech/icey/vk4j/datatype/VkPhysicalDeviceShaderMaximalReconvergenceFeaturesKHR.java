@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(MemorySegmen
     }
 
 
-    public static final class VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHRFactory implements IFactory<VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR> clazz() {
             return VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(MemorySegmen
         }
     }
 
-    public static final VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHRFactory FACTORY = new VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

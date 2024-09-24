@@ -63,7 +63,7 @@ public record VkDescriptorImageInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkDescriptorImageInfoFactory implements IFactory<VkDescriptorImageInfo> {
+    public static final class Factory implements IFactory<VkDescriptorImageInfo> {
         @Override
         public Class<VkDescriptorImageInfo> clazz() {
             return VkDescriptorImageInfo.class;
@@ -85,5 +85,5 @@ public record VkDescriptorImageInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorImageInfoFactory FACTORY = new VkDescriptorImageInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -88,7 +88,7 @@ public record VkPhysicalDeviceShaderTileImagePropertiesEXT(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceShaderTileImagePropertiesEXTFactory implements IFactory<VkPhysicalDeviceShaderTileImagePropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderTileImagePropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceShaderTileImagePropertiesEXT> clazz() {
             return VkPhysicalDeviceShaderTileImagePropertiesEXT.class;
@@ -110,5 +110,5 @@ public record VkPhysicalDeviceShaderTileImagePropertiesEXT(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceShaderTileImagePropertiesEXTFactory FACTORY = new VkPhysicalDeviceShaderTileImagePropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

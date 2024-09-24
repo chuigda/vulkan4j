@@ -88,7 +88,7 @@ public record VkDepthBiasInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDepthBiasInfoEXTFactory implements IFactory<VkDepthBiasInfoEXT> {
+    public static final class Factory implements IFactory<VkDepthBiasInfoEXT> {
         @Override
         public Class<VkDepthBiasInfoEXT> clazz() {
             return VkDepthBiasInfoEXT.class;
@@ -110,5 +110,5 @@ public record VkDepthBiasInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDepthBiasInfoEXTFactory FACTORY = new VkDepthBiasInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

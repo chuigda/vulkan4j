@@ -64,7 +64,7 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(MemorySegment segment) 
     }
 
 
-    public static final class VkPhysicalDeviceRGBA10X6FormatsFeaturesEXTFactory implements IFactory<VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT> clazz() {
             return VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(MemorySegment segment) 
         }
     }
 
-    public static final VkPhysicalDeviceRGBA10X6FormatsFeaturesEXTFactory FACTORY = new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

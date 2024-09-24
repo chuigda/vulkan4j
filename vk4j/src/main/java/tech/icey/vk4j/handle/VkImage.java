@@ -11,7 +11,7 @@ public record VkImage(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkImageFactory implements IFactory<VkImage> {
+    public static final class Factory implements IFactory<VkImage> {
         @Override
         public Class<VkImage> clazz() {
             return VkImage.class;
@@ -33,5 +33,5 @@ public record VkImage(MemorySegment segment) {
         }
     }
 
-    public static final VkImageFactory FACTORY = new VkImageFactory();
+    public static final Factory FACTORY = new Factory();
 }

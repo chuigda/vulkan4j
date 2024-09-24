@@ -88,7 +88,7 @@ public record VkDebugMarkerMarkerInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDebugMarkerMarkerInfoEXTFactory implements IFactory<VkDebugMarkerMarkerInfoEXT> {
+    public static final class Factory implements IFactory<VkDebugMarkerMarkerInfoEXT> {
         @Override
         public Class<VkDebugMarkerMarkerInfoEXT> clazz() {
             return VkDebugMarkerMarkerInfoEXT.class;
@@ -110,5 +110,5 @@ public record VkDebugMarkerMarkerInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDebugMarkerMarkerInfoEXTFactory FACTORY = new VkDebugMarkerMarkerInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

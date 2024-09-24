@@ -64,7 +64,7 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(MemorySegment segment)
     }
 
 
-    public static final class VkAccelerationStructureDeviceAddressInfoKHRFactory implements IFactory<VkAccelerationStructureDeviceAddressInfoKHR> {
+    public static final class Factory implements IFactory<VkAccelerationStructureDeviceAddressInfoKHR> {
         @Override
         public Class<VkAccelerationStructureDeviceAddressInfoKHR> clazz() {
             return VkAccelerationStructureDeviceAddressInfoKHR.class;
@@ -86,5 +86,5 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(MemorySegment segment)
         }
     }
 
-    public static final VkAccelerationStructureDeviceAddressInfoKHRFactory FACTORY = new VkAccelerationStructureDeviceAddressInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

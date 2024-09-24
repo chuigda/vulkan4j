@@ -64,7 +64,7 @@ public record VkPhysicalDevicePortabilitySubsetPropertiesKHR(MemorySegment segme
     }
 
 
-    public static final class VkPhysicalDevicePortabilitySubsetPropertiesKHRFactory implements IFactory<VkPhysicalDevicePortabilitySubsetPropertiesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDevicePortabilitySubsetPropertiesKHR> {
         @Override
         public Class<VkPhysicalDevicePortabilitySubsetPropertiesKHR> clazz() {
             return VkPhysicalDevicePortabilitySubsetPropertiesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDevicePortabilitySubsetPropertiesKHR(MemorySegment segme
         }
     }
 
-    public static final VkPhysicalDevicePortabilitySubsetPropertiesKHRFactory FACTORY = new VkPhysicalDevicePortabilitySubsetPropertiesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

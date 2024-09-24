@@ -76,7 +76,7 @@ public record VkPhysicalDeviceSamplerFilterMinmaxProperties(MemorySegment segmen
     }
 
 
-    public static final class VkPhysicalDeviceSamplerFilterMinmaxPropertiesFactory implements IFactory<VkPhysicalDeviceSamplerFilterMinmaxProperties> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceSamplerFilterMinmaxProperties> {
         @Override
         public Class<VkPhysicalDeviceSamplerFilterMinmaxProperties> clazz() {
             return VkPhysicalDeviceSamplerFilterMinmaxProperties.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceSamplerFilterMinmaxProperties(MemorySegment segmen
         }
     }
 
-    public static final VkPhysicalDeviceSamplerFilterMinmaxPropertiesFactory FACTORY = new VkPhysicalDeviceSamplerFilterMinmaxPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

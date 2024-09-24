@@ -89,7 +89,7 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(MemorySegment segment
     }
 
 
-    public static final class VkWriteDescriptorSetAccelerationStructureKHRFactory implements IFactory<VkWriteDescriptorSetAccelerationStructureKHR> {
+    public static final class Factory implements IFactory<VkWriteDescriptorSetAccelerationStructureKHR> {
         @Override
         public Class<VkWriteDescriptorSetAccelerationStructureKHR> clazz() {
             return VkWriteDescriptorSetAccelerationStructureKHR.class;
@@ -111,5 +111,5 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(MemorySegment segment
         }
     }
 
-    public static final VkWriteDescriptorSetAccelerationStructureKHRFactory FACTORY = new VkWriteDescriptorSetAccelerationStructureKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(MemorySegment segme
     }
 
 
-    public static final class VkPhysicalDeviceCopyMemoryIndirectPropertiesNVFactory implements IFactory<VkPhysicalDeviceCopyMemoryIndirectPropertiesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceCopyMemoryIndirectPropertiesNV> {
         @Override
         public Class<VkPhysicalDeviceCopyMemoryIndirectPropertiesNV> clazz() {
             return VkPhysicalDeviceCopyMemoryIndirectPropertiesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(MemorySegment segme
         }
     }
 
-    public static final VkPhysicalDeviceCopyMemoryIndirectPropertiesNVFactory FACTORY = new VkPhysicalDeviceCopyMemoryIndirectPropertiesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

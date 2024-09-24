@@ -76,7 +76,7 @@ public record VkAmigoProfilingSubmitInfoSEC(MemorySegment segment) {
     }
 
 
-    public static final class VkAmigoProfilingSubmitInfoSECFactory implements IFactory<VkAmigoProfilingSubmitInfoSEC> {
+    public static final class Factory implements IFactory<VkAmigoProfilingSubmitInfoSEC> {
         @Override
         public Class<VkAmigoProfilingSubmitInfoSEC> clazz() {
             return VkAmigoProfilingSubmitInfoSEC.class;
@@ -98,5 +98,5 @@ public record VkAmigoProfilingSubmitInfoSEC(MemorySegment segment) {
         }
     }
 
-    public static final VkAmigoProfilingSubmitInfoSECFactory FACTORY = new VkAmigoProfilingSubmitInfoSECFactory();
+    public static final Factory FACTORY = new Factory();
 }

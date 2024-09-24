@@ -64,7 +64,7 @@ public record VkBufferDeviceAddressInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkBufferDeviceAddressInfoFactory implements IFactory<VkBufferDeviceAddressInfo> {
+    public static final class Factory implements IFactory<VkBufferDeviceAddressInfo> {
         @Override
         public Class<VkBufferDeviceAddressInfo> clazz() {
             return VkBufferDeviceAddressInfo.class;
@@ -86,5 +86,5 @@ public record VkBufferDeviceAddressInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkBufferDeviceAddressInfoFactory FACTORY = new VkBufferDeviceAddressInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

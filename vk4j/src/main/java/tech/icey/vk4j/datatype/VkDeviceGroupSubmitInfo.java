@@ -148,7 +148,7 @@ public record VkDeviceGroupSubmitInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceGroupSubmitInfoFactory implements IFactory<VkDeviceGroupSubmitInfo> {
+    public static final class Factory implements IFactory<VkDeviceGroupSubmitInfo> {
         @Override
         public Class<VkDeviceGroupSubmitInfo> clazz() {
             return VkDeviceGroupSubmitInfo.class;
@@ -170,5 +170,5 @@ public record VkDeviceGroupSubmitInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceGroupSubmitInfoFactory FACTORY = new VkDeviceGroupSubmitInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

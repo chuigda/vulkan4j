@@ -64,7 +64,7 @@ public record VkPhysicalDeviceDisplacementMicromapPropertiesNV(MemorySegment seg
     }
 
 
-    public static final class VkPhysicalDeviceDisplacementMicromapPropertiesNVFactory implements IFactory<VkPhysicalDeviceDisplacementMicromapPropertiesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDisplacementMicromapPropertiesNV> {
         @Override
         public Class<VkPhysicalDeviceDisplacementMicromapPropertiesNV> clazz() {
             return VkPhysicalDeviceDisplacementMicromapPropertiesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceDisplacementMicromapPropertiesNV(MemorySegment seg
         }
     }
 
-    public static final VkPhysicalDeviceDisplacementMicromapPropertiesNVFactory FACTORY = new VkPhysicalDeviceDisplacementMicromapPropertiesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

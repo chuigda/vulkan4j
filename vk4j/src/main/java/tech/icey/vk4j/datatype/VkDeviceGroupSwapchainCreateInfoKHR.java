@@ -64,7 +64,7 @@ public record VkDeviceGroupSwapchainCreateInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceGroupSwapchainCreateInfoKHRFactory implements IFactory<VkDeviceGroupSwapchainCreateInfoKHR> {
+    public static final class Factory implements IFactory<VkDeviceGroupSwapchainCreateInfoKHR> {
         @Override
         public Class<VkDeviceGroupSwapchainCreateInfoKHR> clazz() {
             return VkDeviceGroupSwapchainCreateInfoKHR.class;
@@ -86,5 +86,5 @@ public record VkDeviceGroupSwapchainCreateInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceGroupSwapchainCreateInfoKHRFactory FACTORY = new VkDeviceGroupSwapchainCreateInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceInvocationMaskFeaturesHUAWEI(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceInvocationMaskFeaturesHUAWEIFactory implements IFactory<VkPhysicalDeviceInvocationMaskFeaturesHUAWEI> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceInvocationMaskFeaturesHUAWEI> {
         @Override
         public Class<VkPhysicalDeviceInvocationMaskFeaturesHUAWEI> clazz() {
             return VkPhysicalDeviceInvocationMaskFeaturesHUAWEI.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceInvocationMaskFeaturesHUAWEI(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceInvocationMaskFeaturesHUAWEIFactory FACTORY = new VkPhysicalDeviceInvocationMaskFeaturesHUAWEIFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -51,7 +51,7 @@ public record VkViewportWScalingNV(MemorySegment segment) {
     }
 
 
-    public static final class VkViewportWScalingNVFactory implements IFactory<VkViewportWScalingNV> {
+    public static final class Factory implements IFactory<VkViewportWScalingNV> {
         @Override
         public Class<VkViewportWScalingNV> clazz() {
             return VkViewportWScalingNV.class;
@@ -73,5 +73,5 @@ public record VkViewportWScalingNV(MemorySegment segment) {
         }
     }
 
-    public static final VkViewportWScalingNVFactory FACTORY = new VkViewportWScalingNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

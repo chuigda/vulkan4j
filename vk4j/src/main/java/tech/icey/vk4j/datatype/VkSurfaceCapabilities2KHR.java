@@ -64,7 +64,7 @@ public record VkSurfaceCapabilities2KHR(MemorySegment segment) {
     }
 
 
-    public static final class VkSurfaceCapabilities2KHRFactory implements IFactory<VkSurfaceCapabilities2KHR> {
+    public static final class Factory implements IFactory<VkSurfaceCapabilities2KHR> {
         @Override
         public Class<VkSurfaceCapabilities2KHR> clazz() {
             return VkSurfaceCapabilities2KHR.class;
@@ -86,5 +86,5 @@ public record VkSurfaceCapabilities2KHR(MemorySegment segment) {
         }
     }
 
-    public static final VkSurfaceCapabilities2KHRFactory FACTORY = new VkSurfaceCapabilities2KHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

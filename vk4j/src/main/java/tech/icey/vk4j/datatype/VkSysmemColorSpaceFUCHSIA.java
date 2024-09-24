@@ -64,7 +64,7 @@ public record VkSysmemColorSpaceFUCHSIA(MemorySegment segment) {
     }
 
 
-    public static final class VkSysmemColorSpaceFUCHSIAFactory implements IFactory<VkSysmemColorSpaceFUCHSIA> {
+    public static final class Factory implements IFactory<VkSysmemColorSpaceFUCHSIA> {
         @Override
         public Class<VkSysmemColorSpaceFUCHSIA> clazz() {
             return VkSysmemColorSpaceFUCHSIA.class;
@@ -86,5 +86,5 @@ public record VkSysmemColorSpaceFUCHSIA(MemorySegment segment) {
         }
     }
 
-    public static final VkSysmemColorSpaceFUCHSIAFactory FACTORY = new VkSysmemColorSpaceFUCHSIAFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkSwapchainPresentBarrierCreateInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkSwapchainPresentBarrierCreateInfoNVFactory implements IFactory<VkSwapchainPresentBarrierCreateInfoNV> {
+    public static final class Factory implements IFactory<VkSwapchainPresentBarrierCreateInfoNV> {
         @Override
         public Class<VkSwapchainPresentBarrierCreateInfoNV> clazz() {
             return VkSwapchainPresentBarrierCreateInfoNV.class;
@@ -86,5 +86,5 @@ public record VkSwapchainPresentBarrierCreateInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkSwapchainPresentBarrierCreateInfoNVFactory FACTORY = new VkSwapchainPresentBarrierCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

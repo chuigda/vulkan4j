@@ -80,7 +80,7 @@ public record VkQueueFamilyGlobalPriorityPropertiesKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkQueueFamilyGlobalPriorityPropertiesKHRFactory implements IFactory<VkQueueFamilyGlobalPriorityPropertiesKHR> {
+    public static final class Factory implements IFactory<VkQueueFamilyGlobalPriorityPropertiesKHR> {
         @Override
         public Class<VkQueueFamilyGlobalPriorityPropertiesKHR> clazz() {
             return VkQueueFamilyGlobalPriorityPropertiesKHR.class;
@@ -102,5 +102,5 @@ public record VkQueueFamilyGlobalPriorityPropertiesKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkQueueFamilyGlobalPriorityPropertiesKHRFactory FACTORY = new VkQueueFamilyGlobalPriorityPropertiesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

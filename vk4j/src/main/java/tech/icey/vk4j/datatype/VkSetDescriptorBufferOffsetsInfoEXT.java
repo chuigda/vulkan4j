@@ -140,7 +140,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkSetDescriptorBufferOffsetsInfoEXTFactory implements IFactory<VkSetDescriptorBufferOffsetsInfoEXT> {
+    public static final class Factory implements IFactory<VkSetDescriptorBufferOffsetsInfoEXT> {
         @Override
         public Class<VkSetDescriptorBufferOffsetsInfoEXT> clazz() {
             return VkSetDescriptorBufferOffsetsInfoEXT.class;
@@ -162,5 +162,5 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkSetDescriptorBufferOffsetsInfoEXTFactory FACTORY = new VkSetDescriptorBufferOffsetsInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

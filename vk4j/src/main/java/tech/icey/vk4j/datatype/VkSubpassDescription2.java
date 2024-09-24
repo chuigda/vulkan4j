@@ -244,7 +244,7 @@ public record VkSubpassDescription2(MemorySegment segment) {
     }
 
 
-    public static final class VkSubpassDescription2Factory implements IFactory<VkSubpassDescription2> {
+    public static final class Factory implements IFactory<VkSubpassDescription2> {
         @Override
         public Class<VkSubpassDescription2> clazz() {
             return VkSubpassDescription2.class;
@@ -266,5 +266,5 @@ public record VkSubpassDescription2(MemorySegment segment) {
         }
     }
 
-    public static final VkSubpassDescription2Factory FACTORY = new VkSubpassDescription2Factory();
+    public static final Factory FACTORY = new Factory();
 }

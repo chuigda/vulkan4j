@@ -88,7 +88,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(MemorySeg
     }
 
 
-    public static final class VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNVFactory implements IFactory<VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV> clazz() {
             return VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV.class;
@@ -110,5 +110,5 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(MemorySeg
         }
     }
 
-    public static final VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNVFactory FACTORY = new VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -112,7 +112,7 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(MemorySegment seg
     }
 
 
-    public static final class VkPhysicalDeviceAccelerationStructureFeaturesKHRFactory implements IFactory<VkPhysicalDeviceAccelerationStructureFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceAccelerationStructureFeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceAccelerationStructureFeaturesKHR> clazz() {
             return VkPhysicalDeviceAccelerationStructureFeaturesKHR.class;
@@ -134,5 +134,5 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(MemorySegment seg
         }
     }
 
-    public static final VkPhysicalDeviceAccelerationStructureFeaturesKHRFactory FACTORY = new VkPhysicalDeviceAccelerationStructureFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

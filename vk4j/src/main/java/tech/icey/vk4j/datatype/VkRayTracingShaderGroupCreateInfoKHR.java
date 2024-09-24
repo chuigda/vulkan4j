@@ -124,7 +124,7 @@ public record VkRayTracingShaderGroupCreateInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkRayTracingShaderGroupCreateInfoKHRFactory implements IFactory<VkRayTracingShaderGroupCreateInfoKHR> {
+    public static final class Factory implements IFactory<VkRayTracingShaderGroupCreateInfoKHR> {
         @Override
         public Class<VkRayTracingShaderGroupCreateInfoKHR> clazz() {
             return VkRayTracingShaderGroupCreateInfoKHR.class;
@@ -146,5 +146,5 @@ public record VkRayTracingShaderGroupCreateInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkRayTracingShaderGroupCreateInfoKHRFactory FACTORY = new VkRayTracingShaderGroupCreateInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

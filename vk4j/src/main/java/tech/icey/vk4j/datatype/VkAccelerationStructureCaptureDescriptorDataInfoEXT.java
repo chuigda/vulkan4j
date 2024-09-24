@@ -76,7 +76,7 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(MemorySegment 
     }
 
 
-    public static final class VkAccelerationStructureCaptureDescriptorDataInfoEXTFactory implements IFactory<VkAccelerationStructureCaptureDescriptorDataInfoEXT> {
+    public static final class Factory implements IFactory<VkAccelerationStructureCaptureDescriptorDataInfoEXT> {
         @Override
         public Class<VkAccelerationStructureCaptureDescriptorDataInfoEXT> clazz() {
             return VkAccelerationStructureCaptureDescriptorDataInfoEXT.class;
@@ -98,5 +98,5 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(MemorySegment 
         }
     }
 
-    public static final VkAccelerationStructureCaptureDescriptorDataInfoEXTFactory FACTORY = new VkAccelerationStructureCaptureDescriptorDataInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

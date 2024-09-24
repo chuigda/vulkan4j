@@ -252,7 +252,7 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkSwapchainCreateInfoKHRFactory implements IFactory<VkSwapchainCreateInfoKHR> {
+    public static final class Factory implements IFactory<VkSwapchainCreateInfoKHR> {
         @Override
         public Class<VkSwapchainCreateInfoKHR> clazz() {
             return VkSwapchainCreateInfoKHR.class;
@@ -274,5 +274,5 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkSwapchainCreateInfoKHRFactory FACTORY = new VkSwapchainCreateInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

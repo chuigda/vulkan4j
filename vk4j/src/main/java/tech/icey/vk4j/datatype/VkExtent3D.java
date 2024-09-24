@@ -63,7 +63,7 @@ public record VkExtent3D(MemorySegment segment) {
     }
 
 
-    public static final class VkExtent3DFactory implements IFactory<VkExtent3D> {
+    public static final class Factory implements IFactory<VkExtent3D> {
         @Override
         public Class<VkExtent3D> clazz() {
             return VkExtent3D.class;
@@ -85,5 +85,5 @@ public record VkExtent3D(MemorySegment segment) {
         }
     }
 
-    public static final VkExtent3DFactory FACTORY = new VkExtent3DFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(Memor
     }
 
 
-    public static final class VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXTFactory implements IFactory<VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT> clazz() {
             return VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(Memor
         }
     }
 
-    public static final VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXTFactory FACTORY = new VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

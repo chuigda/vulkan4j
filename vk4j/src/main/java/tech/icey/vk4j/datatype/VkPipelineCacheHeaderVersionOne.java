@@ -91,7 +91,7 @@ public record VkPipelineCacheHeaderVersionOne(MemorySegment segment) {
     }
 
 
-    public static final class VkPipelineCacheHeaderVersionOneFactory implements IFactory<VkPipelineCacheHeaderVersionOne> {
+    public static final class Factory implements IFactory<VkPipelineCacheHeaderVersionOne> {
         @Override
         public Class<VkPipelineCacheHeaderVersionOne> clazz() {
             return VkPipelineCacheHeaderVersionOne.class;
@@ -113,5 +113,5 @@ public record VkPipelineCacheHeaderVersionOne(MemorySegment segment) {
         }
     }
 
-    public static final VkPipelineCacheHeaderVersionOneFactory FACTORY = new VkPipelineCacheHeaderVersionOneFactory();
+    public static final Factory FACTORY = new Factory();
 }

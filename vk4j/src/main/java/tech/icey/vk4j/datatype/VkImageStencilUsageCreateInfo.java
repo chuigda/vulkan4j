@@ -64,7 +64,7 @@ public record VkImageStencilUsageCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkImageStencilUsageCreateInfoFactory implements IFactory<VkImageStencilUsageCreateInfo> {
+    public static final class Factory implements IFactory<VkImageStencilUsageCreateInfo> {
         @Override
         public Class<VkImageStencilUsageCreateInfo> clazz() {
             return VkImageStencilUsageCreateInfo.class;
@@ -86,5 +86,5 @@ public record VkImageStencilUsageCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkImageStencilUsageCreateInfoFactory FACTORY = new VkImageStencilUsageCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

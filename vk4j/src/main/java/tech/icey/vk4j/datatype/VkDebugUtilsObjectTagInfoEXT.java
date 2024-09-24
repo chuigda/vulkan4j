@@ -111,7 +111,7 @@ public record VkDebugUtilsObjectTagInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDebugUtilsObjectTagInfoEXTFactory implements IFactory<VkDebugUtilsObjectTagInfoEXT> {
+    public static final class Factory implements IFactory<VkDebugUtilsObjectTagInfoEXT> {
         @Override
         public Class<VkDebugUtilsObjectTagInfoEXT> clazz() {
             return VkDebugUtilsObjectTagInfoEXT.class;
@@ -133,5 +133,5 @@ public record VkDebugUtilsObjectTagInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDebugUtilsObjectTagInfoEXTFactory FACTORY = new VkDebugUtilsObjectTagInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

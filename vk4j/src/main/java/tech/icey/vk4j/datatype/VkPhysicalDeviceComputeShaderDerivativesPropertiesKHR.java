@@ -64,7 +64,7 @@ public record VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR(MemorySegmen
     }
 
 
-    public static final class VkPhysicalDeviceComputeShaderDerivativesPropertiesKHRFactory implements IFactory<VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR> {
         @Override
         public Class<VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR> clazz() {
             return VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR(MemorySegmen
         }
     }
 
-    public static final VkPhysicalDeviceComputeShaderDerivativesPropertiesKHRFactory FACTORY = new VkPhysicalDeviceComputeShaderDerivativesPropertiesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

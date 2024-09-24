@@ -148,7 +148,7 @@ public record VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkDisplaySurfaceCreateInfoKHRFactory implements IFactory<VkDisplaySurfaceCreateInfoKHR> {
+    public static final class Factory implements IFactory<VkDisplaySurfaceCreateInfoKHR> {
         @Override
         public Class<VkDisplaySurfaceCreateInfoKHR> clazz() {
             return VkDisplaySurfaceCreateInfoKHR.class;
@@ -170,5 +170,5 @@ public record VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkDisplaySurfaceCreateInfoKHRFactory FACTORY = new VkDisplaySurfaceCreateInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

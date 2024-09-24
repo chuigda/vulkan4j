@@ -89,7 +89,7 @@ public record VkDeviceGroupDeviceCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceGroupDeviceCreateInfoFactory implements IFactory<VkDeviceGroupDeviceCreateInfo> {
+    public static final class Factory implements IFactory<VkDeviceGroupDeviceCreateInfo> {
         @Override
         public Class<VkDeviceGroupDeviceCreateInfo> clazz() {
             return VkDeviceGroupDeviceCreateInfo.class;
@@ -111,5 +111,5 @@ public record VkDeviceGroupDeviceCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceGroupDeviceCreateInfoFactory FACTORY = new VkDeviceGroupDeviceCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

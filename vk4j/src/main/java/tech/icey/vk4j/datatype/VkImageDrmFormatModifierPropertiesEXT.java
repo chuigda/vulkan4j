@@ -64,7 +64,7 @@ public record VkImageDrmFormatModifierPropertiesEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkImageDrmFormatModifierPropertiesEXTFactory implements IFactory<VkImageDrmFormatModifierPropertiesEXT> {
+    public static final class Factory implements IFactory<VkImageDrmFormatModifierPropertiesEXT> {
         @Override
         public Class<VkImageDrmFormatModifierPropertiesEXT> clazz() {
             return VkImageDrmFormatModifierPropertiesEXT.class;
@@ -86,5 +86,5 @@ public record VkImageDrmFormatModifierPropertiesEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkImageDrmFormatModifierPropertiesEXTFactory FACTORY = new VkImageDrmFormatModifierPropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceSubpassShadingFeaturesHUAWEI(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceSubpassShadingFeaturesHUAWEIFactory implements IFactory<VkPhysicalDeviceSubpassShadingFeaturesHUAWEI> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceSubpassShadingFeaturesHUAWEI> {
         @Override
         public Class<VkPhysicalDeviceSubpassShadingFeaturesHUAWEI> clazz() {
             return VkPhysicalDeviceSubpassShadingFeaturesHUAWEI.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceSubpassShadingFeaturesHUAWEI(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceSubpassShadingFeaturesHUAWEIFactory FACTORY = new VkPhysicalDeviceSubpassShadingFeaturesHUAWEIFactory();
+    public static final Factory FACTORY = new Factory();
 }

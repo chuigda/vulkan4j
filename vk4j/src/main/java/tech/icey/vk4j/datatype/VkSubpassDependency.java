@@ -111,7 +111,7 @@ public record VkSubpassDependency(MemorySegment segment) {
     }
 
 
-    public static final class VkSubpassDependencyFactory implements IFactory<VkSubpassDependency> {
+    public static final class Factory implements IFactory<VkSubpassDependency> {
         @Override
         public Class<VkSubpassDependency> clazz() {
             return VkSubpassDependency.class;
@@ -133,5 +133,5 @@ public record VkSubpassDependency(MemorySegment segment) {
         }
     }
 
-    public static final VkSubpassDependencyFactory FACTORY = new VkSubpassDependencyFactory();
+    public static final Factory FACTORY = new Factory();
 }

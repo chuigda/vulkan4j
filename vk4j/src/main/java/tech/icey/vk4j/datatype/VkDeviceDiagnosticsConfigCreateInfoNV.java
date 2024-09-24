@@ -64,7 +64,7 @@ public record VkDeviceDiagnosticsConfigCreateInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceDiagnosticsConfigCreateInfoNVFactory implements IFactory<VkDeviceDiagnosticsConfigCreateInfoNV> {
+    public static final class Factory implements IFactory<VkDeviceDiagnosticsConfigCreateInfoNV> {
         @Override
         public Class<VkDeviceDiagnosticsConfigCreateInfoNV> clazz() {
             return VkDeviceDiagnosticsConfigCreateInfoNV.class;
@@ -86,5 +86,5 @@ public record VkDeviceDiagnosticsConfigCreateInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceDiagnosticsConfigCreateInfoNVFactory FACTORY = new VkDeviceDiagnosticsConfigCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

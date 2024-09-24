@@ -64,7 +64,7 @@ public record VkSurfacePresentModeEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkSurfacePresentModeEXTFactory implements IFactory<VkSurfacePresentModeEXT> {
+    public static final class Factory implements IFactory<VkSurfacePresentModeEXT> {
         @Override
         public Class<VkSurfacePresentModeEXT> clazz() {
             return VkSurfacePresentModeEXT.class;
@@ -86,5 +86,5 @@ public record VkSurfacePresentModeEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkSurfacePresentModeEXTFactory FACTORY = new VkSurfacePresentModeEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

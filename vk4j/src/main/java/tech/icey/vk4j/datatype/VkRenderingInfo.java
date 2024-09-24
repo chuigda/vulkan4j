@@ -187,7 +187,7 @@ public record VkRenderingInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkRenderingInfoFactory implements IFactory<VkRenderingInfo> {
+    public static final class Factory implements IFactory<VkRenderingInfo> {
         @Override
         public Class<VkRenderingInfo> clazz() {
             return VkRenderingInfo.class;
@@ -209,5 +209,5 @@ public record VkRenderingInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkRenderingInfoFactory FACTORY = new VkRenderingInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

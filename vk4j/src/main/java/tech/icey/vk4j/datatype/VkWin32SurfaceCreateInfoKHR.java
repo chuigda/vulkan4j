@@ -88,7 +88,7 @@ public record VkWin32SurfaceCreateInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkWin32SurfaceCreateInfoKHRFactory implements IFactory<VkWin32SurfaceCreateInfoKHR> {
+    public static final class Factory implements IFactory<VkWin32SurfaceCreateInfoKHR> {
         @Override
         public Class<VkWin32SurfaceCreateInfoKHR> clazz() {
             return VkWin32SurfaceCreateInfoKHR.class;
@@ -110,5 +110,5 @@ public record VkWin32SurfaceCreateInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkWin32SurfaceCreateInfoKHRFactory FACTORY = new VkWin32SurfaceCreateInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

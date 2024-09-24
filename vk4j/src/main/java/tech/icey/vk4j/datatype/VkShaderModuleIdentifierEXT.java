@@ -80,7 +80,7 @@ public record VkShaderModuleIdentifierEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkShaderModuleIdentifierEXTFactory implements IFactory<VkShaderModuleIdentifierEXT> {
+    public static final class Factory implements IFactory<VkShaderModuleIdentifierEXT> {
         @Override
         public Class<VkShaderModuleIdentifierEXT> clazz() {
             return VkShaderModuleIdentifierEXT.class;
@@ -102,5 +102,5 @@ public record VkShaderModuleIdentifierEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkShaderModuleIdentifierEXTFactory FACTORY = new VkShaderModuleIdentifierEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

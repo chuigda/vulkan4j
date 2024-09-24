@@ -63,7 +63,7 @@ public record VkPushConstantRange(MemorySegment segment) {
     }
 
 
-    public static final class VkPushConstantRangeFactory implements IFactory<VkPushConstantRange> {
+    public static final class Factory implements IFactory<VkPushConstantRange> {
         @Override
         public Class<VkPushConstantRange> clazz() {
             return VkPushConstantRange.class;
@@ -85,5 +85,5 @@ public record VkPushConstantRange(MemorySegment segment) {
         }
     }
 
-    public static final VkPushConstantRangeFactory FACTORY = new VkPushConstantRangeFactory();
+    public static final Factory FACTORY = new Factory();
 }

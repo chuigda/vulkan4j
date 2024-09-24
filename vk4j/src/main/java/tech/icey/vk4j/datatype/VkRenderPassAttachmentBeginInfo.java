@@ -89,7 +89,7 @@ public record VkRenderPassAttachmentBeginInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkRenderPassAttachmentBeginInfoFactory implements IFactory<VkRenderPassAttachmentBeginInfo> {
+    public static final class Factory implements IFactory<VkRenderPassAttachmentBeginInfo> {
         @Override
         public Class<VkRenderPassAttachmentBeginInfo> clazz() {
             return VkRenderPassAttachmentBeginInfo.class;
@@ -111,5 +111,5 @@ public record VkRenderPassAttachmentBeginInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkRenderPassAttachmentBeginInfoFactory FACTORY = new VkRenderPassAttachmentBeginInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

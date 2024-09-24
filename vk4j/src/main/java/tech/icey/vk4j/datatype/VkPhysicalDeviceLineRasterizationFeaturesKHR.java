@@ -124,7 +124,7 @@ public record VkPhysicalDeviceLineRasterizationFeaturesKHR(MemorySegment segment
     }
 
 
-    public static final class VkPhysicalDeviceLineRasterizationFeaturesKHRFactory implements IFactory<VkPhysicalDeviceLineRasterizationFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceLineRasterizationFeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceLineRasterizationFeaturesKHR> clazz() {
             return VkPhysicalDeviceLineRasterizationFeaturesKHR.class;
@@ -146,5 +146,5 @@ public record VkPhysicalDeviceLineRasterizationFeaturesKHR(MemorySegment segment
         }
     }
 
-    public static final VkPhysicalDeviceLineRasterizationFeaturesKHRFactory FACTORY = new VkPhysicalDeviceLineRasterizationFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

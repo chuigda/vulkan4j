@@ -88,7 +88,7 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(MemorySegment segment) 
     }
 
 
-    public static final class VkPipelineCoverageToColorStateCreateInfoNVFactory implements IFactory<VkPipelineCoverageToColorStateCreateInfoNV> {
+    public static final class Factory implements IFactory<VkPipelineCoverageToColorStateCreateInfoNV> {
         @Override
         public Class<VkPipelineCoverageToColorStateCreateInfoNV> clazz() {
             return VkPipelineCoverageToColorStateCreateInfoNV.class;
@@ -110,5 +110,5 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(MemorySegment segment) 
         }
     }
 
-    public static final VkPipelineCoverageToColorStateCreateInfoNVFactory FACTORY = new VkPipelineCoverageToColorStateCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

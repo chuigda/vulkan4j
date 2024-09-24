@@ -75,7 +75,7 @@ public record VkQueueFamilyProperties(MemorySegment segment) {
     }
 
 
-    public static final class VkQueueFamilyPropertiesFactory implements IFactory<VkQueueFamilyProperties> {
+    public static final class Factory implements IFactory<VkQueueFamilyProperties> {
         @Override
         public Class<VkQueueFamilyProperties> clazz() {
             return VkQueueFamilyProperties.class;
@@ -97,5 +97,5 @@ public record VkQueueFamilyProperties(MemorySegment segment) {
         }
     }
 
-    public static final VkQueueFamilyPropertiesFactory FACTORY = new VkQueueFamilyPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

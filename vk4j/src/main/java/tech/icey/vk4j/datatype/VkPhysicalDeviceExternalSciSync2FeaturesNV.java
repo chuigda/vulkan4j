@@ -100,7 +100,7 @@ public record VkPhysicalDeviceExternalSciSync2FeaturesNV(MemorySegment segment) 
     }
 
 
-    public static final class VkPhysicalDeviceExternalSciSync2FeaturesNVFactory implements IFactory<VkPhysicalDeviceExternalSciSync2FeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceExternalSciSync2FeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceExternalSciSync2FeaturesNV> clazz() {
             return VkPhysicalDeviceExternalSciSync2FeaturesNV.class;
@@ -122,5 +122,5 @@ public record VkPhysicalDeviceExternalSciSync2FeaturesNV(MemorySegment segment) 
         }
     }
 
-    public static final VkPhysicalDeviceExternalSciSync2FeaturesNVFactory FACTORY = new VkPhysicalDeviceExternalSciSync2FeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

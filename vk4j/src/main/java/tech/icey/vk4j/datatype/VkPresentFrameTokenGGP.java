@@ -64,7 +64,7 @@ public record VkPresentFrameTokenGGP(MemorySegment segment) {
     }
 
 
-    public static final class VkPresentFrameTokenGGPFactory implements IFactory<VkPresentFrameTokenGGP> {
+    public static final class Factory implements IFactory<VkPresentFrameTokenGGP> {
         @Override
         public Class<VkPresentFrameTokenGGP> clazz() {
             return VkPresentFrameTokenGGP.class;
@@ -86,5 +86,5 @@ public record VkPresentFrameTokenGGP(MemorySegment segment) {
         }
     }
 
-    public static final VkPresentFrameTokenGGPFactory FACTORY = new VkPresentFrameTokenGGPFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -80,7 +80,7 @@ public record VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceGroupPresentCapabilitiesKHRFactory implements IFactory<VkDeviceGroupPresentCapabilitiesKHR> {
+    public static final class Factory implements IFactory<VkDeviceGroupPresentCapabilitiesKHR> {
         @Override
         public Class<VkDeviceGroupPresentCapabilitiesKHR> clazz() {
             return VkDeviceGroupPresentCapabilitiesKHR.class;
@@ -102,5 +102,5 @@ public record VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceGroupPresentCapabilitiesKHRFactory FACTORY = new VkDeviceGroupPresentCapabilitiesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

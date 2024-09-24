@@ -64,7 +64,7 @@ public record VkSubpassResolvePerformanceQueryEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkSubpassResolvePerformanceQueryEXTFactory implements IFactory<VkSubpassResolvePerformanceQueryEXT> {
+    public static final class Factory implements IFactory<VkSubpassResolvePerformanceQueryEXT> {
         @Override
         public Class<VkSubpassResolvePerformanceQueryEXT> clazz() {
             return VkSubpassResolvePerformanceQueryEXT.class;
@@ -86,5 +86,5 @@ public record VkSubpassResolvePerformanceQueryEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkSubpassResolvePerformanceQueryEXTFactory FACTORY = new VkSubpassResolvePerformanceQueryEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

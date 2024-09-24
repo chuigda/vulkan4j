@@ -64,7 +64,7 @@ public record VkPhysicalDeviceCoverageReductionModeFeaturesNV(MemorySegment segm
     }
 
 
-    public static final class VkPhysicalDeviceCoverageReductionModeFeaturesNVFactory implements IFactory<VkPhysicalDeviceCoverageReductionModeFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceCoverageReductionModeFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceCoverageReductionModeFeaturesNV> clazz() {
             return VkPhysicalDeviceCoverageReductionModeFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceCoverageReductionModeFeaturesNV(MemorySegment segm
         }
     }
 
-    public static final VkPhysicalDeviceCoverageReductionModeFeaturesNVFactory FACTORY = new VkPhysicalDeviceCoverageReductionModeFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

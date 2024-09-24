@@ -102,7 +102,7 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceImageSubresourceInfoKHRFactory implements IFactory<VkDeviceImageSubresourceInfoKHR> {
+    public static final class Factory implements IFactory<VkDeviceImageSubresourceInfoKHR> {
         @Override
         public Class<VkDeviceImageSubresourceInfoKHR> clazz() {
             return VkDeviceImageSubresourceInfoKHR.class;
@@ -124,5 +124,5 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceImageSubresourceInfoKHRFactory FACTORY = new VkDeviceImageSubresourceInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

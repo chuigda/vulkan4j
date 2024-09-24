@@ -62,7 +62,7 @@ public record VkSpecializationMapEntry(MemorySegment segment) {
         }
 
 
-    public static final class VkSpecializationMapEntryFactory implements IFactory<VkSpecializationMapEntry> {
+    public static final class Factory implements IFactory<VkSpecializationMapEntry> {
         @Override
         public Class<VkSpecializationMapEntry> clazz() {
             return VkSpecializationMapEntry.class;
@@ -84,5 +84,5 @@ public record VkSpecializationMapEntry(MemorySegment segment) {
         }
     }
 
-    public static final VkSpecializationMapEntryFactory FACTORY = new VkSpecializationMapEntryFactory();
+    public static final Factory FACTORY = new Factory();
 }

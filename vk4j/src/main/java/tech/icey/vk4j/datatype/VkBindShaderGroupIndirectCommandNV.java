@@ -39,7 +39,7 @@ public record VkBindShaderGroupIndirectCommandNV(MemorySegment segment) {
     }
 
 
-    public static final class VkBindShaderGroupIndirectCommandNVFactory implements IFactory<VkBindShaderGroupIndirectCommandNV> {
+    public static final class Factory implements IFactory<VkBindShaderGroupIndirectCommandNV> {
         @Override
         public Class<VkBindShaderGroupIndirectCommandNV> clazz() {
             return VkBindShaderGroupIndirectCommandNV.class;
@@ -61,5 +61,5 @@ public record VkBindShaderGroupIndirectCommandNV(MemorySegment segment) {
         }
     }
 
-    public static final VkBindShaderGroupIndirectCommandNVFactory FACTORY = new VkBindShaderGroupIndirectCommandNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

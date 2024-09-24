@@ -64,7 +64,7 @@ public record VkPhysicalDeviceExternalMemoryHostPropertiesEXT(MemorySegment segm
     }
 
 
-    public static final class VkPhysicalDeviceExternalMemoryHostPropertiesEXTFactory implements IFactory<VkPhysicalDeviceExternalMemoryHostPropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceExternalMemoryHostPropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceExternalMemoryHostPropertiesEXT> clazz() {
             return VkPhysicalDeviceExternalMemoryHostPropertiesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceExternalMemoryHostPropertiesEXT(MemorySegment segm
         }
     }
 
-    public static final VkPhysicalDeviceExternalMemoryHostPropertiesEXTFactory FACTORY = new VkPhysicalDeviceExternalMemoryHostPropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

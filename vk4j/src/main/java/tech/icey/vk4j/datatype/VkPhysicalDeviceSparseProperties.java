@@ -87,7 +87,7 @@ public record VkPhysicalDeviceSparseProperties(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceSparsePropertiesFactory implements IFactory<VkPhysicalDeviceSparseProperties> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceSparseProperties> {
         @Override
         public Class<VkPhysicalDeviceSparseProperties> clazz() {
             return VkPhysicalDeviceSparseProperties.class;
@@ -109,5 +109,5 @@ public record VkPhysicalDeviceSparseProperties(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceSparsePropertiesFactory FACTORY = new VkPhysicalDeviceSparsePropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

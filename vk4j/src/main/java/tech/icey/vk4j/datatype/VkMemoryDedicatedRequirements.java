@@ -76,7 +76,7 @@ public record VkMemoryDedicatedRequirements(MemorySegment segment) {
     }
 
 
-    public static final class VkMemoryDedicatedRequirementsFactory implements IFactory<VkMemoryDedicatedRequirements> {
+    public static final class Factory implements IFactory<VkMemoryDedicatedRequirements> {
         @Override
         public Class<VkMemoryDedicatedRequirements> clazz() {
             return VkMemoryDedicatedRequirements.class;
@@ -98,5 +98,5 @@ public record VkMemoryDedicatedRequirements(MemorySegment segment) {
         }
     }
 
-    public static final VkMemoryDedicatedRequirementsFactory FACTORY = new VkMemoryDedicatedRequirementsFactory();
+    public static final Factory FACTORY = new Factory();
 }

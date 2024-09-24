@@ -64,7 +64,7 @@ public record VkPhysicalDeviceDynamicRenderingFeatures(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceDynamicRenderingFeaturesFactory implements IFactory<VkPhysicalDeviceDynamicRenderingFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDynamicRenderingFeatures> {
         @Override
         public Class<VkPhysicalDeviceDynamicRenderingFeatures> clazz() {
             return VkPhysicalDeviceDynamicRenderingFeatures.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceDynamicRenderingFeatures(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceDynamicRenderingFeaturesFactory FACTORY = new VkPhysicalDeviceDynamicRenderingFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

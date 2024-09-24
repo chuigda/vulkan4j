@@ -99,7 +99,7 @@ public record VkAllocationCallbacks(MemorySegment segment) {
     }
 
 
-    public static final class VkAllocationCallbacksFactory implements IFactory<VkAllocationCallbacks> {
+    public static final class Factory implements IFactory<VkAllocationCallbacks> {
         @Override
         public Class<VkAllocationCallbacks> clazz() {
             return VkAllocationCallbacks.class;
@@ -121,5 +121,5 @@ public record VkAllocationCallbacks(MemorySegment segment) {
         }
     }
 
-    public static final VkAllocationCallbacksFactory FACTORY = new VkAllocationCallbacksFactory();
+    public static final Factory FACTORY = new Factory();
 }

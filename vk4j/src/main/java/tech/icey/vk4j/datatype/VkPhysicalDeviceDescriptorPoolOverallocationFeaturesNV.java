@@ -64,7 +64,7 @@ public record VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV(MemorySegme
     }
 
 
-    public static final class VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNVFactory implements IFactory<VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV> clazz() {
             return VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV(MemorySegme
         }
     }
 
-    public static final VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNVFactory FACTORY = new VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

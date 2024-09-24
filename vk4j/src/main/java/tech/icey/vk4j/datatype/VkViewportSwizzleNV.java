@@ -75,7 +75,7 @@ public record VkViewportSwizzleNV(MemorySegment segment) {
     }
 
 
-    public static final class VkViewportSwizzleNVFactory implements IFactory<VkViewportSwizzleNV> {
+    public static final class Factory implements IFactory<VkViewportSwizzleNV> {
         @Override
         public Class<VkViewportSwizzleNV> clazz() {
             return VkViewportSwizzleNV.class;
@@ -97,5 +97,5 @@ public record VkViewportSwizzleNV(MemorySegment segment) {
         }
     }
 
-    public static final VkViewportSwizzleNVFactory FACTORY = new VkViewportSwizzleNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

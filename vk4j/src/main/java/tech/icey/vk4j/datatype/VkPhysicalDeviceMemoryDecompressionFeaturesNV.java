@@ -64,7 +64,7 @@ public record VkPhysicalDeviceMemoryDecompressionFeaturesNV(MemorySegment segmen
     }
 
 
-    public static final class VkPhysicalDeviceMemoryDecompressionFeaturesNVFactory implements IFactory<VkPhysicalDeviceMemoryDecompressionFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceMemoryDecompressionFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceMemoryDecompressionFeaturesNV> clazz() {
             return VkPhysicalDeviceMemoryDecompressionFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceMemoryDecompressionFeaturesNV(MemorySegment segmen
         }
     }
 
-    public static final VkPhysicalDeviceMemoryDecompressionFeaturesNVFactory FACTORY = new VkPhysicalDeviceMemoryDecompressionFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -76,7 +76,7 @@ public record VkCommandBufferSubmitInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkCommandBufferSubmitInfoFactory implements IFactory<VkCommandBufferSubmitInfo> {
+    public static final class Factory implements IFactory<VkCommandBufferSubmitInfo> {
         @Override
         public Class<VkCommandBufferSubmitInfo> clazz() {
             return VkCommandBufferSubmitInfo.class;
@@ -98,5 +98,5 @@ public record VkCommandBufferSubmitInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkCommandBufferSubmitInfoFactory FACTORY = new VkCommandBufferSubmitInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -88,7 +88,7 @@ public record VkCommandBufferAllocateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkCommandBufferAllocateInfoFactory implements IFactory<VkCommandBufferAllocateInfo> {
+    public static final class Factory implements IFactory<VkCommandBufferAllocateInfo> {
         @Override
         public Class<VkCommandBufferAllocateInfo> clazz() {
             return VkCommandBufferAllocateInfo.class;
@@ -110,5 +110,5 @@ public record VkCommandBufferAllocateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkCommandBufferAllocateInfoFactory FACTORY = new VkCommandBufferAllocateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

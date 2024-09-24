@@ -64,7 +64,7 @@ public record VkPhysicalDeviceCubicWeightsFeaturesQCOM(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceCubicWeightsFeaturesQCOMFactory implements IFactory<VkPhysicalDeviceCubicWeightsFeaturesQCOM> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceCubicWeightsFeaturesQCOM> {
         @Override
         public Class<VkPhysicalDeviceCubicWeightsFeaturesQCOM> clazz() {
             return VkPhysicalDeviceCubicWeightsFeaturesQCOM.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceCubicWeightsFeaturesQCOM(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceCubicWeightsFeaturesQCOMFactory FACTORY = new VkPhysicalDeviceCubicWeightsFeaturesQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

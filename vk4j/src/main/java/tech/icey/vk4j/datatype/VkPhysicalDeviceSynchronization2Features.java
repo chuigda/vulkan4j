@@ -64,7 +64,7 @@ public record VkPhysicalDeviceSynchronization2Features(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceSynchronization2FeaturesFactory implements IFactory<VkPhysicalDeviceSynchronization2Features> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceSynchronization2Features> {
         @Override
         public Class<VkPhysicalDeviceSynchronization2Features> clazz() {
             return VkPhysicalDeviceSynchronization2Features.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceSynchronization2Features(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceSynchronization2FeaturesFactory FACTORY = new VkPhysicalDeviceSynchronization2FeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

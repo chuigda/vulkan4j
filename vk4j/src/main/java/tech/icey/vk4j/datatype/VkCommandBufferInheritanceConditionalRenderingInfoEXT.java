@@ -64,7 +64,7 @@ public record VkCommandBufferInheritanceConditionalRenderingInfoEXT(MemorySegmen
     }
 
 
-    public static final class VkCommandBufferInheritanceConditionalRenderingInfoEXTFactory implements IFactory<VkCommandBufferInheritanceConditionalRenderingInfoEXT> {
+    public static final class Factory implements IFactory<VkCommandBufferInheritanceConditionalRenderingInfoEXT> {
         @Override
         public Class<VkCommandBufferInheritanceConditionalRenderingInfoEXT> clazz() {
             return VkCommandBufferInheritanceConditionalRenderingInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkCommandBufferInheritanceConditionalRenderingInfoEXT(MemorySegmen
         }
     }
 
-    public static final VkCommandBufferInheritanceConditionalRenderingInfoEXTFactory FACTORY = new VkCommandBufferInheritanceConditionalRenderingInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -100,7 +100,7 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(MemorySegment segmen
     }
 
 
-    public static final class VkPhysicalDeviceDepthStencilResolvePropertiesFactory implements IFactory<VkPhysicalDeviceDepthStencilResolveProperties> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDepthStencilResolveProperties> {
         @Override
         public Class<VkPhysicalDeviceDepthStencilResolveProperties> clazz() {
             return VkPhysicalDeviceDepthStencilResolveProperties.class;
@@ -122,5 +122,5 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(MemorySegment segmen
         }
     }
 
-    public static final VkPhysicalDeviceDepthStencilResolvePropertiesFactory FACTORY = new VkPhysicalDeviceDepthStencilResolvePropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

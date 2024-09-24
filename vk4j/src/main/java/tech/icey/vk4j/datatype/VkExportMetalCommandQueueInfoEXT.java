@@ -76,7 +76,7 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkExportMetalCommandQueueInfoEXTFactory implements IFactory<VkExportMetalCommandQueueInfoEXT> {
+    public static final class Factory implements IFactory<VkExportMetalCommandQueueInfoEXT> {
         @Override
         public Class<VkExportMetalCommandQueueInfoEXT> clazz() {
             return VkExportMetalCommandQueueInfoEXT.class;
@@ -98,5 +98,5 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkExportMetalCommandQueueInfoEXTFactory FACTORY = new VkExportMetalCommandQueueInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

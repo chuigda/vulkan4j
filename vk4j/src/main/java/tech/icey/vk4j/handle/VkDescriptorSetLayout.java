@@ -11,7 +11,7 @@ public record VkDescriptorSetLayout(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkDescriptorSetLayoutFactory implements IFactory<VkDescriptorSetLayout> {
+    public static final class Factory implements IFactory<VkDescriptorSetLayout> {
         @Override
         public Class<VkDescriptorSetLayout> clazz() {
             return VkDescriptorSetLayout.class;
@@ -33,5 +33,5 @@ public record VkDescriptorSetLayout(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorSetLayoutFactory FACTORY = new VkDescriptorSetLayoutFactory();
+    public static final Factory FACTORY = new Factory();
 }

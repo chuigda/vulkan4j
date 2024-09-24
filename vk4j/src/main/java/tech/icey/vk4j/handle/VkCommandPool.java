@@ -11,7 +11,7 @@ public record VkCommandPool(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkCommandPoolFactory implements IFactory<VkCommandPool> {
+    public static final class Factory implements IFactory<VkCommandPool> {
         @Override
         public Class<VkCommandPool> clazz() {
             return VkCommandPool.class;
@@ -33,5 +33,5 @@ public record VkCommandPool(MemorySegment segment) {
         }
     }
 
-    public static final VkCommandPoolFactory FACTORY = new VkCommandPoolFactory();
+    public static final Factory FACTORY = new Factory();
 }

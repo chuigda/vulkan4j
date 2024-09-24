@@ -113,7 +113,7 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) {
     }
 
 
-    public static final class VkImageConstraintsInfoFUCHSIAFactory implements IFactory<VkImageConstraintsInfoFUCHSIA> {
+    public static final class Factory implements IFactory<VkImageConstraintsInfoFUCHSIA> {
         @Override
         public Class<VkImageConstraintsInfoFUCHSIA> clazz() {
             return VkImageConstraintsInfoFUCHSIA.class;
@@ -135,5 +135,5 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) {
         }
     }
 
-    public static final VkImageConstraintsInfoFUCHSIAFactory FACTORY = new VkImageConstraintsInfoFUCHSIAFactory();
+    public static final Factory FACTORY = new Factory();
 }

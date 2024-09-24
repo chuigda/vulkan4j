@@ -126,7 +126,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkRenderPassSampleLocationsBeginInfoEXTFactory implements IFactory<VkRenderPassSampleLocationsBeginInfoEXT> {
+    public static final class Factory implements IFactory<VkRenderPassSampleLocationsBeginInfoEXT> {
         @Override
         public Class<VkRenderPassSampleLocationsBeginInfoEXT> clazz() {
             return VkRenderPassSampleLocationsBeginInfoEXT.class;
@@ -148,5 +148,5 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkRenderPassSampleLocationsBeginInfoEXTFactory FACTORY = new VkRenderPassSampleLocationsBeginInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

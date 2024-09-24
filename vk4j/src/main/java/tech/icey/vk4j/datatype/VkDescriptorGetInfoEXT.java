@@ -76,7 +76,7 @@ public record VkDescriptorGetInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDescriptorGetInfoEXTFactory implements IFactory<VkDescriptorGetInfoEXT> {
+    public static final class Factory implements IFactory<VkDescriptorGetInfoEXT> {
         @Override
         public Class<VkDescriptorGetInfoEXT> clazz() {
             return VkDescriptorGetInfoEXT.class;
@@ -98,5 +98,5 @@ public record VkDescriptorGetInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorGetInfoEXTFactory FACTORY = new VkDescriptorGetInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

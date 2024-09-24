@@ -64,7 +64,7 @@ public record VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM(MemorySegmen
     }
 
 
-    public static final class VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOMFactory implements IFactory<VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM> {
         @Override
         public Class<VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM> clazz() {
             return VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM(MemorySegmen
         }
     }
 
-    public static final VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOMFactory FACTORY = new VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

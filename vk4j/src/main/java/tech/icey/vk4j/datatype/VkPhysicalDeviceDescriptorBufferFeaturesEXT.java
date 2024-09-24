@@ -100,7 +100,7 @@ public record VkPhysicalDeviceDescriptorBufferFeaturesEXT(MemorySegment segment)
     }
 
 
-    public static final class VkPhysicalDeviceDescriptorBufferFeaturesEXTFactory implements IFactory<VkPhysicalDeviceDescriptorBufferFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDescriptorBufferFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceDescriptorBufferFeaturesEXT> clazz() {
             return VkPhysicalDeviceDescriptorBufferFeaturesEXT.class;
@@ -122,5 +122,5 @@ public record VkPhysicalDeviceDescriptorBufferFeaturesEXT(MemorySegment segment)
         }
     }
 
-    public static final VkPhysicalDeviceDescriptorBufferFeaturesEXTFactory FACTORY = new VkPhysicalDeviceDescriptorBufferFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceImageCompressionControlFeaturesEXT(MemorySegment s
     }
 
 
-    public static final class VkPhysicalDeviceImageCompressionControlFeaturesEXTFactory implements IFactory<VkPhysicalDeviceImageCompressionControlFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceImageCompressionControlFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceImageCompressionControlFeaturesEXT> clazz() {
             return VkPhysicalDeviceImageCompressionControlFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceImageCompressionControlFeaturesEXT(MemorySegment s
         }
     }
 
-    public static final VkPhysicalDeviceImageCompressionControlFeaturesEXTFactory FACTORY = new VkPhysicalDeviceImageCompressionControlFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

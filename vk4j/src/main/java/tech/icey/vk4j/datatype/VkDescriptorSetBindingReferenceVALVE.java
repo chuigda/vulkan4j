@@ -76,7 +76,7 @@ public record VkDescriptorSetBindingReferenceVALVE(MemorySegment segment) {
     }
 
 
-    public static final class VkDescriptorSetBindingReferenceVALVEFactory implements IFactory<VkDescriptorSetBindingReferenceVALVE> {
+    public static final class Factory implements IFactory<VkDescriptorSetBindingReferenceVALVE> {
         @Override
         public Class<VkDescriptorSetBindingReferenceVALVE> clazz() {
             return VkDescriptorSetBindingReferenceVALVE.class;
@@ -98,5 +98,5 @@ public record VkDescriptorSetBindingReferenceVALVE(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorSetBindingReferenceVALVEFactory FACTORY = new VkDescriptorSetBindingReferenceVALVEFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -64,7 +64,7 @@ public record VkPhysicalDeviceMemoryPriorityFeaturesEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceMemoryPriorityFeaturesEXTFactory implements IFactory<VkPhysicalDeviceMemoryPriorityFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceMemoryPriorityFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceMemoryPriorityFeaturesEXT> clazz() {
             return VkPhysicalDeviceMemoryPriorityFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceMemoryPriorityFeaturesEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceMemoryPriorityFeaturesEXTFactory FACTORY = new VkPhysicalDeviceMemoryPriorityFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

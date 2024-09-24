@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(MemorySegment 
     }
 
 
-    public static final class VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNVFactory implements IFactory<VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV> clazz() {
             return VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(MemorySegment 
         }
     }
 
-    public static final VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNVFactory FACTORY = new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

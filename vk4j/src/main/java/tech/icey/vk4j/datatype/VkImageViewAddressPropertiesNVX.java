@@ -76,7 +76,7 @@ public record VkImageViewAddressPropertiesNVX(MemorySegment segment) {
     }
 
 
-    public static final class VkImageViewAddressPropertiesNVXFactory implements IFactory<VkImageViewAddressPropertiesNVX> {
+    public static final class Factory implements IFactory<VkImageViewAddressPropertiesNVX> {
         @Override
         public Class<VkImageViewAddressPropertiesNVX> clazz() {
             return VkImageViewAddressPropertiesNVX.class;
@@ -98,5 +98,5 @@ public record VkImageViewAddressPropertiesNVX(MemorySegment segment) {
         }
     }
 
-    public static final VkImageViewAddressPropertiesNVXFactory FACTORY = new VkImageViewAddressPropertiesNVXFactory();
+    public static final Factory FACTORY = new Factory();
 }

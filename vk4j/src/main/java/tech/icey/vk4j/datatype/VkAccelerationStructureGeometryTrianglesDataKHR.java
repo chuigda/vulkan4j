@@ -136,7 +136,7 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segm
     }
 
 
-    public static final class VkAccelerationStructureGeometryTrianglesDataKHRFactory implements IFactory<VkAccelerationStructureGeometryTrianglesDataKHR> {
+    public static final class Factory implements IFactory<VkAccelerationStructureGeometryTrianglesDataKHR> {
         @Override
         public Class<VkAccelerationStructureGeometryTrianglesDataKHR> clazz() {
             return VkAccelerationStructureGeometryTrianglesDataKHR.class;
@@ -158,5 +158,5 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segm
         }
     }
 
-    public static final VkAccelerationStructureGeometryTrianglesDataKHRFactory FACTORY = new VkAccelerationStructureGeometryTrianglesDataKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

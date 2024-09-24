@@ -88,7 +88,7 @@ public record VkDebugReportCallbackCreateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDebugReportCallbackCreateInfoEXTFactory implements IFactory<VkDebugReportCallbackCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkDebugReportCallbackCreateInfoEXT> {
         @Override
         public Class<VkDebugReportCallbackCreateInfoEXT> clazz() {
             return VkDebugReportCallbackCreateInfoEXT.class;
@@ -110,5 +110,5 @@ public record VkDebugReportCallbackCreateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDebugReportCallbackCreateInfoEXTFactory FACTORY = new VkDebugReportCallbackCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

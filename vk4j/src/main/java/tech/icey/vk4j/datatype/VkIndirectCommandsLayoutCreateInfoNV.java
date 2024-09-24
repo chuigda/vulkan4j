@@ -145,7 +145,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkIndirectCommandsLayoutCreateInfoNVFactory implements IFactory<VkIndirectCommandsLayoutCreateInfoNV> {
+    public static final class Factory implements IFactory<VkIndirectCommandsLayoutCreateInfoNV> {
         @Override
         public Class<VkIndirectCommandsLayoutCreateInfoNV> clazz() {
             return VkIndirectCommandsLayoutCreateInfoNV.class;
@@ -167,5 +167,5 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkIndirectCommandsLayoutCreateInfoNVFactory FACTORY = new VkIndirectCommandsLayoutCreateInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

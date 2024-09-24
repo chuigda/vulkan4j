@@ -76,7 +76,7 @@ public record VkPipelineRasterizationDepthClipStateCreateInfoEXT(MemorySegment s
     }
 
 
-    public static final class VkPipelineRasterizationDepthClipStateCreateInfoEXTFactory implements IFactory<VkPipelineRasterizationDepthClipStateCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkPipelineRasterizationDepthClipStateCreateInfoEXT> {
         @Override
         public Class<VkPipelineRasterizationDepthClipStateCreateInfoEXT> clazz() {
             return VkPipelineRasterizationDepthClipStateCreateInfoEXT.class;
@@ -98,5 +98,5 @@ public record VkPipelineRasterizationDepthClipStateCreateInfoEXT(MemorySegment s
         }
     }
 
-    public static final VkPipelineRasterizationDepthClipStateCreateInfoEXTFactory FACTORY = new VkPipelineRasterizationDepthClipStateCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

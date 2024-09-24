@@ -64,7 +64,7 @@ public record VkPhysicalDevicePointClippingProperties(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDevicePointClippingPropertiesFactory implements IFactory<VkPhysicalDevicePointClippingProperties> {
+    public static final class Factory implements IFactory<VkPhysicalDevicePointClippingProperties> {
         @Override
         public Class<VkPhysicalDevicePointClippingProperties> clazz() {
             return VkPhysicalDevicePointClippingProperties.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDevicePointClippingProperties(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDevicePointClippingPropertiesFactory FACTORY = new VkPhysicalDevicePointClippingPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

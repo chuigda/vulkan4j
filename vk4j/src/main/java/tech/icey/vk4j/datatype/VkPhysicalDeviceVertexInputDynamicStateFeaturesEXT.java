@@ -64,7 +64,7 @@ public record VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT(MemorySegment s
     }
 
 
-    public static final class VkPhysicalDeviceVertexInputDynamicStateFeaturesEXTFactory implements IFactory<VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT> clazz() {
             return VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT(MemorySegment s
         }
     }
 
-    public static final VkPhysicalDeviceVertexInputDynamicStateFeaturesEXTFactory FACTORY = new VkPhysicalDeviceVertexInputDynamicStateFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

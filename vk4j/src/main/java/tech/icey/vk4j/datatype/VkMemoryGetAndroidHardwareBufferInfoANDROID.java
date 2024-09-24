@@ -64,7 +64,7 @@ public record VkMemoryGetAndroidHardwareBufferInfoANDROID(MemorySegment segment)
     }
 
 
-    public static final class VkMemoryGetAndroidHardwareBufferInfoANDROIDFactory implements IFactory<VkMemoryGetAndroidHardwareBufferInfoANDROID> {
+    public static final class Factory implements IFactory<VkMemoryGetAndroidHardwareBufferInfoANDROID> {
         @Override
         public Class<VkMemoryGetAndroidHardwareBufferInfoANDROID> clazz() {
             return VkMemoryGetAndroidHardwareBufferInfoANDROID.class;
@@ -86,5 +86,5 @@ public record VkMemoryGetAndroidHardwareBufferInfoANDROID(MemorySegment segment)
         }
     }
 
-    public static final VkMemoryGetAndroidHardwareBufferInfoANDROIDFactory FACTORY = new VkMemoryGetAndroidHardwareBufferInfoANDROIDFactory();
+    public static final Factory FACTORY = new Factory();
 }

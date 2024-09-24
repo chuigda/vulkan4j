@@ -64,7 +64,7 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkSamplerCaptureDescriptorDataInfoEXTFactory implements IFactory<VkSamplerCaptureDescriptorDataInfoEXT> {
+    public static final class Factory implements IFactory<VkSamplerCaptureDescriptorDataInfoEXT> {
         @Override
         public Class<VkSamplerCaptureDescriptorDataInfoEXT> clazz() {
             return VkSamplerCaptureDescriptorDataInfoEXT.class;
@@ -86,5 +86,5 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkSamplerCaptureDescriptorDataInfoEXTFactory FACTORY = new VkSamplerCaptureDescriptorDataInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

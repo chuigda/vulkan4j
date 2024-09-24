@@ -64,7 +64,7 @@ public record VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(MemorySegment 
     }
 
 
-    public static final class VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMGFactory implements IFactory<VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG> {
         @Override
         public Class<VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG> clazz() {
             return VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(MemorySegment 
         }
     }
 
-    public static final VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMGFactory FACTORY = new VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMGFactory();
+    public static final Factory FACTORY = new Factory();
 }

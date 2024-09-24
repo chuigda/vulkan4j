@@ -64,7 +64,7 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(MemorySegment segmen
     }
 
 
-    public static final class VkPhysicalDeviceLayeredApiVulkanPropertiesKHRFactory implements IFactory<VkPhysicalDeviceLayeredApiVulkanPropertiesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceLayeredApiVulkanPropertiesKHR> {
         @Override
         public Class<VkPhysicalDeviceLayeredApiVulkanPropertiesKHR> clazz() {
             return VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(MemorySegment segmen
         }
     }
 
-    public static final VkPhysicalDeviceLayeredApiVulkanPropertiesKHRFactory FACTORY = new VkPhysicalDeviceLayeredApiVulkanPropertiesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

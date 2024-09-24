@@ -161,7 +161,7 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment s
     }
 
 
-    public static final class VkAccelerationStructureTrianglesOpacityMicromapEXTFactory implements IFactory<VkAccelerationStructureTrianglesOpacityMicromapEXT> {
+    public static final class Factory implements IFactory<VkAccelerationStructureTrianglesOpacityMicromapEXT> {
         @Override
         public Class<VkAccelerationStructureTrianglesOpacityMicromapEXT> clazz() {
             return VkAccelerationStructureTrianglesOpacityMicromapEXT.class;
@@ -183,5 +183,5 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment s
         }
     }
 
-    public static final VkAccelerationStructureTrianglesOpacityMicromapEXTFactory FACTORY = new VkAccelerationStructureTrianglesOpacityMicromapEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

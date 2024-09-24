@@ -64,7 +64,7 @@ public record VkDescriptorSetLayoutSupport(MemorySegment segment) {
     }
 
 
-    public static final class VkDescriptorSetLayoutSupportFactory implements IFactory<VkDescriptorSetLayoutSupport> {
+    public static final class Factory implements IFactory<VkDescriptorSetLayoutSupport> {
         @Override
         public Class<VkDescriptorSetLayoutSupport> clazz() {
             return VkDescriptorSetLayoutSupport.class;
@@ -86,5 +86,5 @@ public record VkDescriptorSetLayoutSupport(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorSetLayoutSupportFactory FACTORY = new VkDescriptorSetLayoutSupportFactory();
+    public static final Factory FACTORY = new Factory();
 }

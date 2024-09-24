@@ -75,7 +75,7 @@ public record VkComponentMapping(MemorySegment segment) {
     }
 
 
-    public static final class VkComponentMappingFactory implements IFactory<VkComponentMapping> {
+    public static final class Factory implements IFactory<VkComponentMapping> {
         @Override
         public Class<VkComponentMapping> clazz() {
             return VkComponentMapping.class;
@@ -97,5 +97,5 @@ public record VkComponentMapping(MemorySegment segment) {
         }
     }
 
-    public static final VkComponentMappingFactory FACTORY = new VkComponentMappingFactory();
+    public static final Factory FACTORY = new Factory();
 }

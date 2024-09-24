@@ -88,7 +88,7 @@ public record VkConditionalRenderingBeginInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkConditionalRenderingBeginInfoEXTFactory implements IFactory<VkConditionalRenderingBeginInfoEXT> {
+    public static final class Factory implements IFactory<VkConditionalRenderingBeginInfoEXT> {
         @Override
         public Class<VkConditionalRenderingBeginInfoEXT> clazz() {
             return VkConditionalRenderingBeginInfoEXT.class;
@@ -110,5 +110,5 @@ public record VkConditionalRenderingBeginInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkConditionalRenderingBeginInfoEXTFactory FACTORY = new VkConditionalRenderingBeginInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

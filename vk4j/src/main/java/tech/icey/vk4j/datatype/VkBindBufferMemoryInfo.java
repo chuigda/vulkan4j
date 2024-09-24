@@ -88,7 +88,7 @@ public record VkBindBufferMemoryInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkBindBufferMemoryInfoFactory implements IFactory<VkBindBufferMemoryInfo> {
+    public static final class Factory implements IFactory<VkBindBufferMemoryInfo> {
         @Override
         public Class<VkBindBufferMemoryInfo> clazz() {
             return VkBindBufferMemoryInfo.class;
@@ -110,5 +110,5 @@ public record VkBindBufferMemoryInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkBindBufferMemoryInfoFactory FACTORY = new VkBindBufferMemoryInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

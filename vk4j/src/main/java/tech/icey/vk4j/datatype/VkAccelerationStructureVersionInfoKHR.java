@@ -72,7 +72,7 @@ public record VkAccelerationStructureVersionInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkAccelerationStructureVersionInfoKHRFactory implements IFactory<VkAccelerationStructureVersionInfoKHR> {
+    public static final class Factory implements IFactory<VkAccelerationStructureVersionInfoKHR> {
         @Override
         public Class<VkAccelerationStructureVersionInfoKHR> clazz() {
             return VkAccelerationStructureVersionInfoKHR.class;
@@ -94,5 +94,5 @@ public record VkAccelerationStructureVersionInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkAccelerationStructureVersionInfoKHRFactory FACTORY = new VkAccelerationStructureVersionInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -63,7 +63,7 @@ public record VkRectLayerKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkRectLayerKHRFactory implements IFactory<VkRectLayerKHR> {
+    public static final class Factory implements IFactory<VkRectLayerKHR> {
         @Override
         public Class<VkRectLayerKHR> clazz() {
             return VkRectLayerKHR.class;
@@ -85,5 +85,5 @@ public record VkRectLayerKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkRectLayerKHRFactory FACTORY = new VkRectLayerKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

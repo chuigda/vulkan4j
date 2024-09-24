@@ -149,7 +149,7 @@ public record VkFramebufferCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkFramebufferCreateInfoFactory implements IFactory<VkFramebufferCreateInfo> {
+    public static final class Factory implements IFactory<VkFramebufferCreateInfo> {
         @Override
         public Class<VkFramebufferCreateInfo> clazz() {
             return VkFramebufferCreateInfo.class;
@@ -171,5 +171,5 @@ public record VkFramebufferCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkFramebufferCreateInfoFactory FACTORY = new VkFramebufferCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

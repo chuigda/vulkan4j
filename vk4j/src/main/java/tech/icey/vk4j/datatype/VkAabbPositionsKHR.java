@@ -99,7 +99,7 @@ public record VkAabbPositionsKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkAabbPositionsKHRFactory implements IFactory<VkAabbPositionsKHR> {
+    public static final class Factory implements IFactory<VkAabbPositionsKHR> {
         @Override
         public Class<VkAabbPositionsKHR> clazz() {
             return VkAabbPositionsKHR.class;
@@ -121,5 +121,5 @@ public record VkAabbPositionsKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkAabbPositionsKHRFactory FACTORY = new VkAabbPositionsKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

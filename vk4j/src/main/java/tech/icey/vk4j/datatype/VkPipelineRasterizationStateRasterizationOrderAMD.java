@@ -64,7 +64,7 @@ public record VkPipelineRasterizationStateRasterizationOrderAMD(MemorySegment se
     }
 
 
-    public static final class VkPipelineRasterizationStateRasterizationOrderAMDFactory implements IFactory<VkPipelineRasterizationStateRasterizationOrderAMD> {
+    public static final class Factory implements IFactory<VkPipelineRasterizationStateRasterizationOrderAMD> {
         @Override
         public Class<VkPipelineRasterizationStateRasterizationOrderAMD> clazz() {
             return VkPipelineRasterizationStateRasterizationOrderAMD.class;
@@ -86,5 +86,5 @@ public record VkPipelineRasterizationStateRasterizationOrderAMD(MemorySegment se
         }
     }
 
-    public static final VkPipelineRasterizationStateRasterizationOrderAMDFactory FACTORY = new VkPipelineRasterizationStateRasterizationOrderAMDFactory();
+    public static final Factory FACTORY = new Factory();
 }

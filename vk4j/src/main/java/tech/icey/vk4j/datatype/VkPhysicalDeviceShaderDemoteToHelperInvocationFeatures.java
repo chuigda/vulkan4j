@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(MemorySegme
     }
 
 
-    public static final class VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesFactory implements IFactory<VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures> {
         @Override
         public Class<VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures> clazz() {
             return VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(MemorySegme
         }
     }
 
-    public static final VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesFactory FACTORY = new VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesFactory();
+    public static final Factory FACTORY = new Factory();
 }

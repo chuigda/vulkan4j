@@ -101,7 +101,7 @@ public record VkDescriptorSetAllocateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkDescriptorSetAllocateInfoFactory implements IFactory<VkDescriptorSetAllocateInfo> {
+    public static final class Factory implements IFactory<VkDescriptorSetAllocateInfo> {
         @Override
         public Class<VkDescriptorSetAllocateInfo> clazz() {
             return VkDescriptorSetAllocateInfo.class;
@@ -123,5 +123,5 @@ public record VkDescriptorSetAllocateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkDescriptorSetAllocateInfoFactory FACTORY = new VkDescriptorSetAllocateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

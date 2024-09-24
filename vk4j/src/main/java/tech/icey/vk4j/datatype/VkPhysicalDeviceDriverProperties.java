@@ -108,7 +108,7 @@ public record VkPhysicalDeviceDriverProperties(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceDriverPropertiesFactory implements IFactory<VkPhysicalDeviceDriverProperties> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDriverProperties> {
         @Override
         public Class<VkPhysicalDeviceDriverProperties> clazz() {
             return VkPhysicalDeviceDriverProperties.class;
@@ -130,5 +130,5 @@ public record VkPhysicalDeviceDriverProperties(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceDriverPropertiesFactory FACTORY = new VkPhysicalDeviceDriverPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

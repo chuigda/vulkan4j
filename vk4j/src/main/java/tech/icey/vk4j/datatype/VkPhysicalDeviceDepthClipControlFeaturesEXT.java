@@ -64,7 +64,7 @@ public record VkPhysicalDeviceDepthClipControlFeaturesEXT(MemorySegment segment)
     }
 
 
-    public static final class VkPhysicalDeviceDepthClipControlFeaturesEXTFactory implements IFactory<VkPhysicalDeviceDepthClipControlFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDepthClipControlFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceDepthClipControlFeaturesEXT> clazz() {
             return VkPhysicalDeviceDepthClipControlFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceDepthClipControlFeaturesEXT(MemorySegment segment)
         }
     }
 
-    public static final VkPhysicalDeviceDepthClipControlFeaturesEXTFactory FACTORY = new VkPhysicalDeviceDepthClipControlFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

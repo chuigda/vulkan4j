@@ -64,7 +64,7 @@ public record VkPerformanceQueryReservationInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkPerformanceQueryReservationInfoKHRFactory implements IFactory<VkPerformanceQueryReservationInfoKHR> {
+    public static final class Factory implements IFactory<VkPerformanceQueryReservationInfoKHR> {
         @Override
         public Class<VkPerformanceQueryReservationInfoKHR> clazz() {
             return VkPerformanceQueryReservationInfoKHR.class;
@@ -86,5 +86,5 @@ public record VkPerformanceQueryReservationInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkPerformanceQueryReservationInfoKHRFactory FACTORY = new VkPerformanceQueryReservationInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

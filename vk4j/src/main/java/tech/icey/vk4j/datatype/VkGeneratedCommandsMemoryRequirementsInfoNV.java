@@ -100,7 +100,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
     }
 
 
-    public static final class VkGeneratedCommandsMemoryRequirementsInfoNVFactory implements IFactory<VkGeneratedCommandsMemoryRequirementsInfoNV> {
+    public static final class Factory implements IFactory<VkGeneratedCommandsMemoryRequirementsInfoNV> {
         @Override
         public Class<VkGeneratedCommandsMemoryRequirementsInfoNV> clazz() {
             return VkGeneratedCommandsMemoryRequirementsInfoNV.class;
@@ -122,5 +122,5 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
         }
     }
 
-    public static final VkGeneratedCommandsMemoryRequirementsInfoNVFactory FACTORY = new VkGeneratedCommandsMemoryRequirementsInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

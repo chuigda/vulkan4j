@@ -64,7 +64,7 @@ public record VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(MemorySegm
     }
 
 
-    public static final class VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVXFactory implements IFactory<VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX> {
         @Override
         public Class<VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX> clazz() {
             return VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(MemorySegm
         }
     }
 
-    public static final VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVXFactory FACTORY = new VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVXFactory();
+    public static final Factory FACTORY = new Factory();
 }

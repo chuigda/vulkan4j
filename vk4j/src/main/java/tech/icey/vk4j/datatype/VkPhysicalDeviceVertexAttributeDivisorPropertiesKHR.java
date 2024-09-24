@@ -76,7 +76,7 @@ public record VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR(MemorySegment 
     }
 
 
-    public static final class VkPhysicalDeviceVertexAttributeDivisorPropertiesKHRFactory implements IFactory<VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR> {
         @Override
         public Class<VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR> clazz() {
             return VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR(MemorySegment 
         }
     }
 
-    public static final VkPhysicalDeviceVertexAttributeDivisorPropertiesKHRFactory FACTORY = new VkPhysicalDeviceVertexAttributeDivisorPropertiesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

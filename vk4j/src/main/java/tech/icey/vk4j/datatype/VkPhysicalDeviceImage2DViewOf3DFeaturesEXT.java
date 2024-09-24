@@ -76,7 +76,7 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(MemorySegment segment) 
     }
 
 
-    public static final class VkPhysicalDeviceImage2DViewOf3DFeaturesEXTFactory implements IFactory<VkPhysicalDeviceImage2DViewOf3DFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceImage2DViewOf3DFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceImage2DViewOf3DFeaturesEXT> clazz() {
             return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(MemorySegment segment) 
         }
     }
 
-    public static final VkPhysicalDeviceImage2DViewOf3DFeaturesEXTFactory FACTORY = new VkPhysicalDeviceImage2DViewOf3DFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

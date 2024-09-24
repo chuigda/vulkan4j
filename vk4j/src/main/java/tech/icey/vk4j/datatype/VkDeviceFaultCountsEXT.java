@@ -88,7 +88,7 @@ public record VkDeviceFaultCountsEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceFaultCountsEXTFactory implements IFactory<VkDeviceFaultCountsEXT> {
+    public static final class Factory implements IFactory<VkDeviceFaultCountsEXT> {
         @Override
         public Class<VkDeviceFaultCountsEXT> clazz() {
             return VkDeviceFaultCountsEXT.class;
@@ -110,5 +110,5 @@ public record VkDeviceFaultCountsEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceFaultCountsEXTFactory FACTORY = new VkDeviceFaultCountsEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

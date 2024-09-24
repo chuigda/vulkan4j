@@ -11,7 +11,7 @@ public record VkPrivateDataSlot(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkPrivateDataSlotFactory implements IFactory<VkPrivateDataSlot> {
+    public static final class Factory implements IFactory<VkPrivateDataSlot> {
         @Override
         public Class<VkPrivateDataSlot> clazz() {
             return VkPrivateDataSlot.class;
@@ -33,5 +33,5 @@ public record VkPrivateDataSlot(MemorySegment segment) {
         }
     }
 
-    public static final VkPrivateDataSlotFactory FACTORY = new VkPrivateDataSlotFactory();
+    public static final Factory FACTORY = new Factory();
 }

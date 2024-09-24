@@ -64,7 +64,7 @@ public record VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT(MemorySegment segmen
     }
 
 
-    public static final class VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXTFactory implements IFactory<VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT> {
         @Override
         public Class<VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT> clazz() {
             return VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT(MemorySegment segmen
         }
     }
 
-    public static final VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXTFactory FACTORY = new VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

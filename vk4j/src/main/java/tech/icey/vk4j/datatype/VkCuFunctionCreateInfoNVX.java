@@ -84,7 +84,7 @@ public record VkCuFunctionCreateInfoNVX(MemorySegment segment) {
     }
 
 
-    public static final class VkCuFunctionCreateInfoNVXFactory implements IFactory<VkCuFunctionCreateInfoNVX> {
+    public static final class Factory implements IFactory<VkCuFunctionCreateInfoNVX> {
         @Override
         public Class<VkCuFunctionCreateInfoNVX> clazz() {
             return VkCuFunctionCreateInfoNVX.class;
@@ -106,5 +106,5 @@ public record VkCuFunctionCreateInfoNVX(MemorySegment segment) {
         }
     }
 
-    public static final VkCuFunctionCreateInfoNVXFactory FACTORY = new VkCuFunctionCreateInfoNVXFactory();
+    public static final Factory FACTORY = new Factory();
 }

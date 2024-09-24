@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(MemoryS
     }
 
 
-    public static final class VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMDFactory implements IFactory<VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD> {
         @Override
         public Class<VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD> clazz() {
             return VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(MemoryS
         }
     }
 
-    public static final VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMDFactory FACTORY = new VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMDFactory();
+    public static final Factory FACTORY = new Factory();
 }

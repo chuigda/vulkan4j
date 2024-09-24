@@ -116,7 +116,7 @@ public record VkTimelineSemaphoreSubmitInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkTimelineSemaphoreSubmitInfoFactory implements IFactory<VkTimelineSemaphoreSubmitInfo> {
+    public static final class Factory implements IFactory<VkTimelineSemaphoreSubmitInfo> {
         @Override
         public Class<VkTimelineSemaphoreSubmitInfo> clazz() {
             return VkTimelineSemaphoreSubmitInfo.class;
@@ -138,5 +138,5 @@ public record VkTimelineSemaphoreSubmitInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkTimelineSemaphoreSubmitInfoFactory FACTORY = new VkTimelineSemaphoreSubmitInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -11,7 +11,7 @@ public record VkSampler(MemorySegment segment) {
         return segment.get(ValueLayout.ADDRESS, 0);
     }
 
-    public static final class VkSamplerFactory implements IFactory<VkSampler> {
+    public static final class Factory implements IFactory<VkSampler> {
         @Override
         public Class<VkSampler> clazz() {
             return VkSampler.class;
@@ -33,5 +33,5 @@ public record VkSampler(MemorySegment segment) {
         }
     }
 
-    public static final VkSamplerFactory FACTORY = new VkSamplerFactory();
+    public static final Factory FACTORY = new Factory();
 }

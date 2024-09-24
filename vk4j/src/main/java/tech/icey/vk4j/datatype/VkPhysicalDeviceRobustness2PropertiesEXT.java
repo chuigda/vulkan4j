@@ -76,7 +76,7 @@ public record VkPhysicalDeviceRobustness2PropertiesEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkPhysicalDeviceRobustness2PropertiesEXTFactory implements IFactory<VkPhysicalDeviceRobustness2PropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceRobustness2PropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceRobustness2PropertiesEXT> clazz() {
             return VkPhysicalDeviceRobustness2PropertiesEXT.class;
@@ -98,5 +98,5 @@ public record VkPhysicalDeviceRobustness2PropertiesEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkPhysicalDeviceRobustness2PropertiesEXTFactory FACTORY = new VkPhysicalDeviceRobustness2PropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

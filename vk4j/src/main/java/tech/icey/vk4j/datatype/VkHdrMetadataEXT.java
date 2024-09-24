@@ -148,7 +148,7 @@ public record VkHdrMetadataEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkHdrMetadataEXTFactory implements IFactory<VkHdrMetadataEXT> {
+    public static final class Factory implements IFactory<VkHdrMetadataEXT> {
         @Override
         public Class<VkHdrMetadataEXT> clazz() {
             return VkHdrMetadataEXT.class;
@@ -170,5 +170,5 @@ public record VkHdrMetadataEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkHdrMetadataEXTFactory FACTORY = new VkHdrMetadataEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

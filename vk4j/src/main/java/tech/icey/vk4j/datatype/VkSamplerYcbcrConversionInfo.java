@@ -64,7 +64,7 @@ public record VkSamplerYcbcrConversionInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkSamplerYcbcrConversionInfoFactory implements IFactory<VkSamplerYcbcrConversionInfo> {
+    public static final class Factory implements IFactory<VkSamplerYcbcrConversionInfo> {
         @Override
         public Class<VkSamplerYcbcrConversionInfo> clazz() {
             return VkSamplerYcbcrConversionInfo.class;
@@ -86,5 +86,5 @@ public record VkSamplerYcbcrConversionInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkSamplerYcbcrConversionInfoFactory FACTORY = new VkSamplerYcbcrConversionInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

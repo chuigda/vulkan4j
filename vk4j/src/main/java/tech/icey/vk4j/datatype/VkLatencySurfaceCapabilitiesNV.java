@@ -90,7 +90,7 @@ public record VkLatencySurfaceCapabilitiesNV(MemorySegment segment) {
     }
 
 
-    public static final class VkLatencySurfaceCapabilitiesNVFactory implements IFactory<VkLatencySurfaceCapabilitiesNV> {
+    public static final class Factory implements IFactory<VkLatencySurfaceCapabilitiesNV> {
         @Override
         public Class<VkLatencySurfaceCapabilitiesNV> clazz() {
             return VkLatencySurfaceCapabilitiesNV.class;
@@ -112,5 +112,5 @@ public record VkLatencySurfaceCapabilitiesNV(MemorySegment segment) {
         }
     }
 
-    public static final VkLatencySurfaceCapabilitiesNVFactory FACTORY = new VkLatencySurfaceCapabilitiesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

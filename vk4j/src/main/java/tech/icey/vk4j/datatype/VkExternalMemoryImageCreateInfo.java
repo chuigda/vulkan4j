@@ -64,7 +64,7 @@ public record VkExternalMemoryImageCreateInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkExternalMemoryImageCreateInfoFactory implements IFactory<VkExternalMemoryImageCreateInfo> {
+    public static final class Factory implements IFactory<VkExternalMemoryImageCreateInfo> {
         @Override
         public Class<VkExternalMemoryImageCreateInfo> clazz() {
             return VkExternalMemoryImageCreateInfo.class;
@@ -86,5 +86,5 @@ public record VkExternalMemoryImageCreateInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkExternalMemoryImageCreateInfoFactory FACTORY = new VkExternalMemoryImageCreateInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

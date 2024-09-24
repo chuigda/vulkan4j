@@ -76,7 +76,7 @@ public record VkFenceGetSciSyncInfoNV(MemorySegment segment) {
     }
 
 
-    public static final class VkFenceGetSciSyncInfoNVFactory implements IFactory<VkFenceGetSciSyncInfoNV> {
+    public static final class Factory implements IFactory<VkFenceGetSciSyncInfoNV> {
         @Override
         public Class<VkFenceGetSciSyncInfoNV> clazz() {
             return VkFenceGetSciSyncInfoNV.class;
@@ -98,5 +98,5 @@ public record VkFenceGetSciSyncInfoNV(MemorySegment segment) {
         }
     }
 
-    public static final VkFenceGetSciSyncInfoNVFactory FACTORY = new VkFenceGetSciSyncInfoNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

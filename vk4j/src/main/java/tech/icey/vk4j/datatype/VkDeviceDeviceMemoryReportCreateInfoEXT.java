@@ -88,7 +88,7 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) {
     }
 
 
-    public static final class VkDeviceDeviceMemoryReportCreateInfoEXTFactory implements IFactory<VkDeviceDeviceMemoryReportCreateInfoEXT> {
+    public static final class Factory implements IFactory<VkDeviceDeviceMemoryReportCreateInfoEXT> {
         @Override
         public Class<VkDeviceDeviceMemoryReportCreateInfoEXT> clazz() {
             return VkDeviceDeviceMemoryReportCreateInfoEXT.class;
@@ -110,5 +110,5 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) {
         }
     }
 
-    public static final VkDeviceDeviceMemoryReportCreateInfoEXTFactory FACTORY = new VkDeviceDeviceMemoryReportCreateInfoEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }

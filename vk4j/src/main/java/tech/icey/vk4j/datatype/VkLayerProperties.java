@@ -83,7 +83,7 @@ public record VkLayerProperties(MemorySegment segment) {
     }
 
 
-    public static final class VkLayerPropertiesFactory implements IFactory<VkLayerProperties> {
+    public static final class Factory implements IFactory<VkLayerProperties> {
         @Override
         public Class<VkLayerProperties> clazz() {
             return VkLayerProperties.class;
@@ -105,5 +105,5 @@ public record VkLayerProperties(MemorySegment segment) {
         }
     }
 
-    public static final VkLayerPropertiesFactory FACTORY = new VkLayerPropertiesFactory();
+    public static final Factory FACTORY = new Factory();
 }

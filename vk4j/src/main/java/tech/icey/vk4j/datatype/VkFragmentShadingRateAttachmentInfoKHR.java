@@ -89,7 +89,7 @@ public record VkFragmentShadingRateAttachmentInfoKHR(MemorySegment segment) {
     }
 
 
-    public static final class VkFragmentShadingRateAttachmentInfoKHRFactory implements IFactory<VkFragmentShadingRateAttachmentInfoKHR> {
+    public static final class Factory implements IFactory<VkFragmentShadingRateAttachmentInfoKHR> {
         @Override
         public Class<VkFragmentShadingRateAttachmentInfoKHR> clazz() {
             return VkFragmentShadingRateAttachmentInfoKHR.class;
@@ -111,5 +111,5 @@ public record VkFragmentShadingRateAttachmentInfoKHR(MemorySegment segment) {
         }
     }
 
-    public static final VkFragmentShadingRateAttachmentInfoKHRFactory FACTORY = new VkFragmentShadingRateAttachmentInfoKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

@@ -150,7 +150,7 @@ public record VkCommandBufferInheritanceRenderingInfo(MemorySegment segment) {
     }
 
 
-    public static final class VkCommandBufferInheritanceRenderingInfoFactory implements IFactory<VkCommandBufferInheritanceRenderingInfo> {
+    public static final class Factory implements IFactory<VkCommandBufferInheritanceRenderingInfo> {
         @Override
         public Class<VkCommandBufferInheritanceRenderingInfo> clazz() {
             return VkCommandBufferInheritanceRenderingInfo.class;
@@ -172,5 +172,5 @@ public record VkCommandBufferInheritanceRenderingInfo(MemorySegment segment) {
         }
     }
 
-    public static final VkCommandBufferInheritanceRenderingInfoFactory FACTORY = new VkCommandBufferInheritanceRenderingInfoFactory();
+    public static final Factory FACTORY = new Factory();
 }

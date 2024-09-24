@@ -39,7 +39,7 @@ public record VkRefreshCycleDurationGOOGLE(MemorySegment segment) {
     }
 
 
-    public static final class VkRefreshCycleDurationGOOGLEFactory implements IFactory<VkRefreshCycleDurationGOOGLE> {
+    public static final class Factory implements IFactory<VkRefreshCycleDurationGOOGLE> {
         @Override
         public Class<VkRefreshCycleDurationGOOGLE> clazz() {
             return VkRefreshCycleDurationGOOGLE.class;
@@ -61,5 +61,5 @@ public record VkRefreshCycleDurationGOOGLE(MemorySegment segment) {
         }
     }
 
-    public static final VkRefreshCycleDurationGOOGLEFactory FACTORY = new VkRefreshCycleDurationGOOGLEFactory();
+    public static final Factory FACTORY = new Factory();
 }

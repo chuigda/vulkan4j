@@ -64,7 +64,7 @@ public record VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHR(MemorySegment
     }
 
 
-    public static final class VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHRFactory implements IFactory<VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHR> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHR> {
         @Override
         public Class<VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHR> clazz() {
             return VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHR.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHR(MemorySegment
         }
     }
 
-    public static final VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHRFactory FACTORY = new VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHRFactory();
+    public static final Factory FACTORY = new Factory();
 }

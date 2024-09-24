@@ -64,7 +64,7 @@ public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(MemoryS
     }
 
 
-    public static final class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNVFactory implements IFactory<VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV> {
         @Override
         public Class<VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV> clazz() {
             return VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(MemoryS
         }
     }
 
-    public static final VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNVFactory FACTORY = new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

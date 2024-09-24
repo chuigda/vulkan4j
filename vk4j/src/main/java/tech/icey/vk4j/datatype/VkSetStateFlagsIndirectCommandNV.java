@@ -39,7 +39,7 @@ public record VkSetStateFlagsIndirectCommandNV(MemorySegment segment) {
     }
 
 
-    public static final class VkSetStateFlagsIndirectCommandNVFactory implements IFactory<VkSetStateFlagsIndirectCommandNV> {
+    public static final class Factory implements IFactory<VkSetStateFlagsIndirectCommandNV> {
         @Override
         public Class<VkSetStateFlagsIndirectCommandNV> clazz() {
             return VkSetStateFlagsIndirectCommandNV.class;
@@ -61,5 +61,5 @@ public record VkSetStateFlagsIndirectCommandNV(MemorySegment segment) {
         }
     }
 
-    public static final VkSetStateFlagsIndirectCommandNVFactory FACTORY = new VkSetStateFlagsIndirectCommandNVFactory();
+    public static final Factory FACTORY = new Factory();
 }

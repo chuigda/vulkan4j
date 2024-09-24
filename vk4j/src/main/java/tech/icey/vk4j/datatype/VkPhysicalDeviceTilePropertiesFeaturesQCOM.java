@@ -64,7 +64,7 @@ public record VkPhysicalDeviceTilePropertiesFeaturesQCOM(MemorySegment segment) 
     }
 
 
-    public static final class VkPhysicalDeviceTilePropertiesFeaturesQCOMFactory implements IFactory<VkPhysicalDeviceTilePropertiesFeaturesQCOM> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceTilePropertiesFeaturesQCOM> {
         @Override
         public Class<VkPhysicalDeviceTilePropertiesFeaturesQCOM> clazz() {
             return VkPhysicalDeviceTilePropertiesFeaturesQCOM.class;
@@ -86,5 +86,5 @@ public record VkPhysicalDeviceTilePropertiesFeaturesQCOM(MemorySegment segment) 
         }
     }
 
-    public static final VkPhysicalDeviceTilePropertiesFeaturesQCOMFactory FACTORY = new VkPhysicalDeviceTilePropertiesFeaturesQCOMFactory();
+    public static final Factory FACTORY = new Factory();
 }

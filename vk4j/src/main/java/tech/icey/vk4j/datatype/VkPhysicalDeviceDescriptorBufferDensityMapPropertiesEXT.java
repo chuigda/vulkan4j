@@ -63,7 +63,7 @@ public record VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(MemorySegm
         }
 
 
-    public static final class VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXTFactory implements IFactory<VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT> {
+    public static final class Factory implements IFactory<VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT> {
         @Override
         public Class<VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT> clazz() {
             return VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT.class;
@@ -85,5 +85,5 @@ public record VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(MemorySegm
         }
     }
 
-    public static final VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXTFactory FACTORY = new VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXTFactory();
+    public static final Factory FACTORY = new Factory();
 }
