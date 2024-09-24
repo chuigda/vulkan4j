@@ -32,17 +32,20 @@ public class Application implements AutoCloseable {
         if (!findQueueFamilies()) return false;
         if (!createDevice()) return false;
         if (!createSwapchain()) return false;
+        if (!createImageViews()) return false;
 
         return true;
     }
 
     public void mainLoop() {
-
     }
 
     public void cleanup() {
         if (debugMessenger != null) {
             instanceCommands.vkDestroyDebugUtilsMessengerEXT(instance, debugMessenger, null);
+        }
+        for (var imageView : swapchainImageViews) {
+            deviceCommands.vkDestroyImageView(device, imageView, null);
         }
         deviceCommands.vkDestroySwapchainKHR(device, swapchain, null);
         deviceCommands.vkDestroyDevice(device, null);
@@ -525,6 +528,7 @@ public class Application implements AutoCloseable {
                     break;
                 }
             }
+            swapchainImageFormat = surfaceFormat.format();
 
             VkExtent2D swapExtent;
             if (surfaceCapabilities.currentExtent().width() != 0xFFFFFFFF) {
@@ -596,11 +600,41 @@ public class Application implements AutoCloseable {
             }
 
             int swapchainImageCount = pSwapchainImageCount.read();
-            var swapchainImages = Create.createArray(VkImage.FACTORY, localArena, swapchainImageCount).first;
+            swapchainImages = Create.createArray(VkImage.FACTORY, arena, swapchainImageCount).first;
             result = deviceCommands.vkGetSwapchainImagesKHR(device, swapchain, pSwapchainImageCount, swapchainImages[0]);
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("获取 Vulkan 交换链图像失败：" + result);
                 return false;
+            }
+
+            return true;
+        }
+    }
+
+    private boolean createImageViews() {
+        swapchainImageViews = Create.createArray(VkImageView.FACTORY, arena, swapchainImages.length).first;
+        try (Arena localArena = Arena.ofConfined()) {
+            for (int i = 0; i < swapchainImages.length; i++) {
+                var createInfo = Create.create(VkImageViewCreateInfo.FACTORY, localArena);
+                createInfo.image(swapchainImages[i]);
+                createInfo.viewType(VkImageViewType.VK_IMAGE_VIEW_TYPE_2D);
+                createInfo.format(swapchainImageFormat);
+                createInfo.components().r(VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY);
+                createInfo.components().g(VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY);
+                createInfo.components().b(VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY);
+                createInfo.components().a(VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY);
+                createInfo.subresourceRange().aspectMask(VkImageAspectFlags.VK_IMAGE_ASPECT_COLOR_BIT);
+                createInfo.subresourceRange().baseMipLevel(0);
+                createInfo.subresourceRange().levelCount(1);
+                createInfo.subresourceRange().baseArrayLayer(0);
+                createInfo.subresourceRange().layerCount(1);
+
+                swapchainImageViews[i] = Create.create(VkImageView.FACTORY, arena);
+                var result = deviceCommands.vkCreateImageView(device, createInfo, null, swapchainImageViews[i]);
+                if (result != VkResult.VK_SUCCESS) {
+                    UICommons.showErrorMessage("创建 Vulkan 图像视图失败：" + result);
+                    return false;
+                }
             }
 
             return true;
@@ -680,7 +714,9 @@ public class Application implements AutoCloseable {
     private VkQueue graphicsQueue;
     private VkQueue presentationQueue;
     private VkSwapchainKHR swapchain;
+    private @enumtype(VkFormat.class) int swapchainImageFormat;
     private VkImage[] swapchainImages;
+    private VkImageView[] swapchainImageViews;
 
     private static final StaticCommands staticCommands = new StaticCommands(Loader::loadFunctionOrNull);
     private static final EntryCommands entryCommands = new EntryCommands(Loader::loadFunctionOrNull);
