@@ -53,14 +53,14 @@ public final class EntryCommands {
 
     public @enumtype(VkResult.class) int vkCreateInstance(
             @pointer(target=VkInstanceCreateInfo.class) VkInstanceCreateInfo pCreateInfo,
-            @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkInstance.class) VkInstance pInstance
     ) {
         try {
             return (int) HANDLE$vkCreateInstance.invoke(
-                    pCreateInfo != null ? pCreateInfo.segment() : MemorySegment.NULL,
+                    pCreateInfo.segment(),
                     pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
-                    pInstance != null ? pInstance.segment() : MemorySegment.NULL
+                    pInstance.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -72,7 +72,7 @@ public final class EntryCommands {
     ) {
         try {
             return (int) HANDLE$vkEnumerateInstanceVersion.invoke(
-                    pApiVersion != null ? pApiVersion.segment() : MemorySegment.NULL
+                    pApiVersion.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -81,11 +81,11 @@ public final class EntryCommands {
 
     public @enumtype(VkResult.class) int vkEnumerateInstanceLayerProperties(
             @pointer(target=IntPtr.class) @unsigned IntPtr pPropertyCount,
-            @pointer(target=VkLayerProperties.class) VkLayerProperties pProperties
+            @nullable @pointer(target=VkLayerProperties.class) VkLayerProperties pProperties
     ) {
         try {
             return (int) HANDLE$vkEnumerateInstanceLayerProperties.invoke(
-                    pPropertyCount != null ? pPropertyCount.segment() : MemorySegment.NULL,
+                    pPropertyCount.segment(),
                     pProperties != null ? pProperties.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {
@@ -94,14 +94,14 @@ public final class EntryCommands {
     }
 
     public @enumtype(VkResult.class) int vkEnumerateInstanceExtensionProperties(
-            @pointer(target=BytePtr.class) BytePtr pLayerName,
+            @nullable @pointer(target=BytePtr.class) BytePtr pLayerName,
             @pointer(target=IntPtr.class) @unsigned IntPtr pPropertyCount,
-            @pointer(target=VkExtensionProperties.class) VkExtensionProperties pProperties
+            @nullable @pointer(target=VkExtensionProperties.class) VkExtensionProperties pProperties
     ) {
         try {
             return (int) HANDLE$vkEnumerateInstanceExtensionProperties.invoke(
                     pLayerName != null ? pLayerName.segment() : MemorySegment.NULL,
-                    pPropertyCount != null ? pPropertyCount.segment() : MemorySegment.NULL,
+                    pPropertyCount.segment(),
                     pProperties != null ? pProperties.segment() : MemorySegment.NULL
             );
         } catch (Throwable t) {

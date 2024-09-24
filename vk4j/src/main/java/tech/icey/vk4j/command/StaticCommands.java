@@ -40,8 +40,8 @@ public final class StaticCommands {
     ) {
         try {
             return (MemorySegment) HANDLE$vkGetDeviceProcAddr.invoke(
-                    device != null ? device.handle() : MemorySegment.NULL,
-                    pName != null ? pName.segment() : MemorySegment.NULL
+                    device.handle(),
+                    pName.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -49,13 +49,13 @@ public final class StaticCommands {
     }
 
     public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetInstanceProcAddr(
-            VkInstance instance,
+            @nullable VkInstance instance,
             @pointer(target=BytePtr.class) BytePtr pName
     ) {
         try {
             return (MemorySegment) HANDLE$vkGetInstanceProcAddr.invoke(
                     instance != null ? instance.handle() : MemorySegment.NULL,
-                    pName != null ? pName.segment() : MemorySegment.NULL
+                    pName.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);

@@ -2,7 +2,7 @@ from __future__ import annotations
 from enum import Enum as PythonEnum
 
 from .ctype import *
-from ..entity import Registry, Command
+from ..entity import Registry, Command, Param
 from ..vktype import IdentifierType
 
 
@@ -113,12 +113,12 @@ def generate_command_load(registry: Registry, command: Command, dual_loader: boo
 def generate_command_wrapper(command: Command, param_types: list[CType], result_type: CType) -> str:
     params = []
     for (param_type, param) in zip(param_types, command.params):
-        params.append(f'{generate_input_output_type(param_type)} {param.name}')
-    param_names = list(map(lambda p: p.name, command.params))
+        params.append(f'{generate_input_output_type(param_type, param.optional)} {param.name}')
+    # param_names = list(map(lambda p: p.name, command.params))
 
     invoke_args = []
-    for (param_type, param_name) in zip(param_types, param_names):
-        invoke_args.append(generate_input_convert(param_type, param_name))
+    for (param_type, param) in zip(param_types, command.params):
+        invoke_args.append(generate_input_convert(param_type, param))
 
     invoke_expr = f'''HANDLE${command.name}.invoke(
                     {",\n                    ".join(invoke_args)}
@@ -135,7 +135,7 @@ def generate_command_wrapper(command: Command, param_types: list[CType], result_
         }}
     }}\n'''
     else:
-        return f'''    public {generate_input_output_type(result_type)} {command.name}(
+        return f'''    public {generate_input_output_type(result_type, False)} {command.name}(
             {',\n            '.join(params)}
     ) {{
         try {{
@@ -146,16 +146,20 @@ def generate_command_wrapper(command: Command, param_types: list[CType], result_
     }}\n'''
 
 
-def generate_input_output_type(type_: CType) -> str:
+def generate_input_output_type(type_: CType, optional: bool) -> str:
+    nullable_prefix = '@nullable ' if optional else ''
+
     if isinstance(type_, CPointerType):
         if isinstance(type_.pointee, CNonRefType):
-            return f'@pointer(target={type_.pointee.vk4j_ptr_type_no_sign()}.class) {type_.pointee.vk4j_ptr_type()}'
+            return f'{nullable_prefix}@pointer(target={type_.pointee.vk4j_ptr_type_no_sign()}.class) {type_.pointee.vk4j_ptr_type()}'
         elif isinstance(type_.pointee, CStructType) \
                 or isinstance(type_.pointee, CUnionType) \
                 or isinstance(type_.pointee, CHandleType):
-            return f'@pointer(target={type_.pointee.java_type()}.class) {type_.pointee.java_type()}'
+            return f'{nullable_prefix}@pointer(target={type_.pointee.java_type()}.class) {type_.pointee.java_type()}'
         else:
             return type_.java_type()
+    elif isinstance(type_, CHandleType):
+        return f'{nullable_prefix}{type_.java_type()}'
     elif isinstance(type_, CArrayType):
         flattened = flatten_array(type_)
         if isinstance(flattened.element, CNonRefType):
@@ -168,28 +172,34 @@ def generate_input_output_type(type_: CType) -> str:
         return type_.java_type()
 
 
-def generate_input_convert(type_: CType, input_param: str):
+def generate_input_convert(type_: CType, param: Param):
     if isinstance(type_, CPointerType):
         if isinstance(type_.pointee, CNonRefType) \
                 or isinstance(type_.pointee, CStructType) \
                 or isinstance(type_.pointee, CUnionType) \
                 or isinstance(type_.pointee, CHandleType):
-            return f'{input_param} != null ? {input_param}.segment() : MemorySegment.NULL'
+            if param.optional:
+                return f'{param.name} != null ? {param.name}.segment() : MemorySegment.NULL'
+            else:
+                return f'{param.name}.segment()'
+
+    if isinstance(type_, CHandleType):
+        if param.optional:
+            return f'{param.name} != null ? {param.name}.handle() : MemorySegment.NULL'
+        else:
+            return f'{param.name}.handle()'
 
     if isinstance(type_, CStructType) or isinstance(type_, CUnionType):
-        return f'{input_param}.segment()'
+        return f'{param.name}.segment()'
 
     if isinstance(type_, CArrayType):
         flattened = flatten_array(type_)
         if isinstance(flattened.element, CNonRefType) or isinstance(flattened.element, CEnumType):
-            return f'{input_param}.segment()'
+            return f'{param.name}.segment()'
         else:
-            return f'{input_param} != null && {input_param}.length != 0 ? {input_param}[0].segment() : MemorySegment.NULL'
+            return f'{param.name} != null && {param.name}.length != 0 ? {param.name}[0].segment() : MemorySegment.NULL'
 
-    if isinstance(type_, CHandleType):
-        return f'{input_param} != null ? {input_param}.handle() : MemorySegment.NULL'
-
-    return input_param
+    return param.name
 
 
 def generate_result_convert(result_type: CType, fncall: str) -> str:
