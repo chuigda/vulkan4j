@@ -32,6 +32,11 @@ def application_start():
         if 'Video' in struct.name:
             print(f'    skipping {struct.name}')
             continue
+        if struct.name == 'VkBaseOutStructure':
+            # VkBaseOutStructure is self-referential and is somewhat handled manually
+            # Do not regenerate it unless we made significant changes to code generation logic
+            print(f'    skipping {struct.name}')
+            continue
         print(f'    generating {struct.name}')
         source = generate_structure(registry, struct)
         with open(f'../src/main/java/tech/icey/vk4j/datatype/{struct.name}.java', 'w') as f:
