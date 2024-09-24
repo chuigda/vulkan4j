@@ -1,7 +1,7 @@
 # vulkan4j
-[Vulkan](https://www.vulkan.org/) Java Binding using [Project-Panama](https://openjdk.org/projects/panama/) `java.lang.foreign` APIs.
+[Vulkan](https://www.vulkan.org/) Binding for Java using [Project-Panama](https://openjdk.org/projects/panama/) `java.lang.foreign` APIs.
 
-*Heavily inspired by [`vulkanalia` crate](https://github.com/KyleMayes/vulkanalia).*
+*Heavily inspired by the [`vulkanalia`](https://github.com/KyleMayes/vulkanalia) crate.*
 
 ## Roadmap
 - [x] Generate fundamental Vulkan API bindings using `vkxml2java` from `vk.xml`
