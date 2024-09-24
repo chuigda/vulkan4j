@@ -21,7 +21,9 @@ import java.lang.invoke.MethodHandle;
 
 public final class LibGLFW {
     public static final int GLFW_CLIENT_API = 0x00022001;
+    public static final int GLFW_RESIZABLE = 0x00020003;
     public static final int GLFW_NO_API = 0;
+    public static final int GLFW_FALSE = 0;
 
     public static final FunctionDescriptor DESCRIPTOR$glfwInit = FunctionDescriptor.of(
             ValueLayout.JAVA_INT
