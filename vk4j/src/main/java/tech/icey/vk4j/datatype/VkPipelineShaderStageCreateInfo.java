@@ -86,11 +86,11 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) {
     }
 
     public VkShaderModule module() {
-        return new VkShaderModule(segment.asSlice(OFFSET$module, LAYOUT$module));
+        return new VkShaderModule(segment.get(LAYOUT$module, OFFSET$module));
     }
 
     public void module(VkShaderModule value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$module, LAYOUT$module.byteSize());
+        segment.set(LAYOUT$module, OFFSET$module, value.segment());
     }
 
     public @pointer(comment="int8_t*") MemorySegment pNameRaw() {

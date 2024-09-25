@@ -58,11 +58,11 @@ public record VkDisplayPlaneInfo2KHR(MemorySegment segment) {
     }
 
     public VkDisplayModeKHR mode() {
-        return new VkDisplayModeKHR(segment.asSlice(OFFSET$mode, LAYOUT$mode));
+        return new VkDisplayModeKHR(segment.get(LAYOUT$mode, OFFSET$mode));
     }
 
     public void mode(VkDisplayModeKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$mode, LAYOUT$mode.byteSize());
+        segment.set(LAYOUT$mode, OFFSET$mode, value.segment());
     }
 
     public @unsigned int planeIndex() {

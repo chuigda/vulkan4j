@@ -1,17 +1,19 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkAccessFlags;
+import tech.icey.vk4j.enumtype.VkImageLayout;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkImage;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
 
 public record VkImageMemoryBarrier(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -130,11 +132,11 @@ public record VkImageMemoryBarrier(MemorySegment segment) {
     }
 
     public VkImage image() {
-        return new VkImage(segment.asSlice(OFFSET$image, LAYOUT$image));
+        return new VkImage(segment.get(LAYOUT$image, OFFSET$image));
     }
 
     public void image(VkImage value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$image, LAYOUT$image.byteSize());
+        segment.set(LAYOUT$image, OFFSET$image, value.segment());
     }
 
     public VkImageSubresourceRange subresourceRange() {
@@ -148,7 +150,7 @@ public record VkImageMemoryBarrier(MemorySegment segment) {
     public static VkImageMemoryBarrier allocate(Arena arena) {
         return new VkImageMemoryBarrier(arena.allocate(LAYOUT));
     }
-    
+
     public static VkImageMemoryBarrier[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageMemoryBarrier[] ret = new VkImageMemoryBarrier[count];

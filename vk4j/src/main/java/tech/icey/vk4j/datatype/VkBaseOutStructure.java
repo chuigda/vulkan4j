@@ -59,11 +59,11 @@ public record VkBaseOutStructure(MemorySegment segment) {
         pNextRaw(s);
     }
 
-    public static VkBaseOutStructure create(Arena arena) {
+    public static VkBaseOutStructure allocate(Arena arena) {
         return new VkBaseOutStructure(arena.allocate(LAYOUT));
     }
 
-    public static VkBaseOutStructure[] createArray(Arena arena, int length) {
+    public static VkBaseOutStructure[] allocate(Arena arena, int length) {
         MemorySegment segment = arena.allocate(LAYOUT, length);
         VkBaseOutStructure[] ret = new VkBaseOutStructure[length];
         for (int i = 0; i < length; i++) {

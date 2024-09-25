@@ -65,23 +65,23 @@ public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$libraryCount, OFFSET$libraryCount, value);
     }
 
-    public @pointer(comment="VkPipeline*") MemorySegment pLibrariesRaw() {
+    public @pointer(comment="VkPipeline") MemorySegment pLibrariesRaw() {
         return segment.get(LAYOUT$pLibraries, OFFSET$pLibraries);
     }
 
-    public void pLibrariesRaw(@pointer(comment="VkPipeline*") MemorySegment value) {
+    public void pLibrariesRaw(@pointer(comment="VkPipeline") MemorySegment value) {
         segment.set(LAYOUT$pLibraries, OFFSET$pLibraries, value);
     }
-    
-    public @nullable VkPipeline pLibraries() {
+
+    public @nullable VkPipeline.Buffer pLibraries() {
         MemorySegment s = pLibrariesRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkPipeline(s);
+        return new VkPipeline.Buffer(s);
     }
 
-    public void pLibraries(@nullable VkPipeline value) {
+    public void pLibraries(@nullable VkPipeline.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLibrariesRaw(s);
     }

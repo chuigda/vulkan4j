@@ -247,11 +247,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
     }
 
     public VkMicromapEXT micromap() {
-        return new VkMicromapEXT(segment.asSlice(OFFSET$micromap, LAYOUT$micromap));
+        return new VkMicromapEXT(segment.get(LAYOUT$micromap, OFFSET$micromap));
     }
 
     public void micromap(VkMicromapEXT value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$micromap, LAYOUT$micromap.byteSize());
+        segment.set(LAYOUT$micromap, OFFSET$micromap, value.segment());
     }
 
     public static VkAccelerationStructureTrianglesDisplacementMicromapNV allocate(Arena arena) {

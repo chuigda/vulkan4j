@@ -85,23 +85,23 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$setLayoutCount, OFFSET$setLayoutCount, value);
     }
 
-    public @pointer(comment="VkDescriptorSetLayout*") MemorySegment pSetLayoutsRaw() {
+    public @pointer(comment="VkDescriptorSetLayout") MemorySegment pSetLayoutsRaw() {
         return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
     }
 
-    public void pSetLayoutsRaw(@pointer(comment="VkDescriptorSetLayout*") MemorySegment value) {
+    public void pSetLayoutsRaw(@pointer(comment="VkDescriptorSetLayout") MemorySegment value) {
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
-    
-    public @nullable VkDescriptorSetLayout pSetLayouts() {
+
+    public @nullable VkDescriptorSetLayout.Buffer pSetLayouts() {
         MemorySegment s = pSetLayoutsRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkDescriptorSetLayout(s);
+        return new VkDescriptorSetLayout.Buffer(s);
     }
 
-    public void pSetLayouts(@nullable VkDescriptorSetLayout value) {
+    public void pSetLayouts(@nullable VkDescriptorSetLayout.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSetLayoutsRaw(s);
     }

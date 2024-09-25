@@ -1,17 +1,16 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkBuffer;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_GEOMETRY_AABB_NV;
 
 public record VkGeometryAABBNV(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -66,11 +65,11 @@ public record VkGeometryAABBNV(MemorySegment segment) {
     }
 
     public VkBuffer aabbData() {
-        return new VkBuffer(segment.asSlice(OFFSET$aabbData, LAYOUT$aabbData));
+        return new VkBuffer(segment.get(LAYOUT$aabbData, OFFSET$aabbData));
     }
 
     public void aabbData(VkBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$aabbData, LAYOUT$aabbData.byteSize());
+        segment.set(LAYOUT$aabbData, OFFSET$aabbData, value.segment());
     }
 
     public @unsigned int numAABBs() {
@@ -100,7 +99,7 @@ public record VkGeometryAABBNV(MemorySegment segment) {
     public static VkGeometryAABBNV allocate(Arena arena) {
         return new VkGeometryAABBNV(arena.allocate(LAYOUT));
     }
-    
+
     public static VkGeometryAABBNV[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkGeometryAABBNV[] ret = new VkGeometryAABBNV[count];

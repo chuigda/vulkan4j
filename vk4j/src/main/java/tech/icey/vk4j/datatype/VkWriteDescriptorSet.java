@@ -82,11 +82,11 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
     }
 
     public VkDescriptorSet dstSet() {
-        return new VkDescriptorSet(segment.asSlice(OFFSET$dstSet, LAYOUT$dstSet));
+        return new VkDescriptorSet(segment.get(LAYOUT$dstSet, OFFSET$dstSet));
     }
 
     public void dstSet(VkDescriptorSet value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstSet, LAYOUT$dstSet.byteSize());
+        segment.set(LAYOUT$dstSet, OFFSET$dstSet, value.segment());
     }
 
     public @unsigned int dstBinding() {
@@ -163,23 +163,23 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
         pBufferInfoRaw(s);
     }
 
-    public @pointer(comment="VkBufferView*") MemorySegment pTexelBufferViewRaw() {
+    public @pointer(comment="VkBufferView") MemorySegment pTexelBufferViewRaw() {
         return segment.get(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView);
     }
 
-    public void pTexelBufferViewRaw(@pointer(comment="VkBufferView*") MemorySegment value) {
+    public void pTexelBufferViewRaw(@pointer(comment="VkBufferView") MemorySegment value) {
         segment.set(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView, value);
     }
-    
-    public @nullable VkBufferView pTexelBufferView() {
+
+    public @nullable VkBufferView.Buffer pTexelBufferView() {
         MemorySegment s = pTexelBufferViewRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkBufferView(s);
+        return new VkBufferView.Buffer(s);
     }
 
-    public void pTexelBufferView(@nullable VkBufferView value) {
+    public void pTexelBufferView(@nullable VkBufferView.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTexelBufferViewRaw(s);
     }

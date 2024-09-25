@@ -1,17 +1,16 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkDeviceMemory;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE;
 
 public record VkMappedMemoryRange(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -62,11 +61,11 @@ public record VkMappedMemoryRange(MemorySegment segment) {
     }
 
     public VkDeviceMemory memory() {
-        return new VkDeviceMemory(segment.asSlice(OFFSET$memory, LAYOUT$memory));
+        return new VkDeviceMemory(segment.get(LAYOUT$memory, OFFSET$memory));
     }
 
     public void memory(VkDeviceMemory value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$memory, LAYOUT$memory.byteSize());
+        segment.set(LAYOUT$memory, OFFSET$memory, value.segment());
     }
 
     public @unsigned long offset() {
@@ -88,7 +87,7 @@ public record VkMappedMemoryRange(MemorySegment segment) {
     public static VkMappedMemoryRange allocate(Arena arena) {
         return new VkMappedMemoryRange(arena.allocate(LAYOUT));
     }
-    
+
     public static VkMappedMemoryRange[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMappedMemoryRange[] ret = new VkMappedMemoryRange[count];

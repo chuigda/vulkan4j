@@ -33,11 +33,11 @@ public record VkDisplayPlanePropertiesKHR(MemorySegment segment) {
     }
 
     public VkDisplayKHR currentDisplay() {
-        return new VkDisplayKHR(segment.asSlice(OFFSET$currentDisplay, LAYOUT$currentDisplay));
+        return new VkDisplayKHR(segment.get(LAYOUT$currentDisplay, OFFSET$currentDisplay));
     }
 
     public void currentDisplay(VkDisplayKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$currentDisplay, LAYOUT$currentDisplay.byteSize());
+        segment.set(LAYOUT$currentDisplay, OFFSET$currentDisplay, value.segment());
     }
 
     public @unsigned int currentStackIndex() {

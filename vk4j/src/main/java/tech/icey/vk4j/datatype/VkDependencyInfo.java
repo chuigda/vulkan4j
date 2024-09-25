@@ -1,17 +1,18 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.nullable;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkDependencyFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_DEPENDENCY_INFO;
 
 public record VkDependencyInfo(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -100,7 +101,7 @@ public record VkDependencyInfo(MemorySegment segment) {
     public void pMemoryBarriersRaw(@pointer(comment="VkMemoryBarrier2*") MemorySegment value) {
         segment.set(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers, value);
     }
-    
+
     public @nullable VkMemoryBarrier2 pMemoryBarriers() {
         MemorySegment s = pMemoryBarriersRaw();
         if (s.address() == 0) {
@@ -129,7 +130,7 @@ public record VkDependencyInfo(MemorySegment segment) {
     public void pBufferMemoryBarriersRaw(@pointer(comment="VkBufferMemoryBarrier2*") MemorySegment value) {
         segment.set(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers, value);
     }
-    
+
     public @nullable VkBufferMemoryBarrier2 pBufferMemoryBarriers() {
         MemorySegment s = pBufferMemoryBarriersRaw();
         if (s.address() == 0) {
@@ -158,7 +159,7 @@ public record VkDependencyInfo(MemorySegment segment) {
     public void pImageMemoryBarriersRaw(@pointer(comment="VkImageMemoryBarrier2*") MemorySegment value) {
         segment.set(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers, value);
     }
-    
+
     public @nullable VkImageMemoryBarrier2 pImageMemoryBarriers() {
         MemorySegment s = pImageMemoryBarriersRaw();
         if (s.address() == 0) {
@@ -175,7 +176,7 @@ public record VkDependencyInfo(MemorySegment segment) {
     public static VkDependencyInfo allocate(Arena arena) {
         return new VkDependencyInfo(arena.allocate(LAYOUT));
     }
-    
+
     public static VkDependencyInfo[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDependencyInfo[] ret = new VkDependencyInfo[count];

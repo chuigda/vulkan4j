@@ -65,23 +65,23 @@ public record VkDeviceGroupDeviceCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$physicalDeviceCount, OFFSET$physicalDeviceCount, value);
     }
 
-    public @pointer(comment="VkPhysicalDevice*") MemorySegment pPhysicalDevicesRaw() {
+    public @pointer(comment="VkPhysicalDevice") MemorySegment pPhysicalDevicesRaw() {
         return segment.get(LAYOUT$pPhysicalDevices, OFFSET$pPhysicalDevices);
     }
 
-    public void pPhysicalDevicesRaw(@pointer(comment="VkPhysicalDevice*") MemorySegment value) {
+    public void pPhysicalDevicesRaw(@pointer(comment="VkPhysicalDevice") MemorySegment value) {
         segment.set(LAYOUT$pPhysicalDevices, OFFSET$pPhysicalDevices, value);
     }
-    
-    public @nullable VkPhysicalDevice pPhysicalDevices() {
+
+    public @nullable VkPhysicalDevice.Buffer pPhysicalDevices() {
         MemorySegment s = pPhysicalDevicesRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkPhysicalDevice(s);
+        return new VkPhysicalDevice.Buffer(s);
     }
 
-    public void pPhysicalDevices(@nullable VkPhysicalDevice value) {
+    public void pPhysicalDevices(@nullable VkPhysicalDevice.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPhysicalDevicesRaw(s);
     }

@@ -62,11 +62,11 @@ public record VkCopyMicromapToMemoryInfoEXT(MemorySegment segment) {
     }
 
     public VkMicromapEXT src() {
-        return new VkMicromapEXT(segment.asSlice(OFFSET$src, LAYOUT$src));
+        return new VkMicromapEXT(segment.get(LAYOUT$src, OFFSET$src));
     }
 
     public void src(VkMicromapEXT value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$src, LAYOUT$src.byteSize());
+        segment.set(LAYOUT$src, OFFSET$src, value.segment());
     }
 
     public VkDeviceOrHostAddressKHR dst() {

@@ -86,11 +86,11 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) {
     }
 
     public VkPipelineLayout layout() {
-        return new VkPipelineLayout(segment.asSlice(OFFSET$layout, LAYOUT$layout));
+        return new VkPipelineLayout(segment.get(LAYOUT$layout, OFFSET$layout));
     }
 
     public void layout(VkPipelineLayout value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$layout, LAYOUT$layout.byteSize());
+        segment.set(LAYOUT$layout, OFFSET$layout, value.segment());
     }
 
     public @unsigned int firstSet() {
@@ -109,23 +109,23 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount, value);
     }
 
-    public @pointer(comment="VkDescriptorSet*") MemorySegment pDescriptorSetsRaw() {
+    public @pointer(comment="VkDescriptorSet") MemorySegment pDescriptorSetsRaw() {
         return segment.get(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets);
     }
 
-    public void pDescriptorSetsRaw(@pointer(comment="VkDescriptorSet*") MemorySegment value) {
+    public void pDescriptorSetsRaw(@pointer(comment="VkDescriptorSet") MemorySegment value) {
         segment.set(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets, value);
     }
-    
-    public @nullable VkDescriptorSet pDescriptorSets() {
+
+    public @nullable VkDescriptorSet.Buffer pDescriptorSets() {
         MemorySegment s = pDescriptorSetsRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkDescriptorSet(s);
+        return new VkDescriptorSet.Buffer(s);
     }
 
-    public void pDescriptorSets(@nullable VkDescriptorSet value) {
+    public void pDescriptorSets(@nullable VkDescriptorSet.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorSetsRaw(s);
     }

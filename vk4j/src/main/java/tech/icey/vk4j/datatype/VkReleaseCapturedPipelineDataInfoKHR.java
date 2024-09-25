@@ -54,11 +54,11 @@ public record VkReleaseCapturedPipelineDataInfoKHR(MemorySegment segment) {
     }
 
     public VkPipeline pipeline() {
-        return new VkPipeline(segment.asSlice(OFFSET$pipeline, LAYOUT$pipeline));
+        return new VkPipeline(segment.get(LAYOUT$pipeline, OFFSET$pipeline));
     }
 
     public void pipeline(VkPipeline value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipeline, LAYOUT$pipeline.byteSize());
+        segment.set(LAYOUT$pipeline, OFFSET$pipeline, value.segment());
     }
 
     public static VkReleaseCapturedPipelineDataInfoKHR allocate(Arena arena) {

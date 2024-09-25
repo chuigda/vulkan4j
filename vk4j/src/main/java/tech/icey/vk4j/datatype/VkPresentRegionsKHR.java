@@ -1,17 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.nullable;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR;
 
 public record VkPresentRegionsKHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -72,7 +72,7 @@ public record VkPresentRegionsKHR(MemorySegment segment) {
     public void pRegionsRaw(@pointer(comment="VkPresentRegionKHR*") MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
-    
+
     public @nullable VkPresentRegionKHR pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {
@@ -89,7 +89,7 @@ public record VkPresentRegionsKHR(MemorySegment segment) {
     public static VkPresentRegionsKHR allocate(Arena arena) {
         return new VkPresentRegionsKHR(arena.allocate(LAYOUT));
     }
-    
+
     public static VkPresentRegionsKHR[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPresentRegionsKHR[] ret = new VkPresentRegionsKHR[count];

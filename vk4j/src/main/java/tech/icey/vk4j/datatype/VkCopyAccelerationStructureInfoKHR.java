@@ -62,19 +62,19 @@ public record VkCopyAccelerationStructureInfoKHR(MemorySegment segment) {
     }
 
     public VkAccelerationStructureKHR src() {
-        return new VkAccelerationStructureKHR(segment.asSlice(OFFSET$src, LAYOUT$src));
+        return new VkAccelerationStructureKHR(segment.get(LAYOUT$src, OFFSET$src));
     }
 
     public void src(VkAccelerationStructureKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$src, LAYOUT$src.byteSize());
+        segment.set(LAYOUT$src, OFFSET$src, value.segment());
     }
 
     public VkAccelerationStructureKHR dst() {
-        return new VkAccelerationStructureKHR(segment.asSlice(OFFSET$dst, LAYOUT$dst));
+        return new VkAccelerationStructureKHR(segment.get(LAYOUT$dst, OFFSET$dst));
     }
 
     public void dst(VkAccelerationStructureKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dst, LAYOUT$dst.byteSize());
+        segment.set(LAYOUT$dst, OFFSET$dst, value.segment());
     }
 
     public @enumtype(VkCopyAccelerationStructureModeKHR.class) int mode() {

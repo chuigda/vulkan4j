@@ -1,17 +1,19 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.nullable;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkFrameBoundaryFlagsEXT;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkBuffer;
+import tech.icey.vk4j.handle.VkImage;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT;
 
 public record VkFrameBoundaryEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -108,23 +110,23 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
         segment.set(LAYOUT$imageCount, OFFSET$imageCount, value);
     }
 
-    public @pointer(comment="VkImage*") MemorySegment pImagesRaw() {
+    public @pointer(comment="VkImage") MemorySegment pImagesRaw() {
         return segment.get(LAYOUT$pImages, OFFSET$pImages);
     }
 
-    public void pImagesRaw(@pointer(comment="VkImage*") MemorySegment value) {
+    public void pImagesRaw(@pointer(comment="VkImage") MemorySegment value) {
         segment.set(LAYOUT$pImages, OFFSET$pImages, value);
     }
-    
-    public @nullable VkImage pImages() {
+
+    public @nullable VkImage.Buffer pImages() {
         MemorySegment s = pImagesRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkImage(s);
+        return new VkImage.Buffer(s);
     }
 
-    public void pImages(@nullable VkImage value) {
+    public void pImages(@nullable VkImage.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImagesRaw(s);
     }
@@ -137,23 +139,23 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
         segment.set(LAYOUT$bufferCount, OFFSET$bufferCount, value);
     }
 
-    public @pointer(comment="VkBuffer*") MemorySegment pBuffersRaw() {
+    public @pointer(comment="VkBuffer") MemorySegment pBuffersRaw() {
         return segment.get(LAYOUT$pBuffers, OFFSET$pBuffers);
     }
 
-    public void pBuffersRaw(@pointer(comment="VkBuffer*") MemorySegment value) {
+    public void pBuffersRaw(@pointer(comment="VkBuffer") MemorySegment value) {
         segment.set(LAYOUT$pBuffers, OFFSET$pBuffers, value);
     }
-    
-    public @nullable VkBuffer pBuffers() {
+
+    public @nullable VkBuffer.Buffer pBuffers() {
         MemorySegment s = pBuffersRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkBuffer(s);
+        return new VkBuffer.Buffer(s);
     }
 
-    public void pBuffers(@nullable VkBuffer value) {
+    public void pBuffers(@nullable VkBuffer.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBuffersRaw(s);
     }
@@ -169,7 +171,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
     public @unsigned long tagSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$tagSize);
         }
-    
+
         public void tagSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$tagSize, value);
         }
@@ -185,7 +187,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
     public static VkFrameBoundaryEXT allocate(Arena arena) {
         return new VkFrameBoundaryEXT(arena.allocate(LAYOUT));
     }
-    
+
     public static VkFrameBoundaryEXT[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkFrameBoundaryEXT[] ret = new VkFrameBoundaryEXT[count];

@@ -1,17 +1,20 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.nullable;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkFilter;
+import tech.icey.vk4j.enumtype.VkImageLayout;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkImage;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_BLIT_IMAGE_INFO_2;
 
 public record VkBlitImageInfo2(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -78,11 +81,11 @@ public record VkBlitImageInfo2(MemorySegment segment) {
     }
 
     public VkImage srcImage() {
-        return new VkImage(segment.asSlice(OFFSET$srcImage, LAYOUT$srcImage));
+        return new VkImage(segment.get(LAYOUT$srcImage, OFFSET$srcImage));
     }
 
     public void srcImage(VkImage value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcImage, LAYOUT$srcImage.byteSize());
+        segment.set(LAYOUT$srcImage, OFFSET$srcImage, value.segment());
     }
 
     public @enumtype(VkImageLayout.class) int srcImageLayout() {
@@ -94,11 +97,11 @@ public record VkBlitImageInfo2(MemorySegment segment) {
     }
 
     public VkImage dstImage() {
-        return new VkImage(segment.asSlice(OFFSET$dstImage, LAYOUT$dstImage));
+        return new VkImage(segment.get(LAYOUT$dstImage, OFFSET$dstImage));
     }
 
     public void dstImage(VkImage value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstImage, LAYOUT$dstImage.byteSize());
+        segment.set(LAYOUT$dstImage, OFFSET$dstImage, value.segment());
     }
 
     public @enumtype(VkImageLayout.class) int dstImageLayout() {
@@ -124,7 +127,7 @@ public record VkBlitImageInfo2(MemorySegment segment) {
     public void pRegionsRaw(@pointer(comment="VkImageBlit2*") MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
-    
+
     public @nullable VkImageBlit2 pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {
@@ -149,7 +152,7 @@ public record VkBlitImageInfo2(MemorySegment segment) {
     public static VkBlitImageInfo2 allocate(Arena arena) {
         return new VkBlitImageInfo2(arena.allocate(LAYOUT));
     }
-    
+
     public static VkBlitImageInfo2[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBlitImageInfo2[] ret = new VkBlitImageInfo2[count];

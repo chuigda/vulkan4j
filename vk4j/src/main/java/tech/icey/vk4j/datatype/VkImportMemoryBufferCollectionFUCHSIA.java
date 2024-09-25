@@ -58,11 +58,11 @@ public record VkImportMemoryBufferCollectionFUCHSIA(MemorySegment segment) {
     }
 
     public VkBufferCollectionFUCHSIA collection() {
-        return new VkBufferCollectionFUCHSIA(segment.asSlice(OFFSET$collection, LAYOUT$collection));
+        return new VkBufferCollectionFUCHSIA(segment.get(LAYOUT$collection, OFFSET$collection));
     }
 
     public void collection(VkBufferCollectionFUCHSIA value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$collection, LAYOUT$collection.byteSize());
+        segment.set(LAYOUT$collection, OFFSET$collection, value.segment());
     }
 
     public @unsigned int index() {

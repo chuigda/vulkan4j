@@ -62,11 +62,11 @@ public record VkCommandBufferAllocateInfo(MemorySegment segment) {
     }
 
     public VkCommandPool commandPool() {
-        return new VkCommandPool(segment.asSlice(OFFSET$commandPool, LAYOUT$commandPool));
+        return new VkCommandPool(segment.get(LAYOUT$commandPool, OFFSET$commandPool));
     }
 
     public void commandPool(VkCommandPool value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$commandPool, LAYOUT$commandPool.byteSize());
+        segment.set(LAYOUT$commandPool, OFFSET$commandPool, value.segment());
     }
 
     public @enumtype(VkCommandBufferLevel.class) int level() {

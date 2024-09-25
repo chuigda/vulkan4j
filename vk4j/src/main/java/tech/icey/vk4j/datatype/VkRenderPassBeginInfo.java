@@ -70,19 +70,19 @@ public record VkRenderPassBeginInfo(MemorySegment segment) {
     }
 
     public VkRenderPass renderPass() {
-        return new VkRenderPass(segment.asSlice(OFFSET$renderPass, LAYOUT$renderPass));
+        return new VkRenderPass(segment.get(LAYOUT$renderPass, OFFSET$renderPass));
     }
 
     public void renderPass(VkRenderPass value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderPass, LAYOUT$renderPass.byteSize());
+        segment.set(LAYOUT$renderPass, OFFSET$renderPass, value.segment());
     }
 
     public VkFramebuffer framebuffer() {
-        return new VkFramebuffer(segment.asSlice(OFFSET$framebuffer, LAYOUT$framebuffer));
+        return new VkFramebuffer(segment.get(LAYOUT$framebuffer, OFFSET$framebuffer));
     }
 
     public void framebuffer(VkFramebuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$framebuffer, LAYOUT$framebuffer.byteSize());
+        segment.set(LAYOUT$framebuffer, OFFSET$framebuffer, value.segment());
     }
 
     public VkRect2D renderArea() {

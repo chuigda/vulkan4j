@@ -85,23 +85,23 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$acquireCount, OFFSET$acquireCount, value);
     }
 
-    public @pointer(comment="VkDeviceMemory*") MemorySegment pAcquireSyncsRaw() {
+    public @pointer(comment="VkDeviceMemory") MemorySegment pAcquireSyncsRaw() {
         return segment.get(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs);
     }
 
-    public void pAcquireSyncsRaw(@pointer(comment="VkDeviceMemory*") MemorySegment value) {
+    public void pAcquireSyncsRaw(@pointer(comment="VkDeviceMemory") MemorySegment value) {
         segment.set(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs, value);
     }
-    
-    public @nullable VkDeviceMemory pAcquireSyncs() {
+
+    public @nullable VkDeviceMemory.Buffer pAcquireSyncs() {
         MemorySegment s = pAcquireSyncsRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkDeviceMemory(s);
+        return new VkDeviceMemory.Buffer(s);
     }
 
-    public void pAcquireSyncs(@nullable VkDeviceMemory value) {
+    public void pAcquireSyncs(@nullable VkDeviceMemory.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAcquireSyncsRaw(s);
     }
@@ -146,23 +146,23 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$releaseCount, OFFSET$releaseCount, value);
     }
 
-    public @pointer(comment="VkDeviceMemory*") MemorySegment pReleaseSyncsRaw() {
+    public @pointer(comment="VkDeviceMemory") MemorySegment pReleaseSyncsRaw() {
         return segment.get(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs);
     }
 
-    public void pReleaseSyncsRaw(@pointer(comment="VkDeviceMemory*") MemorySegment value) {
+    public void pReleaseSyncsRaw(@pointer(comment="VkDeviceMemory") MemorySegment value) {
         segment.set(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs, value);
     }
-    
-    public @nullable VkDeviceMemory pReleaseSyncs() {
+
+    public @nullable VkDeviceMemory.Buffer pReleaseSyncs() {
         MemorySegment s = pReleaseSyncsRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkDeviceMemory(s);
+        return new VkDeviceMemory.Buffer(s);
     }
 
-    public void pReleaseSyncs(@nullable VkDeviceMemory value) {
+    public void pReleaseSyncs(@nullable VkDeviceMemory.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pReleaseSyncsRaw(s);
     }

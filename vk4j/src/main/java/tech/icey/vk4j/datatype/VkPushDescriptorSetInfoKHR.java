@@ -78,11 +78,11 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) {
     }
 
     public VkPipelineLayout layout() {
-        return new VkPipelineLayout(segment.asSlice(OFFSET$layout, LAYOUT$layout));
+        return new VkPipelineLayout(segment.get(LAYOUT$layout, OFFSET$layout));
     }
 
     public void layout(VkPipelineLayout value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$layout, LAYOUT$layout.byteSize());
+        segment.set(LAYOUT$layout, OFFSET$layout, value.segment());
     }
 
     public @unsigned int set() {

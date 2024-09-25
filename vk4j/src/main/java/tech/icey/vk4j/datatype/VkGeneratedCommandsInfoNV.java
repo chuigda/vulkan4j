@@ -110,19 +110,19 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
     }
 
     public VkPipeline pipeline() {
-        return new VkPipeline(segment.asSlice(OFFSET$pipeline, LAYOUT$pipeline));
+        return new VkPipeline(segment.get(LAYOUT$pipeline, OFFSET$pipeline));
     }
 
     public void pipeline(VkPipeline value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipeline, LAYOUT$pipeline.byteSize());
+        segment.set(LAYOUT$pipeline, OFFSET$pipeline, value.segment());
     }
 
     public VkIndirectCommandsLayoutNV indirectCommandsLayout() {
-        return new VkIndirectCommandsLayoutNV(segment.asSlice(OFFSET$indirectCommandsLayout, LAYOUT$indirectCommandsLayout));
+        return new VkIndirectCommandsLayoutNV(segment.get(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout));
     }
 
     public void indirectCommandsLayout(VkIndirectCommandsLayoutNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$indirectCommandsLayout, LAYOUT$indirectCommandsLayout.byteSize());
+        segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value.segment());
     }
 
     public @unsigned int streamCount() {
@@ -163,11 +163,11 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
     }
 
     public VkBuffer preprocessBuffer() {
-        return new VkBuffer(segment.asSlice(OFFSET$preprocessBuffer, LAYOUT$preprocessBuffer));
+        return new VkBuffer(segment.get(LAYOUT$preprocessBuffer, OFFSET$preprocessBuffer));
     }
 
     public void preprocessBuffer(VkBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$preprocessBuffer, LAYOUT$preprocessBuffer.byteSize());
+        segment.set(LAYOUT$preprocessBuffer, OFFSET$preprocessBuffer, value.segment());
     }
 
     public @unsigned long preprocessOffset() {
@@ -187,11 +187,11 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
     }
 
     public VkBuffer sequencesCountBuffer() {
-        return new VkBuffer(segment.asSlice(OFFSET$sequencesCountBuffer, LAYOUT$sequencesCountBuffer));
+        return new VkBuffer(segment.get(LAYOUT$sequencesCountBuffer, OFFSET$sequencesCountBuffer));
     }
 
     public void sequencesCountBuffer(VkBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sequencesCountBuffer, LAYOUT$sequencesCountBuffer.byteSize());
+        segment.set(LAYOUT$sequencesCountBuffer, OFFSET$sequencesCountBuffer, value.segment());
     }
 
     public @unsigned long sequencesCountOffset() {
@@ -203,11 +203,11 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
     }
 
     public VkBuffer sequencesIndexBuffer() {
-        return new VkBuffer(segment.asSlice(OFFSET$sequencesIndexBuffer, LAYOUT$sequencesIndexBuffer));
+        return new VkBuffer(segment.get(LAYOUT$sequencesIndexBuffer, OFFSET$sequencesIndexBuffer));
     }
 
     public void sequencesIndexBuffer(VkBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sequencesIndexBuffer, LAYOUT$sequencesIndexBuffer.byteSize());
+        segment.set(LAYOUT$sequencesIndexBuffer, OFFSET$sequencesIndexBuffer, value.segment());
     }
 
     public @unsigned long sequencesIndexOffset() {

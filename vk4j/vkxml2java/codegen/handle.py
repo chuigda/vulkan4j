@@ -4,6 +4,8 @@ from ..entity import Handle
 def generate_handle(handle: Handle) -> str:
     return f'''package tech.icey.vk4j.handle;
 
+import tech.icey.vk4j.annotation.unsafe;
+
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
@@ -42,18 +44,26 @@ public record {handle.name}(MemorySegment segment) {{
             writeRaw(value.segment());
         }}
 
-        public void write({handle.name} value, long index) {{
-            writeRaw(value.segment(), index);
+        public void write(long index, {handle.name} value) {{
+            writeRaw(index, value.segment());
         }}
 
         public void writeRaw(MemorySegment value) {{
             segment.set(ValueLayout.ADDRESS, 0, value);
         }}
 
-        public void writeRaw(MemorySegment value, long index) {{
+        public void writeRaw(long index, MemorySegment value) {{
             segment.set(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize(), value);
         }}
 
+        public Buffer offset(long offset) {{
+            return new Buffer(segment.asSlice(
+                offset * ValueLayout.ADDRESS.byteSize(),
+                (size() - offset) * ValueLayout.ADDRESS.byteSize()
+            ));
+        }}
+
+        @unsafe
         public Buffer reinterpret(long newSize) {{
             return new Buffer(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
         }}

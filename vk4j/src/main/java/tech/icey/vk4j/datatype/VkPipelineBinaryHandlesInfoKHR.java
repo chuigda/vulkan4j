@@ -65,23 +65,23 @@ public record VkPipelineBinaryHandlesInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pipelineBinaryCount, OFFSET$pipelineBinaryCount, value);
     }
 
-    public @pointer(comment="VkPipelineBinaryKHR*") MemorySegment pPipelineBinariesRaw() {
+    public @pointer(comment="VkPipelineBinaryKHR") MemorySegment pPipelineBinariesRaw() {
         return segment.get(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries);
     }
 
-    public void pPipelineBinariesRaw(@pointer(comment="VkPipelineBinaryKHR*") MemorySegment value) {
+    public void pPipelineBinariesRaw(@pointer(comment="VkPipelineBinaryKHR") MemorySegment value) {
         segment.set(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries, value);
     }
-    
-    public @nullable VkPipelineBinaryKHR pPipelineBinaries() {
+
+    public @nullable VkPipelineBinaryKHR.Buffer pPipelineBinaries() {
         MemorySegment s = pPipelineBinariesRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkPipelineBinaryKHR(s);
+        return new VkPipelineBinaryKHR.Buffer(s);
     }
 
-    public void pPipelineBinaries(@nullable VkPipelineBinaryKHR value) {
+    public void pPipelineBinaries(@nullable VkPipelineBinaryKHR.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineBinariesRaw(s);
     }

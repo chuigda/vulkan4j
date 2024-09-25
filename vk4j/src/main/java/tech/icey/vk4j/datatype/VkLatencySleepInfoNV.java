@@ -58,11 +58,11 @@ public record VkLatencySleepInfoNV(MemorySegment segment) {
     }
 
     public VkSemaphore signalSemaphore() {
-        return new VkSemaphore(segment.asSlice(OFFSET$signalSemaphore, LAYOUT$signalSemaphore));
+        return new VkSemaphore(segment.get(LAYOUT$signalSemaphore, OFFSET$signalSemaphore));
     }
 
     public void signalSemaphore(VkSemaphore value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$signalSemaphore, LAYOUT$signalSemaphore.byteSize());
+        segment.set(LAYOUT$signalSemaphore, OFFSET$signalSemaphore, value.segment());
     }
 
     public @unsigned long value() {

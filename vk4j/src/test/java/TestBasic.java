@@ -53,9 +53,9 @@ public class TestBasic {
             }
 
             var applicationInfo = VkApplicationInfo.allocate(arena);
-            applicationInfo.pApplicationName(ByteBuffer.allocateUtf8(arena, "Hello, Vulkan!"));
+            applicationInfo.pApplicationName(ByteBuffer.allocateString(arena, "Hello, Vulkan!"));
             applicationInfo.applicationVersion(1);
-            applicationInfo.pEngineName(ByteBuffer.allocateUtf8(arena, "vk4j"));
+            applicationInfo.pEngineName(ByteBuffer.allocateString(arena, "vk4j"));
             applicationInfo.engineVersion(1);
             applicationInfo.apiVersion(Version.VK_API_VERSION_1_3);
 

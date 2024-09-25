@@ -62,11 +62,11 @@ public record VkCopyAccelerationStructureToMemoryInfoKHR(MemorySegment segment) 
     }
 
     public VkAccelerationStructureKHR src() {
-        return new VkAccelerationStructureKHR(segment.asSlice(OFFSET$src, LAYOUT$src));
+        return new VkAccelerationStructureKHR(segment.get(LAYOUT$src, OFFSET$src));
     }
 
     public void src(VkAccelerationStructureKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$src, LAYOUT$src.byteSize());
+        segment.set(LAYOUT$src, OFFSET$src, value.segment());
     }
 
     public VkDeviceOrHostAddressKHR dst() {

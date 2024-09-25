@@ -70,11 +70,11 @@ public record VkCopyImageToBufferInfo2(MemorySegment segment) {
     }
 
     public VkImage srcImage() {
-        return new VkImage(segment.asSlice(OFFSET$srcImage, LAYOUT$srcImage));
+        return new VkImage(segment.get(LAYOUT$srcImage, OFFSET$srcImage));
     }
 
     public void srcImage(VkImage value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcImage, LAYOUT$srcImage.byteSize());
+        segment.set(LAYOUT$srcImage, OFFSET$srcImage, value.segment());
     }
 
     public @enumtype(VkImageLayout.class) int srcImageLayout() {
@@ -86,11 +86,11 @@ public record VkCopyImageToBufferInfo2(MemorySegment segment) {
     }
 
     public VkBuffer dstBuffer() {
-        return new VkBuffer(segment.asSlice(OFFSET$dstBuffer, LAYOUT$dstBuffer));
+        return new VkBuffer(segment.get(LAYOUT$dstBuffer, OFFSET$dstBuffer));
     }
 
     public void dstBuffer(VkBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstBuffer, LAYOUT$dstBuffer.byteSize());
+        segment.set(LAYOUT$dstBuffer, OFFSET$dstBuffer, value.segment());
     }
 
     public @unsigned int regionCount() {

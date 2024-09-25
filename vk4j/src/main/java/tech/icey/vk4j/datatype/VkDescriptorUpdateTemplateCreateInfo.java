@@ -127,11 +127,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) {
     }
 
     public VkDescriptorSetLayout descriptorSetLayout() {
-        return new VkDescriptorSetLayout(segment.asSlice(OFFSET$descriptorSetLayout, LAYOUT$descriptorSetLayout));
+        return new VkDescriptorSetLayout(segment.get(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout));
     }
 
     public void descriptorSetLayout(VkDescriptorSetLayout value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$descriptorSetLayout, LAYOUT$descriptorSetLayout.byteSize());
+        segment.set(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout, value.segment());
     }
 
     public @enumtype(VkPipelineBindPoint.class) int pipelineBindPoint() {
@@ -143,11 +143,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) {
     }
 
     public VkPipelineLayout pipelineLayout() {
-        return new VkPipelineLayout(segment.asSlice(OFFSET$pipelineLayout, LAYOUT$pipelineLayout));
+        return new VkPipelineLayout(segment.get(LAYOUT$pipelineLayout, OFFSET$pipelineLayout));
     }
 
     public void pipelineLayout(VkPipelineLayout value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineLayout, LAYOUT$pipelineLayout.byteSize());
+        segment.set(LAYOUT$pipelineLayout, OFFSET$pipelineLayout, value.segment());
     }
 
     public @unsigned int set() {

@@ -70,11 +70,11 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) {
     }
 
     public VkSwapchainKHR swapchain() {
-        return new VkSwapchainKHR(segment.asSlice(OFFSET$swapchain, LAYOUT$swapchain));
+        return new VkSwapchainKHR(segment.get(LAYOUT$swapchain, OFFSET$swapchain));
     }
 
     public void swapchain(VkSwapchainKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$swapchain, LAYOUT$swapchain.byteSize());
+        segment.set(LAYOUT$swapchain, OFFSET$swapchain, value.segment());
     }
 
     public @unsigned long timeout() {
@@ -86,19 +86,19 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) {
     }
 
     public VkSemaphore semaphore() {
-        return new VkSemaphore(segment.asSlice(OFFSET$semaphore, LAYOUT$semaphore));
+        return new VkSemaphore(segment.get(LAYOUT$semaphore, OFFSET$semaphore));
     }
 
     public void semaphore(VkSemaphore value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$semaphore, LAYOUT$semaphore.byteSize());
+        segment.set(LAYOUT$semaphore, OFFSET$semaphore, value.segment());
     }
 
     public VkFence fence() {
-        return new VkFence(segment.asSlice(OFFSET$fence, LAYOUT$fence));
+        return new VkFence(segment.get(LAYOUT$fence, OFFSET$fence));
     }
 
     public void fence(VkFence value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$fence, LAYOUT$fence.byteSize());
+        segment.set(LAYOUT$fence, OFFSET$fence, value.segment());
     }
 
     public @unsigned int deviceMask() {

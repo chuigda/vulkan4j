@@ -70,11 +70,11 @@ public record VkImportSemaphoreWin32HandleInfoKHR(MemorySegment segment) {
     }
 
     public VkSemaphore semaphore() {
-        return new VkSemaphore(segment.asSlice(OFFSET$semaphore, LAYOUT$semaphore));
+        return new VkSemaphore(segment.get(LAYOUT$semaphore, OFFSET$semaphore));
     }
 
     public void semaphore(VkSemaphore value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$semaphore, LAYOUT$semaphore.byteSize());
+        segment.set(LAYOUT$semaphore, OFFSET$semaphore, value.segment());
     }
 
     public @enumtype(VkSemaphoreImportFlags.class) int flags() {

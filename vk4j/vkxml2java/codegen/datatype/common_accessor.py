@@ -55,6 +55,16 @@ def generate_ref_type_accessor(type_: CStructType | CUnionType | CHandleType, me
     }}\n\n'''
 
 
+def generate_handle_type_accessor(type_: CHandleType, member: Member) -> str:
+    return f'''    public {type_.java_type()} {member.name}() {{
+        return new {type_.java_type()}(segment.get(LAYOUT${member.name}, OFFSET${member.name}));
+    }}
+
+    public void {member.name}({type_.java_type()} value) {{
+        segment.set(LAYOUT${member.name}, OFFSET${member.name}, value.segment());
+    }}\n\n'''
+
+
 def generate_fixed_type_accessor(type_: CFixedIntType | CFloatType, member: Member) -> str:
     return f'''    public {type_.java_type()} {member.name}() {{
         return segment.get(LAYOUT${member.name}, OFFSET${member.name});

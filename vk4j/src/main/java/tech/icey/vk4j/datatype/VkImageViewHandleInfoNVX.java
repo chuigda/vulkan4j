@@ -62,11 +62,11 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) {
     }
 
     public VkImageView imageView() {
-        return new VkImageView(segment.asSlice(OFFSET$imageView, LAYOUT$imageView));
+        return new VkImageView(segment.get(LAYOUT$imageView, OFFSET$imageView));
     }
 
     public void imageView(VkImageView value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageView, LAYOUT$imageView.byteSize());
+        segment.set(LAYOUT$imageView, OFFSET$imageView, value.segment());
     }
 
     public @enumtype(VkDescriptorType.class) int descriptorType() {
@@ -78,11 +78,11 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) {
     }
 
     public VkSampler sampler() {
-        return new VkSampler(segment.asSlice(OFFSET$sampler, LAYOUT$sampler));
+        return new VkSampler(segment.get(LAYOUT$sampler, OFFSET$sampler));
     }
 
     public void sampler(VkSampler value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampler, LAYOUT$sampler.byteSize());
+        segment.set(LAYOUT$sampler, OFFSET$sampler, value.segment());
     }
 
     public static VkImageViewHandleInfoNVX allocate(Arena arena) {

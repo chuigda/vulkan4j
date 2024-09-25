@@ -122,11 +122,11 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) {
     }
 
     public VkSurfaceKHR surface() {
-        return new VkSurfaceKHR(segment.asSlice(OFFSET$surface, LAYOUT$surface));
+        return new VkSurfaceKHR(segment.get(LAYOUT$surface, OFFSET$surface));
     }
 
     public void surface(VkSurfaceKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$surface, LAYOUT$surface.byteSize());
+        segment.set(LAYOUT$surface, OFFSET$surface, value.segment());
     }
 
     public @unsigned int minImageCount() {
@@ -242,11 +242,11 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) {
     }
 
     public VkSwapchainKHR oldSwapchain() {
-        return new VkSwapchainKHR(segment.asSlice(OFFSET$oldSwapchain, LAYOUT$oldSwapchain));
+        return new VkSwapchainKHR(segment.get(LAYOUT$oldSwapchain, OFFSET$oldSwapchain));
     }
 
     public void oldSwapchain(VkSwapchainKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$oldSwapchain, LAYOUT$oldSwapchain.byteSize());
+        segment.set(LAYOUT$oldSwapchain, OFFSET$oldSwapchain, value.segment());
     }
 
     public static VkSwapchainCreateInfoKHR allocate(Arena arena) {

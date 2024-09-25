@@ -1,17 +1,18 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.nullable;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkSemaphore;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_BIND_SPARSE_INFO;
 
 public record VkBindSparseInfo(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -97,23 +98,23 @@ public record VkBindSparseInfo(MemorySegment segment) {
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
     }
 
-    public @pointer(comment="VkSemaphore*") MemorySegment pWaitSemaphoresRaw() {
+    public @pointer(comment="VkSemaphore") MemorySegment pWaitSemaphoresRaw() {
         return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
     }
 
-    public void pWaitSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
+    public void pWaitSemaphoresRaw(@pointer(comment="VkSemaphore") MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
-    
-    public @nullable VkSemaphore pWaitSemaphores() {
+
+    public @nullable VkSemaphore.Buffer pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkSemaphore(s);
+        return new VkSemaphore.Buffer(s);
     }
 
-    public void pWaitSemaphores(@nullable VkSemaphore value) {
+    public void pWaitSemaphores(@nullable VkSemaphore.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoresRaw(s);
     }
@@ -133,7 +134,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
     public void pBufferBindsRaw(@pointer(comment="VkSparseBufferMemoryBindInfo*") MemorySegment value) {
         segment.set(LAYOUT$pBufferBinds, OFFSET$pBufferBinds, value);
     }
-    
+
     public @nullable VkSparseBufferMemoryBindInfo pBufferBinds() {
         MemorySegment s = pBufferBindsRaw();
         if (s.address() == 0) {
@@ -162,7 +163,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
     public void pImageOpaqueBindsRaw(@pointer(comment="VkSparseImageOpaqueMemoryBindInfo*") MemorySegment value) {
         segment.set(LAYOUT$pImageOpaqueBinds, OFFSET$pImageOpaqueBinds, value);
     }
-    
+
     public @nullable VkSparseImageOpaqueMemoryBindInfo pImageOpaqueBinds() {
         MemorySegment s = pImageOpaqueBindsRaw();
         if (s.address() == 0) {
@@ -191,7 +192,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
     public void pImageBindsRaw(@pointer(comment="VkSparseImageMemoryBindInfo*") MemorySegment value) {
         segment.set(LAYOUT$pImageBinds, OFFSET$pImageBinds, value);
     }
-    
+
     public @nullable VkSparseImageMemoryBindInfo pImageBinds() {
         MemorySegment s = pImageBindsRaw();
         if (s.address() == 0) {
@@ -213,23 +214,23 @@ public record VkBindSparseInfo(MemorySegment segment) {
         segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
     }
 
-    public @pointer(comment="VkSemaphore*") MemorySegment pSignalSemaphoresRaw() {
+    public @pointer(comment="VkSemaphore") MemorySegment pSignalSemaphoresRaw() {
         return segment.get(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores);
     }
 
-    public void pSignalSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
+    public void pSignalSemaphoresRaw(@pointer(comment="VkSemaphore") MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
-    
-    public @nullable VkSemaphore pSignalSemaphores() {
+
+    public @nullable VkSemaphore.Buffer pSignalSemaphores() {
         MemorySegment s = pSignalSemaphoresRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkSemaphore(s);
+        return new VkSemaphore.Buffer(s);
     }
 
-    public void pSignalSemaphores(@nullable VkSemaphore value) {
+    public void pSignalSemaphores(@nullable VkSemaphore.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoresRaw(s);
     }
@@ -237,7 +238,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
     public static VkBindSparseInfo allocate(Arena arena) {
         return new VkBindSparseInfo(arena.allocate(LAYOUT));
     }
-    
+
     public static VkBindSparseInfo[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBindSparseInfo[] ret = new VkBindSparseInfo[count];

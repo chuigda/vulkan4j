@@ -62,11 +62,11 @@ public record VkDescriptorSetAllocateInfo(MemorySegment segment) {
     }
 
     public VkDescriptorPool descriptorPool() {
-        return new VkDescriptorPool(segment.asSlice(OFFSET$descriptorPool, LAYOUT$descriptorPool));
+        return new VkDescriptorPool(segment.get(LAYOUT$descriptorPool, OFFSET$descriptorPool));
     }
 
     public void descriptorPool(VkDescriptorPool value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$descriptorPool, LAYOUT$descriptorPool.byteSize());
+        segment.set(LAYOUT$descriptorPool, OFFSET$descriptorPool, value.segment());
     }
 
     public @unsigned int descriptorSetCount() {
@@ -77,23 +77,23 @@ public record VkDescriptorSetAllocateInfo(MemorySegment segment) {
         segment.set(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount, value);
     }
 
-    public @pointer(comment="VkDescriptorSetLayout*") MemorySegment pSetLayoutsRaw() {
+    public @pointer(comment="VkDescriptorSetLayout") MemorySegment pSetLayoutsRaw() {
         return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
     }
 
-    public void pSetLayoutsRaw(@pointer(comment="VkDescriptorSetLayout*") MemorySegment value) {
+    public void pSetLayoutsRaw(@pointer(comment="VkDescriptorSetLayout") MemorySegment value) {
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
-    
-    public @nullable VkDescriptorSetLayout pSetLayouts() {
+
+    public @nullable VkDescriptorSetLayout.Buffer pSetLayouts() {
         MemorySegment s = pSetLayoutsRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkDescriptorSetLayout(s);
+        return new VkDescriptorSetLayout.Buffer(s);
     }
 
-    public void pSetLayouts(@nullable VkDescriptorSetLayout value) {
+    public void pSetLayouts(@nullable VkDescriptorSetLayout.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSetLayoutsRaw(s);
     }

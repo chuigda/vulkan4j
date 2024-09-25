@@ -65,23 +65,23 @@ public record VkRenderPassAttachmentBeginInfo(MemorySegment segment) {
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
     }
 
-    public @pointer(comment="VkImageView*") MemorySegment pAttachmentsRaw() {
+    public @pointer(comment="VkImageView") MemorySegment pAttachmentsRaw() {
         return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
     }
 
-    public void pAttachmentsRaw(@pointer(comment="VkImageView*") MemorySegment value) {
+    public void pAttachmentsRaw(@pointer(comment="VkImageView") MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
-    
-    public @nullable VkImageView pAttachments() {
+
+    public @nullable VkImageView.Buffer pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkImageView(s);
+        return new VkImageView.Buffer(s);
     }
 
-    public void pAttachments(@nullable VkImageView value) {
+    public void pAttachments(@nullable VkImageView.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
     }

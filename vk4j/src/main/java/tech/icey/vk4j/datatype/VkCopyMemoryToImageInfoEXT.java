@@ -78,11 +78,11 @@ public record VkCopyMemoryToImageInfoEXT(MemorySegment segment) {
     }
 
     public VkImage dstImage() {
-        return new VkImage(segment.asSlice(OFFSET$dstImage, LAYOUT$dstImage));
+        return new VkImage(segment.get(LAYOUT$dstImage, OFFSET$dstImage));
     }
 
     public void dstImage(VkImage value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstImage, LAYOUT$dstImage.byteSize());
+        segment.set(LAYOUT$dstImage, OFFSET$dstImage, value.segment());
     }
 
     public @enumtype(VkImageLayout.class) int dstImageLayout() {

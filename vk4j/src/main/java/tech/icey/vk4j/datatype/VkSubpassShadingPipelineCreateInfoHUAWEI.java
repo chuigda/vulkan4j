@@ -58,11 +58,11 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(MemorySegment segment) {
     }
 
     public VkRenderPass renderPass() {
-        return new VkRenderPass(segment.asSlice(OFFSET$renderPass, LAYOUT$renderPass));
+        return new VkRenderPass(segment.get(LAYOUT$renderPass, OFFSET$renderPass));
     }
 
     public void renderPass(VkRenderPass value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderPass, LAYOUT$renderPass.byteSize());
+        segment.set(LAYOUT$renderPass, OFFSET$renderPass, value.segment());
     }
 
     public @unsigned int subpass() {

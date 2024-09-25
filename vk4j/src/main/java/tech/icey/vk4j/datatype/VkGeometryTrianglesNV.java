@@ -94,11 +94,11 @@ public record VkGeometryTrianglesNV(MemorySegment segment) {
     }
 
     public VkBuffer vertexData() {
-        return new VkBuffer(segment.asSlice(OFFSET$vertexData, LAYOUT$vertexData));
+        return new VkBuffer(segment.get(LAYOUT$vertexData, OFFSET$vertexData));
     }
 
     public void vertexData(VkBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexData, LAYOUT$vertexData.byteSize());
+        segment.set(LAYOUT$vertexData, OFFSET$vertexData, value.segment());
     }
 
     public @unsigned long vertexOffset() {
@@ -134,11 +134,11 @@ public record VkGeometryTrianglesNV(MemorySegment segment) {
     }
 
     public VkBuffer indexData() {
-        return new VkBuffer(segment.asSlice(OFFSET$indexData, LAYOUT$indexData));
+        return new VkBuffer(segment.get(LAYOUT$indexData, OFFSET$indexData));
     }
 
     public void indexData(VkBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexData, LAYOUT$indexData.byteSize());
+        segment.set(LAYOUT$indexData, OFFSET$indexData, value.segment());
     }
 
     public @unsigned long indexOffset() {
@@ -166,11 +166,11 @@ public record VkGeometryTrianglesNV(MemorySegment segment) {
     }
 
     public VkBuffer transformData() {
-        return new VkBuffer(segment.asSlice(OFFSET$transformData, LAYOUT$transformData));
+        return new VkBuffer(segment.get(LAYOUT$transformData, OFFSET$transformData));
     }
 
     public void transformData(VkBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformData, LAYOUT$transformData.byteSize());
+        segment.set(LAYOUT$transformData, OFFSET$transformData, value.segment());
     }
 
     public @unsigned long transformOffset() {

@@ -58,11 +58,11 @@ public record VkCuFunctionCreateInfoNVX(MemorySegment segment) {
     }
 
     public VkCuModuleNVX module() {
-        return new VkCuModuleNVX(segment.asSlice(OFFSET$module, LAYOUT$module));
+        return new VkCuModuleNVX(segment.get(LAYOUT$module, OFFSET$module));
     }
 
     public void module(VkCuModuleNVX value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$module, LAYOUT$module.byteSize());
+        segment.set(LAYOUT$module, OFFSET$module, value.segment());
     }
 
     public @pointer(comment="int8_t*") MemorySegment pNameRaw() {

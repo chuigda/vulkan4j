@@ -1,17 +1,13 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.StructLayout;
+
+import static java.lang.foreign.ValueLayout.PathElement;
 
 public record VkGeometryDataNV(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -51,7 +47,7 @@ public record VkGeometryDataNV(MemorySegment segment) {
     public static VkGeometryDataNV allocate(Arena arena) {
         return new VkGeometryDataNV(arena.allocate(LAYOUT));
     }
-    
+
     public static VkGeometryDataNV[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkGeometryDataNV[] ret = new VkGeometryDataNV[count];

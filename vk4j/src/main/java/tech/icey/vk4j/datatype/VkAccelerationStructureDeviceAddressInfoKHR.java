@@ -54,11 +54,11 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(MemorySegment segment)
     }
 
     public VkAccelerationStructureKHR accelerationStructure() {
-        return new VkAccelerationStructureKHR(segment.asSlice(OFFSET$accelerationStructure, LAYOUT$accelerationStructure));
+        return new VkAccelerationStructureKHR(segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure));
     }
 
     public void accelerationStructure(VkAccelerationStructureKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$accelerationStructure, LAYOUT$accelerationStructure.byteSize());
+        segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value.segment());
     }
 
     public static VkAccelerationStructureDeviceAddressInfoKHR allocate(Arena arena) {

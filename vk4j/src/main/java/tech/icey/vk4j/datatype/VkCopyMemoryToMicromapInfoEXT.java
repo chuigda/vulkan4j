@@ -70,11 +70,11 @@ public record VkCopyMemoryToMicromapInfoEXT(MemorySegment segment) {
     }
 
     public VkMicromapEXT dst() {
-        return new VkMicromapEXT(segment.asSlice(OFFSET$dst, LAYOUT$dst));
+        return new VkMicromapEXT(segment.get(LAYOUT$dst, OFFSET$dst));
     }
 
     public void dst(VkMicromapEXT value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dst, LAYOUT$dst.byteSize());
+        segment.set(LAYOUT$dst, OFFSET$dst, value.segment());
     }
 
     public @enumtype(VkCopyMicromapModeEXT.class) int mode() {

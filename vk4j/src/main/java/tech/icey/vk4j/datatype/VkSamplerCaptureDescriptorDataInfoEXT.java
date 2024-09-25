@@ -54,11 +54,11 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(MemorySegment segment) {
     }
 
     public VkSampler sampler() {
-        return new VkSampler(segment.asSlice(OFFSET$sampler, LAYOUT$sampler));
+        return new VkSampler(segment.get(LAYOUT$sampler, OFFSET$sampler));
     }
 
     public void sampler(VkSampler value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampler, LAYOUT$sampler.byteSize());
+        segment.set(LAYOUT$sampler, OFFSET$sampler, value.segment());
     }
 
     public static VkSamplerCaptureDescriptorDataInfoEXT allocate(Arena arena) {

@@ -65,23 +65,23 @@ public record VkWriteDescriptorSetAccelerationStructureNV(MemorySegment segment)
         segment.set(LAYOUT$accelerationStructureCount, OFFSET$accelerationStructureCount, value);
     }
 
-    public @pointer(comment="VkAccelerationStructureNV*") MemorySegment pAccelerationStructuresRaw() {
+    public @pointer(comment="VkAccelerationStructureNV") MemorySegment pAccelerationStructuresRaw() {
         return segment.get(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures);
     }
 
-    public void pAccelerationStructuresRaw(@pointer(comment="VkAccelerationStructureNV*") MemorySegment value) {
+    public void pAccelerationStructuresRaw(@pointer(comment="VkAccelerationStructureNV") MemorySegment value) {
         segment.set(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures, value);
     }
-    
-    public @nullable VkAccelerationStructureNV pAccelerationStructures() {
+
+    public @nullable VkAccelerationStructureNV.Buffer pAccelerationStructures() {
         MemorySegment s = pAccelerationStructuresRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkAccelerationStructureNV(s);
+        return new VkAccelerationStructureNV.Buffer(s);
     }
 
-    public void pAccelerationStructures(@nullable VkAccelerationStructureNV value) {
+    public void pAccelerationStructures(@nullable VkAccelerationStructureNV.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAccelerationStructuresRaw(s);
     }

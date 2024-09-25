@@ -45,7 +45,7 @@ public record ByteBuffer(MemorySegment segment) {
         return new ByteBuffer(arena.allocate(size));
     }
 
-    public static ByteBuffer allocateUtf8(Arena arena, String s) {
+    public static ByteBuffer allocateString(Arena arena, String s) {
         return new ByteBuffer(arena.allocateFrom(s));
     }
 }

@@ -54,11 +54,11 @@ public record VkPipelineBinaryDataInfoKHR(MemorySegment segment) {
     }
 
     public VkPipelineBinaryKHR pipelineBinary() {
-        return new VkPipelineBinaryKHR(segment.asSlice(OFFSET$pipelineBinary, LAYOUT$pipelineBinary));
+        return new VkPipelineBinaryKHR(segment.get(LAYOUT$pipelineBinary, OFFSET$pipelineBinary));
     }
 
     public void pipelineBinary(VkPipelineBinaryKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineBinary, LAYOUT$pipelineBinary.byteSize());
+        segment.set(LAYOUT$pipelineBinary, OFFSET$pipelineBinary, value.segment());
     }
 
     public static VkPipelineBinaryDataInfoKHR allocate(Arena arena) {

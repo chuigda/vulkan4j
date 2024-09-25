@@ -65,23 +65,23 @@ public record VkSwapchainPresentFenceInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
     }
 
-    public @pointer(comment="VkFence*") MemorySegment pFencesRaw() {
+    public @pointer(comment="VkFence") MemorySegment pFencesRaw() {
         return segment.get(LAYOUT$pFences, OFFSET$pFences);
     }
 
-    public void pFencesRaw(@pointer(comment="VkFence*") MemorySegment value) {
+    public void pFencesRaw(@pointer(comment="VkFence") MemorySegment value) {
         segment.set(LAYOUT$pFences, OFFSET$pFences, value);
     }
-    
-    public @nullable VkFence pFences() {
+
+    public @nullable VkFence.Buffer pFences() {
         MemorySegment s = pFencesRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkFence(s);
+        return new VkFence.Buffer(s);
     }
 
-    public void pFences(@nullable VkFence value) {
+    public void pFences(@nullable VkFence.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFencesRaw(s);
     }

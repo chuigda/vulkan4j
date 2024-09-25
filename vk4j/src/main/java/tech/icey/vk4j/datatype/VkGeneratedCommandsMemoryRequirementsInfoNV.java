@@ -74,19 +74,19 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
     }
 
     public VkPipeline pipeline() {
-        return new VkPipeline(segment.asSlice(OFFSET$pipeline, LAYOUT$pipeline));
+        return new VkPipeline(segment.get(LAYOUT$pipeline, OFFSET$pipeline));
     }
 
     public void pipeline(VkPipeline value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipeline, LAYOUT$pipeline.byteSize());
+        segment.set(LAYOUT$pipeline, OFFSET$pipeline, value.segment());
     }
 
     public VkIndirectCommandsLayoutNV indirectCommandsLayout() {
-        return new VkIndirectCommandsLayoutNV(segment.asSlice(OFFSET$indirectCommandsLayout, LAYOUT$indirectCommandsLayout));
+        return new VkIndirectCommandsLayoutNV(segment.get(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout));
     }
 
     public void indirectCommandsLayout(VkIndirectCommandsLayoutNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$indirectCommandsLayout, LAYOUT$indirectCommandsLayout.byteSize());
+        segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value.segment());
     }
 
     public @unsigned int maxSequencesCount() {

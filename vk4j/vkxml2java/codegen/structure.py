@@ -192,8 +192,10 @@ def generate_structure_member_accessor(members: list[Member], member_types_lower
             ctype = member_types_lowered[i]
             if isinstance(ctype, CPlatformDependentIntType):
                 ret += generate_platform_dependent_int_accessor(ctype, current)
-            elif isinstance(ctype, CStructType) or isinstance(ctype, CUnionType) or isinstance(ctype, CHandleType):
+            elif isinstance(ctype, CStructType) or isinstance(ctype, CUnionType):
                 ret += generate_ref_type_accessor(ctype, current)
+            elif isinstance(ctype, CHandleType):
+                ret += generate_handle_type_accessor(ctype, current)
             elif isinstance(ctype, CFixedIntType) or isinstance(ctype, CFloatType):
                 ret += generate_fixed_type_accessor(ctype, current)
             elif isinstance(ctype, CEnumType):

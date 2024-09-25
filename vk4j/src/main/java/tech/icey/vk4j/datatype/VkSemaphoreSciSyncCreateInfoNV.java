@@ -58,11 +58,11 @@ public record VkSemaphoreSciSyncCreateInfoNV(MemorySegment segment) {
     }
 
     public VkSemaphoreSciSyncPoolNV semaphorePool() {
-        return new VkSemaphoreSciSyncPoolNV(segment.asSlice(OFFSET$semaphorePool, LAYOUT$semaphorePool));
+        return new VkSemaphoreSciSyncPoolNV(segment.get(LAYOUT$semaphorePool, OFFSET$semaphorePool));
     }
 
     public void semaphorePool(VkSemaphoreSciSyncPoolNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$semaphorePool, LAYOUT$semaphorePool.byteSize());
+        segment.set(LAYOUT$semaphorePool, OFFSET$semaphorePool, value.segment());
     }
 
     public @pointer(comment="uint64_t[6] const*") MemorySegment pFenceRaw() {

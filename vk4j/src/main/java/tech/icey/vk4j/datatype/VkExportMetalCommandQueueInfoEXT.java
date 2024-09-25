@@ -58,11 +58,11 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) {
     }
 
     public VkQueue queue() {
-        return new VkQueue(segment.asSlice(OFFSET$queue, LAYOUT$queue));
+        return new VkQueue(segment.get(LAYOUT$queue, OFFSET$queue));
     }
 
     public void queue(VkQueue value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$queue, LAYOUT$queue.byteSize());
+        segment.set(LAYOUT$queue, OFFSET$queue, value.segment());
     }
 
     public @pointer(comment="void*") MemorySegment mtlCommandQueue() {

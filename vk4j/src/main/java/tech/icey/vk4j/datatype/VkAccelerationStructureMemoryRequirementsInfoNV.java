@@ -66,11 +66,11 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(MemorySegment segm
     }
 
     public VkAccelerationStructureNV accelerationStructure() {
-        return new VkAccelerationStructureNV(segment.asSlice(OFFSET$accelerationStructure, LAYOUT$accelerationStructure));
+        return new VkAccelerationStructureNV(segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure));
     }
 
     public void accelerationStructure(VkAccelerationStructureNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$accelerationStructure, LAYOUT$accelerationStructure.byteSize());
+        segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value.segment());
     }
 
     public static VkAccelerationStructureMemoryRequirementsInfoNV allocate(Arena arena) {

@@ -1,17 +1,15 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.buffer.ByteBuffer;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.VK_MAX_DESCRIPTION_SIZE;
+import static tech.icey.vk4j.Constants.VK_MAX_EXTENSION_NAME_SIZE;
 
 public record VkLayerProperties(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -83,7 +81,7 @@ public record VkLayerProperties(MemorySegment segment) {
     public static VkLayerProperties allocate(Arena arena) {
         return new VkLayerProperties(arena.allocate(LAYOUT));
     }
-    
+
     public static VkLayerProperties[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkLayerProperties[] ret = new VkLayerProperties[count];

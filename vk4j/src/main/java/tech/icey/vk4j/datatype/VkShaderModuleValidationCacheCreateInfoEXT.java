@@ -54,11 +54,11 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(MemorySegment segment) 
     }
 
     public VkValidationCacheEXT validationCache() {
-        return new VkValidationCacheEXT(segment.asSlice(OFFSET$validationCache, LAYOUT$validationCache));
+        return new VkValidationCacheEXT(segment.get(LAYOUT$validationCache, OFFSET$validationCache));
     }
 
     public void validationCache(VkValidationCacheEXT value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$validationCache, LAYOUT$validationCache.byteSize());
+        segment.set(LAYOUT$validationCache, OFFSET$validationCache, value.segment());
     }
 
     public static VkShaderModuleValidationCacheCreateInfoEXT allocate(Arena arena) {

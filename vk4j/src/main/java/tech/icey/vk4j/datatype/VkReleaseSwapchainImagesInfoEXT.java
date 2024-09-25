@@ -62,11 +62,11 @@ public record VkReleaseSwapchainImagesInfoEXT(MemorySegment segment) {
     }
 
     public VkSwapchainKHR swapchain() {
-        return new VkSwapchainKHR(segment.asSlice(OFFSET$swapchain, LAYOUT$swapchain));
+        return new VkSwapchainKHR(segment.get(LAYOUT$swapchain, OFFSET$swapchain));
     }
 
     public void swapchain(VkSwapchainKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$swapchain, LAYOUT$swapchain.byteSize());
+        segment.set(LAYOUT$swapchain, OFFSET$swapchain, value.segment());
     }
 
     public @unsigned int imageIndexCount() {

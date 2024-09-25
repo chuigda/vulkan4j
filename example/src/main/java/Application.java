@@ -3,21 +3,19 @@ import tech.icey.vk4j.Constants;
 import tech.icey.vk4j.Loader;
 import tech.icey.vk4j.Version;
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.ByteBuffer;
-import tech.icey.vk4j.buffer.IntBuffer;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.command.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 
 import java.io.IOException;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Application implements AutoCloseable {
     public boolean initVulkan() {
@@ -52,7 +50,7 @@ public class Application implements AutoCloseable {
         }
         deviceCommands.vkDestroySemaphore(device, imageAvailableSemaphores, null);
         deviceCommands.vkDestroySemaphore(device, renderFinishedSemaphores, null);
-        deviceCommands.vkDestroyFence(device, inFlightFences, null);
+        deviceCommands.vkDestroyFence(device, pInFlightFences.read(), null);
         deviceCommands.vkDestroyCommandPool(device, commandPool, null);
         for (var framebuffer : swapchainFramebuffers) {
             deviceCommands.vkDestroyFramebuffer(device, framebuffer, null);
@@ -107,7 +105,7 @@ public class Application implements AutoCloseable {
             }
 
             var layerCount = pLayerCount.read();
-            var layerProperties = VkLayerProperties.allocateArray(localArena, layerCount);
+            var layerProperties = VkLayerProperties.allocate(localArena, layerCount);
             result = entryCommands.vkEnumerateInstanceLayerProperties(pLayerCount, layerProperties[0]);
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("获取 Vulkan 实例层属性失败：" + result);
@@ -128,14 +126,14 @@ public class Application implements AutoCloseable {
         boolean hasValidationLayer = checkValidationLayerSupport();
 
         try (Arena localArena = Arena.ofConfined()) {
-            var pRequiredExtensionCount = IntPtr.allocate(localArena);
+            var pRequiredExtensionCount = IntBuffer.allocate(localArena);
             var requiredExtensions = libGLFW.glfwGetRequiredInstanceExtensions(pRequiredExtensionCount);
             var requiredExtensionCount = pRequiredExtensionCount.read();
 
             var applicationInfo = VkApplicationInfo.allocate(localArena);
-            applicationInfo.pApplicationName(ByteBuffer.allocateUtf8(localArena, "VkCube4j"));
+            applicationInfo.pApplicationName(ByteBuffer.allocateString(localArena, "VkCube4j"));
             applicationInfo.applicationVersion(Version.vkMakeAPIVersion(0, 1, 0, 0));
-            applicationInfo.pEngineName(ByteBuffer.allocateUtf8(localArena, "Soloviev D-30"));
+            applicationInfo.pEngineName(ByteBuffer.allocateString(localArena, "Soloviev D-30"));
             applicationInfo.engineVersion(Version.vkMakeAPIVersion(0, 1, 0, 0));
             applicationInfo.apiVersion(Version.VK_API_VERSION_1_3);
 
@@ -239,12 +237,13 @@ public class Application implements AutoCloseable {
             }
 
             var pPhysicalDevices = VkPhysicalDevice.Buffer.allocate(localArena, deviceCount);
-            result = instanceCommands.vkEnumeratePhysicalDevices(instance, pDeviceCount, physicalDevices[0]);
+            result = instanceCommands.vkEnumeratePhysicalDevices(instance, pDeviceCount, pPhysicalDevices);
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("获取 Vulkan 物理设备失败：" + result);
                 return false;
             }
 
+            var physicalDevices = pPhysicalDevices.readAll();
             var deviceInfoList = new ArrayList<DeviceInfoDialog.DeviceInfo>();
             if (!populateDeviceInfoList(physicalDevices, localArena, deviceInfoList)) return false;
 
@@ -261,7 +260,7 @@ public class Application implements AutoCloseable {
 
             physicalDevice = physicalDevices[deviceInfoDialog.selectedDeviceId];
 
-            var pDeviceExtensionCount = IntPtr.allocate(localArena);
+            var pDeviceExtensionCount = IntBuffer.allocate(localArena);
             result = instanceCommands.vkEnumerateDeviceExtensionProperties(
                     physicalDevice,
                     null,
@@ -283,10 +282,10 @@ public class Application implements AutoCloseable {
             ArrayList<DeviceInfoDialog.DeviceInfo> deviceInfoList
     ) {
         for (var physicalDevice : physicalDevices) {
-            var properties = Create.create(VkPhysicalDeviceProperties.FACTORY, localArena);
+            var properties = VkPhysicalDeviceProperties.allocate(localArena);
             instanceCommands.vkGetPhysicalDeviceProperties(physicalDevice, properties);
 
-            var deviceName = properties.deviceName().readUtf8();
+            var deviceName = properties.deviceName().readString();
             var deviceType = switch (properties.deviceType()) {
                 case VkPhysicalDeviceType.VK_PHYSICAL_DEVICE_TYPE_OTHER -> "其他";
                 case VkPhysicalDeviceType.VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU -> "集成 GPU";
@@ -299,7 +298,7 @@ public class Application implements AutoCloseable {
             var vendorId = Integer.toUnsignedString(properties.vendorID());
             var driverVersion = Version.decode(properties.driverVersion());
 
-            IntPtr pNumDeviceExtensions = IntPtr.allocate(localArena);
+            IntBuffer pNumDeviceExtensions = IntBuffer.allocate(localArena);
             int result = instanceCommands.vkEnumerateDeviceExtensionProperties(
                     physicalDevice,
                     null,
@@ -312,11 +311,7 @@ public class Application implements AutoCloseable {
             }
 
             var numDeviceExtensions = pNumDeviceExtensions.read();
-            var extensionProperties = Create.createArray(
-                    VkExtensionProperties.FACTORY,
-                    localArena,
-                    numDeviceExtensions
-            ).first;
+            var extensionProperties = VkExtensionProperties.allocate(localArena, numDeviceExtensions);
             result = instanceCommands.vkEnumerateDeviceExtensionProperties(
                     physicalDevice,
                     null,
@@ -365,11 +360,15 @@ public class Application implements AutoCloseable {
             return false;
         }
 
-        surface = Create.create(VkSurfaceKHR.FACTORY, arena);
-        int result = libGLFW.glfwCreateWindowSurface(instance, glfwWindow, null, surface);
-        if (result != VkResult.VK_SUCCESS) {
-            UICommons.showErrorMessage("创建 Vulkan 表面失败：" + result);
-            return false;
+        try (Arena localArena = Arena.ofConfined()) {
+            var pSurface = VkSurfaceKHR.Buffer.allocate(localArena);
+            int result = libGLFW.glfwCreateWindowSurface(instance, glfwWindow, null, pSurface);
+            if (result != VkResult.VK_SUCCESS) {
+                UICommons.showErrorMessage("创建 Vulkan 表面失败：" + result);
+                return false;
+            }
+
+            surface = pSurface.read();
         }
 
         return true;
@@ -380,15 +379,11 @@ public class Application implements AutoCloseable {
         Integer presentationQueueFamilyIndex = null;
 
         try (Arena localArena = Arena.ofConfined()) {
-            IntPtr pQueueFamilyCount = IntPtr.allocate(localArena);
+            IntBuffer pQueueFamilyCount = IntBuffer.allocate(localArena);
             instanceCommands.vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pQueueFamilyCount, null);
 
             int queueFamilyCount = pQueueFamilyCount.read();
-            var queueFamilyProperties = Create.createArray(
-                    VkQueueFamilyProperties.FACTORY,
-                    localArena,
-                    queueFamilyCount
-            ).first;
+            var queueFamilyProperties = VkQueueFamilyProperties.allocate(localArena, queueFamilyCount);
             instanceCommands.vkGetPhysicalDeviceQueueFamilyProperties(
                     physicalDevice,
                     pQueueFamilyCount,
@@ -400,7 +395,7 @@ public class Application implements AutoCloseable {
                     graphicsQueueFamilyIndex = i;
                 }
 
-                IntPtr pSupported = IntPtr.allocate(localArena);
+                IntBuffer pSupported = IntBuffer.allocate(localArena);
                 int result = instanceCommands.vkGetPhysicalDeviceSurfaceSupportKHR(
                         physicalDevice,
                         i,
@@ -434,15 +429,15 @@ public class Application implements AutoCloseable {
 
     private boolean createDevice() {
         try (Arena localArena = Arena.ofConfined()) {
-            var physicalDeviceFeatures = Create.create(VkPhysicalDeviceFeatures.FACTORY, localArena);
+            var physicalDeviceFeatures = VkPhysicalDeviceFeatures.allocate(localArena);
 
-            var deviceCreateInfo = Create.create(VkDeviceCreateInfo.FACTORY, localArena);
+            var deviceCreateInfo = VkDeviceCreateInfo.allocate(localArena);
             deviceCreateInfo.pEnabledFeatures(physicalDeviceFeatures);
             if (graphicsQueueFamilyIndex == presentationQueueFamilyIndex) {
-                var graphicsQueueCreateInfo = Create.create(VkDeviceQueueCreateInfo.FACTORY, localArena);
+                var graphicsQueueCreateInfo = VkDeviceQueueCreateInfo.allocate(localArena);
                 graphicsQueueCreateInfo.queueFamilyIndex(graphicsQueueFamilyIndex);
                 graphicsQueueCreateInfo.queueCount(1);
-                var pQueuePriorities = FloatPtr.allocate(localArena);
+                var pQueuePriorities = FloatBuffer.allocate(localArena);
                 pQueuePriorities.write(1.0f);
                 graphicsQueueCreateInfo.pQueuePriorities(pQueuePriorities);
 
@@ -450,17 +445,16 @@ public class Application implements AutoCloseable {
                 deviceCreateInfo.pQueueCreateInfos(graphicsQueueCreateInfo);
             }
             else {
-                var queueCreateInfos = Create.createArray(VkDeviceQueueCreateInfo.FACTORY, localArena, 2).first;
-
+                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(localArena, 2);
                 queueCreateInfos[0].queueFamilyIndex(graphicsQueueFamilyIndex);
                 queueCreateInfos[0].queueCount(1);
-                var pGraphicsQueuePriorities = FloatPtr.allocate(localArena);
+                var pGraphicsQueuePriorities = FloatBuffer.allocate(localArena);
                 pGraphicsQueuePriorities.write(1.0f);
                 queueCreateInfos[0].pQueuePriorities(pGraphicsQueuePriorities);
 
                 queueCreateInfos[1].queueFamilyIndex(presentationQueueFamilyIndex);
                 queueCreateInfos[1].queueCount(1);
-                var pPresentationQueuePriorities = FloatPtr.allocate(localArena);
+                var pPresentationQueuePriorities = FloatBuffer.allocate(localArena);
                 pPresentationQueuePriorities.write(1.0f);
                 queueCreateInfos[1].pQueuePriorities(pPresentationQueuePriorities);
 
@@ -472,22 +466,25 @@ public class Application implements AutoCloseable {
             ppEnabledExtensionNames.set(ValueLayout.ADDRESS, 0, swapchainExtensionNameByteArray.segment());
             deviceCreateInfo.ppEnabledExtensionNames(ppEnabledExtensionNames);
 
-            device = Create.create(VkDevice.FACTORY, arena);
-            var result = instanceCommands.vkCreateDevice(physicalDevice, deviceCreateInfo, null, device);
+            var pDevice = VkDevice.Buffer.allocate(localArena);
+            var result = instanceCommands.vkCreateDevice(physicalDevice, deviceCreateInfo, null, pDevice);
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("创建 Vulkan 设备失败：" + result);
                 return false;
             }
 
+            device = pDevice.read();
             deviceCommands = new DeviceCommands(this::loadDeviceCommand, this::loadInstanceCommand);
 
-            graphicsQueue = Create.create(VkQueue.FACTORY, arena);
-            deviceCommands.vkGetDeviceQueue(device, graphicsQueueFamilyIndex, 0, graphicsQueue);
+            var pGraphicsQueue = VkQueue.Buffer.allocate(localArena);
+            deviceCommands.vkGetDeviceQueue(device, graphicsQueueFamilyIndex, 0, pGraphicsQueue);
+            graphicsQueue = pGraphicsQueue.read();
 
-            presentationQueue = Create.create(VkQueue.FACTORY, arena);
-            deviceCommands.vkGetDeviceQueue(device, presentationQueueFamilyIndex, 0, presentationQueue);
+            var pPresentationQueue = VkQueue.Buffer.allocate(localArena);
+            deviceCommands.vkGetDeviceQueue(device, presentationQueueFamilyIndex, 0, pPresentationQueue);
+            presentationQueue = pPresentationQueue.read();
 
-            var pDeviceExtensionCount = IntPtr.allocate(localArena);
+            var pDeviceExtensionCount = IntBuffer.allocate(localArena);
             result = instanceCommands.vkEnumerateDeviceExtensionProperties(
                     physicalDevice,
                     null,
@@ -505,7 +502,7 @@ public class Application implements AutoCloseable {
 
     private boolean createSwapchain() {
         try (Arena localArena = Arena.ofConfined()) {
-            var surfaceCapabilities = Create.create(VkSurfaceCapabilitiesKHR.FACTORY, localArena);
+            var surfaceCapabilities = VkSurfaceCapabilitiesKHR.allocate(localArena);
             var result = instanceCommands.vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
                     physicalDevice,
                     surface,
@@ -516,7 +513,7 @@ public class Application implements AutoCloseable {
                 return false;
             }
 
-            var pSurfaceFormatCount = IntPtr.allocate(localArena);
+            var pSurfaceFormatCount = IntBuffer.allocate(localArena);
             result = instanceCommands.vkGetPhysicalDeviceSurfaceFormatsKHR(
                     physicalDevice,
                     surface,
@@ -528,7 +525,7 @@ public class Application implements AutoCloseable {
                 return false;
             }
             var surfaceFormatCount = pSurfaceFormatCount.read();
-            var surfaceFormats = Create.createArray(VkSurfaceFormatKHR.FACTORY, localArena, surfaceFormatCount).first;
+            var surfaceFormats = VkSurfaceFormatKHR.allocate(localArena, surfaceFormatCount);
             result = instanceCommands.vkGetPhysicalDeviceSurfaceFormatsKHR(
                     physicalDevice,
                     surface,
@@ -550,17 +547,17 @@ public class Application implements AutoCloseable {
             }
             swapchainImageFormat = surfaceFormat.format();
 
-            swapExtent = Create.create(VkExtent2D.FACTORY, arena);
+            swapExtent = VkExtent2D.allocate(arena);
             if (surfaceCapabilities.currentExtent().width() != 0xFFFFFFFF) {
                 swapExtent.width(surfaceCapabilities.currentExtent().width());
                 swapExtent.height(surfaceCapabilities.currentExtent().height());
             }
             else {
-                IntArray wh = IntArray.allocate(localArena, 2);
+                IntBuffer wh = IntBuffer.allocate(localArena, 2);
                 libGLFW.glfwGetWindowSize(glfwWindow, wh);
 
-                swapExtent.width(wh.get(0));
-                swapExtent.height(wh.get(1));
+                swapExtent.width(wh.read(0));
+                swapExtent.height(wh.read(1));
 
                 swapExtent.width(Math.clamp(
                         swapExtent.width(),
@@ -579,7 +576,7 @@ public class Application implements AutoCloseable {
                 imageCount = surfaceCapabilities.maxImageCount();
             }
 
-            var swapchainCreateInfo = Create.create(VkSwapchainCreateInfoKHR.FACTORY, localArena);
+            var swapchainCreateInfo = VkSwapchainCreateInfoKHR.allocate(localArena);
             swapchainCreateInfo.surface(surface);
             swapchainCreateInfo.minImageCount(imageCount);
             swapchainCreateInfo.imageFormat(surfaceFormat.format());
@@ -591,9 +588,9 @@ public class Application implements AutoCloseable {
             if (graphicsQueueFamilyIndex != presentationQueueFamilyIndex) {
                 swapchainCreateInfo.imageSharingMode(VkSharingMode.VK_SHARING_MODE_CONCURRENT);
                 swapchainCreateInfo.queueFamilyIndexCount(2);
-                IntArray queueFamilyIndices = IntArray.allocate(localArena, 2);
-                queueFamilyIndices.set(0, graphicsQueueFamilyIndex);
-                queueFamilyIndices.set(1, presentationQueueFamilyIndex);
+                IntBuffer queueFamilyIndices = IntBuffer.allocate(localArena, 2);
+                queueFamilyIndices.write(0, graphicsQueueFamilyIndex);
+                queueFamilyIndices.write(1, presentationQueueFamilyIndex);
                 swapchainCreateInfo.pQueueFamilyIndices(queueFamilyIndices);
             }
             else {
@@ -605,14 +602,15 @@ public class Application implements AutoCloseable {
             swapchainCreateInfo.presentMode(VkPresentModeKHR.VK_PRESENT_MODE_FIFO_KHR);
             swapchainCreateInfo.clipped(Constants.VK_TRUE);
 
-            swapchain = Create.create(VkSwapchainKHR.FACTORY, arena);
-            result = deviceCommands.vkCreateSwapchainKHR(device, swapchainCreateInfo, null, swapchain);
+            pSwapchain = VkSwapchainKHR.Buffer.allocate(arena);
+            result = deviceCommands.vkCreateSwapchainKHR(device, swapchainCreateInfo, null, pSwapchain);
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("创建 Vulkan 交换链失败：" + result);
                 return false;
             }
+            swapchain = pSwapchain.read();
 
-            var pSwapchainImageCount = IntPtr.allocate(localArena);
+            var pSwapchainImageCount = IntBuffer.allocate(localArena);
             result = deviceCommands.vkGetSwapchainImagesKHR(device, swapchain, pSwapchainImageCount, null);
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("获取 Vulkan 交换链图像失败：" + result);
@@ -620,22 +618,27 @@ public class Application implements AutoCloseable {
             }
 
             int swapchainImageCount = pSwapchainImageCount.read();
-            swapchainImages = Create.createArray(VkImage.FACTORY, arena, swapchainImageCount).first;
-            result = deviceCommands.vkGetSwapchainImagesKHR(device, swapchain, pSwapchainImageCount, swapchainImages[0]);
+            var pSwapchainImages = VkImage.Buffer.allocate(localArena, swapchainImageCount);
+            result = deviceCommands.vkGetSwapchainImagesKHR(device, swapchain, pSwapchainImageCount, pSwapchainImages);
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("获取 Vulkan 交换链图像失败：" + result);
                 return false;
             }
+            swapchainImages = pSwapchainImages.readAll();
 
             return true;
         }
     }
 
     private boolean createImageViews() {
-        swapchainImageViews = Create.createArray(VkImageView.FACTORY, arena, swapchainImages.length).first;
+        pSwapchainImageViews = VkImageView.Buffer.allocate(arena, swapchainImages.length);
+        swapchainImageViews = new VkImageView[swapchainImages.length];
+
         try (Arena localArena = Arena.ofConfined()) {
+            var pImageView = VkImageView.Buffer.allocate(localArena);
+
             for (int i = 0; i < swapchainImages.length; i++) {
-                var createInfo = Create.create(VkImageViewCreateInfo.FACTORY, localArena);
+                var createInfo = VkImageViewCreateInfo.allocate(localArena);
                 createInfo.image(swapchainImages[i]);
                 createInfo.viewType(VkImageViewType.VK_IMAGE_VIEW_TYPE_2D);
                 createInfo.format(swapchainImageFormat);
@@ -649,12 +652,14 @@ public class Application implements AutoCloseable {
                 createInfo.subresourceRange().baseArrayLayer(0);
                 createInfo.subresourceRange().layerCount(1);
 
-                swapchainImageViews[i] = Create.create(VkImageView.FACTORY, arena);
-                var result = deviceCommands.vkCreateImageView(device, createInfo, null, swapchainImageViews[i]);
+                var result = deviceCommands.vkCreateImageView(device, createInfo, null, pImageView);
                 if (result != VkResult.VK_SUCCESS) {
                     UICommons.showErrorMessage("创建 Vulkan 图像视图失败：" + result);
                     return false;
                 }
+
+                swapchainImageViews[i] = pImageView.read();
+                pSwapchainImageViews.write(i, swapchainImageViews[i]);
             }
 
             return true;
@@ -668,27 +673,27 @@ public class Application implements AutoCloseable {
                 return false;
             }
 
-            var shaderStageInfos = Create.createArray(VkPipelineShaderStageCreateInfo.FACTORY, localArena, 2).first;
+            var shaderStageInfos = VkPipelineShaderStageCreateInfo.allocate(localArena, 2);
             shaderStageInfos[0].stage(VkShaderStageFlags.VK_SHADER_STAGE_VERTEX_BIT);
             shaderStageInfos[0].module(shaderModules[0]);
-            shaderStageInfos[0].pName(ByteArray.allocateUtf8(localArena, "main"));
+            shaderStageInfos[0].pName(ByteBuffer.allocateString(localArena, "main"));
             shaderStageInfos[1].stage(VkShaderStageFlags.VK_SHADER_STAGE_FRAGMENT_BIT);
             shaderStageInfos[1].module(shaderModules[1]);
-            shaderStageInfos[1].pName(ByteArray.allocateUtf8(localArena, "main"));
+            shaderStageInfos[1].pName(ByteBuffer.allocateString(localArena, "main"));
 
-            @enumtype(VkDynamicState.class) IntArray dynamicStates = IntArray.allocate(localArena, 2);
-            dynamicStates.set(0, VkDynamicState.VK_DYNAMIC_STATE_VIEWPORT);
-            dynamicStates.set(1, VkDynamicState.VK_DYNAMIC_STATE_SCISSOR);
-            var dynamicStateInfo = Create.create(VkPipelineDynamicStateCreateInfo.FACTORY, localArena);
+            @enumtype(VkDynamicState.class) IntBuffer dynamicStates = IntBuffer.allocate(localArena, 2);
+            dynamicStates.write(0, VkDynamicState.VK_DYNAMIC_STATE_VIEWPORT);
+            dynamicStates.write(1, VkDynamicState.VK_DYNAMIC_STATE_SCISSOR);
+            var dynamicStateInfo = VkPipelineDynamicStateCreateInfo.allocate(localArena);
             dynamicStateInfo.dynamicStateCount(2);
             dynamicStateInfo.pDynamicStates(dynamicStates);
 
-            var vertexInputInfo = Create.create(VkPipelineVertexInputStateCreateInfo.FACTORY, localArena);
-            var inputAssemblyInfo = Create.create(VkPipelineInputAssemblyStateCreateInfo.FACTORY, localArena);
+            var vertexInputInfo = VkPipelineVertexInputStateCreateInfo.allocate(localArena);
+            var inputAssemblyInfo = VkPipelineInputAssemblyStateCreateInfo.allocate(localArena);
             inputAssemblyInfo.topology(VkPrimitiveTopology.VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
             inputAssemblyInfo.primitiveRestartEnable(Constants.VK_FALSE);
 
-            var viewport = Create.create(VkViewport.FACTORY, localArena);
+            var viewport = VkViewport.allocate(localArena);
             viewport.x(0.0f);
             viewport.y(0.0f);
             viewport.width(swapExtent.width());
@@ -696,16 +701,16 @@ public class Application implements AutoCloseable {
             viewport.minDepth(0.0f);
             viewport.maxDepth(1.0f);
 
-            var scissor = Create.create(VkRect2D.FACTORY, localArena);
+            var scissor = VkRect2D.allocate(localArena);
             scissor.extent(swapExtent);
 
-            var viewportStateInfo = Create.create(VkPipelineViewportStateCreateInfo.FACTORY, localArena);
+            var viewportStateInfo = VkPipelineViewportStateCreateInfo.allocate(localArena);
             viewportStateInfo.viewportCount(1);
             viewportStateInfo.pViewports(viewport);
             viewportStateInfo.scissorCount(1);
             viewportStateInfo.pScissors(scissor);
 
-            var rasterizationInfo = Create.create(VkPipelineRasterizationStateCreateInfo.FACTORY, localArena);
+            var rasterizationInfo = VkPipelineRasterizationStateCreateInfo.allocate(localArena);
             rasterizationInfo.polygonMode(VkPolygonMode.VK_POLYGON_MODE_FILL);
             rasterizationInfo.lineWidth(1.0f);
             rasterizationInfo.cullMode(VkCullModeFlags.VK_CULL_MODE_BACK_BIT);
@@ -713,11 +718,11 @@ public class Application implements AutoCloseable {
             rasterizationInfo.depthBiasClamp(0.0f);
             rasterizationInfo.depthBiasSlopeFactor(0.0f);
 
-            var multisampleInfo = Create.create(VkPipelineMultisampleStateCreateInfo.FACTORY, localArena);
+            var multisampleInfo = VkPipelineMultisampleStateCreateInfo.allocate(localArena);
             multisampleInfo.rasterizationSamples(VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT);
             multisampleInfo.minSampleShading(1.0f);
 
-            var pipelineColorBlendAttachmentState = Create.create(VkPipelineColorBlendAttachmentState.FACTORY, localArena);
+            var pipelineColorBlendAttachmentState = VkPipelineColorBlendAttachmentState.allocate(localArena);
             pipelineColorBlendAttachmentState.colorWriteMask(
                     VkColorComponentFlags.VK_COLOR_COMPONENT_R_BIT |
                     VkColorComponentFlags.VK_COLOR_COMPONENT_G_BIT |
@@ -731,23 +736,24 @@ public class Application implements AutoCloseable {
             pipelineColorBlendAttachmentState.dstAlphaBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ZERO);
             pipelineColorBlendAttachmentState.alphaBlendOp(VkBlendOp.VK_BLEND_OP_ADD);
 
-            var pipelineColorBlendStateInfo = Create.create(VkPipelineColorBlendStateCreateInfo.FACTORY, localArena);
+            var pipelineColorBlendStateInfo = VkPipelineColorBlendStateCreateInfo.allocate(localArena);
             pipelineColorBlendStateInfo.logicOp(VkLogicOp.VK_LOGIC_OP_COPY);
             pipelineColorBlendStateInfo.attachmentCount(1);
             pipelineColorBlendStateInfo.pAttachments(pipelineColorBlendAttachmentState);
-            pipelineColorBlendStateInfo.blendConstants().set(0, 0.0f);
-            pipelineColorBlendStateInfo.blendConstants().set(1, 0.0f);
-            pipelineColorBlendStateInfo.blendConstants().set(2, 0.0f);
-            pipelineColorBlendStateInfo.blendConstants().set(3, 0.0f);
+            pipelineColorBlendStateInfo.blendConstants().write(0, 0.0f);
+            pipelineColorBlendStateInfo.blendConstants().write(1, 0.0f);
+            pipelineColorBlendStateInfo.blendConstants().write(2, 0.0f);
+            pipelineColorBlendStateInfo.blendConstants().write(3, 0.0f);
 
-            var pipelineLayoutCreateInfo = Create.create(VkPipelineLayoutCreateInfo.FACTORY, localArena);
-            pipelineLayout = Create.create(VkPipelineLayout.FACTORY, arena);
-            if (deviceCommands.vkCreatePipelineLayout(device, pipelineLayoutCreateInfo, null, pipelineLayout) != VkResult.VK_SUCCESS) {
+            var pipelineLayoutCreateInfo = VkPipelineLayoutCreateInfo.allocate(localArena);
+            var pPipelineLayout = VkPipelineLayout.Buffer.allocate(localArena, 1);
+            if (deviceCommands.vkCreatePipelineLayout(device, pipelineLayoutCreateInfo, null, pPipelineLayout) != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("创建 Vulkan 管线布局失败");
                 return false;
             }
+            pipelineLayout = pPipelineLayout.read();
 
-            var colorAttachmentDescription = Create.create(VkAttachmentDescription.FACTORY, localArena);
+            var colorAttachmentDescription = VkAttachmentDescription.allocate(localArena);
             colorAttachmentDescription.format(swapchainImageFormat);
             colorAttachmentDescription.samples(VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT);
             colorAttachmentDescription.loadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_CLEAR);
@@ -757,16 +763,16 @@ public class Application implements AutoCloseable {
             colorAttachmentDescription.initialLayout(VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED);
             colorAttachmentDescription.finalLayout(VkImageLayout.VK_IMAGE_LAYOUT_PRESENT_SRC_KHR);
 
-            var colorAttachmentReference = Create.create(VkAttachmentReference.FACTORY, localArena);
+            var colorAttachmentReference = VkAttachmentReference.allocate(localArena);
             colorAttachmentReference.attachment(0);
             colorAttachmentReference.layout(VkImageLayout.VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
 
-            var subpassDescription = Create.create(VkSubpassDescription.FACTORY, localArena);
+            var subpassDescription = VkSubpassDescription.allocate(localArena);
             subpassDescription.pipelineBindPoint(VkPipelineBindPoint.VK_PIPELINE_BIND_POINT_GRAPHICS);
             subpassDescription.colorAttachmentCount(1);
             subpassDescription.pColorAttachments(colorAttachmentReference);
 
-            var subpassDependency = Create.create(VkSubpassDependency.FACTORY, localArena);
+            var subpassDependency = VkSubpassDependency.allocate(localArena);
             subpassDependency.srcSubpass(Constants.VK_SUBPASS_EXTERNAL);
             subpassDependency.dstSubpass(0);
             subpassDependency.srcStageMask(VkPipelineStageFlags.VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT);
@@ -777,7 +783,7 @@ public class Application implements AutoCloseable {
                     VkAccessFlags.VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT
             );
 
-            var renderPassCreateInfo = Create.create(VkRenderPassCreateInfo.FACTORY, localArena);
+            var renderPassCreateInfo = VkRenderPassCreateInfo.allocate(localArena);
             renderPassCreateInfo.attachmentCount(1);
             renderPassCreateInfo.pAttachments(colorAttachmentDescription);
             renderPassCreateInfo.subpassCount(1);
@@ -785,14 +791,15 @@ public class Application implements AutoCloseable {
             renderPassCreateInfo.dependencyCount(1);
             renderPassCreateInfo.pDependencies(subpassDependency);
 
-            renderPass = Create.create(VkRenderPass.FACTORY, arena);
-            var result = deviceCommands.vkCreateRenderPass(device, renderPassCreateInfo, null, renderPass);
+            var pRenderPass = VkRenderPass.Buffer.allocate(localArena, 1);
+            var result = deviceCommands.vkCreateRenderPass(device, renderPassCreateInfo, null, pRenderPass);
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("创建 Vulkan 渲染通道失败：" + result);
                 return false;
             }
+            renderPass = pRenderPass.read();
 
-            var graphicsPipelineCreateInfo = Create.create(VkGraphicsPipelineCreateInfo.FACTORY, localArena);
+            var graphicsPipelineCreateInfo = VkGraphicsPipelineCreateInfo.allocate(localArena);
             graphicsPipelineCreateInfo.stageCount(2);
             graphicsPipelineCreateInfo.pStages(shaderStageInfos[0]);
             graphicsPipelineCreateInfo.pVertexInputState(vertexInputInfo);
@@ -806,19 +813,20 @@ public class Application implements AutoCloseable {
             graphicsPipelineCreateInfo.renderPass(renderPass);
             graphicsPipelineCreateInfo.subpass(0);
 
-            graphicsPipeline = Create.create(VkPipeline.FACTORY, arena);
+            var pGraphicsPipeline = VkPipeline.Buffer.allocate(localArena, 1);
             result = deviceCommands.vkCreateGraphicsPipelines(
                     device,
                     null,
                     1,
                     graphicsPipelineCreateInfo,
                     null,
-                    graphicsPipeline
+                    pGraphicsPipeline
             );
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("创建 Vulkan 图形管线失败：" + result);
                 return false;
             }
+            graphicsPipeline = pGraphicsPipeline.read();
 
             deviceCommands.vkDestroyShaderModule(device, shaderModules[0], null);
             deviceCommands.vkDestroyShaderModule(device, shaderModules[1], null);
@@ -831,22 +839,24 @@ public class Application implements AutoCloseable {
             MemorySegment vertexShaderCode = ShaderUtil.readShaderCode("vert.spv", localArena);
             MemorySegment fragmentShaderCode = ShaderUtil.readShaderCode("frag.spv", localArena);
 
-            var createInfos = Create.createArray(VkShaderModuleCreateInfo.FACTORY, localArena, 2).first;
+            var createInfos = VkShaderModuleCreateInfo.allocate(localArena, 2);
             createInfos[0].codeSize(vertexShaderCode.byteSize());
             createInfos[0].pCodeRaw(vertexShaderCode);
             createInfos[1].codeSize(fragmentShaderCode.byteSize());
             createInfos[1].pCodeRaw(fragmentShaderCode);
 
-            var shaderModules = Create.createArray(VkShaderModule.FACTORY, arena, 2).first;
+            var ret = new VkShaderModule[2];
+            var pShaderModule = VkShaderModule.Buffer.allocate(arena);
             for (int i = 0; i < 2; i++) {
-                var result = deviceCommands.vkCreateShaderModule(device, createInfos[i], null, shaderModules[i]);
+                var result = deviceCommands.vkCreateShaderModule(device, createInfos[i], null, pShaderModule);
                 if (result != VkResult.VK_SUCCESS) {
                     UICommons.showErrorMessage("创建 Vulkan 着色器模块失败：" + result);
                     return null;
                 }
-            }
 
-            return shaderModules;
+                ret[i] = pShaderModule.read();
+            }
+            return ret;
         } catch (IOException e) {
             UICommons.showErrorMessage("读取着色器代码失败：" + e);
             return null;
@@ -854,23 +864,26 @@ public class Application implements AutoCloseable {
     }
 
     private boolean createFramebuffers() {
-        swapchainFramebuffers = Create.createArray(VkFramebuffer.FACTORY, arena, swapchainImageViews.length).first;
+        swapchainFramebuffers = new VkFramebuffer[swapchainImageViews.length];
         try (Arena localArena = Arena.ofConfined()) {
+            var pSwapchainFramebuffer = VkFramebuffer.Buffer.allocate(localArena);
+            var framebufferCreateInfo = VkFramebufferCreateInfo.allocate(localArena);
+
             for (int i = 0; i < swapchainImageViews.length; i++) {
-                var framebufferCreateInfo = Create.create(VkFramebufferCreateInfo.FACTORY, localArena);
                 framebufferCreateInfo.renderPass(renderPass);
                 framebufferCreateInfo.attachmentCount(1);
-                framebufferCreateInfo.pAttachments(swapchainImageViews[i]);
+                framebufferCreateInfo.pAttachments(pSwapchainImageViews.offset(i));
                 framebufferCreateInfo.width(swapExtent.width());
                 framebufferCreateInfo.height(swapExtent.height());
                 framebufferCreateInfo.layers(1);
 
-                swapchainFramebuffers[i] = Create.create(VkFramebuffer.FACTORY, arena);
-                var result = deviceCommands.vkCreateFramebuffer(device, framebufferCreateInfo, null, swapchainFramebuffers[i]);
+                var result = deviceCommands.vkCreateFramebuffer(device, framebufferCreateInfo, null, pSwapchainFramebuffer);
                 if (result != VkResult.VK_SUCCESS) {
                     UICommons.showErrorMessage("创建 Vulkan 帧缓冲失败：" + result);
                     return false;
                 }
+
+                swapchainFramebuffers[i] = pSwapchainFramebuffer.read();
             }
 
             return true;
@@ -879,66 +892,69 @@ public class Application implements AutoCloseable {
 
     private boolean createCommandPool() {
         try (Arena localArena = Arena.ofConfined()) {
-            var poolCreateInfo = Create.create(VkCommandPoolCreateInfo.FACTORY, localArena);
+            var poolCreateInfo = VkCommandPoolCreateInfo.allocate(localArena);
             poolCreateInfo.queueFamilyIndex(graphicsQueueFamilyIndex);
             poolCreateInfo.flags(VkCommandPoolCreateFlags.VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT);
             poolCreateInfo.queueFamilyIndex(graphicsQueueFamilyIndex);
 
-            commandPool = Create.create(VkCommandPool.FACTORY, arena);
-            var result = deviceCommands.vkCreateCommandPool(device, poolCreateInfo, null, commandPool);
+            var pCommandPool = VkCommandPool.Buffer.allocate(localArena, 1);
+            var result = deviceCommands.vkCreateCommandPool(device, poolCreateInfo, null, pCommandPool);
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("创建 Vulkan 命令池失败：" + result);
                 return false;
             }
-
+            commandPool = pCommandPool.read();
             return true;
         }
     }
 
     private boolean createCommandBuffer() {
         try (Arena localArena = Arena.ofConfined()) {
-            var allocateInfo = Create.create(VkCommandBufferAllocateInfo.FACTORY, localArena);
+            var allocateInfo = VkCommandBufferAllocateInfo.allocate(localArena);
             allocateInfo.commandPool(commandPool);
             allocateInfo.level(VkCommandBufferLevel.VK_COMMAND_BUFFER_LEVEL_PRIMARY);
             allocateInfo.commandBufferCount(1);
 
-            commandBuffer = Create.create(VkCommandBuffer.FACTORY, arena);
-            var result = deviceCommands.vkAllocateCommandBuffers(device, allocateInfo, commandBuffer);
+            pCommandBuffer = VkCommandBuffer.Buffer.allocate(arena);
+            var result = deviceCommands.vkAllocateCommandBuffers(device, allocateInfo, pCommandBuffer);
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("分配 Vulkan 命令缓冲区失败：" + result);
                 return false;
             }
 
+            commandBuffer = pCommandBuffer.read();
             return true;
         }
     }
 
     private boolean createSyncObjects() {
-        imageAvailableSemaphores = Create.create(VkSemaphore.FACTORY, arena);
-        renderFinishedSemaphores = Create.create(VkSemaphore.FACTORY, arena);
-        inFlightFences = Create.create(VkFence.FACTORY, arena);
+        pImageAvailableSemaphores = VkSemaphore.Buffer.allocate(arena);
+        pRenderFinishedSemaphores = VkSemaphore.Buffer.allocate(arena);
+        pInFlightFences = VkFence.Buffer.allocate(arena);
 
         try (Arena localArena = Arena.ofConfined()) {
-            var semaphoreCreateInfo = Create.create(VkSemaphoreCreateInfo.FACTORY, localArena);
-            var fenceCreateInfo = Create.create(VkFenceCreateInfo.FACTORY, localArena);
+            var semaphoreCreateInfo = VkSemaphoreCreateInfo.allocate(localArena);
+            var fenceCreateInfo = VkFenceCreateInfo.allocate(localArena);
             fenceCreateInfo.flags(VkFenceCreateFlags.VK_FENCE_CREATE_SIGNALED_BIT);
 
-            if (deviceCommands.vkCreateSemaphore(device, semaphoreCreateInfo, null, imageAvailableSemaphores) != VkResult.VK_SUCCESS ||
-                deviceCommands.vkCreateSemaphore(device, semaphoreCreateInfo, null, renderFinishedSemaphores) != VkResult.VK_SUCCESS ||
-                deviceCommands.vkCreateFence(device, fenceCreateInfo, null, inFlightFences) != VkResult.VK_SUCCESS) {
+            if (deviceCommands.vkCreateSemaphore(device, semaphoreCreateInfo, null, pImageAvailableSemaphores) != VkResult.VK_SUCCESS ||
+                deviceCommands.vkCreateSemaphore(device, semaphoreCreateInfo, null, pRenderFinishedSemaphores) != VkResult.VK_SUCCESS ||
+                deviceCommands.vkCreateFence(device, fenceCreateInfo, null, pInFlightFences) != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("创建 Vulkan 同步对象失败");
                 return false;
             }
 
+            imageAvailableSemaphores = pImageAvailableSemaphores.read();
+            renderFinishedSemaphores = pRenderFinishedSemaphores.read();
             return true;
         }
     }
 
     private boolean drawFrame() {
-        deviceCommands.vkWaitForFences(device, 1, inFlightFences, Constants.VK_TRUE, 0xFFFFFFFF_FFFFFFFFL);
-        deviceCommands.vkResetFences(device, 1, inFlightFences);
+        deviceCommands.vkWaitForFences(device, 1, pInFlightFences, Constants.VK_TRUE, 0xFFFFFFFF_FFFFFFFFL);
+        deviceCommands.vkResetFences(device, 1, pInFlightFences);
         try (Arena localArena = Arena.ofConfined()) {
-            @unsigned var pImageIndex = IntPtr.allocate(localArena);
+            @unsigned var pImageIndex = IntBuffer.allocate(localArena);
             deviceCommands.vkAcquireNextImageKHR(
                     device,
                     swapchain,
@@ -953,27 +969,27 @@ public class Application implements AutoCloseable {
                 return false;
             }
 
-            var submitInfo = Create.create(VkSubmitInfo.FACTORY, localArena);
+            var submitInfo = VkSubmitInfo.allocate(localArena);
             submitInfo.waitSemaphoreCount(1);
-            submitInfo.pWaitSemaphores(imageAvailableSemaphores);
-            var submitInfoWaitStages = IntPtr.allocate(localArena);
+            submitInfo.pWaitSemaphores(pImageAvailableSemaphores);
+            var submitInfoWaitStages = IntBuffer.allocate(localArena);
             submitInfoWaitStages.write(VkPipelineStageFlags.VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT);
             submitInfo.pWaitDstStageMask(submitInfoWaitStages);
             submitInfo.commandBufferCount(1);
-            submitInfo.pCommandBuffers(commandBuffer);
+            submitInfo.pCommandBuffers(pCommandBuffer);
             submitInfo.signalSemaphoreCount(1);
-            submitInfo.pSignalSemaphores(renderFinishedSemaphores);
+            submitInfo.pSignalSemaphores(pRenderFinishedSemaphores);
 
-            if (deviceCommands.vkQueueSubmit(graphicsQueue, 1, submitInfo, inFlightFences) != VkResult.VK_SUCCESS) {
+            if (deviceCommands.vkQueueSubmit(graphicsQueue, 1, submitInfo, pInFlightFences.read()) != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("提交 Vulkan 命令缓冲区失败");
                 return false;
             }
 
-            var presentInfo = Create.create(VkPresentInfoKHR.FACTORY, localArena);
+            var presentInfo = VkPresentInfoKHR.allocate(localArena);
             presentInfo.waitSemaphoreCount(1);
-            presentInfo.pWaitSemaphores(renderFinishedSemaphores);
+            presentInfo.pWaitSemaphores(pRenderFinishedSemaphores);
             presentInfo.swapchainCount(1);
-            presentInfo.pSwapchains(swapchain);
+            presentInfo.pSwapchains(pSwapchain);
             presentInfo.pImageIndices(pImageIndex);
 
             if (deviceCommands.vkQueuePresentKHR(presentationQueue, presentInfo) != VkResult.VK_SUCCESS) {
@@ -986,24 +1002,24 @@ public class Application implements AutoCloseable {
 
     private boolean recordCommandBuffer(@unsigned int imageIndex) {
         try (Arena localArena = Arena.ofConfined()) {
-            var beginInfo = Create.create(VkCommandBufferBeginInfo.FACTORY, localArena);
+            var beginInfo = VkCommandBufferBeginInfo.allocate(localArena);
             beginInfo.flags(VkCommandBufferUsageFlags.VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT);
 
-            var renderPassBeginInfo = Create.create(VkRenderPassBeginInfo.FACTORY, localArena);
+            var renderPassBeginInfo = VkRenderPassBeginInfo.allocate(localArena);
             renderPassBeginInfo.renderPass(renderPass);
             renderPassBeginInfo.framebuffer(swapchainFramebuffers[imageIndex]);
             renderPassBeginInfo.renderArea().extent(swapExtent);
 
-            var clearValue = Create.create(VkClearValue.FACTORY, localArena);
-            clearValue.color().float32().set(0, 0.0f);
-            clearValue.color().float32().set(1, 0.0f);
-            clearValue.color().float32().set(2, 0.0f);
-            clearValue.color().float32().set(3, 0.0f);
+            var clearValue = VkClearValue.allocate(localArena);
+            clearValue.color().float32().write(0, 0.0f);
+            clearValue.color().float32().write(1, 0.0f);
+            clearValue.color().float32().write(2, 0.0f);
+            clearValue.color().float32().write(3, 0.0f);
 
             renderPassBeginInfo.clearValueCount(1);
             renderPassBeginInfo.pClearValues(clearValue);
 
-            var viewport = Create.create(VkViewport.FACTORY, localArena);
+            var viewport = VkViewport.allocate(localArena);
             viewport.x(0.0f);
             viewport.y(0.0f);
             viewport.width(swapExtent.width());
@@ -1011,7 +1027,7 @@ public class Application implements AutoCloseable {
             viewport.minDepth(0.0f);
             viewport.maxDepth(1.0f);
 
-            var scissor = Create.create(VkRect2D.FACTORY, localArena);
+            var scissor = VkRect2D.allocate(localArena);
             scissor.extent(swapExtent);
 
             var result = deviceCommands.vkBeginCommandBuffer(commandBuffer, beginInfo);
@@ -1039,7 +1055,7 @@ public class Application implements AutoCloseable {
 
     private MethodHandle loadInstanceCommand(String name, FunctionDescriptor descriptor) {
         try (Arena localArena = Arena.ofConfined()) {
-            var nameSegment = ByteArray.allocateUtf8(localArena, name);
+            var nameSegment = ByteBuffer.allocateString(localArena, name);
             MemorySegment segment = staticCommands.vkGetInstanceProcAddr(instance, nameSegment);
             if (segment.address() == 0) {
                 return null;
@@ -1051,7 +1067,7 @@ public class Application implements AutoCloseable {
 
     private MethodHandle loadDeviceCommand(String name, FunctionDescriptor descriptor) {
         try (Arena localArena = Arena.ofConfined()) {
-            var nameSegment = ByteArray.allocateUtf8(localArena, name);
+            var nameSegment = ByteBuffer.allocateString(localArena, name);
             MemorySegment segment = staticCommands.vkGetDeviceProcAddr(device, nameSegment);
             if (segment.address() == 0) {
                 return null;
@@ -1077,7 +1093,7 @@ public class Application implements AutoCloseable {
             default -> "(unknown level)";
         };
 
-        String message = new VkDebugUtilsMessengerCallbackDataEXT(pCallbackData).pMessage().readUtf8();
+        String message = new VkDebugUtilsMessengerCallbackDataEXT(pCallbackData).pMessage().readString();
         System.err.println("[" + severity + "] " + message);
 
         return Constants.VK_FALSE;
@@ -1085,11 +1101,11 @@ public class Application implements AutoCloseable {
 
     private final Arena arena = Arena.ofConfined();
     private final String validationLayerName = "VK_LAYER_KHRONOS_validation";
-    private final ByteArray validationLayerNameByteArray = ByteArray.allocateUtf8(arena, validationLayerName);
+    private final ByteBuffer validationLayerNameByteArray = ByteBuffer.allocateString(arena, validationLayerName);
     private final String validationExtensionName = "VK_EXT_debug_utils";
-    private final ByteArray validationExtensionNameByteArray = ByteArray.allocateUtf8(arena, validationExtensionName);
+    private final ByteBuffer validationExtensionNameByteArray = ByteBuffer.allocateString(arena, validationExtensionName);
     private final String swapchainExtensionName = "VK_KHR_swapchain";
-    private final ByteArray swapchainExtensionNameByteArray = ByteArray.allocateUtf8(arena, swapchainExtensionName);
+    private final ByteBuffer swapchainExtensionNameByteArray = ByteBuffer.allocateString(arena, swapchainExtensionName);
     private final MemorySegment segment$debugCallback = Linker.nativeLinker().upcallStub(
             handle$debugCallback,
             descriptor$debugCallback,
@@ -1109,20 +1125,25 @@ public class Application implements AutoCloseable {
     private DeviceCommands deviceCommands;
     private VkQueue graphicsQueue;
     private VkQueue presentationQueue;
+    private VkSwapchainKHR.Buffer pSwapchain;
     private VkSwapchainKHR swapchain;
     private @enumtype(VkFormat.class) int swapchainImageFormat;
     private VkExtent2D swapExtent;
     private VkImage[] swapchainImages;
+    private VkImageView.Buffer pSwapchainImageViews;
     private VkImageView[] swapchainImageViews;
     private VkPipelineLayout pipelineLayout;
     private VkRenderPass renderPass;
     private VkPipeline graphicsPipeline;
     private VkFramebuffer[] swapchainFramebuffers;
     private VkCommandPool commandPool;
+    private VkCommandBuffer.Buffer pCommandBuffer;
     private VkCommandBuffer commandBuffer;
+    private VkSemaphore.Buffer pImageAvailableSemaphores;
     private VkSemaphore imageAvailableSemaphores;
+    private VkSemaphore.Buffer pRenderFinishedSemaphores;
     private VkSemaphore renderFinishedSemaphores;
-    private VkFence inFlightFences;
+    private VkFence.Buffer pInFlightFences;
 
     private static final StaticCommands staticCommands = new StaticCommands(Loader::loadFunctionOrNull);
     private static final EntryCommands entryCommands = new EntryCommands(Loader::loadFunctionOrNull);

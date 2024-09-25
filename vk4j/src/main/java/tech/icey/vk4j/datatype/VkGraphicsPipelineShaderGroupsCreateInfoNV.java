@@ -102,23 +102,23 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         segment.set(LAYOUT$pipelineCount, OFFSET$pipelineCount, value);
     }
 
-    public @pointer(comment="VkPipeline*") MemorySegment pPipelinesRaw() {
+    public @pointer(comment="VkPipeline") MemorySegment pPipelinesRaw() {
         return segment.get(LAYOUT$pPipelines, OFFSET$pPipelines);
     }
 
-    public void pPipelinesRaw(@pointer(comment="VkPipeline*") MemorySegment value) {
+    public void pPipelinesRaw(@pointer(comment="VkPipeline") MemorySegment value) {
         segment.set(LAYOUT$pPipelines, OFFSET$pPipelines, value);
     }
-    
-    public @nullable VkPipeline pPipelines() {
+
+    public @nullable VkPipeline.Buffer pPipelines() {
         MemorySegment s = pPipelinesRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkPipeline(s);
+        return new VkPipeline.Buffer(s);
     }
 
-    public void pPipelines(@nullable VkPipeline value) {
+    public void pPipelines(@nullable VkPipeline.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelinesRaw(s);
     }

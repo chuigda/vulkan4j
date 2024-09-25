@@ -62,19 +62,19 @@ public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) {
     }
 
     public VkSemaphore semaphore() {
-        return new VkSemaphore(segment.asSlice(OFFSET$semaphore, LAYOUT$semaphore));
+        return new VkSemaphore(segment.get(LAYOUT$semaphore, OFFSET$semaphore));
     }
 
     public void semaphore(VkSemaphore value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$semaphore, LAYOUT$semaphore.byteSize());
+        segment.set(LAYOUT$semaphore, OFFSET$semaphore, value.segment());
     }
 
     public VkEvent event() {
-        return new VkEvent(segment.asSlice(OFFSET$event, LAYOUT$event));
+        return new VkEvent(segment.get(LAYOUT$event, OFFSET$event));
     }
 
     public void event(VkEvent value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$event, LAYOUT$event.byteSize());
+        segment.set(LAYOUT$event, OFFSET$event, value.segment());
     }
 
     public @pointer(comment="void*") MemorySegment mtlSharedEvent() {

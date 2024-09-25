@@ -37,11 +37,11 @@ public record VkSparseImageOpaqueMemoryBindInfo(MemorySegment segment) {
     }
 
     public VkImage image() {
-        return new VkImage(segment.asSlice(OFFSET$image, LAYOUT$image));
+        return new VkImage(segment.get(LAYOUT$image, OFFSET$image));
     }
 
     public void image(VkImage value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$image, LAYOUT$image.byteSize());
+        segment.set(LAYOUT$image, OFFSET$image, value.segment());
     }
 
     public @unsigned int bindCount() {

@@ -1,17 +1,16 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.bitmask.VkPipelineStageFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV;
 
 public record VkCheckpointDataNV(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -76,7 +75,7 @@ public record VkCheckpointDataNV(MemorySegment segment) {
     public static VkCheckpointDataNV allocate(Arena arena) {
         return new VkCheckpointDataNV(arena.allocate(LAYOUT));
     }
-    
+
     public static VkCheckpointDataNV[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCheckpointDataNV[] ret = new VkCheckpointDataNV[count];

@@ -70,27 +70,27 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) {
     }
 
     public VkImage image() {
-        return new VkImage(segment.asSlice(OFFSET$image, LAYOUT$image));
+        return new VkImage(segment.get(LAYOUT$image, OFFSET$image));
     }
 
     public void image(VkImage value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$image, LAYOUT$image.byteSize());
+        segment.set(LAYOUT$image, OFFSET$image, value.segment());
     }
 
     public VkImageView imageView() {
-        return new VkImageView(segment.asSlice(OFFSET$imageView, LAYOUT$imageView));
+        return new VkImageView(segment.get(LAYOUT$imageView, OFFSET$imageView));
     }
 
     public void imageView(VkImageView value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageView, LAYOUT$imageView.byteSize());
+        segment.set(LAYOUT$imageView, OFFSET$imageView, value.segment());
     }
 
     public VkBufferView bufferView() {
-        return new VkBufferView(segment.asSlice(OFFSET$bufferView, LAYOUT$bufferView));
+        return new VkBufferView(segment.get(LAYOUT$bufferView, OFFSET$bufferView));
     }
 
     public void bufferView(VkBufferView value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$bufferView, LAYOUT$bufferView.byteSize());
+        segment.set(LAYOUT$bufferView, OFFSET$bufferView, value.segment());
     }
 
     public @enumtype(VkImageAspectFlags.class) int plane() {

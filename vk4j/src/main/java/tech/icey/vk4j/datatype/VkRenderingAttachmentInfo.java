@@ -82,11 +82,11 @@ public record VkRenderingAttachmentInfo(MemorySegment segment) {
     }
 
     public VkImageView imageView() {
-        return new VkImageView(segment.asSlice(OFFSET$imageView, LAYOUT$imageView));
+        return new VkImageView(segment.get(LAYOUT$imageView, OFFSET$imageView));
     }
 
     public void imageView(VkImageView value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageView, LAYOUT$imageView.byteSize());
+        segment.set(LAYOUT$imageView, OFFSET$imageView, value.segment());
     }
 
     public @enumtype(VkImageLayout.class) int imageLayout() {
@@ -106,11 +106,11 @@ public record VkRenderingAttachmentInfo(MemorySegment segment) {
     }
 
     public VkImageView resolveImageView() {
-        return new VkImageView(segment.asSlice(OFFSET$resolveImageView, LAYOUT$resolveImageView));
+        return new VkImageView(segment.get(LAYOUT$resolveImageView, OFFSET$resolveImageView));
     }
 
     public void resolveImageView(VkImageView value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$resolveImageView, LAYOUT$resolveImageView.byteSize());
+        segment.set(LAYOUT$resolveImageView, OFFSET$resolveImageView, value.segment());
     }
 
     public @enumtype(VkImageLayout.class) int resolveImageLayout() {

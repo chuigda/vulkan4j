@@ -53,11 +53,11 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) {
     }
 
     public VkDisplayKHR display() {
-        return new VkDisplayKHR(segment.asSlice(OFFSET$display, LAYOUT$display));
+        return new VkDisplayKHR(segment.get(LAYOUT$display, OFFSET$display));
     }
 
     public void display(VkDisplayKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$display, LAYOUT$display.byteSize());
+        segment.set(LAYOUT$display, OFFSET$display, value.segment());
     }
 
     public @pointer(comment="int8_t*") MemorySegment displayNameRaw() {

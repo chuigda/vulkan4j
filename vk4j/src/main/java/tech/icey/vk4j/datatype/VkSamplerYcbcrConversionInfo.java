@@ -54,11 +54,11 @@ public record VkSamplerYcbcrConversionInfo(MemorySegment segment) {
     }
 
     public VkSamplerYcbcrConversion conversion() {
-        return new VkSamplerYcbcrConversion(segment.asSlice(OFFSET$conversion, LAYOUT$conversion));
+        return new VkSamplerYcbcrConversion(segment.get(LAYOUT$conversion, OFFSET$conversion));
     }
 
     public void conversion(VkSamplerYcbcrConversion value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$conversion, LAYOUT$conversion.byteSize());
+        segment.set(LAYOUT$conversion, OFFSET$conversion, value.segment());
     }
 
     public static VkSamplerYcbcrConversionInfo allocate(Arena arena) {

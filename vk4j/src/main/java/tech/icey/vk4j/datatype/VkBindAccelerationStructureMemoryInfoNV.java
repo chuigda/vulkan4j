@@ -70,19 +70,19 @@ public record VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) {
     }
 
     public VkAccelerationStructureNV accelerationStructure() {
-        return new VkAccelerationStructureNV(segment.asSlice(OFFSET$accelerationStructure, LAYOUT$accelerationStructure));
+        return new VkAccelerationStructureNV(segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure));
     }
 
     public void accelerationStructure(VkAccelerationStructureNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$accelerationStructure, LAYOUT$accelerationStructure.byteSize());
+        segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value.segment());
     }
 
     public VkDeviceMemory memory() {
-        return new VkDeviceMemory(segment.asSlice(OFFSET$memory, LAYOUT$memory));
+        return new VkDeviceMemory(segment.get(LAYOUT$memory, OFFSET$memory));
     }
 
     public void memory(VkDeviceMemory value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$memory, LAYOUT$memory.byteSize());
+        segment.set(LAYOUT$memory, OFFSET$memory, value.segment());
     }
 
     public @unsigned long memoryOffset() {

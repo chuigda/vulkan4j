@@ -66,19 +66,19 @@ public record VkPushDescriptorSetWithTemplateInfoKHR(MemorySegment segment) {
     }
 
     public VkDescriptorUpdateTemplate descriptorUpdateTemplate() {
-        return new VkDescriptorUpdateTemplate(segment.asSlice(OFFSET$descriptorUpdateTemplate, LAYOUT$descriptorUpdateTemplate));
+        return new VkDescriptorUpdateTemplate(segment.get(LAYOUT$descriptorUpdateTemplate, OFFSET$descriptorUpdateTemplate));
     }
 
     public void descriptorUpdateTemplate(VkDescriptorUpdateTemplate value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$descriptorUpdateTemplate, LAYOUT$descriptorUpdateTemplate.byteSize());
+        segment.set(LAYOUT$descriptorUpdateTemplate, OFFSET$descriptorUpdateTemplate, value.segment());
     }
 
     public VkPipelineLayout layout() {
-        return new VkPipelineLayout(segment.asSlice(OFFSET$layout, LAYOUT$layout));
+        return new VkPipelineLayout(segment.get(LAYOUT$layout, OFFSET$layout));
     }
 
     public void layout(VkPipelineLayout value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$layout, LAYOUT$layout.byteSize());
+        segment.set(LAYOUT$layout, OFFSET$layout, value.segment());
     }
 
     public @unsigned int set() {

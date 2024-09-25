@@ -70,19 +70,19 @@ public record VkCopyBufferToImageInfo2(MemorySegment segment) {
     }
 
     public VkBuffer srcBuffer() {
-        return new VkBuffer(segment.asSlice(OFFSET$srcBuffer, LAYOUT$srcBuffer));
+        return new VkBuffer(segment.get(LAYOUT$srcBuffer, OFFSET$srcBuffer));
     }
 
     public void srcBuffer(VkBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcBuffer, LAYOUT$srcBuffer.byteSize());
+        segment.set(LAYOUT$srcBuffer, OFFSET$srcBuffer, value.segment());
     }
 
     public VkImage dstImage() {
-        return new VkImage(segment.asSlice(OFFSET$dstImage, LAYOUT$dstImage));
+        return new VkImage(segment.get(LAYOUT$dstImage, OFFSET$dstImage));
     }
 
     public void dstImage(VkImage value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstImage, LAYOUT$dstImage.byteSize());
+        segment.set(LAYOUT$dstImage, OFFSET$dstImage, value.segment());
     }
 
     public @enumtype(VkImageLayout.class) int dstImageLayout() {

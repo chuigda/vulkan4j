@@ -33,11 +33,11 @@ public record VkIndirectCommandsStreamNV(MemorySegment segment) {
     }
 
     public VkBuffer buffer() {
-        return new VkBuffer(segment.asSlice(OFFSET$buffer, LAYOUT$buffer));
+        return new VkBuffer(segment.get(LAYOUT$buffer, OFFSET$buffer));
     }
 
     public void buffer(VkBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$buffer, LAYOUT$buffer.byteSize());
+        segment.set(LAYOUT$buffer, OFFSET$buffer, value.segment());
     }
 
     public @unsigned long offset() {

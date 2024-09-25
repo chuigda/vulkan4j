@@ -344,19 +344,19 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
     }
 
     public VkPipelineLayout layout() {
-        return new VkPipelineLayout(segment.asSlice(OFFSET$layout, LAYOUT$layout));
+        return new VkPipelineLayout(segment.get(LAYOUT$layout, OFFSET$layout));
     }
 
     public void layout(VkPipelineLayout value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$layout, LAYOUT$layout.byteSize());
+        segment.set(LAYOUT$layout, OFFSET$layout, value.segment());
     }
 
     public VkRenderPass renderPass() {
-        return new VkRenderPass(segment.asSlice(OFFSET$renderPass, LAYOUT$renderPass));
+        return new VkRenderPass(segment.get(LAYOUT$renderPass, OFFSET$renderPass));
     }
 
     public void renderPass(VkRenderPass value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderPass, LAYOUT$renderPass.byteSize());
+        segment.set(LAYOUT$renderPass, OFFSET$renderPass, value.segment());
     }
 
     public @unsigned int subpass() {
@@ -368,11 +368,11 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
     }
 
     public VkPipeline basePipelineHandle() {
-        return new VkPipeline(segment.asSlice(OFFSET$basePipelineHandle, LAYOUT$basePipelineHandle));
+        return new VkPipeline(segment.get(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle));
     }
 
     public void basePipelineHandle(VkPipeline value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$basePipelineHandle, LAYOUT$basePipelineHandle.byteSize());
+        segment.set(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle, value.segment());
     }
 
     public int basePipelineIndex() {

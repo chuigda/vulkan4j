@@ -58,19 +58,19 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(MemorySegment 
     }
 
     public VkAccelerationStructureKHR accelerationStructure() {
-        return new VkAccelerationStructureKHR(segment.asSlice(OFFSET$accelerationStructure, LAYOUT$accelerationStructure));
+        return new VkAccelerationStructureKHR(segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure));
     }
 
     public void accelerationStructure(VkAccelerationStructureKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$accelerationStructure, LAYOUT$accelerationStructure.byteSize());
+        segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value.segment());
     }
 
     public VkAccelerationStructureNV accelerationStructureNV() {
-        return new VkAccelerationStructureNV(segment.asSlice(OFFSET$accelerationStructureNV, LAYOUT$accelerationStructureNV));
+        return new VkAccelerationStructureNV(segment.get(LAYOUT$accelerationStructureNV, OFFSET$accelerationStructureNV));
     }
 
     public void accelerationStructureNV(VkAccelerationStructureNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$accelerationStructureNV, LAYOUT$accelerationStructureNV.byteSize());
+        segment.set(LAYOUT$accelerationStructureNV, OFFSET$accelerationStructureNV, value.segment());
     }
 
     public static VkAccelerationStructureCaptureDescriptorDataInfoEXT allocate(Arena arena) {

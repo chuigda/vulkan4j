@@ -1,17 +1,20 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.nullable;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkSemaphoreWaitFlags;
+import tech.icey.vk4j.buffer.LongBuffer;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkSemaphore;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SEMAPHORE_WAIT_INFO;
 
 public record VkSemaphoreWaitInfo(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -81,23 +84,23 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) {
         segment.set(LAYOUT$semaphoreCount, OFFSET$semaphoreCount, value);
     }
 
-    public @pointer(comment="VkSemaphore*") MemorySegment pSemaphoresRaw() {
+    public @pointer(comment="VkSemaphore") MemorySegment pSemaphoresRaw() {
         return segment.get(LAYOUT$pSemaphores, OFFSET$pSemaphores);
     }
 
-    public void pSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
+    public void pSemaphoresRaw(@pointer(comment="VkSemaphore") MemorySegment value) {
         segment.set(LAYOUT$pSemaphores, OFFSET$pSemaphores, value);
     }
-    
-    public @nullable VkSemaphore pSemaphores() {
+
+    public @nullable VkSemaphore.Buffer pSemaphores() {
         MemorySegment s = pSemaphoresRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkSemaphore(s);
+        return new VkSemaphore.Buffer(s);
     }
 
-    public void pSemaphores(@nullable VkSemaphore value) {
+    public void pSemaphores(@nullable VkSemaphore.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSemaphoresRaw(s);
     }
@@ -109,7 +112,7 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) {
     public void pValuesRaw(@pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
-    
+
     public @unsigned LongBuffer pValues() {
         return new LongBuffer(pValuesRaw());
     }
@@ -121,7 +124,7 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) {
     public static VkSemaphoreWaitInfo allocate(Arena arena) {
         return new VkSemaphoreWaitInfo(arena.allocate(LAYOUT));
     }
-    
+
     public static VkSemaphoreWaitInfo[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSemaphoreWaitInfo[] ret = new VkSemaphoreWaitInfo[count];

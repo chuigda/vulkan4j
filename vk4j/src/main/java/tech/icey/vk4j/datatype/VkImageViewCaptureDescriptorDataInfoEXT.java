@@ -54,11 +54,11 @@ public record VkImageViewCaptureDescriptorDataInfoEXT(MemorySegment segment) {
     }
 
     public VkImageView imageView() {
-        return new VkImageView(segment.asSlice(OFFSET$imageView, LAYOUT$imageView));
+        return new VkImageView(segment.get(LAYOUT$imageView, OFFSET$imageView));
     }
 
     public void imageView(VkImageView value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageView, LAYOUT$imageView.byteSize());
+        segment.set(LAYOUT$imageView, OFFSET$imageView, value.segment());
     }
 
     public static VkImageViewCaptureDescriptorDataInfoEXT allocate(Arena arena) {

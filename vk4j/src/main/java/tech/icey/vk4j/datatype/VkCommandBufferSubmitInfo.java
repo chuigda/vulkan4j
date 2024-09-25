@@ -58,11 +58,11 @@ public record VkCommandBufferSubmitInfo(MemorySegment segment) {
     }
 
     public VkCommandBuffer commandBuffer() {
-        return new VkCommandBuffer(segment.asSlice(OFFSET$commandBuffer, LAYOUT$commandBuffer));
+        return new VkCommandBuffer(segment.get(LAYOUT$commandBuffer, OFFSET$commandBuffer));
     }
 
     public void commandBuffer(VkCommandBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$commandBuffer, LAYOUT$commandBuffer.byteSize());
+        segment.set(LAYOUT$commandBuffer, OFFSET$commandBuffer, value.segment());
     }
 
     public @unsigned int deviceMask() {

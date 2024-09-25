@@ -142,11 +142,11 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
     }
 
     public VkPipelineLayout pushconstantPipelineLayout() {
-        return new VkPipelineLayout(segment.asSlice(OFFSET$pushconstantPipelineLayout, LAYOUT$pushconstantPipelineLayout));
+        return new VkPipelineLayout(segment.get(LAYOUT$pushconstantPipelineLayout, OFFSET$pushconstantPipelineLayout));
     }
 
     public void pushconstantPipelineLayout(VkPipelineLayout value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pushconstantPipelineLayout, LAYOUT$pushconstantPipelineLayout.byteSize());
+        segment.set(LAYOUT$pushconstantPipelineLayout, OFFSET$pushconstantPipelineLayout, value.segment());
     }
 
     public @enumtype(VkShaderStageFlags.class) int pushconstantShaderStageFlags() {

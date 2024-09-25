@@ -58,11 +58,11 @@ public record VkCudaFunctionCreateInfoNV(MemorySegment segment) {
     }
 
     public VkCudaModuleNV module() {
-        return new VkCudaModuleNV(segment.asSlice(OFFSET$module, LAYOUT$module));
+        return new VkCudaModuleNV(segment.get(LAYOUT$module, OFFSET$module));
     }
 
     public void module(VkCudaModuleNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$module, LAYOUT$module.byteSize());
+        segment.set(LAYOUT$module, OFFSET$module, value.segment());
     }
 
     public @pointer(comment="int8_t*") MemorySegment pNameRaw() {

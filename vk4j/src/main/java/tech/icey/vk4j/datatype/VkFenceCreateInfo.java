@@ -1,17 +1,16 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.bitmask.VkFenceCreateFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
 
 public record VkFenceCreateInfo(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -64,7 +63,7 @@ public record VkFenceCreateInfo(MemorySegment segment) {
     public static VkFenceCreateInfo allocate(Arena arena) {
         return new VkFenceCreateInfo(arena.allocate(LAYOUT));
     }
-    
+
     public static VkFenceCreateInfo[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkFenceCreateInfo[] ret = new VkFenceCreateInfo[count];

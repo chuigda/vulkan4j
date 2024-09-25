@@ -76,23 +76,23 @@ public record VkDescriptorSetLayoutBinding(MemorySegment segment) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
     }
 
-    public @pointer(comment="VkSampler*") MemorySegment pImmutableSamplersRaw() {
+    public @pointer(comment="VkSampler") MemorySegment pImmutableSamplersRaw() {
         return segment.get(LAYOUT$pImmutableSamplers, OFFSET$pImmutableSamplers);
     }
 
-    public void pImmutableSamplersRaw(@pointer(comment="VkSampler*") MemorySegment value) {
+    public void pImmutableSamplersRaw(@pointer(comment="VkSampler") MemorySegment value) {
         segment.set(LAYOUT$pImmutableSamplers, OFFSET$pImmutableSamplers, value);
     }
-    
-    public @nullable VkSampler pImmutableSamplers() {
+
+    public @nullable VkSampler.Buffer pImmutableSamplers() {
         MemorySegment s = pImmutableSamplersRaw();
         if (s.address() == 0) {
             return null;
         }
-        return new VkSampler(s);
+        return new VkSampler.Buffer(s);
     }
 
-    public void pImmutableSamplers(@nullable VkSampler value) {
+    public void pImmutableSamplers(@nullable VkSampler.Buffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImmutableSamplersRaw(s);
     }

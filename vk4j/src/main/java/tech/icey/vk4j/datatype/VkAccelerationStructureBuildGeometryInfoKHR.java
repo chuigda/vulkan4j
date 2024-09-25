@@ -110,19 +110,19 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
     }
 
     public VkAccelerationStructureKHR srcAccelerationStructure() {
-        return new VkAccelerationStructureKHR(segment.asSlice(OFFSET$srcAccelerationStructure, LAYOUT$srcAccelerationStructure));
+        return new VkAccelerationStructureKHR(segment.get(LAYOUT$srcAccelerationStructure, OFFSET$srcAccelerationStructure));
     }
 
     public void srcAccelerationStructure(VkAccelerationStructureKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcAccelerationStructure, LAYOUT$srcAccelerationStructure.byteSize());
+        segment.set(LAYOUT$srcAccelerationStructure, OFFSET$srcAccelerationStructure, value.segment());
     }
 
     public VkAccelerationStructureKHR dstAccelerationStructure() {
-        return new VkAccelerationStructureKHR(segment.asSlice(OFFSET$dstAccelerationStructure, LAYOUT$dstAccelerationStructure));
+        return new VkAccelerationStructureKHR(segment.get(LAYOUT$dstAccelerationStructure, OFFSET$dstAccelerationStructure));
     }
 
     public void dstAccelerationStructure(VkAccelerationStructureKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstAccelerationStructure, LAYOUT$dstAccelerationStructure.byteSize());
+        segment.set(LAYOUT$dstAccelerationStructure, OFFSET$dstAccelerationStructure, value.segment());
     }
 
     public @unsigned int geometryCount() {

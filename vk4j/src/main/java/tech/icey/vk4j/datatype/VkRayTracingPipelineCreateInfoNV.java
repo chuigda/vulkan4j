@@ -160,19 +160,19 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) {
     }
 
     public VkPipelineLayout layout() {
-        return new VkPipelineLayout(segment.asSlice(OFFSET$layout, LAYOUT$layout));
+        return new VkPipelineLayout(segment.get(LAYOUT$layout, OFFSET$layout));
     }
 
     public void layout(VkPipelineLayout value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$layout, LAYOUT$layout.byteSize());
+        segment.set(LAYOUT$layout, OFFSET$layout, value.segment());
     }
 
     public VkPipeline basePipelineHandle() {
-        return new VkPipeline(segment.asSlice(OFFSET$basePipelineHandle, LAYOUT$basePipelineHandle));
+        return new VkPipeline(segment.get(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle));
     }
 
     public void basePipelineHandle(VkPipeline value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$basePipelineHandle, LAYOUT$basePipelineHandle.byteSize());
+        segment.set(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle, value.segment());
     }
 
     public int basePipelineIndex() {

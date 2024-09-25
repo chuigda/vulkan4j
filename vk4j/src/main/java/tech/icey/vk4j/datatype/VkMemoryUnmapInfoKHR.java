@@ -66,11 +66,11 @@ public record VkMemoryUnmapInfoKHR(MemorySegment segment) {
     }
 
     public VkDeviceMemory memory() {
-        return new VkDeviceMemory(segment.asSlice(OFFSET$memory, LAYOUT$memory));
+        return new VkDeviceMemory(segment.get(LAYOUT$memory, OFFSET$memory));
     }
 
     public void memory(VkDeviceMemory value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$memory, LAYOUT$memory.byteSize());
+        segment.set(LAYOUT$memory, OFFSET$memory, value.segment());
     }
 
     public static VkMemoryUnmapInfoKHR allocate(Arena arena) {

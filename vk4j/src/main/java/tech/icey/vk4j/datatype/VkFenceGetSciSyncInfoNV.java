@@ -58,11 +58,11 @@ public record VkFenceGetSciSyncInfoNV(MemorySegment segment) {
     }
 
     public VkFence fence() {
-        return new VkFence(segment.asSlice(OFFSET$fence, LAYOUT$fence));
+        return new VkFence(segment.get(LAYOUT$fence, OFFSET$fence));
     }
 
     public void fence(VkFence value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$fence, LAYOUT$fence.byteSize());
+        segment.set(LAYOUT$fence, OFFSET$fence, value.segment());
     }
 
     public @enumtype(VkExternalFenceHandleTypeFlags.class) int handleType() {

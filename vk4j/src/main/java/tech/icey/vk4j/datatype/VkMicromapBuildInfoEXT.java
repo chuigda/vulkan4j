@@ -118,11 +118,11 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) {
     }
 
     public VkMicromapEXT dstMicromap() {
-        return new VkMicromapEXT(segment.asSlice(OFFSET$dstMicromap, LAYOUT$dstMicromap));
+        return new VkMicromapEXT(segment.get(LAYOUT$dstMicromap, OFFSET$dstMicromap));
     }
 
     public void dstMicromap(VkMicromapEXT value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstMicromap, LAYOUT$dstMicromap.byteSize());
+        segment.set(LAYOUT$dstMicromap, OFFSET$dstMicromap, value.segment());
     }
 
     public @unsigned int usageCountsCount() {
