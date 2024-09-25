@@ -22,6 +22,7 @@ import java.lang.invoke.MethodHandle;
 public final class LibGLFW {
     public static final int GLFW_CLIENT_API = 0x00022001;
     public static final int GLFW_RESIZABLE = 0x00020003;
+    public static final int GLFW_TRANSPARENT_FRAMEBUFFER = 0x0002000A;
     public static final int GLFW_NO_API = 0;
     public static final int GLFW_FALSE = 0;
 
@@ -79,6 +80,10 @@ public final class LibGLFW {
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS
     );
+    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowOpacity = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_FLOAT
+    );
 
     public final MethodHandle HANDLE$glfwInit;
     public final MethodHandle HANDLE$glfwTerminate;
@@ -94,6 +99,7 @@ public final class LibGLFW {
     public final MethodHandle HANDLE$glfwWindowShouldClose;
     public final MethodHandle HANDLE$glfwDestroyWindow;
     public final MethodHandle HANDLE$glfwGetWindowSize;
+    public final MethodHandle HANDLE$glfwSetWindowOpacity;
 
     public LibGLFW(Function2<String, FunctionDescriptor, MethodHandle> loader) {
         HANDLE$glfwInit = loader.apply("glfwInit", DESCRIPTOR$glfwInit);
@@ -110,6 +116,7 @@ public final class LibGLFW {
         HANDLE$glfwWindowShouldClose = loader.apply("glfwWindowShouldClose", DESCRIPTOR$glfwWindowShouldClose);
         HANDLE$glfwDestroyWindow = loader.apply("glfwDestroyWindow", DESCRIPTOR$glfwDestroyWindow);
         HANDLE$glfwGetWindowSize = loader.apply("glfwGetWindowSize", DESCRIPTOR$glfwGetWindowSize);
+        HANDLE$glfwSetWindowOpacity = loader.apply("glfwSetWindowOpacity", DESCRIPTOR$glfwSetWindowOpacity);
     }
 
     public int glfwInit() {
@@ -257,6 +264,14 @@ public final class LibGLFW {
     ) {
         try {
             HANDLE$glfwGetWindowSize.invokeExact(window, wh.segment(), wh.segment().asSlice(4, 4));
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
+        }
+    }
+
+    public void glfwSetWindowOpacity(@pointer(comment="GLFWwindow*") MemorySegment window, float opacity) {
+        try {
+            HANDLE$glfwSetWindowOpacity.invokeExact(window, opacity);
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }

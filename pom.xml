@@ -19,5 +19,6 @@
     <modules>
         <module>vk4j</module>
         <module>example</module>
+        <module>benchmark</module>
     </modules>
 </project>

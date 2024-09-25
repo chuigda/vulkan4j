@@ -353,6 +353,7 @@ public class Application implements AutoCloseable {
     private boolean createWindow() {
         libGLFW.glfwWindowHint(LibGLFW.GLFW_CLIENT_API, LibGLFW.GLFW_NO_API);
         libGLFW.glfwWindowHint(LibGLFW.GLFW_RESIZABLE, LibGLFW.GLFW_FALSE);
+        libGLFW.glfwWindowHint(LibGLFW.GLFW_TRANSPARENT_FRAMEBUFFER, 1);
 
         glfwWindow = libGLFW.glfwCreateWindow(800, 600, "VkCube4j", MemorySegment.NULL, MemorySegment.NULL);
         if (glfwWindow == null) {
@@ -993,7 +994,7 @@ public class Application implements AutoCloseable {
             clearValue.color().float32().set(0, 0.0f);
             clearValue.color().float32().set(1, 0.0f);
             clearValue.color().float32().set(2, 0.0f);
-            clearValue.color().float32().set(3, 1.0f);
+            clearValue.color().float32().set(3, 0.0f);
 
             renderPassBeginInfo.clearValueCount(1);
             renderPassBeginInfo.pClearValues(clearValue);

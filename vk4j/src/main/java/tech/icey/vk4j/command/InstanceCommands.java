@@ -792,11 +792,9 @@ public final class InstanceCommands {
             @nullable @pointer(target=VkPhysicalDevice.class) VkPhysicalDevice pPhysicalDevices
     ) {
         try {
-            return (int) HANDLE$vkEnumeratePhysicalDevices.invoke(
-                    instance.handle(),
-                    pPhysicalDeviceCount.segment(),
-                    pPhysicalDevices != null ? pPhysicalDevices.segment() : MemorySegment.NULL
-            );
+            // TODO: temporarily modified for benchmarking and profiling purpose
+            MemorySegment s = pPhysicalDevices != null ? pPhysicalDevices.segment() : MemorySegment.NULL;
+            return (int) HANDLE$vkEnumeratePhysicalDevices.invokeExact(instance.handle(), pPhysicalDeviceCount.segment(), s);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
