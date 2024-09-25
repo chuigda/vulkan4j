@@ -4,9 +4,8 @@ import org.lwjgl.system.MemoryStack;
 import org.openjdk.jmh.Main;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Fork;
-import tech.icey.vk4j.Create;
+import tech.icey.vk4j.buffer.IntBuffer;
 import tech.icey.vk4j.handle.VkPhysicalDevice;
-import tech.icey.vk4j.ptr.IntPtr;
 
 import java.lang.foreign.Arena;
 
@@ -37,12 +36,12 @@ public class BenchMain {
     @Fork(value = 1, warmups = 1)
     public void benchVK4J() {
         try (Arena arena = Arena.ofConfined()) {
-            var pPhysicalDeviceCount = IntPtr.allocate(arena);
+            var pPhysicalDeviceCount = IntBuffer.allocate(arena);
             VK4JStatic.instanceCommands.vkEnumeratePhysicalDevices(VK4JStatic.instance, pPhysicalDeviceCount, null);
             var physicalDeviceCount = pPhysicalDeviceCount.read();
 
-            var pPhysicalDevices = Create.createArray(VkPhysicalDevice.FACTORY, arena, physicalDeviceCount).first;
-            VK4JStatic.instanceCommands.vkEnumeratePhysicalDevices(VK4JStatic.instance, pPhysicalDeviceCount, pPhysicalDevices[0]);
+            var pPhysicalDevices = VkPhysicalDevice.Buffer.allocate(arena, physicalDeviceCount);
+            VK4JStatic.instanceCommands.vkEnumeratePhysicalDevices(VK4JStatic.instance, pPhysicalDeviceCount, pPhysicalDevices);
         }
     }
 

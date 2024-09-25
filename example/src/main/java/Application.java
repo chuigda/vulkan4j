@@ -15,7 +15,6 @@ import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Application implements AutoCloseable {
     public boolean initVulkan() {

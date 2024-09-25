@@ -1,9 +1,8 @@
 package tech.icey.vk4j.benchmark;
 
-import tech.icey.vk4j.Create;
 import tech.icey.vk4j.Loader;
 import tech.icey.vk4j.Version;
-import tech.icey.vk4j.array.ByteArray;
+import tech.icey.vk4j.buffer.ByteBuffer;
 import tech.icey.vk4j.command.EntryCommands;
 import tech.icey.vk4j.command.InstanceCommands;
 import tech.icey.vk4j.command.StaticCommands;
@@ -30,26 +29,27 @@ public class VK4JStatic {
         staticCommands = new StaticCommands(Loader::loadFunctionOrNull);
         entryCommands = new EntryCommands(Loader::loadFunctionOrNull);
 
-        var applicationInfo = Create.create(VkApplicationInfo.FACTORY, arena);
-        applicationInfo.pApplicationName(ByteArray.allocateUtf8(arena, "vk4j benchmarking application"));
+        var applicationInfo = VkApplicationInfo.allocate(arena);
+        applicationInfo.pApplicationName(ByteBuffer.allocateString(arena, "vk4j benchmarking application"));
         applicationInfo.applicationVersion(Version.vkMakeAPIVersion(0, 1, 0, 0));
-        applicationInfo.pEngineName(ByteArray.allocateUtf8(arena, "Soloviev D-30"));
+        applicationInfo.pEngineName(ByteBuffer.allocateString(arena, "Soloviev D-30"));
         applicationInfo.engineVersion(Version.vkMakeAPIVersion(0, 1, 0, 0));
         applicationInfo.apiVersion(Version.VK_API_VERSION_1_3);
 
-        var instanceCreateInfo = Create.create(VkInstanceCreateInfo.FACTORY, arena);
+        var instanceCreateInfo = VkInstanceCreateInfo.allocate(arena);
         instanceCreateInfo.pApplicationInfo(applicationInfo);
 
-        instance = Create.create(VkInstance.FACTORY, arena);
-        if (entryCommands.vkCreateInstance(instanceCreateInfo, null, instance) != VkResult.VK_SUCCESS) {
+        var pInstance = VkInstance.Buffer.allocate(arena);
+        if (entryCommands.vkCreateInstance(instanceCreateInfo, null, pInstance) != VkResult.VK_SUCCESS) {
             throw new AssertionError("Failed to create VkInstance");
         }
+        instance = pInstance.read();
         instanceCommands = new InstanceCommands(VK4JStatic::loadInstanceCommand);
     }
 
     private static MethodHandle loadInstanceCommand(String name, FunctionDescriptor descriptor) {
         try (Arena localArena = Arena.ofConfined()) {
-            var nameSegment = ByteArray.allocateUtf8(localArena, name);
+            var nameSegment = ByteBuffer.allocateString(localArena, name);
             MemorySegment segment = staticCommands.vkGetInstanceProcAddr(instance, nameSegment);
             if (segment.address() == 0) {
                 return null;
