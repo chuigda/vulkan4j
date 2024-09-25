@@ -19,6 +19,7 @@ public record VkPipelinePropertiesIdentifierEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         MemoryLayout.sequenceLayout(VK_UUID_SIZE, ValueLayout.JAVA_BYTE).withName("pipelineIdentifier")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPipelinePropertiesIdentifierEXT(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$pipelineIdentifier = LAYOUT.byteOffset(PATH$pipelineIdentifier);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pipelineIdentifier = LAYOUT$pipelineIdentifier.byteSize();
 
     public VkPipelinePropertiesIdentifierEXT(MemorySegment segment) {
         this.segment = segment;
@@ -54,7 +59,7 @@ public record VkPipelinePropertiesIdentifierEXT(MemorySegment segment) {
     }
 
     public MemorySegment pipelineIdentifierRaw() {
-        return segment.asSlice(OFFSET$pipelineIdentifier, LAYOUT$pipelineIdentifier.byteSize());
+        return segment.asSlice(OFFSET$pipelineIdentifier, SIZE$pipelineIdentifier);
     }
 
     public @unsigned ByteBuffer pipelineIdentifier() {
@@ -62,7 +67,7 @@ public record VkPipelinePropertiesIdentifierEXT(MemorySegment segment) {
     }
 
     public void pipelineIdentifier(@unsigned ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineIdentifier, LAYOUT$pipelineIdentifier.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineIdentifier, SIZE$pipelineIdentifier);
     }
 
     public static VkPipelinePropertiesIdentifierEXT allocate(Arena arena) {
@@ -73,7 +78,7 @@ public record VkPipelinePropertiesIdentifierEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelinePropertiesIdentifierEXT[] ret = new VkPipelinePropertiesIdentifierEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelinePropertiesIdentifierEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelinePropertiesIdentifierEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

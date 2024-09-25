@@ -21,6 +21,7 @@ public record VkImageCompressionControlEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("compressionControlPlaneCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pFixedRateFlags")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkImageCompressionControlEXT(MemorySegment segment) {
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$compressionControlPlaneCount = LAYOUT.byteOffset(PATH$compressionControlPlaneCount);
     public static final long OFFSET$pFixedRateFlags = LAYOUT.byteOffset(PATH$pFixedRateFlags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$compressionControlPlaneCount = LAYOUT$compressionControlPlaneCount.byteSize();
+    public static final long SIZE$pFixedRateFlags = LAYOUT$pFixedRateFlags.byteSize();
 
     public VkImageCompressionControlEXT(MemorySegment segment) {
         this.segment = segment;
@@ -107,7 +114,7 @@ public record VkImageCompressionControlEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageCompressionControlEXT[] ret = new VkImageCompressionControlEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageCompressionControlEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageCompressionControlEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

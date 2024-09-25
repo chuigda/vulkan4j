@@ -20,6 +20,7 @@ public record VkCudaFunctionCreateInfoNV(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("module"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pName")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkCudaFunctionCreateInfoNV(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$module = LAYOUT.byteOffset(PATH$module);
     public static final long OFFSET$pName = LAYOUT.byteOffset(PATH$pName);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$module = LAYOUT$module.byteSize();
+    public static final long SIZE$pName = LAYOUT$pName.byteSize();
 
     public VkCudaFunctionCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -89,7 +95,7 @@ public record VkCudaFunctionCreateInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCudaFunctionCreateInfoNV[] ret = new VkCudaFunctionCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkCudaFunctionCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkCudaFunctionCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

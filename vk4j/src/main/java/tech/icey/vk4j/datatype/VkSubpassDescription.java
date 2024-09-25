@@ -26,6 +26,7 @@ public record VkSubpassDescription(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("preserveAttachmentCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pPreserveAttachments")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("flags");
     public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("pipelineBindPoint");
@@ -59,6 +60,17 @@ public record VkSubpassDescription(MemorySegment segment) {
     public static final long OFFSET$pDepthStencilAttachment = LAYOUT.byteOffset(PATH$pDepthStencilAttachment);
     public static final long OFFSET$preserveAttachmentCount = LAYOUT.byteOffset(PATH$preserveAttachmentCount);
     public static final long OFFSET$pPreserveAttachments = LAYOUT.byteOffset(PATH$pPreserveAttachments);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$pipelineBindPoint = LAYOUT$pipelineBindPoint.byteSize();
+    public static final long SIZE$inputAttachmentCount = LAYOUT$inputAttachmentCount.byteSize();
+    public static final long SIZE$pInputAttachments = LAYOUT$pInputAttachments.byteSize();
+    public static final long SIZE$colorAttachmentCount = LAYOUT$colorAttachmentCount.byteSize();
+    public static final long SIZE$pColorAttachments = LAYOUT$pColorAttachments.byteSize();
+    public static final long SIZE$pResolveAttachments = LAYOUT$pResolveAttachments.byteSize();
+    public static final long SIZE$pDepthStencilAttachment = LAYOUT$pDepthStencilAttachment.byteSize();
+    public static final long SIZE$preserveAttachmentCount = LAYOUT$preserveAttachmentCount.byteSize();
+    public static final long SIZE$pPreserveAttachments = LAYOUT$pPreserveAttachments.byteSize();
 
     public VkSubpassDescription(MemorySegment segment) {
         this.segment = segment;
@@ -212,7 +224,7 @@ public record VkSubpassDescription(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubpassDescription[] ret = new VkSubpassDescription[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSubpassDescription(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSubpassDescription(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

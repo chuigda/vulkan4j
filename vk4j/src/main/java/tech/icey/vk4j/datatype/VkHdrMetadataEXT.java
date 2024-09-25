@@ -1,14 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
 import java.lang.foreign.*;
-
 import static java.lang.foreign.ValueLayout.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_HDR_METADATA_EXT;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkHdrMetadataEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -23,6 +26,7 @@ public record VkHdrMetadataEXT(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("maxContentLightLevel"),
         ValueLayout.JAVA_FLOAT.withName("maxFrameAverageLightLevel")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -57,6 +61,17 @@ public record VkHdrMetadataEXT(MemorySegment segment) {
     public static final long OFFSET$maxContentLightLevel = LAYOUT.byteOffset(PATH$maxContentLightLevel);
     public static final long OFFSET$maxFrameAverageLightLevel = LAYOUT.byteOffset(PATH$maxFrameAverageLightLevel);
 
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$displayPrimaryRed = LAYOUT$displayPrimaryRed.byteSize();
+    public static final long SIZE$displayPrimaryGreen = LAYOUT$displayPrimaryGreen.byteSize();
+    public static final long SIZE$displayPrimaryBlue = LAYOUT$displayPrimaryBlue.byteSize();
+    public static final long SIZE$whitePoint = LAYOUT$whitePoint.byteSize();
+    public static final long SIZE$maxLuminance = LAYOUT$maxLuminance.byteSize();
+    public static final long SIZE$minLuminance = LAYOUT$minLuminance.byteSize();
+    public static final long SIZE$maxContentLightLevel = LAYOUT$maxContentLightLevel.byteSize();
+    public static final long SIZE$maxFrameAverageLightLevel = LAYOUT$maxFrameAverageLightLevel.byteSize();
+
     public VkHdrMetadataEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_HDR_METADATA_EXT);
@@ -83,7 +98,7 @@ public record VkHdrMetadataEXT(MemorySegment segment) {
     }
 
     public void displayPrimaryRed(VkXYColorEXT value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPrimaryRed, LAYOUT$displayPrimaryRed.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPrimaryRed, SIZE$displayPrimaryRed);
     }
 
     public VkXYColorEXT displayPrimaryGreen() {
@@ -91,7 +106,7 @@ public record VkHdrMetadataEXT(MemorySegment segment) {
     }
 
     public void displayPrimaryGreen(VkXYColorEXT value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPrimaryGreen, LAYOUT$displayPrimaryGreen.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPrimaryGreen, SIZE$displayPrimaryGreen);
     }
 
     public VkXYColorEXT displayPrimaryBlue() {
@@ -99,7 +114,7 @@ public record VkHdrMetadataEXT(MemorySegment segment) {
     }
 
     public void displayPrimaryBlue(VkXYColorEXT value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPrimaryBlue, LAYOUT$displayPrimaryBlue.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPrimaryBlue, SIZE$displayPrimaryBlue);
     }
 
     public VkXYColorEXT whitePoint() {
@@ -107,7 +122,7 @@ public record VkHdrMetadataEXT(MemorySegment segment) {
     }
 
     public void whitePoint(VkXYColorEXT value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$whitePoint, LAYOUT$whitePoint.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$whitePoint, SIZE$whitePoint);
     }
 
     public float maxLuminance() {
@@ -145,12 +160,12 @@ public record VkHdrMetadataEXT(MemorySegment segment) {
     public static VkHdrMetadataEXT allocate(Arena arena) {
         return new VkHdrMetadataEXT(arena.allocate(LAYOUT));
     }
-
+    
     public static VkHdrMetadataEXT[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkHdrMetadataEXT[] ret = new VkHdrMetadataEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkHdrMetadataEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkHdrMetadataEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

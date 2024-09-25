@@ -34,6 +34,7 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("clipped"),
         ValueLayout.ADDRESS.withName("oldSwapchain")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -91,6 +92,25 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) {
     public static final long OFFSET$presentMode = LAYOUT.byteOffset(PATH$presentMode);
     public static final long OFFSET$clipped = LAYOUT.byteOffset(PATH$clipped);
     public static final long OFFSET$oldSwapchain = LAYOUT.byteOffset(PATH$oldSwapchain);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$surface = LAYOUT$surface.byteSize();
+    public static final long SIZE$minImageCount = LAYOUT$minImageCount.byteSize();
+    public static final long SIZE$imageFormat = LAYOUT$imageFormat.byteSize();
+    public static final long SIZE$imageColorSpace = LAYOUT$imageColorSpace.byteSize();
+    public static final long SIZE$imageExtent = LAYOUT$imageExtent.byteSize();
+    public static final long SIZE$imageArrayLayers = LAYOUT$imageArrayLayers.byteSize();
+    public static final long SIZE$imageUsage = LAYOUT$imageUsage.byteSize();
+    public static final long SIZE$imageSharingMode = LAYOUT$imageSharingMode.byteSize();
+    public static final long SIZE$queueFamilyIndexCount = LAYOUT$queueFamilyIndexCount.byteSize();
+    public static final long SIZE$pQueueFamilyIndices = LAYOUT$pQueueFamilyIndices.byteSize();
+    public static final long SIZE$preTransform = LAYOUT$preTransform.byteSize();
+    public static final long SIZE$compositeAlpha = LAYOUT$compositeAlpha.byteSize();
+    public static final long SIZE$presentMode = LAYOUT$presentMode.byteSize();
+    public static final long SIZE$clipped = LAYOUT$clipped.byteSize();
+    public static final long SIZE$oldSwapchain = LAYOUT$oldSwapchain.byteSize();
 
     public VkSwapchainCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -158,7 +178,7 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) {
     }
 
     public void imageExtent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, LAYOUT$imageExtent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
     }
 
     public @unsigned int imageArrayLayers() {
@@ -257,7 +277,7 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSwapchainCreateInfoKHR[] ret = new VkSwapchainCreateInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSwapchainCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSwapchainCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

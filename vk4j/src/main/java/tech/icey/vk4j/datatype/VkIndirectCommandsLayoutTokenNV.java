@@ -31,6 +31,7 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pIndexTypes"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pIndexTypeValues")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -79,6 +80,22 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
     public static final long OFFSET$indexTypeCount = LAYOUT.byteOffset(PATH$indexTypeCount);
     public static final long OFFSET$pIndexTypes = LAYOUT.byteOffset(PATH$pIndexTypes);
     public static final long OFFSET$pIndexTypeValues = LAYOUT.byteOffset(PATH$pIndexTypeValues);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$tokenType = LAYOUT$tokenType.byteSize();
+    public static final long SIZE$stream = LAYOUT$stream.byteSize();
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$vertexBindingUnit = LAYOUT$vertexBindingUnit.byteSize();
+    public static final long SIZE$vertexDynamicStride = LAYOUT$vertexDynamicStride.byteSize();
+    public static final long SIZE$pushconstantPipelineLayout = LAYOUT$pushconstantPipelineLayout.byteSize();
+    public static final long SIZE$pushconstantShaderStageFlags = LAYOUT$pushconstantShaderStageFlags.byteSize();
+    public static final long SIZE$pushconstantOffset = LAYOUT$pushconstantOffset.byteSize();
+    public static final long SIZE$pushconstantSize = LAYOUT$pushconstantSize.byteSize();
+    public static final long SIZE$indirectStateFlags = LAYOUT$indirectStateFlags.byteSize();
+    public static final long SIZE$indexTypeCount = LAYOUT$indexTypeCount.byteSize();
+    public static final long SIZE$pIndexTypes = LAYOUT$pIndexTypes.byteSize();
+    public static final long SIZE$pIndexTypeValues = LAYOUT$pIndexTypeValues.byteSize();
 
     public VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
         this.segment = segment;
@@ -235,7 +252,7 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkIndirectCommandsLayoutTokenNV[] ret = new VkIndirectCommandsLayoutTokenNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkIndirectCommandsLayoutTokenNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkIndirectCommandsLayoutTokenNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

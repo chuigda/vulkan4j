@@ -17,12 +17,15 @@ public record VkBindPipelineIndirectCommandNV(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_LONG.withName("pipelineAddress")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$pipelineAddress = PathElement.groupElement("pipelineAddress");
 
     public static final OfLong LAYOUT$pipelineAddress = (OfLong) LAYOUT.select(PATH$pipelineAddress);
 
     public static final long OFFSET$pipelineAddress = LAYOUT.byteOffset(PATH$pipelineAddress);
+
+    public static final long SIZE$pipelineAddress = LAYOUT$pipelineAddress.byteSize();
 
     public VkBindPipelineIndirectCommandNV(MemorySegment segment) {
         this.segment = segment;
@@ -44,7 +47,7 @@ public record VkBindPipelineIndirectCommandNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBindPipelineIndirectCommandNV[] ret = new VkBindPipelineIndirectCommandNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkBindPipelineIndirectCommandNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkBindPipelineIndirectCommandNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

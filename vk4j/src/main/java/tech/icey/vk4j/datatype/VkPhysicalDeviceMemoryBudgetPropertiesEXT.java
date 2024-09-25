@@ -20,6 +20,7 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) {
         MemoryLayout.sequenceLayout(VK_MAX_MEMORY_HEAPS, ValueLayout.JAVA_LONG).withName("heapBudget"),
         MemoryLayout.sequenceLayout(VK_MAX_MEMORY_HEAPS, ValueLayout.JAVA_LONG).withName("heapUsage")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$heapBudget = LAYOUT.byteOffset(PATH$heapBudget);
     public static final long OFFSET$heapUsage = LAYOUT.byteOffset(PATH$heapUsage);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$heapBudget = LAYOUT$heapBudget.byteSize();
+    public static final long SIZE$heapUsage = LAYOUT$heapUsage.byteSize();
 
     public VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -58,7 +64,7 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) {
     }
 
     public MemorySegment heapBudgetRaw() {
-        return segment.asSlice(OFFSET$heapBudget, LAYOUT$heapBudget.byteSize());
+        return segment.asSlice(OFFSET$heapBudget, SIZE$heapBudget);
     }
 
     public @unsigned LongBuffer heapBudget() {
@@ -66,11 +72,11 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) {
     }
 
     public void heapBudget(@unsigned LongBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapBudget, LAYOUT$heapBudget.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapBudget, SIZE$heapBudget);
     }
 
     public MemorySegment heapUsageRaw() {
-        return segment.asSlice(OFFSET$heapUsage, LAYOUT$heapUsage.byteSize());
+        return segment.asSlice(OFFSET$heapUsage, SIZE$heapUsage);
     }
 
     public @unsigned LongBuffer heapUsage() {
@@ -78,7 +84,7 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) {
     }
 
     public void heapUsage(@unsigned LongBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapUsage, LAYOUT$heapUsage.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapUsage, SIZE$heapUsage);
     }
 
     public static VkPhysicalDeviceMemoryBudgetPropertiesEXT allocate(Arena arena) {
@@ -89,7 +95,7 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMemoryBudgetPropertiesEXT[] ret = new VkPhysicalDeviceMemoryBudgetPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMemoryBudgetPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceMemoryBudgetPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

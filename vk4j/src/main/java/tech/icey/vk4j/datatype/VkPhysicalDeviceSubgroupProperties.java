@@ -22,6 +22,7 @@ public record VkPhysicalDeviceSubgroupProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("supportedOperations"),
         ValueLayout.JAVA_INT.withName("quadOperationsInAllStages")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPhysicalDeviceSubgroupProperties(MemorySegment segment) {
     public static final long OFFSET$supportedStages = LAYOUT.byteOffset(PATH$supportedStages);
     public static final long OFFSET$supportedOperations = LAYOUT.byteOffset(PATH$supportedOperations);
     public static final long OFFSET$quadOperationsInAllStages = LAYOUT.byteOffset(PATH$quadOperationsInAllStages);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$subgroupSize = LAYOUT$subgroupSize.byteSize();
+    public static final long SIZE$supportedStages = LAYOUT$supportedStages.byteSize();
+    public static final long SIZE$supportedOperations = LAYOUT$supportedOperations.byteSize();
+    public static final long SIZE$quadOperationsInAllStages = LAYOUT$quadOperationsInAllStages.byteSize();
 
     public VkPhysicalDeviceSubgroupProperties(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkPhysicalDeviceSubgroupProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceSubgroupProperties[] ret = new VkPhysicalDeviceSubgroupProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceSubgroupProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceSubgroupProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

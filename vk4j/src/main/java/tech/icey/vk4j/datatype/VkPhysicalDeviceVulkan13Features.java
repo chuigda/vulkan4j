@@ -33,6 +33,7 @@ public record VkPhysicalDeviceVulkan13Features(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("shaderIntegerDotProduct"),
         ValueLayout.JAVA_INT.withName("maintenance4")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -87,6 +88,24 @@ public record VkPhysicalDeviceVulkan13Features(MemorySegment segment) {
     public static final long OFFSET$dynamicRendering = LAYOUT.byteOffset(PATH$dynamicRendering);
     public static final long OFFSET$shaderIntegerDotProduct = LAYOUT.byteOffset(PATH$shaderIntegerDotProduct);
     public static final long OFFSET$maintenance4 = LAYOUT.byteOffset(PATH$maintenance4);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$robustImageAccess = LAYOUT$robustImageAccess.byteSize();
+    public static final long SIZE$inlineUniformBlock = LAYOUT$inlineUniformBlock.byteSize();
+    public static final long SIZE$descriptorBindingInlineUniformBlockUpdateAfterBind = LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind.byteSize();
+    public static final long SIZE$pipelineCreationCacheControl = LAYOUT$pipelineCreationCacheControl.byteSize();
+    public static final long SIZE$privateData = LAYOUT$privateData.byteSize();
+    public static final long SIZE$shaderDemoteToHelperInvocation = LAYOUT$shaderDemoteToHelperInvocation.byteSize();
+    public static final long SIZE$shaderTerminateInvocation = LAYOUT$shaderTerminateInvocation.byteSize();
+    public static final long SIZE$subgroupSizeControl = LAYOUT$subgroupSizeControl.byteSize();
+    public static final long SIZE$computeFullSubgroups = LAYOUT$computeFullSubgroups.byteSize();
+    public static final long SIZE$synchronization2 = LAYOUT$synchronization2.byteSize();
+    public static final long SIZE$textureCompressionASTC_HDR = LAYOUT$textureCompressionASTC_HDR.byteSize();
+    public static final long SIZE$shaderZeroInitializeWorkgroupMemory = LAYOUT$shaderZeroInitializeWorkgroupMemory.byteSize();
+    public static final long SIZE$dynamicRendering = LAYOUT$dynamicRendering.byteSize();
+    public static final long SIZE$shaderIntegerDotProduct = LAYOUT$shaderIntegerDotProduct.byteSize();
+    public static final long SIZE$maintenance4 = LAYOUT$maintenance4.byteSize();
 
     public VkPhysicalDeviceVulkan13Features(MemorySegment segment) {
         this.segment = segment;
@@ -237,7 +256,7 @@ public record VkPhysicalDeviceVulkan13Features(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceVulkan13Features[] ret = new VkPhysicalDeviceVulkan13Features[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceVulkan13Features(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceVulkan13Features(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

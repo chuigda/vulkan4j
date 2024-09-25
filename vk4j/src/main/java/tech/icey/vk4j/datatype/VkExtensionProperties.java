@@ -18,6 +18,7 @@ public record VkExtensionProperties(MemorySegment segment) {
         MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("extensionName"),
         ValueLayout.JAVA_INT.withName("specVersion")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$extensionName = PathElement.groupElement("extensionName");
     public static final PathElement PATH$specVersion = PathElement.groupElement("specVersion");
@@ -28,12 +29,15 @@ public record VkExtensionProperties(MemorySegment segment) {
     public static final long OFFSET$extensionName = LAYOUT.byteOffset(PATH$extensionName);
     public static final long OFFSET$specVersion = LAYOUT.byteOffset(PATH$specVersion);
 
+    public static final long SIZE$extensionName = LAYOUT$extensionName.byteSize();
+    public static final long SIZE$specVersion = LAYOUT$specVersion.byteSize();
+
     public VkExtensionProperties(MemorySegment segment) {
         this.segment = segment;
     }
 
     public MemorySegment extensionNameRaw() {
-        return segment.asSlice(OFFSET$extensionName, LAYOUT$extensionName.byteSize());
+        return segment.asSlice(OFFSET$extensionName, SIZE$extensionName);
     }
 
     public ByteBuffer extensionName() {
@@ -41,7 +45,7 @@ public record VkExtensionProperties(MemorySegment segment) {
     }
 
     public void extensionName(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extensionName, LAYOUT$extensionName.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extensionName, SIZE$extensionName);
     }
 
     public @unsigned int specVersion() {
@@ -60,7 +64,7 @@ public record VkExtensionProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExtensionProperties[] ret = new VkExtensionProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkExtensionProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkExtensionProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

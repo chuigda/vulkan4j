@@ -18,6 +18,7 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("descriptorTypeCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDescriptorTypes")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$descriptorTypeCount = PathElement.groupElement("descriptorTypeCount");
     public static final PathElement PATH$pDescriptorTypes = PathElement.groupElement("pDescriptorTypes");
@@ -27,6 +28,9 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) {
 
     public static final long OFFSET$descriptorTypeCount = LAYOUT.byteOffset(PATH$descriptorTypeCount);
     public static final long OFFSET$pDescriptorTypes = LAYOUT.byteOffset(PATH$pDescriptorTypes);
+
+    public static final long SIZE$descriptorTypeCount = LAYOUT$descriptorTypeCount.byteSize();
+    public static final long SIZE$pDescriptorTypes = LAYOUT$pDescriptorTypes.byteSize();
 
     public VkMutableDescriptorTypeListEXT(MemorySegment segment) {
         this.segment = segment;
@@ -70,7 +74,7 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMutableDescriptorTypeListEXT[] ret = new VkMutableDescriptorTypeListEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkMutableDescriptorTypeListEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkMutableDescriptorTypeListEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

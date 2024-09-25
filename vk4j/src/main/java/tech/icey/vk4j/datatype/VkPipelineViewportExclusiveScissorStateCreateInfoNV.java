@@ -20,6 +20,7 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(MemorySegment 
         ValueLayout.JAVA_INT.withName("exclusiveScissorCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pExclusiveScissors")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(MemorySegment 
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$exclusiveScissorCount = LAYOUT.byteOffset(PATH$exclusiveScissorCount);
     public static final long OFFSET$pExclusiveScissors = LAYOUT.byteOffset(PATH$pExclusiveScissors);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$exclusiveScissorCount = LAYOUT$exclusiveScissorCount.byteSize();
+    public static final long SIZE$pExclusiveScissors = LAYOUT$pExclusiveScissors.byteSize();
 
     public VkPipelineViewportExclusiveScissorStateCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +100,7 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineViewportExclusiveScissorStateCreateInfoNV[] ret = new VkPipelineViewportExclusiveScissorStateCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineViewportExclusiveScissorStateCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineViewportExclusiveScissorStateCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

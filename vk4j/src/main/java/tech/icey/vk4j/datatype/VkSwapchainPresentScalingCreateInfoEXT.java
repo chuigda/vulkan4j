@@ -21,6 +21,7 @@ public record VkSwapchainPresentScalingCreateInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("presentGravityX"),
         ValueLayout.JAVA_INT.withName("presentGravityY")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkSwapchainPresentScalingCreateInfoEXT(MemorySegment segment) {
     public static final long OFFSET$scalingBehavior = LAYOUT.byteOffset(PATH$scalingBehavior);
     public static final long OFFSET$presentGravityX = LAYOUT.byteOffset(PATH$presentGravityX);
     public static final long OFFSET$presentGravityY = LAYOUT.byteOffset(PATH$presentGravityY);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$scalingBehavior = LAYOUT$scalingBehavior.byteSize();
+    public static final long SIZE$presentGravityX = LAYOUT$presentGravityX.byteSize();
+    public static final long SIZE$presentGravityY = LAYOUT$presentGravityY.byteSize();
 
     public VkSwapchainPresentScalingCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkSwapchainPresentScalingCreateInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSwapchainPresentScalingCreateInfoEXT[] ret = new VkSwapchainPresentScalingCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSwapchainPresentScalingCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSwapchainPresentScalingCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

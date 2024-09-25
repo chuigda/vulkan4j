@@ -70,6 +70,7 @@ public record VkPhysicalDeviceVulkan12Properties(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("maxTimelineSemaphoreValueDifference"),
         ValueLayout.JAVA_INT.withName("framebufferIntegerColorSampleCounts")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -236,6 +237,61 @@ public record VkPhysicalDeviceVulkan12Properties(MemorySegment segment) {
     public static final long OFFSET$maxTimelineSemaphoreValueDifference = LAYOUT.byteOffset(PATH$maxTimelineSemaphoreValueDifference);
     public static final long OFFSET$framebufferIntegerColorSampleCounts = LAYOUT.byteOffset(PATH$framebufferIntegerColorSampleCounts);
 
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$driverID = LAYOUT$driverID.byteSize();
+    public static final long SIZE$driverName = LAYOUT$driverName.byteSize();
+    public static final long SIZE$driverInfo = LAYOUT$driverInfo.byteSize();
+    public static final long SIZE$conformanceVersion = LAYOUT$conformanceVersion.byteSize();
+    public static final long SIZE$denormBehaviorIndependence = LAYOUT$denormBehaviorIndependence.byteSize();
+    public static final long SIZE$roundingModeIndependence = LAYOUT$roundingModeIndependence.byteSize();
+    public static final long SIZE$shaderSignedZeroInfNanPreserveFloat16 = LAYOUT$shaderSignedZeroInfNanPreserveFloat16.byteSize();
+    public static final long SIZE$shaderSignedZeroInfNanPreserveFloat32 = LAYOUT$shaderSignedZeroInfNanPreserveFloat32.byteSize();
+    public static final long SIZE$shaderSignedZeroInfNanPreserveFloat64 = LAYOUT$shaderSignedZeroInfNanPreserveFloat64.byteSize();
+    public static final long SIZE$shaderDenormPreserveFloat16 = LAYOUT$shaderDenormPreserveFloat16.byteSize();
+    public static final long SIZE$shaderDenormPreserveFloat32 = LAYOUT$shaderDenormPreserveFloat32.byteSize();
+    public static final long SIZE$shaderDenormPreserveFloat64 = LAYOUT$shaderDenormPreserveFloat64.byteSize();
+    public static final long SIZE$shaderDenormFlushToZeroFloat16 = LAYOUT$shaderDenormFlushToZeroFloat16.byteSize();
+    public static final long SIZE$shaderDenormFlushToZeroFloat32 = LAYOUT$shaderDenormFlushToZeroFloat32.byteSize();
+    public static final long SIZE$shaderDenormFlushToZeroFloat64 = LAYOUT$shaderDenormFlushToZeroFloat64.byteSize();
+    public static final long SIZE$shaderRoundingModeRTEFloat16 = LAYOUT$shaderRoundingModeRTEFloat16.byteSize();
+    public static final long SIZE$shaderRoundingModeRTEFloat32 = LAYOUT$shaderRoundingModeRTEFloat32.byteSize();
+    public static final long SIZE$shaderRoundingModeRTEFloat64 = LAYOUT$shaderRoundingModeRTEFloat64.byteSize();
+    public static final long SIZE$shaderRoundingModeRTZFloat16 = LAYOUT$shaderRoundingModeRTZFloat16.byteSize();
+    public static final long SIZE$shaderRoundingModeRTZFloat32 = LAYOUT$shaderRoundingModeRTZFloat32.byteSize();
+    public static final long SIZE$shaderRoundingModeRTZFloat64 = LAYOUT$shaderRoundingModeRTZFloat64.byteSize();
+    public static final long SIZE$maxUpdateAfterBindDescriptorsInAllPools = LAYOUT$maxUpdateAfterBindDescriptorsInAllPools.byteSize();
+    public static final long SIZE$shaderUniformBufferArrayNonUniformIndexingNative = LAYOUT$shaderUniformBufferArrayNonUniformIndexingNative.byteSize();
+    public static final long SIZE$shaderSampledImageArrayNonUniformIndexingNative = LAYOUT$shaderSampledImageArrayNonUniformIndexingNative.byteSize();
+    public static final long SIZE$shaderStorageBufferArrayNonUniformIndexingNative = LAYOUT$shaderStorageBufferArrayNonUniformIndexingNative.byteSize();
+    public static final long SIZE$shaderStorageImageArrayNonUniformIndexingNative = LAYOUT$shaderStorageImageArrayNonUniformIndexingNative.byteSize();
+    public static final long SIZE$shaderInputAttachmentArrayNonUniformIndexingNative = LAYOUT$shaderInputAttachmentArrayNonUniformIndexingNative.byteSize();
+    public static final long SIZE$robustBufferAccessUpdateAfterBind = LAYOUT$robustBufferAccessUpdateAfterBind.byteSize();
+    public static final long SIZE$quadDivergentImplicitLod = LAYOUT$quadDivergentImplicitLod.byteSize();
+    public static final long SIZE$maxPerStageDescriptorUpdateAfterBindSamplers = LAYOUT$maxPerStageDescriptorUpdateAfterBindSamplers.byteSize();
+    public static final long SIZE$maxPerStageDescriptorUpdateAfterBindUniformBuffers = LAYOUT$maxPerStageDescriptorUpdateAfterBindUniformBuffers.byteSize();
+    public static final long SIZE$maxPerStageDescriptorUpdateAfterBindStorageBuffers = LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageBuffers.byteSize();
+    public static final long SIZE$maxPerStageDescriptorUpdateAfterBindSampledImages = LAYOUT$maxPerStageDescriptorUpdateAfterBindSampledImages.byteSize();
+    public static final long SIZE$maxPerStageDescriptorUpdateAfterBindStorageImages = LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageImages.byteSize();
+    public static final long SIZE$maxPerStageDescriptorUpdateAfterBindInputAttachments = LAYOUT$maxPerStageDescriptorUpdateAfterBindInputAttachments.byteSize();
+    public static final long SIZE$maxPerStageUpdateAfterBindResources = LAYOUT$maxPerStageUpdateAfterBindResources.byteSize();
+    public static final long SIZE$maxDescriptorSetUpdateAfterBindSamplers = LAYOUT$maxDescriptorSetUpdateAfterBindSamplers.byteSize();
+    public static final long SIZE$maxDescriptorSetUpdateAfterBindUniformBuffers = LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffers.byteSize();
+    public static final long SIZE$maxDescriptorSetUpdateAfterBindUniformBuffersDynamic = LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffersDynamic.byteSize();
+    public static final long SIZE$maxDescriptorSetUpdateAfterBindStorageBuffers = LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffers.byteSize();
+    public static final long SIZE$maxDescriptorSetUpdateAfterBindStorageBuffersDynamic = LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffersDynamic.byteSize();
+    public static final long SIZE$maxDescriptorSetUpdateAfterBindSampledImages = LAYOUT$maxDescriptorSetUpdateAfterBindSampledImages.byteSize();
+    public static final long SIZE$maxDescriptorSetUpdateAfterBindStorageImages = LAYOUT$maxDescriptorSetUpdateAfterBindStorageImages.byteSize();
+    public static final long SIZE$maxDescriptorSetUpdateAfterBindInputAttachments = LAYOUT$maxDescriptorSetUpdateAfterBindInputAttachments.byteSize();
+    public static final long SIZE$supportedDepthResolveModes = LAYOUT$supportedDepthResolveModes.byteSize();
+    public static final long SIZE$supportedStencilResolveModes = LAYOUT$supportedStencilResolveModes.byteSize();
+    public static final long SIZE$independentResolveNone = LAYOUT$independentResolveNone.byteSize();
+    public static final long SIZE$independentResolve = LAYOUT$independentResolve.byteSize();
+    public static final long SIZE$filterMinmaxSingleComponentFormats = LAYOUT$filterMinmaxSingleComponentFormats.byteSize();
+    public static final long SIZE$filterMinmaxImageComponentMapping = LAYOUT$filterMinmaxImageComponentMapping.byteSize();
+    public static final long SIZE$maxTimelineSemaphoreValueDifference = LAYOUT$maxTimelineSemaphoreValueDifference.byteSize();
+    public static final long SIZE$framebufferIntegerColorSampleCounts = LAYOUT$framebufferIntegerColorSampleCounts.byteSize();
+
     public VkPhysicalDeviceVulkan12Properties(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES);
@@ -266,7 +322,7 @@ public record VkPhysicalDeviceVulkan12Properties(MemorySegment segment) {
     }
 
     public MemorySegment driverNameRaw() {
-        return segment.asSlice(OFFSET$driverName, LAYOUT$driverName.byteSize());
+        return segment.asSlice(OFFSET$driverName, SIZE$driverName);
     }
 
     public ByteBuffer driverName() {
@@ -274,11 +330,11 @@ public record VkPhysicalDeviceVulkan12Properties(MemorySegment segment) {
     }
 
     public void driverName(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverName, LAYOUT$driverName.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverName, SIZE$driverName);
     }
 
     public MemorySegment driverInfoRaw() {
-        return segment.asSlice(OFFSET$driverInfo, LAYOUT$driverInfo.byteSize());
+        return segment.asSlice(OFFSET$driverInfo, SIZE$driverInfo);
     }
 
     public ByteBuffer driverInfo() {
@@ -286,7 +342,7 @@ public record VkPhysicalDeviceVulkan12Properties(MemorySegment segment) {
     }
 
     public void driverInfo(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverInfo, LAYOUT$driverInfo.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverInfo, SIZE$driverInfo);
     }
 
     public VkConformanceVersion conformanceVersion() {
@@ -294,7 +350,7 @@ public record VkPhysicalDeviceVulkan12Properties(MemorySegment segment) {
     }
 
     public void conformanceVersion(VkConformanceVersion value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$conformanceVersion, LAYOUT$conformanceVersion.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$conformanceVersion, SIZE$conformanceVersion);
     }
 
     public @enumtype(VkShaderFloatControlsIndependence.class) int denormBehaviorIndependence() {
@@ -689,7 +745,7 @@ public record VkPhysicalDeviceVulkan12Properties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceVulkan12Properties[] ret = new VkPhysicalDeviceVulkan12Properties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceVulkan12Properties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceVulkan12Properties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

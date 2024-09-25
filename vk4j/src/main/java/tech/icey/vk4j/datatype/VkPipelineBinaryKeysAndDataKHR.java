@@ -19,6 +19,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkPipelineBinaryKeyKHR.LAYOUT).withName("pPipelineBinaryKeys"),
         ValueLayout.ADDRESS.withTargetLayout(VkPipelineBinaryDataKHR.LAYOUT).withName("pPipelineBinaryData")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$binaryCount = PathElement.groupElement("binaryCount");
     public static final PathElement PATH$pPipelineBinaryKeys = PathElement.groupElement("pPipelineBinaryKeys");
@@ -31,6 +32,10 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) {
     public static final long OFFSET$binaryCount = LAYOUT.byteOffset(PATH$binaryCount);
     public static final long OFFSET$pPipelineBinaryKeys = LAYOUT.byteOffset(PATH$pPipelineBinaryKeys);
     public static final long OFFSET$pPipelineBinaryData = LAYOUT.byteOffset(PATH$pPipelineBinaryData);
+
+    public static final long SIZE$binaryCount = LAYOUT$binaryCount.byteSize();
+    public static final long SIZE$pPipelineBinaryKeys = LAYOUT$pPipelineBinaryKeys.byteSize();
+    public static final long SIZE$pPipelineBinaryData = LAYOUT$pPipelineBinaryData.byteSize();
 
     public VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +99,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineBinaryKeysAndDataKHR[] ret = new VkPipelineBinaryKeysAndDataKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineBinaryKeysAndDataKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineBinaryKeysAndDataKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

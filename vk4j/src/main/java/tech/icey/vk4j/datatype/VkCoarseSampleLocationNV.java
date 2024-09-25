@@ -19,6 +19,7 @@ public record VkCoarseSampleLocationNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("pixelY"),
         ValueLayout.JAVA_INT.withName("sample")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$pixelX = PathElement.groupElement("pixelX");
     public static final PathElement PATH$pixelY = PathElement.groupElement("pixelY");
@@ -31,6 +32,10 @@ public record VkCoarseSampleLocationNV(MemorySegment segment) {
     public static final long OFFSET$pixelX = LAYOUT.byteOffset(PATH$pixelX);
     public static final long OFFSET$pixelY = LAYOUT.byteOffset(PATH$pixelY);
     public static final long OFFSET$sample = LAYOUT.byteOffset(PATH$sample);
+
+    public static final long SIZE$pixelX = LAYOUT$pixelX.byteSize();
+    public static final long SIZE$pixelY = LAYOUT$pixelY.byteSize();
+    public static final long SIZE$sample = LAYOUT$sample.byteSize();
 
     public VkCoarseSampleLocationNV(MemorySegment segment) {
         this.segment = segment;
@@ -68,7 +73,7 @@ public record VkCoarseSampleLocationNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCoarseSampleLocationNV[] ret = new VkCoarseSampleLocationNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkCoarseSampleLocationNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkCoarseSampleLocationNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

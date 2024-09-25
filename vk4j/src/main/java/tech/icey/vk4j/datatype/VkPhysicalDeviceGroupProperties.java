@@ -21,6 +21,7 @@ public record VkPhysicalDeviceGroupProperties(MemorySegment segment) {
         MemoryLayout.sequenceLayout(VK_MAX_DEVICE_GROUP_SIZE, ValueLayout.ADDRESS).withName("physicalDevices"),
         ValueLayout.JAVA_INT.withName("subsetAllocation")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceGroupProperties(MemorySegment segment) {
     public static final long OFFSET$physicalDeviceCount = LAYOUT.byteOffset(PATH$physicalDeviceCount);
     public static final long OFFSET$physicalDevices = LAYOUT.byteOffset(PATH$physicalDevices);
     public static final long OFFSET$subsetAllocation = LAYOUT.byteOffset(PATH$subsetAllocation);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$physicalDeviceCount = LAYOUT$physicalDeviceCount.byteSize();
+    public static final long SIZE$physicalDevices = LAYOUT$physicalDevices.byteSize();
+    public static final long SIZE$subsetAllocation = LAYOUT$subsetAllocation.byteSize();
 
     public VkPhysicalDeviceGroupProperties(MemorySegment segment) {
         this.segment = segment;
@@ -70,32 +77,29 @@ public record VkPhysicalDeviceGroupProperties(MemorySegment segment) {
     }
 
     public MemorySegment physicalDevicesRaw() {
-        return segment.asSlice(OFFSET$physicalDevices, LAYOUT$physicalDevices.byteSize());
+        return segment.asSlice(OFFSET$physicalDevices, SIZE$physicalDevices);
     }
 
-    public VkPhysicalDevice[] physicalDevices() {
-        MemorySegment s = physicalDevicesRaw();
-        VkPhysicalDevice[] arr = new VkPhysicalDevice[(int)LAYOUT$physicalDevices.elementCount()];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = new VkPhysicalDevice(s.asSlice(i * LAYOUT$physicalDevices.byteSize(), LAYOUT$physicalDevices.byteSize()));
-        }
-        return arr;
+    public VkPhysicalDevice.Buffer physicalDevices() {
+        return new VkPhysicalDevice.Buffer(physicalDevicesRaw());
     }
 
-    public void physicalDevices(VkPhysicalDevice[] value) {
-        MemorySegment s = physicalDevicesRaw();
-        for (int i = 0; i < value.length; i++) {
-            MemorySegment.copy(value[i].segment(), 0, s, i * LAYOUT$physicalDevices.byteSize(), LAYOUT$physicalDevices.byteSize());
-        }
+    public void physicalDevices(VkPhysicalDevice.Buffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$physicalDevices, SIZE$physicalDevices);
     }
 
+
+    
     public VkPhysicalDevice physicalDevicesAt(long index) {
         MemorySegment s = physicalDevicesRaw();
-        return new VkPhysicalDevice(s.asSlice(index * LAYOUT$physicalDevices.byteSize(), LAYOUT$physicalDevices.byteSize()));
+        MemorySegment deref = s.get(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize());
+        return new VkPhysicalDevice(deref);
     }
-
+    
     public void physicalDevicesAt(long index, VkPhysicalDevice value) {
-        MemorySegment.copy(value.segment(), 0, physicalDevicesRaw(), index * LAYOUT$physicalDevices.byteSize(), LAYOUT$physicalDevices.byteSize());
+        MemorySegment s = physicalDevicesRaw();
+        MemorySegment deref = s.get(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize());
+        deref.copyFrom(value.segment());
     }
 
     public @unsigned int subsetAllocation() {
@@ -114,7 +118,7 @@ public record VkPhysicalDeviceGroupProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceGroupProperties[] ret = new VkPhysicalDeviceGroupProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceGroupProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceGroupProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -19,6 +19,7 @@ public record VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(MemorySegment
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shaderIntegerFunctions2")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(MemorySegment
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$shaderIntegerFunctions2 = LAYOUT.byteOffset(PATH$shaderIntegerFunctions2);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderIntegerFunctions2 = LAYOUT$shaderIntegerFunctions2.byteSize();
 
     public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL[] ret = new VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

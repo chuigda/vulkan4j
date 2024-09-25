@@ -1,16 +1,17 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.bitmask.VkFormatFeatureFlags;
-
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkFormatProperties(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -18,6 +19,7 @@ public record VkFormatProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("optimalTilingFeatures"),
         ValueLayout.JAVA_INT.withName("bufferFeatures")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$linearTilingFeatures = PathElement.groupElement("linearTilingFeatures");
     public static final PathElement PATH$optimalTilingFeatures = PathElement.groupElement("optimalTilingFeatures");
@@ -30,6 +32,10 @@ public record VkFormatProperties(MemorySegment segment) {
     public static final long OFFSET$linearTilingFeatures = LAYOUT.byteOffset(PATH$linearTilingFeatures);
     public static final long OFFSET$optimalTilingFeatures = LAYOUT.byteOffset(PATH$optimalTilingFeatures);
     public static final long OFFSET$bufferFeatures = LAYOUT.byteOffset(PATH$bufferFeatures);
+
+    public static final long SIZE$linearTilingFeatures = LAYOUT$linearTilingFeatures.byteSize();
+    public static final long SIZE$optimalTilingFeatures = LAYOUT$optimalTilingFeatures.byteSize();
+    public static final long SIZE$bufferFeatures = LAYOUT$bufferFeatures.byteSize();
 
     public VkFormatProperties(MemorySegment segment) {
         this.segment = segment;
@@ -62,12 +68,12 @@ public record VkFormatProperties(MemorySegment segment) {
     public static VkFormatProperties allocate(Arena arena) {
         return new VkFormatProperties(arena.allocate(LAYOUT));
     }
-
+    
     public static VkFormatProperties[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkFormatProperties[] ret = new VkFormatProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkFormatProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkFormatProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

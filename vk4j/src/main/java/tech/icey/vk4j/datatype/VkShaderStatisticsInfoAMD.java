@@ -23,6 +23,7 @@ public record VkShaderStatisticsInfoAMD(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("numAvailableSgprs"),
         MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("computeWorkGroupSize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$shaderStageMask = PathElement.groupElement("shaderStageMask");
     public static final PathElement PATH$resourceUsage = PathElement.groupElement("resourceUsage");
@@ -48,6 +49,14 @@ public record VkShaderStatisticsInfoAMD(MemorySegment segment) {
     public static final long OFFSET$numAvailableSgprs = LAYOUT.byteOffset(PATH$numAvailableSgprs);
     public static final long OFFSET$computeWorkGroupSize = LAYOUT.byteOffset(PATH$computeWorkGroupSize);
 
+    public static final long SIZE$shaderStageMask = LAYOUT$shaderStageMask.byteSize();
+    public static final long SIZE$resourceUsage = LAYOUT$resourceUsage.byteSize();
+    public static final long SIZE$numPhysicalVgprs = LAYOUT$numPhysicalVgprs.byteSize();
+    public static final long SIZE$numPhysicalSgprs = LAYOUT$numPhysicalSgprs.byteSize();
+    public static final long SIZE$numAvailableVgprs = LAYOUT$numAvailableVgprs.byteSize();
+    public static final long SIZE$numAvailableSgprs = LAYOUT$numAvailableSgprs.byteSize();
+    public static final long SIZE$computeWorkGroupSize = LAYOUT$computeWorkGroupSize.byteSize();
+
     public VkShaderStatisticsInfoAMD(MemorySegment segment) {
         this.segment = segment;
     }
@@ -65,7 +74,7 @@ public record VkShaderStatisticsInfoAMD(MemorySegment segment) {
     }
 
     public void resourceUsage(VkShaderResourceUsageAMD value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$resourceUsage, LAYOUT$resourceUsage.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$resourceUsage, SIZE$resourceUsage);
     }
 
     public @unsigned int numPhysicalVgprs() {
@@ -101,7 +110,7 @@ public record VkShaderStatisticsInfoAMD(MemorySegment segment) {
     }
 
     public MemorySegment computeWorkGroupSizeRaw() {
-        return segment.asSlice(OFFSET$computeWorkGroupSize, LAYOUT$computeWorkGroupSize.byteSize());
+        return segment.asSlice(OFFSET$computeWorkGroupSize, SIZE$computeWorkGroupSize);
     }
 
     public @unsigned IntBuffer computeWorkGroupSize() {
@@ -109,7 +118,7 @@ public record VkShaderStatisticsInfoAMD(MemorySegment segment) {
     }
 
     public void computeWorkGroupSize(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$computeWorkGroupSize, LAYOUT$computeWorkGroupSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$computeWorkGroupSize, SIZE$computeWorkGroupSize);
     }
 
     public static VkShaderStatisticsInfoAMD allocate(Arena arena) {
@@ -120,7 +129,7 @@ public record VkShaderStatisticsInfoAMD(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkShaderStatisticsInfoAMD[] ret = new VkShaderStatisticsInfoAMD[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkShaderStatisticsInfoAMD(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkShaderStatisticsInfoAMD(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -19,6 +19,7 @@ public record VkSparseImageFormatProperties(MemorySegment segment) {
         VkExtent3D.LAYOUT.withName("imageGranularity"),
         ValueLayout.JAVA_INT.withName("flags")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
     public static final PathElement PATH$imageGranularity = PathElement.groupElement("imageGranularity");
@@ -31,6 +32,10 @@ public record VkSparseImageFormatProperties(MemorySegment segment) {
     public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
     public static final long OFFSET$imageGranularity = LAYOUT.byteOffset(PATH$imageGranularity);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+
+    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
+    public static final long SIZE$imageGranularity = LAYOUT$imageGranularity.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
 
     public VkSparseImageFormatProperties(MemorySegment segment) {
         this.segment = segment;
@@ -49,7 +54,7 @@ public record VkSparseImageFormatProperties(MemorySegment segment) {
     }
 
     public void imageGranularity(VkExtent3D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageGranularity, LAYOUT$imageGranularity.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageGranularity, SIZE$imageGranularity);
     }
 
     public @enumtype(VkSparseImageFormatFlags.class) int flags() {
@@ -68,7 +73,7 @@ public record VkSparseImageFormatProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSparseImageFormatProperties[] ret = new VkSparseImageFormatProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSparseImageFormatProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSparseImageFormatProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

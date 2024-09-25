@@ -20,6 +20,7 @@ public record VkDisplayModeCreateInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("flags"),
         VkDisplayModeParametersKHR.LAYOUT.withName("parameters")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkDisplayModeCreateInfoKHR(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$parameters = LAYOUT.byteOffset(PATH$parameters);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$parameters = LAYOUT$parameters.byteSize();
 
     public VkDisplayModeCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -70,7 +76,7 @@ public record VkDisplayModeCreateInfoKHR(MemorySegment segment) {
     }
 
     public void parameters(VkDisplayModeParametersKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$parameters, LAYOUT$parameters.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$parameters, SIZE$parameters);
     }
 
     public static VkDisplayModeCreateInfoKHR allocate(Arena arena) {
@@ -81,7 +87,7 @@ public record VkDisplayModeCreateInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayModeCreateInfoKHR[] ret = new VkDisplayModeCreateInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDisplayModeCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDisplayModeCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

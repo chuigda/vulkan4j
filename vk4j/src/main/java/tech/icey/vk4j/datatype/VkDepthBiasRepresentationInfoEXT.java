@@ -20,6 +20,7 @@ public record VkDepthBiasRepresentationInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("depthBiasRepresentation"),
         ValueLayout.JAVA_INT.withName("depthBiasExact")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkDepthBiasRepresentationInfoEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$depthBiasRepresentation = LAYOUT.byteOffset(PATH$depthBiasRepresentation);
     public static final long OFFSET$depthBiasExact = LAYOUT.byteOffset(PATH$depthBiasExact);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$depthBiasRepresentation = LAYOUT$depthBiasRepresentation.byteSize();
+    public static final long SIZE$depthBiasExact = LAYOUT$depthBiasExact.byteSize();
 
     public VkDepthBiasRepresentationInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkDepthBiasRepresentationInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDepthBiasRepresentationInfoEXT[] ret = new VkDepthBiasRepresentationInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDepthBiasRepresentationInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDepthBiasRepresentationInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

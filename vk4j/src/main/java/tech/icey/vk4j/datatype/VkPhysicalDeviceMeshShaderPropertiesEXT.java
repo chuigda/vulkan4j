@@ -46,6 +46,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("prefersCompactVertexOutput"),
         ValueLayout.JAVA_INT.withName("prefersCompactPrimitiveOutput")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -140,6 +141,37 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
     public static final long OFFSET$prefersCompactVertexOutput = LAYOUT.byteOffset(PATH$prefersCompactVertexOutput);
     public static final long OFFSET$prefersCompactPrimitiveOutput = LAYOUT.byteOffset(PATH$prefersCompactPrimitiveOutput);
 
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxTaskWorkGroupTotalCount = LAYOUT$maxTaskWorkGroupTotalCount.byteSize();
+    public static final long SIZE$maxTaskWorkGroupCount = LAYOUT$maxTaskWorkGroupCount.byteSize();
+    public static final long SIZE$maxTaskWorkGroupInvocations = LAYOUT$maxTaskWorkGroupInvocations.byteSize();
+    public static final long SIZE$maxTaskWorkGroupSize = LAYOUT$maxTaskWorkGroupSize.byteSize();
+    public static final long SIZE$maxTaskPayloadSize = LAYOUT$maxTaskPayloadSize.byteSize();
+    public static final long SIZE$maxTaskSharedMemorySize = LAYOUT$maxTaskSharedMemorySize.byteSize();
+    public static final long SIZE$maxTaskPayloadAndSharedMemorySize = LAYOUT$maxTaskPayloadAndSharedMemorySize.byteSize();
+    public static final long SIZE$maxMeshWorkGroupTotalCount = LAYOUT$maxMeshWorkGroupTotalCount.byteSize();
+    public static final long SIZE$maxMeshWorkGroupCount = LAYOUT$maxMeshWorkGroupCount.byteSize();
+    public static final long SIZE$maxMeshWorkGroupInvocations = LAYOUT$maxMeshWorkGroupInvocations.byteSize();
+    public static final long SIZE$maxMeshWorkGroupSize = LAYOUT$maxMeshWorkGroupSize.byteSize();
+    public static final long SIZE$maxMeshSharedMemorySize = LAYOUT$maxMeshSharedMemorySize.byteSize();
+    public static final long SIZE$maxMeshPayloadAndSharedMemorySize = LAYOUT$maxMeshPayloadAndSharedMemorySize.byteSize();
+    public static final long SIZE$maxMeshOutputMemorySize = LAYOUT$maxMeshOutputMemorySize.byteSize();
+    public static final long SIZE$maxMeshPayloadAndOutputMemorySize = LAYOUT$maxMeshPayloadAndOutputMemorySize.byteSize();
+    public static final long SIZE$maxMeshOutputComponents = LAYOUT$maxMeshOutputComponents.byteSize();
+    public static final long SIZE$maxMeshOutputVertices = LAYOUT$maxMeshOutputVertices.byteSize();
+    public static final long SIZE$maxMeshOutputPrimitives = LAYOUT$maxMeshOutputPrimitives.byteSize();
+    public static final long SIZE$maxMeshOutputLayers = LAYOUT$maxMeshOutputLayers.byteSize();
+    public static final long SIZE$maxMeshMultiviewViewCount = LAYOUT$maxMeshMultiviewViewCount.byteSize();
+    public static final long SIZE$meshOutputPerVertexGranularity = LAYOUT$meshOutputPerVertexGranularity.byteSize();
+    public static final long SIZE$meshOutputPerPrimitiveGranularity = LAYOUT$meshOutputPerPrimitiveGranularity.byteSize();
+    public static final long SIZE$maxPreferredTaskWorkGroupInvocations = LAYOUT$maxPreferredTaskWorkGroupInvocations.byteSize();
+    public static final long SIZE$maxPreferredMeshWorkGroupInvocations = LAYOUT$maxPreferredMeshWorkGroupInvocations.byteSize();
+    public static final long SIZE$prefersLocalInvocationVertexOutput = LAYOUT$prefersLocalInvocationVertexOutput.byteSize();
+    public static final long SIZE$prefersLocalInvocationPrimitiveOutput = LAYOUT$prefersLocalInvocationPrimitiveOutput.byteSize();
+    public static final long SIZE$prefersCompactVertexOutput = LAYOUT$prefersCompactVertexOutput.byteSize();
+    public static final long SIZE$prefersCompactPrimitiveOutput = LAYOUT$prefersCompactPrimitiveOutput.byteSize();
+
     public VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT);
@@ -170,7 +202,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
     }
 
     public MemorySegment maxTaskWorkGroupCountRaw() {
-        return segment.asSlice(OFFSET$maxTaskWorkGroupCount, LAYOUT$maxTaskWorkGroupCount.byteSize());
+        return segment.asSlice(OFFSET$maxTaskWorkGroupCount, SIZE$maxTaskWorkGroupCount);
     }
 
     public @unsigned IntBuffer maxTaskWorkGroupCount() {
@@ -178,7 +210,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
     }
 
     public void maxTaskWorkGroupCount(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTaskWorkGroupCount, LAYOUT$maxTaskWorkGroupCount.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTaskWorkGroupCount, SIZE$maxTaskWorkGroupCount);
     }
 
     public @unsigned int maxTaskWorkGroupInvocations() {
@@ -190,7 +222,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
     }
 
     public MemorySegment maxTaskWorkGroupSizeRaw() {
-        return segment.asSlice(OFFSET$maxTaskWorkGroupSize, LAYOUT$maxTaskWorkGroupSize.byteSize());
+        return segment.asSlice(OFFSET$maxTaskWorkGroupSize, SIZE$maxTaskWorkGroupSize);
     }
 
     public @unsigned IntBuffer maxTaskWorkGroupSize() {
@@ -198,7 +230,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
     }
 
     public void maxTaskWorkGroupSize(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTaskWorkGroupSize, LAYOUT$maxTaskWorkGroupSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTaskWorkGroupSize, SIZE$maxTaskWorkGroupSize);
     }
 
     public @unsigned int maxTaskPayloadSize() {
@@ -234,7 +266,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
     }
 
     public MemorySegment maxMeshWorkGroupCountRaw() {
-        return segment.asSlice(OFFSET$maxMeshWorkGroupCount, LAYOUT$maxMeshWorkGroupCount.byteSize());
+        return segment.asSlice(OFFSET$maxMeshWorkGroupCount, SIZE$maxMeshWorkGroupCount);
     }
 
     public @unsigned IntBuffer maxMeshWorkGroupCount() {
@@ -242,7 +274,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
     }
 
     public void maxMeshWorkGroupCount(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxMeshWorkGroupCount, LAYOUT$maxMeshWorkGroupCount.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxMeshWorkGroupCount, SIZE$maxMeshWorkGroupCount);
     }
 
     public @unsigned int maxMeshWorkGroupInvocations() {
@@ -254,7 +286,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
     }
 
     public MemorySegment maxMeshWorkGroupSizeRaw() {
-        return segment.asSlice(OFFSET$maxMeshWorkGroupSize, LAYOUT$maxMeshWorkGroupSize.byteSize());
+        return segment.asSlice(OFFSET$maxMeshWorkGroupSize, SIZE$maxMeshWorkGroupSize);
     }
 
     public @unsigned IntBuffer maxMeshWorkGroupSize() {
@@ -262,7 +294,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
     }
 
     public void maxMeshWorkGroupSize(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxMeshWorkGroupSize, LAYOUT$maxMeshWorkGroupSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxMeshWorkGroupSize, SIZE$maxMeshWorkGroupSize);
     }
 
     public @unsigned int maxMeshSharedMemorySize() {
@@ -409,7 +441,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMeshShaderPropertiesEXT[] ret = new VkPhysicalDeviceMeshShaderPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMeshShaderPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceMeshShaderPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

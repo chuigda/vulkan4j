@@ -20,6 +20,7 @@ public record VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(MemorySegment segm
         ValueLayout.JAVA_INT.withName("shaderSubgroupRotate"),
         ValueLayout.JAVA_INT.withName("shaderSubgroupRotateClustered")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(MemorySegment segm
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$shaderSubgroupRotate = LAYOUT.byteOffset(PATH$shaderSubgroupRotate);
     public static final long OFFSET$shaderSubgroupRotateClustered = LAYOUT.byteOffset(PATH$shaderSubgroupRotateClustered);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderSubgroupRotate = LAYOUT$shaderSubgroupRotate.byteSize();
+    public static final long SIZE$shaderSubgroupRotateClustered = LAYOUT$shaderSubgroupRotateClustered.byteSize();
 
     public VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR[] ret = new VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

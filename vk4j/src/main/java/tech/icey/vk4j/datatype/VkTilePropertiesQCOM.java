@@ -21,6 +21,7 @@ public record VkTilePropertiesQCOM(MemorySegment segment) {
         VkExtent2D.LAYOUT.withName("apronSize"),
         VkOffset2D.LAYOUT.withName("origin")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkTilePropertiesQCOM(MemorySegment segment) {
     public static final long OFFSET$tileSize = LAYOUT.byteOffset(PATH$tileSize);
     public static final long OFFSET$apronSize = LAYOUT.byteOffset(PATH$apronSize);
     public static final long OFFSET$origin = LAYOUT.byteOffset(PATH$origin);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$tileSize = LAYOUT$tileSize.byteSize();
+    public static final long SIZE$apronSize = LAYOUT$apronSize.byteSize();
+    public static final long SIZE$origin = LAYOUT$origin.byteSize();
 
     public VkTilePropertiesQCOM(MemorySegment segment) {
         this.segment = segment;
@@ -66,7 +73,7 @@ public record VkTilePropertiesQCOM(MemorySegment segment) {
     }
 
     public void tileSize(VkExtent3D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$tileSize, LAYOUT$tileSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$tileSize, SIZE$tileSize);
     }
 
     public VkExtent2D apronSize() {
@@ -74,7 +81,7 @@ public record VkTilePropertiesQCOM(MemorySegment segment) {
     }
 
     public void apronSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$apronSize, LAYOUT$apronSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$apronSize, SIZE$apronSize);
     }
 
     public VkOffset2D origin() {
@@ -82,7 +89,7 @@ public record VkTilePropertiesQCOM(MemorySegment segment) {
     }
 
     public void origin(VkOffset2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$origin, LAYOUT$origin.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$origin, SIZE$origin);
     }
 
     public static VkTilePropertiesQCOM allocate(Arena arena) {
@@ -93,7 +100,7 @@ public record VkTilePropertiesQCOM(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkTilePropertiesQCOM[] ret = new VkTilePropertiesQCOM[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkTilePropertiesQCOM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkTilePropertiesQCOM(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

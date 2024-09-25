@@ -21,6 +21,7 @@ public record VkPhysicalDeviceRobustness2FeaturesEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("robustImageAccess2"),
         ValueLayout.JAVA_INT.withName("nullDescriptor")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceRobustness2FeaturesEXT(MemorySegment segment) {
     public static final long OFFSET$robustBufferAccess2 = LAYOUT.byteOffset(PATH$robustBufferAccess2);
     public static final long OFFSET$robustImageAccess2 = LAYOUT.byteOffset(PATH$robustImageAccess2);
     public static final long OFFSET$nullDescriptor = LAYOUT.byteOffset(PATH$nullDescriptor);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$robustBufferAccess2 = LAYOUT$robustBufferAccess2.byteSize();
+    public static final long SIZE$robustImageAccess2 = LAYOUT$robustImageAccess2.byteSize();
+    public static final long SIZE$nullDescriptor = LAYOUT$nullDescriptor.byteSize();
 
     public VkPhysicalDeviceRobustness2FeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceRobustness2FeaturesEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceRobustness2FeaturesEXT[] ret = new VkPhysicalDeviceRobustness2FeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceRobustness2FeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceRobustness2FeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

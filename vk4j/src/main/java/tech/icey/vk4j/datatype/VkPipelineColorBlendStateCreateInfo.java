@@ -24,6 +24,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkPipelineColorBlendAttachmentState.LAYOUT).withName("pAttachments"),
         MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("blendConstants")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -51,6 +52,15 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
     public static final long OFFSET$attachmentCount = LAYOUT.byteOffset(PATH$attachmentCount);
     public static final long OFFSET$pAttachments = LAYOUT.byteOffset(PATH$pAttachments);
     public static final long OFFSET$blendConstants = LAYOUT.byteOffset(PATH$blendConstants);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$logicOpEnable = LAYOUT$logicOpEnable.byteSize();
+    public static final long SIZE$logicOp = LAYOUT$logicOp.byteSize();
+    public static final long SIZE$attachmentCount = LAYOUT$attachmentCount.byteSize();
+    public static final long SIZE$pAttachments = LAYOUT$pAttachments.byteSize();
+    public static final long SIZE$blendConstants = LAYOUT$blendConstants.byteSize();
 
     public VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -127,7 +137,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
     }
 
     public MemorySegment blendConstantsRaw() {
-        return segment.asSlice(OFFSET$blendConstants, LAYOUT$blendConstants.byteSize());
+        return segment.asSlice(OFFSET$blendConstants, SIZE$blendConstants);
     }
 
     public FloatBuffer blendConstants() {
@@ -135,7 +145,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
     }
 
     public void blendConstants(FloatBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$blendConstants, LAYOUT$blendConstants.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$blendConstants, SIZE$blendConstants);
     }
 
     public static VkPipelineColorBlendStateCreateInfo allocate(Arena arena) {
@@ -146,7 +156,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineColorBlendStateCreateInfo[] ret = new VkPipelineColorBlendStateCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineColorBlendStateCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineColorBlendStateCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

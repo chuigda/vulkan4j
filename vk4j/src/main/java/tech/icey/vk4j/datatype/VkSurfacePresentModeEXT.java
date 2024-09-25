@@ -19,6 +19,7 @@ public record VkSurfacePresentModeEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("presentMode")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkSurfacePresentModeEXT(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$presentMode = LAYOUT.byteOffset(PATH$presentMode);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$presentMode = LAYOUT$presentMode.byteSize();
 
     public VkSurfacePresentModeEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkSurfacePresentModeEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSurfacePresentModeEXT[] ret = new VkSurfacePresentModeEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSurfacePresentModeEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSurfacePresentModeEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

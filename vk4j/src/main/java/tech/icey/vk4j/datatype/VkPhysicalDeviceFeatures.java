@@ -71,6 +71,7 @@ public record VkPhysicalDeviceFeatures(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("variableMultisampleRate"),
         ValueLayout.JAVA_INT.withName("inheritedQueries")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$robustBufferAccess = PathElement.groupElement("robustBufferAccess");
     public static final PathElement PATH$fullDrawIndexUint32 = PathElement.groupElement("fullDrawIndexUint32");
@@ -239,6 +240,62 @@ public record VkPhysicalDeviceFeatures(MemorySegment segment) {
     public static final long OFFSET$sparseResidencyAliased = LAYOUT.byteOffset(PATH$sparseResidencyAliased);
     public static final long OFFSET$variableMultisampleRate = LAYOUT.byteOffset(PATH$variableMultisampleRate);
     public static final long OFFSET$inheritedQueries = LAYOUT.byteOffset(PATH$inheritedQueries);
+
+    public static final long SIZE$robustBufferAccess = LAYOUT$robustBufferAccess.byteSize();
+    public static final long SIZE$fullDrawIndexUint32 = LAYOUT$fullDrawIndexUint32.byteSize();
+    public static final long SIZE$imageCubeArray = LAYOUT$imageCubeArray.byteSize();
+    public static final long SIZE$independentBlend = LAYOUT$independentBlend.byteSize();
+    public static final long SIZE$geometryShader = LAYOUT$geometryShader.byteSize();
+    public static final long SIZE$tessellationShader = LAYOUT$tessellationShader.byteSize();
+    public static final long SIZE$sampleRateShading = LAYOUT$sampleRateShading.byteSize();
+    public static final long SIZE$dualSrcBlend = LAYOUT$dualSrcBlend.byteSize();
+    public static final long SIZE$logicOp = LAYOUT$logicOp.byteSize();
+    public static final long SIZE$multiDrawIndirect = LAYOUT$multiDrawIndirect.byteSize();
+    public static final long SIZE$drawIndirectFirstInstance = LAYOUT$drawIndirectFirstInstance.byteSize();
+    public static final long SIZE$depthClamp = LAYOUT$depthClamp.byteSize();
+    public static final long SIZE$depthBiasClamp = LAYOUT$depthBiasClamp.byteSize();
+    public static final long SIZE$fillModeNonSolid = LAYOUT$fillModeNonSolid.byteSize();
+    public static final long SIZE$depthBounds = LAYOUT$depthBounds.byteSize();
+    public static final long SIZE$wideLines = LAYOUT$wideLines.byteSize();
+    public static final long SIZE$largePoints = LAYOUT$largePoints.byteSize();
+    public static final long SIZE$alphaToOne = LAYOUT$alphaToOne.byteSize();
+    public static final long SIZE$multiViewport = LAYOUT$multiViewport.byteSize();
+    public static final long SIZE$samplerAnisotropy = LAYOUT$samplerAnisotropy.byteSize();
+    public static final long SIZE$textureCompressionETC2 = LAYOUT$textureCompressionETC2.byteSize();
+    public static final long SIZE$textureCompressionASTC_LDR = LAYOUT$textureCompressionASTC_LDR.byteSize();
+    public static final long SIZE$textureCompressionBC = LAYOUT$textureCompressionBC.byteSize();
+    public static final long SIZE$occlusionQueryPrecise = LAYOUT$occlusionQueryPrecise.byteSize();
+    public static final long SIZE$pipelineStatisticsQuery = LAYOUT$pipelineStatisticsQuery.byteSize();
+    public static final long SIZE$vertexPipelineStoresAndAtomics = LAYOUT$vertexPipelineStoresAndAtomics.byteSize();
+    public static final long SIZE$fragmentStoresAndAtomics = LAYOUT$fragmentStoresAndAtomics.byteSize();
+    public static final long SIZE$shaderTessellationAndGeometryPointSize = LAYOUT$shaderTessellationAndGeometryPointSize.byteSize();
+    public static final long SIZE$shaderImageGatherExtended = LAYOUT$shaderImageGatherExtended.byteSize();
+    public static final long SIZE$shaderStorageImageExtendedFormats = LAYOUT$shaderStorageImageExtendedFormats.byteSize();
+    public static final long SIZE$shaderStorageImageMultisample = LAYOUT$shaderStorageImageMultisample.byteSize();
+    public static final long SIZE$shaderStorageImageReadWithoutFormat = LAYOUT$shaderStorageImageReadWithoutFormat.byteSize();
+    public static final long SIZE$shaderStorageImageWriteWithoutFormat = LAYOUT$shaderStorageImageWriteWithoutFormat.byteSize();
+    public static final long SIZE$shaderUniformBufferArrayDynamicIndexing = LAYOUT$shaderUniformBufferArrayDynamicIndexing.byteSize();
+    public static final long SIZE$shaderSampledImageArrayDynamicIndexing = LAYOUT$shaderSampledImageArrayDynamicIndexing.byteSize();
+    public static final long SIZE$shaderStorageBufferArrayDynamicIndexing = LAYOUT$shaderStorageBufferArrayDynamicIndexing.byteSize();
+    public static final long SIZE$shaderStorageImageArrayDynamicIndexing = LAYOUT$shaderStorageImageArrayDynamicIndexing.byteSize();
+    public static final long SIZE$shaderClipDistance = LAYOUT$shaderClipDistance.byteSize();
+    public static final long SIZE$shaderCullDistance = LAYOUT$shaderCullDistance.byteSize();
+    public static final long SIZE$shaderFloat64 = LAYOUT$shaderFloat64.byteSize();
+    public static final long SIZE$shaderInt64 = LAYOUT$shaderInt64.byteSize();
+    public static final long SIZE$shaderInt16 = LAYOUT$shaderInt16.byteSize();
+    public static final long SIZE$shaderResourceResidency = LAYOUT$shaderResourceResidency.byteSize();
+    public static final long SIZE$shaderResourceMinLod = LAYOUT$shaderResourceMinLod.byteSize();
+    public static final long SIZE$sparseBinding = LAYOUT$sparseBinding.byteSize();
+    public static final long SIZE$sparseResidencyBuffer = LAYOUT$sparseResidencyBuffer.byteSize();
+    public static final long SIZE$sparseResidencyImage2D = LAYOUT$sparseResidencyImage2D.byteSize();
+    public static final long SIZE$sparseResidencyImage3D = LAYOUT$sparseResidencyImage3D.byteSize();
+    public static final long SIZE$sparseResidency2Samples = LAYOUT$sparseResidency2Samples.byteSize();
+    public static final long SIZE$sparseResidency4Samples = LAYOUT$sparseResidency4Samples.byteSize();
+    public static final long SIZE$sparseResidency8Samples = LAYOUT$sparseResidency8Samples.byteSize();
+    public static final long SIZE$sparseResidency16Samples = LAYOUT$sparseResidency16Samples.byteSize();
+    public static final long SIZE$sparseResidencyAliased = LAYOUT$sparseResidencyAliased.byteSize();
+    public static final long SIZE$variableMultisampleRate = LAYOUT$variableMultisampleRate.byteSize();
+    public static final long SIZE$inheritedQueries = LAYOUT$inheritedQueries.byteSize();
 
     public VkPhysicalDeviceFeatures(MemorySegment segment) {
         this.segment = segment;
@@ -692,7 +749,7 @@ public record VkPhysicalDeviceFeatures(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceFeatures[] ret = new VkPhysicalDeviceFeatures[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceFeatures(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceFeatures(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -23,6 +23,7 @@ public record VkComputePipelineCreateInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("basePipelineHandle"),
         ValueLayout.JAVA_INT.withName("basePipelineIndex")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkComputePipelineCreateInfo(MemorySegment segment) {
     public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
     public static final long OFFSET$basePipelineHandle = LAYOUT.byteOffset(PATH$basePipelineHandle);
     public static final long OFFSET$basePipelineIndex = LAYOUT.byteOffset(PATH$basePipelineIndex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$stage = LAYOUT$stage.byteSize();
+    public static final long SIZE$layout = LAYOUT$layout.byteSize();
+    public static final long SIZE$basePipelineHandle = LAYOUT$basePipelineHandle.byteSize();
+    public static final long SIZE$basePipelineIndex = LAYOUT$basePipelineIndex.byteSize();
 
     public VkComputePipelineCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -82,7 +91,7 @@ public record VkComputePipelineCreateInfo(MemorySegment segment) {
     }
 
     public void stage(VkPipelineShaderStageCreateInfo value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$stage, LAYOUT$stage.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$stage, SIZE$stage);
     }
 
     public VkPipelineLayout layout() {
@@ -117,7 +126,7 @@ public record VkComputePipelineCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkComputePipelineCreateInfo[] ret = new VkComputePipelineCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkComputePipelineCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkComputePipelineCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

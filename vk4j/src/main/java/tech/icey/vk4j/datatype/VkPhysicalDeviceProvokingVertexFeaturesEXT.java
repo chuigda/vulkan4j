@@ -20,6 +20,7 @@ public record VkPhysicalDeviceProvokingVertexFeaturesEXT(MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("provokingVertexLast"),
         ValueLayout.JAVA_INT.withName("transformFeedbackPreservesProvokingVertex")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceProvokingVertexFeaturesEXT(MemorySegment segment) 
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$provokingVertexLast = LAYOUT.byteOffset(PATH$provokingVertexLast);
     public static final long OFFSET$transformFeedbackPreservesProvokingVertex = LAYOUT.byteOffset(PATH$transformFeedbackPreservesProvokingVertex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$provokingVertexLast = LAYOUT$provokingVertexLast.byteSize();
+    public static final long SIZE$transformFeedbackPreservesProvokingVertex = LAYOUT$transformFeedbackPreservesProvokingVertex.byteSize();
 
     public VkPhysicalDeviceProvokingVertexFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceProvokingVertexFeaturesEXT(MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceProvokingVertexFeaturesEXT[] ret = new VkPhysicalDeviceProvokingVertexFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceProvokingVertexFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceProvokingVertexFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

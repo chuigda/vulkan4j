@@ -20,6 +20,7 @@ public record VkRenderPassAttachmentBeginInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("attachmentCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pAttachments")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkRenderPassAttachmentBeginInfo(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$attachmentCount = LAYOUT.byteOffset(PATH$attachmentCount);
     public static final long OFFSET$pAttachments = LAYOUT.byteOffset(PATH$pAttachments);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$attachmentCount = LAYOUT$attachmentCount.byteSize();
+    public static final long SIZE$pAttachments = LAYOUT$pAttachments.byteSize();
 
     public VkRenderPassAttachmentBeginInfo(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +100,7 @@ public record VkRenderPassAttachmentBeginInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderPassAttachmentBeginInfo[] ret = new VkRenderPassAttachmentBeginInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderPassAttachmentBeginInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRenderPassAttachmentBeginInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

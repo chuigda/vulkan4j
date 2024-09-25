@@ -23,6 +23,7 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("descriptorWriteCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkWriteDescriptorSet.LAYOUT).withName("pDescriptorWrites")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) {
     public static final long OFFSET$set = LAYOUT.byteOffset(PATH$set);
     public static final long OFFSET$descriptorWriteCount = LAYOUT.byteOffset(PATH$descriptorWriteCount);
     public static final long OFFSET$pDescriptorWrites = LAYOUT.byteOffset(PATH$pDescriptorWrites);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$stageFlags = LAYOUT$stageFlags.byteSize();
+    public static final long SIZE$layout = LAYOUT$layout.byteSize();
+    public static final long SIZE$set = LAYOUT$set.byteSize();
+    public static final long SIZE$descriptorWriteCount = LAYOUT$descriptorWriteCount.byteSize();
+    public static final long SIZE$pDescriptorWrites = LAYOUT$pDescriptorWrites.byteSize();
 
     public VkPushDescriptorSetInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -130,7 +139,7 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPushDescriptorSetInfoKHR[] ret = new VkPushDescriptorSetInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPushDescriptorSetInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPushDescriptorSetInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

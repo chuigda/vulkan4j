@@ -21,6 +21,7 @@ public record VkDecompressMemoryRegionNV(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("decompressedSize"),
         ValueLayout.JAVA_INT.withName("decompressionMethod")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$srcAddress = PathElement.groupElement("srcAddress");
     public static final PathElement PATH$dstAddress = PathElement.groupElement("dstAddress");
@@ -39,6 +40,12 @@ public record VkDecompressMemoryRegionNV(MemorySegment segment) {
     public static final long OFFSET$compressedSize = LAYOUT.byteOffset(PATH$compressedSize);
     public static final long OFFSET$decompressedSize = LAYOUT.byteOffset(PATH$decompressedSize);
     public static final long OFFSET$decompressionMethod = LAYOUT.byteOffset(PATH$decompressionMethod);
+
+    public static final long SIZE$srcAddress = LAYOUT$srcAddress.byteSize();
+    public static final long SIZE$dstAddress = LAYOUT$dstAddress.byteSize();
+    public static final long SIZE$compressedSize = LAYOUT$compressedSize.byteSize();
+    public static final long SIZE$decompressedSize = LAYOUT$decompressedSize.byteSize();
+    public static final long SIZE$decompressionMethod = LAYOUT$decompressionMethod.byteSize();
 
     public VkDecompressMemoryRegionNV(MemorySegment segment) {
         this.segment = segment;
@@ -92,7 +99,7 @@ public record VkDecompressMemoryRegionNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDecompressMemoryRegionNV[] ret = new VkDecompressMemoryRegionNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDecompressMemoryRegionNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDecompressMemoryRegionNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

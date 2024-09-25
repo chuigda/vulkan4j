@@ -20,6 +20,7 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("renderPass"),
         ValueLayout.JAVA_INT.withName("subpass")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$renderPass = LAYOUT.byteOffset(PATH$renderPass);
     public static final long OFFSET$subpass = LAYOUT.byteOffset(PATH$subpass);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$renderPass = LAYOUT$renderPass.byteSize();
+    public static final long SIZE$subpass = LAYOUT$subpass.byteSize();
 
     public VkSubpassShadingPipelineCreateInfoHUAWEI(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubpassShadingPipelineCreateInfoHUAWEI[] ret = new VkSubpassShadingPipelineCreateInfoHUAWEI[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSubpassShadingPipelineCreateInfoHUAWEI(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSubpassShadingPipelineCreateInfoHUAWEI(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

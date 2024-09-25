@@ -23,6 +23,7 @@ public record VkPhysicalDeviceIDProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("deviceNodeMask"),
         ValueLayout.JAVA_INT.withName("deviceLUIDValid")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -48,6 +49,14 @@ public record VkPhysicalDeviceIDProperties(MemorySegment segment) {
     public static final long OFFSET$deviceNodeMask = LAYOUT.byteOffset(PATH$deviceNodeMask);
     public static final long OFFSET$deviceLUIDValid = LAYOUT.byteOffset(PATH$deviceLUIDValid);
 
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$deviceUUID = LAYOUT$deviceUUID.byteSize();
+    public static final long SIZE$driverUUID = LAYOUT$driverUUID.byteSize();
+    public static final long SIZE$deviceLUID = LAYOUT$deviceLUID.byteSize();
+    public static final long SIZE$deviceNodeMask = LAYOUT$deviceNodeMask.byteSize();
+    public static final long SIZE$deviceLUIDValid = LAYOUT$deviceLUIDValid.byteSize();
+
     public VkPhysicalDeviceIDProperties(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES);
@@ -70,7 +79,7 @@ public record VkPhysicalDeviceIDProperties(MemorySegment segment) {
     }
 
     public MemorySegment deviceUUIDRaw() {
-        return segment.asSlice(OFFSET$deviceUUID, LAYOUT$deviceUUID.byteSize());
+        return segment.asSlice(OFFSET$deviceUUID, SIZE$deviceUUID);
     }
 
     public @unsigned ByteBuffer deviceUUID() {
@@ -78,11 +87,11 @@ public record VkPhysicalDeviceIDProperties(MemorySegment segment) {
     }
 
     public void deviceUUID(@unsigned ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceUUID, LAYOUT$deviceUUID.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceUUID, SIZE$deviceUUID);
     }
 
     public MemorySegment driverUUIDRaw() {
-        return segment.asSlice(OFFSET$driverUUID, LAYOUT$driverUUID.byteSize());
+        return segment.asSlice(OFFSET$driverUUID, SIZE$driverUUID);
     }
 
     public @unsigned ByteBuffer driverUUID() {
@@ -90,11 +99,11 @@ public record VkPhysicalDeviceIDProperties(MemorySegment segment) {
     }
 
     public void driverUUID(@unsigned ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverUUID, LAYOUT$driverUUID.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverUUID, SIZE$driverUUID);
     }
 
     public MemorySegment deviceLUIDRaw() {
-        return segment.asSlice(OFFSET$deviceLUID, LAYOUT$deviceLUID.byteSize());
+        return segment.asSlice(OFFSET$deviceLUID, SIZE$deviceLUID);
     }
 
     public @unsigned ByteBuffer deviceLUID() {
@@ -102,7 +111,7 @@ public record VkPhysicalDeviceIDProperties(MemorySegment segment) {
     }
 
     public void deviceLUID(@unsigned ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceLUID, LAYOUT$deviceLUID.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceLUID, SIZE$deviceLUID);
     }
 
     public @unsigned int deviceNodeMask() {
@@ -129,7 +138,7 @@ public record VkPhysicalDeviceIDProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceIDProperties[] ret = new VkPhysicalDeviceIDProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceIDProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceIDProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

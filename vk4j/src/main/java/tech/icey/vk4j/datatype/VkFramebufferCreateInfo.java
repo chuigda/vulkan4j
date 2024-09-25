@@ -25,6 +25,7 @@ public record VkFramebufferCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("height"),
         ValueLayout.JAVA_INT.withName("layers")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -55,6 +56,16 @@ public record VkFramebufferCreateInfo(MemorySegment segment) {
     public static final long OFFSET$width = LAYOUT.byteOffset(PATH$width);
     public static final long OFFSET$height = LAYOUT.byteOffset(PATH$height);
     public static final long OFFSET$layers = LAYOUT.byteOffset(PATH$layers);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$renderPass = LAYOUT$renderPass.byteSize();
+    public static final long SIZE$attachmentCount = LAYOUT$attachmentCount.byteSize();
+    public static final long SIZE$pAttachments = LAYOUT$pAttachments.byteSize();
+    public static final long SIZE$width = LAYOUT$width.byteSize();
+    public static final long SIZE$height = LAYOUT$height.byteSize();
+    public static final long SIZE$layers = LAYOUT$layers.byteSize();
 
     public VkFramebufferCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -154,7 +165,7 @@ public record VkFramebufferCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkFramebufferCreateInfo[] ret = new VkFramebufferCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkFramebufferCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkFramebufferCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

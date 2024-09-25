@@ -19,6 +19,7 @@ public record VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(MemorySegment 
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("relaxedLineRasterization")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(MemorySegment 
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$relaxedLineRasterization = LAYOUT.byteOffset(PATH$relaxedLineRasterization);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$relaxedLineRasterization = LAYOUT$relaxedLineRasterization.byteSize();
 
     public VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG[] ret = new VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -23,6 +23,7 @@ public record VkPhysicalDeviceImageFormatInfo2(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("usage"),
         ValueLayout.JAVA_INT.withName("flags")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkPhysicalDeviceImageFormatInfo2(MemorySegment segment) {
     public static final long OFFSET$tiling = LAYOUT.byteOffset(PATH$tiling);
     public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$tiling = LAYOUT$tiling.byteSize();
+    public static final long SIZE$usage = LAYOUT$usage.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
 
     public VkPhysicalDeviceImageFormatInfo2(MemorySegment segment) {
         this.segment = segment;
@@ -117,7 +126,7 @@ public record VkPhysicalDeviceImageFormatInfo2(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceImageFormatInfo2[] ret = new VkPhysicalDeviceImageFormatInfo2[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceImageFormatInfo2(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceImageFormatInfo2(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

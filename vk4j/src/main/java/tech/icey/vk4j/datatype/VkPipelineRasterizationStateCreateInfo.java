@@ -29,6 +29,7 @@ public record VkPipelineRasterizationStateCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("depthBiasSlopeFactor"),
         ValueLayout.JAVA_FLOAT.withName("lineWidth")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -71,6 +72,20 @@ public record VkPipelineRasterizationStateCreateInfo(MemorySegment segment) {
     public static final long OFFSET$depthBiasClamp = LAYOUT.byteOffset(PATH$depthBiasClamp);
     public static final long OFFSET$depthBiasSlopeFactor = LAYOUT.byteOffset(PATH$depthBiasSlopeFactor);
     public static final long OFFSET$lineWidth = LAYOUT.byteOffset(PATH$lineWidth);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$depthClampEnable = LAYOUT$depthClampEnable.byteSize();
+    public static final long SIZE$rasterizerDiscardEnable = LAYOUT$rasterizerDiscardEnable.byteSize();
+    public static final long SIZE$polygonMode = LAYOUT$polygonMode.byteSize();
+    public static final long SIZE$cullMode = LAYOUT$cullMode.byteSize();
+    public static final long SIZE$frontFace = LAYOUT$frontFace.byteSize();
+    public static final long SIZE$depthBiasEnable = LAYOUT$depthBiasEnable.byteSize();
+    public static final long SIZE$depthBiasConstantFactor = LAYOUT$depthBiasConstantFactor.byteSize();
+    public static final long SIZE$depthBiasClamp = LAYOUT$depthBiasClamp.byteSize();
+    public static final long SIZE$depthBiasSlopeFactor = LAYOUT$depthBiasSlopeFactor.byteSize();
+    public static final long SIZE$lineWidth = LAYOUT$lineWidth.byteSize();
 
     public VkPipelineRasterizationStateCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -189,7 +204,7 @@ public record VkPipelineRasterizationStateCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineRasterizationStateCreateInfo[] ret = new VkPipelineRasterizationStateCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineRasterizationStateCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineRasterizationStateCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

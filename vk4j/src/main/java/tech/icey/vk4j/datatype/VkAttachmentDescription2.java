@@ -27,6 +27,7 @@ public record VkAttachmentDescription2(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("initialLayout"),
         ValueLayout.JAVA_INT.withName("finalLayout")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -63,6 +64,18 @@ public record VkAttachmentDescription2(MemorySegment segment) {
     public static final long OFFSET$stencilStoreOp = LAYOUT.byteOffset(PATH$stencilStoreOp);
     public static final long OFFSET$initialLayout = LAYOUT.byteOffset(PATH$initialLayout);
     public static final long OFFSET$finalLayout = LAYOUT.byteOffset(PATH$finalLayout);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
+    public static final long SIZE$samples = LAYOUT$samples.byteSize();
+    public static final long SIZE$loadOp = LAYOUT$loadOp.byteSize();
+    public static final long SIZE$storeOp = LAYOUT$storeOp.byteSize();
+    public static final long SIZE$stencilLoadOp = LAYOUT$stencilLoadOp.byteSize();
+    public static final long SIZE$stencilStoreOp = LAYOUT$stencilStoreOp.byteSize();
+    public static final long SIZE$initialLayout = LAYOUT$initialLayout.byteSize();
+    public static final long SIZE$finalLayout = LAYOUT$finalLayout.byteSize();
 
     public VkAttachmentDescription2(MemorySegment segment) {
         this.segment = segment;
@@ -165,7 +178,7 @@ public record VkAttachmentDescription2(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAttachmentDescription2[] ret = new VkAttachmentDescription2[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAttachmentDescription2(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAttachmentDescription2(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

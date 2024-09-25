@@ -19,6 +19,7 @@ public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(MemoryS
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("dedicatedAllocationImageAliasing")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(MemoryS
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$dedicatedAllocationImageAliasing = LAYOUT.byteOffset(PATH$dedicatedAllocationImageAliasing);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$dedicatedAllocationImageAliasing = LAYOUT$dedicatedAllocationImageAliasing.byteSize();
 
     public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(MemoryS
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV[] ret = new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

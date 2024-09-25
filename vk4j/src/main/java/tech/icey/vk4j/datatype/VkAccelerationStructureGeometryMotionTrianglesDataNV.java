@@ -19,6 +19,7 @@ public record VkAccelerationStructureGeometryMotionTrianglesDataNV(MemorySegment
         ValueLayout.ADDRESS.withName("pNext"),
         VkDeviceOrHostAddressConstKHR.LAYOUT.withName("vertexData")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkAccelerationStructureGeometryMotionTrianglesDataNV(MemorySegment
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$vertexData = LAYOUT.byteOffset(PATH$vertexData);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$vertexData = LAYOUT$vertexData.byteSize();
 
     public VkAccelerationStructureGeometryMotionTrianglesDataNV(MemorySegment segment) {
         this.segment = segment;
@@ -58,7 +63,7 @@ public record VkAccelerationStructureGeometryMotionTrianglesDataNV(MemorySegment
     }
 
     public void vertexData(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexData, LAYOUT$vertexData.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexData, SIZE$vertexData);
     }
 
     public static VkAccelerationStructureGeometryMotionTrianglesDataNV allocate(Arena arena) {
@@ -69,7 +74,7 @@ public record VkAccelerationStructureGeometryMotionTrianglesDataNV(MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureGeometryMotionTrianglesDataNV[] ret = new VkAccelerationStructureGeometryMotionTrianglesDataNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureGeometryMotionTrianglesDataNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureGeometryMotionTrianglesDataNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

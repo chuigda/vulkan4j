@@ -22,6 +22,7 @@ public record VkHostImageLayoutTransitionInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("newLayout"),
         VkImageSubresourceRange.LAYOUT.withName("subresourceRange")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkHostImageLayoutTransitionInfoEXT(MemorySegment segment) {
     public static final long OFFSET$oldLayout = LAYOUT.byteOffset(PATH$oldLayout);
     public static final long OFFSET$newLayout = LAYOUT.byteOffset(PATH$newLayout);
     public static final long OFFSET$subresourceRange = LAYOUT.byteOffset(PATH$subresourceRange);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$image = LAYOUT$image.byteSize();
+    public static final long SIZE$oldLayout = LAYOUT$oldLayout.byteSize();
+    public static final long SIZE$newLayout = LAYOUT$newLayout.byteSize();
+    public static final long SIZE$subresourceRange = LAYOUT$subresourceRange.byteSize();
 
     public VkHostImageLayoutTransitionInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +102,7 @@ public record VkHostImageLayoutTransitionInfoEXT(MemorySegment segment) {
     }
 
     public void subresourceRange(VkImageSubresourceRange value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, LAYOUT$subresourceRange.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, SIZE$subresourceRange);
     }
 
     public static VkHostImageLayoutTransitionInfoEXT allocate(Arena arena) {
@@ -105,7 +113,7 @@ public record VkHostImageLayoutTransitionInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkHostImageLayoutTransitionInfoEXT[] ret = new VkHostImageLayoutTransitionInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkHostImageLayoutTransitionInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkHostImageLayoutTransitionInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

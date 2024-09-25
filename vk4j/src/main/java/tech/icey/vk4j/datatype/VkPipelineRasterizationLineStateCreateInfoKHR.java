@@ -22,6 +22,7 @@ public record VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segmen
         ValueLayout.JAVA_INT.withName("lineStippleFactor"),
         ValueLayout.JAVA_SHORT.withName("lineStipplePattern")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segmen
     public static final long OFFSET$stippledLineEnable = LAYOUT.byteOffset(PATH$stippledLineEnable);
     public static final long OFFSET$lineStippleFactor = LAYOUT.byteOffset(PATH$lineStippleFactor);
     public static final long OFFSET$lineStipplePattern = LAYOUT.byteOffset(PATH$lineStipplePattern);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$lineRasterizationMode = LAYOUT$lineRasterizationMode.byteSize();
+    public static final long SIZE$stippledLineEnable = LAYOUT$stippledLineEnable.byteSize();
+    public static final long SIZE$lineStippleFactor = LAYOUT$lineStippleFactor.byteSize();
+    public static final long SIZE$lineStipplePattern = LAYOUT$lineStipplePattern.byteSize();
 
     public VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineRasterizationLineStateCreateInfoKHR[] ret = new VkPipelineRasterizationLineStateCreateInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineRasterizationLineStateCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineRasterizationLineStateCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

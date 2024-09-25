@@ -21,6 +21,7 @@ public record VkCopyMemoryToMicromapInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("dst"),
         ValueLayout.JAVA_INT.withName("mode")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkCopyMemoryToMicromapInfoEXT(MemorySegment segment) {
     public static final long OFFSET$src = LAYOUT.byteOffset(PATH$src);
     public static final long OFFSET$dst = LAYOUT.byteOffset(PATH$dst);
     public static final long OFFSET$mode = LAYOUT.byteOffset(PATH$mode);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$src = LAYOUT$src.byteSize();
+    public static final long SIZE$dst = LAYOUT$dst.byteSize();
+    public static final long SIZE$mode = LAYOUT$mode.byteSize();
 
     public VkCopyMemoryToMicromapInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -66,7 +73,7 @@ public record VkCopyMemoryToMicromapInfoEXT(MemorySegment segment) {
     }
 
     public void src(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$src, LAYOUT$src.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$src, SIZE$src);
     }
 
     public VkMicromapEXT dst() {
@@ -93,7 +100,7 @@ public record VkCopyMemoryToMicromapInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCopyMemoryToMicromapInfoEXT[] ret = new VkCopyMemoryToMicromapInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkCopyMemoryToMicromapInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkCopyMemoryToMicromapInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

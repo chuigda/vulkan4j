@@ -1,12 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.unsigned;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkClearRect(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -14,6 +19,7 @@ public record VkClearRect(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("baseArrayLayer"),
         ValueLayout.JAVA_INT.withName("layerCount")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$rect = PathElement.groupElement("rect");
     public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("baseArrayLayer");
@@ -27,6 +33,10 @@ public record VkClearRect(MemorySegment segment) {
     public static final long OFFSET$baseArrayLayer = LAYOUT.byteOffset(PATH$baseArrayLayer);
     public static final long OFFSET$layerCount = LAYOUT.byteOffset(PATH$layerCount);
 
+    public static final long SIZE$rect = LAYOUT$rect.byteSize();
+    public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
+    public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
+
     public VkClearRect(MemorySegment segment) {
         this.segment = segment;
     }
@@ -36,7 +46,7 @@ public record VkClearRect(MemorySegment segment) {
     }
 
     public void rect(VkRect2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$rect, LAYOUT$rect.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$rect, SIZE$rect);
     }
 
     public @unsigned int baseArrayLayer() {
@@ -58,12 +68,12 @@ public record VkClearRect(MemorySegment segment) {
     public static VkClearRect allocate(Arena arena) {
         return new VkClearRect(arena.allocate(LAYOUT));
     }
-
+    
     public static VkClearRect[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkClearRect[] ret = new VkClearRect[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkClearRect(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkClearRect(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

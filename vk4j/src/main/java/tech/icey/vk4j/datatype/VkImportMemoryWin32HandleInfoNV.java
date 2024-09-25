@@ -20,6 +20,7 @@ public record VkImportMemoryWin32HandleInfoNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("handleType"),
         ValueLayout.ADDRESS.withName("handle")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkImportMemoryWin32HandleInfoNV(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
     public static final long OFFSET$handle = LAYOUT.byteOffset(PATH$handle);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
+    public static final long SIZE$handle = LAYOUT$handle.byteSize();
 
     public VkImportMemoryWin32HandleInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkImportMemoryWin32HandleInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImportMemoryWin32HandleInfoNV[] ret = new VkImportMemoryWin32HandleInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImportMemoryWin32HandleInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImportMemoryWin32HandleInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

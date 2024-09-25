@@ -22,6 +22,7 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(MemorySegment segmen
         VkExtent2D.LAYOUT.withName("maxBlockMatchRegion"),
         VkExtent2D.LAYOUT.withName("maxBoxFilterBlockSize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(MemorySegment segmen
     public static final long OFFSET$maxWeightFilterDimension = LAYOUT.byteOffset(PATH$maxWeightFilterDimension);
     public static final long OFFSET$maxBlockMatchRegion = LAYOUT.byteOffset(PATH$maxBlockMatchRegion);
     public static final long OFFSET$maxBoxFilterBlockSize = LAYOUT.byteOffset(PATH$maxBoxFilterBlockSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxWeightFilterPhases = LAYOUT$maxWeightFilterPhases.byteSize();
+    public static final long SIZE$maxWeightFilterDimension = LAYOUT$maxWeightFilterDimension.byteSize();
+    public static final long SIZE$maxBlockMatchRegion = LAYOUT$maxBlockMatchRegion.byteSize();
+    public static final long SIZE$maxBoxFilterBlockSize = LAYOUT$maxBoxFilterBlockSize.byteSize();
 
     public VkPhysicalDeviceImageProcessingPropertiesQCOM(MemorySegment segment) {
         this.segment = segment;
@@ -78,7 +86,7 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(MemorySegment segmen
     }
 
     public void maxWeightFilterDimension(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxWeightFilterDimension, LAYOUT$maxWeightFilterDimension.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxWeightFilterDimension, SIZE$maxWeightFilterDimension);
     }
 
     public VkExtent2D maxBlockMatchRegion() {
@@ -86,7 +94,7 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(MemorySegment segmen
     }
 
     public void maxBlockMatchRegion(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxBlockMatchRegion, LAYOUT$maxBlockMatchRegion.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxBlockMatchRegion, SIZE$maxBlockMatchRegion);
     }
 
     public VkExtent2D maxBoxFilterBlockSize() {
@@ -94,7 +102,7 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(MemorySegment segmen
     }
 
     public void maxBoxFilterBlockSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxBoxFilterBlockSize, LAYOUT$maxBoxFilterBlockSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxBoxFilterBlockSize, SIZE$maxBoxFilterBlockSize);
     }
 
     public static VkPhysicalDeviceImageProcessingPropertiesQCOM allocate(Arena arena) {
@@ -105,7 +113,7 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceImageProcessingPropertiesQCOM[] ret = new VkPhysicalDeviceImageProcessingPropertiesQCOM[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceImageProcessingPropertiesQCOM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceImageProcessingPropertiesQCOM(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

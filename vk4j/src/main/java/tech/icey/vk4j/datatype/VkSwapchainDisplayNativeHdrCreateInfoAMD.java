@@ -19,6 +19,7 @@ public record VkSwapchainDisplayNativeHdrCreateInfoAMD(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("localDimmingEnable")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkSwapchainDisplayNativeHdrCreateInfoAMD(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$localDimmingEnable = LAYOUT.byteOffset(PATH$localDimmingEnable);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$localDimmingEnable = LAYOUT$localDimmingEnable.byteSize();
 
     public VkSwapchainDisplayNativeHdrCreateInfoAMD(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkSwapchainDisplayNativeHdrCreateInfoAMD(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSwapchainDisplayNativeHdrCreateInfoAMD[] ret = new VkSwapchainDisplayNativeHdrCreateInfoAMD[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSwapchainDisplayNativeHdrCreateInfoAMD(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSwapchainDisplayNativeHdrCreateInfoAMD(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -20,6 +20,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(MemorySegment segment)
         ValueLayout.JAVA_INT.withName("layeredApiCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceLayeredApiPropertiesKHR.LAYOUT).withName("pLayeredApis")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(MemorySegment segment)
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$layeredApiCount = LAYOUT.byteOffset(PATH$layeredApiCount);
     public static final long OFFSET$pLayeredApis = LAYOUT.byteOffset(PATH$pLayeredApis);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$layeredApiCount = LAYOUT$layeredApiCount.byteSize();
+    public static final long SIZE$pLayeredApis = LAYOUT$pLayeredApis.byteSize();
 
     public VkPhysicalDeviceLayeredApiPropertiesListKHR(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +100,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceLayeredApiPropertiesListKHR[] ret = new VkPhysicalDeviceLayeredApiPropertiesListKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceLayeredApiPropertiesListKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceLayeredApiPropertiesListKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -20,6 +20,7 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(MemorySegment s
         ValueLayout.JAVA_INT.withName("identifierSize"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pIdentifier")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(MemorySegment s
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$identifierSize = LAYOUT.byteOffset(PATH$identifierSize);
     public static final long OFFSET$pIdentifier = LAYOUT.byteOffset(PATH$pIdentifier);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$identifierSize = LAYOUT$identifierSize.byteSize();
+    public static final long SIZE$pIdentifier = LAYOUT$pIdentifier.byteSize();
 
     public VkPipelineShaderStageModuleIdentifierCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -89,7 +95,7 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineShaderStageModuleIdentifierCreateInfoEXT[] ret = new VkPipelineShaderStageModuleIdentifierCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineShaderStageModuleIdentifierCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineShaderStageModuleIdentifierCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

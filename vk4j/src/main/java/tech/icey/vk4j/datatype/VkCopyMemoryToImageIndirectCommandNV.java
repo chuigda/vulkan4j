@@ -22,6 +22,7 @@ public record VkCopyMemoryToImageIndirectCommandNV(MemorySegment segment) {
         VkOffset3D.LAYOUT.withName("imageOffset"),
         VkExtent3D.LAYOUT.withName("imageExtent")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$srcAddress = PathElement.groupElement("srcAddress");
     public static final PathElement PATH$bufferRowLength = PathElement.groupElement("bufferRowLength");
@@ -43,6 +44,13 @@ public record VkCopyMemoryToImageIndirectCommandNV(MemorySegment segment) {
     public static final long OFFSET$imageSubresource = LAYOUT.byteOffset(PATH$imageSubresource);
     public static final long OFFSET$imageOffset = LAYOUT.byteOffset(PATH$imageOffset);
     public static final long OFFSET$imageExtent = LAYOUT.byteOffset(PATH$imageExtent);
+
+    public static final long SIZE$srcAddress = LAYOUT$srcAddress.byteSize();
+    public static final long SIZE$bufferRowLength = LAYOUT$bufferRowLength.byteSize();
+    public static final long SIZE$bufferImageHeight = LAYOUT$bufferImageHeight.byteSize();
+    public static final long SIZE$imageSubresource = LAYOUT$imageSubresource.byteSize();
+    public static final long SIZE$imageOffset = LAYOUT$imageOffset.byteSize();
+    public static final long SIZE$imageExtent = LAYOUT$imageExtent.byteSize();
 
     public VkCopyMemoryToImageIndirectCommandNV(MemorySegment segment) {
         this.segment = segment;
@@ -77,7 +85,7 @@ public record VkCopyMemoryToImageIndirectCommandNV(MemorySegment segment) {
     }
 
     public void imageSubresource(VkImageSubresourceLayers value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageSubresource, LAYOUT$imageSubresource.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageSubresource, SIZE$imageSubresource);
     }
 
     public VkOffset3D imageOffset() {
@@ -85,7 +93,7 @@ public record VkCopyMemoryToImageIndirectCommandNV(MemorySegment segment) {
     }
 
     public void imageOffset(VkOffset3D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageOffset, LAYOUT$imageOffset.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageOffset, SIZE$imageOffset);
     }
 
     public VkExtent3D imageExtent() {
@@ -93,7 +101,7 @@ public record VkCopyMemoryToImageIndirectCommandNV(MemorySegment segment) {
     }
 
     public void imageExtent(VkExtent3D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, LAYOUT$imageExtent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
     }
 
     public static VkCopyMemoryToImageIndirectCommandNV allocate(Arena arena) {
@@ -104,7 +112,7 @@ public record VkCopyMemoryToImageIndirectCommandNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCopyMemoryToImageIndirectCommandNV[] ret = new VkCopyMemoryToImageIndirectCommandNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkCopyMemoryToImageIndirectCommandNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkCopyMemoryToImageIndirectCommandNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

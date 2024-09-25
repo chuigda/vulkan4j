@@ -21,6 +21,7 @@ public record VkDebugUtilsObjectNameInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("objectHandle"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pObjectName")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkDebugUtilsObjectNameInfoEXT(MemorySegment segment) {
     public static final long OFFSET$objectType = LAYOUT.byteOffset(PATH$objectType);
     public static final long OFFSET$objectHandle = LAYOUT.byteOffset(PATH$objectHandle);
     public static final long OFFSET$pObjectName = LAYOUT.byteOffset(PATH$pObjectName);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
+    public static final long SIZE$objectHandle = LAYOUT$objectHandle.byteSize();
+    public static final long SIZE$pObjectName = LAYOUT$pObjectName.byteSize();
 
     public VkDebugUtilsObjectNameInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -101,7 +108,7 @@ public record VkDebugUtilsObjectNameInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDebugUtilsObjectNameInfoEXT[] ret = new VkDebugUtilsObjectNameInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDebugUtilsObjectNameInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDebugUtilsObjectNameInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

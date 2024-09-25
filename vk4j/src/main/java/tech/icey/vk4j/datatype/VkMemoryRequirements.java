@@ -19,6 +19,7 @@ public record VkMemoryRequirements(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("alignment"),
         ValueLayout.JAVA_INT.withName("memoryTypeBits")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$size = PathElement.groupElement("size");
     public static final PathElement PATH$alignment = PathElement.groupElement("alignment");
@@ -31,6 +32,10 @@ public record VkMemoryRequirements(MemorySegment segment) {
     public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
     public static final long OFFSET$alignment = LAYOUT.byteOffset(PATH$alignment);
     public static final long OFFSET$memoryTypeBits = LAYOUT.byteOffset(PATH$memoryTypeBits);
+
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$alignment = LAYOUT$alignment.byteSize();
+    public static final long SIZE$memoryTypeBits = LAYOUT$memoryTypeBits.byteSize();
 
     public VkMemoryRequirements(MemorySegment segment) {
         this.segment = segment;
@@ -68,7 +73,7 @@ public record VkMemoryRequirements(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMemoryRequirements[] ret = new VkMemoryRequirements[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkMemoryRequirements(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkMemoryRequirements(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -1,15 +1,17 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.unsigned;
-
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfLong;
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSubresourceLayout(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -19,6 +21,7 @@ public record VkSubresourceLayout(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("arrayPitch"),
         ValueLayout.JAVA_LONG.withName("depthPitch")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$offset = PathElement.groupElement("offset");
     public static final PathElement PATH$size = PathElement.groupElement("size");
@@ -37,6 +40,12 @@ public record VkSubresourceLayout(MemorySegment segment) {
     public static final long OFFSET$rowPitch = LAYOUT.byteOffset(PATH$rowPitch);
     public static final long OFFSET$arrayPitch = LAYOUT.byteOffset(PATH$arrayPitch);
     public static final long OFFSET$depthPitch = LAYOUT.byteOffset(PATH$depthPitch);
+
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$rowPitch = LAYOUT$rowPitch.byteSize();
+    public static final long SIZE$arrayPitch = LAYOUT$arrayPitch.byteSize();
+    public static final long SIZE$depthPitch = LAYOUT$depthPitch.byteSize();
 
     public VkSubresourceLayout(MemorySegment segment) {
         this.segment = segment;
@@ -85,12 +94,12 @@ public record VkSubresourceLayout(MemorySegment segment) {
     public static VkSubresourceLayout allocate(Arena arena) {
         return new VkSubresourceLayout(arena.allocate(LAYOUT));
     }
-
+    
     public static VkSubresourceLayout[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubresourceLayout[] ret = new VkSubresourceLayout[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSubresourceLayout(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSubresourceLayout(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

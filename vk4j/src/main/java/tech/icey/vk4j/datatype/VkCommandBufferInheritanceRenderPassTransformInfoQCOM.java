@@ -20,6 +20,7 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(MemorySegmen
         ValueLayout.JAVA_INT.withName("transform"),
         VkRect2D.LAYOUT.withName("renderArea")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(MemorySegmen
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$transform = LAYOUT.byteOffset(PATH$transform);
     public static final long OFFSET$renderArea = LAYOUT.byteOffset(PATH$renderArea);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$transform = LAYOUT$transform.byteSize();
+    public static final long SIZE$renderArea = LAYOUT$renderArea.byteSize();
 
     public VkCommandBufferInheritanceRenderPassTransformInfoQCOM(MemorySegment segment) {
         this.segment = segment;
@@ -70,7 +76,7 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(MemorySegmen
     }
 
     public void renderArea(VkRect2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderArea, LAYOUT$renderArea.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderArea, SIZE$renderArea);
     }
 
     public static VkCommandBufferInheritanceRenderPassTransformInfoQCOM allocate(Arena arena) {
@@ -81,7 +87,7 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCommandBufferInheritanceRenderPassTransformInfoQCOM[] ret = new VkCommandBufferInheritanceRenderPassTransformInfoQCOM[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

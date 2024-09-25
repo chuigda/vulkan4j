@@ -20,6 +20,7 @@ public record VkLayerSettingsCreateInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("settingCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkLayerSettingEXT.LAYOUT).withName("pSettings")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkLayerSettingsCreateInfoEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$settingCount = LAYOUT.byteOffset(PATH$settingCount);
     public static final long OFFSET$pSettings = LAYOUT.byteOffset(PATH$pSettings);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$settingCount = LAYOUT$settingCount.byteSize();
+    public static final long SIZE$pSettings = LAYOUT$pSettings.byteSize();
 
     public VkLayerSettingsCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +100,7 @@ public record VkLayerSettingsCreateInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkLayerSettingsCreateInfoEXT[] ret = new VkLayerSettingsCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkLayerSettingsCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkLayerSettingsCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

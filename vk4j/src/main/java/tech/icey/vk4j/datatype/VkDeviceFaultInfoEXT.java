@@ -1,18 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.buffer.ByteBuffer;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.Constants.VK_MAX_DESCRIPTION_SIZE;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_EXT;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkDeviceFaultInfoEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -23,6 +22,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkDeviceFaultVendorInfoEXT.LAYOUT).withName("pVendorInfos"),
         ValueLayout.ADDRESS.withName("pVendorBinaryData")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -44,6 +44,13 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
     public static final long OFFSET$pAddressInfos = LAYOUT.byteOffset(PATH$pAddressInfos);
     public static final long OFFSET$pVendorInfos = LAYOUT.byteOffset(PATH$pVendorInfos);
     public static final long OFFSET$pVendorBinaryData = LAYOUT.byteOffset(PATH$pVendorBinaryData);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$description = LAYOUT$description.byteSize();
+    public static final long SIZE$pAddressInfos = LAYOUT$pAddressInfos.byteSize();
+    public static final long SIZE$pVendorInfos = LAYOUT$pVendorInfos.byteSize();
+    public static final long SIZE$pVendorBinaryData = LAYOUT$pVendorBinaryData.byteSize();
 
     public VkDeviceFaultInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -67,7 +74,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
     }
 
     public MemorySegment descriptionRaw() {
-        return segment.asSlice(OFFSET$description, LAYOUT$description.byteSize());
+        return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
     public ByteBuffer description() {
@@ -75,7 +82,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
     }
 
     public void description(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, LAYOUT$description.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
     }
 
     public @pointer(comment="VkDeviceFaultAddressInfoEXT*") MemorySegment pAddressInfosRaw() {
@@ -85,7 +92,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
     public void pAddressInfosRaw(@pointer(comment="VkDeviceFaultAddressInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pAddressInfos, OFFSET$pAddressInfos, value);
     }
-
+    
     public @nullable VkDeviceFaultAddressInfoEXT pAddressInfos() {
         MemorySegment s = pAddressInfosRaw();
         if (s.address() == 0) {
@@ -106,7 +113,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
     public void pVendorInfosRaw(@pointer(comment="VkDeviceFaultVendorInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pVendorInfos, OFFSET$pVendorInfos, value);
     }
-
+    
     public @nullable VkDeviceFaultVendorInfoEXT pVendorInfos() {
         MemorySegment s = pVendorInfosRaw();
         if (s.address() == 0) {
@@ -131,12 +138,12 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
     public static VkDeviceFaultInfoEXT allocate(Arena arena) {
         return new VkDeviceFaultInfoEXT(arena.allocate(LAYOUT));
     }
-
+    
     public static VkDeviceFaultInfoEXT[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceFaultInfoEXT[] ret = new VkDeviceFaultInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceFaultInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDeviceFaultInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

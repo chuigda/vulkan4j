@@ -19,6 +19,7 @@ public record VkMultiDrawIndexedInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("indexCount"),
         ValueLayout.JAVA_INT.withName("vertexOffset")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$firstIndex = PathElement.groupElement("firstIndex");
     public static final PathElement PATH$indexCount = PathElement.groupElement("indexCount");
@@ -31,6 +32,10 @@ public record VkMultiDrawIndexedInfoEXT(MemorySegment segment) {
     public static final long OFFSET$firstIndex = LAYOUT.byteOffset(PATH$firstIndex);
     public static final long OFFSET$indexCount = LAYOUT.byteOffset(PATH$indexCount);
     public static final long OFFSET$vertexOffset = LAYOUT.byteOffset(PATH$vertexOffset);
+
+    public static final long SIZE$firstIndex = LAYOUT$firstIndex.byteSize();
+    public static final long SIZE$indexCount = LAYOUT$indexCount.byteSize();
+    public static final long SIZE$vertexOffset = LAYOUT$vertexOffset.byteSize();
 
     public VkMultiDrawIndexedInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -68,7 +73,7 @@ public record VkMultiDrawIndexedInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMultiDrawIndexedInfoEXT[] ret = new VkMultiDrawIndexedInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkMultiDrawIndexedInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkMultiDrawIndexedInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

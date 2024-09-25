@@ -19,6 +19,7 @@ public record VkMicromapTriangleEXT(MemorySegment segment) {
         ValueLayout.JAVA_SHORT.withName("subdivisionLevel"),
         ValueLayout.JAVA_SHORT.withName("format")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$dataOffset = PathElement.groupElement("dataOffset");
     public static final PathElement PATH$subdivisionLevel = PathElement.groupElement("subdivisionLevel");
@@ -31,6 +32,10 @@ public record VkMicromapTriangleEXT(MemorySegment segment) {
     public static final long OFFSET$dataOffset = LAYOUT.byteOffset(PATH$dataOffset);
     public static final long OFFSET$subdivisionLevel = LAYOUT.byteOffset(PATH$subdivisionLevel);
     public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
+
+    public static final long SIZE$dataOffset = LAYOUT$dataOffset.byteSize();
+    public static final long SIZE$subdivisionLevel = LAYOUT$subdivisionLevel.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
 
     public VkMicromapTriangleEXT(MemorySegment segment) {
         this.segment = segment;
@@ -68,7 +73,7 @@ public record VkMicromapTriangleEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMicromapTriangleEXT[] ret = new VkMicromapTriangleEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkMicromapTriangleEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkMicromapTriangleEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

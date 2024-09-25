@@ -19,6 +19,7 @@ public record VkDrmFormatModifierPropertiesEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("drmFormatModifierPlaneCount"),
         ValueLayout.JAVA_INT.withName("drmFormatModifierTilingFeatures")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$drmFormatModifier = PathElement.groupElement("drmFormatModifier");
     public static final PathElement PATH$drmFormatModifierPlaneCount = PathElement.groupElement("drmFormatModifierPlaneCount");
@@ -31,6 +32,10 @@ public record VkDrmFormatModifierPropertiesEXT(MemorySegment segment) {
     public static final long OFFSET$drmFormatModifier = LAYOUT.byteOffset(PATH$drmFormatModifier);
     public static final long OFFSET$drmFormatModifierPlaneCount = LAYOUT.byteOffset(PATH$drmFormatModifierPlaneCount);
     public static final long OFFSET$drmFormatModifierTilingFeatures = LAYOUT.byteOffset(PATH$drmFormatModifierTilingFeatures);
+
+    public static final long SIZE$drmFormatModifier = LAYOUT$drmFormatModifier.byteSize();
+    public static final long SIZE$drmFormatModifierPlaneCount = LAYOUT$drmFormatModifierPlaneCount.byteSize();
+    public static final long SIZE$drmFormatModifierTilingFeatures = LAYOUT$drmFormatModifierTilingFeatures.byteSize();
 
     public VkDrmFormatModifierPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -68,7 +73,7 @@ public record VkDrmFormatModifierPropertiesEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDrmFormatModifierPropertiesEXT[] ret = new VkDrmFormatModifierPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDrmFormatModifierPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDrmFormatModifierPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

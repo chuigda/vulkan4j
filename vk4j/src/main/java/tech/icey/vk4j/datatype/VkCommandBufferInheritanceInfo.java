@@ -24,6 +24,7 @@ public record VkCommandBufferInheritanceInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("queryFlags"),
         ValueLayout.JAVA_INT.withName("pipelineStatistics")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -51,6 +52,15 @@ public record VkCommandBufferInheritanceInfo(MemorySegment segment) {
     public static final long OFFSET$occlusionQueryEnable = LAYOUT.byteOffset(PATH$occlusionQueryEnable);
     public static final long OFFSET$queryFlags = LAYOUT.byteOffset(PATH$queryFlags);
     public static final long OFFSET$pipelineStatistics = LAYOUT.byteOffset(PATH$pipelineStatistics);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$renderPass = LAYOUT$renderPass.byteSize();
+    public static final long SIZE$subpass = LAYOUT$subpass.byteSize();
+    public static final long SIZE$framebuffer = LAYOUT$framebuffer.byteSize();
+    public static final long SIZE$occlusionQueryEnable = LAYOUT$occlusionQueryEnable.byteSize();
+    public static final long SIZE$queryFlags = LAYOUT$queryFlags.byteSize();
+    public static final long SIZE$pipelineStatistics = LAYOUT$pipelineStatistics.byteSize();
 
     public VkCommandBufferInheritanceInfo(MemorySegment segment) {
         this.segment = segment;
@@ -129,7 +139,7 @@ public record VkCommandBufferInheritanceInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCommandBufferInheritanceInfo[] ret = new VkCommandBufferInheritanceInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkCommandBufferInheritanceInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkCommandBufferInheritanceInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

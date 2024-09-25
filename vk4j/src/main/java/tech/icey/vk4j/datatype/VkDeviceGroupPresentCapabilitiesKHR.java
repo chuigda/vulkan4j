@@ -20,6 +20,7 @@ public record VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) {
         MemoryLayout.sequenceLayout(VK_MAX_DEVICE_GROUP_SIZE, ValueLayout.JAVA_INT).withName("presentMask"),
         ValueLayout.JAVA_INT.withName("modes")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$presentMask = LAYOUT.byteOffset(PATH$presentMask);
     public static final long OFFSET$modes = LAYOUT.byteOffset(PATH$modes);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$presentMask = LAYOUT$presentMask.byteSize();
+    public static final long SIZE$modes = LAYOUT$modes.byteSize();
 
     public VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -58,7 +64,7 @@ public record VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) {
     }
 
     public MemorySegment presentMaskRaw() {
-        return segment.asSlice(OFFSET$presentMask, LAYOUT$presentMask.byteSize());
+        return segment.asSlice(OFFSET$presentMask, SIZE$presentMask);
     }
 
     public @unsigned IntBuffer presentMask() {
@@ -66,7 +72,7 @@ public record VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) {
     }
 
     public void presentMask(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$presentMask, LAYOUT$presentMask.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$presentMask, SIZE$presentMask);
     }
 
     public @enumtype(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
@@ -85,7 +91,7 @@ public record VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceGroupPresentCapabilitiesKHR[] ret = new VkDeviceGroupPresentCapabilitiesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceGroupPresentCapabilitiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDeviceGroupPresentCapabilitiesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

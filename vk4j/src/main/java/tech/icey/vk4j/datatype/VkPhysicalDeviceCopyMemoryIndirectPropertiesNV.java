@@ -19,6 +19,7 @@ public record VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(MemorySegment segme
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("supportedQueues")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(MemorySegment segme
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$supportedQueues = LAYOUT.byteOffset(PATH$supportedQueues);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$supportedQueues = LAYOUT$supportedQueues.byteSize();
 
     public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceCopyMemoryIndirectPropertiesNV[] ret = new VkPhysicalDeviceCopyMemoryIndirectPropertiesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

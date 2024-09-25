@@ -20,6 +20,7 @@ public record VkSciSyncAttributesInfoNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("clientType"),
         ValueLayout.JAVA_INT.withName("primitiveType")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkSciSyncAttributesInfoNV(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$clientType = LAYOUT.byteOffset(PATH$clientType);
     public static final long OFFSET$primitiveType = LAYOUT.byteOffset(PATH$primitiveType);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$clientType = LAYOUT$clientType.byteSize();
+    public static final long SIZE$primitiveType = LAYOUT$primitiveType.byteSize();
 
     public VkSciSyncAttributesInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkSciSyncAttributesInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSciSyncAttributesInfoNV[] ret = new VkSciSyncAttributesInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSciSyncAttributesInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSciSyncAttributesInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

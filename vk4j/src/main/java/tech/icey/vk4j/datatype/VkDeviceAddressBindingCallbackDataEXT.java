@@ -22,6 +22,7 @@ public record VkDeviceAddressBindingCallbackDataEXT(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("size"),
         ValueLayout.JAVA_INT.withName("bindingType")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkDeviceAddressBindingCallbackDataEXT(MemorySegment segment) {
     public static final long OFFSET$baseAddress = LAYOUT.byteOffset(PATH$baseAddress);
     public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
     public static final long OFFSET$bindingType = LAYOUT.byteOffset(PATH$bindingType);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$baseAddress = LAYOUT$baseAddress.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$bindingType = LAYOUT$bindingType.byteSize();
 
     public VkDeviceAddressBindingCallbackDataEXT(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkDeviceAddressBindingCallbackDataEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceAddressBindingCallbackDataEXT[] ret = new VkDeviceAddressBindingCallbackDataEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceAddressBindingCallbackDataEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDeviceAddressBindingCallbackDataEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

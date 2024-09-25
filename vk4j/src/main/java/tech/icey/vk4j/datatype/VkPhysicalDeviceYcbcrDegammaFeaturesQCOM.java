@@ -19,6 +19,7 @@ public record VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("ycbcrDegamma")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$ycbcrDegamma = LAYOUT.byteOffset(PATH$ycbcrDegamma);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$ycbcrDegamma = LAYOUT$ycbcrDegamma.byteSize();
 
     public VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceYcbcrDegammaFeaturesQCOM[] ret = new VkPhysicalDeviceYcbcrDegammaFeaturesQCOM[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

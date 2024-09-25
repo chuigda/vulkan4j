@@ -22,6 +22,7 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(MemorySegment segmen
         ValueLayout.JAVA_INT.withName("maxComputeWorkgroupSubgroups"),
         ValueLayout.JAVA_INT.withName("requiredSubgroupSizeStages")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(MemorySegment segmen
     public static final long OFFSET$maxSubgroupSize = LAYOUT.byteOffset(PATH$maxSubgroupSize);
     public static final long OFFSET$maxComputeWorkgroupSubgroups = LAYOUT.byteOffset(PATH$maxComputeWorkgroupSubgroups);
     public static final long OFFSET$requiredSubgroupSizeStages = LAYOUT.byteOffset(PATH$requiredSubgroupSizeStages);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$minSubgroupSize = LAYOUT$minSubgroupSize.byteSize();
+    public static final long SIZE$maxSubgroupSize = LAYOUT$maxSubgroupSize.byteSize();
+    public static final long SIZE$maxComputeWorkgroupSubgroups = LAYOUT$maxComputeWorkgroupSubgroups.byteSize();
+    public static final long SIZE$requiredSubgroupSizeStages = LAYOUT$requiredSubgroupSizeStages.byteSize();
 
     public VkPhysicalDeviceSubgroupSizeControlProperties(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceSubgroupSizeControlProperties[] ret = new VkPhysicalDeviceSubgroupSizeControlProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceSubgroupSizeControlProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceSubgroupSizeControlProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

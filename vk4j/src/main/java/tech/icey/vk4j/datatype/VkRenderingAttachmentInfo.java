@@ -26,6 +26,7 @@ public record VkRenderingAttachmentInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("storeOp"),
         VkClearValue.LAYOUT.withName("clearValue")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -59,6 +60,17 @@ public record VkRenderingAttachmentInfo(MemorySegment segment) {
     public static final long OFFSET$loadOp = LAYOUT.byteOffset(PATH$loadOp);
     public static final long OFFSET$storeOp = LAYOUT.byteOffset(PATH$storeOp);
     public static final long OFFSET$clearValue = LAYOUT.byteOffset(PATH$clearValue);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$imageView = LAYOUT$imageView.byteSize();
+    public static final long SIZE$imageLayout = LAYOUT$imageLayout.byteSize();
+    public static final long SIZE$resolveMode = LAYOUT$resolveMode.byteSize();
+    public static final long SIZE$resolveImageView = LAYOUT$resolveImageView.byteSize();
+    public static final long SIZE$resolveImageLayout = LAYOUT$resolveImageLayout.byteSize();
+    public static final long SIZE$loadOp = LAYOUT$loadOp.byteSize();
+    public static final long SIZE$storeOp = LAYOUT$storeOp.byteSize();
+    public static final long SIZE$clearValue = LAYOUT$clearValue.byteSize();
 
     public VkRenderingAttachmentInfo(MemorySegment segment) {
         this.segment = segment;
@@ -142,7 +154,7 @@ public record VkRenderingAttachmentInfo(MemorySegment segment) {
     }
 
     public void clearValue(VkClearValue value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$clearValue, LAYOUT$clearValue.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$clearValue, SIZE$clearValue);
     }
 
     public static VkRenderingAttachmentInfo allocate(Arena arena) {
@@ -153,7 +165,7 @@ public record VkRenderingAttachmentInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderingAttachmentInfo[] ret = new VkRenderingAttachmentInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderingAttachmentInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRenderingAttachmentInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

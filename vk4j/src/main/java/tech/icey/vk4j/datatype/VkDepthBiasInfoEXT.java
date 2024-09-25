@@ -1,14 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
 import java.lang.foreign.*;
-
 import static java.lang.foreign.ValueLayout.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_DEPTH_BIAS_INFO_EXT;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkDepthBiasInfoEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -18,6 +21,7 @@ public record VkDepthBiasInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("depthBiasClamp"),
         ValueLayout.JAVA_FLOAT.withName("depthBiasSlopeFactor")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -36,6 +40,12 @@ public record VkDepthBiasInfoEXT(MemorySegment segment) {
     public static final long OFFSET$depthBiasConstantFactor = LAYOUT.byteOffset(PATH$depthBiasConstantFactor);
     public static final long OFFSET$depthBiasClamp = LAYOUT.byteOffset(PATH$depthBiasClamp);
     public static final long OFFSET$depthBiasSlopeFactor = LAYOUT.byteOffset(PATH$depthBiasSlopeFactor);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$depthBiasConstantFactor = LAYOUT$depthBiasConstantFactor.byteSize();
+    public static final long SIZE$depthBiasClamp = LAYOUT$depthBiasClamp.byteSize();
+    public static final long SIZE$depthBiasSlopeFactor = LAYOUT$depthBiasSlopeFactor.byteSize();
 
     public VkDepthBiasInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -85,12 +95,12 @@ public record VkDepthBiasInfoEXT(MemorySegment segment) {
     public static VkDepthBiasInfoEXT allocate(Arena arena) {
         return new VkDepthBiasInfoEXT(arena.allocate(LAYOUT));
     }
-
+    
     public static VkDepthBiasInfoEXT[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDepthBiasInfoEXT[] ret = new VkDepthBiasInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDepthBiasInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDepthBiasInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

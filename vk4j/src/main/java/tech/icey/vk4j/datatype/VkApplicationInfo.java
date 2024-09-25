@@ -1,17 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.buffer.ByteBuffer;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_APPLICATION_INFO;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkApplicationInfo(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -23,6 +23,7 @@ public record VkApplicationInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("engineVersion"),
         ValueLayout.JAVA_INT.withName("apiVersion")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkApplicationInfo(MemorySegment segment) {
     public static final long OFFSET$pEngineName = LAYOUT.byteOffset(PATH$pEngineName);
     public static final long OFFSET$engineVersion = LAYOUT.byteOffset(PATH$engineVersion);
     public static final long OFFSET$apiVersion = LAYOUT.byteOffset(PATH$apiVersion);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pApplicationName = LAYOUT$pApplicationName.byteSize();
+    public static final long SIZE$applicationVersion = LAYOUT$applicationVersion.byteSize();
+    public static final long SIZE$pEngineName = LAYOUT$pEngineName.byteSize();
+    public static final long SIZE$engineVersion = LAYOUT$engineVersion.byteSize();
+    public static final long SIZE$apiVersion = LAYOUT$apiVersion.byteSize();
 
     public VkApplicationInfo(MemorySegment segment) {
         this.segment = segment;
@@ -76,7 +85,7 @@ public record VkApplicationInfo(MemorySegment segment) {
     public void pApplicationNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pApplicationName, OFFSET$pApplicationName, value);
     }
-
+    
     public ByteBuffer pApplicationName() {
         return new ByteBuffer(pApplicationNameRaw());
     }
@@ -100,7 +109,7 @@ public record VkApplicationInfo(MemorySegment segment) {
     public void pEngineNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pEngineName, OFFSET$pEngineName, value);
     }
-
+    
     public ByteBuffer pEngineName() {
         return new ByteBuffer(pEngineNameRaw());
     }
@@ -128,12 +137,12 @@ public record VkApplicationInfo(MemorySegment segment) {
     public static VkApplicationInfo allocate(Arena arena) {
         return new VkApplicationInfo(arena.allocate(LAYOUT));
     }
-
+    
     public static VkApplicationInfo[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkApplicationInfo[] ret = new VkApplicationInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkApplicationInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkApplicationInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

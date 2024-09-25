@@ -1,4 +1,4 @@
-from ..entity import Structure, Member, Registry
+from ..entity import Structure
 from .datatype.common_accessor import *
 from .datatype.ptr_accessor import generate_pointer_accessor
 from .datatype.array_accessor import generate_array_accessor
@@ -31,10 +31,12 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record {structure.name}(MemorySegment segment) {{
     public static final MemoryLayout LAYOUT = {struct_layout};
+    public static final long SIZE = LAYOUT.byteSize();
 
 {generate_structure_path_element(structure.members)}
 {generate_structure_member_layout(structure.members, member_types_lowered)}
 {generate_structure_member_offset(structure.members)}
+{generate_structure_member_size(structure.members, member_types_lowered)}
     public {structure.name}(MemorySegment segment) {{
         this.segment = segment;{generate_member_init(structure.members)}
     }}
@@ -47,7 +49,7 @@ public record {structure.name}(MemorySegment segment) {{
         MemorySegment segment = arena.allocate(LAYOUT, count);
         {structure.name}[] ret = new {structure.name}[count];
         for (int i = 0; i < count; i++) {{
-            ret[i] = new {structure.name}(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new {structure.name}(segment.asSlice(i * SIZE, SIZE));
         }}
         return ret;
     }}
@@ -159,6 +161,31 @@ def generate_structure_member_offset(members: list[Member]) -> str:
             i += 2
         else:
             ret += f'    public static final long OFFSET${current.name} = LAYOUT.byteOffset(PATH${current.name});\n'
+            i += 1
+
+    return ret
+
+
+def generate_structure_member_size(members: list[Member], member_types_lowered: list[CType | None]) -> str:
+    ret = ''
+
+    i = 0
+    while i < len(members):
+        current = members[i]
+        if current.bits is not None:
+            assert i + 1 < len(members)
+
+            next_ = members[i + 1]
+            assert current.bits is not None and current.bits == 24 and next_.bits == 8
+
+            ret += f'    public static final long SIZE$bitfield${current.name}_{next_.name} = LAYOUT$bitfield${current.name}_{next_.name}.byteSize();\n'
+            i += 2
+        else:
+            ctype = member_types_lowered[i]
+            if isinstance(ctype, CPlatformDependentIntType):
+                pass
+            else:
+                ret += f'    public static final long SIZE${current.name} = LAYOUT${current.name}.byteSize();\n'
             i += 1
 
     return ret

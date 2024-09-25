@@ -27,6 +27,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkAccelerationStructureGeometryKHR.LAYOUT)).withName("ppGeometries"),
         VkDeviceOrHostAddressKHR.LAYOUT.withName("scratchData")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -63,6 +64,18 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
     public static final long OFFSET$pGeometries = LAYOUT.byteOffset(PATH$pGeometries);
     public static final long OFFSET$ppGeometries = LAYOUT.byteOffset(PATH$ppGeometries);
     public static final long OFFSET$scratchData = LAYOUT.byteOffset(PATH$scratchData);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$mode = LAYOUT$mode.byteSize();
+    public static final long SIZE$srcAccelerationStructure = LAYOUT$srcAccelerationStructure.byteSize();
+    public static final long SIZE$dstAccelerationStructure = LAYOUT$dstAccelerationStructure.byteSize();
+    public static final long SIZE$geometryCount = LAYOUT$geometryCount.byteSize();
+    public static final long SIZE$pGeometries = LAYOUT$pGeometries.byteSize();
+    public static final long SIZE$ppGeometries = LAYOUT$ppGeometries.byteSize();
+    public static final long SIZE$scratchData = LAYOUT$scratchData.byteSize();
 
     public VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -167,7 +180,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
     }
 
     public void scratchData(VkDeviceOrHostAddressKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$scratchData, LAYOUT$scratchData.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$scratchData, SIZE$scratchData);
     }
 
     public static VkAccelerationStructureBuildGeometryInfoKHR allocate(Arena arena) {
@@ -178,7 +191,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureBuildGeometryInfoKHR[] ret = new VkAccelerationStructureBuildGeometryInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureBuildGeometryInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureBuildGeometryInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

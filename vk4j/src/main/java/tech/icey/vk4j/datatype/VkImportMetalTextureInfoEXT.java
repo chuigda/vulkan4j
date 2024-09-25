@@ -20,6 +20,7 @@ public record VkImportMetalTextureInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("plane"),
         ValueLayout.ADDRESS.withName("mtlTexture")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkImportMetalTextureInfoEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$plane = LAYOUT.byteOffset(PATH$plane);
     public static final long OFFSET$mtlTexture = LAYOUT.byteOffset(PATH$mtlTexture);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$plane = LAYOUT$plane.byteSize();
+    public static final long SIZE$mtlTexture = LAYOUT$mtlTexture.byteSize();
 
     public VkImportMetalTextureInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkImportMetalTextureInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImportMetalTextureInfoEXT[] ret = new VkImportMetalTextureInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImportMetalTextureInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImportMetalTextureInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

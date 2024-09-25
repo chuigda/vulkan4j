@@ -26,6 +26,7 @@ public record VkSubpassDependency2(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("dependencyFlags"),
         ValueLayout.JAVA_INT.withName("viewOffset")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -59,6 +60,17 @@ public record VkSubpassDependency2(MemorySegment segment) {
     public static final long OFFSET$dstAccessMask = LAYOUT.byteOffset(PATH$dstAccessMask);
     public static final long OFFSET$dependencyFlags = LAYOUT.byteOffset(PATH$dependencyFlags);
     public static final long OFFSET$viewOffset = LAYOUT.byteOffset(PATH$viewOffset);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$srcSubpass = LAYOUT$srcSubpass.byteSize();
+    public static final long SIZE$dstSubpass = LAYOUT$dstSubpass.byteSize();
+    public static final long SIZE$srcStageMask = LAYOUT$srcStageMask.byteSize();
+    public static final long SIZE$dstStageMask = LAYOUT$dstStageMask.byteSize();
+    public static final long SIZE$srcAccessMask = LAYOUT$srcAccessMask.byteSize();
+    public static final long SIZE$dstAccessMask = LAYOUT$dstAccessMask.byteSize();
+    public static final long SIZE$dependencyFlags = LAYOUT$dependencyFlags.byteSize();
+    public static final long SIZE$viewOffset = LAYOUT$viewOffset.byteSize();
 
     public VkSubpassDependency2(MemorySegment segment) {
         this.segment = segment;
@@ -153,7 +165,7 @@ public record VkSubpassDependency2(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubpassDependency2[] ret = new VkSubpassDependency2[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSubpassDependency2(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSubpassDependency2(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

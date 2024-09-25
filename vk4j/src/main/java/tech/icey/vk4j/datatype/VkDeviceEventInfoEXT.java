@@ -1,16 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.enumtype.VkDeviceEventTypeEXT;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_DEVICE_EVENT_INFO_EXT;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkDeviceEventInfoEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -18,6 +19,7 @@ public record VkDeviceEventInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("deviceEvent")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -30,6 +32,10 @@ public record VkDeviceEventInfoEXT(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$deviceEvent = LAYOUT.byteOffset(PATH$deviceEvent);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$deviceEvent = LAYOUT$deviceEvent.byteSize();
 
     public VkDeviceEventInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -63,12 +69,12 @@ public record VkDeviceEventInfoEXT(MemorySegment segment) {
     public static VkDeviceEventInfoEXT allocate(Arena arena) {
         return new VkDeviceEventInfoEXT(arena.allocate(LAYOUT));
     }
-
+    
     public static VkDeviceEventInfoEXT[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceEventInfoEXT[] ret = new VkDeviceEventInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceEventInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDeviceEventInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

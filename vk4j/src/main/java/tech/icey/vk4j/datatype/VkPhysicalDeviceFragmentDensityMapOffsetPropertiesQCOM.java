@@ -19,6 +19,7 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM(MemorySegme
         ValueLayout.ADDRESS.withName("pNext"),
         VkExtent2D.LAYOUT.withName("fragmentDensityOffsetGranularity")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM(MemorySegme
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$fragmentDensityOffsetGranularity = LAYOUT.byteOffset(PATH$fragmentDensityOffsetGranularity);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$fragmentDensityOffsetGranularity = LAYOUT$fragmentDensityOffsetGranularity.byteSize();
 
     public VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM(MemorySegment segment) {
         this.segment = segment;
@@ -58,7 +63,7 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM(MemorySegme
     }
 
     public void fragmentDensityOffsetGranularity(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentDensityOffsetGranularity, LAYOUT$fragmentDensityOffsetGranularity.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentDensityOffsetGranularity, SIZE$fragmentDensityOffsetGranularity);
     }
 
     public static VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM allocate(Arena arena) {
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM(MemorySegme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM[] ret = new VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

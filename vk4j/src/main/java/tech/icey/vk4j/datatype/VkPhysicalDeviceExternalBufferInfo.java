@@ -21,6 +21,7 @@ public record VkPhysicalDeviceExternalBufferInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("usage"),
         ValueLayout.JAVA_INT.withName("handleType")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceExternalBufferInfo(MemorySegment segment) {
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
     public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$usage = LAYOUT$usage.byteSize();
+    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
 
     public VkPhysicalDeviceExternalBufferInfo(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceExternalBufferInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceExternalBufferInfo[] ret = new VkPhysicalDeviceExternalBufferInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceExternalBufferInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceExternalBufferInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -35,6 +35,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("basePipelineHandle"),
         ValueLayout.JAVA_INT.withName("basePipelineIndex")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -95,6 +96,26 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
     public static final long OFFSET$subpass = LAYOUT.byteOffset(PATH$subpass);
     public static final long OFFSET$basePipelineHandle = LAYOUT.byteOffset(PATH$basePipelineHandle);
     public static final long OFFSET$basePipelineIndex = LAYOUT.byteOffset(PATH$basePipelineIndex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$stageCount = LAYOUT$stageCount.byteSize();
+    public static final long SIZE$pStages = LAYOUT$pStages.byteSize();
+    public static final long SIZE$pVertexInputState = LAYOUT$pVertexInputState.byteSize();
+    public static final long SIZE$pInputAssemblyState = LAYOUT$pInputAssemblyState.byteSize();
+    public static final long SIZE$pTessellationState = LAYOUT$pTessellationState.byteSize();
+    public static final long SIZE$pViewportState = LAYOUT$pViewportState.byteSize();
+    public static final long SIZE$pRasterizationState = LAYOUT$pRasterizationState.byteSize();
+    public static final long SIZE$pMultisampleState = LAYOUT$pMultisampleState.byteSize();
+    public static final long SIZE$pDepthStencilState = LAYOUT$pDepthStencilState.byteSize();
+    public static final long SIZE$pColorBlendState = LAYOUT$pColorBlendState.byteSize();
+    public static final long SIZE$pDynamicState = LAYOUT$pDynamicState.byteSize();
+    public static final long SIZE$layout = LAYOUT$layout.byteSize();
+    public static final long SIZE$renderPass = LAYOUT$renderPass.byteSize();
+    public static final long SIZE$subpass = LAYOUT$subpass.byteSize();
+    public static final long SIZE$basePipelineHandle = LAYOUT$basePipelineHandle.byteSize();
+    public static final long SIZE$basePipelineIndex = LAYOUT$basePipelineIndex.byteSize();
 
     public VkGraphicsPipelineCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -391,7 +412,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkGraphicsPipelineCreateInfo[] ret = new VkGraphicsPipelineCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkGraphicsPipelineCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkGraphicsPipelineCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

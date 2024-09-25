@@ -21,6 +21,7 @@ public record VkPipelineInputAssemblyStateCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("topology"),
         ValueLayout.JAVA_INT.withName("primitiveRestartEnable")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPipelineInputAssemblyStateCreateInfo(MemorySegment segment) {
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$topology = LAYOUT.byteOffset(PATH$topology);
     public static final long OFFSET$primitiveRestartEnable = LAYOUT.byteOffset(PATH$primitiveRestartEnable);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$topology = LAYOUT$topology.byteSize();
+    public static final long SIZE$primitiveRestartEnable = LAYOUT$primitiveRestartEnable.byteSize();
 
     public VkPipelineInputAssemblyStateCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPipelineInputAssemblyStateCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineInputAssemblyStateCreateInfo[] ret = new VkPipelineInputAssemblyStateCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineInputAssemblyStateCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineInputAssemblyStateCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

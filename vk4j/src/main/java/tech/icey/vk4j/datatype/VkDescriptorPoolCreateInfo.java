@@ -22,6 +22,7 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("poolSizeCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkDescriptorPoolSize.LAYOUT).withName("pPoolSizes")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) {
     public static final long OFFSET$maxSets = LAYOUT.byteOffset(PATH$maxSets);
     public static final long OFFSET$poolSizeCount = LAYOUT.byteOffset(PATH$poolSizeCount);
     public static final long OFFSET$pPoolSizes = LAYOUT.byteOffset(PATH$pPoolSizes);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$maxSets = LAYOUT$maxSets.byteSize();
+    public static final long SIZE$poolSizeCount = LAYOUT$poolSizeCount.byteSize();
+    public static final long SIZE$pPoolSizes = LAYOUT$pPoolSizes.byteSize();
 
     public VkDescriptorPoolCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -118,7 +126,7 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorPoolCreateInfo[] ret = new VkDescriptorPoolCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDescriptorPoolCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDescriptorPoolCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

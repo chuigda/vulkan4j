@@ -21,6 +21,7 @@ public record VkDirectDriverLoadingListLUNARG(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("driverCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkDirectDriverLoadingInfoLUNARG.LAYOUT).withName("pDrivers")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkDirectDriverLoadingListLUNARG(MemorySegment segment) {
     public static final long OFFSET$mode = LAYOUT.byteOffset(PATH$mode);
     public static final long OFFSET$driverCount = LAYOUT.byteOffset(PATH$driverCount);
     public static final long OFFSET$pDrivers = LAYOUT.byteOffset(PATH$pDrivers);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$mode = LAYOUT$mode.byteSize();
+    public static final long SIZE$driverCount = LAYOUT$driverCount.byteSize();
+    public static final long SIZE$pDrivers = LAYOUT$pDrivers.byteSize();
 
     public VkDirectDriverLoadingListLUNARG(MemorySegment segment) {
         this.segment = segment;
@@ -106,7 +113,7 @@ public record VkDirectDriverLoadingListLUNARG(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDirectDriverLoadingListLUNARG[] ret = new VkDirectDriverLoadingListLUNARG[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDirectDriverLoadingListLUNARG(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDirectDriverLoadingListLUNARG(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

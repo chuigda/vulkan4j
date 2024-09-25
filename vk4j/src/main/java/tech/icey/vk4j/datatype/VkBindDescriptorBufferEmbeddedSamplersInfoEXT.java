@@ -21,6 +21,7 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(MemorySegment segmen
         ValueLayout.ADDRESS.withName("layout"),
         ValueLayout.JAVA_INT.withName("set")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(MemorySegment segmen
     public static final long OFFSET$stageFlags = LAYOUT.byteOffset(PATH$stageFlags);
     public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
     public static final long OFFSET$set = LAYOUT.byteOffset(PATH$set);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$stageFlags = LAYOUT$stageFlags.byteSize();
+    public static final long SIZE$layout = LAYOUT$layout.byteSize();
+    public static final long SIZE$set = LAYOUT$set.byteSize();
 
     public VkBindDescriptorBufferEmbeddedSamplersInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBindDescriptorBufferEmbeddedSamplersInfoEXT[] ret = new VkBindDescriptorBufferEmbeddedSamplersInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkBindDescriptorBufferEmbeddedSamplersInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkBindDescriptorBufferEmbeddedSamplersInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

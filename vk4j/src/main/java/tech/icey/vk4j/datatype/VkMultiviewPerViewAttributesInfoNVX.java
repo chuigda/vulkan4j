@@ -20,6 +20,7 @@ public record VkMultiviewPerViewAttributesInfoNVX(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("perViewAttributes"),
         ValueLayout.JAVA_INT.withName("perViewAttributesPositionXOnly")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkMultiviewPerViewAttributesInfoNVX(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$perViewAttributes = LAYOUT.byteOffset(PATH$perViewAttributes);
     public static final long OFFSET$perViewAttributesPositionXOnly = LAYOUT.byteOffset(PATH$perViewAttributesPositionXOnly);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$perViewAttributes = LAYOUT$perViewAttributes.byteSize();
+    public static final long SIZE$perViewAttributesPositionXOnly = LAYOUT$perViewAttributesPositionXOnly.byteSize();
 
     public VkMultiviewPerViewAttributesInfoNVX(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkMultiviewPerViewAttributesInfoNVX(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMultiviewPerViewAttributesInfoNVX[] ret = new VkMultiviewPerViewAttributesInfoNVX[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkMultiviewPerViewAttributesInfoNVX(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkMultiviewPerViewAttributesInfoNVX(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

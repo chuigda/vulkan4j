@@ -19,6 +19,7 @@ public record VkTraceRaysIndirectCommandKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("height"),
         ValueLayout.JAVA_INT.withName("depth")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$width = PathElement.groupElement("width");
     public static final PathElement PATH$height = PathElement.groupElement("height");
@@ -31,6 +32,10 @@ public record VkTraceRaysIndirectCommandKHR(MemorySegment segment) {
     public static final long OFFSET$width = LAYOUT.byteOffset(PATH$width);
     public static final long OFFSET$height = LAYOUT.byteOffset(PATH$height);
     public static final long OFFSET$depth = LAYOUT.byteOffset(PATH$depth);
+
+    public static final long SIZE$width = LAYOUT$width.byteSize();
+    public static final long SIZE$height = LAYOUT$height.byteSize();
+    public static final long SIZE$depth = LAYOUT$depth.byteSize();
 
     public VkTraceRaysIndirectCommandKHR(MemorySegment segment) {
         this.segment = segment;
@@ -68,7 +73,7 @@ public record VkTraceRaysIndirectCommandKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkTraceRaysIndirectCommandKHR[] ret = new VkTraceRaysIndirectCommandKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkTraceRaysIndirectCommandKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkTraceRaysIndirectCommandKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

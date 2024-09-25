@@ -21,6 +21,7 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment)
         ValueLayout.JAVA_INT.withName("viewportCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkViewportWScalingNV.LAYOUT).withName("pViewportWScalings")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment)
     public static final long OFFSET$viewportWScalingEnable = LAYOUT.byteOffset(PATH$viewportWScalingEnable);
     public static final long OFFSET$viewportCount = LAYOUT.byteOffset(PATH$viewportCount);
     public static final long OFFSET$pViewportWScalings = LAYOUT.byteOffset(PATH$pViewportWScalings);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$viewportWScalingEnable = LAYOUT$viewportWScalingEnable.byteSize();
+    public static final long SIZE$viewportCount = LAYOUT$viewportCount.byteSize();
+    public static final long SIZE$pViewportWScalings = LAYOUT$pViewportWScalings.byteSize();
 
     public VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -106,7 +113,7 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineViewportWScalingStateCreateInfoNV[] ret = new VkPipelineViewportWScalingStateCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineViewportWScalingStateCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineViewportWScalingStateCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

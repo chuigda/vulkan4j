@@ -20,6 +20,7 @@ public record VkSemaphoreTypeCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("semaphoreType"),
         ValueLayout.JAVA_LONG.withName("initialValue")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkSemaphoreTypeCreateInfo(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$semaphoreType = LAYOUT.byteOffset(PATH$semaphoreType);
     public static final long OFFSET$initialValue = LAYOUT.byteOffset(PATH$initialValue);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$semaphoreType = LAYOUT$semaphoreType.byteSize();
+    public static final long SIZE$initialValue = LAYOUT$initialValue.byteSize();
 
     public VkSemaphoreTypeCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkSemaphoreTypeCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSemaphoreTypeCreateInfo[] ret = new VkSemaphoreTypeCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSemaphoreTypeCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSemaphoreTypeCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -21,6 +21,7 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("descriptorType"),
         ValueLayout.ADDRESS.withName("sampler")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) {
     public static final long OFFSET$imageView = LAYOUT.byteOffset(PATH$imageView);
     public static final long OFFSET$descriptorType = LAYOUT.byteOffset(PATH$descriptorType);
     public static final long OFFSET$sampler = LAYOUT.byteOffset(PATH$sampler);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$imageView = LAYOUT$imageView.byteSize();
+    public static final long SIZE$descriptorType = LAYOUT$descriptorType.byteSize();
+    public static final long SIZE$sampler = LAYOUT$sampler.byteSize();
 
     public VkImageViewHandleInfoNVX(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageViewHandleInfoNVX[] ret = new VkImageViewHandleInfoNVX[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageViewHandleInfoNVX(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageViewHandleInfoNVX(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

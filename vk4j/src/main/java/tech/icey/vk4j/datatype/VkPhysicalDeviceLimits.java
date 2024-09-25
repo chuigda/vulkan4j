@@ -122,6 +122,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("optimalBufferCopyRowPitchAlignment"),
         ValueLayout.JAVA_LONG.withName("nonCoherentAtomSize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$maxImageDimension1D = PathElement.groupElement("maxImageDimension1D");
     public static final PathElement PATH$maxImageDimension2D = PathElement.groupElement("maxImageDimension2D");
@@ -442,6 +443,112 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     public static final long OFFSET$optimalBufferCopyOffsetAlignment = LAYOUT.byteOffset(PATH$optimalBufferCopyOffsetAlignment);
     public static final long OFFSET$optimalBufferCopyRowPitchAlignment = LAYOUT.byteOffset(PATH$optimalBufferCopyRowPitchAlignment);
     public static final long OFFSET$nonCoherentAtomSize = LAYOUT.byteOffset(PATH$nonCoherentAtomSize);
+
+    public static final long SIZE$maxImageDimension1D = LAYOUT$maxImageDimension1D.byteSize();
+    public static final long SIZE$maxImageDimension2D = LAYOUT$maxImageDimension2D.byteSize();
+    public static final long SIZE$maxImageDimension3D = LAYOUT$maxImageDimension3D.byteSize();
+    public static final long SIZE$maxImageDimensionCube = LAYOUT$maxImageDimensionCube.byteSize();
+    public static final long SIZE$maxImageArrayLayers = LAYOUT$maxImageArrayLayers.byteSize();
+    public static final long SIZE$maxTexelBufferElements = LAYOUT$maxTexelBufferElements.byteSize();
+    public static final long SIZE$maxUniformBufferRange = LAYOUT$maxUniformBufferRange.byteSize();
+    public static final long SIZE$maxStorageBufferRange = LAYOUT$maxStorageBufferRange.byteSize();
+    public static final long SIZE$maxPushConstantsSize = LAYOUT$maxPushConstantsSize.byteSize();
+    public static final long SIZE$maxMemoryAllocationCount = LAYOUT$maxMemoryAllocationCount.byteSize();
+    public static final long SIZE$maxSamplerAllocationCount = LAYOUT$maxSamplerAllocationCount.byteSize();
+    public static final long SIZE$bufferImageGranularity = LAYOUT$bufferImageGranularity.byteSize();
+    public static final long SIZE$sparseAddressSpaceSize = LAYOUT$sparseAddressSpaceSize.byteSize();
+    public static final long SIZE$maxBoundDescriptorSets = LAYOUT$maxBoundDescriptorSets.byteSize();
+    public static final long SIZE$maxPerStageDescriptorSamplers = LAYOUT$maxPerStageDescriptorSamplers.byteSize();
+    public static final long SIZE$maxPerStageDescriptorUniformBuffers = LAYOUT$maxPerStageDescriptorUniformBuffers.byteSize();
+    public static final long SIZE$maxPerStageDescriptorStorageBuffers = LAYOUT$maxPerStageDescriptorStorageBuffers.byteSize();
+    public static final long SIZE$maxPerStageDescriptorSampledImages = LAYOUT$maxPerStageDescriptorSampledImages.byteSize();
+    public static final long SIZE$maxPerStageDescriptorStorageImages = LAYOUT$maxPerStageDescriptorStorageImages.byteSize();
+    public static final long SIZE$maxPerStageDescriptorInputAttachments = LAYOUT$maxPerStageDescriptorInputAttachments.byteSize();
+    public static final long SIZE$maxPerStageResources = LAYOUT$maxPerStageResources.byteSize();
+    public static final long SIZE$maxDescriptorSetSamplers = LAYOUT$maxDescriptorSetSamplers.byteSize();
+    public static final long SIZE$maxDescriptorSetUniformBuffers = LAYOUT$maxDescriptorSetUniformBuffers.byteSize();
+    public static final long SIZE$maxDescriptorSetUniformBuffersDynamic = LAYOUT$maxDescriptorSetUniformBuffersDynamic.byteSize();
+    public static final long SIZE$maxDescriptorSetStorageBuffers = LAYOUT$maxDescriptorSetStorageBuffers.byteSize();
+    public static final long SIZE$maxDescriptorSetStorageBuffersDynamic = LAYOUT$maxDescriptorSetStorageBuffersDynamic.byteSize();
+    public static final long SIZE$maxDescriptorSetSampledImages = LAYOUT$maxDescriptorSetSampledImages.byteSize();
+    public static final long SIZE$maxDescriptorSetStorageImages = LAYOUT$maxDescriptorSetStorageImages.byteSize();
+    public static final long SIZE$maxDescriptorSetInputAttachments = LAYOUT$maxDescriptorSetInputAttachments.byteSize();
+    public static final long SIZE$maxVertexInputAttributes = LAYOUT$maxVertexInputAttributes.byteSize();
+    public static final long SIZE$maxVertexInputBindings = LAYOUT$maxVertexInputBindings.byteSize();
+    public static final long SIZE$maxVertexInputAttributeOffset = LAYOUT$maxVertexInputAttributeOffset.byteSize();
+    public static final long SIZE$maxVertexInputBindingStride = LAYOUT$maxVertexInputBindingStride.byteSize();
+    public static final long SIZE$maxVertexOutputComponents = LAYOUT$maxVertexOutputComponents.byteSize();
+    public static final long SIZE$maxTessellationGenerationLevel = LAYOUT$maxTessellationGenerationLevel.byteSize();
+    public static final long SIZE$maxTessellationPatchSize = LAYOUT$maxTessellationPatchSize.byteSize();
+    public static final long SIZE$maxTessellationControlPerVertexInputComponents = LAYOUT$maxTessellationControlPerVertexInputComponents.byteSize();
+    public static final long SIZE$maxTessellationControlPerVertexOutputComponents = LAYOUT$maxTessellationControlPerVertexOutputComponents.byteSize();
+    public static final long SIZE$maxTessellationControlPerPatchOutputComponents = LAYOUT$maxTessellationControlPerPatchOutputComponents.byteSize();
+    public static final long SIZE$maxTessellationControlTotalOutputComponents = LAYOUT$maxTessellationControlTotalOutputComponents.byteSize();
+    public static final long SIZE$maxTessellationEvaluationInputComponents = LAYOUT$maxTessellationEvaluationInputComponents.byteSize();
+    public static final long SIZE$maxTessellationEvaluationOutputComponents = LAYOUT$maxTessellationEvaluationOutputComponents.byteSize();
+    public static final long SIZE$maxGeometryShaderInvocations = LAYOUT$maxGeometryShaderInvocations.byteSize();
+    public static final long SIZE$maxGeometryInputComponents = LAYOUT$maxGeometryInputComponents.byteSize();
+    public static final long SIZE$maxGeometryOutputComponents = LAYOUT$maxGeometryOutputComponents.byteSize();
+    public static final long SIZE$maxGeometryOutputVertices = LAYOUT$maxGeometryOutputVertices.byteSize();
+    public static final long SIZE$maxGeometryTotalOutputComponents = LAYOUT$maxGeometryTotalOutputComponents.byteSize();
+    public static final long SIZE$maxFragmentInputComponents = LAYOUT$maxFragmentInputComponents.byteSize();
+    public static final long SIZE$maxFragmentOutputAttachments = LAYOUT$maxFragmentOutputAttachments.byteSize();
+    public static final long SIZE$maxFragmentDualSrcAttachments = LAYOUT$maxFragmentDualSrcAttachments.byteSize();
+    public static final long SIZE$maxFragmentCombinedOutputResources = LAYOUT$maxFragmentCombinedOutputResources.byteSize();
+    public static final long SIZE$maxComputeSharedMemorySize = LAYOUT$maxComputeSharedMemorySize.byteSize();
+    public static final long SIZE$maxComputeWorkGroupCount = LAYOUT$maxComputeWorkGroupCount.byteSize();
+    public static final long SIZE$maxComputeWorkGroupInvocations = LAYOUT$maxComputeWorkGroupInvocations.byteSize();
+    public static final long SIZE$maxComputeWorkGroupSize = LAYOUT$maxComputeWorkGroupSize.byteSize();
+    public static final long SIZE$subPixelPrecisionBits = LAYOUT$subPixelPrecisionBits.byteSize();
+    public static final long SIZE$subTexelPrecisionBits = LAYOUT$subTexelPrecisionBits.byteSize();
+    public static final long SIZE$mipmapPrecisionBits = LAYOUT$mipmapPrecisionBits.byteSize();
+    public static final long SIZE$maxDrawIndexedIndexValue = LAYOUT$maxDrawIndexedIndexValue.byteSize();
+    public static final long SIZE$maxDrawIndirectCount = LAYOUT$maxDrawIndirectCount.byteSize();
+    public static final long SIZE$maxSamplerLodBias = LAYOUT$maxSamplerLodBias.byteSize();
+    public static final long SIZE$maxSamplerAnisotropy = LAYOUT$maxSamplerAnisotropy.byteSize();
+    public static final long SIZE$maxViewports = LAYOUT$maxViewports.byteSize();
+    public static final long SIZE$maxViewportDimensions = LAYOUT$maxViewportDimensions.byteSize();
+    public static final long SIZE$viewportBoundsRange = LAYOUT$viewportBoundsRange.byteSize();
+    public static final long SIZE$viewportSubPixelBits = LAYOUT$viewportSubPixelBits.byteSize();
+    public static final long SIZE$minTexelBufferOffsetAlignment = LAYOUT$minTexelBufferOffsetAlignment.byteSize();
+    public static final long SIZE$minUniformBufferOffsetAlignment = LAYOUT$minUniformBufferOffsetAlignment.byteSize();
+    public static final long SIZE$minStorageBufferOffsetAlignment = LAYOUT$minStorageBufferOffsetAlignment.byteSize();
+    public static final long SIZE$minTexelOffset = LAYOUT$minTexelOffset.byteSize();
+    public static final long SIZE$maxTexelOffset = LAYOUT$maxTexelOffset.byteSize();
+    public static final long SIZE$minTexelGatherOffset = LAYOUT$minTexelGatherOffset.byteSize();
+    public static final long SIZE$maxTexelGatherOffset = LAYOUT$maxTexelGatherOffset.byteSize();
+    public static final long SIZE$minInterpolationOffset = LAYOUT$minInterpolationOffset.byteSize();
+    public static final long SIZE$maxInterpolationOffset = LAYOUT$maxInterpolationOffset.byteSize();
+    public static final long SIZE$subPixelInterpolationOffsetBits = LAYOUT$subPixelInterpolationOffsetBits.byteSize();
+    public static final long SIZE$maxFramebufferWidth = LAYOUT$maxFramebufferWidth.byteSize();
+    public static final long SIZE$maxFramebufferHeight = LAYOUT$maxFramebufferHeight.byteSize();
+    public static final long SIZE$maxFramebufferLayers = LAYOUT$maxFramebufferLayers.byteSize();
+    public static final long SIZE$framebufferColorSampleCounts = LAYOUT$framebufferColorSampleCounts.byteSize();
+    public static final long SIZE$framebufferDepthSampleCounts = LAYOUT$framebufferDepthSampleCounts.byteSize();
+    public static final long SIZE$framebufferStencilSampleCounts = LAYOUT$framebufferStencilSampleCounts.byteSize();
+    public static final long SIZE$framebufferNoAttachmentsSampleCounts = LAYOUT$framebufferNoAttachmentsSampleCounts.byteSize();
+    public static final long SIZE$maxColorAttachments = LAYOUT$maxColorAttachments.byteSize();
+    public static final long SIZE$sampledImageColorSampleCounts = LAYOUT$sampledImageColorSampleCounts.byteSize();
+    public static final long SIZE$sampledImageIntegerSampleCounts = LAYOUT$sampledImageIntegerSampleCounts.byteSize();
+    public static final long SIZE$sampledImageDepthSampleCounts = LAYOUT$sampledImageDepthSampleCounts.byteSize();
+    public static final long SIZE$sampledImageStencilSampleCounts = LAYOUT$sampledImageStencilSampleCounts.byteSize();
+    public static final long SIZE$storageImageSampleCounts = LAYOUT$storageImageSampleCounts.byteSize();
+    public static final long SIZE$maxSampleMaskWords = LAYOUT$maxSampleMaskWords.byteSize();
+    public static final long SIZE$timestampComputeAndGraphics = LAYOUT$timestampComputeAndGraphics.byteSize();
+    public static final long SIZE$timestampPeriod = LAYOUT$timestampPeriod.byteSize();
+    public static final long SIZE$maxClipDistances = LAYOUT$maxClipDistances.byteSize();
+    public static final long SIZE$maxCullDistances = LAYOUT$maxCullDistances.byteSize();
+    public static final long SIZE$maxCombinedClipAndCullDistances = LAYOUT$maxCombinedClipAndCullDistances.byteSize();
+    public static final long SIZE$discreteQueuePriorities = LAYOUT$discreteQueuePriorities.byteSize();
+    public static final long SIZE$pointSizeRange = LAYOUT$pointSizeRange.byteSize();
+    public static final long SIZE$lineWidthRange = LAYOUT$lineWidthRange.byteSize();
+    public static final long SIZE$pointSizeGranularity = LAYOUT$pointSizeGranularity.byteSize();
+    public static final long SIZE$lineWidthGranularity = LAYOUT$lineWidthGranularity.byteSize();
+    public static final long SIZE$strictLines = LAYOUT$strictLines.byteSize();
+    public static final long SIZE$standardSampleLocations = LAYOUT$standardSampleLocations.byteSize();
+    public static final long SIZE$optimalBufferCopyOffsetAlignment = LAYOUT$optimalBufferCopyOffsetAlignment.byteSize();
+    public static final long SIZE$optimalBufferCopyRowPitchAlignment = LAYOUT$optimalBufferCopyRowPitchAlignment.byteSize();
+    public static final long SIZE$nonCoherentAtomSize = LAYOUT$nonCoherentAtomSize.byteSize();
 
     public VkPhysicalDeviceLimits(MemorySegment segment) {
         this.segment = segment;
@@ -864,7 +971,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     }
 
     public MemorySegment maxComputeWorkGroupCountRaw() {
-        return segment.asSlice(OFFSET$maxComputeWorkGroupCount, LAYOUT$maxComputeWorkGroupCount.byteSize());
+        return segment.asSlice(OFFSET$maxComputeWorkGroupCount, SIZE$maxComputeWorkGroupCount);
     }
 
     public @unsigned IntBuffer maxComputeWorkGroupCount() {
@@ -872,7 +979,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     }
 
     public void maxComputeWorkGroupCount(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupCount, LAYOUT$maxComputeWorkGroupCount.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupCount, SIZE$maxComputeWorkGroupCount);
     }
 
     public @unsigned int maxComputeWorkGroupInvocations() {
@@ -884,7 +991,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     }
 
     public MemorySegment maxComputeWorkGroupSizeRaw() {
-        return segment.asSlice(OFFSET$maxComputeWorkGroupSize, LAYOUT$maxComputeWorkGroupSize.byteSize());
+        return segment.asSlice(OFFSET$maxComputeWorkGroupSize, SIZE$maxComputeWorkGroupSize);
     }
 
     public @unsigned IntBuffer maxComputeWorkGroupSize() {
@@ -892,7 +999,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     }
 
     public void maxComputeWorkGroupSize(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupSize, LAYOUT$maxComputeWorkGroupSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupSize, SIZE$maxComputeWorkGroupSize);
     }
 
     public @unsigned int subPixelPrecisionBits() {
@@ -960,7 +1067,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     }
 
     public MemorySegment maxViewportDimensionsRaw() {
-        return segment.asSlice(OFFSET$maxViewportDimensions, LAYOUT$maxViewportDimensions.byteSize());
+        return segment.asSlice(OFFSET$maxViewportDimensions, SIZE$maxViewportDimensions);
     }
 
     public @unsigned IntBuffer maxViewportDimensions() {
@@ -968,11 +1075,11 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     }
 
     public void maxViewportDimensions(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxViewportDimensions, LAYOUT$maxViewportDimensions.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxViewportDimensions, SIZE$maxViewportDimensions);
     }
 
     public MemorySegment viewportBoundsRangeRaw() {
-        return segment.asSlice(OFFSET$viewportBoundsRange, LAYOUT$viewportBoundsRange.byteSize());
+        return segment.asSlice(OFFSET$viewportBoundsRange, SIZE$viewportBoundsRange);
     }
 
     public FloatBuffer viewportBoundsRange() {
@@ -980,7 +1087,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     }
 
     public void viewportBoundsRange(FloatBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$viewportBoundsRange, LAYOUT$viewportBoundsRange.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$viewportBoundsRange, SIZE$viewportBoundsRange);
     }
 
     public @unsigned int viewportSubPixelBits() {
@@ -1240,7 +1347,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     }
 
     public MemorySegment pointSizeRangeRaw() {
-        return segment.asSlice(OFFSET$pointSizeRange, LAYOUT$pointSizeRange.byteSize());
+        return segment.asSlice(OFFSET$pointSizeRange, SIZE$pointSizeRange);
     }
 
     public FloatBuffer pointSizeRange() {
@@ -1248,11 +1355,11 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     }
 
     public void pointSizeRange(FloatBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pointSizeRange, LAYOUT$pointSizeRange.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pointSizeRange, SIZE$pointSizeRange);
     }
 
     public MemorySegment lineWidthRangeRaw() {
-        return segment.asSlice(OFFSET$lineWidthRange, LAYOUT$lineWidthRange.byteSize());
+        return segment.asSlice(OFFSET$lineWidthRange, SIZE$lineWidthRange);
     }
 
     public FloatBuffer lineWidthRange() {
@@ -1260,7 +1367,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     }
 
     public void lineWidthRange(FloatBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$lineWidthRange, LAYOUT$lineWidthRange.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$lineWidthRange, SIZE$lineWidthRange);
     }
 
     public float pointSizeGranularity() {
@@ -1327,7 +1434,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceLimits[] ret = new VkPhysicalDeviceLimits[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceLimits(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceLimits(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

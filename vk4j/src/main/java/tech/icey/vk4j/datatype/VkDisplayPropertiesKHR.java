@@ -23,6 +23,7 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("planeReorderPossible"),
         ValueLayout.JAVA_INT.withName("persistentContent")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$display = PathElement.groupElement("display");
     public static final PathElement PATH$displayName = PathElement.groupElement("displayName");
@@ -47,6 +48,14 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) {
     public static final long OFFSET$supportedTransforms = LAYOUT.byteOffset(PATH$supportedTransforms);
     public static final long OFFSET$planeReorderPossible = LAYOUT.byteOffset(PATH$planeReorderPossible);
     public static final long OFFSET$persistentContent = LAYOUT.byteOffset(PATH$persistentContent);
+
+    public static final long SIZE$display = LAYOUT$display.byteSize();
+    public static final long SIZE$displayName = LAYOUT$displayName.byteSize();
+    public static final long SIZE$physicalDimensions = LAYOUT$physicalDimensions.byteSize();
+    public static final long SIZE$physicalResolution = LAYOUT$physicalResolution.byteSize();
+    public static final long SIZE$supportedTransforms = LAYOUT$supportedTransforms.byteSize();
+    public static final long SIZE$planeReorderPossible = LAYOUT$planeReorderPossible.byteSize();
+    public static final long SIZE$persistentContent = LAYOUT$persistentContent.byteSize();
 
     public VkDisplayPropertiesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +90,7 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) {
     }
 
     public void physicalDimensions(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$physicalDimensions, LAYOUT$physicalDimensions.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$physicalDimensions, SIZE$physicalDimensions);
     }
 
     public VkExtent2D physicalResolution() {
@@ -89,7 +98,7 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) {
     }
 
     public void physicalResolution(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$physicalResolution, LAYOUT$physicalResolution.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$physicalResolution, SIZE$physicalResolution);
     }
 
     public @enumtype(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
@@ -124,7 +133,7 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayPropertiesKHR[] ret = new VkDisplayPropertiesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDisplayPropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDisplayPropertiesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

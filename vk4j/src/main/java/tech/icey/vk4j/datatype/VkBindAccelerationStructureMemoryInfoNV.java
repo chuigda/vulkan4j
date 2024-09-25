@@ -23,6 +23,7 @@ public record VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("deviceIndexCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDeviceIndices")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) {
     public static final long OFFSET$memoryOffset = LAYOUT.byteOffset(PATH$memoryOffset);
     public static final long OFFSET$deviceIndexCount = LAYOUT.byteOffset(PATH$deviceIndexCount);
     public static final long OFFSET$pDeviceIndices = LAYOUT.byteOffset(PATH$pDeviceIndices);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$accelerationStructure = LAYOUT$accelerationStructure.byteSize();
+    public static final long SIZE$memory = LAYOUT$memory.byteSize();
+    public static final long SIZE$memoryOffset = LAYOUT$memoryOffset.byteSize();
+    public static final long SIZE$deviceIndexCount = LAYOUT$deviceIndexCount.byteSize();
+    public static final long SIZE$pDeviceIndices = LAYOUT$pDeviceIndices.byteSize();
 
     public VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -125,7 +134,7 @@ public record VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBindAccelerationStructureMemoryInfoNV[] ret = new VkBindAccelerationStructureMemoryInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkBindAccelerationStructureMemoryInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkBindAccelerationStructureMemoryInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

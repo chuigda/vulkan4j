@@ -20,6 +20,7 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(MemorySegment segme
         ValueLayout.JAVA_INT.withName("filterCubic"),
         ValueLayout.JAVA_INT.withName("filterCubicMinmax")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(MemorySegment segme
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$filterCubic = LAYOUT.byteOffset(PATH$filterCubic);
     public static final long OFFSET$filterCubicMinmax = LAYOUT.byteOffset(PATH$filterCubicMinmax);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$filterCubic = LAYOUT$filterCubic.byteSize();
+    public static final long SIZE$filterCubicMinmax = LAYOUT$filterCubicMinmax.byteSize();
 
     public VkFilterCubicImageViewImageFormatPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkFilterCubicImageViewImageFormatPropertiesEXT[] ret = new VkFilterCubicImageViewImageFormatPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkFilterCubicImageViewImageFormatPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkFilterCubicImageViewImageFormatPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

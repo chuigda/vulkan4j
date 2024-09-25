@@ -19,6 +19,7 @@ public record VkDeviceFaultVendorInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("vendorFaultCode"),
         ValueLayout.JAVA_LONG.withName("vendorFaultData")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$description = PathElement.groupElement("description");
     public static final PathElement PATH$vendorFaultCode = PathElement.groupElement("vendorFaultCode");
@@ -32,12 +33,16 @@ public record VkDeviceFaultVendorInfoEXT(MemorySegment segment) {
     public static final long OFFSET$vendorFaultCode = LAYOUT.byteOffset(PATH$vendorFaultCode);
     public static final long OFFSET$vendorFaultData = LAYOUT.byteOffset(PATH$vendorFaultData);
 
+    public static final long SIZE$description = LAYOUT$description.byteSize();
+    public static final long SIZE$vendorFaultCode = LAYOUT$vendorFaultCode.byteSize();
+    public static final long SIZE$vendorFaultData = LAYOUT$vendorFaultData.byteSize();
+
     public VkDeviceFaultVendorInfoEXT(MemorySegment segment) {
         this.segment = segment;
     }
 
     public MemorySegment descriptionRaw() {
-        return segment.asSlice(OFFSET$description, LAYOUT$description.byteSize());
+        return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
     public ByteBuffer description() {
@@ -45,7 +50,7 @@ public record VkDeviceFaultVendorInfoEXT(MemorySegment segment) {
     }
 
     public void description(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, LAYOUT$description.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
     }
 
     public @unsigned long vendorFaultCode() {
@@ -72,7 +77,7 @@ public record VkDeviceFaultVendorInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceFaultVendorInfoEXT[] ret = new VkDeviceFaultVendorInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceFaultVendorInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDeviceFaultVendorInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

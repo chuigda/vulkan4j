@@ -18,6 +18,7 @@ public record VkDisplayModePropertiesKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("displayMode"),
         VkDisplayModeParametersKHR.LAYOUT.withName("parameters")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$displayMode = PathElement.groupElement("displayMode");
     public static final PathElement PATH$parameters = PathElement.groupElement("parameters");
@@ -27,6 +28,9 @@ public record VkDisplayModePropertiesKHR(MemorySegment segment) {
 
     public static final long OFFSET$displayMode = LAYOUT.byteOffset(PATH$displayMode);
     public static final long OFFSET$parameters = LAYOUT.byteOffset(PATH$parameters);
+
+    public static final long SIZE$displayMode = LAYOUT$displayMode.byteSize();
+    public static final long SIZE$parameters = LAYOUT$parameters.byteSize();
 
     public VkDisplayModePropertiesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -45,7 +49,7 @@ public record VkDisplayModePropertiesKHR(MemorySegment segment) {
     }
 
     public void parameters(VkDisplayModeParametersKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$parameters, LAYOUT$parameters.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$parameters, SIZE$parameters);
     }
 
     public static VkDisplayModePropertiesKHR allocate(Arena arena) {
@@ -56,7 +60,7 @@ public record VkDisplayModePropertiesKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayModePropertiesKHR[] ret = new VkDisplayModePropertiesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDisplayModePropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDisplayModePropertiesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

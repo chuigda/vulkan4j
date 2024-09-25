@@ -20,6 +20,7 @@ public record VkImportMemoryHostPointerInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("handleType"),
         ValueLayout.ADDRESS.withName("pHostPointer")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkImportMemoryHostPointerInfoEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
     public static final long OFFSET$pHostPointer = LAYOUT.byteOffset(PATH$pHostPointer);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
+    public static final long SIZE$pHostPointer = LAYOUT$pHostPointer.byteSize();
 
     public VkImportMemoryHostPointerInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkImportMemoryHostPointerInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImportMemoryHostPointerInfoEXT[] ret = new VkImportMemoryHostPointerInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImportMemoryHostPointerInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImportMemoryHostPointerInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

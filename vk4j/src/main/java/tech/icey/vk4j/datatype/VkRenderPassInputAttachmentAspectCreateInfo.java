@@ -20,6 +20,7 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(MemorySegment segment)
         ValueLayout.JAVA_INT.withName("aspectReferenceCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkInputAttachmentAspectReference.LAYOUT).withName("pAspectReferences")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(MemorySegment segment)
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$aspectReferenceCount = LAYOUT.byteOffset(PATH$aspectReferenceCount);
     public static final long OFFSET$pAspectReferences = LAYOUT.byteOffset(PATH$pAspectReferences);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$aspectReferenceCount = LAYOUT$aspectReferenceCount.byteSize();
+    public static final long SIZE$pAspectReferences = LAYOUT$pAspectReferences.byteSize();
 
     public VkRenderPassInputAttachmentAspectCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +100,7 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderPassInputAttachmentAspectCreateInfo[] ret = new VkRenderPassInputAttachmentAspectCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderPassInputAttachmentAspectCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRenderPassInputAttachmentAspectCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

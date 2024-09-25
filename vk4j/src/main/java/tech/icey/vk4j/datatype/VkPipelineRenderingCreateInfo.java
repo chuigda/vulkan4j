@@ -23,6 +23,7 @@ public record VkPipelineRenderingCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("depthAttachmentFormat"),
         ValueLayout.JAVA_INT.withName("stencilAttachmentFormat")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkPipelineRenderingCreateInfo(MemorySegment segment) {
     public static final long OFFSET$pColorAttachmentFormats = LAYOUT.byteOffset(PATH$pColorAttachmentFormats);
     public static final long OFFSET$depthAttachmentFormat = LAYOUT.byteOffset(PATH$depthAttachmentFormat);
     public static final long OFFSET$stencilAttachmentFormat = LAYOUT.byteOffset(PATH$stencilAttachmentFormat);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$viewMask = LAYOUT$viewMask.byteSize();
+    public static final long SIZE$colorAttachmentCount = LAYOUT$colorAttachmentCount.byteSize();
+    public static final long SIZE$pColorAttachmentFormats = LAYOUT$pColorAttachmentFormats.byteSize();
+    public static final long SIZE$depthAttachmentFormat = LAYOUT$depthAttachmentFormat.byteSize();
+    public static final long SIZE$stencilAttachmentFormat = LAYOUT$stencilAttachmentFormat.byteSize();
 
     public VkPipelineRenderingCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -131,7 +140,7 @@ public record VkPipelineRenderingCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineRenderingCreateInfo[] ret = new VkPipelineRenderingCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineRenderingCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineRenderingCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

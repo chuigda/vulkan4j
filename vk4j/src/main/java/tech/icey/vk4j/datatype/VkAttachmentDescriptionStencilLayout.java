@@ -20,6 +20,7 @@ public record VkAttachmentDescriptionStencilLayout(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("stencilInitialLayout"),
         ValueLayout.JAVA_INT.withName("stencilFinalLayout")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkAttachmentDescriptionStencilLayout(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$stencilInitialLayout = LAYOUT.byteOffset(PATH$stencilInitialLayout);
     public static final long OFFSET$stencilFinalLayout = LAYOUT.byteOffset(PATH$stencilFinalLayout);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$stencilInitialLayout = LAYOUT$stencilInitialLayout.byteSize();
+    public static final long SIZE$stencilFinalLayout = LAYOUT$stencilFinalLayout.byteSize();
 
     public VkAttachmentDescriptionStencilLayout(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkAttachmentDescriptionStencilLayout(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAttachmentDescriptionStencilLayout[] ret = new VkAttachmentDescriptionStencilLayout[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAttachmentDescriptionStencilLayout(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAttachmentDescriptionStencilLayout(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

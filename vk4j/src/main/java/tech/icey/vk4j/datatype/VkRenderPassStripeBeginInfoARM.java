@@ -20,6 +20,7 @@ public record VkRenderPassStripeBeginInfoARM(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("stripeInfoCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkRenderPassStripeInfoARM.LAYOUT).withName("pStripeInfos")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkRenderPassStripeBeginInfoARM(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$stripeInfoCount = LAYOUT.byteOffset(PATH$stripeInfoCount);
     public static final long OFFSET$pStripeInfos = LAYOUT.byteOffset(PATH$pStripeInfos);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$stripeInfoCount = LAYOUT$stripeInfoCount.byteSize();
+    public static final long SIZE$pStripeInfos = LAYOUT$pStripeInfos.byteSize();
 
     public VkRenderPassStripeBeginInfoARM(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +100,7 @@ public record VkRenderPassStripeBeginInfoARM(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderPassStripeBeginInfoARM[] ret = new VkRenderPassStripeBeginInfoARM[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderPassStripeBeginInfoARM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRenderPassStripeBeginInfoARM(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

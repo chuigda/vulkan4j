@@ -18,6 +18,7 @@ public record VkSubpassSampleLocationsEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("subpassIndex"),
         VkSampleLocationsInfoEXT.LAYOUT.withName("sampleLocationsInfo")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$subpassIndex = PathElement.groupElement("subpassIndex");
     public static final PathElement PATH$sampleLocationsInfo = PathElement.groupElement("sampleLocationsInfo");
@@ -27,6 +28,9 @@ public record VkSubpassSampleLocationsEXT(MemorySegment segment) {
 
     public static final long OFFSET$subpassIndex = LAYOUT.byteOffset(PATH$subpassIndex);
     public static final long OFFSET$sampleLocationsInfo = LAYOUT.byteOffset(PATH$sampleLocationsInfo);
+
+    public static final long SIZE$subpassIndex = LAYOUT$subpassIndex.byteSize();
+    public static final long SIZE$sampleLocationsInfo = LAYOUT$sampleLocationsInfo.byteSize();
 
     public VkSubpassSampleLocationsEXT(MemorySegment segment) {
         this.segment = segment;
@@ -45,7 +49,7 @@ public record VkSubpassSampleLocationsEXT(MemorySegment segment) {
     }
 
     public void sampleLocationsInfo(VkSampleLocationsInfoEXT value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationsInfo, LAYOUT$sampleLocationsInfo.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationsInfo, SIZE$sampleLocationsInfo);
     }
 
     public static VkSubpassSampleLocationsEXT allocate(Arena arena) {
@@ -56,7 +60,7 @@ public record VkSubpassSampleLocationsEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubpassSampleLocationsEXT[] ret = new VkSubpassSampleLocationsEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSubpassSampleLocationsEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSubpassSampleLocationsEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

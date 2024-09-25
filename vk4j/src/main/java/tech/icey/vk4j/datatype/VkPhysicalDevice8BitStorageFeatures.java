@@ -21,6 +21,7 @@ public record VkPhysicalDevice8BitStorageFeatures(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("uniformAndStorageBuffer8BitAccess"),
         ValueLayout.JAVA_INT.withName("storagePushConstant8")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDevice8BitStorageFeatures(MemorySegment segment) {
     public static final long OFFSET$storageBuffer8BitAccess = LAYOUT.byteOffset(PATH$storageBuffer8BitAccess);
     public static final long OFFSET$uniformAndStorageBuffer8BitAccess = LAYOUT.byteOffset(PATH$uniformAndStorageBuffer8BitAccess);
     public static final long OFFSET$storagePushConstant8 = LAYOUT.byteOffset(PATH$storagePushConstant8);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$storageBuffer8BitAccess = LAYOUT$storageBuffer8BitAccess.byteSize();
+    public static final long SIZE$uniformAndStorageBuffer8BitAccess = LAYOUT$uniformAndStorageBuffer8BitAccess.byteSize();
+    public static final long SIZE$storagePushConstant8 = LAYOUT$storagePushConstant8.byteSize();
 
     public VkPhysicalDevice8BitStorageFeatures(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDevice8BitStorageFeatures(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevice8BitStorageFeatures[] ret = new VkPhysicalDevice8BitStorageFeatures[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDevice8BitStorageFeatures(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDevice8BitStorageFeatures(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -20,6 +20,7 @@ public record VkDrawIndirectCommand(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("firstVertex"),
         ValueLayout.JAVA_INT.withName("firstInstance")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$vertexCount = PathElement.groupElement("vertexCount");
     public static final PathElement PATH$instanceCount = PathElement.groupElement("instanceCount");
@@ -35,6 +36,11 @@ public record VkDrawIndirectCommand(MemorySegment segment) {
     public static final long OFFSET$instanceCount = LAYOUT.byteOffset(PATH$instanceCount);
     public static final long OFFSET$firstVertex = LAYOUT.byteOffset(PATH$firstVertex);
     public static final long OFFSET$firstInstance = LAYOUT.byteOffset(PATH$firstInstance);
+
+    public static final long SIZE$vertexCount = LAYOUT$vertexCount.byteSize();
+    public static final long SIZE$instanceCount = LAYOUT$instanceCount.byteSize();
+    public static final long SIZE$firstVertex = LAYOUT$firstVertex.byteSize();
+    public static final long SIZE$firstInstance = LAYOUT$firstInstance.byteSize();
 
     public VkDrawIndirectCommand(MemorySegment segment) {
         this.segment = segment;
@@ -80,7 +86,7 @@ public record VkDrawIndirectCommand(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDrawIndirectCommand[] ret = new VkDrawIndirectCommand[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDrawIndirectCommand(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDrawIndirectCommand(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

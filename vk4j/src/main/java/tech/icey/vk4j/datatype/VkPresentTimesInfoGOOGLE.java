@@ -20,6 +20,7 @@ public record VkPresentTimesInfoGOOGLE(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("swapchainCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkPresentTimeGOOGLE.LAYOUT).withName("pTimes")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPresentTimesInfoGOOGLE(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$swapchainCount = LAYOUT.byteOffset(PATH$swapchainCount);
     public static final long OFFSET$pTimes = LAYOUT.byteOffset(PATH$pTimes);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$swapchainCount = LAYOUT$swapchainCount.byteSize();
+    public static final long SIZE$pTimes = LAYOUT$pTimes.byteSize();
 
     public VkPresentTimesInfoGOOGLE(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +100,7 @@ public record VkPresentTimesInfoGOOGLE(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPresentTimesInfoGOOGLE[] ret = new VkPresentTimesInfoGOOGLE[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPresentTimesInfoGOOGLE(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPresentTimesInfoGOOGLE(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

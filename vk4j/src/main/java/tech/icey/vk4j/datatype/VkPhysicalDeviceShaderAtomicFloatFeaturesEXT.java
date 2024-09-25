@@ -30,6 +30,7 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(MemorySegment segment
         ValueLayout.JAVA_INT.withName("sparseImageFloat32Atomics"),
         ValueLayout.JAVA_INT.withName("sparseImageFloat32AtomicAdd")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -75,6 +76,21 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(MemorySegment segment
     public static final long OFFSET$shaderImageFloat32AtomicAdd = LAYOUT.byteOffset(PATH$shaderImageFloat32AtomicAdd);
     public static final long OFFSET$sparseImageFloat32Atomics = LAYOUT.byteOffset(PATH$sparseImageFloat32Atomics);
     public static final long OFFSET$sparseImageFloat32AtomicAdd = LAYOUT.byteOffset(PATH$sparseImageFloat32AtomicAdd);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderBufferFloat32Atomics = LAYOUT$shaderBufferFloat32Atomics.byteSize();
+    public static final long SIZE$shaderBufferFloat32AtomicAdd = LAYOUT$shaderBufferFloat32AtomicAdd.byteSize();
+    public static final long SIZE$shaderBufferFloat64Atomics = LAYOUT$shaderBufferFloat64Atomics.byteSize();
+    public static final long SIZE$shaderBufferFloat64AtomicAdd = LAYOUT$shaderBufferFloat64AtomicAdd.byteSize();
+    public static final long SIZE$shaderSharedFloat32Atomics = LAYOUT$shaderSharedFloat32Atomics.byteSize();
+    public static final long SIZE$shaderSharedFloat32AtomicAdd = LAYOUT$shaderSharedFloat32AtomicAdd.byteSize();
+    public static final long SIZE$shaderSharedFloat64Atomics = LAYOUT$shaderSharedFloat64Atomics.byteSize();
+    public static final long SIZE$shaderSharedFloat64AtomicAdd = LAYOUT$shaderSharedFloat64AtomicAdd.byteSize();
+    public static final long SIZE$shaderImageFloat32Atomics = LAYOUT$shaderImageFloat32Atomics.byteSize();
+    public static final long SIZE$shaderImageFloat32AtomicAdd = LAYOUT$shaderImageFloat32AtomicAdd.byteSize();
+    public static final long SIZE$sparseImageFloat32Atomics = LAYOUT$sparseImageFloat32Atomics.byteSize();
+    public static final long SIZE$sparseImageFloat32AtomicAdd = LAYOUT$sparseImageFloat32AtomicAdd.byteSize();
 
     public VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -201,7 +217,7 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderAtomicFloatFeaturesEXT[] ret = new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

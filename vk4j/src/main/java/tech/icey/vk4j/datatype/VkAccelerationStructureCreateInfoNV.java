@@ -20,6 +20,7 @@ public record VkAccelerationStructureCreateInfoNV(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("compactedSize"),
         VkAccelerationStructureInfoNV.LAYOUT.withName("info")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkAccelerationStructureCreateInfoNV(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$compactedSize = LAYOUT.byteOffset(PATH$compactedSize);
     public static final long OFFSET$info = LAYOUT.byteOffset(PATH$info);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$compactedSize = LAYOUT$compactedSize.byteSize();
+    public static final long SIZE$info = LAYOUT$info.byteSize();
 
     public VkAccelerationStructureCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -70,7 +76,7 @@ public record VkAccelerationStructureCreateInfoNV(MemorySegment segment) {
     }
 
     public void info(VkAccelerationStructureInfoNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$info, LAYOUT$info.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$info, SIZE$info);
     }
 
     public static VkAccelerationStructureCreateInfoNV allocate(Arena arena) {
@@ -81,7 +87,7 @@ public record VkAccelerationStructureCreateInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureCreateInfoNV[] ret = new VkAccelerationStructureCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

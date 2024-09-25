@@ -26,6 +26,7 @@ public record VkPhysicalDeviceRayTracingPipelinePropertiesKHR(MemorySegment segm
         ValueLayout.JAVA_INT.withName("shaderGroupHandleAlignment"),
         ValueLayout.JAVA_INT.withName("maxRayHitAttributeSize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -59,6 +60,17 @@ public record VkPhysicalDeviceRayTracingPipelinePropertiesKHR(MemorySegment segm
     public static final long OFFSET$maxRayDispatchInvocationCount = LAYOUT.byteOffset(PATH$maxRayDispatchInvocationCount);
     public static final long OFFSET$shaderGroupHandleAlignment = LAYOUT.byteOffset(PATH$shaderGroupHandleAlignment);
     public static final long OFFSET$maxRayHitAttributeSize = LAYOUT.byteOffset(PATH$maxRayHitAttributeSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderGroupHandleSize = LAYOUT$shaderGroupHandleSize.byteSize();
+    public static final long SIZE$maxRayRecursionDepth = LAYOUT$maxRayRecursionDepth.byteSize();
+    public static final long SIZE$maxShaderGroupStride = LAYOUT$maxShaderGroupStride.byteSize();
+    public static final long SIZE$shaderGroupBaseAlignment = LAYOUT$shaderGroupBaseAlignment.byteSize();
+    public static final long SIZE$shaderGroupHandleCaptureReplaySize = LAYOUT$shaderGroupHandleCaptureReplaySize.byteSize();
+    public static final long SIZE$maxRayDispatchInvocationCount = LAYOUT$maxRayDispatchInvocationCount.byteSize();
+    public static final long SIZE$shaderGroupHandleAlignment = LAYOUT$shaderGroupHandleAlignment.byteSize();
+    public static final long SIZE$maxRayHitAttributeSize = LAYOUT$maxRayHitAttributeSize.byteSize();
 
     public VkPhysicalDeviceRayTracingPipelinePropertiesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -153,7 +165,7 @@ public record VkPhysicalDeviceRayTracingPipelinePropertiesKHR(MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceRayTracingPipelinePropertiesKHR[] ret = new VkPhysicalDeviceRayTracingPipelinePropertiesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

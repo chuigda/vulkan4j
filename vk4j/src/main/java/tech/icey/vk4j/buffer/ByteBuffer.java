@@ -12,11 +12,11 @@ public record ByteBuffer(MemorySegment segment) {
     }
 
     public byte read() {
-        return read(0);
+        return segment.get(ValueLayout.JAVA_BYTE, 0);
     }
 
     public void write(byte value) {
-        write(0, value);
+        segment.set(ValueLayout.JAVA_BYTE, 0, value);
     }
 
     public byte read(long index) {

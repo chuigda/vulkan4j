@@ -19,6 +19,7 @@ public record VkPhysicalDeviceMemoryProperties2(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         VkPhysicalDeviceMemoryProperties.LAYOUT.withName("memoryProperties")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceMemoryProperties2(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$memoryProperties = LAYOUT.byteOffset(PATH$memoryProperties);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$memoryProperties = LAYOUT$memoryProperties.byteSize();
 
     public VkPhysicalDeviceMemoryProperties2(MemorySegment segment) {
         this.segment = segment;
@@ -58,7 +63,7 @@ public record VkPhysicalDeviceMemoryProperties2(MemorySegment segment) {
     }
 
     public void memoryProperties(VkPhysicalDeviceMemoryProperties value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryProperties, LAYOUT$memoryProperties.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryProperties, SIZE$memoryProperties);
     }
 
     public static VkPhysicalDeviceMemoryProperties2 allocate(Arena arena) {
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceMemoryProperties2(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMemoryProperties2[] ret = new VkPhysicalDeviceMemoryProperties2[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMemoryProperties2(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceMemoryProperties2(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

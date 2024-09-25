@@ -21,6 +21,7 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pfnUserCallback"),
         ValueLayout.ADDRESS.withName("pUserData")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) {
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$pfnUserCallback = LAYOUT.byteOffset(PATH$pfnUserCallback);
     public static final long OFFSET$pUserData = LAYOUT.byteOffset(PATH$pUserData);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$pfnUserCallback = LAYOUT$pfnUserCallback.byteSize();
+    public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
 
     public VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceDeviceMemoryReportCreateInfoEXT[] ret = new VkDeviceDeviceMemoryReportCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceDeviceMemoryReportCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDeviceDeviceMemoryReportCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

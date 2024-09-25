@@ -22,6 +22,7 @@ public record VkPhysicalDeviceExternalSciSync2FeaturesNV(MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("sciSyncImport"),
         ValueLayout.JAVA_INT.withName("sciSyncExport")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPhysicalDeviceExternalSciSync2FeaturesNV(MemorySegment segment) 
     public static final long OFFSET$sciSyncSemaphore2 = LAYOUT.byteOffset(PATH$sciSyncSemaphore2);
     public static final long OFFSET$sciSyncImport = LAYOUT.byteOffset(PATH$sciSyncImport);
     public static final long OFFSET$sciSyncExport = LAYOUT.byteOffset(PATH$sciSyncExport);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$sciSyncFence = LAYOUT$sciSyncFence.byteSize();
+    public static final long SIZE$sciSyncSemaphore2 = LAYOUT$sciSyncSemaphore2.byteSize();
+    public static final long SIZE$sciSyncImport = LAYOUT$sciSyncImport.byteSize();
+    public static final long SIZE$sciSyncExport = LAYOUT$sciSyncExport.byteSize();
 
     public VkPhysicalDeviceExternalSciSync2FeaturesNV(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkPhysicalDeviceExternalSciSync2FeaturesNV(MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceExternalSciSync2FeaturesNV[] ret = new VkPhysicalDeviceExternalSciSync2FeaturesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceExternalSciSync2FeaturesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceExternalSciSync2FeaturesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

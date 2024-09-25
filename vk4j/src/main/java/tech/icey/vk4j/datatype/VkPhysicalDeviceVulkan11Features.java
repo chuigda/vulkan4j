@@ -30,6 +30,7 @@ public record VkPhysicalDeviceVulkan11Features(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("samplerYcbcrConversion"),
         ValueLayout.JAVA_INT.withName("shaderDrawParameters")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -75,6 +76,21 @@ public record VkPhysicalDeviceVulkan11Features(MemorySegment segment) {
     public static final long OFFSET$protectedMemory = LAYOUT.byteOffset(PATH$protectedMemory);
     public static final long OFFSET$samplerYcbcrConversion = LAYOUT.byteOffset(PATH$samplerYcbcrConversion);
     public static final long OFFSET$shaderDrawParameters = LAYOUT.byteOffset(PATH$shaderDrawParameters);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$storageBuffer16BitAccess = LAYOUT$storageBuffer16BitAccess.byteSize();
+    public static final long SIZE$uniformAndStorageBuffer16BitAccess = LAYOUT$uniformAndStorageBuffer16BitAccess.byteSize();
+    public static final long SIZE$storagePushConstant16 = LAYOUT$storagePushConstant16.byteSize();
+    public static final long SIZE$storageInputOutput16 = LAYOUT$storageInputOutput16.byteSize();
+    public static final long SIZE$multiview = LAYOUT$multiview.byteSize();
+    public static final long SIZE$multiviewGeometryShader = LAYOUT$multiviewGeometryShader.byteSize();
+    public static final long SIZE$multiviewTessellationShader = LAYOUT$multiviewTessellationShader.byteSize();
+    public static final long SIZE$variablePointersStorageBuffer = LAYOUT$variablePointersStorageBuffer.byteSize();
+    public static final long SIZE$variablePointers = LAYOUT$variablePointers.byteSize();
+    public static final long SIZE$protectedMemory = LAYOUT$protectedMemory.byteSize();
+    public static final long SIZE$samplerYcbcrConversion = LAYOUT$samplerYcbcrConversion.byteSize();
+    public static final long SIZE$shaderDrawParameters = LAYOUT$shaderDrawParameters.byteSize();
 
     public VkPhysicalDeviceVulkan11Features(MemorySegment segment) {
         this.segment = segment;
@@ -201,7 +217,7 @@ public record VkPhysicalDeviceVulkan11Features(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceVulkan11Features[] ret = new VkPhysicalDeviceVulkan11Features[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceVulkan11Features(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceVulkan11Features(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

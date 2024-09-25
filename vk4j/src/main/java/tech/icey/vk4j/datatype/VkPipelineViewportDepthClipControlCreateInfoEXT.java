@@ -19,6 +19,7 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(MemorySegment segm
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("negativeOneToOne")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(MemorySegment segm
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$negativeOneToOne = LAYOUT.byteOffset(PATH$negativeOneToOne);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$negativeOneToOne = LAYOUT$negativeOneToOne.byteSize();
 
     public VkPipelineViewportDepthClipControlCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineViewportDepthClipControlCreateInfoEXT[] ret = new VkPipelineViewportDepthClipControlCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineViewportDepthClipControlCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineViewportDepthClipControlCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

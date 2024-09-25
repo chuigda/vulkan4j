@@ -23,6 +23,7 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(MemorySegment segmen
         ValueLayout.JAVA_INT.withName("coverageModulationTableCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT).withName("pCoverageModulationTable")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(MemorySegment segmen
     public static final long OFFSET$coverageModulationTableEnable = LAYOUT.byteOffset(PATH$coverageModulationTableEnable);
     public static final long OFFSET$coverageModulationTableCount = LAYOUT.byteOffset(PATH$coverageModulationTableCount);
     public static final long OFFSET$pCoverageModulationTable = LAYOUT.byteOffset(PATH$pCoverageModulationTable);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$coverageModulationMode = LAYOUT$coverageModulationMode.byteSize();
+    public static final long SIZE$coverageModulationTableEnable = LAYOUT$coverageModulationTableEnable.byteSize();
+    public static final long SIZE$coverageModulationTableCount = LAYOUT$coverageModulationTableCount.byteSize();
+    public static final long SIZE$pCoverageModulationTable = LAYOUT$pCoverageModulationTable.byteSize();
 
     public VkPipelineCoverageModulationStateCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -125,7 +134,7 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineCoverageModulationStateCreateInfoNV[] ret = new VkPipelineCoverageModulationStateCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineCoverageModulationStateCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineCoverageModulationStateCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

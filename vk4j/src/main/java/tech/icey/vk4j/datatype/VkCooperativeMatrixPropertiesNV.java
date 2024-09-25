@@ -26,6 +26,7 @@ public record VkCooperativeMatrixPropertiesNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("DType"),
         ValueLayout.JAVA_INT.withName("scope")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -59,6 +60,17 @@ public record VkCooperativeMatrixPropertiesNV(MemorySegment segment) {
     public static final long OFFSET$CType = LAYOUT.byteOffset(PATH$CType);
     public static final long OFFSET$DType = LAYOUT.byteOffset(PATH$DType);
     public static final long OFFSET$scope = LAYOUT.byteOffset(PATH$scope);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$MSize = LAYOUT$MSize.byteSize();
+    public static final long SIZE$NSize = LAYOUT$NSize.byteSize();
+    public static final long SIZE$KSize = LAYOUT$KSize.byteSize();
+    public static final long SIZE$AType = LAYOUT$AType.byteSize();
+    public static final long SIZE$BType = LAYOUT$BType.byteSize();
+    public static final long SIZE$CType = LAYOUT$CType.byteSize();
+    public static final long SIZE$DType = LAYOUT$DType.byteSize();
+    public static final long SIZE$scope = LAYOUT$scope.byteSize();
 
     public VkCooperativeMatrixPropertiesNV(MemorySegment segment) {
         this.segment = segment;
@@ -153,7 +165,7 @@ public record VkCooperativeMatrixPropertiesNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCooperativeMatrixPropertiesNV[] ret = new VkCooperativeMatrixPropertiesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkCooperativeMatrixPropertiesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkCooperativeMatrixPropertiesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

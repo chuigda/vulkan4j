@@ -33,6 +33,7 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("maxPerSetDescriptors"),
         ValueLayout.JAVA_LONG.withName("maxMemoryAllocationSize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -88,6 +89,24 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
     public static final long OFFSET$maxPerSetDescriptors = LAYOUT.byteOffset(PATH$maxPerSetDescriptors);
     public static final long OFFSET$maxMemoryAllocationSize = LAYOUT.byteOffset(PATH$maxMemoryAllocationSize);
 
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$deviceUUID = LAYOUT$deviceUUID.byteSize();
+    public static final long SIZE$driverUUID = LAYOUT$driverUUID.byteSize();
+    public static final long SIZE$deviceLUID = LAYOUT$deviceLUID.byteSize();
+    public static final long SIZE$deviceNodeMask = LAYOUT$deviceNodeMask.byteSize();
+    public static final long SIZE$deviceLUIDValid = LAYOUT$deviceLUIDValid.byteSize();
+    public static final long SIZE$subgroupSize = LAYOUT$subgroupSize.byteSize();
+    public static final long SIZE$subgroupSupportedStages = LAYOUT$subgroupSupportedStages.byteSize();
+    public static final long SIZE$subgroupSupportedOperations = LAYOUT$subgroupSupportedOperations.byteSize();
+    public static final long SIZE$subgroupQuadOperationsInAllStages = LAYOUT$subgroupQuadOperationsInAllStages.byteSize();
+    public static final long SIZE$pointClippingBehavior = LAYOUT$pointClippingBehavior.byteSize();
+    public static final long SIZE$maxMultiviewViewCount = LAYOUT$maxMultiviewViewCount.byteSize();
+    public static final long SIZE$maxMultiviewInstanceIndex = LAYOUT$maxMultiviewInstanceIndex.byteSize();
+    public static final long SIZE$protectedNoFault = LAYOUT$protectedNoFault.byteSize();
+    public static final long SIZE$maxPerSetDescriptors = LAYOUT$maxPerSetDescriptors.byteSize();
+    public static final long SIZE$maxMemoryAllocationSize = LAYOUT$maxMemoryAllocationSize.byteSize();
+
     public VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES);
@@ -110,7 +129,7 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
     }
 
     public MemorySegment deviceUUIDRaw() {
-        return segment.asSlice(OFFSET$deviceUUID, LAYOUT$deviceUUID.byteSize());
+        return segment.asSlice(OFFSET$deviceUUID, SIZE$deviceUUID);
     }
 
     public @unsigned ByteBuffer deviceUUID() {
@@ -118,11 +137,11 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
     }
 
     public void deviceUUID(@unsigned ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceUUID, LAYOUT$deviceUUID.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceUUID, SIZE$deviceUUID);
     }
 
     public MemorySegment driverUUIDRaw() {
-        return segment.asSlice(OFFSET$driverUUID, LAYOUT$driverUUID.byteSize());
+        return segment.asSlice(OFFSET$driverUUID, SIZE$driverUUID);
     }
 
     public @unsigned ByteBuffer driverUUID() {
@@ -130,11 +149,11 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
     }
 
     public void driverUUID(@unsigned ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverUUID, LAYOUT$driverUUID.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverUUID, SIZE$driverUUID);
     }
 
     public MemorySegment deviceLUIDRaw() {
-        return segment.asSlice(OFFSET$deviceLUID, LAYOUT$deviceLUID.byteSize());
+        return segment.asSlice(OFFSET$deviceLUID, SIZE$deviceLUID);
     }
 
     public @unsigned ByteBuffer deviceLUID() {
@@ -142,7 +161,7 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
     }
 
     public void deviceLUID(@unsigned ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceLUID, LAYOUT$deviceLUID.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceLUID, SIZE$deviceLUID);
     }
 
     public @unsigned int deviceNodeMask() {
@@ -249,7 +268,7 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceVulkan11Properties[] ret = new VkPhysicalDeviceVulkan11Properties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceVulkan11Properties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceVulkan11Properties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

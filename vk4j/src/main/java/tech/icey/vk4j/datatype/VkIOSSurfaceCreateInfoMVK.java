@@ -20,6 +20,7 @@ public record VkIOSSurfaceCreateInfoMVK(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.ADDRESS.withName("pView")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkIOSSurfaceCreateInfoMVK(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$pView = LAYOUT.byteOffset(PATH$pView);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$pView = LAYOUT$pView.byteSize();
 
     public VkIOSSurfaceCreateInfoMVK(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkIOSSurfaceCreateInfoMVK(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkIOSSurfaceCreateInfoMVK[] ret = new VkIOSSurfaceCreateInfoMVK[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkIOSSurfaceCreateInfoMVK(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkIOSSurfaceCreateInfoMVK(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

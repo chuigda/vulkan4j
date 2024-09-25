@@ -19,6 +19,7 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(MemorySegment s
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("commandBufferInheritance")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(MemorySegment s
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$commandBufferInheritance = LAYOUT.byteOffset(PATH$commandBufferInheritance);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$commandBufferInheritance = LAYOUT$commandBufferInheritance.byteSize();
 
     public VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceCommandBufferInheritanceFeaturesNV[] ret = new VkPhysicalDeviceCommandBufferInheritanceFeaturesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -20,6 +20,7 @@ public record VkDispatchGraphInfoAMDX(MemorySegment segment) {
         VkDeviceOrHostAddressConstAMDX.LAYOUT.withName("payloads"),
         ValueLayout.JAVA_LONG.withName("payloadStride")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$nodeIndex = PathElement.groupElement("nodeIndex");
     public static final PathElement PATH$payloadCount = PathElement.groupElement("payloadCount");
@@ -35,6 +36,11 @@ public record VkDispatchGraphInfoAMDX(MemorySegment segment) {
     public static final long OFFSET$payloadCount = LAYOUT.byteOffset(PATH$payloadCount);
     public static final long OFFSET$payloads = LAYOUT.byteOffset(PATH$payloads);
     public static final long OFFSET$payloadStride = LAYOUT.byteOffset(PATH$payloadStride);
+
+    public static final long SIZE$nodeIndex = LAYOUT$nodeIndex.byteSize();
+    public static final long SIZE$payloadCount = LAYOUT$payloadCount.byteSize();
+    public static final long SIZE$payloads = LAYOUT$payloads.byteSize();
+    public static final long SIZE$payloadStride = LAYOUT$payloadStride.byteSize();
 
     public VkDispatchGraphInfoAMDX(MemorySegment segment) {
         this.segment = segment;
@@ -61,7 +67,7 @@ public record VkDispatchGraphInfoAMDX(MemorySegment segment) {
     }
 
     public void payloads(VkDeviceOrHostAddressConstAMDX value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$payloads, LAYOUT$payloads.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$payloads, SIZE$payloads);
     }
 
     public @unsigned long payloadStride() {
@@ -80,7 +86,7 @@ public record VkDispatchGraphInfoAMDX(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDispatchGraphInfoAMDX[] ret = new VkDispatchGraphInfoAMDX[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDispatchGraphInfoAMDX(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDispatchGraphInfoAMDX(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

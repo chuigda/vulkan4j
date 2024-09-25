@@ -30,6 +30,7 @@ public record VkTraceRaysIndirectCommand2KHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("height"),
         ValueLayout.JAVA_INT.withName("depth")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$raygenShaderRecordAddress = PathElement.groupElement("raygenShaderRecordAddress");
     public static final PathElement PATH$raygenShaderRecordSize = PathElement.groupElement("raygenShaderRecordSize");
@@ -75,6 +76,21 @@ public record VkTraceRaysIndirectCommand2KHR(MemorySegment segment) {
     public static final long OFFSET$width = LAYOUT.byteOffset(PATH$width);
     public static final long OFFSET$height = LAYOUT.byteOffset(PATH$height);
     public static final long OFFSET$depth = LAYOUT.byteOffset(PATH$depth);
+
+    public static final long SIZE$raygenShaderRecordAddress = LAYOUT$raygenShaderRecordAddress.byteSize();
+    public static final long SIZE$raygenShaderRecordSize = LAYOUT$raygenShaderRecordSize.byteSize();
+    public static final long SIZE$missShaderBindingTableAddress = LAYOUT$missShaderBindingTableAddress.byteSize();
+    public static final long SIZE$missShaderBindingTableSize = LAYOUT$missShaderBindingTableSize.byteSize();
+    public static final long SIZE$missShaderBindingTableStride = LAYOUT$missShaderBindingTableStride.byteSize();
+    public static final long SIZE$hitShaderBindingTableAddress = LAYOUT$hitShaderBindingTableAddress.byteSize();
+    public static final long SIZE$hitShaderBindingTableSize = LAYOUT$hitShaderBindingTableSize.byteSize();
+    public static final long SIZE$hitShaderBindingTableStride = LAYOUT$hitShaderBindingTableStride.byteSize();
+    public static final long SIZE$callableShaderBindingTableAddress = LAYOUT$callableShaderBindingTableAddress.byteSize();
+    public static final long SIZE$callableShaderBindingTableSize = LAYOUT$callableShaderBindingTableSize.byteSize();
+    public static final long SIZE$callableShaderBindingTableStride = LAYOUT$callableShaderBindingTableStride.byteSize();
+    public static final long SIZE$width = LAYOUT$width.byteSize();
+    public static final long SIZE$height = LAYOUT$height.byteSize();
+    public static final long SIZE$depth = LAYOUT$depth.byteSize();
 
     public VkTraceRaysIndirectCommand2KHR(MemorySegment segment) {
         this.segment = segment;
@@ -200,7 +216,7 @@ public record VkTraceRaysIndirectCommand2KHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkTraceRaysIndirectCommand2KHR[] ret = new VkTraceRaysIndirectCommand2KHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkTraceRaysIndirectCommand2KHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkTraceRaysIndirectCommand2KHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

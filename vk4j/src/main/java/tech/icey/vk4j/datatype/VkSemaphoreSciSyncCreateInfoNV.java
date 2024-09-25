@@ -20,6 +20,7 @@ public record VkSemaphoreSciSyncCreateInfoNV(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("semaphorePool"),
         ValueLayout.ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_LONG)).withName("pFence")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkSemaphoreSciSyncCreateInfoNV(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$semaphorePool = LAYOUT.byteOffset(PATH$semaphorePool);
     public static final long OFFSET$pFence = LAYOUT.byteOffset(PATH$pFence);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$semaphorePool = LAYOUT$semaphorePool.byteSize();
+    public static final long SIZE$pFence = LAYOUT$pFence.byteSize();
 
     public VkSemaphoreSciSyncCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkSemaphoreSciSyncCreateInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSemaphoreSciSyncCreateInfoNV[] ret = new VkSemaphoreSciSyncCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSemaphoreSciSyncCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSemaphoreSciSyncCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

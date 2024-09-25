@@ -22,6 +22,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("pipelineCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pPipelines")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
     public static final long OFFSET$pGroups = LAYOUT.byteOffset(PATH$pGroups);
     public static final long OFFSET$pipelineCount = LAYOUT.byteOffset(PATH$pipelineCount);
     public static final long OFFSET$pPipelines = LAYOUT.byteOffset(PATH$pPipelines);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$groupCount = LAYOUT$groupCount.byteSize();
+    public static final long SIZE$pGroups = LAYOUT$pGroups.byteSize();
+    public static final long SIZE$pipelineCount = LAYOUT$pipelineCount.byteSize();
+    public static final long SIZE$pPipelines = LAYOUT$pPipelines.byteSize();
 
     public VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -131,7 +139,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkGraphicsPipelineShaderGroupsCreateInfoNV[] ret = new VkGraphicsPipelineShaderGroupsCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkGraphicsPipelineShaderGroupsCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkGraphicsPipelineShaderGroupsCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

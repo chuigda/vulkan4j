@@ -1,13 +1,17 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.StructLayout;
-
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkImageCopy(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -17,6 +21,7 @@ public record VkImageCopy(MemorySegment segment) {
         VkOffset3D.LAYOUT.withName("dstOffset"),
         VkExtent3D.LAYOUT.withName("extent")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$srcSubresource = PathElement.groupElement("srcSubresource");
     public static final PathElement PATH$srcOffset = PathElement.groupElement("srcOffset");
@@ -36,6 +41,12 @@ public record VkImageCopy(MemorySegment segment) {
     public static final long OFFSET$dstOffset = LAYOUT.byteOffset(PATH$dstOffset);
     public static final long OFFSET$extent = LAYOUT.byteOffset(PATH$extent);
 
+    public static final long SIZE$srcSubresource = LAYOUT$srcSubresource.byteSize();
+    public static final long SIZE$srcOffset = LAYOUT$srcOffset.byteSize();
+    public static final long SIZE$dstSubresource = LAYOUT$dstSubresource.byteSize();
+    public static final long SIZE$dstOffset = LAYOUT$dstOffset.byteSize();
+    public static final long SIZE$extent = LAYOUT$extent.byteSize();
+
     public VkImageCopy(MemorySegment segment) {
         this.segment = segment;
     }
@@ -45,7 +56,7 @@ public record VkImageCopy(MemorySegment segment) {
     }
 
     public void srcSubresource(VkImageSubresourceLayers value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcSubresource, LAYOUT$srcSubresource.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcSubresource, SIZE$srcSubresource);
     }
 
     public VkOffset3D srcOffset() {
@@ -53,7 +64,7 @@ public record VkImageCopy(MemorySegment segment) {
     }
 
     public void srcOffset(VkOffset3D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcOffset, LAYOUT$srcOffset.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcOffset, SIZE$srcOffset);
     }
 
     public VkImageSubresourceLayers dstSubresource() {
@@ -61,7 +72,7 @@ public record VkImageCopy(MemorySegment segment) {
     }
 
     public void dstSubresource(VkImageSubresourceLayers value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstSubresource, LAYOUT$dstSubresource.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstSubresource, SIZE$dstSubresource);
     }
 
     public VkOffset3D dstOffset() {
@@ -69,7 +80,7 @@ public record VkImageCopy(MemorySegment segment) {
     }
 
     public void dstOffset(VkOffset3D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstOffset, LAYOUT$dstOffset.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstOffset, SIZE$dstOffset);
     }
 
     public VkExtent3D extent() {
@@ -77,18 +88,18 @@ public record VkImageCopy(MemorySegment segment) {
     }
 
     public void extent(VkExtent3D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, LAYOUT$extent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
     }
 
     public static VkImageCopy allocate(Arena arena) {
         return new VkImageCopy(arena.allocate(LAYOUT));
     }
-
+    
     public static VkImageCopy[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageCopy[] ret = new VkImageCopy[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageCopy(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageCopy(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

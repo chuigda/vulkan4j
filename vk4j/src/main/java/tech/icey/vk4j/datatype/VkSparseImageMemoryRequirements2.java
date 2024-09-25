@@ -19,6 +19,7 @@ public record VkSparseImageMemoryRequirements2(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         VkSparseImageMemoryRequirements.LAYOUT.withName("memoryRequirements")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkSparseImageMemoryRequirements2(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$memoryRequirements = LAYOUT.byteOffset(PATH$memoryRequirements);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$memoryRequirements = LAYOUT$memoryRequirements.byteSize();
 
     public VkSparseImageMemoryRequirements2(MemorySegment segment) {
         this.segment = segment;
@@ -58,7 +63,7 @@ public record VkSparseImageMemoryRequirements2(MemorySegment segment) {
     }
 
     public void memoryRequirements(VkSparseImageMemoryRequirements value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryRequirements, LAYOUT$memoryRequirements.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryRequirements, SIZE$memoryRequirements);
     }
 
     public static VkSparseImageMemoryRequirements2 allocate(Arena arena) {
@@ -69,7 +74,7 @@ public record VkSparseImageMemoryRequirements2(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSparseImageMemoryRequirements2[] ret = new VkSparseImageMemoryRequirements2[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSparseImageMemoryRequirements2(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSparseImageMemoryRequirements2(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

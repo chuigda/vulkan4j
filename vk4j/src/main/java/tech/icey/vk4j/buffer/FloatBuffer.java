@@ -10,11 +10,11 @@ public record FloatBuffer(MemorySegment segment) {
     }
 
     public float read() {
-        return read(0);
+        return segment.get(ValueLayout.JAVA_FLOAT, 0);
     }
 
     public void write(float value) {
-        write(0, value);
+        segment.set(ValueLayout.JAVA_FLOAT, 0, value);
     }
 
     public float read(long index) {

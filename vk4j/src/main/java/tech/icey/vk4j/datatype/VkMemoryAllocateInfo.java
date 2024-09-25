@@ -20,6 +20,7 @@ public record VkMemoryAllocateInfo(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("allocationSize"),
         ValueLayout.JAVA_INT.withName("memoryTypeIndex")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkMemoryAllocateInfo(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$allocationSize = LAYOUT.byteOffset(PATH$allocationSize);
     public static final long OFFSET$memoryTypeIndex = LAYOUT.byteOffset(PATH$memoryTypeIndex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$allocationSize = LAYOUT$allocationSize.byteSize();
+    public static final long SIZE$memoryTypeIndex = LAYOUT$memoryTypeIndex.byteSize();
 
     public VkMemoryAllocateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkMemoryAllocateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMemoryAllocateInfo[] ret = new VkMemoryAllocateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkMemoryAllocateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkMemoryAllocateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -1,23 +1,16 @@
 package tech.icey.vk4j.command;
 
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.buffer.ByteBuffer;
-import tech.icey.vk4j.buffer.IntBuffer;
-import tech.icey.vk4j.datatype.VkAllocationCallbacks;
-import tech.icey.vk4j.datatype.VkExtensionProperties;
-import tech.icey.vk4j.datatype.VkInstanceCreateInfo;
-import tech.icey.vk4j.datatype.VkLayerProperties;
-import tech.icey.vk4j.enumtype.VkResult;
-import tech.icey.vk4j.handle.VkInstance;
-import tech.icey.vk4j.util.Function2;
-
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
+
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.util.Function2;
 
 public final class EntryCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkCreateInstance = FunctionDescriptor.of(

@@ -20,6 +20,7 @@ public record VkAccelerationStructureGeometryInstancesDataKHR(MemorySegment segm
         ValueLayout.JAVA_INT.withName("arrayOfPointers"),
         VkDeviceOrHostAddressConstKHR.LAYOUT.withName("data")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkAccelerationStructureGeometryInstancesDataKHR(MemorySegment segm
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$arrayOfPointers = LAYOUT.byteOffset(PATH$arrayOfPointers);
     public static final long OFFSET$data = LAYOUT.byteOffset(PATH$data);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$arrayOfPointers = LAYOUT$arrayOfPointers.byteSize();
+    public static final long SIZE$data = LAYOUT$data.byteSize();
 
     public VkAccelerationStructureGeometryInstancesDataKHR(MemorySegment segment) {
         this.segment = segment;
@@ -70,7 +76,7 @@ public record VkAccelerationStructureGeometryInstancesDataKHR(MemorySegment segm
     }
 
     public void data(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, LAYOUT$data.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
     }
 
     public static VkAccelerationStructureGeometryInstancesDataKHR allocate(Arena arena) {
@@ -81,7 +87,7 @@ public record VkAccelerationStructureGeometryInstancesDataKHR(MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureGeometryInstancesDataKHR[] ret = new VkAccelerationStructureGeometryInstancesDataKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureGeometryInstancesDataKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureGeometryInstancesDataKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

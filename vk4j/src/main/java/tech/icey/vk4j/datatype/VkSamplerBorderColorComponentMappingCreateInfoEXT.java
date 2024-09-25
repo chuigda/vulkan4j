@@ -20,6 +20,7 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(MemorySegment se
         VkComponentMapping.LAYOUT.withName("components"),
         ValueLayout.JAVA_INT.withName("srgb")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(MemorySegment se
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$components = LAYOUT.byteOffset(PATH$components);
     public static final long OFFSET$srgb = LAYOUT.byteOffset(PATH$srgb);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$components = LAYOUT$components.byteSize();
+    public static final long SIZE$srgb = LAYOUT$srgb.byteSize();
 
     public VkSamplerBorderColorComponentMappingCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -62,7 +68,7 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(MemorySegment se
     }
 
     public void components(VkComponentMapping value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, LAYOUT$components.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, SIZE$components);
     }
 
     public @unsigned int srgb() {
@@ -81,7 +87,7 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSamplerBorderColorComponentMappingCreateInfoEXT[] ret = new VkSamplerBorderColorComponentMappingCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSamplerBorderColorComponentMappingCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSamplerBorderColorComponentMappingCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

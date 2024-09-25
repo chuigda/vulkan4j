@@ -21,6 +21,7 @@ public record VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(MemorySegment segm
         ValueLayout.JAVA_INT.withName("shaderCoreCount"),
         ValueLayout.JAVA_INT.withName("shaderWarpsPerCore")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(MemorySegment segm
     public static final long OFFSET$shaderCoreMask = LAYOUT.byteOffset(PATH$shaderCoreMask);
     public static final long OFFSET$shaderCoreCount = LAYOUT.byteOffset(PATH$shaderCoreCount);
     public static final long OFFSET$shaderWarpsPerCore = LAYOUT.byteOffset(PATH$shaderWarpsPerCore);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderCoreMask = LAYOUT$shaderCoreMask.byteSize();
+    public static final long SIZE$shaderCoreCount = LAYOUT$shaderCoreCount.byteSize();
+    public static final long SIZE$shaderWarpsPerCore = LAYOUT$shaderWarpsPerCore.byteSize();
 
     public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM[] ret = new VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

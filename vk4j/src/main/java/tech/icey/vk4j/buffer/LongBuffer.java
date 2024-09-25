@@ -10,11 +10,11 @@ public record LongBuffer(MemorySegment segment) {
     }
 
     public long read() {
-        return read(0);
+        return segment.get(ValueLayout.JAVA_LONG, 0);
     }
 
     public void write(long value) {
-        write(0, value);
+        segment.set(ValueLayout.JAVA_LONG, 0, value);
     }
 
     public long read(long index) {

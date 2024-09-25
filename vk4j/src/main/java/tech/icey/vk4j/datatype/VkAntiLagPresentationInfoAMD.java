@@ -20,6 +20,7 @@ public record VkAntiLagPresentationInfoAMD(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("stage"),
         ValueLayout.JAVA_LONG.withName("frameIndex")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkAntiLagPresentationInfoAMD(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$stage = LAYOUT.byteOffset(PATH$stage);
     public static final long OFFSET$frameIndex = LAYOUT.byteOffset(PATH$frameIndex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$stage = LAYOUT$stage.byteSize();
+    public static final long SIZE$frameIndex = LAYOUT$frameIndex.byteSize();
 
     public VkAntiLagPresentationInfoAMD(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkAntiLagPresentationInfoAMD(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAntiLagPresentationInfoAMD[] ret = new VkAntiLagPresentationInfoAMD[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAntiLagPresentationInfoAMD(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAntiLagPresentationInfoAMD(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

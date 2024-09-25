@@ -20,6 +20,7 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(MemorySegment segment) {
         VkExtent2D.LAYOUT.withName("windowExtent"),
         ValueLayout.JAVA_INT.withName("windowCompareMode")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$windowExtent = LAYOUT.byteOffset(PATH$windowExtent);
     public static final long OFFSET$windowCompareMode = LAYOUT.byteOffset(PATH$windowCompareMode);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$windowExtent = LAYOUT$windowExtent.byteSize();
+    public static final long SIZE$windowCompareMode = LAYOUT$windowCompareMode.byteSize();
 
     public VkSamplerBlockMatchWindowCreateInfoQCOM(MemorySegment segment) {
         this.segment = segment;
@@ -62,7 +68,7 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(MemorySegment segment) {
     }
 
     public void windowExtent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$windowExtent, LAYOUT$windowExtent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$windowExtent, SIZE$windowExtent);
     }
 
     public @enumtype(VkBlockMatchWindowCompareModeQCOM.class) int windowCompareMode() {
@@ -81,7 +87,7 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSamplerBlockMatchWindowCreateInfoQCOM[] ret = new VkSamplerBlockMatchWindowCreateInfoQCOM[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSamplerBlockMatchWindowCreateInfoQCOM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSamplerBlockMatchWindowCreateInfoQCOM(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

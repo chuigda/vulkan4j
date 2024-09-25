@@ -1,21 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.buffer.IntBuffer;
-import tech.icey.vk4j.enumtype.VkResult;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkSemaphore;
-import tech.icey.vk4j.handle.VkSwapchainKHR;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkPresentInfoKHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -28,6 +24,7 @@ public record VkPresentInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pImageIndices"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pResults")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -55,6 +52,15 @@ public record VkPresentInfoKHR(MemorySegment segment) {
     public static final long OFFSET$pSwapchains = LAYOUT.byteOffset(PATH$pSwapchains);
     public static final long OFFSET$pImageIndices = LAYOUT.byteOffset(PATH$pImageIndices);
     public static final long OFFSET$pResults = LAYOUT.byteOffset(PATH$pResults);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$waitSemaphoreCount = LAYOUT$waitSemaphoreCount.byteSize();
+    public static final long SIZE$pWaitSemaphores = LAYOUT$pWaitSemaphores.byteSize();
+    public static final long SIZE$swapchainCount = LAYOUT$swapchainCount.byteSize();
+    public static final long SIZE$pSwapchains = LAYOUT$pSwapchains.byteSize();
+    public static final long SIZE$pImageIndices = LAYOUT$pImageIndices.byteSize();
+    public static final long SIZE$pResults = LAYOUT$pResults.byteSize();
 
     public VkPresentInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -142,7 +148,7 @@ public record VkPresentInfoKHR(MemorySegment segment) {
     public void pImageIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
     }
-
+    
     public @unsigned IntBuffer pImageIndices() {
         return new IntBuffer(pImageIndicesRaw());
     }
@@ -154,20 +160,20 @@ public record VkPresentInfoKHR(MemorySegment segment) {
     public @pointer(target=VkResult.class) MemorySegment pResultsRaw() {
         return segment.get(LAYOUT$pResults, OFFSET$pResults);
     }
-
+    
     public void pResultsRaw(@pointer(target=VkResult.class) MemorySegment value) {
         segment.set(LAYOUT$pResults, OFFSET$pResults, value);
     }
-
+    
     public @nullable IntBuffer pResults() {
         MemorySegment s = pResultsRaw();
         if (s.address() == 0) {
             return null;
         }
-
+        
         return new IntBuffer(s);
     }
-
+    
     public void pResults(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResultsRaw(s);
@@ -176,12 +182,12 @@ public record VkPresentInfoKHR(MemorySegment segment) {
     public static VkPresentInfoKHR allocate(Arena arena) {
         return new VkPresentInfoKHR(arena.allocate(LAYOUT));
     }
-
+    
     public static VkPresentInfoKHR[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPresentInfoKHR[] ret = new VkPresentInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPresentInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPresentInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

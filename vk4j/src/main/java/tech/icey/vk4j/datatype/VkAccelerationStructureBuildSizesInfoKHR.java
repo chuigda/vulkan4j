@@ -21,6 +21,7 @@ public record VkAccelerationStructureBuildSizesInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("updateScratchSize"),
         ValueLayout.JAVA_LONG.withName("buildScratchSize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkAccelerationStructureBuildSizesInfoKHR(MemorySegment segment) {
     public static final long OFFSET$accelerationStructureSize = LAYOUT.byteOffset(PATH$accelerationStructureSize);
     public static final long OFFSET$updateScratchSize = LAYOUT.byteOffset(PATH$updateScratchSize);
     public static final long OFFSET$buildScratchSize = LAYOUT.byteOffset(PATH$buildScratchSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$accelerationStructureSize = LAYOUT$accelerationStructureSize.byteSize();
+    public static final long SIZE$updateScratchSize = LAYOUT$updateScratchSize.byteSize();
+    public static final long SIZE$buildScratchSize = LAYOUT$buildScratchSize.byteSize();
 
     public VkAccelerationStructureBuildSizesInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkAccelerationStructureBuildSizesInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureBuildSizesInfoKHR[] ret = new VkAccelerationStructureBuildSizesInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureBuildSizesInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureBuildSizesInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

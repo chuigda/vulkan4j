@@ -19,6 +19,7 @@ public record VkImportMetalIOSurfaceInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("ioSurface")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkImportMetalIOSurfaceInfoEXT(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$ioSurface = LAYOUT.byteOffset(PATH$ioSurface);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$ioSurface = LAYOUT$ioSurface.byteSize();
 
     public VkImportMetalIOSurfaceInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkImportMetalIOSurfaceInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImportMetalIOSurfaceInfoEXT[] ret = new VkImportMetalIOSurfaceInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImportMetalIOSurfaceInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImportMetalIOSurfaceInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

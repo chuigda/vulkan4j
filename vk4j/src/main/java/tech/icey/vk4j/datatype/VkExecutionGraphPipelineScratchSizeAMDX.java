@@ -19,6 +19,7 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("size")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
 
     public VkExecutionGraphPipelineScratchSizeAMDX(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExecutionGraphPipelineScratchSizeAMDX[] ret = new VkExecutionGraphPipelineScratchSizeAMDX[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkExecutionGraphPipelineScratchSizeAMDX(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkExecutionGraphPipelineScratchSizeAMDX(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

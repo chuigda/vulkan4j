@@ -20,6 +20,7 @@ public record VkAccelerationStructureInstanceKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("bitfield$instanceShaderBindingTableRecordOffset_flags"),
         ValueLayout.JAVA_LONG.withName("accelerationStructureReference")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$transform = PathElement.groupElement("transform");
     public static final PathElement PATH$bitfield$instanceCustomIndex_mask = PathElement.groupElement("bitfield$instanceCustomIndex_mask");
@@ -36,6 +37,11 @@ public record VkAccelerationStructureInstanceKHR(MemorySegment segment) {
     public static final long OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags = LAYOUT.byteOffset(PATH$bitfield$instanceShaderBindingTableRecordOffset_flags);
     public static final long OFFSET$accelerationStructureReference = LAYOUT.byteOffset(PATH$accelerationStructureReference);
 
+    public static final long SIZE$transform = LAYOUT$transform.byteSize();
+    public static final long SIZE$bitfield$instanceCustomIndex_mask = LAYOUT$bitfield$instanceCustomIndex_mask.byteSize();
+    public static final long SIZE$bitfield$instanceShaderBindingTableRecordOffset_flags = LAYOUT$bitfield$instanceShaderBindingTableRecordOffset_flags.byteSize();
+    public static final long SIZE$accelerationStructureReference = LAYOUT$accelerationStructureReference.byteSize();
+
     public VkAccelerationStructureInstanceKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -45,7 +51,7 @@ public record VkAccelerationStructureInstanceKHR(MemorySegment segment) {
     }
 
     public void transform(VkTransformMatrixKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$transform, LAYOUT$transform.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$transform, SIZE$transform);
     }
 
     public int instanceCustomIndex() {
@@ -104,7 +110,7 @@ public record VkAccelerationStructureInstanceKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureInstanceKHR[] ret = new VkAccelerationStructureInstanceKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureInstanceKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureInstanceKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

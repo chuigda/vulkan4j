@@ -29,6 +29,7 @@ public record VkSurfaceCapabilities2EXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("supportedUsageFlags"),
         ValueLayout.JAVA_INT.withName("supportedSurfaceCounters")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -72,6 +73,20 @@ public record VkSurfaceCapabilities2EXT(MemorySegment segment) {
     public static final long OFFSET$supportedUsageFlags = LAYOUT.byteOffset(PATH$supportedUsageFlags);
     public static final long OFFSET$supportedSurfaceCounters = LAYOUT.byteOffset(PATH$supportedSurfaceCounters);
 
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$minImageCount = LAYOUT$minImageCount.byteSize();
+    public static final long SIZE$maxImageCount = LAYOUT$maxImageCount.byteSize();
+    public static final long SIZE$currentExtent = LAYOUT$currentExtent.byteSize();
+    public static final long SIZE$minImageExtent = LAYOUT$minImageExtent.byteSize();
+    public static final long SIZE$maxImageExtent = LAYOUT$maxImageExtent.byteSize();
+    public static final long SIZE$maxImageArrayLayers = LAYOUT$maxImageArrayLayers.byteSize();
+    public static final long SIZE$supportedTransforms = LAYOUT$supportedTransforms.byteSize();
+    public static final long SIZE$currentTransform = LAYOUT$currentTransform.byteSize();
+    public static final long SIZE$supportedCompositeAlpha = LAYOUT$supportedCompositeAlpha.byteSize();
+    public static final long SIZE$supportedUsageFlags = LAYOUT$supportedUsageFlags.byteSize();
+    public static final long SIZE$supportedSurfaceCounters = LAYOUT$supportedSurfaceCounters.byteSize();
+
     public VkSurfaceCapabilities2EXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT);
@@ -114,7 +129,7 @@ public record VkSurfaceCapabilities2EXT(MemorySegment segment) {
     }
 
     public void currentExtent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$currentExtent, LAYOUT$currentExtent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$currentExtent, SIZE$currentExtent);
     }
 
     public VkExtent2D minImageExtent() {
@@ -122,7 +137,7 @@ public record VkSurfaceCapabilities2EXT(MemorySegment segment) {
     }
 
     public void minImageExtent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minImageExtent, LAYOUT$minImageExtent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minImageExtent, SIZE$minImageExtent);
     }
 
     public VkExtent2D maxImageExtent() {
@@ -130,7 +145,7 @@ public record VkSurfaceCapabilities2EXT(MemorySegment segment) {
     }
 
     public void maxImageExtent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxImageExtent, LAYOUT$maxImageExtent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxImageExtent, SIZE$maxImageExtent);
     }
 
     public @unsigned int maxImageArrayLayers() {
@@ -189,7 +204,7 @@ public record VkSurfaceCapabilities2EXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSurfaceCapabilities2EXT[] ret = new VkSurfaceCapabilities2EXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSurfaceCapabilities2EXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSurfaceCapabilities2EXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

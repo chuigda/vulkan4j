@@ -21,6 +21,7 @@ public record VkWaylandSurfaceCreateInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("display"),
         ValueLayout.ADDRESS.withName("surface")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkWaylandSurfaceCreateInfoKHR(MemorySegment segment) {
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$display = LAYOUT.byteOffset(PATH$display);
     public static final long OFFSET$surface = LAYOUT.byteOffset(PATH$surface);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$display = LAYOUT$display.byteSize();
+    public static final long SIZE$surface = LAYOUT$surface.byteSize();
 
     public VkWaylandSurfaceCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkWaylandSurfaceCreateInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkWaylandSurfaceCreateInfoKHR[] ret = new VkWaylandSurfaceCreateInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkWaylandSurfaceCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkWaylandSurfaceCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

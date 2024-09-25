@@ -20,6 +20,7 @@ public record VkDeviceImageMemoryRequirements(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkImageCreateInfo.LAYOUT).withName("pCreateInfo"),
         ValueLayout.JAVA_INT.withName("planeAspect")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkDeviceImageMemoryRequirements(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$pCreateInfo = LAYOUT.byteOffset(PATH$pCreateInfo);
     public static final long OFFSET$planeAspect = LAYOUT.byteOffset(PATH$planeAspect);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pCreateInfo = LAYOUT$pCreateInfo.byteSize();
+    public static final long SIZE$planeAspect = LAYOUT$planeAspect.byteSize();
 
     public VkDeviceImageMemoryRequirements(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +100,7 @@ public record VkDeviceImageMemoryRequirements(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceImageMemoryRequirements[] ret = new VkDeviceImageMemoryRequirements[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceImageMemoryRequirements(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDeviceImageMemoryRequirements(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

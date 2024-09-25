@@ -19,6 +19,7 @@ public record VkDisplayPlaneProperties2KHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         VkDisplayPlanePropertiesKHR.LAYOUT.withName("displayPlaneProperties")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkDisplayPlaneProperties2KHR(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$displayPlaneProperties = LAYOUT.byteOffset(PATH$displayPlaneProperties);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$displayPlaneProperties = LAYOUT$displayPlaneProperties.byteSize();
 
     public VkDisplayPlaneProperties2KHR(MemorySegment segment) {
         this.segment = segment;
@@ -58,7 +63,7 @@ public record VkDisplayPlaneProperties2KHR(MemorySegment segment) {
     }
 
     public void displayPlaneProperties(VkDisplayPlanePropertiesKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPlaneProperties, LAYOUT$displayPlaneProperties.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPlaneProperties, SIZE$displayPlaneProperties);
     }
 
     public static VkDisplayPlaneProperties2KHR allocate(Arena arena) {
@@ -69,7 +74,7 @@ public record VkDisplayPlaneProperties2KHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayPlaneProperties2KHR[] ret = new VkDisplayPlaneProperties2KHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDisplayPlaneProperties2KHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDisplayPlaneProperties2KHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

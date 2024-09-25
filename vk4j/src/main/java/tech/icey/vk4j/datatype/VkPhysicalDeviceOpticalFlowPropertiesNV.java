@@ -29,6 +29,7 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("maxHeight"),
         ValueLayout.JAVA_INT.withName("maxNumRegionsOfInterest")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -71,6 +72,20 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(MemorySegment segment) {
     public static final long OFFSET$maxWidth = LAYOUT.byteOffset(PATH$maxWidth);
     public static final long OFFSET$maxHeight = LAYOUT.byteOffset(PATH$maxHeight);
     public static final long OFFSET$maxNumRegionsOfInterest = LAYOUT.byteOffset(PATH$maxNumRegionsOfInterest);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$supportedOutputGridSizes = LAYOUT$supportedOutputGridSizes.byteSize();
+    public static final long SIZE$supportedHintGridSizes = LAYOUT$supportedHintGridSizes.byteSize();
+    public static final long SIZE$hintSupported = LAYOUT$hintSupported.byteSize();
+    public static final long SIZE$costSupported = LAYOUT$costSupported.byteSize();
+    public static final long SIZE$bidirectionalFlowSupported = LAYOUT$bidirectionalFlowSupported.byteSize();
+    public static final long SIZE$globalFlowSupported = LAYOUT$globalFlowSupported.byteSize();
+    public static final long SIZE$minWidth = LAYOUT$minWidth.byteSize();
+    public static final long SIZE$minHeight = LAYOUT$minHeight.byteSize();
+    public static final long SIZE$maxWidth = LAYOUT$maxWidth.byteSize();
+    public static final long SIZE$maxHeight = LAYOUT$maxHeight.byteSize();
+    public static final long SIZE$maxNumRegionsOfInterest = LAYOUT$maxNumRegionsOfInterest.byteSize();
 
     public VkPhysicalDeviceOpticalFlowPropertiesNV(MemorySegment segment) {
         this.segment = segment;
@@ -189,7 +204,7 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceOpticalFlowPropertiesNV[] ret = new VkPhysicalDeviceOpticalFlowPropertiesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceOpticalFlowPropertiesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceOpticalFlowPropertiesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

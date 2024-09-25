@@ -1,16 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.buffer.ByteBuffer;
-import tech.icey.vk4j.enumtype.VkLayerSettingTypeEXT;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkLayerSettingEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -20,6 +21,7 @@ public record VkLayerSettingEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("valueCount"),
         ValueLayout.ADDRESS.withName("pValues")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$pLayerName = PathElement.groupElement("pLayerName");
     public static final PathElement PATH$pSettingName = PathElement.groupElement("pSettingName");
@@ -39,6 +41,12 @@ public record VkLayerSettingEXT(MemorySegment segment) {
     public static final long OFFSET$valueCount = LAYOUT.byteOffset(PATH$valueCount);
     public static final long OFFSET$pValues = LAYOUT.byteOffset(PATH$pValues);
 
+    public static final long SIZE$pLayerName = LAYOUT$pLayerName.byteSize();
+    public static final long SIZE$pSettingName = LAYOUT$pSettingName.byteSize();
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$valueCount = LAYOUT$valueCount.byteSize();
+    public static final long SIZE$pValues = LAYOUT$pValues.byteSize();
+
     public VkLayerSettingEXT(MemorySegment segment) {
         this.segment = segment;
     }
@@ -50,7 +58,7 @@ public record VkLayerSettingEXT(MemorySegment segment) {
     public void pLayerNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pLayerName, OFFSET$pLayerName, value);
     }
-
+    
     public ByteBuffer pLayerName() {
         return new ByteBuffer(pLayerNameRaw());
     }
@@ -66,7 +74,7 @@ public record VkLayerSettingEXT(MemorySegment segment) {
     public void pSettingNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pSettingName, OFFSET$pSettingName, value);
     }
-
+    
     public ByteBuffer pSettingName() {
         return new ByteBuffer(pSettingNameRaw());
     }
@@ -102,12 +110,12 @@ public record VkLayerSettingEXT(MemorySegment segment) {
     public static VkLayerSettingEXT allocate(Arena arena) {
         return new VkLayerSettingEXT(arena.allocate(LAYOUT));
     }
-
+    
     public static VkLayerSettingEXT[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkLayerSettingEXT[] ret = new VkLayerSettingEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkLayerSettingEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkLayerSettingEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

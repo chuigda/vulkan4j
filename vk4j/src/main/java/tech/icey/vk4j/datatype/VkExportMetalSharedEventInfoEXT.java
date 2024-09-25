@@ -21,6 +21,7 @@ public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("event"),
         ValueLayout.ADDRESS.withName("mtlSharedEvent")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) {
     public static final long OFFSET$semaphore = LAYOUT.byteOffset(PATH$semaphore);
     public static final long OFFSET$event = LAYOUT.byteOffset(PATH$event);
     public static final long OFFSET$mtlSharedEvent = LAYOUT.byteOffset(PATH$mtlSharedEvent);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$semaphore = LAYOUT$semaphore.byteSize();
+    public static final long SIZE$event = LAYOUT$event.byteSize();
+    public static final long SIZE$mtlSharedEvent = LAYOUT$mtlSharedEvent.byteSize();
 
     public VkExportMetalSharedEventInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExportMetalSharedEventInfoEXT[] ret = new VkExportMetalSharedEventInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkExportMetalSharedEventInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkExportMetalSharedEventInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

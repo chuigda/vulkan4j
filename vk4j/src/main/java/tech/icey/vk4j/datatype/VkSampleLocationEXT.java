@@ -1,20 +1,24 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfFloat;
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSampleLocationEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_FLOAT.withName("x"),
         ValueLayout.JAVA_FLOAT.withName("y")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$x = PathElement.groupElement("x");
     public static final PathElement PATH$y = PathElement.groupElement("y");
@@ -24,6 +28,9 @@ public record VkSampleLocationEXT(MemorySegment segment) {
 
     public static final long OFFSET$x = LAYOUT.byteOffset(PATH$x);
     public static final long OFFSET$y = LAYOUT.byteOffset(PATH$y);
+
+    public static final long SIZE$x = LAYOUT$x.byteSize();
+    public static final long SIZE$y = LAYOUT$y.byteSize();
 
     public VkSampleLocationEXT(MemorySegment segment) {
         this.segment = segment;
@@ -48,12 +55,12 @@ public record VkSampleLocationEXT(MemorySegment segment) {
     public static VkSampleLocationEXT allocate(Arena arena) {
         return new VkSampleLocationEXT(arena.allocate(LAYOUT));
     }
-
+    
     public static VkSampleLocationEXT[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSampleLocationEXT[] ret = new VkSampleLocationEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSampleLocationEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSampleLocationEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

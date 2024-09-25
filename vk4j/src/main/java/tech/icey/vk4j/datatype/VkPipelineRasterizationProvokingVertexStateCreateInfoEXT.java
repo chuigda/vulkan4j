@@ -19,6 +19,7 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(MemorySeg
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("provokingVertexMode")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(MemorySeg
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$provokingVertexMode = LAYOUT.byteOffset(PATH$provokingVertexMode);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$provokingVertexMode = LAYOUT$provokingVertexMode.byteSize();
 
     public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(MemorySeg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineRasterizationProvokingVertexStateCreateInfoEXT[] ret = new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

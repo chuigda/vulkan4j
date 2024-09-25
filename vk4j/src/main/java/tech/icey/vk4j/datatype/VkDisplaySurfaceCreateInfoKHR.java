@@ -26,6 +26,7 @@ public record VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("alphaMode"),
         VkExtent2D.LAYOUT.withName("imageExtent")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -59,6 +60,17 @@ public record VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) {
     public static final long OFFSET$globalAlpha = LAYOUT.byteOffset(PATH$globalAlpha);
     public static final long OFFSET$alphaMode = LAYOUT.byteOffset(PATH$alphaMode);
     public static final long OFFSET$imageExtent = LAYOUT.byteOffset(PATH$imageExtent);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$displayMode = LAYOUT$displayMode.byteSize();
+    public static final long SIZE$planeIndex = LAYOUT$planeIndex.byteSize();
+    public static final long SIZE$planeStackIndex = LAYOUT$planeStackIndex.byteSize();
+    public static final long SIZE$transform = LAYOUT$transform.byteSize();
+    public static final long SIZE$globalAlpha = LAYOUT$globalAlpha.byteSize();
+    public static final long SIZE$alphaMode = LAYOUT$alphaMode.byteSize();
+    public static final long SIZE$imageExtent = LAYOUT$imageExtent.byteSize();
 
     public VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -142,7 +154,7 @@ public record VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) {
     }
 
     public void imageExtent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, LAYOUT$imageExtent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
     }
 
     public static VkDisplaySurfaceCreateInfoKHR allocate(Arena arena) {
@@ -153,7 +165,7 @@ public record VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplaySurfaceCreateInfoKHR[] ret = new VkDisplaySurfaceCreateInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDisplaySurfaceCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDisplaySurfaceCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -24,6 +24,7 @@ public record VkPhysicalDeviceLineRasterizationFeaturesKHR(MemorySegment segment
         ValueLayout.JAVA_INT.withName("stippledBresenhamLines"),
         ValueLayout.JAVA_INT.withName("stippledSmoothLines")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -51,6 +52,15 @@ public record VkPhysicalDeviceLineRasterizationFeaturesKHR(MemorySegment segment
     public static final long OFFSET$stippledRectangularLines = LAYOUT.byteOffset(PATH$stippledRectangularLines);
     public static final long OFFSET$stippledBresenhamLines = LAYOUT.byteOffset(PATH$stippledBresenhamLines);
     public static final long OFFSET$stippledSmoothLines = LAYOUT.byteOffset(PATH$stippledSmoothLines);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$rectangularLines = LAYOUT$rectangularLines.byteSize();
+    public static final long SIZE$bresenhamLines = LAYOUT$bresenhamLines.byteSize();
+    public static final long SIZE$smoothLines = LAYOUT$smoothLines.byteSize();
+    public static final long SIZE$stippledRectangularLines = LAYOUT$stippledRectangularLines.byteSize();
+    public static final long SIZE$stippledBresenhamLines = LAYOUT$stippledBresenhamLines.byteSize();
+    public static final long SIZE$stippledSmoothLines = LAYOUT$stippledSmoothLines.byteSize();
 
     public VkPhysicalDeviceLineRasterizationFeaturesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -129,7 +139,7 @@ public record VkPhysicalDeviceLineRasterizationFeaturesKHR(MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceLineRasterizationFeaturesKHR[] ret = new VkPhysicalDeviceLineRasterizationFeaturesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceLineRasterizationFeaturesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceLineRasterizationFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

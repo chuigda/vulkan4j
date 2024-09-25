@@ -20,6 +20,7 @@ public record VkPipelineExecutableInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pipeline"),
         ValueLayout.JAVA_INT.withName("executableIndex")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPipelineExecutableInfoKHR(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$pipeline = LAYOUT.byteOffset(PATH$pipeline);
     public static final long OFFSET$executableIndex = LAYOUT.byteOffset(PATH$executableIndex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pipeline = LAYOUT$pipeline.byteSize();
+    public static final long SIZE$executableIndex = LAYOUT$executableIndex.byteSize();
 
     public VkPipelineExecutableInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPipelineExecutableInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineExecutableInfoKHR[] ret = new VkPipelineExecutableInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineExecutableInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineExecutableInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

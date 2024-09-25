@@ -19,6 +19,7 @@ public record VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(MemorySegmen
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("descriptorSetHostMapping")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(MemorySegmen
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$descriptorSetHostMapping = LAYOUT.byteOffset(PATH$descriptorSetHostMapping);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$descriptorSetHostMapping = LAYOUT$descriptorSetHostMapping.byteSize();
 
     public VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE[] ret = new VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

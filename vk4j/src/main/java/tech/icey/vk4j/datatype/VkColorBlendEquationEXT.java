@@ -22,6 +22,7 @@ public record VkColorBlendEquationEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("dstAlphaBlendFactor"),
         ValueLayout.JAVA_INT.withName("alphaBlendOp")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$srcColorBlendFactor = PathElement.groupElement("srcColorBlendFactor");
     public static final PathElement PATH$dstColorBlendFactor = PathElement.groupElement("dstColorBlendFactor");
@@ -43,6 +44,13 @@ public record VkColorBlendEquationEXT(MemorySegment segment) {
     public static final long OFFSET$srcAlphaBlendFactor = LAYOUT.byteOffset(PATH$srcAlphaBlendFactor);
     public static final long OFFSET$dstAlphaBlendFactor = LAYOUT.byteOffset(PATH$dstAlphaBlendFactor);
     public static final long OFFSET$alphaBlendOp = LAYOUT.byteOffset(PATH$alphaBlendOp);
+
+    public static final long SIZE$srcColorBlendFactor = LAYOUT$srcColorBlendFactor.byteSize();
+    public static final long SIZE$dstColorBlendFactor = LAYOUT$dstColorBlendFactor.byteSize();
+    public static final long SIZE$colorBlendOp = LAYOUT$colorBlendOp.byteSize();
+    public static final long SIZE$srcAlphaBlendFactor = LAYOUT$srcAlphaBlendFactor.byteSize();
+    public static final long SIZE$dstAlphaBlendFactor = LAYOUT$dstAlphaBlendFactor.byteSize();
+    public static final long SIZE$alphaBlendOp = LAYOUT$alphaBlendOp.byteSize();
 
     public VkColorBlendEquationEXT(MemorySegment segment) {
         this.segment = segment;
@@ -104,7 +112,7 @@ public record VkColorBlendEquationEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkColorBlendEquationEXT[] ret = new VkColorBlendEquationEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkColorBlendEquationEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkColorBlendEquationEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -21,6 +21,7 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("coverageToColorEnable"),
         ValueLayout.JAVA_INT.withName("coverageToColorLocation")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(MemorySegment segment) 
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$coverageToColorEnable = LAYOUT.byteOffset(PATH$coverageToColorEnable);
     public static final long OFFSET$coverageToColorLocation = LAYOUT.byteOffset(PATH$coverageToColorLocation);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$coverageToColorEnable = LAYOUT$coverageToColorEnable.byteSize();
+    public static final long SIZE$coverageToColorLocation = LAYOUT$coverageToColorLocation.byteSize();
 
     public VkPipelineCoverageToColorStateCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineCoverageToColorStateCreateInfoNV[] ret = new VkPipelineCoverageToColorStateCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineCoverageToColorStateCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineCoverageToColorStateCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

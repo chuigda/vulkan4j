@@ -19,6 +19,7 @@ public record VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(MemorySegment 
         ValueLayout.ADDRESS.withName("pNext"),
         MemoryLayout.sequenceLayout(VK_UUID_SIZE, ValueLayout.JAVA_BYTE).withName("shaderModuleIdentifierAlgorithmUUID")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(MemorySegment 
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$shaderModuleIdentifierAlgorithmUUID = LAYOUT.byteOffset(PATH$shaderModuleIdentifierAlgorithmUUID);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderModuleIdentifierAlgorithmUUID = LAYOUT$shaderModuleIdentifierAlgorithmUUID.byteSize();
 
     public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -54,7 +59,7 @@ public record VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(MemorySegment 
     }
 
     public MemorySegment shaderModuleIdentifierAlgorithmUUIDRaw() {
-        return segment.asSlice(OFFSET$shaderModuleIdentifierAlgorithmUUID, LAYOUT$shaderModuleIdentifierAlgorithmUUID.byteSize());
+        return segment.asSlice(OFFSET$shaderModuleIdentifierAlgorithmUUID, SIZE$shaderModuleIdentifierAlgorithmUUID);
     }
 
     public @unsigned ByteBuffer shaderModuleIdentifierAlgorithmUUID() {
@@ -62,7 +67,7 @@ public record VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(MemorySegment 
     }
 
     public void shaderModuleIdentifierAlgorithmUUID(@unsigned ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$shaderModuleIdentifierAlgorithmUUID, LAYOUT$shaderModuleIdentifierAlgorithmUUID.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$shaderModuleIdentifierAlgorithmUUID, SIZE$shaderModuleIdentifierAlgorithmUUID);
     }
 
     public static VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT allocate(Arena arena) {
@@ -73,7 +78,7 @@ public record VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT[] ret = new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

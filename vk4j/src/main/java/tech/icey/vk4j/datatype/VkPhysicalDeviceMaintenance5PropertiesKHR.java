@@ -24,6 +24,7 @@ public record VkPhysicalDeviceMaintenance5PropertiesKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("nonStrictSinglePixelWideLinesUseParallelogram"),
         ValueLayout.JAVA_INT.withName("nonStrictWideLinesUseParallelogram")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -51,6 +52,15 @@ public record VkPhysicalDeviceMaintenance5PropertiesKHR(MemorySegment segment) {
     public static final long OFFSET$polygonModePointSize = LAYOUT.byteOffset(PATH$polygonModePointSize);
     public static final long OFFSET$nonStrictSinglePixelWideLinesUseParallelogram = LAYOUT.byteOffset(PATH$nonStrictSinglePixelWideLinesUseParallelogram);
     public static final long OFFSET$nonStrictWideLinesUseParallelogram = LAYOUT.byteOffset(PATH$nonStrictWideLinesUseParallelogram);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$earlyFragmentMultisampleCoverageAfterSampleCounting = LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting.byteSize();
+    public static final long SIZE$earlyFragmentSampleMaskTestBeforeSampleCounting = LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting.byteSize();
+    public static final long SIZE$depthStencilSwizzleOneSupport = LAYOUT$depthStencilSwizzleOneSupport.byteSize();
+    public static final long SIZE$polygonModePointSize = LAYOUT$polygonModePointSize.byteSize();
+    public static final long SIZE$nonStrictSinglePixelWideLinesUseParallelogram = LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram.byteSize();
+    public static final long SIZE$nonStrictWideLinesUseParallelogram = LAYOUT$nonStrictWideLinesUseParallelogram.byteSize();
 
     public VkPhysicalDeviceMaintenance5PropertiesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -129,7 +139,7 @@ public record VkPhysicalDeviceMaintenance5PropertiesKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMaintenance5PropertiesKHR[] ret = new VkPhysicalDeviceMaintenance5PropertiesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMaintenance5PropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceMaintenance5PropertiesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -1,15 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
 import java.lang.foreign.*;
-
 import static java.lang.foreign.ValueLayout.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_QNX;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkExternalFormatQNX(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -17,6 +19,7 @@ public record VkExternalFormatQNX(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("externalFormat")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -29,6 +32,10 @@ public record VkExternalFormatQNX(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$externalFormat = LAYOUT.byteOffset(PATH$externalFormat);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$externalFormat = LAYOUT$externalFormat.byteSize();
 
     public VkExternalFormatQNX(MemorySegment segment) {
         this.segment = segment;
@@ -62,12 +69,12 @@ public record VkExternalFormatQNX(MemorySegment segment) {
     public static VkExternalFormatQNX allocate(Arena arena) {
         return new VkExternalFormatQNX(arena.allocate(LAYOUT));
     }
-
+    
     public static VkExternalFormatQNX[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExternalFormatQNX[] ret = new VkExternalFormatQNX[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkExternalFormatQNX(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkExternalFormatQNX(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

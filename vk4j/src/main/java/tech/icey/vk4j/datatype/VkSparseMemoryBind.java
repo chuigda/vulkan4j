@@ -1,14 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkSparseMemoryBindFlags;
-import tech.icey.vk4j.handle.VkDeviceMemory;
-
 import java.lang.foreign.*;
-
 import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSparseMemoryBind(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -18,6 +21,7 @@ public record VkSparseMemoryBind(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("memoryOffset"),
         ValueLayout.JAVA_INT.withName("flags")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$resourceOffset = PathElement.groupElement("resourceOffset");
     public static final PathElement PATH$size = PathElement.groupElement("size");
@@ -36,6 +40,12 @@ public record VkSparseMemoryBind(MemorySegment segment) {
     public static final long OFFSET$memory = LAYOUT.byteOffset(PATH$memory);
     public static final long OFFSET$memoryOffset = LAYOUT.byteOffset(PATH$memoryOffset);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+
+    public static final long SIZE$resourceOffset = LAYOUT$resourceOffset.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$memory = LAYOUT$memory.byteSize();
+    public static final long SIZE$memoryOffset = LAYOUT$memoryOffset.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
 
     public VkSparseMemoryBind(MemorySegment segment) {
         this.segment = segment;
@@ -84,12 +94,12 @@ public record VkSparseMemoryBind(MemorySegment segment) {
     public static VkSparseMemoryBind allocate(Arena arena) {
         return new VkSparseMemoryBind(arena.allocate(LAYOUT));
     }
-
+    
     public static VkSparseMemoryBind[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSparseMemoryBind[] ret = new VkSparseMemoryBind[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSparseMemoryBind(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSparseMemoryBind(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

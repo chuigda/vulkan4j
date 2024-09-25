@@ -23,6 +23,7 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("minBufferCountForDedicatedSlack"),
         ValueLayout.JAVA_INT.withName("minBufferCountForSharedSlack")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(MemorySegment segment) {
     public static final long OFFSET$minBufferCountForCamping = LAYOUT.byteOffset(PATH$minBufferCountForCamping);
     public static final long OFFSET$minBufferCountForDedicatedSlack = LAYOUT.byteOffset(PATH$minBufferCountForDedicatedSlack);
     public static final long OFFSET$minBufferCountForSharedSlack = LAYOUT.byteOffset(PATH$minBufferCountForSharedSlack);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$minBufferCount = LAYOUT$minBufferCount.byteSize();
+    public static final long SIZE$maxBufferCount = LAYOUT$maxBufferCount.byteSize();
+    public static final long SIZE$minBufferCountForCamping = LAYOUT$minBufferCountForCamping.byteSize();
+    public static final long SIZE$minBufferCountForDedicatedSlack = LAYOUT$minBufferCountForDedicatedSlack.byteSize();
+    public static final long SIZE$minBufferCountForSharedSlack = LAYOUT$minBufferCountForSharedSlack.byteSize();
 
     public VkBufferCollectionConstraintsInfoFUCHSIA(MemorySegment segment) {
         this.segment = segment;
@@ -117,7 +126,7 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferCollectionConstraintsInfoFUCHSIA[] ret = new VkBufferCollectionConstraintsInfoFUCHSIA[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkBufferCollectionConstraintsInfoFUCHSIA(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkBufferCollectionConstraintsInfoFUCHSIA(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

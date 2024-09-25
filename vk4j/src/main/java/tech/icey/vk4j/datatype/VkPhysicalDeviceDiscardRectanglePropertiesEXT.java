@@ -19,6 +19,7 @@ public record VkPhysicalDeviceDiscardRectanglePropertiesEXT(MemorySegment segmen
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("maxDiscardRectangles")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceDiscardRectanglePropertiesEXT(MemorySegment segmen
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$maxDiscardRectangles = LAYOUT.byteOffset(PATH$maxDiscardRectangles);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxDiscardRectangles = LAYOUT$maxDiscardRectangles.byteSize();
 
     public VkPhysicalDeviceDiscardRectanglePropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceDiscardRectanglePropertiesEXT(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceDiscardRectanglePropertiesEXT[] ret = new VkPhysicalDeviceDiscardRectanglePropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceDiscardRectanglePropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceDiscardRectanglePropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

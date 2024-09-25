@@ -22,6 +22,7 @@ public record VkAllocationCallbacks(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pfnInternalAllocation"),
         ValueLayout.ADDRESS.withName("pfnInternalFree")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$pUserData = PathElement.groupElement("pUserData");
     public static final PathElement PATH$pfnAllocation = PathElement.groupElement("pfnAllocation");
@@ -43,6 +44,13 @@ public record VkAllocationCallbacks(MemorySegment segment) {
     public static final long OFFSET$pfnFree = LAYOUT.byteOffset(PATH$pfnFree);
     public static final long OFFSET$pfnInternalAllocation = LAYOUT.byteOffset(PATH$pfnInternalAllocation);
     public static final long OFFSET$pfnInternalFree = LAYOUT.byteOffset(PATH$pfnInternalFree);
+
+    public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
+    public static final long SIZE$pfnAllocation = LAYOUT$pfnAllocation.byteSize();
+    public static final long SIZE$pfnReallocation = LAYOUT$pfnReallocation.byteSize();
+    public static final long SIZE$pfnFree = LAYOUT$pfnFree.byteSize();
+    public static final long SIZE$pfnInternalAllocation = LAYOUT$pfnInternalAllocation.byteSize();
+    public static final long SIZE$pfnInternalFree = LAYOUT$pfnInternalFree.byteSize();
 
     public VkAllocationCallbacks(MemorySegment segment) {
         this.segment = segment;
@@ -104,7 +112,7 @@ public record VkAllocationCallbacks(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAllocationCallbacks[] ret = new VkAllocationCallbacks[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAllocationCallbacks(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAllocationCallbacks(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

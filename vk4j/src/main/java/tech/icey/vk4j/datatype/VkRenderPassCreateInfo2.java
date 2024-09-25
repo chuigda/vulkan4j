@@ -27,6 +27,7 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("correlatedViewMaskCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCorrelatedViewMasks")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -63,6 +64,18 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) {
     public static final long OFFSET$pDependencies = LAYOUT.byteOffset(PATH$pDependencies);
     public static final long OFFSET$correlatedViewMaskCount = LAYOUT.byteOffset(PATH$correlatedViewMaskCount);
     public static final long OFFSET$pCorrelatedViewMasks = LAYOUT.byteOffset(PATH$pCorrelatedViewMasks);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$attachmentCount = LAYOUT$attachmentCount.byteSize();
+    public static final long SIZE$pAttachments = LAYOUT$pAttachments.byteSize();
+    public static final long SIZE$subpassCount = LAYOUT$subpassCount.byteSize();
+    public static final long SIZE$pSubpasses = LAYOUT$pSubpasses.byteSize();
+    public static final long SIZE$dependencyCount = LAYOUT$dependencyCount.byteSize();
+    public static final long SIZE$pDependencies = LAYOUT$pDependencies.byteSize();
+    public static final long SIZE$correlatedViewMaskCount = LAYOUT$correlatedViewMaskCount.byteSize();
+    public static final long SIZE$pCorrelatedViewMasks = LAYOUT$pCorrelatedViewMasks.byteSize();
 
     public VkRenderPassCreateInfo2(MemorySegment segment) {
         this.segment = segment;
@@ -212,7 +225,7 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderPassCreateInfo2[] ret = new VkRenderPassCreateInfo2[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderPassCreateInfo2(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRenderPassCreateInfo2(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

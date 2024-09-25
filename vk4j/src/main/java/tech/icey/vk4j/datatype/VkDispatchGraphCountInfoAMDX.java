@@ -19,6 +19,7 @@ public record VkDispatchGraphCountInfoAMDX(MemorySegment segment) {
         VkDeviceOrHostAddressConstAMDX.LAYOUT.withName("infos"),
         ValueLayout.JAVA_LONG.withName("stride")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$count = PathElement.groupElement("count");
     public static final PathElement PATH$infos = PathElement.groupElement("infos");
@@ -31,6 +32,10 @@ public record VkDispatchGraphCountInfoAMDX(MemorySegment segment) {
     public static final long OFFSET$count = LAYOUT.byteOffset(PATH$count);
     public static final long OFFSET$infos = LAYOUT.byteOffset(PATH$infos);
     public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
+
+    public static final long SIZE$count = LAYOUT$count.byteSize();
+    public static final long SIZE$infos = LAYOUT$infos.byteSize();
+    public static final long SIZE$stride = LAYOUT$stride.byteSize();
 
     public VkDispatchGraphCountInfoAMDX(MemorySegment segment) {
         this.segment = segment;
@@ -49,7 +54,7 @@ public record VkDispatchGraphCountInfoAMDX(MemorySegment segment) {
     }
 
     public void infos(VkDeviceOrHostAddressConstAMDX value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$infos, LAYOUT$infos.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$infos, SIZE$infos);
     }
 
     public @unsigned long stride() {
@@ -68,7 +73,7 @@ public record VkDispatchGraphCountInfoAMDX(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDispatchGraphCountInfoAMDX[] ret = new VkDispatchGraphCountInfoAMDX[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDispatchGraphCountInfoAMDX(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDispatchGraphCountInfoAMDX(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

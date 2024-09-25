@@ -22,6 +22,7 @@ public record VkApplicationParametersEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("key"),
         ValueLayout.JAVA_LONG.withName("value")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkApplicationParametersEXT(MemorySegment segment) {
     public static final long OFFSET$deviceID = LAYOUT.byteOffset(PATH$deviceID);
     public static final long OFFSET$key = LAYOUT.byteOffset(PATH$key);
     public static final long OFFSET$value = LAYOUT.byteOffset(PATH$value);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$vendorID = LAYOUT$vendorID.byteSize();
+    public static final long SIZE$deviceID = LAYOUT$deviceID.byteSize();
+    public static final long SIZE$key = LAYOUT$key.byteSize();
+    public static final long SIZE$value = LAYOUT$value.byteSize();
 
     public VkApplicationParametersEXT(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkApplicationParametersEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkApplicationParametersEXT[] ret = new VkApplicationParametersEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkApplicationParametersEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkApplicationParametersEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

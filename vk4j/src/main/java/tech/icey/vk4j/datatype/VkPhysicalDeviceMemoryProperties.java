@@ -20,6 +20,7 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("memoryHeapCount"),
         MemoryLayout.sequenceLayout(VK_MAX_MEMORY_HEAPS, VkMemoryHeap.LAYOUT).withName("memoryHeaps")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$memoryTypeCount = PathElement.groupElement("memoryTypeCount");
     public static final PathElement PATH$memoryTypes = PathElement.groupElement("memoryTypes");
@@ -36,6 +37,11 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
     public static final long OFFSET$memoryHeapCount = LAYOUT.byteOffset(PATH$memoryHeapCount);
     public static final long OFFSET$memoryHeaps = LAYOUT.byteOffset(PATH$memoryHeaps);
 
+    public static final long SIZE$memoryTypeCount = LAYOUT$memoryTypeCount.byteSize();
+    public static final long SIZE$memoryTypes = LAYOUT$memoryTypes.byteSize();
+    public static final long SIZE$memoryHeapCount = LAYOUT$memoryHeapCount.byteSize();
+    public static final long SIZE$memoryHeaps = LAYOUT$memoryHeaps.byteSize();
+
     public VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
         this.segment = segment;
     }
@@ -49,14 +55,14 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
     }
 
     public MemorySegment memoryTypesRaw() {
-        return segment.asSlice(OFFSET$memoryTypes, LAYOUT$memoryTypes.byteSize());
+        return segment.asSlice(OFFSET$memoryTypes, SIZE$memoryTypes);
     }
 
     public VkMemoryType[] memoryTypes() {
         MemorySegment s = memoryTypesRaw();
         VkMemoryType[] arr = new VkMemoryType[(int)LAYOUT$memoryTypes.elementCount()];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = new VkMemoryType(s.asSlice(i * LAYOUT$memoryTypes.byteSize(), LAYOUT$memoryTypes.byteSize()));
+            arr[i] = new VkMemoryType(s.asSlice(i * VkMemoryType.SIZE, VkMemoryType.SIZE));
         }
         return arr;
     }
@@ -64,17 +70,18 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
     public void memoryTypes(VkMemoryType[] value) {
         MemorySegment s = memoryTypesRaw();
         for (int i = 0; i < value.length; i++) {
-            MemorySegment.copy(value[i].segment(), 0, s, i * LAYOUT$memoryTypes.byteSize(), LAYOUT$memoryTypes.byteSize());
+            MemorySegment.copy(value[i].segment(), 0, s, i * VkMemoryType.SIZE, VkMemoryType.SIZE);
         }
     }
 
     public VkMemoryType memoryTypesAt(long index) {
         MemorySegment s = memoryTypesRaw();
-        return new VkMemoryType(s.asSlice(index * LAYOUT$memoryTypes.byteSize(), LAYOUT$memoryTypes.byteSize()));
+        return new VkMemoryType(s.asSlice(index * VkMemoryType.SIZE, VkMemoryType.SIZE));
     }
 
     public void memoryTypesAt(long index, VkMemoryType value) {
-        MemorySegment.copy(value.segment(), 0, memoryTypesRaw(), index * LAYOUT$memoryTypes.byteSize(), LAYOUT$memoryTypes.byteSize());
+        MemorySegment s = memoryTypesRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * VkMemoryType.SIZE, VkMemoryType.SIZE);
     }
 
     public @unsigned int memoryHeapCount() {
@@ -86,14 +93,14 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
     }
 
     public MemorySegment memoryHeapsRaw() {
-        return segment.asSlice(OFFSET$memoryHeaps, LAYOUT$memoryHeaps.byteSize());
+        return segment.asSlice(OFFSET$memoryHeaps, SIZE$memoryHeaps);
     }
 
     public VkMemoryHeap[] memoryHeaps() {
         MemorySegment s = memoryHeapsRaw();
         VkMemoryHeap[] arr = new VkMemoryHeap[(int)LAYOUT$memoryHeaps.elementCount()];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = new VkMemoryHeap(s.asSlice(i * LAYOUT$memoryHeaps.byteSize(), LAYOUT$memoryHeaps.byteSize()));
+            arr[i] = new VkMemoryHeap(s.asSlice(i * VkMemoryHeap.SIZE, VkMemoryHeap.SIZE));
         }
         return arr;
     }
@@ -101,17 +108,18 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
     public void memoryHeaps(VkMemoryHeap[] value) {
         MemorySegment s = memoryHeapsRaw();
         for (int i = 0; i < value.length; i++) {
-            MemorySegment.copy(value[i].segment(), 0, s, i * LAYOUT$memoryHeaps.byteSize(), LAYOUT$memoryHeaps.byteSize());
+            MemorySegment.copy(value[i].segment(), 0, s, i * VkMemoryHeap.SIZE, VkMemoryHeap.SIZE);
         }
     }
 
     public VkMemoryHeap memoryHeapsAt(long index) {
         MemorySegment s = memoryHeapsRaw();
-        return new VkMemoryHeap(s.asSlice(index * LAYOUT$memoryHeaps.byteSize(), LAYOUT$memoryHeaps.byteSize()));
+        return new VkMemoryHeap(s.asSlice(index * VkMemoryHeap.SIZE, VkMemoryHeap.SIZE));
     }
 
     public void memoryHeapsAt(long index, VkMemoryHeap value) {
-        MemorySegment.copy(value.segment(), 0, memoryHeapsRaw(), index * LAYOUT$memoryHeaps.byteSize(), LAYOUT$memoryHeaps.byteSize());
+        MemorySegment s = memoryHeapsRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * VkMemoryHeap.SIZE, VkMemoryHeap.SIZE);
     }
 
     public static VkPhysicalDeviceMemoryProperties allocate(Arena arena) {
@@ -122,7 +130,7 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMemoryProperties[] ret = new VkPhysicalDeviceMemoryProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMemoryProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceMemoryProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

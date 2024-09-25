@@ -17,12 +17,15 @@ public record VkRefreshCycleDurationGOOGLE(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_LONG.withName("refreshDuration")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$refreshDuration = PathElement.groupElement("refreshDuration");
 
     public static final OfLong LAYOUT$refreshDuration = (OfLong) LAYOUT.select(PATH$refreshDuration);
 
     public static final long OFFSET$refreshDuration = LAYOUT.byteOffset(PATH$refreshDuration);
+
+    public static final long SIZE$refreshDuration = LAYOUT$refreshDuration.byteSize();
 
     public VkRefreshCycleDurationGOOGLE(MemorySegment segment) {
         this.segment = segment;
@@ -44,7 +47,7 @@ public record VkRefreshCycleDurationGOOGLE(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRefreshCycleDurationGOOGLE[] ret = new VkRefreshCycleDurationGOOGLE[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRefreshCycleDurationGOOGLE(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRefreshCycleDurationGOOGLE(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

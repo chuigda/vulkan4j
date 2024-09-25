@@ -22,6 +22,7 @@ public record VkPipelineExecutableStatisticKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("format"),
         VkPipelineExecutableStatisticValueKHR.LAYOUT.withName("value")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPipelineExecutableStatisticKHR(MemorySegment segment) {
     public static final long OFFSET$description = LAYOUT.byteOffset(PATH$description);
     public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
     public static final long OFFSET$value = LAYOUT.byteOffset(PATH$value);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$name = LAYOUT$name.byteSize();
+    public static final long SIZE$description = LAYOUT$description.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
+    public static final long SIZE$value = LAYOUT$value.byteSize();
 
     public VkPipelineExecutableStatisticKHR(MemorySegment segment) {
         this.segment = segment;
@@ -66,7 +74,7 @@ public record VkPipelineExecutableStatisticKHR(MemorySegment segment) {
     }
 
     public MemorySegment nameRaw() {
-        return segment.asSlice(OFFSET$name, LAYOUT$name.byteSize());
+        return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
     public ByteBuffer name() {
@@ -74,11 +82,11 @@ public record VkPipelineExecutableStatisticKHR(MemorySegment segment) {
     }
 
     public void name(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, LAYOUT$name.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
     }
 
     public MemorySegment descriptionRaw() {
-        return segment.asSlice(OFFSET$description, LAYOUT$description.byteSize());
+        return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
     public ByteBuffer description() {
@@ -86,7 +94,7 @@ public record VkPipelineExecutableStatisticKHR(MemorySegment segment) {
     }
 
     public void description(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, LAYOUT$description.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
     }
 
     public @enumtype(VkPipelineExecutableStatisticFormatKHR.class) int format() {
@@ -102,7 +110,7 @@ public record VkPipelineExecutableStatisticKHR(MemorySegment segment) {
     }
 
     public void value(VkPipelineExecutableStatisticValueKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$value, LAYOUT$value.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$value, SIZE$value);
     }
 
     public static VkPipelineExecutableStatisticKHR allocate(Arena arena) {
@@ -113,7 +121,7 @@ public record VkPipelineExecutableStatisticKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineExecutableStatisticKHR[] ret = new VkPipelineExecutableStatisticKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineExecutableStatisticKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineExecutableStatisticKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

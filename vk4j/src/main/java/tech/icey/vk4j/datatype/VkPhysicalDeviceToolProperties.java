@@ -23,6 +23,7 @@ public record VkPhysicalDeviceToolProperties(MemorySegment segment) {
         MemoryLayout.sequenceLayout(VK_MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description"),
         MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("layer")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -48,6 +49,14 @@ public record VkPhysicalDeviceToolProperties(MemorySegment segment) {
     public static final long OFFSET$description = LAYOUT.byteOffset(PATH$description);
     public static final long OFFSET$layer = LAYOUT.byteOffset(PATH$layer);
 
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$name = LAYOUT$name.byteSize();
+    public static final long SIZE$version = LAYOUT$version.byteSize();
+    public static final long SIZE$purposes = LAYOUT$purposes.byteSize();
+    public static final long SIZE$description = LAYOUT$description.byteSize();
+    public static final long SIZE$layer = LAYOUT$layer.byteSize();
+
     public VkPhysicalDeviceToolProperties(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TOOL_PROPERTIES);
@@ -70,7 +79,7 @@ public record VkPhysicalDeviceToolProperties(MemorySegment segment) {
     }
 
     public MemorySegment nameRaw() {
-        return segment.asSlice(OFFSET$name, LAYOUT$name.byteSize());
+        return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
     public ByteBuffer name() {
@@ -78,11 +87,11 @@ public record VkPhysicalDeviceToolProperties(MemorySegment segment) {
     }
 
     public void name(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, LAYOUT$name.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
     }
 
     public MemorySegment versionRaw() {
-        return segment.asSlice(OFFSET$version, LAYOUT$version.byteSize());
+        return segment.asSlice(OFFSET$version, SIZE$version);
     }
 
     public ByteBuffer version() {
@@ -90,7 +99,7 @@ public record VkPhysicalDeviceToolProperties(MemorySegment segment) {
     }
 
     public void version(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$version, LAYOUT$version.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$version, SIZE$version);
     }
 
     public @enumtype(VkToolPurposeFlags.class) int purposes() {
@@ -102,7 +111,7 @@ public record VkPhysicalDeviceToolProperties(MemorySegment segment) {
     }
 
     public MemorySegment descriptionRaw() {
-        return segment.asSlice(OFFSET$description, LAYOUT$description.byteSize());
+        return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
     public ByteBuffer description() {
@@ -110,11 +119,11 @@ public record VkPhysicalDeviceToolProperties(MemorySegment segment) {
     }
 
     public void description(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, LAYOUT$description.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
     }
 
     public MemorySegment layerRaw() {
-        return segment.asSlice(OFFSET$layer, LAYOUT$layer.byteSize());
+        return segment.asSlice(OFFSET$layer, SIZE$layer);
     }
 
     public ByteBuffer layer() {
@@ -122,7 +131,7 @@ public record VkPhysicalDeviceToolProperties(MemorySegment segment) {
     }
 
     public void layer(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$layer, LAYOUT$layer.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$layer, SIZE$layer);
     }
 
     public static VkPhysicalDeviceToolProperties allocate(Arena arena) {
@@ -133,7 +142,7 @@ public record VkPhysicalDeviceToolProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceToolProperties[] ret = new VkPhysicalDeviceToolProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceToolProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceToolProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

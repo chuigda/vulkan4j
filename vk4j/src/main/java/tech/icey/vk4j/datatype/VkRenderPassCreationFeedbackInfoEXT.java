@@ -17,12 +17,15 @@ public record VkRenderPassCreationFeedbackInfoEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("postMergeSubpassCount")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$postMergeSubpassCount = PathElement.groupElement("postMergeSubpassCount");
 
     public static final OfInt LAYOUT$postMergeSubpassCount = (OfInt) LAYOUT.select(PATH$postMergeSubpassCount);
 
     public static final long OFFSET$postMergeSubpassCount = LAYOUT.byteOffset(PATH$postMergeSubpassCount);
+
+    public static final long SIZE$postMergeSubpassCount = LAYOUT$postMergeSubpassCount.byteSize();
 
     public VkRenderPassCreationFeedbackInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -44,7 +47,7 @@ public record VkRenderPassCreationFeedbackInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderPassCreationFeedbackInfoEXT[] ret = new VkRenderPassCreationFeedbackInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderPassCreationFeedbackInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRenderPassCreationFeedbackInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

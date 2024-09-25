@@ -20,6 +20,7 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(MemorySegment
         ValueLayout.JAVA_INT.withName("graphicsPipelineLibraryFastLinking"),
         ValueLayout.JAVA_INT.withName("graphicsPipelineLibraryIndependentInterpolationDecoration")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(MemorySegment
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$graphicsPipelineLibraryFastLinking = LAYOUT.byteOffset(PATH$graphicsPipelineLibraryFastLinking);
     public static final long OFFSET$graphicsPipelineLibraryIndependentInterpolationDecoration = LAYOUT.byteOffset(PATH$graphicsPipelineLibraryIndependentInterpolationDecoration);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$graphicsPipelineLibraryFastLinking = LAYOUT$graphicsPipelineLibraryFastLinking.byteSize();
+    public static final long SIZE$graphicsPipelineLibraryIndependentInterpolationDecoration = LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration.byteSize();
 
     public VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT[] ret = new VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

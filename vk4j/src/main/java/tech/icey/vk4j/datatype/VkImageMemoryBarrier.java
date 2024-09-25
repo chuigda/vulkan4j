@@ -1,19 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkAccessFlags;
-import tech.icey.vk4j.enumtype.VkImageLayout;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkImage;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkImageMemoryBarrier(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -28,6 +26,7 @@ public record VkImageMemoryBarrier(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("image"),
         VkImageSubresourceRange.LAYOUT.withName("subresourceRange")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -61,6 +60,17 @@ public record VkImageMemoryBarrier(MemorySegment segment) {
     public static final long OFFSET$dstQueueFamilyIndex = LAYOUT.byteOffset(PATH$dstQueueFamilyIndex);
     public static final long OFFSET$image = LAYOUT.byteOffset(PATH$image);
     public static final long OFFSET$subresourceRange = LAYOUT.byteOffset(PATH$subresourceRange);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$srcAccessMask = LAYOUT$srcAccessMask.byteSize();
+    public static final long SIZE$dstAccessMask = LAYOUT$dstAccessMask.byteSize();
+    public static final long SIZE$oldLayout = LAYOUT$oldLayout.byteSize();
+    public static final long SIZE$newLayout = LAYOUT$newLayout.byteSize();
+    public static final long SIZE$srcQueueFamilyIndex = LAYOUT$srcQueueFamilyIndex.byteSize();
+    public static final long SIZE$dstQueueFamilyIndex = LAYOUT$dstQueueFamilyIndex.byteSize();
+    public static final long SIZE$image = LAYOUT$image.byteSize();
+    public static final long SIZE$subresourceRange = LAYOUT$subresourceRange.byteSize();
 
     public VkImageMemoryBarrier(MemorySegment segment) {
         this.segment = segment;
@@ -144,18 +154,18 @@ public record VkImageMemoryBarrier(MemorySegment segment) {
     }
 
     public void subresourceRange(VkImageSubresourceRange value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, LAYOUT$subresourceRange.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, SIZE$subresourceRange);
     }
 
     public static VkImageMemoryBarrier allocate(Arena arena) {
         return new VkImageMemoryBarrier(arena.allocate(LAYOUT));
     }
-
+    
     public static VkImageMemoryBarrier[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageMemoryBarrier[] ret = new VkImageMemoryBarrier[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageMemoryBarrier(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageMemoryBarrier(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

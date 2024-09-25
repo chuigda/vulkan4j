@@ -19,6 +19,7 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withTargetLayout(VkRenderPassCreationFeedbackInfoEXT.LAYOUT).withName("pRenderPassFeedback")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$pRenderPassFeedback = LAYOUT.byteOffset(PATH$pRenderPassFeedback);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pRenderPassFeedback = LAYOUT$pRenderPassFeedback.byteSize();
 
     public VkRenderPassCreationFeedbackCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -82,7 +87,7 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderPassCreationFeedbackCreateInfoEXT[] ret = new VkRenderPassCreationFeedbackCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderPassCreationFeedbackCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRenderPassCreationFeedbackCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -22,6 +22,7 @@ public record VkDeviceQueueCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("queueCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT).withName("pQueuePriorities")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkDeviceQueueCreateInfo(MemorySegment segment) {
     public static final long OFFSET$queueFamilyIndex = LAYOUT.byteOffset(PATH$queueFamilyIndex);
     public static final long OFFSET$queueCount = LAYOUT.byteOffset(PATH$queueCount);
     public static final long OFFSET$pQueuePriorities = LAYOUT.byteOffset(PATH$pQueuePriorities);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$queueFamilyIndex = LAYOUT$queueFamilyIndex.byteSize();
+    public static final long SIZE$queueCount = LAYOUT$queueCount.byteSize();
+    public static final long SIZE$pQueuePriorities = LAYOUT$pQueuePriorities.byteSize();
 
     public VkDeviceQueueCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -113,7 +121,7 @@ public record VkDeviceQueueCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceQueueCreateInfo[] ret = new VkDeviceQueueCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceQueueCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDeviceQueueCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

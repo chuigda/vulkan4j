@@ -21,6 +21,7 @@ public record VkDescriptorSetLayoutBinding(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("stageFlags"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pImmutableSamplers")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$binding = PathElement.groupElement("binding");
     public static final PathElement PATH$descriptorType = PathElement.groupElement("descriptorType");
@@ -39,6 +40,12 @@ public record VkDescriptorSetLayoutBinding(MemorySegment segment) {
     public static final long OFFSET$descriptorCount = LAYOUT.byteOffset(PATH$descriptorCount);
     public static final long OFFSET$stageFlags = LAYOUT.byteOffset(PATH$stageFlags);
     public static final long OFFSET$pImmutableSamplers = LAYOUT.byteOffset(PATH$pImmutableSamplers);
+
+    public static final long SIZE$binding = LAYOUT$binding.byteSize();
+    public static final long SIZE$descriptorType = LAYOUT$descriptorType.byteSize();
+    public static final long SIZE$descriptorCount = LAYOUT$descriptorCount.byteSize();
+    public static final long SIZE$stageFlags = LAYOUT$stageFlags.byteSize();
+    public static final long SIZE$pImmutableSamplers = LAYOUT$pImmutableSamplers.byteSize();
 
     public VkDescriptorSetLayoutBinding(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +112,7 @@ public record VkDescriptorSetLayoutBinding(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorSetLayoutBinding[] ret = new VkDescriptorSetLayoutBinding[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDescriptorSetLayoutBinding(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDescriptorSetLayoutBinding(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

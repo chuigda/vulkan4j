@@ -21,6 +21,7 @@ public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(MemorySegment seg
         ValueLayout.JAVA_INT.withName("extendedDynamicState2LogicOp"),
         ValueLayout.JAVA_INT.withName("extendedDynamicState2PatchControlPoints")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(MemorySegment seg
     public static final long OFFSET$extendedDynamicState2 = LAYOUT.byteOffset(PATH$extendedDynamicState2);
     public static final long OFFSET$extendedDynamicState2LogicOp = LAYOUT.byteOffset(PATH$extendedDynamicState2LogicOp);
     public static final long OFFSET$extendedDynamicState2PatchControlPoints = LAYOUT.byteOffset(PATH$extendedDynamicState2PatchControlPoints);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$extendedDynamicState2 = LAYOUT$extendedDynamicState2.byteSize();
+    public static final long SIZE$extendedDynamicState2LogicOp = LAYOUT$extendedDynamicState2LogicOp.byteSize();
+    public static final long SIZE$extendedDynamicState2PatchControlPoints = LAYOUT$extendedDynamicState2PatchControlPoints.byteSize();
 
     public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceExtendedDynamicState2FeaturesEXT[] ret = new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

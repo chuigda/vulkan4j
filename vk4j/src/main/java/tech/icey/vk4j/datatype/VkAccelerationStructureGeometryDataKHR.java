@@ -19,6 +19,7 @@ public record VkAccelerationStructureGeometryDataKHR(MemorySegment segment) {
         VkAccelerationStructureGeometryAabbsDataKHR.LAYOUT.withName("aabbs"),
         VkAccelerationStructureGeometryInstancesDataKHR.LAYOUT.withName("instances")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$triangles = PathElement.groupElement("triangles");
     public static final PathElement PATH$aabbs = PathElement.groupElement("aabbs");
@@ -32,6 +33,10 @@ public record VkAccelerationStructureGeometryDataKHR(MemorySegment segment) {
     public static final long OFFSET$aabbs = LAYOUT.byteOffset(PATH$aabbs);
     public static final long OFFSET$instances = LAYOUT.byteOffset(PATH$instances);
 
+    public static final long SIZE$triangles = LAYOUT$triangles.byteSize();
+    public static final long SIZE$aabbs = LAYOUT$aabbs.byteSize();
+    public static final long SIZE$instances = LAYOUT$instances.byteSize();
+
     public VkAccelerationStructureGeometryDataKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -41,7 +46,7 @@ public record VkAccelerationStructureGeometryDataKHR(MemorySegment segment) {
     }
 
     public void triangles(VkAccelerationStructureGeometryTrianglesDataKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$triangles, LAYOUT$triangles.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$triangles, SIZE$triangles);
     }
 
     public VkAccelerationStructureGeometryAabbsDataKHR aabbs() {
@@ -49,7 +54,7 @@ public record VkAccelerationStructureGeometryDataKHR(MemorySegment segment) {
     }
 
     public void aabbs(VkAccelerationStructureGeometryAabbsDataKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$aabbs, LAYOUT$aabbs.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$aabbs, SIZE$aabbs);
     }
 
     public VkAccelerationStructureGeometryInstancesDataKHR instances() {
@@ -57,7 +62,7 @@ public record VkAccelerationStructureGeometryDataKHR(MemorySegment segment) {
     }
 
     public void instances(VkAccelerationStructureGeometryInstancesDataKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$instances, LAYOUT$instances.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$instances, SIZE$instances);
     }
 
     public static VkAccelerationStructureGeometryDataKHR allocate(Arena arena) {
@@ -68,7 +73,7 @@ public record VkAccelerationStructureGeometryDataKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureGeometryDataKHR[] ret = new VkAccelerationStructureGeometryDataKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureGeometryDataKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureGeometryDataKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -21,6 +21,7 @@ public record VkPhysicalDeviceShadingRateImagePropertiesNV(MemorySegment segment
         ValueLayout.JAVA_INT.withName("shadingRatePaletteSize"),
         ValueLayout.JAVA_INT.withName("shadingRateMaxCoarseSamples")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceShadingRateImagePropertiesNV(MemorySegment segment
     public static final long OFFSET$shadingRateTexelSize = LAYOUT.byteOffset(PATH$shadingRateTexelSize);
     public static final long OFFSET$shadingRatePaletteSize = LAYOUT.byteOffset(PATH$shadingRatePaletteSize);
     public static final long OFFSET$shadingRateMaxCoarseSamples = LAYOUT.byteOffset(PATH$shadingRateMaxCoarseSamples);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shadingRateTexelSize = LAYOUT$shadingRateTexelSize.byteSize();
+    public static final long SIZE$shadingRatePaletteSize = LAYOUT$shadingRatePaletteSize.byteSize();
+    public static final long SIZE$shadingRateMaxCoarseSamples = LAYOUT$shadingRateMaxCoarseSamples.byteSize();
 
     public VkPhysicalDeviceShadingRateImagePropertiesNV(MemorySegment segment) {
         this.segment = segment;
@@ -66,7 +73,7 @@ public record VkPhysicalDeviceShadingRateImagePropertiesNV(MemorySegment segment
     }
 
     public void shadingRateTexelSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$shadingRateTexelSize, LAYOUT$shadingRateTexelSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$shadingRateTexelSize, SIZE$shadingRateTexelSize);
     }
 
     public @unsigned int shadingRatePaletteSize() {
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceShadingRateImagePropertiesNV(MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShadingRateImagePropertiesNV[] ret = new VkPhysicalDeviceShadingRateImagePropertiesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceShadingRateImagePropertiesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceShadingRateImagePropertiesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

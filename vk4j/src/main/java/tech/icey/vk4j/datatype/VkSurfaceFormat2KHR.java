@@ -1,15 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSurfaceFormat2KHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -17,6 +19,7 @@ public record VkSurfaceFormat2KHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         VkSurfaceFormatKHR.LAYOUT.withName("surfaceFormat")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -29,6 +32,10 @@ public record VkSurfaceFormat2KHR(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$surfaceFormat = LAYOUT.byteOffset(PATH$surfaceFormat);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$surfaceFormat = LAYOUT$surfaceFormat.byteSize();
 
     public VkSurfaceFormat2KHR(MemorySegment segment) {
         this.segment = segment;
@@ -56,18 +63,18 @@ public record VkSurfaceFormat2KHR(MemorySegment segment) {
     }
 
     public void surfaceFormat(VkSurfaceFormatKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$surfaceFormat, LAYOUT$surfaceFormat.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$surfaceFormat, SIZE$surfaceFormat);
     }
 
     public static VkSurfaceFormat2KHR allocate(Arena arena) {
         return new VkSurfaceFormat2KHR(arena.allocate(LAYOUT));
     }
-
+    
     public static VkSurfaceFormat2KHR[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSurfaceFormat2KHR[] ret = new VkSurfaceFormat2KHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSurfaceFormat2KHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSurfaceFormat2KHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

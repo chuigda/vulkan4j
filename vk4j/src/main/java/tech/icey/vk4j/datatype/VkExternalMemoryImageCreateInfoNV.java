@@ -19,6 +19,7 @@ public record VkExternalMemoryImageCreateInfoNV(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("handleTypes")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkExternalMemoryImageCreateInfoNV(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$handleTypes = LAYOUT.byteOffset(PATH$handleTypes);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$handleTypes = LAYOUT$handleTypes.byteSize();
 
     public VkExternalMemoryImageCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkExternalMemoryImageCreateInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExternalMemoryImageCreateInfoNV[] ret = new VkExternalMemoryImageCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkExternalMemoryImageCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkExternalMemoryImageCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

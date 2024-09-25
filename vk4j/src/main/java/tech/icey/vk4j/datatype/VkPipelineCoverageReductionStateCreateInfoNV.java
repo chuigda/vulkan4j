@@ -20,6 +20,7 @@ public record VkPipelineCoverageReductionStateCreateInfoNV(MemorySegment segment
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.JAVA_INT.withName("coverageReductionMode")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPipelineCoverageReductionStateCreateInfoNV(MemorySegment segment
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$coverageReductionMode = LAYOUT.byteOffset(PATH$coverageReductionMode);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$coverageReductionMode = LAYOUT$coverageReductionMode.byteSize();
 
     public VkPipelineCoverageReductionStateCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPipelineCoverageReductionStateCreateInfoNV(MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineCoverageReductionStateCreateInfoNV[] ret = new VkPipelineCoverageReductionStateCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineCoverageReductionStateCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineCoverageReductionStateCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -1,18 +1,17 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.enumtype.VkCompareOp;
-import tech.icey.vk4j.enumtype.VkStencilOp;
-
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkStencilOpState(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -24,6 +23,7 @@ public record VkStencilOpState(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("writeMask"),
         ValueLayout.JAVA_INT.withName("reference")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$failOp = PathElement.groupElement("failOp");
     public static final PathElement PATH$passOp = PathElement.groupElement("passOp");
@@ -48,6 +48,14 @@ public record VkStencilOpState(MemorySegment segment) {
     public static final long OFFSET$compareMask = LAYOUT.byteOffset(PATH$compareMask);
     public static final long OFFSET$writeMask = LAYOUT.byteOffset(PATH$writeMask);
     public static final long OFFSET$reference = LAYOUT.byteOffset(PATH$reference);
+
+    public static final long SIZE$failOp = LAYOUT$failOp.byteSize();
+    public static final long SIZE$passOp = LAYOUT$passOp.byteSize();
+    public static final long SIZE$depthFailOp = LAYOUT$depthFailOp.byteSize();
+    public static final long SIZE$compareOp = LAYOUT$compareOp.byteSize();
+    public static final long SIZE$compareMask = LAYOUT$compareMask.byteSize();
+    public static final long SIZE$writeMask = LAYOUT$writeMask.byteSize();
+    public static final long SIZE$reference = LAYOUT$reference.byteSize();
 
     public VkStencilOpState(MemorySegment segment) {
         this.segment = segment;
@@ -112,12 +120,12 @@ public record VkStencilOpState(MemorySegment segment) {
     public static VkStencilOpState allocate(Arena arena) {
         return new VkStencilOpState(arena.allocate(LAYOUT));
     }
-
+    
     public static VkStencilOpState[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkStencilOpState[] ret = new VkStencilOpState[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkStencilOpState(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkStencilOpState(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

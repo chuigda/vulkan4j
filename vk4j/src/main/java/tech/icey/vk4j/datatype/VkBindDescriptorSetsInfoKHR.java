@@ -25,6 +25,7 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("dynamicOffsetCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDynamicOffsets")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -55,6 +56,16 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) {
     public static final long OFFSET$pDescriptorSets = LAYOUT.byteOffset(PATH$pDescriptorSets);
     public static final long OFFSET$dynamicOffsetCount = LAYOUT.byteOffset(PATH$dynamicOffsetCount);
     public static final long OFFSET$pDynamicOffsets = LAYOUT.byteOffset(PATH$pDynamicOffsets);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$stageFlags = LAYOUT$stageFlags.byteSize();
+    public static final long SIZE$layout = LAYOUT$layout.byteSize();
+    public static final long SIZE$firstSet = LAYOUT$firstSet.byteSize();
+    public static final long SIZE$descriptorSetCount = LAYOUT$descriptorSetCount.byteSize();
+    public static final long SIZE$pDescriptorSets = LAYOUT$pDescriptorSets.byteSize();
+    public static final long SIZE$dynamicOffsetCount = LAYOUT$dynamicOffsetCount.byteSize();
+    public static final long SIZE$pDynamicOffsets = LAYOUT$pDynamicOffsets.byteSize();
 
     public VkBindDescriptorSetsInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -162,7 +173,7 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBindDescriptorSetsInfoKHR[] ret = new VkBindDescriptorSetsInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkBindDescriptorSetsInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkBindDescriptorSetsInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

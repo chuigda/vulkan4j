@@ -21,6 +21,7 @@ public record VkXlibSurfaceCreateInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("dpy"),
         NativeLayout.C_LONG.withName("window")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -38,6 +39,11 @@ public record VkXlibSurfaceCreateInfoKHR(MemorySegment segment) {
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$dpy = LAYOUT.byteOffset(PATH$dpy);
     public static final long OFFSET$window = LAYOUT.byteOffset(PATH$window);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$dpy = LAYOUT$dpy.byteSize();
 
     public VkXlibSurfaceCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -92,7 +98,7 @@ public record VkXlibSurfaceCreateInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkXlibSurfaceCreateInfoKHR[] ret = new VkXlibSurfaceCreateInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkXlibSurfaceCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkXlibSurfaceCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

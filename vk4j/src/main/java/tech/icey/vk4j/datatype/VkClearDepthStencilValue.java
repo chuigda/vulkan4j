@@ -18,6 +18,7 @@ public record VkClearDepthStencilValue(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("depth"),
         ValueLayout.JAVA_INT.withName("stencil")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$depth = PathElement.groupElement("depth");
     public static final PathElement PATH$stencil = PathElement.groupElement("stencil");
@@ -27,6 +28,9 @@ public record VkClearDepthStencilValue(MemorySegment segment) {
 
     public static final long OFFSET$depth = LAYOUT.byteOffset(PATH$depth);
     public static final long OFFSET$stencil = LAYOUT.byteOffset(PATH$stencil);
+
+    public static final long SIZE$depth = LAYOUT$depth.byteSize();
+    public static final long SIZE$stencil = LAYOUT$stencil.byteSize();
 
     public VkClearDepthStencilValue(MemorySegment segment) {
         this.segment = segment;
@@ -56,7 +60,7 @@ public record VkClearDepthStencilValue(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkClearDepthStencilValue[] ret = new VkClearDepthStencilValue[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkClearDepthStencilValue(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkClearDepthStencilValue(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

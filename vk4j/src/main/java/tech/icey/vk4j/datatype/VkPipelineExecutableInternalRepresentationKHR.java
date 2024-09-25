@@ -23,6 +23,7 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
         NativeLayout.C_SIZE_T.withName("dataSize"),
         ValueLayout.ADDRESS.withName("pData")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,13 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
     public static final long OFFSET$dataSize = LAYOUT.byteOffset(PATH$dataSize);
     public static final long OFFSET$pData = LAYOUT.byteOffset(PATH$pData);
 
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$name = LAYOUT$name.byteSize();
+    public static final long SIZE$description = LAYOUT$description.byteSize();
+    public static final long SIZE$isText = LAYOUT$isText.byteSize();
+    public static final long SIZE$pData = LAYOUT$pData.byteSize();
+
     public VkPipelineExecutableInternalRepresentationKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_INTERNAL_REPRESENTATION_KHR);
@@ -69,7 +77,7 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
     }
 
     public MemorySegment nameRaw() {
-        return segment.asSlice(OFFSET$name, LAYOUT$name.byteSize());
+        return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
     public ByteBuffer name() {
@@ -77,11 +85,11 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
     }
 
     public void name(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, LAYOUT$name.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
     }
 
     public MemorySegment descriptionRaw() {
-        return segment.asSlice(OFFSET$description, LAYOUT$description.byteSize());
+        return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
     public ByteBuffer description() {
@@ -89,7 +97,7 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
     }
 
     public void description(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, LAYOUT$description.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
     }
 
     public @unsigned int isText() {
@@ -124,7 +132,7 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineExecutableInternalRepresentationKHR[] ret = new VkPipelineExecutableInternalRepresentationKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineExecutableInternalRepresentationKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineExecutableInternalRepresentationKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

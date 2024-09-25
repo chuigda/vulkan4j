@@ -18,6 +18,7 @@ public record VkDisplayPlanePropertiesKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("currentDisplay"),
         ValueLayout.JAVA_INT.withName("currentStackIndex")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$currentDisplay = PathElement.groupElement("currentDisplay");
     public static final PathElement PATH$currentStackIndex = PathElement.groupElement("currentStackIndex");
@@ -27,6 +28,9 @@ public record VkDisplayPlanePropertiesKHR(MemorySegment segment) {
 
     public static final long OFFSET$currentDisplay = LAYOUT.byteOffset(PATH$currentDisplay);
     public static final long OFFSET$currentStackIndex = LAYOUT.byteOffset(PATH$currentStackIndex);
+
+    public static final long SIZE$currentDisplay = LAYOUT$currentDisplay.byteSize();
+    public static final long SIZE$currentStackIndex = LAYOUT$currentStackIndex.byteSize();
 
     public VkDisplayPlanePropertiesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -56,7 +60,7 @@ public record VkDisplayPlanePropertiesKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayPlanePropertiesKHR[] ret = new VkDisplayPlanePropertiesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDisplayPlanePropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDisplayPlanePropertiesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

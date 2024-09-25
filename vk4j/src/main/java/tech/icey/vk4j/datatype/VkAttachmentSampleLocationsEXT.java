@@ -18,6 +18,7 @@ public record VkAttachmentSampleLocationsEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("attachmentIndex"),
         VkSampleLocationsInfoEXT.LAYOUT.withName("sampleLocationsInfo")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$attachmentIndex = PathElement.groupElement("attachmentIndex");
     public static final PathElement PATH$sampleLocationsInfo = PathElement.groupElement("sampleLocationsInfo");
@@ -27,6 +28,9 @@ public record VkAttachmentSampleLocationsEXT(MemorySegment segment) {
 
     public static final long OFFSET$attachmentIndex = LAYOUT.byteOffset(PATH$attachmentIndex);
     public static final long OFFSET$sampleLocationsInfo = LAYOUT.byteOffset(PATH$sampleLocationsInfo);
+
+    public static final long SIZE$attachmentIndex = LAYOUT$attachmentIndex.byteSize();
+    public static final long SIZE$sampleLocationsInfo = LAYOUT$sampleLocationsInfo.byteSize();
 
     public VkAttachmentSampleLocationsEXT(MemorySegment segment) {
         this.segment = segment;
@@ -45,7 +49,7 @@ public record VkAttachmentSampleLocationsEXT(MemorySegment segment) {
     }
 
     public void sampleLocationsInfo(VkSampleLocationsInfoEXT value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationsInfo, LAYOUT$sampleLocationsInfo.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationsInfo, SIZE$sampleLocationsInfo);
     }
 
     public static VkAttachmentSampleLocationsEXT allocate(Arena arena) {
@@ -56,7 +60,7 @@ public record VkAttachmentSampleLocationsEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAttachmentSampleLocationsEXT[] ret = new VkAttachmentSampleLocationsEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAttachmentSampleLocationsEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAttachmentSampleLocationsEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -25,6 +25,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pReleaseSyncs"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pReleaseKeys")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -55,6 +56,16 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) {
     public static final long OFFSET$releaseCount = LAYOUT.byteOffset(PATH$releaseCount);
     public static final long OFFSET$pReleaseSyncs = LAYOUT.byteOffset(PATH$pReleaseSyncs);
     public static final long OFFSET$pReleaseKeys = LAYOUT.byteOffset(PATH$pReleaseKeys);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$acquireCount = LAYOUT$acquireCount.byteSize();
+    public static final long SIZE$pAcquireSyncs = LAYOUT$pAcquireSyncs.byteSize();
+    public static final long SIZE$pAcquireKeys = LAYOUT$pAcquireKeys.byteSize();
+    public static final long SIZE$pAcquireTimeouts = LAYOUT$pAcquireTimeouts.byteSize();
+    public static final long SIZE$releaseCount = LAYOUT$releaseCount.byteSize();
+    public static final long SIZE$pReleaseSyncs = LAYOUT$pReleaseSyncs.byteSize();
+    public static final long SIZE$pReleaseKeys = LAYOUT$pReleaseKeys.byteSize();
 
     public VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -191,7 +202,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkWin32KeyedMutexAcquireReleaseInfoKHR[] ret = new VkWin32KeyedMutexAcquireReleaseInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkWin32KeyedMutexAcquireReleaseInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkWin32KeyedMutexAcquireReleaseInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

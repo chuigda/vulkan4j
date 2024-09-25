@@ -22,6 +22,7 @@ public record VkPipelineRobustnessCreateInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("vertexInputs"),
         ValueLayout.JAVA_INT.withName("images")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPipelineRobustnessCreateInfoEXT(MemorySegment segment) {
     public static final long OFFSET$uniformBuffers = LAYOUT.byteOffset(PATH$uniformBuffers);
     public static final long OFFSET$vertexInputs = LAYOUT.byteOffset(PATH$vertexInputs);
     public static final long OFFSET$images = LAYOUT.byteOffset(PATH$images);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$storageBuffers = LAYOUT$storageBuffers.byteSize();
+    public static final long SIZE$uniformBuffers = LAYOUT$uniformBuffers.byteSize();
+    public static final long SIZE$vertexInputs = LAYOUT$vertexInputs.byteSize();
+    public static final long SIZE$images = LAYOUT$images.byteSize();
 
     public VkPipelineRobustnessCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkPipelineRobustnessCreateInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineRobustnessCreateInfoEXT[] ret = new VkPipelineRobustnessCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineRobustnessCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineRobustnessCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

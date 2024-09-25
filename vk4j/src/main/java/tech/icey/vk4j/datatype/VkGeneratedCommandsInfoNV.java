@@ -31,6 +31,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("sequencesIndexBuffer"),
         ValueLayout.JAVA_LONG.withName("sequencesIndexOffset")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -79,6 +80,22 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
     public static final long OFFSET$sequencesCountOffset = LAYOUT.byteOffset(PATH$sequencesCountOffset);
     public static final long OFFSET$sequencesIndexBuffer = LAYOUT.byteOffset(PATH$sequencesIndexBuffer);
     public static final long OFFSET$sequencesIndexOffset = LAYOUT.byteOffset(PATH$sequencesIndexOffset);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pipelineBindPoint = LAYOUT$pipelineBindPoint.byteSize();
+    public static final long SIZE$pipeline = LAYOUT$pipeline.byteSize();
+    public static final long SIZE$indirectCommandsLayout = LAYOUT$indirectCommandsLayout.byteSize();
+    public static final long SIZE$streamCount = LAYOUT$streamCount.byteSize();
+    public static final long SIZE$pStreams = LAYOUT$pStreams.byteSize();
+    public static final long SIZE$sequencesCount = LAYOUT$sequencesCount.byteSize();
+    public static final long SIZE$preprocessBuffer = LAYOUT$preprocessBuffer.byteSize();
+    public static final long SIZE$preprocessOffset = LAYOUT$preprocessOffset.byteSize();
+    public static final long SIZE$preprocessSize = LAYOUT$preprocessSize.byteSize();
+    public static final long SIZE$sequencesCountBuffer = LAYOUT$sequencesCountBuffer.byteSize();
+    public static final long SIZE$sequencesCountOffset = LAYOUT$sequencesCountOffset.byteSize();
+    public static final long SIZE$sequencesIndexBuffer = LAYOUT$sequencesIndexBuffer.byteSize();
+    public static final long SIZE$sequencesIndexOffset = LAYOUT$sequencesIndexOffset.byteSize();
 
     public VkGeneratedCommandsInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -226,7 +243,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkGeneratedCommandsInfoNV[] ret = new VkGeneratedCommandsInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkGeneratedCommandsInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkGeneratedCommandsInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

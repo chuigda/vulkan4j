@@ -20,6 +20,7 @@ public record VkShaderModuleIdentifierEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("identifierSize"),
         MemoryLayout.sequenceLayout(VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT, ValueLayout.JAVA_BYTE).withName("identifier")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkShaderModuleIdentifierEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$identifierSize = LAYOUT.byteOffset(PATH$identifierSize);
     public static final long OFFSET$identifier = LAYOUT.byteOffset(PATH$identifier);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$identifierSize = LAYOUT$identifierSize.byteSize();
+    public static final long SIZE$identifier = LAYOUT$identifier.byteSize();
 
     public VkShaderModuleIdentifierEXT(MemorySegment segment) {
         this.segment = segment;
@@ -66,7 +72,7 @@ public record VkShaderModuleIdentifierEXT(MemorySegment segment) {
     }
 
     public MemorySegment identifierRaw() {
-        return segment.asSlice(OFFSET$identifier, LAYOUT$identifier.byteSize());
+        return segment.asSlice(OFFSET$identifier, SIZE$identifier);
     }
 
     public @unsigned ByteBuffer identifier() {
@@ -74,7 +80,7 @@ public record VkShaderModuleIdentifierEXT(MemorySegment segment) {
     }
 
     public void identifier(@unsigned ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$identifier, LAYOUT$identifier.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$identifier, SIZE$identifier);
     }
 
     public static VkShaderModuleIdentifierEXT allocate(Arena arena) {
@@ -85,7 +91,7 @@ public record VkShaderModuleIdentifierEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkShaderModuleIdentifierEXT[] ret = new VkShaderModuleIdentifierEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkShaderModuleIdentifierEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkShaderModuleIdentifierEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

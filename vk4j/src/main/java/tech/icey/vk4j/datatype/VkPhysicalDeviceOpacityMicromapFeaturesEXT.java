@@ -21,6 +21,7 @@ public record VkPhysicalDeviceOpacityMicromapFeaturesEXT(MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("micromapCaptureReplay"),
         ValueLayout.JAVA_INT.withName("micromapHostCommands")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceOpacityMicromapFeaturesEXT(MemorySegment segment) 
     public static final long OFFSET$micromap = LAYOUT.byteOffset(PATH$micromap);
     public static final long OFFSET$micromapCaptureReplay = LAYOUT.byteOffset(PATH$micromapCaptureReplay);
     public static final long OFFSET$micromapHostCommands = LAYOUT.byteOffset(PATH$micromapHostCommands);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$micromap = LAYOUT$micromap.byteSize();
+    public static final long SIZE$micromapCaptureReplay = LAYOUT$micromapCaptureReplay.byteSize();
+    public static final long SIZE$micromapHostCommands = LAYOUT$micromapHostCommands.byteSize();
 
     public VkPhysicalDeviceOpacityMicromapFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceOpacityMicromapFeaturesEXT(MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceOpacityMicromapFeaturesEXT[] ret = new VkPhysicalDeviceOpacityMicromapFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceOpacityMicromapFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceOpacityMicromapFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

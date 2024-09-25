@@ -19,6 +19,7 @@ public record VkSparseImageFormatProperties2(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         VkSparseImageFormatProperties.LAYOUT.withName("properties")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkSparseImageFormatProperties2(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$properties = LAYOUT.byteOffset(PATH$properties);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$properties = LAYOUT$properties.byteSize();
 
     public VkSparseImageFormatProperties2(MemorySegment segment) {
         this.segment = segment;
@@ -58,7 +63,7 @@ public record VkSparseImageFormatProperties2(MemorySegment segment) {
     }
 
     public void properties(VkSparseImageFormatProperties value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$properties, LAYOUT$properties.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$properties, SIZE$properties);
     }
 
     public static VkSparseImageFormatProperties2 allocate(Arena arena) {
@@ -69,7 +74,7 @@ public record VkSparseImageFormatProperties2(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSparseImageFormatProperties2[] ret = new VkSparseImageFormatProperties2[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSparseImageFormatProperties2(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSparseImageFormatProperties2(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

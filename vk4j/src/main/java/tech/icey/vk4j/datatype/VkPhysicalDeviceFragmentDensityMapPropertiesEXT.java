@@ -21,6 +21,7 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(MemorySegment segm
         VkExtent2D.LAYOUT.withName("maxFragmentDensityTexelSize"),
         ValueLayout.JAVA_INT.withName("fragmentDensityInvocations")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(MemorySegment segm
     public static final long OFFSET$minFragmentDensityTexelSize = LAYOUT.byteOffset(PATH$minFragmentDensityTexelSize);
     public static final long OFFSET$maxFragmentDensityTexelSize = LAYOUT.byteOffset(PATH$maxFragmentDensityTexelSize);
     public static final long OFFSET$fragmentDensityInvocations = LAYOUT.byteOffset(PATH$fragmentDensityInvocations);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$minFragmentDensityTexelSize = LAYOUT$minFragmentDensityTexelSize.byteSize();
+    public static final long SIZE$maxFragmentDensityTexelSize = LAYOUT$maxFragmentDensityTexelSize.byteSize();
+    public static final long SIZE$fragmentDensityInvocations = LAYOUT$fragmentDensityInvocations.byteSize();
 
     public VkPhysicalDeviceFragmentDensityMapPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -66,7 +73,7 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(MemorySegment segm
     }
 
     public void minFragmentDensityTexelSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minFragmentDensityTexelSize, LAYOUT$minFragmentDensityTexelSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minFragmentDensityTexelSize, SIZE$minFragmentDensityTexelSize);
     }
 
     public VkExtent2D maxFragmentDensityTexelSize() {
@@ -74,7 +81,7 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(MemorySegment segm
     }
 
     public void maxFragmentDensityTexelSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFragmentDensityTexelSize, LAYOUT$maxFragmentDensityTexelSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFragmentDensityTexelSize, SIZE$maxFragmentDensityTexelSize);
     }
 
     public @unsigned int fragmentDensityInvocations() {
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceFragmentDensityMapPropertiesEXT[] ret = new VkPhysicalDeviceFragmentDensityMapPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

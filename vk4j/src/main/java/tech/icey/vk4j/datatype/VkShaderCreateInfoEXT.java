@@ -30,6 +30,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkPushConstantRange.LAYOUT).withName("pPushConstantRanges"),
         ValueLayout.ADDRESS.withTargetLayout(VkSpecializationInfo.LAYOUT).withName("pSpecializationInfo")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -74,6 +75,20 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
     public static final long OFFSET$pushConstantRangeCount = LAYOUT.byteOffset(PATH$pushConstantRangeCount);
     public static final long OFFSET$pPushConstantRanges = LAYOUT.byteOffset(PATH$pPushConstantRanges);
     public static final long OFFSET$pSpecializationInfo = LAYOUT.byteOffset(PATH$pSpecializationInfo);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$stage = LAYOUT$stage.byteSize();
+    public static final long SIZE$nextStage = LAYOUT$nextStage.byteSize();
+    public static final long SIZE$codeType = LAYOUT$codeType.byteSize();
+    public static final long SIZE$pCode = LAYOUT$pCode.byteSize();
+    public static final long SIZE$pName = LAYOUT$pName.byteSize();
+    public static final long SIZE$setLayoutCount = LAYOUT$setLayoutCount.byteSize();
+    public static final long SIZE$pSetLayouts = LAYOUT$pSetLayouts.byteSize();
+    public static final long SIZE$pushConstantRangeCount = LAYOUT$pushConstantRangeCount.byteSize();
+    public static final long SIZE$pPushConstantRanges = LAYOUT$pPushConstantRanges.byteSize();
+    public static final long SIZE$pSpecializationInfo = LAYOUT$pSpecializationInfo.byteSize();
 
     public VkShaderCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -247,7 +262,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkShaderCreateInfoEXT[] ret = new VkShaderCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkShaderCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkShaderCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -19,6 +19,7 @@ public record VkDescriptorBufferInfo(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("offset"),
         ValueLayout.JAVA_LONG.withName("range")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$buffer = PathElement.groupElement("buffer");
     public static final PathElement PATH$offset = PathElement.groupElement("offset");
@@ -31,6 +32,10 @@ public record VkDescriptorBufferInfo(MemorySegment segment) {
     public static final long OFFSET$buffer = LAYOUT.byteOffset(PATH$buffer);
     public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
     public static final long OFFSET$range = LAYOUT.byteOffset(PATH$range);
+
+    public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$range = LAYOUT$range.byteSize();
 
     public VkDescriptorBufferInfo(MemorySegment segment) {
         this.segment = segment;
@@ -68,7 +73,7 @@ public record VkDescriptorBufferInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorBufferInfo[] ret = new VkDescriptorBufferInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDescriptorBufferInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDescriptorBufferInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

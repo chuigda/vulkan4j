@@ -25,6 +25,7 @@ public record VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) {
         VkExtent2D.LAYOUT.withName("minDstExtent"),
         VkExtent2D.LAYOUT.withName("maxDstExtent")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$supportedAlpha = PathElement.groupElement("supportedAlpha");
     public static final PathElement PATH$minSrcPosition = PathElement.groupElement("minSrcPosition");
@@ -56,6 +57,16 @@ public record VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) {
     public static final long OFFSET$minDstExtent = LAYOUT.byteOffset(PATH$minDstExtent);
     public static final long OFFSET$maxDstExtent = LAYOUT.byteOffset(PATH$maxDstExtent);
 
+    public static final long SIZE$supportedAlpha = LAYOUT$supportedAlpha.byteSize();
+    public static final long SIZE$minSrcPosition = LAYOUT$minSrcPosition.byteSize();
+    public static final long SIZE$maxSrcPosition = LAYOUT$maxSrcPosition.byteSize();
+    public static final long SIZE$minSrcExtent = LAYOUT$minSrcExtent.byteSize();
+    public static final long SIZE$maxSrcExtent = LAYOUT$maxSrcExtent.byteSize();
+    public static final long SIZE$minDstPosition = LAYOUT$minDstPosition.byteSize();
+    public static final long SIZE$maxDstPosition = LAYOUT$maxDstPosition.byteSize();
+    public static final long SIZE$minDstExtent = LAYOUT$minDstExtent.byteSize();
+    public static final long SIZE$maxDstExtent = LAYOUT$maxDstExtent.byteSize();
+
     public VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -73,7 +84,7 @@ public record VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) {
     }
 
     public void minSrcPosition(VkOffset2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minSrcPosition, LAYOUT$minSrcPosition.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minSrcPosition, SIZE$minSrcPosition);
     }
 
     public VkOffset2D maxSrcPosition() {
@@ -81,7 +92,7 @@ public record VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) {
     }
 
     public void maxSrcPosition(VkOffset2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSrcPosition, LAYOUT$maxSrcPosition.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSrcPosition, SIZE$maxSrcPosition);
     }
 
     public VkExtent2D minSrcExtent() {
@@ -89,7 +100,7 @@ public record VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) {
     }
 
     public void minSrcExtent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minSrcExtent, LAYOUT$minSrcExtent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minSrcExtent, SIZE$minSrcExtent);
     }
 
     public VkExtent2D maxSrcExtent() {
@@ -97,7 +108,7 @@ public record VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) {
     }
 
     public void maxSrcExtent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSrcExtent, LAYOUT$maxSrcExtent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSrcExtent, SIZE$maxSrcExtent);
     }
 
     public VkOffset2D minDstPosition() {
@@ -105,7 +116,7 @@ public record VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) {
     }
 
     public void minDstPosition(VkOffset2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minDstPosition, LAYOUT$minDstPosition.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minDstPosition, SIZE$minDstPosition);
     }
 
     public VkOffset2D maxDstPosition() {
@@ -113,7 +124,7 @@ public record VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) {
     }
 
     public void maxDstPosition(VkOffset2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxDstPosition, LAYOUT$maxDstPosition.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxDstPosition, SIZE$maxDstPosition);
     }
 
     public VkExtent2D minDstExtent() {
@@ -121,7 +132,7 @@ public record VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) {
     }
 
     public void minDstExtent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minDstExtent, LAYOUT$minDstExtent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minDstExtent, SIZE$minDstExtent);
     }
 
     public VkExtent2D maxDstExtent() {
@@ -129,7 +140,7 @@ public record VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) {
     }
 
     public void maxDstExtent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxDstExtent, LAYOUT$maxDstExtent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxDstExtent, SIZE$maxDstExtent);
     }
 
     public static VkDisplayPlaneCapabilitiesKHR allocate(Arena arena) {
@@ -140,7 +151,7 @@ public record VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayPlaneCapabilitiesKHR[] ret = new VkDisplayPlaneCapabilitiesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDisplayPlaneCapabilitiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDisplayPlaneCapabilitiesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

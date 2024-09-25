@@ -20,6 +20,7 @@ public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(MemorySegment segme
         ValueLayout.JAVA_INT.withName("sciBufImport"),
         ValueLayout.JAVA_INT.withName("sciBufExport")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(MemorySegment segme
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$sciBufImport = LAYOUT.byteOffset(PATH$sciBufImport);
     public static final long OFFSET$sciBufExport = LAYOUT.byteOffset(PATH$sciBufExport);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$sciBufImport = LAYOUT$sciBufImport.byteSize();
+    public static final long SIZE$sciBufExport = LAYOUT$sciBufExport.byteSize();
 
     public VkPhysicalDeviceExternalMemorySciBufFeaturesNV(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceExternalMemorySciBufFeaturesNV[] ret = new VkPhysicalDeviceExternalMemorySciBufFeaturesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceExternalMemorySciBufFeaturesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceExternalMemorySciBufFeaturesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

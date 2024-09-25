@@ -24,6 +24,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("streamCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pStreamStrides")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -51,6 +52,15 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
     public static final long OFFSET$pTokens = LAYOUT.byteOffset(PATH$pTokens);
     public static final long OFFSET$streamCount = LAYOUT.byteOffset(PATH$streamCount);
     public static final long OFFSET$pStreamStrides = LAYOUT.byteOffset(PATH$pStreamStrides);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$pipelineBindPoint = LAYOUT$pipelineBindPoint.byteSize();
+    public static final long SIZE$tokenCount = LAYOUT$tokenCount.byteSize();
+    public static final long SIZE$pTokens = LAYOUT$pTokens.byteSize();
+    public static final long SIZE$streamCount = LAYOUT$streamCount.byteSize();
+    public static final long SIZE$pStreamStrides = LAYOUT$pStreamStrides.byteSize();
 
     public VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -150,7 +160,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkIndirectCommandsLayoutCreateInfoNV[] ret = new VkIndirectCommandsLayoutCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkIndirectCommandsLayoutCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkIndirectCommandsLayoutCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

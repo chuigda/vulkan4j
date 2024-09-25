@@ -25,6 +25,7 @@ public record VkBufferMemoryBarrier(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("offset"),
         ValueLayout.JAVA_LONG.withName("size")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -55,6 +56,16 @@ public record VkBufferMemoryBarrier(MemorySegment segment) {
     public static final long OFFSET$buffer = LAYOUT.byteOffset(PATH$buffer);
     public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
     public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$srcAccessMask = LAYOUT$srcAccessMask.byteSize();
+    public static final long SIZE$dstAccessMask = LAYOUT$dstAccessMask.byteSize();
+    public static final long SIZE$srcQueueFamilyIndex = LAYOUT$srcQueueFamilyIndex.byteSize();
+    public static final long SIZE$dstQueueFamilyIndex = LAYOUT$dstQueueFamilyIndex.byteSize();
+    public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
 
     public VkBufferMemoryBarrier(MemorySegment segment) {
         this.segment = segment;
@@ -141,7 +152,7 @@ public record VkBufferMemoryBarrier(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferMemoryBarrier[] ret = new VkBufferMemoryBarrier[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkBufferMemoryBarrier(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkBufferMemoryBarrier(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

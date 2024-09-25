@@ -22,6 +22,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
         ValueLayout.ADDRESS.withName("indirectCommandsLayout"),
         ValueLayout.JAVA_INT.withName("maxSequencesCount")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
     public static final long OFFSET$pipeline = LAYOUT.byteOffset(PATH$pipeline);
     public static final long OFFSET$indirectCommandsLayout = LAYOUT.byteOffset(PATH$indirectCommandsLayout);
     public static final long OFFSET$maxSequencesCount = LAYOUT.byteOffset(PATH$maxSequencesCount);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pipelineBindPoint = LAYOUT$pipelineBindPoint.byteSize();
+    public static final long SIZE$pipeline = LAYOUT$pipeline.byteSize();
+    public static final long SIZE$indirectCommandsLayout = LAYOUT$indirectCommandsLayout.byteSize();
+    public static final long SIZE$maxSequencesCount = LAYOUT$maxSequencesCount.byteSize();
 
     public VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkGeneratedCommandsMemoryRequirementsInfoNV[] ret = new VkGeneratedCommandsMemoryRequirementsInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkGeneratedCommandsMemoryRequirementsInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkGeneratedCommandsMemoryRequirementsInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

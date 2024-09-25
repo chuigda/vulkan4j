@@ -21,6 +21,7 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment 
         ValueLayout.JAVA_INT.withName("viewportCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkShadingRatePaletteNV.LAYOUT).withName("pShadingRatePalettes")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment 
     public static final long OFFSET$shadingRateImageEnable = LAYOUT.byteOffset(PATH$shadingRateImageEnable);
     public static final long OFFSET$viewportCount = LAYOUT.byteOffset(PATH$viewportCount);
     public static final long OFFSET$pShadingRatePalettes = LAYOUT.byteOffset(PATH$pShadingRatePalettes);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shadingRateImageEnable = LAYOUT$shadingRateImageEnable.byteSize();
+    public static final long SIZE$viewportCount = LAYOUT$viewportCount.byteSize();
+    public static final long SIZE$pShadingRatePalettes = LAYOUT$pShadingRatePalettes.byteSize();
 
     public VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -106,7 +113,7 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineViewportShadingRateImageStateCreateInfoNV[] ret = new VkPipelineViewportShadingRateImageStateCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineViewportShadingRateImageStateCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineViewportShadingRateImageStateCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

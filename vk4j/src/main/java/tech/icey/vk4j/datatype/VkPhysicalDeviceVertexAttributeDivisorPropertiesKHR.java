@@ -20,6 +20,7 @@ public record VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR(MemorySegment 
         ValueLayout.JAVA_INT.withName("maxVertexAttribDivisor"),
         ValueLayout.JAVA_INT.withName("supportsNonZeroFirstInstance")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR(MemorySegment 
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$maxVertexAttribDivisor = LAYOUT.byteOffset(PATH$maxVertexAttribDivisor);
     public static final long OFFSET$supportsNonZeroFirstInstance = LAYOUT.byteOffset(PATH$supportsNonZeroFirstInstance);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxVertexAttribDivisor = LAYOUT$maxVertexAttribDivisor.byteSize();
+    public static final long SIZE$supportsNonZeroFirstInstance = LAYOUT$supportsNonZeroFirstInstance.byteSize();
 
     public VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR(MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR[] ret = new VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

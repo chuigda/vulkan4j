@@ -25,6 +25,7 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segm
         VkDeviceOrHostAddressConstKHR.LAYOUT.withName("indexData"),
         VkDeviceOrHostAddressConstKHR.LAYOUT.withName("transformData")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -55,6 +56,16 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segm
     public static final long OFFSET$indexType = LAYOUT.byteOffset(PATH$indexType);
     public static final long OFFSET$indexData = LAYOUT.byteOffset(PATH$indexData);
     public static final long OFFSET$transformData = LAYOUT.byteOffset(PATH$transformData);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$vertexFormat = LAYOUT$vertexFormat.byteSize();
+    public static final long SIZE$vertexData = LAYOUT$vertexData.byteSize();
+    public static final long SIZE$vertexStride = LAYOUT$vertexStride.byteSize();
+    public static final long SIZE$maxVertex = LAYOUT$maxVertex.byteSize();
+    public static final long SIZE$indexType = LAYOUT$indexType.byteSize();
+    public static final long SIZE$indexData = LAYOUT$indexData.byteSize();
+    public static final long SIZE$transformData = LAYOUT$transformData.byteSize();
 
     public VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segment) {
         this.segment = segment;
@@ -90,7 +101,7 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segm
     }
 
     public void vertexData(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexData, LAYOUT$vertexData.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexData, SIZE$vertexData);
     }
 
     public @unsigned long vertexStride() {
@@ -122,7 +133,7 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segm
     }
 
     public void indexData(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexData, LAYOUT$indexData.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexData, SIZE$indexData);
     }
 
     public VkDeviceOrHostAddressConstKHR transformData() {
@@ -130,7 +141,7 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segm
     }
 
     public void transformData(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformData, LAYOUT$transformData.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformData, SIZE$transformData);
     }
 
     public static VkAccelerationStructureGeometryTrianglesDataKHR allocate(Arena arena) {
@@ -141,7 +152,7 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureGeometryTrianglesDataKHR[] ret = new VkAccelerationStructureGeometryTrianglesDataKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureGeometryTrianglesDataKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureGeometryTrianglesDataKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

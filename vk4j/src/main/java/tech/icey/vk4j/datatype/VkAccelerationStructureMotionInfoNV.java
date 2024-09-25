@@ -20,6 +20,7 @@ public record VkAccelerationStructureMotionInfoNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("maxInstances"),
         ValueLayout.JAVA_INT.withName("flags")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkAccelerationStructureMotionInfoNV(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$maxInstances = LAYOUT.byteOffset(PATH$maxInstances);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxInstances = LAYOUT$maxInstances.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
 
     public VkAccelerationStructureMotionInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkAccelerationStructureMotionInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureMotionInfoNV[] ret = new VkAccelerationStructureMotionInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureMotionInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureMotionInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

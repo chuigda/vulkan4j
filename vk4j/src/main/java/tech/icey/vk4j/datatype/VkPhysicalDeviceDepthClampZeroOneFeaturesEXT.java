@@ -19,6 +19,7 @@ public record VkPhysicalDeviceDepthClampZeroOneFeaturesEXT(MemorySegment segment
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("depthClampZeroOne")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceDepthClampZeroOneFeaturesEXT(MemorySegment segment
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$depthClampZeroOne = LAYOUT.byteOffset(PATH$depthClampZeroOne);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$depthClampZeroOne = LAYOUT$depthClampZeroOne.byteSize();
 
     public VkPhysicalDeviceDepthClampZeroOneFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceDepthClampZeroOneFeaturesEXT(MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceDepthClampZeroOneFeaturesEXT[] ret = new VkPhysicalDeviceDepthClampZeroOneFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceDepthClampZeroOneFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceDepthClampZeroOneFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }
