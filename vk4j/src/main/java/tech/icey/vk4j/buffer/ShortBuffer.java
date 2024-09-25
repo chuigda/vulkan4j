@@ -30,7 +30,7 @@ public record ShortBuffer(MemorySegment segment) {
     }
 
     public static ShortBuffer allocate(Arena arena) {
-        return allocate(arena, 1);
+        return new ShortBuffer(arena.allocate(ValueLayout.JAVA_SHORT));
     }
 
     public static ShortBuffer allocate(Arena arena, long size) {

@@ -65,7 +65,7 @@ public record VkBufferCollectionFUCHSIA(MemorySegment segment) {
         }
 
         public static Buffer allocate(Arena arena) {
-            return allocate(arena, 1);
+            return new Buffer(arena.allocate(ValueLayout.ADDRESS));
         }
 
         public static Buffer allocate(Arena arena, long size) {

@@ -30,7 +30,7 @@ public record DoubleBuffer(MemorySegment segment) {
     }
 
     public static DoubleBuffer allocate(Arena arena) {
-        return allocate(arena, 1);
+        return new DoubleBuffer(arena.allocate(ValueLayout.JAVA_DOUBLE));
     }
 
     public static DoubleBuffer allocate(Arena arena, long size) {

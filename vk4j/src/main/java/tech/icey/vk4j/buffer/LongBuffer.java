@@ -30,7 +30,7 @@ public record LongBuffer(MemorySegment segment) {
     }
 
     public static LongBuffer allocate(Arena arena) {
-        return allocate(arena, 1);
+        return new LongBuffer(arena.allocate(ValueLayout.JAVA_LONG));
     }
 
     public static LongBuffer allocate(Arena arena, long size) {

@@ -30,7 +30,7 @@ public record FloatBuffer(MemorySegment segment) {
     }
 
     public static FloatBuffer allocate(Arena arena) {
-        return allocate(arena, 1);
+        return new FloatBuffer(arena.allocate(ValueLayout.JAVA_FLOAT));
     }
 
     public static FloatBuffer allocate(Arena arena, long size) {

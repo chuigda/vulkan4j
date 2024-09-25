@@ -24,6 +24,16 @@ public class ProfileMain {
     }
 
     public static void main(String[] args) {
+        prewarm();
+        run();
+    }
+
+    private static void prewarm() {
+        vk4jMain();
+        lwjglMain();
+    }
+
+    private static void run() {
         vk4jMain();
         lwjglMain();
     }

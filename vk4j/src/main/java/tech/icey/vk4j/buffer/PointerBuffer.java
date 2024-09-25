@@ -30,7 +30,7 @@ public record PointerBuffer(MemorySegment segment) {
     }
 
     public static PointerBuffer allocate(Arena arena) {
-        return allocate(arena, 1);
+        return new PointerBuffer(arena.allocate(ValueLayout.ADDRESS));
     }
 
     public static PointerBuffer allocate(Arena arena, long size) {

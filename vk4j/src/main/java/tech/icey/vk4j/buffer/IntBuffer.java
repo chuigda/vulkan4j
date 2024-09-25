@@ -30,7 +30,7 @@ public record IntBuffer(MemorySegment segment) {
     }
 
     public static IntBuffer allocate(Arena arena) {
-        return allocate(arena, 1);
+        return new IntBuffer(arena.allocate(ValueLayout.JAVA_INT));
     }
 
     public static IntBuffer allocate(Arena arena, long size) {

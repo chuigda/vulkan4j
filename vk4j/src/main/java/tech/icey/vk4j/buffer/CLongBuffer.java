@@ -31,7 +31,7 @@ public record CLongBuffer(MemorySegment segment) {
     }
 
     public static CLongBuffer allocate(Arena arena) {
-        return allocate(arena, 1);
+        return new CLongBuffer(arena.allocate(NativeLayout.C_LONG));
     }
 
     public static CLongBuffer allocate(Arena arena, long size) {
