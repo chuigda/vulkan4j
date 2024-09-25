@@ -19,7 +19,7 @@ public record {handle.name}(MemorySegment segment) {{
         @Override
         public Class<{handle.name}> clazz() {{
             return {handle.name}.class;
-        }}        
+        }}
 
         @Override
         public MemoryLayout layout() {{

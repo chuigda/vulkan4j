@@ -1,15 +1,21 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkCompositeAlphaFlagsKHR;
+import tech.icey.vk4j.bitmask.VkImageUsageFlags;
+import tech.icey.vk4j.bitmask.VkSurfaceCounterFlagsEXT;
+import tech.icey.vk4j.bitmask.VkSurfaceTransformFlagsKHR;
+import tech.icey.vk4j.enumtype.VkStructureType;
 
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT;
 
 public record VkSurfaceCapabilities2EXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

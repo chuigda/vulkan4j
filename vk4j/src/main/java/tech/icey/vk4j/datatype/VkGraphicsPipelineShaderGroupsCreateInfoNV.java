@@ -4,11 +4,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-
+import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) {
@@ -78,7 +82,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
     public void pGroupsRaw(@pointer(comment="VkGraphicsShaderGroupCreateInfoNV*") MemorySegment value) {
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
-
+    
     public @nullable VkGraphicsShaderGroupCreateInfoNV pGroups() {
         MemorySegment s = pGroupsRaw();
         if (s.address() == 0) {
@@ -107,7 +111,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
     public void pPipelinesRaw(@pointer(comment="VkPipeline*") MemorySegment value) {
         segment.set(LAYOUT$pPipelines, OFFSET$pPipelines, value);
     }
-
+    
     public @nullable VkPipeline pPipelines() {
         MemorySegment s = pPipelinesRaw();
         if (s.address() == 0) {
@@ -126,7 +130,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         @Override
         public Class<VkGraphicsPipelineShaderGroupsCreateInfoNV> clazz() {
             return VkGraphicsPipelineShaderGroupsCreateInfoNV.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

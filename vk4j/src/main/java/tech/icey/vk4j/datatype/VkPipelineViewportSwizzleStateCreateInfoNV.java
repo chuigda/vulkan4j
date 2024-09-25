@@ -4,11 +4,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-
+import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) {
@@ -82,7 +86,7 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
     public void pViewportSwizzlesRaw(@pointer(comment="VkViewportSwizzleNV*") MemorySegment value) {
         segment.set(LAYOUT$pViewportSwizzles, OFFSET$pViewportSwizzles, value);
     }
-
+    
     public @nullable VkViewportSwizzleNV pViewportSwizzles() {
         MemorySegment s = pViewportSwizzlesRaw();
         if (s.address() == 0) {
@@ -101,7 +105,7 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
         @Override
         public Class<VkPipelineViewportSwizzleStateCreateInfoNV> clazz() {
             return VkPipelineViewportSwizzleStateCreateInfoNV.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

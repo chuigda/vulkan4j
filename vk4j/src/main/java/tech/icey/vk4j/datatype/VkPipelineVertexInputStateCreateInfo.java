@@ -4,11 +4,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-
+import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) {
@@ -90,7 +94,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) {
     public void pVertexBindingDescriptionsRaw(@pointer(comment="VkVertexInputBindingDescription*") MemorySegment value) {
         segment.set(LAYOUT$pVertexBindingDescriptions, OFFSET$pVertexBindingDescriptions, value);
     }
-
+    
     public @nullable VkVertexInputBindingDescription pVertexBindingDescriptions() {
         MemorySegment s = pVertexBindingDescriptionsRaw();
         if (s.address() == 0) {
@@ -119,7 +123,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) {
     public void pVertexAttributeDescriptionsRaw(@pointer(comment="VkVertexInputAttributeDescription*") MemorySegment value) {
         segment.set(LAYOUT$pVertexAttributeDescriptions, OFFSET$pVertexAttributeDescriptions, value);
     }
-
+    
     public @nullable VkVertexInputAttributeDescription pVertexAttributeDescriptions() {
         MemorySegment s = pVertexAttributeDescriptionsRaw();
         if (s.address() == 0) {
@@ -138,7 +142,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) {
         @Override
         public Class<VkPipelineVertexInputStateCreateInfo> clazz() {
             return VkPipelineVertexInputStateCreateInfo.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

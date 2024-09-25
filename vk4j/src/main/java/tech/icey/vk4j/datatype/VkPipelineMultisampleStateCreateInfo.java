@@ -4,12 +4,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-
+import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkPipelineMultisampleStateCreateInfo(MemorySegment segment) {
@@ -115,7 +118,7 @@ public record VkPipelineMultisampleStateCreateInfo(MemorySegment segment) {
     public void pSampleMaskRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pSampleMask, OFFSET$pSampleMask, value);
     }
-
+    
     public @unsigned IntPtr pSampleMask() {
         return new IntPtr(pSampleMaskRaw());
     }
@@ -145,7 +148,7 @@ public record VkPipelineMultisampleStateCreateInfo(MemorySegment segment) {
         @Override
         public Class<VkPipelineMultisampleStateCreateInfo> clazz() {
             return VkPipelineMultisampleStateCreateInfo.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

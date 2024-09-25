@@ -4,10 +4,16 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkMutableDescriptorTypeListEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -39,20 +45,20 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) {
     public @pointer(target=VkDescriptorType.class) MemorySegment pDescriptorTypesRaw() {
         return segment.get(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes);
     }
-
+    
     public void pDescriptorTypesRaw(@pointer(target=VkDescriptorType.class) MemorySegment value) {
         segment.set(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes, value);
     }
-
+    
     public @nullable IntPtr pDescriptorTypes() {
         MemorySegment s = pDescriptorTypesRaw();
         if (s.address() == 0) {
             return null;
         }
-
+        
         return new IntPtr(s);
     }
-
+    
     public void pDescriptorTypes(@nullable IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorTypesRaw(s);
@@ -63,7 +69,7 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) {
         @Override
         public Class<VkMutableDescriptorTypeListEXT> clazz() {
             return VkMutableDescriptorTypeListEXT.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

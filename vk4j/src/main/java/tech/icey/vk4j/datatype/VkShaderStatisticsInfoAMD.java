@@ -1,13 +1,16 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.array.IntArray;
+import tech.icey.vk4j.bitmask.VkShaderStageFlags;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
 
 public record VkShaderStatisticsInfoAMD(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

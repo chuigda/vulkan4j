@@ -1,15 +1,20 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.bitmask.VkExternalMemoryHandleTypeFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
 
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import java.lang.foreign.AddressLayout;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR;
 
 public record VkImportMemoryFdInfoKHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

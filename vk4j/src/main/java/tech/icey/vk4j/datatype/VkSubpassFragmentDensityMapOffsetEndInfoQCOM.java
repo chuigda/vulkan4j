@@ -4,10 +4,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-
+import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment) {
@@ -69,7 +74,7 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
     public void pFragmentDensityOffsetsRaw(@pointer(comment="VkOffset2D*") MemorySegment value) {
         segment.set(LAYOUT$pFragmentDensityOffsets, OFFSET$pFragmentDensityOffsets, value);
     }
-
+    
     public @nullable VkOffset2D pFragmentDensityOffsets() {
         MemorySegment s = pFragmentDensityOffsetsRaw();
         if (s.address() == 0) {
@@ -88,7 +93,7 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
         @Override
         public Class<VkSubpassFragmentDensityMapOffsetEndInfoQCOM> clazz() {
             return VkSubpassFragmentDensityMapOffsetEndInfoQCOM.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

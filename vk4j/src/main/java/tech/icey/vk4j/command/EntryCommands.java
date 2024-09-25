@@ -1,14 +1,23 @@
 package tech.icey.vk4j.command;
 
-import java.lang.foreign.*;
-import java.lang.invoke.MethodHandle;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.nullable;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.datatype.VkAllocationCallbacks;
+import tech.icey.vk4j.datatype.VkExtensionProperties;
+import tech.icey.vk4j.datatype.VkInstanceCreateInfo;
+import tech.icey.vk4j.datatype.VkLayerProperties;
+import tech.icey.vk4j.enumtype.VkResult;
+import tech.icey.vk4j.handle.VkInstance;
+import tech.icey.vk4j.ptr.BytePtr;
+import tech.icey.vk4j.ptr.IntPtr;
 import tech.icey.vk4j.util.Function2;
+
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+import java.lang.invoke.MethodHandle;
 
 public final class EntryCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkCreateInstance = FunctionDescriptor.of(
@@ -54,9 +63,9 @@ public final class EntryCommands {
             @pointer(target=VkInstance.class) VkInstance pInstance
     ) {
         try {
-            return (int) HANDLE$vkCreateInstance.invoke(
+            return (int) HANDLE$vkCreateInstance.invokeExact(
                     pCreateInfo.segment(),
-                    pAllocator != null ? pAllocator.segment() : MemorySegment.NULL,
+                    (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pInstance.segment()
             );
         } catch (Throwable t) {
@@ -68,7 +77,7 @@ public final class EntryCommands {
             @pointer(target=IntPtr.class) @unsigned IntPtr pApiVersion
     ) {
         try {
-            return (int) HANDLE$vkEnumerateInstanceVersion.invoke(
+            return (int) HANDLE$vkEnumerateInstanceVersion.invokeExact(
                     pApiVersion.segment()
             );
         } catch (Throwable t) {
@@ -81,9 +90,9 @@ public final class EntryCommands {
             @nullable @pointer(target=VkLayerProperties.class) VkLayerProperties pProperties
     ) {
         try {
-            return (int) HANDLE$vkEnumerateInstanceLayerProperties.invoke(
+            return (int) HANDLE$vkEnumerateInstanceLayerProperties.invokeExact(
                     pPropertyCount.segment(),
-                    pProperties != null ? pProperties.segment() : MemorySegment.NULL
+                    (MemorySegment) (pProperties != null ? pProperties.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -96,10 +105,10 @@ public final class EntryCommands {
             @nullable @pointer(target=VkExtensionProperties.class) VkExtensionProperties pProperties
     ) {
         try {
-            return (int) HANDLE$vkEnumerateInstanceExtensionProperties.invoke(
-                    pLayerName != null ? pLayerName.segment() : MemorySegment.NULL,
+            return (int) HANDLE$vkEnumerateInstanceExtensionProperties.invokeExact(
+                    (MemorySegment) (pLayerName != null ? pLayerName.segment() : MemorySegment.NULL),
                     pPropertyCount.segment(),
-                    pProperties != null ? pProperties.segment() : MemorySegment.NULL
+                    (MemorySegment) (pProperties != null ? pProperties.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);

@@ -1,12 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.handle.VkBuffer;
+
+import java.lang.foreign.AddressLayout;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+
+import static java.lang.foreign.ValueLayout.OfLong;
+import static java.lang.foreign.ValueLayout.PathElement;
 
 public record VkDescriptorBufferInfo(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

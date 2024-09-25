@@ -4,11 +4,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-
+import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) {
@@ -78,7 +82,7 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) {
     public void pColorAttachmentInputIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentInputIndices, OFFSET$pColorAttachmentInputIndices, value);
     }
-
+    
     public @unsigned IntPtr pColorAttachmentInputIndices() {
         return new IntPtr(pColorAttachmentInputIndicesRaw());
     }
@@ -94,7 +98,7 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) {
     public void pDepthInputAttachmentIndexRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pDepthInputAttachmentIndex, OFFSET$pDepthInputAttachmentIndex, value);
     }
-
+    
     public @unsigned IntPtr pDepthInputAttachmentIndex() {
         return new IntPtr(pDepthInputAttachmentIndexRaw());
     }
@@ -110,7 +114,7 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) {
     public void pStencilInputAttachmentIndexRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pStencilInputAttachmentIndex, OFFSET$pStencilInputAttachmentIndex, value);
     }
-
+    
     public @unsigned IntPtr pStencilInputAttachmentIndex() {
         return new IntPtr(pStencilInputAttachmentIndexRaw());
     }
@@ -124,7 +128,7 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) {
         @Override
         public Class<VkRenderingInputAttachmentIndexInfoKHR> clazz() {
             return VkRenderingInputAttachmentIndexInfoKHR.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

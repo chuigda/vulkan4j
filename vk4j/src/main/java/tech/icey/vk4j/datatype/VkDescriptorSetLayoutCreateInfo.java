@@ -4,11 +4,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-
+import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkDescriptorSetLayoutCreateInfo(MemorySegment segment) {
@@ -82,7 +86,7 @@ public record VkDescriptorSetLayoutCreateInfo(MemorySegment segment) {
     public void pBindingsRaw(@pointer(comment="VkDescriptorSetLayoutBinding*") MemorySegment value) {
         segment.set(LAYOUT$pBindings, OFFSET$pBindings, value);
     }
-
+    
     public @nullable VkDescriptorSetLayoutBinding pBindings() {
         MemorySegment s = pBindingsRaw();
         if (s.address() == 0) {
@@ -101,7 +105,7 @@ public record VkDescriptorSetLayoutCreateInfo(MemorySegment segment) {
         @Override
         public Class<VkDescriptorSetLayoutCreateInfo> clazz() {
             return VkDescriptorSetLayoutCreateInfo.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

@@ -4,12 +4,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-
+import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
@@ -103,7 +106,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
     public void pTokensRaw(@pointer(comment="VkIndirectCommandsLayoutTokenNV*") MemorySegment value) {
         segment.set(LAYOUT$pTokens, OFFSET$pTokens, value);
     }
-
+    
     public @nullable VkIndirectCommandsLayoutTokenNV pTokens() {
         MemorySegment s = pTokensRaw();
         if (s.address() == 0) {
@@ -132,7 +135,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
     public void pStreamStridesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pStreamStrides, OFFSET$pStreamStrides, value);
     }
-
+    
     public @unsigned IntPtr pStreamStrides() {
         return new IntPtr(pStreamStridesRaw());
     }
@@ -146,7 +149,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
         @Override
         public Class<VkIndirectCommandsLayoutCreateInfoNV> clazz() {
             return VkIndirectCommandsLayoutCreateInfoNV.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

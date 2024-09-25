@@ -4,12 +4,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-
+import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment) {
@@ -139,7 +142,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
     public void pGeometriesRaw(@pointer(comment="VkAccelerationStructureGeometryKHR*") MemorySegment value) {
         segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
     }
-
+    
     public @nullable VkAccelerationStructureGeometryKHR pGeometries() {
         MemorySegment s = pGeometriesRaw();
         if (s.address() == 0) {
@@ -174,7 +177,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         @Override
         public Class<VkAccelerationStructureBuildGeometryInfoKHR> clazz() {
             return VkAccelerationStructureBuildGeometryInfoKHR.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

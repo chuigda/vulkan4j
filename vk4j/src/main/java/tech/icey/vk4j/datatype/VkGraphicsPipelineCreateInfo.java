@@ -4,12 +4,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-
+import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
@@ -139,7 +142,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
     public void pStagesRaw(@pointer(comment="VkPipelineShaderStageCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
-
+    
     public @nullable VkPipelineShaderStageCreateInfo pStages() {
         MemorySegment s = pStagesRaw();
         if (s.address() == 0) {
@@ -160,7 +163,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
     public void pVertexInputStateRaw(@pointer(comment="VkPipelineVertexInputStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pVertexInputState, OFFSET$pVertexInputState, value);
     }
-
+    
     public @nullable VkPipelineVertexInputStateCreateInfo pVertexInputState() {
         MemorySegment s = pVertexInputStateRaw();
         if (s.address() == 0) {
@@ -181,7 +184,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
     public void pInputAssemblyStateRaw(@pointer(comment="VkPipelineInputAssemblyStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pInputAssemblyState, OFFSET$pInputAssemblyState, value);
     }
-
+    
     public @nullable VkPipelineInputAssemblyStateCreateInfo pInputAssemblyState() {
         MemorySegment s = pInputAssemblyStateRaw();
         if (s.address() == 0) {
@@ -202,7 +205,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
     public void pTessellationStateRaw(@pointer(comment="VkPipelineTessellationStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pTessellationState, OFFSET$pTessellationState, value);
     }
-
+    
     public @nullable VkPipelineTessellationStateCreateInfo pTessellationState() {
         MemorySegment s = pTessellationStateRaw();
         if (s.address() == 0) {
@@ -223,7 +226,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
     public void pViewportStateRaw(@pointer(comment="VkPipelineViewportStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pViewportState, OFFSET$pViewportState, value);
     }
-
+    
     public @nullable VkPipelineViewportStateCreateInfo pViewportState() {
         MemorySegment s = pViewportStateRaw();
         if (s.address() == 0) {
@@ -244,7 +247,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
     public void pRasterizationStateRaw(@pointer(comment="VkPipelineRasterizationStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pRasterizationState, OFFSET$pRasterizationState, value);
     }
-
+    
     public @nullable VkPipelineRasterizationStateCreateInfo pRasterizationState() {
         MemorySegment s = pRasterizationStateRaw();
         if (s.address() == 0) {
@@ -265,7 +268,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
     public void pMultisampleStateRaw(@pointer(comment="VkPipelineMultisampleStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pMultisampleState, OFFSET$pMultisampleState, value);
     }
-
+    
     public @nullable VkPipelineMultisampleStateCreateInfo pMultisampleState() {
         MemorySegment s = pMultisampleStateRaw();
         if (s.address() == 0) {
@@ -286,7 +289,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
     public void pDepthStencilStateRaw(@pointer(comment="VkPipelineDepthStencilStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pDepthStencilState, OFFSET$pDepthStencilState, value);
     }
-
+    
     public @nullable VkPipelineDepthStencilStateCreateInfo pDepthStencilState() {
         MemorySegment s = pDepthStencilStateRaw();
         if (s.address() == 0) {
@@ -307,7 +310,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
     public void pColorBlendStateRaw(@pointer(comment="VkPipelineColorBlendStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pColorBlendState, OFFSET$pColorBlendState, value);
     }
-
+    
     public @nullable VkPipelineColorBlendStateCreateInfo pColorBlendState() {
         MemorySegment s = pColorBlendStateRaw();
         if (s.address() == 0) {
@@ -328,7 +331,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
     public void pDynamicStateRaw(@pointer(comment="VkPipelineDynamicStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pDynamicState, OFFSET$pDynamicState, value);
     }
-
+    
     public @nullable VkPipelineDynamicStateCreateInfo pDynamicState() {
         MemorySegment s = pDynamicStateRaw();
         if (s.address() == 0) {
@@ -387,7 +390,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) {
         @Override
         public Class<VkGraphicsPipelineCreateInfo> clazz() {
             return VkGraphicsPipelineCreateInfo.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

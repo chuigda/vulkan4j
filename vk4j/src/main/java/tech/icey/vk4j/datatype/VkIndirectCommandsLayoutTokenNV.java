@@ -4,13 +4,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-
+import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
@@ -192,20 +194,20 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
     public @pointer(target=VkIndexType.class) MemorySegment pIndexTypesRaw() {
         return segment.get(LAYOUT$pIndexTypes, OFFSET$pIndexTypes);
     }
-
+    
     public void pIndexTypesRaw(@pointer(target=VkIndexType.class) MemorySegment value) {
         segment.set(LAYOUT$pIndexTypes, OFFSET$pIndexTypes, value);
     }
-
+    
     public @nullable IntPtr pIndexTypes() {
         MemorySegment s = pIndexTypesRaw();
         if (s.address() == 0) {
             return null;
         }
-
+        
         return new IntPtr(s);
     }
-
+    
     public void pIndexTypes(@nullable IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pIndexTypesRaw(s);
@@ -218,7 +220,7 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
     public void pIndexTypeValuesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues, value);
     }
-
+    
     public @unsigned IntPtr pIndexTypeValues() {
         return new IntPtr(pIndexTypeValuesRaw());
     }
@@ -232,7 +234,7 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
         @Override
         public Class<VkIndirectCommandsLayoutTokenNV> clazz() {
             return VkIndirectCommandsLayoutTokenNV.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

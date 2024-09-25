@@ -1,8 +1,8 @@
 package tech.icey.vk4j.array;
 
+import tech.icey.vk4j.annotation.unsafe;
 import tech.icey.vk4j.ptr.ShortPtr;
 import tech.icey.vk4j.util.Function2;
-import tech.icey.vk4j.annotation.unsafe;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryLayout;

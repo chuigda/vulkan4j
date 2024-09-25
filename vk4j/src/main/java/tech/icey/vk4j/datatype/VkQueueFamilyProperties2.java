@@ -1,14 +1,16 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.enumtype.VkStructureType;
 
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2;
 
 public record VkQueueFamilyProperties2(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

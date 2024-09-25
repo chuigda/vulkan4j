@@ -4,13 +4,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-
+import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkPipelineShaderStageCreateInfo(MemorySegment segment) {
@@ -100,7 +102,7 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) {
     public void pNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
-
+    
     public BytePtr pName() {
         return new BytePtr(pNameRaw());
     }
@@ -116,7 +118,7 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) {
     public void pSpecializationInfoRaw(@pointer(comment="VkSpecializationInfo*") MemorySegment value) {
         segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
     }
-
+    
     public @nullable VkSpecializationInfo pSpecializationInfo() {
         MemorySegment s = pSpecializationInfoRaw();
         if (s.address() == 0) {
@@ -135,7 +137,7 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) {
         @Override
         public Class<VkPipelineShaderStageCreateInfo> clazz() {
             return VkPipelineShaderStageCreateInfo.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

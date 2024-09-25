@@ -1,10 +1,10 @@
 package tech.icey.vk4j.handle;
 
+import tech.icey.vk4j.IFactory;
+
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
-
-import tech.icey.vk4j.IFactory;
 
 public record VkAccelerationStructureNV(MemorySegment segment) {
     public MemorySegment handle() {
@@ -15,7 +15,7 @@ public record VkAccelerationStructureNV(MemorySegment segment) {
         @Override
         public Class<VkAccelerationStructureNV> clazz() {
             return VkAccelerationStructureNV.class;
-        }        
+        }
 
         @Override
         public MemoryLayout layout() {

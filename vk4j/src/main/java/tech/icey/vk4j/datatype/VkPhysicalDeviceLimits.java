@@ -6,8 +6,14 @@ import static java.lang.foreign.ValueLayout.*;
 import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkPhysicalDeviceLimits(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -990,7 +996,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     public @unsigned long minMemoryMapAlignment() {
             return NativeLayout.readCSizeT(segment, OFFSET$minMemoryMapAlignment);
         }
-
+    
         public void minMemoryMapAlignment(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$minMemoryMapAlignment, value);
         }
@@ -1320,7 +1326,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
         @Override
         public Class<VkPhysicalDeviceLimits> clazz() {
             return VkPhysicalDeviceLimits.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

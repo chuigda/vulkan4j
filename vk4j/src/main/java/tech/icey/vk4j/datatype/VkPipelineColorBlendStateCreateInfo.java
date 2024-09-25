@@ -6,10 +6,13 @@ import static java.lang.foreign.ValueLayout.*;
 import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-
+import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
@@ -111,7 +114,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
     public void pAttachmentsRaw(@pointer(comment="VkPipelineColorBlendAttachmentState*") MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
-
+    
     public @nullable VkPipelineColorBlendAttachmentState pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.address() == 0) {
@@ -142,7 +145,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
         @Override
         public Class<VkPipelineColorBlendStateCreateInfo> clazz() {
             return VkPipelineColorBlendStateCreateInfo.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

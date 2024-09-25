@@ -4,10 +4,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.array.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
-
+import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(MemorySegment segment) {
@@ -75,7 +80,7 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(MemorySegment se
         @Override
         public Class<VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT> clazz() {
             return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.class;
-        }
+        } 
 
         @Override
         public MemoryLayout layout() {

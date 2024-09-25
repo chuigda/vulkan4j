@@ -1,12 +1,16 @@
 package tech.icey.vk4j.command;
 
-import java.lang.foreign.*;
-import java.lang.invoke.MethodHandle;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
+import tech.icey.vk4j.annotation.nullable;
+import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.handle.VkDevice;
+import tech.icey.vk4j.handle.VkInstance;
+import tech.icey.vk4j.ptr.BytePtr;
 import tech.icey.vk4j.util.Function2;
+
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+import java.lang.invoke.MethodHandle;
 
 public final class StaticCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceProcAddr = FunctionDescriptor.of(
@@ -34,7 +38,7 @@ public final class StaticCommands {
             @pointer(target=BytePtr.class) BytePtr pName
     ) {
         try {
-            return (MemorySegment) HANDLE$vkGetDeviceProcAddr.invoke(
+            return (MemorySegment) HANDLE$vkGetDeviceProcAddr.invokeExact(
                     device.handle(),
                     pName.segment()
             );
@@ -48,8 +52,8 @@ public final class StaticCommands {
             @pointer(target=BytePtr.class) BytePtr pName
     ) {
         try {
-            return (MemorySegment) HANDLE$vkGetInstanceProcAddr.invoke(
-                    instance != null ? instance.handle() : MemorySegment.NULL,
+            return (MemorySegment) HANDLE$vkGetInstanceProcAddr.invokeExact(
+                    (MemorySegment) (instance != null ? instance.handle() : MemorySegment.NULL),
                     pName.segment()
             );
         } catch (Throwable t) {

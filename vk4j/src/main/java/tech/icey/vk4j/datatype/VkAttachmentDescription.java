@@ -1,13 +1,21 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.IFactory;
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.vk4j.bitmask.VkAttachmentDescriptionFlags;
+import tech.icey.vk4j.bitmask.VkSampleCountFlags;
+import tech.icey.vk4j.enumtype.VkAttachmentLoadOp;
+import tech.icey.vk4j.enumtype.VkAttachmentStoreOp;
+import tech.icey.vk4j.enumtype.VkFormat;
+import tech.icey.vk4j.enumtype.VkImageLayout;
+
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
 
 public record VkAttachmentDescription(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

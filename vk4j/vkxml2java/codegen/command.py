@@ -120,7 +120,7 @@ def generate_command_wrapper(command: Command, param_types: list[CType], result_
     for (param_type, param) in zip(param_types, command.params):
         invoke_args.append(generate_input_convert(param_type, param))
 
-    invoke_expr = f'''HANDLE${command.name}.invoke(
+    invoke_expr = f'''HANDLE${command.name}.invokeExact(
                     {",\n                    ".join(invoke_args)}
             )'''
 
@@ -179,13 +179,14 @@ def generate_input_convert(type_: CType, param: Param):
                 or isinstance(type_.pointee, CUnionType) \
                 or isinstance(type_.pointee, CHandleType):
             if param.optional:
-                return f'{param.name} != null ? {param.name}.segment() : MemorySegment.NULL'
+                # see https://stackoverflow.com/a/79021315/14312575, type casting is required
+                return f'(MemorySegment) ({param.name} != null ? {param.name}.segment() : MemorySegment.NULL)'
             else:
                 return f'{param.name}.segment()'
 
     if isinstance(type_, CHandleType):
         if param.optional:
-            return f'{param.name} != null ? {param.name}.handle() : MemorySegment.NULL'
+            return f'(MemorySegment) ({param.name} != null ? {param.name}.handle() : MemorySegment.NULL)'
         else:
             return f'{param.name}.handle()'
 
