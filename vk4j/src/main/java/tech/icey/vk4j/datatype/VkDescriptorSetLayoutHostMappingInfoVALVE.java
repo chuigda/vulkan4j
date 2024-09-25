@@ -20,6 +20,7 @@ public record VkDescriptorSetLayoutHostMappingInfoVALVE(MemorySegment segment) {
         NativeLayout.C_SIZE_T.withName("descriptorOffset"),
         ValueLayout.JAVA_INT.withName("descriptorSize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -34,6 +35,10 @@ public record VkDescriptorSetLayoutHostMappingInfoVALVE(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$descriptorOffset = LAYOUT.byteOffset(PATH$descriptorOffset);
     public static final long OFFSET$descriptorSize = LAYOUT.byteOffset(PATH$descriptorSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$descriptorSize = LAYOUT$descriptorSize.byteSize();
 
     public VkDescriptorSetLayoutHostMappingInfoVALVE(MemorySegment segment) {
         this.segment = segment;
@@ -80,7 +85,7 @@ public record VkDescriptorSetLayoutHostMappingInfoVALVE(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorSetLayoutHostMappingInfoVALVE[] ret = new VkDescriptorSetLayoutHostMappingInfoVALVE[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDescriptorSetLayoutHostMappingInfoVALVE(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDescriptorSetLayoutHostMappingInfoVALVE(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

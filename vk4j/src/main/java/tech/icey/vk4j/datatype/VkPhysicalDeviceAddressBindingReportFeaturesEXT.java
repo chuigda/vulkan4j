@@ -19,6 +19,7 @@ public record VkPhysicalDeviceAddressBindingReportFeaturesEXT(MemorySegment segm
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("reportAddressBinding")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceAddressBindingReportFeaturesEXT(MemorySegment segm
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$reportAddressBinding = LAYOUT.byteOffset(PATH$reportAddressBinding);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$reportAddressBinding = LAYOUT$reportAddressBinding.byteSize();
 
     public VkPhysicalDeviceAddressBindingReportFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceAddressBindingReportFeaturesEXT(MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceAddressBindingReportFeaturesEXT[] ret = new VkPhysicalDeviceAddressBindingReportFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceAddressBindingReportFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceAddressBindingReportFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

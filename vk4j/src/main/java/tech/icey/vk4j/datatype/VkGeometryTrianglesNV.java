@@ -29,6 +29,7 @@ public record VkGeometryTrianglesNV(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("transformData"),
         ValueLayout.JAVA_LONG.withName("transformOffset")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -71,6 +72,20 @@ public record VkGeometryTrianglesNV(MemorySegment segment) {
     public static final long OFFSET$indexType = LAYOUT.byteOffset(PATH$indexType);
     public static final long OFFSET$transformData = LAYOUT.byteOffset(PATH$transformData);
     public static final long OFFSET$transformOffset = LAYOUT.byteOffset(PATH$transformOffset);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$vertexData = LAYOUT$vertexData.byteSize();
+    public static final long SIZE$vertexOffset = LAYOUT$vertexOffset.byteSize();
+    public static final long SIZE$vertexCount = LAYOUT$vertexCount.byteSize();
+    public static final long SIZE$vertexStride = LAYOUT$vertexStride.byteSize();
+    public static final long SIZE$vertexFormat = LAYOUT$vertexFormat.byteSize();
+    public static final long SIZE$indexData = LAYOUT$indexData.byteSize();
+    public static final long SIZE$indexOffset = LAYOUT$indexOffset.byteSize();
+    public static final long SIZE$indexCount = LAYOUT$indexCount.byteSize();
+    public static final long SIZE$indexType = LAYOUT$indexType.byteSize();
+    public static final long SIZE$transformData = LAYOUT$transformData.byteSize();
+    public static final long SIZE$transformOffset = LAYOUT$transformOffset.byteSize();
 
     public VkGeometryTrianglesNV(MemorySegment segment) {
         this.segment = segment;
@@ -189,7 +204,7 @@ public record VkGeometryTrianglesNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkGeometryTrianglesNV[] ret = new VkGeometryTrianglesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkGeometryTrianglesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkGeometryTrianglesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

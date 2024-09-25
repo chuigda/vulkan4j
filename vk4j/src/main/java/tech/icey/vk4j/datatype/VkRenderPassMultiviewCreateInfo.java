@@ -24,6 +24,7 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("correlationMaskCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCorrelationMasks")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -51,6 +52,15 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
     public static final long OFFSET$pViewOffsets = LAYOUT.byteOffset(PATH$pViewOffsets);
     public static final long OFFSET$correlationMaskCount = LAYOUT.byteOffset(PATH$correlationMaskCount);
     public static final long OFFSET$pCorrelationMasks = LAYOUT.byteOffset(PATH$pCorrelationMasks);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$subpassCount = LAYOUT$subpassCount.byteSize();
+    public static final long SIZE$pViewMasks = LAYOUT$pViewMasks.byteSize();
+    public static final long SIZE$dependencyCount = LAYOUT$dependencyCount.byteSize();
+    public static final long SIZE$pViewOffsets = LAYOUT$pViewOffsets.byteSize();
+    public static final long SIZE$correlationMaskCount = LAYOUT$correlationMaskCount.byteSize();
+    public static final long SIZE$pCorrelationMasks = LAYOUT$pCorrelationMasks.byteSize();
 
     public VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -153,7 +163,7 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderPassMultiviewCreateInfo[] ret = new VkRenderPassMultiviewCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderPassMultiviewCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRenderPassMultiviewCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

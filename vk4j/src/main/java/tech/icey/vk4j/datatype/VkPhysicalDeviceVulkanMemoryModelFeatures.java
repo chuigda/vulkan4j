@@ -21,6 +21,7 @@ public record VkPhysicalDeviceVulkanMemoryModelFeatures(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("vulkanMemoryModelDeviceScope"),
         ValueLayout.JAVA_INT.withName("vulkanMemoryModelAvailabilityVisibilityChains")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceVulkanMemoryModelFeatures(MemorySegment segment) {
     public static final long OFFSET$vulkanMemoryModel = LAYOUT.byteOffset(PATH$vulkanMemoryModel);
     public static final long OFFSET$vulkanMemoryModelDeviceScope = LAYOUT.byteOffset(PATH$vulkanMemoryModelDeviceScope);
     public static final long OFFSET$vulkanMemoryModelAvailabilityVisibilityChains = LAYOUT.byteOffset(PATH$vulkanMemoryModelAvailabilityVisibilityChains);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$vulkanMemoryModel = LAYOUT$vulkanMemoryModel.byteSize();
+    public static final long SIZE$vulkanMemoryModelDeviceScope = LAYOUT$vulkanMemoryModelDeviceScope.byteSize();
+    public static final long SIZE$vulkanMemoryModelAvailabilityVisibilityChains = LAYOUT$vulkanMemoryModelAvailabilityVisibilityChains.byteSize();
 
     public VkPhysicalDeviceVulkanMemoryModelFeatures(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceVulkanMemoryModelFeatures(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceVulkanMemoryModelFeatures[] ret = new VkPhysicalDeviceVulkanMemoryModelFeatures[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceVulkanMemoryModelFeatures(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceVulkanMemoryModelFeatures(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

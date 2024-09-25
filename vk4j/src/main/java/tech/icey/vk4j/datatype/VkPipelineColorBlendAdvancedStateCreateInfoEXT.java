@@ -21,6 +21,7 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(MemorySegment segme
         ValueLayout.JAVA_INT.withName("dstPremultiplied"),
         ValueLayout.JAVA_INT.withName("blendOverlap")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(MemorySegment segme
     public static final long OFFSET$srcPremultiplied = LAYOUT.byteOffset(PATH$srcPremultiplied);
     public static final long OFFSET$dstPremultiplied = LAYOUT.byteOffset(PATH$dstPremultiplied);
     public static final long OFFSET$blendOverlap = LAYOUT.byteOffset(PATH$blendOverlap);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$srcPremultiplied = LAYOUT$srcPremultiplied.byteSize();
+    public static final long SIZE$dstPremultiplied = LAYOUT$dstPremultiplied.byteSize();
+    public static final long SIZE$blendOverlap = LAYOUT$blendOverlap.byteSize();
 
     public VkPipelineColorBlendAdvancedStateCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineColorBlendAdvancedStateCreateInfoEXT[] ret = new VkPipelineColorBlendAdvancedStateCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineColorBlendAdvancedStateCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineColorBlendAdvancedStateCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -19,6 +19,7 @@ public record VkInputAttachmentAspectReference(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("inputAttachmentIndex"),
         ValueLayout.JAVA_INT.withName("aspectMask")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$subpass = PathElement.groupElement("subpass");
     public static final PathElement PATH$inputAttachmentIndex = PathElement.groupElement("inputAttachmentIndex");
@@ -31,6 +32,10 @@ public record VkInputAttachmentAspectReference(MemorySegment segment) {
     public static final long OFFSET$subpass = LAYOUT.byteOffset(PATH$subpass);
     public static final long OFFSET$inputAttachmentIndex = LAYOUT.byteOffset(PATH$inputAttachmentIndex);
     public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
+
+    public static final long SIZE$subpass = LAYOUT$subpass.byteSize();
+    public static final long SIZE$inputAttachmentIndex = LAYOUT$inputAttachmentIndex.byteSize();
+    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
 
     public VkInputAttachmentAspectReference(MemorySegment segment) {
         this.segment = segment;
@@ -68,7 +73,7 @@ public record VkInputAttachmentAspectReference(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkInputAttachmentAspectReference[] ret = new VkInputAttachmentAspectReference[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkInputAttachmentAspectReference(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkInputAttachmentAspectReference(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

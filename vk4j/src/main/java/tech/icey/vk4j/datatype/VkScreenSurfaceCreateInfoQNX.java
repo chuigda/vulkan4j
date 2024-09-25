@@ -21,6 +21,7 @@ public record VkScreenSurfaceCreateInfoQNX(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("context"),
         ValueLayout.ADDRESS.withName("window")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkScreenSurfaceCreateInfoQNX(MemorySegment segment) {
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$context = LAYOUT.byteOffset(PATH$context);
     public static final long OFFSET$window = LAYOUT.byteOffset(PATH$window);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$context = LAYOUT$context.byteSize();
+    public static final long SIZE$window = LAYOUT$window.byteSize();
 
     public VkScreenSurfaceCreateInfoQNX(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkScreenSurfaceCreateInfoQNX(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkScreenSurfaceCreateInfoQNX[] ret = new VkScreenSurfaceCreateInfoQNX[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkScreenSurfaceCreateInfoQNX(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkScreenSurfaceCreateInfoQNX(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

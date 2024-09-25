@@ -11,11 +11,11 @@ public record CLongBuffer(MemorySegment segment) {
     }
 
     public long read() {
-        return read(0);
+        return NativeLayout.readCLong(segment, 0);
     }
 
     public void write(long value) {
-        write(0, value);
+        NativeLayout.writeCLong(segment, 0, value);
     }
 
     public long read(long index) {

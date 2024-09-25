@@ -19,6 +19,7 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(MemorySegment segm
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("schedulingControlsFlags")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(MemorySegment segm
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$schedulingControlsFlags = LAYOUT.byteOffset(PATH$schedulingControlsFlags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$schedulingControlsFlags = LAYOUT$schedulingControlsFlags.byteSize();
 
     public VkPhysicalDeviceSchedulingControlsPropertiesARM(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceSchedulingControlsPropertiesARM[] ret = new VkPhysicalDeviceSchedulingControlsPropertiesARM[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceSchedulingControlsPropertiesARM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceSchedulingControlsPropertiesARM(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

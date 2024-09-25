@@ -21,6 +21,7 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(MemorySegmen
         ValueLayout.JAVA_INT.withName("conservativeRasterizationMode"),
         ValueLayout.JAVA_FLOAT.withName("extraPrimitiveOverestimationSize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(MemorySegmen
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$conservativeRasterizationMode = LAYOUT.byteOffset(PATH$conservativeRasterizationMode);
     public static final long OFFSET$extraPrimitiveOverestimationSize = LAYOUT.byteOffset(PATH$extraPrimitiveOverestimationSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$conservativeRasterizationMode = LAYOUT$conservativeRasterizationMode.byteSize();
+    public static final long SIZE$extraPrimitiveOverestimationSize = LAYOUT$extraPrimitiveOverestimationSize.byteSize();
 
     public VkPipelineRasterizationConservativeStateCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineRasterizationConservativeStateCreateInfoEXT[] ret = new VkPipelineRasterizationConservativeStateCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineRasterizationConservativeStateCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineRasterizationConservativeStateCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

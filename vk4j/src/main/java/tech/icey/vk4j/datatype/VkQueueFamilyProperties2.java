@@ -19,6 +19,7 @@ public record VkQueueFamilyProperties2(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         VkQueueFamilyProperties.LAYOUT.withName("queueFamilyProperties")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkQueueFamilyProperties2(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$queueFamilyProperties = LAYOUT.byteOffset(PATH$queueFamilyProperties);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$queueFamilyProperties = LAYOUT$queueFamilyProperties.byteSize();
 
     public VkQueueFamilyProperties2(MemorySegment segment) {
         this.segment = segment;
@@ -58,7 +63,7 @@ public record VkQueueFamilyProperties2(MemorySegment segment) {
     }
 
     public void queueFamilyProperties(VkQueueFamilyProperties value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$queueFamilyProperties, LAYOUT$queueFamilyProperties.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$queueFamilyProperties, SIZE$queueFamilyProperties);
     }
 
     public static VkQueueFamilyProperties2 allocate(Arena arena) {
@@ -69,7 +74,7 @@ public record VkQueueFamilyProperties2(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkQueueFamilyProperties2[] ret = new VkQueueFamilyProperties2[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkQueueFamilyProperties2(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkQueueFamilyProperties2(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

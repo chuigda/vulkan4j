@@ -20,6 +20,7 @@ public record VkPhysicalDeviceTransformFeedbackFeaturesEXT(MemorySegment segment
         ValueLayout.JAVA_INT.withName("transformFeedback"),
         ValueLayout.JAVA_INT.withName("geometryStreams")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceTransformFeedbackFeaturesEXT(MemorySegment segment
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$transformFeedback = LAYOUT.byteOffset(PATH$transformFeedback);
     public static final long OFFSET$geometryStreams = LAYOUT.byteOffset(PATH$geometryStreams);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$transformFeedback = LAYOUT$transformFeedback.byteSize();
+    public static final long SIZE$geometryStreams = LAYOUT$geometryStreams.byteSize();
 
     public VkPhysicalDeviceTransformFeedbackFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceTransformFeedbackFeaturesEXT(MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceTransformFeedbackFeaturesEXT[] ret = new VkPhysicalDeviceTransformFeedbackFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceTransformFeedbackFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceTransformFeedbackFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

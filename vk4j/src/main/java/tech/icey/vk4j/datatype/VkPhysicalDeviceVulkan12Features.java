@@ -65,6 +65,7 @@ public record VkPhysicalDeviceVulkan12Features(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("shaderOutputLayer"),
         ValueLayout.JAVA_INT.withName("subgroupBroadcastDynamicId")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -215,6 +216,56 @@ public record VkPhysicalDeviceVulkan12Features(MemorySegment segment) {
     public static final long OFFSET$shaderOutputViewportIndex = LAYOUT.byteOffset(PATH$shaderOutputViewportIndex);
     public static final long OFFSET$shaderOutputLayer = LAYOUT.byteOffset(PATH$shaderOutputLayer);
     public static final long OFFSET$subgroupBroadcastDynamicId = LAYOUT.byteOffset(PATH$subgroupBroadcastDynamicId);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$samplerMirrorClampToEdge = LAYOUT$samplerMirrorClampToEdge.byteSize();
+    public static final long SIZE$drawIndirectCount = LAYOUT$drawIndirectCount.byteSize();
+    public static final long SIZE$storageBuffer8BitAccess = LAYOUT$storageBuffer8BitAccess.byteSize();
+    public static final long SIZE$uniformAndStorageBuffer8BitAccess = LAYOUT$uniformAndStorageBuffer8BitAccess.byteSize();
+    public static final long SIZE$storagePushConstant8 = LAYOUT$storagePushConstant8.byteSize();
+    public static final long SIZE$shaderBufferInt64Atomics = LAYOUT$shaderBufferInt64Atomics.byteSize();
+    public static final long SIZE$shaderSharedInt64Atomics = LAYOUT$shaderSharedInt64Atomics.byteSize();
+    public static final long SIZE$shaderFloat16 = LAYOUT$shaderFloat16.byteSize();
+    public static final long SIZE$shaderInt8 = LAYOUT$shaderInt8.byteSize();
+    public static final long SIZE$descriptorIndexing = LAYOUT$descriptorIndexing.byteSize();
+    public static final long SIZE$shaderInputAttachmentArrayDynamicIndexing = LAYOUT$shaderInputAttachmentArrayDynamicIndexing.byteSize();
+    public static final long SIZE$shaderUniformTexelBufferArrayDynamicIndexing = LAYOUT$shaderUniformTexelBufferArrayDynamicIndexing.byteSize();
+    public static final long SIZE$shaderStorageTexelBufferArrayDynamicIndexing = LAYOUT$shaderStorageTexelBufferArrayDynamicIndexing.byteSize();
+    public static final long SIZE$shaderUniformBufferArrayNonUniformIndexing = LAYOUT$shaderUniformBufferArrayNonUniformIndexing.byteSize();
+    public static final long SIZE$shaderSampledImageArrayNonUniformIndexing = LAYOUT$shaderSampledImageArrayNonUniformIndexing.byteSize();
+    public static final long SIZE$shaderStorageBufferArrayNonUniformIndexing = LAYOUT$shaderStorageBufferArrayNonUniformIndexing.byteSize();
+    public static final long SIZE$shaderStorageImageArrayNonUniformIndexing = LAYOUT$shaderStorageImageArrayNonUniformIndexing.byteSize();
+    public static final long SIZE$shaderInputAttachmentArrayNonUniformIndexing = LAYOUT$shaderInputAttachmentArrayNonUniformIndexing.byteSize();
+    public static final long SIZE$shaderUniformTexelBufferArrayNonUniformIndexing = LAYOUT$shaderUniformTexelBufferArrayNonUniformIndexing.byteSize();
+    public static final long SIZE$shaderStorageTexelBufferArrayNonUniformIndexing = LAYOUT$shaderStorageTexelBufferArrayNonUniformIndexing.byteSize();
+    public static final long SIZE$descriptorBindingUniformBufferUpdateAfterBind = LAYOUT$descriptorBindingUniformBufferUpdateAfterBind.byteSize();
+    public static final long SIZE$descriptorBindingSampledImageUpdateAfterBind = LAYOUT$descriptorBindingSampledImageUpdateAfterBind.byteSize();
+    public static final long SIZE$descriptorBindingStorageImageUpdateAfterBind = LAYOUT$descriptorBindingStorageImageUpdateAfterBind.byteSize();
+    public static final long SIZE$descriptorBindingStorageBufferUpdateAfterBind = LAYOUT$descriptorBindingStorageBufferUpdateAfterBind.byteSize();
+    public static final long SIZE$descriptorBindingUniformTexelBufferUpdateAfterBind = LAYOUT$descriptorBindingUniformTexelBufferUpdateAfterBind.byteSize();
+    public static final long SIZE$descriptorBindingStorageTexelBufferUpdateAfterBind = LAYOUT$descriptorBindingStorageTexelBufferUpdateAfterBind.byteSize();
+    public static final long SIZE$descriptorBindingUpdateUnusedWhilePending = LAYOUT$descriptorBindingUpdateUnusedWhilePending.byteSize();
+    public static final long SIZE$descriptorBindingPartiallyBound = LAYOUT$descriptorBindingPartiallyBound.byteSize();
+    public static final long SIZE$descriptorBindingVariableDescriptorCount = LAYOUT$descriptorBindingVariableDescriptorCount.byteSize();
+    public static final long SIZE$runtimeDescriptorArray = LAYOUT$runtimeDescriptorArray.byteSize();
+    public static final long SIZE$samplerFilterMinmax = LAYOUT$samplerFilterMinmax.byteSize();
+    public static final long SIZE$scalarBlockLayout = LAYOUT$scalarBlockLayout.byteSize();
+    public static final long SIZE$imagelessFramebuffer = LAYOUT$imagelessFramebuffer.byteSize();
+    public static final long SIZE$uniformBufferStandardLayout = LAYOUT$uniformBufferStandardLayout.byteSize();
+    public static final long SIZE$shaderSubgroupExtendedTypes = LAYOUT$shaderSubgroupExtendedTypes.byteSize();
+    public static final long SIZE$separateDepthStencilLayouts = LAYOUT$separateDepthStencilLayouts.byteSize();
+    public static final long SIZE$hostQueryReset = LAYOUT$hostQueryReset.byteSize();
+    public static final long SIZE$timelineSemaphore = LAYOUT$timelineSemaphore.byteSize();
+    public static final long SIZE$bufferDeviceAddress = LAYOUT$bufferDeviceAddress.byteSize();
+    public static final long SIZE$bufferDeviceAddressCaptureReplay = LAYOUT$bufferDeviceAddressCaptureReplay.byteSize();
+    public static final long SIZE$bufferDeviceAddressMultiDevice = LAYOUT$bufferDeviceAddressMultiDevice.byteSize();
+    public static final long SIZE$vulkanMemoryModel = LAYOUT$vulkanMemoryModel.byteSize();
+    public static final long SIZE$vulkanMemoryModelDeviceScope = LAYOUT$vulkanMemoryModelDeviceScope.byteSize();
+    public static final long SIZE$vulkanMemoryModelAvailabilityVisibilityChains = LAYOUT$vulkanMemoryModelAvailabilityVisibilityChains.byteSize();
+    public static final long SIZE$shaderOutputViewportIndex = LAYOUT$shaderOutputViewportIndex.byteSize();
+    public static final long SIZE$shaderOutputLayer = LAYOUT$shaderOutputLayer.byteSize();
+    public static final long SIZE$subgroupBroadcastDynamicId = LAYOUT$subgroupBroadcastDynamicId.byteSize();
 
     public VkPhysicalDeviceVulkan12Features(MemorySegment segment) {
         this.segment = segment;
@@ -621,7 +672,7 @@ public record VkPhysicalDeviceVulkan12Features(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceVulkan12Features[] ret = new VkPhysicalDeviceVulkan12Features[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceVulkan12Features(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceVulkan12Features(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

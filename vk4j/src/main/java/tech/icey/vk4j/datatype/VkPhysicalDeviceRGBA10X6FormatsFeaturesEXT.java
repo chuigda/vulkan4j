@@ -19,6 +19,7 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(MemorySegment segment) 
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("formatRgba10x6WithoutYCbCrSampler")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(MemorySegment segment) 
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$formatRgba10x6WithoutYCbCrSampler = LAYOUT.byteOffset(PATH$formatRgba10x6WithoutYCbCrSampler);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$formatRgba10x6WithoutYCbCrSampler = LAYOUT$formatRgba10x6WithoutYCbCrSampler.byteSize();
 
     public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT[] ret = new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

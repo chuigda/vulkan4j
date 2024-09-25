@@ -20,6 +20,7 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(MemorySegment segme
         VkExtent2D.LAYOUT.withName("renderPassStripeGranularity"),
         ValueLayout.JAVA_INT.withName("maxRenderPassStripes")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(MemorySegment segme
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$renderPassStripeGranularity = LAYOUT.byteOffset(PATH$renderPassStripeGranularity);
     public static final long OFFSET$maxRenderPassStripes = LAYOUT.byteOffset(PATH$maxRenderPassStripes);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$renderPassStripeGranularity = LAYOUT$renderPassStripeGranularity.byteSize();
+    public static final long SIZE$maxRenderPassStripes = LAYOUT$maxRenderPassStripes.byteSize();
 
     public VkPhysicalDeviceRenderPassStripedPropertiesARM(MemorySegment segment) {
         this.segment = segment;
@@ -62,7 +68,7 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(MemorySegment segme
     }
 
     public void renderPassStripeGranularity(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderPassStripeGranularity, LAYOUT$renderPassStripeGranularity.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderPassStripeGranularity, SIZE$renderPassStripeGranularity);
     }
 
     public @unsigned int maxRenderPassStripes() {
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceRenderPassStripedPropertiesARM[] ret = new VkPhysicalDeviceRenderPassStripedPropertiesARM[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceRenderPassStripedPropertiesARM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceRenderPassStripedPropertiesARM(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

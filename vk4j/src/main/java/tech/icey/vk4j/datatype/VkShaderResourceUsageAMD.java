@@ -21,6 +21,7 @@ public record VkShaderResourceUsageAMD(MemorySegment segment) {
         NativeLayout.C_SIZE_T.withName("ldsUsageSizeInBytes"),
         NativeLayout.C_SIZE_T.withName("scratchMemUsageInBytes")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$numUsedVgprs = PathElement.groupElement("numUsedVgprs");
     public static final PathElement PATH$numUsedSgprs = PathElement.groupElement("numUsedSgprs");
@@ -37,6 +38,10 @@ public record VkShaderResourceUsageAMD(MemorySegment segment) {
     public static final long OFFSET$ldsSizePerLocalWorkGroup = LAYOUT.byteOffset(PATH$ldsSizePerLocalWorkGroup);
     public static final long OFFSET$ldsUsageSizeInBytes = LAYOUT.byteOffset(PATH$ldsUsageSizeInBytes);
     public static final long OFFSET$scratchMemUsageInBytes = LAYOUT.byteOffset(PATH$scratchMemUsageInBytes);
+
+    public static final long SIZE$numUsedVgprs = LAYOUT$numUsedVgprs.byteSize();
+    public static final long SIZE$numUsedSgprs = LAYOUT$numUsedSgprs.byteSize();
+    public static final long SIZE$ldsSizePerLocalWorkGroup = LAYOUT$ldsSizePerLocalWorkGroup.byteSize();
 
     public VkShaderResourceUsageAMD(MemorySegment segment) {
         this.segment = segment;
@@ -90,7 +95,7 @@ public record VkShaderResourceUsageAMD(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkShaderResourceUsageAMD[] ret = new VkShaderResourceUsageAMD[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkShaderResourceUsageAMD(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkShaderResourceUsageAMD(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

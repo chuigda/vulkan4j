@@ -21,6 +21,7 @@ public record VkExportMemoryWin32HandleInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("dwAccess"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("name")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkExportMemoryWin32HandleInfoKHR(MemorySegment segment) {
     public static final long OFFSET$pAttributes = LAYOUT.byteOffset(PATH$pAttributes);
     public static final long OFFSET$dwAccess = LAYOUT.byteOffset(PATH$dwAccess);
     public static final long OFFSET$name = LAYOUT.byteOffset(PATH$name);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pAttributes = LAYOUT$pAttributes.byteSize();
+    public static final long SIZE$dwAccess = LAYOUT$dwAccess.byteSize();
+    public static final long SIZE$name = LAYOUT$name.byteSize();
 
     public VkExportMemoryWin32HandleInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -101,7 +108,7 @@ public record VkExportMemoryWin32HandleInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExportMemoryWin32HandleInfoKHR[] ret = new VkExportMemoryWin32HandleInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkExportMemoryWin32HandleInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkExportMemoryWin32HandleInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

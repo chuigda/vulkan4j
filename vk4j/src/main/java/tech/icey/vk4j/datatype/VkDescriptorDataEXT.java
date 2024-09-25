@@ -1,15 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.handle.VkSampler;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfLong;
-import static java.lang.foreign.ValueLayout.PathElement;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkDescriptorDataEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
@@ -24,6 +26,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkDescriptorAddressInfoEXT.LAYOUT).withName("pStorageBuffer"),
         ValueLayout.JAVA_LONG.withName("accelerationStructure")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$pSampler = PathElement.groupElement("pSampler");
     public static final PathElement PATH$pCombinedImageSampler = PathElement.groupElement("pCombinedImageSampler");
@@ -58,6 +61,17 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public static final long OFFSET$pStorageBuffer = LAYOUT.byteOffset(PATH$pStorageBuffer);
     public static final long OFFSET$accelerationStructure = LAYOUT.byteOffset(PATH$accelerationStructure);
 
+    public static final long SIZE$pSampler = LAYOUT$pSampler.byteSize();
+    public static final long SIZE$pCombinedImageSampler = LAYOUT$pCombinedImageSampler.byteSize();
+    public static final long SIZE$pInputAttachmentImage = LAYOUT$pInputAttachmentImage.byteSize();
+    public static final long SIZE$pSampledImage = LAYOUT$pSampledImage.byteSize();
+    public static final long SIZE$pStorageImage = LAYOUT$pStorageImage.byteSize();
+    public static final long SIZE$pUniformTexelBuffer = LAYOUT$pUniformTexelBuffer.byteSize();
+    public static final long SIZE$pStorageTexelBuffer = LAYOUT$pStorageTexelBuffer.byteSize();
+    public static final long SIZE$pUniformBuffer = LAYOUT$pUniformBuffer.byteSize();
+    public static final long SIZE$pStorageBuffer = LAYOUT$pStorageBuffer.byteSize();
+    public static final long SIZE$accelerationStructure = LAYOUT$accelerationStructure.byteSize();
+
     public VkDescriptorDataEXT(MemorySegment segment) {
         this.segment = segment;
     }
@@ -90,7 +104,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pCombinedImageSamplerRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
         segment.set(LAYOUT$pCombinedImageSampler, OFFSET$pCombinedImageSampler, value);
     }
-
+    
     public @nullable VkDescriptorImageInfo pCombinedImageSampler() {
         MemorySegment s = pCombinedImageSamplerRaw();
         if (s.address() == 0) {
@@ -111,7 +125,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pInputAttachmentImageRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
         segment.set(LAYOUT$pInputAttachmentImage, OFFSET$pInputAttachmentImage, value);
     }
-
+    
     public @nullable VkDescriptorImageInfo pInputAttachmentImage() {
         MemorySegment s = pInputAttachmentImageRaw();
         if (s.address() == 0) {
@@ -132,7 +146,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pSampledImageRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
         segment.set(LAYOUT$pSampledImage, OFFSET$pSampledImage, value);
     }
-
+    
     public @nullable VkDescriptorImageInfo pSampledImage() {
         MemorySegment s = pSampledImageRaw();
         if (s.address() == 0) {
@@ -153,7 +167,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pStorageImageRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
         segment.set(LAYOUT$pStorageImage, OFFSET$pStorageImage, value);
     }
-
+    
     public @nullable VkDescriptorImageInfo pStorageImage() {
         MemorySegment s = pStorageImageRaw();
         if (s.address() == 0) {
@@ -174,7 +188,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pUniformTexelBufferRaw(@pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pUniformTexelBuffer, OFFSET$pUniformTexelBuffer, value);
     }
-
+    
     public @nullable VkDescriptorAddressInfoEXT pUniformTexelBuffer() {
         MemorySegment s = pUniformTexelBufferRaw();
         if (s.address() == 0) {
@@ -195,7 +209,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pStorageTexelBufferRaw(@pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pStorageTexelBuffer, OFFSET$pStorageTexelBuffer, value);
     }
-
+    
     public @nullable VkDescriptorAddressInfoEXT pStorageTexelBuffer() {
         MemorySegment s = pStorageTexelBufferRaw();
         if (s.address() == 0) {
@@ -216,7 +230,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pUniformBufferRaw(@pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pUniformBuffer, OFFSET$pUniformBuffer, value);
     }
-
+    
     public @nullable VkDescriptorAddressInfoEXT pUniformBuffer() {
         MemorySegment s = pUniformBufferRaw();
         if (s.address() == 0) {
@@ -237,7 +251,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pStorageBufferRaw(@pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pStorageBuffer, OFFSET$pStorageBuffer, value);
     }
-
+    
     public @nullable VkDescriptorAddressInfoEXT pStorageBuffer() {
         MemorySegment s = pStorageBufferRaw();
         if (s.address() == 0) {
@@ -262,12 +276,12 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public static VkDescriptorDataEXT allocate(Arena arena) {
         return new VkDescriptorDataEXT(arena.allocate(LAYOUT));
     }
-
+    
     public static VkDescriptorDataEXT[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorDataEXT[] ret = new VkDescriptorDataEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDescriptorDataEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDescriptorDataEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

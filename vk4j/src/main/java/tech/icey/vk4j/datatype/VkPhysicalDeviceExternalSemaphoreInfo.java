@@ -19,6 +19,7 @@ public record VkPhysicalDeviceExternalSemaphoreInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("handleType")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceExternalSemaphoreInfo(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
 
     public VkPhysicalDeviceExternalSemaphoreInfo(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceExternalSemaphoreInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceExternalSemaphoreInfo[] ret = new VkPhysicalDeviceExternalSemaphoreInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceExternalSemaphoreInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceExternalSemaphoreInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

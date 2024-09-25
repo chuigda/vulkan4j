@@ -22,6 +22,7 @@ public record VkQueryPoolCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("queryCount"),
         ValueLayout.JAVA_INT.withName("pipelineStatistics")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkQueryPoolCreateInfo(MemorySegment segment) {
     public static final long OFFSET$queryType = LAYOUT.byteOffset(PATH$queryType);
     public static final long OFFSET$queryCount = LAYOUT.byteOffset(PATH$queryCount);
     public static final long OFFSET$pipelineStatistics = LAYOUT.byteOffset(PATH$pipelineStatistics);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$queryType = LAYOUT$queryType.byteSize();
+    public static final long SIZE$queryCount = LAYOUT$queryCount.byteSize();
+    public static final long SIZE$pipelineStatistics = LAYOUT$pipelineStatistics.byteSize();
 
     public VkQueryPoolCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkQueryPoolCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkQueryPoolCreateInfo[] ret = new VkQueryPoolCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkQueryPoolCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkQueryPoolCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

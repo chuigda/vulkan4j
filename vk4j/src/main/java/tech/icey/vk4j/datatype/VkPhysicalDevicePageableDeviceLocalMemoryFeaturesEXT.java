@@ -19,6 +19,7 @@ public record VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(MemorySegment
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("pageableDeviceLocalMemory")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(MemorySegment
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$pageableDeviceLocalMemory = LAYOUT.byteOffset(PATH$pageableDeviceLocalMemory);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pageableDeviceLocalMemory = LAYOUT$pageableDeviceLocalMemory.byteSize();
 
     public VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT[] ret = new VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

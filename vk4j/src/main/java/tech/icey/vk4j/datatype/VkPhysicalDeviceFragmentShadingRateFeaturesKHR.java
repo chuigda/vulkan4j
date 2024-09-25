@@ -21,6 +21,7 @@ public record VkPhysicalDeviceFragmentShadingRateFeaturesKHR(MemorySegment segme
         ValueLayout.JAVA_INT.withName("primitiveFragmentShadingRate"),
         ValueLayout.JAVA_INT.withName("attachmentFragmentShadingRate")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceFragmentShadingRateFeaturesKHR(MemorySegment segme
     public static final long OFFSET$pipelineFragmentShadingRate = LAYOUT.byteOffset(PATH$pipelineFragmentShadingRate);
     public static final long OFFSET$primitiveFragmentShadingRate = LAYOUT.byteOffset(PATH$primitiveFragmentShadingRate);
     public static final long OFFSET$attachmentFragmentShadingRate = LAYOUT.byteOffset(PATH$attachmentFragmentShadingRate);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pipelineFragmentShadingRate = LAYOUT$pipelineFragmentShadingRate.byteSize();
+    public static final long SIZE$primitiveFragmentShadingRate = LAYOUT$primitiveFragmentShadingRate.byteSize();
+    public static final long SIZE$attachmentFragmentShadingRate = LAYOUT$attachmentFragmentShadingRate.byteSize();
 
     public VkPhysicalDeviceFragmentShadingRateFeaturesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceFragmentShadingRateFeaturesKHR(MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceFragmentShadingRateFeaturesKHR[] ret = new VkPhysicalDeviceFragmentShadingRateFeaturesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceFragmentShadingRateFeaturesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceFragmentShadingRateFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

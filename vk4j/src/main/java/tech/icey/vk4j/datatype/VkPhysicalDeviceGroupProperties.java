@@ -21,6 +21,7 @@ public record VkPhysicalDeviceGroupProperties(MemorySegment segment) {
         MemoryLayout.sequenceLayout(VK_MAX_DEVICE_GROUP_SIZE, ValueLayout.ADDRESS).withName("physicalDevices"),
         ValueLayout.JAVA_INT.withName("subsetAllocation")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceGroupProperties(MemorySegment segment) {
     public static final long OFFSET$physicalDeviceCount = LAYOUT.byteOffset(PATH$physicalDeviceCount);
     public static final long OFFSET$physicalDevices = LAYOUT.byteOffset(PATH$physicalDevices);
     public static final long OFFSET$subsetAllocation = LAYOUT.byteOffset(PATH$subsetAllocation);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$physicalDeviceCount = LAYOUT$physicalDeviceCount.byteSize();
+    public static final long SIZE$physicalDevices = LAYOUT$physicalDevices.byteSize();
+    public static final long SIZE$subsetAllocation = LAYOUT$subsetAllocation.byteSize();
 
     public VkPhysicalDeviceGroupProperties(MemorySegment segment) {
         this.segment = segment;
@@ -114,7 +121,7 @@ public record VkPhysicalDeviceGroupProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceGroupProperties[] ret = new VkPhysicalDeviceGroupProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceGroupProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceGroupProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

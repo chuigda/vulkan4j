@@ -27,6 +27,7 @@ public record VkOpticalFlowSessionCreateInfoNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("performanceLevel"),
         ValueLayout.JAVA_INT.withName("flags")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -63,6 +64,18 @@ public record VkOpticalFlowSessionCreateInfoNV(MemorySegment segment) {
     public static final long OFFSET$hintGridSize = LAYOUT.byteOffset(PATH$hintGridSize);
     public static final long OFFSET$performanceLevel = LAYOUT.byteOffset(PATH$performanceLevel);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$width = LAYOUT$width.byteSize();
+    public static final long SIZE$height = LAYOUT$height.byteSize();
+    public static final long SIZE$imageFormat = LAYOUT$imageFormat.byteSize();
+    public static final long SIZE$flowVectorFormat = LAYOUT$flowVectorFormat.byteSize();
+    public static final long SIZE$costFormat = LAYOUT$costFormat.byteSize();
+    public static final long SIZE$outputGridSize = LAYOUT$outputGridSize.byteSize();
+    public static final long SIZE$hintGridSize = LAYOUT$hintGridSize.byteSize();
+    public static final long SIZE$performanceLevel = LAYOUT$performanceLevel.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
 
     public VkOpticalFlowSessionCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -165,7 +178,7 @@ public record VkOpticalFlowSessionCreateInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkOpticalFlowSessionCreateInfoNV[] ret = new VkOpticalFlowSessionCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkOpticalFlowSessionCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkOpticalFlowSessionCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

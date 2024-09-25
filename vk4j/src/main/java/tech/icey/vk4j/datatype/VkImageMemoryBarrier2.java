@@ -28,6 +28,7 @@ public record VkImageMemoryBarrier2(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("image"),
         VkImageSubresourceRange.LAYOUT.withName("subresourceRange")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -67,6 +68,19 @@ public record VkImageMemoryBarrier2(MemorySegment segment) {
     public static final long OFFSET$dstQueueFamilyIndex = LAYOUT.byteOffset(PATH$dstQueueFamilyIndex);
     public static final long OFFSET$image = LAYOUT.byteOffset(PATH$image);
     public static final long OFFSET$subresourceRange = LAYOUT.byteOffset(PATH$subresourceRange);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$srcStageMask = LAYOUT$srcStageMask.byteSize();
+    public static final long SIZE$srcAccessMask = LAYOUT$srcAccessMask.byteSize();
+    public static final long SIZE$dstStageMask = LAYOUT$dstStageMask.byteSize();
+    public static final long SIZE$dstAccessMask = LAYOUT$dstAccessMask.byteSize();
+    public static final long SIZE$oldLayout = LAYOUT$oldLayout.byteSize();
+    public static final long SIZE$newLayout = LAYOUT$newLayout.byteSize();
+    public static final long SIZE$srcQueueFamilyIndex = LAYOUT$srcQueueFamilyIndex.byteSize();
+    public static final long SIZE$dstQueueFamilyIndex = LAYOUT$dstQueueFamilyIndex.byteSize();
+    public static final long SIZE$image = LAYOUT$image.byteSize();
+    public static final long SIZE$subresourceRange = LAYOUT$subresourceRange.byteSize();
 
     public VkImageMemoryBarrier2(MemorySegment segment) {
         this.segment = segment;
@@ -166,7 +180,7 @@ public record VkImageMemoryBarrier2(MemorySegment segment) {
     }
 
     public void subresourceRange(VkImageSubresourceRange value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, LAYOUT$subresourceRange.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, SIZE$subresourceRange);
     }
 
     public static VkImageMemoryBarrier2 allocate(Arena arena) {
@@ -177,7 +191,7 @@ public record VkImageMemoryBarrier2(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageMemoryBarrier2[] ret = new VkImageMemoryBarrier2[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageMemoryBarrier2(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageMemoryBarrier2(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

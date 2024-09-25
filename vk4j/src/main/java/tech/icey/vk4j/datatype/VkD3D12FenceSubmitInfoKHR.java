@@ -22,6 +22,7 @@ public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("signalSemaphoreValuesCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pSignalSemaphoreValues")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) {
     public static final long OFFSET$pWaitSemaphoreValues = LAYOUT.byteOffset(PATH$pWaitSemaphoreValues);
     public static final long OFFSET$signalSemaphoreValuesCount = LAYOUT.byteOffset(PATH$signalSemaphoreValuesCount);
     public static final long OFFSET$pSignalSemaphoreValues = LAYOUT.byteOffset(PATH$pSignalSemaphoreValues);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$waitSemaphoreValuesCount = LAYOUT$waitSemaphoreValuesCount.byteSize();
+    public static final long SIZE$pWaitSemaphoreValues = LAYOUT$pWaitSemaphoreValues.byteSize();
+    public static final long SIZE$signalSemaphoreValuesCount = LAYOUT$signalSemaphoreValuesCount.byteSize();
+    public static final long SIZE$pSignalSemaphoreValues = LAYOUT$pSignalSemaphoreValues.byteSize();
 
     public VkD3D12FenceSubmitInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -121,7 +129,7 @@ public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkD3D12FenceSubmitInfoKHR[] ret = new VkD3D12FenceSubmitInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkD3D12FenceSubmitInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkD3D12FenceSubmitInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

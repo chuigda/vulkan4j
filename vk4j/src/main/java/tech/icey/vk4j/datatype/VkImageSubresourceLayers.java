@@ -20,6 +20,7 @@ public record VkImageSubresourceLayers(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("baseArrayLayer"),
         ValueLayout.JAVA_INT.withName("layerCount")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
     public static final PathElement PATH$mipLevel = PathElement.groupElement("mipLevel");
@@ -35,6 +36,11 @@ public record VkImageSubresourceLayers(MemorySegment segment) {
     public static final long OFFSET$mipLevel = LAYOUT.byteOffset(PATH$mipLevel);
     public static final long OFFSET$baseArrayLayer = LAYOUT.byteOffset(PATH$baseArrayLayer);
     public static final long OFFSET$layerCount = LAYOUT.byteOffset(PATH$layerCount);
+
+    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
+    public static final long SIZE$mipLevel = LAYOUT$mipLevel.byteSize();
+    public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
+    public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
 
     public VkImageSubresourceLayers(MemorySegment segment) {
         this.segment = segment;
@@ -80,7 +86,7 @@ public record VkImageSubresourceLayers(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageSubresourceLayers[] ret = new VkImageSubresourceLayers[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageSubresourceLayers(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageSubresourceLayers(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

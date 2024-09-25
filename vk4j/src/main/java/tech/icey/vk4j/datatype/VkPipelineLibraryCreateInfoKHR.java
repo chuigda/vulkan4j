@@ -20,6 +20,7 @@ public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("libraryCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pLibraries")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$libraryCount = LAYOUT.byteOffset(PATH$libraryCount);
     public static final long OFFSET$pLibraries = LAYOUT.byteOffset(PATH$pLibraries);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$libraryCount = LAYOUT$libraryCount.byteSize();
+    public static final long SIZE$pLibraries = LAYOUT$pLibraries.byteSize();
 
     public VkPipelineLibraryCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +100,7 @@ public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineLibraryCreateInfoKHR[] ret = new VkPipelineLibraryCreateInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineLibraryCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineLibraryCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

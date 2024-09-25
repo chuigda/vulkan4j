@@ -21,6 +21,7 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
         ValueLayout.JAVA_INT.withName("customSampleOrderCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkCoarseSampleOrderCustomNV.LAYOUT).withName("pCustomSampleOrders")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
     public static final long OFFSET$sampleOrderType = LAYOUT.byteOffset(PATH$sampleOrderType);
     public static final long OFFSET$customSampleOrderCount = LAYOUT.byteOffset(PATH$customSampleOrderCount);
     public static final long OFFSET$pCustomSampleOrders = LAYOUT.byteOffset(PATH$pCustomSampleOrders);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$sampleOrderType = LAYOUT$sampleOrderType.byteSize();
+    public static final long SIZE$customSampleOrderCount = LAYOUT$customSampleOrderCount.byteSize();
+    public static final long SIZE$pCustomSampleOrders = LAYOUT$pCustomSampleOrders.byteSize();
 
     public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -106,7 +113,7 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineViewportCoarseSampleOrderStateCreateInfoNV[] ret = new VkPipelineViewportCoarseSampleOrderStateCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

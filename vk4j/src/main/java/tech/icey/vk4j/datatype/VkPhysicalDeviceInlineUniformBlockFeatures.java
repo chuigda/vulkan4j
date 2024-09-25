@@ -20,6 +20,7 @@ public record VkPhysicalDeviceInlineUniformBlockFeatures(MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("inlineUniformBlock"),
         ValueLayout.JAVA_INT.withName("descriptorBindingInlineUniformBlockUpdateAfterBind")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceInlineUniformBlockFeatures(MemorySegment segment) 
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$inlineUniformBlock = LAYOUT.byteOffset(PATH$inlineUniformBlock);
     public static final long OFFSET$descriptorBindingInlineUniformBlockUpdateAfterBind = LAYOUT.byteOffset(PATH$descriptorBindingInlineUniformBlockUpdateAfterBind);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$inlineUniformBlock = LAYOUT$inlineUniformBlock.byteSize();
+    public static final long SIZE$descriptorBindingInlineUniformBlockUpdateAfterBind = LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind.byteSize();
 
     public VkPhysicalDeviceInlineUniformBlockFeatures(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceInlineUniformBlockFeatures(MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceInlineUniformBlockFeatures[] ret = new VkPhysicalDeviceInlineUniformBlockFeatures[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceInlineUniformBlockFeatures(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceInlineUniformBlockFeatures(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -19,6 +19,7 @@ public record VkPhysicalDeviceDeviceMemoryReportFeaturesEXT(MemorySegment segmen
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("deviceMemoryReport")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceDeviceMemoryReportFeaturesEXT(MemorySegment segmen
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$deviceMemoryReport = LAYOUT.byteOffset(PATH$deviceMemoryReport);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$deviceMemoryReport = LAYOUT$deviceMemoryReport.byteSize();
 
     public VkPhysicalDeviceDeviceMemoryReportFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceDeviceMemoryReportFeaturesEXT(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceDeviceMemoryReportFeaturesEXT[] ret = new VkPhysicalDeviceDeviceMemoryReportFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceDeviceMemoryReportFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceDeviceMemoryReportFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

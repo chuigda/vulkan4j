@@ -18,6 +18,7 @@ public record VkPipelineCreationFeedback(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.JAVA_LONG.withName("duration")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("flags");
     public static final PathElement PATH$duration = PathElement.groupElement("duration");
@@ -27,6 +28,9 @@ public record VkPipelineCreationFeedback(MemorySegment segment) {
 
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$duration = LAYOUT.byteOffset(PATH$duration);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$duration = LAYOUT$duration.byteSize();
 
     public VkPipelineCreationFeedback(MemorySegment segment) {
         this.segment = segment;
@@ -56,7 +60,7 @@ public record VkPipelineCreationFeedback(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineCreationFeedback[] ret = new VkPipelineCreationFeedback[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineCreationFeedback(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineCreationFeedback(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

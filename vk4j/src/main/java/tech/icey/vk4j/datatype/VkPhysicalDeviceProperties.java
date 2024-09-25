@@ -25,6 +25,7 @@ public record VkPhysicalDeviceProperties(MemorySegment segment) {
         VkPhysicalDeviceLimits.LAYOUT.withName("limits"),
         VkPhysicalDeviceSparseProperties.LAYOUT.withName("sparseProperties")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$apiVersion = PathElement.groupElement("apiVersion");
     public static final PathElement PATH$driverVersion = PathElement.groupElement("driverVersion");
@@ -55,6 +56,16 @@ public record VkPhysicalDeviceProperties(MemorySegment segment) {
     public static final long OFFSET$pipelineCacheUUID = LAYOUT.byteOffset(PATH$pipelineCacheUUID);
     public static final long OFFSET$limits = LAYOUT.byteOffset(PATH$limits);
     public static final long OFFSET$sparseProperties = LAYOUT.byteOffset(PATH$sparseProperties);
+
+    public static final long SIZE$apiVersion = LAYOUT$apiVersion.byteSize();
+    public static final long SIZE$driverVersion = LAYOUT$driverVersion.byteSize();
+    public static final long SIZE$vendorID = LAYOUT$vendorID.byteSize();
+    public static final long SIZE$deviceID = LAYOUT$deviceID.byteSize();
+    public static final long SIZE$deviceType = LAYOUT$deviceType.byteSize();
+    public static final long SIZE$deviceName = LAYOUT$deviceName.byteSize();
+    public static final long SIZE$pipelineCacheUUID = LAYOUT$pipelineCacheUUID.byteSize();
+    public static final long SIZE$limits = LAYOUT$limits.byteSize();
+    public static final long SIZE$sparseProperties = LAYOUT$sparseProperties.byteSize();
 
     public VkPhysicalDeviceProperties(MemorySegment segment) {
         this.segment = segment;
@@ -129,7 +140,7 @@ public record VkPhysicalDeviceProperties(MemorySegment segment) {
     }
 
     public void limits(VkPhysicalDeviceLimits value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$limits, LAYOUT$limits.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$limits, SIZE$limits);
     }
 
     public VkPhysicalDeviceSparseProperties sparseProperties() {
@@ -137,7 +148,7 @@ public record VkPhysicalDeviceProperties(MemorySegment segment) {
     }
 
     public void sparseProperties(VkPhysicalDeviceSparseProperties value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sparseProperties, LAYOUT$sparseProperties.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sparseProperties, SIZE$sparseProperties);
     }
 
     public static VkPhysicalDeviceProperties allocate(Arena arena) {
@@ -148,7 +159,7 @@ public record VkPhysicalDeviceProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceProperties[] ret = new VkPhysicalDeviceProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

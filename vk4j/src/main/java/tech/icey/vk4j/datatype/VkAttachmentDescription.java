@@ -25,6 +25,7 @@ public record VkAttachmentDescription(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("initialLayout"),
         ValueLayout.JAVA_INT.withName("finalLayout")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("flags");
     public static final PathElement PATH$format = PathElement.groupElement("format");
@@ -55,6 +56,16 @@ public record VkAttachmentDescription(MemorySegment segment) {
     public static final long OFFSET$stencilStoreOp = LAYOUT.byteOffset(PATH$stencilStoreOp);
     public static final long OFFSET$initialLayout = LAYOUT.byteOffset(PATH$initialLayout);
     public static final long OFFSET$finalLayout = LAYOUT.byteOffset(PATH$finalLayout);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
+    public static final long SIZE$samples = LAYOUT$samples.byteSize();
+    public static final long SIZE$loadOp = LAYOUT$loadOp.byteSize();
+    public static final long SIZE$storeOp = LAYOUT$storeOp.byteSize();
+    public static final long SIZE$stencilLoadOp = LAYOUT$stencilLoadOp.byteSize();
+    public static final long SIZE$stencilStoreOp = LAYOUT$stencilStoreOp.byteSize();
+    public static final long SIZE$initialLayout = LAYOUT$initialLayout.byteSize();
+    public static final long SIZE$finalLayout = LAYOUT$finalLayout.byteSize();
 
     public VkAttachmentDescription(MemorySegment segment) {
         this.segment = segment;
@@ -140,7 +151,7 @@ public record VkAttachmentDescription(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAttachmentDescription[] ret = new VkAttachmentDescription[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAttachmentDescription(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAttachmentDescription(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

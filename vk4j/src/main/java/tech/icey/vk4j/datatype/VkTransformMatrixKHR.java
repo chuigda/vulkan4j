@@ -17,12 +17,15 @@ public record VkTransformMatrixKHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         MemoryLayout.sequenceLayout(3 * 4, ValueLayout.JAVA_FLOAT).withName("matrix")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$matrix = PathElement.groupElement("matrix");
 
     public static final SequenceLayout LAYOUT$matrix = (SequenceLayout) LAYOUT.select(PATH$matrix);
 
     public static final long OFFSET$matrix = LAYOUT.byteOffset(PATH$matrix);
+
+    public static final long SIZE$matrix = LAYOUT$matrix.byteSize();
 
     public VkTransformMatrixKHR(MemorySegment segment) {
         this.segment = segment;
@@ -48,7 +51,7 @@ public record VkTransformMatrixKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkTransformMatrixKHR[] ret = new VkTransformMatrixKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkTransformMatrixKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkTransformMatrixKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

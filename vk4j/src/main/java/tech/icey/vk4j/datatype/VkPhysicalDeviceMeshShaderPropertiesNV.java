@@ -31,6 +31,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("meshOutputPerVertexGranularity"),
         ValueLayout.JAVA_INT.withName("meshOutputPerPrimitiveGranularity")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -79,6 +80,22 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(MemorySegment segment) {
     public static final long OFFSET$maxMeshMultiviewViewCount = LAYOUT.byteOffset(PATH$maxMeshMultiviewViewCount);
     public static final long OFFSET$meshOutputPerVertexGranularity = LAYOUT.byteOffset(PATH$meshOutputPerVertexGranularity);
     public static final long OFFSET$meshOutputPerPrimitiveGranularity = LAYOUT.byteOffset(PATH$meshOutputPerPrimitiveGranularity);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxDrawMeshTasksCount = LAYOUT$maxDrawMeshTasksCount.byteSize();
+    public static final long SIZE$maxTaskWorkGroupInvocations = LAYOUT$maxTaskWorkGroupInvocations.byteSize();
+    public static final long SIZE$maxTaskWorkGroupSize = LAYOUT$maxTaskWorkGroupSize.byteSize();
+    public static final long SIZE$maxTaskTotalMemorySize = LAYOUT$maxTaskTotalMemorySize.byteSize();
+    public static final long SIZE$maxTaskOutputCount = LAYOUT$maxTaskOutputCount.byteSize();
+    public static final long SIZE$maxMeshWorkGroupInvocations = LAYOUT$maxMeshWorkGroupInvocations.byteSize();
+    public static final long SIZE$maxMeshWorkGroupSize = LAYOUT$maxMeshWorkGroupSize.byteSize();
+    public static final long SIZE$maxMeshTotalMemorySize = LAYOUT$maxMeshTotalMemorySize.byteSize();
+    public static final long SIZE$maxMeshOutputVertices = LAYOUT$maxMeshOutputVertices.byteSize();
+    public static final long SIZE$maxMeshOutputPrimitives = LAYOUT$maxMeshOutputPrimitives.byteSize();
+    public static final long SIZE$maxMeshMultiviewViewCount = LAYOUT$maxMeshMultiviewViewCount.byteSize();
+    public static final long SIZE$meshOutputPerVertexGranularity = LAYOUT$meshOutputPerVertexGranularity.byteSize();
+    public static final long SIZE$meshOutputPerPrimitiveGranularity = LAYOUT$meshOutputPerPrimitiveGranularity.byteSize();
 
     public VkPhysicalDeviceMeshShaderPropertiesNV(MemorySegment segment) {
         this.segment = segment;
@@ -221,7 +238,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMeshShaderPropertiesNV[] ret = new VkPhysicalDeviceMeshShaderPropertiesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMeshShaderPropertiesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceMeshShaderPropertiesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

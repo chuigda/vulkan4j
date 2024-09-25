@@ -22,6 +22,7 @@ public record VkTimelineSemaphoreSubmitInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("signalSemaphoreValueCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pSignalSemaphoreValues")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkTimelineSemaphoreSubmitInfo(MemorySegment segment) {
     public static final long OFFSET$pWaitSemaphoreValues = LAYOUT.byteOffset(PATH$pWaitSemaphoreValues);
     public static final long OFFSET$signalSemaphoreValueCount = LAYOUT.byteOffset(PATH$signalSemaphoreValueCount);
     public static final long OFFSET$pSignalSemaphoreValues = LAYOUT.byteOffset(PATH$pSignalSemaphoreValues);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$waitSemaphoreValueCount = LAYOUT$waitSemaphoreValueCount.byteSize();
+    public static final long SIZE$pWaitSemaphoreValues = LAYOUT$pWaitSemaphoreValues.byteSize();
+    public static final long SIZE$signalSemaphoreValueCount = LAYOUT$signalSemaphoreValueCount.byteSize();
+    public static final long SIZE$pSignalSemaphoreValues = LAYOUT$pSignalSemaphoreValues.byteSize();
 
     public VkTimelineSemaphoreSubmitInfo(MemorySegment segment) {
         this.segment = segment;
@@ -121,7 +129,7 @@ public record VkTimelineSemaphoreSubmitInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkTimelineSemaphoreSubmitInfo[] ret = new VkTimelineSemaphoreSubmitInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkTimelineSemaphoreSubmitInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkTimelineSemaphoreSubmitInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

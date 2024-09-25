@@ -18,6 +18,7 @@ public record VkPipelineBinaryDataKHR(MemorySegment segment) {
         NativeLayout.C_SIZE_T.withName("dataSize"),
         ValueLayout.ADDRESS.withName("pData")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$dataSize = PathElement.groupElement("dataSize");
     public static final PathElement PATH$pData = PathElement.groupElement("pData");
@@ -26,6 +27,8 @@ public record VkPipelineBinaryDataKHR(MemorySegment segment) {
 
     public static final long OFFSET$dataSize = LAYOUT.byteOffset(PATH$dataSize);
     public static final long OFFSET$pData = LAYOUT.byteOffset(PATH$pData);
+
+    public static final long SIZE$pData = LAYOUT$pData.byteSize();
 
     public VkPipelineBinaryDataKHR(MemorySegment segment) {
         this.segment = segment;
@@ -55,7 +58,7 @@ public record VkPipelineBinaryDataKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineBinaryDataKHR[] ret = new VkPipelineBinaryDataKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineBinaryDataKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineBinaryDataKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

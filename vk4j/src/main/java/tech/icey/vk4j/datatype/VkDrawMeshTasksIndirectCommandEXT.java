@@ -19,6 +19,7 @@ public record VkDrawMeshTasksIndirectCommandEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("groupCountY"),
         ValueLayout.JAVA_INT.withName("groupCountZ")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$groupCountX = PathElement.groupElement("groupCountX");
     public static final PathElement PATH$groupCountY = PathElement.groupElement("groupCountY");
@@ -31,6 +32,10 @@ public record VkDrawMeshTasksIndirectCommandEXT(MemorySegment segment) {
     public static final long OFFSET$groupCountX = LAYOUT.byteOffset(PATH$groupCountX);
     public static final long OFFSET$groupCountY = LAYOUT.byteOffset(PATH$groupCountY);
     public static final long OFFSET$groupCountZ = LAYOUT.byteOffset(PATH$groupCountZ);
+
+    public static final long SIZE$groupCountX = LAYOUT$groupCountX.byteSize();
+    public static final long SIZE$groupCountY = LAYOUT$groupCountY.byteSize();
+    public static final long SIZE$groupCountZ = LAYOUT$groupCountZ.byteSize();
 
     public VkDrawMeshTasksIndirectCommandEXT(MemorySegment segment) {
         this.segment = segment;
@@ -68,7 +73,7 @@ public record VkDrawMeshTasksIndirectCommandEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDrawMeshTasksIndirectCommandEXT[] ret = new VkDrawMeshTasksIndirectCommandEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDrawMeshTasksIndirectCommandEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDrawMeshTasksIndirectCommandEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

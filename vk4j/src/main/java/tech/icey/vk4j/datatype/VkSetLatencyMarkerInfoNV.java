@@ -20,6 +20,7 @@ public record VkSetLatencyMarkerInfoNV(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("presentID"),
         ValueLayout.JAVA_INT.withName("marker")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkSetLatencyMarkerInfoNV(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$presentID = LAYOUT.byteOffset(PATH$presentID);
     public static final long OFFSET$marker = LAYOUT.byteOffset(PATH$marker);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$presentID = LAYOUT$presentID.byteSize();
+    public static final long SIZE$marker = LAYOUT$marker.byteSize();
 
     public VkSetLatencyMarkerInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkSetLatencyMarkerInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSetLatencyMarkerInfoNV[] ret = new VkSetLatencyMarkerInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSetLatencyMarkerInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSetLatencyMarkerInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

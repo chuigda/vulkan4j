@@ -21,6 +21,7 @@ public record VkPhysicalDeviceFragmentDensityMapFeaturesEXT(MemorySegment segmen
         ValueLayout.JAVA_INT.withName("fragmentDensityMapDynamic"),
         ValueLayout.JAVA_INT.withName("fragmentDensityMapNonSubsampledImages")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceFragmentDensityMapFeaturesEXT(MemorySegment segmen
     public static final long OFFSET$fragmentDensityMap = LAYOUT.byteOffset(PATH$fragmentDensityMap);
     public static final long OFFSET$fragmentDensityMapDynamic = LAYOUT.byteOffset(PATH$fragmentDensityMapDynamic);
     public static final long OFFSET$fragmentDensityMapNonSubsampledImages = LAYOUT.byteOffset(PATH$fragmentDensityMapNonSubsampledImages);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$fragmentDensityMap = LAYOUT$fragmentDensityMap.byteSize();
+    public static final long SIZE$fragmentDensityMapDynamic = LAYOUT$fragmentDensityMapDynamic.byteSize();
+    public static final long SIZE$fragmentDensityMapNonSubsampledImages = LAYOUT$fragmentDensityMapNonSubsampledImages.byteSize();
 
     public VkPhysicalDeviceFragmentDensityMapFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceFragmentDensityMapFeaturesEXT(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceFragmentDensityMapFeaturesEXT[] ret = new VkPhysicalDeviceFragmentDensityMapFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceFragmentDensityMapFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceFragmentDensityMapFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

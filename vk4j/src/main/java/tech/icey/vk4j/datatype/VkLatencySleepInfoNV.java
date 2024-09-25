@@ -20,6 +20,7 @@ public record VkLatencySleepInfoNV(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("signalSemaphore"),
         ValueLayout.JAVA_LONG.withName("value")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkLatencySleepInfoNV(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$signalSemaphore = LAYOUT.byteOffset(PATH$signalSemaphore);
     public static final long OFFSET$value = LAYOUT.byteOffset(PATH$value);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$signalSemaphore = LAYOUT$signalSemaphore.byteSize();
+    public static final long SIZE$value = LAYOUT$value.byteSize();
 
     public VkLatencySleepInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkLatencySleepInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkLatencySleepInfoNV[] ret = new VkLatencySleepInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkLatencySleepInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkLatencySleepInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

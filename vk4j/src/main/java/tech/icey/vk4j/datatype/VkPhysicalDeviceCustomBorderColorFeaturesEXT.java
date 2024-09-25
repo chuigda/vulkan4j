@@ -20,6 +20,7 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(MemorySegment segment
         ValueLayout.JAVA_INT.withName("customBorderColors"),
         ValueLayout.JAVA_INT.withName("customBorderColorWithoutFormat")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(MemorySegment segment
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$customBorderColors = LAYOUT.byteOffset(PATH$customBorderColors);
     public static final long OFFSET$customBorderColorWithoutFormat = LAYOUT.byteOffset(PATH$customBorderColorWithoutFormat);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$customBorderColors = LAYOUT$customBorderColors.byteSize();
+    public static final long SIZE$customBorderColorWithoutFormat = LAYOUT$customBorderColorWithoutFormat.byteSize();
 
     public VkPhysicalDeviceCustomBorderColorFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceCustomBorderColorFeaturesEXT[] ret = new VkPhysicalDeviceCustomBorderColorFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceCustomBorderColorFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceCustomBorderColorFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

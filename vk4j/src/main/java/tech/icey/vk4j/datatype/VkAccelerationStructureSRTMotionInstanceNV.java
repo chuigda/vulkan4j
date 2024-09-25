@@ -21,6 +21,7 @@ public record VkAccelerationStructureSRTMotionInstanceNV(MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("bitfield$instanceShaderBindingTableRecordOffset_flags"),
         ValueLayout.JAVA_LONG.withName("accelerationStructureReference")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$transformT0 = PathElement.groupElement("transformT0");
     public static final PathElement PATH$transformT1 = PathElement.groupElement("transformT1");
@@ -40,6 +41,12 @@ public record VkAccelerationStructureSRTMotionInstanceNV(MemorySegment segment) 
     public static final long OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags = LAYOUT.byteOffset(PATH$bitfield$instanceShaderBindingTableRecordOffset_flags);
     public static final long OFFSET$accelerationStructureReference = LAYOUT.byteOffset(PATH$accelerationStructureReference);
 
+    public static final long SIZE$transformT0 = LAYOUT$transformT0.byteSize();
+    public static final long SIZE$transformT1 = LAYOUT$transformT1.byteSize();
+    public static final long SIZE$bitfield$instanceCustomIndex_mask = LAYOUT$bitfield$instanceCustomIndex_mask.byteSize();
+    public static final long SIZE$bitfield$instanceShaderBindingTableRecordOffset_flags = LAYOUT$bitfield$instanceShaderBindingTableRecordOffset_flags.byteSize();
+    public static final long SIZE$accelerationStructureReference = LAYOUT$accelerationStructureReference.byteSize();
+
     public VkAccelerationStructureSRTMotionInstanceNV(MemorySegment segment) {
         this.segment = segment;
     }
@@ -49,7 +56,7 @@ public record VkAccelerationStructureSRTMotionInstanceNV(MemorySegment segment) 
     }
 
     public void transformT0(VkSRTDataNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformT0, LAYOUT$transformT0.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformT0, SIZE$transformT0);
     }
 
     public VkSRTDataNV transformT1() {
@@ -57,7 +64,7 @@ public record VkAccelerationStructureSRTMotionInstanceNV(MemorySegment segment) 
     }
 
     public void transformT1(VkSRTDataNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformT1, LAYOUT$transformT1.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformT1, SIZE$transformT1);
     }
 
     public int instanceCustomIndex() {
@@ -116,7 +123,7 @@ public record VkAccelerationStructureSRTMotionInstanceNV(MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureSRTMotionInstanceNV[] ret = new VkAccelerationStructureSRTMotionInstanceNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureSRTMotionInstanceNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureSRTMotionInstanceNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

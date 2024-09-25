@@ -19,6 +19,7 @@ public record VkPhysicalDevicePerformanceQueryPropertiesKHR(MemorySegment segmen
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("allowCommandBufferQueryCopies")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDevicePerformanceQueryPropertiesKHR(MemorySegment segmen
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$allowCommandBufferQueryCopies = LAYOUT.byteOffset(PATH$allowCommandBufferQueryCopies);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$allowCommandBufferQueryCopies = LAYOUT$allowCommandBufferQueryCopies.byteSize();
 
     public VkPhysicalDevicePerformanceQueryPropertiesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDevicePerformanceQueryPropertiesKHR(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevicePerformanceQueryPropertiesKHR[] ret = new VkPhysicalDevicePerformanceQueryPropertiesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDevicePerformanceQueryPropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDevicePerformanceQueryPropertiesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

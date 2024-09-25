@@ -21,6 +21,7 @@ public record VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(MemorySegment segme
         ValueLayout.JAVA_INT.withName("bufferDeviceAddressCaptureReplay"),
         ValueLayout.JAVA_INT.withName("bufferDeviceAddressMultiDevice")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(MemorySegment segme
     public static final long OFFSET$bufferDeviceAddress = LAYOUT.byteOffset(PATH$bufferDeviceAddress);
     public static final long OFFSET$bufferDeviceAddressCaptureReplay = LAYOUT.byteOffset(PATH$bufferDeviceAddressCaptureReplay);
     public static final long OFFSET$bufferDeviceAddressMultiDevice = LAYOUT.byteOffset(PATH$bufferDeviceAddressMultiDevice);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$bufferDeviceAddress = LAYOUT$bufferDeviceAddress.byteSize();
+    public static final long SIZE$bufferDeviceAddressCaptureReplay = LAYOUT$bufferDeviceAddressCaptureReplay.byteSize();
+    public static final long SIZE$bufferDeviceAddressMultiDevice = LAYOUT$bufferDeviceAddressMultiDevice.byteSize();
 
     public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceBufferDeviceAddressFeaturesEXT[] ret = new VkPhysicalDeviceBufferDeviceAddressFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

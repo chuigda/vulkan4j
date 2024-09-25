@@ -32,6 +32,7 @@ public record VkPhysicalDeviceShaderCorePropertiesAMD(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("maxVgprAllocation"),
         ValueLayout.JAVA_INT.withName("vgprAllocationGranularity")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -83,6 +84,23 @@ public record VkPhysicalDeviceShaderCorePropertiesAMD(MemorySegment segment) {
     public static final long OFFSET$minVgprAllocation = LAYOUT.byteOffset(PATH$minVgprAllocation);
     public static final long OFFSET$maxVgprAllocation = LAYOUT.byteOffset(PATH$maxVgprAllocation);
     public static final long OFFSET$vgprAllocationGranularity = LAYOUT.byteOffset(PATH$vgprAllocationGranularity);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderEngineCount = LAYOUT$shaderEngineCount.byteSize();
+    public static final long SIZE$shaderArraysPerEngineCount = LAYOUT$shaderArraysPerEngineCount.byteSize();
+    public static final long SIZE$computeUnitsPerShaderArray = LAYOUT$computeUnitsPerShaderArray.byteSize();
+    public static final long SIZE$simdPerComputeUnit = LAYOUT$simdPerComputeUnit.byteSize();
+    public static final long SIZE$wavefrontsPerSimd = LAYOUT$wavefrontsPerSimd.byteSize();
+    public static final long SIZE$wavefrontSize = LAYOUT$wavefrontSize.byteSize();
+    public static final long SIZE$sgprsPerSimd = LAYOUT$sgprsPerSimd.byteSize();
+    public static final long SIZE$minSgprAllocation = LAYOUT$minSgprAllocation.byteSize();
+    public static final long SIZE$maxSgprAllocation = LAYOUT$maxSgprAllocation.byteSize();
+    public static final long SIZE$sgprAllocationGranularity = LAYOUT$sgprAllocationGranularity.byteSize();
+    public static final long SIZE$vgprsPerSimd = LAYOUT$vgprsPerSimd.byteSize();
+    public static final long SIZE$minVgprAllocation = LAYOUT$minVgprAllocation.byteSize();
+    public static final long SIZE$maxVgprAllocation = LAYOUT$maxVgprAllocation.byteSize();
+    public static final long SIZE$vgprAllocationGranularity = LAYOUT$vgprAllocationGranularity.byteSize();
 
     public VkPhysicalDeviceShaderCorePropertiesAMD(MemorySegment segment) {
         this.segment = segment;
@@ -225,7 +243,7 @@ public record VkPhysicalDeviceShaderCorePropertiesAMD(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderCorePropertiesAMD[] ret = new VkPhysicalDeviceShaderCorePropertiesAMD[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceShaderCorePropertiesAMD(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceShaderCorePropertiesAMD(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

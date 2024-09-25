@@ -20,6 +20,7 @@ public record VkPhysicalDevicePerStageDescriptorSetFeaturesNV(MemorySegment segm
         ValueLayout.JAVA_INT.withName("perStageDescriptorSet"),
         ValueLayout.JAVA_INT.withName("dynamicPipelineLayout")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDevicePerStageDescriptorSetFeaturesNV(MemorySegment segm
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$perStageDescriptorSet = LAYOUT.byteOffset(PATH$perStageDescriptorSet);
     public static final long OFFSET$dynamicPipelineLayout = LAYOUT.byteOffset(PATH$dynamicPipelineLayout);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$perStageDescriptorSet = LAYOUT$perStageDescriptorSet.byteSize();
+    public static final long SIZE$dynamicPipelineLayout = LAYOUT$dynamicPipelineLayout.byteSize();
 
     public VkPhysicalDevicePerStageDescriptorSetFeaturesNV(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDevicePerStageDescriptorSetFeaturesNV(MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevicePerStageDescriptorSetFeaturesNV[] ret = new VkPhysicalDevicePerStageDescriptorSetFeaturesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDevicePerStageDescriptorSetFeaturesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDevicePerStageDescriptorSetFeaturesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

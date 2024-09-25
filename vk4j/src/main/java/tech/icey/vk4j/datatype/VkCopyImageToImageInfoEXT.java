@@ -25,6 +25,7 @@ public record VkCopyImageToImageInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("regionCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkImageCopy2.LAYOUT).withName("pRegions")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -55,6 +56,16 @@ public record VkCopyImageToImageInfoEXT(MemorySegment segment) {
     public static final long OFFSET$dstImageLayout = LAYOUT.byteOffset(PATH$dstImageLayout);
     public static final long OFFSET$regionCount = LAYOUT.byteOffset(PATH$regionCount);
     public static final long OFFSET$pRegions = LAYOUT.byteOffset(PATH$pRegions);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$srcImage = LAYOUT$srcImage.byteSize();
+    public static final long SIZE$srcImageLayout = LAYOUT$srcImageLayout.byteSize();
+    public static final long SIZE$dstImage = LAYOUT$dstImage.byteSize();
+    public static final long SIZE$dstImageLayout = LAYOUT$dstImageLayout.byteSize();
+    public static final long SIZE$regionCount = LAYOUT$regionCount.byteSize();
+    public static final long SIZE$pRegions = LAYOUT$pRegions.byteSize();
 
     public VkCopyImageToImageInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -154,7 +165,7 @@ public record VkCopyImageToImageInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCopyImageToImageInfoEXT[] ret = new VkCopyImageToImageInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkCopyImageToImageInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkCopyImageToImageInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

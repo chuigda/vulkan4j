@@ -19,6 +19,7 @@ public record VkExternalMemoryProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("exportFromImportedHandleTypes"),
         ValueLayout.JAVA_INT.withName("compatibleHandleTypes")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$externalMemoryFeatures = PathElement.groupElement("externalMemoryFeatures");
     public static final PathElement PATH$exportFromImportedHandleTypes = PathElement.groupElement("exportFromImportedHandleTypes");
@@ -31,6 +32,10 @@ public record VkExternalMemoryProperties(MemorySegment segment) {
     public static final long OFFSET$externalMemoryFeatures = LAYOUT.byteOffset(PATH$externalMemoryFeatures);
     public static final long OFFSET$exportFromImportedHandleTypes = LAYOUT.byteOffset(PATH$exportFromImportedHandleTypes);
     public static final long OFFSET$compatibleHandleTypes = LAYOUT.byteOffset(PATH$compatibleHandleTypes);
+
+    public static final long SIZE$externalMemoryFeatures = LAYOUT$externalMemoryFeatures.byteSize();
+    public static final long SIZE$exportFromImportedHandleTypes = LAYOUT$exportFromImportedHandleTypes.byteSize();
+    public static final long SIZE$compatibleHandleTypes = LAYOUT$compatibleHandleTypes.byteSize();
 
     public VkExternalMemoryProperties(MemorySegment segment) {
         this.segment = segment;
@@ -68,7 +73,7 @@ public record VkExternalMemoryProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExternalMemoryProperties[] ret = new VkExternalMemoryProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkExternalMemoryProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkExternalMemoryProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

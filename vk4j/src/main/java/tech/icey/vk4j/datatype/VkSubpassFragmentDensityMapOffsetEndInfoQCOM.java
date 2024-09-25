@@ -20,6 +20,7 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
         ValueLayout.JAVA_INT.withName("fragmentDensityOffsetCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkOffset2D.LAYOUT).withName("pFragmentDensityOffsets")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$fragmentDensityOffsetCount = LAYOUT.byteOffset(PATH$fragmentDensityOffsetCount);
     public static final long OFFSET$pFragmentDensityOffsets = LAYOUT.byteOffset(PATH$pFragmentDensityOffsets);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$fragmentDensityOffsetCount = LAYOUT$fragmentDensityOffsetCount.byteSize();
+    public static final long SIZE$pFragmentDensityOffsets = LAYOUT$pFragmentDensityOffsets.byteSize();
 
     public VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +100,7 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubpassFragmentDensityMapOffsetEndInfoQCOM[] ret = new VkSubpassFragmentDensityMapOffsetEndInfoQCOM[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSubpassFragmentDensityMapOffsetEndInfoQCOM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSubpassFragmentDensityMapOffsetEndInfoQCOM(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

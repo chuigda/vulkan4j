@@ -17,12 +17,15 @@ public record VkBindShaderGroupIndirectCommandNV(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("groupIndex")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$groupIndex = PathElement.groupElement("groupIndex");
 
     public static final OfInt LAYOUT$groupIndex = (OfInt) LAYOUT.select(PATH$groupIndex);
 
     public static final long OFFSET$groupIndex = LAYOUT.byteOffset(PATH$groupIndex);
+
+    public static final long SIZE$groupIndex = LAYOUT$groupIndex.byteSize();
 
     public VkBindShaderGroupIndirectCommandNV(MemorySegment segment) {
         this.segment = segment;
@@ -44,7 +47,7 @@ public record VkBindShaderGroupIndirectCommandNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBindShaderGroupIndirectCommandNV[] ret = new VkBindShaderGroupIndirectCommandNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkBindShaderGroupIndirectCommandNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkBindShaderGroupIndirectCommandNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

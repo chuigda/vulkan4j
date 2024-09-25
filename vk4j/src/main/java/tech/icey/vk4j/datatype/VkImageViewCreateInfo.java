@@ -24,6 +24,7 @@ public record VkImageViewCreateInfo(MemorySegment segment) {
         VkComponentMapping.LAYOUT.withName("components"),
         VkImageSubresourceRange.LAYOUT.withName("subresourceRange")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -51,6 +52,15 @@ public record VkImageViewCreateInfo(MemorySegment segment) {
     public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
     public static final long OFFSET$components = LAYOUT.byteOffset(PATH$components);
     public static final long OFFSET$subresourceRange = LAYOUT.byteOffset(PATH$subresourceRange);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$image = LAYOUT$image.byteSize();
+    public static final long SIZE$viewType = LAYOUT$viewType.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
+    public static final long SIZE$components = LAYOUT$components.byteSize();
+    public static final long SIZE$subresourceRange = LAYOUT$subresourceRange.byteSize();
 
     public VkImageViewCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -110,7 +120,7 @@ public record VkImageViewCreateInfo(MemorySegment segment) {
     }
 
     public void components(VkComponentMapping value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, LAYOUT$components.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, SIZE$components);
     }
 
     public VkImageSubresourceRange subresourceRange() {
@@ -118,7 +128,7 @@ public record VkImageViewCreateInfo(MemorySegment segment) {
     }
 
     public void subresourceRange(VkImageSubresourceRange value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, LAYOUT$subresourceRange.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, SIZE$subresourceRange);
     }
 
     public static VkImageViewCreateInfo allocate(Arena arena) {
@@ -129,7 +139,7 @@ public record VkImageViewCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageViewCreateInfo[] ret = new VkImageViewCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageViewCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageViewCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

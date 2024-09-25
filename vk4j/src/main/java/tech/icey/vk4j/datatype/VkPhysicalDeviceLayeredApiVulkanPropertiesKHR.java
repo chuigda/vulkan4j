@@ -19,6 +19,7 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(MemorySegment segmen
         ValueLayout.ADDRESS.withName("pNext"),
         VkPhysicalDeviceProperties2.LAYOUT.withName("properties")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(MemorySegment segmen
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$properties = LAYOUT.byteOffset(PATH$properties);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$properties = LAYOUT$properties.byteSize();
 
     public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -58,7 +63,7 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(MemorySegment segmen
     }
 
     public void properties(VkPhysicalDeviceProperties2 value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$properties, LAYOUT$properties.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$properties, SIZE$properties);
     }
 
     public static VkPhysicalDeviceLayeredApiVulkanPropertiesKHR allocate(Arena arena) {
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceLayeredApiVulkanPropertiesKHR[] ret = new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

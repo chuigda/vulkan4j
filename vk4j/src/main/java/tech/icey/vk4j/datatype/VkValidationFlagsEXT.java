@@ -20,6 +20,7 @@ public record VkValidationFlagsEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("disabledValidationCheckCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDisabledValidationChecks")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkValidationFlagsEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$disabledValidationCheckCount = LAYOUT.byteOffset(PATH$disabledValidationCheckCount);
     public static final long OFFSET$pDisabledValidationChecks = LAYOUT.byteOffset(PATH$pDisabledValidationChecks);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$disabledValidationCheckCount = LAYOUT$disabledValidationCheckCount.byteSize();
+    public static final long SIZE$pDisabledValidationChecks = LAYOUT$pDisabledValidationChecks.byteSize();
 
     public VkValidationFlagsEXT(MemorySegment segment) {
         this.segment = segment;
@@ -95,7 +101,7 @@ public record VkValidationFlagsEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkValidationFlagsEXT[] ret = new VkValidationFlagsEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkValidationFlagsEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkValidationFlagsEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

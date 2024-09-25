@@ -18,6 +18,7 @@ public record VkShadingRatePaletteNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("shadingRatePaletteEntryCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pShadingRatePaletteEntries")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$shadingRatePaletteEntryCount = PathElement.groupElement("shadingRatePaletteEntryCount");
     public static final PathElement PATH$pShadingRatePaletteEntries = PathElement.groupElement("pShadingRatePaletteEntries");
@@ -27,6 +28,9 @@ public record VkShadingRatePaletteNV(MemorySegment segment) {
 
     public static final long OFFSET$shadingRatePaletteEntryCount = LAYOUT.byteOffset(PATH$shadingRatePaletteEntryCount);
     public static final long OFFSET$pShadingRatePaletteEntries = LAYOUT.byteOffset(PATH$pShadingRatePaletteEntries);
+
+    public static final long SIZE$shadingRatePaletteEntryCount = LAYOUT$shadingRatePaletteEntryCount.byteSize();
+    public static final long SIZE$pShadingRatePaletteEntries = LAYOUT$pShadingRatePaletteEntries.byteSize();
 
     public VkShadingRatePaletteNV(MemorySegment segment) {
         this.segment = segment;
@@ -70,7 +74,7 @@ public record VkShadingRatePaletteNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkShadingRatePaletteNV[] ret = new VkShadingRatePaletteNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkShadingRatePaletteNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkShadingRatePaletteNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

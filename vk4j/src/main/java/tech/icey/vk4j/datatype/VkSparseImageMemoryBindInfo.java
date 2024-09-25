@@ -19,6 +19,7 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("bindCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkSparseImageMemoryBind.LAYOUT).withName("pBinds")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$image = PathElement.groupElement("image");
     public static final PathElement PATH$bindCount = PathElement.groupElement("bindCount");
@@ -31,6 +32,10 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) {
     public static final long OFFSET$image = LAYOUT.byteOffset(PATH$image);
     public static final long OFFSET$bindCount = LAYOUT.byteOffset(PATH$bindCount);
     public static final long OFFSET$pBinds = LAYOUT.byteOffset(PATH$pBinds);
+
+    public static final long SIZE$image = LAYOUT$image.byteSize();
+    public static final long SIZE$bindCount = LAYOUT$bindCount.byteSize();
+    public static final long SIZE$pBinds = LAYOUT$pBinds.byteSize();
 
     public VkSparseImageMemoryBindInfo(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +86,7 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSparseImageMemoryBindInfo[] ret = new VkSparseImageMemoryBindInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSparseImageMemoryBindInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSparseImageMemoryBindInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -20,6 +20,7 @@ public record VkSwapchainPresentModeInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("swapchainCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pPresentModes")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkSwapchainPresentModeInfoEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$swapchainCount = LAYOUT.byteOffset(PATH$swapchainCount);
     public static final long OFFSET$pPresentModes = LAYOUT.byteOffset(PATH$pPresentModes);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$swapchainCount = LAYOUT$swapchainCount.byteSize();
+    public static final long SIZE$pPresentModes = LAYOUT$pPresentModes.byteSize();
 
     public VkSwapchainPresentModeInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -95,7 +101,7 @@ public record VkSwapchainPresentModeInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSwapchainPresentModeInfoEXT[] ret = new VkSwapchainPresentModeInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSwapchainPresentModeInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSwapchainPresentModeInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -22,6 +22,7 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(MemorySegment segmen
         ValueLayout.JAVA_INT.withName("queueFamilyIndexCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pQueueFamilyIndices")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(MemorySegment segmen
     public static final long OFFSET$sharingMode = LAYOUT.byteOffset(PATH$sharingMode);
     public static final long OFFSET$queueFamilyIndexCount = LAYOUT.byteOffset(PATH$queueFamilyIndexCount);
     public static final long OFFSET$pQueueFamilyIndices = LAYOUT.byteOffset(PATH$pQueueFamilyIndices);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$drmFormatModifier = LAYOUT$drmFormatModifier.byteSize();
+    public static final long SIZE$sharingMode = LAYOUT$sharingMode.byteSize();
+    public static final long SIZE$queueFamilyIndexCount = LAYOUT$queueFamilyIndexCount.byteSize();
+    public static final long SIZE$pQueueFamilyIndices = LAYOUT$pQueueFamilyIndices.byteSize();
 
     public VkPhysicalDeviceImageDrmFormatModifierInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -113,7 +121,7 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceImageDrmFormatModifierInfoEXT[] ret = new VkPhysicalDeviceImageDrmFormatModifierInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

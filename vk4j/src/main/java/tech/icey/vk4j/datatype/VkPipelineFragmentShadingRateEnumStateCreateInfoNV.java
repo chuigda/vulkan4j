@@ -21,6 +21,7 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment s
         ValueLayout.JAVA_INT.withName("shadingRate"),
         MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_INT).withName("combinerOps")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment s
     public static final long OFFSET$shadingRateType = LAYOUT.byteOffset(PATH$shadingRateType);
     public static final long OFFSET$shadingRate = LAYOUT.byteOffset(PATH$shadingRate);
     public static final long OFFSET$combinerOps = LAYOUT.byteOffset(PATH$combinerOps);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shadingRateType = LAYOUT$shadingRateType.byteSize();
+    public static final long SIZE$shadingRate = LAYOUT$shadingRate.byteSize();
+    public static final long SIZE$combinerOps = LAYOUT$combinerOps.byteSize();
 
     public VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -97,7 +104,7 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineFragmentShadingRateEnumStateCreateInfoNV[] ret = new VkPipelineFragmentShadingRateEnumStateCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

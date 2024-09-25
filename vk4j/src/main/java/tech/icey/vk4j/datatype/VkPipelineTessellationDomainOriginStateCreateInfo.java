@@ -19,6 +19,7 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(MemorySegment se
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("domainOrigin")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(MemorySegment se
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$domainOrigin = LAYOUT.byteOffset(PATH$domainOrigin);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$domainOrigin = LAYOUT$domainOrigin.byteSize();
 
     public VkPipelineTessellationDomainOriginStateCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineTessellationDomainOriginStateCreateInfo[] ret = new VkPipelineTessellationDomainOriginStateCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineTessellationDomainOriginStateCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineTessellationDomainOriginStateCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

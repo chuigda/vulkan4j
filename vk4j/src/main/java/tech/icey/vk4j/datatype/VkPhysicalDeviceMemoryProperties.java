@@ -20,6 +20,7 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("memoryHeapCount"),
         MemoryLayout.sequenceLayout(VK_MAX_MEMORY_HEAPS, VkMemoryHeap.LAYOUT).withName("memoryHeaps")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$memoryTypeCount = PathElement.groupElement("memoryTypeCount");
     public static final PathElement PATH$memoryTypes = PathElement.groupElement("memoryTypes");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
     public static final long OFFSET$memoryTypes = LAYOUT.byteOffset(PATH$memoryTypes);
     public static final long OFFSET$memoryHeapCount = LAYOUT.byteOffset(PATH$memoryHeapCount);
     public static final long OFFSET$memoryHeaps = LAYOUT.byteOffset(PATH$memoryHeaps);
+
+    public static final long SIZE$memoryTypeCount = LAYOUT$memoryTypeCount.byteSize();
+    public static final long SIZE$memoryTypes = LAYOUT$memoryTypes.byteSize();
+    public static final long SIZE$memoryHeapCount = LAYOUT$memoryHeapCount.byteSize();
+    public static final long SIZE$memoryHeaps = LAYOUT$memoryHeaps.byteSize();
 
     public VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
         this.segment = segment;
@@ -122,7 +128,7 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMemoryProperties[] ret = new VkPhysicalDeviceMemoryProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMemoryProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceMemoryProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

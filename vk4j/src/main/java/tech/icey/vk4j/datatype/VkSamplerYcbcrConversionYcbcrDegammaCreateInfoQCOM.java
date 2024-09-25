@@ -20,6 +20,7 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(MemorySegment s
         ValueLayout.JAVA_INT.withName("enableYDegamma"),
         ValueLayout.JAVA_INT.withName("enableCbCrDegamma")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(MemorySegment s
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$enableYDegamma = LAYOUT.byteOffset(PATH$enableYDegamma);
     public static final long OFFSET$enableCbCrDegamma = LAYOUT.byteOffset(PATH$enableCbCrDegamma);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$enableYDegamma = LAYOUT$enableYDegamma.byteSize();
+    public static final long SIZE$enableCbCrDegamma = LAYOUT$enableCbCrDegamma.byteSize();
 
     public VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM[] ret = new VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

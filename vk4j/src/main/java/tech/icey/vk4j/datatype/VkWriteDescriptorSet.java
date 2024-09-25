@@ -26,6 +26,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkDescriptorBufferInfo.LAYOUT).withName("pBufferInfo"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pTexelBufferView")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -59,6 +60,17 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
     public static final long OFFSET$pImageInfo = LAYOUT.byteOffset(PATH$pImageInfo);
     public static final long OFFSET$pBufferInfo = LAYOUT.byteOffset(PATH$pBufferInfo);
     public static final long OFFSET$pTexelBufferView = LAYOUT.byteOffset(PATH$pTexelBufferView);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$dstSet = LAYOUT$dstSet.byteSize();
+    public static final long SIZE$dstBinding = LAYOUT$dstBinding.byteSize();
+    public static final long SIZE$dstArrayElement = LAYOUT$dstArrayElement.byteSize();
+    public static final long SIZE$descriptorCount = LAYOUT$descriptorCount.byteSize();
+    public static final long SIZE$descriptorType = LAYOUT$descriptorType.byteSize();
+    public static final long SIZE$pImageInfo = LAYOUT$pImageInfo.byteSize();
+    public static final long SIZE$pBufferInfo = LAYOUT$pBufferInfo.byteSize();
+    public static final long SIZE$pTexelBufferView = LAYOUT$pTexelBufferView.byteSize();
 
     public VkWriteDescriptorSet(MemorySegment segment) {
         this.segment = segment;
@@ -192,7 +204,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkWriteDescriptorSet[] ret = new VkWriteDescriptorSet[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkWriteDescriptorSet(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkWriteDescriptorSet(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

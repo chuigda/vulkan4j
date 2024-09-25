@@ -20,6 +20,7 @@ public record VkPipelineBinaryInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("binaryCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pPipelineBinaries")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPipelineBinaryInfoKHR(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$binaryCount = LAYOUT.byteOffset(PATH$binaryCount);
     public static final long OFFSET$pPipelineBinaries = LAYOUT.byteOffset(PATH$pPipelineBinaries);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$binaryCount = LAYOUT$binaryCount.byteSize();
+    public static final long SIZE$pPipelineBinaries = LAYOUT$pPipelineBinaries.byteSize();
 
     public VkPipelineBinaryInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +100,7 @@ public record VkPipelineBinaryInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineBinaryInfoKHR[] ret = new VkPipelineBinaryInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineBinaryInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineBinaryInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

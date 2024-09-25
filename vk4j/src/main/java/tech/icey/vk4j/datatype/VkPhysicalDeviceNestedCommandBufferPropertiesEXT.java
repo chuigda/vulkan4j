@@ -19,6 +19,7 @@ public record VkPhysicalDeviceNestedCommandBufferPropertiesEXT(MemorySegment seg
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("maxCommandBufferNestingLevel")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceNestedCommandBufferPropertiesEXT(MemorySegment seg
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$maxCommandBufferNestingLevel = LAYOUT.byteOffset(PATH$maxCommandBufferNestingLevel);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxCommandBufferNestingLevel = LAYOUT$maxCommandBufferNestingLevel.byteSize();
 
     public VkPhysicalDeviceNestedCommandBufferPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceNestedCommandBufferPropertiesEXT(MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceNestedCommandBufferPropertiesEXT[] ret = new VkPhysicalDeviceNestedCommandBufferPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceNestedCommandBufferPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceNestedCommandBufferPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

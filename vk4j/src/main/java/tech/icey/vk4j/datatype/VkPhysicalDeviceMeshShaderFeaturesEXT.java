@@ -23,6 +23,7 @@ public record VkPhysicalDeviceMeshShaderFeaturesEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("primitiveFragmentShadingRateMeshShader"),
         ValueLayout.JAVA_INT.withName("meshShaderQueries")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkPhysicalDeviceMeshShaderFeaturesEXT(MemorySegment segment) {
     public static final long OFFSET$multiviewMeshShader = LAYOUT.byteOffset(PATH$multiviewMeshShader);
     public static final long OFFSET$primitiveFragmentShadingRateMeshShader = LAYOUT.byteOffset(PATH$primitiveFragmentShadingRateMeshShader);
     public static final long OFFSET$meshShaderQueries = LAYOUT.byteOffset(PATH$meshShaderQueries);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$taskShader = LAYOUT$taskShader.byteSize();
+    public static final long SIZE$meshShader = LAYOUT$meshShader.byteSize();
+    public static final long SIZE$multiviewMeshShader = LAYOUT$multiviewMeshShader.byteSize();
+    public static final long SIZE$primitiveFragmentShadingRateMeshShader = LAYOUT$primitiveFragmentShadingRateMeshShader.byteSize();
+    public static final long SIZE$meshShaderQueries = LAYOUT$meshShaderQueries.byteSize();
 
     public VkPhysicalDeviceMeshShaderFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -117,7 +126,7 @@ public record VkPhysicalDeviceMeshShaderFeaturesEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMeshShaderFeaturesEXT[] ret = new VkPhysicalDeviceMeshShaderFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMeshShaderFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceMeshShaderFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

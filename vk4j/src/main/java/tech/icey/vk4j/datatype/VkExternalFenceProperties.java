@@ -21,6 +21,7 @@ public record VkExternalFenceProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("compatibleHandleTypes"),
         ValueLayout.JAVA_INT.withName("externalFenceFeatures")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkExternalFenceProperties(MemorySegment segment) {
     public static final long OFFSET$exportFromImportedHandleTypes = LAYOUT.byteOffset(PATH$exportFromImportedHandleTypes);
     public static final long OFFSET$compatibleHandleTypes = LAYOUT.byteOffset(PATH$compatibleHandleTypes);
     public static final long OFFSET$externalFenceFeatures = LAYOUT.byteOffset(PATH$externalFenceFeatures);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$exportFromImportedHandleTypes = LAYOUT$exportFromImportedHandleTypes.byteSize();
+    public static final long SIZE$compatibleHandleTypes = LAYOUT$compatibleHandleTypes.byteSize();
+    public static final long SIZE$externalFenceFeatures = LAYOUT$externalFenceFeatures.byteSize();
 
     public VkExternalFenceProperties(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkExternalFenceProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExternalFenceProperties[] ret = new VkExternalFenceProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkExternalFenceProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkExternalFenceProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

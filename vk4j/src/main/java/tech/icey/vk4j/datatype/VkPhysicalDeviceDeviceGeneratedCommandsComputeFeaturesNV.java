@@ -21,6 +21,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(MemorySeg
         ValueLayout.JAVA_INT.withName("deviceGeneratedComputePipelines"),
         ValueLayout.JAVA_INT.withName("deviceGeneratedComputeCaptureReplay")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(MemorySeg
     public static final long OFFSET$deviceGeneratedCompute = LAYOUT.byteOffset(PATH$deviceGeneratedCompute);
     public static final long OFFSET$deviceGeneratedComputePipelines = LAYOUT.byteOffset(PATH$deviceGeneratedComputePipelines);
     public static final long OFFSET$deviceGeneratedComputeCaptureReplay = LAYOUT.byteOffset(PATH$deviceGeneratedComputeCaptureReplay);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$deviceGeneratedCompute = LAYOUT$deviceGeneratedCompute.byteSize();
+    public static final long SIZE$deviceGeneratedComputePipelines = LAYOUT$deviceGeneratedComputePipelines.byteSize();
+    public static final long SIZE$deviceGeneratedComputeCaptureReplay = LAYOUT$deviceGeneratedComputeCaptureReplay.byteSize();
 
     public VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(MemorySeg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV[] ret = new VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

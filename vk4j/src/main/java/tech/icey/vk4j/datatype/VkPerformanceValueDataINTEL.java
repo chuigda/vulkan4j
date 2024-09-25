@@ -21,6 +21,7 @@ public record VkPerformanceValueDataINTEL(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("valueBool"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("valueString")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$value32 = PathElement.groupElement("value32");
     public static final PathElement PATH$value64 = PathElement.groupElement("value64");
@@ -39,6 +40,12 @@ public record VkPerformanceValueDataINTEL(MemorySegment segment) {
     public static final long OFFSET$valueFloat = LAYOUT.byteOffset(PATH$valueFloat);
     public static final long OFFSET$valueBool = LAYOUT.byteOffset(PATH$valueBool);
     public static final long OFFSET$valueString = LAYOUT.byteOffset(PATH$valueString);
+
+    public static final long SIZE$value32 = LAYOUT$value32.byteSize();
+    public static final long SIZE$value64 = LAYOUT$value64.byteSize();
+    public static final long SIZE$valueFloat = LAYOUT$valueFloat.byteSize();
+    public static final long SIZE$valueBool = LAYOUT$valueBool.byteSize();
+    public static final long SIZE$valueString = LAYOUT$valueString.byteSize();
 
     public VkPerformanceValueDataINTEL(MemorySegment segment) {
         this.segment = segment;
@@ -100,7 +107,7 @@ public record VkPerformanceValueDataINTEL(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPerformanceValueDataINTEL[] ret = new VkPerformanceValueDataINTEL[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPerformanceValueDataINTEL(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPerformanceValueDataINTEL(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

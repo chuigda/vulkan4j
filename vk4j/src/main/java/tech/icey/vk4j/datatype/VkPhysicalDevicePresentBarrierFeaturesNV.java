@@ -19,6 +19,7 @@ public record VkPhysicalDevicePresentBarrierFeaturesNV(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("presentBarrier")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDevicePresentBarrierFeaturesNV(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$presentBarrier = LAYOUT.byteOffset(PATH$presentBarrier);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$presentBarrier = LAYOUT$presentBarrier.byteSize();
 
     public VkPhysicalDevicePresentBarrierFeaturesNV(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDevicePresentBarrierFeaturesNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevicePresentBarrierFeaturesNV[] ret = new VkPhysicalDevicePresentBarrierFeaturesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDevicePresentBarrierFeaturesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDevicePresentBarrierFeaturesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

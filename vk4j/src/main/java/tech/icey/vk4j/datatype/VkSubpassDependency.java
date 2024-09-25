@@ -1,19 +1,17 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkAccessFlags;
-import tech.icey.vk4j.bitmask.VkDependencyFlags;
-import tech.icey.vk4j.bitmask.VkPipelineStageFlags;
-
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSubpassDependency(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -25,6 +23,7 @@ public record VkSubpassDependency(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("dstAccessMask"),
         ValueLayout.JAVA_INT.withName("dependencyFlags")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$srcSubpass = PathElement.groupElement("srcSubpass");
     public static final PathElement PATH$dstSubpass = PathElement.groupElement("dstSubpass");
@@ -49,6 +48,14 @@ public record VkSubpassDependency(MemorySegment segment) {
     public static final long OFFSET$srcAccessMask = LAYOUT.byteOffset(PATH$srcAccessMask);
     public static final long OFFSET$dstAccessMask = LAYOUT.byteOffset(PATH$dstAccessMask);
     public static final long OFFSET$dependencyFlags = LAYOUT.byteOffset(PATH$dependencyFlags);
+
+    public static final long SIZE$srcSubpass = LAYOUT$srcSubpass.byteSize();
+    public static final long SIZE$dstSubpass = LAYOUT$dstSubpass.byteSize();
+    public static final long SIZE$srcStageMask = LAYOUT$srcStageMask.byteSize();
+    public static final long SIZE$dstStageMask = LAYOUT$dstStageMask.byteSize();
+    public static final long SIZE$srcAccessMask = LAYOUT$srcAccessMask.byteSize();
+    public static final long SIZE$dstAccessMask = LAYOUT$dstAccessMask.byteSize();
+    public static final long SIZE$dependencyFlags = LAYOUT$dependencyFlags.byteSize();
 
     public VkSubpassDependency(MemorySegment segment) {
         this.segment = segment;
@@ -113,12 +120,12 @@ public record VkSubpassDependency(MemorySegment segment) {
     public static VkSubpassDependency allocate(Arena arena) {
         return new VkSubpassDependency(arena.allocate(LAYOUT));
     }
-
+    
     public static VkSubpassDependency[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubpassDependency[] ret = new VkSubpassDependency[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSubpassDependency(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSubpassDependency(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

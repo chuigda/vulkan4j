@@ -19,6 +19,7 @@ public record VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(MemorySegment segment)
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("ycbcrImageArrays")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(MemorySegment segment)
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$ycbcrImageArrays = LAYOUT.byteOffset(PATH$ycbcrImageArrays);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$ycbcrImageArrays = LAYOUT$ycbcrImageArrays.byteSize();
 
     public VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceYcbcrImageArraysFeaturesEXT[] ret = new VkPhysicalDeviceYcbcrImageArraysFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -22,6 +22,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
         ValueLayout.JAVA_INT.withName("discardRectangleCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pDiscardRectangles")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
     public static final long OFFSET$discardRectangleMode = LAYOUT.byteOffset(PATH$discardRectangleMode);
     public static final long OFFSET$discardRectangleCount = LAYOUT.byteOffset(PATH$discardRectangleCount);
     public static final long OFFSET$pDiscardRectangles = LAYOUT.byteOffset(PATH$pDiscardRectangles);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$discardRectangleMode = LAYOUT$discardRectangleMode.byteSize();
+    public static final long SIZE$discardRectangleCount = LAYOUT$discardRectangleCount.byteSize();
+    public static final long SIZE$pDiscardRectangles = LAYOUT$pDiscardRectangles.byteSize();
 
     public VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -118,7 +126,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineDiscardRectangleStateCreateInfoEXT[] ret = new VkPipelineDiscardRectangleStateCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineDiscardRectangleStateCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineDiscardRectangleStateCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

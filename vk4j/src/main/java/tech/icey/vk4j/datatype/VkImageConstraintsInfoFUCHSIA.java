@@ -22,6 +22,7 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) {
         VkBufferCollectionConstraintsInfoFUCHSIA.LAYOUT.withName("bufferCollectionConstraints"),
         ValueLayout.JAVA_INT.withName("flags")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) {
     public static final long OFFSET$pFormatConstraints = LAYOUT.byteOffset(PATH$pFormatConstraints);
     public static final long OFFSET$bufferCollectionConstraints = LAYOUT.byteOffset(PATH$bufferCollectionConstraints);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$formatConstraintsCount = LAYOUT$formatConstraintsCount.byteSize();
+    public static final long SIZE$pFormatConstraints = LAYOUT$pFormatConstraints.byteSize();
+    public static final long SIZE$bufferCollectionConstraints = LAYOUT$bufferCollectionConstraints.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
 
     public VkImageConstraintsInfoFUCHSIA(MemorySegment segment) {
         this.segment = segment;
@@ -99,7 +107,7 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) {
     }
 
     public void bufferCollectionConstraints(VkBufferCollectionConstraintsInfoFUCHSIA value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$bufferCollectionConstraints, LAYOUT$bufferCollectionConstraints.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$bufferCollectionConstraints, SIZE$bufferCollectionConstraints);
     }
 
     public @enumtype(VkImageConstraintsInfoFlagsFUCHSIA.class) int flags() {
@@ -118,7 +126,7 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageConstraintsInfoFUCHSIA[] ret = new VkImageConstraintsInfoFUCHSIA[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageConstraintsInfoFUCHSIA(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageConstraintsInfoFUCHSIA(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

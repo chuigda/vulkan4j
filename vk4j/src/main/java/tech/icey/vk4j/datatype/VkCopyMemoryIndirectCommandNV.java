@@ -19,6 +19,7 @@ public record VkCopyMemoryIndirectCommandNV(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("dstAddress"),
         ValueLayout.JAVA_LONG.withName("size")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$srcAddress = PathElement.groupElement("srcAddress");
     public static final PathElement PATH$dstAddress = PathElement.groupElement("dstAddress");
@@ -31,6 +32,10 @@ public record VkCopyMemoryIndirectCommandNV(MemorySegment segment) {
     public static final long OFFSET$srcAddress = LAYOUT.byteOffset(PATH$srcAddress);
     public static final long OFFSET$dstAddress = LAYOUT.byteOffset(PATH$dstAddress);
     public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+
+    public static final long SIZE$srcAddress = LAYOUT$srcAddress.byteSize();
+    public static final long SIZE$dstAddress = LAYOUT$dstAddress.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
 
     public VkCopyMemoryIndirectCommandNV(MemorySegment segment) {
         this.segment = segment;
@@ -68,7 +73,7 @@ public record VkCopyMemoryIndirectCommandNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCopyMemoryIndirectCommandNV[] ret = new VkCopyMemoryIndirectCommandNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkCopyMemoryIndirectCommandNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkCopyMemoryIndirectCommandNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

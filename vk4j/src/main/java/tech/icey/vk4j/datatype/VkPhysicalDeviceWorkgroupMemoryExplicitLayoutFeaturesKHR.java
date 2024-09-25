@@ -22,6 +22,7 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(MemorySeg
         ValueLayout.JAVA_INT.withName("workgroupMemoryExplicitLayout8BitAccess"),
         ValueLayout.JAVA_INT.withName("workgroupMemoryExplicitLayout16BitAccess")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(MemorySeg
     public static final long OFFSET$workgroupMemoryExplicitLayoutScalarBlockLayout = LAYOUT.byteOffset(PATH$workgroupMemoryExplicitLayoutScalarBlockLayout);
     public static final long OFFSET$workgroupMemoryExplicitLayout8BitAccess = LAYOUT.byteOffset(PATH$workgroupMemoryExplicitLayout8BitAccess);
     public static final long OFFSET$workgroupMemoryExplicitLayout16BitAccess = LAYOUT.byteOffset(PATH$workgroupMemoryExplicitLayout16BitAccess);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$workgroupMemoryExplicitLayout = LAYOUT$workgroupMemoryExplicitLayout.byteSize();
+    public static final long SIZE$workgroupMemoryExplicitLayoutScalarBlockLayout = LAYOUT$workgroupMemoryExplicitLayoutScalarBlockLayout.byteSize();
+    public static final long SIZE$workgroupMemoryExplicitLayout8BitAccess = LAYOUT$workgroupMemoryExplicitLayout8BitAccess.byteSize();
+    public static final long SIZE$workgroupMemoryExplicitLayout16BitAccess = LAYOUT$workgroupMemoryExplicitLayout16BitAccess.byteSize();
 
     public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(MemorySeg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR[] ret = new VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

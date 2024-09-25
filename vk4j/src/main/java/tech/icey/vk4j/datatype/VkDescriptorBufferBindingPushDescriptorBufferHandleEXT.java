@@ -19,6 +19,7 @@ public record VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(MemorySegme
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("buffer")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(MemorySegme
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$buffer = LAYOUT.byteOffset(PATH$buffer);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
 
     public VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(MemorySegme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorBufferBindingPushDescriptorBufferHandleEXT[] ret = new VkDescriptorBufferBindingPushDescriptorBufferHandleEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

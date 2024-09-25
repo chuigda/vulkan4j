@@ -1,14 +1,17 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfFloat;
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkViewport(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -19,6 +22,7 @@ public record VkViewport(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("minDepth"),
         ValueLayout.JAVA_FLOAT.withName("maxDepth")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$x = PathElement.groupElement("x");
     public static final PathElement PATH$y = PathElement.groupElement("y");
@@ -40,6 +44,13 @@ public record VkViewport(MemorySegment segment) {
     public static final long OFFSET$height = LAYOUT.byteOffset(PATH$height);
     public static final long OFFSET$minDepth = LAYOUT.byteOffset(PATH$minDepth);
     public static final long OFFSET$maxDepth = LAYOUT.byteOffset(PATH$maxDepth);
+
+    public static final long SIZE$x = LAYOUT$x.byteSize();
+    public static final long SIZE$y = LAYOUT$y.byteSize();
+    public static final long SIZE$width = LAYOUT$width.byteSize();
+    public static final long SIZE$height = LAYOUT$height.byteSize();
+    public static final long SIZE$minDepth = LAYOUT$minDepth.byteSize();
+    public static final long SIZE$maxDepth = LAYOUT$maxDepth.byteSize();
 
     public VkViewport(MemorySegment segment) {
         this.segment = segment;
@@ -96,12 +107,12 @@ public record VkViewport(MemorySegment segment) {
     public static VkViewport allocate(Arena arena) {
         return new VkViewport(arena.allocate(LAYOUT));
     }
-
+    
     public static VkViewport[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkViewport[] ret = new VkViewport[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkViewport(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkViewport(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

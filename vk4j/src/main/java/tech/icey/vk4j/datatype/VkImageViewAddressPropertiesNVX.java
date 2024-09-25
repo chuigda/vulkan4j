@@ -20,6 +20,7 @@ public record VkImageViewAddressPropertiesNVX(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("deviceAddress"),
         ValueLayout.JAVA_LONG.withName("size")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkImageViewAddressPropertiesNVX(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$deviceAddress = LAYOUT.byteOffset(PATH$deviceAddress);
     public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
 
     public VkImageViewAddressPropertiesNVX(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkImageViewAddressPropertiesNVX(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageViewAddressPropertiesNVX[] ret = new VkImageViewAddressPropertiesNVX[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageViewAddressPropertiesNVX(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageViewAddressPropertiesNVX(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

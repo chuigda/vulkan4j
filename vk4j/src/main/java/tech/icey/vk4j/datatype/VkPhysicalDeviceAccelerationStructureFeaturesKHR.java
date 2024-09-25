@@ -23,6 +23,7 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(MemorySegment seg
         ValueLayout.JAVA_INT.withName("accelerationStructureHostCommands"),
         ValueLayout.JAVA_INT.withName("descriptorBindingAccelerationStructureUpdateAfterBind")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(MemorySegment seg
     public static final long OFFSET$accelerationStructureIndirectBuild = LAYOUT.byteOffset(PATH$accelerationStructureIndirectBuild);
     public static final long OFFSET$accelerationStructureHostCommands = LAYOUT.byteOffset(PATH$accelerationStructureHostCommands);
     public static final long OFFSET$descriptorBindingAccelerationStructureUpdateAfterBind = LAYOUT.byteOffset(PATH$descriptorBindingAccelerationStructureUpdateAfterBind);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$accelerationStructure = LAYOUT$accelerationStructure.byteSize();
+    public static final long SIZE$accelerationStructureCaptureReplay = LAYOUT$accelerationStructureCaptureReplay.byteSize();
+    public static final long SIZE$accelerationStructureIndirectBuild = LAYOUT$accelerationStructureIndirectBuild.byteSize();
+    public static final long SIZE$accelerationStructureHostCommands = LAYOUT$accelerationStructureHostCommands.byteSize();
+    public static final long SIZE$descriptorBindingAccelerationStructureUpdateAfterBind = LAYOUT$descriptorBindingAccelerationStructureUpdateAfterBind.byteSize();
 
     public VkPhysicalDeviceAccelerationStructureFeaturesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -117,7 +126,7 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceAccelerationStructureFeaturesKHR[] ret = new VkPhysicalDeviceAccelerationStructureFeaturesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceAccelerationStructureFeaturesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceAccelerationStructureFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

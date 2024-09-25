@@ -19,6 +19,7 @@ public record VkExternalFormatANDROID(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("externalFormat")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkExternalFormatANDROID(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$externalFormat = LAYOUT.byteOffset(PATH$externalFormat);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$externalFormat = LAYOUT$externalFormat.byteSize();
 
     public VkExternalFormatANDROID(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkExternalFormatANDROID(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExternalFormatANDROID[] ret = new VkExternalFormatANDROID[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkExternalFormatANDROID(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkExternalFormatANDROID(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

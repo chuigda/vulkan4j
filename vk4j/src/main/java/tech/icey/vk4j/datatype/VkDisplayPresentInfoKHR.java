@@ -21,6 +21,7 @@ public record VkDisplayPresentInfoKHR(MemorySegment segment) {
         VkRect2D.LAYOUT.withName("dstRect"),
         ValueLayout.JAVA_INT.withName("persistent")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkDisplayPresentInfoKHR(MemorySegment segment) {
     public static final long OFFSET$srcRect = LAYOUT.byteOffset(PATH$srcRect);
     public static final long OFFSET$dstRect = LAYOUT.byteOffset(PATH$dstRect);
     public static final long OFFSET$persistent = LAYOUT.byteOffset(PATH$persistent);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$srcRect = LAYOUT$srcRect.byteSize();
+    public static final long SIZE$dstRect = LAYOUT$dstRect.byteSize();
+    public static final long SIZE$persistent = LAYOUT$persistent.byteSize();
 
     public VkDisplayPresentInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -66,7 +73,7 @@ public record VkDisplayPresentInfoKHR(MemorySegment segment) {
     }
 
     public void srcRect(VkRect2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcRect, LAYOUT$srcRect.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcRect, SIZE$srcRect);
     }
 
     public VkRect2D dstRect() {
@@ -74,7 +81,7 @@ public record VkDisplayPresentInfoKHR(MemorySegment segment) {
     }
 
     public void dstRect(VkRect2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstRect, LAYOUT$dstRect.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstRect, SIZE$dstRect);
     }
 
     public @unsigned int persistent() {
@@ -93,7 +100,7 @@ public record VkDisplayPresentInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayPresentInfoKHR[] ret = new VkDisplayPresentInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDisplayPresentInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDisplayPresentInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

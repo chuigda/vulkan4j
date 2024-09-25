@@ -20,6 +20,7 @@ public record VkPipelineRasterizationDepthClipStateCreateInfoEXT(MemorySegment s
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.JAVA_INT.withName("depthClipEnable")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPipelineRasterizationDepthClipStateCreateInfoEXT(MemorySegment s
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$depthClipEnable = LAYOUT.byteOffset(PATH$depthClipEnable);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$depthClipEnable = LAYOUT$depthClipEnable.byteSize();
 
     public VkPipelineRasterizationDepthClipStateCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPipelineRasterizationDepthClipStateCreateInfoEXT(MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineRasterizationDepthClipStateCreateInfoEXT[] ret = new VkPipelineRasterizationDepthClipStateCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineRasterizationDepthClipStateCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineRasterizationDepthClipStateCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

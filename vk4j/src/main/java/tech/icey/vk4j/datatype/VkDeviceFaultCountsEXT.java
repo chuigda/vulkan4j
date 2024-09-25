@@ -21,6 +21,7 @@ public record VkDeviceFaultCountsEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("vendorInfoCount"),
         ValueLayout.JAVA_LONG.withName("vendorBinarySize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkDeviceFaultCountsEXT(MemorySegment segment) {
     public static final long OFFSET$addressInfoCount = LAYOUT.byteOffset(PATH$addressInfoCount);
     public static final long OFFSET$vendorInfoCount = LAYOUT.byteOffset(PATH$vendorInfoCount);
     public static final long OFFSET$vendorBinarySize = LAYOUT.byteOffset(PATH$vendorBinarySize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$addressInfoCount = LAYOUT$addressInfoCount.byteSize();
+    public static final long SIZE$vendorInfoCount = LAYOUT$vendorInfoCount.byteSize();
+    public static final long SIZE$vendorBinarySize = LAYOUT$vendorBinarySize.byteSize();
 
     public VkDeviceFaultCountsEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkDeviceFaultCountsEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceFaultCountsEXT[] ret = new VkDeviceFaultCountsEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceFaultCountsEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDeviceFaultCountsEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

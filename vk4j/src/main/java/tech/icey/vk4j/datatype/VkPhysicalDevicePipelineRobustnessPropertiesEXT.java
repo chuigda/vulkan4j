@@ -22,6 +22,7 @@ public record VkPhysicalDevicePipelineRobustnessPropertiesEXT(MemorySegment segm
         ValueLayout.JAVA_INT.withName("defaultRobustnessVertexInputs"),
         ValueLayout.JAVA_INT.withName("defaultRobustnessImages")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPhysicalDevicePipelineRobustnessPropertiesEXT(MemorySegment segm
     public static final long OFFSET$defaultRobustnessUniformBuffers = LAYOUT.byteOffset(PATH$defaultRobustnessUniformBuffers);
     public static final long OFFSET$defaultRobustnessVertexInputs = LAYOUT.byteOffset(PATH$defaultRobustnessVertexInputs);
     public static final long OFFSET$defaultRobustnessImages = LAYOUT.byteOffset(PATH$defaultRobustnessImages);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$defaultRobustnessStorageBuffers = LAYOUT$defaultRobustnessStorageBuffers.byteSize();
+    public static final long SIZE$defaultRobustnessUniformBuffers = LAYOUT$defaultRobustnessUniformBuffers.byteSize();
+    public static final long SIZE$defaultRobustnessVertexInputs = LAYOUT$defaultRobustnessVertexInputs.byteSize();
+    public static final long SIZE$defaultRobustnessImages = LAYOUT$defaultRobustnessImages.byteSize();
 
     public VkPhysicalDevicePipelineRobustnessPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkPhysicalDevicePipelineRobustnessPropertiesEXT(MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevicePipelineRobustnessPropertiesEXT[] ret = new VkPhysicalDevicePipelineRobustnessPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDevicePipelineRobustnessPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDevicePipelineRobustnessPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

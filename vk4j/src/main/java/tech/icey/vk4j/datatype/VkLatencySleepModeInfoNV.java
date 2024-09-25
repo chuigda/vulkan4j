@@ -21,6 +21,7 @@ public record VkLatencySleepModeInfoNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("lowLatencyBoost"),
         ValueLayout.JAVA_INT.withName("minimumIntervalUs")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkLatencySleepModeInfoNV(MemorySegment segment) {
     public static final long OFFSET$lowLatencyMode = LAYOUT.byteOffset(PATH$lowLatencyMode);
     public static final long OFFSET$lowLatencyBoost = LAYOUT.byteOffset(PATH$lowLatencyBoost);
     public static final long OFFSET$minimumIntervalUs = LAYOUT.byteOffset(PATH$minimumIntervalUs);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$lowLatencyMode = LAYOUT$lowLatencyMode.byteSize();
+    public static final long SIZE$lowLatencyBoost = LAYOUT$lowLatencyBoost.byteSize();
+    public static final long SIZE$minimumIntervalUs = LAYOUT$minimumIntervalUs.byteSize();
 
     public VkLatencySleepModeInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkLatencySleepModeInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkLatencySleepModeInfoNV[] ret = new VkLatencySleepModeInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkLatencySleepModeInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkLatencySleepModeInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -22,6 +22,7 @@ public record VkSparseImageMemoryBind(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("memoryOffset"),
         ValueLayout.JAVA_INT.withName("flags")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$subresource = PathElement.groupElement("subresource");
     public static final PathElement PATH$offset = PathElement.groupElement("offset");
@@ -44,6 +45,13 @@ public record VkSparseImageMemoryBind(MemorySegment segment) {
     public static final long OFFSET$memoryOffset = LAYOUT.byteOffset(PATH$memoryOffset);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
 
+    public static final long SIZE$subresource = LAYOUT$subresource.byteSize();
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$extent = LAYOUT$extent.byteSize();
+    public static final long SIZE$memory = LAYOUT$memory.byteSize();
+    public static final long SIZE$memoryOffset = LAYOUT$memoryOffset.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+
     public VkSparseImageMemoryBind(MemorySegment segment) {
         this.segment = segment;
     }
@@ -53,7 +61,7 @@ public record VkSparseImageMemoryBind(MemorySegment segment) {
     }
 
     public void subresource(VkImageSubresource value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresource, LAYOUT$subresource.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresource, SIZE$subresource);
     }
 
     public VkOffset3D offset() {
@@ -61,7 +69,7 @@ public record VkSparseImageMemoryBind(MemorySegment segment) {
     }
 
     public void offset(VkOffset3D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$offset, LAYOUT$offset.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$offset, SIZE$offset);
     }
 
     public VkExtent3D extent() {
@@ -69,7 +77,7 @@ public record VkSparseImageMemoryBind(MemorySegment segment) {
     }
 
     public void extent(VkExtent3D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, LAYOUT$extent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
     }
 
     public VkDeviceMemory memory() {
@@ -104,7 +112,7 @@ public record VkSparseImageMemoryBind(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSparseImageMemoryBind[] ret = new VkSparseImageMemoryBind[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSparseImageMemoryBind(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSparseImageMemoryBind(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -26,6 +26,7 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment s
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT)).withName("ppUsageCounts"),
         ValueLayout.ADDRESS.withName("micromap")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -59,6 +60,17 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment s
     public static final long OFFSET$pUsageCounts = LAYOUT.byteOffset(PATH$pUsageCounts);
     public static final long OFFSET$ppUsageCounts = LAYOUT.byteOffset(PATH$ppUsageCounts);
     public static final long OFFSET$micromap = LAYOUT.byteOffset(PATH$micromap);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$indexType = LAYOUT$indexType.byteSize();
+    public static final long SIZE$indexBuffer = LAYOUT$indexBuffer.byteSize();
+    public static final long SIZE$indexStride = LAYOUT$indexStride.byteSize();
+    public static final long SIZE$baseTriangle = LAYOUT$baseTriangle.byteSize();
+    public static final long SIZE$usageCountsCount = LAYOUT$usageCountsCount.byteSize();
+    public static final long SIZE$pUsageCounts = LAYOUT$pUsageCounts.byteSize();
+    public static final long SIZE$ppUsageCounts = LAYOUT$ppUsageCounts.byteSize();
+    public static final long SIZE$micromap = LAYOUT$micromap.byteSize();
 
     public VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +106,7 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment s
     }
 
     public void indexBuffer(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexBuffer, LAYOUT$indexBuffer.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexBuffer, SIZE$indexBuffer);
     }
 
     public @unsigned long indexStride() {
@@ -166,7 +178,7 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureTrianglesOpacityMicromapEXT[] ret = new VkAccelerationStructureTrianglesOpacityMicromapEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureTrianglesOpacityMicromapEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureTrianglesOpacityMicromapEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

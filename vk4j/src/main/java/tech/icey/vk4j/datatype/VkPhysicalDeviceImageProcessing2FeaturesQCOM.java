@@ -19,6 +19,7 @@ public record VkPhysicalDeviceImageProcessing2FeaturesQCOM(MemorySegment segment
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("textureBlockMatch2")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceImageProcessing2FeaturesQCOM(MemorySegment segment
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$textureBlockMatch2 = LAYOUT.byteOffset(PATH$textureBlockMatch2);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$textureBlockMatch2 = LAYOUT$textureBlockMatch2.byteSize();
 
     public VkPhysicalDeviceImageProcessing2FeaturesQCOM(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceImageProcessing2FeaturesQCOM(MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceImageProcessing2FeaturesQCOM[] ret = new VkPhysicalDeviceImageProcessing2FeaturesQCOM[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceImageProcessing2FeaturesQCOM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceImageProcessing2FeaturesQCOM(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

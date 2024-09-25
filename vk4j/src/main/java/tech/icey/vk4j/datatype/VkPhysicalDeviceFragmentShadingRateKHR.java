@@ -20,6 +20,7 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("sampleCounts"),
         VkExtent2D.LAYOUT.withName("fragmentSize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$sampleCounts = LAYOUT.byteOffset(PATH$sampleCounts);
     public static final long OFFSET$fragmentSize = LAYOUT.byteOffset(PATH$fragmentSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$sampleCounts = LAYOUT$sampleCounts.byteSize();
+    public static final long SIZE$fragmentSize = LAYOUT$fragmentSize.byteSize();
 
     public VkPhysicalDeviceFragmentShadingRateKHR(MemorySegment segment) {
         this.segment = segment;
@@ -70,7 +76,7 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(MemorySegment segment) {
     }
 
     public void fragmentSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentSize, LAYOUT$fragmentSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentSize, SIZE$fragmentSize);
     }
 
     public static VkPhysicalDeviceFragmentShadingRateKHR allocate(Arena arena) {
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceFragmentShadingRateKHR[] ret = new VkPhysicalDeviceFragmentShadingRateKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceFragmentShadingRateKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceFragmentShadingRateKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

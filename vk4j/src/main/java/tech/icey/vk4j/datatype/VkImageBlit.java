@@ -1,10 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.PathElement;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkImageBlit(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -13,6 +20,7 @@ public record VkImageBlit(MemorySegment segment) {
         VkImageSubresourceLayers.LAYOUT.withName("dstSubresource"),
         MemoryLayout.sequenceLayout(2, VkOffset3D.LAYOUT).withName("dstOffsets")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$srcSubresource = PathElement.groupElement("srcSubresource");
     public static final PathElement PATH$srcOffsets = PathElement.groupElement("srcOffsets");
@@ -29,6 +37,11 @@ public record VkImageBlit(MemorySegment segment) {
     public static final long OFFSET$dstSubresource = LAYOUT.byteOffset(PATH$dstSubresource);
     public static final long OFFSET$dstOffsets = LAYOUT.byteOffset(PATH$dstOffsets);
 
+    public static final long SIZE$srcSubresource = LAYOUT$srcSubresource.byteSize();
+    public static final long SIZE$srcOffsets = LAYOUT$srcOffsets.byteSize();
+    public static final long SIZE$dstSubresource = LAYOUT$dstSubresource.byteSize();
+    public static final long SIZE$dstOffsets = LAYOUT$dstOffsets.byteSize();
+
     public VkImageBlit(MemorySegment segment) {
         this.segment = segment;
     }
@@ -38,7 +51,7 @@ public record VkImageBlit(MemorySegment segment) {
     }
 
     public void srcSubresource(VkImageSubresourceLayers value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcSubresource, LAYOUT$srcSubresource.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcSubresource, SIZE$srcSubresource);
     }
 
     public MemorySegment srcOffsetsRaw() {
@@ -75,7 +88,7 @@ public record VkImageBlit(MemorySegment segment) {
     }
 
     public void dstSubresource(VkImageSubresourceLayers value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstSubresource, LAYOUT$dstSubresource.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstSubresource, SIZE$dstSubresource);
     }
 
     public MemorySegment dstOffsetsRaw() {
@@ -110,12 +123,12 @@ public record VkImageBlit(MemorySegment segment) {
     public static VkImageBlit allocate(Arena arena) {
         return new VkImageBlit(arena.allocate(LAYOUT));
     }
-
+    
     public static VkImageBlit[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageBlit[] ret = new VkImageBlit[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageBlit(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageBlit(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

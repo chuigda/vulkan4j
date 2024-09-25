@@ -22,6 +22,7 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(MemorySegment segment)
         ValueLayout.JAVA_INT.withName("floatRepresentation"),
         ValueLayout.JAVA_INT.withName("depthBiasExact")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(MemorySegment segment)
     public static final long OFFSET$leastRepresentableValueForceUnormRepresentation = LAYOUT.byteOffset(PATH$leastRepresentableValueForceUnormRepresentation);
     public static final long OFFSET$floatRepresentation = LAYOUT.byteOffset(PATH$floatRepresentation);
     public static final long OFFSET$depthBiasExact = LAYOUT.byteOffset(PATH$depthBiasExact);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$depthBiasControl = LAYOUT$depthBiasControl.byteSize();
+    public static final long SIZE$leastRepresentableValueForceUnormRepresentation = LAYOUT$leastRepresentableValueForceUnormRepresentation.byteSize();
+    public static final long SIZE$floatRepresentation = LAYOUT$floatRepresentation.byteSize();
+    public static final long SIZE$depthBiasExact = LAYOUT$depthBiasExact.byteSize();
 
     public VkPhysicalDeviceDepthBiasControlFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceDepthBiasControlFeaturesEXT[] ret = new VkPhysicalDeviceDepthBiasControlFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceDepthBiasControlFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceDepthBiasControlFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

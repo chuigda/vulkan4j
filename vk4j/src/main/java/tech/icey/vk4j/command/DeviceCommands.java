@@ -1,24 +1,16 @@
 package tech.icey.vk4j.command;
 
+import java.lang.foreign.*;
+import java.lang.invoke.MethodHandle;
+
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
+import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.FloatBuffer;
-import tech.icey.vk4j.buffer.IntBuffer;
-import tech.icey.vk4j.buffer.LongBuffer;
-import tech.icey.vk4j.buffer.PointerBuffer;
-import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.util.Function2;
-
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-import java.lang.invoke.MethodHandle;
 
 public final class DeviceCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkDestroyDevice = FunctionDescriptor.ofVoid(

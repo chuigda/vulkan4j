@@ -19,6 +19,7 @@ public record VkPhysicalDeviceImageAlignmentControlFeaturesMESA(MemorySegment se
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("imageAlignmentControl")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceImageAlignmentControlFeaturesMESA(MemorySegment se
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$imageAlignmentControl = LAYOUT.byteOffset(PATH$imageAlignmentControl);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$imageAlignmentControl = LAYOUT$imageAlignmentControl.byteSize();
 
     public VkPhysicalDeviceImageAlignmentControlFeaturesMESA(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceImageAlignmentControlFeaturesMESA(MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceImageAlignmentControlFeaturesMESA[] ret = new VkPhysicalDeviceImageAlignmentControlFeaturesMESA[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceImageAlignmentControlFeaturesMESA(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceImageAlignmentControlFeaturesMESA(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

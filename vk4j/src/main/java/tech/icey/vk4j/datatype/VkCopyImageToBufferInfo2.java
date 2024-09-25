@@ -23,6 +23,7 @@ public record VkCopyImageToBufferInfo2(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("regionCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkBufferImageCopy2.LAYOUT).withName("pRegions")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkCopyImageToBufferInfo2(MemorySegment segment) {
     public static final long OFFSET$dstBuffer = LAYOUT.byteOffset(PATH$dstBuffer);
     public static final long OFFSET$regionCount = LAYOUT.byteOffset(PATH$regionCount);
     public static final long OFFSET$pRegions = LAYOUT.byteOffset(PATH$pRegions);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$srcImage = LAYOUT$srcImage.byteSize();
+    public static final long SIZE$srcImageLayout = LAYOUT$srcImageLayout.byteSize();
+    public static final long SIZE$dstBuffer = LAYOUT$dstBuffer.byteSize();
+    public static final long SIZE$regionCount = LAYOUT$regionCount.byteSize();
+    public static final long SIZE$pRegions = LAYOUT$pRegions.byteSize();
 
     public VkCopyImageToBufferInfo2(MemorySegment segment) {
         this.segment = segment;
@@ -130,7 +139,7 @@ public record VkCopyImageToBufferInfo2(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCopyImageToBufferInfo2[] ret = new VkCopyImageToBufferInfo2[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkCopyImageToBufferInfo2(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkCopyImageToBufferInfo2(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

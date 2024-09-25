@@ -19,6 +19,7 @@ public record VkCalibratedTimestampInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("timeDomain")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkCalibratedTimestampInfoKHR(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$timeDomain = LAYOUT.byteOffset(PATH$timeDomain);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$timeDomain = LAYOUT$timeDomain.byteSize();
 
     public VkCalibratedTimestampInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkCalibratedTimestampInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCalibratedTimestampInfoKHR[] ret = new VkCalibratedTimestampInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkCalibratedTimestampInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkCalibratedTimestampInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

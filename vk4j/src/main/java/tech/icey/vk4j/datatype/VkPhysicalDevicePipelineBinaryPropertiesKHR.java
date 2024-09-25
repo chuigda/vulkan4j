@@ -23,6 +23,7 @@ public record VkPhysicalDevicePipelineBinaryPropertiesKHR(MemorySegment segment)
         ValueLayout.JAVA_INT.withName("pipelineBinaryPrecompiledInternalCache"),
         ValueLayout.JAVA_INT.withName("pipelineBinaryCompressedData")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkPhysicalDevicePipelineBinaryPropertiesKHR(MemorySegment segment)
     public static final long OFFSET$pipelineBinaryPrefersInternalCache = LAYOUT.byteOffset(PATH$pipelineBinaryPrefersInternalCache);
     public static final long OFFSET$pipelineBinaryPrecompiledInternalCache = LAYOUT.byteOffset(PATH$pipelineBinaryPrecompiledInternalCache);
     public static final long OFFSET$pipelineBinaryCompressedData = LAYOUT.byteOffset(PATH$pipelineBinaryCompressedData);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pipelineBinaryInternalCache = LAYOUT$pipelineBinaryInternalCache.byteSize();
+    public static final long SIZE$pipelineBinaryInternalCacheControl = LAYOUT$pipelineBinaryInternalCacheControl.byteSize();
+    public static final long SIZE$pipelineBinaryPrefersInternalCache = LAYOUT$pipelineBinaryPrefersInternalCache.byteSize();
+    public static final long SIZE$pipelineBinaryPrecompiledInternalCache = LAYOUT$pipelineBinaryPrecompiledInternalCache.byteSize();
+    public static final long SIZE$pipelineBinaryCompressedData = LAYOUT$pipelineBinaryCompressedData.byteSize();
 
     public VkPhysicalDevicePipelineBinaryPropertiesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -117,7 +126,7 @@ public record VkPhysicalDevicePipelineBinaryPropertiesKHR(MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevicePipelineBinaryPropertiesKHR[] ret = new VkPhysicalDevicePipelineBinaryPropertiesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDevicePipelineBinaryPropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDevicePipelineBinaryPropertiesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

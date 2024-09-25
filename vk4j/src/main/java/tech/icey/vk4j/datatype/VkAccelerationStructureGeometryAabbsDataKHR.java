@@ -20,6 +20,7 @@ public record VkAccelerationStructureGeometryAabbsDataKHR(MemorySegment segment)
         VkDeviceOrHostAddressConstKHR.LAYOUT.withName("data"),
         ValueLayout.JAVA_LONG.withName("stride")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkAccelerationStructureGeometryAabbsDataKHR(MemorySegment segment)
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$data = LAYOUT.byteOffset(PATH$data);
     public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$data = LAYOUT$data.byteSize();
+    public static final long SIZE$stride = LAYOUT$stride.byteSize();
 
     public VkAccelerationStructureGeometryAabbsDataKHR(MemorySegment segment) {
         this.segment = segment;
@@ -62,7 +68,7 @@ public record VkAccelerationStructureGeometryAabbsDataKHR(MemorySegment segment)
     }
 
     public void data(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, LAYOUT$data.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
     }
 
     public @unsigned long stride() {
@@ -81,7 +87,7 @@ public record VkAccelerationStructureGeometryAabbsDataKHR(MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureGeometryAabbsDataKHR[] ret = new VkAccelerationStructureGeometryAabbsDataKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureGeometryAabbsDataKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureGeometryAabbsDataKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

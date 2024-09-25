@@ -19,6 +19,7 @@ public record VkPhysicalDeviceTextureCompressionASTCHDRFeatures(MemorySegment se
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("textureCompressionASTC_HDR")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceTextureCompressionASTCHDRFeatures(MemorySegment se
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$textureCompressionASTC_HDR = LAYOUT.byteOffset(PATH$textureCompressionASTC_HDR);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$textureCompressionASTC_HDR = LAYOUT$textureCompressionASTC_HDR.byteSize();
 
     public VkPhysicalDeviceTextureCompressionASTCHDRFeatures(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceTextureCompressionASTCHDRFeatures(MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceTextureCompressionASTCHDRFeatures[] ret = new VkPhysicalDeviceTextureCompressionASTCHDRFeatures[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceTextureCompressionASTCHDRFeatures(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceTextureCompressionASTCHDRFeatures(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

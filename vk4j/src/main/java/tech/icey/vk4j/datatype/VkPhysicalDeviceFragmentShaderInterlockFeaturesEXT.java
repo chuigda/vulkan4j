@@ -21,6 +21,7 @@ public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment s
         ValueLayout.JAVA_INT.withName("fragmentShaderPixelInterlock"),
         ValueLayout.JAVA_INT.withName("fragmentShaderShadingRateInterlock")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment s
     public static final long OFFSET$fragmentShaderSampleInterlock = LAYOUT.byteOffset(PATH$fragmentShaderSampleInterlock);
     public static final long OFFSET$fragmentShaderPixelInterlock = LAYOUT.byteOffset(PATH$fragmentShaderPixelInterlock);
     public static final long OFFSET$fragmentShaderShadingRateInterlock = LAYOUT.byteOffset(PATH$fragmentShaderShadingRateInterlock);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$fragmentShaderSampleInterlock = LAYOUT$fragmentShaderSampleInterlock.byteSize();
+    public static final long SIZE$fragmentShaderPixelInterlock = LAYOUT$fragmentShaderPixelInterlock.byteSize();
+    public static final long SIZE$fragmentShaderShadingRateInterlock = LAYOUT$fragmentShaderShadingRateInterlock.byteSize();
 
     public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT[] ret = new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

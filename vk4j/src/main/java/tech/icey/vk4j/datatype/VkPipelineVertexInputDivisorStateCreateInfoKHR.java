@@ -20,6 +20,7 @@ public record VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segme
         ValueLayout.JAVA_INT.withName("vertexBindingDivisorCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkVertexInputBindingDivisorDescriptionKHR.LAYOUT).withName("pVertexBindingDivisors")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segme
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$vertexBindingDivisorCount = LAYOUT.byteOffset(PATH$vertexBindingDivisorCount);
     public static final long OFFSET$pVertexBindingDivisors = LAYOUT.byteOffset(PATH$pVertexBindingDivisors);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$vertexBindingDivisorCount = LAYOUT$vertexBindingDivisorCount.byteSize();
+    public static final long SIZE$pVertexBindingDivisors = LAYOUT$pVertexBindingDivisors.byteSize();
 
     public VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +100,7 @@ public record VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineVertexInputDivisorStateCreateInfoKHR[] ret = new VkPipelineVertexInputDivisorStateCreateInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineVertexInputDivisorStateCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineVertexInputDivisorStateCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

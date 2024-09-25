@@ -10,11 +10,11 @@ public record IntBuffer(MemorySegment segment) {
     }
 
     public int read() {
-        return read(0);
+        return segment.get(ValueLayout.JAVA_INT, 0);
     }
 
     public void write(int value) {
-        write(0, value);
+        segment.set(ValueLayout.JAVA_INT, 0, value);
     }
 
     public int read(long index) {

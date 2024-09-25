@@ -20,6 +20,7 @@ public record VkExportMetalIOSurfaceInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("image"),
         ValueLayout.ADDRESS.withName("ioSurface")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkExportMetalIOSurfaceInfoEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$image = LAYOUT.byteOffset(PATH$image);
     public static final long OFFSET$ioSurface = LAYOUT.byteOffset(PATH$ioSurface);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$image = LAYOUT$image.byteSize();
+    public static final long SIZE$ioSurface = LAYOUT$ioSurface.byteSize();
 
     public VkExportMetalIOSurfaceInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkExportMetalIOSurfaceInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExportMetalIOSurfaceInfoEXT[] ret = new VkExportMetalIOSurfaceInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkExportMetalIOSurfaceInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkExportMetalIOSurfaceInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

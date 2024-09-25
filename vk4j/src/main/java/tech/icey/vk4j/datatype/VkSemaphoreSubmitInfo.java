@@ -22,6 +22,7 @@ public record VkSemaphoreSubmitInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("stageMask"),
         ValueLayout.JAVA_INT.withName("deviceIndex")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkSemaphoreSubmitInfo(MemorySegment segment) {
     public static final long OFFSET$value = LAYOUT.byteOffset(PATH$value);
     public static final long OFFSET$stageMask = LAYOUT.byteOffset(PATH$stageMask);
     public static final long OFFSET$deviceIndex = LAYOUT.byteOffset(PATH$deviceIndex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$semaphore = LAYOUT$semaphore.byteSize();
+    public static final long SIZE$value = LAYOUT$value.byteSize();
+    public static final long SIZE$stageMask = LAYOUT$stageMask.byteSize();
+    public static final long SIZE$deviceIndex = LAYOUT$deviceIndex.byteSize();
 
     public VkSemaphoreSubmitInfo(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkSemaphoreSubmitInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSemaphoreSubmitInfo[] ret = new VkSemaphoreSubmitInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSemaphoreSubmitInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSemaphoreSubmitInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

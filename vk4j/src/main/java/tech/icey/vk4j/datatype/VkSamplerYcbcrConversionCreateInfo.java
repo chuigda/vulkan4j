@@ -26,6 +26,7 @@ public record VkSamplerYcbcrConversionCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("chromaFilter"),
         ValueLayout.JAVA_INT.withName("forceExplicitReconstruction")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -59,6 +60,17 @@ public record VkSamplerYcbcrConversionCreateInfo(MemorySegment segment) {
     public static final long OFFSET$yChromaOffset = LAYOUT.byteOffset(PATH$yChromaOffset);
     public static final long OFFSET$chromaFilter = LAYOUT.byteOffset(PATH$chromaFilter);
     public static final long OFFSET$forceExplicitReconstruction = LAYOUT.byteOffset(PATH$forceExplicitReconstruction);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
+    public static final long SIZE$ycbcrModel = LAYOUT$ycbcrModel.byteSize();
+    public static final long SIZE$ycbcrRange = LAYOUT$ycbcrRange.byteSize();
+    public static final long SIZE$components = LAYOUT$components.byteSize();
+    public static final long SIZE$xChromaOffset = LAYOUT$xChromaOffset.byteSize();
+    public static final long SIZE$yChromaOffset = LAYOUT$yChromaOffset.byteSize();
+    public static final long SIZE$chromaFilter = LAYOUT$chromaFilter.byteSize();
+    public static final long SIZE$forceExplicitReconstruction = LAYOUT$forceExplicitReconstruction.byteSize();
 
     public VkSamplerYcbcrConversionCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -110,7 +122,7 @@ public record VkSamplerYcbcrConversionCreateInfo(MemorySegment segment) {
     }
 
     public void components(VkComponentMapping value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, LAYOUT$components.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, SIZE$components);
     }
 
     public @enumtype(VkChromaLocation.class) int xChromaOffset() {
@@ -153,7 +165,7 @@ public record VkSamplerYcbcrConversionCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSamplerYcbcrConversionCreateInfo[] ret = new VkSamplerYcbcrConversionCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSamplerYcbcrConversionCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSamplerYcbcrConversionCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

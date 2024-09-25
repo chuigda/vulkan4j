@@ -25,6 +25,7 @@ public record VkFramebufferAttachmentImageInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("viewFormatCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pViewFormats")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -55,6 +56,16 @@ public record VkFramebufferAttachmentImageInfo(MemorySegment segment) {
     public static final long OFFSET$layerCount = LAYOUT.byteOffset(PATH$layerCount);
     public static final long OFFSET$viewFormatCount = LAYOUT.byteOffset(PATH$viewFormatCount);
     public static final long OFFSET$pViewFormats = LAYOUT.byteOffset(PATH$pViewFormats);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$usage = LAYOUT$usage.byteSize();
+    public static final long SIZE$width = LAYOUT$width.byteSize();
+    public static final long SIZE$height = LAYOUT$height.byteSize();
+    public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
+    public static final long SIZE$viewFormatCount = LAYOUT$viewFormatCount.byteSize();
+    public static final long SIZE$pViewFormats = LAYOUT$pViewFormats.byteSize();
 
     public VkFramebufferAttachmentImageInfo(MemorySegment segment) {
         this.segment = segment;
@@ -155,7 +166,7 @@ public record VkFramebufferAttachmentImageInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkFramebufferAttachmentImageInfo[] ret = new VkFramebufferAttachmentImageInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkFramebufferAttachmentImageInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkFramebufferAttachmentImageInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

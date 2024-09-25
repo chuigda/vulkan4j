@@ -20,6 +20,7 @@ public record VkQueueFamilyGlobalPriorityPropertiesKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("priorityCount"),
         MemoryLayout.sequenceLayout(VK_MAX_GLOBAL_PRIORITY_SIZE_KHR, ValueLayout.JAVA_INT).withName("priorities")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkQueueFamilyGlobalPriorityPropertiesKHR(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$priorityCount = LAYOUT.byteOffset(PATH$priorityCount);
     public static final long OFFSET$priorities = LAYOUT.byteOffset(PATH$priorities);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$priorityCount = LAYOUT$priorityCount.byteSize();
+    public static final long SIZE$priorities = LAYOUT$priorities.byteSize();
 
     public VkQueueFamilyGlobalPriorityPropertiesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -85,7 +91,7 @@ public record VkQueueFamilyGlobalPriorityPropertiesKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkQueueFamilyGlobalPriorityPropertiesKHR[] ret = new VkQueueFamilyGlobalPriorityPropertiesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkQueueFamilyGlobalPriorityPropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkQueueFamilyGlobalPriorityPropertiesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

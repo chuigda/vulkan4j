@@ -20,6 +20,7 @@ public record VkMemoryDedicatedRequirements(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("prefersDedicatedAllocation"),
         ValueLayout.JAVA_INT.withName("requiresDedicatedAllocation")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkMemoryDedicatedRequirements(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$prefersDedicatedAllocation = LAYOUT.byteOffset(PATH$prefersDedicatedAllocation);
     public static final long OFFSET$requiresDedicatedAllocation = LAYOUT.byteOffset(PATH$requiresDedicatedAllocation);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$prefersDedicatedAllocation = LAYOUT$prefersDedicatedAllocation.byteSize();
+    public static final long SIZE$requiresDedicatedAllocation = LAYOUT$requiresDedicatedAllocation.byteSize();
 
     public VkMemoryDedicatedRequirements(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkMemoryDedicatedRequirements(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMemoryDedicatedRequirements[] ret = new VkMemoryDedicatedRequirements[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkMemoryDedicatedRequirements(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkMemoryDedicatedRequirements(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

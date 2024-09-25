@@ -51,6 +51,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
         ValueLayout.JAVA_LONG.withName("resourceDescriptorBufferAddressSpaceSize"),
         ValueLayout.JAVA_LONG.withName("descriptorBufferAddressSpaceSize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -140,6 +141,23 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public static final long OFFSET$samplerDescriptorBufferAddressSpaceSize = LAYOUT.byteOffset(PATH$samplerDescriptorBufferAddressSpaceSize);
     public static final long OFFSET$resourceDescriptorBufferAddressSpaceSize = LAYOUT.byteOffset(PATH$resourceDescriptorBufferAddressSpaceSize);
     public static final long OFFSET$descriptorBufferAddressSpaceSize = LAYOUT.byteOffset(PATH$descriptorBufferAddressSpaceSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$combinedImageSamplerDescriptorSingleArray = LAYOUT$combinedImageSamplerDescriptorSingleArray.byteSize();
+    public static final long SIZE$bufferlessPushDescriptors = LAYOUT$bufferlessPushDescriptors.byteSize();
+    public static final long SIZE$allowSamplerImageViewPostSubmitCreation = LAYOUT$allowSamplerImageViewPostSubmitCreation.byteSize();
+    public static final long SIZE$descriptorBufferOffsetAlignment = LAYOUT$descriptorBufferOffsetAlignment.byteSize();
+    public static final long SIZE$maxDescriptorBufferBindings = LAYOUT$maxDescriptorBufferBindings.byteSize();
+    public static final long SIZE$maxResourceDescriptorBufferBindings = LAYOUT$maxResourceDescriptorBufferBindings.byteSize();
+    public static final long SIZE$maxSamplerDescriptorBufferBindings = LAYOUT$maxSamplerDescriptorBufferBindings.byteSize();
+    public static final long SIZE$maxEmbeddedImmutableSamplerBindings = LAYOUT$maxEmbeddedImmutableSamplerBindings.byteSize();
+    public static final long SIZE$maxEmbeddedImmutableSamplers = LAYOUT$maxEmbeddedImmutableSamplers.byteSize();
+    public static final long SIZE$maxSamplerDescriptorBufferRange = LAYOUT$maxSamplerDescriptorBufferRange.byteSize();
+    public static final long SIZE$maxResourceDescriptorBufferRange = LAYOUT$maxResourceDescriptorBufferRange.byteSize();
+    public static final long SIZE$samplerDescriptorBufferAddressSpaceSize = LAYOUT$samplerDescriptorBufferAddressSpaceSize.byteSize();
+    public static final long SIZE$resourceDescriptorBufferAddressSpaceSize = LAYOUT$resourceDescriptorBufferAddressSpaceSize.byteSize();
+    public static final long SIZE$descriptorBufferAddressSpaceSize = LAYOUT$descriptorBufferAddressSpaceSize.byteSize();
 
     public VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -434,7 +452,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceDescriptorBufferPropertiesEXT[] ret = new VkPhysicalDeviceDescriptorBufferPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceDescriptorBufferPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceDescriptorBufferPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

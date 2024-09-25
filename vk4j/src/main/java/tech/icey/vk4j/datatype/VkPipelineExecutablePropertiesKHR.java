@@ -22,6 +22,7 @@ public record VkPipelineExecutablePropertiesKHR(MemorySegment segment) {
         MemoryLayout.sequenceLayout(VK_MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description"),
         ValueLayout.JAVA_INT.withName("subgroupSize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPipelineExecutablePropertiesKHR(MemorySegment segment) {
     public static final long OFFSET$name = LAYOUT.byteOffset(PATH$name);
     public static final long OFFSET$description = LAYOUT.byteOffset(PATH$description);
     public static final long OFFSET$subgroupSize = LAYOUT.byteOffset(PATH$subgroupSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$stages = LAYOUT$stages.byteSize();
+    public static final long SIZE$name = LAYOUT$name.byteSize();
+    public static final long SIZE$description = LAYOUT$description.byteSize();
+    public static final long SIZE$subgroupSize = LAYOUT$subgroupSize.byteSize();
 
     public VkPipelineExecutablePropertiesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -113,7 +121,7 @@ public record VkPipelineExecutablePropertiesKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineExecutablePropertiesKHR[] ret = new VkPipelineExecutablePropertiesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineExecutablePropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineExecutablePropertiesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

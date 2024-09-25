@@ -28,6 +28,7 @@ public record VkPipelineDepthStencilStateCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("minDepthBounds"),
         ValueLayout.JAVA_FLOAT.withName("maxDepthBounds")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -67,6 +68,19 @@ public record VkPipelineDepthStencilStateCreateInfo(MemorySegment segment) {
     public static final long OFFSET$back = LAYOUT.byteOffset(PATH$back);
     public static final long OFFSET$minDepthBounds = LAYOUT.byteOffset(PATH$minDepthBounds);
     public static final long OFFSET$maxDepthBounds = LAYOUT.byteOffset(PATH$maxDepthBounds);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$depthTestEnable = LAYOUT$depthTestEnable.byteSize();
+    public static final long SIZE$depthWriteEnable = LAYOUT$depthWriteEnable.byteSize();
+    public static final long SIZE$depthCompareOp = LAYOUT$depthCompareOp.byteSize();
+    public static final long SIZE$depthBoundsTestEnable = LAYOUT$depthBoundsTestEnable.byteSize();
+    public static final long SIZE$stencilTestEnable = LAYOUT$stencilTestEnable.byteSize();
+    public static final long SIZE$front = LAYOUT$front.byteSize();
+    public static final long SIZE$back = LAYOUT$back.byteSize();
+    public static final long SIZE$minDepthBounds = LAYOUT$minDepthBounds.byteSize();
+    public static final long SIZE$maxDepthBounds = LAYOUT$maxDepthBounds.byteSize();
 
     public VkPipelineDepthStencilStateCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -142,7 +156,7 @@ public record VkPipelineDepthStencilStateCreateInfo(MemorySegment segment) {
     }
 
     public void front(VkStencilOpState value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$front, LAYOUT$front.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$front, SIZE$front);
     }
 
     public VkStencilOpState back() {
@@ -150,7 +164,7 @@ public record VkPipelineDepthStencilStateCreateInfo(MemorySegment segment) {
     }
 
     public void back(VkStencilOpState value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$back, LAYOUT$back.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$back, SIZE$back);
     }
 
     public float minDepthBounds() {
@@ -177,7 +191,7 @@ public record VkPipelineDepthStencilStateCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineDepthStencilStateCreateInfo[] ret = new VkPipelineDepthStencilStateCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineDepthStencilStateCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineDepthStencilStateCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

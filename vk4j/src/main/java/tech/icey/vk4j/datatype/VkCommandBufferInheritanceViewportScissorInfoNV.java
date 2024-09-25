@@ -21,6 +21,7 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
         ValueLayout.JAVA_INT.withName("viewportDepthCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkViewport.LAYOUT).withName("pViewportDepths")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
     public static final long OFFSET$viewportScissor2D = LAYOUT.byteOffset(PATH$viewportScissor2D);
     public static final long OFFSET$viewportDepthCount = LAYOUT.byteOffset(PATH$viewportDepthCount);
     public static final long OFFSET$pViewportDepths = LAYOUT.byteOffset(PATH$pViewportDepths);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$viewportScissor2D = LAYOUT$viewportScissor2D.byteSize();
+    public static final long SIZE$viewportDepthCount = LAYOUT$viewportDepthCount.byteSize();
+    public static final long SIZE$pViewportDepths = LAYOUT$pViewportDepths.byteSize();
 
     public VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -106,7 +113,7 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCommandBufferInheritanceViewportScissorInfoNV[] ret = new VkCommandBufferInheritanceViewportScissorInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkCommandBufferInheritanceViewportScissorInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkCommandBufferInheritanceViewportScissorInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -19,6 +19,7 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(Memory
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shaderSubgroupUniformControlFlow")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(Memory
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$shaderSubgroupUniformControlFlow = LAYOUT.byteOffset(PATH$shaderSubgroupUniformControlFlow);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderSubgroupUniformControlFlow = LAYOUT$shaderSubgroupUniformControlFlow.byteSize();
 
     public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(Memory
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR[] ret = new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

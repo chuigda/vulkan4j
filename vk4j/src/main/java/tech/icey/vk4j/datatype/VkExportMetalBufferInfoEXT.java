@@ -20,6 +20,7 @@ public record VkExportMetalBufferInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("memory"),
         ValueLayout.ADDRESS.withName("mtlBuffer")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkExportMetalBufferInfoEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$memory = LAYOUT.byteOffset(PATH$memory);
     public static final long OFFSET$mtlBuffer = LAYOUT.byteOffset(PATH$mtlBuffer);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$memory = LAYOUT$memory.byteSize();
+    public static final long SIZE$mtlBuffer = LAYOUT$mtlBuffer.byteSize();
 
     public VkExportMetalBufferInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkExportMetalBufferInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExportMetalBufferInfoEXT[] ret = new VkExportMetalBufferInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkExportMetalBufferInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkExportMetalBufferInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

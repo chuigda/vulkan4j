@@ -33,6 +33,7 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("maxPerSetDescriptors"),
         ValueLayout.JAVA_LONG.withName("maxMemoryAllocationSize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -87,6 +88,24 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
     public static final long OFFSET$protectedNoFault = LAYOUT.byteOffset(PATH$protectedNoFault);
     public static final long OFFSET$maxPerSetDescriptors = LAYOUT.byteOffset(PATH$maxPerSetDescriptors);
     public static final long OFFSET$maxMemoryAllocationSize = LAYOUT.byteOffset(PATH$maxMemoryAllocationSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$deviceUUID = LAYOUT$deviceUUID.byteSize();
+    public static final long SIZE$driverUUID = LAYOUT$driverUUID.byteSize();
+    public static final long SIZE$deviceLUID = LAYOUT$deviceLUID.byteSize();
+    public static final long SIZE$deviceNodeMask = LAYOUT$deviceNodeMask.byteSize();
+    public static final long SIZE$deviceLUIDValid = LAYOUT$deviceLUIDValid.byteSize();
+    public static final long SIZE$subgroupSize = LAYOUT$subgroupSize.byteSize();
+    public static final long SIZE$subgroupSupportedStages = LAYOUT$subgroupSupportedStages.byteSize();
+    public static final long SIZE$subgroupSupportedOperations = LAYOUT$subgroupSupportedOperations.byteSize();
+    public static final long SIZE$subgroupQuadOperationsInAllStages = LAYOUT$subgroupQuadOperationsInAllStages.byteSize();
+    public static final long SIZE$pointClippingBehavior = LAYOUT$pointClippingBehavior.byteSize();
+    public static final long SIZE$maxMultiviewViewCount = LAYOUT$maxMultiviewViewCount.byteSize();
+    public static final long SIZE$maxMultiviewInstanceIndex = LAYOUT$maxMultiviewInstanceIndex.byteSize();
+    public static final long SIZE$protectedNoFault = LAYOUT$protectedNoFault.byteSize();
+    public static final long SIZE$maxPerSetDescriptors = LAYOUT$maxPerSetDescriptors.byteSize();
+    public static final long SIZE$maxMemoryAllocationSize = LAYOUT$maxMemoryAllocationSize.byteSize();
 
     public VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
         this.segment = segment;
@@ -249,7 +268,7 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceVulkan11Properties[] ret = new VkPhysicalDeviceVulkan11Properties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceVulkan11Properties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceVulkan11Properties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -29,6 +29,7 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) {
         VkDeviceOrHostAddressConstKHR.LAYOUT.withName("triangleArray"),
         ValueLayout.JAVA_LONG.withName("triangleArrayStride")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -71,6 +72,20 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) {
     public static final long OFFSET$scratchData = LAYOUT.byteOffset(PATH$scratchData);
     public static final long OFFSET$triangleArray = LAYOUT.byteOffset(PATH$triangleArray);
     public static final long OFFSET$triangleArrayStride = LAYOUT.byteOffset(PATH$triangleArrayStride);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$mode = LAYOUT$mode.byteSize();
+    public static final long SIZE$dstMicromap = LAYOUT$dstMicromap.byteSize();
+    public static final long SIZE$usageCountsCount = LAYOUT$usageCountsCount.byteSize();
+    public static final long SIZE$pUsageCounts = LAYOUT$pUsageCounts.byteSize();
+    public static final long SIZE$ppUsageCounts = LAYOUT$ppUsageCounts.byteSize();
+    public static final long SIZE$data = LAYOUT$data.byteSize();
+    public static final long SIZE$scratchData = LAYOUT$scratchData.byteSize();
+    public static final long SIZE$triangleArray = LAYOUT$triangleArray.byteSize();
+    public static final long SIZE$triangleArrayStride = LAYOUT$triangleArrayStride.byteSize();
 
     public VkMicromapBuildInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -167,7 +182,7 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) {
     }
 
     public void data(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, LAYOUT$data.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
     }
 
     public VkDeviceOrHostAddressKHR scratchData() {
@@ -175,7 +190,7 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) {
     }
 
     public void scratchData(VkDeviceOrHostAddressKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$scratchData, LAYOUT$scratchData.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$scratchData, SIZE$scratchData);
     }
 
     public VkDeviceOrHostAddressConstKHR triangleArray() {
@@ -183,7 +198,7 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) {
     }
 
     public void triangleArray(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$triangleArray, LAYOUT$triangleArray.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$triangleArray, SIZE$triangleArray);
     }
 
     public @unsigned long triangleArrayStride() {
@@ -202,7 +217,7 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMicromapBuildInfoEXT[] ret = new VkMicromapBuildInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkMicromapBuildInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkMicromapBuildInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

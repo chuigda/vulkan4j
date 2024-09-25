@@ -19,6 +19,7 @@ public record VkDescriptorImageInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("imageView"),
         ValueLayout.JAVA_INT.withName("imageLayout")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sampler = PathElement.groupElement("sampler");
     public static final PathElement PATH$imageView = PathElement.groupElement("imageView");
@@ -31,6 +32,10 @@ public record VkDescriptorImageInfo(MemorySegment segment) {
     public static final long OFFSET$sampler = LAYOUT.byteOffset(PATH$sampler);
     public static final long OFFSET$imageView = LAYOUT.byteOffset(PATH$imageView);
     public static final long OFFSET$imageLayout = LAYOUT.byteOffset(PATH$imageLayout);
+
+    public static final long SIZE$sampler = LAYOUT$sampler.byteSize();
+    public static final long SIZE$imageView = LAYOUT$imageView.byteSize();
+    public static final long SIZE$imageLayout = LAYOUT$imageLayout.byteSize();
 
     public VkDescriptorImageInfo(MemorySegment segment) {
         this.segment = segment;
@@ -68,7 +73,7 @@ public record VkDescriptorImageInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorImageInfo[] ret = new VkDescriptorImageInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDescriptorImageInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDescriptorImageInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

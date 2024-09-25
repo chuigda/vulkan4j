@@ -21,6 +21,7 @@ public record VkDeviceGroupPresentInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDeviceMasks"),
         ValueLayout.JAVA_INT.withName("mode")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkDeviceGroupPresentInfoKHR(MemorySegment segment) {
     public static final long OFFSET$swapchainCount = LAYOUT.byteOffset(PATH$swapchainCount);
     public static final long OFFSET$pDeviceMasks = LAYOUT.byteOffset(PATH$pDeviceMasks);
     public static final long OFFSET$mode = LAYOUT.byteOffset(PATH$mode);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$swapchainCount = LAYOUT$swapchainCount.byteSize();
+    public static final long SIZE$pDeviceMasks = LAYOUT$pDeviceMasks.byteSize();
+    public static final long SIZE$mode = LAYOUT$mode.byteSize();
 
     public VkDeviceGroupPresentInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -101,7 +108,7 @@ public record VkDeviceGroupPresentInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceGroupPresentInfoKHR[] ret = new VkDeviceGroupPresentInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceGroupPresentInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDeviceGroupPresentInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

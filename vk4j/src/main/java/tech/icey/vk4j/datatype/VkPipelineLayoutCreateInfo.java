@@ -23,6 +23,7 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("pushConstantRangeCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkPushConstantRange.LAYOUT).withName("pPushConstantRanges")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) {
     public static final long OFFSET$pSetLayouts = LAYOUT.byteOffset(PATH$pSetLayouts);
     public static final long OFFSET$pushConstantRangeCount = LAYOUT.byteOffset(PATH$pushConstantRangeCount);
     public static final long OFFSET$pPushConstantRanges = LAYOUT.byteOffset(PATH$pPushConstantRanges);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$setLayoutCount = LAYOUT$setLayoutCount.byteSize();
+    public static final long SIZE$pSetLayouts = LAYOUT$pSetLayouts.byteSize();
+    public static final long SIZE$pushConstantRangeCount = LAYOUT$pushConstantRangeCount.byteSize();
+    public static final long SIZE$pPushConstantRanges = LAYOUT$pPushConstantRanges.byteSize();
 
     public VkPipelineLayoutCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -143,7 +152,7 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineLayoutCreateInfo[] ret = new VkPipelineLayoutCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineLayoutCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineLayoutCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

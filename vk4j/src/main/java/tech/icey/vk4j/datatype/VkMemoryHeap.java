@@ -1,22 +1,24 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkMemoryHeapFlags;
-
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
+import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkMemoryHeap(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_LONG.withName("size"),
         ValueLayout.JAVA_INT.withName("flags")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$size = PathElement.groupElement("size");
     public static final PathElement PATH$flags = PathElement.groupElement("flags");
@@ -26,6 +28,9 @@ public record VkMemoryHeap(MemorySegment segment) {
 
     public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
 
     public VkMemoryHeap(MemorySegment segment) {
         this.segment = segment;
@@ -50,12 +55,12 @@ public record VkMemoryHeap(MemorySegment segment) {
     public static VkMemoryHeap allocate(Arena arena) {
         return new VkMemoryHeap(arena.allocate(LAYOUT));
     }
-
+    
     public static VkMemoryHeap[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMemoryHeap[] ret = new VkMemoryHeap[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkMemoryHeap(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkMemoryHeap(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

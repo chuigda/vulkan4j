@@ -23,6 +23,7 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment
         ValueLayout.JAVA_INT.withName("sampleLocationSubPixelBits"),
         ValueLayout.JAVA_INT.withName("variableSampleLocations")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment
     public static final long OFFSET$sampleLocationCoordinateRange = LAYOUT.byteOffset(PATH$sampleLocationCoordinateRange);
     public static final long OFFSET$sampleLocationSubPixelBits = LAYOUT.byteOffset(PATH$sampleLocationSubPixelBits);
     public static final long OFFSET$variableSampleLocations = LAYOUT.byteOffset(PATH$variableSampleLocations);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$sampleLocationSampleCounts = LAYOUT$sampleLocationSampleCounts.byteSize();
+    public static final long SIZE$maxSampleLocationGridSize = LAYOUT$maxSampleLocationGridSize.byteSize();
+    public static final long SIZE$sampleLocationCoordinateRange = LAYOUT$sampleLocationCoordinateRange.byteSize();
+    public static final long SIZE$sampleLocationSubPixelBits = LAYOUT$sampleLocationSubPixelBits.byteSize();
+    public static final long SIZE$variableSampleLocations = LAYOUT$variableSampleLocations.byteSize();
 
     public VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -82,7 +91,7 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment
     }
 
     public void maxSampleLocationGridSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSampleLocationGridSize, LAYOUT$maxSampleLocationGridSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSampleLocationGridSize, SIZE$maxSampleLocationGridSize);
     }
 
     public MemorySegment sampleLocationCoordinateRangeRaw() {
@@ -121,7 +130,7 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceSampleLocationsPropertiesEXT[] ret = new VkPhysicalDeviceSampleLocationsPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -19,6 +19,7 @@ public record VkExternalImageFormatProperties(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         VkExternalMemoryProperties.LAYOUT.withName("externalMemoryProperties")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkExternalImageFormatProperties(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$externalMemoryProperties = LAYOUT.byteOffset(PATH$externalMemoryProperties);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$externalMemoryProperties = LAYOUT$externalMemoryProperties.byteSize();
 
     public VkExternalImageFormatProperties(MemorySegment segment) {
         this.segment = segment;
@@ -58,7 +63,7 @@ public record VkExternalImageFormatProperties(MemorySegment segment) {
     }
 
     public void externalMemoryProperties(VkExternalMemoryProperties value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$externalMemoryProperties, LAYOUT$externalMemoryProperties.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$externalMemoryProperties, SIZE$externalMemoryProperties);
     }
 
     public static VkExternalImageFormatProperties allocate(Arena arena) {
@@ -69,7 +74,7 @@ public record VkExternalImageFormatProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExternalImageFormatProperties[] ret = new VkExternalImageFormatProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkExternalImageFormatProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkExternalImageFormatProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

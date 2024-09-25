@@ -32,6 +32,7 @@ public record VkLatencyTimingsFrameReportNV(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("gpuRenderStartTimeUs"),
         ValueLayout.JAVA_LONG.withName("gpuRenderEndTimeUs")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -83,6 +84,23 @@ public record VkLatencyTimingsFrameReportNV(MemorySegment segment) {
     public static final long OFFSET$osRenderQueueEndTimeUs = LAYOUT.byteOffset(PATH$osRenderQueueEndTimeUs);
     public static final long OFFSET$gpuRenderStartTimeUs = LAYOUT.byteOffset(PATH$gpuRenderStartTimeUs);
     public static final long OFFSET$gpuRenderEndTimeUs = LAYOUT.byteOffset(PATH$gpuRenderEndTimeUs);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$presentID = LAYOUT$presentID.byteSize();
+    public static final long SIZE$inputSampleTimeUs = LAYOUT$inputSampleTimeUs.byteSize();
+    public static final long SIZE$simStartTimeUs = LAYOUT$simStartTimeUs.byteSize();
+    public static final long SIZE$simEndTimeUs = LAYOUT$simEndTimeUs.byteSize();
+    public static final long SIZE$renderSubmitStartTimeUs = LAYOUT$renderSubmitStartTimeUs.byteSize();
+    public static final long SIZE$renderSubmitEndTimeUs = LAYOUT$renderSubmitEndTimeUs.byteSize();
+    public static final long SIZE$presentStartTimeUs = LAYOUT$presentStartTimeUs.byteSize();
+    public static final long SIZE$presentEndTimeUs = LAYOUT$presentEndTimeUs.byteSize();
+    public static final long SIZE$driverStartTimeUs = LAYOUT$driverStartTimeUs.byteSize();
+    public static final long SIZE$driverEndTimeUs = LAYOUT$driverEndTimeUs.byteSize();
+    public static final long SIZE$osRenderQueueStartTimeUs = LAYOUT$osRenderQueueStartTimeUs.byteSize();
+    public static final long SIZE$osRenderQueueEndTimeUs = LAYOUT$osRenderQueueEndTimeUs.byteSize();
+    public static final long SIZE$gpuRenderStartTimeUs = LAYOUT$gpuRenderStartTimeUs.byteSize();
+    public static final long SIZE$gpuRenderEndTimeUs = LAYOUT$gpuRenderEndTimeUs.byteSize();
 
     public VkLatencyTimingsFrameReportNV(MemorySegment segment) {
         this.segment = segment;
@@ -225,7 +243,7 @@ public record VkLatencyTimingsFrameReportNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkLatencyTimingsFrameReportNV[] ret = new VkLatencyTimingsFrameReportNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkLatencyTimingsFrameReportNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkLatencyTimingsFrameReportNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

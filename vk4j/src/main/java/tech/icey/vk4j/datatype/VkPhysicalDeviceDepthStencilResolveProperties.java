@@ -22,6 +22,7 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(MemorySegment segmen
         ValueLayout.JAVA_INT.withName("independentResolveNone"),
         ValueLayout.JAVA_INT.withName("independentResolve")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(MemorySegment segmen
     public static final long OFFSET$supportedStencilResolveModes = LAYOUT.byteOffset(PATH$supportedStencilResolveModes);
     public static final long OFFSET$independentResolveNone = LAYOUT.byteOffset(PATH$independentResolveNone);
     public static final long OFFSET$independentResolve = LAYOUT.byteOffset(PATH$independentResolve);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$supportedDepthResolveModes = LAYOUT$supportedDepthResolveModes.byteSize();
+    public static final long SIZE$supportedStencilResolveModes = LAYOUT$supportedStencilResolveModes.byteSize();
+    public static final long SIZE$independentResolveNone = LAYOUT$independentResolveNone.byteSize();
+    public static final long SIZE$independentResolve = LAYOUT$independentResolve.byteSize();
 
     public VkPhysicalDeviceDepthStencilResolveProperties(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceDepthStencilResolveProperties[] ret = new VkPhysicalDeviceDepthStencilResolveProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceDepthStencilResolveProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceDepthStencilResolveProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

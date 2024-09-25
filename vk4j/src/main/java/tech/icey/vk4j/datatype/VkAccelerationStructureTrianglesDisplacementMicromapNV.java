@@ -34,6 +34,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT)).withName("ppUsageCounts"),
         ValueLayout.ADDRESS.withName("micromap")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -92,6 +93,25 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
     public static final long OFFSET$ppUsageCounts = LAYOUT.byteOffset(PATH$ppUsageCounts);
     public static final long OFFSET$micromap = LAYOUT.byteOffset(PATH$micromap);
 
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$displacementBiasAndScaleFormat = LAYOUT$displacementBiasAndScaleFormat.byteSize();
+    public static final long SIZE$displacementVectorFormat = LAYOUT$displacementVectorFormat.byteSize();
+    public static final long SIZE$displacementBiasAndScaleBuffer = LAYOUT$displacementBiasAndScaleBuffer.byteSize();
+    public static final long SIZE$displacementBiasAndScaleStride = LAYOUT$displacementBiasAndScaleStride.byteSize();
+    public static final long SIZE$displacementVectorBuffer = LAYOUT$displacementVectorBuffer.byteSize();
+    public static final long SIZE$displacementVectorStride = LAYOUT$displacementVectorStride.byteSize();
+    public static final long SIZE$displacedMicromapPrimitiveFlags = LAYOUT$displacedMicromapPrimitiveFlags.byteSize();
+    public static final long SIZE$displacedMicromapPrimitiveFlagsStride = LAYOUT$displacedMicromapPrimitiveFlagsStride.byteSize();
+    public static final long SIZE$indexType = LAYOUT$indexType.byteSize();
+    public static final long SIZE$indexBuffer = LAYOUT$indexBuffer.byteSize();
+    public static final long SIZE$indexStride = LAYOUT$indexStride.byteSize();
+    public static final long SIZE$baseTriangle = LAYOUT$baseTriangle.byteSize();
+    public static final long SIZE$usageCountsCount = LAYOUT$usageCountsCount.byteSize();
+    public static final long SIZE$pUsageCounts = LAYOUT$pUsageCounts.byteSize();
+    public static final long SIZE$ppUsageCounts = LAYOUT$ppUsageCounts.byteSize();
+    public static final long SIZE$micromap = LAYOUT$micromap.byteSize();
+
     public VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_DISPLACEMENT_MICROMAP_NV);
@@ -134,7 +154,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
     }
 
     public void displacementBiasAndScaleBuffer(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$displacementBiasAndScaleBuffer, LAYOUT$displacementBiasAndScaleBuffer.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$displacementBiasAndScaleBuffer, SIZE$displacementBiasAndScaleBuffer);
     }
 
     public @unsigned long displacementBiasAndScaleStride() {
@@ -150,7 +170,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
     }
 
     public void displacementVectorBuffer(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$displacementVectorBuffer, LAYOUT$displacementVectorBuffer.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$displacementVectorBuffer, SIZE$displacementVectorBuffer);
     }
 
     public @unsigned long displacementVectorStride() {
@@ -166,7 +186,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
     }
 
     public void displacedMicromapPrimitiveFlags(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$displacedMicromapPrimitiveFlags, LAYOUT$displacedMicromapPrimitiveFlags.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$displacedMicromapPrimitiveFlags, SIZE$displacedMicromapPrimitiveFlags);
     }
 
     public @unsigned long displacedMicromapPrimitiveFlagsStride() {
@@ -190,7 +210,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
     }
 
     public void indexBuffer(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexBuffer, LAYOUT$indexBuffer.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexBuffer, SIZE$indexBuffer);
     }
 
     public @unsigned long indexStride() {
@@ -262,7 +282,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureTrianglesDisplacementMicromapNV[] ret = new VkAccelerationStructureTrianglesDisplacementMicromapNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureTrianglesDisplacementMicromapNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureTrianglesDisplacementMicromapNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

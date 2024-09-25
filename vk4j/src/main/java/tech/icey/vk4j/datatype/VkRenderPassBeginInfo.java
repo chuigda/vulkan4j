@@ -23,6 +23,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("clearValueCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkClearValue.LAYOUT).withName("pClearValues")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkRenderPassBeginInfo(MemorySegment segment) {
     public static final long OFFSET$renderArea = LAYOUT.byteOffset(PATH$renderArea);
     public static final long OFFSET$clearValueCount = LAYOUT.byteOffset(PATH$clearValueCount);
     public static final long OFFSET$pClearValues = LAYOUT.byteOffset(PATH$pClearValues);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$renderPass = LAYOUT$renderPass.byteSize();
+    public static final long SIZE$framebuffer = LAYOUT$framebuffer.byteSize();
+    public static final long SIZE$renderArea = LAYOUT$renderArea.byteSize();
+    public static final long SIZE$clearValueCount = LAYOUT$clearValueCount.byteSize();
+    public static final long SIZE$pClearValues = LAYOUT$pClearValues.byteSize();
 
     public VkRenderPassBeginInfo(MemorySegment segment) {
         this.segment = segment;
@@ -90,7 +99,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) {
     }
 
     public void renderArea(VkRect2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderArea, LAYOUT$renderArea.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderArea, SIZE$renderArea);
     }
 
     public @unsigned int clearValueCount() {
@@ -130,7 +139,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderPassBeginInfo[] ret = new VkRenderPassBeginInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderPassBeginInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRenderPassBeginInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

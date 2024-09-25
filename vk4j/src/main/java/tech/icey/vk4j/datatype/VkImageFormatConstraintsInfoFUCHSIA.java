@@ -24,6 +24,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("colorSpaceCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkSysmemColorSpaceFUCHSIA.LAYOUT).withName("pColorSpaces")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -52,6 +53,15 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) {
     public static final long OFFSET$colorSpaceCount = LAYOUT.byteOffset(PATH$colorSpaceCount);
     public static final long OFFSET$pColorSpaces = LAYOUT.byteOffset(PATH$pColorSpaces);
 
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$imageCreateInfo = LAYOUT$imageCreateInfo.byteSize();
+    public static final long SIZE$requiredFormatFeatures = LAYOUT$requiredFormatFeatures.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$sysmemPixelFormat = LAYOUT$sysmemPixelFormat.byteSize();
+    public static final long SIZE$colorSpaceCount = LAYOUT$colorSpaceCount.byteSize();
+    public static final long SIZE$pColorSpaces = LAYOUT$pColorSpaces.byteSize();
+
     public VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_IMAGE_FORMAT_CONSTRAINTS_INFO_FUCHSIA);
@@ -78,7 +88,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) {
     }
 
     public void imageCreateInfo(VkImageCreateInfo value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageCreateInfo, LAYOUT$imageCreateInfo.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageCreateInfo, SIZE$imageCreateInfo);
     }
 
     public @enumtype(VkFormatFeatureFlags.class) int requiredFormatFeatures() {
@@ -142,7 +152,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageFormatConstraintsInfoFUCHSIA[] ret = new VkImageFormatConstraintsInfoFUCHSIA[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageFormatConstraintsInfoFUCHSIA(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageFormatConstraintsInfoFUCHSIA(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

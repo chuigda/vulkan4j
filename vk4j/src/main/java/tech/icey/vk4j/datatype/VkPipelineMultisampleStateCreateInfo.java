@@ -25,6 +25,7 @@ public record VkPipelineMultisampleStateCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("alphaToCoverageEnable"),
         ValueLayout.JAVA_INT.withName("alphaToOneEnable")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -55,6 +56,16 @@ public record VkPipelineMultisampleStateCreateInfo(MemorySegment segment) {
     public static final long OFFSET$pSampleMask = LAYOUT.byteOffset(PATH$pSampleMask);
     public static final long OFFSET$alphaToCoverageEnable = LAYOUT.byteOffset(PATH$alphaToCoverageEnable);
     public static final long OFFSET$alphaToOneEnable = LAYOUT.byteOffset(PATH$alphaToOneEnable);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$rasterizationSamples = LAYOUT$rasterizationSamples.byteSize();
+    public static final long SIZE$sampleShadingEnable = LAYOUT$sampleShadingEnable.byteSize();
+    public static final long SIZE$minSampleShading = LAYOUT$minSampleShading.byteSize();
+    public static final long SIZE$pSampleMask = LAYOUT$pSampleMask.byteSize();
+    public static final long SIZE$alphaToCoverageEnable = LAYOUT$alphaToCoverageEnable.byteSize();
+    public static final long SIZE$alphaToOneEnable = LAYOUT$alphaToOneEnable.byteSize();
 
     public VkPipelineMultisampleStateCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -149,7 +160,7 @@ public record VkPipelineMultisampleStateCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineMultisampleStateCreateInfo[] ret = new VkPipelineMultisampleStateCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineMultisampleStateCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineMultisampleStateCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

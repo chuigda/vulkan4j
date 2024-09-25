@@ -19,6 +19,7 @@ public record VkAccelerationStructureMotionInstanceNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("flags"),
         VkAccelerationStructureMotionInstanceDataNV.LAYOUT.withName("data")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$type = PathElement.groupElement("type");
     public static final PathElement PATH$flags = PathElement.groupElement("flags");
@@ -31,6 +32,10 @@ public record VkAccelerationStructureMotionInstanceNV(MemorySegment segment) {
     public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$data = LAYOUT.byteOffset(PATH$data);
+
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$data = LAYOUT$data.byteSize();
 
     public VkAccelerationStructureMotionInstanceNV(MemorySegment segment) {
         this.segment = segment;
@@ -57,7 +62,7 @@ public record VkAccelerationStructureMotionInstanceNV(MemorySegment segment) {
     }
 
     public void data(VkAccelerationStructureMotionInstanceDataNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, LAYOUT$data.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
     }
 
     public static VkAccelerationStructureMotionInstanceNV allocate(Arena arena) {
@@ -68,7 +73,7 @@ public record VkAccelerationStructureMotionInstanceNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureMotionInstanceNV[] ret = new VkAccelerationStructureMotionInstanceNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureMotionInstanceNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureMotionInstanceNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

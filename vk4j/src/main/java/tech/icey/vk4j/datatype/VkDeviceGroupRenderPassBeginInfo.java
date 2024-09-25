@@ -21,6 +21,7 @@ public record VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("deviceRenderAreaCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pDeviceRenderAreas")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) {
     public static final long OFFSET$deviceMask = LAYOUT.byteOffset(PATH$deviceMask);
     public static final long OFFSET$deviceRenderAreaCount = LAYOUT.byteOffset(PATH$deviceRenderAreaCount);
     public static final long OFFSET$pDeviceRenderAreas = LAYOUT.byteOffset(PATH$pDeviceRenderAreas);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$deviceMask = LAYOUT$deviceMask.byteSize();
+    public static final long SIZE$deviceRenderAreaCount = LAYOUT$deviceRenderAreaCount.byteSize();
+    public static final long SIZE$pDeviceRenderAreas = LAYOUT$pDeviceRenderAreas.byteSize();
 
     public VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) {
         this.segment = segment;
@@ -106,7 +113,7 @@ public record VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceGroupRenderPassBeginInfo[] ret = new VkDeviceGroupRenderPassBeginInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceGroupRenderPassBeginInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDeviceGroupRenderPassBeginInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -22,6 +22,7 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDepthInputAttachmentIndex"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pStencilInputAttachmentIndex")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) {
     public static final long OFFSET$pColorAttachmentInputIndices = LAYOUT.byteOffset(PATH$pColorAttachmentInputIndices);
     public static final long OFFSET$pDepthInputAttachmentIndex = LAYOUT.byteOffset(PATH$pDepthInputAttachmentIndex);
     public static final long OFFSET$pStencilInputAttachmentIndex = LAYOUT.byteOffset(PATH$pStencilInputAttachmentIndex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$colorAttachmentCount = LAYOUT$colorAttachmentCount.byteSize();
+    public static final long SIZE$pColorAttachmentInputIndices = LAYOUT$pColorAttachmentInputIndices.byteSize();
+    public static final long SIZE$pDepthInputAttachmentIndex = LAYOUT$pDepthInputAttachmentIndex.byteSize();
+    public static final long SIZE$pStencilInputAttachmentIndex = LAYOUT$pStencilInputAttachmentIndex.byteSize();
 
     public VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -129,7 +137,7 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderingInputAttachmentIndexInfoKHR[] ret = new VkRenderingInputAttachmentIndexInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderingInputAttachmentIndexInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRenderingInputAttachmentIndexInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

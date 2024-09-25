@@ -22,6 +22,7 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("splitInstanceBindRegionCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pSplitInstanceBindRegions")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
     public static final long OFFSET$pDeviceIndices = LAYOUT.byteOffset(PATH$pDeviceIndices);
     public static final long OFFSET$splitInstanceBindRegionCount = LAYOUT.byteOffset(PATH$splitInstanceBindRegionCount);
     public static final long OFFSET$pSplitInstanceBindRegions = LAYOUT.byteOffset(PATH$pSplitInstanceBindRegions);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$deviceIndexCount = LAYOUT$deviceIndexCount.byteSize();
+    public static final long SIZE$pDeviceIndices = LAYOUT$pDeviceIndices.byteSize();
+    public static final long SIZE$splitInstanceBindRegionCount = LAYOUT$splitInstanceBindRegionCount.byteSize();
+    public static final long SIZE$pSplitInstanceBindRegions = LAYOUT$pSplitInstanceBindRegions.byteSize();
 
     public VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
         this.segment = segment;
@@ -126,7 +134,7 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBindImageMemoryDeviceGroupInfo[] ret = new VkBindImageMemoryDeviceGroupInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkBindImageMemoryDeviceGroupInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkBindImageMemoryDeviceGroupInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

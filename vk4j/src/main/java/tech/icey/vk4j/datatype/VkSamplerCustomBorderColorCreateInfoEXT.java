@@ -20,6 +20,7 @@ public record VkSamplerCustomBorderColorCreateInfoEXT(MemorySegment segment) {
         VkClearColorValue.LAYOUT.withName("customBorderColor"),
         ValueLayout.JAVA_INT.withName("format")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkSamplerCustomBorderColorCreateInfoEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$customBorderColor = LAYOUT.byteOffset(PATH$customBorderColor);
     public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$customBorderColor = LAYOUT$customBorderColor.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
 
     public VkSamplerCustomBorderColorCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -62,7 +68,7 @@ public record VkSamplerCustomBorderColorCreateInfoEXT(MemorySegment segment) {
     }
 
     public void customBorderColor(VkClearColorValue value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$customBorderColor, LAYOUT$customBorderColor.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$customBorderColor, SIZE$customBorderColor);
     }
 
     public @enumtype(VkFormat.class) int format() {
@@ -81,7 +87,7 @@ public record VkSamplerCustomBorderColorCreateInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSamplerCustomBorderColorCreateInfoEXT[] ret = new VkSamplerCustomBorderColorCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSamplerCustomBorderColorCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSamplerCustomBorderColorCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

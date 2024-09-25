@@ -19,6 +19,7 @@ public record VkExportMetalDeviceInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("mtlDevice")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkExportMetalDeviceInfoEXT(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$mtlDevice = LAYOUT.byteOffset(PATH$mtlDevice);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$mtlDevice = LAYOUT$mtlDevice.byteSize();
 
     public VkExportMetalDeviceInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkExportMetalDeviceInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExportMetalDeviceInfoEXT[] ret = new VkExportMetalDeviceInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkExportMetalDeviceInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkExportMetalDeviceInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

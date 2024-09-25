@@ -19,6 +19,7 @@ public record VkImageViewMinLodCreateInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_FLOAT.withName("minLod")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkImageViewMinLodCreateInfoEXT(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$minLod = LAYOUT.byteOffset(PATH$minLod);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$minLod = LAYOUT$minLod.byteSize();
 
     public VkImageViewMinLodCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkImageViewMinLodCreateInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageViewMinLodCreateInfoEXT[] ret = new VkImageViewMinLodCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageViewMinLodCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageViewMinLodCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

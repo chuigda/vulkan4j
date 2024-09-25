@@ -29,6 +29,7 @@ public record VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("suggestedXChromaOffset"),
         ValueLayout.JAVA_INT.withName("suggestedYChromaOffset")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -71,6 +72,20 @@ public record VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment) {
     public static final long OFFSET$suggestedYcbcrRange = LAYOUT.byteOffset(PATH$suggestedYcbcrRange);
     public static final long OFFSET$suggestedXChromaOffset = LAYOUT.byteOffset(PATH$suggestedXChromaOffset);
     public static final long OFFSET$suggestedYChromaOffset = LAYOUT.byteOffset(PATH$suggestedYChromaOffset);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$memoryTypeBits = LAYOUT$memoryTypeBits.byteSize();
+    public static final long SIZE$bufferCount = LAYOUT$bufferCount.byteSize();
+    public static final long SIZE$createInfoIndex = LAYOUT$createInfoIndex.byteSize();
+    public static final long SIZE$sysmemPixelFormat = LAYOUT$sysmemPixelFormat.byteSize();
+    public static final long SIZE$formatFeatures = LAYOUT$formatFeatures.byteSize();
+    public static final long SIZE$sysmemColorSpaceIndex = LAYOUT$sysmemColorSpaceIndex.byteSize();
+    public static final long SIZE$samplerYcbcrConversionComponents = LAYOUT$samplerYcbcrConversionComponents.byteSize();
+    public static final long SIZE$suggestedYcbcrModel = LAYOUT$suggestedYcbcrModel.byteSize();
+    public static final long SIZE$suggestedYcbcrRange = LAYOUT$suggestedYcbcrRange.byteSize();
+    public static final long SIZE$suggestedXChromaOffset = LAYOUT$suggestedXChromaOffset.byteSize();
+    public static final long SIZE$suggestedYChromaOffset = LAYOUT$suggestedYChromaOffset.byteSize();
 
     public VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment) {
         this.segment = segment;
@@ -138,7 +153,7 @@ public record VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment) {
     }
 
     public void sysmemColorSpaceIndex(VkSysmemColorSpaceFUCHSIA value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sysmemColorSpaceIndex, LAYOUT$sysmemColorSpaceIndex.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sysmemColorSpaceIndex, SIZE$sysmemColorSpaceIndex);
     }
 
     public VkComponentMapping samplerYcbcrConversionComponents() {
@@ -146,7 +161,7 @@ public record VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment) {
     }
 
     public void samplerYcbcrConversionComponents(VkComponentMapping value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$samplerYcbcrConversionComponents, LAYOUT$samplerYcbcrConversionComponents.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$samplerYcbcrConversionComponents, SIZE$samplerYcbcrConversionComponents);
     }
 
     public @enumtype(VkSamplerYcbcrModelConversion.class) int suggestedYcbcrModel() {
@@ -189,7 +204,7 @@ public record VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferCollectionPropertiesFUCHSIA[] ret = new VkBufferCollectionPropertiesFUCHSIA[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkBufferCollectionPropertiesFUCHSIA(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkBufferCollectionPropertiesFUCHSIA(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

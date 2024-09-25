@@ -35,6 +35,7 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(MemorySegment seg
         ValueLayout.JAVA_INT.withName("fragmentShadingRateWithCustomSampleLocations"),
         ValueLayout.JAVA_INT.withName("fragmentShadingRateStrictMultiplyCombiner")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -96,6 +97,26 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(MemorySegment seg
     public static final long OFFSET$fragmentShadingRateWithCustomSampleLocations = LAYOUT.byteOffset(PATH$fragmentShadingRateWithCustomSampleLocations);
     public static final long OFFSET$fragmentShadingRateStrictMultiplyCombiner = LAYOUT.byteOffset(PATH$fragmentShadingRateStrictMultiplyCombiner);
 
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$minFragmentShadingRateAttachmentTexelSize = LAYOUT$minFragmentShadingRateAttachmentTexelSize.byteSize();
+    public static final long SIZE$maxFragmentShadingRateAttachmentTexelSize = LAYOUT$maxFragmentShadingRateAttachmentTexelSize.byteSize();
+    public static final long SIZE$maxFragmentShadingRateAttachmentTexelSizeAspectRatio = LAYOUT$maxFragmentShadingRateAttachmentTexelSizeAspectRatio.byteSize();
+    public static final long SIZE$primitiveFragmentShadingRateWithMultipleViewports = LAYOUT$primitiveFragmentShadingRateWithMultipleViewports.byteSize();
+    public static final long SIZE$layeredShadingRateAttachments = LAYOUT$layeredShadingRateAttachments.byteSize();
+    public static final long SIZE$fragmentShadingRateNonTrivialCombinerOps = LAYOUT$fragmentShadingRateNonTrivialCombinerOps.byteSize();
+    public static final long SIZE$maxFragmentSize = LAYOUT$maxFragmentSize.byteSize();
+    public static final long SIZE$maxFragmentSizeAspectRatio = LAYOUT$maxFragmentSizeAspectRatio.byteSize();
+    public static final long SIZE$maxFragmentShadingRateCoverageSamples = LAYOUT$maxFragmentShadingRateCoverageSamples.byteSize();
+    public static final long SIZE$maxFragmentShadingRateRasterizationSamples = LAYOUT$maxFragmentShadingRateRasterizationSamples.byteSize();
+    public static final long SIZE$fragmentShadingRateWithShaderDepthStencilWrites = LAYOUT$fragmentShadingRateWithShaderDepthStencilWrites.byteSize();
+    public static final long SIZE$fragmentShadingRateWithSampleMask = LAYOUT$fragmentShadingRateWithSampleMask.byteSize();
+    public static final long SIZE$fragmentShadingRateWithShaderSampleMask = LAYOUT$fragmentShadingRateWithShaderSampleMask.byteSize();
+    public static final long SIZE$fragmentShadingRateWithConservativeRasterization = LAYOUT$fragmentShadingRateWithConservativeRasterization.byteSize();
+    public static final long SIZE$fragmentShadingRateWithFragmentShaderInterlock = LAYOUT$fragmentShadingRateWithFragmentShaderInterlock.byteSize();
+    public static final long SIZE$fragmentShadingRateWithCustomSampleLocations = LAYOUT$fragmentShadingRateWithCustomSampleLocations.byteSize();
+    public static final long SIZE$fragmentShadingRateStrictMultiplyCombiner = LAYOUT$fragmentShadingRateStrictMultiplyCombiner.byteSize();
+
     public VkPhysicalDeviceFragmentShadingRatePropertiesKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR);
@@ -122,7 +143,7 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(MemorySegment seg
     }
 
     public void minFragmentShadingRateAttachmentTexelSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minFragmentShadingRateAttachmentTexelSize, LAYOUT$minFragmentShadingRateAttachmentTexelSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minFragmentShadingRateAttachmentTexelSize, SIZE$minFragmentShadingRateAttachmentTexelSize);
     }
 
     public VkExtent2D maxFragmentShadingRateAttachmentTexelSize() {
@@ -130,7 +151,7 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(MemorySegment seg
     }
 
     public void maxFragmentShadingRateAttachmentTexelSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFragmentShadingRateAttachmentTexelSize, LAYOUT$maxFragmentShadingRateAttachmentTexelSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFragmentShadingRateAttachmentTexelSize, SIZE$maxFragmentShadingRateAttachmentTexelSize);
     }
 
     public @unsigned int maxFragmentShadingRateAttachmentTexelSizeAspectRatio() {
@@ -170,7 +191,7 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(MemorySegment seg
     }
 
     public void maxFragmentSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFragmentSize, LAYOUT$maxFragmentSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFragmentSize, SIZE$maxFragmentSize);
     }
 
     public @unsigned int maxFragmentSizeAspectRatio() {
@@ -261,7 +282,7 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceFragmentShadingRatePropertiesKHR[] ret = new VkPhysicalDeviceFragmentShadingRatePropertiesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

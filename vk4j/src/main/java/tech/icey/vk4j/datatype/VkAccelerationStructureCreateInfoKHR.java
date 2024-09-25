@@ -24,6 +24,7 @@ public record VkAccelerationStructureCreateInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.JAVA_LONG.withName("deviceAddress")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -51,6 +52,15 @@ public record VkAccelerationStructureCreateInfoKHR(MemorySegment segment) {
     public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
     public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
     public static final long OFFSET$deviceAddress = LAYOUT.byteOffset(PATH$deviceAddress);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$createFlags = LAYOUT$createFlags.byteSize();
+    public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
 
     public VkAccelerationStructureCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -129,7 +139,7 @@ public record VkAccelerationStructureCreateInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureCreateInfoKHR[] ret = new VkAccelerationStructureCreateInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

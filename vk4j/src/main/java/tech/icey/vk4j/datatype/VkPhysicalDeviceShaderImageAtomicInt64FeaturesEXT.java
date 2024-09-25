@@ -20,6 +20,7 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(MemorySegment se
         ValueLayout.JAVA_INT.withName("shaderImageInt64Atomics"),
         ValueLayout.JAVA_INT.withName("sparseImageInt64Atomics")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(MemorySegment se
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$shaderImageInt64Atomics = LAYOUT.byteOffset(PATH$shaderImageInt64Atomics);
     public static final long OFFSET$sparseImageInt64Atomics = LAYOUT.byteOffset(PATH$sparseImageInt64Atomics);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderImageInt64Atomics = LAYOUT$shaderImageInt64Atomics.byteSize();
+    public static final long SIZE$sparseImageInt64Atomics = LAYOUT$sparseImageInt64Atomics.byteSize();
 
     public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT[] ret = new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

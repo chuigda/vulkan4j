@@ -20,6 +20,7 @@ public record VkDebugMarkerMarkerInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pMarkerName"),
         MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("color")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkDebugMarkerMarkerInfoEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$pMarkerName = LAYOUT.byteOffset(PATH$pMarkerName);
     public static final long OFFSET$color = LAYOUT.byteOffset(PATH$color);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pMarkerName = LAYOUT$pMarkerName.byteSize();
+    public static final long SIZE$color = LAYOUT$color.byteSize();
 
     public VkDebugMarkerMarkerInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +99,7 @@ public record VkDebugMarkerMarkerInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDebugMarkerMarkerInfoEXT[] ret = new VkDebugMarkerMarkerInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDebugMarkerMarkerInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDebugMarkerMarkerInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

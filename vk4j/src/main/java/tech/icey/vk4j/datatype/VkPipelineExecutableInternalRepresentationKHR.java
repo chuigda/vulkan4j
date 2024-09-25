@@ -23,6 +23,7 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
         NativeLayout.C_SIZE_T.withName("dataSize"),
         ValueLayout.ADDRESS.withName("pData")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -46,6 +47,13 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
     public static final long OFFSET$isText = LAYOUT.byteOffset(PATH$isText);
     public static final long OFFSET$dataSize = LAYOUT.byteOffset(PATH$dataSize);
     public static final long OFFSET$pData = LAYOUT.byteOffset(PATH$pData);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$name = LAYOUT$name.byteSize();
+    public static final long SIZE$description = LAYOUT$description.byteSize();
+    public static final long SIZE$isText = LAYOUT$isText.byteSize();
+    public static final long SIZE$pData = LAYOUT$pData.byteSize();
 
     public VkPipelineExecutableInternalRepresentationKHR(MemorySegment segment) {
         this.segment = segment;
@@ -124,7 +132,7 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineExecutableInternalRepresentationKHR[] ret = new VkPipelineExecutableInternalRepresentationKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineExecutableInternalRepresentationKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineExecutableInternalRepresentationKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -20,6 +20,7 @@ public record VkDescriptorBufferBindingInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("address"),
         ValueLayout.JAVA_INT.withName("usage")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkDescriptorBufferBindingInfoEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$address = LAYOUT.byteOffset(PATH$address);
     public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$address = LAYOUT$address.byteSize();
+    public static final long SIZE$usage = LAYOUT$usage.byteSize();
 
     public VkDescriptorBufferBindingInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkDescriptorBufferBindingInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorBufferBindingInfoEXT[] ret = new VkDescriptorBufferBindingInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDescriptorBufferBindingInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDescriptorBufferBindingInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

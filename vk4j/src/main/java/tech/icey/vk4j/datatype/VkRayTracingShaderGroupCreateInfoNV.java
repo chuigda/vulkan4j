@@ -23,6 +23,7 @@ public record VkRayTracingShaderGroupCreateInfoNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("anyHitShader"),
         ValueLayout.JAVA_INT.withName("intersectionShader")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkRayTracingShaderGroupCreateInfoNV(MemorySegment segment) {
     public static final long OFFSET$closestHitShader = LAYOUT.byteOffset(PATH$closestHitShader);
     public static final long OFFSET$anyHitShader = LAYOUT.byteOffset(PATH$anyHitShader);
     public static final long OFFSET$intersectionShader = LAYOUT.byteOffset(PATH$intersectionShader);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$generalShader = LAYOUT$generalShader.byteSize();
+    public static final long SIZE$closestHitShader = LAYOUT$closestHitShader.byteSize();
+    public static final long SIZE$anyHitShader = LAYOUT$anyHitShader.byteSize();
+    public static final long SIZE$intersectionShader = LAYOUT$intersectionShader.byteSize();
 
     public VkRayTracingShaderGroupCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -117,7 +126,7 @@ public record VkRayTracingShaderGroupCreateInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRayTracingShaderGroupCreateInfoNV[] ret = new VkRayTracingShaderGroupCreateInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRayTracingShaderGroupCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRayTracingShaderGroupCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

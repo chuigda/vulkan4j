@@ -19,6 +19,7 @@ public record VkAccelerationStructureMotionInstanceDataNV(MemorySegment segment)
         VkAccelerationStructureMatrixMotionInstanceNV.LAYOUT.withName("matrixMotionInstance"),
         VkAccelerationStructureSRTMotionInstanceNV.LAYOUT.withName("srtMotionInstance")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$staticInstance = PathElement.groupElement("staticInstance");
     public static final PathElement PATH$matrixMotionInstance = PathElement.groupElement("matrixMotionInstance");
@@ -32,6 +33,10 @@ public record VkAccelerationStructureMotionInstanceDataNV(MemorySegment segment)
     public static final long OFFSET$matrixMotionInstance = LAYOUT.byteOffset(PATH$matrixMotionInstance);
     public static final long OFFSET$srtMotionInstance = LAYOUT.byteOffset(PATH$srtMotionInstance);
 
+    public static final long SIZE$staticInstance = LAYOUT$staticInstance.byteSize();
+    public static final long SIZE$matrixMotionInstance = LAYOUT$matrixMotionInstance.byteSize();
+    public static final long SIZE$srtMotionInstance = LAYOUT$srtMotionInstance.byteSize();
+
     public VkAccelerationStructureMotionInstanceDataNV(MemorySegment segment) {
         this.segment = segment;
     }
@@ -41,7 +46,7 @@ public record VkAccelerationStructureMotionInstanceDataNV(MemorySegment segment)
     }
 
     public void staticInstance(VkAccelerationStructureInstanceKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$staticInstance, LAYOUT$staticInstance.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$staticInstance, SIZE$staticInstance);
     }
 
     public VkAccelerationStructureMatrixMotionInstanceNV matrixMotionInstance() {
@@ -49,7 +54,7 @@ public record VkAccelerationStructureMotionInstanceDataNV(MemorySegment segment)
     }
 
     public void matrixMotionInstance(VkAccelerationStructureMatrixMotionInstanceNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$matrixMotionInstance, LAYOUT$matrixMotionInstance.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$matrixMotionInstance, SIZE$matrixMotionInstance);
     }
 
     public VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance() {
@@ -57,7 +62,7 @@ public record VkAccelerationStructureMotionInstanceDataNV(MemorySegment segment)
     }
 
     public void srtMotionInstance(VkAccelerationStructureSRTMotionInstanceNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srtMotionInstance, LAYOUT$srtMotionInstance.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srtMotionInstance, SIZE$srtMotionInstance);
     }
 
     public static VkAccelerationStructureMotionInstanceDataNV allocate(Arena arena) {
@@ -68,7 +73,7 @@ public record VkAccelerationStructureMotionInstanceDataNV(MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureMotionInstanceDataNV[] ret = new VkAccelerationStructureMotionInstanceDataNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureMotionInstanceDataNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureMotionInstanceDataNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

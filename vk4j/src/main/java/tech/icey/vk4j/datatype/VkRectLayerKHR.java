@@ -1,12 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.unsigned;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkRectLayerKHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -14,6 +19,7 @@ public record VkRectLayerKHR(MemorySegment segment) {
         VkExtent2D.LAYOUT.withName("extent"),
         ValueLayout.JAVA_INT.withName("layer")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$offset = PathElement.groupElement("offset");
     public static final PathElement PATH$extent = PathElement.groupElement("extent");
@@ -27,6 +33,10 @@ public record VkRectLayerKHR(MemorySegment segment) {
     public static final long OFFSET$extent = LAYOUT.byteOffset(PATH$extent);
     public static final long OFFSET$layer = LAYOUT.byteOffset(PATH$layer);
 
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$extent = LAYOUT$extent.byteSize();
+    public static final long SIZE$layer = LAYOUT$layer.byteSize();
+
     public VkRectLayerKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -36,7 +46,7 @@ public record VkRectLayerKHR(MemorySegment segment) {
     }
 
     public void offset(VkOffset2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$offset, LAYOUT$offset.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$offset, SIZE$offset);
     }
 
     public VkExtent2D extent() {
@@ -44,7 +54,7 @@ public record VkRectLayerKHR(MemorySegment segment) {
     }
 
     public void extent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, LAYOUT$extent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
     }
 
     public @unsigned int layer() {
@@ -58,12 +68,12 @@ public record VkRectLayerKHR(MemorySegment segment) {
     public static VkRectLayerKHR allocate(Arena arena) {
         return new VkRectLayerKHR(arena.allocate(LAYOUT));
     }
-
+    
     public static VkRectLayerKHR[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRectLayerKHR[] ret = new VkRectLayerKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRectLayerKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRectLayerKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

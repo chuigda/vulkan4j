@@ -20,6 +20,7 @@ public record VkImageCompressionPropertiesEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("imageCompressionFlags"),
         ValueLayout.JAVA_INT.withName("imageCompressionFixedRateFlags")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkImageCompressionPropertiesEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$imageCompressionFlags = LAYOUT.byteOffset(PATH$imageCompressionFlags);
     public static final long OFFSET$imageCompressionFixedRateFlags = LAYOUT.byteOffset(PATH$imageCompressionFixedRateFlags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$imageCompressionFlags = LAYOUT$imageCompressionFlags.byteSize();
+    public static final long SIZE$imageCompressionFixedRateFlags = LAYOUT$imageCompressionFixedRateFlags.byteSize();
 
     public VkImageCompressionPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkImageCompressionPropertiesEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageCompressionPropertiesEXT[] ret = new VkImageCompressionPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageCompressionPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageCompressionPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

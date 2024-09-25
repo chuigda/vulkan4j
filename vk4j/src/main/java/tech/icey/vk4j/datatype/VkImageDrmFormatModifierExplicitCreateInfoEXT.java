@@ -21,6 +21,7 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
         ValueLayout.JAVA_INT.withName("drmFormatModifierPlaneCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkSubresourceLayout.LAYOUT).withName("pPlaneLayouts")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
     public static final long OFFSET$drmFormatModifier = LAYOUT.byteOffset(PATH$drmFormatModifier);
     public static final long OFFSET$drmFormatModifierPlaneCount = LAYOUT.byteOffset(PATH$drmFormatModifierPlaneCount);
     public static final long OFFSET$pPlaneLayouts = LAYOUT.byteOffset(PATH$pPlaneLayouts);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$drmFormatModifier = LAYOUT$drmFormatModifier.byteSize();
+    public static final long SIZE$drmFormatModifierPlaneCount = LAYOUT$drmFormatModifierPlaneCount.byteSize();
+    public static final long SIZE$pPlaneLayouts = LAYOUT$pPlaneLayouts.byteSize();
 
     public VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -106,7 +113,7 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageDrmFormatModifierExplicitCreateInfoEXT[] ret = new VkImageDrmFormatModifierExplicitCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageDrmFormatModifierExplicitCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageDrmFormatModifierExplicitCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

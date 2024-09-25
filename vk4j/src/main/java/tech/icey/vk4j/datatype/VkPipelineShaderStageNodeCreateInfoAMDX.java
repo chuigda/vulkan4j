@@ -20,6 +20,7 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pName"),
         ValueLayout.JAVA_INT.withName("index")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$pName = LAYOUT.byteOffset(PATH$pName);
     public static final long OFFSET$index = LAYOUT.byteOffset(PATH$index);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pName = LAYOUT$pName.byteSize();
+    public static final long SIZE$index = LAYOUT$index.byteSize();
 
     public VkPipelineShaderStageNodeCreateInfoAMDX(MemorySegment segment) {
         this.segment = segment;
@@ -89,7 +95,7 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineShaderStageNodeCreateInfoAMDX[] ret = new VkPipelineShaderStageNodeCreateInfoAMDX[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineShaderStageNodeCreateInfoAMDX(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineShaderStageNodeCreateInfoAMDX(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

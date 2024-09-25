@@ -19,6 +19,7 @@ public record VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(MemorySegmen
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shaderZeroInitializeWorkgroupMemory")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(MemorySegmen
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$shaderZeroInitializeWorkgroupMemory = LAYOUT.byteOffset(PATH$shaderZeroInitializeWorkgroupMemory);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderZeroInitializeWorkgroupMemory = LAYOUT$shaderZeroInitializeWorkgroupMemory.byteSize();
 
     public VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures[] ret = new VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

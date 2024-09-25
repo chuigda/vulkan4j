@@ -23,6 +23,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("scissorCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pScissors")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) {
     public static final long OFFSET$pViewports = LAYOUT.byteOffset(PATH$pViewports);
     public static final long OFFSET$scissorCount = LAYOUT.byteOffset(PATH$scissorCount);
     public static final long OFFSET$pScissors = LAYOUT.byteOffset(PATH$pScissors);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$viewportCount = LAYOUT$viewportCount.byteSize();
+    public static final long SIZE$pViewports = LAYOUT$pViewports.byteSize();
+    public static final long SIZE$scissorCount = LAYOUT$scissorCount.byteSize();
+    public static final long SIZE$pScissors = LAYOUT$pScissors.byteSize();
 
     public VkPipelineViewportStateCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -143,7 +152,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineViewportStateCreateInfo[] ret = new VkPipelineViewportStateCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineViewportStateCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineViewportStateCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

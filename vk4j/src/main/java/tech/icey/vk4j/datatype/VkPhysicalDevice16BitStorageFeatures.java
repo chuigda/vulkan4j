@@ -22,6 +22,7 @@ public record VkPhysicalDevice16BitStorageFeatures(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("storagePushConstant16"),
         ValueLayout.JAVA_INT.withName("storageInputOutput16")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPhysicalDevice16BitStorageFeatures(MemorySegment segment) {
     public static final long OFFSET$uniformAndStorageBuffer16BitAccess = LAYOUT.byteOffset(PATH$uniformAndStorageBuffer16BitAccess);
     public static final long OFFSET$storagePushConstant16 = LAYOUT.byteOffset(PATH$storagePushConstant16);
     public static final long OFFSET$storageInputOutput16 = LAYOUT.byteOffset(PATH$storageInputOutput16);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$storageBuffer16BitAccess = LAYOUT$storageBuffer16BitAccess.byteSize();
+    public static final long SIZE$uniformAndStorageBuffer16BitAccess = LAYOUT$uniformAndStorageBuffer16BitAccess.byteSize();
+    public static final long SIZE$storagePushConstant16 = LAYOUT$storagePushConstant16.byteSize();
+    public static final long SIZE$storageInputOutput16 = LAYOUT$storageInputOutput16.byteSize();
 
     public VkPhysicalDevice16BitStorageFeatures(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkPhysicalDevice16BitStorageFeatures(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevice16BitStorageFeatures[] ret = new VkPhysicalDevice16BitStorageFeatures[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDevice16BitStorageFeatures(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDevice16BitStorageFeatures(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

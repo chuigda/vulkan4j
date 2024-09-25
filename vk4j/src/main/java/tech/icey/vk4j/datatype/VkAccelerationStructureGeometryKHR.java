@@ -21,6 +21,7 @@ public record VkAccelerationStructureGeometryKHR(MemorySegment segment) {
         VkAccelerationStructureGeometryDataKHR.LAYOUT.withName("geometry"),
         ValueLayout.JAVA_INT.withName("flags")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkAccelerationStructureGeometryKHR(MemorySegment segment) {
     public static final long OFFSET$geometryType = LAYOUT.byteOffset(PATH$geometryType);
     public static final long OFFSET$geometry = LAYOUT.byteOffset(PATH$geometry);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$geometryType = LAYOUT$geometryType.byteSize();
+    public static final long SIZE$geometry = LAYOUT$geometry.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
 
     public VkAccelerationStructureGeometryKHR(MemorySegment segment) {
         this.segment = segment;
@@ -74,7 +81,7 @@ public record VkAccelerationStructureGeometryKHR(MemorySegment segment) {
     }
 
     public void geometry(VkAccelerationStructureGeometryDataKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$geometry, LAYOUT$geometry.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$geometry, SIZE$geometry);
     }
 
     public @enumtype(VkGeometryFlagsKHR.class) int flags() {
@@ -93,7 +100,7 @@ public record VkAccelerationStructureGeometryKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureGeometryKHR[] ret = new VkAccelerationStructureGeometryKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureGeometryKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureGeometryKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

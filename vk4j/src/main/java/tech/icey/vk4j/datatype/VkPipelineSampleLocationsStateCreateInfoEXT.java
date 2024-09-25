@@ -20,6 +20,7 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(MemorySegment segment)
         ValueLayout.JAVA_INT.withName("sampleLocationsEnable"),
         VkSampleLocationsInfoEXT.LAYOUT.withName("sampleLocationsInfo")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(MemorySegment segment)
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$sampleLocationsEnable = LAYOUT.byteOffset(PATH$sampleLocationsEnable);
     public static final long OFFSET$sampleLocationsInfo = LAYOUT.byteOffset(PATH$sampleLocationsInfo);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$sampleLocationsEnable = LAYOUT$sampleLocationsEnable.byteSize();
+    public static final long SIZE$sampleLocationsInfo = LAYOUT$sampleLocationsInfo.byteSize();
 
     public VkPipelineSampleLocationsStateCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -70,7 +76,7 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(MemorySegment segment)
     }
 
     public void sampleLocationsInfo(VkSampleLocationsInfoEXT value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationsInfo, LAYOUT$sampleLocationsInfo.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationsInfo, SIZE$sampleLocationsInfo);
     }
 
     public static VkPipelineSampleLocationsStateCreateInfoEXT allocate(Arena arena) {
@@ -81,7 +87,7 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineSampleLocationsStateCreateInfoEXT[] ret = new VkPipelineSampleLocationsStateCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineSampleLocationsStateCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineSampleLocationsStateCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

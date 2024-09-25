@@ -20,6 +20,7 @@ public record VkQueueFamilyProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("timestampValidBits"),
         VkExtent3D.LAYOUT.withName("minImageTransferGranularity")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$queueFlags = PathElement.groupElement("queueFlags");
     public static final PathElement PATH$queueCount = PathElement.groupElement("queueCount");
@@ -35,6 +36,11 @@ public record VkQueueFamilyProperties(MemorySegment segment) {
     public static final long OFFSET$queueCount = LAYOUT.byteOffset(PATH$queueCount);
     public static final long OFFSET$timestampValidBits = LAYOUT.byteOffset(PATH$timestampValidBits);
     public static final long OFFSET$minImageTransferGranularity = LAYOUT.byteOffset(PATH$minImageTransferGranularity);
+
+    public static final long SIZE$queueFlags = LAYOUT$queueFlags.byteSize();
+    public static final long SIZE$queueCount = LAYOUT$queueCount.byteSize();
+    public static final long SIZE$timestampValidBits = LAYOUT$timestampValidBits.byteSize();
+    public static final long SIZE$minImageTransferGranularity = LAYOUT$minImageTransferGranularity.byteSize();
 
     public VkQueueFamilyProperties(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +75,7 @@ public record VkQueueFamilyProperties(MemorySegment segment) {
     }
 
     public void minImageTransferGranularity(VkExtent3D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minImageTransferGranularity, LAYOUT$minImageTransferGranularity.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minImageTransferGranularity, SIZE$minImageTransferGranularity);
     }
 
     public static VkQueueFamilyProperties allocate(Arena arena) {
@@ -80,7 +86,7 @@ public record VkQueueFamilyProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkQueueFamilyProperties[] ret = new VkQueueFamilyProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkQueueFamilyProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkQueueFamilyProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

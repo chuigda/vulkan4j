@@ -27,6 +27,7 @@ public record VkScreenBufferFormatPropertiesQNX(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("suggestedXChromaOffset"),
         ValueLayout.JAVA_INT.withName("suggestedYChromaOffset")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -63,6 +64,18 @@ public record VkScreenBufferFormatPropertiesQNX(MemorySegment segment) {
     public static final long OFFSET$suggestedYcbcrRange = LAYOUT.byteOffset(PATH$suggestedYcbcrRange);
     public static final long OFFSET$suggestedXChromaOffset = LAYOUT.byteOffset(PATH$suggestedXChromaOffset);
     public static final long OFFSET$suggestedYChromaOffset = LAYOUT.byteOffset(PATH$suggestedYChromaOffset);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
+    public static final long SIZE$externalFormat = LAYOUT$externalFormat.byteSize();
+    public static final long SIZE$screenUsage = LAYOUT$screenUsage.byteSize();
+    public static final long SIZE$formatFeatures = LAYOUT$formatFeatures.byteSize();
+    public static final long SIZE$samplerYcbcrConversionComponents = LAYOUT$samplerYcbcrConversionComponents.byteSize();
+    public static final long SIZE$suggestedYcbcrModel = LAYOUT$suggestedYcbcrModel.byteSize();
+    public static final long SIZE$suggestedYcbcrRange = LAYOUT$suggestedYcbcrRange.byteSize();
+    public static final long SIZE$suggestedXChromaOffset = LAYOUT$suggestedXChromaOffset.byteSize();
+    public static final long SIZE$suggestedYChromaOffset = LAYOUT$suggestedYChromaOffset.byteSize();
 
     public VkScreenBufferFormatPropertiesQNX(MemorySegment segment) {
         this.segment = segment;
@@ -122,7 +135,7 @@ public record VkScreenBufferFormatPropertiesQNX(MemorySegment segment) {
     }
 
     public void samplerYcbcrConversionComponents(VkComponentMapping value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$samplerYcbcrConversionComponents, LAYOUT$samplerYcbcrConversionComponents.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$samplerYcbcrConversionComponents, SIZE$samplerYcbcrConversionComponents);
     }
 
     public @enumtype(VkSamplerYcbcrModelConversion.class) int suggestedYcbcrModel() {
@@ -165,7 +178,7 @@ public record VkScreenBufferFormatPropertiesQNX(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkScreenBufferFormatPropertiesQNX[] ret = new VkScreenBufferFormatPropertiesQNX[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkScreenBufferFormatPropertiesQNX(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkScreenBufferFormatPropertiesQNX(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

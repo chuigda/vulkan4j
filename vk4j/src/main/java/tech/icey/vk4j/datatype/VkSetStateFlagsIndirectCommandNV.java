@@ -17,12 +17,15 @@ public record VkSetStateFlagsIndirectCommandNV(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("data")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$data = PathElement.groupElement("data");
 
     public static final OfInt LAYOUT$data = (OfInt) LAYOUT.select(PATH$data);
 
     public static final long OFFSET$data = LAYOUT.byteOffset(PATH$data);
+
+    public static final long SIZE$data = LAYOUT$data.byteSize();
 
     public VkSetStateFlagsIndirectCommandNV(MemorySegment segment) {
         this.segment = segment;
@@ -44,7 +47,7 @@ public record VkSetStateFlagsIndirectCommandNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSetStateFlagsIndirectCommandNV[] ret = new VkSetStateFlagsIndirectCommandNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSetStateFlagsIndirectCommandNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSetStateFlagsIndirectCommandNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

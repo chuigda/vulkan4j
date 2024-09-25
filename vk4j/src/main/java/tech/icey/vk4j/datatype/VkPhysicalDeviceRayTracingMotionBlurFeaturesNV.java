@@ -20,6 +20,7 @@ public record VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(MemorySegment segme
         ValueLayout.JAVA_INT.withName("rayTracingMotionBlur"),
         ValueLayout.JAVA_INT.withName("rayTracingMotionBlurPipelineTraceRaysIndirect")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(MemorySegment segme
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$rayTracingMotionBlur = LAYOUT.byteOffset(PATH$rayTracingMotionBlur);
     public static final long OFFSET$rayTracingMotionBlurPipelineTraceRaysIndirect = LAYOUT.byteOffset(PATH$rayTracingMotionBlurPipelineTraceRaysIndirect);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$rayTracingMotionBlur = LAYOUT$rayTracingMotionBlur.byteSize();
+    public static final long SIZE$rayTracingMotionBlurPipelineTraceRaysIndirect = LAYOUT$rayTracingMotionBlurPipelineTraceRaysIndirect.byteSize();
 
     public VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceRayTracingMotionBlurFeaturesNV[] ret = new VkPhysicalDeviceRayTracingMotionBlurFeaturesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

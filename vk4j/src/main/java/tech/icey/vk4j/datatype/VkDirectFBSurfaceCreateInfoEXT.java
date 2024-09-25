@@ -21,6 +21,7 @@ public record VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("dfb"),
         ValueLayout.ADDRESS.withName("surface")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) {
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$dfb = LAYOUT.byteOffset(PATH$dfb);
     public static final long OFFSET$surface = LAYOUT.byteOffset(PATH$surface);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$dfb = LAYOUT$dfb.byteSize();
+    public static final long SIZE$surface = LAYOUT$surface.byteSize();
 
     public VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDirectFBSurfaceCreateInfoEXT[] ret = new VkDirectFBSurfaceCreateInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDirectFBSurfaceCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDirectFBSurfaceCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

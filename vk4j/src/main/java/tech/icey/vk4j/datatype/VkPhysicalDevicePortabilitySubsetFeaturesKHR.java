@@ -33,6 +33,7 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(MemorySegment segment
         ValueLayout.JAVA_INT.withName("triangleFans"),
         ValueLayout.JAVA_INT.withName("vertexAttributeAccessBeyondStride")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -87,6 +88,24 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(MemorySegment segment
     public static final long OFFSET$tessellationPointMode = LAYOUT.byteOffset(PATH$tessellationPointMode);
     public static final long OFFSET$triangleFans = LAYOUT.byteOffset(PATH$triangleFans);
     public static final long OFFSET$vertexAttributeAccessBeyondStride = LAYOUT.byteOffset(PATH$vertexAttributeAccessBeyondStride);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$constantAlphaColorBlendFactors = LAYOUT$constantAlphaColorBlendFactors.byteSize();
+    public static final long SIZE$events = LAYOUT$events.byteSize();
+    public static final long SIZE$imageViewFormatReinterpretation = LAYOUT$imageViewFormatReinterpretation.byteSize();
+    public static final long SIZE$imageViewFormatSwizzle = LAYOUT$imageViewFormatSwizzle.byteSize();
+    public static final long SIZE$imageView2DOn3DImage = LAYOUT$imageView2DOn3DImage.byteSize();
+    public static final long SIZE$multisampleArrayImage = LAYOUT$multisampleArrayImage.byteSize();
+    public static final long SIZE$mutableComparisonSamplers = LAYOUT$mutableComparisonSamplers.byteSize();
+    public static final long SIZE$pointPolygons = LAYOUT$pointPolygons.byteSize();
+    public static final long SIZE$samplerMipLodBias = LAYOUT$samplerMipLodBias.byteSize();
+    public static final long SIZE$separateStencilMaskRef = LAYOUT$separateStencilMaskRef.byteSize();
+    public static final long SIZE$shaderSampleRateInterpolationFunctions = LAYOUT$shaderSampleRateInterpolationFunctions.byteSize();
+    public static final long SIZE$tessellationIsolines = LAYOUT$tessellationIsolines.byteSize();
+    public static final long SIZE$tessellationPointMode = LAYOUT$tessellationPointMode.byteSize();
+    public static final long SIZE$triangleFans = LAYOUT$triangleFans.byteSize();
+    public static final long SIZE$vertexAttributeAccessBeyondStride = LAYOUT$vertexAttributeAccessBeyondStride.byteSize();
 
     public VkPhysicalDevicePortabilitySubsetFeaturesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -237,7 +256,7 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevicePortabilitySubsetFeaturesKHR[] ret = new VkPhysicalDevicePortabilitySubsetFeaturesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDevicePortabilitySubsetFeaturesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDevicePortabilitySubsetFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

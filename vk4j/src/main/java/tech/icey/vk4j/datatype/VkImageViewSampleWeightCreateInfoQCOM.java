@@ -21,6 +21,7 @@ public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) {
         VkExtent2D.LAYOUT.withName("filterSize"),
         ValueLayout.JAVA_INT.withName("numPhases")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) {
     public static final long OFFSET$filterCenter = LAYOUT.byteOffset(PATH$filterCenter);
     public static final long OFFSET$filterSize = LAYOUT.byteOffset(PATH$filterSize);
     public static final long OFFSET$numPhases = LAYOUT.byteOffset(PATH$numPhases);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$filterCenter = LAYOUT$filterCenter.byteSize();
+    public static final long SIZE$filterSize = LAYOUT$filterSize.byteSize();
+    public static final long SIZE$numPhases = LAYOUT$numPhases.byteSize();
 
     public VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) {
         this.segment = segment;
@@ -66,7 +73,7 @@ public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) {
     }
 
     public void filterCenter(VkOffset2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$filterCenter, LAYOUT$filterCenter.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$filterCenter, SIZE$filterCenter);
     }
 
     public VkExtent2D filterSize() {
@@ -74,7 +81,7 @@ public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) {
     }
 
     public void filterSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$filterSize, LAYOUT$filterSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$filterSize, SIZE$filterSize);
     }
 
     public @unsigned int numPhases() {
@@ -93,7 +100,7 @@ public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageViewSampleWeightCreateInfoQCOM[] ret = new VkImageViewSampleWeightCreateInfoQCOM[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageViewSampleWeightCreateInfoQCOM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageViewSampleWeightCreateInfoQCOM(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

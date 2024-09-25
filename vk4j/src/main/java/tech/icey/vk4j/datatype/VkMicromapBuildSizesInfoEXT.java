@@ -21,6 +21,7 @@ public record VkMicromapBuildSizesInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("buildScratchSize"),
         ValueLayout.JAVA_INT.withName("discardable")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkMicromapBuildSizesInfoEXT(MemorySegment segment) {
     public static final long OFFSET$micromapSize = LAYOUT.byteOffset(PATH$micromapSize);
     public static final long OFFSET$buildScratchSize = LAYOUT.byteOffset(PATH$buildScratchSize);
     public static final long OFFSET$discardable = LAYOUT.byteOffset(PATH$discardable);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$micromapSize = LAYOUT$micromapSize.byteSize();
+    public static final long SIZE$buildScratchSize = LAYOUT$buildScratchSize.byteSize();
+    public static final long SIZE$discardable = LAYOUT$discardable.byteSize();
 
     public VkMicromapBuildSizesInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkMicromapBuildSizesInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMicromapBuildSizesInfoEXT[] ret = new VkMicromapBuildSizesInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkMicromapBuildSizesInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkMicromapBuildSizesInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

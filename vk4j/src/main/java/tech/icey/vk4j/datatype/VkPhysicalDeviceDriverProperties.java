@@ -22,6 +22,7 @@ public record VkPhysicalDeviceDriverProperties(MemorySegment segment) {
         MemoryLayout.sequenceLayout(VK_MAX_DRIVER_INFO_SIZE, ValueLayout.JAVA_BYTE).withName("driverInfo"),
         VkConformanceVersion.LAYOUT.withName("conformanceVersion")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPhysicalDeviceDriverProperties(MemorySegment segment) {
     public static final long OFFSET$driverName = LAYOUT.byteOffset(PATH$driverName);
     public static final long OFFSET$driverInfo = LAYOUT.byteOffset(PATH$driverInfo);
     public static final long OFFSET$conformanceVersion = LAYOUT.byteOffset(PATH$conformanceVersion);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$driverID = LAYOUT$driverID.byteSize();
+    public static final long SIZE$driverName = LAYOUT$driverName.byteSize();
+    public static final long SIZE$driverInfo = LAYOUT$driverInfo.byteSize();
+    public static final long SIZE$conformanceVersion = LAYOUT$conformanceVersion.byteSize();
 
     public VkPhysicalDeviceDriverProperties(MemorySegment segment) {
         this.segment = segment;
@@ -102,7 +110,7 @@ public record VkPhysicalDeviceDriverProperties(MemorySegment segment) {
     }
 
     public void conformanceVersion(VkConformanceVersion value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$conformanceVersion, LAYOUT$conformanceVersion.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$conformanceVersion, SIZE$conformanceVersion);
     }
 
     public static VkPhysicalDeviceDriverProperties allocate(Arena arena) {
@@ -113,7 +121,7 @@ public record VkPhysicalDeviceDriverProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceDriverProperties[] ret = new VkPhysicalDeviceDriverProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceDriverProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceDriverProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -26,6 +26,7 @@ public record VkPhysicalDeviceMaintenance7PropertiesKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic"),
         ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindTotalBuffersDynamic")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -59,6 +60,17 @@ public record VkPhysicalDeviceMaintenance7PropertiesKHR(MemorySegment segment) {
     public static final long OFFSET$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic = LAYOUT.byteOffset(PATH$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic);
     public static final long OFFSET$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic = LAYOUT.byteOffset(PATH$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic);
     public static final long OFFSET$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic = LAYOUT.byteOffset(PATH$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$robustFragmentShadingRateAttachmentAccess = LAYOUT$robustFragmentShadingRateAttachmentAccess.byteSize();
+    public static final long SIZE$separateDepthStencilAttachmentAccess = LAYOUT$separateDepthStencilAttachmentAccess.byteSize();
+    public static final long SIZE$maxDescriptorSetTotalUniformBuffersDynamic = LAYOUT$maxDescriptorSetTotalUniformBuffersDynamic.byteSize();
+    public static final long SIZE$maxDescriptorSetTotalStorageBuffersDynamic = LAYOUT$maxDescriptorSetTotalStorageBuffersDynamic.byteSize();
+    public static final long SIZE$maxDescriptorSetTotalBuffersDynamic = LAYOUT$maxDescriptorSetTotalBuffersDynamic.byteSize();
+    public static final long SIZE$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic = LAYOUT$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic.byteSize();
+    public static final long SIZE$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic = LAYOUT$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic.byteSize();
+    public static final long SIZE$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic = LAYOUT$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic.byteSize();
 
     public VkPhysicalDeviceMaintenance7PropertiesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -153,7 +165,7 @@ public record VkPhysicalDeviceMaintenance7PropertiesKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMaintenance7PropertiesKHR[] ret = new VkPhysicalDeviceMaintenance7PropertiesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMaintenance7PropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceMaintenance7PropertiesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -19,6 +19,7 @@ public record VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("usage")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$usage = LAYOUT$usage.byteSize();
 
     public VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferUsageFlags2CreateInfoKHR[] ret = new VkBufferUsageFlags2CreateInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkBufferUsageFlags2CreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkBufferUsageFlags2CreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

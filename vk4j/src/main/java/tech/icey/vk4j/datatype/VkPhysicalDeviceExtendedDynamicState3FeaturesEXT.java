@@ -49,6 +49,7 @@ public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(MemorySegment seg
         ValueLayout.JAVA_INT.withName("extendedDynamicState3RepresentativeFragmentTestEnable"),
         ValueLayout.JAVA_INT.withName("extendedDynamicState3ShadingRateImageEnable")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -151,6 +152,40 @@ public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(MemorySegment seg
     public static final long OFFSET$extendedDynamicState3CoverageReductionMode = LAYOUT.byteOffset(PATH$extendedDynamicState3CoverageReductionMode);
     public static final long OFFSET$extendedDynamicState3RepresentativeFragmentTestEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3RepresentativeFragmentTestEnable);
     public static final long OFFSET$extendedDynamicState3ShadingRateImageEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3ShadingRateImageEnable);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$extendedDynamicState3TessellationDomainOrigin = LAYOUT$extendedDynamicState3TessellationDomainOrigin.byteSize();
+    public static final long SIZE$extendedDynamicState3DepthClampEnable = LAYOUT$extendedDynamicState3DepthClampEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3PolygonMode = LAYOUT$extendedDynamicState3PolygonMode.byteSize();
+    public static final long SIZE$extendedDynamicState3RasterizationSamples = LAYOUT$extendedDynamicState3RasterizationSamples.byteSize();
+    public static final long SIZE$extendedDynamicState3SampleMask = LAYOUT$extendedDynamicState3SampleMask.byteSize();
+    public static final long SIZE$extendedDynamicState3AlphaToCoverageEnable = LAYOUT$extendedDynamicState3AlphaToCoverageEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3AlphaToOneEnable = LAYOUT$extendedDynamicState3AlphaToOneEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3LogicOpEnable = LAYOUT$extendedDynamicState3LogicOpEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3ColorBlendEnable = LAYOUT$extendedDynamicState3ColorBlendEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3ColorBlendEquation = LAYOUT$extendedDynamicState3ColorBlendEquation.byteSize();
+    public static final long SIZE$extendedDynamicState3ColorWriteMask = LAYOUT$extendedDynamicState3ColorWriteMask.byteSize();
+    public static final long SIZE$extendedDynamicState3RasterizationStream = LAYOUT$extendedDynamicState3RasterizationStream.byteSize();
+    public static final long SIZE$extendedDynamicState3ConservativeRasterizationMode = LAYOUT$extendedDynamicState3ConservativeRasterizationMode.byteSize();
+    public static final long SIZE$extendedDynamicState3ExtraPrimitiveOverestimationSize = LAYOUT$extendedDynamicState3ExtraPrimitiveOverestimationSize.byteSize();
+    public static final long SIZE$extendedDynamicState3DepthClipEnable = LAYOUT$extendedDynamicState3DepthClipEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3SampleLocationsEnable = LAYOUT$extendedDynamicState3SampleLocationsEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3ColorBlendAdvanced = LAYOUT$extendedDynamicState3ColorBlendAdvanced.byteSize();
+    public static final long SIZE$extendedDynamicState3ProvokingVertexMode = LAYOUT$extendedDynamicState3ProvokingVertexMode.byteSize();
+    public static final long SIZE$extendedDynamicState3LineRasterizationMode = LAYOUT$extendedDynamicState3LineRasterizationMode.byteSize();
+    public static final long SIZE$extendedDynamicState3LineStippleEnable = LAYOUT$extendedDynamicState3LineStippleEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3DepthClipNegativeOneToOne = LAYOUT$extendedDynamicState3DepthClipNegativeOneToOne.byteSize();
+    public static final long SIZE$extendedDynamicState3ViewportWScalingEnable = LAYOUT$extendedDynamicState3ViewportWScalingEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3ViewportSwizzle = LAYOUT$extendedDynamicState3ViewportSwizzle.byteSize();
+    public static final long SIZE$extendedDynamicState3CoverageToColorEnable = LAYOUT$extendedDynamicState3CoverageToColorEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3CoverageToColorLocation = LAYOUT$extendedDynamicState3CoverageToColorLocation.byteSize();
+    public static final long SIZE$extendedDynamicState3CoverageModulationMode = LAYOUT$extendedDynamicState3CoverageModulationMode.byteSize();
+    public static final long SIZE$extendedDynamicState3CoverageModulationTableEnable = LAYOUT$extendedDynamicState3CoverageModulationTableEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3CoverageModulationTable = LAYOUT$extendedDynamicState3CoverageModulationTable.byteSize();
+    public static final long SIZE$extendedDynamicState3CoverageReductionMode = LAYOUT$extendedDynamicState3CoverageReductionMode.byteSize();
+    public static final long SIZE$extendedDynamicState3RepresentativeFragmentTestEnable = LAYOUT$extendedDynamicState3RepresentativeFragmentTestEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3ShadingRateImageEnable = LAYOUT$extendedDynamicState3ShadingRateImageEnable.byteSize();
 
     public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -429,7 +464,7 @@ public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] ret = new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

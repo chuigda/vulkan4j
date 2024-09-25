@@ -21,6 +21,7 @@ public record VkImportFenceSciSyncInfoNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("handleType"),
         ValueLayout.ADDRESS.withName("handle")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkImportFenceSciSyncInfoNV(MemorySegment segment) {
     public static final long OFFSET$fence = LAYOUT.byteOffset(PATH$fence);
     public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
     public static final long OFFSET$handle = LAYOUT.byteOffset(PATH$handle);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$fence = LAYOUT$fence.byteSize();
+    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
+    public static final long SIZE$handle = LAYOUT$handle.byteSize();
 
     public VkImportFenceSciSyncInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkImportFenceSciSyncInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImportFenceSciSyncInfoNV[] ret = new VkImportFenceSciSyncInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImportFenceSciSyncInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImportFenceSciSyncInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

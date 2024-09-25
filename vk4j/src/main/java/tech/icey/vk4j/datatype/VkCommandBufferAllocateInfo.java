@@ -21,6 +21,7 @@ public record VkCommandBufferAllocateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("level"),
         ValueLayout.JAVA_INT.withName("commandBufferCount")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkCommandBufferAllocateInfo(MemorySegment segment) {
     public static final long OFFSET$commandPool = LAYOUT.byteOffset(PATH$commandPool);
     public static final long OFFSET$level = LAYOUT.byteOffset(PATH$level);
     public static final long OFFSET$commandBufferCount = LAYOUT.byteOffset(PATH$commandBufferCount);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$commandPool = LAYOUT$commandPool.byteSize();
+    public static final long SIZE$level = LAYOUT$level.byteSize();
+    public static final long SIZE$commandBufferCount = LAYOUT$commandBufferCount.byteSize();
 
     public VkCommandBufferAllocateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkCommandBufferAllocateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCommandBufferAllocateInfo[] ret = new VkCommandBufferAllocateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkCommandBufferAllocateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkCommandBufferAllocateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

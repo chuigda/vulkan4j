@@ -19,6 +19,7 @@ public record VkMicromapVersionInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pVersionData")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkMicromapVersionInfoEXT(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$pVersionData = LAYOUT.byteOffset(PATH$pVersionData);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pVersionData = LAYOUT$pVersionData.byteSize();
 
     public VkMicromapVersionInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -77,7 +82,7 @@ public record VkMicromapVersionInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMicromapVersionInfoEXT[] ret = new VkMicromapVersionInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkMicromapVersionInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkMicromapVersionInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

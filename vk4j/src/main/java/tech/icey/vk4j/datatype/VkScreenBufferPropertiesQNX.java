@@ -20,6 +20,7 @@ public record VkScreenBufferPropertiesQNX(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("allocationSize"),
         ValueLayout.JAVA_INT.withName("memoryTypeBits")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkScreenBufferPropertiesQNX(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$allocationSize = LAYOUT.byteOffset(PATH$allocationSize);
     public static final long OFFSET$memoryTypeBits = LAYOUT.byteOffset(PATH$memoryTypeBits);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$allocationSize = LAYOUT$allocationSize.byteSize();
+    public static final long SIZE$memoryTypeBits = LAYOUT$memoryTypeBits.byteSize();
 
     public VkScreenBufferPropertiesQNX(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkScreenBufferPropertiesQNX(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkScreenBufferPropertiesQNX[] ret = new VkScreenBufferPropertiesQNX[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkScreenBufferPropertiesQNX(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkScreenBufferPropertiesQNX(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

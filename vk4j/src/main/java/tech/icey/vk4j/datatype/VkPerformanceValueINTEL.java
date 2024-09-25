@@ -18,6 +18,7 @@ public record VkPerformanceValueINTEL(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("type"),
         VkPerformanceValueDataINTEL.LAYOUT.withName("data")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$type = PathElement.groupElement("type");
     public static final PathElement PATH$data = PathElement.groupElement("data");
@@ -27,6 +28,9 @@ public record VkPerformanceValueINTEL(MemorySegment segment) {
 
     public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
     public static final long OFFSET$data = LAYOUT.byteOffset(PATH$data);
+
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$data = LAYOUT$data.byteSize();
 
     public VkPerformanceValueINTEL(MemorySegment segment) {
         this.segment = segment;
@@ -45,7 +49,7 @@ public record VkPerformanceValueINTEL(MemorySegment segment) {
     }
 
     public void data(VkPerformanceValueDataINTEL value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, LAYOUT$data.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
     }
 
     public static VkPerformanceValueINTEL allocate(Arena arena) {
@@ -56,7 +60,7 @@ public record VkPerformanceValueINTEL(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPerformanceValueINTEL[] ret = new VkPerformanceValueINTEL[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPerformanceValueINTEL(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPerformanceValueINTEL(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

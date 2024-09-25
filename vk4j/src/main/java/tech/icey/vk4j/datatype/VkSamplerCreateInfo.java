@@ -1,16 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkSamplerCreateFlags;
-import tech.icey.vk4j.enumtype.*;
-
 import java.lang.foreign.*;
-
 import static java.lang.foreign.ValueLayout.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSamplerCreateInfo(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -33,6 +34,7 @@ public record VkSamplerCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("borderColor"),
         ValueLayout.JAVA_INT.withName("unnormalizedCoordinates")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -90,6 +92,25 @@ public record VkSamplerCreateInfo(MemorySegment segment) {
     public static final long OFFSET$maxLod = LAYOUT.byteOffset(PATH$maxLod);
     public static final long OFFSET$borderColor = LAYOUT.byteOffset(PATH$borderColor);
     public static final long OFFSET$unnormalizedCoordinates = LAYOUT.byteOffset(PATH$unnormalizedCoordinates);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$magFilter = LAYOUT$magFilter.byteSize();
+    public static final long SIZE$minFilter = LAYOUT$minFilter.byteSize();
+    public static final long SIZE$mipmapMode = LAYOUT$mipmapMode.byteSize();
+    public static final long SIZE$addressModeU = LAYOUT$addressModeU.byteSize();
+    public static final long SIZE$addressModeV = LAYOUT$addressModeV.byteSize();
+    public static final long SIZE$addressModeW = LAYOUT$addressModeW.byteSize();
+    public static final long SIZE$mipLodBias = LAYOUT$mipLodBias.byteSize();
+    public static final long SIZE$anisotropyEnable = LAYOUT$anisotropyEnable.byteSize();
+    public static final long SIZE$maxAnisotropy = LAYOUT$maxAnisotropy.byteSize();
+    public static final long SIZE$compareEnable = LAYOUT$compareEnable.byteSize();
+    public static final long SIZE$compareOp = LAYOUT$compareOp.byteSize();
+    public static final long SIZE$minLod = LAYOUT$minLod.byteSize();
+    public static final long SIZE$maxLod = LAYOUT$maxLod.byteSize();
+    public static final long SIZE$borderColor = LAYOUT$borderColor.byteSize();
+    public static final long SIZE$unnormalizedCoordinates = LAYOUT$unnormalizedCoordinates.byteSize();
 
     public VkSamplerCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -243,12 +264,12 @@ public record VkSamplerCreateInfo(MemorySegment segment) {
     public static VkSamplerCreateInfo allocate(Arena arena) {
         return new VkSamplerCreateInfo(arena.allocate(LAYOUT));
     }
-
+    
     public static VkSamplerCreateInfo[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSamplerCreateInfo[] ret = new VkSamplerCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSamplerCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSamplerCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

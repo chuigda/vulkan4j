@@ -23,6 +23,7 @@ public record VkSurfacePresentScalingCapabilitiesEXT(MemorySegment segment) {
         VkExtent2D.LAYOUT.withName("minScaledImageExtent"),
         VkExtent2D.LAYOUT.withName("maxScaledImageExtent")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkSurfacePresentScalingCapabilitiesEXT(MemorySegment segment) {
     public static final long OFFSET$supportedPresentGravityY = LAYOUT.byteOffset(PATH$supportedPresentGravityY);
     public static final long OFFSET$minScaledImageExtent = LAYOUT.byteOffset(PATH$minScaledImageExtent);
     public static final long OFFSET$maxScaledImageExtent = LAYOUT.byteOffset(PATH$maxScaledImageExtent);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$supportedPresentScaling = LAYOUT$supportedPresentScaling.byteSize();
+    public static final long SIZE$supportedPresentGravityX = LAYOUT$supportedPresentGravityX.byteSize();
+    public static final long SIZE$supportedPresentGravityY = LAYOUT$supportedPresentGravityY.byteSize();
+    public static final long SIZE$minScaledImageExtent = LAYOUT$minScaledImageExtent.byteSize();
+    public static final long SIZE$maxScaledImageExtent = LAYOUT$maxScaledImageExtent.byteSize();
 
     public VkSurfacePresentScalingCapabilitiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -98,7 +107,7 @@ public record VkSurfacePresentScalingCapabilitiesEXT(MemorySegment segment) {
     }
 
     public void minScaledImageExtent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minScaledImageExtent, LAYOUT$minScaledImageExtent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$minScaledImageExtent, SIZE$minScaledImageExtent);
     }
 
     public VkExtent2D maxScaledImageExtent() {
@@ -106,7 +115,7 @@ public record VkSurfacePresentScalingCapabilitiesEXT(MemorySegment segment) {
     }
 
     public void maxScaledImageExtent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxScaledImageExtent, LAYOUT$maxScaledImageExtent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxScaledImageExtent, SIZE$maxScaledImageExtent);
     }
 
     public static VkSurfacePresentScalingCapabilitiesEXT allocate(Arena arena) {
@@ -117,7 +126,7 @@ public record VkSurfacePresentScalingCapabilitiesEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSurfacePresentScalingCapabilitiesEXT[] ret = new VkSurfacePresentScalingCapabilitiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSurfacePresentScalingCapabilitiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSurfacePresentScalingCapabilitiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

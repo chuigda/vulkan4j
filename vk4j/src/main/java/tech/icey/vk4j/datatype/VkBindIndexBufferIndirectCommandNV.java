@@ -19,6 +19,7 @@ public record VkBindIndexBufferIndirectCommandNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("size"),
         ValueLayout.JAVA_INT.withName("indexType")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$bufferAddress = PathElement.groupElement("bufferAddress");
     public static final PathElement PATH$size = PathElement.groupElement("size");
@@ -31,6 +32,10 @@ public record VkBindIndexBufferIndirectCommandNV(MemorySegment segment) {
     public static final long OFFSET$bufferAddress = LAYOUT.byteOffset(PATH$bufferAddress);
     public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
     public static final long OFFSET$indexType = LAYOUT.byteOffset(PATH$indexType);
+
+    public static final long SIZE$bufferAddress = LAYOUT$bufferAddress.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$indexType = LAYOUT$indexType.byteSize();
 
     public VkBindIndexBufferIndirectCommandNV(MemorySegment segment) {
         this.segment = segment;
@@ -68,7 +73,7 @@ public record VkBindIndexBufferIndirectCommandNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBindIndexBufferIndirectCommandNV[] ret = new VkBindIndexBufferIndirectCommandNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkBindIndexBufferIndirectCommandNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkBindIndexBufferIndirectCommandNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

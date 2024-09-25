@@ -22,6 +22,7 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("pciDevice"),
         ValueLayout.JAVA_INT.withName("pciFunction")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment) {
     public static final long OFFSET$pciBus = LAYOUT.byteOffset(PATH$pciBus);
     public static final long OFFSET$pciDevice = LAYOUT.byteOffset(PATH$pciDevice);
     public static final long OFFSET$pciFunction = LAYOUT.byteOffset(PATH$pciFunction);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pciDomain = LAYOUT$pciDomain.byteSize();
+    public static final long SIZE$pciBus = LAYOUT$pciBus.byteSize();
+    public static final long SIZE$pciDevice = LAYOUT$pciDevice.byteSize();
+    public static final long SIZE$pciFunction = LAYOUT$pciFunction.byteSize();
 
     public VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +113,7 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevicePCIBusInfoPropertiesEXT[] ret = new VkPhysicalDevicePCIBusInfoPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDevicePCIBusInfoPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDevicePCIBusInfoPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

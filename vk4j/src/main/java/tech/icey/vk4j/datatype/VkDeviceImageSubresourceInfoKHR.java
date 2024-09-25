@@ -20,6 +20,7 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(VkImageCreateInfo.LAYOUT).withName("pCreateInfo"),
         ValueLayout.ADDRESS.withTargetLayout(VkImageSubresource2KHR.LAYOUT).withName("pSubresource")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$pCreateInfo = LAYOUT.byteOffset(PATH$pCreateInfo);
     public static final long OFFSET$pSubresource = LAYOUT.byteOffset(PATH$pSubresource);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pCreateInfo = LAYOUT$pCreateInfo.byteSize();
+    public static final long SIZE$pSubresource = LAYOUT$pSubresource.byteSize();
 
     public VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -107,7 +113,7 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceImageSubresourceInfoKHR[] ret = new VkDeviceImageSubresourceInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceImageSubresourceInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDeviceImageSubresourceInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

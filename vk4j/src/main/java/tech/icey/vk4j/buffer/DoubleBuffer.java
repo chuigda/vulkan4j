@@ -10,11 +10,11 @@ public record DoubleBuffer(MemorySegment segment) {
     }
 
     public double read() {
-        return read(0);
+        return segment.get(ValueLayout.JAVA_DOUBLE, 0);
     }
 
     public void write(double value) {
-        write(0, value);
+        segment.set(ValueLayout.JAVA_DOUBLE, 0, value);
     }
 
     public double read(long index) {

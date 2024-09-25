@@ -21,6 +21,7 @@ public record VkPerformanceOverrideInfoINTEL(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("enable"),
         ValueLayout.JAVA_LONG.withName("parameter")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPerformanceOverrideInfoINTEL(MemorySegment segment) {
     public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
     public static final long OFFSET$enable = LAYOUT.byteOffset(PATH$enable);
     public static final long OFFSET$parameter = LAYOUT.byteOffset(PATH$parameter);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$enable = LAYOUT$enable.byteSize();
+    public static final long SIZE$parameter = LAYOUT$parameter.byteSize();
 
     public VkPerformanceOverrideInfoINTEL(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPerformanceOverrideInfoINTEL(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPerformanceOverrideInfoINTEL[] ret = new VkPerformanceOverrideInfoINTEL[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPerformanceOverrideInfoINTEL(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPerformanceOverrideInfoINTEL(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

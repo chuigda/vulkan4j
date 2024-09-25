@@ -20,6 +20,7 @@ public record VkSemaphoreGetZirconHandleInfoFUCHSIA(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("semaphore"),
         ValueLayout.JAVA_INT.withName("handleType")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkSemaphoreGetZirconHandleInfoFUCHSIA(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$semaphore = LAYOUT.byteOffset(PATH$semaphore);
     public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$semaphore = LAYOUT$semaphore.byteSize();
+    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
 
     public VkSemaphoreGetZirconHandleInfoFUCHSIA(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkSemaphoreGetZirconHandleInfoFUCHSIA(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSemaphoreGetZirconHandleInfoFUCHSIA[] ret = new VkSemaphoreGetZirconHandleInfoFUCHSIA[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSemaphoreGetZirconHandleInfoFUCHSIA(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSemaphoreGetZirconHandleInfoFUCHSIA(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

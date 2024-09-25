@@ -1,18 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkDeviceCreateFlags;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkDeviceCreateInfo(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -27,6 +26,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)).withName("ppEnabledExtensionNames"),
         ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceFeatures.LAYOUT).withName("pEnabledFeatures")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -60,6 +60,17 @@ public record VkDeviceCreateInfo(MemorySegment segment) {
     public static final long OFFSET$enabledExtensionCount = LAYOUT.byteOffset(PATH$enabledExtensionCount);
     public static final long OFFSET$ppEnabledExtensionNames = LAYOUT.byteOffset(PATH$ppEnabledExtensionNames);
     public static final long OFFSET$pEnabledFeatures = LAYOUT.byteOffset(PATH$pEnabledFeatures);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$queueCreateInfoCount = LAYOUT$queueCreateInfoCount.byteSize();
+    public static final long SIZE$pQueueCreateInfos = LAYOUT$pQueueCreateInfos.byteSize();
+    public static final long SIZE$enabledLayerCount = LAYOUT$enabledLayerCount.byteSize();
+    public static final long SIZE$ppEnabledLayerNames = LAYOUT$ppEnabledLayerNames.byteSize();
+    public static final long SIZE$enabledExtensionCount = LAYOUT$enabledExtensionCount.byteSize();
+    public static final long SIZE$ppEnabledExtensionNames = LAYOUT$ppEnabledExtensionNames.byteSize();
+    public static final long SIZE$pEnabledFeatures = LAYOUT$pEnabledFeatures.byteSize();
 
     public VkDeviceCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -105,7 +116,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) {
     public void pQueueCreateInfosRaw(@pointer(comment="VkDeviceQueueCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos, value);
     }
-
+    
     public @nullable VkDeviceQueueCreateInfo pQueueCreateInfos() {
         MemorySegment s = pQueueCreateInfosRaw();
         if (s.address() == 0) {
@@ -158,7 +169,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) {
     public void pEnabledFeaturesRaw(@pointer(comment="VkPhysicalDeviceFeatures*") MemorySegment value) {
         segment.set(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures, value);
     }
-
+    
     public @nullable VkPhysicalDeviceFeatures pEnabledFeatures() {
         MemorySegment s = pEnabledFeaturesRaw();
         if (s.address() == 0) {
@@ -175,12 +186,12 @@ public record VkDeviceCreateInfo(MemorySegment segment) {
     public static VkDeviceCreateInfo allocate(Arena arena) {
         return new VkDeviceCreateInfo(arena.allocate(LAYOUT));
     }
-
+    
     public static VkDeviceCreateInfo[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceCreateInfo[] ret = new VkDeviceCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDeviceCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

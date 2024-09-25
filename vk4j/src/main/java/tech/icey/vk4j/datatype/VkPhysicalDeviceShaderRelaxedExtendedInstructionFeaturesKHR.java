@@ -19,6 +19,7 @@ public record VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(Memory
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shaderRelaxedExtendedInstruction")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(Memory
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$shaderRelaxedExtendedInstruction = LAYOUT.byteOffset(PATH$shaderRelaxedExtendedInstruction);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderRelaxedExtendedInstruction = LAYOUT$shaderRelaxedExtendedInstruction.byteSize();
 
     public VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(Memory
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR[] ret = new VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

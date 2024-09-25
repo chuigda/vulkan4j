@@ -21,6 +21,7 @@ public record VkXcbSurfaceCreateInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("connection"),
         ValueLayout.JAVA_INT.withName("window")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkXcbSurfaceCreateInfoKHR(MemorySegment segment) {
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$connection = LAYOUT.byteOffset(PATH$connection);
     public static final long OFFSET$window = LAYOUT.byteOffset(PATH$window);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$connection = LAYOUT$connection.byteSize();
+    public static final long SIZE$window = LAYOUT$window.byteSize();
 
     public VkXcbSurfaceCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkXcbSurfaceCreateInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkXcbSurfaceCreateInfoKHR[] ret = new VkXcbSurfaceCreateInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkXcbSurfaceCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkXcbSurfaceCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

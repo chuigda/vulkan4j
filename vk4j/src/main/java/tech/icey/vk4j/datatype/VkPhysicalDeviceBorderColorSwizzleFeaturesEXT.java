@@ -20,6 +20,7 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(MemorySegment segmen
         ValueLayout.JAVA_INT.withName("borderColorSwizzle"),
         ValueLayout.JAVA_INT.withName("borderColorSwizzleFromImage")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(MemorySegment segmen
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$borderColorSwizzle = LAYOUT.byteOffset(PATH$borderColorSwizzle);
     public static final long OFFSET$borderColorSwizzleFromImage = LAYOUT.byteOffset(PATH$borderColorSwizzleFromImage);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$borderColorSwizzle = LAYOUT$borderColorSwizzle.byteSize();
+    public static final long SIZE$borderColorSwizzleFromImage = LAYOUT$borderColorSwizzleFromImage.byteSize();
 
     public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceBorderColorSwizzleFeaturesEXT[] ret = new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

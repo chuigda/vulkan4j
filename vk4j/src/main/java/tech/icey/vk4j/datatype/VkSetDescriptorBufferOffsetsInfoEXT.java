@@ -24,6 +24,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pBufferIndices"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pOffsets")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -51,6 +52,15 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
     public static final long OFFSET$setCount = LAYOUT.byteOffset(PATH$setCount);
     public static final long OFFSET$pBufferIndices = LAYOUT.byteOffset(PATH$pBufferIndices);
     public static final long OFFSET$pOffsets = LAYOUT.byteOffset(PATH$pOffsets);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$stageFlags = LAYOUT$stageFlags.byteSize();
+    public static final long SIZE$layout = LAYOUT$layout.byteSize();
+    public static final long SIZE$firstSet = LAYOUT$firstSet.byteSize();
+    public static final long SIZE$setCount = LAYOUT$setCount.byteSize();
+    public static final long SIZE$pBufferIndices = LAYOUT$pBufferIndices.byteSize();
+    public static final long SIZE$pOffsets = LAYOUT$pOffsets.byteSize();
 
     public VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -145,7 +155,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSetDescriptorBufferOffsetsInfoEXT[] ret = new VkSetDescriptorBufferOffsetsInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSetDescriptorBufferOffsetsInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSetDescriptorBufferOffsetsInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

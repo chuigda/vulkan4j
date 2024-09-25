@@ -20,6 +20,7 @@ public record VkBindBufferMemoryDeviceGroupInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("deviceIndexCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDeviceIndices")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkBindBufferMemoryDeviceGroupInfo(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$deviceIndexCount = LAYOUT.byteOffset(PATH$deviceIndexCount);
     public static final long OFFSET$pDeviceIndices = LAYOUT.byteOffset(PATH$pDeviceIndices);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$deviceIndexCount = LAYOUT$deviceIndexCount.byteSize();
+    public static final long SIZE$pDeviceIndices = LAYOUT$pDeviceIndices.byteSize();
 
     public VkBindBufferMemoryDeviceGroupInfo(MemorySegment segment) {
         this.segment = segment;
@@ -89,7 +95,7 @@ public record VkBindBufferMemoryDeviceGroupInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBindBufferMemoryDeviceGroupInfo[] ret = new VkBindBufferMemoryDeviceGroupInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkBindBufferMemoryDeviceGroupInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkBindBufferMemoryDeviceGroupInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -20,6 +20,7 @@ public record VkSpecializationInfo(MemorySegment segment) {
         NativeLayout.C_SIZE_T.withName("dataSize"),
         ValueLayout.ADDRESS.withName("pData")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$mapEntryCount = PathElement.groupElement("mapEntryCount");
     public static final PathElement PATH$pMapEntries = PathElement.groupElement("pMapEntries");
@@ -34,6 +35,10 @@ public record VkSpecializationInfo(MemorySegment segment) {
     public static final long OFFSET$pMapEntries = LAYOUT.byteOffset(PATH$pMapEntries);
     public static final long OFFSET$dataSize = LAYOUT.byteOffset(PATH$dataSize);
     public static final long OFFSET$pData = LAYOUT.byteOffset(PATH$pData);
+
+    public static final long SIZE$mapEntryCount = LAYOUT$mapEntryCount.byteSize();
+    public static final long SIZE$pMapEntries = LAYOUT$pMapEntries.byteSize();
+    public static final long SIZE$pData = LAYOUT$pData.byteSize();
 
     public VkSpecializationInfo(MemorySegment segment) {
         this.segment = segment;
@@ -92,7 +97,7 @@ public record VkSpecializationInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSpecializationInfo[] ret = new VkSpecializationInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSpecializationInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSpecializationInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -23,6 +23,7 @@ public record VkAccelerationStructureInfoNV(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("geometryCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkGeometryNV.LAYOUT).withName("pGeometries")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkAccelerationStructureInfoNV(MemorySegment segment) {
     public static final long OFFSET$instanceCount = LAYOUT.byteOffset(PATH$instanceCount);
     public static final long OFFSET$geometryCount = LAYOUT.byteOffset(PATH$geometryCount);
     public static final long OFFSET$pGeometries = LAYOUT.byteOffset(PATH$pGeometries);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$instanceCount = LAYOUT$instanceCount.byteSize();
+    public static final long SIZE$geometryCount = LAYOUT$geometryCount.byteSize();
+    public static final long SIZE$pGeometries = LAYOUT$pGeometries.byteSize();
 
     public VkAccelerationStructureInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -130,7 +139,7 @@ public record VkAccelerationStructureInfoNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureInfoNV[] ret = new VkAccelerationStructureInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

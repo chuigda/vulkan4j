@@ -20,6 +20,7 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(MemorySegment 
         ValueLayout.ADDRESS.withName("accelerationStructure"),
         ValueLayout.ADDRESS.withName("accelerationStructureNV")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(MemorySegment 
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$accelerationStructure = LAYOUT.byteOffset(PATH$accelerationStructure);
     public static final long OFFSET$accelerationStructureNV = LAYOUT.byteOffset(PATH$accelerationStructureNV);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$accelerationStructure = LAYOUT$accelerationStructure.byteSize();
+    public static final long SIZE$accelerationStructureNV = LAYOUT$accelerationStructureNV.byteSize();
 
     public VkAccelerationStructureCaptureDescriptorDataInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureCaptureDescriptorDataInfoEXT[] ret = new VkAccelerationStructureCaptureDescriptorDataInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureCaptureDescriptorDataInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAccelerationStructureCaptureDescriptorDataInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

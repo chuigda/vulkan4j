@@ -24,6 +24,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("enabledExtensionCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)).withName("ppEnabledExtensionNames")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -51,6 +52,15 @@ public record VkInstanceCreateInfo(MemorySegment segment) {
     public static final long OFFSET$ppEnabledLayerNames = LAYOUT.byteOffset(PATH$ppEnabledLayerNames);
     public static final long OFFSET$enabledExtensionCount = LAYOUT.byteOffset(PATH$enabledExtensionCount);
     public static final long OFFSET$ppEnabledExtensionNames = LAYOUT.byteOffset(PATH$ppEnabledExtensionNames);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$pApplicationInfo = LAYOUT$pApplicationInfo.byteSize();
+    public static final long SIZE$enabledLayerCount = LAYOUT$enabledLayerCount.byteSize();
+    public static final long SIZE$ppEnabledLayerNames = LAYOUT$ppEnabledLayerNames.byteSize();
+    public static final long SIZE$enabledExtensionCount = LAYOUT$enabledExtensionCount.byteSize();
+    public static final long SIZE$ppEnabledExtensionNames = LAYOUT$ppEnabledExtensionNames.byteSize();
 
     public VkInstanceCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -142,7 +152,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkInstanceCreateInfo[] ret = new VkInstanceCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkInstanceCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkInstanceCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

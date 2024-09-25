@@ -21,6 +21,7 @@ public record VkPhysicalDeviceMultiviewFeatures(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("multiviewGeometryShader"),
         ValueLayout.JAVA_INT.withName("multiviewTessellationShader")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceMultiviewFeatures(MemorySegment segment) {
     public static final long OFFSET$multiview = LAYOUT.byteOffset(PATH$multiview);
     public static final long OFFSET$multiviewGeometryShader = LAYOUT.byteOffset(PATH$multiviewGeometryShader);
     public static final long OFFSET$multiviewTessellationShader = LAYOUT.byteOffset(PATH$multiviewTessellationShader);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$multiview = LAYOUT$multiview.byteSize();
+    public static final long SIZE$multiviewGeometryShader = LAYOUT$multiviewGeometryShader.byteSize();
+    public static final long SIZE$multiviewTessellationShader = LAYOUT$multiviewTessellationShader.byteSize();
 
     public VkPhysicalDeviceMultiviewFeatures(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceMultiviewFeatures(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMultiviewFeatures[] ret = new VkPhysicalDeviceMultiviewFeatures[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMultiviewFeatures(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceMultiviewFeatures(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

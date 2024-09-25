@@ -21,6 +21,7 @@ public record VkQueryPoolPerformanceCreateInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("counterIndexCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCounterIndices")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkQueryPoolPerformanceCreateInfoKHR(MemorySegment segment) {
     public static final long OFFSET$queueFamilyIndex = LAYOUT.byteOffset(PATH$queueFamilyIndex);
     public static final long OFFSET$counterIndexCount = LAYOUT.byteOffset(PATH$counterIndexCount);
     public static final long OFFSET$pCounterIndices = LAYOUT.byteOffset(PATH$pCounterIndices);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$queueFamilyIndex = LAYOUT$queueFamilyIndex.byteSize();
+    public static final long SIZE$counterIndexCount = LAYOUT$counterIndexCount.byteSize();
+    public static final long SIZE$pCounterIndices = LAYOUT$pCounterIndices.byteSize();
 
     public VkQueryPoolPerformanceCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -101,7 +108,7 @@ public record VkQueryPoolPerformanceCreateInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkQueryPoolPerformanceCreateInfoKHR[] ret = new VkQueryPoolPerformanceCreateInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkQueryPoolPerformanceCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkQueryPoolPerformanceCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

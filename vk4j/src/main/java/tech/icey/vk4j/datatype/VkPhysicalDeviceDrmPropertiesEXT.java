@@ -24,6 +24,7 @@ public record VkPhysicalDeviceDrmPropertiesEXT(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("renderMajor"),
         ValueLayout.JAVA_LONG.withName("renderMinor")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -51,6 +52,15 @@ public record VkPhysicalDeviceDrmPropertiesEXT(MemorySegment segment) {
     public static final long OFFSET$primaryMinor = LAYOUT.byteOffset(PATH$primaryMinor);
     public static final long OFFSET$renderMajor = LAYOUT.byteOffset(PATH$renderMajor);
     public static final long OFFSET$renderMinor = LAYOUT.byteOffset(PATH$renderMinor);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$hasPrimary = LAYOUT$hasPrimary.byteSize();
+    public static final long SIZE$hasRender = LAYOUT$hasRender.byteSize();
+    public static final long SIZE$primaryMajor = LAYOUT$primaryMajor.byteSize();
+    public static final long SIZE$primaryMinor = LAYOUT$primaryMinor.byteSize();
+    public static final long SIZE$renderMajor = LAYOUT$renderMajor.byteSize();
+    public static final long SIZE$renderMinor = LAYOUT$renderMinor.byteSize();
 
     public VkPhysicalDeviceDrmPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -129,7 +139,7 @@ public record VkPhysicalDeviceDrmPropertiesEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceDrmPropertiesEXT[] ret = new VkPhysicalDeviceDrmPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceDrmPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceDrmPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

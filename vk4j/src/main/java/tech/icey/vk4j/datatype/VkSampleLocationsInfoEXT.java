@@ -22,6 +22,7 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("sampleLocationsCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkSampleLocationEXT.LAYOUT).withName("pSampleLocations")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) {
     public static final long OFFSET$sampleLocationGridSize = LAYOUT.byteOffset(PATH$sampleLocationGridSize);
     public static final long OFFSET$sampleLocationsCount = LAYOUT.byteOffset(PATH$sampleLocationsCount);
     public static final long OFFSET$pSampleLocations = LAYOUT.byteOffset(PATH$pSampleLocations);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$sampleLocationsPerPixel = LAYOUT$sampleLocationsPerPixel.byteSize();
+    public static final long SIZE$sampleLocationGridSize = LAYOUT$sampleLocationGridSize.byteSize();
+    public static final long SIZE$sampleLocationsCount = LAYOUT$sampleLocationsCount.byteSize();
+    public static final long SIZE$pSampleLocations = LAYOUT$pSampleLocations.byteSize();
 
     public VkSampleLocationsInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -78,7 +86,7 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) {
     }
 
     public void sampleLocationGridSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationGridSize, LAYOUT$sampleLocationGridSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationGridSize, SIZE$sampleLocationGridSize);
     }
 
     public @unsigned int sampleLocationsCount() {
@@ -118,7 +126,7 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSampleLocationsInfoEXT[] ret = new VkSampleLocationsInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSampleLocationsInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSampleLocationsInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

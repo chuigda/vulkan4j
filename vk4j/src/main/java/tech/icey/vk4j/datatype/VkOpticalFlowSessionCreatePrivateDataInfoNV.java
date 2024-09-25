@@ -21,6 +21,7 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(MemorySegment segment)
         ValueLayout.JAVA_INT.withName("size"),
         ValueLayout.ADDRESS.withName("pPrivateData")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(MemorySegment segment)
     public static final long OFFSET$id = LAYOUT.byteOffset(PATH$id);
     public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
     public static final long OFFSET$pPrivateData = LAYOUT.byteOffset(PATH$pPrivateData);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$id = LAYOUT$id.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$pPrivateData = LAYOUT$pPrivateData.byteSize();
 
     public VkOpticalFlowSessionCreatePrivateDataInfoNV(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkOpticalFlowSessionCreatePrivateDataInfoNV[] ret = new VkOpticalFlowSessionCreatePrivateDataInfoNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkOpticalFlowSessionCreatePrivateDataInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkOpticalFlowSessionCreatePrivateDataInfoNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

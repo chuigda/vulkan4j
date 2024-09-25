@@ -19,6 +19,7 @@ public record VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(MemorySegm
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("rayTracingInvocationReorderReorderingHint")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(MemorySegm
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$rayTracingInvocationReorderReorderingHint = LAYOUT.byteOffset(PATH$rayTracingInvocationReorderReorderingHint);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$rayTracingInvocationReorderReorderingHint = LAYOUT$rayTracingInvocationReorderReorderingHint.byteSize();
 
     public VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(MemorySegm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV[] ret = new VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

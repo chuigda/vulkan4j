@@ -10,11 +10,11 @@ public record PointerBuffer(MemorySegment segment) {
     }
 
     public MemorySegment read() {
-        return read(0);
+        return segment.get(ValueLayout.ADDRESS, 0);
     }
 
     public void write(MemorySegment value) {
-        write(0, value);
+        segment.set(ValueLayout.ADDRESS, 0, value);
     }
 
     public MemorySegment read(long index) {

@@ -20,6 +20,7 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("image2DViewOf3D"),
         ValueLayout.JAVA_INT.withName("sampler2DViewOf3D")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(MemorySegment segment) 
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$image2DViewOf3D = LAYOUT.byteOffset(PATH$image2DViewOf3D);
     public static final long OFFSET$sampler2DViewOf3D = LAYOUT.byteOffset(PATH$sampler2DViewOf3D);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$image2DViewOf3D = LAYOUT$image2DViewOf3D.byteSize();
+    public static final long SIZE$sampler2DViewOf3D = LAYOUT$sampler2DViewOf3D.byteSize();
 
     public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceImage2DViewOf3DFeaturesEXT[] ret = new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

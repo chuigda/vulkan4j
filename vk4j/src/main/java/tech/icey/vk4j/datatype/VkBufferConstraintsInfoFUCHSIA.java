@@ -21,6 +21,7 @@ public record VkBufferConstraintsInfoFUCHSIA(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("requiredFormatFeatures"),
         VkBufferCollectionConstraintsInfoFUCHSIA.LAYOUT.withName("bufferCollectionConstraints")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkBufferConstraintsInfoFUCHSIA(MemorySegment segment) {
     public static final long OFFSET$createInfo = LAYOUT.byteOffset(PATH$createInfo);
     public static final long OFFSET$requiredFormatFeatures = LAYOUT.byteOffset(PATH$requiredFormatFeatures);
     public static final long OFFSET$bufferCollectionConstraints = LAYOUT.byteOffset(PATH$bufferCollectionConstraints);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$createInfo = LAYOUT$createInfo.byteSize();
+    public static final long SIZE$requiredFormatFeatures = LAYOUT$requiredFormatFeatures.byteSize();
+    public static final long SIZE$bufferCollectionConstraints = LAYOUT$bufferCollectionConstraints.byteSize();
 
     public VkBufferConstraintsInfoFUCHSIA(MemorySegment segment) {
         this.segment = segment;
@@ -66,7 +73,7 @@ public record VkBufferConstraintsInfoFUCHSIA(MemorySegment segment) {
     }
 
     public void createInfo(VkBufferCreateInfo value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$createInfo, LAYOUT$createInfo.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$createInfo, SIZE$createInfo);
     }
 
     public @enumtype(VkFormatFeatureFlags.class) int requiredFormatFeatures() {
@@ -82,7 +89,7 @@ public record VkBufferConstraintsInfoFUCHSIA(MemorySegment segment) {
     }
 
     public void bufferCollectionConstraints(VkBufferCollectionConstraintsInfoFUCHSIA value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$bufferCollectionConstraints, LAYOUT$bufferCollectionConstraints.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$bufferCollectionConstraints, SIZE$bufferCollectionConstraints);
     }
 
     public static VkBufferConstraintsInfoFUCHSIA allocate(Arena arena) {
@@ -93,7 +100,7 @@ public record VkBufferConstraintsInfoFUCHSIA(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferConstraintsInfoFUCHSIA[] ret = new VkBufferConstraintsInfoFUCHSIA[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkBufferConstraintsInfoFUCHSIA(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkBufferConstraintsInfoFUCHSIA(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -20,6 +20,7 @@ public record VkDescriptorSetBindingReferenceVALVE(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("descriptorSetLayout"),
         ValueLayout.JAVA_INT.withName("binding")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkDescriptorSetBindingReferenceVALVE(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$descriptorSetLayout = LAYOUT.byteOffset(PATH$descriptorSetLayout);
     public static final long OFFSET$binding = LAYOUT.byteOffset(PATH$binding);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$descriptorSetLayout = LAYOUT$descriptorSetLayout.byteSize();
+    public static final long SIZE$binding = LAYOUT$binding.byteSize();
 
     public VkDescriptorSetBindingReferenceVALVE(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkDescriptorSetBindingReferenceVALVE(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorSetBindingReferenceVALVE[] ret = new VkDescriptorSetBindingReferenceVALVE[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDescriptorSetBindingReferenceVALVE(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDescriptorSetBindingReferenceVALVE(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

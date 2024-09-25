@@ -21,6 +21,7 @@ public record VkImageFormatProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("sampleCounts"),
         ValueLayout.JAVA_LONG.withName("maxResourceSize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$maxExtent = PathElement.groupElement("maxExtent");
     public static final PathElement PATH$maxMipLevels = PathElement.groupElement("maxMipLevels");
@@ -40,6 +41,12 @@ public record VkImageFormatProperties(MemorySegment segment) {
     public static final long OFFSET$sampleCounts = LAYOUT.byteOffset(PATH$sampleCounts);
     public static final long OFFSET$maxResourceSize = LAYOUT.byteOffset(PATH$maxResourceSize);
 
+    public static final long SIZE$maxExtent = LAYOUT$maxExtent.byteSize();
+    public static final long SIZE$maxMipLevels = LAYOUT$maxMipLevels.byteSize();
+    public static final long SIZE$maxArrayLayers = LAYOUT$maxArrayLayers.byteSize();
+    public static final long SIZE$sampleCounts = LAYOUT$sampleCounts.byteSize();
+    public static final long SIZE$maxResourceSize = LAYOUT$maxResourceSize.byteSize();
+
     public VkImageFormatProperties(MemorySegment segment) {
         this.segment = segment;
     }
@@ -49,7 +56,7 @@ public record VkImageFormatProperties(MemorySegment segment) {
     }
 
     public void maxExtent(VkExtent3D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxExtent, LAYOUT$maxExtent.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxExtent, SIZE$maxExtent);
     }
 
     public @unsigned int maxMipLevels() {
@@ -92,7 +99,7 @@ public record VkImageFormatProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageFormatProperties[] ret = new VkImageFormatProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageFormatProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkImageFormatProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

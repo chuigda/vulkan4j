@@ -20,6 +20,7 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(MemorySegment segment
         ValueLayout.JAVA_INT.withName("accelerationStructureCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pAccelerationStructures")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(MemorySegment segment
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$accelerationStructureCount = LAYOUT.byteOffset(PATH$accelerationStructureCount);
     public static final long OFFSET$pAccelerationStructures = LAYOUT.byteOffset(PATH$pAccelerationStructures);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$accelerationStructureCount = LAYOUT$accelerationStructureCount.byteSize();
+    public static final long SIZE$pAccelerationStructures = LAYOUT$pAccelerationStructures.byteSize();
 
     public VkWriteDescriptorSetAccelerationStructureKHR(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +100,7 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkWriteDescriptorSetAccelerationStructureKHR[] ret = new VkWriteDescriptorSetAccelerationStructureKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkWriteDescriptorSetAccelerationStructureKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkWriteDescriptorSetAccelerationStructureKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

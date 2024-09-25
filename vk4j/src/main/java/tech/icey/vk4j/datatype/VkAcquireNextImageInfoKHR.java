@@ -23,6 +23,7 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("fence"),
         ValueLayout.JAVA_INT.withName("deviceMask")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -47,6 +48,14 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) {
     public static final long OFFSET$semaphore = LAYOUT.byteOffset(PATH$semaphore);
     public static final long OFFSET$fence = LAYOUT.byteOffset(PATH$fence);
     public static final long OFFSET$deviceMask = LAYOUT.byteOffset(PATH$deviceMask);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$swapchain = LAYOUT$swapchain.byteSize();
+    public static final long SIZE$timeout = LAYOUT$timeout.byteSize();
+    public static final long SIZE$semaphore = LAYOUT$semaphore.byteSize();
+    public static final long SIZE$fence = LAYOUT$fence.byteSize();
+    public static final long SIZE$deviceMask = LAYOUT$deviceMask.byteSize();
 
     public VkAcquireNextImageInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -117,7 +126,7 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAcquireNextImageInfoKHR[] ret = new VkAcquireNextImageInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkAcquireNextImageInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkAcquireNextImageInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

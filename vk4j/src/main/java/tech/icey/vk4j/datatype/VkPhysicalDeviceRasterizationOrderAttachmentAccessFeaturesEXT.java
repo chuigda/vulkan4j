@@ -21,6 +21,7 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(Memo
         ValueLayout.JAVA_INT.withName("rasterizationOrderDepthAttachmentAccess"),
         ValueLayout.JAVA_INT.withName("rasterizationOrderStencilAttachmentAccess")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(Memo
     public static final long OFFSET$rasterizationOrderColorAttachmentAccess = LAYOUT.byteOffset(PATH$rasterizationOrderColorAttachmentAccess);
     public static final long OFFSET$rasterizationOrderDepthAttachmentAccess = LAYOUT.byteOffset(PATH$rasterizationOrderDepthAttachmentAccess);
     public static final long OFFSET$rasterizationOrderStencilAttachmentAccess = LAYOUT.byteOffset(PATH$rasterizationOrderStencilAttachmentAccess);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$rasterizationOrderColorAttachmentAccess = LAYOUT$rasterizationOrderColorAttachmentAccess.byteSize();
+    public static final long SIZE$rasterizationOrderDepthAttachmentAccess = LAYOUT$rasterizationOrderDepthAttachmentAccess.byteSize();
+    public static final long SIZE$rasterizationOrderStencilAttachmentAccess = LAYOUT$rasterizationOrderStencilAttachmentAccess.byteSize();
 
     public VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(Memo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT[] ret = new VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

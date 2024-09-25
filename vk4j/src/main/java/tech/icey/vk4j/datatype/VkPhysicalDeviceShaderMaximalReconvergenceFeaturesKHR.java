@@ -19,6 +19,7 @@ public record VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(MemorySegmen
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shaderMaximalReconvergence")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(MemorySegmen
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$shaderMaximalReconvergence = LAYOUT.byteOffset(PATH$shaderMaximalReconvergence);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderMaximalReconvergence = LAYOUT$shaderMaximalReconvergence.byteSize();
 
     public VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR[] ret = new VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

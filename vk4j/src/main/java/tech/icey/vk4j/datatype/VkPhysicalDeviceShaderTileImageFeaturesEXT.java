@@ -21,6 +21,7 @@ public record VkPhysicalDeviceShaderTileImageFeaturesEXT(MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("shaderTileImageDepthReadAccess"),
         ValueLayout.JAVA_INT.withName("shaderTileImageStencilReadAccess")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceShaderTileImageFeaturesEXT(MemorySegment segment) 
     public static final long OFFSET$shaderTileImageColorReadAccess = LAYOUT.byteOffset(PATH$shaderTileImageColorReadAccess);
     public static final long OFFSET$shaderTileImageDepthReadAccess = LAYOUT.byteOffset(PATH$shaderTileImageDepthReadAccess);
     public static final long OFFSET$shaderTileImageStencilReadAccess = LAYOUT.byteOffset(PATH$shaderTileImageStencilReadAccess);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderTileImageColorReadAccess = LAYOUT$shaderTileImageColorReadAccess.byteSize();
+    public static final long SIZE$shaderTileImageDepthReadAccess = LAYOUT$shaderTileImageDepthReadAccess.byteSize();
+    public static final long SIZE$shaderTileImageStencilReadAccess = LAYOUT$shaderTileImageStencilReadAccess.byteSize();
 
     public VkPhysicalDeviceShaderTileImageFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceShaderTileImageFeaturesEXT(MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderTileImageFeaturesEXT[] ret = new VkPhysicalDeviceShaderTileImageFeaturesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceShaderTileImageFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceShaderTileImageFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

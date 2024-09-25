@@ -21,6 +21,7 @@ public record VkPhysicalDeviceSparseProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("residencyAlignedMipSize"),
         ValueLayout.JAVA_INT.withName("residencyNonResidentStrict")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$residencyStandard2DBlockShape = PathElement.groupElement("residencyStandard2DBlockShape");
     public static final PathElement PATH$residencyStandard2DMultisampleBlockShape = PathElement.groupElement("residencyStandard2DMultisampleBlockShape");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceSparseProperties(MemorySegment segment) {
     public static final long OFFSET$residencyStandard3DBlockShape = LAYOUT.byteOffset(PATH$residencyStandard3DBlockShape);
     public static final long OFFSET$residencyAlignedMipSize = LAYOUT.byteOffset(PATH$residencyAlignedMipSize);
     public static final long OFFSET$residencyNonResidentStrict = LAYOUT.byteOffset(PATH$residencyNonResidentStrict);
+
+    public static final long SIZE$residencyStandard2DBlockShape = LAYOUT$residencyStandard2DBlockShape.byteSize();
+    public static final long SIZE$residencyStandard2DMultisampleBlockShape = LAYOUT$residencyStandard2DMultisampleBlockShape.byteSize();
+    public static final long SIZE$residencyStandard3DBlockShape = LAYOUT$residencyStandard3DBlockShape.byteSize();
+    public static final long SIZE$residencyAlignedMipSize = LAYOUT$residencyAlignedMipSize.byteSize();
+    public static final long SIZE$residencyNonResidentStrict = LAYOUT$residencyNonResidentStrict.byteSize();
 
     public VkPhysicalDeviceSparseProperties(MemorySegment segment) {
         this.segment = segment;
@@ -92,7 +99,7 @@ public record VkPhysicalDeviceSparseProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceSparseProperties[] ret = new VkPhysicalDeviceSparseProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceSparseProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceSparseProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

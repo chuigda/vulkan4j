@@ -20,6 +20,7 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(MemorySegment segm
         VkExtent2D.LAYOUT.withName("fragmentSize"),
         MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_INT).withName("combinerOps")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(MemorySegment segm
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$fragmentSize = LAYOUT.byteOffset(PATH$fragmentSize);
     public static final long OFFSET$combinerOps = LAYOUT.byteOffset(PATH$combinerOps);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$fragmentSize = LAYOUT$fragmentSize.byteSize();
+    public static final long SIZE$combinerOps = LAYOUT$combinerOps.byteSize();
 
     public VkPipelineFragmentShadingRateStateCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -62,7 +68,7 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(MemorySegment segm
     }
 
     public void fragmentSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentSize, LAYOUT$fragmentSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentSize, SIZE$fragmentSize);
     }
 
     public MemorySegment combinerOpsRaw() {
@@ -85,7 +91,7 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineFragmentShadingRateStateCreateInfoKHR[] ret = new VkPipelineFragmentShadingRateStateCreateInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineFragmentShadingRateStateCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineFragmentShadingRateStateCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

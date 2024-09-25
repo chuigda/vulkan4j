@@ -21,6 +21,7 @@ public record VkExternalSemaphoreProperties(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("compatibleHandleTypes"),
         ValueLayout.JAVA_INT.withName("externalSemaphoreFeatures")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkExternalSemaphoreProperties(MemorySegment segment) {
     public static final long OFFSET$exportFromImportedHandleTypes = LAYOUT.byteOffset(PATH$exportFromImportedHandleTypes);
     public static final long OFFSET$compatibleHandleTypes = LAYOUT.byteOffset(PATH$compatibleHandleTypes);
     public static final long OFFSET$externalSemaphoreFeatures = LAYOUT.byteOffset(PATH$externalSemaphoreFeatures);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$exportFromImportedHandleTypes = LAYOUT$exportFromImportedHandleTypes.byteSize();
+    public static final long SIZE$compatibleHandleTypes = LAYOUT$compatibleHandleTypes.byteSize();
+    public static final long SIZE$externalSemaphoreFeatures = LAYOUT$externalSemaphoreFeatures.byteSize();
 
     public VkExternalSemaphoreProperties(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkExternalSemaphoreProperties(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExternalSemaphoreProperties[] ret = new VkExternalSemaphoreProperties[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkExternalSemaphoreProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkExternalSemaphoreProperties(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

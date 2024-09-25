@@ -23,6 +23,7 @@ public record VkDebugMarkerObjectTagInfoEXT(MemorySegment segment) {
         NativeLayout.C_SIZE_T.withName("tagSize"),
         ValueLayout.ADDRESS.withName("pTag")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -46,6 +47,13 @@ public record VkDebugMarkerObjectTagInfoEXT(MemorySegment segment) {
     public static final long OFFSET$tagName = LAYOUT.byteOffset(PATH$tagName);
     public static final long OFFSET$tagSize = LAYOUT.byteOffset(PATH$tagSize);
     public static final long OFFSET$pTag = LAYOUT.byteOffset(PATH$pTag);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
+    public static final long SIZE$object = LAYOUT$object.byteSize();
+    public static final long SIZE$tagName = LAYOUT$tagName.byteSize();
+    public static final long SIZE$pTag = LAYOUT$pTag.byteSize();
 
     public VkDebugMarkerObjectTagInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -116,7 +124,7 @@ public record VkDebugMarkerObjectTagInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDebugMarkerObjectTagInfoEXT[] ret = new VkDebugMarkerObjectTagInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDebugMarkerObjectTagInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDebugMarkerObjectTagInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -19,6 +19,7 @@ public record VkStridedDeviceAddressRegionKHR(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("stride"),
         ValueLayout.JAVA_LONG.withName("size")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$deviceAddress = PathElement.groupElement("deviceAddress");
     public static final PathElement PATH$stride = PathElement.groupElement("stride");
@@ -31,6 +32,10 @@ public record VkStridedDeviceAddressRegionKHR(MemorySegment segment) {
     public static final long OFFSET$deviceAddress = LAYOUT.byteOffset(PATH$deviceAddress);
     public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
     public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+
+    public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
+    public static final long SIZE$stride = LAYOUT$stride.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
 
     public VkStridedDeviceAddressRegionKHR(MemorySegment segment) {
         this.segment = segment;
@@ -68,7 +73,7 @@ public record VkStridedDeviceAddressRegionKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkStridedDeviceAddressRegionKHR[] ret = new VkStridedDeviceAddressRegionKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkStridedDeviceAddressRegionKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkStridedDeviceAddressRegionKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

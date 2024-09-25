@@ -19,6 +19,7 @@ public record VkRenderPassCreationControlEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("disallowMerging")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkRenderPassCreationControlEXT(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$disallowMerging = LAYOUT.byteOffset(PATH$disallowMerging);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$disallowMerging = LAYOUT$disallowMerging.byteSize();
 
     public VkRenderPassCreationControlEXT(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkRenderPassCreationControlEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderPassCreationControlEXT[] ret = new VkRenderPassCreationControlEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderPassCreationControlEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRenderPassCreationControlEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

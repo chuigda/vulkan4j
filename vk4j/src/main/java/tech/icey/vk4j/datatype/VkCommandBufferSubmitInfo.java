@@ -20,6 +20,7 @@ public record VkCommandBufferSubmitInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("commandBuffer"),
         ValueLayout.JAVA_INT.withName("deviceMask")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkCommandBufferSubmitInfo(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$commandBuffer = LAYOUT.byteOffset(PATH$commandBuffer);
     public static final long OFFSET$deviceMask = LAYOUT.byteOffset(PATH$deviceMask);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$commandBuffer = LAYOUT$commandBuffer.byteSize();
+    public static final long SIZE$deviceMask = LAYOUT$deviceMask.byteSize();
 
     public VkCommandBufferSubmitInfo(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkCommandBufferSubmitInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCommandBufferSubmitInfo[] ret = new VkCommandBufferSubmitInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkCommandBufferSubmitInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkCommandBufferSubmitInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

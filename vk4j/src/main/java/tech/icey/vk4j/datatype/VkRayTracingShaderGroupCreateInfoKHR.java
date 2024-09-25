@@ -24,6 +24,7 @@ public record VkRayTracingShaderGroupCreateInfoKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("intersectionShader"),
         ValueLayout.ADDRESS.withName("pShaderGroupCaptureReplayHandle")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -51,6 +52,15 @@ public record VkRayTracingShaderGroupCreateInfoKHR(MemorySegment segment) {
     public static final long OFFSET$anyHitShader = LAYOUT.byteOffset(PATH$anyHitShader);
     public static final long OFFSET$intersectionShader = LAYOUT.byteOffset(PATH$intersectionShader);
     public static final long OFFSET$pShaderGroupCaptureReplayHandle = LAYOUT.byteOffset(PATH$pShaderGroupCaptureReplayHandle);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$generalShader = LAYOUT$generalShader.byteSize();
+    public static final long SIZE$closestHitShader = LAYOUT$closestHitShader.byteSize();
+    public static final long SIZE$anyHitShader = LAYOUT$anyHitShader.byteSize();
+    public static final long SIZE$intersectionShader = LAYOUT$intersectionShader.byteSize();
+    public static final long SIZE$pShaderGroupCaptureReplayHandle = LAYOUT$pShaderGroupCaptureReplayHandle.byteSize();
 
     public VkRayTracingShaderGroupCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -129,7 +139,7 @@ public record VkRayTracingShaderGroupCreateInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRayTracingShaderGroupCreateInfoKHR[] ret = new VkRayTracingShaderGroupCreateInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRayTracingShaderGroupCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRayTracingShaderGroupCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

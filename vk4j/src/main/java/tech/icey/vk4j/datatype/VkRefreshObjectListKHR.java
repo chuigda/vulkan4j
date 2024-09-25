@@ -20,6 +20,7 @@ public record VkRefreshObjectListKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("objectCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkRefreshObjectKHR.LAYOUT).withName("pObjects")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkRefreshObjectListKHR(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$objectCount = LAYOUT.byteOffset(PATH$objectCount);
     public static final long OFFSET$pObjects = LAYOUT.byteOffset(PATH$pObjects);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$objectCount = LAYOUT$objectCount.byteSize();
+    public static final long SIZE$pObjects = LAYOUT$pObjects.byteSize();
 
     public VkRefreshObjectListKHR(MemorySegment segment) {
         this.segment = segment;
@@ -94,7 +100,7 @@ public record VkRefreshObjectListKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRefreshObjectListKHR[] ret = new VkRefreshObjectListKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRefreshObjectListKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRefreshObjectListKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

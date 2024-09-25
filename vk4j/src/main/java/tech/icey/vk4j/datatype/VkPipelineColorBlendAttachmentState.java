@@ -24,6 +24,7 @@ public record VkPipelineColorBlendAttachmentState(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("alphaBlendOp"),
         ValueLayout.JAVA_INT.withName("colorWriteMask")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$blendEnable = PathElement.groupElement("blendEnable");
     public static final PathElement PATH$srcColorBlendFactor = PathElement.groupElement("srcColorBlendFactor");
@@ -51,6 +52,15 @@ public record VkPipelineColorBlendAttachmentState(MemorySegment segment) {
     public static final long OFFSET$dstAlphaBlendFactor = LAYOUT.byteOffset(PATH$dstAlphaBlendFactor);
     public static final long OFFSET$alphaBlendOp = LAYOUT.byteOffset(PATH$alphaBlendOp);
     public static final long OFFSET$colorWriteMask = LAYOUT.byteOffset(PATH$colorWriteMask);
+
+    public static final long SIZE$blendEnable = LAYOUT$blendEnable.byteSize();
+    public static final long SIZE$srcColorBlendFactor = LAYOUT$srcColorBlendFactor.byteSize();
+    public static final long SIZE$dstColorBlendFactor = LAYOUT$dstColorBlendFactor.byteSize();
+    public static final long SIZE$colorBlendOp = LAYOUT$colorBlendOp.byteSize();
+    public static final long SIZE$srcAlphaBlendFactor = LAYOUT$srcAlphaBlendFactor.byteSize();
+    public static final long SIZE$dstAlphaBlendFactor = LAYOUT$dstAlphaBlendFactor.byteSize();
+    public static final long SIZE$alphaBlendOp = LAYOUT$alphaBlendOp.byteSize();
+    public static final long SIZE$colorWriteMask = LAYOUT$colorWriteMask.byteSize();
 
     public VkPipelineColorBlendAttachmentState(MemorySegment segment) {
         this.segment = segment;
@@ -128,7 +138,7 @@ public record VkPipelineColorBlendAttachmentState(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineColorBlendAttachmentState[] ret = new VkPipelineColorBlendAttachmentState[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineColorBlendAttachmentState(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPipelineColorBlendAttachmentState(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

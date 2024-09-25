@@ -20,6 +20,7 @@ public record VkPhysicalDeviceOpacityMicromapPropertiesEXT(MemorySegment segment
         ValueLayout.JAVA_INT.withName("maxOpacity2StateSubdivisionLevel"),
         ValueLayout.JAVA_INT.withName("maxOpacity4StateSubdivisionLevel")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceOpacityMicromapPropertiesEXT(MemorySegment segment
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$maxOpacity2StateSubdivisionLevel = LAYOUT.byteOffset(PATH$maxOpacity2StateSubdivisionLevel);
     public static final long OFFSET$maxOpacity4StateSubdivisionLevel = LAYOUT.byteOffset(PATH$maxOpacity4StateSubdivisionLevel);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxOpacity2StateSubdivisionLevel = LAYOUT$maxOpacity2StateSubdivisionLevel.byteSize();
+    public static final long SIZE$maxOpacity4StateSubdivisionLevel = LAYOUT$maxOpacity4StateSubdivisionLevel.byteSize();
 
     public VkPhysicalDeviceOpacityMicromapPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceOpacityMicromapPropertiesEXT(MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceOpacityMicromapPropertiesEXT[] ret = new VkPhysicalDeviceOpacityMicromapPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceOpacityMicromapPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceOpacityMicromapPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

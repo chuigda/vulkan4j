@@ -19,6 +19,7 @@ public record VkQueueFamilyCheckpointProperties2NV(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("checkpointExecutionStageMask")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkQueueFamilyCheckpointProperties2NV(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$checkpointExecutionStageMask = LAYOUT.byteOffset(PATH$checkpointExecutionStageMask);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$checkpointExecutionStageMask = LAYOUT$checkpointExecutionStageMask.byteSize();
 
     public VkQueueFamilyCheckpointProperties2NV(MemorySegment segment) {
         this.segment = segment;
@@ -69,7 +74,7 @@ public record VkQueueFamilyCheckpointProperties2NV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkQueueFamilyCheckpointProperties2NV[] ret = new VkQueueFamilyCheckpointProperties2NV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkQueueFamilyCheckpointProperties2NV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkQueueFamilyCheckpointProperties2NV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

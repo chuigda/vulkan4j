@@ -27,6 +27,7 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment
         ValueLayout.JAVA_INT.withName("engineVersion"),
         ValueLayout.JAVA_INT.withName("apiVersion")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$headerSize = PathElement.groupElement("headerSize");
     public static final PathElement PATH$headerVersion = PathElement.groupElement("headerVersion");
@@ -63,6 +64,18 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment
     public static final long OFFSET$engineNameOffset = LAYOUT.byteOffset(PATH$engineNameOffset);
     public static final long OFFSET$engineVersion = LAYOUT.byteOffset(PATH$engineVersion);
     public static final long OFFSET$apiVersion = LAYOUT.byteOffset(PATH$apiVersion);
+
+    public static final long SIZE$headerSize = LAYOUT$headerSize.byteSize();
+    public static final long SIZE$headerVersion = LAYOUT$headerVersion.byteSize();
+    public static final long SIZE$vendorID = LAYOUT$vendorID.byteSize();
+    public static final long SIZE$deviceID = LAYOUT$deviceID.byteSize();
+    public static final long SIZE$driverVersion = LAYOUT$driverVersion.byteSize();
+    public static final long SIZE$pipelineCacheUUID = LAYOUT$pipelineCacheUUID.byteSize();
+    public static final long SIZE$applicationNameOffset = LAYOUT$applicationNameOffset.byteSize();
+    public static final long SIZE$applicationVersion = LAYOUT$applicationVersion.byteSize();
+    public static final long SIZE$engineNameOffset = LAYOUT$engineNameOffset.byteSize();
+    public static final long SIZE$engineVersion = LAYOUT$engineVersion.byteSize();
+    public static final long SIZE$apiVersion = LAYOUT$apiVersion.byteSize();
 
     public VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment) {
         this.segment = segment;
@@ -168,7 +181,7 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceFaultVendorBinaryHeaderVersionOneEXT[] ret = new VkDeviceFaultVendorBinaryHeaderVersionOneEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

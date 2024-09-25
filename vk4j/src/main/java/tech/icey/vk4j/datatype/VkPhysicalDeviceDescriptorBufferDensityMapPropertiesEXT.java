@@ -19,6 +19,7 @@ public record VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(MemorySegm
         ValueLayout.ADDRESS.withName("pNext"),
         NativeLayout.C_SIZE_T.withName("combinedImageSamplerDensityMapDescriptorSize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -30,6 +31,9 @@ public record VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(MemorySegm
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$combinedImageSamplerDensityMapDescriptorSize = LAYOUT.byteOffset(PATH$combinedImageSamplerDensityMapDescriptorSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
 
     public VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -68,7 +72,7 @@ public record VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(MemorySegm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT[] ret = new VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

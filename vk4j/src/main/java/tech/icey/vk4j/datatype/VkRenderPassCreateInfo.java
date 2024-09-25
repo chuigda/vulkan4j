@@ -25,6 +25,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("dependencyCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkSubpassDependency.LAYOUT).withName("pDependencies")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -55,6 +56,16 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
     public static final long OFFSET$pSubpasses = LAYOUT.byteOffset(PATH$pSubpasses);
     public static final long OFFSET$dependencyCount = LAYOUT.byteOffset(PATH$dependencyCount);
     public static final long OFFSET$pDependencies = LAYOUT.byteOffset(PATH$pDependencies);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$attachmentCount = LAYOUT$attachmentCount.byteSize();
+    public static final long SIZE$pAttachments = LAYOUT$pAttachments.byteSize();
+    public static final long SIZE$subpassCount = LAYOUT$subpassCount.byteSize();
+    public static final long SIZE$pSubpasses = LAYOUT$pSubpasses.byteSize();
+    public static final long SIZE$dependencyCount = LAYOUT$dependencyCount.byteSize();
+    public static final long SIZE$pDependencies = LAYOUT$pDependencies.byteSize();
 
     public VkRenderPassCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -180,7 +191,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderPassCreateInfo[] ret = new VkRenderPassCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderPassCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRenderPassCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

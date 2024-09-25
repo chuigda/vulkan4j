@@ -1,14 +1,17 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfFloat;
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSRTDataNV(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -29,6 +32,7 @@ public record VkSRTDataNV(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("ty"),
         ValueLayout.JAVA_FLOAT.withName("tz")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sx = PathElement.groupElement("sx");
     public static final PathElement PATH$a = PathElement.groupElement("a");
@@ -80,6 +84,23 @@ public record VkSRTDataNV(MemorySegment segment) {
     public static final long OFFSET$tx = LAYOUT.byteOffset(PATH$tx);
     public static final long OFFSET$ty = LAYOUT.byteOffset(PATH$ty);
     public static final long OFFSET$tz = LAYOUT.byteOffset(PATH$tz);
+
+    public static final long SIZE$sx = LAYOUT$sx.byteSize();
+    public static final long SIZE$a = LAYOUT$a.byteSize();
+    public static final long SIZE$b = LAYOUT$b.byteSize();
+    public static final long SIZE$pvx = LAYOUT$pvx.byteSize();
+    public static final long SIZE$sy = LAYOUT$sy.byteSize();
+    public static final long SIZE$c = LAYOUT$c.byteSize();
+    public static final long SIZE$pvy = LAYOUT$pvy.byteSize();
+    public static final long SIZE$sz = LAYOUT$sz.byteSize();
+    public static final long SIZE$pvz = LAYOUT$pvz.byteSize();
+    public static final long SIZE$qx = LAYOUT$qx.byteSize();
+    public static final long SIZE$qy = LAYOUT$qy.byteSize();
+    public static final long SIZE$qz = LAYOUT$qz.byteSize();
+    public static final long SIZE$qw = LAYOUT$qw.byteSize();
+    public static final long SIZE$tx = LAYOUT$tx.byteSize();
+    public static final long SIZE$ty = LAYOUT$ty.byteSize();
+    public static final long SIZE$tz = LAYOUT$tz.byteSize();
 
     public VkSRTDataNV(MemorySegment segment) {
         this.segment = segment;
@@ -216,12 +237,12 @@ public record VkSRTDataNV(MemorySegment segment) {
     public static VkSRTDataNV allocate(Arena arena) {
         return new VkSRTDataNV(arena.allocate(LAYOUT));
     }
-
+    
     public static VkSRTDataNV[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSRTDataNV[] ret = new VkSRTDataNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSRTDataNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSRTDataNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

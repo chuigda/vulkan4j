@@ -19,6 +19,7 @@ public record VkSurfaceCapabilities2KHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         VkSurfaceCapabilitiesKHR.LAYOUT.withName("surfaceCapabilities")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -31,6 +32,10 @@ public record VkSurfaceCapabilities2KHR(MemorySegment segment) {
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$surfaceCapabilities = LAYOUT.byteOffset(PATH$surfaceCapabilities);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$surfaceCapabilities = LAYOUT$surfaceCapabilities.byteSize();
 
     public VkSurfaceCapabilities2KHR(MemorySegment segment) {
         this.segment = segment;
@@ -58,7 +63,7 @@ public record VkSurfaceCapabilities2KHR(MemorySegment segment) {
     }
 
     public void surfaceCapabilities(VkSurfaceCapabilitiesKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$surfaceCapabilities, LAYOUT$surfaceCapabilities.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$surfaceCapabilities, SIZE$surfaceCapabilities);
     }
 
     public static VkSurfaceCapabilities2KHR allocate(Arena arena) {
@@ -69,7 +74,7 @@ public record VkSurfaceCapabilities2KHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSurfaceCapabilities2KHR[] ret = new VkSurfaceCapabilities2KHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSurfaceCapabilities2KHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSurfaceCapabilities2KHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -22,6 +22,7 @@ public record VkPerformanceCounterKHR(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("storage"),
         MemoryLayout.sequenceLayout(VK_UUID_SIZE, ValueLayout.JAVA_BYTE).withName("uuid")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -43,6 +44,13 @@ public record VkPerformanceCounterKHR(MemorySegment segment) {
     public static final long OFFSET$scope = LAYOUT.byteOffset(PATH$scope);
     public static final long OFFSET$storage = LAYOUT.byteOffset(PATH$storage);
     public static final long OFFSET$uuid = LAYOUT.byteOffset(PATH$uuid);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$unit = LAYOUT$unit.byteSize();
+    public static final long SIZE$scope = LAYOUT$scope.byteSize();
+    public static final long SIZE$storage = LAYOUT$storage.byteSize();
+    public static final long SIZE$uuid = LAYOUT$uuid.byteSize();
 
     public VkPerformanceCounterKHR(MemorySegment segment) {
         this.segment = segment;
@@ -109,7 +117,7 @@ public record VkPerformanceCounterKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPerformanceCounterKHR[] ret = new VkPerformanceCounterKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPerformanceCounterKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPerformanceCounterKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

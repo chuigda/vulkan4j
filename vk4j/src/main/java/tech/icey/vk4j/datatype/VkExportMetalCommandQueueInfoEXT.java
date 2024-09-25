@@ -20,6 +20,7 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("queue"),
         ValueLayout.ADDRESS.withName("mtlCommandQueue")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$queue = LAYOUT.byteOffset(PATH$queue);
     public static final long OFFSET$mtlCommandQueue = LAYOUT.byteOffset(PATH$mtlCommandQueue);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$queue = LAYOUT$queue.byteSize();
+    public static final long SIZE$mtlCommandQueue = LAYOUT$mtlCommandQueue.byteSize();
 
     public VkExportMetalCommandQueueInfoEXT(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExportMetalCommandQueueInfoEXT[] ret = new VkExportMetalCommandQueueInfoEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkExportMetalCommandQueueInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkExportMetalCommandQueueInfoEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

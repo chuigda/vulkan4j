@@ -20,6 +20,7 @@ public record VkPhysicalDeviceMemoryDecompressionPropertiesNV(MemorySegment segm
         ValueLayout.JAVA_INT.withName("decompressionMethods"),
         ValueLayout.JAVA_LONG.withName("maxDecompressionIndirectCount")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceMemoryDecompressionPropertiesNV(MemorySegment segm
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$decompressionMethods = LAYOUT.byteOffset(PATH$decompressionMethods);
     public static final long OFFSET$maxDecompressionIndirectCount = LAYOUT.byteOffset(PATH$maxDecompressionIndirectCount);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$decompressionMethods = LAYOUT$decompressionMethods.byteSize();
+    public static final long SIZE$maxDecompressionIndirectCount = LAYOUT$maxDecompressionIndirectCount.byteSize();
 
     public VkPhysicalDeviceMemoryDecompressionPropertiesNV(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceMemoryDecompressionPropertiesNV(MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMemoryDecompressionPropertiesNV[] ret = new VkPhysicalDeviceMemoryDecompressionPropertiesNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMemoryDecompressionPropertiesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceMemoryDecompressionPropertiesNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

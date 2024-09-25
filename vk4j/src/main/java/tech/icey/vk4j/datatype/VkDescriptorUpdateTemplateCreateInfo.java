@@ -26,6 +26,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pipelineLayout"),
         ValueLayout.JAVA_INT.withName("set")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -59,6 +60,17 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) {
     public static final long OFFSET$pipelineBindPoint = LAYOUT.byteOffset(PATH$pipelineBindPoint);
     public static final long OFFSET$pipelineLayout = LAYOUT.byteOffset(PATH$pipelineLayout);
     public static final long OFFSET$set = LAYOUT.byteOffset(PATH$set);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$descriptorUpdateEntryCount = LAYOUT$descriptorUpdateEntryCount.byteSize();
+    public static final long SIZE$pDescriptorUpdateEntries = LAYOUT$pDescriptorUpdateEntries.byteSize();
+    public static final long SIZE$templateType = LAYOUT$templateType.byteSize();
+    public static final long SIZE$descriptorSetLayout = LAYOUT$descriptorSetLayout.byteSize();
+    public static final long SIZE$pipelineBindPoint = LAYOUT$pipelineBindPoint.byteSize();
+    public static final long SIZE$pipelineLayout = LAYOUT$pipelineLayout.byteSize();
+    public static final long SIZE$set = LAYOUT$set.byteSize();
 
     public VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) {
         this.segment = segment;
@@ -166,7 +178,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorUpdateTemplateCreateInfo[] ret = new VkDescriptorUpdateTemplateCreateInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDescriptorUpdateTemplateCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDescriptorUpdateTemplateCreateInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

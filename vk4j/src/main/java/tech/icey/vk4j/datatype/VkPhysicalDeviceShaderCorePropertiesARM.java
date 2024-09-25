@@ -21,6 +21,7 @@ public record VkPhysicalDeviceShaderCorePropertiesARM(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("texelRate"),
         ValueLayout.JAVA_INT.withName("fmaRate")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkPhysicalDeviceShaderCorePropertiesARM(MemorySegment segment) {
     public static final long OFFSET$pixelRate = LAYOUT.byteOffset(PATH$pixelRate);
     public static final long OFFSET$texelRate = LAYOUT.byteOffset(PATH$texelRate);
     public static final long OFFSET$fmaRate = LAYOUT.byteOffset(PATH$fmaRate);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pixelRate = LAYOUT$pixelRate.byteSize();
+    public static final long SIZE$texelRate = LAYOUT$texelRate.byteSize();
+    public static final long SIZE$fmaRate = LAYOUT$fmaRate.byteSize();
 
     public VkPhysicalDeviceShaderCorePropertiesARM(MemorySegment segment) {
         this.segment = segment;
@@ -93,7 +100,7 @@ public record VkPhysicalDeviceShaderCorePropertiesARM(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderCorePropertiesARM[] ret = new VkPhysicalDeviceShaderCorePropertiesARM[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceShaderCorePropertiesARM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceShaderCorePropertiesARM(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

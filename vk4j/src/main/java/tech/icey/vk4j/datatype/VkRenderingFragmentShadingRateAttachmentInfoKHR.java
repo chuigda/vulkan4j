@@ -21,6 +21,7 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(MemorySegment segm
         ValueLayout.JAVA_INT.withName("imageLayout"),
         VkExtent2D.LAYOUT.withName("shadingRateAttachmentTexelSize")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -39,6 +40,12 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(MemorySegment segm
     public static final long OFFSET$imageView = LAYOUT.byteOffset(PATH$imageView);
     public static final long OFFSET$imageLayout = LAYOUT.byteOffset(PATH$imageLayout);
     public static final long OFFSET$shadingRateAttachmentTexelSize = LAYOUT.byteOffset(PATH$shadingRateAttachmentTexelSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$imageView = LAYOUT$imageView.byteSize();
+    public static final long SIZE$imageLayout = LAYOUT$imageLayout.byteSize();
+    public static final long SIZE$shadingRateAttachmentTexelSize = LAYOUT$shadingRateAttachmentTexelSize.byteSize();
 
     public VkRenderingFragmentShadingRateAttachmentInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -82,7 +89,7 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(MemorySegment segm
     }
 
     public void shadingRateAttachmentTexelSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$shadingRateAttachmentTexelSize, LAYOUT$shadingRateAttachmentTexelSize.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$shadingRateAttachmentTexelSize, SIZE$shadingRateAttachmentTexelSize);
     }
 
     public static VkRenderingFragmentShadingRateAttachmentInfoKHR allocate(Arena arena) {
@@ -93,7 +100,7 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderingFragmentShadingRateAttachmentInfoKHR[] ret = new VkRenderingFragmentShadingRateAttachmentInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderingFragmentShadingRateAttachmentInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRenderingFragmentShadingRateAttachmentInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

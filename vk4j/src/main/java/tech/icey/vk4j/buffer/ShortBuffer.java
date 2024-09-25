@@ -10,11 +10,11 @@ public record ShortBuffer(MemorySegment segment) {
     }
 
     public short read() {
-        return read(0);
+        return segment.get(ValueLayout.JAVA_SHORT, 0);
     }
 
     public void write(short value) {
-        write(0, value);
+        segment.set(ValueLayout.JAVA_SHORT, 0, value);
     }
 
     public short read(long index) {

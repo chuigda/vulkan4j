@@ -20,6 +20,7 @@ public record VkDisplayPlaneInfo2KHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("mode"),
         ValueLayout.JAVA_INT.withName("planeIndex")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkDisplayPlaneInfo2KHR(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$mode = LAYOUT.byteOffset(PATH$mode);
     public static final long OFFSET$planeIndex = LAYOUT.byteOffset(PATH$planeIndex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$mode = LAYOUT$mode.byteSize();
+    public static final long SIZE$planeIndex = LAYOUT$planeIndex.byteSize();
 
     public VkDisplayPlaneInfo2KHR(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkDisplayPlaneInfo2KHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayPlaneInfo2KHR[] ret = new VkDisplayPlaneInfo2KHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDisplayPlaneInfo2KHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDisplayPlaneInfo2KHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

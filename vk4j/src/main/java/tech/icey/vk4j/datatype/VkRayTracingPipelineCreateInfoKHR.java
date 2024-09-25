@@ -30,6 +30,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("basePipelineHandle"),
         ValueLayout.JAVA_INT.withName("basePipelineIndex")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -75,6 +76,21 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) {
     public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
     public static final long OFFSET$basePipelineHandle = LAYOUT.byteOffset(PATH$basePipelineHandle);
     public static final long OFFSET$basePipelineIndex = LAYOUT.byteOffset(PATH$basePipelineIndex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$stageCount = LAYOUT$stageCount.byteSize();
+    public static final long SIZE$pStages = LAYOUT$pStages.byteSize();
+    public static final long SIZE$groupCount = LAYOUT$groupCount.byteSize();
+    public static final long SIZE$pGroups = LAYOUT$pGroups.byteSize();
+    public static final long SIZE$maxPipelineRayRecursionDepth = LAYOUT$maxPipelineRayRecursionDepth.byteSize();
+    public static final long SIZE$pLibraryInfo = LAYOUT$pLibraryInfo.byteSize();
+    public static final long SIZE$pLibraryInterface = LAYOUT$pLibraryInterface.byteSize();
+    public static final long SIZE$pDynamicState = LAYOUT$pDynamicState.byteSize();
+    public static final long SIZE$layout = LAYOUT$layout.byteSize();
+    public static final long SIZE$basePipelineHandle = LAYOUT$basePipelineHandle.byteSize();
+    public static final long SIZE$basePipelineIndex = LAYOUT$basePipelineIndex.byteSize();
 
     public VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
@@ -266,7 +282,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRayTracingPipelineCreateInfoKHR[] ret = new VkRayTracingPipelineCreateInfoKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkRayTracingPipelineCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkRayTracingPipelineCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

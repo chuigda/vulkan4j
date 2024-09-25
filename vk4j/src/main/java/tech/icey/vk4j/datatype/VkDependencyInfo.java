@@ -1,18 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkDependencyFlags;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_DEPENDENCY_INFO;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkDependencyInfo(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -26,6 +25,7 @@ public record VkDependencyInfo(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("imageMemoryBarrierCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkImageMemoryBarrier2.LAYOUT).withName("pImageMemoryBarriers")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -56,6 +56,16 @@ public record VkDependencyInfo(MemorySegment segment) {
     public static final long OFFSET$pBufferMemoryBarriers = LAYOUT.byteOffset(PATH$pBufferMemoryBarriers);
     public static final long OFFSET$imageMemoryBarrierCount = LAYOUT.byteOffset(PATH$imageMemoryBarrierCount);
     public static final long OFFSET$pImageMemoryBarriers = LAYOUT.byteOffset(PATH$pImageMemoryBarriers);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$dependencyFlags = LAYOUT$dependencyFlags.byteSize();
+    public static final long SIZE$memoryBarrierCount = LAYOUT$memoryBarrierCount.byteSize();
+    public static final long SIZE$pMemoryBarriers = LAYOUT$pMemoryBarriers.byteSize();
+    public static final long SIZE$bufferMemoryBarrierCount = LAYOUT$bufferMemoryBarrierCount.byteSize();
+    public static final long SIZE$pBufferMemoryBarriers = LAYOUT$pBufferMemoryBarriers.byteSize();
+    public static final long SIZE$imageMemoryBarrierCount = LAYOUT$imageMemoryBarrierCount.byteSize();
+    public static final long SIZE$pImageMemoryBarriers = LAYOUT$pImageMemoryBarriers.byteSize();
 
     public VkDependencyInfo(MemorySegment segment) {
         this.segment = segment;
@@ -101,7 +111,7 @@ public record VkDependencyInfo(MemorySegment segment) {
     public void pMemoryBarriersRaw(@pointer(comment="VkMemoryBarrier2*") MemorySegment value) {
         segment.set(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers, value);
     }
-
+    
     public @nullable VkMemoryBarrier2 pMemoryBarriers() {
         MemorySegment s = pMemoryBarriersRaw();
         if (s.address() == 0) {
@@ -130,7 +140,7 @@ public record VkDependencyInfo(MemorySegment segment) {
     public void pBufferMemoryBarriersRaw(@pointer(comment="VkBufferMemoryBarrier2*") MemorySegment value) {
         segment.set(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers, value);
     }
-
+    
     public @nullable VkBufferMemoryBarrier2 pBufferMemoryBarriers() {
         MemorySegment s = pBufferMemoryBarriersRaw();
         if (s.address() == 0) {
@@ -159,7 +169,7 @@ public record VkDependencyInfo(MemorySegment segment) {
     public void pImageMemoryBarriersRaw(@pointer(comment="VkImageMemoryBarrier2*") MemorySegment value) {
         segment.set(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers, value);
     }
-
+    
     public @nullable VkImageMemoryBarrier2 pImageMemoryBarriers() {
         MemorySegment s = pImageMemoryBarriersRaw();
         if (s.address() == 0) {
@@ -176,12 +186,12 @@ public record VkDependencyInfo(MemorySegment segment) {
     public static VkDependencyInfo allocate(Arena arena) {
         return new VkDependencyInfo(arena.allocate(LAYOUT));
     }
-
+    
     public static VkDependencyInfo[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDependencyInfo[] ret = new VkDependencyInfo[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkDependencyInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkDependencyInfo(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

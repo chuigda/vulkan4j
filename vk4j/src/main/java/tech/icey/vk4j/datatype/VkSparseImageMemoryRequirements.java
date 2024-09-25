@@ -21,6 +21,7 @@ public record VkSparseImageMemoryRequirements(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("imageMipTailOffset"),
         ValueLayout.JAVA_LONG.withName("imageMipTailStride")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$formatProperties = PathElement.groupElement("formatProperties");
     public static final PathElement PATH$imageMipTailFirstLod = PathElement.groupElement("imageMipTailFirstLod");
@@ -40,6 +41,12 @@ public record VkSparseImageMemoryRequirements(MemorySegment segment) {
     public static final long OFFSET$imageMipTailOffset = LAYOUT.byteOffset(PATH$imageMipTailOffset);
     public static final long OFFSET$imageMipTailStride = LAYOUT.byteOffset(PATH$imageMipTailStride);
 
+    public static final long SIZE$formatProperties = LAYOUT$formatProperties.byteSize();
+    public static final long SIZE$imageMipTailFirstLod = LAYOUT$imageMipTailFirstLod.byteSize();
+    public static final long SIZE$imageMipTailSize = LAYOUT$imageMipTailSize.byteSize();
+    public static final long SIZE$imageMipTailOffset = LAYOUT$imageMipTailOffset.byteSize();
+    public static final long SIZE$imageMipTailStride = LAYOUT$imageMipTailStride.byteSize();
+
     public VkSparseImageMemoryRequirements(MemorySegment segment) {
         this.segment = segment;
     }
@@ -49,7 +56,7 @@ public record VkSparseImageMemoryRequirements(MemorySegment segment) {
     }
 
     public void formatProperties(VkSparseImageFormatProperties value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$formatProperties, LAYOUT$formatProperties.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$formatProperties, SIZE$formatProperties);
     }
 
     public @unsigned int imageMipTailFirstLod() {
@@ -92,7 +99,7 @@ public record VkSparseImageMemoryRequirements(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSparseImageMemoryRequirements[] ret = new VkSparseImageMemoryRequirements[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkSparseImageMemoryRequirements(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkSparseImageMemoryRequirements(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

@@ -46,6 +46,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
         ValueLayout.JAVA_INT.withName("prefersCompactVertexOutput"),
         ValueLayout.JAVA_INT.withName("prefersCompactPrimitiveOutput")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -139,6 +140,37 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
     public static final long OFFSET$prefersLocalInvocationPrimitiveOutput = LAYOUT.byteOffset(PATH$prefersLocalInvocationPrimitiveOutput);
     public static final long OFFSET$prefersCompactVertexOutput = LAYOUT.byteOffset(PATH$prefersCompactVertexOutput);
     public static final long OFFSET$prefersCompactPrimitiveOutput = LAYOUT.byteOffset(PATH$prefersCompactPrimitiveOutput);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxTaskWorkGroupTotalCount = LAYOUT$maxTaskWorkGroupTotalCount.byteSize();
+    public static final long SIZE$maxTaskWorkGroupCount = LAYOUT$maxTaskWorkGroupCount.byteSize();
+    public static final long SIZE$maxTaskWorkGroupInvocations = LAYOUT$maxTaskWorkGroupInvocations.byteSize();
+    public static final long SIZE$maxTaskWorkGroupSize = LAYOUT$maxTaskWorkGroupSize.byteSize();
+    public static final long SIZE$maxTaskPayloadSize = LAYOUT$maxTaskPayloadSize.byteSize();
+    public static final long SIZE$maxTaskSharedMemorySize = LAYOUT$maxTaskSharedMemorySize.byteSize();
+    public static final long SIZE$maxTaskPayloadAndSharedMemorySize = LAYOUT$maxTaskPayloadAndSharedMemorySize.byteSize();
+    public static final long SIZE$maxMeshWorkGroupTotalCount = LAYOUT$maxMeshWorkGroupTotalCount.byteSize();
+    public static final long SIZE$maxMeshWorkGroupCount = LAYOUT$maxMeshWorkGroupCount.byteSize();
+    public static final long SIZE$maxMeshWorkGroupInvocations = LAYOUT$maxMeshWorkGroupInvocations.byteSize();
+    public static final long SIZE$maxMeshWorkGroupSize = LAYOUT$maxMeshWorkGroupSize.byteSize();
+    public static final long SIZE$maxMeshSharedMemorySize = LAYOUT$maxMeshSharedMemorySize.byteSize();
+    public static final long SIZE$maxMeshPayloadAndSharedMemorySize = LAYOUT$maxMeshPayloadAndSharedMemorySize.byteSize();
+    public static final long SIZE$maxMeshOutputMemorySize = LAYOUT$maxMeshOutputMemorySize.byteSize();
+    public static final long SIZE$maxMeshPayloadAndOutputMemorySize = LAYOUT$maxMeshPayloadAndOutputMemorySize.byteSize();
+    public static final long SIZE$maxMeshOutputComponents = LAYOUT$maxMeshOutputComponents.byteSize();
+    public static final long SIZE$maxMeshOutputVertices = LAYOUT$maxMeshOutputVertices.byteSize();
+    public static final long SIZE$maxMeshOutputPrimitives = LAYOUT$maxMeshOutputPrimitives.byteSize();
+    public static final long SIZE$maxMeshOutputLayers = LAYOUT$maxMeshOutputLayers.byteSize();
+    public static final long SIZE$maxMeshMultiviewViewCount = LAYOUT$maxMeshMultiviewViewCount.byteSize();
+    public static final long SIZE$meshOutputPerVertexGranularity = LAYOUT$meshOutputPerVertexGranularity.byteSize();
+    public static final long SIZE$meshOutputPerPrimitiveGranularity = LAYOUT$meshOutputPerPrimitiveGranularity.byteSize();
+    public static final long SIZE$maxPreferredTaskWorkGroupInvocations = LAYOUT$maxPreferredTaskWorkGroupInvocations.byteSize();
+    public static final long SIZE$maxPreferredMeshWorkGroupInvocations = LAYOUT$maxPreferredMeshWorkGroupInvocations.byteSize();
+    public static final long SIZE$prefersLocalInvocationVertexOutput = LAYOUT$prefersLocalInvocationVertexOutput.byteSize();
+    public static final long SIZE$prefersLocalInvocationPrimitiveOutput = LAYOUT$prefersLocalInvocationPrimitiveOutput.byteSize();
+    public static final long SIZE$prefersCompactVertexOutput = LAYOUT$prefersCompactVertexOutput.byteSize();
+    public static final long SIZE$prefersCompactPrimitiveOutput = LAYOUT$prefersCompactPrimitiveOutput.byteSize();
 
     public VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -409,7 +441,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMeshShaderPropertiesEXT[] ret = new VkPhysicalDeviceMeshShaderPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMeshShaderPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceMeshShaderPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

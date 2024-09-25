@@ -51,7 +51,7 @@ def generate_ref_type_accessor(type_: CStructType | CUnionType | CHandleType, me
     }}
 
     public void {member.name}({type_.java_type()} value) {{
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET${member.name}, LAYOUT${member.name}.byteSize());
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET${member.name}, SIZE${member.name});
     }}\n\n'''
 
 

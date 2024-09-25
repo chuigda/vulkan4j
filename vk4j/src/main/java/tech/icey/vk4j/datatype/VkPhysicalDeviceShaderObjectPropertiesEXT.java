@@ -20,6 +20,7 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(MemorySegment segment) {
         MemoryLayout.sequenceLayout(VK_UUID_SIZE, ValueLayout.JAVA_BYTE).withName("shaderBinaryUUID"),
         ValueLayout.JAVA_INT.withName("shaderBinaryVersion")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(MemorySegment segment) {
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$shaderBinaryUUID = LAYOUT.byteOffset(PATH$shaderBinaryUUID);
     public static final long OFFSET$shaderBinaryVersion = LAYOUT.byteOffset(PATH$shaderBinaryVersion);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderBinaryUUID = LAYOUT$shaderBinaryUUID.byteSize();
+    public static final long SIZE$shaderBinaryVersion = LAYOUT$shaderBinaryVersion.byteSize();
 
     public VkPhysicalDeviceShaderObjectPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
@@ -85,7 +91,7 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderObjectPropertiesEXT[] ret = new VkPhysicalDeviceShaderObjectPropertiesEXT[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceShaderObjectPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceShaderObjectPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

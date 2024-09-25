@@ -20,6 +20,7 @@ public record VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR(MemorySegment se
         ValueLayout.JAVA_INT.withName("vertexAttributeInstanceRateDivisor"),
         ValueLayout.JAVA_INT.withName("vertexAttributeInstanceRateZeroDivisor")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
@@ -35,6 +36,11 @@ public record VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR(MemorySegment se
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$vertexAttributeInstanceRateDivisor = LAYOUT.byteOffset(PATH$vertexAttributeInstanceRateDivisor);
     public static final long OFFSET$vertexAttributeInstanceRateZeroDivisor = LAYOUT.byteOffset(PATH$vertexAttributeInstanceRateZeroDivisor);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$vertexAttributeInstanceRateDivisor = LAYOUT$vertexAttributeInstanceRateDivisor.byteSize();
+    public static final long SIZE$vertexAttributeInstanceRateZeroDivisor = LAYOUT$vertexAttributeInstanceRateZeroDivisor.byteSize();
 
     public VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR(MemorySegment segment) {
         this.segment = segment;
@@ -81,7 +87,7 @@ public record VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR(MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR[] ret = new VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }

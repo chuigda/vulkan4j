@@ -18,6 +18,7 @@ public record VkViewportWScalingNV(MemorySegment segment) {
         ValueLayout.JAVA_FLOAT.withName("xcoeff"),
         ValueLayout.JAVA_FLOAT.withName("ycoeff")
     );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$xcoeff = PathElement.groupElement("xcoeff");
     public static final PathElement PATH$ycoeff = PathElement.groupElement("ycoeff");
@@ -27,6 +28,9 @@ public record VkViewportWScalingNV(MemorySegment segment) {
 
     public static final long OFFSET$xcoeff = LAYOUT.byteOffset(PATH$xcoeff);
     public static final long OFFSET$ycoeff = LAYOUT.byteOffset(PATH$ycoeff);
+
+    public static final long SIZE$xcoeff = LAYOUT$xcoeff.byteSize();
+    public static final long SIZE$ycoeff = LAYOUT$ycoeff.byteSize();
 
     public VkViewportWScalingNV(MemorySegment segment) {
         this.segment = segment;
@@ -56,7 +60,7 @@ public record VkViewportWScalingNV(MemorySegment segment) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkViewportWScalingNV[] ret = new VkViewportWScalingNV[count];
         for (int i = 0; i < count; i++) {
-            ret[i] = new VkViewportWScalingNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+            ret[i] = new VkViewportWScalingNV(segment.asSlice(i * SIZE, SIZE));
         }
         return ret;
     }
