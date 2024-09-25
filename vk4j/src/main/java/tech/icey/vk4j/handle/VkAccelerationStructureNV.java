@@ -1,37 +1,65 @@
 package tech.icey.vk4j.handle;
 
-import tech.icey.vk4j.IFactory;
-
-import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
 public record VkAccelerationStructureNV(MemorySegment segment) {
-    public MemorySegment handle() {
-        return segment.get(ValueLayout.ADDRESS, 0);
+    public record Buffer(MemorySegment segment) {
+        public long size() {
+            return segment.byteSize() / ValueLayout.ADDRESS.byteSize();
+        }
+
+        public VkAccelerationStructureNV read() {
+            return new VkAccelerationStructureNV(readRaw());
+        }
+
+        public VkAccelerationStructureNV read(long index) {
+            return new VkAccelerationStructureNV(readRaw(index));
+        }
+
+        public MemorySegment readRaw() {
+            return readRaw(0);
+        }
+
+        public MemorySegment readRaw(long index) {
+            return segment.get(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize());
+        }
+
+        public VkAccelerationStructureNV[] readAll() {
+            VkAccelerationStructureNV[] handles = new VkAccelerationStructureNV[(int)size()];
+            for (int i = 0; i < handles.length; i++) {
+                handles[i] = read(i);
+            }
+            return handles;
+        }
+
+        public void write(VkAccelerationStructureNV value) {
+            writeRaw(value.segment());
+        }
+
+        public void write(VkAccelerationStructureNV value, long index) {
+            writeRaw(value.segment(), index);
+        }
+
+        public void writeRaw(MemorySegment value) {
+            segment.set(ValueLayout.ADDRESS, 0, value);
+        }
+
+        public void writeRaw(MemorySegment value, long index) {
+            segment.set(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize(), value);
+        }
+
+        public Buffer reinterpret(long newSize) {
+            return new Buffer(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
+        }
+
+        public static Buffer allocate(Arena arena) {
+            return allocate(arena, 1);
+        }
+
+        public static Buffer allocate(Arena arena, long size) {
+            return new Buffer(arena.allocate(ValueLayout.ADDRESS, size));
+        }
     }
-
-    public static final class Factory implements IFactory<VkAccelerationStructureNV> {
-        @Override
-        public Class<VkAccelerationStructureNV> clazz() {
-            return VkAccelerationStructureNV.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS);
-        }
-
-        @Override
-        public VkAccelerationStructureNV create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkAccelerationStructureNV createUninit(MemorySegment segment) {
-            return new VkAccelerationStructureNV(segment);
-        }
-    }
-
-    public static final Factory FACTORY = new Factory();
 }

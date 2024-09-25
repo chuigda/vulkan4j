@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -75,28 +73,16 @@ public record VkPhysicalDeviceProvokingVertexPropertiesEXT(MemorySegment segment
         segment.set(LAYOUT$transformFeedbackPreservesTriangleFanProvokingVertex, OFFSET$transformFeedbackPreservesTriangleFanProvokingVertex, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceProvokingVertexPropertiesEXT> {
-        @Override
-        public Class<VkPhysicalDeviceProvokingVertexPropertiesEXT> clazz() {
-            return VkPhysicalDeviceProvokingVertexPropertiesEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceProvokingVertexPropertiesEXT.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceProvokingVertexPropertiesEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceProvokingVertexPropertiesEXT createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceProvokingVertexPropertiesEXT(segment);
-        }
+    public static VkPhysicalDeviceProvokingVertexPropertiesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceProvokingVertexPropertiesEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceProvokingVertexPropertiesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceProvokingVertexPropertiesEXT[] ret = new VkPhysicalDeviceProvokingVertexPropertiesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceProvokingVertexPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

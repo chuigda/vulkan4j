@@ -1,24 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkFramebufferCreateFlags;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkImageView;
-import tech.icey.vk4j.handle.VkRenderPass;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkFramebufferCreateInfo(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -115,7 +108,7 @@ public record VkFramebufferCreateInfo(MemorySegment segment) {
     public void pAttachmentsRaw(@pointer(comment="VkImageView*") MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
-
+    
     public @nullable VkImageView pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.address() == 0) {
@@ -153,28 +146,16 @@ public record VkFramebufferCreateInfo(MemorySegment segment) {
         segment.set(LAYOUT$layers, OFFSET$layers, value);
     }
 
-
-    public static final class Factory implements IFactory<VkFramebufferCreateInfo> {
-        @Override
-        public Class<VkFramebufferCreateInfo> clazz() {
-            return VkFramebufferCreateInfo.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkFramebufferCreateInfo.LAYOUT;
-        }
-
-        @Override
-        public VkFramebufferCreateInfo create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkFramebufferCreateInfo createUninit(MemorySegment segment) {
-            return new VkFramebufferCreateInfo(segment);
-        }
+    public static VkFramebufferCreateInfo allocate(Arena arena) {
+        return new VkFramebufferCreateInfo(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkFramebufferCreateInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkFramebufferCreateInfo[] ret = new VkFramebufferCreateInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkFramebufferCreateInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

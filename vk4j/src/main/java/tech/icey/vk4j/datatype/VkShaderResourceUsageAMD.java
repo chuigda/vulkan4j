@@ -1,15 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.unsigned;
-
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkShaderResourceUsageAMD(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -67,7 +69,7 @@ public record VkShaderResourceUsageAMD(MemorySegment segment) {
     public @unsigned long ldsUsageSizeInBytes() {
             return NativeLayout.readCSizeT(segment, OFFSET$ldsUsageSizeInBytes);
         }
-
+    
         public void ldsUsageSizeInBytes(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$ldsUsageSizeInBytes, value);
         }
@@ -75,33 +77,21 @@ public record VkShaderResourceUsageAMD(MemorySegment segment) {
     public @unsigned long scratchMemUsageInBytes() {
             return NativeLayout.readCSizeT(segment, OFFSET$scratchMemUsageInBytes);
         }
-
+    
         public void scratchMemUsageInBytes(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$scratchMemUsageInBytes, value);
         }
 
-
-    public static final class Factory implements IFactory<VkShaderResourceUsageAMD> {
-        @Override
-        public Class<VkShaderResourceUsageAMD> clazz() {
-            return VkShaderResourceUsageAMD.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkShaderResourceUsageAMD.LAYOUT;
-        }
-
-        @Override
-        public VkShaderResourceUsageAMD create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkShaderResourceUsageAMD createUninit(MemorySegment segment) {
-            return new VkShaderResourceUsageAMD(segment);
-        }
+    public static VkShaderResourceUsageAMD allocate(Arena arena) {
+        return new VkShaderResourceUsageAMD(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkShaderResourceUsageAMD[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkShaderResourceUsageAMD[] ret = new VkShaderResourceUsageAMD[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkShaderResourceUsageAMD(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

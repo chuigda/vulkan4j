@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -75,28 +73,16 @@ public record VkImportMemoryZirconHandleInfoFUCHSIA(MemorySegment segment) {
         segment.set(LAYOUT$handle, OFFSET$handle, value);
     }
 
-
-    public static final class Factory implements IFactory<VkImportMemoryZirconHandleInfoFUCHSIA> {
-        @Override
-        public Class<VkImportMemoryZirconHandleInfoFUCHSIA> clazz() {
-            return VkImportMemoryZirconHandleInfoFUCHSIA.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkImportMemoryZirconHandleInfoFUCHSIA.LAYOUT;
-        }
-
-        @Override
-        public VkImportMemoryZirconHandleInfoFUCHSIA create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkImportMemoryZirconHandleInfoFUCHSIA createUninit(MemorySegment segment) {
-            return new VkImportMemoryZirconHandleInfoFUCHSIA(segment);
-        }
+    public static VkImportMemoryZirconHandleInfoFUCHSIA allocate(Arena arena) {
+        return new VkImportMemoryZirconHandleInfoFUCHSIA(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkImportMemoryZirconHandleInfoFUCHSIA[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkImportMemoryZirconHandleInfoFUCHSIA[] ret = new VkImportMemoryZirconHandleInfoFUCHSIA[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkImportMemoryZirconHandleInfoFUCHSIA(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

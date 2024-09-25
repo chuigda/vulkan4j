@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -116,28 +114,16 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
         MemorySegment.copy(value.segment(), 0, memoryHeapsRaw(), index * LAYOUT$memoryHeaps.byteSize(), LAYOUT$memoryHeaps.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceMemoryProperties> {
-        @Override
-        public Class<VkPhysicalDeviceMemoryProperties> clazz() {
-            return VkPhysicalDeviceMemoryProperties.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceMemoryProperties.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceMemoryProperties create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceMemoryProperties createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceMemoryProperties(segment);
-        }
+    public static VkPhysicalDeviceMemoryProperties allocate(Arena arena) {
+        return new VkPhysicalDeviceMemoryProperties(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceMemoryProperties[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceMemoryProperties[] ret = new VkPhysicalDeviceMemoryProperties[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceMemoryProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

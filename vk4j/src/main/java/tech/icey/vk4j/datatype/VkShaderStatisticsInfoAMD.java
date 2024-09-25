@@ -1,16 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.array.IntArray;
-import tech.icey.vk4j.bitmask.VkShaderStageFlags;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkShaderStatisticsInfoAMD(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -103,36 +104,24 @@ public record VkShaderStatisticsInfoAMD(MemorySegment segment) {
         return segment.asSlice(OFFSET$computeWorkGroupSize, LAYOUT$computeWorkGroupSize.byteSize());
     }
 
-    public @unsigned IntArray computeWorkGroupSize() {
-        return new IntArray(computeWorkGroupSizeRaw(), LAYOUT$computeWorkGroupSize.elementCount());
+    public @unsigned IntBuffer computeWorkGroupSize() {
+        return new IntBuffer(computeWorkGroupSizeRaw());
     }
 
-    public void computeWorkGroupSize(@unsigned IntArray value) {
+    public void computeWorkGroupSize(@unsigned IntBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$computeWorkGroupSize, LAYOUT$computeWorkGroupSize.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkShaderStatisticsInfoAMD> {
-        @Override
-        public Class<VkShaderStatisticsInfoAMD> clazz() {
-            return VkShaderStatisticsInfoAMD.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkShaderStatisticsInfoAMD.LAYOUT;
-        }
-
-        @Override
-        public VkShaderStatisticsInfoAMD create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkShaderStatisticsInfoAMD createUninit(MemorySegment segment) {
-            return new VkShaderStatisticsInfoAMD(segment);
-        }
+    public static VkShaderStatisticsInfoAMD allocate(Arena arena) {
+        return new VkShaderStatisticsInfoAMD(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkShaderStatisticsInfoAMD[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkShaderStatisticsInfoAMD[] ret = new VkShaderStatisticsInfoAMD[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkShaderStatisticsInfoAMD(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

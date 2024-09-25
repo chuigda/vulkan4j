@@ -1,20 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.enumtype.VkLayerSettingTypeEXT;
-import tech.icey.vk4j.ptr.BytePtr;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkLayerSettingEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -54,12 +51,12 @@ public record VkLayerSettingEXT(MemorySegment segment) {
     public void pLayerNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pLayerName, OFFSET$pLayerName, value);
     }
-
-    public BytePtr pLayerName() {
-        return new BytePtr(pLayerNameRaw());
+    
+    public ByteBuffer pLayerName() {
+        return new ByteBuffer(pLayerNameRaw());
     }
 
-    public void pLayerName(BytePtr value) {
+    public void pLayerName(ByteBuffer value) {
         pLayerNameRaw(value.segment());
     }
 
@@ -70,12 +67,12 @@ public record VkLayerSettingEXT(MemorySegment segment) {
     public void pSettingNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pSettingName, OFFSET$pSettingName, value);
     }
-
-    public BytePtr pSettingName() {
-        return new BytePtr(pSettingNameRaw());
+    
+    public ByteBuffer pSettingName() {
+        return new ByteBuffer(pSettingNameRaw());
     }
 
-    public void pSettingName(BytePtr value) {
+    public void pSettingName(ByteBuffer value) {
         pSettingNameRaw(value.segment());
     }
 
@@ -103,28 +100,16 @@ public record VkLayerSettingEXT(MemorySegment segment) {
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
 
-
-    public static final class Factory implements IFactory<VkLayerSettingEXT> {
-        @Override
-        public Class<VkLayerSettingEXT> clazz() {
-            return VkLayerSettingEXT.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkLayerSettingEXT.LAYOUT;
-        }
-
-        @Override
-        public VkLayerSettingEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkLayerSettingEXT createUninit(MemorySegment segment) {
-            return new VkLayerSettingEXT(segment);
-        }
+    public static VkLayerSettingEXT allocate(Arena arena) {
+        return new VkLayerSettingEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkLayerSettingEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkLayerSettingEXT[] ret = new VkLayerSettingEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkLayerSettingEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

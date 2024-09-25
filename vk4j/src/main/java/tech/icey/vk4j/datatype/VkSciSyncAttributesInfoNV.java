@@ -1,21 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.enumtype.VkSciSyncClientTypeNV;
-import tech.icey.vk4j.enumtype.VkSciSyncPrimitiveTypeNV;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SCI_SYNC_ATTRIBUTES_INFO_NV;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSciSyncAttributesInfoNV(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -77,28 +73,16 @@ public record VkSciSyncAttributesInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$primitiveType, OFFSET$primitiveType, value);
     }
 
-
-    public static final class Factory implements IFactory<VkSciSyncAttributesInfoNV> {
-        @Override
-        public Class<VkSciSyncAttributesInfoNV> clazz() {
-            return VkSciSyncAttributesInfoNV.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkSciSyncAttributesInfoNV.LAYOUT;
-        }
-
-        @Override
-        public VkSciSyncAttributesInfoNV create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkSciSyncAttributesInfoNV createUninit(MemorySegment segment) {
-            return new VkSciSyncAttributesInfoNV(segment);
-        }
+    public static VkSciSyncAttributesInfoNV allocate(Arena arena) {
+        return new VkSciSyncAttributesInfoNV(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkSciSyncAttributesInfoNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSciSyncAttributesInfoNV[] ret = new VkSciSyncAttributesInfoNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSciSyncAttributesInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

@@ -1,24 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.enumtype.VkDescriptorType;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkBufferView;
-import tech.icey.vk4j.handle.VkDescriptorSet;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkWriteDescriptorSet(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -135,7 +128,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
     public void pImageInfoRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
         segment.set(LAYOUT$pImageInfo, OFFSET$pImageInfo, value);
     }
-
+    
     public @nullable VkDescriptorImageInfo pImageInfo() {
         MemorySegment s = pImageInfoRaw();
         if (s.address() == 0) {
@@ -156,7 +149,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
     public void pBufferInfoRaw(@pointer(comment="VkDescriptorBufferInfo*") MemorySegment value) {
         segment.set(LAYOUT$pBufferInfo, OFFSET$pBufferInfo, value);
     }
-
+    
     public @nullable VkDescriptorBufferInfo pBufferInfo() {
         MemorySegment s = pBufferInfoRaw();
         if (s.address() == 0) {
@@ -177,7 +170,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
     public void pTexelBufferViewRaw(@pointer(comment="VkBufferView*") MemorySegment value) {
         segment.set(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView, value);
     }
-
+    
     public @nullable VkBufferView pTexelBufferView() {
         MemorySegment s = pTexelBufferViewRaw();
         if (s.address() == 0) {
@@ -191,28 +184,16 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
         pTexelBufferViewRaw(s);
     }
 
-
-    public static final class Factory implements IFactory<VkWriteDescriptorSet> {
-        @Override
-        public Class<VkWriteDescriptorSet> clazz() {
-            return VkWriteDescriptorSet.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkWriteDescriptorSet.LAYOUT;
-        }
-
-        @Override
-        public VkWriteDescriptorSet create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkWriteDescriptorSet createUninit(MemorySegment segment) {
-            return new VkWriteDescriptorSet(segment);
-        }
+    public static VkWriteDescriptorSet allocate(Arena arena) {
+        return new VkWriteDescriptorSet(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkWriteDescriptorSet[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkWriteDescriptorSet[] ret = new VkWriteDescriptorSet[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkWriteDescriptorSet(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

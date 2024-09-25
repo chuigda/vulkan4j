@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -106,11 +104,11 @@ public record VkPhysicalDeviceProperties(MemorySegment segment) {
         return segment.asSlice(OFFSET$deviceName, LAYOUT$deviceName.byteSize());
     }
 
-    public ByteArray deviceName() {
-        return new ByteArray(deviceNameRaw(), LAYOUT$deviceName.elementCount());
+    public ByteBuffer deviceName() {
+        return new ByteBuffer(deviceNameRaw());
     }
 
-    public void deviceName(ByteArray value) {
+    public void deviceName(ByteBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceName, LAYOUT$deviceName.byteSize());
     }
 
@@ -118,11 +116,11 @@ public record VkPhysicalDeviceProperties(MemorySegment segment) {
         return segment.asSlice(OFFSET$pipelineCacheUUID, LAYOUT$pipelineCacheUUID.byteSize());
     }
 
-    public @unsigned ByteArray pipelineCacheUUID() {
-        return new ByteArray(pipelineCacheUUIDRaw(), LAYOUT$pipelineCacheUUID.elementCount());
+    public @unsigned ByteBuffer pipelineCacheUUID() {
+        return new ByteBuffer(pipelineCacheUUIDRaw());
     }
 
-    public void pipelineCacheUUID(@unsigned ByteArray value) {
+    public void pipelineCacheUUID(@unsigned ByteBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, LAYOUT$pipelineCacheUUID.byteSize());
     }
 
@@ -142,28 +140,16 @@ public record VkPhysicalDeviceProperties(MemorySegment segment) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sparseProperties, LAYOUT$sparseProperties.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceProperties> {
-        @Override
-        public Class<VkPhysicalDeviceProperties> clazz() {
-            return VkPhysicalDeviceProperties.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceProperties.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceProperties create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceProperties createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceProperties(segment);
-        }
+    public static VkPhysicalDeviceProperties allocate(Arena arena) {
+        return new VkPhysicalDeviceProperties(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceProperties[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceProperties[] ret = new VkPhysicalDeviceProperties[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

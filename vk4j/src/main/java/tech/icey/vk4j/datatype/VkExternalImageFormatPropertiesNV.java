@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -74,28 +72,16 @@ public record VkExternalImageFormatPropertiesNV(MemorySegment segment) {
         segment.set(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes, value);
     }
 
-
-    public static final class Factory implements IFactory<VkExternalImageFormatPropertiesNV> {
-        @Override
-        public Class<VkExternalImageFormatPropertiesNV> clazz() {
-            return VkExternalImageFormatPropertiesNV.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkExternalImageFormatPropertiesNV.LAYOUT;
-        }
-
-        @Override
-        public VkExternalImageFormatPropertiesNV create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkExternalImageFormatPropertiesNV createUninit(MemorySegment segment) {
-            return new VkExternalImageFormatPropertiesNV(segment);
-        }
+    public static VkExternalImageFormatPropertiesNV allocate(Arena arena) {
+        return new VkExternalImageFormatPropertiesNV(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkExternalImageFormatPropertiesNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkExternalImageFormatPropertiesNV[] ret = new VkExternalImageFormatPropertiesNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkExternalImageFormatPropertiesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

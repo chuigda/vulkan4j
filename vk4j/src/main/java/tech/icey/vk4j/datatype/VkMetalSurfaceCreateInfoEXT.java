@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -75,28 +73,16 @@ public record VkMetalSurfaceCreateInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pLayer, OFFSET$pLayer, value);
     }
 
-
-    public static final class Factory implements IFactory<VkMetalSurfaceCreateInfoEXT> {
-        @Override
-        public Class<VkMetalSurfaceCreateInfoEXT> clazz() {
-            return VkMetalSurfaceCreateInfoEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkMetalSurfaceCreateInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkMetalSurfaceCreateInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkMetalSurfaceCreateInfoEXT createUninit(MemorySegment segment) {
-            return new VkMetalSurfaceCreateInfoEXT(segment);
-        }
+    public static VkMetalSurfaceCreateInfoEXT allocate(Arena arena) {
+        return new VkMetalSurfaceCreateInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkMetalSurfaceCreateInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkMetalSurfaceCreateInfoEXT[] ret = new VkMetalSurfaceCreateInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkMetalSurfaceCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(MemorySegment seg
         segment.set(LAYOUT$ycbcr2plane444Formats, OFFSET$ycbcr2plane444Formats, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT> {
-        @Override
-        public Class<VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT> clazz() {
-            return VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(segment);
-        }
+    public static VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT[] ret = new VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

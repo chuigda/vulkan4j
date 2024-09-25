@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -75,28 +73,16 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(MemorySegment se
         segment.set(LAYOUT$sparseImageInt64Atomics, OFFSET$sparseImageInt64Atomics, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT> {
-        @Override
-        public Class<VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT> clazz() {
-            return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(segment);
-        }
+    public static VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT[] ret = new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

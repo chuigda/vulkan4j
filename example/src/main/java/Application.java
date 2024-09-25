@@ -1,11 +1,12 @@
 import tech.icey.glfwmini.LibGLFW;
 import tech.icey.vk4j.Constants;
-import tech.icey.vk4j.Create;
 import tech.icey.vk4j.Loader;
 import tech.icey.vk4j.Version;
 import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.ByteBuffer;
+import tech.icey.vk4j.buffer.IntBuffer;
 import tech.icey.vk4j.command.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
@@ -98,7 +99,7 @@ public class Application implements AutoCloseable {
 
     private boolean checkValidationLayerSupport() {
         try (Arena localArena = Arena.ofConfined()) {
-            var pLayerCount = IntPtr.allocate(localArena);
+            var pLayerCount = IntBuffer.allocate(localArena);
             var result = entryCommands.vkEnumerateInstanceLayerProperties(pLayerCount, null);
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("获取 Vulkan 实例层属性失败：" + result);
@@ -106,7 +107,7 @@ public class Application implements AutoCloseable {
             }
 
             var layerCount = pLayerCount.read();
-            var layerProperties = Create.createArray(VkLayerProperties.FACTORY, localArena, layerCount).first;
+            var layerProperties = VkLayerProperties.allocateArray(localArena, layerCount);
             result = entryCommands.vkEnumerateInstanceLayerProperties(pLayerCount, layerProperties[0]);
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("获取 Vulkan 实例层属性失败：" + result);
@@ -114,7 +115,7 @@ public class Application implements AutoCloseable {
             }
 
             for (var layerProperty : layerProperties) {
-                if (layerProperty.layerName().readUtf8().equals(validationLayerName)) {
+                if (layerProperty.layerName().readString().equals(validationLayerName)) {
                     return true;
                 }
             }
@@ -131,14 +132,14 @@ public class Application implements AutoCloseable {
             var requiredExtensions = libGLFW.glfwGetRequiredInstanceExtensions(pRequiredExtensionCount);
             var requiredExtensionCount = pRequiredExtensionCount.read();
 
-            var applicationInfo = Create.create(VkApplicationInfo.FACTORY, localArena);
-            applicationInfo.pApplicationName(ByteArray.allocateUtf8(localArena, "VkCube4j"));
+            var applicationInfo = VkApplicationInfo.allocate(localArena);
+            applicationInfo.pApplicationName(ByteBuffer.allocateUtf8(localArena, "VkCube4j"));
             applicationInfo.applicationVersion(Version.vkMakeAPIVersion(0, 1, 0, 0));
-            applicationInfo.pEngineName(ByteArray.allocateUtf8(localArena, "Soloviev D-30"));
+            applicationInfo.pEngineName(ByteBuffer.allocateUtf8(localArena, "Soloviev D-30"));
             applicationInfo.engineVersion(Version.vkMakeAPIVersion(0, 1, 0, 0));
             applicationInfo.apiVersion(Version.VK_API_VERSION_1_3);
 
-            var instanceCreateInfo = Create.create(VkInstanceCreateInfo.FACTORY, localArena);
+            var instanceCreateInfo = VkInstanceCreateInfo.allocate(localArena);
             instanceCreateInfo.pApplicationInfo(applicationInfo);
 
             if (hasValidationLayer) {
@@ -168,7 +169,7 @@ public class Application implements AutoCloseable {
                 instanceCreateInfo.enabledExtensionCount(requiredExtensionCount + 1);
                 instanceCreateInfo.ppEnabledExtensionNames(ppEnabledExtensionNames);
 
-                var messengerCreateInfo = Create.create(VkDebugUtilsMessengerCreateInfoEXT.FACTORY, localArena);
+                var messengerCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.allocate(localArena);
                 populateDebugMessengerCreateInfo(messengerCreateInfo);
                 instanceCreateInfo.pNext(messengerCreateInfo.segment());
             }
@@ -179,24 +180,27 @@ public class Application implements AutoCloseable {
                 instanceCreateInfo.ppEnabledExtensionNames(requiredExtensions);
             }
 
-            instance = Create.create(VkInstance.FACTORY, arena);
-            var result = entryCommands.vkCreateInstance(instanceCreateInfo, null, instance);
+            var pInstance = VkInstance.Buffer.allocate(localArena);
+            var result = entryCommands.vkCreateInstance(instanceCreateInfo, null, pInstance);
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("创建 Vulkan 实例失败：" + result);
                 return false;
             }
 
+            instance = pInstance.read();
             instanceCommands = new InstanceCommands(this::loadInstanceCommand);
 
             if (hasValidationLayer) {
-                var messengerCreateInfo = Create.create(VkDebugUtilsMessengerCreateInfoEXT.FACTORY, localArena);
+                var messengerCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.allocate(localArena);
                 populateDebugMessengerCreateInfo(messengerCreateInfo);
-                debugMessenger = Create.create(VkDebugUtilsMessengerEXT.FACTORY, arena);
-                result = instanceCommands.vkCreateDebugUtilsMessengerEXT(instance, messengerCreateInfo, null, debugMessenger);
+                var pDebugMessenger = VkDebugUtilsMessengerEXT.Buffer.allocate(localArena);
+                result = instanceCommands.vkCreateDebugUtilsMessengerEXT(instance, messengerCreateInfo, null, pDebugMessenger);
                 if (result != VkResult.VK_SUCCESS) {
                     UICommons.showErrorMessage("创建 Vulkan 调试信使失败：" + result);
                     return false;
                 }
+
+                debugMessenger = pDebugMessenger.read();
             }
             else {
                 debugMessenger = null;
@@ -221,7 +225,7 @@ public class Application implements AutoCloseable {
 
     private boolean pickPhysicalDevice() {
         try (Arena localArena = Arena.ofConfined()) {
-            var pDeviceCount = IntPtr.allocate(localArena);
+            var pDeviceCount = IntBuffer.allocate(localArena);
             var result = instanceCommands.vkEnumeratePhysicalDevices(instance, pDeviceCount, null);
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("获取 Vulkan 物理设备失败：" + result);
@@ -234,7 +238,7 @@ public class Application implements AutoCloseable {
                 return false;
             }
 
-            var physicalDevices = Create.createArray(VkPhysicalDevice.FACTORY, arena, deviceCount).first;
+            var pPhysicalDevices = VkPhysicalDevice.Buffer.allocate(localArena, deviceCount);
             result = instanceCommands.vkEnumeratePhysicalDevices(instance, pDeviceCount, physicalDevices[0]);
             if (result != VkResult.VK_SUCCESS) {
                 UICommons.showErrorMessage("获取 Vulkan 物理设备失败：" + result);

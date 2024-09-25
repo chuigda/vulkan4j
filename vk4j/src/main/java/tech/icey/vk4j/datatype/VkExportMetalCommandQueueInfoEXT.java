@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -75,28 +73,16 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$mtlCommandQueue, OFFSET$mtlCommandQueue, value);
     }
 
-
-    public static final class Factory implements IFactory<VkExportMetalCommandQueueInfoEXT> {
-        @Override
-        public Class<VkExportMetalCommandQueueInfoEXT> clazz() {
-            return VkExportMetalCommandQueueInfoEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkExportMetalCommandQueueInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkExportMetalCommandQueueInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkExportMetalCommandQueueInfoEXT createUninit(MemorySegment segment) {
-            return new VkExportMetalCommandQueueInfoEXT(segment);
-        }
+    public static VkExportMetalCommandQueueInfoEXT allocate(Arena arena) {
+        return new VkExportMetalCommandQueueInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkExportMetalCommandQueueInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkExportMetalCommandQueueInfoEXT[] ret = new VkExportMetalCommandQueueInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkExportMetalCommandQueueInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

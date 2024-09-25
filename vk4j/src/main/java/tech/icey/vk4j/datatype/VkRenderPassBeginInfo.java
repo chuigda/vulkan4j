@@ -1,20 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkFramebuffer;
-import tech.icey.vk4j.handle.VkRenderPass;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkRenderPassBeginInfo(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -111,7 +108,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) {
     public void pClearValuesRaw(@pointer(comment="VkClearValue*") MemorySegment value) {
         segment.set(LAYOUT$pClearValues, OFFSET$pClearValues, value);
     }
-
+    
     public @nullable VkClearValue pClearValues() {
         MemorySegment s = pClearValuesRaw();
         if (s.address() == 0) {
@@ -125,28 +122,16 @@ public record VkRenderPassBeginInfo(MemorySegment segment) {
         pClearValuesRaw(s);
     }
 
-
-    public static final class Factory implements IFactory<VkRenderPassBeginInfo> {
-        @Override
-        public Class<VkRenderPassBeginInfo> clazz() {
-            return VkRenderPassBeginInfo.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkRenderPassBeginInfo.LAYOUT;
-        }
-
-        @Override
-        public VkRenderPassBeginInfo create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkRenderPassBeginInfo createUninit(MemorySegment segment) {
-            return new VkRenderPassBeginInfo(segment);
-        }
+    public static VkRenderPassBeginInfo allocate(Arena arena) {
+        return new VkRenderPassBeginInfo(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkRenderPassBeginInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkRenderPassBeginInfo[] ret = new VkRenderPassBeginInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkRenderPassBeginInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

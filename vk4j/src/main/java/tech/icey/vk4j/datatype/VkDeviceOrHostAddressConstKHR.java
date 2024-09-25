@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -50,28 +48,16 @@ public record VkDeviceOrHostAddressConstKHR(MemorySegment segment) {
         segment.set(LAYOUT$hostAddress, OFFSET$hostAddress, value);
     }
 
-
-    public static final class Factory implements IFactory<VkDeviceOrHostAddressConstKHR> {
-        @Override
-        public Class<VkDeviceOrHostAddressConstKHR> clazz() {
-            return VkDeviceOrHostAddressConstKHR.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkDeviceOrHostAddressConstKHR.LAYOUT;
-        }
-
-        @Override
-        public VkDeviceOrHostAddressConstKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkDeviceOrHostAddressConstKHR createUninit(MemorySegment segment) {
-            return new VkDeviceOrHostAddressConstKHR(segment);
-        }
+    public static VkDeviceOrHostAddressConstKHR allocate(Arena arena) {
+        return new VkDeviceOrHostAddressConstKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkDeviceOrHostAddressConstKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDeviceOrHostAddressConstKHR[] ret = new VkDeviceOrHostAddressConstKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDeviceOrHostAddressConstKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

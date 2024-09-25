@@ -1,17 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.array.FloatArray;
-import tech.icey.vk4j.array.IntArray;
-
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SequenceLayout;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkClearColorValue(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
@@ -40,11 +40,11 @@ public record VkClearColorValue(MemorySegment segment) {
         return segment.asSlice(OFFSET$float32, LAYOUT$float32.byteSize());
     }
 
-    public FloatArray float32() {
-        return new FloatArray(float32Raw(), LAYOUT$float32.elementCount());
+    public FloatBuffer float32() {
+        return new FloatBuffer(float32Raw());
     }
 
-    public void float32(FloatArray value) {
+    public void float32(FloatBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$float32, LAYOUT$float32.byteSize());
     }
 
@@ -52,11 +52,11 @@ public record VkClearColorValue(MemorySegment segment) {
         return segment.asSlice(OFFSET$int32, LAYOUT$int32.byteSize());
     }
 
-    public IntArray int32() {
-        return new IntArray(int32Raw(), LAYOUT$int32.elementCount());
+    public IntBuffer int32() {
+        return new IntBuffer(int32Raw());
     }
 
-    public void int32(IntArray value) {
+    public void int32(IntBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$int32, LAYOUT$int32.byteSize());
     }
 
@@ -64,36 +64,24 @@ public record VkClearColorValue(MemorySegment segment) {
         return segment.asSlice(OFFSET$uint32, LAYOUT$uint32.byteSize());
     }
 
-    public @unsigned IntArray uint32() {
-        return new IntArray(uint32Raw(), LAYOUT$uint32.elementCount());
+    public @unsigned IntBuffer uint32() {
+        return new IntBuffer(uint32Raw());
     }
 
-    public void uint32(@unsigned IntArray value) {
+    public void uint32(@unsigned IntBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$uint32, LAYOUT$uint32.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkClearColorValue> {
-        @Override
-        public Class<VkClearColorValue> clazz() {
-            return VkClearColorValue.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkClearColorValue.LAYOUT;
-        }
-
-        @Override
-        public VkClearColorValue create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkClearColorValue createUninit(MemorySegment segment) {
-            return new VkClearColorValue(segment);
-        }
+    public static VkClearColorValue allocate(Arena arena) {
+        return new VkClearColorValue(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkClearColorValue[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkClearColorValue[] ret = new VkClearColorValue[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkClearColorValue(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

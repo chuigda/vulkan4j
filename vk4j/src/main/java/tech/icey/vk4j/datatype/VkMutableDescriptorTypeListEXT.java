@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -50,42 +48,30 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) {
         segment.set(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes, value);
     }
     
-    public @nullable IntPtr pDescriptorTypes() {
+    public @nullable IntBuffer pDescriptorTypes() {
         MemorySegment s = pDescriptorTypesRaw();
         if (s.address() == 0) {
             return null;
         }
         
-        return new IntPtr(s);
+        return new IntBuffer(s);
     }
     
-    public void pDescriptorTypes(@nullable IntPtr value) {
+    public void pDescriptorTypes(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorTypesRaw(s);
     }
 
-
-    public static final class Factory implements IFactory<VkMutableDescriptorTypeListEXT> {
-        @Override
-        public Class<VkMutableDescriptorTypeListEXT> clazz() {
-            return VkMutableDescriptorTypeListEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkMutableDescriptorTypeListEXT.LAYOUT;
-        }
-
-        @Override
-        public VkMutableDescriptorTypeListEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkMutableDescriptorTypeListEXT createUninit(MemorySegment segment) {
-            return new VkMutableDescriptorTypeListEXT(segment);
-        }
+    public static VkMutableDescriptorTypeListEXT allocate(Arena arena) {
+        return new VkMutableDescriptorTypeListEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkMutableDescriptorTypeListEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkMutableDescriptorTypeListEXT[] ret = new VkMutableDescriptorTypeListEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkMutableDescriptorTypeListEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

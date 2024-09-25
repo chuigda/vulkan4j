@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -111,28 +109,16 @@ public record VkRayTracingShaderGroupCreateInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$intersectionShader, OFFSET$intersectionShader, value);
     }
 
-
-    public static final class Factory implements IFactory<VkRayTracingShaderGroupCreateInfoNV> {
-        @Override
-        public Class<VkRayTracingShaderGroupCreateInfoNV> clazz() {
-            return VkRayTracingShaderGroupCreateInfoNV.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkRayTracingShaderGroupCreateInfoNV.LAYOUT;
-        }
-
-        @Override
-        public VkRayTracingShaderGroupCreateInfoNV create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkRayTracingShaderGroupCreateInfoNV createUninit(MemorySegment segment) {
-            return new VkRayTracingShaderGroupCreateInfoNV(segment);
-        }
+    public static VkRayTracingShaderGroupCreateInfoNV allocate(Arena arena) {
+        return new VkRayTracingShaderGroupCreateInfoNV(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkRayTracingShaderGroupCreateInfoNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkRayTracingShaderGroupCreateInfoNV[] ret = new VkRayTracingShaderGroupCreateInfoNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkRayTracingShaderGroupCreateInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

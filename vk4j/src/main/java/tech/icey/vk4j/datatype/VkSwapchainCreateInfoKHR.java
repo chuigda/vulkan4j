@@ -1,24 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkCompositeAlphaFlagsKHR;
-import tech.icey.vk4j.bitmask.VkImageUsageFlags;
-import tech.icey.vk4j.bitmask.VkSurfaceTransformFlagsKHR;
-import tech.icey.vk4j.bitmask.VkSwapchainCreateFlagsKHR;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.VkSurfaceKHR;
-import tech.icey.vk4j.handle.VkSwapchainKHR;
-import tech.icey.vk4j.ptr.IntPtr;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSwapchainCreateInfoKHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -207,12 +200,12 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) {
     public void pQueueFamilyIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
-
-    public @unsigned IntPtr pQueueFamilyIndices() {
-        return new IntPtr(pQueueFamilyIndicesRaw());
+    
+    public @unsigned IntBuffer pQueueFamilyIndices() {
+        return new IntBuffer(pQueueFamilyIndicesRaw());
     }
 
-    public void pQueueFamilyIndices(@unsigned IntPtr value) {
+    public void pQueueFamilyIndices(@unsigned IntBuffer value) {
         pQueueFamilyIndicesRaw(value.segment());
     }
 
@@ -256,28 +249,16 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$oldSwapchain, LAYOUT$oldSwapchain.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkSwapchainCreateInfoKHR> {
-        @Override
-        public Class<VkSwapchainCreateInfoKHR> clazz() {
-            return VkSwapchainCreateInfoKHR.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkSwapchainCreateInfoKHR.LAYOUT;
-        }
-
-        @Override
-        public VkSwapchainCreateInfoKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkSwapchainCreateInfoKHR createUninit(MemorySegment segment) {
-            return new VkSwapchainCreateInfoKHR(segment);
-        }
+    public static VkSwapchainCreateInfoKHR allocate(Arena arena) {
+        return new VkSwapchainCreateInfoKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkSwapchainCreateInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSwapchainCreateInfoKHR[] ret = new VkSwapchainCreateInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSwapchainCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

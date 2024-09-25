@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(MemorySegment 
         segment.set(LAYOUT$relaxedLineRasterization, OFFSET$relaxedLineRasterization, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG> {
-        @Override
-        public Class<VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG> clazz() {
-            return VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(segment);
-        }
+    public static VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG allocate(Arena arena) {
+        return new VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG[] ret = new VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

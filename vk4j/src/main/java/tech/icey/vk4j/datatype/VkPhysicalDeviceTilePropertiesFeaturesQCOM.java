@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceTilePropertiesFeaturesQCOM(MemorySegment segment) 
         segment.set(LAYOUT$tileProperties, OFFSET$tileProperties, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceTilePropertiesFeaturesQCOM> {
-        @Override
-        public Class<VkPhysicalDeviceTilePropertiesFeaturesQCOM> clazz() {
-            return VkPhysicalDeviceTilePropertiesFeaturesQCOM.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceTilePropertiesFeaturesQCOM.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceTilePropertiesFeaturesQCOM create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceTilePropertiesFeaturesQCOM createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceTilePropertiesFeaturesQCOM(segment);
-        }
+    public static VkPhysicalDeviceTilePropertiesFeaturesQCOM allocate(Arena arena) {
+        return new VkPhysicalDeviceTilePropertiesFeaturesQCOM(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceTilePropertiesFeaturesQCOM[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceTilePropertiesFeaturesQCOM[] ret = new VkPhysicalDeviceTilePropertiesFeaturesQCOM[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceTilePropertiesFeaturesQCOM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

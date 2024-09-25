@@ -1,41 +1,70 @@
-from ..entity import Registry, Handle
+from ..entity import Handle
 
 
 def generate_handle(handle: Handle) -> str:
     return f'''package tech.icey.vk4j.handle;
 
-import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
-import tech.icey.vk4j.IFactory;
-
 public record {handle.name}(MemorySegment segment) {{
-    public MemorySegment handle() {{
-        return segment.get(ValueLayout.ADDRESS, 0);
+    public record Buffer(MemorySegment segment) {{
+        public long size() {{
+            return segment.byteSize() / ValueLayout.ADDRESS.byteSize();
+        }}
+
+        public {handle.name} read() {{
+            return new {handle.name}(readRaw());
+        }}
+
+        public {handle.name} read(long index) {{
+            return new {handle.name}(readRaw(index));
+        }}
+
+        public MemorySegment readRaw() {{
+            return readRaw(0);
+        }}
+
+        public MemorySegment readRaw(long index) {{
+            return segment.get(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize());
+        }}
+
+        public {handle.name}[] readAll() {{
+            {handle.name}[] handles = new {handle.name}[(int)size()];
+            for (int i = 0; i < handles.length; i++) {{
+                handles[i] = read(i);
+            }}
+            return handles;
+        }}
+
+        public void write({handle.name} value) {{
+            writeRaw(value.segment());
+        }}
+
+        public void write({handle.name} value, long index) {{
+            writeRaw(value.segment(), index);
+        }}
+
+        public void writeRaw(MemorySegment value) {{
+            segment.set(ValueLayout.ADDRESS, 0, value);
+        }}
+
+        public void writeRaw(MemorySegment value, long index) {{
+            segment.set(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize(), value);
+        }}
+
+        public Buffer reinterpret(long newSize) {{
+            return new Buffer(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
+        }}
+
+        public static Buffer allocate(Arena arena) {{
+            return allocate(arena, 1);
+        }}
+
+        public static Buffer allocate(Arena arena, long size) {{
+            return new Buffer(arena.allocate(ValueLayout.ADDRESS, size));
+        }}
     }}
-
-    public static final class Factory implements IFactory<{handle.name}> {{
-        @Override
-        public Class<{handle.name}> clazz() {{
-            return {handle.name}.class;
-        }}
-
-        @Override
-        public MemoryLayout layout() {{
-            return ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS);
-        }}
-
-        @Override
-        public {handle.name} create(MemorySegment segment) {{
-            return createUninit(segment);
-        }}
-
-        @Override
-        public {handle.name} createUninit(MemorySegment segment) {{
-            return new {handle.name}(segment);
-        }}
-    }}
-
-    public static final Factory FACTORY = new Factory();
-}}'''
+}}
+'''

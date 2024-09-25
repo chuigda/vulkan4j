@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -96,28 +94,16 @@ public record VkDescriptorUpdateTemplateEntry(MemorySegment segment) {
             NativeLayout.writeCSizeT(segment, OFFSET$stride, value);
         }
 
-
-    public static final class Factory implements IFactory<VkDescriptorUpdateTemplateEntry> {
-        @Override
-        public Class<VkDescriptorUpdateTemplateEntry> clazz() {
-            return VkDescriptorUpdateTemplateEntry.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkDescriptorUpdateTemplateEntry.LAYOUT;
-        }
-
-        @Override
-        public VkDescriptorUpdateTemplateEntry create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkDescriptorUpdateTemplateEntry createUninit(MemorySegment segment) {
-            return new VkDescriptorUpdateTemplateEntry(segment);
-        }
+    public static VkDescriptorUpdateTemplateEntry allocate(Arena arena) {
+        return new VkDescriptorUpdateTemplateEntry(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkDescriptorUpdateTemplateEntry[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDescriptorUpdateTemplateEntry[] ret = new VkDescriptorUpdateTemplateEntry[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDescriptorUpdateTemplateEntry(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

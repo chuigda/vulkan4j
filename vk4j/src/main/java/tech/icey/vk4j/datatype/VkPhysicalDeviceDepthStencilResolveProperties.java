@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -99,28 +97,16 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(MemorySegment segmen
         segment.set(LAYOUT$independentResolve, OFFSET$independentResolve, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceDepthStencilResolveProperties> {
-        @Override
-        public Class<VkPhysicalDeviceDepthStencilResolveProperties> clazz() {
-            return VkPhysicalDeviceDepthStencilResolveProperties.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceDepthStencilResolveProperties.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceDepthStencilResolveProperties create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceDepthStencilResolveProperties createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceDepthStencilResolveProperties(segment);
-        }
+    public static VkPhysicalDeviceDepthStencilResolveProperties allocate(Arena arena) {
+        return new VkPhysicalDeviceDepthStencilResolveProperties(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceDepthStencilResolveProperties[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceDepthStencilResolveProperties[] ret = new VkPhysicalDeviceDepthStencilResolveProperties[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceDepthStencilResolveProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

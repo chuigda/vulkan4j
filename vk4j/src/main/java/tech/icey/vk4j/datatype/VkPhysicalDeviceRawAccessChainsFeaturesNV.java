@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceRawAccessChainsFeaturesNV(MemorySegment segment) {
         segment.set(LAYOUT$shaderRawAccessChains, OFFSET$shaderRawAccessChains, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceRawAccessChainsFeaturesNV> {
-        @Override
-        public Class<VkPhysicalDeviceRawAccessChainsFeaturesNV> clazz() {
-            return VkPhysicalDeviceRawAccessChainsFeaturesNV.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceRawAccessChainsFeaturesNV.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceRawAccessChainsFeaturesNV create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceRawAccessChainsFeaturesNV createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceRawAccessChainsFeaturesNV(segment);
-        }
+    public static VkPhysicalDeviceRawAccessChainsFeaturesNV allocate(Arena arena) {
+        return new VkPhysicalDeviceRawAccessChainsFeaturesNV(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceRawAccessChainsFeaturesNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceRawAccessChainsFeaturesNV[] ret = new VkPhysicalDeviceRawAccessChainsFeaturesNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceRawAccessChainsFeaturesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

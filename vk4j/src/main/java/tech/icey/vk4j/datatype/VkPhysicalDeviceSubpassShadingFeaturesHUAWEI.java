@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceSubpassShadingFeaturesHUAWEI(MemorySegment segment
         segment.set(LAYOUT$subpassShading, OFFSET$subpassShading, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceSubpassShadingFeaturesHUAWEI> {
-        @Override
-        public Class<VkPhysicalDeviceSubpassShadingFeaturesHUAWEI> clazz() {
-            return VkPhysicalDeviceSubpassShadingFeaturesHUAWEI.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceSubpassShadingFeaturesHUAWEI.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceSubpassShadingFeaturesHUAWEI create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceSubpassShadingFeaturesHUAWEI createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceSubpassShadingFeaturesHUAWEI(segment);
-        }
+    public static VkPhysicalDeviceSubpassShadingFeaturesHUAWEI allocate(Arena arena) {
+        return new VkPhysicalDeviceSubpassShadingFeaturesHUAWEI(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceSubpassShadingFeaturesHUAWEI[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceSubpassShadingFeaturesHUAWEI[] ret = new VkPhysicalDeviceSubpassShadingFeaturesHUAWEI[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceSubpassShadingFeaturesHUAWEI(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

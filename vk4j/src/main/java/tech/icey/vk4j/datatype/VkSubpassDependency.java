@@ -1,19 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkAccessFlags;
-import tech.icey.vk4j.bitmask.VkDependencyFlags;
-import tech.icey.vk4j.bitmask.VkPipelineStageFlags;
-
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSubpassDependency(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -110,28 +108,16 @@ public record VkSubpassDependency(MemorySegment segment) {
         segment.set(LAYOUT$dependencyFlags, OFFSET$dependencyFlags, value);
     }
 
-
-    public static final class Factory implements IFactory<VkSubpassDependency> {
-        @Override
-        public Class<VkSubpassDependency> clazz() {
-            return VkSubpassDependency.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkSubpassDependency.LAYOUT;
-        }
-
-        @Override
-        public VkSubpassDependency create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkSubpassDependency createUninit(MemorySegment segment) {
-            return new VkSubpassDependency(segment);
-        }
+    public static VkSubpassDependency allocate(Arena arena) {
+        return new VkSubpassDependency(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkSubpassDependency[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSubpassDependency[] ret = new VkSubpassDependency[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSubpassDependency(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

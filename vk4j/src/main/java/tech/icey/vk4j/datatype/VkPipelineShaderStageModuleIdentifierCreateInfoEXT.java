@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -75,36 +73,24 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(MemorySegment s
         segment.set(LAYOUT$pIdentifier, OFFSET$pIdentifier, value);
     }
     
-    public @unsigned BytePtr pIdentifier() {
-        return new BytePtr(pIdentifierRaw());
+    public @unsigned ByteBuffer pIdentifier() {
+        return new ByteBuffer(pIdentifierRaw());
     }
 
-    public void pIdentifier(@unsigned BytePtr value) {
+    public void pIdentifier(@unsigned ByteBuffer value) {
         pIdentifierRaw(value.segment());
     }
 
-
-    public static final class Factory implements IFactory<VkPipelineShaderStageModuleIdentifierCreateInfoEXT> {
-        @Override
-        public Class<VkPipelineShaderStageModuleIdentifierCreateInfoEXT> clazz() {
-            return VkPipelineShaderStageModuleIdentifierCreateInfoEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPipelineShaderStageModuleIdentifierCreateInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkPipelineShaderStageModuleIdentifierCreateInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPipelineShaderStageModuleIdentifierCreateInfoEXT createUninit(MemorySegment segment) {
-            return new VkPipelineShaderStageModuleIdentifierCreateInfoEXT(segment);
-        }
+    public static VkPipelineShaderStageModuleIdentifierCreateInfoEXT allocate(Arena arena) {
+        return new VkPipelineShaderStageModuleIdentifierCreateInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPipelineShaderStageModuleIdentifierCreateInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPipelineShaderStageModuleIdentifierCreateInfoEXT[] ret = new VkPipelineShaderStageModuleIdentifierCreateInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPipelineShaderStageModuleIdentifierCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -87,36 +85,24 @@ public record VkDebugUtilsObjectNameInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pObjectName, OFFSET$pObjectName, value);
     }
     
-    public BytePtr pObjectName() {
-        return new BytePtr(pObjectNameRaw());
+    public ByteBuffer pObjectName() {
+        return new ByteBuffer(pObjectNameRaw());
     }
 
-    public void pObjectName(BytePtr value) {
+    public void pObjectName(ByteBuffer value) {
         pObjectNameRaw(value.segment());
     }
 
-
-    public static final class Factory implements IFactory<VkDebugUtilsObjectNameInfoEXT> {
-        @Override
-        public Class<VkDebugUtilsObjectNameInfoEXT> clazz() {
-            return VkDebugUtilsObjectNameInfoEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkDebugUtilsObjectNameInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkDebugUtilsObjectNameInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkDebugUtilsObjectNameInfoEXT createUninit(MemorySegment segment) {
-            return new VkDebugUtilsObjectNameInfoEXT(segment);
-        }
+    public static VkDebugUtilsObjectNameInfoEXT allocate(Arena arena) {
+        return new VkDebugUtilsObjectNameInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkDebugUtilsObjectNameInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDebugUtilsObjectNameInfoEXT[] ret = new VkDebugUtilsObjectNameInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDebugUtilsObjectNameInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

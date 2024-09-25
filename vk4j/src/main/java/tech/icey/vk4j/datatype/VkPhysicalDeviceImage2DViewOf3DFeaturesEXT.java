@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -75,28 +73,16 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(MemorySegment segment) 
         segment.set(LAYOUT$sampler2DViewOf3D, OFFSET$sampler2DViewOf3D, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceImage2DViewOf3DFeaturesEXT> {
-        @Override
-        public Class<VkPhysicalDeviceImage2DViewOf3DFeaturesEXT> clazz() {
-            return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(segment);
-        }
+    public static VkPhysicalDeviceImage2DViewOf3DFeaturesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceImage2DViewOf3DFeaturesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceImage2DViewOf3DFeaturesEXT[] ret = new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -87,36 +85,24 @@ public record VkDebugMarkerObjectNameInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pObjectName, OFFSET$pObjectName, value);
     }
     
-    public BytePtr pObjectName() {
-        return new BytePtr(pObjectNameRaw());
+    public ByteBuffer pObjectName() {
+        return new ByteBuffer(pObjectNameRaw());
     }
 
-    public void pObjectName(BytePtr value) {
+    public void pObjectName(ByteBuffer value) {
         pObjectNameRaw(value.segment());
     }
 
-
-    public static final class Factory implements IFactory<VkDebugMarkerObjectNameInfoEXT> {
-        @Override
-        public Class<VkDebugMarkerObjectNameInfoEXT> clazz() {
-            return VkDebugMarkerObjectNameInfoEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkDebugMarkerObjectNameInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkDebugMarkerObjectNameInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkDebugMarkerObjectNameInfoEXT createUninit(MemorySegment segment) {
-            return new VkDebugMarkerObjectNameInfoEXT(segment);
-        }
+    public static VkDebugMarkerObjectNameInfoEXT allocate(Arena arena) {
+        return new VkDebugMarkerObjectNameInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkDebugMarkerObjectNameInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDebugMarkerObjectNameInfoEXT[] ret = new VkDebugMarkerObjectNameInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDebugMarkerObjectNameInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

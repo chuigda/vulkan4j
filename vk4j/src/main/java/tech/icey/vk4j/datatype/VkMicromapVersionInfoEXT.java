@@ -1,21 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.ptr.BytePtr;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_MICROMAP_VERSION_INFO_EXT;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkMicromapVersionInfoEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -64,37 +60,25 @@ public record VkMicromapVersionInfoEXT(MemorySegment segment) {
     public void pVersionDataRaw(@pointer(comment="uint8_t*") MemorySegment value) {
         segment.set(LAYOUT$pVersionData, OFFSET$pVersionData, value);
     }
-
-    public @unsigned BytePtr pVersionData() {
-        return new BytePtr(pVersionDataRaw());
+    
+    public @unsigned ByteBuffer pVersionData() {
+        return new ByteBuffer(pVersionDataRaw());
     }
 
-    public void pVersionData(@unsigned BytePtr value) {
+    public void pVersionData(@unsigned ByteBuffer value) {
         pVersionDataRaw(value.segment());
     }
 
-
-    public static final class Factory implements IFactory<VkMicromapVersionInfoEXT> {
-        @Override
-        public Class<VkMicromapVersionInfoEXT> clazz() {
-            return VkMicromapVersionInfoEXT.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkMicromapVersionInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkMicromapVersionInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkMicromapVersionInfoEXT createUninit(MemorySegment segment) {
-            return new VkMicromapVersionInfoEXT(segment);
-        }
+    public static VkMicromapVersionInfoEXT allocate(Arena arena) {
+        return new VkMicromapVersionInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkMicromapVersionInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkMicromapVersionInfoEXT[] ret = new VkMicromapVersionInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkMicromapVersionInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

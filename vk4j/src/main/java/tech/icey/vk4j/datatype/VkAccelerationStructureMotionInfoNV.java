@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -75,28 +73,16 @@ public record VkAccelerationStructureMotionInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-
-    public static final class Factory implements IFactory<VkAccelerationStructureMotionInfoNV> {
-        @Override
-        public Class<VkAccelerationStructureMotionInfoNV> clazz() {
-            return VkAccelerationStructureMotionInfoNV.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkAccelerationStructureMotionInfoNV.LAYOUT;
-        }
-
-        @Override
-        public VkAccelerationStructureMotionInfoNV create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkAccelerationStructureMotionInfoNV createUninit(MemorySegment segment) {
-            return new VkAccelerationStructureMotionInfoNV(segment);
-        }
+    public static VkAccelerationStructureMotionInfoNV allocate(Arena arena) {
+        return new VkAccelerationStructureMotionInfoNV(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkAccelerationStructureMotionInfoNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkAccelerationStructureMotionInfoNV[] ret = new VkAccelerationStructureMotionInfoNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkAccelerationStructureMotionInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

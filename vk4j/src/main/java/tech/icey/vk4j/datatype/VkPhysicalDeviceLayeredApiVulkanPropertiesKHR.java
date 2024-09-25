@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(MemorySegment segmen
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$properties, LAYOUT$properties.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceLayeredApiVulkanPropertiesKHR> {
-        @Override
-        public Class<VkPhysicalDeviceLayeredApiVulkanPropertiesKHR> clazz() {
-            return VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(segment);
-        }
+    public static VkPhysicalDeviceLayeredApiVulkanPropertiesKHR allocate(Arena arena) {
+        return new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceLayeredApiVulkanPropertiesKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceLayeredApiVulkanPropertiesKHR[] ret = new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

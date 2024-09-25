@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM(MemorySegment segmen
         segment.set(LAYOUT$shaderCoreBuiltins, OFFSET$shaderCoreBuiltins, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM> {
-        @Override
-        public Class<VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM> clazz() {
-            return VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM(segment);
-        }
+    public static VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM allocate(Arena arena) {
+        return new VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM[] ret = new VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

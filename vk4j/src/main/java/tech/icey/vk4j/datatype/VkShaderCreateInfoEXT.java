@@ -1,26 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkShaderCreateFlagsEXT;
-import tech.icey.vk4j.bitmask.VkShaderStageFlags;
-import tech.icey.vk4j.enumtype.VkShaderCodeTypeEXT;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkDescriptorSetLayout;
-import tech.icey.vk4j.ptr.BytePtr;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SHADER_CREATE_INFO_EXT;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkShaderCreateInfoEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -140,7 +131,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
     public @unsigned long codeSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$codeSize);
         }
-
+    
         public void codeSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$codeSize, value);
         }
@@ -160,12 +151,12 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
     public void pNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
-
-    public BytePtr pName() {
-        return new BytePtr(pNameRaw());
+    
+    public ByteBuffer pName() {
+        return new ByteBuffer(pNameRaw());
     }
 
-    public void pName(BytePtr value) {
+    public void pName(ByteBuffer value) {
         pNameRaw(value.segment());
     }
 
@@ -184,7 +175,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
     public void pSetLayoutsRaw(@pointer(comment="VkDescriptorSetLayout*") MemorySegment value) {
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
-
+    
     public @nullable VkDescriptorSetLayout pSetLayouts() {
         MemorySegment s = pSetLayoutsRaw();
         if (s.address() == 0) {
@@ -213,7 +204,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
     public void pPushConstantRangesRaw(@pointer(comment="VkPushConstantRange*") MemorySegment value) {
         segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
-
+    
     public @nullable VkPushConstantRange pPushConstantRanges() {
         MemorySegment s = pPushConstantRangesRaw();
         if (s.address() == 0) {
@@ -234,7 +225,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
     public void pSpecializationInfoRaw(@pointer(comment="VkSpecializationInfo*") MemorySegment value) {
         segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
     }
-
+    
     public @nullable VkSpecializationInfo pSpecializationInfo() {
         MemorySegment s = pSpecializationInfoRaw();
         if (s.address() == 0) {
@@ -248,28 +239,16 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
         pSpecializationInfoRaw(s);
     }
 
-
-    public static final class Factory implements IFactory<VkShaderCreateInfoEXT> {
-        @Override
-        public Class<VkShaderCreateInfoEXT> clazz() {
-            return VkShaderCreateInfoEXT.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkShaderCreateInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkShaderCreateInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkShaderCreateInfoEXT createUninit(MemorySegment segment) {
-            return new VkShaderCreateInfoEXT(segment);
-        }
+    public static VkShaderCreateInfoEXT allocate(Arena arena) {
+        return new VkShaderCreateInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkShaderCreateInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkShaderCreateInfoEXT[] ret = new VkShaderCreateInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkShaderCreateInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

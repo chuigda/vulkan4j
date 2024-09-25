@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceShaderFloatControls2FeaturesKHR(MemorySegment segm
         segment.set(LAYOUT$shaderFloatControls2, OFFSET$shaderFloatControls2, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceShaderFloatControls2FeaturesKHR> {
-        @Override
-        public Class<VkPhysicalDeviceShaderFloatControls2FeaturesKHR> clazz() {
-            return VkPhysicalDeviceShaderFloatControls2FeaturesKHR.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceShaderFloatControls2FeaturesKHR.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceShaderFloatControls2FeaturesKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceShaderFloatControls2FeaturesKHR createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceShaderFloatControls2FeaturesKHR(segment);
-        }
+    public static VkPhysicalDeviceShaderFloatControls2FeaturesKHR allocate(Arena arena) {
+        return new VkPhysicalDeviceShaderFloatControls2FeaturesKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceShaderFloatControls2FeaturesKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceShaderFloatControls2FeaturesKHR[] ret = new VkPhysicalDeviceShaderFloatControls2FeaturesKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceShaderFloatControls2FeaturesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

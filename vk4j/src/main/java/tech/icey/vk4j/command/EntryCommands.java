@@ -1,23 +1,16 @@
 package tech.icey.vk4j.command;
 
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.datatype.VkAllocationCallbacks;
-import tech.icey.vk4j.datatype.VkExtensionProperties;
-import tech.icey.vk4j.datatype.VkInstanceCreateInfo;
-import tech.icey.vk4j.datatype.VkLayerProperties;
-import tech.icey.vk4j.enumtype.VkResult;
-import tech.icey.vk4j.handle.VkInstance;
-import tech.icey.vk4j.ptr.BytePtr;
-import tech.icey.vk4j.ptr.IntPtr;
-import tech.icey.vk4j.util.Function2;
-
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
+
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.util.Function2;
 
 public final class EntryCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkCreateInstance = FunctionDescriptor.of(
@@ -60,7 +53,7 @@ public final class EntryCommands {
     public @enumtype(VkResult.class) int vkCreateInstance(
             @pointer(target=VkInstanceCreateInfo.class) VkInstanceCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkInstance.class) VkInstance pInstance
+            @pointer(target=VkInstance.class) VkInstance.Buffer pInstance
     ) {
         try {
             return (int) HANDLE$vkCreateInstance.invokeExact(
@@ -74,7 +67,7 @@ public final class EntryCommands {
     }
 
     public @enumtype(VkResult.class) int vkEnumerateInstanceVersion(
-            @pointer(target=IntPtr.class) @unsigned IntPtr pApiVersion
+             @unsigned IntBuffer pApiVersion
     ) {
         try {
             return (int) HANDLE$vkEnumerateInstanceVersion.invokeExact(
@@ -86,7 +79,7 @@ public final class EntryCommands {
     }
 
     public @enumtype(VkResult.class) int vkEnumerateInstanceLayerProperties(
-            @pointer(target=IntPtr.class) @unsigned IntPtr pPropertyCount,
+             @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkLayerProperties.class) VkLayerProperties pProperties
     ) {
         try {
@@ -100,8 +93,8 @@ public final class EntryCommands {
     }
 
     public @enumtype(VkResult.class) int vkEnumerateInstanceExtensionProperties(
-            @nullable @pointer(target=BytePtr.class) BytePtr pLayerName,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pPropertyCount,
+            @nullable  ByteBuffer pLayerName,
+             @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkExtensionProperties.class) VkExtensionProperties pProperties
     ) {
         try {

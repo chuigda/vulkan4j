@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -75,28 +73,16 @@ public record VkDescriptorGetInfoEXT(MemorySegment segment) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, LAYOUT$data.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkDescriptorGetInfoEXT> {
-        @Override
-        public Class<VkDescriptorGetInfoEXT> clazz() {
-            return VkDescriptorGetInfoEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkDescriptorGetInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkDescriptorGetInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkDescriptorGetInfoEXT createUninit(MemorySegment segment) {
-            return new VkDescriptorGetInfoEXT(segment);
-        }
+    public static VkDescriptorGetInfoEXT allocate(Arena arena) {
+        return new VkDescriptorGetInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkDescriptorGetInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDescriptorGetInfoEXT[] ret = new VkDescriptorGetInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDescriptorGetInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

@@ -1,15 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.array.FloatArray;
-
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SequenceLayout;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkTransformMatrixKHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -30,36 +32,24 @@ public record VkTransformMatrixKHR(MemorySegment segment) {
         return segment.asSlice(OFFSET$matrix, LAYOUT$matrix.byteSize());
     }
 
-    public FloatArray matrix() {
-        return new FloatArray(matrixRaw(), LAYOUT$matrix.elementCount());
+    public FloatBuffer matrix() {
+        return new FloatBuffer(matrixRaw());
     }
 
-    public void matrix(FloatArray value) {
+    public void matrix(FloatBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$matrix, LAYOUT$matrix.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkTransformMatrixKHR> {
-        @Override
-        public Class<VkTransformMatrixKHR> clazz() {
-            return VkTransformMatrixKHR.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkTransformMatrixKHR.LAYOUT;
-        }
-
-        @Override
-        public VkTransformMatrixKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkTransformMatrixKHR createUninit(MemorySegment segment) {
-            return new VkTransformMatrixKHR(segment);
-        }
+    public static VkTransformMatrixKHR allocate(Arena arena) {
+        return new VkTransformMatrixKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkTransformMatrixKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkTransformMatrixKHR[] ret = new VkTransformMatrixKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkTransformMatrixKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

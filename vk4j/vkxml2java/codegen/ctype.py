@@ -111,10 +111,11 @@ class CEnumType(CType):
             raise Exception(f'unsupported bitwidth: {self.bitwidth}')
 
     def vk4j_array_type(self) -> str:
+        name = self.non_flagbits_type_name()
         if self.bitwidth is None or self.bitwidth == 32:
-            return 'IntArray'
+            return '@enumtype(' + name + '.class) IntBuffer'
         elif self.bitwidth == 64:
-            return 'LongArray'
+            return '@enumtype(' + name + '.class) LongBuffer'
         else:
             raise Exception(f'unsupported bitwidth: {self.bitwidth}')
 
@@ -234,13 +235,13 @@ class CFixedIntType(CNonRefType):
 
     def vk4j_array_type_no_sign(self) -> str:
         if self.c_name == 'char' or self.byte_size == 1:
-            return 'ByteArray'
+            return 'ByteBuffer'
         elif self.byte_size == 2:
-            return 'DoubleArray'
+            return 'ShortBuffer'
         elif self.byte_size == 4:
-            return 'IntArray'
+            return 'IntBuffer'
         elif self.byte_size == 8:
-            return 'LongArray'
+            return 'LongBuffer'
         else:
             raise Exception(f'unsupported byte size: {self.byte_size}')
 
@@ -250,13 +251,13 @@ class CFixedIntType(CNonRefType):
 
     def vk4j_ptr_type_no_sign(self) -> str:
         if self.c_name == 'char' or self.byte_size == 1:
-            return f'BytePtr'
+            return f'ByteBuffer'
         elif self.byte_size == 2:
-            return f'ShortPtr'
+            return f'ShortBuffer'
         elif self.byte_size == 4:
-            return f'IntPtr'
+            return f'IntBuffer'
         elif self.byte_size == 8:
-            return f'LongPtr'
+            return f'LongBuffer'
         else:
             raise Exception(f'unsupported byte size: {self.byte_size}')
 
@@ -332,16 +333,16 @@ class CFloatType(CNonRefType):
         return 'float' if self.byte_size == 4 else 'double'
 
     def vk4j_array_type(self) -> str:
-        return 'FloatArray' if self.byte_size == 4 else 'DoubleArray'
+        return 'FloatBuffer' if self.byte_size == 4 else 'DoubleBuffer'
 
     def vk4j_array_type_no_sign(self) -> str:
-        return 'FloatArray' if self.byte_size == 4 else 'DoubleArray'
+        return 'FloatBuffer' if self.byte_size == 4 else 'DoubleBuffer'
 
     def vk4j_ptr_type(self) -> str:
-        return 'FloatPtr' if self.byte_size == 4 else 'DoublePtr'
+        return 'FloatBuffer' if self.byte_size == 4 else 'DoubleBuffer'
 
     def vk4j_ptr_type_no_sign(self) -> str:
-        return 'FloatPtr' if self.byte_size == 4 else 'DoublePtr'
+        return 'FloatBuffer' if self.byte_size == 4 else 'DoubleBuffer'
 
 
 @dataclass
@@ -422,8 +423,8 @@ CTYPE_FLOAT: CType = CFloatType(4)
 CTYPE_DOUBLE: CType = CFloatType(8)
 
 CTYPE_INT: CType = CTYPE_INT32
-CTYPE_LONG: CType = CPlatformDependentIntType('long', 'CLongArray', 'CLongPtr', 'NativeLayout.C_LONG', 'long')
-CTYPE_SIZET: CType = CPlatformDependentIntType('size_t', 'CSizeTArray', 'CSizeTPtr', 'NativeLayout.C_SIZE_T', '@unsigned long')
+CTYPE_LONG: CType = CPlatformDependentIntType('long', 'CLongBuffer', 'CLongBuffer', 'NativeLayout.C_LONG', 'long')
+CTYPE_SIZET: CType = CPlatformDependentIntType('size_t', 'PointerBuffer', 'PointerBuffer', 'NativeLayout.C_SIZE_T', '@unsigned long')
 
 CTYPE_VOID: CType = CVoidType()
 CTYPE_PVOID: CType = CPointerType(CTYPE_VOID, False)

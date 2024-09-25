@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -87,36 +85,24 @@ public record VkQueryPoolPerformanceCreateInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pCounterIndices, OFFSET$pCounterIndices, value);
     }
     
-    public @unsigned IntPtr pCounterIndices() {
-        return new IntPtr(pCounterIndicesRaw());
+    public @unsigned IntBuffer pCounterIndices() {
+        return new IntBuffer(pCounterIndicesRaw());
     }
 
-    public void pCounterIndices(@unsigned IntPtr value) {
+    public void pCounterIndices(@unsigned IntBuffer value) {
         pCounterIndicesRaw(value.segment());
     }
 
-
-    public static final class Factory implements IFactory<VkQueryPoolPerformanceCreateInfoKHR> {
-        @Override
-        public Class<VkQueryPoolPerformanceCreateInfoKHR> clazz() {
-            return VkQueryPoolPerformanceCreateInfoKHR.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkQueryPoolPerformanceCreateInfoKHR.LAYOUT;
-        }
-
-        @Override
-        public VkQueryPoolPerformanceCreateInfoKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkQueryPoolPerformanceCreateInfoKHR createUninit(MemorySegment segment) {
-            return new VkQueryPoolPerformanceCreateInfoKHR(segment);
-        }
+    public static VkQueryPoolPerformanceCreateInfoKHR allocate(Arena arena) {
+        return new VkQueryPoolPerformanceCreateInfoKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkQueryPoolPerformanceCreateInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkQueryPoolPerformanceCreateInfoKHR[] ret = new VkQueryPoolPerformanceCreateInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkQueryPoolPerformanceCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -59,36 +57,24 @@ public record VkPipelinePropertiesIdentifierEXT(MemorySegment segment) {
         return segment.asSlice(OFFSET$pipelineIdentifier, LAYOUT$pipelineIdentifier.byteSize());
     }
 
-    public @unsigned ByteArray pipelineIdentifier() {
-        return new ByteArray(pipelineIdentifierRaw(), LAYOUT$pipelineIdentifier.elementCount());
+    public @unsigned ByteBuffer pipelineIdentifier() {
+        return new ByteBuffer(pipelineIdentifierRaw());
     }
 
-    public void pipelineIdentifier(@unsigned ByteArray value) {
+    public void pipelineIdentifier(@unsigned ByteBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineIdentifier, LAYOUT$pipelineIdentifier.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkPipelinePropertiesIdentifierEXT> {
-        @Override
-        public Class<VkPipelinePropertiesIdentifierEXT> clazz() {
-            return VkPipelinePropertiesIdentifierEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPipelinePropertiesIdentifierEXT.LAYOUT;
-        }
-
-        @Override
-        public VkPipelinePropertiesIdentifierEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPipelinePropertiesIdentifierEXT createUninit(MemorySegment segment) {
-            return new VkPipelinePropertiesIdentifierEXT(segment);
-        }
+    public static VkPipelinePropertiesIdentifierEXT allocate(Arena arena) {
+        return new VkPipelinePropertiesIdentifierEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPipelinePropertiesIdentifierEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPipelinePropertiesIdentifierEXT[] ret = new VkPipelinePropertiesIdentifierEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPipelinePropertiesIdentifierEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

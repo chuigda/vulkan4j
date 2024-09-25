@@ -1,23 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkFrameBoundaryFlagsEXT;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkBuffer;
-import tech.icey.vk4j.handle.VkImage;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
+import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkFrameBoundaryEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -121,7 +115,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
     public void pImagesRaw(@pointer(comment="VkImage*") MemorySegment value) {
         segment.set(LAYOUT$pImages, OFFSET$pImages, value);
     }
-
+    
     public @nullable VkImage pImages() {
         MemorySegment s = pImagesRaw();
         if (s.address() == 0) {
@@ -150,7 +144,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
     public void pBuffersRaw(@pointer(comment="VkBuffer*") MemorySegment value) {
         segment.set(LAYOUT$pBuffers, OFFSET$pBuffers, value);
     }
-
+    
     public @nullable VkBuffer pBuffers() {
         MemorySegment s = pBuffersRaw();
         if (s.address() == 0) {
@@ -175,7 +169,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
     public @unsigned long tagSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$tagSize);
         }
-
+    
         public void tagSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$tagSize, value);
         }
@@ -188,28 +182,16 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
         segment.set(LAYOUT$pTag, OFFSET$pTag, value);
     }
 
-
-    public static final class Factory implements IFactory<VkFrameBoundaryEXT> {
-        @Override
-        public Class<VkFrameBoundaryEXT> clazz() {
-            return VkFrameBoundaryEXT.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkFrameBoundaryEXT.LAYOUT;
-        }
-
-        @Override
-        public VkFrameBoundaryEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkFrameBoundaryEXT createUninit(MemorySegment segment) {
-            return new VkFrameBoundaryEXT(segment);
-        }
+    public static VkFrameBoundaryEXT allocate(Arena arena) {
+        return new VkFrameBoundaryEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkFrameBoundaryEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkFrameBoundaryEXT[] ret = new VkFrameBoundaryEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkFrameBoundaryEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

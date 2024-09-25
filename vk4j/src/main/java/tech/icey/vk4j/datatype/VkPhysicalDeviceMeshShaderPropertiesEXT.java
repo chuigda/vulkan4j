@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -175,11 +173,11 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
         return segment.asSlice(OFFSET$maxTaskWorkGroupCount, LAYOUT$maxTaskWorkGroupCount.byteSize());
     }
 
-    public @unsigned IntArray maxTaskWorkGroupCount() {
-        return new IntArray(maxTaskWorkGroupCountRaw(), LAYOUT$maxTaskWorkGroupCount.elementCount());
+    public @unsigned IntBuffer maxTaskWorkGroupCount() {
+        return new IntBuffer(maxTaskWorkGroupCountRaw());
     }
 
-    public void maxTaskWorkGroupCount(@unsigned IntArray value) {
+    public void maxTaskWorkGroupCount(@unsigned IntBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTaskWorkGroupCount, LAYOUT$maxTaskWorkGroupCount.byteSize());
     }
 
@@ -195,11 +193,11 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
         return segment.asSlice(OFFSET$maxTaskWorkGroupSize, LAYOUT$maxTaskWorkGroupSize.byteSize());
     }
 
-    public @unsigned IntArray maxTaskWorkGroupSize() {
-        return new IntArray(maxTaskWorkGroupSizeRaw(), LAYOUT$maxTaskWorkGroupSize.elementCount());
+    public @unsigned IntBuffer maxTaskWorkGroupSize() {
+        return new IntBuffer(maxTaskWorkGroupSizeRaw());
     }
 
-    public void maxTaskWorkGroupSize(@unsigned IntArray value) {
+    public void maxTaskWorkGroupSize(@unsigned IntBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTaskWorkGroupSize, LAYOUT$maxTaskWorkGroupSize.byteSize());
     }
 
@@ -239,11 +237,11 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
         return segment.asSlice(OFFSET$maxMeshWorkGroupCount, LAYOUT$maxMeshWorkGroupCount.byteSize());
     }
 
-    public @unsigned IntArray maxMeshWorkGroupCount() {
-        return new IntArray(maxMeshWorkGroupCountRaw(), LAYOUT$maxMeshWorkGroupCount.elementCount());
+    public @unsigned IntBuffer maxMeshWorkGroupCount() {
+        return new IntBuffer(maxMeshWorkGroupCountRaw());
     }
 
-    public void maxMeshWorkGroupCount(@unsigned IntArray value) {
+    public void maxMeshWorkGroupCount(@unsigned IntBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxMeshWorkGroupCount, LAYOUT$maxMeshWorkGroupCount.byteSize());
     }
 
@@ -259,11 +257,11 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
         return segment.asSlice(OFFSET$maxMeshWorkGroupSize, LAYOUT$maxMeshWorkGroupSize.byteSize());
     }
 
-    public @unsigned IntArray maxMeshWorkGroupSize() {
-        return new IntArray(maxMeshWorkGroupSizeRaw(), LAYOUT$maxMeshWorkGroupSize.elementCount());
+    public @unsigned IntBuffer maxMeshWorkGroupSize() {
+        return new IntBuffer(maxMeshWorkGroupSizeRaw());
     }
 
-    public void maxMeshWorkGroupSize(@unsigned IntArray value) {
+    public void maxMeshWorkGroupSize(@unsigned IntBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxMeshWorkGroupSize, LAYOUT$maxMeshWorkGroupSize.byteSize());
     }
 
@@ -403,28 +401,16 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
         segment.set(LAYOUT$prefersCompactPrimitiveOutput, OFFSET$prefersCompactPrimitiveOutput, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceMeshShaderPropertiesEXT> {
-        @Override
-        public Class<VkPhysicalDeviceMeshShaderPropertiesEXT> clazz() {
-            return VkPhysicalDeviceMeshShaderPropertiesEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceMeshShaderPropertiesEXT.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceMeshShaderPropertiesEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceMeshShaderPropertiesEXT createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceMeshShaderPropertiesEXT(segment);
-        }
+    public static VkPhysicalDeviceMeshShaderPropertiesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceMeshShaderPropertiesEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceMeshShaderPropertiesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceMeshShaderPropertiesEXT[] ret = new VkPhysicalDeviceMeshShaderPropertiesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceMeshShaderPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

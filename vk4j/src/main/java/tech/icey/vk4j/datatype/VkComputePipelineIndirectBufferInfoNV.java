@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -87,28 +85,16 @@ public record VkComputePipelineIndirectBufferInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$pipelineDeviceAddressCaptureReplay, OFFSET$pipelineDeviceAddressCaptureReplay, value);
     }
 
-
-    public static final class Factory implements IFactory<VkComputePipelineIndirectBufferInfoNV> {
-        @Override
-        public Class<VkComputePipelineIndirectBufferInfoNV> clazz() {
-            return VkComputePipelineIndirectBufferInfoNV.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkComputePipelineIndirectBufferInfoNV.LAYOUT;
-        }
-
-        @Override
-        public VkComputePipelineIndirectBufferInfoNV create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkComputePipelineIndirectBufferInfoNV createUninit(MemorySegment segment) {
-            return new VkComputePipelineIndirectBufferInfoNV(segment);
-        }
+    public static VkComputePipelineIndirectBufferInfoNV allocate(Arena arena) {
+        return new VkComputePipelineIndirectBufferInfoNV(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkComputePipelineIndirectBufferInfoNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkComputePipelineIndirectBufferInfoNV[] ret = new VkComputePipelineIndirectBufferInfoNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkComputePipelineIndirectBufferInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

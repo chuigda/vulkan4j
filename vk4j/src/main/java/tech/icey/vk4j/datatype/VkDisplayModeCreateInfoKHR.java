@@ -1,17 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.bitmask.VkDisplayModeCreateFlagsKHR;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkDisplayModeCreateInfoKHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -73,28 +73,16 @@ public record VkDisplayModeCreateInfoKHR(MemorySegment segment) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$parameters, LAYOUT$parameters.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkDisplayModeCreateInfoKHR> {
-        @Override
-        public Class<VkDisplayModeCreateInfoKHR> clazz() {
-            return VkDisplayModeCreateInfoKHR.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkDisplayModeCreateInfoKHR.LAYOUT;
-        }
-
-        @Override
-        public VkDisplayModeCreateInfoKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkDisplayModeCreateInfoKHR createUninit(MemorySegment segment) {
-            return new VkDisplayModeCreateInfoKHR(segment);
-        }
+    public static VkDisplayModeCreateInfoKHR allocate(Arena arena) {
+        return new VkDisplayModeCreateInfoKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkDisplayModeCreateInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDisplayModeCreateInfoKHR[] ret = new VkDisplayModeCreateInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDisplayModeCreateInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

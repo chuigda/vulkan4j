@@ -1,24 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkHostImageCopyFlagsEXT;
-import tech.icey.vk4j.enumtype.VkImageLayout;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkImage;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_COPY_IMAGE_TO_MEMORY_INFO_EXT;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkCopyImageToMemoryInfoEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -115,7 +108,7 @@ public record VkCopyImageToMemoryInfoEXT(MemorySegment segment) {
     public void pRegionsRaw(@pointer(comment="VkImageToMemoryCopyEXT*") MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
-
+    
     public @nullable VkImageToMemoryCopyEXT pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {
@@ -129,28 +122,16 @@ public record VkCopyImageToMemoryInfoEXT(MemorySegment segment) {
         pRegionsRaw(s);
     }
 
-
-    public static final class Factory implements IFactory<VkCopyImageToMemoryInfoEXT> {
-        @Override
-        public Class<VkCopyImageToMemoryInfoEXT> clazz() {
-            return VkCopyImageToMemoryInfoEXT.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkCopyImageToMemoryInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkCopyImageToMemoryInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkCopyImageToMemoryInfoEXT createUninit(MemorySegment segment) {
-            return new VkCopyImageToMemoryInfoEXT(segment);
-        }
+    public static VkCopyImageToMemoryInfoEXT allocate(Arena arena) {
+        return new VkCopyImageToMemoryInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkCopyImageToMemoryInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkCopyImageToMemoryInfoEXT[] ret = new VkCopyImageToMemoryInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkCopyImageToMemoryInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

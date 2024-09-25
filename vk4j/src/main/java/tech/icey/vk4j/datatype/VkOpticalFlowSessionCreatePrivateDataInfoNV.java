@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -87,28 +85,16 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(MemorySegment segment)
         segment.set(LAYOUT$pPrivateData, OFFSET$pPrivateData, value);
     }
 
-
-    public static final class Factory implements IFactory<VkOpticalFlowSessionCreatePrivateDataInfoNV> {
-        @Override
-        public Class<VkOpticalFlowSessionCreatePrivateDataInfoNV> clazz() {
-            return VkOpticalFlowSessionCreatePrivateDataInfoNV.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkOpticalFlowSessionCreatePrivateDataInfoNV.LAYOUT;
-        }
-
-        @Override
-        public VkOpticalFlowSessionCreatePrivateDataInfoNV create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkOpticalFlowSessionCreatePrivateDataInfoNV createUninit(MemorySegment segment) {
-            return new VkOpticalFlowSessionCreatePrivateDataInfoNV(segment);
-        }
+    public static VkOpticalFlowSessionCreatePrivateDataInfoNV allocate(Arena arena) {
+        return new VkOpticalFlowSessionCreatePrivateDataInfoNV(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkOpticalFlowSessionCreatePrivateDataInfoNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkOpticalFlowSessionCreatePrivateDataInfoNV[] ret = new VkOpticalFlowSessionCreatePrivateDataInfoNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkOpticalFlowSessionCreatePrivateDataInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

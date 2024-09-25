@@ -1,26 +1,16 @@
 package tech.icey.vk4j.command;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.array.FloatArray;
-import tech.icey.vk4j.array.IntArray;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.CSizeTPtr;
-import tech.icey.vk4j.ptr.FloatPtr;
-import tech.icey.vk4j.ptr.IntPtr;
-import tech.icey.vk4j.ptr.LongPtr;
-import tech.icey.vk4j.util.Function2;
-
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
+
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.util.Function2;
 
 public final class DeviceCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkDestroyDevice = FunctionDescriptor.ofVoid(
@@ -4552,7 +4542,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyDevice.invokeExact(
-                    (MemorySegment) (device != null ? device.handle() : MemorySegment.NULL),
+                    (MemorySegment) (device != null ? device.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -4564,11 +4554,11 @@ public final class DeviceCommands {
             VkDevice device,
             @unsigned int queueFamilyIndex,
             @unsigned int queueIndex,
-            @pointer(target=VkQueue.class) VkQueue pQueue
+            @pointer(target=VkQueue.class) VkQueue.Buffer pQueue
     ) {
         try {
             HANDLE$vkGetDeviceQueue.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     queueFamilyIndex,
                     queueIndex,
                     pQueue.segment()
@@ -4586,10 +4576,10 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkQueueSubmit.invokeExact(
-                    queue.handle(),
+                    queue.segment(),
                     submitCount,
                     pSubmits.segment(),
-                    (MemorySegment) (fence != null ? fence.handle() : MemorySegment.NULL)
+                    (MemorySegment) (fence != null ? fence.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -4601,7 +4591,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkQueueWaitIdle.invokeExact(
-                    queue.handle()
+                    queue.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -4613,7 +4603,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkDeviceWaitIdle.invokeExact(
-                    device.handle()
+                    device.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -4624,11 +4614,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkMemoryAllocateInfo.class) VkMemoryAllocateInfo pAllocateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkDeviceMemory.class) VkDeviceMemory pMemory
+            @pointer(target=VkDeviceMemory.class) VkDeviceMemory.Buffer pMemory
     ) {
         try {
             return (int) HANDLE$vkAllocateMemory.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pAllocateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pMemory.segment()
@@ -4645,8 +4635,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkFreeMemory.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (memory != null ? memory.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (memory != null ? memory.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -4664,8 +4654,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkMapMemory.invokeExact(
-                    device.handle(),
-                    memory.handle(),
+                    device.segment(),
+                    memory.segment(),
                     offset,
                     size,
                     flags,
@@ -4682,8 +4672,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkUnmapMemory.invokeExact(
-                    device.handle(),
-                    memory.handle()
+                    device.segment(),
+                    memory.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -4697,7 +4687,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkFlushMappedMemoryRanges.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     memoryRangeCount,
                     pMemoryRanges.segment()
             );
@@ -4713,7 +4703,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkInvalidateMappedMemoryRanges.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     memoryRangeCount,
                     pMemoryRanges.segment()
             );
@@ -4725,12 +4715,12 @@ public final class DeviceCommands {
     public void vkGetDeviceMemoryCommitment(
             VkDevice device,
             VkDeviceMemory memory,
-            @pointer(target=LongPtr.class) @unsigned LongPtr pCommittedMemoryInBytes
+             @unsigned LongBuffer pCommittedMemoryInBytes
     ) {
         try {
             HANDLE$vkGetDeviceMemoryCommitment.invokeExact(
-                    device.handle(),
-                    memory.handle(),
+                    device.segment(),
+                    memory.segment(),
                     pCommittedMemoryInBytes.segment()
             );
         } catch (Throwable t) {
@@ -4745,8 +4735,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetBufferMemoryRequirements.invokeExact(
-                    device.handle(),
-                    buffer.handle(),
+                    device.segment(),
+                    buffer.segment(),
                     pMemoryRequirements.segment()
             );
         } catch (Throwable t) {
@@ -4762,9 +4752,9 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkBindBufferMemory.invokeExact(
-                    device.handle(),
-                    buffer.handle(),
-                    memory.handle(),
+                    device.segment(),
+                    buffer.segment(),
+                    memory.segment(),
                     memoryOffset
             );
         } catch (Throwable t) {
@@ -4779,8 +4769,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetImageMemoryRequirements.invokeExact(
-                    device.handle(),
-                    image.handle(),
+                    device.segment(),
+                    image.segment(),
                     pMemoryRequirements.segment()
             );
         } catch (Throwable t) {
@@ -4796,9 +4786,9 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkBindImageMemory.invokeExact(
-                    device.handle(),
-                    image.handle(),
-                    memory.handle(),
+                    device.segment(),
+                    image.segment(),
+                    memory.segment(),
                     memoryOffset
             );
         } catch (Throwable t) {
@@ -4809,13 +4799,13 @@ public final class DeviceCommands {
     public void vkGetImageSparseMemoryRequirements(
             VkDevice device,
             VkImage image,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pSparseMemoryRequirementCount,
+             @unsigned IntBuffer pSparseMemoryRequirementCount,
             @nullable @pointer(target=VkSparseImageMemoryRequirements.class) VkSparseImageMemoryRequirements pSparseMemoryRequirements
     ) {
         try {
             HANDLE$vkGetImageSparseMemoryRequirements.invokeExact(
-                    device.handle(),
-                    image.handle(),
+                    device.segment(),
+                    image.segment(),
                     pSparseMemoryRequirementCount.segment(),
                     (MemorySegment) (pSparseMemoryRequirements != null ? pSparseMemoryRequirements.segment() : MemorySegment.NULL)
             );
@@ -4832,10 +4822,10 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkQueueBindSparse.invokeExact(
-                    queue.handle(),
+                    queue.segment(),
                     bindInfoCount,
                     pBindInfo.segment(),
-                    (MemorySegment) (fence != null ? fence.handle() : MemorySegment.NULL)
+                    (MemorySegment) (fence != null ? fence.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -4846,11 +4836,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkFenceCreateInfo.class) VkFenceCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkFence.class) VkFence pFence
+            @pointer(target=VkFence.class) VkFence.Buffer pFence
     ) {
         try {
             return (int) HANDLE$vkCreateFence.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pFence.segment()
@@ -4867,8 +4857,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyFence.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (fence != null ? fence.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (fence != null ? fence.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -4879,11 +4869,11 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkResetFences(
             VkDevice device,
             @unsigned int fenceCount,
-            @pointer(target=VkFence.class) VkFence pFences
+            @pointer(target=VkFence.class) VkFence.Buffer pFences
     ) {
         try {
             return (int) HANDLE$vkResetFences.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     fenceCount,
                     pFences.segment()
             );
@@ -4898,8 +4888,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetFenceStatus.invokeExact(
-                    device.handle(),
-                    fence.handle()
+                    device.segment(),
+                    fence.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -4909,13 +4899,13 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkWaitForFences(
             VkDevice device,
             @unsigned int fenceCount,
-            @pointer(target=VkFence.class) VkFence pFences,
+            @pointer(target=VkFence.class) VkFence.Buffer pFences,
             @unsigned int waitAll,
             @unsigned long timeout
     ) {
         try {
             return (int) HANDLE$vkWaitForFences.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     fenceCount,
                     pFences.segment(),
                     waitAll,
@@ -4930,11 +4920,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkSemaphoreCreateInfo.class) VkSemaphoreCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkSemaphore.class) VkSemaphore pSemaphore
+            @pointer(target=VkSemaphore.class) VkSemaphore.Buffer pSemaphore
     ) {
         try {
             return (int) HANDLE$vkCreateSemaphore.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pSemaphore.segment()
@@ -4951,8 +4941,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroySemaphore.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (semaphore != null ? semaphore.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (semaphore != null ? semaphore.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -4964,11 +4954,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkEventCreateInfo.class) VkEventCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkEvent.class) VkEvent pEvent
+            @pointer(target=VkEvent.class) VkEvent.Buffer pEvent
     ) {
         try {
             return (int) HANDLE$vkCreateEvent.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pEvent.segment()
@@ -4985,8 +4975,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyEvent.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (event != null ? event.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (event != null ? event.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5000,8 +4990,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetEventStatus.invokeExact(
-                    device.handle(),
-                    event.handle()
+                    device.segment(),
+                    event.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -5014,8 +5004,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkSetEvent.invokeExact(
-                    device.handle(),
-                    event.handle()
+                    device.segment(),
+                    event.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -5028,8 +5018,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkResetEvent.invokeExact(
-                    device.handle(),
-                    event.handle()
+                    device.segment(),
+                    event.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -5040,11 +5030,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkQueryPoolCreateInfo.class) VkQueryPoolCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkQueryPool.class) VkQueryPool pQueryPool
+            @pointer(target=VkQueryPool.class) VkQueryPool.Buffer pQueryPool
     ) {
         try {
             return (int) HANDLE$vkCreateQueryPool.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pQueryPool.segment()
@@ -5061,8 +5051,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyQueryPool.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (queryPool != null ? queryPool.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (queryPool != null ? queryPool.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5082,8 +5072,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetQueryPoolResults.invokeExact(
-                    device.handle(),
-                    queryPool.handle(),
+                    device.segment(),
+                    queryPool.segment(),
                     firstQuery,
                     queryCount,
                     dataSize,
@@ -5104,8 +5094,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkResetQueryPool.invokeExact(
-                    device.handle(),
-                    queryPool.handle(),
+                    device.segment(),
+                    queryPool.segment(),
                     firstQuery,
                     queryCount
             );
@@ -5118,11 +5108,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkBufferCreateInfo.class) VkBufferCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkBuffer.class) VkBuffer pBuffer
+            @pointer(target=VkBuffer.class) VkBuffer.Buffer pBuffer
     ) {
         try {
             return (int) HANDLE$vkCreateBuffer.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pBuffer.segment()
@@ -5139,8 +5129,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyBuffer.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (buffer != null ? buffer.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (buffer != null ? buffer.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5152,11 +5142,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkBufferViewCreateInfo.class) VkBufferViewCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkBufferView.class) VkBufferView pView
+            @pointer(target=VkBufferView.class) VkBufferView.Buffer pView
     ) {
         try {
             return (int) HANDLE$vkCreateBufferView.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pView.segment()
@@ -5173,8 +5163,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyBufferView.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (bufferView != null ? bufferView.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (bufferView != null ? bufferView.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5186,11 +5176,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkImageCreateInfo.class) VkImageCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkImage.class) VkImage pImage
+            @pointer(target=VkImage.class) VkImage.Buffer pImage
     ) {
         try {
             return (int) HANDLE$vkCreateImage.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pImage.segment()
@@ -5207,8 +5197,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyImage.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (image != null ? image.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (image != null ? image.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5224,8 +5214,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetImageSubresourceLayout.invokeExact(
-                    device.handle(),
-                    image.handle(),
+                    device.segment(),
+                    image.segment(),
                     pSubresource.segment(),
                     pLayout.segment()
             );
@@ -5238,11 +5228,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkImageViewCreateInfo.class) VkImageViewCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkImageView.class) VkImageView pView
+            @pointer(target=VkImageView.class) VkImageView.Buffer pView
     ) {
         try {
             return (int) HANDLE$vkCreateImageView.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pView.segment()
@@ -5259,8 +5249,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyImageView.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (imageView != null ? imageView.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (imageView != null ? imageView.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5272,11 +5262,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkShaderModuleCreateInfo.class) VkShaderModuleCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkShaderModule.class) VkShaderModule pShaderModule
+            @pointer(target=VkShaderModule.class) VkShaderModule.Buffer pShaderModule
     ) {
         try {
             return (int) HANDLE$vkCreateShaderModule.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pShaderModule.segment()
@@ -5293,8 +5283,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyShaderModule.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (shaderModule != null ? shaderModule.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (shaderModule != null ? shaderModule.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5306,11 +5296,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkPipelineCacheCreateInfo.class) VkPipelineCacheCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkPipelineCache.class) VkPipelineCache pPipelineCache
+            @pointer(target=VkPipelineCache.class) VkPipelineCache.Buffer pPipelineCache
     ) {
         try {
             return (int) HANDLE$vkCreatePipelineCache.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pPipelineCache.segment()
@@ -5327,8 +5317,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyPipelineCache.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (pipelineCache != null ? pipelineCache.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (pipelineCache != null ? pipelineCache.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5339,13 +5329,13 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPipelineCacheData(
             VkDevice device,
             VkPipelineCache pipelineCache,
-            @pointer(target=CSizeTPtr.class) CSizeTPtr pDataSize,
+             PointerBuffer pDataSize,
             @pointer(comment="void*") MemorySegment pData
     ) {
         try {
             return (int) HANDLE$vkGetPipelineCacheData.invokeExact(
-                    device.handle(),
-                    pipelineCache.handle(),
+                    device.segment(),
+                    pipelineCache.segment(),
                     pDataSize.segment(),
                     pData
             );
@@ -5358,12 +5348,12 @@ public final class DeviceCommands {
             VkDevice device,
             VkPipelineCache dstCache,
             @unsigned int srcCacheCount,
-            @pointer(target=VkPipelineCache.class) VkPipelineCache pSrcCaches
+            @pointer(target=VkPipelineCache.class) VkPipelineCache.Buffer pSrcCaches
     ) {
         try {
             return (int) HANDLE$vkMergePipelineCaches.invokeExact(
-                    device.handle(),
-                    dstCache.handle(),
+                    device.segment(),
+                    dstCache.segment(),
                     srcCacheCount,
                     pSrcCaches.segment()
             );
@@ -5380,7 +5370,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkCreatePipelineBinariesKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pBinaries.segment()
@@ -5397,8 +5387,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyPipelineBinaryKHR.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (pipelineBinary != null ? pipelineBinary.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (pipelineBinary != null ? pipelineBinary.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5413,7 +5403,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPipelineKeyKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     (MemorySegment) (pPipelineCreateInfo != null ? pPipelineCreateInfo.segment() : MemorySegment.NULL),
                     pPipelineKey.segment()
             );
@@ -5426,12 +5416,12 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkPipelineBinaryDataInfoKHR.class) VkPipelineBinaryDataInfoKHR pInfo,
             @pointer(target=VkPipelineBinaryKeyKHR.class) VkPipelineBinaryKeyKHR pPipelineBinaryKey,
-            @pointer(target=CSizeTPtr.class) CSizeTPtr pPipelineBinaryDataSize,
+             PointerBuffer pPipelineBinaryDataSize,
             @pointer(comment="void*") MemorySegment pPipelineBinaryData
     ) {
         try {
             return (int) HANDLE$vkGetPipelineBinaryDataKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pPipelineBinaryKey.segment(),
                     pPipelineBinaryDataSize.segment(),
@@ -5449,7 +5439,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkReleaseCapturedPipelineDataKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
@@ -5464,12 +5454,12 @@ public final class DeviceCommands {
             @unsigned int createInfoCount,
             @pointer(target=VkGraphicsPipelineCreateInfo.class) VkGraphicsPipelineCreateInfo pCreateInfos,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkPipeline.class) VkPipeline pPipelines
+            @pointer(target=VkPipeline.class) VkPipeline.Buffer pPipelines
     ) {
         try {
             return (int) HANDLE$vkCreateGraphicsPipelines.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (pipelineCache != null ? pipelineCache.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (pipelineCache != null ? pipelineCache.segment() : MemorySegment.NULL),
                     createInfoCount,
                     pCreateInfos.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
@@ -5486,12 +5476,12 @@ public final class DeviceCommands {
             @unsigned int createInfoCount,
             @pointer(target=VkComputePipelineCreateInfo.class) VkComputePipelineCreateInfo pCreateInfos,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkPipeline.class) VkPipeline pPipelines
+            @pointer(target=VkPipeline.class) VkPipeline.Buffer pPipelines
     ) {
         try {
             return (int) HANDLE$vkCreateComputePipelines.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (pipelineCache != null ? pipelineCache.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (pipelineCache != null ? pipelineCache.segment() : MemorySegment.NULL),
                     createInfoCount,
                     pCreateInfos.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
@@ -5509,8 +5499,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI.invokeExact(
-                    device.handle(),
-                    renderpass.handle(),
+                    device.segment(),
+                    renderpass.segment(),
                     pMaxWorkgroupSize.segment()
             );
         } catch (Throwable t) {
@@ -5525,8 +5515,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyPipeline.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (pipeline != null ? pipeline.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (pipeline != null ? pipeline.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5538,11 +5528,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkPipelineLayoutCreateInfo.class) VkPipelineLayoutCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkPipelineLayout.class) VkPipelineLayout pPipelineLayout
+            @pointer(target=VkPipelineLayout.class) VkPipelineLayout.Buffer pPipelineLayout
     ) {
         try {
             return (int) HANDLE$vkCreatePipelineLayout.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pPipelineLayout.segment()
@@ -5559,8 +5549,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyPipelineLayout.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (pipelineLayout != null ? pipelineLayout.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (pipelineLayout != null ? pipelineLayout.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5572,11 +5562,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkSamplerCreateInfo.class) VkSamplerCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkSampler.class) VkSampler pSampler
+            @pointer(target=VkSampler.class) VkSampler.Buffer pSampler
     ) {
         try {
             return (int) HANDLE$vkCreateSampler.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pSampler.segment()
@@ -5593,8 +5583,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroySampler.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (sampler != null ? sampler.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (sampler != null ? sampler.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5606,11 +5596,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkDescriptorSetLayoutCreateInfo.class) VkDescriptorSetLayoutCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkDescriptorSetLayout.class) VkDescriptorSetLayout pSetLayout
+            @pointer(target=VkDescriptorSetLayout.class) VkDescriptorSetLayout.Buffer pSetLayout
     ) {
         try {
             return (int) HANDLE$vkCreateDescriptorSetLayout.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pSetLayout.segment()
@@ -5627,8 +5617,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyDescriptorSetLayout.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (descriptorSetLayout != null ? descriptorSetLayout.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (descriptorSetLayout != null ? descriptorSetLayout.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5640,11 +5630,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkDescriptorPoolCreateInfo.class) VkDescriptorPoolCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkDescriptorPool.class) VkDescriptorPool pDescriptorPool
+            @pointer(target=VkDescriptorPool.class) VkDescriptorPool.Buffer pDescriptorPool
     ) {
         try {
             return (int) HANDLE$vkCreateDescriptorPool.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pDescriptorPool.segment()
@@ -5661,8 +5651,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyDescriptorPool.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (descriptorPool != null ? descriptorPool.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (descriptorPool != null ? descriptorPool.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5677,8 +5667,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkResetDescriptorPool.invokeExact(
-                    device.handle(),
-                    descriptorPool.handle(),
+                    device.segment(),
+                    descriptorPool.segment(),
                     flags
             );
         } catch (Throwable t) {
@@ -5689,11 +5679,11 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkAllocateDescriptorSets(
             VkDevice device,
             @pointer(target=VkDescriptorSetAllocateInfo.class) VkDescriptorSetAllocateInfo pAllocateInfo,
-            @pointer(target=VkDescriptorSet.class) VkDescriptorSet pDescriptorSets
+            @pointer(target=VkDescriptorSet.class) VkDescriptorSet.Buffer pDescriptorSets
     ) {
         try {
             return (int) HANDLE$vkAllocateDescriptorSets.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pAllocateInfo.segment(),
                     pDescriptorSets.segment()
             );
@@ -5706,12 +5696,12 @@ public final class DeviceCommands {
             VkDevice device,
             VkDescriptorPool descriptorPool,
             @unsigned int descriptorSetCount,
-            @pointer(target=VkDescriptorSet.class) VkDescriptorSet pDescriptorSets
+            @pointer(target=VkDescriptorSet.class) VkDescriptorSet.Buffer pDescriptorSets
     ) {
         try {
             return (int) HANDLE$vkFreeDescriptorSets.invokeExact(
-                    device.handle(),
-                    descriptorPool.handle(),
+                    device.segment(),
+                    descriptorPool.segment(),
                     descriptorSetCount,
                     pDescriptorSets.segment()
             );
@@ -5729,7 +5719,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkUpdateDescriptorSets.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     descriptorWriteCount,
                     pDescriptorWrites.segment(),
                     descriptorCopyCount,
@@ -5744,11 +5734,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkFramebufferCreateInfo.class) VkFramebufferCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkFramebuffer.class) VkFramebuffer pFramebuffer
+            @pointer(target=VkFramebuffer.class) VkFramebuffer.Buffer pFramebuffer
     ) {
         try {
             return (int) HANDLE$vkCreateFramebuffer.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pFramebuffer.segment()
@@ -5765,8 +5755,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyFramebuffer.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (framebuffer != null ? framebuffer.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (framebuffer != null ? framebuffer.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5778,11 +5768,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkRenderPassCreateInfo.class) VkRenderPassCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkRenderPass.class) VkRenderPass pRenderPass
+            @pointer(target=VkRenderPass.class) VkRenderPass.Buffer pRenderPass
     ) {
         try {
             return (int) HANDLE$vkCreateRenderPass.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pRenderPass.segment()
@@ -5799,8 +5789,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyRenderPass.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (renderPass != null ? renderPass.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (renderPass != null ? renderPass.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5815,8 +5805,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetRenderAreaGranularity.invokeExact(
-                    device.handle(),
-                    renderPass.handle(),
+                    device.segment(),
+                    renderPass.segment(),
                     pGranularity.segment()
             );
         } catch (Throwable t) {
@@ -5831,7 +5821,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetRenderingAreaGranularityKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pRenderingAreaInfo.segment(),
                     pGranularity.segment()
             );
@@ -5844,11 +5834,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkCommandPoolCreateInfo.class) VkCommandPoolCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkCommandPool.class) VkCommandPool pCommandPool
+            @pointer(target=VkCommandPool.class) VkCommandPool.Buffer pCommandPool
     ) {
         try {
             return (int) HANDLE$vkCreateCommandPool.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pCommandPool.segment()
@@ -5865,8 +5855,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyCommandPool.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (commandPool != null ? commandPool.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (commandPool != null ? commandPool.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5881,8 +5871,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkResetCommandPool.invokeExact(
-                    device.handle(),
-                    commandPool.handle(),
+                    device.segment(),
+                    commandPool.segment(),
                     flags
             );
         } catch (Throwable t) {
@@ -5893,11 +5883,11 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkAllocateCommandBuffers(
             VkDevice device,
             @pointer(target=VkCommandBufferAllocateInfo.class) VkCommandBufferAllocateInfo pAllocateInfo,
-            @pointer(target=VkCommandBuffer.class) VkCommandBuffer pCommandBuffers
+            @pointer(target=VkCommandBuffer.class) VkCommandBuffer.Buffer pCommandBuffers
     ) {
         try {
             return (int) HANDLE$vkAllocateCommandBuffers.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pAllocateInfo.segment(),
                     pCommandBuffers.segment()
             );
@@ -5910,12 +5900,12 @@ public final class DeviceCommands {
             VkDevice device,
             VkCommandPool commandPool,
             @unsigned int commandBufferCount,
-            @pointer(target=VkCommandBuffer.class) VkCommandBuffer pCommandBuffers
+            @pointer(target=VkCommandBuffer.class) VkCommandBuffer.Buffer pCommandBuffers
     ) {
         try {
             HANDLE$vkFreeCommandBuffers.invokeExact(
-                    device.handle(),
-                    commandPool.handle(),
+                    device.segment(),
+                    commandPool.segment(),
                     commandBufferCount,
                     pCommandBuffers.segment()
             );
@@ -5930,7 +5920,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkBeginCommandBuffer.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pBeginInfo.segment()
             );
         } catch (Throwable t) {
@@ -5943,7 +5933,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkEndCommandBuffer.invokeExact(
-                    commandBuffer.handle()
+                    commandBuffer.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -5956,7 +5946,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkResetCommandBuffer.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     flags
             );
         } catch (Throwable t) {
@@ -5971,9 +5961,9 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBindPipeline.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pipelineBindPoint,
-                    pipeline.handle()
+                    pipeline.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -5986,7 +5976,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetAttachmentFeedbackLoopEnableEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     aspectMask
             );
         } catch (Throwable t) {
@@ -6002,7 +5992,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetViewport.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstViewport,
                     viewportCount,
                     pViewports.segment()
@@ -6020,7 +6010,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetScissor.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstScissor,
                     scissorCount,
                     pScissors.segment()
@@ -6036,7 +6026,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetLineWidth.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     lineWidth
             );
         } catch (Throwable t) {
@@ -6052,7 +6042,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDepthBias.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     depthBiasConstantFactor,
                     depthBiasClamp,
                     depthBiasSlopeFactor
@@ -6064,11 +6054,11 @@ public final class DeviceCommands {
 
     public void vkCmdSetBlendConstants(
             VkCommandBuffer commandBuffer,
-            FloatArray blendConstants
+            FloatBuffer blendConstants
     ) {
         try {
             HANDLE$vkCmdSetBlendConstants.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     blendConstants.segment()
             );
         } catch (Throwable t) {
@@ -6083,7 +6073,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDepthBounds.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     minDepthBounds,
                     maxDepthBounds
             );
@@ -6099,7 +6089,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetStencilCompareMask.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     faceMask,
                     compareMask
             );
@@ -6115,7 +6105,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetStencilWriteMask.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     faceMask,
                     writeMask
             );
@@ -6131,7 +6121,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetStencilReference.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     faceMask,
                     reference
             );
@@ -6146,15 +6136,15 @@ public final class DeviceCommands {
             VkPipelineLayout layout,
             @unsigned int firstSet,
             @unsigned int descriptorSetCount,
-            @pointer(target=VkDescriptorSet.class) VkDescriptorSet pDescriptorSets,
+            @pointer(target=VkDescriptorSet.class) VkDescriptorSet.Buffer pDescriptorSets,
             @unsigned int dynamicOffsetCount,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pDynamicOffsets
+             @unsigned IntBuffer pDynamicOffsets
     ) {
         try {
             HANDLE$vkCmdBindDescriptorSets.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pipelineBindPoint,
-                    layout.handle(),
+                    layout.segment(),
                     firstSet,
                     descriptorSetCount,
                     pDescriptorSets.segment(),
@@ -6174,8 +6164,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBindIndexBuffer.invokeExact(
-                    commandBuffer.handle(),
-                    (MemorySegment) (buffer != null ? buffer.handle() : MemorySegment.NULL),
+                    commandBuffer.segment(),
+                    (MemorySegment) (buffer != null ? buffer.segment() : MemorySegment.NULL),
                     offset,
                     indexType
             );
@@ -6188,12 +6178,12 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int firstBinding,
             @unsigned int bindingCount,
-            @pointer(target=VkBuffer.class) VkBuffer pBuffers,
-            @pointer(target=LongPtr.class) @unsigned LongPtr pOffsets
+            @pointer(target=VkBuffer.class) VkBuffer.Buffer pBuffers,
+             @unsigned LongBuffer pOffsets
     ) {
         try {
             HANDLE$vkCmdBindVertexBuffers.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstBinding,
                     bindingCount,
                     pBuffers.segment(),
@@ -6213,7 +6203,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDraw.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     vertexCount,
                     instanceCount,
                     firstVertex,
@@ -6234,7 +6224,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDrawIndexed.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     indexCount,
                     instanceCount,
                     firstIndex,
@@ -6256,7 +6246,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDrawMultiEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     drawCount,
                     pVertexInfo.segment(),
                     instanceCount,
@@ -6275,11 +6265,11 @@ public final class DeviceCommands {
             @unsigned int instanceCount,
             @unsigned int firstInstance,
             @unsigned int stride,
-            @nullable @pointer(target=IntPtr.class) IntPtr pVertexOffset
+            @nullable  IntBuffer pVertexOffset
     ) {
         try {
             HANDLE$vkCmdDrawMultiIndexedEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     drawCount,
                     pIndexInfo.segment(),
                     instanceCount,
@@ -6301,8 +6291,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDrawIndirect.invokeExact(
-                    commandBuffer.handle(),
-                    buffer.handle(),
+                    commandBuffer.segment(),
+                    buffer.segment(),
                     offset,
                     drawCount,
                     stride
@@ -6321,8 +6311,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDrawIndexedIndirect.invokeExact(
-                    commandBuffer.handle(),
-                    buffer.handle(),
+                    commandBuffer.segment(),
+                    buffer.segment(),
                     offset,
                     drawCount,
                     stride
@@ -6340,7 +6330,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDispatch.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     groupCountX,
                     groupCountY,
                     groupCountZ
@@ -6357,8 +6347,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDispatchIndirect.invokeExact(
-                    commandBuffer.handle(),
-                    buffer.handle(),
+                    commandBuffer.segment(),
+                    buffer.segment(),
                     offset
             );
         } catch (Throwable t) {
@@ -6371,7 +6361,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSubpassShadingHUAWEI.invokeExact(
-                    commandBuffer.handle()
+                    commandBuffer.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -6386,7 +6376,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDrawClusterHUAWEI.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     groupCountX,
                     groupCountY,
                     groupCountZ
@@ -6403,8 +6393,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDrawClusterIndirectHUAWEI.invokeExact(
-                    commandBuffer.handle(),
-                    buffer.handle(),
+                    commandBuffer.segment(),
+                    buffer.segment(),
                     offset
             );
         } catch (Throwable t) {
@@ -6419,9 +6409,9 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdUpdatePipelineIndirectBufferNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pipelineBindPoint,
-                    pipeline.handle()
+                    pipeline.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -6437,9 +6427,9 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyBuffer.invokeExact(
-                    commandBuffer.handle(),
-                    srcBuffer.handle(),
-                    dstBuffer.handle(),
+                    commandBuffer.segment(),
+                    srcBuffer.segment(),
+                    dstBuffer.segment(),
                     regionCount,
                     pRegions.segment()
             );
@@ -6459,10 +6449,10 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyImage.invokeExact(
-                    commandBuffer.handle(),
-                    srcImage.handle(),
+                    commandBuffer.segment(),
+                    srcImage.segment(),
                     srcImageLayout,
-                    dstImage.handle(),
+                    dstImage.segment(),
                     dstImageLayout,
                     regionCount,
                     pRegions.segment()
@@ -6484,10 +6474,10 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBlitImage.invokeExact(
-                    commandBuffer.handle(),
-                    srcImage.handle(),
+                    commandBuffer.segment(),
+                    srcImage.segment(),
                     srcImageLayout,
-                    dstImage.handle(),
+                    dstImage.segment(),
                     dstImageLayout,
                     regionCount,
                     pRegions.segment(),
@@ -6508,9 +6498,9 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyBufferToImage.invokeExact(
-                    commandBuffer.handle(),
-                    srcBuffer.handle(),
-                    dstImage.handle(),
+                    commandBuffer.segment(),
+                    srcBuffer.segment(),
+                    dstImage.segment(),
                     dstImageLayout,
                     regionCount,
                     pRegions.segment()
@@ -6530,10 +6520,10 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyImageToBuffer.invokeExact(
-                    commandBuffer.handle(),
-                    srcImage.handle(),
+                    commandBuffer.segment(),
+                    srcImage.segment(),
                     srcImageLayout,
-                    dstBuffer.handle(),
+                    dstBuffer.segment(),
                     regionCount,
                     pRegions.segment()
             );
@@ -6550,7 +6540,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyMemoryIndirectNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     copyBufferAddress,
                     copyCount,
                     stride
@@ -6571,11 +6561,11 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyMemoryToImageIndirectNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     copyBufferAddress,
                     copyCount,
                     stride,
-                    dstImage.handle(),
+                    dstImage.segment(),
                     dstImageLayout,
                     pImageSubresources.segment()
             );
@@ -6593,8 +6583,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdUpdateBuffer.invokeExact(
-                    commandBuffer.handle(),
-                    dstBuffer.handle(),
+                    commandBuffer.segment(),
+                    dstBuffer.segment(),
                     dstOffset,
                     dataSize,
                     pData
@@ -6613,8 +6603,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdFillBuffer.invokeExact(
-                    commandBuffer.handle(),
-                    dstBuffer.handle(),
+                    commandBuffer.segment(),
+                    dstBuffer.segment(),
                     dstOffset,
                     size,
                     data
@@ -6634,8 +6624,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdClearColorImage.invokeExact(
-                    commandBuffer.handle(),
-                    image.handle(),
+                    commandBuffer.segment(),
+                    image.segment(),
                     imageLayout,
                     pColor.segment(),
                     rangeCount,
@@ -6656,8 +6646,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdClearDepthStencilImage.invokeExact(
-                    commandBuffer.handle(),
-                    image.handle(),
+                    commandBuffer.segment(),
+                    image.segment(),
                     imageLayout,
                     pDepthStencil.segment(),
                     rangeCount,
@@ -6677,7 +6667,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdClearAttachments.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     attachmentCount,
                     pAttachments.segment(),
                     rectCount,
@@ -6699,10 +6689,10 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdResolveImage.invokeExact(
-                    commandBuffer.handle(),
-                    srcImage.handle(),
+                    commandBuffer.segment(),
+                    srcImage.segment(),
                     srcImageLayout,
-                    dstImage.handle(),
+                    dstImage.segment(),
                     dstImageLayout,
                     regionCount,
                     pRegions.segment()
@@ -6719,8 +6709,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetEvent.invokeExact(
-                    commandBuffer.handle(),
-                    event.handle(),
+                    commandBuffer.segment(),
+                    event.segment(),
                     stageMask
             );
         } catch (Throwable t) {
@@ -6735,8 +6725,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdResetEvent.invokeExact(
-                    commandBuffer.handle(),
-                    event.handle(),
+                    commandBuffer.segment(),
+                    event.segment(),
                     stageMask
             );
         } catch (Throwable t) {
@@ -6747,7 +6737,7 @@ public final class DeviceCommands {
     public void vkCmdWaitEvents(
             VkCommandBuffer commandBuffer,
             @unsigned int eventCount,
-            @pointer(target=VkEvent.class) VkEvent pEvents,
+            @pointer(target=VkEvent.class) VkEvent.Buffer pEvents,
             @enumtype(VkPipelineStageFlags.class) int srcStageMask,
             @enumtype(VkPipelineStageFlags.class) int dstStageMask,
             @unsigned int memoryBarrierCount,
@@ -6759,7 +6749,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdWaitEvents.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     eventCount,
                     pEvents.segment(),
                     srcStageMask,
@@ -6790,7 +6780,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdPipelineBarrier.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     srcStageMask,
                     dstStageMask,
                     dependencyFlags,
@@ -6814,8 +6804,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBeginQuery.invokeExact(
-                    commandBuffer.handle(),
-                    queryPool.handle(),
+                    commandBuffer.segment(),
+                    queryPool.segment(),
                     query,
                     flags
             );
@@ -6831,8 +6821,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdEndQuery.invokeExact(
-                    commandBuffer.handle(),
-                    queryPool.handle(),
+                    commandBuffer.segment(),
+                    queryPool.segment(),
                     query
             );
         } catch (Throwable t) {
@@ -6846,7 +6836,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBeginConditionalRenderingEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pConditionalRenderingBegin.segment()
             );
         } catch (Throwable t) {
@@ -6859,7 +6849,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdEndConditionalRenderingEXT.invokeExact(
-                    commandBuffer.handle()
+                    commandBuffer.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -6874,8 +6864,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdResetQueryPool.invokeExact(
-                    commandBuffer.handle(),
-                    queryPool.handle(),
+                    commandBuffer.segment(),
+                    queryPool.segment(),
                     firstQuery,
                     queryCount
             );
@@ -6892,9 +6882,9 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdWriteTimestamp.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pipelineStage,
-                    queryPool.handle(),
+                    queryPool.segment(),
                     query
             );
         } catch (Throwable t) {
@@ -6914,11 +6904,11 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyQueryPoolResults.invokeExact(
-                    commandBuffer.handle(),
-                    queryPool.handle(),
+                    commandBuffer.segment(),
+                    queryPool.segment(),
                     firstQuery,
                     queryCount,
-                    dstBuffer.handle(),
+                    dstBuffer.segment(),
                     dstOffset,
                     stride,
                     flags
@@ -6938,8 +6928,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdPushConstants.invokeExact(
-                    commandBuffer.handle(),
-                    layout.handle(),
+                    commandBuffer.segment(),
+                    layout.segment(),
                     stageFlags,
                     offset,
                     size,
@@ -6957,7 +6947,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBeginRenderPass.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pRenderPassBegin.segment(),
                     contents
             );
@@ -6972,7 +6962,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdNextSubpass.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     contents
             );
         } catch (Throwable t) {
@@ -6985,7 +6975,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdEndRenderPass.invokeExact(
-                    commandBuffer.handle()
+                    commandBuffer.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -6995,11 +6985,11 @@ public final class DeviceCommands {
     public void vkCmdExecuteCommands(
             VkCommandBuffer commandBuffer,
             @unsigned int commandBufferCount,
-            @pointer(target=VkCommandBuffer.class) VkCommandBuffer pCommandBuffers
+            @pointer(target=VkCommandBuffer.class) VkCommandBuffer.Buffer pCommandBuffers
     ) {
         try {
             HANDLE$vkCmdExecuteCommands.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     commandBufferCount,
                     pCommandBuffers.segment()
             );
@@ -7013,11 +7003,11 @@ public final class DeviceCommands {
             @unsigned int swapchainCount,
             @pointer(target=VkSwapchainCreateInfoKHR.class) VkSwapchainCreateInfoKHR pCreateInfos,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkSwapchainKHR.class) VkSwapchainKHR pSwapchains
+            @pointer(target=VkSwapchainKHR.class) VkSwapchainKHR.Buffer pSwapchains
     ) {
         try {
             return (int) HANDLE$vkCreateSharedSwapchainsKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     swapchainCount,
                     pCreateInfos.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
@@ -7032,11 +7022,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkSwapchainCreateInfoKHR.class) VkSwapchainCreateInfoKHR pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkSwapchainKHR.class) VkSwapchainKHR pSwapchain
+            @pointer(target=VkSwapchainKHR.class) VkSwapchainKHR.Buffer pSwapchain
     ) {
         try {
             return (int) HANDLE$vkCreateSwapchainKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pSwapchain.segment()
@@ -7053,8 +7043,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroySwapchainKHR.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (swapchain != null ? swapchain.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (swapchain != null ? swapchain.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -7065,13 +7055,13 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetSwapchainImagesKHR(
             VkDevice device,
             VkSwapchainKHR swapchain,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pSwapchainImageCount,
-            @nullable @pointer(target=VkImage.class) VkImage pSwapchainImages
+             @unsigned IntBuffer pSwapchainImageCount,
+            @nullable @pointer(target=VkImage.class) VkImage.Buffer pSwapchainImages
     ) {
         try {
             return (int) HANDLE$vkGetSwapchainImagesKHR.invokeExact(
-                    device.handle(),
-                    swapchain.handle(),
+                    device.segment(),
+                    swapchain.segment(),
                     pSwapchainImageCount.segment(),
                     (MemorySegment) (pSwapchainImages != null ? pSwapchainImages.segment() : MemorySegment.NULL)
             );
@@ -7086,15 +7076,15 @@ public final class DeviceCommands {
             @unsigned long timeout,
             @nullable VkSemaphore semaphore,
             @nullable VkFence fence,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pImageIndex
+             @unsigned IntBuffer pImageIndex
     ) {
         try {
             return (int) HANDLE$vkAcquireNextImageKHR.invokeExact(
-                    device.handle(),
-                    swapchain.handle(),
+                    device.segment(),
+                    swapchain.segment(),
                     timeout,
-                    (MemorySegment) (semaphore != null ? semaphore.handle() : MemorySegment.NULL),
-                    (MemorySegment) (fence != null ? fence.handle() : MemorySegment.NULL),
+                    (MemorySegment) (semaphore != null ? semaphore.segment() : MemorySegment.NULL),
+                    (MemorySegment) (fence != null ? fence.segment() : MemorySegment.NULL),
                     pImageIndex.segment()
             );
         } catch (Throwable t) {
@@ -7108,7 +7098,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkQueuePresentKHR.invokeExact(
-                    queue.handle(),
+                    queue.segment(),
                     pPresentInfo.segment()
             );
         } catch (Throwable t) {
@@ -7122,7 +7112,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkDebugMarkerSetObjectNameEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pNameInfo.segment()
             );
         } catch (Throwable t) {
@@ -7136,7 +7126,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkDebugMarkerSetObjectTagEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pTagInfo.segment()
             );
         } catch (Throwable t) {
@@ -7150,7 +7140,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDebugMarkerBeginEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pMarkerInfo.segment()
             );
         } catch (Throwable t) {
@@ -7163,7 +7153,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDebugMarkerEndEXT.invokeExact(
-                    commandBuffer.handle()
+                    commandBuffer.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -7176,7 +7166,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDebugMarkerInsertEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pMarkerInfo.segment()
             );
         } catch (Throwable t) {
@@ -7192,8 +7182,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetMemoryWin32HandleNV.invokeExact(
-                    device.handle(),
-                    memory.handle(),
+                    device.segment(),
+                    memory.segment(),
                     handleType,
                     pHandle
             );
@@ -7209,7 +7199,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdExecuteGeneratedCommandsNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     isPreprocessed,
                     pGeneratedCommandsInfo.segment()
             );
@@ -7224,7 +7214,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdPreprocessGeneratedCommandsNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pGeneratedCommandsInfo.segment()
             );
         } catch (Throwable t) {
@@ -7240,9 +7230,9 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBindPipelineShaderGroupNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pipelineBindPoint,
-                    pipeline.handle(),
+                    pipeline.segment(),
                     groupIndex
             );
         } catch (Throwable t) {
@@ -7257,7 +7247,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetGeneratedCommandsMemoryRequirementsNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pMemoryRequirements.segment()
             );
@@ -7270,11 +7260,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkIndirectCommandsLayoutCreateInfoNV.class) VkIndirectCommandsLayoutCreateInfoNV pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkIndirectCommandsLayoutNV.class) VkIndirectCommandsLayoutNV pIndirectCommandsLayout
+            @pointer(target=VkIndirectCommandsLayoutNV.class) VkIndirectCommandsLayoutNV.Buffer pIndirectCommandsLayout
     ) {
         try {
             return (int) HANDLE$vkCreateIndirectCommandsLayoutNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pIndirectCommandsLayout.segment()
@@ -7291,8 +7281,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyIndirectCommandsLayoutNV.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (indirectCommandsLayout != null ? indirectCommandsLayout.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (indirectCommandsLayout != null ? indirectCommandsLayout.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -7310,9 +7300,9 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdPushDescriptorSetKHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pipelineBindPoint,
-                    layout.handle(),
+                    layout.segment(),
                     set,
                     descriptorWriteCount,
                     pDescriptorWrites.segment()
@@ -7329,8 +7319,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkTrimCommandPool.invokeExact(
-                    device.handle(),
-                    commandPool.handle(),
+                    device.segment(),
+                    commandPool.segment(),
                     flags
             );
         } catch (Throwable t) {
@@ -7345,7 +7335,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetMemoryWin32HandleKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pGetWin32HandleInfo.segment(),
                     pHandle
             );
@@ -7362,7 +7352,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetMemoryWin32HandlePropertiesKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     handleType,
                     handle,
                     pMemoryWin32HandleProperties.segment()
@@ -7375,11 +7365,11 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetMemoryFdKHR(
             VkDevice device,
             @pointer(target=VkMemoryGetFdInfoKHR.class) VkMemoryGetFdInfoKHR pGetFdInfo,
-            @pointer(target=IntPtr.class) IntPtr pFd
+             IntBuffer pFd
     ) {
         try {
             return (int) HANDLE$vkGetMemoryFdKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pGetFdInfo.segment(),
                     pFd.segment()
             );
@@ -7396,7 +7386,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetMemoryFdPropertiesKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     handleType,
                     fd,
                     pMemoryFdProperties.segment()
@@ -7409,11 +7399,11 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetMemoryZirconHandleFUCHSIA(
             VkDevice device,
             @pointer(target=VkMemoryGetZirconHandleInfoFUCHSIA.class) VkMemoryGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pZirconHandle
+             @unsigned IntBuffer pZirconHandle
     ) {
         try {
             return (int) HANDLE$vkGetMemoryZirconHandleFUCHSIA.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pGetZirconHandleInfo.segment(),
                     pZirconHandle.segment()
             );
@@ -7430,7 +7420,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetMemoryZirconHandlePropertiesFUCHSIA.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     handleType,
                     zirconHandle,
                     pMemoryZirconHandleProperties.segment()
@@ -7447,7 +7437,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetMemoryRemoteAddressNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pMemoryGetRemoteAddressInfo.segment(),
                     pAddress
             );
@@ -7463,7 +7453,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetMemorySciBufNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pGetSciBufInfo.segment(),
                     pHandle
             );
@@ -7480,7 +7470,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV.invokeExact(
-                    physicalDevice.handle(),
+                    physicalDevice.segment(),
                     handleType,
                     handle,
                     pMemorySciBufProperties.segment()
@@ -7496,7 +7486,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSciBufAttributesNV.invokeExact(
-                    physicalDevice.handle(),
+                    physicalDevice.segment(),
                     pAttributes
             );
         } catch (Throwable t) {
@@ -7511,7 +7501,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetSemaphoreWin32HandleKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pGetWin32HandleInfo.segment(),
                     pHandle
             );
@@ -7526,7 +7516,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkImportSemaphoreWin32HandleKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pImportSemaphoreWin32HandleInfo.segment()
             );
         } catch (Throwable t) {
@@ -7537,11 +7527,11 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetSemaphoreFdKHR(
             VkDevice device,
             @pointer(target=VkSemaphoreGetFdInfoKHR.class) VkSemaphoreGetFdInfoKHR pGetFdInfo,
-            @pointer(target=IntPtr.class) IntPtr pFd
+             IntBuffer pFd
     ) {
         try {
             return (int) HANDLE$vkGetSemaphoreFdKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pGetFdInfo.segment(),
                     pFd.segment()
             );
@@ -7556,7 +7546,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkImportSemaphoreFdKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pImportSemaphoreFdInfo.segment()
             );
         } catch (Throwable t) {
@@ -7567,11 +7557,11 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetSemaphoreZirconHandleFUCHSIA(
             VkDevice device,
             @pointer(target=VkSemaphoreGetZirconHandleInfoFUCHSIA.class) VkSemaphoreGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pZirconHandle
+             @unsigned IntBuffer pZirconHandle
     ) {
         try {
             return (int) HANDLE$vkGetSemaphoreZirconHandleFUCHSIA.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pGetZirconHandleInfo.segment(),
                     pZirconHandle.segment()
             );
@@ -7586,7 +7576,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkImportSemaphoreZirconHandleFUCHSIA.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pImportSemaphoreZirconHandleInfo.segment()
             );
         } catch (Throwable t) {
@@ -7601,7 +7591,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetFenceWin32HandleKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pGetWin32HandleInfo.segment(),
                     pHandle
             );
@@ -7616,7 +7606,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkImportFenceWin32HandleKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pImportFenceWin32HandleInfo.segment()
             );
         } catch (Throwable t) {
@@ -7627,11 +7617,11 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetFenceFdKHR(
             VkDevice device,
             @pointer(target=VkFenceGetFdInfoKHR.class) VkFenceGetFdInfoKHR pGetFdInfo,
-            @pointer(target=IntPtr.class) IntPtr pFd
+             IntBuffer pFd
     ) {
         try {
             return (int) HANDLE$vkGetFenceFdKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pGetFdInfo.segment(),
                     pFd.segment()
             );
@@ -7646,7 +7636,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkImportFenceFdKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pImportFenceFdInfo.segment()
             );
         } catch (Throwable t) {
@@ -7661,7 +7651,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetFenceSciSyncFenceNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pGetSciSyncHandleInfo.segment(),
                     pHandle
             );
@@ -7677,7 +7667,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetFenceSciSyncObjNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pGetSciSyncHandleInfo.segment(),
                     pHandle
             );
@@ -7692,7 +7682,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkImportFenceSciSyncFenceNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pImportFenceSciSyncInfo.segment()
             );
         } catch (Throwable t) {
@@ -7706,7 +7696,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkImportFenceSciSyncObjNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pImportFenceSciSyncInfo.segment()
             );
         } catch (Throwable t) {
@@ -7721,7 +7711,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetSemaphoreSciSyncObjNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pGetSciSyncInfo.segment(),
                     pHandle
             );
@@ -7736,7 +7726,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkImportSemaphoreSciSyncObjNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pImportSemaphoreSciSyncInfo.segment()
             );
         } catch (Throwable t) {
@@ -7751,7 +7741,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSciSyncAttributesNV.invokeExact(
-                    physicalDevice.handle(),
+                    physicalDevice.segment(),
                     pSciSyncAttributesInfo.segment(),
                     pAttributes
             );
@@ -7764,11 +7754,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkSemaphoreSciSyncPoolCreateInfoNV.class) VkSemaphoreSciSyncPoolCreateInfoNV pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkSemaphoreSciSyncPoolNV.class) VkSemaphoreSciSyncPoolNV pSemaphorePool
+            @pointer(target=VkSemaphoreSciSyncPoolNV.class) VkSemaphoreSciSyncPoolNV.Buffer pSemaphorePool
     ) {
         try {
             return (int) HANDLE$vkCreateSemaphoreSciSyncPoolNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pSemaphorePool.segment()
@@ -7785,8 +7775,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroySemaphoreSciSyncPoolNV.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (semaphorePool != null ? semaphorePool.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (semaphorePool != null ? semaphorePool.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -7800,8 +7790,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkAcquireWinrtDisplayNV.invokeExact(
-                    physicalDevice.handle(),
-                    display.handle()
+                    physicalDevice.segment(),
+                    display.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -7811,11 +7801,11 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetWinrtDisplayNV(
             VkPhysicalDevice physicalDevice,
             @unsigned int deviceRelativeId,
-            @pointer(target=VkDisplayKHR.class) VkDisplayKHR pDisplay
+            @pointer(target=VkDisplayKHR.class) VkDisplayKHR.Buffer pDisplay
     ) {
         try {
             return (int) HANDLE$vkGetWinrtDisplayNV.invokeExact(
-                    physicalDevice.handle(),
+                    physicalDevice.segment(),
                     deviceRelativeId,
                     pDisplay.segment()
             );
@@ -7831,8 +7821,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkDisplayPowerControlEXT.invokeExact(
-                    device.handle(),
-                    display.handle(),
+                    device.segment(),
+                    display.segment(),
                     pDisplayPowerInfo.segment()
             );
         } catch (Throwable t) {
@@ -7844,11 +7834,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkDeviceEventInfoEXT.class) VkDeviceEventInfoEXT pDeviceEventInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkFence.class) VkFence pFence
+            @pointer(target=VkFence.class) VkFence.Buffer pFence
     ) {
         try {
             return (int) HANDLE$vkRegisterDeviceEventEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pDeviceEventInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pFence.segment()
@@ -7863,12 +7853,12 @@ public final class DeviceCommands {
             VkDisplayKHR display,
             @pointer(target=VkDisplayEventInfoEXT.class) VkDisplayEventInfoEXT pDisplayEventInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkFence.class) VkFence pFence
+            @pointer(target=VkFence.class) VkFence.Buffer pFence
     ) {
         try {
             return (int) HANDLE$vkRegisterDisplayEventEXT.invokeExact(
-                    device.handle(),
-                    display.handle(),
+                    device.segment(),
+                    display.segment(),
                     pDisplayEventInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pFence.segment()
@@ -7882,12 +7872,12 @@ public final class DeviceCommands {
             VkDevice device,
             VkSwapchainKHR swapchain,
             @enumtype(VkSurfaceCounterFlagsEXT.class) int counter,
-            @pointer(target=LongPtr.class) @unsigned LongPtr pCounterValue
+             @unsigned LongBuffer pCounterValue
     ) {
         try {
             return (int) HANDLE$vkGetSwapchainCounterEXT.invokeExact(
-                    device.handle(),
-                    swapchain.handle(),
+                    device.segment(),
+                    swapchain.segment(),
                     counter,
                     pCounterValue.segment()
             );
@@ -7905,7 +7895,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetDeviceGroupPeerMemoryFeatures.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     heapIndex,
                     localDeviceIndex,
                     remoteDeviceIndex,
@@ -7923,7 +7913,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkBindBufferMemory2.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     bindInfoCount,
                     pBindInfos.segment()
             );
@@ -7939,7 +7929,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkBindImageMemory2.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     bindInfoCount,
                     pBindInfos.segment()
             );
@@ -7954,7 +7944,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDeviceMask.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     deviceMask
             );
         } catch (Throwable t) {
@@ -7968,7 +7958,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetDeviceGroupPresentCapabilitiesKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pDeviceGroupPresentCapabilities.segment()
             );
         } catch (Throwable t) {
@@ -7983,8 +7973,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetDeviceGroupSurfacePresentModesKHR.invokeExact(
-                    device.handle(),
-                    surface.handle(),
+                    device.segment(),
+                    surface.segment(),
                     pModes
             );
         } catch (Throwable t) {
@@ -7995,11 +7985,11 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkAcquireNextImage2KHR(
             VkDevice device,
             @pointer(target=VkAcquireNextImageInfoKHR.class) VkAcquireNextImageInfoKHR pAcquireInfo,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pImageIndex
+             @unsigned IntBuffer pImageIndex
     ) {
         try {
             return (int) HANDLE$vkAcquireNextImage2KHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pAcquireInfo.segment(),
                     pImageIndex.segment()
             );
@@ -8019,7 +8009,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDispatchBase.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     baseGroupX,
                     baseGroupY,
                     baseGroupZ,
@@ -8035,13 +8025,13 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDevicePresentRectanglesKHR(
             VkPhysicalDevice physicalDevice,
             VkSurfaceKHR surface,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pRectCount,
+             @unsigned IntBuffer pRectCount,
             @nullable @pointer(target=VkRect2D.class) VkRect2D pRects
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDevicePresentRectanglesKHR.invokeExact(
-                    physicalDevice.handle(),
-                    surface.handle(),
+                    physicalDevice.segment(),
+                    surface.segment(),
                     pRectCount.segment(),
                     (MemorySegment) (pRects != null ? pRects.segment() : MemorySegment.NULL)
             );
@@ -8054,11 +8044,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkDescriptorUpdateTemplateCreateInfo.class) VkDescriptorUpdateTemplateCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkDescriptorUpdateTemplate.class) VkDescriptorUpdateTemplate pDescriptorUpdateTemplate
+            @pointer(target=VkDescriptorUpdateTemplate.class) VkDescriptorUpdateTemplate.Buffer pDescriptorUpdateTemplate
     ) {
         try {
             return (int) HANDLE$vkCreateDescriptorUpdateTemplate.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pDescriptorUpdateTemplate.segment()
@@ -8075,8 +8065,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyDescriptorUpdateTemplate.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (descriptorUpdateTemplate != null ? descriptorUpdateTemplate.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (descriptorUpdateTemplate != null ? descriptorUpdateTemplate.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -8092,9 +8082,9 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkUpdateDescriptorSetWithTemplate.invokeExact(
-                    device.handle(),
-                    descriptorSet.handle(),
-                    descriptorUpdateTemplate.handle(),
+                    device.segment(),
+                    descriptorSet.segment(),
+                    descriptorUpdateTemplate.segment(),
                     pData
             );
         } catch (Throwable t) {
@@ -8111,9 +8101,9 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdPushDescriptorSetWithTemplateKHR.invokeExact(
-                    commandBuffer.handle(),
-                    descriptorUpdateTemplate.handle(),
-                    layout.handle(),
+                    commandBuffer.segment(),
+                    descriptorUpdateTemplate.segment(),
+                    layout.segment(),
                     set,
                     pData
             );
@@ -8125,12 +8115,12 @@ public final class DeviceCommands {
     public void vkSetHdrMetadataEXT(
             VkDevice device,
             @unsigned int swapchainCount,
-            @pointer(target=VkSwapchainKHR.class) VkSwapchainKHR pSwapchains,
+            @pointer(target=VkSwapchainKHR.class) VkSwapchainKHR.Buffer pSwapchains,
             @pointer(target=VkHdrMetadataEXT.class) VkHdrMetadataEXT pMetadata
     ) {
         try {
             HANDLE$vkSetHdrMetadataEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     swapchainCount,
                     pSwapchains.segment(),
                     pMetadata.segment()
@@ -8146,8 +8136,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetSwapchainStatusKHR.invokeExact(
-                    device.handle(),
-                    swapchain.handle()
+                    device.segment(),
+                    swapchain.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -8161,8 +8151,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetRefreshCycleDurationGOOGLE.invokeExact(
-                    device.handle(),
-                    swapchain.handle(),
+                    device.segment(),
+                    swapchain.segment(),
                     pDisplayTimingProperties.segment()
             );
         } catch (Throwable t) {
@@ -8173,13 +8163,13 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPastPresentationTimingGOOGLE(
             VkDevice device,
             VkSwapchainKHR swapchain,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pPresentationTimingCount,
+             @unsigned IntBuffer pPresentationTimingCount,
             @nullable @pointer(target=VkPastPresentationTimingGOOGLE.class) VkPastPresentationTimingGOOGLE pPresentationTimings
     ) {
         try {
             return (int) HANDLE$vkGetPastPresentationTimingGOOGLE.invokeExact(
-                    device.handle(),
-                    swapchain.handle(),
+                    device.segment(),
+                    swapchain.segment(),
                     pPresentationTimingCount.segment(),
                     (MemorySegment) (pPresentationTimings != null ? pPresentationTimings.segment() : MemorySegment.NULL)
             );
@@ -8196,7 +8186,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetViewportWScalingNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstViewport,
                     viewportCount,
                     pViewportWScalings.segment()
@@ -8214,7 +8204,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDiscardRectangleEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstDiscardRectangle,
                     discardRectangleCount,
                     pDiscardRectangles.segment()
@@ -8230,7 +8220,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDiscardRectangleEnableEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     discardRectangleEnable
             );
         } catch (Throwable t) {
@@ -8244,7 +8234,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDiscardRectangleModeEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     discardRectangleMode
             );
         } catch (Throwable t) {
@@ -8258,7 +8248,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetSampleLocationsEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pSampleLocationsInfo.segment()
             );
         } catch (Throwable t) {
@@ -8273,7 +8263,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceMultisamplePropertiesEXT.invokeExact(
-                    physicalDevice.handle(),
+                    physicalDevice.segment(),
                     samples,
                     pMultisampleProperties.segment()
             );
@@ -8289,7 +8279,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetBufferMemoryRequirements2.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pMemoryRequirements.segment()
             );
@@ -8305,7 +8295,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetImageMemoryRequirements2.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pMemoryRequirements.segment()
             );
@@ -8317,12 +8307,12 @@ public final class DeviceCommands {
     public void vkGetImageSparseMemoryRequirements2(
             VkDevice device,
             @pointer(target=VkImageSparseMemoryRequirementsInfo2.class) VkImageSparseMemoryRequirementsInfo2 pInfo,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pSparseMemoryRequirementCount,
+             @unsigned IntBuffer pSparseMemoryRequirementCount,
             @nullable @pointer(target=VkSparseImageMemoryRequirements2.class) VkSparseImageMemoryRequirements2 pSparseMemoryRequirements
     ) {
         try {
             HANDLE$vkGetImageSparseMemoryRequirements2.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pSparseMemoryRequirementCount.segment(),
                     (MemorySegment) (pSparseMemoryRequirements != null ? pSparseMemoryRequirements.segment() : MemorySegment.NULL)
@@ -8339,7 +8329,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetDeviceBufferMemoryRequirements.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pMemoryRequirements.segment()
             );
@@ -8355,7 +8345,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetDeviceImageMemoryRequirements.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pMemoryRequirements.segment()
             );
@@ -8367,12 +8357,12 @@ public final class DeviceCommands {
     public void vkGetDeviceImageSparseMemoryRequirements(
             VkDevice device,
             @pointer(target=VkDeviceImageMemoryRequirements.class) VkDeviceImageMemoryRequirements pInfo,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pSparseMemoryRequirementCount,
+             @unsigned IntBuffer pSparseMemoryRequirementCount,
             @nullable @pointer(target=VkSparseImageMemoryRequirements2.class) VkSparseImageMemoryRequirements2 pSparseMemoryRequirements
     ) {
         try {
             HANDLE$vkGetDeviceImageSparseMemoryRequirements.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pSparseMemoryRequirementCount.segment(),
                     (MemorySegment) (pSparseMemoryRequirements != null ? pSparseMemoryRequirements.segment() : MemorySegment.NULL)
@@ -8386,11 +8376,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkSamplerYcbcrConversionCreateInfo.class) VkSamplerYcbcrConversionCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkSamplerYcbcrConversion.class) VkSamplerYcbcrConversion pYcbcrConversion
+            @pointer(target=VkSamplerYcbcrConversion.class) VkSamplerYcbcrConversion.Buffer pYcbcrConversion
     ) {
         try {
             return (int) HANDLE$vkCreateSamplerYcbcrConversion.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pYcbcrConversion.segment()
@@ -8407,8 +8397,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroySamplerYcbcrConversion.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (ycbcrConversion != null ? ycbcrConversion.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (ycbcrConversion != null ? ycbcrConversion.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -8419,11 +8409,11 @@ public final class DeviceCommands {
     public void vkGetDeviceQueue2(
             VkDevice device,
             @pointer(target=VkDeviceQueueInfo2.class) VkDeviceQueueInfo2 pQueueInfo,
-            @pointer(target=VkQueue.class) VkQueue pQueue
+            @pointer(target=VkQueue.class) VkQueue.Buffer pQueue
     ) {
         try {
             HANDLE$vkGetDeviceQueue2.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pQueueInfo.segment(),
                     pQueue.segment()
             );
@@ -8436,11 +8426,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkValidationCacheCreateInfoEXT.class) VkValidationCacheCreateInfoEXT pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkValidationCacheEXT.class) VkValidationCacheEXT pValidationCache
+            @pointer(target=VkValidationCacheEXT.class) VkValidationCacheEXT.Buffer pValidationCache
     ) {
         try {
             return (int) HANDLE$vkCreateValidationCacheEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pValidationCache.segment()
@@ -8457,8 +8447,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyValidationCacheEXT.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (validationCache != null ? validationCache.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (validationCache != null ? validationCache.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -8469,13 +8459,13 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetValidationCacheDataEXT(
             VkDevice device,
             VkValidationCacheEXT validationCache,
-            @pointer(target=CSizeTPtr.class) CSizeTPtr pDataSize,
+             PointerBuffer pDataSize,
             @pointer(comment="void*") MemorySegment pData
     ) {
         try {
             return (int) HANDLE$vkGetValidationCacheDataEXT.invokeExact(
-                    device.handle(),
-                    validationCache.handle(),
+                    device.segment(),
+                    validationCache.segment(),
                     pDataSize.segment(),
                     pData
             );
@@ -8488,12 +8478,12 @@ public final class DeviceCommands {
             VkDevice device,
             VkValidationCacheEXT dstCache,
             @unsigned int srcCacheCount,
-            @pointer(target=VkValidationCacheEXT.class) VkValidationCacheEXT pSrcCaches
+            @pointer(target=VkValidationCacheEXT.class) VkValidationCacheEXT.Buffer pSrcCaches
     ) {
         try {
             return (int) HANDLE$vkMergeValidationCachesEXT.invokeExact(
-                    device.handle(),
-                    dstCache.handle(),
+                    device.segment(),
+                    dstCache.segment(),
                     srcCacheCount,
                     pSrcCaches.segment()
             );
@@ -8509,7 +8499,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetDescriptorSetLayoutSupport.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     pSupport.segment()
             );
@@ -8523,13 +8513,13 @@ public final class DeviceCommands {
             VkPipeline pipeline,
             @enumtype(VkShaderStageFlags.class) int shaderStage,
             @enumtype(VkShaderInfoTypeAMD.class) int infoType,
-            @pointer(target=CSizeTPtr.class) CSizeTPtr pInfoSize,
+             PointerBuffer pInfoSize,
             @pointer(comment="void*") MemorySegment pInfo
     ) {
         try {
             return (int) HANDLE$vkGetShaderInfoAMD.invokeExact(
-                    device.handle(),
-                    pipeline.handle(),
+                    device.segment(),
+                    pipeline.segment(),
                     shaderStage,
                     infoType,
                     pInfoSize.segment(),
@@ -8547,8 +8537,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkSetLocalDimmingAMD.invokeExact(
-                    device.handle(),
-                    swapChain.handle(),
+                    device.segment(),
+                    swapChain.segment(),
                     localDimmingEnable
             );
         } catch (Throwable t) {
@@ -8558,12 +8548,12 @@ public final class DeviceCommands {
 
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceCalibrateableTimeDomainsKHR(
             VkPhysicalDevice physicalDevice,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pTimeDomainCount,
+             @unsigned IntBuffer pTimeDomainCount,
             @pointer(comment="enum VkTimeDomainKHR*") MemorySegment pTimeDomains
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR.invokeExact(
-                    physicalDevice.handle(),
+                    physicalDevice.segment(),
                     pTimeDomainCount.segment(),
                     pTimeDomains
             );
@@ -8576,12 +8566,12 @@ public final class DeviceCommands {
             VkDevice device,
             @unsigned int timestampCount,
             @pointer(target=VkCalibratedTimestampInfoKHR.class) VkCalibratedTimestampInfoKHR pTimestampInfos,
-            @pointer(target=LongPtr.class) @unsigned LongPtr pTimestamps,
-            @pointer(target=LongPtr.class) @unsigned LongPtr pMaxDeviation
+             @unsigned LongBuffer pTimestamps,
+             @unsigned LongBuffer pMaxDeviation
     ) {
         try {
             return (int) HANDLE$vkGetCalibratedTimestampsKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     timestampCount,
                     pTimestampInfos.segment(),
                     pTimestamps.segment(),
@@ -8600,7 +8590,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetMemoryHostPointerPropertiesEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     handleType,
                     pHostPointer,
                     pMemoryHostPointerProperties.segment()
@@ -8619,9 +8609,9 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdWriteBufferMarkerAMD.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pipelineStage,
-                    dstBuffer.handle(),
+                    dstBuffer.segment(),
                     dstOffset,
                     marker
             );
@@ -8634,11 +8624,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkRenderPassCreateInfo2.class) VkRenderPassCreateInfo2 pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkRenderPass.class) VkRenderPass pRenderPass
+            @pointer(target=VkRenderPass.class) VkRenderPass.Buffer pRenderPass
     ) {
         try {
             return (int) HANDLE$vkCreateRenderPass2.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pRenderPass.segment()
@@ -8655,7 +8645,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBeginRenderPass2.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pRenderPassBegin.segment(),
                     pSubpassBeginInfo.segment()
             );
@@ -8671,7 +8661,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdNextSubpass2.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pSubpassBeginInfo.segment(),
                     pSubpassEndInfo.segment()
             );
@@ -8686,7 +8676,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdEndRenderPass2.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pSubpassEndInfo.segment()
             );
         } catch (Throwable t) {
@@ -8697,12 +8687,12 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetSemaphoreCounterValue(
             VkDevice device,
             VkSemaphore semaphore,
-            @pointer(target=LongPtr.class) @unsigned LongPtr pValue
+             @unsigned LongBuffer pValue
     ) {
         try {
             return (int) HANDLE$vkGetSemaphoreCounterValue.invokeExact(
-                    device.handle(),
-                    semaphore.handle(),
+                    device.segment(),
+                    semaphore.segment(),
                     pValue.segment()
             );
         } catch (Throwable t) {
@@ -8717,7 +8707,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkWaitSemaphores.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pWaitInfo.segment(),
                     timeout
             );
@@ -8732,7 +8722,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkSignalSemaphore.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pSignalInfo.segment()
             );
         } catch (Throwable t) {
@@ -8747,7 +8737,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetAndroidHardwareBufferPropertiesANDROID.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     buffer,
                     pProperties.segment()
             );
@@ -8763,7 +8753,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetMemoryAndroidHardwareBufferANDROID.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pBuffer
             );
@@ -8783,10 +8773,10 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDrawIndirectCount.invokeExact(
-                    commandBuffer.handle(),
-                    buffer.handle(),
+                    commandBuffer.segment(),
+                    buffer.segment(),
                     offset,
-                    countBuffer.handle(),
+                    countBuffer.segment(),
                     countBufferOffset,
                     maxDrawCount,
                     stride
@@ -8807,10 +8797,10 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDrawIndexedIndirectCount.invokeExact(
-                    commandBuffer.handle(),
-                    buffer.handle(),
+                    commandBuffer.segment(),
+                    buffer.segment(),
                     offset,
-                    countBuffer.handle(),
+                    countBuffer.segment(),
                     countBufferOffset,
                     maxDrawCount,
                     stride
@@ -8826,7 +8816,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetCheckpointNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pCheckpointMarker
             );
         } catch (Throwable t) {
@@ -8836,12 +8826,12 @@ public final class DeviceCommands {
 
     public void vkGetQueueCheckpointDataNV(
             VkQueue queue,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pCheckpointDataCount,
+             @unsigned IntBuffer pCheckpointDataCount,
             @nullable @pointer(target=VkCheckpointDataNV.class) VkCheckpointDataNV pCheckpointData
     ) {
         try {
             HANDLE$vkGetQueueCheckpointDataNV.invokeExact(
-                    queue.handle(),
+                    queue.segment(),
                     pCheckpointDataCount.segment(),
                     (MemorySegment) (pCheckpointData != null ? pCheckpointData.segment() : MemorySegment.NULL)
             );
@@ -8854,13 +8844,13 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int firstBinding,
             @unsigned int bindingCount,
-            @pointer(target=VkBuffer.class) VkBuffer pBuffers,
-            @pointer(target=LongPtr.class) @unsigned LongPtr pOffsets,
-            @nullable @pointer(target=LongPtr.class) @unsigned LongPtr pSizes
+            @pointer(target=VkBuffer.class) VkBuffer.Buffer pBuffers,
+             @unsigned LongBuffer pOffsets,
+            @nullable  @unsigned LongBuffer pSizes
     ) {
         try {
             HANDLE$vkCmdBindTransformFeedbackBuffersEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstBinding,
                     bindingCount,
                     pBuffers.segment(),
@@ -8876,12 +8866,12 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int firstCounterBuffer,
             @unsigned int counterBufferCount,
-            @pointer(target=VkBuffer.class) VkBuffer pCounterBuffers,
-            @nullable @pointer(target=LongPtr.class) @unsigned LongPtr pCounterBufferOffsets
+            @pointer(target=VkBuffer.class) VkBuffer.Buffer pCounterBuffers,
+            @nullable  @unsigned LongBuffer pCounterBufferOffsets
     ) {
         try {
             HANDLE$vkCmdBeginTransformFeedbackEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstCounterBuffer,
                     counterBufferCount,
                     pCounterBuffers.segment(),
@@ -8896,12 +8886,12 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int firstCounterBuffer,
             @unsigned int counterBufferCount,
-            @pointer(target=VkBuffer.class) VkBuffer pCounterBuffers,
-            @nullable @pointer(target=LongPtr.class) @unsigned LongPtr pCounterBufferOffsets
+            @pointer(target=VkBuffer.class) VkBuffer.Buffer pCounterBuffers,
+            @nullable  @unsigned LongBuffer pCounterBufferOffsets
     ) {
         try {
             HANDLE$vkCmdEndTransformFeedbackEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstCounterBuffer,
                     counterBufferCount,
                     pCounterBuffers.segment(),
@@ -8921,8 +8911,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBeginQueryIndexedEXT.invokeExact(
-                    commandBuffer.handle(),
-                    queryPool.handle(),
+                    commandBuffer.segment(),
+                    queryPool.segment(),
                     query,
                     flags,
                     index
@@ -8940,8 +8930,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdEndQueryIndexedEXT.invokeExact(
-                    commandBuffer.handle(),
-                    queryPool.handle(),
+                    commandBuffer.segment(),
+                    queryPool.segment(),
                     query,
                     index
             );
@@ -8961,10 +8951,10 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDrawIndirectByteCountEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     instanceCount,
                     firstInstance,
-                    counterBuffer.handle(),
+                    counterBuffer.segment(),
                     counterBufferOffset,
                     counterOffset,
                     vertexStride
@@ -8982,7 +8972,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetExclusiveScissorNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstExclusiveScissor,
                     exclusiveScissorCount,
                     pExclusiveScissors.segment()
@@ -8996,11 +8986,11 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int firstExclusiveScissor,
             @unsigned int exclusiveScissorCount,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pExclusiveScissorEnables
+             @unsigned IntBuffer pExclusiveScissorEnables
     ) {
         try {
             HANDLE$vkCmdSetExclusiveScissorEnableNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstExclusiveScissor,
                     exclusiveScissorCount,
                     pExclusiveScissorEnables.segment()
@@ -9017,8 +9007,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBindShadingRateImageNV.invokeExact(
-                    commandBuffer.handle(),
-                    (MemorySegment) (imageView != null ? imageView.handle() : MemorySegment.NULL),
+                    commandBuffer.segment(),
+                    (MemorySegment) (imageView != null ? imageView.segment() : MemorySegment.NULL),
                     imageLayout
             );
         } catch (Throwable t) {
@@ -9034,7 +9024,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetViewportShadingRatePaletteNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstViewport,
                     viewportCount,
                     pShadingRatePalettes.segment()
@@ -9052,7 +9042,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetCoarseSampleOrderNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     sampleOrderType,
                     customSampleOrderCount,
                     pCustomSampleOrders.segment()
@@ -9069,7 +9059,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDrawMeshTasksNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     taskCount,
                     firstTask
             );
@@ -9087,8 +9077,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDrawMeshTasksIndirectNV.invokeExact(
-                    commandBuffer.handle(),
-                    buffer.handle(),
+                    commandBuffer.segment(),
+                    buffer.segment(),
                     offset,
                     drawCount,
                     stride
@@ -9109,10 +9099,10 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDrawMeshTasksIndirectCountNV.invokeExact(
-                    commandBuffer.handle(),
-                    buffer.handle(),
+                    commandBuffer.segment(),
+                    buffer.segment(),
                     offset,
-                    countBuffer.handle(),
+                    countBuffer.segment(),
                     countBufferOffset,
                     maxDrawCount,
                     stride
@@ -9130,7 +9120,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDrawMeshTasksEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     groupCountX,
                     groupCountY,
                     groupCountZ
@@ -9149,8 +9139,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDrawMeshTasksIndirectEXT.invokeExact(
-                    commandBuffer.handle(),
-                    buffer.handle(),
+                    commandBuffer.segment(),
+                    buffer.segment(),
                     offset,
                     drawCount,
                     stride
@@ -9171,10 +9161,10 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDrawMeshTasksIndirectCountEXT.invokeExact(
-                    commandBuffer.handle(),
-                    buffer.handle(),
+                    commandBuffer.segment(),
+                    buffer.segment(),
                     offset,
-                    countBuffer.handle(),
+                    countBuffer.segment(),
                     countBufferOffset,
                     maxDrawCount,
                     stride
@@ -9191,8 +9181,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkCompileDeferredNV.invokeExact(
-                    device.handle(),
-                    pipeline.handle(),
+                    device.segment(),
+                    pipeline.segment(),
                     shader
             );
         } catch (Throwable t) {
@@ -9204,11 +9194,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkAccelerationStructureCreateInfoNV.class) VkAccelerationStructureCreateInfoNV pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkAccelerationStructureNV.class) VkAccelerationStructureNV pAccelerationStructure
+            @pointer(target=VkAccelerationStructureNV.class) VkAccelerationStructureNV.Buffer pAccelerationStructure
     ) {
         try {
             return (int) HANDLE$vkCreateAccelerationStructureNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pAccelerationStructure.segment()
@@ -9225,8 +9215,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBindInvocationMaskHUAWEI.invokeExact(
-                    commandBuffer.handle(),
-                    (MemorySegment) (imageView != null ? imageView.handle() : MemorySegment.NULL),
+                    commandBuffer.segment(),
+                    (MemorySegment) (imageView != null ? imageView.segment() : MemorySegment.NULL),
                     imageLayout
             );
         } catch (Throwable t) {
@@ -9241,8 +9231,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyAccelerationStructureKHR.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (accelerationStructure != null ? accelerationStructure.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (accelerationStructure != null ? accelerationStructure.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -9257,8 +9247,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyAccelerationStructureNV.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (accelerationStructure != null ? accelerationStructure.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (accelerationStructure != null ? accelerationStructure.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -9273,7 +9263,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetAccelerationStructureMemoryRequirementsNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pMemoryRequirements.segment()
             );
@@ -9289,7 +9279,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkBindAccelerationStructureMemoryNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     bindInfoCount,
                     pBindInfos.segment()
             );
@@ -9306,9 +9296,9 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyAccelerationStructureNV.invokeExact(
-                    commandBuffer.handle(),
-                    dst.handle(),
-                    src.handle(),
+                    commandBuffer.segment(),
+                    dst.segment(),
+                    src.segment(),
                     mode
             );
         } catch (Throwable t) {
@@ -9322,7 +9312,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyAccelerationStructureKHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -9337,8 +9327,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkCopyAccelerationStructureKHR.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (deferredOperation != null ? deferredOperation.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (deferredOperation != null ? deferredOperation.segment() : MemorySegment.NULL),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -9352,7 +9342,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyAccelerationStructureToMemoryKHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -9367,8 +9357,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkCopyAccelerationStructureToMemoryKHR.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (deferredOperation != null ? deferredOperation.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (deferredOperation != null ? deferredOperation.segment() : MemorySegment.NULL),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -9382,7 +9372,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyMemoryToAccelerationStructureKHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -9397,8 +9387,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkCopyMemoryToAccelerationStructureKHR.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (deferredOperation != null ? deferredOperation.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (deferredOperation != null ? deferredOperation.segment() : MemorySegment.NULL),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -9409,18 +9399,18 @@ public final class DeviceCommands {
     public void vkCmdWriteAccelerationStructuresPropertiesKHR(
             VkCommandBuffer commandBuffer,
             @unsigned int accelerationStructureCount,
-            @pointer(target=VkAccelerationStructureKHR.class) VkAccelerationStructureKHR pAccelerationStructures,
+            @pointer(target=VkAccelerationStructureKHR.class) VkAccelerationStructureKHR.Buffer pAccelerationStructures,
             @enumtype(VkQueryType.class) int queryType,
             VkQueryPool queryPool,
             @unsigned int firstQuery
     ) {
         try {
             HANDLE$vkCmdWriteAccelerationStructuresPropertiesKHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     accelerationStructureCount,
                     pAccelerationStructures.segment(),
                     queryType,
-                    queryPool.handle(),
+                    queryPool.segment(),
                     firstQuery
             );
         } catch (Throwable t) {
@@ -9431,18 +9421,18 @@ public final class DeviceCommands {
     public void vkCmdWriteAccelerationStructuresPropertiesNV(
             VkCommandBuffer commandBuffer,
             @unsigned int accelerationStructureCount,
-            @pointer(target=VkAccelerationStructureNV.class) VkAccelerationStructureNV pAccelerationStructures,
+            @pointer(target=VkAccelerationStructureNV.class) VkAccelerationStructureNV.Buffer pAccelerationStructures,
             @enumtype(VkQueryType.class) int queryType,
             VkQueryPool queryPool,
             @unsigned int firstQuery
     ) {
         try {
             HANDLE$vkCmdWriteAccelerationStructuresPropertiesNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     accelerationStructureCount,
                     pAccelerationStructures.segment(),
                     queryType,
-                    queryPool.handle(),
+                    queryPool.segment(),
                     firstQuery
             );
         } catch (Throwable t) {
@@ -9463,14 +9453,14 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBuildAccelerationStructureNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pInfo.segment(),
-                    (MemorySegment) (instanceData != null ? instanceData.handle() : MemorySegment.NULL),
+                    (MemorySegment) (instanceData != null ? instanceData.segment() : MemorySegment.NULL),
                     instanceOffset,
                     update,
-                    dst.handle(),
-                    (MemorySegment) (src != null ? src.handle() : MemorySegment.NULL),
-                    scratch.handle(),
+                    dst.segment(),
+                    (MemorySegment) (src != null ? src.segment() : MemorySegment.NULL),
+                    scratch.segment(),
                     scratchOffset
             );
         } catch (Throwable t) {
@@ -9481,7 +9471,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkWriteAccelerationStructuresPropertiesKHR(
             VkDevice device,
             @unsigned int accelerationStructureCount,
-            @pointer(target=VkAccelerationStructureKHR.class) VkAccelerationStructureKHR pAccelerationStructures,
+            @pointer(target=VkAccelerationStructureKHR.class) VkAccelerationStructureKHR.Buffer pAccelerationStructures,
             @enumtype(VkQueryType.class) int queryType,
             @unsigned long dataSize,
             @pointer(comment="void*") MemorySegment pData,
@@ -9489,7 +9479,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkWriteAccelerationStructuresPropertiesKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     accelerationStructureCount,
                     pAccelerationStructures.segment(),
                     queryType,
@@ -9514,7 +9504,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdTraceRaysKHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pRaygenShaderBindingTable.segment(),
                     pMissShaderBindingTable.segment(),
                     pHitShaderBindingTable.segment(),
@@ -9547,16 +9537,16 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdTraceRaysNV.invokeExact(
-                    commandBuffer.handle(),
-                    raygenShaderBindingTableBuffer.handle(),
+                    commandBuffer.segment(),
+                    raygenShaderBindingTableBuffer.segment(),
                     raygenShaderBindingOffset,
-                    (MemorySegment) (missShaderBindingTableBuffer != null ? missShaderBindingTableBuffer.handle() : MemorySegment.NULL),
+                    (MemorySegment) (missShaderBindingTableBuffer != null ? missShaderBindingTableBuffer.segment() : MemorySegment.NULL),
                     missShaderBindingOffset,
                     missShaderBindingStride,
-                    (MemorySegment) (hitShaderBindingTableBuffer != null ? hitShaderBindingTableBuffer.handle() : MemorySegment.NULL),
+                    (MemorySegment) (hitShaderBindingTableBuffer != null ? hitShaderBindingTableBuffer.segment() : MemorySegment.NULL),
                     hitShaderBindingOffset,
                     hitShaderBindingStride,
-                    (MemorySegment) (callableShaderBindingTableBuffer != null ? callableShaderBindingTableBuffer.handle() : MemorySegment.NULL),
+                    (MemorySegment) (callableShaderBindingTableBuffer != null ? callableShaderBindingTableBuffer.segment() : MemorySegment.NULL),
                     callableShaderBindingOffset,
                     callableShaderBindingStride,
                     width,
@@ -9578,8 +9568,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetRayTracingShaderGroupHandlesKHR.invokeExact(
-                    device.handle(),
-                    pipeline.handle(),
+                    device.segment(),
+                    pipeline.segment(),
                     firstGroup,
                     groupCount,
                     dataSize,
@@ -9600,8 +9590,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetRayTracingCaptureReplayShaderGroupHandlesKHR.invokeExact(
-                    device.handle(),
-                    pipeline.handle(),
+                    device.segment(),
+                    pipeline.segment(),
                     firstGroup,
                     groupCount,
                     dataSize,
@@ -9620,8 +9610,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetAccelerationStructureHandleNV.invokeExact(
-                    device.handle(),
-                    accelerationStructure.handle(),
+                    device.segment(),
+                    accelerationStructure.segment(),
                     dataSize,
                     pData
             );
@@ -9636,12 +9626,12 @@ public final class DeviceCommands {
             @unsigned int createInfoCount,
             @pointer(target=VkRayTracingPipelineCreateInfoNV.class) VkRayTracingPipelineCreateInfoNV pCreateInfos,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkPipeline.class) VkPipeline pPipelines
+            @pointer(target=VkPipeline.class) VkPipeline.Buffer pPipelines
     ) {
         try {
             return (int) HANDLE$vkCreateRayTracingPipelinesNV.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (pipelineCache != null ? pipelineCache.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (pipelineCache != null ? pipelineCache.segment() : MemorySegment.NULL),
                     createInfoCount,
                     pCreateInfos.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
@@ -9659,13 +9649,13 @@ public final class DeviceCommands {
             @unsigned int createInfoCount,
             @pointer(target=VkRayTracingPipelineCreateInfoKHR.class) VkRayTracingPipelineCreateInfoKHR pCreateInfos,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkPipeline.class) VkPipeline pPipelines
+            @pointer(target=VkPipeline.class) VkPipeline.Buffer pPipelines
     ) {
         try {
             return (int) HANDLE$vkCreateRayTracingPipelinesKHR.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (deferredOperation != null ? deferredOperation.handle() : MemorySegment.NULL),
-                    (MemorySegment) (pipelineCache != null ? pipelineCache.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (deferredOperation != null ? deferredOperation.segment() : MemorySegment.NULL),
+                    (MemorySegment) (pipelineCache != null ? pipelineCache.segment() : MemorySegment.NULL),
                     createInfoCount,
                     pCreateInfos.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
@@ -9678,12 +9668,12 @@ public final class DeviceCommands {
 
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(
             VkPhysicalDevice physicalDevice,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pPropertyCount,
+             @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkCooperativeMatrixPropertiesNV.class) VkCooperativeMatrixPropertiesNV pProperties
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesNV.invokeExact(
-                    physicalDevice.handle(),
+                    physicalDevice.segment(),
                     pPropertyCount.segment(),
                     (MemorySegment) (pProperties != null ? pProperties.segment() : MemorySegment.NULL)
             );
@@ -9702,7 +9692,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdTraceRaysIndirectKHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pRaygenShaderBindingTable.segment(),
                     pMissShaderBindingTable.segment(),
                     pHitShaderBindingTable.segment(),
@@ -9720,7 +9710,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdTraceRaysIndirect2KHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     indirectDeviceAddress
             );
         } catch (Throwable t) {
@@ -9735,7 +9725,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetDeviceAccelerationStructureCompatibilityKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pVersionInfo.segment(),
                     pCompatibility
             );
@@ -9752,8 +9742,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (long) HANDLE$vkGetRayTracingShaderGroupStackSizeKHR.invokeExact(
-                    device.handle(),
-                    pipeline.handle(),
+                    device.segment(),
+                    pipeline.segment(),
                     group,
                     groupShader
             );
@@ -9768,7 +9758,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetRayTracingPipelineStackSizeKHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pipelineStackSize
             );
         } catch (Throwable t) {
@@ -9782,7 +9772,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetImageViewHandleNVX.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -9797,8 +9787,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetImageViewAddressNVX.invokeExact(
-                    device.handle(),
-                    imageView.handle(),
+                    device.segment(),
+                    imageView.segment(),
                     pProperties.segment()
             );
         } catch (Throwable t) {
@@ -9809,12 +9799,12 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfacePresentModes2EXT(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceSurfaceInfo2KHR.class) VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pPresentModeCount,
+             @unsigned IntBuffer pPresentModeCount,
             @pointer(comment="enum VkPresentModeKHR*") MemorySegment pPresentModes
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfacePresentModes2EXT.invokeExact(
-                    physicalDevice.handle(),
+                    physicalDevice.segment(),
                     pSurfaceInfo.segment(),
                     pPresentModeCount.segment(),
                     pPresentModes
@@ -9831,7 +9821,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetDeviceGroupSurfacePresentModes2EXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pSurfaceInfo.segment(),
                     pModes
             );
@@ -9846,8 +9836,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkAcquireFullScreenExclusiveModeEXT.invokeExact(
-                    device.handle(),
-                    swapchain.handle()
+                    device.segment(),
+                    swapchain.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -9860,8 +9850,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkReleaseFullScreenExclusiveModeEXT.invokeExact(
-                    device.handle(),
-                    swapchain.handle()
+                    device.segment(),
+                    swapchain.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -9871,13 +9861,13 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(
             VkPhysicalDevice physicalDevice,
             @unsigned int queueFamilyIndex,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pCounterCount,
+             @unsigned IntBuffer pCounterCount,
             @nullable @pointer(target=VkPerformanceCounterKHR.class) VkPerformanceCounterKHR pCounters,
             @nullable @pointer(target=VkPerformanceCounterDescriptionKHR.class) VkPerformanceCounterDescriptionKHR pCounterDescriptions
     ) {
         try {
             return (int) HANDLE$vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR.invokeExact(
-                    physicalDevice.handle(),
+                    physicalDevice.segment(),
                     queueFamilyIndex,
                     pCounterCount.segment(),
                     (MemorySegment) (pCounters != null ? pCounters.segment() : MemorySegment.NULL),
@@ -9891,11 +9881,11 @@ public final class DeviceCommands {
     public void vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkQueryPoolPerformanceCreateInfoKHR.class) VkQueryPoolPerformanceCreateInfoKHR pPerformanceQueryCreateInfo,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pNumPasses
+             @unsigned IntBuffer pNumPasses
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR.invokeExact(
-                    physicalDevice.handle(),
+                    physicalDevice.segment(),
                     pPerformanceQueryCreateInfo.segment(),
                     pNumPasses.segment()
             );
@@ -9910,7 +9900,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkAcquireProfilingLockKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -9923,7 +9913,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkReleaseProfilingLockKHR.invokeExact(
-                    device.handle()
+                    device.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -9937,8 +9927,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetImageDrmFormatModifierPropertiesEXT.invokeExact(
-                    device.handle(),
-                    image.handle(),
+                    device.segment(),
+                    image.segment(),
                     pProperties.segment()
             );
         } catch (Throwable t) {
@@ -9952,7 +9942,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (long) HANDLE$vkGetBufferOpaqueCaptureAddress.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -9966,7 +9956,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (long) HANDLE$vkGetBufferDeviceAddress.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -9976,12 +9966,12 @@ public final class DeviceCommands {
 
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(
             VkPhysicalDevice physicalDevice,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pCombinationCount,
+             @unsigned IntBuffer pCombinationCount,
             @nullable @pointer(target=VkFramebufferMixedSamplesCombinationNV.class) VkFramebufferMixedSamplesCombinationNV pCombinations
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV.invokeExact(
-                    physicalDevice.handle(),
+                    physicalDevice.segment(),
                     pCombinationCount.segment(),
                     (MemorySegment) (pCombinations != null ? pCombinations.segment() : MemorySegment.NULL)
             );
@@ -9996,7 +9986,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkInitializePerformanceApiINTEL.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInitializeInfo.segment()
             );
         } catch (Throwable t) {
@@ -10009,7 +9999,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkUninitializePerformanceApiINTEL.invokeExact(
-                    device.handle()
+                    device.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -10022,7 +10012,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkCmdSetPerformanceMarkerINTEL.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pMarkerInfo.segment()
             );
         } catch (Throwable t) {
@@ -10036,7 +10026,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkCmdSetPerformanceStreamMarkerINTEL.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pMarkerInfo.segment()
             );
         } catch (Throwable t) {
@@ -10050,7 +10040,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkCmdSetPerformanceOverrideINTEL.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pOverrideInfo.segment()
             );
         } catch (Throwable t) {
@@ -10061,11 +10051,11 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkAcquirePerformanceConfigurationINTEL(
             VkDevice device,
             @pointer(target=VkPerformanceConfigurationAcquireInfoINTEL.class) VkPerformanceConfigurationAcquireInfoINTEL pAcquireInfo,
-            @pointer(target=VkPerformanceConfigurationINTEL.class) VkPerformanceConfigurationINTEL pConfiguration
+            @pointer(target=VkPerformanceConfigurationINTEL.class) VkPerformanceConfigurationINTEL.Buffer pConfiguration
     ) {
         try {
             return (int) HANDLE$vkAcquirePerformanceConfigurationINTEL.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pAcquireInfo.segment(),
                     pConfiguration.segment()
             );
@@ -10080,8 +10070,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkReleasePerformanceConfigurationINTEL.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (configuration != null ? configuration.handle() : MemorySegment.NULL)
+                    device.segment(),
+                    (MemorySegment) (configuration != null ? configuration.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -10094,8 +10084,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkQueueSetPerformanceConfigurationINTEL.invokeExact(
-                    queue.handle(),
-                    configuration.handle()
+                    queue.segment(),
+                    configuration.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -10109,7 +10099,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPerformanceParameterINTEL.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     parameter,
                     pValue.segment()
             );
@@ -10124,7 +10114,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (long) HANDLE$vkGetDeviceMemoryOpaqueCaptureAddress.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -10135,12 +10125,12 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPipelineExecutablePropertiesKHR(
             VkDevice device,
             @pointer(target=VkPipelineInfoKHR.class) VkPipelineInfoKHR pPipelineInfo,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pExecutableCount,
+             @unsigned IntBuffer pExecutableCount,
             @nullable @pointer(target=VkPipelineExecutablePropertiesKHR.class) VkPipelineExecutablePropertiesKHR pProperties
     ) {
         try {
             return (int) HANDLE$vkGetPipelineExecutablePropertiesKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pPipelineInfo.segment(),
                     pExecutableCount.segment(),
                     (MemorySegment) (pProperties != null ? pProperties.segment() : MemorySegment.NULL)
@@ -10153,12 +10143,12 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPipelineExecutableStatisticsKHR(
             VkDevice device,
             @pointer(target=VkPipelineExecutableInfoKHR.class) VkPipelineExecutableInfoKHR pExecutableInfo,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pStatisticCount,
+             @unsigned IntBuffer pStatisticCount,
             @nullable @pointer(target=VkPipelineExecutableStatisticKHR.class) VkPipelineExecutableStatisticKHR pStatistics
     ) {
         try {
             return (int) HANDLE$vkGetPipelineExecutableStatisticsKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pExecutableInfo.segment(),
                     pStatisticCount.segment(),
                     (MemorySegment) (pStatistics != null ? pStatistics.segment() : MemorySegment.NULL)
@@ -10171,12 +10161,12 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPipelineExecutableInternalRepresentationsKHR(
             VkDevice device,
             @pointer(target=VkPipelineExecutableInfoKHR.class) VkPipelineExecutableInfoKHR pExecutableInfo,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pInternalRepresentationCount,
+             @unsigned IntBuffer pInternalRepresentationCount,
             @nullable @pointer(target=VkPipelineExecutableInternalRepresentationKHR.class) VkPipelineExecutableInternalRepresentationKHR pInternalRepresentations
     ) {
         try {
             return (int) HANDLE$vkGetPipelineExecutableInternalRepresentationsKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pExecutableInfo.segment(),
                     pInternalRepresentationCount.segment(),
                     (MemorySegment) (pInternalRepresentations != null ? pInternalRepresentations.segment() : MemorySegment.NULL)
@@ -10193,7 +10183,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetLineStippleKHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     lineStippleFactor,
                     lineStipplePattern
             );
@@ -10206,11 +10196,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkAccelerationStructureCreateInfoKHR.class) VkAccelerationStructureCreateInfoKHR pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkAccelerationStructureKHR.class) VkAccelerationStructureKHR pAccelerationStructure
+            @pointer(target=VkAccelerationStructureKHR.class) VkAccelerationStructureKHR.Buffer pAccelerationStructure
     ) {
         try {
             return (int) HANDLE$vkCreateAccelerationStructureKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pAccelerationStructure.segment()
@@ -10228,7 +10218,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBuildAccelerationStructuresKHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     infoCount,
                     pInfos.segment(),
                     ppBuildRangeInfos
@@ -10242,13 +10232,13 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int infoCount,
             @pointer(target=VkAccelerationStructureBuildGeometryInfoKHR.class) VkAccelerationStructureBuildGeometryInfoKHR pInfos,
-            @pointer(target=LongPtr.class) @unsigned LongPtr pIndirectDeviceAddresses,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pIndirectStrides,
+             @unsigned LongBuffer pIndirectDeviceAddresses,
+             @unsigned IntBuffer pIndirectStrides,
             @pointer(comment="uint32_t const**") MemorySegment ppMaxPrimitiveCounts
     ) {
         try {
             HANDLE$vkCmdBuildAccelerationStructuresIndirectKHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     infoCount,
                     pInfos.segment(),
                     pIndirectDeviceAddresses.segment(),
@@ -10269,8 +10259,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkBuildAccelerationStructuresKHR.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (deferredOperation != null ? deferredOperation.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (deferredOperation != null ? deferredOperation.segment() : MemorySegment.NULL),
                     infoCount,
                     pInfos.segment(),
                     ppBuildRangeInfos
@@ -10286,7 +10276,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (long) HANDLE$vkGetAccelerationStructureDeviceAddressKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -10297,11 +10287,11 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateDeferredOperationKHR(
             VkDevice device,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkDeferredOperationKHR.class) VkDeferredOperationKHR pDeferredOperation
+            @pointer(target=VkDeferredOperationKHR.class) VkDeferredOperationKHR.Buffer pDeferredOperation
     ) {
         try {
             return (int) HANDLE$vkCreateDeferredOperationKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pDeferredOperation.segment()
             );
@@ -10317,8 +10307,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyDeferredOperationKHR.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (operation != null ? operation.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (operation != null ? operation.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -10332,8 +10322,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetDeferredOperationMaxConcurrencyKHR.invokeExact(
-                    device.handle(),
-                    operation.handle()
+                    device.segment(),
+                    operation.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -10346,8 +10336,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetDeferredOperationResultKHR.invokeExact(
-                    device.handle(),
-                    operation.handle()
+                    device.segment(),
+                    operation.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -10360,8 +10350,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkDeferredOperationJoinKHR.invokeExact(
-                    device.handle(),
-                    operation.handle()
+                    device.segment(),
+                    operation.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -10375,7 +10365,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetPipelineIndirectMemoryRequirementsNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     pMemoryRequirements.segment()
             );
@@ -10390,7 +10380,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (long) HANDLE$vkGetPipelineIndirectDeviceAddressNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -10404,7 +10394,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkAntiLagUpdateAMD.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pData.segment()
             );
         } catch (Throwable t) {
@@ -10418,7 +10408,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetCullMode.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     cullMode
             );
         } catch (Throwable t) {
@@ -10432,7 +10422,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetFrontFace.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     frontFace
             );
         } catch (Throwable t) {
@@ -10446,7 +10436,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetPrimitiveTopology.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     primitiveTopology
             );
         } catch (Throwable t) {
@@ -10461,7 +10451,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetViewportWithCount.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     viewportCount,
                     pViewports.segment()
             );
@@ -10477,7 +10467,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetScissorWithCount.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     scissorCount,
                     pScissors.segment()
             );
@@ -10495,8 +10485,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBindIndexBuffer2KHR.invokeExact(
-                    commandBuffer.handle(),
-                    (MemorySegment) (buffer != null ? buffer.handle() : MemorySegment.NULL),
+                    commandBuffer.segment(),
+                    (MemorySegment) (buffer != null ? buffer.segment() : MemorySegment.NULL),
                     offset,
                     size,
                     indexType
@@ -10510,14 +10500,14 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int firstBinding,
             @unsigned int bindingCount,
-            @pointer(target=VkBuffer.class) VkBuffer pBuffers,
-            @pointer(target=LongPtr.class) @unsigned LongPtr pOffsets,
-            @nullable @pointer(target=LongPtr.class) @unsigned LongPtr pSizes,
-            @nullable @pointer(target=LongPtr.class) @unsigned LongPtr pStrides
+            @pointer(target=VkBuffer.class) VkBuffer.Buffer pBuffers,
+             @unsigned LongBuffer pOffsets,
+            @nullable  @unsigned LongBuffer pSizes,
+            @nullable  @unsigned LongBuffer pStrides
     ) {
         try {
             HANDLE$vkCmdBindVertexBuffers2.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstBinding,
                     bindingCount,
                     pBuffers.segment(),
@@ -10536,7 +10526,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDepthTestEnable.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     depthTestEnable
             );
         } catch (Throwable t) {
@@ -10550,7 +10540,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDepthWriteEnable.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     depthWriteEnable
             );
         } catch (Throwable t) {
@@ -10564,7 +10554,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDepthCompareOp.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     depthCompareOp
             );
         } catch (Throwable t) {
@@ -10578,7 +10568,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDepthBoundsTestEnable.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     depthBoundsTestEnable
             );
         } catch (Throwable t) {
@@ -10592,7 +10582,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetStencilTestEnable.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     stencilTestEnable
             );
         } catch (Throwable t) {
@@ -10610,7 +10600,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetStencilOp.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     faceMask,
                     failOp,
                     passOp,
@@ -10628,7 +10618,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetPatchControlPointsEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     patchControlPoints
             );
         } catch (Throwable t) {
@@ -10642,7 +10632,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetRasterizerDiscardEnable.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     rasterizerDiscardEnable
             );
         } catch (Throwable t) {
@@ -10656,7 +10646,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDepthBiasEnable.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     depthBiasEnable
             );
         } catch (Throwable t) {
@@ -10670,7 +10660,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetLogicOpEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     logicOp
             );
         } catch (Throwable t) {
@@ -10684,7 +10674,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetPrimitiveRestartEnable.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     primitiveRestartEnable
             );
         } catch (Throwable t) {
@@ -10698,7 +10688,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetTessellationDomainOriginEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     domainOrigin
             );
         } catch (Throwable t) {
@@ -10712,7 +10702,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDepthClampEnableEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     depthClampEnable
             );
         } catch (Throwable t) {
@@ -10726,7 +10716,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetPolygonModeEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     polygonMode
             );
         } catch (Throwable t) {
@@ -10740,7 +10730,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetRasterizationSamplesEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     rasterizationSamples
             );
         } catch (Throwable t) {
@@ -10751,11 +10741,11 @@ public final class DeviceCommands {
     public void vkCmdSetSampleMaskEXT(
             VkCommandBuffer commandBuffer,
             @enumtype(VkSampleCountFlags.class) int samples,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pSampleMask
+             @unsigned IntBuffer pSampleMask
     ) {
         try {
             HANDLE$vkCmdSetSampleMaskEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     samples,
                     pSampleMask.segment()
             );
@@ -10770,7 +10760,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetAlphaToCoverageEnableEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     alphaToCoverageEnable
             );
         } catch (Throwable t) {
@@ -10784,7 +10774,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetAlphaToOneEnableEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     alphaToOneEnable
             );
         } catch (Throwable t) {
@@ -10798,7 +10788,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetLogicOpEnableEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     logicOpEnable
             );
         } catch (Throwable t) {
@@ -10810,11 +10800,11 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int firstAttachment,
             @unsigned int attachmentCount,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pColorBlendEnables
+             @unsigned IntBuffer pColorBlendEnables
     ) {
         try {
             HANDLE$vkCmdSetColorBlendEnableEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstAttachment,
                     attachmentCount,
                     pColorBlendEnables.segment()
@@ -10832,7 +10822,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetColorBlendEquationEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstAttachment,
                     attachmentCount,
                     pColorBlendEquations.segment()
@@ -10850,7 +10840,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetColorWriteMaskEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstAttachment,
                     attachmentCount,
                     pColorWriteMasks
@@ -10866,7 +10856,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetRasterizationStreamEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     rasterizationStream
             );
         } catch (Throwable t) {
@@ -10880,7 +10870,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetConservativeRasterizationModeEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     conservativeRasterizationMode
             );
         } catch (Throwable t) {
@@ -10894,7 +10884,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetExtraPrimitiveOverestimationSizeEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     extraPrimitiveOverestimationSize
             );
         } catch (Throwable t) {
@@ -10908,7 +10898,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDepthClipEnableEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     depthClipEnable
             );
         } catch (Throwable t) {
@@ -10922,7 +10912,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetSampleLocationsEnableEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     sampleLocationsEnable
             );
         } catch (Throwable t) {
@@ -10938,7 +10928,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetColorBlendAdvancedEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstAttachment,
                     attachmentCount,
                     pColorBlendAdvanced.segment()
@@ -10954,7 +10944,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetProvokingVertexModeEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     provokingVertexMode
             );
         } catch (Throwable t) {
@@ -10968,7 +10958,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetLineRasterizationModeEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     lineRasterizationMode
             );
         } catch (Throwable t) {
@@ -10982,7 +10972,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetLineStippleEnableEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     stippledLineEnable
             );
         } catch (Throwable t) {
@@ -10996,7 +10986,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDepthClipNegativeOneToOneEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     negativeOneToOne
             );
         } catch (Throwable t) {
@@ -11010,7 +11000,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetViewportWScalingEnableNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     viewportWScalingEnable
             );
         } catch (Throwable t) {
@@ -11026,7 +11016,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetViewportSwizzleNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     firstViewport,
                     viewportCount,
                     pViewportSwizzles.segment()
@@ -11042,7 +11032,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetCoverageToColorEnableNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     coverageToColorEnable
             );
         } catch (Throwable t) {
@@ -11056,7 +11046,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetCoverageToColorLocationNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     coverageToColorLocation
             );
         } catch (Throwable t) {
@@ -11070,7 +11060,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetCoverageModulationModeNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     coverageModulationMode
             );
         } catch (Throwable t) {
@@ -11084,7 +11074,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetCoverageModulationTableEnableNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     coverageModulationTableEnable
             );
         } catch (Throwable t) {
@@ -11095,11 +11085,11 @@ public final class DeviceCommands {
     public void vkCmdSetCoverageModulationTableNV(
             VkCommandBuffer commandBuffer,
             @unsigned int coverageModulationTableCount,
-            @pointer(target=FloatPtr.class) FloatPtr pCoverageModulationTable
+             FloatBuffer pCoverageModulationTable
     ) {
         try {
             HANDLE$vkCmdSetCoverageModulationTableNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     coverageModulationTableCount,
                     pCoverageModulationTable.segment()
             );
@@ -11114,7 +11104,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetShadingRateImageEnableNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     shadingRateImageEnable
             );
         } catch (Throwable t) {
@@ -11128,7 +11118,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetCoverageReductionModeNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     coverageReductionMode
             );
         } catch (Throwable t) {
@@ -11142,7 +11132,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetRepresentativeFragmentTestEnableNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     representativeFragmentTestEnable
             );
         } catch (Throwable t) {
@@ -11154,11 +11144,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkPrivateDataSlotCreateInfo.class) VkPrivateDataSlotCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkPrivateDataSlot.class) VkPrivateDataSlot pPrivateDataSlot
+            @pointer(target=VkPrivateDataSlot.class) VkPrivateDataSlot.Buffer pPrivateDataSlot
     ) {
         try {
             return (int) HANDLE$vkCreatePrivateDataSlot.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pPrivateDataSlot.segment()
@@ -11175,8 +11165,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyPrivateDataSlot.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (privateDataSlot != null ? privateDataSlot.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (privateDataSlot != null ? privateDataSlot.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -11193,10 +11183,10 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkSetPrivateData.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     objectType,
                     objectHandle,
-                    privateDataSlot.handle(),
+                    privateDataSlot.segment(),
                     data
             );
         } catch (Throwable t) {
@@ -11209,14 +11199,14 @@ public final class DeviceCommands {
             @enumtype(VkObjectType.class) int objectType,
             @unsigned long objectHandle,
             VkPrivateDataSlot privateDataSlot,
-            @pointer(target=LongPtr.class) @unsigned LongPtr pData
+             @unsigned LongBuffer pData
     ) {
         try {
             HANDLE$vkGetPrivateData.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     objectType,
                     objectHandle,
-                    privateDataSlot.handle(),
+                    privateDataSlot.segment(),
                     pData.segment()
             );
         } catch (Throwable t) {
@@ -11230,7 +11220,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyBuffer2.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pCopyBufferInfo.segment()
             );
         } catch (Throwable t) {
@@ -11244,7 +11234,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyImage2.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pCopyImageInfo.segment()
             );
         } catch (Throwable t) {
@@ -11258,7 +11248,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBlitImage2.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pBlitImageInfo.segment()
             );
         } catch (Throwable t) {
@@ -11272,7 +11262,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyBufferToImage2.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pCopyBufferToImageInfo.segment()
             );
         } catch (Throwable t) {
@@ -11286,7 +11276,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyImageToBuffer2.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pCopyImageToBufferInfo.segment()
             );
         } catch (Throwable t) {
@@ -11300,7 +11290,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdResolveImage2.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pResolveImageInfo.segment()
             );
         } catch (Throwable t) {
@@ -11314,7 +11304,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdRefreshObjectsKHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pRefreshObjects.segment()
             );
         } catch (Throwable t) {
@@ -11324,12 +11314,12 @@ public final class DeviceCommands {
 
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceRefreshableObjectTypesKHR(
             VkPhysicalDevice physicalDevice,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pRefreshableObjectTypeCount,
+             @unsigned IntBuffer pRefreshableObjectTypeCount,
             @pointer(comment="enum VkObjectType*") MemorySegment pRefreshableObjectTypes
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceRefreshableObjectTypesKHR.invokeExact(
-                    physicalDevice.handle(),
+                    physicalDevice.segment(),
                     pRefreshableObjectTypeCount.segment(),
                     pRefreshableObjectTypes
             );
@@ -11341,11 +11331,11 @@ public final class DeviceCommands {
     public void vkCmdSetFragmentShadingRateKHR(
             VkCommandBuffer commandBuffer,
             @pointer(target=VkExtent2D.class) VkExtent2D pFragmentSize,
-            IntArray combinerOps
+            @enumtype(VkFragmentShadingRateCombinerOpKHR.class) IntBuffer combinerOps
     ) {
         try {
             HANDLE$vkCmdSetFragmentShadingRateKHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pFragmentSize.segment(),
                     combinerOps.segment()
             );
@@ -11356,12 +11346,12 @@ public final class DeviceCommands {
 
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceFragmentShadingRatesKHR(
             VkPhysicalDevice physicalDevice,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pFragmentShadingRateCount,
+             @unsigned IntBuffer pFragmentShadingRateCount,
             @nullable @pointer(target=VkPhysicalDeviceFragmentShadingRateKHR.class) VkPhysicalDeviceFragmentShadingRateKHR pFragmentShadingRates
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceFragmentShadingRatesKHR.invokeExact(
-                    physicalDevice.handle(),
+                    physicalDevice.segment(),
                     pFragmentShadingRateCount.segment(),
                     (MemorySegment) (pFragmentShadingRates != null ? pFragmentShadingRates.segment() : MemorySegment.NULL)
             );
@@ -11373,11 +11363,11 @@ public final class DeviceCommands {
     public void vkCmdSetFragmentShadingRateEnumNV(
             VkCommandBuffer commandBuffer,
             @enumtype(VkFragmentShadingRateNV.class) int shadingRate,
-            IntArray combinerOps
+            @enumtype(VkFragmentShadingRateCombinerOpKHR.class) IntBuffer combinerOps
     ) {
         try {
             HANDLE$vkCmdSetFragmentShadingRateEnumNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     shadingRate,
                     combinerOps.segment()
             );
@@ -11390,12 +11380,12 @@ public final class DeviceCommands {
             VkDevice device,
             @enumtype(VkAccelerationStructureBuildTypeKHR.class) int buildType,
             @pointer(target=VkAccelerationStructureBuildGeometryInfoKHR.class) VkAccelerationStructureBuildGeometryInfoKHR pBuildInfo,
-            @nullable @pointer(target=IntPtr.class) @unsigned IntPtr pMaxPrimitiveCounts,
+            @nullable  @unsigned IntBuffer pMaxPrimitiveCounts,
             @pointer(target=VkAccelerationStructureBuildSizesInfoKHR.class) VkAccelerationStructureBuildSizesInfoKHR pSizeInfo
     ) {
         try {
             HANDLE$vkGetAccelerationStructureBuildSizesKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     buildType,
                     pBuildInfo.segment(),
                     (MemorySegment) (pMaxPrimitiveCounts != null ? pMaxPrimitiveCounts.segment() : MemorySegment.NULL),
@@ -11415,7 +11405,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetVertexInputEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     vertexBindingDescriptionCount,
                     pVertexBindingDescriptions.segment(),
                     vertexAttributeDescriptionCount,
@@ -11429,11 +11419,11 @@ public final class DeviceCommands {
     public void vkCmdSetColorWriteEnableEXT(
             VkCommandBuffer commandBuffer,
             @unsigned int attachmentCount,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pColorWriteEnables
+             @unsigned IntBuffer pColorWriteEnables
     ) {
         try {
             HANDLE$vkCmdSetColorWriteEnableEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     attachmentCount,
                     pColorWriteEnables.segment()
             );
@@ -11449,8 +11439,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetEvent2.invokeExact(
-                    commandBuffer.handle(),
-                    event.handle(),
+                    commandBuffer.segment(),
+                    event.segment(),
                     pDependencyInfo.segment()
             );
         } catch (Throwable t) {
@@ -11465,8 +11455,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdResetEvent2.invokeExact(
-                    commandBuffer.handle(),
-                    event.handle(),
+                    commandBuffer.segment(),
+                    event.segment(),
                     stageMask
             );
         } catch (Throwable t) {
@@ -11477,12 +11467,12 @@ public final class DeviceCommands {
     public void vkCmdWaitEvents2(
             VkCommandBuffer commandBuffer,
             @unsigned int eventCount,
-            @pointer(target=VkEvent.class) VkEvent pEvents,
+            @pointer(target=VkEvent.class) VkEvent.Buffer pEvents,
             @pointer(target=VkDependencyInfo.class) VkDependencyInfo pDependencyInfos
     ) {
         try {
             HANDLE$vkCmdWaitEvents2.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     eventCount,
                     pEvents.segment(),
                     pDependencyInfos.segment()
@@ -11498,7 +11488,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdPipelineBarrier2.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pDependencyInfo.segment()
             );
         } catch (Throwable t) {
@@ -11514,10 +11504,10 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkQueueSubmit2.invokeExact(
-                    queue.handle(),
+                    queue.segment(),
                     submitCount,
                     pSubmits.segment(),
-                    (MemorySegment) (fence != null ? fence.handle() : MemorySegment.NULL)
+                    (MemorySegment) (fence != null ? fence.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -11532,9 +11522,9 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdWriteTimestamp2.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     stage,
-                    queryPool.handle(),
+                    queryPool.segment(),
                     query
             );
         } catch (Throwable t) {
@@ -11551,9 +11541,9 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdWriteBufferMarker2AMD.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     stage,
-                    dstBuffer.handle(),
+                    dstBuffer.segment(),
                     dstOffset,
                     marker
             );
@@ -11564,12 +11554,12 @@ public final class DeviceCommands {
 
     public void vkGetQueueCheckpointData2NV(
             VkQueue queue,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pCheckpointDataCount,
+             @unsigned IntBuffer pCheckpointDataCount,
             @nullable @pointer(target=VkCheckpointData2NV.class) VkCheckpointData2NV pCheckpointData
     ) {
         try {
             HANDLE$vkGetQueueCheckpointData2NV.invokeExact(
-                    queue.handle(),
+                    queue.segment(),
                     pCheckpointDataCount.segment(),
                     (MemorySegment) (pCheckpointData != null ? pCheckpointData.segment() : MemorySegment.NULL)
             );
@@ -11584,7 +11574,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkCopyMemoryToImageEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCopyMemoryToImageInfo.segment()
             );
         } catch (Throwable t) {
@@ -11598,7 +11588,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkCopyImageToMemoryEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCopyImageToMemoryInfo.segment()
             );
         } catch (Throwable t) {
@@ -11612,7 +11602,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkCopyImageToImageEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCopyImageToImageInfo.segment()
             );
         } catch (Throwable t) {
@@ -11627,7 +11617,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkTransitionImageLayoutEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     transitionCount,
                     pTransitions.segment()
             );
@@ -11643,7 +11633,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDecompressMemoryNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     decompressRegionCount,
                     pDecompressMemoryRegions.segment()
             );
@@ -11660,7 +11650,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDecompressMemoryIndirectCountNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     indirectCommandsAddress,
                     indirectCommandsCountAddress,
                     stride
@@ -11674,11 +11664,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkCuModuleCreateInfoNVX.class) VkCuModuleCreateInfoNVX pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkCuModuleNVX.class) VkCuModuleNVX pModule
+            @pointer(target=VkCuModuleNVX.class) VkCuModuleNVX.Buffer pModule
     ) {
         try {
             return (int) HANDLE$vkCreateCuModuleNVX.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pModule.segment()
@@ -11692,11 +11682,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkCuFunctionCreateInfoNVX.class) VkCuFunctionCreateInfoNVX pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkCuFunctionNVX.class) VkCuFunctionNVX pFunction
+            @pointer(target=VkCuFunctionNVX.class) VkCuFunctionNVX.Buffer pFunction
     ) {
         try {
             return (int) HANDLE$vkCreateCuFunctionNVX.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pFunction.segment()
@@ -11713,8 +11703,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyCuModuleNVX.invokeExact(
-                    device.handle(),
-                    module.handle(),
+                    device.segment(),
+                    module.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -11729,8 +11719,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyCuFunctionNVX.invokeExact(
-                    device.handle(),
-                    function.handle(),
+                    device.segment(),
+                    function.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -11744,7 +11734,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCuLaunchKernelNVX.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pLaunchInfo.segment()
             );
         } catch (Throwable t) {
@@ -11755,12 +11745,12 @@ public final class DeviceCommands {
     public void vkGetDescriptorSetLayoutSizeEXT(
             VkDevice device,
             VkDescriptorSetLayout layout,
-            @pointer(target=LongPtr.class) @unsigned LongPtr pLayoutSizeInBytes
+             @unsigned LongBuffer pLayoutSizeInBytes
     ) {
         try {
             HANDLE$vkGetDescriptorSetLayoutSizeEXT.invokeExact(
-                    device.handle(),
-                    layout.handle(),
+                    device.segment(),
+                    layout.segment(),
                     pLayoutSizeInBytes.segment()
             );
         } catch (Throwable t) {
@@ -11772,12 +11762,12 @@ public final class DeviceCommands {
             VkDevice device,
             VkDescriptorSetLayout layout,
             @unsigned int binding,
-            @pointer(target=LongPtr.class) @unsigned LongPtr pOffset
+             @unsigned LongBuffer pOffset
     ) {
         try {
             HANDLE$vkGetDescriptorSetLayoutBindingOffsetEXT.invokeExact(
-                    device.handle(),
-                    layout.handle(),
+                    device.segment(),
+                    layout.segment(),
                     binding,
                     pOffset.segment()
             );
@@ -11794,7 +11784,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetDescriptorEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pDescriptorInfo.segment(),
                     dataSize,
                     pDescriptor
@@ -11811,7 +11801,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBindDescriptorBuffersEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     bufferCount,
                     pBindingInfos.segment()
             );
@@ -11826,14 +11816,14 @@ public final class DeviceCommands {
             VkPipelineLayout layout,
             @unsigned int firstSet,
             @unsigned int setCount,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pBufferIndices,
-            @pointer(target=LongPtr.class) @unsigned LongPtr pOffsets
+             @unsigned IntBuffer pBufferIndices,
+             @unsigned LongBuffer pOffsets
     ) {
         try {
             HANDLE$vkCmdSetDescriptorBufferOffsetsEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pipelineBindPoint,
-                    layout.handle(),
+                    layout.segment(),
                     firstSet,
                     setCount,
                     pBufferIndices.segment(),
@@ -11852,9 +11842,9 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBindDescriptorBufferEmbeddedSamplersEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pipelineBindPoint,
-                    layout.handle(),
+                    layout.segment(),
                     set
             );
         } catch (Throwable t) {
@@ -11869,7 +11859,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetBufferOpaqueCaptureDescriptorDataEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pData
             );
@@ -11885,7 +11875,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetImageOpaqueCaptureDescriptorDataEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pData
             );
@@ -11901,7 +11891,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetImageViewOpaqueCaptureDescriptorDataEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pData
             );
@@ -11917,7 +11907,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetSamplerOpaqueCaptureDescriptorDataEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pData
             );
@@ -11933,7 +11923,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pData
             );
@@ -11949,8 +11939,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkSetDeviceMemoryPriorityEXT.invokeExact(
-                    device.handle(),
-                    memory.handle(),
+                    device.segment(),
+                    memory.segment(),
                     priority
             );
         } catch (Throwable t) {
@@ -11966,8 +11956,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkWaitForPresentKHR.invokeExact(
-                    device.handle(),
-                    swapchain.handle(),
+                    device.segment(),
+                    swapchain.segment(),
                     presentId,
                     timeout
             );
@@ -11980,11 +11970,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkBufferCollectionCreateInfoFUCHSIA.class) VkBufferCollectionCreateInfoFUCHSIA pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkBufferCollectionFUCHSIA.class) VkBufferCollectionFUCHSIA pCollection
+            @pointer(target=VkBufferCollectionFUCHSIA.class) VkBufferCollectionFUCHSIA.Buffer pCollection
     ) {
         try {
             return (int) HANDLE$vkCreateBufferCollectionFUCHSIA.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pCollection.segment()
@@ -12001,8 +11991,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkSetBufferCollectionBufferConstraintsFUCHSIA.invokeExact(
-                    device.handle(),
-                    collection.handle(),
+                    device.segment(),
+                    collection.segment(),
                     pBufferConstraintsInfo.segment()
             );
         } catch (Throwable t) {
@@ -12017,8 +12007,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkSetBufferCollectionImageConstraintsFUCHSIA.invokeExact(
-                    device.handle(),
-                    collection.handle(),
+                    device.segment(),
+                    collection.segment(),
                     pImageConstraintsInfo.segment()
             );
         } catch (Throwable t) {
@@ -12033,8 +12023,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyBufferCollectionFUCHSIA.invokeExact(
-                    device.handle(),
-                    collection.handle(),
+                    device.segment(),
+                    collection.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -12049,8 +12039,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetBufferCollectionPropertiesFUCHSIA.invokeExact(
-                    device.handle(),
-                    collection.handle(),
+                    device.segment(),
+                    collection.segment(),
                     pProperties.segment()
             );
         } catch (Throwable t) {
@@ -12062,11 +12052,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkCudaModuleCreateInfoNV.class) VkCudaModuleCreateInfoNV pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkCudaModuleNV.class) VkCudaModuleNV pModule
+            @pointer(target=VkCudaModuleNV.class) VkCudaModuleNV.Buffer pModule
     ) {
         try {
             return (int) HANDLE$vkCreateCudaModuleNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pModule.segment()
@@ -12079,13 +12069,13 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetCudaModuleCacheNV(
             VkDevice device,
             VkCudaModuleNV module,
-            @pointer(target=CSizeTPtr.class) CSizeTPtr pCacheSize,
+             PointerBuffer pCacheSize,
             @pointer(comment="void*") MemorySegment pCacheData
     ) {
         try {
             return (int) HANDLE$vkGetCudaModuleCacheNV.invokeExact(
-                    device.handle(),
-                    module.handle(),
+                    device.segment(),
+                    module.segment(),
                     pCacheSize.segment(),
                     pCacheData
             );
@@ -12098,11 +12088,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkCudaFunctionCreateInfoNV.class) VkCudaFunctionCreateInfoNV pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkCudaFunctionNV.class) VkCudaFunctionNV pFunction
+            @pointer(target=VkCudaFunctionNV.class) VkCudaFunctionNV.Buffer pFunction
     ) {
         try {
             return (int) HANDLE$vkCreateCudaFunctionNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pFunction.segment()
@@ -12119,8 +12109,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyCudaModuleNV.invokeExact(
-                    device.handle(),
-                    module.handle(),
+                    device.segment(),
+                    module.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -12135,8 +12125,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyCudaFunctionNV.invokeExact(
-                    device.handle(),
-                    function.handle(),
+                    device.segment(),
+                    function.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -12150,7 +12140,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCudaLaunchKernelNV.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pLaunchInfo.segment()
             );
         } catch (Throwable t) {
@@ -12164,7 +12154,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBeginRendering.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pRenderingInfo.segment()
             );
         } catch (Throwable t) {
@@ -12177,7 +12167,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdEndRendering.invokeExact(
-                    commandBuffer.handle()
+                    commandBuffer.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -12191,7 +12181,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetDescriptorSetLayoutHostMappingInfoVALVE.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pBindingReference.segment(),
                     pHostMapping.segment()
             );
@@ -12207,8 +12197,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetDescriptorSetHostMappingVALVE.invokeExact(
-                    device.handle(),
-                    descriptorSet.handle(),
+                    device.segment(),
+                    descriptorSet.segment(),
                     ppData
             );
         } catch (Throwable t) {
@@ -12220,11 +12210,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkMicromapCreateInfoEXT.class) VkMicromapCreateInfoEXT pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkMicromapEXT.class) VkMicromapEXT pMicromap
+            @pointer(target=VkMicromapEXT.class) VkMicromapEXT.Buffer pMicromap
     ) {
         try {
             return (int) HANDLE$vkCreateMicromapEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pMicromap.segment()
@@ -12241,7 +12231,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBuildMicromapsEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     infoCount,
                     pInfos.segment()
             );
@@ -12258,8 +12248,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkBuildMicromapsEXT.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (deferredOperation != null ? deferredOperation.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (deferredOperation != null ? deferredOperation.segment() : MemorySegment.NULL),
                     infoCount,
                     pInfos.segment()
             );
@@ -12275,8 +12265,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyMicromapEXT.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (micromap != null ? micromap.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (micromap != null ? micromap.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -12290,7 +12280,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyMicromapEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -12305,8 +12295,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkCopyMicromapEXT.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (deferredOperation != null ? deferredOperation.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (deferredOperation != null ? deferredOperation.segment() : MemorySegment.NULL),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -12320,7 +12310,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyMicromapToMemoryEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -12335,8 +12325,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkCopyMicromapToMemoryEXT.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (deferredOperation != null ? deferredOperation.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (deferredOperation != null ? deferredOperation.segment() : MemorySegment.NULL),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -12350,7 +12340,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdCopyMemoryToMicromapEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -12365,8 +12355,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkCopyMemoryToMicromapEXT.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (deferredOperation != null ? deferredOperation.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (deferredOperation != null ? deferredOperation.segment() : MemorySegment.NULL),
                     pInfo.segment()
             );
         } catch (Throwable t) {
@@ -12377,18 +12367,18 @@ public final class DeviceCommands {
     public void vkCmdWriteMicromapsPropertiesEXT(
             VkCommandBuffer commandBuffer,
             @unsigned int micromapCount,
-            @pointer(target=VkMicromapEXT.class) VkMicromapEXT pMicromaps,
+            @pointer(target=VkMicromapEXT.class) VkMicromapEXT.Buffer pMicromaps,
             @enumtype(VkQueryType.class) int queryType,
             VkQueryPool queryPool,
             @unsigned int firstQuery
     ) {
         try {
             HANDLE$vkCmdWriteMicromapsPropertiesEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     micromapCount,
                     pMicromaps.segment(),
                     queryType,
-                    queryPool.handle(),
+                    queryPool.segment(),
                     firstQuery
             );
         } catch (Throwable t) {
@@ -12399,7 +12389,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkWriteMicromapsPropertiesEXT(
             VkDevice device,
             @unsigned int micromapCount,
-            @pointer(target=VkMicromapEXT.class) VkMicromapEXT pMicromaps,
+            @pointer(target=VkMicromapEXT.class) VkMicromapEXT.Buffer pMicromaps,
             @enumtype(VkQueryType.class) int queryType,
             @unsigned long dataSize,
             @pointer(comment="void*") MemorySegment pData,
@@ -12407,7 +12397,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkWriteMicromapsPropertiesEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     micromapCount,
                     pMicromaps.segment(),
                     queryType,
@@ -12427,7 +12417,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetDeviceMicromapCompatibilityEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pVersionInfo.segment(),
                     pCompatibility
             );
@@ -12444,7 +12434,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetMicromapBuildSizesEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     buildType,
                     pBuildInfo.segment(),
                     pSizeInfo.segment()
@@ -12461,8 +12451,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetShaderModuleIdentifierEXT.invokeExact(
-                    device.handle(),
-                    shaderModule.handle(),
+                    device.segment(),
+                    shaderModule.segment(),
                     pIdentifier.segment()
             );
         } catch (Throwable t) {
@@ -12477,7 +12467,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetShaderModuleCreateInfoIdentifierEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     pIdentifier.segment()
             );
@@ -12494,8 +12484,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetImageSubresourceLayout2KHR.invokeExact(
-                    device.handle(),
-                    image.handle(),
+                    device.segment(),
+                    image.segment(),
                     pSubresource.segment(),
                     pLayout.segment()
             );
@@ -12511,7 +12501,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetPipelinePropertiesEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pPipelineInfo.segment(),
                     pPipelineProperties.segment()
             );
@@ -12526,7 +12516,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkExportMetalObjectsEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pMetalObjectsInfo.segment()
             );
         } catch (Throwable t) {
@@ -12537,13 +12527,13 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetFramebufferTilePropertiesQCOM(
             VkDevice device,
             VkFramebuffer framebuffer,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pPropertiesCount,
+             @unsigned IntBuffer pPropertiesCount,
             @nullable @pointer(target=VkTilePropertiesQCOM.class) VkTilePropertiesQCOM pProperties
     ) {
         try {
             return (int) HANDLE$vkGetFramebufferTilePropertiesQCOM.invokeExact(
-                    device.handle(),
-                    framebuffer.handle(),
+                    device.segment(),
+                    framebuffer.segment(),
                     pPropertiesCount.segment(),
                     (MemorySegment) (pProperties != null ? pProperties.segment() : MemorySegment.NULL)
             );
@@ -12559,7 +12549,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetDynamicRenderingTilePropertiesQCOM.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pRenderingInfo.segment(),
                     pProperties.segment()
             );
@@ -12571,12 +12561,12 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceOpticalFlowImageFormatsNV(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkOpticalFlowImageFormatInfoNV.class) VkOpticalFlowImageFormatInfoNV pOpticalFlowImageFormatInfo,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pFormatCount,
+             @unsigned IntBuffer pFormatCount,
             @nullable @pointer(target=VkOpticalFlowImageFormatPropertiesNV.class) VkOpticalFlowImageFormatPropertiesNV pImageFormatProperties
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceOpticalFlowImageFormatsNV.invokeExact(
-                    physicalDevice.handle(),
+                    physicalDevice.segment(),
                     pOpticalFlowImageFormatInfo.segment(),
                     pFormatCount.segment(),
                     (MemorySegment) (pImageFormatProperties != null ? pImageFormatProperties.segment() : MemorySegment.NULL)
@@ -12590,11 +12580,11 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkOpticalFlowSessionCreateInfoNV.class) VkOpticalFlowSessionCreateInfoNV pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkOpticalFlowSessionNV.class) VkOpticalFlowSessionNV pSession
+            @pointer(target=VkOpticalFlowSessionNV.class) VkOpticalFlowSessionNV.Buffer pSession
     ) {
         try {
             return (int) HANDLE$vkCreateOpticalFlowSessionNV.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pCreateInfo.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
                     pSession.segment()
@@ -12611,8 +12601,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyOpticalFlowSessionNV.invokeExact(
-                    device.handle(),
-                    session.handle(),
+                    device.segment(),
+                    session.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -12629,10 +12619,10 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkBindOpticalFlowSessionImageNV.invokeExact(
-                    device.handle(),
-                    session.handle(),
+                    device.segment(),
+                    session.segment(),
                     bindingPoint,
-                    (MemorySegment) (view != null ? view.handle() : MemorySegment.NULL),
+                    (MemorySegment) (view != null ? view.segment() : MemorySegment.NULL),
                     layout
             );
         } catch (Throwable t) {
@@ -12647,8 +12637,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdOpticalFlowExecuteNV.invokeExact(
-                    commandBuffer.handle(),
-                    session.handle(),
+                    commandBuffer.segment(),
+                    session.segment(),
                     pExecuteInfo.segment()
             );
         } catch (Throwable t) {
@@ -12663,7 +12653,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetDeviceFaultInfoEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pFaultCounts.segment(),
                     (MemorySegment) (pFaultInfo != null ? pFaultInfo.segment() : MemorySegment.NULL)
             );
@@ -12678,7 +12668,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDepthBias2EXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pDepthBiasInfo.segment()
             );
         } catch (Throwable t) {
@@ -12692,7 +12682,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkReleaseSwapchainImagesEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pReleaseInfo.segment()
             );
         } catch (Throwable t) {
@@ -12707,7 +12697,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetDeviceImageSubresourceLayoutKHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pInfo.segment(),
                     pLayout.segment()
             );
@@ -12723,7 +12713,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkMapMemory2KHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pMemoryMapInfo.segment(),
                     ppData
             );
@@ -12738,7 +12728,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkUnmapMemory2KHR.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pMemoryUnmapInfo.segment()
             );
         } catch (Throwable t) {
@@ -12751,11 +12741,11 @@ public final class DeviceCommands {
             @unsigned int createInfoCount,
             @pointer(target=VkShaderCreateInfoEXT.class) VkShaderCreateInfoEXT pCreateInfos,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkShaderEXT.class) VkShaderEXT pShaders
+            @pointer(target=VkShaderEXT.class) VkShaderEXT.Buffer pShaders
     ) {
         try {
             return (int) HANDLE$vkCreateShadersEXT.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     createInfoCount,
                     pCreateInfos.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
@@ -12773,8 +12763,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkDestroyShaderEXT.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (shader != null ? shader.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (shader != null ? shader.segment() : MemorySegment.NULL),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -12785,13 +12775,13 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetShaderBinaryDataEXT(
             VkDevice device,
             VkShaderEXT shader,
-            @pointer(target=CSizeTPtr.class) CSizeTPtr pDataSize,
+             PointerBuffer pDataSize,
             @pointer(comment="void*") MemorySegment pData
     ) {
         try {
             return (int) HANDLE$vkGetShaderBinaryDataEXT.invokeExact(
-                    device.handle(),
-                    shader.handle(),
+                    device.segment(),
+                    shader.segment(),
                     pDataSize.segment(),
                     pData
             );
@@ -12804,11 +12794,11 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int stageCount,
             @pointer(comment="enum VkShaderStageFlagBits*") MemorySegment pStages,
-            @nullable @pointer(target=VkShaderEXT.class) VkShaderEXT pShaders
+            @nullable @pointer(target=VkShaderEXT.class) VkShaderEXT.Buffer pShaders
     ) {
         try {
             HANDLE$vkCmdBindShadersEXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     stageCount,
                     pStages,
                     (MemorySegment) (pShaders != null ? pShaders.segment() : MemorySegment.NULL)
@@ -12825,7 +12815,7 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetScreenBufferPropertiesQNX.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     buffer,
                     pProperties.segment()
             );
@@ -12836,12 +12826,12 @@ public final class DeviceCommands {
 
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(
             VkPhysicalDevice physicalDevice,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pPropertyCount,
+             @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkCooperativeMatrixPropertiesKHR.class) VkCooperativeMatrixPropertiesKHR pProperties
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR.invokeExact(
-                    physicalDevice.handle(),
+                    physicalDevice.segment(),
                     pPropertyCount.segment(),
                     (MemorySegment) (pProperties != null ? pProperties.segment() : MemorySegment.NULL)
             );
@@ -12857,8 +12847,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkGetExecutionGraphPipelineScratchSizeAMDX.invokeExact(
-                    device.handle(),
-                    executionGraph.handle(),
+                    device.segment(),
+                    executionGraph.segment(),
                     pSizeInfo.segment()
             );
         } catch (Throwable t) {
@@ -12870,12 +12860,12 @@ public final class DeviceCommands {
             VkDevice device,
             VkPipeline executionGraph,
             @pointer(target=VkPipelineShaderStageNodeCreateInfoAMDX.class) VkPipelineShaderStageNodeCreateInfoAMDX pNodeInfo,
-            @pointer(target=IntPtr.class) @unsigned IntPtr pNodeIndex
+             @unsigned IntBuffer pNodeIndex
     ) {
         try {
             return (int) HANDLE$vkGetExecutionGraphPipelineNodeIndexAMDX.invokeExact(
-                    device.handle(),
-                    executionGraph.handle(),
+                    device.segment(),
+                    executionGraph.segment(),
                     pNodeInfo.segment(),
                     pNodeIndex.segment()
             );
@@ -12890,12 +12880,12 @@ public final class DeviceCommands {
             @unsigned int createInfoCount,
             @pointer(target=VkExecutionGraphPipelineCreateInfoAMDX.class) VkExecutionGraphPipelineCreateInfoAMDX pCreateInfos,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-            @pointer(target=VkPipeline.class) VkPipeline pPipelines
+            @pointer(target=VkPipeline.class) VkPipeline.Buffer pPipelines
     ) {
         try {
             return (int) HANDLE$vkCreateExecutionGraphPipelinesAMDX.invokeExact(
-                    device.handle(),
-                    (MemorySegment) (pipelineCache != null ? pipelineCache.handle() : MemorySegment.NULL),
+                    device.segment(),
+                    (MemorySegment) (pipelineCache != null ? pipelineCache.segment() : MemorySegment.NULL),
                     createInfoCount,
                     pCreateInfos.segment(),
                     (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
@@ -12912,7 +12902,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdInitializeGraphScratchMemoryAMDX.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     scratch
             );
         } catch (Throwable t) {
@@ -12927,7 +12917,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDispatchGraphAMDX.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     scratch,
                     pCountInfo.segment()
             );
@@ -12943,7 +12933,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDispatchGraphIndirectAMDX.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     scratch,
                     pCountInfo.segment()
             );
@@ -12959,7 +12949,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdDispatchGraphIndirectCountAMDX.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     scratch,
                     countInfo
             );
@@ -12974,7 +12964,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBindDescriptorSets2KHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pBindDescriptorSetsInfo.segment()
             );
         } catch (Throwable t) {
@@ -12988,7 +12978,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdPushConstants2KHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pPushConstantsInfo.segment()
             );
         } catch (Throwable t) {
@@ -13002,7 +12992,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdPushDescriptorSet2KHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pPushDescriptorSetInfo.segment()
             );
         } catch (Throwable t) {
@@ -13016,7 +13006,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdPushDescriptorSetWithTemplate2KHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pPushDescriptorSetWithTemplateInfo.segment()
             );
         } catch (Throwable t) {
@@ -13030,7 +13020,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetDescriptorBufferOffsets2EXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pSetDescriptorBufferOffsetsInfo.segment()
             );
         } catch (Throwable t) {
@@ -13044,7 +13034,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdBindDescriptorBufferEmbeddedSamplers2EXT.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pBindDescriptorBufferEmbeddedSamplersInfo.segment()
             );
         } catch (Throwable t) {
@@ -13059,8 +13049,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkSetLatencySleepModeNV.invokeExact(
-                    device.handle(),
-                    swapchain.handle(),
+                    device.segment(),
+                    swapchain.segment(),
                     pSleepModeInfo.segment()
             );
         } catch (Throwable t) {
@@ -13075,8 +13065,8 @@ public final class DeviceCommands {
     ) {
         try {
             return (int) HANDLE$vkLatencySleepNV.invokeExact(
-                    device.handle(),
-                    swapchain.handle(),
+                    device.segment(),
+                    swapchain.segment(),
                     pSleepInfo.segment()
             );
         } catch (Throwable t) {
@@ -13091,8 +13081,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkSetLatencyMarkerNV.invokeExact(
-                    device.handle(),
-                    swapchain.handle(),
+                    device.segment(),
+                    swapchain.segment(),
                     pLatencyMarkerInfo.segment()
             );
         } catch (Throwable t) {
@@ -13107,8 +13097,8 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkGetLatencyTimingsNV.invokeExact(
-                    device.handle(),
-                    swapchain.handle(),
+                    device.segment(),
+                    swapchain.segment(),
                     pLatencyMarkerInfo.segment()
             );
         } catch (Throwable t) {
@@ -13122,7 +13112,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkQueueNotifyOutOfBandNV.invokeExact(
-                    queue.handle(),
+                    queue.segment(),
                     pQueueTypeInfo.segment()
             );
         } catch (Throwable t) {
@@ -13136,7 +13126,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetRenderingAttachmentLocationsKHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pLocationInfo.segment()
             );
         } catch (Throwable t) {
@@ -13150,7 +13140,7 @@ public final class DeviceCommands {
     ) {
         try {
             HANDLE$vkCmdSetRenderingInputAttachmentIndicesKHR.invokeExact(
-                    commandBuffer.handle(),
+                    commandBuffer.segment(),
                     pInputAttachmentIndexInfo.segment()
             );
         } catch (Throwable t) {

@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkImageMemoryRequirementsInfo2(MemorySegment segment) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$image, LAYOUT$image.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkImageMemoryRequirementsInfo2> {
-        @Override
-        public Class<VkImageMemoryRequirementsInfo2> clazz() {
-            return VkImageMemoryRequirementsInfo2.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkImageMemoryRequirementsInfo2.LAYOUT;
-        }
-
-        @Override
-        public VkImageMemoryRequirementsInfo2 create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkImageMemoryRequirementsInfo2 createUninit(MemorySegment segment) {
-            return new VkImageMemoryRequirementsInfo2(segment);
-        }
+    public static VkImageMemoryRequirementsInfo2 allocate(Arena arena) {
+        return new VkImageMemoryRequirementsInfo2(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkImageMemoryRequirementsInfo2[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkImageMemoryRequirementsInfo2[] ret = new VkImageMemoryRequirementsInfo2[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkImageMemoryRequirementsInfo2(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

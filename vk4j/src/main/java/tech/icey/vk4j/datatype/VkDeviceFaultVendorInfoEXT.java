@@ -1,18 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.array.ByteArray;
-
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SequenceLayout;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfLong;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.Constants.VK_MAX_DESCRIPTION_SIZE;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkDeviceFaultVendorInfoEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -41,11 +40,11 @@ public record VkDeviceFaultVendorInfoEXT(MemorySegment segment) {
         return segment.asSlice(OFFSET$description, LAYOUT$description.byteSize());
     }
 
-    public ByteArray description() {
-        return new ByteArray(descriptionRaw(), LAYOUT$description.elementCount());
+    public ByteBuffer description() {
+        return new ByteBuffer(descriptionRaw());
     }
 
-    public void description(ByteArray value) {
+    public void description(ByteBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, LAYOUT$description.byteSize());
     }
 
@@ -65,28 +64,16 @@ public record VkDeviceFaultVendorInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$vendorFaultData, OFFSET$vendorFaultData, value);
     }
 
-
-    public static final class Factory implements IFactory<VkDeviceFaultVendorInfoEXT> {
-        @Override
-        public Class<VkDeviceFaultVendorInfoEXT> clazz() {
-            return VkDeviceFaultVendorInfoEXT.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkDeviceFaultVendorInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkDeviceFaultVendorInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkDeviceFaultVendorInfoEXT createUninit(MemorySegment segment) {
-            return new VkDeviceFaultVendorInfoEXT(segment);
-        }
+    public static VkDeviceFaultVendorInfoEXT allocate(Arena arena) {
+        return new VkDeviceFaultVendorInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkDeviceFaultVendorInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDeviceFaultVendorInfoEXT[] ret = new VkDeviceFaultVendorInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDeviceFaultVendorInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

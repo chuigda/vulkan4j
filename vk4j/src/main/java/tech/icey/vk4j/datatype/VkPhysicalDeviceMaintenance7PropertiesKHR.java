@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -147,28 +145,16 @@ public record VkPhysicalDeviceMaintenance7PropertiesKHR(MemorySegment segment) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceMaintenance7PropertiesKHR> {
-        @Override
-        public Class<VkPhysicalDeviceMaintenance7PropertiesKHR> clazz() {
-            return VkPhysicalDeviceMaintenance7PropertiesKHR.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceMaintenance7PropertiesKHR.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceMaintenance7PropertiesKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceMaintenance7PropertiesKHR createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceMaintenance7PropertiesKHR(segment);
-        }
+    public static VkPhysicalDeviceMaintenance7PropertiesKHR allocate(Arena arena) {
+        return new VkPhysicalDeviceMaintenance7PropertiesKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceMaintenance7PropertiesKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceMaintenance7PropertiesKHR[] ret = new VkPhysicalDeviceMaintenance7PropertiesKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceMaintenance7PropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

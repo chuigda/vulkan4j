@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceTimelineSemaphoreFeatures(MemorySegment segment) {
         segment.set(LAYOUT$timelineSemaphore, OFFSET$timelineSemaphore, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceTimelineSemaphoreFeatures> {
-        @Override
-        public Class<VkPhysicalDeviceTimelineSemaphoreFeatures> clazz() {
-            return VkPhysicalDeviceTimelineSemaphoreFeatures.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceTimelineSemaphoreFeatures.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceTimelineSemaphoreFeatures create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceTimelineSemaphoreFeatures createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceTimelineSemaphoreFeatures(segment);
-        }
+    public static VkPhysicalDeviceTimelineSemaphoreFeatures allocate(Arena arena) {
+        return new VkPhysicalDeviceTimelineSemaphoreFeatures(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceTimelineSemaphoreFeatures[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceTimelineSemaphoreFeatures[] ret = new VkPhysicalDeviceTimelineSemaphoreFeatures[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceTimelineSemaphoreFeatures(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

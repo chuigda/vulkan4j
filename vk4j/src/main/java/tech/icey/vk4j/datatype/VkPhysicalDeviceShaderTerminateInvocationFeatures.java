@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceShaderTerminateInvocationFeatures(MemorySegment se
         segment.set(LAYOUT$shaderTerminateInvocation, OFFSET$shaderTerminateInvocation, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceShaderTerminateInvocationFeatures> {
-        @Override
-        public Class<VkPhysicalDeviceShaderTerminateInvocationFeatures> clazz() {
-            return VkPhysicalDeviceShaderTerminateInvocationFeatures.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceShaderTerminateInvocationFeatures.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceShaderTerminateInvocationFeatures create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceShaderTerminateInvocationFeatures createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceShaderTerminateInvocationFeatures(segment);
-        }
+    public static VkPhysicalDeviceShaderTerminateInvocationFeatures allocate(Arena arena) {
+        return new VkPhysicalDeviceShaderTerminateInvocationFeatures(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceShaderTerminateInvocationFeatures[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceShaderTerminateInvocationFeatures[] ret = new VkPhysicalDeviceShaderTerminateInvocationFeatures[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceShaderTerminateInvocationFeatures(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

@@ -1,15 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.unsigned;
-
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfLong;
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSubresourceLayout(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -82,28 +84,16 @@ public record VkSubresourceLayout(MemorySegment segment) {
         segment.set(LAYOUT$depthPitch, OFFSET$depthPitch, value);
     }
 
-
-    public static final class Factory implements IFactory<VkSubresourceLayout> {
-        @Override
-        public Class<VkSubresourceLayout> clazz() {
-            return VkSubresourceLayout.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkSubresourceLayout.LAYOUT;
-        }
-
-        @Override
-        public VkSubresourceLayout create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkSubresourceLayout createUninit(MemorySegment segment) {
-            return new VkSubresourceLayout(segment);
-        }
+    public static VkSubresourceLayout allocate(Arena arena) {
+        return new VkSubresourceLayout(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkSubresourceLayout[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSubresourceLayout[] ret = new VkSubresourceLayout[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSubresourceLayout(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

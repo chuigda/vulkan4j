@@ -1,15 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.unsigned;
-
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.UnionLayout;
-import java.lang.foreign.ValueLayout;
-
+import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkDispatchGraphInfoAMDX(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -70,28 +72,16 @@ public record VkDispatchGraphInfoAMDX(MemorySegment segment) {
         segment.set(LAYOUT$payloadStride, OFFSET$payloadStride, value);
     }
 
-
-    public static final class Factory implements IFactory<VkDispatchGraphInfoAMDX> {
-        @Override
-        public Class<VkDispatchGraphInfoAMDX> clazz() {
-            return VkDispatchGraphInfoAMDX.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkDispatchGraphInfoAMDX.LAYOUT;
-        }
-
-        @Override
-        public VkDispatchGraphInfoAMDX create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkDispatchGraphInfoAMDX createUninit(MemorySegment segment) {
-            return new VkDispatchGraphInfoAMDX(segment);
-        }
+    public static VkDispatchGraphInfoAMDX allocate(Arena arena) {
+        return new VkDispatchGraphInfoAMDX(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkDispatchGraphInfoAMDX[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDispatchGraphInfoAMDX[] ret = new VkDispatchGraphInfoAMDX[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDispatchGraphInfoAMDX(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

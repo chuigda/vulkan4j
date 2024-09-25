@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceDisplacementMicromapFeaturesNV(MemorySegment segme
         segment.set(LAYOUT$displacementMicromap, OFFSET$displacementMicromap, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceDisplacementMicromapFeaturesNV> {
-        @Override
-        public Class<VkPhysicalDeviceDisplacementMicromapFeaturesNV> clazz() {
-            return VkPhysicalDeviceDisplacementMicromapFeaturesNV.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceDisplacementMicromapFeaturesNV.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceDisplacementMicromapFeaturesNV create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceDisplacementMicromapFeaturesNV createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceDisplacementMicromapFeaturesNV(segment);
-        }
+    public static VkPhysicalDeviceDisplacementMicromapFeaturesNV allocate(Arena arena) {
+        return new VkPhysicalDeviceDisplacementMicromapFeaturesNV(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceDisplacementMicromapFeaturesNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceDisplacementMicromapFeaturesNV[] ret = new VkPhysicalDeviceDisplacementMicromapFeaturesNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceDisplacementMicromapFeaturesNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(MemorySegment seg
         segment.set(LAYOUT$swapchainMaintenance1, OFFSET$swapchainMaintenance1, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT> {
-        @Override
-        public Class<VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT> clazz() {
-            return VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(segment);
-        }
+    public static VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT[] ret = new VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

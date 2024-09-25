@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -62,28 +60,16 @@ public record VkBindVertexBufferIndirectCommandNV(MemorySegment segment) {
         segment.set(LAYOUT$stride, OFFSET$stride, value);
     }
 
-
-    public static final class Factory implements IFactory<VkBindVertexBufferIndirectCommandNV> {
-        @Override
-        public Class<VkBindVertexBufferIndirectCommandNV> clazz() {
-            return VkBindVertexBufferIndirectCommandNV.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkBindVertexBufferIndirectCommandNV.LAYOUT;
-        }
-
-        @Override
-        public VkBindVertexBufferIndirectCommandNV create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkBindVertexBufferIndirectCommandNV createUninit(MemorySegment segment) {
-            return new VkBindVertexBufferIndirectCommandNV(segment);
-        }
+    public static VkBindVertexBufferIndirectCommandNV allocate(Arena arena) {
+        return new VkBindVertexBufferIndirectCommandNV(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkBindVertexBufferIndirectCommandNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkBindVertexBufferIndirectCommandNV[] ret = new VkBindVertexBufferIndirectCommandNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkBindVertexBufferIndirectCommandNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

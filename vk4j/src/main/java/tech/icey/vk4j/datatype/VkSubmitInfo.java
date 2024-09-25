@@ -1,25 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkPipelineStageFlags;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkCommandBuffer;
-import tech.icey.vk4j.handle.VkSemaphore;
-import tech.icey.vk4j.ptr.IntPtr;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SUBMIT_INFO;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSubmitInfo(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -100,7 +92,7 @@ public record VkSubmitInfo(MemorySegment segment) {
     public void pWaitSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
-
+    
     public @nullable VkSemaphore pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.address() == 0) {
@@ -117,21 +109,21 @@ public record VkSubmitInfo(MemorySegment segment) {
     public @pointer(target=VkPipelineStageFlags.class) MemorySegment pWaitDstStageMaskRaw() {
         return segment.get(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask);
     }
-
+    
     public void pWaitDstStageMaskRaw(@pointer(target=VkPipelineStageFlags.class) MemorySegment value) {
         segment.set(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask, value);
     }
-
-    public @nullable IntPtr pWaitDstStageMask() {
+    
+    public @nullable IntBuffer pWaitDstStageMask() {
         MemorySegment s = pWaitDstStageMaskRaw();
         if (s.address() == 0) {
             return null;
         }
-
-        return new IntPtr(s);
+        
+        return new IntBuffer(s);
     }
-
-    public void pWaitDstStageMask(@nullable IntPtr value) {
+    
+    public void pWaitDstStageMask(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitDstStageMaskRaw(s);
     }
@@ -151,7 +143,7 @@ public record VkSubmitInfo(MemorySegment segment) {
     public void pCommandBuffersRaw(@pointer(comment="VkCommandBuffer*") MemorySegment value) {
         segment.set(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers, value);
     }
-
+    
     public @nullable VkCommandBuffer pCommandBuffers() {
         MemorySegment s = pCommandBuffersRaw();
         if (s.address() == 0) {
@@ -180,7 +172,7 @@ public record VkSubmitInfo(MemorySegment segment) {
     public void pSignalSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
-
+    
     public @nullable VkSemaphore pSignalSemaphores() {
         MemorySegment s = pSignalSemaphoresRaw();
         if (s.address() == 0) {
@@ -194,28 +186,16 @@ public record VkSubmitInfo(MemorySegment segment) {
         pSignalSemaphoresRaw(s);
     }
 
-
-    public static final class Factory implements IFactory<VkSubmitInfo> {
-        @Override
-        public Class<VkSubmitInfo> clazz() {
-            return VkSubmitInfo.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkSubmitInfo.LAYOUT;
-        }
-
-        @Override
-        public VkSubmitInfo create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkSubmitInfo createUninit(MemorySegment segment) {
-            return new VkSubmitInfo(segment);
-        }
+    public static VkSubmitInfo allocate(Arena arena) {
+        return new VkSubmitInfo(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkSubmitInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSubmitInfo[] ret = new VkSubmitInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSubmitInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

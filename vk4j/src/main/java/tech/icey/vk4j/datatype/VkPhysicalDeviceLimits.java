@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -869,11 +867,11 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
         return segment.asSlice(OFFSET$maxComputeWorkGroupCount, LAYOUT$maxComputeWorkGroupCount.byteSize());
     }
 
-    public @unsigned IntArray maxComputeWorkGroupCount() {
-        return new IntArray(maxComputeWorkGroupCountRaw(), LAYOUT$maxComputeWorkGroupCount.elementCount());
+    public @unsigned IntBuffer maxComputeWorkGroupCount() {
+        return new IntBuffer(maxComputeWorkGroupCountRaw());
     }
 
-    public void maxComputeWorkGroupCount(@unsigned IntArray value) {
+    public void maxComputeWorkGroupCount(@unsigned IntBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupCount, LAYOUT$maxComputeWorkGroupCount.byteSize());
     }
 
@@ -889,11 +887,11 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
         return segment.asSlice(OFFSET$maxComputeWorkGroupSize, LAYOUT$maxComputeWorkGroupSize.byteSize());
     }
 
-    public @unsigned IntArray maxComputeWorkGroupSize() {
-        return new IntArray(maxComputeWorkGroupSizeRaw(), LAYOUT$maxComputeWorkGroupSize.elementCount());
+    public @unsigned IntBuffer maxComputeWorkGroupSize() {
+        return new IntBuffer(maxComputeWorkGroupSizeRaw());
     }
 
-    public void maxComputeWorkGroupSize(@unsigned IntArray value) {
+    public void maxComputeWorkGroupSize(@unsigned IntBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupSize, LAYOUT$maxComputeWorkGroupSize.byteSize());
     }
 
@@ -965,11 +963,11 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
         return segment.asSlice(OFFSET$maxViewportDimensions, LAYOUT$maxViewportDimensions.byteSize());
     }
 
-    public @unsigned IntArray maxViewportDimensions() {
-        return new IntArray(maxViewportDimensionsRaw(), LAYOUT$maxViewportDimensions.elementCount());
+    public @unsigned IntBuffer maxViewportDimensions() {
+        return new IntBuffer(maxViewportDimensionsRaw());
     }
 
-    public void maxViewportDimensions(@unsigned IntArray value) {
+    public void maxViewportDimensions(@unsigned IntBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxViewportDimensions, LAYOUT$maxViewportDimensions.byteSize());
     }
 
@@ -977,11 +975,11 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
         return segment.asSlice(OFFSET$viewportBoundsRange, LAYOUT$viewportBoundsRange.byteSize());
     }
 
-    public FloatArray viewportBoundsRange() {
-        return new FloatArray(viewportBoundsRangeRaw(), LAYOUT$viewportBoundsRange.elementCount());
+    public FloatBuffer viewportBoundsRange() {
+        return new FloatBuffer(viewportBoundsRangeRaw());
     }
 
-    public void viewportBoundsRange(FloatArray value) {
+    public void viewportBoundsRange(FloatBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$viewportBoundsRange, LAYOUT$viewportBoundsRange.byteSize());
     }
 
@@ -1245,11 +1243,11 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
         return segment.asSlice(OFFSET$pointSizeRange, LAYOUT$pointSizeRange.byteSize());
     }
 
-    public FloatArray pointSizeRange() {
-        return new FloatArray(pointSizeRangeRaw(), LAYOUT$pointSizeRange.elementCount());
+    public FloatBuffer pointSizeRange() {
+        return new FloatBuffer(pointSizeRangeRaw());
     }
 
-    public void pointSizeRange(FloatArray value) {
+    public void pointSizeRange(FloatBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$pointSizeRange, LAYOUT$pointSizeRange.byteSize());
     }
 
@@ -1257,11 +1255,11 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
         return segment.asSlice(OFFSET$lineWidthRange, LAYOUT$lineWidthRange.byteSize());
     }
 
-    public FloatArray lineWidthRange() {
-        return new FloatArray(lineWidthRangeRaw(), LAYOUT$lineWidthRange.elementCount());
+    public FloatBuffer lineWidthRange() {
+        return new FloatBuffer(lineWidthRangeRaw());
     }
 
-    public void lineWidthRange(FloatArray value) {
+    public void lineWidthRange(FloatBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$lineWidthRange, LAYOUT$lineWidthRange.byteSize());
     }
 
@@ -1321,28 +1319,16 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
         segment.set(LAYOUT$nonCoherentAtomSize, OFFSET$nonCoherentAtomSize, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceLimits> {
-        @Override
-        public Class<VkPhysicalDeviceLimits> clazz() {
-            return VkPhysicalDeviceLimits.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceLimits.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceLimits create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceLimits createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceLimits(segment);
-        }
+    public static VkPhysicalDeviceLimits allocate(Arena arena) {
+        return new VkPhysicalDeviceLimits(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceLimits[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceLimits[] ret = new VkPhysicalDeviceLimits[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceLimits(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

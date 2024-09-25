@@ -1,22 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkSemaphore;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_BIND_SPARSE_INFO;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkBindSparseInfo(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -109,7 +104,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
     public void pWaitSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
-
+    
     public @nullable VkSemaphore pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.address() == 0) {
@@ -138,7 +133,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
     public void pBufferBindsRaw(@pointer(comment="VkSparseBufferMemoryBindInfo*") MemorySegment value) {
         segment.set(LAYOUT$pBufferBinds, OFFSET$pBufferBinds, value);
     }
-
+    
     public @nullable VkSparseBufferMemoryBindInfo pBufferBinds() {
         MemorySegment s = pBufferBindsRaw();
         if (s.address() == 0) {
@@ -167,7 +162,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
     public void pImageOpaqueBindsRaw(@pointer(comment="VkSparseImageOpaqueMemoryBindInfo*") MemorySegment value) {
         segment.set(LAYOUT$pImageOpaqueBinds, OFFSET$pImageOpaqueBinds, value);
     }
-
+    
     public @nullable VkSparseImageOpaqueMemoryBindInfo pImageOpaqueBinds() {
         MemorySegment s = pImageOpaqueBindsRaw();
         if (s.address() == 0) {
@@ -196,7 +191,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
     public void pImageBindsRaw(@pointer(comment="VkSparseImageMemoryBindInfo*") MemorySegment value) {
         segment.set(LAYOUT$pImageBinds, OFFSET$pImageBinds, value);
     }
-
+    
     public @nullable VkSparseImageMemoryBindInfo pImageBinds() {
         MemorySegment s = pImageBindsRaw();
         if (s.address() == 0) {
@@ -225,7 +220,7 @@ public record VkBindSparseInfo(MemorySegment segment) {
     public void pSignalSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
-
+    
     public @nullable VkSemaphore pSignalSemaphores() {
         MemorySegment s = pSignalSemaphoresRaw();
         if (s.address() == 0) {
@@ -239,28 +234,16 @@ public record VkBindSparseInfo(MemorySegment segment) {
         pSignalSemaphoresRaw(s);
     }
 
-
-    public static final class Factory implements IFactory<VkBindSparseInfo> {
-        @Override
-        public Class<VkBindSparseInfo> clazz() {
-            return VkBindSparseInfo.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkBindSparseInfo.LAYOUT;
-        }
-
-        @Override
-        public VkBindSparseInfo create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkBindSparseInfo createUninit(MemorySegment segment) {
-            return new VkBindSparseInfo(segment);
-        }
+    public static VkBindSparseInfo allocate(Arena arena) {
+        return new VkBindSparseInfo(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkBindSparseInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkBindSparseInfo[] ret = new VkBindSparseInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkBindSparseInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

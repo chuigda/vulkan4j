@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -38,28 +36,16 @@ public record VkRefreshCycleDurationGOOGLE(MemorySegment segment) {
         segment.set(LAYOUT$refreshDuration, OFFSET$refreshDuration, value);
     }
 
-
-    public static final class Factory implements IFactory<VkRefreshCycleDurationGOOGLE> {
-        @Override
-        public Class<VkRefreshCycleDurationGOOGLE> clazz() {
-            return VkRefreshCycleDurationGOOGLE.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkRefreshCycleDurationGOOGLE.LAYOUT;
-        }
-
-        @Override
-        public VkRefreshCycleDurationGOOGLE create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkRefreshCycleDurationGOOGLE createUninit(MemorySegment segment) {
-            return new VkRefreshCycleDurationGOOGLE(segment);
-        }
+    public static VkRefreshCycleDurationGOOGLE allocate(Arena arena) {
+        return new VkRefreshCycleDurationGOOGLE(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkRefreshCycleDurationGOOGLE[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkRefreshCycleDurationGOOGLE[] ret = new VkRefreshCycleDurationGOOGLE[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkRefreshCycleDurationGOOGLE(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

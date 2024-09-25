@@ -1,21 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkCompositeAlphaFlagsKHR;
-import tech.icey.vk4j.bitmask.VkImageUsageFlags;
-import tech.icey.vk4j.bitmask.VkSurfaceCounterFlagsEXT;
-import tech.icey.vk4j.bitmask.VkSurfaceTransformFlagsKHR;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSurfaceCapabilities2EXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -185,28 +181,16 @@ public record VkSurfaceCapabilities2EXT(MemorySegment segment) {
         segment.set(LAYOUT$supportedSurfaceCounters, OFFSET$supportedSurfaceCounters, value);
     }
 
-
-    public static final class Factory implements IFactory<VkSurfaceCapabilities2EXT> {
-        @Override
-        public Class<VkSurfaceCapabilities2EXT> clazz() {
-            return VkSurfaceCapabilities2EXT.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkSurfaceCapabilities2EXT.LAYOUT;
-        }
-
-        @Override
-        public VkSurfaceCapabilities2EXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkSurfaceCapabilities2EXT createUninit(MemorySegment segment) {
-            return new VkSurfaceCapabilities2EXT(segment);
-        }
+    public static VkSurfaceCapabilities2EXT allocate(Arena arena) {
+        return new VkSurfaceCapabilities2EXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkSurfaceCapabilities2EXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSurfaceCapabilities2EXT[] ret = new VkSurfaceCapabilities2EXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSurfaceCapabilities2EXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

@@ -1,17 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.enumtype.VkBlendFactor;
-import tech.icey.vk4j.enumtype.VkBlendOp;
-
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkColorBlendEquationEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -96,28 +96,16 @@ public record VkColorBlendEquationEXT(MemorySegment segment) {
         segment.set(LAYOUT$alphaBlendOp, OFFSET$alphaBlendOp, value);
     }
 
-
-    public static final class Factory implements IFactory<VkColorBlendEquationEXT> {
-        @Override
-        public Class<VkColorBlendEquationEXT> clazz() {
-            return VkColorBlendEquationEXT.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkColorBlendEquationEXT.LAYOUT;
-        }
-
-        @Override
-        public VkColorBlendEquationEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkColorBlendEquationEXT createUninit(MemorySegment segment) {
-            return new VkColorBlendEquationEXT(segment);
-        }
+    public static VkColorBlendEquationEXT allocate(Arena arena) {
+        return new VkColorBlendEquationEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkColorBlendEquationEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkColorBlendEquationEXT[] ret = new VkColorBlendEquationEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkColorBlendEquationEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

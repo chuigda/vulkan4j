@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(MemorySegment 
         segment.set(LAYOUT$shaderSubgroupExtendedTypes, OFFSET$shaderSubgroupExtendedTypes, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures> {
-        @Override
-        public Class<VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures> clazz() {
-            return VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(segment);
-        }
+    public static VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures allocate(Arena arena) {
+        return new VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures[] ret = new VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

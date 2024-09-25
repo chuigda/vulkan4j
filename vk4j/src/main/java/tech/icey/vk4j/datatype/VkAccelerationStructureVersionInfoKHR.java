@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,36 +61,24 @@ public record VkAccelerationStructureVersionInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pVersionData, OFFSET$pVersionData, value);
     }
     
-    public @unsigned BytePtr pVersionData() {
-        return new BytePtr(pVersionDataRaw());
+    public @unsigned ByteBuffer pVersionData() {
+        return new ByteBuffer(pVersionDataRaw());
     }
 
-    public void pVersionData(@unsigned BytePtr value) {
+    public void pVersionData(@unsigned ByteBuffer value) {
         pVersionDataRaw(value.segment());
     }
 
-
-    public static final class Factory implements IFactory<VkAccelerationStructureVersionInfoKHR> {
-        @Override
-        public Class<VkAccelerationStructureVersionInfoKHR> clazz() {
-            return VkAccelerationStructureVersionInfoKHR.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkAccelerationStructureVersionInfoKHR.LAYOUT;
-        }
-
-        @Override
-        public VkAccelerationStructureVersionInfoKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkAccelerationStructureVersionInfoKHR createUninit(MemorySegment segment) {
-            return new VkAccelerationStructureVersionInfoKHR(segment);
-        }
+    public static VkAccelerationStructureVersionInfoKHR allocate(Arena arena) {
+        return new VkAccelerationStructureVersionInfoKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkAccelerationStructureVersionInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkAccelerationStructureVersionInfoKHR[] ret = new VkAccelerationStructureVersionInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkAccelerationStructureVersionInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

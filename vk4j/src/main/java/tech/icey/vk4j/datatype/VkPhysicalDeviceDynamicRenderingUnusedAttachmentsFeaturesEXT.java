@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(Memor
         segment.set(LAYOUT$dynamicRenderingUnusedAttachments, OFFSET$dynamicRenderingUnusedAttachments, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT> {
-        @Override
-        public Class<VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT> clazz() {
-            return VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(segment);
-        }
+    public static VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT[] ret = new VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

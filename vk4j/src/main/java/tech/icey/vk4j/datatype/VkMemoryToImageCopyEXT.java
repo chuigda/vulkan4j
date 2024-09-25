@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -123,28 +121,16 @@ public record VkMemoryToImageCopyEXT(MemorySegment segment) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, LAYOUT$imageExtent.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkMemoryToImageCopyEXT> {
-        @Override
-        public Class<VkMemoryToImageCopyEXT> clazz() {
-            return VkMemoryToImageCopyEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkMemoryToImageCopyEXT.LAYOUT;
-        }
-
-        @Override
-        public VkMemoryToImageCopyEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkMemoryToImageCopyEXT createUninit(MemorySegment segment) {
-            return new VkMemoryToImageCopyEXT(segment);
-        }
+    public static VkMemoryToImageCopyEXT allocate(Arena arena) {
+        return new VkMemoryToImageCopyEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkMemoryToImageCopyEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkMemoryToImageCopyEXT[] ret = new VkMemoryToImageCopyEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkMemoryToImageCopyEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

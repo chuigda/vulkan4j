@@ -1,18 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkSparseMemoryBindFlags;
-import tech.icey.vk4j.handle.VkDeviceMemory;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
+import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSparseMemoryBind(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -85,28 +84,16 @@ public record VkSparseMemoryBind(MemorySegment segment) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-
-    public static final class Factory implements IFactory<VkSparseMemoryBind> {
-        @Override
-        public Class<VkSparseMemoryBind> clazz() {
-            return VkSparseMemoryBind.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkSparseMemoryBind.LAYOUT;
-        }
-
-        @Override
-        public VkSparseMemoryBind create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkSparseMemoryBind createUninit(MemorySegment segment) {
-            return new VkSparseMemoryBind(segment);
-        }
+    public static VkSparseMemoryBind allocate(Arena arena) {
+        return new VkSparseMemoryBind(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkSparseMemoryBind[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSparseMemoryBind[] ret = new VkSparseMemoryBind[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSparseMemoryBind(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

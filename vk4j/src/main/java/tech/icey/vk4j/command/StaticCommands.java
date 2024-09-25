@@ -1,16 +1,16 @@
 package tech.icey.vk4j.command;
 
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.handle.VkDevice;
-import tech.icey.vk4j.handle.VkInstance;
-import tech.icey.vk4j.ptr.BytePtr;
-import tech.icey.vk4j.util.Function2;
-
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
+
+import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.util.Function2;
 
 public final class StaticCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceProcAddr = FunctionDescriptor.of(
@@ -35,11 +35,11 @@ public final class StaticCommands {
 
     public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetDeviceProcAddr(
             VkDevice device,
-            @pointer(target=BytePtr.class) BytePtr pName
+             ByteBuffer pName
     ) {
         try {
             return (MemorySegment) HANDLE$vkGetDeviceProcAddr.invokeExact(
-                    device.handle(),
+                    device.segment(),
                     pName.segment()
             );
         } catch (Throwable t) {
@@ -49,11 +49,11 @@ public final class StaticCommands {
 
     public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetInstanceProcAddr(
             @nullable VkInstance instance,
-            @pointer(target=BytePtr.class) BytePtr pName
+             ByteBuffer pName
     ) {
         try {
             return (MemorySegment) HANDLE$vkGetInstanceProcAddr.invokeExact(
-                    (MemorySegment) (instance != null ? instance.handle() : MemorySegment.NULL),
+                    (MemorySegment) (instance != null ? instance.segment() : MemorySegment.NULL),
                     pName.segment()
             );
         } catch (Throwable t) {

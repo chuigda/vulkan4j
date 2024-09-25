@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(MemorySegment segment) 
         segment.set(LAYOUT$formatRgba10x6WithoutYCbCrSampler, OFFSET$formatRgba10x6WithoutYCbCrSampler, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT> {
-        @Override
-        public Class<VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT> clazz() {
-            return VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(segment);
-        }
+    public static VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT[] ret = new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

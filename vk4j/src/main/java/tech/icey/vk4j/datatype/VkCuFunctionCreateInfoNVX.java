@@ -1,21 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkCuModuleNVX;
-import tech.icey.vk4j.ptr.BytePtr;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_CU_FUNCTION_CREATE_INFO_NVX;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkCuFunctionCreateInfoNVX(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -76,37 +72,25 @@ public record VkCuFunctionCreateInfoNVX(MemorySegment segment) {
     public void pNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
-
-    public BytePtr pName() {
-        return new BytePtr(pNameRaw());
+    
+    public ByteBuffer pName() {
+        return new ByteBuffer(pNameRaw());
     }
 
-    public void pName(BytePtr value) {
+    public void pName(ByteBuffer value) {
         pNameRaw(value.segment());
     }
 
-
-    public static final class Factory implements IFactory<VkCuFunctionCreateInfoNVX> {
-        @Override
-        public Class<VkCuFunctionCreateInfoNVX> clazz() {
-            return VkCuFunctionCreateInfoNVX.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkCuFunctionCreateInfoNVX.LAYOUT;
-        }
-
-        @Override
-        public VkCuFunctionCreateInfoNVX create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkCuFunctionCreateInfoNVX createUninit(MemorySegment segment) {
-            return new VkCuFunctionCreateInfoNVX(segment);
-        }
+    public static VkCuFunctionCreateInfoNVX allocate(Arena arena) {
+        return new VkCuFunctionCreateInfoNVX(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkCuFunctionCreateInfoNVX[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkCuFunctionCreateInfoNVX[] ret = new VkCuFunctionCreateInfoNVX[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkCuFunctionCreateInfoNVX(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

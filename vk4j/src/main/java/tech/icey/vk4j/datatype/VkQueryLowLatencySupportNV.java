@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkQueryLowLatencySupportNV(MemorySegment segment) {
         segment.set(LAYOUT$pQueriedLowLatencyData, OFFSET$pQueriedLowLatencyData, value);
     }
 
-
-    public static final class Factory implements IFactory<VkQueryLowLatencySupportNV> {
-        @Override
-        public Class<VkQueryLowLatencySupportNV> clazz() {
-            return VkQueryLowLatencySupportNV.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkQueryLowLatencySupportNV.LAYOUT;
-        }
-
-        @Override
-        public VkQueryLowLatencySupportNV create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkQueryLowLatencySupportNV createUninit(MemorySegment segment) {
-            return new VkQueryLowLatencySupportNV(segment);
-        }
+    public static VkQueryLowLatencySupportNV allocate(Arena arena) {
+        return new VkQueryLowLatencySupportNV(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkQueryLowLatencySupportNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkQueryLowLatencySupportNV[] ret = new VkQueryLowLatencySupportNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkQueryLowLatencySupportNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

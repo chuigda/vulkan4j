@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceHostImageCopyFeaturesEXT(MemorySegment segment) {
         segment.set(LAYOUT$hostImageCopy, OFFSET$hostImageCopy, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceHostImageCopyFeaturesEXT> {
-        @Override
-        public Class<VkPhysicalDeviceHostImageCopyFeaturesEXT> clazz() {
-            return VkPhysicalDeviceHostImageCopyFeaturesEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceHostImageCopyFeaturesEXT.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceHostImageCopyFeaturesEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceHostImageCopyFeaturesEXT createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceHostImageCopyFeaturesEXT(segment);
-        }
+    public static VkPhysicalDeviceHostImageCopyFeaturesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceHostImageCopyFeaturesEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceHostImageCopyFeaturesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceHostImageCopyFeaturesEXT[] ret = new VkPhysicalDeviceHostImageCopyFeaturesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceHostImageCopyFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

@@ -1,22 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkSubmitFlags;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SUBMIT_INFO_2;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSubmitInfo2(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -105,7 +100,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
     public void pWaitSemaphoreInfosRaw(@pointer(comment="VkSemaphoreSubmitInfo*") MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphoreInfos, OFFSET$pWaitSemaphoreInfos, value);
     }
-
+    
     public @nullable VkSemaphoreSubmitInfo pWaitSemaphoreInfos() {
         MemorySegment s = pWaitSemaphoreInfosRaw();
         if (s.address() == 0) {
@@ -134,7 +129,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
     public void pCommandBufferInfosRaw(@pointer(comment="VkCommandBufferSubmitInfo*") MemorySegment value) {
         segment.set(LAYOUT$pCommandBufferInfos, OFFSET$pCommandBufferInfos, value);
     }
-
+    
     public @nullable VkCommandBufferSubmitInfo pCommandBufferInfos() {
         MemorySegment s = pCommandBufferInfosRaw();
         if (s.address() == 0) {
@@ -163,7 +158,7 @@ public record VkSubmitInfo2(MemorySegment segment) {
     public void pSignalSemaphoreInfosRaw(@pointer(comment="VkSemaphoreSubmitInfo*") MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphoreInfos, OFFSET$pSignalSemaphoreInfos, value);
     }
-
+    
     public @nullable VkSemaphoreSubmitInfo pSignalSemaphoreInfos() {
         MemorySegment s = pSignalSemaphoreInfosRaw();
         if (s.address() == 0) {
@@ -177,28 +172,16 @@ public record VkSubmitInfo2(MemorySegment segment) {
         pSignalSemaphoreInfosRaw(s);
     }
 
-
-    public static final class Factory implements IFactory<VkSubmitInfo2> {
-        @Override
-        public Class<VkSubmitInfo2> clazz() {
-            return VkSubmitInfo2.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkSubmitInfo2.LAYOUT;
-        }
-
-        @Override
-        public VkSubmitInfo2 create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkSubmitInfo2 createUninit(MemorySegment segment) {
-            return new VkSubmitInfo2(segment);
-        }
+    public static VkSubmitInfo2 allocate(Arena arena) {
+        return new VkSubmitInfo2(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkSubmitInfo2[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSubmitInfo2[] ret = new VkSubmitInfo2[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSubmitInfo2(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(Memory
         segment.set(LAYOUT$shaderSubgroupUniformControlFlow, OFFSET$shaderSubgroupUniformControlFlow, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR> {
-        @Override
-        public Class<VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR> clazz() {
-            return VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(segment);
-        }
+    public static VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR allocate(Arena arena) {
+        return new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR[] ret = new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

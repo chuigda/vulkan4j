@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -75,28 +73,16 @@ public record VkAttachmentDescriptionStencilLayout(MemorySegment segment) {
         segment.set(LAYOUT$stencilFinalLayout, OFFSET$stencilFinalLayout, value);
     }
 
-
-    public static final class Factory implements IFactory<VkAttachmentDescriptionStencilLayout> {
-        @Override
-        public Class<VkAttachmentDescriptionStencilLayout> clazz() {
-            return VkAttachmentDescriptionStencilLayout.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkAttachmentDescriptionStencilLayout.LAYOUT;
-        }
-
-        @Override
-        public VkAttachmentDescriptionStencilLayout create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkAttachmentDescriptionStencilLayout createUninit(MemorySegment segment) {
-            return new VkAttachmentDescriptionStencilLayout(segment);
-        }
+    public static VkAttachmentDescriptionStencilLayout allocate(Arena arena) {
+        return new VkAttachmentDescriptionStencilLayout(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkAttachmentDescriptionStencilLayout[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkAttachmentDescriptionStencilLayout[] ret = new VkAttachmentDescriptionStencilLayout[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkAttachmentDescriptionStencilLayout(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

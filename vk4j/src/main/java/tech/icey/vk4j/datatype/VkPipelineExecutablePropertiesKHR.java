@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -79,11 +77,11 @@ public record VkPipelineExecutablePropertiesKHR(MemorySegment segment) {
         return segment.asSlice(OFFSET$name, LAYOUT$name.byteSize());
     }
 
-    public ByteArray name() {
-        return new ByteArray(nameRaw(), LAYOUT$name.elementCount());
+    public ByteBuffer name() {
+        return new ByteBuffer(nameRaw());
     }
 
-    public void name(ByteArray value) {
+    public void name(ByteBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, LAYOUT$name.byteSize());
     }
 
@@ -91,11 +89,11 @@ public record VkPipelineExecutablePropertiesKHR(MemorySegment segment) {
         return segment.asSlice(OFFSET$description, LAYOUT$description.byteSize());
     }
 
-    public ByteArray description() {
-        return new ByteArray(descriptionRaw(), LAYOUT$description.elementCount());
+    public ByteBuffer description() {
+        return new ByteBuffer(descriptionRaw());
     }
 
-    public void description(ByteArray value) {
+    public void description(ByteBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, LAYOUT$description.byteSize());
     }
 
@@ -107,28 +105,16 @@ public record VkPipelineExecutablePropertiesKHR(MemorySegment segment) {
         segment.set(LAYOUT$subgroupSize, OFFSET$subgroupSize, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPipelineExecutablePropertiesKHR> {
-        @Override
-        public Class<VkPipelineExecutablePropertiesKHR> clazz() {
-            return VkPipelineExecutablePropertiesKHR.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPipelineExecutablePropertiesKHR.LAYOUT;
-        }
-
-        @Override
-        public VkPipelineExecutablePropertiesKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPipelineExecutablePropertiesKHR createUninit(MemorySegment segment) {
-            return new VkPipelineExecutablePropertiesKHR(segment);
-        }
+    public static VkPipelineExecutablePropertiesKHR allocate(Arena arena) {
+        return new VkPipelineExecutablePropertiesKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPipelineExecutablePropertiesKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPipelineExecutablePropertiesKHR[] ret = new VkPipelineExecutablePropertiesKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPipelineExecutablePropertiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

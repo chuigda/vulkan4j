@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -195,28 +193,16 @@ public record VkPhysicalDeviceVulkan11Features(MemorySegment segment) {
         segment.set(LAYOUT$shaderDrawParameters, OFFSET$shaderDrawParameters, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceVulkan11Features> {
-        @Override
-        public Class<VkPhysicalDeviceVulkan11Features> clazz() {
-            return VkPhysicalDeviceVulkan11Features.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceVulkan11Features.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceVulkan11Features create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceVulkan11Features createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceVulkan11Features(segment);
-        }
+    public static VkPhysicalDeviceVulkan11Features allocate(Arena arena) {
+        return new VkPhysicalDeviceVulkan11Features(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceVulkan11Features[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceVulkan11Features[] ret = new VkPhysicalDeviceVulkan11Features[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceVulkan11Features(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

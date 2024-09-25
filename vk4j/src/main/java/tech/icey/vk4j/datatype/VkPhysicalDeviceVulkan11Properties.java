@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -115,11 +113,11 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
         return segment.asSlice(OFFSET$deviceUUID, LAYOUT$deviceUUID.byteSize());
     }
 
-    public @unsigned ByteArray deviceUUID() {
-        return new ByteArray(deviceUUIDRaw(), LAYOUT$deviceUUID.elementCount());
+    public @unsigned ByteBuffer deviceUUID() {
+        return new ByteBuffer(deviceUUIDRaw());
     }
 
-    public void deviceUUID(@unsigned ByteArray value) {
+    public void deviceUUID(@unsigned ByteBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceUUID, LAYOUT$deviceUUID.byteSize());
     }
 
@@ -127,11 +125,11 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
         return segment.asSlice(OFFSET$driverUUID, LAYOUT$driverUUID.byteSize());
     }
 
-    public @unsigned ByteArray driverUUID() {
-        return new ByteArray(driverUUIDRaw(), LAYOUT$driverUUID.elementCount());
+    public @unsigned ByteBuffer driverUUID() {
+        return new ByteBuffer(driverUUIDRaw());
     }
 
-    public void driverUUID(@unsigned ByteArray value) {
+    public void driverUUID(@unsigned ByteBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverUUID, LAYOUT$driverUUID.byteSize());
     }
 
@@ -139,11 +137,11 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
         return segment.asSlice(OFFSET$deviceLUID, LAYOUT$deviceLUID.byteSize());
     }
 
-    public @unsigned ByteArray deviceLUID() {
-        return new ByteArray(deviceLUIDRaw(), LAYOUT$deviceLUID.elementCount());
+    public @unsigned ByteBuffer deviceLUID() {
+        return new ByteBuffer(deviceLUIDRaw());
     }
 
-    public void deviceLUID(@unsigned ByteArray value) {
+    public void deviceLUID(@unsigned ByteBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceLUID, LAYOUT$deviceLUID.byteSize());
     }
 
@@ -243,28 +241,16 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) {
         segment.set(LAYOUT$maxMemoryAllocationSize, OFFSET$maxMemoryAllocationSize, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceVulkan11Properties> {
-        @Override
-        public Class<VkPhysicalDeviceVulkan11Properties> clazz() {
-            return VkPhysicalDeviceVulkan11Properties.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceVulkan11Properties.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceVulkan11Properties create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceVulkan11Properties createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceVulkan11Properties(segment);
-        }
+    public static VkPhysicalDeviceVulkan11Properties allocate(Arena arena) {
+        return new VkPhysicalDeviceVulkan11Properties(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceVulkan11Properties[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceVulkan11Properties[] ret = new VkPhysicalDeviceVulkan11Properties[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceVulkan11Properties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

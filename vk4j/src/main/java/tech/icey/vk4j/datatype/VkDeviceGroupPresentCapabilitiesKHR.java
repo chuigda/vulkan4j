@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,11 +61,11 @@ public record VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) {
         return segment.asSlice(OFFSET$presentMask, LAYOUT$presentMask.byteSize());
     }
 
-    public @unsigned IntArray presentMask() {
-        return new IntArray(presentMaskRaw(), LAYOUT$presentMask.elementCount());
+    public @unsigned IntBuffer presentMask() {
+        return new IntBuffer(presentMaskRaw());
     }
 
-    public void presentMask(@unsigned IntArray value) {
+    public void presentMask(@unsigned IntBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$presentMask, LAYOUT$presentMask.byteSize());
     }
 
@@ -79,28 +77,16 @@ public record VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) {
         segment.set(LAYOUT$modes, OFFSET$modes, value);
     }
 
-
-    public static final class Factory implements IFactory<VkDeviceGroupPresentCapabilitiesKHR> {
-        @Override
-        public Class<VkDeviceGroupPresentCapabilitiesKHR> clazz() {
-            return VkDeviceGroupPresentCapabilitiesKHR.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkDeviceGroupPresentCapabilitiesKHR.LAYOUT;
-        }
-
-        @Override
-        public VkDeviceGroupPresentCapabilitiesKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkDeviceGroupPresentCapabilitiesKHR createUninit(MemorySegment segment) {
-            return new VkDeviceGroupPresentCapabilitiesKHR(segment);
-        }
+    public static VkDeviceGroupPresentCapabilitiesKHR allocate(Arena arena) {
+        return new VkDeviceGroupPresentCapabilitiesKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkDeviceGroupPresentCapabilitiesKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDeviceGroupPresentCapabilitiesKHR[] ret = new VkDeviceGroupPresentCapabilitiesKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDeviceGroupPresentCapabilitiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

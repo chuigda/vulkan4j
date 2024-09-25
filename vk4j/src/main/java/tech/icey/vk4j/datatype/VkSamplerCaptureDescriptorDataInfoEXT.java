@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(MemorySegment segment) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampler, LAYOUT$sampler.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkSamplerCaptureDescriptorDataInfoEXT> {
-        @Override
-        public Class<VkSamplerCaptureDescriptorDataInfoEXT> clazz() {
-            return VkSamplerCaptureDescriptorDataInfoEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkSamplerCaptureDescriptorDataInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkSamplerCaptureDescriptorDataInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkSamplerCaptureDescriptorDataInfoEXT createUninit(MemorySegment segment) {
-            return new VkSamplerCaptureDescriptorDataInfoEXT(segment);
-        }
+    public static VkSamplerCaptureDescriptorDataInfoEXT allocate(Arena arena) {
+        return new VkSamplerCaptureDescriptorDataInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkSamplerCaptureDescriptorDataInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSamplerCaptureDescriptorDataInfoEXT[] ret = new VkSamplerCaptureDescriptorDataInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSamplerCaptureDescriptorDataInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

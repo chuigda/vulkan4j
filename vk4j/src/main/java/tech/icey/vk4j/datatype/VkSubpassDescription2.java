@@ -1,24 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkSubpassDescriptionFlags;
-import tech.icey.vk4j.enumtype.VkPipelineBindPoint;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.ptr.IntPtr;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_2;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSubpassDescription2(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -139,7 +132,7 @@ public record VkSubpassDescription2(MemorySegment segment) {
     public void pInputAttachmentsRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
         segment.set(LAYOUT$pInputAttachments, OFFSET$pInputAttachments, value);
     }
-
+    
     public @nullable VkAttachmentReference2 pInputAttachments() {
         MemorySegment s = pInputAttachmentsRaw();
         if (s.address() == 0) {
@@ -168,7 +161,7 @@ public record VkSubpassDescription2(MemorySegment segment) {
     public void pColorAttachmentsRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
         segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
-
+    
     public @nullable VkAttachmentReference2 pColorAttachments() {
         MemorySegment s = pColorAttachmentsRaw();
         if (s.address() == 0) {
@@ -189,7 +182,7 @@ public record VkSubpassDescription2(MemorySegment segment) {
     public void pResolveAttachmentsRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
         segment.set(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments, value);
     }
-
+    
     public @nullable VkAttachmentReference2 pResolveAttachments() {
         MemorySegment s = pResolveAttachmentsRaw();
         if (s.address() == 0) {
@@ -210,7 +203,7 @@ public record VkSubpassDescription2(MemorySegment segment) {
     public void pDepthStencilAttachmentRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
         segment.set(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment, value);
     }
-
+    
     public @nullable VkAttachmentReference2 pDepthStencilAttachment() {
         MemorySegment s = pDepthStencilAttachmentRaw();
         if (s.address() == 0) {
@@ -239,37 +232,25 @@ public record VkSubpassDescription2(MemorySegment segment) {
     public void pPreserveAttachmentsRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments, value);
     }
-
-    public @unsigned IntPtr pPreserveAttachments() {
-        return new IntPtr(pPreserveAttachmentsRaw());
+    
+    public @unsigned IntBuffer pPreserveAttachments() {
+        return new IntBuffer(pPreserveAttachmentsRaw());
     }
 
-    public void pPreserveAttachments(@unsigned IntPtr value) {
+    public void pPreserveAttachments(@unsigned IntBuffer value) {
         pPreserveAttachmentsRaw(value.segment());
     }
 
-
-    public static final class Factory implements IFactory<VkSubpassDescription2> {
-        @Override
-        public Class<VkSubpassDescription2> clazz() {
-            return VkSubpassDescription2.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkSubpassDescription2.LAYOUT;
-        }
-
-        @Override
-        public VkSubpassDescription2 create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkSubpassDescription2 createUninit(MemorySegment segment) {
-            return new VkSubpassDescription2(segment);
-        }
+    public static VkSubpassDescription2 allocate(Arena arena) {
+        return new VkSubpassDescription2(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkSubpassDescription2[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSubpassDescription2[] ret = new VkSubpassDescription2[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSubpassDescription2(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

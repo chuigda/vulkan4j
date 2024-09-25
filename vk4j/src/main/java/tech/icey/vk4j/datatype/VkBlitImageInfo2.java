@@ -1,24 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.enumtype.VkFilter;
-import tech.icey.vk4j.enumtype.VkImageLayout;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkImage;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_BLIT_IMAGE_INFO_2;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkBlitImageInfo2(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -131,7 +124,7 @@ public record VkBlitImageInfo2(MemorySegment segment) {
     public void pRegionsRaw(@pointer(comment="VkImageBlit2*") MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
-
+    
     public @nullable VkImageBlit2 pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {
@@ -153,28 +146,16 @@ public record VkBlitImageInfo2(MemorySegment segment) {
         segment.set(LAYOUT$filter, OFFSET$filter, value);
     }
 
-
-    public static final class Factory implements IFactory<VkBlitImageInfo2> {
-        @Override
-        public Class<VkBlitImageInfo2> clazz() {
-            return VkBlitImageInfo2.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkBlitImageInfo2.LAYOUT;
-        }
-
-        @Override
-        public VkBlitImageInfo2 create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkBlitImageInfo2 createUninit(MemorySegment segment) {
-            return new VkBlitImageInfo2(segment);
-        }
+    public static VkBlitImageInfo2 allocate(Arena arena) {
+        return new VkBlitImageInfo2(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkBlitImageInfo2[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkBlitImageInfo2[] ret = new VkBlitImageInfo2[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkBlitImageInfo2(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

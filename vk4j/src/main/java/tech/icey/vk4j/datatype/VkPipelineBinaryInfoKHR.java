@@ -1,22 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkPipelineBinaryKHR;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_BINARY_INFO_KHR;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkPipelineBinaryInfoKHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -77,7 +72,7 @@ public record VkPipelineBinaryInfoKHR(MemorySegment segment) {
     public void pPipelineBinariesRaw(@pointer(comment="VkPipelineBinaryKHR*") MemorySegment value) {
         segment.set(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries, value);
     }
-
+    
     public @nullable VkPipelineBinaryKHR pPipelineBinaries() {
         MemorySegment s = pPipelineBinariesRaw();
         if (s.address() == 0) {
@@ -91,28 +86,16 @@ public record VkPipelineBinaryInfoKHR(MemorySegment segment) {
         pPipelineBinariesRaw(s);
     }
 
-
-    public static final class Factory implements IFactory<VkPipelineBinaryInfoKHR> {
-        @Override
-        public Class<VkPipelineBinaryInfoKHR> clazz() {
-            return VkPipelineBinaryInfoKHR.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPipelineBinaryInfoKHR.LAYOUT;
-        }
-
-        @Override
-        public VkPipelineBinaryInfoKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPipelineBinaryInfoKHR createUninit(MemorySegment segment) {
-            return new VkPipelineBinaryInfoKHR(segment);
-        }
+    public static VkPipelineBinaryInfoKHR allocate(Arena arena) {
+        return new VkPipelineBinaryInfoKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPipelineBinaryInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPipelineBinaryInfoKHR[] ret = new VkPipelineBinaryInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPipelineBinaryInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

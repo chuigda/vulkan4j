@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -111,36 +109,24 @@ public record VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices, value);
     }
     
-    public @unsigned IntPtr pDeviceIndices() {
-        return new IntPtr(pDeviceIndicesRaw());
+    public @unsigned IntBuffer pDeviceIndices() {
+        return new IntBuffer(pDeviceIndicesRaw());
     }
 
-    public void pDeviceIndices(@unsigned IntPtr value) {
+    public void pDeviceIndices(@unsigned IntBuffer value) {
         pDeviceIndicesRaw(value.segment());
     }
 
-
-    public static final class Factory implements IFactory<VkBindAccelerationStructureMemoryInfoNV> {
-        @Override
-        public Class<VkBindAccelerationStructureMemoryInfoNV> clazz() {
-            return VkBindAccelerationStructureMemoryInfoNV.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkBindAccelerationStructureMemoryInfoNV.LAYOUT;
-        }
-
-        @Override
-        public VkBindAccelerationStructureMemoryInfoNV create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkBindAccelerationStructureMemoryInfoNV createUninit(MemorySegment segment) {
-            return new VkBindAccelerationStructureMemoryInfoNV(segment);
-        }
+    public static VkBindAccelerationStructureMemoryInfoNV allocate(Arena arena) {
+        return new VkBindAccelerationStructureMemoryInfoNV(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkBindAccelerationStructureMemoryInfoNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkBindAccelerationStructureMemoryInfoNV[] ret = new VkBindAccelerationStructureMemoryInfoNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkBindAccelerationStructureMemoryInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

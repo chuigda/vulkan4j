@@ -1,25 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.enumtype.VkResult;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkSemaphore;
-import tech.icey.vk4j.handle.VkSwapchainKHR;
-import tech.icey.vk4j.ptr.IntPtr;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkPresentInfoKHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -96,7 +88,7 @@ public record VkPresentInfoKHR(MemorySegment segment) {
     public void pWaitSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
-
+    
     public @nullable VkSemaphore pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.address() == 0) {
@@ -125,7 +117,7 @@ public record VkPresentInfoKHR(MemorySegment segment) {
     public void pSwapchainsRaw(@pointer(comment="VkSwapchainKHR*") MemorySegment value) {
         segment.set(LAYOUT$pSwapchains, OFFSET$pSwapchains, value);
     }
-
+    
     public @nullable VkSwapchainKHR pSwapchains() {
         MemorySegment s = pSwapchainsRaw();
         if (s.address() == 0) {
@@ -146,59 +138,47 @@ public record VkPresentInfoKHR(MemorySegment segment) {
     public void pImageIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
     }
-
-    public @unsigned IntPtr pImageIndices() {
-        return new IntPtr(pImageIndicesRaw());
+    
+    public @unsigned IntBuffer pImageIndices() {
+        return new IntBuffer(pImageIndicesRaw());
     }
 
-    public void pImageIndices(@unsigned IntPtr value) {
+    public void pImageIndices(@unsigned IntBuffer value) {
         pImageIndicesRaw(value.segment());
     }
 
     public @pointer(target=VkResult.class) MemorySegment pResultsRaw() {
         return segment.get(LAYOUT$pResults, OFFSET$pResults);
     }
-
+    
     public void pResultsRaw(@pointer(target=VkResult.class) MemorySegment value) {
         segment.set(LAYOUT$pResults, OFFSET$pResults, value);
     }
-
-    public @nullable IntPtr pResults() {
+    
+    public @nullable IntBuffer pResults() {
         MemorySegment s = pResultsRaw();
         if (s.address() == 0) {
             return null;
         }
-
-        return new IntPtr(s);
+        
+        return new IntBuffer(s);
     }
-
-    public void pResults(@nullable IntPtr value) {
+    
+    public void pResults(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResultsRaw(s);
     }
 
-
-    public static final class Factory implements IFactory<VkPresentInfoKHR> {
-        @Override
-        public Class<VkPresentInfoKHR> clazz() {
-            return VkPresentInfoKHR.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPresentInfoKHR.LAYOUT;
-        }
-
-        @Override
-        public VkPresentInfoKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPresentInfoKHR createUninit(MemorySegment segment) {
-            return new VkPresentInfoKHR(segment);
-        }
+    public static VkPresentInfoKHR allocate(Arena arena) {
+        return new VkPresentInfoKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPresentInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPresentInfoKHR[] ret = new VkPresentInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPresentInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkImportMetalBufferInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$mtlBuffer, OFFSET$mtlBuffer, value);
     }
 
-
-    public static final class Factory implements IFactory<VkImportMetalBufferInfoEXT> {
-        @Override
-        public Class<VkImportMetalBufferInfoEXT> clazz() {
-            return VkImportMetalBufferInfoEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkImportMetalBufferInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkImportMetalBufferInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkImportMetalBufferInfoEXT createUninit(MemorySegment segment) {
-            return new VkImportMetalBufferInfoEXT(segment);
-        }
+    public static VkImportMetalBufferInfoEXT allocate(Arena arena) {
+        return new VkImportMetalBufferInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkImportMetalBufferInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkImportMetalBufferInfoEXT[] ret = new VkImportMetalBufferInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkImportMetalBufferInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

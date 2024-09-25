@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -87,28 +85,16 @@ public record VkPerformanceOverrideInfoINTEL(MemorySegment segment) {
         segment.set(LAYOUT$parameter, OFFSET$parameter, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPerformanceOverrideInfoINTEL> {
-        @Override
-        public Class<VkPerformanceOverrideInfoINTEL> clazz() {
-            return VkPerformanceOverrideInfoINTEL.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPerformanceOverrideInfoINTEL.LAYOUT;
-        }
-
-        @Override
-        public VkPerformanceOverrideInfoINTEL create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPerformanceOverrideInfoINTEL createUninit(MemorySegment segment) {
-            return new VkPerformanceOverrideInfoINTEL(segment);
-        }
+    public static VkPerformanceOverrideInfoINTEL allocate(Arena arena) {
+        return new VkPerformanceOverrideInfoINTEL(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPerformanceOverrideInfoINTEL[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPerformanceOverrideInfoINTEL[] ret = new VkPerformanceOverrideInfoINTEL[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPerformanceOverrideInfoINTEL(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

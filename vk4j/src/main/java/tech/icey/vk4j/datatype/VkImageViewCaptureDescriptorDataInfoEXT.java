@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkImageViewCaptureDescriptorDataInfoEXT(MemorySegment segment) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageView, LAYOUT$imageView.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkImageViewCaptureDescriptorDataInfoEXT> {
-        @Override
-        public Class<VkImageViewCaptureDescriptorDataInfoEXT> clazz() {
-            return VkImageViewCaptureDescriptorDataInfoEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkImageViewCaptureDescriptorDataInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkImageViewCaptureDescriptorDataInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkImageViewCaptureDescriptorDataInfoEXT createUninit(MemorySegment segment) {
-            return new VkImageViewCaptureDescriptorDataInfoEXT(segment);
-        }
+    public static VkImageViewCaptureDescriptorDataInfoEXT allocate(Arena arena) {
+        return new VkImageViewCaptureDescriptorDataInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkImageViewCaptureDescriptorDataInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkImageViewCaptureDescriptorDataInfoEXT[] ret = new VkImageViewCaptureDescriptorDataInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkImageViewCaptureDescriptorDataInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

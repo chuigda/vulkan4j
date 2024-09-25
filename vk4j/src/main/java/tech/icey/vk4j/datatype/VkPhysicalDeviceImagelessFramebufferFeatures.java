@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceImagelessFramebufferFeatures(MemorySegment segment
         segment.set(LAYOUT$imagelessFramebuffer, OFFSET$imagelessFramebuffer, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceImagelessFramebufferFeatures> {
-        @Override
-        public Class<VkPhysicalDeviceImagelessFramebufferFeatures> clazz() {
-            return VkPhysicalDeviceImagelessFramebufferFeatures.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceImagelessFramebufferFeatures.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceImagelessFramebufferFeatures create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceImagelessFramebufferFeatures createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceImagelessFramebufferFeatures(segment);
-        }
+    public static VkPhysicalDeviceImagelessFramebufferFeatures allocate(Arena arena) {
+        return new VkPhysicalDeviceImagelessFramebufferFeatures(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceImagelessFramebufferFeatures[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceImagelessFramebufferFeatures[] ret = new VkPhysicalDeviceImagelessFramebufferFeatures[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceImagelessFramebufferFeatures(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

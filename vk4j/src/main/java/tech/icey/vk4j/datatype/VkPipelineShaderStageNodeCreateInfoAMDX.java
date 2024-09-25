@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -67,11 +65,11 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(MemorySegment segment) {
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
     
-    public BytePtr pName() {
-        return new BytePtr(pNameRaw());
+    public ByteBuffer pName() {
+        return new ByteBuffer(pNameRaw());
     }
 
-    public void pName(BytePtr value) {
+    public void pName(ByteBuffer value) {
         pNameRaw(value.segment());
     }
 
@@ -83,28 +81,16 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(MemorySegment segment) {
         segment.set(LAYOUT$index, OFFSET$index, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPipelineShaderStageNodeCreateInfoAMDX> {
-        @Override
-        public Class<VkPipelineShaderStageNodeCreateInfoAMDX> clazz() {
-            return VkPipelineShaderStageNodeCreateInfoAMDX.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPipelineShaderStageNodeCreateInfoAMDX.LAYOUT;
-        }
-
-        @Override
-        public VkPipelineShaderStageNodeCreateInfoAMDX create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPipelineShaderStageNodeCreateInfoAMDX createUninit(MemorySegment segment) {
-            return new VkPipelineShaderStageNodeCreateInfoAMDX(segment);
-        }
+    public static VkPipelineShaderStageNodeCreateInfoAMDX allocate(Arena arena) {
+        return new VkPipelineShaderStageNodeCreateInfoAMDX(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPipelineShaderStageNodeCreateInfoAMDX[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPipelineShaderStageNodeCreateInfoAMDX[] ret = new VkPipelineShaderStageNodeCreateInfoAMDX[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPipelineShaderStageNodeCreateInfoAMDX(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

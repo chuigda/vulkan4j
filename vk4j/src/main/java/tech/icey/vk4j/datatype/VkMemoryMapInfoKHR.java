@@ -1,21 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkMemoryMapFlags;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkDeviceMemory;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
+import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_MEMORY_MAP_INFO_KHR;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkMemoryMapInfoKHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -101,28 +97,16 @@ public record VkMemoryMapInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
-
-    public static final class Factory implements IFactory<VkMemoryMapInfoKHR> {
-        @Override
-        public Class<VkMemoryMapInfoKHR> clazz() {
-            return VkMemoryMapInfoKHR.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkMemoryMapInfoKHR.LAYOUT;
-        }
-
-        @Override
-        public VkMemoryMapInfoKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkMemoryMapInfoKHR createUninit(MemorySegment segment) {
-            return new VkMemoryMapInfoKHR(segment);
-        }
+    public static VkMemoryMapInfoKHR allocate(Arena arena) {
+        return new VkMemoryMapInfoKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkMemoryMapInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkMemoryMapInfoKHR[] ret = new VkMemoryMapInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkMemoryMapInfoKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

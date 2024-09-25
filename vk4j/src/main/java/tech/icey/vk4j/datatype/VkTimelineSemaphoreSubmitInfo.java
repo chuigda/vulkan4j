@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -83,11 +81,11 @@ public record VkTimelineSemaphoreSubmitInfo(MemorySegment segment) {
         segment.set(LAYOUT$pWaitSemaphoreValues, OFFSET$pWaitSemaphoreValues, value);
     }
     
-    public @unsigned LongPtr pWaitSemaphoreValues() {
-        return new LongPtr(pWaitSemaphoreValuesRaw());
+    public @unsigned LongBuffer pWaitSemaphoreValues() {
+        return new LongBuffer(pWaitSemaphoreValuesRaw());
     }
 
-    public void pWaitSemaphoreValues(@unsigned LongPtr value) {
+    public void pWaitSemaphoreValues(@unsigned LongBuffer value) {
         pWaitSemaphoreValuesRaw(value.segment());
     }
 
@@ -107,36 +105,24 @@ public record VkTimelineSemaphoreSubmitInfo(MemorySegment segment) {
         segment.set(LAYOUT$pSignalSemaphoreValues, OFFSET$pSignalSemaphoreValues, value);
     }
     
-    public @unsigned LongPtr pSignalSemaphoreValues() {
-        return new LongPtr(pSignalSemaphoreValuesRaw());
+    public @unsigned LongBuffer pSignalSemaphoreValues() {
+        return new LongBuffer(pSignalSemaphoreValuesRaw());
     }
 
-    public void pSignalSemaphoreValues(@unsigned LongPtr value) {
+    public void pSignalSemaphoreValues(@unsigned LongBuffer value) {
         pSignalSemaphoreValuesRaw(value.segment());
     }
 
-
-    public static final class Factory implements IFactory<VkTimelineSemaphoreSubmitInfo> {
-        @Override
-        public Class<VkTimelineSemaphoreSubmitInfo> clazz() {
-            return VkTimelineSemaphoreSubmitInfo.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkTimelineSemaphoreSubmitInfo.LAYOUT;
-        }
-
-        @Override
-        public VkTimelineSemaphoreSubmitInfo create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkTimelineSemaphoreSubmitInfo createUninit(MemorySegment segment) {
-            return new VkTimelineSemaphoreSubmitInfo(segment);
-        }
+    public static VkTimelineSemaphoreSubmitInfo allocate(Arena arena) {
+        return new VkTimelineSemaphoreSubmitInfo(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkTimelineSemaphoreSubmitInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkTimelineSemaphoreSubmitInfo[] ret = new VkTimelineSemaphoreSubmitInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkTimelineSemaphoreSubmitInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

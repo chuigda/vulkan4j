@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -75,28 +73,16 @@ public record VkMemoryDedicatedRequirements(MemorySegment segment) {
         segment.set(LAYOUT$requiresDedicatedAllocation, OFFSET$requiresDedicatedAllocation, value);
     }
 
-
-    public static final class Factory implements IFactory<VkMemoryDedicatedRequirements> {
-        @Override
-        public Class<VkMemoryDedicatedRequirements> clazz() {
-            return VkMemoryDedicatedRequirements.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkMemoryDedicatedRequirements.LAYOUT;
-        }
-
-        @Override
-        public VkMemoryDedicatedRequirements create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkMemoryDedicatedRequirements createUninit(MemorySegment segment) {
-            return new VkMemoryDedicatedRequirements(segment);
-        }
+    public static VkMemoryDedicatedRequirements allocate(Arena arena) {
+        return new VkMemoryDedicatedRequirements(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkMemoryDedicatedRequirements[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkMemoryDedicatedRequirements[] ret = new VkMemoryDedicatedRequirements[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkMemoryDedicatedRequirements(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

@@ -5,12 +5,11 @@ import tech.icey.vk4j.annotation.enumtype;
 import tech.icey.vk4j.annotation.nullable;
 import tech.icey.vk4j.annotation.pointer;
 import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.array.IntArray;
+import tech.icey.vk4j.buffer.IntBuffer;
 import tech.icey.vk4j.datatype.VkAllocationCallbacks;
 import tech.icey.vk4j.enumtype.VkResult;
 import tech.icey.vk4j.handle.VkInstance;
 import tech.icey.vk4j.handle.VkSurfaceKHR;
-import tech.icey.vk4j.ptr.IntPtr;
 import tech.icey.vk4j.util.Function2;
 
 import java.lang.foreign.Arena;
@@ -152,7 +151,7 @@ public final class LibGLFW {
     }
 
     public @pointer(comment = "const char**") MemorySegment glfwGetRequiredInstanceExtensions(
-            @pointer(comment = "uint32_t*") @unsigned IntPtr count
+            @pointer(comment = "uint32_t*") @unsigned IntBuffer count
     ) {
         try {
             return (MemorySegment) HANDLE$glfwGetRequiredInstanceExtensions.invokeExact(count.segment());
@@ -168,7 +167,7 @@ public final class LibGLFW {
     ) {
         try (Arena arena = Arena.ofConfined()) {
             MemorySegment s = arena.allocateFrom(procName);
-            MemorySegment instanceSegment = instance != null ? instance.handle() : MemorySegment.NULL;
+            MemorySegment instanceSegment = instance != null ? instance.segment() : MemorySegment.NULL;
             MemorySegment ret = (MemorySegment) HANDLE$glfwGetInstanceProcAddress.invokeExact(instanceSegment, s);
             if (ret.address() == 0) {
                 return null;
@@ -206,12 +205,12 @@ public final class LibGLFW {
             VkInstance instance,
             @pointer(comment="GLFWwindow*") MemorySegment window,
             VkAllocationCallbacks allocator,
-            @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR surface
+            @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer surface
     ) {
         try {
             MemorySegment allocatorSegment = allocator != null ? allocator.segment() : MemorySegment.NULL;
             return (int) HANDLE$glfwCreateWindowSurface.invokeExact(
-                    instance.handle(),
+                    instance.segment(),
                     window,
                     allocatorSegment,
                     surface.segment()
@@ -247,8 +246,8 @@ public final class LibGLFW {
 
     public void glfwGetWindowSize(
             @pointer(comment="GLFWwindow*") MemorySegment window,
-            IntPtr width,
-            IntPtr height
+            IntBuffer width,
+            IntBuffer height
     ) {
         try {
             HANDLE$glfwGetWindowSize.invokeExact(window, width.segment(), height.segment());
@@ -259,7 +258,7 @@ public final class LibGLFW {
 
     public void glfwGetWindowSize(
             @pointer(comment="GLFWwindow*") MemorySegment window,
-            IntArray wh
+            IntBuffer wh
     ) {
         try {
             HANDLE$glfwGetWindowSize.invokeExact(window, wh.segment(), wh.segment().asSlice(4, 4));

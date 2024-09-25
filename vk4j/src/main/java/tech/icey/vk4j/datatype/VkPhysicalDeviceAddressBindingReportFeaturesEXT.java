@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkPhysicalDeviceAddressBindingReportFeaturesEXT(MemorySegment segm
         segment.set(LAYOUT$reportAddressBinding, OFFSET$reportAddressBinding, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceAddressBindingReportFeaturesEXT> {
-        @Override
-        public Class<VkPhysicalDeviceAddressBindingReportFeaturesEXT> clazz() {
-            return VkPhysicalDeviceAddressBindingReportFeaturesEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceAddressBindingReportFeaturesEXT.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceAddressBindingReportFeaturesEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceAddressBindingReportFeaturesEXT createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceAddressBindingReportFeaturesEXT(segment);
-        }
+    public static VkPhysicalDeviceAddressBindingReportFeaturesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceAddressBindingReportFeaturesEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceAddressBindingReportFeaturesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceAddressBindingReportFeaturesEXT[] ret = new VkPhysicalDeviceAddressBindingReportFeaturesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceAddressBindingReportFeaturesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

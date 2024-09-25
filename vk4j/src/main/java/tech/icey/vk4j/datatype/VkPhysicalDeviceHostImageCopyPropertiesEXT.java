@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -91,16 +89,16 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         segment.set(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts, value);
     }
     
-    public @nullable IntPtr pCopySrcLayouts() {
+    public @nullable IntBuffer pCopySrcLayouts() {
         MemorySegment s = pCopySrcLayoutsRaw();
         if (s.address() == 0) {
             return null;
         }
         
-        return new IntPtr(s);
+        return new IntBuffer(s);
     }
     
-    public void pCopySrcLayouts(@nullable IntPtr value) {
+    public void pCopySrcLayouts(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopySrcLayoutsRaw(s);
     }
@@ -121,16 +119,16 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
     }
     
-    public @nullable IntPtr pCopyDstLayouts() {
+    public @nullable IntBuffer pCopyDstLayouts() {
         MemorySegment s = pCopyDstLayoutsRaw();
         if (s.address() == 0) {
             return null;
         }
         
-        return new IntPtr(s);
+        return new IntBuffer(s);
     }
     
-    public void pCopyDstLayouts(@nullable IntPtr value) {
+    public void pCopyDstLayouts(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopyDstLayoutsRaw(s);
     }
@@ -139,11 +137,11 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         return segment.asSlice(OFFSET$optimalTilingLayoutUUID, LAYOUT$optimalTilingLayoutUUID.byteSize());
     }
 
-    public @unsigned ByteArray optimalTilingLayoutUUID() {
-        return new ByteArray(optimalTilingLayoutUUIDRaw(), LAYOUT$optimalTilingLayoutUUID.elementCount());
+    public @unsigned ByteBuffer optimalTilingLayoutUUID() {
+        return new ByteBuffer(optimalTilingLayoutUUIDRaw());
     }
 
-    public void optimalTilingLayoutUUID(@unsigned ByteArray value) {
+    public void optimalTilingLayoutUUID(@unsigned ByteBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$optimalTilingLayoutUUID, LAYOUT$optimalTilingLayoutUUID.byteSize());
     }
 
@@ -155,28 +153,16 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         segment.set(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceHostImageCopyPropertiesEXT> {
-        @Override
-        public Class<VkPhysicalDeviceHostImageCopyPropertiesEXT> clazz() {
-            return VkPhysicalDeviceHostImageCopyPropertiesEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceHostImageCopyPropertiesEXT.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceHostImageCopyPropertiesEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceHostImageCopyPropertiesEXT createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceHostImageCopyPropertiesEXT(segment);
-        }
+    public static VkPhysicalDeviceHostImageCopyPropertiesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceHostImageCopyPropertiesEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceHostImageCopyPropertiesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceHostImageCopyPropertiesEXT[] ret = new VkPhysicalDeviceHostImageCopyPropertiesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceHostImageCopyPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

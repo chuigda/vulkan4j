@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -38,28 +36,16 @@ public record VkRenderPassCreationFeedbackInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$postMergeSubpassCount, OFFSET$postMergeSubpassCount, value);
     }
 
-
-    public static final class Factory implements IFactory<VkRenderPassCreationFeedbackInfoEXT> {
-        @Override
-        public Class<VkRenderPassCreationFeedbackInfoEXT> clazz() {
-            return VkRenderPassCreationFeedbackInfoEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkRenderPassCreationFeedbackInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkRenderPassCreationFeedbackInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkRenderPassCreationFeedbackInfoEXT createUninit(MemorySegment segment) {
-            return new VkRenderPassCreationFeedbackInfoEXT(segment);
-        }
+    public static VkRenderPassCreationFeedbackInfoEXT allocate(Arena arena) {
+        return new VkRenderPassCreationFeedbackInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkRenderPassCreationFeedbackInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkRenderPassCreationFeedbackInfoEXT[] ret = new VkRenderPassCreationFeedbackInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkRenderPassCreationFeedbackInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

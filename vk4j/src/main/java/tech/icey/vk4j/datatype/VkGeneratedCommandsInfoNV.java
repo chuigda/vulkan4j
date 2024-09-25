@@ -1,24 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.enumtype.VkPipelineBindPoint;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkBuffer;
-import tech.icey.vk4j.handle.VkIndirectCommandsLayoutNV;
-import tech.icey.vk4j.handle.VkPipeline;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
+import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_NV;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import tech.icey.vk4j.NativeLayout;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -147,7 +140,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
     public void pStreamsRaw(@pointer(comment="VkIndirectCommandsStreamNV*") MemorySegment value) {
         segment.set(LAYOUT$pStreams, OFFSET$pStreams, value);
     }
-
+    
     public @nullable VkIndirectCommandsStreamNV pStreams() {
         MemorySegment s = pStreamsRaw();
         if (s.address() == 0) {
@@ -225,28 +218,16 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
         segment.set(LAYOUT$sequencesIndexOffset, OFFSET$sequencesIndexOffset, value);
     }
 
-
-    public static final class Factory implements IFactory<VkGeneratedCommandsInfoNV> {
-        @Override
-        public Class<VkGeneratedCommandsInfoNV> clazz() {
-            return VkGeneratedCommandsInfoNV.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkGeneratedCommandsInfoNV.LAYOUT;
-        }
-
-        @Override
-        public VkGeneratedCommandsInfoNV create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkGeneratedCommandsInfoNV createUninit(MemorySegment segment) {
-            return new VkGeneratedCommandsInfoNV(segment);
-        }
+    public static VkGeneratedCommandsInfoNV allocate(Arena arena) {
+        return new VkGeneratedCommandsInfoNV(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkGeneratedCommandsInfoNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkGeneratedCommandsInfoNV[] ret = new VkGeneratedCommandsInfoNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkGeneratedCommandsInfoNV(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

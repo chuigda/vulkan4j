@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -115,11 +113,11 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pBufferIndices, OFFSET$pBufferIndices, value);
     }
     
-    public @unsigned IntPtr pBufferIndices() {
-        return new IntPtr(pBufferIndicesRaw());
+    public @unsigned IntBuffer pBufferIndices() {
+        return new IntBuffer(pBufferIndicesRaw());
     }
 
-    public void pBufferIndices(@unsigned IntPtr value) {
+    public void pBufferIndices(@unsigned IntBuffer value) {
         pBufferIndicesRaw(value.segment());
     }
 
@@ -131,36 +129,24 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
         segment.set(LAYOUT$pOffsets, OFFSET$pOffsets, value);
     }
     
-    public @unsigned LongPtr pOffsets() {
-        return new LongPtr(pOffsetsRaw());
+    public @unsigned LongBuffer pOffsets() {
+        return new LongBuffer(pOffsetsRaw());
     }
 
-    public void pOffsets(@unsigned LongPtr value) {
+    public void pOffsets(@unsigned LongBuffer value) {
         pOffsetsRaw(value.segment());
     }
 
-
-    public static final class Factory implements IFactory<VkSetDescriptorBufferOffsetsInfoEXT> {
-        @Override
-        public Class<VkSetDescriptorBufferOffsetsInfoEXT> clazz() {
-            return VkSetDescriptorBufferOffsetsInfoEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkSetDescriptorBufferOffsetsInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkSetDescriptorBufferOffsetsInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkSetDescriptorBufferOffsetsInfoEXT createUninit(MemorySegment segment) {
-            return new VkSetDescriptorBufferOffsetsInfoEXT(segment);
-        }
+    public static VkSetDescriptorBufferOffsetsInfoEXT allocate(Arena arena) {
+        return new VkSetDescriptorBufferOffsetsInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkSetDescriptorBufferOffsetsInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSetDescriptorBufferOffsetsInfoEXT[] ret = new VkSetDescriptorBufferOffsetsInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSetDescriptorBufferOffsetsInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

@@ -1,20 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkCompositeAlphaFlagsKHR;
-import tech.icey.vk4j.bitmask.VkImageUsageFlags;
-import tech.icey.vk4j.bitmask.VkSurfaceTransformFlagsKHR;
-
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.StructLayout;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSurfaceCapabilitiesKHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -147,28 +144,16 @@ public record VkSurfaceCapabilitiesKHR(MemorySegment segment) {
         segment.set(LAYOUT$supportedUsageFlags, OFFSET$supportedUsageFlags, value);
     }
 
-
-    public static final class Factory implements IFactory<VkSurfaceCapabilitiesKHR> {
-        @Override
-        public Class<VkSurfaceCapabilitiesKHR> clazz() {
-            return VkSurfaceCapabilitiesKHR.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkSurfaceCapabilitiesKHR.LAYOUT;
-        }
-
-        @Override
-        public VkSurfaceCapabilitiesKHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkSurfaceCapabilitiesKHR createUninit(MemorySegment segment) {
-            return new VkSurfaceCapabilitiesKHR(segment);
-        }
+    public static VkSurfaceCapabilitiesKHR allocate(Arena arena) {
+        return new VkSurfaceCapabilitiesKHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkSurfaceCapabilitiesKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSurfaceCapabilitiesKHR[] ret = new VkSurfaceCapabilitiesKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSurfaceCapabilitiesKHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

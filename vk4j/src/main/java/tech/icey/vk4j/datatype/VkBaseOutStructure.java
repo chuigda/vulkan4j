@@ -1,16 +1,12 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.annotation.enumtype;
 import tech.icey.vk4j.annotation.nullable;
 import tech.icey.vk4j.annotation.pointer;
 import tech.icey.vk4j.enumtype.VkStructureType;
 
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 
 import static java.lang.foreign.ValueLayout.OfInt;
 import static java.lang.foreign.ValueLayout.PathElement;
@@ -63,28 +59,16 @@ public record VkBaseOutStructure(MemorySegment segment) {
         pNextRaw(s);
     }
 
-
-    public static final class VkBaseOutStructureFactory implements IFactory<VkBaseOutStructure> {
-        @Override
-        public Class<VkBaseOutStructure> clazz() {
-            return VkBaseOutStructure.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkBaseOutStructure.LAYOUT;
-        }
-
-        @Override
-        public VkBaseOutStructure create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkBaseOutStructure createUninit(MemorySegment segment) {
-            return new VkBaseOutStructure(segment);
-        }
+    public static VkBaseOutStructure create(Arena arena) {
+        return new VkBaseOutStructure(arena.allocate(LAYOUT));
     }
 
-    public static final VkBaseOutStructureFactory FACTORY = new VkBaseOutStructureFactory();
+    public static VkBaseOutStructure[] createArray(Arena arena, int length) {
+        MemorySegment segment = arena.allocate(LAYOUT, length);
+        VkBaseOutStructure[] ret = new VkBaseOutStructure[length];
+        for (int i = 0; i < length; i++) {
+            ret[i] = new VkBaseOutStructure(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

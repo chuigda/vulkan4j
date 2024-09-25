@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -111,28 +109,16 @@ public record VkPhysicalDeviceImageFormatInfo2(MemorySegment segment) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceImageFormatInfo2> {
-        @Override
-        public Class<VkPhysicalDeviceImageFormatInfo2> clazz() {
-            return VkPhysicalDeviceImageFormatInfo2.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceImageFormatInfo2.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceImageFormatInfo2 create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceImageFormatInfo2 createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceImageFormatInfo2(segment);
-        }
+    public static VkPhysicalDeviceImageFormatInfo2 allocate(Arena arena) {
+        return new VkPhysicalDeviceImageFormatInfo2(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceImageFormatInfo2[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceImageFormatInfo2[] ret = new VkPhysicalDeviceImageFormatInfo2[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceImageFormatInfo2(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

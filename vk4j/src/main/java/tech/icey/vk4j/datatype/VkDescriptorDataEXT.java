@@ -1,19 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.handle.VkSampler;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfLong;
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkDescriptorDataEXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
@@ -73,7 +71,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pSamplerRaw(@pointer(comment="VkSampler*") MemorySegment value) {
         segment.set(LAYOUT$pSampler, OFFSET$pSampler, value);
     }
-
+    
     public @nullable VkSampler pSampler() {
         MemorySegment s = pSamplerRaw();
         if (s.address() == 0) {
@@ -94,7 +92,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pCombinedImageSamplerRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
         segment.set(LAYOUT$pCombinedImageSampler, OFFSET$pCombinedImageSampler, value);
     }
-
+    
     public @nullable VkDescriptorImageInfo pCombinedImageSampler() {
         MemorySegment s = pCombinedImageSamplerRaw();
         if (s.address() == 0) {
@@ -115,7 +113,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pInputAttachmentImageRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
         segment.set(LAYOUT$pInputAttachmentImage, OFFSET$pInputAttachmentImage, value);
     }
-
+    
     public @nullable VkDescriptorImageInfo pInputAttachmentImage() {
         MemorySegment s = pInputAttachmentImageRaw();
         if (s.address() == 0) {
@@ -136,7 +134,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pSampledImageRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
         segment.set(LAYOUT$pSampledImage, OFFSET$pSampledImage, value);
     }
-
+    
     public @nullable VkDescriptorImageInfo pSampledImage() {
         MemorySegment s = pSampledImageRaw();
         if (s.address() == 0) {
@@ -157,7 +155,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pStorageImageRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
         segment.set(LAYOUT$pStorageImage, OFFSET$pStorageImage, value);
     }
-
+    
     public @nullable VkDescriptorImageInfo pStorageImage() {
         MemorySegment s = pStorageImageRaw();
         if (s.address() == 0) {
@@ -178,7 +176,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pUniformTexelBufferRaw(@pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pUniformTexelBuffer, OFFSET$pUniformTexelBuffer, value);
     }
-
+    
     public @nullable VkDescriptorAddressInfoEXT pUniformTexelBuffer() {
         MemorySegment s = pUniformTexelBufferRaw();
         if (s.address() == 0) {
@@ -199,7 +197,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pStorageTexelBufferRaw(@pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pStorageTexelBuffer, OFFSET$pStorageTexelBuffer, value);
     }
-
+    
     public @nullable VkDescriptorAddressInfoEXT pStorageTexelBuffer() {
         MemorySegment s = pStorageTexelBufferRaw();
         if (s.address() == 0) {
@@ -220,7 +218,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pUniformBufferRaw(@pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pUniformBuffer, OFFSET$pUniformBuffer, value);
     }
-
+    
     public @nullable VkDescriptorAddressInfoEXT pUniformBuffer() {
         MemorySegment s = pUniformBufferRaw();
         if (s.address() == 0) {
@@ -241,7 +239,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
     public void pStorageBufferRaw(@pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pStorageBuffer, OFFSET$pStorageBuffer, value);
     }
-
+    
     public @nullable VkDescriptorAddressInfoEXT pStorageBuffer() {
         MemorySegment s = pStorageBufferRaw();
         if (s.address() == 0) {
@@ -263,28 +261,16 @@ public record VkDescriptorDataEXT(MemorySegment segment) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value);
     }
 
-
-    public static final class Factory implements IFactory<VkDescriptorDataEXT> {
-        @Override
-        public Class<VkDescriptorDataEXT> clazz() {
-            return VkDescriptorDataEXT.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkDescriptorDataEXT.LAYOUT;
-        }
-
-        @Override
-        public VkDescriptorDataEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkDescriptorDataEXT createUninit(MemorySegment segment) {
-            return new VkDescriptorDataEXT(segment);
-        }
+    public static VkDescriptorDataEXT allocate(Arena arena) {
+        return new VkDescriptorDataEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkDescriptorDataEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDescriptorDataEXT[] ret = new VkDescriptorDataEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDescriptorDataEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

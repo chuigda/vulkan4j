@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -71,11 +69,11 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(MemorySegment
         return segment.asSlice(OFFSET$maxWorkGroupCount, LAYOUT$maxWorkGroupCount.byteSize());
     }
 
-    public @unsigned IntArray maxWorkGroupCount() {
-        return new IntArray(maxWorkGroupCountRaw(), LAYOUT$maxWorkGroupCount.elementCount());
+    public @unsigned IntBuffer maxWorkGroupCount() {
+        return new IntBuffer(maxWorkGroupCountRaw());
     }
 
-    public void maxWorkGroupCount(@unsigned IntArray value) {
+    public void maxWorkGroupCount(@unsigned IntBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxWorkGroupCount, LAYOUT$maxWorkGroupCount.byteSize());
     }
 
@@ -83,11 +81,11 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(MemorySegment
         return segment.asSlice(OFFSET$maxWorkGroupSize, LAYOUT$maxWorkGroupSize.byteSize());
     }
 
-    public @unsigned IntArray maxWorkGroupSize() {
-        return new IntArray(maxWorkGroupSizeRaw(), LAYOUT$maxWorkGroupSize.elementCount());
+    public @unsigned IntBuffer maxWorkGroupSize() {
+        return new IntBuffer(maxWorkGroupSizeRaw());
     }
 
-    public void maxWorkGroupSize(@unsigned IntArray value) {
+    public void maxWorkGroupSize(@unsigned IntBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxWorkGroupSize, LAYOUT$maxWorkGroupSize.byteSize());
     }
 
@@ -107,28 +105,16 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(MemorySegment
         segment.set(LAYOUT$indirectBufferOffsetAlignment, OFFSET$indirectBufferOffsetAlignment, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI> {
-        @Override
-        public Class<VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI> clazz() {
-            return VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(segment);
-        }
+    public static VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI allocate(Arena arena) {
+        return new VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI[] ret = new VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,11 +61,11 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(MemorySegment segment) {
         return segment.asSlice(OFFSET$shaderBinaryUUID, LAYOUT$shaderBinaryUUID.byteSize());
     }
 
-    public @unsigned ByteArray shaderBinaryUUID() {
-        return new ByteArray(shaderBinaryUUIDRaw(), LAYOUT$shaderBinaryUUID.elementCount());
+    public @unsigned ByteBuffer shaderBinaryUUID() {
+        return new ByteBuffer(shaderBinaryUUIDRaw());
     }
 
-    public void shaderBinaryUUID(@unsigned ByteArray value) {
+    public void shaderBinaryUUID(@unsigned ByteBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$shaderBinaryUUID, LAYOUT$shaderBinaryUUID.byteSize());
     }
 
@@ -79,28 +77,16 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(MemorySegment segment) {
         segment.set(LAYOUT$shaderBinaryVersion, OFFSET$shaderBinaryVersion, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceShaderObjectPropertiesEXT> {
-        @Override
-        public Class<VkPhysicalDeviceShaderObjectPropertiesEXT> clazz() {
-            return VkPhysicalDeviceShaderObjectPropertiesEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceShaderObjectPropertiesEXT.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceShaderObjectPropertiesEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceShaderObjectPropertiesEXT createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceShaderObjectPropertiesEXT(segment);
-        }
+    public static VkPhysicalDeviceShaderObjectPropertiesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceShaderObjectPropertiesEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceShaderObjectPropertiesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceShaderObjectPropertiesEXT[] ret = new VkPhysicalDeviceShaderObjectPropertiesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceShaderObjectPropertiesEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

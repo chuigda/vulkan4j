@@ -1,22 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.enumtype.VkDescriptorType;
-import tech.icey.vk4j.enumtype.VkStructureType;
-import tech.icey.vk4j.handle.VkImageView;
-import tech.icey.vk4j.handle.VkSampler;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkImageViewHandleInfoNVX(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -90,28 +85,16 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampler, LAYOUT$sampler.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkImageViewHandleInfoNVX> {
-        @Override
-        public Class<VkImageViewHandleInfoNVX> clazz() {
-            return VkImageViewHandleInfoNVX.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkImageViewHandleInfoNVX.LAYOUT;
-        }
-
-        @Override
-        public VkImageViewHandleInfoNVX create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkImageViewHandleInfoNVX createUninit(MemorySegment segment) {
-            return new VkImageViewHandleInfoNVX(segment);
-        }
+    public static VkImageViewHandleInfoNVX allocate(Arena arena) {
+        return new VkImageViewHandleInfoNVX(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkImageViewHandleInfoNVX[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkImageViewHandleInfoNVX[] ret = new VkImageViewHandleInfoNVX[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkImageViewHandleInfoNVX(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

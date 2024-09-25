@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -63,28 +61,16 @@ public record VkDisplayModeProperties2KHR(MemorySegment segment) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayModeProperties, LAYOUT$displayModeProperties.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkDisplayModeProperties2KHR> {
-        @Override
-        public Class<VkDisplayModeProperties2KHR> clazz() {
-            return VkDisplayModeProperties2KHR.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkDisplayModeProperties2KHR.LAYOUT;
-        }
-
-        @Override
-        public VkDisplayModeProperties2KHR create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkDisplayModeProperties2KHR createUninit(MemorySegment segment) {
-            return new VkDisplayModeProperties2KHR(segment);
-        }
+    public static VkDisplayModeProperties2KHR allocate(Arena arena) {
+        return new VkDisplayModeProperties2KHR(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkDisplayModeProperties2KHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDisplayModeProperties2KHR[] ret = new VkDisplayModeProperties2KHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDisplayModeProperties2KHR(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

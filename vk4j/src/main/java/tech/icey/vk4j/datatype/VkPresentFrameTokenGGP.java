@@ -1,20 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkPresentFrameTokenGGP(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -64,28 +61,16 @@ public record VkPresentFrameTokenGGP(MemorySegment segment) {
         segment.set(LAYOUT$frameToken, OFFSET$frameToken, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPresentFrameTokenGGP> {
-        @Override
-        public Class<VkPresentFrameTokenGGP> clazz() {
-            return VkPresentFrameTokenGGP.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPresentFrameTokenGGP.LAYOUT;
-        }
-
-        @Override
-        public VkPresentFrameTokenGGP create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPresentFrameTokenGGP createUninit(MemorySegment segment) {
-            return new VkPresentFrameTokenGGP(segment);
-        }
+    public static VkPresentFrameTokenGGP allocate(Arena arena) {
+        return new VkPresentFrameTokenGGP(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPresentFrameTokenGGP[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPresentFrameTokenGGP[] ret = new VkPresentFrameTokenGGP[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPresentFrameTokenGGP(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

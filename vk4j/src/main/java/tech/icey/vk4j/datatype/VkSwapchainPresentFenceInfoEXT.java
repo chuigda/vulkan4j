@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -88,28 +86,16 @@ public record VkSwapchainPresentFenceInfoEXT(MemorySegment segment) {
         pFencesRaw(s);
     }
 
-
-    public static final class Factory implements IFactory<VkSwapchainPresentFenceInfoEXT> {
-        @Override
-        public Class<VkSwapchainPresentFenceInfoEXT> clazz() {
-            return VkSwapchainPresentFenceInfoEXT.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkSwapchainPresentFenceInfoEXT.LAYOUT;
-        }
-
-        @Override
-        public VkSwapchainPresentFenceInfoEXT create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkSwapchainPresentFenceInfoEXT createUninit(MemorySegment segment) {
-            return new VkSwapchainPresentFenceInfoEXT(segment);
-        }
+    public static VkSwapchainPresentFenceInfoEXT allocate(Arena arena) {
+        return new VkSwapchainPresentFenceInfoEXT(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkSwapchainPresentFenceInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSwapchainPresentFenceInfoEXT[] ret = new VkSwapchainPresentFenceInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSwapchainPresentFenceInfoEXT(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

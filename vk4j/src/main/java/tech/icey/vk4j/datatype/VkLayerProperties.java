@@ -1,19 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.array.ByteArray;
-
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SequenceLayout;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.Constants.VK_MAX_DESCRIPTION_SIZE;
-import static tech.icey.vk4j.Constants.VK_MAX_EXTENSION_NAME_SIZE;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkLayerProperties(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -46,11 +44,11 @@ public record VkLayerProperties(MemorySegment segment) {
         return segment.asSlice(OFFSET$layerName, LAYOUT$layerName.byteSize());
     }
 
-    public ByteArray layerName() {
-        return new ByteArray(layerNameRaw(), LAYOUT$layerName.elementCount());
+    public ByteBuffer layerName() {
+        return new ByteBuffer(layerNameRaw());
     }
 
-    public void layerName(ByteArray value) {
+    public void layerName(ByteBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$layerName, LAYOUT$layerName.byteSize());
     }
 
@@ -74,36 +72,24 @@ public record VkLayerProperties(MemorySegment segment) {
         return segment.asSlice(OFFSET$description, LAYOUT$description.byteSize());
     }
 
-    public ByteArray description() {
-        return new ByteArray(descriptionRaw(), LAYOUT$description.elementCount());
+    public ByteBuffer description() {
+        return new ByteBuffer(descriptionRaw());
     }
 
-    public void description(ByteArray value) {
+    public void description(ByteBuffer value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, LAYOUT$description.byteSize());
     }
 
-
-    public static final class Factory implements IFactory<VkLayerProperties> {
-        @Override
-        public Class<VkLayerProperties> clazz() {
-            return VkLayerProperties.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkLayerProperties.LAYOUT;
-        }
-
-        @Override
-        public VkLayerProperties create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkLayerProperties createUninit(MemorySegment segment) {
-            return new VkLayerProperties(segment);
-        }
+    public static VkLayerProperties allocate(Arena arena) {
+        return new VkLayerProperties(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkLayerProperties[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkLayerProperties[] ret = new VkLayerProperties[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkLayerProperties(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

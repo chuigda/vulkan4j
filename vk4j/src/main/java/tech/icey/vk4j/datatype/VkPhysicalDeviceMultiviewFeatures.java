@@ -4,14 +4,12 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.IFactory;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
@@ -87,28 +85,16 @@ public record VkPhysicalDeviceMultiviewFeatures(MemorySegment segment) {
         segment.set(LAYOUT$multiviewTessellationShader, OFFSET$multiviewTessellationShader, value);
     }
 
-
-    public static final class Factory implements IFactory<VkPhysicalDeviceMultiviewFeatures> {
-        @Override
-        public Class<VkPhysicalDeviceMultiviewFeatures> clazz() {
-            return VkPhysicalDeviceMultiviewFeatures.class;
-        } 
-
-        @Override
-        public MemoryLayout layout() {
-            return VkPhysicalDeviceMultiviewFeatures.LAYOUT;
-        }
-
-        @Override
-        public VkPhysicalDeviceMultiviewFeatures create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkPhysicalDeviceMultiviewFeatures createUninit(MemorySegment segment) {
-            return new VkPhysicalDeviceMultiviewFeatures(segment);
-        }
+    public static VkPhysicalDeviceMultiviewFeatures allocate(Arena arena) {
+        return new VkPhysicalDeviceMultiviewFeatures(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkPhysicalDeviceMultiviewFeatures[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceMultiviewFeatures[] ret = new VkPhysicalDeviceMultiviewFeatures[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceMultiviewFeatures(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

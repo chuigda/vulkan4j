@@ -46,12 +46,11 @@ import java.lang.invoke.MethodHandle;
 
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.array.*;
 import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.ptr.*;
 import tech.icey.vk4j.util.Function2;
 
 public final class {class_name} {{
@@ -151,11 +150,12 @@ def generate_input_output_type(type_: CType, optional: bool) -> str:
 
     if isinstance(type_, CPointerType):
         if isinstance(type_.pointee, CNonRefType):
-            return f'{nullable_prefix}@pointer(target={type_.pointee.vk4j_ptr_type_no_sign()}.class) {type_.pointee.vk4j_ptr_type()}'
+            return f'{nullable_prefix} {type_.pointee.vk4j_ptr_type()}'
         elif isinstance(type_.pointee, CStructType) \
-                or isinstance(type_.pointee, CUnionType) \
-                or isinstance(type_.pointee, CHandleType):
+                or isinstance(type_.pointee, CUnionType):
             return f'{nullable_prefix}@pointer(target={type_.pointee.java_type()}.class) {type_.pointee.java_type()}'
+        elif isinstance(type_.pointee, CHandleType):
+            return f'{nullable_prefix}@pointer(target={type_.pointee.java_type()}.class) {type_.pointee.java_type()}.Buffer'
         else:
             return type_.java_type()
     elif isinstance(type_, CHandleType):
@@ -176,19 +176,23 @@ def generate_input_convert(type_: CType, param: Param):
     if isinstance(type_, CPointerType):
         if isinstance(type_.pointee, CNonRefType) \
                 or isinstance(type_.pointee, CStructType) \
-                or isinstance(type_.pointee, CUnionType) \
-                or isinstance(type_.pointee, CHandleType):
+                or isinstance(type_.pointee, CUnionType):
             if param.optional:
                 # see https://stackoverflow.com/a/79021315/14312575, type casting is required
+                return f'(MemorySegment) ({param.name} != null ? {param.name}.segment() : MemorySegment.NULL)'
+            else:
+                return f'{param.name}.segment()'
+        elif isinstance(type_.pointee, CHandleType):
+            if param.optional:
                 return f'(MemorySegment) ({param.name} != null ? {param.name}.segment() : MemorySegment.NULL)'
             else:
                 return f'{param.name}.segment()'
 
     if isinstance(type_, CHandleType):
         if param.optional:
-            return f'(MemorySegment) ({param.name} != null ? {param.name}.handle() : MemorySegment.NULL)'
+            return f'(MemorySegment) ({param.name} != null ? {param.name}.segment() : MemorySegment.NULL)'
         else:
-            return f'{param.name}.handle()'
+            return f'{param.name}.segment()'
 
     if isinstance(type_, CStructType) or isinstance(type_, CUnionType):
         return f'{param.name}.segment()'

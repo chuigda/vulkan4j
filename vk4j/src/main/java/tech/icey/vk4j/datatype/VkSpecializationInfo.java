@@ -1,18 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import tech.icey.vk4j.IFactory;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import tech.icey.vk4j.annotation.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.buffer.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 public record VkSpecializationInfo(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
@@ -55,7 +54,7 @@ public record VkSpecializationInfo(MemorySegment segment) {
     public void pMapEntriesRaw(@pointer(comment="VkSpecializationMapEntry*") MemorySegment value) {
         segment.set(LAYOUT$pMapEntries, OFFSET$pMapEntries, value);
     }
-
+    
     public @nullable VkSpecializationMapEntry pMapEntries() {
         MemorySegment s = pMapEntriesRaw();
         if (s.address() == 0) {
@@ -72,7 +71,7 @@ public record VkSpecializationInfo(MemorySegment segment) {
     public @unsigned long dataSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$dataSize);
         }
-
+    
         public void dataSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$dataSize, value);
         }
@@ -85,28 +84,16 @@ public record VkSpecializationInfo(MemorySegment segment) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 
-
-    public static final class Factory implements IFactory<VkSpecializationInfo> {
-        @Override
-        public Class<VkSpecializationInfo> clazz() {
-            return VkSpecializationInfo.class;
-        }
-
-        @Override
-        public MemoryLayout layout() {
-            return VkSpecializationInfo.LAYOUT;
-        }
-
-        @Override
-        public VkSpecializationInfo create(MemorySegment segment) {
-            return createUninit(segment);
-        }
-
-        @Override
-        public VkSpecializationInfo createUninit(MemorySegment segment) {
-            return new VkSpecializationInfo(segment);
-        }
+    public static VkSpecializationInfo allocate(Arena arena) {
+        return new VkSpecializationInfo(arena.allocate(LAYOUT));
     }
-
-    public static final Factory FACTORY = new Factory();
+    
+    public static VkSpecializationInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSpecializationInfo[] ret = new VkSpecializationInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSpecializationInfo(segment.asSlice(i * LAYOUT.byteSize(), LAYOUT.byteSize()));
+        }
+        return ret;
+    }
 }

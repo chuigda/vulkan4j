@@ -24,7 +24,7 @@ def generate_array_nonref_type_accessor(element_type: CNonRefType, member: Membe
     }}
 
     public {element_type.vk4j_array_type()} {member.name}() {{
-        return new {element_type.vk4j_array_type_no_sign()}({member.name}Raw(), LAYOUT${member.name}.elementCount());
+        return new {element_type.vk4j_array_type_no_sign()}({member.name}Raw());
     }}
 
     public void {member.name}({element_type.vk4j_array_type()} value) {{
@@ -76,7 +76,7 @@ def generate_array_enum_type_accessor(element_type: CEnumType, member: Member) -
     }}
 
     public {new_elem_type.vk4j_array_type()} {member.name}() {{
-        return new {new_elem_type.vk4j_array_type_no_sign()}({member.name}Raw(), LAYOUT${member.name}.elementCount());
+        return new {new_elem_type.vk4j_array_type_no_sign()}({member.name}Raw());
     }}
 
     public void {member.name}({new_elem_type.vk4j_array_type()} value) {{
