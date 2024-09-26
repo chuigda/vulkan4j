@@ -130,7 +130,7 @@ public class Application implements AutoCloseable {
             var requiredExtensionCount = pRequiredExtensionCount.read();
 
             var applicationInfo = VkApplicationInfo.allocate(localArena);
-            applicationInfo.pApplicationName(ByteBuffer.allocateString(localArena, "VkCube4j"));
+            applicationInfo.pApplicationName(ByteBuffer.allocateString(localArena, "VkExample"));
             applicationInfo.applicationVersion(Version.vkMakeAPIVersion(0, 1, 0, 0));
             applicationInfo.pEngineName(ByteBuffer.allocateString(localArena, "Soloviev D-30"));
             applicationInfo.engineVersion(Version.vkMakeAPIVersion(0, 1, 0, 0));
@@ -353,7 +353,7 @@ public class Application implements AutoCloseable {
         libGLFW.glfwWindowHint(LibGLFW.GLFW_RESIZABLE, LibGLFW.GLFW_FALSE);
         libGLFW.glfwWindowHint(LibGLFW.GLFW_TRANSPARENT_FRAMEBUFFER, 1);
 
-        glfwWindow = libGLFW.glfwCreateWindow(800, 600, "VkCube4j", MemorySegment.NULL, MemorySegment.NULL);
+        glfwWindow = libGLFW.glfwCreateWindow(800, 600, "VkExample", MemorySegment.NULL, MemorySegment.NULL);
         if (glfwWindow == null) {
             UICommons.showErrorMessage("创建 GLFW 窗口失败");
             return false;

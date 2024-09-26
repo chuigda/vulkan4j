@@ -34,8 +34,15 @@ public class ProfileMain {
     }
 
     private static void run() {
+        var startTime = System.nanoTime();
         vk4jMain();
+        var endTime = System.nanoTime();
+        System.out.println("vk4j: " + (endTime - startTime) / 1_000_000.0 + "ms");
+
+        startTime = System.nanoTime();
         lwjglMain();
+        endTime = System.nanoTime();
+        System.out.println("lwjgl-vulkan: " + (endTime - startTime) / 1_000_000.0 + "ms");
     }
 
     private static void vk4jMain() {
