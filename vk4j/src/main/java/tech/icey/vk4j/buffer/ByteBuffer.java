@@ -33,6 +33,7 @@ public record ByteBuffer(MemorySegment segment) {
         return reinterpreted.getString(0);
     }
 
+    @unsafe
     public ByteBuffer reinterpret(long newSize) {
         return new ByteBuffer(segment.reinterpret(newSize));
     }

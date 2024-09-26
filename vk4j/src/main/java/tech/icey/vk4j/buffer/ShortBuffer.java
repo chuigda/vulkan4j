@@ -1,5 +1,7 @@
 package tech.icey.vk4j.buffer;
 
+import tech.icey.vk4j.annotation.unsafe;
+
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
@@ -25,6 +27,7 @@ public record ShortBuffer(MemorySegment segment) {
         segment.set(ValueLayout.JAVA_SHORT, index * Short.BYTES, value);
     }
 
+    @unsafe
     public ShortBuffer reinterpret(long newSize) {
         return new ShortBuffer(segment.reinterpret(newSize * Short.BYTES));
     }

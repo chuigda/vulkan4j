@@ -1,5 +1,7 @@
 package tech.icey.vk4j.buffer;
 
+import tech.icey.vk4j.annotation.unsafe;
+
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
@@ -25,6 +27,7 @@ public record PointerBuffer(MemorySegment segment) {
         segment.set(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize(), value);
     }
 
+    @unsafe
     public PointerBuffer reinterpret(long newSize) {
         return new PointerBuffer(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
     }

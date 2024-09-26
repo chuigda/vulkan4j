@@ -1,6 +1,7 @@
 package tech.icey.vk4j.buffer;
 
 import tech.icey.vk4j.NativeLayout;
+import tech.icey.vk4j.annotation.unsafe;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
@@ -26,6 +27,7 @@ public record CLongBuffer(MemorySegment segment) {
         NativeLayout.writeCLong(segment, index, value);
     }
 
+    @unsafe
     public CLongBuffer reinterpret(long newSize) {
         return new CLongBuffer(segment.reinterpret(newSize * NativeLayout.C_LONG_SIZE));
     }
