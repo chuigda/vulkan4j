@@ -6,6 +6,7 @@ import tech.icey.vk4j.annotation.nullable;
 import tech.icey.vk4j.annotation.pointer;
 import tech.icey.vk4j.annotation.unsigned;
 import tech.icey.vk4j.buffer.IntBuffer;
+import tech.icey.vk4j.buffer.PointerBuffer;
 import tech.icey.vk4j.datatype.VkAllocationCallbacks;
 import tech.icey.vk4j.enumtype.VkResult;
 import tech.icey.vk4j.handle.VkInstance;
@@ -24,6 +25,7 @@ public final class LibGLFW {
     public static final int GLFW_TRANSPARENT_FRAMEBUFFER = 0x0002000A;
     public static final int GLFW_NO_API = 0;
     public static final int GLFW_FALSE = 0;
+    public static final int GLFW_TRUE = 1;
 
     public static final FunctionDescriptor DESCRIPTOR$glfwInit = FunctionDescriptor.of(
             ValueLayout.JAVA_INT
@@ -45,6 +47,11 @@ public final class LibGLFW {
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS),
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
+    );
+    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowIconifyCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
     );
 
     public static final FunctionDescriptor DESCRIPTOR$glfwWindowHint = FunctionDescriptor.ofVoid(
@@ -99,6 +106,7 @@ public final class LibGLFW {
     public final MethodHandle HANDLE$glfwDestroyWindow;
     public final MethodHandle HANDLE$glfwGetWindowSize;
     public final MethodHandle HANDLE$glfwSetWindowOpacity;
+    public final MethodHandle HANDLE$glfwSetWindowIconifyCallback;
 
     public LibGLFW(Function2<String, FunctionDescriptor, MethodHandle> loader) {
         HANDLE$glfwInit = loader.apply("glfwInit", DESCRIPTOR$glfwInit);
@@ -116,6 +124,7 @@ public final class LibGLFW {
         HANDLE$glfwDestroyWindow = loader.apply("glfwDestroyWindow", DESCRIPTOR$glfwDestroyWindow);
         HANDLE$glfwGetWindowSize = loader.apply("glfwGetWindowSize", DESCRIPTOR$glfwGetWindowSize);
         HANDLE$glfwSetWindowOpacity = loader.apply("glfwSetWindowOpacity", DESCRIPTOR$glfwSetWindowOpacity);
+        HANDLE$glfwSetWindowIconifyCallback = loader.apply("glfwSetWindowIconifyCallback", DESCRIPTOR$glfwSetWindowIconifyCallback);
     }
 
     public int glfwInit() {
@@ -150,11 +159,13 @@ public final class LibGLFW {
         }
     }
 
-    public @pointer(comment = "const char**") MemorySegment glfwGetRequiredInstanceExtensions(
+    public @pointer(comment = "const char**") PointerBuffer glfwGetRequiredInstanceExtensions(
             @pointer(comment = "uint32_t*") @unsigned IntBuffer count
     ) {
         try {
-            return (MemorySegment) HANDLE$glfwGetRequiredInstanceExtensions.invokeExact(count.segment());
+            MemorySegment s = (MemorySegment) HANDLE$glfwGetRequiredInstanceExtensions.invokeExact(count.segment());
+            s = s.reinterpret(count.read() * ValueLayout.ADDRESS.byteSize());
+            return new PointerBuffer(s);
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }
@@ -270,6 +281,17 @@ public final class LibGLFW {
     public void glfwSetWindowOpacity(@pointer(comment="GLFWwindow*") MemorySegment window, float opacity) {
         try {
             HANDLE$glfwSetWindowOpacity.invokeExact(window, opacity);
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
+        }
+    }
+
+    public @pointer(comment="GLFWwindowiconifyfun") MemorySegment glfwSetWindowIconifyCallback(
+            @pointer(comment="GLFWwindow*") MemorySegment window,
+            @pointer(comment="GLFWwindowiconifyfun") MemorySegment callback
+    ) {
+        try {
+            return (MemorySegment) HANDLE$glfwSetWindowIconifyCallback.invokeExact(window, callback);
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }

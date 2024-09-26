@@ -1,13 +1,14 @@
-public class Main {
+public final class VkCube {
     public static void main(String[] args) {
         if (!loadLibraries()) {
-            return;
+            System.exit(-1);
         }
 
-        var app = new Application();
-        if (app.initVulkan()) {
-            app.mainLoop();
-            app.cleanup();
+        try (var D30F6 = new Engine()) {
+            D30F6.run();
+        } catch (Exception e) {
+            UICommons.showErrorMessage("运行时发生错误: " + e.getMessage());
+            System.exit(-1);
         }
 
         System.exit(0);
