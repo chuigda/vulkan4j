@@ -107,6 +107,16 @@ public record VkInstanceCreateInfo(MemorySegment segment) {
         return new VkApplicationInfo(s);
     }
 
+    @unsafe
+    public @nullable VkApplicationInfo[] pApplicationInfo(int assumedCount) {
+        MemorySegment s = pApplicationInfoRaw().reinterpret(assumedCount * VkApplicationInfo.SIZE);
+        VkApplicationInfo[] arr = new VkApplicationInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkApplicationInfo(s.asSlice(i * VkApplicationInfo.SIZE, VkApplicationInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pApplicationInfo(@nullable VkApplicationInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pApplicationInfoRaw(s);

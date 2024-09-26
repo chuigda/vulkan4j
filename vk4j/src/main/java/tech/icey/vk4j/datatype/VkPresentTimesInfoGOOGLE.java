@@ -87,6 +87,16 @@ public record VkPresentTimesInfoGOOGLE(MemorySegment segment) {
         return new VkPresentTimeGOOGLE(s);
     }
 
+    @unsafe
+    public @nullable VkPresentTimeGOOGLE[] pTimes(int assumedCount) {
+        MemorySegment s = pTimesRaw().reinterpret(assumedCount * VkPresentTimeGOOGLE.SIZE);
+        VkPresentTimeGOOGLE[] arr = new VkPresentTimeGOOGLE[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPresentTimeGOOGLE(s.asSlice(i * VkPresentTimeGOOGLE.SIZE, VkPresentTimeGOOGLE.SIZE));
+        }
+        return arr;
+    }
+
     public void pTimes(@nullable VkPresentTimeGOOGLE value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTimesRaw(s);

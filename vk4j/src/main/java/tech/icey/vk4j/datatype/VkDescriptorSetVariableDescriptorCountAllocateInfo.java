@@ -78,13 +78,15 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(MemorySegment s
     public void pDescriptorCountsRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pDescriptorCounts, OFFSET$pDescriptorCounts, value);
     }
-    
-    public @unsigned IntBuffer pDescriptorCounts() {
-        return new IntBuffer(pDescriptorCountsRaw());
+
+    public @nullable @unsigned IntBuffer pDescriptorCounts() {
+        MemorySegment s = pDescriptorCountsRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pDescriptorCounts(@unsigned IntBuffer value) {
-        pDescriptorCountsRaw(value.segment());
+    public void pDescriptorCounts(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDescriptorCountsRaw(s);
     }
 
     public static VkDescriptorSetVariableDescriptorCountAllocateInfo allocate(Arena arena) {

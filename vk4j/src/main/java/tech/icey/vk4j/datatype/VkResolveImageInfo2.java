@@ -139,6 +139,16 @@ public record VkResolveImageInfo2(MemorySegment segment) {
         return new VkImageResolve2(s);
     }
 
+    @unsafe
+    public @nullable VkImageResolve2[] pRegions(int assumedCount) {
+        MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkImageResolve2.SIZE);
+        VkImageResolve2[] arr = new VkImageResolve2[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkImageResolve2(s.asSlice(i * VkImageResolve2.SIZE, VkImageResolve2.SIZE));
+        }
+        return arr;
+    }
+
     public void pRegions(@nullable VkImageResolve2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);

@@ -126,6 +126,16 @@ public record VkCopyMemoryToImageInfoEXT(MemorySegment segment) {
         return new VkMemoryToImageCopyEXT(s);
     }
 
+    @unsafe
+    public @nullable VkMemoryToImageCopyEXT[] pRegions(int assumedCount) {
+        MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkMemoryToImageCopyEXT.SIZE);
+        VkMemoryToImageCopyEXT[] arr = new VkMemoryToImageCopyEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkMemoryToImageCopyEXT(s.asSlice(i * VkMemoryToImageCopyEXT.SIZE, VkMemoryToImageCopyEXT.SIZE));
+        }
+        return arr;
+    }
+
     public void pRegions(@nullable VkMemoryToImageCopyEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);

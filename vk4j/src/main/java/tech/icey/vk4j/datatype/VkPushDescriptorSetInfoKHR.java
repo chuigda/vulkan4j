@@ -126,6 +126,16 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) {
         return new VkWriteDescriptorSet(s);
     }
 
+    @unsafe
+    public @nullable VkWriteDescriptorSet[] pDescriptorWrites(int assumedCount) {
+        MemorySegment s = pDescriptorWritesRaw().reinterpret(assumedCount * VkWriteDescriptorSet.SIZE);
+        VkWriteDescriptorSet[] arr = new VkWriteDescriptorSet[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkWriteDescriptorSet(s.asSlice(i * VkWriteDescriptorSet.SIZE, VkWriteDescriptorSet.SIZE));
+        }
+        return arr;
+    }
+
     public void pDescriptorWrites(@nullable VkWriteDescriptorSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorWritesRaw(s);

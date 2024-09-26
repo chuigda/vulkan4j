@@ -97,6 +97,16 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) {
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
+    @unsafe
+    public @nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
+        MemorySegment s = pStagesRaw().reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
+        VkPipelineShaderStageCreateInfo[] arr = new VkPipelineShaderStageCreateInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.SIZE, VkPipelineShaderStageCreateInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pStages(@nullable VkPipelineShaderStageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStagesRaw(s);
@@ -118,6 +128,16 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) {
         return new VkPipelineVertexInputStateCreateInfo(s);
     }
 
+    @unsafe
+    public @nullable VkPipelineVertexInputStateCreateInfo[] pVertexInputState(int assumedCount) {
+        MemorySegment s = pVertexInputStateRaw().reinterpret(assumedCount * VkPipelineVertexInputStateCreateInfo.SIZE);
+        VkPipelineVertexInputStateCreateInfo[] arr = new VkPipelineVertexInputStateCreateInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPipelineVertexInputStateCreateInfo(s.asSlice(i * VkPipelineVertexInputStateCreateInfo.SIZE, VkPipelineVertexInputStateCreateInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pVertexInputState(@nullable VkPipelineVertexInputStateCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexInputStateRaw(s);
@@ -137,6 +157,16 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) {
             return null;
         }
         return new VkPipelineTessellationStateCreateInfo(s);
+    }
+
+    @unsafe
+    public @nullable VkPipelineTessellationStateCreateInfo[] pTessellationState(int assumedCount) {
+        MemorySegment s = pTessellationStateRaw().reinterpret(assumedCount * VkPipelineTessellationStateCreateInfo.SIZE);
+        VkPipelineTessellationStateCreateInfo[] arr = new VkPipelineTessellationStateCreateInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPipelineTessellationStateCreateInfo(s.asSlice(i * VkPipelineTessellationStateCreateInfo.SIZE, VkPipelineTessellationStateCreateInfo.SIZE));
+        }
+        return arr;
     }
 
     public void pTessellationState(@nullable VkPipelineTessellationStateCreateInfo value) {

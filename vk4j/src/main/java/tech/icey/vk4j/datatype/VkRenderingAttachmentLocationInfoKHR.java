@@ -78,13 +78,15 @@ public record VkRenderingAttachmentLocationInfoKHR(MemorySegment segment) {
     public void pColorAttachmentLocationsRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentLocations, OFFSET$pColorAttachmentLocations, value);
     }
-    
-    public @unsigned IntBuffer pColorAttachmentLocations() {
-        return new IntBuffer(pColorAttachmentLocationsRaw());
+
+    public @nullable @unsigned IntBuffer pColorAttachmentLocations() {
+        MemorySegment s = pColorAttachmentLocationsRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pColorAttachmentLocations(@unsigned IntBuffer value) {
-        pColorAttachmentLocationsRaw(value.segment());
+    public void pColorAttachmentLocations(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pColorAttachmentLocationsRaw(s);
     }
 
     public static VkRenderingAttachmentLocationInfoKHR allocate(Arena arena) {

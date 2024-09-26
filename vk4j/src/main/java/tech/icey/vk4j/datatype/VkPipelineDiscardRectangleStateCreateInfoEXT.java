@@ -113,6 +113,16 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
         return new VkRect2D(s);
     }
 
+    @unsafe
+    public @nullable VkRect2D[] pDiscardRectangles(int assumedCount) {
+        MemorySegment s = pDiscardRectanglesRaw().reinterpret(assumedCount * VkRect2D.SIZE);
+        VkRect2D[] arr = new VkRect2D[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRect2D(s.asSlice(i * VkRect2D.SIZE, VkRect2D.SIZE));
+        }
+        return arr;
+    }
+
     public void pDiscardRectangles(@nullable VkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDiscardRectanglesRaw(s);

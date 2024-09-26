@@ -87,6 +87,16 @@ public record VkPresentRegionsKHR(MemorySegment segment) {
         return new VkPresentRegionKHR(s);
     }
 
+    @unsafe
+    public @nullable VkPresentRegionKHR[] pRegions(int assumedCount) {
+        MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkPresentRegionKHR.SIZE);
+        VkPresentRegionKHR[] arr = new VkPresentRegionKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPresentRegionKHR(s.asSlice(i * VkPresentRegionKHR.SIZE, VkPresentRegionKHR.SIZE));
+        }
+        return arr;
+    }
+
     public void pRegions(@nullable VkPresentRegionKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);

@@ -100,6 +100,16 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
         return new VkViewport(s);
     }
 
+    @unsafe
+    public @nullable VkViewport[] pViewportDepths(int assumedCount) {
+        MemorySegment s = pViewportDepthsRaw().reinterpret(assumedCount * VkViewport.SIZE);
+        VkViewport[] arr = new VkViewport[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkViewport(s.asSlice(i * VkViewport.SIZE, VkViewport.SIZE));
+        }
+        return arr;
+    }
+
     public void pViewportDepths(@nullable VkViewport value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewportDepthsRaw(s);

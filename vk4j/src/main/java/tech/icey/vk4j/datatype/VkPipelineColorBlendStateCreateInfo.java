@@ -131,6 +131,16 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) {
         return new VkPipelineColorBlendAttachmentState(s);
     }
 
+    @unsafe
+    public @nullable VkPipelineColorBlendAttachmentState[] pAttachments(int assumedCount) {
+        MemorySegment s = pAttachmentsRaw().reinterpret(assumedCount * VkPipelineColorBlendAttachmentState.SIZE);
+        VkPipelineColorBlendAttachmentState[] arr = new VkPipelineColorBlendAttachmentState[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPipelineColorBlendAttachmentState(s.asSlice(i * VkPipelineColorBlendAttachmentState.SIZE, VkPipelineColorBlendAttachmentState.SIZE));
+        }
+        return arr;
+    }
+
     public void pAttachments(@nullable VkPipelineColorBlendAttachmentState value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);

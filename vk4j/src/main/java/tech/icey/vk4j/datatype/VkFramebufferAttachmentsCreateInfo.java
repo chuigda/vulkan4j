@@ -87,6 +87,16 @@ public record VkFramebufferAttachmentsCreateInfo(MemorySegment segment) {
         return new VkFramebufferAttachmentImageInfo(s);
     }
 
+    @unsafe
+    public @nullable VkFramebufferAttachmentImageInfo[] pAttachmentImageInfos(int assumedCount) {
+        MemorySegment s = pAttachmentImageInfosRaw().reinterpret(assumedCount * VkFramebufferAttachmentImageInfo.SIZE);
+        VkFramebufferAttachmentImageInfo[] arr = new VkFramebufferAttachmentImageInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkFramebufferAttachmentImageInfo(s.asSlice(i * VkFramebufferAttachmentImageInfo.SIZE, VkFramebufferAttachmentImageInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pAttachmentImageInfos(@nullable VkFramebufferAttachmentImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentImageInfosRaw(s);

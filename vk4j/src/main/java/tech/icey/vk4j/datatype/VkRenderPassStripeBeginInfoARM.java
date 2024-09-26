@@ -87,6 +87,16 @@ public record VkRenderPassStripeBeginInfoARM(MemorySegment segment) {
         return new VkRenderPassStripeInfoARM(s);
     }
 
+    @unsafe
+    public @nullable VkRenderPassStripeInfoARM[] pStripeInfos(int assumedCount) {
+        MemorySegment s = pStripeInfosRaw().reinterpret(assumedCount * VkRenderPassStripeInfoARM.SIZE);
+        VkRenderPassStripeInfoARM[] arr = new VkRenderPassStripeInfoARM[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRenderPassStripeInfoARM(s.asSlice(i * VkRenderPassStripeInfoARM.SIZE, VkRenderPassStripeInfoARM.SIZE));
+        }
+        return arr;
+    }
+
     public void pStripeInfos(@nullable VkRenderPassStripeInfoARM value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStripeInfosRaw(s);

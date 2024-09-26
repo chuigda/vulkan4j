@@ -113,6 +113,16 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) {
         return new VkDescriptorPoolSize(s);
     }
 
+    @unsafe
+    public @nullable VkDescriptorPoolSize[] pPoolSizes(int assumedCount) {
+        MemorySegment s = pPoolSizesRaw().reinterpret(assumedCount * VkDescriptorPoolSize.SIZE);
+        VkDescriptorPoolSize[] arr = new VkDescriptorPoolSize[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkDescriptorPoolSize(s.asSlice(i * VkDescriptorPoolSize.SIZE, VkDescriptorPoolSize.SIZE));
+        }
+        return arr;
+    }
+
     public void pPoolSizes(@nullable VkDescriptorPoolSize value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPoolSizesRaw(s);

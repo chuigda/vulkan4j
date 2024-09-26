@@ -120,6 +120,16 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) {
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
+    @unsafe
+    public @nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
+        MemorySegment s = pStagesRaw().reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
+        VkPipelineShaderStageCreateInfo[] arr = new VkPipelineShaderStageCreateInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.SIZE, VkPipelineShaderStageCreateInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pStages(@nullable VkPipelineShaderStageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStagesRaw(s);
@@ -139,6 +149,16 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) {
             return null;
         }
         return new VkPipelineLibraryCreateInfoKHR(s);
+    }
+
+    @unsafe
+    public @nullable VkPipelineLibraryCreateInfoKHR[] pLibraryInfo(int assumedCount) {
+        MemorySegment s = pLibraryInfoRaw().reinterpret(assumedCount * VkPipelineLibraryCreateInfoKHR.SIZE);
+        VkPipelineLibraryCreateInfoKHR[] arr = new VkPipelineLibraryCreateInfoKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPipelineLibraryCreateInfoKHR(s.asSlice(i * VkPipelineLibraryCreateInfoKHR.SIZE, VkPipelineLibraryCreateInfoKHR.SIZE));
+        }
+        return arr;
     }
 
     public void pLibraryInfo(@nullable VkPipelineLibraryCreateInfoKHR value) {

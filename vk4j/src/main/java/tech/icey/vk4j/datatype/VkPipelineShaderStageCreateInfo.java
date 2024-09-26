@@ -109,13 +109,15 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) {
     public void pNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
-    
-    public ByteBuffer pName() {
-        return new ByteBuffer(pNameRaw());
+
+    public @nullable ByteBuffer pName() {
+        MemorySegment s = pNameRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pName(ByteBuffer value) {
-        pNameRaw(value.segment());
+    public void pName(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pNameRaw(s);
     }
 
     public @pointer(comment="VkSpecializationInfo*") MemorySegment pSpecializationInfoRaw() {
@@ -132,6 +134,16 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) {
             return null;
         }
         return new VkSpecializationInfo(s);
+    }
+
+    @unsafe
+    public @nullable VkSpecializationInfo[] pSpecializationInfo(int assumedCount) {
+        MemorySegment s = pSpecializationInfoRaw().reinterpret(assumedCount * VkSpecializationInfo.SIZE);
+        VkSpecializationInfo[] arr = new VkSpecializationInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSpecializationInfo(s.asSlice(i * VkSpecializationInfo.SIZE, VkSpecializationInfo.SIZE));
+        }
+        return arr;
     }
 
     public void pSpecializationInfo(@nullable VkSpecializationInfo value) {

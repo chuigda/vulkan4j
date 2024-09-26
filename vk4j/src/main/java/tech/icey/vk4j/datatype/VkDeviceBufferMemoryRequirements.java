@@ -74,6 +74,16 @@ public record VkDeviceBufferMemoryRequirements(MemorySegment segment) {
         return new VkBufferCreateInfo(s);
     }
 
+    @unsafe
+    public @nullable VkBufferCreateInfo[] pCreateInfo(int assumedCount) {
+        MemorySegment s = pCreateInfoRaw().reinterpret(assumedCount * VkBufferCreateInfo.SIZE);
+        VkBufferCreateInfo[] arr = new VkBufferCreateInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkBufferCreateInfo(s.asSlice(i * VkBufferCreateInfo.SIZE, VkBufferCreateInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pCreateInfo(@nullable VkBufferCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCreateInfoRaw(s);

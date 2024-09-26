@@ -91,13 +91,15 @@ public record VkQueryPoolPerformanceCreateInfoKHR(MemorySegment segment) {
     public void pCounterIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pCounterIndices, OFFSET$pCounterIndices, value);
     }
-    
-    public @unsigned IntBuffer pCounterIndices() {
-        return new IntBuffer(pCounterIndicesRaw());
+
+    public @nullable @unsigned IntBuffer pCounterIndices() {
+        MemorySegment s = pCounterIndicesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pCounterIndices(@unsigned IntBuffer value) {
-        pCounterIndicesRaw(value.segment());
+    public void pCounterIndices(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCounterIndicesRaw(s);
     }
 
     public static VkQueryPoolPerformanceCreateInfoKHR allocate(Arena arena) {

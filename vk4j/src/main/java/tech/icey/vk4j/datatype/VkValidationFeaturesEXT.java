@@ -97,7 +97,7 @@ public record VkValidationFeaturesEXT(MemorySegment segment) {
         
         return new IntBuffer(s);
     }
-    
+
     public void pEnabledValidationFeatures(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pEnabledValidationFeaturesRaw(s);
@@ -127,7 +127,7 @@ public record VkValidationFeaturesEXT(MemorySegment segment) {
         
         return new IntBuffer(s);
     }
-    
+
     public void pDisabledValidationFeatures(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDisabledValidationFeaturesRaw(s);

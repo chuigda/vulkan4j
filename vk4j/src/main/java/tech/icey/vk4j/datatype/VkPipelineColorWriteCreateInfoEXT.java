@@ -78,13 +78,15 @@ public record VkPipelineColorWriteCreateInfoEXT(MemorySegment segment) {
     public void pColorWriteEnablesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pColorWriteEnables, OFFSET$pColorWriteEnables, value);
     }
-    
-    public @unsigned IntBuffer pColorWriteEnables() {
-        return new IntBuffer(pColorWriteEnablesRaw());
+
+    public @nullable @unsigned IntBuffer pColorWriteEnables() {
+        MemorySegment s = pColorWriteEnablesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pColorWriteEnables(@unsigned IntBuffer value) {
-        pColorWriteEnablesRaw(value.segment());
+    public void pColorWriteEnables(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pColorWriteEnablesRaw(s);
     }
 
     public static VkPipelineColorWriteCreateInfoEXT allocate(Arena arena) {

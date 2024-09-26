@@ -87,6 +87,16 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(MemorySegment segment)
         return new VkInputAttachmentAspectReference(s);
     }
 
+    @unsafe
+    public @nullable VkInputAttachmentAspectReference[] pAspectReferences(int assumedCount) {
+        MemorySegment s = pAspectReferencesRaw().reinterpret(assumedCount * VkInputAttachmentAspectReference.SIZE);
+        VkInputAttachmentAspectReference[] arr = new VkInputAttachmentAspectReference[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkInputAttachmentAspectReference(s.asSlice(i * VkInputAttachmentAspectReference.SIZE, VkInputAttachmentAspectReference.SIZE));
+        }
+        return arr;
+    }
+
     public void pAspectReferences(@nullable VkInputAttachmentAspectReference value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAspectReferencesRaw(s);

@@ -68,6 +68,16 @@ public record VkSpecializationInfo(MemorySegment segment) {
         return new VkSpecializationMapEntry(s);
     }
 
+    @unsafe
+    public @nullable VkSpecializationMapEntry[] pMapEntries(int assumedCount) {
+        MemorySegment s = pMapEntriesRaw().reinterpret(assumedCount * VkSpecializationMapEntry.SIZE);
+        VkSpecializationMapEntry[] arr = new VkSpecializationMapEntry[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSpecializationMapEntry(s.asSlice(i * VkSpecializationMapEntry.SIZE, VkSpecializationMapEntry.SIZE));
+        }
+        return arr;
+    }
+
     public void pMapEntries(@nullable VkSpecializationMapEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMapEntriesRaw(s);

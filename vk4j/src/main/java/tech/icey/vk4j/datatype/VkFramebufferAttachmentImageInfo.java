@@ -152,7 +152,7 @@ public record VkFramebufferAttachmentImageInfo(MemorySegment segment) {
         
         return new IntBuffer(s);
     }
-    
+
     public void pViewFormats(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewFormatsRaw(s);

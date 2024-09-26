@@ -78,13 +78,15 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(MemorySegment segment) {
     public void pDrmFormatModifiersRaw(@pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pDrmFormatModifiers, OFFSET$pDrmFormatModifiers, value);
     }
-    
-    public @unsigned LongBuffer pDrmFormatModifiers() {
-        return new LongBuffer(pDrmFormatModifiersRaw());
+
+    public @nullable @unsigned LongBuffer pDrmFormatModifiers() {
+        MemorySegment s = pDrmFormatModifiersRaw();
+        return s.address() == 0 ? null : new LongBuffer(s);
     }
 
-    public void pDrmFormatModifiers(@unsigned LongBuffer value) {
-        pDrmFormatModifiersRaw(value.segment());
+    public void pDrmFormatModifiers(@nullable @unsigned LongBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDrmFormatModifiersRaw(s);
     }
 
     public static VkImageDrmFormatModifierListCreateInfoEXT allocate(Arena arena) {

@@ -70,13 +70,15 @@ public record VkDebugUtilsLabelEXT(MemorySegment segment) {
     public void pLabelNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pLabelName, OFFSET$pLabelName, value);
     }
-    
-    public ByteBuffer pLabelName() {
-        return new ByteBuffer(pLabelNameRaw());
+
+    public @nullable ByteBuffer pLabelName() {
+        MemorySegment s = pLabelNameRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pLabelName(ByteBuffer value) {
-        pLabelNameRaw(value.segment());
+    public void pLabelName(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pLabelNameRaw(s);
     }
 
     public MemorySegment colorRaw() {

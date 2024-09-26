@@ -87,6 +87,16 @@ public record VkCommandBufferBeginInfo(MemorySegment segment) {
         return new VkCommandBufferInheritanceInfo(s);
     }
 
+    @unsafe
+    public @nullable VkCommandBufferInheritanceInfo[] pInheritanceInfo(int assumedCount) {
+        MemorySegment s = pInheritanceInfoRaw().reinterpret(assumedCount * VkCommandBufferInheritanceInfo.SIZE);
+        VkCommandBufferInheritanceInfo[] arr = new VkCommandBufferInheritanceInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkCommandBufferInheritanceInfo(s.asSlice(i * VkCommandBufferInheritanceInfo.SIZE, VkCommandBufferInheritanceInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pInheritanceInfo(@nullable VkCommandBufferInheritanceInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pInheritanceInfoRaw(s);

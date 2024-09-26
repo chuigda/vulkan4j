@@ -70,13 +70,15 @@ public record VkDebugMarkerMarkerInfoEXT(MemorySegment segment) {
     public void pMarkerNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pMarkerName, OFFSET$pMarkerName, value);
     }
-    
-    public ByteBuffer pMarkerName() {
-        return new ByteBuffer(pMarkerNameRaw());
+
+    public @nullable ByteBuffer pMarkerName() {
+        MemorySegment s = pMarkerNameRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pMarkerName(ByteBuffer value) {
-        pMarkerNameRaw(value.segment());
+    public void pMarkerName(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pMarkerNameRaw(s);
     }
 
     public MemorySegment colorRaw() {

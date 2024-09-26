@@ -87,6 +87,16 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
         return new VkOffset2D(s);
     }
 
+    @unsafe
+    public @nullable VkOffset2D[] pFragmentDensityOffsets(int assumedCount) {
+        MemorySegment s = pFragmentDensityOffsetsRaw().reinterpret(assumedCount * VkOffset2D.SIZE);
+        VkOffset2D[] arr = new VkOffset2D[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkOffset2D(s.asSlice(i * VkOffset2D.SIZE, VkOffset2D.SIZE));
+        }
+        return arr;
+    }
+
     public void pFragmentDensityOffsets(@nullable VkOffset2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFragmentDensityOffsetsRaw(s);

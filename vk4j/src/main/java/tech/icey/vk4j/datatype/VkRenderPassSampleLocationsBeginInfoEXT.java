@@ -97,6 +97,16 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) {
         return new VkAttachmentSampleLocationsEXT(s);
     }
 
+    @unsafe
+    public @nullable VkAttachmentSampleLocationsEXT[] pAttachmentInitialSampleLocations(int assumedCount) {
+        MemorySegment s = pAttachmentInitialSampleLocationsRaw().reinterpret(assumedCount * VkAttachmentSampleLocationsEXT.SIZE);
+        VkAttachmentSampleLocationsEXT[] arr = new VkAttachmentSampleLocationsEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkAttachmentSampleLocationsEXT(s.asSlice(i * VkAttachmentSampleLocationsEXT.SIZE, VkAttachmentSampleLocationsEXT.SIZE));
+        }
+        return arr;
+    }
+
     public void pAttachmentInitialSampleLocations(@nullable VkAttachmentSampleLocationsEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentInitialSampleLocationsRaw(s);
@@ -124,6 +134,16 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) {
             return null;
         }
         return new VkSubpassSampleLocationsEXT(s);
+    }
+
+    @unsafe
+    public @nullable VkSubpassSampleLocationsEXT[] pPostSubpassSampleLocations(int assumedCount) {
+        MemorySegment s = pPostSubpassSampleLocationsRaw().reinterpret(assumedCount * VkSubpassSampleLocationsEXT.SIZE);
+        VkSubpassSampleLocationsEXT[] arr = new VkSubpassSampleLocationsEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSubpassSampleLocationsEXT(s.asSlice(i * VkSubpassSampleLocationsEXT.SIZE, VkSubpassSampleLocationsEXT.SIZE));
+        }
+        return arr;
     }
 
     public void pPostSubpassSampleLocations(@nullable VkSubpassSampleLocationsEXT value) {

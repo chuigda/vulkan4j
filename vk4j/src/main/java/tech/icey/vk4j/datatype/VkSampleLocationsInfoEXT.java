@@ -113,6 +113,16 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) {
         return new VkSampleLocationEXT(s);
     }
 
+    @unsafe
+    public @nullable VkSampleLocationEXT[] pSampleLocations(int assumedCount) {
+        MemorySegment s = pSampleLocationsRaw().reinterpret(assumedCount * VkSampleLocationEXT.SIZE);
+        VkSampleLocationEXT[] arr = new VkSampleLocationEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSampleLocationEXT(s.asSlice(i * VkSampleLocationEXT.SIZE, VkSampleLocationEXT.SIZE));
+        }
+        return arr;
+    }
+
     public void pSampleLocations(@nullable VkSampleLocationEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSampleLocationsRaw(s);

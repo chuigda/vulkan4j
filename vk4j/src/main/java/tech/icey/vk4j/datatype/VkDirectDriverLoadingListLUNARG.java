@@ -100,6 +100,16 @@ public record VkDirectDriverLoadingListLUNARG(MemorySegment segment) {
         return new VkDirectDriverLoadingInfoLUNARG(s);
     }
 
+    @unsafe
+    public @nullable VkDirectDriverLoadingInfoLUNARG[] pDrivers(int assumedCount) {
+        MemorySegment s = pDriversRaw().reinterpret(assumedCount * VkDirectDriverLoadingInfoLUNARG.SIZE);
+        VkDirectDriverLoadingInfoLUNARG[] arr = new VkDirectDriverLoadingInfoLUNARG[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkDirectDriverLoadingInfoLUNARG(s.asSlice(i * VkDirectDriverLoadingInfoLUNARG.SIZE, VkDirectDriverLoadingInfoLUNARG.SIZE));
+        }
+        return arr;
+    }
+
     public void pDrivers(@nullable VkDirectDriverLoadingInfoLUNARG value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDriversRaw(s);

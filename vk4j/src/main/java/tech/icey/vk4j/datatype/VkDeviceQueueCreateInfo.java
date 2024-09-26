@@ -104,13 +104,15 @@ public record VkDeviceQueueCreateInfo(MemorySegment segment) {
     public void pQueuePrioritiesRaw(@pointer(comment="float*") MemorySegment value) {
         segment.set(LAYOUT$pQueuePriorities, OFFSET$pQueuePriorities, value);
     }
-    
-    public FloatBuffer pQueuePriorities() {
-        return new FloatBuffer(pQueuePrioritiesRaw());
+
+    public @nullable FloatBuffer pQueuePriorities() {
+        MemorySegment s = pQueuePrioritiesRaw();
+        return s.address() == 0 ? null : new FloatBuffer(s);
     }
 
-    public void pQueuePriorities(FloatBuffer value) {
-        pQueuePrioritiesRaw(value.segment());
+    public void pQueuePriorities(@nullable FloatBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pQueuePrioritiesRaw(s);
     }
 
     public static VkDeviceQueueCreateInfo allocate(Arena arena) {

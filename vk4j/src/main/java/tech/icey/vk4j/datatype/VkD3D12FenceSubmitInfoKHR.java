@@ -88,13 +88,15 @@ public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) {
     public void pWaitSemaphoreValuesRaw(@pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphoreValues, OFFSET$pWaitSemaphoreValues, value);
     }
-    
-    public @unsigned LongBuffer pWaitSemaphoreValues() {
-        return new LongBuffer(pWaitSemaphoreValuesRaw());
+
+    public @nullable @unsigned LongBuffer pWaitSemaphoreValues() {
+        MemorySegment s = pWaitSemaphoreValuesRaw();
+        return s.address() == 0 ? null : new LongBuffer(s);
     }
 
-    public void pWaitSemaphoreValues(@unsigned LongBuffer value) {
-        pWaitSemaphoreValuesRaw(value.segment());
+    public void pWaitSemaphoreValues(@nullable @unsigned LongBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pWaitSemaphoreValuesRaw(s);
     }
 
     public @unsigned int signalSemaphoreValuesCount() {
@@ -112,13 +114,15 @@ public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) {
     public void pSignalSemaphoreValuesRaw(@pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphoreValues, OFFSET$pSignalSemaphoreValues, value);
     }
-    
-    public @unsigned LongBuffer pSignalSemaphoreValues() {
-        return new LongBuffer(pSignalSemaphoreValuesRaw());
+
+    public @nullable @unsigned LongBuffer pSignalSemaphoreValues() {
+        MemorySegment s = pSignalSemaphoreValuesRaw();
+        return s.address() == 0 ? null : new LongBuffer(s);
     }
 
-    public void pSignalSemaphoreValues(@unsigned LongBuffer value) {
-        pSignalSemaphoreValuesRaw(value.segment());
+    public void pSignalSemaphoreValues(@nullable @unsigned LongBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSignalSemaphoreValuesRaw(s);
     }
 
     public static VkD3D12FenceSubmitInfoKHR allocate(Arena arena) {

@@ -120,6 +120,16 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
         return new VkAttachmentDescription(s);
     }
 
+    @unsafe
+    public @nullable VkAttachmentDescription[] pAttachments(int assumedCount) {
+        MemorySegment s = pAttachmentsRaw().reinterpret(assumedCount * VkAttachmentDescription.SIZE);
+        VkAttachmentDescription[] arr = new VkAttachmentDescription[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkAttachmentDescription(s.asSlice(i * VkAttachmentDescription.SIZE, VkAttachmentDescription.SIZE));
+        }
+        return arr;
+    }
+
     public void pAttachments(@nullable VkAttachmentDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
@@ -149,6 +159,16 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
         return new VkSubpassDescription(s);
     }
 
+    @unsafe
+    public @nullable VkSubpassDescription[] pSubpasses(int assumedCount) {
+        MemorySegment s = pSubpassesRaw().reinterpret(assumedCount * VkSubpassDescription.SIZE);
+        VkSubpassDescription[] arr = new VkSubpassDescription[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSubpassDescription(s.asSlice(i * VkSubpassDescription.SIZE, VkSubpassDescription.SIZE));
+        }
+        return arr;
+    }
+
     public void pSubpasses(@nullable VkSubpassDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSubpassesRaw(s);
@@ -176,6 +196,16 @@ public record VkRenderPassCreateInfo(MemorySegment segment) {
             return null;
         }
         return new VkSubpassDependency(s);
+    }
+
+    @unsafe
+    public @nullable VkSubpassDependency[] pDependencies(int assumedCount) {
+        MemorySegment s = pDependenciesRaw().reinterpret(assumedCount * VkSubpassDependency.SIZE);
+        VkSubpassDependency[] arr = new VkSubpassDependency[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSubpassDependency(s.asSlice(i * VkSubpassDependency.SIZE, VkSubpassDependency.SIZE));
+        }
+        return arr;
     }
 
     public void pDependencies(@nullable VkSubpassDependency value) {

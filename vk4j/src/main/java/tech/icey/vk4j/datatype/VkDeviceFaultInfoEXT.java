@@ -101,6 +101,16 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
         return new VkDeviceFaultAddressInfoEXT(s);
     }
 
+    @unsafe
+    public @nullable VkDeviceFaultAddressInfoEXT[] pAddressInfos(int assumedCount) {
+        MemorySegment s = pAddressInfosRaw().reinterpret(assumedCount * VkDeviceFaultAddressInfoEXT.SIZE);
+        VkDeviceFaultAddressInfoEXT[] arr = new VkDeviceFaultAddressInfoEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkDeviceFaultAddressInfoEXT(s.asSlice(i * VkDeviceFaultAddressInfoEXT.SIZE, VkDeviceFaultAddressInfoEXT.SIZE));
+        }
+        return arr;
+    }
+
     public void pAddressInfos(@nullable VkDeviceFaultAddressInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAddressInfosRaw(s);
@@ -120,6 +130,16 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) {
             return null;
         }
         return new VkDeviceFaultVendorInfoEXT(s);
+    }
+
+    @unsafe
+    public @nullable VkDeviceFaultVendorInfoEXT[] pVendorInfos(int assumedCount) {
+        MemorySegment s = pVendorInfosRaw().reinterpret(assumedCount * VkDeviceFaultVendorInfoEXT.SIZE);
+        VkDeviceFaultVendorInfoEXT[] arr = new VkDeviceFaultVendorInfoEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkDeviceFaultVendorInfoEXT(s.asSlice(i * VkDeviceFaultVendorInfoEXT.SIZE, VkDeviceFaultVendorInfoEXT.SIZE));
+        }
+        return arr;
     }
 
     public void pVendorInfos(@nullable VkDeviceFaultVendorInfoEXT value) {

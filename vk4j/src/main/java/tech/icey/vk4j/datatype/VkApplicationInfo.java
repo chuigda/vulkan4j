@@ -85,13 +85,15 @@ public record VkApplicationInfo(MemorySegment segment) {
     public void pApplicationNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pApplicationName, OFFSET$pApplicationName, value);
     }
-    
-    public ByteBuffer pApplicationName() {
-        return new ByteBuffer(pApplicationNameRaw());
+
+    public @nullable ByteBuffer pApplicationName() {
+        MemorySegment s = pApplicationNameRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pApplicationName(ByteBuffer value) {
-        pApplicationNameRaw(value.segment());
+    public void pApplicationName(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pApplicationNameRaw(s);
     }
 
     public @unsigned int applicationVersion() {
@@ -109,13 +111,15 @@ public record VkApplicationInfo(MemorySegment segment) {
     public void pEngineNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pEngineName, OFFSET$pEngineName, value);
     }
-    
-    public ByteBuffer pEngineName() {
-        return new ByteBuffer(pEngineNameRaw());
+
+    public @nullable ByteBuffer pEngineName() {
+        MemorySegment s = pEngineNameRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pEngineName(ByteBuffer value) {
-        pEngineNameRaw(value.segment());
+    public void pEngineName(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pEngineNameRaw(s);
     }
 
     public @unsigned int engineVersion() {

@@ -139,6 +139,16 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) {
         return new VkPushConstantRange(s);
     }
 
+    @unsafe
+    public @nullable VkPushConstantRange[] pPushConstantRanges(int assumedCount) {
+        MemorySegment s = pPushConstantRangesRaw().reinterpret(assumedCount * VkPushConstantRange.SIZE);
+        VkPushConstantRange[] arr = new VkPushConstantRange[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPushConstantRange(s.asSlice(i * VkPushConstantRange.SIZE, VkPushConstantRange.SIZE));
+        }
+        return arr;
+    }
+
     public void pPushConstantRanges(@nullable VkPushConstantRange value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPushConstantRangesRaw(s);

@@ -87,6 +87,16 @@ public record VkMutableDescriptorTypeCreateInfoEXT(MemorySegment segment) {
         return new VkMutableDescriptorTypeListEXT(s);
     }
 
+    @unsafe
+    public @nullable VkMutableDescriptorTypeListEXT[] pMutableDescriptorTypeLists(int assumedCount) {
+        MemorySegment s = pMutableDescriptorTypeListsRaw().reinterpret(assumedCount * VkMutableDescriptorTypeListEXT.SIZE);
+        VkMutableDescriptorTypeListEXT[] arr = new VkMutableDescriptorTypeListEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkMutableDescriptorTypeListEXT(s.asSlice(i * VkMutableDescriptorTypeListEXT.SIZE, VkMutableDescriptorTypeListEXT.SIZE));
+        }
+        return arr;
+    }
+
     public void pMutableDescriptorTypeLists(@nullable VkMutableDescriptorTypeListEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMutableDescriptorTypeListsRaw(s);

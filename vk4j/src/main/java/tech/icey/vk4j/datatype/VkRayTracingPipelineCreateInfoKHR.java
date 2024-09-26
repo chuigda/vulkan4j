@@ -145,6 +145,16 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) {
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
+    @unsafe
+    public @nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
+        MemorySegment s = pStagesRaw().reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
+        VkPipelineShaderStageCreateInfo[] arr = new VkPipelineShaderStageCreateInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.SIZE, VkPipelineShaderStageCreateInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pStages(@nullable VkPipelineShaderStageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStagesRaw(s);
@@ -172,6 +182,16 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) {
             return null;
         }
         return new VkRayTracingShaderGroupCreateInfoKHR(s);
+    }
+
+    @unsafe
+    public @nullable VkRayTracingShaderGroupCreateInfoKHR[] pGroups(int assumedCount) {
+        MemorySegment s = pGroupsRaw().reinterpret(assumedCount * VkRayTracingShaderGroupCreateInfoKHR.SIZE);
+        VkRayTracingShaderGroupCreateInfoKHR[] arr = new VkRayTracingShaderGroupCreateInfoKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRayTracingShaderGroupCreateInfoKHR(s.asSlice(i * VkRayTracingShaderGroupCreateInfoKHR.SIZE, VkRayTracingShaderGroupCreateInfoKHR.SIZE));
+        }
+        return arr;
     }
 
     public void pGroups(@nullable VkRayTracingShaderGroupCreateInfoKHR value) {
@@ -203,6 +223,16 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) {
         return new VkPipelineLibraryCreateInfoKHR(s);
     }
 
+    @unsafe
+    public @nullable VkPipelineLibraryCreateInfoKHR[] pLibraryInfo(int assumedCount) {
+        MemorySegment s = pLibraryInfoRaw().reinterpret(assumedCount * VkPipelineLibraryCreateInfoKHR.SIZE);
+        VkPipelineLibraryCreateInfoKHR[] arr = new VkPipelineLibraryCreateInfoKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPipelineLibraryCreateInfoKHR(s.asSlice(i * VkPipelineLibraryCreateInfoKHR.SIZE, VkPipelineLibraryCreateInfoKHR.SIZE));
+        }
+        return arr;
+    }
+
     public void pLibraryInfo(@nullable VkPipelineLibraryCreateInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLibraryInfoRaw(s);
@@ -224,6 +254,16 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) {
         return new VkRayTracingPipelineInterfaceCreateInfoKHR(s);
     }
 
+    @unsafe
+    public @nullable VkRayTracingPipelineInterfaceCreateInfoKHR[] pLibraryInterface(int assumedCount) {
+        MemorySegment s = pLibraryInterfaceRaw().reinterpret(assumedCount * VkRayTracingPipelineInterfaceCreateInfoKHR.SIZE);
+        VkRayTracingPipelineInterfaceCreateInfoKHR[] arr = new VkRayTracingPipelineInterfaceCreateInfoKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRayTracingPipelineInterfaceCreateInfoKHR(s.asSlice(i * VkRayTracingPipelineInterfaceCreateInfoKHR.SIZE, VkRayTracingPipelineInterfaceCreateInfoKHR.SIZE));
+        }
+        return arr;
+    }
+
     public void pLibraryInterface(@nullable VkRayTracingPipelineInterfaceCreateInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLibraryInterfaceRaw(s);
@@ -243,6 +283,16 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) {
             return null;
         }
         return new VkPipelineDynamicStateCreateInfo(s);
+    }
+
+    @unsafe
+    public @nullable VkPipelineDynamicStateCreateInfo[] pDynamicState(int assumedCount) {
+        MemorySegment s = pDynamicStateRaw().reinterpret(assumedCount * VkPipelineDynamicStateCreateInfo.SIZE);
+        VkPipelineDynamicStateCreateInfo[] arr = new VkPipelineDynamicStateCreateInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPipelineDynamicStateCreateInfo(s.asSlice(i * VkPipelineDynamicStateCreateInfo.SIZE, VkPipelineDynamicStateCreateInfo.SIZE));
+        }
+        return arr;
     }
 
     public void pDynamicState(@nullable VkPipelineDynamicStateCreateInfo value) {

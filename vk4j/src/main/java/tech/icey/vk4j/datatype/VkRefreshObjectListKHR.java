@@ -87,6 +87,16 @@ public record VkRefreshObjectListKHR(MemorySegment segment) {
         return new VkRefreshObjectKHR(s);
     }
 
+    @unsafe
+    public @nullable VkRefreshObjectKHR[] pObjects(int assumedCount) {
+        MemorySegment s = pObjectsRaw().reinterpret(assumedCount * VkRefreshObjectKHR.SIZE);
+        VkRefreshObjectKHR[] arr = new VkRefreshObjectKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRefreshObjectKHR(s.asSlice(i * VkRefreshObjectKHR.SIZE, VkRefreshObjectKHR.SIZE));
+        }
+        return arr;
+    }
+
     public void pObjects(@nullable VkRefreshObjectKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pObjectsRaw(s);

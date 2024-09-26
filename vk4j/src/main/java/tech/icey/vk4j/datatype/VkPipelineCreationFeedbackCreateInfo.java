@@ -84,6 +84,16 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) {
         return new VkPipelineCreationFeedback(s);
     }
 
+    @unsafe
+    public @nullable VkPipelineCreationFeedback[] pPipelineCreationFeedback(int assumedCount) {
+        MemorySegment s = pPipelineCreationFeedbackRaw().reinterpret(assumedCount * VkPipelineCreationFeedback.SIZE);
+        VkPipelineCreationFeedback[] arr = new VkPipelineCreationFeedback[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPipelineCreationFeedback(s.asSlice(i * VkPipelineCreationFeedback.SIZE, VkPipelineCreationFeedback.SIZE));
+        }
+        return arr;
+    }
+
     public void pPipelineCreationFeedback(@nullable VkPipelineCreationFeedback value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineCreationFeedbackRaw(s);
@@ -111,6 +121,16 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) {
             return null;
         }
         return new VkPipelineCreationFeedback(s);
+    }
+
+    @unsafe
+    public @nullable VkPipelineCreationFeedback[] pPipelineStageCreationFeedbacks(int assumedCount) {
+        MemorySegment s = pPipelineStageCreationFeedbacksRaw().reinterpret(assumedCount * VkPipelineCreationFeedback.SIZE);
+        VkPipelineCreationFeedback[] arr = new VkPipelineCreationFeedback[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPipelineCreationFeedback(s.asSlice(i * VkPipelineCreationFeedback.SIZE, VkPipelineCreationFeedback.SIZE));
+        }
+        return arr;
     }
 
     public void pPipelineStageCreationFeedbacks(@nullable VkPipelineCreationFeedback value) {

@@ -91,13 +91,15 @@ public record VkReleaseSwapchainImagesInfoEXT(MemorySegment segment) {
     public void pImageIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
     }
-    
-    public @unsigned IntBuffer pImageIndices() {
-        return new IntBuffer(pImageIndicesRaw());
+
+    public @nullable @unsigned IntBuffer pImageIndices() {
+        MemorySegment s = pImageIndicesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pImageIndices(@unsigned IntBuffer value) {
-        pImageIndicesRaw(value.segment());
+    public void pImageIndices(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pImageIndicesRaw(s);
     }
 
     public static VkReleaseSwapchainImagesInfoEXT allocate(Arena arena) {

@@ -97,6 +97,16 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) {
         return new VkImageFormatConstraintsInfoFUCHSIA(s);
     }
 
+    @unsafe
+    public @nullable VkImageFormatConstraintsInfoFUCHSIA[] pFormatConstraints(int assumedCount) {
+        MemorySegment s = pFormatConstraintsRaw().reinterpret(assumedCount * VkImageFormatConstraintsInfoFUCHSIA.SIZE);
+        VkImageFormatConstraintsInfoFUCHSIA[] arr = new VkImageFormatConstraintsInfoFUCHSIA[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkImageFormatConstraintsInfoFUCHSIA(s.asSlice(i * VkImageFormatConstraintsInfoFUCHSIA.SIZE, VkImageFormatConstraintsInfoFUCHSIA.SIZE));
+        }
+        return arr;
+    }
+
     public void pFormatConstraints(@nullable VkImageFormatConstraintsInfoFUCHSIA value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFormatConstraintsRaw(s);

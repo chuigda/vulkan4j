@@ -87,7 +87,7 @@ public record VkValidationFlagsEXT(MemorySegment segment) {
         
         return new IntBuffer(s);
     }
-    
+
     public void pDisabledValidationChecks(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDisabledValidationChecksRaw(s);

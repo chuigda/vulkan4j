@@ -90,13 +90,15 @@ public record VkPerformanceValueDataINTEL(MemorySegment segment) {
     public void valueStringRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$valueString, OFFSET$valueString, value);
     }
-    
-    public ByteBuffer valueString() {
-        return new ByteBuffer(valueStringRaw());
+
+    public @nullable ByteBuffer valueString() {
+        MemorySegment s = valueStringRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void valueString(ByteBuffer value) {
-        valueStringRaw(value.segment());
+    public void valueString(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        valueStringRaw(s);
     }
 
     public static VkPerformanceValueDataINTEL allocate(Arena arena) {

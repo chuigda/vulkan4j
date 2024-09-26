@@ -91,13 +91,15 @@ public record VkDebugMarkerObjectNameInfoEXT(MemorySegment segment) {
     public void pObjectNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pObjectName, OFFSET$pObjectName, value);
     }
-    
-    public ByteBuffer pObjectName() {
-        return new ByteBuffer(pObjectNameRaw());
+
+    public @nullable ByteBuffer pObjectName() {
+        MemorySegment s = pObjectNameRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pObjectName(ByteBuffer value) {
-        pObjectNameRaw(value.segment());
+    public void pObjectName(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pObjectNameRaw(s);
     }
 
     public static VkDebugMarkerObjectNameInfoEXT allocate(Arena arena) {

@@ -58,13 +58,15 @@ public record VkLayerSettingEXT(MemorySegment segment) {
     public void pLayerNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pLayerName, OFFSET$pLayerName, value);
     }
-    
-    public ByteBuffer pLayerName() {
-        return new ByteBuffer(pLayerNameRaw());
+
+    public @nullable ByteBuffer pLayerName() {
+        MemorySegment s = pLayerNameRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pLayerName(ByteBuffer value) {
-        pLayerNameRaw(value.segment());
+    public void pLayerName(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pLayerNameRaw(s);
     }
 
     public @pointer(comment="int8_t*") MemorySegment pSettingNameRaw() {
@@ -74,13 +76,15 @@ public record VkLayerSettingEXT(MemorySegment segment) {
     public void pSettingNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pSettingName, OFFSET$pSettingName, value);
     }
-    
-    public ByteBuffer pSettingName() {
-        return new ByteBuffer(pSettingNameRaw());
+
+    public @nullable ByteBuffer pSettingName() {
+        MemorySegment s = pSettingNameRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pSettingName(ByteBuffer value) {
-        pSettingNameRaw(value.segment());
+    public void pSettingName(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSettingNameRaw(s);
     }
 
     public @enumtype(VkLayerSettingTypeEXT.class) int type() {

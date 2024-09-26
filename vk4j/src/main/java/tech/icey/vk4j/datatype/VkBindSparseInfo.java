@@ -156,6 +156,16 @@ public record VkBindSparseInfo(MemorySegment segment) {
         return new VkSparseBufferMemoryBindInfo(s);
     }
 
+    @unsafe
+    public @nullable VkSparseBufferMemoryBindInfo[] pBufferBinds(int assumedCount) {
+        MemorySegment s = pBufferBindsRaw().reinterpret(assumedCount * VkSparseBufferMemoryBindInfo.SIZE);
+        VkSparseBufferMemoryBindInfo[] arr = new VkSparseBufferMemoryBindInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSparseBufferMemoryBindInfo(s.asSlice(i * VkSparseBufferMemoryBindInfo.SIZE, VkSparseBufferMemoryBindInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pBufferBinds(@nullable VkSparseBufferMemoryBindInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferBindsRaw(s);
@@ -185,6 +195,16 @@ public record VkBindSparseInfo(MemorySegment segment) {
         return new VkSparseImageOpaqueMemoryBindInfo(s);
     }
 
+    @unsafe
+    public @nullable VkSparseImageOpaqueMemoryBindInfo[] pImageOpaqueBinds(int assumedCount) {
+        MemorySegment s = pImageOpaqueBindsRaw().reinterpret(assumedCount * VkSparseImageOpaqueMemoryBindInfo.SIZE);
+        VkSparseImageOpaqueMemoryBindInfo[] arr = new VkSparseImageOpaqueMemoryBindInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSparseImageOpaqueMemoryBindInfo(s.asSlice(i * VkSparseImageOpaqueMemoryBindInfo.SIZE, VkSparseImageOpaqueMemoryBindInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pImageOpaqueBinds(@nullable VkSparseImageOpaqueMemoryBindInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageOpaqueBindsRaw(s);
@@ -212,6 +232,16 @@ public record VkBindSparseInfo(MemorySegment segment) {
             return null;
         }
         return new VkSparseImageMemoryBindInfo(s);
+    }
+
+    @unsafe
+    public @nullable VkSparseImageMemoryBindInfo[] pImageBinds(int assumedCount) {
+        MemorySegment s = pImageBindsRaw().reinterpret(assumedCount * VkSparseImageMemoryBindInfo.SIZE);
+        VkSparseImageMemoryBindInfo[] arr = new VkSparseImageMemoryBindInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSparseImageMemoryBindInfo(s.asSlice(i * VkSparseImageMemoryBindInfo.SIZE, VkSparseImageMemoryBindInfo.SIZE));
+        }
+        return arr;
     }
 
     public void pImageBinds(@nullable VkSparseImageMemoryBindInfo value) {

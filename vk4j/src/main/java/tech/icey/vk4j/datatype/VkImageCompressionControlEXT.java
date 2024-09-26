@@ -100,7 +100,7 @@ public record VkImageCompressionControlEXT(MemorySegment segment) {
         
         return new IntBuffer(s);
     }
-    
+
     public void pFixedRateFlags(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFixedRateFlagsRaw(s);

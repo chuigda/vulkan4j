@@ -100,6 +100,16 @@ public record VkDescriptorSetLayoutCreateInfo(MemorySegment segment) {
         return new VkDescriptorSetLayoutBinding(s);
     }
 
+    @unsafe
+    public @nullable VkDescriptorSetLayoutBinding[] pBindings(int assumedCount) {
+        MemorySegment s = pBindingsRaw().reinterpret(assumedCount * VkDescriptorSetLayoutBinding.SIZE);
+        VkDescriptorSetLayoutBinding[] arr = new VkDescriptorSetLayoutBinding[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkDescriptorSetLayoutBinding(s.asSlice(i * VkDescriptorSetLayoutBinding.SIZE, VkDescriptorSetLayoutBinding.SIZE));
+        }
+        return arr;
+    }
+
     public void pBindings(@nullable VkDescriptorSetLayoutBinding value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBindingsRaw(s);

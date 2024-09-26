@@ -117,13 +117,15 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) {
     public void pValuesRaw(@pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
-    
-    public @unsigned LongBuffer pValues() {
-        return new LongBuffer(pValuesRaw());
+
+    public @nullable @unsigned LongBuffer pValues() {
+        MemorySegment s = pValuesRaw();
+        return s.address() == 0 ? null : new LongBuffer(s);
     }
 
-    public void pValues(@unsigned LongBuffer value) {
-        pValuesRaw(value.segment());
+    public void pValues(@nullable @unsigned LongBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pValuesRaw(s);
     }
 
     public static VkSemaphoreWaitInfo allocate(Arena arena) {

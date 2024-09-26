@@ -87,6 +87,16 @@ public record VkLayerSettingsCreateInfoEXT(MemorySegment segment) {
         return new VkLayerSettingEXT(s);
     }
 
+    @unsafe
+    public @nullable VkLayerSettingEXT[] pSettings(int assumedCount) {
+        MemorySegment s = pSettingsRaw().reinterpret(assumedCount * VkLayerSettingEXT.SIZE);
+        VkLayerSettingEXT[] arr = new VkLayerSettingEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkLayerSettingEXT(s.asSlice(i * VkLayerSettingEXT.SIZE, VkLayerSettingEXT.SIZE));
+        }
+        return arr;
+    }
+
     public void pSettings(@nullable VkLayerSettingEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSettingsRaw(s);

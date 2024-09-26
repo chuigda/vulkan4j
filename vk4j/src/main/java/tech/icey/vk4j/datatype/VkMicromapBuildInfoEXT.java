@@ -164,6 +164,16 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) {
         return new VkMicromapUsageEXT(s);
     }
 
+    @unsafe
+    public @nullable VkMicromapUsageEXT[] pUsageCounts(int assumedCount) {
+        MemorySegment s = pUsageCountsRaw().reinterpret(assumedCount * VkMicromapUsageEXT.SIZE);
+        VkMicromapUsageEXT[] arr = new VkMicromapUsageEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkMicromapUsageEXT(s.asSlice(i * VkMicromapUsageEXT.SIZE, VkMicromapUsageEXT.SIZE));
+        }
+        return arr;
+    }
+
     public void pUsageCounts(@nullable VkMicromapUsageEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pUsageCountsRaw(s);

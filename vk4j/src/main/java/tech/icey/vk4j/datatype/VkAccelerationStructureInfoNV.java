@@ -126,6 +126,16 @@ public record VkAccelerationStructureInfoNV(MemorySegment segment) {
         return new VkGeometryNV(s);
     }
 
+    @unsafe
+    public @nullable VkGeometryNV[] pGeometries(int assumedCount) {
+        MemorySegment s = pGeometriesRaw().reinterpret(assumedCount * VkGeometryNV.SIZE);
+        VkGeometryNV[] arr = new VkGeometryNV[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkGeometryNV(s.asSlice(i * VkGeometryNV.SIZE, VkGeometryNV.SIZE));
+        }
+        return arr;
+    }
+
     public void pGeometries(@nullable VkGeometryNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGeometriesRaw(s);

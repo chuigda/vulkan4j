@@ -166,13 +166,15 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
     public void pNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
-    
-    public ByteBuffer pName() {
-        return new ByteBuffer(pNameRaw());
+
+    public @nullable ByteBuffer pName() {
+        MemorySegment s = pNameRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pName(ByteBuffer value) {
-        pNameRaw(value.segment());
+    public void pName(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pNameRaw(s);
     }
 
     public @unsigned int setLayoutCount() {
@@ -228,6 +230,16 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
         return new VkPushConstantRange(s);
     }
 
+    @unsafe
+    public @nullable VkPushConstantRange[] pPushConstantRanges(int assumedCount) {
+        MemorySegment s = pPushConstantRangesRaw().reinterpret(assumedCount * VkPushConstantRange.SIZE);
+        VkPushConstantRange[] arr = new VkPushConstantRange[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPushConstantRange(s.asSlice(i * VkPushConstantRange.SIZE, VkPushConstantRange.SIZE));
+        }
+        return arr;
+    }
+
     public void pPushConstantRanges(@nullable VkPushConstantRange value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPushConstantRangesRaw(s);
@@ -247,6 +259,16 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) {
             return null;
         }
         return new VkSpecializationInfo(s);
+    }
+
+    @unsafe
+    public @nullable VkSpecializationInfo[] pSpecializationInfo(int assumedCount) {
+        MemorySegment s = pSpecializationInfoRaw().reinterpret(assumedCount * VkSpecializationInfo.SIZE);
+        VkSpecializationInfo[] arr = new VkSpecializationInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSpecializationInfo(s.asSlice(i * VkSpecializationInfo.SIZE, VkSpecializationInfo.SIZE));
+        }
+        return arr;
     }
 
     public void pSpecializationInfo(@nullable VkSpecializationInfo value) {

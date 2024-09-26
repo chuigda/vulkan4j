@@ -222,7 +222,7 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
         
         return new IntBuffer(s);
     }
-    
+
     public void pIndexTypes(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pIndexTypesRaw(s);
@@ -235,13 +235,15 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
     public void pIndexTypeValuesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues, value);
     }
-    
-    public @unsigned IntBuffer pIndexTypeValues() {
-        return new IntBuffer(pIndexTypeValuesRaw());
+
+    public @nullable @unsigned IntBuffer pIndexTypeValues() {
+        MemorySegment s = pIndexTypeValuesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pIndexTypeValues(@unsigned IntBuffer value) {
-        pIndexTypeValuesRaw(value.segment());
+    public void pIndexTypeValues(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pIndexTypeValuesRaw(s);
     }
 
     public static VkIndirectCommandsLayoutTokenNV allocate(Arena arena) {

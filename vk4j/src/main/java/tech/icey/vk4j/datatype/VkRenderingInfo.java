@@ -149,6 +149,16 @@ public record VkRenderingInfo(MemorySegment segment) {
         return new VkRenderingAttachmentInfo(s);
     }
 
+    @unsafe
+    public @nullable VkRenderingAttachmentInfo[] pColorAttachments(int assumedCount) {
+        MemorySegment s = pColorAttachmentsRaw().reinterpret(assumedCount * VkRenderingAttachmentInfo.SIZE);
+        VkRenderingAttachmentInfo[] arr = new VkRenderingAttachmentInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.SIZE, VkRenderingAttachmentInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pColorAttachments(@nullable VkRenderingAttachmentInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentsRaw(s);
@@ -170,6 +180,16 @@ public record VkRenderingInfo(MemorySegment segment) {
         return new VkRenderingAttachmentInfo(s);
     }
 
+    @unsafe
+    public @nullable VkRenderingAttachmentInfo[] pDepthAttachment(int assumedCount) {
+        MemorySegment s = pDepthAttachmentRaw().reinterpret(assumedCount * VkRenderingAttachmentInfo.SIZE);
+        VkRenderingAttachmentInfo[] arr = new VkRenderingAttachmentInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.SIZE, VkRenderingAttachmentInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pDepthAttachment(@nullable VkRenderingAttachmentInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDepthAttachmentRaw(s);
@@ -189,6 +209,16 @@ public record VkRenderingInfo(MemorySegment segment) {
             return null;
         }
         return new VkRenderingAttachmentInfo(s);
+    }
+
+    @unsafe
+    public @nullable VkRenderingAttachmentInfo[] pStencilAttachment(int assumedCount) {
+        MemorySegment s = pStencilAttachmentRaw().reinterpret(assumedCount * VkRenderingAttachmentInfo.SIZE);
+        VkRenderingAttachmentInfo[] arr = new VkRenderingAttachmentInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.SIZE, VkRenderingAttachmentInfo.SIZE));
+        }
+        return arr;
     }
 
     public void pStencilAttachment(@nullable VkRenderingAttachmentInfo value) {

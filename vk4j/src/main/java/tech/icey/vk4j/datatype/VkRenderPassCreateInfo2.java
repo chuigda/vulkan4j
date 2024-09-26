@@ -130,6 +130,16 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) {
         return new VkAttachmentDescription2(s);
     }
 
+    @unsafe
+    public @nullable VkAttachmentDescription2[] pAttachments(int assumedCount) {
+        MemorySegment s = pAttachmentsRaw().reinterpret(assumedCount * VkAttachmentDescription2.SIZE);
+        VkAttachmentDescription2[] arr = new VkAttachmentDescription2[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkAttachmentDescription2(s.asSlice(i * VkAttachmentDescription2.SIZE, VkAttachmentDescription2.SIZE));
+        }
+        return arr;
+    }
+
     public void pAttachments(@nullable VkAttachmentDescription2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
@@ -157,6 +167,16 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) {
             return null;
         }
         return new VkSubpassDescription2(s);
+    }
+
+    @unsafe
+    public @nullable VkSubpassDescription2[] pSubpasses(int assumedCount) {
+        MemorySegment s = pSubpassesRaw().reinterpret(assumedCount * VkSubpassDescription2.SIZE);
+        VkSubpassDescription2[] arr = new VkSubpassDescription2[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSubpassDescription2(s.asSlice(i * VkSubpassDescription2.SIZE, VkSubpassDescription2.SIZE));
+        }
+        return arr;
     }
 
     public void pSubpasses(@nullable VkSubpassDescription2 value) {
@@ -188,6 +208,16 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) {
         return new VkSubpassDependency2(s);
     }
 
+    @unsafe
+    public @nullable VkSubpassDependency2[] pDependencies(int assumedCount) {
+        MemorySegment s = pDependenciesRaw().reinterpret(assumedCount * VkSubpassDependency2.SIZE);
+        VkSubpassDependency2[] arr = new VkSubpassDependency2[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSubpassDependency2(s.asSlice(i * VkSubpassDependency2.SIZE, VkSubpassDependency2.SIZE));
+        }
+        return arr;
+    }
+
     public void pDependencies(@nullable VkSubpassDependency2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDependenciesRaw(s);
@@ -208,13 +238,15 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) {
     public void pCorrelatedViewMasksRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks, value);
     }
-    
-    public @unsigned IntBuffer pCorrelatedViewMasks() {
-        return new IntBuffer(pCorrelatedViewMasksRaw());
+
+    public @nullable @unsigned IntBuffer pCorrelatedViewMasks() {
+        MemorySegment s = pCorrelatedViewMasksRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pCorrelatedViewMasks(@unsigned IntBuffer value) {
-        pCorrelatedViewMasksRaw(value.segment());
+    public void pCorrelatedViewMasks(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCorrelatedViewMasksRaw(s);
     }
 
     public static VkRenderPassCreateInfo2 allocate(Arena arena) {

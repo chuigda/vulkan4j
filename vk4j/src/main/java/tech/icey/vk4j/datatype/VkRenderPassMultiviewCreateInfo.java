@@ -98,13 +98,15 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
     public void pViewMasksRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pViewMasks, OFFSET$pViewMasks, value);
     }
-    
-    public @unsigned IntBuffer pViewMasks() {
-        return new IntBuffer(pViewMasksRaw());
+
+    public @nullable @unsigned IntBuffer pViewMasks() {
+        MemorySegment s = pViewMasksRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pViewMasks(@unsigned IntBuffer value) {
-        pViewMasksRaw(value.segment());
+    public void pViewMasks(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pViewMasksRaw(s);
     }
 
     public @unsigned int dependencyCount() {
@@ -122,13 +124,15 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
     public void pViewOffsetsRaw(@pointer(comment="int32_t*") MemorySegment value) {
         segment.set(LAYOUT$pViewOffsets, OFFSET$pViewOffsets, value);
     }
-    
-    public IntBuffer pViewOffsets() {
-        return new IntBuffer(pViewOffsetsRaw());
+
+    public @nullable IntBuffer pViewOffsets() {
+        MemorySegment s = pViewOffsetsRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pViewOffsets(IntBuffer value) {
-        pViewOffsetsRaw(value.segment());
+    public void pViewOffsets(@nullable IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pViewOffsetsRaw(s);
     }
 
     public @unsigned int correlationMaskCount() {
@@ -146,13 +150,15 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
     public void pCorrelationMasksRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks, value);
     }
-    
-    public @unsigned IntBuffer pCorrelationMasks() {
-        return new IntBuffer(pCorrelationMasksRaw());
+
+    public @nullable @unsigned IntBuffer pCorrelationMasks() {
+        MemorySegment s = pCorrelationMasksRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pCorrelationMasks(@unsigned IntBuffer value) {
-        pCorrelationMasksRaw(value.segment());
+    public void pCorrelationMasks(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCorrelationMasksRaw(s);
     }
 
     public static VkRenderPassMultiviewCreateInfo allocate(Arena arena) {

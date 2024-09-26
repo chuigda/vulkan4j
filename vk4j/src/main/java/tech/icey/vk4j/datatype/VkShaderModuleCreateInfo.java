@@ -89,13 +89,15 @@ public record VkShaderModuleCreateInfo(MemorySegment segment) {
     public void pCodeRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pCode, OFFSET$pCode, value);
     }
-    
-    public @unsigned IntBuffer pCode() {
-        return new IntBuffer(pCodeRaw());
+
+    public @nullable @unsigned IntBuffer pCode() {
+        MemorySegment s = pCodeRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pCode(@unsigned IntBuffer value) {
-        pCodeRaw(value.segment());
+    public void pCode(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCodeRaw(s);
     }
 
     public static VkShaderModuleCreateInfo allocate(Arena arena) {

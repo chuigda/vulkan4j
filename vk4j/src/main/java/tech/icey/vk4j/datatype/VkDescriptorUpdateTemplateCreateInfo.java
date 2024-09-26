@@ -125,6 +125,16 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) {
         return new VkDescriptorUpdateTemplateEntry(s);
     }
 
+    @unsafe
+    public @nullable VkDescriptorUpdateTemplateEntry[] pDescriptorUpdateEntries(int assumedCount) {
+        MemorySegment s = pDescriptorUpdateEntriesRaw().reinterpret(assumedCount * VkDescriptorUpdateTemplateEntry.SIZE);
+        VkDescriptorUpdateTemplateEntry[] arr = new VkDescriptorUpdateTemplateEntry[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkDescriptorUpdateTemplateEntry(s.asSlice(i * VkDescriptorUpdateTemplateEntry.SIZE, VkDescriptorUpdateTemplateEntry.SIZE));
+        }
+        return arr;
+    }
+
     public void pDescriptorUpdateEntries(@nullable VkDescriptorUpdateTemplateEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorUpdateEntriesRaw(s);

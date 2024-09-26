@@ -60,7 +60,7 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) {
         
         return new IntBuffer(s);
     }
-    
+
     public void pDescriptorTypes(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorTypesRaw(s);

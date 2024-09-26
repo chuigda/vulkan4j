@@ -126,6 +126,16 @@ public record VkRenderPassBeginInfo(MemorySegment segment) {
         return new VkClearValue(s);
     }
 
+    @unsafe
+    public @nullable VkClearValue[] pClearValues(int assumedCount) {
+        MemorySegment s = pClearValuesRaw().reinterpret(assumedCount * VkClearValue.SIZE);
+        VkClearValue[] arr = new VkClearValue[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkClearValue(s.asSlice(i * VkClearValue.SIZE, VkClearValue.SIZE));
+        }
+        return arr;
+    }
+
     public void pClearValues(@nullable VkClearValue value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pClearValuesRaw(s);

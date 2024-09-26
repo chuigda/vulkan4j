@@ -87,6 +87,16 @@ public record VkRenderPassStripeSubmitInfoARM(MemorySegment segment) {
         return new VkSemaphoreSubmitInfo(s);
     }
 
+    @unsafe
+    public @nullable VkSemaphoreSubmitInfo[] pStripeSemaphoreInfos(int assumedCount) {
+        MemorySegment s = pStripeSemaphoreInfosRaw().reinterpret(assumedCount * VkSemaphoreSubmitInfo.SIZE);
+        VkSemaphoreSubmitInfo[] arr = new VkSemaphoreSubmitInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSemaphoreSubmitInfo(s.asSlice(i * VkSemaphoreSubmitInfo.SIZE, VkSemaphoreSubmitInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pStripeSemaphoreInfos(@nullable VkSemaphoreSubmitInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStripeSemaphoreInfosRaw(s);

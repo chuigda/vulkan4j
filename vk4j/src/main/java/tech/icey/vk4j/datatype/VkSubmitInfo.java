@@ -133,7 +133,7 @@ public record VkSubmitInfo(MemorySegment segment) {
         
         return new IntBuffer(s);
     }
-    
+
     public void pWaitDstStageMask(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitDstStageMaskRaw(s);

@@ -88,13 +88,15 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
     public void pDeviceIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices, value);
     }
-    
-    public @unsigned IntBuffer pDeviceIndices() {
-        return new IntBuffer(pDeviceIndicesRaw());
+
+    public @nullable @unsigned IntBuffer pDeviceIndices() {
+        MemorySegment s = pDeviceIndicesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pDeviceIndices(@unsigned IntBuffer value) {
-        pDeviceIndicesRaw(value.segment());
+    public void pDeviceIndices(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDeviceIndicesRaw(s);
     }
 
     public @unsigned int splitInstanceBindRegionCount() {
@@ -119,6 +121,16 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
             return null;
         }
         return new VkRect2D(s);
+    }
+
+    @unsafe
+    public @nullable VkRect2D[] pSplitInstanceBindRegions(int assumedCount) {
+        MemorySegment s = pSplitInstanceBindRegionsRaw().reinterpret(assumedCount * VkRect2D.SIZE);
+        VkRect2D[] arr = new VkRect2D[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRect2D(s.asSlice(i * VkRect2D.SIZE, VkRect2D.SIZE));
+        }
+        return arr;
     }
 
     public void pSplitInstanceBindRegions(@nullable VkRect2D value) {

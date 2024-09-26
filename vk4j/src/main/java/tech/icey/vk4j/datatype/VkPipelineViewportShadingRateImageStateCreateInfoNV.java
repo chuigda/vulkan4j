@@ -100,6 +100,16 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment 
         return new VkShadingRatePaletteNV(s);
     }
 
+    @unsafe
+    public @nullable VkShadingRatePaletteNV[] pShadingRatePalettes(int assumedCount) {
+        MemorySegment s = pShadingRatePalettesRaw().reinterpret(assumedCount * VkShadingRatePaletteNV.SIZE);
+        VkShadingRatePaletteNV[] arr = new VkShadingRatePaletteNV[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkShadingRatePaletteNV(s.asSlice(i * VkShadingRatePaletteNV.SIZE, VkShadingRatePaletteNV.SIZE));
+        }
+        return arr;
+    }
+
     public void pShadingRatePalettes(@nullable VkShadingRatePaletteNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pShadingRatePalettesRaw(s);

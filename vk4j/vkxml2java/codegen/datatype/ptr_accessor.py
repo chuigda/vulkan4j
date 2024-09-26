@@ -50,13 +50,15 @@ def generate_p_nonref_type_accessor(pointee_type: CNonRefType, member: Member) -
     public void {member.name}Raw(@pointer(comment="{pointee_type.c_type()}*") MemorySegment value) {{
         segment.set(LAYOUT${member.name}, OFFSET${member.name}, value);
     }}
-    
-    public {pointee_type.vk4j_ptr_type()} {member.name}() {{
-        return new {pointee_type.vk4j_ptr_type_no_sign()}({member.name}Raw());
+
+    public @nullable {pointee_type.vk4j_ptr_type()} {member.name}() {{
+        MemorySegment s = {member.name}Raw();
+        return s.address() == 0 ? null : new {pointee_type.vk4j_ptr_type_no_sign()}(s);
     }}
 
-    public void {member.name}({pointee_type.vk4j_ptr_type()} value) {{
-        {member.name}Raw(value.segment());
+    public void {member.name}(@nullable {pointee_type.vk4j_ptr_type()} value) {{
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        {member.name}Raw(s);
     }}\n\n'''
 
 
@@ -84,7 +86,7 @@ def generate_p_enum_type_accessor(pointee_type: CEnumType, member: Member) -> st
         
         return new {int_type.vk4j_ptr_type_no_sign()}(s);
     }}
-    
+
     public void {member.name}(@nullable {int_type.vk4j_ptr_type()} value) {{
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         {member.name}Raw(s);
@@ -106,6 +108,16 @@ def generate_p_ref_type_accessor(pointee_type: CStructType | CUnionType | CHandl
             return null;
         }}
         return new {pointee_type.java_type()}(s);
+    }}
+
+    @unsafe
+    public @nullable {pointee_type.java_type()}[] {member.name}(int assumedCount) {{
+        MemorySegment s = {member.name}Raw().reinterpret(assumedCount * {pointee_type.java_type()}.SIZE);
+        {pointee_type.java_type()}[] arr = new {pointee_type.java_type()}[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {{
+            arr[i] = new {pointee_type.java_type()}(s.asSlice(i * {pointee_type.java_type()}.SIZE, {pointee_type.java_type()}.SIZE));
+        }}
+        return arr;
     }}
 
     public void {member.name}(@nullable {pointee_type.java_type()} value) {{

@@ -110,6 +110,16 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) {
         return new VkVertexInputBindingDescription(s);
     }
 
+    @unsafe
+    public @nullable VkVertexInputBindingDescription[] pVertexBindingDescriptions(int assumedCount) {
+        MemorySegment s = pVertexBindingDescriptionsRaw().reinterpret(assumedCount * VkVertexInputBindingDescription.SIZE);
+        VkVertexInputBindingDescription[] arr = new VkVertexInputBindingDescription[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkVertexInputBindingDescription(s.asSlice(i * VkVertexInputBindingDescription.SIZE, VkVertexInputBindingDescription.SIZE));
+        }
+        return arr;
+    }
+
     public void pVertexBindingDescriptions(@nullable VkVertexInputBindingDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexBindingDescriptionsRaw(s);
@@ -137,6 +147,16 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) {
             return null;
         }
         return new VkVertexInputAttributeDescription(s);
+    }
+
+    @unsafe
+    public @nullable VkVertexInputAttributeDescription[] pVertexAttributeDescriptions(int assumedCount) {
+        MemorySegment s = pVertexAttributeDescriptionsRaw().reinterpret(assumedCount * VkVertexInputAttributeDescription.SIZE);
+        VkVertexInputAttributeDescription[] arr = new VkVertexInputAttributeDescription[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkVertexInputAttributeDescription(s.asSlice(i * VkVertexInputAttributeDescription.SIZE, VkVertexInputAttributeDescription.SIZE));
+        }
+        return arr;
     }
 
     public void pVertexAttributeDescriptions(@nullable VkVertexInputAttributeDescription value) {

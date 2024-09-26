@@ -144,6 +144,16 @@ public record VkBlitImageInfo2(MemorySegment segment) {
         return new VkImageBlit2(s);
     }
 
+    @unsafe
+    public @nullable VkImageBlit2[] pRegions(int assumedCount) {
+        MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkImageBlit2.SIZE);
+        VkImageBlit2[] arr = new VkImageBlit2[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkImageBlit2(s.asSlice(i * VkImageBlit2.SIZE, VkImageBlit2.SIZE));
+        }
+        return arr;
+    }
+
     public void pRegions(@nullable VkImageBlit2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);

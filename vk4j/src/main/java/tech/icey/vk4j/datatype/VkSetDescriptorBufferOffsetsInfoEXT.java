@@ -122,13 +122,15 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
     public void pBufferIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pBufferIndices, OFFSET$pBufferIndices, value);
     }
-    
-    public @unsigned IntBuffer pBufferIndices() {
-        return new IntBuffer(pBufferIndicesRaw());
+
+    public @nullable @unsigned IntBuffer pBufferIndices() {
+        MemorySegment s = pBufferIndicesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pBufferIndices(@unsigned IntBuffer value) {
-        pBufferIndicesRaw(value.segment());
+    public void pBufferIndices(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pBufferIndicesRaw(s);
     }
 
     public @pointer(comment="uint64_t*") MemorySegment pOffsetsRaw() {
@@ -138,13 +140,15 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
     public void pOffsetsRaw(@pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pOffsets, OFFSET$pOffsets, value);
     }
-    
-    public @unsigned LongBuffer pOffsets() {
-        return new LongBuffer(pOffsetsRaw());
+
+    public @nullable @unsigned LongBuffer pOffsets() {
+        MemorySegment s = pOffsetsRaw();
+        return s.address() == 0 ? null : new LongBuffer(s);
     }
 
-    public void pOffsets(@unsigned LongBuffer value) {
-        pOffsetsRaw(value.segment());
+    public void pOffsets(@nullable @unsigned LongBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pOffsetsRaw(s);
     }
 
     public static VkSetDescriptorBufferOffsetsInfoEXT allocate(Arena arena) {

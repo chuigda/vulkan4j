@@ -78,13 +78,15 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(MemorySegment s
     public void pIdentifierRaw(@pointer(comment="uint8_t*") MemorySegment value) {
         segment.set(LAYOUT$pIdentifier, OFFSET$pIdentifier, value);
     }
-    
-    public @unsigned ByteBuffer pIdentifier() {
-        return new ByteBuffer(pIdentifierRaw());
+
+    public @nullable @unsigned ByteBuffer pIdentifier() {
+        MemorySegment s = pIdentifierRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pIdentifier(@unsigned ByteBuffer value) {
-        pIdentifierRaw(value.segment());
+    public void pIdentifier(@nullable @unsigned ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pIdentifierRaw(s);
     }
 
     public static VkPipelineShaderStageModuleIdentifierCreateInfoEXT allocate(Arena arena) {

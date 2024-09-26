@@ -139,6 +139,16 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) {
         return new VkSysmemColorSpaceFUCHSIA(s);
     }
 
+    @unsafe
+    public @nullable VkSysmemColorSpaceFUCHSIA[] pColorSpaces(int assumedCount) {
+        MemorySegment s = pColorSpacesRaw().reinterpret(assumedCount * VkSysmemColorSpaceFUCHSIA.SIZE);
+        VkSysmemColorSpaceFUCHSIA[] arr = new VkSysmemColorSpaceFUCHSIA[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSysmemColorSpaceFUCHSIA(s.asSlice(i * VkSysmemColorSpaceFUCHSIA.SIZE, VkSysmemColorSpaceFUCHSIA.SIZE));
+        }
+        return arr;
+    }
+
     public void pColorSpaces(@nullable VkSysmemColorSpaceFUCHSIA value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorSpacesRaw(s);

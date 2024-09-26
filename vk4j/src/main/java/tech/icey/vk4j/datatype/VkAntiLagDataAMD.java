@@ -100,6 +100,16 @@ public record VkAntiLagDataAMD(MemorySegment segment) {
         return new VkAntiLagPresentationInfoAMD(s);
     }
 
+    @unsafe
+    public @nullable VkAntiLagPresentationInfoAMD[] pPresentationInfo(int assumedCount) {
+        MemorySegment s = pPresentationInfoRaw().reinterpret(assumedCount * VkAntiLagPresentationInfoAMD.SIZE);
+        VkAntiLagPresentationInfoAMD[] arr = new VkAntiLagPresentationInfoAMD[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkAntiLagPresentationInfoAMD(s.asSlice(i * VkAntiLagPresentationInfoAMD.SIZE, VkAntiLagPresentationInfoAMD.SIZE));
+        }
+        return arr;
+    }
+
     public void pPresentationInfo(@nullable VkAntiLagPresentationInfoAMD value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPresentationInfoRaw(s);

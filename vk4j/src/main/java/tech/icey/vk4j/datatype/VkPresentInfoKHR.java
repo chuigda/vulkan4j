@@ -148,13 +148,15 @@ public record VkPresentInfoKHR(MemorySegment segment) {
     public void pImageIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
     }
-    
-    public @unsigned IntBuffer pImageIndices() {
-        return new IntBuffer(pImageIndicesRaw());
+
+    public @nullable @unsigned IntBuffer pImageIndices() {
+        MemorySegment s = pImageIndicesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pImageIndices(@unsigned IntBuffer value) {
-        pImageIndicesRaw(value.segment());
+    public void pImageIndices(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pImageIndicesRaw(s);
     }
 
     public @pointer(target=VkResult.class) MemorySegment pResultsRaw() {
@@ -173,7 +175,7 @@ public record VkPresentInfoKHR(MemorySegment segment) {
         
         return new IntBuffer(s);
     }
-    
+
     public void pResults(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResultsRaw(s);

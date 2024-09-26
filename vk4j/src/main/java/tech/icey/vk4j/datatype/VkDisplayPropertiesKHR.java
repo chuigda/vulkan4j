@@ -76,13 +76,15 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) {
     public void displayNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$displayName, OFFSET$displayName, value);
     }
-    
-    public ByteBuffer displayName() {
-        return new ByteBuffer(displayNameRaw());
+
+    public @nullable ByteBuffer displayName() {
+        MemorySegment s = displayNameRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void displayName(ByteBuffer value) {
-        displayNameRaw(value.segment());
+    public void displayName(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        displayNameRaw(s);
     }
 
     public VkExtent2D physicalDimensions() {

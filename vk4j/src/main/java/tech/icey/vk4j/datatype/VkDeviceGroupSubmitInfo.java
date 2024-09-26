@@ -98,13 +98,15 @@ public record VkDeviceGroupSubmitInfo(MemorySegment segment) {
     public void pWaitSemaphoreDeviceIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphoreDeviceIndices, OFFSET$pWaitSemaphoreDeviceIndices, value);
     }
-    
-    public @unsigned IntBuffer pWaitSemaphoreDeviceIndices() {
-        return new IntBuffer(pWaitSemaphoreDeviceIndicesRaw());
+
+    public @nullable @unsigned IntBuffer pWaitSemaphoreDeviceIndices() {
+        MemorySegment s = pWaitSemaphoreDeviceIndicesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pWaitSemaphoreDeviceIndices(@unsigned IntBuffer value) {
-        pWaitSemaphoreDeviceIndicesRaw(value.segment());
+    public void pWaitSemaphoreDeviceIndices(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pWaitSemaphoreDeviceIndicesRaw(s);
     }
 
     public @unsigned int commandBufferCount() {
@@ -122,13 +124,15 @@ public record VkDeviceGroupSubmitInfo(MemorySegment segment) {
     public void pCommandBufferDeviceMasksRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pCommandBufferDeviceMasks, OFFSET$pCommandBufferDeviceMasks, value);
     }
-    
-    public @unsigned IntBuffer pCommandBufferDeviceMasks() {
-        return new IntBuffer(pCommandBufferDeviceMasksRaw());
+
+    public @nullable @unsigned IntBuffer pCommandBufferDeviceMasks() {
+        MemorySegment s = pCommandBufferDeviceMasksRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pCommandBufferDeviceMasks(@unsigned IntBuffer value) {
-        pCommandBufferDeviceMasksRaw(value.segment());
+    public void pCommandBufferDeviceMasks(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCommandBufferDeviceMasksRaw(s);
     }
 
     public @unsigned int signalSemaphoreCount() {
@@ -146,13 +150,15 @@ public record VkDeviceGroupSubmitInfo(MemorySegment segment) {
     public void pSignalSemaphoreDeviceIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphoreDeviceIndices, OFFSET$pSignalSemaphoreDeviceIndices, value);
     }
-    
-    public @unsigned IntBuffer pSignalSemaphoreDeviceIndices() {
-        return new IntBuffer(pSignalSemaphoreDeviceIndicesRaw());
+
+    public @nullable @unsigned IntBuffer pSignalSemaphoreDeviceIndices() {
+        MemorySegment s = pSignalSemaphoreDeviceIndicesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pSignalSemaphoreDeviceIndices(@unsigned IntBuffer value) {
-        pSignalSemaphoreDeviceIndicesRaw(value.segment());
+    public void pSignalSemaphoreDeviceIndices(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSignalSemaphoreDeviceIndicesRaw(s);
     }
 
     public static VkDeviceGroupSubmitInfo allocate(Arena arena) {

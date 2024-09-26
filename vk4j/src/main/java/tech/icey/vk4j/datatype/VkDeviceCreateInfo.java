@@ -125,6 +125,16 @@ public record VkDeviceCreateInfo(MemorySegment segment) {
         return new VkDeviceQueueCreateInfo(s);
     }
 
+    @unsafe
+    public @nullable VkDeviceQueueCreateInfo[] pQueueCreateInfos(int assumedCount) {
+        MemorySegment s = pQueueCreateInfosRaw().reinterpret(assumedCount * VkDeviceQueueCreateInfo.SIZE);
+        VkDeviceQueueCreateInfo[] arr = new VkDeviceQueueCreateInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkDeviceQueueCreateInfo(s.asSlice(i * VkDeviceQueueCreateInfo.SIZE, VkDeviceQueueCreateInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pQueueCreateInfos(@nullable VkDeviceQueueCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueCreateInfosRaw(s);
@@ -176,6 +186,16 @@ public record VkDeviceCreateInfo(MemorySegment segment) {
             return null;
         }
         return new VkPhysicalDeviceFeatures(s);
+    }
+
+    @unsafe
+    public @nullable VkPhysicalDeviceFeatures[] pEnabledFeatures(int assumedCount) {
+        MemorySegment s = pEnabledFeaturesRaw().reinterpret(assumedCount * VkPhysicalDeviceFeatures.SIZE);
+        VkPhysicalDeviceFeatures[] arr = new VkPhysicalDeviceFeatures[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPhysicalDeviceFeatures(s.asSlice(i * VkPhysicalDeviceFeatures.SIZE, VkPhysicalDeviceFeatures.SIZE));
+        }
+        return arr;
     }
 
     public void pEnabledFeatures(@nullable VkPhysicalDeviceFeatures value) {

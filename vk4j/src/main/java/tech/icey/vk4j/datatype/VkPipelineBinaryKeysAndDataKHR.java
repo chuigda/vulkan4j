@@ -65,6 +65,16 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) {
         return new VkPipelineBinaryKeyKHR(s);
     }
 
+    @unsafe
+    public @nullable VkPipelineBinaryKeyKHR[] pPipelineBinaryKeys(int assumedCount) {
+        MemorySegment s = pPipelineBinaryKeysRaw().reinterpret(assumedCount * VkPipelineBinaryKeyKHR.SIZE);
+        VkPipelineBinaryKeyKHR[] arr = new VkPipelineBinaryKeyKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPipelineBinaryKeyKHR(s.asSlice(i * VkPipelineBinaryKeyKHR.SIZE, VkPipelineBinaryKeyKHR.SIZE));
+        }
+        return arr;
+    }
+
     public void pPipelineBinaryKeys(@nullable VkPipelineBinaryKeyKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineBinaryKeysRaw(s);
@@ -84,6 +94,16 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) {
             return null;
         }
         return new VkPipelineBinaryDataKHR(s);
+    }
+
+    @unsafe
+    public @nullable VkPipelineBinaryDataKHR[] pPipelineBinaryData(int assumedCount) {
+        MemorySegment s = pPipelineBinaryDataRaw().reinterpret(assumedCount * VkPipelineBinaryDataKHR.SIZE);
+        VkPipelineBinaryDataKHR[] arr = new VkPipelineBinaryDataKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPipelineBinaryDataKHR(s.asSlice(i * VkPipelineBinaryDataKHR.SIZE, VkPipelineBinaryDataKHR.SIZE));
+        }
+        return arr;
     }
 
     public void pPipelineBinaryData(@nullable VkPipelineBinaryDataKHR value) {

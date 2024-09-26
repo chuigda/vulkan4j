@@ -149,6 +149,16 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
         return new VkDescriptorImageInfo(s);
     }
 
+    @unsafe
+    public @nullable VkDescriptorImageInfo[] pImageInfo(int assumedCount) {
+        MemorySegment s = pImageInfoRaw().reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
+        VkDescriptorImageInfo[] arr = new VkDescriptorImageInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.SIZE, VkDescriptorImageInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pImageInfo(@nullable VkDescriptorImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageInfoRaw(s);
@@ -168,6 +178,16 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
             return null;
         }
         return new VkDescriptorBufferInfo(s);
+    }
+
+    @unsafe
+    public @nullable VkDescriptorBufferInfo[] pBufferInfo(int assumedCount) {
+        MemorySegment s = pBufferInfoRaw().reinterpret(assumedCount * VkDescriptorBufferInfo.SIZE);
+        VkDescriptorBufferInfo[] arr = new VkDescriptorBufferInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkDescriptorBufferInfo(s.asSlice(i * VkDescriptorBufferInfo.SIZE, VkDescriptorBufferInfo.SIZE));
+        }
+        return arr;
     }
 
     public void pBufferInfo(@nullable VkDescriptorBufferInfo value) {

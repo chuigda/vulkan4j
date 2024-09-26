@@ -87,6 +87,16 @@ public record VkGetLatencyMarkerInfoNV(MemorySegment segment) {
         return new VkLatencyTimingsFrameReportNV(s);
     }
 
+    @unsafe
+    public @nullable VkLatencyTimingsFrameReportNV[] pTimings(int assumedCount) {
+        MemorySegment s = pTimingsRaw().reinterpret(assumedCount * VkLatencyTimingsFrameReportNV.SIZE);
+        VkLatencyTimingsFrameReportNV[] arr = new VkLatencyTimingsFrameReportNV[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkLatencyTimingsFrameReportNV(s.asSlice(i * VkLatencyTimingsFrameReportNV.SIZE, VkLatencyTimingsFrameReportNV.SIZE));
+        }
+        return arr;
+    }
+
     public void pTimings(@nullable VkLatencyTimingsFrameReportNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTimingsRaw(s);

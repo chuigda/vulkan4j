@@ -123,6 +123,16 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
         return new VkIndirectCommandsLayoutTokenNV(s);
     }
 
+    @unsafe
+    public @nullable VkIndirectCommandsLayoutTokenNV[] pTokens(int assumedCount) {
+        MemorySegment s = pTokensRaw().reinterpret(assumedCount * VkIndirectCommandsLayoutTokenNV.SIZE);
+        VkIndirectCommandsLayoutTokenNV[] arr = new VkIndirectCommandsLayoutTokenNV[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkIndirectCommandsLayoutTokenNV(s.asSlice(i * VkIndirectCommandsLayoutTokenNV.SIZE, VkIndirectCommandsLayoutTokenNV.SIZE));
+        }
+        return arr;
+    }
+
     public void pTokens(@nullable VkIndirectCommandsLayoutTokenNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTokensRaw(s);
@@ -143,13 +153,15 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) {
     public void pStreamStridesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pStreamStrides, OFFSET$pStreamStrides, value);
     }
-    
-    public @unsigned IntBuffer pStreamStrides() {
-        return new IntBuffer(pStreamStridesRaw());
+
+    public @nullable @unsigned IntBuffer pStreamStrides() {
+        MemorySegment s = pStreamStridesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pStreamStrides(@unsigned IntBuffer value) {
-        pStreamStridesRaw(value.segment());
+    public void pStreamStrides(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pStreamStridesRaw(s);
     }
 
     public static VkIndirectCommandsLayoutCreateInfoNV allocate(Arena arena) {

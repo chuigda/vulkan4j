@@ -156,13 +156,15 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) {
     public void pDynamicOffsetsRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets, value);
     }
-    
-    public @unsigned IntBuffer pDynamicOffsets() {
-        return new IntBuffer(pDynamicOffsetsRaw());
+
+    public @nullable @unsigned IntBuffer pDynamicOffsets() {
+        MemorySegment s = pDynamicOffsetsRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pDynamicOffsets(@unsigned IntBuffer value) {
-        pDynamicOffsetsRaw(value.segment());
+    public void pDynamicOffsets(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDynamicOffsetsRaw(s);
     }
 
     public static VkBindDescriptorSetsInfoKHR allocate(Arena arena) {

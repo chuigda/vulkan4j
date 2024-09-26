@@ -91,13 +91,15 @@ public record VkExportSemaphoreWin32HandleInfoKHR(MemorySegment segment) {
     public void nameRaw(@pointer(comment="uint16_t*") MemorySegment value) {
         segment.set(LAYOUT$name, OFFSET$name, value);
     }
-    
-    public @unsigned ShortBuffer name() {
-        return new ShortBuffer(nameRaw());
+
+    public @nullable @unsigned ShortBuffer name() {
+        MemorySegment s = nameRaw();
+        return s.address() == 0 ? null : new ShortBuffer(s);
     }
 
-    public void name(@unsigned ShortBuffer value) {
-        nameRaw(value.segment());
+    public void name(@nullable @unsigned ShortBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nameRaw(s);
     }
 
     public static VkExportSemaphoreWin32HandleInfoKHR allocate(Arena arena) {

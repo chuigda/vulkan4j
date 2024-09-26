@@ -120,6 +120,16 @@ public record VkDependencyInfo(MemorySegment segment) {
         return new VkMemoryBarrier2(s);
     }
 
+    @unsafe
+    public @nullable VkMemoryBarrier2[] pMemoryBarriers(int assumedCount) {
+        MemorySegment s = pMemoryBarriersRaw().reinterpret(assumedCount * VkMemoryBarrier2.SIZE);
+        VkMemoryBarrier2[] arr = new VkMemoryBarrier2[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkMemoryBarrier2(s.asSlice(i * VkMemoryBarrier2.SIZE, VkMemoryBarrier2.SIZE));
+        }
+        return arr;
+    }
+
     public void pMemoryBarriers(@nullable VkMemoryBarrier2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMemoryBarriersRaw(s);
@@ -149,6 +159,16 @@ public record VkDependencyInfo(MemorySegment segment) {
         return new VkBufferMemoryBarrier2(s);
     }
 
+    @unsafe
+    public @nullable VkBufferMemoryBarrier2[] pBufferMemoryBarriers(int assumedCount) {
+        MemorySegment s = pBufferMemoryBarriersRaw().reinterpret(assumedCount * VkBufferMemoryBarrier2.SIZE);
+        VkBufferMemoryBarrier2[] arr = new VkBufferMemoryBarrier2[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkBufferMemoryBarrier2(s.asSlice(i * VkBufferMemoryBarrier2.SIZE, VkBufferMemoryBarrier2.SIZE));
+        }
+        return arr;
+    }
+
     public void pBufferMemoryBarriers(@nullable VkBufferMemoryBarrier2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferMemoryBarriersRaw(s);
@@ -176,6 +196,16 @@ public record VkDependencyInfo(MemorySegment segment) {
             return null;
         }
         return new VkImageMemoryBarrier2(s);
+    }
+
+    @unsafe
+    public @nullable VkImageMemoryBarrier2[] pImageMemoryBarriers(int assumedCount) {
+        MemorySegment s = pImageMemoryBarriersRaw().reinterpret(assumedCount * VkImageMemoryBarrier2.SIZE);
+        VkImageMemoryBarrier2[] arr = new VkImageMemoryBarrier2[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkImageMemoryBarrier2(s.asSlice(i * VkImageMemoryBarrier2.SIZE, VkImageMemoryBarrier2.SIZE));
+        }
+        return arr;
     }
 
     public void pImageMemoryBarriers(@nullable VkImageMemoryBarrier2 value) {

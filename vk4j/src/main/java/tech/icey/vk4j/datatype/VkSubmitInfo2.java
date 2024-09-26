@@ -120,6 +120,16 @@ public record VkSubmitInfo2(MemorySegment segment) {
         return new VkSemaphoreSubmitInfo(s);
     }
 
+    @unsafe
+    public @nullable VkSemaphoreSubmitInfo[] pWaitSemaphoreInfos(int assumedCount) {
+        MemorySegment s = pWaitSemaphoreInfosRaw().reinterpret(assumedCount * VkSemaphoreSubmitInfo.SIZE);
+        VkSemaphoreSubmitInfo[] arr = new VkSemaphoreSubmitInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSemaphoreSubmitInfo(s.asSlice(i * VkSemaphoreSubmitInfo.SIZE, VkSemaphoreSubmitInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pWaitSemaphoreInfos(@nullable VkSemaphoreSubmitInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoreInfosRaw(s);
@@ -149,6 +159,16 @@ public record VkSubmitInfo2(MemorySegment segment) {
         return new VkCommandBufferSubmitInfo(s);
     }
 
+    @unsafe
+    public @nullable VkCommandBufferSubmitInfo[] pCommandBufferInfos(int assumedCount) {
+        MemorySegment s = pCommandBufferInfosRaw().reinterpret(assumedCount * VkCommandBufferSubmitInfo.SIZE);
+        VkCommandBufferSubmitInfo[] arr = new VkCommandBufferSubmitInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkCommandBufferSubmitInfo(s.asSlice(i * VkCommandBufferSubmitInfo.SIZE, VkCommandBufferSubmitInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pCommandBufferInfos(@nullable VkCommandBufferSubmitInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCommandBufferInfosRaw(s);
@@ -176,6 +196,16 @@ public record VkSubmitInfo2(MemorySegment segment) {
             return null;
         }
         return new VkSemaphoreSubmitInfo(s);
+    }
+
+    @unsafe
+    public @nullable VkSemaphoreSubmitInfo[] pSignalSemaphoreInfos(int assumedCount) {
+        MemorySegment s = pSignalSemaphoreInfosRaw().reinterpret(assumedCount * VkSemaphoreSubmitInfo.SIZE);
+        VkSemaphoreSubmitInfo[] arr = new VkSemaphoreSubmitInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSemaphoreSubmitInfo(s.asSlice(i * VkSemaphoreSubmitInfo.SIZE, VkSemaphoreSubmitInfo.SIZE));
+        }
+        return arr;
     }
 
     public void pSignalSemaphoreInfos(@nullable VkSemaphoreSubmitInfo value) {

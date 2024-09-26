@@ -124,13 +124,15 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) {
     public void pAcquireKeysRaw(@pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys, value);
     }
-    
-    public @unsigned LongBuffer pAcquireKeys() {
-        return new LongBuffer(pAcquireKeysRaw());
+
+    public @nullable @unsigned LongBuffer pAcquireKeys() {
+        MemorySegment s = pAcquireKeysRaw();
+        return s.address() == 0 ? null : new LongBuffer(s);
     }
 
-    public void pAcquireKeys(@unsigned LongBuffer value) {
-        pAcquireKeysRaw(value.segment());
+    public void pAcquireKeys(@nullable @unsigned LongBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pAcquireKeysRaw(s);
     }
 
     public @pointer(comment="uint32_t*") MemorySegment pAcquireTimeoutsRaw() {
@@ -140,13 +142,15 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) {
     public void pAcquireTimeoutsRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pAcquireTimeouts, OFFSET$pAcquireTimeouts, value);
     }
-    
-    public @unsigned IntBuffer pAcquireTimeouts() {
-        return new IntBuffer(pAcquireTimeoutsRaw());
+
+    public @nullable @unsigned IntBuffer pAcquireTimeouts() {
+        MemorySegment s = pAcquireTimeoutsRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pAcquireTimeouts(@unsigned IntBuffer value) {
-        pAcquireTimeoutsRaw(value.segment());
+    public void pAcquireTimeouts(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pAcquireTimeoutsRaw(s);
     }
 
     public @unsigned int releaseCount() {
@@ -185,13 +189,15 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) {
     public void pReleaseKeysRaw(@pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys, value);
     }
-    
-    public @unsigned LongBuffer pReleaseKeys() {
-        return new LongBuffer(pReleaseKeysRaw());
+
+    public @nullable @unsigned LongBuffer pReleaseKeys() {
+        MemorySegment s = pReleaseKeysRaw();
+        return s.address() == 0 ? null : new LongBuffer(s);
     }
 
-    public void pReleaseKeys(@unsigned LongBuffer value) {
-        pReleaseKeysRaw(value.segment());
+    public void pReleaseKeys(@nullable @unsigned LongBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pReleaseKeysRaw(s);
     }
 
     public static VkWin32KeyedMutexAcquireReleaseInfoKHR allocate(Arena arena) {

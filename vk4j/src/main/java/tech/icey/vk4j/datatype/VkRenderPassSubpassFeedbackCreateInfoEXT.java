@@ -74,6 +74,16 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(MemorySegment segment) {
         return new VkRenderPassSubpassFeedbackInfoEXT(s);
     }
 
+    @unsafe
+    public @nullable VkRenderPassSubpassFeedbackInfoEXT[] pSubpassFeedback(int assumedCount) {
+        MemorySegment s = pSubpassFeedbackRaw().reinterpret(assumedCount * VkRenderPassSubpassFeedbackInfoEXT.SIZE);
+        VkRenderPassSubpassFeedbackInfoEXT[] arr = new VkRenderPassSubpassFeedbackInfoEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRenderPassSubpassFeedbackInfoEXT(s.asSlice(i * VkRenderPassSubpassFeedbackInfoEXT.SIZE, VkRenderPassSubpassFeedbackInfoEXT.SIZE));
+        }
+        return arr;
+    }
+
     public void pSubpassFeedback(@nullable VkRenderPassSubpassFeedbackInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSubpassFeedbackRaw(s);

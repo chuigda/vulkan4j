@@ -117,13 +117,15 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(MemorySegment segmen
     public void pCoverageModulationTableRaw(@pointer(comment="float*") MemorySegment value) {
         segment.set(LAYOUT$pCoverageModulationTable, OFFSET$pCoverageModulationTable, value);
     }
-    
-    public FloatBuffer pCoverageModulationTable() {
-        return new FloatBuffer(pCoverageModulationTableRaw());
+
+    public @nullable FloatBuffer pCoverageModulationTable() {
+        MemorySegment s = pCoverageModulationTableRaw();
+        return s.address() == 0 ? null : new FloatBuffer(s);
     }
 
-    public void pCoverageModulationTable(FloatBuffer value) {
-        pCoverageModulationTableRaw(value.segment());
+    public void pCoverageModulationTable(@nullable FloatBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCoverageModulationTableRaw(s);
     }
 
     public static VkPipelineCoverageModulationStateCreateInfoNV allocate(Arena arena) {

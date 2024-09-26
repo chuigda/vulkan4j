@@ -110,7 +110,7 @@ public record VkRenderingAreaInfoKHR(MemorySegment segment) {
         
         return new IntBuffer(s);
     }
-    
+
     public void pColorAttachmentFormats(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentFormatsRaw(s);

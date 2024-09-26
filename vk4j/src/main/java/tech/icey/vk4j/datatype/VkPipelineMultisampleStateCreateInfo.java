@@ -127,13 +127,15 @@ public record VkPipelineMultisampleStateCreateInfo(MemorySegment segment) {
     public void pSampleMaskRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pSampleMask, OFFSET$pSampleMask, value);
     }
-    
-    public @unsigned IntBuffer pSampleMask() {
-        return new IntBuffer(pSampleMaskRaw());
+
+    public @nullable @unsigned IntBuffer pSampleMask() {
+        MemorySegment s = pSampleMaskRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pSampleMask(@unsigned IntBuffer value) {
-        pSampleMaskRaw(value.segment());
+    public void pSampleMask(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSampleMaskRaw(s);
     }
 
     public @unsigned int alphaToCoverageEnable() {

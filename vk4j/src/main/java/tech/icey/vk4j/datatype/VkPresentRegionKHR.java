@@ -60,6 +60,16 @@ public record VkPresentRegionKHR(MemorySegment segment) {
         return new VkRectLayerKHR(s);
     }
 
+    @unsafe
+    public @nullable VkRectLayerKHR[] pRectangles(int assumedCount) {
+        MemorySegment s = pRectanglesRaw().reinterpret(assumedCount * VkRectLayerKHR.SIZE);
+        VkRectLayerKHR[] arr = new VkRectLayerKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRectLayerKHR(s.asSlice(i * VkRectLayerKHR.SIZE, VkRectLayerKHR.SIZE));
+        }
+        return arr;
+    }
+
     public void pRectangles(@nullable VkRectLayerKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRectanglesRaw(s);

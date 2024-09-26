@@ -87,6 +87,16 @@ public record VkDrmFormatModifierPropertiesList2EXT(MemorySegment segment) {
         return new VkDrmFormatModifierProperties2EXT(s);
     }
 
+    @unsafe
+    public @nullable VkDrmFormatModifierProperties2EXT[] pDrmFormatModifierProperties(int assumedCount) {
+        MemorySegment s = pDrmFormatModifierPropertiesRaw().reinterpret(assumedCount * VkDrmFormatModifierProperties2EXT.SIZE);
+        VkDrmFormatModifierProperties2EXT[] arr = new VkDrmFormatModifierProperties2EXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkDrmFormatModifierProperties2EXT(s.asSlice(i * VkDrmFormatModifierProperties2EXT.SIZE, VkDrmFormatModifierProperties2EXT.SIZE));
+        }
+        return arr;
+    }
+
     public void pDrmFormatModifierProperties(@nullable VkDrmFormatModifierProperties2EXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDrmFormatModifierPropertiesRaw(s);

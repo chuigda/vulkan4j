@@ -100,6 +100,16 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
         return new VkCoarseSampleOrderCustomNV(s);
     }
 
+    @unsafe
+    public @nullable VkCoarseSampleOrderCustomNV[] pCustomSampleOrders(int assumedCount) {
+        MemorySegment s = pCustomSampleOrdersRaw().reinterpret(assumedCount * VkCoarseSampleOrderCustomNV.SIZE);
+        VkCoarseSampleOrderCustomNV[] arr = new VkCoarseSampleOrderCustomNV[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkCoarseSampleOrderCustomNV(s.asSlice(i * VkCoarseSampleOrderCustomNV.SIZE, VkCoarseSampleOrderCustomNV.SIZE));
+        }
+        return arr;
+    }
+
     public void pCustomSampleOrders(@nullable VkCoarseSampleOrderCustomNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCustomSampleOrdersRaw(s);

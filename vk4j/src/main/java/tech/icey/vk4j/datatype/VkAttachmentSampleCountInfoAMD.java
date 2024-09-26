@@ -92,7 +92,7 @@ public record VkAttachmentSampleCountInfoAMD(MemorySegment segment) {
         
         return new IntBuffer(s);
     }
-    
+
     public void pColorAttachmentSamples(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentSamplesRaw(s);

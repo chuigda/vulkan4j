@@ -110,6 +110,16 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) {
         return new VkViewport(s);
     }
 
+    @unsafe
+    public @nullable VkViewport[] pViewports(int assumedCount) {
+        MemorySegment s = pViewportsRaw().reinterpret(assumedCount * VkViewport.SIZE);
+        VkViewport[] arr = new VkViewport[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkViewport(s.asSlice(i * VkViewport.SIZE, VkViewport.SIZE));
+        }
+        return arr;
+    }
+
     public void pViewports(@nullable VkViewport value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewportsRaw(s);
@@ -137,6 +147,16 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) {
             return null;
         }
         return new VkRect2D(s);
+    }
+
+    @unsafe
+    public @nullable VkRect2D[] pScissors(int assumedCount) {
+        MemorySegment s = pScissorsRaw().reinterpret(assumedCount * VkRect2D.SIZE);
+        VkRect2D[] arr = new VkRect2D[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRect2D(s.asSlice(i * VkRect2D.SIZE, VkRect2D.SIZE));
+        }
+        return arr;
     }
 
     public void pScissors(@nullable VkRect2D value) {

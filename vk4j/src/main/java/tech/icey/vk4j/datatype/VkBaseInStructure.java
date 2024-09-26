@@ -60,6 +60,16 @@ public record VkBaseInStructure(MemorySegment segment) {
         return new VkBaseInStructure(s);
     }
 
+    @unsafe
+    public @nullable VkBaseInStructure[] pNext(int assumedCount) {
+        MemorySegment s = pNextRaw().reinterpret(assumedCount * VkBaseInStructure.SIZE);
+        VkBaseInStructure[] arr = new VkBaseInStructure[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkBaseInStructure(s.asSlice(i * VkBaseInStructure.SIZE, VkBaseInStructure.SIZE));
+        }
+        return arr;
+    }
+
     public void pNext(@nullable VkBaseInStructure value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNextRaw(s);

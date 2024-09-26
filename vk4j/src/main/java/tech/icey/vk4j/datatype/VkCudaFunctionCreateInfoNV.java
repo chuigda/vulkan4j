@@ -78,13 +78,15 @@ public record VkCudaFunctionCreateInfoNV(MemorySegment segment) {
     public void pNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
-    
-    public ByteBuffer pName() {
-        return new ByteBuffer(pNameRaw());
+
+    public @nullable ByteBuffer pName() {
+        MemorySegment s = pNameRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pName(ByteBuffer value) {
-        pNameRaw(value.segment());
+    public void pName(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pNameRaw(s);
     }
 
     public static VkCudaFunctionCreateInfoNV allocate(Arena arena) {

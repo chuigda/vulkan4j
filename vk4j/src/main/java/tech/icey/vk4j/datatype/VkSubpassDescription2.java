@@ -156,6 +156,16 @@ public record VkSubpassDescription2(MemorySegment segment) {
         return new VkAttachmentReference2(s);
     }
 
+    @unsafe
+    public @nullable VkAttachmentReference2[] pInputAttachments(int assumedCount) {
+        MemorySegment s = pInputAttachmentsRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);
+        VkAttachmentReference2[] arr = new VkAttachmentReference2[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkAttachmentReference2(s.asSlice(i * VkAttachmentReference2.SIZE, VkAttachmentReference2.SIZE));
+        }
+        return arr;
+    }
+
     public void pInputAttachments(@nullable VkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pInputAttachmentsRaw(s);
@@ -185,6 +195,16 @@ public record VkSubpassDescription2(MemorySegment segment) {
         return new VkAttachmentReference2(s);
     }
 
+    @unsafe
+    public @nullable VkAttachmentReference2[] pColorAttachments(int assumedCount) {
+        MemorySegment s = pColorAttachmentsRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);
+        VkAttachmentReference2[] arr = new VkAttachmentReference2[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkAttachmentReference2(s.asSlice(i * VkAttachmentReference2.SIZE, VkAttachmentReference2.SIZE));
+        }
+        return arr;
+    }
+
     public void pColorAttachments(@nullable VkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentsRaw(s);
@@ -204,6 +224,16 @@ public record VkSubpassDescription2(MemorySegment segment) {
             return null;
         }
         return new VkAttachmentReference2(s);
+    }
+
+    @unsafe
+    public @nullable VkAttachmentReference2[] pResolveAttachments(int assumedCount) {
+        MemorySegment s = pResolveAttachmentsRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);
+        VkAttachmentReference2[] arr = new VkAttachmentReference2[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkAttachmentReference2(s.asSlice(i * VkAttachmentReference2.SIZE, VkAttachmentReference2.SIZE));
+        }
+        return arr;
     }
 
     public void pResolveAttachments(@nullable VkAttachmentReference2 value) {
@@ -227,6 +257,16 @@ public record VkSubpassDescription2(MemorySegment segment) {
         return new VkAttachmentReference2(s);
     }
 
+    @unsafe
+    public @nullable VkAttachmentReference2[] pDepthStencilAttachment(int assumedCount) {
+        MemorySegment s = pDepthStencilAttachmentRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);
+        VkAttachmentReference2[] arr = new VkAttachmentReference2[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkAttachmentReference2(s.asSlice(i * VkAttachmentReference2.SIZE, VkAttachmentReference2.SIZE));
+        }
+        return arr;
+    }
+
     public void pDepthStencilAttachment(@nullable VkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDepthStencilAttachmentRaw(s);
@@ -247,13 +287,15 @@ public record VkSubpassDescription2(MemorySegment segment) {
     public void pPreserveAttachmentsRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments, value);
     }
-    
-    public @unsigned IntBuffer pPreserveAttachments() {
-        return new IntBuffer(pPreserveAttachmentsRaw());
+
+    public @nullable @unsigned IntBuffer pPreserveAttachments() {
+        MemorySegment s = pPreserveAttachmentsRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pPreserveAttachments(@unsigned IntBuffer value) {
-        pPreserveAttachmentsRaw(value.segment());
+    public void pPreserveAttachments(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pPreserveAttachmentsRaw(s);
     }
 
     public static VkSubpassDescription2 allocate(Arena arena) {

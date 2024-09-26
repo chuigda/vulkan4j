@@ -78,13 +78,15 @@ public record VkPresentIdKHR(MemorySegment segment) {
     public void pPresentIdsRaw(@pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pPresentIds, OFFSET$pPresentIds, value);
     }
-    
-    public @unsigned LongBuffer pPresentIds() {
-        return new LongBuffer(pPresentIdsRaw());
+
+    public @nullable @unsigned LongBuffer pPresentIds() {
+        MemorySegment s = pPresentIdsRaw();
+        return s.address() == 0 ? null : new LongBuffer(s);
     }
 
-    public void pPresentIds(@unsigned LongBuffer value) {
-        pPresentIdsRaw(value.segment());
+    public void pPresentIds(@nullable @unsigned LongBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pPresentIdsRaw(s);
     }
 
     public static VkPresentIdKHR allocate(Arena arena) {

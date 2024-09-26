@@ -126,6 +126,16 @@ public record VkCopyImageToBufferInfo2(MemorySegment segment) {
         return new VkBufferImageCopy2(s);
     }
 
+    @unsafe
+    public @nullable VkBufferImageCopy2[] pRegions(int assumedCount) {
+        MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkBufferImageCopy2.SIZE);
+        VkBufferImageCopy2[] arr = new VkBufferImageCopy2[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkBufferImageCopy2(s.asSlice(i * VkBufferImageCopy2.SIZE, VkBufferImageCopy2.SIZE));
+        }
+        return arr;
+    }
+
     public void pRegions(@nullable VkBufferImageCopy2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);

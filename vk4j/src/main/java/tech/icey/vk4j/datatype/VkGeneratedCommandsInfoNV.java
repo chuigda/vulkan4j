@@ -166,6 +166,16 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) {
         return new VkIndirectCommandsStreamNV(s);
     }
 
+    @unsafe
+    public @nullable VkIndirectCommandsStreamNV[] pStreams(int assumedCount) {
+        MemorySegment s = pStreamsRaw().reinterpret(assumedCount * VkIndirectCommandsStreamNV.SIZE);
+        VkIndirectCommandsStreamNV[] arr = new VkIndirectCommandsStreamNV[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkIndirectCommandsStreamNV(s.asSlice(i * VkIndirectCommandsStreamNV.SIZE, VkIndirectCommandsStreamNV.SIZE));
+        }
+        return arr;
+    }
+
     public void pStreams(@nullable VkIndirectCommandsStreamNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStreamsRaw(s);

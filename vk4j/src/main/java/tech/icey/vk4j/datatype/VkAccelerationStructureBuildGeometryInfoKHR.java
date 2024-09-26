@@ -162,6 +162,16 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         return new VkAccelerationStructureGeometryKHR(s);
     }
 
+    @unsafe
+    public @nullable VkAccelerationStructureGeometryKHR[] pGeometries(int assumedCount) {
+        MemorySegment s = pGeometriesRaw().reinterpret(assumedCount * VkAccelerationStructureGeometryKHR.SIZE);
+        VkAccelerationStructureGeometryKHR[] arr = new VkAccelerationStructureGeometryKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkAccelerationStructureGeometryKHR(s.asSlice(i * VkAccelerationStructureGeometryKHR.SIZE, VkAccelerationStructureGeometryKHR.SIZE));
+        }
+        return arr;
+    }
+
     public void pGeometries(@nullable VkAccelerationStructureGeometryKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGeometriesRaw(s);

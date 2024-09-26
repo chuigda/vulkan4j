@@ -87,6 +87,16 @@ public record VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segme
         return new VkVertexInputBindingDivisorDescriptionKHR(s);
     }
 
+    @unsafe
+    public @nullable VkVertexInputBindingDivisorDescriptionKHR[] pVertexBindingDivisors(int assumedCount) {
+        MemorySegment s = pVertexBindingDivisorsRaw().reinterpret(assumedCount * VkVertexInputBindingDivisorDescriptionKHR.SIZE);
+        VkVertexInputBindingDivisorDescriptionKHR[] arr = new VkVertexInputBindingDivisorDescriptionKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkVertexInputBindingDivisorDescriptionKHR(s.asSlice(i * VkVertexInputBindingDivisorDescriptionKHR.SIZE, VkVertexInputBindingDivisorDescriptionKHR.SIZE));
+        }
+        return arr;
+    }
+
     public void pVertexBindingDivisors(@nullable VkVertexInputBindingDivisorDescriptionKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexBindingDivisorsRaw(s);

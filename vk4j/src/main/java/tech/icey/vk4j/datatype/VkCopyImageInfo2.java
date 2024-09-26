@@ -139,6 +139,16 @@ public record VkCopyImageInfo2(MemorySegment segment) {
         return new VkImageCopy2(s);
     }
 
+    @unsafe
+    public @nullable VkImageCopy2[] pRegions(int assumedCount) {
+        MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkImageCopy2.SIZE);
+        VkImageCopy2[] arr = new VkImageCopy2[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkImageCopy2(s.asSlice(i * VkImageCopy2.SIZE, VkImageCopy2.SIZE));
+        }
+        return arr;
+    }
+
     public void pRegions(@nullable VkImageCopy2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);

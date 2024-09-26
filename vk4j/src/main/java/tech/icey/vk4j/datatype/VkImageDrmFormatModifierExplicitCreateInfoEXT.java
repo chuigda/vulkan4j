@@ -100,6 +100,16 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
         return new VkSubresourceLayout(s);
     }
 
+    @unsafe
+    public @nullable VkSubresourceLayout[] pPlaneLayouts(int assumedCount) {
+        MemorySegment s = pPlaneLayoutsRaw().reinterpret(assumedCount * VkSubresourceLayout.SIZE);
+        VkSubresourceLayout[] arr = new VkSubresourceLayout[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSubresourceLayout(s.asSlice(i * VkSubresourceLayout.SIZE, VkSubresourceLayout.SIZE));
+        }
+        return arr;
+    }
+
     public void pPlaneLayouts(@nullable VkSubresourceLayout value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPlaneLayoutsRaw(s);

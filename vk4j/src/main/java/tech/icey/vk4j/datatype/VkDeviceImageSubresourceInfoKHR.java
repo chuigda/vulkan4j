@@ -79,6 +79,16 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
         return new VkImageCreateInfo(s);
     }
 
+    @unsafe
+    public @nullable VkImageCreateInfo[] pCreateInfo(int assumedCount) {
+        MemorySegment s = pCreateInfoRaw().reinterpret(assumedCount * VkImageCreateInfo.SIZE);
+        VkImageCreateInfo[] arr = new VkImageCreateInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkImageCreateInfo(s.asSlice(i * VkImageCreateInfo.SIZE, VkImageCreateInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pCreateInfo(@nullable VkImageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCreateInfoRaw(s);
@@ -98,6 +108,16 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
             return null;
         }
         return new VkImageSubresource2KHR(s);
+    }
+
+    @unsafe
+    public @nullable VkImageSubresource2KHR[] pSubresource(int assumedCount) {
+        MemorySegment s = pSubresourceRaw().reinterpret(assumedCount * VkImageSubresource2KHR.SIZE);
+        VkImageSubresource2KHR[] arr = new VkImageSubresource2KHR[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkImageSubresource2KHR(s.asSlice(i * VkImageSubresource2KHR.SIZE, VkImageSubresource2KHR.SIZE));
+        }
+        return arr;
     }
 
     public void pSubresource(@nullable VkImageSubresource2KHR value) {

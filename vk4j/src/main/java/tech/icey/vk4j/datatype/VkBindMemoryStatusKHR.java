@@ -74,7 +74,7 @@ public record VkBindMemoryStatusKHR(MemorySegment segment) {
         
         return new IntBuffer(s);
     }
-    
+
     public void pResult(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResultRaw(s);

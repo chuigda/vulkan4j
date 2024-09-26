@@ -87,7 +87,7 @@ public record VkSwapchainPresentModesCreateInfoEXT(MemorySegment segment) {
         
         return new IntBuffer(s);
     }
-    
+
     public void pPresentModes(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPresentModesRaw(s);

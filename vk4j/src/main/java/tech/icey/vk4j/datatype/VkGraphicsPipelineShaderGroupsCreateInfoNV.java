@@ -97,6 +97,16 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         return new VkGraphicsShaderGroupCreateInfoNV(s);
     }
 
+    @unsafe
+    public @nullable VkGraphicsShaderGroupCreateInfoNV[] pGroups(int assumedCount) {
+        MemorySegment s = pGroupsRaw().reinterpret(assumedCount * VkGraphicsShaderGroupCreateInfoNV.SIZE);
+        VkGraphicsShaderGroupCreateInfoNV[] arr = new VkGraphicsShaderGroupCreateInfoNV[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkGraphicsShaderGroupCreateInfoNV(s.asSlice(i * VkGraphicsShaderGroupCreateInfoNV.SIZE, VkGraphicsShaderGroupCreateInfoNV.SIZE));
+        }
+        return arr;
+    }
+
     public void pGroups(@nullable VkGraphicsShaderGroupCreateInfoNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGroupsRaw(s);

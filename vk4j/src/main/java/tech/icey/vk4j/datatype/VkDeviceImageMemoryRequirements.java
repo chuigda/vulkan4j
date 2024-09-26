@@ -79,6 +79,16 @@ public record VkDeviceImageMemoryRequirements(MemorySegment segment) {
         return new VkImageCreateInfo(s);
     }
 
+    @unsafe
+    public @nullable VkImageCreateInfo[] pCreateInfo(int assumedCount) {
+        MemorySegment s = pCreateInfoRaw().reinterpret(assumedCount * VkImageCreateInfo.SIZE);
+        VkImageCreateInfo[] arr = new VkImageCreateInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkImageCreateInfo(s.asSlice(i * VkImageCreateInfo.SIZE, VkImageCreateInfo.SIZE));
+        }
+        return arr;
+    }
+
     public void pCreateInfo(@nullable VkImageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCreateInfoRaw(s);

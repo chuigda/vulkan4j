@@ -100,6 +100,16 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
         return new VkViewportSwizzleNV(s);
     }
 
+    @unsafe
+    public @nullable VkViewportSwizzleNV[] pViewportSwizzles(int assumedCount) {
+        MemorySegment s = pViewportSwizzlesRaw().reinterpret(assumedCount * VkViewportSwizzleNV.SIZE);
+        VkViewportSwizzleNV[] arr = new VkViewportSwizzleNV[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkViewportSwizzleNV(s.asSlice(i * VkViewportSwizzleNV.SIZE, VkViewportSwizzleNV.SIZE));
+        }
+        return arr;
+    }
+
     public void pViewportSwizzles(@nullable VkViewportSwizzleNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewportSwizzlesRaw(s);

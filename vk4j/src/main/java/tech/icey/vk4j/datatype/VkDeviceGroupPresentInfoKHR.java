@@ -83,13 +83,15 @@ public record VkDeviceGroupPresentInfoKHR(MemorySegment segment) {
     public void pDeviceMasksRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pDeviceMasks, OFFSET$pDeviceMasks, value);
     }
-    
-    public @unsigned IntBuffer pDeviceMasks() {
-        return new IntBuffer(pDeviceMasksRaw());
+
+    public @nullable @unsigned IntBuffer pDeviceMasks() {
+        MemorySegment s = pDeviceMasksRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pDeviceMasks(@unsigned IntBuffer value) {
-        pDeviceMasksRaw(value.segment());
+    public void pDeviceMasks(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDeviceMasksRaw(s);
     }
 
     public @enumtype(VkDeviceGroupPresentModeFlagsKHR.class) int mode() {

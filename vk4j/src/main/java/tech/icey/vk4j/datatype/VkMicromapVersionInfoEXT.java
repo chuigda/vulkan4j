@@ -65,13 +65,15 @@ public record VkMicromapVersionInfoEXT(MemorySegment segment) {
     public void pVersionDataRaw(@pointer(comment="uint8_t*") MemorySegment value) {
         segment.set(LAYOUT$pVersionData, OFFSET$pVersionData, value);
     }
-    
-    public @unsigned ByteBuffer pVersionData() {
-        return new ByteBuffer(pVersionDataRaw());
+
+    public @nullable @unsigned ByteBuffer pVersionData() {
+        MemorySegment s = pVersionDataRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pVersionData(@unsigned ByteBuffer value) {
-        pVersionDataRaw(value.segment());
+    public void pVersionData(@nullable @unsigned ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pVersionDataRaw(s);
     }
 
     public static VkMicromapVersionInfoEXT allocate(Arena arena) {

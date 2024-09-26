@@ -86,6 +86,16 @@ public record VkCoarseSampleOrderCustomNV(MemorySegment segment) {
         return new VkCoarseSampleLocationNV(s);
     }
 
+    @unsafe
+    public @nullable VkCoarseSampleLocationNV[] pSampleLocations(int assumedCount) {
+        MemorySegment s = pSampleLocationsRaw().reinterpret(assumedCount * VkCoarseSampleLocationNV.SIZE);
+        VkCoarseSampleLocationNV[] arr = new VkCoarseSampleLocationNV[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkCoarseSampleLocationNV(s.asSlice(i * VkCoarseSampleLocationNV.SIZE, VkCoarseSampleLocationNV.SIZE));
+        }
+        return arr;
+    }
+
     public void pSampleLocations(@nullable VkCoarseSampleLocationNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSampleLocationsRaw(s);

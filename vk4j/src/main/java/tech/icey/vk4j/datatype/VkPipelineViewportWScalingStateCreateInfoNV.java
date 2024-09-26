@@ -100,6 +100,16 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment)
         return new VkViewportWScalingNV(s);
     }
 
+    @unsafe
+    public @nullable VkViewportWScalingNV[] pViewportWScalings(int assumedCount) {
+        MemorySegment s = pViewportWScalingsRaw().reinterpret(assumedCount * VkViewportWScalingNV.SIZE);
+        VkViewportWScalingNV[] arr = new VkViewportWScalingNV[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkViewportWScalingNV(s.asSlice(i * VkViewportWScalingNV.SIZE, VkViewportWScalingNV.SIZE));
+        }
+        return arr;
+    }
+
     public void pViewportWScalings(@nullable VkViewportWScalingNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewportWScalingsRaw(s);

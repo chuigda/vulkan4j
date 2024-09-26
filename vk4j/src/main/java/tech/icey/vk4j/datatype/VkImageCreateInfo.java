@@ -213,13 +213,15 @@ public record VkImageCreateInfo(MemorySegment segment) {
     public void pQueueFamilyIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
-    
-    public @unsigned IntBuffer pQueueFamilyIndices() {
-        return new IntBuffer(pQueueFamilyIndicesRaw());
+
+    public @nullable @unsigned IntBuffer pQueueFamilyIndices() {
+        MemorySegment s = pQueueFamilyIndicesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pQueueFamilyIndices(@unsigned IntBuffer value) {
-        pQueueFamilyIndicesRaw(value.segment());
+    public void pQueueFamilyIndices(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pQueueFamilyIndicesRaw(s);
     }
 
     public @enumtype(VkImageLayout.class) int initialLayout() {

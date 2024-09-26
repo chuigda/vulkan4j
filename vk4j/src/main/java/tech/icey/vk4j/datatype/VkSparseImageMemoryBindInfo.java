@@ -73,6 +73,16 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) {
         return new VkSparseImageMemoryBind(s);
     }
 
+    @unsafe
+    public @nullable VkSparseImageMemoryBind[] pBinds(int assumedCount) {
+        MemorySegment s = pBindsRaw().reinterpret(assumedCount * VkSparseImageMemoryBind.SIZE);
+        VkSparseImageMemoryBind[] arr = new VkSparseImageMemoryBind[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSparseImageMemoryBind(s.asSlice(i * VkSparseImageMemoryBind.SIZE, VkSparseImageMemoryBind.SIZE));
+        }
+        return arr;
+    }
+
     public void pBinds(@nullable VkSparseImageMemoryBind value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBindsRaw(s);

@@ -88,13 +88,15 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) {
     public void pColorAttachmentInputIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentInputIndices, OFFSET$pColorAttachmentInputIndices, value);
     }
-    
-    public @unsigned IntBuffer pColorAttachmentInputIndices() {
-        return new IntBuffer(pColorAttachmentInputIndicesRaw());
+
+    public @nullable @unsigned IntBuffer pColorAttachmentInputIndices() {
+        MemorySegment s = pColorAttachmentInputIndicesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pColorAttachmentInputIndices(@unsigned IntBuffer value) {
-        pColorAttachmentInputIndicesRaw(value.segment());
+    public void pColorAttachmentInputIndices(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pColorAttachmentInputIndicesRaw(s);
     }
 
     public @pointer(comment="uint32_t*") MemorySegment pDepthInputAttachmentIndexRaw() {
@@ -104,13 +106,15 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) {
     public void pDepthInputAttachmentIndexRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pDepthInputAttachmentIndex, OFFSET$pDepthInputAttachmentIndex, value);
     }
-    
-    public @unsigned IntBuffer pDepthInputAttachmentIndex() {
-        return new IntBuffer(pDepthInputAttachmentIndexRaw());
+
+    public @nullable @unsigned IntBuffer pDepthInputAttachmentIndex() {
+        MemorySegment s = pDepthInputAttachmentIndexRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pDepthInputAttachmentIndex(@unsigned IntBuffer value) {
-        pDepthInputAttachmentIndexRaw(value.segment());
+    public void pDepthInputAttachmentIndex(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDepthInputAttachmentIndexRaw(s);
     }
 
     public @pointer(comment="uint32_t*") MemorySegment pStencilInputAttachmentIndexRaw() {
@@ -120,13 +124,15 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) {
     public void pStencilInputAttachmentIndexRaw(@pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pStencilInputAttachmentIndex, OFFSET$pStencilInputAttachmentIndex, value);
     }
-    
-    public @unsigned IntBuffer pStencilInputAttachmentIndex() {
-        return new IntBuffer(pStencilInputAttachmentIndexRaw());
+
+    public @nullable @unsigned IntBuffer pStencilInputAttachmentIndex() {
+        MemorySegment s = pStencilInputAttachmentIndexRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pStencilInputAttachmentIndex(@unsigned IntBuffer value) {
-        pStencilInputAttachmentIndexRaw(value.segment());
+    public void pStencilInputAttachmentIndex(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pStencilInputAttachmentIndexRaw(s);
     }
 
     public static VkRenderingInputAttachmentIndexInfoKHR allocate(Arena arena) {

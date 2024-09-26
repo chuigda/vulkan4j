@@ -107,7 +107,7 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         
         return new IntBuffer(s);
     }
-    
+
     public void pCopySrcLayouts(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopySrcLayoutsRaw(s);
@@ -137,7 +137,7 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         
         return new IntBuffer(s);
     }
-    
+
     public void pCopyDstLayouts(@nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopyDstLayoutsRaw(s);
