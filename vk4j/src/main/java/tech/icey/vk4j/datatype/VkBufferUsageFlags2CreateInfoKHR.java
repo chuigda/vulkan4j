@@ -17,7 +17,7 @@ public record VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("usage")
+        ValueLayout.JAVA_LONG.withName("usage")
     );
     public static final long SIZE = LAYOUT.byteSize();
 
@@ -27,7 +27,7 @@ public record VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) {
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$usage = (OfInt) LAYOUT.select(PATH$usage);
+    public static final OfLong LAYOUT$usage = (OfLong) LAYOUT.select(PATH$usage);
 
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
@@ -58,11 +58,11 @@ public record VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public @enumtype(VkBufferUsageFlags2KHR.class) int usage() {
+    public @enumtype(VkBufferUsageFlags2KHR.class) long usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public void usage(@enumtype(VkBufferUsageFlags2KHR.class) int value) {
+    public void usage(@enumtype(VkBufferUsageFlags2KHR.class) long value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
     }
 

@@ -17,7 +17,7 @@ public record VkCheckpointData2NV(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("stage"),
+        ValueLayout.JAVA_LONG.withName("stage"),
         ValueLayout.ADDRESS.withName("pCheckpointMarker")
     );
     public static final long SIZE = LAYOUT.byteSize();
@@ -29,7 +29,7 @@ public record VkCheckpointData2NV(MemorySegment segment) {
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$stage = (OfInt) LAYOUT.select(PATH$stage);
+    public static final OfLong LAYOUT$stage = (OfLong) LAYOUT.select(PATH$stage);
     public static final AddressLayout LAYOUT$pCheckpointMarker = (AddressLayout) LAYOUT.select(PATH$pCheckpointMarker);
 
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
@@ -63,11 +63,11 @@ public record VkCheckpointData2NV(MemorySegment segment) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public @enumtype(VkPipelineStageFlags2.class) int stage() {
+    public @enumtype(VkPipelineStageFlags2.class) long stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
 
-    public void stage(@enumtype(VkPipelineStageFlags2.class) int value) {
+    public void stage(@enumtype(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$stage, OFFSET$stage, value);
     }
 

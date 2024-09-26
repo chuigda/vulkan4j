@@ -17,7 +17,7 @@ public record VkPipelineCreateFlags2CreateInfoKHR(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags")
+        ValueLayout.JAVA_LONG.withName("flags")
     );
     public static final long SIZE = LAYOUT.byteSize();
 
@@ -27,7 +27,7 @@ public record VkPipelineCreateFlags2CreateInfoKHR(MemorySegment segment) {
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
 
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
@@ -58,11 +58,11 @@ public record VkPipelineCreateFlags2CreateInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public @enumtype(VkPipelineCreateFlags2KHR.class) int flags() {
+    public @enumtype(VkPipelineCreateFlags2KHR.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkPipelineCreateFlags2KHR.class) int value) {
+    public void flags(@enumtype(VkPipelineCreateFlags2KHR.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 

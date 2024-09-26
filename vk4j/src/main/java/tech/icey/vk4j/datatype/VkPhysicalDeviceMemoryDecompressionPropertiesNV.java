@@ -17,7 +17,7 @@ public record VkPhysicalDeviceMemoryDecompressionPropertiesNV(MemorySegment segm
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("decompressionMethods"),
+        ValueLayout.JAVA_LONG.withName("decompressionMethods"),
         ValueLayout.JAVA_LONG.withName("maxDecompressionIndirectCount")
     );
     public static final long SIZE = LAYOUT.byteSize();
@@ -29,7 +29,7 @@ public record VkPhysicalDeviceMemoryDecompressionPropertiesNV(MemorySegment segm
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$decompressionMethods = (OfInt) LAYOUT.select(PATH$decompressionMethods);
+    public static final OfLong LAYOUT$decompressionMethods = (OfLong) LAYOUT.select(PATH$decompressionMethods);
     public static final OfLong LAYOUT$maxDecompressionIndirectCount = (OfLong) LAYOUT.select(PATH$maxDecompressionIndirectCount);
 
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
@@ -63,11 +63,11 @@ public record VkPhysicalDeviceMemoryDecompressionPropertiesNV(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public @enumtype(VkMemoryDecompressionMethodFlagsNV.class) int decompressionMethods() {
+    public @enumtype(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethods() {
         return segment.get(LAYOUT$decompressionMethods, OFFSET$decompressionMethods);
     }
 
-    public void decompressionMethods(@enumtype(VkMemoryDecompressionMethodFlagsNV.class) int value) {
+    public void decompressionMethods(@enumtype(VkMemoryDecompressionMethodFlagsNV.class) long value) {
         segment.set(LAYOUT$decompressionMethods, OFFSET$decompressionMethods, value);
     }
 

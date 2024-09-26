@@ -2826,7 +2826,7 @@ public final class DeviceCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkCmdResetEvent2 = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
+            ValueLayout.JAVA_LONG
     );
 
     public static final FunctionDescriptor DESCRIPTOR$vkCmdWaitEvents2 = FunctionDescriptor.ofVoid(
@@ -2851,14 +2851,14 @@ public final class DeviceCommands {
 
     public static final FunctionDescriptor DESCRIPTOR$vkCmdWriteTimestamp2 = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_LONG,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
     );
 
     public static final FunctionDescriptor DESCRIPTOR$vkCmdWriteBufferMarker2AMD = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_LONG,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_LONG,
             ValueLayout.JAVA_INT
@@ -11451,7 +11451,7 @@ public final class DeviceCommands {
     public void vkCmdResetEvent2(
             VkCommandBuffer commandBuffer,
             VkEvent event,
-            @enumtype(VkPipelineStageFlags2.class) int stageMask
+            @enumtype(VkPipelineStageFlags2.class) long stageMask
     ) {
         try {
             HANDLE$vkCmdResetEvent2.invokeExact(
@@ -11516,7 +11516,7 @@ public final class DeviceCommands {
 
     public void vkCmdWriteTimestamp2(
             VkCommandBuffer commandBuffer,
-            @enumtype(VkPipelineStageFlags2.class) int stage,
+            @enumtype(VkPipelineStageFlags2.class) long stage,
             VkQueryPool queryPool,
             @unsigned int query
     ) {
@@ -11534,7 +11534,7 @@ public final class DeviceCommands {
 
     public void vkCmdWriteBufferMarker2AMD(
             VkCommandBuffer commandBuffer,
-            @enumtype(VkPipelineStageFlags2.class) int stage,
+            @enumtype(VkPipelineStageFlags2.class) long stage,
             VkBuffer dstBuffer,
             @unsigned long dstOffset,
             @unsigned int marker

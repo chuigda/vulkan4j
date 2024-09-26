@@ -19,7 +19,7 @@ public record VkDecompressMemoryRegionNV(MemorySegment segment) {
         ValueLayout.JAVA_LONG.withName("dstAddress"),
         ValueLayout.JAVA_LONG.withName("compressedSize"),
         ValueLayout.JAVA_LONG.withName("decompressedSize"),
-        ValueLayout.JAVA_INT.withName("decompressionMethod")
+        ValueLayout.JAVA_LONG.withName("decompressionMethod")
     );
     public static final long SIZE = LAYOUT.byteSize();
 
@@ -33,7 +33,7 @@ public record VkDecompressMemoryRegionNV(MemorySegment segment) {
     public static final OfLong LAYOUT$dstAddress = (OfLong) LAYOUT.select(PATH$dstAddress);
     public static final OfLong LAYOUT$compressedSize = (OfLong) LAYOUT.select(PATH$compressedSize);
     public static final OfLong LAYOUT$decompressedSize = (OfLong) LAYOUT.select(PATH$decompressedSize);
-    public static final OfInt LAYOUT$decompressionMethod = (OfInt) LAYOUT.select(PATH$decompressionMethod);
+    public static final OfLong LAYOUT$decompressionMethod = (OfLong) LAYOUT.select(PATH$decompressionMethod);
 
     public static final long OFFSET$srcAddress = LAYOUT.byteOffset(PATH$srcAddress);
     public static final long OFFSET$dstAddress = LAYOUT.byteOffset(PATH$dstAddress);
@@ -83,11 +83,11 @@ public record VkDecompressMemoryRegionNV(MemorySegment segment) {
         segment.set(LAYOUT$decompressedSize, OFFSET$decompressedSize, value);
     }
 
-    public @enumtype(VkMemoryDecompressionMethodFlagsNV.class) int decompressionMethod() {
+    public @enumtype(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethod() {
         return segment.get(LAYOUT$decompressionMethod, OFFSET$decompressionMethod);
     }
 
-    public void decompressionMethod(@enumtype(VkMemoryDecompressionMethodFlagsNV.class) int value) {
+    public void decompressionMethod(@enumtype(VkMemoryDecompressionMethodFlagsNV.class) long value) {
         segment.set(LAYOUT$decompressionMethod, OFFSET$decompressionMethod, value);
     }
 

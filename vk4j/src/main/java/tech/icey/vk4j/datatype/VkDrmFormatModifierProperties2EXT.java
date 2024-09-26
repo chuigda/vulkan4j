@@ -17,7 +17,7 @@ public record VkDrmFormatModifierProperties2EXT(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_LONG.withName("drmFormatModifier"),
         ValueLayout.JAVA_INT.withName("drmFormatModifierPlaneCount"),
-        ValueLayout.JAVA_INT.withName("drmFormatModifierTilingFeatures")
+        ValueLayout.JAVA_LONG.withName("drmFormatModifierTilingFeatures")
     );
     public static final long SIZE = LAYOUT.byteSize();
 
@@ -27,7 +27,7 @@ public record VkDrmFormatModifierProperties2EXT(MemorySegment segment) {
 
     public static final OfLong LAYOUT$drmFormatModifier = (OfLong) LAYOUT.select(PATH$drmFormatModifier);
     public static final OfInt LAYOUT$drmFormatModifierPlaneCount = (OfInt) LAYOUT.select(PATH$drmFormatModifierPlaneCount);
-    public static final OfInt LAYOUT$drmFormatModifierTilingFeatures = (OfInt) LAYOUT.select(PATH$drmFormatModifierTilingFeatures);
+    public static final OfLong LAYOUT$drmFormatModifierTilingFeatures = (OfLong) LAYOUT.select(PATH$drmFormatModifierTilingFeatures);
 
     public static final long OFFSET$drmFormatModifier = LAYOUT.byteOffset(PATH$drmFormatModifier);
     public static final long OFFSET$drmFormatModifierPlaneCount = LAYOUT.byteOffset(PATH$drmFormatModifierPlaneCount);
@@ -57,11 +57,11 @@ public record VkDrmFormatModifierProperties2EXT(MemorySegment segment) {
         segment.set(LAYOUT$drmFormatModifierPlaneCount, OFFSET$drmFormatModifierPlaneCount, value);
     }
 
-    public @enumtype(VkFormatFeatureFlags2.class) int drmFormatModifierTilingFeatures() {
+    public @enumtype(VkFormatFeatureFlags2.class) long drmFormatModifierTilingFeatures() {
         return segment.get(LAYOUT$drmFormatModifierTilingFeatures, OFFSET$drmFormatModifierTilingFeatures);
     }
 
-    public void drmFormatModifierTilingFeatures(@enumtype(VkFormatFeatureFlags2.class) int value) {
+    public void drmFormatModifierTilingFeatures(@enumtype(VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$drmFormatModifierTilingFeatures, OFFSET$drmFormatModifierTilingFeatures, value);
     }
 

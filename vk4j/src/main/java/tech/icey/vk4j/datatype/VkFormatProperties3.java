@@ -17,9 +17,9 @@ public record VkFormatProperties3(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("linearTilingFeatures"),
-        ValueLayout.JAVA_INT.withName("optimalTilingFeatures"),
-        ValueLayout.JAVA_INT.withName("bufferFeatures")
+        ValueLayout.JAVA_LONG.withName("linearTilingFeatures"),
+        ValueLayout.JAVA_LONG.withName("optimalTilingFeatures"),
+        ValueLayout.JAVA_LONG.withName("bufferFeatures")
     );
     public static final long SIZE = LAYOUT.byteSize();
 
@@ -31,9 +31,9 @@ public record VkFormatProperties3(MemorySegment segment) {
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$linearTilingFeatures = (OfInt) LAYOUT.select(PATH$linearTilingFeatures);
-    public static final OfInt LAYOUT$optimalTilingFeatures = (OfInt) LAYOUT.select(PATH$optimalTilingFeatures);
-    public static final OfInt LAYOUT$bufferFeatures = (OfInt) LAYOUT.select(PATH$bufferFeatures);
+    public static final OfLong LAYOUT$linearTilingFeatures = (OfLong) LAYOUT.select(PATH$linearTilingFeatures);
+    public static final OfLong LAYOUT$optimalTilingFeatures = (OfLong) LAYOUT.select(PATH$optimalTilingFeatures);
+    public static final OfLong LAYOUT$bufferFeatures = (OfLong) LAYOUT.select(PATH$bufferFeatures);
 
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
@@ -68,27 +68,27 @@ public record VkFormatProperties3(MemorySegment segment) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public @enumtype(VkFormatFeatureFlags2.class) int linearTilingFeatures() {
+    public @enumtype(VkFormatFeatureFlags2.class) long linearTilingFeatures() {
         return segment.get(LAYOUT$linearTilingFeatures, OFFSET$linearTilingFeatures);
     }
 
-    public void linearTilingFeatures(@enumtype(VkFormatFeatureFlags2.class) int value) {
+    public void linearTilingFeatures(@enumtype(VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$linearTilingFeatures, OFFSET$linearTilingFeatures, value);
     }
 
-    public @enumtype(VkFormatFeatureFlags2.class) int optimalTilingFeatures() {
+    public @enumtype(VkFormatFeatureFlags2.class) long optimalTilingFeatures() {
         return segment.get(LAYOUT$optimalTilingFeatures, OFFSET$optimalTilingFeatures);
     }
 
-    public void optimalTilingFeatures(@enumtype(VkFormatFeatureFlags2.class) int value) {
+    public void optimalTilingFeatures(@enumtype(VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$optimalTilingFeatures, OFFSET$optimalTilingFeatures, value);
     }
 
-    public @enumtype(VkFormatFeatureFlags2.class) int bufferFeatures() {
+    public @enumtype(VkFormatFeatureFlags2.class) long bufferFeatures() {
         return segment.get(LAYOUT$bufferFeatures, OFFSET$bufferFeatures);
     }
 
-    public void bufferFeatures(@enumtype(VkFormatFeatureFlags2.class) int value) {
+    public void bufferFeatures(@enumtype(VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$bufferFeatures, OFFSET$bufferFeatures, value);
     }
 

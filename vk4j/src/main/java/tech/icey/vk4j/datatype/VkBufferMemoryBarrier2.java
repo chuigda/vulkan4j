@@ -17,10 +17,10 @@ public record VkBufferMemoryBarrier2(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("srcStageMask"),
-        ValueLayout.JAVA_INT.withName("srcAccessMask"),
-        ValueLayout.JAVA_INT.withName("dstStageMask"),
-        ValueLayout.JAVA_INT.withName("dstAccessMask"),
+        ValueLayout.JAVA_LONG.withName("srcStageMask"),
+        ValueLayout.JAVA_LONG.withName("srcAccessMask"),
+        ValueLayout.JAVA_LONG.withName("dstStageMask"),
+        ValueLayout.JAVA_LONG.withName("dstAccessMask"),
         ValueLayout.JAVA_INT.withName("srcQueueFamilyIndex"),
         ValueLayout.JAVA_INT.withName("dstQueueFamilyIndex"),
         ValueLayout.ADDRESS.withName("buffer"),
@@ -43,10 +43,10 @@ public record VkBufferMemoryBarrier2(MemorySegment segment) {
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$srcStageMask = (OfInt) LAYOUT.select(PATH$srcStageMask);
-    public static final OfInt LAYOUT$srcAccessMask = (OfInt) LAYOUT.select(PATH$srcAccessMask);
-    public static final OfInt LAYOUT$dstStageMask = (OfInt) LAYOUT.select(PATH$dstStageMask);
-    public static final OfInt LAYOUT$dstAccessMask = (OfInt) LAYOUT.select(PATH$dstAccessMask);
+    public static final OfLong LAYOUT$srcStageMask = (OfLong) LAYOUT.select(PATH$srcStageMask);
+    public static final OfLong LAYOUT$srcAccessMask = (OfLong) LAYOUT.select(PATH$srcAccessMask);
+    public static final OfLong LAYOUT$dstStageMask = (OfLong) LAYOUT.select(PATH$dstStageMask);
+    public static final OfLong LAYOUT$dstAccessMask = (OfLong) LAYOUT.select(PATH$dstAccessMask);
     public static final OfInt LAYOUT$srcQueueFamilyIndex = (OfInt) LAYOUT.select(PATH$srcQueueFamilyIndex);
     public static final OfInt LAYOUT$dstQueueFamilyIndex = (OfInt) LAYOUT.select(PATH$dstQueueFamilyIndex);
     public static final AddressLayout LAYOUT$buffer = (AddressLayout) LAYOUT.select(PATH$buffer);
@@ -98,35 +98,35 @@ public record VkBufferMemoryBarrier2(MemorySegment segment) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public @enumtype(VkPipelineStageFlags2.class) int srcStageMask() {
+    public @enumtype(VkPipelineStageFlags2.class) long srcStageMask() {
         return segment.get(LAYOUT$srcStageMask, OFFSET$srcStageMask);
     }
 
-    public void srcStageMask(@enumtype(VkPipelineStageFlags2.class) int value) {
+    public void srcStageMask(@enumtype(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$srcStageMask, OFFSET$srcStageMask, value);
     }
 
-    public @enumtype(VkAccessFlags2.class) int srcAccessMask() {
+    public @enumtype(VkAccessFlags2.class) long srcAccessMask() {
         return segment.get(LAYOUT$srcAccessMask, OFFSET$srcAccessMask);
     }
 
-    public void srcAccessMask(@enumtype(VkAccessFlags2.class) int value) {
+    public void srcAccessMask(@enumtype(VkAccessFlags2.class) long value) {
         segment.set(LAYOUT$srcAccessMask, OFFSET$srcAccessMask, value);
     }
 
-    public @enumtype(VkPipelineStageFlags2.class) int dstStageMask() {
+    public @enumtype(VkPipelineStageFlags2.class) long dstStageMask() {
         return segment.get(LAYOUT$dstStageMask, OFFSET$dstStageMask);
     }
 
-    public void dstStageMask(@enumtype(VkPipelineStageFlags2.class) int value) {
+    public void dstStageMask(@enumtype(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$dstStageMask, OFFSET$dstStageMask, value);
     }
 
-    public @enumtype(VkAccessFlags2.class) int dstAccessMask() {
+    public @enumtype(VkAccessFlags2.class) long dstAccessMask() {
         return segment.get(LAYOUT$dstAccessMask, OFFSET$dstAccessMask);
     }
 
-    public void dstAccessMask(@enumtype(VkAccessFlags2.class) int value) {
+    public void dstAccessMask(@enumtype(VkAccessFlags2.class) long value) {
         segment.set(LAYOUT$dstAccessMask, OFFSET$dstAccessMask, value);
     }
 

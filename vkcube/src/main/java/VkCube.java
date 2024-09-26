@@ -6,8 +6,10 @@ public final class VkCube {
 
         try (var D30F6 = new Engine()) {
             D30F6.run();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             UICommons.showErrorMessage("运行时发生错误: " + e.getMessage());
+            e.printStackTrace(System.err);
             System.exit(-1);
         }
 

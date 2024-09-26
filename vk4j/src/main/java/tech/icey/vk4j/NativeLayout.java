@@ -1,5 +1,7 @@
 package tech.icey.vk4j;
 
+import tech.icey.vk4j.annotation.unsigned;
+
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
@@ -24,6 +26,9 @@ public final class NativeLayout {
     /// @see <a href="https://github.com/LWJGL/lwjgl3/blob/813400f21ebfce5a9e1566cbf8ff96ca1d8f4921/modules/lwjgl/core/src/main/java/org/lwjgl/system/Pointer.java">lwjgl/core/src/main/java/org/lwgjl/system/Pointer.java</a>
     public static final ValueLayout C_LONG;
     public static final int C_LONG_SIZE;
+
+    public static final @unsigned int UINT32_MAX = 0xFFFFFFFF;
+    public static final @unsigned long UINT64_MAX = 0xFFFFFFFF_FFFFFFFFL;
 
     static {
         if (POINTER_SIZE == 4) {

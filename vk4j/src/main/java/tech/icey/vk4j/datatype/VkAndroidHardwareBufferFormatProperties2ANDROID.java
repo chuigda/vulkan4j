@@ -19,7 +19,7 @@ public record VkAndroidHardwareBufferFormatProperties2ANDROID(MemorySegment segm
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("format"),
         ValueLayout.JAVA_LONG.withName("externalFormat"),
-        ValueLayout.JAVA_INT.withName("formatFeatures"),
+        ValueLayout.JAVA_LONG.withName("formatFeatures"),
         VkComponentMapping.LAYOUT.withName("samplerYcbcrConversionComponents"),
         ValueLayout.JAVA_INT.withName("suggestedYcbcrModel"),
         ValueLayout.JAVA_INT.withName("suggestedYcbcrRange"),
@@ -43,7 +43,7 @@ public record VkAndroidHardwareBufferFormatProperties2ANDROID(MemorySegment segm
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
     public static final OfLong LAYOUT$externalFormat = (OfLong) LAYOUT.select(PATH$externalFormat);
-    public static final OfInt LAYOUT$formatFeatures = (OfInt) LAYOUT.select(PATH$formatFeatures);
+    public static final OfLong LAYOUT$formatFeatures = (OfLong) LAYOUT.select(PATH$formatFeatures);
     public static final StructLayout LAYOUT$samplerYcbcrConversionComponents = (StructLayout) LAYOUT.select(PATH$samplerYcbcrConversionComponents);
     public static final OfInt LAYOUT$suggestedYcbcrModel = (OfInt) LAYOUT.select(PATH$suggestedYcbcrModel);
     public static final OfInt LAYOUT$suggestedYcbcrRange = (OfInt) LAYOUT.select(PATH$suggestedYcbcrRange);
@@ -109,11 +109,11 @@ public record VkAndroidHardwareBufferFormatProperties2ANDROID(MemorySegment segm
         segment.set(LAYOUT$externalFormat, OFFSET$externalFormat, value);
     }
 
-    public @enumtype(VkFormatFeatureFlags2.class) int formatFeatures() {
+    public @enumtype(VkFormatFeatureFlags2.class) long formatFeatures() {
         return segment.get(LAYOUT$formatFeatures, OFFSET$formatFeatures);
     }
 
-    public void formatFeatures(@enumtype(VkFormatFeatureFlags2.class) int value) {
+    public void formatFeatures(@enumtype(VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$formatFeatures, OFFSET$formatFeatures, value);
     }
 

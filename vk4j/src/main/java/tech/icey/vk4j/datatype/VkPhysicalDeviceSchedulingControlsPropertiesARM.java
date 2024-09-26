@@ -17,7 +17,7 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(MemorySegment segm
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("schedulingControlsFlags")
+        ValueLayout.JAVA_LONG.withName("schedulingControlsFlags")
     );
     public static final long SIZE = LAYOUT.byteSize();
 
@@ -27,7 +27,7 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(MemorySegment segm
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$schedulingControlsFlags = (OfInt) LAYOUT.select(PATH$schedulingControlsFlags);
+    public static final OfLong LAYOUT$schedulingControlsFlags = (OfLong) LAYOUT.select(PATH$schedulingControlsFlags);
 
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
@@ -58,11 +58,11 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public @enumtype(VkPhysicalDeviceSchedulingControlsFlagsARM.class) int schedulingControlsFlags() {
+    public @enumtype(VkPhysicalDeviceSchedulingControlsFlagsARM.class) long schedulingControlsFlags() {
         return segment.get(LAYOUT$schedulingControlsFlags, OFFSET$schedulingControlsFlags);
     }
 
-    public void schedulingControlsFlags(@enumtype(VkPhysicalDeviceSchedulingControlsFlagsARM.class) int value) {
+    public void schedulingControlsFlags(@enumtype(VkPhysicalDeviceSchedulingControlsFlagsARM.class) long value) {
         segment.set(LAYOUT$schedulingControlsFlags, OFFSET$schedulingControlsFlags, value);
     }
 

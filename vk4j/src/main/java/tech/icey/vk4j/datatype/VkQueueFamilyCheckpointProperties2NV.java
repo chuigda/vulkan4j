@@ -17,7 +17,7 @@ public record VkQueueFamilyCheckpointProperties2NV(MemorySegment segment) {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("checkpointExecutionStageMask")
+        ValueLayout.JAVA_LONG.withName("checkpointExecutionStageMask")
     );
     public static final long SIZE = LAYOUT.byteSize();
 
@@ -27,7 +27,7 @@ public record VkQueueFamilyCheckpointProperties2NV(MemorySegment segment) {
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$checkpointExecutionStageMask = (OfInt) LAYOUT.select(PATH$checkpointExecutionStageMask);
+    public static final OfLong LAYOUT$checkpointExecutionStageMask = (OfLong) LAYOUT.select(PATH$checkpointExecutionStageMask);
 
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
@@ -58,11 +58,11 @@ public record VkQueueFamilyCheckpointProperties2NV(MemorySegment segment) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public @enumtype(VkPipelineStageFlags2.class) int checkpointExecutionStageMask() {
+    public @enumtype(VkPipelineStageFlags2.class) long checkpointExecutionStageMask() {
         return segment.get(LAYOUT$checkpointExecutionStageMask, OFFSET$checkpointExecutionStageMask);
     }
 
-    public void checkpointExecutionStageMask(@enumtype(VkPipelineStageFlags2.class) int value) {
+    public void checkpointExecutionStageMask(@enumtype(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$checkpointExecutionStageMask, OFFSET$checkpointExecutionStageMask, value);
     }
 

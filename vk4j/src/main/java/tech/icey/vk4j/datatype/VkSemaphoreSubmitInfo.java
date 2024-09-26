@@ -19,7 +19,7 @@ public record VkSemaphoreSubmitInfo(MemorySegment segment) {
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("semaphore"),
         ValueLayout.JAVA_LONG.withName("value"),
-        ValueLayout.JAVA_INT.withName("stageMask"),
+        ValueLayout.JAVA_LONG.withName("stageMask"),
         ValueLayout.JAVA_INT.withName("deviceIndex")
     );
     public static final long SIZE = LAYOUT.byteSize();
@@ -35,7 +35,7 @@ public record VkSemaphoreSubmitInfo(MemorySegment segment) {
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final AddressLayout LAYOUT$semaphore = (AddressLayout) LAYOUT.select(PATH$semaphore);
     public static final OfLong LAYOUT$value = (OfLong) LAYOUT.select(PATH$value);
-    public static final OfInt LAYOUT$stageMask = (OfInt) LAYOUT.select(PATH$stageMask);
+    public static final OfLong LAYOUT$stageMask = (OfLong) LAYOUT.select(PATH$stageMask);
     public static final OfInt LAYOUT$deviceIndex = (OfInt) LAYOUT.select(PATH$deviceIndex);
 
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
@@ -89,11 +89,11 @@ public record VkSemaphoreSubmitInfo(MemorySegment segment) {
         segment.set(LAYOUT$value, OFFSET$value, value);
     }
 
-    public @enumtype(VkPipelineStageFlags2.class) int stageMask() {
+    public @enumtype(VkPipelineStageFlags2.class) long stageMask() {
         return segment.get(LAYOUT$stageMask, OFFSET$stageMask);
     }
 
-    public void stageMask(@enumtype(VkPipelineStageFlags2.class) int value) {
+    public void stageMask(@enumtype(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$stageMask, OFFSET$stageMask, value);
     }
 
