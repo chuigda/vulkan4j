@@ -6,11 +6,11 @@ import java.lang.foreign.MemorySegment;
 public final class SwapchainImageResources {
     public VkImage image;
     public VkCommandBuffer cmd;
-    public VkCommandBuffer graphics_to_present_cmd;
+    public VkCommandBuffer graphicsToPresentCmd;
     public VkImageView view;
-    public VkBuffer uniform_buffer;
-    public VkDeviceMemory uniform_memory;
-    public @pointer(comment = "void*") MemorySegment uniform_memory_ptr;
+    public VkBuffer uniformBuffer;
+    public VkDeviceMemory uniformMemory;
+    public @pointer(comment = "void*") MemorySegment uniformMemoryPtr;
     public VkFramebuffer framebuffer;
     public VkDescriptorSet descriptorSet;
 }

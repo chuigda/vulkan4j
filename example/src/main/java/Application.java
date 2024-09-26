@@ -1177,7 +1177,7 @@ public class Application implements AutoCloseable {
             }
         }
 
-        System.err.println(messageBuilder);
+        System.err.print(messageBuilder);
 
         return Constants.VK_FALSE;
     }
