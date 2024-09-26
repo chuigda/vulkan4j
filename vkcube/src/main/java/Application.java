@@ -105,8 +105,44 @@ public final class Application {
             for (int i = 0; i < callbackData.objectCount(); i++) {
                 var object = objects[i];
                 messageBuilder.append(String.format("\t\tObject[%d] - %s", i, VkObjectType.explain(object.objectType())));
+                messageBuilder.append(String.format(", handle = 0x%s", Long.toUnsignedString(object.objectHandle(), 16)));
+
+                var objectName = object.pObjectName();
+                if (objectName != null) {
+                    messageBuilder.append(String.format(", name = %s", objectName.readString()));
+                }
+
+                messageBuilder.append("\n");
             }
         }
+
+        if (callbackData.cmdBufLabelCount() > 0) {
+            messageBuilder.append(String.format(
+                    "\tCommand Buffer Labels - %s\n",
+                    Integer.toUnsignedString(callbackData.cmdBufLabelCount()))
+            );
+
+            var labels = Objects.requireNonNull(callbackData.pCmdBufLabels(callbackData.cmdBufLabelCount()));
+            for (int i = 0; i < callbackData.cmdBufLabelCount(); i++) {
+                var label = labels[i];
+                messageBuilder.append(String.format(
+                        "\t\tLabel[%d] - %s",
+                        i,
+                        Objects.requireNonNull(label.pLabelName()).readString()
+                ));
+
+                var color = label.color();
+                messageBuilder.append(String.format(
+                        " { %.2f, %.2f, %.2f, %.2f }\n",
+                        color.read(0),
+                        color.read(1),
+                        color.read(2),
+                        color.read(3)
+                ));
+            }
+        }
+
+        System.err.println(messageBuilder);
 
         return Constants.VK_FALSE;
     }
