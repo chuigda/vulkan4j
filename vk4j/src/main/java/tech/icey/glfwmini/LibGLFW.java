@@ -83,10 +83,6 @@ public final class LibGLFW {
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS
     );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowOpacity = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_FLOAT
-    );
 
     public final MethodHandle HANDLE$glfwInit;
     public final MethodHandle HANDLE$glfwTerminate;
@@ -102,7 +98,6 @@ public final class LibGLFW {
     public final MethodHandle HANDLE$glfwWindowShouldClose;
     public final MethodHandle HANDLE$glfwDestroyWindow;
     public final MethodHandle HANDLE$glfwGetWindowSize;
-    public final MethodHandle HANDLE$glfwSetWindowOpacity;
     public final MethodHandle HANDLE$glfwSetWindowIconifyCallback;
 
     public LibGLFW(FunctionLoader loader) {
@@ -198,7 +193,7 @@ public final class LibGLFW {
         }
     }
 
-    public @pointer(comment="GLFWwindow*") MemorySegment glfwCreateWindow(
+    public GLFWwindow glfwCreateWindow(
             int width,
             int height,
             String title,
@@ -207,7 +202,14 @@ public final class LibGLFW {
     ) {
         try (Arena arena = Arena.ofConfined()) {
             MemorySegment titleSegment = arena.allocateFrom(title);
-            return (MemorySegment) HANDLE$glfwCreateWindow.invokeExact(width, height, titleSegment, monitor, share);
+            MemorySegment ret = (MemorySegment) HANDLE$glfwCreateWindow.invokeExact(
+                    width,
+                    height,
+                    titleSegment,
+                    monitor,
+                    share
+            );
+            return new GLFWwindow(ret);
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }
@@ -215,7 +217,7 @@ public final class LibGLFW {
 
     public @enumtype(VkResult.class) int glfwCreateWindowSurface(
             VkInstance instance,
-            @pointer(comment="GLFWwindow*") MemorySegment window,
+            GLFWwindow window,
             VkAllocationCallbacks allocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer surface
     ) {
@@ -223,7 +225,7 @@ public final class LibGLFW {
             MemorySegment allocatorSegment = allocator != null ? allocator.segment() : MemorySegment.NULL;
             return (int) HANDLE$glfwCreateWindowSurface.invokeExact(
                     instance.segment(),
-                    window,
+                    window.segment(),
                     allocatorSegment,
                     surface.segment()
             );
@@ -240,59 +242,36 @@ public final class LibGLFW {
         }
     }
 
-    public boolean glfwWindowShouldClose(@pointer(comment="GLFWwindow*") MemorySegment window) {
+    public boolean glfwWindowShouldClose(GLFWwindow window) {
         try {
-            return (boolean) HANDLE$glfwWindowShouldClose.invokeExact(window);
+            return (boolean) HANDLE$glfwWindowShouldClose.invokeExact(window.segment());
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }
     }
 
-    public void glfwDestroyWindow(@pointer(comment="GLFWwindow*") MemorySegment window) {
+    public void glfwDestroyWindow(GLFWwindow window) {
         try {
-            HANDLE$glfwDestroyWindow.invokeExact(window);
+            HANDLE$glfwDestroyWindow.invokeExact(window.segment());
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }
     }
 
-    public void glfwGetWindowSize(
-            @pointer(comment="GLFWwindow*") MemorySegment window,
-            IntBuffer width,
-            IntBuffer height
-    ) {
+    public void glfwGetWindowSize(GLFWwindow window, IntBuffer width, IntBuffer height) {
         try {
-            HANDLE$glfwGetWindowSize.invokeExact(window, width.segment(), height.segment());
-        } catch (Throwable throwable) {
-            throw new RuntimeException(throwable);
-        }
-    }
-
-    public void glfwGetWindowSize(
-            @pointer(comment="GLFWwindow*") MemorySegment window,
-            IntBuffer wh
-    ) {
-        try {
-            HANDLE$glfwGetWindowSize.invokeExact(window, wh.segment(), wh.segment().asSlice(4, 4));
-        } catch (Throwable throwable) {
-            throw new RuntimeException(throwable);
-        }
-    }
-
-    public void glfwSetWindowOpacity(@pointer(comment="GLFWwindow*") MemorySegment window, float opacity) {
-        try {
-            HANDLE$glfwSetWindowOpacity.invokeExact(window, opacity);
+            HANDLE$glfwGetWindowSize.invokeExact(window.segment(), width.segment(), height.segment());
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }
     }
 
     public @pointer(comment="GLFWwindowiconifyfun") MemorySegment glfwSetWindowIconifyCallback(
-            @pointer(comment="GLFWwindow*") MemorySegment window,
+            GLFWwindow window,
             @pointer(comment="GLFWwindowiconifyfun") MemorySegment callback
     ) {
         try {
-            return (MemorySegment) HANDLE$glfwSetWindowIconifyCallback.invokeExact(window, callback);
+            return (MemorySegment) HANDLE$glfwSetWindowIconifyCallback.invokeExact(window.segment(), callback);
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }

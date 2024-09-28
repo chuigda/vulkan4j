@@ -13,9 +13,17 @@
     <artifactId>tutorial</artifactId>
 
     <properties>
-        <maven.compiler.source>23</maven.compiler.source>
-        <maven.compiler.target>23</maven.compiler.target>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>tech.icey.vk4j</groupId>
+            <artifactId>vk4j</artifactId>
+            <version>0.0.1-PREALPHA</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>
