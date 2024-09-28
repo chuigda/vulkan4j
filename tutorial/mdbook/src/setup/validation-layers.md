@@ -259,7 +259,7 @@ I'm a cute end-of-section message, crawling cutely _(ÒωÓ๑ゝ∠)_
 All that remains now is telling Vulkan about the callback function. Perhaps somewhat surprisingly, even the debug callback in Vulkan is managed with a handle that needs to be explicitly created and destroyed. Such a callback is part of a debug messenger and you can have as many of them as you want. Add a class member for this handle right under `instance`:
 
 ```java
-VkDebugUtilsMessengerEXT debugMessenger;
+private VkDebugUtilsMessengerEXT debugMessenger;
 ```
 
 Now add a function `setupDebugMessenger` to be called from `initVulkan` right after `createInstance`:
