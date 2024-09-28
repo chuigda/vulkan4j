@@ -14,6 +14,18 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkImageToMemoryCopyEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     void* pHostPointer;
+///     uint32_t memoryRowLength;
+///     uint32_t memoryImageHeight;
+///     VkImageSubresourceLayers imageSubresource;
+///     VkOffset3D imageOffset;
+///     VkExtent3D imageExtent;
+/// } VkImageToMemoryCopyEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageToMemoryCopyEXT.html">VkImageToMemoryCopyEXT</a>
 public record VkImageToMemoryCopyEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

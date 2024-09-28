@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSubpassResolvePerformanceQueryEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 optimal;
+/// } VkSubpassResolvePerformanceQueryEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubpassResolvePerformanceQueryEXT.html">VkSubpassResolvePerformanceQueryEXT</a>
 public record VkSubpassResolvePerformanceQueryEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

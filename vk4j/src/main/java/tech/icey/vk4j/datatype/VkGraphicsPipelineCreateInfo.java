@@ -14,6 +14,30 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkGraphicsPipelineCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineCreateFlags flags;
+///     uint32_t stageCount;
+///     const VkPipelineShaderStageCreateInfo* pStages;
+///     const VkPipelineShaderStageCreateInfo* pStages;
+///     const VkPipelineVertexInputStateCreateInfo* pVertexInputState;
+///     const VkPipelineInputAssemblyStateCreateInfo* pInputAssemblyState;
+///     const VkPipelineTessellationStateCreateInfo* pTessellationState;
+///     const VkPipelineViewportStateCreateInfo* pViewportState;
+///     const VkPipelineRasterizationStateCreateInfo* pRasterizationState;
+///     const VkPipelineMultisampleStateCreateInfo* pMultisampleState;
+///     const VkPipelineDepthStencilStateCreateInfo* pDepthStencilState;
+///     const VkPipelineColorBlendStateCreateInfo* pColorBlendState;
+///     const VkPipelineDynamicStateCreateInfo* pDynamicState;
+///     VkPipelineLayout layout;
+///     VkRenderPass renderPass;
+///     uint32_t subpass;
+///     VkPipeline basePipelineHandle;
+///     int32_t basePipelineIndex;
+/// } VkGraphicsPipelineCreateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkGraphicsPipelineCreateInfo.html">VkGraphicsPipelineCreateInfo</a>
 public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

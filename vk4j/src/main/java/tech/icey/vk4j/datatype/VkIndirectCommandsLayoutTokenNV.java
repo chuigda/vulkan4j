@@ -14,6 +14,25 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkIndirectCommandsLayoutTokenNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkIndirectCommandsTokenTypeNV tokenType;
+///     uint32_t stream;
+///     uint32_t offset;
+///     uint32_t vertexBindingUnit;
+///     VkBool32 vertexDynamicStride;
+///     VkPipelineLayout pushconstantPipelineLayout;
+///     VkShaderStageFlags pushconstantShaderStageFlags;
+///     uint32_t pushconstantOffset;
+///     uint32_t pushconstantSize;
+///     VkIndirectStateFlagsNV indirectStateFlags;
+///     uint32_t indexTypeCount;
+///     const VkIndexType* pIndexTypes;
+///     const uint32_t* pIndexTypeValues;
+/// } VkIndirectCommandsLayoutTokenNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkIndirectCommandsLayoutTokenNV.html">VkIndirectCommandsLayoutTokenNV</a>
 public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

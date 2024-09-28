@@ -14,6 +14,12 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSampleLocationEXT {
+///     float x;
+///     float y;
+/// } VkSampleLocationEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSampleLocationEXT.html">VkSampleLocationEXT</a>
 public record VkSampleLocationEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

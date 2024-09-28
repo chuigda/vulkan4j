@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDescriptorGetInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDescriptorType type;
+///     VkDescriptorDataEXT data;
+/// } VkDescriptorGetInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDescriptorGetInfoEXT.html">VkDescriptorGetInfoEXT</a>
 public record VkDescriptorGetInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

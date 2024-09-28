@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkBufferCollectionConstraintsInfoFUCHSIA {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t minBufferCount;
+///     uint32_t maxBufferCount;
+///     uint32_t minBufferCountForCamping;
+///     uint32_t minBufferCountForDedicatedSlack;
+///     uint32_t minBufferCountForSharedSlack;
+/// } VkBufferCollectionConstraintsInfoFUCHSIA;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBufferCollectionConstraintsInfoFUCHSIA.html">VkBufferCollectionConstraintsInfoFUCHSIA</a>
 public record VkBufferCollectionConstraintsInfoFUCHSIA(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

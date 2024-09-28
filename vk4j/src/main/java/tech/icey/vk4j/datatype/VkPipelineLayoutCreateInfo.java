@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineLayoutCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineLayoutCreateFlags flags;
+///     uint32_t setLayoutCount;
+///     const VkDescriptorSetLayout* pSetLayouts;
+///     uint32_t pushConstantRangeCount;
+///     const VkPushConstantRange* pPushConstantRanges;
+/// } VkPipelineLayoutCreateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineLayoutCreateInfo.html">VkPipelineLayoutCreateInfo</a>
 public record VkPipelineLayoutCreateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -1,4 +1,5 @@
 import re
+import sys
 from typing import Pattern
 from xml.dom.minidom import Element, Node, Document
 
@@ -428,12 +429,36 @@ def extract_handle(e: Element) -> Handle:
 def extract_structure(e: Element) -> Structure:
     name = get_attr(e, 'name')
     api = get_attr(e, 'api')
-    members = list(map(extract_member, findall(e, 'member')))
+    member_nodes = findall(e, 'member')
+    verbatim = list(map(extract_member_verbatim, member_nodes))
+    members = list(map(extract_member, member_nodes))
     structextends = list(
         get_attr(e, 'structextends').split(',')
     ) if 'structextends' in e.attributes else []
 
-    return Structure(name, api, members, structextends)
+    return Structure(name, api, verbatim, members, structextends)
+
+
+def extract_member_verbatim(e: Element) -> str:
+    tmp = ''
+    for child in e.childNodes:
+        if child.nodeType == Node.ELEMENT_NODE:
+            if child.tagName == 'comment':
+                continue
+        tmp += text_content(child, strip=False)
+
+    ret = ''
+    had_whitespace = False
+    for c in tmp.strip():
+        if c == ' ':
+            if not had_whitespace:
+                ret += c
+                had_whitespace = True
+        else:
+            ret += c
+            had_whitespace = False
+
+    return ret
 
 
 BITS_REGEX: Pattern = re.compile(r':(\d+)$')
@@ -477,11 +502,14 @@ def get_element_text(e: Element) -> str:
     return e.childNodes[0].nodeValue.strip()
 
 
-def text_content(e: Node) -> str:
+def text_content(e: Node, strip: bool = True) -> str:
     if e.nodeType == Node.TEXT_NODE:
-        return e.nodeValue.strip()
+        if strip:
+            return e.nodeValue.strip()
+        else:
+            return e.nodeValue
     else:
-        return ''.join(map(text_content, e.childNodes))
+        return ''.join(map(lambda node: text_content(node, strip), e.childNodes))
 
 
 def find(e: Element, tag: str) -> Element:

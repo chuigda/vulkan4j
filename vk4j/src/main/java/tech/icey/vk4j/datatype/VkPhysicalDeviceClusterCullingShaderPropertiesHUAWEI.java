@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t maxWorkGroupCount[3];
+///     uint32_t maxWorkGroupSize[3];
+///     uint32_t maxOutputClusterCount;
+///     VkDeviceSize indirectBufferOffsetAlignment;
+/// } VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.html">VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI</a>
 public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

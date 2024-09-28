@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDebugMarkerMarkerInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     const char* pMarkerName;
+///     float color[4];
+/// } VkDebugMarkerMarkerInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDebugMarkerMarkerInfoEXT.html">VkDebugMarkerMarkerInfoEXT</a>
 public record VkDebugMarkerMarkerInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

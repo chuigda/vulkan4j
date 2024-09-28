@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkMemoryDedicatedAllocateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkImage image;
+///     VkBuffer buffer;
+/// } VkMemoryDedicatedAllocateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMemoryDedicatedAllocateInfo.html">VkMemoryDedicatedAllocateInfo</a>
 public record VkMemoryDedicatedAllocateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkStencilOpState {
+///     VkStencilOp failOp;
+///     VkStencilOp passOp;
+///     VkStencilOp depthFailOp;
+///     VkCompareOp compareOp;
+///     uint32_t compareMask;
+///     uint32_t writeMask;
+///     uint32_t reference;
+/// } VkStencilOpState;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkStencilOpState.html">VkStencilOpState</a>
 public record VkStencilOpState(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

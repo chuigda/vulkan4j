@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineCoverageModulationStateCreateInfoNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineCoverageModulationStateCreateFlagsNV flags;
+///     VkCoverageModulationModeNV coverageModulationMode;
+///     VkBool32 coverageModulationTableEnable;
+///     uint32_t coverageModulationTableCount;
+///     const float* pCoverageModulationTable;
+/// } VkPipelineCoverageModulationStateCreateInfoNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineCoverageModulationStateCreateInfoNV.html">VkPipelineCoverageModulationStateCreateInfoNV</a>
 public record VkPipelineCoverageModulationStateCreateInfoNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

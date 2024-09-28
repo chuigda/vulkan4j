@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceMemoryBudgetPropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkDeviceSize heapBudget[VK_MAX_MEMORY_HEAPS];
+///     VkDeviceSize heapUsage[VK_MAX_MEMORY_HEAPS];
+/// } VkPhysicalDeviceMemoryBudgetPropertiesEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceMemoryBudgetPropertiesEXT.html">VkPhysicalDeviceMemoryBudgetPropertiesEXT</a>
 public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,22 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineDepthStencilStateCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineDepthStencilStateCreateFlags flags;
+///     VkBool32 depthTestEnable;
+///     VkBool32 depthWriteEnable;
+///     VkCompareOp depthCompareOp;
+///     VkBool32 depthBoundsTestEnable;
+///     VkBool32 stencilTestEnable;
+///     VkStencilOpState front;
+///     VkStencilOpState back;
+///     float minDepthBounds;
+///     float maxDepthBounds;
+/// } VkPipelineDepthStencilStateCreateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineDepthStencilStateCreateInfo.html">VkPipelineDepthStencilStateCreateInfo</a>
 public record VkPipelineDepthStencilStateCreateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkComputePipelineIndirectBufferInfoNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDeviceAddress deviceAddress;
+///     VkDeviceSize size;
+///     VkDeviceAddress pipelineDeviceAddressCaptureReplay;
+/// } VkComputePipelineIndirectBufferInfoNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkComputePipelineIndirectBufferInfoNV.html">VkComputePipelineIndirectBufferInfoNV</a>
 public record VkComputePipelineIndirectBufferInfoNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

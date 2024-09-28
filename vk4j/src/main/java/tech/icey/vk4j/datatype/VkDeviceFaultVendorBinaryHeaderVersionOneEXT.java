@@ -14,6 +14,21 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDeviceFaultVendorBinaryHeaderVersionOneEXT {
+///     uint32_t headerSize;
+///     VkDeviceFaultVendorBinaryHeaderVersionEXT headerVersion;
+///     uint32_t vendorID;
+///     uint32_t deviceID;
+///     uint32_t driverVersion;
+///     uint8_t pipelineCacheUUID[VK_UUID_SIZE];
+///     uint32_t applicationNameOffset;
+///     uint32_t applicationVersion;
+///     uint32_t engineNameOffset;
+///     uint32_t engineVersion;
+///     uint32_t apiVersion;
+/// } VkDeviceFaultVendorBinaryHeaderVersionOneEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceFaultVendorBinaryHeaderVersionOneEXT.html">VkDeviceFaultVendorBinaryHeaderVersionOneEXT</a>
 public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

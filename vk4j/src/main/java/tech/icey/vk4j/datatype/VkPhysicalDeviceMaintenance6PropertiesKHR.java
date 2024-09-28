@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceMaintenance6PropertiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 blockTexelViewCompatibleMultipleLayers;
+///     uint32_t maxCombinedImageSamplerDescriptorCount;
+///     VkBool32 fragmentShadingRateClampCombinerInputs;
+/// } VkPhysicalDeviceMaintenance6PropertiesKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceMaintenance6PropertiesKHR.html">VkPhysicalDeviceMaintenance6PropertiesKHR</a>
 public record VkPhysicalDeviceMaintenance6PropertiesKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

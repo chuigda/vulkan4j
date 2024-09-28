@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkRenderingInputAttachmentIndexInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t colorAttachmentCount;
+///     const uint32_t* pColorAttachmentInputIndices;
+///     const uint32_t* pDepthInputAttachmentIndex;
+///     const uint32_t* pStencilInputAttachmentIndex;
+/// } VkRenderingInputAttachmentIndexInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRenderingInputAttachmentIndexInfoKHR.html">VkRenderingInputAttachmentIndexInfoKHR</a>
 public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

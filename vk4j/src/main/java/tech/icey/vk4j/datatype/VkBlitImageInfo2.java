@@ -14,6 +14,19 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkBlitImageInfo2 {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkImage srcImage;
+///     VkImageLayout srcImageLayout;
+///     VkImage dstImage;
+///     VkImageLayout dstImageLayout;
+///     uint32_t regionCount;
+///     const VkImageBlit2* pRegions;
+///     VkFilter filter;
+/// } VkBlitImageInfo2;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBlitImageInfo2.html">VkBlitImageInfo2</a>
 public record VkBlitImageInfo2(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

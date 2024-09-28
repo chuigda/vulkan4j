@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkAntiLagPresentationInfoAMD {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkAntiLagStageAMD stage;
+///     uint64_t frameIndex;
+/// } VkAntiLagPresentationInfoAMD;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAntiLagPresentationInfoAMD.html">VkAntiLagPresentationInfoAMD</a>
 public record VkAntiLagPresentationInfoAMD(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

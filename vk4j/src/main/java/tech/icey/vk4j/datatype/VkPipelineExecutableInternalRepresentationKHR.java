@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineExecutableInternalRepresentationKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     char name[VK_MAX_DESCRIPTION_SIZE];
+///     char description[VK_MAX_DESCRIPTION_SIZE];
+///     VkBool32 isText;
+///     size_t dataSize;
+///     void* pData;
+/// } VkPipelineExecutableInternalRepresentationKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineExecutableInternalRepresentationKHR.html">VkPipelineExecutableInternalRepresentationKHR</a>
 public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

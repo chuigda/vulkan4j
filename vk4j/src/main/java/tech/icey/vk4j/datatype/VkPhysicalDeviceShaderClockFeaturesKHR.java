@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceShaderClockFeaturesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 shaderSubgroupClock;
+///     VkBool32 shaderDeviceClock;
+/// } VkPhysicalDeviceShaderClockFeaturesKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceShaderClockFeaturesKHR.html">VkPhysicalDeviceShaderClockFeaturesKHR</a>
 public record VkPhysicalDeviceShaderClockFeaturesKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkTilePropertiesQCOM {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkExtent3D tileSize;
+///     VkExtent2D apronSize;
+///     VkOffset2D origin;
+/// } VkTilePropertiesQCOM;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkTilePropertiesQCOM.html">VkTilePropertiesQCOM</a>
 public record VkTilePropertiesQCOM(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

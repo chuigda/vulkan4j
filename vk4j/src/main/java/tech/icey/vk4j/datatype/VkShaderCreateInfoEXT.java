@@ -14,6 +14,24 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkShaderCreateInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkShaderCreateFlagsEXT flags;
+///     VkShaderStageFlagBits stage;
+///     VkShaderStageFlags nextStage;
+///     VkShaderCodeTypeEXT codeType;
+///     size_t codeSize;
+///     const void* pCode;
+///     const char* pName;
+///     uint32_t setLayoutCount;
+///     const VkDescriptorSetLayout* pSetLayouts;
+///     uint32_t pushConstantRangeCount;
+///     const VkPushConstantRange* pPushConstantRanges;
+///     const VkSpecializationInfo* pSpecializationInfo;
+/// } VkShaderCreateInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkShaderCreateInfoEXT.html">VkShaderCreateInfoEXT</a>
 public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

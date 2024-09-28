@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkShaderResourceUsageAMD {
+///     uint32_t numUsedVgprs;
+///     uint32_t numUsedSgprs;
+///     uint32_t ldsSizePerLocalWorkGroup;
+///     size_t ldsUsageSizeInBytes;
+///     size_t scratchMemUsageInBytes;
+/// } VkShaderResourceUsageAMD;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkShaderResourceUsageAMD.html">VkShaderResourceUsageAMD</a>
 public record VkShaderResourceUsageAMD(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

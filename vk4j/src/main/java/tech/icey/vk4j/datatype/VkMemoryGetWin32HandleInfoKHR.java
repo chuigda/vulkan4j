@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkMemoryGetWin32HandleInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDeviceMemory memory;
+///     VkExternalMemoryHandleTypeFlagBits handleType;
+/// } VkMemoryGetWin32HandleInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMemoryGetWin32HandleInfoKHR.html">VkMemoryGetWin32HandleInfoKHR</a>
 public record VkMemoryGetWin32HandleInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

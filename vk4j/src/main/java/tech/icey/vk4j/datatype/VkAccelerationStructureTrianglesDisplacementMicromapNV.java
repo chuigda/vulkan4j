@@ -14,6 +14,28 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkAccelerationStructureTrianglesDisplacementMicromapNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkFormat displacementBiasAndScaleFormat;
+///     VkFormat displacementVectorFormat;
+///     VkDeviceOrHostAddressConstKHR displacementBiasAndScaleBuffer;
+///     VkDeviceSize displacementBiasAndScaleStride;
+///     VkDeviceOrHostAddressConstKHR displacementVectorBuffer;
+///     VkDeviceSize displacementVectorStride;
+///     VkDeviceOrHostAddressConstKHR displacedMicromapPrimitiveFlags;
+///     VkDeviceSize displacedMicromapPrimitiveFlagsStride;
+///     VkIndexType indexType;
+///     VkDeviceOrHostAddressConstKHR indexBuffer;
+///     VkDeviceSize indexStride;
+///     uint32_t baseTriangle;
+///     uint32_t usageCountsCount;
+///     const VkMicromapUsageEXT* pUsageCounts;
+///     const VkMicromapUsageEXT* const* ppUsageCounts;
+///     VkMicromapEXT micromap;
+/// } VkAccelerationStructureTrianglesDisplacementMicromapNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAccelerationStructureTrianglesDisplacementMicromapNV.html">VkAccelerationStructureTrianglesDisplacementMicromapNV</a>
 public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

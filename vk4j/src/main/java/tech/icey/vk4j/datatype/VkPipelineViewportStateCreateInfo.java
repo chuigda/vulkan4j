@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineViewportStateCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineViewportStateCreateFlags flags;
+///     uint32_t viewportCount;
+///     const VkViewport* pViewports;
+///     uint32_t scissorCount;
+///     const VkRect2D* pScissors;
+/// } VkPipelineViewportStateCreateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineViewportStateCreateInfo.html">VkPipelineViewportStateCreateInfo</a>
 public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

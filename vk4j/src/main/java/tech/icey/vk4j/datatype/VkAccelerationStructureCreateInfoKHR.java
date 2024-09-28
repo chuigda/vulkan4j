@@ -14,6 +14,18 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkAccelerationStructureCreateInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkAccelerationStructureCreateFlagsKHR createFlags;
+///     VkBuffer buffer;
+///     VkDeviceSize offset;
+///     VkDeviceSize size;
+///     VkAccelerationStructureTypeKHR type;
+///     VkDeviceAddress deviceAddress;
+/// } VkAccelerationStructureCreateInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAccelerationStructureCreateInfoKHR.html">VkAccelerationStructureCreateInfoKHR</a>
 public record VkAccelerationStructureCreateInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 pageableDeviceLocalMemory;
+/// } VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT.html">VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT</a>
 public record VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,35 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceDescriptorIndexingProperties {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t maxUpdateAfterBindDescriptorsInAllPools;
+///     VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
+///     VkBool32 shaderSampledImageArrayNonUniformIndexingNative;
+///     VkBool32 shaderStorageBufferArrayNonUniformIndexingNative;
+///     VkBool32 shaderStorageImageArrayNonUniformIndexingNative;
+///     VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative;
+///     VkBool32 robustBufferAccessUpdateAfterBind;
+///     VkBool32 quadDivergentImplicitLod;
+///     uint32_t maxPerStageDescriptorUpdateAfterBindSamplers;
+///     uint32_t maxPerStageDescriptorUpdateAfterBindUniformBuffers;
+///     uint32_t maxPerStageDescriptorUpdateAfterBindStorageBuffers;
+///     uint32_t maxPerStageDescriptorUpdateAfterBindSampledImages;
+///     uint32_t maxPerStageDescriptorUpdateAfterBindStorageImages;
+///     uint32_t maxPerStageDescriptorUpdateAfterBindInputAttachments;
+///     uint32_t maxPerStageUpdateAfterBindResources;
+///     uint32_t maxDescriptorSetUpdateAfterBindSamplers;
+///     uint32_t maxDescriptorSetUpdateAfterBindUniformBuffers;
+///     uint32_t maxDescriptorSetUpdateAfterBindUniformBuffersDynamic;
+///     uint32_t maxDescriptorSetUpdateAfterBindStorageBuffers;
+///     uint32_t maxDescriptorSetUpdateAfterBindStorageBuffersDynamic;
+///     uint32_t maxDescriptorSetUpdateAfterBindSampledImages;
+///     uint32_t maxDescriptorSetUpdateAfterBindStorageImages;
+///     uint32_t maxDescriptorSetUpdateAfterBindInputAttachments;
+/// } VkPhysicalDeviceDescriptorIndexingProperties;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceDescriptorIndexingProperties.html">VkPhysicalDeviceDescriptorIndexingProperties</a>
 public record VkPhysicalDeviceDescriptorIndexingProperties(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

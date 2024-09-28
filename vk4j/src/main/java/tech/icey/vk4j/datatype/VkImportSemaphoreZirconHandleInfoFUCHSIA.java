@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkImportSemaphoreZirconHandleInfoFUCHSIA {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkSemaphore semaphore;
+///     VkSemaphoreImportFlags flags;
+///     VkExternalSemaphoreHandleTypeFlagBits handleType;
+///     zx_handle_t zirconHandle;
+/// } VkImportSemaphoreZirconHandleInfoFUCHSIA;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImportSemaphoreZirconHandleInfoFUCHSIA.html">VkImportSemaphoreZirconHandleInfoFUCHSIA</a>
 public record VkImportSemaphoreZirconHandleInfoFUCHSIA(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

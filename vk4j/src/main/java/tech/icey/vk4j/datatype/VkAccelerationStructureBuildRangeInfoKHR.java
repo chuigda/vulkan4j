@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkAccelerationStructureBuildRangeInfoKHR {
+///     uint32_t primitiveCount;
+///     uint32_t primitiveOffset;
+///     uint32_t firstVertex;
+///     uint32_t transformOffset;
+/// } VkAccelerationStructureBuildRangeInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAccelerationStructureBuildRangeInfoKHR.html">VkAccelerationStructureBuildRangeInfoKHR</a>
 public record VkAccelerationStructureBuildRangeInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

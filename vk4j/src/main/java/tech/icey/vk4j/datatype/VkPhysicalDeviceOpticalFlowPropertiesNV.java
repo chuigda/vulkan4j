@@ -14,6 +14,23 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceOpticalFlowPropertiesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkOpticalFlowGridSizeFlagsNV supportedOutputGridSizes;
+///     VkOpticalFlowGridSizeFlagsNV supportedHintGridSizes;
+///     VkBool32 hintSupported;
+///     VkBool32 costSupported;
+///     VkBool32 bidirectionalFlowSupported;
+///     VkBool32 globalFlowSupported;
+///     uint32_t minWidth;
+///     uint32_t minHeight;
+///     uint32_t maxWidth;
+///     uint32_t maxHeight;
+///     uint32_t maxNumRegionsOfInterest;
+/// } VkPhysicalDeviceOpticalFlowPropertiesNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceOpticalFlowPropertiesNV.html">VkPhysicalDeviceOpticalFlowPropertiesNV</a>
 public record VkPhysicalDeviceOpticalFlowPropertiesNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

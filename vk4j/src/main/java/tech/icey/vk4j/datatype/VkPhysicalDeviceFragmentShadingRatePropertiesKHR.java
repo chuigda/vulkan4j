@@ -14,6 +14,29 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceFragmentShadingRatePropertiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkExtent2D minFragmentShadingRateAttachmentTexelSize;
+///     VkExtent2D maxFragmentShadingRateAttachmentTexelSize;
+///     uint32_t maxFragmentShadingRateAttachmentTexelSizeAspectRatio;
+///     VkBool32 primitiveFragmentShadingRateWithMultipleViewports;
+///     VkBool32 layeredShadingRateAttachments;
+///     VkBool32 fragmentShadingRateNonTrivialCombinerOps;
+///     VkExtent2D maxFragmentSize;
+///     uint32_t maxFragmentSizeAspectRatio;
+///     uint32_t maxFragmentShadingRateCoverageSamples;
+///     VkSampleCountFlagBits maxFragmentShadingRateRasterizationSamples;
+///     VkBool32 fragmentShadingRateWithShaderDepthStencilWrites;
+///     VkBool32 fragmentShadingRateWithSampleMask;
+///     VkBool32 fragmentShadingRateWithShaderSampleMask;
+///     VkBool32 fragmentShadingRateWithConservativeRasterization;
+///     VkBool32 fragmentShadingRateWithFragmentShaderInterlock;
+///     VkBool32 fragmentShadingRateWithCustomSampleLocations;
+///     VkBool32 fragmentShadingRateStrictMultiplyCombiner;
+/// } VkPhysicalDeviceFragmentShadingRatePropertiesKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceFragmentShadingRatePropertiesKHR.html">VkPhysicalDeviceFragmentShadingRatePropertiesKHR</a>
 public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

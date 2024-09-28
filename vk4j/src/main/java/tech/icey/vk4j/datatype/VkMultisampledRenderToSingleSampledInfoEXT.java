@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkMultisampledRenderToSingleSampledInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkBool32 multisampledRenderToSingleSampledEnable;
+///     VkSampleCountFlagBits rasterizationSamples;
+/// } VkMultisampledRenderToSingleSampledInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMultisampledRenderToSingleSampledInfoEXT.html">VkMultisampledRenderToSingleSampledInfoEXT</a>
 public record VkMultisampledRenderToSingleSampledInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

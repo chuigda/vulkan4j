@@ -14,6 +14,27 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceVulkan11Properties {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint8_t deviceUUID[VK_UUID_SIZE];
+///     uint8_t driverUUID[VK_UUID_SIZE];
+///     uint8_t deviceLUID[VK_LUID_SIZE];
+///     uint32_t deviceNodeMask;
+///     VkBool32 deviceLUIDValid;
+///     uint32_t subgroupSize;
+///     VkShaderStageFlags subgroupSupportedStages;
+///     VkSubgroupFeatureFlags subgroupSupportedOperations;
+///     VkBool32 subgroupQuadOperationsInAllStages;
+///     VkPointClippingBehavior pointClippingBehavior;
+///     uint32_t maxMultiviewViewCount;
+///     uint32_t maxMultiviewInstanceIndex;
+///     VkBool32 protectedNoFault;
+///     uint32_t maxPerSetDescriptors;
+///     VkDeviceSize maxMemoryAllocationSize;
+/// } VkPhysicalDeviceVulkan11Properties;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceVulkan11Properties.html">VkPhysicalDeviceVulkan11Properties</a>
 public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

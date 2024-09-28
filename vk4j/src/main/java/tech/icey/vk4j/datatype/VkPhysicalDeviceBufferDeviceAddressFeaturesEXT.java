@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceBufferDeviceAddressFeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 bufferDeviceAddress;
+///     VkBool32 bufferDeviceAddressCaptureReplay;
+///     VkBool32 bufferDeviceAddressMultiDevice;
+/// } VkPhysicalDeviceBufferDeviceAddressFeaturesEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.html">VkPhysicalDeviceBufferDeviceAddressFeaturesEXT</a>
 public record VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

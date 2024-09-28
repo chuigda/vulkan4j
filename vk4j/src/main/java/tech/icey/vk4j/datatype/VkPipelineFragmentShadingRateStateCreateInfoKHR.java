@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineFragmentShadingRateStateCreateInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkExtent2D fragmentSize;
+///     VkFragmentShadingRateCombinerOpKHR combinerOps[2];
+/// } VkPipelineFragmentShadingRateStateCreateInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineFragmentShadingRateStateCreateInfoKHR.html">VkPipelineFragmentShadingRateStateCreateInfoKHR</a>
 public record VkPipelineFragmentShadingRateStateCreateInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

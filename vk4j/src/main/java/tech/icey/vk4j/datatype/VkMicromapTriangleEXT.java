@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkMicromapTriangleEXT {
+///     uint32_t dataOffset;
+///     uint16_t subdivisionLevel;
+///     uint16_t format;
+/// } VkMicromapTriangleEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMicromapTriangleEXT.html">VkMicromapTriangleEXT</a>
 public record VkMicromapTriangleEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkImageCompressionControlEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkImageCompressionFlagsEXT flags;
+///     uint32_t compressionControlPlaneCount;
+///     VkImageCompressionFixedRateFlagsEXT* pFixedRateFlags;
+/// } VkImageCompressionControlEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionControlEXT.html">VkImageCompressionControlEXT</a>
 public record VkImageCompressionControlEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

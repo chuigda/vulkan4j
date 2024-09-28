@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDeviceQueueInfo2 {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDeviceQueueCreateFlags flags;
+///     uint32_t queueFamilyIndex;
+///     uint32_t queueIndex;
+/// } VkDeviceQueueInfo2;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceQueueInfo2.html">VkDeviceQueueInfo2</a>
 public record VkDeviceQueueInfo2(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

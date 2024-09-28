@@ -14,6 +14,19 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDependencyInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDependencyFlags dependencyFlags;
+///     uint32_t memoryBarrierCount;
+///     const VkMemoryBarrier2* pMemoryBarriers;
+///     uint32_t bufferMemoryBarrierCount;
+///     const VkBufferMemoryBarrier2* pBufferMemoryBarriers;
+///     uint32_t imageMemoryBarrierCount;
+///     const VkImageMemoryBarrier2* pImageMemoryBarriers;
+/// } VkDependencyInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDependencyInfo.html">VkDependencyInfo</a>
 public record VkDependencyInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

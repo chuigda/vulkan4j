@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkWaylandSurfaceCreateInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkWaylandSurfaceCreateFlagsKHR flags;
+///     struct wl_display* display;
+///     struct wl_surface* surface;
+/// } VkWaylandSurfaceCreateInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkWaylandSurfaceCreateInfoKHR.html">VkWaylandSurfaceCreateInfoKHR</a>
 public record VkWaylandSurfaceCreateInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

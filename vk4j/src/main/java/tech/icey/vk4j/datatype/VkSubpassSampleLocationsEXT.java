@@ -14,6 +14,12 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSubpassSampleLocationsEXT {
+///     uint32_t subpassIndex;
+///     VkSampleLocationsInfoEXT sampleLocationsInfo;
+/// } VkSubpassSampleLocationsEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubpassSampleLocationsEXT.html">VkSubpassSampleLocationsEXT</a>
 public record VkSubpassSampleLocationsEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

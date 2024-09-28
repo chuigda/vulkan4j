@@ -14,6 +14,20 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceRayTracingPropertiesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t shaderGroupHandleSize;
+///     uint32_t maxRecursionDepth;
+///     uint32_t maxShaderGroupStride;
+///     uint32_t shaderGroupBaseAlignment;
+///     uint64_t maxGeometryCount;
+///     uint64_t maxInstanceCount;
+///     uint64_t maxTriangleCount;
+///     uint32_t maxDescriptorSetAccelerationStructures;
+/// } VkPhysicalDeviceRayTracingPropertiesNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceRayTracingPropertiesNV.html">VkPhysicalDeviceRayTracingPropertiesNV</a>
 public record VkPhysicalDeviceRayTracingPropertiesNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

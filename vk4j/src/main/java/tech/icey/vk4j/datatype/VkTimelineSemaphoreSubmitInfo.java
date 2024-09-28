@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkTimelineSemaphoreSubmitInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t waitSemaphoreValueCount;
+///     const uint64_t* pWaitSemaphoreValues;
+///     uint32_t signalSemaphoreValueCount;
+///     const uint64_t* pSignalSemaphoreValues;
+/// } VkTimelineSemaphoreSubmitInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkTimelineSemaphoreSubmitInfo.html">VkTimelineSemaphoreSubmitInfo</a>
 public record VkTimelineSemaphoreSubmitInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

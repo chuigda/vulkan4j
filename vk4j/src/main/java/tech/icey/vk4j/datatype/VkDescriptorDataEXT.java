@@ -14,6 +14,20 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDescriptorDataEXT {
+///     const VkSampler* pSampler;
+///     const VkDescriptorImageInfo* pCombinedImageSampler;
+///     const VkDescriptorImageInfo* pInputAttachmentImage;
+///     const VkDescriptorImageInfo* pSampledImage;
+///     const VkDescriptorImageInfo* pStorageImage;
+///     const VkDescriptorAddressInfoEXT* pUniformTexelBuffer;
+///     const VkDescriptorAddressInfoEXT* pStorageTexelBuffer;
+///     const VkDescriptorAddressInfoEXT* pUniformBuffer;
+///     const VkDescriptorAddressInfoEXT* pStorageBuffer;
+///     VkDeviceAddress accelerationStructure;
+/// } VkDescriptorDataEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDescriptorDataEXT.html">VkDescriptorDataEXT</a>
 public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(

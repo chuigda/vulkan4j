@@ -14,6 +14,18 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkBufferCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkBufferCreateFlags flags;
+///     VkDeviceSize size;
+///     VkBufferUsageFlags usage;
+///     VkSharingMode sharingMode;
+///     uint32_t queueFamilyIndexCount;
+///     const uint32_t* pQueueFamilyIndices;
+/// } VkBufferCreateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBufferCreateInfo.html">VkBufferCreateInfo</a>
 public record VkBufferCreateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

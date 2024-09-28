@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceImageProcessingPropertiesQCOM {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t maxWeightFilterPhases;
+///     VkExtent2D maxWeightFilterDimension;
+///     VkExtent2D maxBlockMatchRegion;
+///     VkExtent2D maxBoxFilterBlockSize;
+/// } VkPhysicalDeviceImageProcessingPropertiesQCOM;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceImageProcessingPropertiesQCOM.html">VkPhysicalDeviceImageProcessingPropertiesQCOM</a>
 public record VkPhysicalDeviceImageProcessingPropertiesQCOM(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

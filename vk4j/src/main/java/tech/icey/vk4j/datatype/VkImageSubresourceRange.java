@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkImageSubresourceRange {
+///     VkImageAspectFlags aspectMask;
+///     uint32_t baseMipLevel;
+///     uint32_t levelCount;
+///     uint32_t baseArrayLayer;
+///     uint32_t layerCount;
+/// } VkImageSubresourceRange;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageSubresourceRange.html">VkImageSubresourceRange</a>
 public record VkImageSubresourceRange(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDeviceFaultInfoEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     char description[VK_MAX_DESCRIPTION_SIZE];
+///     VkDeviceFaultAddressInfoEXT* pAddressInfos;
+///     VkDeviceFaultVendorInfoEXT* pVendorInfos;
+///     void* pVendorBinaryData;
+/// } VkDeviceFaultInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceFaultInfoEXT.html">VkDeviceFaultInfoEXT</a>
 public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

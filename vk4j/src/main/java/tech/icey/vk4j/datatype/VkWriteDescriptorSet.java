@@ -14,6 +14,20 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkWriteDescriptorSet {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDescriptorSet dstSet;
+///     uint32_t dstBinding;
+///     uint32_t dstArrayElement;
+///     uint32_t descriptorCount;
+///     VkDescriptorType descriptorType;
+///     const VkDescriptorImageInfo* pImageInfo;
+///     const VkDescriptorBufferInfo* pBufferInfo;
+///     const VkBufferView* pTexelBufferView;
+/// } VkWriteDescriptorSet;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkWriteDescriptorSet.html">VkWriteDescriptorSet</a>
 public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkCudaFunctionCreateInfoNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkCudaModuleNV module;
+///     const char* pName;
+/// } VkCudaFunctionCreateInfoNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCudaFunctionCreateInfoNV.html">VkCudaFunctionCreateInfoNV</a>
 public record VkCudaFunctionCreateInfoNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

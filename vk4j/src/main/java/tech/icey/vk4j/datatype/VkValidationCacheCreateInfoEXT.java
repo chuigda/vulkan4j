@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkValidationCacheCreateInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkValidationCacheCreateFlagsEXT flags;
+///     size_t initialDataSize;
+///     const void* pInitialData;
+/// } VkValidationCacheCreateInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkValidationCacheCreateInfoEXT.html">VkValidationCacheCreateInfoEXT</a>
 public record VkValidationCacheCreateInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

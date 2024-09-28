@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkCopyImageToBufferInfo2 {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkImage srcImage;
+///     VkImageLayout srcImageLayout;
+///     VkBuffer dstBuffer;
+///     uint32_t regionCount;
+///     const VkBufferImageCopy2* pRegions;
+/// } VkCopyImageToBufferInfo2;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCopyImageToBufferInfo2.html">VkCopyImageToBufferInfo2</a>
 public record VkCopyImageToBufferInfo2(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

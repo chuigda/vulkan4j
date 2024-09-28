@@ -14,6 +14,24 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkTraceRaysIndirectCommand2KHR {
+///     VkDeviceAddress raygenShaderRecordAddress;
+///     VkDeviceSize raygenShaderRecordSize;
+///     VkDeviceAddress missShaderBindingTableAddress;
+///     VkDeviceSize missShaderBindingTableSize;
+///     VkDeviceSize missShaderBindingTableStride;
+///     VkDeviceAddress hitShaderBindingTableAddress;
+///     VkDeviceSize hitShaderBindingTableSize;
+///     VkDeviceSize hitShaderBindingTableStride;
+///     VkDeviceAddress callableShaderBindingTableAddress;
+///     VkDeviceSize callableShaderBindingTableSize;
+///     VkDeviceSize callableShaderBindingTableStride;
+///     uint32_t width;
+///     uint32_t height;
+///     uint32_t depth;
+/// } VkTraceRaysIndirectCommand2KHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkTraceRaysIndirectCommand2KHR.html">VkTraceRaysIndirectCommand2KHR</a>
 public record VkTraceRaysIndirectCommand2KHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,29 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSwapchainCreateInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkSwapchainCreateFlagsKHR flags;
+///     VkSurfaceKHR surface;
+///     uint32_t minImageCount;
+///     VkFormat imageFormat;
+///     VkColorSpaceKHR imageColorSpace;
+///     VkExtent2D imageExtent;
+///     uint32_t imageArrayLayers;
+///     VkImageUsageFlags imageUsage;
+///     VkSharingMode imageSharingMode;
+///     uint32_t queueFamilyIndexCount;
+///     const uint32_t* pQueueFamilyIndices;
+///     VkSurfaceTransformFlagBitsKHR preTransform;
+///     VkCompositeAlphaFlagBitsKHR compositeAlpha;
+///     VkPresentModeKHR presentMode;
+///     VkBool32 clipped;
+///     VkSwapchainKHR oldSwapchain;
+///     VkSwapchainKHR oldSwapchain;
+/// } VkSwapchainCreateInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSwapchainCreateInfoKHR.html">VkSwapchainCreateInfoKHR</a>
 public record VkSwapchainCreateInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

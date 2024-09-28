@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSemaphoreWaitInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkSemaphoreWaitFlags flags;
+///     uint32_t semaphoreCount;
+///     const VkSemaphore* pSemaphores;
+///     const uint64_t* pValues;
+/// } VkSemaphoreWaitInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSemaphoreWaitInfo.html">VkSemaphoreWaitInfo</a>
 public record VkSemaphoreWaitInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

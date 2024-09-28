@@ -14,6 +14,26 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSRTDataNV {
+///     float sx;
+///     float a;
+///     float b;
+///     float pvx;
+///     float sy;
+///     float c;
+///     float pvy;
+///     float sz;
+///     float pvz;
+///     float qx;
+///     float qy;
+///     float qz;
+///     float qw;
+///     float tx;
+///     float ty;
+///     float tz;
+/// } VkSRTDataNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSRTDataNV.html">VkSRTDataNV</a>
 public record VkSRTDataNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

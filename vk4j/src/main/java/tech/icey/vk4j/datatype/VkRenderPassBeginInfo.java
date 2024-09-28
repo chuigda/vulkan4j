@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkRenderPassBeginInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkRenderPass renderPass;
+///     VkFramebuffer framebuffer;
+///     VkRect2D renderArea;
+///     uint32_t clearValueCount;
+///     const VkClearValue* pClearValues;
+/// } VkRenderPassBeginInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRenderPassBeginInfo.html">VkRenderPassBeginInfo</a>
 public record VkRenderPassBeginInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

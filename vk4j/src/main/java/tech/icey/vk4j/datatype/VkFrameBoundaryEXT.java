@@ -14,6 +14,21 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkFrameBoundaryEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkFrameBoundaryFlagsEXT flags;
+///     uint64_t frameID;
+///     uint32_t imageCount;
+///     const VkImage* pImages;
+///     uint32_t bufferCount;
+///     const VkBuffer* pBuffers;
+///     uint64_t tagName;
+///     size_t tagSize;
+///     const void* pTag;
+/// } VkFrameBoundaryEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFrameBoundaryEXT.html">VkFrameBoundaryEXT</a>
 public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

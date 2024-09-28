@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceMeshShaderFeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 taskShader;
+///     VkBool32 meshShader;
+///     VkBool32 multiviewMeshShader;
+///     VkBool32 primitiveFragmentShadingRateMeshShader;
+///     VkBool32 meshShaderQueries;
+/// } VkPhysicalDeviceMeshShaderFeaturesEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceMeshShaderFeaturesEXT.html">VkPhysicalDeviceMeshShaderFeaturesEXT</a>
 public record VkPhysicalDeviceMeshShaderFeaturesEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

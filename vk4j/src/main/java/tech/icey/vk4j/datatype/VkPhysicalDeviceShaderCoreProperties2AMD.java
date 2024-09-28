@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceShaderCoreProperties2AMD {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkShaderCorePropertiesFlagsAMD shaderCoreFeatures;
+///     uint32_t activeComputeUnitCount;
+/// } VkPhysicalDeviceShaderCoreProperties2AMD;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceShaderCoreProperties2AMD.html">VkPhysicalDeviceShaderCoreProperties2AMD</a>
 public record VkPhysicalDeviceShaderCoreProperties2AMD(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

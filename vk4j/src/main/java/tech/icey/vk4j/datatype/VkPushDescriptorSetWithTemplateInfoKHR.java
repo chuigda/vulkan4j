@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPushDescriptorSetWithTemplateInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDescriptorUpdateTemplate descriptorUpdateTemplate;
+///     VkPipelineLayout layout;
+///     uint32_t set;
+///     const void* pData;
+/// } VkPushDescriptorSetWithTemplateInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPushDescriptorSetWithTemplateInfoKHR.html">VkPushDescriptorSetWithTemplateInfoKHR</a>
 public record VkPushDescriptorSetWithTemplateInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

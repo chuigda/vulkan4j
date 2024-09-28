@@ -14,6 +14,23 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineRasterizationStateCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineRasterizationStateCreateFlags flags;
+///     VkBool32 depthClampEnable;
+///     VkBool32 rasterizerDiscardEnable;
+///     VkPolygonMode polygonMode;
+///     VkCullModeFlags cullMode;
+///     VkFrontFace frontFace;
+///     VkBool32 depthBiasEnable;
+///     float depthBiasConstantFactor;
+///     float depthBiasClamp;
+///     float depthBiasSlopeFactor;
+///     float lineWidth;
+/// } VkPipelineRasterizationStateCreateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineRasterizationStateCreateInfo.html">VkPipelineRasterizationStateCreateInfo</a>
 public record VkPipelineRasterizationStateCreateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

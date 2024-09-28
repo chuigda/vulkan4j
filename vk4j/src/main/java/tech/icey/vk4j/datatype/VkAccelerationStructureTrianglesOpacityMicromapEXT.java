@@ -14,6 +14,20 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkAccelerationStructureTrianglesOpacityMicromapEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkIndexType indexType;
+///     VkDeviceOrHostAddressConstKHR indexBuffer;
+///     VkDeviceSize indexStride;
+///     uint32_t baseTriangle;
+///     uint32_t usageCountsCount;
+///     const VkMicromapUsageEXT* pUsageCounts;
+///     const VkMicromapUsageEXT* const* ppUsageCounts;
+///     VkMicromapEXT micromap;
+/// } VkAccelerationStructureTrianglesOpacityMicromapEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAccelerationStructureTrianglesOpacityMicromapEXT.html">VkAccelerationStructureTrianglesOpacityMicromapEXT</a>
 public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

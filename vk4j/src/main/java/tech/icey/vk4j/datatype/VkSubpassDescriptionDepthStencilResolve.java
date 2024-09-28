@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSubpassDescriptionDepthStencilResolve {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkResolveModeFlagBits depthResolveMode;
+///     VkResolveModeFlagBits stencilResolveMode;
+///     const VkAttachmentReference2* pDepthStencilResolveAttachment;
+/// } VkSubpassDescriptionDepthStencilResolve;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubpassDescriptionDepthStencilResolve.html">VkSubpassDescriptionDepthStencilResolve</a>
 public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

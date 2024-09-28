@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSurfaceFullScreenExclusiveWin32InfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     HMONITOR hmonitor;
+/// } VkSurfaceFullScreenExclusiveWin32InfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSurfaceFullScreenExclusiveWin32InfoEXT.html">VkSurfaceFullScreenExclusiveWin32InfoEXT</a>
 public record VkSurfaceFullScreenExclusiveWin32InfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

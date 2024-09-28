@@ -14,6 +14,21 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkOpticalFlowSessionCreateInfoNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t width;
+///     uint32_t height;
+///     VkFormat imageFormat;
+///     VkFormat flowVectorFormat;
+///     VkFormat costFormat;
+///     VkOpticalFlowGridSizeFlagsNV outputGridSize;
+///     VkOpticalFlowGridSizeFlagsNV hintGridSize;
+///     VkOpticalFlowPerformanceLevelNV performanceLevel;
+///     VkOpticalFlowSessionCreateFlagsNV flags;
+/// } VkOpticalFlowSessionCreateInfoNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkOpticalFlowSessionCreateInfoNV.html">VkOpticalFlowSessionCreateInfoNV</a>
 public record VkOpticalFlowSessionCreateInfoNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

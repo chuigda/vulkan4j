@@ -6,6 +6,7 @@ from .datatype.array_accessor import generate_array_accessor
 
 def generate_structure(registry: Registry, structure: Structure) -> str:
     member_types_lowered: list[CType | None] = []
+    verbatim = '\n'.join(map(lambda v: f'///     {v};', structure.verbatim))
 
     struct_layout = generate_structure_layout(
         registry,
@@ -30,6 +31,11 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {{@snippet lang=c :
+/// typedef struct {structure.name} {{
+{verbatim}
+/// }} {structure.name};}}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/{structure.name}.html">{structure.name}</a>
 public record {structure.name}(MemorySegment segment) implements IPointer {{
     public static final MemoryLayout LAYOUT = {struct_layout};

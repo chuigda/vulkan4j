@@ -14,6 +14,21 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkRayTracingPipelineCreateInfoNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineCreateFlags flags;
+///     uint32_t stageCount;
+///     const VkPipelineShaderStageCreateInfo* pStages;
+///     uint32_t groupCount;
+///     const VkRayTracingShaderGroupCreateInfoNV* pGroups;
+///     uint32_t maxRecursionDepth;
+///     VkPipelineLayout layout;
+///     VkPipeline basePipelineHandle;
+///     int32_t basePipelineIndex;
+/// } VkRayTracingPipelineCreateInfoNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRayTracingPipelineCreateInfoNV.html">VkRayTracingPipelineCreateInfoNV</a>
 public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,19 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineMultisampleStateCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineMultisampleStateCreateFlags flags;
+///     VkSampleCountFlagBits rasterizationSamples;
+///     VkBool32 sampleShadingEnable;
+///     float minSampleShading;
+///     const VkSampleMask* pSampleMask;
+///     VkBool32 alphaToCoverageEnable;
+///     VkBool32 alphaToOneEnable;
+/// } VkPipelineMultisampleStateCreateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineMultisampleStateCreateInfo.html">VkPipelineMultisampleStateCreateInfo</a>
 public record VkPipelineMultisampleStateCreateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

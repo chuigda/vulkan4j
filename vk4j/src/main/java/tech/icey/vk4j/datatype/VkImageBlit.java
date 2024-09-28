@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkImageBlit {
+///     VkImageSubresourceLayers srcSubresource;
+///     VkOffset3D srcOffsets[2];
+///     VkImageSubresourceLayers dstSubresource;
+///     VkOffset3D dstOffsets[2];
+/// } VkImageBlit;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageBlit.html">VkImageBlit</a>
 public record VkImageBlit(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

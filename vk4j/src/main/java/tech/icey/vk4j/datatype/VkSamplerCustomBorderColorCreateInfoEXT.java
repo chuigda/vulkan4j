@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSamplerCustomBorderColorCreateInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkClearColorValue customBorderColor;
+///     VkFormat format;
+/// } VkSamplerCustomBorderColorCreateInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSamplerCustomBorderColorCreateInfoEXT.html">VkSamplerCustomBorderColorCreateInfoEXT</a>
 public record VkSamplerCustomBorderColorCreateInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

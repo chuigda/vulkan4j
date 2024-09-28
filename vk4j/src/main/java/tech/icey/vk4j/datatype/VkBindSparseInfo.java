@@ -14,6 +14,22 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkBindSparseInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t waitSemaphoreCount;
+///     const VkSemaphore* pWaitSemaphores;
+///     uint32_t bufferBindCount;
+///     const VkSparseBufferMemoryBindInfo* pBufferBinds;
+///     uint32_t imageOpaqueBindCount;
+///     const VkSparseImageOpaqueMemoryBindInfo* pImageOpaqueBinds;
+///     uint32_t imageBindCount;
+///     const VkSparseImageMemoryBindInfo* pImageBinds;
+///     uint32_t signalSemaphoreCount;
+///     const VkSemaphore* pSignalSemaphores;
+/// } VkBindSparseInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBindSparseInfo.html">VkBindSparseInfo</a>
 public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

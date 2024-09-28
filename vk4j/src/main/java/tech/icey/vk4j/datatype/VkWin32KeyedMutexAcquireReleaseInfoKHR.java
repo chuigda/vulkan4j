@@ -14,6 +14,19 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkWin32KeyedMutexAcquireReleaseInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t acquireCount;
+///     const VkDeviceMemory* pAcquireSyncs;
+///     const uint64_t* pAcquireKeys;
+///     const uint32_t* pAcquireTimeouts;
+///     uint32_t releaseCount;
+///     const VkDeviceMemory* pReleaseSyncs;
+///     const uint64_t* pReleaseKeys;
+/// } VkWin32KeyedMutexAcquireReleaseInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkWin32KeyedMutexAcquireReleaseInfoKHR.html">VkWin32KeyedMutexAcquireReleaseInfoKHR</a>
 public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

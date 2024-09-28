@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceImageFormatInfo2 {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkFormat format;
+///     VkImageType type;
+///     VkImageTiling tiling;
+///     VkImageUsageFlags usage;
+///     VkImageCreateFlags flags;
+/// } VkPhysicalDeviceImageFormatInfo2;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceImageFormatInfo2.html">VkPhysicalDeviceImageFormatInfo2</a>
 public record VkPhysicalDeviceImageFormatInfo2(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

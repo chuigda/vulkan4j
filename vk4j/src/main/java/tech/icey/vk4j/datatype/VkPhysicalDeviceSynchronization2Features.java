@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceSynchronization2Features {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 synchronization2;
+/// } VkPhysicalDeviceSynchronization2Features;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceSynchronization2Features.html">VkPhysicalDeviceSynchronization2Features</a>
 public record VkPhysicalDeviceSynchronization2Features(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

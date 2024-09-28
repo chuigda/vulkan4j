@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkLayerSettingEXT {
+///     const char* pLayerName;
+///     const char* pSettingName;
+///     VkLayerSettingTypeEXT type;
+///     uint32_t valueCount;
+///     const void* pValues;
+/// } VkLayerSettingEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkLayerSettingEXT.html">VkLayerSettingEXT</a>
 public record VkLayerSettingEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkClearColorValue {
+///     float float32[4];
+///     int32_t int32[4];
+///     uint32_t uint32[4];
+/// } VkClearColorValue;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkClearColorValue.html">VkClearColorValue</a>
 public record VkClearColorValue(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(

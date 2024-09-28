@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkRefreshObjectKHR {
+///     VkObjectType objectType;
+///     uint64_t objectHandle;
+///     VkRefreshObjectFlagsKHR flags;
+/// } VkRefreshObjectKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRefreshObjectKHR.html">VkRefreshObjectKHR</a>
 public record VkRefreshObjectKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

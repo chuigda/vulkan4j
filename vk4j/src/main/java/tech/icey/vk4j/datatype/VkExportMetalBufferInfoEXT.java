@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkExportMetalBufferInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDeviceMemory memory;
+///     MTLBuffer_id mtlBuffer;
+/// } VkExportMetalBufferInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkExportMetalBufferInfoEXT.html">VkExportMetalBufferInfoEXT</a>
 public record VkExportMetalBufferInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

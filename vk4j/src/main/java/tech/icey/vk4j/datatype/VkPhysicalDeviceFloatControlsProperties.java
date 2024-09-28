@@ -14,6 +14,29 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceFloatControlsProperties {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkShaderFloatControlsIndependence denormBehaviorIndependence;
+///     VkShaderFloatControlsIndependence roundingModeIndependence;
+///     VkBool32 shaderSignedZeroInfNanPreserveFloat16;
+///     VkBool32 shaderSignedZeroInfNanPreserveFloat32;
+///     VkBool32 shaderSignedZeroInfNanPreserveFloat64;
+///     VkBool32 shaderDenormPreserveFloat16;
+///     VkBool32 shaderDenormPreserveFloat32;
+///     VkBool32 shaderDenormPreserveFloat64;
+///     VkBool32 shaderDenormFlushToZeroFloat16;
+///     VkBool32 shaderDenormFlushToZeroFloat32;
+///     VkBool32 shaderDenormFlushToZeroFloat64;
+///     VkBool32 shaderRoundingModeRTEFloat16;
+///     VkBool32 shaderRoundingModeRTEFloat32;
+///     VkBool32 shaderRoundingModeRTEFloat64;
+///     VkBool32 shaderRoundingModeRTZFloat16;
+///     VkBool32 shaderRoundingModeRTZFloat32;
+///     VkBool32 shaderRoundingModeRTZFloat64;
+/// } VkPhysicalDeviceFloatControlsProperties;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceFloatControlsProperties.html">VkPhysicalDeviceFloatControlsProperties</a>
 public record VkPhysicalDeviceFloatControlsProperties(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

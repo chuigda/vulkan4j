@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDrawMeshTasksIndirectCommandEXT {
+///     uint32_t groupCountX;
+///     uint32_t groupCountY;
+///     uint32_t groupCountZ;
+/// } VkDrawMeshTasksIndirectCommandEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDrawMeshTasksIndirectCommandEXT.html">VkDrawMeshTasksIndirectCommandEXT</a>
 public record VkDrawMeshTasksIndirectCommandEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceTransformFeedbackFeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 transformFeedback;
+///     VkBool32 geometryStreams;
+/// } VkPhysicalDeviceTransformFeedbackFeaturesEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceTransformFeedbackFeaturesEXT.html">VkPhysicalDeviceTransformFeedbackFeaturesEXT</a>
 public record VkPhysicalDeviceTransformFeedbackFeaturesEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

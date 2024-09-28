@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkImageMemoryRequirementsInfo2 {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkImage image;
+/// } VkImageMemoryRequirementsInfo2;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageMemoryRequirementsInfo2.html">VkImageMemoryRequirementsInfo2</a>
 public record VkImageMemoryRequirementsInfo2(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

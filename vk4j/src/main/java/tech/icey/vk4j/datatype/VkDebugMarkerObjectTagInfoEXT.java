@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDebugMarkerObjectTagInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDebugReportObjectTypeEXT objectType;
+///     uint64_t object;
+///     uint64_t tagName;
+///     size_t tagSize;
+///     const void* pTag;
+/// } VkDebugMarkerObjectTagInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDebugMarkerObjectTagInfoEXT.html">VkDebugMarkerObjectTagInfoEXT</a>
 public record VkDebugMarkerObjectTagInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

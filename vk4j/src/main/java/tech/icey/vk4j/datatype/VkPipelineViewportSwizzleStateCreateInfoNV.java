@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineViewportSwizzleStateCreateInfoNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineViewportSwizzleStateCreateFlagsNV flags;
+///     uint32_t viewportCount;
+///     const VkViewportSwizzleNV* pViewportSwizzles;
+/// } VkPipelineViewportSwizzleStateCreateInfoNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineViewportSwizzleStateCreateInfoNV.html">VkPipelineViewportSwizzleStateCreateInfoNV</a>
 public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

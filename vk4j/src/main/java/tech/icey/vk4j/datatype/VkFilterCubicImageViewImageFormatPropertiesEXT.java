@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkFilterCubicImageViewImageFormatPropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 filterCubic;
+///     VkBool32 filterCubicMinmax;
+/// } VkFilterCubicImageViewImageFormatPropertiesEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFilterCubicImageViewImageFormatPropertiesEXT.html">VkFilterCubicImageViewImageFormatPropertiesEXT</a>
 public record VkFilterCubicImageViewImageFormatPropertiesEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

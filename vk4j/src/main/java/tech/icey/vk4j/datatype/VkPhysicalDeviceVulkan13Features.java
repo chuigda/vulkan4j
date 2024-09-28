@@ -14,6 +14,27 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceVulkan13Features {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 robustImageAccess;
+///     VkBool32 inlineUniformBlock;
+///     VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
+///     VkBool32 pipelineCreationCacheControl;
+///     VkBool32 privateData;
+///     VkBool32 shaderDemoteToHelperInvocation;
+///     VkBool32 shaderTerminateInvocation;
+///     VkBool32 subgroupSizeControl;
+///     VkBool32 computeFullSubgroups;
+///     VkBool32 synchronization2;
+///     VkBool32 textureCompressionASTC_HDR;
+///     VkBool32 shaderZeroInitializeWorkgroupMemory;
+///     VkBool32 dynamicRendering;
+///     VkBool32 shaderIntegerDotProduct;
+///     VkBool32 maintenance4;
+/// } VkPhysicalDeviceVulkan13Features;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceVulkan13Features.html">VkPhysicalDeviceVulkan13Features</a>
 public record VkPhysicalDeviceVulkan13Features(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

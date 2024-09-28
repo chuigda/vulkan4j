@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceInlineUniformBlockProperties {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t maxInlineUniformBlockSize;
+///     uint32_t maxPerStageDescriptorInlineUniformBlocks;
+///     uint32_t maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks;
+///     uint32_t maxDescriptorSetInlineUniformBlocks;
+///     uint32_t maxDescriptorSetUpdateAfterBindInlineUniformBlocks;
+/// } VkPhysicalDeviceInlineUniformBlockProperties;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceInlineUniformBlockProperties.html">VkPhysicalDeviceInlineUniformBlockProperties</a>
 public record VkPhysicalDeviceInlineUniformBlockProperties(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

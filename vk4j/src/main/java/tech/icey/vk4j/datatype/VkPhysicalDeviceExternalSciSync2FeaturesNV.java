@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceExternalSciSync2FeaturesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 sciSyncFence;
+///     VkBool32 sciSyncSemaphore2;
+///     VkBool32 sciSyncImport;
+///     VkBool32 sciSyncExport;
+/// } VkPhysicalDeviceExternalSciSync2FeaturesNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceExternalSciSync2FeaturesNV.html">VkPhysicalDeviceExternalSciSync2FeaturesNV</a>
 public record VkPhysicalDeviceExternalSciSync2FeaturesNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

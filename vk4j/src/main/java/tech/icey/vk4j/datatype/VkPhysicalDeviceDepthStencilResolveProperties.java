@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceDepthStencilResolveProperties {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkResolveModeFlags supportedDepthResolveModes;
+///     VkResolveModeFlags supportedStencilResolveModes;
+///     VkBool32 independentResolveNone;
+///     VkBool32 independentResolve;
+/// } VkPhysicalDeviceDepthStencilResolveProperties;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceDepthStencilResolveProperties.html">VkPhysicalDeviceDepthStencilResolveProperties</a>
 public record VkPhysicalDeviceDepthStencilResolveProperties(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

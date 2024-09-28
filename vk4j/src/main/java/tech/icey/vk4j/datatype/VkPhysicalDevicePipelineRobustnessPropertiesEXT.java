@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDevicePipelineRobustnessPropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkPipelineRobustnessBufferBehaviorEXT defaultRobustnessStorageBuffers;
+///     VkPipelineRobustnessBufferBehaviorEXT defaultRobustnessUniformBuffers;
+///     VkPipelineRobustnessBufferBehaviorEXT defaultRobustnessVertexInputs;
+///     VkPipelineRobustnessImageBehaviorEXT defaultRobustnessImages;
+/// } VkPhysicalDevicePipelineRobustnessPropertiesEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDevicePipelineRobustnessPropertiesEXT.html">VkPhysicalDevicePipelineRobustnessPropertiesEXT</a>
 public record VkPhysicalDevicePipelineRobustnessPropertiesEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

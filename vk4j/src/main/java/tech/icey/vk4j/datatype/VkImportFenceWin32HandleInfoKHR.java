@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkImportFenceWin32HandleInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkFence fence;
+///     VkFenceImportFlags flags;
+///     VkExternalFenceHandleTypeFlagBits handleType;
+///     HANDLE handle;
+///     LPCWSTR name;
+/// } VkImportFenceWin32HandleInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImportFenceWin32HandleInfoKHR.html">VkImportFenceWin32HandleInfoKHR</a>
 public record VkImportFenceWin32HandleInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

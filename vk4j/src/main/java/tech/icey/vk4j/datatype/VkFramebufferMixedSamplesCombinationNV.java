@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkFramebufferMixedSamplesCombinationNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkCoverageReductionModeNV coverageReductionMode;
+///     VkSampleCountFlagBits rasterizationSamples;
+///     VkSampleCountFlags depthStencilSamples;
+///     VkSampleCountFlags colorSamples;
+/// } VkFramebufferMixedSamplesCombinationNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFramebufferMixedSamplesCombinationNV.html">VkFramebufferMixedSamplesCombinationNV</a>
 public record VkFramebufferMixedSamplesCombinationNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

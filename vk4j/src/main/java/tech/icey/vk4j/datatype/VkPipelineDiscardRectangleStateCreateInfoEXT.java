@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineDiscardRectangleStateCreateInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineDiscardRectangleStateCreateFlagsEXT flags;
+///     VkDiscardRectangleModeEXT discardRectangleMode;
+///     uint32_t discardRectangleCount;
+///     const VkRect2D* pDiscardRectangles;
+/// } VkPipelineDiscardRectangleStateCreateInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineDiscardRectangleStateCreateInfoEXT.html">VkPipelineDiscardRectangleStateCreateInfoEXT</a>
 public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

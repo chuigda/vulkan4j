@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkColorBlendEquationEXT {
+///     VkBlendFactor srcColorBlendFactor;
+///     VkBlendFactor dstColorBlendFactor;
+///     VkBlendOp colorBlendOp;
+///     VkBlendFactor srcAlphaBlendFactor;
+///     VkBlendFactor dstAlphaBlendFactor;
+///     VkBlendOp alphaBlendOp;
+/// } VkColorBlendEquationEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkColorBlendEquationEXT.html">VkColorBlendEquationEXT</a>
 public record VkColorBlendEquationEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -42,7 +42,15 @@ def filter_variants(enum: Enum) -> Enum:
 
 def filter_members(structure: Structure) -> Structure:
     members = list(filter(lambda member: member.is_vulkan_api(), structure.members))
-    return Structure(structure.name, structure.api, members, structure.structextends, structure.has_init_, structure.is_union)
+    return Structure(
+        structure.name,
+        structure.api,
+        structure.verbatim,
+        members,
+        structure.structextends,
+        structure.has_init_,
+        structure.is_union
+    )
 
 
 UNSUPPORTED_EXTENSIONS: set[str] = set()

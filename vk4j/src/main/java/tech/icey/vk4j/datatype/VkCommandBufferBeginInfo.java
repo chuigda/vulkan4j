@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkCommandBufferBeginInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkCommandBufferUsageFlags flags;
+///     const VkCommandBufferInheritanceInfo* pInheritanceInfo;
+/// } VkCommandBufferBeginInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCommandBufferBeginInfo.html">VkCommandBufferBeginInfo</a>
 public record VkCommandBufferBeginInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,19 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkExecutionGraphPipelineCreateInfoAMDX {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineCreateFlags flags;
+///     uint32_t stageCount;
+///     const VkPipelineShaderStageCreateInfo* pStages;
+///     const VkPipelineLibraryCreateInfoKHR* pLibraryInfo;
+///     VkPipelineLayout layout;
+///     VkPipeline basePipelineHandle;
+///     int32_t basePipelineIndex;
+/// } VkExecutionGraphPipelineCreateInfoAMDX;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkExecutionGraphPipelineCreateInfoAMDX.html">VkExecutionGraphPipelineCreateInfoAMDX</a>
 public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

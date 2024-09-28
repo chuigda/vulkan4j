@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPerformanceValueDataINTEL {
+///     uint32_t value32;
+///     uint64_t value64;
+///     float valueFloat;
+///     VkBool32 valueBool;
+///     const char* valueString;
+/// } VkPerformanceValueDataINTEL;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPerformanceValueDataINTEL.html">VkPerformanceValueDataINTEL</a>
 public record VkPerformanceValueDataINTEL(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(

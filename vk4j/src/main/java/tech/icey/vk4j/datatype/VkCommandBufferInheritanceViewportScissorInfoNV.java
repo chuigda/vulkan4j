@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkCommandBufferInheritanceViewportScissorInfoNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkBool32 viewportScissor2D;
+///     uint32_t viewportDepthCount;
+///     const VkViewport* pViewportDepths;
+/// } VkCommandBufferInheritanceViewportScissorInfoNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCommandBufferInheritanceViewportScissorInfoNV.html">VkCommandBufferInheritanceViewportScissorInfoNV</a>
 public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

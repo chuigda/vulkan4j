@@ -14,6 +14,23 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkGeometryTrianglesNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkBuffer vertexData;
+///     VkDeviceSize vertexOffset;
+///     uint32_t vertexCount;
+///     VkDeviceSize vertexStride;
+///     VkFormat vertexFormat;
+///     VkBuffer indexData;
+///     VkDeviceSize indexOffset;
+///     uint32_t indexCount;
+///     VkIndexType indexType;
+///     VkBuffer transformData;
+///     VkDeviceSize transformOffset;
+/// } VkGeometryTrianglesNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkGeometryTrianglesNV.html">VkGeometryTrianglesNV</a>
 public record VkGeometryTrianglesNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

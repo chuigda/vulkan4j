@@ -14,6 +14,22 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDebugUtilsMessengerCallbackDataEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDebugUtilsMessengerCallbackDataFlagsEXT flags;
+///     const char* pMessageIdName;
+///     int32_t messageIdNumber;
+///     const char* pMessage;
+///     uint32_t queueLabelCount;
+///     const VkDebugUtilsLabelEXT* pQueueLabels;
+///     uint32_t cmdBufLabelCount;
+///     const VkDebugUtilsLabelEXT* pCmdBufLabels;
+///     uint32_t objectCount;
+///     const VkDebugUtilsObjectNameInfoEXT* pObjects;
+/// } VkDebugUtilsMessengerCallbackDataEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDebugUtilsMessengerCallbackDataEXT.html">VkDebugUtilsMessengerCallbackDataEXT</a>
 public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

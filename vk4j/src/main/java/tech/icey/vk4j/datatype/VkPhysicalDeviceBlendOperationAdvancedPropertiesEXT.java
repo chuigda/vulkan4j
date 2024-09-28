@@ -14,6 +14,18 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t advancedBlendMaxColorAttachments;
+///     VkBool32 advancedBlendIndependentBlend;
+///     VkBool32 advancedBlendNonPremultipliedSrcColor;
+///     VkBool32 advancedBlendNonPremultipliedDstColor;
+///     VkBool32 advancedBlendCorrelatedOverlap;
+///     VkBool32 advancedBlendAllOperations;
+/// } VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.html">VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT</a>
 public record VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

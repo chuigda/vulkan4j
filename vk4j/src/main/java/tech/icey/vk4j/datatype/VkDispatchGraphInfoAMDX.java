@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDispatchGraphInfoAMDX {
+///     uint32_t nodeIndex;
+///     uint32_t payloadCount;
+///     VkDeviceOrHostAddressConstAMDX payloads;
+///     uint64_t payloadStride;
+/// } VkDispatchGraphInfoAMDX;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDispatchGraphInfoAMDX.html">VkDispatchGraphInfoAMDX</a>
 public record VkDispatchGraphInfoAMDX(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

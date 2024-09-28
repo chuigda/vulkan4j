@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkAcquireNextImageInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkSwapchainKHR swapchain;
+///     uint64_t timeout;
+///     VkSemaphore semaphore;
+///     VkFence fence;
+///     uint32_t deviceMask;
+/// } VkAcquireNextImageInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAcquireNextImageInfoKHR.html">VkAcquireNextImageInfoKHR</a>
 public record VkAcquireNextImageInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

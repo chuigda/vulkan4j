@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkApplicationInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     const char* pApplicationName;
+///     uint32_t applicationVersion;
+///     const char* pEngineName;
+///     uint32_t engineVersion;
+///     uint32_t apiVersion;
+/// } VkApplicationInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkApplicationInfo.html">VkApplicationInfo</a>
 public record VkApplicationInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

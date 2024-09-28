@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkHostImageLayoutTransitionInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkImage image;
+///     VkImageLayout oldLayout;
+///     VkImageLayout newLayout;
+///     VkImageSubresourceRange subresourceRange;
+/// } VkHostImageLayoutTransitionInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkHostImageLayoutTransitionInfoEXT.html">VkHostImageLayoutTransitionInfoEXT</a>
 public record VkHostImageLayoutTransitionInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

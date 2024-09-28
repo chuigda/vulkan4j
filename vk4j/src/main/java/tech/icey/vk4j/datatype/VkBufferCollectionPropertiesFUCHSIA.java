@@ -14,6 +14,23 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkBufferCollectionPropertiesFUCHSIA {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t memoryTypeBits;
+///     uint32_t bufferCount;
+///     uint32_t createInfoIndex;
+///     uint64_t sysmemPixelFormat;
+///     VkFormatFeatureFlags formatFeatures;
+///     VkSysmemColorSpaceFUCHSIA sysmemColorSpaceIndex;
+///     VkComponentMapping samplerYcbcrConversionComponents;
+///     VkSamplerYcbcrModelConversion suggestedYcbcrModel;
+///     VkSamplerYcbcrRange suggestedYcbcrRange;
+///     VkChromaLocation suggestedXChromaOffset;
+///     VkChromaLocation suggestedYChromaOffset;
+/// } VkBufferCollectionPropertiesFUCHSIA;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBufferCollectionPropertiesFUCHSIA.html">VkBufferCollectionPropertiesFUCHSIA</a>
 public record VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

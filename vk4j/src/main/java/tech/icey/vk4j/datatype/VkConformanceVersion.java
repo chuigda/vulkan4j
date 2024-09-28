@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkConformanceVersion {
+///     uint8_t major;
+///     uint8_t minor;
+///     uint8_t subminor;
+///     uint8_t patch;
+/// } VkConformanceVersion;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkConformanceVersion.html">VkConformanceVersion</a>
 public record VkConformanceVersion(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

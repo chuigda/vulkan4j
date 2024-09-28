@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkOpticalFlowSessionCreatePrivateDataInfoNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t id;
+///     uint32_t size;
+///     const void* pPrivateData;
+/// } VkOpticalFlowSessionCreatePrivateDataInfoNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkOpticalFlowSessionCreatePrivateDataInfoNV.html">VkOpticalFlowSessionCreatePrivateDataInfoNV</a>
 public record VkOpticalFlowSessionCreatePrivateDataInfoNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

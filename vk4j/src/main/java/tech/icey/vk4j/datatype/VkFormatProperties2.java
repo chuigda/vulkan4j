@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkFormatProperties2 {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkFormatProperties formatProperties;
+/// } VkFormatProperties2;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFormatProperties2.html">VkFormatProperties2</a>
 public record VkFormatProperties2(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

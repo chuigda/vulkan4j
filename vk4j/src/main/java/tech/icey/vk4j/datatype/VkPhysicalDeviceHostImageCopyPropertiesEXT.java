@@ -14,6 +14,18 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceHostImageCopyPropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t copySrcLayoutCount;
+///     VkImageLayout* pCopySrcLayouts;
+///     uint32_t copyDstLayoutCount;
+///     VkImageLayout* pCopyDstLayouts;
+///     uint8_t optimalTilingLayoutUUID[VK_UUID_SIZE];
+///     VkBool32 identicalMemoryTypeRequirements;
+/// } VkPhysicalDeviceHostImageCopyPropertiesEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceHostImageCopyPropertiesEXT.html">VkPhysicalDeviceHostImageCopyPropertiesEXT</a>
 public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

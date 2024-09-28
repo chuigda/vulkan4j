@@ -14,6 +14,25 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkGeneratedCommandsInfoNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineBindPoint pipelineBindPoint;
+///     VkPipeline pipeline;
+///     VkIndirectCommandsLayoutNV indirectCommandsLayout;
+///     uint32_t streamCount;
+///     const VkIndirectCommandsStreamNV* pStreams;
+///     uint32_t sequencesCount;
+///     VkBuffer preprocessBuffer;
+///     VkDeviceSize preprocessOffset;
+///     VkDeviceSize preprocessSize;
+///     VkBuffer sequencesCountBuffer;
+///     VkDeviceSize sequencesCountOffset;
+///     VkBuffer sequencesIndexBuffer;
+///     VkDeviceSize sequencesIndexOffset;
+/// } VkGeneratedCommandsInfoNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkGeneratedCommandsInfoNV.html">VkGeneratedCommandsInfoNV</a>
 public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkHostImageCopyDevicePerformanceQueryEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 optimalDeviceAccess;
+///     VkBool32 identicalMemoryLayout;
+/// } VkHostImageCopyDevicePerformanceQueryEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkHostImageCopyDevicePerformanceQueryEXT.html">VkHostImageCopyDevicePerformanceQueryEXT</a>
 public record VkHostImageCopyDevicePerformanceQueryEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

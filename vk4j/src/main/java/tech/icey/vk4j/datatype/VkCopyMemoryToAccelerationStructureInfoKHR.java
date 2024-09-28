@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkCopyMemoryToAccelerationStructureInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDeviceOrHostAddressConstKHR src;
+///     VkAccelerationStructureKHR dst;
+///     VkCopyAccelerationStructureModeKHR mode;
+/// } VkCopyMemoryToAccelerationStructureInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCopyMemoryToAccelerationStructureInfoKHR.html">VkCopyMemoryToAccelerationStructureInfoKHR</a>
 public record VkCopyMemoryToAccelerationStructureInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

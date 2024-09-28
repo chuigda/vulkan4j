@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPerformanceCounterResultKHR {
+///     int32_t int32;
+///     int64_t int64;
+///     uint32_t uint32;
+///     uint64_t uint64;
+///     float float32;
+///     double float64;
+/// } VkPerformanceCounterResultKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPerformanceCounterResultKHR.html">VkPerformanceCounterResultKHR</a>
 public record VkPerformanceCounterResultKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(

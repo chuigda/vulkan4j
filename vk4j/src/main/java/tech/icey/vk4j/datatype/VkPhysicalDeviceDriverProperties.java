@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceDriverProperties {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkDriverId driverID;
+///     char driverName[VK_MAX_DRIVER_NAME_SIZE];
+///     char driverInfo[VK_MAX_DRIVER_INFO_SIZE];
+///     VkConformanceVersion conformanceVersion;
+/// } VkPhysicalDeviceDriverProperties;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceDriverProperties.html">VkPhysicalDeviceDriverProperties</a>
 public record VkPhysicalDeviceDriverProperties(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

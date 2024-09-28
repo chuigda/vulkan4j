@@ -14,6 +14,18 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkInstanceCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkInstanceCreateFlags flags;
+///     const VkApplicationInfo* pApplicationInfo;
+///     uint32_t enabledLayerCount;
+///     const char* const* ppEnabledLayerNames;
+///     uint32_t enabledExtensionCount;
+///     const char* const* ppEnabledExtensionNames;
+/// } VkInstanceCreateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkInstanceCreateInfo.html">VkInstanceCreateInfo</a>
 public record VkInstanceCreateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

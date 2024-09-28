@@ -14,6 +14,20 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDisplaySurfaceCreateInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDisplaySurfaceCreateFlagsKHR flags;
+///     VkDisplayModeKHR displayMode;
+///     uint32_t planeIndex;
+///     uint32_t planeStackIndex;
+///     VkSurfaceTransformFlagBitsKHR transform;
+///     float globalAlpha;
+///     VkDisplayPlaneAlphaFlagBitsKHR alphaMode;
+///     VkExtent2D imageExtent;
+/// } VkDisplaySurfaceCreateInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDisplaySurfaceCreateInfoKHR.html">VkDisplaySurfaceCreateInfoKHR</a>
 public record VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

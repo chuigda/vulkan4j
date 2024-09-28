@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDrawIndexedIndirectCommand {
+///     uint32_t indexCount;
+///     uint32_t instanceCount;
+///     uint32_t firstIndex;
+///     int32_t vertexOffset;
+///     uint32_t firstInstance;
+/// } VkDrawIndexedIndirectCommand;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDrawIndexedIndirectCommand.html">VkDrawIndexedIndirectCommand</a>
 public record VkDrawIndexedIndirectCommand(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDevicePerStageDescriptorSetFeaturesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 perStageDescriptorSet;
+///     VkBool32 dynamicPipelineLayout;
+/// } VkPhysicalDevicePerStageDescriptorSetFeaturesNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDevicePerStageDescriptorSetFeaturesNV.html">VkPhysicalDevicePerStageDescriptorSetFeaturesNV</a>
 public record VkPhysicalDevicePerStageDescriptorSetFeaturesNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

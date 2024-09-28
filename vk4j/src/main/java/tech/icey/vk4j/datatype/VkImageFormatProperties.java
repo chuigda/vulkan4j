@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkImageFormatProperties {
+///     VkExtent3D maxExtent;
+///     uint32_t maxMipLevels;
+///     uint32_t maxArrayLayers;
+///     VkSampleCountFlags sampleCounts;
+///     VkDeviceSize maxResourceSize;
+/// } VkImageFormatProperties;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageFormatProperties.html">VkImageFormatProperties</a>
 public record VkImageFormatProperties(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

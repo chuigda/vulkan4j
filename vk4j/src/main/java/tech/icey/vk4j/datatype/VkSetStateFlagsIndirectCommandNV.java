@@ -14,6 +14,11 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSetStateFlagsIndirectCommandNV {
+///     uint32_t data;
+/// } VkSetStateFlagsIndirectCommandNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSetStateFlagsIndirectCommandNV.html">VkSetStateFlagsIndirectCommandNV</a>
 public record VkSetStateFlagsIndirectCommandNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

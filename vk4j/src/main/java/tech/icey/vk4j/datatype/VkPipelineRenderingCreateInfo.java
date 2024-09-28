@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineRenderingCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t viewMask;
+///     uint32_t colorAttachmentCount;
+///     const VkFormat* pColorAttachmentFormats;
+///     VkFormat depthAttachmentFormat;
+///     VkFormat stencilAttachmentFormat;
+/// } VkPipelineRenderingCreateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineRenderingCreateInfo.html">VkPipelineRenderingCreateInfo</a>
 public record VkPipelineRenderingCreateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

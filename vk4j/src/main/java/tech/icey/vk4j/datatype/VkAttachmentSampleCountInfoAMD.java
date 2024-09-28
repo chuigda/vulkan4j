@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkAttachmentSampleCountInfoAMD {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t colorAttachmentCount;
+///     const VkSampleCountFlagBits* pColorAttachmentSamples;
+///     VkSampleCountFlagBits depthStencilAttachmentSamples;
+/// } VkAttachmentSampleCountInfoAMD;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAttachmentSampleCountInfoAMD.html">VkAttachmentSampleCountInfoAMD</a>
 public record VkAttachmentSampleCountInfoAMD(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceToolProperties {
+///     VkStructureType sType;
+///     void* pNext;
+///     char name[VK_MAX_EXTENSION_NAME_SIZE];
+///     char version[VK_MAX_EXTENSION_NAME_SIZE];
+///     VkToolPurposeFlags purposes;
+///     char description[VK_MAX_DESCRIPTION_SIZE];
+///     char layer[VK_MAX_EXTENSION_NAME_SIZE];
+/// } VkPhysicalDeviceToolProperties;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceToolProperties.html">VkPhysicalDeviceToolProperties</a>
 public record VkPhysicalDeviceToolProperties(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

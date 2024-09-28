@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDeviceGroupRenderPassBeginInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t deviceMask;
+///     uint32_t deviceRenderAreaCount;
+///     const VkRect2D* pDeviceRenderAreas;
+/// } VkDeviceGroupRenderPassBeginInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceGroupRenderPassBeginInfo.html">VkDeviceGroupRenderPassBeginInfo</a>
 public record VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

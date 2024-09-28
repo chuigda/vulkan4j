@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkViSurfaceCreateInfoNN {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkViSurfaceCreateFlagsNN flags;
+///     void* window;
+/// } VkViSurfaceCreateInfoNN;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkViSurfaceCreateInfoNN.html">VkViSurfaceCreateInfoNN</a>
 public record VkViSurfaceCreateInfoNN(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

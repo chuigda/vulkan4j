@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDrmFormatModifierProperties2EXT {
+///     uint64_t drmFormatModifier;
+///     uint32_t drmFormatModifierPlaneCount;
+///     VkFormatFeatureFlags2 drmFormatModifierTilingFeatures;
+/// } VkDrmFormatModifierProperties2EXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDrmFormatModifierProperties2EXT.html">VkDrmFormatModifierProperties2EXT</a>
 public record VkDrmFormatModifierProperties2EXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

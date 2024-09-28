@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineViewportCoarseSampleOrderStateCreateInfoNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkCoarseSampleOrderTypeNV sampleOrderType;
+///     uint32_t customSampleOrderCount;
+///     const VkCoarseSampleOrderCustomNV* pCustomSampleOrders;
+/// } VkPipelineViewportCoarseSampleOrderStateCreateInfoNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.html">VkPipelineViewportCoarseSampleOrderStateCreateInfoNV</a>
 public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

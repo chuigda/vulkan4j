@@ -14,6 +14,19 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkFramebufferAttachmentImageInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkImageCreateFlags flags;
+///     VkImageUsageFlags usage;
+///     uint32_t width;
+///     uint32_t height;
+///     uint32_t layerCount;
+///     uint32_t viewFormatCount;
+///     const VkFormat* pViewFormats;
+/// } VkFramebufferAttachmentImageInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFramebufferAttachmentImageInfo.html">VkFramebufferAttachmentImageInfo</a>
 public record VkFramebufferAttachmentImageInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

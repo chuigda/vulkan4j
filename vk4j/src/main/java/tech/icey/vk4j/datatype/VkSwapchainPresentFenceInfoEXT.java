@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSwapchainPresentFenceInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t swapchainCount;
+///     const VkFence* pFences;
+/// } VkSwapchainPresentFenceInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSwapchainPresentFenceInfoEXT.html">VkSwapchainPresentFenceInfoEXT</a>
 public record VkSwapchainPresentFenceInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

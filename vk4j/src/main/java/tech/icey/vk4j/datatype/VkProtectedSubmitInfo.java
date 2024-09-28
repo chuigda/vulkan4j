@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkProtectedSubmitInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkBool32 protectedSubmit;
+/// } VkProtectedSubmitInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkProtectedSubmitInfo.html">VkProtectedSubmitInfo</a>
 public record VkProtectedSubmitInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

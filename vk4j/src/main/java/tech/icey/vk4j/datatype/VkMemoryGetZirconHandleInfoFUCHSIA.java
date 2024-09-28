@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkMemoryGetZirconHandleInfoFUCHSIA {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDeviceMemory memory;
+///     VkExternalMemoryHandleTypeFlagBits handleType;
+/// } VkMemoryGetZirconHandleInfoFUCHSIA;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMemoryGetZirconHandleInfoFUCHSIA.html">VkMemoryGetZirconHandleInfoFUCHSIA</a>
 public record VkMemoryGetZirconHandleInfoFUCHSIA(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

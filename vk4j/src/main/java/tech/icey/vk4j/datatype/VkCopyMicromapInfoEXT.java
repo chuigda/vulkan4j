@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkCopyMicromapInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkMicromapEXT src;
+///     VkMicromapEXT dst;
+///     VkCopyMicromapModeEXT mode;
+/// } VkCopyMicromapInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCopyMicromapInfoEXT.html">VkCopyMicromapInfoEXT</a>
 public record VkCopyMicromapInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

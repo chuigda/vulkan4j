@@ -14,6 +14,18 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDeviceGroupSubmitInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t waitSemaphoreCount;
+///     const uint32_t* pWaitSemaphoreDeviceIndices;
+///     uint32_t commandBufferCount;
+///     const uint32_t* pCommandBufferDeviceMasks;
+///     uint32_t signalSemaphoreCount;
+///     const uint32_t* pSignalSemaphoreDeviceIndices;
+/// } VkDeviceGroupSubmitInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceGroupSubmitInfo.html">VkDeviceGroupSubmitInfo</a>
 public record VkDeviceGroupSubmitInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkVertexInputAttributeDescription {
+///     uint32_t location;
+///     uint32_t binding;
+///     VkFormat format;
+///     uint32_t offset;
+/// } VkVertexInputAttributeDescription;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkVertexInputAttributeDescription.html">VkVertexInputAttributeDescription</a>
 public record VkVertexInputAttributeDescription(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

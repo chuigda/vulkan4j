@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceShaderFloat16Int8Features {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 shaderFloat16;
+///     VkBool32 shaderInt8;
+/// } VkPhysicalDeviceShaderFloat16Int8Features;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceShaderFloat16Int8Features.html">VkPhysicalDeviceShaderFloat16Int8Features</a>
 public record VkPhysicalDeviceShaderFloat16Int8Features(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

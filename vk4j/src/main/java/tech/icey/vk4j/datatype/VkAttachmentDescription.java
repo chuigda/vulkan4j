@@ -14,6 +14,19 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkAttachmentDescription {
+///     VkAttachmentDescriptionFlags flags;
+///     VkFormat format;
+///     VkSampleCountFlagBits samples;
+///     VkAttachmentLoadOp loadOp;
+///     VkAttachmentStoreOp storeOp;
+///     VkAttachmentLoadOp stencilLoadOp;
+///     VkAttachmentStoreOp stencilStoreOp;
+///     VkImageLayout initialLayout;
+///     VkImageLayout finalLayout;
+/// } VkAttachmentDescription;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAttachmentDescription.html">VkAttachmentDescription</a>
 public record VkAttachmentDescription(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

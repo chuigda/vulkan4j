@@ -14,6 +14,27 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDevicePortabilitySubsetFeaturesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 constantAlphaColorBlendFactors;
+///     VkBool32 events;
+///     VkBool32 imageViewFormatReinterpretation;
+///     VkBool32 imageViewFormatSwizzle;
+///     VkBool32 imageView2DOn3DImage;
+///     VkBool32 multisampleArrayImage;
+///     VkBool32 mutableComparisonSamplers;
+///     VkBool32 pointPolygons;
+///     VkBool32 samplerMipLodBias;
+///     VkBool32 separateStencilMaskRef;
+///     VkBool32 shaderSampleRateInterpolationFunctions;
+///     VkBool32 tessellationIsolines;
+///     VkBool32 tessellationPointMode;
+///     VkBool32 triangleFans;
+///     VkBool32 vertexAttributeAccessBeyondStride;
+/// } VkPhysicalDevicePortabilitySubsetFeaturesKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDevicePortabilitySubsetFeaturesKHR.html">VkPhysicalDevicePortabilitySubsetFeaturesKHR</a>
 public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,20 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkImageMemoryBarrier {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkAccessFlags srcAccessMask;
+///     VkAccessFlags dstAccessMask;
+///     VkImageLayout oldLayout;
+///     VkImageLayout newLayout;
+///     uint32_t srcQueueFamilyIndex;
+///     uint32_t dstQueueFamilyIndex;
+///     VkImage image;
+///     VkImageSubresourceRange subresourceRange;
+/// } VkImageMemoryBarrier;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageMemoryBarrier.html">VkImageMemoryBarrier</a>
 public record VkImageMemoryBarrier(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

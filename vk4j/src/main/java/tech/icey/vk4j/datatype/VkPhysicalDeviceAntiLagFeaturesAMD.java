@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceAntiLagFeaturesAMD {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 antiLag;
+/// } VkPhysicalDeviceAntiLagFeaturesAMD;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceAntiLagFeaturesAMD.html">VkPhysicalDeviceAntiLagFeaturesAMD</a>
 public record VkPhysicalDeviceAntiLagFeaturesAMD(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

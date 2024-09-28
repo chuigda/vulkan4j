@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceSubgroupSizeControlProperties {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t minSubgroupSize;
+///     uint32_t maxSubgroupSize;
+///     uint32_t maxComputeWorkgroupSubgroups;
+///     VkShaderStageFlags requiredSubgroupSizeStages;
+/// } VkPhysicalDeviceSubgroupSizeControlProperties;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceSubgroupSizeControlProperties.html">VkPhysicalDeviceSubgroupSizeControlProperties</a>
 public record VkPhysicalDeviceSubgroupSizeControlProperties(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,18 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkRenderPassMultiviewCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t subpassCount;
+///     const uint32_t* pViewMasks;
+///     uint32_t dependencyCount;
+///     const int32_t* pViewOffsets;
+///     uint32_t correlationMaskCount;
+///     const uint32_t* pCorrelationMasks;
+/// } VkRenderPassMultiviewCreateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRenderPassMultiviewCreateInfo.html">VkRenderPassMultiviewCreateInfo</a>
 public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

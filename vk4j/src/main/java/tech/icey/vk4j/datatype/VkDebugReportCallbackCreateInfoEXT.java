@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDebugReportCallbackCreateInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDebugReportFlagsEXT flags;
+///     PFN_vkDebugReportCallbackEXT pfnCallback;
+///     void* pUserData;
+/// } VkDebugReportCallbackCreateInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDebugReportCallbackCreateInfoEXT.html">VkDebugReportCallbackCreateInfoEXT</a>
 public record VkDebugReportCallbackCreateInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

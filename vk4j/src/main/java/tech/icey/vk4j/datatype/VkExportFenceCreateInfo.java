@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkExportFenceCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkExternalFenceHandleTypeFlags handleTypes;
+/// } VkExportFenceCreateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkExportFenceCreateInfo.html">VkExportFenceCreateInfo</a>
 public record VkExportFenceCreateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

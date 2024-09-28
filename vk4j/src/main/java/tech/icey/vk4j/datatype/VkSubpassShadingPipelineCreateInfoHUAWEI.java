@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSubpassShadingPipelineCreateInfoHUAWEI {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkRenderPass renderPass;
+///     uint32_t subpass;
+/// } VkSubpassShadingPipelineCreateInfoHUAWEI;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubpassShadingPipelineCreateInfoHUAWEI.html">VkSubpassShadingPipelineCreateInfoHUAWEI</a>
 public record VkSubpassShadingPipelineCreateInfoHUAWEI(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

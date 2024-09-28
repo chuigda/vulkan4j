@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSurfaceFullScreenExclusiveInfoEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkFullScreenExclusiveEXT fullScreenExclusive;
+/// } VkSurfaceFullScreenExclusiveInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSurfaceFullScreenExclusiveInfoEXT.html">VkSurfaceFullScreenExclusiveInfoEXT</a>
 public record VkSurfaceFullScreenExclusiveInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

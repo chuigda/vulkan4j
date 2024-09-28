@@ -14,6 +14,18 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkImageViewCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkImageViewCreateFlags flags;
+///     VkImage image;
+///     VkImageViewType viewType;
+///     VkFormat format;
+///     VkComponentMapping components;
+///     VkImageSubresourceRange subresourceRange;
+/// } VkImageViewCreateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageViewCreateInfo.html">VkImageViewCreateInfo</a>
 public record VkImageViewCreateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

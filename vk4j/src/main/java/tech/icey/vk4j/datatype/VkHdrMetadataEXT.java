@@ -14,6 +14,20 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkHdrMetadataEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkXYColorEXT displayPrimaryRed;
+///     VkXYColorEXT displayPrimaryGreen;
+///     VkXYColorEXT displayPrimaryBlue;
+///     VkXYColorEXT whitePoint;
+///     float maxLuminance;
+///     float minLuminance;
+///     float maxContentLightLevel;
+///     float maxFrameAverageLightLevel;
+/// } VkHdrMetadataEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkHdrMetadataEXT.html">VkHdrMetadataEXT</a>
 public record VkHdrMetadataEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

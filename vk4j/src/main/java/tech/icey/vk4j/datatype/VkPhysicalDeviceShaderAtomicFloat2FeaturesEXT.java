@@ -14,6 +14,24 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 shaderBufferFloat16Atomics;
+///     VkBool32 shaderBufferFloat16AtomicAdd;
+///     VkBool32 shaderBufferFloat16AtomicMinMax;
+///     VkBool32 shaderBufferFloat32AtomicMinMax;
+///     VkBool32 shaderBufferFloat64AtomicMinMax;
+///     VkBool32 shaderSharedFloat16Atomics;
+///     VkBool32 shaderSharedFloat16AtomicAdd;
+///     VkBool32 shaderSharedFloat16AtomicMinMax;
+///     VkBool32 shaderSharedFloat32AtomicMinMax;
+///     VkBool32 shaderSharedFloat64AtomicMinMax;
+///     VkBool32 shaderImageFloat32AtomicMinMax;
+///     VkBool32 sparseImageFloat32AtomicMinMax;
+/// } VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.html">VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT</a>
 public record VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

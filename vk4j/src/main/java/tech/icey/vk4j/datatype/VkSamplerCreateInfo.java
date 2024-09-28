@@ -14,6 +14,28 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSamplerCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkSamplerCreateFlags flags;
+///     VkFilter magFilter;
+///     VkFilter minFilter;
+///     VkSamplerMipmapMode mipmapMode;
+///     VkSamplerAddressMode addressModeU;
+///     VkSamplerAddressMode addressModeV;
+///     VkSamplerAddressMode addressModeW;
+///     float mipLodBias;
+///     VkBool32 anisotropyEnable;
+///     float maxAnisotropy;
+///     VkBool32 compareEnable;
+///     VkCompareOp compareOp;
+///     float minLod;
+///     float maxLod;
+///     VkBorderColor borderColor;
+///     VkBool32 unnormalizedCoordinates;
+/// } VkSamplerCreateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSamplerCreateInfo.html">VkSamplerCreateInfo</a>
 public record VkSamplerCreateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

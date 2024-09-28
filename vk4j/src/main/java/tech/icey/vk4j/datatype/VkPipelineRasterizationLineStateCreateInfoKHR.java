@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineRasterizationLineStateCreateInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkLineRasterizationModeKHR lineRasterizationMode;
+///     VkBool32 stippledLineEnable;
+///     uint32_t lineStippleFactor;
+///     uint16_t lineStipplePattern;
+/// } VkPipelineRasterizationLineStateCreateInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineRasterizationLineStateCreateInfoKHR.html">VkPipelineRasterizationLineStateCreateInfoKHR</a>
 public record VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkCommandBufferInheritanceRenderPassTransformInfoQCOM {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkSurfaceTransformFlagBitsKHR transform;
+///     VkRect2D renderArea;
+/// } VkCommandBufferInheritanceRenderPassTransformInfoQCOM;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCommandBufferInheritanceRenderPassTransformInfoQCOM.html">VkCommandBufferInheritanceRenderPassTransformInfoQCOM</a>
 public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

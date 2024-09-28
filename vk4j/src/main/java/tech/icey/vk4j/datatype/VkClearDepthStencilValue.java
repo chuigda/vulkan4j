@@ -14,6 +14,12 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkClearDepthStencilValue {
+///     float depth;
+///     uint32_t stencil;
+/// } VkClearDepthStencilValue;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkClearDepthStencilValue.html">VkClearDepthStencilValue</a>
 public record VkClearDepthStencilValue(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

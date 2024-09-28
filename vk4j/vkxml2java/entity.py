@@ -145,6 +145,7 @@ class Handle(Entity):
 
 @dataclass
 class Structure(Entity):
+    verbatim: list[str]
     members: list[Member]
     structextends: list[str]
 

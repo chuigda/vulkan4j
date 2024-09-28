@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkColorBlendAdvancedEXT {
+///     VkBlendOp advancedBlendOp;
+///     VkBool32 srcPremultiplied;
+///     VkBool32 dstPremultiplied;
+///     VkBlendOverlapEXT blendOverlap;
+///     VkBool32 clampResults;
+/// } VkColorBlendAdvancedEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkColorBlendAdvancedEXT.html">VkColorBlendAdvancedEXT</a>
 public record VkColorBlendAdvancedEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

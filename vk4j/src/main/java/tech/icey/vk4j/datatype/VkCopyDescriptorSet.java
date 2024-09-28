@@ -14,6 +14,19 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkCopyDescriptorSet {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDescriptorSet srcSet;
+///     uint32_t srcBinding;
+///     uint32_t srcArrayElement;
+///     VkDescriptorSet dstSet;
+///     uint32_t dstBinding;
+///     uint32_t dstArrayElement;
+///     uint32_t descriptorCount;
+/// } VkCopyDescriptorSet;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCopyDescriptorSet.html">VkCopyDescriptorSet</a>
 public record VkCopyDescriptorSet(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

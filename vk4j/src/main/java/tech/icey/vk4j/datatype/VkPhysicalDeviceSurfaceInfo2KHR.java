@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceSurfaceInfo2KHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkSurfaceKHR surface;
+/// } VkPhysicalDeviceSurfaceInfo2KHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceSurfaceInfo2KHR.html">VkPhysicalDeviceSurfaceInfo2KHR</a>
 public record VkPhysicalDeviceSurfaceInfo2KHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

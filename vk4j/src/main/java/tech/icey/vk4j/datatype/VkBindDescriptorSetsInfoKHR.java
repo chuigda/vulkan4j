@@ -14,6 +14,19 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkBindDescriptorSetsInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkShaderStageFlags stageFlags;
+///     VkPipelineLayout layout;
+///     uint32_t firstSet;
+///     uint32_t descriptorSetCount;
+///     const VkDescriptorSet* pDescriptorSets;
+///     uint32_t dynamicOffsetCount;
+///     const uint32_t* pDynamicOffsets;
+/// } VkBindDescriptorSetsInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBindDescriptorSetsInfoKHR.html">VkBindDescriptorSetsInfoKHR</a>
 public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

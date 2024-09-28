@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceLayeredApiPropertiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t vendorID;
+///     uint32_t deviceID;
+///     VkPhysicalDeviceLayeredApiKHR layeredAPI;
+///     char deviceName[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE];
+/// } VkPhysicalDeviceLayeredApiPropertiesKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceLayeredApiPropertiesKHR.html">VkPhysicalDeviceLayeredApiPropertiesKHR</a>
 public record VkPhysicalDeviceLayeredApiPropertiesKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

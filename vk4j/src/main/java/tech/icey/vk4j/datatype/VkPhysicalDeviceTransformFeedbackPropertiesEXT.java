@@ -14,6 +14,22 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceTransformFeedbackPropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t maxTransformFeedbackStreams;
+///     uint32_t maxTransformFeedbackBuffers;
+///     VkDeviceSize maxTransformFeedbackBufferSize;
+///     uint32_t maxTransformFeedbackStreamDataSize;
+///     uint32_t maxTransformFeedbackBufferDataSize;
+///     uint32_t maxTransformFeedbackBufferDataStride;
+///     VkBool32 transformFeedbackQueries;
+///     VkBool32 transformFeedbackStreamsLinesTriangles;
+///     VkBool32 transformFeedbackRasterizationStreamSelect;
+///     VkBool32 transformFeedbackDraw;
+/// } VkPhysicalDeviceTransformFeedbackPropertiesEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceTransformFeedbackPropertiesEXT.html">VkPhysicalDeviceTransformFeedbackPropertiesEXT</a>
 public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

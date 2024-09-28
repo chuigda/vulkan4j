@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkRayTracingShaderGroupCreateInfoNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkRayTracingShaderGroupTypeKHR type;
+///     uint32_t generalShader;
+///     uint32_t closestHitShader;
+///     uint32_t anyHitShader;
+///     uint32_t intersectionShader;
+/// } VkRayTracingShaderGroupCreateInfoNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRayTracingShaderGroupCreateInfoNV.html">VkRayTracingShaderGroupCreateInfoNV</a>
 public record VkRayTracingShaderGroupCreateInfoNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

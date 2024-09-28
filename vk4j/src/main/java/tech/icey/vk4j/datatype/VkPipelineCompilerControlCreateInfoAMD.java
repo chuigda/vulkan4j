@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineCompilerControlCreateInfoAMD {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineCompilerControlFlagsAMD compilerControlFlags;
+/// } VkPipelineCompilerControlCreateInfoAMD;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineCompilerControlCreateInfoAMD.html">VkPipelineCompilerControlCreateInfoAMD</a>
 public record VkPipelineCompilerControlCreateInfoAMD(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

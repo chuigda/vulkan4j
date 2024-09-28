@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineRasterizationProvokingVertexStateCreateInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkProvokingVertexModeEXT provokingVertexMode;
+/// } VkPipelineRasterizationProvokingVertexStateCreateInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.html">VkPipelineRasterizationProvokingVertexStateCreateInfoEXT</a>
 public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

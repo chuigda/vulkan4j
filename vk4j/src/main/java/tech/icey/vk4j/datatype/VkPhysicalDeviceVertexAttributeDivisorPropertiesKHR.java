@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t maxVertexAttribDivisor;
+///     VkBool32 supportsNonZeroFirstInstance;
+/// } VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR.html">VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR</a>
 public record VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

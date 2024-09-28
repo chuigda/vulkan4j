@@ -14,6 +14,21 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t maxGraphicsShaderGroupCount;
+///     uint32_t maxIndirectSequenceCount;
+///     uint32_t maxIndirectCommandsTokenCount;
+///     uint32_t maxIndirectCommandsStreamCount;
+///     uint32_t maxIndirectCommandsTokenOffset;
+///     uint32_t maxIndirectCommandsStreamStride;
+///     uint32_t minSequencesCountBufferOffsetAlignment;
+///     uint32_t minSequencesIndexBufferOffsetAlignment;
+///     uint32_t minIndirectCommandsBufferOffsetAlignment;
+/// } VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV.html">VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV</a>
 public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

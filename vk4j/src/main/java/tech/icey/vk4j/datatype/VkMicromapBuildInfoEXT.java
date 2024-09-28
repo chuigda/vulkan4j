@@ -14,6 +14,23 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkMicromapBuildInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkMicromapTypeEXT type;
+///     VkBuildMicromapFlagsEXT flags;
+///     VkBuildMicromapModeEXT mode;
+///     VkMicromapEXT dstMicromap;
+///     uint32_t usageCountsCount;
+///     const VkMicromapUsageEXT* pUsageCounts;
+///     const VkMicromapUsageEXT* const* ppUsageCounts;
+///     VkDeviceOrHostAddressConstKHR data;
+///     VkDeviceOrHostAddressKHR scratchData;
+///     VkDeviceOrHostAddressConstKHR triangleArray;
+///     VkDeviceSize triangleArrayStride;
+/// } VkMicromapBuildInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMicromapBuildInfoEXT.html">VkMicromapBuildInfoEXT</a>
 public record VkMicromapBuildInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

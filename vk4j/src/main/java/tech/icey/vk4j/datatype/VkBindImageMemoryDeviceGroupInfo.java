@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkBindImageMemoryDeviceGroupInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t deviceIndexCount;
+///     const uint32_t* pDeviceIndices;
+///     uint32_t splitInstanceBindRegionCount;
+///     const VkRect2D* pSplitInstanceBindRegions;
+/// } VkBindImageMemoryDeviceGroupInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBindImageMemoryDeviceGroupInfo.html">VkBindImageMemoryDeviceGroupInfo</a>
 public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

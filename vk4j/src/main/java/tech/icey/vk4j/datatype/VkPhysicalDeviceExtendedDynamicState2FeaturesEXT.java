@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceExtendedDynamicState2FeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 extendedDynamicState2;
+///     VkBool32 extendedDynamicState2LogicOp;
+///     VkBool32 extendedDynamicState2PatchControlPoints;
+/// } VkPhysicalDeviceExtendedDynamicState2FeaturesEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceExtendedDynamicState2FeaturesEXT.html">VkPhysicalDeviceExtendedDynamicState2FeaturesEXT</a>
 public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

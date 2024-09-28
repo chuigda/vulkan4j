@@ -14,6 +14,18 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPresentInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t waitSemaphoreCount;
+///     const VkSemaphore* pWaitSemaphores;
+///     uint32_t swapchainCount;
+///     const VkSwapchainKHR* pSwapchains;
+///     const uint32_t* pImageIndices;
+///     VkResult* pResults;
+/// } VkPresentInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPresentInfoKHR.html">VkPresentInfoKHR</a>
 public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

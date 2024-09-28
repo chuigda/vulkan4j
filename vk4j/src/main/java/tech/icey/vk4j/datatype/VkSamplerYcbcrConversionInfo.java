@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSamplerYcbcrConversionInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkSamplerYcbcrConversion conversion;
+/// } VkSamplerYcbcrConversionInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSamplerYcbcrConversionInfo.html">VkSamplerYcbcrConversionInfo</a>
 public record VkSamplerYcbcrConversionInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

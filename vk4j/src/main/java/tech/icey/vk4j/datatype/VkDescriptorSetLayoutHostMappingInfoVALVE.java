@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDescriptorSetLayoutHostMappingInfoVALVE {
+///     VkStructureType sType;
+///     void* pNext;
+///     size_t descriptorOffset;
+///     uint32_t descriptorSize;
+/// } VkDescriptorSetLayoutHostMappingInfoVALVE;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDescriptorSetLayoutHostMappingInfoVALVE.html">VkDescriptorSetLayoutHostMappingInfoVALVE</a>
 public record VkDescriptorSetLayoutHostMappingInfoVALVE(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

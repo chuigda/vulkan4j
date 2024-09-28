@@ -14,6 +14,24 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkCudaLaunchInfoNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkCudaFunctionNV function;
+///     uint32_t gridDimX;
+///     uint32_t gridDimY;
+///     uint32_t gridDimZ;
+///     uint32_t blockDimX;
+///     uint32_t blockDimY;
+///     uint32_t blockDimZ;
+///     uint32_t sharedMemBytes;
+///     size_t paramCount;
+///     const void* const * pParams;
+///     size_t extraCount;
+///     const void* const * pExtras;
+/// } VkCudaLaunchInfoNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCudaLaunchInfoNV.html">VkCudaLaunchInfoNV</a>
 public record VkCudaLaunchInfoNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkMemoryBarrier2 {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineStageFlags2 srcStageMask;
+///     VkAccessFlags2 srcAccessMask;
+///     VkPipelineStageFlags2 dstStageMask;
+///     VkAccessFlags2 dstAccessMask;
+/// } VkMemoryBarrier2;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMemoryBarrier2.html">VkMemoryBarrier2</a>
 public record VkMemoryBarrier2(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

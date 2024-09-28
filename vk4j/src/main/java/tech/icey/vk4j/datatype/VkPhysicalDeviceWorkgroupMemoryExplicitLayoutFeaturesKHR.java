@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 workgroupMemoryExplicitLayout;
+///     VkBool32 workgroupMemoryExplicitLayoutScalarBlockLayout;
+///     VkBool32 workgroupMemoryExplicitLayout8BitAccess;
+///     VkBool32 workgroupMemoryExplicitLayout16BitAccess;
+/// } VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.html">VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR</a>
 public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

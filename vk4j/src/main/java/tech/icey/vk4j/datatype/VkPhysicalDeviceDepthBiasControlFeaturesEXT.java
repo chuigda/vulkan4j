@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceDepthBiasControlFeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 depthBiasControl;
+///     VkBool32 leastRepresentableValueForceUnormRepresentation;
+///     VkBool32 floatRepresentation;
+///     VkBool32 depthBiasExact;
+/// } VkPhysicalDeviceDepthBiasControlFeaturesEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceDepthBiasControlFeaturesEXT.html">VkPhysicalDeviceDepthBiasControlFeaturesEXT</a>
 public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

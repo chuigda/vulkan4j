@@ -14,6 +14,13 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkTraceRaysIndirectCommandKHR {
+///     uint32_t width;
+///     uint32_t height;
+///     uint32_t depth;
+/// } VkTraceRaysIndirectCommandKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkTraceRaysIndirectCommandKHR.html">VkTraceRaysIndirectCommandKHR</a>
 public record VkTraceRaysIndirectCommandKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

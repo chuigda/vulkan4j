@@ -14,6 +14,17 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSubpassDependency {
+///     uint32_t srcSubpass;
+///     uint32_t dstSubpass;
+///     VkPipelineStageFlags srcStageMask;
+///     VkPipelineStageFlags dstStageMask;
+///     VkAccessFlags srcAccessMask;
+///     VkAccessFlags dstAccessMask;
+///     VkDependencyFlags dependencyFlags;
+/// } VkSubpassDependency;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubpassDependency.html">VkSubpassDependency</a>
 public record VkSubpassDependency(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

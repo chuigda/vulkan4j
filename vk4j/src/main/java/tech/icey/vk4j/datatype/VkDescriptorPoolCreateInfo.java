@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDescriptorPoolCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDescriptorPoolCreateFlags flags;
+///     uint32_t maxSets;
+///     uint32_t poolSizeCount;
+///     const VkDescriptorPoolSize* pPoolSizes;
+/// } VkDescriptorPoolCreateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDescriptorPoolCreateInfo.html">VkDescriptorPoolCreateInfo</a>
 public record VkDescriptorPoolCreateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

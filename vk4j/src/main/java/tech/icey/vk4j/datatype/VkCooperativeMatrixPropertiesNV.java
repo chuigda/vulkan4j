@@ -14,6 +14,20 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkCooperativeMatrixPropertiesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t MSize;
+///     uint32_t NSize;
+///     uint32_t KSize;
+///     VkComponentTypeNV AType;
+///     VkComponentTypeNV BType;
+///     VkComponentTypeNV CType;
+///     VkComponentTypeNV DType;
+///     VkScopeNV scope;
+/// } VkCooperativeMatrixPropertiesNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCooperativeMatrixPropertiesNV.html">VkCooperativeMatrixPropertiesNV</a>
 public record VkCooperativeMatrixPropertiesNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

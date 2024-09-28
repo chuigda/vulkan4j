@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkGeneratedCommandsMemoryRequirementsInfoNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineBindPoint pipelineBindPoint;
+///     VkPipeline pipeline;
+///     VkIndirectCommandsLayoutNV indirectCommandsLayout;
+///     uint32_t maxSequencesCount;
+/// } VkGeneratedCommandsMemoryRequirementsInfoNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkGeneratedCommandsMemoryRequirementsInfoNV.html">VkGeneratedCommandsMemoryRequirementsInfoNV</a>
 public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

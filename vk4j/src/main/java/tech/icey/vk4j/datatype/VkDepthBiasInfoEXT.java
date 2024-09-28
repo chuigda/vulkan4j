@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDepthBiasInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     float depthBiasConstantFactor;
+///     float depthBiasClamp;
+///     float depthBiasSlopeFactor;
+/// } VkDepthBiasInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDepthBiasInfoEXT.html">VkDepthBiasInfoEXT</a>
 public record VkDepthBiasInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

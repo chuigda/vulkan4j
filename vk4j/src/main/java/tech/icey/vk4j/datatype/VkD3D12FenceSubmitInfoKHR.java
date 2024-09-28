@@ -14,6 +14,16 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkD3D12FenceSubmitInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t waitSemaphoreValuesCount;
+///     const uint64_t* pWaitSemaphoreValues;
+///     uint32_t signalSemaphoreValuesCount;
+///     const uint64_t* pSignalSemaphoreValues;
+/// } VkD3D12FenceSubmitInfoKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkD3D12FenceSubmitInfoKHR.html">VkD3D12FenceSubmitInfoKHR</a>
 public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

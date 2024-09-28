@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkExportMetalIOSurfaceInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkImage image;
+///     IOSurfaceRef ioSurface;
+/// } VkExportMetalIOSurfaceInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkExportMetalIOSurfaceInfoEXT.html">VkExportMetalIOSurfaceInfoEXT</a>
 public record VkExportMetalIOSurfaceInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

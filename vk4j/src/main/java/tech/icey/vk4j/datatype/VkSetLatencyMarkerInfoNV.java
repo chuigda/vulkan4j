@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSetLatencyMarkerInfoNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint64_t presentID;
+///     VkLatencyMarkerNV marker;
+/// } VkSetLatencyMarkerInfoNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSetLatencyMarkerInfoNV.html">VkSetLatencyMarkerInfoNV</a>
 public record VkSetLatencyMarkerInfoNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

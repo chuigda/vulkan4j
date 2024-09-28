@@ -14,6 +14,20 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkSubpassDescription {
+///     VkSubpassDescriptionFlags flags;
+///     VkPipelineBindPoint pipelineBindPoint;
+///     uint32_t inputAttachmentCount;
+///     const VkAttachmentReference* pInputAttachments;
+///     uint32_t colorAttachmentCount;
+///     const VkAttachmentReference* pColorAttachments;
+///     const VkAttachmentReference* pResolveAttachments;
+///     const VkAttachmentReference* pDepthStencilAttachment;
+///     uint32_t preserveAttachmentCount;
+///     const uint32_t* pPreserveAttachments;
+/// } VkSubpassDescription;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubpassDescription.html">VkSubpassDescription</a>
 public record VkSubpassDescription(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

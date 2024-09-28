@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkMultiviewPerViewAttributesInfoNVX {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkBool32 perViewAttributes;
+///     VkBool32 perViewAttributesPositionXOnly;
+/// } VkMultiviewPerViewAttributesInfoNVX;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMultiviewPerViewAttributesInfoNVX.html">VkMultiviewPerViewAttributesInfoNVX</a>
 public record VkMultiviewPerViewAttributesInfoNVX(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

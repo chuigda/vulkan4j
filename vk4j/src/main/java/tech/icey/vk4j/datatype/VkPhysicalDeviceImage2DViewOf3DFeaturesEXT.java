@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceImage2DViewOf3DFeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 image2DViewOf3D;
+///     VkBool32 sampler2DViewOf3D;
+/// } VkPhysicalDeviceImage2DViewOf3DFeaturesEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.html">VkPhysicalDeviceImage2DViewOf3DFeaturesEXT</a>
 public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

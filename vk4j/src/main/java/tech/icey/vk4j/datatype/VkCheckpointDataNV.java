@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkCheckpointDataNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkPipelineStageFlagBits stage;
+///     void* pCheckpointMarker;
+/// } VkCheckpointDataNV;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCheckpointDataNV.html">VkCheckpointDataNV</a>
 public record VkCheckpointDataNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

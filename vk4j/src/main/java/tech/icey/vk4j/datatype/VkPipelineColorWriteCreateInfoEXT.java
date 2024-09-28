@@ -14,6 +14,14 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPipelineColorWriteCreateInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t attachmentCount;
+///     const VkBool32* pColorWriteEnables;
+/// } VkPipelineColorWriteCreateInfoEXT;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineColorWriteCreateInfoEXT.html">VkPipelineColorWriteCreateInfoEXT</a>
 public record VkPipelineColorWriteCreateInfoEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

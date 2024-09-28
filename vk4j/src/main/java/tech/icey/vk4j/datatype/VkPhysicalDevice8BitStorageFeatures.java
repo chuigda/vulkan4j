@@ -14,6 +14,15 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDevice8BitStorageFeatures {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 storageBuffer8BitAccess;
+///     VkBool32 uniformAndStorageBuffer8BitAccess;
+///     VkBool32 storagePushConstant8;
+/// } VkPhysicalDevice8BitStorageFeatures;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDevice8BitStorageFeatures.html">VkPhysicalDevice8BitStorageFeatures</a>
 public record VkPhysicalDevice8BitStorageFeatures(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

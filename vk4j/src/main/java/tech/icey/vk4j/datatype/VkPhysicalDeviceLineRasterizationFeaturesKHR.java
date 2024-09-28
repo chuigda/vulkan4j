@@ -14,6 +14,18 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceLineRasterizationFeaturesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 rectangularLines;
+///     VkBool32 bresenhamLines;
+///     VkBool32 smoothLines;
+///     VkBool32 stippledRectangularLines;
+///     VkBool32 stippledBresenhamLines;
+///     VkBool32 stippledSmoothLines;
+/// } VkPhysicalDeviceLineRasterizationFeaturesKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceLineRasterizationFeaturesKHR.html">VkPhysicalDeviceLineRasterizationFeaturesKHR</a>
 public record VkPhysicalDeviceLineRasterizationFeaturesKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

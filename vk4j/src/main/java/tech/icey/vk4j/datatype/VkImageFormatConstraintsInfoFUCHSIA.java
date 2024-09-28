@@ -14,6 +14,18 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkImageFormatConstraintsInfoFUCHSIA {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkImageCreateInfo imageCreateInfo;
+///     VkFormatFeatureFlags requiredFormatFeatures;
+///     VkImageFormatConstraintsFlagsFUCHSIA flags;
+///     uint64_t sysmemPixelFormat;
+///     uint32_t colorSpaceCount;
+///     const VkSysmemColorSpaceFUCHSIA* pColorSpaces;
+/// } VkImageFormatConstraintsInfoFUCHSIA;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageFormatConstraintsInfoFUCHSIA.html">VkImageFormatConstraintsInfoFUCHSIA</a>
 public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

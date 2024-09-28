@@ -14,6 +14,20 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDescriptorUpdateTemplateCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDescriptorUpdateTemplateCreateFlags flags;
+///     uint32_t descriptorUpdateEntryCount;
+///     const VkDescriptorUpdateTemplateEntry* pDescriptorUpdateEntries;
+///     VkDescriptorUpdateTemplateType templateType;
+///     VkDescriptorSetLayout descriptorSetLayout;
+///     VkPipelineBindPoint pipelineBindPoint;
+///     VkPipelineLayout pipelineLayout;
+///     uint32_t set;
+/// } VkDescriptorUpdateTemplateCreateInfo;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDescriptorUpdateTemplateCreateInfo.html">VkDescriptorUpdateTemplateCreateInfo</a>
 public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

@@ -14,6 +14,20 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkAndroidHardwareBufferFormatProperties2ANDROID {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkFormat format;
+///     uint64_t externalFormat;
+///     VkFormatFeatureFlags2 formatFeatures;
+///     VkComponentMapping samplerYcbcrConversionComponents;
+///     VkSamplerYcbcrModelConversion suggestedYcbcrModel;
+///     VkSamplerYcbcrRange suggestedYcbcrRange;
+///     VkChromaLocation suggestedXChromaOffset;
+///     VkChromaLocation suggestedYChromaOffset;
+/// } VkAndroidHardwareBufferFormatProperties2ANDROID;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAndroidHardwareBufferFormatProperties2ANDROID.html">VkAndroidHardwareBufferFormatProperties2ANDROID</a>
 public record VkAndroidHardwareBufferFormatProperties2ANDROID(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(

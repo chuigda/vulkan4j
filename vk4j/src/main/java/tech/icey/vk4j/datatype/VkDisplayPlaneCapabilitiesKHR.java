@@ -14,6 +14,19 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// {@snippet lang=c :
+/// typedef struct VkDisplayPlaneCapabilitiesKHR {
+///     VkDisplayPlaneAlphaFlagsKHR supportedAlpha;
+///     VkOffset2D minSrcPosition;
+///     VkOffset2D maxSrcPosition;
+///     VkExtent2D minSrcExtent;
+///     VkExtent2D maxSrcExtent;
+///     VkOffset2D minDstPosition;
+///     VkOffset2D maxDstPosition;
+///     VkExtent2D minDstExtent;
+///     VkExtent2D maxDstExtent;
+/// } VkDisplayPlaneCapabilitiesKHR;}
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDisplayPlaneCapabilitiesKHR.html">VkDisplayPlaneCapabilitiesKHR</a>
 public record VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
