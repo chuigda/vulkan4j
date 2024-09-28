@@ -2,7 +2,10 @@
 
 This page lists solutions to common problems that you may encounter while developing Vulkan applications.
 
-* **_(macOS)_ I installed the Vulkan SDK, but I get an error about `libvulkan.dylib` not being found when I run a Vulkan application** - see the [`Setup Environment` section of the Vulkan SDK setup instructions for macOS](./development_environment.md#setup-environment)
+<!-- 
+TODO: macOS
+* **_(macOS)_ I installed the Vulkan SDK, but I get an error about `libvulkan.dylib` not being found when I run a Vulkan application** - see the [`Setup Environment` section of the Vulkan SDK setup instructions for macOS](./development-environment.md#setup-environment)
+-->
 
 * **I get an access violation error in the core validation layer** &ndash; Make sure that MSI Afterburner / RivaTuner Statistics Server is not running, because it has some compatibility problems with Vulkan.
 
@@ -14,6 +17,10 @@ This page lists solutions to common problems that you may encounter while develo
     * Set the `DISABLE_VK_LAYER_VALVE_steam_overlay_1` environment variable to `1`
     * Delete the Steam overlay Vulkan layer entry in the registry under `HKEY_LOCAL_MACHINE\SOFTWARE\Khronos\Vulkan\ImplicitLayers`
 
+<!--
+TODO: Steal some images from Kyle Mayes
+
 Example:
 
 ![](./images/steam_layers_env.png)
+-->
