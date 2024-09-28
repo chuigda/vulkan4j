@@ -1,12 +1,13 @@
 package tech.icey.vk4j.buffer;
 
+import tech.icey.vk4j.IPointer;
 import tech.icey.vk4j.annotation.unsafe;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
-public record PointerBuffer(MemorySegment segment) {
+public record PointerBuffer(MemorySegment segment) implements IPointer {
     public long size() {
         return segment.byteSize() / ValueLayout.ADDRESS.byteSize();
     }
@@ -25,6 +26,10 @@ public record PointerBuffer(MemorySegment segment) {
 
     public void write(long index, MemorySegment value) {
         segment.set(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize(), value);
+    }
+
+    public void write(long index, IPointer pointer) {
+        write(index, pointer.segment());
     }
 
     @unsafe

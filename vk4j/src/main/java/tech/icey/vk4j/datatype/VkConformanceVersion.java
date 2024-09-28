@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import tech.icey.vk4j.IPointer;
 import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.buffer.*;
@@ -13,7 +14,7 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
-public record VkConformanceVersion(MemorySegment segment) {
+public record VkConformanceVersion(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_BYTE.withName("major"),
         ValueLayout.JAVA_BYTE.withName("minor"),

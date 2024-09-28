@@ -10,7 +10,7 @@ import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.util.Function2;
+import tech.icey.vk4j.util.FunctionLoader;
 
 public final class EntryCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkCreateInstance = FunctionDescriptor.of(
@@ -43,7 +43,7 @@ public final class EntryCommands {
     public final @nullable MethodHandle HANDLE$vkEnumerateInstanceLayerProperties;
     public final @nullable MethodHandle HANDLE$vkEnumerateInstanceExtensionProperties;
 
-    public EntryCommands(Function2<String, FunctionDescriptor, MethodHandle> loader) {
+    public EntryCommands(FunctionLoader loader) {
         HANDLE$vkCreateInstance = loader.apply("vkCreateInstance", DESCRIPTOR$vkCreateInstance);
         HANDLE$vkEnumerateInstanceVersion = loader.apply("vkEnumerateInstanceVersion", DESCRIPTOR$vkEnumerateInstanceVersion);
         HANDLE$vkEnumerateInstanceLayerProperties = loader.apply("vkEnumerateInstanceLayerProperties", DESCRIPTOR$vkEnumerateInstanceLayerProperties);

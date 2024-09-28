@@ -1,12 +1,13 @@
 package tech.icey.vk4j.buffer;
 
+import tech.icey.vk4j.IPointer;
 import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.annotation.unsafe;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
-public record CLongBuffer(MemorySegment segment) {
+public record CLongBuffer(MemorySegment segment) implements IPointer {
     public long size() {
         return segment.byteSize() / NativeLayout.C_LONG_SIZE;
     }

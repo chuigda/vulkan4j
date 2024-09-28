@@ -10,7 +10,7 @@ import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.util.Function2;
+import tech.icey.vk4j.util.FunctionLoader;
 
 public final class DeviceCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkDestroyDevice = FunctionDescriptor.ofVoid(
@@ -4022,7 +4022,7 @@ public final class DeviceCommands {
     public final @nullable MethodHandle HANDLE$vkCmdSetRenderingAttachmentLocationsKHR;
     public final @nullable MethodHandle HANDLE$vkCmdSetRenderingInputAttachmentIndicesKHR;
 
-    public DeviceCommands(Function2<String, FunctionDescriptor, MethodHandle> loader, Function2<String, FunctionDescriptor, MethodHandle> instanceLoader) {
+    public DeviceCommands(FunctionLoader loader, FunctionLoader instanceLoader) {
         HANDLE$vkDestroyDevice = loader.apply("vkDestroyDevice", DESCRIPTOR$vkDestroyDevice);
         HANDLE$vkGetDeviceQueue = loader.apply("vkGetDeviceQueue", DESCRIPTOR$vkGetDeviceQueue);
         HANDLE$vkQueueSubmit = loader.apply("vkQueueSubmit", DESCRIPTOR$vkQueueSubmit);

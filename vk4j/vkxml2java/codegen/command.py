@@ -51,13 +51,13 @@ import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.util.Function2;
+import tech.icey.vk4j.util.FunctionLoader;
 
 public final class {class_name} {{
 {'\n'.join(command_descriptors)}
 {'\n'.join(command_handles)}
 
-    public {class_name}(Function2<String, FunctionDescriptor, MethodHandle> loader{', Function2<String, FunctionDescriptor, MethodHandle> instanceLoader' if dual_loader else ''}) {{
+    public {class_name}(FunctionLoader loader{', FunctionLoader instanceLoader' if dual_loader else ''}) {{
 {'\n'.join(command_loads)}
     }}
 

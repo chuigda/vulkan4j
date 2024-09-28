@@ -10,7 +10,7 @@ import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.util.Function2;
+import tech.icey.vk4j.util.FunctionLoader;
 
 public final class InstanceCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkDestroyInstance = FunctionDescriptor.ofVoid(
@@ -686,7 +686,7 @@ public final class InstanceCommands {
     public final @nullable MethodHandle HANDLE$vkAcquireDrmDisplayEXT;
     public final @nullable MethodHandle HANDLE$vkGetDrmDisplayEXT;
 
-    public InstanceCommands(Function2<String, FunctionDescriptor, MethodHandle> loader) {
+    public InstanceCommands(FunctionLoader loader) {
         HANDLE$vkDestroyInstance = loader.apply("vkDestroyInstance", DESCRIPTOR$vkDestroyInstance);
         HANDLE$vkEnumeratePhysicalDevices = loader.apply("vkEnumeratePhysicalDevices", DESCRIPTOR$vkEnumeratePhysicalDevices);
         HANDLE$vkGetPhysicalDeviceProperties = loader.apply("vkGetPhysicalDeviceProperties", DESCRIPTOR$vkGetPhysicalDeviceProperties);

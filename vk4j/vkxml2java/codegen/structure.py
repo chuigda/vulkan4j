@@ -19,6 +19,7 @@ def generate_structure(registry: Registry, structure: Structure) -> str:
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import tech.icey.vk4j.IPointer;
 import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.buffer.*;
@@ -29,7 +30,7 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
-public record {structure.name}(MemorySegment segment) {{
+public record {structure.name}(MemorySegment segment) implements IPointer {{
     public static final MemoryLayout LAYOUT = {struct_layout};
     public static final long SIZE = LAYOUT.byteSize();
 

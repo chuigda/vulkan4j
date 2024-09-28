@@ -103,6 +103,25 @@ public final class Engine implements AutoCloseable {
             imageBarrier.srcAccessMask(VkAccessFlags2.VK_ACCESS_2_MEMORY_WRITE_BIT);
             imageBarrier.dstStageMask(VkPipelineStageFlags.VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT);
             imageBarrier.dstAccessMask(VkAccessFlags2.VK_ACCESS_2_MEMORY_READ_BIT | VkAccessFlags2.VK_ACCESS_2_MEMORY_WRITE_BIT);
+            imageBarrier.oldLayout(VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED);
+            imageBarrier.newLayout(VkImageLayout.VK_IMAGE_LAYOUT_GENERAL);
+
+            var clearRange = VkImageSubresourceRange.allocate(localArena);
+            clearRange.aspectMask(VkImageAspectFlags.VK_IMAGE_ASPECT_COLOR_BIT);
+            clearRange.baseMipLevel(0);
+            clearRange.levelCount(Constants.VK_REMAINING_MIP_LEVELS);
+            clearRange.baseArrayLayer(0);
+            clearRange.layerCount(Constants.VK_REMAINING_ARRAY_LAYERS);
+
+            imageBarrier.subresourceRange(clearRange);
+
+            var clearColorValue = VkClearColorValue.allocate(localArena);
+            var float32Value = clearColorValue.float32();
+            var flash = Math.abs(Math.sin(frameNumber / 120.0f));
+            float32Value.write(0, 0.0f);
+            float32Value.write(1, 0.0f);
+            float32Value.write(2, (float) flash);
+            float32Value.write(3, 1.0f);
 
             result = deviceCommands.vkResetFences(device, 1, pFence);
             if (result != VkResult.VK_SUCCESS) {

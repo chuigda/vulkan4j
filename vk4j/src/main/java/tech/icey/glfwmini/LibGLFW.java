@@ -1,6 +1,5 @@
 package tech.icey.glfwmini;
 
-import tech.icey.vk4j.Loader;
 import tech.icey.vk4j.annotation.enumtype;
 import tech.icey.vk4j.annotation.nullable;
 import tech.icey.vk4j.annotation.pointer;
@@ -11,12 +10,9 @@ import tech.icey.vk4j.datatype.VkAllocationCallbacks;
 import tech.icey.vk4j.enumtype.VkResult;
 import tech.icey.vk4j.handle.VkInstance;
 import tech.icey.vk4j.handle.VkSurfaceKHR;
-import tech.icey.vk4j.util.Function2;
+import tech.icey.vk4j.util.FunctionLoader;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
 public final class LibGLFW {
@@ -108,7 +104,7 @@ public final class LibGLFW {
     public final MethodHandle HANDLE$glfwSetWindowOpacity;
     public final MethodHandle HANDLE$glfwSetWindowIconifyCallback;
 
-    public LibGLFW(Function2<String, FunctionDescriptor, MethodHandle> loader) {
+    public LibGLFW(FunctionLoader loader) {
         HANDLE$glfwInit = loader.apply("glfwInit", DESCRIPTOR$glfwInit);
         HANDLE$glfwTerminate = loader.apply("glfwTerminate", DESCRIPTOR$glfwTerminate);
         HANDLE$glfwInitHint = loader.apply("glfwInitHint", DESCRIPTOR$glfwInitHint);
@@ -183,7 +179,7 @@ public final class LibGLFW {
             if (ret.address() == 0) {
                 return null;
             }
-            return Loader.nativeLinker.downcallHandle(ret, descriptor);
+            return Linker.nativeLinker().downcallHandle(ret, descriptor);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }

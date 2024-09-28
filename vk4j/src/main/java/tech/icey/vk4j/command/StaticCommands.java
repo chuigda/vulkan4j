@@ -10,7 +10,7 @@ import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.util.Function2;
+import tech.icey.vk4j.util.FunctionLoader;
 
 public final class StaticCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceProcAddr = FunctionDescriptor.of(
@@ -28,7 +28,7 @@ public final class StaticCommands {
     public final @nullable MethodHandle HANDLE$vkGetDeviceProcAddr;
     public final @nullable MethodHandle HANDLE$vkGetInstanceProcAddr;
 
-    public StaticCommands(Function2<String, FunctionDescriptor, MethodHandle> loader) {
+    public StaticCommands(FunctionLoader loader) {
         HANDLE$vkGetDeviceProcAddr = loader.apply("vkGetDeviceProcAddr", DESCRIPTOR$vkGetDeviceProcAddr);
         HANDLE$vkGetInstanceProcAddr = loader.apply("vkGetInstanceProcAddr", DESCRIPTOR$vkGetInstanceProcAddr);
     }

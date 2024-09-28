@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import tech.icey.vk4j.IPointer;
 import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.buffer.*;
@@ -13,7 +14,7 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
-public record VkRect2D(MemorySegment segment) {
+public record VkRect2D(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         VkOffset2D.LAYOUT.withName("offset"),
         VkExtent2D.LAYOUT.withName("extent")

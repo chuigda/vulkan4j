@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import tech.icey.vk4j.IPointer;
 import tech.icey.vk4j.annotation.*;
 import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.buffer.*;
@@ -13,7 +14,7 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
-public record VkAccelerationStructureMatrixMotionInstanceNV(MemorySegment segment) {
+public record VkAccelerationStructureMatrixMotionInstanceNV(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         VkTransformMatrixKHR.LAYOUT.withName("transformT0"),
         VkTransformMatrixKHR.LAYOUT.withName("transformT1"),
@@ -118,7 +119,7 @@ public record VkAccelerationStructureMatrixMotionInstanceNV(MemorySegment segmen
     public static VkAccelerationStructureMatrixMotionInstanceNV allocate(Arena arena) {
         return new VkAccelerationStructureMatrixMotionInstanceNV(arena.allocate(LAYOUT));
     }
-    
+
     public static VkAccelerationStructureMatrixMotionInstanceNV[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureMatrixMotionInstanceNV[] ret = new VkAccelerationStructureMatrixMotionInstanceNV[count];
