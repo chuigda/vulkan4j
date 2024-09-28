@@ -20,6 +20,10 @@ public record PointerBuffer(MemorySegment segment) implements IPointer {
         segment.set(ValueLayout.ADDRESS, 0, value);
     }
 
+    public void write(IPointer pointer) {
+        write(pointer.segment());
+    }
+
     public MemorySegment read(long index) {
         return segment.get(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize());
     }
