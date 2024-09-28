@@ -3,8 +3,6 @@ import tech.icey.vk4j.Loader;
 import tech.icey.vk4j.Version;
 import tech.icey.vk4j.buffer.ByteBuffer;
 import tech.icey.vk4j.buffer.IntBuffer;
-import tech.icey.vk4j.command.EntryCommands;
-import tech.icey.vk4j.command.InstanceCommands;
 import tech.icey.vk4j.datatype.VkApplicationInfo;
 import tech.icey.vk4j.datatype.VkInstanceCreateInfo;
 import tech.icey.vk4j.datatype.VkPhysicalDeviceProperties;
@@ -13,25 +11,15 @@ import tech.icey.vk4j.handle.VkInstance;
 import tech.icey.vk4j.handle.VkPhysicalDevice;
 
 import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.ValueLayout;
 
 public class TestBasic {
-    static {
-        if (System.getProperty("os.name").toLowerCase().contains("win")) {
-            System.loadLibrary("vulkan-1");
-            System.loadLibrary("glfw3");
-        }
-        else {
-            System.loadLibrary("vulkan");
-            System.loadLibrary("glfw");
-        }
-    }
-
     public static void main(String[] args) {
-        var libGLFW = new LibGLFW(Loader::loadFunction);
+        Loader.loadVulkanLibrary();
+        LibGLFW.loadGLFWLibrary();
 
-        var entryCommands = new EntryCommands(Loader::loadFunctionOrNull);
+        var libGLFW = LibGLFW.loadGLFW();
+        var staticCommands = Loader.loadStaticCommands();
+        var entryCommands = Loader.loadEntryCommands();
 
         if (libGLFW.glfwInit() == 0) {
             System.err.println("Failed to initialize GLFW");
@@ -51,7 +39,6 @@ public class TestBasic {
                 return;
             }
 
-            ppExtensions = ppExtensions.reinterpret(ValueLayout.ADDRESS.byteSize() * pExtensionCount.read());
             System.out.println("Required instance extensions: " + pExtensionCount.read());
             for (int i = 0; i < pExtensionCount.read(); i++) {
                 var extension = new ByteBuffer(ppExtensions.read(i));
@@ -78,8 +65,7 @@ public class TestBasic {
             }
 
             var instance = pInstance.read();
-            var instanceCommands = new InstanceCommands((String functionName, FunctionDescriptor descriptor)
-                    -> libGLFW.glfwGetInstanceProcAddress(instance, functionName, descriptor));
+            var instanceCommands = Loader.loadInstanceCommands(instance, staticCommands);
 
             IntBuffer pPhysicalDeviceCount = IntBuffer.allocate(arena);
             pPhysicalDeviceCount.write(8);

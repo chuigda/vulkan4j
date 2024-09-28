@@ -58,7 +58,7 @@ public final class Loader {
     ///
     /// @return loaded static commands
     /// @throws RuntimeException if any static function is not found
-    public StaticCommands loadStaticCommands() {
+    public static StaticCommands loadStaticCommands() {
         return new StaticCommands(Loader::loadFunction);
     }
 
@@ -71,7 +71,7 @@ public final class Loader {
     ///
     /// @return loaded entry commands
     /// @throws RuntimeException if any entry function is not found
-    public EntryCommands loadEntryCommands() {
+    public static EntryCommands loadEntryCommands() {
         return new EntryCommands(Loader::loadFunction);
     }
 
@@ -87,7 +87,7 @@ public final class Loader {
     /// @param instance Vulkan instance
     /// @param staticCommands static commands, providing the {@code vkGetInstanceProcAddr} function
     /// @return loaded instance commands
-    public InstanceCommands loadInstanceCommands(VkInstance instance, StaticCommands staticCommands) {
+    public static InstanceCommands loadInstanceCommands(VkInstance instance, StaticCommands staticCommands) {
         return new InstanceCommands((name, descriptor) -> {
             try (Arena arena = Arena.ofConfined()) {
                 ByteBuffer nameBuffer = ByteBuffer.allocateString(arena, name);
@@ -114,7 +114,11 @@ public final class Loader {
     /// @param device Vulkan device
     /// @param staticCommands static commands, providing the loading functions
     /// @return loaded device commands
-    public DeviceCommands loadDeviceCommands(VkInstance instance, VkDevice device, StaticCommands staticCommands) {
+    public static DeviceCommands loadDeviceCommands(
+            VkInstance instance,
+            VkDevice device,
+            StaticCommands staticCommands
+    ) {
         return new DeviceCommands((name, descriptor) -> {
             try (Arena arena = Arena.ofConfined()) {
                 ByteBuffer nameBuffer = ByteBuffer.allocateString(arena, name);
