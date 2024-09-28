@@ -6,26 +6,16 @@
     <parent>
         <groupId>tech.icey</groupId>
         <artifactId>root</artifactId>
-        <version>${revision}</version>
+        <version>0.0.1-PREALPHA</version>
     </parent>
 
     <groupId>tech.icey.vk4j</groupId>
-    <artifactId>vkcube</artifactId>
-    <version>${revision}</version>
-    <packaging>jar</packaging>
+    <artifactId>tutorial</artifactId>
 
     <properties>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
+        <maven.compiler.source>23</maven.compiler.source>
+        <maven.compiler.target>23</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>tech.icey.vk4j</groupId>
-            <artifactId>vk4j</artifactId>
-            <version>${revision}</version>
-            <scope>jar</scope>
-        </dependency>
-    </dependencies>
 </project>
