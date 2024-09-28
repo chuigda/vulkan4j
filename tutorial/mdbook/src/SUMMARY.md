@@ -13,6 +13,7 @@
 - [Logical Devices and Queues](./setup/logical-device-and-queues.md)
 
 # Presentation
+- [Window surface](./presentation/window-surface.md)
 
 # Graphics pipeline Basics
 
