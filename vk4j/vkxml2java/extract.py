@@ -73,6 +73,21 @@ def extract_registry(tree: Document) -> Registry:
         extension = extract_extension(extension_node)
         extensions[extension.name] = extension
 
+    extension_names: dict[str, str] = {}
+    for extension_node in tree.getElementsByTagName('extensions')[0].getElementsByTagName('extension'):
+        require_nodes = findall(extension_node, 'require')
+        for require_node in require_nodes:
+            has_found_extension_name = False
+            for enum_node in findall(require_node, 'enum'):
+                if get_attr(enum_node, 'name').endswith('_EXTENSION_NAME'):
+                    name = get_attr(enum_node, 'name')
+                    value = get_attr(enum_node, 'value')
+                    extension_names[name] = value
+                    has_found_extension_name = True
+                    break
+            if has_found_extension_name:
+                break
+
     functions: dict[str, Function] = {}
     for function_node in type_nodes:
         if ('category' in function_node.attributes
@@ -117,6 +132,7 @@ def extract_registry(tree: Document) -> Registry:
         aliases,
         bitmasks,
         constants,
+        extension_names,
         commands,
         command_aliases,
         enums,

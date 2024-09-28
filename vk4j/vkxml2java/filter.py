@@ -12,6 +12,7 @@ def filter_registry(registry: Registry) -> Registry:
         aliases=registry.aliases,
         bitmasks=iter2dict(filter(filter_supported_entities, map(filter_bitflags, registry.bitmasks.values()))),
         constants=iter2dict(filter(filter_supported_entities, registry.constants.values())),
+        extension_names=registry.extension_names,
         commands=iter2dict(filter(filter_supported_entities, map(filter_params, registry.commands.values()))),
         command_aliases=registry.command_aliases,
         enums=iter2dict(filter(filter_supported_entities, map(filter_variants, registry.enums.values()))),

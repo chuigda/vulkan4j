@@ -9,6 +9,7 @@ class Registry:
     aliases: dict[str, Typedef] = field(default_factory=dict)
     bitmasks: dict[str, Bitmask] = field(default_factory=dict)
     constants: dict[str, Constant] = field(default_factory=dict)
+    extension_names: dict[str, str] = field(default=dict)
     commands: dict[str, Command] = field(default_factory=dict)
     command_aliases: dict[str, str] = field(default_factory=dict)
     enums: dict[str, Enum] = field(default_factory=dict)
