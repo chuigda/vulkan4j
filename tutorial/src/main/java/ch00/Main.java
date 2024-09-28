@@ -1,3 +1,5 @@
+package ch00;
+
 import tech.icey.glfwmini.GLFWwindow;
 import tech.icey.glfwmini.LibGLFW;
 
@@ -46,7 +48,7 @@ class Application {
     private static final int HEIGHT = 600;
 }
 
-public class CH00_BaseCode {
+public class Main {
     public static void main(String[] args) {
         try {
             var app = new Application();

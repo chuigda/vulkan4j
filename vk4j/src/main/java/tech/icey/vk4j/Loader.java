@@ -91,7 +91,7 @@ public final class Loader {
         return new InstanceCommands((name, descriptor) -> {
             try (Arena arena = Arena.ofConfined()) {
                 ByteBuffer nameBuffer = ByteBuffer.allocateString(arena, name);
-                MemorySegment s = (MemorySegment) staticCommands.vkGetInstanceProcAddr(instance, nameBuffer);
+                MemorySegment s = staticCommands.vkGetInstanceProcAddr(instance, nameBuffer);
                 if (s.address() == 0) {
                     return null;
                 } else {

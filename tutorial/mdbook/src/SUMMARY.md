@@ -7,3 +7,6 @@
 
 # Setup
 - [Base code](./setup/base-code.md)
+- [Instance](./setup/instance.md)
+- [Validation Layers](./setup/validation-layers.md)
+- [Physical Devices and Queue Families](./setup/physical-devices-and-queue-families.md)

@@ -22,7 +22,7 @@ class Application {
     }
 }
 
-public class CH00_BaseCode {
+public class Main {
     public static void main(String[] args) {
         try {
             var app = new Application();

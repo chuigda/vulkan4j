@@ -115,7 +115,6 @@ public final class LibGLFW {
         HANDLE$glfwWindowShouldClose = loader.apply("glfwWindowShouldClose", DESCRIPTOR$glfwWindowShouldClose);
         HANDLE$glfwDestroyWindow = loader.apply("glfwDestroyWindow", DESCRIPTOR$glfwDestroyWindow);
         HANDLE$glfwGetWindowSize = loader.apply("glfwGetWindowSize", DESCRIPTOR$glfwGetWindowSize);
-        HANDLE$glfwSetWindowOpacity = loader.apply("glfwSetWindowOpacity", DESCRIPTOR$glfwSetWindowOpacity);
         HANDLE$glfwSetWindowIconifyCallback = loader.apply("glfwSetWindowIconifyCallback", DESCRIPTOR$glfwSetWindowIconifyCallback);
     }
 
@@ -197,8 +196,8 @@ public final class LibGLFW {
             int width,
             int height,
             String title,
-            @pointer(comment="GLFWMonitor*") MemorySegment monitor,
-            @pointer(comment="GLFWwindow*") MemorySegment share
+            @pointer(comment="GLFWMonitor*") @nullable MemorySegment monitor,
+            @pointer(comment="GLFWwindow*") @nullable MemorySegment share
     ) {
         try (Arena arena = Arena.ofConfined()) {
             MemorySegment titleSegment = arena.allocateFrom(title);
@@ -206,8 +205,8 @@ public final class LibGLFW {
                     width,
                     height,
                     titleSegment,
-                    monitor,
-                    share
+                    (MemorySegment) (monitor != null ? monitor : MemorySegment.NULL),
+                    (MemorySegment) (share != null ? share : MemorySegment.NULL)
             );
             return new GLFWwindow(ret);
         } catch (Throwable throwable) {
