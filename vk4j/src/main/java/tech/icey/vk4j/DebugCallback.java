@@ -1,9 +1,11 @@
-import tech.icey.vk4j.Constants;
+package tech.icey.vk4j;
+
 import tech.icey.vk4j.annotation.enumtype;
 import tech.icey.vk4j.annotation.pointer;
 import tech.icey.vk4j.bitmask.VkDebugUtilsMessageSeverityFlagsEXT;
 import tech.icey.vk4j.bitmask.VkDebugUtilsMessageTypeFlagsEXT;
 import tech.icey.vk4j.datatype.VkDebugUtilsMessengerCallbackDataEXT;
+import tech.icey.vk4j.datatype.VkDebugUtilsMessengerCreateInfoEXT;
 import tech.icey.vk4j.enumtype.VkObjectType;
 
 import java.lang.foreign.*;
@@ -11,6 +13,15 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.util.Objects;
 
+/// An example vulkan validation layer debug callback
+///
+/// This debug callback prints debug information to {@code stderr} ({@link System#err}). You may want to take this
+/// class as an example of how to implement a debug callback for your application, and make your own one. Or you can
+/// just use this one by feeding {@link #pDebugCallback} to
+/// {@link VkDebugUtilsMessengerCreateInfoEXT#pfnUserCallback(MemorySegment)}.
+///
+/// The callback implementation mostly comes from
+/// <a href="https://github.com/KhronosGroup/Vulkan-Tools/blob/2020cec4111c87d85b167d583180b839f0c736c5/cube/cube.c#L451">VkCube</a>
 public final class DebugCallback {
     private static /*VkBool32*/ int debugCallback(
             @enumtype(VkDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity,
