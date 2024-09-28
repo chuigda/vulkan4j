@@ -14,6 +14,7 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubmitInfo2.html">VkSubmitInfo2</a>
 public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),

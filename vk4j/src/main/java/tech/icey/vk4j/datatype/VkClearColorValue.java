@@ -14,6 +14,7 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkClearColorValue.html">VkClearColorValue</a>
 public record VkClearColorValue(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
         MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("float32"),

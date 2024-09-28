@@ -110,6 +110,8 @@ def generate_command_load(registry: Registry, command: Command, dual_loader: boo
 
 
 def generate_command_wrapper(command: Command, param_types: list[CType], result_type: CType) -> str:
+    javadoc = f'/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/{command.name}.html">{command.name}</a>'
+
     params = []
     for (param_type, param) in zip(param_types, command.params):
         params.append(f'{generate_input_output_type(param_type, param.optional)} {param.name}')
@@ -124,7 +126,8 @@ def generate_command_wrapper(command: Command, param_types: list[CType], result_
             )'''
 
     if result_type == CTYPE_VOID:
-        return f'''    public void {command.name}(
+        return f'''    {javadoc}
+    public void {command.name}(
             {',\n            '.join(params)}
     ) {{
         try {{
@@ -134,7 +137,8 @@ def generate_command_wrapper(command: Command, param_types: list[CType], result_
         }}
     }}\n'''
     else:
-        return f'''    public {generate_input_output_type(result_type, False)} {command.name}(
+        return f'''    {javadoc}
+    public {generate_input_output_type(result_type, False)} {command.name}(
             {',\n            '.join(params)}
     ) {{
         try {{

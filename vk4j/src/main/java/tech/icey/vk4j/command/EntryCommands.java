@@ -50,6 +50,7 @@ public final class EntryCommands {
         HANDLE$vkEnumerateInstanceExtensionProperties = loader.apply("vkEnumerateInstanceExtensionProperties", DESCRIPTOR$vkEnumerateInstanceExtensionProperties);
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateInstance.html">vkCreateInstance</a>
     public @enumtype(VkResult.class) int vkCreateInstance(
             @pointer(target=VkInstanceCreateInfo.class) VkInstanceCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
@@ -66,6 +67,7 @@ public final class EntryCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumerateInstanceVersion.html">vkEnumerateInstanceVersion</a>
     public @enumtype(VkResult.class) int vkEnumerateInstanceVersion(
              @unsigned IntBuffer pApiVersion
     ) {
@@ -78,6 +80,7 @@ public final class EntryCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumerateInstanceLayerProperties.html">vkEnumerateInstanceLayerProperties</a>
     public @enumtype(VkResult.class) int vkEnumerateInstanceLayerProperties(
              @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkLayerProperties.class) VkLayerProperties pProperties
@@ -92,6 +95,7 @@ public final class EntryCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumerateInstanceExtensionProperties.html">vkEnumerateInstanceExtensionProperties</a>
     public @enumtype(VkResult.class) int vkEnumerateInstanceExtensionProperties(
             @nullable  ByteBuffer pLayerName,
              @unsigned IntBuffer pPropertyCount,

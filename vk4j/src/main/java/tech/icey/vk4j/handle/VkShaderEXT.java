@@ -7,6 +7,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkShaderEXT.html">VkShaderEXT</a>
 public record VkShaderEXT(MemorySegment segment) implements IPointer {
     public record Buffer(MemorySegment segment) {
         public long size() {

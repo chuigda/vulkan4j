@@ -14,6 +14,7 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceExtendedDynamicState2FeaturesEXT.html">VkPhysicalDeviceExtendedDynamicState2FeaturesEXT</a>
 public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),

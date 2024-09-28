@@ -14,6 +14,7 @@ import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSparseImageMemoryRequirements.html">VkSparseImageMemoryRequirements</a>
 public record VkSparseImageMemoryRequirements(MemorySegment segment) implements IPointer {
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         VkSparseImageFormatProperties.LAYOUT.withName("formatProperties"),

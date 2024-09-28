@@ -33,6 +33,7 @@ public final class StaticCommands {
         HANDLE$vkGetInstanceProcAddr = loader.apply("vkGetInstanceProcAddr", DESCRIPTOR$vkGetInstanceProcAddr);
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDeviceProcAddr.html">vkGetDeviceProcAddr</a>
     public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetDeviceProcAddr(
             VkDevice device,
              ByteBuffer pName
@@ -47,6 +48,7 @@ public final class StaticCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetInstanceProcAddr.html">vkGetInstanceProcAddr</a>
     public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetInstanceProcAddr(
             @nullable VkInstance instance,
              ByteBuffer pName
