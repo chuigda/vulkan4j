@@ -176,7 +176,7 @@ class Application {
     }
 
     private void createLogicalDevice() {
-        QueueFamilyIndices indices = findQueueFamilies(physicalDevice);
+        var indices = findQueueFamilies(physicalDevice);
         assert indices != null;
 
         try (var arena = Arena.ofConfined()) {

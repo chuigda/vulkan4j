@@ -27,7 +27,7 @@ private void createLogicalDevice() {
 The creation of a logical device involves specifying a bunch of details in structs again, of which the first one will be `VkDeviceQueueCreateInfo`. This structure describes the number of queues we want for a single queue family. Right now we're only interested in a queue with graphics capabilities.
 
 ```java
-QueueFamilyIndices indices = findQueueFamilies(physicalDevice);
+var indices = findQueueFamilies(physicalDevice);
 assert indices != null;
 
 try (var arena = Arena.ofConfined()) {
