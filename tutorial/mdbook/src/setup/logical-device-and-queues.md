@@ -119,7 +119,6 @@ private void cleanup() {
     // ...
 }
 ```
-}
 
 ## Retrieving queue handles
 
