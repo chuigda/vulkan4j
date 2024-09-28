@@ -26,44 +26,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAllocationCallbacks.html">VkAllocationCallbacks</a>
 public record VkAllocationCallbacks(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.ADDRESS.withName("pUserData"),
-        ValueLayout.ADDRESS.withName("pfnAllocation"),
-        ValueLayout.ADDRESS.withName("pfnReallocation"),
-        ValueLayout.ADDRESS.withName("pfnFree"),
-        ValueLayout.ADDRESS.withName("pfnInternalAllocation"),
-        ValueLayout.ADDRESS.withName("pfnInternalFree")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$pUserData = PathElement.groupElement("pUserData");
-    public static final PathElement PATH$pfnAllocation = PathElement.groupElement("pfnAllocation");
-    public static final PathElement PATH$pfnReallocation = PathElement.groupElement("pfnReallocation");
-    public static final PathElement PATH$pfnFree = PathElement.groupElement("pfnFree");
-    public static final PathElement PATH$pfnInternalAllocation = PathElement.groupElement("pfnInternalAllocation");
-    public static final PathElement PATH$pfnInternalFree = PathElement.groupElement("pfnInternalFree");
-
-    public static final AddressLayout LAYOUT$pUserData = (AddressLayout) LAYOUT.select(PATH$pUserData);
-    public static final AddressLayout LAYOUT$pfnAllocation = (AddressLayout) LAYOUT.select(PATH$pfnAllocation);
-    public static final AddressLayout LAYOUT$pfnReallocation = (AddressLayout) LAYOUT.select(PATH$pfnReallocation);
-    public static final AddressLayout LAYOUT$pfnFree = (AddressLayout) LAYOUT.select(PATH$pfnFree);
-    public static final AddressLayout LAYOUT$pfnInternalAllocation = (AddressLayout) LAYOUT.select(PATH$pfnInternalAllocation);
-    public static final AddressLayout LAYOUT$pfnInternalFree = (AddressLayout) LAYOUT.select(PATH$pfnInternalFree);
-
-    public static final long OFFSET$pUserData = LAYOUT.byteOffset(PATH$pUserData);
-    public static final long OFFSET$pfnAllocation = LAYOUT.byteOffset(PATH$pfnAllocation);
-    public static final long OFFSET$pfnReallocation = LAYOUT.byteOffset(PATH$pfnReallocation);
-    public static final long OFFSET$pfnFree = LAYOUT.byteOffset(PATH$pfnFree);
-    public static final long OFFSET$pfnInternalAllocation = LAYOUT.byteOffset(PATH$pfnInternalAllocation);
-    public static final long OFFSET$pfnInternalFree = LAYOUT.byteOffset(PATH$pfnInternalFree);
-
-    public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
-    public static final long SIZE$pfnAllocation = LAYOUT$pfnAllocation.byteSize();
-    public static final long SIZE$pfnReallocation = LAYOUT$pfnReallocation.byteSize();
-    public static final long SIZE$pfnFree = LAYOUT$pfnFree.byteSize();
-    public static final long SIZE$pfnInternalAllocation = LAYOUT$pfnInternalAllocation.byteSize();
-    public static final long SIZE$pfnInternalFree = LAYOUT$pfnInternalFree.byteSize();
-
     public VkAllocationCallbacks(MemorySegment segment) {
         this.segment = segment;
     }
@@ -152,4 +114,43 @@ public record VkAllocationCallbacks(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("pUserData"),
+        ValueLayout.ADDRESS.withName("pfnAllocation"),
+        ValueLayout.ADDRESS.withName("pfnReallocation"),
+        ValueLayout.ADDRESS.withName("pfnFree"),
+        ValueLayout.ADDRESS.withName("pfnInternalAllocation"),
+        ValueLayout.ADDRESS.withName("pfnInternalFree")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$pUserData = PathElement.groupElement("pUserData");
+    public static final PathElement PATH$pfnAllocation = PathElement.groupElement("pfnAllocation");
+    public static final PathElement PATH$pfnReallocation = PathElement.groupElement("pfnReallocation");
+    public static final PathElement PATH$pfnFree = PathElement.groupElement("pfnFree");
+    public static final PathElement PATH$pfnInternalAllocation = PathElement.groupElement("pfnInternalAllocation");
+    public static final PathElement PATH$pfnInternalFree = PathElement.groupElement("pfnInternalFree");
+
+    public static final AddressLayout LAYOUT$pUserData = (AddressLayout) LAYOUT.select(PATH$pUserData);
+    public static final AddressLayout LAYOUT$pfnAllocation = (AddressLayout) LAYOUT.select(PATH$pfnAllocation);
+    public static final AddressLayout LAYOUT$pfnReallocation = (AddressLayout) LAYOUT.select(PATH$pfnReallocation);
+    public static final AddressLayout LAYOUT$pfnFree = (AddressLayout) LAYOUT.select(PATH$pfnFree);
+    public static final AddressLayout LAYOUT$pfnInternalAllocation = (AddressLayout) LAYOUT.select(PATH$pfnInternalAllocation);
+    public static final AddressLayout LAYOUT$pfnInternalFree = (AddressLayout) LAYOUT.select(PATH$pfnInternalFree);
+
+    public static final long OFFSET$pUserData = LAYOUT.byteOffset(PATH$pUserData);
+    public static final long OFFSET$pfnAllocation = LAYOUT.byteOffset(PATH$pfnAllocation);
+    public static final long OFFSET$pfnReallocation = LAYOUT.byteOffset(PATH$pfnReallocation);
+    public static final long OFFSET$pfnFree = LAYOUT.byteOffset(PATH$pfnFree);
+    public static final long OFFSET$pfnInternalAllocation = LAYOUT.byteOffset(PATH$pfnInternalAllocation);
+    public static final long OFFSET$pfnInternalFree = LAYOUT.byteOffset(PATH$pfnInternalFree);
+
+    public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
+    public static final long SIZE$pfnAllocation = LAYOUT$pfnAllocation.byteSize();
+    public static final long SIZE$pfnReallocation = LAYOUT$pfnReallocation.byteSize();
+    public static final long SIZE$pfnFree = LAYOUT$pfnFree.byteSize();
+    public static final long SIZE$pfnInternalAllocation = LAYOUT$pfnInternalAllocation.byteSize();
+    public static final long SIZE$pfnInternalFree = LAYOUT$pfnInternalFree.byteSize();
+
 }

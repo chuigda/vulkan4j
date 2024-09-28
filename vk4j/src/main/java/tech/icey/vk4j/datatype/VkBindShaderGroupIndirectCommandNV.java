@@ -21,19 +21,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBindShaderGroupIndirectCommandNV.html">VkBindShaderGroupIndirectCommandNV</a>
 public record VkBindShaderGroupIndirectCommandNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("groupIndex")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$groupIndex = PathElement.groupElement("groupIndex");
-
-    public static final OfInt LAYOUT$groupIndex = (OfInt) LAYOUT.select(PATH$groupIndex);
-
-    public static final long OFFSET$groupIndex = LAYOUT.byteOffset(PATH$groupIndex);
-
-    public static final long SIZE$groupIndex = LAYOUT$groupIndex.byteSize();
-
     public VkBindShaderGroupIndirectCommandNV(MemorySegment segment) {
         this.segment = segment;
     }
@@ -58,4 +45,18 @@ public record VkBindShaderGroupIndirectCommandNV(MemorySegment segment) implemen
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("groupIndex")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$groupIndex = PathElement.groupElement("groupIndex");
+
+    public static final OfInt LAYOUT$groupIndex = (OfInt) LAYOUT.select(PATH$groupIndex);
+
+    public static final long OFFSET$groupIndex = LAYOUT.byteOffset(PATH$groupIndex);
+
+    public static final long SIZE$groupIndex = LAYOUT$groupIndex.byteSize();
+
 }

@@ -27,49 +27,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkApplicationInfo.html">VkApplicationInfo</a>
 public record VkApplicationInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pApplicationName"),
-        ValueLayout.JAVA_INT.withName("applicationVersion"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pEngineName"),
-        ValueLayout.JAVA_INT.withName("engineVersion"),
-        ValueLayout.JAVA_INT.withName("apiVersion")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$pApplicationName = PathElement.groupElement("pApplicationName");
-    public static final PathElement PATH$applicationVersion = PathElement.groupElement("applicationVersion");
-    public static final PathElement PATH$pEngineName = PathElement.groupElement("pEngineName");
-    public static final PathElement PATH$engineVersion = PathElement.groupElement("engineVersion");
-    public static final PathElement PATH$apiVersion = PathElement.groupElement("apiVersion");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$pApplicationName = (AddressLayout) LAYOUT.select(PATH$pApplicationName);
-    public static final OfInt LAYOUT$applicationVersion = (OfInt) LAYOUT.select(PATH$applicationVersion);
-    public static final AddressLayout LAYOUT$pEngineName = (AddressLayout) LAYOUT.select(PATH$pEngineName);
-    public static final OfInt LAYOUT$engineVersion = (OfInt) LAYOUT.select(PATH$engineVersion);
-    public static final OfInt LAYOUT$apiVersion = (OfInt) LAYOUT.select(PATH$apiVersion);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$pApplicationName = LAYOUT.byteOffset(PATH$pApplicationName);
-    public static final long OFFSET$applicationVersion = LAYOUT.byteOffset(PATH$applicationVersion);
-    public static final long OFFSET$pEngineName = LAYOUT.byteOffset(PATH$pEngineName);
-    public static final long OFFSET$engineVersion = LAYOUT.byteOffset(PATH$engineVersion);
-    public static final long OFFSET$apiVersion = LAYOUT.byteOffset(PATH$apiVersion);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$pApplicationName = LAYOUT$pApplicationName.byteSize();
-    public static final long SIZE$applicationVersion = LAYOUT$applicationVersion.byteSize();
-    public static final long SIZE$pEngineName = LAYOUT$pEngineName.byteSize();
-    public static final long SIZE$engineVersion = LAYOUT$engineVersion.byteSize();
-    public static final long SIZE$apiVersion = LAYOUT$apiVersion.byteSize();
-
     public VkApplicationInfo(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_APPLICATION_INFO);
@@ -177,4 +134,48 @@ public record VkApplicationInfo(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pApplicationName"),
+        ValueLayout.JAVA_INT.withName("applicationVersion"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pEngineName"),
+        ValueLayout.JAVA_INT.withName("engineVersion"),
+        ValueLayout.JAVA_INT.withName("apiVersion")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pApplicationName = PathElement.groupElement("pApplicationName");
+    public static final PathElement PATH$applicationVersion = PathElement.groupElement("applicationVersion");
+    public static final PathElement PATH$pEngineName = PathElement.groupElement("pEngineName");
+    public static final PathElement PATH$engineVersion = PathElement.groupElement("engineVersion");
+    public static final PathElement PATH$apiVersion = PathElement.groupElement("apiVersion");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$pApplicationName = (AddressLayout) LAYOUT.select(PATH$pApplicationName);
+    public static final OfInt LAYOUT$applicationVersion = (OfInt) LAYOUT.select(PATH$applicationVersion);
+    public static final AddressLayout LAYOUT$pEngineName = (AddressLayout) LAYOUT.select(PATH$pEngineName);
+    public static final OfInt LAYOUT$engineVersion = (OfInt) LAYOUT.select(PATH$engineVersion);
+    public static final OfInt LAYOUT$apiVersion = (OfInt) LAYOUT.select(PATH$apiVersion);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$pApplicationName = LAYOUT.byteOffset(PATH$pApplicationName);
+    public static final long OFFSET$applicationVersion = LAYOUT.byteOffset(PATH$applicationVersion);
+    public static final long OFFSET$pEngineName = LAYOUT.byteOffset(PATH$pEngineName);
+    public static final long OFFSET$engineVersion = LAYOUT.byteOffset(PATH$engineVersion);
+    public static final long OFFSET$apiVersion = LAYOUT.byteOffset(PATH$apiVersion);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pApplicationName = LAYOUT$pApplicationName.byteSize();
+    public static final long SIZE$applicationVersion = LAYOUT$applicationVersion.byteSize();
+    public static final long SIZE$pEngineName = LAYOUT$pEngineName.byteSize();
+    public static final long SIZE$engineVersion = LAYOUT$engineVersion.byteSize();
+    public static final long SIZE$apiVersion = LAYOUT$apiVersion.byteSize();
+
 }

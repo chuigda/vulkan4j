@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR.html">VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR</a>
 public record VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("vertexAttributeInstanceRateDivisor"),
-        ValueLayout.JAVA_INT.withName("vertexAttributeInstanceRateZeroDivisor")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$vertexAttributeInstanceRateDivisor = PathElement.groupElement("vertexAttributeInstanceRateDivisor");
-    public static final PathElement PATH$vertexAttributeInstanceRateZeroDivisor = PathElement.groupElement("vertexAttributeInstanceRateZeroDivisor");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$vertexAttributeInstanceRateDivisor = (OfInt) LAYOUT.select(PATH$vertexAttributeInstanceRateDivisor);
-    public static final OfInt LAYOUT$vertexAttributeInstanceRateZeroDivisor = (OfInt) LAYOUT.select(PATH$vertexAttributeInstanceRateZeroDivisor);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$vertexAttributeInstanceRateDivisor = LAYOUT.byteOffset(PATH$vertexAttributeInstanceRateDivisor);
-    public static final long OFFSET$vertexAttributeInstanceRateZeroDivisor = LAYOUT.byteOffset(PATH$vertexAttributeInstanceRateZeroDivisor);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$vertexAttributeInstanceRateDivisor = LAYOUT$vertexAttributeInstanceRateDivisor.byteSize();
-    public static final long SIZE$vertexAttributeInstanceRateZeroDivisor = LAYOUT$vertexAttributeInstanceRateZeroDivisor.byteSize();
-
     public VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_KHR);
@@ -105,4 +77,33 @@ public record VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR(MemorySegment se
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("vertexAttributeInstanceRateDivisor"),
+        ValueLayout.JAVA_INT.withName("vertexAttributeInstanceRateZeroDivisor")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$vertexAttributeInstanceRateDivisor = PathElement.groupElement("vertexAttributeInstanceRateDivisor");
+    public static final PathElement PATH$vertexAttributeInstanceRateZeroDivisor = PathElement.groupElement("vertexAttributeInstanceRateZeroDivisor");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$vertexAttributeInstanceRateDivisor = (OfInt) LAYOUT.select(PATH$vertexAttributeInstanceRateDivisor);
+    public static final OfInt LAYOUT$vertexAttributeInstanceRateZeroDivisor = (OfInt) LAYOUT.select(PATH$vertexAttributeInstanceRateZeroDivisor);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$vertexAttributeInstanceRateDivisor = LAYOUT.byteOffset(PATH$vertexAttributeInstanceRateDivisor);
+    public static final long OFFSET$vertexAttributeInstanceRateZeroDivisor = LAYOUT.byteOffset(PATH$vertexAttributeInstanceRateZeroDivisor);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$vertexAttributeInstanceRateDivisor = LAYOUT$vertexAttributeInstanceRateDivisor.byteSize();
+    public static final long SIZE$vertexAttributeInstanceRateZeroDivisor = LAYOUT$vertexAttributeInstanceRateZeroDivisor.byteSize();
+
 }

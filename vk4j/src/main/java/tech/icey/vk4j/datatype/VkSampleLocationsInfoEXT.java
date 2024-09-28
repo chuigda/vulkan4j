@@ -26,44 +26,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSampleLocationsInfoEXT.html">VkSampleLocationsInfoEXT</a>
 public record VkSampleLocationsInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("sampleLocationsPerPixel"),
-        VkExtent2D.LAYOUT.withName("sampleLocationGridSize"),
-        ValueLayout.JAVA_INT.withName("sampleLocationsCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkSampleLocationEXT.LAYOUT).withName("pSampleLocations")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$sampleLocationsPerPixel = PathElement.groupElement("sampleLocationsPerPixel");
-    public static final PathElement PATH$sampleLocationGridSize = PathElement.groupElement("sampleLocationGridSize");
-    public static final PathElement PATH$sampleLocationsCount = PathElement.groupElement("sampleLocationsCount");
-    public static final PathElement PATH$pSampleLocations = PathElement.groupElement("pSampleLocations");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$sampleLocationsPerPixel = (OfInt) LAYOUT.select(PATH$sampleLocationsPerPixel);
-    public static final StructLayout LAYOUT$sampleLocationGridSize = (StructLayout) LAYOUT.select(PATH$sampleLocationGridSize);
-    public static final OfInt LAYOUT$sampleLocationsCount = (OfInt) LAYOUT.select(PATH$sampleLocationsCount);
-    public static final AddressLayout LAYOUT$pSampleLocations = (AddressLayout) LAYOUT.select(PATH$pSampleLocations);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$sampleLocationsPerPixel = LAYOUT.byteOffset(PATH$sampleLocationsPerPixel);
-    public static final long OFFSET$sampleLocationGridSize = LAYOUT.byteOffset(PATH$sampleLocationGridSize);
-    public static final long OFFSET$sampleLocationsCount = LAYOUT.byteOffset(PATH$sampleLocationsCount);
-    public static final long OFFSET$pSampleLocations = LAYOUT.byteOffset(PATH$pSampleLocations);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$sampleLocationsPerPixel = LAYOUT$sampleLocationsPerPixel.byteSize();
-    public static final long SIZE$sampleLocationGridSize = LAYOUT$sampleLocationGridSize.byteSize();
-    public static final long SIZE$sampleLocationsCount = LAYOUT$sampleLocationsCount.byteSize();
-    public static final long SIZE$pSampleLocations = LAYOUT$pSampleLocations.byteSize();
-
     public VkSampleLocationsInfoEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT);
@@ -157,4 +119,43 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) implements IPointe
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("sampleLocationsPerPixel"),
+        VkExtent2D.LAYOUT.withName("sampleLocationGridSize"),
+        ValueLayout.JAVA_INT.withName("sampleLocationsCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkSampleLocationEXT.LAYOUT).withName("pSampleLocations")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$sampleLocationsPerPixel = PathElement.groupElement("sampleLocationsPerPixel");
+    public static final PathElement PATH$sampleLocationGridSize = PathElement.groupElement("sampleLocationGridSize");
+    public static final PathElement PATH$sampleLocationsCount = PathElement.groupElement("sampleLocationsCount");
+    public static final PathElement PATH$pSampleLocations = PathElement.groupElement("pSampleLocations");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$sampleLocationsPerPixel = (OfInt) LAYOUT.select(PATH$sampleLocationsPerPixel);
+    public static final StructLayout LAYOUT$sampleLocationGridSize = (StructLayout) LAYOUT.select(PATH$sampleLocationGridSize);
+    public static final OfInt LAYOUT$sampleLocationsCount = (OfInt) LAYOUT.select(PATH$sampleLocationsCount);
+    public static final AddressLayout LAYOUT$pSampleLocations = (AddressLayout) LAYOUT.select(PATH$pSampleLocations);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$sampleLocationsPerPixel = LAYOUT.byteOffset(PATH$sampleLocationsPerPixel);
+    public static final long OFFSET$sampleLocationGridSize = LAYOUT.byteOffset(PATH$sampleLocationGridSize);
+    public static final long OFFSET$sampleLocationsCount = LAYOUT.byteOffset(PATH$sampleLocationsCount);
+    public static final long OFFSET$pSampleLocations = LAYOUT.byteOffset(PATH$pSampleLocations);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$sampleLocationsPerPixel = LAYOUT$sampleLocationsPerPixel.byteSize();
+    public static final long SIZE$sampleLocationGridSize = LAYOUT$sampleLocationGridSize.byteSize();
+    public static final long SIZE$sampleLocationsCount = LAYOUT$sampleLocationsCount.byteSize();
+    public static final long SIZE$pSampleLocations = LAYOUT$pSampleLocations.byteSize();
+
 }

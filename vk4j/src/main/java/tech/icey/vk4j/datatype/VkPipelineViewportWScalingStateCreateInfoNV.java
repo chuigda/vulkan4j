@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineViewportWScalingStateCreateInfoNV.html">VkPipelineViewportWScalingStateCreateInfoNV</a>
 public record VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("viewportWScalingEnable"),
-        ValueLayout.JAVA_INT.withName("viewportCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkViewportWScalingNV.LAYOUT).withName("pViewportWScalings")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$viewportWScalingEnable = PathElement.groupElement("viewportWScalingEnable");
-    public static final PathElement PATH$viewportCount = PathElement.groupElement("viewportCount");
-    public static final PathElement PATH$pViewportWScalings = PathElement.groupElement("pViewportWScalings");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$viewportWScalingEnable = (OfInt) LAYOUT.select(PATH$viewportWScalingEnable);
-    public static final OfInt LAYOUT$viewportCount = (OfInt) LAYOUT.select(PATH$viewportCount);
-    public static final AddressLayout LAYOUT$pViewportWScalings = (AddressLayout) LAYOUT.select(PATH$pViewportWScalings);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$viewportWScalingEnable = LAYOUT.byteOffset(PATH$viewportWScalingEnable);
-    public static final long OFFSET$viewportCount = LAYOUT.byteOffset(PATH$viewportCount);
-    public static final long OFFSET$pViewportWScalings = LAYOUT.byteOffset(PATH$pViewportWScalings);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$viewportWScalingEnable = LAYOUT$viewportWScalingEnable.byteSize();
-    public static final long SIZE$viewportCount = LAYOUT$viewportCount.byteSize();
-    public static final long SIZE$pViewportWScalings = LAYOUT$pViewportWScalings.byteSize();
-
     public VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV);
@@ -143,4 +110,38 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment)
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("viewportWScalingEnable"),
+        ValueLayout.JAVA_INT.withName("viewportCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkViewportWScalingNV.LAYOUT).withName("pViewportWScalings")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$viewportWScalingEnable = PathElement.groupElement("viewportWScalingEnable");
+    public static final PathElement PATH$viewportCount = PathElement.groupElement("viewportCount");
+    public static final PathElement PATH$pViewportWScalings = PathElement.groupElement("pViewportWScalings");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$viewportWScalingEnable = (OfInt) LAYOUT.select(PATH$viewportWScalingEnable);
+    public static final OfInt LAYOUT$viewportCount = (OfInt) LAYOUT.select(PATH$viewportCount);
+    public static final AddressLayout LAYOUT$pViewportWScalings = (AddressLayout) LAYOUT.select(PATH$pViewportWScalings);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$viewportWScalingEnable = LAYOUT.byteOffset(PATH$viewportWScalingEnable);
+    public static final long OFFSET$viewportCount = LAYOUT.byteOffset(PATH$viewportCount);
+    public static final long OFFSET$pViewportWScalings = LAYOUT.byteOffset(PATH$pViewportWScalings);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$viewportWScalingEnable = LAYOUT$viewportWScalingEnable.byteSize();
+    public static final long SIZE$viewportCount = LAYOUT$viewportCount.byteSize();
+    public static final long SIZE$pViewportWScalings = LAYOUT$pViewportWScalings.byteSize();
+
 }

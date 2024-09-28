@@ -21,19 +21,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBindPipelineIndirectCommandNV.html">VkBindPipelineIndirectCommandNV</a>
 public record VkBindPipelineIndirectCommandNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_LONG.withName("pipelineAddress")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$pipelineAddress = PathElement.groupElement("pipelineAddress");
-
-    public static final OfLong LAYOUT$pipelineAddress = (OfLong) LAYOUT.select(PATH$pipelineAddress);
-
-    public static final long OFFSET$pipelineAddress = LAYOUT.byteOffset(PATH$pipelineAddress);
-
-    public static final long SIZE$pipelineAddress = LAYOUT$pipelineAddress.byteSize();
-
     public VkBindPipelineIndirectCommandNV(MemorySegment segment) {
         this.segment = segment;
     }
@@ -58,4 +45,18 @@ public record VkBindPipelineIndirectCommandNV(MemorySegment segment) implements 
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("pipelineAddress")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$pipelineAddress = PathElement.groupElement("pipelineAddress");
+
+    public static final OfLong LAYOUT$pipelineAddress = (OfLong) LAYOUT.select(PATH$pipelineAddress);
+
+    public static final long OFFSET$pipelineAddress = LAYOUT.byteOffset(PATH$pipelineAddress);
+
+    public static final long SIZE$pipelineAddress = LAYOUT$pipelineAddress.byteSize();
+
 }

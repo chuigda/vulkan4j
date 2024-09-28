@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCoarseSampleOrderCustomNV.html">VkCoarseSampleOrderCustomNV</a>
 public record VkCoarseSampleOrderCustomNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("shadingRate"),
-        ValueLayout.JAVA_INT.withName("sampleCount"),
-        ValueLayout.JAVA_INT.withName("sampleLocationCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkCoarseSampleLocationNV.LAYOUT).withName("pSampleLocations")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$shadingRate = PathElement.groupElement("shadingRate");
-    public static final PathElement PATH$sampleCount = PathElement.groupElement("sampleCount");
-    public static final PathElement PATH$sampleLocationCount = PathElement.groupElement("sampleLocationCount");
-    public static final PathElement PATH$pSampleLocations = PathElement.groupElement("pSampleLocations");
-
-    public static final OfInt LAYOUT$shadingRate = (OfInt) LAYOUT.select(PATH$shadingRate);
-    public static final OfInt LAYOUT$sampleCount = (OfInt) LAYOUT.select(PATH$sampleCount);
-    public static final OfInt LAYOUT$sampleLocationCount = (OfInt) LAYOUT.select(PATH$sampleLocationCount);
-    public static final AddressLayout LAYOUT$pSampleLocations = (AddressLayout) LAYOUT.select(PATH$pSampleLocations);
-
-    public static final long OFFSET$shadingRate = LAYOUT.byteOffset(PATH$shadingRate);
-    public static final long OFFSET$sampleCount = LAYOUT.byteOffset(PATH$sampleCount);
-    public static final long OFFSET$sampleLocationCount = LAYOUT.byteOffset(PATH$sampleLocationCount);
-    public static final long OFFSET$pSampleLocations = LAYOUT.byteOffset(PATH$pSampleLocations);
-
-    public static final long SIZE$shadingRate = LAYOUT$shadingRate.byteSize();
-    public static final long SIZE$sampleCount = LAYOUT$sampleCount.byteSize();
-    public static final long SIZE$sampleLocationCount = LAYOUT$sampleLocationCount.byteSize();
-    public static final long SIZE$pSampleLocations = LAYOUT$pSampleLocations.byteSize();
-
     public VkCoarseSampleOrderCustomNV(MemorySegment segment) {
         this.segment = segment;
     }
@@ -124,4 +96,33 @@ public record VkCoarseSampleOrderCustomNV(MemorySegment segment) implements IPoi
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("shadingRate"),
+        ValueLayout.JAVA_INT.withName("sampleCount"),
+        ValueLayout.JAVA_INT.withName("sampleLocationCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkCoarseSampleLocationNV.LAYOUT).withName("pSampleLocations")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$shadingRate = PathElement.groupElement("shadingRate");
+    public static final PathElement PATH$sampleCount = PathElement.groupElement("sampleCount");
+    public static final PathElement PATH$sampleLocationCount = PathElement.groupElement("sampleLocationCount");
+    public static final PathElement PATH$pSampleLocations = PathElement.groupElement("pSampleLocations");
+
+    public static final OfInt LAYOUT$shadingRate = (OfInt) LAYOUT.select(PATH$shadingRate);
+    public static final OfInt LAYOUT$sampleCount = (OfInt) LAYOUT.select(PATH$sampleCount);
+    public static final OfInt LAYOUT$sampleLocationCount = (OfInt) LAYOUT.select(PATH$sampleLocationCount);
+    public static final AddressLayout LAYOUT$pSampleLocations = (AddressLayout) LAYOUT.select(PATH$pSampleLocations);
+
+    public static final long OFFSET$shadingRate = LAYOUT.byteOffset(PATH$shadingRate);
+    public static final long OFFSET$sampleCount = LAYOUT.byteOffset(PATH$sampleCount);
+    public static final long OFFSET$sampleLocationCount = LAYOUT.byteOffset(PATH$sampleLocationCount);
+    public static final long OFFSET$pSampleLocations = LAYOUT.byteOffset(PATH$pSampleLocations);
+
+    public static final long SIZE$shadingRate = LAYOUT$shadingRate.byteSize();
+    public static final long SIZE$sampleCount = LAYOUT$sampleCount.byteSize();
+    public static final long SIZE$sampleLocationCount = LAYOUT$sampleLocationCount.byteSize();
+    public static final long SIZE$pSampleLocations = LAYOUT$pSampleLocations.byteSize();
+
 }

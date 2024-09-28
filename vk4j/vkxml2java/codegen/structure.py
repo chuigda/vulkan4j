@@ -32,19 +32,12 @@ import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 /// {{@snippet lang=c :
-/// typedef struct {structure.name} {{
+/// typedef {'union' if structure.is_union else 'struct'} {structure.name} {{
 {verbatim}
 /// }} {structure.name};}}
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/{structure.name}.html">{structure.name}</a>
 public record {structure.name}(MemorySegment segment) implements IPointer {{
-    public static final MemoryLayout LAYOUT = {struct_layout};
-    public static final long SIZE = LAYOUT.byteSize();
-
-{generate_structure_path_element(structure.members)}
-{generate_structure_member_layout(structure.members, member_types_lowered)}
-{generate_structure_member_offset(structure.members)}
-{generate_structure_member_size(structure.members, member_types_lowered)}
     public {structure.name}(MemorySegment segment) {{
         this.segment = segment;{generate_member_init(structure.members)}
     }}
@@ -61,6 +54,14 @@ public record {structure.name}(MemorySegment segment) implements IPointer {{
         }}
         return ret;
     }}
+    
+    public static final MemoryLayout LAYOUT = {struct_layout};
+    public static final long SIZE = LAYOUT.byteSize();
+
+{generate_structure_path_element(structure.members)}
+{generate_structure_member_layout(structure.members, member_types_lowered)}
+{generate_structure_member_offset(structure.members)}
+{generate_structure_member_size(structure.members, member_types_lowered)}
 }}
 '''
 

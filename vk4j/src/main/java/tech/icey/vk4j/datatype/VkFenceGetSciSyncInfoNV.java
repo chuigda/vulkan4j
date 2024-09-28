@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFenceGetSciSyncInfoNV.html">VkFenceGetSciSyncInfoNV</a>
 public record VkFenceGetSciSyncInfoNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("fence"),
-        ValueLayout.JAVA_INT.withName("handleType")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$fence = PathElement.groupElement("fence");
-    public static final PathElement PATH$handleType = PathElement.groupElement("handleType");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$fence = (AddressLayout) LAYOUT.select(PATH$fence);
-    public static final OfInt LAYOUT$handleType = (OfInt) LAYOUT.select(PATH$handleType);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$fence = LAYOUT.byteOffset(PATH$fence);
-    public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$fence = LAYOUT$fence.byteSize();
-    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
-
     public VkFenceGetSciSyncInfoNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_FENCE_GET_SCI_SYNC_INFO_NV);
@@ -105,4 +77,33 @@ public record VkFenceGetSciSyncInfoNV(MemorySegment segment) implements IPointer
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("fence"),
+        ValueLayout.JAVA_INT.withName("handleType")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$fence = PathElement.groupElement("fence");
+    public static final PathElement PATH$handleType = PathElement.groupElement("handleType");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$fence = (AddressLayout) LAYOUT.select(PATH$fence);
+    public static final OfInt LAYOUT$handleType = (OfInt) LAYOUT.select(PATH$handleType);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$fence = LAYOUT.byteOffset(PATH$fence);
+    public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$fence = LAYOUT$fence.byteSize();
+    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
+
 }

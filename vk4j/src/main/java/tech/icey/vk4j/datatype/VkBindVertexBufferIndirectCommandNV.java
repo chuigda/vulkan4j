@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBindVertexBufferIndirectCommandNV.html">VkBindVertexBufferIndirectCommandNV</a>
 public record VkBindVertexBufferIndirectCommandNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_LONG.withName("bufferAddress"),
-        ValueLayout.JAVA_INT.withName("size"),
-        ValueLayout.JAVA_INT.withName("stride")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bufferAddress = PathElement.groupElement("bufferAddress");
-    public static final PathElement PATH$size = PathElement.groupElement("size");
-    public static final PathElement PATH$stride = PathElement.groupElement("stride");
-
-    public static final OfLong LAYOUT$bufferAddress = (OfLong) LAYOUT.select(PATH$bufferAddress);
-    public static final OfInt LAYOUT$size = (OfInt) LAYOUT.select(PATH$size);
-    public static final OfInt LAYOUT$stride = (OfInt) LAYOUT.select(PATH$stride);
-
-    public static final long OFFSET$bufferAddress = LAYOUT.byteOffset(PATH$bufferAddress);
-    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
-    public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
-
-    public static final long SIZE$bufferAddress = LAYOUT$bufferAddress.byteSize();
-    public static final long SIZE$size = LAYOUT$size.byteSize();
-    public static final long SIZE$stride = LAYOUT$stride.byteSize();
-
     public VkBindVertexBufferIndirectCommandNV(MemorySegment segment) {
         this.segment = segment;
     }
@@ -86,4 +63,28 @@ public record VkBindVertexBufferIndirectCommandNV(MemorySegment segment) impleme
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("bufferAddress"),
+        ValueLayout.JAVA_INT.withName("size"),
+        ValueLayout.JAVA_INT.withName("stride")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$bufferAddress = PathElement.groupElement("bufferAddress");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
+
+    public static final OfLong LAYOUT$bufferAddress = (OfLong) LAYOUT.select(PATH$bufferAddress);
+    public static final OfInt LAYOUT$size = (OfInt) LAYOUT.select(PATH$size);
+    public static final OfInt LAYOUT$stride = (OfInt) LAYOUT.select(PATH$stride);
+
+    public static final long OFFSET$bufferAddress = LAYOUT.byteOffset(PATH$bufferAddress);
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+    public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
+
+    public static final long SIZE$bufferAddress = LAYOUT$bufferAddress.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$stride = LAYOUT$stride.byteSize();
+
 }

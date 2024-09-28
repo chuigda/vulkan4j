@@ -29,59 +29,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFramebufferCreateInfo.html">VkFramebufferCreateInfo</a>
 public record VkFramebufferCreateInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.ADDRESS.withName("renderPass"),
-        ValueLayout.JAVA_INT.withName("attachmentCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pAttachments"),
-        ValueLayout.JAVA_INT.withName("width"),
-        ValueLayout.JAVA_INT.withName("height"),
-        ValueLayout.JAVA_INT.withName("layers")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$renderPass = PathElement.groupElement("renderPass");
-    public static final PathElement PATH$attachmentCount = PathElement.groupElement("attachmentCount");
-    public static final PathElement PATH$pAttachments = PathElement.groupElement("pAttachments");
-    public static final PathElement PATH$width = PathElement.groupElement("width");
-    public static final PathElement PATH$height = PathElement.groupElement("height");
-    public static final PathElement PATH$layers = PathElement.groupElement("layers");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final AddressLayout LAYOUT$renderPass = (AddressLayout) LAYOUT.select(PATH$renderPass);
-    public static final OfInt LAYOUT$attachmentCount = (OfInt) LAYOUT.select(PATH$attachmentCount);
-    public static final AddressLayout LAYOUT$pAttachments = (AddressLayout) LAYOUT.select(PATH$pAttachments);
-    public static final OfInt LAYOUT$width = (OfInt) LAYOUT.select(PATH$width);
-    public static final OfInt LAYOUT$height = (OfInt) LAYOUT.select(PATH$height);
-    public static final OfInt LAYOUT$layers = (OfInt) LAYOUT.select(PATH$layers);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$renderPass = LAYOUT.byteOffset(PATH$renderPass);
-    public static final long OFFSET$attachmentCount = LAYOUT.byteOffset(PATH$attachmentCount);
-    public static final long OFFSET$pAttachments = LAYOUT.byteOffset(PATH$pAttachments);
-    public static final long OFFSET$width = LAYOUT.byteOffset(PATH$width);
-    public static final long OFFSET$height = LAYOUT.byteOffset(PATH$height);
-    public static final long OFFSET$layers = LAYOUT.byteOffset(PATH$layers);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$renderPass = LAYOUT$renderPass.byteSize();
-    public static final long SIZE$attachmentCount = LAYOUT$attachmentCount.byteSize();
-    public static final long SIZE$pAttachments = LAYOUT$pAttachments.byteSize();
-    public static final long SIZE$width = LAYOUT$width.byteSize();
-    public static final long SIZE$height = LAYOUT$height.byteSize();
-    public static final long SIZE$layers = LAYOUT$layers.byteSize();
-
     public VkFramebufferCreateInfo(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO);
@@ -193,4 +140,58 @@ public record VkFramebufferCreateInfo(MemorySegment segment) implements IPointer
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withName("renderPass"),
+        ValueLayout.JAVA_INT.withName("attachmentCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pAttachments"),
+        ValueLayout.JAVA_INT.withName("width"),
+        ValueLayout.JAVA_INT.withName("height"),
+        ValueLayout.JAVA_INT.withName("layers")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$renderPass = PathElement.groupElement("renderPass");
+    public static final PathElement PATH$attachmentCount = PathElement.groupElement("attachmentCount");
+    public static final PathElement PATH$pAttachments = PathElement.groupElement("pAttachments");
+    public static final PathElement PATH$width = PathElement.groupElement("width");
+    public static final PathElement PATH$height = PathElement.groupElement("height");
+    public static final PathElement PATH$layers = PathElement.groupElement("layers");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$renderPass = (AddressLayout) LAYOUT.select(PATH$renderPass);
+    public static final OfInt LAYOUT$attachmentCount = (OfInt) LAYOUT.select(PATH$attachmentCount);
+    public static final AddressLayout LAYOUT$pAttachments = (AddressLayout) LAYOUT.select(PATH$pAttachments);
+    public static final OfInt LAYOUT$width = (OfInt) LAYOUT.select(PATH$width);
+    public static final OfInt LAYOUT$height = (OfInt) LAYOUT.select(PATH$height);
+    public static final OfInt LAYOUT$layers = (OfInt) LAYOUT.select(PATH$layers);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$renderPass = LAYOUT.byteOffset(PATH$renderPass);
+    public static final long OFFSET$attachmentCount = LAYOUT.byteOffset(PATH$attachmentCount);
+    public static final long OFFSET$pAttachments = LAYOUT.byteOffset(PATH$pAttachments);
+    public static final long OFFSET$width = LAYOUT.byteOffset(PATH$width);
+    public static final long OFFSET$height = LAYOUT.byteOffset(PATH$height);
+    public static final long OFFSET$layers = LAYOUT.byteOffset(PATH$layers);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$renderPass = LAYOUT$renderPass.byteSize();
+    public static final long SIZE$attachmentCount = LAYOUT$attachmentCount.byteSize();
+    public static final long SIZE$pAttachments = LAYOUT$pAttachments.byteSize();
+    public static final long SIZE$width = LAYOUT$width.byteSize();
+    public static final long SIZE$height = LAYOUT$height.byteSize();
+    public static final long SIZE$layers = LAYOUT$layers.byteSize();
+
 }

@@ -29,59 +29,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBindDescriptorSetsInfoKHR.html">VkBindDescriptorSetsInfoKHR</a>
 public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("stageFlags"),
-        ValueLayout.ADDRESS.withName("layout"),
-        ValueLayout.JAVA_INT.withName("firstSet"),
-        ValueLayout.JAVA_INT.withName("descriptorSetCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pDescriptorSets"),
-        ValueLayout.JAVA_INT.withName("dynamicOffsetCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDynamicOffsets")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$stageFlags = PathElement.groupElement("stageFlags");
-    public static final PathElement PATH$layout = PathElement.groupElement("layout");
-    public static final PathElement PATH$firstSet = PathElement.groupElement("firstSet");
-    public static final PathElement PATH$descriptorSetCount = PathElement.groupElement("descriptorSetCount");
-    public static final PathElement PATH$pDescriptorSets = PathElement.groupElement("pDescriptorSets");
-    public static final PathElement PATH$dynamicOffsetCount = PathElement.groupElement("dynamicOffsetCount");
-    public static final PathElement PATH$pDynamicOffsets = PathElement.groupElement("pDynamicOffsets");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$stageFlags = (OfInt) LAYOUT.select(PATH$stageFlags);
-    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
-    public static final OfInt LAYOUT$firstSet = (OfInt) LAYOUT.select(PATH$firstSet);
-    public static final OfInt LAYOUT$descriptorSetCount = (OfInt) LAYOUT.select(PATH$descriptorSetCount);
-    public static final AddressLayout LAYOUT$pDescriptorSets = (AddressLayout) LAYOUT.select(PATH$pDescriptorSets);
-    public static final OfInt LAYOUT$dynamicOffsetCount = (OfInt) LAYOUT.select(PATH$dynamicOffsetCount);
-    public static final AddressLayout LAYOUT$pDynamicOffsets = (AddressLayout) LAYOUT.select(PATH$pDynamicOffsets);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$stageFlags = LAYOUT.byteOffset(PATH$stageFlags);
-    public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
-    public static final long OFFSET$firstSet = LAYOUT.byteOffset(PATH$firstSet);
-    public static final long OFFSET$descriptorSetCount = LAYOUT.byteOffset(PATH$descriptorSetCount);
-    public static final long OFFSET$pDescriptorSets = LAYOUT.byteOffset(PATH$pDescriptorSets);
-    public static final long OFFSET$dynamicOffsetCount = LAYOUT.byteOffset(PATH$dynamicOffsetCount);
-    public static final long OFFSET$pDynamicOffsets = LAYOUT.byteOffset(PATH$pDynamicOffsets);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$stageFlags = LAYOUT$stageFlags.byteSize();
-    public static final long SIZE$layout = LAYOUT$layout.byteSize();
-    public static final long SIZE$firstSet = LAYOUT$firstSet.byteSize();
-    public static final long SIZE$descriptorSetCount = LAYOUT$descriptorSetCount.byteSize();
-    public static final long SIZE$pDescriptorSets = LAYOUT$pDescriptorSets.byteSize();
-    public static final long SIZE$dynamicOffsetCount = LAYOUT$dynamicOffsetCount.byteSize();
-    public static final long SIZE$pDynamicOffsets = LAYOUT$pDynamicOffsets.byteSize();
-
     public VkBindDescriptorSetsInfoKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_SETS_INFO_KHR);
@@ -208,4 +155,58 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) implements IPoi
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("stageFlags"),
+        ValueLayout.ADDRESS.withName("layout"),
+        ValueLayout.JAVA_INT.withName("firstSet"),
+        ValueLayout.JAVA_INT.withName("descriptorSetCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pDescriptorSets"),
+        ValueLayout.JAVA_INT.withName("dynamicOffsetCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDynamicOffsets")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$stageFlags = PathElement.groupElement("stageFlags");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+    public static final PathElement PATH$firstSet = PathElement.groupElement("firstSet");
+    public static final PathElement PATH$descriptorSetCount = PathElement.groupElement("descriptorSetCount");
+    public static final PathElement PATH$pDescriptorSets = PathElement.groupElement("pDescriptorSets");
+    public static final PathElement PATH$dynamicOffsetCount = PathElement.groupElement("dynamicOffsetCount");
+    public static final PathElement PATH$pDynamicOffsets = PathElement.groupElement("pDynamicOffsets");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$stageFlags = (OfInt) LAYOUT.select(PATH$stageFlags);
+    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
+    public static final OfInt LAYOUT$firstSet = (OfInt) LAYOUT.select(PATH$firstSet);
+    public static final OfInt LAYOUT$descriptorSetCount = (OfInt) LAYOUT.select(PATH$descriptorSetCount);
+    public static final AddressLayout LAYOUT$pDescriptorSets = (AddressLayout) LAYOUT.select(PATH$pDescriptorSets);
+    public static final OfInt LAYOUT$dynamicOffsetCount = (OfInt) LAYOUT.select(PATH$dynamicOffsetCount);
+    public static final AddressLayout LAYOUT$pDynamicOffsets = (AddressLayout) LAYOUT.select(PATH$pDynamicOffsets);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$stageFlags = LAYOUT.byteOffset(PATH$stageFlags);
+    public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
+    public static final long OFFSET$firstSet = LAYOUT.byteOffset(PATH$firstSet);
+    public static final long OFFSET$descriptorSetCount = LAYOUT.byteOffset(PATH$descriptorSetCount);
+    public static final long OFFSET$pDescriptorSets = LAYOUT.byteOffset(PATH$pDescriptorSets);
+    public static final long OFFSET$dynamicOffsetCount = LAYOUT.byteOffset(PATH$dynamicOffsetCount);
+    public static final long OFFSET$pDynamicOffsets = LAYOUT.byteOffset(PATH$pDynamicOffsets);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$stageFlags = LAYOUT$stageFlags.byteSize();
+    public static final long SIZE$layout = LAYOUT$layout.byteSize();
+    public static final long SIZE$firstSet = LAYOUT$firstSet.byteSize();
+    public static final long SIZE$descriptorSetCount = LAYOUT$descriptorSetCount.byteSize();
+    public static final long SIZE$pDescriptorSets = LAYOUT$pDescriptorSets.byteSize();
+    public static final long SIZE$dynamicOffsetCount = LAYOUT$dynamicOffsetCount.byteSize();
+    public static final long SIZE$pDynamicOffsets = LAYOUT$pDynamicOffsets.byteSize();
+
 }

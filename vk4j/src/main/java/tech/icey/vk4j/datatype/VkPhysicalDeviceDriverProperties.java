@@ -26,44 +26,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceDriverProperties.html">VkPhysicalDeviceDriverProperties</a>
 public record VkPhysicalDeviceDriverProperties(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("driverID"),
-        MemoryLayout.sequenceLayout(VK_MAX_DRIVER_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("driverName"),
-        MemoryLayout.sequenceLayout(VK_MAX_DRIVER_INFO_SIZE, ValueLayout.JAVA_BYTE).withName("driverInfo"),
-        VkConformanceVersion.LAYOUT.withName("conformanceVersion")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$driverID = PathElement.groupElement("driverID");
-    public static final PathElement PATH$driverName = PathElement.groupElement("driverName");
-    public static final PathElement PATH$driverInfo = PathElement.groupElement("driverInfo");
-    public static final PathElement PATH$conformanceVersion = PathElement.groupElement("conformanceVersion");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$driverID = (OfInt) LAYOUT.select(PATH$driverID);
-    public static final SequenceLayout LAYOUT$driverName = (SequenceLayout) LAYOUT.select(PATH$driverName);
-    public static final SequenceLayout LAYOUT$driverInfo = (SequenceLayout) LAYOUT.select(PATH$driverInfo);
-    public static final StructLayout LAYOUT$conformanceVersion = (StructLayout) LAYOUT.select(PATH$conformanceVersion);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$driverID = LAYOUT.byteOffset(PATH$driverID);
-    public static final long OFFSET$driverName = LAYOUT.byteOffset(PATH$driverName);
-    public static final long OFFSET$driverInfo = LAYOUT.byteOffset(PATH$driverInfo);
-    public static final long OFFSET$conformanceVersion = LAYOUT.byteOffset(PATH$conformanceVersion);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$driverID = LAYOUT$driverID.byteSize();
-    public static final long SIZE$driverName = LAYOUT$driverName.byteSize();
-    public static final long SIZE$driverInfo = LAYOUT$driverInfo.byteSize();
-    public static final long SIZE$conformanceVersion = LAYOUT$conformanceVersion.byteSize();
-
     public VkPhysicalDeviceDriverProperties(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES);
@@ -141,4 +103,43 @@ public record VkPhysicalDeviceDriverProperties(MemorySegment segment) implements
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("driverID"),
+        MemoryLayout.sequenceLayout(VK_MAX_DRIVER_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("driverName"),
+        MemoryLayout.sequenceLayout(VK_MAX_DRIVER_INFO_SIZE, ValueLayout.JAVA_BYTE).withName("driverInfo"),
+        VkConformanceVersion.LAYOUT.withName("conformanceVersion")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$driverID = PathElement.groupElement("driverID");
+    public static final PathElement PATH$driverName = PathElement.groupElement("driverName");
+    public static final PathElement PATH$driverInfo = PathElement.groupElement("driverInfo");
+    public static final PathElement PATH$conformanceVersion = PathElement.groupElement("conformanceVersion");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$driverID = (OfInt) LAYOUT.select(PATH$driverID);
+    public static final SequenceLayout LAYOUT$driverName = (SequenceLayout) LAYOUT.select(PATH$driverName);
+    public static final SequenceLayout LAYOUT$driverInfo = (SequenceLayout) LAYOUT.select(PATH$driverInfo);
+    public static final StructLayout LAYOUT$conformanceVersion = (StructLayout) LAYOUT.select(PATH$conformanceVersion);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$driverID = LAYOUT.byteOffset(PATH$driverID);
+    public static final long OFFSET$driverName = LAYOUT.byteOffset(PATH$driverName);
+    public static final long OFFSET$driverInfo = LAYOUT.byteOffset(PATH$driverInfo);
+    public static final long OFFSET$conformanceVersion = LAYOUT.byteOffset(PATH$conformanceVersion);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$driverID = LAYOUT$driverID.byteSize();
+    public static final long SIZE$driverName = LAYOUT$driverName.byteSize();
+    public static final long SIZE$driverInfo = LAYOUT$driverInfo.byteSize();
+    public static final long SIZE$conformanceVersion = LAYOUT$conformanceVersion.byteSize();
+
 }

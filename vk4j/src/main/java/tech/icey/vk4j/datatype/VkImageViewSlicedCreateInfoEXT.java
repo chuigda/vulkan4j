@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageViewSlicedCreateInfoEXT.html">VkImageViewSlicedCreateInfoEXT</a>
 public record VkImageViewSlicedCreateInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("sliceOffset"),
-        ValueLayout.JAVA_INT.withName("sliceCount")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$sliceOffset = PathElement.groupElement("sliceOffset");
-    public static final PathElement PATH$sliceCount = PathElement.groupElement("sliceCount");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$sliceOffset = (OfInt) LAYOUT.select(PATH$sliceOffset);
-    public static final OfInt LAYOUT$sliceCount = (OfInt) LAYOUT.select(PATH$sliceCount);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$sliceOffset = LAYOUT.byteOffset(PATH$sliceOffset);
-    public static final long OFFSET$sliceCount = LAYOUT.byteOffset(PATH$sliceCount);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$sliceOffset = LAYOUT$sliceOffset.byteSize();
-    public static final long SIZE$sliceCount = LAYOUT$sliceCount.byteSize();
-
     public VkImageViewSlicedCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT);
@@ -105,4 +77,33 @@ public record VkImageViewSlicedCreateInfoEXT(MemorySegment segment) implements I
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("sliceOffset"),
+        ValueLayout.JAVA_INT.withName("sliceCount")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$sliceOffset = PathElement.groupElement("sliceOffset");
+    public static final PathElement PATH$sliceCount = PathElement.groupElement("sliceCount");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$sliceOffset = (OfInt) LAYOUT.select(PATH$sliceOffset);
+    public static final OfInt LAYOUT$sliceCount = (OfInt) LAYOUT.select(PATH$sliceCount);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$sliceOffset = LAYOUT.byteOffset(PATH$sliceOffset);
+    public static final long OFFSET$sliceCount = LAYOUT.byteOffset(PATH$sliceCount);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$sliceOffset = LAYOUT$sliceOffset.byteSize();
+    public static final long SIZE$sliceCount = LAYOUT$sliceCount.byteSize();
+
 }

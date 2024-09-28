@@ -26,44 +26,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDescriptorPoolCreateInfo.html">VkDescriptorPoolCreateInfo</a>
 public record VkDescriptorPoolCreateInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("maxSets"),
-        ValueLayout.JAVA_INT.withName("poolSizeCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkDescriptorPoolSize.LAYOUT).withName("pPoolSizes")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$maxSets = PathElement.groupElement("maxSets");
-    public static final PathElement PATH$poolSizeCount = PathElement.groupElement("poolSizeCount");
-    public static final PathElement PATH$pPoolSizes = PathElement.groupElement("pPoolSizes");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$maxSets = (OfInt) LAYOUT.select(PATH$maxSets);
-    public static final OfInt LAYOUT$poolSizeCount = (OfInt) LAYOUT.select(PATH$poolSizeCount);
-    public static final AddressLayout LAYOUT$pPoolSizes = (AddressLayout) LAYOUT.select(PATH$pPoolSizes);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$maxSets = LAYOUT.byteOffset(PATH$maxSets);
-    public static final long OFFSET$poolSizeCount = LAYOUT.byteOffset(PATH$poolSizeCount);
-    public static final long OFFSET$pPoolSizes = LAYOUT.byteOffset(PATH$pPoolSizes);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$maxSets = LAYOUT$maxSets.byteSize();
-    public static final long SIZE$poolSizeCount = LAYOUT$poolSizeCount.byteSize();
-    public static final long SIZE$pPoolSizes = LAYOUT$pPoolSizes.byteSize();
-
     public VkDescriptorPoolCreateInfo(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO);
@@ -157,4 +119,43 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) implements IPoin
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("maxSets"),
+        ValueLayout.JAVA_INT.withName("poolSizeCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDescriptorPoolSize.LAYOUT).withName("pPoolSizes")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$maxSets = PathElement.groupElement("maxSets");
+    public static final PathElement PATH$poolSizeCount = PathElement.groupElement("poolSizeCount");
+    public static final PathElement PATH$pPoolSizes = PathElement.groupElement("pPoolSizes");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$maxSets = (OfInt) LAYOUT.select(PATH$maxSets);
+    public static final OfInt LAYOUT$poolSizeCount = (OfInt) LAYOUT.select(PATH$poolSizeCount);
+    public static final AddressLayout LAYOUT$pPoolSizes = (AddressLayout) LAYOUT.select(PATH$pPoolSizes);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$maxSets = LAYOUT.byteOffset(PATH$maxSets);
+    public static final long OFFSET$poolSizeCount = LAYOUT.byteOffset(PATH$poolSizeCount);
+    public static final long OFFSET$pPoolSizes = LAYOUT.byteOffset(PATH$pPoolSizes);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$maxSets = LAYOUT$maxSets.byteSize();
+    public static final long SIZE$poolSizeCount = LAYOUT$poolSizeCount.byteSize();
+    public static final long SIZE$pPoolSizes = LAYOUT$pPoolSizes.byteSize();
+
 }

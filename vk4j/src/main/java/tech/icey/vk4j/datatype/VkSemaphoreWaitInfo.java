@@ -26,44 +26,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSemaphoreWaitInfo.html">VkSemaphoreWaitInfo</a>
 public record VkSemaphoreWaitInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("semaphoreCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pSemaphores"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pValues")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$semaphoreCount = PathElement.groupElement("semaphoreCount");
-    public static final PathElement PATH$pSemaphores = PathElement.groupElement("pSemaphores");
-    public static final PathElement PATH$pValues = PathElement.groupElement("pValues");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$semaphoreCount = (OfInt) LAYOUT.select(PATH$semaphoreCount);
-    public static final AddressLayout LAYOUT$pSemaphores = (AddressLayout) LAYOUT.select(PATH$pSemaphores);
-    public static final AddressLayout LAYOUT$pValues = (AddressLayout) LAYOUT.select(PATH$pValues);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$semaphoreCount = LAYOUT.byteOffset(PATH$semaphoreCount);
-    public static final long OFFSET$pSemaphores = LAYOUT.byteOffset(PATH$pSemaphores);
-    public static final long OFFSET$pValues = LAYOUT.byteOffset(PATH$pValues);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$semaphoreCount = LAYOUT$semaphoreCount.byteSize();
-    public static final long SIZE$pSemaphores = LAYOUT$pSemaphores.byteSize();
-    public static final long SIZE$pValues = LAYOUT$pValues.byteSize();
-
     public VkSemaphoreWaitInfo(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_SEMAPHORE_WAIT_INFO);
@@ -166,4 +128,43 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("semaphoreCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pSemaphores"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pValues")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$semaphoreCount = PathElement.groupElement("semaphoreCount");
+    public static final PathElement PATH$pSemaphores = PathElement.groupElement("pSemaphores");
+    public static final PathElement PATH$pValues = PathElement.groupElement("pValues");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$semaphoreCount = (OfInt) LAYOUT.select(PATH$semaphoreCount);
+    public static final AddressLayout LAYOUT$pSemaphores = (AddressLayout) LAYOUT.select(PATH$pSemaphores);
+    public static final AddressLayout LAYOUT$pValues = (AddressLayout) LAYOUT.select(PATH$pValues);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$semaphoreCount = LAYOUT.byteOffset(PATH$semaphoreCount);
+    public static final long OFFSET$pSemaphores = LAYOUT.byteOffset(PATH$pSemaphores);
+    public static final long OFFSET$pValues = LAYOUT.byteOffset(PATH$pValues);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$semaphoreCount = LAYOUT$semaphoreCount.byteSize();
+    public static final long SIZE$pSemaphores = LAYOUT$pSemaphores.byteSize();
+    public static final long SIZE$pValues = LAYOUT$pValues.byteSize();
+
 }

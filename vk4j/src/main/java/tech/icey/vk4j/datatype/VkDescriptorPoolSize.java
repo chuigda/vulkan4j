@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDescriptorPoolSize.html">VkDescriptorPoolSize</a>
 public record VkDescriptorPoolSize(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("type"),
-        ValueLayout.JAVA_INT.withName("descriptorCount")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$type = PathElement.groupElement("type");
-    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
-
-    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
-    public static final OfInt LAYOUT$descriptorCount = (OfInt) LAYOUT.select(PATH$descriptorCount);
-
-    public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
-    public static final long OFFSET$descriptorCount = LAYOUT.byteOffset(PATH$descriptorCount);
-
-    public static final long SIZE$type = LAYOUT$type.byteSize();
-    public static final long SIZE$descriptorCount = LAYOUT$descriptorCount.byteSize();
-
     public VkDescriptorPoolSize(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkDescriptorPoolSize(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("type"),
+        ValueLayout.JAVA_INT.withName("descriptorCount")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
+
+    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
+    public static final OfInt LAYOUT$descriptorCount = (OfInt) LAYOUT.select(PATH$descriptorCount);
+
+    public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
+    public static final long OFFSET$descriptorCount = LAYOUT.byteOffset(PATH$descriptorCount);
+
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$descriptorCount = LAYOUT$descriptorCount.byteSize();
+
 }

@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDebugMarkerObjectNameInfoEXT.html">VkDebugMarkerObjectNameInfoEXT</a>
 public record VkDebugMarkerObjectNameInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("objectType"),
-        ValueLayout.JAVA_LONG.withName("object"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pObjectName")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$objectType = PathElement.groupElement("objectType");
-    public static final PathElement PATH$object = PathElement.groupElement("object");
-    public static final PathElement PATH$pObjectName = PathElement.groupElement("pObjectName");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
-    public static final OfLong LAYOUT$object = (OfLong) LAYOUT.select(PATH$object);
-    public static final AddressLayout LAYOUT$pObjectName = (AddressLayout) LAYOUT.select(PATH$pObjectName);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$objectType = LAYOUT.byteOffset(PATH$objectType);
-    public static final long OFFSET$object = LAYOUT.byteOffset(PATH$object);
-    public static final long OFFSET$pObjectName = LAYOUT.byteOffset(PATH$pObjectName);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
-    public static final long SIZE$object = LAYOUT$object.byteSize();
-    public static final long SIZE$pObjectName = LAYOUT$pObjectName.byteSize();
-
     public VkDebugMarkerObjectNameInfoEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT);
@@ -134,4 +101,38 @@ public record VkDebugMarkerObjectNameInfoEXT(MemorySegment segment) implements I
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("objectType"),
+        ValueLayout.JAVA_LONG.withName("object"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pObjectName")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$objectType = PathElement.groupElement("objectType");
+    public static final PathElement PATH$object = PathElement.groupElement("object");
+    public static final PathElement PATH$pObjectName = PathElement.groupElement("pObjectName");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
+    public static final OfLong LAYOUT$object = (OfLong) LAYOUT.select(PATH$object);
+    public static final AddressLayout LAYOUT$pObjectName = (AddressLayout) LAYOUT.select(PATH$pObjectName);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$objectType = LAYOUT.byteOffset(PATH$objectType);
+    public static final long OFFSET$object = LAYOUT.byteOffset(PATH$object);
+    public static final long OFFSET$pObjectName = LAYOUT.byteOffset(PATH$pObjectName);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
+    public static final long SIZE$object = LAYOUT$object.byteSize();
+    public static final long SIZE$pObjectName = LAYOUT$pObjectName.byteSize();
+
 }

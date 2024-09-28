@@ -27,39 +27,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAccelerationStructureSRTMotionInstanceNV.html">VkAccelerationStructureSRTMotionInstanceNV</a>
 public record VkAccelerationStructureSRTMotionInstanceNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        VkSRTDataNV.LAYOUT.withName("transformT0"),
-        VkSRTDataNV.LAYOUT.withName("transformT1"),
-        ValueLayout.JAVA_INT.withName("bitfield$instanceCustomIndex_mask"),
-        ValueLayout.JAVA_INT.withName("bitfield$instanceShaderBindingTableRecordOffset_flags"),
-        ValueLayout.JAVA_LONG.withName("accelerationStructureReference")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$transformT0 = PathElement.groupElement("transformT0");
-    public static final PathElement PATH$transformT1 = PathElement.groupElement("transformT1");
-    public static final PathElement PATH$bitfield$instanceCustomIndex_mask = PathElement.groupElement("bitfield$instanceCustomIndex_mask");
-    public static final PathElement PATH$bitfield$instanceShaderBindingTableRecordOffset_flags = PathElement.groupElement("bitfield$instanceShaderBindingTableRecordOffset_flags");
-    public static final PathElement PATH$accelerationStructureReference = PathElement.groupElement("accelerationStructureReference");
-
-    public static final StructLayout LAYOUT$transformT0 = (StructLayout) LAYOUT.select(PATH$transformT0);
-    public static final StructLayout LAYOUT$transformT1 = (StructLayout) LAYOUT.select(PATH$transformT1);
-    public static final OfInt LAYOUT$bitfield$instanceCustomIndex_mask = (OfInt) LAYOUT.select(PATH$bitfield$instanceCustomIndex_mask);
-    public static final OfInt LAYOUT$bitfield$instanceShaderBindingTableRecordOffset_flags = (OfInt) LAYOUT.select(PATH$bitfield$instanceShaderBindingTableRecordOffset_flags);
-    public static final OfLong LAYOUT$accelerationStructureReference = (OfLong) LAYOUT.select(PATH$accelerationStructureReference);
-
-    public static final long OFFSET$transformT0 = LAYOUT.byteOffset(PATH$transformT0);
-    public static final long OFFSET$transformT1 = LAYOUT.byteOffset(PATH$transformT1);
-    public static final long OFFSET$bitfield$instanceCustomIndex_mask = LAYOUT.byteOffset(PATH$bitfield$instanceCustomIndex_mask);
-    public static final long OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags = LAYOUT.byteOffset(PATH$bitfield$instanceShaderBindingTableRecordOffset_flags);
-    public static final long OFFSET$accelerationStructureReference = LAYOUT.byteOffset(PATH$accelerationStructureReference);
-
-    public static final long SIZE$transformT0 = LAYOUT$transformT0.byteSize();
-    public static final long SIZE$transformT1 = LAYOUT$transformT1.byteSize();
-    public static final long SIZE$bitfield$instanceCustomIndex_mask = LAYOUT$bitfield$instanceCustomIndex_mask.byteSize();
-    public static final long SIZE$bitfield$instanceShaderBindingTableRecordOffset_flags = LAYOUT$bitfield$instanceShaderBindingTableRecordOffset_flags.byteSize();
-    public static final long SIZE$accelerationStructureReference = LAYOUT$accelerationStructureReference.byteSize();
-
     public VkAccelerationStructureSRTMotionInstanceNV(MemorySegment segment) {
         this.segment = segment;
     }
@@ -140,4 +107,38 @@ public record VkAccelerationStructureSRTMotionInstanceNV(MemorySegment segment) 
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        VkSRTDataNV.LAYOUT.withName("transformT0"),
+        VkSRTDataNV.LAYOUT.withName("transformT1"),
+        ValueLayout.JAVA_INT.withName("bitfield$instanceCustomIndex_mask"),
+        ValueLayout.JAVA_INT.withName("bitfield$instanceShaderBindingTableRecordOffset_flags"),
+        ValueLayout.JAVA_LONG.withName("accelerationStructureReference")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$transformT0 = PathElement.groupElement("transformT0");
+    public static final PathElement PATH$transformT1 = PathElement.groupElement("transformT1");
+    public static final PathElement PATH$bitfield$instanceCustomIndex_mask = PathElement.groupElement("bitfield$instanceCustomIndex_mask");
+    public static final PathElement PATH$bitfield$instanceShaderBindingTableRecordOffset_flags = PathElement.groupElement("bitfield$instanceShaderBindingTableRecordOffset_flags");
+    public static final PathElement PATH$accelerationStructureReference = PathElement.groupElement("accelerationStructureReference");
+
+    public static final StructLayout LAYOUT$transformT0 = (StructLayout) LAYOUT.select(PATH$transformT0);
+    public static final StructLayout LAYOUT$transformT1 = (StructLayout) LAYOUT.select(PATH$transformT1);
+    public static final OfInt LAYOUT$bitfield$instanceCustomIndex_mask = (OfInt) LAYOUT.select(PATH$bitfield$instanceCustomIndex_mask);
+    public static final OfInt LAYOUT$bitfield$instanceShaderBindingTableRecordOffset_flags = (OfInt) LAYOUT.select(PATH$bitfield$instanceShaderBindingTableRecordOffset_flags);
+    public static final OfLong LAYOUT$accelerationStructureReference = (OfLong) LAYOUT.select(PATH$accelerationStructureReference);
+
+    public static final long OFFSET$transformT0 = LAYOUT.byteOffset(PATH$transformT0);
+    public static final long OFFSET$transformT1 = LAYOUT.byteOffset(PATH$transformT1);
+    public static final long OFFSET$bitfield$instanceCustomIndex_mask = LAYOUT.byteOffset(PATH$bitfield$instanceCustomIndex_mask);
+    public static final long OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags = LAYOUT.byteOffset(PATH$bitfield$instanceShaderBindingTableRecordOffset_flags);
+    public static final long OFFSET$accelerationStructureReference = LAYOUT.byteOffset(PATH$accelerationStructureReference);
+
+    public static final long SIZE$transformT0 = LAYOUT$transformT0.byteSize();
+    public static final long SIZE$transformT1 = LAYOUT$transformT1.byteSize();
+    public static final long SIZE$bitfield$instanceCustomIndex_mask = LAYOUT$bitfield$instanceCustomIndex_mask.byteSize();
+    public static final long SIZE$bitfield$instanceShaderBindingTableRecordOffset_flags = LAYOUT$bitfield$instanceShaderBindingTableRecordOffset_flags.byteSize();
+    public static final long SIZE$accelerationStructureReference = LAYOUT$accelerationStructureReference.byteSize();
+
 }

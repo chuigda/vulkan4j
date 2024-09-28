@@ -26,44 +26,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkVertexInputBindingDescription2EXT.html">VkVertexInputBindingDescription2EXT</a>
 public record VkVertexInputBindingDescription2EXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("binding"),
-        ValueLayout.JAVA_INT.withName("stride"),
-        ValueLayout.JAVA_INT.withName("inputRate"),
-        ValueLayout.JAVA_INT.withName("divisor")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$binding = PathElement.groupElement("binding");
-    public static final PathElement PATH$stride = PathElement.groupElement("stride");
-    public static final PathElement PATH$inputRate = PathElement.groupElement("inputRate");
-    public static final PathElement PATH$divisor = PathElement.groupElement("divisor");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$binding = (OfInt) LAYOUT.select(PATH$binding);
-    public static final OfInt LAYOUT$stride = (OfInt) LAYOUT.select(PATH$stride);
-    public static final OfInt LAYOUT$inputRate = (OfInt) LAYOUT.select(PATH$inputRate);
-    public static final OfInt LAYOUT$divisor = (OfInt) LAYOUT.select(PATH$divisor);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$binding = LAYOUT.byteOffset(PATH$binding);
-    public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
-    public static final long OFFSET$inputRate = LAYOUT.byteOffset(PATH$inputRate);
-    public static final long OFFSET$divisor = LAYOUT.byteOffset(PATH$divisor);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$binding = LAYOUT$binding.byteSize();
-    public static final long SIZE$stride = LAYOUT$stride.byteSize();
-    public static final long SIZE$inputRate = LAYOUT$inputRate.byteSize();
-    public static final long SIZE$divisor = LAYOUT$divisor.byteSize();
-
     public VkVertexInputBindingDescription2EXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_VERTEX_INPUT_BINDING_DESCRIPTION_2_EXT);
@@ -133,4 +95,43 @@ public record VkVertexInputBindingDescription2EXT(MemorySegment segment) impleme
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("binding"),
+        ValueLayout.JAVA_INT.withName("stride"),
+        ValueLayout.JAVA_INT.withName("inputRate"),
+        ValueLayout.JAVA_INT.withName("divisor")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$binding = PathElement.groupElement("binding");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
+    public static final PathElement PATH$inputRate = PathElement.groupElement("inputRate");
+    public static final PathElement PATH$divisor = PathElement.groupElement("divisor");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$binding = (OfInt) LAYOUT.select(PATH$binding);
+    public static final OfInt LAYOUT$stride = (OfInt) LAYOUT.select(PATH$stride);
+    public static final OfInt LAYOUT$inputRate = (OfInt) LAYOUT.select(PATH$inputRate);
+    public static final OfInt LAYOUT$divisor = (OfInt) LAYOUT.select(PATH$divisor);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$binding = LAYOUT.byteOffset(PATH$binding);
+    public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
+    public static final long OFFSET$inputRate = LAYOUT.byteOffset(PATH$inputRate);
+    public static final long OFFSET$divisor = LAYOUT.byteOffset(PATH$divisor);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$binding = LAYOUT$binding.byteSize();
+    public static final long SIZE$stride = LAYOUT$stride.byteSize();
+    public static final long SIZE$inputRate = LAYOUT$inputRate.byteSize();
+    public static final long SIZE$divisor = LAYOUT$divisor.byteSize();
+
 }

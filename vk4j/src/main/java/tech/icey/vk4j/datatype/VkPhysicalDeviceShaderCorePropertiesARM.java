@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceShaderCorePropertiesARM.html">VkPhysicalDeviceShaderCorePropertiesARM</a>
 public record VkPhysicalDeviceShaderCorePropertiesARM(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("pixelRate"),
-        ValueLayout.JAVA_INT.withName("texelRate"),
-        ValueLayout.JAVA_INT.withName("fmaRate")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$pixelRate = PathElement.groupElement("pixelRate");
-    public static final PathElement PATH$texelRate = PathElement.groupElement("texelRate");
-    public static final PathElement PATH$fmaRate = PathElement.groupElement("fmaRate");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$pixelRate = (OfInt) LAYOUT.select(PATH$pixelRate);
-    public static final OfInt LAYOUT$texelRate = (OfInt) LAYOUT.select(PATH$texelRate);
-    public static final OfInt LAYOUT$fmaRate = (OfInt) LAYOUT.select(PATH$fmaRate);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$pixelRate = LAYOUT.byteOffset(PATH$pixelRate);
-    public static final long OFFSET$texelRate = LAYOUT.byteOffset(PATH$texelRate);
-    public static final long OFFSET$fmaRate = LAYOUT.byteOffset(PATH$fmaRate);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$pixelRate = LAYOUT$pixelRate.byteSize();
-    public static final long SIZE$texelRate = LAYOUT$texelRate.byteSize();
-    public static final long SIZE$fmaRate = LAYOUT$fmaRate.byteSize();
-
     public VkPhysicalDeviceShaderCorePropertiesARM(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_ARM);
@@ -119,4 +86,38 @@ public record VkPhysicalDeviceShaderCorePropertiesARM(MemorySegment segment) imp
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("pixelRate"),
+        ValueLayout.JAVA_INT.withName("texelRate"),
+        ValueLayout.JAVA_INT.withName("fmaRate")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pixelRate = PathElement.groupElement("pixelRate");
+    public static final PathElement PATH$texelRate = PathElement.groupElement("texelRate");
+    public static final PathElement PATH$fmaRate = PathElement.groupElement("fmaRate");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$pixelRate = (OfInt) LAYOUT.select(PATH$pixelRate);
+    public static final OfInt LAYOUT$texelRate = (OfInt) LAYOUT.select(PATH$texelRate);
+    public static final OfInt LAYOUT$fmaRate = (OfInt) LAYOUT.select(PATH$fmaRate);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$pixelRate = LAYOUT.byteOffset(PATH$pixelRate);
+    public static final long OFFSET$texelRate = LAYOUT.byteOffset(PATH$texelRate);
+    public static final long OFFSET$fmaRate = LAYOUT.byteOffset(PATH$fmaRate);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pixelRate = LAYOUT$pixelRate.byteSize();
+    public static final long SIZE$texelRate = LAYOUT$texelRate.byteSize();
+    public static final long SIZE$fmaRate = LAYOUT$fmaRate.byteSize();
+
 }

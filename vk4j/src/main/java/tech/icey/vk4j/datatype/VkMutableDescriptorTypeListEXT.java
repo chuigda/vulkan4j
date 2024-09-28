@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMutableDescriptorTypeListEXT.html">VkMutableDescriptorTypeListEXT</a>
 public record VkMutableDescriptorTypeListEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("descriptorTypeCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDescriptorTypes")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$descriptorTypeCount = PathElement.groupElement("descriptorTypeCount");
-    public static final PathElement PATH$pDescriptorTypes = PathElement.groupElement("pDescriptorTypes");
-
-    public static final OfInt LAYOUT$descriptorTypeCount = (OfInt) LAYOUT.select(PATH$descriptorTypeCount);
-    public static final AddressLayout LAYOUT$pDescriptorTypes = (AddressLayout) LAYOUT.select(PATH$pDescriptorTypes);
-
-    public static final long OFFSET$descriptorTypeCount = LAYOUT.byteOffset(PATH$descriptorTypeCount);
-    public static final long OFFSET$pDescriptorTypes = LAYOUT.byteOffset(PATH$pDescriptorTypes);
-
-    public static final long SIZE$descriptorTypeCount = LAYOUT$descriptorTypeCount.byteSize();
-    public static final long SIZE$pDescriptorTypes = LAYOUT$pDescriptorTypes.byteSize();
-
     public VkMutableDescriptorTypeListEXT(MemorySegment segment) {
         this.segment = segment;
     }
@@ -91,4 +73,23 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) implements I
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("descriptorTypeCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDescriptorTypes")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$descriptorTypeCount = PathElement.groupElement("descriptorTypeCount");
+    public static final PathElement PATH$pDescriptorTypes = PathElement.groupElement("pDescriptorTypes");
+
+    public static final OfInt LAYOUT$descriptorTypeCount = (OfInt) LAYOUT.select(PATH$descriptorTypeCount);
+    public static final AddressLayout LAYOUT$pDescriptorTypes = (AddressLayout) LAYOUT.select(PATH$pDescriptorTypes);
+
+    public static final long OFFSET$descriptorTypeCount = LAYOUT.byteOffset(PATH$descriptorTypeCount);
+    public static final long OFFSET$pDescriptorTypes = LAYOUT.byteOffset(PATH$pDescriptorTypes);
+
+    public static final long SIZE$descriptorTypeCount = LAYOUT$descriptorTypeCount.byteSize();
+    public static final long SIZE$pDescriptorTypes = LAYOUT$pDescriptorTypes.byteSize();
+
 }

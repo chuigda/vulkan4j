@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineCacheHeaderVersionOne.html">VkPipelineCacheHeaderVersionOne</a>
 public record VkPipelineCacheHeaderVersionOne(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("headerSize"),
-        ValueLayout.JAVA_INT.withName("headerVersion"),
-        ValueLayout.JAVA_INT.withName("vendorID"),
-        ValueLayout.JAVA_INT.withName("deviceID"),
-        MemoryLayout.sequenceLayout(VK_UUID_SIZE, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$headerSize = PathElement.groupElement("headerSize");
-    public static final PathElement PATH$headerVersion = PathElement.groupElement("headerVersion");
-    public static final PathElement PATH$vendorID = PathElement.groupElement("vendorID");
-    public static final PathElement PATH$deviceID = PathElement.groupElement("deviceID");
-    public static final PathElement PATH$pipelineCacheUUID = PathElement.groupElement("pipelineCacheUUID");
-
-    public static final OfInt LAYOUT$headerSize = (OfInt) LAYOUT.select(PATH$headerSize);
-    public static final OfInt LAYOUT$headerVersion = (OfInt) LAYOUT.select(PATH$headerVersion);
-    public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
-    public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
-    public static final SequenceLayout LAYOUT$pipelineCacheUUID = (SequenceLayout) LAYOUT.select(PATH$pipelineCacheUUID);
-
-    public static final long OFFSET$headerSize = LAYOUT.byteOffset(PATH$headerSize);
-    public static final long OFFSET$headerVersion = LAYOUT.byteOffset(PATH$headerVersion);
-    public static final long OFFSET$vendorID = LAYOUT.byteOffset(PATH$vendorID);
-    public static final long OFFSET$deviceID = LAYOUT.byteOffset(PATH$deviceID);
-    public static final long OFFSET$pipelineCacheUUID = LAYOUT.byteOffset(PATH$pipelineCacheUUID);
-
-    public static final long SIZE$headerSize = LAYOUT$headerSize.byteSize();
-    public static final long SIZE$headerVersion = LAYOUT$headerVersion.byteSize();
-    public static final long SIZE$vendorID = LAYOUT$vendorID.byteSize();
-    public static final long SIZE$deviceID = LAYOUT$deviceID.byteSize();
-    public static final long SIZE$pipelineCacheUUID = LAYOUT$pipelineCacheUUID.byteSize();
-
     public VkPipelineCacheHeaderVersionOne(MemorySegment segment) {
         this.segment = segment;
     }
@@ -118,4 +85,38 @@ public record VkPipelineCacheHeaderVersionOne(MemorySegment segment) implements 
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("headerSize"),
+        ValueLayout.JAVA_INT.withName("headerVersion"),
+        ValueLayout.JAVA_INT.withName("vendorID"),
+        ValueLayout.JAVA_INT.withName("deviceID"),
+        MemoryLayout.sequenceLayout(VK_UUID_SIZE, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$headerSize = PathElement.groupElement("headerSize");
+    public static final PathElement PATH$headerVersion = PathElement.groupElement("headerVersion");
+    public static final PathElement PATH$vendorID = PathElement.groupElement("vendorID");
+    public static final PathElement PATH$deviceID = PathElement.groupElement("deviceID");
+    public static final PathElement PATH$pipelineCacheUUID = PathElement.groupElement("pipelineCacheUUID");
+
+    public static final OfInt LAYOUT$headerSize = (OfInt) LAYOUT.select(PATH$headerSize);
+    public static final OfInt LAYOUT$headerVersion = (OfInt) LAYOUT.select(PATH$headerVersion);
+    public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
+    public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
+    public static final SequenceLayout LAYOUT$pipelineCacheUUID = (SequenceLayout) LAYOUT.select(PATH$pipelineCacheUUID);
+
+    public static final long OFFSET$headerSize = LAYOUT.byteOffset(PATH$headerSize);
+    public static final long OFFSET$headerVersion = LAYOUT.byteOffset(PATH$headerVersion);
+    public static final long OFFSET$vendorID = LAYOUT.byteOffset(PATH$vendorID);
+    public static final long OFFSET$deviceID = LAYOUT.byteOffset(PATH$deviceID);
+    public static final long OFFSET$pipelineCacheUUID = LAYOUT.byteOffset(PATH$pipelineCacheUUID);
+
+    public static final long SIZE$headerSize = LAYOUT$headerSize.byteSize();
+    public static final long SIZE$headerVersion = LAYOUT$headerVersion.byteSize();
+    public static final long SIZE$vendorID = LAYOUT$vendorID.byteSize();
+    public static final long SIZE$deviceID = LAYOUT$deviceID.byteSize();
+    public static final long SIZE$pipelineCacheUUID = LAYOUT$pipelineCacheUUID.byteSize();
+
 }

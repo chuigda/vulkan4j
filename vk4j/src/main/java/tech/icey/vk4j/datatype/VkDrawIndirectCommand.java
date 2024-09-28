@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDrawIndirectCommand.html">VkDrawIndirectCommand</a>
 public record VkDrawIndirectCommand(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("vertexCount"),
-        ValueLayout.JAVA_INT.withName("instanceCount"),
-        ValueLayout.JAVA_INT.withName("firstVertex"),
-        ValueLayout.JAVA_INT.withName("firstInstance")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$vertexCount = PathElement.groupElement("vertexCount");
-    public static final PathElement PATH$instanceCount = PathElement.groupElement("instanceCount");
-    public static final PathElement PATH$firstVertex = PathElement.groupElement("firstVertex");
-    public static final PathElement PATH$firstInstance = PathElement.groupElement("firstInstance");
-
-    public static final OfInt LAYOUT$vertexCount = (OfInt) LAYOUT.select(PATH$vertexCount);
-    public static final OfInt LAYOUT$instanceCount = (OfInt) LAYOUT.select(PATH$instanceCount);
-    public static final OfInt LAYOUT$firstVertex = (OfInt) LAYOUT.select(PATH$firstVertex);
-    public static final OfInt LAYOUT$firstInstance = (OfInt) LAYOUT.select(PATH$firstInstance);
-
-    public static final long OFFSET$vertexCount = LAYOUT.byteOffset(PATH$vertexCount);
-    public static final long OFFSET$instanceCount = LAYOUT.byteOffset(PATH$instanceCount);
-    public static final long OFFSET$firstVertex = LAYOUT.byteOffset(PATH$firstVertex);
-    public static final long OFFSET$firstInstance = LAYOUT.byteOffset(PATH$firstInstance);
-
-    public static final long SIZE$vertexCount = LAYOUT$vertexCount.byteSize();
-    public static final long SIZE$instanceCount = LAYOUT$instanceCount.byteSize();
-    public static final long SIZE$firstVertex = LAYOUT$firstVertex.byteSize();
-    public static final long SIZE$firstInstance = LAYOUT$firstInstance.byteSize();
-
     public VkDrawIndirectCommand(MemorySegment segment) {
         this.segment = segment;
     }
@@ -100,4 +72,33 @@ public record VkDrawIndirectCommand(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("vertexCount"),
+        ValueLayout.JAVA_INT.withName("instanceCount"),
+        ValueLayout.JAVA_INT.withName("firstVertex"),
+        ValueLayout.JAVA_INT.withName("firstInstance")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$vertexCount = PathElement.groupElement("vertexCount");
+    public static final PathElement PATH$instanceCount = PathElement.groupElement("instanceCount");
+    public static final PathElement PATH$firstVertex = PathElement.groupElement("firstVertex");
+    public static final PathElement PATH$firstInstance = PathElement.groupElement("firstInstance");
+
+    public static final OfInt LAYOUT$vertexCount = (OfInt) LAYOUT.select(PATH$vertexCount);
+    public static final OfInt LAYOUT$instanceCount = (OfInt) LAYOUT.select(PATH$instanceCount);
+    public static final OfInt LAYOUT$firstVertex = (OfInt) LAYOUT.select(PATH$firstVertex);
+    public static final OfInt LAYOUT$firstInstance = (OfInt) LAYOUT.select(PATH$firstInstance);
+
+    public static final long OFFSET$vertexCount = LAYOUT.byteOffset(PATH$vertexCount);
+    public static final long OFFSET$instanceCount = LAYOUT.byteOffset(PATH$instanceCount);
+    public static final long OFFSET$firstVertex = LAYOUT.byteOffset(PATH$firstVertex);
+    public static final long OFFSET$firstInstance = LAYOUT.byteOffset(PATH$firstInstance);
+
+    public static final long SIZE$vertexCount = LAYOUT$vertexCount.byteSize();
+    public static final long SIZE$instanceCount = LAYOUT$instanceCount.byteSize();
+    public static final long SIZE$firstVertex = LAYOUT$firstVertex.byteSize();
+    public static final long SIZE$firstInstance = LAYOUT$firstInstance.byteSize();
+
 }

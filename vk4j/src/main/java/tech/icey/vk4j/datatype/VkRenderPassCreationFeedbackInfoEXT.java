@@ -21,19 +21,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRenderPassCreationFeedbackInfoEXT.html">VkRenderPassCreationFeedbackInfoEXT</a>
 public record VkRenderPassCreationFeedbackInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("postMergeSubpassCount")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$postMergeSubpassCount = PathElement.groupElement("postMergeSubpassCount");
-
-    public static final OfInt LAYOUT$postMergeSubpassCount = (OfInt) LAYOUT.select(PATH$postMergeSubpassCount);
-
-    public static final long OFFSET$postMergeSubpassCount = LAYOUT.byteOffset(PATH$postMergeSubpassCount);
-
-    public static final long SIZE$postMergeSubpassCount = LAYOUT$postMergeSubpassCount.byteSize();
-
     public VkRenderPassCreationFeedbackInfoEXT(MemorySegment segment) {
         this.segment = segment;
     }
@@ -58,4 +45,18 @@ public record VkRenderPassCreationFeedbackInfoEXT(MemorySegment segment) impleme
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("postMergeSubpassCount")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$postMergeSubpassCount = PathElement.groupElement("postMergeSubpassCount");
+
+    public static final OfInt LAYOUT$postMergeSubpassCount = (OfInt) LAYOUT.select(PATH$postMergeSubpassCount);
+
+    public static final long OFFSET$postMergeSubpassCount = LAYOUT.byteOffset(PATH$postMergeSubpassCount);
+
+    public static final long SIZE$postMergeSubpassCount = LAYOUT$postMergeSubpassCount.byteSize();
+
 }

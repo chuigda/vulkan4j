@@ -30,64 +30,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkWriteDescriptorSet.html">VkWriteDescriptorSet</a>
 public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("dstSet"),
-        ValueLayout.JAVA_INT.withName("dstBinding"),
-        ValueLayout.JAVA_INT.withName("dstArrayElement"),
-        ValueLayout.JAVA_INT.withName("descriptorCount"),
-        ValueLayout.JAVA_INT.withName("descriptorType"),
-        ValueLayout.ADDRESS.withTargetLayout(VkDescriptorImageInfo.LAYOUT).withName("pImageInfo"),
-        ValueLayout.ADDRESS.withTargetLayout(VkDescriptorBufferInfo.LAYOUT).withName("pBufferInfo"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pTexelBufferView")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$dstSet = PathElement.groupElement("dstSet");
-    public static final PathElement PATH$dstBinding = PathElement.groupElement("dstBinding");
-    public static final PathElement PATH$dstArrayElement = PathElement.groupElement("dstArrayElement");
-    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
-    public static final PathElement PATH$descriptorType = PathElement.groupElement("descriptorType");
-    public static final PathElement PATH$pImageInfo = PathElement.groupElement("pImageInfo");
-    public static final PathElement PATH$pBufferInfo = PathElement.groupElement("pBufferInfo");
-    public static final PathElement PATH$pTexelBufferView = PathElement.groupElement("pTexelBufferView");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$dstSet = (AddressLayout) LAYOUT.select(PATH$dstSet);
-    public static final OfInt LAYOUT$dstBinding = (OfInt) LAYOUT.select(PATH$dstBinding);
-    public static final OfInt LAYOUT$dstArrayElement = (OfInt) LAYOUT.select(PATH$dstArrayElement);
-    public static final OfInt LAYOUT$descriptorCount = (OfInt) LAYOUT.select(PATH$descriptorCount);
-    public static final OfInt LAYOUT$descriptorType = (OfInt) LAYOUT.select(PATH$descriptorType);
-    public static final AddressLayout LAYOUT$pImageInfo = (AddressLayout) LAYOUT.select(PATH$pImageInfo);
-    public static final AddressLayout LAYOUT$pBufferInfo = (AddressLayout) LAYOUT.select(PATH$pBufferInfo);
-    public static final AddressLayout LAYOUT$pTexelBufferView = (AddressLayout) LAYOUT.select(PATH$pTexelBufferView);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$dstSet = LAYOUT.byteOffset(PATH$dstSet);
-    public static final long OFFSET$dstBinding = LAYOUT.byteOffset(PATH$dstBinding);
-    public static final long OFFSET$dstArrayElement = LAYOUT.byteOffset(PATH$dstArrayElement);
-    public static final long OFFSET$descriptorCount = LAYOUT.byteOffset(PATH$descriptorCount);
-    public static final long OFFSET$descriptorType = LAYOUT.byteOffset(PATH$descriptorType);
-    public static final long OFFSET$pImageInfo = LAYOUT.byteOffset(PATH$pImageInfo);
-    public static final long OFFSET$pBufferInfo = LAYOUT.byteOffset(PATH$pBufferInfo);
-    public static final long OFFSET$pTexelBufferView = LAYOUT.byteOffset(PATH$pTexelBufferView);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$dstSet = LAYOUT$dstSet.byteSize();
-    public static final long SIZE$dstBinding = LAYOUT$dstBinding.byteSize();
-    public static final long SIZE$dstArrayElement = LAYOUT$dstArrayElement.byteSize();
-    public static final long SIZE$descriptorCount = LAYOUT$descriptorCount.byteSize();
-    public static final long SIZE$descriptorType = LAYOUT$descriptorType.byteSize();
-    public static final long SIZE$pImageInfo = LAYOUT$pImageInfo.byteSize();
-    public static final long SIZE$pBufferInfo = LAYOUT$pBufferInfo.byteSize();
-    public static final long SIZE$pTexelBufferView = LAYOUT$pTexelBufferView.byteSize();
-
     public VkWriteDescriptorSet(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET);
@@ -255,4 +197,63 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("dstSet"),
+        ValueLayout.JAVA_INT.withName("dstBinding"),
+        ValueLayout.JAVA_INT.withName("dstArrayElement"),
+        ValueLayout.JAVA_INT.withName("descriptorCount"),
+        ValueLayout.JAVA_INT.withName("descriptorType"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDescriptorImageInfo.LAYOUT).withName("pImageInfo"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDescriptorBufferInfo.LAYOUT).withName("pBufferInfo"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pTexelBufferView")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$dstSet = PathElement.groupElement("dstSet");
+    public static final PathElement PATH$dstBinding = PathElement.groupElement("dstBinding");
+    public static final PathElement PATH$dstArrayElement = PathElement.groupElement("dstArrayElement");
+    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
+    public static final PathElement PATH$descriptorType = PathElement.groupElement("descriptorType");
+    public static final PathElement PATH$pImageInfo = PathElement.groupElement("pImageInfo");
+    public static final PathElement PATH$pBufferInfo = PathElement.groupElement("pBufferInfo");
+    public static final PathElement PATH$pTexelBufferView = PathElement.groupElement("pTexelBufferView");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$dstSet = (AddressLayout) LAYOUT.select(PATH$dstSet);
+    public static final OfInt LAYOUT$dstBinding = (OfInt) LAYOUT.select(PATH$dstBinding);
+    public static final OfInt LAYOUT$dstArrayElement = (OfInt) LAYOUT.select(PATH$dstArrayElement);
+    public static final OfInt LAYOUT$descriptorCount = (OfInt) LAYOUT.select(PATH$descriptorCount);
+    public static final OfInt LAYOUT$descriptorType = (OfInt) LAYOUT.select(PATH$descriptorType);
+    public static final AddressLayout LAYOUT$pImageInfo = (AddressLayout) LAYOUT.select(PATH$pImageInfo);
+    public static final AddressLayout LAYOUT$pBufferInfo = (AddressLayout) LAYOUT.select(PATH$pBufferInfo);
+    public static final AddressLayout LAYOUT$pTexelBufferView = (AddressLayout) LAYOUT.select(PATH$pTexelBufferView);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$dstSet = LAYOUT.byteOffset(PATH$dstSet);
+    public static final long OFFSET$dstBinding = LAYOUT.byteOffset(PATH$dstBinding);
+    public static final long OFFSET$dstArrayElement = LAYOUT.byteOffset(PATH$dstArrayElement);
+    public static final long OFFSET$descriptorCount = LAYOUT.byteOffset(PATH$descriptorCount);
+    public static final long OFFSET$descriptorType = LAYOUT.byteOffset(PATH$descriptorType);
+    public static final long OFFSET$pImageInfo = LAYOUT.byteOffset(PATH$pImageInfo);
+    public static final long OFFSET$pBufferInfo = LAYOUT.byteOffset(PATH$pBufferInfo);
+    public static final long OFFSET$pTexelBufferView = LAYOUT.byteOffset(PATH$pTexelBufferView);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$dstSet = LAYOUT$dstSet.byteSize();
+    public static final long SIZE$dstBinding = LAYOUT$dstBinding.byteSize();
+    public static final long SIZE$dstArrayElement = LAYOUT$dstArrayElement.byteSize();
+    public static final long SIZE$descriptorCount = LAYOUT$descriptorCount.byteSize();
+    public static final long SIZE$descriptorType = LAYOUT$descriptorType.byteSize();
+    public static final long SIZE$pImageInfo = LAYOUT$pImageInfo.byteSize();
+    public static final long SIZE$pBufferInfo = LAYOUT$pBufferInfo.byteSize();
+    public static final long SIZE$pTexelBufferView = LAYOUT$pTexelBufferView.byteSize();
+
 }

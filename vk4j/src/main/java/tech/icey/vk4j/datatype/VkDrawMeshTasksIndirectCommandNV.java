@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDrawMeshTasksIndirectCommandNV.html">VkDrawMeshTasksIndirectCommandNV</a>
 public record VkDrawMeshTasksIndirectCommandNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("taskCount"),
-        ValueLayout.JAVA_INT.withName("firstTask")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$taskCount = PathElement.groupElement("taskCount");
-    public static final PathElement PATH$firstTask = PathElement.groupElement("firstTask");
-
-    public static final OfInt LAYOUT$taskCount = (OfInt) LAYOUT.select(PATH$taskCount);
-    public static final OfInt LAYOUT$firstTask = (OfInt) LAYOUT.select(PATH$firstTask);
-
-    public static final long OFFSET$taskCount = LAYOUT.byteOffset(PATH$taskCount);
-    public static final long OFFSET$firstTask = LAYOUT.byteOffset(PATH$firstTask);
-
-    public static final long SIZE$taskCount = LAYOUT$taskCount.byteSize();
-    public static final long SIZE$firstTask = LAYOUT$firstTask.byteSize();
-
     public VkDrawMeshTasksIndirectCommandNV(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkDrawMeshTasksIndirectCommandNV(MemorySegment segment) implements
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("taskCount"),
+        ValueLayout.JAVA_INT.withName("firstTask")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$taskCount = PathElement.groupElement("taskCount");
+    public static final PathElement PATH$firstTask = PathElement.groupElement("firstTask");
+
+    public static final OfInt LAYOUT$taskCount = (OfInt) LAYOUT.select(PATH$taskCount);
+    public static final OfInt LAYOUT$firstTask = (OfInt) LAYOUT.select(PATH$firstTask);
+
+    public static final long OFFSET$taskCount = LAYOUT.byteOffset(PATH$taskCount);
+    public static final long OFFSET$firstTask = LAYOUT.byteOffset(PATH$firstTask);
+
+    public static final long SIZE$taskCount = LAYOUT$taskCount.byteSize();
+    public static final long SIZE$firstTask = LAYOUT$firstTask.byteSize();
+
 }

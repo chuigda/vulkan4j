@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT.html">VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT</a>
 public record VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("primitiveTopologyListRestart"),
-        ValueLayout.JAVA_INT.withName("primitiveTopologyPatchListRestart")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$primitiveTopologyListRestart = PathElement.groupElement("primitiveTopologyListRestart");
-    public static final PathElement PATH$primitiveTopologyPatchListRestart = PathElement.groupElement("primitiveTopologyPatchListRestart");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$primitiveTopologyListRestart = (OfInt) LAYOUT.select(PATH$primitiveTopologyListRestart);
-    public static final OfInt LAYOUT$primitiveTopologyPatchListRestart = (OfInt) LAYOUT.select(PATH$primitiveTopologyPatchListRestart);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$primitiveTopologyListRestart = LAYOUT.byteOffset(PATH$primitiveTopologyListRestart);
-    public static final long OFFSET$primitiveTopologyPatchListRestart = LAYOUT.byteOffset(PATH$primitiveTopologyPatchListRestart);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$primitiveTopologyListRestart = LAYOUT$primitiveTopologyListRestart.byteSize();
-    public static final long SIZE$primitiveTopologyPatchListRestart = LAYOUT$primitiveTopologyPatchListRestart.byteSize();
-
     public VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_TOPOLOGY_LIST_RESTART_FEATURES_EXT);
@@ -105,4 +77,33 @@ public record VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(MemorySegm
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("primitiveTopologyListRestart"),
+        ValueLayout.JAVA_INT.withName("primitiveTopologyPatchListRestart")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$primitiveTopologyListRestart = PathElement.groupElement("primitiveTopologyListRestart");
+    public static final PathElement PATH$primitiveTopologyPatchListRestart = PathElement.groupElement("primitiveTopologyPatchListRestart");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$primitiveTopologyListRestart = (OfInt) LAYOUT.select(PATH$primitiveTopologyListRestart);
+    public static final OfInt LAYOUT$primitiveTopologyPatchListRestart = (OfInt) LAYOUT.select(PATH$primitiveTopologyPatchListRestart);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$primitiveTopologyListRestart = LAYOUT.byteOffset(PATH$primitiveTopologyListRestart);
+    public static final long OFFSET$primitiveTopologyPatchListRestart = LAYOUT.byteOffset(PATH$primitiveTopologyPatchListRestart);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$primitiveTopologyListRestart = LAYOUT$primitiveTopologyListRestart.byteSize();
+    public static final long SIZE$primitiveTopologyPatchListRestart = LAYOUT$primitiveTopologyPatchListRestart.byteSize();
+
 }

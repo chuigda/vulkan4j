@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMultiDrawInfoEXT.html">VkMultiDrawInfoEXT</a>
 public record VkMultiDrawInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("firstVertex"),
-        ValueLayout.JAVA_INT.withName("vertexCount")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$firstVertex = PathElement.groupElement("firstVertex");
-    public static final PathElement PATH$vertexCount = PathElement.groupElement("vertexCount");
-
-    public static final OfInt LAYOUT$firstVertex = (OfInt) LAYOUT.select(PATH$firstVertex);
-    public static final OfInt LAYOUT$vertexCount = (OfInt) LAYOUT.select(PATH$vertexCount);
-
-    public static final long OFFSET$firstVertex = LAYOUT.byteOffset(PATH$firstVertex);
-    public static final long OFFSET$vertexCount = LAYOUT.byteOffset(PATH$vertexCount);
-
-    public static final long SIZE$firstVertex = LAYOUT$firstVertex.byteSize();
-    public static final long SIZE$vertexCount = LAYOUT$vertexCount.byteSize();
-
     public VkMultiDrawInfoEXT(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkMultiDrawInfoEXT(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("firstVertex"),
+        ValueLayout.JAVA_INT.withName("vertexCount")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$firstVertex = PathElement.groupElement("firstVertex");
+    public static final PathElement PATH$vertexCount = PathElement.groupElement("vertexCount");
+
+    public static final OfInt LAYOUT$firstVertex = (OfInt) LAYOUT.select(PATH$firstVertex);
+    public static final OfInt LAYOUT$vertexCount = (OfInt) LAYOUT.select(PATH$vertexCount);
+
+    public static final long OFFSET$firstVertex = LAYOUT.byteOffset(PATH$firstVertex);
+    public static final long OFFSET$vertexCount = LAYOUT.byteOffset(PATH$vertexCount);
+
+    public static final long SIZE$firstVertex = LAYOUT$firstVertex.byteSize();
+    public static final long SIZE$vertexCount = LAYOUT$vertexCount.byteSize();
+
 }

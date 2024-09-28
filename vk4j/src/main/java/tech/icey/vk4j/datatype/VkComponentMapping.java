@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkComponentMapping.html">VkComponentMapping</a>
 public record VkComponentMapping(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("r"),
-        ValueLayout.JAVA_INT.withName("g"),
-        ValueLayout.JAVA_INT.withName("b"),
-        ValueLayout.JAVA_INT.withName("a")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$r = PathElement.groupElement("r");
-    public static final PathElement PATH$g = PathElement.groupElement("g");
-    public static final PathElement PATH$b = PathElement.groupElement("b");
-    public static final PathElement PATH$a = PathElement.groupElement("a");
-
-    public static final OfInt LAYOUT$r = (OfInt) LAYOUT.select(PATH$r);
-    public static final OfInt LAYOUT$g = (OfInt) LAYOUT.select(PATH$g);
-    public static final OfInt LAYOUT$b = (OfInt) LAYOUT.select(PATH$b);
-    public static final OfInt LAYOUT$a = (OfInt) LAYOUT.select(PATH$a);
-
-    public static final long OFFSET$r = LAYOUT.byteOffset(PATH$r);
-    public static final long OFFSET$g = LAYOUT.byteOffset(PATH$g);
-    public static final long OFFSET$b = LAYOUT.byteOffset(PATH$b);
-    public static final long OFFSET$a = LAYOUT.byteOffset(PATH$a);
-
-    public static final long SIZE$r = LAYOUT$r.byteSize();
-    public static final long SIZE$g = LAYOUT$g.byteSize();
-    public static final long SIZE$b = LAYOUT$b.byteSize();
-    public static final long SIZE$a = LAYOUT$a.byteSize();
-
     public VkComponentMapping(MemorySegment segment) {
         this.segment = segment;
     }
@@ -100,4 +72,33 @@ public record VkComponentMapping(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("r"),
+        ValueLayout.JAVA_INT.withName("g"),
+        ValueLayout.JAVA_INT.withName("b"),
+        ValueLayout.JAVA_INT.withName("a")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$r = PathElement.groupElement("r");
+    public static final PathElement PATH$g = PathElement.groupElement("g");
+    public static final PathElement PATH$b = PathElement.groupElement("b");
+    public static final PathElement PATH$a = PathElement.groupElement("a");
+
+    public static final OfInt LAYOUT$r = (OfInt) LAYOUT.select(PATH$r);
+    public static final OfInt LAYOUT$g = (OfInt) LAYOUT.select(PATH$g);
+    public static final OfInt LAYOUT$b = (OfInt) LAYOUT.select(PATH$b);
+    public static final OfInt LAYOUT$a = (OfInt) LAYOUT.select(PATH$a);
+
+    public static final long OFFSET$r = LAYOUT.byteOffset(PATH$r);
+    public static final long OFFSET$g = LAYOUT.byteOffset(PATH$g);
+    public static final long OFFSET$b = LAYOUT.byteOffset(PATH$b);
+    public static final long OFFSET$a = LAYOUT.byteOffset(PATH$a);
+
+    public static final long SIZE$r = LAYOUT$r.byteSize();
+    public static final long SIZE$g = LAYOUT$g.byteSize();
+    public static final long SIZE$b = LAYOUT$b.byteSize();
+    public static final long SIZE$a = LAYOUT$a.byteSize();
+
 }

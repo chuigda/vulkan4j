@@ -33,79 +33,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBufferCollectionPropertiesFUCHSIA.html">VkBufferCollectionPropertiesFUCHSIA</a>
 public record VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("memoryTypeBits"),
-        ValueLayout.JAVA_INT.withName("bufferCount"),
-        ValueLayout.JAVA_INT.withName("createInfoIndex"),
-        ValueLayout.JAVA_LONG.withName("sysmemPixelFormat"),
-        ValueLayout.JAVA_INT.withName("formatFeatures"),
-        VkSysmemColorSpaceFUCHSIA.LAYOUT.withName("sysmemColorSpaceIndex"),
-        VkComponentMapping.LAYOUT.withName("samplerYcbcrConversionComponents"),
-        ValueLayout.JAVA_INT.withName("suggestedYcbcrModel"),
-        ValueLayout.JAVA_INT.withName("suggestedYcbcrRange"),
-        ValueLayout.JAVA_INT.withName("suggestedXChromaOffset"),
-        ValueLayout.JAVA_INT.withName("suggestedYChromaOffset")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$memoryTypeBits = PathElement.groupElement("memoryTypeBits");
-    public static final PathElement PATH$bufferCount = PathElement.groupElement("bufferCount");
-    public static final PathElement PATH$createInfoIndex = PathElement.groupElement("createInfoIndex");
-    public static final PathElement PATH$sysmemPixelFormat = PathElement.groupElement("sysmemPixelFormat");
-    public static final PathElement PATH$formatFeatures = PathElement.groupElement("formatFeatures");
-    public static final PathElement PATH$sysmemColorSpaceIndex = PathElement.groupElement("sysmemColorSpaceIndex");
-    public static final PathElement PATH$samplerYcbcrConversionComponents = PathElement.groupElement("samplerYcbcrConversionComponents");
-    public static final PathElement PATH$suggestedYcbcrModel = PathElement.groupElement("suggestedYcbcrModel");
-    public static final PathElement PATH$suggestedYcbcrRange = PathElement.groupElement("suggestedYcbcrRange");
-    public static final PathElement PATH$suggestedXChromaOffset = PathElement.groupElement("suggestedXChromaOffset");
-    public static final PathElement PATH$suggestedYChromaOffset = PathElement.groupElement("suggestedYChromaOffset");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$memoryTypeBits = (OfInt) LAYOUT.select(PATH$memoryTypeBits);
-    public static final OfInt LAYOUT$bufferCount = (OfInt) LAYOUT.select(PATH$bufferCount);
-    public static final OfInt LAYOUT$createInfoIndex = (OfInt) LAYOUT.select(PATH$createInfoIndex);
-    public static final OfLong LAYOUT$sysmemPixelFormat = (OfLong) LAYOUT.select(PATH$sysmemPixelFormat);
-    public static final OfInt LAYOUT$formatFeatures = (OfInt) LAYOUT.select(PATH$formatFeatures);
-    public static final StructLayout LAYOUT$sysmemColorSpaceIndex = (StructLayout) LAYOUT.select(PATH$sysmemColorSpaceIndex);
-    public static final StructLayout LAYOUT$samplerYcbcrConversionComponents = (StructLayout) LAYOUT.select(PATH$samplerYcbcrConversionComponents);
-    public static final OfInt LAYOUT$suggestedYcbcrModel = (OfInt) LAYOUT.select(PATH$suggestedYcbcrModel);
-    public static final OfInt LAYOUT$suggestedYcbcrRange = (OfInt) LAYOUT.select(PATH$suggestedYcbcrRange);
-    public static final OfInt LAYOUT$suggestedXChromaOffset = (OfInt) LAYOUT.select(PATH$suggestedXChromaOffset);
-    public static final OfInt LAYOUT$suggestedYChromaOffset = (OfInt) LAYOUT.select(PATH$suggestedYChromaOffset);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$memoryTypeBits = LAYOUT.byteOffset(PATH$memoryTypeBits);
-    public static final long OFFSET$bufferCount = LAYOUT.byteOffset(PATH$bufferCount);
-    public static final long OFFSET$createInfoIndex = LAYOUT.byteOffset(PATH$createInfoIndex);
-    public static final long OFFSET$sysmemPixelFormat = LAYOUT.byteOffset(PATH$sysmemPixelFormat);
-    public static final long OFFSET$formatFeatures = LAYOUT.byteOffset(PATH$formatFeatures);
-    public static final long OFFSET$sysmemColorSpaceIndex = LAYOUT.byteOffset(PATH$sysmemColorSpaceIndex);
-    public static final long OFFSET$samplerYcbcrConversionComponents = LAYOUT.byteOffset(PATH$samplerYcbcrConversionComponents);
-    public static final long OFFSET$suggestedYcbcrModel = LAYOUT.byteOffset(PATH$suggestedYcbcrModel);
-    public static final long OFFSET$suggestedYcbcrRange = LAYOUT.byteOffset(PATH$suggestedYcbcrRange);
-    public static final long OFFSET$suggestedXChromaOffset = LAYOUT.byteOffset(PATH$suggestedXChromaOffset);
-    public static final long OFFSET$suggestedYChromaOffset = LAYOUT.byteOffset(PATH$suggestedYChromaOffset);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$memoryTypeBits = LAYOUT$memoryTypeBits.byteSize();
-    public static final long SIZE$bufferCount = LAYOUT$bufferCount.byteSize();
-    public static final long SIZE$createInfoIndex = LAYOUT$createInfoIndex.byteSize();
-    public static final long SIZE$sysmemPixelFormat = LAYOUT$sysmemPixelFormat.byteSize();
-    public static final long SIZE$formatFeatures = LAYOUT$formatFeatures.byteSize();
-    public static final long SIZE$sysmemColorSpaceIndex = LAYOUT$sysmemColorSpaceIndex.byteSize();
-    public static final long SIZE$samplerYcbcrConversionComponents = LAYOUT$samplerYcbcrConversionComponents.byteSize();
-    public static final long SIZE$suggestedYcbcrModel = LAYOUT$suggestedYcbcrModel.byteSize();
-    public static final long SIZE$suggestedYcbcrRange = LAYOUT$suggestedYcbcrRange.byteSize();
-    public static final long SIZE$suggestedXChromaOffset = LAYOUT$suggestedXChromaOffset.byteSize();
-    public static final long SIZE$suggestedYChromaOffset = LAYOUT$suggestedYChromaOffset.byteSize();
-
     public VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_BUFFER_COLLECTION_PROPERTIES_FUCHSIA);
@@ -231,4 +158,78 @@ public record VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment) impleme
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("memoryTypeBits"),
+        ValueLayout.JAVA_INT.withName("bufferCount"),
+        ValueLayout.JAVA_INT.withName("createInfoIndex"),
+        ValueLayout.JAVA_LONG.withName("sysmemPixelFormat"),
+        ValueLayout.JAVA_INT.withName("formatFeatures"),
+        VkSysmemColorSpaceFUCHSIA.LAYOUT.withName("sysmemColorSpaceIndex"),
+        VkComponentMapping.LAYOUT.withName("samplerYcbcrConversionComponents"),
+        ValueLayout.JAVA_INT.withName("suggestedYcbcrModel"),
+        ValueLayout.JAVA_INT.withName("suggestedYcbcrRange"),
+        ValueLayout.JAVA_INT.withName("suggestedXChromaOffset"),
+        ValueLayout.JAVA_INT.withName("suggestedYChromaOffset")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$memoryTypeBits = PathElement.groupElement("memoryTypeBits");
+    public static final PathElement PATH$bufferCount = PathElement.groupElement("bufferCount");
+    public static final PathElement PATH$createInfoIndex = PathElement.groupElement("createInfoIndex");
+    public static final PathElement PATH$sysmemPixelFormat = PathElement.groupElement("sysmemPixelFormat");
+    public static final PathElement PATH$formatFeatures = PathElement.groupElement("formatFeatures");
+    public static final PathElement PATH$sysmemColorSpaceIndex = PathElement.groupElement("sysmemColorSpaceIndex");
+    public static final PathElement PATH$samplerYcbcrConversionComponents = PathElement.groupElement("samplerYcbcrConversionComponents");
+    public static final PathElement PATH$suggestedYcbcrModel = PathElement.groupElement("suggestedYcbcrModel");
+    public static final PathElement PATH$suggestedYcbcrRange = PathElement.groupElement("suggestedYcbcrRange");
+    public static final PathElement PATH$suggestedXChromaOffset = PathElement.groupElement("suggestedXChromaOffset");
+    public static final PathElement PATH$suggestedYChromaOffset = PathElement.groupElement("suggestedYChromaOffset");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$memoryTypeBits = (OfInt) LAYOUT.select(PATH$memoryTypeBits);
+    public static final OfInt LAYOUT$bufferCount = (OfInt) LAYOUT.select(PATH$bufferCount);
+    public static final OfInt LAYOUT$createInfoIndex = (OfInt) LAYOUT.select(PATH$createInfoIndex);
+    public static final OfLong LAYOUT$sysmemPixelFormat = (OfLong) LAYOUT.select(PATH$sysmemPixelFormat);
+    public static final OfInt LAYOUT$formatFeatures = (OfInt) LAYOUT.select(PATH$formatFeatures);
+    public static final StructLayout LAYOUT$sysmemColorSpaceIndex = (StructLayout) LAYOUT.select(PATH$sysmemColorSpaceIndex);
+    public static final StructLayout LAYOUT$samplerYcbcrConversionComponents = (StructLayout) LAYOUT.select(PATH$samplerYcbcrConversionComponents);
+    public static final OfInt LAYOUT$suggestedYcbcrModel = (OfInt) LAYOUT.select(PATH$suggestedYcbcrModel);
+    public static final OfInt LAYOUT$suggestedYcbcrRange = (OfInt) LAYOUT.select(PATH$suggestedYcbcrRange);
+    public static final OfInt LAYOUT$suggestedXChromaOffset = (OfInt) LAYOUT.select(PATH$suggestedXChromaOffset);
+    public static final OfInt LAYOUT$suggestedYChromaOffset = (OfInt) LAYOUT.select(PATH$suggestedYChromaOffset);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$memoryTypeBits = LAYOUT.byteOffset(PATH$memoryTypeBits);
+    public static final long OFFSET$bufferCount = LAYOUT.byteOffset(PATH$bufferCount);
+    public static final long OFFSET$createInfoIndex = LAYOUT.byteOffset(PATH$createInfoIndex);
+    public static final long OFFSET$sysmemPixelFormat = LAYOUT.byteOffset(PATH$sysmemPixelFormat);
+    public static final long OFFSET$formatFeatures = LAYOUT.byteOffset(PATH$formatFeatures);
+    public static final long OFFSET$sysmemColorSpaceIndex = LAYOUT.byteOffset(PATH$sysmemColorSpaceIndex);
+    public static final long OFFSET$samplerYcbcrConversionComponents = LAYOUT.byteOffset(PATH$samplerYcbcrConversionComponents);
+    public static final long OFFSET$suggestedYcbcrModel = LAYOUT.byteOffset(PATH$suggestedYcbcrModel);
+    public static final long OFFSET$suggestedYcbcrRange = LAYOUT.byteOffset(PATH$suggestedYcbcrRange);
+    public static final long OFFSET$suggestedXChromaOffset = LAYOUT.byteOffset(PATH$suggestedXChromaOffset);
+    public static final long OFFSET$suggestedYChromaOffset = LAYOUT.byteOffset(PATH$suggestedYChromaOffset);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$memoryTypeBits = LAYOUT$memoryTypeBits.byteSize();
+    public static final long SIZE$bufferCount = LAYOUT$bufferCount.byteSize();
+    public static final long SIZE$createInfoIndex = LAYOUT$createInfoIndex.byteSize();
+    public static final long SIZE$sysmemPixelFormat = LAYOUT$sysmemPixelFormat.byteSize();
+    public static final long SIZE$formatFeatures = LAYOUT$formatFeatures.byteSize();
+    public static final long SIZE$sysmemColorSpaceIndex = LAYOUT$sysmemColorSpaceIndex.byteSize();
+    public static final long SIZE$samplerYcbcrConversionComponents = LAYOUT$samplerYcbcrConversionComponents.byteSize();
+    public static final long SIZE$suggestedYcbcrModel = LAYOUT$suggestedYcbcrModel.byteSize();
+    public static final long SIZE$suggestedYcbcrRange = LAYOUT$suggestedYcbcrRange.byteSize();
+    public static final long SIZE$suggestedXChromaOffset = LAYOUT$suggestedXChromaOffset.byteSize();
+    public static final long SIZE$suggestedYChromaOffset = LAYOUT$suggestedYChromaOffset.byteSize();
+
 }

@@ -26,44 +26,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkApplicationParametersEXT.html">VkApplicationParametersEXT</a>
 public record VkApplicationParametersEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("vendorID"),
-        ValueLayout.JAVA_INT.withName("deviceID"),
-        ValueLayout.JAVA_INT.withName("key"),
-        ValueLayout.JAVA_LONG.withName("value")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$vendorID = PathElement.groupElement("vendorID");
-    public static final PathElement PATH$deviceID = PathElement.groupElement("deviceID");
-    public static final PathElement PATH$key = PathElement.groupElement("key");
-    public static final PathElement PATH$value = PathElement.groupElement("value");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
-    public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
-    public static final OfInt LAYOUT$key = (OfInt) LAYOUT.select(PATH$key);
-    public static final OfLong LAYOUT$value = (OfLong) LAYOUT.select(PATH$value);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$vendorID = LAYOUT.byteOffset(PATH$vendorID);
-    public static final long OFFSET$deviceID = LAYOUT.byteOffset(PATH$deviceID);
-    public static final long OFFSET$key = LAYOUT.byteOffset(PATH$key);
-    public static final long OFFSET$value = LAYOUT.byteOffset(PATH$value);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$vendorID = LAYOUT$vendorID.byteSize();
-    public static final long SIZE$deviceID = LAYOUT$deviceID.byteSize();
-    public static final long SIZE$key = LAYOUT$key.byteSize();
-    public static final long SIZE$value = LAYOUT$value.byteSize();
-
     public VkApplicationParametersEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_APPLICATION_PARAMETERS_EXT);
@@ -133,4 +95,43 @@ public record VkApplicationParametersEXT(MemorySegment segment) implements IPoin
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("vendorID"),
+        ValueLayout.JAVA_INT.withName("deviceID"),
+        ValueLayout.JAVA_INT.withName("key"),
+        ValueLayout.JAVA_LONG.withName("value")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$vendorID = PathElement.groupElement("vendorID");
+    public static final PathElement PATH$deviceID = PathElement.groupElement("deviceID");
+    public static final PathElement PATH$key = PathElement.groupElement("key");
+    public static final PathElement PATH$value = PathElement.groupElement("value");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
+    public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
+    public static final OfInt LAYOUT$key = (OfInt) LAYOUT.select(PATH$key);
+    public static final OfLong LAYOUT$value = (OfLong) LAYOUT.select(PATH$value);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$vendorID = LAYOUT.byteOffset(PATH$vendorID);
+    public static final long OFFSET$deviceID = LAYOUT.byteOffset(PATH$deviceID);
+    public static final long OFFSET$key = LAYOUT.byteOffset(PATH$key);
+    public static final long OFFSET$value = LAYOUT.byteOffset(PATH$value);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$vendorID = LAYOUT$vendorID.byteSize();
+    public static final long SIZE$deviceID = LAYOUT$deviceID.byteSize();
+    public static final long SIZE$key = LAYOUT$key.byteSize();
+    public static final long SIZE$value = LAYOUT$value.byteSize();
+
 }

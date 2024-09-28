@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceDisplacementMicromapPropertiesNV.html">VkPhysicalDeviceDisplacementMicromapPropertiesNV</a>
 public record VkPhysicalDeviceDisplacementMicromapPropertiesNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("maxDisplacementMicromapSubdivisionLevel")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$maxDisplacementMicromapSubdivisionLevel = PathElement.groupElement("maxDisplacementMicromapSubdivisionLevel");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$maxDisplacementMicromapSubdivisionLevel = (OfInt) LAYOUT.select(PATH$maxDisplacementMicromapSubdivisionLevel);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$maxDisplacementMicromapSubdivisionLevel = LAYOUT.byteOffset(PATH$maxDisplacementMicromapSubdivisionLevel);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$maxDisplacementMicromapSubdivisionLevel = LAYOUT$maxDisplacementMicromapSubdivisionLevel.byteSize();
-
     public VkPhysicalDeviceDisplacementMicromapPropertiesNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_PROPERTIES_NV);
@@ -91,4 +68,28 @@ public record VkPhysicalDeviceDisplacementMicromapPropertiesNV(MemorySegment seg
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxDisplacementMicromapSubdivisionLevel")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxDisplacementMicromapSubdivisionLevel = PathElement.groupElement("maxDisplacementMicromapSubdivisionLevel");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxDisplacementMicromapSubdivisionLevel = (OfInt) LAYOUT.select(PATH$maxDisplacementMicromapSubdivisionLevel);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$maxDisplacementMicromapSubdivisionLevel = LAYOUT.byteOffset(PATH$maxDisplacementMicromapSubdivisionLevel);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxDisplacementMicromapSubdivisionLevel = LAYOUT$maxDisplacementMicromapSubdivisionLevel.byteSize();
+
 }

@@ -25,35 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkShaderResourceUsageAMD.html">VkShaderResourceUsageAMD</a>
 public record VkShaderResourceUsageAMD(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("numUsedVgprs"),
-        ValueLayout.JAVA_INT.withName("numUsedSgprs"),
-        ValueLayout.JAVA_INT.withName("ldsSizePerLocalWorkGroup"),
-        NativeLayout.C_SIZE_T.withName("ldsUsageSizeInBytes"),
-        NativeLayout.C_SIZE_T.withName("scratchMemUsageInBytes")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$numUsedVgprs = PathElement.groupElement("numUsedVgprs");
-    public static final PathElement PATH$numUsedSgprs = PathElement.groupElement("numUsedSgprs");
-    public static final PathElement PATH$ldsSizePerLocalWorkGroup = PathElement.groupElement("ldsSizePerLocalWorkGroup");
-    public static final PathElement PATH$ldsUsageSizeInBytes = PathElement.groupElement("ldsUsageSizeInBytes");
-    public static final PathElement PATH$scratchMemUsageInBytes = PathElement.groupElement("scratchMemUsageInBytes");
-
-    public static final OfInt LAYOUT$numUsedVgprs = (OfInt) LAYOUT.select(PATH$numUsedVgprs);
-    public static final OfInt LAYOUT$numUsedSgprs = (OfInt) LAYOUT.select(PATH$numUsedSgprs);
-    public static final OfInt LAYOUT$ldsSizePerLocalWorkGroup = (OfInt) LAYOUT.select(PATH$ldsSizePerLocalWorkGroup);
-
-    public static final long OFFSET$numUsedVgprs = LAYOUT.byteOffset(PATH$numUsedVgprs);
-    public static final long OFFSET$numUsedSgprs = LAYOUT.byteOffset(PATH$numUsedSgprs);
-    public static final long OFFSET$ldsSizePerLocalWorkGroup = LAYOUT.byteOffset(PATH$ldsSizePerLocalWorkGroup);
-    public static final long OFFSET$ldsUsageSizeInBytes = LAYOUT.byteOffset(PATH$ldsUsageSizeInBytes);
-    public static final long OFFSET$scratchMemUsageInBytes = LAYOUT.byteOffset(PATH$scratchMemUsageInBytes);
-
-    public static final long SIZE$numUsedVgprs = LAYOUT$numUsedVgprs.byteSize();
-    public static final long SIZE$numUsedSgprs = LAYOUT$numUsedSgprs.byteSize();
-    public static final long SIZE$ldsSizePerLocalWorkGroup = LAYOUT$ldsSizePerLocalWorkGroup.byteSize();
-
     public VkShaderResourceUsageAMD(MemorySegment segment) {
         this.segment = segment;
     }
@@ -110,4 +81,34 @@ public record VkShaderResourceUsageAMD(MemorySegment segment) implements IPointe
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("numUsedVgprs"),
+        ValueLayout.JAVA_INT.withName("numUsedSgprs"),
+        ValueLayout.JAVA_INT.withName("ldsSizePerLocalWorkGroup"),
+        NativeLayout.C_SIZE_T.withName("ldsUsageSizeInBytes"),
+        NativeLayout.C_SIZE_T.withName("scratchMemUsageInBytes")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$numUsedVgprs = PathElement.groupElement("numUsedVgprs");
+    public static final PathElement PATH$numUsedSgprs = PathElement.groupElement("numUsedSgprs");
+    public static final PathElement PATH$ldsSizePerLocalWorkGroup = PathElement.groupElement("ldsSizePerLocalWorkGroup");
+    public static final PathElement PATH$ldsUsageSizeInBytes = PathElement.groupElement("ldsUsageSizeInBytes");
+    public static final PathElement PATH$scratchMemUsageInBytes = PathElement.groupElement("scratchMemUsageInBytes");
+
+    public static final OfInt LAYOUT$numUsedVgprs = (OfInt) LAYOUT.select(PATH$numUsedVgprs);
+    public static final OfInt LAYOUT$numUsedSgprs = (OfInt) LAYOUT.select(PATH$numUsedSgprs);
+    public static final OfInt LAYOUT$ldsSizePerLocalWorkGroup = (OfInt) LAYOUT.select(PATH$ldsSizePerLocalWorkGroup);
+
+    public static final long OFFSET$numUsedVgprs = LAYOUT.byteOffset(PATH$numUsedVgprs);
+    public static final long OFFSET$numUsedSgprs = LAYOUT.byteOffset(PATH$numUsedSgprs);
+    public static final long OFFSET$ldsSizePerLocalWorkGroup = LAYOUT.byteOffset(PATH$ldsSizePerLocalWorkGroup);
+    public static final long OFFSET$ldsUsageSizeInBytes = LAYOUT.byteOffset(PATH$ldsUsageSizeInBytes);
+    public static final long OFFSET$scratchMemUsageInBytes = LAYOUT.byteOffset(PATH$scratchMemUsageInBytes);
+
+    public static final long SIZE$numUsedVgprs = LAYOUT$numUsedVgprs.byteSize();
+    public static final long SIZE$numUsedSgprs = LAYOUT$numUsedSgprs.byteSize();
+    public static final long SIZE$ldsSizePerLocalWorkGroup = LAYOUT$ldsSizePerLocalWorkGroup.byteSize();
+
 }

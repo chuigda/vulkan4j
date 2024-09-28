@@ -28,54 +28,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRenderPassMultiviewCreateInfo.html">VkRenderPassMultiviewCreateInfo</a>
 public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("subpassCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pViewMasks"),
-        ValueLayout.JAVA_INT.withName("dependencyCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pViewOffsets"),
-        ValueLayout.JAVA_INT.withName("correlationMaskCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCorrelationMasks")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$subpassCount = PathElement.groupElement("subpassCount");
-    public static final PathElement PATH$pViewMasks = PathElement.groupElement("pViewMasks");
-    public static final PathElement PATH$dependencyCount = PathElement.groupElement("dependencyCount");
-    public static final PathElement PATH$pViewOffsets = PathElement.groupElement("pViewOffsets");
-    public static final PathElement PATH$correlationMaskCount = PathElement.groupElement("correlationMaskCount");
-    public static final PathElement PATH$pCorrelationMasks = PathElement.groupElement("pCorrelationMasks");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$subpassCount = (OfInt) LAYOUT.select(PATH$subpassCount);
-    public static final AddressLayout LAYOUT$pViewMasks = (AddressLayout) LAYOUT.select(PATH$pViewMasks);
-    public static final OfInt LAYOUT$dependencyCount = (OfInt) LAYOUT.select(PATH$dependencyCount);
-    public static final AddressLayout LAYOUT$pViewOffsets = (AddressLayout) LAYOUT.select(PATH$pViewOffsets);
-    public static final OfInt LAYOUT$correlationMaskCount = (OfInt) LAYOUT.select(PATH$correlationMaskCount);
-    public static final AddressLayout LAYOUT$pCorrelationMasks = (AddressLayout) LAYOUT.select(PATH$pCorrelationMasks);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$subpassCount = LAYOUT.byteOffset(PATH$subpassCount);
-    public static final long OFFSET$pViewMasks = LAYOUT.byteOffset(PATH$pViewMasks);
-    public static final long OFFSET$dependencyCount = LAYOUT.byteOffset(PATH$dependencyCount);
-    public static final long OFFSET$pViewOffsets = LAYOUT.byteOffset(PATH$pViewOffsets);
-    public static final long OFFSET$correlationMaskCount = LAYOUT.byteOffset(PATH$correlationMaskCount);
-    public static final long OFFSET$pCorrelationMasks = LAYOUT.byteOffset(PATH$pCorrelationMasks);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$subpassCount = LAYOUT$subpassCount.byteSize();
-    public static final long SIZE$pViewMasks = LAYOUT$pViewMasks.byteSize();
-    public static final long SIZE$dependencyCount = LAYOUT$dependencyCount.byteSize();
-    public static final long SIZE$pViewOffsets = LAYOUT$pViewOffsets.byteSize();
-    public static final long SIZE$correlationMaskCount = LAYOUT$correlationMaskCount.byteSize();
-    public static final long SIZE$pCorrelationMasks = LAYOUT$pCorrelationMasks.byteSize();
-
     public VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO);
@@ -206,4 +158,53 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) implements 
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("subpassCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pViewMasks"),
+        ValueLayout.JAVA_INT.withName("dependencyCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pViewOffsets"),
+        ValueLayout.JAVA_INT.withName("correlationMaskCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCorrelationMasks")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$subpassCount = PathElement.groupElement("subpassCount");
+    public static final PathElement PATH$pViewMasks = PathElement.groupElement("pViewMasks");
+    public static final PathElement PATH$dependencyCount = PathElement.groupElement("dependencyCount");
+    public static final PathElement PATH$pViewOffsets = PathElement.groupElement("pViewOffsets");
+    public static final PathElement PATH$correlationMaskCount = PathElement.groupElement("correlationMaskCount");
+    public static final PathElement PATH$pCorrelationMasks = PathElement.groupElement("pCorrelationMasks");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$subpassCount = (OfInt) LAYOUT.select(PATH$subpassCount);
+    public static final AddressLayout LAYOUT$pViewMasks = (AddressLayout) LAYOUT.select(PATH$pViewMasks);
+    public static final OfInt LAYOUT$dependencyCount = (OfInt) LAYOUT.select(PATH$dependencyCount);
+    public static final AddressLayout LAYOUT$pViewOffsets = (AddressLayout) LAYOUT.select(PATH$pViewOffsets);
+    public static final OfInt LAYOUT$correlationMaskCount = (OfInt) LAYOUT.select(PATH$correlationMaskCount);
+    public static final AddressLayout LAYOUT$pCorrelationMasks = (AddressLayout) LAYOUT.select(PATH$pCorrelationMasks);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$subpassCount = LAYOUT.byteOffset(PATH$subpassCount);
+    public static final long OFFSET$pViewMasks = LAYOUT.byteOffset(PATH$pViewMasks);
+    public static final long OFFSET$dependencyCount = LAYOUT.byteOffset(PATH$dependencyCount);
+    public static final long OFFSET$pViewOffsets = LAYOUT.byteOffset(PATH$pViewOffsets);
+    public static final long OFFSET$correlationMaskCount = LAYOUT.byteOffset(PATH$correlationMaskCount);
+    public static final long OFFSET$pCorrelationMasks = LAYOUT.byteOffset(PATH$pCorrelationMasks);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$subpassCount = LAYOUT$subpassCount.byteSize();
+    public static final long SIZE$pViewMasks = LAYOUT$pViewMasks.byteSize();
+    public static final long SIZE$dependencyCount = LAYOUT$dependencyCount.byteSize();
+    public static final long SIZE$pViewOffsets = LAYOUT$pViewOffsets.byteSize();
+    public static final long SIZE$correlationMaskCount = LAYOUT$correlationMaskCount.byteSize();
+    public static final long SIZE$pCorrelationMasks = LAYOUT$pCorrelationMasks.byteSize();
+
 }

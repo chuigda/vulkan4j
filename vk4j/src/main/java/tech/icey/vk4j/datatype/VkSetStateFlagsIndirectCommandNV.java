@@ -21,19 +21,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSetStateFlagsIndirectCommandNV.html">VkSetStateFlagsIndirectCommandNV</a>
 public record VkSetStateFlagsIndirectCommandNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("data")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$data = PathElement.groupElement("data");
-
-    public static final OfInt LAYOUT$data = (OfInt) LAYOUT.select(PATH$data);
-
-    public static final long OFFSET$data = LAYOUT.byteOffset(PATH$data);
-
-    public static final long SIZE$data = LAYOUT$data.byteSize();
-
     public VkSetStateFlagsIndirectCommandNV(MemorySegment segment) {
         this.segment = segment;
     }
@@ -58,4 +45,18 @@ public record VkSetStateFlagsIndirectCommandNV(MemorySegment segment) implements
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("data")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$data = PathElement.groupElement("data");
+
+    public static final OfInt LAYOUT$data = (OfInt) LAYOUT.select(PATH$data);
+
+    public static final long OFFSET$data = LAYOUT.byteOffset(PATH$data);
+
+    public static final long SIZE$data = LAYOUT$data.byteSize();
+
 }

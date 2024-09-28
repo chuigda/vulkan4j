@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFormatProperties.html">VkFormatProperties</a>
 public record VkFormatProperties(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("linearTilingFeatures"),
-        ValueLayout.JAVA_INT.withName("optimalTilingFeatures"),
-        ValueLayout.JAVA_INT.withName("bufferFeatures")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$linearTilingFeatures = PathElement.groupElement("linearTilingFeatures");
-    public static final PathElement PATH$optimalTilingFeatures = PathElement.groupElement("optimalTilingFeatures");
-    public static final PathElement PATH$bufferFeatures = PathElement.groupElement("bufferFeatures");
-
-    public static final OfInt LAYOUT$linearTilingFeatures = (OfInt) LAYOUT.select(PATH$linearTilingFeatures);
-    public static final OfInt LAYOUT$optimalTilingFeatures = (OfInt) LAYOUT.select(PATH$optimalTilingFeatures);
-    public static final OfInt LAYOUT$bufferFeatures = (OfInt) LAYOUT.select(PATH$bufferFeatures);
-
-    public static final long OFFSET$linearTilingFeatures = LAYOUT.byteOffset(PATH$linearTilingFeatures);
-    public static final long OFFSET$optimalTilingFeatures = LAYOUT.byteOffset(PATH$optimalTilingFeatures);
-    public static final long OFFSET$bufferFeatures = LAYOUT.byteOffset(PATH$bufferFeatures);
-
-    public static final long SIZE$linearTilingFeatures = LAYOUT$linearTilingFeatures.byteSize();
-    public static final long SIZE$optimalTilingFeatures = LAYOUT$optimalTilingFeatures.byteSize();
-    public static final long SIZE$bufferFeatures = LAYOUT$bufferFeatures.byteSize();
-
     public VkFormatProperties(MemorySegment segment) {
         this.segment = segment;
     }
@@ -86,4 +63,28 @@ public record VkFormatProperties(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("linearTilingFeatures"),
+        ValueLayout.JAVA_INT.withName("optimalTilingFeatures"),
+        ValueLayout.JAVA_INT.withName("bufferFeatures")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$linearTilingFeatures = PathElement.groupElement("linearTilingFeatures");
+    public static final PathElement PATH$optimalTilingFeatures = PathElement.groupElement("optimalTilingFeatures");
+    public static final PathElement PATH$bufferFeatures = PathElement.groupElement("bufferFeatures");
+
+    public static final OfInt LAYOUT$linearTilingFeatures = (OfInt) LAYOUT.select(PATH$linearTilingFeatures);
+    public static final OfInt LAYOUT$optimalTilingFeatures = (OfInt) LAYOUT.select(PATH$optimalTilingFeatures);
+    public static final OfInt LAYOUT$bufferFeatures = (OfInt) LAYOUT.select(PATH$bufferFeatures);
+
+    public static final long OFFSET$linearTilingFeatures = LAYOUT.byteOffset(PATH$linearTilingFeatures);
+    public static final long OFFSET$optimalTilingFeatures = LAYOUT.byteOffset(PATH$optimalTilingFeatures);
+    public static final long OFFSET$bufferFeatures = LAYOUT.byteOffset(PATH$bufferFeatures);
+
+    public static final long SIZE$linearTilingFeatures = LAYOUT$linearTilingFeatures.byteSize();
+    public static final long SIZE$optimalTilingFeatures = LAYOUT$optimalTilingFeatures.byteSize();
+    public static final long SIZE$bufferFeatures = LAYOUT$bufferFeatures.byteSize();
+
 }

@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDescriptorBufferBindingInfoEXT.html">VkDescriptorBufferBindingInfoEXT</a>
 public record VkDescriptorBufferBindingInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_LONG.withName("address"),
-        ValueLayout.JAVA_INT.withName("usage")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$address = PathElement.groupElement("address");
-    public static final PathElement PATH$usage = PathElement.groupElement("usage");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfLong LAYOUT$address = (OfLong) LAYOUT.select(PATH$address);
-    public static final OfInt LAYOUT$usage = (OfInt) LAYOUT.select(PATH$usage);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$address = LAYOUT.byteOffset(PATH$address);
-    public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$address = LAYOUT$address.byteSize();
-    public static final long SIZE$usage = LAYOUT$usage.byteSize();
-
     public VkDescriptorBufferBindingInfoEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_DESCRIPTOR_BUFFER_BINDING_INFO_EXT);
@@ -105,4 +77,33 @@ public record VkDescriptorBufferBindingInfoEXT(MemorySegment segment) implements
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("address"),
+        ValueLayout.JAVA_INT.withName("usage")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$address = PathElement.groupElement("address");
+    public static final PathElement PATH$usage = PathElement.groupElement("usage");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$address = (OfLong) LAYOUT.select(PATH$address);
+    public static final OfInt LAYOUT$usage = (OfInt) LAYOUT.select(PATH$usage);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$address = LAYOUT.byteOffset(PATH$address);
+    public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$address = LAYOUT$address.byteSize();
+    public static final long SIZE$usage = LAYOUT$usage.byteSize();
+
 }

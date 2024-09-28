@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMultiDrawIndexedInfoEXT.html">VkMultiDrawIndexedInfoEXT</a>
 public record VkMultiDrawIndexedInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("firstIndex"),
-        ValueLayout.JAVA_INT.withName("indexCount"),
-        ValueLayout.JAVA_INT.withName("vertexOffset")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$firstIndex = PathElement.groupElement("firstIndex");
-    public static final PathElement PATH$indexCount = PathElement.groupElement("indexCount");
-    public static final PathElement PATH$vertexOffset = PathElement.groupElement("vertexOffset");
-
-    public static final OfInt LAYOUT$firstIndex = (OfInt) LAYOUT.select(PATH$firstIndex);
-    public static final OfInt LAYOUT$indexCount = (OfInt) LAYOUT.select(PATH$indexCount);
-    public static final OfInt LAYOUT$vertexOffset = (OfInt) LAYOUT.select(PATH$vertexOffset);
-
-    public static final long OFFSET$firstIndex = LAYOUT.byteOffset(PATH$firstIndex);
-    public static final long OFFSET$indexCount = LAYOUT.byteOffset(PATH$indexCount);
-    public static final long OFFSET$vertexOffset = LAYOUT.byteOffset(PATH$vertexOffset);
-
-    public static final long SIZE$firstIndex = LAYOUT$firstIndex.byteSize();
-    public static final long SIZE$indexCount = LAYOUT$indexCount.byteSize();
-    public static final long SIZE$vertexOffset = LAYOUT$vertexOffset.byteSize();
-
     public VkMultiDrawIndexedInfoEXT(MemorySegment segment) {
         this.segment = segment;
     }
@@ -86,4 +63,28 @@ public record VkMultiDrawIndexedInfoEXT(MemorySegment segment) implements IPoint
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("firstIndex"),
+        ValueLayout.JAVA_INT.withName("indexCount"),
+        ValueLayout.JAVA_INT.withName("vertexOffset")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$firstIndex = PathElement.groupElement("firstIndex");
+    public static final PathElement PATH$indexCount = PathElement.groupElement("indexCount");
+    public static final PathElement PATH$vertexOffset = PathElement.groupElement("vertexOffset");
+
+    public static final OfInt LAYOUT$firstIndex = (OfInt) LAYOUT.select(PATH$firstIndex);
+    public static final OfInt LAYOUT$indexCount = (OfInt) LAYOUT.select(PATH$indexCount);
+    public static final OfInt LAYOUT$vertexOffset = (OfInt) LAYOUT.select(PATH$vertexOffset);
+
+    public static final long OFFSET$firstIndex = LAYOUT.byteOffset(PATH$firstIndex);
+    public static final long OFFSET$indexCount = LAYOUT.byteOffset(PATH$indexCount);
+    public static final long OFFSET$vertexOffset = LAYOUT.byteOffset(PATH$vertexOffset);
+
+    public static final long SIZE$firstIndex = LAYOUT$firstIndex.byteSize();
+    public static final long SIZE$indexCount = LAYOUT$indexCount.byteSize();
+    public static final long SIZE$vertexOffset = LAYOUT$vertexOffset.byteSize();
+
 }

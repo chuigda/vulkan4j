@@ -31,69 +31,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkScreenBufferFormatPropertiesQNX.html">VkScreenBufferFormatPropertiesQNX</a>
 public record VkScreenBufferFormatPropertiesQNX(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("format"),
-        ValueLayout.JAVA_LONG.withName("externalFormat"),
-        ValueLayout.JAVA_LONG.withName("screenUsage"),
-        ValueLayout.JAVA_INT.withName("formatFeatures"),
-        VkComponentMapping.LAYOUT.withName("samplerYcbcrConversionComponents"),
-        ValueLayout.JAVA_INT.withName("suggestedYcbcrModel"),
-        ValueLayout.JAVA_INT.withName("suggestedYcbcrRange"),
-        ValueLayout.JAVA_INT.withName("suggestedXChromaOffset"),
-        ValueLayout.JAVA_INT.withName("suggestedYChromaOffset")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$format = PathElement.groupElement("format");
-    public static final PathElement PATH$externalFormat = PathElement.groupElement("externalFormat");
-    public static final PathElement PATH$screenUsage = PathElement.groupElement("screenUsage");
-    public static final PathElement PATH$formatFeatures = PathElement.groupElement("formatFeatures");
-    public static final PathElement PATH$samplerYcbcrConversionComponents = PathElement.groupElement("samplerYcbcrConversionComponents");
-    public static final PathElement PATH$suggestedYcbcrModel = PathElement.groupElement("suggestedYcbcrModel");
-    public static final PathElement PATH$suggestedYcbcrRange = PathElement.groupElement("suggestedYcbcrRange");
-    public static final PathElement PATH$suggestedXChromaOffset = PathElement.groupElement("suggestedXChromaOffset");
-    public static final PathElement PATH$suggestedYChromaOffset = PathElement.groupElement("suggestedYChromaOffset");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
-    public static final OfLong LAYOUT$externalFormat = (OfLong) LAYOUT.select(PATH$externalFormat);
-    public static final OfLong LAYOUT$screenUsage = (OfLong) LAYOUT.select(PATH$screenUsage);
-    public static final OfInt LAYOUT$formatFeatures = (OfInt) LAYOUT.select(PATH$formatFeatures);
-    public static final StructLayout LAYOUT$samplerYcbcrConversionComponents = (StructLayout) LAYOUT.select(PATH$samplerYcbcrConversionComponents);
-    public static final OfInt LAYOUT$suggestedYcbcrModel = (OfInt) LAYOUT.select(PATH$suggestedYcbcrModel);
-    public static final OfInt LAYOUT$suggestedYcbcrRange = (OfInt) LAYOUT.select(PATH$suggestedYcbcrRange);
-    public static final OfInt LAYOUT$suggestedXChromaOffset = (OfInt) LAYOUT.select(PATH$suggestedXChromaOffset);
-    public static final OfInt LAYOUT$suggestedYChromaOffset = (OfInt) LAYOUT.select(PATH$suggestedYChromaOffset);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
-    public static final long OFFSET$externalFormat = LAYOUT.byteOffset(PATH$externalFormat);
-    public static final long OFFSET$screenUsage = LAYOUT.byteOffset(PATH$screenUsage);
-    public static final long OFFSET$formatFeatures = LAYOUT.byteOffset(PATH$formatFeatures);
-    public static final long OFFSET$samplerYcbcrConversionComponents = LAYOUT.byteOffset(PATH$samplerYcbcrConversionComponents);
-    public static final long OFFSET$suggestedYcbcrModel = LAYOUT.byteOffset(PATH$suggestedYcbcrModel);
-    public static final long OFFSET$suggestedYcbcrRange = LAYOUT.byteOffset(PATH$suggestedYcbcrRange);
-    public static final long OFFSET$suggestedXChromaOffset = LAYOUT.byteOffset(PATH$suggestedXChromaOffset);
-    public static final long OFFSET$suggestedYChromaOffset = LAYOUT.byteOffset(PATH$suggestedYChromaOffset);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$format = LAYOUT$format.byteSize();
-    public static final long SIZE$externalFormat = LAYOUT$externalFormat.byteSize();
-    public static final long SIZE$screenUsage = LAYOUT$screenUsage.byteSize();
-    public static final long SIZE$formatFeatures = LAYOUT$formatFeatures.byteSize();
-    public static final long SIZE$samplerYcbcrConversionComponents = LAYOUT$samplerYcbcrConversionComponents.byteSize();
-    public static final long SIZE$suggestedYcbcrModel = LAYOUT$suggestedYcbcrModel.byteSize();
-    public static final long SIZE$suggestedYcbcrRange = LAYOUT$suggestedYcbcrRange.byteSize();
-    public static final long SIZE$suggestedXChromaOffset = LAYOUT$suggestedXChromaOffset.byteSize();
-    public static final long SIZE$suggestedYChromaOffset = LAYOUT$suggestedYChromaOffset.byteSize();
-
     public VkScreenBufferFormatPropertiesQNX(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_SCREEN_BUFFER_FORMAT_PROPERTIES_QNX);
@@ -203,4 +140,68 @@ public record VkScreenBufferFormatPropertiesQNX(MemorySegment segment) implement
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("format"),
+        ValueLayout.JAVA_LONG.withName("externalFormat"),
+        ValueLayout.JAVA_LONG.withName("screenUsage"),
+        ValueLayout.JAVA_INT.withName("formatFeatures"),
+        VkComponentMapping.LAYOUT.withName("samplerYcbcrConversionComponents"),
+        ValueLayout.JAVA_INT.withName("suggestedYcbcrModel"),
+        ValueLayout.JAVA_INT.withName("suggestedYcbcrRange"),
+        ValueLayout.JAVA_INT.withName("suggestedXChromaOffset"),
+        ValueLayout.JAVA_INT.withName("suggestedYChromaOffset")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$externalFormat = PathElement.groupElement("externalFormat");
+    public static final PathElement PATH$screenUsage = PathElement.groupElement("screenUsage");
+    public static final PathElement PATH$formatFeatures = PathElement.groupElement("formatFeatures");
+    public static final PathElement PATH$samplerYcbcrConversionComponents = PathElement.groupElement("samplerYcbcrConversionComponents");
+    public static final PathElement PATH$suggestedYcbcrModel = PathElement.groupElement("suggestedYcbcrModel");
+    public static final PathElement PATH$suggestedYcbcrRange = PathElement.groupElement("suggestedYcbcrRange");
+    public static final PathElement PATH$suggestedXChromaOffset = PathElement.groupElement("suggestedXChromaOffset");
+    public static final PathElement PATH$suggestedYChromaOffset = PathElement.groupElement("suggestedYChromaOffset");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
+    public static final OfLong LAYOUT$externalFormat = (OfLong) LAYOUT.select(PATH$externalFormat);
+    public static final OfLong LAYOUT$screenUsage = (OfLong) LAYOUT.select(PATH$screenUsage);
+    public static final OfInt LAYOUT$formatFeatures = (OfInt) LAYOUT.select(PATH$formatFeatures);
+    public static final StructLayout LAYOUT$samplerYcbcrConversionComponents = (StructLayout) LAYOUT.select(PATH$samplerYcbcrConversionComponents);
+    public static final OfInt LAYOUT$suggestedYcbcrModel = (OfInt) LAYOUT.select(PATH$suggestedYcbcrModel);
+    public static final OfInt LAYOUT$suggestedYcbcrRange = (OfInt) LAYOUT.select(PATH$suggestedYcbcrRange);
+    public static final OfInt LAYOUT$suggestedXChromaOffset = (OfInt) LAYOUT.select(PATH$suggestedXChromaOffset);
+    public static final OfInt LAYOUT$suggestedYChromaOffset = (OfInt) LAYOUT.select(PATH$suggestedYChromaOffset);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
+    public static final long OFFSET$externalFormat = LAYOUT.byteOffset(PATH$externalFormat);
+    public static final long OFFSET$screenUsage = LAYOUT.byteOffset(PATH$screenUsage);
+    public static final long OFFSET$formatFeatures = LAYOUT.byteOffset(PATH$formatFeatures);
+    public static final long OFFSET$samplerYcbcrConversionComponents = LAYOUT.byteOffset(PATH$samplerYcbcrConversionComponents);
+    public static final long OFFSET$suggestedYcbcrModel = LAYOUT.byteOffset(PATH$suggestedYcbcrModel);
+    public static final long OFFSET$suggestedYcbcrRange = LAYOUT.byteOffset(PATH$suggestedYcbcrRange);
+    public static final long OFFSET$suggestedXChromaOffset = LAYOUT.byteOffset(PATH$suggestedXChromaOffset);
+    public static final long OFFSET$suggestedYChromaOffset = LAYOUT.byteOffset(PATH$suggestedYChromaOffset);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
+    public static final long SIZE$externalFormat = LAYOUT$externalFormat.byteSize();
+    public static final long SIZE$screenUsage = LAYOUT$screenUsage.byteSize();
+    public static final long SIZE$formatFeatures = LAYOUT$formatFeatures.byteSize();
+    public static final long SIZE$samplerYcbcrConversionComponents = LAYOUT$samplerYcbcrConversionComponents.byteSize();
+    public static final long SIZE$suggestedYcbcrModel = LAYOUT$suggestedYcbcrModel.byteSize();
+    public static final long SIZE$suggestedYcbcrRange = LAYOUT$suggestedYcbcrRange.byteSize();
+    public static final long SIZE$suggestedXChromaOffset = LAYOUT$suggestedXChromaOffset.byteSize();
+    public static final long SIZE$suggestedYChromaOffset = LAYOUT$suggestedYChromaOffset.byteSize();
+
 }

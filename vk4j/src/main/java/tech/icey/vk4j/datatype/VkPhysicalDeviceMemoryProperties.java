@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceMemoryProperties.html">VkPhysicalDeviceMemoryProperties</a>
 public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("memoryTypeCount"),
-        MemoryLayout.sequenceLayout(VK_MAX_MEMORY_TYPES, VkMemoryType.LAYOUT).withName("memoryTypes"),
-        ValueLayout.JAVA_INT.withName("memoryHeapCount"),
-        MemoryLayout.sequenceLayout(VK_MAX_MEMORY_HEAPS, VkMemoryHeap.LAYOUT).withName("memoryHeaps")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$memoryTypeCount = PathElement.groupElement("memoryTypeCount");
-    public static final PathElement PATH$memoryTypes = PathElement.groupElement("memoryTypes");
-    public static final PathElement PATH$memoryHeapCount = PathElement.groupElement("memoryHeapCount");
-    public static final PathElement PATH$memoryHeaps = PathElement.groupElement("memoryHeaps");
-
-    public static final OfInt LAYOUT$memoryTypeCount = (OfInt) LAYOUT.select(PATH$memoryTypeCount);
-    public static final SequenceLayout LAYOUT$memoryTypes = (SequenceLayout) LAYOUT.select(PATH$memoryTypes);
-    public static final OfInt LAYOUT$memoryHeapCount = (OfInt) LAYOUT.select(PATH$memoryHeapCount);
-    public static final SequenceLayout LAYOUT$memoryHeaps = (SequenceLayout) LAYOUT.select(PATH$memoryHeaps);
-
-    public static final long OFFSET$memoryTypeCount = LAYOUT.byteOffset(PATH$memoryTypeCount);
-    public static final long OFFSET$memoryTypes = LAYOUT.byteOffset(PATH$memoryTypes);
-    public static final long OFFSET$memoryHeapCount = LAYOUT.byteOffset(PATH$memoryHeapCount);
-    public static final long OFFSET$memoryHeaps = LAYOUT.byteOffset(PATH$memoryHeaps);
-
-    public static final long SIZE$memoryTypeCount = LAYOUT$memoryTypeCount.byteSize();
-    public static final long SIZE$memoryTypes = LAYOUT$memoryTypes.byteSize();
-    public static final long SIZE$memoryHeapCount = LAYOUT$memoryHeapCount.byteSize();
-    public static final long SIZE$memoryHeaps = LAYOUT$memoryHeaps.byteSize();
-
     public VkPhysicalDeviceMemoryProperties(MemorySegment segment) {
         this.segment = segment;
     }
@@ -144,4 +116,33 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) implements
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("memoryTypeCount"),
+        MemoryLayout.sequenceLayout(VK_MAX_MEMORY_TYPES, VkMemoryType.LAYOUT).withName("memoryTypes"),
+        ValueLayout.JAVA_INT.withName("memoryHeapCount"),
+        MemoryLayout.sequenceLayout(VK_MAX_MEMORY_HEAPS, VkMemoryHeap.LAYOUT).withName("memoryHeaps")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$memoryTypeCount = PathElement.groupElement("memoryTypeCount");
+    public static final PathElement PATH$memoryTypes = PathElement.groupElement("memoryTypes");
+    public static final PathElement PATH$memoryHeapCount = PathElement.groupElement("memoryHeapCount");
+    public static final PathElement PATH$memoryHeaps = PathElement.groupElement("memoryHeaps");
+
+    public static final OfInt LAYOUT$memoryTypeCount = (OfInt) LAYOUT.select(PATH$memoryTypeCount);
+    public static final SequenceLayout LAYOUT$memoryTypes = (SequenceLayout) LAYOUT.select(PATH$memoryTypes);
+    public static final OfInt LAYOUT$memoryHeapCount = (OfInt) LAYOUT.select(PATH$memoryHeapCount);
+    public static final SequenceLayout LAYOUT$memoryHeaps = (SequenceLayout) LAYOUT.select(PATH$memoryHeaps);
+
+    public static final long OFFSET$memoryTypeCount = LAYOUT.byteOffset(PATH$memoryTypeCount);
+    public static final long OFFSET$memoryTypes = LAYOUT.byteOffset(PATH$memoryTypes);
+    public static final long OFFSET$memoryHeapCount = LAYOUT.byteOffset(PATH$memoryHeapCount);
+    public static final long OFFSET$memoryHeaps = LAYOUT.byteOffset(PATH$memoryHeaps);
+
+    public static final long SIZE$memoryTypeCount = LAYOUT$memoryTypeCount.byteSize();
+    public static final long SIZE$memoryTypes = LAYOUT$memoryTypes.byteSize();
+    public static final long SIZE$memoryHeapCount = LAYOUT$memoryHeapCount.byteSize();
+    public static final long SIZE$memoryHeaps = LAYOUT$memoryHeaps.byteSize();
+
 }

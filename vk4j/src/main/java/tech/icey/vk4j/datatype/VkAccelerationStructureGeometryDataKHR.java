@@ -15,7 +15,7 @@ import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 /// {@snippet lang=c :
-/// typedef struct VkAccelerationStructureGeometryDataKHR {
+/// typedef union VkAccelerationStructureGeometryDataKHR {
 ///     VkAccelerationStructureGeometryTrianglesDataKHR triangles;
 ///     VkAccelerationStructureGeometryAabbsDataKHR aabbs;
 ///     VkAccelerationStructureGeometryInstancesDataKHR instances;
@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAccelerationStructureGeometryDataKHR.html">VkAccelerationStructureGeometryDataKHR</a>
 public record VkAccelerationStructureGeometryDataKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
-        VkAccelerationStructureGeometryTrianglesDataKHR.LAYOUT.withName("triangles"),
-        VkAccelerationStructureGeometryAabbsDataKHR.LAYOUT.withName("aabbs"),
-        VkAccelerationStructureGeometryInstancesDataKHR.LAYOUT.withName("instances")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$triangles = PathElement.groupElement("triangles");
-    public static final PathElement PATH$aabbs = PathElement.groupElement("aabbs");
-    public static final PathElement PATH$instances = PathElement.groupElement("instances");
-
-    public static final StructLayout LAYOUT$triangles = (StructLayout) LAYOUT.select(PATH$triangles);
-    public static final StructLayout LAYOUT$aabbs = (StructLayout) LAYOUT.select(PATH$aabbs);
-    public static final StructLayout LAYOUT$instances = (StructLayout) LAYOUT.select(PATH$instances);
-
-    public static final long OFFSET$triangles = LAYOUT.byteOffset(PATH$triangles);
-    public static final long OFFSET$aabbs = LAYOUT.byteOffset(PATH$aabbs);
-    public static final long OFFSET$instances = LAYOUT.byteOffset(PATH$instances);
-
-    public static final long SIZE$triangles = LAYOUT$triangles.byteSize();
-    public static final long SIZE$aabbs = LAYOUT$aabbs.byteSize();
-    public static final long SIZE$instances = LAYOUT$instances.byteSize();
-
     public VkAccelerationStructureGeometryDataKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -86,4 +63,28 @@ public record VkAccelerationStructureGeometryDataKHR(MemorySegment segment) impl
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
+        VkAccelerationStructureGeometryTrianglesDataKHR.LAYOUT.withName("triangles"),
+        VkAccelerationStructureGeometryAabbsDataKHR.LAYOUT.withName("aabbs"),
+        VkAccelerationStructureGeometryInstancesDataKHR.LAYOUT.withName("instances")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$triangles = PathElement.groupElement("triangles");
+    public static final PathElement PATH$aabbs = PathElement.groupElement("aabbs");
+    public static final PathElement PATH$instances = PathElement.groupElement("instances");
+
+    public static final StructLayout LAYOUT$triangles = (StructLayout) LAYOUT.select(PATH$triangles);
+    public static final StructLayout LAYOUT$aabbs = (StructLayout) LAYOUT.select(PATH$aabbs);
+    public static final StructLayout LAYOUT$instances = (StructLayout) LAYOUT.select(PATH$instances);
+
+    public static final long OFFSET$triangles = LAYOUT.byteOffset(PATH$triangles);
+    public static final long OFFSET$aabbs = LAYOUT.byteOffset(PATH$aabbs);
+    public static final long OFFSET$instances = LAYOUT.byteOffset(PATH$instances);
+
+    public static final long SIZE$triangles = LAYOUT$triangles.byteSize();
+    public static final long SIZE$aabbs = LAYOUT$aabbs.byteSize();
+    public static final long SIZE$instances = LAYOUT$instances.byteSize();
+
 }

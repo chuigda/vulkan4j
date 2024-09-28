@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageSubresourceLayers.html">VkImageSubresourceLayers</a>
 public record VkImageSubresourceLayers(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("aspectMask"),
-        ValueLayout.JAVA_INT.withName("mipLevel"),
-        ValueLayout.JAVA_INT.withName("baseArrayLayer"),
-        ValueLayout.JAVA_INT.withName("layerCount")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
-    public static final PathElement PATH$mipLevel = PathElement.groupElement("mipLevel");
-    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("baseArrayLayer");
-    public static final PathElement PATH$layerCount = PathElement.groupElement("layerCount");
-
-    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
-    public static final OfInt LAYOUT$mipLevel = (OfInt) LAYOUT.select(PATH$mipLevel);
-    public static final OfInt LAYOUT$baseArrayLayer = (OfInt) LAYOUT.select(PATH$baseArrayLayer);
-    public static final OfInt LAYOUT$layerCount = (OfInt) LAYOUT.select(PATH$layerCount);
-
-    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
-    public static final long OFFSET$mipLevel = LAYOUT.byteOffset(PATH$mipLevel);
-    public static final long OFFSET$baseArrayLayer = LAYOUT.byteOffset(PATH$baseArrayLayer);
-    public static final long OFFSET$layerCount = LAYOUT.byteOffset(PATH$layerCount);
-
-    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
-    public static final long SIZE$mipLevel = LAYOUT$mipLevel.byteSize();
-    public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
-    public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
-
     public VkImageSubresourceLayers(MemorySegment segment) {
         this.segment = segment;
     }
@@ -100,4 +72,33 @@ public record VkImageSubresourceLayers(MemorySegment segment) implements IPointe
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("aspectMask"),
+        ValueLayout.JAVA_INT.withName("mipLevel"),
+        ValueLayout.JAVA_INT.withName("baseArrayLayer"),
+        ValueLayout.JAVA_INT.withName("layerCount")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
+    public static final PathElement PATH$mipLevel = PathElement.groupElement("mipLevel");
+    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("baseArrayLayer");
+    public static final PathElement PATH$layerCount = PathElement.groupElement("layerCount");
+
+    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
+    public static final OfInt LAYOUT$mipLevel = (OfInt) LAYOUT.select(PATH$mipLevel);
+    public static final OfInt LAYOUT$baseArrayLayer = (OfInt) LAYOUT.select(PATH$baseArrayLayer);
+    public static final OfInt LAYOUT$layerCount = (OfInt) LAYOUT.select(PATH$layerCount);
+
+    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
+    public static final long OFFSET$mipLevel = LAYOUT.byteOffset(PATH$mipLevel);
+    public static final long OFFSET$baseArrayLayer = LAYOUT.byteOffset(PATH$baseArrayLayer);
+    public static final long OFFSET$layerCount = LAYOUT.byteOffset(PATH$layerCount);
+
+    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
+    public static final long SIZE$mipLevel = LAYOUT$mipLevel.byteSize();
+    public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
+    public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
+
 }

@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDescriptorBufferInfo.html">VkDescriptorBufferInfo</a>
 public record VkDescriptorBufferInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.ADDRESS.withName("buffer"),
-        ValueLayout.JAVA_LONG.withName("offset"),
-        ValueLayout.JAVA_LONG.withName("range")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$buffer = PathElement.groupElement("buffer");
-    public static final PathElement PATH$offset = PathElement.groupElement("offset");
-    public static final PathElement PATH$range = PathElement.groupElement("range");
-
-    public static final AddressLayout LAYOUT$buffer = (AddressLayout) LAYOUT.select(PATH$buffer);
-    public static final OfLong LAYOUT$offset = (OfLong) LAYOUT.select(PATH$offset);
-    public static final OfLong LAYOUT$range = (OfLong) LAYOUT.select(PATH$range);
-
-    public static final long OFFSET$buffer = LAYOUT.byteOffset(PATH$buffer);
-    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
-    public static final long OFFSET$range = LAYOUT.byteOffset(PATH$range);
-
-    public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
-    public static final long SIZE$offset = LAYOUT$offset.byteSize();
-    public static final long SIZE$range = LAYOUT$range.byteSize();
-
     public VkDescriptorBufferInfo(MemorySegment segment) {
         this.segment = segment;
     }
@@ -86,4 +63,28 @@ public record VkDescriptorBufferInfo(MemorySegment segment) implements IPointer 
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("buffer"),
+        ValueLayout.JAVA_LONG.withName("offset"),
+        ValueLayout.JAVA_LONG.withName("range")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$buffer = PathElement.groupElement("buffer");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$range = PathElement.groupElement("range");
+
+    public static final AddressLayout LAYOUT$buffer = (AddressLayout) LAYOUT.select(PATH$buffer);
+    public static final OfLong LAYOUT$offset = (OfLong) LAYOUT.select(PATH$offset);
+    public static final OfLong LAYOUT$range = (OfLong) LAYOUT.select(PATH$range);
+
+    public static final long OFFSET$buffer = LAYOUT.byteOffset(PATH$buffer);
+    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
+    public static final long OFFSET$range = LAYOUT.byteOffset(PATH$range);
+
+    public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$range = LAYOUT$range.byteSize();
+
 }

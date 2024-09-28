@@ -30,64 +30,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDisplaySurfaceCreateInfoKHR.html">VkDisplaySurfaceCreateInfoKHR</a>
 public record VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.ADDRESS.withName("displayMode"),
-        ValueLayout.JAVA_INT.withName("planeIndex"),
-        ValueLayout.JAVA_INT.withName("planeStackIndex"),
-        ValueLayout.JAVA_INT.withName("transform"),
-        ValueLayout.JAVA_FLOAT.withName("globalAlpha"),
-        ValueLayout.JAVA_INT.withName("alphaMode"),
-        VkExtent2D.LAYOUT.withName("imageExtent")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$displayMode = PathElement.groupElement("displayMode");
-    public static final PathElement PATH$planeIndex = PathElement.groupElement("planeIndex");
-    public static final PathElement PATH$planeStackIndex = PathElement.groupElement("planeStackIndex");
-    public static final PathElement PATH$transform = PathElement.groupElement("transform");
-    public static final PathElement PATH$globalAlpha = PathElement.groupElement("globalAlpha");
-    public static final PathElement PATH$alphaMode = PathElement.groupElement("alphaMode");
-    public static final PathElement PATH$imageExtent = PathElement.groupElement("imageExtent");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final AddressLayout LAYOUT$displayMode = (AddressLayout) LAYOUT.select(PATH$displayMode);
-    public static final OfInt LAYOUT$planeIndex = (OfInt) LAYOUT.select(PATH$planeIndex);
-    public static final OfInt LAYOUT$planeStackIndex = (OfInt) LAYOUT.select(PATH$planeStackIndex);
-    public static final OfInt LAYOUT$transform = (OfInt) LAYOUT.select(PATH$transform);
-    public static final OfFloat LAYOUT$globalAlpha = (OfFloat) LAYOUT.select(PATH$globalAlpha);
-    public static final OfInt LAYOUT$alphaMode = (OfInt) LAYOUT.select(PATH$alphaMode);
-    public static final StructLayout LAYOUT$imageExtent = (StructLayout) LAYOUT.select(PATH$imageExtent);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$displayMode = LAYOUT.byteOffset(PATH$displayMode);
-    public static final long OFFSET$planeIndex = LAYOUT.byteOffset(PATH$planeIndex);
-    public static final long OFFSET$planeStackIndex = LAYOUT.byteOffset(PATH$planeStackIndex);
-    public static final long OFFSET$transform = LAYOUT.byteOffset(PATH$transform);
-    public static final long OFFSET$globalAlpha = LAYOUT.byteOffset(PATH$globalAlpha);
-    public static final long OFFSET$alphaMode = LAYOUT.byteOffset(PATH$alphaMode);
-    public static final long OFFSET$imageExtent = LAYOUT.byteOffset(PATH$imageExtent);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$displayMode = LAYOUT$displayMode.byteSize();
-    public static final long SIZE$planeIndex = LAYOUT$planeIndex.byteSize();
-    public static final long SIZE$planeStackIndex = LAYOUT$planeStackIndex.byteSize();
-    public static final long SIZE$transform = LAYOUT$transform.byteSize();
-    public static final long SIZE$globalAlpha = LAYOUT$globalAlpha.byteSize();
-    public static final long SIZE$alphaMode = LAYOUT$alphaMode.byteSize();
-    public static final long SIZE$imageExtent = LAYOUT$imageExtent.byteSize();
-
     public VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR);
@@ -189,4 +131,63 @@ public record VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) implements IP
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withName("displayMode"),
+        ValueLayout.JAVA_INT.withName("planeIndex"),
+        ValueLayout.JAVA_INT.withName("planeStackIndex"),
+        ValueLayout.JAVA_INT.withName("transform"),
+        ValueLayout.JAVA_FLOAT.withName("globalAlpha"),
+        ValueLayout.JAVA_INT.withName("alphaMode"),
+        VkExtent2D.LAYOUT.withName("imageExtent")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$displayMode = PathElement.groupElement("displayMode");
+    public static final PathElement PATH$planeIndex = PathElement.groupElement("planeIndex");
+    public static final PathElement PATH$planeStackIndex = PathElement.groupElement("planeStackIndex");
+    public static final PathElement PATH$transform = PathElement.groupElement("transform");
+    public static final PathElement PATH$globalAlpha = PathElement.groupElement("globalAlpha");
+    public static final PathElement PATH$alphaMode = PathElement.groupElement("alphaMode");
+    public static final PathElement PATH$imageExtent = PathElement.groupElement("imageExtent");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$displayMode = (AddressLayout) LAYOUT.select(PATH$displayMode);
+    public static final OfInt LAYOUT$planeIndex = (OfInt) LAYOUT.select(PATH$planeIndex);
+    public static final OfInt LAYOUT$planeStackIndex = (OfInt) LAYOUT.select(PATH$planeStackIndex);
+    public static final OfInt LAYOUT$transform = (OfInt) LAYOUT.select(PATH$transform);
+    public static final OfFloat LAYOUT$globalAlpha = (OfFloat) LAYOUT.select(PATH$globalAlpha);
+    public static final OfInt LAYOUT$alphaMode = (OfInt) LAYOUT.select(PATH$alphaMode);
+    public static final StructLayout LAYOUT$imageExtent = (StructLayout) LAYOUT.select(PATH$imageExtent);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$displayMode = LAYOUT.byteOffset(PATH$displayMode);
+    public static final long OFFSET$planeIndex = LAYOUT.byteOffset(PATH$planeIndex);
+    public static final long OFFSET$planeStackIndex = LAYOUT.byteOffset(PATH$planeStackIndex);
+    public static final long OFFSET$transform = LAYOUT.byteOffset(PATH$transform);
+    public static final long OFFSET$globalAlpha = LAYOUT.byteOffset(PATH$globalAlpha);
+    public static final long OFFSET$alphaMode = LAYOUT.byteOffset(PATH$alphaMode);
+    public static final long OFFSET$imageExtent = LAYOUT.byteOffset(PATH$imageExtent);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$displayMode = LAYOUT$displayMode.byteSize();
+    public static final long SIZE$planeIndex = LAYOUT$planeIndex.byteSize();
+    public static final long SIZE$planeStackIndex = LAYOUT$planeStackIndex.byteSize();
+    public static final long SIZE$transform = LAYOUT$transform.byteSize();
+    public static final long SIZE$globalAlpha = LAYOUT$globalAlpha.byteSize();
+    public static final long SIZE$alphaMode = LAYOUT$alphaMode.byteSize();
+    public static final long SIZE$imageExtent = LAYOUT$imageExtent.byteSize();
+
 }

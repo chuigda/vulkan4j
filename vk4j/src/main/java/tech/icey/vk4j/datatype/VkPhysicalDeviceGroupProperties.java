@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceGroupProperties.html">VkPhysicalDeviceGroupProperties</a>
 public record VkPhysicalDeviceGroupProperties(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("physicalDeviceCount"),
-        MemoryLayout.sequenceLayout(VK_MAX_DEVICE_GROUP_SIZE, ValueLayout.ADDRESS).withName("physicalDevices"),
-        ValueLayout.JAVA_INT.withName("subsetAllocation")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$physicalDeviceCount = PathElement.groupElement("physicalDeviceCount");
-    public static final PathElement PATH$physicalDevices = PathElement.groupElement("physicalDevices");
-    public static final PathElement PATH$subsetAllocation = PathElement.groupElement("subsetAllocation");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$physicalDeviceCount = (OfInt) LAYOUT.select(PATH$physicalDeviceCount);
-    public static final SequenceLayout LAYOUT$physicalDevices = (SequenceLayout) LAYOUT.select(PATH$physicalDevices);
-    public static final OfInt LAYOUT$subsetAllocation = (OfInt) LAYOUT.select(PATH$subsetAllocation);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$physicalDeviceCount = LAYOUT.byteOffset(PATH$physicalDeviceCount);
-    public static final long OFFSET$physicalDevices = LAYOUT.byteOffset(PATH$physicalDevices);
-    public static final long OFFSET$subsetAllocation = LAYOUT.byteOffset(PATH$subsetAllocation);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$physicalDeviceCount = LAYOUT$physicalDeviceCount.byteSize();
-    public static final long SIZE$physicalDevices = LAYOUT$physicalDevices.byteSize();
-    public static final long SIZE$subsetAllocation = LAYOUT$subsetAllocation.byteSize();
-
     public VkPhysicalDeviceGroupProperties(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES);
@@ -137,4 +104,38 @@ public record VkPhysicalDeviceGroupProperties(MemorySegment segment) implements 
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("physicalDeviceCount"),
+        MemoryLayout.sequenceLayout(VK_MAX_DEVICE_GROUP_SIZE, ValueLayout.ADDRESS).withName("physicalDevices"),
+        ValueLayout.JAVA_INT.withName("subsetAllocation")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$physicalDeviceCount = PathElement.groupElement("physicalDeviceCount");
+    public static final PathElement PATH$physicalDevices = PathElement.groupElement("physicalDevices");
+    public static final PathElement PATH$subsetAllocation = PathElement.groupElement("subsetAllocation");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$physicalDeviceCount = (OfInt) LAYOUT.select(PATH$physicalDeviceCount);
+    public static final SequenceLayout LAYOUT$physicalDevices = (SequenceLayout) LAYOUT.select(PATH$physicalDevices);
+    public static final OfInt LAYOUT$subsetAllocation = (OfInt) LAYOUT.select(PATH$subsetAllocation);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$physicalDeviceCount = LAYOUT.byteOffset(PATH$physicalDeviceCount);
+    public static final long OFFSET$physicalDevices = LAYOUT.byteOffset(PATH$physicalDevices);
+    public static final long OFFSET$subsetAllocation = LAYOUT.byteOffset(PATH$subsetAllocation);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$physicalDeviceCount = LAYOUT$physicalDeviceCount.byteSize();
+    public static final long SIZE$physicalDevices = LAYOUT$physicalDevices.byteSize();
+    public static final long SIZE$subsetAllocation = LAYOUT$subsetAllocation.byteSize();
+
 }

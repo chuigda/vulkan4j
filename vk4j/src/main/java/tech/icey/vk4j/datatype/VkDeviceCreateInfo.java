@@ -30,64 +30,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceCreateInfo.html">VkDeviceCreateInfo</a>
 public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("queueCreateInfoCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkDeviceQueueCreateInfo.LAYOUT).withName("pQueueCreateInfos"),
-        ValueLayout.JAVA_INT.withName("enabledLayerCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)).withName("ppEnabledLayerNames"),
-        ValueLayout.JAVA_INT.withName("enabledExtensionCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)).withName("ppEnabledExtensionNames"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceFeatures.LAYOUT).withName("pEnabledFeatures")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$queueCreateInfoCount = PathElement.groupElement("queueCreateInfoCount");
-    public static final PathElement PATH$pQueueCreateInfos = PathElement.groupElement("pQueueCreateInfos");
-    public static final PathElement PATH$enabledLayerCount = PathElement.groupElement("enabledLayerCount");
-    public static final PathElement PATH$ppEnabledLayerNames = PathElement.groupElement("ppEnabledLayerNames");
-    public static final PathElement PATH$enabledExtensionCount = PathElement.groupElement("enabledExtensionCount");
-    public static final PathElement PATH$ppEnabledExtensionNames = PathElement.groupElement("ppEnabledExtensionNames");
-    public static final PathElement PATH$pEnabledFeatures = PathElement.groupElement("pEnabledFeatures");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$queueCreateInfoCount = (OfInt) LAYOUT.select(PATH$queueCreateInfoCount);
-    public static final AddressLayout LAYOUT$pQueueCreateInfos = (AddressLayout) LAYOUT.select(PATH$pQueueCreateInfos);
-    public static final OfInt LAYOUT$enabledLayerCount = (OfInt) LAYOUT.select(PATH$enabledLayerCount);
-    public static final AddressLayout LAYOUT$ppEnabledLayerNames = (AddressLayout) LAYOUT.select(PATH$ppEnabledLayerNames);
-    public static final OfInt LAYOUT$enabledExtensionCount = (OfInt) LAYOUT.select(PATH$enabledExtensionCount);
-    public static final AddressLayout LAYOUT$ppEnabledExtensionNames = (AddressLayout) LAYOUT.select(PATH$ppEnabledExtensionNames);
-    public static final AddressLayout LAYOUT$pEnabledFeatures = (AddressLayout) LAYOUT.select(PATH$pEnabledFeatures);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$queueCreateInfoCount = LAYOUT.byteOffset(PATH$queueCreateInfoCount);
-    public static final long OFFSET$pQueueCreateInfos = LAYOUT.byteOffset(PATH$pQueueCreateInfos);
-    public static final long OFFSET$enabledLayerCount = LAYOUT.byteOffset(PATH$enabledLayerCount);
-    public static final long OFFSET$ppEnabledLayerNames = LAYOUT.byteOffset(PATH$ppEnabledLayerNames);
-    public static final long OFFSET$enabledExtensionCount = LAYOUT.byteOffset(PATH$enabledExtensionCount);
-    public static final long OFFSET$ppEnabledExtensionNames = LAYOUT.byteOffset(PATH$ppEnabledExtensionNames);
-    public static final long OFFSET$pEnabledFeatures = LAYOUT.byteOffset(PATH$pEnabledFeatures);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$queueCreateInfoCount = LAYOUT$queueCreateInfoCount.byteSize();
-    public static final long SIZE$pQueueCreateInfos = LAYOUT$pQueueCreateInfos.byteSize();
-    public static final long SIZE$enabledLayerCount = LAYOUT$enabledLayerCount.byteSize();
-    public static final long SIZE$ppEnabledLayerNames = LAYOUT$ppEnabledLayerNames.byteSize();
-    public static final long SIZE$enabledExtensionCount = LAYOUT$enabledExtensionCount.byteSize();
-    public static final long SIZE$ppEnabledExtensionNames = LAYOUT$ppEnabledExtensionNames.byteSize();
-    public static final long SIZE$pEnabledFeatures = LAYOUT$pEnabledFeatures.byteSize();
-
     public VkDeviceCreateInfo(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO);
@@ -263,4 +205,63 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("queueCreateInfoCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDeviceQueueCreateInfo.LAYOUT).withName("pQueueCreateInfos"),
+        ValueLayout.JAVA_INT.withName("enabledLayerCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)).withName("ppEnabledLayerNames"),
+        ValueLayout.JAVA_INT.withName("enabledExtensionCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)).withName("ppEnabledExtensionNames"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceFeatures.LAYOUT).withName("pEnabledFeatures")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$queueCreateInfoCount = PathElement.groupElement("queueCreateInfoCount");
+    public static final PathElement PATH$pQueueCreateInfos = PathElement.groupElement("pQueueCreateInfos");
+    public static final PathElement PATH$enabledLayerCount = PathElement.groupElement("enabledLayerCount");
+    public static final PathElement PATH$ppEnabledLayerNames = PathElement.groupElement("ppEnabledLayerNames");
+    public static final PathElement PATH$enabledExtensionCount = PathElement.groupElement("enabledExtensionCount");
+    public static final PathElement PATH$ppEnabledExtensionNames = PathElement.groupElement("ppEnabledExtensionNames");
+    public static final PathElement PATH$pEnabledFeatures = PathElement.groupElement("pEnabledFeatures");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$queueCreateInfoCount = (OfInt) LAYOUT.select(PATH$queueCreateInfoCount);
+    public static final AddressLayout LAYOUT$pQueueCreateInfos = (AddressLayout) LAYOUT.select(PATH$pQueueCreateInfos);
+    public static final OfInt LAYOUT$enabledLayerCount = (OfInt) LAYOUT.select(PATH$enabledLayerCount);
+    public static final AddressLayout LAYOUT$ppEnabledLayerNames = (AddressLayout) LAYOUT.select(PATH$ppEnabledLayerNames);
+    public static final OfInt LAYOUT$enabledExtensionCount = (OfInt) LAYOUT.select(PATH$enabledExtensionCount);
+    public static final AddressLayout LAYOUT$ppEnabledExtensionNames = (AddressLayout) LAYOUT.select(PATH$ppEnabledExtensionNames);
+    public static final AddressLayout LAYOUT$pEnabledFeatures = (AddressLayout) LAYOUT.select(PATH$pEnabledFeatures);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$queueCreateInfoCount = LAYOUT.byteOffset(PATH$queueCreateInfoCount);
+    public static final long OFFSET$pQueueCreateInfos = LAYOUT.byteOffset(PATH$pQueueCreateInfos);
+    public static final long OFFSET$enabledLayerCount = LAYOUT.byteOffset(PATH$enabledLayerCount);
+    public static final long OFFSET$ppEnabledLayerNames = LAYOUT.byteOffset(PATH$ppEnabledLayerNames);
+    public static final long OFFSET$enabledExtensionCount = LAYOUT.byteOffset(PATH$enabledExtensionCount);
+    public static final long OFFSET$ppEnabledExtensionNames = LAYOUT.byteOffset(PATH$ppEnabledExtensionNames);
+    public static final long OFFSET$pEnabledFeatures = LAYOUT.byteOffset(PATH$pEnabledFeatures);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$queueCreateInfoCount = LAYOUT$queueCreateInfoCount.byteSize();
+    public static final long SIZE$pQueueCreateInfos = LAYOUT$pQueueCreateInfos.byteSize();
+    public static final long SIZE$enabledLayerCount = LAYOUT$enabledLayerCount.byteSize();
+    public static final long SIZE$ppEnabledLayerNames = LAYOUT$ppEnabledLayerNames.byteSize();
+    public static final long SIZE$enabledExtensionCount = LAYOUT$enabledExtensionCount.byteSize();
+    public static final long SIZE$ppEnabledExtensionNames = LAYOUT$ppEnabledExtensionNames.byteSize();
+    public static final long SIZE$pEnabledFeatures = LAYOUT$pEnabledFeatures.byteSize();
+
 }

@@ -34,82 +34,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkShaderCreateInfoEXT.html">VkShaderCreateInfoEXT</a>
 public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("stage"),
-        ValueLayout.JAVA_INT.withName("nextStage"),
-        ValueLayout.JAVA_INT.withName("codeType"),
-        NativeLayout.C_SIZE_T.withName("codeSize"),
-        ValueLayout.ADDRESS.withName("pCode"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pName"),
-        ValueLayout.JAVA_INT.withName("setLayoutCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pSetLayouts"),
-        ValueLayout.JAVA_INT.withName("pushConstantRangeCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPushConstantRange.LAYOUT).withName("pPushConstantRanges"),
-        ValueLayout.ADDRESS.withTargetLayout(VkSpecializationInfo.LAYOUT).withName("pSpecializationInfo")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$stage = PathElement.groupElement("stage");
-    public static final PathElement PATH$nextStage = PathElement.groupElement("nextStage");
-    public static final PathElement PATH$codeType = PathElement.groupElement("codeType");
-    public static final PathElement PATH$codeSize = PathElement.groupElement("codeSize");
-    public static final PathElement PATH$pCode = PathElement.groupElement("pCode");
-    public static final PathElement PATH$pName = PathElement.groupElement("pName");
-    public static final PathElement PATH$setLayoutCount = PathElement.groupElement("setLayoutCount");
-    public static final PathElement PATH$pSetLayouts = PathElement.groupElement("pSetLayouts");
-    public static final PathElement PATH$pushConstantRangeCount = PathElement.groupElement("pushConstantRangeCount");
-    public static final PathElement PATH$pPushConstantRanges = PathElement.groupElement("pPushConstantRanges");
-    public static final PathElement PATH$pSpecializationInfo = PathElement.groupElement("pSpecializationInfo");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$stage = (OfInt) LAYOUT.select(PATH$stage);
-    public static final OfInt LAYOUT$nextStage = (OfInt) LAYOUT.select(PATH$nextStage);
-    public static final OfInt LAYOUT$codeType = (OfInt) LAYOUT.select(PATH$codeType);
-    public static final AddressLayout LAYOUT$pCode = (AddressLayout) LAYOUT.select(PATH$pCode);
-    public static final AddressLayout LAYOUT$pName = (AddressLayout) LAYOUT.select(PATH$pName);
-    public static final OfInt LAYOUT$setLayoutCount = (OfInt) LAYOUT.select(PATH$setLayoutCount);
-    public static final AddressLayout LAYOUT$pSetLayouts = (AddressLayout) LAYOUT.select(PATH$pSetLayouts);
-    public static final OfInt LAYOUT$pushConstantRangeCount = (OfInt) LAYOUT.select(PATH$pushConstantRangeCount);
-    public static final AddressLayout LAYOUT$pPushConstantRanges = (AddressLayout) LAYOUT.select(PATH$pPushConstantRanges);
-    public static final AddressLayout LAYOUT$pSpecializationInfo = (AddressLayout) LAYOUT.select(PATH$pSpecializationInfo);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$stage = LAYOUT.byteOffset(PATH$stage);
-    public static final long OFFSET$nextStage = LAYOUT.byteOffset(PATH$nextStage);
-    public static final long OFFSET$codeType = LAYOUT.byteOffset(PATH$codeType);
-    public static final long OFFSET$codeSize = LAYOUT.byteOffset(PATH$codeSize);
-    public static final long OFFSET$pCode = LAYOUT.byteOffset(PATH$pCode);
-    public static final long OFFSET$pName = LAYOUT.byteOffset(PATH$pName);
-    public static final long OFFSET$setLayoutCount = LAYOUT.byteOffset(PATH$setLayoutCount);
-    public static final long OFFSET$pSetLayouts = LAYOUT.byteOffset(PATH$pSetLayouts);
-    public static final long OFFSET$pushConstantRangeCount = LAYOUT.byteOffset(PATH$pushConstantRangeCount);
-    public static final long OFFSET$pPushConstantRanges = LAYOUT.byteOffset(PATH$pPushConstantRanges);
-    public static final long OFFSET$pSpecializationInfo = LAYOUT.byteOffset(PATH$pSpecializationInfo);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$stage = LAYOUT$stage.byteSize();
-    public static final long SIZE$nextStage = LAYOUT$nextStage.byteSize();
-    public static final long SIZE$codeType = LAYOUT$codeType.byteSize();
-    public static final long SIZE$pCode = LAYOUT$pCode.byteSize();
-    public static final long SIZE$pName = LAYOUT$pName.byteSize();
-    public static final long SIZE$setLayoutCount = LAYOUT$setLayoutCount.byteSize();
-    public static final long SIZE$pSetLayouts = LAYOUT$pSetLayouts.byteSize();
-    public static final long SIZE$pushConstantRangeCount = LAYOUT$pushConstantRangeCount.byteSize();
-    public static final long SIZE$pPushConstantRanges = LAYOUT$pPushConstantRanges.byteSize();
-    public static final long SIZE$pSpecializationInfo = LAYOUT$pSpecializationInfo.byteSize();
-
     public VkShaderCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_SHADER_CREATE_INFO_EXT);
@@ -328,4 +252,81 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("stage"),
+        ValueLayout.JAVA_INT.withName("nextStage"),
+        ValueLayout.JAVA_INT.withName("codeType"),
+        NativeLayout.C_SIZE_T.withName("codeSize"),
+        ValueLayout.ADDRESS.withName("pCode"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pName"),
+        ValueLayout.JAVA_INT.withName("setLayoutCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pSetLayouts"),
+        ValueLayout.JAVA_INT.withName("pushConstantRangeCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPushConstantRange.LAYOUT).withName("pPushConstantRanges"),
+        ValueLayout.ADDRESS.withTargetLayout(VkSpecializationInfo.LAYOUT).withName("pSpecializationInfo")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$stage = PathElement.groupElement("stage");
+    public static final PathElement PATH$nextStage = PathElement.groupElement("nextStage");
+    public static final PathElement PATH$codeType = PathElement.groupElement("codeType");
+    public static final PathElement PATH$codeSize = PathElement.groupElement("codeSize");
+    public static final PathElement PATH$pCode = PathElement.groupElement("pCode");
+    public static final PathElement PATH$pName = PathElement.groupElement("pName");
+    public static final PathElement PATH$setLayoutCount = PathElement.groupElement("setLayoutCount");
+    public static final PathElement PATH$pSetLayouts = PathElement.groupElement("pSetLayouts");
+    public static final PathElement PATH$pushConstantRangeCount = PathElement.groupElement("pushConstantRangeCount");
+    public static final PathElement PATH$pPushConstantRanges = PathElement.groupElement("pPushConstantRanges");
+    public static final PathElement PATH$pSpecializationInfo = PathElement.groupElement("pSpecializationInfo");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$stage = (OfInt) LAYOUT.select(PATH$stage);
+    public static final OfInt LAYOUT$nextStage = (OfInt) LAYOUT.select(PATH$nextStage);
+    public static final OfInt LAYOUT$codeType = (OfInt) LAYOUT.select(PATH$codeType);
+    public static final AddressLayout LAYOUT$pCode = (AddressLayout) LAYOUT.select(PATH$pCode);
+    public static final AddressLayout LAYOUT$pName = (AddressLayout) LAYOUT.select(PATH$pName);
+    public static final OfInt LAYOUT$setLayoutCount = (OfInt) LAYOUT.select(PATH$setLayoutCount);
+    public static final AddressLayout LAYOUT$pSetLayouts = (AddressLayout) LAYOUT.select(PATH$pSetLayouts);
+    public static final OfInt LAYOUT$pushConstantRangeCount = (OfInt) LAYOUT.select(PATH$pushConstantRangeCount);
+    public static final AddressLayout LAYOUT$pPushConstantRanges = (AddressLayout) LAYOUT.select(PATH$pPushConstantRanges);
+    public static final AddressLayout LAYOUT$pSpecializationInfo = (AddressLayout) LAYOUT.select(PATH$pSpecializationInfo);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$stage = LAYOUT.byteOffset(PATH$stage);
+    public static final long OFFSET$nextStage = LAYOUT.byteOffset(PATH$nextStage);
+    public static final long OFFSET$codeType = LAYOUT.byteOffset(PATH$codeType);
+    public static final long OFFSET$codeSize = LAYOUT.byteOffset(PATH$codeSize);
+    public static final long OFFSET$pCode = LAYOUT.byteOffset(PATH$pCode);
+    public static final long OFFSET$pName = LAYOUT.byteOffset(PATH$pName);
+    public static final long OFFSET$setLayoutCount = LAYOUT.byteOffset(PATH$setLayoutCount);
+    public static final long OFFSET$pSetLayouts = LAYOUT.byteOffset(PATH$pSetLayouts);
+    public static final long OFFSET$pushConstantRangeCount = LAYOUT.byteOffset(PATH$pushConstantRangeCount);
+    public static final long OFFSET$pPushConstantRanges = LAYOUT.byteOffset(PATH$pPushConstantRanges);
+    public static final long OFFSET$pSpecializationInfo = LAYOUT.byteOffset(PATH$pSpecializationInfo);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$stage = LAYOUT$stage.byteSize();
+    public static final long SIZE$nextStage = LAYOUT$nextStage.byteSize();
+    public static final long SIZE$codeType = LAYOUT$codeType.byteSize();
+    public static final long SIZE$pCode = LAYOUT$pCode.byteSize();
+    public static final long SIZE$pName = LAYOUT$pName.byteSize();
+    public static final long SIZE$setLayoutCount = LAYOUT$setLayoutCount.byteSize();
+    public static final long SIZE$pSetLayouts = LAYOUT$pSetLayouts.byteSize();
+    public static final long SIZE$pushConstantRangeCount = LAYOUT$pushConstantRangeCount.byteSize();
+    public static final long SIZE$pPushConstantRanges = LAYOUT$pPushConstantRanges.byteSize();
+    public static final long SIZE$pSpecializationInfo = LAYOUT$pSpecializationInfo.byteSize();
+
 }

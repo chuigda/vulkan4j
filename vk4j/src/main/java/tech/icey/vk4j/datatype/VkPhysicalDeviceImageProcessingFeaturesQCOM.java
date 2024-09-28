@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceImageProcessingFeaturesQCOM.html">VkPhysicalDeviceImageProcessingFeaturesQCOM</a>
 public record VkPhysicalDeviceImageProcessingFeaturesQCOM(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("textureSampleWeighted"),
-        ValueLayout.JAVA_INT.withName("textureBoxFilter"),
-        ValueLayout.JAVA_INT.withName("textureBlockMatch")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$textureSampleWeighted = PathElement.groupElement("textureSampleWeighted");
-    public static final PathElement PATH$textureBoxFilter = PathElement.groupElement("textureBoxFilter");
-    public static final PathElement PATH$textureBlockMatch = PathElement.groupElement("textureBlockMatch");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$textureSampleWeighted = (OfInt) LAYOUT.select(PATH$textureSampleWeighted);
-    public static final OfInt LAYOUT$textureBoxFilter = (OfInt) LAYOUT.select(PATH$textureBoxFilter);
-    public static final OfInt LAYOUT$textureBlockMatch = (OfInt) LAYOUT.select(PATH$textureBlockMatch);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$textureSampleWeighted = LAYOUT.byteOffset(PATH$textureSampleWeighted);
-    public static final long OFFSET$textureBoxFilter = LAYOUT.byteOffset(PATH$textureBoxFilter);
-    public static final long OFFSET$textureBlockMatch = LAYOUT.byteOffset(PATH$textureBlockMatch);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$textureSampleWeighted = LAYOUT$textureSampleWeighted.byteSize();
-    public static final long SIZE$textureBoxFilter = LAYOUT$textureBoxFilter.byteSize();
-    public static final long SIZE$textureBlockMatch = LAYOUT$textureBlockMatch.byteSize();
-
     public VkPhysicalDeviceImageProcessingFeaturesQCOM(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_FEATURES_QCOM);
@@ -119,4 +86,38 @@ public record VkPhysicalDeviceImageProcessingFeaturesQCOM(MemorySegment segment)
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("textureSampleWeighted"),
+        ValueLayout.JAVA_INT.withName("textureBoxFilter"),
+        ValueLayout.JAVA_INT.withName("textureBlockMatch")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$textureSampleWeighted = PathElement.groupElement("textureSampleWeighted");
+    public static final PathElement PATH$textureBoxFilter = PathElement.groupElement("textureBoxFilter");
+    public static final PathElement PATH$textureBlockMatch = PathElement.groupElement("textureBlockMatch");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$textureSampleWeighted = (OfInt) LAYOUT.select(PATH$textureSampleWeighted);
+    public static final OfInt LAYOUT$textureBoxFilter = (OfInt) LAYOUT.select(PATH$textureBoxFilter);
+    public static final OfInt LAYOUT$textureBlockMatch = (OfInt) LAYOUT.select(PATH$textureBlockMatch);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$textureSampleWeighted = LAYOUT.byteOffset(PATH$textureSampleWeighted);
+    public static final long OFFSET$textureBoxFilter = LAYOUT.byteOffset(PATH$textureBoxFilter);
+    public static final long OFFSET$textureBlockMatch = LAYOUT.byteOffset(PATH$textureBlockMatch);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$textureSampleWeighted = LAYOUT$textureSampleWeighted.byteSize();
+    public static final long SIZE$textureBoxFilter = LAYOUT$textureBoxFilter.byteSize();
+    public static final long SIZE$textureBlockMatch = LAYOUT$textureBlockMatch.byteSize();
+
 }

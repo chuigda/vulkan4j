@@ -29,59 +29,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAccelerationStructureGeometryTrianglesDataKHR.html">VkAccelerationStructureGeometryTrianglesDataKHR</a>
 public record VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("vertexFormat"),
-        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("vertexData"),
-        ValueLayout.JAVA_LONG.withName("vertexStride"),
-        ValueLayout.JAVA_INT.withName("maxVertex"),
-        ValueLayout.JAVA_INT.withName("indexType"),
-        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("indexData"),
-        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("transformData")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$vertexFormat = PathElement.groupElement("vertexFormat");
-    public static final PathElement PATH$vertexData = PathElement.groupElement("vertexData");
-    public static final PathElement PATH$vertexStride = PathElement.groupElement("vertexStride");
-    public static final PathElement PATH$maxVertex = PathElement.groupElement("maxVertex");
-    public static final PathElement PATH$indexType = PathElement.groupElement("indexType");
-    public static final PathElement PATH$indexData = PathElement.groupElement("indexData");
-    public static final PathElement PATH$transformData = PathElement.groupElement("transformData");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$vertexFormat = (OfInt) LAYOUT.select(PATH$vertexFormat);
-    public static final UnionLayout LAYOUT$vertexData = (UnionLayout) LAYOUT.select(PATH$vertexData);
-    public static final OfLong LAYOUT$vertexStride = (OfLong) LAYOUT.select(PATH$vertexStride);
-    public static final OfInt LAYOUT$maxVertex = (OfInt) LAYOUT.select(PATH$maxVertex);
-    public static final OfInt LAYOUT$indexType = (OfInt) LAYOUT.select(PATH$indexType);
-    public static final UnionLayout LAYOUT$indexData = (UnionLayout) LAYOUT.select(PATH$indexData);
-    public static final UnionLayout LAYOUT$transformData = (UnionLayout) LAYOUT.select(PATH$transformData);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$vertexFormat = LAYOUT.byteOffset(PATH$vertexFormat);
-    public static final long OFFSET$vertexData = LAYOUT.byteOffset(PATH$vertexData);
-    public static final long OFFSET$vertexStride = LAYOUT.byteOffset(PATH$vertexStride);
-    public static final long OFFSET$maxVertex = LAYOUT.byteOffset(PATH$maxVertex);
-    public static final long OFFSET$indexType = LAYOUT.byteOffset(PATH$indexType);
-    public static final long OFFSET$indexData = LAYOUT.byteOffset(PATH$indexData);
-    public static final long OFFSET$transformData = LAYOUT.byteOffset(PATH$transformData);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$vertexFormat = LAYOUT$vertexFormat.byteSize();
-    public static final long SIZE$vertexData = LAYOUT$vertexData.byteSize();
-    public static final long SIZE$vertexStride = LAYOUT$vertexStride.byteSize();
-    public static final long SIZE$maxVertex = LAYOUT$maxVertex.byteSize();
-    public static final long SIZE$indexType = LAYOUT$indexType.byteSize();
-    public static final long SIZE$indexData = LAYOUT$indexData.byteSize();
-    public static final long SIZE$transformData = LAYOUT$transformData.byteSize();
-
     public VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR);
@@ -175,4 +122,58 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segm
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("vertexFormat"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("vertexData"),
+        ValueLayout.JAVA_LONG.withName("vertexStride"),
+        ValueLayout.JAVA_INT.withName("maxVertex"),
+        ValueLayout.JAVA_INT.withName("indexType"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("indexData"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("transformData")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$vertexFormat = PathElement.groupElement("vertexFormat");
+    public static final PathElement PATH$vertexData = PathElement.groupElement("vertexData");
+    public static final PathElement PATH$vertexStride = PathElement.groupElement("vertexStride");
+    public static final PathElement PATH$maxVertex = PathElement.groupElement("maxVertex");
+    public static final PathElement PATH$indexType = PathElement.groupElement("indexType");
+    public static final PathElement PATH$indexData = PathElement.groupElement("indexData");
+    public static final PathElement PATH$transformData = PathElement.groupElement("transformData");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$vertexFormat = (OfInt) LAYOUT.select(PATH$vertexFormat);
+    public static final UnionLayout LAYOUT$vertexData = (UnionLayout) LAYOUT.select(PATH$vertexData);
+    public static final OfLong LAYOUT$vertexStride = (OfLong) LAYOUT.select(PATH$vertexStride);
+    public static final OfInt LAYOUT$maxVertex = (OfInt) LAYOUT.select(PATH$maxVertex);
+    public static final OfInt LAYOUT$indexType = (OfInt) LAYOUT.select(PATH$indexType);
+    public static final UnionLayout LAYOUT$indexData = (UnionLayout) LAYOUT.select(PATH$indexData);
+    public static final UnionLayout LAYOUT$transformData = (UnionLayout) LAYOUT.select(PATH$transformData);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$vertexFormat = LAYOUT.byteOffset(PATH$vertexFormat);
+    public static final long OFFSET$vertexData = LAYOUT.byteOffset(PATH$vertexData);
+    public static final long OFFSET$vertexStride = LAYOUT.byteOffset(PATH$vertexStride);
+    public static final long OFFSET$maxVertex = LAYOUT.byteOffset(PATH$maxVertex);
+    public static final long OFFSET$indexType = LAYOUT.byteOffset(PATH$indexType);
+    public static final long OFFSET$indexData = LAYOUT.byteOffset(PATH$indexData);
+    public static final long OFFSET$transformData = LAYOUT.byteOffset(PATH$transformData);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$vertexFormat = LAYOUT$vertexFormat.byteSize();
+    public static final long SIZE$vertexData = LAYOUT$vertexData.byteSize();
+    public static final long SIZE$vertexStride = LAYOUT$vertexStride.byteSize();
+    public static final long SIZE$maxVertex = LAYOUT$maxVertex.byteSize();
+    public static final long SIZE$indexType = LAYOUT$indexType.byteSize();
+    public static final long SIZE$indexData = LAYOUT$indexData.byteSize();
+    public static final long SIZE$transformData = LAYOUT$transformData.byteSize();
+
 }

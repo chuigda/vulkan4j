@@ -30,64 +30,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageMemoryBarrier.html">VkImageMemoryBarrier</a>
 public record VkImageMemoryBarrier(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("srcAccessMask"),
-        ValueLayout.JAVA_INT.withName("dstAccessMask"),
-        ValueLayout.JAVA_INT.withName("oldLayout"),
-        ValueLayout.JAVA_INT.withName("newLayout"),
-        ValueLayout.JAVA_INT.withName("srcQueueFamilyIndex"),
-        ValueLayout.JAVA_INT.withName("dstQueueFamilyIndex"),
-        ValueLayout.ADDRESS.withName("image"),
-        VkImageSubresourceRange.LAYOUT.withName("subresourceRange")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$srcAccessMask = PathElement.groupElement("srcAccessMask");
-    public static final PathElement PATH$dstAccessMask = PathElement.groupElement("dstAccessMask");
-    public static final PathElement PATH$oldLayout = PathElement.groupElement("oldLayout");
-    public static final PathElement PATH$newLayout = PathElement.groupElement("newLayout");
-    public static final PathElement PATH$srcQueueFamilyIndex = PathElement.groupElement("srcQueueFamilyIndex");
-    public static final PathElement PATH$dstQueueFamilyIndex = PathElement.groupElement("dstQueueFamilyIndex");
-    public static final PathElement PATH$image = PathElement.groupElement("image");
-    public static final PathElement PATH$subresourceRange = PathElement.groupElement("subresourceRange");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$srcAccessMask = (OfInt) LAYOUT.select(PATH$srcAccessMask);
-    public static final OfInt LAYOUT$dstAccessMask = (OfInt) LAYOUT.select(PATH$dstAccessMask);
-    public static final OfInt LAYOUT$oldLayout = (OfInt) LAYOUT.select(PATH$oldLayout);
-    public static final OfInt LAYOUT$newLayout = (OfInt) LAYOUT.select(PATH$newLayout);
-    public static final OfInt LAYOUT$srcQueueFamilyIndex = (OfInt) LAYOUT.select(PATH$srcQueueFamilyIndex);
-    public static final OfInt LAYOUT$dstQueueFamilyIndex = (OfInt) LAYOUT.select(PATH$dstQueueFamilyIndex);
-    public static final AddressLayout LAYOUT$image = (AddressLayout) LAYOUT.select(PATH$image);
-    public static final StructLayout LAYOUT$subresourceRange = (StructLayout) LAYOUT.select(PATH$subresourceRange);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$srcAccessMask = LAYOUT.byteOffset(PATH$srcAccessMask);
-    public static final long OFFSET$dstAccessMask = LAYOUT.byteOffset(PATH$dstAccessMask);
-    public static final long OFFSET$oldLayout = LAYOUT.byteOffset(PATH$oldLayout);
-    public static final long OFFSET$newLayout = LAYOUT.byteOffset(PATH$newLayout);
-    public static final long OFFSET$srcQueueFamilyIndex = LAYOUT.byteOffset(PATH$srcQueueFamilyIndex);
-    public static final long OFFSET$dstQueueFamilyIndex = LAYOUT.byteOffset(PATH$dstQueueFamilyIndex);
-    public static final long OFFSET$image = LAYOUT.byteOffset(PATH$image);
-    public static final long OFFSET$subresourceRange = LAYOUT.byteOffset(PATH$subresourceRange);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$srcAccessMask = LAYOUT$srcAccessMask.byteSize();
-    public static final long SIZE$dstAccessMask = LAYOUT$dstAccessMask.byteSize();
-    public static final long SIZE$oldLayout = LAYOUT$oldLayout.byteSize();
-    public static final long SIZE$newLayout = LAYOUT$newLayout.byteSize();
-    public static final long SIZE$srcQueueFamilyIndex = LAYOUT$srcQueueFamilyIndex.byteSize();
-    public static final long SIZE$dstQueueFamilyIndex = LAYOUT$dstQueueFamilyIndex.byteSize();
-    public static final long SIZE$image = LAYOUT$image.byteSize();
-    public static final long SIZE$subresourceRange = LAYOUT$subresourceRange.byteSize();
-
     public VkImageMemoryBarrier(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER);
@@ -189,4 +131,63 @@ public record VkImageMemoryBarrier(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("srcAccessMask"),
+        ValueLayout.JAVA_INT.withName("dstAccessMask"),
+        ValueLayout.JAVA_INT.withName("oldLayout"),
+        ValueLayout.JAVA_INT.withName("newLayout"),
+        ValueLayout.JAVA_INT.withName("srcQueueFamilyIndex"),
+        ValueLayout.JAVA_INT.withName("dstQueueFamilyIndex"),
+        ValueLayout.ADDRESS.withName("image"),
+        VkImageSubresourceRange.LAYOUT.withName("subresourceRange")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcAccessMask = PathElement.groupElement("srcAccessMask");
+    public static final PathElement PATH$dstAccessMask = PathElement.groupElement("dstAccessMask");
+    public static final PathElement PATH$oldLayout = PathElement.groupElement("oldLayout");
+    public static final PathElement PATH$newLayout = PathElement.groupElement("newLayout");
+    public static final PathElement PATH$srcQueueFamilyIndex = PathElement.groupElement("srcQueueFamilyIndex");
+    public static final PathElement PATH$dstQueueFamilyIndex = PathElement.groupElement("dstQueueFamilyIndex");
+    public static final PathElement PATH$image = PathElement.groupElement("image");
+    public static final PathElement PATH$subresourceRange = PathElement.groupElement("subresourceRange");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$srcAccessMask = (OfInt) LAYOUT.select(PATH$srcAccessMask);
+    public static final OfInt LAYOUT$dstAccessMask = (OfInt) LAYOUT.select(PATH$dstAccessMask);
+    public static final OfInt LAYOUT$oldLayout = (OfInt) LAYOUT.select(PATH$oldLayout);
+    public static final OfInt LAYOUT$newLayout = (OfInt) LAYOUT.select(PATH$newLayout);
+    public static final OfInt LAYOUT$srcQueueFamilyIndex = (OfInt) LAYOUT.select(PATH$srcQueueFamilyIndex);
+    public static final OfInt LAYOUT$dstQueueFamilyIndex = (OfInt) LAYOUT.select(PATH$dstQueueFamilyIndex);
+    public static final AddressLayout LAYOUT$image = (AddressLayout) LAYOUT.select(PATH$image);
+    public static final StructLayout LAYOUT$subresourceRange = (StructLayout) LAYOUT.select(PATH$subresourceRange);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$srcAccessMask = LAYOUT.byteOffset(PATH$srcAccessMask);
+    public static final long OFFSET$dstAccessMask = LAYOUT.byteOffset(PATH$dstAccessMask);
+    public static final long OFFSET$oldLayout = LAYOUT.byteOffset(PATH$oldLayout);
+    public static final long OFFSET$newLayout = LAYOUT.byteOffset(PATH$newLayout);
+    public static final long OFFSET$srcQueueFamilyIndex = LAYOUT.byteOffset(PATH$srcQueueFamilyIndex);
+    public static final long OFFSET$dstQueueFamilyIndex = LAYOUT.byteOffset(PATH$dstQueueFamilyIndex);
+    public static final long OFFSET$image = LAYOUT.byteOffset(PATH$image);
+    public static final long OFFSET$subresourceRange = LAYOUT.byteOffset(PATH$subresourceRange);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$srcAccessMask = LAYOUT$srcAccessMask.byteSize();
+    public static final long SIZE$dstAccessMask = LAYOUT$dstAccessMask.byteSize();
+    public static final long SIZE$oldLayout = LAYOUT$oldLayout.byteSize();
+    public static final long SIZE$newLayout = LAYOUT$newLayout.byteSize();
+    public static final long SIZE$srcQueueFamilyIndex = LAYOUT$srcQueueFamilyIndex.byteSize();
+    public static final long SIZE$dstQueueFamilyIndex = LAYOUT$dstQueueFamilyIndex.byteSize();
+    public static final long SIZE$image = LAYOUT$image.byteSize();
+    public static final long SIZE$subresourceRange = LAYOUT$subresourceRange.byteSize();
+
 }

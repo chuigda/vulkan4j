@@ -30,64 +30,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAccelerationStructureTrianglesOpacityMicromapEXT.html">VkAccelerationStructureTrianglesOpacityMicromapEXT</a>
 public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("indexType"),
-        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("indexBuffer"),
-        ValueLayout.JAVA_LONG.withName("indexStride"),
-        ValueLayout.JAVA_INT.withName("baseTriangle"),
-        ValueLayout.JAVA_INT.withName("usageCountsCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT).withName("pUsageCounts"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT)).withName("ppUsageCounts"),
-        ValueLayout.ADDRESS.withName("micromap")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$indexType = PathElement.groupElement("indexType");
-    public static final PathElement PATH$indexBuffer = PathElement.groupElement("indexBuffer");
-    public static final PathElement PATH$indexStride = PathElement.groupElement("indexStride");
-    public static final PathElement PATH$baseTriangle = PathElement.groupElement("baseTriangle");
-    public static final PathElement PATH$usageCountsCount = PathElement.groupElement("usageCountsCount");
-    public static final PathElement PATH$pUsageCounts = PathElement.groupElement("pUsageCounts");
-    public static final PathElement PATH$ppUsageCounts = PathElement.groupElement("ppUsageCounts");
-    public static final PathElement PATH$micromap = PathElement.groupElement("micromap");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$indexType = (OfInt) LAYOUT.select(PATH$indexType);
-    public static final UnionLayout LAYOUT$indexBuffer = (UnionLayout) LAYOUT.select(PATH$indexBuffer);
-    public static final OfLong LAYOUT$indexStride = (OfLong) LAYOUT.select(PATH$indexStride);
-    public static final OfInt LAYOUT$baseTriangle = (OfInt) LAYOUT.select(PATH$baseTriangle);
-    public static final OfInt LAYOUT$usageCountsCount = (OfInt) LAYOUT.select(PATH$usageCountsCount);
-    public static final AddressLayout LAYOUT$pUsageCounts = (AddressLayout) LAYOUT.select(PATH$pUsageCounts);
-    public static final AddressLayout LAYOUT$ppUsageCounts = (AddressLayout) LAYOUT.select(PATH$ppUsageCounts);
-    public static final AddressLayout LAYOUT$micromap = (AddressLayout) LAYOUT.select(PATH$micromap);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$indexType = LAYOUT.byteOffset(PATH$indexType);
-    public static final long OFFSET$indexBuffer = LAYOUT.byteOffset(PATH$indexBuffer);
-    public static final long OFFSET$indexStride = LAYOUT.byteOffset(PATH$indexStride);
-    public static final long OFFSET$baseTriangle = LAYOUT.byteOffset(PATH$baseTriangle);
-    public static final long OFFSET$usageCountsCount = LAYOUT.byteOffset(PATH$usageCountsCount);
-    public static final long OFFSET$pUsageCounts = LAYOUT.byteOffset(PATH$pUsageCounts);
-    public static final long OFFSET$ppUsageCounts = LAYOUT.byteOffset(PATH$ppUsageCounts);
-    public static final long OFFSET$micromap = LAYOUT.byteOffset(PATH$micromap);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$indexType = LAYOUT$indexType.byteSize();
-    public static final long SIZE$indexBuffer = LAYOUT$indexBuffer.byteSize();
-    public static final long SIZE$indexStride = LAYOUT$indexStride.byteSize();
-    public static final long SIZE$baseTriangle = LAYOUT$baseTriangle.byteSize();
-    public static final long SIZE$usageCountsCount = LAYOUT$usageCountsCount.byteSize();
-    public static final long SIZE$pUsageCounts = LAYOUT$pUsageCounts.byteSize();
-    public static final long SIZE$ppUsageCounts = LAYOUT$ppUsageCounts.byteSize();
-    public static final long SIZE$micromap = LAYOUT$micromap.byteSize();
-
     public VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_EXT);
@@ -226,4 +168,63 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment s
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("indexType"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("indexBuffer"),
+        ValueLayout.JAVA_LONG.withName("indexStride"),
+        ValueLayout.JAVA_INT.withName("baseTriangle"),
+        ValueLayout.JAVA_INT.withName("usageCountsCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT).withName("pUsageCounts"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT)).withName("ppUsageCounts"),
+        ValueLayout.ADDRESS.withName("micromap")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$indexType = PathElement.groupElement("indexType");
+    public static final PathElement PATH$indexBuffer = PathElement.groupElement("indexBuffer");
+    public static final PathElement PATH$indexStride = PathElement.groupElement("indexStride");
+    public static final PathElement PATH$baseTriangle = PathElement.groupElement("baseTriangle");
+    public static final PathElement PATH$usageCountsCount = PathElement.groupElement("usageCountsCount");
+    public static final PathElement PATH$pUsageCounts = PathElement.groupElement("pUsageCounts");
+    public static final PathElement PATH$ppUsageCounts = PathElement.groupElement("ppUsageCounts");
+    public static final PathElement PATH$micromap = PathElement.groupElement("micromap");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$indexType = (OfInt) LAYOUT.select(PATH$indexType);
+    public static final UnionLayout LAYOUT$indexBuffer = (UnionLayout) LAYOUT.select(PATH$indexBuffer);
+    public static final OfLong LAYOUT$indexStride = (OfLong) LAYOUT.select(PATH$indexStride);
+    public static final OfInt LAYOUT$baseTriangle = (OfInt) LAYOUT.select(PATH$baseTriangle);
+    public static final OfInt LAYOUT$usageCountsCount = (OfInt) LAYOUT.select(PATH$usageCountsCount);
+    public static final AddressLayout LAYOUT$pUsageCounts = (AddressLayout) LAYOUT.select(PATH$pUsageCounts);
+    public static final AddressLayout LAYOUT$ppUsageCounts = (AddressLayout) LAYOUT.select(PATH$ppUsageCounts);
+    public static final AddressLayout LAYOUT$micromap = (AddressLayout) LAYOUT.select(PATH$micromap);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$indexType = LAYOUT.byteOffset(PATH$indexType);
+    public static final long OFFSET$indexBuffer = LAYOUT.byteOffset(PATH$indexBuffer);
+    public static final long OFFSET$indexStride = LAYOUT.byteOffset(PATH$indexStride);
+    public static final long OFFSET$baseTriangle = LAYOUT.byteOffset(PATH$baseTriangle);
+    public static final long OFFSET$usageCountsCount = LAYOUT.byteOffset(PATH$usageCountsCount);
+    public static final long OFFSET$pUsageCounts = LAYOUT.byteOffset(PATH$pUsageCounts);
+    public static final long OFFSET$ppUsageCounts = LAYOUT.byteOffset(PATH$ppUsageCounts);
+    public static final long OFFSET$micromap = LAYOUT.byteOffset(PATH$micromap);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$indexType = LAYOUT$indexType.byteSize();
+    public static final long SIZE$indexBuffer = LAYOUT$indexBuffer.byteSize();
+    public static final long SIZE$indexStride = LAYOUT$indexStride.byteSize();
+    public static final long SIZE$baseTriangle = LAYOUT$baseTriangle.byteSize();
+    public static final long SIZE$usageCountsCount = LAYOUT$usageCountsCount.byteSize();
+    public static final long SIZE$pUsageCounts = LAYOUT$pUsageCounts.byteSize();
+    public static final long SIZE$ppUsageCounts = LAYOUT$ppUsageCounts.byteSize();
+    public static final long SIZE$micromap = LAYOUT$micromap.byteSize();
+
 }

@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT.html">VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT</a>
 public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("graphicsPipelineLibraryFastLinking"),
-        ValueLayout.JAVA_INT.withName("graphicsPipelineLibraryIndependentInterpolationDecoration")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$graphicsPipelineLibraryFastLinking = PathElement.groupElement("graphicsPipelineLibraryFastLinking");
-    public static final PathElement PATH$graphicsPipelineLibraryIndependentInterpolationDecoration = PathElement.groupElement("graphicsPipelineLibraryIndependentInterpolationDecoration");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$graphicsPipelineLibraryFastLinking = (OfInt) LAYOUT.select(PATH$graphicsPipelineLibraryFastLinking);
-    public static final OfInt LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration = (OfInt) LAYOUT.select(PATH$graphicsPipelineLibraryIndependentInterpolationDecoration);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$graphicsPipelineLibraryFastLinking = LAYOUT.byteOffset(PATH$graphicsPipelineLibraryFastLinking);
-    public static final long OFFSET$graphicsPipelineLibraryIndependentInterpolationDecoration = LAYOUT.byteOffset(PATH$graphicsPipelineLibraryIndependentInterpolationDecoration);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$graphicsPipelineLibraryFastLinking = LAYOUT$graphicsPipelineLibraryFastLinking.byteSize();
-    public static final long SIZE$graphicsPipelineLibraryIndependentInterpolationDecoration = LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration.byteSize();
-
     public VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT);
@@ -105,4 +77,33 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(MemorySegment
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("graphicsPipelineLibraryFastLinking"),
+        ValueLayout.JAVA_INT.withName("graphicsPipelineLibraryIndependentInterpolationDecoration")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$graphicsPipelineLibraryFastLinking = PathElement.groupElement("graphicsPipelineLibraryFastLinking");
+    public static final PathElement PATH$graphicsPipelineLibraryIndependentInterpolationDecoration = PathElement.groupElement("graphicsPipelineLibraryIndependentInterpolationDecoration");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$graphicsPipelineLibraryFastLinking = (OfInt) LAYOUT.select(PATH$graphicsPipelineLibraryFastLinking);
+    public static final OfInt LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration = (OfInt) LAYOUT.select(PATH$graphicsPipelineLibraryIndependentInterpolationDecoration);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$graphicsPipelineLibraryFastLinking = LAYOUT.byteOffset(PATH$graphicsPipelineLibraryFastLinking);
+    public static final long OFFSET$graphicsPipelineLibraryIndependentInterpolationDecoration = LAYOUT.byteOffset(PATH$graphicsPipelineLibraryIndependentInterpolationDecoration);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$graphicsPipelineLibraryFastLinking = LAYOUT$graphicsPipelineLibraryFastLinking.byteSize();
+    public static final long SIZE$graphicsPipelineLibraryIndependentInterpolationDecoration = LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration.byteSize();
+
 }

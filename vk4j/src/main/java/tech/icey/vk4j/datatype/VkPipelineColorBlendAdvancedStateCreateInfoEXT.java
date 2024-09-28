@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineColorBlendAdvancedStateCreateInfoEXT.html">VkPipelineColorBlendAdvancedStateCreateInfoEXT</a>
 public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("srcPremultiplied"),
-        ValueLayout.JAVA_INT.withName("dstPremultiplied"),
-        ValueLayout.JAVA_INT.withName("blendOverlap")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$srcPremultiplied = PathElement.groupElement("srcPremultiplied");
-    public static final PathElement PATH$dstPremultiplied = PathElement.groupElement("dstPremultiplied");
-    public static final PathElement PATH$blendOverlap = PathElement.groupElement("blendOverlap");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$srcPremultiplied = (OfInt) LAYOUT.select(PATH$srcPremultiplied);
-    public static final OfInt LAYOUT$dstPremultiplied = (OfInt) LAYOUT.select(PATH$dstPremultiplied);
-    public static final OfInt LAYOUT$blendOverlap = (OfInt) LAYOUT.select(PATH$blendOverlap);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$srcPremultiplied = LAYOUT.byteOffset(PATH$srcPremultiplied);
-    public static final long OFFSET$dstPremultiplied = LAYOUT.byteOffset(PATH$dstPremultiplied);
-    public static final long OFFSET$blendOverlap = LAYOUT.byteOffset(PATH$blendOverlap);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$srcPremultiplied = LAYOUT$srcPremultiplied.byteSize();
-    public static final long SIZE$dstPremultiplied = LAYOUT$dstPremultiplied.byteSize();
-    public static final long SIZE$blendOverlap = LAYOUT$blendOverlap.byteSize();
-
     public VkPipelineColorBlendAdvancedStateCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT);
@@ -119,4 +86,38 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(MemorySegment segme
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("srcPremultiplied"),
+        ValueLayout.JAVA_INT.withName("dstPremultiplied"),
+        ValueLayout.JAVA_INT.withName("blendOverlap")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcPremultiplied = PathElement.groupElement("srcPremultiplied");
+    public static final PathElement PATH$dstPremultiplied = PathElement.groupElement("dstPremultiplied");
+    public static final PathElement PATH$blendOverlap = PathElement.groupElement("blendOverlap");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$srcPremultiplied = (OfInt) LAYOUT.select(PATH$srcPremultiplied);
+    public static final OfInt LAYOUT$dstPremultiplied = (OfInt) LAYOUT.select(PATH$dstPremultiplied);
+    public static final OfInt LAYOUT$blendOverlap = (OfInt) LAYOUT.select(PATH$blendOverlap);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$srcPremultiplied = LAYOUT.byteOffset(PATH$srcPremultiplied);
+    public static final long OFFSET$dstPremultiplied = LAYOUT.byteOffset(PATH$dstPremultiplied);
+    public static final long OFFSET$blendOverlap = LAYOUT.byteOffset(PATH$blendOverlap);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$srcPremultiplied = LAYOUT$srcPremultiplied.byteSize();
+    public static final long SIZE$dstPremultiplied = LAYOUT$dstPremultiplied.byteSize();
+    public static final long SIZE$blendOverlap = LAYOUT$blendOverlap.byteSize();
+
 }

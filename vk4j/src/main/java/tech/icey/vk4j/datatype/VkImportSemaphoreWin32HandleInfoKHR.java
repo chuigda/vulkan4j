@@ -27,49 +27,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImportSemaphoreWin32HandleInfoKHR.html">VkImportSemaphoreWin32HandleInfoKHR</a>
 public record VkImportSemaphoreWin32HandleInfoKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("semaphore"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("handleType"),
-        ValueLayout.ADDRESS.withName("handle"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("name")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$semaphore = PathElement.groupElement("semaphore");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$handleType = PathElement.groupElement("handleType");
-    public static final PathElement PATH$handle = PathElement.groupElement("handle");
-    public static final PathElement PATH$name = PathElement.groupElement("name");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$semaphore = (AddressLayout) LAYOUT.select(PATH$semaphore);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$handleType = (OfInt) LAYOUT.select(PATH$handleType);
-    public static final AddressLayout LAYOUT$handle = (AddressLayout) LAYOUT.select(PATH$handle);
-    public static final AddressLayout LAYOUT$name = (AddressLayout) LAYOUT.select(PATH$name);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$semaphore = LAYOUT.byteOffset(PATH$semaphore);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
-    public static final long OFFSET$handle = LAYOUT.byteOffset(PATH$handle);
-    public static final long OFFSET$name = LAYOUT.byteOffset(PATH$name);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$semaphore = LAYOUT$semaphore.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
-    public static final long SIZE$handle = LAYOUT$handle.byteSize();
-    public static final long SIZE$name = LAYOUT$name.byteSize();
-
     public VkImportSemaphoreWin32HandleInfoKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR);
@@ -166,4 +123,48 @@ public record VkImportSemaphoreWin32HandleInfoKHR(MemorySegment segment) impleme
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("semaphore"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("handleType"),
+        ValueLayout.ADDRESS.withName("handle"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("name")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$semaphore = PathElement.groupElement("semaphore");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$handleType = PathElement.groupElement("handleType");
+    public static final PathElement PATH$handle = PathElement.groupElement("handle");
+    public static final PathElement PATH$name = PathElement.groupElement("name");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$semaphore = (AddressLayout) LAYOUT.select(PATH$semaphore);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$handleType = (OfInt) LAYOUT.select(PATH$handleType);
+    public static final AddressLayout LAYOUT$handle = (AddressLayout) LAYOUT.select(PATH$handle);
+    public static final AddressLayout LAYOUT$name = (AddressLayout) LAYOUT.select(PATH$name);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$semaphore = LAYOUT.byteOffset(PATH$semaphore);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
+    public static final long OFFSET$handle = LAYOUT.byteOffset(PATH$handle);
+    public static final long OFFSET$name = LAYOUT.byteOffset(PATH$name);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$semaphore = LAYOUT$semaphore.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
+    public static final long SIZE$handle = LAYOUT$handle.byteSize();
+    public static final long SIZE$name = LAYOUT$name.byteSize();
+
 }

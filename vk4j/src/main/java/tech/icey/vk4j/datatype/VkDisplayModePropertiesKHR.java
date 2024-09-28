@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDisplayModePropertiesKHR.html">VkDisplayModePropertiesKHR</a>
 public record VkDisplayModePropertiesKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.ADDRESS.withName("displayMode"),
-        VkDisplayModeParametersKHR.LAYOUT.withName("parameters")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$displayMode = PathElement.groupElement("displayMode");
-    public static final PathElement PATH$parameters = PathElement.groupElement("parameters");
-
-    public static final AddressLayout LAYOUT$displayMode = (AddressLayout) LAYOUT.select(PATH$displayMode);
-    public static final StructLayout LAYOUT$parameters = (StructLayout) LAYOUT.select(PATH$parameters);
-
-    public static final long OFFSET$displayMode = LAYOUT.byteOffset(PATH$displayMode);
-    public static final long OFFSET$parameters = LAYOUT.byteOffset(PATH$parameters);
-
-    public static final long SIZE$displayMode = LAYOUT$displayMode.byteSize();
-    public static final long SIZE$parameters = LAYOUT$parameters.byteSize();
-
     public VkDisplayModePropertiesKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkDisplayModePropertiesKHR(MemorySegment segment) implements IPoin
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("displayMode"),
+        VkDisplayModeParametersKHR.LAYOUT.withName("parameters")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$displayMode = PathElement.groupElement("displayMode");
+    public static final PathElement PATH$parameters = PathElement.groupElement("parameters");
+
+    public static final AddressLayout LAYOUT$displayMode = (AddressLayout) LAYOUT.select(PATH$displayMode);
+    public static final StructLayout LAYOUT$parameters = (StructLayout) LAYOUT.select(PATH$parameters);
+
+    public static final long OFFSET$displayMode = LAYOUT.byteOffset(PATH$displayMode);
+    public static final long OFFSET$parameters = LAYOUT.byteOffset(PATH$parameters);
+
+    public static final long SIZE$displayMode = LAYOUT$displayMode.byteSize();
+    public static final long SIZE$parameters = LAYOUT$parameters.byteSize();
+
 }

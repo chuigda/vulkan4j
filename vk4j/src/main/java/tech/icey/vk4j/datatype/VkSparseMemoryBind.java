@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSparseMemoryBind.html">VkSparseMemoryBind</a>
 public record VkSparseMemoryBind(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_LONG.withName("resourceOffset"),
-        ValueLayout.JAVA_LONG.withName("size"),
-        ValueLayout.ADDRESS.withName("memory"),
-        ValueLayout.JAVA_LONG.withName("memoryOffset"),
-        ValueLayout.JAVA_INT.withName("flags")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$resourceOffset = PathElement.groupElement("resourceOffset");
-    public static final PathElement PATH$size = PathElement.groupElement("size");
-    public static final PathElement PATH$memory = PathElement.groupElement("memory");
-    public static final PathElement PATH$memoryOffset = PathElement.groupElement("memoryOffset");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-
-    public static final OfLong LAYOUT$resourceOffset = (OfLong) LAYOUT.select(PATH$resourceOffset);
-    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
-    public static final AddressLayout LAYOUT$memory = (AddressLayout) LAYOUT.select(PATH$memory);
-    public static final OfLong LAYOUT$memoryOffset = (OfLong) LAYOUT.select(PATH$memoryOffset);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-
-    public static final long OFFSET$resourceOffset = LAYOUT.byteOffset(PATH$resourceOffset);
-    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
-    public static final long OFFSET$memory = LAYOUT.byteOffset(PATH$memory);
-    public static final long OFFSET$memoryOffset = LAYOUT.byteOffset(PATH$memoryOffset);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-
-    public static final long SIZE$resourceOffset = LAYOUT$resourceOffset.byteSize();
-    public static final long SIZE$size = LAYOUT$size.byteSize();
-    public static final long SIZE$memory = LAYOUT$memory.byteSize();
-    public static final long SIZE$memoryOffset = LAYOUT$memoryOffset.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
     public VkSparseMemoryBind(MemorySegment segment) {
         this.segment = segment;
     }
@@ -114,4 +81,38 @@ public record VkSparseMemoryBind(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("resourceOffset"),
+        ValueLayout.JAVA_LONG.withName("size"),
+        ValueLayout.ADDRESS.withName("memory"),
+        ValueLayout.JAVA_LONG.withName("memoryOffset"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$resourceOffset = PathElement.groupElement("resourceOffset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$memory = PathElement.groupElement("memory");
+    public static final PathElement PATH$memoryOffset = PathElement.groupElement("memoryOffset");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+
+    public static final OfLong LAYOUT$resourceOffset = (OfLong) LAYOUT.select(PATH$resourceOffset);
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+    public static final AddressLayout LAYOUT$memory = (AddressLayout) LAYOUT.select(PATH$memory);
+    public static final OfLong LAYOUT$memoryOffset = (OfLong) LAYOUT.select(PATH$memoryOffset);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+
+    public static final long OFFSET$resourceOffset = LAYOUT.byteOffset(PATH$resourceOffset);
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+    public static final long OFFSET$memory = LAYOUT.byteOffset(PATH$memory);
+    public static final long OFFSET$memoryOffset = LAYOUT.byteOffset(PATH$memoryOffset);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+
+    public static final long SIZE$resourceOffset = LAYOUT$resourceOffset.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$memory = LAYOUT$memory.byteSize();
+    public static final long SIZE$memoryOffset = LAYOUT$memoryOffset.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+
 }

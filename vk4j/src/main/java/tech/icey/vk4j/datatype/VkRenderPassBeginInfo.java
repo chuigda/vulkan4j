@@ -27,49 +27,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRenderPassBeginInfo.html">VkRenderPassBeginInfo</a>
 public record VkRenderPassBeginInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("renderPass"),
-        ValueLayout.ADDRESS.withName("framebuffer"),
-        VkRect2D.LAYOUT.withName("renderArea"),
-        ValueLayout.JAVA_INT.withName("clearValueCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkClearValue.LAYOUT).withName("pClearValues")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$renderPass = PathElement.groupElement("renderPass");
-    public static final PathElement PATH$framebuffer = PathElement.groupElement("framebuffer");
-    public static final PathElement PATH$renderArea = PathElement.groupElement("renderArea");
-    public static final PathElement PATH$clearValueCount = PathElement.groupElement("clearValueCount");
-    public static final PathElement PATH$pClearValues = PathElement.groupElement("pClearValues");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$renderPass = (AddressLayout) LAYOUT.select(PATH$renderPass);
-    public static final AddressLayout LAYOUT$framebuffer = (AddressLayout) LAYOUT.select(PATH$framebuffer);
-    public static final StructLayout LAYOUT$renderArea = (StructLayout) LAYOUT.select(PATH$renderArea);
-    public static final OfInt LAYOUT$clearValueCount = (OfInt) LAYOUT.select(PATH$clearValueCount);
-    public static final AddressLayout LAYOUT$pClearValues = (AddressLayout) LAYOUT.select(PATH$pClearValues);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$renderPass = LAYOUT.byteOffset(PATH$renderPass);
-    public static final long OFFSET$framebuffer = LAYOUT.byteOffset(PATH$framebuffer);
-    public static final long OFFSET$renderArea = LAYOUT.byteOffset(PATH$renderArea);
-    public static final long OFFSET$clearValueCount = LAYOUT.byteOffset(PATH$clearValueCount);
-    public static final long OFFSET$pClearValues = LAYOUT.byteOffset(PATH$pClearValues);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$renderPass = LAYOUT$renderPass.byteSize();
-    public static final long SIZE$framebuffer = LAYOUT$framebuffer.byteSize();
-    public static final long SIZE$renderArea = LAYOUT$renderArea.byteSize();
-    public static final long SIZE$clearValueCount = LAYOUT$clearValueCount.byteSize();
-    public static final long SIZE$pClearValues = LAYOUT$pClearValues.byteSize();
-
     public VkRenderPassBeginInfo(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO);
@@ -171,4 +128,48 @@ public record VkRenderPassBeginInfo(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("renderPass"),
+        ValueLayout.ADDRESS.withName("framebuffer"),
+        VkRect2D.LAYOUT.withName("renderArea"),
+        ValueLayout.JAVA_INT.withName("clearValueCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkClearValue.LAYOUT).withName("pClearValues")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$renderPass = PathElement.groupElement("renderPass");
+    public static final PathElement PATH$framebuffer = PathElement.groupElement("framebuffer");
+    public static final PathElement PATH$renderArea = PathElement.groupElement("renderArea");
+    public static final PathElement PATH$clearValueCount = PathElement.groupElement("clearValueCount");
+    public static final PathElement PATH$pClearValues = PathElement.groupElement("pClearValues");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$renderPass = (AddressLayout) LAYOUT.select(PATH$renderPass);
+    public static final AddressLayout LAYOUT$framebuffer = (AddressLayout) LAYOUT.select(PATH$framebuffer);
+    public static final StructLayout LAYOUT$renderArea = (StructLayout) LAYOUT.select(PATH$renderArea);
+    public static final OfInt LAYOUT$clearValueCount = (OfInt) LAYOUT.select(PATH$clearValueCount);
+    public static final AddressLayout LAYOUT$pClearValues = (AddressLayout) LAYOUT.select(PATH$pClearValues);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$renderPass = LAYOUT.byteOffset(PATH$renderPass);
+    public static final long OFFSET$framebuffer = LAYOUT.byteOffset(PATH$framebuffer);
+    public static final long OFFSET$renderArea = LAYOUT.byteOffset(PATH$renderArea);
+    public static final long OFFSET$clearValueCount = LAYOUT.byteOffset(PATH$clearValueCount);
+    public static final long OFFSET$pClearValues = LAYOUT.byteOffset(PATH$pClearValues);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$renderPass = LAYOUT$renderPass.byteSize();
+    public static final long SIZE$framebuffer = LAYOUT$framebuffer.byteSize();
+    public static final long SIZE$renderArea = LAYOUT$renderArea.byteSize();
+    public static final long SIZE$clearValueCount = LAYOUT$clearValueCount.byteSize();
+    public static final long SIZE$pClearValues = LAYOUT$pClearValues.byteSize();
+
 }

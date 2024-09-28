@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCommandBufferAllocateInfo.html">VkCommandBufferAllocateInfo</a>
 public record VkCommandBufferAllocateInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("commandPool"),
-        ValueLayout.JAVA_INT.withName("level"),
-        ValueLayout.JAVA_INT.withName("commandBufferCount")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$commandPool = PathElement.groupElement("commandPool");
-    public static final PathElement PATH$level = PathElement.groupElement("level");
-    public static final PathElement PATH$commandBufferCount = PathElement.groupElement("commandBufferCount");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$commandPool = (AddressLayout) LAYOUT.select(PATH$commandPool);
-    public static final OfInt LAYOUT$level = (OfInt) LAYOUT.select(PATH$level);
-    public static final OfInt LAYOUT$commandBufferCount = (OfInt) LAYOUT.select(PATH$commandBufferCount);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$commandPool = LAYOUT.byteOffset(PATH$commandPool);
-    public static final long OFFSET$level = LAYOUT.byteOffset(PATH$level);
-    public static final long OFFSET$commandBufferCount = LAYOUT.byteOffset(PATH$commandBufferCount);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$commandPool = LAYOUT$commandPool.byteSize();
-    public static final long SIZE$level = LAYOUT$level.byteSize();
-    public static final long SIZE$commandBufferCount = LAYOUT$commandBufferCount.byteSize();
-
     public VkCommandBufferAllocateInfo(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO);
@@ -119,4 +86,38 @@ public record VkCommandBufferAllocateInfo(MemorySegment segment) implements IPoi
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("commandPool"),
+        ValueLayout.JAVA_INT.withName("level"),
+        ValueLayout.JAVA_INT.withName("commandBufferCount")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$commandPool = PathElement.groupElement("commandPool");
+    public static final PathElement PATH$level = PathElement.groupElement("level");
+    public static final PathElement PATH$commandBufferCount = PathElement.groupElement("commandBufferCount");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$commandPool = (AddressLayout) LAYOUT.select(PATH$commandPool);
+    public static final OfInt LAYOUT$level = (OfInt) LAYOUT.select(PATH$level);
+    public static final OfInt LAYOUT$commandBufferCount = (OfInt) LAYOUT.select(PATH$commandBufferCount);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$commandPool = LAYOUT.byteOffset(PATH$commandPool);
+    public static final long OFFSET$level = LAYOUT.byteOffset(PATH$level);
+    public static final long OFFSET$commandBufferCount = LAYOUT.byteOffset(PATH$commandBufferCount);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$commandPool = LAYOUT$commandPool.byteSize();
+    public static final long SIZE$level = LAYOUT$level.byteSize();
+    public static final long SIZE$commandBufferCount = LAYOUT$commandBufferCount.byteSize();
+
 }

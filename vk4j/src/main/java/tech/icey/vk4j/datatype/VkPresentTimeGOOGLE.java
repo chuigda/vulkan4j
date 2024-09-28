@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPresentTimeGOOGLE.html">VkPresentTimeGOOGLE</a>
 public record VkPresentTimeGOOGLE(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("presentID"),
-        ValueLayout.JAVA_LONG.withName("desiredPresentTime")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$presentID = PathElement.groupElement("presentID");
-    public static final PathElement PATH$desiredPresentTime = PathElement.groupElement("desiredPresentTime");
-
-    public static final OfInt LAYOUT$presentID = (OfInt) LAYOUT.select(PATH$presentID);
-    public static final OfLong LAYOUT$desiredPresentTime = (OfLong) LAYOUT.select(PATH$desiredPresentTime);
-
-    public static final long OFFSET$presentID = LAYOUT.byteOffset(PATH$presentID);
-    public static final long OFFSET$desiredPresentTime = LAYOUT.byteOffset(PATH$desiredPresentTime);
-
-    public static final long SIZE$presentID = LAYOUT$presentID.byteSize();
-    public static final long SIZE$desiredPresentTime = LAYOUT$desiredPresentTime.byteSize();
-
     public VkPresentTimeGOOGLE(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkPresentTimeGOOGLE(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("presentID"),
+        ValueLayout.JAVA_LONG.withName("desiredPresentTime")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$presentID = PathElement.groupElement("presentID");
+    public static final PathElement PATH$desiredPresentTime = PathElement.groupElement("desiredPresentTime");
+
+    public static final OfInt LAYOUT$presentID = (OfInt) LAYOUT.select(PATH$presentID);
+    public static final OfLong LAYOUT$desiredPresentTime = (OfLong) LAYOUT.select(PATH$desiredPresentTime);
+
+    public static final long OFFSET$presentID = LAYOUT.byteOffset(PATH$presentID);
+    public static final long OFFSET$desiredPresentTime = LAYOUT.byteOffset(PATH$desiredPresentTime);
+
+    public static final long SIZE$presentID = LAYOUT$presentID.byteSize();
+    public static final long SIZE$desiredPresentTime = LAYOUT$desiredPresentTime.byteSize();
+
 }

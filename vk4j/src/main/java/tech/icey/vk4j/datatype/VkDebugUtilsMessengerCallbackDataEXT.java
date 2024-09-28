@@ -32,74 +32,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDebugUtilsMessengerCallbackDataEXT.html">VkDebugUtilsMessengerCallbackDataEXT</a>
 public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pMessageIdName"),
-        ValueLayout.JAVA_INT.withName("messageIdNumber"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pMessage"),
-        ValueLayout.JAVA_INT.withName("queueLabelCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkDebugUtilsLabelEXT.LAYOUT).withName("pQueueLabels"),
-        ValueLayout.JAVA_INT.withName("cmdBufLabelCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkDebugUtilsLabelEXT.LAYOUT).withName("pCmdBufLabels"),
-        ValueLayout.JAVA_INT.withName("objectCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkDebugUtilsObjectNameInfoEXT.LAYOUT).withName("pObjects")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$pMessageIdName = PathElement.groupElement("pMessageIdName");
-    public static final PathElement PATH$messageIdNumber = PathElement.groupElement("messageIdNumber");
-    public static final PathElement PATH$pMessage = PathElement.groupElement("pMessage");
-    public static final PathElement PATH$queueLabelCount = PathElement.groupElement("queueLabelCount");
-    public static final PathElement PATH$pQueueLabels = PathElement.groupElement("pQueueLabels");
-    public static final PathElement PATH$cmdBufLabelCount = PathElement.groupElement("cmdBufLabelCount");
-    public static final PathElement PATH$pCmdBufLabels = PathElement.groupElement("pCmdBufLabels");
-    public static final PathElement PATH$objectCount = PathElement.groupElement("objectCount");
-    public static final PathElement PATH$pObjects = PathElement.groupElement("pObjects");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final AddressLayout LAYOUT$pMessageIdName = (AddressLayout) LAYOUT.select(PATH$pMessageIdName);
-    public static final OfInt LAYOUT$messageIdNumber = (OfInt) LAYOUT.select(PATH$messageIdNumber);
-    public static final AddressLayout LAYOUT$pMessage = (AddressLayout) LAYOUT.select(PATH$pMessage);
-    public static final OfInt LAYOUT$queueLabelCount = (OfInt) LAYOUT.select(PATH$queueLabelCount);
-    public static final AddressLayout LAYOUT$pQueueLabels = (AddressLayout) LAYOUT.select(PATH$pQueueLabels);
-    public static final OfInt LAYOUT$cmdBufLabelCount = (OfInt) LAYOUT.select(PATH$cmdBufLabelCount);
-    public static final AddressLayout LAYOUT$pCmdBufLabels = (AddressLayout) LAYOUT.select(PATH$pCmdBufLabels);
-    public static final OfInt LAYOUT$objectCount = (OfInt) LAYOUT.select(PATH$objectCount);
-    public static final AddressLayout LAYOUT$pObjects = (AddressLayout) LAYOUT.select(PATH$pObjects);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$pMessageIdName = LAYOUT.byteOffset(PATH$pMessageIdName);
-    public static final long OFFSET$messageIdNumber = LAYOUT.byteOffset(PATH$messageIdNumber);
-    public static final long OFFSET$pMessage = LAYOUT.byteOffset(PATH$pMessage);
-    public static final long OFFSET$queueLabelCount = LAYOUT.byteOffset(PATH$queueLabelCount);
-    public static final long OFFSET$pQueueLabels = LAYOUT.byteOffset(PATH$pQueueLabels);
-    public static final long OFFSET$cmdBufLabelCount = LAYOUT.byteOffset(PATH$cmdBufLabelCount);
-    public static final long OFFSET$pCmdBufLabels = LAYOUT.byteOffset(PATH$pCmdBufLabels);
-    public static final long OFFSET$objectCount = LAYOUT.byteOffset(PATH$objectCount);
-    public static final long OFFSET$pObjects = LAYOUT.byteOffset(PATH$pObjects);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$pMessageIdName = LAYOUT$pMessageIdName.byteSize();
-    public static final long SIZE$messageIdNumber = LAYOUT$messageIdNumber.byteSize();
-    public static final long SIZE$pMessage = LAYOUT$pMessage.byteSize();
-    public static final long SIZE$queueLabelCount = LAYOUT$queueLabelCount.byteSize();
-    public static final long SIZE$pQueueLabels = LAYOUT$pQueueLabels.byteSize();
-    public static final long SIZE$cmdBufLabelCount = LAYOUT$cmdBufLabelCount.byteSize();
-    public static final long SIZE$pCmdBufLabels = LAYOUT$pCmdBufLabels.byteSize();
-    public static final long SIZE$objectCount = LAYOUT$objectCount.byteSize();
-    public static final long SIZE$pObjects = LAYOUT$pObjects.byteSize();
-
     public VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT);
@@ -319,4 +251,73 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pMessageIdName"),
+        ValueLayout.JAVA_INT.withName("messageIdNumber"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pMessage"),
+        ValueLayout.JAVA_INT.withName("queueLabelCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDebugUtilsLabelEXT.LAYOUT).withName("pQueueLabels"),
+        ValueLayout.JAVA_INT.withName("cmdBufLabelCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDebugUtilsLabelEXT.LAYOUT).withName("pCmdBufLabels"),
+        ValueLayout.JAVA_INT.withName("objectCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDebugUtilsObjectNameInfoEXT.LAYOUT).withName("pObjects")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$pMessageIdName = PathElement.groupElement("pMessageIdName");
+    public static final PathElement PATH$messageIdNumber = PathElement.groupElement("messageIdNumber");
+    public static final PathElement PATH$pMessage = PathElement.groupElement("pMessage");
+    public static final PathElement PATH$queueLabelCount = PathElement.groupElement("queueLabelCount");
+    public static final PathElement PATH$pQueueLabels = PathElement.groupElement("pQueueLabels");
+    public static final PathElement PATH$cmdBufLabelCount = PathElement.groupElement("cmdBufLabelCount");
+    public static final PathElement PATH$pCmdBufLabels = PathElement.groupElement("pCmdBufLabels");
+    public static final PathElement PATH$objectCount = PathElement.groupElement("objectCount");
+    public static final PathElement PATH$pObjects = PathElement.groupElement("pObjects");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$pMessageIdName = (AddressLayout) LAYOUT.select(PATH$pMessageIdName);
+    public static final OfInt LAYOUT$messageIdNumber = (OfInt) LAYOUT.select(PATH$messageIdNumber);
+    public static final AddressLayout LAYOUT$pMessage = (AddressLayout) LAYOUT.select(PATH$pMessage);
+    public static final OfInt LAYOUT$queueLabelCount = (OfInt) LAYOUT.select(PATH$queueLabelCount);
+    public static final AddressLayout LAYOUT$pQueueLabels = (AddressLayout) LAYOUT.select(PATH$pQueueLabels);
+    public static final OfInt LAYOUT$cmdBufLabelCount = (OfInt) LAYOUT.select(PATH$cmdBufLabelCount);
+    public static final AddressLayout LAYOUT$pCmdBufLabels = (AddressLayout) LAYOUT.select(PATH$pCmdBufLabels);
+    public static final OfInt LAYOUT$objectCount = (OfInt) LAYOUT.select(PATH$objectCount);
+    public static final AddressLayout LAYOUT$pObjects = (AddressLayout) LAYOUT.select(PATH$pObjects);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$pMessageIdName = LAYOUT.byteOffset(PATH$pMessageIdName);
+    public static final long OFFSET$messageIdNumber = LAYOUT.byteOffset(PATH$messageIdNumber);
+    public static final long OFFSET$pMessage = LAYOUT.byteOffset(PATH$pMessage);
+    public static final long OFFSET$queueLabelCount = LAYOUT.byteOffset(PATH$queueLabelCount);
+    public static final long OFFSET$pQueueLabels = LAYOUT.byteOffset(PATH$pQueueLabels);
+    public static final long OFFSET$cmdBufLabelCount = LAYOUT.byteOffset(PATH$cmdBufLabelCount);
+    public static final long OFFSET$pCmdBufLabels = LAYOUT.byteOffset(PATH$pCmdBufLabels);
+    public static final long OFFSET$objectCount = LAYOUT.byteOffset(PATH$objectCount);
+    public static final long OFFSET$pObjects = LAYOUT.byteOffset(PATH$pObjects);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$pMessageIdName = LAYOUT$pMessageIdName.byteSize();
+    public static final long SIZE$messageIdNumber = LAYOUT$messageIdNumber.byteSize();
+    public static final long SIZE$pMessage = LAYOUT$pMessage.byteSize();
+    public static final long SIZE$queueLabelCount = LAYOUT$queueLabelCount.byteSize();
+    public static final long SIZE$pQueueLabels = LAYOUT$pQueueLabels.byteSize();
+    public static final long SIZE$cmdBufLabelCount = LAYOUT$cmdBufLabelCount.byteSize();
+    public static final long SIZE$pCmdBufLabels = LAYOUT$pCmdBufLabels.byteSize();
+    public static final long SIZE$objectCount = LAYOUT$objectCount.byteSize();
+    public static final long SIZE$pObjects = LAYOUT$pObjects.byteSize();
+
 }

@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAccelerationStructureBuildSizesInfoKHR.html">VkAccelerationStructureBuildSizesInfoKHR</a>
 public record VkAccelerationStructureBuildSizesInfoKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_LONG.withName("accelerationStructureSize"),
-        ValueLayout.JAVA_LONG.withName("updateScratchSize"),
-        ValueLayout.JAVA_LONG.withName("buildScratchSize")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$accelerationStructureSize = PathElement.groupElement("accelerationStructureSize");
-    public static final PathElement PATH$updateScratchSize = PathElement.groupElement("updateScratchSize");
-    public static final PathElement PATH$buildScratchSize = PathElement.groupElement("buildScratchSize");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfLong LAYOUT$accelerationStructureSize = (OfLong) LAYOUT.select(PATH$accelerationStructureSize);
-    public static final OfLong LAYOUT$updateScratchSize = (OfLong) LAYOUT.select(PATH$updateScratchSize);
-    public static final OfLong LAYOUT$buildScratchSize = (OfLong) LAYOUT.select(PATH$buildScratchSize);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$accelerationStructureSize = LAYOUT.byteOffset(PATH$accelerationStructureSize);
-    public static final long OFFSET$updateScratchSize = LAYOUT.byteOffset(PATH$updateScratchSize);
-    public static final long OFFSET$buildScratchSize = LAYOUT.byteOffset(PATH$buildScratchSize);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$accelerationStructureSize = LAYOUT$accelerationStructureSize.byteSize();
-    public static final long SIZE$updateScratchSize = LAYOUT$updateScratchSize.byteSize();
-    public static final long SIZE$buildScratchSize = LAYOUT$buildScratchSize.byteSize();
-
     public VkAccelerationStructureBuildSizesInfoKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR);
@@ -119,4 +86,38 @@ public record VkAccelerationStructureBuildSizesInfoKHR(MemorySegment segment) im
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("accelerationStructureSize"),
+        ValueLayout.JAVA_LONG.withName("updateScratchSize"),
+        ValueLayout.JAVA_LONG.withName("buildScratchSize")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$accelerationStructureSize = PathElement.groupElement("accelerationStructureSize");
+    public static final PathElement PATH$updateScratchSize = PathElement.groupElement("updateScratchSize");
+    public static final PathElement PATH$buildScratchSize = PathElement.groupElement("buildScratchSize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$accelerationStructureSize = (OfLong) LAYOUT.select(PATH$accelerationStructureSize);
+    public static final OfLong LAYOUT$updateScratchSize = (OfLong) LAYOUT.select(PATH$updateScratchSize);
+    public static final OfLong LAYOUT$buildScratchSize = (OfLong) LAYOUT.select(PATH$buildScratchSize);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$accelerationStructureSize = LAYOUT.byteOffset(PATH$accelerationStructureSize);
+    public static final long OFFSET$updateScratchSize = LAYOUT.byteOffset(PATH$updateScratchSize);
+    public static final long OFFSET$buildScratchSize = LAYOUT.byteOffset(PATH$buildScratchSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$accelerationStructureSize = LAYOUT$accelerationStructureSize.byteSize();
+    public static final long SIZE$updateScratchSize = LAYOUT$updateScratchSize.byteSize();
+    public static final long SIZE$buildScratchSize = LAYOUT$buildScratchSize.byteSize();
+
 }

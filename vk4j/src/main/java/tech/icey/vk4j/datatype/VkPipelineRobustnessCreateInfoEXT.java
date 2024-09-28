@@ -26,44 +26,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineRobustnessCreateInfoEXT.html">VkPipelineRobustnessCreateInfoEXT</a>
 public record VkPipelineRobustnessCreateInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("storageBuffers"),
-        ValueLayout.JAVA_INT.withName("uniformBuffers"),
-        ValueLayout.JAVA_INT.withName("vertexInputs"),
-        ValueLayout.JAVA_INT.withName("images")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$storageBuffers = PathElement.groupElement("storageBuffers");
-    public static final PathElement PATH$uniformBuffers = PathElement.groupElement("uniformBuffers");
-    public static final PathElement PATH$vertexInputs = PathElement.groupElement("vertexInputs");
-    public static final PathElement PATH$images = PathElement.groupElement("images");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$storageBuffers = (OfInt) LAYOUT.select(PATH$storageBuffers);
-    public static final OfInt LAYOUT$uniformBuffers = (OfInt) LAYOUT.select(PATH$uniformBuffers);
-    public static final OfInt LAYOUT$vertexInputs = (OfInt) LAYOUT.select(PATH$vertexInputs);
-    public static final OfInt LAYOUT$images = (OfInt) LAYOUT.select(PATH$images);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$storageBuffers = LAYOUT.byteOffset(PATH$storageBuffers);
-    public static final long OFFSET$uniformBuffers = LAYOUT.byteOffset(PATH$uniformBuffers);
-    public static final long OFFSET$vertexInputs = LAYOUT.byteOffset(PATH$vertexInputs);
-    public static final long OFFSET$images = LAYOUT.byteOffset(PATH$images);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$storageBuffers = LAYOUT$storageBuffers.byteSize();
-    public static final long SIZE$uniformBuffers = LAYOUT$uniformBuffers.byteSize();
-    public static final long SIZE$vertexInputs = LAYOUT$vertexInputs.byteSize();
-    public static final long SIZE$images = LAYOUT$images.byteSize();
-
     public VkPipelineRobustnessCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PIPELINE_ROBUSTNESS_CREATE_INFO_EXT);
@@ -133,4 +95,43 @@ public record VkPipelineRobustnessCreateInfoEXT(MemorySegment segment) implement
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("storageBuffers"),
+        ValueLayout.JAVA_INT.withName("uniformBuffers"),
+        ValueLayout.JAVA_INT.withName("vertexInputs"),
+        ValueLayout.JAVA_INT.withName("images")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$storageBuffers = PathElement.groupElement("storageBuffers");
+    public static final PathElement PATH$uniformBuffers = PathElement.groupElement("uniformBuffers");
+    public static final PathElement PATH$vertexInputs = PathElement.groupElement("vertexInputs");
+    public static final PathElement PATH$images = PathElement.groupElement("images");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$storageBuffers = (OfInt) LAYOUT.select(PATH$storageBuffers);
+    public static final OfInt LAYOUT$uniformBuffers = (OfInt) LAYOUT.select(PATH$uniformBuffers);
+    public static final OfInt LAYOUT$vertexInputs = (OfInt) LAYOUT.select(PATH$vertexInputs);
+    public static final OfInt LAYOUT$images = (OfInt) LAYOUT.select(PATH$images);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$storageBuffers = LAYOUT.byteOffset(PATH$storageBuffers);
+    public static final long OFFSET$uniformBuffers = LAYOUT.byteOffset(PATH$uniformBuffers);
+    public static final long OFFSET$vertexInputs = LAYOUT.byteOffset(PATH$vertexInputs);
+    public static final long OFFSET$images = LAYOUT.byteOffset(PATH$images);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$storageBuffers = LAYOUT$storageBuffers.byteSize();
+    public static final long SIZE$uniformBuffers = LAYOUT$uniformBuffers.byteSize();
+    public static final long SIZE$vertexInputs = LAYOUT$vertexInputs.byteSize();
+    public static final long SIZE$images = LAYOUT$images.byteSize();
+
 }

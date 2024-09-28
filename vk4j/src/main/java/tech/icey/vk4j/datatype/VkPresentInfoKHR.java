@@ -28,54 +28,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPresentInfoKHR.html">VkPresentInfoKHR</a>
 public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("waitSemaphoreCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pWaitSemaphores"),
-        ValueLayout.JAVA_INT.withName("swapchainCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pSwapchains"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pImageIndices"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pResults")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$waitSemaphoreCount = PathElement.groupElement("waitSemaphoreCount");
-    public static final PathElement PATH$pWaitSemaphores = PathElement.groupElement("pWaitSemaphores");
-    public static final PathElement PATH$swapchainCount = PathElement.groupElement("swapchainCount");
-    public static final PathElement PATH$pSwapchains = PathElement.groupElement("pSwapchains");
-    public static final PathElement PATH$pImageIndices = PathElement.groupElement("pImageIndices");
-    public static final PathElement PATH$pResults = PathElement.groupElement("pResults");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$waitSemaphoreCount = (OfInt) LAYOUT.select(PATH$waitSemaphoreCount);
-    public static final AddressLayout LAYOUT$pWaitSemaphores = (AddressLayout) LAYOUT.select(PATH$pWaitSemaphores);
-    public static final OfInt LAYOUT$swapchainCount = (OfInt) LAYOUT.select(PATH$swapchainCount);
-    public static final AddressLayout LAYOUT$pSwapchains = (AddressLayout) LAYOUT.select(PATH$pSwapchains);
-    public static final AddressLayout LAYOUT$pImageIndices = (AddressLayout) LAYOUT.select(PATH$pImageIndices);
-    public static final AddressLayout LAYOUT$pResults = (AddressLayout) LAYOUT.select(PATH$pResults);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$waitSemaphoreCount = LAYOUT.byteOffset(PATH$waitSemaphoreCount);
-    public static final long OFFSET$pWaitSemaphores = LAYOUT.byteOffset(PATH$pWaitSemaphores);
-    public static final long OFFSET$swapchainCount = LAYOUT.byteOffset(PATH$swapchainCount);
-    public static final long OFFSET$pSwapchains = LAYOUT.byteOffset(PATH$pSwapchains);
-    public static final long OFFSET$pImageIndices = LAYOUT.byteOffset(PATH$pImageIndices);
-    public static final long OFFSET$pResults = LAYOUT.byteOffset(PATH$pResults);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$waitSemaphoreCount = LAYOUT$waitSemaphoreCount.byteSize();
-    public static final long SIZE$pWaitSemaphores = LAYOUT$pWaitSemaphores.byteSize();
-    public static final long SIZE$swapchainCount = LAYOUT$swapchainCount.byteSize();
-    public static final long SIZE$pSwapchains = LAYOUT$pSwapchains.byteSize();
-    public static final long SIZE$pImageIndices = LAYOUT$pImageIndices.byteSize();
-    public static final long SIZE$pResults = LAYOUT$pResults.byteSize();
-
     public VkPresentInfoKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PRESENT_INFO_KHR);
@@ -231,4 +183,53 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("waitSemaphoreCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pWaitSemaphores"),
+        ValueLayout.JAVA_INT.withName("swapchainCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pSwapchains"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pImageIndices"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pResults")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$waitSemaphoreCount = PathElement.groupElement("waitSemaphoreCount");
+    public static final PathElement PATH$pWaitSemaphores = PathElement.groupElement("pWaitSemaphores");
+    public static final PathElement PATH$swapchainCount = PathElement.groupElement("swapchainCount");
+    public static final PathElement PATH$pSwapchains = PathElement.groupElement("pSwapchains");
+    public static final PathElement PATH$pImageIndices = PathElement.groupElement("pImageIndices");
+    public static final PathElement PATH$pResults = PathElement.groupElement("pResults");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$waitSemaphoreCount = (OfInt) LAYOUT.select(PATH$waitSemaphoreCount);
+    public static final AddressLayout LAYOUT$pWaitSemaphores = (AddressLayout) LAYOUT.select(PATH$pWaitSemaphores);
+    public static final OfInt LAYOUT$swapchainCount = (OfInt) LAYOUT.select(PATH$swapchainCount);
+    public static final AddressLayout LAYOUT$pSwapchains = (AddressLayout) LAYOUT.select(PATH$pSwapchains);
+    public static final AddressLayout LAYOUT$pImageIndices = (AddressLayout) LAYOUT.select(PATH$pImageIndices);
+    public static final AddressLayout LAYOUT$pResults = (AddressLayout) LAYOUT.select(PATH$pResults);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$waitSemaphoreCount = LAYOUT.byteOffset(PATH$waitSemaphoreCount);
+    public static final long OFFSET$pWaitSemaphores = LAYOUT.byteOffset(PATH$pWaitSemaphores);
+    public static final long OFFSET$swapchainCount = LAYOUT.byteOffset(PATH$swapchainCount);
+    public static final long OFFSET$pSwapchains = LAYOUT.byteOffset(PATH$pSwapchains);
+    public static final long OFFSET$pImageIndices = LAYOUT.byteOffset(PATH$pImageIndices);
+    public static final long OFFSET$pResults = LAYOUT.byteOffset(PATH$pResults);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$waitSemaphoreCount = LAYOUT$waitSemaphoreCount.byteSize();
+    public static final long SIZE$pWaitSemaphores = LAYOUT$pWaitSemaphores.byteSize();
+    public static final long SIZE$swapchainCount = LAYOUT$swapchainCount.byteSize();
+    public static final long SIZE$pSwapchains = LAYOUT$pSwapchains.byteSize();
+    public static final long SIZE$pImageIndices = LAYOUT$pImageIndices.byteSize();
+    public static final long SIZE$pResults = LAYOUT$pResults.byteSize();
+
 }

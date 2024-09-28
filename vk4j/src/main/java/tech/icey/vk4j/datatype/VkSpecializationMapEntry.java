@@ -23,27 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSpecializationMapEntry.html">VkSpecializationMapEntry</a>
 public record VkSpecializationMapEntry(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("constantID"),
-        ValueLayout.JAVA_INT.withName("offset"),
-        NativeLayout.C_SIZE_T.withName("size")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$constantID = PathElement.groupElement("constantID");
-    public static final PathElement PATH$offset = PathElement.groupElement("offset");
-    public static final PathElement PATH$size = PathElement.groupElement("size");
-
-    public static final OfInt LAYOUT$constantID = (OfInt) LAYOUT.select(PATH$constantID);
-    public static final OfInt LAYOUT$offset = (OfInt) LAYOUT.select(PATH$offset);
-
-    public static final long OFFSET$constantID = LAYOUT.byteOffset(PATH$constantID);
-    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
-    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
-
-    public static final long SIZE$constantID = LAYOUT$constantID.byteSize();
-    public static final long SIZE$offset = LAYOUT$offset.byteSize();
-
     public VkSpecializationMapEntry(MemorySegment segment) {
         this.segment = segment;
     }
@@ -84,4 +63,26 @@ public record VkSpecializationMapEntry(MemorySegment segment) implements IPointe
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("constantID"),
+        ValueLayout.JAVA_INT.withName("offset"),
+        NativeLayout.C_SIZE_T.withName("size")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$constantID = PathElement.groupElement("constantID");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+
+    public static final OfInt LAYOUT$constantID = (OfInt) LAYOUT.select(PATH$constantID);
+    public static final OfInt LAYOUT$offset = (OfInt) LAYOUT.select(PATH$offset);
+
+    public static final long OFFSET$constantID = LAYOUT.byteOffset(PATH$constantID);
+    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+
+    public static final long SIZE$constantID = LAYOUT$constantID.byteSize();
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+
 }

@@ -15,31 +15,13 @@ import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 /// {@snippet lang=c :
-/// typedef struct VkDeviceOrHostAddressConstKHR {
+/// typedef union VkDeviceOrHostAddressConstKHR {
 ///     VkDeviceAddress deviceAddress;
 ///     const void* hostAddress;
 /// } VkDeviceOrHostAddressConstKHR;}
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceOrHostAddressConstKHR.html">VkDeviceOrHostAddressConstKHR</a>
 public record VkDeviceOrHostAddressConstKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
-        ValueLayout.JAVA_LONG.withName("deviceAddress"),
-        ValueLayout.ADDRESS.withName("hostAddress")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$deviceAddress = PathElement.groupElement("deviceAddress");
-    public static final PathElement PATH$hostAddress = PathElement.groupElement("hostAddress");
-
-    public static final OfLong LAYOUT$deviceAddress = (OfLong) LAYOUT.select(PATH$deviceAddress);
-    public static final AddressLayout LAYOUT$hostAddress = (AddressLayout) LAYOUT.select(PATH$hostAddress);
-
-    public static final long OFFSET$deviceAddress = LAYOUT.byteOffset(PATH$deviceAddress);
-    public static final long OFFSET$hostAddress = LAYOUT.byteOffset(PATH$hostAddress);
-
-    public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
-    public static final long SIZE$hostAddress = LAYOUT$hostAddress.byteSize();
-
     public VkDeviceOrHostAddressConstKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -76,4 +58,23 @@ public record VkDeviceOrHostAddressConstKHR(MemorySegment segment) implements IP
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
+        ValueLayout.JAVA_LONG.withName("deviceAddress"),
+        ValueLayout.ADDRESS.withName("hostAddress")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$deviceAddress = PathElement.groupElement("deviceAddress");
+    public static final PathElement PATH$hostAddress = PathElement.groupElement("hostAddress");
+
+    public static final OfLong LAYOUT$deviceAddress = (OfLong) LAYOUT.select(PATH$deviceAddress);
+    public static final AddressLayout LAYOUT$hostAddress = (AddressLayout) LAYOUT.select(PATH$hostAddress);
+
+    public static final long OFFSET$deviceAddress = LAYOUT.byteOffset(PATH$deviceAddress);
+    public static final long OFFSET$hostAddress = LAYOUT.byteOffset(PATH$hostAddress);
+
+    public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
+    public static final long SIZE$hostAddress = LAYOUT$hostAddress.byteSize();
+
 }

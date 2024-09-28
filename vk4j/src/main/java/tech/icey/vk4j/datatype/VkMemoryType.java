@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMemoryType.html">VkMemoryType</a>
 public record VkMemoryType(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("propertyFlags"),
-        ValueLayout.JAVA_INT.withName("heapIndex")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$propertyFlags = PathElement.groupElement("propertyFlags");
-    public static final PathElement PATH$heapIndex = PathElement.groupElement("heapIndex");
-
-    public static final OfInt LAYOUT$propertyFlags = (OfInt) LAYOUT.select(PATH$propertyFlags);
-    public static final OfInt LAYOUT$heapIndex = (OfInt) LAYOUT.select(PATH$heapIndex);
-
-    public static final long OFFSET$propertyFlags = LAYOUT.byteOffset(PATH$propertyFlags);
-    public static final long OFFSET$heapIndex = LAYOUT.byteOffset(PATH$heapIndex);
-
-    public static final long SIZE$propertyFlags = LAYOUT$propertyFlags.byteSize();
-    public static final long SIZE$heapIndex = LAYOUT$heapIndex.byteSize();
-
     public VkMemoryType(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkMemoryType(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("propertyFlags"),
+        ValueLayout.JAVA_INT.withName("heapIndex")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$propertyFlags = PathElement.groupElement("propertyFlags");
+    public static final PathElement PATH$heapIndex = PathElement.groupElement("heapIndex");
+
+    public static final OfInt LAYOUT$propertyFlags = (OfInt) LAYOUT.select(PATH$propertyFlags);
+    public static final OfInt LAYOUT$heapIndex = (OfInt) LAYOUT.select(PATH$heapIndex);
+
+    public static final long OFFSET$propertyFlags = LAYOUT.byteOffset(PATH$propertyFlags);
+    public static final long OFFSET$heapIndex = LAYOUT.byteOffset(PATH$heapIndex);
+
+    public static final long SIZE$propertyFlags = LAYOUT$propertyFlags.byteSize();
+    public static final long SIZE$heapIndex = LAYOUT$heapIndex.byteSize();
+
 }

@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineBinaryKeysAndDataKHR.html">VkPipelineBinaryKeysAndDataKHR</a>
 public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("binaryCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPipelineBinaryKeyKHR.LAYOUT).withName("pPipelineBinaryKeys"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPipelineBinaryDataKHR.LAYOUT).withName("pPipelineBinaryData")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$binaryCount = PathElement.groupElement("binaryCount");
-    public static final PathElement PATH$pPipelineBinaryKeys = PathElement.groupElement("pPipelineBinaryKeys");
-    public static final PathElement PATH$pPipelineBinaryData = PathElement.groupElement("pPipelineBinaryData");
-
-    public static final OfInt LAYOUT$binaryCount = (OfInt) LAYOUT.select(PATH$binaryCount);
-    public static final AddressLayout LAYOUT$pPipelineBinaryKeys = (AddressLayout) LAYOUT.select(PATH$pPipelineBinaryKeys);
-    public static final AddressLayout LAYOUT$pPipelineBinaryData = (AddressLayout) LAYOUT.select(PATH$pPipelineBinaryData);
-
-    public static final long OFFSET$binaryCount = LAYOUT.byteOffset(PATH$binaryCount);
-    public static final long OFFSET$pPipelineBinaryKeys = LAYOUT.byteOffset(PATH$pPipelineBinaryKeys);
-    public static final long OFFSET$pPipelineBinaryData = LAYOUT.byteOffset(PATH$pPipelineBinaryData);
-
-    public static final long SIZE$binaryCount = LAYOUT$binaryCount.byteSize();
-    public static final long SIZE$pPipelineBinaryKeys = LAYOUT$pPipelineBinaryKeys.byteSize();
-    public static final long SIZE$pPipelineBinaryData = LAYOUT$pPipelineBinaryData.byteSize();
-
     public VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -134,4 +111,28 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) implements I
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("binaryCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineBinaryKeyKHR.LAYOUT).withName("pPipelineBinaryKeys"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineBinaryDataKHR.LAYOUT).withName("pPipelineBinaryData")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$binaryCount = PathElement.groupElement("binaryCount");
+    public static final PathElement PATH$pPipelineBinaryKeys = PathElement.groupElement("pPipelineBinaryKeys");
+    public static final PathElement PATH$pPipelineBinaryData = PathElement.groupElement("pPipelineBinaryData");
+
+    public static final OfInt LAYOUT$binaryCount = (OfInt) LAYOUT.select(PATH$binaryCount);
+    public static final AddressLayout LAYOUT$pPipelineBinaryKeys = (AddressLayout) LAYOUT.select(PATH$pPipelineBinaryKeys);
+    public static final AddressLayout LAYOUT$pPipelineBinaryData = (AddressLayout) LAYOUT.select(PATH$pPipelineBinaryData);
+
+    public static final long OFFSET$binaryCount = LAYOUT.byteOffset(PATH$binaryCount);
+    public static final long OFFSET$pPipelineBinaryKeys = LAYOUT.byteOffset(PATH$pPipelineBinaryKeys);
+    public static final long OFFSET$pPipelineBinaryData = LAYOUT.byteOffset(PATH$pPipelineBinaryData);
+
+    public static final long SIZE$binaryCount = LAYOUT$binaryCount.byteSize();
+    public static final long SIZE$pPipelineBinaryKeys = LAYOUT$pPipelineBinaryKeys.byteSize();
+    public static final long SIZE$pPipelineBinaryData = LAYOUT$pPipelineBinaryData.byteSize();
+
 }

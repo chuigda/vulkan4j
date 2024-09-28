@@ -34,84 +34,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRayTracingPipelineCreateInfoKHR.html">VkRayTracingPipelineCreateInfoKHR</a>
 public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("stageCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPipelineShaderStageCreateInfo.LAYOUT).withName("pStages"),
-        ValueLayout.JAVA_INT.withName("groupCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkRayTracingShaderGroupCreateInfoKHR.LAYOUT).withName("pGroups"),
-        ValueLayout.JAVA_INT.withName("maxPipelineRayRecursionDepth"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPipelineLibraryCreateInfoKHR.LAYOUT).withName("pLibraryInfo"),
-        ValueLayout.ADDRESS.withTargetLayout(VkRayTracingPipelineInterfaceCreateInfoKHR.LAYOUT).withName("pLibraryInterface"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPipelineDynamicStateCreateInfo.LAYOUT).withName("pDynamicState"),
-        ValueLayout.ADDRESS.withName("layout"),
-        ValueLayout.ADDRESS.withName("basePipelineHandle"),
-        ValueLayout.JAVA_INT.withName("basePipelineIndex")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$stageCount = PathElement.groupElement("stageCount");
-    public static final PathElement PATH$pStages = PathElement.groupElement("pStages");
-    public static final PathElement PATH$groupCount = PathElement.groupElement("groupCount");
-    public static final PathElement PATH$pGroups = PathElement.groupElement("pGroups");
-    public static final PathElement PATH$maxPipelineRayRecursionDepth = PathElement.groupElement("maxPipelineRayRecursionDepth");
-    public static final PathElement PATH$pLibraryInfo = PathElement.groupElement("pLibraryInfo");
-    public static final PathElement PATH$pLibraryInterface = PathElement.groupElement("pLibraryInterface");
-    public static final PathElement PATH$pDynamicState = PathElement.groupElement("pDynamicState");
-    public static final PathElement PATH$layout = PathElement.groupElement("layout");
-    public static final PathElement PATH$basePipelineHandle = PathElement.groupElement("basePipelineHandle");
-    public static final PathElement PATH$basePipelineIndex = PathElement.groupElement("basePipelineIndex");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$stageCount = (OfInt) LAYOUT.select(PATH$stageCount);
-    public static final AddressLayout LAYOUT$pStages = (AddressLayout) LAYOUT.select(PATH$pStages);
-    public static final OfInt LAYOUT$groupCount = (OfInt) LAYOUT.select(PATH$groupCount);
-    public static final AddressLayout LAYOUT$pGroups = (AddressLayout) LAYOUT.select(PATH$pGroups);
-    public static final OfInt LAYOUT$maxPipelineRayRecursionDepth = (OfInt) LAYOUT.select(PATH$maxPipelineRayRecursionDepth);
-    public static final AddressLayout LAYOUT$pLibraryInfo = (AddressLayout) LAYOUT.select(PATH$pLibraryInfo);
-    public static final AddressLayout LAYOUT$pLibraryInterface = (AddressLayout) LAYOUT.select(PATH$pLibraryInterface);
-    public static final AddressLayout LAYOUT$pDynamicState = (AddressLayout) LAYOUT.select(PATH$pDynamicState);
-    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
-    public static final AddressLayout LAYOUT$basePipelineHandle = (AddressLayout) LAYOUT.select(PATH$basePipelineHandle);
-    public static final OfInt LAYOUT$basePipelineIndex = (OfInt) LAYOUT.select(PATH$basePipelineIndex);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$stageCount = LAYOUT.byteOffset(PATH$stageCount);
-    public static final long OFFSET$pStages = LAYOUT.byteOffset(PATH$pStages);
-    public static final long OFFSET$groupCount = LAYOUT.byteOffset(PATH$groupCount);
-    public static final long OFFSET$pGroups = LAYOUT.byteOffset(PATH$pGroups);
-    public static final long OFFSET$maxPipelineRayRecursionDepth = LAYOUT.byteOffset(PATH$maxPipelineRayRecursionDepth);
-    public static final long OFFSET$pLibraryInfo = LAYOUT.byteOffset(PATH$pLibraryInfo);
-    public static final long OFFSET$pLibraryInterface = LAYOUT.byteOffset(PATH$pLibraryInterface);
-    public static final long OFFSET$pDynamicState = LAYOUT.byteOffset(PATH$pDynamicState);
-    public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
-    public static final long OFFSET$basePipelineHandle = LAYOUT.byteOffset(PATH$basePipelineHandle);
-    public static final long OFFSET$basePipelineIndex = LAYOUT.byteOffset(PATH$basePipelineIndex);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$stageCount = LAYOUT$stageCount.byteSize();
-    public static final long SIZE$pStages = LAYOUT$pStages.byteSize();
-    public static final long SIZE$groupCount = LAYOUT$groupCount.byteSize();
-    public static final long SIZE$pGroups = LAYOUT$pGroups.byteSize();
-    public static final long SIZE$maxPipelineRayRecursionDepth = LAYOUT$maxPipelineRayRecursionDepth.byteSize();
-    public static final long SIZE$pLibraryInfo = LAYOUT$pLibraryInfo.byteSize();
-    public static final long SIZE$pLibraryInterface = LAYOUT$pLibraryInterface.byteSize();
-    public static final long SIZE$pDynamicState = LAYOUT$pDynamicState.byteSize();
-    public static final long SIZE$layout = LAYOUT$layout.byteSize();
-    public static final long SIZE$basePipelineHandle = LAYOUT$basePipelineHandle.byteSize();
-    public static final long SIZE$basePipelineIndex = LAYOUT$basePipelineIndex.byteSize();
-
     public VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_KHR);
@@ -365,4 +287,83 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("stageCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineShaderStageCreateInfo.LAYOUT).withName("pStages"),
+        ValueLayout.JAVA_INT.withName("groupCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkRayTracingShaderGroupCreateInfoKHR.LAYOUT).withName("pGroups"),
+        ValueLayout.JAVA_INT.withName("maxPipelineRayRecursionDepth"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineLibraryCreateInfoKHR.LAYOUT).withName("pLibraryInfo"),
+        ValueLayout.ADDRESS.withTargetLayout(VkRayTracingPipelineInterfaceCreateInfoKHR.LAYOUT).withName("pLibraryInterface"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineDynamicStateCreateInfo.LAYOUT).withName("pDynamicState"),
+        ValueLayout.ADDRESS.withName("layout"),
+        ValueLayout.ADDRESS.withName("basePipelineHandle"),
+        ValueLayout.JAVA_INT.withName("basePipelineIndex")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$stageCount = PathElement.groupElement("stageCount");
+    public static final PathElement PATH$pStages = PathElement.groupElement("pStages");
+    public static final PathElement PATH$groupCount = PathElement.groupElement("groupCount");
+    public static final PathElement PATH$pGroups = PathElement.groupElement("pGroups");
+    public static final PathElement PATH$maxPipelineRayRecursionDepth = PathElement.groupElement("maxPipelineRayRecursionDepth");
+    public static final PathElement PATH$pLibraryInfo = PathElement.groupElement("pLibraryInfo");
+    public static final PathElement PATH$pLibraryInterface = PathElement.groupElement("pLibraryInterface");
+    public static final PathElement PATH$pDynamicState = PathElement.groupElement("pDynamicState");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+    public static final PathElement PATH$basePipelineHandle = PathElement.groupElement("basePipelineHandle");
+    public static final PathElement PATH$basePipelineIndex = PathElement.groupElement("basePipelineIndex");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$stageCount = (OfInt) LAYOUT.select(PATH$stageCount);
+    public static final AddressLayout LAYOUT$pStages = (AddressLayout) LAYOUT.select(PATH$pStages);
+    public static final OfInt LAYOUT$groupCount = (OfInt) LAYOUT.select(PATH$groupCount);
+    public static final AddressLayout LAYOUT$pGroups = (AddressLayout) LAYOUT.select(PATH$pGroups);
+    public static final OfInt LAYOUT$maxPipelineRayRecursionDepth = (OfInt) LAYOUT.select(PATH$maxPipelineRayRecursionDepth);
+    public static final AddressLayout LAYOUT$pLibraryInfo = (AddressLayout) LAYOUT.select(PATH$pLibraryInfo);
+    public static final AddressLayout LAYOUT$pLibraryInterface = (AddressLayout) LAYOUT.select(PATH$pLibraryInterface);
+    public static final AddressLayout LAYOUT$pDynamicState = (AddressLayout) LAYOUT.select(PATH$pDynamicState);
+    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
+    public static final AddressLayout LAYOUT$basePipelineHandle = (AddressLayout) LAYOUT.select(PATH$basePipelineHandle);
+    public static final OfInt LAYOUT$basePipelineIndex = (OfInt) LAYOUT.select(PATH$basePipelineIndex);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$stageCount = LAYOUT.byteOffset(PATH$stageCount);
+    public static final long OFFSET$pStages = LAYOUT.byteOffset(PATH$pStages);
+    public static final long OFFSET$groupCount = LAYOUT.byteOffset(PATH$groupCount);
+    public static final long OFFSET$pGroups = LAYOUT.byteOffset(PATH$pGroups);
+    public static final long OFFSET$maxPipelineRayRecursionDepth = LAYOUT.byteOffset(PATH$maxPipelineRayRecursionDepth);
+    public static final long OFFSET$pLibraryInfo = LAYOUT.byteOffset(PATH$pLibraryInfo);
+    public static final long OFFSET$pLibraryInterface = LAYOUT.byteOffset(PATH$pLibraryInterface);
+    public static final long OFFSET$pDynamicState = LAYOUT.byteOffset(PATH$pDynamicState);
+    public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
+    public static final long OFFSET$basePipelineHandle = LAYOUT.byteOffset(PATH$basePipelineHandle);
+    public static final long OFFSET$basePipelineIndex = LAYOUT.byteOffset(PATH$basePipelineIndex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$stageCount = LAYOUT$stageCount.byteSize();
+    public static final long SIZE$pStages = LAYOUT$pStages.byteSize();
+    public static final long SIZE$groupCount = LAYOUT$groupCount.byteSize();
+    public static final long SIZE$pGroups = LAYOUT$pGroups.byteSize();
+    public static final long SIZE$maxPipelineRayRecursionDepth = LAYOUT$maxPipelineRayRecursionDepth.byteSize();
+    public static final long SIZE$pLibraryInfo = LAYOUT$pLibraryInfo.byteSize();
+    public static final long SIZE$pLibraryInterface = LAYOUT$pLibraryInterface.byteSize();
+    public static final long SIZE$pDynamicState = LAYOUT$pDynamicState.byteSize();
+    public static final long SIZE$layout = LAYOUT$layout.byteSize();
+    public static final long SIZE$basePipelineHandle = LAYOUT$basePipelineHandle.byteSize();
+    public static final long SIZE$basePipelineIndex = LAYOUT$basePipelineIndex.byteSize();
+
 }

@@ -26,44 +26,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDevicePCIBusInfoPropertiesEXT.html">VkPhysicalDevicePCIBusInfoPropertiesEXT</a>
 public record VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("pciDomain"),
-        ValueLayout.JAVA_INT.withName("pciBus"),
-        ValueLayout.JAVA_INT.withName("pciDevice"),
-        ValueLayout.JAVA_INT.withName("pciFunction")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$pciDomain = PathElement.groupElement("pciDomain");
-    public static final PathElement PATH$pciBus = PathElement.groupElement("pciBus");
-    public static final PathElement PATH$pciDevice = PathElement.groupElement("pciDevice");
-    public static final PathElement PATH$pciFunction = PathElement.groupElement("pciFunction");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$pciDomain = (OfInt) LAYOUT.select(PATH$pciDomain);
-    public static final OfInt LAYOUT$pciBus = (OfInt) LAYOUT.select(PATH$pciBus);
-    public static final OfInt LAYOUT$pciDevice = (OfInt) LAYOUT.select(PATH$pciDevice);
-    public static final OfInt LAYOUT$pciFunction = (OfInt) LAYOUT.select(PATH$pciFunction);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$pciDomain = LAYOUT.byteOffset(PATH$pciDomain);
-    public static final long OFFSET$pciBus = LAYOUT.byteOffset(PATH$pciBus);
-    public static final long OFFSET$pciDevice = LAYOUT.byteOffset(PATH$pciDevice);
-    public static final long OFFSET$pciFunction = LAYOUT.byteOffset(PATH$pciFunction);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$pciDomain = LAYOUT$pciDomain.byteSize();
-    public static final long SIZE$pciBus = LAYOUT$pciBus.byteSize();
-    public static final long SIZE$pciDevice = LAYOUT$pciDevice.byteSize();
-    public static final long SIZE$pciFunction = LAYOUT$pciFunction.byteSize();
-
     public VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT);
@@ -133,4 +95,43 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment) imp
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("pciDomain"),
+        ValueLayout.JAVA_INT.withName("pciBus"),
+        ValueLayout.JAVA_INT.withName("pciDevice"),
+        ValueLayout.JAVA_INT.withName("pciFunction")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pciDomain = PathElement.groupElement("pciDomain");
+    public static final PathElement PATH$pciBus = PathElement.groupElement("pciBus");
+    public static final PathElement PATH$pciDevice = PathElement.groupElement("pciDevice");
+    public static final PathElement PATH$pciFunction = PathElement.groupElement("pciFunction");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$pciDomain = (OfInt) LAYOUT.select(PATH$pciDomain);
+    public static final OfInt LAYOUT$pciBus = (OfInt) LAYOUT.select(PATH$pciBus);
+    public static final OfInt LAYOUT$pciDevice = (OfInt) LAYOUT.select(PATH$pciDevice);
+    public static final OfInt LAYOUT$pciFunction = (OfInt) LAYOUT.select(PATH$pciFunction);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$pciDomain = LAYOUT.byteOffset(PATH$pciDomain);
+    public static final long OFFSET$pciBus = LAYOUT.byteOffset(PATH$pciBus);
+    public static final long OFFSET$pciDevice = LAYOUT.byteOffset(PATH$pciDevice);
+    public static final long OFFSET$pciFunction = LAYOUT.byteOffset(PATH$pciFunction);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pciDomain = LAYOUT$pciDomain.byteSize();
+    public static final long SIZE$pciBus = LAYOUT$pciBus.byteSize();
+    public static final long SIZE$pciDevice = LAYOUT$pciDevice.byteSize();
+    public static final long SIZE$pciFunction = LAYOUT$pciFunction.byteSize();
+
 }

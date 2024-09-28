@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPresentRegionKHR.html">VkPresentRegionKHR</a>
 public record VkPresentRegionKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("rectangleCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkRectLayerKHR.LAYOUT).withName("pRectangles")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$rectangleCount = PathElement.groupElement("rectangleCount");
-    public static final PathElement PATH$pRectangles = PathElement.groupElement("pRectangles");
-
-    public static final OfInt LAYOUT$rectangleCount = (OfInt) LAYOUT.select(PATH$rectangleCount);
-    public static final AddressLayout LAYOUT$pRectangles = (AddressLayout) LAYOUT.select(PATH$pRectangles);
-
-    public static final long OFFSET$rectangleCount = LAYOUT.byteOffset(PATH$rectangleCount);
-    public static final long OFFSET$pRectangles = LAYOUT.byteOffset(PATH$pRectangles);
-
-    public static final long SIZE$rectangleCount = LAYOUT$rectangleCount.byteSize();
-    public static final long SIZE$pRectangles = LAYOUT$pRectangles.byteSize();
-
     public VkPresentRegionKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -96,4 +78,23 @@ public record VkPresentRegionKHR(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("rectangleCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkRectLayerKHR.LAYOUT).withName("pRectangles")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$rectangleCount = PathElement.groupElement("rectangleCount");
+    public static final PathElement PATH$pRectangles = PathElement.groupElement("pRectangles");
+
+    public static final OfInt LAYOUT$rectangleCount = (OfInt) LAYOUT.select(PATH$rectangleCount);
+    public static final AddressLayout LAYOUT$pRectangles = (AddressLayout) LAYOUT.select(PATH$pRectangles);
+
+    public static final long OFFSET$rectangleCount = LAYOUT.byteOffset(PATH$rectangleCount);
+    public static final long OFFSET$pRectangles = LAYOUT.byteOffset(PATH$pRectangles);
+
+    public static final long SIZE$rectangleCount = LAYOUT$rectangleCount.byteSize();
+    public static final long SIZE$pRectangles = LAYOUT$pRectangles.byteSize();
+
 }

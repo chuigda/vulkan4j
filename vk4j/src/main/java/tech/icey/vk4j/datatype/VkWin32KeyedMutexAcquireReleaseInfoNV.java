@@ -29,59 +29,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkWin32KeyedMutexAcquireReleaseInfoNV.html">VkWin32KeyedMutexAcquireReleaseInfoNV</a>
 public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("acquireCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pAcquireSyncs"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pAcquireKeys"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pAcquireTimeoutMilliseconds"),
-        ValueLayout.JAVA_INT.withName("releaseCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pReleaseSyncs"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pReleaseKeys")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$acquireCount = PathElement.groupElement("acquireCount");
-    public static final PathElement PATH$pAcquireSyncs = PathElement.groupElement("pAcquireSyncs");
-    public static final PathElement PATH$pAcquireKeys = PathElement.groupElement("pAcquireKeys");
-    public static final PathElement PATH$pAcquireTimeoutMilliseconds = PathElement.groupElement("pAcquireTimeoutMilliseconds");
-    public static final PathElement PATH$releaseCount = PathElement.groupElement("releaseCount");
-    public static final PathElement PATH$pReleaseSyncs = PathElement.groupElement("pReleaseSyncs");
-    public static final PathElement PATH$pReleaseKeys = PathElement.groupElement("pReleaseKeys");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$acquireCount = (OfInt) LAYOUT.select(PATH$acquireCount);
-    public static final AddressLayout LAYOUT$pAcquireSyncs = (AddressLayout) LAYOUT.select(PATH$pAcquireSyncs);
-    public static final AddressLayout LAYOUT$pAcquireKeys = (AddressLayout) LAYOUT.select(PATH$pAcquireKeys);
-    public static final AddressLayout LAYOUT$pAcquireTimeoutMilliseconds = (AddressLayout) LAYOUT.select(PATH$pAcquireTimeoutMilliseconds);
-    public static final OfInt LAYOUT$releaseCount = (OfInt) LAYOUT.select(PATH$releaseCount);
-    public static final AddressLayout LAYOUT$pReleaseSyncs = (AddressLayout) LAYOUT.select(PATH$pReleaseSyncs);
-    public static final AddressLayout LAYOUT$pReleaseKeys = (AddressLayout) LAYOUT.select(PATH$pReleaseKeys);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$acquireCount = LAYOUT.byteOffset(PATH$acquireCount);
-    public static final long OFFSET$pAcquireSyncs = LAYOUT.byteOffset(PATH$pAcquireSyncs);
-    public static final long OFFSET$pAcquireKeys = LAYOUT.byteOffset(PATH$pAcquireKeys);
-    public static final long OFFSET$pAcquireTimeoutMilliseconds = LAYOUT.byteOffset(PATH$pAcquireTimeoutMilliseconds);
-    public static final long OFFSET$releaseCount = LAYOUT.byteOffset(PATH$releaseCount);
-    public static final long OFFSET$pReleaseSyncs = LAYOUT.byteOffset(PATH$pReleaseSyncs);
-    public static final long OFFSET$pReleaseKeys = LAYOUT.byteOffset(PATH$pReleaseKeys);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$acquireCount = LAYOUT$acquireCount.byteSize();
-    public static final long SIZE$pAcquireSyncs = LAYOUT$pAcquireSyncs.byteSize();
-    public static final long SIZE$pAcquireKeys = LAYOUT$pAcquireKeys.byteSize();
-    public static final long SIZE$pAcquireTimeoutMilliseconds = LAYOUT$pAcquireTimeoutMilliseconds.byteSize();
-    public static final long SIZE$releaseCount = LAYOUT$releaseCount.byteSize();
-    public static final long SIZE$pReleaseSyncs = LAYOUT$pReleaseSyncs.byteSize();
-    public static final long SIZE$pReleaseKeys = LAYOUT$pReleaseKeys.byteSize();
-
     public VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV);
@@ -256,4 +203,58 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) imple
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("acquireCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pAcquireSyncs"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pAcquireKeys"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pAcquireTimeoutMilliseconds"),
+        ValueLayout.JAVA_INT.withName("releaseCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pReleaseSyncs"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pReleaseKeys")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$acquireCount = PathElement.groupElement("acquireCount");
+    public static final PathElement PATH$pAcquireSyncs = PathElement.groupElement("pAcquireSyncs");
+    public static final PathElement PATH$pAcquireKeys = PathElement.groupElement("pAcquireKeys");
+    public static final PathElement PATH$pAcquireTimeoutMilliseconds = PathElement.groupElement("pAcquireTimeoutMilliseconds");
+    public static final PathElement PATH$releaseCount = PathElement.groupElement("releaseCount");
+    public static final PathElement PATH$pReleaseSyncs = PathElement.groupElement("pReleaseSyncs");
+    public static final PathElement PATH$pReleaseKeys = PathElement.groupElement("pReleaseKeys");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$acquireCount = (OfInt) LAYOUT.select(PATH$acquireCount);
+    public static final AddressLayout LAYOUT$pAcquireSyncs = (AddressLayout) LAYOUT.select(PATH$pAcquireSyncs);
+    public static final AddressLayout LAYOUT$pAcquireKeys = (AddressLayout) LAYOUT.select(PATH$pAcquireKeys);
+    public static final AddressLayout LAYOUT$pAcquireTimeoutMilliseconds = (AddressLayout) LAYOUT.select(PATH$pAcquireTimeoutMilliseconds);
+    public static final OfInt LAYOUT$releaseCount = (OfInt) LAYOUT.select(PATH$releaseCount);
+    public static final AddressLayout LAYOUT$pReleaseSyncs = (AddressLayout) LAYOUT.select(PATH$pReleaseSyncs);
+    public static final AddressLayout LAYOUT$pReleaseKeys = (AddressLayout) LAYOUT.select(PATH$pReleaseKeys);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$acquireCount = LAYOUT.byteOffset(PATH$acquireCount);
+    public static final long OFFSET$pAcquireSyncs = LAYOUT.byteOffset(PATH$pAcquireSyncs);
+    public static final long OFFSET$pAcquireKeys = LAYOUT.byteOffset(PATH$pAcquireKeys);
+    public static final long OFFSET$pAcquireTimeoutMilliseconds = LAYOUT.byteOffset(PATH$pAcquireTimeoutMilliseconds);
+    public static final long OFFSET$releaseCount = LAYOUT.byteOffset(PATH$releaseCount);
+    public static final long OFFSET$pReleaseSyncs = LAYOUT.byteOffset(PATH$pReleaseSyncs);
+    public static final long OFFSET$pReleaseKeys = LAYOUT.byteOffset(PATH$pReleaseKeys);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$acquireCount = LAYOUT$acquireCount.byteSize();
+    public static final long SIZE$pAcquireSyncs = LAYOUT$pAcquireSyncs.byteSize();
+    public static final long SIZE$pAcquireKeys = LAYOUT$pAcquireKeys.byteSize();
+    public static final long SIZE$pAcquireTimeoutMilliseconds = LAYOUT$pAcquireTimeoutMilliseconds.byteSize();
+    public static final long SIZE$releaseCount = LAYOUT$releaseCount.byteSize();
+    public static final long SIZE$pReleaseSyncs = LAYOUT$pReleaseSyncs.byteSize();
+    public static final long SIZE$pReleaseKeys = LAYOUT$pReleaseKeys.byteSize();
+
 }

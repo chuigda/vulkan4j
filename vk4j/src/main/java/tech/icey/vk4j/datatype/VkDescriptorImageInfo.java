@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDescriptorImageInfo.html">VkDescriptorImageInfo</a>
 public record VkDescriptorImageInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.ADDRESS.withName("sampler"),
-        ValueLayout.ADDRESS.withName("imageView"),
-        ValueLayout.JAVA_INT.withName("imageLayout")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sampler = PathElement.groupElement("sampler");
-    public static final PathElement PATH$imageView = PathElement.groupElement("imageView");
-    public static final PathElement PATH$imageLayout = PathElement.groupElement("imageLayout");
-
-    public static final AddressLayout LAYOUT$sampler = (AddressLayout) LAYOUT.select(PATH$sampler);
-    public static final AddressLayout LAYOUT$imageView = (AddressLayout) LAYOUT.select(PATH$imageView);
-    public static final OfInt LAYOUT$imageLayout = (OfInt) LAYOUT.select(PATH$imageLayout);
-
-    public static final long OFFSET$sampler = LAYOUT.byteOffset(PATH$sampler);
-    public static final long OFFSET$imageView = LAYOUT.byteOffset(PATH$imageView);
-    public static final long OFFSET$imageLayout = LAYOUT.byteOffset(PATH$imageLayout);
-
-    public static final long SIZE$sampler = LAYOUT$sampler.byteSize();
-    public static final long SIZE$imageView = LAYOUT$imageView.byteSize();
-    public static final long SIZE$imageLayout = LAYOUT$imageLayout.byteSize();
-
     public VkDescriptorImageInfo(MemorySegment segment) {
         this.segment = segment;
     }
@@ -86,4 +63,28 @@ public record VkDescriptorImageInfo(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("sampler"),
+        ValueLayout.ADDRESS.withName("imageView"),
+        ValueLayout.JAVA_INT.withName("imageLayout")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sampler = PathElement.groupElement("sampler");
+    public static final PathElement PATH$imageView = PathElement.groupElement("imageView");
+    public static final PathElement PATH$imageLayout = PathElement.groupElement("imageLayout");
+
+    public static final AddressLayout LAYOUT$sampler = (AddressLayout) LAYOUT.select(PATH$sampler);
+    public static final AddressLayout LAYOUT$imageView = (AddressLayout) LAYOUT.select(PATH$imageView);
+    public static final OfInt LAYOUT$imageLayout = (OfInt) LAYOUT.select(PATH$imageLayout);
+
+    public static final long OFFSET$sampler = LAYOUT.byteOffset(PATH$sampler);
+    public static final long OFFSET$imageView = LAYOUT.byteOffset(PATH$imageView);
+    public static final long OFFSET$imageLayout = LAYOUT.byteOffset(PATH$imageLayout);
+
+    public static final long SIZE$sampler = LAYOUT$sampler.byteSize();
+    public static final long SIZE$imageView = LAYOUT$imageView.byteSize();
+    public static final long SIZE$imageLayout = LAYOUT$imageLayout.byteSize();
+
 }

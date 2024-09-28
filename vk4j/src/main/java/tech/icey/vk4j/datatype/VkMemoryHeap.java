@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMemoryHeap.html">VkMemoryHeap</a>
 public record VkMemoryHeap(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_LONG.withName("size"),
-        ValueLayout.JAVA_INT.withName("flags")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$size = PathElement.groupElement("size");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-
-    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-
-    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-
-    public static final long SIZE$size = LAYOUT$size.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
     public VkMemoryHeap(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkMemoryHeap(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("size"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+
 }

@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkTilePropertiesQCOM.html">VkTilePropertiesQCOM</a>
 public record VkTilePropertiesQCOM(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkExtent3D.LAYOUT.withName("tileSize"),
-        VkExtent2D.LAYOUT.withName("apronSize"),
-        VkOffset2D.LAYOUT.withName("origin")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$tileSize = PathElement.groupElement("tileSize");
-    public static final PathElement PATH$apronSize = PathElement.groupElement("apronSize");
-    public static final PathElement PATH$origin = PathElement.groupElement("origin");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$tileSize = (StructLayout) LAYOUT.select(PATH$tileSize);
-    public static final StructLayout LAYOUT$apronSize = (StructLayout) LAYOUT.select(PATH$apronSize);
-    public static final StructLayout LAYOUT$origin = (StructLayout) LAYOUT.select(PATH$origin);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$tileSize = LAYOUT.byteOffset(PATH$tileSize);
-    public static final long OFFSET$apronSize = LAYOUT.byteOffset(PATH$apronSize);
-    public static final long OFFSET$origin = LAYOUT.byteOffset(PATH$origin);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$tileSize = LAYOUT$tileSize.byteSize();
-    public static final long SIZE$apronSize = LAYOUT$apronSize.byteSize();
-    public static final long SIZE$origin = LAYOUT$origin.byteSize();
-
     public VkTilePropertiesQCOM(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_TILE_PROPERTIES_QCOM);
@@ -119,4 +86,38 @@ public record VkTilePropertiesQCOM(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkExtent3D.LAYOUT.withName("tileSize"),
+        VkExtent2D.LAYOUT.withName("apronSize"),
+        VkOffset2D.LAYOUT.withName("origin")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$tileSize = PathElement.groupElement("tileSize");
+    public static final PathElement PATH$apronSize = PathElement.groupElement("apronSize");
+    public static final PathElement PATH$origin = PathElement.groupElement("origin");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$tileSize = (StructLayout) LAYOUT.select(PATH$tileSize);
+    public static final StructLayout LAYOUT$apronSize = (StructLayout) LAYOUT.select(PATH$apronSize);
+    public static final StructLayout LAYOUT$origin = (StructLayout) LAYOUT.select(PATH$origin);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$tileSize = LAYOUT.byteOffset(PATH$tileSize);
+    public static final long OFFSET$apronSize = LAYOUT.byteOffset(PATH$apronSize);
+    public static final long OFFSET$origin = LAYOUT.byteOffset(PATH$origin);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$tileSize = LAYOUT$tileSize.byteSize();
+    public static final long SIZE$apronSize = LAYOUT$apronSize.byteSize();
+    public static final long SIZE$origin = LAYOUT$origin.byteSize();
+
 }

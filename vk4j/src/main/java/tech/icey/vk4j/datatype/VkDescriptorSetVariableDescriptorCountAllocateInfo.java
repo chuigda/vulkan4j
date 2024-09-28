@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDescriptorSetVariableDescriptorCountAllocateInfo.html">VkDescriptorSetVariableDescriptorCountAllocateInfo</a>
 public record VkDescriptorSetVariableDescriptorCountAllocateInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("descriptorSetCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDescriptorCounts")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$descriptorSetCount = PathElement.groupElement("descriptorSetCount");
-    public static final PathElement PATH$pDescriptorCounts = PathElement.groupElement("pDescriptorCounts");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$descriptorSetCount = (OfInt) LAYOUT.select(PATH$descriptorSetCount);
-    public static final AddressLayout LAYOUT$pDescriptorCounts = (AddressLayout) LAYOUT.select(PATH$pDescriptorCounts);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$descriptorSetCount = LAYOUT.byteOffset(PATH$descriptorSetCount);
-    public static final long OFFSET$pDescriptorCounts = LAYOUT.byteOffset(PATH$pDescriptorCounts);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$descriptorSetCount = LAYOUT$descriptorSetCount.byteSize();
-    public static final long SIZE$pDescriptorCounts = LAYOUT$pDescriptorCounts.byteSize();
-
     public VkDescriptorSetVariableDescriptorCountAllocateInfo(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO);
@@ -120,4 +92,33 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(MemorySegment s
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("descriptorSetCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDescriptorCounts")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$descriptorSetCount = PathElement.groupElement("descriptorSetCount");
+    public static final PathElement PATH$pDescriptorCounts = PathElement.groupElement("pDescriptorCounts");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$descriptorSetCount = (OfInt) LAYOUT.select(PATH$descriptorSetCount);
+    public static final AddressLayout LAYOUT$pDescriptorCounts = (AddressLayout) LAYOUT.select(PATH$pDescriptorCounts);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$descriptorSetCount = LAYOUT.byteOffset(PATH$descriptorSetCount);
+    public static final long OFFSET$pDescriptorCounts = LAYOUT.byteOffset(PATH$pDescriptorCounts);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$descriptorSetCount = LAYOUT$descriptorSetCount.byteSize();
+    public static final long SIZE$pDescriptorCounts = LAYOUT$pDescriptorCounts.byteSize();
+
 }

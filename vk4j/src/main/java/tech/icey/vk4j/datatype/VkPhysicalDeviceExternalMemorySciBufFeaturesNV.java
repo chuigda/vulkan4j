@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceExternalMemorySciBufFeaturesNV.html">VkPhysicalDeviceExternalMemorySciBufFeaturesNV</a>
 public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("sciBufImport"),
-        ValueLayout.JAVA_INT.withName("sciBufExport")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$sciBufImport = PathElement.groupElement("sciBufImport");
-    public static final PathElement PATH$sciBufExport = PathElement.groupElement("sciBufExport");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$sciBufImport = (OfInt) LAYOUT.select(PATH$sciBufImport);
-    public static final OfInt LAYOUT$sciBufExport = (OfInt) LAYOUT.select(PATH$sciBufExport);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$sciBufImport = LAYOUT.byteOffset(PATH$sciBufImport);
-    public static final long OFFSET$sciBufExport = LAYOUT.byteOffset(PATH$sciBufExport);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$sciBufImport = LAYOUT$sciBufImport.byteSize();
-    public static final long SIZE$sciBufExport = LAYOUT$sciBufExport.byteSize();
-
     public VkPhysicalDeviceExternalMemorySciBufFeaturesNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCI_BUF_FEATURES_NV);
@@ -105,4 +77,33 @@ public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(MemorySegment segme
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("sciBufImport"),
+        ValueLayout.JAVA_INT.withName("sciBufExport")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$sciBufImport = PathElement.groupElement("sciBufImport");
+    public static final PathElement PATH$sciBufExport = PathElement.groupElement("sciBufExport");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$sciBufImport = (OfInt) LAYOUT.select(PATH$sciBufImport);
+    public static final OfInt LAYOUT$sciBufExport = (OfInt) LAYOUT.select(PATH$sciBufExport);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$sciBufImport = LAYOUT.byteOffset(PATH$sciBufImport);
+    public static final long OFFSET$sciBufExport = LAYOUT.byteOffset(PATH$sciBufExport);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$sciBufImport = LAYOUT$sciBufImport.byteSize();
+    public static final long SIZE$sciBufExport = LAYOUT$sciBufExport.byteSize();
+
 }

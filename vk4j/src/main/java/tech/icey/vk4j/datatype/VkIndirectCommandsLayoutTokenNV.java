@@ -35,89 +35,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkIndirectCommandsLayoutTokenNV.html">VkIndirectCommandsLayoutTokenNV</a>
 public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("tokenType"),
-        ValueLayout.JAVA_INT.withName("stream"),
-        ValueLayout.JAVA_INT.withName("offset"),
-        ValueLayout.JAVA_INT.withName("vertexBindingUnit"),
-        ValueLayout.JAVA_INT.withName("vertexDynamicStride"),
-        ValueLayout.ADDRESS.withName("pushconstantPipelineLayout"),
-        ValueLayout.JAVA_INT.withName("pushconstantShaderStageFlags"),
-        ValueLayout.JAVA_INT.withName("pushconstantOffset"),
-        ValueLayout.JAVA_INT.withName("pushconstantSize"),
-        ValueLayout.JAVA_INT.withName("indirectStateFlags"),
-        ValueLayout.JAVA_INT.withName("indexTypeCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pIndexTypes"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pIndexTypeValues")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$tokenType = PathElement.groupElement("tokenType");
-    public static final PathElement PATH$stream = PathElement.groupElement("stream");
-    public static final PathElement PATH$offset = PathElement.groupElement("offset");
-    public static final PathElement PATH$vertexBindingUnit = PathElement.groupElement("vertexBindingUnit");
-    public static final PathElement PATH$vertexDynamicStride = PathElement.groupElement("vertexDynamicStride");
-    public static final PathElement PATH$pushconstantPipelineLayout = PathElement.groupElement("pushconstantPipelineLayout");
-    public static final PathElement PATH$pushconstantShaderStageFlags = PathElement.groupElement("pushconstantShaderStageFlags");
-    public static final PathElement PATH$pushconstantOffset = PathElement.groupElement("pushconstantOffset");
-    public static final PathElement PATH$pushconstantSize = PathElement.groupElement("pushconstantSize");
-    public static final PathElement PATH$indirectStateFlags = PathElement.groupElement("indirectStateFlags");
-    public static final PathElement PATH$indexTypeCount = PathElement.groupElement("indexTypeCount");
-    public static final PathElement PATH$pIndexTypes = PathElement.groupElement("pIndexTypes");
-    public static final PathElement PATH$pIndexTypeValues = PathElement.groupElement("pIndexTypeValues");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$tokenType = (OfInt) LAYOUT.select(PATH$tokenType);
-    public static final OfInt LAYOUT$stream = (OfInt) LAYOUT.select(PATH$stream);
-    public static final OfInt LAYOUT$offset = (OfInt) LAYOUT.select(PATH$offset);
-    public static final OfInt LAYOUT$vertexBindingUnit = (OfInt) LAYOUT.select(PATH$vertexBindingUnit);
-    public static final OfInt LAYOUT$vertexDynamicStride = (OfInt) LAYOUT.select(PATH$vertexDynamicStride);
-    public static final AddressLayout LAYOUT$pushconstantPipelineLayout = (AddressLayout) LAYOUT.select(PATH$pushconstantPipelineLayout);
-    public static final OfInt LAYOUT$pushconstantShaderStageFlags = (OfInt) LAYOUT.select(PATH$pushconstantShaderStageFlags);
-    public static final OfInt LAYOUT$pushconstantOffset = (OfInt) LAYOUT.select(PATH$pushconstantOffset);
-    public static final OfInt LAYOUT$pushconstantSize = (OfInt) LAYOUT.select(PATH$pushconstantSize);
-    public static final OfInt LAYOUT$indirectStateFlags = (OfInt) LAYOUT.select(PATH$indirectStateFlags);
-    public static final OfInt LAYOUT$indexTypeCount = (OfInt) LAYOUT.select(PATH$indexTypeCount);
-    public static final AddressLayout LAYOUT$pIndexTypes = (AddressLayout) LAYOUT.select(PATH$pIndexTypes);
-    public static final AddressLayout LAYOUT$pIndexTypeValues = (AddressLayout) LAYOUT.select(PATH$pIndexTypeValues);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$tokenType = LAYOUT.byteOffset(PATH$tokenType);
-    public static final long OFFSET$stream = LAYOUT.byteOffset(PATH$stream);
-    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
-    public static final long OFFSET$vertexBindingUnit = LAYOUT.byteOffset(PATH$vertexBindingUnit);
-    public static final long OFFSET$vertexDynamicStride = LAYOUT.byteOffset(PATH$vertexDynamicStride);
-    public static final long OFFSET$pushconstantPipelineLayout = LAYOUT.byteOffset(PATH$pushconstantPipelineLayout);
-    public static final long OFFSET$pushconstantShaderStageFlags = LAYOUT.byteOffset(PATH$pushconstantShaderStageFlags);
-    public static final long OFFSET$pushconstantOffset = LAYOUT.byteOffset(PATH$pushconstantOffset);
-    public static final long OFFSET$pushconstantSize = LAYOUT.byteOffset(PATH$pushconstantSize);
-    public static final long OFFSET$indirectStateFlags = LAYOUT.byteOffset(PATH$indirectStateFlags);
-    public static final long OFFSET$indexTypeCount = LAYOUT.byteOffset(PATH$indexTypeCount);
-    public static final long OFFSET$pIndexTypes = LAYOUT.byteOffset(PATH$pIndexTypes);
-    public static final long OFFSET$pIndexTypeValues = LAYOUT.byteOffset(PATH$pIndexTypeValues);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$tokenType = LAYOUT$tokenType.byteSize();
-    public static final long SIZE$stream = LAYOUT$stream.byteSize();
-    public static final long SIZE$offset = LAYOUT$offset.byteSize();
-    public static final long SIZE$vertexBindingUnit = LAYOUT$vertexBindingUnit.byteSize();
-    public static final long SIZE$vertexDynamicStride = LAYOUT$vertexDynamicStride.byteSize();
-    public static final long SIZE$pushconstantPipelineLayout = LAYOUT$pushconstantPipelineLayout.byteSize();
-    public static final long SIZE$pushconstantShaderStageFlags = LAYOUT$pushconstantShaderStageFlags.byteSize();
-    public static final long SIZE$pushconstantOffset = LAYOUT$pushconstantOffset.byteSize();
-    public static final long SIZE$pushconstantSize = LAYOUT$pushconstantSize.byteSize();
-    public static final long SIZE$indirectStateFlags = LAYOUT$indirectStateFlags.byteSize();
-    public static final long SIZE$indexTypeCount = LAYOUT$indexTypeCount.byteSize();
-    public static final long SIZE$pIndexTypes = LAYOUT$pIndexTypes.byteSize();
-    public static final long SIZE$pIndexTypeValues = LAYOUT$pIndexTypeValues.byteSize();
-
     public VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_NV);
@@ -293,4 +210,88 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements 
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("tokenType"),
+        ValueLayout.JAVA_INT.withName("stream"),
+        ValueLayout.JAVA_INT.withName("offset"),
+        ValueLayout.JAVA_INT.withName("vertexBindingUnit"),
+        ValueLayout.JAVA_INT.withName("vertexDynamicStride"),
+        ValueLayout.ADDRESS.withName("pushconstantPipelineLayout"),
+        ValueLayout.JAVA_INT.withName("pushconstantShaderStageFlags"),
+        ValueLayout.JAVA_INT.withName("pushconstantOffset"),
+        ValueLayout.JAVA_INT.withName("pushconstantSize"),
+        ValueLayout.JAVA_INT.withName("indirectStateFlags"),
+        ValueLayout.JAVA_INT.withName("indexTypeCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pIndexTypes"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pIndexTypeValues")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$tokenType = PathElement.groupElement("tokenType");
+    public static final PathElement PATH$stream = PathElement.groupElement("stream");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$vertexBindingUnit = PathElement.groupElement("vertexBindingUnit");
+    public static final PathElement PATH$vertexDynamicStride = PathElement.groupElement("vertexDynamicStride");
+    public static final PathElement PATH$pushconstantPipelineLayout = PathElement.groupElement("pushconstantPipelineLayout");
+    public static final PathElement PATH$pushconstantShaderStageFlags = PathElement.groupElement("pushconstantShaderStageFlags");
+    public static final PathElement PATH$pushconstantOffset = PathElement.groupElement("pushconstantOffset");
+    public static final PathElement PATH$pushconstantSize = PathElement.groupElement("pushconstantSize");
+    public static final PathElement PATH$indirectStateFlags = PathElement.groupElement("indirectStateFlags");
+    public static final PathElement PATH$indexTypeCount = PathElement.groupElement("indexTypeCount");
+    public static final PathElement PATH$pIndexTypes = PathElement.groupElement("pIndexTypes");
+    public static final PathElement PATH$pIndexTypeValues = PathElement.groupElement("pIndexTypeValues");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$tokenType = (OfInt) LAYOUT.select(PATH$tokenType);
+    public static final OfInt LAYOUT$stream = (OfInt) LAYOUT.select(PATH$stream);
+    public static final OfInt LAYOUT$offset = (OfInt) LAYOUT.select(PATH$offset);
+    public static final OfInt LAYOUT$vertexBindingUnit = (OfInt) LAYOUT.select(PATH$vertexBindingUnit);
+    public static final OfInt LAYOUT$vertexDynamicStride = (OfInt) LAYOUT.select(PATH$vertexDynamicStride);
+    public static final AddressLayout LAYOUT$pushconstantPipelineLayout = (AddressLayout) LAYOUT.select(PATH$pushconstantPipelineLayout);
+    public static final OfInt LAYOUT$pushconstantShaderStageFlags = (OfInt) LAYOUT.select(PATH$pushconstantShaderStageFlags);
+    public static final OfInt LAYOUT$pushconstantOffset = (OfInt) LAYOUT.select(PATH$pushconstantOffset);
+    public static final OfInt LAYOUT$pushconstantSize = (OfInt) LAYOUT.select(PATH$pushconstantSize);
+    public static final OfInt LAYOUT$indirectStateFlags = (OfInt) LAYOUT.select(PATH$indirectStateFlags);
+    public static final OfInt LAYOUT$indexTypeCount = (OfInt) LAYOUT.select(PATH$indexTypeCount);
+    public static final AddressLayout LAYOUT$pIndexTypes = (AddressLayout) LAYOUT.select(PATH$pIndexTypes);
+    public static final AddressLayout LAYOUT$pIndexTypeValues = (AddressLayout) LAYOUT.select(PATH$pIndexTypeValues);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$tokenType = LAYOUT.byteOffset(PATH$tokenType);
+    public static final long OFFSET$stream = LAYOUT.byteOffset(PATH$stream);
+    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
+    public static final long OFFSET$vertexBindingUnit = LAYOUT.byteOffset(PATH$vertexBindingUnit);
+    public static final long OFFSET$vertexDynamicStride = LAYOUT.byteOffset(PATH$vertexDynamicStride);
+    public static final long OFFSET$pushconstantPipelineLayout = LAYOUT.byteOffset(PATH$pushconstantPipelineLayout);
+    public static final long OFFSET$pushconstantShaderStageFlags = LAYOUT.byteOffset(PATH$pushconstantShaderStageFlags);
+    public static final long OFFSET$pushconstantOffset = LAYOUT.byteOffset(PATH$pushconstantOffset);
+    public static final long OFFSET$pushconstantSize = LAYOUT.byteOffset(PATH$pushconstantSize);
+    public static final long OFFSET$indirectStateFlags = LAYOUT.byteOffset(PATH$indirectStateFlags);
+    public static final long OFFSET$indexTypeCount = LAYOUT.byteOffset(PATH$indexTypeCount);
+    public static final long OFFSET$pIndexTypes = LAYOUT.byteOffset(PATH$pIndexTypes);
+    public static final long OFFSET$pIndexTypeValues = LAYOUT.byteOffset(PATH$pIndexTypeValues);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$tokenType = LAYOUT$tokenType.byteSize();
+    public static final long SIZE$stream = LAYOUT$stream.byteSize();
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$vertexBindingUnit = LAYOUT$vertexBindingUnit.byteSize();
+    public static final long SIZE$vertexDynamicStride = LAYOUT$vertexDynamicStride.byteSize();
+    public static final long SIZE$pushconstantPipelineLayout = LAYOUT$pushconstantPipelineLayout.byteSize();
+    public static final long SIZE$pushconstantShaderStageFlags = LAYOUT$pushconstantShaderStageFlags.byteSize();
+    public static final long SIZE$pushconstantOffset = LAYOUT$pushconstantOffset.byteSize();
+    public static final long SIZE$pushconstantSize = LAYOUT$pushconstantSize.byteSize();
+    public static final long SIZE$indirectStateFlags = LAYOUT$indirectStateFlags.byteSize();
+    public static final long SIZE$indexTypeCount = LAYOUT$indexTypeCount.byteSize();
+    public static final long SIZE$pIndexTypes = LAYOUT$pIndexTypes.byteSize();
+    public static final long SIZE$pIndexTypeValues = LAYOUT$pIndexTypeValues.byteSize();
+
 }

@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSparseImageFormatProperties.html">VkSparseImageFormatProperties</a>
 public record VkSparseImageFormatProperties(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("aspectMask"),
-        VkExtent3D.LAYOUT.withName("imageGranularity"),
-        ValueLayout.JAVA_INT.withName("flags")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
-    public static final PathElement PATH$imageGranularity = PathElement.groupElement("imageGranularity");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-
-    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
-    public static final StructLayout LAYOUT$imageGranularity = (StructLayout) LAYOUT.select(PATH$imageGranularity);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-
-    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
-    public static final long OFFSET$imageGranularity = LAYOUT.byteOffset(PATH$imageGranularity);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-
-    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
-    public static final long SIZE$imageGranularity = LAYOUT$imageGranularity.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
     public VkSparseImageFormatProperties(MemorySegment segment) {
         this.segment = segment;
     }
@@ -86,4 +63,28 @@ public record VkSparseImageFormatProperties(MemorySegment segment) implements IP
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("aspectMask"),
+        VkExtent3D.LAYOUT.withName("imageGranularity"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
+    public static final PathElement PATH$imageGranularity = PathElement.groupElement("imageGranularity");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+
+    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
+    public static final StructLayout LAYOUT$imageGranularity = (StructLayout) LAYOUT.select(PATH$imageGranularity);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+
+    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
+    public static final long OFFSET$imageGranularity = LAYOUT.byteOffset(PATH$imageGranularity);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+
+    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
+    public static final long SIZE$imageGranularity = LAYOUT$imageGranularity.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+
 }

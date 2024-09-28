@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBufferCollectionBufferCreateInfoFUCHSIA.html">VkBufferCollectionBufferCreateInfoFUCHSIA</a>
 public record VkBufferCollectionBufferCreateInfoFUCHSIA(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("collection"),
-        ValueLayout.JAVA_INT.withName("index")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$collection = PathElement.groupElement("collection");
-    public static final PathElement PATH$index = PathElement.groupElement("index");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$collection = (AddressLayout) LAYOUT.select(PATH$collection);
-    public static final OfInt LAYOUT$index = (OfInt) LAYOUT.select(PATH$index);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$collection = LAYOUT.byteOffset(PATH$collection);
-    public static final long OFFSET$index = LAYOUT.byteOffset(PATH$index);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$collection = LAYOUT$collection.byteSize();
-    public static final long SIZE$index = LAYOUT$index.byteSize();
-
     public VkBufferCollectionBufferCreateInfoFUCHSIA(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_BUFFER_COLLECTION_BUFFER_CREATE_INFO_FUCHSIA);
@@ -105,4 +77,33 @@ public record VkBufferCollectionBufferCreateInfoFUCHSIA(MemorySegment segment) i
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("collection"),
+        ValueLayout.JAVA_INT.withName("index")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$collection = PathElement.groupElement("collection");
+    public static final PathElement PATH$index = PathElement.groupElement("index");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$collection = (AddressLayout) LAYOUT.select(PATH$collection);
+    public static final OfInt LAYOUT$index = (OfInt) LAYOUT.select(PATH$index);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$collection = LAYOUT.byteOffset(PATH$collection);
+    public static final long OFFSET$index = LAYOUT.byteOffset(PATH$index);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$collection = LAYOUT$collection.byteSize();
+    public static final long SIZE$index = LAYOUT$index.byteSize();
+
 }

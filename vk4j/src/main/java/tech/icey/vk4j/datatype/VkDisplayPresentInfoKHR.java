@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDisplayPresentInfoKHR.html">VkDisplayPresentInfoKHR</a>
 public record VkDisplayPresentInfoKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkRect2D.LAYOUT.withName("srcRect"),
-        VkRect2D.LAYOUT.withName("dstRect"),
-        ValueLayout.JAVA_INT.withName("persistent")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$srcRect = PathElement.groupElement("srcRect");
-    public static final PathElement PATH$dstRect = PathElement.groupElement("dstRect");
-    public static final PathElement PATH$persistent = PathElement.groupElement("persistent");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$srcRect = (StructLayout) LAYOUT.select(PATH$srcRect);
-    public static final StructLayout LAYOUT$dstRect = (StructLayout) LAYOUT.select(PATH$dstRect);
-    public static final OfInt LAYOUT$persistent = (OfInt) LAYOUT.select(PATH$persistent);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$srcRect = LAYOUT.byteOffset(PATH$srcRect);
-    public static final long OFFSET$dstRect = LAYOUT.byteOffset(PATH$dstRect);
-    public static final long OFFSET$persistent = LAYOUT.byteOffset(PATH$persistent);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$srcRect = LAYOUT$srcRect.byteSize();
-    public static final long SIZE$dstRect = LAYOUT$dstRect.byteSize();
-    public static final long SIZE$persistent = LAYOUT$persistent.byteSize();
-
     public VkDisplayPresentInfoKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR);
@@ -119,4 +86,38 @@ public record VkDisplayPresentInfoKHR(MemorySegment segment) implements IPointer
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkRect2D.LAYOUT.withName("srcRect"),
+        VkRect2D.LAYOUT.withName("dstRect"),
+        ValueLayout.JAVA_INT.withName("persistent")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcRect = PathElement.groupElement("srcRect");
+    public static final PathElement PATH$dstRect = PathElement.groupElement("dstRect");
+    public static final PathElement PATH$persistent = PathElement.groupElement("persistent");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$srcRect = (StructLayout) LAYOUT.select(PATH$srcRect);
+    public static final StructLayout LAYOUT$dstRect = (StructLayout) LAYOUT.select(PATH$dstRect);
+    public static final OfInt LAYOUT$persistent = (OfInt) LAYOUT.select(PATH$persistent);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$srcRect = LAYOUT.byteOffset(PATH$srcRect);
+    public static final long OFFSET$dstRect = LAYOUT.byteOffset(PATH$dstRect);
+    public static final long OFFSET$persistent = LAYOUT.byteOffset(PATH$persistent);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$srcRect = LAYOUT$srcRect.byteSize();
+    public static final long SIZE$dstRect = LAYOUT$dstRect.byteSize();
+    public static final long SIZE$persistent = LAYOUT$persistent.byteSize();
+
 }

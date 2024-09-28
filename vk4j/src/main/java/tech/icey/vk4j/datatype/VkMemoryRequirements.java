@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMemoryRequirements.html">VkMemoryRequirements</a>
 public record VkMemoryRequirements(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_LONG.withName("size"),
-        ValueLayout.JAVA_LONG.withName("alignment"),
-        ValueLayout.JAVA_INT.withName("memoryTypeBits")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$size = PathElement.groupElement("size");
-    public static final PathElement PATH$alignment = PathElement.groupElement("alignment");
-    public static final PathElement PATH$memoryTypeBits = PathElement.groupElement("memoryTypeBits");
-
-    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
-    public static final OfLong LAYOUT$alignment = (OfLong) LAYOUT.select(PATH$alignment);
-    public static final OfInt LAYOUT$memoryTypeBits = (OfInt) LAYOUT.select(PATH$memoryTypeBits);
-
-    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
-    public static final long OFFSET$alignment = LAYOUT.byteOffset(PATH$alignment);
-    public static final long OFFSET$memoryTypeBits = LAYOUT.byteOffset(PATH$memoryTypeBits);
-
-    public static final long SIZE$size = LAYOUT$size.byteSize();
-    public static final long SIZE$alignment = LAYOUT$alignment.byteSize();
-    public static final long SIZE$memoryTypeBits = LAYOUT$memoryTypeBits.byteSize();
-
     public VkMemoryRequirements(MemorySegment segment) {
         this.segment = segment;
     }
@@ -86,4 +63,28 @@ public record VkMemoryRequirements(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("size"),
+        ValueLayout.JAVA_LONG.withName("alignment"),
+        ValueLayout.JAVA_INT.withName("memoryTypeBits")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$alignment = PathElement.groupElement("alignment");
+    public static final PathElement PATH$memoryTypeBits = PathElement.groupElement("memoryTypeBits");
+
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+    public static final OfLong LAYOUT$alignment = (OfLong) LAYOUT.select(PATH$alignment);
+    public static final OfInt LAYOUT$memoryTypeBits = (OfInt) LAYOUT.select(PATH$memoryTypeBits);
+
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+    public static final long OFFSET$alignment = LAYOUT.byteOffset(PATH$alignment);
+    public static final long OFFSET$memoryTypeBits = LAYOUT.byteOffset(PATH$memoryTypeBits);
+
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$alignment = LAYOUT$alignment.byteSize();
+    public static final long SIZE$memoryTypeBits = LAYOUT$memoryTypeBits.byteSize();
+
 }

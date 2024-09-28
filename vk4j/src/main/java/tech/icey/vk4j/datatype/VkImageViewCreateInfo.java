@@ -28,54 +28,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageViewCreateInfo.html">VkImageViewCreateInfo</a>
 public record VkImageViewCreateInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.ADDRESS.withName("image"),
-        ValueLayout.JAVA_INT.withName("viewType"),
-        ValueLayout.JAVA_INT.withName("format"),
-        VkComponentMapping.LAYOUT.withName("components"),
-        VkImageSubresourceRange.LAYOUT.withName("subresourceRange")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$image = PathElement.groupElement("image");
-    public static final PathElement PATH$viewType = PathElement.groupElement("viewType");
-    public static final PathElement PATH$format = PathElement.groupElement("format");
-    public static final PathElement PATH$components = PathElement.groupElement("components");
-    public static final PathElement PATH$subresourceRange = PathElement.groupElement("subresourceRange");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final AddressLayout LAYOUT$image = (AddressLayout) LAYOUT.select(PATH$image);
-    public static final OfInt LAYOUT$viewType = (OfInt) LAYOUT.select(PATH$viewType);
-    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
-    public static final StructLayout LAYOUT$components = (StructLayout) LAYOUT.select(PATH$components);
-    public static final StructLayout LAYOUT$subresourceRange = (StructLayout) LAYOUT.select(PATH$subresourceRange);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$image = LAYOUT.byteOffset(PATH$image);
-    public static final long OFFSET$viewType = LAYOUT.byteOffset(PATH$viewType);
-    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
-    public static final long OFFSET$components = LAYOUT.byteOffset(PATH$components);
-    public static final long OFFSET$subresourceRange = LAYOUT.byteOffset(PATH$subresourceRange);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$image = LAYOUT$image.byteSize();
-    public static final long SIZE$viewType = LAYOUT$viewType.byteSize();
-    public static final long SIZE$format = LAYOUT$format.byteSize();
-    public static final long SIZE$components = LAYOUT$components.byteSize();
-    public static final long SIZE$subresourceRange = LAYOUT$subresourceRange.byteSize();
-
     public VkImageViewCreateInfo(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO);
@@ -161,4 +113,53 @@ public record VkImageViewCreateInfo(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withName("image"),
+        ValueLayout.JAVA_INT.withName("viewType"),
+        ValueLayout.JAVA_INT.withName("format"),
+        VkComponentMapping.LAYOUT.withName("components"),
+        VkImageSubresourceRange.LAYOUT.withName("subresourceRange")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$image = PathElement.groupElement("image");
+    public static final PathElement PATH$viewType = PathElement.groupElement("viewType");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$components = PathElement.groupElement("components");
+    public static final PathElement PATH$subresourceRange = PathElement.groupElement("subresourceRange");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$image = (AddressLayout) LAYOUT.select(PATH$image);
+    public static final OfInt LAYOUT$viewType = (OfInt) LAYOUT.select(PATH$viewType);
+    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
+    public static final StructLayout LAYOUT$components = (StructLayout) LAYOUT.select(PATH$components);
+    public static final StructLayout LAYOUT$subresourceRange = (StructLayout) LAYOUT.select(PATH$subresourceRange);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$image = LAYOUT.byteOffset(PATH$image);
+    public static final long OFFSET$viewType = LAYOUT.byteOffset(PATH$viewType);
+    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
+    public static final long OFFSET$components = LAYOUT.byteOffset(PATH$components);
+    public static final long OFFSET$subresourceRange = LAYOUT.byteOffset(PATH$subresourceRange);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$image = LAYOUT$image.byteSize();
+    public static final long SIZE$viewType = LAYOUT$viewType.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
+    public static final long SIZE$components = LAYOUT$components.byteSize();
+    public static final long SIZE$subresourceRange = LAYOUT$subresourceRange.byteSize();
+
 }

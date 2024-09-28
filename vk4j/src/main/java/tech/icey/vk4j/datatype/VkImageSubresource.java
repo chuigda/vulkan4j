@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageSubresource.html">VkImageSubresource</a>
 public record VkImageSubresource(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("aspectMask"),
-        ValueLayout.JAVA_INT.withName("mipLevel"),
-        ValueLayout.JAVA_INT.withName("arrayLayer")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
-    public static final PathElement PATH$mipLevel = PathElement.groupElement("mipLevel");
-    public static final PathElement PATH$arrayLayer = PathElement.groupElement("arrayLayer");
-
-    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
-    public static final OfInt LAYOUT$mipLevel = (OfInt) LAYOUT.select(PATH$mipLevel);
-    public static final OfInt LAYOUT$arrayLayer = (OfInt) LAYOUT.select(PATH$arrayLayer);
-
-    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
-    public static final long OFFSET$mipLevel = LAYOUT.byteOffset(PATH$mipLevel);
-    public static final long OFFSET$arrayLayer = LAYOUT.byteOffset(PATH$arrayLayer);
-
-    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
-    public static final long SIZE$mipLevel = LAYOUT$mipLevel.byteSize();
-    public static final long SIZE$arrayLayer = LAYOUT$arrayLayer.byteSize();
-
     public VkImageSubresource(MemorySegment segment) {
         this.segment = segment;
     }
@@ -86,4 +63,28 @@ public record VkImageSubresource(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("aspectMask"),
+        ValueLayout.JAVA_INT.withName("mipLevel"),
+        ValueLayout.JAVA_INT.withName("arrayLayer")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
+    public static final PathElement PATH$mipLevel = PathElement.groupElement("mipLevel");
+    public static final PathElement PATH$arrayLayer = PathElement.groupElement("arrayLayer");
+
+    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
+    public static final OfInt LAYOUT$mipLevel = (OfInt) LAYOUT.select(PATH$mipLevel);
+    public static final OfInt LAYOUT$arrayLayer = (OfInt) LAYOUT.select(PATH$arrayLayer);
+
+    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
+    public static final long OFFSET$mipLevel = LAYOUT.byteOffset(PATH$mipLevel);
+    public static final long OFFSET$arrayLayer = LAYOUT.byteOffset(PATH$arrayLayer);
+
+    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
+    public static final long SIZE$mipLevel = LAYOUT$mipLevel.byteSize();
+    public static final long SIZE$arrayLayer = LAYOUT$arrayLayer.byteSize();
+
 }

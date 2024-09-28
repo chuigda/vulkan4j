@@ -26,44 +26,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFramebufferMixedSamplesCombinationNV.html">VkFramebufferMixedSamplesCombinationNV</a>
 public record VkFramebufferMixedSamplesCombinationNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("coverageReductionMode"),
-        ValueLayout.JAVA_INT.withName("rasterizationSamples"),
-        ValueLayout.JAVA_INT.withName("depthStencilSamples"),
-        ValueLayout.JAVA_INT.withName("colorSamples")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$coverageReductionMode = PathElement.groupElement("coverageReductionMode");
-    public static final PathElement PATH$rasterizationSamples = PathElement.groupElement("rasterizationSamples");
-    public static final PathElement PATH$depthStencilSamples = PathElement.groupElement("depthStencilSamples");
-    public static final PathElement PATH$colorSamples = PathElement.groupElement("colorSamples");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$coverageReductionMode = (OfInt) LAYOUT.select(PATH$coverageReductionMode);
-    public static final OfInt LAYOUT$rasterizationSamples = (OfInt) LAYOUT.select(PATH$rasterizationSamples);
-    public static final OfInt LAYOUT$depthStencilSamples = (OfInt) LAYOUT.select(PATH$depthStencilSamples);
-    public static final OfInt LAYOUT$colorSamples = (OfInt) LAYOUT.select(PATH$colorSamples);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$coverageReductionMode = LAYOUT.byteOffset(PATH$coverageReductionMode);
-    public static final long OFFSET$rasterizationSamples = LAYOUT.byteOffset(PATH$rasterizationSamples);
-    public static final long OFFSET$depthStencilSamples = LAYOUT.byteOffset(PATH$depthStencilSamples);
-    public static final long OFFSET$colorSamples = LAYOUT.byteOffset(PATH$colorSamples);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$coverageReductionMode = LAYOUT$coverageReductionMode.byteSize();
-    public static final long SIZE$rasterizationSamples = LAYOUT$rasterizationSamples.byteSize();
-    public static final long SIZE$depthStencilSamples = LAYOUT$depthStencilSamples.byteSize();
-    public static final long SIZE$colorSamples = LAYOUT$colorSamples.byteSize();
-
     public VkFramebufferMixedSamplesCombinationNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV);
@@ -133,4 +95,43 @@ public record VkFramebufferMixedSamplesCombinationNV(MemorySegment segment) impl
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("coverageReductionMode"),
+        ValueLayout.JAVA_INT.withName("rasterizationSamples"),
+        ValueLayout.JAVA_INT.withName("depthStencilSamples"),
+        ValueLayout.JAVA_INT.withName("colorSamples")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$coverageReductionMode = PathElement.groupElement("coverageReductionMode");
+    public static final PathElement PATH$rasterizationSamples = PathElement.groupElement("rasterizationSamples");
+    public static final PathElement PATH$depthStencilSamples = PathElement.groupElement("depthStencilSamples");
+    public static final PathElement PATH$colorSamples = PathElement.groupElement("colorSamples");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$coverageReductionMode = (OfInt) LAYOUT.select(PATH$coverageReductionMode);
+    public static final OfInt LAYOUT$rasterizationSamples = (OfInt) LAYOUT.select(PATH$rasterizationSamples);
+    public static final OfInt LAYOUT$depthStencilSamples = (OfInt) LAYOUT.select(PATH$depthStencilSamples);
+    public static final OfInt LAYOUT$colorSamples = (OfInt) LAYOUT.select(PATH$colorSamples);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$coverageReductionMode = LAYOUT.byteOffset(PATH$coverageReductionMode);
+    public static final long OFFSET$rasterizationSamples = LAYOUT.byteOffset(PATH$rasterizationSamples);
+    public static final long OFFSET$depthStencilSamples = LAYOUT.byteOffset(PATH$depthStencilSamples);
+    public static final long OFFSET$colorSamples = LAYOUT.byteOffset(PATH$colorSamples);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$coverageReductionMode = LAYOUT$coverageReductionMode.byteSize();
+    public static final long SIZE$rasterizationSamples = LAYOUT$rasterizationSamples.byteSize();
+    public static final long SIZE$depthStencilSamples = LAYOUT$depthStencilSamples.byteSize();
+    public static final long SIZE$colorSamples = LAYOUT$colorSamples.byteSize();
+
 }

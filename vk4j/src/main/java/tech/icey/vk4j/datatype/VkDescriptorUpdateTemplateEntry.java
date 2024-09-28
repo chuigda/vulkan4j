@@ -26,40 +26,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDescriptorUpdateTemplateEntry.html">VkDescriptorUpdateTemplateEntry</a>
 public record VkDescriptorUpdateTemplateEntry(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("dstBinding"),
-        ValueLayout.JAVA_INT.withName("dstArrayElement"),
-        ValueLayout.JAVA_INT.withName("descriptorCount"),
-        ValueLayout.JAVA_INT.withName("descriptorType"),
-        NativeLayout.C_SIZE_T.withName("offset"),
-        NativeLayout.C_SIZE_T.withName("stride")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$dstBinding = PathElement.groupElement("dstBinding");
-    public static final PathElement PATH$dstArrayElement = PathElement.groupElement("dstArrayElement");
-    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
-    public static final PathElement PATH$descriptorType = PathElement.groupElement("descriptorType");
-    public static final PathElement PATH$offset = PathElement.groupElement("offset");
-    public static final PathElement PATH$stride = PathElement.groupElement("stride");
-
-    public static final OfInt LAYOUT$dstBinding = (OfInt) LAYOUT.select(PATH$dstBinding);
-    public static final OfInt LAYOUT$dstArrayElement = (OfInt) LAYOUT.select(PATH$dstArrayElement);
-    public static final OfInt LAYOUT$descriptorCount = (OfInt) LAYOUT.select(PATH$descriptorCount);
-    public static final OfInt LAYOUT$descriptorType = (OfInt) LAYOUT.select(PATH$descriptorType);
-
-    public static final long OFFSET$dstBinding = LAYOUT.byteOffset(PATH$dstBinding);
-    public static final long OFFSET$dstArrayElement = LAYOUT.byteOffset(PATH$dstArrayElement);
-    public static final long OFFSET$descriptorCount = LAYOUT.byteOffset(PATH$descriptorCount);
-    public static final long OFFSET$descriptorType = LAYOUT.byteOffset(PATH$descriptorType);
-    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
-    public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
-
-    public static final long SIZE$dstBinding = LAYOUT$dstBinding.byteSize();
-    public static final long SIZE$dstArrayElement = LAYOUT$dstArrayElement.byteSize();
-    public static final long SIZE$descriptorCount = LAYOUT$descriptorCount.byteSize();
-    public static final long SIZE$descriptorType = LAYOUT$descriptorType.byteSize();
-
     public VkDescriptorUpdateTemplateEntry(MemorySegment segment) {
         this.segment = segment;
     }
@@ -124,4 +90,39 @@ public record VkDescriptorUpdateTemplateEntry(MemorySegment segment) implements 
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("dstBinding"),
+        ValueLayout.JAVA_INT.withName("dstArrayElement"),
+        ValueLayout.JAVA_INT.withName("descriptorCount"),
+        ValueLayout.JAVA_INT.withName("descriptorType"),
+        NativeLayout.C_SIZE_T.withName("offset"),
+        NativeLayout.C_SIZE_T.withName("stride")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$dstBinding = PathElement.groupElement("dstBinding");
+    public static final PathElement PATH$dstArrayElement = PathElement.groupElement("dstArrayElement");
+    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
+    public static final PathElement PATH$descriptorType = PathElement.groupElement("descriptorType");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
+
+    public static final OfInt LAYOUT$dstBinding = (OfInt) LAYOUT.select(PATH$dstBinding);
+    public static final OfInt LAYOUT$dstArrayElement = (OfInt) LAYOUT.select(PATH$dstArrayElement);
+    public static final OfInt LAYOUT$descriptorCount = (OfInt) LAYOUT.select(PATH$descriptorCount);
+    public static final OfInt LAYOUT$descriptorType = (OfInt) LAYOUT.select(PATH$descriptorType);
+
+    public static final long OFFSET$dstBinding = LAYOUT.byteOffset(PATH$dstBinding);
+    public static final long OFFSET$dstArrayElement = LAYOUT.byteOffset(PATH$dstArrayElement);
+    public static final long OFFSET$descriptorCount = LAYOUT.byteOffset(PATH$descriptorCount);
+    public static final long OFFSET$descriptorType = LAYOUT.byteOffset(PATH$descriptorType);
+    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
+    public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
+
+    public static final long SIZE$dstBinding = LAYOUT$dstBinding.byteSize();
+    public static final long SIZE$dstArrayElement = LAYOUT$dstArrayElement.byteSize();
+    public static final long SIZE$descriptorCount = LAYOUT$descriptorCount.byteSize();
+    public static final long SIZE$descriptorType = LAYOUT$descriptorType.byteSize();
+
 }

@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.html">VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT</a>
 public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("fragmentShaderSampleInterlock"),
-        ValueLayout.JAVA_INT.withName("fragmentShaderPixelInterlock"),
-        ValueLayout.JAVA_INT.withName("fragmentShaderShadingRateInterlock")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$fragmentShaderSampleInterlock = PathElement.groupElement("fragmentShaderSampleInterlock");
-    public static final PathElement PATH$fragmentShaderPixelInterlock = PathElement.groupElement("fragmentShaderPixelInterlock");
-    public static final PathElement PATH$fragmentShaderShadingRateInterlock = PathElement.groupElement("fragmentShaderShadingRateInterlock");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$fragmentShaderSampleInterlock = (OfInt) LAYOUT.select(PATH$fragmentShaderSampleInterlock);
-    public static final OfInt LAYOUT$fragmentShaderPixelInterlock = (OfInt) LAYOUT.select(PATH$fragmentShaderPixelInterlock);
-    public static final OfInt LAYOUT$fragmentShaderShadingRateInterlock = (OfInt) LAYOUT.select(PATH$fragmentShaderShadingRateInterlock);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$fragmentShaderSampleInterlock = LAYOUT.byteOffset(PATH$fragmentShaderSampleInterlock);
-    public static final long OFFSET$fragmentShaderPixelInterlock = LAYOUT.byteOffset(PATH$fragmentShaderPixelInterlock);
-    public static final long OFFSET$fragmentShaderShadingRateInterlock = LAYOUT.byteOffset(PATH$fragmentShaderShadingRateInterlock);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$fragmentShaderSampleInterlock = LAYOUT$fragmentShaderSampleInterlock.byteSize();
-    public static final long SIZE$fragmentShaderPixelInterlock = LAYOUT$fragmentShaderPixelInterlock.byteSize();
-    public static final long SIZE$fragmentShaderShadingRateInterlock = LAYOUT$fragmentShaderShadingRateInterlock.byteSize();
-
     public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT);
@@ -119,4 +86,38 @@ public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment s
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("fragmentShaderSampleInterlock"),
+        ValueLayout.JAVA_INT.withName("fragmentShaderPixelInterlock"),
+        ValueLayout.JAVA_INT.withName("fragmentShaderShadingRateInterlock")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$fragmentShaderSampleInterlock = PathElement.groupElement("fragmentShaderSampleInterlock");
+    public static final PathElement PATH$fragmentShaderPixelInterlock = PathElement.groupElement("fragmentShaderPixelInterlock");
+    public static final PathElement PATH$fragmentShaderShadingRateInterlock = PathElement.groupElement("fragmentShaderShadingRateInterlock");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$fragmentShaderSampleInterlock = (OfInt) LAYOUT.select(PATH$fragmentShaderSampleInterlock);
+    public static final OfInt LAYOUT$fragmentShaderPixelInterlock = (OfInt) LAYOUT.select(PATH$fragmentShaderPixelInterlock);
+    public static final OfInt LAYOUT$fragmentShaderShadingRateInterlock = (OfInt) LAYOUT.select(PATH$fragmentShaderShadingRateInterlock);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$fragmentShaderSampleInterlock = LAYOUT.byteOffset(PATH$fragmentShaderSampleInterlock);
+    public static final long OFFSET$fragmentShaderPixelInterlock = LAYOUT.byteOffset(PATH$fragmentShaderPixelInterlock);
+    public static final long OFFSET$fragmentShaderShadingRateInterlock = LAYOUT.byteOffset(PATH$fragmentShaderShadingRateInterlock);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$fragmentShaderSampleInterlock = LAYOUT$fragmentShaderSampleInterlock.byteSize();
+    public static final long SIZE$fragmentShaderPixelInterlock = LAYOUT$fragmentShaderPixelInterlock.byteSize();
+    public static final long SIZE$fragmentShaderShadingRateInterlock = LAYOUT$fragmentShaderShadingRateInterlock.byteSize();
+
 }

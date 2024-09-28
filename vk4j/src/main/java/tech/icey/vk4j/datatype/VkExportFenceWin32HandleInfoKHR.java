@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkExportFenceWin32HandleInfoKHR.html">VkExportFenceWin32HandleInfoKHR</a>
 public record VkExportFenceWin32HandleInfoKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("pAttributes"),
-        ValueLayout.JAVA_INT.withName("dwAccess"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("name")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$pAttributes = PathElement.groupElement("pAttributes");
-    public static final PathElement PATH$dwAccess = PathElement.groupElement("dwAccess");
-    public static final PathElement PATH$name = PathElement.groupElement("name");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$pAttributes = (AddressLayout) LAYOUT.select(PATH$pAttributes);
-    public static final OfInt LAYOUT$dwAccess = (OfInt) LAYOUT.select(PATH$dwAccess);
-    public static final AddressLayout LAYOUT$name = (AddressLayout) LAYOUT.select(PATH$name);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$pAttributes = LAYOUT.byteOffset(PATH$pAttributes);
-    public static final long OFFSET$dwAccess = LAYOUT.byteOffset(PATH$dwAccess);
-    public static final long OFFSET$name = LAYOUT.byteOffset(PATH$name);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$pAttributes = LAYOUT$pAttributes.byteSize();
-    public static final long SIZE$dwAccess = LAYOUT$dwAccess.byteSize();
-    public static final long SIZE$name = LAYOUT$name.byteSize();
-
     public VkExportFenceWin32HandleInfoKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR);
@@ -138,4 +105,38 @@ public record VkExportFenceWin32HandleInfoKHR(MemorySegment segment) implements 
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("pAttributes"),
+        ValueLayout.JAVA_INT.withName("dwAccess"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("name")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pAttributes = PathElement.groupElement("pAttributes");
+    public static final PathElement PATH$dwAccess = PathElement.groupElement("dwAccess");
+    public static final PathElement PATH$name = PathElement.groupElement("name");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$pAttributes = (AddressLayout) LAYOUT.select(PATH$pAttributes);
+    public static final OfInt LAYOUT$dwAccess = (OfInt) LAYOUT.select(PATH$dwAccess);
+    public static final AddressLayout LAYOUT$name = (AddressLayout) LAYOUT.select(PATH$name);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$pAttributes = LAYOUT.byteOffset(PATH$pAttributes);
+    public static final long OFFSET$dwAccess = LAYOUT.byteOffset(PATH$dwAccess);
+    public static final long OFFSET$name = LAYOUT.byteOffset(PATH$name);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pAttributes = LAYOUT$pAttributes.byteSize();
+    public static final long SIZE$dwAccess = LAYOUT$dwAccess.byteSize();
+    public static final long SIZE$name = LAYOUT$name.byteSize();
+
 }

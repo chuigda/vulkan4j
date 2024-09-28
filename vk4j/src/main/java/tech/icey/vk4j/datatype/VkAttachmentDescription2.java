@@ -31,69 +31,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAttachmentDescription2.html">VkAttachmentDescription2</a>
 public record VkAttachmentDescription2(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("format"),
-        ValueLayout.JAVA_INT.withName("samples"),
-        ValueLayout.JAVA_INT.withName("loadOp"),
-        ValueLayout.JAVA_INT.withName("storeOp"),
-        ValueLayout.JAVA_INT.withName("stencilLoadOp"),
-        ValueLayout.JAVA_INT.withName("stencilStoreOp"),
-        ValueLayout.JAVA_INT.withName("initialLayout"),
-        ValueLayout.JAVA_INT.withName("finalLayout")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$format = PathElement.groupElement("format");
-    public static final PathElement PATH$samples = PathElement.groupElement("samples");
-    public static final PathElement PATH$loadOp = PathElement.groupElement("loadOp");
-    public static final PathElement PATH$storeOp = PathElement.groupElement("storeOp");
-    public static final PathElement PATH$stencilLoadOp = PathElement.groupElement("stencilLoadOp");
-    public static final PathElement PATH$stencilStoreOp = PathElement.groupElement("stencilStoreOp");
-    public static final PathElement PATH$initialLayout = PathElement.groupElement("initialLayout");
-    public static final PathElement PATH$finalLayout = PathElement.groupElement("finalLayout");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
-    public static final OfInt LAYOUT$samples = (OfInt) LAYOUT.select(PATH$samples);
-    public static final OfInt LAYOUT$loadOp = (OfInt) LAYOUT.select(PATH$loadOp);
-    public static final OfInt LAYOUT$storeOp = (OfInt) LAYOUT.select(PATH$storeOp);
-    public static final OfInt LAYOUT$stencilLoadOp = (OfInt) LAYOUT.select(PATH$stencilLoadOp);
-    public static final OfInt LAYOUT$stencilStoreOp = (OfInt) LAYOUT.select(PATH$stencilStoreOp);
-    public static final OfInt LAYOUT$initialLayout = (OfInt) LAYOUT.select(PATH$initialLayout);
-    public static final OfInt LAYOUT$finalLayout = (OfInt) LAYOUT.select(PATH$finalLayout);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
-    public static final long OFFSET$samples = LAYOUT.byteOffset(PATH$samples);
-    public static final long OFFSET$loadOp = LAYOUT.byteOffset(PATH$loadOp);
-    public static final long OFFSET$storeOp = LAYOUT.byteOffset(PATH$storeOp);
-    public static final long OFFSET$stencilLoadOp = LAYOUT.byteOffset(PATH$stencilLoadOp);
-    public static final long OFFSET$stencilStoreOp = LAYOUT.byteOffset(PATH$stencilStoreOp);
-    public static final long OFFSET$initialLayout = LAYOUT.byteOffset(PATH$initialLayout);
-    public static final long OFFSET$finalLayout = LAYOUT.byteOffset(PATH$finalLayout);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$format = LAYOUT$format.byteSize();
-    public static final long SIZE$samples = LAYOUT$samples.byteSize();
-    public static final long SIZE$loadOp = LAYOUT$loadOp.byteSize();
-    public static final long SIZE$storeOp = LAYOUT$storeOp.byteSize();
-    public static final long SIZE$stencilLoadOp = LAYOUT$stencilLoadOp.byteSize();
-    public static final long SIZE$stencilStoreOp = LAYOUT$stencilStoreOp.byteSize();
-    public static final long SIZE$initialLayout = LAYOUT$initialLayout.byteSize();
-    public static final long SIZE$finalLayout = LAYOUT$finalLayout.byteSize();
-
     public VkAttachmentDescription2(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2);
@@ -203,4 +140,68 @@ public record VkAttachmentDescription2(MemorySegment segment) implements IPointe
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("format"),
+        ValueLayout.JAVA_INT.withName("samples"),
+        ValueLayout.JAVA_INT.withName("loadOp"),
+        ValueLayout.JAVA_INT.withName("storeOp"),
+        ValueLayout.JAVA_INT.withName("stencilLoadOp"),
+        ValueLayout.JAVA_INT.withName("stencilStoreOp"),
+        ValueLayout.JAVA_INT.withName("initialLayout"),
+        ValueLayout.JAVA_INT.withName("finalLayout")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$samples = PathElement.groupElement("samples");
+    public static final PathElement PATH$loadOp = PathElement.groupElement("loadOp");
+    public static final PathElement PATH$storeOp = PathElement.groupElement("storeOp");
+    public static final PathElement PATH$stencilLoadOp = PathElement.groupElement("stencilLoadOp");
+    public static final PathElement PATH$stencilStoreOp = PathElement.groupElement("stencilStoreOp");
+    public static final PathElement PATH$initialLayout = PathElement.groupElement("initialLayout");
+    public static final PathElement PATH$finalLayout = PathElement.groupElement("finalLayout");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
+    public static final OfInt LAYOUT$samples = (OfInt) LAYOUT.select(PATH$samples);
+    public static final OfInt LAYOUT$loadOp = (OfInt) LAYOUT.select(PATH$loadOp);
+    public static final OfInt LAYOUT$storeOp = (OfInt) LAYOUT.select(PATH$storeOp);
+    public static final OfInt LAYOUT$stencilLoadOp = (OfInt) LAYOUT.select(PATH$stencilLoadOp);
+    public static final OfInt LAYOUT$stencilStoreOp = (OfInt) LAYOUT.select(PATH$stencilStoreOp);
+    public static final OfInt LAYOUT$initialLayout = (OfInt) LAYOUT.select(PATH$initialLayout);
+    public static final OfInt LAYOUT$finalLayout = (OfInt) LAYOUT.select(PATH$finalLayout);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
+    public static final long OFFSET$samples = LAYOUT.byteOffset(PATH$samples);
+    public static final long OFFSET$loadOp = LAYOUT.byteOffset(PATH$loadOp);
+    public static final long OFFSET$storeOp = LAYOUT.byteOffset(PATH$storeOp);
+    public static final long OFFSET$stencilLoadOp = LAYOUT.byteOffset(PATH$stencilLoadOp);
+    public static final long OFFSET$stencilStoreOp = LAYOUT.byteOffset(PATH$stencilStoreOp);
+    public static final long OFFSET$initialLayout = LAYOUT.byteOffset(PATH$initialLayout);
+    public static final long OFFSET$finalLayout = LAYOUT.byteOffset(PATH$finalLayout);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
+    public static final long SIZE$samples = LAYOUT$samples.byteSize();
+    public static final long SIZE$loadOp = LAYOUT$loadOp.byteSize();
+    public static final long SIZE$storeOp = LAYOUT$storeOp.byteSize();
+    public static final long SIZE$stencilLoadOp = LAYOUT$stencilLoadOp.byteSize();
+    public static final long SIZE$stencilStoreOp = LAYOUT$stencilStoreOp.byteSize();
+    public static final long SIZE$initialLayout = LAYOUT$initialLayout.byteSize();
+    public static final long SIZE$finalLayout = LAYOUT$finalLayout.byteSize();
+
 }

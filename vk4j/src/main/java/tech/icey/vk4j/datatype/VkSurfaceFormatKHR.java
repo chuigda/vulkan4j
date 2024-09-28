@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSurfaceFormatKHR.html">VkSurfaceFormatKHR</a>
 public record VkSurfaceFormatKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("format"),
-        ValueLayout.JAVA_INT.withName("colorSpace")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$format = PathElement.groupElement("format");
-    public static final PathElement PATH$colorSpace = PathElement.groupElement("colorSpace");
-
-    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
-    public static final OfInt LAYOUT$colorSpace = (OfInt) LAYOUT.select(PATH$colorSpace);
-
-    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
-    public static final long OFFSET$colorSpace = LAYOUT.byteOffset(PATH$colorSpace);
-
-    public static final long SIZE$format = LAYOUT$format.byteSize();
-    public static final long SIZE$colorSpace = LAYOUT$colorSpace.byteSize();
-
     public VkSurfaceFormatKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkSurfaceFormatKHR(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("format"),
+        ValueLayout.JAVA_INT.withName("colorSpace")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$colorSpace = PathElement.groupElement("colorSpace");
+
+    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
+    public static final OfInt LAYOUT$colorSpace = (OfInt) LAYOUT.select(PATH$colorSpace);
+
+    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
+    public static final long OFFSET$colorSpace = LAYOUT.byteOffset(PATH$colorSpace);
+
+    public static final long SIZE$format = LAYOUT$format.byteSize();
+    public static final long SIZE$colorSpace = LAYOUT$colorSpace.byteSize();
+
 }

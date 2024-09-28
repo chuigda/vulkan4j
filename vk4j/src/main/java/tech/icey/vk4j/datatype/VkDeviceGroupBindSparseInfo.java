@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceGroupBindSparseInfo.html">VkDeviceGroupBindSparseInfo</a>
 public record VkDeviceGroupBindSparseInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("resourceDeviceIndex"),
-        ValueLayout.JAVA_INT.withName("memoryDeviceIndex")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$resourceDeviceIndex = PathElement.groupElement("resourceDeviceIndex");
-    public static final PathElement PATH$memoryDeviceIndex = PathElement.groupElement("memoryDeviceIndex");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$resourceDeviceIndex = (OfInt) LAYOUT.select(PATH$resourceDeviceIndex);
-    public static final OfInt LAYOUT$memoryDeviceIndex = (OfInt) LAYOUT.select(PATH$memoryDeviceIndex);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$resourceDeviceIndex = LAYOUT.byteOffset(PATH$resourceDeviceIndex);
-    public static final long OFFSET$memoryDeviceIndex = LAYOUT.byteOffset(PATH$memoryDeviceIndex);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$resourceDeviceIndex = LAYOUT$resourceDeviceIndex.byteSize();
-    public static final long SIZE$memoryDeviceIndex = LAYOUT$memoryDeviceIndex.byteSize();
-
     public VkDeviceGroupBindSparseInfo(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO);
@@ -105,4 +77,33 @@ public record VkDeviceGroupBindSparseInfo(MemorySegment segment) implements IPoi
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("resourceDeviceIndex"),
+        ValueLayout.JAVA_INT.withName("memoryDeviceIndex")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$resourceDeviceIndex = PathElement.groupElement("resourceDeviceIndex");
+    public static final PathElement PATH$memoryDeviceIndex = PathElement.groupElement("memoryDeviceIndex");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$resourceDeviceIndex = (OfInt) LAYOUT.select(PATH$resourceDeviceIndex);
+    public static final OfInt LAYOUT$memoryDeviceIndex = (OfInt) LAYOUT.select(PATH$memoryDeviceIndex);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$resourceDeviceIndex = LAYOUT.byteOffset(PATH$resourceDeviceIndex);
+    public static final long OFFSET$memoryDeviceIndex = LAYOUT.byteOffset(PATH$memoryDeviceIndex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$resourceDeviceIndex = LAYOUT$resourceDeviceIndex.byteSize();
+    public static final long SIZE$memoryDeviceIndex = LAYOUT$memoryDeviceIndex.byteSize();
+
 }

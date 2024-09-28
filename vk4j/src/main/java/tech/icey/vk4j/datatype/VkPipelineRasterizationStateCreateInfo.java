@@ -33,79 +33,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineRasterizationStateCreateInfo.html">VkPipelineRasterizationStateCreateInfo</a>
 public record VkPipelineRasterizationStateCreateInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("depthClampEnable"),
-        ValueLayout.JAVA_INT.withName("rasterizerDiscardEnable"),
-        ValueLayout.JAVA_INT.withName("polygonMode"),
-        ValueLayout.JAVA_INT.withName("cullMode"),
-        ValueLayout.JAVA_INT.withName("frontFace"),
-        ValueLayout.JAVA_INT.withName("depthBiasEnable"),
-        ValueLayout.JAVA_FLOAT.withName("depthBiasConstantFactor"),
-        ValueLayout.JAVA_FLOAT.withName("depthBiasClamp"),
-        ValueLayout.JAVA_FLOAT.withName("depthBiasSlopeFactor"),
-        ValueLayout.JAVA_FLOAT.withName("lineWidth")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$depthClampEnable = PathElement.groupElement("depthClampEnable");
-    public static final PathElement PATH$rasterizerDiscardEnable = PathElement.groupElement("rasterizerDiscardEnable");
-    public static final PathElement PATH$polygonMode = PathElement.groupElement("polygonMode");
-    public static final PathElement PATH$cullMode = PathElement.groupElement("cullMode");
-    public static final PathElement PATH$frontFace = PathElement.groupElement("frontFace");
-    public static final PathElement PATH$depthBiasEnable = PathElement.groupElement("depthBiasEnable");
-    public static final PathElement PATH$depthBiasConstantFactor = PathElement.groupElement("depthBiasConstantFactor");
-    public static final PathElement PATH$depthBiasClamp = PathElement.groupElement("depthBiasClamp");
-    public static final PathElement PATH$depthBiasSlopeFactor = PathElement.groupElement("depthBiasSlopeFactor");
-    public static final PathElement PATH$lineWidth = PathElement.groupElement("lineWidth");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$depthClampEnable = (OfInt) LAYOUT.select(PATH$depthClampEnable);
-    public static final OfInt LAYOUT$rasterizerDiscardEnable = (OfInt) LAYOUT.select(PATH$rasterizerDiscardEnable);
-    public static final OfInt LAYOUT$polygonMode = (OfInt) LAYOUT.select(PATH$polygonMode);
-    public static final OfInt LAYOUT$cullMode = (OfInt) LAYOUT.select(PATH$cullMode);
-    public static final OfInt LAYOUT$frontFace = (OfInt) LAYOUT.select(PATH$frontFace);
-    public static final OfInt LAYOUT$depthBiasEnable = (OfInt) LAYOUT.select(PATH$depthBiasEnable);
-    public static final OfFloat LAYOUT$depthBiasConstantFactor = (OfFloat) LAYOUT.select(PATH$depthBiasConstantFactor);
-    public static final OfFloat LAYOUT$depthBiasClamp = (OfFloat) LAYOUT.select(PATH$depthBiasClamp);
-    public static final OfFloat LAYOUT$depthBiasSlopeFactor = (OfFloat) LAYOUT.select(PATH$depthBiasSlopeFactor);
-    public static final OfFloat LAYOUT$lineWidth = (OfFloat) LAYOUT.select(PATH$lineWidth);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$depthClampEnable = LAYOUT.byteOffset(PATH$depthClampEnable);
-    public static final long OFFSET$rasterizerDiscardEnable = LAYOUT.byteOffset(PATH$rasterizerDiscardEnable);
-    public static final long OFFSET$polygonMode = LAYOUT.byteOffset(PATH$polygonMode);
-    public static final long OFFSET$cullMode = LAYOUT.byteOffset(PATH$cullMode);
-    public static final long OFFSET$frontFace = LAYOUT.byteOffset(PATH$frontFace);
-    public static final long OFFSET$depthBiasEnable = LAYOUT.byteOffset(PATH$depthBiasEnable);
-    public static final long OFFSET$depthBiasConstantFactor = LAYOUT.byteOffset(PATH$depthBiasConstantFactor);
-    public static final long OFFSET$depthBiasClamp = LAYOUT.byteOffset(PATH$depthBiasClamp);
-    public static final long OFFSET$depthBiasSlopeFactor = LAYOUT.byteOffset(PATH$depthBiasSlopeFactor);
-    public static final long OFFSET$lineWidth = LAYOUT.byteOffset(PATH$lineWidth);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$depthClampEnable = LAYOUT$depthClampEnable.byteSize();
-    public static final long SIZE$rasterizerDiscardEnable = LAYOUT$rasterizerDiscardEnable.byteSize();
-    public static final long SIZE$polygonMode = LAYOUT$polygonMode.byteSize();
-    public static final long SIZE$cullMode = LAYOUT$cullMode.byteSize();
-    public static final long SIZE$frontFace = LAYOUT$frontFace.byteSize();
-    public static final long SIZE$depthBiasEnable = LAYOUT$depthBiasEnable.byteSize();
-    public static final long SIZE$depthBiasConstantFactor = LAYOUT$depthBiasConstantFactor.byteSize();
-    public static final long SIZE$depthBiasClamp = LAYOUT$depthBiasClamp.byteSize();
-    public static final long SIZE$depthBiasSlopeFactor = LAYOUT$depthBiasSlopeFactor.byteSize();
-    public static final long SIZE$lineWidth = LAYOUT$lineWidth.byteSize();
-
     public VkPipelineRasterizationStateCreateInfo(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO);
@@ -231,4 +158,78 @@ public record VkPipelineRasterizationStateCreateInfo(MemorySegment segment) impl
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("depthClampEnable"),
+        ValueLayout.JAVA_INT.withName("rasterizerDiscardEnable"),
+        ValueLayout.JAVA_INT.withName("polygonMode"),
+        ValueLayout.JAVA_INT.withName("cullMode"),
+        ValueLayout.JAVA_INT.withName("frontFace"),
+        ValueLayout.JAVA_INT.withName("depthBiasEnable"),
+        ValueLayout.JAVA_FLOAT.withName("depthBiasConstantFactor"),
+        ValueLayout.JAVA_FLOAT.withName("depthBiasClamp"),
+        ValueLayout.JAVA_FLOAT.withName("depthBiasSlopeFactor"),
+        ValueLayout.JAVA_FLOAT.withName("lineWidth")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$depthClampEnable = PathElement.groupElement("depthClampEnable");
+    public static final PathElement PATH$rasterizerDiscardEnable = PathElement.groupElement("rasterizerDiscardEnable");
+    public static final PathElement PATH$polygonMode = PathElement.groupElement("polygonMode");
+    public static final PathElement PATH$cullMode = PathElement.groupElement("cullMode");
+    public static final PathElement PATH$frontFace = PathElement.groupElement("frontFace");
+    public static final PathElement PATH$depthBiasEnable = PathElement.groupElement("depthBiasEnable");
+    public static final PathElement PATH$depthBiasConstantFactor = PathElement.groupElement("depthBiasConstantFactor");
+    public static final PathElement PATH$depthBiasClamp = PathElement.groupElement("depthBiasClamp");
+    public static final PathElement PATH$depthBiasSlopeFactor = PathElement.groupElement("depthBiasSlopeFactor");
+    public static final PathElement PATH$lineWidth = PathElement.groupElement("lineWidth");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$depthClampEnable = (OfInt) LAYOUT.select(PATH$depthClampEnable);
+    public static final OfInt LAYOUT$rasterizerDiscardEnable = (OfInt) LAYOUT.select(PATH$rasterizerDiscardEnable);
+    public static final OfInt LAYOUT$polygonMode = (OfInt) LAYOUT.select(PATH$polygonMode);
+    public static final OfInt LAYOUT$cullMode = (OfInt) LAYOUT.select(PATH$cullMode);
+    public static final OfInt LAYOUT$frontFace = (OfInt) LAYOUT.select(PATH$frontFace);
+    public static final OfInt LAYOUT$depthBiasEnable = (OfInt) LAYOUT.select(PATH$depthBiasEnable);
+    public static final OfFloat LAYOUT$depthBiasConstantFactor = (OfFloat) LAYOUT.select(PATH$depthBiasConstantFactor);
+    public static final OfFloat LAYOUT$depthBiasClamp = (OfFloat) LAYOUT.select(PATH$depthBiasClamp);
+    public static final OfFloat LAYOUT$depthBiasSlopeFactor = (OfFloat) LAYOUT.select(PATH$depthBiasSlopeFactor);
+    public static final OfFloat LAYOUT$lineWidth = (OfFloat) LAYOUT.select(PATH$lineWidth);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$depthClampEnable = LAYOUT.byteOffset(PATH$depthClampEnable);
+    public static final long OFFSET$rasterizerDiscardEnable = LAYOUT.byteOffset(PATH$rasterizerDiscardEnable);
+    public static final long OFFSET$polygonMode = LAYOUT.byteOffset(PATH$polygonMode);
+    public static final long OFFSET$cullMode = LAYOUT.byteOffset(PATH$cullMode);
+    public static final long OFFSET$frontFace = LAYOUT.byteOffset(PATH$frontFace);
+    public static final long OFFSET$depthBiasEnable = LAYOUT.byteOffset(PATH$depthBiasEnable);
+    public static final long OFFSET$depthBiasConstantFactor = LAYOUT.byteOffset(PATH$depthBiasConstantFactor);
+    public static final long OFFSET$depthBiasClamp = LAYOUT.byteOffset(PATH$depthBiasClamp);
+    public static final long OFFSET$depthBiasSlopeFactor = LAYOUT.byteOffset(PATH$depthBiasSlopeFactor);
+    public static final long OFFSET$lineWidth = LAYOUT.byteOffset(PATH$lineWidth);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$depthClampEnable = LAYOUT$depthClampEnable.byteSize();
+    public static final long SIZE$rasterizerDiscardEnable = LAYOUT$rasterizerDiscardEnable.byteSize();
+    public static final long SIZE$polygonMode = LAYOUT$polygonMode.byteSize();
+    public static final long SIZE$cullMode = LAYOUT$cullMode.byteSize();
+    public static final long SIZE$frontFace = LAYOUT$frontFace.byteSize();
+    public static final long SIZE$depthBiasEnable = LAYOUT$depthBiasEnable.byteSize();
+    public static final long SIZE$depthBiasConstantFactor = LAYOUT$depthBiasConstantFactor.byteSize();
+    public static final long SIZE$depthBiasClamp = LAYOUT$depthBiasClamp.byteSize();
+    public static final long SIZE$depthBiasSlopeFactor = LAYOUT$depthBiasSlopeFactor.byteSize();
+    public static final long SIZE$lineWidth = LAYOUT$lineWidth.byteSize();
+
 }

@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkViewportWScalingNV.html">VkViewportWScalingNV</a>
 public record VkViewportWScalingNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_FLOAT.withName("xcoeff"),
-        ValueLayout.JAVA_FLOAT.withName("ycoeff")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$xcoeff = PathElement.groupElement("xcoeff");
-    public static final PathElement PATH$ycoeff = PathElement.groupElement("ycoeff");
-
-    public static final OfFloat LAYOUT$xcoeff = (OfFloat) LAYOUT.select(PATH$xcoeff);
-    public static final OfFloat LAYOUT$ycoeff = (OfFloat) LAYOUT.select(PATH$ycoeff);
-
-    public static final long OFFSET$xcoeff = LAYOUT.byteOffset(PATH$xcoeff);
-    public static final long OFFSET$ycoeff = LAYOUT.byteOffset(PATH$ycoeff);
-
-    public static final long SIZE$xcoeff = LAYOUT$xcoeff.byteSize();
-    public static final long SIZE$ycoeff = LAYOUT$ycoeff.byteSize();
-
     public VkViewportWScalingNV(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkViewportWScalingNV(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_FLOAT.withName("xcoeff"),
+        ValueLayout.JAVA_FLOAT.withName("ycoeff")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$xcoeff = PathElement.groupElement("xcoeff");
+    public static final PathElement PATH$ycoeff = PathElement.groupElement("ycoeff");
+
+    public static final OfFloat LAYOUT$xcoeff = (OfFloat) LAYOUT.select(PATH$xcoeff);
+    public static final OfFloat LAYOUT$ycoeff = (OfFloat) LAYOUT.select(PATH$ycoeff);
+
+    public static final long OFFSET$xcoeff = LAYOUT.byteOffset(PATH$xcoeff);
+    public static final long OFFSET$ycoeff = LAYOUT.byteOffset(PATH$ycoeff);
+
+    public static final long SIZE$xcoeff = LAYOUT$xcoeff.byteSize();
+    public static final long SIZE$ycoeff = LAYOUT$ycoeff.byteSize();
+
 }

@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceFaultAddressInfoEXT.html">VkDeviceFaultAddressInfoEXT</a>
 public record VkDeviceFaultAddressInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("addressType"),
-        ValueLayout.JAVA_LONG.withName("reportedAddress"),
-        ValueLayout.JAVA_LONG.withName("addressPrecision")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$addressType = PathElement.groupElement("addressType");
-    public static final PathElement PATH$reportedAddress = PathElement.groupElement("reportedAddress");
-    public static final PathElement PATH$addressPrecision = PathElement.groupElement("addressPrecision");
-
-    public static final OfInt LAYOUT$addressType = (OfInt) LAYOUT.select(PATH$addressType);
-    public static final OfLong LAYOUT$reportedAddress = (OfLong) LAYOUT.select(PATH$reportedAddress);
-    public static final OfLong LAYOUT$addressPrecision = (OfLong) LAYOUT.select(PATH$addressPrecision);
-
-    public static final long OFFSET$addressType = LAYOUT.byteOffset(PATH$addressType);
-    public static final long OFFSET$reportedAddress = LAYOUT.byteOffset(PATH$reportedAddress);
-    public static final long OFFSET$addressPrecision = LAYOUT.byteOffset(PATH$addressPrecision);
-
-    public static final long SIZE$addressType = LAYOUT$addressType.byteSize();
-    public static final long SIZE$reportedAddress = LAYOUT$reportedAddress.byteSize();
-    public static final long SIZE$addressPrecision = LAYOUT$addressPrecision.byteSize();
-
     public VkDeviceFaultAddressInfoEXT(MemorySegment segment) {
         this.segment = segment;
     }
@@ -86,4 +63,28 @@ public record VkDeviceFaultAddressInfoEXT(MemorySegment segment) implements IPoi
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("addressType"),
+        ValueLayout.JAVA_LONG.withName("reportedAddress"),
+        ValueLayout.JAVA_LONG.withName("addressPrecision")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$addressType = PathElement.groupElement("addressType");
+    public static final PathElement PATH$reportedAddress = PathElement.groupElement("reportedAddress");
+    public static final PathElement PATH$addressPrecision = PathElement.groupElement("addressPrecision");
+
+    public static final OfInt LAYOUT$addressType = (OfInt) LAYOUT.select(PATH$addressType);
+    public static final OfLong LAYOUT$reportedAddress = (OfLong) LAYOUT.select(PATH$reportedAddress);
+    public static final OfLong LAYOUT$addressPrecision = (OfLong) LAYOUT.select(PATH$addressPrecision);
+
+    public static final long OFFSET$addressType = LAYOUT.byteOffset(PATH$addressType);
+    public static final long OFFSET$reportedAddress = LAYOUT.byteOffset(PATH$reportedAddress);
+    public static final long OFFSET$addressPrecision = LAYOUT.byteOffset(PATH$addressPrecision);
+
+    public static final long SIZE$addressType = LAYOUT$addressType.byteSize();
+    public static final long SIZE$reportedAddress = LAYOUT$reportedAddress.byteSize();
+    public static final long SIZE$addressPrecision = LAYOUT$addressPrecision.byteSize();
+
 }

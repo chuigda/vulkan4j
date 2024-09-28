@@ -28,54 +28,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSetDescriptorBufferOffsetsInfoEXT.html">VkSetDescriptorBufferOffsetsInfoEXT</a>
 public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("stageFlags"),
-        ValueLayout.ADDRESS.withName("layout"),
-        ValueLayout.JAVA_INT.withName("firstSet"),
-        ValueLayout.JAVA_INT.withName("setCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pBufferIndices"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pOffsets")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$stageFlags = PathElement.groupElement("stageFlags");
-    public static final PathElement PATH$layout = PathElement.groupElement("layout");
-    public static final PathElement PATH$firstSet = PathElement.groupElement("firstSet");
-    public static final PathElement PATH$setCount = PathElement.groupElement("setCount");
-    public static final PathElement PATH$pBufferIndices = PathElement.groupElement("pBufferIndices");
-    public static final PathElement PATH$pOffsets = PathElement.groupElement("pOffsets");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$stageFlags = (OfInt) LAYOUT.select(PATH$stageFlags);
-    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
-    public static final OfInt LAYOUT$firstSet = (OfInt) LAYOUT.select(PATH$firstSet);
-    public static final OfInt LAYOUT$setCount = (OfInt) LAYOUT.select(PATH$setCount);
-    public static final AddressLayout LAYOUT$pBufferIndices = (AddressLayout) LAYOUT.select(PATH$pBufferIndices);
-    public static final AddressLayout LAYOUT$pOffsets = (AddressLayout) LAYOUT.select(PATH$pOffsets);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$stageFlags = LAYOUT.byteOffset(PATH$stageFlags);
-    public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
-    public static final long OFFSET$firstSet = LAYOUT.byteOffset(PATH$firstSet);
-    public static final long OFFSET$setCount = LAYOUT.byteOffset(PATH$setCount);
-    public static final long OFFSET$pBufferIndices = LAYOUT.byteOffset(PATH$pBufferIndices);
-    public static final long OFFSET$pOffsets = LAYOUT.byteOffset(PATH$pOffsets);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$stageFlags = LAYOUT$stageFlags.byteSize();
-    public static final long SIZE$layout = LAYOUT$layout.byteSize();
-    public static final long SIZE$firstSet = LAYOUT$firstSet.byteSize();
-    public static final long SIZE$setCount = LAYOUT$setCount.byteSize();
-    public static final long SIZE$pBufferIndices = LAYOUT$pBufferIndices.byteSize();
-    public static final long SIZE$pOffsets = LAYOUT$pOffsets.byteSize();
-
     public VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT);
@@ -191,4 +143,53 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) impleme
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("stageFlags"),
+        ValueLayout.ADDRESS.withName("layout"),
+        ValueLayout.JAVA_INT.withName("firstSet"),
+        ValueLayout.JAVA_INT.withName("setCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pBufferIndices"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pOffsets")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$stageFlags = PathElement.groupElement("stageFlags");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+    public static final PathElement PATH$firstSet = PathElement.groupElement("firstSet");
+    public static final PathElement PATH$setCount = PathElement.groupElement("setCount");
+    public static final PathElement PATH$pBufferIndices = PathElement.groupElement("pBufferIndices");
+    public static final PathElement PATH$pOffsets = PathElement.groupElement("pOffsets");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$stageFlags = (OfInt) LAYOUT.select(PATH$stageFlags);
+    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
+    public static final OfInt LAYOUT$firstSet = (OfInt) LAYOUT.select(PATH$firstSet);
+    public static final OfInt LAYOUT$setCount = (OfInt) LAYOUT.select(PATH$setCount);
+    public static final AddressLayout LAYOUT$pBufferIndices = (AddressLayout) LAYOUT.select(PATH$pBufferIndices);
+    public static final AddressLayout LAYOUT$pOffsets = (AddressLayout) LAYOUT.select(PATH$pOffsets);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$stageFlags = LAYOUT.byteOffset(PATH$stageFlags);
+    public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
+    public static final long OFFSET$firstSet = LAYOUT.byteOffset(PATH$firstSet);
+    public static final long OFFSET$setCount = LAYOUT.byteOffset(PATH$setCount);
+    public static final long OFFSET$pBufferIndices = LAYOUT.byteOffset(PATH$pBufferIndices);
+    public static final long OFFSET$pOffsets = LAYOUT.byteOffset(PATH$pOffsets);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$stageFlags = LAYOUT$stageFlags.byteSize();
+    public static final long SIZE$layout = LAYOUT$layout.byteSize();
+    public static final long SIZE$firstSet = LAYOUT$firstSet.byteSize();
+    public static final long SIZE$setCount = LAYOUT$setCount.byteSize();
+    public static final long SIZE$pBufferIndices = LAYOUT$pBufferIndices.byteSize();
+    public static final long SIZE$pOffsets = LAYOUT$pOffsets.byteSize();
+
 }

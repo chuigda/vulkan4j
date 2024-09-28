@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceGroupPresentCapabilitiesKHR.html">VkDeviceGroupPresentCapabilitiesKHR</a>
 public record VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        MemoryLayout.sequenceLayout(VK_MAX_DEVICE_GROUP_SIZE, ValueLayout.JAVA_INT).withName("presentMask"),
-        ValueLayout.JAVA_INT.withName("modes")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$presentMask = PathElement.groupElement("presentMask");
-    public static final PathElement PATH$modes = PathElement.groupElement("modes");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final SequenceLayout LAYOUT$presentMask = (SequenceLayout) LAYOUT.select(PATH$presentMask);
-    public static final OfInt LAYOUT$modes = (OfInt) LAYOUT.select(PATH$modes);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$presentMask = LAYOUT.byteOffset(PATH$presentMask);
-    public static final long OFFSET$modes = LAYOUT.byteOffset(PATH$modes);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$presentMask = LAYOUT$presentMask.byteSize();
-    public static final long SIZE$modes = LAYOUT$modes.byteSize();
-
     public VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR);
@@ -109,4 +81,33 @@ public record VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) impleme
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        MemoryLayout.sequenceLayout(VK_MAX_DEVICE_GROUP_SIZE, ValueLayout.JAVA_INT).withName("presentMask"),
+        ValueLayout.JAVA_INT.withName("modes")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$presentMask = PathElement.groupElement("presentMask");
+    public static final PathElement PATH$modes = PathElement.groupElement("modes");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final SequenceLayout LAYOUT$presentMask = (SequenceLayout) LAYOUT.select(PATH$presentMask);
+    public static final OfInt LAYOUT$modes = (OfInt) LAYOUT.select(PATH$modes);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$presentMask = LAYOUT.byteOffset(PATH$presentMask);
+    public static final long OFFSET$modes = LAYOUT.byteOffset(PATH$modes);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$presentMask = LAYOUT$presentMask.byteSize();
+    public static final long SIZE$modes = LAYOUT$modes.byteSize();
+
 }

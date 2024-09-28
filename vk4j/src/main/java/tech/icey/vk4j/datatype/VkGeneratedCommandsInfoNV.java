@@ -35,89 +35,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkGeneratedCommandsInfoNV.html">VkGeneratedCommandsInfoNV</a>
 public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("pipelineBindPoint"),
-        ValueLayout.ADDRESS.withName("pipeline"),
-        ValueLayout.ADDRESS.withName("indirectCommandsLayout"),
-        ValueLayout.JAVA_INT.withName("streamCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsStreamNV.LAYOUT).withName("pStreams"),
-        ValueLayout.JAVA_INT.withName("sequencesCount"),
-        ValueLayout.ADDRESS.withName("preprocessBuffer"),
-        ValueLayout.JAVA_LONG.withName("preprocessOffset"),
-        ValueLayout.JAVA_LONG.withName("preprocessSize"),
-        ValueLayout.ADDRESS.withName("sequencesCountBuffer"),
-        ValueLayout.JAVA_LONG.withName("sequencesCountOffset"),
-        ValueLayout.ADDRESS.withName("sequencesIndexBuffer"),
-        ValueLayout.JAVA_LONG.withName("sequencesIndexOffset")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("pipelineBindPoint");
-    public static final PathElement PATH$pipeline = PathElement.groupElement("pipeline");
-    public static final PathElement PATH$indirectCommandsLayout = PathElement.groupElement("indirectCommandsLayout");
-    public static final PathElement PATH$streamCount = PathElement.groupElement("streamCount");
-    public static final PathElement PATH$pStreams = PathElement.groupElement("pStreams");
-    public static final PathElement PATH$sequencesCount = PathElement.groupElement("sequencesCount");
-    public static final PathElement PATH$preprocessBuffer = PathElement.groupElement("preprocessBuffer");
-    public static final PathElement PATH$preprocessOffset = PathElement.groupElement("preprocessOffset");
-    public static final PathElement PATH$preprocessSize = PathElement.groupElement("preprocessSize");
-    public static final PathElement PATH$sequencesCountBuffer = PathElement.groupElement("sequencesCountBuffer");
-    public static final PathElement PATH$sequencesCountOffset = PathElement.groupElement("sequencesCountOffset");
-    public static final PathElement PATH$sequencesIndexBuffer = PathElement.groupElement("sequencesIndexBuffer");
-    public static final PathElement PATH$sequencesIndexOffset = PathElement.groupElement("sequencesIndexOffset");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$pipelineBindPoint = (OfInt) LAYOUT.select(PATH$pipelineBindPoint);
-    public static final AddressLayout LAYOUT$pipeline = (AddressLayout) LAYOUT.select(PATH$pipeline);
-    public static final AddressLayout LAYOUT$indirectCommandsLayout = (AddressLayout) LAYOUT.select(PATH$indirectCommandsLayout);
-    public static final OfInt LAYOUT$streamCount = (OfInt) LAYOUT.select(PATH$streamCount);
-    public static final AddressLayout LAYOUT$pStreams = (AddressLayout) LAYOUT.select(PATH$pStreams);
-    public static final OfInt LAYOUT$sequencesCount = (OfInt) LAYOUT.select(PATH$sequencesCount);
-    public static final AddressLayout LAYOUT$preprocessBuffer = (AddressLayout) LAYOUT.select(PATH$preprocessBuffer);
-    public static final OfLong LAYOUT$preprocessOffset = (OfLong) LAYOUT.select(PATH$preprocessOffset);
-    public static final OfLong LAYOUT$preprocessSize = (OfLong) LAYOUT.select(PATH$preprocessSize);
-    public static final AddressLayout LAYOUT$sequencesCountBuffer = (AddressLayout) LAYOUT.select(PATH$sequencesCountBuffer);
-    public static final OfLong LAYOUT$sequencesCountOffset = (OfLong) LAYOUT.select(PATH$sequencesCountOffset);
-    public static final AddressLayout LAYOUT$sequencesIndexBuffer = (AddressLayout) LAYOUT.select(PATH$sequencesIndexBuffer);
-    public static final OfLong LAYOUT$sequencesIndexOffset = (OfLong) LAYOUT.select(PATH$sequencesIndexOffset);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$pipelineBindPoint = LAYOUT.byteOffset(PATH$pipelineBindPoint);
-    public static final long OFFSET$pipeline = LAYOUT.byteOffset(PATH$pipeline);
-    public static final long OFFSET$indirectCommandsLayout = LAYOUT.byteOffset(PATH$indirectCommandsLayout);
-    public static final long OFFSET$streamCount = LAYOUT.byteOffset(PATH$streamCount);
-    public static final long OFFSET$pStreams = LAYOUT.byteOffset(PATH$pStreams);
-    public static final long OFFSET$sequencesCount = LAYOUT.byteOffset(PATH$sequencesCount);
-    public static final long OFFSET$preprocessBuffer = LAYOUT.byteOffset(PATH$preprocessBuffer);
-    public static final long OFFSET$preprocessOffset = LAYOUT.byteOffset(PATH$preprocessOffset);
-    public static final long OFFSET$preprocessSize = LAYOUT.byteOffset(PATH$preprocessSize);
-    public static final long OFFSET$sequencesCountBuffer = LAYOUT.byteOffset(PATH$sequencesCountBuffer);
-    public static final long OFFSET$sequencesCountOffset = LAYOUT.byteOffset(PATH$sequencesCountOffset);
-    public static final long OFFSET$sequencesIndexBuffer = LAYOUT.byteOffset(PATH$sequencesIndexBuffer);
-    public static final long OFFSET$sequencesIndexOffset = LAYOUT.byteOffset(PATH$sequencesIndexOffset);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$pipelineBindPoint = LAYOUT$pipelineBindPoint.byteSize();
-    public static final long SIZE$pipeline = LAYOUT$pipeline.byteSize();
-    public static final long SIZE$indirectCommandsLayout = LAYOUT$indirectCommandsLayout.byteSize();
-    public static final long SIZE$streamCount = LAYOUT$streamCount.byteSize();
-    public static final long SIZE$pStreams = LAYOUT$pStreams.byteSize();
-    public static final long SIZE$sequencesCount = LAYOUT$sequencesCount.byteSize();
-    public static final long SIZE$preprocessBuffer = LAYOUT$preprocessBuffer.byteSize();
-    public static final long SIZE$preprocessOffset = LAYOUT$preprocessOffset.byteSize();
-    public static final long SIZE$preprocessSize = LAYOUT$preprocessSize.byteSize();
-    public static final long SIZE$sequencesCountBuffer = LAYOUT$sequencesCountBuffer.byteSize();
-    public static final long SIZE$sequencesCountOffset = LAYOUT$sequencesCountOffset.byteSize();
-    public static final long SIZE$sequencesIndexBuffer = LAYOUT$sequencesIndexBuffer.byteSize();
-    public static final long SIZE$sequencesIndexOffset = LAYOUT$sequencesIndexOffset.byteSize();
-
     public VkGeneratedCommandsInfoNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_NV);
@@ -283,4 +200,88 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("pipelineBindPoint"),
+        ValueLayout.ADDRESS.withName("pipeline"),
+        ValueLayout.ADDRESS.withName("indirectCommandsLayout"),
+        ValueLayout.JAVA_INT.withName("streamCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsStreamNV.LAYOUT).withName("pStreams"),
+        ValueLayout.JAVA_INT.withName("sequencesCount"),
+        ValueLayout.ADDRESS.withName("preprocessBuffer"),
+        ValueLayout.JAVA_LONG.withName("preprocessOffset"),
+        ValueLayout.JAVA_LONG.withName("preprocessSize"),
+        ValueLayout.ADDRESS.withName("sequencesCountBuffer"),
+        ValueLayout.JAVA_LONG.withName("sequencesCountOffset"),
+        ValueLayout.ADDRESS.withName("sequencesIndexBuffer"),
+        ValueLayout.JAVA_LONG.withName("sequencesIndexOffset")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("pipelineBindPoint");
+    public static final PathElement PATH$pipeline = PathElement.groupElement("pipeline");
+    public static final PathElement PATH$indirectCommandsLayout = PathElement.groupElement("indirectCommandsLayout");
+    public static final PathElement PATH$streamCount = PathElement.groupElement("streamCount");
+    public static final PathElement PATH$pStreams = PathElement.groupElement("pStreams");
+    public static final PathElement PATH$sequencesCount = PathElement.groupElement("sequencesCount");
+    public static final PathElement PATH$preprocessBuffer = PathElement.groupElement("preprocessBuffer");
+    public static final PathElement PATH$preprocessOffset = PathElement.groupElement("preprocessOffset");
+    public static final PathElement PATH$preprocessSize = PathElement.groupElement("preprocessSize");
+    public static final PathElement PATH$sequencesCountBuffer = PathElement.groupElement("sequencesCountBuffer");
+    public static final PathElement PATH$sequencesCountOffset = PathElement.groupElement("sequencesCountOffset");
+    public static final PathElement PATH$sequencesIndexBuffer = PathElement.groupElement("sequencesIndexBuffer");
+    public static final PathElement PATH$sequencesIndexOffset = PathElement.groupElement("sequencesIndexOffset");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$pipelineBindPoint = (OfInt) LAYOUT.select(PATH$pipelineBindPoint);
+    public static final AddressLayout LAYOUT$pipeline = (AddressLayout) LAYOUT.select(PATH$pipeline);
+    public static final AddressLayout LAYOUT$indirectCommandsLayout = (AddressLayout) LAYOUT.select(PATH$indirectCommandsLayout);
+    public static final OfInt LAYOUT$streamCount = (OfInt) LAYOUT.select(PATH$streamCount);
+    public static final AddressLayout LAYOUT$pStreams = (AddressLayout) LAYOUT.select(PATH$pStreams);
+    public static final OfInt LAYOUT$sequencesCount = (OfInt) LAYOUT.select(PATH$sequencesCount);
+    public static final AddressLayout LAYOUT$preprocessBuffer = (AddressLayout) LAYOUT.select(PATH$preprocessBuffer);
+    public static final OfLong LAYOUT$preprocessOffset = (OfLong) LAYOUT.select(PATH$preprocessOffset);
+    public static final OfLong LAYOUT$preprocessSize = (OfLong) LAYOUT.select(PATH$preprocessSize);
+    public static final AddressLayout LAYOUT$sequencesCountBuffer = (AddressLayout) LAYOUT.select(PATH$sequencesCountBuffer);
+    public static final OfLong LAYOUT$sequencesCountOffset = (OfLong) LAYOUT.select(PATH$sequencesCountOffset);
+    public static final AddressLayout LAYOUT$sequencesIndexBuffer = (AddressLayout) LAYOUT.select(PATH$sequencesIndexBuffer);
+    public static final OfLong LAYOUT$sequencesIndexOffset = (OfLong) LAYOUT.select(PATH$sequencesIndexOffset);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$pipelineBindPoint = LAYOUT.byteOffset(PATH$pipelineBindPoint);
+    public static final long OFFSET$pipeline = LAYOUT.byteOffset(PATH$pipeline);
+    public static final long OFFSET$indirectCommandsLayout = LAYOUT.byteOffset(PATH$indirectCommandsLayout);
+    public static final long OFFSET$streamCount = LAYOUT.byteOffset(PATH$streamCount);
+    public static final long OFFSET$pStreams = LAYOUT.byteOffset(PATH$pStreams);
+    public static final long OFFSET$sequencesCount = LAYOUT.byteOffset(PATH$sequencesCount);
+    public static final long OFFSET$preprocessBuffer = LAYOUT.byteOffset(PATH$preprocessBuffer);
+    public static final long OFFSET$preprocessOffset = LAYOUT.byteOffset(PATH$preprocessOffset);
+    public static final long OFFSET$preprocessSize = LAYOUT.byteOffset(PATH$preprocessSize);
+    public static final long OFFSET$sequencesCountBuffer = LAYOUT.byteOffset(PATH$sequencesCountBuffer);
+    public static final long OFFSET$sequencesCountOffset = LAYOUT.byteOffset(PATH$sequencesCountOffset);
+    public static final long OFFSET$sequencesIndexBuffer = LAYOUT.byteOffset(PATH$sequencesIndexBuffer);
+    public static final long OFFSET$sequencesIndexOffset = LAYOUT.byteOffset(PATH$sequencesIndexOffset);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pipelineBindPoint = LAYOUT$pipelineBindPoint.byteSize();
+    public static final long SIZE$pipeline = LAYOUT$pipeline.byteSize();
+    public static final long SIZE$indirectCommandsLayout = LAYOUT$indirectCommandsLayout.byteSize();
+    public static final long SIZE$streamCount = LAYOUT$streamCount.byteSize();
+    public static final long SIZE$pStreams = LAYOUT$pStreams.byteSize();
+    public static final long SIZE$sequencesCount = LAYOUT$sequencesCount.byteSize();
+    public static final long SIZE$preprocessBuffer = LAYOUT$preprocessBuffer.byteSize();
+    public static final long SIZE$preprocessOffset = LAYOUT$preprocessOffset.byteSize();
+    public static final long SIZE$preprocessSize = LAYOUT$preprocessSize.byteSize();
+    public static final long SIZE$sequencesCountBuffer = LAYOUT$sequencesCountBuffer.byteSize();
+    public static final long SIZE$sequencesCountOffset = LAYOUT$sequencesCountOffset.byteSize();
+    public static final long SIZE$sequencesIndexBuffer = LAYOUT$sequencesIndexBuffer.byteSize();
+    public static final long SIZE$sequencesIndexOffset = LAYOUT$sequencesIndexOffset.byteSize();
+
 }

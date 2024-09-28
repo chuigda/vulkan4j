@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.html">VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT</a>
 public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("shaderImageInt64Atomics"),
-        ValueLayout.JAVA_INT.withName("sparseImageInt64Atomics")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$shaderImageInt64Atomics = PathElement.groupElement("shaderImageInt64Atomics");
-    public static final PathElement PATH$sparseImageInt64Atomics = PathElement.groupElement("sparseImageInt64Atomics");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$shaderImageInt64Atomics = (OfInt) LAYOUT.select(PATH$shaderImageInt64Atomics);
-    public static final OfInt LAYOUT$sparseImageInt64Atomics = (OfInt) LAYOUT.select(PATH$sparseImageInt64Atomics);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$shaderImageInt64Atomics = LAYOUT.byteOffset(PATH$shaderImageInt64Atomics);
-    public static final long OFFSET$sparseImageInt64Atomics = LAYOUT.byteOffset(PATH$sparseImageInt64Atomics);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$shaderImageInt64Atomics = LAYOUT$shaderImageInt64Atomics.byteSize();
-    public static final long SIZE$sparseImageInt64Atomics = LAYOUT$sparseImageInt64Atomics.byteSize();
-
     public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_ATOMIC_INT64_FEATURES_EXT);
@@ -105,4 +77,33 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(MemorySegment se
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shaderImageInt64Atomics"),
+        ValueLayout.JAVA_INT.withName("sparseImageInt64Atomics")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shaderImageInt64Atomics = PathElement.groupElement("shaderImageInt64Atomics");
+    public static final PathElement PATH$sparseImageInt64Atomics = PathElement.groupElement("sparseImageInt64Atomics");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shaderImageInt64Atomics = (OfInt) LAYOUT.select(PATH$shaderImageInt64Atomics);
+    public static final OfInt LAYOUT$sparseImageInt64Atomics = (OfInt) LAYOUT.select(PATH$sparseImageInt64Atomics);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$shaderImageInt64Atomics = LAYOUT.byteOffset(PATH$shaderImageInt64Atomics);
+    public static final long OFFSET$sparseImageInt64Atomics = LAYOUT.byteOffset(PATH$sparseImageInt64Atomics);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderImageInt64Atomics = LAYOUT$shaderImageInt64Atomics.byteSize();
+    public static final long SIZE$sparseImageInt64Atomics = LAYOUT$sparseImageInt64Atomics.byteSize();
+
 }

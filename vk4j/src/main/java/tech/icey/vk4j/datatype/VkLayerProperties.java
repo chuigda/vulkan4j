@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkLayerProperties.html">VkLayerProperties</a>
 public record VkLayerProperties(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("layerName"),
-        ValueLayout.JAVA_INT.withName("specVersion"),
-        ValueLayout.JAVA_INT.withName("implementationVersion"),
-        MemoryLayout.sequenceLayout(VK_MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$layerName = PathElement.groupElement("layerName");
-    public static final PathElement PATH$specVersion = PathElement.groupElement("specVersion");
-    public static final PathElement PATH$implementationVersion = PathElement.groupElement("implementationVersion");
-    public static final PathElement PATH$description = PathElement.groupElement("description");
-
-    public static final SequenceLayout LAYOUT$layerName = (SequenceLayout) LAYOUT.select(PATH$layerName);
-    public static final OfInt LAYOUT$specVersion = (OfInt) LAYOUT.select(PATH$specVersion);
-    public static final OfInt LAYOUT$implementationVersion = (OfInt) LAYOUT.select(PATH$implementationVersion);
-    public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
-
-    public static final long OFFSET$layerName = LAYOUT.byteOffset(PATH$layerName);
-    public static final long OFFSET$specVersion = LAYOUT.byteOffset(PATH$specVersion);
-    public static final long OFFSET$implementationVersion = LAYOUT.byteOffset(PATH$implementationVersion);
-    public static final long OFFSET$description = LAYOUT.byteOffset(PATH$description);
-
-    public static final long SIZE$layerName = LAYOUT$layerName.byteSize();
-    public static final long SIZE$specVersion = LAYOUT$specVersion.byteSize();
-    public static final long SIZE$implementationVersion = LAYOUT$implementationVersion.byteSize();
-    public static final long SIZE$description = LAYOUT$description.byteSize();
-
     public VkLayerProperties(MemorySegment segment) {
         this.segment = segment;
     }
@@ -108,4 +80,33 @@ public record VkLayerProperties(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("layerName"),
+        ValueLayout.JAVA_INT.withName("specVersion"),
+        ValueLayout.JAVA_INT.withName("implementationVersion"),
+        MemoryLayout.sequenceLayout(VK_MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$layerName = PathElement.groupElement("layerName");
+    public static final PathElement PATH$specVersion = PathElement.groupElement("specVersion");
+    public static final PathElement PATH$implementationVersion = PathElement.groupElement("implementationVersion");
+    public static final PathElement PATH$description = PathElement.groupElement("description");
+
+    public static final SequenceLayout LAYOUT$layerName = (SequenceLayout) LAYOUT.select(PATH$layerName);
+    public static final OfInt LAYOUT$specVersion = (OfInt) LAYOUT.select(PATH$specVersion);
+    public static final OfInt LAYOUT$implementationVersion = (OfInt) LAYOUT.select(PATH$implementationVersion);
+    public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
+
+    public static final long OFFSET$layerName = LAYOUT.byteOffset(PATH$layerName);
+    public static final long OFFSET$specVersion = LAYOUT.byteOffset(PATH$specVersion);
+    public static final long OFFSET$implementationVersion = LAYOUT.byteOffset(PATH$implementationVersion);
+    public static final long OFFSET$description = LAYOUT.byteOffset(PATH$description);
+
+    public static final long SIZE$layerName = LAYOUT$layerName.byteSize();
+    public static final long SIZE$specVersion = LAYOUT$specVersion.byteSize();
+    public static final long SIZE$implementationVersion = LAYOUT$implementationVersion.byteSize();
+    public static final long SIZE$description = LAYOUT$description.byteSize();
+
 }

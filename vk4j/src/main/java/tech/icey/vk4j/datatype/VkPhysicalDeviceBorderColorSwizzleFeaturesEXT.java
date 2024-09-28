@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceBorderColorSwizzleFeaturesEXT.html">VkPhysicalDeviceBorderColorSwizzleFeaturesEXT</a>
 public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("borderColorSwizzle"),
-        ValueLayout.JAVA_INT.withName("borderColorSwizzleFromImage")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$borderColorSwizzle = PathElement.groupElement("borderColorSwizzle");
-    public static final PathElement PATH$borderColorSwizzleFromImage = PathElement.groupElement("borderColorSwizzleFromImage");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$borderColorSwizzle = (OfInt) LAYOUT.select(PATH$borderColorSwizzle);
-    public static final OfInt LAYOUT$borderColorSwizzleFromImage = (OfInt) LAYOUT.select(PATH$borderColorSwizzleFromImage);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$borderColorSwizzle = LAYOUT.byteOffset(PATH$borderColorSwizzle);
-    public static final long OFFSET$borderColorSwizzleFromImage = LAYOUT.byteOffset(PATH$borderColorSwizzleFromImage);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$borderColorSwizzle = LAYOUT$borderColorSwizzle.byteSize();
-    public static final long SIZE$borderColorSwizzleFromImage = LAYOUT$borderColorSwizzleFromImage.byteSize();
-
     public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BORDER_COLOR_SWIZZLE_FEATURES_EXT);
@@ -105,4 +77,33 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(MemorySegment segmen
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("borderColorSwizzle"),
+        ValueLayout.JAVA_INT.withName("borderColorSwizzleFromImage")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$borderColorSwizzle = PathElement.groupElement("borderColorSwizzle");
+    public static final PathElement PATH$borderColorSwizzleFromImage = PathElement.groupElement("borderColorSwizzleFromImage");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$borderColorSwizzle = (OfInt) LAYOUT.select(PATH$borderColorSwizzle);
+    public static final OfInt LAYOUT$borderColorSwizzleFromImage = (OfInt) LAYOUT.select(PATH$borderColorSwizzleFromImage);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$borderColorSwizzle = LAYOUT.byteOffset(PATH$borderColorSwizzle);
+    public static final long OFFSET$borderColorSwizzleFromImage = LAYOUT.byteOffset(PATH$borderColorSwizzleFromImage);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$borderColorSwizzle = LAYOUT$borderColorSwizzle.byteSize();
+    public static final long SIZE$borderColorSwizzleFromImage = LAYOUT$borderColorSwizzleFromImage.byteSize();
+
 }

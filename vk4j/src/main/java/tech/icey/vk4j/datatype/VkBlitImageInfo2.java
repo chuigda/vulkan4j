@@ -29,59 +29,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBlitImageInfo2.html">VkBlitImageInfo2</a>
 public record VkBlitImageInfo2(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("srcImage"),
-        ValueLayout.JAVA_INT.withName("srcImageLayout"),
-        ValueLayout.ADDRESS.withName("dstImage"),
-        ValueLayout.JAVA_INT.withName("dstImageLayout"),
-        ValueLayout.JAVA_INT.withName("regionCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkImageBlit2.LAYOUT).withName("pRegions"),
-        ValueLayout.JAVA_INT.withName("filter")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$srcImage = PathElement.groupElement("srcImage");
-    public static final PathElement PATH$srcImageLayout = PathElement.groupElement("srcImageLayout");
-    public static final PathElement PATH$dstImage = PathElement.groupElement("dstImage");
-    public static final PathElement PATH$dstImageLayout = PathElement.groupElement("dstImageLayout");
-    public static final PathElement PATH$regionCount = PathElement.groupElement("regionCount");
-    public static final PathElement PATH$pRegions = PathElement.groupElement("pRegions");
-    public static final PathElement PATH$filter = PathElement.groupElement("filter");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$srcImage = (AddressLayout) LAYOUT.select(PATH$srcImage);
-    public static final OfInt LAYOUT$srcImageLayout = (OfInt) LAYOUT.select(PATH$srcImageLayout);
-    public static final AddressLayout LAYOUT$dstImage = (AddressLayout) LAYOUT.select(PATH$dstImage);
-    public static final OfInt LAYOUT$dstImageLayout = (OfInt) LAYOUT.select(PATH$dstImageLayout);
-    public static final OfInt LAYOUT$regionCount = (OfInt) LAYOUT.select(PATH$regionCount);
-    public static final AddressLayout LAYOUT$pRegions = (AddressLayout) LAYOUT.select(PATH$pRegions);
-    public static final OfInt LAYOUT$filter = (OfInt) LAYOUT.select(PATH$filter);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$srcImage = LAYOUT.byteOffset(PATH$srcImage);
-    public static final long OFFSET$srcImageLayout = LAYOUT.byteOffset(PATH$srcImageLayout);
-    public static final long OFFSET$dstImage = LAYOUT.byteOffset(PATH$dstImage);
-    public static final long OFFSET$dstImageLayout = LAYOUT.byteOffset(PATH$dstImageLayout);
-    public static final long OFFSET$regionCount = LAYOUT.byteOffset(PATH$regionCount);
-    public static final long OFFSET$pRegions = LAYOUT.byteOffset(PATH$pRegions);
-    public static final long OFFSET$filter = LAYOUT.byteOffset(PATH$filter);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$srcImage = LAYOUT$srcImage.byteSize();
-    public static final long SIZE$srcImageLayout = LAYOUT$srcImageLayout.byteSize();
-    public static final long SIZE$dstImage = LAYOUT$dstImage.byteSize();
-    public static final long SIZE$dstImageLayout = LAYOUT$dstImageLayout.byteSize();
-    public static final long SIZE$regionCount = LAYOUT$regionCount.byteSize();
-    public static final long SIZE$pRegions = LAYOUT$pRegions.byteSize();
-    public static final long SIZE$filter = LAYOUT$filter.byteSize();
-
     public VkBlitImageInfo2(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_BLIT_IMAGE_INFO_2);
@@ -199,4 +146,58 @@ public record VkBlitImageInfo2(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("srcImage"),
+        ValueLayout.JAVA_INT.withName("srcImageLayout"),
+        ValueLayout.ADDRESS.withName("dstImage"),
+        ValueLayout.JAVA_INT.withName("dstImageLayout"),
+        ValueLayout.JAVA_INT.withName("regionCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkImageBlit2.LAYOUT).withName("pRegions"),
+        ValueLayout.JAVA_INT.withName("filter")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcImage = PathElement.groupElement("srcImage");
+    public static final PathElement PATH$srcImageLayout = PathElement.groupElement("srcImageLayout");
+    public static final PathElement PATH$dstImage = PathElement.groupElement("dstImage");
+    public static final PathElement PATH$dstImageLayout = PathElement.groupElement("dstImageLayout");
+    public static final PathElement PATH$regionCount = PathElement.groupElement("regionCount");
+    public static final PathElement PATH$pRegions = PathElement.groupElement("pRegions");
+    public static final PathElement PATH$filter = PathElement.groupElement("filter");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$srcImage = (AddressLayout) LAYOUT.select(PATH$srcImage);
+    public static final OfInt LAYOUT$srcImageLayout = (OfInt) LAYOUT.select(PATH$srcImageLayout);
+    public static final AddressLayout LAYOUT$dstImage = (AddressLayout) LAYOUT.select(PATH$dstImage);
+    public static final OfInt LAYOUT$dstImageLayout = (OfInt) LAYOUT.select(PATH$dstImageLayout);
+    public static final OfInt LAYOUT$regionCount = (OfInt) LAYOUT.select(PATH$regionCount);
+    public static final AddressLayout LAYOUT$pRegions = (AddressLayout) LAYOUT.select(PATH$pRegions);
+    public static final OfInt LAYOUT$filter = (OfInt) LAYOUT.select(PATH$filter);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$srcImage = LAYOUT.byteOffset(PATH$srcImage);
+    public static final long OFFSET$srcImageLayout = LAYOUT.byteOffset(PATH$srcImageLayout);
+    public static final long OFFSET$dstImage = LAYOUT.byteOffset(PATH$dstImage);
+    public static final long OFFSET$dstImageLayout = LAYOUT.byteOffset(PATH$dstImageLayout);
+    public static final long OFFSET$regionCount = LAYOUT.byteOffset(PATH$regionCount);
+    public static final long OFFSET$pRegions = LAYOUT.byteOffset(PATH$pRegions);
+    public static final long OFFSET$filter = LAYOUT.byteOffset(PATH$filter);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$srcImage = LAYOUT$srcImage.byteSize();
+    public static final long SIZE$srcImageLayout = LAYOUT$srcImageLayout.byteSize();
+    public static final long SIZE$dstImage = LAYOUT$dstImage.byteSize();
+    public static final long SIZE$dstImageLayout = LAYOUT$dstImageLayout.byteSize();
+    public static final long SIZE$regionCount = LAYOUT$regionCount.byteSize();
+    public static final long SIZE$pRegions = LAYOUT$pRegions.byteSize();
+    public static final long SIZE$filter = LAYOUT$filter.byteSize();
+
 }

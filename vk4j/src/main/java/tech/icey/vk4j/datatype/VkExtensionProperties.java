@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkExtensionProperties.html">VkExtensionProperties</a>
 public record VkExtensionProperties(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("extensionName"),
-        ValueLayout.JAVA_INT.withName("specVersion")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$extensionName = PathElement.groupElement("extensionName");
-    public static final PathElement PATH$specVersion = PathElement.groupElement("specVersion");
-
-    public static final SequenceLayout LAYOUT$extensionName = (SequenceLayout) LAYOUT.select(PATH$extensionName);
-    public static final OfInt LAYOUT$specVersion = (OfInt) LAYOUT.select(PATH$specVersion);
-
-    public static final long OFFSET$extensionName = LAYOUT.byteOffset(PATH$extensionName);
-    public static final long OFFSET$specVersion = LAYOUT.byteOffset(PATH$specVersion);
-
-    public static final long SIZE$extensionName = LAYOUT$extensionName.byteSize();
-    public static final long SIZE$specVersion = LAYOUT$specVersion.byteSize();
-
     public VkExtensionProperties(MemorySegment segment) {
         this.segment = segment;
     }
@@ -76,4 +58,23 @@ public record VkExtensionProperties(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("extensionName"),
+        ValueLayout.JAVA_INT.withName("specVersion")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$extensionName = PathElement.groupElement("extensionName");
+    public static final PathElement PATH$specVersion = PathElement.groupElement("specVersion");
+
+    public static final SequenceLayout LAYOUT$extensionName = (SequenceLayout) LAYOUT.select(PATH$extensionName);
+    public static final OfInt LAYOUT$specVersion = (OfInt) LAYOUT.select(PATH$specVersion);
+
+    public static final long OFFSET$extensionName = LAYOUT.byteOffset(PATH$extensionName);
+    public static final long OFFSET$specVersion = LAYOUT.byteOffset(PATH$specVersion);
+
+    public static final long SIZE$extensionName = LAYOUT$extensionName.byteSize();
+    public static final long SIZE$specVersion = LAYOUT$specVersion.byteSize();
+
 }

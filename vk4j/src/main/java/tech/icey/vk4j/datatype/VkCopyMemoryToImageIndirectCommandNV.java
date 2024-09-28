@@ -26,44 +26,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCopyMemoryToImageIndirectCommandNV.html">VkCopyMemoryToImageIndirectCommandNV</a>
 public record VkCopyMemoryToImageIndirectCommandNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_LONG.withName("srcAddress"),
-        ValueLayout.JAVA_INT.withName("bufferRowLength"),
-        ValueLayout.JAVA_INT.withName("bufferImageHeight"),
-        VkImageSubresourceLayers.LAYOUT.withName("imageSubresource"),
-        VkOffset3D.LAYOUT.withName("imageOffset"),
-        VkExtent3D.LAYOUT.withName("imageExtent")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$srcAddress = PathElement.groupElement("srcAddress");
-    public static final PathElement PATH$bufferRowLength = PathElement.groupElement("bufferRowLength");
-    public static final PathElement PATH$bufferImageHeight = PathElement.groupElement("bufferImageHeight");
-    public static final PathElement PATH$imageSubresource = PathElement.groupElement("imageSubresource");
-    public static final PathElement PATH$imageOffset = PathElement.groupElement("imageOffset");
-    public static final PathElement PATH$imageExtent = PathElement.groupElement("imageExtent");
-
-    public static final OfLong LAYOUT$srcAddress = (OfLong) LAYOUT.select(PATH$srcAddress);
-    public static final OfInt LAYOUT$bufferRowLength = (OfInt) LAYOUT.select(PATH$bufferRowLength);
-    public static final OfInt LAYOUT$bufferImageHeight = (OfInt) LAYOUT.select(PATH$bufferImageHeight);
-    public static final StructLayout LAYOUT$imageSubresource = (StructLayout) LAYOUT.select(PATH$imageSubresource);
-    public static final StructLayout LAYOUT$imageOffset = (StructLayout) LAYOUT.select(PATH$imageOffset);
-    public static final StructLayout LAYOUT$imageExtent = (StructLayout) LAYOUT.select(PATH$imageExtent);
-
-    public static final long OFFSET$srcAddress = LAYOUT.byteOffset(PATH$srcAddress);
-    public static final long OFFSET$bufferRowLength = LAYOUT.byteOffset(PATH$bufferRowLength);
-    public static final long OFFSET$bufferImageHeight = LAYOUT.byteOffset(PATH$bufferImageHeight);
-    public static final long OFFSET$imageSubresource = LAYOUT.byteOffset(PATH$imageSubresource);
-    public static final long OFFSET$imageOffset = LAYOUT.byteOffset(PATH$imageOffset);
-    public static final long OFFSET$imageExtent = LAYOUT.byteOffset(PATH$imageExtent);
-
-    public static final long SIZE$srcAddress = LAYOUT$srcAddress.byteSize();
-    public static final long SIZE$bufferRowLength = LAYOUT$bufferRowLength.byteSize();
-    public static final long SIZE$bufferImageHeight = LAYOUT$bufferImageHeight.byteSize();
-    public static final long SIZE$imageSubresource = LAYOUT$imageSubresource.byteSize();
-    public static final long SIZE$imageOffset = LAYOUT$imageOffset.byteSize();
-    public static final long SIZE$imageExtent = LAYOUT$imageExtent.byteSize();
-
     public VkCopyMemoryToImageIndirectCommandNV(MemorySegment segment) {
         this.segment = segment;
     }
@@ -128,4 +90,43 @@ public record VkCopyMemoryToImageIndirectCommandNV(MemorySegment segment) implem
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("srcAddress"),
+        ValueLayout.JAVA_INT.withName("bufferRowLength"),
+        ValueLayout.JAVA_INT.withName("bufferImageHeight"),
+        VkImageSubresourceLayers.LAYOUT.withName("imageSubresource"),
+        VkOffset3D.LAYOUT.withName("imageOffset"),
+        VkExtent3D.LAYOUT.withName("imageExtent")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$srcAddress = PathElement.groupElement("srcAddress");
+    public static final PathElement PATH$bufferRowLength = PathElement.groupElement("bufferRowLength");
+    public static final PathElement PATH$bufferImageHeight = PathElement.groupElement("bufferImageHeight");
+    public static final PathElement PATH$imageSubresource = PathElement.groupElement("imageSubresource");
+    public static final PathElement PATH$imageOffset = PathElement.groupElement("imageOffset");
+    public static final PathElement PATH$imageExtent = PathElement.groupElement("imageExtent");
+
+    public static final OfLong LAYOUT$srcAddress = (OfLong) LAYOUT.select(PATH$srcAddress);
+    public static final OfInt LAYOUT$bufferRowLength = (OfInt) LAYOUT.select(PATH$bufferRowLength);
+    public static final OfInt LAYOUT$bufferImageHeight = (OfInt) LAYOUT.select(PATH$bufferImageHeight);
+    public static final StructLayout LAYOUT$imageSubresource = (StructLayout) LAYOUT.select(PATH$imageSubresource);
+    public static final StructLayout LAYOUT$imageOffset = (StructLayout) LAYOUT.select(PATH$imageOffset);
+    public static final StructLayout LAYOUT$imageExtent = (StructLayout) LAYOUT.select(PATH$imageExtent);
+
+    public static final long OFFSET$srcAddress = LAYOUT.byteOffset(PATH$srcAddress);
+    public static final long OFFSET$bufferRowLength = LAYOUT.byteOffset(PATH$bufferRowLength);
+    public static final long OFFSET$bufferImageHeight = LAYOUT.byteOffset(PATH$bufferImageHeight);
+    public static final long OFFSET$imageSubresource = LAYOUT.byteOffset(PATH$imageSubresource);
+    public static final long OFFSET$imageOffset = LAYOUT.byteOffset(PATH$imageOffset);
+    public static final long OFFSET$imageExtent = LAYOUT.byteOffset(PATH$imageExtent);
+
+    public static final long SIZE$srcAddress = LAYOUT$srcAddress.byteSize();
+    public static final long SIZE$bufferRowLength = LAYOUT$bufferRowLength.byteSize();
+    public static final long SIZE$bufferImageHeight = LAYOUT$bufferImageHeight.byteSize();
+    public static final long SIZE$imageSubresource = LAYOUT$imageSubresource.byteSize();
+    public static final long SIZE$imageOffset = LAYOUT$imageOffset.byteSize();
+    public static final long SIZE$imageExtent = LAYOUT$imageExtent.byteSize();
+
 }

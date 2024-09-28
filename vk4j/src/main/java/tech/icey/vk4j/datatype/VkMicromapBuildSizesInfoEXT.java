@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMicromapBuildSizesInfoEXT.html">VkMicromapBuildSizesInfoEXT</a>
 public record VkMicromapBuildSizesInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_LONG.withName("micromapSize"),
-        ValueLayout.JAVA_LONG.withName("buildScratchSize"),
-        ValueLayout.JAVA_INT.withName("discardable")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$micromapSize = PathElement.groupElement("micromapSize");
-    public static final PathElement PATH$buildScratchSize = PathElement.groupElement("buildScratchSize");
-    public static final PathElement PATH$discardable = PathElement.groupElement("discardable");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfLong LAYOUT$micromapSize = (OfLong) LAYOUT.select(PATH$micromapSize);
-    public static final OfLong LAYOUT$buildScratchSize = (OfLong) LAYOUT.select(PATH$buildScratchSize);
-    public static final OfInt LAYOUT$discardable = (OfInt) LAYOUT.select(PATH$discardable);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$micromapSize = LAYOUT.byteOffset(PATH$micromapSize);
-    public static final long OFFSET$buildScratchSize = LAYOUT.byteOffset(PATH$buildScratchSize);
-    public static final long OFFSET$discardable = LAYOUT.byteOffset(PATH$discardable);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$micromapSize = LAYOUT$micromapSize.byteSize();
-    public static final long SIZE$buildScratchSize = LAYOUT$buildScratchSize.byteSize();
-    public static final long SIZE$discardable = LAYOUT$discardable.byteSize();
-
     public VkMicromapBuildSizesInfoEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_MICROMAP_BUILD_SIZES_INFO_EXT);
@@ -119,4 +86,38 @@ public record VkMicromapBuildSizesInfoEXT(MemorySegment segment) implements IPoi
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("micromapSize"),
+        ValueLayout.JAVA_LONG.withName("buildScratchSize"),
+        ValueLayout.JAVA_INT.withName("discardable")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$micromapSize = PathElement.groupElement("micromapSize");
+    public static final PathElement PATH$buildScratchSize = PathElement.groupElement("buildScratchSize");
+    public static final PathElement PATH$discardable = PathElement.groupElement("discardable");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$micromapSize = (OfLong) LAYOUT.select(PATH$micromapSize);
+    public static final OfLong LAYOUT$buildScratchSize = (OfLong) LAYOUT.select(PATH$buildScratchSize);
+    public static final OfInt LAYOUT$discardable = (OfInt) LAYOUT.select(PATH$discardable);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$micromapSize = LAYOUT.byteOffset(PATH$micromapSize);
+    public static final long OFFSET$buildScratchSize = LAYOUT.byteOffset(PATH$buildScratchSize);
+    public static final long OFFSET$discardable = LAYOUT.byteOffset(PATH$discardable);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$micromapSize = LAYOUT$micromapSize.byteSize();
+    public static final long SIZE$buildScratchSize = LAYOUT$buildScratchSize.byteSize();
+    public static final long SIZE$discardable = LAYOUT$discardable.byteSize();
+
 }

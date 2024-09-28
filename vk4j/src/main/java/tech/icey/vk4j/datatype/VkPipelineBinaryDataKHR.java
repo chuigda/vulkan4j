@@ -22,22 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineBinaryDataKHR.html">VkPipelineBinaryDataKHR</a>
 public record VkPipelineBinaryDataKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        NativeLayout.C_SIZE_T.withName("dataSize"),
-        ValueLayout.ADDRESS.withName("pData")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$dataSize = PathElement.groupElement("dataSize");
-    public static final PathElement PATH$pData = PathElement.groupElement("pData");
-
-    public static final AddressLayout LAYOUT$pData = (AddressLayout) LAYOUT.select(PATH$pData);
-
-    public static final long OFFSET$dataSize = LAYOUT.byteOffset(PATH$dataSize);
-    public static final long OFFSET$pData = LAYOUT.byteOffset(PATH$pData);
-
-    public static final long SIZE$pData = LAYOUT$pData.byteSize();
-
     public VkPipelineBinaryDataKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -74,4 +58,21 @@ public record VkPipelineBinaryDataKHR(MemorySegment segment) implements IPointer
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        NativeLayout.C_SIZE_T.withName("dataSize"),
+        ValueLayout.ADDRESS.withName("pData")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$dataSize = PathElement.groupElement("dataSize");
+    public static final PathElement PATH$pData = PathElement.groupElement("pData");
+
+    public static final AddressLayout LAYOUT$pData = (AddressLayout) LAYOUT.select(PATH$pData);
+
+    public static final long OFFSET$dataSize = LAYOUT.byteOffset(PATH$dataSize);
+    public static final long OFFSET$pData = LAYOUT.byteOffset(PATH$pData);
+
+    public static final long SIZE$pData = LAYOUT$pData.byteSize();
+
 }

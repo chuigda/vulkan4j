@@ -21,19 +21,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkTransformMatrixKHR.html">VkTransformMatrixKHR</a>
 public record VkTransformMatrixKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        MemoryLayout.sequenceLayout(3 * 4, ValueLayout.JAVA_FLOAT).withName("matrix")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$matrix = PathElement.groupElement("matrix");
-
-    public static final SequenceLayout LAYOUT$matrix = (SequenceLayout) LAYOUT.select(PATH$matrix);
-
-    public static final long OFFSET$matrix = LAYOUT.byteOffset(PATH$matrix);
-
-    public static final long SIZE$matrix = LAYOUT$matrix.byteSize();
-
     public VkTransformMatrixKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -62,4 +49,18 @@ public record VkTransformMatrixKHR(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        MemoryLayout.sequenceLayout(3 * 4, ValueLayout.JAVA_FLOAT).withName("matrix")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$matrix = PathElement.groupElement("matrix");
+
+    public static final SequenceLayout LAYOUT$matrix = (SequenceLayout) LAYOUT.select(PATH$matrix);
+
+    public static final long OFFSET$matrix = LAYOUT.byteOffset(PATH$matrix);
+
+    public static final long SIZE$matrix = LAYOUT$matrix.byteSize();
+
 }

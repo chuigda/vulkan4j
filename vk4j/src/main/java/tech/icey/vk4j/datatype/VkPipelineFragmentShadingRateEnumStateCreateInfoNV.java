@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineFragmentShadingRateEnumStateCreateInfoNV.html">VkPipelineFragmentShadingRateEnumStateCreateInfoNV</a>
 public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("shadingRateType"),
-        ValueLayout.JAVA_INT.withName("shadingRate"),
-        MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_INT).withName("combinerOps")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$shadingRateType = PathElement.groupElement("shadingRateType");
-    public static final PathElement PATH$shadingRate = PathElement.groupElement("shadingRate");
-    public static final PathElement PATH$combinerOps = PathElement.groupElement("combinerOps");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$shadingRateType = (OfInt) LAYOUT.select(PATH$shadingRateType);
-    public static final OfInt LAYOUT$shadingRate = (OfInt) LAYOUT.select(PATH$shadingRate);
-    public static final SequenceLayout LAYOUT$combinerOps = (SequenceLayout) LAYOUT.select(PATH$combinerOps);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$shadingRateType = LAYOUT.byteOffset(PATH$shadingRateType);
-    public static final long OFFSET$shadingRate = LAYOUT.byteOffset(PATH$shadingRate);
-    public static final long OFFSET$combinerOps = LAYOUT.byteOffset(PATH$combinerOps);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$shadingRateType = LAYOUT$shadingRateType.byteSize();
-    public static final long SIZE$shadingRate = LAYOUT$shadingRate.byteSize();
-    public static final long SIZE$combinerOps = LAYOUT$combinerOps.byteSize();
-
     public VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV);
@@ -123,4 +90,38 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment s
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shadingRateType"),
+        ValueLayout.JAVA_INT.withName("shadingRate"),
+        MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_INT).withName("combinerOps")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shadingRateType = PathElement.groupElement("shadingRateType");
+    public static final PathElement PATH$shadingRate = PathElement.groupElement("shadingRate");
+    public static final PathElement PATH$combinerOps = PathElement.groupElement("combinerOps");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shadingRateType = (OfInt) LAYOUT.select(PATH$shadingRateType);
+    public static final OfInt LAYOUT$shadingRate = (OfInt) LAYOUT.select(PATH$shadingRate);
+    public static final SequenceLayout LAYOUT$combinerOps = (SequenceLayout) LAYOUT.select(PATH$combinerOps);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$shadingRateType = LAYOUT.byteOffset(PATH$shadingRateType);
+    public static final long OFFSET$shadingRate = LAYOUT.byteOffset(PATH$shadingRate);
+    public static final long OFFSET$combinerOps = LAYOUT.byteOffset(PATH$combinerOps);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shadingRateType = LAYOUT$shadingRateType.byteSize();
+    public static final long SIZE$shadingRate = LAYOUT$shadingRate.byteSize();
+    public static final long SIZE$combinerOps = LAYOUT$combinerOps.byteSize();
+
 }

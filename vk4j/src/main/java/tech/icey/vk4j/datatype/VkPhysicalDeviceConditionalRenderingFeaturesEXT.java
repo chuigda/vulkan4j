@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceConditionalRenderingFeaturesEXT.html">VkPhysicalDeviceConditionalRenderingFeaturesEXT</a>
 public record VkPhysicalDeviceConditionalRenderingFeaturesEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("conditionalRendering"),
-        ValueLayout.JAVA_INT.withName("inheritedConditionalRendering")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$conditionalRendering = PathElement.groupElement("conditionalRendering");
-    public static final PathElement PATH$inheritedConditionalRendering = PathElement.groupElement("inheritedConditionalRendering");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$conditionalRendering = (OfInt) LAYOUT.select(PATH$conditionalRendering);
-    public static final OfInt LAYOUT$inheritedConditionalRendering = (OfInt) LAYOUT.select(PATH$inheritedConditionalRendering);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$conditionalRendering = LAYOUT.byteOffset(PATH$conditionalRendering);
-    public static final long OFFSET$inheritedConditionalRendering = LAYOUT.byteOffset(PATH$inheritedConditionalRendering);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$conditionalRendering = LAYOUT$conditionalRendering.byteSize();
-    public static final long SIZE$inheritedConditionalRendering = LAYOUT$inheritedConditionalRendering.byteSize();
-
     public VkPhysicalDeviceConditionalRenderingFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT);
@@ -105,4 +77,33 @@ public record VkPhysicalDeviceConditionalRenderingFeaturesEXT(MemorySegment segm
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("conditionalRendering"),
+        ValueLayout.JAVA_INT.withName("inheritedConditionalRendering")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$conditionalRendering = PathElement.groupElement("conditionalRendering");
+    public static final PathElement PATH$inheritedConditionalRendering = PathElement.groupElement("inheritedConditionalRendering");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$conditionalRendering = (OfInt) LAYOUT.select(PATH$conditionalRendering);
+    public static final OfInt LAYOUT$inheritedConditionalRendering = (OfInt) LAYOUT.select(PATH$inheritedConditionalRendering);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$conditionalRendering = LAYOUT.byteOffset(PATH$conditionalRendering);
+    public static final long OFFSET$inheritedConditionalRendering = LAYOUT.byteOffset(PATH$inheritedConditionalRendering);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$conditionalRendering = LAYOUT$conditionalRendering.byteSize();
+    public static final long SIZE$inheritedConditionalRendering = LAYOUT$inheritedConditionalRendering.byteSize();
+
 }

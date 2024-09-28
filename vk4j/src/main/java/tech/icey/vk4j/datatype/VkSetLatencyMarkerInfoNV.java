@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSetLatencyMarkerInfoNV.html">VkSetLatencyMarkerInfoNV</a>
 public record VkSetLatencyMarkerInfoNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_LONG.withName("presentID"),
-        ValueLayout.JAVA_INT.withName("marker")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$presentID = PathElement.groupElement("presentID");
-    public static final PathElement PATH$marker = PathElement.groupElement("marker");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfLong LAYOUT$presentID = (OfLong) LAYOUT.select(PATH$presentID);
-    public static final OfInt LAYOUT$marker = (OfInt) LAYOUT.select(PATH$marker);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$presentID = LAYOUT.byteOffset(PATH$presentID);
-    public static final long OFFSET$marker = LAYOUT.byteOffset(PATH$marker);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$presentID = LAYOUT$presentID.byteSize();
-    public static final long SIZE$marker = LAYOUT$marker.byteSize();
-
     public VkSetLatencyMarkerInfoNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_SET_LATENCY_MARKER_INFO_NV);
@@ -105,4 +77,33 @@ public record VkSetLatencyMarkerInfoNV(MemorySegment segment) implements IPointe
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("presentID"),
+        ValueLayout.JAVA_INT.withName("marker")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$presentID = PathElement.groupElement("presentID");
+    public static final PathElement PATH$marker = PathElement.groupElement("marker");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$presentID = (OfLong) LAYOUT.select(PATH$presentID);
+    public static final OfInt LAYOUT$marker = (OfInt) LAYOUT.select(PATH$marker);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$presentID = LAYOUT.byteOffset(PATH$presentID);
+    public static final long OFFSET$marker = LAYOUT.byteOffset(PATH$marker);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$presentID = LAYOUT$presentID.byteSize();
+    public static final long SIZE$marker = LAYOUT$marker.byteSize();
+
 }

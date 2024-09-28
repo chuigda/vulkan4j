@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAccelerationStructureBuildRangeInfoKHR.html">VkAccelerationStructureBuildRangeInfoKHR</a>
 public record VkAccelerationStructureBuildRangeInfoKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("primitiveCount"),
-        ValueLayout.JAVA_INT.withName("primitiveOffset"),
-        ValueLayout.JAVA_INT.withName("firstVertex"),
-        ValueLayout.JAVA_INT.withName("transformOffset")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$primitiveCount = PathElement.groupElement("primitiveCount");
-    public static final PathElement PATH$primitiveOffset = PathElement.groupElement("primitiveOffset");
-    public static final PathElement PATH$firstVertex = PathElement.groupElement("firstVertex");
-    public static final PathElement PATH$transformOffset = PathElement.groupElement("transformOffset");
-
-    public static final OfInt LAYOUT$primitiveCount = (OfInt) LAYOUT.select(PATH$primitiveCount);
-    public static final OfInt LAYOUT$primitiveOffset = (OfInt) LAYOUT.select(PATH$primitiveOffset);
-    public static final OfInt LAYOUT$firstVertex = (OfInt) LAYOUT.select(PATH$firstVertex);
-    public static final OfInt LAYOUT$transformOffset = (OfInt) LAYOUT.select(PATH$transformOffset);
-
-    public static final long OFFSET$primitiveCount = LAYOUT.byteOffset(PATH$primitiveCount);
-    public static final long OFFSET$primitiveOffset = LAYOUT.byteOffset(PATH$primitiveOffset);
-    public static final long OFFSET$firstVertex = LAYOUT.byteOffset(PATH$firstVertex);
-    public static final long OFFSET$transformOffset = LAYOUT.byteOffset(PATH$transformOffset);
-
-    public static final long SIZE$primitiveCount = LAYOUT$primitiveCount.byteSize();
-    public static final long SIZE$primitiveOffset = LAYOUT$primitiveOffset.byteSize();
-    public static final long SIZE$firstVertex = LAYOUT$firstVertex.byteSize();
-    public static final long SIZE$transformOffset = LAYOUT$transformOffset.byteSize();
-
     public VkAccelerationStructureBuildRangeInfoKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -100,4 +72,33 @@ public record VkAccelerationStructureBuildRangeInfoKHR(MemorySegment segment) im
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("primitiveCount"),
+        ValueLayout.JAVA_INT.withName("primitiveOffset"),
+        ValueLayout.JAVA_INT.withName("firstVertex"),
+        ValueLayout.JAVA_INT.withName("transformOffset")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$primitiveCount = PathElement.groupElement("primitiveCount");
+    public static final PathElement PATH$primitiveOffset = PathElement.groupElement("primitiveOffset");
+    public static final PathElement PATH$firstVertex = PathElement.groupElement("firstVertex");
+    public static final PathElement PATH$transformOffset = PathElement.groupElement("transformOffset");
+
+    public static final OfInt LAYOUT$primitiveCount = (OfInt) LAYOUT.select(PATH$primitiveCount);
+    public static final OfInt LAYOUT$primitiveOffset = (OfInt) LAYOUT.select(PATH$primitiveOffset);
+    public static final OfInt LAYOUT$firstVertex = (OfInt) LAYOUT.select(PATH$firstVertex);
+    public static final OfInt LAYOUT$transformOffset = (OfInt) LAYOUT.select(PATH$transformOffset);
+
+    public static final long OFFSET$primitiveCount = LAYOUT.byteOffset(PATH$primitiveCount);
+    public static final long OFFSET$primitiveOffset = LAYOUT.byteOffset(PATH$primitiveOffset);
+    public static final long OFFSET$firstVertex = LAYOUT.byteOffset(PATH$firstVertex);
+    public static final long OFFSET$transformOffset = LAYOUT.byteOffset(PATH$transformOffset);
+
+    public static final long SIZE$primitiveCount = LAYOUT$primitiveCount.byteSize();
+    public static final long SIZE$primitiveOffset = LAYOUT$primitiveOffset.byteSize();
+    public static final long SIZE$firstVertex = LAYOUT$firstVertex.byteSize();
+    public static final long SIZE$transformOffset = LAYOUT$transformOffset.byteSize();
+
 }

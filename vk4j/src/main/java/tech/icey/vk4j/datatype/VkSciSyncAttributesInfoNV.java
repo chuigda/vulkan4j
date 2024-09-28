@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSciSyncAttributesInfoNV.html">VkSciSyncAttributesInfoNV</a>
 public record VkSciSyncAttributesInfoNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("clientType"),
-        ValueLayout.JAVA_INT.withName("primitiveType")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$clientType = PathElement.groupElement("clientType");
-    public static final PathElement PATH$primitiveType = PathElement.groupElement("primitiveType");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$clientType = (OfInt) LAYOUT.select(PATH$clientType);
-    public static final OfInt LAYOUT$primitiveType = (OfInt) LAYOUT.select(PATH$primitiveType);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$clientType = LAYOUT.byteOffset(PATH$clientType);
-    public static final long OFFSET$primitiveType = LAYOUT.byteOffset(PATH$primitiveType);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$clientType = LAYOUT$clientType.byteSize();
-    public static final long SIZE$primitiveType = LAYOUT$primitiveType.byteSize();
-
     public VkSciSyncAttributesInfoNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_SCI_SYNC_ATTRIBUTES_INFO_NV);
@@ -105,4 +77,33 @@ public record VkSciSyncAttributesInfoNV(MemorySegment segment) implements IPoint
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("clientType"),
+        ValueLayout.JAVA_INT.withName("primitiveType")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$clientType = PathElement.groupElement("clientType");
+    public static final PathElement PATH$primitiveType = PathElement.groupElement("primitiveType");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$clientType = (OfInt) LAYOUT.select(PATH$clientType);
+    public static final OfInt LAYOUT$primitiveType = (OfInt) LAYOUT.select(PATH$primitiveType);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$clientType = LAYOUT.byteOffset(PATH$clientType);
+    public static final long OFFSET$primitiveType = LAYOUT.byteOffset(PATH$primitiveType);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$clientType = LAYOUT$clientType.byteSize();
+    public static final long SIZE$primitiveType = LAYOUT$primitiveType.byteSize();
+
 }

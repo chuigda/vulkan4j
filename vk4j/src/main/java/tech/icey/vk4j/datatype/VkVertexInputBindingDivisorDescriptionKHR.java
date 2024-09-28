@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkVertexInputBindingDivisorDescriptionKHR.html">VkVertexInputBindingDivisorDescriptionKHR</a>
 public record VkVertexInputBindingDivisorDescriptionKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("binding"),
-        ValueLayout.JAVA_INT.withName("divisor")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$binding = PathElement.groupElement("binding");
-    public static final PathElement PATH$divisor = PathElement.groupElement("divisor");
-
-    public static final OfInt LAYOUT$binding = (OfInt) LAYOUT.select(PATH$binding);
-    public static final OfInt LAYOUT$divisor = (OfInt) LAYOUT.select(PATH$divisor);
-
-    public static final long OFFSET$binding = LAYOUT.byteOffset(PATH$binding);
-    public static final long OFFSET$divisor = LAYOUT.byteOffset(PATH$divisor);
-
-    public static final long SIZE$binding = LAYOUT$binding.byteSize();
-    public static final long SIZE$divisor = LAYOUT$divisor.byteSize();
-
     public VkVertexInputBindingDivisorDescriptionKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkVertexInputBindingDivisorDescriptionKHR(MemorySegment segment) i
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("binding"),
+        ValueLayout.JAVA_INT.withName("divisor")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$binding = PathElement.groupElement("binding");
+    public static final PathElement PATH$divisor = PathElement.groupElement("divisor");
+
+    public static final OfInt LAYOUT$binding = (OfInt) LAYOUT.select(PATH$binding);
+    public static final OfInt LAYOUT$divisor = (OfInt) LAYOUT.select(PATH$divisor);
+
+    public static final long OFFSET$binding = LAYOUT.byteOffset(PATH$binding);
+    public static final long OFFSET$divisor = LAYOUT.byteOffset(PATH$divisor);
+
+    public static final long SIZE$binding = LAYOUT$binding.byteSize();
+    public static final long SIZE$divisor = LAYOUT$divisor.byteSize();
+
 }

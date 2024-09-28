@@ -27,49 +27,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceToolProperties.html">VkPhysicalDeviceToolProperties</a>
 public record VkPhysicalDeviceToolProperties(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("name"),
-        MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("version"),
-        ValueLayout.JAVA_INT.withName("purposes"),
-        MemoryLayout.sequenceLayout(VK_MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description"),
-        MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("layer")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$name = PathElement.groupElement("name");
-    public static final PathElement PATH$version = PathElement.groupElement("version");
-    public static final PathElement PATH$purposes = PathElement.groupElement("purposes");
-    public static final PathElement PATH$description = PathElement.groupElement("description");
-    public static final PathElement PATH$layer = PathElement.groupElement("layer");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final SequenceLayout LAYOUT$name = (SequenceLayout) LAYOUT.select(PATH$name);
-    public static final SequenceLayout LAYOUT$version = (SequenceLayout) LAYOUT.select(PATH$version);
-    public static final OfInt LAYOUT$purposes = (OfInt) LAYOUT.select(PATH$purposes);
-    public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
-    public static final SequenceLayout LAYOUT$layer = (SequenceLayout) LAYOUT.select(PATH$layer);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$name = LAYOUT.byteOffset(PATH$name);
-    public static final long OFFSET$version = LAYOUT.byteOffset(PATH$version);
-    public static final long OFFSET$purposes = LAYOUT.byteOffset(PATH$purposes);
-    public static final long OFFSET$description = LAYOUT.byteOffset(PATH$description);
-    public static final long OFFSET$layer = LAYOUT.byteOffset(PATH$layer);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$name = LAYOUT$name.byteSize();
-    public static final long SIZE$version = LAYOUT$version.byteSize();
-    public static final long SIZE$purposes = LAYOUT$purposes.byteSize();
-    public static final long SIZE$description = LAYOUT$description.byteSize();
-    public static final long SIZE$layer = LAYOUT$layer.byteSize();
-
     public VkPhysicalDeviceToolProperties(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TOOL_PROPERTIES);
@@ -163,4 +120,48 @@ public record VkPhysicalDeviceToolProperties(MemorySegment segment) implements I
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("name"),
+        MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("version"),
+        ValueLayout.JAVA_INT.withName("purposes"),
+        MemoryLayout.sequenceLayout(VK_MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description"),
+        MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("layer")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$name = PathElement.groupElement("name");
+    public static final PathElement PATH$version = PathElement.groupElement("version");
+    public static final PathElement PATH$purposes = PathElement.groupElement("purposes");
+    public static final PathElement PATH$description = PathElement.groupElement("description");
+    public static final PathElement PATH$layer = PathElement.groupElement("layer");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final SequenceLayout LAYOUT$name = (SequenceLayout) LAYOUT.select(PATH$name);
+    public static final SequenceLayout LAYOUT$version = (SequenceLayout) LAYOUT.select(PATH$version);
+    public static final OfInt LAYOUT$purposes = (OfInt) LAYOUT.select(PATH$purposes);
+    public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
+    public static final SequenceLayout LAYOUT$layer = (SequenceLayout) LAYOUT.select(PATH$layer);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$name = LAYOUT.byteOffset(PATH$name);
+    public static final long OFFSET$version = LAYOUT.byteOffset(PATH$version);
+    public static final long OFFSET$purposes = LAYOUT.byteOffset(PATH$purposes);
+    public static final long OFFSET$description = LAYOUT.byteOffset(PATH$description);
+    public static final long OFFSET$layer = LAYOUT.byteOffset(PATH$layer);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$name = LAYOUT$name.byteSize();
+    public static final long SIZE$version = LAYOUT$version.byteSize();
+    public static final long SIZE$purposes = LAYOUT$purposes.byteSize();
+    public static final long SIZE$description = LAYOUT$description.byteSize();
+    public static final long SIZE$layer = LAYOUT$layer.byteSize();
+
 }

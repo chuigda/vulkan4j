@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkOffset2D.html">VkOffset2D</a>
 public record VkOffset2D(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("x"),
-        ValueLayout.JAVA_INT.withName("y")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$x = PathElement.groupElement("x");
-    public static final PathElement PATH$y = PathElement.groupElement("y");
-
-    public static final OfInt LAYOUT$x = (OfInt) LAYOUT.select(PATH$x);
-    public static final OfInt LAYOUT$y = (OfInt) LAYOUT.select(PATH$y);
-
-    public static final long OFFSET$x = LAYOUT.byteOffset(PATH$x);
-    public static final long OFFSET$y = LAYOUT.byteOffset(PATH$y);
-
-    public static final long SIZE$x = LAYOUT$x.byteSize();
-    public static final long SIZE$y = LAYOUT$y.byteSize();
-
     public VkOffset2D(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkOffset2D(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("x"),
+        ValueLayout.JAVA_INT.withName("y")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$x = PathElement.groupElement("x");
+    public static final PathElement PATH$y = PathElement.groupElement("y");
+
+    public static final OfInt LAYOUT$x = (OfInt) LAYOUT.select(PATH$x);
+    public static final OfInt LAYOUT$y = (OfInt) LAYOUT.select(PATH$y);
+
+    public static final long OFFSET$x = LAYOUT.byteOffset(PATH$x);
+    public static final long OFFSET$y = LAYOUT.byteOffset(PATH$y);
+
+    public static final long SIZE$x = LAYOUT$x.byteSize();
+    public static final long SIZE$y = LAYOUT$y.byteSize();
+
 }

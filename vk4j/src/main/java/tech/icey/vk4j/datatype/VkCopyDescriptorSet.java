@@ -29,59 +29,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCopyDescriptorSet.html">VkCopyDescriptorSet</a>
 public record VkCopyDescriptorSet(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("srcSet"),
-        ValueLayout.JAVA_INT.withName("srcBinding"),
-        ValueLayout.JAVA_INT.withName("srcArrayElement"),
-        ValueLayout.ADDRESS.withName("dstSet"),
-        ValueLayout.JAVA_INT.withName("dstBinding"),
-        ValueLayout.JAVA_INT.withName("dstArrayElement"),
-        ValueLayout.JAVA_INT.withName("descriptorCount")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$srcSet = PathElement.groupElement("srcSet");
-    public static final PathElement PATH$srcBinding = PathElement.groupElement("srcBinding");
-    public static final PathElement PATH$srcArrayElement = PathElement.groupElement("srcArrayElement");
-    public static final PathElement PATH$dstSet = PathElement.groupElement("dstSet");
-    public static final PathElement PATH$dstBinding = PathElement.groupElement("dstBinding");
-    public static final PathElement PATH$dstArrayElement = PathElement.groupElement("dstArrayElement");
-    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$srcSet = (AddressLayout) LAYOUT.select(PATH$srcSet);
-    public static final OfInt LAYOUT$srcBinding = (OfInt) LAYOUT.select(PATH$srcBinding);
-    public static final OfInt LAYOUT$srcArrayElement = (OfInt) LAYOUT.select(PATH$srcArrayElement);
-    public static final AddressLayout LAYOUT$dstSet = (AddressLayout) LAYOUT.select(PATH$dstSet);
-    public static final OfInt LAYOUT$dstBinding = (OfInt) LAYOUT.select(PATH$dstBinding);
-    public static final OfInt LAYOUT$dstArrayElement = (OfInt) LAYOUT.select(PATH$dstArrayElement);
-    public static final OfInt LAYOUT$descriptorCount = (OfInt) LAYOUT.select(PATH$descriptorCount);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$srcSet = LAYOUT.byteOffset(PATH$srcSet);
-    public static final long OFFSET$srcBinding = LAYOUT.byteOffset(PATH$srcBinding);
-    public static final long OFFSET$srcArrayElement = LAYOUT.byteOffset(PATH$srcArrayElement);
-    public static final long OFFSET$dstSet = LAYOUT.byteOffset(PATH$dstSet);
-    public static final long OFFSET$dstBinding = LAYOUT.byteOffset(PATH$dstBinding);
-    public static final long OFFSET$dstArrayElement = LAYOUT.byteOffset(PATH$dstArrayElement);
-    public static final long OFFSET$descriptorCount = LAYOUT.byteOffset(PATH$descriptorCount);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$srcSet = LAYOUT$srcSet.byteSize();
-    public static final long SIZE$srcBinding = LAYOUT$srcBinding.byteSize();
-    public static final long SIZE$srcArrayElement = LAYOUT$srcArrayElement.byteSize();
-    public static final long SIZE$dstSet = LAYOUT$dstSet.byteSize();
-    public static final long SIZE$dstBinding = LAYOUT$dstBinding.byteSize();
-    public static final long SIZE$dstArrayElement = LAYOUT$dstArrayElement.byteSize();
-    public static final long SIZE$descriptorCount = LAYOUT$descriptorCount.byteSize();
-
     public VkCopyDescriptorSet(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET);
@@ -175,4 +122,58 @@ public record VkCopyDescriptorSet(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("srcSet"),
+        ValueLayout.JAVA_INT.withName("srcBinding"),
+        ValueLayout.JAVA_INT.withName("srcArrayElement"),
+        ValueLayout.ADDRESS.withName("dstSet"),
+        ValueLayout.JAVA_INT.withName("dstBinding"),
+        ValueLayout.JAVA_INT.withName("dstArrayElement"),
+        ValueLayout.JAVA_INT.withName("descriptorCount")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcSet = PathElement.groupElement("srcSet");
+    public static final PathElement PATH$srcBinding = PathElement.groupElement("srcBinding");
+    public static final PathElement PATH$srcArrayElement = PathElement.groupElement("srcArrayElement");
+    public static final PathElement PATH$dstSet = PathElement.groupElement("dstSet");
+    public static final PathElement PATH$dstBinding = PathElement.groupElement("dstBinding");
+    public static final PathElement PATH$dstArrayElement = PathElement.groupElement("dstArrayElement");
+    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$srcSet = (AddressLayout) LAYOUT.select(PATH$srcSet);
+    public static final OfInt LAYOUT$srcBinding = (OfInt) LAYOUT.select(PATH$srcBinding);
+    public static final OfInt LAYOUT$srcArrayElement = (OfInt) LAYOUT.select(PATH$srcArrayElement);
+    public static final AddressLayout LAYOUT$dstSet = (AddressLayout) LAYOUT.select(PATH$dstSet);
+    public static final OfInt LAYOUT$dstBinding = (OfInt) LAYOUT.select(PATH$dstBinding);
+    public static final OfInt LAYOUT$dstArrayElement = (OfInt) LAYOUT.select(PATH$dstArrayElement);
+    public static final OfInt LAYOUT$descriptorCount = (OfInt) LAYOUT.select(PATH$descriptorCount);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$srcSet = LAYOUT.byteOffset(PATH$srcSet);
+    public static final long OFFSET$srcBinding = LAYOUT.byteOffset(PATH$srcBinding);
+    public static final long OFFSET$srcArrayElement = LAYOUT.byteOffset(PATH$srcArrayElement);
+    public static final long OFFSET$dstSet = LAYOUT.byteOffset(PATH$dstSet);
+    public static final long OFFSET$dstBinding = LAYOUT.byteOffset(PATH$dstBinding);
+    public static final long OFFSET$dstArrayElement = LAYOUT.byteOffset(PATH$dstArrayElement);
+    public static final long OFFSET$descriptorCount = LAYOUT.byteOffset(PATH$descriptorCount);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$srcSet = LAYOUT$srcSet.byteSize();
+    public static final long SIZE$srcBinding = LAYOUT$srcBinding.byteSize();
+    public static final long SIZE$srcArrayElement = LAYOUT$srcArrayElement.byteSize();
+    public static final long SIZE$dstSet = LAYOUT$dstSet.byteSize();
+    public static final long SIZE$dstBinding = LAYOUT$dstBinding.byteSize();
+    public static final long SIZE$dstArrayElement = LAYOUT$dstArrayElement.byteSize();
+    public static final long SIZE$descriptorCount = LAYOUT$descriptorCount.byteSize();
+
 }

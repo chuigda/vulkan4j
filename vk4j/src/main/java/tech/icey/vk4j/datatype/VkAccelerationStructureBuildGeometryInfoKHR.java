@@ -31,69 +31,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAccelerationStructureBuildGeometryInfoKHR.html">VkAccelerationStructureBuildGeometryInfoKHR</a>
 public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("type"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("mode"),
-        ValueLayout.ADDRESS.withName("srcAccelerationStructure"),
-        ValueLayout.ADDRESS.withName("dstAccelerationStructure"),
-        ValueLayout.JAVA_INT.withName("geometryCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkAccelerationStructureGeometryKHR.LAYOUT).withName("pGeometries"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkAccelerationStructureGeometryKHR.LAYOUT)).withName("ppGeometries"),
-        VkDeviceOrHostAddressKHR.LAYOUT.withName("scratchData")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$type = PathElement.groupElement("type");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$mode = PathElement.groupElement("mode");
-    public static final PathElement PATH$srcAccelerationStructure = PathElement.groupElement("srcAccelerationStructure");
-    public static final PathElement PATH$dstAccelerationStructure = PathElement.groupElement("dstAccelerationStructure");
-    public static final PathElement PATH$geometryCount = PathElement.groupElement("geometryCount");
-    public static final PathElement PATH$pGeometries = PathElement.groupElement("pGeometries");
-    public static final PathElement PATH$ppGeometries = PathElement.groupElement("ppGeometries");
-    public static final PathElement PATH$scratchData = PathElement.groupElement("scratchData");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
-    public static final AddressLayout LAYOUT$srcAccelerationStructure = (AddressLayout) LAYOUT.select(PATH$srcAccelerationStructure);
-    public static final AddressLayout LAYOUT$dstAccelerationStructure = (AddressLayout) LAYOUT.select(PATH$dstAccelerationStructure);
-    public static final OfInt LAYOUT$geometryCount = (OfInt) LAYOUT.select(PATH$geometryCount);
-    public static final AddressLayout LAYOUT$pGeometries = (AddressLayout) LAYOUT.select(PATH$pGeometries);
-    public static final AddressLayout LAYOUT$ppGeometries = (AddressLayout) LAYOUT.select(PATH$ppGeometries);
-    public static final UnionLayout LAYOUT$scratchData = (UnionLayout) LAYOUT.select(PATH$scratchData);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$mode = LAYOUT.byteOffset(PATH$mode);
-    public static final long OFFSET$srcAccelerationStructure = LAYOUT.byteOffset(PATH$srcAccelerationStructure);
-    public static final long OFFSET$dstAccelerationStructure = LAYOUT.byteOffset(PATH$dstAccelerationStructure);
-    public static final long OFFSET$geometryCount = LAYOUT.byteOffset(PATH$geometryCount);
-    public static final long OFFSET$pGeometries = LAYOUT.byteOffset(PATH$pGeometries);
-    public static final long OFFSET$ppGeometries = LAYOUT.byteOffset(PATH$ppGeometries);
-    public static final long OFFSET$scratchData = LAYOUT.byteOffset(PATH$scratchData);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$type = LAYOUT$type.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$mode = LAYOUT$mode.byteSize();
-    public static final long SIZE$srcAccelerationStructure = LAYOUT$srcAccelerationStructure.byteSize();
-    public static final long SIZE$dstAccelerationStructure = LAYOUT$dstAccelerationStructure.byteSize();
-    public static final long SIZE$geometryCount = LAYOUT$geometryCount.byteSize();
-    public static final long SIZE$pGeometries = LAYOUT$pGeometries.byteSize();
-    public static final long SIZE$ppGeometries = LAYOUT$ppGeometries.byteSize();
-    public static final long SIZE$scratchData = LAYOUT$scratchData.byteSize();
-
     public VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR);
@@ -240,4 +177,68 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("type"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("mode"),
+        ValueLayout.ADDRESS.withName("srcAccelerationStructure"),
+        ValueLayout.ADDRESS.withName("dstAccelerationStructure"),
+        ValueLayout.JAVA_INT.withName("geometryCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkAccelerationStructureGeometryKHR.LAYOUT).withName("pGeometries"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkAccelerationStructureGeometryKHR.LAYOUT)).withName("ppGeometries"),
+        VkDeviceOrHostAddressKHR.LAYOUT.withName("scratchData")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$mode = PathElement.groupElement("mode");
+    public static final PathElement PATH$srcAccelerationStructure = PathElement.groupElement("srcAccelerationStructure");
+    public static final PathElement PATH$dstAccelerationStructure = PathElement.groupElement("dstAccelerationStructure");
+    public static final PathElement PATH$geometryCount = PathElement.groupElement("geometryCount");
+    public static final PathElement PATH$pGeometries = PathElement.groupElement("pGeometries");
+    public static final PathElement PATH$ppGeometries = PathElement.groupElement("ppGeometries");
+    public static final PathElement PATH$scratchData = PathElement.groupElement("scratchData");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
+    public static final AddressLayout LAYOUT$srcAccelerationStructure = (AddressLayout) LAYOUT.select(PATH$srcAccelerationStructure);
+    public static final AddressLayout LAYOUT$dstAccelerationStructure = (AddressLayout) LAYOUT.select(PATH$dstAccelerationStructure);
+    public static final OfInt LAYOUT$geometryCount = (OfInt) LAYOUT.select(PATH$geometryCount);
+    public static final AddressLayout LAYOUT$pGeometries = (AddressLayout) LAYOUT.select(PATH$pGeometries);
+    public static final AddressLayout LAYOUT$ppGeometries = (AddressLayout) LAYOUT.select(PATH$ppGeometries);
+    public static final UnionLayout LAYOUT$scratchData = (UnionLayout) LAYOUT.select(PATH$scratchData);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$mode = LAYOUT.byteOffset(PATH$mode);
+    public static final long OFFSET$srcAccelerationStructure = LAYOUT.byteOffset(PATH$srcAccelerationStructure);
+    public static final long OFFSET$dstAccelerationStructure = LAYOUT.byteOffset(PATH$dstAccelerationStructure);
+    public static final long OFFSET$geometryCount = LAYOUT.byteOffset(PATH$geometryCount);
+    public static final long OFFSET$pGeometries = LAYOUT.byteOffset(PATH$pGeometries);
+    public static final long OFFSET$ppGeometries = LAYOUT.byteOffset(PATH$ppGeometries);
+    public static final long OFFSET$scratchData = LAYOUT.byteOffset(PATH$scratchData);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$mode = LAYOUT$mode.byteSize();
+    public static final long SIZE$srcAccelerationStructure = LAYOUT$srcAccelerationStructure.byteSize();
+    public static final long SIZE$dstAccelerationStructure = LAYOUT$dstAccelerationStructure.byteSize();
+    public static final long SIZE$geometryCount = LAYOUT$geometryCount.byteSize();
+    public static final long SIZE$pGeometries = LAYOUT$pGeometries.byteSize();
+    public static final long SIZE$ppGeometries = LAYOUT$ppGeometries.byteSize();
+    public static final long SIZE$scratchData = LAYOUT$scratchData.byteSize();
+
 }

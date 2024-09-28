@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineCreationFeedback.html">VkPipelineCreationFeedback</a>
 public record VkPipelineCreationFeedback(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_LONG.withName("duration")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$duration = PathElement.groupElement("duration");
-
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfLong LAYOUT$duration = (OfLong) LAYOUT.select(PATH$duration);
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$duration = LAYOUT.byteOffset(PATH$duration);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$duration = LAYOUT$duration.byteSize();
-
     public VkPipelineCreationFeedback(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkPipelineCreationFeedback(MemorySegment segment) implements IPoin
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_LONG.withName("duration")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$duration = PathElement.groupElement("duration");
+
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$duration = (OfLong) LAYOUT.select(PATH$duration);
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$duration = LAYOUT.byteOffset(PATH$duration);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$duration = LAYOUT$duration.byteSize();
+
 }

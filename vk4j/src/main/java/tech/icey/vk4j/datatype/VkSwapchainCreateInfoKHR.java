@@ -39,104 +39,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSwapchainCreateInfoKHR.html">VkSwapchainCreateInfoKHR</a>
 public record VkSwapchainCreateInfoKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.ADDRESS.withName("surface"),
-        ValueLayout.JAVA_INT.withName("minImageCount"),
-        ValueLayout.JAVA_INT.withName("imageFormat"),
-        ValueLayout.JAVA_INT.withName("imageColorSpace"),
-        VkExtent2D.LAYOUT.withName("imageExtent"),
-        ValueLayout.JAVA_INT.withName("imageArrayLayers"),
-        ValueLayout.JAVA_INT.withName("imageUsage"),
-        ValueLayout.JAVA_INT.withName("imageSharingMode"),
-        ValueLayout.JAVA_INT.withName("queueFamilyIndexCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pQueueFamilyIndices"),
-        ValueLayout.JAVA_INT.withName("preTransform"),
-        ValueLayout.JAVA_INT.withName("compositeAlpha"),
-        ValueLayout.JAVA_INT.withName("presentMode"),
-        ValueLayout.JAVA_INT.withName("clipped"),
-        ValueLayout.ADDRESS.withName("oldSwapchain")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$surface = PathElement.groupElement("surface");
-    public static final PathElement PATH$minImageCount = PathElement.groupElement("minImageCount");
-    public static final PathElement PATH$imageFormat = PathElement.groupElement("imageFormat");
-    public static final PathElement PATH$imageColorSpace = PathElement.groupElement("imageColorSpace");
-    public static final PathElement PATH$imageExtent = PathElement.groupElement("imageExtent");
-    public static final PathElement PATH$imageArrayLayers = PathElement.groupElement("imageArrayLayers");
-    public static final PathElement PATH$imageUsage = PathElement.groupElement("imageUsage");
-    public static final PathElement PATH$imageSharingMode = PathElement.groupElement("imageSharingMode");
-    public static final PathElement PATH$queueFamilyIndexCount = PathElement.groupElement("queueFamilyIndexCount");
-    public static final PathElement PATH$pQueueFamilyIndices = PathElement.groupElement("pQueueFamilyIndices");
-    public static final PathElement PATH$preTransform = PathElement.groupElement("preTransform");
-    public static final PathElement PATH$compositeAlpha = PathElement.groupElement("compositeAlpha");
-    public static final PathElement PATH$presentMode = PathElement.groupElement("presentMode");
-    public static final PathElement PATH$clipped = PathElement.groupElement("clipped");
-    public static final PathElement PATH$oldSwapchain = PathElement.groupElement("oldSwapchain");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final AddressLayout LAYOUT$surface = (AddressLayout) LAYOUT.select(PATH$surface);
-    public static final OfInt LAYOUT$minImageCount = (OfInt) LAYOUT.select(PATH$minImageCount);
-    public static final OfInt LAYOUT$imageFormat = (OfInt) LAYOUT.select(PATH$imageFormat);
-    public static final OfInt LAYOUT$imageColorSpace = (OfInt) LAYOUT.select(PATH$imageColorSpace);
-    public static final StructLayout LAYOUT$imageExtent = (StructLayout) LAYOUT.select(PATH$imageExtent);
-    public static final OfInt LAYOUT$imageArrayLayers = (OfInt) LAYOUT.select(PATH$imageArrayLayers);
-    public static final OfInt LAYOUT$imageUsage = (OfInt) LAYOUT.select(PATH$imageUsage);
-    public static final OfInt LAYOUT$imageSharingMode = (OfInt) LAYOUT.select(PATH$imageSharingMode);
-    public static final OfInt LAYOUT$queueFamilyIndexCount = (OfInt) LAYOUT.select(PATH$queueFamilyIndexCount);
-    public static final AddressLayout LAYOUT$pQueueFamilyIndices = (AddressLayout) LAYOUT.select(PATH$pQueueFamilyIndices);
-    public static final OfInt LAYOUT$preTransform = (OfInt) LAYOUT.select(PATH$preTransform);
-    public static final OfInt LAYOUT$compositeAlpha = (OfInt) LAYOUT.select(PATH$compositeAlpha);
-    public static final OfInt LAYOUT$presentMode = (OfInt) LAYOUT.select(PATH$presentMode);
-    public static final OfInt LAYOUT$clipped = (OfInt) LAYOUT.select(PATH$clipped);
-    public static final AddressLayout LAYOUT$oldSwapchain = (AddressLayout) LAYOUT.select(PATH$oldSwapchain);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$surface = LAYOUT.byteOffset(PATH$surface);
-    public static final long OFFSET$minImageCount = LAYOUT.byteOffset(PATH$minImageCount);
-    public static final long OFFSET$imageFormat = LAYOUT.byteOffset(PATH$imageFormat);
-    public static final long OFFSET$imageColorSpace = LAYOUT.byteOffset(PATH$imageColorSpace);
-    public static final long OFFSET$imageExtent = LAYOUT.byteOffset(PATH$imageExtent);
-    public static final long OFFSET$imageArrayLayers = LAYOUT.byteOffset(PATH$imageArrayLayers);
-    public static final long OFFSET$imageUsage = LAYOUT.byteOffset(PATH$imageUsage);
-    public static final long OFFSET$imageSharingMode = LAYOUT.byteOffset(PATH$imageSharingMode);
-    public static final long OFFSET$queueFamilyIndexCount = LAYOUT.byteOffset(PATH$queueFamilyIndexCount);
-    public static final long OFFSET$pQueueFamilyIndices = LAYOUT.byteOffset(PATH$pQueueFamilyIndices);
-    public static final long OFFSET$preTransform = LAYOUT.byteOffset(PATH$preTransform);
-    public static final long OFFSET$compositeAlpha = LAYOUT.byteOffset(PATH$compositeAlpha);
-    public static final long OFFSET$presentMode = LAYOUT.byteOffset(PATH$presentMode);
-    public static final long OFFSET$clipped = LAYOUT.byteOffset(PATH$clipped);
-    public static final long OFFSET$oldSwapchain = LAYOUT.byteOffset(PATH$oldSwapchain);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$surface = LAYOUT$surface.byteSize();
-    public static final long SIZE$minImageCount = LAYOUT$minImageCount.byteSize();
-    public static final long SIZE$imageFormat = LAYOUT$imageFormat.byteSize();
-    public static final long SIZE$imageColorSpace = LAYOUT$imageColorSpace.byteSize();
-    public static final long SIZE$imageExtent = LAYOUT$imageExtent.byteSize();
-    public static final long SIZE$imageArrayLayers = LAYOUT$imageArrayLayers.byteSize();
-    public static final long SIZE$imageUsage = LAYOUT$imageUsage.byteSize();
-    public static final long SIZE$imageSharingMode = LAYOUT$imageSharingMode.byteSize();
-    public static final long SIZE$queueFamilyIndexCount = LAYOUT$queueFamilyIndexCount.byteSize();
-    public static final long SIZE$pQueueFamilyIndices = LAYOUT$pQueueFamilyIndices.byteSize();
-    public static final long SIZE$preTransform = LAYOUT$preTransform.byteSize();
-    public static final long SIZE$compositeAlpha = LAYOUT$compositeAlpha.byteSize();
-    public static final long SIZE$presentMode = LAYOUT$presentMode.byteSize();
-    public static final long SIZE$clipped = LAYOUT$clipped.byteSize();
-    public static final long SIZE$oldSwapchain = LAYOUT$oldSwapchain.byteSize();
-
     public VkSwapchainCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR);
@@ -317,4 +219,103 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) implements IPointe
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withName("surface"),
+        ValueLayout.JAVA_INT.withName("minImageCount"),
+        ValueLayout.JAVA_INT.withName("imageFormat"),
+        ValueLayout.JAVA_INT.withName("imageColorSpace"),
+        VkExtent2D.LAYOUT.withName("imageExtent"),
+        ValueLayout.JAVA_INT.withName("imageArrayLayers"),
+        ValueLayout.JAVA_INT.withName("imageUsage"),
+        ValueLayout.JAVA_INT.withName("imageSharingMode"),
+        ValueLayout.JAVA_INT.withName("queueFamilyIndexCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pQueueFamilyIndices"),
+        ValueLayout.JAVA_INT.withName("preTransform"),
+        ValueLayout.JAVA_INT.withName("compositeAlpha"),
+        ValueLayout.JAVA_INT.withName("presentMode"),
+        ValueLayout.JAVA_INT.withName("clipped"),
+        ValueLayout.ADDRESS.withName("oldSwapchain")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$surface = PathElement.groupElement("surface");
+    public static final PathElement PATH$minImageCount = PathElement.groupElement("minImageCount");
+    public static final PathElement PATH$imageFormat = PathElement.groupElement("imageFormat");
+    public static final PathElement PATH$imageColorSpace = PathElement.groupElement("imageColorSpace");
+    public static final PathElement PATH$imageExtent = PathElement.groupElement("imageExtent");
+    public static final PathElement PATH$imageArrayLayers = PathElement.groupElement("imageArrayLayers");
+    public static final PathElement PATH$imageUsage = PathElement.groupElement("imageUsage");
+    public static final PathElement PATH$imageSharingMode = PathElement.groupElement("imageSharingMode");
+    public static final PathElement PATH$queueFamilyIndexCount = PathElement.groupElement("queueFamilyIndexCount");
+    public static final PathElement PATH$pQueueFamilyIndices = PathElement.groupElement("pQueueFamilyIndices");
+    public static final PathElement PATH$preTransform = PathElement.groupElement("preTransform");
+    public static final PathElement PATH$compositeAlpha = PathElement.groupElement("compositeAlpha");
+    public static final PathElement PATH$presentMode = PathElement.groupElement("presentMode");
+    public static final PathElement PATH$clipped = PathElement.groupElement("clipped");
+    public static final PathElement PATH$oldSwapchain = PathElement.groupElement("oldSwapchain");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$surface = (AddressLayout) LAYOUT.select(PATH$surface);
+    public static final OfInt LAYOUT$minImageCount = (OfInt) LAYOUT.select(PATH$minImageCount);
+    public static final OfInt LAYOUT$imageFormat = (OfInt) LAYOUT.select(PATH$imageFormat);
+    public static final OfInt LAYOUT$imageColorSpace = (OfInt) LAYOUT.select(PATH$imageColorSpace);
+    public static final StructLayout LAYOUT$imageExtent = (StructLayout) LAYOUT.select(PATH$imageExtent);
+    public static final OfInt LAYOUT$imageArrayLayers = (OfInt) LAYOUT.select(PATH$imageArrayLayers);
+    public static final OfInt LAYOUT$imageUsage = (OfInt) LAYOUT.select(PATH$imageUsage);
+    public static final OfInt LAYOUT$imageSharingMode = (OfInt) LAYOUT.select(PATH$imageSharingMode);
+    public static final OfInt LAYOUT$queueFamilyIndexCount = (OfInt) LAYOUT.select(PATH$queueFamilyIndexCount);
+    public static final AddressLayout LAYOUT$pQueueFamilyIndices = (AddressLayout) LAYOUT.select(PATH$pQueueFamilyIndices);
+    public static final OfInt LAYOUT$preTransform = (OfInt) LAYOUT.select(PATH$preTransform);
+    public static final OfInt LAYOUT$compositeAlpha = (OfInt) LAYOUT.select(PATH$compositeAlpha);
+    public static final OfInt LAYOUT$presentMode = (OfInt) LAYOUT.select(PATH$presentMode);
+    public static final OfInt LAYOUT$clipped = (OfInt) LAYOUT.select(PATH$clipped);
+    public static final AddressLayout LAYOUT$oldSwapchain = (AddressLayout) LAYOUT.select(PATH$oldSwapchain);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$surface = LAYOUT.byteOffset(PATH$surface);
+    public static final long OFFSET$minImageCount = LAYOUT.byteOffset(PATH$minImageCount);
+    public static final long OFFSET$imageFormat = LAYOUT.byteOffset(PATH$imageFormat);
+    public static final long OFFSET$imageColorSpace = LAYOUT.byteOffset(PATH$imageColorSpace);
+    public static final long OFFSET$imageExtent = LAYOUT.byteOffset(PATH$imageExtent);
+    public static final long OFFSET$imageArrayLayers = LAYOUT.byteOffset(PATH$imageArrayLayers);
+    public static final long OFFSET$imageUsage = LAYOUT.byteOffset(PATH$imageUsage);
+    public static final long OFFSET$imageSharingMode = LAYOUT.byteOffset(PATH$imageSharingMode);
+    public static final long OFFSET$queueFamilyIndexCount = LAYOUT.byteOffset(PATH$queueFamilyIndexCount);
+    public static final long OFFSET$pQueueFamilyIndices = LAYOUT.byteOffset(PATH$pQueueFamilyIndices);
+    public static final long OFFSET$preTransform = LAYOUT.byteOffset(PATH$preTransform);
+    public static final long OFFSET$compositeAlpha = LAYOUT.byteOffset(PATH$compositeAlpha);
+    public static final long OFFSET$presentMode = LAYOUT.byteOffset(PATH$presentMode);
+    public static final long OFFSET$clipped = LAYOUT.byteOffset(PATH$clipped);
+    public static final long OFFSET$oldSwapchain = LAYOUT.byteOffset(PATH$oldSwapchain);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$surface = LAYOUT$surface.byteSize();
+    public static final long SIZE$minImageCount = LAYOUT$minImageCount.byteSize();
+    public static final long SIZE$imageFormat = LAYOUT$imageFormat.byteSize();
+    public static final long SIZE$imageColorSpace = LAYOUT$imageColorSpace.byteSize();
+    public static final long SIZE$imageExtent = LAYOUT$imageExtent.byteSize();
+    public static final long SIZE$imageArrayLayers = LAYOUT$imageArrayLayers.byteSize();
+    public static final long SIZE$imageUsage = LAYOUT$imageUsage.byteSize();
+    public static final long SIZE$imageSharingMode = LAYOUT$imageSharingMode.byteSize();
+    public static final long SIZE$queueFamilyIndexCount = LAYOUT$queueFamilyIndexCount.byteSize();
+    public static final long SIZE$pQueueFamilyIndices = LAYOUT$pQueueFamilyIndices.byteSize();
+    public static final long SIZE$preTransform = LAYOUT$preTransform.byteSize();
+    public static final long SIZE$compositeAlpha = LAYOUT$compositeAlpha.byteSize();
+    public static final long SIZE$presentMode = LAYOUT$presentMode.byteSize();
+    public static final long SIZE$clipped = LAYOUT$clipped.byteSize();
+    public static final long SIZE$oldSwapchain = LAYOUT$oldSwapchain.byteSize();
+
 }

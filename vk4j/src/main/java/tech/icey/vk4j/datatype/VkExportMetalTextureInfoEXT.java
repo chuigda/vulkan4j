@@ -27,49 +27,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkExportMetalTextureInfoEXT.html">VkExportMetalTextureInfoEXT</a>
 public record VkExportMetalTextureInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("image"),
-        ValueLayout.ADDRESS.withName("imageView"),
-        ValueLayout.ADDRESS.withName("bufferView"),
-        ValueLayout.JAVA_INT.withName("plane"),
-        ValueLayout.ADDRESS.withName("mtlTexture")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$image = PathElement.groupElement("image");
-    public static final PathElement PATH$imageView = PathElement.groupElement("imageView");
-    public static final PathElement PATH$bufferView = PathElement.groupElement("bufferView");
-    public static final PathElement PATH$plane = PathElement.groupElement("plane");
-    public static final PathElement PATH$mtlTexture = PathElement.groupElement("mtlTexture");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$image = (AddressLayout) LAYOUT.select(PATH$image);
-    public static final AddressLayout LAYOUT$imageView = (AddressLayout) LAYOUT.select(PATH$imageView);
-    public static final AddressLayout LAYOUT$bufferView = (AddressLayout) LAYOUT.select(PATH$bufferView);
-    public static final OfInt LAYOUT$plane = (OfInt) LAYOUT.select(PATH$plane);
-    public static final AddressLayout LAYOUT$mtlTexture = (AddressLayout) LAYOUT.select(PATH$mtlTexture);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$image = LAYOUT.byteOffset(PATH$image);
-    public static final long OFFSET$imageView = LAYOUT.byteOffset(PATH$imageView);
-    public static final long OFFSET$bufferView = LAYOUT.byteOffset(PATH$bufferView);
-    public static final long OFFSET$plane = LAYOUT.byteOffset(PATH$plane);
-    public static final long OFFSET$mtlTexture = LAYOUT.byteOffset(PATH$mtlTexture);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$image = LAYOUT$image.byteSize();
-    public static final long SIZE$imageView = LAYOUT$imageView.byteSize();
-    public static final long SIZE$bufferView = LAYOUT$bufferView.byteSize();
-    public static final long SIZE$plane = LAYOUT$plane.byteSize();
-    public static final long SIZE$mtlTexture = LAYOUT$mtlTexture.byteSize();
-
     public VkExportMetalTextureInfoEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_EXPORT_METAL_TEXTURE_INFO_EXT);
@@ -151,4 +108,48 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("image"),
+        ValueLayout.ADDRESS.withName("imageView"),
+        ValueLayout.ADDRESS.withName("bufferView"),
+        ValueLayout.JAVA_INT.withName("plane"),
+        ValueLayout.ADDRESS.withName("mtlTexture")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$image = PathElement.groupElement("image");
+    public static final PathElement PATH$imageView = PathElement.groupElement("imageView");
+    public static final PathElement PATH$bufferView = PathElement.groupElement("bufferView");
+    public static final PathElement PATH$plane = PathElement.groupElement("plane");
+    public static final PathElement PATH$mtlTexture = PathElement.groupElement("mtlTexture");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$image = (AddressLayout) LAYOUT.select(PATH$image);
+    public static final AddressLayout LAYOUT$imageView = (AddressLayout) LAYOUT.select(PATH$imageView);
+    public static final AddressLayout LAYOUT$bufferView = (AddressLayout) LAYOUT.select(PATH$bufferView);
+    public static final OfInt LAYOUT$plane = (OfInt) LAYOUT.select(PATH$plane);
+    public static final AddressLayout LAYOUT$mtlTexture = (AddressLayout) LAYOUT.select(PATH$mtlTexture);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$image = LAYOUT.byteOffset(PATH$image);
+    public static final long OFFSET$imageView = LAYOUT.byteOffset(PATH$imageView);
+    public static final long OFFSET$bufferView = LAYOUT.byteOffset(PATH$bufferView);
+    public static final long OFFSET$plane = LAYOUT.byteOffset(PATH$plane);
+    public static final long OFFSET$mtlTexture = LAYOUT.byteOffset(PATH$mtlTexture);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$image = LAYOUT$image.byteSize();
+    public static final long SIZE$imageView = LAYOUT$imageView.byteSize();
+    public static final long SIZE$bufferView = LAYOUT$bufferView.byteSize();
+    public static final long SIZE$plane = LAYOUT$plane.byteSize();
+    public static final long SIZE$mtlTexture = LAYOUT$mtlTexture.byteSize();
+
 }

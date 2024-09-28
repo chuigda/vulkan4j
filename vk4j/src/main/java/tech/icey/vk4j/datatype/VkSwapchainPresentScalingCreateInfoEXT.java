@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSwapchainPresentScalingCreateInfoEXT.html">VkSwapchainPresentScalingCreateInfoEXT</a>
 public record VkSwapchainPresentScalingCreateInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("scalingBehavior"),
-        ValueLayout.JAVA_INT.withName("presentGravityX"),
-        ValueLayout.JAVA_INT.withName("presentGravityY")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$scalingBehavior = PathElement.groupElement("scalingBehavior");
-    public static final PathElement PATH$presentGravityX = PathElement.groupElement("presentGravityX");
-    public static final PathElement PATH$presentGravityY = PathElement.groupElement("presentGravityY");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$scalingBehavior = (OfInt) LAYOUT.select(PATH$scalingBehavior);
-    public static final OfInt LAYOUT$presentGravityX = (OfInt) LAYOUT.select(PATH$presentGravityX);
-    public static final OfInt LAYOUT$presentGravityY = (OfInt) LAYOUT.select(PATH$presentGravityY);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$scalingBehavior = LAYOUT.byteOffset(PATH$scalingBehavior);
-    public static final long OFFSET$presentGravityX = LAYOUT.byteOffset(PATH$presentGravityX);
-    public static final long OFFSET$presentGravityY = LAYOUT.byteOffset(PATH$presentGravityY);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$scalingBehavior = LAYOUT$scalingBehavior.byteSize();
-    public static final long SIZE$presentGravityX = LAYOUT$presentGravityX.byteSize();
-    public static final long SIZE$presentGravityY = LAYOUT$presentGravityY.byteSize();
-
     public VkSwapchainPresentScalingCreateInfoEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_SCALING_CREATE_INFO_EXT);
@@ -119,4 +86,38 @@ public record VkSwapchainPresentScalingCreateInfoEXT(MemorySegment segment) impl
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("scalingBehavior"),
+        ValueLayout.JAVA_INT.withName("presentGravityX"),
+        ValueLayout.JAVA_INT.withName("presentGravityY")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$scalingBehavior = PathElement.groupElement("scalingBehavior");
+    public static final PathElement PATH$presentGravityX = PathElement.groupElement("presentGravityX");
+    public static final PathElement PATH$presentGravityY = PathElement.groupElement("presentGravityY");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$scalingBehavior = (OfInt) LAYOUT.select(PATH$scalingBehavior);
+    public static final OfInt LAYOUT$presentGravityX = (OfInt) LAYOUT.select(PATH$presentGravityX);
+    public static final OfInt LAYOUT$presentGravityY = (OfInt) LAYOUT.select(PATH$presentGravityY);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$scalingBehavior = LAYOUT.byteOffset(PATH$scalingBehavior);
+    public static final long OFFSET$presentGravityX = LAYOUT.byteOffset(PATH$presentGravityX);
+    public static final long OFFSET$presentGravityY = LAYOUT.byteOffset(PATH$presentGravityY);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$scalingBehavior = LAYOUT$scalingBehavior.byteSize();
+    public static final long SIZE$presentGravityX = LAYOUT$presentGravityX.byteSize();
+    public static final long SIZE$presentGravityY = LAYOUT$presentGravityY.byteSize();
+
 }

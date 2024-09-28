@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT.html">VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT</a>
 public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("rasterizationOrderColorAttachmentAccess"),
-        ValueLayout.JAVA_INT.withName("rasterizationOrderDepthAttachmentAccess"),
-        ValueLayout.JAVA_INT.withName("rasterizationOrderStencilAttachmentAccess")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$rasterizationOrderColorAttachmentAccess = PathElement.groupElement("rasterizationOrderColorAttachmentAccess");
-    public static final PathElement PATH$rasterizationOrderDepthAttachmentAccess = PathElement.groupElement("rasterizationOrderDepthAttachmentAccess");
-    public static final PathElement PATH$rasterizationOrderStencilAttachmentAccess = PathElement.groupElement("rasterizationOrderStencilAttachmentAccess");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$rasterizationOrderColorAttachmentAccess = (OfInt) LAYOUT.select(PATH$rasterizationOrderColorAttachmentAccess);
-    public static final OfInt LAYOUT$rasterizationOrderDepthAttachmentAccess = (OfInt) LAYOUT.select(PATH$rasterizationOrderDepthAttachmentAccess);
-    public static final OfInt LAYOUT$rasterizationOrderStencilAttachmentAccess = (OfInt) LAYOUT.select(PATH$rasterizationOrderStencilAttachmentAccess);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$rasterizationOrderColorAttachmentAccess = LAYOUT.byteOffset(PATH$rasterizationOrderColorAttachmentAccess);
-    public static final long OFFSET$rasterizationOrderDepthAttachmentAccess = LAYOUT.byteOffset(PATH$rasterizationOrderDepthAttachmentAccess);
-    public static final long OFFSET$rasterizationOrderStencilAttachmentAccess = LAYOUT.byteOffset(PATH$rasterizationOrderStencilAttachmentAccess);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$rasterizationOrderColorAttachmentAccess = LAYOUT$rasterizationOrderColorAttachmentAccess.byteSize();
-    public static final long SIZE$rasterizationOrderDepthAttachmentAccess = LAYOUT$rasterizationOrderDepthAttachmentAccess.byteSize();
-    public static final long SIZE$rasterizationOrderStencilAttachmentAccess = LAYOUT$rasterizationOrderStencilAttachmentAccess.byteSize();
-
     public VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_EXT);
@@ -119,4 +86,38 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(Memo
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("rasterizationOrderColorAttachmentAccess"),
+        ValueLayout.JAVA_INT.withName("rasterizationOrderDepthAttachmentAccess"),
+        ValueLayout.JAVA_INT.withName("rasterizationOrderStencilAttachmentAccess")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$rasterizationOrderColorAttachmentAccess = PathElement.groupElement("rasterizationOrderColorAttachmentAccess");
+    public static final PathElement PATH$rasterizationOrderDepthAttachmentAccess = PathElement.groupElement("rasterizationOrderDepthAttachmentAccess");
+    public static final PathElement PATH$rasterizationOrderStencilAttachmentAccess = PathElement.groupElement("rasterizationOrderStencilAttachmentAccess");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$rasterizationOrderColorAttachmentAccess = (OfInt) LAYOUT.select(PATH$rasterizationOrderColorAttachmentAccess);
+    public static final OfInt LAYOUT$rasterizationOrderDepthAttachmentAccess = (OfInt) LAYOUT.select(PATH$rasterizationOrderDepthAttachmentAccess);
+    public static final OfInt LAYOUT$rasterizationOrderStencilAttachmentAccess = (OfInt) LAYOUT.select(PATH$rasterizationOrderStencilAttachmentAccess);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$rasterizationOrderColorAttachmentAccess = LAYOUT.byteOffset(PATH$rasterizationOrderColorAttachmentAccess);
+    public static final long OFFSET$rasterizationOrderDepthAttachmentAccess = LAYOUT.byteOffset(PATH$rasterizationOrderDepthAttachmentAccess);
+    public static final long OFFSET$rasterizationOrderStencilAttachmentAccess = LAYOUT.byteOffset(PATH$rasterizationOrderStencilAttachmentAccess);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$rasterizationOrderColorAttachmentAccess = LAYOUT$rasterizationOrderColorAttachmentAccess.byteSize();
+    public static final long SIZE$rasterizationOrderDepthAttachmentAccess = LAYOUT$rasterizationOrderDepthAttachmentAccess.byteSize();
+    public static final long SIZE$rasterizationOrderStencilAttachmentAccess = LAYOUT$rasterizationOrderStencilAttachmentAccess.byteSize();
+
 }

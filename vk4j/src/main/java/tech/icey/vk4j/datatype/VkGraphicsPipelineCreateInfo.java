@@ -40,109 +40,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkGraphicsPipelineCreateInfo.html">VkGraphicsPipelineCreateInfo</a>
 public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("stageCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPipelineShaderStageCreateInfo.LAYOUT).withName("pStages"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPipelineVertexInputStateCreateInfo.LAYOUT).withName("pVertexInputState"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPipelineInputAssemblyStateCreateInfo.LAYOUT).withName("pInputAssemblyState"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPipelineTessellationStateCreateInfo.LAYOUT).withName("pTessellationState"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPipelineViewportStateCreateInfo.LAYOUT).withName("pViewportState"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPipelineRasterizationStateCreateInfo.LAYOUT).withName("pRasterizationState"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPipelineMultisampleStateCreateInfo.LAYOUT).withName("pMultisampleState"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPipelineDepthStencilStateCreateInfo.LAYOUT).withName("pDepthStencilState"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPipelineColorBlendStateCreateInfo.LAYOUT).withName("pColorBlendState"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPipelineDynamicStateCreateInfo.LAYOUT).withName("pDynamicState"),
-        ValueLayout.ADDRESS.withName("layout"),
-        ValueLayout.ADDRESS.withName("renderPass"),
-        ValueLayout.JAVA_INT.withName("subpass"),
-        ValueLayout.ADDRESS.withName("basePipelineHandle"),
-        ValueLayout.JAVA_INT.withName("basePipelineIndex")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$stageCount = PathElement.groupElement("stageCount");
-    public static final PathElement PATH$pStages = PathElement.groupElement("pStages");
-    public static final PathElement PATH$pVertexInputState = PathElement.groupElement("pVertexInputState");
-    public static final PathElement PATH$pInputAssemblyState = PathElement.groupElement("pInputAssemblyState");
-    public static final PathElement PATH$pTessellationState = PathElement.groupElement("pTessellationState");
-    public static final PathElement PATH$pViewportState = PathElement.groupElement("pViewportState");
-    public static final PathElement PATH$pRasterizationState = PathElement.groupElement("pRasterizationState");
-    public static final PathElement PATH$pMultisampleState = PathElement.groupElement("pMultisampleState");
-    public static final PathElement PATH$pDepthStencilState = PathElement.groupElement("pDepthStencilState");
-    public static final PathElement PATH$pColorBlendState = PathElement.groupElement("pColorBlendState");
-    public static final PathElement PATH$pDynamicState = PathElement.groupElement("pDynamicState");
-    public static final PathElement PATH$layout = PathElement.groupElement("layout");
-    public static final PathElement PATH$renderPass = PathElement.groupElement("renderPass");
-    public static final PathElement PATH$subpass = PathElement.groupElement("subpass");
-    public static final PathElement PATH$basePipelineHandle = PathElement.groupElement("basePipelineHandle");
-    public static final PathElement PATH$basePipelineIndex = PathElement.groupElement("basePipelineIndex");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$stageCount = (OfInt) LAYOUT.select(PATH$stageCount);
-    public static final AddressLayout LAYOUT$pStages = (AddressLayout) LAYOUT.select(PATH$pStages);
-    public static final AddressLayout LAYOUT$pVertexInputState = (AddressLayout) LAYOUT.select(PATH$pVertexInputState);
-    public static final AddressLayout LAYOUT$pInputAssemblyState = (AddressLayout) LAYOUT.select(PATH$pInputAssemblyState);
-    public static final AddressLayout LAYOUT$pTessellationState = (AddressLayout) LAYOUT.select(PATH$pTessellationState);
-    public static final AddressLayout LAYOUT$pViewportState = (AddressLayout) LAYOUT.select(PATH$pViewportState);
-    public static final AddressLayout LAYOUT$pRasterizationState = (AddressLayout) LAYOUT.select(PATH$pRasterizationState);
-    public static final AddressLayout LAYOUT$pMultisampleState = (AddressLayout) LAYOUT.select(PATH$pMultisampleState);
-    public static final AddressLayout LAYOUT$pDepthStencilState = (AddressLayout) LAYOUT.select(PATH$pDepthStencilState);
-    public static final AddressLayout LAYOUT$pColorBlendState = (AddressLayout) LAYOUT.select(PATH$pColorBlendState);
-    public static final AddressLayout LAYOUT$pDynamicState = (AddressLayout) LAYOUT.select(PATH$pDynamicState);
-    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
-    public static final AddressLayout LAYOUT$renderPass = (AddressLayout) LAYOUT.select(PATH$renderPass);
-    public static final OfInt LAYOUT$subpass = (OfInt) LAYOUT.select(PATH$subpass);
-    public static final AddressLayout LAYOUT$basePipelineHandle = (AddressLayout) LAYOUT.select(PATH$basePipelineHandle);
-    public static final OfInt LAYOUT$basePipelineIndex = (OfInt) LAYOUT.select(PATH$basePipelineIndex);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$stageCount = LAYOUT.byteOffset(PATH$stageCount);
-    public static final long OFFSET$pStages = LAYOUT.byteOffset(PATH$pStages);
-    public static final long OFFSET$pVertexInputState = LAYOUT.byteOffset(PATH$pVertexInputState);
-    public static final long OFFSET$pInputAssemblyState = LAYOUT.byteOffset(PATH$pInputAssemblyState);
-    public static final long OFFSET$pTessellationState = LAYOUT.byteOffset(PATH$pTessellationState);
-    public static final long OFFSET$pViewportState = LAYOUT.byteOffset(PATH$pViewportState);
-    public static final long OFFSET$pRasterizationState = LAYOUT.byteOffset(PATH$pRasterizationState);
-    public static final long OFFSET$pMultisampleState = LAYOUT.byteOffset(PATH$pMultisampleState);
-    public static final long OFFSET$pDepthStencilState = LAYOUT.byteOffset(PATH$pDepthStencilState);
-    public static final long OFFSET$pColorBlendState = LAYOUT.byteOffset(PATH$pColorBlendState);
-    public static final long OFFSET$pDynamicState = LAYOUT.byteOffset(PATH$pDynamicState);
-    public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
-    public static final long OFFSET$renderPass = LAYOUT.byteOffset(PATH$renderPass);
-    public static final long OFFSET$subpass = LAYOUT.byteOffset(PATH$subpass);
-    public static final long OFFSET$basePipelineHandle = LAYOUT.byteOffset(PATH$basePipelineHandle);
-    public static final long OFFSET$basePipelineIndex = LAYOUT.byteOffset(PATH$basePipelineIndex);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$stageCount = LAYOUT$stageCount.byteSize();
-    public static final long SIZE$pStages = LAYOUT$pStages.byteSize();
-    public static final long SIZE$pVertexInputState = LAYOUT$pVertexInputState.byteSize();
-    public static final long SIZE$pInputAssemblyState = LAYOUT$pInputAssemblyState.byteSize();
-    public static final long SIZE$pTessellationState = LAYOUT$pTessellationState.byteSize();
-    public static final long SIZE$pViewportState = LAYOUT$pViewportState.byteSize();
-    public static final long SIZE$pRasterizationState = LAYOUT$pRasterizationState.byteSize();
-    public static final long SIZE$pMultisampleState = LAYOUT$pMultisampleState.byteSize();
-    public static final long SIZE$pDepthStencilState = LAYOUT$pDepthStencilState.byteSize();
-    public static final long SIZE$pColorBlendState = LAYOUT$pColorBlendState.byteSize();
-    public static final long SIZE$pDynamicState = LAYOUT$pDynamicState.byteSize();
-    public static final long SIZE$layout = LAYOUT$layout.byteSize();
-    public static final long SIZE$renderPass = LAYOUT$renderPass.byteSize();
-    public static final long SIZE$subpass = LAYOUT$subpass.byteSize();
-    public static final long SIZE$basePipelineHandle = LAYOUT$basePipelineHandle.byteSize();
-    public static final long SIZE$basePipelineIndex = LAYOUT$basePipelineIndex.byteSize();
-
     public VkGraphicsPipelineCreateInfo(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO);
@@ -556,4 +453,108 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("stageCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineShaderStageCreateInfo.LAYOUT).withName("pStages"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineVertexInputStateCreateInfo.LAYOUT).withName("pVertexInputState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineInputAssemblyStateCreateInfo.LAYOUT).withName("pInputAssemblyState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineTessellationStateCreateInfo.LAYOUT).withName("pTessellationState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineViewportStateCreateInfo.LAYOUT).withName("pViewportState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineRasterizationStateCreateInfo.LAYOUT).withName("pRasterizationState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineMultisampleStateCreateInfo.LAYOUT).withName("pMultisampleState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineDepthStencilStateCreateInfo.LAYOUT).withName("pDepthStencilState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineColorBlendStateCreateInfo.LAYOUT).withName("pColorBlendState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineDynamicStateCreateInfo.LAYOUT).withName("pDynamicState"),
+        ValueLayout.ADDRESS.withName("layout"),
+        ValueLayout.ADDRESS.withName("renderPass"),
+        ValueLayout.JAVA_INT.withName("subpass"),
+        ValueLayout.ADDRESS.withName("basePipelineHandle"),
+        ValueLayout.JAVA_INT.withName("basePipelineIndex")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$stageCount = PathElement.groupElement("stageCount");
+    public static final PathElement PATH$pStages = PathElement.groupElement("pStages");
+    public static final PathElement PATH$pVertexInputState = PathElement.groupElement("pVertexInputState");
+    public static final PathElement PATH$pInputAssemblyState = PathElement.groupElement("pInputAssemblyState");
+    public static final PathElement PATH$pTessellationState = PathElement.groupElement("pTessellationState");
+    public static final PathElement PATH$pViewportState = PathElement.groupElement("pViewportState");
+    public static final PathElement PATH$pRasterizationState = PathElement.groupElement("pRasterizationState");
+    public static final PathElement PATH$pMultisampleState = PathElement.groupElement("pMultisampleState");
+    public static final PathElement PATH$pDepthStencilState = PathElement.groupElement("pDepthStencilState");
+    public static final PathElement PATH$pColorBlendState = PathElement.groupElement("pColorBlendState");
+    public static final PathElement PATH$pDynamicState = PathElement.groupElement("pDynamicState");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+    public static final PathElement PATH$renderPass = PathElement.groupElement("renderPass");
+    public static final PathElement PATH$subpass = PathElement.groupElement("subpass");
+    public static final PathElement PATH$basePipelineHandle = PathElement.groupElement("basePipelineHandle");
+    public static final PathElement PATH$basePipelineIndex = PathElement.groupElement("basePipelineIndex");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$stageCount = (OfInt) LAYOUT.select(PATH$stageCount);
+    public static final AddressLayout LAYOUT$pStages = (AddressLayout) LAYOUT.select(PATH$pStages);
+    public static final AddressLayout LAYOUT$pVertexInputState = (AddressLayout) LAYOUT.select(PATH$pVertexInputState);
+    public static final AddressLayout LAYOUT$pInputAssemblyState = (AddressLayout) LAYOUT.select(PATH$pInputAssemblyState);
+    public static final AddressLayout LAYOUT$pTessellationState = (AddressLayout) LAYOUT.select(PATH$pTessellationState);
+    public static final AddressLayout LAYOUT$pViewportState = (AddressLayout) LAYOUT.select(PATH$pViewportState);
+    public static final AddressLayout LAYOUT$pRasterizationState = (AddressLayout) LAYOUT.select(PATH$pRasterizationState);
+    public static final AddressLayout LAYOUT$pMultisampleState = (AddressLayout) LAYOUT.select(PATH$pMultisampleState);
+    public static final AddressLayout LAYOUT$pDepthStencilState = (AddressLayout) LAYOUT.select(PATH$pDepthStencilState);
+    public static final AddressLayout LAYOUT$pColorBlendState = (AddressLayout) LAYOUT.select(PATH$pColorBlendState);
+    public static final AddressLayout LAYOUT$pDynamicState = (AddressLayout) LAYOUT.select(PATH$pDynamicState);
+    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
+    public static final AddressLayout LAYOUT$renderPass = (AddressLayout) LAYOUT.select(PATH$renderPass);
+    public static final OfInt LAYOUT$subpass = (OfInt) LAYOUT.select(PATH$subpass);
+    public static final AddressLayout LAYOUT$basePipelineHandle = (AddressLayout) LAYOUT.select(PATH$basePipelineHandle);
+    public static final OfInt LAYOUT$basePipelineIndex = (OfInt) LAYOUT.select(PATH$basePipelineIndex);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$stageCount = LAYOUT.byteOffset(PATH$stageCount);
+    public static final long OFFSET$pStages = LAYOUT.byteOffset(PATH$pStages);
+    public static final long OFFSET$pVertexInputState = LAYOUT.byteOffset(PATH$pVertexInputState);
+    public static final long OFFSET$pInputAssemblyState = LAYOUT.byteOffset(PATH$pInputAssemblyState);
+    public static final long OFFSET$pTessellationState = LAYOUT.byteOffset(PATH$pTessellationState);
+    public static final long OFFSET$pViewportState = LAYOUT.byteOffset(PATH$pViewportState);
+    public static final long OFFSET$pRasterizationState = LAYOUT.byteOffset(PATH$pRasterizationState);
+    public static final long OFFSET$pMultisampleState = LAYOUT.byteOffset(PATH$pMultisampleState);
+    public static final long OFFSET$pDepthStencilState = LAYOUT.byteOffset(PATH$pDepthStencilState);
+    public static final long OFFSET$pColorBlendState = LAYOUT.byteOffset(PATH$pColorBlendState);
+    public static final long OFFSET$pDynamicState = LAYOUT.byteOffset(PATH$pDynamicState);
+    public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
+    public static final long OFFSET$renderPass = LAYOUT.byteOffset(PATH$renderPass);
+    public static final long OFFSET$subpass = LAYOUT.byteOffset(PATH$subpass);
+    public static final long OFFSET$basePipelineHandle = LAYOUT.byteOffset(PATH$basePipelineHandle);
+    public static final long OFFSET$basePipelineIndex = LAYOUT.byteOffset(PATH$basePipelineIndex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$stageCount = LAYOUT$stageCount.byteSize();
+    public static final long SIZE$pStages = LAYOUT$pStages.byteSize();
+    public static final long SIZE$pVertexInputState = LAYOUT$pVertexInputState.byteSize();
+    public static final long SIZE$pInputAssemblyState = LAYOUT$pInputAssemblyState.byteSize();
+    public static final long SIZE$pTessellationState = LAYOUT$pTessellationState.byteSize();
+    public static final long SIZE$pViewportState = LAYOUT$pViewportState.byteSize();
+    public static final long SIZE$pRasterizationState = LAYOUT$pRasterizationState.byteSize();
+    public static final long SIZE$pMultisampleState = LAYOUT$pMultisampleState.byteSize();
+    public static final long SIZE$pDepthStencilState = LAYOUT$pDepthStencilState.byteSize();
+    public static final long SIZE$pColorBlendState = LAYOUT$pColorBlendState.byteSize();
+    public static final long SIZE$pDynamicState = LAYOUT$pDynamicState.byteSize();
+    public static final long SIZE$layout = LAYOUT$layout.byteSize();
+    public static final long SIZE$renderPass = LAYOUT$renderPass.byteSize();
+    public static final long SIZE$subpass = LAYOUT$subpass.byteSize();
+    public static final long SIZE$basePipelineHandle = LAYOUT$basePipelineHandle.byteSize();
+    public static final long SIZE$basePipelineIndex = LAYOUT$basePipelineIndex.byteSize();
+
 }

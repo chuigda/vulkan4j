@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkQueryPoolPerformanceCreateInfoKHR.html">VkQueryPoolPerformanceCreateInfoKHR</a>
 public record VkQueryPoolPerformanceCreateInfoKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("queueFamilyIndex"),
-        ValueLayout.JAVA_INT.withName("counterIndexCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCounterIndices")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$queueFamilyIndex = PathElement.groupElement("queueFamilyIndex");
-    public static final PathElement PATH$counterIndexCount = PathElement.groupElement("counterIndexCount");
-    public static final PathElement PATH$pCounterIndices = PathElement.groupElement("pCounterIndices");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$queueFamilyIndex = (OfInt) LAYOUT.select(PATH$queueFamilyIndex);
-    public static final OfInt LAYOUT$counterIndexCount = (OfInt) LAYOUT.select(PATH$counterIndexCount);
-    public static final AddressLayout LAYOUT$pCounterIndices = (AddressLayout) LAYOUT.select(PATH$pCounterIndices);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$queueFamilyIndex = LAYOUT.byteOffset(PATH$queueFamilyIndex);
-    public static final long OFFSET$counterIndexCount = LAYOUT.byteOffset(PATH$counterIndexCount);
-    public static final long OFFSET$pCounterIndices = LAYOUT.byteOffset(PATH$pCounterIndices);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$queueFamilyIndex = LAYOUT$queueFamilyIndex.byteSize();
-    public static final long SIZE$counterIndexCount = LAYOUT$counterIndexCount.byteSize();
-    public static final long SIZE$pCounterIndices = LAYOUT$pCounterIndices.byteSize();
-
     public VkQueryPoolPerformanceCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR);
@@ -134,4 +101,38 @@ public record VkQueryPoolPerformanceCreateInfoKHR(MemorySegment segment) impleme
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("queueFamilyIndex"),
+        ValueLayout.JAVA_INT.withName("counterIndexCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCounterIndices")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$queueFamilyIndex = PathElement.groupElement("queueFamilyIndex");
+    public static final PathElement PATH$counterIndexCount = PathElement.groupElement("counterIndexCount");
+    public static final PathElement PATH$pCounterIndices = PathElement.groupElement("pCounterIndices");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$queueFamilyIndex = (OfInt) LAYOUT.select(PATH$queueFamilyIndex);
+    public static final OfInt LAYOUT$counterIndexCount = (OfInt) LAYOUT.select(PATH$counterIndexCount);
+    public static final AddressLayout LAYOUT$pCounterIndices = (AddressLayout) LAYOUT.select(PATH$pCounterIndices);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$queueFamilyIndex = LAYOUT.byteOffset(PATH$queueFamilyIndex);
+    public static final long OFFSET$counterIndexCount = LAYOUT.byteOffset(PATH$counterIndexCount);
+    public static final long OFFSET$pCounterIndices = LAYOUT.byteOffset(PATH$pCounterIndices);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$queueFamilyIndex = LAYOUT$queueFamilyIndex.byteSize();
+    public static final long SIZE$counterIndexCount = LAYOUT$counterIndexCount.byteSize();
+    public static final long SIZE$pCounterIndices = LAYOUT$pCounterIndices.byteSize();
+
 }

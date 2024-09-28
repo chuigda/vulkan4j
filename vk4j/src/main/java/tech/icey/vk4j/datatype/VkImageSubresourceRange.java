@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageSubresourceRange.html">VkImageSubresourceRange</a>
 public record VkImageSubresourceRange(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("aspectMask"),
-        ValueLayout.JAVA_INT.withName("baseMipLevel"),
-        ValueLayout.JAVA_INT.withName("levelCount"),
-        ValueLayout.JAVA_INT.withName("baseArrayLayer"),
-        ValueLayout.JAVA_INT.withName("layerCount")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
-    public static final PathElement PATH$baseMipLevel = PathElement.groupElement("baseMipLevel");
-    public static final PathElement PATH$levelCount = PathElement.groupElement("levelCount");
-    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("baseArrayLayer");
-    public static final PathElement PATH$layerCount = PathElement.groupElement("layerCount");
-
-    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
-    public static final OfInt LAYOUT$baseMipLevel = (OfInt) LAYOUT.select(PATH$baseMipLevel);
-    public static final OfInt LAYOUT$levelCount = (OfInt) LAYOUT.select(PATH$levelCount);
-    public static final OfInt LAYOUT$baseArrayLayer = (OfInt) LAYOUT.select(PATH$baseArrayLayer);
-    public static final OfInt LAYOUT$layerCount = (OfInt) LAYOUT.select(PATH$layerCount);
-
-    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
-    public static final long OFFSET$baseMipLevel = LAYOUT.byteOffset(PATH$baseMipLevel);
-    public static final long OFFSET$levelCount = LAYOUT.byteOffset(PATH$levelCount);
-    public static final long OFFSET$baseArrayLayer = LAYOUT.byteOffset(PATH$baseArrayLayer);
-    public static final long OFFSET$layerCount = LAYOUT.byteOffset(PATH$layerCount);
-
-    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
-    public static final long SIZE$baseMipLevel = LAYOUT$baseMipLevel.byteSize();
-    public static final long SIZE$levelCount = LAYOUT$levelCount.byteSize();
-    public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
-    public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
-
     public VkImageSubresourceRange(MemorySegment segment) {
         this.segment = segment;
     }
@@ -114,4 +81,38 @@ public record VkImageSubresourceRange(MemorySegment segment) implements IPointer
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("aspectMask"),
+        ValueLayout.JAVA_INT.withName("baseMipLevel"),
+        ValueLayout.JAVA_INT.withName("levelCount"),
+        ValueLayout.JAVA_INT.withName("baseArrayLayer"),
+        ValueLayout.JAVA_INT.withName("layerCount")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
+    public static final PathElement PATH$baseMipLevel = PathElement.groupElement("baseMipLevel");
+    public static final PathElement PATH$levelCount = PathElement.groupElement("levelCount");
+    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("baseArrayLayer");
+    public static final PathElement PATH$layerCount = PathElement.groupElement("layerCount");
+
+    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
+    public static final OfInt LAYOUT$baseMipLevel = (OfInt) LAYOUT.select(PATH$baseMipLevel);
+    public static final OfInt LAYOUT$levelCount = (OfInt) LAYOUT.select(PATH$levelCount);
+    public static final OfInt LAYOUT$baseArrayLayer = (OfInt) LAYOUT.select(PATH$baseArrayLayer);
+    public static final OfInt LAYOUT$layerCount = (OfInt) LAYOUT.select(PATH$layerCount);
+
+    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
+    public static final long OFFSET$baseMipLevel = LAYOUT.byteOffset(PATH$baseMipLevel);
+    public static final long OFFSET$levelCount = LAYOUT.byteOffset(PATH$levelCount);
+    public static final long OFFSET$baseArrayLayer = LAYOUT.byteOffset(PATH$baseArrayLayer);
+    public static final long OFFSET$layerCount = LAYOUT.byteOffset(PATH$layerCount);
+
+    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
+    public static final long SIZE$baseMipLevel = LAYOUT$baseMipLevel.byteSize();
+    public static final long SIZE$levelCount = LAYOUT$levelCount.byteSize();
+    public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
+    public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
+
 }

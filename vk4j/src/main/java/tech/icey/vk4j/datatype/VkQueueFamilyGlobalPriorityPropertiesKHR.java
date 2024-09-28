@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkQueueFamilyGlobalPriorityPropertiesKHR.html">VkQueueFamilyGlobalPriorityPropertiesKHR</a>
 public record VkQueueFamilyGlobalPriorityPropertiesKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("priorityCount"),
-        MemoryLayout.sequenceLayout(VK_MAX_GLOBAL_PRIORITY_SIZE_KHR, ValueLayout.JAVA_INT).withName("priorities")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$priorityCount = PathElement.groupElement("priorityCount");
-    public static final PathElement PATH$priorities = PathElement.groupElement("priorities");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$priorityCount = (OfInt) LAYOUT.select(PATH$priorityCount);
-    public static final SequenceLayout LAYOUT$priorities = (SequenceLayout) LAYOUT.select(PATH$priorities);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$priorityCount = LAYOUT.byteOffset(PATH$priorityCount);
-    public static final long OFFSET$priorities = LAYOUT.byteOffset(PATH$priorities);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$priorityCount = LAYOUT$priorityCount.byteSize();
-    public static final long SIZE$priorities = LAYOUT$priorities.byteSize();
-
     public VkQueueFamilyGlobalPriorityPropertiesKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES_KHR);
@@ -109,4 +81,33 @@ public record VkQueueFamilyGlobalPriorityPropertiesKHR(MemorySegment segment) im
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("priorityCount"),
+        MemoryLayout.sequenceLayout(VK_MAX_GLOBAL_PRIORITY_SIZE_KHR, ValueLayout.JAVA_INT).withName("priorities")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$priorityCount = PathElement.groupElement("priorityCount");
+    public static final PathElement PATH$priorities = PathElement.groupElement("priorities");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$priorityCount = (OfInt) LAYOUT.select(PATH$priorityCount);
+    public static final SequenceLayout LAYOUT$priorities = (SequenceLayout) LAYOUT.select(PATH$priorities);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$priorityCount = LAYOUT.byteOffset(PATH$priorityCount);
+    public static final long OFFSET$priorities = LAYOUT.byteOffset(PATH$priorities);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$priorityCount = LAYOUT$priorityCount.byteSize();
+    public static final long SIZE$priorities = LAYOUT$priorities.byteSize();
+
 }

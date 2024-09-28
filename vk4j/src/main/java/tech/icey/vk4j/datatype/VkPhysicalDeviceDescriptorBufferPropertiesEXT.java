@@ -55,151 +55,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceDescriptorBufferPropertiesEXT.html">VkPhysicalDeviceDescriptorBufferPropertiesEXT</a>
 public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("combinedImageSamplerDescriptorSingleArray"),
-        ValueLayout.JAVA_INT.withName("bufferlessPushDescriptors"),
-        ValueLayout.JAVA_INT.withName("allowSamplerImageViewPostSubmitCreation"),
-        ValueLayout.JAVA_LONG.withName("descriptorBufferOffsetAlignment"),
-        ValueLayout.JAVA_INT.withName("maxDescriptorBufferBindings"),
-        ValueLayout.JAVA_INT.withName("maxResourceDescriptorBufferBindings"),
-        ValueLayout.JAVA_INT.withName("maxSamplerDescriptorBufferBindings"),
-        ValueLayout.JAVA_INT.withName("maxEmbeddedImmutableSamplerBindings"),
-        ValueLayout.JAVA_INT.withName("maxEmbeddedImmutableSamplers"),
-        NativeLayout.C_SIZE_T.withName("bufferCaptureReplayDescriptorDataSize"),
-        NativeLayout.C_SIZE_T.withName("imageCaptureReplayDescriptorDataSize"),
-        NativeLayout.C_SIZE_T.withName("imageViewCaptureReplayDescriptorDataSize"),
-        NativeLayout.C_SIZE_T.withName("samplerCaptureReplayDescriptorDataSize"),
-        NativeLayout.C_SIZE_T.withName("accelerationStructureCaptureReplayDescriptorDataSize"),
-        NativeLayout.C_SIZE_T.withName("samplerDescriptorSize"),
-        NativeLayout.C_SIZE_T.withName("combinedImageSamplerDescriptorSize"),
-        NativeLayout.C_SIZE_T.withName("sampledImageDescriptorSize"),
-        NativeLayout.C_SIZE_T.withName("storageImageDescriptorSize"),
-        NativeLayout.C_SIZE_T.withName("uniformTexelBufferDescriptorSize"),
-        NativeLayout.C_SIZE_T.withName("robustUniformTexelBufferDescriptorSize"),
-        NativeLayout.C_SIZE_T.withName("storageTexelBufferDescriptorSize"),
-        NativeLayout.C_SIZE_T.withName("robustStorageTexelBufferDescriptorSize"),
-        NativeLayout.C_SIZE_T.withName("uniformBufferDescriptorSize"),
-        NativeLayout.C_SIZE_T.withName("robustUniformBufferDescriptorSize"),
-        NativeLayout.C_SIZE_T.withName("storageBufferDescriptorSize"),
-        NativeLayout.C_SIZE_T.withName("robustStorageBufferDescriptorSize"),
-        NativeLayout.C_SIZE_T.withName("inputAttachmentDescriptorSize"),
-        NativeLayout.C_SIZE_T.withName("accelerationStructureDescriptorSize"),
-        ValueLayout.JAVA_LONG.withName("maxSamplerDescriptorBufferRange"),
-        ValueLayout.JAVA_LONG.withName("maxResourceDescriptorBufferRange"),
-        ValueLayout.JAVA_LONG.withName("samplerDescriptorBufferAddressSpaceSize"),
-        ValueLayout.JAVA_LONG.withName("resourceDescriptorBufferAddressSpaceSize"),
-        ValueLayout.JAVA_LONG.withName("descriptorBufferAddressSpaceSize")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$combinedImageSamplerDescriptorSingleArray = PathElement.groupElement("combinedImageSamplerDescriptorSingleArray");
-    public static final PathElement PATH$bufferlessPushDescriptors = PathElement.groupElement("bufferlessPushDescriptors");
-    public static final PathElement PATH$allowSamplerImageViewPostSubmitCreation = PathElement.groupElement("allowSamplerImageViewPostSubmitCreation");
-    public static final PathElement PATH$descriptorBufferOffsetAlignment = PathElement.groupElement("descriptorBufferOffsetAlignment");
-    public static final PathElement PATH$maxDescriptorBufferBindings = PathElement.groupElement("maxDescriptorBufferBindings");
-    public static final PathElement PATH$maxResourceDescriptorBufferBindings = PathElement.groupElement("maxResourceDescriptorBufferBindings");
-    public static final PathElement PATH$maxSamplerDescriptorBufferBindings = PathElement.groupElement("maxSamplerDescriptorBufferBindings");
-    public static final PathElement PATH$maxEmbeddedImmutableSamplerBindings = PathElement.groupElement("maxEmbeddedImmutableSamplerBindings");
-    public static final PathElement PATH$maxEmbeddedImmutableSamplers = PathElement.groupElement("maxEmbeddedImmutableSamplers");
-    public static final PathElement PATH$bufferCaptureReplayDescriptorDataSize = PathElement.groupElement("bufferCaptureReplayDescriptorDataSize");
-    public static final PathElement PATH$imageCaptureReplayDescriptorDataSize = PathElement.groupElement("imageCaptureReplayDescriptorDataSize");
-    public static final PathElement PATH$imageViewCaptureReplayDescriptorDataSize = PathElement.groupElement("imageViewCaptureReplayDescriptorDataSize");
-    public static final PathElement PATH$samplerCaptureReplayDescriptorDataSize = PathElement.groupElement("samplerCaptureReplayDescriptorDataSize");
-    public static final PathElement PATH$accelerationStructureCaptureReplayDescriptorDataSize = PathElement.groupElement("accelerationStructureCaptureReplayDescriptorDataSize");
-    public static final PathElement PATH$samplerDescriptorSize = PathElement.groupElement("samplerDescriptorSize");
-    public static final PathElement PATH$combinedImageSamplerDescriptorSize = PathElement.groupElement("combinedImageSamplerDescriptorSize");
-    public static final PathElement PATH$sampledImageDescriptorSize = PathElement.groupElement("sampledImageDescriptorSize");
-    public static final PathElement PATH$storageImageDescriptorSize = PathElement.groupElement("storageImageDescriptorSize");
-    public static final PathElement PATH$uniformTexelBufferDescriptorSize = PathElement.groupElement("uniformTexelBufferDescriptorSize");
-    public static final PathElement PATH$robustUniformTexelBufferDescriptorSize = PathElement.groupElement("robustUniformTexelBufferDescriptorSize");
-    public static final PathElement PATH$storageTexelBufferDescriptorSize = PathElement.groupElement("storageTexelBufferDescriptorSize");
-    public static final PathElement PATH$robustStorageTexelBufferDescriptorSize = PathElement.groupElement("robustStorageTexelBufferDescriptorSize");
-    public static final PathElement PATH$uniformBufferDescriptorSize = PathElement.groupElement("uniformBufferDescriptorSize");
-    public static final PathElement PATH$robustUniformBufferDescriptorSize = PathElement.groupElement("robustUniformBufferDescriptorSize");
-    public static final PathElement PATH$storageBufferDescriptorSize = PathElement.groupElement("storageBufferDescriptorSize");
-    public static final PathElement PATH$robustStorageBufferDescriptorSize = PathElement.groupElement("robustStorageBufferDescriptorSize");
-    public static final PathElement PATH$inputAttachmentDescriptorSize = PathElement.groupElement("inputAttachmentDescriptorSize");
-    public static final PathElement PATH$accelerationStructureDescriptorSize = PathElement.groupElement("accelerationStructureDescriptorSize");
-    public static final PathElement PATH$maxSamplerDescriptorBufferRange = PathElement.groupElement("maxSamplerDescriptorBufferRange");
-    public static final PathElement PATH$maxResourceDescriptorBufferRange = PathElement.groupElement("maxResourceDescriptorBufferRange");
-    public static final PathElement PATH$samplerDescriptorBufferAddressSpaceSize = PathElement.groupElement("samplerDescriptorBufferAddressSpaceSize");
-    public static final PathElement PATH$resourceDescriptorBufferAddressSpaceSize = PathElement.groupElement("resourceDescriptorBufferAddressSpaceSize");
-    public static final PathElement PATH$descriptorBufferAddressSpaceSize = PathElement.groupElement("descriptorBufferAddressSpaceSize");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$combinedImageSamplerDescriptorSingleArray = (OfInt) LAYOUT.select(PATH$combinedImageSamplerDescriptorSingleArray);
-    public static final OfInt LAYOUT$bufferlessPushDescriptors = (OfInt) LAYOUT.select(PATH$bufferlessPushDescriptors);
-    public static final OfInt LAYOUT$allowSamplerImageViewPostSubmitCreation = (OfInt) LAYOUT.select(PATH$allowSamplerImageViewPostSubmitCreation);
-    public static final OfLong LAYOUT$descriptorBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$descriptorBufferOffsetAlignment);
-    public static final OfInt LAYOUT$maxDescriptorBufferBindings = (OfInt) LAYOUT.select(PATH$maxDescriptorBufferBindings);
-    public static final OfInt LAYOUT$maxResourceDescriptorBufferBindings = (OfInt) LAYOUT.select(PATH$maxResourceDescriptorBufferBindings);
-    public static final OfInt LAYOUT$maxSamplerDescriptorBufferBindings = (OfInt) LAYOUT.select(PATH$maxSamplerDescriptorBufferBindings);
-    public static final OfInt LAYOUT$maxEmbeddedImmutableSamplerBindings = (OfInt) LAYOUT.select(PATH$maxEmbeddedImmutableSamplerBindings);
-    public static final OfInt LAYOUT$maxEmbeddedImmutableSamplers = (OfInt) LAYOUT.select(PATH$maxEmbeddedImmutableSamplers);
-    public static final OfLong LAYOUT$maxSamplerDescriptorBufferRange = (OfLong) LAYOUT.select(PATH$maxSamplerDescriptorBufferRange);
-    public static final OfLong LAYOUT$maxResourceDescriptorBufferRange = (OfLong) LAYOUT.select(PATH$maxResourceDescriptorBufferRange);
-    public static final OfLong LAYOUT$samplerDescriptorBufferAddressSpaceSize = (OfLong) LAYOUT.select(PATH$samplerDescriptorBufferAddressSpaceSize);
-    public static final OfLong LAYOUT$resourceDescriptorBufferAddressSpaceSize = (OfLong) LAYOUT.select(PATH$resourceDescriptorBufferAddressSpaceSize);
-    public static final OfLong LAYOUT$descriptorBufferAddressSpaceSize = (OfLong) LAYOUT.select(PATH$descriptorBufferAddressSpaceSize);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$combinedImageSamplerDescriptorSingleArray = LAYOUT.byteOffset(PATH$combinedImageSamplerDescriptorSingleArray);
-    public static final long OFFSET$bufferlessPushDescriptors = LAYOUT.byteOffset(PATH$bufferlessPushDescriptors);
-    public static final long OFFSET$allowSamplerImageViewPostSubmitCreation = LAYOUT.byteOffset(PATH$allowSamplerImageViewPostSubmitCreation);
-    public static final long OFFSET$descriptorBufferOffsetAlignment = LAYOUT.byteOffset(PATH$descriptorBufferOffsetAlignment);
-    public static final long OFFSET$maxDescriptorBufferBindings = LAYOUT.byteOffset(PATH$maxDescriptorBufferBindings);
-    public static final long OFFSET$maxResourceDescriptorBufferBindings = LAYOUT.byteOffset(PATH$maxResourceDescriptorBufferBindings);
-    public static final long OFFSET$maxSamplerDescriptorBufferBindings = LAYOUT.byteOffset(PATH$maxSamplerDescriptorBufferBindings);
-    public static final long OFFSET$maxEmbeddedImmutableSamplerBindings = LAYOUT.byteOffset(PATH$maxEmbeddedImmutableSamplerBindings);
-    public static final long OFFSET$maxEmbeddedImmutableSamplers = LAYOUT.byteOffset(PATH$maxEmbeddedImmutableSamplers);
-    public static final long OFFSET$bufferCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PATH$bufferCaptureReplayDescriptorDataSize);
-    public static final long OFFSET$imageCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PATH$imageCaptureReplayDescriptorDataSize);
-    public static final long OFFSET$imageViewCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PATH$imageViewCaptureReplayDescriptorDataSize);
-    public static final long OFFSET$samplerCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PATH$samplerCaptureReplayDescriptorDataSize);
-    public static final long OFFSET$accelerationStructureCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PATH$accelerationStructureCaptureReplayDescriptorDataSize);
-    public static final long OFFSET$samplerDescriptorSize = LAYOUT.byteOffset(PATH$samplerDescriptorSize);
-    public static final long OFFSET$combinedImageSamplerDescriptorSize = LAYOUT.byteOffset(PATH$combinedImageSamplerDescriptorSize);
-    public static final long OFFSET$sampledImageDescriptorSize = LAYOUT.byteOffset(PATH$sampledImageDescriptorSize);
-    public static final long OFFSET$storageImageDescriptorSize = LAYOUT.byteOffset(PATH$storageImageDescriptorSize);
-    public static final long OFFSET$uniformTexelBufferDescriptorSize = LAYOUT.byteOffset(PATH$uniformTexelBufferDescriptorSize);
-    public static final long OFFSET$robustUniformTexelBufferDescriptorSize = LAYOUT.byteOffset(PATH$robustUniformTexelBufferDescriptorSize);
-    public static final long OFFSET$storageTexelBufferDescriptorSize = LAYOUT.byteOffset(PATH$storageTexelBufferDescriptorSize);
-    public static final long OFFSET$robustStorageTexelBufferDescriptorSize = LAYOUT.byteOffset(PATH$robustStorageTexelBufferDescriptorSize);
-    public static final long OFFSET$uniformBufferDescriptorSize = LAYOUT.byteOffset(PATH$uniformBufferDescriptorSize);
-    public static final long OFFSET$robustUniformBufferDescriptorSize = LAYOUT.byteOffset(PATH$robustUniformBufferDescriptorSize);
-    public static final long OFFSET$storageBufferDescriptorSize = LAYOUT.byteOffset(PATH$storageBufferDescriptorSize);
-    public static final long OFFSET$robustStorageBufferDescriptorSize = LAYOUT.byteOffset(PATH$robustStorageBufferDescriptorSize);
-    public static final long OFFSET$inputAttachmentDescriptorSize = LAYOUT.byteOffset(PATH$inputAttachmentDescriptorSize);
-    public static final long OFFSET$accelerationStructureDescriptorSize = LAYOUT.byteOffset(PATH$accelerationStructureDescriptorSize);
-    public static final long OFFSET$maxSamplerDescriptorBufferRange = LAYOUT.byteOffset(PATH$maxSamplerDescriptorBufferRange);
-    public static final long OFFSET$maxResourceDescriptorBufferRange = LAYOUT.byteOffset(PATH$maxResourceDescriptorBufferRange);
-    public static final long OFFSET$samplerDescriptorBufferAddressSpaceSize = LAYOUT.byteOffset(PATH$samplerDescriptorBufferAddressSpaceSize);
-    public static final long OFFSET$resourceDescriptorBufferAddressSpaceSize = LAYOUT.byteOffset(PATH$resourceDescriptorBufferAddressSpaceSize);
-    public static final long OFFSET$descriptorBufferAddressSpaceSize = LAYOUT.byteOffset(PATH$descriptorBufferAddressSpaceSize);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$combinedImageSamplerDescriptorSingleArray = LAYOUT$combinedImageSamplerDescriptorSingleArray.byteSize();
-    public static final long SIZE$bufferlessPushDescriptors = LAYOUT$bufferlessPushDescriptors.byteSize();
-    public static final long SIZE$allowSamplerImageViewPostSubmitCreation = LAYOUT$allowSamplerImageViewPostSubmitCreation.byteSize();
-    public static final long SIZE$descriptorBufferOffsetAlignment = LAYOUT$descriptorBufferOffsetAlignment.byteSize();
-    public static final long SIZE$maxDescriptorBufferBindings = LAYOUT$maxDescriptorBufferBindings.byteSize();
-    public static final long SIZE$maxResourceDescriptorBufferBindings = LAYOUT$maxResourceDescriptorBufferBindings.byteSize();
-    public static final long SIZE$maxSamplerDescriptorBufferBindings = LAYOUT$maxSamplerDescriptorBufferBindings.byteSize();
-    public static final long SIZE$maxEmbeddedImmutableSamplerBindings = LAYOUT$maxEmbeddedImmutableSamplerBindings.byteSize();
-    public static final long SIZE$maxEmbeddedImmutableSamplers = LAYOUT$maxEmbeddedImmutableSamplers.byteSize();
-    public static final long SIZE$maxSamplerDescriptorBufferRange = LAYOUT$maxSamplerDescriptorBufferRange.byteSize();
-    public static final long SIZE$maxResourceDescriptorBufferRange = LAYOUT$maxResourceDescriptorBufferRange.byteSize();
-    public static final long SIZE$samplerDescriptorBufferAddressSpaceSize = LAYOUT$samplerDescriptorBufferAddressSpaceSize.byteSize();
-    public static final long SIZE$resourceDescriptorBufferAddressSpaceSize = LAYOUT$resourceDescriptorBufferAddressSpaceSize.byteSize();
-    public static final long SIZE$descriptorBufferAddressSpaceSize = LAYOUT$descriptorBufferAddressSpaceSize.byteSize();
-
     public VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_PROPERTIES_EXT);
@@ -501,4 +356,150 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("combinedImageSamplerDescriptorSingleArray"),
+        ValueLayout.JAVA_INT.withName("bufferlessPushDescriptors"),
+        ValueLayout.JAVA_INT.withName("allowSamplerImageViewPostSubmitCreation"),
+        ValueLayout.JAVA_LONG.withName("descriptorBufferOffsetAlignment"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorBufferBindings"),
+        ValueLayout.JAVA_INT.withName("maxResourceDescriptorBufferBindings"),
+        ValueLayout.JAVA_INT.withName("maxSamplerDescriptorBufferBindings"),
+        ValueLayout.JAVA_INT.withName("maxEmbeddedImmutableSamplerBindings"),
+        ValueLayout.JAVA_INT.withName("maxEmbeddedImmutableSamplers"),
+        NativeLayout.C_SIZE_T.withName("bufferCaptureReplayDescriptorDataSize"),
+        NativeLayout.C_SIZE_T.withName("imageCaptureReplayDescriptorDataSize"),
+        NativeLayout.C_SIZE_T.withName("imageViewCaptureReplayDescriptorDataSize"),
+        NativeLayout.C_SIZE_T.withName("samplerCaptureReplayDescriptorDataSize"),
+        NativeLayout.C_SIZE_T.withName("accelerationStructureCaptureReplayDescriptorDataSize"),
+        NativeLayout.C_SIZE_T.withName("samplerDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("combinedImageSamplerDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("sampledImageDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("storageImageDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("uniformTexelBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("robustUniformTexelBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("storageTexelBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("robustStorageTexelBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("uniformBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("robustUniformBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("storageBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("robustStorageBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("inputAttachmentDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("accelerationStructureDescriptorSize"),
+        ValueLayout.JAVA_LONG.withName("maxSamplerDescriptorBufferRange"),
+        ValueLayout.JAVA_LONG.withName("maxResourceDescriptorBufferRange"),
+        ValueLayout.JAVA_LONG.withName("samplerDescriptorBufferAddressSpaceSize"),
+        ValueLayout.JAVA_LONG.withName("resourceDescriptorBufferAddressSpaceSize"),
+        ValueLayout.JAVA_LONG.withName("descriptorBufferAddressSpaceSize")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$combinedImageSamplerDescriptorSingleArray = PathElement.groupElement("combinedImageSamplerDescriptorSingleArray");
+    public static final PathElement PATH$bufferlessPushDescriptors = PathElement.groupElement("bufferlessPushDescriptors");
+    public static final PathElement PATH$allowSamplerImageViewPostSubmitCreation = PathElement.groupElement("allowSamplerImageViewPostSubmitCreation");
+    public static final PathElement PATH$descriptorBufferOffsetAlignment = PathElement.groupElement("descriptorBufferOffsetAlignment");
+    public static final PathElement PATH$maxDescriptorBufferBindings = PathElement.groupElement("maxDescriptorBufferBindings");
+    public static final PathElement PATH$maxResourceDescriptorBufferBindings = PathElement.groupElement("maxResourceDescriptorBufferBindings");
+    public static final PathElement PATH$maxSamplerDescriptorBufferBindings = PathElement.groupElement("maxSamplerDescriptorBufferBindings");
+    public static final PathElement PATH$maxEmbeddedImmutableSamplerBindings = PathElement.groupElement("maxEmbeddedImmutableSamplerBindings");
+    public static final PathElement PATH$maxEmbeddedImmutableSamplers = PathElement.groupElement("maxEmbeddedImmutableSamplers");
+    public static final PathElement PATH$bufferCaptureReplayDescriptorDataSize = PathElement.groupElement("bufferCaptureReplayDescriptorDataSize");
+    public static final PathElement PATH$imageCaptureReplayDescriptorDataSize = PathElement.groupElement("imageCaptureReplayDescriptorDataSize");
+    public static final PathElement PATH$imageViewCaptureReplayDescriptorDataSize = PathElement.groupElement("imageViewCaptureReplayDescriptorDataSize");
+    public static final PathElement PATH$samplerCaptureReplayDescriptorDataSize = PathElement.groupElement("samplerCaptureReplayDescriptorDataSize");
+    public static final PathElement PATH$accelerationStructureCaptureReplayDescriptorDataSize = PathElement.groupElement("accelerationStructureCaptureReplayDescriptorDataSize");
+    public static final PathElement PATH$samplerDescriptorSize = PathElement.groupElement("samplerDescriptorSize");
+    public static final PathElement PATH$combinedImageSamplerDescriptorSize = PathElement.groupElement("combinedImageSamplerDescriptorSize");
+    public static final PathElement PATH$sampledImageDescriptorSize = PathElement.groupElement("sampledImageDescriptorSize");
+    public static final PathElement PATH$storageImageDescriptorSize = PathElement.groupElement("storageImageDescriptorSize");
+    public static final PathElement PATH$uniformTexelBufferDescriptorSize = PathElement.groupElement("uniformTexelBufferDescriptorSize");
+    public static final PathElement PATH$robustUniformTexelBufferDescriptorSize = PathElement.groupElement("robustUniformTexelBufferDescriptorSize");
+    public static final PathElement PATH$storageTexelBufferDescriptorSize = PathElement.groupElement("storageTexelBufferDescriptorSize");
+    public static final PathElement PATH$robustStorageTexelBufferDescriptorSize = PathElement.groupElement("robustStorageTexelBufferDescriptorSize");
+    public static final PathElement PATH$uniformBufferDescriptorSize = PathElement.groupElement("uniformBufferDescriptorSize");
+    public static final PathElement PATH$robustUniformBufferDescriptorSize = PathElement.groupElement("robustUniformBufferDescriptorSize");
+    public static final PathElement PATH$storageBufferDescriptorSize = PathElement.groupElement("storageBufferDescriptorSize");
+    public static final PathElement PATH$robustStorageBufferDescriptorSize = PathElement.groupElement("robustStorageBufferDescriptorSize");
+    public static final PathElement PATH$inputAttachmentDescriptorSize = PathElement.groupElement("inputAttachmentDescriptorSize");
+    public static final PathElement PATH$accelerationStructureDescriptorSize = PathElement.groupElement("accelerationStructureDescriptorSize");
+    public static final PathElement PATH$maxSamplerDescriptorBufferRange = PathElement.groupElement("maxSamplerDescriptorBufferRange");
+    public static final PathElement PATH$maxResourceDescriptorBufferRange = PathElement.groupElement("maxResourceDescriptorBufferRange");
+    public static final PathElement PATH$samplerDescriptorBufferAddressSpaceSize = PathElement.groupElement("samplerDescriptorBufferAddressSpaceSize");
+    public static final PathElement PATH$resourceDescriptorBufferAddressSpaceSize = PathElement.groupElement("resourceDescriptorBufferAddressSpaceSize");
+    public static final PathElement PATH$descriptorBufferAddressSpaceSize = PathElement.groupElement("descriptorBufferAddressSpaceSize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$combinedImageSamplerDescriptorSingleArray = (OfInt) LAYOUT.select(PATH$combinedImageSamplerDescriptorSingleArray);
+    public static final OfInt LAYOUT$bufferlessPushDescriptors = (OfInt) LAYOUT.select(PATH$bufferlessPushDescriptors);
+    public static final OfInt LAYOUT$allowSamplerImageViewPostSubmitCreation = (OfInt) LAYOUT.select(PATH$allowSamplerImageViewPostSubmitCreation);
+    public static final OfLong LAYOUT$descriptorBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$descriptorBufferOffsetAlignment);
+    public static final OfInt LAYOUT$maxDescriptorBufferBindings = (OfInt) LAYOUT.select(PATH$maxDescriptorBufferBindings);
+    public static final OfInt LAYOUT$maxResourceDescriptorBufferBindings = (OfInt) LAYOUT.select(PATH$maxResourceDescriptorBufferBindings);
+    public static final OfInt LAYOUT$maxSamplerDescriptorBufferBindings = (OfInt) LAYOUT.select(PATH$maxSamplerDescriptorBufferBindings);
+    public static final OfInt LAYOUT$maxEmbeddedImmutableSamplerBindings = (OfInt) LAYOUT.select(PATH$maxEmbeddedImmutableSamplerBindings);
+    public static final OfInt LAYOUT$maxEmbeddedImmutableSamplers = (OfInt) LAYOUT.select(PATH$maxEmbeddedImmutableSamplers);
+    public static final OfLong LAYOUT$maxSamplerDescriptorBufferRange = (OfLong) LAYOUT.select(PATH$maxSamplerDescriptorBufferRange);
+    public static final OfLong LAYOUT$maxResourceDescriptorBufferRange = (OfLong) LAYOUT.select(PATH$maxResourceDescriptorBufferRange);
+    public static final OfLong LAYOUT$samplerDescriptorBufferAddressSpaceSize = (OfLong) LAYOUT.select(PATH$samplerDescriptorBufferAddressSpaceSize);
+    public static final OfLong LAYOUT$resourceDescriptorBufferAddressSpaceSize = (OfLong) LAYOUT.select(PATH$resourceDescriptorBufferAddressSpaceSize);
+    public static final OfLong LAYOUT$descriptorBufferAddressSpaceSize = (OfLong) LAYOUT.select(PATH$descriptorBufferAddressSpaceSize);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$combinedImageSamplerDescriptorSingleArray = LAYOUT.byteOffset(PATH$combinedImageSamplerDescriptorSingleArray);
+    public static final long OFFSET$bufferlessPushDescriptors = LAYOUT.byteOffset(PATH$bufferlessPushDescriptors);
+    public static final long OFFSET$allowSamplerImageViewPostSubmitCreation = LAYOUT.byteOffset(PATH$allowSamplerImageViewPostSubmitCreation);
+    public static final long OFFSET$descriptorBufferOffsetAlignment = LAYOUT.byteOffset(PATH$descriptorBufferOffsetAlignment);
+    public static final long OFFSET$maxDescriptorBufferBindings = LAYOUT.byteOffset(PATH$maxDescriptorBufferBindings);
+    public static final long OFFSET$maxResourceDescriptorBufferBindings = LAYOUT.byteOffset(PATH$maxResourceDescriptorBufferBindings);
+    public static final long OFFSET$maxSamplerDescriptorBufferBindings = LAYOUT.byteOffset(PATH$maxSamplerDescriptorBufferBindings);
+    public static final long OFFSET$maxEmbeddedImmutableSamplerBindings = LAYOUT.byteOffset(PATH$maxEmbeddedImmutableSamplerBindings);
+    public static final long OFFSET$maxEmbeddedImmutableSamplers = LAYOUT.byteOffset(PATH$maxEmbeddedImmutableSamplers);
+    public static final long OFFSET$bufferCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PATH$bufferCaptureReplayDescriptorDataSize);
+    public static final long OFFSET$imageCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PATH$imageCaptureReplayDescriptorDataSize);
+    public static final long OFFSET$imageViewCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PATH$imageViewCaptureReplayDescriptorDataSize);
+    public static final long OFFSET$samplerCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PATH$samplerCaptureReplayDescriptorDataSize);
+    public static final long OFFSET$accelerationStructureCaptureReplayDescriptorDataSize = LAYOUT.byteOffset(PATH$accelerationStructureCaptureReplayDescriptorDataSize);
+    public static final long OFFSET$samplerDescriptorSize = LAYOUT.byteOffset(PATH$samplerDescriptorSize);
+    public static final long OFFSET$combinedImageSamplerDescriptorSize = LAYOUT.byteOffset(PATH$combinedImageSamplerDescriptorSize);
+    public static final long OFFSET$sampledImageDescriptorSize = LAYOUT.byteOffset(PATH$sampledImageDescriptorSize);
+    public static final long OFFSET$storageImageDescriptorSize = LAYOUT.byteOffset(PATH$storageImageDescriptorSize);
+    public static final long OFFSET$uniformTexelBufferDescriptorSize = LAYOUT.byteOffset(PATH$uniformTexelBufferDescriptorSize);
+    public static final long OFFSET$robustUniformTexelBufferDescriptorSize = LAYOUT.byteOffset(PATH$robustUniformTexelBufferDescriptorSize);
+    public static final long OFFSET$storageTexelBufferDescriptorSize = LAYOUT.byteOffset(PATH$storageTexelBufferDescriptorSize);
+    public static final long OFFSET$robustStorageTexelBufferDescriptorSize = LAYOUT.byteOffset(PATH$robustStorageTexelBufferDescriptorSize);
+    public static final long OFFSET$uniformBufferDescriptorSize = LAYOUT.byteOffset(PATH$uniformBufferDescriptorSize);
+    public static final long OFFSET$robustUniformBufferDescriptorSize = LAYOUT.byteOffset(PATH$robustUniformBufferDescriptorSize);
+    public static final long OFFSET$storageBufferDescriptorSize = LAYOUT.byteOffset(PATH$storageBufferDescriptorSize);
+    public static final long OFFSET$robustStorageBufferDescriptorSize = LAYOUT.byteOffset(PATH$robustStorageBufferDescriptorSize);
+    public static final long OFFSET$inputAttachmentDescriptorSize = LAYOUT.byteOffset(PATH$inputAttachmentDescriptorSize);
+    public static final long OFFSET$accelerationStructureDescriptorSize = LAYOUT.byteOffset(PATH$accelerationStructureDescriptorSize);
+    public static final long OFFSET$maxSamplerDescriptorBufferRange = LAYOUT.byteOffset(PATH$maxSamplerDescriptorBufferRange);
+    public static final long OFFSET$maxResourceDescriptorBufferRange = LAYOUT.byteOffset(PATH$maxResourceDescriptorBufferRange);
+    public static final long OFFSET$samplerDescriptorBufferAddressSpaceSize = LAYOUT.byteOffset(PATH$samplerDescriptorBufferAddressSpaceSize);
+    public static final long OFFSET$resourceDescriptorBufferAddressSpaceSize = LAYOUT.byteOffset(PATH$resourceDescriptorBufferAddressSpaceSize);
+    public static final long OFFSET$descriptorBufferAddressSpaceSize = LAYOUT.byteOffset(PATH$descriptorBufferAddressSpaceSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$combinedImageSamplerDescriptorSingleArray = LAYOUT$combinedImageSamplerDescriptorSingleArray.byteSize();
+    public static final long SIZE$bufferlessPushDescriptors = LAYOUT$bufferlessPushDescriptors.byteSize();
+    public static final long SIZE$allowSamplerImageViewPostSubmitCreation = LAYOUT$allowSamplerImageViewPostSubmitCreation.byteSize();
+    public static final long SIZE$descriptorBufferOffsetAlignment = LAYOUT$descriptorBufferOffsetAlignment.byteSize();
+    public static final long SIZE$maxDescriptorBufferBindings = LAYOUT$maxDescriptorBufferBindings.byteSize();
+    public static final long SIZE$maxResourceDescriptorBufferBindings = LAYOUT$maxResourceDescriptorBufferBindings.byteSize();
+    public static final long SIZE$maxSamplerDescriptorBufferBindings = LAYOUT$maxSamplerDescriptorBufferBindings.byteSize();
+    public static final long SIZE$maxEmbeddedImmutableSamplerBindings = LAYOUT$maxEmbeddedImmutableSamplerBindings.byteSize();
+    public static final long SIZE$maxEmbeddedImmutableSamplers = LAYOUT$maxEmbeddedImmutableSamplers.byteSize();
+    public static final long SIZE$maxSamplerDescriptorBufferRange = LAYOUT$maxSamplerDescriptorBufferRange.byteSize();
+    public static final long SIZE$maxResourceDescriptorBufferRange = LAYOUT$maxResourceDescriptorBufferRange.byteSize();
+    public static final long SIZE$samplerDescriptorBufferAddressSpaceSize = LAYOUT$samplerDescriptorBufferAddressSpaceSize.byteSize();
+    public static final long SIZE$resourceDescriptorBufferAddressSpaceSize = LAYOUT$resourceDescriptorBufferAddressSpaceSize.byteSize();
+    public static final long SIZE$descriptorBufferAddressSpaceSize = LAYOUT$descriptorBufferAddressSpaceSize.byteSize();
+
 }

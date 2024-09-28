@@ -34,80 +34,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCuLaunchInfoNVX.html">VkCuLaunchInfoNVX</a>
 public record VkCuLaunchInfoNVX(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("function"),
-        ValueLayout.JAVA_INT.withName("gridDimX"),
-        ValueLayout.JAVA_INT.withName("gridDimY"),
-        ValueLayout.JAVA_INT.withName("gridDimZ"),
-        ValueLayout.JAVA_INT.withName("blockDimX"),
-        ValueLayout.JAVA_INT.withName("blockDimY"),
-        ValueLayout.JAVA_INT.withName("blockDimZ"),
-        ValueLayout.JAVA_INT.withName("sharedMemBytes"),
-        NativeLayout.C_SIZE_T.withName("paramCount"),
-        ValueLayout.ADDRESS.withName("pParams"),
-        NativeLayout.C_SIZE_T.withName("extraCount"),
-        ValueLayout.ADDRESS.withName("pExtras")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$function = PathElement.groupElement("function");
-    public static final PathElement PATH$gridDimX = PathElement.groupElement("gridDimX");
-    public static final PathElement PATH$gridDimY = PathElement.groupElement("gridDimY");
-    public static final PathElement PATH$gridDimZ = PathElement.groupElement("gridDimZ");
-    public static final PathElement PATH$blockDimX = PathElement.groupElement("blockDimX");
-    public static final PathElement PATH$blockDimY = PathElement.groupElement("blockDimY");
-    public static final PathElement PATH$blockDimZ = PathElement.groupElement("blockDimZ");
-    public static final PathElement PATH$sharedMemBytes = PathElement.groupElement("sharedMemBytes");
-    public static final PathElement PATH$paramCount = PathElement.groupElement("paramCount");
-    public static final PathElement PATH$pParams = PathElement.groupElement("pParams");
-    public static final PathElement PATH$extraCount = PathElement.groupElement("extraCount");
-    public static final PathElement PATH$pExtras = PathElement.groupElement("pExtras");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$function = (AddressLayout) LAYOUT.select(PATH$function);
-    public static final OfInt LAYOUT$gridDimX = (OfInt) LAYOUT.select(PATH$gridDimX);
-    public static final OfInt LAYOUT$gridDimY = (OfInt) LAYOUT.select(PATH$gridDimY);
-    public static final OfInt LAYOUT$gridDimZ = (OfInt) LAYOUT.select(PATH$gridDimZ);
-    public static final OfInt LAYOUT$blockDimX = (OfInt) LAYOUT.select(PATH$blockDimX);
-    public static final OfInt LAYOUT$blockDimY = (OfInt) LAYOUT.select(PATH$blockDimY);
-    public static final OfInt LAYOUT$blockDimZ = (OfInt) LAYOUT.select(PATH$blockDimZ);
-    public static final OfInt LAYOUT$sharedMemBytes = (OfInt) LAYOUT.select(PATH$sharedMemBytes);
-    public static final AddressLayout LAYOUT$pParams = (AddressLayout) LAYOUT.select(PATH$pParams);
-    public static final AddressLayout LAYOUT$pExtras = (AddressLayout) LAYOUT.select(PATH$pExtras);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$function = LAYOUT.byteOffset(PATH$function);
-    public static final long OFFSET$gridDimX = LAYOUT.byteOffset(PATH$gridDimX);
-    public static final long OFFSET$gridDimY = LAYOUT.byteOffset(PATH$gridDimY);
-    public static final long OFFSET$gridDimZ = LAYOUT.byteOffset(PATH$gridDimZ);
-    public static final long OFFSET$blockDimX = LAYOUT.byteOffset(PATH$blockDimX);
-    public static final long OFFSET$blockDimY = LAYOUT.byteOffset(PATH$blockDimY);
-    public static final long OFFSET$blockDimZ = LAYOUT.byteOffset(PATH$blockDimZ);
-    public static final long OFFSET$sharedMemBytes = LAYOUT.byteOffset(PATH$sharedMemBytes);
-    public static final long OFFSET$paramCount = LAYOUT.byteOffset(PATH$paramCount);
-    public static final long OFFSET$pParams = LAYOUT.byteOffset(PATH$pParams);
-    public static final long OFFSET$extraCount = LAYOUT.byteOffset(PATH$extraCount);
-    public static final long OFFSET$pExtras = LAYOUT.byteOffset(PATH$pExtras);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$function = LAYOUT$function.byteSize();
-    public static final long SIZE$gridDimX = LAYOUT$gridDimX.byteSize();
-    public static final long SIZE$gridDimY = LAYOUT$gridDimY.byteSize();
-    public static final long SIZE$gridDimZ = LAYOUT$gridDimZ.byteSize();
-    public static final long SIZE$blockDimX = LAYOUT$blockDimX.byteSize();
-    public static final long SIZE$blockDimY = LAYOUT$blockDimY.byteSize();
-    public static final long SIZE$blockDimZ = LAYOUT$blockDimZ.byteSize();
-    public static final long SIZE$sharedMemBytes = LAYOUT$sharedMemBytes.byteSize();
-    public static final long SIZE$pParams = LAYOUT$pParams.byteSize();
-    public static final long SIZE$pExtras = LAYOUT$pExtras.byteSize();
-
     public VkCuLaunchInfoNVX(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_CU_LAUNCH_INFO_NVX);
@@ -249,4 +175,79 @@ public record VkCuLaunchInfoNVX(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("function"),
+        ValueLayout.JAVA_INT.withName("gridDimX"),
+        ValueLayout.JAVA_INT.withName("gridDimY"),
+        ValueLayout.JAVA_INT.withName("gridDimZ"),
+        ValueLayout.JAVA_INT.withName("blockDimX"),
+        ValueLayout.JAVA_INT.withName("blockDimY"),
+        ValueLayout.JAVA_INT.withName("blockDimZ"),
+        ValueLayout.JAVA_INT.withName("sharedMemBytes"),
+        NativeLayout.C_SIZE_T.withName("paramCount"),
+        ValueLayout.ADDRESS.withName("pParams"),
+        NativeLayout.C_SIZE_T.withName("extraCount"),
+        ValueLayout.ADDRESS.withName("pExtras")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$function = PathElement.groupElement("function");
+    public static final PathElement PATH$gridDimX = PathElement.groupElement("gridDimX");
+    public static final PathElement PATH$gridDimY = PathElement.groupElement("gridDimY");
+    public static final PathElement PATH$gridDimZ = PathElement.groupElement("gridDimZ");
+    public static final PathElement PATH$blockDimX = PathElement.groupElement("blockDimX");
+    public static final PathElement PATH$blockDimY = PathElement.groupElement("blockDimY");
+    public static final PathElement PATH$blockDimZ = PathElement.groupElement("blockDimZ");
+    public static final PathElement PATH$sharedMemBytes = PathElement.groupElement("sharedMemBytes");
+    public static final PathElement PATH$paramCount = PathElement.groupElement("paramCount");
+    public static final PathElement PATH$pParams = PathElement.groupElement("pParams");
+    public static final PathElement PATH$extraCount = PathElement.groupElement("extraCount");
+    public static final PathElement PATH$pExtras = PathElement.groupElement("pExtras");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$function = (AddressLayout) LAYOUT.select(PATH$function);
+    public static final OfInt LAYOUT$gridDimX = (OfInt) LAYOUT.select(PATH$gridDimX);
+    public static final OfInt LAYOUT$gridDimY = (OfInt) LAYOUT.select(PATH$gridDimY);
+    public static final OfInt LAYOUT$gridDimZ = (OfInt) LAYOUT.select(PATH$gridDimZ);
+    public static final OfInt LAYOUT$blockDimX = (OfInt) LAYOUT.select(PATH$blockDimX);
+    public static final OfInt LAYOUT$blockDimY = (OfInt) LAYOUT.select(PATH$blockDimY);
+    public static final OfInt LAYOUT$blockDimZ = (OfInt) LAYOUT.select(PATH$blockDimZ);
+    public static final OfInt LAYOUT$sharedMemBytes = (OfInt) LAYOUT.select(PATH$sharedMemBytes);
+    public static final AddressLayout LAYOUT$pParams = (AddressLayout) LAYOUT.select(PATH$pParams);
+    public static final AddressLayout LAYOUT$pExtras = (AddressLayout) LAYOUT.select(PATH$pExtras);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$function = LAYOUT.byteOffset(PATH$function);
+    public static final long OFFSET$gridDimX = LAYOUT.byteOffset(PATH$gridDimX);
+    public static final long OFFSET$gridDimY = LAYOUT.byteOffset(PATH$gridDimY);
+    public static final long OFFSET$gridDimZ = LAYOUT.byteOffset(PATH$gridDimZ);
+    public static final long OFFSET$blockDimX = LAYOUT.byteOffset(PATH$blockDimX);
+    public static final long OFFSET$blockDimY = LAYOUT.byteOffset(PATH$blockDimY);
+    public static final long OFFSET$blockDimZ = LAYOUT.byteOffset(PATH$blockDimZ);
+    public static final long OFFSET$sharedMemBytes = LAYOUT.byteOffset(PATH$sharedMemBytes);
+    public static final long OFFSET$paramCount = LAYOUT.byteOffset(PATH$paramCount);
+    public static final long OFFSET$pParams = LAYOUT.byteOffset(PATH$pParams);
+    public static final long OFFSET$extraCount = LAYOUT.byteOffset(PATH$extraCount);
+    public static final long OFFSET$pExtras = LAYOUT.byteOffset(PATH$pExtras);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$function = LAYOUT$function.byteSize();
+    public static final long SIZE$gridDimX = LAYOUT$gridDimX.byteSize();
+    public static final long SIZE$gridDimY = LAYOUT$gridDimY.byteSize();
+    public static final long SIZE$gridDimZ = LAYOUT$gridDimZ.byteSize();
+    public static final long SIZE$blockDimX = LAYOUT$blockDimX.byteSize();
+    public static final long SIZE$blockDimY = LAYOUT$blockDimY.byteSize();
+    public static final long SIZE$blockDimZ = LAYOUT$blockDimZ.byteSize();
+    public static final long SIZE$sharedMemBytes = LAYOUT$sharedMemBytes.byteSize();
+    public static final long SIZE$pParams = LAYOUT$pParams.byteSize();
+    public static final long SIZE$pExtras = LAYOUT$pExtras.byteSize();
+
 }

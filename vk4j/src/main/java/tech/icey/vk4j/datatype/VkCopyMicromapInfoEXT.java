@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCopyMicromapInfoEXT.html">VkCopyMicromapInfoEXT</a>
 public record VkCopyMicromapInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("src"),
-        ValueLayout.ADDRESS.withName("dst"),
-        ValueLayout.JAVA_INT.withName("mode")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$src = PathElement.groupElement("src");
-    public static final PathElement PATH$dst = PathElement.groupElement("dst");
-    public static final PathElement PATH$mode = PathElement.groupElement("mode");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$src = (AddressLayout) LAYOUT.select(PATH$src);
-    public static final AddressLayout LAYOUT$dst = (AddressLayout) LAYOUT.select(PATH$dst);
-    public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$src = LAYOUT.byteOffset(PATH$src);
-    public static final long OFFSET$dst = LAYOUT.byteOffset(PATH$dst);
-    public static final long OFFSET$mode = LAYOUT.byteOffset(PATH$mode);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$src = LAYOUT$src.byteSize();
-    public static final long SIZE$dst = LAYOUT$dst.byteSize();
-    public static final long SIZE$mode = LAYOUT$mode.byteSize();
-
     public VkCopyMicromapInfoEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_COPY_MICROMAP_INFO_EXT);
@@ -119,4 +86,38 @@ public record VkCopyMicromapInfoEXT(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("src"),
+        ValueLayout.ADDRESS.withName("dst"),
+        ValueLayout.JAVA_INT.withName("mode")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$src = PathElement.groupElement("src");
+    public static final PathElement PATH$dst = PathElement.groupElement("dst");
+    public static final PathElement PATH$mode = PathElement.groupElement("mode");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$src = (AddressLayout) LAYOUT.select(PATH$src);
+    public static final AddressLayout LAYOUT$dst = (AddressLayout) LAYOUT.select(PATH$dst);
+    public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$src = LAYOUT.byteOffset(PATH$src);
+    public static final long OFFSET$dst = LAYOUT.byteOffset(PATH$dst);
+    public static final long OFFSET$mode = LAYOUT.byteOffset(PATH$mode);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$src = LAYOUT$src.byteSize();
+    public static final long SIZE$dst = LAYOUT$dst.byteSize();
+    public static final long SIZE$mode = LAYOUT$mode.byteSize();
+
 }

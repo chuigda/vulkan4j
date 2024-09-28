@@ -15,7 +15,7 @@ import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 /// {@snippet lang=c :
-/// typedef struct VkClearColorValue {
+/// typedef union VkClearColorValue {
 ///     float float32[4];
 ///     int32_t int32[4];
 ///     uint32_t uint32[4];
@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkClearColorValue.html">VkClearColorValue</a>
 public record VkClearColorValue(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
-        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("float32"),
-        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("int32"),
-        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("uint32")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$float32 = PathElement.groupElement("float32");
-    public static final PathElement PATH$int32 = PathElement.groupElement("int32");
-    public static final PathElement PATH$uint32 = PathElement.groupElement("uint32");
-
-    public static final SequenceLayout LAYOUT$float32 = (SequenceLayout) LAYOUT.select(PATH$float32);
-    public static final SequenceLayout LAYOUT$int32 = (SequenceLayout) LAYOUT.select(PATH$int32);
-    public static final SequenceLayout LAYOUT$uint32 = (SequenceLayout) LAYOUT.select(PATH$uint32);
-
-    public static final long OFFSET$float32 = LAYOUT.byteOffset(PATH$float32);
-    public static final long OFFSET$int32 = LAYOUT.byteOffset(PATH$int32);
-    public static final long OFFSET$uint32 = LAYOUT.byteOffset(PATH$uint32);
-
-    public static final long SIZE$float32 = LAYOUT$float32.byteSize();
-    public static final long SIZE$int32 = LAYOUT$int32.byteSize();
-    public static final long SIZE$uint32 = LAYOUT$uint32.byteSize();
-
     public VkClearColorValue(MemorySegment segment) {
         this.segment = segment;
     }
@@ -98,4 +75,28 @@ public record VkClearColorValue(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("float32"),
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("int32"),
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("uint32")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$float32 = PathElement.groupElement("float32");
+    public static final PathElement PATH$int32 = PathElement.groupElement("int32");
+    public static final PathElement PATH$uint32 = PathElement.groupElement("uint32");
+
+    public static final SequenceLayout LAYOUT$float32 = (SequenceLayout) LAYOUT.select(PATH$float32);
+    public static final SequenceLayout LAYOUT$int32 = (SequenceLayout) LAYOUT.select(PATH$int32);
+    public static final SequenceLayout LAYOUT$uint32 = (SequenceLayout) LAYOUT.select(PATH$uint32);
+
+    public static final long OFFSET$float32 = LAYOUT.byteOffset(PATH$float32);
+    public static final long OFFSET$int32 = LAYOUT.byteOffset(PATH$int32);
+    public static final long OFFSET$uint32 = LAYOUT.byteOffset(PATH$uint32);
+
+    public static final long SIZE$float32 = LAYOUT$float32.byteSize();
+    public static final long SIZE$int32 = LAYOUT$int32.byteSize();
+    public static final long SIZE$uint32 = LAYOUT$uint32.byteSize();
+
 }

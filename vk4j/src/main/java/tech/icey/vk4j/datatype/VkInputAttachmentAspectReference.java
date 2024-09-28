@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkInputAttachmentAspectReference.html">VkInputAttachmentAspectReference</a>
 public record VkInputAttachmentAspectReference(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("subpass"),
-        ValueLayout.JAVA_INT.withName("inputAttachmentIndex"),
-        ValueLayout.JAVA_INT.withName("aspectMask")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$subpass = PathElement.groupElement("subpass");
-    public static final PathElement PATH$inputAttachmentIndex = PathElement.groupElement("inputAttachmentIndex");
-    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
-
-    public static final OfInt LAYOUT$subpass = (OfInt) LAYOUT.select(PATH$subpass);
-    public static final OfInt LAYOUT$inputAttachmentIndex = (OfInt) LAYOUT.select(PATH$inputAttachmentIndex);
-    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
-
-    public static final long OFFSET$subpass = LAYOUT.byteOffset(PATH$subpass);
-    public static final long OFFSET$inputAttachmentIndex = LAYOUT.byteOffset(PATH$inputAttachmentIndex);
-    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
-
-    public static final long SIZE$subpass = LAYOUT$subpass.byteSize();
-    public static final long SIZE$inputAttachmentIndex = LAYOUT$inputAttachmentIndex.byteSize();
-    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
-
     public VkInputAttachmentAspectReference(MemorySegment segment) {
         this.segment = segment;
     }
@@ -86,4 +63,28 @@ public record VkInputAttachmentAspectReference(MemorySegment segment) implements
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("subpass"),
+        ValueLayout.JAVA_INT.withName("inputAttachmentIndex"),
+        ValueLayout.JAVA_INT.withName("aspectMask")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$subpass = PathElement.groupElement("subpass");
+    public static final PathElement PATH$inputAttachmentIndex = PathElement.groupElement("inputAttachmentIndex");
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
+
+    public static final OfInt LAYOUT$subpass = (OfInt) LAYOUT.select(PATH$subpass);
+    public static final OfInt LAYOUT$inputAttachmentIndex = (OfInt) LAYOUT.select(PATH$inputAttachmentIndex);
+    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
+
+    public static final long OFFSET$subpass = LAYOUT.byteOffset(PATH$subpass);
+    public static final long OFFSET$inputAttachmentIndex = LAYOUT.byteOffset(PATH$inputAttachmentIndex);
+    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
+
+    public static final long SIZE$subpass = LAYOUT$subpass.byteSize();
+    public static final long SIZE$inputAttachmentIndex = LAYOUT$inputAttachmentIndex.byteSize();
+    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
+
 }

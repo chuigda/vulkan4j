@@ -15,7 +15,7 @@ import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 /// {@snippet lang=c :
-/// typedef struct VkPipelineExecutableStatisticValueKHR {
+/// typedef union VkPipelineExecutableStatisticValueKHR {
 ///     VkBool32 b32;
 ///     int64_t i64;
 ///     uint64_t u64;
@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineExecutableStatisticValueKHR.html">VkPipelineExecutableStatisticValueKHR</a>
 public record VkPipelineExecutableStatisticValueKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
-        ValueLayout.JAVA_INT.withName("b32"),
-        ValueLayout.JAVA_LONG.withName("i64"),
-        ValueLayout.JAVA_LONG.withName("u64"),
-        ValueLayout.JAVA_DOUBLE.withName("f64")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$b32 = PathElement.groupElement("b32");
-    public static final PathElement PATH$i64 = PathElement.groupElement("i64");
-    public static final PathElement PATH$u64 = PathElement.groupElement("u64");
-    public static final PathElement PATH$f64 = PathElement.groupElement("f64");
-
-    public static final OfInt LAYOUT$b32 = (OfInt) LAYOUT.select(PATH$b32);
-    public static final OfLong LAYOUT$i64 = (OfLong) LAYOUT.select(PATH$i64);
-    public static final OfLong LAYOUT$u64 = (OfLong) LAYOUT.select(PATH$u64);
-    public static final OfDouble LAYOUT$f64 = (OfDouble) LAYOUT.select(PATH$f64);
-
-    public static final long OFFSET$b32 = LAYOUT.byteOffset(PATH$b32);
-    public static final long OFFSET$i64 = LAYOUT.byteOffset(PATH$i64);
-    public static final long OFFSET$u64 = LAYOUT.byteOffset(PATH$u64);
-    public static final long OFFSET$f64 = LAYOUT.byteOffset(PATH$f64);
-
-    public static final long SIZE$b32 = LAYOUT$b32.byteSize();
-    public static final long SIZE$i64 = LAYOUT$i64.byteSize();
-    public static final long SIZE$u64 = LAYOUT$u64.byteSize();
-    public static final long SIZE$f64 = LAYOUT$f64.byteSize();
-
     public VkPipelineExecutableStatisticValueKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -100,4 +72,33 @@ public record VkPipelineExecutableStatisticValueKHR(MemorySegment segment) imple
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
+        ValueLayout.JAVA_INT.withName("b32"),
+        ValueLayout.JAVA_LONG.withName("i64"),
+        ValueLayout.JAVA_LONG.withName("u64"),
+        ValueLayout.JAVA_DOUBLE.withName("f64")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$b32 = PathElement.groupElement("b32");
+    public static final PathElement PATH$i64 = PathElement.groupElement("i64");
+    public static final PathElement PATH$u64 = PathElement.groupElement("u64");
+    public static final PathElement PATH$f64 = PathElement.groupElement("f64");
+
+    public static final OfInt LAYOUT$b32 = (OfInt) LAYOUT.select(PATH$b32);
+    public static final OfLong LAYOUT$i64 = (OfLong) LAYOUT.select(PATH$i64);
+    public static final OfLong LAYOUT$u64 = (OfLong) LAYOUT.select(PATH$u64);
+    public static final OfDouble LAYOUT$f64 = (OfDouble) LAYOUT.select(PATH$f64);
+
+    public static final long OFFSET$b32 = LAYOUT.byteOffset(PATH$b32);
+    public static final long OFFSET$i64 = LAYOUT.byteOffset(PATH$i64);
+    public static final long OFFSET$u64 = LAYOUT.byteOffset(PATH$u64);
+    public static final long OFFSET$f64 = LAYOUT.byteOffset(PATH$f64);
+
+    public static final long SIZE$b32 = LAYOUT$b32.byteSize();
+    public static final long SIZE$i64 = LAYOUT$i64.byteSize();
+    public static final long SIZE$u64 = LAYOUT$u64.byteSize();
+    public static final long SIZE$f64 = LAYOUT$f64.byteSize();
+
 }

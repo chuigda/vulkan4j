@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSparseImageMemoryBindInfo.html">VkSparseImageMemoryBindInfo</a>
 public record VkSparseImageMemoryBindInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.ADDRESS.withName("image"),
-        ValueLayout.JAVA_INT.withName("bindCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkSparseImageMemoryBind.LAYOUT).withName("pBinds")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$image = PathElement.groupElement("image");
-    public static final PathElement PATH$bindCount = PathElement.groupElement("bindCount");
-    public static final PathElement PATH$pBinds = PathElement.groupElement("pBinds");
-
-    public static final AddressLayout LAYOUT$image = (AddressLayout) LAYOUT.select(PATH$image);
-    public static final OfInt LAYOUT$bindCount = (OfInt) LAYOUT.select(PATH$bindCount);
-    public static final AddressLayout LAYOUT$pBinds = (AddressLayout) LAYOUT.select(PATH$pBinds);
-
-    public static final long OFFSET$image = LAYOUT.byteOffset(PATH$image);
-    public static final long OFFSET$bindCount = LAYOUT.byteOffset(PATH$bindCount);
-    public static final long OFFSET$pBinds = LAYOUT.byteOffset(PATH$pBinds);
-
-    public static final long SIZE$image = LAYOUT$image.byteSize();
-    public static final long SIZE$bindCount = LAYOUT$bindCount.byteSize();
-    public static final long SIZE$pBinds = LAYOUT$pBinds.byteSize();
-
     public VkSparseImageMemoryBindInfo(MemorySegment segment) {
         this.segment = segment;
     }
@@ -110,4 +87,28 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) implements IPoi
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("image"),
+        ValueLayout.JAVA_INT.withName("bindCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkSparseImageMemoryBind.LAYOUT).withName("pBinds")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$image = PathElement.groupElement("image");
+    public static final PathElement PATH$bindCount = PathElement.groupElement("bindCount");
+    public static final PathElement PATH$pBinds = PathElement.groupElement("pBinds");
+
+    public static final AddressLayout LAYOUT$image = (AddressLayout) LAYOUT.select(PATH$image);
+    public static final OfInt LAYOUT$bindCount = (OfInt) LAYOUT.select(PATH$bindCount);
+    public static final AddressLayout LAYOUT$pBinds = (AddressLayout) LAYOUT.select(PATH$pBinds);
+
+    public static final long OFFSET$image = LAYOUT.byteOffset(PATH$image);
+    public static final long OFFSET$bindCount = LAYOUT.byteOffset(PATH$bindCount);
+    public static final long OFFSET$pBinds = LAYOUT.byteOffset(PATH$pBinds);
+
+    public static final long SIZE$image = LAYOUT$image.byteSize();
+    public static final long SIZE$bindCount = LAYOUT$bindCount.byteSize();
+    public static final long SIZE$pBinds = LAYOUT$pBinds.byteSize();
+
 }

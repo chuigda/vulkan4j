@@ -28,54 +28,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCommandBufferInheritanceInfo.html">VkCommandBufferInheritanceInfo</a>
 public record VkCommandBufferInheritanceInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("renderPass"),
-        ValueLayout.JAVA_INT.withName("subpass"),
-        ValueLayout.ADDRESS.withName("framebuffer"),
-        ValueLayout.JAVA_INT.withName("occlusionQueryEnable"),
-        ValueLayout.JAVA_INT.withName("queryFlags"),
-        ValueLayout.JAVA_INT.withName("pipelineStatistics")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$renderPass = PathElement.groupElement("renderPass");
-    public static final PathElement PATH$subpass = PathElement.groupElement("subpass");
-    public static final PathElement PATH$framebuffer = PathElement.groupElement("framebuffer");
-    public static final PathElement PATH$occlusionQueryEnable = PathElement.groupElement("occlusionQueryEnable");
-    public static final PathElement PATH$queryFlags = PathElement.groupElement("queryFlags");
-    public static final PathElement PATH$pipelineStatistics = PathElement.groupElement("pipelineStatistics");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$renderPass = (AddressLayout) LAYOUT.select(PATH$renderPass);
-    public static final OfInt LAYOUT$subpass = (OfInt) LAYOUT.select(PATH$subpass);
-    public static final AddressLayout LAYOUT$framebuffer = (AddressLayout) LAYOUT.select(PATH$framebuffer);
-    public static final OfInt LAYOUT$occlusionQueryEnable = (OfInt) LAYOUT.select(PATH$occlusionQueryEnable);
-    public static final OfInt LAYOUT$queryFlags = (OfInt) LAYOUT.select(PATH$queryFlags);
-    public static final OfInt LAYOUT$pipelineStatistics = (OfInt) LAYOUT.select(PATH$pipelineStatistics);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$renderPass = LAYOUT.byteOffset(PATH$renderPass);
-    public static final long OFFSET$subpass = LAYOUT.byteOffset(PATH$subpass);
-    public static final long OFFSET$framebuffer = LAYOUT.byteOffset(PATH$framebuffer);
-    public static final long OFFSET$occlusionQueryEnable = LAYOUT.byteOffset(PATH$occlusionQueryEnable);
-    public static final long OFFSET$queryFlags = LAYOUT.byteOffset(PATH$queryFlags);
-    public static final long OFFSET$pipelineStatistics = LAYOUT.byteOffset(PATH$pipelineStatistics);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$renderPass = LAYOUT$renderPass.byteSize();
-    public static final long SIZE$subpass = LAYOUT$subpass.byteSize();
-    public static final long SIZE$framebuffer = LAYOUT$framebuffer.byteSize();
-    public static final long SIZE$occlusionQueryEnable = LAYOUT$occlusionQueryEnable.byteSize();
-    public static final long SIZE$queryFlags = LAYOUT$queryFlags.byteSize();
-    public static final long SIZE$pipelineStatistics = LAYOUT$pipelineStatistics.byteSize();
-
     public VkCommandBufferInheritanceInfo(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO);
@@ -161,4 +113,53 @@ public record VkCommandBufferInheritanceInfo(MemorySegment segment) implements I
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("renderPass"),
+        ValueLayout.JAVA_INT.withName("subpass"),
+        ValueLayout.ADDRESS.withName("framebuffer"),
+        ValueLayout.JAVA_INT.withName("occlusionQueryEnable"),
+        ValueLayout.JAVA_INT.withName("queryFlags"),
+        ValueLayout.JAVA_INT.withName("pipelineStatistics")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$renderPass = PathElement.groupElement("renderPass");
+    public static final PathElement PATH$subpass = PathElement.groupElement("subpass");
+    public static final PathElement PATH$framebuffer = PathElement.groupElement("framebuffer");
+    public static final PathElement PATH$occlusionQueryEnable = PathElement.groupElement("occlusionQueryEnable");
+    public static final PathElement PATH$queryFlags = PathElement.groupElement("queryFlags");
+    public static final PathElement PATH$pipelineStatistics = PathElement.groupElement("pipelineStatistics");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$renderPass = (AddressLayout) LAYOUT.select(PATH$renderPass);
+    public static final OfInt LAYOUT$subpass = (OfInt) LAYOUT.select(PATH$subpass);
+    public static final AddressLayout LAYOUT$framebuffer = (AddressLayout) LAYOUT.select(PATH$framebuffer);
+    public static final OfInt LAYOUT$occlusionQueryEnable = (OfInt) LAYOUT.select(PATH$occlusionQueryEnable);
+    public static final OfInt LAYOUT$queryFlags = (OfInt) LAYOUT.select(PATH$queryFlags);
+    public static final OfInt LAYOUT$pipelineStatistics = (OfInt) LAYOUT.select(PATH$pipelineStatistics);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$renderPass = LAYOUT.byteOffset(PATH$renderPass);
+    public static final long OFFSET$subpass = LAYOUT.byteOffset(PATH$subpass);
+    public static final long OFFSET$framebuffer = LAYOUT.byteOffset(PATH$framebuffer);
+    public static final long OFFSET$occlusionQueryEnable = LAYOUT.byteOffset(PATH$occlusionQueryEnable);
+    public static final long OFFSET$queryFlags = LAYOUT.byteOffset(PATH$queryFlags);
+    public static final long OFFSET$pipelineStatistics = LAYOUT.byteOffset(PATH$pipelineStatistics);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$renderPass = LAYOUT$renderPass.byteSize();
+    public static final long SIZE$subpass = LAYOUT$subpass.byteSize();
+    public static final long SIZE$framebuffer = LAYOUT$framebuffer.byteSize();
+    public static final long SIZE$occlusionQueryEnable = LAYOUT$occlusionQueryEnable.byteSize();
+    public static final long SIZE$queryFlags = LAYOUT$queryFlags.byteSize();
+    public static final long SIZE$pipelineStatistics = LAYOUT$pipelineStatistics.byteSize();
+
 }

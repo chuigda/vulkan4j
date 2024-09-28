@@ -24,32 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSpecializationInfo.html">VkSpecializationInfo</a>
 public record VkSpecializationInfo(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("mapEntryCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkSpecializationMapEntry.LAYOUT).withName("pMapEntries"),
-        NativeLayout.C_SIZE_T.withName("dataSize"),
-        ValueLayout.ADDRESS.withName("pData")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$mapEntryCount = PathElement.groupElement("mapEntryCount");
-    public static final PathElement PATH$pMapEntries = PathElement.groupElement("pMapEntries");
-    public static final PathElement PATH$dataSize = PathElement.groupElement("dataSize");
-    public static final PathElement PATH$pData = PathElement.groupElement("pData");
-
-    public static final OfInt LAYOUT$mapEntryCount = (OfInt) LAYOUT.select(PATH$mapEntryCount);
-    public static final AddressLayout LAYOUT$pMapEntries = (AddressLayout) LAYOUT.select(PATH$pMapEntries);
-    public static final AddressLayout LAYOUT$pData = (AddressLayout) LAYOUT.select(PATH$pData);
-
-    public static final long OFFSET$mapEntryCount = LAYOUT.byteOffset(PATH$mapEntryCount);
-    public static final long OFFSET$pMapEntries = LAYOUT.byteOffset(PATH$pMapEntries);
-    public static final long OFFSET$dataSize = LAYOUT.byteOffset(PATH$dataSize);
-    public static final long OFFSET$pData = LAYOUT.byteOffset(PATH$pData);
-
-    public static final long SIZE$mapEntryCount = LAYOUT$mapEntryCount.byteSize();
-    public static final long SIZE$pMapEntries = LAYOUT$pMapEntries.byteSize();
-    public static final long SIZE$pData = LAYOUT$pData.byteSize();
-
     public VkSpecializationInfo(MemorySegment segment) {
         this.segment = segment;
     }
@@ -126,4 +100,31 @@ public record VkSpecializationInfo(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("mapEntryCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkSpecializationMapEntry.LAYOUT).withName("pMapEntries"),
+        NativeLayout.C_SIZE_T.withName("dataSize"),
+        ValueLayout.ADDRESS.withName("pData")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$mapEntryCount = PathElement.groupElement("mapEntryCount");
+    public static final PathElement PATH$pMapEntries = PathElement.groupElement("pMapEntries");
+    public static final PathElement PATH$dataSize = PathElement.groupElement("dataSize");
+    public static final PathElement PATH$pData = PathElement.groupElement("pData");
+
+    public static final OfInt LAYOUT$mapEntryCount = (OfInt) LAYOUT.select(PATH$mapEntryCount);
+    public static final AddressLayout LAYOUT$pMapEntries = (AddressLayout) LAYOUT.select(PATH$pMapEntries);
+    public static final AddressLayout LAYOUT$pData = (AddressLayout) LAYOUT.select(PATH$pData);
+
+    public static final long OFFSET$mapEntryCount = LAYOUT.byteOffset(PATH$mapEntryCount);
+    public static final long OFFSET$pMapEntries = LAYOUT.byteOffset(PATH$pMapEntries);
+    public static final long OFFSET$dataSize = LAYOUT.byteOffset(PATH$dataSize);
+    public static final long OFFSET$pData = LAYOUT.byteOffset(PATH$pData);
+
+    public static final long SIZE$mapEntryCount = LAYOUT$mapEntryCount.byteSize();
+    public static final long SIZE$pMapEntries = LAYOUT$pMapEntries.byteSize();
+    public static final long SIZE$pData = LAYOUT$pData.byteSize();
+
 }

@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkLayerSettingEXT.html">VkLayerSettingEXT</a>
 public record VkLayerSettingEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pLayerName"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pSettingName"),
-        ValueLayout.JAVA_INT.withName("type"),
-        ValueLayout.JAVA_INT.withName("valueCount"),
-        ValueLayout.ADDRESS.withName("pValues")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$pLayerName = PathElement.groupElement("pLayerName");
-    public static final PathElement PATH$pSettingName = PathElement.groupElement("pSettingName");
-    public static final PathElement PATH$type = PathElement.groupElement("type");
-    public static final PathElement PATH$valueCount = PathElement.groupElement("valueCount");
-    public static final PathElement PATH$pValues = PathElement.groupElement("pValues");
-
-    public static final AddressLayout LAYOUT$pLayerName = (AddressLayout) LAYOUT.select(PATH$pLayerName);
-    public static final AddressLayout LAYOUT$pSettingName = (AddressLayout) LAYOUT.select(PATH$pSettingName);
-    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
-    public static final OfInt LAYOUT$valueCount = (OfInt) LAYOUT.select(PATH$valueCount);
-    public static final AddressLayout LAYOUT$pValues = (AddressLayout) LAYOUT.select(PATH$pValues);
-
-    public static final long OFFSET$pLayerName = LAYOUT.byteOffset(PATH$pLayerName);
-    public static final long OFFSET$pSettingName = LAYOUT.byteOffset(PATH$pSettingName);
-    public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
-    public static final long OFFSET$valueCount = LAYOUT.byteOffset(PATH$valueCount);
-    public static final long OFFSET$pValues = LAYOUT.byteOffset(PATH$pValues);
-
-    public static final long SIZE$pLayerName = LAYOUT$pLayerName.byteSize();
-    public static final long SIZE$pSettingName = LAYOUT$pSettingName.byteSize();
-    public static final long SIZE$type = LAYOUT$type.byteSize();
-    public static final long SIZE$valueCount = LAYOUT$valueCount.byteSize();
-    public static final long SIZE$pValues = LAYOUT$pValues.byteSize();
-
     public VkLayerSettingEXT(MemorySegment segment) {
         this.segment = segment;
     }
@@ -148,4 +115,38 @@ public record VkLayerSettingEXT(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pLayerName"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pSettingName"),
+        ValueLayout.JAVA_INT.withName("type"),
+        ValueLayout.JAVA_INT.withName("valueCount"),
+        ValueLayout.ADDRESS.withName("pValues")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$pLayerName = PathElement.groupElement("pLayerName");
+    public static final PathElement PATH$pSettingName = PathElement.groupElement("pSettingName");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$valueCount = PathElement.groupElement("valueCount");
+    public static final PathElement PATH$pValues = PathElement.groupElement("pValues");
+
+    public static final AddressLayout LAYOUT$pLayerName = (AddressLayout) LAYOUT.select(PATH$pLayerName);
+    public static final AddressLayout LAYOUT$pSettingName = (AddressLayout) LAYOUT.select(PATH$pSettingName);
+    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
+    public static final OfInt LAYOUT$valueCount = (OfInt) LAYOUT.select(PATH$valueCount);
+    public static final AddressLayout LAYOUT$pValues = (AddressLayout) LAYOUT.select(PATH$pValues);
+
+    public static final long OFFSET$pLayerName = LAYOUT.byteOffset(PATH$pLayerName);
+    public static final long OFFSET$pSettingName = LAYOUT.byteOffset(PATH$pSettingName);
+    public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
+    public static final long OFFSET$valueCount = LAYOUT.byteOffset(PATH$valueCount);
+    public static final long OFFSET$pValues = LAYOUT.byteOffset(PATH$pValues);
+
+    public static final long SIZE$pLayerName = LAYOUT$pLayerName.byteSize();
+    public static final long SIZE$pSettingName = LAYOUT$pSettingName.byteSize();
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$valueCount = LAYOUT$valueCount.byteSize();
+    public static final long SIZE$pValues = LAYOUT$pValues.byteSize();
+
 }

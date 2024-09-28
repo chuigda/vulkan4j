@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkClearAttachment.html">VkClearAttachment</a>
 public record VkClearAttachment(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("aspectMask"),
-        ValueLayout.JAVA_INT.withName("colorAttachment"),
-        VkClearValue.LAYOUT.withName("clearValue")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
-    public static final PathElement PATH$colorAttachment = PathElement.groupElement("colorAttachment");
-    public static final PathElement PATH$clearValue = PathElement.groupElement("clearValue");
-
-    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
-    public static final OfInt LAYOUT$colorAttachment = (OfInt) LAYOUT.select(PATH$colorAttachment);
-    public static final UnionLayout LAYOUT$clearValue = (UnionLayout) LAYOUT.select(PATH$clearValue);
-
-    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
-    public static final long OFFSET$colorAttachment = LAYOUT.byteOffset(PATH$colorAttachment);
-    public static final long OFFSET$clearValue = LAYOUT.byteOffset(PATH$clearValue);
-
-    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
-    public static final long SIZE$colorAttachment = LAYOUT$colorAttachment.byteSize();
-    public static final long SIZE$clearValue = LAYOUT$clearValue.byteSize();
-
     public VkClearAttachment(MemorySegment segment) {
         this.segment = segment;
     }
@@ -86,4 +63,28 @@ public record VkClearAttachment(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("aspectMask"),
+        ValueLayout.JAVA_INT.withName("colorAttachment"),
+        VkClearValue.LAYOUT.withName("clearValue")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
+    public static final PathElement PATH$colorAttachment = PathElement.groupElement("colorAttachment");
+    public static final PathElement PATH$clearValue = PathElement.groupElement("clearValue");
+
+    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
+    public static final OfInt LAYOUT$colorAttachment = (OfInt) LAYOUT.select(PATH$colorAttachment);
+    public static final UnionLayout LAYOUT$clearValue = (UnionLayout) LAYOUT.select(PATH$clearValue);
+
+    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
+    public static final long OFFSET$colorAttachment = LAYOUT.byteOffset(PATH$colorAttachment);
+    public static final long OFFSET$clearValue = LAYOUT.byteOffset(PATH$clearValue);
+
+    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
+    public static final long SIZE$colorAttachment = LAYOUT$colorAttachment.byteSize();
+    public static final long SIZE$clearValue = LAYOUT$clearValue.byteSize();
+
 }

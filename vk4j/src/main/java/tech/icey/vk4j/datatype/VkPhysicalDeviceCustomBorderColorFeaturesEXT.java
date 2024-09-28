@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceCustomBorderColorFeaturesEXT.html">VkPhysicalDeviceCustomBorderColorFeaturesEXT</a>
 public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("customBorderColors"),
-        ValueLayout.JAVA_INT.withName("customBorderColorWithoutFormat")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$customBorderColors = PathElement.groupElement("customBorderColors");
-    public static final PathElement PATH$customBorderColorWithoutFormat = PathElement.groupElement("customBorderColorWithoutFormat");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$customBorderColors = (OfInt) LAYOUT.select(PATH$customBorderColors);
-    public static final OfInt LAYOUT$customBorderColorWithoutFormat = (OfInt) LAYOUT.select(PATH$customBorderColorWithoutFormat);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$customBorderColors = LAYOUT.byteOffset(PATH$customBorderColors);
-    public static final long OFFSET$customBorderColorWithoutFormat = LAYOUT.byteOffset(PATH$customBorderColorWithoutFormat);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$customBorderColors = LAYOUT$customBorderColors.byteSize();
-    public static final long SIZE$customBorderColorWithoutFormat = LAYOUT$customBorderColorWithoutFormat.byteSize();
-
     public VkPhysicalDeviceCustomBorderColorFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT);
@@ -105,4 +77,33 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(MemorySegment segment
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("customBorderColors"),
+        ValueLayout.JAVA_INT.withName("customBorderColorWithoutFormat")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$customBorderColors = PathElement.groupElement("customBorderColors");
+    public static final PathElement PATH$customBorderColorWithoutFormat = PathElement.groupElement("customBorderColorWithoutFormat");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$customBorderColors = (OfInt) LAYOUT.select(PATH$customBorderColors);
+    public static final OfInt LAYOUT$customBorderColorWithoutFormat = (OfInt) LAYOUT.select(PATH$customBorderColorWithoutFormat);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$customBorderColors = LAYOUT.byteOffset(PATH$customBorderColors);
+    public static final long OFFSET$customBorderColorWithoutFormat = LAYOUT.byteOffset(PATH$customBorderColorWithoutFormat);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$customBorderColors = LAYOUT$customBorderColors.byteSize();
+    public static final long SIZE$customBorderColorWithoutFormat = LAYOUT$customBorderColorWithoutFormat.byteSize();
+
 }

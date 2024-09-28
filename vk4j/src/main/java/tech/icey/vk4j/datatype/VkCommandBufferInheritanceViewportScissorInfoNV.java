@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCommandBufferInheritanceViewportScissorInfoNV.html">VkCommandBufferInheritanceViewportScissorInfoNV</a>
 public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("viewportScissor2D"),
-        ValueLayout.JAVA_INT.withName("viewportDepthCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkViewport.LAYOUT).withName("pViewportDepths")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$viewportScissor2D = PathElement.groupElement("viewportScissor2D");
-    public static final PathElement PATH$viewportDepthCount = PathElement.groupElement("viewportDepthCount");
-    public static final PathElement PATH$pViewportDepths = PathElement.groupElement("pViewportDepths");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$viewportScissor2D = (OfInt) LAYOUT.select(PATH$viewportScissor2D);
-    public static final OfInt LAYOUT$viewportDepthCount = (OfInt) LAYOUT.select(PATH$viewportDepthCount);
-    public static final AddressLayout LAYOUT$pViewportDepths = (AddressLayout) LAYOUT.select(PATH$pViewportDepths);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$viewportScissor2D = LAYOUT.byteOffset(PATH$viewportScissor2D);
-    public static final long OFFSET$viewportDepthCount = LAYOUT.byteOffset(PATH$viewportDepthCount);
-    public static final long OFFSET$pViewportDepths = LAYOUT.byteOffset(PATH$pViewportDepths);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$viewportScissor2D = LAYOUT$viewportScissor2D.byteSize();
-    public static final long SIZE$viewportDepthCount = LAYOUT$viewportDepthCount.byteSize();
-    public static final long SIZE$pViewportDepths = LAYOUT$pViewportDepths.byteSize();
-
     public VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_VIEWPORT_SCISSOR_INFO_NV);
@@ -143,4 +110,38 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("viewportScissor2D"),
+        ValueLayout.JAVA_INT.withName("viewportDepthCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkViewport.LAYOUT).withName("pViewportDepths")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$viewportScissor2D = PathElement.groupElement("viewportScissor2D");
+    public static final PathElement PATH$viewportDepthCount = PathElement.groupElement("viewportDepthCount");
+    public static final PathElement PATH$pViewportDepths = PathElement.groupElement("pViewportDepths");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$viewportScissor2D = (OfInt) LAYOUT.select(PATH$viewportScissor2D);
+    public static final OfInt LAYOUT$viewportDepthCount = (OfInt) LAYOUT.select(PATH$viewportDepthCount);
+    public static final AddressLayout LAYOUT$pViewportDepths = (AddressLayout) LAYOUT.select(PATH$pViewportDepths);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$viewportScissor2D = LAYOUT.byteOffset(PATH$viewportScissor2D);
+    public static final long OFFSET$viewportDepthCount = LAYOUT.byteOffset(PATH$viewportDepthCount);
+    public static final long OFFSET$pViewportDepths = LAYOUT.byteOffset(PATH$pViewportDepths);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$viewportScissor2D = LAYOUT$viewportScissor2D.byteSize();
+    public static final long SIZE$viewportDepthCount = LAYOUT$viewportDepthCount.byteSize();
+    public static final long SIZE$pViewportDepths = LAYOUT$pViewportDepths.byteSize();
+
 }

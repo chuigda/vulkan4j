@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceFragmentDensityMapFeaturesEXT.html">VkPhysicalDeviceFragmentDensityMapFeaturesEXT</a>
 public record VkPhysicalDeviceFragmentDensityMapFeaturesEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("fragmentDensityMap"),
-        ValueLayout.JAVA_INT.withName("fragmentDensityMapDynamic"),
-        ValueLayout.JAVA_INT.withName("fragmentDensityMapNonSubsampledImages")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$fragmentDensityMap = PathElement.groupElement("fragmentDensityMap");
-    public static final PathElement PATH$fragmentDensityMapDynamic = PathElement.groupElement("fragmentDensityMapDynamic");
-    public static final PathElement PATH$fragmentDensityMapNonSubsampledImages = PathElement.groupElement("fragmentDensityMapNonSubsampledImages");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$fragmentDensityMap = (OfInt) LAYOUT.select(PATH$fragmentDensityMap);
-    public static final OfInt LAYOUT$fragmentDensityMapDynamic = (OfInt) LAYOUT.select(PATH$fragmentDensityMapDynamic);
-    public static final OfInt LAYOUT$fragmentDensityMapNonSubsampledImages = (OfInt) LAYOUT.select(PATH$fragmentDensityMapNonSubsampledImages);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$fragmentDensityMap = LAYOUT.byteOffset(PATH$fragmentDensityMap);
-    public static final long OFFSET$fragmentDensityMapDynamic = LAYOUT.byteOffset(PATH$fragmentDensityMapDynamic);
-    public static final long OFFSET$fragmentDensityMapNonSubsampledImages = LAYOUT.byteOffset(PATH$fragmentDensityMapNonSubsampledImages);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$fragmentDensityMap = LAYOUT$fragmentDensityMap.byteSize();
-    public static final long SIZE$fragmentDensityMapDynamic = LAYOUT$fragmentDensityMapDynamic.byteSize();
-    public static final long SIZE$fragmentDensityMapNonSubsampledImages = LAYOUT$fragmentDensityMapNonSubsampledImages.byteSize();
-
     public VkPhysicalDeviceFragmentDensityMapFeaturesEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT);
@@ -119,4 +86,38 @@ public record VkPhysicalDeviceFragmentDensityMapFeaturesEXT(MemorySegment segmen
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("fragmentDensityMap"),
+        ValueLayout.JAVA_INT.withName("fragmentDensityMapDynamic"),
+        ValueLayout.JAVA_INT.withName("fragmentDensityMapNonSubsampledImages")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$fragmentDensityMap = PathElement.groupElement("fragmentDensityMap");
+    public static final PathElement PATH$fragmentDensityMapDynamic = PathElement.groupElement("fragmentDensityMapDynamic");
+    public static final PathElement PATH$fragmentDensityMapNonSubsampledImages = PathElement.groupElement("fragmentDensityMapNonSubsampledImages");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$fragmentDensityMap = (OfInt) LAYOUT.select(PATH$fragmentDensityMap);
+    public static final OfInt LAYOUT$fragmentDensityMapDynamic = (OfInt) LAYOUT.select(PATH$fragmentDensityMapDynamic);
+    public static final OfInt LAYOUT$fragmentDensityMapNonSubsampledImages = (OfInt) LAYOUT.select(PATH$fragmentDensityMapNonSubsampledImages);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$fragmentDensityMap = LAYOUT.byteOffset(PATH$fragmentDensityMap);
+    public static final long OFFSET$fragmentDensityMapDynamic = LAYOUT.byteOffset(PATH$fragmentDensityMapDynamic);
+    public static final long OFFSET$fragmentDensityMapNonSubsampledImages = LAYOUT.byteOffset(PATH$fragmentDensityMapNonSubsampledImages);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$fragmentDensityMap = LAYOUT$fragmentDensityMap.byteSize();
+    public static final long SIZE$fragmentDensityMapDynamic = LAYOUT$fragmentDensityMapDynamic.byteSize();
+    public static final long SIZE$fragmentDensityMapNonSubsampledImages = LAYOUT$fragmentDensityMapNonSubsampledImages.byteSize();
+
 }

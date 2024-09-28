@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRefreshObjectKHR.html">VkRefreshObjectKHR</a>
 public record VkRefreshObjectKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("objectType"),
-        ValueLayout.JAVA_LONG.withName("objectHandle"),
-        ValueLayout.JAVA_INT.withName("flags")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$objectType = PathElement.groupElement("objectType");
-    public static final PathElement PATH$objectHandle = PathElement.groupElement("objectHandle");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-
-    public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
-    public static final OfLong LAYOUT$objectHandle = (OfLong) LAYOUT.select(PATH$objectHandle);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-
-    public static final long OFFSET$objectType = LAYOUT.byteOffset(PATH$objectType);
-    public static final long OFFSET$objectHandle = LAYOUT.byteOffset(PATH$objectHandle);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-
-    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
-    public static final long SIZE$objectHandle = LAYOUT$objectHandle.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
     public VkRefreshObjectKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -86,4 +63,28 @@ public record VkRefreshObjectKHR(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("objectType"),
+        ValueLayout.JAVA_LONG.withName("objectHandle"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$objectType = PathElement.groupElement("objectType");
+    public static final PathElement PATH$objectHandle = PathElement.groupElement("objectHandle");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+
+    public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
+    public static final OfLong LAYOUT$objectHandle = (OfLong) LAYOUT.select(PATH$objectHandle);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+
+    public static final long OFFSET$objectType = LAYOUT.byteOffset(PATH$objectType);
+    public static final long OFFSET$objectHandle = LAYOUT.byteOffset(PATH$objectHandle);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+
+    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
+    public static final long SIZE$objectHandle = LAYOUT$objectHandle.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+
 }

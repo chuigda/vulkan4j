@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkStridedDeviceAddressRegionKHR.html">VkStridedDeviceAddressRegionKHR</a>
 public record VkStridedDeviceAddressRegionKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_LONG.withName("deviceAddress"),
-        ValueLayout.JAVA_LONG.withName("stride"),
-        ValueLayout.JAVA_LONG.withName("size")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$deviceAddress = PathElement.groupElement("deviceAddress");
-    public static final PathElement PATH$stride = PathElement.groupElement("stride");
-    public static final PathElement PATH$size = PathElement.groupElement("size");
-
-    public static final OfLong LAYOUT$deviceAddress = (OfLong) LAYOUT.select(PATH$deviceAddress);
-    public static final OfLong LAYOUT$stride = (OfLong) LAYOUT.select(PATH$stride);
-    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
-
-    public static final long OFFSET$deviceAddress = LAYOUT.byteOffset(PATH$deviceAddress);
-    public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
-    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
-
-    public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
-    public static final long SIZE$stride = LAYOUT$stride.byteSize();
-    public static final long SIZE$size = LAYOUT$size.byteSize();
-
     public VkStridedDeviceAddressRegionKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -86,4 +63,28 @@ public record VkStridedDeviceAddressRegionKHR(MemorySegment segment) implements 
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("deviceAddress"),
+        ValueLayout.JAVA_LONG.withName("stride"),
+        ValueLayout.JAVA_LONG.withName("size")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$deviceAddress = PathElement.groupElement("deviceAddress");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+
+    public static final OfLong LAYOUT$deviceAddress = (OfLong) LAYOUT.select(PATH$deviceAddress);
+    public static final OfLong LAYOUT$stride = (OfLong) LAYOUT.select(PATH$stride);
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+
+    public static final long OFFSET$deviceAddress = LAYOUT.byteOffset(PATH$deviceAddress);
+    public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+
+    public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
+    public static final long SIZE$stride = LAYOUT$stride.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+
 }

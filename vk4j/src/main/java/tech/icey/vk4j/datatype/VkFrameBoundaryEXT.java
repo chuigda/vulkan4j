@@ -31,67 +31,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFrameBoundaryEXT.html">VkFrameBoundaryEXT</a>
 public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_LONG.withName("frameID"),
-        ValueLayout.JAVA_INT.withName("imageCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pImages"),
-        ValueLayout.JAVA_INT.withName("bufferCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pBuffers"),
-        ValueLayout.JAVA_LONG.withName("tagName"),
-        NativeLayout.C_SIZE_T.withName("tagSize"),
-        ValueLayout.ADDRESS.withName("pTag")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-    public static final PathElement PATH$frameID = PathElement.groupElement("frameID");
-    public static final PathElement PATH$imageCount = PathElement.groupElement("imageCount");
-    public static final PathElement PATH$pImages = PathElement.groupElement("pImages");
-    public static final PathElement PATH$bufferCount = PathElement.groupElement("bufferCount");
-    public static final PathElement PATH$pBuffers = PathElement.groupElement("pBuffers");
-    public static final PathElement PATH$tagName = PathElement.groupElement("tagName");
-    public static final PathElement PATH$tagSize = PathElement.groupElement("tagSize");
-    public static final PathElement PATH$pTag = PathElement.groupElement("pTag");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfLong LAYOUT$frameID = (OfLong) LAYOUT.select(PATH$frameID);
-    public static final OfInt LAYOUT$imageCount = (OfInt) LAYOUT.select(PATH$imageCount);
-    public static final AddressLayout LAYOUT$pImages = (AddressLayout) LAYOUT.select(PATH$pImages);
-    public static final OfInt LAYOUT$bufferCount = (OfInt) LAYOUT.select(PATH$bufferCount);
-    public static final AddressLayout LAYOUT$pBuffers = (AddressLayout) LAYOUT.select(PATH$pBuffers);
-    public static final OfLong LAYOUT$tagName = (OfLong) LAYOUT.select(PATH$tagName);
-    public static final AddressLayout LAYOUT$pTag = (AddressLayout) LAYOUT.select(PATH$pTag);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$frameID = LAYOUT.byteOffset(PATH$frameID);
-    public static final long OFFSET$imageCount = LAYOUT.byteOffset(PATH$imageCount);
-    public static final long OFFSET$pImages = LAYOUT.byteOffset(PATH$pImages);
-    public static final long OFFSET$bufferCount = LAYOUT.byteOffset(PATH$bufferCount);
-    public static final long OFFSET$pBuffers = LAYOUT.byteOffset(PATH$pBuffers);
-    public static final long OFFSET$tagName = LAYOUT.byteOffset(PATH$tagName);
-    public static final long OFFSET$tagSize = LAYOUT.byteOffset(PATH$tagSize);
-    public static final long OFFSET$pTag = LAYOUT.byteOffset(PATH$pTag);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$frameID = LAYOUT$frameID.byteSize();
-    public static final long SIZE$imageCount = LAYOUT$imageCount.byteSize();
-    public static final long SIZE$pImages = LAYOUT$pImages.byteSize();
-    public static final long SIZE$bufferCount = LAYOUT$bufferCount.byteSize();
-    public static final long SIZE$pBuffers = LAYOUT$pBuffers.byteSize();
-    public static final long SIZE$tagName = LAYOUT$tagName.byteSize();
-    public static final long SIZE$pTag = LAYOUT$pTag.byteSize();
-
     public VkFrameBoundaryEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT);
@@ -241,4 +180,66 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_LONG.withName("frameID"),
+        ValueLayout.JAVA_INT.withName("imageCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pImages"),
+        ValueLayout.JAVA_INT.withName("bufferCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pBuffers"),
+        ValueLayout.JAVA_LONG.withName("tagName"),
+        NativeLayout.C_SIZE_T.withName("tagSize"),
+        ValueLayout.ADDRESS.withName("pTag")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$frameID = PathElement.groupElement("frameID");
+    public static final PathElement PATH$imageCount = PathElement.groupElement("imageCount");
+    public static final PathElement PATH$pImages = PathElement.groupElement("pImages");
+    public static final PathElement PATH$bufferCount = PathElement.groupElement("bufferCount");
+    public static final PathElement PATH$pBuffers = PathElement.groupElement("pBuffers");
+    public static final PathElement PATH$tagName = PathElement.groupElement("tagName");
+    public static final PathElement PATH$tagSize = PathElement.groupElement("tagSize");
+    public static final PathElement PATH$pTag = PathElement.groupElement("pTag");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$frameID = (OfLong) LAYOUT.select(PATH$frameID);
+    public static final OfInt LAYOUT$imageCount = (OfInt) LAYOUT.select(PATH$imageCount);
+    public static final AddressLayout LAYOUT$pImages = (AddressLayout) LAYOUT.select(PATH$pImages);
+    public static final OfInt LAYOUT$bufferCount = (OfInt) LAYOUT.select(PATH$bufferCount);
+    public static final AddressLayout LAYOUT$pBuffers = (AddressLayout) LAYOUT.select(PATH$pBuffers);
+    public static final OfLong LAYOUT$tagName = (OfLong) LAYOUT.select(PATH$tagName);
+    public static final AddressLayout LAYOUT$pTag = (AddressLayout) LAYOUT.select(PATH$pTag);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$frameID = LAYOUT.byteOffset(PATH$frameID);
+    public static final long OFFSET$imageCount = LAYOUT.byteOffset(PATH$imageCount);
+    public static final long OFFSET$pImages = LAYOUT.byteOffset(PATH$pImages);
+    public static final long OFFSET$bufferCount = LAYOUT.byteOffset(PATH$bufferCount);
+    public static final long OFFSET$pBuffers = LAYOUT.byteOffset(PATH$pBuffers);
+    public static final long OFFSET$tagName = LAYOUT.byteOffset(PATH$tagName);
+    public static final long OFFSET$tagSize = LAYOUT.byteOffset(PATH$tagSize);
+    public static final long OFFSET$pTag = LAYOUT.byteOffset(PATH$pTag);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$frameID = LAYOUT$frameID.byteSize();
+    public static final long SIZE$imageCount = LAYOUT$imageCount.byteSize();
+    public static final long SIZE$pImages = LAYOUT$pImages.byteSize();
+    public static final long SIZE$bufferCount = LAYOUT$bufferCount.byteSize();
+    public static final long SIZE$pBuffers = LAYOUT$pBuffers.byteSize();
+    public static final long SIZE$tagName = LAYOUT$tagName.byteSize();
+    public static final long SIZE$pTag = LAYOUT$pTag.byteSize();
+
 }

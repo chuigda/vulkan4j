@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkClearDepthStencilValue.html">VkClearDepthStencilValue</a>
 public record VkClearDepthStencilValue(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_FLOAT.withName("depth"),
-        ValueLayout.JAVA_INT.withName("stencil")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$depth = PathElement.groupElement("depth");
-    public static final PathElement PATH$stencil = PathElement.groupElement("stencil");
-
-    public static final OfFloat LAYOUT$depth = (OfFloat) LAYOUT.select(PATH$depth);
-    public static final OfInt LAYOUT$stencil = (OfInt) LAYOUT.select(PATH$stencil);
-
-    public static final long OFFSET$depth = LAYOUT.byteOffset(PATH$depth);
-    public static final long OFFSET$stencil = LAYOUT.byteOffset(PATH$stencil);
-
-    public static final long SIZE$depth = LAYOUT$depth.byteSize();
-    public static final long SIZE$stencil = LAYOUT$stencil.byteSize();
-
     public VkClearDepthStencilValue(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkClearDepthStencilValue(MemorySegment segment) implements IPointe
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_FLOAT.withName("depth"),
+        ValueLayout.JAVA_INT.withName("stencil")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$depth = PathElement.groupElement("depth");
+    public static final PathElement PATH$stencil = PathElement.groupElement("stencil");
+
+    public static final OfFloat LAYOUT$depth = (OfFloat) LAYOUT.select(PATH$depth);
+    public static final OfInt LAYOUT$stencil = (OfInt) LAYOUT.select(PATH$stencil);
+
+    public static final long OFFSET$depth = LAYOUT.byteOffset(PATH$depth);
+    public static final long OFFSET$stencil = LAYOUT.byteOffset(PATH$stencil);
+
+    public static final long SIZE$depth = LAYOUT$depth.byteSize();
+    public static final long SIZE$stencil = LAYOUT$stencil.byteSize();
+
 }

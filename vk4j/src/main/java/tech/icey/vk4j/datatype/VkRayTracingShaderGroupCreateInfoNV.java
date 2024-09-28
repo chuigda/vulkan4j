@@ -27,49 +27,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRayTracingShaderGroupCreateInfoNV.html">VkRayTracingShaderGroupCreateInfoNV</a>
 public record VkRayTracingShaderGroupCreateInfoNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("type"),
-        ValueLayout.JAVA_INT.withName("generalShader"),
-        ValueLayout.JAVA_INT.withName("closestHitShader"),
-        ValueLayout.JAVA_INT.withName("anyHitShader"),
-        ValueLayout.JAVA_INT.withName("intersectionShader")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$type = PathElement.groupElement("type");
-    public static final PathElement PATH$generalShader = PathElement.groupElement("generalShader");
-    public static final PathElement PATH$closestHitShader = PathElement.groupElement("closestHitShader");
-    public static final PathElement PATH$anyHitShader = PathElement.groupElement("anyHitShader");
-    public static final PathElement PATH$intersectionShader = PathElement.groupElement("intersectionShader");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
-    public static final OfInt LAYOUT$generalShader = (OfInt) LAYOUT.select(PATH$generalShader);
-    public static final OfInt LAYOUT$closestHitShader = (OfInt) LAYOUT.select(PATH$closestHitShader);
-    public static final OfInt LAYOUT$anyHitShader = (OfInt) LAYOUT.select(PATH$anyHitShader);
-    public static final OfInt LAYOUT$intersectionShader = (OfInt) LAYOUT.select(PATH$intersectionShader);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
-    public static final long OFFSET$generalShader = LAYOUT.byteOffset(PATH$generalShader);
-    public static final long OFFSET$closestHitShader = LAYOUT.byteOffset(PATH$closestHitShader);
-    public static final long OFFSET$anyHitShader = LAYOUT.byteOffset(PATH$anyHitShader);
-    public static final long OFFSET$intersectionShader = LAYOUT.byteOffset(PATH$intersectionShader);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$type = LAYOUT$type.byteSize();
-    public static final long SIZE$generalShader = LAYOUT$generalShader.byteSize();
-    public static final long SIZE$closestHitShader = LAYOUT$closestHitShader.byteSize();
-    public static final long SIZE$anyHitShader = LAYOUT$anyHitShader.byteSize();
-    public static final long SIZE$intersectionShader = LAYOUT$intersectionShader.byteSize();
-
     public VkRayTracingShaderGroupCreateInfoNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_NV);
@@ -147,4 +104,48 @@ public record VkRayTracingShaderGroupCreateInfoNV(MemorySegment segment) impleme
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("type"),
+        ValueLayout.JAVA_INT.withName("generalShader"),
+        ValueLayout.JAVA_INT.withName("closestHitShader"),
+        ValueLayout.JAVA_INT.withName("anyHitShader"),
+        ValueLayout.JAVA_INT.withName("intersectionShader")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$generalShader = PathElement.groupElement("generalShader");
+    public static final PathElement PATH$closestHitShader = PathElement.groupElement("closestHitShader");
+    public static final PathElement PATH$anyHitShader = PathElement.groupElement("anyHitShader");
+    public static final PathElement PATH$intersectionShader = PathElement.groupElement("intersectionShader");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
+    public static final OfInt LAYOUT$generalShader = (OfInt) LAYOUT.select(PATH$generalShader);
+    public static final OfInt LAYOUT$closestHitShader = (OfInt) LAYOUT.select(PATH$closestHitShader);
+    public static final OfInt LAYOUT$anyHitShader = (OfInt) LAYOUT.select(PATH$anyHitShader);
+    public static final OfInt LAYOUT$intersectionShader = (OfInt) LAYOUT.select(PATH$intersectionShader);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
+    public static final long OFFSET$generalShader = LAYOUT.byteOffset(PATH$generalShader);
+    public static final long OFFSET$closestHitShader = LAYOUT.byteOffset(PATH$closestHitShader);
+    public static final long OFFSET$anyHitShader = LAYOUT.byteOffset(PATH$anyHitShader);
+    public static final long OFFSET$intersectionShader = LAYOUT.byteOffset(PATH$intersectionShader);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$generalShader = LAYOUT$generalShader.byteSize();
+    public static final long SIZE$closestHitShader = LAYOUT$closestHitShader.byteSize();
+    public static final long SIZE$anyHitShader = LAYOUT$anyHitShader.byteSize();
+    public static final long SIZE$intersectionShader = LAYOUT$intersectionShader.byteSize();
+
 }

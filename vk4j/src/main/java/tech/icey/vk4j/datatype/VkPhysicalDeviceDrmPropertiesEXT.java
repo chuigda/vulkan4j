@@ -28,54 +28,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceDrmPropertiesEXT.html">VkPhysicalDeviceDrmPropertiesEXT</a>
 public record VkPhysicalDeviceDrmPropertiesEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("hasPrimary"),
-        ValueLayout.JAVA_INT.withName("hasRender"),
-        ValueLayout.JAVA_LONG.withName("primaryMajor"),
-        ValueLayout.JAVA_LONG.withName("primaryMinor"),
-        ValueLayout.JAVA_LONG.withName("renderMajor"),
-        ValueLayout.JAVA_LONG.withName("renderMinor")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$hasPrimary = PathElement.groupElement("hasPrimary");
-    public static final PathElement PATH$hasRender = PathElement.groupElement("hasRender");
-    public static final PathElement PATH$primaryMajor = PathElement.groupElement("primaryMajor");
-    public static final PathElement PATH$primaryMinor = PathElement.groupElement("primaryMinor");
-    public static final PathElement PATH$renderMajor = PathElement.groupElement("renderMajor");
-    public static final PathElement PATH$renderMinor = PathElement.groupElement("renderMinor");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$hasPrimary = (OfInt) LAYOUT.select(PATH$hasPrimary);
-    public static final OfInt LAYOUT$hasRender = (OfInt) LAYOUT.select(PATH$hasRender);
-    public static final OfLong LAYOUT$primaryMajor = (OfLong) LAYOUT.select(PATH$primaryMajor);
-    public static final OfLong LAYOUT$primaryMinor = (OfLong) LAYOUT.select(PATH$primaryMinor);
-    public static final OfLong LAYOUT$renderMajor = (OfLong) LAYOUT.select(PATH$renderMajor);
-    public static final OfLong LAYOUT$renderMinor = (OfLong) LAYOUT.select(PATH$renderMinor);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$hasPrimary = LAYOUT.byteOffset(PATH$hasPrimary);
-    public static final long OFFSET$hasRender = LAYOUT.byteOffset(PATH$hasRender);
-    public static final long OFFSET$primaryMajor = LAYOUT.byteOffset(PATH$primaryMajor);
-    public static final long OFFSET$primaryMinor = LAYOUT.byteOffset(PATH$primaryMinor);
-    public static final long OFFSET$renderMajor = LAYOUT.byteOffset(PATH$renderMajor);
-    public static final long OFFSET$renderMinor = LAYOUT.byteOffset(PATH$renderMinor);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$hasPrimary = LAYOUT$hasPrimary.byteSize();
-    public static final long SIZE$hasRender = LAYOUT$hasRender.byteSize();
-    public static final long SIZE$primaryMajor = LAYOUT$primaryMajor.byteSize();
-    public static final long SIZE$primaryMinor = LAYOUT$primaryMinor.byteSize();
-    public static final long SIZE$renderMajor = LAYOUT$renderMajor.byteSize();
-    public static final long SIZE$renderMinor = LAYOUT$renderMinor.byteSize();
-
     public VkPhysicalDeviceDrmPropertiesEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRM_PROPERTIES_EXT);
@@ -161,4 +113,53 @@ public record VkPhysicalDeviceDrmPropertiesEXT(MemorySegment segment) implements
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("hasPrimary"),
+        ValueLayout.JAVA_INT.withName("hasRender"),
+        ValueLayout.JAVA_LONG.withName("primaryMajor"),
+        ValueLayout.JAVA_LONG.withName("primaryMinor"),
+        ValueLayout.JAVA_LONG.withName("renderMajor"),
+        ValueLayout.JAVA_LONG.withName("renderMinor")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$hasPrimary = PathElement.groupElement("hasPrimary");
+    public static final PathElement PATH$hasRender = PathElement.groupElement("hasRender");
+    public static final PathElement PATH$primaryMajor = PathElement.groupElement("primaryMajor");
+    public static final PathElement PATH$primaryMinor = PathElement.groupElement("primaryMinor");
+    public static final PathElement PATH$renderMajor = PathElement.groupElement("renderMajor");
+    public static final PathElement PATH$renderMinor = PathElement.groupElement("renderMinor");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$hasPrimary = (OfInt) LAYOUT.select(PATH$hasPrimary);
+    public static final OfInt LAYOUT$hasRender = (OfInt) LAYOUT.select(PATH$hasRender);
+    public static final OfLong LAYOUT$primaryMajor = (OfLong) LAYOUT.select(PATH$primaryMajor);
+    public static final OfLong LAYOUT$primaryMinor = (OfLong) LAYOUT.select(PATH$primaryMinor);
+    public static final OfLong LAYOUT$renderMajor = (OfLong) LAYOUT.select(PATH$renderMajor);
+    public static final OfLong LAYOUT$renderMinor = (OfLong) LAYOUT.select(PATH$renderMinor);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$hasPrimary = LAYOUT.byteOffset(PATH$hasPrimary);
+    public static final long OFFSET$hasRender = LAYOUT.byteOffset(PATH$hasRender);
+    public static final long OFFSET$primaryMajor = LAYOUT.byteOffset(PATH$primaryMajor);
+    public static final long OFFSET$primaryMinor = LAYOUT.byteOffset(PATH$primaryMinor);
+    public static final long OFFSET$renderMajor = LAYOUT.byteOffset(PATH$renderMajor);
+    public static final long OFFSET$renderMinor = LAYOUT.byteOffset(PATH$renderMinor);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$hasPrimary = LAYOUT$hasPrimary.byteSize();
+    public static final long SIZE$hasRender = LAYOUT$hasRender.byteSize();
+    public static final long SIZE$primaryMajor = LAYOUT$primaryMajor.byteSize();
+    public static final long SIZE$primaryMinor = LAYOUT$primaryMinor.byteSize();
+    public static final long SIZE$renderMajor = LAYOUT$renderMajor.byteSize();
+    public static final long SIZE$renderMinor = LAYOUT$renderMinor.byteSize();
+
 }

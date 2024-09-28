@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAccelerationStructureGeometryInstancesDataKHR.html">VkAccelerationStructureGeometryInstancesDataKHR</a>
 public record VkAccelerationStructureGeometryInstancesDataKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("arrayOfPointers"),
-        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("data")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$arrayOfPointers = PathElement.groupElement("arrayOfPointers");
-    public static final PathElement PATH$data = PathElement.groupElement("data");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$arrayOfPointers = (OfInt) LAYOUT.select(PATH$arrayOfPointers);
-    public static final UnionLayout LAYOUT$data = (UnionLayout) LAYOUT.select(PATH$data);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$arrayOfPointers = LAYOUT.byteOffset(PATH$arrayOfPointers);
-    public static final long OFFSET$data = LAYOUT.byteOffset(PATH$data);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$arrayOfPointers = LAYOUT$arrayOfPointers.byteSize();
-    public static final long SIZE$data = LAYOUT$data.byteSize();
-
     public VkAccelerationStructureGeometryInstancesDataKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_INSTANCES_DATA_KHR);
@@ -105,4 +77,33 @@ public record VkAccelerationStructureGeometryInstancesDataKHR(MemorySegment segm
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("arrayOfPointers"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("data")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$arrayOfPointers = PathElement.groupElement("arrayOfPointers");
+    public static final PathElement PATH$data = PathElement.groupElement("data");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$arrayOfPointers = (OfInt) LAYOUT.select(PATH$arrayOfPointers);
+    public static final UnionLayout LAYOUT$data = (UnionLayout) LAYOUT.select(PATH$data);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$arrayOfPointers = LAYOUT.byteOffset(PATH$arrayOfPointers);
+    public static final long OFFSET$data = LAYOUT.byteOffset(PATH$data);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$arrayOfPointers = LAYOUT$arrayOfPointers.byteSize();
+    public static final long SIZE$data = LAYOUT$data.byteSize();
+
 }

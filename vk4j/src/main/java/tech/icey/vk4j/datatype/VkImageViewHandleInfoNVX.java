@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageViewHandleInfoNVX.html">VkImageViewHandleInfoNVX</a>
 public record VkImageViewHandleInfoNVX(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("imageView"),
-        ValueLayout.JAVA_INT.withName("descriptorType"),
-        ValueLayout.ADDRESS.withName("sampler")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$imageView = PathElement.groupElement("imageView");
-    public static final PathElement PATH$descriptorType = PathElement.groupElement("descriptorType");
-    public static final PathElement PATH$sampler = PathElement.groupElement("sampler");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$imageView = (AddressLayout) LAYOUT.select(PATH$imageView);
-    public static final OfInt LAYOUT$descriptorType = (OfInt) LAYOUT.select(PATH$descriptorType);
-    public static final AddressLayout LAYOUT$sampler = (AddressLayout) LAYOUT.select(PATH$sampler);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$imageView = LAYOUT.byteOffset(PATH$imageView);
-    public static final long OFFSET$descriptorType = LAYOUT.byteOffset(PATH$descriptorType);
-    public static final long OFFSET$sampler = LAYOUT.byteOffset(PATH$sampler);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$imageView = LAYOUT$imageView.byteSize();
-    public static final long SIZE$descriptorType = LAYOUT$descriptorType.byteSize();
-    public static final long SIZE$sampler = LAYOUT$sampler.byteSize();
-
     public VkImageViewHandleInfoNVX(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX);
@@ -119,4 +86,38 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) implements IPointe
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("imageView"),
+        ValueLayout.JAVA_INT.withName("descriptorType"),
+        ValueLayout.ADDRESS.withName("sampler")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$imageView = PathElement.groupElement("imageView");
+    public static final PathElement PATH$descriptorType = PathElement.groupElement("descriptorType");
+    public static final PathElement PATH$sampler = PathElement.groupElement("sampler");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$imageView = (AddressLayout) LAYOUT.select(PATH$imageView);
+    public static final OfInt LAYOUT$descriptorType = (OfInt) LAYOUT.select(PATH$descriptorType);
+    public static final AddressLayout LAYOUT$sampler = (AddressLayout) LAYOUT.select(PATH$sampler);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$imageView = LAYOUT.byteOffset(PATH$imageView);
+    public static final long OFFSET$descriptorType = LAYOUT.byteOffset(PATH$descriptorType);
+    public static final long OFFSET$sampler = LAYOUT.byteOffset(PATH$sampler);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$imageView = LAYOUT$imageView.byteSize();
+    public static final long SIZE$descriptorType = LAYOUT$descriptorType.byteSize();
+    public static final long SIZE$sampler = LAYOUT$sampler.byteSize();
+
 }

@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDispatchGraphInfoAMDX.html">VkDispatchGraphInfoAMDX</a>
 public record VkDispatchGraphInfoAMDX(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("nodeIndex"),
-        ValueLayout.JAVA_INT.withName("payloadCount"),
-        VkDeviceOrHostAddressConstAMDX.LAYOUT.withName("payloads"),
-        ValueLayout.JAVA_LONG.withName("payloadStride")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$nodeIndex = PathElement.groupElement("nodeIndex");
-    public static final PathElement PATH$payloadCount = PathElement.groupElement("payloadCount");
-    public static final PathElement PATH$payloads = PathElement.groupElement("payloads");
-    public static final PathElement PATH$payloadStride = PathElement.groupElement("payloadStride");
-
-    public static final OfInt LAYOUT$nodeIndex = (OfInt) LAYOUT.select(PATH$nodeIndex);
-    public static final OfInt LAYOUT$payloadCount = (OfInt) LAYOUT.select(PATH$payloadCount);
-    public static final UnionLayout LAYOUT$payloads = (UnionLayout) LAYOUT.select(PATH$payloads);
-    public static final OfLong LAYOUT$payloadStride = (OfLong) LAYOUT.select(PATH$payloadStride);
-
-    public static final long OFFSET$nodeIndex = LAYOUT.byteOffset(PATH$nodeIndex);
-    public static final long OFFSET$payloadCount = LAYOUT.byteOffset(PATH$payloadCount);
-    public static final long OFFSET$payloads = LAYOUT.byteOffset(PATH$payloads);
-    public static final long OFFSET$payloadStride = LAYOUT.byteOffset(PATH$payloadStride);
-
-    public static final long SIZE$nodeIndex = LAYOUT$nodeIndex.byteSize();
-    public static final long SIZE$payloadCount = LAYOUT$payloadCount.byteSize();
-    public static final long SIZE$payloads = LAYOUT$payloads.byteSize();
-    public static final long SIZE$payloadStride = LAYOUT$payloadStride.byteSize();
-
     public VkDispatchGraphInfoAMDX(MemorySegment segment) {
         this.segment = segment;
     }
@@ -100,4 +72,33 @@ public record VkDispatchGraphInfoAMDX(MemorySegment segment) implements IPointer
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("nodeIndex"),
+        ValueLayout.JAVA_INT.withName("payloadCount"),
+        VkDeviceOrHostAddressConstAMDX.LAYOUT.withName("payloads"),
+        ValueLayout.JAVA_LONG.withName("payloadStride")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$nodeIndex = PathElement.groupElement("nodeIndex");
+    public static final PathElement PATH$payloadCount = PathElement.groupElement("payloadCount");
+    public static final PathElement PATH$payloads = PathElement.groupElement("payloads");
+    public static final PathElement PATH$payloadStride = PathElement.groupElement("payloadStride");
+
+    public static final OfInt LAYOUT$nodeIndex = (OfInt) LAYOUT.select(PATH$nodeIndex);
+    public static final OfInt LAYOUT$payloadCount = (OfInt) LAYOUT.select(PATH$payloadCount);
+    public static final UnionLayout LAYOUT$payloads = (UnionLayout) LAYOUT.select(PATH$payloads);
+    public static final OfLong LAYOUT$payloadStride = (OfLong) LAYOUT.select(PATH$payloadStride);
+
+    public static final long OFFSET$nodeIndex = LAYOUT.byteOffset(PATH$nodeIndex);
+    public static final long OFFSET$payloadCount = LAYOUT.byteOffset(PATH$payloadCount);
+    public static final long OFFSET$payloads = LAYOUT.byteOffset(PATH$payloads);
+    public static final long OFFSET$payloadStride = LAYOUT.byteOffset(PATH$payloadStride);
+
+    public static final long SIZE$nodeIndex = LAYOUT$nodeIndex.byteSize();
+    public static final long SIZE$payloadCount = LAYOUT$payloadCount.byteSize();
+    public static final long SIZE$payloads = LAYOUT$payloads.byteSize();
+    public static final long SIZE$payloadStride = LAYOUT$payloadStride.byteSize();
+
 }

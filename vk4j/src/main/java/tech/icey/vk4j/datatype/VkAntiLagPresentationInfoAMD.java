@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAntiLagPresentationInfoAMD.html">VkAntiLagPresentationInfoAMD</a>
 public record VkAntiLagPresentationInfoAMD(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("stage"),
-        ValueLayout.JAVA_LONG.withName("frameIndex")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$stage = PathElement.groupElement("stage");
-    public static final PathElement PATH$frameIndex = PathElement.groupElement("frameIndex");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$stage = (OfInt) LAYOUT.select(PATH$stage);
-    public static final OfLong LAYOUT$frameIndex = (OfLong) LAYOUT.select(PATH$frameIndex);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$stage = LAYOUT.byteOffset(PATH$stage);
-    public static final long OFFSET$frameIndex = LAYOUT.byteOffset(PATH$frameIndex);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$stage = LAYOUT$stage.byteSize();
-    public static final long SIZE$frameIndex = LAYOUT$frameIndex.byteSize();
-
     public VkAntiLagPresentationInfoAMD(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD);
@@ -105,4 +77,33 @@ public record VkAntiLagPresentationInfoAMD(MemorySegment segment) implements IPo
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("stage"),
+        ValueLayout.JAVA_LONG.withName("frameIndex")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$stage = PathElement.groupElement("stage");
+    public static final PathElement PATH$frameIndex = PathElement.groupElement("frameIndex");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$stage = (OfInt) LAYOUT.select(PATH$stage);
+    public static final OfLong LAYOUT$frameIndex = (OfLong) LAYOUT.select(PATH$frameIndex);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$stage = LAYOUT.byteOffset(PATH$stage);
+    public static final long OFFSET$frameIndex = LAYOUT.byteOffset(PATH$frameIndex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$stage = LAYOUT$stage.byteSize();
+    public static final long SIZE$frameIndex = LAYOUT$frameIndex.byteSize();
+
 }

@@ -26,44 +26,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSparseImageMemoryBind.html">VkSparseImageMemoryBind</a>
 public record VkSparseImageMemoryBind(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        VkImageSubresource.LAYOUT.withName("subresource"),
-        VkOffset3D.LAYOUT.withName("offset"),
-        VkExtent3D.LAYOUT.withName("extent"),
-        ValueLayout.ADDRESS.withName("memory"),
-        ValueLayout.JAVA_LONG.withName("memoryOffset"),
-        ValueLayout.JAVA_INT.withName("flags")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$subresource = PathElement.groupElement("subresource");
-    public static final PathElement PATH$offset = PathElement.groupElement("offset");
-    public static final PathElement PATH$extent = PathElement.groupElement("extent");
-    public static final PathElement PATH$memory = PathElement.groupElement("memory");
-    public static final PathElement PATH$memoryOffset = PathElement.groupElement("memoryOffset");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-
-    public static final StructLayout LAYOUT$subresource = (StructLayout) LAYOUT.select(PATH$subresource);
-    public static final StructLayout LAYOUT$offset = (StructLayout) LAYOUT.select(PATH$offset);
-    public static final StructLayout LAYOUT$extent = (StructLayout) LAYOUT.select(PATH$extent);
-    public static final AddressLayout LAYOUT$memory = (AddressLayout) LAYOUT.select(PATH$memory);
-    public static final OfLong LAYOUT$memoryOffset = (OfLong) LAYOUT.select(PATH$memoryOffset);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-
-    public static final long OFFSET$subresource = LAYOUT.byteOffset(PATH$subresource);
-    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
-    public static final long OFFSET$extent = LAYOUT.byteOffset(PATH$extent);
-    public static final long OFFSET$memory = LAYOUT.byteOffset(PATH$memory);
-    public static final long OFFSET$memoryOffset = LAYOUT.byteOffset(PATH$memoryOffset);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-
-    public static final long SIZE$subresource = LAYOUT$subresource.byteSize();
-    public static final long SIZE$offset = LAYOUT$offset.byteSize();
-    public static final long SIZE$extent = LAYOUT$extent.byteSize();
-    public static final long SIZE$memory = LAYOUT$memory.byteSize();
-    public static final long SIZE$memoryOffset = LAYOUT$memoryOffset.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
     public VkSparseImageMemoryBind(MemorySegment segment) {
         this.segment = segment;
     }
@@ -128,4 +90,43 @@ public record VkSparseImageMemoryBind(MemorySegment segment) implements IPointer
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        VkImageSubresource.LAYOUT.withName("subresource"),
+        VkOffset3D.LAYOUT.withName("offset"),
+        VkExtent3D.LAYOUT.withName("extent"),
+        ValueLayout.ADDRESS.withName("memory"),
+        ValueLayout.JAVA_LONG.withName("memoryOffset"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$subresource = PathElement.groupElement("subresource");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$extent = PathElement.groupElement("extent");
+    public static final PathElement PATH$memory = PathElement.groupElement("memory");
+    public static final PathElement PATH$memoryOffset = PathElement.groupElement("memoryOffset");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+
+    public static final StructLayout LAYOUT$subresource = (StructLayout) LAYOUT.select(PATH$subresource);
+    public static final StructLayout LAYOUT$offset = (StructLayout) LAYOUT.select(PATH$offset);
+    public static final StructLayout LAYOUT$extent = (StructLayout) LAYOUT.select(PATH$extent);
+    public static final AddressLayout LAYOUT$memory = (AddressLayout) LAYOUT.select(PATH$memory);
+    public static final OfLong LAYOUT$memoryOffset = (OfLong) LAYOUT.select(PATH$memoryOffset);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+
+    public static final long OFFSET$subresource = LAYOUT.byteOffset(PATH$subresource);
+    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
+    public static final long OFFSET$extent = LAYOUT.byteOffset(PATH$extent);
+    public static final long OFFSET$memory = LAYOUT.byteOffset(PATH$memory);
+    public static final long OFFSET$memoryOffset = LAYOUT.byteOffset(PATH$memoryOffset);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+
+    public static final long SIZE$subresource = LAYOUT$subresource.byteSize();
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$extent = LAYOUT$extent.byteSize();
+    public static final long SIZE$memory = LAYOUT$memory.byteSize();
+    public static final long SIZE$memoryOffset = LAYOUT$memoryOffset.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+
 }

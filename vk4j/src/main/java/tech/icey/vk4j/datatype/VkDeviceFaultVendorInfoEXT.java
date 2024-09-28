@@ -23,29 +23,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceFaultVendorInfoEXT.html">VkDeviceFaultVendorInfoEXT</a>
 public record VkDeviceFaultVendorInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        MemoryLayout.sequenceLayout(VK_MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description"),
-        ValueLayout.JAVA_LONG.withName("vendorFaultCode"),
-        ValueLayout.JAVA_LONG.withName("vendorFaultData")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$description = PathElement.groupElement("description");
-    public static final PathElement PATH$vendorFaultCode = PathElement.groupElement("vendorFaultCode");
-    public static final PathElement PATH$vendorFaultData = PathElement.groupElement("vendorFaultData");
-
-    public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
-    public static final OfLong LAYOUT$vendorFaultCode = (OfLong) LAYOUT.select(PATH$vendorFaultCode);
-    public static final OfLong LAYOUT$vendorFaultData = (OfLong) LAYOUT.select(PATH$vendorFaultData);
-
-    public static final long OFFSET$description = LAYOUT.byteOffset(PATH$description);
-    public static final long OFFSET$vendorFaultCode = LAYOUT.byteOffset(PATH$vendorFaultCode);
-    public static final long OFFSET$vendorFaultData = LAYOUT.byteOffset(PATH$vendorFaultData);
-
-    public static final long SIZE$description = LAYOUT$description.byteSize();
-    public static final long SIZE$vendorFaultCode = LAYOUT$vendorFaultCode.byteSize();
-    public static final long SIZE$vendorFaultData = LAYOUT$vendorFaultData.byteSize();
-
     public VkDeviceFaultVendorInfoEXT(MemorySegment segment) {
         this.segment = segment;
     }
@@ -90,4 +67,28 @@ public record VkDeviceFaultVendorInfoEXT(MemorySegment segment) implements IPoin
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        MemoryLayout.sequenceLayout(VK_MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description"),
+        ValueLayout.JAVA_LONG.withName("vendorFaultCode"),
+        ValueLayout.JAVA_LONG.withName("vendorFaultData")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$description = PathElement.groupElement("description");
+    public static final PathElement PATH$vendorFaultCode = PathElement.groupElement("vendorFaultCode");
+    public static final PathElement PATH$vendorFaultData = PathElement.groupElement("vendorFaultData");
+
+    public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
+    public static final OfLong LAYOUT$vendorFaultCode = (OfLong) LAYOUT.select(PATH$vendorFaultCode);
+    public static final OfLong LAYOUT$vendorFaultData = (OfLong) LAYOUT.select(PATH$vendorFaultData);
+
+    public static final long OFFSET$description = LAYOUT.byteOffset(PATH$description);
+    public static final long OFFSET$vendorFaultCode = LAYOUT.byteOffset(PATH$vendorFaultCode);
+    public static final long OFFSET$vendorFaultData = LAYOUT.byteOffset(PATH$vendorFaultData);
+
+    public static final long SIZE$description = LAYOUT$description.byteSize();
+    public static final long SIZE$vendorFaultCode = LAYOUT$vendorFaultCode.byteSize();
+    public static final long SIZE$vendorFaultData = LAYOUT$vendorFaultData.byteSize();
+
 }

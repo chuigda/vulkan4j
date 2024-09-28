@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRect2D.html">VkRect2D</a>
 public record VkRect2D(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        VkOffset2D.LAYOUT.withName("offset"),
-        VkExtent2D.LAYOUT.withName("extent")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$offset = PathElement.groupElement("offset");
-    public static final PathElement PATH$extent = PathElement.groupElement("extent");
-
-    public static final StructLayout LAYOUT$offset = (StructLayout) LAYOUT.select(PATH$offset);
-    public static final StructLayout LAYOUT$extent = (StructLayout) LAYOUT.select(PATH$extent);
-
-    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
-    public static final long OFFSET$extent = LAYOUT.byteOffset(PATH$extent);
-
-    public static final long SIZE$offset = LAYOUT$offset.byteSize();
-    public static final long SIZE$extent = LAYOUT$extent.byteSize();
-
     public VkRect2D(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkRect2D(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        VkOffset2D.LAYOUT.withName("offset"),
+        VkExtent2D.LAYOUT.withName("extent")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$extent = PathElement.groupElement("extent");
+
+    public static final StructLayout LAYOUT$offset = (StructLayout) LAYOUT.select(PATH$offset);
+    public static final StructLayout LAYOUT$extent = (StructLayout) LAYOUT.select(PATH$extent);
+
+    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
+    public static final long OFFSET$extent = LAYOUT.byteOffset(PATH$extent);
+
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$extent = LAYOUT$extent.byteSize();
+
 }

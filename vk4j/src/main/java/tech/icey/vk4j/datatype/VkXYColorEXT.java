@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkXYColorEXT.html">VkXYColorEXT</a>
 public record VkXYColorEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_FLOAT.withName("x"),
-        ValueLayout.JAVA_FLOAT.withName("y")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$x = PathElement.groupElement("x");
-    public static final PathElement PATH$y = PathElement.groupElement("y");
-
-    public static final OfFloat LAYOUT$x = (OfFloat) LAYOUT.select(PATH$x);
-    public static final OfFloat LAYOUT$y = (OfFloat) LAYOUT.select(PATH$y);
-
-    public static final long OFFSET$x = LAYOUT.byteOffset(PATH$x);
-    public static final long OFFSET$y = LAYOUT.byteOffset(PATH$y);
-
-    public static final long SIZE$x = LAYOUT$x.byteSize();
-    public static final long SIZE$y = LAYOUT$y.byteSize();
-
     public VkXYColorEXT(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkXYColorEXT(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_FLOAT.withName("x"),
+        ValueLayout.JAVA_FLOAT.withName("y")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$x = PathElement.groupElement("x");
+    public static final PathElement PATH$y = PathElement.groupElement("y");
+
+    public static final OfFloat LAYOUT$x = (OfFloat) LAYOUT.select(PATH$x);
+    public static final OfFloat LAYOUT$y = (OfFloat) LAYOUT.select(PATH$y);
+
+    public static final long OFFSET$x = LAYOUT.byteOffset(PATH$x);
+    public static final long OFFSET$y = LAYOUT.byteOffset(PATH$y);
+
+    public static final long SIZE$x = LAYOUT$x.byteSize();
+    public static final long SIZE$y = LAYOUT$y.byteSize();
+
 }

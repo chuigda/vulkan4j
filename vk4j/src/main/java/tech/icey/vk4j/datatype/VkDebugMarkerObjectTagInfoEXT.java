@@ -27,47 +27,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDebugMarkerObjectTagInfoEXT.html">VkDebugMarkerObjectTagInfoEXT</a>
 public record VkDebugMarkerObjectTagInfoEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("objectType"),
-        ValueLayout.JAVA_LONG.withName("object"),
-        ValueLayout.JAVA_LONG.withName("tagName"),
-        NativeLayout.C_SIZE_T.withName("tagSize"),
-        ValueLayout.ADDRESS.withName("pTag")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$objectType = PathElement.groupElement("objectType");
-    public static final PathElement PATH$object = PathElement.groupElement("object");
-    public static final PathElement PATH$tagName = PathElement.groupElement("tagName");
-    public static final PathElement PATH$tagSize = PathElement.groupElement("tagSize");
-    public static final PathElement PATH$pTag = PathElement.groupElement("pTag");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
-    public static final OfLong LAYOUT$object = (OfLong) LAYOUT.select(PATH$object);
-    public static final OfLong LAYOUT$tagName = (OfLong) LAYOUT.select(PATH$tagName);
-    public static final AddressLayout LAYOUT$pTag = (AddressLayout) LAYOUT.select(PATH$pTag);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$objectType = LAYOUT.byteOffset(PATH$objectType);
-    public static final long OFFSET$object = LAYOUT.byteOffset(PATH$object);
-    public static final long OFFSET$tagName = LAYOUT.byteOffset(PATH$tagName);
-    public static final long OFFSET$tagSize = LAYOUT.byteOffset(PATH$tagSize);
-    public static final long OFFSET$pTag = LAYOUT.byteOffset(PATH$pTag);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
-    public static final long SIZE$object = LAYOUT$object.byteSize();
-    public static final long SIZE$tagName = LAYOUT$tagName.byteSize();
-    public static final long SIZE$pTag = LAYOUT$pTag.byteSize();
-
     public VkDebugMarkerObjectTagInfoEXT(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT);
@@ -149,4 +108,46 @@ public record VkDebugMarkerObjectTagInfoEXT(MemorySegment segment) implements IP
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("objectType"),
+        ValueLayout.JAVA_LONG.withName("object"),
+        ValueLayout.JAVA_LONG.withName("tagName"),
+        NativeLayout.C_SIZE_T.withName("tagSize"),
+        ValueLayout.ADDRESS.withName("pTag")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$objectType = PathElement.groupElement("objectType");
+    public static final PathElement PATH$object = PathElement.groupElement("object");
+    public static final PathElement PATH$tagName = PathElement.groupElement("tagName");
+    public static final PathElement PATH$tagSize = PathElement.groupElement("tagSize");
+    public static final PathElement PATH$pTag = PathElement.groupElement("pTag");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
+    public static final OfLong LAYOUT$object = (OfLong) LAYOUT.select(PATH$object);
+    public static final OfLong LAYOUT$tagName = (OfLong) LAYOUT.select(PATH$tagName);
+    public static final AddressLayout LAYOUT$pTag = (AddressLayout) LAYOUT.select(PATH$pTag);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$objectType = LAYOUT.byteOffset(PATH$objectType);
+    public static final long OFFSET$object = LAYOUT.byteOffset(PATH$object);
+    public static final long OFFSET$tagName = LAYOUT.byteOffset(PATH$tagName);
+    public static final long OFFSET$tagSize = LAYOUT.byteOffset(PATH$tagSize);
+    public static final long OFFSET$pTag = LAYOUT.byteOffset(PATH$pTag);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
+    public static final long SIZE$object = LAYOUT$object.byteSize();
+    public static final long SIZE$tagName = LAYOUT$tagName.byteSize();
+    public static final long SIZE$pTag = LAYOUT$pTag.byteSize();
+
 }

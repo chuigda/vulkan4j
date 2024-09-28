@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineBinaryKeyKHR.html">VkPipelineBinaryKeyKHR</a>
 public record VkPipelineBinaryKeyKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("keySize"),
-        MemoryLayout.sequenceLayout(VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR, ValueLayout.JAVA_BYTE).withName("key")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$keySize = PathElement.groupElement("keySize");
-    public static final PathElement PATH$key = PathElement.groupElement("key");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$keySize = (OfInt) LAYOUT.select(PATH$keySize);
-    public static final SequenceLayout LAYOUT$key = (SequenceLayout) LAYOUT.select(PATH$key);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$keySize = LAYOUT.byteOffset(PATH$keySize);
-    public static final long OFFSET$key = LAYOUT.byteOffset(PATH$key);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$keySize = LAYOUT$keySize.byteSize();
-    public static final long SIZE$key = LAYOUT$key.byteSize();
-
     public VkPipelineBinaryKeyKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PIPELINE_BINARY_KEY_KHR);
@@ -109,4 +81,33 @@ public record VkPipelineBinaryKeyKHR(MemorySegment segment) implements IPointer 
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("keySize"),
+        MemoryLayout.sequenceLayout(VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR, ValueLayout.JAVA_BYTE).withName("key")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$keySize = PathElement.groupElement("keySize");
+    public static final PathElement PATH$key = PathElement.groupElement("key");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$keySize = (OfInt) LAYOUT.select(PATH$keySize);
+    public static final SequenceLayout LAYOUT$key = (SequenceLayout) LAYOUT.select(PATH$key);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$keySize = LAYOUT.byteOffset(PATH$keySize);
+    public static final long OFFSET$key = LAYOUT.byteOffset(PATH$key);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$keySize = LAYOUT$keySize.byteSize();
+    public static final long SIZE$key = LAYOUT$key.byteSize();
+
 }

@@ -31,69 +31,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceFaultVendorBinaryHeaderVersionOneEXT.html">VkDeviceFaultVendorBinaryHeaderVersionOneEXT</a>
 public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("headerSize"),
-        ValueLayout.JAVA_INT.withName("headerVersion"),
-        ValueLayout.JAVA_INT.withName("vendorID"),
-        ValueLayout.JAVA_INT.withName("deviceID"),
-        ValueLayout.JAVA_INT.withName("driverVersion"),
-        MemoryLayout.sequenceLayout(VK_UUID_SIZE, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID"),
-        ValueLayout.JAVA_INT.withName("applicationNameOffset"),
-        ValueLayout.JAVA_INT.withName("applicationVersion"),
-        ValueLayout.JAVA_INT.withName("engineNameOffset"),
-        ValueLayout.JAVA_INT.withName("engineVersion"),
-        ValueLayout.JAVA_INT.withName("apiVersion")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$headerSize = PathElement.groupElement("headerSize");
-    public static final PathElement PATH$headerVersion = PathElement.groupElement("headerVersion");
-    public static final PathElement PATH$vendorID = PathElement.groupElement("vendorID");
-    public static final PathElement PATH$deviceID = PathElement.groupElement("deviceID");
-    public static final PathElement PATH$driverVersion = PathElement.groupElement("driverVersion");
-    public static final PathElement PATH$pipelineCacheUUID = PathElement.groupElement("pipelineCacheUUID");
-    public static final PathElement PATH$applicationNameOffset = PathElement.groupElement("applicationNameOffset");
-    public static final PathElement PATH$applicationVersion = PathElement.groupElement("applicationVersion");
-    public static final PathElement PATH$engineNameOffset = PathElement.groupElement("engineNameOffset");
-    public static final PathElement PATH$engineVersion = PathElement.groupElement("engineVersion");
-    public static final PathElement PATH$apiVersion = PathElement.groupElement("apiVersion");
-
-    public static final OfInt LAYOUT$headerSize = (OfInt) LAYOUT.select(PATH$headerSize);
-    public static final OfInt LAYOUT$headerVersion = (OfInt) LAYOUT.select(PATH$headerVersion);
-    public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
-    public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
-    public static final OfInt LAYOUT$driverVersion = (OfInt) LAYOUT.select(PATH$driverVersion);
-    public static final SequenceLayout LAYOUT$pipelineCacheUUID = (SequenceLayout) LAYOUT.select(PATH$pipelineCacheUUID);
-    public static final OfInt LAYOUT$applicationNameOffset = (OfInt) LAYOUT.select(PATH$applicationNameOffset);
-    public static final OfInt LAYOUT$applicationVersion = (OfInt) LAYOUT.select(PATH$applicationVersion);
-    public static final OfInt LAYOUT$engineNameOffset = (OfInt) LAYOUT.select(PATH$engineNameOffset);
-    public static final OfInt LAYOUT$engineVersion = (OfInt) LAYOUT.select(PATH$engineVersion);
-    public static final OfInt LAYOUT$apiVersion = (OfInt) LAYOUT.select(PATH$apiVersion);
-
-    public static final long OFFSET$headerSize = LAYOUT.byteOffset(PATH$headerSize);
-    public static final long OFFSET$headerVersion = LAYOUT.byteOffset(PATH$headerVersion);
-    public static final long OFFSET$vendorID = LAYOUT.byteOffset(PATH$vendorID);
-    public static final long OFFSET$deviceID = LAYOUT.byteOffset(PATH$deviceID);
-    public static final long OFFSET$driverVersion = LAYOUT.byteOffset(PATH$driverVersion);
-    public static final long OFFSET$pipelineCacheUUID = LAYOUT.byteOffset(PATH$pipelineCacheUUID);
-    public static final long OFFSET$applicationNameOffset = LAYOUT.byteOffset(PATH$applicationNameOffset);
-    public static final long OFFSET$applicationVersion = LAYOUT.byteOffset(PATH$applicationVersion);
-    public static final long OFFSET$engineNameOffset = LAYOUT.byteOffset(PATH$engineNameOffset);
-    public static final long OFFSET$engineVersion = LAYOUT.byteOffset(PATH$engineVersion);
-    public static final long OFFSET$apiVersion = LAYOUT.byteOffset(PATH$apiVersion);
-
-    public static final long SIZE$headerSize = LAYOUT$headerSize.byteSize();
-    public static final long SIZE$headerVersion = LAYOUT$headerVersion.byteSize();
-    public static final long SIZE$vendorID = LAYOUT$vendorID.byteSize();
-    public static final long SIZE$deviceID = LAYOUT$deviceID.byteSize();
-    public static final long SIZE$driverVersion = LAYOUT$driverVersion.byteSize();
-    public static final long SIZE$pipelineCacheUUID = LAYOUT$pipelineCacheUUID.byteSize();
-    public static final long SIZE$applicationNameOffset = LAYOUT$applicationNameOffset.byteSize();
-    public static final long SIZE$applicationVersion = LAYOUT$applicationVersion.byteSize();
-    public static final long SIZE$engineNameOffset = LAYOUT$engineNameOffset.byteSize();
-    public static final long SIZE$engineVersion = LAYOUT$engineVersion.byteSize();
-    public static final long SIZE$apiVersion = LAYOUT$apiVersion.byteSize();
-
     public VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment) {
         this.segment = segment;
     }
@@ -202,4 +139,68 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("headerSize"),
+        ValueLayout.JAVA_INT.withName("headerVersion"),
+        ValueLayout.JAVA_INT.withName("vendorID"),
+        ValueLayout.JAVA_INT.withName("deviceID"),
+        ValueLayout.JAVA_INT.withName("driverVersion"),
+        MemoryLayout.sequenceLayout(VK_UUID_SIZE, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID"),
+        ValueLayout.JAVA_INT.withName("applicationNameOffset"),
+        ValueLayout.JAVA_INT.withName("applicationVersion"),
+        ValueLayout.JAVA_INT.withName("engineNameOffset"),
+        ValueLayout.JAVA_INT.withName("engineVersion"),
+        ValueLayout.JAVA_INT.withName("apiVersion")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$headerSize = PathElement.groupElement("headerSize");
+    public static final PathElement PATH$headerVersion = PathElement.groupElement("headerVersion");
+    public static final PathElement PATH$vendorID = PathElement.groupElement("vendorID");
+    public static final PathElement PATH$deviceID = PathElement.groupElement("deviceID");
+    public static final PathElement PATH$driverVersion = PathElement.groupElement("driverVersion");
+    public static final PathElement PATH$pipelineCacheUUID = PathElement.groupElement("pipelineCacheUUID");
+    public static final PathElement PATH$applicationNameOffset = PathElement.groupElement("applicationNameOffset");
+    public static final PathElement PATH$applicationVersion = PathElement.groupElement("applicationVersion");
+    public static final PathElement PATH$engineNameOffset = PathElement.groupElement("engineNameOffset");
+    public static final PathElement PATH$engineVersion = PathElement.groupElement("engineVersion");
+    public static final PathElement PATH$apiVersion = PathElement.groupElement("apiVersion");
+
+    public static final OfInt LAYOUT$headerSize = (OfInt) LAYOUT.select(PATH$headerSize);
+    public static final OfInt LAYOUT$headerVersion = (OfInt) LAYOUT.select(PATH$headerVersion);
+    public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
+    public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
+    public static final OfInt LAYOUT$driverVersion = (OfInt) LAYOUT.select(PATH$driverVersion);
+    public static final SequenceLayout LAYOUT$pipelineCacheUUID = (SequenceLayout) LAYOUT.select(PATH$pipelineCacheUUID);
+    public static final OfInt LAYOUT$applicationNameOffset = (OfInt) LAYOUT.select(PATH$applicationNameOffset);
+    public static final OfInt LAYOUT$applicationVersion = (OfInt) LAYOUT.select(PATH$applicationVersion);
+    public static final OfInt LAYOUT$engineNameOffset = (OfInt) LAYOUT.select(PATH$engineNameOffset);
+    public static final OfInt LAYOUT$engineVersion = (OfInt) LAYOUT.select(PATH$engineVersion);
+    public static final OfInt LAYOUT$apiVersion = (OfInt) LAYOUT.select(PATH$apiVersion);
+
+    public static final long OFFSET$headerSize = LAYOUT.byteOffset(PATH$headerSize);
+    public static final long OFFSET$headerVersion = LAYOUT.byteOffset(PATH$headerVersion);
+    public static final long OFFSET$vendorID = LAYOUT.byteOffset(PATH$vendorID);
+    public static final long OFFSET$deviceID = LAYOUT.byteOffset(PATH$deviceID);
+    public static final long OFFSET$driverVersion = LAYOUT.byteOffset(PATH$driverVersion);
+    public static final long OFFSET$pipelineCacheUUID = LAYOUT.byteOffset(PATH$pipelineCacheUUID);
+    public static final long OFFSET$applicationNameOffset = LAYOUT.byteOffset(PATH$applicationNameOffset);
+    public static final long OFFSET$applicationVersion = LAYOUT.byteOffset(PATH$applicationVersion);
+    public static final long OFFSET$engineNameOffset = LAYOUT.byteOffset(PATH$engineNameOffset);
+    public static final long OFFSET$engineVersion = LAYOUT.byteOffset(PATH$engineVersion);
+    public static final long OFFSET$apiVersion = LAYOUT.byteOffset(PATH$apiVersion);
+
+    public static final long SIZE$headerSize = LAYOUT$headerSize.byteSize();
+    public static final long SIZE$headerVersion = LAYOUT$headerVersion.byteSize();
+    public static final long SIZE$vendorID = LAYOUT$vendorID.byteSize();
+    public static final long SIZE$deviceID = LAYOUT$deviceID.byteSize();
+    public static final long SIZE$driverVersion = LAYOUT$driverVersion.byteSize();
+    public static final long SIZE$pipelineCacheUUID = LAYOUT$pipelineCacheUUID.byteSize();
+    public static final long SIZE$applicationNameOffset = LAYOUT$applicationNameOffset.byteSize();
+    public static final long SIZE$applicationVersion = LAYOUT$applicationVersion.byteSize();
+    public static final long SIZE$engineNameOffset = LAYOUT$engineNameOffset.byteSize();
+    public static final long SIZE$engineVersion = LAYOUT$engineVersion.byteSize();
+    public static final long SIZE$apiVersion = LAYOUT$apiVersion.byteSize();
+
 }

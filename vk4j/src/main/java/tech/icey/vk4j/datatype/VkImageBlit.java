@@ -24,34 +24,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageBlit.html">VkImageBlit</a>
 public record VkImageBlit(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        VkImageSubresourceLayers.LAYOUT.withName("srcSubresource"),
-        MemoryLayout.sequenceLayout(2, VkOffset3D.LAYOUT).withName("srcOffsets"),
-        VkImageSubresourceLayers.LAYOUT.withName("dstSubresource"),
-        MemoryLayout.sequenceLayout(2, VkOffset3D.LAYOUT).withName("dstOffsets")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$srcSubresource = PathElement.groupElement("srcSubresource");
-    public static final PathElement PATH$srcOffsets = PathElement.groupElement("srcOffsets");
-    public static final PathElement PATH$dstSubresource = PathElement.groupElement("dstSubresource");
-    public static final PathElement PATH$dstOffsets = PathElement.groupElement("dstOffsets");
-
-    public static final StructLayout LAYOUT$srcSubresource = (StructLayout) LAYOUT.select(PATH$srcSubresource);
-    public static final SequenceLayout LAYOUT$srcOffsets = (SequenceLayout) LAYOUT.select(PATH$srcOffsets);
-    public static final StructLayout LAYOUT$dstSubresource = (StructLayout) LAYOUT.select(PATH$dstSubresource);
-    public static final SequenceLayout LAYOUT$dstOffsets = (SequenceLayout) LAYOUT.select(PATH$dstOffsets);
-
-    public static final long OFFSET$srcSubresource = LAYOUT.byteOffset(PATH$srcSubresource);
-    public static final long OFFSET$srcOffsets = LAYOUT.byteOffset(PATH$srcOffsets);
-    public static final long OFFSET$dstSubresource = LAYOUT.byteOffset(PATH$dstSubresource);
-    public static final long OFFSET$dstOffsets = LAYOUT.byteOffset(PATH$dstOffsets);
-
-    public static final long SIZE$srcSubresource = LAYOUT$srcSubresource.byteSize();
-    public static final long SIZE$srcOffsets = LAYOUT$srcOffsets.byteSize();
-    public static final long SIZE$dstSubresource = LAYOUT$dstSubresource.byteSize();
-    public static final long SIZE$dstOffsets = LAYOUT$dstOffsets.byteSize();
-
     public VkImageBlit(MemorySegment segment) {
         this.segment = segment;
     }
@@ -144,4 +116,33 @@ public record VkImageBlit(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        VkImageSubresourceLayers.LAYOUT.withName("srcSubresource"),
+        MemoryLayout.sequenceLayout(2, VkOffset3D.LAYOUT).withName("srcOffsets"),
+        VkImageSubresourceLayers.LAYOUT.withName("dstSubresource"),
+        MemoryLayout.sequenceLayout(2, VkOffset3D.LAYOUT).withName("dstOffsets")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$srcSubresource = PathElement.groupElement("srcSubresource");
+    public static final PathElement PATH$srcOffsets = PathElement.groupElement("srcOffsets");
+    public static final PathElement PATH$dstSubresource = PathElement.groupElement("dstSubresource");
+    public static final PathElement PATH$dstOffsets = PathElement.groupElement("dstOffsets");
+
+    public static final StructLayout LAYOUT$srcSubresource = (StructLayout) LAYOUT.select(PATH$srcSubresource);
+    public static final SequenceLayout LAYOUT$srcOffsets = (SequenceLayout) LAYOUT.select(PATH$srcOffsets);
+    public static final StructLayout LAYOUT$dstSubresource = (StructLayout) LAYOUT.select(PATH$dstSubresource);
+    public static final SequenceLayout LAYOUT$dstOffsets = (SequenceLayout) LAYOUT.select(PATH$dstOffsets);
+
+    public static final long OFFSET$srcSubresource = LAYOUT.byteOffset(PATH$srcSubresource);
+    public static final long OFFSET$srcOffsets = LAYOUT.byteOffset(PATH$srcOffsets);
+    public static final long OFFSET$dstSubresource = LAYOUT.byteOffset(PATH$dstSubresource);
+    public static final long OFFSET$dstOffsets = LAYOUT.byteOffset(PATH$dstOffsets);
+
+    public static final long SIZE$srcSubresource = LAYOUT$srcSubresource.byteSize();
+    public static final long SIZE$srcOffsets = LAYOUT$srcOffsets.byteSize();
+    public static final long SIZE$dstSubresource = LAYOUT$dstSubresource.byteSize();
+    public static final long SIZE$dstOffsets = LAYOUT$dstOffsets.byteSize();
+
 }

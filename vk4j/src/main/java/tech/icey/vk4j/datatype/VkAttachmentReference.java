@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAttachmentReference.html">VkAttachmentReference</a>
 public record VkAttachmentReference(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("attachment"),
-        ValueLayout.JAVA_INT.withName("layout")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$attachment = PathElement.groupElement("attachment");
-    public static final PathElement PATH$layout = PathElement.groupElement("layout");
-
-    public static final OfInt LAYOUT$attachment = (OfInt) LAYOUT.select(PATH$attachment);
-    public static final OfInt LAYOUT$layout = (OfInt) LAYOUT.select(PATH$layout);
-
-    public static final long OFFSET$attachment = LAYOUT.byteOffset(PATH$attachment);
-    public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
-
-    public static final long SIZE$attachment = LAYOUT$attachment.byteSize();
-    public static final long SIZE$layout = LAYOUT$layout.byteSize();
-
     public VkAttachmentReference(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkAttachmentReference(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("attachment"),
+        ValueLayout.JAVA_INT.withName("layout")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$attachment = PathElement.groupElement("attachment");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+
+    public static final OfInt LAYOUT$attachment = (OfInt) LAYOUT.select(PATH$attachment);
+    public static final OfInt LAYOUT$layout = (OfInt) LAYOUT.select(PATH$layout);
+
+    public static final long OFFSET$attachment = LAYOUT.byteOffset(PATH$attachment);
+    public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
+
+    public static final long SIZE$attachment = LAYOUT$attachment.byteSize();
+    public static final long SIZE$layout = LAYOUT$layout.byteSize();
+
 }

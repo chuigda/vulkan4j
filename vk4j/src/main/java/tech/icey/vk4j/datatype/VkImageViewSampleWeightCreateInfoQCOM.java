@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageViewSampleWeightCreateInfoQCOM.html">VkImageViewSampleWeightCreateInfoQCOM</a>
 public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkOffset2D.LAYOUT.withName("filterCenter"),
-        VkExtent2D.LAYOUT.withName("filterSize"),
-        ValueLayout.JAVA_INT.withName("numPhases")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$filterCenter = PathElement.groupElement("filterCenter");
-    public static final PathElement PATH$filterSize = PathElement.groupElement("filterSize");
-    public static final PathElement PATH$numPhases = PathElement.groupElement("numPhases");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$filterCenter = (StructLayout) LAYOUT.select(PATH$filterCenter);
-    public static final StructLayout LAYOUT$filterSize = (StructLayout) LAYOUT.select(PATH$filterSize);
-    public static final OfInt LAYOUT$numPhases = (OfInt) LAYOUT.select(PATH$numPhases);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$filterCenter = LAYOUT.byteOffset(PATH$filterCenter);
-    public static final long OFFSET$filterSize = LAYOUT.byteOffset(PATH$filterSize);
-    public static final long OFFSET$numPhases = LAYOUT.byteOffset(PATH$numPhases);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$filterCenter = LAYOUT$filterCenter.byteSize();
-    public static final long SIZE$filterSize = LAYOUT$filterSize.byteSize();
-    public static final long SIZE$numPhases = LAYOUT$numPhases.byteSize();
-
     public VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM);
@@ -119,4 +86,38 @@ public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) imple
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkOffset2D.LAYOUT.withName("filterCenter"),
+        VkExtent2D.LAYOUT.withName("filterSize"),
+        ValueLayout.JAVA_INT.withName("numPhases")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$filterCenter = PathElement.groupElement("filterCenter");
+    public static final PathElement PATH$filterSize = PathElement.groupElement("filterSize");
+    public static final PathElement PATH$numPhases = PathElement.groupElement("numPhases");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$filterCenter = (StructLayout) LAYOUT.select(PATH$filterCenter);
+    public static final StructLayout LAYOUT$filterSize = (StructLayout) LAYOUT.select(PATH$filterSize);
+    public static final OfInt LAYOUT$numPhases = (OfInt) LAYOUT.select(PATH$numPhases);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$filterCenter = LAYOUT.byteOffset(PATH$filterCenter);
+    public static final long OFFSET$filterSize = LAYOUT.byteOffset(PATH$filterSize);
+    public static final long OFFSET$numPhases = LAYOUT.byteOffset(PATH$numPhases);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$filterCenter = LAYOUT$filterCenter.byteSize();
+    public static final long SIZE$filterSize = LAYOUT$filterSize.byteSize();
+    public static final long SIZE$numPhases = LAYOUT$numPhases.byteSize();
+
 }

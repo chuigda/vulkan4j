@@ -22,24 +22,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDisplayModeParametersKHR.html">VkDisplayModeParametersKHR</a>
 public record VkDisplayModeParametersKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        VkExtent2D.LAYOUT.withName("visibleRegion"),
-        ValueLayout.JAVA_INT.withName("refreshRate")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$visibleRegion = PathElement.groupElement("visibleRegion");
-    public static final PathElement PATH$refreshRate = PathElement.groupElement("refreshRate");
-
-    public static final StructLayout LAYOUT$visibleRegion = (StructLayout) LAYOUT.select(PATH$visibleRegion);
-    public static final OfInt LAYOUT$refreshRate = (OfInt) LAYOUT.select(PATH$refreshRate);
-
-    public static final long OFFSET$visibleRegion = LAYOUT.byteOffset(PATH$visibleRegion);
-    public static final long OFFSET$refreshRate = LAYOUT.byteOffset(PATH$refreshRate);
-
-    public static final long SIZE$visibleRegion = LAYOUT$visibleRegion.byteSize();
-    public static final long SIZE$refreshRate = LAYOUT$refreshRate.byteSize();
-
     public VkDisplayModeParametersKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkDisplayModeParametersKHR(MemorySegment segment) implements IPoin
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        VkExtent2D.LAYOUT.withName("visibleRegion"),
+        ValueLayout.JAVA_INT.withName("refreshRate")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$visibleRegion = PathElement.groupElement("visibleRegion");
+    public static final PathElement PATH$refreshRate = PathElement.groupElement("refreshRate");
+
+    public static final StructLayout LAYOUT$visibleRegion = (StructLayout) LAYOUT.select(PATH$visibleRegion);
+    public static final OfInt LAYOUT$refreshRate = (OfInt) LAYOUT.select(PATH$refreshRate);
+
+    public static final long OFFSET$visibleRegion = LAYOUT.byteOffset(PATH$visibleRegion);
+    public static final long OFFSET$refreshRate = LAYOUT.byteOffset(PATH$refreshRate);
+
+    public static final long SIZE$visibleRegion = LAYOUT$visibleRegion.byteSize();
+    public static final long SIZE$refreshRate = LAYOUT$refreshRate.byteSize();
+
 }

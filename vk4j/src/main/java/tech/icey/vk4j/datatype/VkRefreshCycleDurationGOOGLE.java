@@ -21,19 +21,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRefreshCycleDurationGOOGLE.html">VkRefreshCycleDurationGOOGLE</a>
 public record VkRefreshCycleDurationGOOGLE(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_LONG.withName("refreshDuration")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$refreshDuration = PathElement.groupElement("refreshDuration");
-
-    public static final OfLong LAYOUT$refreshDuration = (OfLong) LAYOUT.select(PATH$refreshDuration);
-
-    public static final long OFFSET$refreshDuration = LAYOUT.byteOffset(PATH$refreshDuration);
-
-    public static final long SIZE$refreshDuration = LAYOUT$refreshDuration.byteSize();
-
     public VkRefreshCycleDurationGOOGLE(MemorySegment segment) {
         this.segment = segment;
     }
@@ -58,4 +45,18 @@ public record VkRefreshCycleDurationGOOGLE(MemorySegment segment) implements IPo
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("refreshDuration")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$refreshDuration = PathElement.groupElement("refreshDuration");
+
+    public static final OfLong LAYOUT$refreshDuration = (OfLong) LAYOUT.select(PATH$refreshDuration);
+
+    public static final long OFFSET$refreshDuration = LAYOUT.byteOffset(PATH$refreshDuration);
+
+    public static final long SIZE$refreshDuration = LAYOUT$refreshDuration.byteSize();
+
 }

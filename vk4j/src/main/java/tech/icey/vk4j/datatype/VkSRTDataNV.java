@@ -36,94 +36,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSRTDataNV.html">VkSRTDataNV</a>
 public record VkSRTDataNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_FLOAT.withName("sx"),
-        ValueLayout.JAVA_FLOAT.withName("a"),
-        ValueLayout.JAVA_FLOAT.withName("b"),
-        ValueLayout.JAVA_FLOAT.withName("pvx"),
-        ValueLayout.JAVA_FLOAT.withName("sy"),
-        ValueLayout.JAVA_FLOAT.withName("c"),
-        ValueLayout.JAVA_FLOAT.withName("pvy"),
-        ValueLayout.JAVA_FLOAT.withName("sz"),
-        ValueLayout.JAVA_FLOAT.withName("pvz"),
-        ValueLayout.JAVA_FLOAT.withName("qx"),
-        ValueLayout.JAVA_FLOAT.withName("qy"),
-        ValueLayout.JAVA_FLOAT.withName("qz"),
-        ValueLayout.JAVA_FLOAT.withName("qw"),
-        ValueLayout.JAVA_FLOAT.withName("tx"),
-        ValueLayout.JAVA_FLOAT.withName("ty"),
-        ValueLayout.JAVA_FLOAT.withName("tz")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sx = PathElement.groupElement("sx");
-    public static final PathElement PATH$a = PathElement.groupElement("a");
-    public static final PathElement PATH$b = PathElement.groupElement("b");
-    public static final PathElement PATH$pvx = PathElement.groupElement("pvx");
-    public static final PathElement PATH$sy = PathElement.groupElement("sy");
-    public static final PathElement PATH$c = PathElement.groupElement("c");
-    public static final PathElement PATH$pvy = PathElement.groupElement("pvy");
-    public static final PathElement PATH$sz = PathElement.groupElement("sz");
-    public static final PathElement PATH$pvz = PathElement.groupElement("pvz");
-    public static final PathElement PATH$qx = PathElement.groupElement("qx");
-    public static final PathElement PATH$qy = PathElement.groupElement("qy");
-    public static final PathElement PATH$qz = PathElement.groupElement("qz");
-    public static final PathElement PATH$qw = PathElement.groupElement("qw");
-    public static final PathElement PATH$tx = PathElement.groupElement("tx");
-    public static final PathElement PATH$ty = PathElement.groupElement("ty");
-    public static final PathElement PATH$tz = PathElement.groupElement("tz");
-
-    public static final OfFloat LAYOUT$sx = (OfFloat) LAYOUT.select(PATH$sx);
-    public static final OfFloat LAYOUT$a = (OfFloat) LAYOUT.select(PATH$a);
-    public static final OfFloat LAYOUT$b = (OfFloat) LAYOUT.select(PATH$b);
-    public static final OfFloat LAYOUT$pvx = (OfFloat) LAYOUT.select(PATH$pvx);
-    public static final OfFloat LAYOUT$sy = (OfFloat) LAYOUT.select(PATH$sy);
-    public static final OfFloat LAYOUT$c = (OfFloat) LAYOUT.select(PATH$c);
-    public static final OfFloat LAYOUT$pvy = (OfFloat) LAYOUT.select(PATH$pvy);
-    public static final OfFloat LAYOUT$sz = (OfFloat) LAYOUT.select(PATH$sz);
-    public static final OfFloat LAYOUT$pvz = (OfFloat) LAYOUT.select(PATH$pvz);
-    public static final OfFloat LAYOUT$qx = (OfFloat) LAYOUT.select(PATH$qx);
-    public static final OfFloat LAYOUT$qy = (OfFloat) LAYOUT.select(PATH$qy);
-    public static final OfFloat LAYOUT$qz = (OfFloat) LAYOUT.select(PATH$qz);
-    public static final OfFloat LAYOUT$qw = (OfFloat) LAYOUT.select(PATH$qw);
-    public static final OfFloat LAYOUT$tx = (OfFloat) LAYOUT.select(PATH$tx);
-    public static final OfFloat LAYOUT$ty = (OfFloat) LAYOUT.select(PATH$ty);
-    public static final OfFloat LAYOUT$tz = (OfFloat) LAYOUT.select(PATH$tz);
-
-    public static final long OFFSET$sx = LAYOUT.byteOffset(PATH$sx);
-    public static final long OFFSET$a = LAYOUT.byteOffset(PATH$a);
-    public static final long OFFSET$b = LAYOUT.byteOffset(PATH$b);
-    public static final long OFFSET$pvx = LAYOUT.byteOffset(PATH$pvx);
-    public static final long OFFSET$sy = LAYOUT.byteOffset(PATH$sy);
-    public static final long OFFSET$c = LAYOUT.byteOffset(PATH$c);
-    public static final long OFFSET$pvy = LAYOUT.byteOffset(PATH$pvy);
-    public static final long OFFSET$sz = LAYOUT.byteOffset(PATH$sz);
-    public static final long OFFSET$pvz = LAYOUT.byteOffset(PATH$pvz);
-    public static final long OFFSET$qx = LAYOUT.byteOffset(PATH$qx);
-    public static final long OFFSET$qy = LAYOUT.byteOffset(PATH$qy);
-    public static final long OFFSET$qz = LAYOUT.byteOffset(PATH$qz);
-    public static final long OFFSET$qw = LAYOUT.byteOffset(PATH$qw);
-    public static final long OFFSET$tx = LAYOUT.byteOffset(PATH$tx);
-    public static final long OFFSET$ty = LAYOUT.byteOffset(PATH$ty);
-    public static final long OFFSET$tz = LAYOUT.byteOffset(PATH$tz);
-
-    public static final long SIZE$sx = LAYOUT$sx.byteSize();
-    public static final long SIZE$a = LAYOUT$a.byteSize();
-    public static final long SIZE$b = LAYOUT$b.byteSize();
-    public static final long SIZE$pvx = LAYOUT$pvx.byteSize();
-    public static final long SIZE$sy = LAYOUT$sy.byteSize();
-    public static final long SIZE$c = LAYOUT$c.byteSize();
-    public static final long SIZE$pvy = LAYOUT$pvy.byteSize();
-    public static final long SIZE$sz = LAYOUT$sz.byteSize();
-    public static final long SIZE$pvz = LAYOUT$pvz.byteSize();
-    public static final long SIZE$qx = LAYOUT$qx.byteSize();
-    public static final long SIZE$qy = LAYOUT$qy.byteSize();
-    public static final long SIZE$qz = LAYOUT$qz.byteSize();
-    public static final long SIZE$qw = LAYOUT$qw.byteSize();
-    public static final long SIZE$tx = LAYOUT$tx.byteSize();
-    public static final long SIZE$ty = LAYOUT$ty.byteSize();
-    public static final long SIZE$tz = LAYOUT$tz.byteSize();
-
     public VkSRTDataNV(MemorySegment segment) {
         this.segment = segment;
     }
@@ -268,4 +180,93 @@ public record VkSRTDataNV(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_FLOAT.withName("sx"),
+        ValueLayout.JAVA_FLOAT.withName("a"),
+        ValueLayout.JAVA_FLOAT.withName("b"),
+        ValueLayout.JAVA_FLOAT.withName("pvx"),
+        ValueLayout.JAVA_FLOAT.withName("sy"),
+        ValueLayout.JAVA_FLOAT.withName("c"),
+        ValueLayout.JAVA_FLOAT.withName("pvy"),
+        ValueLayout.JAVA_FLOAT.withName("sz"),
+        ValueLayout.JAVA_FLOAT.withName("pvz"),
+        ValueLayout.JAVA_FLOAT.withName("qx"),
+        ValueLayout.JAVA_FLOAT.withName("qy"),
+        ValueLayout.JAVA_FLOAT.withName("qz"),
+        ValueLayout.JAVA_FLOAT.withName("qw"),
+        ValueLayout.JAVA_FLOAT.withName("tx"),
+        ValueLayout.JAVA_FLOAT.withName("ty"),
+        ValueLayout.JAVA_FLOAT.withName("tz")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sx = PathElement.groupElement("sx");
+    public static final PathElement PATH$a = PathElement.groupElement("a");
+    public static final PathElement PATH$b = PathElement.groupElement("b");
+    public static final PathElement PATH$pvx = PathElement.groupElement("pvx");
+    public static final PathElement PATH$sy = PathElement.groupElement("sy");
+    public static final PathElement PATH$c = PathElement.groupElement("c");
+    public static final PathElement PATH$pvy = PathElement.groupElement("pvy");
+    public static final PathElement PATH$sz = PathElement.groupElement("sz");
+    public static final PathElement PATH$pvz = PathElement.groupElement("pvz");
+    public static final PathElement PATH$qx = PathElement.groupElement("qx");
+    public static final PathElement PATH$qy = PathElement.groupElement("qy");
+    public static final PathElement PATH$qz = PathElement.groupElement("qz");
+    public static final PathElement PATH$qw = PathElement.groupElement("qw");
+    public static final PathElement PATH$tx = PathElement.groupElement("tx");
+    public static final PathElement PATH$ty = PathElement.groupElement("ty");
+    public static final PathElement PATH$tz = PathElement.groupElement("tz");
+
+    public static final OfFloat LAYOUT$sx = (OfFloat) LAYOUT.select(PATH$sx);
+    public static final OfFloat LAYOUT$a = (OfFloat) LAYOUT.select(PATH$a);
+    public static final OfFloat LAYOUT$b = (OfFloat) LAYOUT.select(PATH$b);
+    public static final OfFloat LAYOUT$pvx = (OfFloat) LAYOUT.select(PATH$pvx);
+    public static final OfFloat LAYOUT$sy = (OfFloat) LAYOUT.select(PATH$sy);
+    public static final OfFloat LAYOUT$c = (OfFloat) LAYOUT.select(PATH$c);
+    public static final OfFloat LAYOUT$pvy = (OfFloat) LAYOUT.select(PATH$pvy);
+    public static final OfFloat LAYOUT$sz = (OfFloat) LAYOUT.select(PATH$sz);
+    public static final OfFloat LAYOUT$pvz = (OfFloat) LAYOUT.select(PATH$pvz);
+    public static final OfFloat LAYOUT$qx = (OfFloat) LAYOUT.select(PATH$qx);
+    public static final OfFloat LAYOUT$qy = (OfFloat) LAYOUT.select(PATH$qy);
+    public static final OfFloat LAYOUT$qz = (OfFloat) LAYOUT.select(PATH$qz);
+    public static final OfFloat LAYOUT$qw = (OfFloat) LAYOUT.select(PATH$qw);
+    public static final OfFloat LAYOUT$tx = (OfFloat) LAYOUT.select(PATH$tx);
+    public static final OfFloat LAYOUT$ty = (OfFloat) LAYOUT.select(PATH$ty);
+    public static final OfFloat LAYOUT$tz = (OfFloat) LAYOUT.select(PATH$tz);
+
+    public static final long OFFSET$sx = LAYOUT.byteOffset(PATH$sx);
+    public static final long OFFSET$a = LAYOUT.byteOffset(PATH$a);
+    public static final long OFFSET$b = LAYOUT.byteOffset(PATH$b);
+    public static final long OFFSET$pvx = LAYOUT.byteOffset(PATH$pvx);
+    public static final long OFFSET$sy = LAYOUT.byteOffset(PATH$sy);
+    public static final long OFFSET$c = LAYOUT.byteOffset(PATH$c);
+    public static final long OFFSET$pvy = LAYOUT.byteOffset(PATH$pvy);
+    public static final long OFFSET$sz = LAYOUT.byteOffset(PATH$sz);
+    public static final long OFFSET$pvz = LAYOUT.byteOffset(PATH$pvz);
+    public static final long OFFSET$qx = LAYOUT.byteOffset(PATH$qx);
+    public static final long OFFSET$qy = LAYOUT.byteOffset(PATH$qy);
+    public static final long OFFSET$qz = LAYOUT.byteOffset(PATH$qz);
+    public static final long OFFSET$qw = LAYOUT.byteOffset(PATH$qw);
+    public static final long OFFSET$tx = LAYOUT.byteOffset(PATH$tx);
+    public static final long OFFSET$ty = LAYOUT.byteOffset(PATH$ty);
+    public static final long OFFSET$tz = LAYOUT.byteOffset(PATH$tz);
+
+    public static final long SIZE$sx = LAYOUT$sx.byteSize();
+    public static final long SIZE$a = LAYOUT$a.byteSize();
+    public static final long SIZE$b = LAYOUT$b.byteSize();
+    public static final long SIZE$pvx = LAYOUT$pvx.byteSize();
+    public static final long SIZE$sy = LAYOUT$sy.byteSize();
+    public static final long SIZE$c = LAYOUT$c.byteSize();
+    public static final long SIZE$pvy = LAYOUT$pvy.byteSize();
+    public static final long SIZE$sz = LAYOUT$sz.byteSize();
+    public static final long SIZE$pvz = LAYOUT$pvz.byteSize();
+    public static final long SIZE$qx = LAYOUT$qx.byteSize();
+    public static final long SIZE$qy = LAYOUT$qy.byteSize();
+    public static final long SIZE$qz = LAYOUT$qz.byteSize();
+    public static final long SIZE$qw = LAYOUT$qw.byteSize();
+    public static final long SIZE$tx = LAYOUT$tx.byteSize();
+    public static final long SIZE$ty = LAYOUT$ty.byteSize();
+    public static final long SIZE$tz = LAYOUT$tz.byteSize();
+
 }

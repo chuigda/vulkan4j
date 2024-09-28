@@ -25,39 +25,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.html">VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV</a>
 public record VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_LONG.withName("extendedSparseAddressSpaceSize"),
-        ValueLayout.JAVA_INT.withName("extendedSparseImageUsageFlags"),
-        ValueLayout.JAVA_INT.withName("extendedSparseBufferUsageFlags")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$extendedSparseAddressSpaceSize = PathElement.groupElement("extendedSparseAddressSpaceSize");
-    public static final PathElement PATH$extendedSparseImageUsageFlags = PathElement.groupElement("extendedSparseImageUsageFlags");
-    public static final PathElement PATH$extendedSparseBufferUsageFlags = PathElement.groupElement("extendedSparseBufferUsageFlags");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfLong LAYOUT$extendedSparseAddressSpaceSize = (OfLong) LAYOUT.select(PATH$extendedSparseAddressSpaceSize);
-    public static final OfInt LAYOUT$extendedSparseImageUsageFlags = (OfInt) LAYOUT.select(PATH$extendedSparseImageUsageFlags);
-    public static final OfInt LAYOUT$extendedSparseBufferUsageFlags = (OfInt) LAYOUT.select(PATH$extendedSparseBufferUsageFlags);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$extendedSparseAddressSpaceSize = LAYOUT.byteOffset(PATH$extendedSparseAddressSpaceSize);
-    public static final long OFFSET$extendedSparseImageUsageFlags = LAYOUT.byteOffset(PATH$extendedSparseImageUsageFlags);
-    public static final long OFFSET$extendedSparseBufferUsageFlags = LAYOUT.byteOffset(PATH$extendedSparseBufferUsageFlags);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$extendedSparseAddressSpaceSize = LAYOUT$extendedSparseAddressSpaceSize.byteSize();
-    public static final long SIZE$extendedSparseImageUsageFlags = LAYOUT$extendedSparseImageUsageFlags.byteSize();
-    public static final long SIZE$extendedSparseBufferUsageFlags = LAYOUT$extendedSparseBufferUsageFlags.byteSize();
-
     public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV);
@@ -119,4 +86,38 @@ public record VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(MemorySegme
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("extendedSparseAddressSpaceSize"),
+        ValueLayout.JAVA_INT.withName("extendedSparseImageUsageFlags"),
+        ValueLayout.JAVA_INT.withName("extendedSparseBufferUsageFlags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$extendedSparseAddressSpaceSize = PathElement.groupElement("extendedSparseAddressSpaceSize");
+    public static final PathElement PATH$extendedSparseImageUsageFlags = PathElement.groupElement("extendedSparseImageUsageFlags");
+    public static final PathElement PATH$extendedSparseBufferUsageFlags = PathElement.groupElement("extendedSparseBufferUsageFlags");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$extendedSparseAddressSpaceSize = (OfLong) LAYOUT.select(PATH$extendedSparseAddressSpaceSize);
+    public static final OfInt LAYOUT$extendedSparseImageUsageFlags = (OfInt) LAYOUT.select(PATH$extendedSparseImageUsageFlags);
+    public static final OfInt LAYOUT$extendedSparseBufferUsageFlags = (OfInt) LAYOUT.select(PATH$extendedSparseBufferUsageFlags);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$extendedSparseAddressSpaceSize = LAYOUT.byteOffset(PATH$extendedSparseAddressSpaceSize);
+    public static final long OFFSET$extendedSparseImageUsageFlags = LAYOUT.byteOffset(PATH$extendedSparseImageUsageFlags);
+    public static final long OFFSET$extendedSparseBufferUsageFlags = LAYOUT.byteOffset(PATH$extendedSparseBufferUsageFlags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$extendedSparseAddressSpaceSize = LAYOUT$extendedSparseAddressSpaceSize.byteSize();
+    public static final long SIZE$extendedSparseImageUsageFlags = LAYOUT$extendedSparseImageUsageFlags.byteSize();
+    public static final long SIZE$extendedSparseBufferUsageFlags = LAYOUT$extendedSparseBufferUsageFlags.byteSize();
+
 }

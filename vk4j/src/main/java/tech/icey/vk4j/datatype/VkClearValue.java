@@ -15,31 +15,13 @@ import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 /// {@snippet lang=c :
-/// typedef struct VkClearValue {
+/// typedef union VkClearValue {
 ///     VkClearColorValue color;
 ///     VkClearDepthStencilValue depthStencil;
 /// } VkClearValue;}
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkClearValue.html">VkClearValue</a>
 public record VkClearValue(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
-        VkClearColorValue.LAYOUT.withName("color"),
-        VkClearDepthStencilValue.LAYOUT.withName("depthStencil")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$color = PathElement.groupElement("color");
-    public static final PathElement PATH$depthStencil = PathElement.groupElement("depthStencil");
-
-    public static final UnionLayout LAYOUT$color = (UnionLayout) LAYOUT.select(PATH$color);
-    public static final StructLayout LAYOUT$depthStencil = (StructLayout) LAYOUT.select(PATH$depthStencil);
-
-    public static final long OFFSET$color = LAYOUT.byteOffset(PATH$color);
-    public static final long OFFSET$depthStencil = LAYOUT.byteOffset(PATH$depthStencil);
-
-    public static final long SIZE$color = LAYOUT$color.byteSize();
-    public static final long SIZE$depthStencil = LAYOUT$depthStencil.byteSize();
-
     public VkClearValue(MemorySegment segment) {
         this.segment = segment;
     }
@@ -72,4 +54,23 @@ public record VkClearValue(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
+        VkClearColorValue.LAYOUT.withName("color"),
+        VkClearDepthStencilValue.LAYOUT.withName("depthStencil")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$color = PathElement.groupElement("color");
+    public static final PathElement PATH$depthStencil = PathElement.groupElement("depthStencil");
+
+    public static final UnionLayout LAYOUT$color = (UnionLayout) LAYOUT.select(PATH$color);
+    public static final StructLayout LAYOUT$depthStencil = (StructLayout) LAYOUT.select(PATH$depthStencil);
+
+    public static final long OFFSET$color = LAYOUT.byteOffset(PATH$color);
+    public static final long OFFSET$depthStencil = LAYOUT.byteOffset(PATH$depthStencil);
+
+    public static final long SIZE$color = LAYOUT$color.byteSize();
+    public static final long SIZE$depthStencil = LAYOUT$depthStencil.byteSize();
+
 }

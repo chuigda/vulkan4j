@@ -27,49 +27,6 @@ import static tech.icey.vk4j.enumtype.VkStructureType.*;
 ///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDisplayPropertiesKHR.html">VkDisplayPropertiesKHR</a>
 public record VkDisplayPropertiesKHR(MemorySegment segment) implements IPointer {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.ADDRESS.withName("display"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("displayName"),
-        VkExtent2D.LAYOUT.withName("physicalDimensions"),
-        VkExtent2D.LAYOUT.withName("physicalResolution"),
-        ValueLayout.JAVA_INT.withName("supportedTransforms"),
-        ValueLayout.JAVA_INT.withName("planeReorderPossible"),
-        ValueLayout.JAVA_INT.withName("persistentContent")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$display = PathElement.groupElement("display");
-    public static final PathElement PATH$displayName = PathElement.groupElement("displayName");
-    public static final PathElement PATH$physicalDimensions = PathElement.groupElement("physicalDimensions");
-    public static final PathElement PATH$physicalResolution = PathElement.groupElement("physicalResolution");
-    public static final PathElement PATH$supportedTransforms = PathElement.groupElement("supportedTransforms");
-    public static final PathElement PATH$planeReorderPossible = PathElement.groupElement("planeReorderPossible");
-    public static final PathElement PATH$persistentContent = PathElement.groupElement("persistentContent");
-
-    public static final AddressLayout LAYOUT$display = (AddressLayout) LAYOUT.select(PATH$display);
-    public static final AddressLayout LAYOUT$displayName = (AddressLayout) LAYOUT.select(PATH$displayName);
-    public static final StructLayout LAYOUT$physicalDimensions = (StructLayout) LAYOUT.select(PATH$physicalDimensions);
-    public static final StructLayout LAYOUT$physicalResolution = (StructLayout) LAYOUT.select(PATH$physicalResolution);
-    public static final OfInt LAYOUT$supportedTransforms = (OfInt) LAYOUT.select(PATH$supportedTransforms);
-    public static final OfInt LAYOUT$planeReorderPossible = (OfInt) LAYOUT.select(PATH$planeReorderPossible);
-    public static final OfInt LAYOUT$persistentContent = (OfInt) LAYOUT.select(PATH$persistentContent);
-
-    public static final long OFFSET$display = LAYOUT.byteOffset(PATH$display);
-    public static final long OFFSET$displayName = LAYOUT.byteOffset(PATH$displayName);
-    public static final long OFFSET$physicalDimensions = LAYOUT.byteOffset(PATH$physicalDimensions);
-    public static final long OFFSET$physicalResolution = LAYOUT.byteOffset(PATH$physicalResolution);
-    public static final long OFFSET$supportedTransforms = LAYOUT.byteOffset(PATH$supportedTransforms);
-    public static final long OFFSET$planeReorderPossible = LAYOUT.byteOffset(PATH$planeReorderPossible);
-    public static final long OFFSET$persistentContent = LAYOUT.byteOffset(PATH$persistentContent);
-
-    public static final long SIZE$display = LAYOUT$display.byteSize();
-    public static final long SIZE$displayName = LAYOUT$displayName.byteSize();
-    public static final long SIZE$physicalDimensions = LAYOUT$physicalDimensions.byteSize();
-    public static final long SIZE$physicalResolution = LAYOUT$physicalResolution.byteSize();
-    public static final long SIZE$supportedTransforms = LAYOUT$supportedTransforms.byteSize();
-    public static final long SIZE$planeReorderPossible = LAYOUT$planeReorderPossible.byteSize();
-    public static final long SIZE$persistentContent = LAYOUT$persistentContent.byteSize();
-
     public VkDisplayPropertiesKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -157,4 +114,48 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) implements IPointer 
         }
         return ret;
     }
+    
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("display"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("displayName"),
+        VkExtent2D.LAYOUT.withName("physicalDimensions"),
+        VkExtent2D.LAYOUT.withName("physicalResolution"),
+        ValueLayout.JAVA_INT.withName("supportedTransforms"),
+        ValueLayout.JAVA_INT.withName("planeReorderPossible"),
+        ValueLayout.JAVA_INT.withName("persistentContent")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$display = PathElement.groupElement("display");
+    public static final PathElement PATH$displayName = PathElement.groupElement("displayName");
+    public static final PathElement PATH$physicalDimensions = PathElement.groupElement("physicalDimensions");
+    public static final PathElement PATH$physicalResolution = PathElement.groupElement("physicalResolution");
+    public static final PathElement PATH$supportedTransforms = PathElement.groupElement("supportedTransforms");
+    public static final PathElement PATH$planeReorderPossible = PathElement.groupElement("planeReorderPossible");
+    public static final PathElement PATH$persistentContent = PathElement.groupElement("persistentContent");
+
+    public static final AddressLayout LAYOUT$display = (AddressLayout) LAYOUT.select(PATH$display);
+    public static final AddressLayout LAYOUT$displayName = (AddressLayout) LAYOUT.select(PATH$displayName);
+    public static final StructLayout LAYOUT$physicalDimensions = (StructLayout) LAYOUT.select(PATH$physicalDimensions);
+    public static final StructLayout LAYOUT$physicalResolution = (StructLayout) LAYOUT.select(PATH$physicalResolution);
+    public static final OfInt LAYOUT$supportedTransforms = (OfInt) LAYOUT.select(PATH$supportedTransforms);
+    public static final OfInt LAYOUT$planeReorderPossible = (OfInt) LAYOUT.select(PATH$planeReorderPossible);
+    public static final OfInt LAYOUT$persistentContent = (OfInt) LAYOUT.select(PATH$persistentContent);
+
+    public static final long OFFSET$display = LAYOUT.byteOffset(PATH$display);
+    public static final long OFFSET$displayName = LAYOUT.byteOffset(PATH$displayName);
+    public static final long OFFSET$physicalDimensions = LAYOUT.byteOffset(PATH$physicalDimensions);
+    public static final long OFFSET$physicalResolution = LAYOUT.byteOffset(PATH$physicalResolution);
+    public static final long OFFSET$supportedTransforms = LAYOUT.byteOffset(PATH$supportedTransforms);
+    public static final long OFFSET$planeReorderPossible = LAYOUT.byteOffset(PATH$planeReorderPossible);
+    public static final long OFFSET$persistentContent = LAYOUT.byteOffset(PATH$persistentContent);
+
+    public static final long SIZE$display = LAYOUT$display.byteSize();
+    public static final long SIZE$displayName = LAYOUT$displayName.byteSize();
+    public static final long SIZE$physicalDimensions = LAYOUT$physicalDimensions.byteSize();
+    public static final long SIZE$physicalResolution = LAYOUT$physicalResolution.byteSize();
+    public static final long SIZE$supportedTransforms = LAYOUT$supportedTransforms.byteSize();
+    public static final long SIZE$planeReorderPossible = LAYOUT$planeReorderPossible.byteSize();
+    public static final long SIZE$persistentContent = LAYOUT$persistentContent.byteSize();
+
 }
