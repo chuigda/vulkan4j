@@ -61,8 +61,7 @@ public record {structure.name}(MemorySegment segment) implements IPointer {{
 {generate_structure_path_element(structure.members)}
 {generate_structure_member_layout(structure.members, member_types_lowered)}
 {generate_structure_member_offset(structure.members)}
-{generate_structure_member_size(structure.members, member_types_lowered)}
-}}
+{generate_structure_member_size(structure.members, member_types_lowered)}}}
 '''
 
 def generate_structure_layout(
