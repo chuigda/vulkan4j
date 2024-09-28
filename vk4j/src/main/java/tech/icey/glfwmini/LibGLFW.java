@@ -160,6 +160,10 @@ public final class LibGLFW {
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetRequiredInstanceExtensions.invokeExact(count.segment());
+            if (s.address() == 0) {
+                return null;
+            }
+
             s = s.reinterpret(count.read() * ValueLayout.ADDRESS.byteSize());
             return new PointerBuffer(s);
         } catch (Throwable throwable) {

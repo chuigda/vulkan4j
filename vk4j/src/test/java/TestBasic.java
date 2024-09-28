@@ -18,8 +18,14 @@ import java.lang.foreign.ValueLayout;
 
 public class TestBasic {
     static {
-        System.loadLibrary("vulkan");
-        System.loadLibrary("glfw");
+        if (System.getProperty("os.name").toLowerCase().contains("win")) {
+            System.loadLibrary("vulkan-1");
+            System.loadLibrary("glfw3");
+        }
+        else {
+            System.loadLibrary("vulkan");
+            System.loadLibrary("glfw");
+        }
     }
 
     public static void main(String[] args) {
@@ -40,7 +46,7 @@ public class TestBasic {
         try (Arena arena = Arena.ofConfined()) {
             var pExtensionCount = IntBuffer.allocate(arena);
             var ppExtensions = libGLFW.glfwGetRequiredInstanceExtensions(pExtensionCount);
-            if (ppExtensions.address() == 0) {
+            if (ppExtensions == null) {
                 System.err.println("Failed to get required instance extensions");
                 return;
             }
@@ -48,8 +54,8 @@ public class TestBasic {
             ppExtensions = ppExtensions.reinterpret(ValueLayout.ADDRESS.byteSize() * pExtensionCount.read());
             System.out.println("Required instance extensions: " + pExtensionCount.read());
             for (int i = 0; i < pExtensionCount.read(); i++) {
-                var extension = ppExtensions.get(ValueLayout.ADDRESS, i * ValueLayout.ADDRESS.byteSize()).reinterpret(Long.MAX_VALUE);
-                System.out.println("  - " + extension.getString(0));
+                var extension = new ByteBuffer(ppExtensions.read(i));
+                System.out.println("  - " + extension.readString());
             }
 
             var applicationInfo = VkApplicationInfo.allocate(arena);
