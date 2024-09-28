@@ -1,5 +1,6 @@
 package tech.icey.glfwmini;
 
+import tech.icey.vk4j.Loader;
 import tech.icey.vk4j.annotation.enumtype;
 import tech.icey.vk4j.annotation.nullable;
 import tech.icey.vk4j.annotation.pointer;
@@ -295,5 +296,35 @@ public final class LibGLFW {
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }
+    }
+
+    /// Try loading the GLFW library.
+    ///
+    /// This function is implemented in terms of {@link System#loadLibrary}. On Windows it will try {@code "glfw3"}
+    /// ({@code glfw3.dll}), and on other platforms it will try {@code "glfw"} ({@code libglfw.so}).
+    ///
+    /// Instead of using this function, you may also implement your own GLFW library loading logic.
+    ///
+    /// @throws SecurityException see {@link System#loadLibrary}
+    /// @throws UnsatisfiedLinkError see {@link System#loadLibrary}
+    public static void loadGLFWLibrary() {
+        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            System.loadLibrary("glfw3");
+        } else {
+            System.loadLibrary("glfw");
+        }
+    }
+
+    /// Load GLFW functions.
+    ///
+    /// This function is implemented in terms of {@link Loader#loadFunction}. If any of the functions is not found,
+    /// a {@link RuntimeException} will be thrown.
+    ///
+    /// Instead of using this function, you may also implement your own functions loading logic.
+    ///
+    /// @return loaded functions
+    /// @throws RuntimeException if any function is not found
+    public static LibGLFW loadGLFW() {
+        return new LibGLFW(Loader::loadFunction);
     }
 }
