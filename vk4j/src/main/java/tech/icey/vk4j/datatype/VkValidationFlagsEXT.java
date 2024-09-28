@@ -124,5 +124,4 @@ public record VkValidationFlagsEXT(MemorySegment segment) implements IPointer {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$disabledValidationCheckCount = LAYOUT$disabledValidationCheckCount.byteSize();
     public static final long SIZE$pDisabledValidationChecks = LAYOUT$pDisabledValidationChecks.byteSize();
-
 }

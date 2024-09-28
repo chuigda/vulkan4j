@@ -105,5 +105,4 @@ public record VkAttachmentDescriptionStencilLayout(MemorySegment segment) implem
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$stencilInitialLayout = LAYOUT$stencilInitialLayout.byteSize();
     public static final long SIZE$stencilFinalLayout = LAYOUT$stencilFinalLayout.byteSize();
-
 }

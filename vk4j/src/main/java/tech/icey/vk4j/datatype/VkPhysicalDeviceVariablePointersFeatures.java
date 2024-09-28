@@ -105,5 +105,4 @@ public record VkPhysicalDeviceVariablePointersFeatures(MemorySegment segment) im
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$variablePointersStorageBuffer = LAYOUT$variablePointersStorageBuffer.byteSize();
     public static final long SIZE$variablePointers = LAYOUT$variablePointers.byteSize();
-
 }

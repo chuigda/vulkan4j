@@ -105,5 +105,4 @@ public record VkMemoryAllocateInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$allocationSize = LAYOUT$allocationSize.byteSize();
     public static final long SIZE$memoryTypeIndex = LAYOUT$memoryTypeIndex.byteSize();
-
 }

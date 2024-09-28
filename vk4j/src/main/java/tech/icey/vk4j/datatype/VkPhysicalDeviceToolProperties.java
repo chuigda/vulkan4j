@@ -163,5 +163,4 @@ public record VkPhysicalDeviceToolProperties(MemorySegment segment) implements I
     public static final long SIZE$purposes = LAYOUT$purposes.byteSize();
     public static final long SIZE$description = LAYOUT$description.byteSize();
     public static final long SIZE$layer = LAYOUT$layer.byteSize();
-
 }

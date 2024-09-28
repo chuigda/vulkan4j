@@ -86,5 +86,4 @@ public record VkStridedDeviceAddressRegionKHR(MemorySegment segment) implements 
     public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
     public static final long SIZE$stride = LAYOUT$stride.byteSize();
     public static final long SIZE$size = LAYOUT$size.byteSize();
-
 }

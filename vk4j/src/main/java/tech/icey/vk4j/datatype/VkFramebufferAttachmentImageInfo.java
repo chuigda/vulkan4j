@@ -194,5 +194,4 @@ public record VkFramebufferAttachmentImageInfo(MemorySegment segment) implements
     public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
     public static final long SIZE$viewFormatCount = LAYOUT$viewFormatCount.byteSize();
     public static final long SIZE$pViewFormats = LAYOUT$pViewFormats.byteSize();
-
 }

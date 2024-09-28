@@ -814,5 +814,4 @@ public record VkPhysicalDeviceFeatures(MemorySegment segment) implements IPointe
     public static final long SIZE$sparseResidencyAliased = LAYOUT$sparseResidencyAliased.byteSize();
     public static final long SIZE$variableMultisampleRate = LAYOUT$variableMultisampleRate.byteSize();
     public static final long SIZE$inheritedQueries = LAYOUT$inheritedQueries.byteSize();
-
 }

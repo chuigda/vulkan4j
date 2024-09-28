@@ -231,5 +231,4 @@ public record VkSurfaceCapabilities2EXT(MemorySegment segment) implements IPoint
     public static final long SIZE$supportedCompositeAlpha = LAYOUT$supportedCompositeAlpha.byteSize();
     public static final long SIZE$supportedUsageFlags = LAYOUT$supportedUsageFlags.byteSize();
     public static final long SIZE$supportedSurfaceCounters = LAYOUT$supportedSurfaceCounters.byteSize();
-
 }

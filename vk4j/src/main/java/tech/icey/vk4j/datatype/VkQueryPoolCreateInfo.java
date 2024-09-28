@@ -133,5 +133,4 @@ public record VkQueryPoolCreateInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$queryType = LAYOUT$queryType.byteSize();
     public static final long SIZE$queryCount = LAYOUT$queryCount.byteSize();
     public static final long SIZE$pipelineStatistics = LAYOUT$pipelineStatistics.byteSize();
-
 }

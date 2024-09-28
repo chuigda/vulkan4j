@@ -137,5 +137,4 @@ public record VkPerformanceCounterKHR(MemorySegment segment) implements IPointer
     public static final long SIZE$scope = LAYOUT$scope.byteSize();
     public static final long SIZE$storage = LAYOUT$storage.byteSize();
     public static final long SIZE$uuid = LAYOUT$uuid.byteSize();
-
 }

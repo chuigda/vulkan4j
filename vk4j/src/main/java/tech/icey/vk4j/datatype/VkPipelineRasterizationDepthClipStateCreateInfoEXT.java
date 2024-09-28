@@ -105,5 +105,4 @@ public record VkPipelineRasterizationDepthClipStateCreateInfoEXT(MemorySegment s
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$depthClipEnable = LAYOUT$depthClipEnable.byteSize();
-
 }

@@ -105,5 +105,4 @@ public record VkDescriptorBufferBindingInfoEXT(MemorySegment segment) implements
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$address = LAYOUT$address.byteSize();
     public static final long SIZE$usage = LAYOUT$usage.byteSize();
-
 }

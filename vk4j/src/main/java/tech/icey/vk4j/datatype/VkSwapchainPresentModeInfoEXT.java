@@ -124,5 +124,4 @@ public record VkSwapchainPresentModeInfoEXT(MemorySegment segment) implements IP
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$swapchainCount = LAYOUT$swapchainCount.byteSize();
     public static final long SIZE$pPresentModes = LAYOUT$pPresentModes.byteSize();
-
 }

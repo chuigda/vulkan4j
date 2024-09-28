@@ -165,5 +165,4 @@ public record VkRayTracingShaderGroupCreateInfoKHR(MemorySegment segment) implem
     public static final long SIZE$anyHitShader = LAYOUT$anyHitShader.byteSize();
     public static final long SIZE$intersectionShader = LAYOUT$intersectionShader.byteSize();
     public static final long SIZE$pShaderGroupCaptureReplayHandle = LAYOUT$pShaderGroupCaptureReplayHandle.byteSize();
-
 }

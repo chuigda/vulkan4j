@@ -143,5 +143,4 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment 
     public static final long SIZE$shadingRateImageEnable = LAYOUT$shadingRateImageEnable.byteSize();
     public static final long SIZE$viewportCount = LAYOUT$viewportCount.byteSize();
     public static final long SIZE$pShadingRatePalettes = LAYOUT$pShadingRatePalettes.byteSize();
-
 }

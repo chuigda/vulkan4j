@@ -153,5 +153,4 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) implements 
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$pCreateInfo = LAYOUT$pCreateInfo.byteSize();
     public static final long SIZE$pSubresource = LAYOUT$pSubresource.byteSize();
-
 }

@@ -287,5 +287,4 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(MemorySegment segment
     public static final long SIZE$tessellationPointMode = LAYOUT$tessellationPointMode.byteSize();
     public static final long SIZE$triangleFans = LAYOUT$triangleFans.byteSize();
     public static final long SIZE$vertexAttributeAccessBeyondStride = LAYOUT$vertexAttributeAccessBeyondStride.byteSize();
-
 }

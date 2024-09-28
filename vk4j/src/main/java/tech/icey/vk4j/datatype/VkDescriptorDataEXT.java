@@ -394,5 +394,4 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
     public static final long SIZE$pUniformBuffer = LAYOUT$pUniformBuffer.byteSize();
     public static final long SIZE$pStorageBuffer = LAYOUT$pStorageBuffer.byteSize();
     public static final long SIZE$accelerationStructure = LAYOUT$accelerationStructure.byteSize();
-
 }

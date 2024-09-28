@@ -184,5 +184,4 @@ public record VkSurfaceCapabilitiesKHR(MemorySegment segment) implements IPointe
     public static final long SIZE$currentTransform = LAYOUT$currentTransform.byteSize();
     public static final long SIZE$supportedCompositeAlpha = LAYOUT$supportedCompositeAlpha.byteSize();
     public static final long SIZE$supportedUsageFlags = LAYOUT$supportedUsageFlags.byteSize();
-
 }

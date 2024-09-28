@@ -151,5 +151,4 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
     public static final long SIZE$bufferView = LAYOUT$bufferView.byteSize();
     public static final long SIZE$plane = LAYOUT$plane.byteSize();
     public static final long SIZE$mtlTexture = LAYOUT$mtlTexture.byteSize();
-
 }

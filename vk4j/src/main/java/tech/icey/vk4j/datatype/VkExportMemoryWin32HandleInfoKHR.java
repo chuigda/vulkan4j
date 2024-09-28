@@ -138,5 +138,4 @@ public record VkExportMemoryWin32HandleInfoKHR(MemorySegment segment) implements
     public static final long SIZE$pAttributes = LAYOUT$pAttributes.byteSize();
     public static final long SIZE$dwAccess = LAYOUT$dwAccess.byteSize();
     public static final long SIZE$name = LAYOUT$name.byteSize();
-
 }

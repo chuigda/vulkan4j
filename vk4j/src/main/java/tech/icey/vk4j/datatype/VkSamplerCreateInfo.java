@@ -301,5 +301,4 @@ public record VkSamplerCreateInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$maxLod = LAYOUT$maxLod.byteSize();
     public static final long SIZE$borderColor = LAYOUT$borderColor.byteSize();
     public static final long SIZE$unnormalizedCoordinates = LAYOUT$unnormalizedCoordinates.byteSize();
-
 }

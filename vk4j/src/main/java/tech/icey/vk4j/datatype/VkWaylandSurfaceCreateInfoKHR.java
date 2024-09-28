@@ -127,5 +127,4 @@ public record VkWaylandSurfaceCreateInfoKHR(MemorySegment segment) implements IP
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$display = LAYOUT$display.byteSize();
     public static final long SIZE$surface = LAYOUT$surface.byteSize();
-
 }

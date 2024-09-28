@@ -143,5 +143,4 @@ public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) imp
     public static final long SIZE$depthResolveMode = LAYOUT$depthResolveMode.byteSize();
     public static final long SIZE$stencilResolveMode = LAYOUT$stencilResolveMode.byteSize();
     public static final long SIZE$pDepthStencilResolveAttachment = LAYOUT$pDepthStencilResolveAttachment.byteSize();
-
 }

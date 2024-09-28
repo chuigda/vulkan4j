@@ -119,5 +119,4 @@ public record VkLatencySleepModeInfoNV(MemorySegment segment) implements IPointe
     public static final long SIZE$lowLatencyMode = LAYOUT$lowLatencyMode.byteSize();
     public static final long SIZE$lowLatencyBoost = LAYOUT$lowLatencyBoost.byteSize();
     public static final long SIZE$minimumIntervalUs = LAYOUT$minimumIntervalUs.byteSize();
-
 }

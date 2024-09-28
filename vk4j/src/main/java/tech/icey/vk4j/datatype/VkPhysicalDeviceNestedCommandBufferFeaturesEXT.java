@@ -119,5 +119,4 @@ public record VkPhysicalDeviceNestedCommandBufferFeaturesEXT(MemorySegment segme
     public static final long SIZE$nestedCommandBuffer = LAYOUT$nestedCommandBuffer.byteSize();
     public static final long SIZE$nestedCommandBufferRendering = LAYOUT$nestedCommandBufferRendering.byteSize();
     public static final long SIZE$nestedCommandBufferSimultaneousUse = LAYOUT$nestedCommandBufferSimultaneousUse.byteSize();
-
 }

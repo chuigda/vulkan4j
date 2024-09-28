@@ -189,5 +189,4 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) implements IPoin
     public static final long SIZE$pSetLayouts = LAYOUT$pSetLayouts.byteSize();
     public static final long SIZE$pushConstantRangeCount = LAYOUT$pushConstantRangeCount.byteSize();
     public static final long SIZE$pPushConstantRanges = LAYOUT$pPushConstantRanges.byteSize();
-
 }

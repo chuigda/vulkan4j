@@ -118,5 +118,4 @@ public record VkPipelineCacheHeaderVersionOne(MemorySegment segment) implements 
     public static final long SIZE$vendorID = LAYOUT$vendorID.byteSize();
     public static final long SIZE$deviceID = LAYOUT$deviceID.byteSize();
     public static final long SIZE$pipelineCacheUUID = LAYOUT$pipelineCacheUUID.byteSize();
-
 }

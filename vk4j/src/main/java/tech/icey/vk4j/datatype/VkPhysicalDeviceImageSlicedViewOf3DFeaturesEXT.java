@@ -91,5 +91,4 @@ public record VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(MemorySegment segme
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$imageSlicedViewOf3D = LAYOUT$imageSlicedViewOf3D.byteSize();
-
 }

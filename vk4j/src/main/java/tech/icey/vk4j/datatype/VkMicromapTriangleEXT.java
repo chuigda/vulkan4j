@@ -86,5 +86,4 @@ public record VkMicromapTriangleEXT(MemorySegment segment) implements IPointer {
     public static final long SIZE$dataOffset = LAYOUT$dataOffset.byteSize();
     public static final long SIZE$subdivisionLevel = LAYOUT$subdivisionLevel.byteSize();
     public static final long SIZE$format = LAYOUT$format.byteSize();
-
 }

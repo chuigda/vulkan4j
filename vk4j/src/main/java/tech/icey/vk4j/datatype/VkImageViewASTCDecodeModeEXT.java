@@ -91,5 +91,4 @@ public record VkImageViewASTCDecodeModeEXT(MemorySegment segment) implements IPo
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$decodeMode = LAYOUT$decodeMode.byteSize();
-
 }

@@ -98,5 +98,4 @@ public record VkClearColorValue(MemorySegment segment) implements IPointer {
     public static final long SIZE$float32 = LAYOUT$float32.byteSize();
     public static final long SIZE$int32 = LAYOUT$int32.byteSize();
     public static final long SIZE$uint32 = LAYOUT$uint32.byteSize();
-
 }

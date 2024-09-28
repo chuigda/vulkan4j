@@ -133,5 +133,4 @@ public record VkImportSemaphoreZirconHandleInfoFUCHSIA(MemorySegment segment) im
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
     public static final long SIZE$zirconHandle = LAYOUT$zirconHandle.byteSize();
-
 }

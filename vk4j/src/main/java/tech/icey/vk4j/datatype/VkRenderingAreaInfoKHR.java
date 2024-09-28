@@ -166,5 +166,4 @@ public record VkRenderingAreaInfoKHR(MemorySegment segment) implements IPointer 
     public static final long SIZE$pColorAttachmentFormats = LAYOUT$pColorAttachmentFormats.byteSize();
     public static final long SIZE$depthAttachmentFormat = LAYOUT$depthAttachmentFormat.byteSize();
     public static final long SIZE$stencilAttachmentFormat = LAYOUT$stencilAttachmentFormat.byteSize();
-
 }

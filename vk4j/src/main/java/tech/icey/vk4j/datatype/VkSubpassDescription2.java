@@ -342,5 +342,4 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
     public static final long SIZE$pDepthStencilAttachment = LAYOUT$pDepthStencilAttachment.byteSize();
     public static final long SIZE$preserveAttachmentCount = LAYOUT$preserveAttachmentCount.byteSize();
     public static final long SIZE$pPreserveAttachments = LAYOUT$pPreserveAttachments.byteSize();
-
 }

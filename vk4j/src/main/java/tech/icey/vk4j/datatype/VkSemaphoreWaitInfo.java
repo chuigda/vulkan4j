@@ -166,5 +166,4 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$semaphoreCount = LAYOUT$semaphoreCount.byteSize();
     public static final long SIZE$pSemaphores = LAYOUT$pSemaphores.byteSize();
     public static final long SIZE$pValues = LAYOUT$pValues.byteSize();
-
 }

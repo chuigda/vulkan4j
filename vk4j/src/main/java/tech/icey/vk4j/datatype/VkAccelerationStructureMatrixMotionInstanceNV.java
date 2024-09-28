@@ -140,5 +140,4 @@ public record VkAccelerationStructureMatrixMotionInstanceNV(MemorySegment segmen
     public static final long SIZE$bitfield$instanceCustomIndex_mask = LAYOUT$bitfield$instanceCustomIndex_mask.byteSize();
     public static final long SIZE$bitfield$instanceShaderBindingTableRecordOffset_flags = LAYOUT$bitfield$instanceShaderBindingTableRecordOffset_flags.byteSize();
     public static final long SIZE$accelerationStructureReference = LAYOUT$accelerationStructureReference.byteSize();
-
 }

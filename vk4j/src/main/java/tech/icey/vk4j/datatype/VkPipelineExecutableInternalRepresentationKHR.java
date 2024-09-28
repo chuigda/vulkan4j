@@ -157,5 +157,4 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
     public static final long SIZE$description = LAYOUT$description.byteSize();
     public static final long SIZE$isText = LAYOUT$isText.byteSize();
     public static final long SIZE$pData = LAYOUT$pData.byteSize();
-
 }

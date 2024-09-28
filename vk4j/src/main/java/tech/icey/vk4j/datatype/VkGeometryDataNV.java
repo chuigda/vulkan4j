@@ -72,5 +72,4 @@ public record VkGeometryDataNV(MemorySegment segment) implements IPointer {
 
     public static final long SIZE$triangles = LAYOUT$triangles.byteSize();
     public static final long SIZE$aabbs = LAYOUT$aabbs.byteSize();
-
 }

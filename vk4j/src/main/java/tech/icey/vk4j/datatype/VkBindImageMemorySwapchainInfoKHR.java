@@ -105,5 +105,4 @@ public record VkBindImageMemorySwapchainInfoKHR(MemorySegment segment) implement
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$swapchain = LAYOUT$swapchain.byteSize();
     public static final long SIZE$imageIndex = LAYOUT$imageIndex.byteSize();
-
 }

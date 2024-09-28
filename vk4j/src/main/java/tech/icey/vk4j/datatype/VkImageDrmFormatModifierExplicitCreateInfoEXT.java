@@ -143,5 +143,4 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
     public static final long SIZE$drmFormatModifier = LAYOUT$drmFormatModifier.byteSize();
     public static final long SIZE$drmFormatModifierPlaneCount = LAYOUT$drmFormatModifierPlaneCount.byteSize();
     public static final long SIZE$pPlaneLayouts = LAYOUT$pPlaneLayouts.byteSize();
-
 }

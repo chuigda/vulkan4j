@@ -144,5 +144,4 @@ public record VkPhysicalDeviceMemoryProperties(MemorySegment segment) implements
     public static final long SIZE$memoryTypes = LAYOUT$memoryTypes.byteSize();
     public static final long SIZE$memoryHeapCount = LAYOUT$memoryHeapCount.byteSize();
     public static final long SIZE$memoryHeaps = LAYOUT$memoryHeaps.byteSize();
-
 }

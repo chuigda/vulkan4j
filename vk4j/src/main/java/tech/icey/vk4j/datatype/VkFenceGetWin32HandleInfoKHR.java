@@ -105,5 +105,4 @@ public record VkFenceGetWin32HandleInfoKHR(MemorySegment segment) implements IPo
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$fence = LAYOUT$fence.byteSize();
     public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
-
 }

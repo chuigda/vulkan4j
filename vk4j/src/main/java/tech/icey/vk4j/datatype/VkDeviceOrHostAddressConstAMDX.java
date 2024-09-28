@@ -76,5 +76,4 @@ public record VkDeviceOrHostAddressConstAMDX(MemorySegment segment) implements I
 
     public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
     public static final long SIZE$hostAddress = LAYOUT$hostAddress.byteSize();
-
 }

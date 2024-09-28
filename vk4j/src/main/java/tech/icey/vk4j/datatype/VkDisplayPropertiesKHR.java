@@ -157,5 +157,4 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) implements IPointer 
     public static final long SIZE$supportedTransforms = LAYOUT$supportedTransforms.byteSize();
     public static final long SIZE$planeReorderPossible = LAYOUT$planeReorderPossible.byteSize();
     public static final long SIZE$persistentContent = LAYOUT$persistentContent.byteSize();
-
 }

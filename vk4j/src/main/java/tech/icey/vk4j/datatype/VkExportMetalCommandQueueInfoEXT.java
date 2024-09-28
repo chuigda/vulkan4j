@@ -109,5 +109,4 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) implements
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$queue = LAYOUT$queue.byteSize();
     public static final long SIZE$mtlCommandQueue = LAYOUT$mtlCommandQueue.byteSize();
-
 }

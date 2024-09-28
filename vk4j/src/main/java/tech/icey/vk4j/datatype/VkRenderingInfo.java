@@ -261,5 +261,4 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$pColorAttachments = LAYOUT$pColorAttachments.byteSize();
     public static final long SIZE$pDepthAttachment = LAYOUT$pDepthAttachment.byteSize();
     public static final long SIZE$pStencilAttachment = LAYOUT$pStencilAttachment.byteSize();
-
 }

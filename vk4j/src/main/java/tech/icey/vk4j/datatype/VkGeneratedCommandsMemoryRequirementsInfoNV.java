@@ -133,5 +133,4 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
     public static final long SIZE$pipeline = LAYOUT$pipeline.byteSize();
     public static final long SIZE$indirectCommandsLayout = LAYOUT$indirectCommandsLayout.byteSize();
     public static final long SIZE$maxSequencesCount = LAYOUT$maxSequencesCount.byteSize();
-
 }

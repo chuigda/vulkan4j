@@ -105,5 +105,4 @@ public record VkAntiLagPresentationInfoAMD(MemorySegment segment) implements IPo
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$stage = LAYOUT$stage.byteSize();
     public static final long SIZE$frameIndex = LAYOUT$frameIndex.byteSize();
-
 }

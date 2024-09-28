@@ -155,5 +155,4 @@ public record VkDebugUtilsMessengerCreateInfoEXT(MemorySegment segment) implemen
     public static final long SIZE$messageType = LAYOUT$messageType.byteSize();
     public static final long SIZE$pfnUserCallback = LAYOUT$pfnUserCallback.byteSize();
     public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
-
 }

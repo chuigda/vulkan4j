@@ -133,5 +133,4 @@ public record VkApplicationParametersEXT(MemorySegment segment) implements IPoin
     public static final long SIZE$deviceID = LAYOUT$deviceID.byteSize();
     public static final long SIZE$key = LAYOUT$key.byteSize();
     public static final long SIZE$value = LAYOUT$value.byteSize();
-
 }

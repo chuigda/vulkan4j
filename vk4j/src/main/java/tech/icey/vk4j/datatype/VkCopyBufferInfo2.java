@@ -157,5 +157,4 @@ public record VkCopyBufferInfo2(MemorySegment segment) implements IPointer {
     public static final long SIZE$dstBuffer = LAYOUT$dstBuffer.byteSize();
     public static final long SIZE$regionCount = LAYOUT$regionCount.byteSize();
     public static final long SIZE$pRegions = LAYOUT$pRegions.byteSize();
-
 }

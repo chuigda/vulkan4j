@@ -134,5 +134,4 @@ public record VkQueryPoolPerformanceCreateInfoKHR(MemorySegment segment) impleme
     public static final long SIZE$queueFamilyIndex = LAYOUT$queueFamilyIndex.byteSize();
     public static final long SIZE$counterIndexCount = LAYOUT$counterIndexCount.byteSize();
     public static final long SIZE$pCounterIndices = LAYOUT$pCounterIndices.byteSize();
-
 }

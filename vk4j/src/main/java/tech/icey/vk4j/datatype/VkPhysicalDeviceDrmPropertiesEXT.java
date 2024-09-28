@@ -161,5 +161,4 @@ public record VkPhysicalDeviceDrmPropertiesEXT(MemorySegment segment) implements
     public static final long SIZE$primaryMinor = LAYOUT$primaryMinor.byteSize();
     public static final long SIZE$renderMajor = LAYOUT$renderMajor.byteSize();
     public static final long SIZE$renderMinor = LAYOUT$renderMinor.byteSize();
-
 }

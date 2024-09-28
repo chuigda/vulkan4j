@@ -120,5 +120,4 @@ public record VkRenderingAttachmentLocationInfoKHR(MemorySegment segment) implem
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$colorAttachmentCount = LAYOUT$colorAttachmentCount.byteSize();
     public static final long SIZE$pColorAttachmentLocations = LAYOUT$pColorAttachmentLocations.byteSize();
-
 }

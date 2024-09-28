@@ -268,5 +268,4 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) implements IPointer 
     public static final long SIZE$scratchData = LAYOUT$scratchData.byteSize();
     public static final long SIZE$triangleArray = LAYOUT$triangleArray.byteSize();
     public static final long SIZE$triangleArrayStride = LAYOUT$triangleArrayStride.byteSize();
-
 }

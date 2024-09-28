@@ -91,5 +91,4 @@ public record VkMemoryZirconHandlePropertiesFUCHSIA(MemorySegment segment) imple
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$memoryTypeBits = LAYOUT$memoryTypeBits.byteSize();
-
 }

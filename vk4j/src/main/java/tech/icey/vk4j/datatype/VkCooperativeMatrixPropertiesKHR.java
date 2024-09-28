@@ -203,5 +203,4 @@ public record VkCooperativeMatrixPropertiesKHR(MemorySegment segment) implements
     public static final long SIZE$ResultType = LAYOUT$ResultType.byteSize();
     public static final long SIZE$saturatingAccumulation = LAYOUT$saturatingAccumulation.byteSize();
     public static final long SIZE$scope = LAYOUT$scope.byteSize();
-
 }

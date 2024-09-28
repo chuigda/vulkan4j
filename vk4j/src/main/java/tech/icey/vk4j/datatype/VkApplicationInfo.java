@@ -177,5 +177,4 @@ public record VkApplicationInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$pEngineName = LAYOUT$pEngineName.byteSize();
     public static final long SIZE$engineVersion = LAYOUT$engineVersion.byteSize();
     public static final long SIZE$apiVersion = LAYOUT$apiVersion.byteSize();
-
 }

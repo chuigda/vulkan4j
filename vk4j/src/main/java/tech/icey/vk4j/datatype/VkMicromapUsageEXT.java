@@ -86,5 +86,4 @@ public record VkMicromapUsageEXT(MemorySegment segment) implements IPointer {
     public static final long SIZE$count = LAYOUT$count.byteSize();
     public static final long SIZE$subdivisionLevel = LAYOUT$subdivisionLevel.byteSize();
     public static final long SIZE$format = LAYOUT$format.byteSize();
-
 }

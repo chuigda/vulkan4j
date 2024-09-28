@@ -105,5 +105,4 @@ public record VkPhysicalDeviceMeshShaderFeaturesNV(MemorySegment segment) implem
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$taskShader = LAYOUT$taskShader.byteSize();
     public static final long SIZE$meshShader = LAYOUT$meshShader.byteSize();
-
 }

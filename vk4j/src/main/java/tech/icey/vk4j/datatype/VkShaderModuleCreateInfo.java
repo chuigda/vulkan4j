@@ -132,5 +132,4 @@ public record VkShaderModuleCreateInfo(MemorySegment segment) implements IPointe
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$pCode = LAYOUT$pCode.byteSize();
-
 }

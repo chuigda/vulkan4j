@@ -211,5 +211,4 @@ public record VkInstanceCreateInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$ppEnabledLayerNames = LAYOUT$ppEnabledLayerNames.byteSize();
     public static final long SIZE$enabledExtensionCount = LAYOUT$enabledExtensionCount.byteSize();
     public static final long SIZE$ppEnabledExtensionNames = LAYOUT$ppEnabledExtensionNames.byteSize();
-
 }

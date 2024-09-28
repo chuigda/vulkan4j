@@ -114,5 +114,4 @@ public record VkImageFormatProperties(MemorySegment segment) implements IPointer
     public static final long SIZE$maxArrayLayers = LAYOUT$maxArrayLayers.byteSize();
     public static final long SIZE$sampleCounts = LAYOUT$sampleCounts.byteSize();
     public static final long SIZE$maxResourceSize = LAYOUT$maxResourceSize.byteSize();
-
 }

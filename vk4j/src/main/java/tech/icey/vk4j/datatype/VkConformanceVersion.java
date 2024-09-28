@@ -100,5 +100,4 @@ public record VkConformanceVersion(MemorySegment segment) implements IPointer {
     public static final long SIZE$minor = LAYOUT$minor.byteSize();
     public static final long SIZE$subminor = LAYOUT$subminor.byteSize();
     public static final long SIZE$patch = LAYOUT$patch.byteSize();
-
 }

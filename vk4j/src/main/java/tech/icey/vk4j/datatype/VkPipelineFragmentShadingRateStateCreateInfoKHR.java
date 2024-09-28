@@ -109,5 +109,4 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(MemorySegment segm
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$fragmentSize = LAYOUT$fragmentSize.byteSize();
     public static final long SIZE$combinerOps = LAYOUT$combinerOps.byteSize();
-
 }

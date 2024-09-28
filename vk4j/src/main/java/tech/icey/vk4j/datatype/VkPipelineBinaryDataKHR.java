@@ -74,5 +74,4 @@ public record VkPipelineBinaryDataKHR(MemorySegment segment) implements IPointer
     public static final long OFFSET$pData = LAYOUT.byteOffset(PATH$pData);
 
     public static final long SIZE$pData = LAYOUT$pData.byteSize();
-
 }

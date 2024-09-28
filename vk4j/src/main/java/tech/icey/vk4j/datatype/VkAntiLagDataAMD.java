@@ -143,5 +143,4 @@ public record VkAntiLagDataAMD(MemorySegment segment) implements IPointer {
     public static final long SIZE$mode = LAYOUT$mode.byteSize();
     public static final long SIZE$maxFPS = LAYOUT$maxFPS.byteSize();
     public static final long SIZE$pPresentationInfo = LAYOUT$pPresentationInfo.byteSize();
-
 }

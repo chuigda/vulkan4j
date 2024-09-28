@@ -143,5 +143,4 @@ public record VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) implements
     public static final long SIZE$deviceMask = LAYOUT$deviceMask.byteSize();
     public static final long SIZE$deviceRenderAreaCount = LAYOUT$deviceRenderAreaCount.byteSize();
     public static final long SIZE$pDeviceRenderAreas = LAYOUT$pDeviceRenderAreas.byteSize();
-
 }

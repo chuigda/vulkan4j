@@ -105,5 +105,4 @@ public record VkPhysicalDeviceMemoryDecompressionPropertiesNV(MemorySegment segm
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$decompressionMethods = LAYOUT$decompressionMethods.byteSize();
     public static final long SIZE$maxDecompressionIndirectCount = LAYOUT$maxDecompressionIndirectCount.byteSize();
-
 }

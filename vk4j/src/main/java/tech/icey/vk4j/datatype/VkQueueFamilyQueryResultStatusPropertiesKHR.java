@@ -91,5 +91,4 @@ public record VkQueueFamilyQueryResultStatusPropertiesKHR(MemorySegment segment)
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$queryResultStatusSupport = LAYOUT$queryResultStatusSupport.byteSize();
-
 }

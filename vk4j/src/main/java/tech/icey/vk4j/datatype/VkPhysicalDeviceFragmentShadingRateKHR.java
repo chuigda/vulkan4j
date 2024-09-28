@@ -105,5 +105,4 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(MemorySegment segment) impl
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$sampleCounts = LAYOUT$sampleCounts.byteSize();
     public static final long SIZE$fragmentSize = LAYOUT$fragmentSize.byteSize();
-
 }

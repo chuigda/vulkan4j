@@ -189,5 +189,4 @@ public record VkSubpassDependency2(MemorySegment segment) implements IPointer {
     public static final long SIZE$dstAccessMask = LAYOUT$dstAccessMask.byteSize();
     public static final long SIZE$dependencyFlags = LAYOUT$dependencyFlags.byteSize();
     public static final long SIZE$viewOffset = LAYOUT$viewOffset.byteSize();
-
 }

@@ -123,5 +123,4 @@ public record VkRenderPassAttachmentBeginInfo(MemorySegment segment) implements 
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$attachmentCount = LAYOUT$attachmentCount.byteSize();
     public static final long SIZE$pAttachments = LAYOUT$pAttachments.byteSize();
-
 }

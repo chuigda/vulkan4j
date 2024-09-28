@@ -133,5 +133,4 @@ public record VkGeometryAABBNV(MemorySegment segment) implements IPointer {
     public static final long SIZE$numAABBs = LAYOUT$numAABBs.byteSize();
     public static final long SIZE$stride = LAYOUT$stride.byteSize();
     public static final long SIZE$offset = LAYOUT$offset.byteSize();
-
 }

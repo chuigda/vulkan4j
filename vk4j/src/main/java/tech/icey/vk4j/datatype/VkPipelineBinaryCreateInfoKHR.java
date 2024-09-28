@@ -167,5 +167,4 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
     public static final long SIZE$pKeysAndDataInfo = LAYOUT$pKeysAndDataInfo.byteSize();
     public static final long SIZE$pipeline = LAYOUT$pipeline.byteSize();
     public static final long SIZE$pPipelineCreateInfo = LAYOUT$pPipelineCreateInfo.byteSize();
-
 }

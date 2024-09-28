@@ -203,5 +203,4 @@ public record VkBufferMemoryBarrier2(MemorySegment segment) implements IPointer 
     public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
     public static final long SIZE$offset = LAYOUT$offset.byteSize();
     public static final long SIZE$size = LAYOUT$size.byteSize();
-
 }

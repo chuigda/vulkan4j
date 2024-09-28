@@ -91,5 +91,4 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(MemorySegment s
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$commandBufferInheritance = LAYOUT$commandBufferInheritance.byteSize();
-
 }

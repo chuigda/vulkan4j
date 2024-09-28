@@ -72,5 +72,4 @@ public record VkMemoryHeap(MemorySegment segment) implements IPointer {
 
     public static final long SIZE$size = LAYOUT$size.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
 }

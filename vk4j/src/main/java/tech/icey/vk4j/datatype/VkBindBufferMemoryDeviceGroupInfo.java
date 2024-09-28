@@ -120,5 +120,4 @@ public record VkBindBufferMemoryDeviceGroupInfo(MemorySegment segment) implement
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$deviceIndexCount = LAYOUT$deviceIndexCount.byteSize();
     public static final long SIZE$pDeviceIndices = LAYOUT$pDeviceIndices.byteSize();
-
 }

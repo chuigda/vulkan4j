@@ -110,5 +110,4 @@ public record VkShaderResourceUsageAMD(MemorySegment segment) implements IPointe
     public static final long SIZE$numUsedVgprs = LAYOUT$numUsedVgprs.byteSize();
     public static final long SIZE$numUsedSgprs = LAYOUT$numUsedSgprs.byteSize();
     public static final long SIZE$ldsSizePerLocalWorkGroup = LAYOUT$ldsSizePerLocalWorkGroup.byteSize();
-
 }

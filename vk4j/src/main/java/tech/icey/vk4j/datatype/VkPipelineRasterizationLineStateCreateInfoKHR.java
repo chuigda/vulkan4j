@@ -133,5 +133,4 @@ public record VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segmen
     public static final long SIZE$stippledLineEnable = LAYOUT$stippledLineEnable.byteSize();
     public static final long SIZE$lineStippleFactor = LAYOUT$lineStippleFactor.byteSize();
     public static final long SIZE$lineStipplePattern = LAYOUT$lineStipplePattern.byteSize();
-
 }

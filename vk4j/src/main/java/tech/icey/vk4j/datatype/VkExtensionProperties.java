@@ -76,5 +76,4 @@ public record VkExtensionProperties(MemorySegment segment) implements IPointer {
 
     public static final long SIZE$extensionName = LAYOUT$extensionName.byteSize();
     public static final long SIZE$specVersion = LAYOUT$specVersion.byteSize();
-
 }

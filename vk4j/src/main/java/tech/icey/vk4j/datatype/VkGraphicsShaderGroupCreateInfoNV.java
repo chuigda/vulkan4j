@@ -205,5 +205,4 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
     public static final long SIZE$pStages = LAYOUT$pStages.byteSize();
     public static final long SIZE$pVertexInputState = LAYOUT$pVertexInputState.byteSize();
     public static final long SIZE$pTessellationState = LAYOUT$pTessellationState.byteSize();
-
 }

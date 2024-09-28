@@ -96,5 +96,4 @@ public record VkPresentRegionKHR(MemorySegment segment) implements IPointer {
 
     public static final long SIZE$rectangleCount = LAYOUT$rectangleCount.byteSize();
     public static final long SIZE$pRectangles = LAYOUT$pRectangles.byteSize();
-
 }

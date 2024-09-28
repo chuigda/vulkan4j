@@ -119,5 +119,4 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(MemorySegment s
     public static final long SIZE$fragmentShadingRateEnums = LAYOUT$fragmentShadingRateEnums.byteSize();
     public static final long SIZE$supersampleFragmentShadingRates = LAYOUT$supersampleFragmentShadingRates.byteSize();
     public static final long SIZE$noInvocationFragmentShadingRates = LAYOUT$noInvocationFragmentShadingRates.byteSize();
-
 }

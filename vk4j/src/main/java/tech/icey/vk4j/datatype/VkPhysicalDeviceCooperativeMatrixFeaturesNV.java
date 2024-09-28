@@ -105,5 +105,4 @@ public record VkPhysicalDeviceCooperativeMatrixFeaturesNV(MemorySegment segment)
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$cooperativeMatrix = LAYOUT$cooperativeMatrix.byteSize();
     public static final long SIZE$cooperativeMatrixRobustBufferAccess = LAYOUT$cooperativeMatrixRobustBufferAccess.byteSize();
-
 }

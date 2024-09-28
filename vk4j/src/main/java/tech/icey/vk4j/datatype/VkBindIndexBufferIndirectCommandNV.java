@@ -86,5 +86,4 @@ public record VkBindIndexBufferIndirectCommandNV(MemorySegment segment) implemen
     public static final long SIZE$bufferAddress = LAYOUT$bufferAddress.byteSize();
     public static final long SIZE$size = LAYOUT$size.byteSize();
     public static final long SIZE$indexType = LAYOUT$indexType.byteSize();
-
 }

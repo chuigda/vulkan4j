@@ -511,5 +511,4 @@ public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(MemorySegment seg
     public static final long SIZE$extendedDynamicState3CoverageReductionMode = LAYOUT$extendedDynamicState3CoverageReductionMode.byteSize();
     public static final long SIZE$extendedDynamicState3RepresentativeFragmentTestEnable = LAYOUT$extendedDynamicState3RepresentativeFragmentTestEnable.byteSize();
     public static final long SIZE$extendedDynamicState3ShadingRateImageEnable = LAYOUT$extendedDynamicState3ShadingRateImageEnable.byteSize();
-
 }

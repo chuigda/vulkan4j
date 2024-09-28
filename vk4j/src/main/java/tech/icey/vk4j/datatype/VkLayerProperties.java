@@ -108,5 +108,4 @@ public record VkLayerProperties(MemorySegment segment) implements IPointer {
     public static final long SIZE$specVersion = LAYOUT$specVersion.byteSize();
     public static final long SIZE$implementationVersion = LAYOUT$implementationVersion.byteSize();
     public static final long SIZE$description = LAYOUT$description.byteSize();
-
 }

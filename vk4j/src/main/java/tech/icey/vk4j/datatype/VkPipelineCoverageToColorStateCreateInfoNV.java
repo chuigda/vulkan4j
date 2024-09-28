@@ -119,5 +119,4 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(MemorySegment segment) 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$coverageToColorEnable = LAYOUT$coverageToColorEnable.byteSize();
     public static final long SIZE$coverageToColorLocation = LAYOUT$coverageToColorLocation.byteSize();
-
 }

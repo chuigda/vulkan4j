@@ -129,5 +129,4 @@ public record VkMutableDescriptorTypeCreateInfoEXT(MemorySegment segment) implem
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$mutableDescriptorTypeListCount = LAYOUT$mutableDescriptorTypeListCount.byteSize();
     public static final long SIZE$pMutableDescriptorTypeLists = LAYOUT$pMutableDescriptorTypeLists.byteSize();
-
 }

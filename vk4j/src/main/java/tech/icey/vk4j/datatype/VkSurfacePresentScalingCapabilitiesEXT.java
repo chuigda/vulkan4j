@@ -147,5 +147,4 @@ public record VkSurfacePresentScalingCapabilitiesEXT(MemorySegment segment) impl
     public static final long SIZE$supportedPresentGravityY = LAYOUT$supportedPresentGravityY.byteSize();
     public static final long SIZE$minScaledImageExtent = LAYOUT$minScaledImageExtent.byteSize();
     public static final long SIZE$maxScaledImageExtent = LAYOUT$maxScaledImageExtent.byteSize();
-
 }

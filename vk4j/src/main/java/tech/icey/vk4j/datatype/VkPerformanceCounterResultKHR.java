@@ -128,5 +128,4 @@ public record VkPerformanceCounterResultKHR(MemorySegment segment) implements IP
     public static final long SIZE$uint64 = LAYOUT$uint64.byteSize();
     public static final long SIZE$float32 = LAYOUT$float32.byteSize();
     public static final long SIZE$float64 = LAYOUT$float64.byteSize();
-
 }

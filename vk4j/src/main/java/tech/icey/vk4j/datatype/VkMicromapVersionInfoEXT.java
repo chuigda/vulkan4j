@@ -106,5 +106,4 @@ public record VkMicromapVersionInfoEXT(MemorySegment segment) implements IPointe
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$pVersionData = LAYOUT$pVersionData.byteSize();
-
 }

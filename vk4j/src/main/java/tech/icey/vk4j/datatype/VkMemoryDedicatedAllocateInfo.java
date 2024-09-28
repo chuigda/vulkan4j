@@ -105,5 +105,4 @@ public record VkMemoryDedicatedAllocateInfo(MemorySegment segment) implements IP
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$image = LAYOUT$image.byteSize();
     public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
-
 }

@@ -110,5 +110,4 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) implements IPoi
     public static final long SIZE$image = LAYOUT$image.byteSize();
     public static final long SIZE$bindCount = LAYOUT$bindCount.byteSize();
     public static final long SIZE$pBinds = LAYOUT$pBinds.byteSize();
-
 }

@@ -129,5 +129,4 @@ public record VkPerformanceValueDataINTEL(MemorySegment segment) implements IPoi
     public static final long SIZE$valueFloat = LAYOUT$valueFloat.byteSize();
     public static final long SIZE$valueBool = LAYOUT$valueBool.byteSize();
     public static final long SIZE$valueString = LAYOUT$valueString.byteSize();
-
 }

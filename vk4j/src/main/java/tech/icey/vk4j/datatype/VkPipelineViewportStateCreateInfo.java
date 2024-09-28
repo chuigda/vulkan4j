@@ -195,5 +195,4 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implement
     public static final long SIZE$pViewports = LAYOUT$pViewports.byteSize();
     public static final long SIZE$scissorCount = LAYOUT$scissorCount.byteSize();
     public static final long SIZE$pScissors = LAYOUT$pScissors.byteSize();
-
 }

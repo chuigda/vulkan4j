@@ -161,5 +161,4 @@ public record VkAccelerationStructureCreateInfoKHR(MemorySegment segment) implem
     public static final long SIZE$size = LAYOUT$size.byteSize();
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
-
 }

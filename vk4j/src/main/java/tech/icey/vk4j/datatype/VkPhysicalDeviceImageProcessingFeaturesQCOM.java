@@ -119,5 +119,4 @@ public record VkPhysicalDeviceImageProcessingFeaturesQCOM(MemorySegment segment)
     public static final long SIZE$textureSampleWeighted = LAYOUT$textureSampleWeighted.byteSize();
     public static final long SIZE$textureBoxFilter = LAYOUT$textureBoxFilter.byteSize();
     public static final long SIZE$textureBlockMatch = LAYOUT$textureBlockMatch.byteSize();
-
 }

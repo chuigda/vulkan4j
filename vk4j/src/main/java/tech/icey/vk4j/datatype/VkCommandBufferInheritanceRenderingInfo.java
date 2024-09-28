@@ -195,5 +195,4 @@ public record VkCommandBufferInheritanceRenderingInfo(MemorySegment segment) imp
     public static final long SIZE$depthAttachmentFormat = LAYOUT$depthAttachmentFormat.byteSize();
     public static final long SIZE$stencilAttachmentFormat = LAYOUT$stencilAttachmentFormat.byteSize();
     public static final long SIZE$rasterizationSamples = LAYOUT$rasterizationSamples.byteSize();
-
 }

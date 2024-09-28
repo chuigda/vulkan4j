@@ -133,5 +133,4 @@ public record VkVertexInputAttributeDescription2EXT(MemorySegment segment) imple
     public static final long SIZE$binding = LAYOUT$binding.byteSize();
     public static final long SIZE$format = LAYOUT$format.byteSize();
     public static final long SIZE$offset = LAYOUT$offset.byteSize();
-
 }

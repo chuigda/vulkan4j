@@ -129,5 +129,4 @@ public record VkLayerSettingsCreateInfoEXT(MemorySegment segment) implements IPo
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$settingCount = LAYOUT$settingCount.byteSize();
     public static final long SIZE$pSettings = LAYOUT$pSettings.byteSize();
-
 }

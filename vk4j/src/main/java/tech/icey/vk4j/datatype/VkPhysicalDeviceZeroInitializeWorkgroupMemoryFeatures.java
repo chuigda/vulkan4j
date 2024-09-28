@@ -91,5 +91,4 @@ public record VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(MemorySegmen
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$shaderZeroInitializeWorkgroupMemory = LAYOUT$shaderZeroInitializeWorkgroupMemory.byteSize();
-
 }

@@ -58,5 +58,4 @@ public record VkSetStateFlagsIndirectCommandNV(MemorySegment segment) implements
     public static final long OFFSET$data = LAYOUT.byteOffset(PATH$data);
 
     public static final long SIZE$data = LAYOUT$data.byteSize();
-
 }

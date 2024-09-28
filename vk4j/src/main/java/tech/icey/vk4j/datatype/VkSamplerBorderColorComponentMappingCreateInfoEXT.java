@@ -105,5 +105,4 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(MemorySegment se
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$components = LAYOUT$components.byteSize();
     public static final long SIZE$srgb = LAYOUT$srgb.byteSize();
-
 }

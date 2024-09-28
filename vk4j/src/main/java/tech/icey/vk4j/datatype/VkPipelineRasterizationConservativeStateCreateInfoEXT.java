@@ -119,5 +119,4 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(MemorySegmen
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$conservativeRasterizationMode = LAYOUT$conservativeRasterizationMode.byteSize();
     public static final long SIZE$extraPrimitiveOverestimationSize = LAYOUT$extraPrimitiveOverestimationSize.byteSize();
-
 }

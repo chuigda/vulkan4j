@@ -105,5 +105,4 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(MemorySegment segmen
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$borderColorSwizzle = LAYOUT$borderColorSwizzle.byteSize();
     public static final long SIZE$borderColorSwizzleFromImage = LAYOUT$borderColorSwizzleFromImage.byteSize();
-
 }

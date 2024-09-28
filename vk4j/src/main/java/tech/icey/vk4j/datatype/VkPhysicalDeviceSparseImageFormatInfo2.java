@@ -147,5 +147,4 @@ public record VkPhysicalDeviceSparseImageFormatInfo2(MemorySegment segment) impl
     public static final long SIZE$samples = LAYOUT$samples.byteSize();
     public static final long SIZE$usage = LAYOUT$usage.byteSize();
     public static final long SIZE$tiling = LAYOUT$tiling.byteSize();
-
 }

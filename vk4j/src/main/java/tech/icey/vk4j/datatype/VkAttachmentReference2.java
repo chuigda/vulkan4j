@@ -119,5 +119,4 @@ public record VkAttachmentReference2(MemorySegment segment) implements IPointer 
     public static final long SIZE$attachment = LAYOUT$attachment.byteSize();
     public static final long SIZE$layout = LAYOUT$layout.byteSize();
     public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
-
 }

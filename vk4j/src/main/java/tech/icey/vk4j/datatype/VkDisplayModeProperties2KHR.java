@@ -91,5 +91,4 @@ public record VkDisplayModeProperties2KHR(MemorySegment segment) implements IPoi
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$displayModeProperties = LAYOUT$displayModeProperties.byteSize();
-
 }

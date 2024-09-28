@@ -86,5 +86,4 @@ public record VkDeviceFaultAddressInfoEXT(MemorySegment segment) implements IPoi
     public static final long SIZE$addressType = LAYOUT$addressType.byteSize();
     public static final long SIZE$reportedAddress = LAYOUT$reportedAddress.byteSize();
     public static final long SIZE$addressPrecision = LAYOUT$addressPrecision.byteSize();
-
 }

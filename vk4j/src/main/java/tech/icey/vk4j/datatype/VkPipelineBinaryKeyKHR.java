@@ -109,5 +109,4 @@ public record VkPipelineBinaryKeyKHR(MemorySegment segment) implements IPointer 
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$keySize = LAYOUT$keySize.byteSize();
     public static final long SIZE$key = LAYOUT$key.byteSize();
-
 }

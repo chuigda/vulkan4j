@@ -119,5 +119,4 @@ public record VkBindImageMemoryInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$image = LAYOUT$image.byteSize();
     public static final long SIZE$memory = LAYOUT$memory.byteSize();
     public static final long SIZE$memoryOffset = LAYOUT$memoryOffset.byteSize();
-
 }

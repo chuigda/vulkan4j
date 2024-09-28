@@ -72,5 +72,4 @@ public record VkMultiDrawInfoEXT(MemorySegment segment) implements IPointer {
 
     public static final long SIZE$firstVertex = LAYOUT$firstVertex.byteSize();
     public static final long SIZE$vertexCount = LAYOUT$vertexCount.byteSize();
-
 }

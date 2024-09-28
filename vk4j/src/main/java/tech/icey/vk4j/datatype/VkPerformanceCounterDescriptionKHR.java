@@ -145,5 +145,4 @@ public record VkPerformanceCounterDescriptionKHR(MemorySegment segment) implemen
     public static final long SIZE$name = LAYOUT$name.byteSize();
     public static final long SIZE$category = LAYOUT$category.byteSize();
     public static final long SIZE$description = LAYOUT$description.byteSize();
-
 }

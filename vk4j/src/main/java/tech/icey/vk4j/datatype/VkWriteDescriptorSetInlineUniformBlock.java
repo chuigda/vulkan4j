@@ -109,5 +109,4 @@ public record VkWriteDescriptorSetInlineUniformBlock(MemorySegment segment) impl
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$dataSize = LAYOUT$dataSize.byteSize();
     public static final long SIZE$pData = LAYOUT$pData.byteSize();
-
 }

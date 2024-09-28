@@ -240,5 +240,4 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
     public static final long SIZE$pGeometries = LAYOUT$pGeometries.byteSize();
     public static final long SIZE$ppGeometries = LAYOUT$ppGeometries.byteSize();
     public static final long SIZE$scratchData = LAYOUT$scratchData.byteSize();
-
 }

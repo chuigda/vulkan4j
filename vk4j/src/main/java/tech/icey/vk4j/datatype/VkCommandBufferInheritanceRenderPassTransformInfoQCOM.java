@@ -105,5 +105,4 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(MemorySegmen
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$transform = LAYOUT$transform.byteSize();
     public static final long SIZE$renderArea = LAYOUT$renderArea.byteSize();
-
 }

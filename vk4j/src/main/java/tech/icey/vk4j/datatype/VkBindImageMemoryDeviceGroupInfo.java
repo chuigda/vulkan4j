@@ -172,5 +172,4 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) implements
     public static final long SIZE$pDeviceIndices = LAYOUT$pDeviceIndices.byteSize();
     public static final long SIZE$splitInstanceBindRegionCount = LAYOUT$splitInstanceBindRegionCount.byteSize();
     public static final long SIZE$pSplitInstanceBindRegions = LAYOUT$pSplitInstanceBindRegions.byteSize();
-
 }

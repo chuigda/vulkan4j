@@ -114,5 +114,4 @@ public record VkDrawIndexedIndirectCommand(MemorySegment segment) implements IPo
     public static final long SIZE$firstIndex = LAYOUT$firstIndex.byteSize();
     public static final long SIZE$vertexOffset = LAYOUT$vertexOffset.byteSize();
     public static final long SIZE$firstInstance = LAYOUT$firstInstance.byteSize();
-
 }

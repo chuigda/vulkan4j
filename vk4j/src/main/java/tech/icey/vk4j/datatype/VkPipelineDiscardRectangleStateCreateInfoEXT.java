@@ -157,5 +157,4 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
     public static final long SIZE$discardRectangleMode = LAYOUT$discardRectangleMode.byteSize();
     public static final long SIZE$discardRectangleCount = LAYOUT$discardRectangleCount.byteSize();
     public static final long SIZE$pDiscardRectangles = LAYOUT$pDiscardRectangles.byteSize();
-
 }

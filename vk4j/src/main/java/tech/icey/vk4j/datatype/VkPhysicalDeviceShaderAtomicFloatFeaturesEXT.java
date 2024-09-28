@@ -245,5 +245,4 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(MemorySegment segment
     public static final long SIZE$shaderImageFloat32AtomicAdd = LAYOUT$shaderImageFloat32AtomicAdd.byteSize();
     public static final long SIZE$sparseImageFloat32Atomics = LAYOUT$sparseImageFloat32Atomics.byteSize();
     public static final long SIZE$sparseImageFloat32AtomicAdd = LAYOUT$sparseImageFloat32AtomicAdd.byteSize();
-
 }

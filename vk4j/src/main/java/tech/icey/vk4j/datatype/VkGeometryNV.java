@@ -119,5 +119,4 @@ public record VkGeometryNV(MemorySegment segment) implements IPointer {
     public static final long SIZE$geometryType = LAYOUT$geometryType.byteSize();
     public static final long SIZE$geometry = LAYOUT$geometry.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
 }

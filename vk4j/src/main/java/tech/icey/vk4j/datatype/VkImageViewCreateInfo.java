@@ -161,5 +161,4 @@ public record VkImageViewCreateInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$format = LAYOUT$format.byteSize();
     public static final long SIZE$components = LAYOUT$components.byteSize();
     public static final long SIZE$subresourceRange = LAYOUT$subresourceRange.byteSize();
-
 }

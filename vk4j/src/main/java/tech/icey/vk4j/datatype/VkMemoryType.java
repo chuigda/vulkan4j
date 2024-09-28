@@ -72,5 +72,4 @@ public record VkMemoryType(MemorySegment segment) implements IPointer {
 
     public static final long SIZE$propertyFlags = LAYOUT$propertyFlags.byteSize();
     public static final long SIZE$heapIndex = LAYOUT$heapIndex.byteSize();
-
 }

@@ -105,5 +105,4 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(MemorySegment se
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$rayTracingMaintenance1 = LAYOUT$rayTracingMaintenance1.byteSize();
     public static final long SIZE$rayTracingPipelineTraceRaysIndirect2 = LAYOUT$rayTracingPipelineTraceRaysIndirect2.byteSize();
-
 }

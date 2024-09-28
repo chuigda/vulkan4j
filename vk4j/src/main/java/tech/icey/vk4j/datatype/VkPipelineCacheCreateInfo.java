@@ -122,5 +122,4 @@ public record VkPipelineCacheCreateInfo(MemorySegment segment) implements IPoint
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$pInitialData = LAYOUT$pInitialData.byteSize();
-
 }

@@ -133,5 +133,4 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(MemorySegment segmen
     public static final long SIZE$maxWeightFilterDimension = LAYOUT$maxWeightFilterDimension.byteSize();
     public static final long SIZE$maxBlockMatchRegion = LAYOUT$maxBlockMatchRegion.byteSize();
     public static final long SIZE$maxBoxFilterBlockSize = LAYOUT$maxBoxFilterBlockSize.byteSize();
-
 }

@@ -91,5 +91,4 @@ public record VkPerformanceQueryReservationInfoKHR(MemorySegment segment) implem
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$maxPerformanceQueriesPerPool = LAYOUT$maxPerformanceQueriesPerPool.byteSize();
-
 }

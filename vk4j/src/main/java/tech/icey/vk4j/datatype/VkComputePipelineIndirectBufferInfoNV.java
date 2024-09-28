@@ -119,5 +119,4 @@ public record VkComputePipelineIndirectBufferInfoNV(MemorySegment segment) imple
     public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
     public static final long SIZE$size = LAYOUT$size.byteSize();
     public static final long SIZE$pipelineDeviceAddressCaptureReplay = LAYOUT$pipelineDeviceAddressCaptureReplay.byteSize();
-
 }

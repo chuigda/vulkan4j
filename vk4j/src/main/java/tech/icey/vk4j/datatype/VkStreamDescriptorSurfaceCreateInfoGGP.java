@@ -105,5 +105,4 @@ public record VkStreamDescriptorSurfaceCreateInfoGGP(MemorySegment segment) impl
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$streamDescriptor = LAYOUT$streamDescriptor.byteSize();
-
 }

@@ -72,5 +72,4 @@ public record VkRect2D(MemorySegment segment) implements IPointer {
 
     public static final long SIZE$offset = LAYOUT$offset.byteSize();
     public static final long SIZE$extent = LAYOUT$extent.byteSize();
-
 }

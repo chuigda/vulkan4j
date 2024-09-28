@@ -114,5 +114,4 @@ public record VkSubresourceLayout(MemorySegment segment) implements IPointer {
     public static final long SIZE$rowPitch = LAYOUT$rowPitch.byteSize();
     public static final long SIZE$arrayPitch = LAYOUT$arrayPitch.byteSize();
     public static final long SIZE$depthPitch = LAYOUT$depthPitch.byteSize();
-
 }

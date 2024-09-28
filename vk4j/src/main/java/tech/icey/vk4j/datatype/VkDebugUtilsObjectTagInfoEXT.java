@@ -149,5 +149,4 @@ public record VkDebugUtilsObjectTagInfoEXT(MemorySegment segment) implements IPo
     public static final long SIZE$objectHandle = LAYOUT$objectHandle.byteSize();
     public static final long SIZE$tagName = LAYOUT$tagName.byteSize();
     public static final long SIZE$pTag = LAYOUT$pTag.byteSize();
-
 }

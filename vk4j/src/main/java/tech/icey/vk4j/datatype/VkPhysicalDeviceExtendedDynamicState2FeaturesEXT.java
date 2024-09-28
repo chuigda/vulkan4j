@@ -119,5 +119,4 @@ public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(MemorySegment seg
     public static final long SIZE$extendedDynamicState2 = LAYOUT$extendedDynamicState2.byteSize();
     public static final long SIZE$extendedDynamicState2LogicOp = LAYOUT$extendedDynamicState2LogicOp.byteSize();
     public static final long SIZE$extendedDynamicState2PatchControlPoints = LAYOUT$extendedDynamicState2PatchControlPoints.byteSize();
-
 }

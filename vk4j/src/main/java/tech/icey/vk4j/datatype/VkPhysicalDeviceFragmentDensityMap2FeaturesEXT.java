@@ -91,5 +91,4 @@ public record VkPhysicalDeviceFragmentDensityMap2FeaturesEXT(MemorySegment segme
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$fragmentDensityMapDeferred = LAYOUT$fragmentDensityMapDeferred.byteSize();
-
 }

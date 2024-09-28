@@ -137,5 +137,4 @@ public record VkPhysicalDeviceGroupProperties(MemorySegment segment) implements 
     public static final long SIZE$physicalDeviceCount = LAYOUT$physicalDeviceCount.byteSize();
     public static final long SIZE$physicalDevices = LAYOUT$physicalDevices.byteSize();
     public static final long SIZE$subsetAllocation = LAYOUT$subsetAllocation.byteSize();
-
 }

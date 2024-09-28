@@ -189,5 +189,4 @@ public record VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) implements IP
     public static final long SIZE$globalAlpha = LAYOUT$globalAlpha.byteSize();
     public static final long SIZE$alphaMode = LAYOUT$alphaMode.byteSize();
     public static final long SIZE$imageExtent = LAYOUT$imageExtent.byteSize();
-
 }

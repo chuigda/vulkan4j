@@ -143,5 +143,4 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
     public static final long SIZE$sampleOrderType = LAYOUT$sampleOrderType.byteSize();
     public static final long SIZE$customSampleOrderCount = LAYOUT$customSampleOrderCount.byteSize();
     public static final long SIZE$pCustomSampleOrders = LAYOUT$pCustomSampleOrders.byteSize();
-
 }

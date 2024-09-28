@@ -147,5 +147,4 @@ public record VkRayTracingShaderGroupCreateInfoNV(MemorySegment segment) impleme
     public static final long SIZE$closestHitShader = LAYOUT$closestHitShader.byteSize();
     public static final long SIZE$anyHitShader = LAYOUT$anyHitShader.byteSize();
     public static final long SIZE$intersectionShader = LAYOUT$intersectionShader.byteSize();
-
 }

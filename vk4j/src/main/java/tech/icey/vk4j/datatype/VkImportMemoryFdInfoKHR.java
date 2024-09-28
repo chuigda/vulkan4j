@@ -105,5 +105,4 @@ public record VkImportMemoryFdInfoKHR(MemorySegment segment) implements IPointer
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
     public static final long SIZE$fd = LAYOUT$fd.byteSize();
-
 }

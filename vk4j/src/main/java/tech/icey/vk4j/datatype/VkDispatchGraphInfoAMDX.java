@@ -100,5 +100,4 @@ public record VkDispatchGraphInfoAMDX(MemorySegment segment) implements IPointer
     public static final long SIZE$payloadCount = LAYOUT$payloadCount.byteSize();
     public static final long SIZE$payloads = LAYOUT$payloads.byteSize();
     public static final long SIZE$payloadStride = LAYOUT$payloadStride.byteSize();
-
 }

@@ -105,5 +105,4 @@ public record VkPhysicalDeviceFaultFeaturesEXT(MemorySegment segment) implements
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$deviceFault = LAYOUT$deviceFault.byteSize();
     public static final long SIZE$deviceFaultVendorBinary = LAYOUT$deviceFaultVendorBinary.byteSize();
-
 }

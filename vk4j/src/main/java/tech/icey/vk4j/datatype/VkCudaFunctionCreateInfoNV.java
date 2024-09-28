@@ -120,5 +120,4 @@ public record VkCudaFunctionCreateInfoNV(MemorySegment segment) implements IPoin
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$module = LAYOUT$module.byteSize();
     public static final long SIZE$pName = LAYOUT$pName.byteSize();
-
 }

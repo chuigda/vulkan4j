@@ -105,5 +105,4 @@ public record VkDescriptorSetBindingReferenceVALVE(MemorySegment segment) implem
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$descriptorSetLayout = LAYOUT$descriptorSetLayout.byteSize();
     public static final long SIZE$binding = LAYOUT$binding.byteSize();
-
 }

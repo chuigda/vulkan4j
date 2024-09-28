@@ -142,5 +142,4 @@ public record VkStencilOpState(MemorySegment segment) implements IPointer {
     public static final long SIZE$compareMask = LAYOUT$compareMask.byteSize();
     public static final long SIZE$writeMask = LAYOUT$writeMask.byteSize();
     public static final long SIZE$reference = LAYOUT$reference.byteSize();
-
 }

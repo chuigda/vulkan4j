@@ -256,5 +256,4 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) impl
     public static final long SIZE$releaseCount = LAYOUT$releaseCount.byteSize();
     public static final long SIZE$pReleaseSyncs = LAYOUT$pReleaseSyncs.byteSize();
     public static final long SIZE$pReleaseKeys = LAYOUT$pReleaseKeys.byteSize();
-
 }

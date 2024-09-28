@@ -62,5 +62,4 @@ public record VkTransformMatrixKHR(MemorySegment segment) implements IPointer {
     public static final long OFFSET$matrix = LAYOUT.byteOffset(PATH$matrix);
 
     public static final long SIZE$matrix = LAYOUT$matrix.byteSize();
-
 }

@@ -105,5 +105,4 @@ public record VkFenceGetSciSyncInfoNV(MemorySegment segment) implements IPointer
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$fence = LAYOUT$fence.byteSize();
     public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
-
 }

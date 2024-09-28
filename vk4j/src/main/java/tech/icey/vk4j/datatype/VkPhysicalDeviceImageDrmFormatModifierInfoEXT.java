@@ -148,5 +148,4 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(MemorySegment segmen
     public static final long SIZE$sharingMode = LAYOUT$sharingMode.byteSize();
     public static final long SIZE$queueFamilyIndexCount = LAYOUT$queueFamilyIndexCount.byteSize();
     public static final long SIZE$pQueueFamilyIndices = LAYOUT$pQueueFamilyIndices.byteSize();
-
 }

@@ -129,5 +129,4 @@ public record VkDrmFormatModifierPropertiesList2EXT(MemorySegment segment) imple
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$drmFormatModifierCount = LAYOUT$drmFormatModifierCount.byteSize();
     public static final long SIZE$pDrmFormatModifierProperties = LAYOUT$pDrmFormatModifierProperties.byteSize();
-
 }

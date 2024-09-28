@@ -128,5 +128,4 @@ public record VkViewport(MemorySegment segment) implements IPointer {
     public static final long SIZE$height = LAYOUT$height.byteSize();
     public static final long SIZE$minDepth = LAYOUT$minDepth.byteSize();
     public static final long SIZE$maxDepth = LAYOUT$maxDepth.byteSize();
-
 }

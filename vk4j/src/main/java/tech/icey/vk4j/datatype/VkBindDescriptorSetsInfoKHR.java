@@ -208,5 +208,4 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) implements IPoi
     public static final long SIZE$pDescriptorSets = LAYOUT$pDescriptorSets.byteSize();
     public static final long SIZE$dynamicOffsetCount = LAYOUT$dynamicOffsetCount.byteSize();
     public static final long SIZE$pDynamicOffsets = LAYOUT$pDynamicOffsets.byteSize();
-
 }

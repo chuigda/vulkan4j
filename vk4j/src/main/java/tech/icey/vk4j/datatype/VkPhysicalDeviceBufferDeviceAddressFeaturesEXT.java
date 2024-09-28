@@ -119,5 +119,4 @@ public record VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(MemorySegment segme
     public static final long SIZE$bufferDeviceAddress = LAYOUT$bufferDeviceAddress.byteSize();
     public static final long SIZE$bufferDeviceAddressCaptureReplay = LAYOUT$bufferDeviceAddressCaptureReplay.byteSize();
     public static final long SIZE$bufferDeviceAddressMultiDevice = LAYOUT$bufferDeviceAddressMultiDevice.byteSize();
-
 }

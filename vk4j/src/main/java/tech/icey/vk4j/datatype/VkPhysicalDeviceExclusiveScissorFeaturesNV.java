@@ -91,5 +91,4 @@ public record VkPhysicalDeviceExclusiveScissorFeaturesNV(MemorySegment segment) 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$exclusiveScissor = LAYOUT$exclusiveScissor.byteSize();
-
 }

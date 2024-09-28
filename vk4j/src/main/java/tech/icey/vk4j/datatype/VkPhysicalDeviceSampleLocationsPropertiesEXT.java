@@ -151,5 +151,4 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment
     public static final long SIZE$sampleLocationCoordinateRange = LAYOUT$sampleLocationCoordinateRange.byteSize();
     public static final long SIZE$sampleLocationSubPixelBits = LAYOUT$sampleLocationSubPixelBits.byteSize();
     public static final long SIZE$variableSampleLocations = LAYOUT$variableSampleLocations.byteSize();
-
 }

@@ -105,5 +105,4 @@ public record VkPhysicalDeviceMaintenance3Properties(MemorySegment segment) impl
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$maxPerSetDescriptors = LAYOUT$maxPerSetDescriptors.byteSize();
     public static final long SIZE$maxMemoryAllocationSize = LAYOUT$maxMemoryAllocationSize.byteSize();
-
 }

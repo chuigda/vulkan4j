@@ -133,5 +133,4 @@ public record VkDeviceAddressBindingCallbackDataEXT(MemorySegment segment) imple
     public static final long SIZE$baseAddress = LAYOUT$baseAddress.byteSize();
     public static final long SIZE$size = LAYOUT$size.byteSize();
     public static final long SIZE$bindingType = LAYOUT$bindingType.byteSize();
-
 }

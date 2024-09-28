@@ -123,5 +123,4 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment s
     public static final long SIZE$shadingRateType = LAYOUT$shadingRateType.byteSize();
     public static final long SIZE$shadingRate = LAYOUT$shadingRate.byteSize();
     public static final long SIZE$combinerOps = LAYOUT$combinerOps.byteSize();
-
 }

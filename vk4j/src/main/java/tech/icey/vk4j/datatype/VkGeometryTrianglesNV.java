@@ -231,5 +231,4 @@ public record VkGeometryTrianglesNV(MemorySegment segment) implements IPointer {
     public static final long SIZE$indexType = LAYOUT$indexType.byteSize();
     public static final long SIZE$transformData = LAYOUT$transformData.byteSize();
     public static final long SIZE$transformOffset = LAYOUT$transformOffset.byteSize();
-
 }

@@ -58,5 +58,4 @@ public record VkBindPipelineIndirectCommandNV(MemorySegment segment) implements 
     public static final long OFFSET$pipelineAddress = LAYOUT.byteOffset(PATH$pipelineAddress);
 
     public static final long SIZE$pipelineAddress = LAYOUT$pipelineAddress.byteSize();
-
 }

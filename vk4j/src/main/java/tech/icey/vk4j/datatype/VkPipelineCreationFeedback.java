@@ -72,5 +72,4 @@ public record VkPipelineCreationFeedback(MemorySegment segment) implements IPoin
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$duration = LAYOUT$duration.byteSize();
-
 }

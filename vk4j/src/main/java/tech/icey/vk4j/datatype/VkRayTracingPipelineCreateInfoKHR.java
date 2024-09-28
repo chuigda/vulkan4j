@@ -365,5 +365,4 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
     public static final long SIZE$layout = LAYOUT$layout.byteSize();
     public static final long SIZE$basePipelineHandle = LAYOUT$basePipelineHandle.byteSize();
     public static final long SIZE$basePipelineIndex = LAYOUT$basePipelineIndex.byteSize();
-
 }

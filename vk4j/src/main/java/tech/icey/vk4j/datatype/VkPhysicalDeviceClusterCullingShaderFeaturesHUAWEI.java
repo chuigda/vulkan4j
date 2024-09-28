@@ -105,5 +105,4 @@ public record VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(MemorySegment s
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$clustercullingShader = LAYOUT$clustercullingShader.byteSize();
     public static final long SIZE$multiviewClusterCullingShader = LAYOUT$multiviewClusterCullingShader.byteSize();
-
 }

@@ -245,5 +245,4 @@ public record VkPhysicalDeviceVulkan11Features(MemorySegment segment) implements
     public static final long SIZE$protectedMemory = LAYOUT$protectedMemory.byteSize();
     public static final long SIZE$samplerYcbcrConversion = LAYOUT$samplerYcbcrConversion.byteSize();
     public static final long SIZE$shaderDrawParameters = LAYOUT$shaderDrawParameters.byteSize();
-
 }

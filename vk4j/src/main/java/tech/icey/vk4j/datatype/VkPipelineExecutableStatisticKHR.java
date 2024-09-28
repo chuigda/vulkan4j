@@ -141,5 +141,4 @@ public record VkPipelineExecutableStatisticKHR(MemorySegment segment) implements
     public static final long SIZE$description = LAYOUT$description.byteSize();
     public static final long SIZE$format = LAYOUT$format.byteSize();
     public static final long SIZE$value = LAYOUT$value.byteSize();
-
 }

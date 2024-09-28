@@ -146,5 +146,4 @@ public record VkShaderStatisticsInfoAMD(MemorySegment segment) implements IPoint
     public static final long SIZE$numAvailableVgprs = LAYOUT$numAvailableVgprs.byteSize();
     public static final long SIZE$numAvailableSgprs = LAYOUT$numAvailableSgprs.byteSize();
     public static final long SIZE$computeWorkGroupSize = LAYOUT$computeWorkGroupSize.byteSize();
-
 }

@@ -105,5 +105,4 @@ public record VkSemaphoreSciSyncCreateInfoNV(MemorySegment segment) implements I
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$semaphorePool = LAYOUT$semaphorePool.byteSize();
     public static final long SIZE$pFence = LAYOUT$pFence.byteSize();
-
 }

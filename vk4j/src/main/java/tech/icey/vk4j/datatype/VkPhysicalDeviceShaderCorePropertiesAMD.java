@@ -273,5 +273,4 @@ public record VkPhysicalDeviceShaderCorePropertiesAMD(MemorySegment segment) imp
     public static final long SIZE$minVgprAllocation = LAYOUT$minVgprAllocation.byteSize();
     public static final long SIZE$maxVgprAllocation = LAYOUT$maxVgprAllocation.byteSize();
     public static final long SIZE$vgprAllocationGranularity = LAYOUT$vgprAllocationGranularity.byteSize();
-
 }

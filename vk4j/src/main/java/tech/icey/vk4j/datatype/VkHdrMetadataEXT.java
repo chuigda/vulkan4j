@@ -189,5 +189,4 @@ public record VkHdrMetadataEXT(MemorySegment segment) implements IPointer {
     public static final long SIZE$minLuminance = LAYOUT$minLuminance.byteSize();
     public static final long SIZE$maxContentLightLevel = LAYOUT$maxContentLightLevel.byteSize();
     public static final long SIZE$maxFrameAverageLightLevel = LAYOUT$maxFrameAverageLightLevel.byteSize();
-
 }

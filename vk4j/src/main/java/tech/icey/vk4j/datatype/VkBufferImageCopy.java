@@ -128,5 +128,4 @@ public record VkBufferImageCopy(MemorySegment segment) implements IPointer {
     public static final long SIZE$imageSubresource = LAYOUT$imageSubresource.byteSize();
     public static final long SIZE$imageOffset = LAYOUT$imageOffset.byteSize();
     public static final long SIZE$imageExtent = LAYOUT$imageExtent.byteSize();
-
 }

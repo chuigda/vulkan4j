@@ -76,5 +76,4 @@ public record VkDeviceOrHostAddressConstKHR(MemorySegment segment) implements IP
 
     public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
     public static final long SIZE$hostAddress = LAYOUT$hostAddress.byteSize();
-
 }

@@ -241,5 +241,4 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
     public static final long SIZE$pBuffers = LAYOUT$pBuffers.byteSize();
     public static final long SIZE$tagName = LAYOUT$tagName.byteSize();
     public static final long SIZE$pTag = LAYOUT$pTag.byteSize();
-
 }

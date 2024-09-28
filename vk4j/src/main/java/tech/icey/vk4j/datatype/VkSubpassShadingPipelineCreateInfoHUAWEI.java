@@ -105,5 +105,4 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(MemorySegment segment) im
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$renderPass = LAYOUT$renderPass.byteSize();
     public static final long SIZE$subpass = LAYOUT$subpass.byteSize();
-
 }

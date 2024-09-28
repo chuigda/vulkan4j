@@ -91,5 +91,4 @@ public record VkPhysicalDeviceShaderFloatControls2FeaturesKHR(MemorySegment segm
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$shaderFloatControls2 = LAYOUT$shaderFloatControls2.byteSize();
-
 }

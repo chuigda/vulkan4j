@@ -133,5 +133,4 @@ public record VkPhysicalDeviceSubgroupProperties(MemorySegment segment) implemen
     public static final long SIZE$supportedStages = LAYOUT$supportedStages.byteSize();
     public static final long SIZE$supportedOperations = LAYOUT$supportedOperations.byteSize();
     public static final long SIZE$quadOperationsInAllStages = LAYOUT$quadOperationsInAllStages.byteSize();
-
 }

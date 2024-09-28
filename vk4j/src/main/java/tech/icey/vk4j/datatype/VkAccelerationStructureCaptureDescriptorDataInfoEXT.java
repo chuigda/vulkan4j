@@ -105,5 +105,4 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(MemorySegment 
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$accelerationStructure = LAYOUT$accelerationStructure.byteSize();
     public static final long SIZE$accelerationStructureNV = LAYOUT$accelerationStructureNV.byteSize();
-
 }

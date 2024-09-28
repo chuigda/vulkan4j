@@ -152,5 +152,4 @@ public record VkAllocationCallbacks(MemorySegment segment) implements IPointer {
     public static final long SIZE$pfnFree = LAYOUT$pfnFree.byteSize();
     public static final long SIZE$pfnInternalAllocation = LAYOUT$pfnInternalAllocation.byteSize();
     public static final long SIZE$pfnInternalFree = LAYOUT$pfnInternalFree.byteSize();
-
 }

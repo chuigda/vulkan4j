@@ -123,5 +123,4 @@ public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) implements I
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$libraryCount = LAYOUT$libraryCount.byteSize();
     public static final long SIZE$pLibraries = LAYOUT$pLibraries.byteSize();
-
 }

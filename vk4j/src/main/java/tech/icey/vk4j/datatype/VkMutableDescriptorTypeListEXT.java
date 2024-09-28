@@ -91,5 +91,4 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) implements I
 
     public static final long SIZE$descriptorTypeCount = LAYOUT$descriptorTypeCount.byteSize();
     public static final long SIZE$pDescriptorTypes = LAYOUT$pDescriptorTypes.byteSize();
-
 }

@@ -240,5 +240,4 @@ public record VkTraceRaysIndirectCommand2KHR(MemorySegment segment) implements I
     public static final long SIZE$width = LAYOUT$width.byteSize();
     public static final long SIZE$height = LAYOUT$height.byteSize();
     public static final long SIZE$depth = LAYOUT$depth.byteSize();
-
 }

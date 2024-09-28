@@ -72,5 +72,4 @@ public record VkDrawMeshTasksIndirectCommandNV(MemorySegment segment) implements
 
     public static final long SIZE$taskCount = LAYOUT$taskCount.byteSize();
     public static final long SIZE$firstTask = LAYOUT$firstTask.byteSize();
-
 }

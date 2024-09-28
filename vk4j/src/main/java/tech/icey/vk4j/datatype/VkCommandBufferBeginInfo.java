@@ -129,5 +129,4 @@ public record VkCommandBufferBeginInfo(MemorySegment segment) implements IPointe
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$pInheritanceInfo = LAYOUT$pInheritanceInfo.byteSize();
-
 }

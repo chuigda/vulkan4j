@@ -119,5 +119,4 @@ public record VkDisplayPresentInfoKHR(MemorySegment segment) implements IPointer
     public static final long SIZE$srcRect = LAYOUT$srcRect.byteSize();
     public static final long SIZE$dstRect = LAYOUT$dstRect.byteSize();
     public static final long SIZE$persistent = LAYOUT$persistent.byteSize();
-
 }

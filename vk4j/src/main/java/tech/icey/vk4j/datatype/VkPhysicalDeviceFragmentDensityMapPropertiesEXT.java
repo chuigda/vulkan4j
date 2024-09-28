@@ -119,5 +119,4 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(MemorySegment segm
     public static final long SIZE$minFragmentDensityTexelSize = LAYOUT$minFragmentDensityTexelSize.byteSize();
     public static final long SIZE$maxFragmentDensityTexelSize = LAYOUT$maxFragmentDensityTexelSize.byteSize();
     public static final long SIZE$fragmentDensityInvocations = LAYOUT$fragmentDensityInvocations.byteSize();
-
 }

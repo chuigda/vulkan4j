@@ -119,5 +119,4 @@ public record VkPhysicalDeviceVulkanMemoryModelFeatures(MemorySegment segment) i
     public static final long SIZE$vulkanMemoryModel = LAYOUT$vulkanMemoryModel.byteSize();
     public static final long SIZE$vulkanMemoryModelDeviceScope = LAYOUT$vulkanMemoryModelDeviceScope.byteSize();
     public static final long SIZE$vulkanMemoryModelAvailabilityVisibilityChains = LAYOUT$vulkanMemoryModelAvailabilityVisibilityChains.byteSize();
-
 }

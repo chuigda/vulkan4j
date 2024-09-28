@@ -109,5 +109,4 @@ public record VkImportMemoryHostPointerInfoEXT(MemorySegment segment) implements
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
     public static final long SIZE$pHostPointer = LAYOUT$pHostPointer.byteSize();
-
 }

@@ -200,5 +200,4 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) implem
     public static final long SIZE$pTokens = LAYOUT$pTokens.byteSize();
     public static final long SIZE$streamCount = LAYOUT$streamCount.byteSize();
     public static final long SIZE$pStreamStrides = LAYOUT$pStreamStrides.byteSize();
-
 }

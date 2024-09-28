@@ -105,5 +105,4 @@ public record VkAccelerationStructureCreateInfoNV(MemorySegment segment) impleme
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$compactedSize = LAYOUT$compactedSize.byteSize();
     public static final long SIZE$info = LAYOUT$info.byteSize();
-
 }

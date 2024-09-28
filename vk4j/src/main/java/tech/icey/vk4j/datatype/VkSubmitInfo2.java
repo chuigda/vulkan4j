@@ -247,5 +247,4 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
     public static final long SIZE$pCommandBufferInfos = LAYOUT$pCommandBufferInfos.byteSize();
     public static final long SIZE$signalSemaphoreInfoCount = LAYOUT$signalSemaphoreInfoCount.byteSize();
     public static final long SIZE$pSignalSemaphoreInfos = LAYOUT$pSignalSemaphoreInfos.byteSize();
-
 }

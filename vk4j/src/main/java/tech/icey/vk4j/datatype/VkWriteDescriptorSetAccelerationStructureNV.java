@@ -123,5 +123,4 @@ public record VkWriteDescriptorSetAccelerationStructureNV(MemorySegment segment)
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$accelerationStructureCount = LAYOUT$accelerationStructureCount.byteSize();
     public static final long SIZE$pAccelerationStructures = LAYOUT$pAccelerationStructures.byteSize();
-
 }

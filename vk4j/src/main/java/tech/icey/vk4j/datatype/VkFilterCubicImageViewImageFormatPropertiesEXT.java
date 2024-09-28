@@ -105,5 +105,4 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(MemorySegment segme
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$filterCubic = LAYOUT$filterCubic.byteSize();
     public static final long SIZE$filterCubicMinmax = LAYOUT$filterCubicMinmax.byteSize();
-
 }

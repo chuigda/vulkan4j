@@ -157,5 +157,4 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) implements IP
     public static final long SIZE$pFormatConstraints = LAYOUT$pFormatConstraints.byteSize();
     public static final long SIZE$bufferCollectionConstraints = LAYOUT$bufferCollectionConstraints.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
 }

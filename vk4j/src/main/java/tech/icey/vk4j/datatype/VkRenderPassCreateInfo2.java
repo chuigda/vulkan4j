@@ -290,5 +290,4 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) implements IPointer
     public static final long SIZE$pDependencies = LAYOUT$pDependencies.byteSize();
     public static final long SIZE$correlatedViewMaskCount = LAYOUT$correlatedViewMaskCount.byteSize();
     public static final long SIZE$pCorrelatedViewMasks = LAYOUT$pCorrelatedViewMasks.byteSize();
-
 }

@@ -129,5 +129,4 @@ public record VkGetLatencyMarkerInfoNV(MemorySegment segment) implements IPointe
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$timingCount = LAYOUT$timingCount.byteSize();
     public static final long SIZE$pTimings = LAYOUT$pTimings.byteSize();
-
 }

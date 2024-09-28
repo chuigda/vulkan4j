@@ -133,5 +133,4 @@ public record VkSemaphoreSubmitInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$value = LAYOUT$value.byteSize();
     public static final long SIZE$stageMask = LAYOUT$stageMask.byteSize();
     public static final long SIZE$deviceIndex = LAYOUT$deviceIndex.byteSize();
-
 }

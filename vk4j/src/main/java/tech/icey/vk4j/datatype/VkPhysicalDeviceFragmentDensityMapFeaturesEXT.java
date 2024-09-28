@@ -119,5 +119,4 @@ public record VkPhysicalDeviceFragmentDensityMapFeaturesEXT(MemorySegment segmen
     public static final long SIZE$fragmentDensityMap = LAYOUT$fragmentDensityMap.byteSize();
     public static final long SIZE$fragmentDensityMapDynamic = LAYOUT$fragmentDensityMapDynamic.byteSize();
     public static final long SIZE$fragmentDensityMapNonSubsampledImages = LAYOUT$fragmentDensityMapNonSubsampledImages.byteSize();
-
 }

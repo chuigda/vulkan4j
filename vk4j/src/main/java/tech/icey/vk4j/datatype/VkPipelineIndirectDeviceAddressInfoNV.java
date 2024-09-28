@@ -105,5 +105,4 @@ public record VkPipelineIndirectDeviceAddressInfoNV(MemorySegment segment) imple
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$pipelineBindPoint = LAYOUT$pipelineBindPoint.byteSize();
     public static final long SIZE$pipeline = LAYOUT$pipeline.byteSize();
-
 }

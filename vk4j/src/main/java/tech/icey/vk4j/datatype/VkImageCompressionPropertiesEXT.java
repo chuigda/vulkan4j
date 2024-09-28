@@ -105,5 +105,4 @@ public record VkImageCompressionPropertiesEXT(MemorySegment segment) implements 
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$imageCompressionFlags = LAYOUT$imageCompressionFlags.byteSize();
     public static final long SIZE$imageCompressionFixedRateFlags = LAYOUT$imageCompressionFixedRateFlags.byteSize();
-
 }

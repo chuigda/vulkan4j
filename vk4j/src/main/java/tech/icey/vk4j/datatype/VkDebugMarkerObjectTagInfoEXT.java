@@ -149,5 +149,4 @@ public record VkDebugMarkerObjectTagInfoEXT(MemorySegment segment) implements IP
     public static final long SIZE$object = LAYOUT$object.byteSize();
     public static final long SIZE$tagName = LAYOUT$tagName.byteSize();
     public static final long SIZE$pTag = LAYOUT$pTag.byteSize();
-
 }

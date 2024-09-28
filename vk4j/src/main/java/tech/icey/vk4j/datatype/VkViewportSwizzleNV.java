@@ -100,5 +100,4 @@ public record VkViewportSwizzleNV(MemorySegment segment) implements IPointer {
     public static final long SIZE$y = LAYOUT$y.byteSize();
     public static final long SIZE$z = LAYOUT$z.byteSize();
     public static final long SIZE$w = LAYOUT$w.byteSize();
-
 }

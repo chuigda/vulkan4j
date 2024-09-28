@@ -86,5 +86,4 @@ public record VkInputAttachmentAspectReference(MemorySegment segment) implements
     public static final long SIZE$subpass = LAYOUT$subpass.byteSize();
     public static final long SIZE$inputAttachmentIndex = LAYOUT$inputAttachmentIndex.byteSize();
     public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
-
 }

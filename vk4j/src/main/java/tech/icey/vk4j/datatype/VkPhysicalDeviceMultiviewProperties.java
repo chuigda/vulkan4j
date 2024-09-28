@@ -105,5 +105,4 @@ public record VkPhysicalDeviceMultiviewProperties(MemorySegment segment) impleme
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$maxMultiviewViewCount = LAYOUT$maxMultiviewViewCount.byteSize();
     public static final long SIZE$maxMultiviewInstanceIndex = LAYOUT$maxMultiviewInstanceIndex.byteSize();
-
 }

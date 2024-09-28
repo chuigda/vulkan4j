@@ -123,5 +123,4 @@ public record VkImportFenceSciSyncInfoNV(MemorySegment segment) implements IPoin
     public static final long SIZE$fence = LAYOUT$fence.byteSize();
     public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
     public static final long SIZE$handle = LAYOUT$handle.byteSize();
-
 }

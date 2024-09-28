@@ -91,5 +91,4 @@ public record VkDeviceQueueShaderCoreControlCreateInfoARM(MemorySegment segment)
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$shaderCoreCount = LAYOUT$shaderCoreCount.byteSize();
-
 }

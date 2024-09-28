@@ -109,5 +109,4 @@ public record VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) impleme
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$presentMask = LAYOUT$presentMask.byteSize();
     public static final long SIZE$modes = LAYOUT$modes.byteSize();
-
 }

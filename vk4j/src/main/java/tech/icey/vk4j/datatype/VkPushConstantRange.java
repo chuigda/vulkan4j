@@ -86,5 +86,4 @@ public record VkPushConstantRange(MemorySegment segment) implements IPointer {
     public static final long SIZE$stageFlags = LAYOUT$stageFlags.byteSize();
     public static final long SIZE$offset = LAYOUT$offset.byteSize();
     public static final long SIZE$size = LAYOUT$size.byteSize();
-
 }

@@ -105,5 +105,4 @@ public record VkDisplayPlaneInfo2KHR(MemorySegment segment) implements IPointer 
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$mode = LAYOUT$mode.byteSize();
     public static final long SIZE$planeIndex = LAYOUT$planeIndex.byteSize();
-
 }

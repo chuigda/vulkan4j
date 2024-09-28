@@ -58,5 +58,4 @@ public record VkRenderPassCreationFeedbackInfoEXT(MemorySegment segment) impleme
     public static final long OFFSET$postMergeSubpassCount = LAYOUT.byteOffset(PATH$postMergeSubpassCount);
 
     public static final long SIZE$postMergeSubpassCount = LAYOUT$postMergeSubpassCount.byteSize();
-
 }

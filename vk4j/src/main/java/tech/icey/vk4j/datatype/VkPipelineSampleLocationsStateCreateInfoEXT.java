@@ -105,5 +105,4 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(MemorySegment segment)
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$sampleLocationsEnable = LAYOUT$sampleLocationsEnable.byteSize();
     public static final long SIZE$sampleLocationsInfo = LAYOUT$sampleLocationsInfo.byteSize();
-
 }

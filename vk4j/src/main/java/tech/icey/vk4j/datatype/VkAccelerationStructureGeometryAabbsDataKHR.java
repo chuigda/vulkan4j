@@ -105,5 +105,4 @@ public record VkAccelerationStructureGeometryAabbsDataKHR(MemorySegment segment)
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$data = LAYOUT$data.byteSize();
     public static final long SIZE$stride = LAYOUT$stride.byteSize();
-
 }

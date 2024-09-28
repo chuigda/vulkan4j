@@ -72,5 +72,4 @@ public record VkDisplayModeParametersKHR(MemorySegment segment) implements IPoin
 
     public static final long SIZE$visibleRegion = LAYOUT$visibleRegion.byteSize();
     public static final long SIZE$refreshRate = LAYOUT$refreshRate.byteSize();
-
 }

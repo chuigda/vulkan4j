@@ -133,5 +133,4 @@ public record VkPhysicalDevicePipelineRobustnessPropertiesEXT(MemorySegment segm
     public static final long SIZE$defaultRobustnessUniformBuffers = LAYOUT$defaultRobustnessUniformBuffers.byteSize();
     public static final long SIZE$defaultRobustnessVertexInputs = LAYOUT$defaultRobustnessVertexInputs.byteSize();
     public static final long SIZE$defaultRobustnessImages = LAYOUT$defaultRobustnessImages.byteSize();
-
 }

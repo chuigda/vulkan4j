@@ -119,5 +119,4 @@ public record VkPhysicalDeviceMultiviewFeatures(MemorySegment segment) implement
     public static final long SIZE$multiview = LAYOUT$multiview.byteSize();
     public static final long SIZE$multiviewGeometryShader = LAYOUT$multiviewGeometryShader.byteSize();
     public static final long SIZE$multiviewTessellationShader = LAYOUT$multiviewTessellationShader.byteSize();
-
 }

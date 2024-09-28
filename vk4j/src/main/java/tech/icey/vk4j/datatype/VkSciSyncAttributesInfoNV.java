@@ -105,5 +105,4 @@ public record VkSciSyncAttributesInfoNV(MemorySegment segment) implements IPoint
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$clientType = LAYOUT$clientType.byteSize();
     public static final long SIZE$primitiveType = LAYOUT$primitiveType.byteSize();
-
 }

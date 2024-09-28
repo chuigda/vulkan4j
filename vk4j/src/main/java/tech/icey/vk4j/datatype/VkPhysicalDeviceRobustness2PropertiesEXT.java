@@ -105,5 +105,4 @@ public record VkPhysicalDeviceRobustness2PropertiesEXT(MemorySegment segment) im
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$robustStorageBufferAccessSizeAlignment = LAYOUT$robustStorageBufferAccessSizeAlignment.byteSize();
     public static final long SIZE$robustUniformBufferAccessSizeAlignment = LAYOUT$robustUniformBufferAccessSizeAlignment.byteSize();
-
 }

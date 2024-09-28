@@ -217,5 +217,4 @@ public record VkImageMemoryBarrier2(MemorySegment segment) implements IPointer {
     public static final long SIZE$dstQueueFamilyIndex = LAYOUT$dstQueueFamilyIndex.byteSize();
     public static final long SIZE$image = LAYOUT$image.byteSize();
     public static final long SIZE$subresourceRange = LAYOUT$subresourceRange.byteSize();
-
 }

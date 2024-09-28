@@ -105,5 +105,4 @@ public record VkDisplayModeCreateInfoKHR(MemorySegment segment) implements IPoin
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$parameters = LAYOUT$parameters.byteSize();
-
 }

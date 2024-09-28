@@ -105,5 +105,4 @@ public record VkPhysicalDeviceOpacityMicromapPropertiesEXT(MemorySegment segment
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$maxOpacity2StateSubdivisionLevel = LAYOUT$maxOpacity2StateSubdivisionLevel.byteSize();
     public static final long SIZE$maxOpacity4StateSubdivisionLevel = LAYOUT$maxOpacity4StateSubdivisionLevel.byteSize();
-
 }

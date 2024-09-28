@@ -134,5 +134,4 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) implements I
     public static final long SIZE$binaryCount = LAYOUT$binaryCount.byteSize();
     public static final long SIZE$pPipelineBinaryKeys = LAYOUT$pPipelineBinaryKeys.byteSize();
     public static final long SIZE$pPipelineBinaryData = LAYOUT$pPipelineBinaryData.byteSize();
-
 }

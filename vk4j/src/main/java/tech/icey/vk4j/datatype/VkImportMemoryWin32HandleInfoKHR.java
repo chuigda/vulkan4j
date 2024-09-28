@@ -138,5 +138,4 @@ public record VkImportMemoryWin32HandleInfoKHR(MemorySegment segment) implements
     public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
     public static final long SIZE$handle = LAYOUT$handle.byteSize();
     public static final long SIZE$name = LAYOUT$name.byteSize();
-
 }

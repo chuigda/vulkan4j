@@ -119,5 +119,4 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(MemorySegment segment) 
     public static final long SIZE$memoryMapPlaced = LAYOUT$memoryMapPlaced.byteSize();
     public static final long SIZE$memoryMapRangePlaced = LAYOUT$memoryMapRangePlaced.byteSize();
     public static final long SIZE$memoryUnmapReserve = LAYOUT$memoryUnmapReserve.byteSize();
-
 }

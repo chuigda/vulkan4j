@@ -143,5 +143,4 @@ public record VkDirectDriverLoadingListLUNARG(MemorySegment segment) implements 
     public static final long SIZE$mode = LAYOUT$mode.byteSize();
     public static final long SIZE$driverCount = LAYOUT$driverCount.byteSize();
     public static final long SIZE$pDrivers = LAYOUT$pDrivers.byteSize();
-
 }

@@ -133,5 +133,4 @@ public record VkMemoryBarrier2(MemorySegment segment) implements IPointer {
     public static final long SIZE$srcAccessMask = LAYOUT$srcAccessMask.byteSize();
     public static final long SIZE$dstStageMask = LAYOUT$dstStageMask.byteSize();
     public static final long SIZE$dstAccessMask = LAYOUT$dstAccessMask.byteSize();
-
 }

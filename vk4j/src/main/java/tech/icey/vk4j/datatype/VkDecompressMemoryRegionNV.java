@@ -114,5 +114,4 @@ public record VkDecompressMemoryRegionNV(MemorySegment segment) implements IPoin
     public static final long SIZE$compressedSize = LAYOUT$compressedSize.byteSize();
     public static final long SIZE$decompressedSize = LAYOUT$decompressedSize.byteSize();
     public static final long SIZE$decompressionMethod = LAYOUT$decompressionMethod.byteSize();
-
 }

@@ -86,5 +86,4 @@ public record VkDrawMeshTasksIndirectCommandEXT(MemorySegment segment) implement
     public static final long SIZE$groupCountX = LAYOUT$groupCountX.byteSize();
     public static final long SIZE$groupCountY = LAYOUT$groupCountY.byteSize();
     public static final long SIZE$groupCountZ = LAYOUT$groupCountZ.byteSize();
-
 }

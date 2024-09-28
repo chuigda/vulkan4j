@@ -189,5 +189,4 @@ public record VkRenderingAttachmentInfo(MemorySegment segment) implements IPoint
     public static final long SIZE$loadOp = LAYOUT$loadOp.byteSize();
     public static final long SIZE$storeOp = LAYOUT$storeOp.byteSize();
     public static final long SIZE$clearValue = LAYOUT$clearValue.byteSize();
-
 }

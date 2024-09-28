@@ -123,5 +123,4 @@ public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) implements 
     public static final long SIZE$semaphore = LAYOUT$semaphore.byteSize();
     public static final long SIZE$event = LAYOUT$event.byteSize();
     public static final long SIZE$mtlSharedEvent = LAYOUT$mtlSharedEvent.byteSize();
-
 }

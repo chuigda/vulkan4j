@@ -119,5 +119,4 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(MemorySeg
     public static final long SIZE$deviceGeneratedCompute = LAYOUT$deviceGeneratedCompute.byteSize();
     public static final long SIZE$deviceGeneratedComputePipelines = LAYOUT$deviceGeneratedComputePipelines.byteSize();
     public static final long SIZE$deviceGeneratedComputeCaptureReplay = LAYOUT$deviceGeneratedComputeCaptureReplay.byteSize();
-
 }

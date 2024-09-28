@@ -105,5 +105,4 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(MemorySegment segment) 
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$image2DViewOf3D = LAYOUT$image2DViewOf3D.byteSize();
     public static final long SIZE$sampler2DViewOf3D = LAYOUT$sampler2DViewOf3D.byteSize();
-
 }

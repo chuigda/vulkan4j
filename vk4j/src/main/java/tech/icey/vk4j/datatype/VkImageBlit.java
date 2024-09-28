@@ -144,5 +144,4 @@ public record VkImageBlit(MemorySegment segment) implements IPointer {
     public static final long SIZE$srcOffsets = LAYOUT$srcOffsets.byteSize();
     public static final long SIZE$dstSubresource = LAYOUT$dstSubresource.byteSize();
     public static final long SIZE$dstOffsets = LAYOUT$dstOffsets.byteSize();
-
 }

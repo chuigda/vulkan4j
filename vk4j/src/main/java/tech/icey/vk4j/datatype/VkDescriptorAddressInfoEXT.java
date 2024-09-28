@@ -119,5 +119,4 @@ public record VkDescriptorAddressInfoEXT(MemorySegment segment) implements IPoin
     public static final long SIZE$address = LAYOUT$address.byteSize();
     public static final long SIZE$range = LAYOUT$range.byteSize();
     public static final long SIZE$format = LAYOUT$format.byteSize();
-
 }

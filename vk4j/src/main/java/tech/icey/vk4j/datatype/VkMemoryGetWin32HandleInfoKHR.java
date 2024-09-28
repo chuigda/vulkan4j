@@ -105,5 +105,4 @@ public record VkMemoryGetWin32HandleInfoKHR(MemorySegment segment) implements IP
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$memory = LAYOUT$memory.byteSize();
     public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
-
 }

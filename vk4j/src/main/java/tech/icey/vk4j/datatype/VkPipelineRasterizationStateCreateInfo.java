@@ -231,5 +231,4 @@ public record VkPipelineRasterizationStateCreateInfo(MemorySegment segment) impl
     public static final long SIZE$depthBiasClamp = LAYOUT$depthBiasClamp.byteSize();
     public static final long SIZE$depthBiasSlopeFactor = LAYOUT$depthBiasSlopeFactor.byteSize();
     public static final long SIZE$lineWidth = LAYOUT$lineWidth.byteSize();
-
 }

@@ -86,5 +86,4 @@ public record VkCopyMemoryIndirectCommandNV(MemorySegment segment) implements IP
     public static final long SIZE$srcAddress = LAYOUT$srcAddress.byteSize();
     public static final long SIZE$dstAddress = LAYOUT$dstAddress.byteSize();
     public static final long SIZE$size = LAYOUT$size.byteSize();
-
 }

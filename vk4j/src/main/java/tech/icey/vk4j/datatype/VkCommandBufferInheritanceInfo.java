@@ -161,5 +161,4 @@ public record VkCommandBufferInheritanceInfo(MemorySegment segment) implements I
     public static final long SIZE$occlusionQueryEnable = LAYOUT$occlusionQueryEnable.byteSize();
     public static final long SIZE$queryFlags = LAYOUT$queryFlags.byteSize();
     public static final long SIZE$pipelineStatistics = LAYOUT$pipelineStatistics.byteSize();
-
 }

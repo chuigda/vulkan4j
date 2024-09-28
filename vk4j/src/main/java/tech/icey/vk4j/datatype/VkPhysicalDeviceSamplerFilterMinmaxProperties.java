@@ -105,5 +105,4 @@ public record VkPhysicalDeviceSamplerFilterMinmaxProperties(MemorySegment segmen
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$filterMinmaxSingleComponentFormats = LAYOUT$filterMinmaxSingleComponentFormats.byteSize();
     public static final long SIZE$filterMinmaxImageComponentMapping = LAYOUT$filterMinmaxImageComponentMapping.byteSize();
-
 }

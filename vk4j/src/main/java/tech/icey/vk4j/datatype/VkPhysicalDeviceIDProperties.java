@@ -159,5 +159,4 @@ public record VkPhysicalDeviceIDProperties(MemorySegment segment) implements IPo
     public static final long SIZE$deviceLUID = LAYOUT$deviceLUID.byteSize();
     public static final long SIZE$deviceNodeMask = LAYOUT$deviceNodeMask.byteSize();
     public static final long SIZE$deviceLUIDValid = LAYOUT$deviceLUIDValid.byteSize();
-
 }

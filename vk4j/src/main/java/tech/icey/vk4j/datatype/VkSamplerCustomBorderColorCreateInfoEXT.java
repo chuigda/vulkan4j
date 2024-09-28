@@ -105,5 +105,4 @@ public record VkSamplerCustomBorderColorCreateInfoEXT(MemorySegment segment) imp
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$customBorderColor = LAYOUT$customBorderColor.byteSize();
     public static final long SIZE$format = LAYOUT$format.byteSize();
-
 }

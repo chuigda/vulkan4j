@@ -91,5 +91,4 @@ public record VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(MemorySegment seg
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$swapchainMaintenance1 = LAYOUT$swapchainMaintenance1.byteSize();
-
 }

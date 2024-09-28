@@ -105,5 +105,4 @@ public record VkPhysicalDeviceTransformFeedbackFeaturesEXT(MemorySegment segment
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$transformFeedback = LAYOUT$transformFeedback.byteSize();
     public static final long SIZE$geometryStreams = LAYOUT$geometryStreams.byteSize();
-
 }

@@ -206,5 +206,4 @@ public record VkDeviceGroupSubmitInfo(MemorySegment segment) implements IPointer
     public static final long SIZE$pCommandBufferDeviceMasks = LAYOUT$pCommandBufferDeviceMasks.byteSize();
     public static final long SIZE$signalSemaphoreCount = LAYOUT$signalSemaphoreCount.byteSize();
     public static final long SIZE$pSignalSemaphoreDeviceIndices = LAYOUT$pSignalSemaphoreDeviceIndices.byteSize();
-
 }

@@ -203,5 +203,4 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
     public static final long SIZE$pCopyDstLayouts = LAYOUT$pCopyDstLayouts.byteSize();
     public static final long SIZE$optimalTilingLayoutUUID = LAYOUT$optimalTilingLayoutUUID.byteSize();
     public static final long SIZE$identicalMemoryTypeRequirements = LAYOUT$identicalMemoryTypeRequirements.byteSize();
-
 }

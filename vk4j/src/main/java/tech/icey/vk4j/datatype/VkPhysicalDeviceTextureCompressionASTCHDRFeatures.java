@@ -91,5 +91,4 @@ public record VkPhysicalDeviceTextureCompressionASTCHDRFeatures(MemorySegment se
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$textureCompressionASTC_HDR = LAYOUT$textureCompressionASTC_HDR.byteSize();
-
 }

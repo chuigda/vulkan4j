@@ -86,5 +86,4 @@ public record VkDrmFormatModifierProperties2EXT(MemorySegment segment) implement
     public static final long SIZE$drmFormatModifier = LAYOUT$drmFormatModifier.byteSize();
     public static final long SIZE$drmFormatModifierPlaneCount = LAYOUT$drmFormatModifierPlaneCount.byteSize();
     public static final long SIZE$drmFormatModifierTilingFeatures = LAYOUT$drmFormatModifierTilingFeatures.byteSize();
-
 }

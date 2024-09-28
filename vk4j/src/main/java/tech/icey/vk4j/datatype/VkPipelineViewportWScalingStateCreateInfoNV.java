@@ -143,5 +143,4 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment)
     public static final long SIZE$viewportWScalingEnable = LAYOUT$viewportWScalingEnable.byteSize();
     public static final long SIZE$viewportCount = LAYOUT$viewportCount.byteSize();
     public static final long SIZE$pViewportWScalings = LAYOUT$pViewportWScalings.byteSize();
-
 }

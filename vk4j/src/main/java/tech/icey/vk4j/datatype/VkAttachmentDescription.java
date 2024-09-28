@@ -170,5 +170,4 @@ public record VkAttachmentDescription(MemorySegment segment) implements IPointer
     public static final long SIZE$stencilStoreOp = LAYOUT$stencilStoreOp.byteSize();
     public static final long SIZE$initialLayout = LAYOUT$initialLayout.byteSize();
     public static final long SIZE$finalLayout = LAYOUT$finalLayout.byteSize();
-
 }

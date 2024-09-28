@@ -138,5 +138,4 @@ public record VkPipelineDynamicStateCreateInfo(MemorySegment segment) implements
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$dynamicStateCount = LAYOUT$dynamicStateCount.byteSize();
     public static final long SIZE$pDynamicStates = LAYOUT$pDynamicStates.byteSize();
-
 }

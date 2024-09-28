@@ -119,5 +119,4 @@ public record VkAccelerationStructureBuildSizesInfoKHR(MemorySegment segment) im
     public static final long SIZE$accelerationStructureSize = LAYOUT$accelerationStructureSize.byteSize();
     public static final long SIZE$updateScratchSize = LAYOUT$updateScratchSize.byteSize();
     public static final long SIZE$buildScratchSize = LAYOUT$buildScratchSize.byteSize();
-
 }

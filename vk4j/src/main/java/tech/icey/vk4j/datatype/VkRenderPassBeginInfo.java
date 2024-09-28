@@ -171,5 +171,4 @@ public record VkRenderPassBeginInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$renderArea = LAYOUT$renderArea.byteSize();
     public static final long SIZE$clearValueCount = LAYOUT$clearValueCount.byteSize();
     public static final long SIZE$pClearValues = LAYOUT$pClearValues.byteSize();
-
 }

@@ -91,5 +91,4 @@ public record VkMultisamplePropertiesEXT(MemorySegment segment) implements IPoin
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$maxSampleLocationGridSize = LAYOUT$maxSampleLocationGridSize.byteSize();
-
 }

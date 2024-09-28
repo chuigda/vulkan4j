@@ -189,5 +189,4 @@ public record VkCooperativeMatrixPropertiesNV(MemorySegment segment) implements 
     public static final long SIZE$CType = LAYOUT$CType.byteSize();
     public static final long SIZE$DType = LAYOUT$DType.byteSize();
     public static final long SIZE$scope = LAYOUT$scope.byteSize();
-
 }

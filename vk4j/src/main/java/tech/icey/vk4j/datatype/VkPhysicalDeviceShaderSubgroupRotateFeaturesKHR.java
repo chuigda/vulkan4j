@@ -105,5 +105,4 @@ public record VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(MemorySegment segm
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$shaderSubgroupRotate = LAYOUT$shaderSubgroupRotate.byteSize();
     public static final long SIZE$shaderSubgroupRotateClustered = LAYOUT$shaderSubgroupRotateClustered.byteSize();
-
 }

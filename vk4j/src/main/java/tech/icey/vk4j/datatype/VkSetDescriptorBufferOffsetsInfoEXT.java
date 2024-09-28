@@ -191,5 +191,4 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) impleme
     public static final long SIZE$setCount = LAYOUT$setCount.byteSize();
     public static final long SIZE$pBufferIndices = LAYOUT$pBufferIndices.byteSize();
     public static final long SIZE$pOffsets = LAYOUT$pOffsets.byteSize();
-
 }

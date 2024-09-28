@@ -90,5 +90,4 @@ public record VkRenderPassSubpassFeedbackInfoEXT(MemorySegment segment) implemen
     public static final long SIZE$subpassMergeStatus = LAYOUT$subpassMergeStatus.byteSize();
     public static final long SIZE$description = LAYOUT$description.byteSize();
     public static final long SIZE$postMergeIndex = LAYOUT$postMergeIndex.byteSize();
-
 }

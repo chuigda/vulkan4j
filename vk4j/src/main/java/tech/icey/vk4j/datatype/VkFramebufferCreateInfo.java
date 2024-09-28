@@ -193,5 +193,4 @@ public record VkFramebufferCreateInfo(MemorySegment segment) implements IPointer
     public static final long SIZE$width = LAYOUT$width.byteSize();
     public static final long SIZE$height = LAYOUT$height.byteSize();
     public static final long SIZE$layers = LAYOUT$layers.byteSize();
-
 }

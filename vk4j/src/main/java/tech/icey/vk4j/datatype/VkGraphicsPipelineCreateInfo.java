@@ -556,5 +556,4 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
     public static final long SIZE$subpass = LAYOUT$subpass.byteSize();
     public static final long SIZE$basePipelineHandle = LAYOUT$basePipelineHandle.byteSize();
     public static final long SIZE$basePipelineIndex = LAYOUT$basePipelineIndex.byteSize();
-
 }

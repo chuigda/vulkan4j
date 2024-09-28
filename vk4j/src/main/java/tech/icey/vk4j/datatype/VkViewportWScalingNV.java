@@ -72,5 +72,4 @@ public record VkViewportWScalingNV(MemorySegment segment) implements IPointer {
 
     public static final long SIZE$xcoeff = LAYOUT$xcoeff.byteSize();
     public static final long SIZE$ycoeff = LAYOUT$ycoeff.byteSize();
-
 }

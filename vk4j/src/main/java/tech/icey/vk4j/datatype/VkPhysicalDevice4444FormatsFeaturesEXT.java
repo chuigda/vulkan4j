@@ -105,5 +105,4 @@ public record VkPhysicalDevice4444FormatsFeaturesEXT(MemorySegment segment) impl
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$formatA4R4G4B4 = LAYOUT$formatA4R4G4B4.byteSize();
     public static final long SIZE$formatA4B4G4R4 = LAYOUT$formatA4B4G4R4.byteSize();
-
 }

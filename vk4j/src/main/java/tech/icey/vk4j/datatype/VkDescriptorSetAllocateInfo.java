@@ -137,5 +137,4 @@ public record VkDescriptorSetAllocateInfo(MemorySegment segment) implements IPoi
     public static final long SIZE$descriptorPool = LAYOUT$descriptorPool.byteSize();
     public static final long SIZE$descriptorSetCount = LAYOUT$descriptorSetCount.byteSize();
     public static final long SIZE$pSetLayouts = LAYOUT$pSetLayouts.byteSize();
-
 }

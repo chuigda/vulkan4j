@@ -119,5 +119,4 @@ public record VkBindBufferMemoryInfo(MemorySegment segment) implements IPointer 
     public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
     public static final long SIZE$memory = LAYOUT$memory.byteSize();
     public static final long SIZE$memoryOffset = LAYOUT$memoryOffset.byteSize();
-
 }

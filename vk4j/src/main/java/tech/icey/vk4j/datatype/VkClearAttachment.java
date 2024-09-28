@@ -86,5 +86,4 @@ public record VkClearAttachment(MemorySegment segment) implements IPointer {
     public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
     public static final long SIZE$colorAttachment = LAYOUT$colorAttachment.byteSize();
     public static final long SIZE$clearValue = LAYOUT$clearValue.byteSize();
-
 }

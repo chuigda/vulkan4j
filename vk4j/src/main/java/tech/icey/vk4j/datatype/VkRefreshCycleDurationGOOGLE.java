@@ -58,5 +58,4 @@ public record VkRefreshCycleDurationGOOGLE(MemorySegment segment) implements IPo
     public static final long OFFSET$refreshDuration = LAYOUT.byteOffset(PATH$refreshDuration);
 
     public static final long SIZE$refreshDuration = LAYOUT$refreshDuration.byteSize();
-
 }

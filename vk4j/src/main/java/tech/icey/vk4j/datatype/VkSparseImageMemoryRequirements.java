@@ -114,5 +114,4 @@ public record VkSparseImageMemoryRequirements(MemorySegment segment) implements 
     public static final long SIZE$imageMipTailSize = LAYOUT$imageMipTailSize.byteSize();
     public static final long SIZE$imageMipTailOffset = LAYOUT$imageMipTailOffset.byteSize();
     public static final long SIZE$imageMipTailStride = LAYOUT$imageMipTailStride.byteSize();
-
 }

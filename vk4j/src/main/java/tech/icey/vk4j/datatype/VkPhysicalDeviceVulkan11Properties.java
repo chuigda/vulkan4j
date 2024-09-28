@@ -299,5 +299,4 @@ public record VkPhysicalDeviceVulkan11Properties(MemorySegment segment) implemen
     public static final long SIZE$protectedNoFault = LAYOUT$protectedNoFault.byteSize();
     public static final long SIZE$maxPerSetDescriptors = LAYOUT$maxPerSetDescriptors.byteSize();
     public static final long SIZE$maxMemoryAllocationSize = LAYOUT$maxMemoryAllocationSize.byteSize();
-
 }

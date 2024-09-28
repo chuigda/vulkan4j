@@ -58,5 +58,4 @@ public record VkBindShaderGroupIndirectCommandNV(MemorySegment segment) implemen
     public static final long OFFSET$groupIndex = LAYOUT.byteOffset(PATH$groupIndex);
 
     public static final long SIZE$groupIndex = LAYOUT$groupIndex.byteSize();
-
 }

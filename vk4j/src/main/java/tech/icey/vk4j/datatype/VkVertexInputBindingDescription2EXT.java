@@ -133,5 +133,4 @@ public record VkVertexInputBindingDescription2EXT(MemorySegment segment) impleme
     public static final long SIZE$stride = LAYOUT$stride.byteSize();
     public static final long SIZE$inputRate = LAYOUT$inputRate.byteSize();
     public static final long SIZE$divisor = LAYOUT$divisor.byteSize();
-
 }

@@ -105,5 +105,4 @@ public record VkPipelineExecutableInfoKHR(MemorySegment segment) implements IPoi
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$pipeline = LAYOUT$pipeline.byteSize();
     public static final long SIZE$executableIndex = LAYOUT$executableIndex.byteSize();
-
 }

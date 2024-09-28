@@ -147,5 +147,4 @@ public record VkPhysicalDeviceMeshShaderFeaturesEXT(MemorySegment segment) imple
     public static final long SIZE$multiviewMeshShader = LAYOUT$multiviewMeshShader.byteSize();
     public static final long SIZE$primitiveFragmentShadingRateMeshShader = LAYOUT$primitiveFragmentShadingRateMeshShader.byteSize();
     public static final long SIZE$meshShaderQueries = LAYOUT$meshShaderQueries.byteSize();
-
 }

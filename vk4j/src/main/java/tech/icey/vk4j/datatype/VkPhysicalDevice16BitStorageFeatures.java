@@ -133,5 +133,4 @@ public record VkPhysicalDevice16BitStorageFeatures(MemorySegment segment) implem
     public static final long SIZE$uniformAndStorageBuffer16BitAccess = LAYOUT$uniformAndStorageBuffer16BitAccess.byteSize();
     public static final long SIZE$storagePushConstant16 = LAYOUT$storagePushConstant16.byteSize();
     public static final long SIZE$storageInputOutput16 = LAYOUT$storageInputOutput16.byteSize();
-
 }

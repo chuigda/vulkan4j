@@ -127,5 +127,4 @@ public record VkWin32SurfaceCreateInfoKHR(MemorySegment segment) implements IPoi
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$hinstance = LAYOUT$hinstance.byteSize();
     public static final long SIZE$hwnd = LAYOUT$hwnd.byteSize();
-
 }

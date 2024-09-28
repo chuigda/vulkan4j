@@ -72,5 +72,4 @@ public record VkAttachmentSampleLocationsEXT(MemorySegment segment) implements I
 
     public static final long SIZE$attachmentIndex = LAYOUT$attachmentIndex.byteSize();
     public static final long SIZE$sampleLocationsInfo = LAYOUT$sampleLocationsInfo.byteSize();
-
 }

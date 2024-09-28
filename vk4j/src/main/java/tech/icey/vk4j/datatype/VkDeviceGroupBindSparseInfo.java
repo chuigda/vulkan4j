@@ -105,5 +105,4 @@ public record VkDeviceGroupBindSparseInfo(MemorySegment segment) implements IPoi
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$resourceDeviceIndex = LAYOUT$resourceDeviceIndex.byteSize();
     public static final long SIZE$memoryDeviceIndex = LAYOUT$memoryDeviceIndex.byteSize();
-
 }

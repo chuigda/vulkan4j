@@ -129,5 +129,4 @@ public record VkRefreshObjectListKHR(MemorySegment segment) implements IPointer 
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$objectCount = LAYOUT$objectCount.byteSize();
     public static final long SIZE$pObjects = LAYOUT$pObjects.byteSize();
-
 }

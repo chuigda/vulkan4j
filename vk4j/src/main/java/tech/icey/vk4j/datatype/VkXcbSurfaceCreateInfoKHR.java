@@ -123,5 +123,4 @@ public record VkXcbSurfaceCreateInfoKHR(MemorySegment segment) implements IPoint
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$connection = LAYOUT$connection.byteSize();
     public static final long SIZE$window = LAYOUT$window.byteSize();
-
 }

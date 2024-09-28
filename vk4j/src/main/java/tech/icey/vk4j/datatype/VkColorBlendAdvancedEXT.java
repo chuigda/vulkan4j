@@ -114,5 +114,4 @@ public record VkColorBlendAdvancedEXT(MemorySegment segment) implements IPointer
     public static final long SIZE$dstPremultiplied = LAYOUT$dstPremultiplied.byteSize();
     public static final long SIZE$blendOverlap = LAYOUT$blendOverlap.byteSize();
     public static final long SIZE$clampResults = LAYOUT$clampResults.byteSize();
-
 }

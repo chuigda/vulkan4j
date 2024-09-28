@@ -109,5 +109,4 @@ public record VkShaderModuleIdentifierEXT(MemorySegment segment) implements IPoi
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$identifierSize = LAYOUT$identifierSize.byteSize();
     public static final long SIZE$identifier = LAYOUT$identifier.byteSize();
-
 }

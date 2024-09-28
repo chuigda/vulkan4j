@@ -105,5 +105,4 @@ public record VkAcquireProfilingLockInfoKHR(MemorySegment segment) implements IP
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$timeout = LAYOUT$timeout.byteSize();
-
 }

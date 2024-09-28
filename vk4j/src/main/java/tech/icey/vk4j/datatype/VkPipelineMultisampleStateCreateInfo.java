@@ -190,5 +190,4 @@ public record VkPipelineMultisampleStateCreateInfo(MemorySegment segment) implem
     public static final long SIZE$pSampleMask = LAYOUT$pSampleMask.byteSize();
     public static final long SIZE$alphaToCoverageEnable = LAYOUT$alphaToCoverageEnable.byteSize();
     public static final long SIZE$alphaToOneEnable = LAYOUT$alphaToOneEnable.byteSize();
-
 }

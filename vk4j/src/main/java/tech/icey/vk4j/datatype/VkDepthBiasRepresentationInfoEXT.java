@@ -105,5 +105,4 @@ public record VkDepthBiasRepresentationInfoEXT(MemorySegment segment) implements
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$depthBiasRepresentation = LAYOUT$depthBiasRepresentation.byteSize();
     public static final long SIZE$depthBiasExact = LAYOUT$depthBiasExact.byteSize();
-
 }

@@ -86,5 +86,4 @@ public record VkVertexInputBindingDescription(MemorySegment segment) implements 
     public static final long SIZE$binding = LAYOUT$binding.byteSize();
     public static final long SIZE$stride = LAYOUT$stride.byteSize();
     public static final long SIZE$inputRate = LAYOUT$inputRate.byteSize();
-
 }

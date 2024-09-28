@@ -133,5 +133,4 @@ public record VkImportSemaphoreFdInfoKHR(MemorySegment segment) implements IPoin
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
     public static final long SIZE$fd = LAYOUT$fd.byteSize();
-
 }

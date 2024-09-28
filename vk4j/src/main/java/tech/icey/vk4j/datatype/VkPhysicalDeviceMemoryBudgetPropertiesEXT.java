@@ -113,5 +113,4 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) i
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$heapBudget = LAYOUT$heapBudget.byteSize();
     public static final long SIZE$heapUsage = LAYOUT$heapUsage.byteSize();
-
 }

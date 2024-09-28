@@ -119,5 +119,4 @@ public record VkPhysicalDeviceShaderCorePropertiesARM(MemorySegment segment) imp
     public static final long SIZE$pixelRate = LAYOUT$pixelRate.byteSize();
     public static final long SIZE$texelRate = LAYOUT$texelRate.byteSize();
     public static final long SIZE$fmaRate = LAYOUT$fmaRate.byteSize();
-
 }

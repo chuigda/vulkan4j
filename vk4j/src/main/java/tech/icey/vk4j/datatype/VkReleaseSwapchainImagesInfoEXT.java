@@ -134,5 +134,4 @@ public record VkReleaseSwapchainImagesInfoEXT(MemorySegment segment) implements 
     public static final long SIZE$swapchain = LAYOUT$swapchain.byteSize();
     public static final long SIZE$imageIndexCount = LAYOUT$imageIndexCount.byteSize();
     public static final long SIZE$pImageIndices = LAYOUT$pImageIndices.byteSize();
-
 }

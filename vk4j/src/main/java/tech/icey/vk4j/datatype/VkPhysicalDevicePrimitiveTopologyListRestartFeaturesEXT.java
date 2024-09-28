@@ -105,5 +105,4 @@ public record VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(MemorySegm
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$primitiveTopologyListRestart = LAYOUT$primitiveTopologyListRestart.byteSize();
     public static final long SIZE$primitiveTopologyPatchListRestart = LAYOUT$primitiveTopologyPatchListRestart.byteSize();
-
 }

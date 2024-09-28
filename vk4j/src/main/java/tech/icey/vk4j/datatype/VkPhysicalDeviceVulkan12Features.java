@@ -735,5 +735,4 @@ public record VkPhysicalDeviceVulkan12Features(MemorySegment segment) implements
     public static final long SIZE$shaderOutputViewportIndex = LAYOUT$shaderOutputViewportIndex.byteSize();
     public static final long SIZE$shaderOutputLayer = LAYOUT$shaderOutputLayer.byteSize();
     public static final long SIZE$subgroupBroadcastDynamicId = LAYOUT$subgroupBroadcastDynamicId.byteSize();
-
 }

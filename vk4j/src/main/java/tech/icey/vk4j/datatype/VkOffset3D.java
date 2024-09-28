@@ -86,5 +86,4 @@ public record VkOffset3D(MemorySegment segment) implements IPointer {
     public static final long SIZE$x = LAYOUT$x.byteSize();
     public static final long SIZE$y = LAYOUT$y.byteSize();
     public static final long SIZE$z = LAYOUT$z.byteSize();
-
 }

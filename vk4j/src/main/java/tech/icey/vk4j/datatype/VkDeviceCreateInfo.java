@@ -263,5 +263,4 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$enabledExtensionCount = LAYOUT$enabledExtensionCount.byteSize();
     public static final long SIZE$ppEnabledExtensionNames = LAYOUT$ppEnabledExtensionNames.byteSize();
     public static final long SIZE$pEnabledFeatures = LAYOUT$pEnabledFeatures.byteSize();
-
 }

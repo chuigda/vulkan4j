@@ -124,5 +124,4 @@ public record VkSurfacePresentModeCompatibilityEXT(MemorySegment segment) implem
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$presentModeCount = LAYOUT$presentModeCount.byteSize();
     public static final long SIZE$pPresentModes = LAYOUT$pPresentModes.byteSize();
-
 }

@@ -147,5 +147,4 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) implements IPoint
     public static final long SIZE$semaphore = LAYOUT$semaphore.byteSize();
     public static final long SIZE$fence = LAYOUT$fence.byteSize();
     public static final long SIZE$deviceMask = LAYOUT$deviceMask.byteSize();
-
 }

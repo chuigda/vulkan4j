@@ -143,5 +143,4 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
     public static final long SIZE$viewportScissor2D = LAYOUT$viewportScissor2D.byteSize();
     public static final long SIZE$viewportDepthCount = LAYOUT$viewportDepthCount.byteSize();
     public static final long SIZE$pViewportDepths = LAYOUT$pViewportDepths.byteSize();
-
 }

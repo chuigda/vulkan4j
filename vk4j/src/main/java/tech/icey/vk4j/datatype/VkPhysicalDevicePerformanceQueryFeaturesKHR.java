@@ -105,5 +105,4 @@ public record VkPhysicalDevicePerformanceQueryFeaturesKHR(MemorySegment segment)
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$performanceCounterQueryPools = LAYOUT$performanceCounterQueryPools.byteSize();
     public static final long SIZE$performanceCounterMultipleQueryPools = LAYOUT$performanceCounterMultipleQueryPools.byteSize();
-
 }

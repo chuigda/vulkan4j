@@ -119,5 +119,4 @@ public record VkDepthBiasInfoEXT(MemorySegment segment) implements IPointer {
     public static final long SIZE$depthBiasConstantFactor = LAYOUT$depthBiasConstantFactor.byteSize();
     public static final long SIZE$depthBiasClamp = LAYOUT$depthBiasClamp.byteSize();
     public static final long SIZE$depthBiasSlopeFactor = LAYOUT$depthBiasSlopeFactor.byteSize();
-
 }

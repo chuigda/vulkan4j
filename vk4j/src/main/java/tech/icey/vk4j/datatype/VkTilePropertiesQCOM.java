@@ -119,5 +119,4 @@ public record VkTilePropertiesQCOM(MemorySegment segment) implements IPointer {
     public static final long SIZE$tileSize = LAYOUT$tileSize.byteSize();
     public static final long SIZE$apronSize = LAYOUT$apronSize.byteSize();
     public static final long SIZE$origin = LAYOUT$origin.byteSize();
-
 }

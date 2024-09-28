@@ -105,5 +105,4 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(MemorySegment segment
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$customBorderColors = LAYOUT$customBorderColors.byteSize();
     public static final long SIZE$customBorderColorWithoutFormat = LAYOUT$customBorderColorWithoutFormat.byteSize();
-
 }

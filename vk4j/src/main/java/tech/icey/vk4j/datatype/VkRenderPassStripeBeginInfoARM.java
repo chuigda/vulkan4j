@@ -129,5 +129,4 @@ public record VkRenderPassStripeBeginInfoARM(MemorySegment segment) implements I
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$stripeInfoCount = LAYOUT$stripeInfoCount.byteSize();
     public static final long SIZE$pStripeInfos = LAYOUT$pStripeInfos.byteSize();
-
 }

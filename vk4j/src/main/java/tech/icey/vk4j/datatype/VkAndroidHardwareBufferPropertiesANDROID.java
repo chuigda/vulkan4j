@@ -105,5 +105,4 @@ public record VkAndroidHardwareBufferPropertiesANDROID(MemorySegment segment) im
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$allocationSize = LAYOUT$allocationSize.byteSize();
     public static final long SIZE$memoryTypeBits = LAYOUT$memoryTypeBits.byteSize();
-
 }

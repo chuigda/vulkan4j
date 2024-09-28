@@ -91,5 +91,4 @@ public record VkShadingRatePaletteNV(MemorySegment segment) implements IPointer 
 
     public static final long SIZE$shadingRatePaletteEntryCount = LAYOUT$shadingRatePaletteEntryCount.byteSize();
     public static final long SIZE$pShadingRatePaletteEntries = LAYOUT$pShadingRatePaletteEntries.byteSize();
-
 }

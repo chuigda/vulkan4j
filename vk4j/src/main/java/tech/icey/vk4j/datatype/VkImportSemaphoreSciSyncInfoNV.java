@@ -123,5 +123,4 @@ public record VkImportSemaphoreSciSyncInfoNV(MemorySegment segment) implements I
     public static final long SIZE$semaphore = LAYOUT$semaphore.byteSize();
     public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
     public static final long SIZE$handle = LAYOUT$handle.byteSize();
-
 }

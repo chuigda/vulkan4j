@@ -128,5 +128,4 @@ public record VkColorBlendEquationEXT(MemorySegment segment) implements IPointer
     public static final long SIZE$srcAlphaBlendFactor = LAYOUT$srcAlphaBlendFactor.byteSize();
     public static final long SIZE$dstAlphaBlendFactor = LAYOUT$dstAlphaBlendFactor.byteSize();
     public static final long SIZE$alphaBlendOp = LAYOUT$alphaBlendOp.byteSize();
-
 }

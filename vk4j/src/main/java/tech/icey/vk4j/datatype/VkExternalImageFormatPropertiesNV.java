@@ -100,5 +100,4 @@ public record VkExternalImageFormatPropertiesNV(MemorySegment segment) implement
     public static final long SIZE$externalMemoryFeatures = LAYOUT$externalMemoryFeatures.byteSize();
     public static final long SIZE$exportFromImportedHandleTypes = LAYOUT$exportFromImportedHandleTypes.byteSize();
     public static final long SIZE$compatibleHandleTypes = LAYOUT$compatibleHandleTypes.byteSize();
-
 }

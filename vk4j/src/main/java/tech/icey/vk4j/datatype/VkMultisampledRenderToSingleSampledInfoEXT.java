@@ -105,5 +105,4 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(MemorySegment segment) 
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$multisampledRenderToSingleSampledEnable = LAYOUT$multisampledRenderToSingleSampledEnable.byteSize();
     public static final long SIZE$rasterizationSamples = LAYOUT$rasterizationSamples.byteSize();
-
 }

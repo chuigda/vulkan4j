@@ -124,5 +124,4 @@ public record VkCoarseSampleOrderCustomNV(MemorySegment segment) implements IPoi
     public static final long SIZE$sampleCount = LAYOUT$sampleCount.byteSize();
     public static final long SIZE$sampleLocationCount = LAYOUT$sampleLocationCount.byteSize();
     public static final long SIZE$pSampleLocations = LAYOUT$pSampleLocations.byteSize();
-
 }

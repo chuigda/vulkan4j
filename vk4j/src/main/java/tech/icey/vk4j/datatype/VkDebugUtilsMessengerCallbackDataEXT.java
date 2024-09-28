@@ -319,5 +319,4 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
     public static final long SIZE$pCmdBufLabels = LAYOUT$pCmdBufLabels.byteSize();
     public static final long SIZE$objectCount = LAYOUT$objectCount.byteSize();
     public static final long SIZE$pObjects = LAYOUT$pObjects.byteSize();
-
 }

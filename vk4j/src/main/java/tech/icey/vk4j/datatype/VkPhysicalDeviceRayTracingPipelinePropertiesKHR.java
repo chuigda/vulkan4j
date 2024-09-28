@@ -189,5 +189,4 @@ public record VkPhysicalDeviceRayTracingPipelinePropertiesKHR(MemorySegment segm
     public static final long SIZE$maxRayDispatchInvocationCount = LAYOUT$maxRayDispatchInvocationCount.byteSize();
     public static final long SIZE$shaderGroupHandleAlignment = LAYOUT$shaderGroupHandleAlignment.byteSize();
     public static final long SIZE$maxRayHitAttributeSize = LAYOUT$maxRayHitAttributeSize.byteSize();
-
 }

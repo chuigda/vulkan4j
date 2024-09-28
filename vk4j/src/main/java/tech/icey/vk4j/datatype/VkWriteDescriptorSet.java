@@ -255,5 +255,4 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
     public static final long SIZE$pImageInfo = LAYOUT$pImageInfo.byteSize();
     public static final long SIZE$pBufferInfo = LAYOUT$pBufferInfo.byteSize();
     public static final long SIZE$pTexelBufferView = LAYOUT$pTexelBufferView.byteSize();
-
 }

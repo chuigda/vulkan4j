@@ -185,5 +185,4 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) impleme
     public static final long SIZE$sysmemPixelFormat = LAYOUT$sysmemPixelFormat.byteSize();
     public static final long SIZE$colorSpaceCount = LAYOUT$colorSpaceCount.byteSize();
     public static final long SIZE$pColorSpaces = LAYOUT$pColorSpaces.byteSize();
-
 }

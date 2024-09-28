@@ -105,5 +105,4 @@ public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(MemorySegment segme
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$sciBufImport = LAYOUT$sciBufImport.byteSize();
     public static final long SIZE$sciBufExport = LAYOUT$sciBufExport.byteSize();
-
 }

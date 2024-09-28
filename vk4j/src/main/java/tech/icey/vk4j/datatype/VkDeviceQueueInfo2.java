@@ -119,5 +119,4 @@ public record VkDeviceQueueInfo2(MemorySegment segment) implements IPointer {
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$queueFamilyIndex = LAYOUT$queueFamilyIndex.byteSize();
     public static final long SIZE$queueIndex = LAYOUT$queueIndex.byteSize();
-
 }

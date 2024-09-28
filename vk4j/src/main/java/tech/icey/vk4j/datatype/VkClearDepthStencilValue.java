@@ -72,5 +72,4 @@ public record VkClearDepthStencilValue(MemorySegment segment) implements IPointe
 
     public static final long SIZE$depth = LAYOUT$depth.byteSize();
     public static final long SIZE$stencil = LAYOUT$stencil.byteSize();
-
 }

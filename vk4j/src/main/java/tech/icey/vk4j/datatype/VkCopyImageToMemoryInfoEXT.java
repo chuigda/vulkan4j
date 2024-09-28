@@ -171,5 +171,4 @@ public record VkCopyImageToMemoryInfoEXT(MemorySegment segment) implements IPoin
     public static final long SIZE$srcImageLayout = LAYOUT$srcImageLayout.byteSize();
     public static final long SIZE$regionCount = LAYOUT$regionCount.byteSize();
     public static final long SIZE$pRegions = LAYOUT$pRegions.byteSize();
-
 }

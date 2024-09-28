@@ -109,5 +109,4 @@ public record VkImportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$plane = LAYOUT$plane.byteSize();
     public static final long SIZE$mtlTexture = LAYOUT$mtlTexture.byteSize();
-
 }

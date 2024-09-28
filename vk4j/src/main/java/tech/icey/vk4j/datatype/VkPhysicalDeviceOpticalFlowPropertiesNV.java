@@ -231,5 +231,4 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(MemorySegment segment) imp
     public static final long SIZE$maxWidth = LAYOUT$maxWidth.byteSize();
     public static final long SIZE$maxHeight = LAYOUT$maxHeight.byteSize();
     public static final long SIZE$maxNumRegionsOfInterest = LAYOUT$maxNumRegionsOfInterest.byteSize();
-
 }

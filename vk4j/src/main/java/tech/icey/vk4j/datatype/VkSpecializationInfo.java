@@ -126,5 +126,4 @@ public record VkSpecializationInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$mapEntryCount = LAYOUT$mapEntryCount.byteSize();
     public static final long SIZE$pMapEntries = LAYOUT$pMapEntries.byteSize();
     public static final long SIZE$pData = LAYOUT$pData.byteSize();
-
 }

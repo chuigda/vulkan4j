@@ -187,5 +187,4 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) implements 
     public static final long SIZE$module = LAYOUT$module.byteSize();
     public static final long SIZE$pName = LAYOUT$pName.byteSize();
     public static final long SIZE$pSpecializationInfo = LAYOUT$pSpecializationInfo.byteSize();
-
 }

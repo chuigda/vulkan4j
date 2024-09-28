@@ -189,5 +189,4 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) impleme
     public static final long SIZE$attachmentCount = LAYOUT$attachmentCount.byteSize();
     public static final long SIZE$pAttachments = LAYOUT$pAttachments.byteSize();
     public static final long SIZE$blendConstants = LAYOUT$blendConstants.byteSize();
-
 }

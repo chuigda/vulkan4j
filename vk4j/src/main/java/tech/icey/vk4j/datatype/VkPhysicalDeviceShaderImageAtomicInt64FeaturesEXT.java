@@ -105,5 +105,4 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(MemorySegment se
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$shaderImageInt64Atomics = LAYOUT$shaderImageInt64Atomics.byteSize();
     public static final long SIZE$sparseImageInt64Atomics = LAYOUT$sparseImageInt64Atomics.byteSize();
-
 }

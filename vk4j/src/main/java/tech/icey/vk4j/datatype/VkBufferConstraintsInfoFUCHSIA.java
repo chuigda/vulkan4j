@@ -119,5 +119,4 @@ public record VkBufferConstraintsInfoFUCHSIA(MemorySegment segment) implements I
     public static final long SIZE$createInfo = LAYOUT$createInfo.byteSize();
     public static final long SIZE$requiredFormatFeatures = LAYOUT$requiredFormatFeatures.byteSize();
     public static final long SIZE$bufferCollectionConstraints = LAYOUT$bufferCollectionConstraints.byteSize();
-
 }

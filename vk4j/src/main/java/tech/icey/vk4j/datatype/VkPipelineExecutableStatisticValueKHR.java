@@ -100,5 +100,4 @@ public record VkPipelineExecutableStatisticValueKHR(MemorySegment segment) imple
     public static final long SIZE$i64 = LAYOUT$i64.byteSize();
     public static final long SIZE$u64 = LAYOUT$u64.byteSize();
     public static final long SIZE$f64 = LAYOUT$f64.byteSize();
-
 }

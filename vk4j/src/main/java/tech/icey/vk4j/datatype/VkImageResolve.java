@@ -114,5 +114,4 @@ public record VkImageResolve(MemorySegment segment) implements IPointer {
     public static final long SIZE$dstSubresource = LAYOUT$dstSubresource.byteSize();
     public static final long SIZE$dstOffset = LAYOUT$dstOffset.byteSize();
     public static final long SIZE$extent = LAYOUT$extent.byteSize();
-
 }

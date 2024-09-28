@@ -119,5 +119,4 @@ public record VkPhysicalDeviceExternalBufferInfo(MemorySegment segment) implemen
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$usage = LAYOUT$usage.byteSize();
     public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
-
 }

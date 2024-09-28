@@ -105,5 +105,4 @@ public record VkPhysicalDeviceInlineUniformBlockFeatures(MemorySegment segment) 
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$inlineUniformBlock = LAYOUT$inlineUniformBlock.byteSize();
     public static final long SIZE$descriptorBindingInlineUniformBlockUpdateAfterBind = LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind.byteSize();
-
 }

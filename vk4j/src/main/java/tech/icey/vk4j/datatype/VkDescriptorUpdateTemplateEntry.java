@@ -124,5 +124,4 @@ public record VkDescriptorUpdateTemplateEntry(MemorySegment segment) implements 
     public static final long SIZE$dstArrayElement = LAYOUT$dstArrayElement.byteSize();
     public static final long SIZE$descriptorCount = LAYOUT$descriptorCount.byteSize();
     public static final long SIZE$descriptorType = LAYOUT$descriptorType.byteSize();
-
 }

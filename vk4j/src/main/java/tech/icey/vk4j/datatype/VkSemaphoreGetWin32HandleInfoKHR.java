@@ -105,5 +105,4 @@ public record VkSemaphoreGetWin32HandleInfoKHR(MemorySegment segment) implements
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$semaphore = LAYOUT$semaphore.byteSize();
     public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
-
 }

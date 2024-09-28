@@ -138,5 +138,4 @@ public record VkImageCompressionControlEXT(MemorySegment segment) implements IPo
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$compressionControlPlaneCount = LAYOUT$compressionControlPlaneCount.byteSize();
     public static final long SIZE$pFixedRateFlags = LAYOUT$pFixedRateFlags.byteSize();
-
 }

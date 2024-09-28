@@ -109,5 +109,4 @@ public record VkQueueFamilyGlobalPriorityPropertiesKHR(MemorySegment segment) im
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$priorityCount = LAYOUT$priorityCount.byteSize();
     public static final long SIZE$priorities = LAYOUT$priorities.byteSize();
-
 }

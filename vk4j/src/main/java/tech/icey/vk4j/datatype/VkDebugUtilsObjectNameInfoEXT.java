@@ -134,5 +134,4 @@ public record VkDebugUtilsObjectNameInfoEXT(MemorySegment segment) implements IP
     public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
     public static final long SIZE$objectHandle = LAYOUT$objectHandle.byteSize();
     public static final long SIZE$pObjectName = LAYOUT$pObjectName.byteSize();
-
 }

@@ -162,5 +162,4 @@ public record VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) imp
     public static final long SIZE$memoryOffset = LAYOUT$memoryOffset.byteSize();
     public static final long SIZE$deviceIndexCount = LAYOUT$deviceIndexCount.byteSize();
     public static final long SIZE$pDeviceIndices = LAYOUT$pDeviceIndices.byteSize();
-
 }

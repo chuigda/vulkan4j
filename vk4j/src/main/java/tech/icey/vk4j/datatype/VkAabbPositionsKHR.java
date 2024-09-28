@@ -128,5 +128,4 @@ public record VkAabbPositionsKHR(MemorySegment segment) implements IPointer {
     public static final long SIZE$maxX = LAYOUT$maxX.byteSize();
     public static final long SIZE$maxY = LAYOUT$maxY.byteSize();
     public static final long SIZE$maxZ = LAYOUT$maxZ.byteSize();
-
 }

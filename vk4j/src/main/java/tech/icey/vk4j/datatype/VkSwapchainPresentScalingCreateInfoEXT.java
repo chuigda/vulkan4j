@@ -119,5 +119,4 @@ public record VkSwapchainPresentScalingCreateInfoEXT(MemorySegment segment) impl
     public static final long SIZE$scalingBehavior = LAYOUT$scalingBehavior.byteSize();
     public static final long SIZE$presentGravityX = LAYOUT$presentGravityX.byteSize();
     public static final long SIZE$presentGravityY = LAYOUT$presentGravityY.byteSize();
-
 }

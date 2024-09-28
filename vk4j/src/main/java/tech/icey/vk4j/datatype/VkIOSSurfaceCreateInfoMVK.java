@@ -109,5 +109,4 @@ public record VkIOSSurfaceCreateInfoMVK(MemorySegment segment) implements IPoint
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$pView = LAYOUT$pView.byteSize();
-
 }

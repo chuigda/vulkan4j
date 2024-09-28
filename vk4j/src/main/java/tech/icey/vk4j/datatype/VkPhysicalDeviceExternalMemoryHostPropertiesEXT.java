@@ -91,5 +91,4 @@ public record VkPhysicalDeviceExternalMemoryHostPropertiesEXT(MemorySegment segm
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$minImportedHostPointerAlignment = LAYOUT$minImportedHostPointerAlignment.byteSize();
-
 }

@@ -143,5 +143,4 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$viewportCount = LAYOUT$viewportCount.byteSize();
     public static final long SIZE$pViewportSwizzles = LAYOUT$pViewportSwizzles.byteSize();
-
 }

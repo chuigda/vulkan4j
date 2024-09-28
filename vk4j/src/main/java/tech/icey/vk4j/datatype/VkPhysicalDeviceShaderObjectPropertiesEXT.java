@@ -109,5 +109,4 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(MemorySegment segment) i
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$shaderBinaryUUID = LAYOUT$shaderBinaryUUID.byteSize();
     public static final long SIZE$shaderBinaryVersion = LAYOUT$shaderBinaryVersion.byteSize();
-
 }

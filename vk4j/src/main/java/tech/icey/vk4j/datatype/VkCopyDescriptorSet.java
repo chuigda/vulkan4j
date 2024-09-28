@@ -175,5 +175,4 @@ public record VkCopyDescriptorSet(MemorySegment segment) implements IPointer {
     public static final long SIZE$dstBinding = LAYOUT$dstBinding.byteSize();
     public static final long SIZE$dstArrayElement = LAYOUT$dstArrayElement.byteSize();
     public static final long SIZE$descriptorCount = LAYOUT$descriptorCount.byteSize();
-
 }

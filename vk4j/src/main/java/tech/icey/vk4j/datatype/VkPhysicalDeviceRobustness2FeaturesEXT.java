@@ -119,5 +119,4 @@ public record VkPhysicalDeviceRobustness2FeaturesEXT(MemorySegment segment) impl
     public static final long SIZE$robustBufferAccess2 = LAYOUT$robustBufferAccess2.byteSize();
     public static final long SIZE$robustImageAccess2 = LAYOUT$robustImageAccess2.byteSize();
     public static final long SIZE$nullDescriptor = LAYOUT$nullDescriptor.byteSize();
-
 }

@@ -105,5 +105,4 @@ public record VkMultiviewPerViewAttributesInfoNVX(MemorySegment segment) impleme
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$perViewAttributes = LAYOUT$perViewAttributes.byteSize();
     public static final long SIZE$perViewAttributesPositionXOnly = LAYOUT$perViewAttributesPositionXOnly.byteSize();
-
 }

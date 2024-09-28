@@ -141,5 +141,4 @@ public record VkPipelineExecutablePropertiesKHR(MemorySegment segment) implement
     public static final long SIZE$name = LAYOUT$name.byteSize();
     public static final long SIZE$description = LAYOUT$description.byteSize();
     public static final long SIZE$subgroupSize = LAYOUT$subgroupSize.byteSize();
-
 }

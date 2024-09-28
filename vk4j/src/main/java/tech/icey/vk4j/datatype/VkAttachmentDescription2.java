@@ -203,5 +203,4 @@ public record VkAttachmentDescription2(MemorySegment segment) implements IPointe
     public static final long SIZE$stencilStoreOp = LAYOUT$stencilStoreOp.byteSize();
     public static final long SIZE$initialLayout = LAYOUT$initialLayout.byteSize();
     public static final long SIZE$finalLayout = LAYOUT$finalLayout.byteSize();
-
 }

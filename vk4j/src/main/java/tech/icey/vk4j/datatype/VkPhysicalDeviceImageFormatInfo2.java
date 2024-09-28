@@ -147,5 +147,4 @@ public record VkPhysicalDeviceImageFormatInfo2(MemorySegment segment) implements
     public static final long SIZE$tiling = LAYOUT$tiling.byteSize();
     public static final long SIZE$usage = LAYOUT$usage.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
 }

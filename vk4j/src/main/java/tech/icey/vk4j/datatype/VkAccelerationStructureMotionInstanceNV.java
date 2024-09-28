@@ -86,5 +86,4 @@ public record VkAccelerationStructureMotionInstanceNV(MemorySegment segment) imp
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$data = LAYOUT$data.byteSize();
-
 }

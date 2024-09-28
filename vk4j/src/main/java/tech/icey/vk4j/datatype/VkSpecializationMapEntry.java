@@ -84,5 +84,4 @@ public record VkSpecializationMapEntry(MemorySegment segment) implements IPointe
 
     public static final long SIZE$constantID = LAYOUT$constantID.byteSize();
     public static final long SIZE$offset = LAYOUT$offset.byteSize();
-
 }

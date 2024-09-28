@@ -91,5 +91,4 @@ public record VkPhysicalDeviceRenderPassStripedFeaturesARM(MemorySegment segment
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$renderPassStriped = LAYOUT$renderPassStriped.byteSize();
-
 }

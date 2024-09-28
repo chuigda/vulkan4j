@@ -119,5 +119,4 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(MemorySegment segme
     public static final long SIZE$srcPremultiplied = LAYOUT$srcPremultiplied.byteSize();
     public static final long SIZE$dstPremultiplied = LAYOUT$dstPremultiplied.byteSize();
     public static final long SIZE$blendOverlap = LAYOUT$blendOverlap.byteSize();
-
 }

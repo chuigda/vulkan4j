@@ -161,5 +161,4 @@ public record VkPhysicalDeviceLineRasterizationFeaturesKHR(MemorySegment segment
     public static final long SIZE$stippledRectangularLines = LAYOUT$stippledRectangularLines.byteSize();
     public static final long SIZE$stippledBresenhamLines = LAYOUT$stippledBresenhamLines.byteSize();
     public static final long SIZE$stippledSmoothLines = LAYOUT$stippledSmoothLines.byteSize();
-
 }

@@ -105,5 +105,4 @@ public record VkPipelineCoverageReductionStateCreateInfoNV(MemorySegment segment
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$coverageReductionMode = LAYOUT$coverageReductionMode.byteSize();
-
 }

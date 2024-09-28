@@ -147,5 +147,4 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(MemorySegment segment) im
     public static final long SIZE$minBufferCountForCamping = LAYOUT$minBufferCountForCamping.byteSize();
     public static final long SIZE$minBufferCountForDedicatedSlack = LAYOUT$minBufferCountForDedicatedSlack.byteSize();
     public static final long SIZE$minBufferCountForSharedSlack = LAYOUT$minBufferCountForSharedSlack.byteSize();
-
 }

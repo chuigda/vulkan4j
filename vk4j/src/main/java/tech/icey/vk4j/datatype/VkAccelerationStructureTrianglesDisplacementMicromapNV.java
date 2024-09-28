@@ -338,5 +338,4 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
     public static final long SIZE$pUsageCounts = LAYOUT$pUsageCounts.byteSize();
     public static final long SIZE$ppUsageCounts = LAYOUT$ppUsageCounts.byteSize();
     public static final long SIZE$micromap = LAYOUT$micromap.byteSize();
-
 }

@@ -202,5 +202,4 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment
     public static final long SIZE$engineNameOffset = LAYOUT$engineNameOffset.byteSize();
     public static final long SIZE$engineVersion = LAYOUT$engineVersion.byteSize();
     public static final long SIZE$apiVersion = LAYOUT$apiVersion.byteSize();
-
 }

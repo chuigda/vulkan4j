@@ -91,5 +91,4 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(MemorySegment segment) 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$formatRgba10x6WithoutYCbCrSampler = LAYOUT$formatRgba10x6WithoutYCbCrSampler.byteSize();
-
 }

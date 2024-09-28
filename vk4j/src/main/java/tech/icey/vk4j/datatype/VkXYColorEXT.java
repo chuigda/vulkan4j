@@ -72,5 +72,4 @@ public record VkXYColorEXT(MemorySegment segment) implements IPointer {
 
     public static final long SIZE$x = LAYOUT$x.byteSize();
     public static final long SIZE$y = LAYOUT$y.byteSize();
-
 }

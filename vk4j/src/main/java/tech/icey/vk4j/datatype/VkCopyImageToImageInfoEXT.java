@@ -199,5 +199,4 @@ public record VkCopyImageToImageInfoEXT(MemorySegment segment) implements IPoint
     public static final long SIZE$dstImageLayout = LAYOUT$dstImageLayout.byteSize();
     public static final long SIZE$regionCount = LAYOUT$regionCount.byteSize();
     public static final long SIZE$pRegions = LAYOUT$pRegions.byteSize();
-
 }

@@ -119,5 +119,4 @@ public record VkPerformanceOverrideInfoINTEL(MemorySegment segment) implements I
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$enable = LAYOUT$enable.byteSize();
     public static final long SIZE$parameter = LAYOUT$parameter.byteSize();
-
 }

@@ -217,5 +217,4 @@ public record VkPipelineDepthStencilStateCreateInfo(MemorySegment segment) imple
     public static final long SIZE$back = LAYOUT$back.byteSize();
     public static final long SIZE$minDepthBounds = LAYOUT$minDepthBounds.byteSize();
     public static final long SIZE$maxDepthBounds = LAYOUT$maxDepthBounds.byteSize();
-
 }

@@ -132,5 +132,4 @@ public record VkDescriptorSetLayoutBinding(MemorySegment segment) implements IPo
     public static final long SIZE$descriptorCount = LAYOUT$descriptorCount.byteSize();
     public static final long SIZE$stageFlags = LAYOUT$stageFlags.byteSize();
     public static final long SIZE$pImmutableSamplers = LAYOUT$pImmutableSamplers.byteSize();
-
 }

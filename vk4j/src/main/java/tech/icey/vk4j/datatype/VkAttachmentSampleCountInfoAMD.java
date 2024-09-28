@@ -138,5 +138,4 @@ public record VkAttachmentSampleCountInfoAMD(MemorySegment segment) implements I
     public static final long SIZE$colorAttachmentCount = LAYOUT$colorAttachmentCount.byteSize();
     public static final long SIZE$pColorAttachmentSamples = LAYOUT$pColorAttachmentSamples.byteSize();
     public static final long SIZE$depthStencilAttachmentSamples = LAYOUT$depthStencilAttachmentSamples.byteSize();
-
 }

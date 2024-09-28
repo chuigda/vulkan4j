@@ -105,5 +105,4 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(MemorySegment segment) imp
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$windowExtent = LAYOUT$windowExtent.byteSize();
     public static final long SIZE$windowCompareMode = LAYOUT$windowCompareMode.byteSize();
-
 }

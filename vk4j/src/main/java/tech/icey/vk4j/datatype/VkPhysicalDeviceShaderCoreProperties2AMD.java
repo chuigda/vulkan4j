@@ -105,5 +105,4 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(MemorySegment segment) im
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$shaderCoreFeatures = LAYOUT$shaderCoreFeatures.byteSize();
     public static final long SIZE$activeComputeUnitCount = LAYOUT$activeComputeUnitCount.byteSize();
-
 }

@@ -707,5 +707,4 @@ public record VkPhysicalDeviceVulkan13Properties(MemorySegment segment) implemen
     public static final long SIZE$uniformTexelBufferOffsetAlignmentBytes = LAYOUT$uniformTexelBufferOffsetAlignmentBytes.byteSize();
     public static final long SIZE$uniformTexelBufferOffsetSingleTexelAlignment = LAYOUT$uniformTexelBufferOffsetSingleTexelAlignment.byteSize();
     public static final long SIZE$maxBufferSize = LAYOUT$maxBufferSize.byteSize();
-
 }

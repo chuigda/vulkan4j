@@ -137,5 +137,4 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(MemorySegment segment) imp
     public static final long SIZE$deviceID = LAYOUT$deviceID.byteSize();
     public static final long SIZE$layeredAPI = LAYOUT$layeredAPI.byteSize();
     public static final long SIZE$deviceName = LAYOUT$deviceName.byteSize();
-
 }

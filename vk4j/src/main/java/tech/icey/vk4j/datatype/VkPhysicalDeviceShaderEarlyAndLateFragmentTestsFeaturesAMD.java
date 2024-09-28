@@ -91,5 +91,4 @@ public record VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(MemoryS
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$shaderEarlyAndLateFragmentTests = LAYOUT$shaderEarlyAndLateFragmentTests.byteSize();
-
 }

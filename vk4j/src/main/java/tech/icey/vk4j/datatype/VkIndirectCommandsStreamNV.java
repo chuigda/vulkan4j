@@ -72,5 +72,4 @@ public record VkIndirectCommandsStreamNV(MemorySegment segment) implements IPoin
 
     public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
     public static final long SIZE$offset = LAYOUT$offset.byteSize();
-
 }

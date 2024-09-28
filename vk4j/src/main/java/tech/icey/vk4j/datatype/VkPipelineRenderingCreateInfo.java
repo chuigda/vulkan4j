@@ -166,5 +166,4 @@ public record VkPipelineRenderingCreateInfo(MemorySegment segment) implements IP
     public static final long SIZE$pColorAttachmentFormats = LAYOUT$pColorAttachmentFormats.byteSize();
     public static final long SIZE$depthAttachmentFormat = LAYOUT$depthAttachmentFormat.byteSize();
     public static final long SIZE$stencilAttachmentFormat = LAYOUT$stencilAttachmentFormat.byteSize();
-
 }

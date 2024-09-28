@@ -129,5 +129,4 @@ public record VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segme
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$vertexBindingDivisorCount = LAYOUT$vertexBindingDivisorCount.byteSize();
     public static final long SIZE$pVertexBindingDivisors = LAYOUT$pVertexBindingDivisors.byteSize();
-
 }

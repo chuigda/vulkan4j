@@ -134,5 +134,4 @@ public record VkDebugMarkerObjectNameInfoEXT(MemorySegment segment) implements I
     public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
     public static final long SIZE$object = LAYOUT$object.byteSize();
     public static final long SIZE$pObjectName = LAYOUT$pObjectName.byteSize();
-
 }

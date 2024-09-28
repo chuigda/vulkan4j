@@ -156,5 +156,4 @@ public record VkPipelineColorBlendAttachmentState(MemorySegment segment) impleme
     public static final long SIZE$dstAlphaBlendFactor = LAYOUT$dstAlphaBlendFactor.byteSize();
     public static final long SIZE$alphaBlendOp = LAYOUT$alphaBlendOp.byteSize();
     public static final long SIZE$colorWriteMask = LAYOUT$colorWriteMask.byteSize();
-
 }

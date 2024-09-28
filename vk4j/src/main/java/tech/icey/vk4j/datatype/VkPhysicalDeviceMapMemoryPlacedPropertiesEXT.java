@@ -91,5 +91,4 @@ public record VkPhysicalDeviceMapMemoryPlacedPropertiesEXT(MemorySegment segment
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$minPlacedMemoryMapAlignment = LAYOUT$minPlacedMemoryMapAlignment.byteSize();
-
 }

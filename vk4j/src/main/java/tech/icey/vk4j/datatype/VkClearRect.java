@@ -86,5 +86,4 @@ public record VkClearRect(MemorySegment segment) implements IPointer {
     public static final long SIZE$rect = LAYOUT$rect.byteSize();
     public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
     public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
-
 }

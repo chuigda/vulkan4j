@@ -129,5 +129,4 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(MemorySegment segment)
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$layeredApiCount = LAYOUT$layeredApiCount.byteSize();
     public static final long SIZE$pLayeredApis = LAYOUT$pLayeredApis.byteSize();
-
 }

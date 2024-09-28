@@ -175,5 +175,4 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segm
     public static final long SIZE$indexType = LAYOUT$indexType.byteSize();
     public static final long SIZE$indexData = LAYOUT$indexData.byteSize();
     public static final long SIZE$transformData = LAYOUT$transformData.byteSize();
-
 }

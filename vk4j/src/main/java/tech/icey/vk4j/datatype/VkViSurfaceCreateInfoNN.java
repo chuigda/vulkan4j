@@ -109,5 +109,4 @@ public record VkViSurfaceCreateInfoNN(MemorySegment segment) implements IPointer
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$window = LAYOUT$window.byteSize();
-
 }

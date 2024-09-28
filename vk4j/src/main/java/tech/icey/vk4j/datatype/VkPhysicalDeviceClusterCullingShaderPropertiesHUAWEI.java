@@ -141,5 +141,4 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(MemorySegment
     public static final long SIZE$maxWorkGroupSize = LAYOUT$maxWorkGroupSize.byteSize();
     public static final long SIZE$maxOutputClusterCount = LAYOUT$maxOutputClusterCount.byteSize();
     public static final long SIZE$indirectBufferOffsetAlignment = LAYOUT$indirectBufferOffsetAlignment.byteSize();
-
 }

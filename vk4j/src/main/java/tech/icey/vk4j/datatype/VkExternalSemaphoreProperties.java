@@ -119,5 +119,4 @@ public record VkExternalSemaphoreProperties(MemorySegment segment) implements IP
     public static final long SIZE$exportFromImportedHandleTypes = LAYOUT$exportFromImportedHandleTypes.byteSize();
     public static final long SIZE$compatibleHandleTypes = LAYOUT$compatibleHandleTypes.byteSize();
     public static final long SIZE$externalSemaphoreFeatures = LAYOUT$externalSemaphoreFeatures.byteSize();
-
 }

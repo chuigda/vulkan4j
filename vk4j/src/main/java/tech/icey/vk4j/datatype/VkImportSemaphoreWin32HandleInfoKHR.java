@@ -166,5 +166,4 @@ public record VkImportSemaphoreWin32HandleInfoKHR(MemorySegment segment) impleme
     public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
     public static final long SIZE$handle = LAYOUT$handle.byteSize();
     public static final long SIZE$name = LAYOUT$name.byteSize();
-
 }

@@ -100,5 +100,4 @@ public record VkImageSubresourceLayers(MemorySegment segment) implements IPointe
     public static final long SIZE$mipLevel = LAYOUT$mipLevel.byteSize();
     public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
     public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
-
 }

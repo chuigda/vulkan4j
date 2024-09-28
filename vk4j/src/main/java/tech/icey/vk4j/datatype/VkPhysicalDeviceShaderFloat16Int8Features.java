@@ -105,5 +105,4 @@ public record VkPhysicalDeviceShaderFloat16Int8Features(MemorySegment segment) i
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$shaderFloat16 = LAYOUT$shaderFloat16.byteSize();
     public static final long SIZE$shaderInt8 = LAYOUT$shaderInt8.byteSize();
-
 }

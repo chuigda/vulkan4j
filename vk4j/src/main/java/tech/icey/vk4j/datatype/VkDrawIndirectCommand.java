@@ -100,5 +100,4 @@ public record VkDrawIndirectCommand(MemorySegment segment) implements IPointer {
     public static final long SIZE$instanceCount = LAYOUT$instanceCount.byteSize();
     public static final long SIZE$firstVertex = LAYOUT$firstVertex.byteSize();
     public static final long SIZE$firstInstance = LAYOUT$firstInstance.byteSize();
-
 }

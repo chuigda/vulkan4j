@@ -86,5 +86,4 @@ public record VkDispatchGraphCountInfoAMDX(MemorySegment segment) implements IPo
     public static final long SIZE$count = LAYOUT$count.byteSize();
     public static final long SIZE$infos = LAYOUT$infos.byteSize();
     public static final long SIZE$stride = LAYOUT$stride.byteSize();
-
 }

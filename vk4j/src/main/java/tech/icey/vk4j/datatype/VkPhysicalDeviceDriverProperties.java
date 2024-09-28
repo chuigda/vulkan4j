@@ -141,5 +141,4 @@ public record VkPhysicalDeviceDriverProperties(MemorySegment segment) implements
     public static final long SIZE$driverName = LAYOUT$driverName.byteSize();
     public static final long SIZE$driverInfo = LAYOUT$driverInfo.byteSize();
     public static final long SIZE$conformanceVersion = LAYOUT$conformanceVersion.byteSize();
-
 }

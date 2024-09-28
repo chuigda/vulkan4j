@@ -123,5 +123,4 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(MemorySegment segment)
     public static final long SIZE$id = LAYOUT$id.byteSize();
     public static final long SIZE$size = LAYOUT$size.byteSize();
     public static final long SIZE$pPrivateData = LAYOUT$pPrivateData.byteSize();
-
 }

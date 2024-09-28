@@ -109,5 +109,4 @@ public record VkExportMetalBufferInfoEXT(MemorySegment segment) implements IPoin
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$memory = LAYOUT$memory.byteSize();
     public static final long SIZE$mtlBuffer = LAYOUT$mtlBuffer.byteSize();
-
 }

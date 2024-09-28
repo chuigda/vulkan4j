@@ -133,5 +133,4 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(MemorySegment segment)
     public static final long SIZE$leastRepresentableValueForceUnormRepresentation = LAYOUT$leastRepresentableValueForceUnormRepresentation.byteSize();
     public static final long SIZE$floatRepresentation = LAYOUT$floatRepresentation.byteSize();
     public static final long SIZE$depthBiasExact = LAYOUT$depthBiasExact.byteSize();
-
 }

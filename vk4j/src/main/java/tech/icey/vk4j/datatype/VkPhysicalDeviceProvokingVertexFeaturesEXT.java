@@ -105,5 +105,4 @@ public record VkPhysicalDeviceProvokingVertexFeaturesEXT(MemorySegment segment) 
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$provokingVertexLast = LAYOUT$provokingVertexLast.byteSize();
     public static final long SIZE$transformFeedbackPreservesProvokingVertex = LAYOUT$transformFeedbackPreservesProvokingVertex.byteSize();
-
 }

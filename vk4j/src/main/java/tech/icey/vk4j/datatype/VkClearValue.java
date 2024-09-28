@@ -72,5 +72,4 @@ public record VkClearValue(MemorySegment segment) implements IPointer {
 
     public static final long SIZE$color = LAYOUT$color.byteSize();
     public static final long SIZE$depthStencil = LAYOUT$depthStencil.byteSize();
-
 }

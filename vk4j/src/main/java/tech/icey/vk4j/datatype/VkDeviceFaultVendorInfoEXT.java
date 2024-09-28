@@ -90,5 +90,4 @@ public record VkDeviceFaultVendorInfoEXT(MemorySegment segment) implements IPoin
     public static final long SIZE$description = LAYOUT$description.byteSize();
     public static final long SIZE$vendorFaultCode = LAYOUT$vendorFaultCode.byteSize();
     public static final long SIZE$vendorFaultData = LAYOUT$vendorFaultData.byteSize();
-
 }

@@ -91,5 +91,4 @@ public record VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV(MemorySegment 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$semaphoreSciSyncPoolRequestCount = LAYOUT$semaphoreSciSyncPoolRequestCount.byteSize();
-
 }

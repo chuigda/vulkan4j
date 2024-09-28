@@ -1550,5 +1550,4 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) implements IPointer 
     public static final long SIZE$optimalBufferCopyOffsetAlignment = LAYOUT$optimalBufferCopyOffsetAlignment.byteSize();
     public static final long SIZE$optimalBufferCopyRowPitchAlignment = LAYOUT$optimalBufferCopyRowPitchAlignment.byteSize();
     public static final long SIZE$nonCoherentAtomSize = LAYOUT$nonCoherentAtomSize.byteSize();
-
 }

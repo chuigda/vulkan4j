@@ -119,5 +119,4 @@ public record VkMappedMemoryRange(MemorySegment segment) implements IPointer {
     public static final long SIZE$memory = LAYOUT$memory.byteSize();
     public static final long SIZE$offset = LAYOUT$offset.byteSize();
     public static final long SIZE$size = LAYOUT$size.byteSize();
-
 }

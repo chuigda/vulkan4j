@@ -105,5 +105,4 @@ public record VkAmigoProfilingSubmitInfoSEC(MemorySegment segment) implements IP
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$firstDrawTimestamp = LAYOUT$firstDrawTimestamp.byteSize();
     public static final long SIZE$swapBufferTimestamp = LAYOUT$swapBufferTimestamp.byteSize();
-
 }

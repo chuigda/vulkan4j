@@ -137,5 +137,4 @@ public record VkPushDescriptorSetWithTemplateInfoKHR(MemorySegment segment) impl
     public static final long SIZE$layout = LAYOUT$layout.byteSize();
     public static final long SIZE$set = LAYOUT$set.byteSize();
     public static final long SIZE$pData = LAYOUT$pData.byteSize();
-
 }

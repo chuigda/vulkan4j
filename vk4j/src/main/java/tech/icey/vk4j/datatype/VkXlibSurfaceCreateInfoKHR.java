@@ -130,5 +130,4 @@ public record VkXlibSurfaceCreateInfoKHR(MemorySegment segment) implements IPoin
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$dpy = LAYOUT$dpy.byteSize();
-
 }

@@ -72,5 +72,4 @@ public record VkSubpassSampleLocationsEXT(MemorySegment segment) implements IPoi
 
     public static final long SIZE$subpassIndex = LAYOUT$subpassIndex.byteSize();
     public static final long SIZE$sampleLocationsInfo = LAYOUT$sampleLocationsInfo.byteSize();
-
 }

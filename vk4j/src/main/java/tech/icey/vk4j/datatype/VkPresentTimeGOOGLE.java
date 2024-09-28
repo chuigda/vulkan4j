@@ -72,5 +72,4 @@ public record VkPresentTimeGOOGLE(MemorySegment segment) implements IPointer {
 
     public static final long SIZE$presentID = LAYOUT$presentID.byteSize();
     public static final long SIZE$desiredPresentTime = LAYOUT$desiredPresentTime.byteSize();
-
 }

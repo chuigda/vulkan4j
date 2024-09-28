@@ -175,5 +175,4 @@ public record VkDeviceMemoryReportCallbackDataEXT(MemorySegment segment) impleme
     public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
     public static final long SIZE$objectHandle = LAYOUT$objectHandle.byteSize();
     public static final long SIZE$heapIndex = LAYOUT$heapIndex.byteSize();
-
 }

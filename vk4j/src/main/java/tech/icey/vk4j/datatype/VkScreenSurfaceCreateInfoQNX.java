@@ -127,5 +127,4 @@ public record VkScreenSurfaceCreateInfoQNX(MemorySegment segment) implements IPo
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$context = LAYOUT$context.byteSize();
     public static final long SIZE$window = LAYOUT$window.byteSize();
-
 }

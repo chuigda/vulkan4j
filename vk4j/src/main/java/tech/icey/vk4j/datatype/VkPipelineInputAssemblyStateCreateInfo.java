@@ -119,5 +119,4 @@ public record VkPipelineInputAssemblyStateCreateInfo(MemorySegment segment) impl
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$topology = LAYOUT$topology.byteSize();
     public static final long SIZE$primitiveRestartEnable = LAYOUT$primitiveRestartEnable.byteSize();
-
 }

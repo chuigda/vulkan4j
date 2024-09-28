@@ -91,5 +91,4 @@ public record VkImageDrmFormatModifierPropertiesEXT(MemorySegment segment) imple
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$drmFormatModifier = LAYOUT$drmFormatModifier.byteSize();
-
 }

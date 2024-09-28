@@ -105,5 +105,4 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(MemorySegment segme
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$renderPassStripeGranularity = LAYOUT$renderPassStripeGranularity.byteSize();
     public static final long SIZE$maxRenderPassStripes = LAYOUT$maxRenderPassStripes.byteSize();
-
 }

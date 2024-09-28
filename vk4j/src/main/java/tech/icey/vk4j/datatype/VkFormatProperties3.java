@@ -119,5 +119,4 @@ public record VkFormatProperties3(MemorySegment segment) implements IPointer {
     public static final long SIZE$linearTilingFeatures = LAYOUT$linearTilingFeatures.byteSize();
     public static final long SIZE$optimalTilingFeatures = LAYOUT$optimalTilingFeatures.byteSize();
     public static final long SIZE$bufferFeatures = LAYOUT$bufferFeatures.byteSize();
-
 }

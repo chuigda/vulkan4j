@@ -86,5 +86,4 @@ public record VkImageSubresource(MemorySegment segment) implements IPointer {
     public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
     public static final long SIZE$mipLevel = LAYOUT$mipLevel.byteSize();
     public static final long SIZE$arrayLayer = LAYOUT$arrayLayer.byteSize();
-
 }

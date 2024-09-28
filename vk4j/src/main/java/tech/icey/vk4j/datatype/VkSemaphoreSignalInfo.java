@@ -105,5 +105,4 @@ public record VkSemaphoreSignalInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$semaphore = LAYOUT$semaphore.byteSize();
     public static final long SIZE$value = LAYOUT$value.byteSize();
-
 }

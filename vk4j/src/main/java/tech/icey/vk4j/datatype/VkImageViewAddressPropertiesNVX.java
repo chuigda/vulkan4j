@@ -105,5 +105,4 @@ public record VkImageViewAddressPropertiesNVX(MemorySegment segment) implements 
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
     public static final long SIZE$size = LAYOUT$size.byteSize();
-
 }

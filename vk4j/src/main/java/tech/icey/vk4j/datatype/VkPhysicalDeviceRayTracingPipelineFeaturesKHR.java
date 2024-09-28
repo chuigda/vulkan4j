@@ -147,5 +147,4 @@ public record VkPhysicalDeviceRayTracingPipelineFeaturesKHR(MemorySegment segmen
     public static final long SIZE$rayTracingPipelineShaderGroupHandleCaptureReplayMixed = LAYOUT$rayTracingPipelineShaderGroupHandleCaptureReplayMixed.byteSize();
     public static final long SIZE$rayTracingPipelineTraceRaysIndirect = LAYOUT$rayTracingPipelineTraceRaysIndirect.byteSize();
     public static final long SIZE$rayTraversalPrimitiveCulling = LAYOUT$rayTraversalPrimitiveCulling.byteSize();
-
 }

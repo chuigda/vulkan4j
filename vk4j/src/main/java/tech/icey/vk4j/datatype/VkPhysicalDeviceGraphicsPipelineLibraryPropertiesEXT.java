@@ -105,5 +105,4 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(MemorySegment
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$graphicsPipelineLibraryFastLinking = LAYOUT$graphicsPipelineLibraryFastLinking.byteSize();
     public static final long SIZE$graphicsPipelineLibraryIndependentInterpolationDecoration = LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration.byteSize();
-
 }

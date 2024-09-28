@@ -119,5 +119,4 @@ public record VkPhysicalDeviceFragmentShadingRateFeaturesKHR(MemorySegment segme
     public static final long SIZE$pipelineFragmentShadingRate = LAYOUT$pipelineFragmentShadingRate.byteSize();
     public static final long SIZE$primitiveFragmentShadingRate = LAYOUT$primitiveFragmentShadingRate.byteSize();
     public static final long SIZE$attachmentFragmentShadingRate = LAYOUT$attachmentFragmentShadingRate.byteSize();
-
 }

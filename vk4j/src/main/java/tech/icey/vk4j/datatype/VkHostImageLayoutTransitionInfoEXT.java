@@ -133,5 +133,4 @@ public record VkHostImageLayoutTransitionInfoEXT(MemorySegment segment) implemen
     public static final long SIZE$oldLayout = LAYOUT$oldLayout.byteSize();
     public static final long SIZE$newLayout = LAYOUT$newLayout.byteSize();
     public static final long SIZE$subresourceRange = LAYOUT$subresourceRange.byteSize();
-
 }

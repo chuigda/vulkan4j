@@ -133,5 +133,4 @@ public record VkPipelineRobustnessCreateInfoEXT(MemorySegment segment) implement
     public static final long SIZE$uniformBuffers = LAYOUT$uniformBuffers.byteSize();
     public static final long SIZE$vertexInputs = LAYOUT$vertexInputs.byteSize();
     public static final long SIZE$images = LAYOUT$images.byteSize();
-
 }

@@ -105,5 +105,4 @@ public record VkPhysicalDeviceShaderAtomicInt64Features(MemorySegment segment) i
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$shaderBufferInt64Atomics = LAYOUT$shaderBufferInt64Atomics.byteSize();
     public static final long SIZE$shaderSharedInt64Atomics = LAYOUT$shaderSharedInt64Atomics.byteSize();
-
 }

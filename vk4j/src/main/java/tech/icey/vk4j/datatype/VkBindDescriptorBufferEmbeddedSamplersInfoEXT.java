@@ -119,5 +119,4 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(MemorySegment segmen
     public static final long SIZE$stageFlags = LAYOUT$stageFlags.byteSize();
     public static final long SIZE$layout = LAYOUT$layout.byteSize();
     public static final long SIZE$set = LAYOUT$set.byteSize();
-
 }

@@ -86,5 +86,4 @@ public record VkAccelerationStructureGeometryDataKHR(MemorySegment segment) impl
     public static final long SIZE$triangles = LAYOUT$triangles.byteSize();
     public static final long SIZE$aabbs = LAYOUT$aabbs.byteSize();
     public static final long SIZE$instances = LAYOUT$instances.byteSize();
-
 }

@@ -110,5 +110,4 @@ public record VkSparseBufferMemoryBindInfo(MemorySegment segment) implements IPo
     public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
     public static final long SIZE$bindCount = LAYOUT$bindCount.byteSize();
     public static final long SIZE$pBinds = LAYOUT$pBinds.byteSize();
-
 }

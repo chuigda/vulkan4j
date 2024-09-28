@@ -120,5 +120,4 @@ public record VkCuFunctionCreateInfoNVX(MemorySegment segment) implements IPoint
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$module = LAYOUT$module.byteSize();
     public static final long SIZE$pName = LAYOUT$pName.byteSize();
-
 }

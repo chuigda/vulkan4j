@@ -171,5 +171,4 @@ public record VkAccelerationStructureInfoNV(MemorySegment segment) implements IP
     public static final long SIZE$instanceCount = LAYOUT$instanceCount.byteSize();
     public static final long SIZE$geometryCount = LAYOUT$geometryCount.byteSize();
     public static final long SIZE$pGeometries = LAYOUT$pGeometries.byteSize();
-
 }

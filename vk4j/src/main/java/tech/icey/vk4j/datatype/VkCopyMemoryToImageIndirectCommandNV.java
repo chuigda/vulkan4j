@@ -128,5 +128,4 @@ public record VkCopyMemoryToImageIndirectCommandNV(MemorySegment segment) implem
     public static final long SIZE$imageSubresource = LAYOUT$imageSubresource.byteSize();
     public static final long SIZE$imageOffset = LAYOUT$imageOffset.byteSize();
     public static final long SIZE$imageExtent = LAYOUT$imageExtent.byteSize();
-
 }

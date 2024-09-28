@@ -189,5 +189,4 @@ public record VkSamplerYcbcrConversionCreateInfo(MemorySegment segment) implemen
     public static final long SIZE$yChromaOffset = LAYOUT$yChromaOffset.byteSize();
     public static final long SIZE$chromaFilter = LAYOUT$chromaFilter.byteSize();
     public static final long SIZE$forceExplicitReconstruction = LAYOUT$forceExplicitReconstruction.byteSize();
-
 }

@@ -293,5 +293,4 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements 
     public static final long SIZE$indexTypeCount = LAYOUT$indexTypeCount.byteSize();
     public static final long SIZE$pIndexTypes = LAYOUT$pIndexTypes.byteSize();
     public static final long SIZE$pIndexTypeValues = LAYOUT$pIndexTypeValues.byteSize();
-
 }

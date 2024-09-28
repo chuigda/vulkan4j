@@ -105,5 +105,4 @@ public record VkPhysicalDevicePerStageDescriptorSetFeaturesNV(MemorySegment segm
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$perStageDescriptorSet = LAYOUT$perStageDescriptorSet.byteSize();
     public static final long SIZE$dynamicPipelineLayout = LAYOUT$dynamicPipelineLayout.byteSize();
-
 }

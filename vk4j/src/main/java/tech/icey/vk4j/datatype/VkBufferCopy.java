@@ -86,5 +86,4 @@ public record VkBufferCopy(MemorySegment segment) implements IPointer {
     public static final long SIZE$srcOffset = LAYOUT$srcOffset.byteSize();
     public static final long SIZE$dstOffset = LAYOUT$dstOffset.byteSize();
     public static final long SIZE$size = LAYOUT$size.byteSize();
-
 }

@@ -120,5 +120,4 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(MemorySegment segment) imp
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$pName = LAYOUT$pName.byteSize();
     public static final long SIZE$index = LAYOUT$index.byteSize();
-
 }

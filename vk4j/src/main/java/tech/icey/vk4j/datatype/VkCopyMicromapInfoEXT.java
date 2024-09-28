@@ -119,5 +119,4 @@ public record VkCopyMicromapInfoEXT(MemorySegment segment) implements IPointer {
     public static final long SIZE$src = LAYOUT$src.byteSize();
     public static final long SIZE$dst = LAYOUT$dst.byteSize();
     public static final long SIZE$mode = LAYOUT$mode.byteSize();
-
 }

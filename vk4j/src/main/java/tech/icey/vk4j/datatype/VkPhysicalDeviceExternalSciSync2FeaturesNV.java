@@ -133,5 +133,4 @@ public record VkPhysicalDeviceExternalSciSync2FeaturesNV(MemorySegment segment) 
     public static final long SIZE$sciSyncSemaphore2 = LAYOUT$sciSyncSemaphore2.byteSize();
     public static final long SIZE$sciSyncImport = LAYOUT$sciSyncImport.byteSize();
     public static final long SIZE$sciSyncExport = LAYOUT$sciSyncExport.byteSize();
-
 }

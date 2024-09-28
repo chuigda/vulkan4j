@@ -129,5 +129,4 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(MemorySegment segment)
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$aspectReferenceCount = LAYOUT$aspectReferenceCount.byteSize();
     public static final long SIZE$pAspectReferences = LAYOUT$pAspectReferences.byteSize();
-
 }

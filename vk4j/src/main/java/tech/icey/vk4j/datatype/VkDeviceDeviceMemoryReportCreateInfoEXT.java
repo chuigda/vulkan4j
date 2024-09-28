@@ -127,5 +127,4 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) imp
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$pfnUserCallback = LAYOUT$pfnUserCallback.byteSize();
     public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
-
 }

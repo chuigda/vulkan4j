@@ -129,5 +129,4 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(MemorySegment 
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$exclusiveScissorCount = LAYOUT$exclusiveScissorCount.byteSize();
     public static final long SIZE$pExclusiveScissors = LAYOUT$pExclusiveScissors.byteSize();
-
 }

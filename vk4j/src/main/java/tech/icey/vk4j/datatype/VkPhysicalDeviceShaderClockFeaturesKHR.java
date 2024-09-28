@@ -105,5 +105,4 @@ public record VkPhysicalDeviceShaderClockFeaturesKHR(MemorySegment segment) impl
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$shaderSubgroupClock = LAYOUT$shaderSubgroupClock.byteSize();
     public static final long SIZE$shaderDeviceClock = LAYOUT$shaderDeviceClock.byteSize();
-
 }

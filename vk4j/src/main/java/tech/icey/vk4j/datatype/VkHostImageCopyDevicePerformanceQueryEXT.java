@@ -105,5 +105,4 @@ public record VkHostImageCopyDevicePerformanceQueryEXT(MemorySegment segment) im
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$optimalDeviceAccess = LAYOUT$optimalDeviceAccess.byteSize();
     public static final long SIZE$identicalMemoryLayout = LAYOUT$identicalMemoryLayout.byteSize();
-
 }

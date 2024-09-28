@@ -178,5 +178,4 @@ public record VkPhysicalDeviceProperties(MemorySegment segment) implements IPoin
     public static final long SIZE$pipelineCacheUUID = LAYOUT$pipelineCacheUUID.byteSize();
     public static final long SIZE$limits = LAYOUT$limits.byteSize();
     public static final long SIZE$sparseProperties = LAYOUT$sparseProperties.byteSize();
-
 }

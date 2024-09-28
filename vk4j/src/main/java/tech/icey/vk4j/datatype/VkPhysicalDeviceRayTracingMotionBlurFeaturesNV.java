@@ -105,5 +105,4 @@ public record VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(MemorySegment segme
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$rayTracingMotionBlur = LAYOUT$rayTracingMotionBlur.byteSize();
     public static final long SIZE$rayTracingMotionBlurPipelineTraceRaysIndirect = LAYOUT$rayTracingMotionBlurPipelineTraceRaysIndirect.byteSize();
-
 }

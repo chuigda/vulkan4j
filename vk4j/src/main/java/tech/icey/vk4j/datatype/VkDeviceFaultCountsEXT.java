@@ -119,5 +119,4 @@ public record VkDeviceFaultCountsEXT(MemorySegment segment) implements IPointer 
     public static final long SIZE$addressInfoCount = LAYOUT$addressInfoCount.byteSize();
     public static final long SIZE$vendorInfoCount = LAYOUT$vendorInfoCount.byteSize();
     public static final long SIZE$vendorBinarySize = LAYOUT$vendorBinarySize.byteSize();
-
 }

@@ -247,5 +247,4 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
     public static final long SIZE$pSubpasses = LAYOUT$pSubpasses.byteSize();
     public static final long SIZE$dependencyCount = LAYOUT$dependencyCount.byteSize();
     public static final long SIZE$pDependencies = LAYOUT$pDependencies.byteSize();
-
 }

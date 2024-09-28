@@ -86,5 +86,4 @@ public record VkSparseImageFormatProperties(MemorySegment segment) implements IP
     public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
     public static final long SIZE$imageGranularity = LAYOUT$imageGranularity.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
 }

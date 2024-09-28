@@ -119,5 +119,4 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) implements IPointe
     public static final long SIZE$imageView = LAYOUT$imageView.byteSize();
     public static final long SIZE$descriptorType = LAYOUT$descriptorType.byteSize();
     public static final long SIZE$sampler = LAYOUT$sampler.byteSize();
-
 }

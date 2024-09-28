@@ -119,5 +119,4 @@ public record VkPhysicalDeviceOpacityMicromapFeaturesEXT(MemorySegment segment) 
     public static final long SIZE$micromap = LAYOUT$micromap.byteSize();
     public static final long SIZE$micromapCaptureReplay = LAYOUT$micromapCaptureReplay.byteSize();
     public static final long SIZE$micromapHostCommands = LAYOUT$micromapHostCommands.byteSize();
-
 }

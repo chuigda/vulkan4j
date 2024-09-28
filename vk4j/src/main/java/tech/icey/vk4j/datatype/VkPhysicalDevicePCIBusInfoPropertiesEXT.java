@@ -133,5 +133,4 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment) imp
     public static final long SIZE$pciBus = LAYOUT$pciBus.byteSize();
     public static final long SIZE$pciDevice = LAYOUT$pciDevice.byteSize();
     public static final long SIZE$pciFunction = LAYOUT$pciFunction.byteSize();
-
 }

@@ -162,5 +162,4 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(MemorySegment segmen
     public static final long SIZE$coverageModulationTableEnable = LAYOUT$coverageModulationTableEnable.byteSize();
     public static final long SIZE$coverageModulationTableCount = LAYOUT$coverageModulationTableCount.byteSize();
     public static final long SIZE$pCoverageModulationTable = LAYOUT$pCoverageModulationTable.byteSize();
-
 }

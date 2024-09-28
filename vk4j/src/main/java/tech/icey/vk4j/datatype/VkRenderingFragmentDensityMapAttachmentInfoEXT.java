@@ -105,5 +105,4 @@ public record VkRenderingFragmentDensityMapAttachmentInfoEXT(MemorySegment segme
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$imageView = LAYOUT$imageView.byteSize();
     public static final long SIZE$imageLayout = LAYOUT$imageLayout.byteSize();
-
 }

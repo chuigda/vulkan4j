@@ -129,5 +129,4 @@ public record VkFramebufferAttachmentsCreateInfo(MemorySegment segment) implemen
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$attachmentImageInfoCount = LAYOUT$attachmentImageInfoCount.byteSize();
     public static final long SIZE$pAttachmentImageInfos = LAYOUT$pAttachmentImageInfos.byteSize();
-
 }

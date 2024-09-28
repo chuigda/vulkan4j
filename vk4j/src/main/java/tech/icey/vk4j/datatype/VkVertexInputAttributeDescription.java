@@ -100,5 +100,4 @@ public record VkVertexInputAttributeDescription(MemorySegment segment) implement
     public static final long SIZE$binding = LAYOUT$binding.byteSize();
     public static final long SIZE$format = LAYOUT$format.byteSize();
     public static final long SIZE$offset = LAYOUT$offset.byteSize();
-
 }

@@ -171,5 +171,4 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) implements IPoin
     public static final long SIZE$set = LAYOUT$set.byteSize();
     public static final long SIZE$descriptorWriteCount = LAYOUT$descriptorWriteCount.byteSize();
     public static final long SIZE$pDescriptorWrites = LAYOUT$pDescriptorWrites.byteSize();
-
 }

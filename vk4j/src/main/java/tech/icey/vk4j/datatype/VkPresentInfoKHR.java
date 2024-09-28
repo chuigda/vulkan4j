@@ -231,5 +231,4 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
     public static final long SIZE$pSwapchains = LAYOUT$pSwapchains.byteSize();
     public static final long SIZE$pImageIndices = LAYOUT$pImageIndices.byteSize();
     public static final long SIZE$pResults = LAYOUT$pResults.byteSize();
-
 }

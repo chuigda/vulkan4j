@@ -86,5 +86,4 @@ public record VkDescriptorImageInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$sampler = LAYOUT$sampler.byteSize();
     public static final long SIZE$imageView = LAYOUT$imageView.byteSize();
     public static final long SIZE$imageLayout = LAYOUT$imageLayout.byteSize();
-
 }

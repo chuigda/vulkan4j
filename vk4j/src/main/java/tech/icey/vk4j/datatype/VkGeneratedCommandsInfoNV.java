@@ -283,5 +283,4 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
     public static final long SIZE$sequencesCountOffset = LAYOUT$sequencesCountOffset.byteSize();
     public static final long SIZE$sequencesIndexBuffer = LAYOUT$sequencesIndexBuffer.byteSize();
     public static final long SIZE$sequencesIndexOffset = LAYOUT$sequencesIndexOffset.byteSize();
-
 }

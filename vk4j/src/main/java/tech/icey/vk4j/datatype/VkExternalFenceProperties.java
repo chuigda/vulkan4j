@@ -119,5 +119,4 @@ public record VkExternalFenceProperties(MemorySegment segment) implements IPoint
     public static final long SIZE$exportFromImportedHandleTypes = LAYOUT$exportFromImportedHandleTypes.byteSize();
     public static final long SIZE$compatibleHandleTypes = LAYOUT$compatibleHandleTypes.byteSize();
     public static final long SIZE$externalFenceFeatures = LAYOUT$externalFenceFeatures.byteSize();
-
 }

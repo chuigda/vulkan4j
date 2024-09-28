@@ -105,5 +105,4 @@ public record VkImportMemoryZirconHandleInfoFUCHSIA(MemorySegment segment) imple
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
     public static final long SIZE$handle = LAYOUT$handle.byteSize();
-
 }

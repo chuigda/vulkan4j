@@ -119,5 +119,4 @@ public record VkPhysicalDevice8BitStorageFeatures(MemorySegment segment) impleme
     public static final long SIZE$storageBuffer8BitAccess = LAYOUT$storageBuffer8BitAccess.byteSize();
     public static final long SIZE$uniformAndStorageBuffer8BitAccess = LAYOUT$uniformAndStorageBuffer8BitAccess.byteSize();
     public static final long SIZE$storagePushConstant8 = LAYOUT$storagePushConstant8.byteSize();
-
 }

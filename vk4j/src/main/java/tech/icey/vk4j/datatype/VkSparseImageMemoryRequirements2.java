@@ -91,5 +91,4 @@ public record VkSparseImageMemoryRequirements2(MemorySegment segment) implements
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$memoryRequirements = LAYOUT$memoryRequirements.byteSize();
-
 }

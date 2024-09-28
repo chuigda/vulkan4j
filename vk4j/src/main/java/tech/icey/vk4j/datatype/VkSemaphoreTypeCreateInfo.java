@@ -105,5 +105,4 @@ public record VkSemaphoreTypeCreateInfo(MemorySegment segment) implements IPoint
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$semaphoreType = LAYOUT$semaphoreType.byteSize();
     public static final long SIZE$initialValue = LAYOUT$initialValue.byteSize();
-
 }

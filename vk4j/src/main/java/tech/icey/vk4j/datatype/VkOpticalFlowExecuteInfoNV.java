@@ -143,5 +143,4 @@ public record VkOpticalFlowExecuteInfoNV(MemorySegment segment) implements IPoin
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$regionCount = LAYOUT$regionCount.byteSize();
     public static final long SIZE$pRegions = LAYOUT$pRegions.byteSize();
-
 }

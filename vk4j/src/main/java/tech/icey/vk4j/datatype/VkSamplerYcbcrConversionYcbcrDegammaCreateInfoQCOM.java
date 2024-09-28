@@ -105,5 +105,4 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(MemorySegment s
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$enableYDegamma = LAYOUT$enableYDegamma.byteSize();
     public static final long SIZE$enableCbCrDegamma = LAYOUT$enableCbCrDegamma.byteSize();
-
 }

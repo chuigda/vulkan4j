@@ -213,5 +213,4 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
     public static final long SIZE$pipelineBindPoint = LAYOUT$pipelineBindPoint.byteSize();
     public static final long SIZE$pipelineLayout = LAYOUT$pipelineLayout.byteSize();
     public static final long SIZE$set = LAYOUT$set.byteSize();
-
 }

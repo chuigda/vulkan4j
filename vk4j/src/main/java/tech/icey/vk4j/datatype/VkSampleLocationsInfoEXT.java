@@ -157,5 +157,4 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) implements IPointe
     public static final long SIZE$sampleLocationGridSize = LAYOUT$sampleLocationGridSize.byteSize();
     public static final long SIZE$sampleLocationsCount = LAYOUT$sampleLocationsCount.byteSize();
     public static final long SIZE$pSampleLocations = LAYOUT$pSampleLocations.byteSize();
-
 }

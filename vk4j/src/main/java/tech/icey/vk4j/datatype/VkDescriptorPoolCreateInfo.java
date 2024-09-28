@@ -157,5 +157,4 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) implements IPoin
     public static final long SIZE$maxSets = LAYOUT$maxSets.byteSize();
     public static final long SIZE$poolSizeCount = LAYOUT$poolSizeCount.byteSize();
     public static final long SIZE$pPoolSizes = LAYOUT$pPoolSizes.byteSize();
-
 }

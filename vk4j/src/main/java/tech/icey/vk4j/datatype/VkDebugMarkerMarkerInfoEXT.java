@@ -124,5 +124,4 @@ public record VkDebugMarkerMarkerInfoEXT(MemorySegment segment) implements IPoin
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$pMarkerName = LAYOUT$pMarkerName.byteSize();
     public static final long SIZE$color = LAYOUT$color.byteSize();
-
 }

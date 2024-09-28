@@ -105,5 +105,4 @@ public record VkPhysicalDeviceShaderSMBuiltinsPropertiesNV(MemorySegment segment
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$shaderSMCount = LAYOUT$shaderSMCount.byteSize();
     public static final long SIZE$shaderWarpsPerSM = LAYOUT$shaderWarpsPerSM.byteSize();
-
 }

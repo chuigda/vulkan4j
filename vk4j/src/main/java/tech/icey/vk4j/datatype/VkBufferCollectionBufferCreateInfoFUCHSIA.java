@@ -105,5 +105,4 @@ public record VkBufferCollectionBufferCreateInfoFUCHSIA(MemorySegment segment) i
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$collection = LAYOUT$collection.byteSize();
     public static final long SIZE$index = LAYOUT$index.byteSize();
-
 }

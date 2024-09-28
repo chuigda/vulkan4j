@@ -91,5 +91,4 @@ public record VkDisplayPlaneProperties2KHR(MemorySegment segment) implements IPo
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$displayPlaneProperties = LAYOUT$displayPlaneProperties.byteSize();
-
 }

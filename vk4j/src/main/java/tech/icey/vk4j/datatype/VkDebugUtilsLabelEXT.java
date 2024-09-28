@@ -124,5 +124,4 @@ public record VkDebugUtilsLabelEXT(MemorySegment segment) implements IPointer {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$pLabelName = LAYOUT$pLabelName.byteSize();
     public static final long SIZE$color = LAYOUT$color.byteSize();
-
 }

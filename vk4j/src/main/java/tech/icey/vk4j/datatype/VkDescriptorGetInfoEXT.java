@@ -105,5 +105,4 @@ public record VkDescriptorGetInfoEXT(MemorySegment segment) implements IPointer 
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$data = LAYOUT$data.byteSize();
-
 }

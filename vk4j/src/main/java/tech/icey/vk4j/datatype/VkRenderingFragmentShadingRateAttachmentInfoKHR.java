@@ -119,5 +119,4 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(MemorySegment segm
     public static final long SIZE$imageView = LAYOUT$imageView.byteSize();
     public static final long SIZE$imageLayout = LAYOUT$imageLayout.byteSize();
     public static final long SIZE$shadingRateAttachmentTexelSize = LAYOUT$shadingRateAttachmentTexelSize.byteSize();
-
 }

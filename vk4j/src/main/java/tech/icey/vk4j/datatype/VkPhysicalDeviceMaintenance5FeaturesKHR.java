@@ -91,5 +91,4 @@ public record VkPhysicalDeviceMaintenance5FeaturesKHR(MemorySegment segment) imp
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$maintenance5 = LAYOUT$maintenance5.byteSize();
-
 }

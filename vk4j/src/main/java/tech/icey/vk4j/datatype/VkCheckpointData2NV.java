@@ -109,5 +109,4 @@ public record VkCheckpointData2NV(MemorySegment segment) implements IPointer {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$stage = LAYOUT$stage.byteSize();
     public static final long SIZE$pCheckpointMarker = LAYOUT$pCheckpointMarker.byteSize();
-
 }

@@ -119,5 +119,4 @@ public record VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(MemorySegment segm
     public static final long SIZE$shaderCoreMask = LAYOUT$shaderCoreMask.byteSize();
     public static final long SIZE$shaderCoreCount = LAYOUT$shaderCoreCount.byteSize();
     public static final long SIZE$shaderWarpsPerCore = LAYOUT$shaderWarpsPerCore.byteSize();
-
 }

@@ -120,5 +120,4 @@ public record VkPipelineColorWriteCreateInfoEXT(MemorySegment segment) implement
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$attachmentCount = LAYOUT$attachmentCount.byteSize();
     public static final long SIZE$pColorWriteEnables = LAYOUT$pColorWriteEnables.byteSize();
-
 }

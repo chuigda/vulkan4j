@@ -133,5 +133,4 @@ public record VkFramebufferMixedSamplesCombinationNV(MemorySegment segment) impl
     public static final long SIZE$rasterizationSamples = LAYOUT$rasterizationSamples.byteSize();
     public static final long SIZE$depthStencilSamples = LAYOUT$depthStencilSamples.byteSize();
     public static final long SIZE$colorSamples = LAYOUT$colorSamples.byteSize();
-
 }

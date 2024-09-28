@@ -100,5 +100,4 @@ public record VkAccelerationStructureBuildRangeInfoKHR(MemorySegment segment) im
     public static final long SIZE$primitiveOffset = LAYOUT$primitiveOffset.byteSize();
     public static final long SIZE$firstVertex = LAYOUT$firstVertex.byteSize();
     public static final long SIZE$transformOffset = LAYOUT$transformOffset.byteSize();
-
 }

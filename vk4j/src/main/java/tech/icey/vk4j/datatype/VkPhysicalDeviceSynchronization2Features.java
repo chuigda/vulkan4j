@@ -91,5 +91,4 @@ public record VkPhysicalDeviceSynchronization2Features(MemorySegment segment) im
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$synchronization2 = LAYOUT$synchronization2.byteSize();
-
 }

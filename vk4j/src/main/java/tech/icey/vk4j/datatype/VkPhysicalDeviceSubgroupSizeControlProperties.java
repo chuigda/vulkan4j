@@ -133,5 +133,4 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(MemorySegment segmen
     public static final long SIZE$maxSubgroupSize = LAYOUT$maxSubgroupSize.byteSize();
     public static final long SIZE$maxComputeWorkgroupSubgroups = LAYOUT$maxComputeWorkgroupSubgroups.byteSize();
     public static final long SIZE$requiredSubgroupSizeStages = LAYOUT$requiredSubgroupSizeStages.byteSize();
-
 }

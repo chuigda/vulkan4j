@@ -328,5 +328,4 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
     public static final long SIZE$pushConstantRangeCount = LAYOUT$pushConstantRangeCount.byteSize();
     public static final long SIZE$pPushConstantRanges = LAYOUT$pPushConstantRanges.byteSize();
     public static final long SIZE$pSpecializationInfo = LAYOUT$pSpecializationInfo.byteSize();
-
 }

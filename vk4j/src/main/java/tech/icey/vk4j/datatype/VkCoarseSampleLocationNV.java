@@ -86,5 +86,4 @@ public record VkCoarseSampleLocationNV(MemorySegment segment) implements IPointe
     public static final long SIZE$pixelX = LAYOUT$pixelX.byteSize();
     public static final long SIZE$pixelY = LAYOUT$pixelY.byteSize();
     public static final long SIZE$sample = LAYOUT$sample.byteSize();
-
 }

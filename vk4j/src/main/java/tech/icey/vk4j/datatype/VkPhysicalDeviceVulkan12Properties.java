@@ -813,5 +813,4 @@ public record VkPhysicalDeviceVulkan12Properties(MemorySegment segment) implemen
     public static final long SIZE$filterMinmaxImageComponentMapping = LAYOUT$filterMinmaxImageComponentMapping.byteSize();
     public static final long SIZE$maxTimelineSemaphoreValueDifference = LAYOUT$maxTimelineSemaphoreValueDifference.byteSize();
     public static final long SIZE$framebufferIntegerColorSampleCounts = LAYOUT$framebufferIntegerColorSampleCounts.byteSize();
-
 }

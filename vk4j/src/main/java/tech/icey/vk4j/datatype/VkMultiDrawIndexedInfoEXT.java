@@ -86,5 +86,4 @@ public record VkMultiDrawIndexedInfoEXT(MemorySegment segment) implements IPoint
     public static final long SIZE$firstIndex = LAYOUT$firstIndex.byteSize();
     public static final long SIZE$indexCount = LAYOUT$indexCount.byteSize();
     public static final long SIZE$vertexOffset = LAYOUT$vertexOffset.byteSize();
-
 }

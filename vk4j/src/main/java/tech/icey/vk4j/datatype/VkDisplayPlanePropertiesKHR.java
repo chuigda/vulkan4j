@@ -72,5 +72,4 @@ public record VkDisplayPlanePropertiesKHR(MemorySegment segment) implements IPoi
 
     public static final long SIZE$currentDisplay = LAYOUT$currentDisplay.byteSize();
     public static final long SIZE$currentStackIndex = LAYOUT$currentStackIndex.byteSize();
-
 }

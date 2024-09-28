@@ -105,5 +105,4 @@ public record VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR(MemorySegment se
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$vertexAttributeInstanceRateDivisor = LAYOUT$vertexAttributeInstanceRateDivisor.byteSize();
     public static final long SIZE$vertexAttributeInstanceRateZeroDivisor = LAYOUT$vertexAttributeInstanceRateZeroDivisor.byteSize();
-
 }

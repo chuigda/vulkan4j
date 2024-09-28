@@ -120,5 +120,4 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(MemorySegment segment) i
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$drmFormatModifierCount = LAYOUT$drmFormatModifierCount.byteSize();
     public static final long SIZE$pDrmFormatModifiers = LAYOUT$pDrmFormatModifiers.byteSize();
-
 }

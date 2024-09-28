@@ -203,5 +203,4 @@ public record VkOpticalFlowSessionCreateInfoNV(MemorySegment segment) implements
     public static final long SIZE$hintGridSize = LAYOUT$hintGridSize.byteSize();
     public static final long SIZE$performanceLevel = LAYOUT$performanceLevel.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
 }

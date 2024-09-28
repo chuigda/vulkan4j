@@ -105,5 +105,4 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(MemorySegment segm
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$accelerationStructure = LAYOUT$accelerationStructure.byteSize();
-
 }

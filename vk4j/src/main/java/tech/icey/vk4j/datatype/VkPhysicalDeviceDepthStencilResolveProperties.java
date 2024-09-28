@@ -133,5 +133,4 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(MemorySegment segmen
     public static final long SIZE$supportedStencilResolveModes = LAYOUT$supportedStencilResolveModes.byteSize();
     public static final long SIZE$independentResolveNone = LAYOUT$independentResolveNone.byteSize();
     public static final long SIZE$independentResolve = LAYOUT$independentResolve.byteSize();
-
 }

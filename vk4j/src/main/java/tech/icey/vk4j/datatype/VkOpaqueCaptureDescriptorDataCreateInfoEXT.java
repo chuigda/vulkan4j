@@ -95,5 +95,4 @@ public record VkOpaqueCaptureDescriptorDataCreateInfoEXT(MemorySegment segment) 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$opaqueCaptureDescriptorData = LAYOUT$opaqueCaptureDescriptorData.byteSize();
-
 }

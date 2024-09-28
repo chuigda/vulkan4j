@@ -189,5 +189,4 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(MemorySegment segment) impl
     public static final long SIZE$maxInstanceCount = LAYOUT$maxInstanceCount.byteSize();
     public static final long SIZE$maxTriangleCount = LAYOUT$maxTriangleCount.byteSize();
     public static final long SIZE$maxDescriptorSetAccelerationStructures = LAYOUT$maxDescriptorSetAccelerationStructures.byteSize();
-
 }

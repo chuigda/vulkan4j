@@ -170,5 +170,4 @@ public record VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) implements IP
     public static final long SIZE$maxDstPosition = LAYOUT$maxDstPosition.byteSize();
     public static final long SIZE$minDstExtent = LAYOUT$minDstExtent.byteSize();
     public static final long SIZE$maxDstExtent = LAYOUT$maxDstExtent.byteSize();
-
 }

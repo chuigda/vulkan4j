@@ -119,5 +119,4 @@ public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) imple
     public static final long SIZE$filterCenter = LAYOUT$filterCenter.byteSize();
     public static final long SIZE$filterSize = LAYOUT$filterSize.byteSize();
     public static final long SIZE$numPhases = LAYOUT$numPhases.byteSize();
-
 }

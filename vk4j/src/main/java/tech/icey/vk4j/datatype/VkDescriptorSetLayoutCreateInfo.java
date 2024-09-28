@@ -143,5 +143,4 @@ public record VkDescriptorSetLayoutCreateInfo(MemorySegment segment) implements 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$bindingCount = LAYOUT$bindingCount.byteSize();
     public static final long SIZE$pBindings = LAYOUT$pBindings.byteSize();
-
 }

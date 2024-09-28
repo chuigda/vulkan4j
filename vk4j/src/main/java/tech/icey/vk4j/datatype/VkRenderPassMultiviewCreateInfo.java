@@ -206,5 +206,4 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) implements 
     public static final long SIZE$pViewOffsets = LAYOUT$pViewOffsets.byteSize();
     public static final long SIZE$correlationMaskCount = LAYOUT$correlationMaskCount.byteSize();
     public static final long SIZE$pCorrelationMasks = LAYOUT$pCorrelationMasks.byteSize();
-
 }

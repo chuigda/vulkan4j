@@ -114,5 +114,4 @@ public record VkPastPresentationTimingGOOGLE(MemorySegment segment) implements I
     public static final long SIZE$actualPresentTime = LAYOUT$actualPresentTime.byteSize();
     public static final long SIZE$earliestPresentTime = LAYOUT$earliestPresentTime.byteSize();
     public static final long SIZE$presentMargin = LAYOUT$presentMargin.byteSize();
-
 }

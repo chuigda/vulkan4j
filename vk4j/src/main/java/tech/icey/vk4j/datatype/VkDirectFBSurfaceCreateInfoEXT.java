@@ -127,5 +127,4 @@ public record VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) implements I
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$dfb = LAYOUT$dfb.byteSize();
     public static final long SIZE$surface = LAYOUT$surface.byteSize();
-
 }

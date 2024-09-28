@@ -161,5 +161,4 @@ public record VkPhysicalDeviceMaintenance5PropertiesKHR(MemorySegment segment) i
     public static final long SIZE$polygonModePointSize = LAYOUT$polygonModePointSize.byteSize();
     public static final long SIZE$nonStrictSinglePixelWideLinesUseParallelogram = LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram.byteSize();
     public static final long SIZE$nonStrictWideLinesUseParallelogram = LAYOUT$nonStrictWideLinesUseParallelogram.byteSize();
-
 }

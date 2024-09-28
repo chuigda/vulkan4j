@@ -119,5 +119,4 @@ public record VkPhysicalDeviceShadingRateImagePropertiesNV(MemorySegment segment
     public static final long SIZE$shadingRateTexelSize = LAYOUT$shadingRateTexelSize.byteSize();
     public static final long SIZE$shadingRatePaletteSize = LAYOUT$shadingRatePaletteSize.byteSize();
     public static final long SIZE$shadingRateMaxCoarseSamples = LAYOUT$shadingRateMaxCoarseSamples.byteSize();
-
 }

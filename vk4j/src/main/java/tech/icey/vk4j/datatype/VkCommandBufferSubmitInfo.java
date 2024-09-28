@@ -105,5 +105,4 @@ public record VkCommandBufferSubmitInfo(MemorySegment segment) implements IPoint
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$commandBuffer = LAYOUT$commandBuffer.byteSize();
     public static final long SIZE$deviceMask = LAYOUT$deviceMask.byteSize();
-
 }

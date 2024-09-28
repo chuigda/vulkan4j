@@ -176,5 +176,4 @@ public record VkBufferCreateInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$sharingMode = LAYOUT$sharingMode.byteSize();
     public static final long SIZE$queueFamilyIndexCount = LAYOUT$queueFamilyIndexCount.byteSize();
     public static final long SIZE$pQueueFamilyIndices = LAYOUT$pQueueFamilyIndices.byteSize();
-
 }

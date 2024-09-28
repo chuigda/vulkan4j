@@ -148,5 +148,4 @@ public record VkLayerSettingEXT(MemorySegment segment) implements IPointer {
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$valueCount = LAYOUT$valueCount.byteSize();
     public static final long SIZE$pValues = LAYOUT$pValues.byteSize();
-
 }

@@ -268,5 +268,4 @@ public record VkSRTDataNV(MemorySegment segment) implements IPointer {
     public static final long SIZE$tx = LAYOUT$tx.byteSize();
     public static final long SIZE$ty = LAYOUT$ty.byteSize();
     public static final long SIZE$tz = LAYOUT$tz.byteSize();
-
 }

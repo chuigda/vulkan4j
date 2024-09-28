@@ -72,5 +72,4 @@ public record VkSurfaceFormatKHR(MemorySegment segment) implements IPointer {
 
     public static final long SIZE$format = LAYOUT$format.byteSize();
     public static final long SIZE$colorSpace = LAYOUT$colorSpace.byteSize();
-
 }

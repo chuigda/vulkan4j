@@ -175,5 +175,4 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
     public static final long SIZE$pGroups = LAYOUT$pGroups.byteSize();
     public static final long SIZE$pipelineCount = LAYOUT$pipelineCount.byteSize();
     public static final long SIZE$pPipelines = LAYOUT$pPipelines.byteSize();
-
 }

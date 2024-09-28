@@ -119,5 +119,4 @@ public record VkMicromapBuildSizesInfoEXT(MemorySegment segment) implements IPoi
     public static final long SIZE$micromapSize = LAYOUT$micromapSize.byteSize();
     public static final long SIZE$buildScratchSize = LAYOUT$buildScratchSize.byteSize();
     public static final long SIZE$discardable = LAYOUT$discardable.byteSize();
-
 }

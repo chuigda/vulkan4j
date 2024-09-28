@@ -287,5 +287,4 @@ public record VkPhysicalDeviceVulkan13Features(MemorySegment segment) implements
     public static final long SIZE$dynamicRendering = LAYOUT$dynamicRendering.byteSize();
     public static final long SIZE$shaderIntegerDotProduct = LAYOUT$shaderIntegerDotProduct.byteSize();
     public static final long SIZE$maintenance4 = LAYOUT$maintenance4.byteSize();
-
 }

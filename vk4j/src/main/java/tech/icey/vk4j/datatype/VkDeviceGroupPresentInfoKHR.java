@@ -134,5 +134,4 @@ public record VkDeviceGroupPresentInfoKHR(MemorySegment segment) implements IPoi
     public static final long SIZE$swapchainCount = LAYOUT$swapchainCount.byteSize();
     public static final long SIZE$pDeviceMasks = LAYOUT$pDeviceMasks.byteSize();
     public static final long SIZE$mode = LAYOUT$mode.byteSize();
-
 }

@@ -100,5 +100,4 @@ public record VkQueueFamilyProperties(MemorySegment segment) implements IPointer
     public static final long SIZE$queueCount = LAYOUT$queueCount.byteSize();
     public static final long SIZE$timestampValidBits = LAYOUT$timestampValidBits.byteSize();
     public static final long SIZE$minImageTransferGranularity = LAYOUT$minImageTransferGranularity.byteSize();
-
 }

@@ -317,5 +317,4 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) implements IPointe
     public static final long SIZE$presentMode = LAYOUT$presentMode.byteSize();
     public static final long SIZE$clipped = LAYOUT$clipped.byteSize();
     public static final long SIZE$oldSwapchain = LAYOUT$oldSwapchain.byteSize();
-
 }

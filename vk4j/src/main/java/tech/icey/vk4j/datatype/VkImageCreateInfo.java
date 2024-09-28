@@ -274,5 +274,4 @@ public record VkImageCreateInfo(MemorySegment segment) implements IPointer {
     public static final long SIZE$queueFamilyIndexCount = LAYOUT$queueFamilyIndexCount.byteSize();
     public static final long SIZE$pQueueFamilyIndices = LAYOUT$pQueueFamilyIndices.byteSize();
     public static final long SIZE$initialLayout = LAYOUT$initialLayout.byteSize();
-
 }

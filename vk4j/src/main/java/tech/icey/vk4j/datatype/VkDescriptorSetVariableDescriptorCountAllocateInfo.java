@@ -120,5 +120,4 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(MemorySegment s
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$descriptorSetCount = LAYOUT$descriptorSetCount.byteSize();
     public static final long SIZE$pDescriptorCounts = LAYOUT$pDescriptorCounts.byteSize();
-
 }

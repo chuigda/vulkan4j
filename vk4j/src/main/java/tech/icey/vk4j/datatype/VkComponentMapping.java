@@ -100,5 +100,4 @@ public record VkComponentMapping(MemorySegment segment) implements IPointer {
     public static final long SIZE$g = LAYOUT$g.byteSize();
     public static final long SIZE$b = LAYOUT$b.byteSize();
     public static final long SIZE$a = LAYOUT$a.byteSize();
-
 }

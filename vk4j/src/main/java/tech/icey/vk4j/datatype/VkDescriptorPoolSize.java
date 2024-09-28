@@ -72,5 +72,4 @@ public record VkDescriptorPoolSize(MemorySegment segment) implements IPointer {
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$descriptorCount = LAYOUT$descriptorCount.byteSize();
-
 }

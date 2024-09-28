@@ -217,5 +217,4 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(MemorySegment segme
     public static final long SIZE$transformFeedbackStreamsLinesTriangles = LAYOUT$transformFeedbackStreamsLinesTriangles.byteSize();
     public static final long SIZE$transformFeedbackRasterizationStreamSelect = LAYOUT$transformFeedbackRasterizationStreamSelect.byteSize();
     public static final long SIZE$transformFeedbackDraw = LAYOUT$transformFeedbackDraw.byteSize();
-
 }

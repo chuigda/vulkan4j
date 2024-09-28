@@ -119,5 +119,4 @@ public record VkCommandBufferAllocateInfo(MemorySegment segment) implements IPoi
     public static final long SIZE$commandPool = LAYOUT$commandPool.byteSize();
     public static final long SIZE$level = LAYOUT$level.byteSize();
     public static final long SIZE$commandBufferCount = LAYOUT$commandBufferCount.byteSize();
-
 }

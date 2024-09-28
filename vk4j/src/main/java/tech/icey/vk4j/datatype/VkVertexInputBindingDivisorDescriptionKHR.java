@@ -72,5 +72,4 @@ public record VkVertexInputBindingDivisorDescriptionKHR(MemorySegment segment) i
 
     public static final long SIZE$binding = LAYOUT$binding.byteSize();
     public static final long SIZE$divisor = LAYOUT$divisor.byteSize();
-
 }

@@ -123,5 +123,4 @@ public record VkDeviceGroupDeviceCreateInfo(MemorySegment segment) implements IP
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$physicalDeviceCount = LAYOUT$physicalDeviceCount.byteSize();
     public static final long SIZE$pPhysicalDevices = LAYOUT$pPhysicalDevices.byteSize();
-
 }

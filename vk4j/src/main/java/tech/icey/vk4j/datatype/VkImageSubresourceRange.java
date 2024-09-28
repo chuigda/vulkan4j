@@ -114,5 +114,4 @@ public record VkImageSubresourceRange(MemorySegment segment) implements IPointer
     public static final long SIZE$levelCount = LAYOUT$levelCount.byteSize();
     public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
     public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
-
 }

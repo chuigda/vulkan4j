@@ -249,5 +249,4 @@ public record VkCudaLaunchInfoNV(MemorySegment segment) implements IPointer {
     public static final long SIZE$sharedMemBytes = LAYOUT$sharedMemBytes.byteSize();
     public static final long SIZE$pParams = LAYOUT$pParams.byteSize();
     public static final long SIZE$pExtras = LAYOUT$pExtras.byteSize();
-
 }
