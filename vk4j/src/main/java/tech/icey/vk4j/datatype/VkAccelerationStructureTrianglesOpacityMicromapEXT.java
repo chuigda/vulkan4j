@@ -102,7 +102,7 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment s
     public void pUsageCountsRaw(@pointer(comment="VkMicromapUsageEXT*") MemorySegment value) {
         segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
     }
-    
+
     public @nullable VkMicromapUsageEXT pUsageCounts() {
         MemorySegment s = pUsageCountsRaw();
         if (s.address() == 0) {

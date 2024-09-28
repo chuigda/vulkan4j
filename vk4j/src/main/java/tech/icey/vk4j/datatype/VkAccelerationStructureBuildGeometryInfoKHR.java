@@ -111,7 +111,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
     public void pGeometriesRaw(@pointer(comment="VkAccelerationStructureGeometryKHR*") MemorySegment value) {
         segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
     }
-    
+
     public @nullable VkAccelerationStructureGeometryKHR pGeometries() {
         MemorySegment s = pGeometriesRaw();
         if (s.address() == 0) {

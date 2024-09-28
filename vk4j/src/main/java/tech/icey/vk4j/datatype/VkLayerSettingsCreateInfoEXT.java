@@ -64,7 +64,7 @@ public record VkLayerSettingsCreateInfoEXT(MemorySegment segment) implements IPo
     public void pSettingsRaw(@pointer(comment="VkLayerSettingEXT*") MemorySegment value) {
         segment.set(LAYOUT$pSettings, OFFSET$pSettings, value);
     }
-    
+
     public @nullable VkLayerSettingEXT pSettings() {
         MemorySegment s = pSettingsRaw();
         if (s.address() == 0) {

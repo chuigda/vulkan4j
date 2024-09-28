@@ -66,7 +66,7 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) implements IP
     public void pFormatConstraintsRaw(@pointer(comment="VkImageFormatConstraintsInfoFUCHSIA*") MemorySegment value) {
         segment.set(LAYOUT$pFormatConstraints, OFFSET$pFormatConstraints, value);
     }
-    
+
     public @nullable VkImageFormatConstraintsInfoFUCHSIA pFormatConstraints() {
         MemorySegment s = pFormatConstraintsRaw();
         if (s.address() == 0) {

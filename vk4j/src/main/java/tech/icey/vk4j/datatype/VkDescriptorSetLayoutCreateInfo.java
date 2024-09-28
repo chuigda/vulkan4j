@@ -73,7 +73,7 @@ public record VkDescriptorSetLayoutCreateInfo(MemorySegment segment) implements 
     public void pBindingsRaw(@pointer(comment="VkDescriptorSetLayoutBinding*") MemorySegment value) {
         segment.set(LAYOUT$pBindings, OFFSET$pBindings, value);
     }
-    
+
     public @nullable VkDescriptorSetLayoutBinding pBindings() {
         MemorySegment s = pBindingsRaw();
         if (s.address() == 0) {

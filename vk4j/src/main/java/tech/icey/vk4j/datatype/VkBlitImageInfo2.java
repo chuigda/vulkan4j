@@ -101,7 +101,7 @@ public record VkBlitImageInfo2(MemorySegment segment) implements IPointer {
     public void pRegionsRaw(@pointer(comment="VkImageBlit2*") MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
-    
+
     public @nullable VkImageBlit2 pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {

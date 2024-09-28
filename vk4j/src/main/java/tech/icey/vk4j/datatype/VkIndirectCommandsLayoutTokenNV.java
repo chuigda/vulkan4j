@@ -151,7 +151,7 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements 
     public @pointer(target=VkIndexType.class) MemorySegment pIndexTypesRaw() {
         return segment.get(LAYOUT$pIndexTypes, OFFSET$pIndexTypes);
     }
-    
+
     public void pIndexTypesRaw(@pointer(target=VkIndexType.class) MemorySegment value) {
         segment.set(LAYOUT$pIndexTypes, OFFSET$pIndexTypes, value);
     }

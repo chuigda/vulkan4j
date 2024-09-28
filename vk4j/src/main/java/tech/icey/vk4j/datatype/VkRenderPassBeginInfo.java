@@ -91,7 +91,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) implements IPointer {
     public void pClearValuesRaw(@pointer(comment="VkClearValue*") MemorySegment value) {
         segment.set(LAYOUT$pClearValues, OFFSET$pClearValues, value);
     }
-    
+
     public @nullable VkClearValue pClearValues() {
         MemorySegment s = pClearValuesRaw();
         if (s.address() == 0) {

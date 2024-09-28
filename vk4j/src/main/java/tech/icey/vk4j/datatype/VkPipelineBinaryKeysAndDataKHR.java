@@ -42,7 +42,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) implements I
     public void pPipelineBinaryKeysRaw(@pointer(comment="VkPipelineBinaryKeyKHR*") MemorySegment value) {
         segment.set(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys, value);
     }
-    
+
     public @nullable VkPipelineBinaryKeyKHR pPipelineBinaryKeys() {
         MemorySegment s = pPipelineBinaryKeysRaw();
         if (s.address() == 0) {
@@ -74,7 +74,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) implements I
     public void pPipelineBinaryDataRaw(@pointer(comment="VkPipelineBinaryDataKHR*") MemorySegment value) {
         segment.set(LAYOUT$pPipelineBinaryData, OFFSET$pPipelineBinaryData, value);
     }
-    
+
     public @nullable VkPipelineBinaryDataKHR pPipelineBinaryData() {
         MemorySegment s = pPipelineBinaryDataRaw();
         if (s.address() == 0) {

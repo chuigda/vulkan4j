@@ -68,7 +68,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) implements IPointer {
     public void pApplicationInfoRaw(@pointer(comment="VkApplicationInfo*") MemorySegment value) {
         segment.set(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo, value);
     }
-    
+
     public @nullable VkApplicationInfo pApplicationInfo() {
         MemorySegment s = pApplicationInfoRaw();
         if (s.address() == 0) {

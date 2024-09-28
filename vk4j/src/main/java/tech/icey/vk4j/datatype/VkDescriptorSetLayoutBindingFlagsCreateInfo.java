@@ -60,7 +60,7 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(MemorySegment segment)
     public @pointer(target=VkDescriptorBindingFlags.class) MemorySegment pBindingFlagsRaw() {
         return segment.get(LAYOUT$pBindingFlags, OFFSET$pBindingFlags);
     }
-    
+
     public void pBindingFlagsRaw(@pointer(target=VkDescriptorBindingFlags.class) MemorySegment value) {
         segment.set(LAYOUT$pBindingFlags, OFFSET$pBindingFlags, value);
     }

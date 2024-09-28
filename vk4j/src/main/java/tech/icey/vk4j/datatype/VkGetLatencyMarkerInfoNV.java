@@ -64,7 +64,7 @@ public record VkGetLatencyMarkerInfoNV(MemorySegment segment) implements IPointe
     public void pTimingsRaw(@pointer(comment="VkLatencyTimingsFrameReportNV*") MemorySegment value) {
         segment.set(LAYOUT$pTimings, OFFSET$pTimings, value);
     }
-    
+
     public @nullable VkLatencyTimingsFrameReportNV pTimings() {
         MemorySegment s = pTimingsRaw();
         if (s.address() == 0) {

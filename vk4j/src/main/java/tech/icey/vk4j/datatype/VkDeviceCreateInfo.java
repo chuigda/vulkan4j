@@ -78,7 +78,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
     public void pQueueCreateInfosRaw(@pointer(comment="VkDeviceQueueCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos, value);
     }
-    
+
     public @nullable VkDeviceQueueCreateInfo pQueueCreateInfos() {
         MemorySegment s = pQueueCreateInfosRaw();
         if (s.address() == 0) {
@@ -168,7 +168,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
     public void pEnabledFeaturesRaw(@pointer(comment="VkPhysicalDeviceFeatures*") MemorySegment value) {
         segment.set(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures, value);
     }
-    
+
     public @nullable VkPhysicalDeviceFeatures pEnabledFeatures() {
         MemorySegment s = pEnabledFeaturesRaw();
         if (s.address() == 0) {

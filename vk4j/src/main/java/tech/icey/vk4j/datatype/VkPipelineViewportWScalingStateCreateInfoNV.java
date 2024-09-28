@@ -73,7 +73,7 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment)
     public void pViewportWScalingsRaw(@pointer(comment="VkViewportWScalingNV*") MemorySegment value) {
         segment.set(LAYOUT$pViewportWScalings, OFFSET$pViewportWScalings, value);
     }
-    
+
     public @nullable VkViewportWScalingNV pViewportWScalings() {
         MemorySegment s = pViewportWScalingsRaw();
         if (s.address() == 0) {

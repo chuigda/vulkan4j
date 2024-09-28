@@ -73,7 +73,7 @@ public record VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) implements
     public void pDeviceRenderAreasRaw(@pointer(comment="VkRect2D*") MemorySegment value) {
         segment.set(LAYOUT$pDeviceRenderAreas, OFFSET$pDeviceRenderAreas, value);
     }
-    
+
     public @nullable VkRect2D pDeviceRenderAreas() {
         MemorySegment s = pDeviceRenderAreasRaw();
         if (s.address() == 0) {

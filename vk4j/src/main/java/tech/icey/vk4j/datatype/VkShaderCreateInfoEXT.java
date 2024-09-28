@@ -183,7 +183,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
     public void pPushConstantRangesRaw(@pointer(comment="VkPushConstantRange*") MemorySegment value) {
         segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
-    
+
     public @nullable VkPushConstantRange pPushConstantRanges() {
         MemorySegment s = pPushConstantRangesRaw();
         if (s.address() == 0) {
@@ -215,7 +215,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
     public void pSpecializationInfoRaw(@pointer(comment="VkSpecializationInfo*") MemorySegment value) {
         segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
     }
-    
+
     public @nullable VkSpecializationInfo pSpecializationInfo() {
         MemorySegment s = pSpecializationInfoRaw();
         if (s.address() == 0) {

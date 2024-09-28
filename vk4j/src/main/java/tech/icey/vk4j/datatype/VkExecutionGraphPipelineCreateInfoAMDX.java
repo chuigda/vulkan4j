@@ -77,7 +77,7 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) impl
     public void pStagesRaw(@pointer(comment="VkPipelineShaderStageCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
-    
+
     public @nullable VkPipelineShaderStageCreateInfo pStages() {
         MemorySegment s = pStagesRaw();
         if (s.address() == 0) {
@@ -109,7 +109,7 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) impl
     public void pLibraryInfoRaw(@pointer(comment="VkPipelineLibraryCreateInfoKHR*") MemorySegment value) {
         segment.set(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo, value);
     }
-    
+
     public @nullable VkPipelineLibraryCreateInfoKHR pLibraryInfo() {
         MemorySegment s = pLibraryInfoRaw();
         if (s.address() == 0) {

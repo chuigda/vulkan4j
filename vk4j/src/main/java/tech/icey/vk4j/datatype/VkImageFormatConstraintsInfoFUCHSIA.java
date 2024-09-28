@@ -100,7 +100,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) impleme
     public void pColorSpacesRaw(@pointer(comment="VkSysmemColorSpaceFUCHSIA*") MemorySegment value) {
         segment.set(LAYOUT$pColorSpaces, OFFSET$pColorSpaces, value);
     }
-    
+
     public @nullable VkSysmemColorSpaceFUCHSIA pColorSpaces() {
         MemorySegment s = pColorSpacesRaw();
         if (s.address() == 0) {

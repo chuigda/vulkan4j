@@ -73,7 +73,7 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
     public void pPlaneLayoutsRaw(@pointer(comment="VkSubresourceLayout*") MemorySegment value) {
         segment.set(LAYOUT$pPlaneLayouts, OFFSET$pPlaneLayouts, value);
     }
-    
+
     public @nullable VkSubresourceLayout pPlaneLayouts() {
         MemorySegment s = pPlaneLayoutsRaw();
         if (s.address() == 0) {

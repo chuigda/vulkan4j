@@ -99,7 +99,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
     public void pStreamsRaw(@pointer(comment="VkIndirectCommandsStreamNV*") MemorySegment value) {
         segment.set(LAYOUT$pStreams, OFFSET$pStreams, value);
     }
-    
+
     public @nullable VkIndirectCommandsStreamNV pStreams() {
         MemorySegment s = pStreamsRaw();
         if (s.address() == 0) {

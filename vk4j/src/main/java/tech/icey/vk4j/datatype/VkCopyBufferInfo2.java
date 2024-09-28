@@ -82,7 +82,7 @@ public record VkCopyBufferInfo2(MemorySegment segment) implements IPointer {
     public void pRegionsRaw(@pointer(comment="VkBufferCopy2*") MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
-    
+
     public @nullable VkBufferCopy2 pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {

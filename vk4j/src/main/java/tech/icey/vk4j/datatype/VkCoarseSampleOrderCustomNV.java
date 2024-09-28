@@ -59,7 +59,7 @@ public record VkCoarseSampleOrderCustomNV(MemorySegment segment) implements IPoi
     public void pSampleLocationsRaw(@pointer(comment="VkCoarseSampleLocationNV*") MemorySegment value) {
         segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
-    
+
     public @nullable VkCoarseSampleLocationNV pSampleLocations() {
         MemorySegment s = pSampleLocationsRaw();
         if (s.address() == 0) {

@@ -50,7 +50,7 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) implements IPoi
     public void pBindsRaw(@pointer(comment="VkSparseImageMemoryBind*") MemorySegment value) {
         segment.set(LAYOUT$pBinds, OFFSET$pBinds, value);
     }
-    
+
     public @nullable VkSparseImageMemoryBind pBinds() {
         MemorySegment s = pBindsRaw();
         if (s.address() == 0) {

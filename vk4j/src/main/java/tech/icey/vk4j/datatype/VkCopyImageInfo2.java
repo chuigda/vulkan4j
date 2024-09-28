@@ -100,7 +100,7 @@ public record VkCopyImageInfo2(MemorySegment segment) implements IPointer {
     public void pRegionsRaw(@pointer(comment="VkImageCopy2*") MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
-    
+
     public @nullable VkImageCopy2 pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {

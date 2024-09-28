@@ -65,7 +65,7 @@ public record VkSubpassDescription(MemorySegment segment) implements IPointer {
     public void pInputAttachmentsRaw(@pointer(comment="VkAttachmentReference*") MemorySegment value) {
         segment.set(LAYOUT$pInputAttachments, OFFSET$pInputAttachments, value);
     }
-    
+
     public @nullable VkAttachmentReference pInputAttachments() {
         MemorySegment s = pInputAttachmentsRaw();
         if (s.address() == 0) {
@@ -105,7 +105,7 @@ public record VkSubpassDescription(MemorySegment segment) implements IPointer {
     public void pColorAttachmentsRaw(@pointer(comment="VkAttachmentReference*") MemorySegment value) {
         segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
-    
+
     public @nullable VkAttachmentReference pColorAttachments() {
         MemorySegment s = pColorAttachmentsRaw();
         if (s.address() == 0) {
@@ -137,7 +137,7 @@ public record VkSubpassDescription(MemorySegment segment) implements IPointer {
     public void pResolveAttachmentsRaw(@pointer(comment="VkAttachmentReference*") MemorySegment value) {
         segment.set(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments, value);
     }
-    
+
     public @nullable VkAttachmentReference pResolveAttachments() {
         MemorySegment s = pResolveAttachmentsRaw();
         if (s.address() == 0) {
@@ -169,7 +169,7 @@ public record VkSubpassDescription(MemorySegment segment) implements IPointer {
     public void pDepthStencilAttachmentRaw(@pointer(comment="VkAttachmentReference*") MemorySegment value) {
         segment.set(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment, value);
     }
-    
+
     public @nullable VkAttachmentReference pDepthStencilAttachment() {
         MemorySegment s = pDepthStencilAttachmentRaw();
         if (s.address() == 0) {

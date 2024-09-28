@@ -64,7 +64,7 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
     public void pFragmentDensityOffsetsRaw(@pointer(comment="VkOffset2D*") MemorySegment value) {
         segment.set(LAYOUT$pFragmentDensityOffsets, OFFSET$pFragmentDensityOffsets, value);
     }
-    
+
     public @nullable VkOffset2D pFragmentDensityOffsets() {
         MemorySegment s = pFragmentDensityOffsetsRaw();
         if (s.address() == 0) {

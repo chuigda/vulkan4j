@@ -43,7 +43,7 @@ public record VkSpecializationInfo(MemorySegment segment) implements IPointer {
     public void pMapEntriesRaw(@pointer(comment="VkSpecializationMapEntry*") MemorySegment value) {
         segment.set(LAYOUT$pMapEntries, OFFSET$pMapEntries, value);
     }
-    
+
     public @nullable VkSpecializationMapEntry pMapEntries() {
         MemorySegment s = pMapEntriesRaw();
         if (s.address() == 0) {

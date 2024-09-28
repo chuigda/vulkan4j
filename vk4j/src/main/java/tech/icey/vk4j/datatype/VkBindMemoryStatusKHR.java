@@ -51,7 +51,7 @@ public record VkBindMemoryStatusKHR(MemorySegment segment) implements IPointer {
     public @pointer(target=VkResult.class) MemorySegment pResultRaw() {
         return segment.get(LAYOUT$pResult, OFFSET$pResult);
     }
-    
+
     public void pResultRaw(@pointer(target=VkResult.class) MemorySegment value) {
         segment.set(LAYOUT$pResult, OFFSET$pResult, value);
     }

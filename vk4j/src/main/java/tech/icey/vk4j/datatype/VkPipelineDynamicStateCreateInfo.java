@@ -69,7 +69,7 @@ public record VkPipelineDynamicStateCreateInfo(MemorySegment segment) implements
     public @pointer(target=VkDynamicState.class) MemorySegment pDynamicStatesRaw() {
         return segment.get(LAYOUT$pDynamicStates, OFFSET$pDynamicStates);
     }
-    
+
     public void pDynamicStatesRaw(@pointer(target=VkDynamicState.class) MemorySegment value) {
         segment.set(LAYOUT$pDynamicStates, OFFSET$pDynamicStates, value);
     }

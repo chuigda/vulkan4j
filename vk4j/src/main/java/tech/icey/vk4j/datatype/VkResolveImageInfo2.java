@@ -100,7 +100,7 @@ public record VkResolveImageInfo2(MemorySegment segment) implements IPointer {
     public void pRegionsRaw(@pointer(comment="VkImageResolve2*") MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
-    
+
     public @nullable VkImageResolve2 pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {

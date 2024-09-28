@@ -64,7 +64,7 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(MemorySegment 
     public void pExclusiveScissorsRaw(@pointer(comment="VkRect2D*") MemorySegment value) {
         segment.set(LAYOUT$pExclusiveScissors, OFFSET$pExclusiveScissors, value);
     }
-    
+
     public @nullable VkRect2D pExclusiveScissors() {
         MemorySegment s = pExclusiveScissorsRaw();
         if (s.address() == 0) {

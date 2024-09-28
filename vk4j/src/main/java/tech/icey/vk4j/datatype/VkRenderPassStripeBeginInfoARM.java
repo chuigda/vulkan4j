@@ -64,7 +64,7 @@ public record VkRenderPassStripeBeginInfoARM(MemorySegment segment) implements I
     public void pStripeInfosRaw(@pointer(comment="VkRenderPassStripeInfoARM*") MemorySegment value) {
         segment.set(LAYOUT$pStripeInfos, OFFSET$pStripeInfos, value);
     }
-    
+
     public @nullable VkRenderPassStripeInfoARM pStripeInfos() {
         MemorySegment s = pStripeInfosRaw();
         if (s.address() == 0) {

@@ -82,7 +82,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
     public void pStagesRaw(@pointer(comment="VkPipelineShaderStageCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
-    
+
     public @nullable VkPipelineShaderStageCreateInfo pStages() {
         MemorySegment s = pStagesRaw();
         if (s.address() == 0) {
@@ -122,7 +122,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
     public void pGroupsRaw(@pointer(comment="VkRayTracingShaderGroupCreateInfoKHR*") MemorySegment value) {
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
-    
+
     public @nullable VkRayTracingShaderGroupCreateInfoKHR pGroups() {
         MemorySegment s = pGroupsRaw();
         if (s.address() == 0) {
@@ -162,7 +162,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
     public void pLibraryInfoRaw(@pointer(comment="VkPipelineLibraryCreateInfoKHR*") MemorySegment value) {
         segment.set(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo, value);
     }
-    
+
     public @nullable VkPipelineLibraryCreateInfoKHR pLibraryInfo() {
         MemorySegment s = pLibraryInfoRaw();
         if (s.address() == 0) {
@@ -194,7 +194,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
     public void pLibraryInterfaceRaw(@pointer(comment="VkRayTracingPipelineInterfaceCreateInfoKHR*") MemorySegment value) {
         segment.set(LAYOUT$pLibraryInterface, OFFSET$pLibraryInterface, value);
     }
-    
+
     public @nullable VkRayTracingPipelineInterfaceCreateInfoKHR pLibraryInterface() {
         MemorySegment s = pLibraryInterfaceRaw();
         if (s.address() == 0) {
@@ -226,7 +226,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
     public void pDynamicStateRaw(@pointer(comment="VkPipelineDynamicStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pDynamicState, OFFSET$pDynamicState, value);
     }
-    
+
     public @nullable VkPipelineDynamicStateCreateInfo pDynamicState() {
         MemorySegment s = pDynamicStateRaw();
         if (s.address() == 0) {

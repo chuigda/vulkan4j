@@ -102,7 +102,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
     public void pColorAttachmentsRaw(@pointer(comment="VkRenderingAttachmentInfo*") MemorySegment value) {
         segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
-    
+
     public @nullable VkRenderingAttachmentInfo pColorAttachments() {
         MemorySegment s = pColorAttachmentsRaw();
         if (s.address() == 0) {
@@ -134,7 +134,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
     public void pDepthAttachmentRaw(@pointer(comment="VkRenderingAttachmentInfo*") MemorySegment value) {
         segment.set(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment, value);
     }
-    
+
     public @nullable VkRenderingAttachmentInfo pDepthAttachment() {
         MemorySegment s = pDepthAttachmentRaw();
         if (s.address() == 0) {
@@ -166,7 +166,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
     public void pStencilAttachmentRaw(@pointer(comment="VkRenderingAttachmentInfo*") MemorySegment value) {
         segment.set(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment, value);
     }
-    
+
     public @nullable VkRenderingAttachmentInfo pStencilAttachment() {
         MemorySegment s = pStencilAttachmentRaw();
         if (s.address() == 0) {

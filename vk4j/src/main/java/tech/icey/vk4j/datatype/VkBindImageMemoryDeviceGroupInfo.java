@@ -97,7 +97,7 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) implements
     public void pSplitInstanceBindRegionsRaw(@pointer(comment="VkRect2D*") MemorySegment value) {
         segment.set(LAYOUT$pSplitInstanceBindRegions, OFFSET$pSplitInstanceBindRegions, value);
     }
-    
+
     public @nullable VkRect2D pSplitInstanceBindRegions() {
         MemorySegment s = pSplitInstanceBindRegionsRaw();
         if (s.address() == 0) {

@@ -73,7 +73,7 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment 
     public void pShadingRatePalettesRaw(@pointer(comment="VkShadingRatePaletteNV*") MemorySegment value) {
         segment.set(LAYOUT$pShadingRatePalettes, OFFSET$pShadingRatePalettes, value);
     }
-    
+
     public @nullable VkShadingRatePaletteNV pShadingRatePalettes() {
         MemorySegment s = pShadingRatePalettesRaw();
         if (s.address() == 0) {

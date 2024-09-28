@@ -106,7 +106,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
     public void pBufferBindsRaw(@pointer(comment="VkSparseBufferMemoryBindInfo*") MemorySegment value) {
         segment.set(LAYOUT$pBufferBinds, OFFSET$pBufferBinds, value);
     }
-    
+
     public @nullable VkSparseBufferMemoryBindInfo pBufferBinds() {
         MemorySegment s = pBufferBindsRaw();
         if (s.address() == 0) {
@@ -146,7 +146,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
     public void pImageOpaqueBindsRaw(@pointer(comment="VkSparseImageOpaqueMemoryBindInfo*") MemorySegment value) {
         segment.set(LAYOUT$pImageOpaqueBinds, OFFSET$pImageOpaqueBinds, value);
     }
-    
+
     public @nullable VkSparseImageOpaqueMemoryBindInfo pImageOpaqueBinds() {
         MemorySegment s = pImageOpaqueBindsRaw();
         if (s.address() == 0) {
@@ -186,7 +186,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
     public void pImageBindsRaw(@pointer(comment="VkSparseImageMemoryBindInfo*") MemorySegment value) {
         segment.set(LAYOUT$pImageBinds, OFFSET$pImageBinds, value);
     }
-    
+
     public @nullable VkSparseImageMemoryBindInfo pImageBinds() {
         MemorySegment s = pImageBindsRaw();
         if (s.address() == 0) {

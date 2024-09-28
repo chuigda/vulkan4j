@@ -79,7 +79,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
     public void pStagesRaw(@pointer(comment="VkPipelineShaderStageCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
-    
+
     public @nullable VkPipelineShaderStageCreateInfo pStages() {
         MemorySegment s = pStagesRaw();
         if (s.address() == 0) {
@@ -119,7 +119,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
     public void pGroupsRaw(@pointer(comment="VkRayTracingShaderGroupCreateInfoNV*") MemorySegment value) {
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
-    
+
     public @nullable VkRayTracingShaderGroupCreateInfoNV pGroups() {
         MemorySegment s = pGroupsRaw();
         if (s.address() == 0) {

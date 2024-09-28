@@ -69,7 +69,7 @@ public record VkImageCompressionControlEXT(MemorySegment segment) implements IPo
     public @pointer(target=VkImageCompressionFixedRateFlagsEXT.class) MemorySegment pFixedRateFlagsRaw() {
         return segment.get(LAYOUT$pFixedRateFlags, OFFSET$pFixedRateFlags);
     }
-    
+
     public void pFixedRateFlagsRaw(@pointer(target=VkImageCompressionFixedRateFlagsEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pFixedRateFlags, OFFSET$pFixedRateFlags, value);
     }

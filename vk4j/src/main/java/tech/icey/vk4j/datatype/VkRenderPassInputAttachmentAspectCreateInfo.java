@@ -64,7 +64,7 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(MemorySegment segment)
     public void pAspectReferencesRaw(@pointer(comment="VkInputAttachmentAspectReference*") MemorySegment value) {
         segment.set(LAYOUT$pAspectReferences, OFFSET$pAspectReferences, value);
     }
-    
+
     public @nullable VkInputAttachmentAspectReference pAspectReferences() {
         MemorySegment s = pAspectReferencesRaw();
         if (s.address() == 0) {

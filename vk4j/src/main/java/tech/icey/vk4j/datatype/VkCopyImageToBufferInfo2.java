@@ -91,7 +91,7 @@ public record VkCopyImageToBufferInfo2(MemorySegment segment) implements IPointe
     public void pRegionsRaw(@pointer(comment="VkBufferImageCopy2*") MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
-    
+
     public @nullable VkBufferImageCopy2 pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {

@@ -64,7 +64,7 @@ public record VkRenderPassStripeSubmitInfoARM(MemorySegment segment) implements 
     public void pStripeSemaphoreInfosRaw(@pointer(comment="VkSemaphoreSubmitInfo*") MemorySegment value) {
         segment.set(LAYOUT$pStripeSemaphoreInfos, OFFSET$pStripeSemaphoreInfos, value);
     }
-    
+
     public @nullable VkSemaphoreSubmitInfo pStripeSemaphoreInfos() {
         MemorySegment s = pStripeSemaphoreInfosRaw();
         if (s.address() == 0) {

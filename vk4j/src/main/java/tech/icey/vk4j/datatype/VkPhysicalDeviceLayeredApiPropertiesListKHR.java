@@ -64,7 +64,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(MemorySegment segment)
     public void pLayeredApisRaw(@pointer(comment="VkPhysicalDeviceLayeredApiPropertiesKHR*") MemorySegment value) {
         segment.set(LAYOUT$pLayeredApis, OFFSET$pLayeredApis, value);
     }
-    
+
     public @nullable VkPhysicalDeviceLayeredApiPropertiesKHR pLayeredApis() {
         MemorySegment s = pLayeredApisRaw();
         if (s.address() == 0) {

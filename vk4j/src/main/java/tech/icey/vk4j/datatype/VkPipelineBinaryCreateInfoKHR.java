@@ -57,7 +57,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
     public void pKeysAndDataInfoRaw(@pointer(comment="VkPipelineBinaryKeysAndDataKHR*") MemorySegment value) {
         segment.set(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo, value);
     }
-    
+
     public @nullable VkPipelineBinaryKeysAndDataKHR pKeysAndDataInfo() {
         MemorySegment s = pKeysAndDataInfoRaw();
         if (s.address() == 0) {
@@ -97,7 +97,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
     public void pPipelineCreateInfoRaw(@pointer(comment="VkPipelineCreateInfoKHR*") MemorySegment value) {
         segment.set(LAYOUT$pPipelineCreateInfo, OFFSET$pPipelineCreateInfo, value);
     }
-    
+
     public @nullable VkPipelineCreateInfoKHR pPipelineCreateInfo() {
         MemorySegment s = pPipelineCreateInfoRaw();
         if (s.address() == 0) {

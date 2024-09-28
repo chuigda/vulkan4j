@@ -134,7 +134,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
     public void pQueueLabelsRaw(@pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment value) {
         segment.set(LAYOUT$pQueueLabels, OFFSET$pQueueLabels, value);
     }
-    
+
     public @nullable VkDebugUtilsLabelEXT pQueueLabels() {
         MemorySegment s = pQueueLabelsRaw();
         if (s.address() == 0) {
@@ -174,7 +174,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
     public void pCmdBufLabelsRaw(@pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment value) {
         segment.set(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels, value);
     }
-    
+
     public @nullable VkDebugUtilsLabelEXT pCmdBufLabels() {
         MemorySegment s = pCmdBufLabelsRaw();
         if (s.address() == 0) {
@@ -214,7 +214,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
     public void pObjectsRaw(@pointer(comment="VkDebugUtilsObjectNameInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
-    
+
     public @nullable VkDebugUtilsObjectNameInfoEXT pObjects() {
         MemorySegment s = pObjectsRaw();
         if (s.address() == 0) {

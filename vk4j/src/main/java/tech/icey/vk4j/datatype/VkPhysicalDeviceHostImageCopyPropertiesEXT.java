@@ -64,7 +64,7 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
     public @pointer(target=VkImageLayout.class) MemorySegment pCopySrcLayoutsRaw() {
         return segment.get(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts);
     }
-    
+
     public void pCopySrcLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
         segment.set(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts, value);
     }
@@ -99,7 +99,7 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
     public @pointer(target=VkImageLayout.class) MemorySegment pCopyDstLayoutsRaw() {
         return segment.get(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts);
     }
-    
+
     public void pCopyDstLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
         segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
     }

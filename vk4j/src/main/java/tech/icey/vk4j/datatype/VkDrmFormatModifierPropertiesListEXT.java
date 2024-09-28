@@ -64,7 +64,7 @@ public record VkDrmFormatModifierPropertiesListEXT(MemorySegment segment) implem
     public void pDrmFormatModifierPropertiesRaw(@pointer(comment="VkDrmFormatModifierPropertiesEXT*") MemorySegment value) {
         segment.set(LAYOUT$pDrmFormatModifierProperties, OFFSET$pDrmFormatModifierProperties, value);
     }
-    
+
     public @nullable VkDrmFormatModifierPropertiesEXT pDrmFormatModifierProperties() {
         MemorySegment s = pDrmFormatModifierPropertiesRaw();
         if (s.address() == 0) {

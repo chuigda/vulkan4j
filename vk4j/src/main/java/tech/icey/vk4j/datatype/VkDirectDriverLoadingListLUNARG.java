@@ -73,7 +73,7 @@ public record VkDirectDriverLoadingListLUNARG(MemorySegment segment) implements 
     public void pDriversRaw(@pointer(comment="VkDirectDriverLoadingInfoLUNARG*") MemorySegment value) {
         segment.set(LAYOUT$pDrivers, OFFSET$pDrivers, value);
     }
-    
+
     public @nullable VkDirectDriverLoadingInfoLUNARG pDrivers() {
         MemorySegment s = pDriversRaw();
         if (s.address() == 0) {

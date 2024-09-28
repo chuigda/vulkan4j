@@ -109,7 +109,7 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) implements IPoin
     public void pPushConstantRangesRaw(@pointer(comment="VkPushConstantRange*") MemorySegment value) {
         segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
-    
+
     public @nullable VkPushConstantRange pPushConstantRanges() {
         MemorySegment s = pPushConstantRangesRaw();
         if (s.address() == 0) {

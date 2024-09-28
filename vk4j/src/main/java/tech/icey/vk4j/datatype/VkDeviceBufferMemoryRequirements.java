@@ -55,7 +55,7 @@ public record VkDeviceBufferMemoryRequirements(MemorySegment segment) implements
     public void pCreateInfoRaw(@pointer(comment="VkBufferCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
-    
+
     public @nullable VkBufferCreateInfo pCreateInfo() {
         MemorySegment s = pCreateInfoRaw();
         if (s.address() == 0) {

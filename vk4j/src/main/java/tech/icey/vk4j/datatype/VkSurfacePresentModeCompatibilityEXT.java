@@ -60,7 +60,7 @@ public record VkSurfacePresentModeCompatibilityEXT(MemorySegment segment) implem
     public @pointer(target=VkPresentModeKHR.class) MemorySegment pPresentModesRaw() {
         return segment.get(LAYOUT$pPresentModes, OFFSET$pPresentModes);
     }
-    
+
     public void pPresentModesRaw(@pointer(target=VkPresentModeKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pPresentModes, OFFSET$pPresentModes, value);
     }

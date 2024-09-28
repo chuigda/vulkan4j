@@ -60,7 +60,7 @@ public record VkValidationFlagsEXT(MemorySegment segment) implements IPointer {
     public @pointer(target=VkValidationCheckEXT.class) MemorySegment pDisabledValidationChecksRaw() {
         return segment.get(LAYOUT$pDisabledValidationChecks, OFFSET$pDisabledValidationChecks);
     }
-    
+
     public void pDisabledValidationChecksRaw(@pointer(target=VkValidationCheckEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pDisabledValidationChecks, OFFSET$pDisabledValidationChecks, value);
     }

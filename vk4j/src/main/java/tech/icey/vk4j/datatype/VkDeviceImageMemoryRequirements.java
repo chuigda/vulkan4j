@@ -56,7 +56,7 @@ public record VkDeviceImageMemoryRequirements(MemorySegment segment) implements 
     public void pCreateInfoRaw(@pointer(comment="VkImageCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
-    
+
     public @nullable VkImageCreateInfo pCreateInfo() {
         MemorySegment s = pCreateInfoRaw();
         if (s.address() == 0) {

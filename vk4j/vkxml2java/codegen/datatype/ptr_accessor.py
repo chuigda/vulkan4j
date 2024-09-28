@@ -95,7 +95,7 @@ def generate_p_enum_type_accessor(pointee_type: CEnumType, member: Member) -> st
     return f'''    public @pointer(target={pointee_type.non_flagbits_type_name()}.class) MemorySegment {member.name}Raw() {{
         return segment.get(LAYOUT${member.name}, OFFSET${member.name});
     }}
-    
+
     public void {member.name}Raw(@pointer(target={pointee_type.non_flagbits_type_name()}.class) MemorySegment value) {{
         segment.set(LAYOUT${member.name}, OFFSET${member.name}, value);
     }}
@@ -128,7 +128,7 @@ def generate_p_ref_type_accessor(pointee_type: CStructType | CUnionType | CHandl
     public void {member.name}Raw(@pointer(comment="{pointee_type.name}*") MemorySegment value) {{
         segment.set(LAYOUT${member.name}, OFFSET${member.name}, value);
     }}
-    
+
     public @nullable {pointee_type.java_type()} {member.name}() {{
         MemorySegment s = {member.name}Raw();
         if (s.address() == 0) {{

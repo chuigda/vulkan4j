@@ -82,7 +82,7 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) implements IPointe
     public void pSampleLocationsRaw(@pointer(comment="VkSampleLocationEXT*") MemorySegment value) {
         segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
-    
+
     public @nullable VkSampleLocationEXT pSampleLocations() {
         MemorySegment s = pSampleLocationsRaw();
         if (s.address() == 0) {

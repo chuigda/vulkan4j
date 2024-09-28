@@ -64,7 +64,7 @@ public record VkFramebufferAttachmentsCreateInfo(MemorySegment segment) implemen
     public void pAttachmentImageInfosRaw(@pointer(comment="VkFramebufferAttachmentImageInfo*") MemorySegment value) {
         segment.set(LAYOUT$pAttachmentImageInfos, OFFSET$pAttachmentImageInfos, value);
     }
-    
+
     public @nullable VkFramebufferAttachmentImageInfo pAttachmentImageInfos() {
         MemorySegment s = pAttachmentImageInfosRaw();
         if (s.address() == 0) {

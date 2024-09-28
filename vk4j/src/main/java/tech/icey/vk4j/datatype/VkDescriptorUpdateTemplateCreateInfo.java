@@ -78,7 +78,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
     public void pDescriptorUpdateEntriesRaw(@pointer(comment="VkDescriptorUpdateTemplateEntry*") MemorySegment value) {
         segment.set(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries, value);
     }
-    
+
     public @nullable VkDescriptorUpdateTemplateEntry pDescriptorUpdateEntries() {
         MemorySegment s = pDescriptorUpdateEntriesRaw();
         if (s.address() == 0) {

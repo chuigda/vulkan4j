@@ -84,7 +84,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) implem
     public void pTokensRaw(@pointer(comment="VkIndirectCommandsLayoutTokenNV*") MemorySegment value) {
         segment.set(LAYOUT$pTokens, OFFSET$pTokens, value);
     }
-    
+
     public @nullable VkIndirectCommandsLayoutTokenNV pTokens() {
         MemorySegment s = pTokensRaw();
         if (s.address() == 0) {

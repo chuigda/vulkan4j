@@ -64,7 +64,7 @@ public record VkPresentRegionsKHR(MemorySegment segment) implements IPointer {
     public void pRegionsRaw(@pointer(comment="VkPresentRegionKHR*") MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
-    
+
     public @nullable VkPresentRegionKHR pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {

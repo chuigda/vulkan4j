@@ -77,7 +77,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
     public void pMemoryBarriersRaw(@pointer(comment="VkMemoryBarrier2*") MemorySegment value) {
         segment.set(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers, value);
     }
-    
+
     public @nullable VkMemoryBarrier2 pMemoryBarriers() {
         MemorySegment s = pMemoryBarriersRaw();
         if (s.address() == 0) {
@@ -117,7 +117,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
     public void pBufferMemoryBarriersRaw(@pointer(comment="VkBufferMemoryBarrier2*") MemorySegment value) {
         segment.set(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers, value);
     }
-    
+
     public @nullable VkBufferMemoryBarrier2 pBufferMemoryBarriers() {
         MemorySegment s = pBufferMemoryBarriersRaw();
         if (s.address() == 0) {
@@ -157,7 +157,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
     public void pImageMemoryBarriersRaw(@pointer(comment="VkImageMemoryBarrier2*") MemorySegment value) {
         segment.set(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers, value);
     }
-    
+
     public @nullable VkImageMemoryBarrier2 pImageMemoryBarriers() {
         MemorySegment s = pImageMemoryBarriersRaw();
         if (s.address() == 0) {

@@ -105,7 +105,7 @@ public record VkFramebufferAttachmentImageInfo(MemorySegment segment) implements
     public @pointer(target=VkFormat.class) MemorySegment pViewFormatsRaw() {
         return segment.get(LAYOUT$pViewFormats, OFFSET$pViewFormats);
     }
-    
+
     public void pViewFormatsRaw(@pointer(target=VkFormat.class) MemorySegment value) {
         segment.set(LAYOUT$pViewFormats, OFFSET$pViewFormats, value);
     }

@@ -88,7 +88,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
     public void pStagesRaw(@pointer(comment="VkPipelineShaderStageCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
-    
+
     public @nullable VkPipelineShaderStageCreateInfo pStages() {
         MemorySegment s = pStagesRaw();
         if (s.address() == 0) {
@@ -120,7 +120,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
     public void pVertexInputStateRaw(@pointer(comment="VkPipelineVertexInputStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pVertexInputState, OFFSET$pVertexInputState, value);
     }
-    
+
     public @nullable VkPipelineVertexInputStateCreateInfo pVertexInputState() {
         MemorySegment s = pVertexInputStateRaw();
         if (s.address() == 0) {
@@ -152,7 +152,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
     public void pInputAssemblyStateRaw(@pointer(comment="VkPipelineInputAssemblyStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pInputAssemblyState, OFFSET$pInputAssemblyState, value);
     }
-    
+
     public @nullable VkPipelineInputAssemblyStateCreateInfo pInputAssemblyState() {
         MemorySegment s = pInputAssemblyStateRaw();
         if (s.address() == 0) {
@@ -184,7 +184,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
     public void pTessellationStateRaw(@pointer(comment="VkPipelineTessellationStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pTessellationState, OFFSET$pTessellationState, value);
     }
-    
+
     public @nullable VkPipelineTessellationStateCreateInfo pTessellationState() {
         MemorySegment s = pTessellationStateRaw();
         if (s.address() == 0) {
@@ -216,7 +216,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
     public void pViewportStateRaw(@pointer(comment="VkPipelineViewportStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pViewportState, OFFSET$pViewportState, value);
     }
-    
+
     public @nullable VkPipelineViewportStateCreateInfo pViewportState() {
         MemorySegment s = pViewportStateRaw();
         if (s.address() == 0) {
@@ -248,7 +248,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
     public void pRasterizationStateRaw(@pointer(comment="VkPipelineRasterizationStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pRasterizationState, OFFSET$pRasterizationState, value);
     }
-    
+
     public @nullable VkPipelineRasterizationStateCreateInfo pRasterizationState() {
         MemorySegment s = pRasterizationStateRaw();
         if (s.address() == 0) {
@@ -280,7 +280,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
     public void pMultisampleStateRaw(@pointer(comment="VkPipelineMultisampleStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pMultisampleState, OFFSET$pMultisampleState, value);
     }
-    
+
     public @nullable VkPipelineMultisampleStateCreateInfo pMultisampleState() {
         MemorySegment s = pMultisampleStateRaw();
         if (s.address() == 0) {
@@ -312,7 +312,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
     public void pDepthStencilStateRaw(@pointer(comment="VkPipelineDepthStencilStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pDepthStencilState, OFFSET$pDepthStencilState, value);
     }
-    
+
     public @nullable VkPipelineDepthStencilStateCreateInfo pDepthStencilState() {
         MemorySegment s = pDepthStencilStateRaw();
         if (s.address() == 0) {
@@ -344,7 +344,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
     public void pColorBlendStateRaw(@pointer(comment="VkPipelineColorBlendStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pColorBlendState, OFFSET$pColorBlendState, value);
     }
-    
+
     public @nullable VkPipelineColorBlendStateCreateInfo pColorBlendState() {
         MemorySegment s = pColorBlendStateRaw();
         if (s.address() == 0) {
@@ -376,7 +376,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
     public void pDynamicStateRaw(@pointer(comment="VkPipelineDynamicStateCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pDynamicState, OFFSET$pDynamicState, value);
     }
-    
+
     public @nullable VkPipelineDynamicStateCreateInfo pDynamicState() {
         MemorySegment s = pDynamicStateRaw();
         if (s.address() == 0) {

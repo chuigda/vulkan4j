@@ -64,7 +64,7 @@ public record VkRefreshObjectListKHR(MemorySegment segment) implements IPointer 
     public void pObjectsRaw(@pointer(comment="VkRefreshObjectKHR*") MemorySegment value) {
         segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
-    
+
     public @nullable VkRefreshObjectKHR pObjects() {
         MemorySegment s = pObjectsRaw();
         if (s.address() == 0) {

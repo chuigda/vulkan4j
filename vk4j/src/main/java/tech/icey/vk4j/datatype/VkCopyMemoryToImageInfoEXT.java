@@ -91,7 +91,7 @@ public record VkCopyMemoryToImageInfoEXT(MemorySegment segment) implements IPoin
     public void pRegionsRaw(@pointer(comment="VkMemoryToImageCopyEXT*") MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
-    
+
     public @nullable VkMemoryToImageCopyEXT pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {

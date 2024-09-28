@@ -37,7 +37,7 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) implements I
     public @pointer(target=VkDescriptorType.class) MemorySegment pDescriptorTypesRaw() {
         return segment.get(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes);
     }
-    
+
     public void pDescriptorTypesRaw(@pointer(target=VkDescriptorType.class) MemorySegment value) {
         segment.set(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes, value);
     }

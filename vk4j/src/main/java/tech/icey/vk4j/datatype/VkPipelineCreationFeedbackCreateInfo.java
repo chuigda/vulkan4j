@@ -57,7 +57,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) implem
     public void pPipelineCreationFeedbackRaw(@pointer(comment="VkPipelineCreationFeedback*") MemorySegment value) {
         segment.set(LAYOUT$pPipelineCreationFeedback, OFFSET$pPipelineCreationFeedback, value);
     }
-    
+
     public @nullable VkPipelineCreationFeedback pPipelineCreationFeedback() {
         MemorySegment s = pPipelineCreationFeedbackRaw();
         if (s.address() == 0) {
@@ -97,7 +97,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) implem
     public void pPipelineStageCreationFeedbacksRaw(@pointer(comment="VkPipelineCreationFeedback*") MemorySegment value) {
         segment.set(LAYOUT$pPipelineStageCreationFeedbacks, OFFSET$pPipelineStageCreationFeedbacks, value);
     }
-    
+
     public @nullable VkPipelineCreationFeedback pPipelineStageCreationFeedbacks() {
         MemorySegment s = pPipelineStageCreationFeedbacksRaw();
         if (s.address() == 0) {

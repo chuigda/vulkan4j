@@ -147,7 +147,7 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
     public @pointer(target=VkResult.class) MemorySegment pResultsRaw() {
         return segment.get(LAYOUT$pResults, OFFSET$pResults);
     }
-    
+
     public void pResultsRaw(@pointer(target=VkResult.class) MemorySegment value) {
         segment.set(LAYOUT$pResults, OFFSET$pResults, value);
     }

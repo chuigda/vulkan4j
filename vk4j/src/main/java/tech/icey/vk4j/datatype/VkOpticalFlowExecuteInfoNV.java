@@ -73,7 +73,7 @@ public record VkOpticalFlowExecuteInfoNV(MemorySegment segment) implements IPoin
     public void pRegionsRaw(@pointer(comment="VkRect2D*") MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
-    
+
     public @nullable VkRect2D pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {

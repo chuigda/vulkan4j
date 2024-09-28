@@ -55,7 +55,7 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(MemorySegment segment) im
     public void pSubpassFeedbackRaw(@pointer(comment="VkRenderPassSubpassFeedbackInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pSubpassFeedback, OFFSET$pSubpassFeedback, value);
     }
-    
+
     public @nullable VkRenderPassSubpassFeedbackInfoEXT pSubpassFeedback() {
         MemorySegment s = pSubpassFeedbackRaw();
         if (s.address() == 0) {

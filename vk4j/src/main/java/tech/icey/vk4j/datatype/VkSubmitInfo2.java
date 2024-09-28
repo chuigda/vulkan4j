@@ -77,7 +77,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
     public void pWaitSemaphoreInfosRaw(@pointer(comment="VkSemaphoreSubmitInfo*") MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphoreInfos, OFFSET$pWaitSemaphoreInfos, value);
     }
-    
+
     public @nullable VkSemaphoreSubmitInfo pWaitSemaphoreInfos() {
         MemorySegment s = pWaitSemaphoreInfosRaw();
         if (s.address() == 0) {
@@ -117,7 +117,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
     public void pCommandBufferInfosRaw(@pointer(comment="VkCommandBufferSubmitInfo*") MemorySegment value) {
         segment.set(LAYOUT$pCommandBufferInfos, OFFSET$pCommandBufferInfos, value);
     }
-    
+
     public @nullable VkCommandBufferSubmitInfo pCommandBufferInfos() {
         MemorySegment s = pCommandBufferInfosRaw();
         if (s.address() == 0) {
@@ -157,7 +157,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
     public void pSignalSemaphoreInfosRaw(@pointer(comment="VkSemaphoreSubmitInfo*") MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphoreInfos, OFFSET$pSignalSemaphoreInfos, value);
     }
-    
+
     public @nullable VkSemaphoreSubmitInfo pSignalSemaphoreInfos() {
         MemorySegment s = pSignalSemaphoreInfosRaw();
         if (s.address() == 0) {

@@ -82,7 +82,7 @@ public record VkCommandBufferInheritanceRenderingInfo(MemorySegment segment) imp
     public @pointer(target=VkFormat.class) MemorySegment pColorAttachmentFormatsRaw() {
         return segment.get(LAYOUT$pColorAttachmentFormats, OFFSET$pColorAttachmentFormats);
     }
-    
+
     public void pColorAttachmentFormatsRaw(@pointer(target=VkFormat.class) MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentFormats, OFFSET$pColorAttachmentFormats, value);
     }

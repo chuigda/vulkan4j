@@ -73,7 +73,7 @@ public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) imp
     public void pDepthStencilResolveAttachmentRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
         segment.set(LAYOUT$pDepthStencilResolveAttachment, OFFSET$pDepthStencilResolveAttachment, value);
     }
-    
+
     public @nullable VkAttachmentReference2 pDepthStencilResolveAttachment() {
         MemorySegment s = pDepthStencilResolveAttachmentRaw();
         if (s.address() == 0) {

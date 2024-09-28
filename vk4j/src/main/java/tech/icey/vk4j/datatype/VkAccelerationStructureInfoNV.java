@@ -91,7 +91,7 @@ public record VkAccelerationStructureInfoNV(MemorySegment segment) implements IP
     public void pGeometriesRaw(@pointer(comment="VkGeometryNV*") MemorySegment value) {
         segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
     }
-    
+
     public @nullable VkGeometryNV pGeometries() {
         MemorySegment s = pGeometriesRaw();
         if (s.address() == 0) {

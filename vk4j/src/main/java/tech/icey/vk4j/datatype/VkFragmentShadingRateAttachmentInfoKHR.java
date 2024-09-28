@@ -56,7 +56,7 @@ public record VkFragmentShadingRateAttachmentInfoKHR(MemorySegment segment) impl
     public void pFragmentShadingRateAttachmentRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
         segment.set(LAYOUT$pFragmentShadingRateAttachment, OFFSET$pFragmentShadingRateAttachment, value);
     }
-    
+
     public @nullable VkAttachmentReference2 pFragmentShadingRateAttachment() {
         MemorySegment s = pFragmentShadingRateAttachmentRaw();
         if (s.address() == 0) {

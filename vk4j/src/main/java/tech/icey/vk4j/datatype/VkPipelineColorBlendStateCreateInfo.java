@@ -92,7 +92,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) impleme
     public void pAttachmentsRaw(@pointer(comment="VkPipelineColorBlendAttachmentState*") MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
-    
+
     public @nullable VkPipelineColorBlendAttachmentState pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.address() == 0) {

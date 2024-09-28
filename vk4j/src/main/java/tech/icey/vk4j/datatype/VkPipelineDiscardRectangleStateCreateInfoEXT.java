@@ -82,7 +82,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
     public void pDiscardRectanglesRaw(@pointer(comment="VkRect2D*") MemorySegment value) {
         segment.set(LAYOUT$pDiscardRectangles, OFFSET$pDiscardRectangles, value);
     }
-    
+
     public @nullable VkRect2D pDiscardRectangles() {
         MemorySegment s = pDiscardRectanglesRaw();
         if (s.address() == 0) {

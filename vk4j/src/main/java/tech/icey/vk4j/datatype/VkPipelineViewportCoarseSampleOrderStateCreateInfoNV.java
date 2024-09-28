@@ -73,7 +73,7 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
     public void pCustomSampleOrdersRaw(@pointer(comment="VkCoarseSampleOrderCustomNV*") MemorySegment value) {
         segment.set(LAYOUT$pCustomSampleOrders, OFFSET$pCustomSampleOrders, value);
     }
-    
+
     public @nullable VkCoarseSampleOrderCustomNV pCustomSampleOrders() {
         MemorySegment s = pCustomSampleOrdersRaw();
         if (s.address() == 0) {

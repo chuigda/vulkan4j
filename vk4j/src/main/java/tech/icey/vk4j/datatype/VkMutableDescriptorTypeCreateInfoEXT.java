@@ -64,7 +64,7 @@ public record VkMutableDescriptorTypeCreateInfoEXT(MemorySegment segment) implem
     public void pMutableDescriptorTypeListsRaw(@pointer(comment="VkMutableDescriptorTypeListEXT*") MemorySegment value) {
         segment.set(LAYOUT$pMutableDescriptorTypeLists, OFFSET$pMutableDescriptorTypeLists, value);
     }
-    
+
     public @nullable VkMutableDescriptorTypeListEXT pMutableDescriptorTypeLists() {
         MemorySegment s = pMutableDescriptorTypeListsRaw();
         if (s.address() == 0) {

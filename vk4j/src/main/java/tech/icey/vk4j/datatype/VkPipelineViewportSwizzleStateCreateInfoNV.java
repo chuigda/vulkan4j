@@ -73,7 +73,7 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
     public void pViewportSwizzlesRaw(@pointer(comment="VkViewportSwizzleNV*") MemorySegment value) {
         segment.set(LAYOUT$pViewportSwizzles, OFFSET$pViewportSwizzles, value);
     }
-    
+
     public @nullable VkViewportSwizzleNV pViewportSwizzles() {
         MemorySegment s = pViewportSwizzlesRaw();
         if (s.address() == 0) {

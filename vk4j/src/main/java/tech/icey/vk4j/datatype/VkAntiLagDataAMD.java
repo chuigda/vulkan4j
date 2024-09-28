@@ -73,7 +73,7 @@ public record VkAntiLagDataAMD(MemorySegment segment) implements IPointer {
     public void pPresentationInfoRaw(@pointer(comment="VkAntiLagPresentationInfoAMD*") MemorySegment value) {
         segment.set(LAYOUT$pPresentationInfo, OFFSET$pPresentationInfo, value);
     }
-    
+
     public @nullable VkAntiLagPresentationInfoAMD pPresentationInfo() {
         MemorySegment s = pPresentationInfoRaw();
         if (s.address() == 0) {

@@ -70,7 +70,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
     public void pAddressInfosRaw(@pointer(comment="VkDeviceFaultAddressInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pAddressInfos, OFFSET$pAddressInfos, value);
     }
-    
+
     public @nullable VkDeviceFaultAddressInfoEXT pAddressInfos() {
         MemorySegment s = pAddressInfosRaw();
         if (s.address() == 0) {
@@ -102,7 +102,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
     public void pVendorInfosRaw(@pointer(comment="VkDeviceFaultVendorInfoEXT*") MemorySegment value) {
         segment.set(LAYOUT$pVendorInfos, OFFSET$pVendorInfos, value);
     }
-    
+
     public @nullable VkDeviceFaultVendorInfoEXT pVendorInfos() {
         MemorySegment s = pVendorInfosRaw();
         if (s.address() == 0) {

@@ -102,7 +102,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
     public void pImageInfoRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
         segment.set(LAYOUT$pImageInfo, OFFSET$pImageInfo, value);
     }
-    
+
     public @nullable VkDescriptorImageInfo pImageInfo() {
         MemorySegment s = pImageInfoRaw();
         if (s.address() == 0) {
@@ -134,7 +134,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
     public void pBufferInfoRaw(@pointer(comment="VkDescriptorBufferInfo*") MemorySegment value) {
         segment.set(LAYOUT$pBufferInfo, OFFSET$pBufferInfo, value);
     }
-    
+
     public @nullable VkDescriptorBufferInfo pBufferInfo() {
         MemorySegment s = pBufferInfoRaw();
         if (s.address() == 0) {

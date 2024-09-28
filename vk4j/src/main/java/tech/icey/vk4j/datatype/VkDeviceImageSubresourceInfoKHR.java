@@ -56,7 +56,7 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) implements 
     public void pCreateInfoRaw(@pointer(comment="VkImageCreateInfo*") MemorySegment value) {
         segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
-    
+
     public @nullable VkImageCreateInfo pCreateInfo() {
         MemorySegment s = pCreateInfoRaw();
         if (s.address() == 0) {
@@ -88,7 +88,7 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) implements 
     public void pSubresourceRaw(@pointer(comment="VkImageSubresource2KHR*") MemorySegment value) {
         segment.set(LAYOUT$pSubresource, OFFSET$pSubresource, value);
     }
-    
+
     public @nullable VkImageSubresource2KHR pSubresource() {
         MemorySegment s = pSubresourceRaw();
         if (s.address() == 0) {

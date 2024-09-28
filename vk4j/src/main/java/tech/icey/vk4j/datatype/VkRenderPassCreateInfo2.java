@@ -79,7 +79,7 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) implements IPointer
     public void pAttachmentsRaw(@pointer(comment="VkAttachmentDescription2*") MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
-    
+
     public @nullable VkAttachmentDescription2 pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.address() == 0) {
@@ -119,7 +119,7 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) implements IPointer
     public void pSubpassesRaw(@pointer(comment="VkSubpassDescription2*") MemorySegment value) {
         segment.set(LAYOUT$pSubpasses, OFFSET$pSubpasses, value);
     }
-    
+
     public @nullable VkSubpassDescription2 pSubpasses() {
         MemorySegment s = pSubpassesRaw();
         if (s.address() == 0) {
@@ -159,7 +159,7 @@ public record VkRenderPassCreateInfo2(MemorySegment segment) implements IPointer
     public void pDependenciesRaw(@pointer(comment="VkSubpassDependency2*") MemorySegment value) {
         segment.set(LAYOUT$pDependencies, OFFSET$pDependencies, value);
     }
-    
+
     public @nullable VkSubpassDependency2 pDependencies() {
         MemorySegment s = pDependenciesRaw();
         if (s.address() == 0) {

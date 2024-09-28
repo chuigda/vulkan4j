@@ -91,7 +91,7 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) implements IPoin
     public void pDescriptorWritesRaw(@pointer(comment="VkWriteDescriptorSet*") MemorySegment value) {
         segment.set(LAYOUT$pDescriptorWrites, OFFSET$pDescriptorWrites, value);
     }
-    
+
     public @nullable VkWriteDescriptorSet pDescriptorWrites() {
         MemorySegment s = pDescriptorWritesRaw();
         if (s.address() == 0) {

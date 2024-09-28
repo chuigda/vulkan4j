@@ -64,7 +64,7 @@ public record VkPresentTimesInfoGOOGLE(MemorySegment segment) implements IPointe
     public void pTimesRaw(@pointer(comment="VkPresentTimeGOOGLE*") MemorySegment value) {
         segment.set(LAYOUT$pTimes, OFFSET$pTimes, value);
     }
-    
+
     public @nullable VkPresentTimeGOOGLE pTimes() {
         MemorySegment s = pTimesRaw();
         if (s.address() == 0) {

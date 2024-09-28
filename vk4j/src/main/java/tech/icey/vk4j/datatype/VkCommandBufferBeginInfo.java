@@ -64,7 +64,7 @@ public record VkCommandBufferBeginInfo(MemorySegment segment) implements IPointe
     public void pInheritanceInfoRaw(@pointer(comment="VkCommandBufferInheritanceInfo*") MemorySegment value) {
         segment.set(LAYOUT$pInheritanceInfo, OFFSET$pInheritanceInfo, value);
     }
-    
+
     public @nullable VkCommandBufferInheritanceInfo pInheritanceInfo() {
         MemorySegment s = pInheritanceInfoRaw();
         if (s.address() == 0) {

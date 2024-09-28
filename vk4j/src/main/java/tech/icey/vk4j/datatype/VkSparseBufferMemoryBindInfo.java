@@ -50,7 +50,7 @@ public record VkSparseBufferMemoryBindInfo(MemorySegment segment) implements IPo
     public void pBindsRaw(@pointer(comment="VkSparseMemoryBind*") MemorySegment value) {
         segment.set(LAYOUT$pBinds, OFFSET$pBinds, value);
     }
-    
+
     public @nullable VkSparseMemoryBind pBinds() {
         MemorySegment s = pBindsRaw();
         if (s.address() == 0) {

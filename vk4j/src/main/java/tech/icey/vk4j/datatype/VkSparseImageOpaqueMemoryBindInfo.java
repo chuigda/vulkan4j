@@ -50,7 +50,7 @@ public record VkSparseImageOpaqueMemoryBindInfo(MemorySegment segment) implement
     public void pBindsRaw(@pointer(comment="VkSparseMemoryBind*") MemorySegment value) {
         segment.set(LAYOUT$pBinds, OFFSET$pBinds, value);
     }
-    
+
     public @nullable VkSparseMemoryBind pBinds() {
         MemorySegment s = pBindsRaw();
         if (s.address() == 0) {

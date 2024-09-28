@@ -64,7 +64,7 @@ public record VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segme
     public void pVertexBindingDivisorsRaw(@pointer(comment="VkVertexInputBindingDivisorDescriptionKHR*") MemorySegment value) {
         segment.set(LAYOUT$pVertexBindingDivisors, OFFSET$pVertexBindingDivisors, value);
     }
-    
+
     public @nullable VkVertexInputBindingDivisorDescriptionKHR pVertexBindingDivisors() {
         MemorySegment s = pVertexBindingDivisorsRaw();
         if (s.address() == 0) {

@@ -41,7 +41,7 @@ public record VkBaseInStructure(MemorySegment segment) implements IPointer {
     public void pNextRaw(@pointer(comment="VkBaseInStructure*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
-    
+
     public @nullable VkBaseInStructure pNext() {
         MemorySegment s = pNextRaw();
         if (s.address() == 0) {

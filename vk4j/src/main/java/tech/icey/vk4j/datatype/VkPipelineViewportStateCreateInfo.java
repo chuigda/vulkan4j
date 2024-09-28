@@ -75,7 +75,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implement
     public void pViewportsRaw(@pointer(comment="VkViewport*") MemorySegment value) {
         segment.set(LAYOUT$pViewports, OFFSET$pViewports, value);
     }
-    
+
     public @nullable VkViewport pViewports() {
         MemorySegment s = pViewportsRaw();
         if (s.address() == 0) {
@@ -115,7 +115,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implement
     public void pScissorsRaw(@pointer(comment="VkRect2D*") MemorySegment value) {
         segment.set(LAYOUT$pScissors, OFFSET$pScissors, value);
     }
-    
+
     public @nullable VkRect2D pScissors() {
         MemorySegment s = pScissorsRaw();
         if (s.address() == 0) {

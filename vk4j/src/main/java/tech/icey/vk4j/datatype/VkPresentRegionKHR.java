@@ -41,7 +41,7 @@ public record VkPresentRegionKHR(MemorySegment segment) implements IPointer {
     public void pRectanglesRaw(@pointer(comment="VkRectLayerKHR*") MemorySegment value) {
         segment.set(LAYOUT$pRectangles, OFFSET$pRectangles, value);
     }
-    
+
     public @nullable VkRectLayerKHR pRectangles() {
         MemorySegment s = pRectanglesRaw();
         if (s.address() == 0) {

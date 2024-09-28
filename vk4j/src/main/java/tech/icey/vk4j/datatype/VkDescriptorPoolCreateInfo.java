@@ -82,7 +82,7 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) implements IPoin
     public void pPoolSizesRaw(@pointer(comment="VkDescriptorPoolSize*") MemorySegment value) {
         segment.set(LAYOUT$pPoolSizes, OFFSET$pPoolSizes, value);
     }
-    
+
     public @nullable VkDescriptorPoolSize pPoolSizes() {
         MemorySegment s = pPoolSizesRaw();
         if (s.address() == 0) {

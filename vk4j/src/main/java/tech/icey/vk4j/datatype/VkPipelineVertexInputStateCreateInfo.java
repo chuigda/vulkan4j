@@ -75,7 +75,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) implem
     public void pVertexBindingDescriptionsRaw(@pointer(comment="VkVertexInputBindingDescription*") MemorySegment value) {
         segment.set(LAYOUT$pVertexBindingDescriptions, OFFSET$pVertexBindingDescriptions, value);
     }
-    
+
     public @nullable VkVertexInputBindingDescription pVertexBindingDescriptions() {
         MemorySegment s = pVertexBindingDescriptionsRaw();
         if (s.address() == 0) {
@@ -115,7 +115,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) implem
     public void pVertexAttributeDescriptionsRaw(@pointer(comment="VkVertexInputAttributeDescription*") MemorySegment value) {
         segment.set(LAYOUT$pVertexAttributeDescriptions, OFFSET$pVertexAttributeDescriptions, value);
     }
-    
+
     public @nullable VkVertexInputAttributeDescription pVertexAttributeDescriptions() {
         MemorySegment s = pVertexAttributeDescriptionsRaw();
         if (s.address() == 0) {
