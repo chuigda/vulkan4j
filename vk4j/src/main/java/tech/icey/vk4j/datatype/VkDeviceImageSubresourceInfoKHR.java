@@ -64,6 +64,10 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="VkImageCreateInfo*") MemorySegment pCreateInfoRaw() {
         return segment.get(LAYOUT$pCreateInfo, OFFSET$pCreateInfo);
     }

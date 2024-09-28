@@ -279,6 +279,10 @@ public record VkPhysicalDeviceVulkan13Properties(MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int minSubgroupSize() {
         return segment.get(LAYOUT$minSubgroupSize, OFFSET$minSubgroupSize);
     }

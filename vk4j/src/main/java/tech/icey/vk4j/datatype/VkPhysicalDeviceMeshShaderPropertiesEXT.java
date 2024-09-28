@@ -194,6 +194,10 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxTaskWorkGroupTotalCount() {
         return segment.get(LAYOUT$maxTaskWorkGroupTotalCount, OFFSET$maxTaskWorkGroupTotalCount);
     }

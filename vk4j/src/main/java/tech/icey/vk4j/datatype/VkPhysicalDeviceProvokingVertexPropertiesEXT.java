@@ -64,6 +64,10 @@ public record VkPhysicalDeviceProvokingVertexPropertiesEXT(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int provokingVertexModePerPipeline() {
         return segment.get(LAYOUT$provokingVertexModePerPipeline, OFFSET$provokingVertexModePerPipeline);
     }

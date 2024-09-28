@@ -59,6 +59,10 @@ public record VkPhysicalDeviceDiagnosticsConfigFeaturesNV(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int diagnosticsConfig() {
         return segment.get(LAYOUT$diagnosticsConfig, OFFSET$diagnosticsConfig);
     }

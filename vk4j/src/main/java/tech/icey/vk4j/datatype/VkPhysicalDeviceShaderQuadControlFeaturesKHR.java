@@ -59,6 +59,10 @@ public record VkPhysicalDeviceShaderQuadControlFeaturesKHR(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shaderQuadControl() {
         return segment.get(LAYOUT$shaderQuadControl, OFFSET$shaderQuadControl);
     }

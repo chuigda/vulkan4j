@@ -64,6 +64,10 @@ public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int sciBufImport() {
         return segment.get(LAYOUT$sciBufImport, OFFSET$sciBufImport);
     }

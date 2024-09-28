@@ -69,6 +69,10 @@ public record VkPhysicalDeviceFragmentDensityMapFeaturesEXT(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int fragmentDensityMap() {
         return segment.get(LAYOUT$fragmentDensityMap, OFFSET$fragmentDensityMap);
     }

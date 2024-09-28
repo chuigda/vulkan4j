@@ -64,6 +64,10 @@ public record VkDescriptorGetInfoEXT(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkDescriptorType.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }

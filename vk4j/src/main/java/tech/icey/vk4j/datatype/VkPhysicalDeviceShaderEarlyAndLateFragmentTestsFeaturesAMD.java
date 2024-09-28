@@ -59,6 +59,10 @@ public record VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(MemoryS
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shaderEarlyAndLateFragmentTests() {
         return segment.get(LAYOUT$shaderEarlyAndLateFragmentTests, OFFSET$shaderEarlyAndLateFragmentTests);
     }

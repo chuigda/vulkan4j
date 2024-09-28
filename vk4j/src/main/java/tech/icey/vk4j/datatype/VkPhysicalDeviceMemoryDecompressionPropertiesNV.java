@@ -64,6 +64,10 @@ public record VkPhysicalDeviceMemoryDecompressionPropertiesNV(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethods() {
         return segment.get(LAYOUT$decompressionMethods, OFFSET$decompressionMethods);
     }

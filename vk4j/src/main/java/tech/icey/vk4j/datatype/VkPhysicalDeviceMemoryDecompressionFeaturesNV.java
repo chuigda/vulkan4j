@@ -59,6 +59,10 @@ public record VkPhysicalDeviceMemoryDecompressionFeaturesNV(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int memoryDecompression() {
         return segment.get(LAYOUT$memoryDecompression, OFFSET$memoryDecompression);
     }

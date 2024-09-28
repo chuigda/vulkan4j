@@ -64,6 +64,10 @@ public record VkPhysicalDeviceShadingRateImageFeaturesNV(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shadingRateImage() {
         return segment.get(LAYOUT$shadingRateImage, OFFSET$shadingRateImage);
     }

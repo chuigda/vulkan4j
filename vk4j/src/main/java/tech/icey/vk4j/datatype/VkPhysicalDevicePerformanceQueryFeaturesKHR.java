@@ -64,6 +64,10 @@ public record VkPhysicalDevicePerformanceQueryFeaturesKHR(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int performanceCounterQueryPools() {
         return segment.get(LAYOUT$performanceCounterQueryPools, OFFSET$performanceCounterQueryPools);
     }

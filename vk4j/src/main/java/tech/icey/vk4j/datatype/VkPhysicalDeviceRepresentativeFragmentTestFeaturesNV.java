@@ -59,6 +59,10 @@ public record VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV(MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int representativeFragmentTest() {
         return segment.get(LAYOUT$representativeFragmentTest, OFFSET$representativeFragmentTest);
     }

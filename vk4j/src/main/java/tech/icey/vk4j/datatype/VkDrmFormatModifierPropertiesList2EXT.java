@@ -64,6 +64,10 @@ public record VkDrmFormatModifierPropertiesList2EXT(MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int drmFormatModifierCount() {
         return segment.get(LAYOUT$drmFormatModifierCount, OFFSET$drmFormatModifierCount);
     }

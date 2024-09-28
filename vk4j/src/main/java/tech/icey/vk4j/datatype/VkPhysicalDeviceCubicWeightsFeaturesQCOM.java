@@ -59,6 +59,10 @@ public record VkPhysicalDeviceCubicWeightsFeaturesQCOM(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int selectableCubicWeights() {
         return segment.get(LAYOUT$selectableCubicWeights, OFFSET$selectableCubicWeights);
     }

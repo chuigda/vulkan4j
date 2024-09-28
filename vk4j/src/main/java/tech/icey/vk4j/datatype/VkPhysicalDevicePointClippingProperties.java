@@ -59,6 +59,10 @@ public record VkPhysicalDevicePointClippingProperties(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkPointClippingBehavior.class) int pointClippingBehavior() {
         return segment.get(LAYOUT$pointClippingBehavior, OFFSET$pointClippingBehavior);
     }

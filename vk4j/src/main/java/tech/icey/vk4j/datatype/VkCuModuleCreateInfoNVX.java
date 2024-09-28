@@ -62,6 +62,10 @@ public record VkCuModuleCreateInfoNVX(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long dataSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$dataSize);
         }
@@ -76,6 +80,10 @@ public record VkCuModuleCreateInfoNVX(MemorySegment segment) implements IPointer
 
     public void pData(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
+    }
+
+    public void pData(IPointer pointer) {
+        pData(pointer.segment());
     }
 
     public static VkCuModuleCreateInfoNVX allocate(Arena arena) {

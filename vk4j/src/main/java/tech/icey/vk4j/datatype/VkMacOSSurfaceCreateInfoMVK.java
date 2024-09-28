@@ -64,6 +64,10 @@ public record VkMacOSSurfaceCreateInfoMVK(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkMacOSSurfaceCreateFlagsMVK.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -78,6 +82,10 @@ public record VkMacOSSurfaceCreateInfoMVK(MemorySegment segment) implements IPoi
 
     public void pView(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pView, OFFSET$pView, value);
+    }
+
+    public void pView(IPointer pointer) {
+        pView(pointer.segment());
     }
 
     public static VkMacOSSurfaceCreateInfoMVK allocate(Arena arena) {

@@ -74,6 +74,10 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int pciDomain() {
         return segment.get(LAYOUT$pciDomain, OFFSET$pciDomain);
     }

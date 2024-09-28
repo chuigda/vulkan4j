@@ -64,6 +64,10 @@ public record VkGetLatencyMarkerInfoNV(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int timingCount() {
         return segment.get(LAYOUT$timingCount, OFFSET$timingCount);
     }

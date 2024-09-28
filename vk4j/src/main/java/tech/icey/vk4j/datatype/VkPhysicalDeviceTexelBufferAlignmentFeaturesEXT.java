@@ -59,6 +59,10 @@ public record VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int texelBufferAlignment() {
         return segment.get(LAYOUT$texelBufferAlignment, OFFSET$texelBufferAlignment);
     }

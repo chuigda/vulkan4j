@@ -59,6 +59,10 @@ public record VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int perViewPositionAllComponents() {
         return segment.get(LAYOUT$perViewPositionAllComponents, OFFSET$perViewPositionAllComponents);
     }

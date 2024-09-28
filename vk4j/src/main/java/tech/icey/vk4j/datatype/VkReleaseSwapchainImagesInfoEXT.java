@@ -69,6 +69,10 @@ public record VkReleaseSwapchainImagesInfoEXT(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkSwapchainKHR swapchain() {
         return new VkSwapchainKHR(segment.get(LAYOUT$swapchain, OFFSET$swapchain));
     }
@@ -93,6 +97,11 @@ public record VkReleaseSwapchainImagesInfoEXT(MemorySegment segment) implements 
         segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
     }
 
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
     public @nullable @unsigned IntBuffer pImageIndices() {
         MemorySegment s = pImageIndicesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);

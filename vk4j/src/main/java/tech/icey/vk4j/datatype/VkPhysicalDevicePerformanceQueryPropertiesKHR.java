@@ -59,6 +59,10 @@ public record VkPhysicalDevicePerformanceQueryPropertiesKHR(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int allowCommandBufferQueryCopies() {
         return segment.get(LAYOUT$allowCommandBufferQueryCopies, OFFSET$allowCommandBufferQueryCopies);
     }

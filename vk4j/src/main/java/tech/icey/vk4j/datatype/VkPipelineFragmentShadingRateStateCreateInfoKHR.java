@@ -64,6 +64,10 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkExtent2D fragmentSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$fragmentSize, LAYOUT$fragmentSize));
     }

@@ -59,6 +59,10 @@ public record VkDisplayNativeHdrSurfaceCapabilitiesAMD(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int localDimmingSupport() {
         return segment.get(LAYOUT$localDimmingSupport, OFFSET$localDimmingSupport);
     }

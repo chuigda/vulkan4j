@@ -79,6 +79,10 @@ public record VkPhysicalDevicePipelineBinaryPropertiesKHR(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int pipelineBinaryInternalCache() {
         return segment.get(LAYOUT$pipelineBinaryInternalCache, OFFSET$pipelineBinaryInternalCache);
     }

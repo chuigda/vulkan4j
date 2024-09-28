@@ -59,6 +59,10 @@ public record VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR(MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int fragmentShaderBarycentric() {
         return segment.get(LAYOUT$fragmentShaderBarycentric, OFFSET$fragmentShaderBarycentric);
     }

@@ -64,6 +64,10 @@ public record VkDescriptorSetBindingReferenceVALVE(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkDescriptorSetLayout descriptorSetLayout() {
         return new VkDescriptorSetLayout(segment.get(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout));
     }

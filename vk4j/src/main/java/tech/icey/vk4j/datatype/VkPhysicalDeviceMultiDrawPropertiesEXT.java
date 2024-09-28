@@ -59,6 +59,10 @@ public record VkPhysicalDeviceMultiDrawPropertiesEXT(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxMultiDrawCount() {
         return segment.get(LAYOUT$maxMultiDrawCount, OFFSET$maxMultiDrawCount);
     }

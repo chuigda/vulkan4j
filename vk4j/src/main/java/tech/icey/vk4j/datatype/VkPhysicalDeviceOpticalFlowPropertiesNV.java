@@ -109,6 +109,10 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkOpticalFlowGridSizeFlagsNV.class) int supportedOutputGridSizes() {
         return segment.get(LAYOUT$supportedOutputGridSizes, OFFSET$supportedOutputGridSizes);
     }

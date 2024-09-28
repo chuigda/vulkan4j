@@ -59,6 +59,10 @@ public record VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int pipelineExecutableInfo() {
         return segment.get(LAYOUT$pipelineExecutableInfo, OFFSET$pipelineExecutableInfo);
     }

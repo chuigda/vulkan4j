@@ -64,6 +64,10 @@ public record VkPipelineBinaryInfoKHR(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int binaryCount() {
         return segment.get(LAYOUT$binaryCount, OFFSET$binaryCount);
     }
@@ -80,6 +84,11 @@ public record VkPipelineBinaryInfoKHR(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries, value);
     }
 
+    /// Note: the returned {@link VkPipelineBinaryKHR.Buffer} does not have correct
+    /// {@link VkPipelineBinaryKHR.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkPipelineBinaryKHR.Buffer#reinterpret} to set the size before actually
+    /// {@link VkPipelineBinaryKHR.Buffer#read}ing or {@link VkPipelineBinaryKHR.Buffer#write}ing
+    /// the buffer.
     public @nullable VkPipelineBinaryKHR.Buffer pPipelineBinaries() {
         MemorySegment s = pPipelineBinariesRaw();
         if (s.address() == 0) {

@@ -64,6 +64,10 @@ public record VkImageCompressionPropertiesEXT(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkImageCompressionFlagsEXT.class) int imageCompressionFlags() {
         return segment.get(LAYOUT$imageCompressionFlags, OFFSET$imageCompressionFlags);
     }

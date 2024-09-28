@@ -204,6 +204,10 @@ public record VkPhysicalDeviceShaderIntegerDotProductProperties(MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int integerDotProduct8BitUnsignedAccelerated() {
         return segment.get(LAYOUT$integerDotProduct8BitUnsignedAccelerated, OFFSET$integerDotProduct8BitUnsignedAccelerated);
     }

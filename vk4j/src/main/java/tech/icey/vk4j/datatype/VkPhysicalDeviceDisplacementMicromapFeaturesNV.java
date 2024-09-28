@@ -59,6 +59,10 @@ public record VkPhysicalDeviceDisplacementMicromapFeaturesNV(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int displacementMicromap() {
         return segment.get(LAYOUT$displacementMicromap, OFFSET$displacementMicromap);
     }

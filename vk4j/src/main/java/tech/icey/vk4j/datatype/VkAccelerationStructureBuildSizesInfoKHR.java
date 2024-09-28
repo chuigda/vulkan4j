@@ -69,6 +69,10 @@ public record VkAccelerationStructureBuildSizesInfoKHR(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long accelerationStructureSize() {
         return segment.get(LAYOUT$accelerationStructureSize, OFFSET$accelerationStructureSize);
     }

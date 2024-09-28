@@ -59,6 +59,10 @@ public record VkPhysicalDeviceShaderImageFootprintFeaturesNV(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int imageFootprint() {
         return segment.get(LAYOUT$imageFootprint, OFFSET$imageFootprint);
     }

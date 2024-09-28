@@ -64,6 +64,10 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int filterCubic() {
         return segment.get(LAYOUT$filterCubic, OFFSET$filterCubic);
     }

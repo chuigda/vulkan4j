@@ -99,6 +99,10 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public float primitiveOverestimationSize() {
         return segment.get(LAYOUT$primitiveOverestimationSize, OFFSET$primitiveOverestimationSize);
     }

@@ -69,6 +69,10 @@ public record VkAntiLagDataAMD(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkAntiLagModeAMD.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }

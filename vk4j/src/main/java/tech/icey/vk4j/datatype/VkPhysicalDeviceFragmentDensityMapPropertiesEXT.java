@@ -69,6 +69,10 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkExtent2D minFragmentDensityTexelSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$minFragmentDensityTexelSize, LAYOUT$minFragmentDensityTexelSize));
     }

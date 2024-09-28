@@ -99,6 +99,10 @@ public record VkScreenBufferFormatPropertiesQNX(MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }

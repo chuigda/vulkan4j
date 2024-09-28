@@ -69,6 +69,10 @@ public record VkDebugUtilsObjectNameInfoEXT(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkObjectType.class) int objectType() {
         return segment.get(LAYOUT$objectType, OFFSET$objectType);
     }
@@ -93,6 +97,11 @@ public record VkDebugUtilsObjectNameInfoEXT(MemorySegment segment) implements IP
         segment.set(LAYOUT$pObjectName, OFFSET$pObjectName, value);
     }
 
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
     public @nullable ByteBuffer pObjectName() {
         MemorySegment s = pObjectNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);

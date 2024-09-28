@@ -64,6 +64,10 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkExtent2D renderPassStripeGranularity() {
         return new VkExtent2D(segment.asSlice(OFFSET$renderPassStripeGranularity, LAYOUT$renderPassStripeGranularity));
     }

@@ -59,6 +59,10 @@ public record VkPhysicalDeviceNestedCommandBufferPropertiesEXT(MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxCommandBufferNestingLevel() {
         return segment.get(LAYOUT$maxCommandBufferNestingLevel, OFFSET$maxCommandBufferNestingLevel);
     }

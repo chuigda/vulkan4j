@@ -59,6 +59,10 @@ public record VkPhysicalDeviceAntiLagFeaturesAMD(MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int antiLag() {
         return segment.get(LAYOUT$antiLag, OFFSET$antiLag);
     }

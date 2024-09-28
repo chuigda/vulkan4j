@@ -59,6 +59,10 @@ public record VkSamplerYcbcrConversionImageFormatProperties(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int combinedImageSamplerDescriptorCount() {
         return segment.get(LAYOUT$combinedImageSamplerDescriptorCount, OFFSET$combinedImageSamplerDescriptorCount);
     }

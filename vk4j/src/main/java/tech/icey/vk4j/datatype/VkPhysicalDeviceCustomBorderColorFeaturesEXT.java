@@ -64,6 +64,10 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int customBorderColors() {
         return segment.get(LAYOUT$customBorderColors, OFFSET$customBorderColors);
     }

@@ -69,6 +69,10 @@ public record VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long shaderCoreMask() {
         return segment.get(LAYOUT$shaderCoreMask, OFFSET$shaderCoreMask);
     }

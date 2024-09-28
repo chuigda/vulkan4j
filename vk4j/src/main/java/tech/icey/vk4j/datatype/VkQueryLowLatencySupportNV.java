@@ -59,12 +59,20 @@ public record VkQueryLowLatencySupportNV(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment pQueriedLowLatencyData() {
         return segment.get(LAYOUT$pQueriedLowLatencyData, OFFSET$pQueriedLowLatencyData);
     }
 
     public void pQueriedLowLatencyData(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pQueriedLowLatencyData, OFFSET$pQueriedLowLatencyData, value);
+    }
+
+    public void pQueriedLowLatencyData(IPointer pointer) {
+        pQueriedLowLatencyData(pointer.segment());
     }
 
     public static VkQueryLowLatencySupportNV allocate(Arena arena) {

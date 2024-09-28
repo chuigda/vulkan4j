@@ -59,6 +59,10 @@ public record VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkQueueFlags.class) int supportedQueues() {
         return segment.get(LAYOUT$supportedQueues, OFFSET$supportedQueues);
     }

@@ -94,6 +94,10 @@ public record VkSubpassDependency2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int srcSubpass() {
         return segment.get(LAYOUT$srcSubpass, OFFSET$srcSubpass);
     }

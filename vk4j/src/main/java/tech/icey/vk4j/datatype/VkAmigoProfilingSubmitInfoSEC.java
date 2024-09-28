@@ -64,6 +64,10 @@ public record VkAmigoProfilingSubmitInfoSEC(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long firstDrawTimestamp() {
         return segment.get(LAYOUT$firstDrawTimestamp, OFFSET$firstDrawTimestamp);
     }

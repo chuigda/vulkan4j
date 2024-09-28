@@ -64,6 +64,10 @@ public record VkCuFunctionCreateInfoNVX(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkCuModuleNVX module() {
         return new VkCuModuleNVX(segment.get(LAYOUT$module, OFFSET$module));
     }
@@ -80,6 +84,11 @@ public record VkCuFunctionCreateInfoNVX(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
 
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
     public @nullable ByteBuffer pName() {
         MemorySegment s = pNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);

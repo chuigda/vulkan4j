@@ -59,6 +59,10 @@ public record VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int triStripVertexOrderIndependentOfProvokingVertex() {
         return segment.get(LAYOUT$triStripVertexOrderIndependentOfProvokingVertex, OFFSET$triStripVertexOrderIndependentOfProvokingVertex);
     }

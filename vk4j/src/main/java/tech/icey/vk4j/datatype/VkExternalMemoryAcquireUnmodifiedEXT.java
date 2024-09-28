@@ -59,6 +59,10 @@ public record VkExternalMemoryAcquireUnmodifiedEXT(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int acquireUnmodifiedMemory() {
         return segment.get(LAYOUT$acquireUnmodifiedMemory, OFFSET$acquireUnmodifiedMemory);
     }

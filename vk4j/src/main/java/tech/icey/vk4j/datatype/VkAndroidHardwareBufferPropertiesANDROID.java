@@ -64,6 +64,10 @@ public record VkAndroidHardwareBufferPropertiesANDROID(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long allocationSize() {
         return segment.get(LAYOUT$allocationSize, OFFSET$allocationSize);
     }

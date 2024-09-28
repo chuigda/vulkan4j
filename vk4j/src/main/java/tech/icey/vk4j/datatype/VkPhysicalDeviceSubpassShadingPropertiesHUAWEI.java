@@ -59,6 +59,10 @@ public record VkPhysicalDeviceSubpassShadingPropertiesHUAWEI(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxSubpassShadingWorkgroupSizeAspectRatio() {
         return segment.get(LAYOUT$maxSubpassShadingWorkgroupSizeAspectRatio, OFFSET$maxSubpassShadingWorkgroupSizeAspectRatio);
     }

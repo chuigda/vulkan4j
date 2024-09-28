@@ -51,6 +51,10 @@ public record VkPipelineBinaryDataKHR(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 
+    public void pData(IPointer pointer) {
+        pData(pointer.segment());
+    }
+
     public static VkPipelineBinaryDataKHR allocate(Arena arena) {
         return new VkPipelineBinaryDataKHR(arena.allocate(LAYOUT));
     }

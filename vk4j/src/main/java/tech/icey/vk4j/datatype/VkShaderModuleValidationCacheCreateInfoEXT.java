@@ -59,6 +59,10 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkValidationCacheEXT validationCache() {
         return new VkValidationCacheEXT(segment.get(LAYOUT$validationCache, OFFSET$validationCache));
     }

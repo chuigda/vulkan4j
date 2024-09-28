@@ -64,6 +64,10 @@ public record VkPhysicalDeviceMaintenance3Properties(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxPerSetDescriptors() {
         return segment.get(LAYOUT$maxPerSetDescriptors, OFFSET$maxPerSetDescriptors);
     }

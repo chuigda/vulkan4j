@@ -53,6 +53,10 @@ public record VkDeviceOrHostAddressConstAMDX(MemorySegment segment) implements I
         segment.set(LAYOUT$hostAddress, OFFSET$hostAddress, value);
     }
 
+    public void hostAddress(IPointer pointer) {
+        hostAddress(pointer.segment());
+    }
+
     public static VkDeviceOrHostAddressConstAMDX allocate(Arena arena) {
         return new VkDeviceOrHostAddressConstAMDX(arena.allocate(LAYOUT));
     }

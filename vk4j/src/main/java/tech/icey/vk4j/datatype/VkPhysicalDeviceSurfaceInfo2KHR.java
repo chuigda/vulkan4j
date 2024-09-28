@@ -59,6 +59,10 @@ public record VkPhysicalDeviceSurfaceInfo2KHR(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkSurfaceKHR surface() {
         return new VkSurfaceKHR(segment.get(LAYOUT$surface, OFFSET$surface));
     }

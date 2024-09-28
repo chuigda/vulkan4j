@@ -69,6 +69,10 @@ public record VkPhysicalDeviceImageProcessingFeaturesQCOM(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int textureSampleWeighted() {
         return segment.get(LAYOUT$textureSampleWeighted, OFFSET$textureSampleWeighted);
     }

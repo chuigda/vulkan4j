@@ -59,6 +59,10 @@ public record VkPhysicalDeviceProtectedMemoryFeatures(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int protectedMemory() {
         return segment.get(LAYOUT$protectedMemory, OFFSET$protectedMemory);
     }

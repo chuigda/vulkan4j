@@ -59,6 +59,10 @@ public record VkPhysicalDeviceExclusiveScissorFeaturesNV(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int exclusiveScissor() {
         return segment.get(LAYOUT$exclusiveScissor, OFFSET$exclusiveScissor);
     }

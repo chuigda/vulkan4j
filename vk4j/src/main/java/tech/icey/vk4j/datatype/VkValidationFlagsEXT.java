@@ -64,6 +64,10 @@ public record VkValidationFlagsEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int disabledValidationCheckCount() {
         return segment.get(LAYOUT$disabledValidationCheckCount, OFFSET$disabledValidationCheckCount);
     }
@@ -79,8 +83,13 @@ public record VkValidationFlagsEXT(MemorySegment segment) implements IPointer {
     public void pDisabledValidationChecksRaw(@pointer(target=VkValidationCheckEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pDisabledValidationChecks, OFFSET$pDisabledValidationChecks, value);
     }
-    
-    public @nullable IntBuffer pDisabledValidationChecks() {
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkValidationCheckEXT.class) IntBuffer pDisabledValidationChecks() {
         MemorySegment s = pDisabledValidationChecksRaw();
         if (s.address() == 0) {
             return null;
@@ -89,7 +98,7 @@ public record VkValidationFlagsEXT(MemorySegment segment) implements IPointer {
         return new IntBuffer(s);
     }
 
-    public void pDisabledValidationChecks(@nullable IntBuffer value) {
+    public void pDisabledValidationChecks(@nullable @enumtype(VkValidationCheckEXT.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDisabledValidationChecksRaw(s);
     }

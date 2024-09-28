@@ -104,6 +104,10 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxTransformFeedbackStreams() {
         return segment.get(LAYOUT$maxTransformFeedbackStreams, OFFSET$maxTransformFeedbackStreams);
     }

@@ -64,6 +64,10 @@ public record VkDirectDriverLoadingInfoLUNARG(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkDirectDriverLoadingFlagsLUNARG.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -78,6 +82,10 @@ public record VkDirectDriverLoadingInfoLUNARG(MemorySegment segment) implements 
 
     public void pfnGetInstanceProcAddr(@pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") MemorySegment value) {
         segment.set(LAYOUT$pfnGetInstanceProcAddr, OFFSET$pfnGetInstanceProcAddr, value);
+    }
+
+    public void pfnGetInstanceProcAddr(IPointer pointer) {
+        pfnGetInstanceProcAddr(pointer.segment());
     }
 
     public static VkDirectDriverLoadingInfoLUNARG allocate(Arena arena) {

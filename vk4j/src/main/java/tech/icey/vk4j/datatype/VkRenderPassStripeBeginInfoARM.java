@@ -64,6 +64,10 @@ public record VkRenderPassStripeBeginInfoARM(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int stripeInfoCount() {
         return segment.get(LAYOUT$stripeInfoCount, OFFSET$stripeInfoCount);
     }

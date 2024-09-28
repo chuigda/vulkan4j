@@ -59,6 +59,10 @@ public record VkCommandBufferInheritanceConditionalRenderingInfoEXT(MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int conditionalRenderingEnable() {
         return segment.get(LAYOUT$conditionalRenderingEnable, OFFSET$conditionalRenderingEnable);
     }

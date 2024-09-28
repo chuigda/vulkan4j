@@ -59,12 +59,20 @@ public record VkMemoryMapPlacedInfoEXT(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment pPlacedAddress() {
         return segment.get(LAYOUT$pPlacedAddress, OFFSET$pPlacedAddress);
     }
 
     public void pPlacedAddress(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pPlacedAddress, OFFSET$pPlacedAddress, value);
+    }
+
+    public void pPlacedAddress(IPointer pointer) {
+        pPlacedAddress(pointer.segment());
     }
 
     public static VkMemoryMapPlacedInfoEXT allocate(Arena arena) {

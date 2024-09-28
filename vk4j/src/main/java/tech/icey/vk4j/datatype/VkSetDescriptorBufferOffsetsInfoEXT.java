@@ -84,6 +84,10 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
@@ -124,6 +128,11 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) impleme
         segment.set(LAYOUT$pBufferIndices, OFFSET$pBufferIndices, value);
     }
 
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
     public @nullable @unsigned IntBuffer pBufferIndices() {
         MemorySegment s = pBufferIndicesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
@@ -142,6 +151,11 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) impleme
         segment.set(LAYOUT$pOffsets, OFFSET$pOffsets, value);
     }
 
+    /// Note: the returned {@link LongBuffer} does not have correct
+    /// {@link LongBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link LongBuffer#reinterpret} to set the size before actually
+    /// {@link LongBuffer#read}ing or
+    /// {@link LongBuffer#write}ing the buffer.
     public @nullable @unsigned LongBuffer pOffsets() {
         MemorySegment s = pOffsetsRaw();
         return s.address() == 0 ? null : new LongBuffer(s);

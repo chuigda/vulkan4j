@@ -59,6 +59,10 @@ public record VkMicromapVersionInfoEXT(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="uint8_t*") MemorySegment pVersionDataRaw() {
         return segment.get(LAYOUT$pVersionData, OFFSET$pVersionData);
     }
@@ -67,6 +71,11 @@ public record VkMicromapVersionInfoEXT(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pVersionData, OFFSET$pVersionData, value);
     }
 
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
     public @nullable @unsigned ByteBuffer pVersionData() {
         MemorySegment s = pVersionDataRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);

@@ -89,6 +89,10 @@ public record VkFramebufferAttachmentImageInfo(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkImageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -144,8 +148,13 @@ public record VkFramebufferAttachmentImageInfo(MemorySegment segment) implements
     public void pViewFormatsRaw(@pointer(target=VkFormat.class) MemorySegment value) {
         segment.set(LAYOUT$pViewFormats, OFFSET$pViewFormats, value);
     }
-    
-    public @nullable IntBuffer pViewFormats() {
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkFormat.class) IntBuffer pViewFormats() {
         MemorySegment s = pViewFormatsRaw();
         if (s.address() == 0) {
             return null;
@@ -154,7 +163,7 @@ public record VkFramebufferAttachmentImageInfo(MemorySegment segment) implements
         return new IntBuffer(s);
     }
 
-    public void pViewFormats(@nullable IntBuffer value) {
+    public void pViewFormats(@nullable @enumtype(VkFormat.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewFormatsRaw(s);
     }

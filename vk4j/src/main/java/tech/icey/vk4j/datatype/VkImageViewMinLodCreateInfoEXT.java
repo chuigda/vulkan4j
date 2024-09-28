@@ -59,6 +59,10 @@ public record VkImageViewMinLodCreateInfoEXT(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public float minLod() {
         return segment.get(LAYOUT$minLod, OFFSET$minLod);
     }

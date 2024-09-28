@@ -59,6 +59,10 @@ public record VkPhysicalDevicePresentWaitFeaturesKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int presentWait() {
         return segment.get(LAYOUT$presentWait, OFFSET$presentWait);
     }

@@ -59,6 +59,10 @@ public record VkSamplerYcbcrConversionInfo(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkSamplerYcbcrConversion conversion() {
         return new VkSamplerYcbcrConversion(segment.get(LAYOUT$conversion, OFFSET$conversion));
     }

@@ -59,6 +59,10 @@ public record VkDeviceEventInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkDeviceEventTypeEXT.class) int deviceEvent() {
         return segment.get(LAYOUT$deviceEvent, OFFSET$deviceEvent);
     }

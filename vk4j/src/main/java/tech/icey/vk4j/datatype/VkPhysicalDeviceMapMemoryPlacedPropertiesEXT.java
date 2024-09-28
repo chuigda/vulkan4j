@@ -59,6 +59,10 @@ public record VkPhysicalDeviceMapMemoryPlacedPropertiesEXT(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long minPlacedMemoryMapAlignment() {
         return segment.get(LAYOUT$minPlacedMemoryMapAlignment, OFFSET$minPlacedMemoryMapAlignment);
     }

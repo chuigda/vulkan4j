@@ -59,6 +59,10 @@ public record VkDisplayPlaneProperties2KHR(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkDisplayPlanePropertiesKHR displayPlaneProperties() {
         return new VkDisplayPlanePropertiesKHR(segment.asSlice(OFFSET$displayPlaneProperties, LAYOUT$displayPlaneProperties));
     }

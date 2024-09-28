@@ -109,6 +109,10 @@ public record VkGeometryTrianglesNV(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkBuffer vertexData() {
         return new VkBuffer(segment.get(LAYOUT$vertexData, OFFSET$vertexData));
     }

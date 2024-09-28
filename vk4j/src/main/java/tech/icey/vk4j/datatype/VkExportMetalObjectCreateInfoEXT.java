@@ -59,6 +59,10 @@ public record VkExportMetalObjectCreateInfoEXT(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkExportMetalObjectTypeFlagsEXT.class) int exportObjectType() {
         return segment.get(LAYOUT$exportObjectType, OFFSET$exportObjectType);
     }

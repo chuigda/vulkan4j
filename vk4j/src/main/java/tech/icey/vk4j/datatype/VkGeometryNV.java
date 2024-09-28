@@ -69,6 +69,10 @@ public record VkGeometryNV(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkGeometryTypeKHR.class) int geometryType() {
         return segment.get(LAYOUT$geometryType, OFFSET$geometryType);
     }

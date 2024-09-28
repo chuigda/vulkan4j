@@ -64,6 +64,10 @@ public record VkBufferCollectionImageCreateInfoFUCHSIA(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkBufferCollectionFUCHSIA collection() {
         return new VkBufferCollectionFUCHSIA(segment.get(LAYOUT$collection, OFFSET$collection));
     }

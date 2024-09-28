@@ -59,6 +59,10 @@ public record VkPhysicalDeviceMemoryProperties2(MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkPhysicalDeviceMemoryProperties memoryProperties() {
         return new VkPhysicalDeviceMemoryProperties(segment.asSlice(OFFSET$memoryProperties, LAYOUT$memoryProperties));
     }

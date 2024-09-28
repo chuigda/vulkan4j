@@ -69,6 +69,10 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int srcPremultiplied() {
         return segment.get(LAYOUT$srcPremultiplied, OFFSET$srcPremultiplied);
     }

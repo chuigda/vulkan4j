@@ -69,6 +69,10 @@ public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int extendedDynamicState2() {
         return segment.get(LAYOUT$extendedDynamicState2, OFFSET$extendedDynamicState2);
     }

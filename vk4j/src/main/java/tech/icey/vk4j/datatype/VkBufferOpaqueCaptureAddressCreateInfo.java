@@ -59,6 +59,10 @@ public record VkBufferOpaqueCaptureAddressCreateInfo(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long opaqueCaptureAddress() {
         return segment.get(LAYOUT$opaqueCaptureAddress, OFFSET$opaqueCaptureAddress);
     }

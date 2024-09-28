@@ -64,6 +64,10 @@ public record VkDeviceGroupPresentCapabilitiesKHR(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public MemorySegment presentMaskRaw() {
         return segment.asSlice(OFFSET$presentMask, SIZE$presentMask);
     }

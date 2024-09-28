@@ -180,26 +180,26 @@ public final class Engine implements AutoCloseable {
 
             if (hasValidationLayerSupport) {
                 PointerBuffer ppEnabledLayerNames = PointerBuffer.allocate(localArena);
-                ppEnabledLayerNames.write(NameConstants.validationLayerNameByteArray.segment());
+                ppEnabledLayerNames.write(NameConstants.validationLayerNameByteArray);
 
                 PointerBuffer ppEnabledExtensionNames = PointerBuffer.allocate(localArena, extensionCount + 1);
                 for (int i = 0; i < extensionCount; i++) {
                     ppEnabledExtensionNames.write(i, glfwRequiredExtensions.read(i));
                 }
-                ppEnabledExtensionNames.write(extensionCount, NameConstants.validationExtensionNameByteArray.segment());
+                ppEnabledExtensionNames.write(extensionCount, NameConstants.validationExtensionNameByteArray);
 
                 instanceCreateInfo.enabledLayerCount(1);
-                instanceCreateInfo.ppEnabledLayerNames(ppEnabledLayerNames.segment());
+                instanceCreateInfo.ppEnabledLayerNames(ppEnabledLayerNames);
                 instanceCreateInfo.enabledExtensionCount(extensionCount + 1);
-                instanceCreateInfo.ppEnabledExtensionNames(ppEnabledExtensionNames.segment());
+                instanceCreateInfo.ppEnabledExtensionNames(ppEnabledExtensionNames);
 
                 var debugMessengerCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.allocate(localArena);
                 populateDebugMessengerCreateInfo(debugMessengerCreateInfo);
-                instanceCreateInfo.pNext(debugMessengerCreateInfo.segment());
+                instanceCreateInfo.pNext(debugMessengerCreateInfo);
             }
             else {
                 instanceCreateInfo.enabledExtensionCount(pExtensionCount.read());
-                instanceCreateInfo.ppEnabledExtensionNames(glfwRequiredExtensions.segment());
+                instanceCreateInfo.ppEnabledExtensionNames(glfwRequiredExtensions);
             }
 
             var pInstance = VkInstance.Buffer.allocate(localArena);
@@ -311,8 +311,8 @@ public final class Engine implements AutoCloseable {
                 var features2 = VkPhysicalDeviceFeatures2.allocate(localArena);
                 var featuresVk12 = VkPhysicalDeviceVulkan12Features.allocate(localArena);
                 var featuresVk13 = VkPhysicalDeviceVulkan13Features.allocate(localArena);
-                features2.pNext(featuresVk12.segment());
-                featuresVk12.pNext(featuresVk13.segment());
+                features2.pNext(featuresVk12);
+                featuresVk12.pNext(featuresVk13);
                 instanceCommands.vkGetPhysicalDeviceFeatures2(physicalDevice, features2);
 
                 if (featuresVk12.bufferDeviceAddress() == Constants.VK_FALSE ||
@@ -482,8 +482,8 @@ public final class Engine implements AutoCloseable {
             deviceCreateInfo.pEnabledFeatures(deviceFeatures);
             deviceCreateInfo.enabledExtensionCount(1);
             var ppEnabledExtensionNames = PointerBuffer.allocate(localArena);
-            ppEnabledExtensionNames.write(NameConstants.swapchainExtensionNameByteArray.segment());
-            deviceCreateInfo.ppEnabledExtensionNames(ppEnabledExtensionNames.segment());
+            ppEnabledExtensionNames.write(NameConstants.swapchainExtensionNameByteArray);
+            deviceCreateInfo.ppEnabledExtensionNames(ppEnabledExtensionNames);
 
             var pPriority = FloatBuffer.allocate(localArena);
             pPriority.write(0, 1.0f);

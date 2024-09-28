@@ -59,6 +59,10 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkSampleCountFlags.class) int maxFragmentShadingRateInvocationCount() {
         return segment.get(LAYOUT$maxFragmentShadingRateInvocationCount, OFFSET$maxFragmentShadingRateInvocationCount);
     }

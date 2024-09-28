@@ -64,6 +64,10 @@ public record VkPhysicalDevice4444FormatsFeaturesEXT(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int formatA4R4G4B4() {
         return segment.get(LAYOUT$formatA4R4G4B4, OFFSET$formatA4R4G4B4);
     }

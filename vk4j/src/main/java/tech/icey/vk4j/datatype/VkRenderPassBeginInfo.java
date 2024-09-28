@@ -79,6 +79,10 @@ public record VkRenderPassBeginInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkRenderPass renderPass() {
         return new VkRenderPass(segment.get(LAYOUT$renderPass, OFFSET$renderPass));
     }

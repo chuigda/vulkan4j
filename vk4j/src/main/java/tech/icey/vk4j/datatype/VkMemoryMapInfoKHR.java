@@ -74,6 +74,10 @@ public record VkMemoryMapInfoKHR(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkMemoryMapFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }

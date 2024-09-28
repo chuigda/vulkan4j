@@ -59,6 +59,10 @@ public record VkSurfaceCapabilitiesPresentBarrierNV(MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int presentBarrierSupported() {
         return segment.get(LAYOUT$presentBarrierSupported, OFFSET$presentBarrierSupported);
     }

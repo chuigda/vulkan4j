@@ -64,6 +64,10 @@ public record VkImportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkImageAspectFlags.class) int plane() {
         return segment.get(LAYOUT$plane, OFFSET$plane);
     }
@@ -78,6 +82,10 @@ public record VkImportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
 
     public void mtlTexture(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$mtlTexture, OFFSET$mtlTexture, value);
+    }
+
+    public void mtlTexture(IPointer pointer) {
+        mtlTexture(pointer.segment());
     }
 
     public static VkImportMetalTextureInfoEXT allocate(Arena arena) {

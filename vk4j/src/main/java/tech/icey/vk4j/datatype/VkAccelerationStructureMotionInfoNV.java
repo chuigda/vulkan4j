@@ -64,6 +64,10 @@ public record VkAccelerationStructureMotionInfoNV(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxInstances() {
         return segment.get(LAYOUT$maxInstances, OFFSET$maxInstances);
     }

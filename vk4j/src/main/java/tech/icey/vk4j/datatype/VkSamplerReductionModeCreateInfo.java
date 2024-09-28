@@ -59,6 +59,10 @@ public record VkSamplerReductionModeCreateInfo(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkSamplerReductionMode.class) int reductionMode() {
         return segment.get(LAYOUT$reductionMode, OFFSET$reductionMode);
     }

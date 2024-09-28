@@ -69,6 +69,10 @@ public record VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkDirectFBSurfaceCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -85,12 +89,20 @@ public record VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) implements I
         segment.set(LAYOUT$dfb, OFFSET$dfb, value);
     }
 
+    public void dfb(IPointer pointer) {
+        dfb(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment surface() {
         return segment.get(LAYOUT$surface, OFFSET$surface);
     }
 
     public void surface(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$surface, OFFSET$surface, value);
+    }
+
+    public void surface(IPointer pointer) {
+        surface(pointer.segment());
     }
 
     public static VkDirectFBSurfaceCreateInfoEXT allocate(Arena arena) {

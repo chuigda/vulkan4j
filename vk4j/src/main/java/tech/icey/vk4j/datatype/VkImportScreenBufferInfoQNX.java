@@ -59,12 +59,20 @@ public record VkImportScreenBufferInfoQNX(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment buffer() {
         return segment.get(LAYOUT$buffer, OFFSET$buffer);
     }
 
     public void buffer(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$buffer, OFFSET$buffer, value);
+    }
+
+    public void buffer(IPointer pointer) {
+        buffer(pointer.segment());
     }
 
     public static VkImportScreenBufferInfoQNX allocate(Arena arena) {

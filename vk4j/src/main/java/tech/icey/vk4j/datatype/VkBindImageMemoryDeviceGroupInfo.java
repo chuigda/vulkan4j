@@ -74,6 +74,10 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int deviceIndexCount() {
         return segment.get(LAYOUT$deviceIndexCount, OFFSET$deviceIndexCount);
     }
@@ -90,6 +94,11 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) implements
         segment.set(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices, value);
     }
 
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
     public @nullable @unsigned IntBuffer pDeviceIndices() {
         MemorySegment s = pDeviceIndicesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);

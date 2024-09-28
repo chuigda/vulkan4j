@@ -64,6 +64,10 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkExtent2D windowExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$windowExtent, LAYOUT$windowExtent));
     }

@@ -59,6 +59,10 @@ public record VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV(MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int descriptorPoolOverallocation() {
         return segment.get(LAYOUT$descriptorPoolOverallocation, OFFSET$descriptorPoolOverallocation);
     }

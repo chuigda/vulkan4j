@@ -59,6 +59,10 @@ public record VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int extendedSparseAddressSpace() {
         return segment.get(LAYOUT$extendedSparseAddressSpace, OFFSET$extendedSparseAddressSpace);
     }

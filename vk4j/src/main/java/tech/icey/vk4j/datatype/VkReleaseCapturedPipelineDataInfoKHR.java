@@ -59,6 +59,10 @@ public record VkReleaseCapturedPipelineDataInfoKHR(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkPipeline pipeline() {
         return new VkPipeline(segment.get(LAYOUT$pipeline, OFFSET$pipeline));
     }

@@ -59,6 +59,10 @@ public record VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int nonSeamlessCubeMap() {
         return segment.get(LAYOUT$nonSeamlessCubeMap, OFFSET$nonSeamlessCubeMap);
     }

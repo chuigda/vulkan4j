@@ -64,6 +64,10 @@ public record VkPhysicalDeviceProvokingVertexFeaturesEXT(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int provokingVertexLast() {
         return segment.get(LAYOUT$provokingVertexLast, OFFSET$provokingVertexLast);
     }

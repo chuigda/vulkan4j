@@ -59,12 +59,20 @@ public record VkOpaqueCaptureDescriptorDataCreateInfoEXT(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment opaqueCaptureDescriptorData() {
         return segment.get(LAYOUT$opaqueCaptureDescriptorData, OFFSET$opaqueCaptureDescriptorData);
     }
 
     public void opaqueCaptureDescriptorData(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$opaqueCaptureDescriptorData, OFFSET$opaqueCaptureDescriptorData, value);
+    }
+
+    public void opaqueCaptureDescriptorData(IPointer pointer) {
+        opaqueCaptureDescriptorData(pointer.segment());
     }
 
     public static VkOpaqueCaptureDescriptorDataCreateInfoEXT allocate(Arena arena) {

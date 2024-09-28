@@ -59,6 +59,10 @@ public record VkPhysicalDevicePresentBarrierFeaturesNV(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int presentBarrier() {
         return segment.get(LAYOUT$presentBarrier, OFFSET$presentBarrier);
     }

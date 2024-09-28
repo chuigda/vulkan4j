@@ -59,6 +59,10 @@ public record VkBufferDeviceAddressInfo(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkBuffer buffer() {
         return new VkBuffer(segment.get(LAYOUT$buffer, OFFSET$buffer));
     }

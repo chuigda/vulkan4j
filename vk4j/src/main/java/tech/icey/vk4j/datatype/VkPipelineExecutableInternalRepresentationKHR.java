@@ -77,6 +77,10 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public MemorySegment nameRaw() {
         return segment.asSlice(OFFSET$name, SIZE$name);
     }
@@ -123,6 +127,10 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
 
     public void pData(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
+    }
+
+    public void pData(IPointer pointer) {
+        pData(pointer.segment());
     }
 
     public static VkPipelineExecutableInternalRepresentationKHR allocate(Arena arena) {

@@ -54,6 +54,10 @@ public record VkExportMetalObjectsInfoEXT(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public static VkExportMetalObjectsInfoEXT allocate(Arena arena) {
         return new VkExportMetalObjectsInfoEXT(arena.allocate(LAYOUT));
     }

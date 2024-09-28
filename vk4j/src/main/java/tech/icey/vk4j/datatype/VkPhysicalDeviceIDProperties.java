@@ -79,6 +79,10 @@ public record VkPhysicalDeviceIDProperties(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public MemorySegment deviceUUIDRaw() {
         return segment.asSlice(OFFSET$deviceUUID, SIZE$deviceUUID);
     }

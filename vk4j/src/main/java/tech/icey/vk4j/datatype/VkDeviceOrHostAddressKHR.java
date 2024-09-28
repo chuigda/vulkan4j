@@ -53,6 +53,10 @@ public record VkDeviceOrHostAddressKHR(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$hostAddress, OFFSET$hostAddress, value);
     }
 
+    public void hostAddress(IPointer pointer) {
+        hostAddress(pointer.segment());
+    }
+
     public static VkDeviceOrHostAddressKHR allocate(Arena arena) {
         return new VkDeviceOrHostAddressKHR(arena.allocate(LAYOUT));
     }

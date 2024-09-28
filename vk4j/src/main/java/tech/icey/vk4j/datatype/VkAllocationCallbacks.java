@@ -65,12 +65,20 @@ public record VkAllocationCallbacks(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
     }
 
+    public void pUserData(IPointer pointer) {
+        pUserData(pointer.segment());
+    }
+
     public @pointer(comment="PFN_vkAllocationFunction") MemorySegment pfnAllocation() {
         return segment.get(LAYOUT$pfnAllocation, OFFSET$pfnAllocation);
     }
 
     public void pfnAllocation(@pointer(comment="PFN_vkAllocationFunction") MemorySegment value) {
         segment.set(LAYOUT$pfnAllocation, OFFSET$pfnAllocation, value);
+    }
+
+    public void pfnAllocation(IPointer pointer) {
+        pfnAllocation(pointer.segment());
     }
 
     public @pointer(comment="PFN_vkReallocationFunction") MemorySegment pfnReallocation() {
@@ -81,12 +89,20 @@ public record VkAllocationCallbacks(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pfnReallocation, OFFSET$pfnReallocation, value);
     }
 
+    public void pfnReallocation(IPointer pointer) {
+        pfnReallocation(pointer.segment());
+    }
+
     public @pointer(comment="PFN_vkFreeFunction") MemorySegment pfnFree() {
         return segment.get(LAYOUT$pfnFree, OFFSET$pfnFree);
     }
 
     public void pfnFree(@pointer(comment="PFN_vkFreeFunction") MemorySegment value) {
         segment.set(LAYOUT$pfnFree, OFFSET$pfnFree, value);
+    }
+
+    public void pfnFree(IPointer pointer) {
+        pfnFree(pointer.segment());
     }
 
     public @pointer(comment="PFN_vkInternalAllocationNotification") MemorySegment pfnInternalAllocation() {
@@ -97,12 +113,20 @@ public record VkAllocationCallbacks(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pfnInternalAllocation, OFFSET$pfnInternalAllocation, value);
     }
 
+    public void pfnInternalAllocation(IPointer pointer) {
+        pfnInternalAllocation(pointer.segment());
+    }
+
     public @pointer(comment="PFN_vkInternalFreeNotification") MemorySegment pfnInternalFree() {
         return segment.get(LAYOUT$pfnInternalFree, OFFSET$pfnInternalFree);
     }
 
     public void pfnInternalFree(@pointer(comment="PFN_vkInternalFreeNotification") MemorySegment value) {
         segment.set(LAYOUT$pfnInternalFree, OFFSET$pfnInternalFree, value);
+    }
+
+    public void pfnInternalFree(IPointer pointer) {
+        pfnInternalFree(pointer.segment());
     }
 
     public static VkAllocationCallbacks allocate(Arena arena) {

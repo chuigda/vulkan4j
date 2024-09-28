@@ -94,6 +94,10 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkDeviceCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -149,12 +153,25 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$enabledLayerCount, OFFSET$enabledLayerCount, value);
     }
 
-    public @pointer(comment="void**") MemorySegment ppEnabledLayerNames() {
+    public @pointer(comment="void**") MemorySegment ppEnabledLayerNamesRaw() {
         return segment.get(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames);
     }
 
-    public void ppEnabledLayerNames(@pointer(comment="void**") MemorySegment value) {
+    public void ppEnabledLayerNamesRaw(@pointer(comment="void**") MemorySegment value) {
         segment.set(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames, value);
+    }
+
+    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the
+    /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
+    ///
+    /// @see PointerBuffer
+    public PointerBuffer ppEnabledLayerNames() {
+        return new PointerBuffer(ppEnabledLayerNamesRaw());
+    }
+
+    public void ppEnabledLayerNames(PointerBuffer value) {
+        ppEnabledLayerNamesRaw(value.segment());
     }
 
     public @unsigned int enabledExtensionCount() {
@@ -165,12 +182,25 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$enabledExtensionCount, OFFSET$enabledExtensionCount, value);
     }
 
-    public @pointer(comment="void**") MemorySegment ppEnabledExtensionNames() {
+    public @pointer(comment="void**") MemorySegment ppEnabledExtensionNamesRaw() {
         return segment.get(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames);
     }
 
-    public void ppEnabledExtensionNames(@pointer(comment="void**") MemorySegment value) {
+    public void ppEnabledExtensionNamesRaw(@pointer(comment="void**") MemorySegment value) {
         segment.set(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames, value);
+    }
+
+    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the
+    /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
+    ///
+    /// @see PointerBuffer
+    public PointerBuffer ppEnabledExtensionNames() {
+        return new PointerBuffer(ppEnabledExtensionNamesRaw());
+    }
+
+    public void ppEnabledExtensionNames(PointerBuffer value) {
+        ppEnabledExtensionNamesRaw(value.segment());
     }
 
     public @pointer(comment="VkPhysicalDeviceFeatures*") MemorySegment pEnabledFeaturesRaw() {

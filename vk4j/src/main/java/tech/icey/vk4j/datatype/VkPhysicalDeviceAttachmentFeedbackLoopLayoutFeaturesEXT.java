@@ -59,6 +59,10 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int attachmentFeedbackLoopLayout() {
         return segment.get(LAYOUT$attachmentFeedbackLoopLayout, OFFSET$attachmentFeedbackLoopLayout);
     }

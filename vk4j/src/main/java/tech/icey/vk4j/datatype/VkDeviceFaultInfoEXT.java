@@ -74,6 +74,10 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, SIZE$description);
     }
@@ -154,6 +158,10 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
 
     public void pVendorBinaryData(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pVendorBinaryData, OFFSET$pVendorBinaryData, value);
+    }
+
+    public void pVendorBinaryData(IPointer pointer) {
+        pVendorBinaryData(pointer.segment());
     }
 
     public static VkDeviceFaultInfoEXT allocate(Arena arena) {

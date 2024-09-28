@@ -104,6 +104,10 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int waitSemaphoreCount() {
         return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
     }
@@ -120,6 +124,11 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
 
+    /// Note: the returned {@link VkSemaphore.Buffer} does not have correct
+    /// {@link VkSemaphore.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
+    /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
+    /// the buffer.
     public @nullable VkSemaphore.Buffer pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.address() == 0) {
@@ -266,6 +275,11 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
 
+    /// Note: the returned {@link VkSemaphore.Buffer} does not have correct
+    /// {@link VkSemaphore.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
+    /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
+    /// the buffer.
     public @nullable VkSemaphore.Buffer pSignalSemaphores() {
         MemorySegment s = pSignalSemaphoresRaw();
         if (s.address() == 0) {

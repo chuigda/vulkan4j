@@ -64,6 +64,10 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkShaderCorePropertiesFlagsAMD.class) int shaderCoreFeatures() {
         return segment.get(LAYOUT$shaderCoreFeatures, OFFSET$shaderCoreFeatures);
     }

@@ -59,6 +59,10 @@ public record VkDisplayPowerInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkDisplayPowerStateEXT.class) int powerState() {
         return segment.get(LAYOUT$powerState, OFFSET$powerState);
     }

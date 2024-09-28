@@ -59,6 +59,10 @@ public record VkPresentFrameTokenGGP(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int frameToken() {
         return segment.get(LAYOUT$frameToken, OFFSET$frameToken);
     }

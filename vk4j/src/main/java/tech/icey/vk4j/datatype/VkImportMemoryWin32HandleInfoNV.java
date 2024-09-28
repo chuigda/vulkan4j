@@ -64,6 +64,10 @@ public record VkImportMemoryWin32HandleInfoNV(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkExternalMemoryHandleTypeFlagsNV.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
@@ -78,6 +82,10 @@ public record VkImportMemoryWin32HandleInfoNV(MemorySegment segment) implements 
 
     public void handle(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$handle, OFFSET$handle, value);
+    }
+
+    public void handle(IPointer pointer) {
+        handle(pointer.segment());
     }
 
     public static VkImportMemoryWin32HandleInfoNV allocate(Arena arena) {

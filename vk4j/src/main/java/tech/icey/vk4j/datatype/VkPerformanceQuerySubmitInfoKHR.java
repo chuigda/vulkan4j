@@ -59,6 +59,10 @@ public record VkPerformanceQuerySubmitInfoKHR(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int counterPassIndex() {
         return segment.get(LAYOUT$counterPassIndex, OFFSET$counterPassIndex);
     }

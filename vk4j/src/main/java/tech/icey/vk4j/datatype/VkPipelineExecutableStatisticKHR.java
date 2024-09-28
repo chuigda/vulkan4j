@@ -74,6 +74,10 @@ public record VkPipelineExecutableStatisticKHR(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public MemorySegment nameRaw() {
         return segment.asSlice(OFFSET$name, SIZE$name);
     }

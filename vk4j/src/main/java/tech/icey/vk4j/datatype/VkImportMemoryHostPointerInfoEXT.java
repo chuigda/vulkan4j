@@ -64,6 +64,10 @@ public record VkImportMemoryHostPointerInfoEXT(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
@@ -78,6 +82,10 @@ public record VkImportMemoryHostPointerInfoEXT(MemorySegment segment) implements
 
     public void pHostPointer(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pHostPointer, OFFSET$pHostPointer, value);
+    }
+
+    public void pHostPointer(IPointer pointer) {
+        pHostPointer(pointer.segment());
     }
 
     public static VkImportMemoryHostPointerInfoEXT allocate(Arena arena) {

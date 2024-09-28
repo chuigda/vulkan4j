@@ -59,6 +59,10 @@ public record VkPhysicalDevicePrivateDataFeatures(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int privateData() {
         return segment.get(LAYOUT$privateData, OFFSET$privateData);
     }

@@ -60,6 +60,11 @@ public record VkLayerSettingEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pLayerName, OFFSET$pLayerName, value);
     }
 
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
     public @nullable ByteBuffer pLayerName() {
         MemorySegment s = pLayerNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
@@ -78,6 +83,11 @@ public record VkLayerSettingEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pSettingName, OFFSET$pSettingName, value);
     }
 
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
     public @nullable ByteBuffer pSettingName() {
         MemorySegment s = pSettingNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
@@ -110,6 +120,10 @@ public record VkLayerSettingEXT(MemorySegment segment) implements IPointer {
 
     public void pValues(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
+    }
+
+    public void pValues(IPointer pointer) {
+        pValues(pointer.segment());
     }
 
     public static VkLayerSettingEXT allocate(Arena arena) {

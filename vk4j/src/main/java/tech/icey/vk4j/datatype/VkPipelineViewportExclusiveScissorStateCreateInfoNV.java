@@ -64,6 +64,10 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int exclusiveScissorCount() {
         return segment.get(LAYOUT$exclusiveScissorCount, OFFSET$exclusiveScissorCount);
     }

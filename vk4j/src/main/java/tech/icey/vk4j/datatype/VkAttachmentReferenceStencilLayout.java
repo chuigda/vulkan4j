@@ -59,6 +59,10 @@ public record VkAttachmentReferenceStencilLayout(MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkImageLayout.class) int stencilLayout() {
         return segment.get(LAYOUT$stencilLayout, OFFSET$stencilLayout);
     }

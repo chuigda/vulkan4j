@@ -59,6 +59,10 @@ public record VkSurfaceProtectedCapabilitiesKHR(MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int supportsProtected() {
         return segment.get(LAYOUT$supportsProtected, OFFSET$supportsProtected);
     }

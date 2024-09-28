@@ -64,6 +64,10 @@ public record VkCommandBufferSubmitInfo(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkCommandBuffer commandBuffer() {
         return new VkCommandBuffer(segment.get(LAYOUT$commandBuffer, OFFSET$commandBuffer));
     }

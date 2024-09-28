@@ -59,6 +59,10 @@ public record VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM(MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int multiviewPerViewRenderAreas() {
         return segment.get(LAYOUT$multiviewPerViewRenderAreas, OFFSET$multiviewPerViewRenderAreas);
     }

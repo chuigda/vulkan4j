@@ -74,6 +74,10 @@ public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int waitSemaphoreValuesCount() {
         return segment.get(LAYOUT$waitSemaphoreValuesCount, OFFSET$waitSemaphoreValuesCount);
     }
@@ -90,6 +94,11 @@ public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pWaitSemaphoreValues, OFFSET$pWaitSemaphoreValues, value);
     }
 
+    /// Note: the returned {@link LongBuffer} does not have correct
+    /// {@link LongBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link LongBuffer#reinterpret} to set the size before actually
+    /// {@link LongBuffer#read}ing or
+    /// {@link LongBuffer#write}ing the buffer.
     public @nullable @unsigned LongBuffer pWaitSemaphoreValues() {
         MemorySegment s = pWaitSemaphoreValuesRaw();
         return s.address() == 0 ? null : new LongBuffer(s);
@@ -116,6 +125,11 @@ public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pSignalSemaphoreValues, OFFSET$pSignalSemaphoreValues, value);
     }
 
+    /// Note: the returned {@link LongBuffer} does not have correct
+    /// {@link LongBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link LongBuffer#reinterpret} to set the size before actually
+    /// {@link LongBuffer#read}ing or
+    /// {@link LongBuffer#write}ing the buffer.
     public @nullable @unsigned LongBuffer pSignalSemaphoreValues() {
         MemorySegment s = pSignalSemaphoreValuesRaw();
         return s.address() == 0 ? null : new LongBuffer(s);

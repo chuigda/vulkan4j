@@ -54,6 +54,10 @@ public record VkPipelineCreateInfoKHR(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public static VkPipelineCreateInfoKHR allocate(Arena arena) {
         return new VkPipelineCreateInfoKHR(arena.allocate(LAYOUT));
     }

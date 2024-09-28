@@ -64,6 +64,10 @@ public record VkDedicatedAllocationMemoryAllocateInfoNV(MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkImage image() {
         return new VkImage(segment.get(LAYOUT$image, OFFSET$image));
     }

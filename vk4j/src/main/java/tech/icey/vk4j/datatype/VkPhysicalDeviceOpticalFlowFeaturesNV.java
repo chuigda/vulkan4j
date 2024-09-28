@@ -59,6 +59,10 @@ public record VkPhysicalDeviceOpticalFlowFeaturesNV(MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int opticalFlow() {
         return segment.get(LAYOUT$opticalFlow, OFFSET$opticalFlow);
     }

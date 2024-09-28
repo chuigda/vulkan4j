@@ -59,6 +59,10 @@ public record VkPhysicalDevicePipelinePropertiesFeaturesEXT(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int pipelinePropertiesIdentifier() {
         return segment.get(LAYOUT$pipelinePropertiesIdentifier, OFFSET$pipelinePropertiesIdentifier);
     }

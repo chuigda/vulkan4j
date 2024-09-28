@@ -59,6 +59,10 @@ public record VkImageStencilUsageCreateInfo(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkImageUsageFlags.class) int stencilUsage() {
         return segment.get(LAYOUT$stencilUsage, OFFSET$stencilUsage);
     }

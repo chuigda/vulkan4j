@@ -64,6 +64,10 @@ public record VkHostImageCopyDevicePerformanceQueryEXT(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int optimalDeviceAccess() {
         return segment.get(LAYOUT$optimalDeviceAccess, OFFSET$optimalDeviceAccess);
     }

@@ -59,6 +59,10 @@ public record VkPhysicalDeviceRenderPassStripedFeaturesARM(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int renderPassStriped() {
         return segment.get(LAYOUT$renderPassStriped, OFFSET$renderPassStriped);
     }

@@ -59,6 +59,10 @@ public record VkAndroidHardwareBufferFormatResolvePropertiesANDROID(MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkFormat.class) int colorAttachmentFormat() {
         return segment.get(LAYOUT$colorAttachmentFormat, OFFSET$colorAttachmentFormat);
     }

@@ -59,6 +59,10 @@ public record VkPhysicalDevicePortabilitySubsetPropertiesKHR(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int minVertexInputBindingStrideAlignment() {
         return segment.get(LAYOUT$minVertexInputBindingStrideAlignment, OFFSET$minVertexInputBindingStrideAlignment);
     }

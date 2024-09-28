@@ -92,6 +92,11 @@ public record VkDescriptorSetLayoutBinding(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pImmutableSamplers, OFFSET$pImmutableSamplers, value);
     }
 
+    /// Note: the returned {@link VkSampler.Buffer} does not have correct
+    /// {@link VkSampler.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkSampler.Buffer#reinterpret} to set the size before actually
+    /// {@link VkSampler.Buffer#read}ing or {@link VkSampler.Buffer#write}ing
+    /// the buffer.
     public @nullable VkSampler.Buffer pImmutableSamplers() {
         MemorySegment s = pImmutableSamplersRaw();
         if (s.address() == 0) {

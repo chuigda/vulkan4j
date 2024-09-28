@@ -84,6 +84,10 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int waitSemaphoreCount() {
         return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
     }
@@ -100,6 +104,11 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
 
+    /// Note: the returned {@link VkSemaphore.Buffer} does not have correct
+    /// {@link VkSemaphore.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
+    /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
+    /// the buffer.
     public @nullable VkSemaphore.Buffer pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.address() == 0) {
@@ -129,6 +138,11 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pSwapchains, OFFSET$pSwapchains, value);
     }
 
+    /// Note: the returned {@link VkSwapchainKHR.Buffer} does not have correct
+    /// {@link VkSwapchainKHR.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkSwapchainKHR.Buffer#reinterpret} to set the size before actually
+    /// {@link VkSwapchainKHR.Buffer#read}ing or {@link VkSwapchainKHR.Buffer#write}ing
+    /// the buffer.
     public @nullable VkSwapchainKHR.Buffer pSwapchains() {
         MemorySegment s = pSwapchainsRaw();
         if (s.address() == 0) {
@@ -150,6 +164,11 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
     }
 
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
     public @nullable @unsigned IntBuffer pImageIndices() {
         MemorySegment s = pImageIndicesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
@@ -167,8 +186,13 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
     public void pResultsRaw(@pointer(target=VkResult.class) MemorySegment value) {
         segment.set(LAYOUT$pResults, OFFSET$pResults, value);
     }
-    
-    public @nullable IntBuffer pResults() {
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkResult.class) IntBuffer pResults() {
         MemorySegment s = pResultsRaw();
         if (s.address() == 0) {
             return null;
@@ -177,7 +201,7 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
         return new IntBuffer(s);
     }
 
-    public void pResults(@nullable IntBuffer value) {
+    public void pResults(@nullable @enumtype(VkResult.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResultsRaw(s);
     }

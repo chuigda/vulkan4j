@@ -69,6 +69,10 @@ public record VkCommandBufferAllocateInfo(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkCommandPool commandPool() {
         return new VkCommandPool(segment.get(LAYOUT$commandPool, OFFSET$commandPool));
     }

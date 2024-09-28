@@ -64,6 +64,10 @@ public record VkMetalSurfaceCreateInfoEXT(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkMetalSurfaceCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -78,6 +82,10 @@ public record VkMetalSurfaceCreateInfoEXT(MemorySegment segment) implements IPoi
 
     public void pLayer(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pLayer, OFFSET$pLayer, value);
+    }
+
+    public void pLayer(IPointer pointer) {
+        pLayer(pointer.segment());
     }
 
     public static VkMetalSurfaceCreateInfoEXT allocate(Arena arena) {

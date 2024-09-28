@@ -59,6 +59,10 @@ public record VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int legacyVertexAttributes() {
         return segment.get(LAYOUT$legacyVertexAttributes, OFFSET$legacyVertexAttributes);
     }

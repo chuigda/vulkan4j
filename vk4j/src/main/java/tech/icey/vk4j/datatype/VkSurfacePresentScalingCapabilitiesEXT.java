@@ -79,6 +79,10 @@ public record VkSurfacePresentScalingCapabilitiesEXT(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkPresentScalingFlagsEXT.class) int supportedPresentScaling() {
         return segment.get(LAYOUT$supportedPresentScaling, OFFSET$supportedPresentScaling);
     }

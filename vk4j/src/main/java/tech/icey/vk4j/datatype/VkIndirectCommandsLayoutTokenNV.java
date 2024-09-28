@@ -119,6 +119,10 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkIndirectCommandsTokenTypeNV.class) int tokenType() {
         return segment.get(LAYOUT$tokenType, OFFSET$tokenType);
     }
@@ -214,8 +218,13 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements 
     public void pIndexTypesRaw(@pointer(target=VkIndexType.class) MemorySegment value) {
         segment.set(LAYOUT$pIndexTypes, OFFSET$pIndexTypes, value);
     }
-    
-    public @nullable IntBuffer pIndexTypes() {
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkIndexType.class) IntBuffer pIndexTypes() {
         MemorySegment s = pIndexTypesRaw();
         if (s.address() == 0) {
             return null;
@@ -224,7 +233,7 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements 
         return new IntBuffer(s);
     }
 
-    public void pIndexTypes(@nullable IntBuffer value) {
+    public void pIndexTypes(@nullable @enumtype(VkIndexType.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pIndexTypesRaw(s);
     }
@@ -237,6 +246,11 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements 
         segment.set(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues, value);
     }
 
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
     public @nullable @unsigned IntBuffer pIndexTypeValues() {
         MemorySegment s = pIndexTypeValuesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);

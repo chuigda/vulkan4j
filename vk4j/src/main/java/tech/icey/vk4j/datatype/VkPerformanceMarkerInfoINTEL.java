@@ -59,6 +59,10 @@ public record VkPerformanceMarkerInfoINTEL(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long marker() {
         return segment.get(LAYOUT$marker, OFFSET$marker);
     }

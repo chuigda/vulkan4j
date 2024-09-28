@@ -69,6 +69,10 @@ public record VkQueryPoolPerformanceCreateInfoKHR(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int queueFamilyIndex() {
         return segment.get(LAYOUT$queueFamilyIndex, OFFSET$queueFamilyIndex);
     }
@@ -93,6 +97,11 @@ public record VkQueryPoolPerformanceCreateInfoKHR(MemorySegment segment) impleme
         segment.set(LAYOUT$pCounterIndices, OFFSET$pCounterIndices, value);
     }
 
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
     public @nullable @unsigned IntBuffer pCounterIndices() {
         MemorySegment s = pCounterIndicesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);

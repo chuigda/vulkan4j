@@ -69,6 +69,10 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkCoarseSampleOrderTypeNV.class) int sampleOrderType() {
         return segment.get(LAYOUT$sampleOrderType, OFFSET$sampleOrderType);
     }

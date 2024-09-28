@@ -59,6 +59,10 @@ public record VkPhysicalDeviceTilePropertiesFeaturesQCOM(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int tileProperties() {
         return segment.get(LAYOUT$tileProperties, OFFSET$tileProperties);
     }

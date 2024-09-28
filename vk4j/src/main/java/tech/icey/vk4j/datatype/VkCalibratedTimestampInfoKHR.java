@@ -59,6 +59,10 @@ public record VkCalibratedTimestampInfoKHR(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkTimeDomainKHR.class) int timeDomain() {
         return segment.get(LAYOUT$timeDomain, OFFSET$timeDomain);
     }

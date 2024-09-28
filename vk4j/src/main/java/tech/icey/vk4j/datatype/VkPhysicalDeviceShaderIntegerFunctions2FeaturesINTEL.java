@@ -59,6 +59,10 @@ public record VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shaderIntegerFunctions2() {
         return segment.get(LAYOUT$shaderIntegerFunctions2, OFFSET$shaderIntegerFunctions2);
     }

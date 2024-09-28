@@ -79,6 +79,10 @@ public record VkApplicationInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="int8_t*") MemorySegment pApplicationNameRaw() {
         return segment.get(LAYOUT$pApplicationName, OFFSET$pApplicationName);
     }
@@ -87,6 +91,11 @@ public record VkApplicationInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pApplicationName, OFFSET$pApplicationName, value);
     }
 
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
     public @nullable ByteBuffer pApplicationName() {
         MemorySegment s = pApplicationNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
@@ -113,6 +122,11 @@ public record VkApplicationInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pEngineName, OFFSET$pEngineName, value);
     }
 
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
     public @nullable ByteBuffer pEngineName() {
         MemorySegment s = pEngineNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);

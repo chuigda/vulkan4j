@@ -69,6 +69,10 @@ public record VkSwapchainPresentScalingCreateInfoEXT(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkPresentScalingFlagsEXT.class) int scalingBehavior() {
         return segment.get(LAYOUT$scalingBehavior, OFFSET$scalingBehavior);
     }

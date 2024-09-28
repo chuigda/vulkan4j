@@ -69,6 +69,10 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkFragmentShadingRateTypeNV.class) int shadingRateType() {
         return segment.get(LAYOUT$shadingRateType, OFFSET$shadingRateType);
     }

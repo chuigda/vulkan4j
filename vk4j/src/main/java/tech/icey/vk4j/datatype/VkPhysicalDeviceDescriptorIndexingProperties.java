@@ -169,6 +169,10 @@ public record VkPhysicalDeviceDescriptorIndexingProperties(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxUpdateAfterBindDescriptorsInAllPools() {
         return segment.get(LAYOUT$maxUpdateAfterBindDescriptorsInAllPools, OFFSET$maxUpdateAfterBindDescriptorsInAllPools);
     }

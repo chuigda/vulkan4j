@@ -79,6 +79,10 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkPipelineLayoutCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -103,6 +107,11 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
 
+    /// Note: the returned {@link VkDescriptorSetLayout.Buffer} does not have correct
+    /// {@link VkDescriptorSetLayout.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkDescriptorSetLayout.Buffer#reinterpret} to set the size before actually
+    /// {@link VkDescriptorSetLayout.Buffer#read}ing or {@link VkDescriptorSetLayout.Buffer#write}ing
+    /// the buffer.
     public @nullable VkDescriptorSetLayout.Buffer pSetLayouts() {
         MemorySegment s = pSetLayoutsRaw();
         if (s.address() == 0) {

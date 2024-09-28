@@ -64,6 +64,10 @@ public record VkFramebufferAttachmentsCreateInfo(MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int attachmentImageInfoCount() {
         return segment.get(LAYOUT$attachmentImageInfoCount, OFFSET$attachmentImageInfoCount);
     }

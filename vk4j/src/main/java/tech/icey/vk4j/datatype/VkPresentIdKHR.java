@@ -64,6 +64,10 @@ public record VkPresentIdKHR(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int swapchainCount() {
         return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
     }
@@ -80,6 +84,11 @@ public record VkPresentIdKHR(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pPresentIds, OFFSET$pPresentIds, value);
     }
 
+    /// Note: the returned {@link LongBuffer} does not have correct
+    /// {@link LongBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link LongBuffer#reinterpret} to set the size before actually
+    /// {@link LongBuffer#read}ing or
+    /// {@link LongBuffer#write}ing the buffer.
     public @nullable @unsigned LongBuffer pPresentIds() {
         MemorySegment s = pPresentIdsRaw();
         return s.address() == 0 ? null : new LongBuffer(s);

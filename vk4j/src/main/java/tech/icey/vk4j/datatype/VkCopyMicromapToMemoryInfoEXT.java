@@ -69,6 +69,10 @@ public record VkCopyMicromapToMemoryInfoEXT(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkMicromapEXT src() {
         return new VkMicromapEXT(segment.get(LAYOUT$src, OFFSET$src));
     }

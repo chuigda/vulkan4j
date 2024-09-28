@@ -59,6 +59,10 @@ public record VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(Memory
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shaderRelaxedExtendedInstruction() {
         return segment.get(LAYOUT$shaderRelaxedExtendedInstruction, OFFSET$shaderRelaxedExtendedInstruction);
     }

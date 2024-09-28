@@ -59,6 +59,10 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM(MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int fragmentDensityMapOffset() {
         return segment.get(LAYOUT$fragmentDensityMapOffset, OFFSET$fragmentDensityMapOffset);
     }

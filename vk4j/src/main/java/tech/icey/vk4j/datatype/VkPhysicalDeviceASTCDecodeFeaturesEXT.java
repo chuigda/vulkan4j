@@ -59,6 +59,10 @@ public record VkPhysicalDeviceASTCDecodeFeaturesEXT(MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int decodeModeSharedExponent() {
         return segment.get(LAYOUT$decodeModeSharedExponent, OFFSET$decodeModeSharedExponent);
     }

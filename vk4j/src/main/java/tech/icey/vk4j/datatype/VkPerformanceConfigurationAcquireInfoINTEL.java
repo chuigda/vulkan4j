@@ -59,6 +59,10 @@ public record VkPerformanceConfigurationAcquireInfoINTEL(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkPerformanceConfigurationTypeINTEL.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }

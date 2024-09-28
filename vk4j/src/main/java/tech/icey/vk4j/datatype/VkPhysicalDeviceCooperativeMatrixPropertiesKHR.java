@@ -59,6 +59,10 @@ public record VkPhysicalDeviceCooperativeMatrixPropertiesKHR(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkShaderStageFlags.class) int cooperativeMatrixSupportedStages() {
         return segment.get(LAYOUT$cooperativeMatrixSupportedStages, OFFSET$cooperativeMatrixSupportedStages);
     }

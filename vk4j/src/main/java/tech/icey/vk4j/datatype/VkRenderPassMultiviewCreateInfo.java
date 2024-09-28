@@ -84,6 +84,10 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int subpassCount() {
         return segment.get(LAYOUT$subpassCount, OFFSET$subpassCount);
     }
@@ -100,6 +104,11 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) implements 
         segment.set(LAYOUT$pViewMasks, OFFSET$pViewMasks, value);
     }
 
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
     public @nullable @unsigned IntBuffer pViewMasks() {
         MemorySegment s = pViewMasksRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
@@ -126,6 +135,11 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) implements 
         segment.set(LAYOUT$pViewOffsets, OFFSET$pViewOffsets, value);
     }
 
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
     public @nullable IntBuffer pViewOffsets() {
         MemorySegment s = pViewOffsetsRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
@@ -152,6 +166,11 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) implements 
         segment.set(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks, value);
     }
 
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
     public @nullable @unsigned IntBuffer pCorrelationMasks() {
         MemorySegment s = pCorrelationMasksRaw();
         return s.address() == 0 ? null : new IntBuffer(s);

@@ -59,6 +59,10 @@ public record VkPhysicalDeviceCornerSampledImageFeaturesNV(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int cornerSampledImage() {
         return segment.get(LAYOUT$cornerSampledImage, OFFSET$cornerSampledImage);
     }

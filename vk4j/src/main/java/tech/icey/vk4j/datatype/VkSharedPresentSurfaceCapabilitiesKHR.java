@@ -59,6 +59,10 @@ public record VkSharedPresentSurfaceCapabilitiesKHR(MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkImageUsageFlags.class) int sharedPresentSupportedUsageFlags() {
         return segment.get(LAYOUT$sharedPresentSupportedUsageFlags, OFFSET$sharedPresentSupportedUsageFlags);
     }

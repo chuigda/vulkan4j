@@ -69,6 +69,10 @@ public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkOffset2D filterCenter() {
         return new VkOffset2D(segment.asSlice(OFFSET$filterCenter, LAYOUT$filterCenter));
     }

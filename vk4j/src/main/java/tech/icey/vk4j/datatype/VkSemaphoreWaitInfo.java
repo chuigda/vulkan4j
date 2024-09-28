@@ -74,6 +74,10 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkSemaphoreWaitFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -98,6 +102,11 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pSemaphores, OFFSET$pSemaphores, value);
     }
 
+    /// Note: the returned {@link VkSemaphore.Buffer} does not have correct
+    /// {@link VkSemaphore.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
+    /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
+    /// the buffer.
     public @nullable VkSemaphore.Buffer pSemaphores() {
         MemorySegment s = pSemaphoresRaw();
         if (s.address() == 0) {
@@ -119,6 +128,11 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
 
+    /// Note: the returned {@link LongBuffer} does not have correct
+    /// {@link LongBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link LongBuffer#reinterpret} to set the size before actually
+    /// {@link LongBuffer#read}ing or
+    /// {@link LongBuffer#write}ing the buffer.
     public @nullable @unsigned LongBuffer pValues() {
         MemorySegment s = pValuesRaw();
         return s.address() == 0 ? null : new LongBuffer(s);

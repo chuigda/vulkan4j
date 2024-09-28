@@ -59,6 +59,10 @@ public record VkPipelinePropertiesIdentifierEXT(MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public MemorySegment pipelineIdentifierRaw() {
         return segment.asSlice(OFFSET$pipelineIdentifier, SIZE$pipelineIdentifier);
     }

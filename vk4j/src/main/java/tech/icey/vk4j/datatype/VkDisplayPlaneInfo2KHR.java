@@ -64,6 +64,10 @@ public record VkDisplayPlaneInfo2KHR(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkDisplayModeKHR mode() {
         return new VkDisplayModeKHR(segment.get(LAYOUT$mode, OFFSET$mode));
     }

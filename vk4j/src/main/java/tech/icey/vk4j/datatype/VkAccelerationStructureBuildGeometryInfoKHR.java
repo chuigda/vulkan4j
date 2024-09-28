@@ -99,6 +99,10 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkAccelerationStructureTypeKHR.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
@@ -178,12 +182,25 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         pGeometriesRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment ppGeometries() {
+    public @pointer(comment="void**") MemorySegment ppGeometriesRaw() {
         return segment.get(LAYOUT$ppGeometries, OFFSET$ppGeometries);
     }
 
-    public void ppGeometries(@pointer(comment="void**") MemorySegment value) {
+    public void ppGeometriesRaw(@pointer(comment="void**") MemorySegment value) {
         segment.set(LAYOUT$ppGeometries, OFFSET$ppGeometries, value);
+    }
+
+    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the
+    /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
+    ///
+    /// @see PointerBuffer
+    public PointerBuffer ppGeometries() {
+        return new PointerBuffer(ppGeometriesRaw());
+    }
+
+    public void ppGeometries(PointerBuffer value) {
+        ppGeometriesRaw(value.segment());
     }
 
     public VkDeviceOrHostAddressKHR scratchData() {

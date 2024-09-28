@@ -59,6 +59,10 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkSampler sampler() {
         return new VkSampler(segment.get(LAYOUT$sampler, OFFSET$sampler));
     }

@@ -59,6 +59,10 @@ public record VkPipelineBinaryDataInfoKHR(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkPipelineBinaryKHR pipelineBinary() {
         return new VkPipelineBinaryKHR(segment.get(LAYOUT$pipelineBinary, OFFSET$pipelineBinary));
     }

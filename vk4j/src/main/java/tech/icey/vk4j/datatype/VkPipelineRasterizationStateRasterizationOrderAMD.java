@@ -59,6 +59,10 @@ public record VkPipelineRasterizationStateRasterizationOrderAMD(MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkRasterizationOrderAMD.class) int rasterizationOrder() {
         return segment.get(LAYOUT$rasterizationOrder, OFFSET$rasterizationOrder);
     }

@@ -59,6 +59,10 @@ public record VkDevicePipelineBinaryInternalCacheControlKHR(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int disableInternalCache() {
         return segment.get(LAYOUT$disableInternalCache, OFFSET$disableInternalCache);
     }

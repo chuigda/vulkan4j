@@ -64,6 +64,10 @@ public record VkMemoryGetWin32HandleInfoKHR(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkDeviceMemory memory() {
         return new VkDeviceMemory(segment.get(LAYOUT$memory, OFFSET$memory));
     }

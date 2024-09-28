@@ -64,6 +64,10 @@ public record VkRenderPassAttachmentBeginInfo(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int attachmentCount() {
         return segment.get(LAYOUT$attachmentCount, OFFSET$attachmentCount);
     }
@@ -80,6 +84,11 @@ public record VkRenderPassAttachmentBeginInfo(MemorySegment segment) implements 
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
+    /// Note: the returned {@link VkImageView.Buffer} does not have correct
+    /// {@link VkImageView.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkImageView.Buffer#reinterpret} to set the size before actually
+    /// {@link VkImageView.Buffer#read}ing or {@link VkImageView.Buffer#write}ing
+    /// the buffer.
     public @nullable VkImageView.Buffer pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.address() == 0) {

@@ -52,8 +52,13 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) implements I
     public void pDescriptorTypesRaw(@pointer(target=VkDescriptorType.class) MemorySegment value) {
         segment.set(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes, value);
     }
-    
-    public @nullable IntBuffer pDescriptorTypes() {
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkDescriptorType.class) IntBuffer pDescriptorTypes() {
         MemorySegment s = pDescriptorTypesRaw();
         if (s.address() == 0) {
             return null;
@@ -62,7 +67,7 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) implements I
         return new IntBuffer(s);
     }
 
-    public void pDescriptorTypes(@nullable IntBuffer value) {
+    public void pDescriptorTypes(@nullable @enumtype(VkDescriptorType.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorTypesRaw(s);
     }

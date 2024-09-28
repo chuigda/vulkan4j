@@ -59,6 +59,10 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int negativeOneToOne() {
         return segment.get(LAYOUT$negativeOneToOne, OFFSET$negativeOneToOne);
     }

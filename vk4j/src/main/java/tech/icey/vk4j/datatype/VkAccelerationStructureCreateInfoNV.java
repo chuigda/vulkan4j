@@ -64,6 +64,10 @@ public record VkAccelerationStructureCreateInfoNV(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long compactedSize() {
         return segment.get(LAYOUT$compactedSize, OFFSET$compactedSize);
     }

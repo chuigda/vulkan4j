@@ -64,6 +64,10 @@ public record VkDeviceGroupBindSparseInfo(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int resourceDeviceIndex() {
         return segment.get(LAYOUT$resourceDeviceIndex, OFFSET$resourceDeviceIndex);
     }

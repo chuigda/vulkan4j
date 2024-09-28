@@ -79,6 +79,10 @@ public record VkRayTracingShaderGroupCreateInfoNV(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkRayTracingShaderGroupTypeKHR.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }

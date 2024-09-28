@@ -59,12 +59,20 @@ public record VkSurfaceFullScreenExclusiveWin32InfoEXT(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment hmonitor() {
         return segment.get(LAYOUT$hmonitor, OFFSET$hmonitor);
     }
 
     public void hmonitor(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$hmonitor, OFFSET$hmonitor, value);
+    }
+
+    public void hmonitor(IPointer pointer) {
+        hmonitor(pointer.segment());
     }
 
     public static VkSurfaceFullScreenExclusiveWin32InfoEXT allocate(Arena arena) {

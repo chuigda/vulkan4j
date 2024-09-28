@@ -59,6 +59,10 @@ public record VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT(MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int vertexInputDynamicState() {
         return segment.get(LAYOUT$vertexInputDynamicState, OFFSET$vertexInputDynamicState);
     }

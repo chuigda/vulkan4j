@@ -59,6 +59,10 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(Memo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int attachmentFeedbackLoopDynamicState() {
         return segment.get(LAYOUT$attachmentFeedbackLoopDynamicState, OFFSET$attachmentFeedbackLoopDynamicState);
     }

@@ -59,6 +59,10 @@ public record VkPhysicalDeviceSamplerYcbcrConversionFeatures(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int samplerYcbcrConversion() {
         return segment.get(LAYOUT$samplerYcbcrConversion, OFFSET$samplerYcbcrConversion);
     }

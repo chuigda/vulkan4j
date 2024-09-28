@@ -64,6 +64,10 @@ public record VkImportMemorySciBufInfoNV(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
@@ -78,6 +82,10 @@ public record VkImportMemorySciBufInfoNV(MemorySegment segment) implements IPoin
 
     public void handle(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$handle, OFFSET$handle, value);
+    }
+
+    public void handle(IPointer pointer) {
+        handle(pointer.segment());
     }
 
     public static VkImportMemorySciBufInfoNV allocate(Arena arena) {

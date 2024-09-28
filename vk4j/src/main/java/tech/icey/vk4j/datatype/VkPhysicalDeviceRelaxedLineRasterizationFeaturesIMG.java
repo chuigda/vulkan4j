@@ -59,6 +59,10 @@ public record VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int relaxedLineRasterization() {
         return segment.get(LAYOUT$relaxedLineRasterization, OFFSET$relaxedLineRasterization);
     }

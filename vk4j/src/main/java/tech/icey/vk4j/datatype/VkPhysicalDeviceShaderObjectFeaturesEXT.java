@@ -59,6 +59,10 @@ public record VkPhysicalDeviceShaderObjectFeaturesEXT(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shaderObject() {
         return segment.get(LAYOUT$shaderObject, OFFSET$shaderObject);
     }

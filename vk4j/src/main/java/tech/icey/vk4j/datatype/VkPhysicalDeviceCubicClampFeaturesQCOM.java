@@ -59,6 +59,10 @@ public record VkPhysicalDeviceCubicClampFeaturesQCOM(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int cubicRangeClamp() {
         return segment.get(LAYOUT$cubicRangeClamp, OFFSET$cubicRangeClamp);
     }

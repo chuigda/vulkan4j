@@ -64,6 +64,10 @@ public record VkPhysicalDeviceMultiviewProperties(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxMultiviewViewCount() {
         return segment.get(LAYOUT$maxMultiviewViewCount, OFFSET$maxMultiviewViewCount);
     }

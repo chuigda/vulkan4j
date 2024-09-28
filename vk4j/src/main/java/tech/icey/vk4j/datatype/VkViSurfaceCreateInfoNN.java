@@ -64,6 +64,10 @@ public record VkViSurfaceCreateInfoNN(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkViSurfaceCreateFlagsNN.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -78,6 +82,10 @@ public record VkViSurfaceCreateInfoNN(MemorySegment segment) implements IPointer
 
     public void window(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$window, OFFSET$window, value);
+    }
+
+    public void window(IPointer pointer) {
+        window(pointer.segment());
     }
 
     public static VkViSurfaceCreateInfoNN allocate(Arena arena) {

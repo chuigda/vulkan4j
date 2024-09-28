@@ -59,6 +59,10 @@ public record VkPhysicalDeviceDisplacementMicromapPropertiesNV(MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxDisplacementMicromapSubdivisionLevel() {
         return segment.get(LAYOUT$maxDisplacementMicromapSubdivisionLevel, OFFSET$maxDisplacementMicromapSubdivisionLevel);
     }

@@ -59,6 +59,10 @@ public record VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(Memor
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int multisampledRenderToSingleSampled() {
         return segment.get(LAYOUT$multisampledRenderToSingleSampled, OFFSET$multisampledRenderToSingleSampled);
     }

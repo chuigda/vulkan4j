@@ -59,6 +59,10 @@ public record VkDeviceQueueGlobalPriorityCreateInfoKHR(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkQueueGlobalPriorityKHR.class) int globalPriority() {
         return segment.get(LAYOUT$globalPriority, OFFSET$globalPriority);
     }

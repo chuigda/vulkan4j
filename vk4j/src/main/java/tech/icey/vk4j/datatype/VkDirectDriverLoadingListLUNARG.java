@@ -69,6 +69,10 @@ public record VkDirectDriverLoadingListLUNARG(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkDirectDriverLoadingModeLUNARG.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }

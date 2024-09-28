@@ -64,6 +64,10 @@ public record VkPipelineBinaryKeyKHR(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int keySize() {
         return segment.get(LAYOUT$keySize, OFFSET$keySize);
     }

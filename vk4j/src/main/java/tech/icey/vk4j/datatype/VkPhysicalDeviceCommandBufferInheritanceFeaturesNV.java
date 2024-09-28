@@ -59,6 +59,10 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int commandBufferInheritance() {
         return segment.get(LAYOUT$commandBufferInheritance, OFFSET$commandBufferInheritance);
     }

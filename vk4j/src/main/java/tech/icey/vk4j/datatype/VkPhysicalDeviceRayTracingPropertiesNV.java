@@ -94,6 +94,10 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shaderGroupHandleSize() {
         return segment.get(LAYOUT$shaderGroupHandleSize, OFFSET$shaderGroupHandleSize);
     }

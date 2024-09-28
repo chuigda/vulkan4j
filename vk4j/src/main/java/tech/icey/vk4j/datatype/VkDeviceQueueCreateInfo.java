@@ -74,6 +74,10 @@ public record VkDeviceQueueCreateInfo(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkDeviceQueueCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -106,6 +110,11 @@ public record VkDeviceQueueCreateInfo(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pQueuePriorities, OFFSET$pQueuePriorities, value);
     }
 
+    /// Note: the returned {@link FloatBuffer} does not have correct
+    /// {@link FloatBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link FloatBuffer#reinterpret} to set the size before actually
+    /// {@link FloatBuffer#read}ing or
+    /// {@link FloatBuffer#write}ing the buffer.
     public @nullable FloatBuffer pQueuePriorities() {
         MemorySegment s = pQueuePrioritiesRaw();
         return s.address() == 0 ? null : new FloatBuffer(s);

@@ -74,6 +74,10 @@ public record VkVertexInputBindingDescription2EXT(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int binding() {
         return segment.get(LAYOUT$binding, OFFSET$binding);
     }

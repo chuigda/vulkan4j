@@ -59,6 +59,10 @@ public record VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int screenBufferImport() {
         return segment.get(LAYOUT$screenBufferImport, OFFSET$screenBufferImport);
     }

@@ -59,6 +59,10 @@ public record VkPipelineCreateFlags2CreateInfoKHR(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkPipelineCreateFlags2KHR.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }

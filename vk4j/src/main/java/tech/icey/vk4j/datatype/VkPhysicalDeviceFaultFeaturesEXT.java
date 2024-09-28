@@ -64,6 +64,10 @@ public record VkPhysicalDeviceFaultFeaturesEXT(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int deviceFault() {
         return segment.get(LAYOUT$deviceFault, OFFSET$deviceFault);
     }

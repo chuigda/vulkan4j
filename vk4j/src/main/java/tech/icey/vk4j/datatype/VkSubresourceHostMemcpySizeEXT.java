@@ -59,6 +59,10 @@ public record VkSubresourceHostMemcpySizeEXT(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }

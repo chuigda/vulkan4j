@@ -69,6 +69,10 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int viewportWScalingEnable() {
         return segment.get(LAYOUT$viewportWScalingEnable, OFFSET$viewportWScalingEnable);
     }

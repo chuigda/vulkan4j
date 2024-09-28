@@ -69,6 +69,10 @@ public record VkImportSemaphoreSciSyncInfoNV(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkSemaphore semaphore() {
         return new VkSemaphore(segment.get(LAYOUT$semaphore, OFFSET$semaphore));
     }
@@ -91,6 +95,10 @@ public record VkImportSemaphoreSciSyncInfoNV(MemorySegment segment) implements I
 
     public void handle(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$handle, OFFSET$handle, value);
+    }
+
+    public void handle(IPointer pointer) {
+        handle(pointer.segment());
     }
 
     public static VkImportSemaphoreSciSyncInfoNV allocate(Arena arena) {

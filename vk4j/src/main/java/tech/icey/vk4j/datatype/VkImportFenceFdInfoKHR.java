@@ -74,6 +74,10 @@ public record VkImportFenceFdInfoKHR(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkFence fence() {
         return new VkFence(segment.get(LAYOUT$fence, OFFSET$fence));
     }

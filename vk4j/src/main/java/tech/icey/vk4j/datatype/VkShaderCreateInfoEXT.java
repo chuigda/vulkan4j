@@ -112,6 +112,10 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkShaderCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -160,6 +164,10 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pCode, OFFSET$pCode, value);
     }
 
+    public void pCode(IPointer pointer) {
+        pCode(pointer.segment());
+    }
+
     public @pointer(comment="int8_t*") MemorySegment pNameRaw() {
         return segment.get(LAYOUT$pName, OFFSET$pName);
     }
@@ -168,6 +176,11 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
 
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
     public @nullable ByteBuffer pName() {
         MemorySegment s = pNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
@@ -194,6 +207,11 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
 
+    /// Note: the returned {@link VkDescriptorSetLayout.Buffer} does not have correct
+    /// {@link VkDescriptorSetLayout.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkDescriptorSetLayout.Buffer#reinterpret} to set the size before actually
+    /// {@link VkDescriptorSetLayout.Buffer#read}ing or {@link VkDescriptorSetLayout.Buffer#write}ing
+    /// the buffer.
     public @nullable VkDescriptorSetLayout.Buffer pSetLayouts() {
         MemorySegment s = pSetLayoutsRaw();
         if (s.address() == 0) {

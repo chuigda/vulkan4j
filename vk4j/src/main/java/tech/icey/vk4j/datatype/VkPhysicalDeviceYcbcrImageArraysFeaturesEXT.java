@@ -59,6 +59,10 @@ public record VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int ycbcrImageArrays() {
         return segment.get(LAYOUT$ycbcrImageArrays, OFFSET$ycbcrImageArrays);
     }

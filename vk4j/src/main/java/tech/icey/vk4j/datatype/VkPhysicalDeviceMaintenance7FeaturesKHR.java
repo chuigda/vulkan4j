@@ -59,6 +59,10 @@ public record VkPhysicalDeviceMaintenance7FeaturesKHR(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maintenance7() {
         return segment.get(LAYOUT$maintenance7, OFFSET$maintenance7);
     }

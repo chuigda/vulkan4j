@@ -59,6 +59,10 @@ public record VkMemoryPriorityAllocateInfoEXT(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public float priority() {
         return segment.get(LAYOUT$priority, OFFSET$priority);
     }

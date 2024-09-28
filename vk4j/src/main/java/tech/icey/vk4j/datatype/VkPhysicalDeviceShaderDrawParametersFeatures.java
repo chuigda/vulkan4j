@@ -59,6 +59,10 @@ public record VkPhysicalDeviceShaderDrawParametersFeatures(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shaderDrawParameters() {
         return segment.get(LAYOUT$shaderDrawParameters, OFFSET$shaderDrawParameters);
     }

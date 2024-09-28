@@ -74,6 +74,10 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public MemorySegment maxWorkGroupCountRaw() {
         return segment.asSlice(OFFSET$maxWorkGroupCount, SIZE$maxWorkGroupCount);
     }

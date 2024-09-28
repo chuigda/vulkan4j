@@ -79,6 +79,10 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkPipelineCoverageModulationStateCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -119,6 +123,11 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(MemorySegment segmen
         segment.set(LAYOUT$pCoverageModulationTable, OFFSET$pCoverageModulationTable, value);
     }
 
+    /// Note: the returned {@link FloatBuffer} does not have correct
+    /// {@link FloatBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link FloatBuffer#reinterpret} to set the size before actually
+    /// {@link FloatBuffer#read}ing or
+    /// {@link FloatBuffer#write}ing the buffer.
     public @nullable FloatBuffer pCoverageModulationTable() {
         MemorySegment s = pCoverageModulationTableRaw();
         return s.address() == 0 ? null : new FloatBuffer(s);

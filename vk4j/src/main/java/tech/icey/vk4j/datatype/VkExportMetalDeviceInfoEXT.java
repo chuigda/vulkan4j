@@ -59,12 +59,20 @@ public record VkExportMetalDeviceInfoEXT(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment mtlDevice() {
         return segment.get(LAYOUT$mtlDevice, OFFSET$mtlDevice);
     }
 
     public void mtlDevice(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$mtlDevice, OFFSET$mtlDevice, value);
+    }
+
+    public void mtlDevice(IPointer pointer) {
+        mtlDevice(pointer.segment());
     }
 
     public static VkExportMetalDeviceInfoEXT allocate(Arena arena) {

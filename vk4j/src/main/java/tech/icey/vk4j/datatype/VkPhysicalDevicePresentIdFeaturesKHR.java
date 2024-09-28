@@ -59,6 +59,10 @@ public record VkPhysicalDevicePresentIdFeaturesKHR(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int presentId() {
         return segment.get(LAYOUT$presentId, OFFSET$presentId);
     }

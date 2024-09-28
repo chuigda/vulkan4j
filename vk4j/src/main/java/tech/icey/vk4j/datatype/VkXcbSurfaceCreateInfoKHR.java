@@ -69,6 +69,10 @@ public record VkXcbSurfaceCreateInfoKHR(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkXcbSurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -83,6 +87,10 @@ public record VkXcbSurfaceCreateInfoKHR(MemorySegment segment) implements IPoint
 
     public void connection(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$connection, OFFSET$connection, value);
+    }
+
+    public void connection(IPointer pointer) {
+        connection(pointer.segment());
     }
 
     public @unsigned int window() {

@@ -59,6 +59,10 @@ public record VkPhysicalDeviceAddressBindingReportFeaturesEXT(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int reportAddressBinding() {
         return segment.get(LAYOUT$reportAddressBinding, OFFSET$reportAddressBinding);
     }

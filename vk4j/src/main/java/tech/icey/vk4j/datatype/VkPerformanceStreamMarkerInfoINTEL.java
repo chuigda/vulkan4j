@@ -59,6 +59,10 @@ public record VkPerformanceStreamMarkerInfoINTEL(MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int marker() {
         return segment.get(LAYOUT$marker, OFFSET$marker);
     }

@@ -64,6 +64,10 @@ public record VkLatencySurfaceCapabilitiesNV(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int presentModeCount() {
         return segment.get(LAYOUT$presentModeCount, OFFSET$presentModeCount);
     }
@@ -79,8 +83,13 @@ public record VkLatencySurfaceCapabilitiesNV(MemorySegment segment) implements I
     public void pPresentModesRaw(@pointer(target=VkPresentModeKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pPresentModes, OFFSET$pPresentModes, value);
     }
-    
-    public @nullable IntBuffer pPresentModes() {
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkPresentModeKHR.class) IntBuffer pPresentModes() {
         MemorySegment s = pPresentModesRaw();
         if (s.address() == 0) {
             return null;
@@ -89,7 +98,7 @@ public record VkLatencySurfaceCapabilitiesNV(MemorySegment segment) implements I
         return new IntBuffer(s);
     }
 
-    public void pPresentModes(@nullable IntBuffer value) {
+    public void pPresentModes(@nullable @enumtype(VkPresentModeKHR.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPresentModesRaw(s);
     }

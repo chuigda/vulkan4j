@@ -64,6 +64,10 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkRenderPass renderPass() {
         return new VkRenderPass(segment.get(LAYOUT$renderPass, OFFSET$renderPass));
     }

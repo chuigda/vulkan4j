@@ -84,6 +84,10 @@ public record VkPhysicalDeviceDrmPropertiesEXT(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int hasPrimary() {
         return segment.get(LAYOUT$hasPrimary, OFFSET$hasPrimary);
     }

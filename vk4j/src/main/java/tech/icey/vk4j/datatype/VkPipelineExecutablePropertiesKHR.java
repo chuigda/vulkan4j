@@ -74,6 +74,10 @@ public record VkPipelineExecutablePropertiesKHR(MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkShaderStageFlags.class) int stages() {
         return segment.get(LAYOUT$stages, OFFSET$stages);
     }

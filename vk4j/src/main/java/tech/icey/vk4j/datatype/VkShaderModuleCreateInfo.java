@@ -67,6 +67,10 @@ public record VkShaderModuleCreateInfo(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkShaderModuleCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -91,6 +95,11 @@ public record VkShaderModuleCreateInfo(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pCode, OFFSET$pCode, value);
     }
 
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
     public @nullable @unsigned IntBuffer pCode() {
         MemorySegment s = pCodeRaw();
         return s.address() == 0 ? null : new IntBuffer(s);

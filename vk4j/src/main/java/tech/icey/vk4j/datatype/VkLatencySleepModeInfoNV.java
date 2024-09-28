@@ -69,6 +69,10 @@ public record VkLatencySleepModeInfoNV(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int lowLatencyMode() {
         return segment.get(LAYOUT$lowLatencyMode, OFFSET$lowLatencyMode);
     }

@@ -64,6 +64,10 @@ public record VkAccelerationStructureGeometryInstancesDataKHR(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int arrayOfPointers() {
         return segment.get(LAYOUT$arrayOfPointers, OFFSET$arrayOfPointers);
     }

@@ -64,6 +64,10 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int aspectReferenceCount() {
         return segment.get(LAYOUT$aspectReferenceCount, OFFSET$aspectReferenceCount);
     }

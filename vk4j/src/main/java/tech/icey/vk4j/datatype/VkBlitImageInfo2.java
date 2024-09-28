@@ -89,6 +89,10 @@ public record VkBlitImageInfo2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkImage srcImage() {
         return new VkImage(segment.get(LAYOUT$srcImage, OFFSET$srcImage));
     }

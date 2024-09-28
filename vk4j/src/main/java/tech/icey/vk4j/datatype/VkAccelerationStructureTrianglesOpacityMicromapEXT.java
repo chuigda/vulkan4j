@@ -94,6 +94,10 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
@@ -165,12 +169,25 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment s
         pUsageCountsRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment ppUsageCounts() {
+    public @pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
         return segment.get(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts);
     }
 
-    public void ppUsageCounts(@pointer(comment="void**") MemorySegment value) {
+    public void ppUsageCountsRaw(@pointer(comment="void**") MemorySegment value) {
         segment.set(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts, value);
+    }
+
+    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the
+    /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
+    ///
+    /// @see PointerBuffer
+    public PointerBuffer ppUsageCounts() {
+        return new PointerBuffer(ppUsageCountsRaw());
+    }
+
+    public void ppUsageCounts(PointerBuffer value) {
+        ppUsageCountsRaw(value.segment());
     }
 
     public VkMicromapEXT micromap() {

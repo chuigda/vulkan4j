@@ -59,6 +59,10 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkPhysicalDeviceProperties2 properties() {
         return new VkPhysicalDeviceProperties2(segment.asSlice(OFFSET$properties, LAYOUT$properties));
     }

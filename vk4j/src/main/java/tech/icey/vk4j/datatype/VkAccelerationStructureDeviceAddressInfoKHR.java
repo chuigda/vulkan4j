@@ -59,6 +59,10 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkAccelerationStructureKHR accelerationStructure() {
         return new VkAccelerationStructureKHR(segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure));
     }

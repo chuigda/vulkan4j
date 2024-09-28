@@ -67,6 +67,10 @@ public record VkValidationCacheCreateInfoEXT(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkValidationCacheCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -89,6 +93,10 @@ public record VkValidationCacheCreateInfoEXT(MemorySegment segment) implements I
 
     public void pInitialData(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pInitialData, OFFSET$pInitialData, value);
+    }
+
+    public void pInitialData(IPointer pointer) {
+        pInitialData(pointer.segment());
     }
 
     public static VkValidationCacheCreateInfoEXT allocate(Arena arena) {

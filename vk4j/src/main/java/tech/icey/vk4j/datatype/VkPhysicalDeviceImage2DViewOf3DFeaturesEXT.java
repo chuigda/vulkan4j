@@ -64,6 +64,10 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int image2DViewOf3D() {
         return segment.get(LAYOUT$image2DViewOf3D, OFFSET$image2DViewOf3D);
     }

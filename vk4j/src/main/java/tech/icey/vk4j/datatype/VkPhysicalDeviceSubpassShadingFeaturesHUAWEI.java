@@ -59,6 +59,10 @@ public record VkPhysicalDeviceSubpassShadingFeaturesHUAWEI(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int subpassShading() {
         return segment.get(LAYOUT$subpassShading, OFFSET$subpassShading);
     }

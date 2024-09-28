@@ -69,6 +69,10 @@ public record VkDisplayPresentInfoKHR(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkRect2D srcRect() {
         return new VkRect2D(segment.asSlice(OFFSET$srcRect, LAYOUT$srcRect));
     }

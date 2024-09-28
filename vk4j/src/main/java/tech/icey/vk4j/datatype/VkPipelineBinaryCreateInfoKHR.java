@@ -69,6 +69,10 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="VkPipelineBinaryKeysAndDataKHR*") MemorySegment pKeysAndDataInfoRaw() {
         return segment.get(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo);
     }

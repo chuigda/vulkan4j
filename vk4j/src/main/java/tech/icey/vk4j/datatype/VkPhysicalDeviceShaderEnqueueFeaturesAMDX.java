@@ -59,6 +59,10 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shaderEnqueue() {
         return segment.get(LAYOUT$shaderEnqueue, OFFSET$shaderEnqueue);
     }

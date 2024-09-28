@@ -59,6 +59,10 @@ public record VkPhysicalDeviceLegacyDitheringFeaturesEXT(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int legacyDithering() {
         return segment.get(LAYOUT$legacyDithering, OFFSET$legacyDithering);
     }

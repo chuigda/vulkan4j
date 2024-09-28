@@ -64,6 +64,10 @@ public record VkSemaphoreTypeCreateInfo(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkSemaphoreType.class) int semaphoreType() {
         return segment.get(LAYOUT$semaphoreType, OFFSET$semaphoreType);
     }

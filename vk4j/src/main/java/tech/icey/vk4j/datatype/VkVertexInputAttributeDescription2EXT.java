@@ -74,6 +74,10 @@ public record VkVertexInputAttributeDescription2EXT(MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int location() {
         return segment.get(LAYOUT$location, OFFSET$location);
     }

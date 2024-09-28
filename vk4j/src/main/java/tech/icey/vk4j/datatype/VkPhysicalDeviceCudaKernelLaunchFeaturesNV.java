@@ -59,6 +59,10 @@ public record VkPhysicalDeviceCudaKernelLaunchFeaturesNV(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int cudaKernelLaunchFeatures() {
         return segment.get(LAYOUT$cudaKernelLaunchFeatures, OFFSET$cudaKernelLaunchFeatures);
     }

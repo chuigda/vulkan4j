@@ -59,6 +59,10 @@ public record VkPhysicalDeviceRawAccessChainsFeaturesNV(MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shaderRawAccessChains() {
         return segment.get(LAYOUT$shaderRawAccessChains, OFFSET$shaderRawAccessChains);
     }

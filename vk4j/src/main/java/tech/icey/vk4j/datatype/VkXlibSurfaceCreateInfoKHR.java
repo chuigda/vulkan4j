@@ -67,6 +67,10 @@ public record VkXlibSurfaceCreateInfoKHR(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkXlibSurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -75,12 +79,25 @@ public record VkXlibSurfaceCreateInfoKHR(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="void**") MemorySegment dpy() {
+    public @pointer(comment="void**") MemorySegment dpyRaw() {
         return segment.get(LAYOUT$dpy, OFFSET$dpy);
     }
 
-    public void dpy(@pointer(comment="void**") MemorySegment value) {
+    public void dpyRaw(@pointer(comment="void**") MemorySegment value) {
         segment.set(LAYOUT$dpy, OFFSET$dpy, value);
+    }
+
+    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the
+    /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
+    ///
+    /// @see PointerBuffer
+    public PointerBuffer dpy() {
+        return new PointerBuffer(dpyRaw());
+    }
+
+    public void dpy(PointerBuffer value) {
+        dpyRaw(value.segment());
     }
 
     public long window() {

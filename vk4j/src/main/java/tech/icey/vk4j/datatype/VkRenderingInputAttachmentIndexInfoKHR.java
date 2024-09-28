@@ -74,6 +74,10 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int colorAttachmentCount() {
         return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
     }
@@ -90,6 +94,11 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pColorAttachmentInputIndices, OFFSET$pColorAttachmentInputIndices, value);
     }
 
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
     public @nullable @unsigned IntBuffer pColorAttachmentInputIndices() {
         MemorySegment s = pColorAttachmentInputIndicesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
@@ -108,6 +117,11 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pDepthInputAttachmentIndex, OFFSET$pDepthInputAttachmentIndex, value);
     }
 
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
     public @nullable @unsigned IntBuffer pDepthInputAttachmentIndex() {
         MemorySegment s = pDepthInputAttachmentIndexRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
@@ -126,6 +140,11 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pStencilInputAttachmentIndex, OFFSET$pStencilInputAttachmentIndex, value);
     }
 
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
     public @nullable @unsigned IntBuffer pStencilInputAttachmentIndex() {
         MemorySegment s = pStencilInputAttachmentIndexRaw();
         return s.address() == 0 ? null : new IntBuffer(s);

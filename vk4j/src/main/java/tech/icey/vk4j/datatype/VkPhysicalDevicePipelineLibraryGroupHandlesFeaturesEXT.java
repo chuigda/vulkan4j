@@ -59,6 +59,10 @@ public record VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int pipelineLibraryGroupHandles() {
         return segment.get(LAYOUT$pipelineLibraryGroupHandles, OFFSET$pipelineLibraryGroupHandles);
     }

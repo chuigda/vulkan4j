@@ -79,6 +79,10 @@ public record VkImportFenceWin32HandleInfoKHR(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkFence fence() {
         return new VkFence(segment.get(LAYOUT$fence, OFFSET$fence));
     }
@@ -111,6 +115,10 @@ public record VkImportFenceWin32HandleInfoKHR(MemorySegment segment) implements 
         segment.set(LAYOUT$handle, OFFSET$handle, value);
     }
 
+    public void handle(IPointer pointer) {
+        handle(pointer.segment());
+    }
+
     public @pointer(comment="uint16_t*") MemorySegment nameRaw() {
         return segment.get(LAYOUT$name, OFFSET$name);
     }
@@ -119,6 +127,11 @@ public record VkImportFenceWin32HandleInfoKHR(MemorySegment segment) implements 
         segment.set(LAYOUT$name, OFFSET$name, value);
     }
 
+    /// Note: the returned {@link ShortBuffer} does not have correct
+    /// {@link ShortBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ShortBuffer#reinterpret} to set the size before actually
+    /// {@link ShortBuffer#read}ing or
+    /// {@link ShortBuffer#write}ing the buffer.
     public @nullable @unsigned ShortBuffer name() {
         MemorySegment s = nameRaw();
         return s.address() == 0 ? null : new ShortBuffer(s);

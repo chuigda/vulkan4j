@@ -59,12 +59,20 @@ public record VkInitializePerformanceApiInfoINTEL(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment pUserData() {
         return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
     }
 
     public void pUserData(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+    }
+
+    public void pUserData(IPointer pointer) {
+        pUserData(pointer.segment());
     }
 
     public static VkInitializePerformanceApiInfoINTEL allocate(Arena arena) {

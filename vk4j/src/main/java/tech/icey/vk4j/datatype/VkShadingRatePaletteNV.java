@@ -52,8 +52,13 @@ public record VkShadingRatePaletteNV(MemorySegment segment) implements IPointer 
     public void pShadingRatePaletteEntriesRaw(@pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment value) {
         segment.set(LAYOUT$pShadingRatePaletteEntries, OFFSET$pShadingRatePaletteEntries, value);
     }
-    
-    public @nullable IntBuffer pShadingRatePaletteEntries() {
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkShadingRatePaletteEntryNV.class) IntBuffer pShadingRatePaletteEntries() {
         MemorySegment s = pShadingRatePaletteEntriesRaw();
         if (s.address() == 0) {
             return null;
@@ -62,7 +67,7 @@ public record VkShadingRatePaletteNV(MemorySegment segment) implements IPointer 
         return new IntBuffer(s);
     }
 
-    public void pShadingRatePaletteEntries(@nullable IntBuffer value) {
+    public void pShadingRatePaletteEntries(@nullable @enumtype(VkShadingRatePaletteEntryNV.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pShadingRatePaletteEntriesRaw(s);
     }

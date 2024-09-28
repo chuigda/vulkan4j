@@ -59,6 +59,10 @@ public record VkPhysicalDeviceExternalMemoryHostPropertiesEXT(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long minImportedHostPointerAlignment() {
         return segment.get(LAYOUT$minImportedHostPointerAlignment, OFFSET$minImportedHostPointerAlignment);
     }

@@ -59,12 +59,20 @@ public record VkImportMetalIOSurfaceInfoEXT(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment ioSurface() {
         return segment.get(LAYOUT$ioSurface, OFFSET$ioSurface);
     }
 
     public void ioSurface(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$ioSurface, OFFSET$ioSurface, value);
+    }
+
+    public void ioSurface(IPointer pointer) {
+        ioSurface(pointer.segment());
     }
 
     public static VkImportMetalIOSurfaceInfoEXT allocate(Arena arena) {

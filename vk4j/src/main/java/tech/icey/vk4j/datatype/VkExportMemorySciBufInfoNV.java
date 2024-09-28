@@ -59,12 +59,20 @@ public record VkExportMemorySciBufInfoNV(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment pAttributes() {
         return segment.get(LAYOUT$pAttributes, OFFSET$pAttributes);
     }
 
     public void pAttributes(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
+    }
+
+    public void pAttributes(IPointer pointer) {
+        pAttributes(pointer.segment());
     }
 
     public static VkExportMemorySciBufInfoNV allocate(Arena arena) {

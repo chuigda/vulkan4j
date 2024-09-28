@@ -59,6 +59,10 @@ public record VkPhysicalDeviceCoherentMemoryFeaturesAMD(MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int deviceCoherentMemory() {
         return segment.get(LAYOUT$deviceCoherentMemory, OFFSET$deviceCoherentMemory);
     }

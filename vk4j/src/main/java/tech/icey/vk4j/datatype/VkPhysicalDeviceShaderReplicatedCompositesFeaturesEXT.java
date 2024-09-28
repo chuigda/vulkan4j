@@ -59,6 +59,10 @@ public record VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT(MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shaderReplicatedComposites() {
         return segment.get(LAYOUT$shaderReplicatedComposites, OFFSET$shaderReplicatedComposites);
     }

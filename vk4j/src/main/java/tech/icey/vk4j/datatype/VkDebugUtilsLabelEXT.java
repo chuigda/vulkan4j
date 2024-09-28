@@ -64,6 +64,10 @@ public record VkDebugUtilsLabelEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="int8_t*") MemorySegment pLabelNameRaw() {
         return segment.get(LAYOUT$pLabelName, OFFSET$pLabelName);
     }
@@ -72,6 +76,11 @@ public record VkDebugUtilsLabelEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pLabelName, OFFSET$pLabelName, value);
     }
 
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
     public @nullable ByteBuffer pLabelName() {
         MemorySegment s = pLabelNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);

@@ -64,6 +64,10 @@ public record VkPhysicalDeviceCudaKernelLaunchPropertiesNV(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int computeCapabilityMinor() {
         return segment.get(LAYOUT$computeCapabilityMinor, OFFSET$computeCapabilityMinor);
     }

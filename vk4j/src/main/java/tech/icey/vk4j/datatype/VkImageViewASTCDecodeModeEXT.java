@@ -59,6 +59,10 @@ public record VkImageViewASTCDecodeModeEXT(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkFormat.class) int decodeMode() {
         return segment.get(LAYOUT$decodeMode, OFFSET$decodeMode);
     }

@@ -97,6 +97,10 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkFrameBoundaryFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -129,6 +133,11 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pImages, OFFSET$pImages, value);
     }
 
+    /// Note: the returned {@link VkImage.Buffer} does not have correct
+    /// {@link VkImage.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkImage.Buffer#reinterpret} to set the size before actually
+    /// {@link VkImage.Buffer#read}ing or {@link VkImage.Buffer#write}ing
+    /// the buffer.
     public @nullable VkImage.Buffer pImages() {
         MemorySegment s = pImagesRaw();
         if (s.address() == 0) {
@@ -158,6 +167,11 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pBuffers, OFFSET$pBuffers, value);
     }
 
+    /// Note: the returned {@link VkBuffer.Buffer} does not have correct
+    /// {@link VkBuffer.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkBuffer.Buffer#reinterpret} to set the size before actually
+    /// {@link VkBuffer.Buffer#read}ing or {@link VkBuffer.Buffer#write}ing
+    /// the buffer.
     public @nullable VkBuffer.Buffer pBuffers() {
         MemorySegment s = pBuffersRaw();
         if (s.address() == 0) {
@@ -193,6 +207,10 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
 
     public void pTag(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pTag, OFFSET$pTag, value);
+    }
+
+    public void pTag(IPointer pointer) {
+        pTag(pointer.segment());
     }
 
     public static VkFrameBoundaryEXT allocate(Arena arena) {

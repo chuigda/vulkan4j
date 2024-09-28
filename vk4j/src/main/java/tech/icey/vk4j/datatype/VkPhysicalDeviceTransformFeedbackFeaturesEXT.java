@@ -64,6 +64,10 @@ public record VkPhysicalDeviceTransformFeedbackFeaturesEXT(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int transformFeedback() {
         return segment.get(LAYOUT$transformFeedback, OFFSET$transformFeedback);
     }

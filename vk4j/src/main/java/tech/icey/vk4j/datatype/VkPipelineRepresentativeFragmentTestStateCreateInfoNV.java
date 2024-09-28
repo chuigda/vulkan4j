@@ -59,6 +59,10 @@ public record VkPipelineRepresentativeFragmentTestStateCreateInfoNV(MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int representativeFragmentTestEnable() {
         return segment.get(LAYOUT$representativeFragmentTestEnable, OFFSET$representativeFragmentTestEnable);
     }

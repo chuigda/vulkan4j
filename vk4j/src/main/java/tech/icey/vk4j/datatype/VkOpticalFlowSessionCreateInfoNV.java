@@ -99,6 +99,10 @@ public record VkOpticalFlowSessionCreateInfoNV(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int width() {
         return segment.get(LAYOUT$width, OFFSET$width);
     }

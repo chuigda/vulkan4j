@@ -69,6 +69,10 @@ public record VkPhysicalDeviceMultiviewFeatures(MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int multiview() {
         return segment.get(LAYOUT$multiview, OFFSET$multiview);
     }

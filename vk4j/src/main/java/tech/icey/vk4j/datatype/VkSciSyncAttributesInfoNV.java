@@ -64,6 +64,10 @@ public record VkSciSyncAttributesInfoNV(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkSciSyncClientTypeNV.class) int clientType() {
         return segment.get(LAYOUT$clientType, OFFSET$clientType);
     }

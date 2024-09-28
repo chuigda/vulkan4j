@@ -59,6 +59,10 @@ public record VkSurfaceFullScreenExclusiveInfoEXT(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkFullScreenExclusiveEXT.class) int fullScreenExclusive() {
         return segment.get(LAYOUT$fullScreenExclusive, OFFSET$fullScreenExclusive);
     }

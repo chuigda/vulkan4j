@@ -59,6 +59,10 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkAttachmentReference fragmentDensityMapAttachment() {
         return new VkAttachmentReference(segment.asSlice(OFFSET$fragmentDensityMapAttachment, LAYOUT$fragmentDensityMapAttachment));
     }

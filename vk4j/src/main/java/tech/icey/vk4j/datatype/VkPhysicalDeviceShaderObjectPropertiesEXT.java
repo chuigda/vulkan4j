@@ -64,6 +64,10 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public MemorySegment shaderBinaryUUIDRaw() {
         return segment.asSlice(OFFSET$shaderBinaryUUID, SIZE$shaderBinaryUUID);
     }

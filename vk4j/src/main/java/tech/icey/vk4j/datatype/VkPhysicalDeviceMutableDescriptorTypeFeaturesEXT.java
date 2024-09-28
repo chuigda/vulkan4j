@@ -59,6 +59,10 @@ public record VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT(MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int mutableDescriptorType() {
         return segment.get(LAYOUT$mutableDescriptorType, OFFSET$mutableDescriptorType);
     }

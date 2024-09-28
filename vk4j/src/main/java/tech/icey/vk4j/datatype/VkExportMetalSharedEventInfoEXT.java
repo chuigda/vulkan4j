@@ -69,6 +69,10 @@ public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkSemaphore semaphore() {
         return new VkSemaphore(segment.get(LAYOUT$semaphore, OFFSET$semaphore));
     }
@@ -91,6 +95,10 @@ public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) implements 
 
     public void mtlSharedEvent(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent, value);
+    }
+
+    public void mtlSharedEvent(IPointer pointer) {
+        mtlSharedEvent(pointer.segment());
     }
 
     public static VkExportMetalSharedEventInfoEXT allocate(Arena arena) {

@@ -100,6 +100,10 @@ public record VkSpecializationInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 
+    public void pData(IPointer pointer) {
+        pData(pointer.segment());
+    }
+
     public static VkSpecializationInfo allocate(Arena arena) {
         return new VkSpecializationInfo(arena.allocate(LAYOUT));
     }

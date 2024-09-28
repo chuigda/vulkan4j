@@ -59,6 +59,10 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkTessellationDomainOrigin.class) int domainOrigin() {
         return segment.get(LAYOUT$domainOrigin, OFFSET$domainOrigin);
     }

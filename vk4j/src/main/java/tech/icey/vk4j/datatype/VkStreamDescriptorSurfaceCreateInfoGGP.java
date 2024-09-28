@@ -64,6 +64,10 @@ public record VkStreamDescriptorSurfaceCreateInfoGGP(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkStreamDescriptorSurfaceCreateFlagsGGP.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }

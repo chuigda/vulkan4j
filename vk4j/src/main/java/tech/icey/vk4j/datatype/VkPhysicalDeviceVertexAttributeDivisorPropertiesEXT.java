@@ -59,6 +59,10 @@ public record VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxVertexAttribDivisor() {
         return segment.get(LAYOUT$maxVertexAttribDivisor, OFFSET$maxVertexAttribDivisor);
     }

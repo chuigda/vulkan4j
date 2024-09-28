@@ -59,6 +59,10 @@ public record VkDescriptorSetLayoutSupport(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int supported() {
         return segment.get(LAYOUT$supported, OFFSET$supported);
     }

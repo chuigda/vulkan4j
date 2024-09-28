@@ -59,6 +59,10 @@ public record VkPhysicalDeviceShaderSMBuiltinsFeaturesNV(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shaderSMBuiltins() {
         return segment.get(LAYOUT$shaderSMBuiltins, OFFSET$shaderSMBuiltins);
     }

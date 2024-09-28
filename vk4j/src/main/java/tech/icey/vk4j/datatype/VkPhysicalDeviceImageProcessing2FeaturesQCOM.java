@@ -59,6 +59,10 @@ public record VkPhysicalDeviceImageProcessing2FeaturesQCOM(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int textureBlockMatch2() {
         return segment.get(LAYOUT$textureBlockMatch2, OFFSET$textureBlockMatch2);
     }

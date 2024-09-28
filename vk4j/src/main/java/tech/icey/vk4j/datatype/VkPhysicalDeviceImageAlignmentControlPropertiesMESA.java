@@ -59,6 +59,10 @@ public record VkPhysicalDeviceImageAlignmentControlPropertiesMESA(MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int supportedImageAlignmentMask() {
         return segment.get(LAYOUT$supportedImageAlignmentMask, OFFSET$supportedImageAlignmentMask);
     }

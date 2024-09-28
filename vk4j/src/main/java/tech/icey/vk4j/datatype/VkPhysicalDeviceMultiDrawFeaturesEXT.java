@@ -59,6 +59,10 @@ public record VkPhysicalDeviceMultiDrawFeaturesEXT(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int multiDraw() {
         return segment.get(LAYOUT$multiDraw, OFFSET$multiDraw);
     }

@@ -64,6 +64,10 @@ public record VkSwapchainPresentFenceInfoEXT(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int swapchainCount() {
         return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
     }
@@ -80,6 +84,11 @@ public record VkSwapchainPresentFenceInfoEXT(MemorySegment segment) implements I
         segment.set(LAYOUT$pFences, OFFSET$pFences, value);
     }
 
+    /// Note: the returned {@link VkFence.Buffer} does not have correct
+    /// {@link VkFence.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkFence.Buffer#reinterpret} to set the size before actually
+    /// {@link VkFence.Buffer#read}ing or {@link VkFence.Buffer#write}ing
+    /// the buffer.
     public @nullable VkFence.Buffer pFences() {
         MemorySegment s = pFencesRaw();
         if (s.address() == 0) {

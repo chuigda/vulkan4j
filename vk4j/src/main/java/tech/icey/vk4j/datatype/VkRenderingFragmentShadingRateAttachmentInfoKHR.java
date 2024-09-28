@@ -69,6 +69,10 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkImageView imageView() {
         return new VkImageView(segment.get(LAYOUT$imageView, OFFSET$imageView));
     }

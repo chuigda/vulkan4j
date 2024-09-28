@@ -59,6 +59,10 @@ public record VkImageAlignmentControlCreateInfoMESA(MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maximumRequestedAlignment() {
         return segment.get(LAYOUT$maximumRequestedAlignment, OFFSET$maximumRequestedAlignment);
     }

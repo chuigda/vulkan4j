@@ -59,6 +59,10 @@ public record VkOpticalFlowImageFormatPropertiesNV(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }

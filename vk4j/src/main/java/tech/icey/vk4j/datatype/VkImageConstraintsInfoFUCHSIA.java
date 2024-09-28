@@ -74,6 +74,10 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int formatConstraintsCount() {
         return segment.get(LAYOUT$formatConstraintsCount, OFFSET$formatConstraintsCount);
     }

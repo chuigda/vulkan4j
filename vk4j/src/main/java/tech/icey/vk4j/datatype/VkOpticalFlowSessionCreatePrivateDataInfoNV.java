@@ -69,6 +69,10 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int id() {
         return segment.get(LAYOUT$id, OFFSET$id);
     }
@@ -91,6 +95,10 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(MemorySegment segment)
 
     public void pPrivateData(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pPrivateData, OFFSET$pPrivateData, value);
+    }
+
+    public void pPrivateData(IPointer pointer) {
+        pPrivateData(pointer.segment());
     }
 
     public static VkOpticalFlowSessionCreatePrivateDataInfoNV allocate(Arena arena) {

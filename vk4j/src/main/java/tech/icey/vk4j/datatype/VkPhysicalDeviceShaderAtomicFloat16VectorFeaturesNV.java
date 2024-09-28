@@ -59,6 +59,10 @@ public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shaderFloat16VectorAtomics() {
         return segment.get(LAYOUT$shaderFloat16VectorAtomics, OFFSET$shaderFloat16VectorAtomics);
     }

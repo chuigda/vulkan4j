@@ -64,6 +64,10 @@ public record VkWriteDescriptorSetAccelerationStructureNV(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int accelerationStructureCount() {
         return segment.get(LAYOUT$accelerationStructureCount, OFFSET$accelerationStructureCount);
     }
@@ -80,6 +84,11 @@ public record VkWriteDescriptorSetAccelerationStructureNV(MemorySegment segment)
         segment.set(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures, value);
     }
 
+    /// Note: the returned {@link VkAccelerationStructureNV.Buffer} does not have correct
+    /// {@link VkAccelerationStructureNV.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkAccelerationStructureNV.Buffer#reinterpret} to set the size before actually
+    /// {@link VkAccelerationStructureNV.Buffer#read}ing or {@link VkAccelerationStructureNV.Buffer#write}ing
+    /// the buffer.
     public @nullable VkAccelerationStructureNV.Buffer pAccelerationStructures() {
         MemorySegment s = pAccelerationStructuresRaw();
         if (s.address() == 0) {

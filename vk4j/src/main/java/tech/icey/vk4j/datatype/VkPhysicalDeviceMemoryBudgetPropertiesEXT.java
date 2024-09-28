@@ -64,6 +64,10 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public MemorySegment heapBudgetRaw() {
         return segment.asSlice(OFFSET$heapBudget, SIZE$heapBudget);
     }

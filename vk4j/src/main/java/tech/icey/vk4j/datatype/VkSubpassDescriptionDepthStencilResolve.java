@@ -69,6 +69,10 @@ public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkResolveModeFlags.class) int depthResolveMode() {
         return segment.get(LAYOUT$depthResolveMode, OFFSET$depthResolveMode);
     }

@@ -59,6 +59,10 @@ public record VkDescriptorSetVariableDescriptorCountLayoutSupport(MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxVariableDescriptorCount() {
         return segment.get(LAYOUT$maxVariableDescriptorCount, OFFSET$maxVariableDescriptorCount);
     }

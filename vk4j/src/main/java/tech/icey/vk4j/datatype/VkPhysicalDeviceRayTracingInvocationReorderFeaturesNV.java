@@ -59,6 +59,10 @@ public record VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int rayTracingInvocationReorder() {
         return segment.get(LAYOUT$rayTracingInvocationReorder, OFFSET$rayTracingInvocationReorder);
     }

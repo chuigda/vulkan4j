@@ -64,6 +64,10 @@ public record VkQueueFamilyGlobalPriorityPropertiesKHR(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int priorityCount() {
         return segment.get(LAYOUT$priorityCount, OFFSET$priorityCount);
     }

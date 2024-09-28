@@ -84,6 +84,10 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkImageCreateInfo imageCreateInfo() {
         return new VkImageCreateInfo(segment.asSlice(OFFSET$imageCreateInfo, LAYOUT$imageCreateInfo));
     }

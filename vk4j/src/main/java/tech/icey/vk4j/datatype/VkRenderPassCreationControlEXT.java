@@ -59,6 +59,10 @@ public record VkRenderPassCreationControlEXT(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int disallowMerging() {
         return segment.get(LAYOUT$disallowMerging, OFFSET$disallowMerging);
     }

@@ -59,6 +59,10 @@ public record VkDeviceQueueShaderCoreControlCreateInfoARM(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shaderCoreCount() {
         return segment.get(LAYOUT$shaderCoreCount, OFFSET$shaderCoreCount);
     }

@@ -64,6 +64,10 @@ public record VkRayTracingPipelineInterfaceCreateInfoKHR(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxPipelineRayPayloadSize() {
         return segment.get(LAYOUT$maxPipelineRayPayloadSize, OFFSET$maxPipelineRayPayloadSize);
     }

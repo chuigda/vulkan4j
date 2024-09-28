@@ -59,6 +59,10 @@ public record VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkBufferUsageFlags2KHR.class) long usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }

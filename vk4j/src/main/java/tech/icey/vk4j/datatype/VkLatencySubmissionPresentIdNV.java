@@ -59,6 +59,10 @@ public record VkLatencySubmissionPresentIdNV(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long presentID() {
         return segment.get(LAYOUT$presentID, OFFSET$presentID);
     }

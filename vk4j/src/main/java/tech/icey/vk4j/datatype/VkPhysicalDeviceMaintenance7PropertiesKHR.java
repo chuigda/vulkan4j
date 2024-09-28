@@ -94,6 +94,10 @@ public record VkPhysicalDeviceMaintenance7PropertiesKHR(MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int robustFragmentShadingRateAttachmentAccess() {
         return segment.get(LAYOUT$robustFragmentShadingRateAttachmentAccess, OFFSET$robustFragmentShadingRateAttachmentAccess);
     }

@@ -59,6 +59,10 @@ public record VkBindMemoryStatusKHR(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(target=VkResult.class) MemorySegment pResultRaw() {
         return segment.get(LAYOUT$pResult, OFFSET$pResult);
     }
@@ -66,8 +70,13 @@ public record VkBindMemoryStatusKHR(MemorySegment segment) implements IPointer {
     public void pResultRaw(@pointer(target=VkResult.class) MemorySegment value) {
         segment.set(LAYOUT$pResult, OFFSET$pResult, value);
     }
-    
-    public @nullable IntBuffer pResult() {
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkResult.class) IntBuffer pResult() {
         MemorySegment s = pResultRaw();
         if (s.address() == 0) {
             return null;
@@ -76,7 +85,7 @@ public record VkBindMemoryStatusKHR(MemorySegment segment) implements IPointer {
         return new IntBuffer(s);
     }
 
-    public void pResult(@nullable IntBuffer value) {
+    public void pResult(@nullable @enumtype(VkResult.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResultRaw(s);
     }

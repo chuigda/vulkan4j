@@ -89,6 +89,10 @@ public record VkCommandBufferInheritanceRenderingInfo(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkRenderingFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -120,8 +124,13 @@ public record VkCommandBufferInheritanceRenderingInfo(MemorySegment segment) imp
     public void pColorAttachmentFormatsRaw(@pointer(target=VkFormat.class) MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentFormats, OFFSET$pColorAttachmentFormats, value);
     }
-    
-    public @nullable IntBuffer pColorAttachmentFormats() {
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkFormat.class) IntBuffer pColorAttachmentFormats() {
         MemorySegment s = pColorAttachmentFormatsRaw();
         if (s.address() == 0) {
             return null;
@@ -130,7 +139,7 @@ public record VkCommandBufferInheritanceRenderingInfo(MemorySegment segment) imp
         return new IntBuffer(s);
     }
 
-    public void pColorAttachmentFormats(@nullable IntBuffer value) {
+    public void pColorAttachmentFormats(@nullable @enumtype(VkFormat.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentFormatsRaw(s);
     }

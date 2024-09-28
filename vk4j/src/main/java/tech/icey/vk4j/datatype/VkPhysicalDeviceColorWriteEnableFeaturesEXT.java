@@ -59,6 +59,10 @@ public record VkPhysicalDeviceColorWriteEnableFeaturesEXT(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int colorWriteEnable() {
         return segment.get(LAYOUT$colorWriteEnable, OFFSET$colorWriteEnable);
     }

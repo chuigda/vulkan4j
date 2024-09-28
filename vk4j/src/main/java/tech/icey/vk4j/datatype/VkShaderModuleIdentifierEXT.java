@@ -64,6 +64,10 @@ public record VkShaderModuleIdentifierEXT(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int identifierSize() {
         return segment.get(LAYOUT$identifierSize, OFFSET$identifierSize);
     }

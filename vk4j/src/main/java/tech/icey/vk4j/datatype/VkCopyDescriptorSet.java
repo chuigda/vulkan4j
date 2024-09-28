@@ -89,6 +89,10 @@ public record VkCopyDescriptorSet(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkDescriptorSet srcSet() {
         return new VkDescriptorSet(segment.get(LAYOUT$srcSet, OFFSET$srcSet));
     }

@@ -64,6 +64,10 @@ public record VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int primitiveTopologyListRestart() {
         return segment.get(LAYOUT$primitiveTopologyListRestart, OFFSET$primitiveTopologyListRestart);
     }

@@ -64,6 +64,10 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int borderColorSwizzle() {
         return segment.get(LAYOUT$borderColorSwizzle, OFFSET$borderColorSwizzle);
     }

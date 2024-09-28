@@ -69,12 +69,20 @@ public record VkExportSemaphoreWin32HandleInfoKHR(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment pAttributes() {
         return segment.get(LAYOUT$pAttributes, OFFSET$pAttributes);
     }
 
     public void pAttributes(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
+    }
+
+    public void pAttributes(IPointer pointer) {
+        pAttributes(pointer.segment());
     }
 
     public @unsigned int dwAccess() {
@@ -93,6 +101,11 @@ public record VkExportSemaphoreWin32HandleInfoKHR(MemorySegment segment) impleme
         segment.set(LAYOUT$name, OFFSET$name, value);
     }
 
+    /// Note: the returned {@link ShortBuffer} does not have correct
+    /// {@link ShortBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ShortBuffer#reinterpret} to set the size before actually
+    /// {@link ShortBuffer#read}ing or
+    /// {@link ShortBuffer#write}ing the buffer.
     public @nullable @unsigned ShortBuffer name() {
         MemorySegment s = nameRaw();
         return s.address() == 0 ? null : new ShortBuffer(s);

@@ -99,6 +99,10 @@ public record VkCooperativeMatrixPropertiesKHR(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int MSize() {
         return segment.get(LAYOUT$MSize, OFFSET$MSize);
     }

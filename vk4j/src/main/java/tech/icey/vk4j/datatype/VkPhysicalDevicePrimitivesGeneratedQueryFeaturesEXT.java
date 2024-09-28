@@ -69,6 +69,10 @@ public record VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int primitivesGeneratedQuery() {
         return segment.get(LAYOUT$primitivesGeneratedQuery, OFFSET$primitivesGeneratedQuery);
     }

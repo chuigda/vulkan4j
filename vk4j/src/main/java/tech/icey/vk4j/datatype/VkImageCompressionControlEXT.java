@@ -69,6 +69,10 @@ public record VkImageCompressionControlEXT(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkImageCompressionFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -92,8 +96,13 @@ public record VkImageCompressionControlEXT(MemorySegment segment) implements IPo
     public void pFixedRateFlagsRaw(@pointer(target=VkImageCompressionFixedRateFlagsEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pFixedRateFlags, OFFSET$pFixedRateFlags, value);
     }
-    
-    public @nullable IntBuffer pFixedRateFlags() {
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkImageCompressionFixedRateFlagsEXT.class) IntBuffer pFixedRateFlags() {
         MemorySegment s = pFixedRateFlagsRaw();
         if (s.address() == 0) {
             return null;
@@ -102,7 +111,7 @@ public record VkImageCompressionControlEXT(MemorySegment segment) implements IPo
         return new IntBuffer(s);
     }
 
-    public void pFixedRateFlags(@nullable IntBuffer value) {
+    public void pFixedRateFlags(@nullable @enumtype(VkImageCompressionFixedRateFlagsEXT.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFixedRateFlagsRaw(s);
     }

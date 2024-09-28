@@ -59,6 +59,10 @@ public record VkQueryPoolPerformanceQueryCreateInfoINTEL(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkQueryPoolSamplingModeINTEL.class) int performanceCountersSampling() {
         return segment.get(LAYOUT$performanceCountersSampling, OFFSET$performanceCountersSampling);
     }

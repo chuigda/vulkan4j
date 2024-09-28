@@ -64,6 +64,10 @@ public record VkSemaphoreSciSyncCreateInfoNV(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkSemaphoreSciSyncPoolNV semaphorePool() {
         return new VkSemaphoreSciSyncPoolNV(segment.get(LAYOUT$semaphorePool, OFFSET$semaphorePool));
     }

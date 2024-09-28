@@ -59,6 +59,10 @@ public record VkPhysicalDeviceFrameBoundaryFeaturesEXT(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int frameBoundary() {
         return segment.get(LAYOUT$frameBoundary, OFFSET$frameBoundary);
     }

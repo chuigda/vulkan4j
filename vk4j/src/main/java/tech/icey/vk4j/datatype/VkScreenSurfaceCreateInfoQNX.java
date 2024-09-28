@@ -69,6 +69,10 @@ public record VkScreenSurfaceCreateInfoQNX(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkScreenSurfaceCreateFlagsQNX.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -85,12 +89,20 @@ public record VkScreenSurfaceCreateInfoQNX(MemorySegment segment) implements IPo
         segment.set(LAYOUT$context, OFFSET$context, value);
     }
 
+    public void context(IPointer pointer) {
+        context(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment window() {
         return segment.get(LAYOUT$window, OFFSET$window);
     }
 
     public void window(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$window, OFFSET$window, value);
+    }
+
+    public void window(IPointer pointer) {
+        window(pointer.segment());
     }
 
     public static VkScreenSurfaceCreateInfoQNX allocate(Arena arena) {

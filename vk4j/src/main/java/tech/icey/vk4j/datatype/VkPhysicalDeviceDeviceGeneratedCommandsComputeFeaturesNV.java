@@ -69,6 +69,10 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int deviceGeneratedCompute() {
         return segment.get(LAYOUT$deviceGeneratedCompute, OFFSET$deviceGeneratedCompute);
     }

@@ -59,6 +59,10 @@ public record VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT(Memory
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int imageCompressionControlSwapchain() {
         return segment.get(LAYOUT$imageCompressionControlSwapchain, OFFSET$imageCompressionControlSwapchain);
     }

@@ -59,6 +59,10 @@ public record VkSwapchainLatencyCreateInfoNV(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int latencyModeEnable() {
         return segment.get(LAYOUT$latencyModeEnable, OFFSET$latencyModeEnable);
     }

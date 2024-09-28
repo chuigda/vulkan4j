@@ -74,6 +74,10 @@ public record VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int subsampledLoads() {
         return segment.get(LAYOUT$subsampledLoads, OFFSET$subsampledLoads);
     }

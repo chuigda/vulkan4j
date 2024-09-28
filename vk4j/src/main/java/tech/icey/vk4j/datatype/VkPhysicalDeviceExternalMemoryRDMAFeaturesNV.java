@@ -59,6 +59,10 @@ public record VkPhysicalDeviceExternalMemoryRDMAFeaturesNV(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int externalMemoryRDMA() {
         return segment.get(LAYOUT$externalMemoryRDMA, OFFSET$externalMemoryRDMA);
     }

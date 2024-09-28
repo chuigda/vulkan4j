@@ -59,6 +59,10 @@ public record VkPhysicalDeviceImageCompressionControlFeaturesEXT(MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int imageCompressionControl() {
         return segment.get(LAYOUT$imageCompressionControl, OFFSET$imageCompressionControl);
     }

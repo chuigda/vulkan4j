@@ -74,6 +74,10 @@ public record VkPerformanceCounterKHR(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkPerformanceCounterUnitKHR.class) int unit() {
         return segment.get(LAYOUT$unit, OFFSET$unit);
     }

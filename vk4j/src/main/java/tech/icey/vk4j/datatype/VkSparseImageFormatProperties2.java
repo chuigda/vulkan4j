@@ -59,6 +59,10 @@ public record VkSparseImageFormatProperties2(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkSparseImageFormatProperties properties() {
         return new VkSparseImageFormatProperties(segment.asSlice(OFFSET$properties, LAYOUT$properties));
     }

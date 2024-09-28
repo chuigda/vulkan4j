@@ -59,6 +59,10 @@ public record VkQueueFamilyQueryResultStatusPropertiesKHR(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int queryResultStatusSupport() {
         return segment.get(LAYOUT$queryResultStatusSupport, OFFSET$queryResultStatusSupport);
     }

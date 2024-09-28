@@ -59,6 +59,10 @@ public record VkPhysicalDeviceDepthClipControlFeaturesEXT(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int depthClipControl() {
         return segment.get(LAYOUT$depthClipControl, OFFSET$depthClipControl);
     }

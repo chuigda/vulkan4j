@@ -64,6 +64,10 @@ public record VkAntiLagPresentationInfoAMD(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkAntiLagStageAMD.class) int stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }

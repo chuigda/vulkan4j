@@ -54,6 +54,10 @@ public record VkSubpassEndInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public static VkSubpassEndInfo allocate(Arena arena) {
         return new VkSubpassEndInfo(arena.allocate(LAYOUT));
     }

@@ -74,6 +74,10 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int groupCount() {
         return segment.get(LAYOUT$groupCount, OFFSET$groupCount);
     }
@@ -129,6 +133,11 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         segment.set(LAYOUT$pPipelines, OFFSET$pPipelines, value);
     }
 
+    /// Note: the returned {@link VkPipeline.Buffer} does not have correct
+    /// {@link VkPipeline.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkPipeline.Buffer#reinterpret} to set the size before actually
+    /// {@link VkPipeline.Buffer#read}ing or {@link VkPipeline.Buffer#write}ing
+    /// the buffer.
     public @nullable VkPipeline.Buffer pPipelines() {
         MemorySegment s = pPipelinesRaw();
         if (s.address() == 0) {

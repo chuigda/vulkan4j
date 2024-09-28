@@ -89,6 +89,10 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int acquireCount() {
         return segment.get(LAYOUT$acquireCount, OFFSET$acquireCount);
     }
@@ -105,6 +109,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs, value);
     }
 
+    /// Note: the returned {@link VkDeviceMemory.Buffer} does not have correct
+    /// {@link VkDeviceMemory.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkDeviceMemory.Buffer#reinterpret} to set the size before actually
+    /// {@link VkDeviceMemory.Buffer#read}ing or {@link VkDeviceMemory.Buffer#write}ing
+    /// the buffer.
     public @nullable VkDeviceMemory.Buffer pAcquireSyncs() {
         MemorySegment s = pAcquireSyncsRaw();
         if (s.address() == 0) {
@@ -126,6 +135,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys, value);
     }
 
+    /// Note: the returned {@link LongBuffer} does not have correct
+    /// {@link LongBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link LongBuffer#reinterpret} to set the size before actually
+    /// {@link LongBuffer#read}ing or
+    /// {@link LongBuffer#write}ing the buffer.
     public @nullable @unsigned LongBuffer pAcquireKeys() {
         MemorySegment s = pAcquireKeysRaw();
         return s.address() == 0 ? null : new LongBuffer(s);
@@ -144,6 +158,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pAcquireTimeouts, OFFSET$pAcquireTimeouts, value);
     }
 
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
     public @nullable @unsigned IntBuffer pAcquireTimeouts() {
         MemorySegment s = pAcquireTimeoutsRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
@@ -170,6 +189,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs, value);
     }
 
+    /// Note: the returned {@link VkDeviceMemory.Buffer} does not have correct
+    /// {@link VkDeviceMemory.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkDeviceMemory.Buffer#reinterpret} to set the size before actually
+    /// {@link VkDeviceMemory.Buffer#read}ing or {@link VkDeviceMemory.Buffer#write}ing
+    /// the buffer.
     public @nullable VkDeviceMemory.Buffer pReleaseSyncs() {
         MemorySegment s = pReleaseSyncsRaw();
         if (s.address() == 0) {
@@ -191,6 +215,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys, value);
     }
 
+    /// Note: the returned {@link LongBuffer} does not have correct
+    /// {@link LongBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link LongBuffer#reinterpret} to set the size before actually
+    /// {@link LongBuffer#read}ing or
+    /// {@link LongBuffer#write}ing the buffer.
     public @nullable @unsigned LongBuffer pReleaseKeys() {
         MemorySegment s = pReleaseKeysRaw();
         return s.address() == 0 ? null : new LongBuffer(s);

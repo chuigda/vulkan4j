@@ -79,6 +79,10 @@ public record VkDebugUtilsMessengerCreateInfoEXT(MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkDebugUtilsMessengerCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -111,12 +115,20 @@ public record VkDebugUtilsMessengerCreateInfoEXT(MemorySegment segment) implemen
         segment.set(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback, value);
     }
 
+    public void pfnUserCallback(IPointer pointer) {
+        pfnUserCallback(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment pUserData() {
         return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
     }
 
     public void pUserData(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+    }
+
+    public void pUserData(IPointer pointer) {
+        pUserData(pointer.segment());
     }
 
     public static VkDebugUtilsMessengerCreateInfoEXT allocate(Arena arena) {

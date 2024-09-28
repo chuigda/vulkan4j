@@ -59,12 +59,20 @@ public record VkSemaphoreSciSyncPoolCreateInfoNV(MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment handle() {
         return segment.get(LAYOUT$handle, OFFSET$handle);
     }
 
     public void handle(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$handle, OFFSET$handle, value);
+    }
+
+    public void handle(IPointer pointer) {
+        handle(pointer.segment());
     }
 
     public static VkSemaphoreSciSyncPoolCreateInfoNV allocate(Arena arena) {

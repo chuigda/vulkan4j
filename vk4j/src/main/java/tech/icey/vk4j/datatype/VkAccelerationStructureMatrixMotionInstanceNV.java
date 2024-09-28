@@ -119,7 +119,7 @@ public record VkAccelerationStructureMatrixMotionInstanceNV(MemorySegment segmen
     public static VkAccelerationStructureMatrixMotionInstanceNV allocate(Arena arena) {
         return new VkAccelerationStructureMatrixMotionInstanceNV(arena.allocate(LAYOUT));
     }
-
+    
     public static VkAccelerationStructureMatrixMotionInstanceNV[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureMatrixMotionInstanceNV[] ret = new VkAccelerationStructureMatrixMotionInstanceNV[count];

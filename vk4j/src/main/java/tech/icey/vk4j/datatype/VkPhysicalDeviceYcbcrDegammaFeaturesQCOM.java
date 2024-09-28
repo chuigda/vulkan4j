@@ -59,6 +59,10 @@ public record VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int ycbcrDegamma() {
         return segment.get(LAYOUT$ycbcrDegamma, OFFSET$ycbcrDegamma);
     }

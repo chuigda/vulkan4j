@@ -59,6 +59,10 @@ public record VkPhysicalDevicePushDescriptorPropertiesKHR(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxPushDescriptors() {
         return segment.get(LAYOUT$maxPushDescriptors, OFFSET$maxPushDescriptors);
     }

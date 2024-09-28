@@ -74,6 +74,10 @@ public record VkPipelineRobustnessCreateInfoEXT(MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkPipelineRobustnessBufferBehaviorEXT.class) int storageBuffers() {
         return segment.get(LAYOUT$storageBuffers, OFFSET$storageBuffers);
     }

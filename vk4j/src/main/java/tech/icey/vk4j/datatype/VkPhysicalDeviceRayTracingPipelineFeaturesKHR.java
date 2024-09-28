@@ -79,6 +79,10 @@ public record VkPhysicalDeviceRayTracingPipelineFeaturesKHR(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int rayTracingPipeline() {
         return segment.get(LAYOUT$rayTracingPipeline, OFFSET$rayTracingPipeline);
     }

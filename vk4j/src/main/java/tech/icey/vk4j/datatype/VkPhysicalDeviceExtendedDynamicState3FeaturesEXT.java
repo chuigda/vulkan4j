@@ -209,6 +209,10 @@ public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int extendedDynamicState3TessellationDomainOrigin() {
         return segment.get(LAYOUT$extendedDynamicState3TessellationDomainOrigin, OFFSET$extendedDynamicState3TessellationDomainOrigin);
     }

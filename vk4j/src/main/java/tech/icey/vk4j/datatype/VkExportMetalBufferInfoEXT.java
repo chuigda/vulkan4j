@@ -64,6 +64,10 @@ public record VkExportMetalBufferInfoEXT(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkDeviceMemory memory() {
         return new VkDeviceMemory(segment.get(LAYOUT$memory, OFFSET$memory));
     }
@@ -78,6 +82,10 @@ public record VkExportMetalBufferInfoEXT(MemorySegment segment) implements IPoin
 
     public void mtlBuffer(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$mtlBuffer, OFFSET$mtlBuffer, value);
+    }
+
+    public void mtlBuffer(IPointer pointer) {
+        mtlBuffer(pointer.segment());
     }
 
     public static VkExportMetalBufferInfoEXT allocate(Arena arena) {

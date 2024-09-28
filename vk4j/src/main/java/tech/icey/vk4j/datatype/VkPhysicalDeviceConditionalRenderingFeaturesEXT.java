@@ -64,6 +64,10 @@ public record VkPhysicalDeviceConditionalRenderingFeaturesEXT(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int conditionalRendering() {
         return segment.get(LAYOUT$conditionalRendering, OFFSET$conditionalRendering);
     }

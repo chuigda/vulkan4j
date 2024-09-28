@@ -69,6 +69,10 @@ public record VkWin32SurfaceCreateInfoKHR(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkWin32SurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -85,12 +89,20 @@ public record VkWin32SurfaceCreateInfoKHR(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$hinstance, OFFSET$hinstance, value);
     }
 
+    public void hinstance(IPointer pointer) {
+        hinstance(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment hwnd() {
         return segment.get(LAYOUT$hwnd, OFFSET$hwnd);
     }
 
     public void hwnd(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$hwnd, OFFSET$hwnd, value);
+    }
+
+    public void hwnd(IPointer pointer) {
+        hwnd(pointer.segment());
     }
 
     public static VkWin32SurfaceCreateInfoKHR allocate(Arena arena) {

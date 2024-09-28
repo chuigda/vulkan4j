@@ -59,6 +59,10 @@ public record VkPhysicalDeviceImageProcessing2PropertiesQCOM(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkExtent2D maxBlockMatchWindow() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxBlockMatchWindow, LAYOUT$maxBlockMatchWindow));
     }

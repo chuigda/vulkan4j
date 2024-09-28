@@ -181,6 +181,10 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int combinedImageSamplerDescriptorSingleArray() {
         return segment.get(LAYOUT$combinedImageSamplerDescriptorSingleArray, OFFSET$combinedImageSamplerDescriptorSingleArray);
     }

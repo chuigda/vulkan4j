@@ -69,6 +69,10 @@ public record VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int nullColorAttachmentWithExternalFormatResolve() {
         return segment.get(LAYOUT$nullColorAttachmentWithExternalFormatResolve, OFFSET$nullColorAttachmentWithExternalFormatResolve);
     }

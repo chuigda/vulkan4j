@@ -79,6 +79,10 @@ public record VkPhysicalDeviceToolProperties(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public MemorySegment nameRaw() {
         return segment.asSlice(OFFSET$name, SIZE$name);
     }

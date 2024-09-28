@@ -59,6 +59,10 @@ public record VkPhysicalDeviceRayTracingValidationFeaturesNV(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int rayTracingValidation() {
         return segment.get(LAYOUT$rayTracingValidation, OFFSET$rayTracingValidation);
     }

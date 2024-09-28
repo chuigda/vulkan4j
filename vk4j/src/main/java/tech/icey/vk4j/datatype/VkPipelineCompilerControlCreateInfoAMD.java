@@ -59,6 +59,10 @@ public record VkPipelineCompilerControlCreateInfoAMD(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkPipelineCompilerControlFlagsAMD.class) int compilerControlFlags() {
         return segment.get(LAYOUT$compilerControlFlags, OFFSET$compilerControlFlags);
     }

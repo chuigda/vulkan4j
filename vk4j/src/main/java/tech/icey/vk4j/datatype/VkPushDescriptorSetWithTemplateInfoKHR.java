@@ -74,6 +74,10 @@ public record VkPushDescriptorSetWithTemplateInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkDescriptorUpdateTemplate descriptorUpdateTemplate() {
         return new VkDescriptorUpdateTemplate(segment.get(LAYOUT$descriptorUpdateTemplate, OFFSET$descriptorUpdateTemplate));
     }
@@ -104,6 +108,10 @@ public record VkPushDescriptorSetWithTemplateInfoKHR(MemorySegment segment) impl
 
     public void pData(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
+    }
+
+    public void pData(IPointer pointer) {
+        pData(pointer.segment());
     }
 
     public static VkPushDescriptorSetWithTemplateInfoKHR allocate(Arena arena) {

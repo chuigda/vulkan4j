@@ -59,6 +59,10 @@ public record VkSwapchainCounterCreateInfoEXT(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkSurfaceCounterFlagsEXT.class) int surfaceCounters() {
         return segment.get(LAYOUT$surfaceCounters, OFFSET$surfaceCounters);
     }

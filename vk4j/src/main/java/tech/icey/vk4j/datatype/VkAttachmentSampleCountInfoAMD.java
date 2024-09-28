@@ -69,6 +69,10 @@ public record VkAttachmentSampleCountInfoAMD(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int colorAttachmentCount() {
         return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
     }
@@ -80,21 +84,26 @@ public record VkAttachmentSampleCountInfoAMD(MemorySegment segment) implements I
     public @pointer(target=VkSampleCountFlags.class) MemorySegment pColorAttachmentSamplesRaw() {
         return segment.get(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples);
     }
-    
+
     public void pColorAttachmentSamplesRaw(@pointer(target=VkSampleCountFlags.class) MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples, value);
     }
-    
-    public @nullable IntBuffer pColorAttachmentSamples() {
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkSampleCountFlags.class) IntBuffer pColorAttachmentSamples() {
         MemorySegment s = pColorAttachmentSamplesRaw();
         if (s.address() == 0) {
             return null;
         }
-        
+
         return new IntBuffer(s);
     }
 
-    public void pColorAttachmentSamples(@nullable IntBuffer value) {
+    public void pColorAttachmentSamples(@nullable @enumtype(VkSampleCountFlags.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentSamplesRaw(s);
     }
@@ -110,7 +119,7 @@ public record VkAttachmentSampleCountInfoAMD(MemorySegment segment) implements I
     public static VkAttachmentSampleCountInfoAMD allocate(Arena arena) {
         return new VkAttachmentSampleCountInfoAMD(arena.allocate(LAYOUT));
     }
-    
+
     public static VkAttachmentSampleCountInfoAMD[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAttachmentSampleCountInfoAMD[] ret = new VkAttachmentSampleCountInfoAMD[count];

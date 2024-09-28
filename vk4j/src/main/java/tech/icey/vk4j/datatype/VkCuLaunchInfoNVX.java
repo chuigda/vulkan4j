@@ -110,6 +110,10 @@ public record VkCuLaunchInfoNVX(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkCuFunctionNVX function() {
         return new VkCuFunctionNVX(segment.get(LAYOUT$function, OFFSET$function));
     }
@@ -190,6 +194,10 @@ public record VkCuLaunchInfoNVX(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pParams, OFFSET$pParams, value);
     }
 
+    public void pParams(IPointer pointer) {
+        pParams(pointer.segment());
+    }
+
     public @unsigned long extraCount() {
             return NativeLayout.readCSizeT(segment, OFFSET$extraCount);
         }
@@ -204,6 +212,10 @@ public record VkCuLaunchInfoNVX(MemorySegment segment) implements IPointer {
 
     public void pExtras(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pExtras, OFFSET$pExtras, value);
+    }
+
+    public void pExtras(IPointer pointer) {
+        pExtras(pointer.segment());
     }
 
     public static VkCuLaunchInfoNVX allocate(Arena arena) {

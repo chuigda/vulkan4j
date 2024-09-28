@@ -64,6 +64,10 @@ public record VkIOSSurfaceCreateInfoMVK(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkIOSSurfaceCreateFlagsMVK.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -78,6 +82,10 @@ public record VkIOSSurfaceCreateInfoMVK(MemorySegment segment) implements IPoint
 
     public void pView(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pView, OFFSET$pView, value);
+    }
+
+    public void pView(IPointer pointer) {
+        pView(pointer.segment());
     }
 
     public static VkIOSSurfaceCreateInfoMVK allocate(Arena arena) {

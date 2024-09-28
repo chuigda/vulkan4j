@@ -59,6 +59,10 @@ public record VkBufferCollectionCreateInfoFUCHSIA(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int collectionToken() {
         return segment.get(LAYOUT$collectionToken, OFFSET$collectionToken);
     }

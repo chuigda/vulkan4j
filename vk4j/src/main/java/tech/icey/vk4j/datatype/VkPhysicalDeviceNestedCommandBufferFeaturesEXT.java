@@ -69,6 +69,10 @@ public record VkPhysicalDeviceNestedCommandBufferFeaturesEXT(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int nestedCommandBuffer() {
         return segment.get(LAYOUT$nestedCommandBuffer, OFFSET$nestedCommandBuffer);
     }

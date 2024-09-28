@@ -74,6 +74,10 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int depthBiasControl() {
         return segment.get(LAYOUT$depthBiasControl, OFFSET$depthBiasControl);
     }

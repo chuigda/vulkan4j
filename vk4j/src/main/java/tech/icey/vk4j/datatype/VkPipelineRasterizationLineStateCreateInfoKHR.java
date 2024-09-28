@@ -74,6 +74,10 @@ public record VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkLineRasterizationModeKHR.class) int lineRasterizationMode() {
         return segment.get(LAYOUT$lineRasterizationMode, OFFSET$lineRasterizationMode);
     }

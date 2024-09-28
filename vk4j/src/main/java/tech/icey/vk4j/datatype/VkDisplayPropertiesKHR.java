@@ -78,6 +78,11 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$displayName, OFFSET$displayName, value);
     }
 
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
     public @nullable ByteBuffer displayName() {
         MemorySegment s = displayNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);

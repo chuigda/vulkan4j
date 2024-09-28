@@ -69,6 +69,10 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shadingRateImageEnable() {
         return segment.get(LAYOUT$shadingRateImageEnable, OFFSET$shadingRateImageEnable);
     }

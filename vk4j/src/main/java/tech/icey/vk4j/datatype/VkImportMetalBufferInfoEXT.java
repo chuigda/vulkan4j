@@ -59,12 +59,20 @@ public record VkImportMetalBufferInfoEXT(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment mtlBuffer() {
         return segment.get(LAYOUT$mtlBuffer, OFFSET$mtlBuffer);
     }
 
     public void mtlBuffer(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$mtlBuffer, OFFSET$mtlBuffer, value);
+    }
+
+    public void mtlBuffer(IPointer pointer) {
+        mtlBuffer(pointer.segment());
     }
 
     public static VkImportMetalBufferInfoEXT allocate(Arena arena) {

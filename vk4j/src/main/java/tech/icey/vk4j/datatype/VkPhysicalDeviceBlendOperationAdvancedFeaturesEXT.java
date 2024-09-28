@@ -59,6 +59,10 @@ public record VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT(MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int advancedBlendCoherentOperations() {
         return segment.get(LAYOUT$advancedBlendCoherentOperations, OFFSET$advancedBlendCoherentOperations);
     }

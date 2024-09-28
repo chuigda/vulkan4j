@@ -64,6 +64,10 @@ public record VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int clustercullingShader() {
         return segment.get(LAYOUT$clustercullingShader, OFFSET$clustercullingShader);
     }

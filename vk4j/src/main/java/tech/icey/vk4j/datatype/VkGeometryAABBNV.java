@@ -74,6 +74,10 @@ public record VkGeometryAABBNV(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkBuffer aabbData() {
         return new VkBuffer(segment.get(LAYOUT$aabbData, OFFSET$aabbData));
     }

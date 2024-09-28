@@ -59,6 +59,10 @@ public record VkPhysicalDeviceLinearColorAttachmentFeaturesNV(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int linearColorAttachment() {
         return segment.get(LAYOUT$linearColorAttachment, OFFSET$linearColorAttachment);
     }

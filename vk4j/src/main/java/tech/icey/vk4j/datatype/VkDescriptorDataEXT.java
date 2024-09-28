@@ -85,6 +85,11 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pSampler, OFFSET$pSampler, value);
     }
 
+    /// Note: the returned {@link VkSampler.Buffer} does not have correct
+    /// {@link VkSampler.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkSampler.Buffer#reinterpret} to set the size before actually
+    /// {@link VkSampler.Buffer#read}ing or {@link VkSampler.Buffer#write}ing
+    /// the buffer.
     public @nullable VkSampler.Buffer pSampler() {
         MemorySegment s = pSamplerRaw();
         if (s.address() == 0) {

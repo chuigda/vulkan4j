@@ -89,6 +89,10 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int waitSemaphoreCount() {
         return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
     }
@@ -105,6 +109,11 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
 
+    /// Note: the returned {@link VkSemaphore.Buffer} does not have correct
+    /// {@link VkSemaphore.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
+    /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
+    /// the buffer.
     public @nullable VkSemaphore.Buffer pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.address() == 0) {
@@ -125,8 +134,13 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
     public void pWaitDstStageMaskRaw(@pointer(target=VkPipelineStageFlags.class) MemorySegment value) {
         segment.set(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask, value);
     }
-    
-    public @nullable IntBuffer pWaitDstStageMask() {
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkPipelineStageFlags.class) IntBuffer pWaitDstStageMask() {
         MemorySegment s = pWaitDstStageMaskRaw();
         if (s.address() == 0) {
             return null;
@@ -135,7 +149,7 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
         return new IntBuffer(s);
     }
 
-    public void pWaitDstStageMask(@nullable IntBuffer value) {
+    public void pWaitDstStageMask(@nullable @enumtype(VkPipelineStageFlags.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitDstStageMaskRaw(s);
     }
@@ -156,6 +170,11 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers, value);
     }
 
+    /// Note: the returned {@link VkCommandBuffer.Buffer} does not have correct
+    /// {@link VkCommandBuffer.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkCommandBuffer.Buffer#reinterpret} to set the size before actually
+    /// {@link VkCommandBuffer.Buffer#read}ing or {@link VkCommandBuffer.Buffer#write}ing
+    /// the buffer.
     public @nullable VkCommandBuffer.Buffer pCommandBuffers() {
         MemorySegment s = pCommandBuffersRaw();
         if (s.address() == 0) {
@@ -185,6 +204,11 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
 
+    /// Note: the returned {@link VkSemaphore.Buffer} does not have correct
+    /// {@link VkSemaphore.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
+    /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
+    /// the buffer.
     public @nullable VkSemaphore.Buffer pSignalSemaphores() {
         MemorySegment s = pSignalSemaphoresRaw();
         if (s.address() == 0) {

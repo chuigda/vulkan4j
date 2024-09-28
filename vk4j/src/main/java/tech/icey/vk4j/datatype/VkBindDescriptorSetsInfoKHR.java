@@ -89,6 +89,10 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
@@ -129,6 +133,11 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets, value);
     }
 
+    /// Note: the returned {@link VkDescriptorSet.Buffer} does not have correct
+    /// {@link VkDescriptorSet.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkDescriptorSet.Buffer#reinterpret} to set the size before actually
+    /// {@link VkDescriptorSet.Buffer#read}ing or {@link VkDescriptorSet.Buffer#write}ing
+    /// the buffer.
     public @nullable VkDescriptorSet.Buffer pDescriptorSets() {
         MemorySegment s = pDescriptorSetsRaw();
         if (s.address() == 0) {
@@ -158,6 +167,11 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets, value);
     }
 
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
     public @nullable @unsigned IntBuffer pDynamicOffsets() {
         MemorySegment s = pDynamicOffsetsRaw();
         return s.address() == 0 ? null : new IntBuffer(s);

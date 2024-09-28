@@ -59,6 +59,10 @@ public record VkSubpassResolvePerformanceQueryEXT(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int optimal() {
         return segment.get(LAYOUT$optimal, OFFSET$optimal);
     }

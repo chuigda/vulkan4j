@@ -64,6 +64,10 @@ public record VkPhysicalDeviceShaderClockFeaturesKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shaderSubgroupClock() {
         return segment.get(LAYOUT$shaderSubgroupClock, OFFSET$shaderSubgroupClock);
     }

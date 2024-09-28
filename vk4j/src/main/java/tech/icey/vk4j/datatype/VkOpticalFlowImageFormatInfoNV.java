@@ -59,6 +59,10 @@ public record VkOpticalFlowImageFormatInfoNV(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkOpticalFlowUsageFlagsNV.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }

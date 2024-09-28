@@ -64,6 +64,10 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int rayTracingMaintenance1() {
         return segment.get(LAYOUT$rayTracingMaintenance1, OFFSET$rayTracingMaintenance1);
     }

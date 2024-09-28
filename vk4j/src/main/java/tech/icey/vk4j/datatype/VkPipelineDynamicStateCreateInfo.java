@@ -69,6 +69,10 @@ public record VkPipelineDynamicStateCreateInfo(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkPipelineDynamicStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -92,8 +96,13 @@ public record VkPipelineDynamicStateCreateInfo(MemorySegment segment) implements
     public void pDynamicStatesRaw(@pointer(target=VkDynamicState.class) MemorySegment value) {
         segment.set(LAYOUT$pDynamicStates, OFFSET$pDynamicStates, value);
     }
-    
-    public @nullable IntBuffer pDynamicStates() {
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkDynamicState.class) IntBuffer pDynamicStates() {
         MemorySegment s = pDynamicStatesRaw();
         if (s.address() == 0) {
             return null;
@@ -102,7 +111,7 @@ public record VkPipelineDynamicStateCreateInfo(MemorySegment segment) implements
         return new IntBuffer(s);
     }
 
-    public void pDynamicStates(@nullable IntBuffer value) {
+    public void pDynamicStates(@nullable @enumtype(VkDynamicState.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDynamicStatesRaw(s);
     }

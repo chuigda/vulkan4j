@@ -84,6 +84,10 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int copySrcLayoutCount() {
         return segment.get(LAYOUT$copySrcLayoutCount, OFFSET$copySrcLayoutCount);
     }
@@ -99,8 +103,13 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
     public void pCopySrcLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
         segment.set(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts, value);
     }
-    
-    public @nullable IntBuffer pCopySrcLayouts() {
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkImageLayout.class) IntBuffer pCopySrcLayouts() {
         MemorySegment s = pCopySrcLayoutsRaw();
         if (s.address() == 0) {
             return null;
@@ -109,7 +118,7 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         return new IntBuffer(s);
     }
 
-    public void pCopySrcLayouts(@nullable IntBuffer value) {
+    public void pCopySrcLayouts(@nullable @enumtype(VkImageLayout.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopySrcLayoutsRaw(s);
     }
@@ -129,8 +138,13 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
     public void pCopyDstLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
         segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
     }
-    
-    public @nullable IntBuffer pCopyDstLayouts() {
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkImageLayout.class) IntBuffer pCopyDstLayouts() {
         MemorySegment s = pCopyDstLayoutsRaw();
         if (s.address() == 0) {
             return null;
@@ -139,7 +153,7 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         return new IntBuffer(s);
     }
 
-    public void pCopyDstLayouts(@nullable IntBuffer value) {
+    public void pCopyDstLayouts(@nullable @enumtype(VkImageLayout.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopyDstLayoutsRaw(s);
     }

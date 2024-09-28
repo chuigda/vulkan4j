@@ -69,6 +69,10 @@ public record VkAttachmentReference2(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int attachment() {
         return segment.get(LAYOUT$attachment, OFFSET$attachment);
     }

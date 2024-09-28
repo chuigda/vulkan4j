@@ -64,6 +64,10 @@ public record VkLayerSettingsCreateInfoEXT(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int settingCount() {
         return segment.get(LAYOUT$settingCount, OFFSET$settingCount);
     }

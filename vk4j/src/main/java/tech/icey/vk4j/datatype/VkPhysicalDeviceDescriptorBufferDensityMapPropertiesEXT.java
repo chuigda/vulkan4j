@@ -57,6 +57,10 @@ public record VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long combinedImageSamplerDensityMapDescriptorSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$combinedImageSamplerDensityMapDescriptorSize);
         }

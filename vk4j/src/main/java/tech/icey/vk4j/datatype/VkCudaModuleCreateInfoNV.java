@@ -62,6 +62,10 @@ public record VkCudaModuleCreateInfoNV(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long dataSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$dataSize);
         }
@@ -76,6 +80,10 @@ public record VkCudaModuleCreateInfoNV(MemorySegment segment) implements IPointe
 
     public void pData(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
+    }
+
+    public void pData(IPointer pointer) {
+        pData(pointer.segment());
     }
 
     public static VkCudaModuleCreateInfoNV allocate(Arena arena) {

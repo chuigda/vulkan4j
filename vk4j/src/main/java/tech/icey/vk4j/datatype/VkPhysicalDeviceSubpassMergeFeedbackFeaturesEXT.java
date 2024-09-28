@@ -59,6 +59,10 @@ public record VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int subpassMergeFeedback() {
         return segment.get(LAYOUT$subpassMergeFeedback, OFFSET$subpassMergeFeedback);
     }

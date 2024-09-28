@@ -59,6 +59,10 @@ public record VkPhysicalDeviceDiscardRectanglePropertiesEXT(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxDiscardRectangles() {
         return segment.get(LAYOUT$maxDiscardRectangles, OFFSET$maxDiscardRectangles);
     }

@@ -64,6 +64,10 @@ public record VkCheckpointDataNV(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkPipelineStageFlags.class) int stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
@@ -78,6 +82,10 @@ public record VkCheckpointDataNV(MemorySegment segment) implements IPointer {
 
     public void pCheckpointMarker(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pCheckpointMarker, OFFSET$pCheckpointMarker, value);
+    }
+
+    public void pCheckpointMarker(IPointer pointer) {
+        pCheckpointMarker(pointer.segment());
     }
 
     public static VkCheckpointDataNV allocate(Arena arena) {

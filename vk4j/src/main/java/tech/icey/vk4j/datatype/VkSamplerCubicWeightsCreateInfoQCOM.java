@@ -59,6 +59,10 @@ public record VkSamplerCubicWeightsCreateInfoQCOM(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkCubicFilterWeightsQCOM.class) int cubicWeights() {
         return segment.get(LAYOUT$cubicWeights, OFFSET$cubicWeights);
     }

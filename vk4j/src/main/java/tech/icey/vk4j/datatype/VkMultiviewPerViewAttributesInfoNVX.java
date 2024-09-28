@@ -64,6 +64,10 @@ public record VkMultiviewPerViewAttributesInfoNVX(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int perViewAttributes() {
         return segment.get(LAYOUT$perViewAttributes, OFFSET$perViewAttributes);
     }

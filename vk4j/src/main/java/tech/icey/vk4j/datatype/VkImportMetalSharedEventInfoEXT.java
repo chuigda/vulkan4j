@@ -59,12 +59,20 @@ public record VkImportMetalSharedEventInfoEXT(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment mtlSharedEvent() {
         return segment.get(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent);
     }
 
     public void mtlSharedEvent(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent, value);
+    }
+
+    public void mtlSharedEvent(IPointer pointer) {
+        mtlSharedEvent(pointer.segment());
     }
 
     public static VkImportMetalSharedEventInfoEXT allocate(Arena arena) {

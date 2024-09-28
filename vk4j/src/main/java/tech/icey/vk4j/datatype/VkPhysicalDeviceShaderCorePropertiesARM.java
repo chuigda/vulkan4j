@@ -69,6 +69,10 @@ public record VkPhysicalDeviceShaderCorePropertiesARM(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int pixelRate() {
         return segment.get(LAYOUT$pixelRate, OFFSET$pixelRate);
     }

@@ -59,6 +59,10 @@ public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(MemoryS
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int dedicatedAllocationImageAliasing() {
         return segment.get(LAYOUT$dedicatedAllocationImageAliasing, OFFSET$dedicatedAllocationImageAliasing);
     }

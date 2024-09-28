@@ -79,6 +79,10 @@ public record VkPushConstantsInfoKHR(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkPipelineLayout layout() {
         return new VkPipelineLayout(segment.get(LAYOUT$layout, OFFSET$layout));
     }
@@ -117,6 +121,10 @@ public record VkPushConstantsInfoKHR(MemorySegment segment) implements IPointer 
 
     public void pValues(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
+    }
+
+    public void pValues(IPointer pointer) {
+        pValues(pointer.segment());
     }
 
     public static VkPushConstantsInfoKHR allocate(Arena arena) {

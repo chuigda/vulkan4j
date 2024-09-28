@@ -64,6 +64,10 @@ public record VkAndroidSurfaceCreateInfoKHR(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkAndroidSurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -78,6 +82,10 @@ public record VkAndroidSurfaceCreateInfoKHR(MemorySegment segment) implements IP
 
     public void window(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$window, OFFSET$window, value);
+    }
+
+    public void window(IPointer pointer) {
+        window(pointer.segment());
     }
 
     public static VkAndroidSurfaceCreateInfoKHR allocate(Arena arena) {

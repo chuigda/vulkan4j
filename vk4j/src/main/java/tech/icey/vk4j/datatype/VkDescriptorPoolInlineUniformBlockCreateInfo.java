@@ -59,6 +59,10 @@ public record VkDescriptorPoolInlineUniformBlockCreateInfo(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int maxInlineUniformBlockBindings() {
         return segment.get(LAYOUT$maxInlineUniformBlockBindings, OFFSET$maxInlineUniformBlockBindings);
     }

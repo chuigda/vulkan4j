@@ -69,6 +69,10 @@ public record VkPerformanceOverrideInfoINTEL(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkPerformanceOverrideTypeINTEL.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }

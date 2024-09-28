@@ -59,6 +59,10 @@ public record VkDeviceMemoryOverallocationCreateInfoAMD(MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkMemoryOverallocationBehaviorAMD.class) int overallocationBehavior() {
         return segment.get(LAYOUT$overallocationBehavior, OFFSET$overallocationBehavior);
     }

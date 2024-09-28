@@ -59,6 +59,10 @@ public record VkPhysicalDeviceLayeredDriverPropertiesMSFT(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkLayeredDriverUnderlyingApiMSFT.class) int underlyingAPI() {
         return segment.get(LAYOUT$underlyingAPI, OFFSET$underlyingAPI);
     }

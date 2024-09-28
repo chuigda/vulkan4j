@@ -64,6 +64,10 @@ public record VkPhysicalDeviceCooperativeMatrixFeaturesKHR(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int cooperativeMatrix() {
         return segment.get(LAYOUT$cooperativeMatrix, OFFSET$cooperativeMatrix);
     }

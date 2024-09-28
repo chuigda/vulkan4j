@@ -94,6 +94,10 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkDescriptorSet dstSet() {
         return new VkDescriptorSet(segment.get(LAYOUT$dstSet, OFFSET$dstSet));
     }
@@ -204,6 +208,11 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView, value);
     }
 
+    /// Note: the returned {@link VkBufferView.Buffer} does not have correct
+    /// {@link VkBufferView.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkBufferView.Buffer#reinterpret} to set the size before actually
+    /// {@link VkBufferView.Buffer#read}ing or {@link VkBufferView.Buffer#write}ing
+    /// the buffer.
     public @nullable VkBufferView.Buffer pTexelBufferView() {
         MemorySegment s = pTexelBufferViewRaw();
         if (s.address() == 0) {

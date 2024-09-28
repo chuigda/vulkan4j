@@ -69,6 +69,10 @@ public record VkTilePropertiesQCOM(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkExtent3D tileSize() {
         return new VkExtent3D(segment.asSlice(OFFSET$tileSize, LAYOUT$tileSize));
     }

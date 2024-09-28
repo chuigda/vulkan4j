@@ -94,6 +94,10 @@ public record VkPhysicalDeviceAccelerationStructurePropertiesKHR(MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long maxGeometryCount() {
         return segment.get(LAYOUT$maxGeometryCount, OFFSET$maxGeometryCount);
     }

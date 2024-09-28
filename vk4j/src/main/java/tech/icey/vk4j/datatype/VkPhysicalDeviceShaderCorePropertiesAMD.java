@@ -124,6 +124,10 @@ public record VkPhysicalDeviceShaderCorePropertiesAMD(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int shaderEngineCount() {
         return segment.get(LAYOUT$shaderEngineCount, OFFSET$shaderEngineCount);
     }

@@ -77,6 +77,10 @@ public record VkDebugMarkerObjectTagInfoEXT(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkDebugReportObjectTypeEXT.class) int objectType() {
         return segment.get(LAYOUT$objectType, OFFSET$objectType);
     }
@@ -115,6 +119,10 @@ public record VkDebugMarkerObjectTagInfoEXT(MemorySegment segment) implements IP
 
     public void pTag(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pTag, OFFSET$pTag, value);
+    }
+
+    public void pTag(IPointer pointer) {
+        pTag(pointer.segment());
     }
 
     public static VkDebugMarkerObjectTagInfoEXT allocate(Arena arena) {

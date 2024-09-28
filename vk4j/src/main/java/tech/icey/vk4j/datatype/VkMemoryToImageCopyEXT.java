@@ -84,12 +84,20 @@ public record VkMemoryToImageCopyEXT(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="void*") MemorySegment pHostPointer() {
         return segment.get(LAYOUT$pHostPointer, OFFSET$pHostPointer);
     }
 
     public void pHostPointer(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pHostPointer, OFFSET$pHostPointer, value);
+    }
+
+    public void pHostPointer(IPointer pointer) {
+        pHostPointer(pointer.segment());
     }
 
     public @unsigned int memoryRowLength() {

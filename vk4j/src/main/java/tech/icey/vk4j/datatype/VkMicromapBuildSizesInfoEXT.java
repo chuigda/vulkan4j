@@ -69,6 +69,10 @@ public record VkMicromapBuildSizesInfoEXT(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long micromapSize() {
         return segment.get(LAYOUT$micromapSize, OFFSET$micromapSize);
     }

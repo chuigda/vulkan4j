@@ -64,6 +64,10 @@ public record VkDeviceGroupDeviceCreateInfo(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int physicalDeviceCount() {
         return segment.get(LAYOUT$physicalDeviceCount, OFFSET$physicalDeviceCount);
     }
@@ -80,6 +84,11 @@ public record VkDeviceGroupDeviceCreateInfo(MemorySegment segment) implements IP
         segment.set(LAYOUT$pPhysicalDevices, OFFSET$pPhysicalDevices, value);
     }
 
+    /// Note: the returned {@link VkPhysicalDevice.Buffer} does not have correct
+    /// {@link VkPhysicalDevice.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkPhysicalDevice.Buffer#reinterpret} to set the size before actually
+    /// {@link VkPhysicalDevice.Buffer#read}ing or {@link VkPhysicalDevice.Buffer#write}ing
+    /// the buffer.
     public @nullable VkPhysicalDevice.Buffer pPhysicalDevices() {
         MemorySegment s = pPhysicalDevicesRaw();
         if (s.address() == 0) {

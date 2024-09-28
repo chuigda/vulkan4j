@@ -64,6 +64,10 @@ public record VkSemaphoreGetFdInfoKHR(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkSemaphore semaphore() {
         return new VkSemaphore(segment.get(LAYOUT$semaphore, OFFSET$semaphore));
     }

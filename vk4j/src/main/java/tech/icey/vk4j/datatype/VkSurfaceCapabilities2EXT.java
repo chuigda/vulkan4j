@@ -109,6 +109,10 @@ public record VkSurfaceCapabilities2EXT(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int minImageCount() {
         return segment.get(LAYOUT$minImageCount, OFFSET$minImageCount);
     }

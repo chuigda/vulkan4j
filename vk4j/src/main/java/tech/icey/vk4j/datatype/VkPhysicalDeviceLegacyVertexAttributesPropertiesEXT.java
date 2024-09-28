@@ -59,6 +59,10 @@ public record VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int nativeUnalignedPerformance() {
         return segment.get(LAYOUT$nativeUnalignedPerformance, OFFSET$nativeUnalignedPerformance);
     }

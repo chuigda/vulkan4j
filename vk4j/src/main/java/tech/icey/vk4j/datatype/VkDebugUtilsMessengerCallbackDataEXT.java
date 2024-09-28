@@ -104,6 +104,10 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
@@ -120,6 +124,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
         segment.set(LAYOUT$pMessageIdName, OFFSET$pMessageIdName, value);
     }
 
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
     public @nullable ByteBuffer pMessageIdName() {
         MemorySegment s = pMessageIdNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
@@ -146,6 +155,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
         segment.set(LAYOUT$pMessage, OFFSET$pMessage, value);
     }
 
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
     public @nullable ByteBuffer pMessage() {
         MemorySegment s = pMessageRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);

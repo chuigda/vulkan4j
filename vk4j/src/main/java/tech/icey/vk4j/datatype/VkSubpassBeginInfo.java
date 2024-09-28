@@ -59,6 +59,10 @@ public record VkSubpassBeginInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkSubpassContents.class) int contents() {
         return segment.get(LAYOUT$contents, OFFSET$contents);
     }

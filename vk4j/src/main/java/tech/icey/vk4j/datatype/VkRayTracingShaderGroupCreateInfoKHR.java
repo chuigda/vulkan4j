@@ -84,6 +84,10 @@ public record VkRayTracingShaderGroupCreateInfoKHR(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkRayTracingShaderGroupTypeKHR.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
@@ -130,6 +134,10 @@ public record VkRayTracingShaderGroupCreateInfoKHR(MemorySegment segment) implem
 
     public void pShaderGroupCaptureReplayHandle(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pShaderGroupCaptureReplayHandle, OFFSET$pShaderGroupCaptureReplayHandle, value);
+    }
+
+    public void pShaderGroupCaptureReplayHandle(IPointer pointer) {
+        pShaderGroupCaptureReplayHandle(pointer.segment());
     }
 
     public static VkRayTracingShaderGroupCreateInfoKHR allocate(Arena arena) {

@@ -79,6 +79,10 @@ public record VkCopyBufferToImageInfo2(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkBuffer srcBuffer() {
         return new VkBuffer(segment.get(LAYOUT$srcBuffer, OFFSET$srcBuffer));
     }

@@ -69,6 +69,10 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int viewportScissor2D() {
         return segment.get(LAYOUT$viewportScissor2D, OFFSET$viewportScissor2D);
     }

@@ -74,6 +74,10 @@ public record VkPhysicalDeviceSubgroupProperties(MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int subgroupSize() {
         return segment.get(LAYOUT$subgroupSize, OFFSET$subgroupSize);
     }

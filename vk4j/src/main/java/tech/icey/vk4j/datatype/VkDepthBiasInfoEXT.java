@@ -69,6 +69,10 @@ public record VkDepthBiasInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public float depthBiasConstantFactor() {
         return segment.get(LAYOUT$depthBiasConstantFactor, OFFSET$depthBiasConstantFactor);
     }

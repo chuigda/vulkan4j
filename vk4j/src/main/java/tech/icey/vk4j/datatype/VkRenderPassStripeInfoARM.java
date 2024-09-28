@@ -59,6 +59,10 @@ public record VkRenderPassStripeInfoARM(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public VkRect2D stripeArea() {
         return new VkRect2D(segment.asSlice(OFFSET$stripeArea, LAYOUT$stripeArea));
     }

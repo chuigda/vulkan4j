@@ -59,6 +59,10 @@ public record VkOutOfBandQueueTypeInfoNV(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkOutOfBandQueueTypeNV.class) int queueType() {
         return segment.get(LAYOUT$queueType, OFFSET$queueType);
     }

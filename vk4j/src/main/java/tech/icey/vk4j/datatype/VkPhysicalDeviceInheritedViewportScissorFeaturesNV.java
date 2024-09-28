@@ -59,6 +59,10 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int inheritedViewportScissor2D() {
         return segment.get(LAYOUT$inheritedViewportScissor2D, OFFSET$inheritedViewportScissor2D);
     }

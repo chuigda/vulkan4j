@@ -62,6 +62,10 @@ public record VkDescriptorSetLayoutHostMappingInfoVALVE(MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned long descriptorOffset() {
             return NativeLayout.readCSizeT(segment, OFFSET$descriptorOffset);
         }

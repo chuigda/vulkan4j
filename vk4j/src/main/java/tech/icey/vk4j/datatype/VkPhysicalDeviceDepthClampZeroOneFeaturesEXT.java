@@ -59,6 +59,10 @@ public record VkPhysicalDeviceDepthClampZeroOneFeaturesEXT(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int depthClampZeroOne() {
         return segment.get(LAYOUT$depthClampZeroOne, OFFSET$depthClampZeroOne);
     }

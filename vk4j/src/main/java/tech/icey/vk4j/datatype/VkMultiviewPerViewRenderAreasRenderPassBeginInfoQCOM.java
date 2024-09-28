@@ -64,6 +64,10 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int perViewRenderAreaCount() {
         return segment.get(LAYOUT$perViewRenderAreaCount, OFFSET$perViewRenderAreaCount);
     }

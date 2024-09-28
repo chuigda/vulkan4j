@@ -59,6 +59,10 @@ public record VkPhysicalDeviceImageViewImageFormatInfoEXT(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkImageViewType.class) int imageViewType() {
         return segment.get(LAYOUT$imageViewType, OFFSET$imageViewType);
     }

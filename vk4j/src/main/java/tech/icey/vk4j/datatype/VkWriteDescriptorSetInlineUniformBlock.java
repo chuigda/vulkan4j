@@ -64,6 +64,10 @@ public record VkWriteDescriptorSetInlineUniformBlock(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int dataSize() {
         return segment.get(LAYOUT$dataSize, OFFSET$dataSize);
     }
@@ -78,6 +82,10 @@ public record VkWriteDescriptorSetInlineUniformBlock(MemorySegment segment) impl
 
     public void pData(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
+    }
+
+    public void pData(IPointer pointer) {
+        pData(pointer.segment());
     }
 
     public static VkWriteDescriptorSetInlineUniformBlock allocate(Arena arena) {

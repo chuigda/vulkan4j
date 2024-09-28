@@ -64,6 +64,10 @@ public record VkDepthBiasRepresentationInfoEXT(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkDepthBiasRepresentationEXT.class) int depthBiasRepresentation() {
         return segment.get(LAYOUT$depthBiasRepresentation, OFFSET$depthBiasRepresentation);
     }

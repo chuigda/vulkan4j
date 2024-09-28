@@ -64,6 +64,10 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int enableYDegamma() {
         return segment.get(LAYOUT$enableYDegamma, OFFSET$enableYDegamma);
     }

@@ -69,6 +69,10 @@ public record VkPhysicalDeviceRobustness2FeaturesEXT(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int robustBufferAccess2() {
         return segment.get(LAYOUT$robustBufferAccess2, OFFSET$robustBufferAccess2);
     }

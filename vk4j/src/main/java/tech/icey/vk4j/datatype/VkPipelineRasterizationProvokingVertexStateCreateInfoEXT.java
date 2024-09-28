@@ -59,6 +59,10 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @enumtype(VkProvokingVertexModeEXT.class) int provokingVertexMode() {
         return segment.get(LAYOUT$provokingVertexMode, OFFSET$provokingVertexMode);
     }

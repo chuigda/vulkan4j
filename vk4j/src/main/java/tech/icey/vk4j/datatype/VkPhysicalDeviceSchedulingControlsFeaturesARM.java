@@ -59,6 +59,10 @@ public record VkPhysicalDeviceSchedulingControlsFeaturesARM(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int schedulingControls() {
         return segment.get(LAYOUT$schedulingControls, OFFSET$schedulingControls);
     }

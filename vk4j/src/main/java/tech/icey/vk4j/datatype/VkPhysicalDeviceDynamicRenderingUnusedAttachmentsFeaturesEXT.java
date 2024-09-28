@@ -59,6 +59,10 @@ public record VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(Memor
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int dynamicRenderingUnusedAttachments() {
         return segment.get(LAYOUT$dynamicRenderingUnusedAttachments, OFFSET$dynamicRenderingUnusedAttachments);
     }

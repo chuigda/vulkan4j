@@ -64,6 +64,10 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int drmFormatModifierCount() {
         return segment.get(LAYOUT$drmFormatModifierCount, OFFSET$drmFormatModifierCount);
     }
@@ -80,6 +84,11 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(MemorySegment segment) i
         segment.set(LAYOUT$pDrmFormatModifiers, OFFSET$pDrmFormatModifiers, value);
     }
 
+    /// Note: the returned {@link LongBuffer} does not have correct
+    /// {@link LongBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link LongBuffer#reinterpret} to set the size before actually
+    /// {@link LongBuffer#read}ing or
+    /// {@link LongBuffer#write}ing the buffer.
     public @nullable @unsigned LongBuffer pDrmFormatModifiers() {
         MemorySegment s = pDrmFormatModifiersRaw();
         return s.address() == 0 ? null : new LongBuffer(s);

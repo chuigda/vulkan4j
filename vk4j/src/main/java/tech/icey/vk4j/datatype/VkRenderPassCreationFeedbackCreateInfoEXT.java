@@ -59,6 +59,10 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @pointer(comment="VkRenderPassCreationFeedbackInfoEXT*") MemorySegment pRenderPassFeedbackRaw() {
         return segment.get(LAYOUT$pRenderPassFeedback, OFFSET$pRenderPassFeedback);
     }

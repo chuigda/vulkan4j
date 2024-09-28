@@ -59,6 +59,10 @@ public record VkPhysicalDeviceImageViewMinLodFeaturesEXT(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
     public @unsigned int minLod() {
         return segment.get(LAYOUT$minLod, OFFSET$minLod);
     }
