@@ -84,6 +84,7 @@ public record VkFragmentShadingRateAttachmentInfoKHR(MemorySegment segment) impl
         return new VkAttachmentReference2(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkAttachmentReference2[] pFragmentShadingRateAttachment(int assumedCount) {
         MemorySegment s = pFragmentShadingRateAttachmentRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);

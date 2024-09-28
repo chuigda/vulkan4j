@@ -115,6 +115,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implement
         return new VkViewport(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkViewport[] pViewports(int assumedCount) {
         MemorySegment s = pViewportsRaw().reinterpret(assumedCount * VkViewport.SIZE);
@@ -154,6 +155,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implement
         return new VkRect2D(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkRect2D[] pScissors(int assumedCount) {
         MemorySegment s = pScissorsRaw().reinterpret(assumedCount * VkRect2D.SIZE);

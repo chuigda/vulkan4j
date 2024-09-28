@@ -105,6 +105,7 @@ public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) imp
         return new VkAttachmentReference2(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkAttachmentReference2[] pDepthStencilResolveAttachment(int assumedCount) {
         MemorySegment s = pDepthStencilResolveAttachmentRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);

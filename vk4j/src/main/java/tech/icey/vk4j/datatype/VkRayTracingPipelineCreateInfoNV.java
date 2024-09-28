@@ -135,6 +135,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
         MemorySegment s = pStagesRaw().reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
@@ -174,6 +175,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
         return new VkRayTracingShaderGroupCreateInfoNV(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkRayTracingShaderGroupCreateInfoNV[] pGroups(int assumedCount) {
         MemorySegment s = pGroupsRaw().reinterpret(assumedCount * VkRayTracingShaderGroupCreateInfoNV.SIZE);

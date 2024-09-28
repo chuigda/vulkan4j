@@ -74,6 +74,7 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) implements IPoi
         return new VkSparseImageMemoryBind(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSparseImageMemoryBind[] pBinds(int assumedCount) {
         MemorySegment s = pBindsRaw().reinterpret(assumedCount * VkSparseImageMemoryBind.SIZE);

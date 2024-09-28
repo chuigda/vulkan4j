@@ -89,6 +89,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
         return new VkPipelineBinaryKeysAndDataKHR(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineBinaryKeysAndDataKHR[] pKeysAndDataInfo(int assumedCount) {
         MemorySegment s = pKeysAndDataInfoRaw().reinterpret(assumedCount * VkPipelineBinaryKeysAndDataKHR.SIZE);
@@ -128,6 +129,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
         return new VkPipelineCreateInfoKHR(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineCreateInfoKHR[] pPipelineCreateInfo(int assumedCount) {
         MemorySegment s = pPipelineCreateInfoRaw().reinterpret(assumedCount * VkPipelineCreateInfoKHR.SIZE);

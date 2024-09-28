@@ -106,6 +106,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
         return new VkDeviceFaultAddressInfoEXT(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDeviceFaultAddressInfoEXT[] pAddressInfos(int assumedCount) {
         MemorySegment s = pAddressInfosRaw().reinterpret(assumedCount * VkDeviceFaultAddressInfoEXT.SIZE);
@@ -137,6 +138,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
         return new VkDeviceFaultVendorInfoEXT(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDeviceFaultVendorInfoEXT[] pVendorInfos(int assumedCount) {
         MemorySegment s = pVendorInfosRaw().reinterpret(assumedCount * VkDeviceFaultVendorInfoEXT.SIZE);

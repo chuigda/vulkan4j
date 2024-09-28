@@ -128,6 +128,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) implem
         return new VkIndirectCommandsLayoutTokenNV(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkIndirectCommandsLayoutTokenNV[] pTokens(int assumedCount) {
         MemorySegment s = pTokensRaw().reinterpret(assumedCount * VkIndirectCommandsLayoutTokenNV.SIZE);

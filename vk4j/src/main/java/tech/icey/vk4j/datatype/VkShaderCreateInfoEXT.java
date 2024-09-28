@@ -249,6 +249,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         return new VkPushConstantRange(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPushConstantRange[] pPushConstantRanges(int assumedCount) {
         MemorySegment s = pPushConstantRangesRaw().reinterpret(assumedCount * VkPushConstantRange.SIZE);
@@ -280,6 +281,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         return new VkSpecializationInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSpecializationInfo[] pSpecializationInfo(int assumedCount) {
         MemorySegment s = pSpecializationInfoRaw().reinterpret(assumedCount * VkSpecializationInfo.SIZE);

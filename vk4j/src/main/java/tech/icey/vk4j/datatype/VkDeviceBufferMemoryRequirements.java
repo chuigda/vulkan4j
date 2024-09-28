@@ -79,6 +79,7 @@ public record VkDeviceBufferMemoryRequirements(MemorySegment segment) implements
         return new VkBufferCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkBufferCreateInfo[] pCreateInfo(int assumedCount) {
         MemorySegment s = pCreateInfoRaw().reinterpret(assumedCount * VkBufferCreateInfo.SIZE);

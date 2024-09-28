@@ -92,6 +92,7 @@ public record VkCommandBufferBeginInfo(MemorySegment segment) implements IPointe
         return new VkCommandBufferInheritanceInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkCommandBufferInheritanceInfo[] pInheritanceInfo(int assumedCount) {
         MemorySegment s = pInheritanceInfoRaw().reinterpret(assumedCount * VkCommandBufferInheritanceInfo.SIZE);

@@ -105,6 +105,7 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment 
         return new VkShadingRatePaletteNV(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkShadingRatePaletteNV[] pShadingRatePalettes(int assumedCount) {
         MemorySegment s = pShadingRatePalettesRaw().reinterpret(assumedCount * VkShadingRatePaletteNV.SIZE);

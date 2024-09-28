@@ -112,6 +112,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) implements IPointer {
         return new VkApplicationInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkApplicationInfo[] pApplicationInfo(int assumedCount) {
         MemorySegment s = pApplicationInfoRaw().reinterpret(assumedCount * VkApplicationInfo.SIZE);

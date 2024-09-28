@@ -131,6 +131,7 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) implements IPoin
         return new VkWriteDescriptorSet(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkWriteDescriptorSet[] pDescriptorWrites(int assumedCount) {
         MemorySegment s = pDescriptorWritesRaw().reinterpret(assumedCount * VkWriteDescriptorSet.SIZE);

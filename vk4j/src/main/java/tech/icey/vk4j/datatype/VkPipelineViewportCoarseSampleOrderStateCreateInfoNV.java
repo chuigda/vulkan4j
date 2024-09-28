@@ -105,6 +105,7 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
         return new VkCoarseSampleOrderCustomNV(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkCoarseSampleOrderCustomNV[] pCustomSampleOrders(int assumedCount) {
         MemorySegment s = pCustomSampleOrdersRaw().reinterpret(assumedCount * VkCoarseSampleOrderCustomNV.SIZE);

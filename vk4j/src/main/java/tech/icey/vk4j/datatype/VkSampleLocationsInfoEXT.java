@@ -118,6 +118,7 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) implements IPointe
         return new VkSampleLocationEXT(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSampleLocationEXT[] pSampleLocations(int assumedCount) {
         MemorySegment s = pSampleLocationsRaw().reinterpret(assumedCount * VkSampleLocationEXT.SIZE);

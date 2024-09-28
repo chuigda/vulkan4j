@@ -154,6 +154,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
         return new VkDescriptorImageInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDescriptorImageInfo[] pImageInfo(int assumedCount) {
         MemorySegment s = pImageInfoRaw().reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
@@ -185,6 +186,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
         return new VkDescriptorBufferInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDescriptorBufferInfo[] pBufferInfo(int assumedCount) {
         MemorySegment s = pBufferInfoRaw().reinterpret(assumedCount * VkDescriptorBufferInfo.SIZE);

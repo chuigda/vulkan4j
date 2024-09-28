@@ -144,6 +144,7 @@ public record VkResolveImageInfo2(MemorySegment segment) implements IPointer {
         return new VkImageResolve2(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkImageResolve2[] pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkImageResolve2.SIZE);

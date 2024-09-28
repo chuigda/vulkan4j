@@ -92,6 +92,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(MemorySegment segment)
         return new VkPhysicalDeviceLayeredApiPropertiesKHR(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPhysicalDeviceLayeredApiPropertiesKHR[] pLayeredApis(int assumedCount) {
         MemorySegment s = pLayeredApisRaw().reinterpret(assumedCount * VkPhysicalDeviceLayeredApiPropertiesKHR.SIZE);

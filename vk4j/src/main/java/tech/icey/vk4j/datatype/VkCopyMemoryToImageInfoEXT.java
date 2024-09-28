@@ -131,6 +131,7 @@ public record VkCopyMemoryToImageInfoEXT(MemorySegment segment) implements IPoin
         return new VkMemoryToImageCopyEXT(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkMemoryToImageCopyEXT[] pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkMemoryToImageCopyEXT.SIZE);

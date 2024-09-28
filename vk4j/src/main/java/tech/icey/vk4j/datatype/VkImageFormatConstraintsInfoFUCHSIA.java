@@ -144,6 +144,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) impleme
         return new VkSysmemColorSpaceFUCHSIA(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSysmemColorSpaceFUCHSIA[] pColorSpaces(int assumedCount) {
         MemorySegment s = pColorSpacesRaw().reinterpret(assumedCount * VkSysmemColorSpaceFUCHSIA.SIZE);

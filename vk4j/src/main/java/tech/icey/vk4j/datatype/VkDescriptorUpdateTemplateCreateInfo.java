@@ -130,6 +130,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
         return new VkDescriptorUpdateTemplateEntry(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDescriptorUpdateTemplateEntry[] pDescriptorUpdateEntries(int assumedCount) {
         MemorySegment s = pDescriptorUpdateEntriesRaw().reinterpret(assumedCount * VkDescriptorUpdateTemplateEntry.SIZE);

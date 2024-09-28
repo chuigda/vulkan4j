@@ -167,6 +167,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         return new VkAccelerationStructureGeometryKHR(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkAccelerationStructureGeometryKHR[] pGeometries(int assumedCount) {
         MemorySegment s = pGeometriesRaw().reinterpret(assumedCount * VkAccelerationStructureGeometryKHR.SIZE);

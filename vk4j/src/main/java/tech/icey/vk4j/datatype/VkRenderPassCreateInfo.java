@@ -125,6 +125,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
         return new VkAttachmentDescription(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkAttachmentDescription[] pAttachments(int assumedCount) {
         MemorySegment s = pAttachmentsRaw().reinterpret(assumedCount * VkAttachmentDescription.SIZE);
@@ -164,6 +165,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
         return new VkSubpassDescription(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSubpassDescription[] pSubpasses(int assumedCount) {
         MemorySegment s = pSubpassesRaw().reinterpret(assumedCount * VkSubpassDescription.SIZE);
@@ -203,6 +205,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
         return new VkSubpassDependency(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSubpassDependency[] pDependencies(int assumedCount) {
         MemorySegment s = pDependenciesRaw().reinterpret(assumedCount * VkSubpassDependency.SIZE);

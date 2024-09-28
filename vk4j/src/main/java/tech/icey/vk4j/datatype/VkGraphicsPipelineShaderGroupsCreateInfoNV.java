@@ -102,6 +102,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         return new VkGraphicsShaderGroupCreateInfoNV(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkGraphicsShaderGroupCreateInfoNV[] pGroups(int assumedCount) {
         MemorySegment s = pGroupsRaw().reinterpret(assumedCount * VkGraphicsShaderGroupCreateInfoNV.SIZE);

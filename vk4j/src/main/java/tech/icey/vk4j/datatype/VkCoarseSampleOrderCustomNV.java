@@ -87,6 +87,7 @@ public record VkCoarseSampleOrderCustomNV(MemorySegment segment) implements IPoi
         return new VkCoarseSampleLocationNV(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkCoarseSampleLocationNV[] pSampleLocations(int assumedCount) {
         MemorySegment s = pSampleLocationsRaw().reinterpret(assumedCount * VkCoarseSampleLocationNV.SIZE);

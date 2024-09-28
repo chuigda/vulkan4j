@@ -154,6 +154,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
         return new VkRenderingAttachmentInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkRenderingAttachmentInfo[] pColorAttachments(int assumedCount) {
         MemorySegment s = pColorAttachmentsRaw().reinterpret(assumedCount * VkRenderingAttachmentInfo.SIZE);
@@ -185,6 +186,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
         return new VkRenderingAttachmentInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkRenderingAttachmentInfo[] pDepthAttachment(int assumedCount) {
         MemorySegment s = pDepthAttachmentRaw().reinterpret(assumedCount * VkRenderingAttachmentInfo.SIZE);
@@ -216,6 +218,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
         return new VkRenderingAttachmentInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkRenderingAttachmentInfo[] pStencilAttachment(int assumedCount) {
         MemorySegment s = pStencilAttachmentRaw().reinterpret(assumedCount * VkRenderingAttachmentInfo.SIZE);

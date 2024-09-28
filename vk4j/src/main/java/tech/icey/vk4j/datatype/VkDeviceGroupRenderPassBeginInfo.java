@@ -105,6 +105,7 @@ public record VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) implements
         return new VkRect2D(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkRect2D[] pDeviceRenderAreas(int assumedCount) {
         MemorySegment s = pDeviceRenderAreasRaw().reinterpret(assumedCount * VkRect2D.SIZE);

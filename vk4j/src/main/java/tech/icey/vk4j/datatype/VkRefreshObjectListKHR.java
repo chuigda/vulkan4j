@@ -92,6 +92,7 @@ public record VkRefreshObjectListKHR(MemorySegment segment) implements IPointer 
         return new VkRefreshObjectKHR(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkRefreshObjectKHR[] pObjects(int assumedCount) {
         MemorySegment s = pObjectsRaw().reinterpret(assumedCount * VkRefreshObjectKHR.SIZE);

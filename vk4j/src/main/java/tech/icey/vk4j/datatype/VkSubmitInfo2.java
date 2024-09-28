@@ -125,6 +125,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
         return new VkSemaphoreSubmitInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSemaphoreSubmitInfo[] pWaitSemaphoreInfos(int assumedCount) {
         MemorySegment s = pWaitSemaphoreInfosRaw().reinterpret(assumedCount * VkSemaphoreSubmitInfo.SIZE);
@@ -164,6 +165,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
         return new VkCommandBufferSubmitInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkCommandBufferSubmitInfo[] pCommandBufferInfos(int assumedCount) {
         MemorySegment s = pCommandBufferInfosRaw().reinterpret(assumedCount * VkCommandBufferSubmitInfo.SIZE);
@@ -203,6 +205,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
         return new VkSemaphoreSubmitInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSemaphoreSubmitInfo[] pSignalSemaphoreInfos(int assumedCount) {
         MemorySegment s = pSignalSemaphoreInfosRaw().reinterpret(assumedCount * VkSemaphoreSubmitInfo.SIZE);

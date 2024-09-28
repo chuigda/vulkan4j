@@ -79,6 +79,7 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(MemorySegment segment) im
         return new VkRenderPassSubpassFeedbackInfoEXT(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkRenderPassSubpassFeedbackInfoEXT[] pSubpassFeedback(int assumedCount) {
         MemorySegment s = pSubpassFeedbackRaw().reinterpret(assumedCount * VkRenderPassSubpassFeedbackInfoEXT.SIZE);

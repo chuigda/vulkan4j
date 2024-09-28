@@ -105,6 +105,7 @@ public record VkAntiLagDataAMD(MemorySegment segment) implements IPointer {
         return new VkAntiLagPresentationInfoAMD(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkAntiLagPresentationInfoAMD[] pPresentationInfo(int assumedCount) {
         MemorySegment s = pPresentationInfoRaw().reinterpret(assumedCount * VkAntiLagPresentationInfoAMD.SIZE);

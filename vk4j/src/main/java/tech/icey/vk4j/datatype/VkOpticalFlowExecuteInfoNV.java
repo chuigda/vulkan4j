@@ -105,6 +105,7 @@ public record VkOpticalFlowExecuteInfoNV(MemorySegment segment) implements IPoin
         return new VkRect2D(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkRect2D[] pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkRect2D.SIZE);

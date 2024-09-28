@@ -171,6 +171,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         return new VkIndirectCommandsStreamNV(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkIndirectCommandsStreamNV[] pStreams(int assumedCount) {
         MemorySegment s = pStreamsRaw().reinterpret(assumedCount * VkIndirectCommandsStreamNV.SIZE);

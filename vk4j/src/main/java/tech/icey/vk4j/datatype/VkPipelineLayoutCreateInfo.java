@@ -149,6 +149,7 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) implements IPoin
         return new VkPushConstantRange(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPushConstantRange[] pPushConstantRanges(int assumedCount) {
         MemorySegment s = pPushConstantRangesRaw().reinterpret(assumedCount * VkPushConstantRange.SIZE);

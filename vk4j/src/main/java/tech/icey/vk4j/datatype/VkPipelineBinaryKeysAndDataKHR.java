@@ -66,6 +66,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) implements I
         return new VkPipelineBinaryKeyKHR(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineBinaryKeyKHR[] pPipelineBinaryKeys(int assumedCount) {
         MemorySegment s = pPipelineBinaryKeysRaw().reinterpret(assumedCount * VkPipelineBinaryKeyKHR.SIZE);
@@ -97,6 +98,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) implements I
         return new VkPipelineBinaryDataKHR(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineBinaryDataKHR[] pPipelineBinaryData(int assumedCount) {
         MemorySegment s = pPipelineBinaryDataRaw().reinterpret(assumedCount * VkPipelineBinaryDataKHR.SIZE);

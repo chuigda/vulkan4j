@@ -61,6 +61,7 @@ public record VkBaseInStructure(MemorySegment segment) implements IPointer {
         return new VkBaseInStructure(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkBaseInStructure[] pNext(int assumedCount) {
         MemorySegment s = pNextRaw().reinterpret(assumedCount * VkBaseInStructure.SIZE);

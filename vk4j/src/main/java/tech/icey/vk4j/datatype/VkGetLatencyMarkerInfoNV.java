@@ -92,6 +92,7 @@ public record VkGetLatencyMarkerInfoNV(MemorySegment segment) implements IPointe
         return new VkLatencyTimingsFrameReportNV(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkLatencyTimingsFrameReportNV[] pTimings(int assumedCount) {
         MemorySegment s = pTimingsRaw().reinterpret(assumedCount * VkLatencyTimingsFrameReportNV.SIZE);

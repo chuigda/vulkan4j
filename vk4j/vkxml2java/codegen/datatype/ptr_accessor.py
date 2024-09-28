@@ -137,6 +137,7 @@ def generate_p_ref_type_accessor(pointee_type: CStructType | CUnionType | CHandl
         return new {pointee_type.java_type()}(s);
     }}
 
+    /// Note: this function is {{@link unsafe}} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable {pointee_type.java_type()}[] {member.name}(int assumedCount) {{
         MemorySegment s = {member.name}Raw().reinterpret(assumedCount * {pointee_type.java_type()}.SIZE);

@@ -125,6 +125,7 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) impl
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
         MemorySegment s = pStagesRaw().reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
@@ -156,6 +157,7 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) impl
         return new VkPipelineLibraryCreateInfoKHR(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineLibraryCreateInfoKHR[] pLibraryInfo(int assumedCount) {
         MemorySegment s = pLibraryInfoRaw().reinterpret(assumedCount * VkPipelineLibraryCreateInfoKHR.SIZE);

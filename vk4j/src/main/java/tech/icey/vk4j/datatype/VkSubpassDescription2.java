@@ -161,6 +161,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
         return new VkAttachmentReference2(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkAttachmentReference2[] pInputAttachments(int assumedCount) {
         MemorySegment s = pInputAttachmentsRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);
@@ -200,6 +201,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
         return new VkAttachmentReference2(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkAttachmentReference2[] pColorAttachments(int assumedCount) {
         MemorySegment s = pColorAttachmentsRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);
@@ -231,6 +233,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
         return new VkAttachmentReference2(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkAttachmentReference2[] pResolveAttachments(int assumedCount) {
         MemorySegment s = pResolveAttachmentsRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);
@@ -262,6 +265,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
         return new VkAttachmentReference2(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkAttachmentReference2[] pDepthStencilAttachment(int assumedCount) {
         MemorySegment s = pDepthStencilAttachmentRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);

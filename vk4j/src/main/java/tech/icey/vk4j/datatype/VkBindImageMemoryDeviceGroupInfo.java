@@ -133,6 +133,7 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) implements
         return new VkRect2D(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkRect2D[] pSplitInstanceBindRegions(int assumedCount) {
         MemorySegment s = pSplitInstanceBindRegionsRaw().reinterpret(assumedCount * VkRect2D.SIZE);

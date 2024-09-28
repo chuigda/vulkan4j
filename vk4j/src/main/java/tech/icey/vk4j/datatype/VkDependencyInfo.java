@@ -125,6 +125,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
         return new VkMemoryBarrier2(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkMemoryBarrier2[] pMemoryBarriers(int assumedCount) {
         MemorySegment s = pMemoryBarriersRaw().reinterpret(assumedCount * VkMemoryBarrier2.SIZE);
@@ -164,6 +165,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
         return new VkBufferMemoryBarrier2(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkBufferMemoryBarrier2[] pBufferMemoryBarriers(int assumedCount) {
         MemorySegment s = pBufferMemoryBarriersRaw().reinterpret(assumedCount * VkBufferMemoryBarrier2.SIZE);
@@ -203,6 +205,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
         return new VkImageMemoryBarrier2(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkImageMemoryBarrier2[] pImageMemoryBarriers(int assumedCount) {
         MemorySegment s = pImageMemoryBarriersRaw().reinterpret(assumedCount * VkImageMemoryBarrier2.SIZE);

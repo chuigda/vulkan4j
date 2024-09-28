@@ -136,6 +136,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) impleme
         return new VkPipelineColorBlendAttachmentState(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineColorBlendAttachmentState[] pAttachments(int assumedCount) {
         MemorySegment s = pAttachmentsRaw().reinterpret(assumedCount * VkPipelineColorBlendAttachmentState.SIZE);

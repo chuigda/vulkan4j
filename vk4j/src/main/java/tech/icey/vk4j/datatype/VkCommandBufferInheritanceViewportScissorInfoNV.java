@@ -105,6 +105,7 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
         return new VkViewport(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkViewport[] pViewportDepths(int assumedCount) {
         MemorySegment s = pViewportDepthsRaw().reinterpret(assumedCount * VkViewport.SIZE);

@@ -89,6 +89,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) implem
         return new VkPipelineCreationFeedback(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineCreationFeedback[] pPipelineCreationFeedback(int assumedCount) {
         MemorySegment s = pPipelineCreationFeedbackRaw().reinterpret(assumedCount * VkPipelineCreationFeedback.SIZE);
@@ -128,6 +129,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) implem
         return new VkPipelineCreationFeedback(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineCreationFeedback[] pPipelineStageCreationFeedbacks(int assumedCount) {
         MemorySegment s = pPipelineStageCreationFeedbacksRaw().reinterpret(assumedCount * VkPipelineCreationFeedback.SIZE);

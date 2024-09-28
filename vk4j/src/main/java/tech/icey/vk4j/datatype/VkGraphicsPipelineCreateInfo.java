@@ -175,6 +175,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
         MemorySegment s = pStagesRaw().reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
@@ -206,6 +207,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return new VkPipelineVertexInputStateCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineVertexInputStateCreateInfo[] pVertexInputState(int assumedCount) {
         MemorySegment s = pVertexInputStateRaw().reinterpret(assumedCount * VkPipelineVertexInputStateCreateInfo.SIZE);
@@ -237,6 +239,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return new VkPipelineInputAssemblyStateCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineInputAssemblyStateCreateInfo[] pInputAssemblyState(int assumedCount) {
         MemorySegment s = pInputAssemblyStateRaw().reinterpret(assumedCount * VkPipelineInputAssemblyStateCreateInfo.SIZE);
@@ -268,6 +271,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return new VkPipelineTessellationStateCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineTessellationStateCreateInfo[] pTessellationState(int assumedCount) {
         MemorySegment s = pTessellationStateRaw().reinterpret(assumedCount * VkPipelineTessellationStateCreateInfo.SIZE);
@@ -299,6 +303,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return new VkPipelineViewportStateCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineViewportStateCreateInfo[] pViewportState(int assumedCount) {
         MemorySegment s = pViewportStateRaw().reinterpret(assumedCount * VkPipelineViewportStateCreateInfo.SIZE);
@@ -330,6 +335,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return new VkPipelineRasterizationStateCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineRasterizationStateCreateInfo[] pRasterizationState(int assumedCount) {
         MemorySegment s = pRasterizationStateRaw().reinterpret(assumedCount * VkPipelineRasterizationStateCreateInfo.SIZE);
@@ -361,6 +367,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return new VkPipelineMultisampleStateCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineMultisampleStateCreateInfo[] pMultisampleState(int assumedCount) {
         MemorySegment s = pMultisampleStateRaw().reinterpret(assumedCount * VkPipelineMultisampleStateCreateInfo.SIZE);
@@ -392,6 +399,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return new VkPipelineDepthStencilStateCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineDepthStencilStateCreateInfo[] pDepthStencilState(int assumedCount) {
         MemorySegment s = pDepthStencilStateRaw().reinterpret(assumedCount * VkPipelineDepthStencilStateCreateInfo.SIZE);
@@ -423,6 +431,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return new VkPipelineColorBlendStateCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineColorBlendStateCreateInfo[] pColorBlendState(int assumedCount) {
         MemorySegment s = pColorBlendStateRaw().reinterpret(assumedCount * VkPipelineColorBlendStateCreateInfo.SIZE);
@@ -454,6 +463,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return new VkPipelineDynamicStateCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineDynamicStateCreateInfo[] pDynamicState(int assumedCount) {
         MemorySegment s = pDynamicStateRaw().reinterpret(assumedCount * VkPipelineDynamicStateCreateInfo.SIZE);

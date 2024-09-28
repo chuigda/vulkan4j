@@ -131,6 +131,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) implements IPointer {
         return new VkClearValue(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkClearValue[] pClearValues(int assumedCount) {
         MemorySegment s = pClearValuesRaw().reinterpret(assumedCount * VkClearValue.SIZE);

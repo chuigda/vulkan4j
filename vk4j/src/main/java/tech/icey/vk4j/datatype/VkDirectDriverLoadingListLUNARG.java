@@ -105,6 +105,7 @@ public record VkDirectDriverLoadingListLUNARG(MemorySegment segment) implements 
         return new VkDirectDriverLoadingInfoLUNARG(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDirectDriverLoadingInfoLUNARG[] pDrivers(int assumedCount) {
         MemorySegment s = pDriversRaw().reinterpret(assumedCount * VkDirectDriverLoadingInfoLUNARG.SIZE);

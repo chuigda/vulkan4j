@@ -84,7 +84,7 @@ public record VkAttachmentSampleCountInfoAMD(MemorySegment segment) implements I
     public @pointer(target=VkSampleCountFlags.class) MemorySegment pColorAttachmentSamplesRaw() {
         return segment.get(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples);
     }
-
+    
     public void pColorAttachmentSamplesRaw(@pointer(target=VkSampleCountFlags.class) MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples, value);
     }
@@ -99,7 +99,7 @@ public record VkAttachmentSampleCountInfoAMD(MemorySegment segment) implements I
         if (s.address() == 0) {
             return null;
         }
-
+        
         return new IntBuffer(s);
     }
 
@@ -119,7 +119,7 @@ public record VkAttachmentSampleCountInfoAMD(MemorySegment segment) implements I
     public static VkAttachmentSampleCountInfoAMD allocate(Arena arena) {
         return new VkAttachmentSampleCountInfoAMD(arena.allocate(LAYOUT));
     }
-
+    
     public static VkAttachmentSampleCountInfoAMD[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAttachmentSampleCountInfoAMD[] ret = new VkAttachmentSampleCountInfoAMD[count];

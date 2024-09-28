@@ -92,6 +92,7 @@ public record VkPresentTimesInfoGOOGLE(MemorySegment segment) implements IPointe
         return new VkPresentTimeGOOGLE(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPresentTimeGOOGLE[] pTimes(int assumedCount) {
         MemorySegment s = pTimesRaw().reinterpret(assumedCount * VkPresentTimeGOOGLE.SIZE);

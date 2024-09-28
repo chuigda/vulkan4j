@@ -102,6 +102,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) imp
         return new VkAttachmentSampleLocationsEXT(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkAttachmentSampleLocationsEXT[] pAttachmentInitialSampleLocations(int assumedCount) {
         MemorySegment s = pAttachmentInitialSampleLocationsRaw().reinterpret(assumedCount * VkAttachmentSampleLocationsEXT.SIZE);
@@ -141,6 +142,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) imp
         return new VkSubpassSampleLocationsEXT(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSubpassSampleLocationsEXT[] pPostSubpassSampleLocations(int assumedCount) {
         MemorySegment s = pPostSubpassSampleLocationsRaw().reinterpret(assumedCount * VkSubpassSampleLocationsEXT.SIZE);

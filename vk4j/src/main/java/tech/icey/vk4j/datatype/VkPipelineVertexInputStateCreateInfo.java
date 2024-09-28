@@ -115,6 +115,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) implem
         return new VkVertexInputBindingDescription(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkVertexInputBindingDescription[] pVertexBindingDescriptions(int assumedCount) {
         MemorySegment s = pVertexBindingDescriptionsRaw().reinterpret(assumedCount * VkVertexInputBindingDescription.SIZE);
@@ -154,6 +155,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) implem
         return new VkVertexInputAttributeDescription(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkVertexInputAttributeDescription[] pVertexAttributeDescriptions(int assumedCount) {
         MemorySegment s = pVertexAttributeDescriptionsRaw().reinterpret(assumedCount * VkVertexInputAttributeDescription.SIZE);

@@ -105,6 +105,7 @@ public record VkDescriptorSetLayoutCreateInfo(MemorySegment segment) implements 
         return new VkDescriptorSetLayoutBinding(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDescriptorSetLayoutBinding[] pBindings(int assumedCount) {
         MemorySegment s = pBindingsRaw().reinterpret(assumedCount * VkDescriptorSetLayoutBinding.SIZE);

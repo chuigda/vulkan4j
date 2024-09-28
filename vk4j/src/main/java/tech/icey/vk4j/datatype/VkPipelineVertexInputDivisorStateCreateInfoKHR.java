@@ -92,6 +92,7 @@ public record VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segme
         return new VkVertexInputBindingDivisorDescriptionKHR(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkVertexInputBindingDivisorDescriptionKHR[] pVertexBindingDivisors(int assumedCount) {
         MemorySegment s = pVertexBindingDivisorsRaw().reinterpret(assumedCount * VkVertexInputBindingDivisorDescriptionKHR.SIZE);

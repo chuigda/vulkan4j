@@ -92,6 +92,7 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(MemorySegment segment)
         return new VkInputAttachmentAspectReference(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkInputAttachmentAspectReference[] pAspectReferences(int assumedCount) {
         MemorySegment s = pAspectReferencesRaw().reinterpret(assumedCount * VkInputAttachmentAspectReference.SIZE);

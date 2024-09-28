@@ -92,6 +92,7 @@ public record VkDrmFormatModifierPropertiesList2EXT(MemorySegment segment) imple
         return new VkDrmFormatModifierProperties2EXT(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDrmFormatModifierProperties2EXT[] pDrmFormatModifierProperties(int assumedCount) {
         MemorySegment s = pDrmFormatModifierPropertiesRaw().reinterpret(assumedCount * VkDrmFormatModifierProperties2EXT.SIZE);

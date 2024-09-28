@@ -194,6 +194,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
         return new VkDebugUtilsLabelEXT(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDebugUtilsLabelEXT[] pQueueLabels(int assumedCount) {
         MemorySegment s = pQueueLabelsRaw().reinterpret(assumedCount * VkDebugUtilsLabelEXT.SIZE);
@@ -233,6 +234,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
         return new VkDebugUtilsLabelEXT(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDebugUtilsLabelEXT[] pCmdBufLabels(int assumedCount) {
         MemorySegment s = pCmdBufLabelsRaw().reinterpret(assumedCount * VkDebugUtilsLabelEXT.SIZE);
@@ -272,6 +274,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
         return new VkDebugUtilsObjectNameInfoEXT(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDebugUtilsObjectNameInfoEXT[] pObjects(int assumedCount) {
         MemorySegment s = pObjectsRaw().reinterpret(assumedCount * VkDebugUtilsObjectNameInfoEXT.SIZE);

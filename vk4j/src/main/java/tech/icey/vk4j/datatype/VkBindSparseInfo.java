@@ -166,6 +166,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         return new VkSparseBufferMemoryBindInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSparseBufferMemoryBindInfo[] pBufferBinds(int assumedCount) {
         MemorySegment s = pBufferBindsRaw().reinterpret(assumedCount * VkSparseBufferMemoryBindInfo.SIZE);
@@ -205,6 +206,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         return new VkSparseImageOpaqueMemoryBindInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSparseImageOpaqueMemoryBindInfo[] pImageOpaqueBinds(int assumedCount) {
         MemorySegment s = pImageOpaqueBindsRaw().reinterpret(assumedCount * VkSparseImageOpaqueMemoryBindInfo.SIZE);
@@ -244,6 +246,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         return new VkSparseImageMemoryBindInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSparseImageMemoryBindInfo[] pImageBinds(int assumedCount) {
         MemorySegment s = pImageBindsRaw().reinterpret(assumedCount * VkSparseImageMemoryBindInfo.SIZE);

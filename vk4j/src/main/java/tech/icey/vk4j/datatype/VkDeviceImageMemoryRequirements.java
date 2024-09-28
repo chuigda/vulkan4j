@@ -84,6 +84,7 @@ public record VkDeviceImageMemoryRequirements(MemorySegment segment) implements 
         return new VkImageCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkImageCreateInfo[] pCreateInfo(int assumedCount) {
         MemorySegment s = pCreateInfoRaw().reinterpret(assumedCount * VkImageCreateInfo.SIZE);

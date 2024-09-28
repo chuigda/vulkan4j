@@ -92,6 +92,7 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
         return new VkOffset2D(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkOffset2D[] pFragmentDensityOffsets(int assumedCount) {
         MemorySegment s = pFragmentDensityOffsetsRaw().reinterpret(assumedCount * VkOffset2D.SIZE);

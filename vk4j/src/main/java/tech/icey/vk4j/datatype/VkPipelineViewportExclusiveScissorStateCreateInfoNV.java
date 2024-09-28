@@ -92,6 +92,7 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(MemorySegment 
         return new VkRect2D(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkRect2D[] pExclusiveScissors(int assumedCount) {
         MemorySegment s = pExclusiveScissorsRaw().reinterpret(assumedCount * VkRect2D.SIZE);

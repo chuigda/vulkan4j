@@ -118,6 +118,7 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) implements IPoin
         return new VkDescriptorPoolSize(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDescriptorPoolSize[] pPoolSizes(int assumedCount) {
         MemorySegment s = pPoolSizesRaw().reinterpret(assumedCount * VkDescriptorPoolSize.SIZE);

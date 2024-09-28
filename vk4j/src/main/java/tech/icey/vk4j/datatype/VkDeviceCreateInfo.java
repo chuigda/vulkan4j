@@ -130,6 +130,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
         return new VkDeviceQueueCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDeviceQueueCreateInfo[] pQueueCreateInfos(int assumedCount) {
         MemorySegment s = pQueueCreateInfosRaw().reinterpret(assumedCount * VkDeviceQueueCreateInfo.SIZE);
@@ -219,6 +220,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
         return new VkPhysicalDeviceFeatures(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPhysicalDeviceFeatures[] pEnabledFeatures(int assumedCount) {
         MemorySegment s = pEnabledFeaturesRaw().reinterpret(assumedCount * VkPhysicalDeviceFeatures.SIZE);

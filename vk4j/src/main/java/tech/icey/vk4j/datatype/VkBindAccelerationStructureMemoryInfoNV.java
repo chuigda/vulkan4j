@@ -141,7 +141,7 @@ public record VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) imp
     public static VkBindAccelerationStructureMemoryInfoNV allocate(Arena arena) {
         return new VkBindAccelerationStructureMemoryInfoNV(arena.allocate(LAYOUT));
     }
-
+    
     public static VkBindAccelerationStructureMemoryInfoNV[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBindAccelerationStructureMemoryInfoNV[] ret = new VkBindAccelerationStructureMemoryInfoNV[count];

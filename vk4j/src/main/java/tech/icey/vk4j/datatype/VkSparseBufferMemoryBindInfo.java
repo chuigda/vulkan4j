@@ -74,6 +74,7 @@ public record VkSparseBufferMemoryBindInfo(MemorySegment segment) implements IPo
         return new VkSparseMemoryBind(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSparseMemoryBind[] pBinds(int assumedCount) {
         MemorySegment s = pBindsRaw().reinterpret(assumedCount * VkSparseMemoryBind.SIZE);

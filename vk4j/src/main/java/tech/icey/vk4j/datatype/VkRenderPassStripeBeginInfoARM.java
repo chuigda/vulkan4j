@@ -92,6 +92,7 @@ public record VkRenderPassStripeBeginInfoARM(MemorySegment segment) implements I
         return new VkRenderPassStripeInfoARM(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkRenderPassStripeInfoARM[] pStripeInfos(int assumedCount) {
         MemorySegment s = pStripeInfosRaw().reinterpret(assumedCount * VkRenderPassStripeInfoARM.SIZE);

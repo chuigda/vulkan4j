@@ -92,6 +92,7 @@ public record VkPresentRegionsKHR(MemorySegment segment) implements IPointer {
         return new VkPresentRegionKHR(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPresentRegionKHR[] pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkPresentRegionKHR.SIZE);

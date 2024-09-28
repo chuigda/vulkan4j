@@ -92,6 +92,7 @@ public record VkRenderPassStripeSubmitInfoARM(MemorySegment segment) implements 
         return new VkSemaphoreSubmitInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSemaphoreSubmitInfo[] pStripeSemaphoreInfos(int assumedCount) {
         MemorySegment s = pStripeSemaphoreInfosRaw().reinterpret(assumedCount * VkSemaphoreSubmitInfo.SIZE);

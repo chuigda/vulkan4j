@@ -118,6 +118,7 @@ public record VkCopyBufferInfo2(MemorySegment segment) implements IPointer {
         return new VkBufferCopy2(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkBufferCopy2[] pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkBufferCopy2.SIZE);

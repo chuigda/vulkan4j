@@ -105,6 +105,7 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
         return new VkSubresourceLayout(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSubresourceLayout[] pPlaneLayouts(int assumedCount) {
         MemorySegment s = pPlaneLayoutsRaw().reinterpret(assumedCount * VkSubresourceLayout.SIZE);

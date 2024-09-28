@@ -105,6 +105,7 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
         return new VkViewportSwizzleNV(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkViewportSwizzleNV[] pViewportSwizzles(int assumedCount) {
         MemorySegment s = pViewportSwizzlesRaw().reinterpret(assumedCount * VkViewportSwizzleNV.SIZE);

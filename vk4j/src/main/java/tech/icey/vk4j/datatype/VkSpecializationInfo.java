@@ -69,6 +69,7 @@ public record VkSpecializationInfo(MemorySegment segment) implements IPointer {
         return new VkSpecializationMapEntry(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkSpecializationMapEntry[] pMapEntries(int assumedCount) {
         MemorySegment s = pMapEntriesRaw().reinterpret(assumedCount * VkSpecializationMapEntry.SIZE);

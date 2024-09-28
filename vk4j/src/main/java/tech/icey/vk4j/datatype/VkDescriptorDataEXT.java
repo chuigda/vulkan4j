@@ -119,6 +119,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return new VkDescriptorImageInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDescriptorImageInfo[] pCombinedImageSampler(int assumedCount) {
         MemorySegment s = pCombinedImageSamplerRaw().reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
@@ -150,6 +151,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return new VkDescriptorImageInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDescriptorImageInfo[] pInputAttachmentImage(int assumedCount) {
         MemorySegment s = pInputAttachmentImageRaw().reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
@@ -181,6 +183,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return new VkDescriptorImageInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDescriptorImageInfo[] pSampledImage(int assumedCount) {
         MemorySegment s = pSampledImageRaw().reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
@@ -212,6 +215,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return new VkDescriptorImageInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDescriptorImageInfo[] pStorageImage(int assumedCount) {
         MemorySegment s = pStorageImageRaw().reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
@@ -243,6 +247,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return new VkDescriptorAddressInfoEXT(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDescriptorAddressInfoEXT[] pUniformTexelBuffer(int assumedCount) {
         MemorySegment s = pUniformTexelBufferRaw().reinterpret(assumedCount * VkDescriptorAddressInfoEXT.SIZE);
@@ -274,6 +279,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return new VkDescriptorAddressInfoEXT(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDescriptorAddressInfoEXT[] pStorageTexelBuffer(int assumedCount) {
         MemorySegment s = pStorageTexelBufferRaw().reinterpret(assumedCount * VkDescriptorAddressInfoEXT.SIZE);
@@ -305,6 +311,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return new VkDescriptorAddressInfoEXT(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDescriptorAddressInfoEXT[] pUniformBuffer(int assumedCount) {
         MemorySegment s = pUniformBufferRaw().reinterpret(assumedCount * VkDescriptorAddressInfoEXT.SIZE);
@@ -336,6 +343,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return new VkDescriptorAddressInfoEXT(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkDescriptorAddressInfoEXT[] pStorageBuffer(int assumedCount) {
         MemorySegment s = pStorageBufferRaw().reinterpret(assumedCount * VkDescriptorAddressInfoEXT.SIZE);

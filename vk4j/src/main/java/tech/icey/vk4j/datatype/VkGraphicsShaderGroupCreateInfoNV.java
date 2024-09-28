@@ -102,6 +102,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
         MemorySegment s = pStagesRaw().reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
@@ -133,6 +134,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
         return new VkPipelineVertexInputStateCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineVertexInputStateCreateInfo[] pVertexInputState(int assumedCount) {
         MemorySegment s = pVertexInputStateRaw().reinterpret(assumedCount * VkPipelineVertexInputStateCreateInfo.SIZE);
@@ -164,6 +166,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
         return new VkPipelineTessellationStateCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineTessellationStateCreateInfo[] pTessellationState(int assumedCount) {
         MemorySegment s = pTessellationStateRaw().reinterpret(assumedCount * VkPipelineTessellationStateCreateInfo.SIZE);

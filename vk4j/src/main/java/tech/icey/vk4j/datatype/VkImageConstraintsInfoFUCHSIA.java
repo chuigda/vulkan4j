@@ -102,6 +102,7 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) implements IP
         return new VkImageFormatConstraintsInfoFUCHSIA(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkImageFormatConstraintsInfoFUCHSIA[] pFormatConstraints(int assumedCount) {
         MemorySegment s = pFormatConstraintsRaw().reinterpret(assumedCount * VkImageFormatConstraintsInfoFUCHSIA.SIZE);

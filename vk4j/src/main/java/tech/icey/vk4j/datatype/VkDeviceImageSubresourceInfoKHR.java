@@ -84,6 +84,7 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) implements 
         return new VkImageCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkImageCreateInfo[] pCreateInfo(int assumedCount) {
         MemorySegment s = pCreateInfoRaw().reinterpret(assumedCount * VkImageCreateInfo.SIZE);
@@ -115,6 +116,7 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) implements 
         return new VkImageSubresource2KHR(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkImageSubresource2KHR[] pSubresource(int assumedCount) {
         MemorySegment s = pSubresourceRaw().reinterpret(assumedCount * VkImageSubresource2KHR.SIZE);

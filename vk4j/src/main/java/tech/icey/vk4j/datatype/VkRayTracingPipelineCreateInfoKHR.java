@@ -150,6 +150,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
         MemorySegment s = pStagesRaw().reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
@@ -189,6 +190,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         return new VkRayTracingShaderGroupCreateInfoKHR(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkRayTracingShaderGroupCreateInfoKHR[] pGroups(int assumedCount) {
         MemorySegment s = pGroupsRaw().reinterpret(assumedCount * VkRayTracingShaderGroupCreateInfoKHR.SIZE);
@@ -228,6 +230,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         return new VkPipelineLibraryCreateInfoKHR(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineLibraryCreateInfoKHR[] pLibraryInfo(int assumedCount) {
         MemorySegment s = pLibraryInfoRaw().reinterpret(assumedCount * VkPipelineLibraryCreateInfoKHR.SIZE);
@@ -259,6 +262,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         return new VkRayTracingPipelineInterfaceCreateInfoKHR(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkRayTracingPipelineInterfaceCreateInfoKHR[] pLibraryInterface(int assumedCount) {
         MemorySegment s = pLibraryInterfaceRaw().reinterpret(assumedCount * VkRayTracingPipelineInterfaceCreateInfoKHR.SIZE);
@@ -290,6 +294,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         return new VkPipelineDynamicStateCreateInfo(s);
     }
 
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
     public @nullable VkPipelineDynamicStateCreateInfo[] pDynamicState(int assumedCount) {
         MemorySegment s = pDynamicStateRaw().reinterpret(assumedCount * VkPipelineDynamicStateCreateInfo.SIZE);
