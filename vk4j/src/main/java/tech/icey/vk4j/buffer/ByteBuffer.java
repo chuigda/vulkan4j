@@ -28,6 +28,8 @@ public record ByteBuffer(MemorySegment segment) implements IPointer {
         segment.set(ValueLayout.JAVA_BYTE, index, value);
     }
 
+    /// Note: this function is unsafe because it technically cannot do any boundary. It just assumes that the pointed
+    /// memory is a null-terminated string and reads it until the first null byte.
     @unsafe
     public String readString() {
         MemorySegment reinterpreted = segment.reinterpret(Long.MAX_VALUE);
