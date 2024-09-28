@@ -47,6 +47,10 @@ public record ByteBuffer(MemorySegment segment) implements IPointer {
         return new ByteBuffer(arena.allocate(size));
     }
 
+    public ByteBuffer allocateAligned(Arena arena, long size, long alignment) {
+        return new ByteBuffer(arena.allocate(size, alignment));
+    }
+
     public static ByteBuffer allocateString(Arena arena, String s) {
         return new ByteBuffer(arena.allocateFrom(s));
     }
