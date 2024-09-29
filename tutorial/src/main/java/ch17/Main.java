@@ -47,8 +47,25 @@ class Application {
         }
 
         libGLFW.glfwWindowHint(LibGLFW.GLFW_CLIENT_API, LibGLFW.GLFW_NO_API);
-        libGLFW.glfwWindowHint(LibGLFW.GLFW_RESIZABLE, LibGLFW.GLFW_FALSE);
         window = libGLFW.glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", null, null);
+
+        var callbackDescriptor = FunctionDescriptor.ofVoid(
+                ValueLayout.ADDRESS,
+                ValueLayout.JAVA_INT,
+                ValueLayout.JAVA_INT
+        );
+        try {
+            var handle = MethodHandles.lookup().findVirtual(
+                    Application.class,
+                    "framebufferResizeCallback",
+                    callbackDescriptor.toMethodType()
+            ).bindTo(this);
+
+            var upcallStub = Linker.nativeLinker().upcallStub(handle, callbackDescriptor, applicationArena);
+            libGLFW.glfwSetFramebufferSizeCallback(window, upcallStub);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to find method handle for framebufferResizeCallback", e);
+        }
     }
 
     private void initVulkan() {
@@ -102,6 +119,16 @@ class Application {
     }
 
     private void recreateSwapChain() {
+        try (var arena = Arena.ofConfined()) {
+            var pWidth = IntBuffer.allocate(arena);
+            var pHeight = IntBuffer.allocate(arena);
+            libGLFW.glfwGetFramebufferSize(window, pWidth, pHeight);
+            while (pWidth.read() == 0 || pHeight.read() == 0) {
+                libGLFW.glfwGetFramebufferSize(window, pWidth, pHeight);
+                libGLFW.glfwWaitEvents();
+            }
+        }
+
         deviceCommands.vkDeviceWaitIdle(device);
 
         cleanupSwapChain();
@@ -463,24 +490,16 @@ class Application {
             inputAssembly.topology(VkPrimitiveTopology.VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
             inputAssembly.primitiveRestartEnable(Constants.VK_FALSE);
 
-            var viewport = VkViewport.allocate(arena);
-            viewport.x(0.0f);
-            viewport.y(0.0f);
-            viewport.width(swapChainExtent.width());
-            viewport.height(swapChainExtent.height());
-            viewport.minDepth(0.0f);
-            viewport.maxDepth(1.0f);
-
-            var scissor = VkRect2D.allocate(arena);
-            scissor.offset().x(0);
-            scissor.offset().y(0);
-            scissor.extent(swapChainExtent);
+            var dynamicStates = IntBuffer.allocate(arena, 2);
+            dynamicStates.write(0, VkDynamicState.VK_DYNAMIC_STATE_VIEWPORT);
+            dynamicStates.write(1, VkDynamicState.VK_DYNAMIC_STATE_SCISSOR);
+            var dynamicStateInfo = VkPipelineDynamicStateCreateInfo.allocate(arena);
+            dynamicStateInfo.dynamicStateCount(2);
+            dynamicStateInfo.pDynamicStates(dynamicStates);
 
             var viewportStateInfo = VkPipelineViewportStateCreateInfo.allocate(arena);
             viewportStateInfo.viewportCount(1);
-            viewportStateInfo.pViewports(viewport);
             viewportStateInfo.scissorCount(1);
-            viewportStateInfo.pScissors(scissor);
 
             var rasterizer = VkPipelineRasterizationStateCreateInfo.allocate(arena);
             rasterizer.depthClampEnable(Constants.VK_FALSE);
@@ -550,7 +569,7 @@ class Application {
             pipelineInfo.pMultisampleState(multisampling);
             pipelineInfo.pDepthStencilState(null);
             pipelineInfo.pColorBlendState(colorBlending);
-            pipelineInfo.pDynamicState(null);
+            pipelineInfo.pDynamicState(dynamicStateInfo);
             pipelineInfo.layout(pipelineLayout);
             pipelineInfo.renderPass(renderPass);
             pipelineInfo.subpass(0);
@@ -667,10 +686,9 @@ class Application {
             var pInFlightFences = VkFence.Buffer.allocate(arena);
             pInFlightFences.write(inFlightFence);
             deviceCommands.vkWaitForFences(device, 1, pInFlightFences, Constants.VK_TRUE, NativeLayout.UINT64_MAX);
-            deviceCommands.vkResetFences(device, 1, pInFlightFences);
 
             var pImageIndex = IntBuffer.allocate(arena);
-            deviceCommands.vkAcquireNextImageKHR(
+            var result = deviceCommands.vkAcquireNextImageKHR(
                     device,
                     swapChain,
                     NativeLayout.UINT64_MAX,
@@ -678,6 +696,15 @@ class Application {
                     null,
                     pImageIndex
             );
+            if (result == VkResult.VK_ERROR_OUT_OF_DATE_KHR) {
+                recreateSwapChain();
+                return;
+            }
+            else if (result != VkResult.VK_SUCCESS && result != VkResult.VK_SUBOPTIMAL_KHR) {
+                throw new RuntimeException("Failed to acquire swap chain image, vulkan error code: " + VkResult.explain(result));
+            }
+
+            deviceCommands.vkResetFences(device, 1, pInFlightFences);
             var imageIndex = pImageIndex.read();
 
             deviceCommands.vkResetCommandBuffer(commandBuffer, 0);
@@ -700,7 +727,7 @@ class Application {
             submitInfo.signalSemaphoreCount(1);
             submitInfo.pSignalSemaphores(pSignalSemaphores);
 
-            var result = deviceCommands.vkQueueSubmit(graphicsQueue, 1, submitInfo, inFlightFence);
+            result = deviceCommands.vkQueueSubmit(graphicsQueue, 1, submitInfo, inFlightFence);
             if (result != VkResult.VK_SUCCESS) {
                 throw new RuntimeException("Failed to submit draw command buffer, vulkan error code: " + VkResult.explain(result));
             }
@@ -717,8 +744,12 @@ class Application {
             presentInfo.pResults(null);
 
             result = deviceCommands.vkQueuePresentKHR(presentQueue, presentInfo);
-            if (result != VkResult.VK_SUCCESS) {
-                throw new RuntimeException("Failed to present swap chain image, vulkan error code: " + VkResult.explain(result));
+            if (result == VkResult.VK_ERROR_OUT_OF_DATE_KHR || framebufferResized) {
+                framebufferResized = false;
+                recreateSwapChain();
+            }
+            else if (result != VkResult.VK_SUCCESS && result != VkResult.VK_SUBOPTIMAL_KHR) {
+                throw new RuntimeException("Failed to submit draw command buffer, vulkan error code: " + VkResult.explain(result));
             }
         }
 
@@ -1002,6 +1033,21 @@ class Application {
                     graphicsPipeline
             );
 
+            var viewport = VkViewport.allocate(arena);
+            viewport.x(0.0f);
+            viewport.y(0.0f);
+            viewport.width(swapChainExtent.width());
+            viewport.height(swapChainExtent.height());
+            viewport.minDepth(0.0f);
+            viewport.maxDepth(1.0f);
+            deviceCommands.vkCmdSetViewport(commandBuffer, 0, 1, viewport);
+
+            var scissor = VkRect2D.allocate(arena);
+            scissor.offset().x(0);
+            scissor.offset().y(0);
+            scissor.extent(swapChainExtent);
+            deviceCommands.vkCmdSetScissor(commandBuffer, 0, 1, scissor);
+
             deviceCommands.vkCmdDraw(commandBuffer, 3, 1, 0, 0);
             deviceCommands.vkCmdEndRenderPass(commandBuffer);
 
@@ -1010,6 +1056,14 @@ class Application {
                 throw new RuntimeException("Failed to end recording command buffer, vulkan error code: " + VkResult.explain(result));
             }
         }
+    }
+
+    private void framebufferResizeCallback(
+            @pointer(comment = "GLFWwindow*") MemorySegment window,
+            int width,
+            int height
+    ) {
+        framebufferResized = true;
     }
 
     private Arena applicationArena = Arena.ofShared();
@@ -1043,6 +1097,7 @@ class Application {
     private VkSemaphore[] renderFinishedSemaphores;
     private VkFence[] inFlightFences;
     private int currentFrame = 0;
+    private boolean framebufferResized = false;
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;

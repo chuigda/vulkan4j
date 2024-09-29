@@ -50,6 +50,11 @@ public final class LibGLFW {
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS
     );
+    public static final FunctionDescriptor DESCRIPTOR$glfwSetFramebufferSizeCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+    );
 
     public static final FunctionDescriptor DESCRIPTOR$glfwWindowHint = FunctionDescriptor.ofVoid(
             ValueLayout.JAVA_INT,
@@ -71,6 +76,7 @@ public final class LibGLFW {
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
     );
     public static final FunctionDescriptor DESCRIPTOR$glfwPollEvents = FunctionDescriptor.ofVoid();
+    public static final FunctionDescriptor DESCRIPTOR$glfwWaitEvents = FunctionDescriptor.ofVoid();
     public static final FunctionDescriptor DESCRIPTOR$glfwWindowShouldClose = FunctionDescriptor.of(
             ValueLayout.JAVA_BOOLEAN,
             ValueLayout.ADDRESS
@@ -100,11 +106,13 @@ public final class LibGLFW {
     public final MethodHandle HANDLE$glfwCreateWindow;
     public final MethodHandle HANDLE$glfwCreateWindowSurface;
     public final MethodHandle HANDLE$glfwPollEvents;
+    public final MethodHandle HANDLE$glfwWaitEvents;
     public final MethodHandle HANDLE$glfwWindowShouldClose;
     public final MethodHandle HANDLE$glfwDestroyWindow;
     public final MethodHandle HANDLE$glfwGetWindowSize;
     public final MethodHandle HANDLE$glfwGetFramebufferSize;
     public final MethodHandle HANDLE$glfwSetWindowIconifyCallback;
+    public final MethodHandle HANDLE$glfwSetFramebufferSizeCallback;
 
     public LibGLFW(FunctionLoader loader) {
         HANDLE$glfwInit = loader.apply("glfwInit", DESCRIPTOR$glfwInit);
@@ -118,11 +126,13 @@ public final class LibGLFW {
         HANDLE$glfwCreateWindow = loader.apply("glfwCreateWindow", DESCRIPTOR$glfwCreateWindow);
         HANDLE$glfwCreateWindowSurface = loader.apply("glfwCreateWindowSurface", DESCRIPTOR$glfwCreateWindowSurface);
         HANDLE$glfwPollEvents = loader.apply("glfwPollEvents", DESCRIPTOR$glfwPollEvents);
+        HANDLE$glfwWaitEvents = loader.apply("glfwWaitEvents", DESCRIPTOR$glfwWaitEvents);
         HANDLE$glfwWindowShouldClose = loader.apply("glfwWindowShouldClose", DESCRIPTOR$glfwWindowShouldClose);
         HANDLE$glfwDestroyWindow = loader.apply("glfwDestroyWindow", DESCRIPTOR$glfwDestroyWindow);
         HANDLE$glfwGetWindowSize = loader.apply("glfwGetWindowSize", DESCRIPTOR$glfwGetWindowSize);
         HANDLE$glfwGetFramebufferSize = loader.apply("glfwGetFramebufferSize", DESCRIPTOR$glfwGetFramebufferSize);
         HANDLE$glfwSetWindowIconifyCallback = loader.apply("glfwSetWindowIconifyCallback", DESCRIPTOR$glfwSetWindowIconifyCallback);
+        HANDLE$glfwSetFramebufferSizeCallback = loader.apply("glfwSetFramebufferSizeCallback", DESCRIPTOR$glfwSetFramebufferSizeCallback);
     }
 
     public int glfwInit() {
@@ -248,6 +258,14 @@ public final class LibGLFW {
         }
     }
 
+    public void glfwWaitEvents() {
+        try {
+            HANDLE$glfwWaitEvents.invokeExact();
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
+        }
+    }
+
     public boolean glfwWindowShouldClose(GLFWwindow window) {
         try {
             return (boolean) HANDLE$glfwWindowShouldClose.invokeExact(window.segment());
@@ -286,6 +304,17 @@ public final class LibGLFW {
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetWindowIconifyCallback.invokeExact(window.segment(), callback);
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
+        }
+    }
+
+    public @pointer(comment="GLFWframebuffersizefun") MemorySegment glfwSetFramebufferSizeCallback(
+            GLFWwindow window,
+            @pointer(comment="GLFWframebuffersizefun") MemorySegment callback
+    ) {
+        try {
+            return (MemorySegment) HANDLE$glfwSetFramebufferSizeCallback.invokeExact(window.segment(), callback);
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }
