@@ -168,4 +168,4 @@ void cleanup() {
 
 The parameters for the `vkDestroyInstance` function are straightforward. As mentioned in the previous chapter, the allocation and deallocation functions in Vulkan have an optional allocator callback that we'll ignore by passing `null` to it. All the other Vulkan resources that we'll create in the following chapters should be cleaned up before the instance is destroyed.
 
-Before continuing with the more complex steps after instance creation, it's time to evaluate our debugging options by checking out [validation layers](./validation-layers.md).
+Before continuing with the more complex steps after instance creation, it's time to evaluate our debugging options by checking out [validation layers](validation-layers.md).

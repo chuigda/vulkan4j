@@ -17,10 +17,6 @@ TODO: macOS
     * Set the `DISABLE_VK_LAYER_VALVE_steam_overlay_1` environment variable to `1`
     * Delete the Steam overlay Vulkan layer entry in the registry under `HKEY_LOCAL_MACHINE\SOFTWARE\Khronos\Vulkan\ImplicitLayers`
 
-<!--
-TODO: Steal some images from Kyle Mayes
-
 Example:
 
-![](./images/steam_layers_env.png)
--->
+![Steam layers](../../images/steam_layers_env.png)

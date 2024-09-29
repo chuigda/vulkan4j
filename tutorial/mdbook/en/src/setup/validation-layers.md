@@ -405,4 +405,4 @@ There are a lot more settings for the behavior of validation layers than just th
 
 To configure the layer settings for your own application, copy the file to the working directory of your project and follow the instructions to set the desired behavior. However, for the remainder of this tutorial I'll assume that you're using the default settings.
 
-Throughout this tutorial I'll be making a couple of intentional mistakes to show you how helpful the validation layers are with catching them and to teach you how important it is to know exactly what you're doing with Vulkan. Now it's time to look at [Vulkan devices in the system](./physical-devices-and-queue-families.md).
+Throughout this tutorial I'll be making a couple of intentional mistakes to show you how helpful the validation layers are with catching them and to teach you how important it is to know exactly what you're doing with Vulkan. Now it's time to look at [Vulkan devices in the system](physical-devices-and-queue-families.md).

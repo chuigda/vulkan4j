@@ -188,4 +188,4 @@ private boolean isDeviceSuitable(VkPhysicalDevice device) {
 }
 ```
 
-Great, that's all we need for now to find the right physical device! The next step is to [create a logical device](./logical-device-and-queues.md) to interface with it.
+Great, that's all we need for now to find the right physical device! The next step is to [create a logical device](logical-device-and-queues.md) to interface with it.

@@ -15,6 +15,7 @@ With that out of the way, let's cover some prerequisites for following this tuto
 * A graphics card and driver compatible with Vulkan ([NVIDIA](https://developer.nvidia.com/vulkan-driver), [AMD](http://www.amd.com/en-us/innovations/software-technologies/technologies-gaming/vulkan), [Intel](https://software.intel.com/en-us/blogs/2016/03/14/new-intel-vulkan-beta-1540204404-graphics-driver-for-windows-78110-1540))
 * Experience with Java
 * JDK supporting Java 22
+* A good IDE (mostly for auto importing dependencies)
 * Some existing experience with 3D computer graphics
 
 This tutorial will not assume knowledge of OpenGL or Direct3D concepts, but it does require you to know the basics of 3D computer graphics. It will not explain the math behind perspective projection, for example. See [this online book](https://paroj.github.io/gltut/) for a great introduction of computer graphics concepts. Some other great computer graphics resources are:
@@ -23,11 +24,11 @@ This tutorial will not assume knowledge of OpenGL or Direct3D concepts, but it d
 * [Physically Based Rendering book](http://www.pbr-book.org/)
 * Vulkan being used in a real engine in the open-source [Quake](https://github.com/Novum/vkQuake) and [DOOM 3](https://github.com/DustinHLand/vkDOOM3)
 
-If you want a C++ tutorial instead, see the original tutorial:<br/><https://vulkan-tutorial.com>
+If you want a C++ tutorial instead, see the original tutorial: <https://vulkan-tutorial.com>
 
 This tutorial uses the [`vulkan4j`](https://github.com/chuigda/vulkan4j) package to provide access to the Vulkan API from Java. `vulkan4j` provides raw bindings to the Vulkan API as well as a thin wrapper over said bindings to make them easier and more idiomatic to use from Java. What's more, `vulkan4j` is built on top of the [`Project Panama`](https://openjdk.java.net/projects/panama/) `java.lang.foreign` APIs, which is slightly more advanced.
 
-If you want a Java vulkan tutorial that uses a more mature package, checkout this [LWJGL-based tutorial](https://github.com/Naitsirc98/Vulkan-Tutorial-Java). 
+If you want a Java vulkan tutorial that uses a more mature package, checkout these two LWJGL-based tutorials: [vulkanbook](https://github.com/lwjglgamedev/vulkanbook/tree/master), [Vulkan-Tutorial-Java](https://github.com/Naitsirc98/Vulkan-Tutorial-Java).
 
 ## Tutorial structure
 

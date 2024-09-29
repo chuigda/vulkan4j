@@ -362,7 +362,7 @@ The `vkQueuePresentKHR` function submits the request to present an image to the 
 
 If you did everything correctly up to this point, then you should now see something resembling the following when you run your program:
 
-![Triangle](../images/triangle.png)
+![Triangle](../../../images/triangle.png)
 
 > This colored triangle may look a bit different from the one you're used to seeing in graphics tutorials. That's because this tutorial lets the shader interpolate in linear color space and converts to sRGB color space afterward. See [this blog post](https://medium.com/@heypete/hello-triangle-meet-swift-and-wide-color-6f9e246616d9) for a discussion of the difference.
 

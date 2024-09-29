@@ -182,4 +182,4 @@ private void cleanup() {
 }
 ```
 
-When you run the program now you should see a window titled Vulkan show up until the application is terminated by closing the window. Now that we have the skeleton for the Vulkan application, let's [create the first Vulkan object](./instance.md)!
+When you run the program now you should see a window titled Vulkan show up until the application is terminated by closing the window. Now that we have the skeleton for the Vulkan application, let's [create the first Vulkan object](instance.md)!
