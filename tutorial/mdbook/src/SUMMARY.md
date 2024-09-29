@@ -19,6 +19,7 @@
 
 # Graphics pipeline Basics
 - [Introduction](./pipeline/introduction.md)
+- [Shader modules](./pipeline/shader-modules.md)
 
 # Drawing
 
