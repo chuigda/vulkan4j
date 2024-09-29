@@ -18,6 +18,7 @@
 - [Image views](./presentation/image-views.md)
 
 # Graphics pipeline Basics
+- [Introduction](./pipeline/introduction.md)
 
 # Drawing
 
