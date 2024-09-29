@@ -21,6 +21,7 @@
 - [Introduction](./pipeline/introduction.md)
 - [Shader modules](./pipeline/shader-modules.md)
 - [Fixed functions](./pipeline/fixed-functions.md)
+- [Render passes](./pipeline/render-passes.md)
 
 # Drawing
 

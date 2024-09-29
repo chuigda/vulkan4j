@@ -48,6 +48,8 @@ Let's first add a configuration variable to specify whether to enable validation
 private static final boolean ENABLE_VALIDATION_LAYERS = System.getProperty("validation") != null;
 ```
 
+Validation layers will be enabled if the JVM option `validation` is set. If you're using an IDE, you can add this option in the run configuration.
+
 Then let's also make validation layer name a named constant:
 
 ```java
