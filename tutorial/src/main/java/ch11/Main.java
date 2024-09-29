@@ -404,9 +404,6 @@ class Application {
             var vertexShaderModule = createShaderModule(vertShaderCode);
             var fragmentShaderModule = createShaderModule(fragShaderCode);
 
-            deviceCommands.vkDestroyShaderModule(device, vertexShaderModule, null);
-            deviceCommands.vkDestroyShaderModule(device, fragmentShaderModule, null);
-
             var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2);
             var vertShaderStageInfo = shaderStages[0];
             vertShaderStageInfo.stage(VkShaderStageFlags.VK_SHADER_STAGE_VERTEX_BIT);
@@ -499,6 +496,9 @@ class Application {
                 throw new RuntimeException("Failed to create pipeline layout, vulkan error code: " + VkResult.explain(result));
             }
             pipelineLayout = pPipelineLayout.read();
+
+            deviceCommands.vkDestroyShaderModule(device, vertexShaderModule, null);
+            deviceCommands.vkDestroyShaderModule(device, fragmentShaderModule, null);
         }
     }
 

@@ -1,4 +1,4 @@
-package ch09;
+package ch12;
 
 import tech.icey.glfwmini.GLFWwindow;
 import tech.icey.glfwmini.LibGLFW;
@@ -63,6 +63,7 @@ class Application {
         createLogicalDevice();
         createSwapchain();
         createImageViews();
+        createRenderPass();
         createGraphicsPipeline();
     }
 
@@ -73,6 +74,9 @@ class Application {
     }
 
     private void cleanup() {
+        deviceCommands.vkDestroyPipeline(device, graphicsPipeline, null);
+        deviceCommands.vkDestroyPipelineLayout(device, pipelineLayout, null);
+        deviceCommands.vkDestroyRenderPass(device, renderPass, null);
         for (var imageView : swapChainImageViews) {
             deviceCommands.vkDestroyImageView(device, imageView, null);
         }
@@ -357,6 +361,42 @@ class Application {
         }
     }
 
+    private void createRenderPass() {
+        try (var arena = Arena.ofConfined()) {
+            var colorAttachment = VkAttachmentDescription.allocate(arena);
+            colorAttachment.format(swapChainImageFormat);
+            colorAttachment.samples(VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT);
+            colorAttachment.loadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_CLEAR);
+            colorAttachment.storeOp(VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_STORE);
+            colorAttachment.stencilLoadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_DONT_CARE);
+            colorAttachment.stencilStoreOp(VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_DONT_CARE);
+            colorAttachment.initialLayout(VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED);
+            colorAttachment.finalLayout(VkImageLayout.VK_IMAGE_LAYOUT_PRESENT_SRC_KHR);
+
+            var colorAttachmentRef = VkAttachmentReference.allocate(arena);
+            colorAttachmentRef.attachment(0);
+            colorAttachmentRef.layout(VkImageLayout.VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
+
+            var subpass = VkSubpassDescription.allocate(arena);
+            subpass.pipelineBindPoint(VkPipelineBindPoint.VK_PIPELINE_BIND_POINT_GRAPHICS);
+            subpass.colorAttachmentCount(1);
+            subpass.pColorAttachments(colorAttachmentRef);
+
+            var renderPassInfo = VkRenderPassCreateInfo.allocate(arena);
+            renderPassInfo.attachmentCount(1);
+            renderPassInfo.pAttachments(colorAttachment);
+            renderPassInfo.subpassCount(1);
+            renderPassInfo.pSubpasses(subpass);
+
+            var pRenderPass = VkRenderPass.Buffer.allocate(arena);
+            var result = deviceCommands.vkCreateRenderPass(device, renderPassInfo, null, pRenderPass);
+            if (result != VkResult.VK_SUCCESS) {
+                throw new RuntimeException("Failed to create render pass, vulkan error code: " + VkResult.explain(result));
+            }
+            renderPass = pRenderPass.read();
+        }
+    }
+
     private void createGraphicsPipeline() {
         try (var arena = Arena.ofConfined()) {
             var vertShaderCode = readShaderFile("/vert.spv", arena);
@@ -374,6 +414,113 @@ class Application {
             fragShaderStageInfo.stage(VkShaderStageFlags.VK_SHADER_STAGE_FRAGMENT_BIT);
             fragShaderStageInfo.module(fragmentShaderModule);
             fragShaderStageInfo.pName(ByteBuffer.allocateString(arena, "main"));
+
+            var vertexInputInfo = VkPipelineVertexInputStateCreateInfo.allocate(arena);
+
+            var inputAssembly = VkPipelineInputAssemblyStateCreateInfo.allocate(arena);
+            inputAssembly.topology(VkPrimitiveTopology.VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
+            inputAssembly.primitiveRestartEnable(Constants.VK_FALSE);
+
+            var viewport = VkViewport.allocate(arena);
+            viewport.x(0.0f);
+            viewport.y(0.0f);
+            viewport.width(swapChainExtent.width());
+            viewport.height(swapChainExtent.height());
+            viewport.minDepth(0.0f);
+            viewport.maxDepth(1.0f);
+
+            var scissor = VkRect2D.allocate(arena);
+            scissor.offset().x(0);
+            scissor.offset().y(0);
+            scissor.extent(swapChainExtent);
+
+            var viewportStateInfo = VkPipelineViewportStateCreateInfo.allocate(arena);
+            viewportStateInfo.viewportCount(1);
+            viewportStateInfo.pViewports(viewport);
+            viewportStateInfo.scissorCount(1);
+            viewportStateInfo.pScissors(scissor);
+
+            var rasterizer = VkPipelineRasterizationStateCreateInfo.allocate(arena);
+            rasterizer.depthClampEnable(Constants.VK_FALSE);
+            rasterizer.rasterizerDiscardEnable(Constants.VK_FALSE);
+            rasterizer.polygonMode(VkPolygonMode.VK_POLYGON_MODE_FILL);
+            rasterizer.lineWidth(1.0f);
+            rasterizer.cullMode(VkCullModeFlags.VK_CULL_MODE_BACK_BIT);
+            rasterizer.frontFace(VkFrontFace.VK_FRONT_FACE_CLOCKWISE);
+            rasterizer.depthBiasEnable(Constants.VK_FALSE);
+            rasterizer.depthBiasConstantFactor(0.0f);
+            rasterizer.depthBiasClamp(0.0f);
+            rasterizer.depthBiasSlopeFactor(0.0f);
+
+            var multisampling = VkPipelineMultisampleStateCreateInfo.allocate(arena);
+            multisampling.sampleShadingEnable(Constants.VK_FALSE);
+            multisampling.rasterizationSamples(VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT);
+            multisampling.minSampleShading(1.0f);
+            multisampling.pSampleMask(null);
+            multisampling.alphaToCoverageEnable(Constants.VK_FALSE);
+            multisampling.alphaToOneEnable(Constants.VK_FALSE);
+
+            var colorBlendAttachment = VkPipelineColorBlendAttachmentState.allocate(arena);
+            colorBlendAttachment.colorWriteMask(
+                    VkColorComponentFlags.VK_COLOR_COMPONENT_R_BIT |
+                            VkColorComponentFlags.VK_COLOR_COMPONENT_G_BIT |
+                            VkColorComponentFlags.VK_COLOR_COMPONENT_B_BIT |
+                            VkColorComponentFlags.VK_COLOR_COMPONENT_A_BIT
+            );
+            colorBlendAttachment.blendEnable(Constants.VK_FALSE);
+            colorBlendAttachment.srcColorBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ONE);
+            colorBlendAttachment.dstColorBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ZERO);
+            colorBlendAttachment.colorBlendOp(VkBlendOp.VK_BLEND_OP_ADD);
+            colorBlendAttachment.srcAlphaBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ONE);
+            colorBlendAttachment.dstAlphaBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ZERO);
+            colorBlendAttachment.alphaBlendOp(VkBlendOp.VK_BLEND_OP_ADD);
+
+            var colorBlending = VkPipelineColorBlendStateCreateInfo.allocate(arena);
+            colorBlending.logicOpEnable(Constants.VK_FALSE);
+            colorBlending.logicOp(VkLogicOp.VK_LOGIC_OP_COPY);
+            colorBlending.attachmentCount(1);
+            colorBlending.pAttachments(colorBlendAttachment);
+            colorBlending.blendConstants().write(0, 0.0f);
+            colorBlending.blendConstants().write(1, 0.0f);
+            colorBlending.blendConstants().write(2, 0.0f);
+            colorBlending.blendConstants().write(3, 0.0f);
+
+            var pipelineLayoutInfo = VkPipelineLayoutCreateInfo.allocate(arena);
+            pipelineLayoutInfo.setLayoutCount(0);
+            pipelineLayoutInfo.pSetLayouts(null);
+            pipelineLayoutInfo.pushConstantRangeCount(0);
+            pipelineLayoutInfo.pPushConstantRanges(null);
+
+            var pPipelineLayout = VkPipelineLayout.Buffer.allocate(arena);
+            var result = deviceCommands.vkCreatePipelineLayout(device, pipelineLayoutInfo, null, pPipelineLayout);
+            if (result != VkResult.VK_SUCCESS) {
+                throw new RuntimeException("Failed to create pipeline layout, vulkan error code: " + VkResult.explain(result));
+            }
+            pipelineLayout = pPipelineLayout.read();
+
+            var pipelineInfo = VkGraphicsPipelineCreateInfo.allocate(arena);
+            pipelineInfo.stageCount(2);
+            pipelineInfo.pStages(shaderStages[0]);
+            pipelineInfo.pVertexInputState(vertexInputInfo);
+            pipelineInfo.pInputAssemblyState(inputAssembly);
+            pipelineInfo.pViewportState(viewportStateInfo);
+            pipelineInfo.pRasterizationState(rasterizer);
+            pipelineInfo.pMultisampleState(multisampling);
+            pipelineInfo.pDepthStencilState(null);
+            pipelineInfo.pColorBlendState(colorBlending);
+            pipelineInfo.pDynamicState(null);
+            pipelineInfo.layout(pipelineLayout);
+            pipelineInfo.renderPass(renderPass);
+            pipelineInfo.subpass(0);
+            pipelineInfo.basePipelineHandle(null);
+            pipelineInfo.basePipelineIndex(-1);
+
+            var pGraphicsPipeline = VkPipeline.Buffer.allocate(arena);
+            result = deviceCommands.vkCreateGraphicsPipelines(device, null, 1, pipelineInfo, null, pGraphicsPipeline);
+            if (result != VkResult.VK_SUCCESS) {
+                throw new RuntimeException("Failed to create graphics pipeline, vulkan error code: " + VkResult.explain(result));
+            }
+            graphicsPipeline = pGraphicsPipeline.read();
 
             deviceCommands.vkDestroyShaderModule(device, vertexShaderModule, null);
             deviceCommands.vkDestroyShaderModule(device, fragmentShaderModule, null);
@@ -642,6 +789,9 @@ class Application {
     private @enumtype(VkFormat.class) int swapChainImageFormat;
     private VkExtent2D swapChainExtent;
     private VkImageView[] swapChainImageViews;
+    private VkRenderPass renderPass;
+    private VkPipelineLayout pipelineLayout;
+    private VkPipeline graphicsPipeline;
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
