@@ -27,6 +27,7 @@
 # Drawing
 - [Framebuffers](./drawing/framebuffers.md)
 - [Command buffers](./drawing/command-buffers.md)
+- [Rendering and presentation](./drawing/rendering-and-presentation.md)
 
 # Vertex buffers
 
