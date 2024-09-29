@@ -8086,7 +8086,7 @@ public final class DeviceCommands {
             @unsigned int heapIndex,
             @unsigned int localDeviceIndex,
             @unsigned int remoteDeviceIndex,
-            @pointer(comment="enum VkPeerMemoryFeatureFlags*") MemorySegment pPeerMemoryFeatures
+             @enumtype(VkPeerMemoryFeatureFlags.class) IntBuffer pPeerMemoryFeatures
     ) {
         try {
             HANDLE$vkGetDeviceGroupPeerMemoryFeatures.invokeExact(
@@ -8094,7 +8094,7 @@ public final class DeviceCommands {
                     heapIndex,
                     localDeviceIndex,
                     remoteDeviceIndex,
-                    pPeerMemoryFeatures
+                    pPeerMemoryFeatures.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -8169,13 +8169,13 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetDeviceGroupSurfacePresentModesKHR(
             VkDevice device,
             VkSurfaceKHR surface,
-            @pointer(comment="enum VkDeviceGroupPresentModeFlagsKHR*") MemorySegment pModes
+             @enumtype(VkDeviceGroupPresentModeFlagsKHR.class) IntBuffer pModes
     ) {
         try {
             return (int) HANDLE$vkGetDeviceGroupSurfacePresentModesKHR.invokeExact(
                     device.segment(),
                     surface.segment(),
-                    pModes
+                    pModes.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -8783,13 +8783,13 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceCalibrateableTimeDomainsKHR(
             VkPhysicalDevice physicalDevice,
              @unsigned IntBuffer pTimeDomainCount,
-            @pointer(comment="enum VkTimeDomainKHR*") MemorySegment pTimeDomains
+            @nullable  @enumtype(VkTimeDomainKHR.class) IntBuffer pTimeDomains
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR.invokeExact(
                     physicalDevice.segment(),
                     pTimeDomainCount.segment(),
-                    pTimeDomains
+                    (MemorySegment) (pTimeDomains != null ? pTimeDomains.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -10017,13 +10017,13 @@ public final class DeviceCommands {
     public void vkGetDeviceAccelerationStructureCompatibilityKHR(
             VkDevice device,
             @pointer(target=VkAccelerationStructureVersionInfoKHR.class) VkAccelerationStructureVersionInfoKHR pVersionInfo,
-            @pointer(comment="enum VkAccelerationStructureCompatibilityKHR*") MemorySegment pCompatibility
+             @enumtype(VkAccelerationStructureCompatibilityKHR.class) IntBuffer pCompatibility
     ) {
         try {
             HANDLE$vkGetDeviceAccelerationStructureCompatibilityKHR.invokeExact(
                     device.segment(),
                     pVersionInfo.segment(),
-                    pCompatibility
+                    pCompatibility.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -10101,14 +10101,14 @@ public final class DeviceCommands {
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceSurfaceInfo2KHR.class) VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo,
              @unsigned IntBuffer pPresentModeCount,
-            @pointer(comment="enum VkPresentModeKHR*") MemorySegment pPresentModes
+            @nullable  @enumtype(VkPresentModeKHR.class) IntBuffer pPresentModes
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfacePresentModes2EXT.invokeExact(
                     physicalDevice.segment(),
                     pSurfaceInfo.segment(),
                     pPresentModeCount.segment(),
-                    pPresentModes
+                    (MemorySegment) (pPresentModes != null ? pPresentModes.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -10119,13 +10119,13 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetDeviceGroupSurfacePresentModes2EXT(
             VkDevice device,
             @pointer(target=VkPhysicalDeviceSurfaceInfo2KHR.class) VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo,
-            @pointer(comment="enum VkDeviceGroupPresentModeFlagsKHR*") MemorySegment pModes
+             @enumtype(VkDeviceGroupPresentModeFlagsKHR.class) IntBuffer pModes
     ) {
         try {
             return (int) HANDLE$vkGetDeviceGroupSurfacePresentModes2EXT.invokeExact(
                     device.segment(),
                     pSurfaceInfo.segment(),
-                    pModes
+                    pModes.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -11204,14 +11204,14 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int firstAttachment,
             @unsigned int attachmentCount,
-            @pointer(comment="enum VkColorComponentFlags*") MemorySegment pColorWriteMasks
+             @enumtype(VkColorComponentFlags.class) IntBuffer pColorWriteMasks
     ) {
         try {
             HANDLE$vkCmdSetColorWriteMaskEXT.invokeExact(
                     commandBuffer.segment(),
                     firstAttachment,
                     attachmentCount,
-                    pColorWriteMasks
+                    pColorWriteMasks.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -11715,13 +11715,13 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceRefreshableObjectTypesKHR(
             VkPhysicalDevice physicalDevice,
              @unsigned IntBuffer pRefreshableObjectTypeCount,
-            @pointer(comment="enum VkObjectType*") MemorySegment pRefreshableObjectTypes
+            @nullable  @enumtype(VkObjectType.class) IntBuffer pRefreshableObjectTypes
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceRefreshableObjectTypesKHR.invokeExact(
                     physicalDevice.segment(),
                     pRefreshableObjectTypeCount.segment(),
-                    pRefreshableObjectTypes
+                    (MemorySegment) (pRefreshableObjectTypes != null ? pRefreshableObjectTypes.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -12879,13 +12879,13 @@ public final class DeviceCommands {
     public void vkGetDeviceMicromapCompatibilityEXT(
             VkDevice device,
             @pointer(target=VkMicromapVersionInfoEXT.class) VkMicromapVersionInfoEXT pVersionInfo,
-            @pointer(comment="enum VkAccelerationStructureCompatibilityKHR*") MemorySegment pCompatibility
+             @enumtype(VkAccelerationStructureCompatibilityKHR.class) IntBuffer pCompatibility
     ) {
         try {
             HANDLE$vkGetDeviceMicromapCompatibilityEXT.invokeExact(
                     device.segment(),
                     pVersionInfo.segment(),
-                    pCompatibility
+                    pCompatibility.segment()
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -13282,14 +13282,14 @@ public final class DeviceCommands {
     public void vkCmdBindShadersEXT(
             VkCommandBuffer commandBuffer,
             @unsigned int stageCount,
-            @pointer(comment="enum VkShaderStageFlagBits*") MemorySegment pStages,
+             @enumtype(VkShaderStageFlags.class) IntBuffer pStages,
             @nullable @pointer(target=VkShaderEXT.class) VkShaderEXT.Buffer pShaders
     ) {
         try {
             HANDLE$vkCmdBindShadersEXT.invokeExact(
                     commandBuffer.segment(),
                     stageCount,
-                    pStages,
+                    pStages.segment(),
                     (MemorySegment) (pShaders != null ? pShaders.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {

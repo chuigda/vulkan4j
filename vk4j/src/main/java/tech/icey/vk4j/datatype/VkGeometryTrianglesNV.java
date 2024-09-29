@@ -58,12 +58,20 @@ public record VkGeometryTrianglesNV(MemorySegment segment) implements IPointer {
         pNext(pointer.segment());
     }
 
-    public VkBuffer vertexData() {
-        return new VkBuffer(segment.get(LAYOUT$vertexData, OFFSET$vertexData));
+    public @nullable VkBuffer vertexData() {
+        MemorySegment s = segment.get(LAYOUT$vertexData, OFFSET$vertexData);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer(s);
     }
 
-    public void vertexData(VkBuffer value) {
-        segment.set(LAYOUT$vertexData, OFFSET$vertexData, value.segment());
+    public void vertexData(@nullable VkBuffer value) {
+        segment.set(
+            LAYOUT$vertexData,
+            OFFSET$vertexData,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned long vertexOffset() {
@@ -98,12 +106,20 @@ public record VkGeometryTrianglesNV(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$vertexFormat, OFFSET$vertexFormat, value);
     }
 
-    public VkBuffer indexData() {
-        return new VkBuffer(segment.get(LAYOUT$indexData, OFFSET$indexData));
+    public @nullable VkBuffer indexData() {
+        MemorySegment s = segment.get(LAYOUT$indexData, OFFSET$indexData);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer(s);
     }
 
-    public void indexData(VkBuffer value) {
-        segment.set(LAYOUT$indexData, OFFSET$indexData, value.segment());
+    public void indexData(@nullable VkBuffer value) {
+        segment.set(
+            LAYOUT$indexData,
+            OFFSET$indexData,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned long indexOffset() {
@@ -130,12 +146,20 @@ public record VkGeometryTrianglesNV(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
     }
 
-    public VkBuffer transformData() {
-        return new VkBuffer(segment.get(LAYOUT$transformData, OFFSET$transformData));
+    public @nullable VkBuffer transformData() {
+        MemorySegment s = segment.get(LAYOUT$transformData, OFFSET$transformData);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer(s);
     }
 
-    public void transformData(VkBuffer value) {
-        segment.set(LAYOUT$transformData, OFFSET$transformData, value.segment());
+    public void transformData(@nullable VkBuffer value) {
+        segment.set(
+            LAYOUT$transformData,
+            OFFSET$transformData,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned long transformOffset() {
@@ -158,7 +182,21 @@ public record VkGeometryTrianglesNV(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
-    
+
+    public static VkGeometryTrianglesNV clone(Arena arena, VkGeometryTrianglesNV src) {
+        VkGeometryTrianglesNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkGeometryTrianglesNV[] clone(Arena arena, VkGeometryTrianglesNV[] src) {
+        VkGeometryTrianglesNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

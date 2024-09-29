@@ -48,12 +48,20 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(MemorySegment segment) imple
         pNext(pointer.segment());
     }
 
-    public VkSampler sampler() {
-        return new VkSampler(segment.get(LAYOUT$sampler, OFFSET$sampler));
+    public @nullable VkSampler sampler() {
+        MemorySegment s = segment.get(LAYOUT$sampler, OFFSET$sampler);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSampler(s);
     }
 
-    public void sampler(VkSampler value) {
-        segment.set(LAYOUT$sampler, OFFSET$sampler, value.segment());
+    public void sampler(@nullable VkSampler value) {
+        segment.set(
+            LAYOUT$sampler,
+            OFFSET$sampler,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public static VkSamplerCaptureDescriptorDataInfoEXT allocate(Arena arena) {
@@ -68,7 +76,21 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(MemorySegment segment) imple
         }
         return ret;
     }
-    
+
+    public static VkSamplerCaptureDescriptorDataInfoEXT clone(Arena arena, VkSamplerCaptureDescriptorDataInfoEXT src) {
+        VkSamplerCaptureDescriptorDataInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSamplerCaptureDescriptorDataInfoEXT[] clone(Arena arena, VkSamplerCaptureDescriptorDataInfoEXT[] src) {
+        VkSamplerCaptureDescriptorDataInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

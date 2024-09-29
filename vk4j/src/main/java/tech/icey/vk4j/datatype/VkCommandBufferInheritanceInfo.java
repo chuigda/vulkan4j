@@ -53,12 +53,20 @@ public record VkCommandBufferInheritanceInfo(MemorySegment segment) implements I
         pNext(pointer.segment());
     }
 
-    public VkRenderPass renderPass() {
-        return new VkRenderPass(segment.get(LAYOUT$renderPass, OFFSET$renderPass));
+    public @nullable VkRenderPass renderPass() {
+        MemorySegment s = segment.get(LAYOUT$renderPass, OFFSET$renderPass);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkRenderPass(s);
     }
 
-    public void renderPass(VkRenderPass value) {
-        segment.set(LAYOUT$renderPass, OFFSET$renderPass, value.segment());
+    public void renderPass(@nullable VkRenderPass value) {
+        segment.set(
+            LAYOUT$renderPass,
+            OFFSET$renderPass,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int subpass() {
@@ -69,12 +77,20 @@ public record VkCommandBufferInheritanceInfo(MemorySegment segment) implements I
         segment.set(LAYOUT$subpass, OFFSET$subpass, value);
     }
 
-    public VkFramebuffer framebuffer() {
-        return new VkFramebuffer(segment.get(LAYOUT$framebuffer, OFFSET$framebuffer));
+    public @nullable VkFramebuffer framebuffer() {
+        MemorySegment s = segment.get(LAYOUT$framebuffer, OFFSET$framebuffer);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkFramebuffer(s);
     }
 
-    public void framebuffer(VkFramebuffer value) {
-        segment.set(LAYOUT$framebuffer, OFFSET$framebuffer, value.segment());
+    public void framebuffer(@nullable VkFramebuffer value) {
+        segment.set(
+            LAYOUT$framebuffer,
+            OFFSET$framebuffer,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int occlusionQueryEnable() {
@@ -113,7 +129,21 @@ public record VkCommandBufferInheritanceInfo(MemorySegment segment) implements I
         }
         return ret;
     }
-    
+
+    public static VkCommandBufferInheritanceInfo clone(Arena arena, VkCommandBufferInheritanceInfo src) {
+        VkCommandBufferInheritanceInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCommandBufferInheritanceInfo[] clone(Arena arena, VkCommandBufferInheritanceInfo[] src) {
+        VkCommandBufferInheritanceInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

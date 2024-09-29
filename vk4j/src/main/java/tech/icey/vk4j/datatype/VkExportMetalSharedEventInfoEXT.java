@@ -50,20 +50,36 @@ public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) implements 
         pNext(pointer.segment());
     }
 
-    public VkSemaphore semaphore() {
-        return new VkSemaphore(segment.get(LAYOUT$semaphore, OFFSET$semaphore));
+    public @nullable VkSemaphore semaphore() {
+        MemorySegment s = segment.get(LAYOUT$semaphore, OFFSET$semaphore);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSemaphore(s);
     }
 
-    public void semaphore(VkSemaphore value) {
-        segment.set(LAYOUT$semaphore, OFFSET$semaphore, value.segment());
+    public void semaphore(@nullable VkSemaphore value) {
+        segment.set(
+            LAYOUT$semaphore,
+            OFFSET$semaphore,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkEvent event() {
-        return new VkEvent(segment.get(LAYOUT$event, OFFSET$event));
+    public @nullable VkEvent event() {
+        MemorySegment s = segment.get(LAYOUT$event, OFFSET$event);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkEvent(s);
     }
 
-    public void event(VkEvent value) {
-        segment.set(LAYOUT$event, OFFSET$event, value.segment());
+    public void event(@nullable VkEvent value) {
+        segment.set(
+            LAYOUT$event,
+            OFFSET$event,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @pointer(comment="void*") MemorySegment mtlSharedEvent() {
@@ -90,7 +106,21 @@ public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) implements 
         }
         return ret;
     }
-    
+
+    public static VkExportMetalSharedEventInfoEXT clone(Arena arena, VkExportMetalSharedEventInfoEXT src) {
+        VkExportMetalSharedEventInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkExportMetalSharedEventInfoEXT[] clone(Arena arena, VkExportMetalSharedEventInfoEXT[] src) {
+        VkExportMetalSharedEventInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

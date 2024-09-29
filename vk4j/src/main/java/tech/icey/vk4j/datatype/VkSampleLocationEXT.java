@@ -54,7 +54,21 @@ public record VkSampleLocationEXT(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
-    
+
+    public static VkSampleLocationEXT clone(Arena arena, VkSampleLocationEXT src) {
+        VkSampleLocationEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSampleLocationEXT[] clone(Arena arena, VkSampleLocationEXT[] src) {
+        VkSampleLocationEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_FLOAT.withName("x"),
         ValueLayout.JAVA_FLOAT.withName("y")

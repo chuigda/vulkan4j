@@ -26,12 +26,20 @@ public record VkDisplayModePropertiesKHR(MemorySegment segment) implements IPoin
         this.segment = segment;
     }
 
-    public VkDisplayModeKHR displayMode() {
-        return new VkDisplayModeKHR(segment.get(LAYOUT$displayMode, OFFSET$displayMode));
+    public @nullable VkDisplayModeKHR displayMode() {
+        MemorySegment s = segment.get(LAYOUT$displayMode, OFFSET$displayMode);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDisplayModeKHR(s);
     }
 
-    public void displayMode(VkDisplayModeKHR value) {
-        segment.set(LAYOUT$displayMode, OFFSET$displayMode, value.segment());
+    public void displayMode(@nullable VkDisplayModeKHR value) {
+        segment.set(
+            LAYOUT$displayMode,
+            OFFSET$displayMode,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public VkDisplayModeParametersKHR parameters() {
@@ -54,7 +62,21 @@ public record VkDisplayModePropertiesKHR(MemorySegment segment) implements IPoin
         }
         return ret;
     }
-    
+
+    public static VkDisplayModePropertiesKHR clone(Arena arena, VkDisplayModePropertiesKHR src) {
+        VkDisplayModePropertiesKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDisplayModePropertiesKHR[] clone(Arena arena, VkDisplayModePropertiesKHR[] src) {
+        VkDisplayModePropertiesKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withName("displayMode"),
         VkDisplayModeParametersKHR.LAYOUT.withName("parameters")

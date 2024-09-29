@@ -180,7 +180,21 @@ public record VkSRTDataNV(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
-    
+
+    public static VkSRTDataNV clone(Arena arena, VkSRTDataNV src) {
+        VkSRTDataNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSRTDataNV[] clone(Arena arena, VkSRTDataNV[] src) {
+        VkSRTDataNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_FLOAT.withName("sx"),
         ValueLayout.JAVA_FLOAT.withName("a"),

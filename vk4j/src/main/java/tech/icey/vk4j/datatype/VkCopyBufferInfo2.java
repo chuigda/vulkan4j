@@ -51,20 +51,36 @@ public record VkCopyBufferInfo2(MemorySegment segment) implements IPointer {
         pNext(pointer.segment());
     }
 
-    public VkBuffer srcBuffer() {
-        return new VkBuffer(segment.get(LAYOUT$srcBuffer, OFFSET$srcBuffer));
+    public @nullable VkBuffer srcBuffer() {
+        MemorySegment s = segment.get(LAYOUT$srcBuffer, OFFSET$srcBuffer);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer(s);
     }
 
-    public void srcBuffer(VkBuffer value) {
-        segment.set(LAYOUT$srcBuffer, OFFSET$srcBuffer, value.segment());
+    public void srcBuffer(@nullable VkBuffer value) {
+        segment.set(
+            LAYOUT$srcBuffer,
+            OFFSET$srcBuffer,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkBuffer dstBuffer() {
-        return new VkBuffer(segment.get(LAYOUT$dstBuffer, OFFSET$dstBuffer));
+    public @nullable VkBuffer dstBuffer() {
+        MemorySegment s = segment.get(LAYOUT$dstBuffer, OFFSET$dstBuffer);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer(s);
     }
 
-    public void dstBuffer(VkBuffer value) {
-        segment.set(LAYOUT$dstBuffer, OFFSET$dstBuffer, value.segment());
+    public void dstBuffer(@nullable VkBuffer value) {
+        segment.set(
+            LAYOUT$dstBuffer,
+            OFFSET$dstBuffer,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int regionCount() {
@@ -119,7 +135,21 @@ public record VkCopyBufferInfo2(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
-    
+
+    public static VkCopyBufferInfo2 clone(Arena arena, VkCopyBufferInfo2 src) {
+        VkCopyBufferInfo2 ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCopyBufferInfo2[] clone(Arena arena, VkCopyBufferInfo2[] src) {
+        VkCopyBufferInfo2[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

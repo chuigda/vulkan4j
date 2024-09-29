@@ -49,20 +49,36 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(MemorySegment 
         pNext(pointer.segment());
     }
 
-    public VkAccelerationStructureKHR accelerationStructure() {
-        return new VkAccelerationStructureKHR(segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure));
+    public @nullable VkAccelerationStructureKHR accelerationStructure() {
+        MemorySegment s = segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkAccelerationStructureKHR(s);
     }
 
-    public void accelerationStructure(VkAccelerationStructureKHR value) {
-        segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value.segment());
+    public void accelerationStructure(@nullable VkAccelerationStructureKHR value) {
+        segment.set(
+            LAYOUT$accelerationStructure,
+            OFFSET$accelerationStructure,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkAccelerationStructureNV accelerationStructureNV() {
-        return new VkAccelerationStructureNV(segment.get(LAYOUT$accelerationStructureNV, OFFSET$accelerationStructureNV));
+    public @nullable VkAccelerationStructureNV accelerationStructureNV() {
+        MemorySegment s = segment.get(LAYOUT$accelerationStructureNV, OFFSET$accelerationStructureNV);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkAccelerationStructureNV(s);
     }
 
-    public void accelerationStructureNV(VkAccelerationStructureNV value) {
-        segment.set(LAYOUT$accelerationStructureNV, OFFSET$accelerationStructureNV, value.segment());
+    public void accelerationStructureNV(@nullable VkAccelerationStructureNV value) {
+        segment.set(
+            LAYOUT$accelerationStructureNV,
+            OFFSET$accelerationStructureNV,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public static VkAccelerationStructureCaptureDescriptorDataInfoEXT allocate(Arena arena) {
@@ -77,7 +93,21 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(MemorySegment 
         }
         return ret;
     }
-    
+
+    public static VkAccelerationStructureCaptureDescriptorDataInfoEXT clone(Arena arena, VkAccelerationStructureCaptureDescriptorDataInfoEXT src) {
+        VkAccelerationStructureCaptureDescriptorDataInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkAccelerationStructureCaptureDescriptorDataInfoEXT[] clone(Arena arena, VkAccelerationStructureCaptureDescriptorDataInfoEXT[] src) {
+        VkAccelerationStructureCaptureDescriptorDataInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

@@ -49,12 +49,20 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) implements
         pNext(pointer.segment());
     }
 
-    public VkQueue queue() {
-        return new VkQueue(segment.get(LAYOUT$queue, OFFSET$queue));
+    public @nullable VkQueue queue() {
+        MemorySegment s = segment.get(LAYOUT$queue, OFFSET$queue);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkQueue(s);
     }
 
-    public void queue(VkQueue value) {
-        segment.set(LAYOUT$queue, OFFSET$queue, value.segment());
+    public void queue(@nullable VkQueue value) {
+        segment.set(
+            LAYOUT$queue,
+            OFFSET$queue,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @pointer(comment="void*") MemorySegment mtlCommandQueue() {
@@ -81,7 +89,21 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) implements
         }
         return ret;
     }
-    
+
+    public static VkExportMetalCommandQueueInfoEXT clone(Arena arena, VkExportMetalCommandQueueInfoEXT src) {
+        VkExportMetalCommandQueueInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkExportMetalCommandQueueInfoEXT[] clone(Arena arena, VkExportMetalCommandQueueInfoEXT[] src) {
+        VkExportMetalCommandQueueInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

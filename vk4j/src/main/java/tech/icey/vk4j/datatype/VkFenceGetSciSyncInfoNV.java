@@ -49,12 +49,20 @@ public record VkFenceGetSciSyncInfoNV(MemorySegment segment) implements IPointer
         pNext(pointer.segment());
     }
 
-    public VkFence fence() {
-        return new VkFence(segment.get(LAYOUT$fence, OFFSET$fence));
+    public @nullable VkFence fence() {
+        MemorySegment s = segment.get(LAYOUT$fence, OFFSET$fence);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkFence(s);
     }
 
-    public void fence(VkFence value) {
-        segment.set(LAYOUT$fence, OFFSET$fence, value.segment());
+    public void fence(@nullable VkFence value) {
+        segment.set(
+            LAYOUT$fence,
+            OFFSET$fence,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkExternalFenceHandleTypeFlags.class) int handleType() {
@@ -77,7 +85,21 @@ public record VkFenceGetSciSyncInfoNV(MemorySegment segment) implements IPointer
         }
         return ret;
     }
-    
+
+    public static VkFenceGetSciSyncInfoNV clone(Arena arena, VkFenceGetSciSyncInfoNV src) {
+        VkFenceGetSciSyncInfoNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkFenceGetSciSyncInfoNV[] clone(Arena arena, VkFenceGetSciSyncInfoNV[] src) {
+        VkFenceGetSciSyncInfoNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

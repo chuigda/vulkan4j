@@ -62,12 +62,20 @@ public record VkCopyImageToImageInfoEXT(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public VkImage srcImage() {
-        return new VkImage(segment.get(LAYOUT$srcImage, OFFSET$srcImage));
+    public @nullable VkImage srcImage() {
+        MemorySegment s = segment.get(LAYOUT$srcImage, OFFSET$srcImage);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImage(s);
     }
 
-    public void srcImage(VkImage value) {
-        segment.set(LAYOUT$srcImage, OFFSET$srcImage, value.segment());
+    public void srcImage(@nullable VkImage value) {
+        segment.set(
+            LAYOUT$srcImage,
+            OFFSET$srcImage,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkImageLayout.class) int srcImageLayout() {
@@ -78,12 +86,20 @@ public record VkCopyImageToImageInfoEXT(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$srcImageLayout, OFFSET$srcImageLayout, value);
     }
 
-    public VkImage dstImage() {
-        return new VkImage(segment.get(LAYOUT$dstImage, OFFSET$dstImage));
+    public @nullable VkImage dstImage() {
+        MemorySegment s = segment.get(LAYOUT$dstImage, OFFSET$dstImage);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImage(s);
     }
 
-    public void dstImage(VkImage value) {
-        segment.set(LAYOUT$dstImage, OFFSET$dstImage, value.segment());
+    public void dstImage(@nullable VkImage value) {
+        segment.set(
+            LAYOUT$dstImage,
+            OFFSET$dstImage,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkImageLayout.class) int dstImageLayout() {
@@ -146,7 +162,21 @@ public record VkCopyImageToImageInfoEXT(MemorySegment segment) implements IPoint
         }
         return ret;
     }
-    
+
+    public static VkCopyImageToImageInfoEXT clone(Arena arena, VkCopyImageToImageInfoEXT src) {
+        VkCopyImageToImageInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCopyImageToImageInfoEXT[] clone(Arena arena, VkCopyImageToImageInfoEXT[] src) {
+        VkCopyImageToImageInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

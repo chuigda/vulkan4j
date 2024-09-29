@@ -54,12 +54,20 @@ public record VkCopyDescriptorSet(MemorySegment segment) implements IPointer {
         pNext(pointer.segment());
     }
 
-    public VkDescriptorSet srcSet() {
-        return new VkDescriptorSet(segment.get(LAYOUT$srcSet, OFFSET$srcSet));
+    public @nullable VkDescriptorSet srcSet() {
+        MemorySegment s = segment.get(LAYOUT$srcSet, OFFSET$srcSet);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDescriptorSet(s);
     }
 
-    public void srcSet(VkDescriptorSet value) {
-        segment.set(LAYOUT$srcSet, OFFSET$srcSet, value.segment());
+    public void srcSet(@nullable VkDescriptorSet value) {
+        segment.set(
+            LAYOUT$srcSet,
+            OFFSET$srcSet,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int srcBinding() {
@@ -78,12 +86,20 @@ public record VkCopyDescriptorSet(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$srcArrayElement, OFFSET$srcArrayElement, value);
     }
 
-    public VkDescriptorSet dstSet() {
-        return new VkDescriptorSet(segment.get(LAYOUT$dstSet, OFFSET$dstSet));
+    public @nullable VkDescriptorSet dstSet() {
+        MemorySegment s = segment.get(LAYOUT$dstSet, OFFSET$dstSet);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDescriptorSet(s);
     }
 
-    public void dstSet(VkDescriptorSet value) {
-        segment.set(LAYOUT$dstSet, OFFSET$dstSet, value.segment());
+    public void dstSet(@nullable VkDescriptorSet value) {
+        segment.set(
+            LAYOUT$dstSet,
+            OFFSET$dstSet,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int dstBinding() {
@@ -122,7 +138,21 @@ public record VkCopyDescriptorSet(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
-    
+
+    public static VkCopyDescriptorSet clone(Arena arena, VkCopyDescriptorSet src) {
+        VkCopyDescriptorSet ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCopyDescriptorSet[] clone(Arena arena, VkCopyDescriptorSet[] src) {
+        VkCopyDescriptorSet[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

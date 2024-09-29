@@ -52,12 +52,20 @@ public record VkCopyImageToBufferInfo2(MemorySegment segment) implements IPointe
         pNext(pointer.segment());
     }
 
-    public VkImage srcImage() {
-        return new VkImage(segment.get(LAYOUT$srcImage, OFFSET$srcImage));
+    public @nullable VkImage srcImage() {
+        MemorySegment s = segment.get(LAYOUT$srcImage, OFFSET$srcImage);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImage(s);
     }
 
-    public void srcImage(VkImage value) {
-        segment.set(LAYOUT$srcImage, OFFSET$srcImage, value.segment());
+    public void srcImage(@nullable VkImage value) {
+        segment.set(
+            LAYOUT$srcImage,
+            OFFSET$srcImage,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkImageLayout.class) int srcImageLayout() {
@@ -68,12 +76,20 @@ public record VkCopyImageToBufferInfo2(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$srcImageLayout, OFFSET$srcImageLayout, value);
     }
 
-    public VkBuffer dstBuffer() {
-        return new VkBuffer(segment.get(LAYOUT$dstBuffer, OFFSET$dstBuffer));
+    public @nullable VkBuffer dstBuffer() {
+        MemorySegment s = segment.get(LAYOUT$dstBuffer, OFFSET$dstBuffer);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer(s);
     }
 
-    public void dstBuffer(VkBuffer value) {
-        segment.set(LAYOUT$dstBuffer, OFFSET$dstBuffer, value.segment());
+    public void dstBuffer(@nullable VkBuffer value) {
+        segment.set(
+            LAYOUT$dstBuffer,
+            OFFSET$dstBuffer,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int regionCount() {
@@ -128,7 +144,21 @@ public record VkCopyImageToBufferInfo2(MemorySegment segment) implements IPointe
         }
         return ret;
     }
-    
+
+    public static VkCopyImageToBufferInfo2 clone(Arena arena, VkCopyImageToBufferInfo2 src) {
+        VkCopyImageToBufferInfo2 ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCopyImageToBufferInfo2[] clone(Arena arena, VkCopyImageToBufferInfo2[] src) {
+        VkCopyImageToBufferInfo2[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

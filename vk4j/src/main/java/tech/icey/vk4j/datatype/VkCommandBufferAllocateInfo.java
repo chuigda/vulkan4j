@@ -50,12 +50,20 @@ public record VkCommandBufferAllocateInfo(MemorySegment segment) implements IPoi
         pNext(pointer.segment());
     }
 
-    public VkCommandPool commandPool() {
-        return new VkCommandPool(segment.get(LAYOUT$commandPool, OFFSET$commandPool));
+    public @nullable VkCommandPool commandPool() {
+        MemorySegment s = segment.get(LAYOUT$commandPool, OFFSET$commandPool);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkCommandPool(s);
     }
 
-    public void commandPool(VkCommandPool value) {
-        segment.set(LAYOUT$commandPool, OFFSET$commandPool, value.segment());
+    public void commandPool(@nullable VkCommandPool value) {
+        segment.set(
+            LAYOUT$commandPool,
+            OFFSET$commandPool,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkCommandBufferLevel.class) int level() {
@@ -86,7 +94,21 @@ public record VkCommandBufferAllocateInfo(MemorySegment segment) implements IPoi
         }
         return ret;
     }
-    
+
+    public static VkCommandBufferAllocateInfo clone(Arena arena, VkCommandBufferAllocateInfo src) {
+        VkCommandBufferAllocateInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCommandBufferAllocateInfo[] clone(Arena arena, VkCommandBufferAllocateInfo[] src) {
+        VkCommandBufferAllocateInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

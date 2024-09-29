@@ -63,7 +63,21 @@ public record VkCopyMemoryIndirectCommandNV(MemorySegment segment) implements IP
         }
         return ret;
     }
-    
+
+    public static VkCopyMemoryIndirectCommandNV clone(Arena arena, VkCopyMemoryIndirectCommandNV src) {
+        VkCopyMemoryIndirectCommandNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCopyMemoryIndirectCommandNV[] clone(Arena arena, VkCopyMemoryIndirectCommandNV[] src) {
+        VkCopyMemoryIndirectCommandNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_LONG.withName("srcAddress"),
         ValueLayout.JAVA_LONG.withName("dstAddress"),

@@ -57,12 +57,20 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(MemorySegment segm
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public VkAccelerationStructureNV accelerationStructure() {
-        return new VkAccelerationStructureNV(segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure));
+    public @nullable VkAccelerationStructureNV accelerationStructure() {
+        MemorySegment s = segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkAccelerationStructureNV(s);
     }
 
-    public void accelerationStructure(VkAccelerationStructureNV value) {
-        segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value.segment());
+    public void accelerationStructure(@nullable VkAccelerationStructureNV value) {
+        segment.set(
+            LAYOUT$accelerationStructure,
+            OFFSET$accelerationStructure,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public static VkAccelerationStructureMemoryRequirementsInfoNV allocate(Arena arena) {
@@ -77,7 +85,21 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(MemorySegment segm
         }
         return ret;
     }
-    
+
+    public static VkAccelerationStructureMemoryRequirementsInfoNV clone(Arena arena, VkAccelerationStructureMemoryRequirementsInfoNV src) {
+        VkAccelerationStructureMemoryRequirementsInfoNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkAccelerationStructureMemoryRequirementsInfoNV[] clone(Arena arena, VkAccelerationStructureMemoryRequirementsInfoNV[] src) {
+        VkAccelerationStructureMemoryRequirementsInfoNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

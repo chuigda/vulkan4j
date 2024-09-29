@@ -81,7 +81,21 @@ public record VkPastPresentationTimingGOOGLE(MemorySegment segment) implements I
         }
         return ret;
     }
-    
+
+    public static VkPastPresentationTimingGOOGLE clone(Arena arena, VkPastPresentationTimingGOOGLE src) {
+        VkPastPresentationTimingGOOGLE ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPastPresentationTimingGOOGLE[] clone(Arena arena, VkPastPresentationTimingGOOGLE[] src) {
+        VkPastPresentationTimingGOOGLE[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("presentID"),
         ValueLayout.JAVA_LONG.withName("desiredPresentTime"),

@@ -52,20 +52,36 @@ public record VkCopyBufferToImageInfo2(MemorySegment segment) implements IPointe
         pNext(pointer.segment());
     }
 
-    public VkBuffer srcBuffer() {
-        return new VkBuffer(segment.get(LAYOUT$srcBuffer, OFFSET$srcBuffer));
+    public @nullable VkBuffer srcBuffer() {
+        MemorySegment s = segment.get(LAYOUT$srcBuffer, OFFSET$srcBuffer);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer(s);
     }
 
-    public void srcBuffer(VkBuffer value) {
-        segment.set(LAYOUT$srcBuffer, OFFSET$srcBuffer, value.segment());
+    public void srcBuffer(@nullable VkBuffer value) {
+        segment.set(
+            LAYOUT$srcBuffer,
+            OFFSET$srcBuffer,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkImage dstImage() {
-        return new VkImage(segment.get(LAYOUT$dstImage, OFFSET$dstImage));
+    public @nullable VkImage dstImage() {
+        MemorySegment s = segment.get(LAYOUT$dstImage, OFFSET$dstImage);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImage(s);
     }
 
-    public void dstImage(VkImage value) {
-        segment.set(LAYOUT$dstImage, OFFSET$dstImage, value.segment());
+    public void dstImage(@nullable VkImage value) {
+        segment.set(
+            LAYOUT$dstImage,
+            OFFSET$dstImage,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkImageLayout.class) int dstImageLayout() {
@@ -128,7 +144,21 @@ public record VkCopyBufferToImageInfo2(MemorySegment segment) implements IPointe
         }
         return ret;
     }
-    
+
+    public static VkCopyBufferToImageInfo2 clone(Arena arena, VkCopyBufferToImageInfo2 src) {
+        VkCopyBufferToImageInfo2 ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCopyBufferToImageInfo2[] clone(Arena arena, VkCopyBufferToImageInfo2[] src) {
+        VkCopyBufferToImageInfo2[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

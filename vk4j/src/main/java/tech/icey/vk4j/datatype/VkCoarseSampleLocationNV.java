@@ -63,7 +63,21 @@ public record VkCoarseSampleLocationNV(MemorySegment segment) implements IPointe
         }
         return ret;
     }
-    
+
+    public static VkCoarseSampleLocationNV clone(Arena arena, VkCoarseSampleLocationNV src) {
+        VkCoarseSampleLocationNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCoarseSampleLocationNV[] clone(Arena arena, VkCoarseSampleLocationNV[] src) {
+        VkCoarseSampleLocationNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("pixelX"),
         ValueLayout.JAVA_INT.withName("pixelY"),

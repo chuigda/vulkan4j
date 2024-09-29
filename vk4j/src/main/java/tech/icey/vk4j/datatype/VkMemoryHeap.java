@@ -54,7 +54,21 @@ public record VkMemoryHeap(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
-    
+
+    public static VkMemoryHeap clone(Arena arena, VkMemoryHeap src) {
+        VkMemoryHeap ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkMemoryHeap[] clone(Arena arena, VkMemoryHeap[] src) {
+        VkMemoryHeap[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_LONG.withName("size"),
         ValueLayout.JAVA_INT.withName("flags")

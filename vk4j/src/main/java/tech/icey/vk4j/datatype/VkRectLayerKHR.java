@@ -63,7 +63,21 @@ public record VkRectLayerKHR(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
-    
+
+    public static VkRectLayerKHR clone(Arena arena, VkRectLayerKHR src) {
+        VkRectLayerKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkRectLayerKHR[] clone(Arena arena, VkRectLayerKHR[] src) {
+        VkRectLayerKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         VkOffset2D.LAYOUT.withName("offset"),
         VkExtent2D.LAYOUT.withName("extent"),

@@ -63,12 +63,20 @@ public record VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) implements IP
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public VkDisplayModeKHR displayMode() {
-        return new VkDisplayModeKHR(segment.get(LAYOUT$displayMode, OFFSET$displayMode));
+    public @nullable VkDisplayModeKHR displayMode() {
+        MemorySegment s = segment.get(LAYOUT$displayMode, OFFSET$displayMode);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDisplayModeKHR(s);
     }
 
-    public void displayMode(VkDisplayModeKHR value) {
-        segment.set(LAYOUT$displayMode, OFFSET$displayMode, value.segment());
+    public void displayMode(@nullable VkDisplayModeKHR value) {
+        segment.set(
+            LAYOUT$displayMode,
+            OFFSET$displayMode,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int planeIndex() {
@@ -131,7 +139,21 @@ public record VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) implements IP
         }
         return ret;
     }
-    
+
+    public static VkDisplaySurfaceCreateInfoKHR clone(Arena arena, VkDisplaySurfaceCreateInfoKHR src) {
+        VkDisplaySurfaceCreateInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDisplaySurfaceCreateInfoKHR[] clone(Arena arena, VkDisplaySurfaceCreateInfoKHR[] src) {
+        VkDisplaySurfaceCreateInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

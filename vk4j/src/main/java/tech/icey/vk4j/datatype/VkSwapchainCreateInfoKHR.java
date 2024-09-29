@@ -72,12 +72,20 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public VkSurfaceKHR surface() {
-        return new VkSurfaceKHR(segment.get(LAYOUT$surface, OFFSET$surface));
+    public @nullable VkSurfaceKHR surface() {
+        MemorySegment s = segment.get(LAYOUT$surface, OFFSET$surface);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSurfaceKHR(s);
     }
 
-    public void surface(VkSurfaceKHR value) {
-        segment.set(LAYOUT$surface, OFFSET$surface, value.segment());
+    public void surface(@nullable VkSurfaceKHR value) {
+        segment.set(
+            LAYOUT$surface,
+            OFFSET$surface,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int minImageCount() {
@@ -199,12 +207,20 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$clipped, OFFSET$clipped, value);
     }
 
-    public VkSwapchainKHR oldSwapchain() {
-        return new VkSwapchainKHR(segment.get(LAYOUT$oldSwapchain, OFFSET$oldSwapchain));
+    public @nullable VkSwapchainKHR oldSwapchain() {
+        MemorySegment s = segment.get(LAYOUT$oldSwapchain, OFFSET$oldSwapchain);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSwapchainKHR(s);
     }
 
-    public void oldSwapchain(VkSwapchainKHR value) {
-        segment.set(LAYOUT$oldSwapchain, OFFSET$oldSwapchain, value.segment());
+    public void oldSwapchain(@nullable VkSwapchainKHR value) {
+        segment.set(
+            LAYOUT$oldSwapchain,
+            OFFSET$oldSwapchain,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public static VkSwapchainCreateInfoKHR allocate(Arena arena) {
@@ -219,7 +235,21 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) implements IPointe
         }
         return ret;
     }
-    
+
+    public static VkSwapchainCreateInfoKHR clone(Arena arena, VkSwapchainCreateInfoKHR src) {
+        VkSwapchainCreateInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSwapchainCreateInfoKHR[] clone(Arena arena, VkSwapchainCreateInfoKHR[] src) {
+        VkSwapchainCreateInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

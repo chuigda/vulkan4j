@@ -26,12 +26,20 @@ public record VkDisplayPlanePropertiesKHR(MemorySegment segment) implements IPoi
         this.segment = segment;
     }
 
-    public VkDisplayKHR currentDisplay() {
-        return new VkDisplayKHR(segment.get(LAYOUT$currentDisplay, OFFSET$currentDisplay));
+    public @nullable VkDisplayKHR currentDisplay() {
+        MemorySegment s = segment.get(LAYOUT$currentDisplay, OFFSET$currentDisplay);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDisplayKHR(s);
     }
 
-    public void currentDisplay(VkDisplayKHR value) {
-        segment.set(LAYOUT$currentDisplay, OFFSET$currentDisplay, value.segment());
+    public void currentDisplay(@nullable VkDisplayKHR value) {
+        segment.set(
+            LAYOUT$currentDisplay,
+            OFFSET$currentDisplay,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int currentStackIndex() {
@@ -54,7 +62,21 @@ public record VkDisplayPlanePropertiesKHR(MemorySegment segment) implements IPoi
         }
         return ret;
     }
-    
+
+    public static VkDisplayPlanePropertiesKHR clone(Arena arena, VkDisplayPlanePropertiesKHR src) {
+        VkDisplayPlanePropertiesKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDisplayPlanePropertiesKHR[] clone(Arena arena, VkDisplayPlanePropertiesKHR[] src) {
+        VkDisplayPlanePropertiesKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withName("currentDisplay"),
         ValueLayout.JAVA_INT.withName("currentStackIndex")

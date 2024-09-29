@@ -48,12 +48,20 @@ public record VkImageSwapchainCreateInfoKHR(MemorySegment segment) implements IP
         pNext(pointer.segment());
     }
 
-    public VkSwapchainKHR swapchain() {
-        return new VkSwapchainKHR(segment.get(LAYOUT$swapchain, OFFSET$swapchain));
+    public @nullable VkSwapchainKHR swapchain() {
+        MemorySegment s = segment.get(LAYOUT$swapchain, OFFSET$swapchain);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSwapchainKHR(s);
     }
 
-    public void swapchain(VkSwapchainKHR value) {
-        segment.set(LAYOUT$swapchain, OFFSET$swapchain, value.segment());
+    public void swapchain(@nullable VkSwapchainKHR value) {
+        segment.set(
+            LAYOUT$swapchain,
+            OFFSET$swapchain,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public static VkImageSwapchainCreateInfoKHR allocate(Arena arena) {
@@ -68,7 +76,21 @@ public record VkImageSwapchainCreateInfoKHR(MemorySegment segment) implements IP
         }
         return ret;
     }
-    
+
+    public static VkImageSwapchainCreateInfoKHR clone(Arena arena, VkImageSwapchainCreateInfoKHR src) {
+        VkImageSwapchainCreateInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkImageSwapchainCreateInfoKHR[] clone(Arena arena, VkImageSwapchainCreateInfoKHR[] src) {
+        VkImageSwapchainCreateInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

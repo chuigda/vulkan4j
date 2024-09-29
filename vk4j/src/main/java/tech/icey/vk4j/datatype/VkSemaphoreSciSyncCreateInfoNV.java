@@ -49,12 +49,20 @@ public record VkSemaphoreSciSyncCreateInfoNV(MemorySegment segment) implements I
         pNext(pointer.segment());
     }
 
-    public VkSemaphoreSciSyncPoolNV semaphorePool() {
-        return new VkSemaphoreSciSyncPoolNV(segment.get(LAYOUT$semaphorePool, OFFSET$semaphorePool));
+    public @nullable VkSemaphoreSciSyncPoolNV semaphorePool() {
+        MemorySegment s = segment.get(LAYOUT$semaphorePool, OFFSET$semaphorePool);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSemaphoreSciSyncPoolNV(s);
     }
 
-    public void semaphorePool(VkSemaphoreSciSyncPoolNV value) {
-        segment.set(LAYOUT$semaphorePool, OFFSET$semaphorePool, value.segment());
+    public void semaphorePool(@nullable VkSemaphoreSciSyncPoolNV value) {
+        segment.set(
+            LAYOUT$semaphorePool,
+            OFFSET$semaphorePool,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @pointer(comment="uint64_t[6] const*") MemorySegment pFenceRaw() {
@@ -77,7 +85,21 @@ public record VkSemaphoreSciSyncCreateInfoNV(MemorySegment segment) implements I
         }
         return ret;
     }
-    
+
+    public static VkSemaphoreSciSyncCreateInfoNV clone(Arena arena, VkSemaphoreSciSyncCreateInfoNV src) {
+        VkSemaphoreSciSyncCreateInfoNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSemaphoreSciSyncCreateInfoNV[] clone(Arena arena, VkSemaphoreSciSyncCreateInfoNV[] src) {
+        VkSemaphoreSciSyncCreateInfoNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

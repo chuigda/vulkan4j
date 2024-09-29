@@ -50,20 +50,36 @@ public record VkBindImageMemoryInfo(MemorySegment segment) implements IPointer {
         pNext(pointer.segment());
     }
 
-    public VkImage image() {
-        return new VkImage(segment.get(LAYOUT$image, OFFSET$image));
+    public @nullable VkImage image() {
+        MemorySegment s = segment.get(LAYOUT$image, OFFSET$image);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImage(s);
     }
 
-    public void image(VkImage value) {
-        segment.set(LAYOUT$image, OFFSET$image, value.segment());
+    public void image(@nullable VkImage value) {
+        segment.set(
+            LAYOUT$image,
+            OFFSET$image,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkDeviceMemory memory() {
-        return new VkDeviceMemory(segment.get(LAYOUT$memory, OFFSET$memory));
+    public @nullable VkDeviceMemory memory() {
+        MemorySegment s = segment.get(LAYOUT$memory, OFFSET$memory);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDeviceMemory(s);
     }
 
-    public void memory(VkDeviceMemory value) {
-        segment.set(LAYOUT$memory, OFFSET$memory, value.segment());
+    public void memory(@nullable VkDeviceMemory value) {
+        segment.set(
+            LAYOUT$memory,
+            OFFSET$memory,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned long memoryOffset() {
@@ -86,7 +102,21 @@ public record VkBindImageMemoryInfo(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
-    
+
+    public static VkBindImageMemoryInfo clone(Arena arena, VkBindImageMemoryInfo src) {
+        VkBindImageMemoryInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkBindImageMemoryInfo[] clone(Arena arena, VkBindImageMemoryInfo[] src) {
+        VkBindImageMemoryInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

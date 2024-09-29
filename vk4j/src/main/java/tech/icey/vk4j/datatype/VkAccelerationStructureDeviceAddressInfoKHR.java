@@ -48,12 +48,20 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(MemorySegment segment)
         pNext(pointer.segment());
     }
 
-    public VkAccelerationStructureKHR accelerationStructure() {
-        return new VkAccelerationStructureKHR(segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure));
+    public @nullable VkAccelerationStructureKHR accelerationStructure() {
+        MemorySegment s = segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkAccelerationStructureKHR(s);
     }
 
-    public void accelerationStructure(VkAccelerationStructureKHR value) {
-        segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value.segment());
+    public void accelerationStructure(@nullable VkAccelerationStructureKHR value) {
+        segment.set(
+            LAYOUT$accelerationStructure,
+            OFFSET$accelerationStructure,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public static VkAccelerationStructureDeviceAddressInfoKHR allocate(Arena arena) {
@@ -68,7 +76,21 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(MemorySegment segment)
         }
         return ret;
     }
-    
+
+    public static VkAccelerationStructureDeviceAddressInfoKHR clone(Arena arena, VkAccelerationStructureDeviceAddressInfoKHR src) {
+        VkAccelerationStructureDeviceAddressInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkAccelerationStructureDeviceAddressInfoKHR[] clone(Arena arena, VkAccelerationStructureDeviceAddressInfoKHR[] src) {
+        VkAccelerationStructureDeviceAddressInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

@@ -1217,14 +1217,14 @@ public final class InstanceCommands {
             VkPhysicalDevice physicalDevice,
             @nullable VkSurfaceKHR surface,
              @unsigned IntBuffer pPresentModeCount,
-            @pointer(comment="enum VkPresentModeKHR*") MemorySegment pPresentModes
+            @nullable  @enumtype(VkPresentModeKHR.class) IntBuffer pPresentModes
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfacePresentModesKHR.invokeExact(
                     physicalDevice.segment(),
                     (MemorySegment) (surface != null ? surface.segment() : MemorySegment.NULL),
                     pPresentModeCount.segment(),
-                    pPresentModes
+                    (MemorySegment) (pPresentModes != null ? pPresentModes.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);

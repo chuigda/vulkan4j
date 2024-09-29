@@ -27,12 +27,20 @@ public record VkSparseImageOpaqueMemoryBindInfo(MemorySegment segment) implement
         this.segment = segment;
     }
 
-    public VkImage image() {
-        return new VkImage(segment.get(LAYOUT$image, OFFSET$image));
+    public @nullable VkImage image() {
+        MemorySegment s = segment.get(LAYOUT$image, OFFSET$image);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImage(s);
     }
 
-    public void image(VkImage value) {
-        segment.set(LAYOUT$image, OFFSET$image, value.segment());
+    public void image(@nullable VkImage value) {
+        segment.set(
+            LAYOUT$image,
+            OFFSET$image,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int bindCount() {
@@ -87,7 +95,21 @@ public record VkSparseImageOpaqueMemoryBindInfo(MemorySegment segment) implement
         }
         return ret;
     }
-    
+
+    public static VkSparseImageOpaqueMemoryBindInfo clone(Arena arena, VkSparseImageOpaqueMemoryBindInfo src) {
+        VkSparseImageOpaqueMemoryBindInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSparseImageOpaqueMemoryBindInfo[] clone(Arena arena, VkSparseImageOpaqueMemoryBindInfo[] src) {
+        VkSparseImageOpaqueMemoryBindInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withName("image"),
         ValueLayout.JAVA_INT.withName("bindCount"),

@@ -49,12 +49,20 @@ public record VkCuFunctionCreateInfoNVX(MemorySegment segment) implements IPoint
         pNext(pointer.segment());
     }
 
-    public VkCuModuleNVX module() {
-        return new VkCuModuleNVX(segment.get(LAYOUT$module, OFFSET$module));
+    public @nullable VkCuModuleNVX module() {
+        MemorySegment s = segment.get(LAYOUT$module, OFFSET$module);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkCuModuleNVX(s);
     }
 
-    public void module(VkCuModuleNVX value) {
-        segment.set(LAYOUT$module, OFFSET$module, value.segment());
+    public void module(@nullable VkCuModuleNVX value) {
+        segment.set(
+            LAYOUT$module,
+            OFFSET$module,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @pointer(comment="int8_t*") MemorySegment pNameRaw() {
@@ -92,7 +100,21 @@ public record VkCuFunctionCreateInfoNVX(MemorySegment segment) implements IPoint
         }
         return ret;
     }
-    
+
+    public static VkCuFunctionCreateInfoNVX clone(Arena arena, VkCuFunctionCreateInfoNVX src) {
+        VkCuFunctionCreateInfoNVX ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCuFunctionCreateInfoNVX[] clone(Arena arena, VkCuFunctionCreateInfoNVX[] src) {
+        VkCuFunctionCreateInfoNVX[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

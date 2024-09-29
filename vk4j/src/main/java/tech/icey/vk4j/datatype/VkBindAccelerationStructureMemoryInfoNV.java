@@ -52,20 +52,36 @@ public record VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) imp
         pNext(pointer.segment());
     }
 
-    public VkAccelerationStructureNV accelerationStructure() {
-        return new VkAccelerationStructureNV(segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure));
+    public @nullable VkAccelerationStructureNV accelerationStructure() {
+        MemorySegment s = segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkAccelerationStructureNV(s);
     }
 
-    public void accelerationStructure(VkAccelerationStructureNV value) {
-        segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value.segment());
+    public void accelerationStructure(@nullable VkAccelerationStructureNV value) {
+        segment.set(
+            LAYOUT$accelerationStructure,
+            OFFSET$accelerationStructure,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkDeviceMemory memory() {
-        return new VkDeviceMemory(segment.get(LAYOUT$memory, OFFSET$memory));
+    public @nullable VkDeviceMemory memory() {
+        MemorySegment s = segment.get(LAYOUT$memory, OFFSET$memory);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDeviceMemory(s);
     }
 
-    public void memory(VkDeviceMemory value) {
-        segment.set(LAYOUT$memory, OFFSET$memory, value.segment());
+    public void memory(@nullable VkDeviceMemory value) {
+        segment.set(
+            LAYOUT$memory,
+            OFFSET$memory,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned long memoryOffset() {
@@ -119,7 +135,21 @@ public record VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) imp
         }
         return ret;
     }
-    
+
+    public static VkBindAccelerationStructureMemoryInfoNV clone(Arena arena, VkBindAccelerationStructureMemoryInfoNV src) {
+        VkBindAccelerationStructureMemoryInfoNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkBindAccelerationStructureMemoryInfoNV[] clone(Arena arena, VkBindAccelerationStructureMemoryInfoNV[] src) {
+        VkBindAccelerationStructureMemoryInfoNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

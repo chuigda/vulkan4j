@@ -49,12 +49,20 @@ public record VkImportMemoryBufferCollectionFUCHSIA(MemorySegment segment) imple
         pNext(pointer.segment());
     }
 
-    public VkBufferCollectionFUCHSIA collection() {
-        return new VkBufferCollectionFUCHSIA(segment.get(LAYOUT$collection, OFFSET$collection));
+    public @nullable VkBufferCollectionFUCHSIA collection() {
+        MemorySegment s = segment.get(LAYOUT$collection, OFFSET$collection);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBufferCollectionFUCHSIA(s);
     }
 
-    public void collection(VkBufferCollectionFUCHSIA value) {
-        segment.set(LAYOUT$collection, OFFSET$collection, value.segment());
+    public void collection(@nullable VkBufferCollectionFUCHSIA value) {
+        segment.set(
+            LAYOUT$collection,
+            OFFSET$collection,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int index() {
@@ -77,7 +85,21 @@ public record VkImportMemoryBufferCollectionFUCHSIA(MemorySegment segment) imple
         }
         return ret;
     }
-    
+
+    public static VkImportMemoryBufferCollectionFUCHSIA clone(Arena arena, VkImportMemoryBufferCollectionFUCHSIA src) {
+        VkImportMemoryBufferCollectionFUCHSIA ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkImportMemoryBufferCollectionFUCHSIA[] clone(Arena arena, VkImportMemoryBufferCollectionFUCHSIA[] src) {
+        VkImportMemoryBufferCollectionFUCHSIA[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

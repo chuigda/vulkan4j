@@ -78,6 +78,11 @@ public final class LibGLFW {
     public static final FunctionDescriptor DESCRIPTOR$glfwDestroyWindow = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS
     );
+    private static final FunctionDescriptor DESCRIPTOR$glfwGetFramebufferSize = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+    );
     private static final FunctionDescriptor DESCRIPTOR$glfwGetWindowSize = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
@@ -98,6 +103,7 @@ public final class LibGLFW {
     public final MethodHandle HANDLE$glfwWindowShouldClose;
     public final MethodHandle HANDLE$glfwDestroyWindow;
     public final MethodHandle HANDLE$glfwGetWindowSize;
+    public final MethodHandle HANDLE$glfwGetFramebufferSize;
     public final MethodHandle HANDLE$glfwSetWindowIconifyCallback;
 
     public LibGLFW(FunctionLoader loader) {
@@ -115,6 +121,7 @@ public final class LibGLFW {
         HANDLE$glfwWindowShouldClose = loader.apply("glfwWindowShouldClose", DESCRIPTOR$glfwWindowShouldClose);
         HANDLE$glfwDestroyWindow = loader.apply("glfwDestroyWindow", DESCRIPTOR$glfwDestroyWindow);
         HANDLE$glfwGetWindowSize = loader.apply("glfwGetWindowSize", DESCRIPTOR$glfwGetWindowSize);
+        HANDLE$glfwGetFramebufferSize = loader.apply("glfwGetFramebufferSize", DESCRIPTOR$glfwGetFramebufferSize);
         HANDLE$glfwSetWindowIconifyCallback = loader.apply("glfwSetWindowIconifyCallback", DESCRIPTOR$glfwSetWindowIconifyCallback);
     }
 
@@ -260,6 +267,14 @@ public final class LibGLFW {
     public void glfwGetWindowSize(GLFWwindow window, IntBuffer width, IntBuffer height) {
         try {
             HANDLE$glfwGetWindowSize.invokeExact(window.segment(), width.segment(), height.segment());
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
+        }
+    }
+
+    public void glfwGetFramebufferSize(GLFWwindow window, IntBuffer width, IntBuffer height) {
+        try {
+            HANDLE$glfwGetFramebufferSize.invokeExact(window.segment(), width.segment(), height.segment());
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }

@@ -54,12 +54,20 @@ public record VkSparseImageMemoryBind(MemorySegment segment) implements IPointer
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
     }
 
-    public VkDeviceMemory memory() {
-        return new VkDeviceMemory(segment.get(LAYOUT$memory, OFFSET$memory));
+    public @nullable VkDeviceMemory memory() {
+        MemorySegment s = segment.get(LAYOUT$memory, OFFSET$memory);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDeviceMemory(s);
     }
 
-    public void memory(VkDeviceMemory value) {
-        segment.set(LAYOUT$memory, OFFSET$memory, value.segment());
+    public void memory(@nullable VkDeviceMemory value) {
+        segment.set(
+            LAYOUT$memory,
+            OFFSET$memory,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned long memoryOffset() {
@@ -90,7 +98,21 @@ public record VkSparseImageMemoryBind(MemorySegment segment) implements IPointer
         }
         return ret;
     }
-    
+
+    public static VkSparseImageMemoryBind clone(Arena arena, VkSparseImageMemoryBind src) {
+        VkSparseImageMemoryBind ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSparseImageMemoryBind[] clone(Arena arena, VkSparseImageMemoryBind[] src) {
+        VkSparseImageMemoryBind[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         VkImageSubresource.LAYOUT.withName("subresource"),
         VkOffset3D.LAYOUT.withName("offset"),

@@ -49,12 +49,20 @@ public record VkCommandBufferSubmitInfo(MemorySegment segment) implements IPoint
         pNext(pointer.segment());
     }
 
-    public VkCommandBuffer commandBuffer() {
-        return new VkCommandBuffer(segment.get(LAYOUT$commandBuffer, OFFSET$commandBuffer));
+    public @nullable VkCommandBuffer commandBuffer() {
+        MemorySegment s = segment.get(LAYOUT$commandBuffer, OFFSET$commandBuffer);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkCommandBuffer(s);
     }
 
-    public void commandBuffer(VkCommandBuffer value) {
-        segment.set(LAYOUT$commandBuffer, OFFSET$commandBuffer, value.segment());
+    public void commandBuffer(@nullable VkCommandBuffer value) {
+        segment.set(
+            LAYOUT$commandBuffer,
+            OFFSET$commandBuffer,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int deviceMask() {
@@ -77,7 +85,21 @@ public record VkCommandBufferSubmitInfo(MemorySegment segment) implements IPoint
         }
         return ret;
     }
-    
+
+    public static VkCommandBufferSubmitInfo clone(Arena arena, VkCommandBufferSubmitInfo src) {
+        VkCommandBufferSubmitInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCommandBufferSubmitInfo[] clone(Arena arena, VkCommandBufferSubmitInfo[] src) {
+        VkCommandBufferSubmitInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

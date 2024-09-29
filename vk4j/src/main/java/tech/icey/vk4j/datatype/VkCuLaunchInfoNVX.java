@@ -59,12 +59,20 @@ public record VkCuLaunchInfoNVX(MemorySegment segment) implements IPointer {
         pNext(pointer.segment());
     }
 
-    public VkCuFunctionNVX function() {
-        return new VkCuFunctionNVX(segment.get(LAYOUT$function, OFFSET$function));
+    public @nullable VkCuFunctionNVX function() {
+        MemorySegment s = segment.get(LAYOUT$function, OFFSET$function);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkCuFunctionNVX(s);
     }
 
-    public void function(VkCuFunctionNVX value) {
-        segment.set(LAYOUT$function, OFFSET$function, value.segment());
+    public void function(@nullable VkCuFunctionNVX value) {
+        segment.set(
+            LAYOUT$function,
+            OFFSET$function,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int gridDimX() {
@@ -175,7 +183,21 @@ public record VkCuLaunchInfoNVX(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
-    
+
+    public static VkCuLaunchInfoNVX clone(Arena arena, VkCuLaunchInfoNVX src) {
+        VkCuLaunchInfoNVX ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCuLaunchInfoNVX[] clone(Arena arena, VkCuLaunchInfoNVX[] src) {
+        VkCuLaunchInfoNVX[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

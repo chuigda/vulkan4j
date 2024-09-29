@@ -80,20 +80,36 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         segment.set(LAYOUT$mode, OFFSET$mode, value);
     }
 
-    public VkAccelerationStructureKHR srcAccelerationStructure() {
-        return new VkAccelerationStructureKHR(segment.get(LAYOUT$srcAccelerationStructure, OFFSET$srcAccelerationStructure));
+    public @nullable VkAccelerationStructureKHR srcAccelerationStructure() {
+        MemorySegment s = segment.get(LAYOUT$srcAccelerationStructure, OFFSET$srcAccelerationStructure);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkAccelerationStructureKHR(s);
     }
 
-    public void srcAccelerationStructure(VkAccelerationStructureKHR value) {
-        segment.set(LAYOUT$srcAccelerationStructure, OFFSET$srcAccelerationStructure, value.segment());
+    public void srcAccelerationStructure(@nullable VkAccelerationStructureKHR value) {
+        segment.set(
+            LAYOUT$srcAccelerationStructure,
+            OFFSET$srcAccelerationStructure,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkAccelerationStructureKHR dstAccelerationStructure() {
-        return new VkAccelerationStructureKHR(segment.get(LAYOUT$dstAccelerationStructure, OFFSET$dstAccelerationStructure));
+    public @nullable VkAccelerationStructureKHR dstAccelerationStructure() {
+        MemorySegment s = segment.get(LAYOUT$dstAccelerationStructure, OFFSET$dstAccelerationStructure);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkAccelerationStructureKHR(s);
     }
 
-    public void dstAccelerationStructure(VkAccelerationStructureKHR value) {
-        segment.set(LAYOUT$dstAccelerationStructure, OFFSET$dstAccelerationStructure, value.segment());
+    public void dstAccelerationStructure(@nullable VkAccelerationStructureKHR value) {
+        segment.set(
+            LAYOUT$dstAccelerationStructure,
+            OFFSET$dstAccelerationStructure,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int geometryCount() {
@@ -177,7 +193,21 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         }
         return ret;
     }
-    
+
+    public static VkAccelerationStructureBuildGeometryInfoKHR clone(Arena arena, VkAccelerationStructureBuildGeometryInfoKHR src) {
+        VkAccelerationStructureBuildGeometryInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkAccelerationStructureBuildGeometryInfoKHR[] clone(Arena arena, VkAccelerationStructureBuildGeometryInfoKHR[] src) {
+        VkAccelerationStructureBuildGeometryInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

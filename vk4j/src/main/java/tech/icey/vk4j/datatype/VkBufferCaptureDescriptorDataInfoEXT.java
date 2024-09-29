@@ -48,12 +48,20 @@ public record VkBufferCaptureDescriptorDataInfoEXT(MemorySegment segment) implem
         pNext(pointer.segment());
     }
 
-    public VkBuffer buffer() {
-        return new VkBuffer(segment.get(LAYOUT$buffer, OFFSET$buffer));
+    public @nullable VkBuffer buffer() {
+        MemorySegment s = segment.get(LAYOUT$buffer, OFFSET$buffer);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer(s);
     }
 
-    public void buffer(VkBuffer value) {
-        segment.set(LAYOUT$buffer, OFFSET$buffer, value.segment());
+    public void buffer(@nullable VkBuffer value) {
+        segment.set(
+            LAYOUT$buffer,
+            OFFSET$buffer,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public static VkBufferCaptureDescriptorDataInfoEXT allocate(Arena arena) {
@@ -68,7 +76,21 @@ public record VkBufferCaptureDescriptorDataInfoEXT(MemorySegment segment) implem
         }
         return ret;
     }
-    
+
+    public static VkBufferCaptureDescriptorDataInfoEXT clone(Arena arena, VkBufferCaptureDescriptorDataInfoEXT src) {
+        VkBufferCaptureDescriptorDataInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkBufferCaptureDescriptorDataInfoEXT[] clone(Arena arena, VkBufferCaptureDescriptorDataInfoEXT[] src) {
+        VkBufferCaptureDescriptorDataInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

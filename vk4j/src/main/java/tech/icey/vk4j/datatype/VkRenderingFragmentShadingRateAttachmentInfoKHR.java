@@ -50,12 +50,20 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(MemorySegment segm
         pNext(pointer.segment());
     }
 
-    public VkImageView imageView() {
-        return new VkImageView(segment.get(LAYOUT$imageView, OFFSET$imageView));
+    public @nullable VkImageView imageView() {
+        MemorySegment s = segment.get(LAYOUT$imageView, OFFSET$imageView);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImageView(s);
     }
 
-    public void imageView(VkImageView value) {
-        segment.set(LAYOUT$imageView, OFFSET$imageView, value.segment());
+    public void imageView(@nullable VkImageView value) {
+        segment.set(
+            LAYOUT$imageView,
+            OFFSET$imageView,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkImageLayout.class) int imageLayout() {
@@ -86,7 +94,21 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(MemorySegment segm
         }
         return ret;
     }
-    
+
+    public static VkRenderingFragmentShadingRateAttachmentInfoKHR clone(Arena arena, VkRenderingFragmentShadingRateAttachmentInfoKHR src) {
+        VkRenderingFragmentShadingRateAttachmentInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkRenderingFragmentShadingRateAttachmentInfoKHR[] clone(Arena arena, VkRenderingFragmentShadingRateAttachmentInfoKHR[] src) {
+        VkRenderingFragmentShadingRateAttachmentInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

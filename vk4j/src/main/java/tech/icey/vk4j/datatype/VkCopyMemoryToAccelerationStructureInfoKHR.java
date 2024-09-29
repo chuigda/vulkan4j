@@ -58,12 +58,20 @@ public record VkCopyMemoryToAccelerationStructureInfoKHR(MemorySegment segment) 
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$src, SIZE$src);
     }
 
-    public VkAccelerationStructureKHR dst() {
-        return new VkAccelerationStructureKHR(segment.get(LAYOUT$dst, OFFSET$dst));
+    public @nullable VkAccelerationStructureKHR dst() {
+        MemorySegment s = segment.get(LAYOUT$dst, OFFSET$dst);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkAccelerationStructureKHR(s);
     }
 
-    public void dst(VkAccelerationStructureKHR value) {
-        segment.set(LAYOUT$dst, OFFSET$dst, value.segment());
+    public void dst(@nullable VkAccelerationStructureKHR value) {
+        segment.set(
+            LAYOUT$dst,
+            OFFSET$dst,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkCopyAccelerationStructureModeKHR.class) int mode() {
@@ -86,7 +94,21 @@ public record VkCopyMemoryToAccelerationStructureInfoKHR(MemorySegment segment) 
         }
         return ret;
     }
-    
+
+    public static VkCopyMemoryToAccelerationStructureInfoKHR clone(Arena arena, VkCopyMemoryToAccelerationStructureInfoKHR src) {
+        VkCopyMemoryToAccelerationStructureInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCopyMemoryToAccelerationStructureInfoKHR[] clone(Arena arena, VkCopyMemoryToAccelerationStructureInfoKHR[] src) {
+        VkCopyMemoryToAccelerationStructureInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

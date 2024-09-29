@@ -100,12 +100,20 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements 
         segment.set(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride, value);
     }
 
-    public VkPipelineLayout pushconstantPipelineLayout() {
-        return new VkPipelineLayout(segment.get(LAYOUT$pushconstantPipelineLayout, OFFSET$pushconstantPipelineLayout));
+    public @nullable VkPipelineLayout pushconstantPipelineLayout() {
+        MemorySegment s = segment.get(LAYOUT$pushconstantPipelineLayout, OFFSET$pushconstantPipelineLayout);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipelineLayout(s);
     }
 
-    public void pushconstantPipelineLayout(VkPipelineLayout value) {
-        segment.set(LAYOUT$pushconstantPipelineLayout, OFFSET$pushconstantPipelineLayout, value.segment());
+    public void pushconstantPipelineLayout(@nullable VkPipelineLayout value) {
+        segment.set(
+            LAYOUT$pushconstantPipelineLayout,
+            OFFSET$pushconstantPipelineLayout,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkShaderStageFlags.class) int pushconstantShaderStageFlags() {
@@ -210,7 +218,21 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements 
         }
         return ret;
     }
-    
+
+    public static VkIndirectCommandsLayoutTokenNV clone(Arena arena, VkIndirectCommandsLayoutTokenNV src) {
+        VkIndirectCommandsLayoutTokenNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkIndirectCommandsLayoutTokenNV[] clone(Arena arena, VkIndirectCommandsLayoutTokenNV[] src) {
+        VkIndirectCommandsLayoutTokenNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

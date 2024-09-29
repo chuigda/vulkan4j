@@ -48,12 +48,20 @@ public record VkPipelineBinaryDataInfoKHR(MemorySegment segment) implements IPoi
         pNext(pointer.segment());
     }
 
-    public VkPipelineBinaryKHR pipelineBinary() {
-        return new VkPipelineBinaryKHR(segment.get(LAYOUT$pipelineBinary, OFFSET$pipelineBinary));
+    public @nullable VkPipelineBinaryKHR pipelineBinary() {
+        MemorySegment s = segment.get(LAYOUT$pipelineBinary, OFFSET$pipelineBinary);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipelineBinaryKHR(s);
     }
 
-    public void pipelineBinary(VkPipelineBinaryKHR value) {
-        segment.set(LAYOUT$pipelineBinary, OFFSET$pipelineBinary, value.segment());
+    public void pipelineBinary(@nullable VkPipelineBinaryKHR value) {
+        segment.set(
+            LAYOUT$pipelineBinary,
+            OFFSET$pipelineBinary,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public static VkPipelineBinaryDataInfoKHR allocate(Arena arena) {
@@ -68,7 +76,21 @@ public record VkPipelineBinaryDataInfoKHR(MemorySegment segment) implements IPoi
         }
         return ret;
     }
-    
+
+    public static VkPipelineBinaryDataInfoKHR clone(Arena arena, VkPipelineBinaryDataInfoKHR src) {
+        VkPipelineBinaryDataInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPipelineBinaryDataInfoKHR[] clone(Arena arena, VkPipelineBinaryDataInfoKHR[] src) {
+        VkPipelineBinaryDataInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

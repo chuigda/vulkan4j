@@ -27,12 +27,20 @@ public record VkSparseBufferMemoryBindInfo(MemorySegment segment) implements IPo
         this.segment = segment;
     }
 
-    public VkBuffer buffer() {
-        return new VkBuffer(segment.get(LAYOUT$buffer, OFFSET$buffer));
+    public @nullable VkBuffer buffer() {
+        MemorySegment s = segment.get(LAYOUT$buffer, OFFSET$buffer);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer(s);
     }
 
-    public void buffer(VkBuffer value) {
-        segment.set(LAYOUT$buffer, OFFSET$buffer, value.segment());
+    public void buffer(@nullable VkBuffer value) {
+        segment.set(
+            LAYOUT$buffer,
+            OFFSET$buffer,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int bindCount() {
@@ -87,7 +95,21 @@ public record VkSparseBufferMemoryBindInfo(MemorySegment segment) implements IPo
         }
         return ret;
     }
-    
+
+    public static VkSparseBufferMemoryBindInfo clone(Arena arena, VkSparseBufferMemoryBindInfo src) {
+        VkSparseBufferMemoryBindInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSparseBufferMemoryBindInfo[] clone(Arena arena, VkSparseBufferMemoryBindInfo[] src) {
+        VkSparseBufferMemoryBindInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withName("buffer"),
         ValueLayout.JAVA_INT.withName("bindCount"),

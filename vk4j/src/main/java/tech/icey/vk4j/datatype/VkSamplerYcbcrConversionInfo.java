@@ -48,12 +48,20 @@ public record VkSamplerYcbcrConversionInfo(MemorySegment segment) implements IPo
         pNext(pointer.segment());
     }
 
-    public VkSamplerYcbcrConversion conversion() {
-        return new VkSamplerYcbcrConversion(segment.get(LAYOUT$conversion, OFFSET$conversion));
+    public @nullable VkSamplerYcbcrConversion conversion() {
+        MemorySegment s = segment.get(LAYOUT$conversion, OFFSET$conversion);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSamplerYcbcrConversion(s);
     }
 
-    public void conversion(VkSamplerYcbcrConversion value) {
-        segment.set(LAYOUT$conversion, OFFSET$conversion, value.segment());
+    public void conversion(@nullable VkSamplerYcbcrConversion value) {
+        segment.set(
+            LAYOUT$conversion,
+            OFFSET$conversion,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public static VkSamplerYcbcrConversionInfo allocate(Arena arena) {
@@ -68,7 +76,21 @@ public record VkSamplerYcbcrConversionInfo(MemorySegment segment) implements IPo
         }
         return ret;
     }
-    
+
+    public static VkSamplerYcbcrConversionInfo clone(Arena arena, VkSamplerYcbcrConversionInfo src) {
+        VkSamplerYcbcrConversionInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSamplerYcbcrConversionInfo[] clone(Arena arena, VkSamplerYcbcrConversionInfo[] src) {
+        VkSamplerYcbcrConversionInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

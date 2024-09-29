@@ -148,12 +148,20 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment s
         ppUsageCountsRaw(value.segment());
     }
 
-    public VkMicromapEXT micromap() {
-        return new VkMicromapEXT(segment.get(LAYOUT$micromap, OFFSET$micromap));
+    public @nullable VkMicromapEXT micromap() {
+        MemorySegment s = segment.get(LAYOUT$micromap, OFFSET$micromap);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkMicromapEXT(s);
     }
 
-    public void micromap(VkMicromapEXT value) {
-        segment.set(LAYOUT$micromap, OFFSET$micromap, value.segment());
+    public void micromap(@nullable VkMicromapEXT value) {
+        segment.set(
+            LAYOUT$micromap,
+            OFFSET$micromap,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public static VkAccelerationStructureTrianglesOpacityMicromapEXT allocate(Arena arena) {
@@ -168,7 +176,21 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment s
         }
         return ret;
     }
-    
+
+    public static VkAccelerationStructureTrianglesOpacityMicromapEXT clone(Arena arena, VkAccelerationStructureTrianglesOpacityMicromapEXT src) {
+        VkAccelerationStructureTrianglesOpacityMicromapEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkAccelerationStructureTrianglesOpacityMicromapEXT[] clone(Arena arena, VkAccelerationStructureTrianglesOpacityMicromapEXT[] src) {
+        VkAccelerationStructureTrianglesOpacityMicromapEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

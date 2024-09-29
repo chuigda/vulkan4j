@@ -58,7 +58,21 @@ public record VkDeviceOrHostAddressConstAMDX(MemorySegment segment) implements I
         }
         return ret;
     }
-    
+
+    public static VkDeviceOrHostAddressConstAMDX clone(Arena arena, VkDeviceOrHostAddressConstAMDX src) {
+        VkDeviceOrHostAddressConstAMDX ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDeviceOrHostAddressConstAMDX[] clone(Arena arena, VkDeviceOrHostAddressConstAMDX[] src) {
+        VkDeviceOrHostAddressConstAMDX[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
         ValueLayout.JAVA_LONG.withName("deviceAddress"),
         ValueLayout.ADDRESS.withName("hostAddress")

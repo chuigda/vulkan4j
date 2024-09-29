@@ -58,7 +58,21 @@ public record VkPipelineBinaryDataKHR(MemorySegment segment) implements IPointer
         }
         return ret;
     }
-    
+
+    public static VkPipelineBinaryDataKHR clone(Arena arena, VkPipelineBinaryDataKHR src) {
+        VkPipelineBinaryDataKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPipelineBinaryDataKHR[] clone(Arena arena, VkPipelineBinaryDataKHR[] src) {
+        VkPipelineBinaryDataKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         NativeLayout.C_SIZE_T.withName("dataSize"),
         ValueLayout.ADDRESS.withName("pData")

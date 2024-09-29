@@ -52,12 +52,20 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) implements IPoint
         pNext(pointer.segment());
     }
 
-    public VkSwapchainKHR swapchain() {
-        return new VkSwapchainKHR(segment.get(LAYOUT$swapchain, OFFSET$swapchain));
+    public @nullable VkSwapchainKHR swapchain() {
+        MemorySegment s = segment.get(LAYOUT$swapchain, OFFSET$swapchain);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSwapchainKHR(s);
     }
 
-    public void swapchain(VkSwapchainKHR value) {
-        segment.set(LAYOUT$swapchain, OFFSET$swapchain, value.segment());
+    public void swapchain(@nullable VkSwapchainKHR value) {
+        segment.set(
+            LAYOUT$swapchain,
+            OFFSET$swapchain,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned long timeout() {
@@ -68,20 +76,36 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$timeout, OFFSET$timeout, value);
     }
 
-    public VkSemaphore semaphore() {
-        return new VkSemaphore(segment.get(LAYOUT$semaphore, OFFSET$semaphore));
+    public @nullable VkSemaphore semaphore() {
+        MemorySegment s = segment.get(LAYOUT$semaphore, OFFSET$semaphore);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSemaphore(s);
     }
 
-    public void semaphore(VkSemaphore value) {
-        segment.set(LAYOUT$semaphore, OFFSET$semaphore, value.segment());
+    public void semaphore(@nullable VkSemaphore value) {
+        segment.set(
+            LAYOUT$semaphore,
+            OFFSET$semaphore,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkFence fence() {
-        return new VkFence(segment.get(LAYOUT$fence, OFFSET$fence));
+    public @nullable VkFence fence() {
+        MemorySegment s = segment.get(LAYOUT$fence, OFFSET$fence);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkFence(s);
     }
 
-    public void fence(VkFence value) {
-        segment.set(LAYOUT$fence, OFFSET$fence, value.segment());
+    public void fence(@nullable VkFence value) {
+        segment.set(
+            LAYOUT$fence,
+            OFFSET$fence,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int deviceMask() {
@@ -104,7 +128,21 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) implements IPoint
         }
         return ret;
     }
-    
+
+    public static VkAcquireNextImageInfoKHR clone(Arena arena, VkAcquireNextImageInfoKHR src) {
+        VkAcquireNextImageInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkAcquireNextImageInfoKHR[] clone(Arena arena, VkAcquireNextImageInfoKHR[] src) {
+        VkAcquireNextImageInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

@@ -68,20 +68,36 @@ public record VkComputePipelineCreateInfo(MemorySegment segment) implements IPoi
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$stage, SIZE$stage);
     }
 
-    public VkPipelineLayout layout() {
-        return new VkPipelineLayout(segment.get(LAYOUT$layout, OFFSET$layout));
+    public @nullable VkPipelineLayout layout() {
+        MemorySegment s = segment.get(LAYOUT$layout, OFFSET$layout);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipelineLayout(s);
     }
 
-    public void layout(VkPipelineLayout value) {
-        segment.set(LAYOUT$layout, OFFSET$layout, value.segment());
+    public void layout(@nullable VkPipelineLayout value) {
+        segment.set(
+            LAYOUT$layout,
+            OFFSET$layout,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkPipeline basePipelineHandle() {
-        return new VkPipeline(segment.get(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle));
+    public @nullable VkPipeline basePipelineHandle() {
+        MemorySegment s = segment.get(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipeline(s);
     }
 
-    public void basePipelineHandle(VkPipeline value) {
-        segment.set(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle, value.segment());
+    public void basePipelineHandle(@nullable VkPipeline value) {
+        segment.set(
+            LAYOUT$basePipelineHandle,
+            OFFSET$basePipelineHandle,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public int basePipelineIndex() {
@@ -104,7 +120,21 @@ public record VkComputePipelineCreateInfo(MemorySegment segment) implements IPoi
         }
         return ret;
     }
-    
+
+    public static VkComputePipelineCreateInfo clone(Arena arena, VkComputePipelineCreateInfo src) {
+        VkComputePipelineCreateInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkComputePipelineCreateInfo[] clone(Arena arena, VkComputePipelineCreateInfo[] src) {
+        VkComputePipelineCreateInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

@@ -51,12 +51,20 @@ public record VkImportSemaphoreFdInfoKHR(MemorySegment segment) implements IPoin
         pNext(pointer.segment());
     }
 
-    public VkSemaphore semaphore() {
-        return new VkSemaphore(segment.get(LAYOUT$semaphore, OFFSET$semaphore));
+    public @nullable VkSemaphore semaphore() {
+        MemorySegment s = segment.get(LAYOUT$semaphore, OFFSET$semaphore);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSemaphore(s);
     }
 
-    public void semaphore(VkSemaphore value) {
-        segment.set(LAYOUT$semaphore, OFFSET$semaphore, value.segment());
+    public void semaphore(@nullable VkSemaphore value) {
+        segment.set(
+            LAYOUT$semaphore,
+            OFFSET$semaphore,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkSemaphoreImportFlags.class) int flags() {
@@ -95,7 +103,21 @@ public record VkImportSemaphoreFdInfoKHR(MemorySegment segment) implements IPoin
         }
         return ret;
     }
-    
+
+    public static VkImportSemaphoreFdInfoKHR clone(Arena arena, VkImportSemaphoreFdInfoKHR src) {
+        VkImportSemaphoreFdInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkImportSemaphoreFdInfoKHR[] clone(Arena arena, VkImportSemaphoreFdInfoKHR[] src) {
+        VkImportSemaphoreFdInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

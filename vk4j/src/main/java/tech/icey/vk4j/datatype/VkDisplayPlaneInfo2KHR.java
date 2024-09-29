@@ -49,12 +49,20 @@ public record VkDisplayPlaneInfo2KHR(MemorySegment segment) implements IPointer 
         pNext(pointer.segment());
     }
 
-    public VkDisplayModeKHR mode() {
-        return new VkDisplayModeKHR(segment.get(LAYOUT$mode, OFFSET$mode));
+    public @nullable VkDisplayModeKHR mode() {
+        MemorySegment s = segment.get(LAYOUT$mode, OFFSET$mode);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDisplayModeKHR(s);
     }
 
-    public void mode(VkDisplayModeKHR value) {
-        segment.set(LAYOUT$mode, OFFSET$mode, value.segment());
+    public void mode(@nullable VkDisplayModeKHR value) {
+        segment.set(
+            LAYOUT$mode,
+            OFFSET$mode,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int planeIndex() {
@@ -77,7 +85,21 @@ public record VkDisplayPlaneInfo2KHR(MemorySegment segment) implements IPointer 
         }
         return ret;
     }
-    
+
+    public static VkDisplayPlaneInfo2KHR clone(Arena arena, VkDisplayPlaneInfo2KHR src) {
+        VkDisplayPlaneInfo2KHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDisplayPlaneInfo2KHR[] clone(Arena arena, VkDisplayPlaneInfo2KHR[] src) {
+        VkDisplayPlaneInfo2KHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

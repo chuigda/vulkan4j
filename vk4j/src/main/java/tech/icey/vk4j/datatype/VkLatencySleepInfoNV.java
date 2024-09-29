@@ -49,12 +49,20 @@ public record VkLatencySleepInfoNV(MemorySegment segment) implements IPointer {
         pNext(pointer.segment());
     }
 
-    public VkSemaphore signalSemaphore() {
-        return new VkSemaphore(segment.get(LAYOUT$signalSemaphore, OFFSET$signalSemaphore));
+    public @nullable VkSemaphore signalSemaphore() {
+        MemorySegment s = segment.get(LAYOUT$signalSemaphore, OFFSET$signalSemaphore);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSemaphore(s);
     }
 
-    public void signalSemaphore(VkSemaphore value) {
-        segment.set(LAYOUT$signalSemaphore, OFFSET$signalSemaphore, value.segment());
+    public void signalSemaphore(@nullable VkSemaphore value) {
+        segment.set(
+            LAYOUT$signalSemaphore,
+            OFFSET$signalSemaphore,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned long value() {
@@ -77,7 +85,21 @@ public record VkLatencySleepInfoNV(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
-    
+
+    public static VkLatencySleepInfoNV clone(Arena arena, VkLatencySleepInfoNV src) {
+        VkLatencySleepInfoNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkLatencySleepInfoNV[] clone(Arena arena, VkLatencySleepInfoNV[] src) {
+        VkLatencySleepInfoNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

@@ -52,12 +52,20 @@ public record VkPushConstantsInfoKHR(MemorySegment segment) implements IPointer 
         pNext(pointer.segment());
     }
 
-    public VkPipelineLayout layout() {
-        return new VkPipelineLayout(segment.get(LAYOUT$layout, OFFSET$layout));
+    public @nullable VkPipelineLayout layout() {
+        MemorySegment s = segment.get(LAYOUT$layout, OFFSET$layout);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipelineLayout(s);
     }
 
-    public void layout(VkPipelineLayout value) {
-        segment.set(LAYOUT$layout, OFFSET$layout, value.segment());
+    public void layout(@nullable VkPipelineLayout value) {
+        segment.set(
+            LAYOUT$layout,
+            OFFSET$layout,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkShaderStageFlags.class) int stageFlags() {
@@ -108,7 +116,21 @@ public record VkPushConstantsInfoKHR(MemorySegment segment) implements IPointer 
         }
         return ret;
     }
-    
+
+    public static VkPushConstantsInfoKHR clone(Arena arena, VkPushConstantsInfoKHR src) {
+        VkPushConstantsInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPushConstantsInfoKHR[] clone(Arena arena, VkPushConstantsInfoKHR[] src) {
+        VkPushConstantsInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

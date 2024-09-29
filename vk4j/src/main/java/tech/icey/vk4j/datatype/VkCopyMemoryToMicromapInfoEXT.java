@@ -58,12 +58,20 @@ public record VkCopyMemoryToMicromapInfoEXT(MemorySegment segment) implements IP
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$src, SIZE$src);
     }
 
-    public VkMicromapEXT dst() {
-        return new VkMicromapEXT(segment.get(LAYOUT$dst, OFFSET$dst));
+    public @nullable VkMicromapEXT dst() {
+        MemorySegment s = segment.get(LAYOUT$dst, OFFSET$dst);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkMicromapEXT(s);
     }
 
-    public void dst(VkMicromapEXT value) {
-        segment.set(LAYOUT$dst, OFFSET$dst, value.segment());
+    public void dst(@nullable VkMicromapEXT value) {
+        segment.set(
+            LAYOUT$dst,
+            OFFSET$dst,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkCopyMicromapModeEXT.class) int mode() {
@@ -86,7 +94,21 @@ public record VkCopyMemoryToMicromapInfoEXT(MemorySegment segment) implements IP
         }
         return ret;
     }
-    
+
+    public static VkCopyMemoryToMicromapInfoEXT clone(Arena arena, VkCopyMemoryToMicromapInfoEXT src) {
+        VkCopyMemoryToMicromapInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCopyMemoryToMicromapInfoEXT[] clone(Arena arena, VkCopyMemoryToMicromapInfoEXT[] src) {
+        VkCopyMemoryToMicromapInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

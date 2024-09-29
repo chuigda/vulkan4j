@@ -49,12 +49,20 @@ public record VkPipelineExecutableInfoKHR(MemorySegment segment) implements IPoi
         pNext(pointer.segment());
     }
 
-    public VkPipeline pipeline() {
-        return new VkPipeline(segment.get(LAYOUT$pipeline, OFFSET$pipeline));
+    public @nullable VkPipeline pipeline() {
+        MemorySegment s = segment.get(LAYOUT$pipeline, OFFSET$pipeline);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipeline(s);
     }
 
-    public void pipeline(VkPipeline value) {
-        segment.set(LAYOUT$pipeline, OFFSET$pipeline, value.segment());
+    public void pipeline(@nullable VkPipeline value) {
+        segment.set(
+            LAYOUT$pipeline,
+            OFFSET$pipeline,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int executableIndex() {
@@ -77,7 +85,21 @@ public record VkPipelineExecutableInfoKHR(MemorySegment segment) implements IPoi
         }
         return ret;
     }
-    
+
+    public static VkPipelineExecutableInfoKHR clone(Arena arena, VkPipelineExecutableInfoKHR src) {
+        VkPipelineExecutableInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPipelineExecutableInfoKHR[] clone(Arena arena, VkPipelineExecutableInfoKHR[] src) {
+        VkPipelineExecutableInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

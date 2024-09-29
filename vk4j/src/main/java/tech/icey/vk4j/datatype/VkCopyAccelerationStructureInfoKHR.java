@@ -50,20 +50,36 @@ public record VkCopyAccelerationStructureInfoKHR(MemorySegment segment) implemen
         pNext(pointer.segment());
     }
 
-    public VkAccelerationStructureKHR src() {
-        return new VkAccelerationStructureKHR(segment.get(LAYOUT$src, OFFSET$src));
+    public @nullable VkAccelerationStructureKHR src() {
+        MemorySegment s = segment.get(LAYOUT$src, OFFSET$src);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkAccelerationStructureKHR(s);
     }
 
-    public void src(VkAccelerationStructureKHR value) {
-        segment.set(LAYOUT$src, OFFSET$src, value.segment());
+    public void src(@nullable VkAccelerationStructureKHR value) {
+        segment.set(
+            LAYOUT$src,
+            OFFSET$src,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkAccelerationStructureKHR dst() {
-        return new VkAccelerationStructureKHR(segment.get(LAYOUT$dst, OFFSET$dst));
+    public @nullable VkAccelerationStructureKHR dst() {
+        MemorySegment s = segment.get(LAYOUT$dst, OFFSET$dst);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkAccelerationStructureKHR(s);
     }
 
-    public void dst(VkAccelerationStructureKHR value) {
-        segment.set(LAYOUT$dst, OFFSET$dst, value.segment());
+    public void dst(@nullable VkAccelerationStructureKHR value) {
+        segment.set(
+            LAYOUT$dst,
+            OFFSET$dst,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkCopyAccelerationStructureModeKHR.class) int mode() {
@@ -86,7 +102,21 @@ public record VkCopyAccelerationStructureInfoKHR(MemorySegment segment) implemen
         }
         return ret;
     }
-    
+
+    public static VkCopyAccelerationStructureInfoKHR clone(Arena arena, VkCopyAccelerationStructureInfoKHR src) {
+        VkCopyAccelerationStructureInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCopyAccelerationStructureInfoKHR[] clone(Arena arena, VkCopyAccelerationStructureInfoKHR[] src) {
+        VkCopyAccelerationStructureInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

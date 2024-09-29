@@ -74,7 +74,7 @@ class Application {
         if (ENABLE_VALIDATION_LAYERS) {
             instanceCommands.vkDestroyDebugUtilsMessengerEXT(instance, debugMessenger, null);
         }
-        instanceCommands.vkDestroySurfaceKHR(instance, vkSurfaceKHR, null);
+        instanceCommands.vkDestroySurfaceKHR(instance, surface, null);
         instanceCommands.vkDestroyInstance(instance, null);
         libGLFW.glfwDestroyWindow(window);
         libGLFW.glfwTerminate();
@@ -151,7 +151,7 @@ class Application {
             if (result != VkResult.VK_SUCCESS) {
                 throw new RuntimeException("Failed to create window surface, vulkan error code: " + VkResult.explain(result));
             }
-            vkSurfaceKHR = pSurface.read();
+            surface = pSurface.read();
         }
     }
 
@@ -329,7 +329,7 @@ class Application {
                     graphicsFamily = i;
                 }
 
-                instanceCommands.vkGetPhysicalDeviceSurfaceSupportKHR(device, i, vkSurfaceKHR, pSurfaceSupport);
+                instanceCommands.vkGetPhysicalDeviceSurfaceSupportKHR(device, i, surface, pSurfaceSupport);
                 if (pSurfaceSupport.read() == Constants.VK_TRUE) {
                     presentFamily = i;
                 }
@@ -356,7 +356,7 @@ class Application {
     private VkInstance instance;
     private InstanceCommands instanceCommands;
     private VkDebugUtilsMessengerEXT debugMessenger;
-    private VkSurfaceKHR vkSurfaceKHR;
+    private VkSurfaceKHR surface;
     private VkPhysicalDevice physicalDevice;
     private VkDevice device;
     private DeviceCommands deviceCommands;

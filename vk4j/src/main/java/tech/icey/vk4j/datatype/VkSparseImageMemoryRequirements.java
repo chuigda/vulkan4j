@@ -81,7 +81,21 @@ public record VkSparseImageMemoryRequirements(MemorySegment segment) implements 
         }
         return ret;
     }
-    
+
+    public static VkSparseImageMemoryRequirements clone(Arena arena, VkSparseImageMemoryRequirements src) {
+        VkSparseImageMemoryRequirements ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSparseImageMemoryRequirements[] clone(Arena arena, VkSparseImageMemoryRequirements[] src) {
+        VkSparseImageMemoryRequirements[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         VkSparseImageFormatProperties.LAYOUT.withName("formatProperties"),
         ValueLayout.JAVA_INT.withName("imageMipTailFirstLod"),

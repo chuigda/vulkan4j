@@ -111,12 +111,20 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
         segment.set(LAYOUT$templateType, OFFSET$templateType, value);
     }
 
-    public VkDescriptorSetLayout descriptorSetLayout() {
-        return new VkDescriptorSetLayout(segment.get(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout));
+    public @nullable VkDescriptorSetLayout descriptorSetLayout() {
+        MemorySegment s = segment.get(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDescriptorSetLayout(s);
     }
 
-    public void descriptorSetLayout(VkDescriptorSetLayout value) {
-        segment.set(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout, value.segment());
+    public void descriptorSetLayout(@nullable VkDescriptorSetLayout value) {
+        segment.set(
+            LAYOUT$descriptorSetLayout,
+            OFFSET$descriptorSetLayout,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkPipelineBindPoint.class) int pipelineBindPoint() {
@@ -127,12 +135,20 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
     }
 
-    public VkPipelineLayout pipelineLayout() {
-        return new VkPipelineLayout(segment.get(LAYOUT$pipelineLayout, OFFSET$pipelineLayout));
+    public @nullable VkPipelineLayout pipelineLayout() {
+        MemorySegment s = segment.get(LAYOUT$pipelineLayout, OFFSET$pipelineLayout);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipelineLayout(s);
     }
 
-    public void pipelineLayout(VkPipelineLayout value) {
-        segment.set(LAYOUT$pipelineLayout, OFFSET$pipelineLayout, value.segment());
+    public void pipelineLayout(@nullable VkPipelineLayout value) {
+        segment.set(
+            LAYOUT$pipelineLayout,
+            OFFSET$pipelineLayout,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int set() {
@@ -155,7 +171,21 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
         }
         return ret;
     }
-    
+
+    public static VkDescriptorUpdateTemplateCreateInfo clone(Arena arena, VkDescriptorUpdateTemplateCreateInfo src) {
+        VkDescriptorUpdateTemplateCreateInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDescriptorUpdateTemplateCreateInfo[] clone(Arena arena, VkDescriptorUpdateTemplateCreateInfo[] src) {
+        VkDescriptorUpdateTemplateCreateInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

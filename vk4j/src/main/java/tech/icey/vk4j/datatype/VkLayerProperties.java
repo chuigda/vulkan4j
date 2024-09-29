@@ -80,7 +80,21 @@ public record VkLayerProperties(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
-    
+
+    public static VkLayerProperties clone(Arena arena, VkLayerProperties src) {
+        VkLayerProperties ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkLayerProperties[] clone(Arena arena, VkLayerProperties[] src) {
+        VkLayerProperties[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("layerName"),
         ValueLayout.JAVA_INT.withName("specVersion"),

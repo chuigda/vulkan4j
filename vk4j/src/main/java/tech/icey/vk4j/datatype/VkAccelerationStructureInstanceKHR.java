@@ -98,7 +98,21 @@ public record VkAccelerationStructureInstanceKHR(MemorySegment segment) implemen
         }
         return ret;
     }
-    
+
+    public static VkAccelerationStructureInstanceKHR clone(Arena arena, VkAccelerationStructureInstanceKHR src) {
+        VkAccelerationStructureInstanceKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkAccelerationStructureInstanceKHR[] clone(Arena arena, VkAccelerationStructureInstanceKHR[] src) {
+        VkAccelerationStructureInstanceKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         VkTransformMatrixKHR.LAYOUT.withName("transform"),
         ValueLayout.JAVA_INT.withName("bitfield$instanceCustomIndex_mask"),

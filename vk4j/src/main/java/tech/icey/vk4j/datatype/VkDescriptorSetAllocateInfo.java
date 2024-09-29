@@ -50,12 +50,20 @@ public record VkDescriptorSetAllocateInfo(MemorySegment segment) implements IPoi
         pNext(pointer.segment());
     }
 
-    public VkDescriptorPool descriptorPool() {
-        return new VkDescriptorPool(segment.get(LAYOUT$descriptorPool, OFFSET$descriptorPool));
+    public @nullable VkDescriptorPool descriptorPool() {
+        MemorySegment s = segment.get(LAYOUT$descriptorPool, OFFSET$descriptorPool);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDescriptorPool(s);
     }
 
-    public void descriptorPool(VkDescriptorPool value) {
-        segment.set(LAYOUT$descriptorPool, OFFSET$descriptorPool, value.segment());
+    public void descriptorPool(@nullable VkDescriptorPool value) {
+        segment.set(
+            LAYOUT$descriptorPool,
+            OFFSET$descriptorPool,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int descriptorSetCount() {
@@ -104,7 +112,21 @@ public record VkDescriptorSetAllocateInfo(MemorySegment segment) implements IPoi
         }
         return ret;
     }
-    
+
+    public static VkDescriptorSetAllocateInfo clone(Arena arena, VkDescriptorSetAllocateInfo src) {
+        VkDescriptorSetAllocateInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDescriptorSetAllocateInfo[] clone(Arena arena, VkDescriptorSetAllocateInfo[] src) {
+        VkDescriptorSetAllocateInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

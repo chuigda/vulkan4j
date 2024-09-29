@@ -50,20 +50,36 @@ public record VkCopyMicromapInfoEXT(MemorySegment segment) implements IPointer {
         pNext(pointer.segment());
     }
 
-    public VkMicromapEXT src() {
-        return new VkMicromapEXT(segment.get(LAYOUT$src, OFFSET$src));
+    public @nullable VkMicromapEXT src() {
+        MemorySegment s = segment.get(LAYOUT$src, OFFSET$src);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkMicromapEXT(s);
     }
 
-    public void src(VkMicromapEXT value) {
-        segment.set(LAYOUT$src, OFFSET$src, value.segment());
+    public void src(@nullable VkMicromapEXT value) {
+        segment.set(
+            LAYOUT$src,
+            OFFSET$src,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkMicromapEXT dst() {
-        return new VkMicromapEXT(segment.get(LAYOUT$dst, OFFSET$dst));
+    public @nullable VkMicromapEXT dst() {
+        MemorySegment s = segment.get(LAYOUT$dst, OFFSET$dst);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkMicromapEXT(s);
     }
 
-    public void dst(VkMicromapEXT value) {
-        segment.set(LAYOUT$dst, OFFSET$dst, value.segment());
+    public void dst(@nullable VkMicromapEXT value) {
+        segment.set(
+            LAYOUT$dst,
+            OFFSET$dst,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkCopyMicromapModeEXT.class) int mode() {
@@ -86,7 +102,21 @@ public record VkCopyMicromapInfoEXT(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
-    
+
+    public static VkCopyMicromapInfoEXT clone(Arena arena, VkCopyMicromapInfoEXT src) {
+        VkCopyMicromapInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCopyMicromapInfoEXT[] clone(Arena arena, VkCopyMicromapInfoEXT[] src) {
+        VkCopyMicromapInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

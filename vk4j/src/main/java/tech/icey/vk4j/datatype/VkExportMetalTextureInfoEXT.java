@@ -52,28 +52,52 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
         pNext(pointer.segment());
     }
 
-    public VkImage image() {
-        return new VkImage(segment.get(LAYOUT$image, OFFSET$image));
+    public @nullable VkImage image() {
+        MemorySegment s = segment.get(LAYOUT$image, OFFSET$image);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImage(s);
     }
 
-    public void image(VkImage value) {
-        segment.set(LAYOUT$image, OFFSET$image, value.segment());
+    public void image(@nullable VkImage value) {
+        segment.set(
+            LAYOUT$image,
+            OFFSET$image,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkImageView imageView() {
-        return new VkImageView(segment.get(LAYOUT$imageView, OFFSET$imageView));
+    public @nullable VkImageView imageView() {
+        MemorySegment s = segment.get(LAYOUT$imageView, OFFSET$imageView);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImageView(s);
     }
 
-    public void imageView(VkImageView value) {
-        segment.set(LAYOUT$imageView, OFFSET$imageView, value.segment());
+    public void imageView(@nullable VkImageView value) {
+        segment.set(
+            LAYOUT$imageView,
+            OFFSET$imageView,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkBufferView bufferView() {
-        return new VkBufferView(segment.get(LAYOUT$bufferView, OFFSET$bufferView));
+    public @nullable VkBufferView bufferView() {
+        MemorySegment s = segment.get(LAYOUT$bufferView, OFFSET$bufferView);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBufferView(s);
     }
 
-    public void bufferView(VkBufferView value) {
-        segment.set(LAYOUT$bufferView, OFFSET$bufferView, value.segment());
+    public void bufferView(@nullable VkBufferView value) {
+        segment.set(
+            LAYOUT$bufferView,
+            OFFSET$bufferView,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkImageAspectFlags.class) int plane() {
@@ -108,7 +132,21 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
         }
         return ret;
     }
-    
+
+    public static VkExportMetalTextureInfoEXT clone(Arena arena, VkExportMetalTextureInfoEXT src) {
+        VkExportMetalTextureInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkExportMetalTextureInfoEXT[] clone(Arena arena, VkExportMetalTextureInfoEXT[] src) {
+        VkExportMetalTextureInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

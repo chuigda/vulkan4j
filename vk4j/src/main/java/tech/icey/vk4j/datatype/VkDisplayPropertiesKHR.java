@@ -31,12 +31,20 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) implements IPointer 
         this.segment = segment;
     }
 
-    public VkDisplayKHR display() {
-        return new VkDisplayKHR(segment.get(LAYOUT$display, OFFSET$display));
+    public @nullable VkDisplayKHR display() {
+        MemorySegment s = segment.get(LAYOUT$display, OFFSET$display);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDisplayKHR(s);
     }
 
-    public void display(VkDisplayKHR value) {
-        segment.set(LAYOUT$display, OFFSET$display, value.segment());
+    public void display(@nullable VkDisplayKHR value) {
+        segment.set(
+            LAYOUT$display,
+            OFFSET$display,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @pointer(comment="int8_t*") MemorySegment displayNameRaw() {
@@ -114,7 +122,21 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) implements IPointer 
         }
         return ret;
     }
-    
+
+    public static VkDisplayPropertiesKHR clone(Arena arena, VkDisplayPropertiesKHR src) {
+        VkDisplayPropertiesKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDisplayPropertiesKHR[] clone(Arena arena, VkDisplayPropertiesKHR[] src) {
+        VkDisplayPropertiesKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withName("display"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("displayName"),

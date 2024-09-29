@@ -49,12 +49,20 @@ public record VkDescriptorSetBindingReferenceVALVE(MemorySegment segment) implem
         pNext(pointer.segment());
     }
 
-    public VkDescriptorSetLayout descriptorSetLayout() {
-        return new VkDescriptorSetLayout(segment.get(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout));
+    public @nullable VkDescriptorSetLayout descriptorSetLayout() {
+        MemorySegment s = segment.get(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDescriptorSetLayout(s);
     }
 
-    public void descriptorSetLayout(VkDescriptorSetLayout value) {
-        segment.set(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout, value.segment());
+    public void descriptorSetLayout(@nullable VkDescriptorSetLayout value) {
+        segment.set(
+            LAYOUT$descriptorSetLayout,
+            OFFSET$descriptorSetLayout,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int binding() {
@@ -77,7 +85,21 @@ public record VkDescriptorSetBindingReferenceVALVE(MemorySegment segment) implem
         }
         return ret;
     }
-    
+
+    public static VkDescriptorSetBindingReferenceVALVE clone(Arena arena, VkDescriptorSetBindingReferenceVALVE src) {
+        VkDescriptorSetBindingReferenceVALVE ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDescriptorSetBindingReferenceVALVE[] clone(Arena arena, VkDescriptorSetBindingReferenceVALVE[] src) {
+        VkDescriptorSetBindingReferenceVALVE[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

@@ -63,7 +63,21 @@ public record VkAccelerationStructureGeometryDataKHR(MemorySegment segment) impl
         }
         return ret;
     }
-    
+
+    public static VkAccelerationStructureGeometryDataKHR clone(Arena arena, VkAccelerationStructureGeometryDataKHR src) {
+        VkAccelerationStructureGeometryDataKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkAccelerationStructureGeometryDataKHR[] clone(Arena arena, VkAccelerationStructureGeometryDataKHR[] src) {
+        VkAccelerationStructureGeometryDataKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(
         VkAccelerationStructureGeometryTrianglesDataKHR.LAYOUT.withName("triangles"),
         VkAccelerationStructureGeometryAabbsDataKHR.LAYOUT.withName("aabbs"),

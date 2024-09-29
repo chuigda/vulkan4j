@@ -48,12 +48,20 @@ public record VkPhysicalDeviceSurfaceInfo2KHR(MemorySegment segment) implements 
         pNext(pointer.segment());
     }
 
-    public VkSurfaceKHR surface() {
-        return new VkSurfaceKHR(segment.get(LAYOUT$surface, OFFSET$surface));
+    public @nullable VkSurfaceKHR surface() {
+        MemorySegment s = segment.get(LAYOUT$surface, OFFSET$surface);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSurfaceKHR(s);
     }
 
-    public void surface(VkSurfaceKHR value) {
-        segment.set(LAYOUT$surface, OFFSET$surface, value.segment());
+    public void surface(@nullable VkSurfaceKHR value) {
+        segment.set(
+            LAYOUT$surface,
+            OFFSET$surface,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public static VkPhysicalDeviceSurfaceInfo2KHR allocate(Arena arena) {
@@ -68,7 +76,21 @@ public record VkPhysicalDeviceSurfaceInfo2KHR(MemorySegment segment) implements 
         }
         return ret;
     }
-    
+
+    public static VkPhysicalDeviceSurfaceInfo2KHR clone(Arena arena, VkPhysicalDeviceSurfaceInfo2KHR src) {
+        VkPhysicalDeviceSurfaceInfo2KHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceSurfaceInfo2KHR[] clone(Arena arena, VkPhysicalDeviceSurfaceInfo2KHR[] src) {
+        VkPhysicalDeviceSurfaceInfo2KHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

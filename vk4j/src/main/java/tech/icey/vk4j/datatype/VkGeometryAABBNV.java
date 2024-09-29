@@ -51,12 +51,20 @@ public record VkGeometryAABBNV(MemorySegment segment) implements IPointer {
         pNext(pointer.segment());
     }
 
-    public VkBuffer aabbData() {
-        return new VkBuffer(segment.get(LAYOUT$aabbData, OFFSET$aabbData));
+    public @nullable VkBuffer aabbData() {
+        MemorySegment s = segment.get(LAYOUT$aabbData, OFFSET$aabbData);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer(s);
     }
 
-    public void aabbData(VkBuffer value) {
-        segment.set(LAYOUT$aabbData, OFFSET$aabbData, value.segment());
+    public void aabbData(@nullable VkBuffer value) {
+        segment.set(
+            LAYOUT$aabbData,
+            OFFSET$aabbData,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int numAABBs() {
@@ -95,7 +103,21 @@ public record VkGeometryAABBNV(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
-    
+
+    public static VkGeometryAABBNV clone(Arena arena, VkGeometryAABBNV src) {
+        VkGeometryAABBNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkGeometryAABBNV[] clone(Arena arena, VkGeometryAABBNV[] src) {
+        VkGeometryAABBNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

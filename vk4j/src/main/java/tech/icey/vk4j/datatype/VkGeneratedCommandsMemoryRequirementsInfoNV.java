@@ -59,20 +59,36 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
     }
 
-    public VkPipeline pipeline() {
-        return new VkPipeline(segment.get(LAYOUT$pipeline, OFFSET$pipeline));
+    public @nullable VkPipeline pipeline() {
+        MemorySegment s = segment.get(LAYOUT$pipeline, OFFSET$pipeline);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipeline(s);
     }
 
-    public void pipeline(VkPipeline value) {
-        segment.set(LAYOUT$pipeline, OFFSET$pipeline, value.segment());
+    public void pipeline(@nullable VkPipeline value) {
+        segment.set(
+            LAYOUT$pipeline,
+            OFFSET$pipeline,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkIndirectCommandsLayoutNV indirectCommandsLayout() {
-        return new VkIndirectCommandsLayoutNV(segment.get(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout));
+    public @nullable VkIndirectCommandsLayoutNV indirectCommandsLayout() {
+        MemorySegment s = segment.get(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkIndirectCommandsLayoutNV(s);
     }
 
-    public void indirectCommandsLayout(VkIndirectCommandsLayoutNV value) {
-        segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value.segment());
+    public void indirectCommandsLayout(@nullable VkIndirectCommandsLayoutNV value) {
+        segment.set(
+            LAYOUT$indirectCommandsLayout,
+            OFFSET$indirectCommandsLayout,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int maxSequencesCount() {
@@ -95,7 +111,21 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
         }
         return ret;
     }
-    
+
+    public static VkGeneratedCommandsMemoryRequirementsInfoNV clone(Arena arena, VkGeneratedCommandsMemoryRequirementsInfoNV src) {
+        VkGeneratedCommandsMemoryRequirementsInfoNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkGeneratedCommandsMemoryRequirementsInfoNV[] clone(Arena arena, VkGeneratedCommandsMemoryRequirementsInfoNV[] src) {
+        VkGeneratedCommandsMemoryRequirementsInfoNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

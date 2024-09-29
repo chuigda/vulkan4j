@@ -57,12 +57,20 @@ public record VkPipelineIndirectDeviceAddressInfoNV(MemorySegment segment) imple
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
     }
 
-    public VkPipeline pipeline() {
-        return new VkPipeline(segment.get(LAYOUT$pipeline, OFFSET$pipeline));
+    public @nullable VkPipeline pipeline() {
+        MemorySegment s = segment.get(LAYOUT$pipeline, OFFSET$pipeline);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipeline(s);
     }
 
-    public void pipeline(VkPipeline value) {
-        segment.set(LAYOUT$pipeline, OFFSET$pipeline, value.segment());
+    public void pipeline(@nullable VkPipeline value) {
+        segment.set(
+            LAYOUT$pipeline,
+            OFFSET$pipeline,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public static VkPipelineIndirectDeviceAddressInfoNV allocate(Arena arena) {
@@ -77,7 +85,21 @@ public record VkPipelineIndirectDeviceAddressInfoNV(MemorySegment segment) imple
         }
         return ret;
     }
-    
+
+    public static VkPipelineIndirectDeviceAddressInfoNV clone(Arena arena, VkPipelineIndirectDeviceAddressInfoNV src) {
+        VkPipelineIndirectDeviceAddressInfoNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPipelineIndirectDeviceAddressInfoNV[] clone(Arena arena, VkPipelineIndirectDeviceAddressInfoNV[] src) {
+        VkPipelineIndirectDeviceAddressInfoNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

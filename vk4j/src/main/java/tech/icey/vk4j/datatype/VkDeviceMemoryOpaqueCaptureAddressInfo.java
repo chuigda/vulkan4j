@@ -48,12 +48,20 @@ public record VkDeviceMemoryOpaqueCaptureAddressInfo(MemorySegment segment) impl
         pNext(pointer.segment());
     }
 
-    public VkDeviceMemory memory() {
-        return new VkDeviceMemory(segment.get(LAYOUT$memory, OFFSET$memory));
+    public @nullable VkDeviceMemory memory() {
+        MemorySegment s = segment.get(LAYOUT$memory, OFFSET$memory);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDeviceMemory(s);
     }
 
-    public void memory(VkDeviceMemory value) {
-        segment.set(LAYOUT$memory, OFFSET$memory, value.segment());
+    public void memory(@nullable VkDeviceMemory value) {
+        segment.set(
+            LAYOUT$memory,
+            OFFSET$memory,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public static VkDeviceMemoryOpaqueCaptureAddressInfo allocate(Arena arena) {
@@ -68,7 +76,21 @@ public record VkDeviceMemoryOpaqueCaptureAddressInfo(MemorySegment segment) impl
         }
         return ret;
     }
-    
+
+    public static VkDeviceMemoryOpaqueCaptureAddressInfo clone(Arena arena, VkDeviceMemoryOpaqueCaptureAddressInfo src) {
+        VkDeviceMemoryOpaqueCaptureAddressInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDeviceMemoryOpaqueCaptureAddressInfo[] clone(Arena arena, VkDeviceMemoryOpaqueCaptureAddressInfo[] src) {
+        VkDeviceMemoryOpaqueCaptureAddressInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

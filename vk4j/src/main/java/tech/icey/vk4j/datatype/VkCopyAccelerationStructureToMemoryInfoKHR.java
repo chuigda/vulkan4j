@@ -50,12 +50,20 @@ public record VkCopyAccelerationStructureToMemoryInfoKHR(MemorySegment segment) 
         pNext(pointer.segment());
     }
 
-    public VkAccelerationStructureKHR src() {
-        return new VkAccelerationStructureKHR(segment.get(LAYOUT$src, OFFSET$src));
+    public @nullable VkAccelerationStructureKHR src() {
+        MemorySegment s = segment.get(LAYOUT$src, OFFSET$src);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkAccelerationStructureKHR(s);
     }
 
-    public void src(VkAccelerationStructureKHR value) {
-        segment.set(LAYOUT$src, OFFSET$src, value.segment());
+    public void src(@nullable VkAccelerationStructureKHR value) {
+        segment.set(
+            LAYOUT$src,
+            OFFSET$src,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public VkDeviceOrHostAddressKHR dst() {
@@ -86,7 +94,21 @@ public record VkCopyAccelerationStructureToMemoryInfoKHR(MemorySegment segment) 
         }
         return ret;
     }
-    
+
+    public static VkCopyAccelerationStructureToMemoryInfoKHR clone(Arena arena, VkCopyAccelerationStructureToMemoryInfoKHR src) {
+        VkCopyAccelerationStructureToMemoryInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCopyAccelerationStructureToMemoryInfoKHR[] clone(Arena arena, VkCopyAccelerationStructureToMemoryInfoKHR[] src) {
+        VkCopyAccelerationStructureToMemoryInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

@@ -63,7 +63,21 @@ public record VkMultiDrawIndexedInfoEXT(MemorySegment segment) implements IPoint
         }
         return ret;
     }
-    
+
+    public static VkMultiDrawIndexedInfoEXT clone(Arena arena, VkMultiDrawIndexedInfoEXT src) {
+        VkMultiDrawIndexedInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkMultiDrawIndexedInfoEXT[] clone(Arena arena, VkMultiDrawIndexedInfoEXT[] src) {
+        VkMultiDrawIndexedInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("firstIndex"),
         ValueLayout.JAVA_INT.withName("indexCount"),

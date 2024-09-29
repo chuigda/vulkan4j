@@ -68,7 +68,21 @@ public record VkImageDrmFormatModifierPropertiesEXT(MemorySegment segment) imple
         }
         return ret;
     }
-    
+
+    public static VkImageDrmFormatModifierPropertiesEXT clone(Arena arena, VkImageDrmFormatModifierPropertiesEXT src) {
+        VkImageDrmFormatModifierPropertiesEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkImageDrmFormatModifierPropertiesEXT[] clone(Arena arena, VkImageDrmFormatModifierPropertiesEXT[] src) {
+        VkImageDrmFormatModifierPropertiesEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

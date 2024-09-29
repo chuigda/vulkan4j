@@ -82,12 +82,20 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$mode, OFFSET$mode, value);
     }
 
-    public VkMicromapEXT dstMicromap() {
-        return new VkMicromapEXT(segment.get(LAYOUT$dstMicromap, OFFSET$dstMicromap));
+    public @nullable VkMicromapEXT dstMicromap() {
+        MemorySegment s = segment.get(LAYOUT$dstMicromap, OFFSET$dstMicromap);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkMicromapEXT(s);
     }
 
-    public void dstMicromap(VkMicromapEXT value) {
-        segment.set(LAYOUT$dstMicromap, OFFSET$dstMicromap, value.segment());
+    public void dstMicromap(@nullable VkMicromapEXT value) {
+        segment.set(
+            LAYOUT$dstMicromap,
+            OFFSET$dstMicromap,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int usageCountsCount() {
@@ -195,7 +203,21 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) implements IPointer 
         }
         return ret;
     }
-    
+
+    public static VkMicromapBuildInfoEXT clone(Arena arena, VkMicromapBuildInfoEXT src) {
+        VkMicromapBuildInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkMicromapBuildInfoEXT[] clone(Arena arena, VkMicromapBuildInfoEXT[] src) {
+        VkMicromapBuildInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

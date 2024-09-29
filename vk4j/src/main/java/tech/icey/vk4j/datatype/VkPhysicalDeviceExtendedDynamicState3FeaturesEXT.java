@@ -338,7 +338,21 @@ public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(MemorySegment seg
         }
         return ret;
     }
-    
+
+    public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT clone(Arena arena, VkPhysicalDeviceExtendedDynamicState3FeaturesEXT src) {
+        VkPhysicalDeviceExtendedDynamicState3FeaturesEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] clone(Arena arena, VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] src) {
+        VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

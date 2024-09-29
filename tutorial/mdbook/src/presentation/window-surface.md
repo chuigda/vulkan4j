@@ -11,7 +11,7 @@ The window surface needs to be created right after the instance creation, becaus
 Start by adding a `surface` class member right below the debug callback.
 
 ```java
-private VkSurfaceKHR vkSurfaceKHR;
+private VkSurfaceKHR surface;
 ```
 
 Although the `VkSurfaceKHR` object and its usage is platform-agnostic, its creation isn't because it depends on window system details. For example, it needs the `HWND` and `HMODULE` handles on Windows. Therefore, there is a platform-specific addition to the extension, which on Windows is called `VK_KHR_win32_surface` and is also automatically included in the list from `glfwGetRequiredInstanceExtensions`.
@@ -65,7 +65,7 @@ private void createSurface() {
         if (result != VkResult.VK_SUCCESS) {
             throw new RuntimeException("Failed to create window surface, vulkan error code: " + VkResult.explain(result));
         }
-        vkSurfaceKHR = pSurface.read();
+        surface = pSurface.read();
     }
 }
 ```
@@ -75,7 +75,7 @@ The parameters are the `VkInstance`, GLFW window pointer, custom allocators and 
 ```java
 private void cleanup() {
     // ...
-    instanceCommands.vkDestroySurfaceKHR(instance, vkSurfaceKHR, null);
+    instanceCommands.vkDestroySurfaceKHR(instance, surface, null);
     instanceCommands.vkDestroyInstance(instance, null);
     // ...
 }
@@ -152,5 +152,5 @@ deviceCommands.vkGetDeviceQueue(device, indices.presentFamily(), 0, pQueue);
 presentQueue = pQueue.read();
 ```
 
-deviceCommands.vkGetDeviceQueue(device, indices.presentFamily(), 0, pQueue);
-presentQueue = pQueue.read();
+In case the queue families are the same, the two handles will most likely have the same value now. In the next chapter we're going to look at swap chains and how they give us the ability to present images to the surface.
+

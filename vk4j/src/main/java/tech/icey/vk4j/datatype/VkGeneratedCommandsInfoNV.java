@@ -68,20 +68,36 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
     }
 
-    public VkPipeline pipeline() {
-        return new VkPipeline(segment.get(LAYOUT$pipeline, OFFSET$pipeline));
+    public @nullable VkPipeline pipeline() {
+        MemorySegment s = segment.get(LAYOUT$pipeline, OFFSET$pipeline);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipeline(s);
     }
 
-    public void pipeline(VkPipeline value) {
-        segment.set(LAYOUT$pipeline, OFFSET$pipeline, value.segment());
+    public void pipeline(@nullable VkPipeline value) {
+        segment.set(
+            LAYOUT$pipeline,
+            OFFSET$pipeline,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkIndirectCommandsLayoutNV indirectCommandsLayout() {
-        return new VkIndirectCommandsLayoutNV(segment.get(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout));
+    public @nullable VkIndirectCommandsLayoutNV indirectCommandsLayout() {
+        MemorySegment s = segment.get(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkIndirectCommandsLayoutNV(s);
     }
 
-    public void indirectCommandsLayout(VkIndirectCommandsLayoutNV value) {
-        segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value.segment());
+    public void indirectCommandsLayout(@nullable VkIndirectCommandsLayoutNV value) {
+        segment.set(
+            LAYOUT$indirectCommandsLayout,
+            OFFSET$indirectCommandsLayout,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned int streamCount() {
@@ -132,12 +148,20 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$sequencesCount, OFFSET$sequencesCount, value);
     }
 
-    public VkBuffer preprocessBuffer() {
-        return new VkBuffer(segment.get(LAYOUT$preprocessBuffer, OFFSET$preprocessBuffer));
+    public @nullable VkBuffer preprocessBuffer() {
+        MemorySegment s = segment.get(LAYOUT$preprocessBuffer, OFFSET$preprocessBuffer);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer(s);
     }
 
-    public void preprocessBuffer(VkBuffer value) {
-        segment.set(LAYOUT$preprocessBuffer, OFFSET$preprocessBuffer, value.segment());
+    public void preprocessBuffer(@nullable VkBuffer value) {
+        segment.set(
+            LAYOUT$preprocessBuffer,
+            OFFSET$preprocessBuffer,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned long preprocessOffset() {
@@ -156,12 +180,20 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$preprocessSize, OFFSET$preprocessSize, value);
     }
 
-    public VkBuffer sequencesCountBuffer() {
-        return new VkBuffer(segment.get(LAYOUT$sequencesCountBuffer, OFFSET$sequencesCountBuffer));
+    public @nullable VkBuffer sequencesCountBuffer() {
+        MemorySegment s = segment.get(LAYOUT$sequencesCountBuffer, OFFSET$sequencesCountBuffer);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer(s);
     }
 
-    public void sequencesCountBuffer(VkBuffer value) {
-        segment.set(LAYOUT$sequencesCountBuffer, OFFSET$sequencesCountBuffer, value.segment());
+    public void sequencesCountBuffer(@nullable VkBuffer value) {
+        segment.set(
+            LAYOUT$sequencesCountBuffer,
+            OFFSET$sequencesCountBuffer,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned long sequencesCountOffset() {
@@ -172,12 +204,20 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$sequencesCountOffset, OFFSET$sequencesCountOffset, value);
     }
 
-    public VkBuffer sequencesIndexBuffer() {
-        return new VkBuffer(segment.get(LAYOUT$sequencesIndexBuffer, OFFSET$sequencesIndexBuffer));
+    public @nullable VkBuffer sequencesIndexBuffer() {
+        MemorySegment s = segment.get(LAYOUT$sequencesIndexBuffer, OFFSET$sequencesIndexBuffer);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer(s);
     }
 
-    public void sequencesIndexBuffer(VkBuffer value) {
-        segment.set(LAYOUT$sequencesIndexBuffer, OFFSET$sequencesIndexBuffer, value.segment());
+    public void sequencesIndexBuffer(@nullable VkBuffer value) {
+        segment.set(
+            LAYOUT$sequencesIndexBuffer,
+            OFFSET$sequencesIndexBuffer,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @unsigned long sequencesIndexOffset() {
@@ -200,7 +240,21 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         }
         return ret;
     }
-    
+
+    public static VkGeneratedCommandsInfoNV clone(Arena arena, VkGeneratedCommandsInfoNV src) {
+        VkGeneratedCommandsInfoNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkGeneratedCommandsInfoNV[] clone(Arena arena, VkGeneratedCommandsInfoNV[] src) {
+        VkGeneratedCommandsInfoNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

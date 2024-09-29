@@ -48,12 +48,20 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(MemorySegment segment) 
         pNext(pointer.segment());
     }
 
-    public VkValidationCacheEXT validationCache() {
-        return new VkValidationCacheEXT(segment.get(LAYOUT$validationCache, OFFSET$validationCache));
+    public @nullable VkValidationCacheEXT validationCache() {
+        MemorySegment s = segment.get(LAYOUT$validationCache, OFFSET$validationCache);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkValidationCacheEXT(s);
     }
 
-    public void validationCache(VkValidationCacheEXT value) {
-        segment.set(LAYOUT$validationCache, OFFSET$validationCache, value.segment());
+    public void validationCache(@nullable VkValidationCacheEXT value) {
+        segment.set(
+            LAYOUT$validationCache,
+            OFFSET$validationCache,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public static VkShaderModuleValidationCacheCreateInfoEXT allocate(Arena arena) {
@@ -68,7 +76,21 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(MemorySegment segment) 
         }
         return ret;
     }
-    
+
+    public static VkShaderModuleValidationCacheCreateInfoEXT clone(Arena arena, VkShaderModuleValidationCacheCreateInfoEXT src) {
+        VkShaderModuleValidationCacheCreateInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkShaderModuleValidationCacheCreateInfoEXT[] clone(Arena arena, VkShaderModuleValidationCacheCreateInfoEXT[] src) {
+        VkShaderModuleValidationCacheCreateInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

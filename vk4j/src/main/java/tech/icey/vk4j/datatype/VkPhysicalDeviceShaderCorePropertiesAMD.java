@@ -185,7 +185,21 @@ public record VkPhysicalDeviceShaderCorePropertiesAMD(MemorySegment segment) imp
         }
         return ret;
     }
-    
+
+    public static VkPhysicalDeviceShaderCorePropertiesAMD clone(Arena arena, VkPhysicalDeviceShaderCorePropertiesAMD src) {
+        VkPhysicalDeviceShaderCorePropertiesAMD ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceShaderCorePropertiesAMD[] clone(Arena arena, VkPhysicalDeviceShaderCorePropertiesAMD[] src) {
+        VkPhysicalDeviceShaderCorePropertiesAMD[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),

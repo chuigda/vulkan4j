@@ -27,20 +27,36 @@ public record VkDescriptorImageInfo(MemorySegment segment) implements IPointer {
         this.segment = segment;
     }
 
-    public VkSampler sampler() {
-        return new VkSampler(segment.get(LAYOUT$sampler, OFFSET$sampler));
+    public @nullable VkSampler sampler() {
+        MemorySegment s = segment.get(LAYOUT$sampler, OFFSET$sampler);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSampler(s);
     }
 
-    public void sampler(VkSampler value) {
-        segment.set(LAYOUT$sampler, OFFSET$sampler, value.segment());
+    public void sampler(@nullable VkSampler value) {
+        segment.set(
+            LAYOUT$sampler,
+            OFFSET$sampler,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
-    public VkImageView imageView() {
-        return new VkImageView(segment.get(LAYOUT$imageView, OFFSET$imageView));
+    public @nullable VkImageView imageView() {
+        MemorySegment s = segment.get(LAYOUT$imageView, OFFSET$imageView);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImageView(s);
     }
 
-    public void imageView(VkImageView value) {
-        segment.set(LAYOUT$imageView, OFFSET$imageView, value.segment());
+    public void imageView(@nullable VkImageView value) {
+        segment.set(
+            LAYOUT$imageView,
+            OFFSET$imageView,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }
 
     public @enumtype(VkImageLayout.class) int imageLayout() {
@@ -63,7 +79,21 @@ public record VkDescriptorImageInfo(MemorySegment segment) implements IPointer {
         }
         return ret;
     }
-    
+
+    public static VkDescriptorImageInfo clone(Arena arena, VkDescriptorImageInfo src) {
+        VkDescriptorImageInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDescriptorImageInfo[] clone(Arena arena, VkDescriptorImageInfo[] src) {
+        VkDescriptorImageInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withName("sampler"),
         ValueLayout.ADDRESS.withName("imageView"),

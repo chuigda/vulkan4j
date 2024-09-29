@@ -107,7 +107,21 @@ public record VkAccelerationStructureMatrixMotionInstanceNV(MemorySegment segmen
         }
         return ret;
     }
-    
+
+    public static VkAccelerationStructureMatrixMotionInstanceNV clone(Arena arena, VkAccelerationStructureMatrixMotionInstanceNV src) {
+        VkAccelerationStructureMatrixMotionInstanceNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkAccelerationStructureMatrixMotionInstanceNV[] clone(Arena arena, VkAccelerationStructureMatrixMotionInstanceNV[] src) {
+        VkAccelerationStructureMatrixMotionInstanceNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         VkTransformMatrixKHR.LAYOUT.withName("transformT0"),
         VkTransformMatrixKHR.LAYOUT.withName("transformT1"),
