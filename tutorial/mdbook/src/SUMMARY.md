@@ -30,6 +30,9 @@
 - [Rendering and presentation](./drawing/rendering-and-presentation.md)
 - [Frames in flight](./drawing/frames-in-flight.md)
 
+# Swap chain
+- [Swap chain recreation](./swapchain/swap-chain-recreation.md)
+
 # Vertex buffers
 
 # Uniform buffers
