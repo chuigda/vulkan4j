@@ -15,6 +15,7 @@
 # Presentation
 - [Window surface](./presentation/window-surface.md)
 - [Swap chain](./presentation/swap-chain.md)
+- [Image views](./presentation/image-views.md)
 
 # Graphics pipeline Basics
 
