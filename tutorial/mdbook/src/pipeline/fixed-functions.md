@@ -103,7 +103,7 @@ And then you only need to specify their count at pipeline creation time:
 ```java
 var viewportStateInfo = VkPipelineViewportStateCreateInfo.allocate(arena);
 viewportStateInfo.viewportCount(1);
-viewportStateInfo.pViewports(viewport);
+viewportStateInfo.scissorCount(1);
 ```
 
 The actual viewport(s) and scissor rectangle(s) will then later be set up at drawing time.
@@ -121,6 +121,8 @@ viewportStateInfo.pScissors(scissor);
 ```
 
 Independent of how you set them, it is possible to use multiple viewports and scissor rectangles on some graphics cards, so the structure members reference an array of them. Using multiple requires enabling a GPU feature (see logical device creation).
+
+In this tutorial, our following code will assume that the viewport and scissor rectangle are dynamic.
 
 ## Rasterizer
 

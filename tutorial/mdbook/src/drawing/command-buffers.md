@@ -208,7 +208,7 @@ deviceCommands.vkCmdBindPipeline(commandBuffer, VkPipelineBindPoint.VK_PIPELINE_
 
 The second parameter specifies if the pipeline object is a graphics or compute pipeline. We've now told Vulkan which operations to execute in the graphics pipeline and which attachment to use in the fragment shader.
 
-If you specified dynamic viewport and scissor for this pipeline to be dynamic in the [fixed functions chapater](../pipeline/fixed-functions.md), you need to set them in the command buffer before issuing our draw command.
+As noted in the [fixed functions chapter](../pipeline/fixed-functions.md), we did specify viewport and scissor state for this pipeline to be dynamic. So we need to set them in the command buffer before issuing our draw command:
 
 ```java
 var viewport = VkViewport.allocate(arena);

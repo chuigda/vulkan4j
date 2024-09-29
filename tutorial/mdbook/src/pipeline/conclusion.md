@@ -25,10 +25,10 @@ pipelineInfo.pRasterizationState(rasterizer);
 pipelineInfo.pMultisampleState(multisampling);
 pipelineInfo.pDepthStencilState(null); // Optional
 pipelineInfo.pColorBlendState(colorBlending);
-pipelineInfo.pDynamicState(null); // Or use dynamic state if you wish
+pipelineInfo.pDynamicState(dynamicStateInfo);
 ```
 
-Then we reference all of the structures describing the fixed-function stage.
+Then we reference all the structures describing the fixed-function stage.
 
 ```java
 pipelineInfo.layout(pipelineLayout);

@@ -425,24 +425,16 @@ class Application {
             inputAssembly.topology(VkPrimitiveTopology.VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
             inputAssembly.primitiveRestartEnable(Constants.VK_FALSE);
 
-            var viewport = VkViewport.allocate(arena);
-            viewport.x(0.0f);
-            viewport.y(0.0f);
-            viewport.width(swapChainExtent.width());
-            viewport.height(swapChainExtent.height());
-            viewport.minDepth(0.0f);
-            viewport.maxDepth(1.0f);
-
-            var scissor = VkRect2D.allocate(arena);
-            scissor.offset().x(0);
-            scissor.offset().y(0);
-            scissor.extent(swapChainExtent);
+            var dynamicStates = IntBuffer.allocate(arena, 2);
+            dynamicStates.write(0, VkDynamicState.VK_DYNAMIC_STATE_VIEWPORT);
+            dynamicStates.write(1, VkDynamicState.VK_DYNAMIC_STATE_SCISSOR);
+            var dynamicStateInfo = VkPipelineDynamicStateCreateInfo.allocate(arena);
+            dynamicStateInfo.dynamicStateCount(2);
+            dynamicStateInfo.pDynamicStates(dynamicStates);
 
             var viewportStateInfo = VkPipelineViewportStateCreateInfo.allocate(arena);
             viewportStateInfo.viewportCount(1);
-            viewportStateInfo.pViewports(viewport);
             viewportStateInfo.scissorCount(1);
-            viewportStateInfo.pScissors(scissor);
 
             var rasterizer = VkPipelineRasterizationStateCreateInfo.allocate(arena);
             rasterizer.depthClampEnable(Constants.VK_FALSE);
@@ -512,7 +504,7 @@ class Application {
             pipelineInfo.pMultisampleState(multisampling);
             pipelineInfo.pDepthStencilState(null);
             pipelineInfo.pColorBlendState(colorBlending);
-            pipelineInfo.pDynamicState(null);
+            pipelineInfo.pDynamicState(dynamicStateInfo);
             pipelineInfo.layout(pipelineLayout);
             pipelineInfo.renderPass(renderPass);
             pipelineInfo.subpass(0);
