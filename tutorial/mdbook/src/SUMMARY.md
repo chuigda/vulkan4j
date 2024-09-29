@@ -25,6 +25,7 @@
 - [Conclusion](./pipeline/conclusion.md)
 
 # Drawing
+- [Framebuffers](./drawing/framebuffers.md)
 
 # Vertex buffers
 
