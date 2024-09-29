@@ -1,6 +1,6 @@
 # Overview
 
-This chapter will start off with an introduction of Vulkan and the problems it addresses. After that we're going to look at the ingredients that are required for the first triangle. This will give you a big picture to place each of the subsequent chapters in. We will conclude by covering the structure of the Vulkan API as implemented by `vulkan4j`.
+This chapter will start off with an introduction of Vulkan and the problems it addresses. After that we're going to look at the ingredients that are required for the first triangle. This will give you a big picture to place each of the subsequent chapters in. We will conclude by covering the structure of the Vulkan API wrapper provided by `vulkan4j`.
 
 ## Origin of Vulkan
 
@@ -26,7 +26,7 @@ After selecting the right hardware device to use, you need to create a `VkDevice
 
 Unless you're only interested in offscreen rendering, you will need to create a window to present rendered images to. Windows can be created with the native platform APIs or libraries like [GLFW](http://www.glfw.org/) or [SDL](https://www.libsdl.org/). We will be using the `GLFW` in this tutorial, since there's already a minimal integration with `vulkan4j`.
 
-We need two more components to actually render to a window: a window surface (`VkSurfaceKHR`) and a swapchain (`VkSwapchainKHR`). Note the `KHR` postfix, which means that these objects are part of a Vulkan extension. The Vulkan API itself is completely platform-agnostic, which is why we need to use the standardized WSI (Window System Interface) extension to interact with the window manager. The surface is a cross-platform abstraction over windows to render to and is generally instantiated by providing a reference to the native window handle, for example `HWND` on Windows. However, `vulkanalia` has optional integration with the `winit` crate which we will be leveraging to handle the platform-specific details of creating a window and associated surface for us.
+We need two more components to actually render to a window: a window surface (`VkSurfaceKHR`) and a swapchain (`VkSwapchainKHR`). Note the `KHR` postfix, which means that these objects are part of a Vulkan extension. The Vulkan API itself is completely platform-agnostic, which is why we need to use the standardized WSI (Window System Interface) extension to interact with the window manager. The surface is a cross-platform abstraction over windows to render to and is generally instantiated by providing a reference to the native window handle, for example `HWND` on Windows. However, GLFW has already provided a cross-platform way for dealing with surfaces.
 
 The swapchain is a collection of render targets. Its basic purpose is to ensure that the image that we're currently rendering to is different from the one that is currently on the screen. This is important to make sure that only complete images are shown. Every time we want to draw a frame we have to ask the swapchain to provide us with an image to render to. When we've finished drawing a frame, the image is returned to the swapchain for it to be presented to the screen at some point. The number of render targets and conditions for presenting finished images to the screen depends on the present mode. Common present modes are  double buffering (vsync) and triple buffering. We'll look into these in the swapchain creation chapter.
 
@@ -92,22 +92,27 @@ The [Vulkan headers](https://github.com/KhronosGroup/Vulkan-Headers) that are pa
 
 ### Coding conventions
 
-Since `vulkan4j` is designed to stick to original Vulkan API flavor more, most API names, data type names and constants are kept the same as in the Vulkan API:
+Since `vulkan4j` is designed to stick to original Vulkan API flavor more, most function names, data type names and constants are kept the same as in the Vulkan API:
+
 - Functions have a lower case `vk` prefix
 - Types like enumerations and structs have a `Vk` prefix
 - Enumeration values and constants have a `VK_` prefix.
 
 One little difference is that `vulkan4j` merges `Flags` and `FlagBits` enumeration names. For example, `VkBufferUsageFlags` and `VkBufferUsageFlagBits` are merged into one single `VkBufferUsageFlags`.
 
-`struct` and `union` types are in `tech.icey.vk4j.datatype` package, enum types are in `tech.icey.vk4j.enumtype` package. Vulkan handle types (like `VkInstance`, `VkDevice`, `VkQueue`, etc.) are in `tech.icey.vk4j.handle` package.
+`struct` and `union` types are in `tech.icey.vk4j.datatype` package, enum types are in `tech.icey.vk4j.enumtype` package, while Vulkan handle types (like `VkInstance`, `VkDevice`, `VkQueue`, etc.) are in `tech.icey.vk4j.handle` package.
 
-### Structs and handles representation
+### Structs and unions representation
+
+> TODO
+
+### Handles representation
 
 > TODO
 
 ### Enums and bitmasks representation
 
-`vulkan4j` uses conventional Java `int` and `long` types to represent Vulkan enums and bitmasks. Java enums are not used because they are very unfriendly to bitwise operations, and requires conversion between Java enums and Vulkan enums. Vulkan enum and bitmask values are modelled with `private static final` fields in the corresponding enum classes. 
+`vulkan4j` uses conventional Java `int` and `long` types to represent Vulkan enums and bitmasks. Java enums are not used because they are very unfriendly to bitwise operations, and requires conversion during FFI calls. Vulkan enum and bitmask values are modelled with `public static final` fields in the corresponding enum classes. 
 
 In order to make APIs involving Vulkan enums and bitmasks easier to use, `vulkan4j` provides an annotation `tech.icey.vk4j.annotation.enumtype`. This annotation is used to mark an `int` or `long` value to be a specific Vulkan enum or bitmask, thus when you Ctrl-click to jump to the documentation of some data type or API, you could Ctrl-click the enum or bitmask type to see what values can be used for that field or parameter.
 
@@ -125,7 +130,7 @@ However, there may be multiple versions of Vulkan commands available depending o
 
 To avoid the runtime overhead of this dispatch, the `vkGetDeviceProcAddr` command can be used to directly load these device-specific Vulkan commands. This command is loaded in the same manner as `vkGetInstanceProcAddr`.
 
-We will be calling dozens of Vulkan commands in this tutorial. Fortunately we won't have to load them manually, `vulkan4j` provides types which can be used to easily load all the Vulkan commands in one of four categories:
+We will be calling dozens of Vulkan commands in this tutorial. Fortunately we won't have to load them one by one, `vulkan4j` provides a `Loader` type which can be used to easily load all the Vulkan commands in one of four categories:
 
 * `StaticCommands` &ndash; The Vulkan commands loaded in a platform-specific manner that can then used to load the other commands (i.e., `vkGetInstanceProcAddr` and `vkGetDeviceProcAddr`)
 * `EntryCommands` &ndash; The Vulkan commands loaded using `vkGetInstanceProcAddr` and a null Vulkan instance. These commands are not tied to a specific Vulkan instance and are used to query instance support and create instances
