@@ -1,4 +1,4 @@
-package ch15;
+package ch16;
 
 import tech.icey.glfwmini.GLFWwindow;
 import tech.icey.glfwmini.LibGLFW;
@@ -67,7 +67,7 @@ class Application {
         createGraphicsPipeline();
         createFramebuffers();
         createCommandPool();
-        createCommandBuffer();
+        createCommandBuffers();
         createSyncObjects();
     }
 
@@ -81,9 +81,11 @@ class Application {
     }
 
     private void cleanup() {
-        deviceCommands.vkDestroySemaphore(device, imageAvailableSemaphore, null);
-        deviceCommands.vkDestroySemaphore(device, renderFinishedSemaphore, null);
-        deviceCommands.vkDestroyFence(device, inFlightFence, null);
+        for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
+            deviceCommands.vkDestroySemaphore(device, renderFinishedSemaphores[i], null);
+            deviceCommands.vkDestroySemaphore(device, imageAvailableSemaphores[i], null);
+            deviceCommands.vkDestroyFence(device, inFlightFences[i], null);
+        }
         deviceCommands.vkDestroyCommandPool(device, commandPool, null);
         for (var framebuffer : swapChainFramebuffers) {
             deviceCommands.vkDestroyFramebuffer(device, framebuffer, null);
@@ -595,19 +597,19 @@ class Application {
         }
     }
 
-    private void createCommandBuffer() {
+    private void createCommandBuffers() {
         try (var arena = Arena.ofConfined()) {
             var allocInfo = VkCommandBufferAllocateInfo.allocate(arena);
             allocInfo.commandPool(commandPool);
             allocInfo.level(VkCommandBufferLevel.VK_COMMAND_BUFFER_LEVEL_PRIMARY);
-            allocInfo.commandBufferCount(1);
+            allocInfo.commandBufferCount(MAX_FRAMES_IN_FLIGHT);
 
-            var pCommandBuffer = VkCommandBuffer.Buffer.allocate(arena);
-            var result = deviceCommands.vkAllocateCommandBuffers(device, allocInfo, pCommandBuffer);
+            var pCommandBuffers = VkCommandBuffer.Buffer.allocate(arena, MAX_FRAMES_IN_FLIGHT);
+            var result = deviceCommands.vkAllocateCommandBuffers(device, allocInfo, pCommandBuffers);
             if (result != VkResult.VK_SUCCESS) {
                 throw new RuntimeException("Failed to allocate command buffer, vulkan error code: " + VkResult.explain(result));
             }
-            commandBuffer = pCommandBuffer.read();
+            commandBuffers = pCommandBuffers.readAll();
         }
     }
 
@@ -621,19 +623,30 @@ class Application {
             var pRenderFinishedSemaphore = VkSemaphore.Buffer.allocate(arena);
             var pInFlightFence = VkFence.Buffer.allocate(arena);
 
-            if (deviceCommands.vkCreateSemaphore(device, semaphoreInfo, null, pImageAvailableSemaphore) != VkResult.VK_SUCCESS ||
-                deviceCommands.vkCreateSemaphore(device, semaphoreInfo, null, pRenderFinishedSemaphore) != VkResult.VK_SUCCESS ||
-                deviceCommands.vkCreateFence(device, fenceCreateInfo, null, pInFlightFence) != VkResult.VK_SUCCESS) {
-                throw new RuntimeException("Failed to create synchronization objects");
-            }
+            imageAvailableSemaphores = new VkSemaphore[MAX_FRAMES_IN_FLIGHT];
+            renderFinishedSemaphores = new VkSemaphore[MAX_FRAMES_IN_FLIGHT];
+            inFlightFences = new VkFence[MAX_FRAMES_IN_FLIGHT];
 
-            imageAvailableSemaphore = pImageAvailableSemaphore.read();
-            renderFinishedSemaphore = pRenderFinishedSemaphore.read();
-            inFlightFence = pInFlightFence.read();
+            for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
+                if (deviceCommands.vkCreateSemaphore(device, semaphoreInfo, null, pImageAvailableSemaphore) != VkResult.VK_SUCCESS ||
+                        deviceCommands.vkCreateSemaphore(device, semaphoreInfo, null, pRenderFinishedSemaphore) != VkResult.VK_SUCCESS ||
+                        deviceCommands.vkCreateFence(device, fenceCreateInfo, null, pInFlightFence) != VkResult.VK_SUCCESS) {
+                    throw new RuntimeException("Failed to create synchronization objects");
+                }
+
+                imageAvailableSemaphores[i] = pImageAvailableSemaphore.read();
+                renderFinishedSemaphores[i] = pRenderFinishedSemaphore.read();
+                inFlightFences[i] = pInFlightFence.read();
+            }
         }
     }
 
     private void drawFrame() {
+        var inFlightFence = inFlightFences[currentFrame];
+        var imageAvailableSemaphore = imageAvailableSemaphores[currentFrame];
+        var renderFinishedSemaphore = renderFinishedSemaphores[currentFrame];
+        var commandBuffer = commandBuffers[currentFrame];
+
         try (var arena = Arena.ofConfined()) {
             var pInFlightFences = VkFence.Buffer.allocate(arena);
             pInFlightFences.write(inFlightFence);
@@ -692,6 +705,8 @@ class Application {
                 throw new RuntimeException("Failed to present swap chain image, vulkan error code: " + VkResult.explain(result));
             }
         }
+
+        currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
     }
 
     private boolean checkValidationLayerSupport() {
@@ -1007,15 +1022,17 @@ class Application {
     private VkPipeline graphicsPipeline;
     private VkFramebuffer[] swapChainFramebuffers;
     private VkCommandPool commandPool;
-    private VkCommandBuffer commandBuffer;
-    private VkSemaphore imageAvailableSemaphore;
-    private VkSemaphore renderFinishedSemaphore;
-    private VkFence inFlightFence;
+    private VkCommandBuffer[] commandBuffers;
+    private VkSemaphore[] imageAvailableSemaphores;
+    private VkSemaphore[] renderFinishedSemaphores;
+    private VkFence[] inFlightFences;
+    private int currentFrame = 0;
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
     private static final boolean ENABLE_VALIDATION_LAYERS = System.getProperty("validation") != null;
     private static String VALIDATION_LAYER_NAME = "VK_LAYER_KHRONOS_validation";
+    private static final int MAX_FRAMES_IN_FLIGHT = 2;
 
     private static /* VkBool32 */ int debugCallback(
             @enumtype(VkDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity,

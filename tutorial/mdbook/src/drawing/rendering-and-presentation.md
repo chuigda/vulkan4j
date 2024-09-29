@@ -142,14 +142,19 @@ var fenceCreateInfo = VkFenceCreateInfo.allocate(arena);
 Creating the semaphores and fence follows the familiar pattern with `vkCreateSemaphore` & `vkCreateFence`:
 
 ```java
+var pImageAvailableSemaphore = VkSemaphore.Buffer.allocate(arena);
+var pRenderFinishedSemaphore = VkSemaphore.Buffer.allocate(arena);
+var pInFlightFence = VkFence.Buffer.allocate(arena);
+
 if (deviceCommands.vkCreateSemaphore(device, semaphoreInfo, null, pImageAvailableSemaphore) != VkResult.VK_SUCCESS ||
         deviceCommands.vkCreateSemaphore(device, semaphoreInfo, null, pRenderFinishedSemaphore) != VkResult.VK_SUCCESS ||
-        deviceCommands.vkCreateFence(device, fenceCreateInfo, null, pInFlightFences) != VkResult.VK_SUCCESS) {
+        deviceCommands.vkCreateFence(device, fenceCreateInfo, null, pInFlightFence) != VkResult.VK_SUCCESS) {
     throw new RuntimeException("Failed to create synchronization objects for a frame");
 }
+
 imageAvailableSemaphore = pImageAvailableSemaphore.read();
 renderFinishedSemaphore = pRenderFinishedSemaphore.read();
-inFlightFence = pInFlightFences.read();
+inFlightFence = pInFlightFence.read();
 ```
 
 The semaphores and fence should be cleaned up at the end of the program, when all commands have finished and no more synchronization is necessary:
