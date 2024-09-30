@@ -31,10 +31,10 @@
 - [Frames in flight](drawing/frames-in-flight.md)
 
 # Swap chain
-
 - [Swap chain recreation](swapchain/swap-chain-recreation.md)
 
 # Vertex buffers
+- [Vertex input description](vertex-buffers/vertex-input-description.md)
 
 # Uniform buffers
 
