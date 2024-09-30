@@ -1,8 +1,8 @@
 package ch22;
 
+import org.joml.Matrix4f;
 import tech.icey.glfwmini.GLFWwindow;
 import tech.icey.glfwmini.LibGLFW;
-import tech.icey.glm.Matrix4x4;
 import tech.icey.vk4j.Constants;
 import tech.icey.vk4j.Loader;
 import tech.icey.vk4j.NativeLayout;
@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
+import java.nio.ByteOrder;
 import java.util.Objects;
 
 class Application {
@@ -1223,17 +1224,23 @@ class Application {
     }
 
     private void updateUniformBuffer() {
-        var time = (float) System.currentTimeMillis() / 1000.0f;
-        var model = Matrix4x4.rotateZ((float) (Math.toRadians(90.0f) * time));
-        var view = Matrix4x4.lookAt(2.0f, 2.0f, 2.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f);
-        var proj = Matrix4x4.perspective(
+        var time = (System.currentTimeMillis() - startTime) / 1000.0f;
+
+        var model = new Matrix4f().rotate((float) (Math.toRadians(90.0f) * time), 0.0f, 0.0f, 1.0f);
+        var view = new Matrix4f().lookAt(
+                2.0f, 2.0f, 2.0f,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 1.0f
+        );
+        var proj = new Matrix4f().perspective(
                 (float) Math.toRadians(45.0f),
                 swapChainExtent.width() / (float) swapChainExtent.height(),
                 0.1f,
-                10.0f
+                10.0f,
+                true
         );
 
-        new UniformBufferObject(model, view, proj).toBuffer(uniformBuffersMapped[currentFrame]);
+        new UniformBufferObject(model, view, proj).writeToBuffer(uniformBuffersMapped[currentFrame]);
     }
 
     private void framebufferResizeCallback(
@@ -1344,17 +1351,17 @@ class Application {
         }
     }
 
-    private record UniformBufferObject(Matrix4x4 model, Matrix4x4 view, Matrix4x4 proj) {
+    private record UniformBufferObject(Matrix4f model, Matrix4f view, Matrix4f proj) {
         public static int bufferSize() {
             return 16 * 3;
         }
 
-        public void toBuffer(FloatBuffer buffer) {
+        public void writeToBuffer(FloatBuffer buffer) {
             assert buffer.size() >= bufferSize();
 
-            model.writeToBuffer(buffer);
-            view.writeToBuffer(buffer.offset(16));
-            proj.writeToBuffer(buffer.offset(32));
+            model.get(buffer.segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+            view.get(buffer.offset(16).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+            proj.get(buffer.offset(32).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
         }
     }
 
@@ -1415,6 +1422,7 @@ class Application {
             0, 1, 2,
             2, 3, 0
     };
+    private static final long startTime = System.currentTimeMillis();
 
     private static /* VkBool32 */ int debugCallback(
             @enumtype(VkDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity,

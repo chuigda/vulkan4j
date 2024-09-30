@@ -20,6 +20,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.joml</groupId>
+            <artifactId>joml</artifactId>
+            <version>1.10.8</version>
+        </dependency>
+        <dependency>
             <groupId>tech.icey.vk4j</groupId>
             <artifactId>vk4j</artifactId>
             <version>0.0.1-PREALPHA</version>

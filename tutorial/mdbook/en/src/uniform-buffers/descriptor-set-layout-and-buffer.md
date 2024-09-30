@@ -67,27 +67,26 @@ Note that the order of the `uniform`, `in` and `out` declarations doesn't matter
 
 # Descriptor set layout
 
-The next step is to define the UBO on the Java side and to tell Vulkan about this descriptor in the vertex shader.
+The next step is to define the UBO on the Java side and to tell Vulkan about this descriptor in the vertex shader. We'll use JOML `Matrix4f` to represent the transformation matrices:
 
 ```java
-private record UniformBufferObject(Matrix4x4 model, Matrix4x4 view, Matrix4x4 proj) {}
+private record UniformBufferObject(Matrix4f model, Matrix4f view, Matrix4f proj) {}
 ```
 
-However, we cannot directly upload a Java `record` to Vulkan buffer memory. Instead, we need to convert it to a native `MemorySegment` first. Fortunately, `vulkan4j` has provided us with some buffer objects you've already met. Writing our `UniformBufferObject` content to a buffer object is arguably straightforward:
+However, we cannot directly upload Java classes to Vulkan buffer memory. Instead, we need to convert it to a native `MemorySegment` first. Unfortunately, JOML was designed at an era where `MemorySegment` was not available, so we need some help of `java.nio.ByteBuffer`:
 
 ```java
-
-private record UniformBufferObject(Matrix4x4 model, Matrix4x4 view, Matrix4x4 proj) {
+private record UniformBufferObject(Matrix4f model, Matrix4f view, Matrix4f proj) {
     public static int bufferSize() {
         return 16 * 3;
     }
 
-    public void toBuffer(FloatBuffer buffer) {
+    public void writeToBuffer(FloatBuffer buffer) {
         assert buffer.size() >= bufferSize();
 
-        model.writeToBuffer(buffer);
-        view.writeToBuffer(buffer.offset(16));
-        proj.writeToBuffer(buffer.offset(32));
+        model.get(buffer.segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+        view.get(buffer.offset(16).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+        proj.get(buffer.offset(32).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
     }
 }
 ```
@@ -279,8 +278,10 @@ private void updateUniformBuffer() {
 This function will generate a new transformation every frame to make the geometry spin around. We'll use the `Matrix4x4` provided by `vulkan4j` to create the transform matrices.
 
 ```java
+private static final long startTime = System.currentTimeMillis();
+
 private void updateUniformBuffer(int currentImage) {
-    var time = (float) System.currentTimeMillis() / 1000.0f;
+    var time = (System.currentTimeMillis() - startTime) / 1000.0f;
 }
 ```
 The `updateUniformBuffer` function will start out with some logic to calculate the time in seconds since rendering has started with floating point accuracy.
@@ -288,32 +289,37 @@ The `updateUniformBuffer` function will start out with some logic to calculate t
 We will now define the model, view and projection transformations in the uniform buffer object. The model rotation will be a simple rotation around the Z-axis using the `time` variable:
 
 ```java
-var model = Matrix4x4.rotateZ((float) (Math.toRadians(90.0f) * time));
+var model = new Matrix4f().rotate((float) (Math.toRadians(90.0f) * time), 0.0f, 0.0f, 1.0f);
 ```
 
-The `Matrix4x4.rotateZ` function takes a rotation angle as parameter. Using a rotation angle of `Math.toRadians(90.0f) * time)` accomplishes the purpose of rotation 90 degrees per second.
+The `new Matrix4f()` constructor returns an identity matrix, while the `rotate` method takes a rotation angle and a rotation axis as parameters. Using a rotation angle of `Math.toRadians(90.0f) * time)` accomplishes the purpose of rotation 90 degrees per second.
 
 ```java
-var view = Matrix4x4.lookAt(2.0f, 2.0f, 2.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f);
-```
-
-For the view transformation I've decided to look at the geometry from above at a 45-degree angle. The `Matrix4x4.lookAt` function takes the eye position, center position and up axis as parameters.
-
-```java
-var proj = Matrix4x4.perspective(
-        (float) Math.toRadians(45.0f),
-        swapChainExtent.width() / (float) swapChainExtent.height(),
-        0.1f,
-        10.0f
+var view = new Matrix4f().lookAt(
+        2.0f, 2.0f, 2.0f,
+        0.0f, 0.0f, 0.0f,
+        0.0f, 0.0f, 1.0f
 );
 ```
 
-I've chosen to use a perspective projection with a 45 degree vertical field-of-view. The other parameters are the aspect ratio, near and far view planes. It is important to use the current swap chain extent to calculate the aspect ratio to take into account the new width and height of the window after a resize.
+For the view transformation I've decided to look at the geometry from above at a 45-degree angle. The `lookAt` method takes the eye position, center position and up axis as parameters.
+
+```java
+var proj = new Matrix4f().perspective(
+        (float) Math.toRadians(45.0f),
+        swapChainExtent.width() / (float) swapChainExtent.height(),
+        0.1f,
+        10.0f,
+        true
+);
+```
+
+I've chosen to use a perspective projection with a 45 degree vertical field-of-view. The other parameters are the aspect ratio, near and far view planes. It is important to use the current swap chain extent to calculate the aspect ratio to take into account the new width and height of the window after a resize. The last parameter `zZeroToOne` decides whether to use Vulkan's `0 ~ +1` depth range or not. We'll use the `0 ~ +1` range, so we set it to `true`.
 
 All the transformations are defined now, so we can copy the data in the uniform buffer object to the current uniform buffer. This happens in exactly the same way as we did for vertex buffers, except without a staging buffer. As noted earlier, we only map the uniform buffer once, so we can directly write to it without having to map again:
 
 ```java
-new UniformBufferObject(model, view, proj).toBuffer(uniformBuffersMapped[currentFrame]);
+new UniformBufferObject(model, view, proj).writeToBuffer(uniformBuffersMapped[currentFrame]);
 ```
 
 Using a UBO this way is not the most efficient way to pass frequently changing values to the shader. A more efficient way to pass a small buffer of data to shaders are *push constants*. We may look at these in a future chapter.
