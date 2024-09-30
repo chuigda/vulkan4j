@@ -35,15 +35,15 @@ You can find more info about the layout qualifier in the [OpenGL wiki](https://w
 
 ## Vertex data
 
-We're moving the vertex data from the shader code to an array in the code of our program. Start by creating a `FloatBuffer` holding the vertex data:
+We're moving the vertex data from the shader code to an array in the code of our program. Start by creating a `float` array holding the vertex data:
 
 ```java
-private static final FloatBuffer VERTICES = FloatBuffer.allocate(Arena.global(), new float[] {
+private static final float[] VERTICES = {
         // vec2 pos     // vec3 color
         0.0f, -0.5f,    1.0f, 0.0f, 0.0f,
         0.5f,  0.5f,    0.0f, 1.0f, 0.0f,
         -0.5f,  0.5f,   0.0f, 0.0f, 1.0f
-});
+};
 ```
 
 We're using exactly the same position and color values as before, but now they're combined into one array of vertices. This is known as *interleaving* vertex attributes.

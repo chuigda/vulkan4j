@@ -35,6 +35,7 @@
 
 # Vertex buffers
 - [Vertex input description](vertex-buffers/vertex-input-description.md)
+- [Vertex buffer creation](vertex-buffers/vertex-buffer-creation.md)
 
 # Uniform buffers
 

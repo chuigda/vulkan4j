@@ -1,4 +1,4 @@
-package ch18;
+package ch19;
 
 import tech.icey.glfwmini.GLFWwindow;
 import tech.icey.glfwmini.LibGLFW;
@@ -9,10 +9,7 @@ import tech.icey.vk4j.Version;
 import tech.icey.vk4j.annotation.enumtype;
 import tech.icey.vk4j.annotation.pointer;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.ByteBuffer;
-import tech.icey.vk4j.buffer.FloatBuffer;
-import tech.icey.vk4j.buffer.IntBuffer;
-import tech.icey.vk4j.buffer.PointerBuffer;
+import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.command.DeviceCommands;
 import tech.icey.vk4j.command.EntryCommands;
 import tech.icey.vk4j.command.InstanceCommands;
@@ -84,6 +81,7 @@ class Application {
         createGraphicsPipeline();
         createFramebuffers();
         createCommandPool();
+        createVertexBuffer();
         createCommandBuffers();
         createSyncObjects();
     }
@@ -105,6 +103,8 @@ class Application {
         }
         deviceCommands.vkDestroyCommandPool(device, commandPool, null);
         cleanupSwapChain();
+        deviceCommands.vkDestroyBuffer(device, vertexBuffer, null);
+        deviceCommands.vkFreeMemory(device, vertexBufferMemory, null);
         deviceCommands.vkDestroyPipeline(device, graphicsPipeline, null);
         deviceCommands.vkDestroyPipelineLayout(device, pipelineLayout, null);
         deviceCommands.vkDestroyRenderPass(device, renderPass, null);
@@ -639,6 +639,52 @@ class Application {
         }
     }
 
+    private void createVertexBuffer() {
+        try (var arena = Arena.ofConfined()) {
+            var bufferInfo = VkBufferCreateInfo.allocate(arena);
+            bufferInfo.size(VERTICES.length * Float.BYTES);
+            bufferInfo.usage(VkBufferUsageFlags.VK_BUFFER_USAGE_VERTEX_BUFFER_BIT);
+            bufferInfo.sharingMode(VkSharingMode.VK_SHARING_MODE_EXCLUSIVE);
+
+            var pBuffer = VkBuffer.Buffer.allocate(arena);
+            var result = deviceCommands.vkCreateBuffer(device, bufferInfo, null, pBuffer);
+            if (result != VkResult.VK_SUCCESS) {
+                throw new RuntimeException("Failed to create vertex buffer, vulkan error code: " + VkResult.explain(result));
+            }
+
+            vertexBuffer = pBuffer.read();
+
+            var memRequirements = VkMemoryRequirements.allocate(arena);
+            deviceCommands.vkGetBufferMemoryRequirements(device, vertexBuffer, memRequirements);
+
+            var allocInfo = VkMemoryAllocateInfo.allocate(arena);
+            allocInfo.allocationSize(memRequirements.size());
+            allocInfo.memoryTypeIndex(findMemoryType(
+                    memRequirements.memoryTypeBits(),
+                    VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT
+                    | VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_HOST_COHERENT_BIT
+            ));
+
+            var pVertexBufferMemory = VkDeviceMemory.Buffer.allocate(arena);
+            result = deviceCommands.vkAllocateMemory(device, allocInfo, null, pVertexBufferMemory);
+            if (result != VkResult.VK_SUCCESS) {
+                throw new RuntimeException("Failed to allocate vertex buffer memory, vulkan error code: " + VkResult.explain(result));
+            }
+            vertexBufferMemory = pVertexBufferMemory.read();
+
+            deviceCommands.vkBindBufferMemory(device, vertexBuffer, vertexBufferMemory, 0);
+
+            var ppData = PointerBuffer.allocate(arena);
+            result = deviceCommands.vkMapMemory(device, vertexBufferMemory, 0, bufferInfo.size(), 0, ppData.segment());
+            if (result != VkResult.VK_SUCCESS) {
+                throw new RuntimeException("Failed to map vertex buffer memory, vulkan error code: " + VkResult.explain(result));
+            }
+            var pData = ppData.read().reinterpret(bufferInfo.size());
+            pData.copyFrom(MemorySegment.ofArray(VERTICES));
+            deviceCommands.vkUnmapMemory(device, vertexBufferMemory);
+        }
+    }
+
     private void createCommandBuffers() {
         try (var arena = Arena.ofConfined()) {
             var allocInfo = VkCommandBufferAllocateInfo.allocate(arena);
@@ -1055,6 +1101,12 @@ class Application {
             scissor.extent(swapChainExtent);
             deviceCommands.vkCmdSetScissor(commandBuffer, 0, 1, scissor);
 
+            var vertexBuffers = VkBuffer.Buffer.allocate(arena);
+            vertexBuffers.write(vertexBuffer);
+            var offsets = LongBuffer.allocate(arena);
+            offsets.write(0);
+            deviceCommands.vkCmdBindVertexBuffers(commandBuffer, 0, 1, vertexBuffers, offsets);
+
             deviceCommands.vkCmdDraw(commandBuffer, 3, 1, 0, 0);
             deviceCommands.vkCmdEndRenderPass(commandBuffer);
 
@@ -1071,6 +1123,22 @@ class Application {
             int height
     ) {
         framebufferResized = true;
+    }
+
+    private int findMemoryType(int typeFilter, @enumtype(VkMemoryPropertyFlags.class) int properties) {
+        try (var arena = Arena.ofConfined()) {
+            var memProperties = VkPhysicalDeviceMemoryProperties.allocate(arena);
+            instanceCommands.vkGetPhysicalDeviceMemoryProperties(physicalDevice, memProperties);
+
+            for (int i = 0; i < memProperties.memoryTypeCount(); i++) {
+                if ((typeFilter & (1 << i)) != 0 &&
+                        (memProperties.memoryTypesAt(i).propertyFlags() & properties) == properties) {
+                    return i;
+                }
+            }
+
+            throw new RuntimeException("Failed to find suitable memory type");
+        }
     }
 
     private Arena applicationArena = Arena.ofShared();
@@ -1099,6 +1167,8 @@ class Application {
     private VkPipeline graphicsPipeline;
     private VkFramebuffer[] swapChainFramebuffers;
     private VkCommandPool commandPool;
+    private VkBuffer vertexBuffer;
+    private VkDeviceMemory vertexBufferMemory;
     private VkCommandBuffer[] commandBuffers;
     private VkSemaphore[] imageAvailableSemaphores;
     private VkSemaphore[] renderFinishedSemaphores;
