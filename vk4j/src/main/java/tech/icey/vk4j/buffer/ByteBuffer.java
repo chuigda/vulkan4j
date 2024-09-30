@@ -41,6 +41,10 @@ public record ByteBuffer(MemorySegment segment) implements IPointer {
         return new ByteBuffer(segment.reinterpret(newSize));
     }
 
+    public ByteBuffer offset(long offset) {
+        return new ByteBuffer(segment.asSlice(offset));
+    }
+
     public static ByteBuffer allocate(Arena arena) {
         return new ByteBuffer(arena.allocate(1));
     }

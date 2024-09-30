@@ -33,6 +33,10 @@ public record DoubleBuffer(MemorySegment segment) implements IPointer {
         return new DoubleBuffer(segment.reinterpret(newSize * Double.BYTES));
     }
 
+    public DoubleBuffer offset(long offset) {
+        return new DoubleBuffer(segment.asSlice(offset * Double.BYTES));
+    }
+
     public static DoubleBuffer allocate(Arena arena) {
         return new DoubleBuffer(arena.allocate(ValueLayout.JAVA_DOUBLE));
     }

@@ -33,6 +33,10 @@ public record ShortBuffer(MemorySegment segment) implements IPointer {
         return new ShortBuffer(segment.reinterpret(newSize * Short.BYTES));
     }
 
+    public ShortBuffer offset(long offset) {
+        return new ShortBuffer(segment.asSlice(offset * Short.BYTES));
+    }
+
     public static ShortBuffer allocate(Arena arena) {
         return new ShortBuffer(arena.allocate(ValueLayout.JAVA_SHORT));
     }

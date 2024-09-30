@@ -33,6 +33,10 @@ public record FloatBuffer(MemorySegment segment) implements IPointer {
         return new FloatBuffer(segment.reinterpret(newSize * Float.BYTES));
     }
 
+    public FloatBuffer offset(long offset) {
+        return new FloatBuffer(segment.asSlice(offset * Float.BYTES));
+    }
+
     public static FloatBuffer allocate(Arena arena) {
         return new FloatBuffer(arena.allocate(ValueLayout.JAVA_FLOAT));
     }

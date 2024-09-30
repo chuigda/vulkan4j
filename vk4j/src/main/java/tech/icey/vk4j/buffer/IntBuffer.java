@@ -33,6 +33,10 @@ public record IntBuffer(MemorySegment segment) implements IPointer {
         return new IntBuffer(segment.reinterpret(newSize * Integer.BYTES));
     }
 
+    public IntBuffer offset(long offset) {
+        return new IntBuffer(segment.asSlice(offset * Integer.BYTES));
+    }
+
     public static IntBuffer allocate(Arena arena) {
         return new IntBuffer(arena.allocate(ValueLayout.JAVA_INT));
     }

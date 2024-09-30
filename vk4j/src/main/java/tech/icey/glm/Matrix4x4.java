@@ -127,12 +127,22 @@ public record Matrix4x4(float m00, float m01, float m02, float m03,
 
     public static Matrix4x4 perspective(float fovy, float aspect, float zNear, float zFar) {
         float f = 1.0f / (float)Math.tan(fovy / 2.0f);
-        return new Matrix4x4(
+        Matrix4x4 glmPerspective = new Matrix4x4(
                 f / aspect, 0, 0, 0,
                 0, f, 0, 0,
                 0, 0, (zFar + zNear) / (zNear - zFar), -1,
                 0, 0, 2 * zFar * zNear / (zNear - zFar), 0
         );
+
+        // see https://matthewwellings.com/blog/the-new-vulkan-coordinate-system/
+        // also see https://github.com/KyleMayes/vulkanalia/pull/184#discussion_r1315674228
+        Matrix4x4 correction = new Matrix4x4(
+                1, 0, 0, 0,
+                0, -1, 0, 0,
+                0, 0, 0.5f, 0.5f,
+                0, 0, 0, 1
+        );
+        return mtimes(correction, glmPerspective);
     }
 
     public static Matrix4x4 rotateX(float angle) {
@@ -183,6 +193,44 @@ public record Matrix4x4(float m00, float m01, float m02, float m03,
                 0, y, 0, 0,
                 0, 0, z, 0,
                 0, 0, 0, 1
+        );
+    }
+
+    public static Matrix4x4 lookAt(
+            float eyeX, float eyeY, float eyeZ,
+            float centerX, float centerY, float centerZ,
+            float upX, float upY, float upZ
+    ) {
+        float fx = centerX - eyeX;
+        float fy = centerY - eyeY;
+        float fz = centerZ - eyeZ;
+
+        float rlf = 1.0f / (float)Math.sqrt(fx * fx + fy * fy + fz * fz);
+        fx *= rlf;
+        fy *= rlf;
+        fz *= rlf;
+
+        float sx = fy * upZ - fz * upY;
+        float sy = fz * upX - fx * upZ;
+        float sz = fx * upY - fy * upX;
+
+        float rls = 1.0f / (float)Math.sqrt(sx * sx + sy * sy + sz * sz);
+        sx *= rls;
+        sy *= rls;
+        sz *= rls;
+
+        float ux = sy * fz - sz * fy;
+        float uy = sz * fx - sx * fz;
+        float uz = sx * fy - sy * fx;
+
+        return new Matrix4x4(
+                sx, ux, -fx, 0,
+                sy, uy, -fy, 0,
+                sz, uz, -fz, 0,
+                -sx * eyeX - sy * eyeY - sz * eyeZ,
+                -ux * eyeX - uy * eyeY - uz * eyeZ,
+                fx * eyeX + fy * eyeY + fz * eyeZ,
+                1
         );
     }
 }

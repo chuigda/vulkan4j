@@ -40,6 +40,7 @@
 - [Index buffer](vertex-buffers/index-buffer.md)
 
 # Uniform buffers
+- [Descriptor set layout and buffer](uniform-buffers/descriptor-set-layout-and-buffer.md)
 
 # Texture mapping
 

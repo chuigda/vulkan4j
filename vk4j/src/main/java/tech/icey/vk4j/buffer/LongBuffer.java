@@ -33,6 +33,10 @@ public record LongBuffer(MemorySegment segment) implements IPointer {
         return new LongBuffer(segment.reinterpret(newSize * Long.BYTES));
     }
 
+    public LongBuffer offset(long offset) {
+        return new LongBuffer(segment.asSlice(offset * Long.BYTES));
+    }
+
     public static LongBuffer allocate(Arena arena) {
         return new LongBuffer(arena.allocate(ValueLayout.JAVA_LONG));
     }
