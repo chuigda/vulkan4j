@@ -40,4 +40,15 @@ public record LongBuffer(MemorySegment segment) implements IPointer {
     public static LongBuffer allocate(Arena arena, long size) {
         return new LongBuffer(arena.allocate(ValueLayout.JAVA_LONG, size));
     }
+
+    public static LongBuffer allocate(Arena arena, long[] array) {
+        return new LongBuffer(arena.allocateFrom(ValueLayout.JAVA_LONG, array));
+    }
+
+    public static LongBuffer allocate(Arena arena, byte[] bytes) {
+        assert bytes.length % Long.BYTES == 0;
+        var s = arena.allocate(ValueLayout.JAVA_LONG, bytes.length / Long.BYTES);
+        s.copyFrom(MemorySegment.ofArray(bytes));
+        return new LongBuffer(s);
+    }
 }

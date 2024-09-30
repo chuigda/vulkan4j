@@ -862,9 +862,7 @@ class Application {
             var bytes = stream.readAllBytes();
             assert bytes.length % Integer.BYTES == 0;
 
-            var buffer = IntBuffer.allocate(arena, bytes.length / Integer.BYTES);
-            buffer.segment().copyFrom(MemorySegment.ofArray(bytes));
-            return buffer;
+            return IntBuffer.allocate(arena, bytes);
         }
         catch (IOException e) {
             throw new RuntimeException("Failed to read shader file: " + filename, e);

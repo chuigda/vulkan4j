@@ -56,4 +56,8 @@ public record ByteBuffer(MemorySegment segment) implements IPointer {
     public static ByteBuffer allocateString(Arena arena, String s) {
         return new ByteBuffer(arena.allocateFrom(s));
     }
+
+    public static ByteBuffer allocateFrom(Arena arena, byte[] bytes) {
+        return new ByteBuffer(arena.allocateFrom(ValueLayout.JAVA_BYTE, bytes));
+    }
 }

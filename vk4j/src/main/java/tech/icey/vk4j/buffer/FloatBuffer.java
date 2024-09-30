@@ -40,4 +40,15 @@ public record FloatBuffer(MemorySegment segment) implements IPointer {
     public static FloatBuffer allocate(Arena arena, long size) {
         return new FloatBuffer(arena.allocate(ValueLayout.JAVA_FLOAT, size));
     }
+
+    public static FloatBuffer allocate(Arena arena, float[] array) {
+        return new FloatBuffer(arena.allocateFrom(ValueLayout.JAVA_FLOAT, array));
+    }
+
+    public static FloatBuffer allocate(Arena arena, byte[] bytes) {
+        assert bytes.length % Float.BYTES == 0;
+        var s = arena.allocate(ValueLayout.JAVA_FLOAT, bytes.length / Float.BYTES);
+        s.copyFrom(MemorySegment.ofArray(bytes));
+        return new FloatBuffer(s);
+    }
 }

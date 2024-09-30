@@ -40,4 +40,15 @@ public record ShortBuffer(MemorySegment segment) implements IPointer {
     public static ShortBuffer allocate(Arena arena, long size) {
         return new ShortBuffer(arena.allocate(ValueLayout.JAVA_SHORT, size));
     }
+
+    public static ShortBuffer allocate(Arena arena, short[] array) {
+        return new ShortBuffer(arena.allocateFrom(ValueLayout.JAVA_SHORT, array));
+    }
+
+    public static ShortBuffer allocate(Arena arena, byte[] bytes) {
+        assert bytes.length % Short.BYTES == 0;
+        var s = arena.allocate(ValueLayout.JAVA_SHORT, bytes.length / Short.BYTES);
+        s.copyFrom(MemorySegment.ofArray(bytes));
+        return new ShortBuffer(s);
+    }
 }

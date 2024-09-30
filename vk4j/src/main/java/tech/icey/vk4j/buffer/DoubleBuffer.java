@@ -40,4 +40,15 @@ public record DoubleBuffer(MemorySegment segment) implements IPointer {
     public static DoubleBuffer allocate(Arena arena, long size) {
         return new DoubleBuffer(arena.allocate(ValueLayout.JAVA_DOUBLE, size));
     }
+
+    public static DoubleBuffer allocate(Arena arena, double[] array) {
+        return new DoubleBuffer(arena.allocateFrom(ValueLayout.JAVA_DOUBLE, array));
+    }
+
+    public static DoubleBuffer allocate(Arena arena, byte[] bytes) {
+        assert bytes.length % Double.BYTES == 0;
+        var s = arena.allocate(ValueLayout.JAVA_DOUBLE, bytes.length / Double.BYTES);
+        s.copyFrom(MemorySegment.ofArray(bytes));
+        return new DoubleBuffer(s);
+    }
 }

@@ -40,4 +40,15 @@ public record IntBuffer(MemorySegment segment) implements IPointer {
     public static IntBuffer allocate(Arena arena, long size) {
         return new IntBuffer(arena.allocate(ValueLayout.JAVA_INT, size));
     }
+
+    public static IntBuffer allocate(Arena arena, int[] array) {
+        return new IntBuffer(arena.allocateFrom(ValueLayout.JAVA_INT, array));
+    }
+
+    public static IntBuffer allocate(Arena arena, byte[] bytes) {
+        assert bytes.length % Integer.BYTES == 0;
+        var s = arena.allocate(ValueLayout.JAVA_INT, bytes.length / Integer.BYTES);
+        s.copyFrom(MemorySegment.ofArray(bytes));
+        return new IntBuffer(s);
+    }
 }
