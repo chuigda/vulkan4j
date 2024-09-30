@@ -4574,14 +4574,14 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkQueueSubmit(
             VkQueue queue,
             @unsigned int submitCount,
-            @pointer(target=VkSubmitInfo.class) VkSubmitInfo pSubmits,
+            @nullable @pointer(target=VkSubmitInfo.class) VkSubmitInfo pSubmits,
             @nullable VkFence fence
     ) {
         try {
             return (int) HANDLE$vkQueueSubmit.invokeExact(
                     queue.segment(),
                     submitCount,
-                    pSubmits.segment(),
+                    (MemorySegment) (pSubmits != null ? pSubmits.segment() : MemorySegment.NULL),
                     (MemorySegment) (fence != null ? fence.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -4835,14 +4835,14 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkQueueBindSparse(
             VkQueue queue,
             @unsigned int bindInfoCount,
-            @pointer(target=VkBindSparseInfo.class) VkBindSparseInfo pBindInfo,
+            @nullable @pointer(target=VkBindSparseInfo.class) VkBindSparseInfo pBindInfo,
             @nullable VkFence fence
     ) {
         try {
             return (int) HANDLE$vkQueueBindSparse.invokeExact(
                     queue.segment(),
                     bindInfoCount,
-                    pBindInfo.segment(),
+                    (MemorySegment) (pBindInfo != null ? pBindInfo.segment() : MemorySegment.NULL),
                     (MemorySegment) (fence != null ? fence.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -5783,17 +5783,17 @@ public final class DeviceCommands {
     public void vkUpdateDescriptorSets(
             VkDevice device,
             @unsigned int descriptorWriteCount,
-            @pointer(target=VkWriteDescriptorSet.class) VkWriteDescriptorSet pDescriptorWrites,
+            @nullable @pointer(target=VkWriteDescriptorSet.class) VkWriteDescriptorSet pDescriptorWrites,
             @unsigned int descriptorCopyCount,
-            @pointer(target=VkCopyDescriptorSet.class) VkCopyDescriptorSet pDescriptorCopies
+            @nullable @pointer(target=VkCopyDescriptorSet.class) VkCopyDescriptorSet pDescriptorCopies
     ) {
         try {
             HANDLE$vkUpdateDescriptorSets.invokeExact(
                     device.segment(),
                     descriptorWriteCount,
-                    pDescriptorWrites.segment(),
+                    (MemorySegment) (pDescriptorWrites != null ? pDescriptorWrites.segment() : MemorySegment.NULL),
                     descriptorCopyCount,
-                    pDescriptorCopies.segment()
+                    (MemorySegment) (pDescriptorCopies != null ? pDescriptorCopies.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -6234,7 +6234,7 @@ public final class DeviceCommands {
             @unsigned int descriptorSetCount,
             @pointer(target=VkDescriptorSet.class) VkDescriptorSet.Buffer pDescriptorSets,
             @unsigned int dynamicOffsetCount,
-             @unsigned IntBuffer pDynamicOffsets
+            @nullable  @unsigned IntBuffer pDynamicOffsets
     ) {
         try {
             HANDLE$vkCmdBindDescriptorSets.invokeExact(
@@ -6245,7 +6245,7 @@ public final class DeviceCommands {
                     descriptorSetCount,
                     pDescriptorSets.segment(),
                     dynamicOffsetCount,
-                    pDynamicOffsets.segment()
+                    (MemorySegment) (pDynamicOffsets != null ? pDynamicOffsets.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -6340,7 +6340,7 @@ public final class DeviceCommands {
     public void vkCmdDrawMultiEXT(
             VkCommandBuffer commandBuffer,
             @unsigned int drawCount,
-            @pointer(target=VkMultiDrawInfoEXT.class) VkMultiDrawInfoEXT pVertexInfo,
+            @nullable @pointer(target=VkMultiDrawInfoEXT.class) VkMultiDrawInfoEXT pVertexInfo,
             @unsigned int instanceCount,
             @unsigned int firstInstance,
             @unsigned int stride
@@ -6349,7 +6349,7 @@ public final class DeviceCommands {
             HANDLE$vkCmdDrawMultiEXT.invokeExact(
                     commandBuffer.segment(),
                     drawCount,
-                    pVertexInfo.segment(),
+                    (MemorySegment) (pVertexInfo != null ? pVertexInfo.segment() : MemorySegment.NULL),
                     instanceCount,
                     firstInstance,
                     stride
@@ -6363,7 +6363,7 @@ public final class DeviceCommands {
     public void vkCmdDrawMultiIndexedEXT(
             VkCommandBuffer commandBuffer,
             @unsigned int drawCount,
-            @pointer(target=VkMultiDrawIndexedInfoEXT.class) VkMultiDrawIndexedInfoEXT pIndexInfo,
+            @nullable @pointer(target=VkMultiDrawIndexedInfoEXT.class) VkMultiDrawIndexedInfoEXT pIndexInfo,
             @unsigned int instanceCount,
             @unsigned int firstInstance,
             @unsigned int stride,
@@ -6373,7 +6373,7 @@ public final class DeviceCommands {
             HANDLE$vkCmdDrawMultiIndexedEXT.invokeExact(
                     commandBuffer.segment(),
                     drawCount,
-                    pIndexInfo.segment(),
+                    (MemorySegment) (pIndexInfo != null ? pIndexInfo.segment() : MemorySegment.NULL),
                     instanceCount,
                     firstInstance,
                     stride,
@@ -6867,11 +6867,11 @@ public final class DeviceCommands {
             @enumtype(VkPipelineStageFlags.class) int srcStageMask,
             @enumtype(VkPipelineStageFlags.class) int dstStageMask,
             @unsigned int memoryBarrierCount,
-            @pointer(target=VkMemoryBarrier.class) VkMemoryBarrier pMemoryBarriers,
+            @nullable @pointer(target=VkMemoryBarrier.class) VkMemoryBarrier pMemoryBarriers,
             @unsigned int bufferMemoryBarrierCount,
-            @pointer(target=VkBufferMemoryBarrier.class) VkBufferMemoryBarrier pBufferMemoryBarriers,
+            @nullable @pointer(target=VkBufferMemoryBarrier.class) VkBufferMemoryBarrier pBufferMemoryBarriers,
             @unsigned int imageMemoryBarrierCount,
-            @pointer(target=VkImageMemoryBarrier.class) VkImageMemoryBarrier pImageMemoryBarriers
+            @nullable @pointer(target=VkImageMemoryBarrier.class) VkImageMemoryBarrier pImageMemoryBarriers
     ) {
         try {
             HANDLE$vkCmdWaitEvents.invokeExact(
@@ -6881,11 +6881,11 @@ public final class DeviceCommands {
                     srcStageMask,
                     dstStageMask,
                     memoryBarrierCount,
-                    pMemoryBarriers.segment(),
+                    (MemorySegment) (pMemoryBarriers != null ? pMemoryBarriers.segment() : MemorySegment.NULL),
                     bufferMemoryBarrierCount,
-                    pBufferMemoryBarriers.segment(),
+                    (MemorySegment) (pBufferMemoryBarriers != null ? pBufferMemoryBarriers.segment() : MemorySegment.NULL),
                     imageMemoryBarrierCount,
-                    pImageMemoryBarriers.segment()
+                    (MemorySegment) (pImageMemoryBarriers != null ? pImageMemoryBarriers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -6899,11 +6899,11 @@ public final class DeviceCommands {
             @enumtype(VkPipelineStageFlags.class) int dstStageMask,
             @enumtype(VkDependencyFlags.class) int dependencyFlags,
             @unsigned int memoryBarrierCount,
-            @pointer(target=VkMemoryBarrier.class) VkMemoryBarrier pMemoryBarriers,
+            @nullable @pointer(target=VkMemoryBarrier.class) VkMemoryBarrier pMemoryBarriers,
             @unsigned int bufferMemoryBarrierCount,
-            @pointer(target=VkBufferMemoryBarrier.class) VkBufferMemoryBarrier pBufferMemoryBarriers,
+            @nullable @pointer(target=VkBufferMemoryBarrier.class) VkBufferMemoryBarrier pBufferMemoryBarriers,
             @unsigned int imageMemoryBarrierCount,
-            @pointer(target=VkImageMemoryBarrier.class) VkImageMemoryBarrier pImageMemoryBarriers
+            @nullable @pointer(target=VkImageMemoryBarrier.class) VkImageMemoryBarrier pImageMemoryBarriers
     ) {
         try {
             HANDLE$vkCmdPipelineBarrier.invokeExact(
@@ -6912,11 +6912,11 @@ public final class DeviceCommands {
                     dstStageMask,
                     dependencyFlags,
                     memoryBarrierCount,
-                    pMemoryBarriers.segment(),
+                    (MemorySegment) (pMemoryBarriers != null ? pMemoryBarriers.segment() : MemorySegment.NULL),
                     bufferMemoryBarrierCount,
-                    pBufferMemoryBarriers.segment(),
+                    (MemorySegment) (pBufferMemoryBarriers != null ? pBufferMemoryBarriers.segment() : MemorySegment.NULL),
                     imageMemoryBarrierCount,
-                    pImageMemoryBarriers.segment()
+                    (MemorySegment) (pImageMemoryBarriers != null ? pImageMemoryBarriers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -9118,7 +9118,7 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int firstCounterBuffer,
             @unsigned int counterBufferCount,
-            @pointer(target=VkBuffer.class) VkBuffer.Buffer pCounterBuffers,
+            @nullable @pointer(target=VkBuffer.class) VkBuffer.Buffer pCounterBuffers,
             @nullable  @unsigned LongBuffer pCounterBufferOffsets
     ) {
         try {
@@ -9126,7 +9126,7 @@ public final class DeviceCommands {
                     commandBuffer.segment(),
                     firstCounterBuffer,
                     counterBufferCount,
-                    pCounterBuffers.segment(),
+                    (MemorySegment) (pCounterBuffers != null ? pCounterBuffers.segment() : MemorySegment.NULL),
                     (MemorySegment) (pCounterBufferOffsets != null ? pCounterBufferOffsets.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -9139,7 +9139,7 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int firstCounterBuffer,
             @unsigned int counterBufferCount,
-            @pointer(target=VkBuffer.class) VkBuffer.Buffer pCounterBuffers,
+            @nullable @pointer(target=VkBuffer.class) VkBuffer.Buffer pCounterBuffers,
             @nullable  @unsigned LongBuffer pCounterBufferOffsets
     ) {
         try {
@@ -9147,7 +9147,7 @@ public final class DeviceCommands {
                     commandBuffer.segment(),
                     firstCounterBuffer,
                     counterBufferCount,
-                    pCounterBuffers.segment(),
+                    (MemorySegment) (pCounterBuffers != null ? pCounterBuffers.segment() : MemorySegment.NULL),
                     (MemorySegment) (pCounterBufferOffsets != null ? pCounterBufferOffsets.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
@@ -9299,14 +9299,14 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @enumtype(VkCoarseSampleOrderTypeNV.class) int sampleOrderType,
             @unsigned int customSampleOrderCount,
-            @pointer(target=VkCoarseSampleOrderCustomNV.class) VkCoarseSampleOrderCustomNV pCustomSampleOrders
+            @nullable @pointer(target=VkCoarseSampleOrderCustomNV.class) VkCoarseSampleOrderCustomNV pCustomSampleOrders
     ) {
         try {
             HANDLE$vkCmdSetCoarseSampleOrderNV.invokeExact(
                     commandBuffer.segment(),
                     sampleOrderType,
                     customSampleOrderCount,
-                    pCustomSampleOrders.segment()
+                    (MemorySegment) (pCustomSampleOrders != null ? pCustomSampleOrders.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -11804,17 +11804,17 @@ public final class DeviceCommands {
     public void vkCmdSetVertexInputEXT(
             VkCommandBuffer commandBuffer,
             @unsigned int vertexBindingDescriptionCount,
-            @pointer(target=VkVertexInputBindingDescription2EXT.class) VkVertexInputBindingDescription2EXT pVertexBindingDescriptions,
+            @nullable @pointer(target=VkVertexInputBindingDescription2EXT.class) VkVertexInputBindingDescription2EXT pVertexBindingDescriptions,
             @unsigned int vertexAttributeDescriptionCount,
-            @pointer(target=VkVertexInputAttributeDescription2EXT.class) VkVertexInputAttributeDescription2EXT pVertexAttributeDescriptions
+            @nullable @pointer(target=VkVertexInputAttributeDescription2EXT.class) VkVertexInputAttributeDescription2EXT pVertexAttributeDescriptions
     ) {
         try {
             HANDLE$vkCmdSetVertexInputEXT.invokeExact(
                     commandBuffer.segment(),
                     vertexBindingDescriptionCount,
-                    pVertexBindingDescriptions.segment(),
+                    (MemorySegment) (pVertexBindingDescriptions != null ? pVertexBindingDescriptions.segment() : MemorySegment.NULL),
                     vertexAttributeDescriptionCount,
-                    pVertexAttributeDescriptions.segment()
+                    (MemorySegment) (pVertexAttributeDescriptions != null ? pVertexAttributeDescriptions.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -11910,14 +11910,14 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkQueueSubmit2(
             VkQueue queue,
             @unsigned int submitCount,
-            @pointer(target=VkSubmitInfo2.class) VkSubmitInfo2 pSubmits,
+            @nullable @pointer(target=VkSubmitInfo2.class) VkSubmitInfo2 pSubmits,
             @nullable VkFence fence
     ) {
         try {
             return (int) HANDLE$vkQueueSubmit2.invokeExact(
                     queue.segment(),
                     submitCount,
-                    pSubmits.segment(),
+                    (MemorySegment) (pSubmits != null ? pSubmits.segment() : MemorySegment.NULL),
                     (MemorySegment) (fence != null ? fence.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {

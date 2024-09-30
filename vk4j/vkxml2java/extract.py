@@ -1,5 +1,4 @@
 import re
-import sys
 from typing import Pattern
 from xml.dom.minidom import Element, Node, Document
 
@@ -197,6 +196,7 @@ def extract_command(e: Element) -> Command:
     name = get_element_text(find(proto, 'name'))
     api = get_attr(e, 'api')
     params = list(filter(lambda x: x is not None, map(extract_param, findall(e, 'param'))))
+    postprocess_optional_params(params)
     result = extract_type(find(proto, 'type'))
 
     if e.hasAttribute('successcodes'):
@@ -230,6 +230,18 @@ def extract_param(e: Element) -> Param | None:
     optional = e.getAttribute('optional').startswith('true') if e.hasAttribute('optional') else False
 
     return Param(name, api, type_, len_, arglen, optional)
+
+
+def postprocess_optional_params(param_list: list[Param]):
+    for param in param_list:
+        if param.len is not None:
+            has_optional_len = False
+            for tmp in param_list:
+                if tmp is not param and tmp.name == param.len and tmp.optional:
+                    has_optional_len = True
+                    break
+            if has_optional_len:
+                param.optional = True
 
 
 def extract_command_alias(e: Element) -> CommandAlias:

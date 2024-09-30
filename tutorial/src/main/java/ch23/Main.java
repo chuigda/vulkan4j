@@ -1,4 +1,4 @@
-package ch22;
+package ch23;
 
 import tech.icey.glfwmini.GLFWwindow;
 import tech.icey.glfwmini.LibGLFW;
@@ -86,6 +86,8 @@ class Application {
         createVertexBuffer();
         createIndexBuffer();
         createUniformBuffers();
+        createDescriptorPool();
+        createDescriptorSets();
         createCommandBuffers();
         createSyncObjects();
     }
@@ -117,6 +119,7 @@ class Application {
             deviceCommands.vkDestroyBuffer(device, uniformBuffers[i], null);
             deviceCommands.vkFreeMemory(device, uniformBuffersMemory[i], null);
         }
+        deviceCommands.vkDestroyDescriptorPool(device, descriptorPool, null);
         deviceCommands.vkDestroyDescriptorSetLayout(device, descriptorSetLayout, null);
         deviceCommands.vkDestroyRenderPass(device, renderPass, null);
         deviceCommands.vkDestroyDevice(device, null);
@@ -546,8 +549,8 @@ class Application {
             rasterizer.rasterizerDiscardEnable(Constants.VK_FALSE);
             rasterizer.polygonMode(VkPolygonMode.VK_POLYGON_MODE_FILL);
             rasterizer.lineWidth(1.0f);
-            rasterizer.cullMode(VkCullModeFlags.VK_CULL_MODE_BACK_BIT);
-            rasterizer.frontFace(VkFrontFace.VK_FRONT_FACE_CLOCKWISE);
+            rasterizer.cullMode(VkCullModeFlags.VK_CULL_MODE_NONE);
+            rasterizer.frontFace(VkFrontFace.VK_FRONT_FACE_COUNTER_CLOCKWISE);
             rasterizer.depthBiasEnable(Constants.VK_FALSE);
             rasterizer.depthBiasConstantFactor(0.0f);
             rasterizer.depthBiasClamp(0.0f);
@@ -783,6 +786,65 @@ class Application {
                 }
 
                 uniformBuffersMapped[i] = new FloatBuffer(pMappedMemory.read()).reinterpret(bufferSize);
+            }
+        }
+    }
+
+    private void createDescriptorPool() {
+        try (var arena = Arena.ofConfined()) {
+            var poolSize = VkDescriptorPoolSize.allocate(arena);
+            poolSize.type(VkDescriptorType.VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER);
+            poolSize.descriptorCount(MAX_FRAMES_IN_FLIGHT);
+
+            var poolInfo = VkDescriptorPoolCreateInfo.allocate(arena);
+            poolInfo.poolSizeCount(1);
+            poolInfo.pPoolSizes(poolSize);
+            poolInfo.maxSets(MAX_FRAMES_IN_FLIGHT);
+
+            var pDescriptorPool = VkDescriptorPool.Buffer.allocate(arena);
+            var result = deviceCommands.vkCreateDescriptorPool(device, poolInfo, null, pDescriptorPool);
+            if (result != VkResult.VK_SUCCESS) {
+                throw new RuntimeException("Failed to create descriptor pool, vulkan error code: " + VkResult.explain(result));
+            }
+            descriptorPool = pDescriptorPool.read();
+        }
+    }
+
+    private void createDescriptorSets() {
+        try (var arena = Arena.ofConfined()) {
+            var pLayouts = VkDescriptorSetLayout.Buffer.allocate(arena, MAX_FRAMES_IN_FLIGHT);
+            pLayouts.write(0, descriptorSetLayout);
+            pLayouts.write(1, descriptorSetLayout);
+
+            var allocInfo = VkDescriptorSetAllocateInfo.allocate(arena);
+            allocInfo.descriptorPool(descriptorPool);
+            allocInfo.descriptorSetCount(MAX_FRAMES_IN_FLIGHT);
+            allocInfo.pSetLayouts(pLayouts);
+
+            var pDescriptorSets = VkDescriptorSet.Buffer.allocate(arena, MAX_FRAMES_IN_FLIGHT);
+            var result = deviceCommands.vkAllocateDescriptorSets(device, allocInfo, pDescriptorSets);
+            if (result != VkResult.VK_SUCCESS) {
+                throw new RuntimeException("Failed to allocate descriptor sets, vulkan error code: " + VkResult.explain(result));
+            }
+            descriptorSets = pDescriptorSets.readAll();
+
+            for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
+                var bufferInfo = VkDescriptorBufferInfo.allocate(arena);
+                bufferInfo.buffer(uniformBuffers[i]);
+                bufferInfo.offset(0);
+                bufferInfo.range((long) UniformBufferObject.bufferSize() * Float.BYTES);
+
+                var descriptorWrite = VkWriteDescriptorSet.allocate(arena);
+                descriptorWrite.dstSet(descriptorSets[i]);
+                descriptorWrite.dstBinding(0);
+                descriptorWrite.dstArrayElement(0);
+                descriptorWrite.descriptorType(VkDescriptorType.VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER);
+                descriptorWrite.descriptorCount(1);
+                descriptorWrite.pBufferInfo(bufferInfo);
+                descriptorWrite.pImageInfo(null);
+                descriptorWrite.pTexelBufferView(null);
+
+                deviceCommands.vkUpdateDescriptorSets(device, 1, descriptorWrite, 0, null);
             }
         }
     }
@@ -1212,6 +1274,19 @@ class Application {
             deviceCommands.vkCmdBindVertexBuffers(commandBuffer, 0, 1, vertexBuffers, offsets);
             deviceCommands.vkCmdBindIndexBuffer(commandBuffer, indexBuffer, 0, VkIndexType.VK_INDEX_TYPE_UINT16);
 
+            var pDescriptorSet = VkDescriptorSet.Buffer.allocate(arena);
+            pDescriptorSet.write(descriptorSets[currentFrame]);
+            deviceCommands.vkCmdBindDescriptorSets(
+                    commandBuffer,
+                    VkPipelineBindPoint.VK_PIPELINE_BIND_POINT_GRAPHICS,
+                    pipelineLayout,
+                    0,
+                    1,
+                    pDescriptorSet,
+                    0,
+                    null
+            );
+
             deviceCommands.vkCmdDrawIndexed(commandBuffer, INDICES.length, 1, 0, 0, 0);
             deviceCommands.vkCmdEndRenderPass(commandBuffer);
 
@@ -1392,6 +1467,8 @@ class Application {
     private VkBuffer[] uniformBuffers;
     private VkDeviceMemory[] uniformBuffersMemory;
     private FloatBuffer[] uniformBuffersMapped;
+    private VkDescriptorPool descriptorPool;
+    private VkDescriptorSet[] descriptorSets;
     private VkCommandBuffer[] commandBuffers;
     private VkSemaphore[] imageAvailableSemaphores;
     private VkSemaphore[] renderFinishedSemaphores;

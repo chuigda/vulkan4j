@@ -214,7 +214,7 @@ private void createUniformBuffers() {
 
         for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
             var pair = createBuffer(
-                    bufferSize,
+                    bufferSize * Float.BYTES,
                     VkBufferUsageFlags.VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
                     VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT
                             | VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_HOST_COHERENT_BIT
@@ -226,7 +226,7 @@ private void createUniformBuffers() {
                     device,
                     uniformBuffersMemory[i],
                     0,
-                    bufferSize,
+                    (long) bufferSize * Float.BYTES,
                     0,
                     pMappedMemory.segment()
             );
@@ -234,7 +234,7 @@ private void createUniformBuffers() {
                 throw new RuntimeException("Failed to map uniform buffer memory, vulkan error code: " + VkResult.explain(result));
             }
 
-            uniformBuffersMapped[i] = new FloatBuffer(pMappedMemory.read().reinterpret(bufferSize));
+            uniformBuffersMapped[i] = new FloatBuffer(pMappedMemory.read()).reinterpret(bufferSize);
         }
     }
 }
