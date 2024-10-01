@@ -176,7 +176,7 @@ class Application {
             appInfo.applicationVersion(Version.vkMakeAPIVersion(0, 1, 0, 0));
             appInfo.pEngineName(ByteBuffer.allocateString(arena, "Soloviev D-30"));
             appInfo.engineVersion(Version.vkMakeAPIVersion(0, 1, 0, 0));
-            appInfo.apiVersion(Version.VK_API_VERSION_1_0);
+            appInfo.apiVersion(Version.VK_API_VERSION_1_1);
 
             var instanceCreateInfo = VkInstanceCreateInfo.allocate(arena);
             instanceCreateInfo.pApplicationInfo(appInfo);
@@ -551,7 +551,7 @@ class Application {
             rasterizer.polygonMode(VkPolygonMode.VK_POLYGON_MODE_FILL);
             rasterizer.lineWidth(1.0f);
             rasterizer.cullMode(VkCullModeFlags.VK_CULL_MODE_BACK_BIT);
-            rasterizer.frontFace(VkFrontFace.VK_FRONT_FACE_CLOCKWISE);
+            rasterizer.frontFace(VkFrontFace.VK_FRONT_FACE_COUNTER_CLOCKWISE);
             rasterizer.depthBiasEnable(Constants.VK_FALSE);
             rasterizer.depthBiasConstantFactor(0.0f);
             rasterizer.depthBiasClamp(0.0f);
@@ -1255,9 +1255,9 @@ class Application {
 
             var viewport = VkViewport.allocate(arena);
             viewport.x(0.0f);
-            viewport.y(0.0f);
+            viewport.y(swapChainExtent.height());
             viewport.width(swapChainExtent.width());
-            viewport.height(swapChainExtent.height());
+            viewport.height(-swapChainExtent.height());
             viewport.minDepth(0.0f);
             viewport.maxDepth(1.0f);
             deviceCommands.vkCmdSetViewport(commandBuffer, 0, 1, viewport);

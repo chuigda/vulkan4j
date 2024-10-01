@@ -195,3 +195,197 @@ deviceCommands.vkCmdDrawIndexed(commandBuffer, INDICES.length, 1, 0, 0, 0);
 ```
 
 Unlike vertex and index buffers, descriptor sets are not unique to graphics pipelines. Therefore, we need to specify if we want to bind descriptor sets to the graphics or compute pipeline. The next parameter is the layout that the descriptors are based on. The next three parameters specify the index of the first descriptor set, the number of sets to bind, and the array of sets to bind. We'll get back to this in a moment. The last two parameters specify an array of offsets that are used for dynamic descriptors. We'll look at these in a future chapter.
+
+Now run the program. If you're careful enough, you'll find the output looks upside down. There are some mathematical reasons for this which *I don't understand*. Fortunately, there's an easy way and a more complicated way to fix this.
+
+### Easy way
+
+The easiest way to compensate for that is to flip the sign on the scaling factor of the Y axis in the projection matrix:
+
+```java
+proj.m11(-proj.m11());
+```
+
+And after this transformation, our triangles will have opposite winding order. So our rasterizer settings also needs to be changed:
+
+```java
+rasterizer.frontFace(VkFrontFace.VK_FRONT_FACE_COUNTER_CLOCKWISE);
+```
+
+### Complicated way
+
+After collecting developer feedback, the `VK_KHR_Maintenance1` extensions was added for Vulkan 1.0, including support for passing negative viewport heights. This extension has become core with Vulkan 1.1.
+
+<hr />
+
+If you'd like to stick to Vulkan 1.0, you can update function `checkDeviceExtensionSupported` to check for the `VK_KHR_MAINTENANCE_1_EXTENSION_NAME` extension:
+
+```java
+boolean hasSwapchain = false;
+boolean hasMaintenance1 = false;
+for (var extension : availableExtensions) {
+    if (Constants.VK_KHR_SWAPCHAIN_EXTENSION_NAME.equals(extension.extensionName().readString())) {
+        hasSwapchain = true;
+    }
+
+    if (Constants.VK_KHR_MAINTENANCE_1_EXTENSION_NAME.equals(extension.extensionName().readString())) {
+        hasMaintenance1 = true;
+    }
+
+    if (hasSwapchain && hasMaintenance1) {
+        return true;
+    }
+}
+
+return false;
+```
+
+And request the extension in the `createLogicalDevice` function:
+
+```java
+deviceCreateInfo.enabledExtensionCount(2);
+var ppDeviceExtensions = PointerBuffer.allocate(arena, 2);
+ppDeviceExtensions.write(0, ByteBuffer.allocateString(arena, Constants.VK_KHR_SWAPCHAIN_EXTENSION_NAME));
+ppDeviceExtensions.write(1, ByteBuffer.allocateString(arena, Constants.VK_KHR_MAINTENANCE_1_EXTENSION_NAME));
+deviceCreateInfo.ppEnabledExtensionNames(ppDeviceExtensions);
+```
+
+<hr />
+
+Or you may simply request a higher Vulkan version:
+
+```java
+appInfo.apiVersion(Version.VK_API_VERSION_1_1);
+```
+
+<hr />
+
+Then, when setting the viewport state, we can now specify a negative viewport height to flip it along the y axia:
+
+```java
+var viewport = VkViewport.allocate(arena);
+viewport.x(0.0f);
+viewport.y(swapChainExtent.height());
+viewport.width(swapChainExtent.width());
+viewport.height(-swapChainExtent.height());
+viewport.minDepth(0.0f);
+viewport.maxDepth(1.0f);
+deviceCommands.vkCmdSetViewport(commandBuffer, 0, 1, viewport);
+```
+
+And still you need to change your front facing:
+
+```java
+rasterizer.frontFace(VkFrontFace.VK_FRONT_FACE_COUNTER_CLOCKWISE);
+```
+
+Now run the program, and you should see the correctly oriented triangle.
+
+![Spinning quad](../../../images/spinning_quad.png)
+
+The rectangle has changed into a square because the projection matrix now corrects for aspect ratio. The `updateUniformBuffer` takes care of screen resizing, so we don't need to recreate the descriptor set in `recreateSwapChain`.
+
+## Alignment requirements
+
+One thing we've glossed over so far is how exactly our `FloatBuffer` content should match with the uniform definition in the shader. It seems obvious enough to simply use the same types in both:
+
+```glsl
+layout(binding = 0) uniform UniformBufferObject {
+    mat4 model;
+    mat4 view;
+    mat4 proj;
+} ubo;
+```
+
+```java
+private record UniformBufferObject(Matrix4f model, Matrix4f view, Matrix4f proj) {
+    public static int bufferSize() {
+        return 16 * 3;
+    }
+
+    public void writeToBuffer(FloatBuffer buffer) {
+        assert buffer.size() >= bufferSize();
+
+        model.get(buffer.segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+        view.get(buffer.offset(16).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+        proj.get(buffer.offset(32).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+    }
+}
+```
+
+However, that's not all there is to it. For example, try modifying the shader to look like this:
+
+```java
+layout(binding = 0) uniform UniformBufferObject {
+    vec2 foo;
+    mat4 model;
+    mat4 view;
+    mat4 proj;
+} ubo;
+```
+
+You may think that you can simply add a `Vector2f` field to the `UniformBufferObject`, increase the buffer size by `2` and prepend a `foo.get` call to the `writeToBuffer` method like this:
+
+```java
+private record UniformBufferObject(Vector2f foo, Matrix4f model, Matrix4f view, Matrix4f proj) {
+    public static int bufferSize() {
+        return 2 + 16 * 3;
+    }
+
+    public void writeToBuffer(FloatBuffer buffer) {
+        assert buffer.size() >= bufferSize();
+
+        foo.get(buffer.segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+        model.get(buffer.offset(2).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+        view.get(buffer.offset(18).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+        proj.get(buffer.offset(34).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+    }
+}
+```
+
+Recompile your shader and your program and run it, and you'll find that the colorful square you worked so far has disappeared! That's because we haven't taken into account the *alignment requirements*.
+
+Vulkan expects the data in your structure to be aligned in memory in a specific way, for example:
+
+- `Scalars` have to be aligned by `N` (= 4 bytes given 32 bit floats).
+- A `vec2` must be aligned by `2N` (= 8 bytes)
+- A `vec3` or vec4 must be aligned by `4N` (= 16 bytes)
+- A nested structure must be aligned by the base alignment of its members rounded up to a multiple of `16`.
+- A `mat4` matrix must have the same alignment as a `vec4`.
+
+You can find the full list of alignment requirements in [the specification](https://www.khronos.org/registry/vulkan/specs/1.3-extensions/html/chap15.html#interfaces-resources-layout).
+
+Our original shader with just three mat4 fields already met the alignment requirements. As each `mat4` is `4 x 4 x 4 = 64` bytes in size, `model` has an offset of `0`, `view` has an offset of `64` and `proj` has an offset of `128`. All of these are multiples of `16` and that's why it worked fine.
+
+The new structure starts with a `vec2` which is only 8 bytes in size and therefore throws off all the offsets. Now `model` has an offset of `8`, `view` an offset of `72` and `proj` an offset of `136`, none of which are multiples of `16`.
+
+To fix this, we need to add padding to our buffer. We need to request a little more memory than we actually need and then manually align the fields in the buffer.
+
+```java
+private record UniformBufferObject(Vector2f foo, Matrix4f model, Matrix4f view, Matrix4f proj) {
+    public static int bufferSize() {
+        return 4 + 16 * 3;
+    }
+
+    public void writeToBuffer(FloatBuffer buffer) {
+        assert buffer.size() >= bufferSize();
+        
+        foo.get(buffer.segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+        model.get(buffer.offset(4).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+        view.get(buffer.offset(20).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+        proj.get(buffer.offset(36).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+    }
+}
+```
+
+If you now compile and run your program again you should see that the shader correctly receives its matrix values once again.
+
+## Multiple descriptor sets
+
+As some of the structures and function calls hinted at, it is actually possible to bind multiple descriptor sets simultaneously. You need to specify a descriptor layout for each descriptor set when creating the pipeline layout. Shaders can then reference specific descriptor sets like this:
+
+```glsl
+layout(set = 0, binding = 0) uniform UniformBufferObject { ... }
+```
+
+You can use this feature to put descriptors that vary per-object and descriptors that are shared into separate descriptor sets. In that case you avoid rebinding most of the descriptors across draw calls which is potentially more efficient.
