@@ -101,7 +101,7 @@ The input variable does not necessarily have to use the same name, they will be 
 
 ## Compiling the shaders
 
-Create a `resource` adjacent to the `java` directory under `src/main` of your project, and store the vertex shader in a file called `shader.vert` and the fragment shader in a file called `shader.frag` in that directory. GLSL shaders don't have an official extension, but these two are commonly used to distinguish them.
+Create a `resources` directory adjacent to the `java` directory under `src/main` of your project, then create a `resources/shader` directory and store the vertex shader in a file called `shader.vert` and the fragment shader in a file called `shader.frag` in that directory. GLSL shaders don't have an official extension, but these two are commonly used to distinguish them.
 
 The contents of `shader.vert` should be:
 
@@ -203,8 +203,8 @@ We'll now call this function from `createGraphicsPipeline` to load the bytecode 
 ```java
 private void createGraphicsPipeline() {
     try (var arena = Arena.ofConfined()) {
-        var vertShaderCode = readShaderFile("/vert.spv", arena);
-        var fragShaderCode = readShaderFile("/frag.spv", arena);
+        var vertShaderCode = readShaderFile("/shader/vert.spv", arena);
+        var fragShaderCode = readShaderFile("/shader/frag.spv", arena);
     }
 }
 ```

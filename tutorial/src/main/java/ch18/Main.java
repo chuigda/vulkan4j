@@ -468,9 +468,9 @@ class Application {
 
     private void createGraphicsPipeline() {
         try (var arena = Arena.ofConfined()) {
-            var vertShaderCode = readShaderFile("/ch18.vert.spv", arena);
+            var vertShaderCode = readShaderFile("/shader/ch18.vert.spv", arena);
             // We can still use the previous fragment shader
-            var fragShaderCode = readShaderFile("/frag.spv", arena);
+            var fragShaderCode = readShaderFile("/shader/frag.spv", arena);
 
             var vertexShaderModule = createShaderModule(vertShaderCode);
             var fragmentShaderModule = createShaderModule(fragShaderCode);

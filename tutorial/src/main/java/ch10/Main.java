@@ -360,8 +360,8 @@ class Application {
 
     private void createGraphicsPipeline() {
         try (var arena = Arena.ofConfined()) {
-            var vertShaderCode = readShaderFile("/vert.spv", arena);
-            var fragShaderCode = readShaderFile("/frag.spv", arena);
+            var vertShaderCode = readShaderFile("/shader/vert.spv", arena);
+            var fragShaderCode = readShaderFile("/shader/frag.spv", arena);
 
             var vertexShaderModule = createShaderModule(vertShaderCode);
             var fragmentShaderModule = createShaderModule(fragShaderCode);
