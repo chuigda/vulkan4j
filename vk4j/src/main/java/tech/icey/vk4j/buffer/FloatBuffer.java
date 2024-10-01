@@ -55,4 +55,33 @@ public record FloatBuffer(MemorySegment segment) implements IPointer {
         s.copyFrom(MemorySegment.ofArray(bytes));
         return new FloatBuffer(s);
     }
+
+    /// Allocate a new {@link FloatBuffer} in the given {@link Arena} and copy the contents of the given
+    /// {@link java.nio.FloatBuffer} into the newly allocated {@link FloatBuffer}.
+    ///
+    /// @param arena the {@link Arena} to allocate the new {@link FloatBuffer} in
+    /// @param buffer the {@link java.nio.FloatBuffer} to copy the contents from
+    /// @return a new {@link FloatBuffer} that contains the contents of the given {@link java.nio.FloatBuffer}
+    public static FloatBuffer allocate(Arena arena, java.nio.FloatBuffer buffer) {
+        var s = arena.allocate(ValueLayout.JAVA_FLOAT, buffer.capacity());
+        s.copyFrom(MemorySegment.ofBuffer(buffer));
+        return new FloatBuffer(s);
+    }
+
+    /// Create a new {@link FloatBuffer} using the same backing storage as the given {@link java.nio.FloatBuffer}.
+    ///
+    /// The main difference between this static method and the {@link #allocate(Arena, java.nio.FloatBuffer)} method is
+    /// that this method does not copy the contents of the given {@link java.nio.FloatBuffer} into a newly allocated
+    /// {@link FloatBuffer}. Instead, this method creates a new {@link FloatBuffer} that uses the same backing storage
+    /// as the given {@link java.nio.FloatBuffer}. Please note that if the given {@link java.nio.FloatBuffer} is not
+    /// native/direct, the created {@link FloatBuffer} will not be able to be used in FFI operations since the backing
+    /// storage does not reside in native memory and does not have a native address. Thus, this method is marked as
+    /// {@link unsafe} because it can create inconsistency and cause very difficult to troubleshoot bugs.
+    ///
+    /// @param buffer the {@link java.nio.FloatBuffer} to use for the backing storage
+    /// @return a new {@link FloatBuffer} that uses the given {@link java.nio.FloatBuffer} as its backing storage
+    @unsafe
+    public static FloatBuffer from(java.nio.FloatBuffer buffer) {
+        return new FloatBuffer(MemorySegment.ofBuffer(buffer));
+    }
 }

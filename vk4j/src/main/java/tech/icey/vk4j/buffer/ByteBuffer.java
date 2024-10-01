@@ -53,6 +53,22 @@ public record ByteBuffer(MemorySegment segment) implements IPointer {
         return new ByteBuffer(arena.allocate(size));
     }
 
+    public static ByteBuffer allocate(Arena arena, byte[] bytes) {
+        return new ByteBuffer(arena.allocateFrom(ValueLayout.JAVA_BYTE, bytes));
+    }
+
+    /// Allocate a new {@link ByteBuffer} in the given {@link Arena} and copy the contents of the given
+    /// {@link java.nio.ByteBuffer} into the newly allocated {@link ByteBuffer}.
+    ///
+    /// @param arena the {@link Arena} to allocate the new {@link ByteBuffer} in
+    /// @param buffer the {@link java.nio.ByteBuffer} to copy the contents from
+    /// @return a new {@link ByteBuffer} that contains the contents of the given {@link java.nio.ByteBuffer}
+    public static ByteBuffer allocate(Arena arena, java.nio.ByteBuffer buffer) {
+        var s = arena.allocate(buffer.capacity());
+        s.copyFrom(MemorySegment.ofBuffer(buffer));
+        return new ByteBuffer(s);
+    }
+
     public static ByteBuffer allocateAligned(Arena arena, long size, long alignment) {
         return new ByteBuffer(arena.allocate(size, alignment));
     }
@@ -61,7 +77,20 @@ public record ByteBuffer(MemorySegment segment) implements IPointer {
         return new ByteBuffer(arena.allocateFrom(s));
     }
 
-    public static ByteBuffer allocateFrom(Arena arena, byte[] bytes) {
-        return new ByteBuffer(arena.allocateFrom(ValueLayout.JAVA_BYTE, bytes));
+    /// Create a new {@link ByteBuffer} using the same backing storage as the given {@link java.nio.ByteBuffer}.
+    ///
+    /// The main difference between this static method and the {@link #allocate(Arena, java.nio.ByteBuffer)} method is
+    /// that this method does not copy the contents of the given {@link java.nio.ByteBuffer} into the newly allocated
+    /// {@link ByteBuffer}. Instead, the newly created {@link ByteBuffer} will use the same backing storage as the
+    /// given {@link java.nio.ByteBuffer}. Please note that if the given {@link java.nio.ByteBuffer} is not
+    /// native/direct, the created {@link ByteBuffer} will not be able to be used in FFI operations since the backing
+    /// storage does not reside in native memory and does not have a native address. Thus, this method is marked as
+    /// {@link unsafe} because it can create inconsistency and cause very difficult to troubleshoot bugs.
+    ///
+    /// @param buffer the {@link java.nio.ByteBuffer} to use as the backing storage
+    /// @return a new {@link ByteBuffer} that uses the given {@link java.nio.ByteBuffer} as its backing storage
+    @unsafe
+    public static ByteBuffer from(java.nio.ByteBuffer buffer) {
+        return new ByteBuffer(MemorySegment.ofBuffer(buffer));
     }
 }

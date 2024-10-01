@@ -55,4 +55,33 @@ public record LongBuffer(MemorySegment segment) implements IPointer {
         s.copyFrom(MemorySegment.ofArray(bytes));
         return new LongBuffer(s);
     }
+
+    /// Allocate a new {@link LongBuffer} in the given {@link Arena} and copy the contents of the given
+    /// {@link java.nio.LongBuffer} into the newly allocated {@link LongBuffer}.
+    ///
+    /// @param arena the {@link Arena} to allocate the new {@link LongBuffer} in
+    /// @param buffer the {@link java.nio.LongBuffer} to copy the contents from
+    /// @return a new {@link LongBuffer} that contains the contents of the given {@link java.nio.LongBuffer}
+    public static LongBuffer allocate(Arena arena, java.nio.LongBuffer buffer) {
+        var s = arena.allocate(ValueLayout.JAVA_LONG, buffer.capacity());
+        s.copyFrom(MemorySegment.ofBuffer(buffer));
+        return new LongBuffer(s);
+    }
+
+    /// Create a new {@link LongBuffer} using the same backing storage as the given {@link java.nio.LongBuffer}.
+    ///
+    /// The main difference between this static method and the {@link #allocate(Arena, java.nio.LongBuffer)} method is
+    /// that this method does not copy the contents of the given {@link java.nio.LongBuffer} into the newly allocated
+    /// {@link LongBuffer}. Instead, the newly allocated {@link LongBuffer} will share the same backing storage as
+    /// the given {@link java.nio.LongBuffer}. Please note that if the given {@link java.nio.LongBuffer} is not
+    /// native/direct, the created {@link LongBuffer} will not be able to be used in FFI operations since the backing
+    /// storage does not reside in native memory and does not have a native address. Thus, this method is marked as
+    /// {@link unsafe} because it can create inconsistency and cause very difficult to troubleshoot bugs.
+    ///
+    /// @param buffer the {@link java.nio.LongBuffer} to create a new {@link LongBuffer} from
+    /// @return a new {@link LongBuffer} that uses the same backing storage as the given {@link java.nio.LongBuffer}
+    @unsafe
+    public static LongBuffer from(java.nio.LongBuffer buffer) {
+        return new LongBuffer(MemorySegment.ofBuffer(buffer));
+    }
 }
