@@ -31,7 +31,7 @@ public class TestBasic {
             return;
         }
 
-        try (Arena arena = Arena.ofConfined()) {
+        try (var arena = Arena.ofConfined()) {
             var pExtensionCount = IntBuffer.allocate(arena);
             var ppExtensions = libGLFW.glfwGetRequiredInstanceExtensions(pExtensionCount);
             if (ppExtensions == null) {

@@ -44,6 +44,7 @@
 - [Descriptor pool and sets](uniform-buffers/descriptor-pool-and-sets.md)
 
 # Texture mapping
+- [Images](texture-mapping/images.md)
 
 # Depth buffering
 

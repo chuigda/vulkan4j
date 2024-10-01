@@ -28,7 +28,7 @@ Command pool creation only takes two parameters:
 
 ```java
 private void createCommandPool() {
-    try (Arena arena = Arena.ofConfined()) {
+    try (var arena = Arena.ofConfined()) {
         var queueFamilyIndices = findQueueFamilies(physicalDevice);
         assert queueFamilyIndices != null;
 

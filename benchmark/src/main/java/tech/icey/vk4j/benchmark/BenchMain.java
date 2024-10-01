@@ -37,7 +37,7 @@ public class BenchMain {
     @Benchmark
     @Fork(value = 1, warmups = 1)
     public void benchVK4J() {
-        try (Arena arena = Arena.ofConfined()) {
+        try (var arena = Arena.ofConfined()) {
             var pPhysicalDeviceCount = IntBuffer.allocate(arena);
             VK4JStatic.instanceCommands.vkEnumeratePhysicalDevices(VK4JStatic.instance, pPhysicalDeviceCount, null);
             var physicalDeviceCount = pPhysicalDeviceCount.read();
