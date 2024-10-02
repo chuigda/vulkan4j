@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkToolPurposeFlags {
     public static final int VK_TOOL_PURPOSE_VALIDATION_BIT = 1;

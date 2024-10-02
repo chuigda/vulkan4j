@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkCopyMicromapModeEXT {
     public static final int VK_COPY_MICROMAP_MODE_CLONE_EXT = 0;

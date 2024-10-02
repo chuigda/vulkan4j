@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkShaderInfoTypeAMD {
     public static final int VK_SHADER_INFO_TYPE_STATISTICS_AMD = 0;

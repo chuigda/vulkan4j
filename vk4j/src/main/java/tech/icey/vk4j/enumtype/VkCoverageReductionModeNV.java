@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkCoverageReductionModeNV {
     public static final int VK_COVERAGE_REDUCTION_MODE_MERGE_NV = 0;

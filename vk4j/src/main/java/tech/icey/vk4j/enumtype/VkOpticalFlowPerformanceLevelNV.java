@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkOpticalFlowPerformanceLevelNV {
     public static final int VK_OPTICAL_FLOW_PERFORMANCE_LEVEL_UNKNOWN_NV = 0;

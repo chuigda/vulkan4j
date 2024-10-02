@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkVideoEncodeRateControlModeFlagsKHR {
     public static final int VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR = 0;

@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkQueryPipelineStatisticFlags {
     public static final int VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT = 1;

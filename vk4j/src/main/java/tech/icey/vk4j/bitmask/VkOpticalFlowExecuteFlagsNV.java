@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkOpticalFlowExecuteFlagsNV {
     public static final int VK_OPTICAL_FLOW_EXECUTE_DISABLE_TEMPORAL_HINTS_BIT_NV = 1;

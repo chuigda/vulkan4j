@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkPipelineCreateFlags {
     public static final int VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT = 1;

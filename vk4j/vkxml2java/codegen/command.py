@@ -44,14 +44,14 @@ def generate_command_class_file(registry: Registry, commands: list[Command], cla
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.*;
+import tech.icey.panama.FunctionLoader;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.panama.buffer.*;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.util.FunctionLoader;
 
 public final class {class_name} {{
 {'\n'.join(command_descriptors)}

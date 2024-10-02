@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkValidationFeatureDisableEXT {
     public static final int VK_VALIDATION_FEATURE_DISABLE_ALL_EXT = 0;

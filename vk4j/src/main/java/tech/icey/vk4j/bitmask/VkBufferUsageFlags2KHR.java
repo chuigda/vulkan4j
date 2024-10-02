@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkBufferUsageFlags2KHR {
     public static final long VK_BUFFER_USAGE_2_TRANSFER_SRC_BIT_KHR = 1L;

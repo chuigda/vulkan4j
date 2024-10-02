@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkShaderCodeTypeEXT {
     public static final int VK_SHADER_CODE_TYPE_BINARY_EXT = 0;

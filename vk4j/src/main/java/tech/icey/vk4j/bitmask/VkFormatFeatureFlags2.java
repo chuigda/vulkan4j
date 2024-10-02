@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkFormatFeatureFlags2 {
     public static final long VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_BIT = 1L;

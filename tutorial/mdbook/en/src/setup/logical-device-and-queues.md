@@ -106,7 +106,7 @@ private DeviceCommands deviceCommands;
 Then load the device level commands in the `createLogicalDevice` function:
 
 ```java
-deviceCommands = Loader.loadDeviceCommands(instance, device, staticCommands);
+deviceCommands = VulkanLoader.loadDeviceCommands(instance, device, staticCommands);
 ```
 
 ## Cleanup

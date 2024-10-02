@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkImageCompressionFixedRateFlagsEXT {
     public static final int VK_IMAGE_COMPRESSION_FIXED_RATE_NONE_EXT = 0;

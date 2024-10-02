@@ -1,18 +1,16 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.FloatBuffer;
+import tech.icey.panama.buffer.IntBuffer;
+import tech.icey.vk4j.bitmask.VkSampleCountFlags;
 
-import tech.icey.vk4j.IPointer;
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.*;
 
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceLimits {
@@ -677,7 +675,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) implements IPointer 
     public @unsigned long minMemoryMapAlignment() {
             return NativeLayout.readCSizeT(segment, OFFSET$minMemoryMapAlignment);
         }
-    
+
         public void minMemoryMapAlignment(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$minMemoryMapAlignment, value);
         }
@@ -1005,7 +1003,7 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) implements IPointer 
     public static VkPhysicalDeviceLimits allocate(Arena arena) {
         return new VkPhysicalDeviceLimits(arena.allocate(LAYOUT));
     }
-    
+
     public static VkPhysicalDeviceLimits[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceLimits[] ret = new VkPhysicalDeviceLimits[count];

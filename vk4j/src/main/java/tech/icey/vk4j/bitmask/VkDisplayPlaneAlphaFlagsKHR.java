@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkDisplayPlaneAlphaFlagsKHR {
     public static final int VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR = 1;

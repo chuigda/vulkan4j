@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkSciSyncClientTypeNV {
     public static final int VK_SCI_SYNC_CLIENT_TYPE_SIGNALER_NV = 0;

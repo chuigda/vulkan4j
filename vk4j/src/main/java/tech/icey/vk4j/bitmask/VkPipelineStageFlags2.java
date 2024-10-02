@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkPipelineStageFlags2 {
     public static final long VK_PIPELINE_STAGE_2_NONE = 0L;

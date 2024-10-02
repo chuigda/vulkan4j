@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkAccessFlags {
     public static final int VK_ACCESS_INDIRECT_COMMAND_READ_BIT = 1;

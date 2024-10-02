@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkDeviceAddressBindingTypeEXT {
     public static final int VK_DEVICE_ADDRESS_BINDING_TYPE_BIND_EXT = 0;

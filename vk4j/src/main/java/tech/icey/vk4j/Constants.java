@@ -1,6 +1,6 @@
 package tech.icey.vk4j;
 
-import tech.icey.vk4j.annotation.*;
+import tech.icey.panama.annotation.*;
 
 public final class Constants {
     public static final @unsigned long VK_MAX_PHYSICAL_DEVICE_NAME_SIZE = 256;

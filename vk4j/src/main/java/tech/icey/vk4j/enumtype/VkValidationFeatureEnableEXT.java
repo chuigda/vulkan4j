@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkValidationFeatureEnableEXT {
     public static final int VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT = 0;

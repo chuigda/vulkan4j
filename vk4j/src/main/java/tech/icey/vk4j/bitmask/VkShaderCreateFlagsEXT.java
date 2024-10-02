@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkShaderCreateFlagsEXT {
     public static final int VK_SHADER_CREATE_LINK_STAGE_BIT_EXT = 1;

@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkLayerSettingTypeEXT {
     public static final int VK_LAYER_SETTING_TYPE_BOOL32_EXT = 0;

@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkAttachmentStoreOp {
     public static final int VK_ATTACHMENT_STORE_OP_STORE = 0;

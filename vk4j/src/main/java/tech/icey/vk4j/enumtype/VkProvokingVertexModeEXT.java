@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkProvokingVertexModeEXT {
     public static final int VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT = 0;

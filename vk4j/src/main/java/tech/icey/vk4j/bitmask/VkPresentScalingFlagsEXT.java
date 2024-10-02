@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkPresentScalingFlagsEXT {
     public static final int VK_PRESENT_SCALING_ONE_TO_ONE_BIT_EXT = 1;

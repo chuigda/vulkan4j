@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkChromaLocation {
     public static final int VK_CHROMA_LOCATION_COSITED_EVEN = 0;

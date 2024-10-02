@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkSamplerAddressMode {
     public static final int VK_SAMPLER_ADDRESS_MODE_REPEAT = 0;

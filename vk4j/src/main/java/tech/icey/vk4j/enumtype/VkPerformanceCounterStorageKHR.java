@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkPerformanceCounterStorageKHR {
     public static final int VK_PERFORMANCE_COUNTER_STORAGE_INT32_KHR = 0;

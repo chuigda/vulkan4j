@@ -1,18 +1,16 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.vk4j.bitmask.VkImageConstraintsInfoFlagsFUCHSIA;
+import tech.icey.vk4j.enumtype.VkStructureType;
 
-import tech.icey.vk4j.IPointer;
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_IMAGE_CONSTRAINTS_INFO_FUCHSIA;
 
 /// {@snippet lang=c :
 /// typedef struct VkImageConstraintsInfoFUCHSIA {
@@ -110,7 +108,7 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) implements IP
     public static VkImageConstraintsInfoFUCHSIA allocate(Arena arena) {
         return new VkImageConstraintsInfoFUCHSIA(arena.allocate(LAYOUT));
     }
-    
+
     public static VkImageConstraintsInfoFUCHSIA[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageConstraintsInfoFUCHSIA[] ret = new VkImageConstraintsInfoFUCHSIA[count];

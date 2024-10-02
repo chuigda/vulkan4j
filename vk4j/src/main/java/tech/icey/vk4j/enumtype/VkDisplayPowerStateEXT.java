@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkDisplayPowerStateEXT {
     public static final int VK_DISPLAY_POWER_STATE_OFF_EXT = 0;

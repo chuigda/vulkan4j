@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkDriverId {
     public static final int VK_DRIVER_ID_AMD_PROPRIETARY = 1;

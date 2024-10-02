@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkColorComponentFlags {
     public static final int VK_COLOR_COMPONENT_R_BIT = 1;

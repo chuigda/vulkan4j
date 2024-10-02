@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkCoverageModulationModeNV {
     public static final int VK_COVERAGE_MODULATION_MODE_NONE_NV = 0;

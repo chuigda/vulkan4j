@@ -1,7 +1,7 @@
 package tech.icey.vk4j;
 
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
 import tech.icey.vk4j.bitmask.VkDebugUtilsMessageSeverityFlagsEXT;
 import tech.icey.vk4j.bitmask.VkDebugUtilsMessageTypeFlagsEXT;
 import tech.icey.vk4j.datatype.VkDebugUtilsMessengerCallbackDataEXT;

@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkBorderColor {
     public static final int VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK = 0;

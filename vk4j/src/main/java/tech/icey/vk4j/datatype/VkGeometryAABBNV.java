@@ -1,18 +1,18 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkBuffer;
 
-import tech.icey.vk4j.IPointer;
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_GEOMETRY_AABB_NV;
 
 /// {@snippet lang=c :
 /// typedef struct VkGeometryAABBNV {
@@ -94,7 +94,7 @@ public record VkGeometryAABBNV(MemorySegment segment) implements IPointer {
     public static VkGeometryAABBNV allocate(Arena arena) {
         return new VkGeometryAABBNV(arena.allocate(LAYOUT));
     }
-    
+
     public static VkGeometryAABBNV[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkGeometryAABBNV[] ret = new VkGeometryAABBNV[count];

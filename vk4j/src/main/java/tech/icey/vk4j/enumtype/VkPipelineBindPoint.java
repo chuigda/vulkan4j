@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkPipelineBindPoint {
     public static final int VK_PIPELINE_BIND_POINT_GRAPHICS = 0;

@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkQueryPoolSamplingModeINTEL {
     public static final int VK_QUERY_POOL_SAMPLING_MODE_MANUAL_INTEL = 0;

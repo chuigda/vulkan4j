@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkAntiLagStageAMD {
     public static final int VK_ANTI_LAG_STAGE_INPUT_AMD = 0;

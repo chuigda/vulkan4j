@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkFramebufferCreateFlags {
     public static final int VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT = 1;

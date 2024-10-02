@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkGeometryFlagsKHR {
     public static final int VK_GEOMETRY_OPAQUE_BIT_KHR = 1;

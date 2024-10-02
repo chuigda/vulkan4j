@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkComponentTypeKHR {
     public static final int VK_COMPONENT_TYPE_FLOAT16_KHR = 0;

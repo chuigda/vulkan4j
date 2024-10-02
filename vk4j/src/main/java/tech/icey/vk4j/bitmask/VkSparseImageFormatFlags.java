@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkSparseImageFormatFlags {
     public static final int VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT = 1;

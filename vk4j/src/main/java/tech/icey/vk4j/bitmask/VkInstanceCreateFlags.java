@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkInstanceCreateFlags {
     public static final int VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR = 1;

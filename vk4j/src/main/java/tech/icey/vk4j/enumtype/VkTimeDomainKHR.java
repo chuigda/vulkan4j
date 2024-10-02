@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkTimeDomainKHR {
     public static final int VK_TIME_DOMAIN_DEVICE_KHR = 0;

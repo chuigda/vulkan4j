@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkOpacityMicromapFormatEXT {
     public static final int VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT = 1;

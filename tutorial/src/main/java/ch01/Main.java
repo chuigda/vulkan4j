@@ -2,10 +2,10 @@ package ch01;
 
 import tech.icey.glfwmini.GLFWwindow;
 import tech.icey.glfwmini.LibGLFW;
-import tech.icey.vk4j.Loader;
 import tech.icey.vk4j.Version;
-import tech.icey.vk4j.buffer.ByteBuffer;
-import tech.icey.vk4j.buffer.IntBuffer;
+import tech.icey.panama.buffer.ByteBuffer;
+import tech.icey.panama.buffer.IntBuffer;
+import tech.icey.vk4j.VulkanLoader;
 import tech.icey.vk4j.command.EntryCommands;
 import tech.icey.vk4j.command.InstanceCommands;
 import tech.icey.vk4j.command.StaticCommands;
@@ -41,9 +41,9 @@ class Application {
     }
 
     private void initVulkan() {
-        Loader.loadVulkanLibrary();
-        staticCommands = Loader.loadStaticCommands();
-        entryCommands = Loader.loadEntryCommands();
+        VulkanLoader.loadVulkanLibrary();
+        staticCommands = VulkanLoader.loadStaticCommands();
+        entryCommands = VulkanLoader.loadEntryCommands();
 
         createInstance();
     }
@@ -87,7 +87,7 @@ class Application {
                 throw new RuntimeException("Failed to create instance, vulkan error code: " + VkResult.explain(result));
             }
             instance = pInstance.read();
-            instanceCommands = Loader.loadInstanceCommands(instance, staticCommands);
+            instanceCommands = VulkanLoader.loadInstanceCommands(instance, staticCommands);
         }
     }
 

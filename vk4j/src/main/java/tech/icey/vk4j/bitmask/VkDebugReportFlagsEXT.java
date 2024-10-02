@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkDebugReportFlagsEXT {
     public static final int VK_DEBUG_REPORT_INFORMATION_BIT_EXT = 1;

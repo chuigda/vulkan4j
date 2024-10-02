@@ -3,14 +3,14 @@ package ch23;
 import org.joml.Matrix4f;
 import tech.icey.glfwmini.GLFWwindow;
 import tech.icey.glfwmini.LibGLFW;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.buffer.*;
 import tech.icey.vk4j.Constants;
-import tech.icey.vk4j.Loader;
-import tech.icey.vk4j.NativeLayout;
 import tech.icey.vk4j.Version;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
+import tech.icey.vk4j.VulkanLoader;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.command.DeviceCommands;
 import tech.icey.vk4j.command.EntryCommands;
 import tech.icey.vk4j.command.InstanceCommands;
@@ -68,9 +68,9 @@ class Application {
     }
 
     private void initVulkan() {
-        Loader.loadVulkanLibrary();
-        staticCommands = Loader.loadStaticCommands();
-        entryCommands = Loader.loadEntryCommands();
+        VulkanLoader.loadVulkanLibrary();
+        staticCommands = VulkanLoader.loadStaticCommands();
+        entryCommands = VulkanLoader.loadEntryCommands();
 
         createInstance();
         setupDebugMessenger();
@@ -202,7 +202,7 @@ class Application {
                 throw new RuntimeException("Failed to create instance, vulkan error code: " + VkResult.explain(result));
             }
             instance = pInstance.read();
-            instanceCommands = Loader.loadInstanceCommands(instance, staticCommands);
+            instanceCommands = VulkanLoader.loadInstanceCommands(instance, staticCommands);
         }
     }
 
@@ -321,7 +321,7 @@ class Application {
                 throw new RuntimeException("Failed to create logical device, vulkan error code: " + VkResult.explain(result));
             }
             device = pDevice.read();
-            deviceCommands = Loader.loadDeviceCommands(instance, device, staticCommands);
+            deviceCommands = VulkanLoader.loadDeviceCommands(instance, device, staticCommands);
 
             var pQueue = VkQueue.Buffer.allocate(arena);
             deviceCommands.vkGetDeviceQueue(device, indices.graphicsFamily(), 0, pQueue);

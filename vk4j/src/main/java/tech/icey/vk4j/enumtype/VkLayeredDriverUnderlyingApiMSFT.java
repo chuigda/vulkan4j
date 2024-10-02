@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkLayeredDriverUnderlyingApiMSFT {
     public static final int VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT = 0;

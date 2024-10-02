@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkPhysicalDeviceLayeredApiKHR {
     public static final int VK_PHYSICAL_DEVICE_LAYERED_API_VULKAN_KHR = 0;

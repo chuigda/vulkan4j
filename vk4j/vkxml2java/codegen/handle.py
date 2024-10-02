@@ -4,8 +4,8 @@ from ..entity import Handle
 def generate_handle(handle: Handle) -> str:
     return f'''package tech.icey.vk4j.handle;
 
-import tech.icey.vk4j.IPointer;
-import tech.icey.vk4j.annotation.unsafe;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.annotation.unsafe;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;

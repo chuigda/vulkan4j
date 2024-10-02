@@ -1,18 +1,15 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.ByteBuffer;
 
-import tech.icey.vk4j.IPointer;
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.*;
 
 /// {@snippet lang=c :
 /// typedef union VkPerformanceValueDataINTEL {
@@ -87,7 +84,7 @@ public record VkPerformanceValueDataINTEL(MemorySegment segment) implements IPoi
     public static VkPerformanceValueDataINTEL allocate(Arena arena) {
         return new VkPerformanceValueDataINTEL(arena.allocate(LAYOUT));
     }
-    
+
     public static VkPerformanceValueDataINTEL[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPerformanceValueDataINTEL[] ret = new VkPerformanceValueDataINTEL[count];

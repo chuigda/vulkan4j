@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkCubicFilterWeightsQCOM {
     public static final int VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM = 0;

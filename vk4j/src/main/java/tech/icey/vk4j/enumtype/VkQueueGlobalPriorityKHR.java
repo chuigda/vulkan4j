@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkQueueGlobalPriorityKHR {
     public static final int VK_QUEUE_GLOBAL_PRIORITY_LOW_KHR = 128;

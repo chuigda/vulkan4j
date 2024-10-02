@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkCopyAccelerationStructureModeKHR {
     public static final int VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_KHR = 0;

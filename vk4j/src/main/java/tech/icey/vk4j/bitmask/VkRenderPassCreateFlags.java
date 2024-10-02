@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkRenderPassCreateFlags {
     public static final int VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM = 2;

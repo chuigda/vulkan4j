@@ -4,7 +4,7 @@ from ..entity import Enum
 def generate_enum(enum: Enum) -> str:
     return f'''package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class {enum.name} {{
 {generate_enum_fields(enum)}

@@ -1,6 +1,6 @@
 package tech.icey.glfwmini;
 
-import tech.icey.vk4j.IPointer;
+import tech.icey.panama.IPointer;
 
 import java.lang.foreign.MemorySegment;
 

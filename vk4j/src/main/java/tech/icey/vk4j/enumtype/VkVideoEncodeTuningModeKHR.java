@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkVideoEncodeTuningModeKHR {
     public static final int VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR = 0;

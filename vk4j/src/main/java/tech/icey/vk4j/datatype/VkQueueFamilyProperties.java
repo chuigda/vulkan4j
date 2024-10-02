@@ -1,18 +1,15 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkQueueFlags;
 
-import tech.icey.vk4j.IPointer;
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
 
 /// {@snippet lang=c :
 /// typedef struct VkQueueFamilyProperties {
@@ -63,7 +60,7 @@ public record VkQueueFamilyProperties(MemorySegment segment) implements IPointer
     public static VkQueueFamilyProperties allocate(Arena arena) {
         return new VkQueueFamilyProperties(arena.allocate(LAYOUT));
     }
-    
+
     public static VkQueueFamilyProperties[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkQueueFamilyProperties[] ret = new VkQueueFamilyProperties[count];

@@ -1,17 +1,17 @@
 package tech.icey.glfwmini;
 
-import tech.icey.vk4j.Loader;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.nullable;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.annotation.unsigned;
-import tech.icey.vk4j.buffer.IntBuffer;
-import tech.icey.vk4j.buffer.PointerBuffer;
+import tech.icey.panama.Loader;
+import tech.icey.panama.FunctionLoader;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.IntBuffer;
+import tech.icey.panama.buffer.PointerBuffer;
 import tech.icey.vk4j.datatype.VkAllocationCallbacks;
 import tech.icey.vk4j.enumtype.VkResult;
 import tech.icey.vk4j.handle.VkInstance;
 import tech.icey.vk4j.handle.VkSurfaceKHR;
-import tech.icey.vk4j.util.FunctionLoader;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;

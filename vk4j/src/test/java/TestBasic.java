@@ -1,8 +1,9 @@
 import tech.icey.glfwmini.LibGLFW;
-import tech.icey.vk4j.Loader;
+import tech.icey.panama.Loader;
 import tech.icey.vk4j.Version;
-import tech.icey.vk4j.buffer.ByteBuffer;
-import tech.icey.vk4j.buffer.IntBuffer;
+import tech.icey.panama.buffer.ByteBuffer;
+import tech.icey.panama.buffer.IntBuffer;
+import tech.icey.vk4j.VulkanLoader;
 import tech.icey.vk4j.datatype.VkApplicationInfo;
 import tech.icey.vk4j.datatype.VkInstanceCreateInfo;
 import tech.icey.vk4j.datatype.VkPhysicalDeviceProperties;
@@ -14,12 +15,12 @@ import java.lang.foreign.Arena;
 
 public class TestBasic {
     public static void main(String[] args) {
-        Loader.loadVulkanLibrary();
+        VulkanLoader.loadVulkanLibrary();
         LibGLFW.loadGLFWLibrary();
 
         var libGLFW = LibGLFW.loadGLFW();
-        var staticCommands = Loader.loadStaticCommands();
-        var entryCommands = Loader.loadEntryCommands();
+        var staticCommands = VulkanLoader.loadStaticCommands();
+        var entryCommands = VulkanLoader.loadEntryCommands();
 
         if (libGLFW.glfwInit() == 0) {
             System.err.println("Failed to initialize GLFW");
@@ -65,7 +66,7 @@ public class TestBasic {
             }
 
             var instance = pInstance.read();
-            var instanceCommands = Loader.loadInstanceCommands(instance, staticCommands);
+            var instanceCommands = VulkanLoader.loadInstanceCommands(instance, staticCommands);
 
             IntBuffer pPhysicalDeviceCount = IntBuffer.allocate(arena);
             pPhysicalDeviceCount.write(8);

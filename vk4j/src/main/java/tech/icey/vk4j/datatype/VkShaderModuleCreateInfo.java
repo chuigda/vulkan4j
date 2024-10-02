@@ -1,18 +1,20 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.IntBuffer;
+import tech.icey.vk4j.bitmask.VkShaderModuleCreateFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
 
-import tech.icey.vk4j.IPointer;
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
 
 /// {@snippet lang=c :
 /// typedef struct VkShaderModuleCreateInfo {
@@ -61,7 +63,7 @@ public record VkShaderModuleCreateInfo(MemorySegment segment) implements IPointe
     public @unsigned long codeSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$codeSize);
         }
-    
+
         public void codeSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$codeSize, value);
         }
@@ -92,7 +94,7 @@ public record VkShaderModuleCreateInfo(MemorySegment segment) implements IPointe
     public static VkShaderModuleCreateInfo allocate(Arena arena) {
         return new VkShaderModuleCreateInfo(arena.allocate(LAYOUT));
     }
-    
+
     public static VkShaderModuleCreateInfo[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkShaderModuleCreateInfo[] ret = new VkShaderModuleCreateInfo[count];

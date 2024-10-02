@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkGeometryTypeKHR {
     public static final int VK_GEOMETRY_TYPE_TRIANGLES_KHR = 0;

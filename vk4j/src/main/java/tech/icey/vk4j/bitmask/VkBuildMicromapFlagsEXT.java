@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkBuildMicromapFlagsEXT {
     public static final int VK_BUILD_MICROMAP_PREFER_FAST_TRACE_BIT_EXT = 1;

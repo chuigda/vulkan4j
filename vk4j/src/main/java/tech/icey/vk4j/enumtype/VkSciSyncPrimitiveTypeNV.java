@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkSciSyncPrimitiveTypeNV {
     public static final int VK_SCI_SYNC_PRIMITIVE_TYPE_FENCE_NV = 0;

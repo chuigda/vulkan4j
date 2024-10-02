@@ -13,9 +13,9 @@ Then load Vulkan library and initialize these two fields in the `initVulkan` fun
 
 ```java
 void initVulkan() {
-    Loader.loadVulkanLibrary();
-    staticCommands = Loader.loadStaticCommands();
-    entryCommands = Loader.loadEntryCommands();
+    VulkanLoader.loadVulkanLibrary();
+    staticCommands = VulkanLoader.loadStaticCommands();
+    entryCommands = VulkanLoader.loadEntryCommands();
 }
 ```
 
@@ -113,7 +113,7 @@ private InstanceCommands instanceCommands;
 Then load the instance level commands in the `initVulkan` function:
 
 ```java
-instanceCommands = Loader.loadInstanceCommands(instance, staticCommands);
+instanceCommands = VulkanLoader.loadInstanceCommands(instance, staticCommands);
 ```
 
 ## Checking for extension support

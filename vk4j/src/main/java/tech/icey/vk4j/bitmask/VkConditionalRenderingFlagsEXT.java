@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkConditionalRenderingFlagsEXT {
     public static final int VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT = 1;

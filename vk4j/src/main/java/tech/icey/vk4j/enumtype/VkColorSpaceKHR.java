@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkColorSpaceKHR {
     public static final int VK_COLOR_SPACE_SRGB_NONLINEAR_KHR = 0;

@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkStencilFaceFlags {
     public static final int VK_STENCIL_FACE_FRONT_BIT = 1;

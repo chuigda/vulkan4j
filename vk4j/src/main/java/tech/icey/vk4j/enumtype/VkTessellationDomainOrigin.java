@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkTessellationDomainOrigin {
     public static final int VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT = 0;

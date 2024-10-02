@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkVideoChromaSubsamplingFlagsKHR {
     public static final int VK_VIDEO_CHROMA_SUBSAMPLING_INVALID_KHR = 0;

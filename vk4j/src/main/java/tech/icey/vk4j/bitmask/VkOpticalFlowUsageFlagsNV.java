@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkOpticalFlowUsageFlagsNV {
     public static final int VK_OPTICAL_FLOW_USAGE_UNKNOWN_NV = 0;

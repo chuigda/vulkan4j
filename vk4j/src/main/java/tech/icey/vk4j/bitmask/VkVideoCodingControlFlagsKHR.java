@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkVideoCodingControlFlagsKHR {
     public static final int VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR = 1;

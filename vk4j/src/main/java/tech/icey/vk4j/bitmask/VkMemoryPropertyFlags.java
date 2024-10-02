@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkMemoryPropertyFlags {
     public static final int VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT = 1;

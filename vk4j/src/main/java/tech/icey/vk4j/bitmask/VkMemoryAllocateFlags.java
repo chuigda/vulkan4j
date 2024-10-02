@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkMemoryAllocateFlags {
     public static final int VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT = 1;

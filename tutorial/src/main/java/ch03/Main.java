@@ -2,25 +2,19 @@ package ch03;
 
 import tech.icey.glfwmini.GLFWwindow;
 import tech.icey.glfwmini.LibGLFW;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.buffer.*;
 import tech.icey.vk4j.Constants;
-import tech.icey.vk4j.Loader;
 import tech.icey.vk4j.Version;
-import tech.icey.vk4j.annotation.enumtype;
-import tech.icey.vk4j.annotation.pointer;
-import tech.icey.vk4j.bitmask.VkDebugUtilsMessageSeverityFlagsEXT;
-import tech.icey.vk4j.bitmask.VkDebugUtilsMessageTypeFlagsEXT;
-import tech.icey.vk4j.bitmask.VkQueueFlags;
-import tech.icey.vk4j.buffer.ByteBuffer;
-import tech.icey.vk4j.buffer.IntBuffer;
-import tech.icey.vk4j.buffer.PointerBuffer;
+import tech.icey.vk4j.VulkanLoader;
+import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.command.EntryCommands;
 import tech.icey.vk4j.command.InstanceCommands;
 import tech.icey.vk4j.command.StaticCommands;
 import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.VkResult;
-import tech.icey.vk4j.handle.VkDebugUtilsMessengerEXT;
-import tech.icey.vk4j.handle.VkInstance;
-import tech.icey.vk4j.handle.VkPhysicalDevice;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
@@ -52,9 +46,9 @@ class Application {
     }
 
     private void initVulkan() {
-        Loader.loadVulkanLibrary();
-        staticCommands = Loader.loadStaticCommands();
-        entryCommands = Loader.loadEntryCommands();
+        VulkanLoader.loadVulkanLibrary();
+        staticCommands = VulkanLoader.loadStaticCommands();
+        entryCommands = VulkanLoader.loadEntryCommands();
 
         createInstance();
         setupDebugMessenger();
@@ -113,7 +107,7 @@ class Application {
                 throw new RuntimeException("Failed to create instance, vulkan error code: " + VkResult.explain(result));
             }
             instance = pInstance.read();
-            instanceCommands = Loader.loadInstanceCommands(instance, staticCommands);
+            instanceCommands = VulkanLoader.loadInstanceCommands(instance, staticCommands);
         }
     }
 

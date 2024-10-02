@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkPresentGravityFlagsEXT {
     public static final int VK_PRESENT_GRAVITY_MIN_BIT_EXT = 1;

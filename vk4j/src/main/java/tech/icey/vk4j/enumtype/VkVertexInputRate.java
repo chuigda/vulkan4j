@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkVertexInputRate {
     public static final int VK_VERTEX_INPUT_RATE_VERTEX = 0;

@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkLatencyMarkerNV {
     public static final int VK_LATENCY_MARKER_SIMULATION_START_NV = 0;

@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkLineRasterizationModeKHR {
     public static final int VK_LINE_RASTERIZATION_MODE_DEFAULT_KHR = 0;

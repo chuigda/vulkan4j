@@ -27,7 +27,7 @@ def generate_bitmask(registry: Registry, bitmask: Bitmask) -> str:
 
     return f'''package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class {bitmask_name} {{
 {'\n'.join(f'    public static final {bitmask_type.java_type()} {flag.name} = {flag.value}{postfix};' for flag in content_bitmask.bitflags)}

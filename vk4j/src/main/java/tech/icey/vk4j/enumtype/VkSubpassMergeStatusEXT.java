@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkSubpassMergeStatusEXT {
     public static final int VK_SUBPASS_MERGE_STATUS_MERGED_EXT = 0;

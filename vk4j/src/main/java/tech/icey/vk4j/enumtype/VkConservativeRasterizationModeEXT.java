@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkConservativeRasterizationModeEXT {
     public static final int VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT = 0;

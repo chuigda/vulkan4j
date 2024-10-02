@@ -1,6 +1,6 @@
 package tech.icey.vk4j.bitmask;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkCommandPoolCreateFlags {
     public static final int VK_COMMAND_POOL_CREATE_TRANSIENT_BIT = 1;

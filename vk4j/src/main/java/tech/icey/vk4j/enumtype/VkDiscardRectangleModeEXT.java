@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkDiscardRectangleModeEXT {
     public static final int VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT = 0;

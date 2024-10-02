@@ -1,6 +1,6 @@
 package tech.icey.vk4j.enumtype;
 
-import tech.icey.vk4j.annotation.enumtype;
+import tech.icey.panama.annotation.enumtype;
 
 public final class VkFrontFace {
     public static final int VK_FRONT_FACE_COUNTER_CLOCKWISE = 0;
