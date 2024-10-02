@@ -1,4 +1,4 @@
-package ch24;
+package ch25;
 
 import org.joml.Matrix4f;
 import tech.icey.glfwmini.GLFWwindow;
@@ -88,6 +88,8 @@ class Application {
         createFramebuffers();
         createCommandPool();
         createTextureImage();
+        createTextureImageView();
+        createTextureSampler();
         createVertexBuffer();
         createIndexBuffer();
         createUniformBuffers();
@@ -114,6 +116,8 @@ class Application {
         }
         deviceCommands.vkDestroyCommandPool(device, commandPool, null);
         cleanupSwapChain();
+        deviceCommands.vkDestroySampler(device, textureSampler, null);
+        deviceCommands.vkDestroyImageView(device, textureImageView, null);
         deviceCommands.vkDestroyImage(device, textureImage, null);
         deviceCommands.vkFreeMemory(device, textureImageMemory, null);
         deviceCommands.vkDestroyBuffer(device, vertexBuffer, null);
@@ -285,6 +289,7 @@ class Application {
 
         try (var arena = Arena.ofConfined()) {
             var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena);
+            deviceFeatures.samplerAnisotropy(Constants.VK_TRUE);
 
             var deviceCreateInfo = VkDeviceCreateInfo.allocate(arena);
             var pQueuePriorities = FloatBuffer.allocate(arena);
@@ -409,35 +414,8 @@ class Application {
 
     private void createImageViews() {
         swapChainImageViews = new VkImageView[swapChainImages.length];
-
-        try (var arena = Arena.ofConfined()) {
-            var createInfo = VkImageViewCreateInfo.allocate(arena);
-            var pImageView = VkImageView.Buffer.allocate(arena);
-
-            for (int i = 0; i < swapChainImages.length; i++) {
-                createInfo.image(swapChainImages[i]);
-                createInfo.viewType(VkImageViewType.VK_IMAGE_VIEW_TYPE_2D);
-                createInfo.format(swapChainImageFormat);
-
-                var components = createInfo.components();
-                components.r(VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY);
-                components.g(VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY);
-                components.b(VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY);
-                components.a(VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY);
-
-                var subresourceRange = createInfo.subresourceRange();
-                subresourceRange.aspectMask(VkImageAspectFlags.VK_IMAGE_ASPECT_COLOR_BIT);
-                subresourceRange.baseMipLevel(0);
-                subresourceRange.levelCount(1);
-                subresourceRange.baseArrayLayer(0);
-                subresourceRange.layerCount(1);
-
-                var result = deviceCommands.vkCreateImageView(device, createInfo, null, pImageView);
-                if (result != VkResult.VK_SUCCESS) {
-                    throw new RuntimeException("Failed to create image views, vulkan error code: " + VkResult.explain(result));
-                }
-                swapChainImageViews[i] = pImageView.read();
-            }
+        for (int i = 0; i < swapChainImages.length; i++) {
+            swapChainImageViews[i] = createImageView(swapChainImages[i], swapChainImageFormat);
         }
     }
 
@@ -760,6 +738,41 @@ class Application {
 
             deviceCommands.vkDestroyBuffer(device, stagingBuffer, null);
             deviceCommands.vkFreeMemory(device, stagingBufferMemory, null);
+        }
+    }
+
+    private void createTextureImageView() {
+        textureImageView = createImageView(textureImage, VkFormat.VK_FORMAT_R8G8B8A8_SRGB);
+    }
+
+    private void createTextureSampler() {
+        try (var arena = Arena.ofConfined()) {
+            var samplerInfo = VkSamplerCreateInfo.allocate(arena);
+            samplerInfo.magFilter(VkFilter.VK_FILTER_LINEAR);
+            samplerInfo.minFilter(VkFilter.VK_FILTER_LINEAR);
+            samplerInfo.addressModeU(VkSamplerAddressMode.VK_SAMPLER_ADDRESS_MODE_REPEAT);
+            samplerInfo.addressModeV(VkSamplerAddressMode.VK_SAMPLER_ADDRESS_MODE_REPEAT);
+            samplerInfo.addressModeW(VkSamplerAddressMode.VK_SAMPLER_ADDRESS_MODE_REPEAT);
+
+            var properties = VkPhysicalDeviceProperties.allocate(arena);
+            instanceCommands.vkGetPhysicalDeviceProperties(physicalDevice, properties);
+            samplerInfo.anisotropyEnable(Constants.VK_TRUE);
+            samplerInfo.maxAnisotropy(properties.limits().maxSamplerAnisotropy());
+            samplerInfo.borderColor(VkBorderColor.VK_BORDER_COLOR_INT_OPAQUE_BLACK);
+            samplerInfo.unnormalizedCoordinates(Constants.VK_FALSE);
+            samplerInfo.compareEnable(Constants.VK_FALSE);
+            samplerInfo.compareOp(VkCompareOp.VK_COMPARE_OP_ALWAYS);
+            samplerInfo.mipmapMode(VkSamplerMipmapMode.VK_SAMPLER_MIPMAP_MODE_LINEAR);
+            samplerInfo.mipLodBias(0.0f);
+            samplerInfo.minLod(0.0f);
+            samplerInfo.maxLod(0.0f);
+
+            var pSampler = VkSampler.Buffer.allocate(arena);
+            var result = deviceCommands.vkCreateSampler(device, samplerInfo, null, pSampler);
+            if (result != VkResult.VK_SUCCESS) {
+                throw new RuntimeException("Failed to create texture sampler, vulkan error code: " + VkResult.explain(result));
+            }
+            textureSampler = pSampler.read();
         }
     }
 
@@ -1131,7 +1144,11 @@ class Application {
 
         try (var arena = Arena.ofConfined()) {
             var swapChainSupport = querySwapChainSupport(device, arena);
-            return swapChainSupport.formats().length != 0 && swapChainSupport.presentModes().size() != 0;
+            var supportedFeatures = VkPhysicalDeviceFeatures.allocate(arena);
+            instanceCommands.vkGetPhysicalDeviceFeatures(device, supportedFeatures);
+            return swapChainSupport.formats().length != 0
+                   && swapChainSupport.presentModes().size() != 0
+                   && supportedFeatures.samplerAnisotropy() == Constants.VK_TRUE;
         }
     }
 
@@ -1686,6 +1703,29 @@ class Application {
         }
     }
 
+    private VkImageView createImageView(VkImage image, @enumtype(VkFormat.class) int format) {
+        try (var arena = Arena.ofConfined()) {
+            var viewInfo = VkImageViewCreateInfo.allocate(arena);
+            viewInfo.image(image);
+            viewInfo.viewType(VkImageViewType.VK_IMAGE_VIEW_TYPE_2D);
+            viewInfo.format(format);
+
+            var subresourceRange = viewInfo.subresourceRange();
+            subresourceRange.aspectMask(VkImageAspectFlags.VK_IMAGE_ASPECT_COLOR_BIT);
+            subresourceRange.baseMipLevel(0);
+            subresourceRange.levelCount(1);
+            subresourceRange.baseArrayLayer(0);
+            subresourceRange.layerCount(1);
+
+            var pImageView = VkImageView.Buffer.allocate(arena);
+            var result = deviceCommands.vkCreateImageView(device, viewInfo, null, pImageView);
+            if (result != VkResult.VK_SUCCESS) {
+                throw new RuntimeException("Failed to create image view, vulkan error code: " + VkResult.explain(result));
+            }
+            return pImageView.read();
+        }
+    }
+
     private Arena applicationArena = Arena.ofShared();
 
     private LibGLFW libGLFW;
@@ -1715,6 +1755,8 @@ class Application {
     private VkCommandPool commandPool;
     private VkImage textureImage;
     private VkDeviceMemory textureImageMemory;
+    private VkImageView textureImageView;
+    private VkSampler textureSampler;
     private VkBuffer vertexBuffer;
     private VkDeviceMemory vertexBufferMemory;
     private VkBuffer indexBuffer;

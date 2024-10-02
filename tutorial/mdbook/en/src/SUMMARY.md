@@ -45,6 +45,7 @@
 
 # Texture mapping
 - [Images](texture-mapping/images.md)
+- [Image view and sampler](texture-mapping/image-view-and-sampler.md)
 
 # Depth buffering
 

@@ -542,7 +542,7 @@ This is easy to do with the functions we just created:
 ```java
 transitionImageLayout(
         textureImage,
-        VkFormat.VK_FORMAT_B8G8R8A8_SRGB,
+        VkFormat.VK_FORMAT_R8G8B8A8_SRGB,
         VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED,
         VkImageLayout.VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL
 );
@@ -556,7 +556,7 @@ To be able to start sampling from the texture image in the shader, we need one l
 ```java
 transitionImageLayout(
         textureImage,
-        VkFormat.VK_FORMAT_B8G8R8A8_SRGB,
+        VkFormat.VK_FORMAT_R8G8B8A8_SRGB,
         VkImageLayout.VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL,
         VkImageLayout.VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL
 );
