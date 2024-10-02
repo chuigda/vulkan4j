@@ -49,6 +49,7 @@
 - [Combined image sampler](texture-mapping/combined-image-sampler.md)
 
 # Depth buffering
+- [Depth buffering](depth-buffering/depth-buffering.md)
 
 # Loading models
 
