@@ -1,8 +1,5 @@
 package ch27;
 
-import de.javagl.obj.ObjData;
-import de.javagl.obj.ObjReader;
-import de.javagl.obj.ObjUtils;
 import org.joml.Matrix4f;
 import tech.icey.glfwmini.GLFWwindow;
 import tech.icey.glfwmini.LibGLFW;
@@ -94,7 +91,6 @@ class Application {
         createTextureImage();
         createTextureImageView();
         createTextureSampler();
-        loadModel();
         createVertexBuffer();
         createIndexBuffer();
         createUniformBuffers();
@@ -738,7 +734,7 @@ class Application {
 
     private void createTextureImage() {
         BufferedImage image;
-        try (var stream = Application.class.getResourceAsStream(TEXTURE_PATH)) {
+        try (var stream = Application.class.getResourceAsStream("/texture/texture.jpg")) {
             if (stream == null) {
                 throw new RuntimeException("Failed to load texture image");
             }
@@ -852,42 +848,9 @@ class Application {
         }
     }
 
-    private void loadModel() {
-        try (var stream = Application.class.getResourceAsStream("/model/viking_room.obj")) {
-            if (stream == null) {
-                throw new RuntimeException("Failed to load model");
-            }
-
-            var obj = ObjReader.read(stream);
-            obj = ObjUtils.convertToRenderable(obj);
-
-            indices = ObjData.getFaceVertexIndicesArray(obj);
-
-            var verticesArray = ObjData.getVerticesArray(obj);
-            var texCoordsArray = ObjData.getTexCoordsArray(obj, 2);
-            vertices = new float[obj.getNumVertices() * 8];
-            for (int i = 0; i < obj.getNumVertices(); i++) {
-                // vec3 pos
-                vertices[i * 8] = verticesArray[i * 3];
-                vertices[i * 8 + 1] = verticesArray[i * 3 + 1];
-                vertices[i * 8 + 2] = verticesArray[i * 3 + 2];
-                // vec3 color
-                vertices[i * 8 + 3] = 1.0f;
-                vertices[i * 8 + 4] = 1.0f;
-                vertices[i * 8 + 5] = 1.0f;
-                // vec2 texCoord
-                vertices[i * 8 + 6] = texCoordsArray[i * 2];
-                vertices[i * 8 + 7] = 1.0f - texCoordsArray[i * 2 + 1];
-            }
-        }
-        catch (IOException e) {
-            throw new RuntimeException("Failed to load model", e);
-        }
-    }
-
     private void createVertexBuffer() {
         try (var arena = Arena.ofConfined()) {
-            var bufferSize = vertices.length * Float.BYTES;
+            var bufferSize = VERTICES.length * Float.BYTES;
 
             var pair = createBuffer(
                     bufferSize,
@@ -904,7 +867,7 @@ class Application {
                 throw new RuntimeException("Failed to map vertex buffer memory, vulkan error code: " + VkResult.explain(result));
             }
             var pData = ppData.read().reinterpret(bufferSize);
-            pData.copyFrom(MemorySegment.ofArray(vertices));
+            pData.copyFrom(MemorySegment.ofArray(VERTICES));
             deviceCommands.vkUnmapMemory(device, stagingBufferMemory);
 
             pair = createBuffer(
@@ -923,7 +886,7 @@ class Application {
 
     private void createIndexBuffer() {
         try (var arena = Arena.ofConfined()) {
-            var bufferSize = indices.length * Integer.BYTES;
+            var bufferSize = INDICES.length * Short.BYTES;
 
             var pair = createBuffer(
                     bufferSize,
@@ -941,7 +904,7 @@ class Application {
             }
             var pData = ppData.read().reinterpret(bufferSize);
 
-            pData.copyFrom(MemorySegment.ofArray(indices));
+            pData.copyFrom(MemorySegment.ofArray(INDICES));
 
             deviceCommands.vkUnmapMemory(device, stagingBufferMemory);
 
@@ -1498,7 +1461,7 @@ class Application {
             var offsets = LongBuffer.allocate(arena);
             offsets.write(0);
             deviceCommands.vkCmdBindVertexBuffers(commandBuffer, 0, 1, vertexBuffers, offsets);
-            deviceCommands.vkCmdBindIndexBuffer(commandBuffer, indexBuffer, 0, VkIndexType.VK_INDEX_TYPE_UINT32);
+            deviceCommands.vkCmdBindIndexBuffer(commandBuffer, indexBuffer, 0, VkIndexType.VK_INDEX_TYPE_UINT16);
 
             var pDescriptorSet = VkDescriptorSet.Buffer.allocate(arena);
             pDescriptorSet.write(descriptorSets[currentFrame]);
@@ -1513,7 +1476,7 @@ class Application {
                     null
             );
 
-            deviceCommands.vkCmdDrawIndexed(commandBuffer, indices.length, 1, 0, 0, 0);
+            deviceCommands.vkCmdDrawIndexed(commandBuffer, INDICES.length, 1, 0, 0, 0);
             deviceCommands.vkCmdEndRenderPass(commandBuffer);
 
             result = deviceCommands.vkEndCommandBuffer(commandBuffer);
@@ -1947,8 +1910,6 @@ class Application {
     private VkDeviceMemory textureImageMemory;
     private VkImageView textureImageView;
     private VkSampler textureSampler;
-    private float[] vertices;
-    private int[] indices;
     private VkBuffer vertexBuffer;
     private VkDeviceMemory vertexBufferMemory;
     private VkBuffer indexBuffer;
@@ -1967,11 +1928,28 @@ class Application {
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
-    private static final String MODEL_PATH = "/model/viking_room.obj";
-    private static final String TEXTURE_PATH = "/texture/viking_room.png";
     private static final boolean ENABLE_VALIDATION_LAYERS = System.getProperty("validation") != null;
     private static String VALIDATION_LAYER_NAME = "VK_LAYER_KHRONOS_validation";
     private static final int MAX_FRAMES_IN_FLIGHT = 2;
+    private static final float[] VERTICES = {
+            // vec3 pos            // vec3 color       // vec2 texCoord
+            -0.5f, -0.5f, 0.0f,    1.0f, 0.0f, 0.0f,   1.0f, 0.0f,
+            0.5f, -0.5f, 0.0f,     0.0f, 1.0f, 0.0f,   0.0f, 0.0f,
+            0.5f, 0.5f, 0.0f,      0.0f, 0.0f, 1.0f,   0.0f, 1.0f,
+            -0.5f, 0.5f, 0.0f,     1.0f, 1.0f, 1.0f,   1.0f, 1.0f,
+
+            -0.5f, -0.5f, -0.5f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f,
+            0.5f, -0.5f, -0.5f,    0.0f, 1.0f, 0.0f,   0.0f, 0.0f,
+            0.5f, 0.5f, -0.5f,     0.0f, 0.0f, 1.0f,   0.0f, 1.0f,
+            -0.5f, 0.5f, -0.5f,    1.0f, 1.0f, 1.0f,   1.0f, 1.0f
+    };
+    private static final short[] INDICES = {
+            0, 1, 2,
+            2, 3, 0,
+
+            4, 5, 6,
+            6, 7, 4
+    };
     private static final long startTime = System.currentTimeMillis();
 
     private static /* VkBool32 */ int debugCallback(
