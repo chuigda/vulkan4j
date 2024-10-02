@@ -283,3 +283,45 @@ samplerInfo.maxAnisotropy(1.0f);
 ```
 
 In the next chapter we will expose the image and sampler objects to the shaders to draw the texture onto the square.
+
+You should see something like the image below. Don't forget to recompile the shaders!
+
+![Texture coordinate visualization](../../../images/texcoord_visualization.png)
+
+The green channel represents the horizontal coordinates and the red channel the vertical coordinates. The black and yellow corners confirm that the texture coordinates are correctly interpolated from `0, 0` to `1, 1` across the square. Visualizing data using colors is the shader programming equivalent of printf debugging, for lack of a better option!
+
+A combined image sampler descriptor is represented in GLSL by a sampler uniform. Add a reference to it in the fragment shader:
+
+```glsl
+layout(binding = 1) uniform sampler2D texSampler;
+```
+
+There are equivalent `sampler1D` and `sampler3D` types for other types of images. Make sure to use the correct binding here.
+
+```glsl
+void main() {
+    outColor = texture(texSampler, fragTexCoord);
+}
+```
+
+Textures are sampled using the built-in `texture` function. It takes a `sampler` and coordinate as arguments. The sampler automatically takes care of the filtering and transformations in the background. You should now see the texture on the square when you run the application:
+
+![Texture on square](../../../images/texture_on_square.png)
+
+Try experimenting with the addressing modes by scaling the texture coordinates to values higher than `1`. For example, the following fragment shader produces the result in the image below when using `VK_SAMPLER_ADDRESS_MODE_REPEAT`:
+
+![Texture on square repeated](../../../images/texture_on_square_repeated.png)
+
+You can also manipulate the texture colors using the vertex colors:
+
+```glsl
+void main() {
+    outColor = vec4(fragColor * texture(texSampler, fragTexCoord).rgb, 1.0);
+}
+```
+
+I've separated the RGB and alpha channels here to not scale the alpha channel.
+
+![Texture on square colorized](../../../images/texture_on_square_colorized.png)
+
+You now know how to access images in shaders! This is a very powerful technique when combined with images that are also written to in framebuffers. You can use these images as inputs to implement cool effects like post-processing and camera displays within the 3D world.
