@@ -39,3 +39,6 @@ build/
 
 # Generated auxiliary programs
 *.exe
+
+# assembly plugin produced files
+tutorial/dependency-reduced-pom.xml
