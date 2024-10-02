@@ -50,8 +50,7 @@
 
 # Depth buffering
 - [Depth buffering](depth-buffering/depth-buffering.md)
-
-# Loading models
+- [Loading models](depth-buffering/loading-models.md)
 
 # Generating Mipmaps
 
