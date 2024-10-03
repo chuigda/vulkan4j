@@ -19,7 +19,7 @@ def generate_bitfield_accessor(current: Member, next_: Member) -> str:
 
     public void {next_.name}(int value) {{
         int original = segment.get(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name});
-        int newValue = (original & 0xFF00) | value;
+        int newValue = (original & 0xFFFFFF00) | value;
         segment.set(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name}, newValue);
     }}\n\n'''
 

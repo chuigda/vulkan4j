@@ -7,7 +7,7 @@ import Registry
 import Type
 
 sealed interface CType {
-    val jRawType: String
+    val jType: String
     val jLayout: String
     val jLayoutType: String
     val cType: String
@@ -16,7 +16,7 @@ sealed interface CType {
 }
 
 class CVoidType : CType {
-    override val jRawType: String = "void"
+    override val jType: String = "void"
     override val jLayout: String get() = throw NotImplementedError("should not call `jLayout` on `void`")
     override val jLayoutType: String get() = throw NotImplementedError("should not call `jLayoutType` on `void`")
     override val cType: String = "void"
@@ -25,7 +25,7 @@ class CVoidType : CType {
 val voidType = CVoidType()
 
 data class CPointerType(val pointee: CType, val const: Boolean, val comment: String?) : CType {
-    override val jRawType: String = if (comment != null) {
+    override val jType: String = if (comment != null) {
         """@pointer(comment="$comment") MemorySegment"""
     }
     else {
@@ -45,19 +45,19 @@ data class CPointerType(val pointee: CType, val const: Boolean, val comment: Str
 }
 
 data class CHandleType(val name: String) : CType {
-    override val jRawType: String = name
+    override val jType: String = name
     override val jLayout: String = "ValueLayout.ADDRESS"
     override val jLayoutType: String = "AddressLayout"
     override val cType: String = name
 }
 
 data class CArrayType(val element: CType, val length: String) : CType {
-    override val jRawType: String get() = throw NotImplementedError("should not call `jRawType` on `array`")
+    override val jType: String get() = throw NotImplementedError("should not call `jRawType` on `array`")
     override val jLayout: String = "ValueLayout.sequenceLayout($length, ${element.jLayout})"
     override val jLayoutType: String = "SequenceLayout"
     override val cType: String = "${element.cType}[$length]"
 
-    override val jDescriptorParamLayout: String = "ValueLayout.ADDRESS.withElementLyout(${element.jLayout})"
+    override val jDescriptorParamLayout: String = "ValueLayout.ADDRESS.withTargetLayout(${element.jLayout})"
 
     val flattened: CArrayType get() {
         if (element !is CArrayType) {
@@ -77,7 +77,7 @@ sealed interface CNonRefType : CType {
 }
 
 data class CFixedIntType(val cName: String, val byteSize: Int, val unsigned: Boolean) : CNonRefType {
-    override val jRawType: String get() = """${if (unsigned) "@unsigned " else ""}$jTypeNoSign"""
+    override val jType: String get() = """${if (unsigned) "@unsigned " else ""}$jTypeNoSign"""
     override val jLayout: String get() = when (byteSize) {
         1 -> "ValueLayout.JAVA_BYTE"
         2 -> "ValueLayout.JAVA_SHORT"
@@ -100,7 +100,7 @@ data class CFixedIntType(val cName: String, val byteSize: Int, val unsigned: Boo
         8 -> "long"
         else -> throw NotImplementedError("unsupported byte size: $byteSize")
     }
-    override val jBufferType: String get() = """${if (unsigned) "Unsigned" else ""}$jBufferTypeNoSign"""
+    override val jBufferType: String get() = """${if (unsigned) "@unsigned " else ""}$jBufferTypeNoSign"""
     override val jBufferTypeNoSign: String get() = when (byteSize) {
         1 -> "ByteBuffer"
         2 -> "ShortBuffer"
@@ -112,7 +112,7 @@ data class CFixedIntType(val cName: String, val byteSize: Int, val unsigned: Boo
 
 data class CPlatformDependentIntType(
     override val cType: String,
-    override val jRawType: String,
+    override val jType: String,
     override val jLayout: String,
     override val jTypeNoSign: String,
     override val jBufferType: String,
@@ -122,7 +122,7 @@ data class CPlatformDependentIntType(
 }
 
 data class CFloatType(val byteSize: Int) : CNonRefType {
-    override val jRawType: String get() = when (byteSize) {
+    override val jType: String get() = when (byteSize) {
         4 -> "float"
         8 -> "double"
         else -> throw NotImplementedError("unsupported byte size: $byteSize")
@@ -142,7 +142,7 @@ data class CFloatType(val byteSize: Int) : CNonRefType {
         8 -> "double"
         else -> throw NotImplementedError("unsupported byte size: $byteSize")
     }
-    override val jTypeNoSign: String get() = jRawType
+    override val jTypeNoSign: String get() = jType
     override val jBufferType: String get() = when (byteSize) {
         4 -> "FloatBuffer"
         8 -> "DoubleBuffer"
@@ -152,7 +152,7 @@ data class CFloatType(val byteSize: Int) : CNonRefType {
 }
 
 data class CStructType(val name: String): CType {
-    override val jRawType: String = name
+    override val jType: String = name
     override val jLayout: String = "$name.LAYOUT"
     override val jLayoutType: String = "StructLayout"
     override val cType: String = name
@@ -233,7 +233,7 @@ private val knownTypes = mapOf(
     "IDirectFB" to pvoidType,
     "IDirectFBSurface" to pvoidType,
 
-    // iOS or MacOS
+    // iOS or macOS
     "id" to pvoidType,
     "CAMetalLayer" to pvoidType,
     "GgpFrameToken" to uint32Type,

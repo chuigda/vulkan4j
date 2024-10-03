@@ -4,7 +4,9 @@ data class Registry(
     val opaqueTypedefs: Map<String, OpaqueTypedef>,
     val handles: Map<String, Handle>,
     val structs: Map<String, Structure>,
-    val functionTypedefs: Map<String, FunctionTypedef>
+    val functionTypedefs: Map<String, FunctionTypedef>,
+
+    var constantClassName: String = "Constants"
 )
 
 fun mergeRegistry(vararg registries: Registry): Registry {
