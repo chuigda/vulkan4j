@@ -4,13 +4,15 @@ from ..entity import Handle
 def generate_handle(handle: Handle) -> str:
     return f'''package tech.icey.vk4j.handle;
 
-import tech.icey.vk4j.annotation.unsafe;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.annotation.unsafe;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
-public record {handle.name}(MemorySegment segment) {{
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/{handle.name}.html">{handle.name}</a>
+public record {handle.name}(MemorySegment segment) implements IPointer {{
     public record Buffer(MemorySegment segment) {{
         public long size() {{
             return segment.byteSize() / ValueLayout.ADDRESS.byteSize();
@@ -69,7 +71,7 @@ public record {handle.name}(MemorySegment segment) {{
         }}
 
         public static Buffer allocate(Arena arena) {{
-            return allocate(arena, 1);
+            return new Buffer(arena.allocate(ValueLayout.ADDRESS));
         }}
 
         public static Buffer allocate(Arena arena, long size) {{

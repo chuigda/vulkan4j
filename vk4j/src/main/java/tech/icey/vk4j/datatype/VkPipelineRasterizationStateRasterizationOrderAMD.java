@@ -1,19 +1,87 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.vk4j.enumtype.VkRasterizationOrderAMD;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD;
 
-public record VkPipelineRasterizationStateRasterizationOrderAMD(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPipelineRasterizationStateRasterizationOrderAMD {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkRasterizationOrderAMD rasterizationOrder;
+/// } VkPipelineRasterizationStateRasterizationOrderAMD;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineRasterizationStateRasterizationOrderAMD.html">VkPipelineRasterizationStateRasterizationOrderAMD</a>
+public record VkPipelineRasterizationStateRasterizationOrderAMD(MemorySegment segment) implements IPointer {
+    public VkPipelineRasterizationStateRasterizationOrderAMD(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkRasterizationOrderAMD.class) int rasterizationOrder() {
+        return segment.get(LAYOUT$rasterizationOrder, OFFSET$rasterizationOrder);
+    }
+
+    public void rasterizationOrder(@enumtype(VkRasterizationOrderAMD.class) int value) {
+        segment.set(LAYOUT$rasterizationOrder, OFFSET$rasterizationOrder, value);
+    }
+
+    public static VkPipelineRasterizationStateRasterizationOrderAMD allocate(Arena arena) {
+        return new VkPipelineRasterizationStateRasterizationOrderAMD(arena.allocate(LAYOUT));
+    }
+
+    public static VkPipelineRasterizationStateRasterizationOrderAMD[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPipelineRasterizationStateRasterizationOrderAMD[] ret = new VkPipelineRasterizationStateRasterizationOrderAMD[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPipelineRasterizationStateRasterizationOrderAMD(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPipelineRasterizationStateRasterizationOrderAMD clone(Arena arena, VkPipelineRasterizationStateRasterizationOrderAMD src) {
+        VkPipelineRasterizationStateRasterizationOrderAMD ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPipelineRasterizationStateRasterizationOrderAMD[] clone(Arena arena, VkPipelineRasterizationStateRasterizationOrderAMD[] src) {
+        VkPipelineRasterizationStateRasterizationOrderAMD[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -36,46 +104,4 @@ public record VkPipelineRasterizationStateRasterizationOrderAMD(MemorySegment se
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$rasterizationOrder = LAYOUT$rasterizationOrder.byteSize();
-
-    public VkPipelineRasterizationStateRasterizationOrderAMD(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkRasterizationOrderAMD.class) int rasterizationOrder() {
-        return segment.get(LAYOUT$rasterizationOrder, OFFSET$rasterizationOrder);
-    }
-
-    public void rasterizationOrder(@enumtype(VkRasterizationOrderAMD.class) int value) {
-        segment.set(LAYOUT$rasterizationOrder, OFFSET$rasterizationOrder, value);
-    }
-
-    public static VkPipelineRasterizationStateRasterizationOrderAMD allocate(Arena arena) {
-        return new VkPipelineRasterizationStateRasterizationOrderAMD(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPipelineRasterizationStateRasterizationOrderAMD[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineRasterizationStateRasterizationOrderAMD[] ret = new VkPipelineRasterizationStateRasterizationOrderAMD[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineRasterizationStateRasterizationOrderAMD(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

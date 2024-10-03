@@ -1,19 +1,106 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.vk4j.bitmask.VkMemoryUnmapFlagsKHR;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkDeviceMemory;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO_KHR;
 
-public record VkMemoryUnmapInfoKHR(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkMemoryUnmapInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkMemoryUnmapFlagsKHR flags;
+///     VkDeviceMemory memory;
+/// } VkMemoryUnmapInfoKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMemoryUnmapInfoKHR.html">VkMemoryUnmapInfoKHR</a>
+public record VkMemoryUnmapInfoKHR(MemorySegment segment) implements IPointer {
+    public VkMemoryUnmapInfoKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkMemoryUnmapFlagsKHR.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkMemoryUnmapFlagsKHR.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @nullable VkDeviceMemory memory() {
+        MemorySegment s = segment.get(LAYOUT$memory, OFFSET$memory);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDeviceMemory(s);
+    }
+
+    public void memory(@nullable VkDeviceMemory value) {
+        segment.set(
+            LAYOUT$memory,
+            OFFSET$memory,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public static VkMemoryUnmapInfoKHR allocate(Arena arena) {
+        return new VkMemoryUnmapInfoKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkMemoryUnmapInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkMemoryUnmapInfoKHR[] ret = new VkMemoryUnmapInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkMemoryUnmapInfoKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkMemoryUnmapInfoKHR clone(Arena arena, VkMemoryUnmapInfoKHR src) {
+        VkMemoryUnmapInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkMemoryUnmapInfoKHR[] clone(Arena arena, VkMemoryUnmapInfoKHR[] src) {
+        VkMemoryUnmapInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,54 +128,4 @@ public record VkMemoryUnmapInfoKHR(MemorySegment segment) {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$memory = LAYOUT$memory.byteSize();
-
-    public VkMemoryUnmapInfoKHR(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO_KHR);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkMemoryUnmapFlagsKHR.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkMemoryUnmapFlagsKHR.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public VkDeviceMemory memory() {
-        return new VkDeviceMemory(segment.get(LAYOUT$memory, OFFSET$memory));
-    }
-
-    public void memory(VkDeviceMemory value) {
-        segment.set(LAYOUT$memory, OFFSET$memory, value.segment());
-    }
-
-    public static VkMemoryUnmapInfoKHR allocate(Arena arena) {
-        return new VkMemoryUnmapInfoKHR(arena.allocate(LAYOUT));
-    }
-    
-    public static VkMemoryUnmapInfoKHR[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkMemoryUnmapInfoKHR[] ret = new VkMemoryUnmapInfoKHR[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkMemoryUnmapInfoKHR(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

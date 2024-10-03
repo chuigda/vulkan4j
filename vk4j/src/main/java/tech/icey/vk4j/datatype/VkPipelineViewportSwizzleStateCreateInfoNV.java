@@ -1,19 +1,128 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.vk4j.bitmask.VkPipelineViewportSwizzleStateCreateFlagsNV;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV;
 
-public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPipelineViewportSwizzleStateCreateInfoNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineViewportSwizzleStateCreateFlagsNV flags;
+///     uint32_t viewportCount;
+///     const VkViewportSwizzleNV* pViewportSwizzles;
+/// } VkPipelineViewportSwizzleStateCreateInfoNV;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineViewportSwizzleStateCreateInfoNV.html">VkPipelineViewportSwizzleStateCreateInfoNV</a>
+public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) implements IPointer {
+    public VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkPipelineViewportSwizzleStateCreateFlagsNV.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkPipelineViewportSwizzleStateCreateFlagsNV.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @unsigned int viewportCount() {
+        return segment.get(LAYOUT$viewportCount, OFFSET$viewportCount);
+    }
+
+    public void viewportCount(@unsigned int value) {
+        segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
+    }
+
+    public @pointer(comment="VkViewportSwizzleNV*") MemorySegment pViewportSwizzlesRaw() {
+        return segment.get(LAYOUT$pViewportSwizzles, OFFSET$pViewportSwizzles);
+    }
+
+    public void pViewportSwizzlesRaw(@pointer(comment="VkViewportSwizzleNV*") MemorySegment value) {
+        segment.set(LAYOUT$pViewportSwizzles, OFFSET$pViewportSwizzles, value);
+    }
+
+    public @nullable VkViewportSwizzleNV pViewportSwizzles() {
+        MemorySegment s = pViewportSwizzlesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkViewportSwizzleNV(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkViewportSwizzleNV[] pViewportSwizzles(int assumedCount) {
+        MemorySegment s = pViewportSwizzlesRaw().reinterpret(assumedCount * VkViewportSwizzleNV.SIZE);
+        VkViewportSwizzleNV[] arr = new VkViewportSwizzleNV[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkViewportSwizzleNV(s.asSlice(i * VkViewportSwizzleNV.SIZE, VkViewportSwizzleNV.SIZE));
+        }
+        return arr;
+    }
+
+    public void pViewportSwizzles(@nullable VkViewportSwizzleNV value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pViewportSwizzlesRaw(s);
+    }
+
+    public static VkPipelineViewportSwizzleStateCreateInfoNV allocate(Arena arena) {
+        return new VkPipelineViewportSwizzleStateCreateInfoNV(arena.allocate(LAYOUT));
+    }
+
+    public static VkPipelineViewportSwizzleStateCreateInfoNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPipelineViewportSwizzleStateCreateInfoNV[] ret = new VkPipelineViewportSwizzleStateCreateInfoNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPipelineViewportSwizzleStateCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPipelineViewportSwizzleStateCreateInfoNV clone(Arena arena, VkPipelineViewportSwizzleStateCreateInfoNV src) {
+        VkPipelineViewportSwizzleStateCreateInfoNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPipelineViewportSwizzleStateCreateInfoNV[] clone(Arena arena, VkPipelineViewportSwizzleStateCreateInfoNV[] src) {
+        VkPipelineViewportSwizzleStateCreateInfoNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -46,75 +155,4 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$viewportCount = LAYOUT$viewportCount.byteSize();
     public static final long SIZE$pViewportSwizzles = LAYOUT$pViewportSwizzles.byteSize();
-
-    public VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkPipelineViewportSwizzleStateCreateFlagsNV.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkPipelineViewportSwizzleStateCreateFlagsNV.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @unsigned int viewportCount() {
-        return segment.get(LAYOUT$viewportCount, OFFSET$viewportCount);
-    }
-
-    public void viewportCount(@unsigned int value) {
-        segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
-    }
-
-    public @pointer(comment="VkViewportSwizzleNV*") MemorySegment pViewportSwizzlesRaw() {
-        return segment.get(LAYOUT$pViewportSwizzles, OFFSET$pViewportSwizzles);
-    }
-
-    public void pViewportSwizzlesRaw(@pointer(comment="VkViewportSwizzleNV*") MemorySegment value) {
-        segment.set(LAYOUT$pViewportSwizzles, OFFSET$pViewportSwizzles, value);
-    }
-    
-    public @nullable VkViewportSwizzleNV pViewportSwizzles() {
-        MemorySegment s = pViewportSwizzlesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkViewportSwizzleNV(s);
-    }
-
-    public void pViewportSwizzles(@nullable VkViewportSwizzleNV value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pViewportSwizzlesRaw(s);
-    }
-
-    public static VkPipelineViewportSwizzleStateCreateInfoNV allocate(Arena arena) {
-        return new VkPipelineViewportSwizzleStateCreateInfoNV(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPipelineViewportSwizzleStateCreateInfoNV[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineViewportSwizzleStateCreateInfoNV[] ret = new VkPipelineViewportSwizzleStateCreateInfoNV[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineViewportSwizzleStateCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

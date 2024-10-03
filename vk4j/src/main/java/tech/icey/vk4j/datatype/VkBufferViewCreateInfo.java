@@ -1,19 +1,134 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkBufferViewCreateFlags;
+import tech.icey.vk4j.enumtype.VkFormat;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkBuffer;
+
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+/// {@snippet lang=c :
+/// typedef struct VkBufferViewCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkBufferViewCreateFlags flags;
+///     VkBuffer buffer;
+///     VkFormat format;
+///     VkDeviceSize offset;
+///     VkDeviceSize range;
+/// } VkBufferViewCreateInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBufferViewCreateInfo.html">VkBufferViewCreateInfo</a>
+public record VkBufferViewCreateInfo(MemorySegment segment) implements IPointer {
+    public VkBufferViewCreateInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO);
+    }
 
-public record VkBufferViewCreateInfo(MemorySegment segment) {
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkBufferViewCreateFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkBufferViewCreateFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @nullable VkBuffer buffer() {
+        MemorySegment s = segment.get(LAYOUT$buffer, OFFSET$buffer);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer(s);
+    }
+
+    public void buffer(@nullable VkBuffer value) {
+        segment.set(
+            LAYOUT$buffer,
+            OFFSET$buffer,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @enumtype(VkFormat.class) int format() {
+        return segment.get(LAYOUT$format, OFFSET$format);
+    }
+
+    public void format(@enumtype(VkFormat.class) int value) {
+        segment.set(LAYOUT$format, OFFSET$format, value);
+    }
+
+    public @unsigned long offset() {
+        return segment.get(LAYOUT$offset, OFFSET$offset);
+    }
+
+    public void offset(@unsigned long value) {
+        segment.set(LAYOUT$offset, OFFSET$offset, value);
+    }
+
+    public @unsigned long range() {
+        return segment.get(LAYOUT$range, OFFSET$range);
+    }
+
+    public void range(@unsigned long value) {
+        segment.set(LAYOUT$range, OFFSET$range, value);
+    }
+
+    public static VkBufferViewCreateInfo allocate(Arena arena) {
+        return new VkBufferViewCreateInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkBufferViewCreateInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkBufferViewCreateInfo[] ret = new VkBufferViewCreateInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkBufferViewCreateInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkBufferViewCreateInfo clone(Arena arena, VkBufferViewCreateInfo src) {
+        VkBufferViewCreateInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkBufferViewCreateInfo[] clone(Arena arena, VkBufferViewCreateInfo[] src) {
+        VkBufferViewCreateInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -56,78 +171,4 @@ public record VkBufferViewCreateInfo(MemorySegment segment) {
     public static final long SIZE$format = LAYOUT$format.byteSize();
     public static final long SIZE$offset = LAYOUT$offset.byteSize();
     public static final long SIZE$range = LAYOUT$range.byteSize();
-
-    public VkBufferViewCreateInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkBufferViewCreateFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkBufferViewCreateFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public VkBuffer buffer() {
-        return new VkBuffer(segment.get(LAYOUT$buffer, OFFSET$buffer));
-    }
-
-    public void buffer(VkBuffer value) {
-        segment.set(LAYOUT$buffer, OFFSET$buffer, value.segment());
-    }
-
-    public @enumtype(VkFormat.class) int format() {
-        return segment.get(LAYOUT$format, OFFSET$format);
-    }
-
-    public void format(@enumtype(VkFormat.class) int value) {
-        segment.set(LAYOUT$format, OFFSET$format, value);
-    }
-
-    public @unsigned long offset() {
-        return segment.get(LAYOUT$offset, OFFSET$offset);
-    }
-
-    public void offset(@unsigned long value) {
-        segment.set(LAYOUT$offset, OFFSET$offset, value);
-    }
-
-    public @unsigned long range() {
-        return segment.get(LAYOUT$range, OFFSET$range);
-    }
-
-    public void range(@unsigned long value) {
-        segment.set(LAYOUT$range, OFFSET$range, value);
-    }
-
-    public static VkBufferViewCreateInfo allocate(Arena arena) {
-        return new VkBufferViewCreateInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkBufferViewCreateInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkBufferViewCreateInfo[] ret = new VkBufferViewCreateInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkBufferViewCreateInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

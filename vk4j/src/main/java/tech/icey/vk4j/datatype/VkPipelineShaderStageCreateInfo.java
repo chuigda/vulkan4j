@@ -1,19 +1,176 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsafe;
+import tech.icey.panama.buffer.ByteBuffer;
+import tech.icey.vk4j.bitmask.VkPipelineShaderStageCreateFlags;
+import tech.icey.vk4j.bitmask.VkShaderStageFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkShaderModule;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
 
-public record VkPipelineShaderStageCreateInfo(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPipelineShaderStageCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineShaderStageCreateFlags flags;
+///     VkShaderStageFlagBits stage;
+///     VkShaderModule module;
+///     const char* pName;
+///     const char* pName;
+///     const VkSpecializationInfo* pSpecializationInfo;
+/// } VkPipelineShaderStageCreateInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineShaderStageCreateInfo.html">VkPipelineShaderStageCreateInfo</a>
+public record VkPipelineShaderStageCreateInfo(MemorySegment segment) implements IPointer {
+    public VkPipelineShaderStageCreateInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkPipelineShaderStageCreateFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkPipelineShaderStageCreateFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @enumtype(VkShaderStageFlags.class) int stage() {
+        return segment.get(LAYOUT$stage, OFFSET$stage);
+    }
+
+    public void stage(@enumtype(VkShaderStageFlags.class) int value) {
+        segment.set(LAYOUT$stage, OFFSET$stage, value);
+    }
+
+    public @nullable VkShaderModule module() {
+        MemorySegment s = segment.get(LAYOUT$module, OFFSET$module);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkShaderModule(s);
+    }
+
+    public void module(@nullable VkShaderModule value) {
+        segment.set(
+            LAYOUT$module,
+            OFFSET$module,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @pointer(comment="int8_t*") MemorySegment pNameRaw() {
+        return segment.get(LAYOUT$pName, OFFSET$pName);
+    }
+
+    public void pNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
+        segment.set(LAYOUT$pName, OFFSET$pName, value);
+    }
+
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
+    public @nullable ByteBuffer pName() {
+        MemorySegment s = pNameRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
+    }
+
+    public void pName(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pNameRaw(s);
+    }
+
+    public @pointer(comment="VkSpecializationInfo*") MemorySegment pSpecializationInfoRaw() {
+        return segment.get(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo);
+    }
+
+    public void pSpecializationInfoRaw(@pointer(comment="VkSpecializationInfo*") MemorySegment value) {
+        segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
+    }
+
+    public @nullable VkSpecializationInfo pSpecializationInfo() {
+        MemorySegment s = pSpecializationInfoRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSpecializationInfo(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkSpecializationInfo[] pSpecializationInfo(int assumedCount) {
+        MemorySegment s = pSpecializationInfoRaw().reinterpret(assumedCount * VkSpecializationInfo.SIZE);
+        VkSpecializationInfo[] arr = new VkSpecializationInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSpecializationInfo(s.asSlice(i * VkSpecializationInfo.SIZE, VkSpecializationInfo.SIZE));
+        }
+        return arr;
+    }
+
+    public void pSpecializationInfo(@nullable VkSpecializationInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSpecializationInfoRaw(s);
+    }
+
+    public static VkPipelineShaderStageCreateInfo allocate(Arena arena) {
+        return new VkPipelineShaderStageCreateInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkPipelineShaderStageCreateInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPipelineShaderStageCreateInfo[] ret = new VkPipelineShaderStageCreateInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPipelineShaderStageCreateInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPipelineShaderStageCreateInfo clone(Arena arena, VkPipelineShaderStageCreateInfo src) {
+        VkPipelineShaderStageCreateInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPipelineShaderStageCreateInfo[] clone(Arena arena, VkPipelineShaderStageCreateInfo[] src) {
+        VkPipelineShaderStageCreateInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -56,99 +213,4 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) {
     public static final long SIZE$module = LAYOUT$module.byteSize();
     public static final long SIZE$pName = LAYOUT$pName.byteSize();
     public static final long SIZE$pSpecializationInfo = LAYOUT$pSpecializationInfo.byteSize();
-
-    public VkPipelineShaderStageCreateInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkPipelineShaderStageCreateFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkPipelineShaderStageCreateFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @enumtype(VkShaderStageFlags.class) int stage() {
-        return segment.get(LAYOUT$stage, OFFSET$stage);
-    }
-
-    public void stage(@enumtype(VkShaderStageFlags.class) int value) {
-        segment.set(LAYOUT$stage, OFFSET$stage, value);
-    }
-
-    public VkShaderModule module() {
-        return new VkShaderModule(segment.get(LAYOUT$module, OFFSET$module));
-    }
-
-    public void module(VkShaderModule value) {
-        segment.set(LAYOUT$module, OFFSET$module, value.segment());
-    }
-
-    public @pointer(comment="int8_t*") MemorySegment pNameRaw() {
-        return segment.get(LAYOUT$pName, OFFSET$pName);
-    }
-
-    public void pNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
-        segment.set(LAYOUT$pName, OFFSET$pName, value);
-    }
-    
-    public ByteBuffer pName() {
-        return new ByteBuffer(pNameRaw());
-    }
-
-    public void pName(ByteBuffer value) {
-        pNameRaw(value.segment());
-    }
-
-    public @pointer(comment="VkSpecializationInfo*") MemorySegment pSpecializationInfoRaw() {
-        return segment.get(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo);
-    }
-
-    public void pSpecializationInfoRaw(@pointer(comment="VkSpecializationInfo*") MemorySegment value) {
-        segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
-    }
-    
-    public @nullable VkSpecializationInfo pSpecializationInfo() {
-        MemorySegment s = pSpecializationInfoRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSpecializationInfo(s);
-    }
-
-    public void pSpecializationInfo(@nullable VkSpecializationInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSpecializationInfoRaw(s);
-    }
-
-    public static VkPipelineShaderStageCreateInfo allocate(Arena arena) {
-        return new VkPipelineShaderStageCreateInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPipelineShaderStageCreateInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineShaderStageCreateInfo[] ret = new VkPipelineShaderStageCreateInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineShaderStageCreateInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

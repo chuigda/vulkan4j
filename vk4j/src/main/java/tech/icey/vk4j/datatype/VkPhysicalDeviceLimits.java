@@ -1,19 +1,1032 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.FloatBuffer;
+import tech.icey.panama.buffer.IntBuffer;
+import tech.icey.vk4j.bitmask.VkSampleCountFlags;
+
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceLimits {
+///     uint32_t maxImageDimension1D;
+///     uint32_t maxImageDimension2D;
+///     uint32_t maxImageDimension3D;
+///     uint32_t maxImageDimensionCube;
+///     uint32_t maxImageArrayLayers;
+///     uint32_t maxTexelBufferElements;
+///     uint32_t maxUniformBufferRange;
+///     uint32_t maxStorageBufferRange;
+///     uint32_t maxPushConstantsSize;
+///     uint32_t maxMemoryAllocationCount;
+///     uint32_t maxSamplerAllocationCount;
+///     VkDeviceSize bufferImageGranularity;
+///     VkDeviceSize sparseAddressSpaceSize;
+///     uint32_t maxBoundDescriptorSets;
+///     uint32_t maxPerStageDescriptorSamplers;
+///     uint32_t maxPerStageDescriptorUniformBuffers;
+///     uint32_t maxPerStageDescriptorStorageBuffers;
+///     uint32_t maxPerStageDescriptorSampledImages;
+///     uint32_t maxPerStageDescriptorStorageImages;
+///     uint32_t maxPerStageDescriptorInputAttachments;
+///     uint32_t maxPerStageResources;
+///     uint32_t maxDescriptorSetSamplers;
+///     uint32_t maxDescriptorSetUniformBuffers;
+///     uint32_t maxDescriptorSetUniformBuffersDynamic;
+///     uint32_t maxDescriptorSetStorageBuffers;
+///     uint32_t maxDescriptorSetStorageBuffersDynamic;
+///     uint32_t maxDescriptorSetSampledImages;
+///     uint32_t maxDescriptorSetStorageImages;
+///     uint32_t maxDescriptorSetInputAttachments;
+///     uint32_t maxVertexInputAttributes;
+///     uint32_t maxVertexInputBindings;
+///     uint32_t maxVertexInputAttributeOffset;
+///     uint32_t maxVertexInputBindingStride;
+///     uint32_t maxVertexOutputComponents;
+///     uint32_t maxTessellationGenerationLevel;
+///     uint32_t maxTessellationPatchSize;
+///     uint32_t maxTessellationControlPerVertexInputComponents;
+///     uint32_t maxTessellationControlPerVertexOutputComponents;
+///     uint32_t maxTessellationControlPerPatchOutputComponents;
+///     uint32_t maxTessellationControlTotalOutputComponents;
+///     uint32_t maxTessellationEvaluationInputComponents;
+///     uint32_t maxTessellationEvaluationOutputComponents;
+///     uint32_t maxGeometryShaderInvocations;
+///     uint32_t maxGeometryInputComponents;
+///     uint32_t maxGeometryOutputComponents;
+///     uint32_t maxGeometryOutputVertices;
+///     uint32_t maxGeometryTotalOutputComponents;
+///     uint32_t maxFragmentInputComponents;
+///     uint32_t maxFragmentOutputAttachments;
+///     uint32_t maxFragmentDualSrcAttachments;
+///     uint32_t maxFragmentCombinedOutputResources;
+///     uint32_t maxComputeSharedMemorySize;
+///     uint32_t maxComputeWorkGroupCount[3];
+///     uint32_t maxComputeWorkGroupInvocations;
+///     uint32_t maxComputeWorkGroupSize[3];
+///     uint32_t subPixelPrecisionBits;
+///     uint32_t subTexelPrecisionBits;
+///     uint32_t mipmapPrecisionBits;
+///     uint32_t maxDrawIndexedIndexValue;
+///     uint32_t maxDrawIndirectCount;
+///     float maxSamplerLodBias;
+///     float maxSamplerAnisotropy;
+///     uint32_t maxViewports;
+///     uint32_t maxViewportDimensions[2];
+///     float viewportBoundsRange[2];
+///     uint32_t viewportSubPixelBits;
+///     size_t minMemoryMapAlignment;
+///     VkDeviceSize minTexelBufferOffsetAlignment;
+///     VkDeviceSize minUniformBufferOffsetAlignment;
+///     VkDeviceSize minStorageBufferOffsetAlignment;
+///     int32_t minTexelOffset;
+///     uint32_t maxTexelOffset;
+///     int32_t minTexelGatherOffset;
+///     uint32_t maxTexelGatherOffset;
+///     float minInterpolationOffset;
+///     float maxInterpolationOffset;
+///     uint32_t subPixelInterpolationOffsetBits;
+///     uint32_t maxFramebufferWidth;
+///     uint32_t maxFramebufferHeight;
+///     uint32_t maxFramebufferLayers;
+///     VkSampleCountFlags framebufferColorSampleCounts;
+///     VkSampleCountFlags framebufferDepthSampleCounts;
+///     VkSampleCountFlags framebufferStencilSampleCounts;
+///     VkSampleCountFlags framebufferNoAttachmentsSampleCounts;
+///     uint32_t maxColorAttachments;
+///     VkSampleCountFlags sampledImageColorSampleCounts;
+///     VkSampleCountFlags sampledImageIntegerSampleCounts;
+///     VkSampleCountFlags sampledImageDepthSampleCounts;
+///     VkSampleCountFlags sampledImageStencilSampleCounts;
+///     VkSampleCountFlags storageImageSampleCounts;
+///     uint32_t maxSampleMaskWords;
+///     VkBool32 timestampComputeAndGraphics;
+///     float timestampPeriod;
+///     uint32_t maxClipDistances;
+///     uint32_t maxCullDistances;
+///     uint32_t maxCombinedClipAndCullDistances;
+///     uint32_t discreteQueuePriorities;
+///     float pointSizeRange[2];
+///     float lineWidthRange[2];
+///     float pointSizeGranularity;
+///     float lineWidthGranularity;
+///     VkBool32 strictLines;
+///     VkBool32 standardSampleLocations;
+///     VkDeviceSize optimalBufferCopyOffsetAlignment;
+///     VkDeviceSize optimalBufferCopyRowPitchAlignment;
+///     VkDeviceSize nonCoherentAtomSize;
+/// } VkPhysicalDeviceLimits;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceLimits.html">VkPhysicalDeviceLimits</a>
+public record VkPhysicalDeviceLimits(MemorySegment segment) implements IPointer {
+    public VkPhysicalDeviceLimits(MemorySegment segment) {
+        this.segment = segment;
+    }
 
-public record VkPhysicalDeviceLimits(MemorySegment segment) {
+    public @unsigned int maxImageDimension1D() {
+        return segment.get(LAYOUT$maxImageDimension1D, OFFSET$maxImageDimension1D);
+    }
+
+    public void maxImageDimension1D(@unsigned int value) {
+        segment.set(LAYOUT$maxImageDimension1D, OFFSET$maxImageDimension1D, value);
+    }
+
+    public @unsigned int maxImageDimension2D() {
+        return segment.get(LAYOUT$maxImageDimension2D, OFFSET$maxImageDimension2D);
+    }
+
+    public void maxImageDimension2D(@unsigned int value) {
+        segment.set(LAYOUT$maxImageDimension2D, OFFSET$maxImageDimension2D, value);
+    }
+
+    public @unsigned int maxImageDimension3D() {
+        return segment.get(LAYOUT$maxImageDimension3D, OFFSET$maxImageDimension3D);
+    }
+
+    public void maxImageDimension3D(@unsigned int value) {
+        segment.set(LAYOUT$maxImageDimension3D, OFFSET$maxImageDimension3D, value);
+    }
+
+    public @unsigned int maxImageDimensionCube() {
+        return segment.get(LAYOUT$maxImageDimensionCube, OFFSET$maxImageDimensionCube);
+    }
+
+    public void maxImageDimensionCube(@unsigned int value) {
+        segment.set(LAYOUT$maxImageDimensionCube, OFFSET$maxImageDimensionCube, value);
+    }
+
+    public @unsigned int maxImageArrayLayers() {
+        return segment.get(LAYOUT$maxImageArrayLayers, OFFSET$maxImageArrayLayers);
+    }
+
+    public void maxImageArrayLayers(@unsigned int value) {
+        segment.set(LAYOUT$maxImageArrayLayers, OFFSET$maxImageArrayLayers, value);
+    }
+
+    public @unsigned int maxTexelBufferElements() {
+        return segment.get(LAYOUT$maxTexelBufferElements, OFFSET$maxTexelBufferElements);
+    }
+
+    public void maxTexelBufferElements(@unsigned int value) {
+        segment.set(LAYOUT$maxTexelBufferElements, OFFSET$maxTexelBufferElements, value);
+    }
+
+    public @unsigned int maxUniformBufferRange() {
+        return segment.get(LAYOUT$maxUniformBufferRange, OFFSET$maxUniformBufferRange);
+    }
+
+    public void maxUniformBufferRange(@unsigned int value) {
+        segment.set(LAYOUT$maxUniformBufferRange, OFFSET$maxUniformBufferRange, value);
+    }
+
+    public @unsigned int maxStorageBufferRange() {
+        return segment.get(LAYOUT$maxStorageBufferRange, OFFSET$maxStorageBufferRange);
+    }
+
+    public void maxStorageBufferRange(@unsigned int value) {
+        segment.set(LAYOUT$maxStorageBufferRange, OFFSET$maxStorageBufferRange, value);
+    }
+
+    public @unsigned int maxPushConstantsSize() {
+        return segment.get(LAYOUT$maxPushConstantsSize, OFFSET$maxPushConstantsSize);
+    }
+
+    public void maxPushConstantsSize(@unsigned int value) {
+        segment.set(LAYOUT$maxPushConstantsSize, OFFSET$maxPushConstantsSize, value);
+    }
+
+    public @unsigned int maxMemoryAllocationCount() {
+        return segment.get(LAYOUT$maxMemoryAllocationCount, OFFSET$maxMemoryAllocationCount);
+    }
+
+    public void maxMemoryAllocationCount(@unsigned int value) {
+        segment.set(LAYOUT$maxMemoryAllocationCount, OFFSET$maxMemoryAllocationCount, value);
+    }
+
+    public @unsigned int maxSamplerAllocationCount() {
+        return segment.get(LAYOUT$maxSamplerAllocationCount, OFFSET$maxSamplerAllocationCount);
+    }
+
+    public void maxSamplerAllocationCount(@unsigned int value) {
+        segment.set(LAYOUT$maxSamplerAllocationCount, OFFSET$maxSamplerAllocationCount, value);
+    }
+
+    public @unsigned long bufferImageGranularity() {
+        return segment.get(LAYOUT$bufferImageGranularity, OFFSET$bufferImageGranularity);
+    }
+
+    public void bufferImageGranularity(@unsigned long value) {
+        segment.set(LAYOUT$bufferImageGranularity, OFFSET$bufferImageGranularity, value);
+    }
+
+    public @unsigned long sparseAddressSpaceSize() {
+        return segment.get(LAYOUT$sparseAddressSpaceSize, OFFSET$sparseAddressSpaceSize);
+    }
+
+    public void sparseAddressSpaceSize(@unsigned long value) {
+        segment.set(LAYOUT$sparseAddressSpaceSize, OFFSET$sparseAddressSpaceSize, value);
+    }
+
+    public @unsigned int maxBoundDescriptorSets() {
+        return segment.get(LAYOUT$maxBoundDescriptorSets, OFFSET$maxBoundDescriptorSets);
+    }
+
+    public void maxBoundDescriptorSets(@unsigned int value) {
+        segment.set(LAYOUT$maxBoundDescriptorSets, OFFSET$maxBoundDescriptorSets, value);
+    }
+
+    public @unsigned int maxPerStageDescriptorSamplers() {
+        return segment.get(LAYOUT$maxPerStageDescriptorSamplers, OFFSET$maxPerStageDescriptorSamplers);
+    }
+
+    public void maxPerStageDescriptorSamplers(@unsigned int value) {
+        segment.set(LAYOUT$maxPerStageDescriptorSamplers, OFFSET$maxPerStageDescriptorSamplers, value);
+    }
+
+    public @unsigned int maxPerStageDescriptorUniformBuffers() {
+        return segment.get(LAYOUT$maxPerStageDescriptorUniformBuffers, OFFSET$maxPerStageDescriptorUniformBuffers);
+    }
+
+    public void maxPerStageDescriptorUniformBuffers(@unsigned int value) {
+        segment.set(LAYOUT$maxPerStageDescriptorUniformBuffers, OFFSET$maxPerStageDescriptorUniformBuffers, value);
+    }
+
+    public @unsigned int maxPerStageDescriptorStorageBuffers() {
+        return segment.get(LAYOUT$maxPerStageDescriptorStorageBuffers, OFFSET$maxPerStageDescriptorStorageBuffers);
+    }
+
+    public void maxPerStageDescriptorStorageBuffers(@unsigned int value) {
+        segment.set(LAYOUT$maxPerStageDescriptorStorageBuffers, OFFSET$maxPerStageDescriptorStorageBuffers, value);
+    }
+
+    public @unsigned int maxPerStageDescriptorSampledImages() {
+        return segment.get(LAYOUT$maxPerStageDescriptorSampledImages, OFFSET$maxPerStageDescriptorSampledImages);
+    }
+
+    public void maxPerStageDescriptorSampledImages(@unsigned int value) {
+        segment.set(LAYOUT$maxPerStageDescriptorSampledImages, OFFSET$maxPerStageDescriptorSampledImages, value);
+    }
+
+    public @unsigned int maxPerStageDescriptorStorageImages() {
+        return segment.get(LAYOUT$maxPerStageDescriptorStorageImages, OFFSET$maxPerStageDescriptorStorageImages);
+    }
+
+    public void maxPerStageDescriptorStorageImages(@unsigned int value) {
+        segment.set(LAYOUT$maxPerStageDescriptorStorageImages, OFFSET$maxPerStageDescriptorStorageImages, value);
+    }
+
+    public @unsigned int maxPerStageDescriptorInputAttachments() {
+        return segment.get(LAYOUT$maxPerStageDescriptorInputAttachments, OFFSET$maxPerStageDescriptorInputAttachments);
+    }
+
+    public void maxPerStageDescriptorInputAttachments(@unsigned int value) {
+        segment.set(LAYOUT$maxPerStageDescriptorInputAttachments, OFFSET$maxPerStageDescriptorInputAttachments, value);
+    }
+
+    public @unsigned int maxPerStageResources() {
+        return segment.get(LAYOUT$maxPerStageResources, OFFSET$maxPerStageResources);
+    }
+
+    public void maxPerStageResources(@unsigned int value) {
+        segment.set(LAYOUT$maxPerStageResources, OFFSET$maxPerStageResources, value);
+    }
+
+    public @unsigned int maxDescriptorSetSamplers() {
+        return segment.get(LAYOUT$maxDescriptorSetSamplers, OFFSET$maxDescriptorSetSamplers);
+    }
+
+    public void maxDescriptorSetSamplers(@unsigned int value) {
+        segment.set(LAYOUT$maxDescriptorSetSamplers, OFFSET$maxDescriptorSetSamplers, value);
+    }
+
+    public @unsigned int maxDescriptorSetUniformBuffers() {
+        return segment.get(LAYOUT$maxDescriptorSetUniformBuffers, OFFSET$maxDescriptorSetUniformBuffers);
+    }
+
+    public void maxDescriptorSetUniformBuffers(@unsigned int value) {
+        segment.set(LAYOUT$maxDescriptorSetUniformBuffers, OFFSET$maxDescriptorSetUniformBuffers, value);
+    }
+
+    public @unsigned int maxDescriptorSetUniformBuffersDynamic() {
+        return segment.get(LAYOUT$maxDescriptorSetUniformBuffersDynamic, OFFSET$maxDescriptorSetUniformBuffersDynamic);
+    }
+
+    public void maxDescriptorSetUniformBuffersDynamic(@unsigned int value) {
+        segment.set(LAYOUT$maxDescriptorSetUniformBuffersDynamic, OFFSET$maxDescriptorSetUniformBuffersDynamic, value);
+    }
+
+    public @unsigned int maxDescriptorSetStorageBuffers() {
+        return segment.get(LAYOUT$maxDescriptorSetStorageBuffers, OFFSET$maxDescriptorSetStorageBuffers);
+    }
+
+    public void maxDescriptorSetStorageBuffers(@unsigned int value) {
+        segment.set(LAYOUT$maxDescriptorSetStorageBuffers, OFFSET$maxDescriptorSetStorageBuffers, value);
+    }
+
+    public @unsigned int maxDescriptorSetStorageBuffersDynamic() {
+        return segment.get(LAYOUT$maxDescriptorSetStorageBuffersDynamic, OFFSET$maxDescriptorSetStorageBuffersDynamic);
+    }
+
+    public void maxDescriptorSetStorageBuffersDynamic(@unsigned int value) {
+        segment.set(LAYOUT$maxDescriptorSetStorageBuffersDynamic, OFFSET$maxDescriptorSetStorageBuffersDynamic, value);
+    }
+
+    public @unsigned int maxDescriptorSetSampledImages() {
+        return segment.get(LAYOUT$maxDescriptorSetSampledImages, OFFSET$maxDescriptorSetSampledImages);
+    }
+
+    public void maxDescriptorSetSampledImages(@unsigned int value) {
+        segment.set(LAYOUT$maxDescriptorSetSampledImages, OFFSET$maxDescriptorSetSampledImages, value);
+    }
+
+    public @unsigned int maxDescriptorSetStorageImages() {
+        return segment.get(LAYOUT$maxDescriptorSetStorageImages, OFFSET$maxDescriptorSetStorageImages);
+    }
+
+    public void maxDescriptorSetStorageImages(@unsigned int value) {
+        segment.set(LAYOUT$maxDescriptorSetStorageImages, OFFSET$maxDescriptorSetStorageImages, value);
+    }
+
+    public @unsigned int maxDescriptorSetInputAttachments() {
+        return segment.get(LAYOUT$maxDescriptorSetInputAttachments, OFFSET$maxDescriptorSetInputAttachments);
+    }
+
+    public void maxDescriptorSetInputAttachments(@unsigned int value) {
+        segment.set(LAYOUT$maxDescriptorSetInputAttachments, OFFSET$maxDescriptorSetInputAttachments, value);
+    }
+
+    public @unsigned int maxVertexInputAttributes() {
+        return segment.get(LAYOUT$maxVertexInputAttributes, OFFSET$maxVertexInputAttributes);
+    }
+
+    public void maxVertexInputAttributes(@unsigned int value) {
+        segment.set(LAYOUT$maxVertexInputAttributes, OFFSET$maxVertexInputAttributes, value);
+    }
+
+    public @unsigned int maxVertexInputBindings() {
+        return segment.get(LAYOUT$maxVertexInputBindings, OFFSET$maxVertexInputBindings);
+    }
+
+    public void maxVertexInputBindings(@unsigned int value) {
+        segment.set(LAYOUT$maxVertexInputBindings, OFFSET$maxVertexInputBindings, value);
+    }
+
+    public @unsigned int maxVertexInputAttributeOffset() {
+        return segment.get(LAYOUT$maxVertexInputAttributeOffset, OFFSET$maxVertexInputAttributeOffset);
+    }
+
+    public void maxVertexInputAttributeOffset(@unsigned int value) {
+        segment.set(LAYOUT$maxVertexInputAttributeOffset, OFFSET$maxVertexInputAttributeOffset, value);
+    }
+
+    public @unsigned int maxVertexInputBindingStride() {
+        return segment.get(LAYOUT$maxVertexInputBindingStride, OFFSET$maxVertexInputBindingStride);
+    }
+
+    public void maxVertexInputBindingStride(@unsigned int value) {
+        segment.set(LAYOUT$maxVertexInputBindingStride, OFFSET$maxVertexInputBindingStride, value);
+    }
+
+    public @unsigned int maxVertexOutputComponents() {
+        return segment.get(LAYOUT$maxVertexOutputComponents, OFFSET$maxVertexOutputComponents);
+    }
+
+    public void maxVertexOutputComponents(@unsigned int value) {
+        segment.set(LAYOUT$maxVertexOutputComponents, OFFSET$maxVertexOutputComponents, value);
+    }
+
+    public @unsigned int maxTessellationGenerationLevel() {
+        return segment.get(LAYOUT$maxTessellationGenerationLevel, OFFSET$maxTessellationGenerationLevel);
+    }
+
+    public void maxTessellationGenerationLevel(@unsigned int value) {
+        segment.set(LAYOUT$maxTessellationGenerationLevel, OFFSET$maxTessellationGenerationLevel, value);
+    }
+
+    public @unsigned int maxTessellationPatchSize() {
+        return segment.get(LAYOUT$maxTessellationPatchSize, OFFSET$maxTessellationPatchSize);
+    }
+
+    public void maxTessellationPatchSize(@unsigned int value) {
+        segment.set(LAYOUT$maxTessellationPatchSize, OFFSET$maxTessellationPatchSize, value);
+    }
+
+    public @unsigned int maxTessellationControlPerVertexInputComponents() {
+        return segment.get(LAYOUT$maxTessellationControlPerVertexInputComponents, OFFSET$maxTessellationControlPerVertexInputComponents);
+    }
+
+    public void maxTessellationControlPerVertexInputComponents(@unsigned int value) {
+        segment.set(LAYOUT$maxTessellationControlPerVertexInputComponents, OFFSET$maxTessellationControlPerVertexInputComponents, value);
+    }
+
+    public @unsigned int maxTessellationControlPerVertexOutputComponents() {
+        return segment.get(LAYOUT$maxTessellationControlPerVertexOutputComponents, OFFSET$maxTessellationControlPerVertexOutputComponents);
+    }
+
+    public void maxTessellationControlPerVertexOutputComponents(@unsigned int value) {
+        segment.set(LAYOUT$maxTessellationControlPerVertexOutputComponents, OFFSET$maxTessellationControlPerVertexOutputComponents, value);
+    }
+
+    public @unsigned int maxTessellationControlPerPatchOutputComponents() {
+        return segment.get(LAYOUT$maxTessellationControlPerPatchOutputComponents, OFFSET$maxTessellationControlPerPatchOutputComponents);
+    }
+
+    public void maxTessellationControlPerPatchOutputComponents(@unsigned int value) {
+        segment.set(LAYOUT$maxTessellationControlPerPatchOutputComponents, OFFSET$maxTessellationControlPerPatchOutputComponents, value);
+    }
+
+    public @unsigned int maxTessellationControlTotalOutputComponents() {
+        return segment.get(LAYOUT$maxTessellationControlTotalOutputComponents, OFFSET$maxTessellationControlTotalOutputComponents);
+    }
+
+    public void maxTessellationControlTotalOutputComponents(@unsigned int value) {
+        segment.set(LAYOUT$maxTessellationControlTotalOutputComponents, OFFSET$maxTessellationControlTotalOutputComponents, value);
+    }
+
+    public @unsigned int maxTessellationEvaluationInputComponents() {
+        return segment.get(LAYOUT$maxTessellationEvaluationInputComponents, OFFSET$maxTessellationEvaluationInputComponents);
+    }
+
+    public void maxTessellationEvaluationInputComponents(@unsigned int value) {
+        segment.set(LAYOUT$maxTessellationEvaluationInputComponents, OFFSET$maxTessellationEvaluationInputComponents, value);
+    }
+
+    public @unsigned int maxTessellationEvaluationOutputComponents() {
+        return segment.get(LAYOUT$maxTessellationEvaluationOutputComponents, OFFSET$maxTessellationEvaluationOutputComponents);
+    }
+
+    public void maxTessellationEvaluationOutputComponents(@unsigned int value) {
+        segment.set(LAYOUT$maxTessellationEvaluationOutputComponents, OFFSET$maxTessellationEvaluationOutputComponents, value);
+    }
+
+    public @unsigned int maxGeometryShaderInvocations() {
+        return segment.get(LAYOUT$maxGeometryShaderInvocations, OFFSET$maxGeometryShaderInvocations);
+    }
+
+    public void maxGeometryShaderInvocations(@unsigned int value) {
+        segment.set(LAYOUT$maxGeometryShaderInvocations, OFFSET$maxGeometryShaderInvocations, value);
+    }
+
+    public @unsigned int maxGeometryInputComponents() {
+        return segment.get(LAYOUT$maxGeometryInputComponents, OFFSET$maxGeometryInputComponents);
+    }
+
+    public void maxGeometryInputComponents(@unsigned int value) {
+        segment.set(LAYOUT$maxGeometryInputComponents, OFFSET$maxGeometryInputComponents, value);
+    }
+
+    public @unsigned int maxGeometryOutputComponents() {
+        return segment.get(LAYOUT$maxGeometryOutputComponents, OFFSET$maxGeometryOutputComponents);
+    }
+
+    public void maxGeometryOutputComponents(@unsigned int value) {
+        segment.set(LAYOUT$maxGeometryOutputComponents, OFFSET$maxGeometryOutputComponents, value);
+    }
+
+    public @unsigned int maxGeometryOutputVertices() {
+        return segment.get(LAYOUT$maxGeometryOutputVertices, OFFSET$maxGeometryOutputVertices);
+    }
+
+    public void maxGeometryOutputVertices(@unsigned int value) {
+        segment.set(LAYOUT$maxGeometryOutputVertices, OFFSET$maxGeometryOutputVertices, value);
+    }
+
+    public @unsigned int maxGeometryTotalOutputComponents() {
+        return segment.get(LAYOUT$maxGeometryTotalOutputComponents, OFFSET$maxGeometryTotalOutputComponents);
+    }
+
+    public void maxGeometryTotalOutputComponents(@unsigned int value) {
+        segment.set(LAYOUT$maxGeometryTotalOutputComponents, OFFSET$maxGeometryTotalOutputComponents, value);
+    }
+
+    public @unsigned int maxFragmentInputComponents() {
+        return segment.get(LAYOUT$maxFragmentInputComponents, OFFSET$maxFragmentInputComponents);
+    }
+
+    public void maxFragmentInputComponents(@unsigned int value) {
+        segment.set(LAYOUT$maxFragmentInputComponents, OFFSET$maxFragmentInputComponents, value);
+    }
+
+    public @unsigned int maxFragmentOutputAttachments() {
+        return segment.get(LAYOUT$maxFragmentOutputAttachments, OFFSET$maxFragmentOutputAttachments);
+    }
+
+    public void maxFragmentOutputAttachments(@unsigned int value) {
+        segment.set(LAYOUT$maxFragmentOutputAttachments, OFFSET$maxFragmentOutputAttachments, value);
+    }
+
+    public @unsigned int maxFragmentDualSrcAttachments() {
+        return segment.get(LAYOUT$maxFragmentDualSrcAttachments, OFFSET$maxFragmentDualSrcAttachments);
+    }
+
+    public void maxFragmentDualSrcAttachments(@unsigned int value) {
+        segment.set(LAYOUT$maxFragmentDualSrcAttachments, OFFSET$maxFragmentDualSrcAttachments, value);
+    }
+
+    public @unsigned int maxFragmentCombinedOutputResources() {
+        return segment.get(LAYOUT$maxFragmentCombinedOutputResources, OFFSET$maxFragmentCombinedOutputResources);
+    }
+
+    public void maxFragmentCombinedOutputResources(@unsigned int value) {
+        segment.set(LAYOUT$maxFragmentCombinedOutputResources, OFFSET$maxFragmentCombinedOutputResources, value);
+    }
+
+    public @unsigned int maxComputeSharedMemorySize() {
+        return segment.get(LAYOUT$maxComputeSharedMemorySize, OFFSET$maxComputeSharedMemorySize);
+    }
+
+    public void maxComputeSharedMemorySize(@unsigned int value) {
+        segment.set(LAYOUT$maxComputeSharedMemorySize, OFFSET$maxComputeSharedMemorySize, value);
+    }
+
+    public MemorySegment maxComputeWorkGroupCountRaw() {
+        return segment.asSlice(OFFSET$maxComputeWorkGroupCount, SIZE$maxComputeWorkGroupCount);
+    }
+
+    public @unsigned IntBuffer maxComputeWorkGroupCount() {
+        return new IntBuffer(maxComputeWorkGroupCountRaw());
+    }
+
+    public void maxComputeWorkGroupCount(@unsigned IntBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupCount, SIZE$maxComputeWorkGroupCount);
+    }
+
+    public @unsigned int maxComputeWorkGroupInvocations() {
+        return segment.get(LAYOUT$maxComputeWorkGroupInvocations, OFFSET$maxComputeWorkGroupInvocations);
+    }
+
+    public void maxComputeWorkGroupInvocations(@unsigned int value) {
+        segment.set(LAYOUT$maxComputeWorkGroupInvocations, OFFSET$maxComputeWorkGroupInvocations, value);
+    }
+
+    public MemorySegment maxComputeWorkGroupSizeRaw() {
+        return segment.asSlice(OFFSET$maxComputeWorkGroupSize, SIZE$maxComputeWorkGroupSize);
+    }
+
+    public @unsigned IntBuffer maxComputeWorkGroupSize() {
+        return new IntBuffer(maxComputeWorkGroupSizeRaw());
+    }
+
+    public void maxComputeWorkGroupSize(@unsigned IntBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupSize, SIZE$maxComputeWorkGroupSize);
+    }
+
+    public @unsigned int subPixelPrecisionBits() {
+        return segment.get(LAYOUT$subPixelPrecisionBits, OFFSET$subPixelPrecisionBits);
+    }
+
+    public void subPixelPrecisionBits(@unsigned int value) {
+        segment.set(LAYOUT$subPixelPrecisionBits, OFFSET$subPixelPrecisionBits, value);
+    }
+
+    public @unsigned int subTexelPrecisionBits() {
+        return segment.get(LAYOUT$subTexelPrecisionBits, OFFSET$subTexelPrecisionBits);
+    }
+
+    public void subTexelPrecisionBits(@unsigned int value) {
+        segment.set(LAYOUT$subTexelPrecisionBits, OFFSET$subTexelPrecisionBits, value);
+    }
+
+    public @unsigned int mipmapPrecisionBits() {
+        return segment.get(LAYOUT$mipmapPrecisionBits, OFFSET$mipmapPrecisionBits);
+    }
+
+    public void mipmapPrecisionBits(@unsigned int value) {
+        segment.set(LAYOUT$mipmapPrecisionBits, OFFSET$mipmapPrecisionBits, value);
+    }
+
+    public @unsigned int maxDrawIndexedIndexValue() {
+        return segment.get(LAYOUT$maxDrawIndexedIndexValue, OFFSET$maxDrawIndexedIndexValue);
+    }
+
+    public void maxDrawIndexedIndexValue(@unsigned int value) {
+        segment.set(LAYOUT$maxDrawIndexedIndexValue, OFFSET$maxDrawIndexedIndexValue, value);
+    }
+
+    public @unsigned int maxDrawIndirectCount() {
+        return segment.get(LAYOUT$maxDrawIndirectCount, OFFSET$maxDrawIndirectCount);
+    }
+
+    public void maxDrawIndirectCount(@unsigned int value) {
+        segment.set(LAYOUT$maxDrawIndirectCount, OFFSET$maxDrawIndirectCount, value);
+    }
+
+    public float maxSamplerLodBias() {
+        return segment.get(LAYOUT$maxSamplerLodBias, OFFSET$maxSamplerLodBias);
+    }
+
+    public void maxSamplerLodBias(float value) {
+        segment.set(LAYOUT$maxSamplerLodBias, OFFSET$maxSamplerLodBias, value);
+    }
+
+    public float maxSamplerAnisotropy() {
+        return segment.get(LAYOUT$maxSamplerAnisotropy, OFFSET$maxSamplerAnisotropy);
+    }
+
+    public void maxSamplerAnisotropy(float value) {
+        segment.set(LAYOUT$maxSamplerAnisotropy, OFFSET$maxSamplerAnisotropy, value);
+    }
+
+    public @unsigned int maxViewports() {
+        return segment.get(LAYOUT$maxViewports, OFFSET$maxViewports);
+    }
+
+    public void maxViewports(@unsigned int value) {
+        segment.set(LAYOUT$maxViewports, OFFSET$maxViewports, value);
+    }
+
+    public MemorySegment maxViewportDimensionsRaw() {
+        return segment.asSlice(OFFSET$maxViewportDimensions, SIZE$maxViewportDimensions);
+    }
+
+    public @unsigned IntBuffer maxViewportDimensions() {
+        return new IntBuffer(maxViewportDimensionsRaw());
+    }
+
+    public void maxViewportDimensions(@unsigned IntBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxViewportDimensions, SIZE$maxViewportDimensions);
+    }
+
+    public MemorySegment viewportBoundsRangeRaw() {
+        return segment.asSlice(OFFSET$viewportBoundsRange, SIZE$viewportBoundsRange);
+    }
+
+    public FloatBuffer viewportBoundsRange() {
+        return new FloatBuffer(viewportBoundsRangeRaw());
+    }
+
+    public void viewportBoundsRange(FloatBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$viewportBoundsRange, SIZE$viewportBoundsRange);
+    }
+
+    public @unsigned int viewportSubPixelBits() {
+        return segment.get(LAYOUT$viewportSubPixelBits, OFFSET$viewportSubPixelBits);
+    }
+
+    public void viewportSubPixelBits(@unsigned int value) {
+        segment.set(LAYOUT$viewportSubPixelBits, OFFSET$viewportSubPixelBits, value);
+    }
+
+    public @unsigned long minMemoryMapAlignment() {
+            return NativeLayout.readCSizeT(segment, OFFSET$minMemoryMapAlignment);
+        }
+
+        public void minMemoryMapAlignment(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$minMemoryMapAlignment, value);
+        }
+
+    public @unsigned long minTexelBufferOffsetAlignment() {
+        return segment.get(LAYOUT$minTexelBufferOffsetAlignment, OFFSET$minTexelBufferOffsetAlignment);
+    }
+
+    public void minTexelBufferOffsetAlignment(@unsigned long value) {
+        segment.set(LAYOUT$minTexelBufferOffsetAlignment, OFFSET$minTexelBufferOffsetAlignment, value);
+    }
+
+    public @unsigned long minUniformBufferOffsetAlignment() {
+        return segment.get(LAYOUT$minUniformBufferOffsetAlignment, OFFSET$minUniformBufferOffsetAlignment);
+    }
+
+    public void minUniformBufferOffsetAlignment(@unsigned long value) {
+        segment.set(LAYOUT$minUniformBufferOffsetAlignment, OFFSET$minUniformBufferOffsetAlignment, value);
+    }
+
+    public @unsigned long minStorageBufferOffsetAlignment() {
+        return segment.get(LAYOUT$minStorageBufferOffsetAlignment, OFFSET$minStorageBufferOffsetAlignment);
+    }
+
+    public void minStorageBufferOffsetAlignment(@unsigned long value) {
+        segment.set(LAYOUT$minStorageBufferOffsetAlignment, OFFSET$minStorageBufferOffsetAlignment, value);
+    }
+
+    public int minTexelOffset() {
+        return segment.get(LAYOUT$minTexelOffset, OFFSET$minTexelOffset);
+    }
+
+    public void minTexelOffset(int value) {
+        segment.set(LAYOUT$minTexelOffset, OFFSET$minTexelOffset, value);
+    }
+
+    public @unsigned int maxTexelOffset() {
+        return segment.get(LAYOUT$maxTexelOffset, OFFSET$maxTexelOffset);
+    }
+
+    public void maxTexelOffset(@unsigned int value) {
+        segment.set(LAYOUT$maxTexelOffset, OFFSET$maxTexelOffset, value);
+    }
+
+    public int minTexelGatherOffset() {
+        return segment.get(LAYOUT$minTexelGatherOffset, OFFSET$minTexelGatherOffset);
+    }
+
+    public void minTexelGatherOffset(int value) {
+        segment.set(LAYOUT$minTexelGatherOffset, OFFSET$minTexelGatherOffset, value);
+    }
+
+    public @unsigned int maxTexelGatherOffset() {
+        return segment.get(LAYOUT$maxTexelGatherOffset, OFFSET$maxTexelGatherOffset);
+    }
+
+    public void maxTexelGatherOffset(@unsigned int value) {
+        segment.set(LAYOUT$maxTexelGatherOffset, OFFSET$maxTexelGatherOffset, value);
+    }
+
+    public float minInterpolationOffset() {
+        return segment.get(LAYOUT$minInterpolationOffset, OFFSET$minInterpolationOffset);
+    }
+
+    public void minInterpolationOffset(float value) {
+        segment.set(LAYOUT$minInterpolationOffset, OFFSET$minInterpolationOffset, value);
+    }
+
+    public float maxInterpolationOffset() {
+        return segment.get(LAYOUT$maxInterpolationOffset, OFFSET$maxInterpolationOffset);
+    }
+
+    public void maxInterpolationOffset(float value) {
+        segment.set(LAYOUT$maxInterpolationOffset, OFFSET$maxInterpolationOffset, value);
+    }
+
+    public @unsigned int subPixelInterpolationOffsetBits() {
+        return segment.get(LAYOUT$subPixelInterpolationOffsetBits, OFFSET$subPixelInterpolationOffsetBits);
+    }
+
+    public void subPixelInterpolationOffsetBits(@unsigned int value) {
+        segment.set(LAYOUT$subPixelInterpolationOffsetBits, OFFSET$subPixelInterpolationOffsetBits, value);
+    }
+
+    public @unsigned int maxFramebufferWidth() {
+        return segment.get(LAYOUT$maxFramebufferWidth, OFFSET$maxFramebufferWidth);
+    }
+
+    public void maxFramebufferWidth(@unsigned int value) {
+        segment.set(LAYOUT$maxFramebufferWidth, OFFSET$maxFramebufferWidth, value);
+    }
+
+    public @unsigned int maxFramebufferHeight() {
+        return segment.get(LAYOUT$maxFramebufferHeight, OFFSET$maxFramebufferHeight);
+    }
+
+    public void maxFramebufferHeight(@unsigned int value) {
+        segment.set(LAYOUT$maxFramebufferHeight, OFFSET$maxFramebufferHeight, value);
+    }
+
+    public @unsigned int maxFramebufferLayers() {
+        return segment.get(LAYOUT$maxFramebufferLayers, OFFSET$maxFramebufferLayers);
+    }
+
+    public void maxFramebufferLayers(@unsigned int value) {
+        segment.set(LAYOUT$maxFramebufferLayers, OFFSET$maxFramebufferLayers, value);
+    }
+
+    public @enumtype(VkSampleCountFlags.class) int framebufferColorSampleCounts() {
+        return segment.get(LAYOUT$framebufferColorSampleCounts, OFFSET$framebufferColorSampleCounts);
+    }
+
+    public void framebufferColorSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+        segment.set(LAYOUT$framebufferColorSampleCounts, OFFSET$framebufferColorSampleCounts, value);
+    }
+
+    public @enumtype(VkSampleCountFlags.class) int framebufferDepthSampleCounts() {
+        return segment.get(LAYOUT$framebufferDepthSampleCounts, OFFSET$framebufferDepthSampleCounts);
+    }
+
+    public void framebufferDepthSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+        segment.set(LAYOUT$framebufferDepthSampleCounts, OFFSET$framebufferDepthSampleCounts, value);
+    }
+
+    public @enumtype(VkSampleCountFlags.class) int framebufferStencilSampleCounts() {
+        return segment.get(LAYOUT$framebufferStencilSampleCounts, OFFSET$framebufferStencilSampleCounts);
+    }
+
+    public void framebufferStencilSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+        segment.set(LAYOUT$framebufferStencilSampleCounts, OFFSET$framebufferStencilSampleCounts, value);
+    }
+
+    public @enumtype(VkSampleCountFlags.class) int framebufferNoAttachmentsSampleCounts() {
+        return segment.get(LAYOUT$framebufferNoAttachmentsSampleCounts, OFFSET$framebufferNoAttachmentsSampleCounts);
+    }
+
+    public void framebufferNoAttachmentsSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+        segment.set(LAYOUT$framebufferNoAttachmentsSampleCounts, OFFSET$framebufferNoAttachmentsSampleCounts, value);
+    }
+
+    public @unsigned int maxColorAttachments() {
+        return segment.get(LAYOUT$maxColorAttachments, OFFSET$maxColorAttachments);
+    }
+
+    public void maxColorAttachments(@unsigned int value) {
+        segment.set(LAYOUT$maxColorAttachments, OFFSET$maxColorAttachments, value);
+    }
+
+    public @enumtype(VkSampleCountFlags.class) int sampledImageColorSampleCounts() {
+        return segment.get(LAYOUT$sampledImageColorSampleCounts, OFFSET$sampledImageColorSampleCounts);
+    }
+
+    public void sampledImageColorSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+        segment.set(LAYOUT$sampledImageColorSampleCounts, OFFSET$sampledImageColorSampleCounts, value);
+    }
+
+    public @enumtype(VkSampleCountFlags.class) int sampledImageIntegerSampleCounts() {
+        return segment.get(LAYOUT$sampledImageIntegerSampleCounts, OFFSET$sampledImageIntegerSampleCounts);
+    }
+
+    public void sampledImageIntegerSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+        segment.set(LAYOUT$sampledImageIntegerSampleCounts, OFFSET$sampledImageIntegerSampleCounts, value);
+    }
+
+    public @enumtype(VkSampleCountFlags.class) int sampledImageDepthSampleCounts() {
+        return segment.get(LAYOUT$sampledImageDepthSampleCounts, OFFSET$sampledImageDepthSampleCounts);
+    }
+
+    public void sampledImageDepthSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+        segment.set(LAYOUT$sampledImageDepthSampleCounts, OFFSET$sampledImageDepthSampleCounts, value);
+    }
+
+    public @enumtype(VkSampleCountFlags.class) int sampledImageStencilSampleCounts() {
+        return segment.get(LAYOUT$sampledImageStencilSampleCounts, OFFSET$sampledImageStencilSampleCounts);
+    }
+
+    public void sampledImageStencilSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+        segment.set(LAYOUT$sampledImageStencilSampleCounts, OFFSET$sampledImageStencilSampleCounts, value);
+    }
+
+    public @enumtype(VkSampleCountFlags.class) int storageImageSampleCounts() {
+        return segment.get(LAYOUT$storageImageSampleCounts, OFFSET$storageImageSampleCounts);
+    }
+
+    public void storageImageSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+        segment.set(LAYOUT$storageImageSampleCounts, OFFSET$storageImageSampleCounts, value);
+    }
+
+    public @unsigned int maxSampleMaskWords() {
+        return segment.get(LAYOUT$maxSampleMaskWords, OFFSET$maxSampleMaskWords);
+    }
+
+    public void maxSampleMaskWords(@unsigned int value) {
+        segment.set(LAYOUT$maxSampleMaskWords, OFFSET$maxSampleMaskWords, value);
+    }
+
+    public @unsigned int timestampComputeAndGraphics() {
+        return segment.get(LAYOUT$timestampComputeAndGraphics, OFFSET$timestampComputeAndGraphics);
+    }
+
+    public void timestampComputeAndGraphics(@unsigned int value) {
+        segment.set(LAYOUT$timestampComputeAndGraphics, OFFSET$timestampComputeAndGraphics, value);
+    }
+
+    public float timestampPeriod() {
+        return segment.get(LAYOUT$timestampPeriod, OFFSET$timestampPeriod);
+    }
+
+    public void timestampPeriod(float value) {
+        segment.set(LAYOUT$timestampPeriod, OFFSET$timestampPeriod, value);
+    }
+
+    public @unsigned int maxClipDistances() {
+        return segment.get(LAYOUT$maxClipDistances, OFFSET$maxClipDistances);
+    }
+
+    public void maxClipDistances(@unsigned int value) {
+        segment.set(LAYOUT$maxClipDistances, OFFSET$maxClipDistances, value);
+    }
+
+    public @unsigned int maxCullDistances() {
+        return segment.get(LAYOUT$maxCullDistances, OFFSET$maxCullDistances);
+    }
+
+    public void maxCullDistances(@unsigned int value) {
+        segment.set(LAYOUT$maxCullDistances, OFFSET$maxCullDistances, value);
+    }
+
+    public @unsigned int maxCombinedClipAndCullDistances() {
+        return segment.get(LAYOUT$maxCombinedClipAndCullDistances, OFFSET$maxCombinedClipAndCullDistances);
+    }
+
+    public void maxCombinedClipAndCullDistances(@unsigned int value) {
+        segment.set(LAYOUT$maxCombinedClipAndCullDistances, OFFSET$maxCombinedClipAndCullDistances, value);
+    }
+
+    public @unsigned int discreteQueuePriorities() {
+        return segment.get(LAYOUT$discreteQueuePriorities, OFFSET$discreteQueuePriorities);
+    }
+
+    public void discreteQueuePriorities(@unsigned int value) {
+        segment.set(LAYOUT$discreteQueuePriorities, OFFSET$discreteQueuePriorities, value);
+    }
+
+    public MemorySegment pointSizeRangeRaw() {
+        return segment.asSlice(OFFSET$pointSizeRange, SIZE$pointSizeRange);
+    }
+
+    public FloatBuffer pointSizeRange() {
+        return new FloatBuffer(pointSizeRangeRaw());
+    }
+
+    public void pointSizeRange(FloatBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pointSizeRange, SIZE$pointSizeRange);
+    }
+
+    public MemorySegment lineWidthRangeRaw() {
+        return segment.asSlice(OFFSET$lineWidthRange, SIZE$lineWidthRange);
+    }
+
+    public FloatBuffer lineWidthRange() {
+        return new FloatBuffer(lineWidthRangeRaw());
+    }
+
+    public void lineWidthRange(FloatBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$lineWidthRange, SIZE$lineWidthRange);
+    }
+
+    public float pointSizeGranularity() {
+        return segment.get(LAYOUT$pointSizeGranularity, OFFSET$pointSizeGranularity);
+    }
+
+    public void pointSizeGranularity(float value) {
+        segment.set(LAYOUT$pointSizeGranularity, OFFSET$pointSizeGranularity, value);
+    }
+
+    public float lineWidthGranularity() {
+        return segment.get(LAYOUT$lineWidthGranularity, OFFSET$lineWidthGranularity);
+    }
+
+    public void lineWidthGranularity(float value) {
+        segment.set(LAYOUT$lineWidthGranularity, OFFSET$lineWidthGranularity, value);
+    }
+
+    public @unsigned int strictLines() {
+        return segment.get(LAYOUT$strictLines, OFFSET$strictLines);
+    }
+
+    public void strictLines(@unsigned int value) {
+        segment.set(LAYOUT$strictLines, OFFSET$strictLines, value);
+    }
+
+    public @unsigned int standardSampleLocations() {
+        return segment.get(LAYOUT$standardSampleLocations, OFFSET$standardSampleLocations);
+    }
+
+    public void standardSampleLocations(@unsigned int value) {
+        segment.set(LAYOUT$standardSampleLocations, OFFSET$standardSampleLocations, value);
+    }
+
+    public @unsigned long optimalBufferCopyOffsetAlignment() {
+        return segment.get(LAYOUT$optimalBufferCopyOffsetAlignment, OFFSET$optimalBufferCopyOffsetAlignment);
+    }
+
+    public void optimalBufferCopyOffsetAlignment(@unsigned long value) {
+        segment.set(LAYOUT$optimalBufferCopyOffsetAlignment, OFFSET$optimalBufferCopyOffsetAlignment, value);
+    }
+
+    public @unsigned long optimalBufferCopyRowPitchAlignment() {
+        return segment.get(LAYOUT$optimalBufferCopyRowPitchAlignment, OFFSET$optimalBufferCopyRowPitchAlignment);
+    }
+
+    public void optimalBufferCopyRowPitchAlignment(@unsigned long value) {
+        segment.set(LAYOUT$optimalBufferCopyRowPitchAlignment, OFFSET$optimalBufferCopyRowPitchAlignment, value);
+    }
+
+    public @unsigned long nonCoherentAtomSize() {
+        return segment.get(LAYOUT$nonCoherentAtomSize, OFFSET$nonCoherentAtomSize);
+    }
+
+    public void nonCoherentAtomSize(@unsigned long value) {
+        segment.set(LAYOUT$nonCoherentAtomSize, OFFSET$nonCoherentAtomSize, value);
+    }
+
+    public static VkPhysicalDeviceLimits allocate(Arena arena) {
+        return new VkPhysicalDeviceLimits(arena.allocate(LAYOUT));
+    }
+
+    public static VkPhysicalDeviceLimits[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceLimits[] ret = new VkPhysicalDeviceLimits[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceLimits(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceLimits clone(Arena arena, VkPhysicalDeviceLimits src) {
+        VkPhysicalDeviceLimits ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceLimits[] clone(Arena arena, VkPhysicalDeviceLimits[] src) {
+        VkPhysicalDeviceLimits[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("maxImageDimension1D"),
         ValueLayout.JAVA_INT.withName("maxImageDimension2D"),
@@ -549,893 +1562,4 @@ public record VkPhysicalDeviceLimits(MemorySegment segment) {
     public static final long SIZE$optimalBufferCopyOffsetAlignment = LAYOUT$optimalBufferCopyOffsetAlignment.byteSize();
     public static final long SIZE$optimalBufferCopyRowPitchAlignment = LAYOUT$optimalBufferCopyRowPitchAlignment.byteSize();
     public static final long SIZE$nonCoherentAtomSize = LAYOUT$nonCoherentAtomSize.byteSize();
-
-    public VkPhysicalDeviceLimits(MemorySegment segment) {
-        this.segment = segment;
-    }
-
-    public @unsigned int maxImageDimension1D() {
-        return segment.get(LAYOUT$maxImageDimension1D, OFFSET$maxImageDimension1D);
-    }
-
-    public void maxImageDimension1D(@unsigned int value) {
-        segment.set(LAYOUT$maxImageDimension1D, OFFSET$maxImageDimension1D, value);
-    }
-
-    public @unsigned int maxImageDimension2D() {
-        return segment.get(LAYOUT$maxImageDimension2D, OFFSET$maxImageDimension2D);
-    }
-
-    public void maxImageDimension2D(@unsigned int value) {
-        segment.set(LAYOUT$maxImageDimension2D, OFFSET$maxImageDimension2D, value);
-    }
-
-    public @unsigned int maxImageDimension3D() {
-        return segment.get(LAYOUT$maxImageDimension3D, OFFSET$maxImageDimension3D);
-    }
-
-    public void maxImageDimension3D(@unsigned int value) {
-        segment.set(LAYOUT$maxImageDimension3D, OFFSET$maxImageDimension3D, value);
-    }
-
-    public @unsigned int maxImageDimensionCube() {
-        return segment.get(LAYOUT$maxImageDimensionCube, OFFSET$maxImageDimensionCube);
-    }
-
-    public void maxImageDimensionCube(@unsigned int value) {
-        segment.set(LAYOUT$maxImageDimensionCube, OFFSET$maxImageDimensionCube, value);
-    }
-
-    public @unsigned int maxImageArrayLayers() {
-        return segment.get(LAYOUT$maxImageArrayLayers, OFFSET$maxImageArrayLayers);
-    }
-
-    public void maxImageArrayLayers(@unsigned int value) {
-        segment.set(LAYOUT$maxImageArrayLayers, OFFSET$maxImageArrayLayers, value);
-    }
-
-    public @unsigned int maxTexelBufferElements() {
-        return segment.get(LAYOUT$maxTexelBufferElements, OFFSET$maxTexelBufferElements);
-    }
-
-    public void maxTexelBufferElements(@unsigned int value) {
-        segment.set(LAYOUT$maxTexelBufferElements, OFFSET$maxTexelBufferElements, value);
-    }
-
-    public @unsigned int maxUniformBufferRange() {
-        return segment.get(LAYOUT$maxUniformBufferRange, OFFSET$maxUniformBufferRange);
-    }
-
-    public void maxUniformBufferRange(@unsigned int value) {
-        segment.set(LAYOUT$maxUniformBufferRange, OFFSET$maxUniformBufferRange, value);
-    }
-
-    public @unsigned int maxStorageBufferRange() {
-        return segment.get(LAYOUT$maxStorageBufferRange, OFFSET$maxStorageBufferRange);
-    }
-
-    public void maxStorageBufferRange(@unsigned int value) {
-        segment.set(LAYOUT$maxStorageBufferRange, OFFSET$maxStorageBufferRange, value);
-    }
-
-    public @unsigned int maxPushConstantsSize() {
-        return segment.get(LAYOUT$maxPushConstantsSize, OFFSET$maxPushConstantsSize);
-    }
-
-    public void maxPushConstantsSize(@unsigned int value) {
-        segment.set(LAYOUT$maxPushConstantsSize, OFFSET$maxPushConstantsSize, value);
-    }
-
-    public @unsigned int maxMemoryAllocationCount() {
-        return segment.get(LAYOUT$maxMemoryAllocationCount, OFFSET$maxMemoryAllocationCount);
-    }
-
-    public void maxMemoryAllocationCount(@unsigned int value) {
-        segment.set(LAYOUT$maxMemoryAllocationCount, OFFSET$maxMemoryAllocationCount, value);
-    }
-
-    public @unsigned int maxSamplerAllocationCount() {
-        return segment.get(LAYOUT$maxSamplerAllocationCount, OFFSET$maxSamplerAllocationCount);
-    }
-
-    public void maxSamplerAllocationCount(@unsigned int value) {
-        segment.set(LAYOUT$maxSamplerAllocationCount, OFFSET$maxSamplerAllocationCount, value);
-    }
-
-    public @unsigned long bufferImageGranularity() {
-        return segment.get(LAYOUT$bufferImageGranularity, OFFSET$bufferImageGranularity);
-    }
-
-    public void bufferImageGranularity(@unsigned long value) {
-        segment.set(LAYOUT$bufferImageGranularity, OFFSET$bufferImageGranularity, value);
-    }
-
-    public @unsigned long sparseAddressSpaceSize() {
-        return segment.get(LAYOUT$sparseAddressSpaceSize, OFFSET$sparseAddressSpaceSize);
-    }
-
-    public void sparseAddressSpaceSize(@unsigned long value) {
-        segment.set(LAYOUT$sparseAddressSpaceSize, OFFSET$sparseAddressSpaceSize, value);
-    }
-
-    public @unsigned int maxBoundDescriptorSets() {
-        return segment.get(LAYOUT$maxBoundDescriptorSets, OFFSET$maxBoundDescriptorSets);
-    }
-
-    public void maxBoundDescriptorSets(@unsigned int value) {
-        segment.set(LAYOUT$maxBoundDescriptorSets, OFFSET$maxBoundDescriptorSets, value);
-    }
-
-    public @unsigned int maxPerStageDescriptorSamplers() {
-        return segment.get(LAYOUT$maxPerStageDescriptorSamplers, OFFSET$maxPerStageDescriptorSamplers);
-    }
-
-    public void maxPerStageDescriptorSamplers(@unsigned int value) {
-        segment.set(LAYOUT$maxPerStageDescriptorSamplers, OFFSET$maxPerStageDescriptorSamplers, value);
-    }
-
-    public @unsigned int maxPerStageDescriptorUniformBuffers() {
-        return segment.get(LAYOUT$maxPerStageDescriptorUniformBuffers, OFFSET$maxPerStageDescriptorUniformBuffers);
-    }
-
-    public void maxPerStageDescriptorUniformBuffers(@unsigned int value) {
-        segment.set(LAYOUT$maxPerStageDescriptorUniformBuffers, OFFSET$maxPerStageDescriptorUniformBuffers, value);
-    }
-
-    public @unsigned int maxPerStageDescriptorStorageBuffers() {
-        return segment.get(LAYOUT$maxPerStageDescriptorStorageBuffers, OFFSET$maxPerStageDescriptorStorageBuffers);
-    }
-
-    public void maxPerStageDescriptorStorageBuffers(@unsigned int value) {
-        segment.set(LAYOUT$maxPerStageDescriptorStorageBuffers, OFFSET$maxPerStageDescriptorStorageBuffers, value);
-    }
-
-    public @unsigned int maxPerStageDescriptorSampledImages() {
-        return segment.get(LAYOUT$maxPerStageDescriptorSampledImages, OFFSET$maxPerStageDescriptorSampledImages);
-    }
-
-    public void maxPerStageDescriptorSampledImages(@unsigned int value) {
-        segment.set(LAYOUT$maxPerStageDescriptorSampledImages, OFFSET$maxPerStageDescriptorSampledImages, value);
-    }
-
-    public @unsigned int maxPerStageDescriptorStorageImages() {
-        return segment.get(LAYOUT$maxPerStageDescriptorStorageImages, OFFSET$maxPerStageDescriptorStorageImages);
-    }
-
-    public void maxPerStageDescriptorStorageImages(@unsigned int value) {
-        segment.set(LAYOUT$maxPerStageDescriptorStorageImages, OFFSET$maxPerStageDescriptorStorageImages, value);
-    }
-
-    public @unsigned int maxPerStageDescriptorInputAttachments() {
-        return segment.get(LAYOUT$maxPerStageDescriptorInputAttachments, OFFSET$maxPerStageDescriptorInputAttachments);
-    }
-
-    public void maxPerStageDescriptorInputAttachments(@unsigned int value) {
-        segment.set(LAYOUT$maxPerStageDescriptorInputAttachments, OFFSET$maxPerStageDescriptorInputAttachments, value);
-    }
-
-    public @unsigned int maxPerStageResources() {
-        return segment.get(LAYOUT$maxPerStageResources, OFFSET$maxPerStageResources);
-    }
-
-    public void maxPerStageResources(@unsigned int value) {
-        segment.set(LAYOUT$maxPerStageResources, OFFSET$maxPerStageResources, value);
-    }
-
-    public @unsigned int maxDescriptorSetSamplers() {
-        return segment.get(LAYOUT$maxDescriptorSetSamplers, OFFSET$maxDescriptorSetSamplers);
-    }
-
-    public void maxDescriptorSetSamplers(@unsigned int value) {
-        segment.set(LAYOUT$maxDescriptorSetSamplers, OFFSET$maxDescriptorSetSamplers, value);
-    }
-
-    public @unsigned int maxDescriptorSetUniformBuffers() {
-        return segment.get(LAYOUT$maxDescriptorSetUniformBuffers, OFFSET$maxDescriptorSetUniformBuffers);
-    }
-
-    public void maxDescriptorSetUniformBuffers(@unsigned int value) {
-        segment.set(LAYOUT$maxDescriptorSetUniformBuffers, OFFSET$maxDescriptorSetUniformBuffers, value);
-    }
-
-    public @unsigned int maxDescriptorSetUniformBuffersDynamic() {
-        return segment.get(LAYOUT$maxDescriptorSetUniformBuffersDynamic, OFFSET$maxDescriptorSetUniformBuffersDynamic);
-    }
-
-    public void maxDescriptorSetUniformBuffersDynamic(@unsigned int value) {
-        segment.set(LAYOUT$maxDescriptorSetUniformBuffersDynamic, OFFSET$maxDescriptorSetUniformBuffersDynamic, value);
-    }
-
-    public @unsigned int maxDescriptorSetStorageBuffers() {
-        return segment.get(LAYOUT$maxDescriptorSetStorageBuffers, OFFSET$maxDescriptorSetStorageBuffers);
-    }
-
-    public void maxDescriptorSetStorageBuffers(@unsigned int value) {
-        segment.set(LAYOUT$maxDescriptorSetStorageBuffers, OFFSET$maxDescriptorSetStorageBuffers, value);
-    }
-
-    public @unsigned int maxDescriptorSetStorageBuffersDynamic() {
-        return segment.get(LAYOUT$maxDescriptorSetStorageBuffersDynamic, OFFSET$maxDescriptorSetStorageBuffersDynamic);
-    }
-
-    public void maxDescriptorSetStorageBuffersDynamic(@unsigned int value) {
-        segment.set(LAYOUT$maxDescriptorSetStorageBuffersDynamic, OFFSET$maxDescriptorSetStorageBuffersDynamic, value);
-    }
-
-    public @unsigned int maxDescriptorSetSampledImages() {
-        return segment.get(LAYOUT$maxDescriptorSetSampledImages, OFFSET$maxDescriptorSetSampledImages);
-    }
-
-    public void maxDescriptorSetSampledImages(@unsigned int value) {
-        segment.set(LAYOUT$maxDescriptorSetSampledImages, OFFSET$maxDescriptorSetSampledImages, value);
-    }
-
-    public @unsigned int maxDescriptorSetStorageImages() {
-        return segment.get(LAYOUT$maxDescriptorSetStorageImages, OFFSET$maxDescriptorSetStorageImages);
-    }
-
-    public void maxDescriptorSetStorageImages(@unsigned int value) {
-        segment.set(LAYOUT$maxDescriptorSetStorageImages, OFFSET$maxDescriptorSetStorageImages, value);
-    }
-
-    public @unsigned int maxDescriptorSetInputAttachments() {
-        return segment.get(LAYOUT$maxDescriptorSetInputAttachments, OFFSET$maxDescriptorSetInputAttachments);
-    }
-
-    public void maxDescriptorSetInputAttachments(@unsigned int value) {
-        segment.set(LAYOUT$maxDescriptorSetInputAttachments, OFFSET$maxDescriptorSetInputAttachments, value);
-    }
-
-    public @unsigned int maxVertexInputAttributes() {
-        return segment.get(LAYOUT$maxVertexInputAttributes, OFFSET$maxVertexInputAttributes);
-    }
-
-    public void maxVertexInputAttributes(@unsigned int value) {
-        segment.set(LAYOUT$maxVertexInputAttributes, OFFSET$maxVertexInputAttributes, value);
-    }
-
-    public @unsigned int maxVertexInputBindings() {
-        return segment.get(LAYOUT$maxVertexInputBindings, OFFSET$maxVertexInputBindings);
-    }
-
-    public void maxVertexInputBindings(@unsigned int value) {
-        segment.set(LAYOUT$maxVertexInputBindings, OFFSET$maxVertexInputBindings, value);
-    }
-
-    public @unsigned int maxVertexInputAttributeOffset() {
-        return segment.get(LAYOUT$maxVertexInputAttributeOffset, OFFSET$maxVertexInputAttributeOffset);
-    }
-
-    public void maxVertexInputAttributeOffset(@unsigned int value) {
-        segment.set(LAYOUT$maxVertexInputAttributeOffset, OFFSET$maxVertexInputAttributeOffset, value);
-    }
-
-    public @unsigned int maxVertexInputBindingStride() {
-        return segment.get(LAYOUT$maxVertexInputBindingStride, OFFSET$maxVertexInputBindingStride);
-    }
-
-    public void maxVertexInputBindingStride(@unsigned int value) {
-        segment.set(LAYOUT$maxVertexInputBindingStride, OFFSET$maxVertexInputBindingStride, value);
-    }
-
-    public @unsigned int maxVertexOutputComponents() {
-        return segment.get(LAYOUT$maxVertexOutputComponents, OFFSET$maxVertexOutputComponents);
-    }
-
-    public void maxVertexOutputComponents(@unsigned int value) {
-        segment.set(LAYOUT$maxVertexOutputComponents, OFFSET$maxVertexOutputComponents, value);
-    }
-
-    public @unsigned int maxTessellationGenerationLevel() {
-        return segment.get(LAYOUT$maxTessellationGenerationLevel, OFFSET$maxTessellationGenerationLevel);
-    }
-
-    public void maxTessellationGenerationLevel(@unsigned int value) {
-        segment.set(LAYOUT$maxTessellationGenerationLevel, OFFSET$maxTessellationGenerationLevel, value);
-    }
-
-    public @unsigned int maxTessellationPatchSize() {
-        return segment.get(LAYOUT$maxTessellationPatchSize, OFFSET$maxTessellationPatchSize);
-    }
-
-    public void maxTessellationPatchSize(@unsigned int value) {
-        segment.set(LAYOUT$maxTessellationPatchSize, OFFSET$maxTessellationPatchSize, value);
-    }
-
-    public @unsigned int maxTessellationControlPerVertexInputComponents() {
-        return segment.get(LAYOUT$maxTessellationControlPerVertexInputComponents, OFFSET$maxTessellationControlPerVertexInputComponents);
-    }
-
-    public void maxTessellationControlPerVertexInputComponents(@unsigned int value) {
-        segment.set(LAYOUT$maxTessellationControlPerVertexInputComponents, OFFSET$maxTessellationControlPerVertexInputComponents, value);
-    }
-
-    public @unsigned int maxTessellationControlPerVertexOutputComponents() {
-        return segment.get(LAYOUT$maxTessellationControlPerVertexOutputComponents, OFFSET$maxTessellationControlPerVertexOutputComponents);
-    }
-
-    public void maxTessellationControlPerVertexOutputComponents(@unsigned int value) {
-        segment.set(LAYOUT$maxTessellationControlPerVertexOutputComponents, OFFSET$maxTessellationControlPerVertexOutputComponents, value);
-    }
-
-    public @unsigned int maxTessellationControlPerPatchOutputComponents() {
-        return segment.get(LAYOUT$maxTessellationControlPerPatchOutputComponents, OFFSET$maxTessellationControlPerPatchOutputComponents);
-    }
-
-    public void maxTessellationControlPerPatchOutputComponents(@unsigned int value) {
-        segment.set(LAYOUT$maxTessellationControlPerPatchOutputComponents, OFFSET$maxTessellationControlPerPatchOutputComponents, value);
-    }
-
-    public @unsigned int maxTessellationControlTotalOutputComponents() {
-        return segment.get(LAYOUT$maxTessellationControlTotalOutputComponents, OFFSET$maxTessellationControlTotalOutputComponents);
-    }
-
-    public void maxTessellationControlTotalOutputComponents(@unsigned int value) {
-        segment.set(LAYOUT$maxTessellationControlTotalOutputComponents, OFFSET$maxTessellationControlTotalOutputComponents, value);
-    }
-
-    public @unsigned int maxTessellationEvaluationInputComponents() {
-        return segment.get(LAYOUT$maxTessellationEvaluationInputComponents, OFFSET$maxTessellationEvaluationInputComponents);
-    }
-
-    public void maxTessellationEvaluationInputComponents(@unsigned int value) {
-        segment.set(LAYOUT$maxTessellationEvaluationInputComponents, OFFSET$maxTessellationEvaluationInputComponents, value);
-    }
-
-    public @unsigned int maxTessellationEvaluationOutputComponents() {
-        return segment.get(LAYOUT$maxTessellationEvaluationOutputComponents, OFFSET$maxTessellationEvaluationOutputComponents);
-    }
-
-    public void maxTessellationEvaluationOutputComponents(@unsigned int value) {
-        segment.set(LAYOUT$maxTessellationEvaluationOutputComponents, OFFSET$maxTessellationEvaluationOutputComponents, value);
-    }
-
-    public @unsigned int maxGeometryShaderInvocations() {
-        return segment.get(LAYOUT$maxGeometryShaderInvocations, OFFSET$maxGeometryShaderInvocations);
-    }
-
-    public void maxGeometryShaderInvocations(@unsigned int value) {
-        segment.set(LAYOUT$maxGeometryShaderInvocations, OFFSET$maxGeometryShaderInvocations, value);
-    }
-
-    public @unsigned int maxGeometryInputComponents() {
-        return segment.get(LAYOUT$maxGeometryInputComponents, OFFSET$maxGeometryInputComponents);
-    }
-
-    public void maxGeometryInputComponents(@unsigned int value) {
-        segment.set(LAYOUT$maxGeometryInputComponents, OFFSET$maxGeometryInputComponents, value);
-    }
-
-    public @unsigned int maxGeometryOutputComponents() {
-        return segment.get(LAYOUT$maxGeometryOutputComponents, OFFSET$maxGeometryOutputComponents);
-    }
-
-    public void maxGeometryOutputComponents(@unsigned int value) {
-        segment.set(LAYOUT$maxGeometryOutputComponents, OFFSET$maxGeometryOutputComponents, value);
-    }
-
-    public @unsigned int maxGeometryOutputVertices() {
-        return segment.get(LAYOUT$maxGeometryOutputVertices, OFFSET$maxGeometryOutputVertices);
-    }
-
-    public void maxGeometryOutputVertices(@unsigned int value) {
-        segment.set(LAYOUT$maxGeometryOutputVertices, OFFSET$maxGeometryOutputVertices, value);
-    }
-
-    public @unsigned int maxGeometryTotalOutputComponents() {
-        return segment.get(LAYOUT$maxGeometryTotalOutputComponents, OFFSET$maxGeometryTotalOutputComponents);
-    }
-
-    public void maxGeometryTotalOutputComponents(@unsigned int value) {
-        segment.set(LAYOUT$maxGeometryTotalOutputComponents, OFFSET$maxGeometryTotalOutputComponents, value);
-    }
-
-    public @unsigned int maxFragmentInputComponents() {
-        return segment.get(LAYOUT$maxFragmentInputComponents, OFFSET$maxFragmentInputComponents);
-    }
-
-    public void maxFragmentInputComponents(@unsigned int value) {
-        segment.set(LAYOUT$maxFragmentInputComponents, OFFSET$maxFragmentInputComponents, value);
-    }
-
-    public @unsigned int maxFragmentOutputAttachments() {
-        return segment.get(LAYOUT$maxFragmentOutputAttachments, OFFSET$maxFragmentOutputAttachments);
-    }
-
-    public void maxFragmentOutputAttachments(@unsigned int value) {
-        segment.set(LAYOUT$maxFragmentOutputAttachments, OFFSET$maxFragmentOutputAttachments, value);
-    }
-
-    public @unsigned int maxFragmentDualSrcAttachments() {
-        return segment.get(LAYOUT$maxFragmentDualSrcAttachments, OFFSET$maxFragmentDualSrcAttachments);
-    }
-
-    public void maxFragmentDualSrcAttachments(@unsigned int value) {
-        segment.set(LAYOUT$maxFragmentDualSrcAttachments, OFFSET$maxFragmentDualSrcAttachments, value);
-    }
-
-    public @unsigned int maxFragmentCombinedOutputResources() {
-        return segment.get(LAYOUT$maxFragmentCombinedOutputResources, OFFSET$maxFragmentCombinedOutputResources);
-    }
-
-    public void maxFragmentCombinedOutputResources(@unsigned int value) {
-        segment.set(LAYOUT$maxFragmentCombinedOutputResources, OFFSET$maxFragmentCombinedOutputResources, value);
-    }
-
-    public @unsigned int maxComputeSharedMemorySize() {
-        return segment.get(LAYOUT$maxComputeSharedMemorySize, OFFSET$maxComputeSharedMemorySize);
-    }
-
-    public void maxComputeSharedMemorySize(@unsigned int value) {
-        segment.set(LAYOUT$maxComputeSharedMemorySize, OFFSET$maxComputeSharedMemorySize, value);
-    }
-
-    public MemorySegment maxComputeWorkGroupCountRaw() {
-        return segment.asSlice(OFFSET$maxComputeWorkGroupCount, LAYOUT$maxComputeWorkGroupCount.byteSize());
-    }
-
-    public @unsigned IntBuffer maxComputeWorkGroupCount() {
-        return new IntBuffer(maxComputeWorkGroupCountRaw());
-    }
-
-    public void maxComputeWorkGroupCount(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupCount, LAYOUT$maxComputeWorkGroupCount.byteSize());
-    }
-
-    public @unsigned int maxComputeWorkGroupInvocations() {
-        return segment.get(LAYOUT$maxComputeWorkGroupInvocations, OFFSET$maxComputeWorkGroupInvocations);
-    }
-
-    public void maxComputeWorkGroupInvocations(@unsigned int value) {
-        segment.set(LAYOUT$maxComputeWorkGroupInvocations, OFFSET$maxComputeWorkGroupInvocations, value);
-    }
-
-    public MemorySegment maxComputeWorkGroupSizeRaw() {
-        return segment.asSlice(OFFSET$maxComputeWorkGroupSize, LAYOUT$maxComputeWorkGroupSize.byteSize());
-    }
-
-    public @unsigned IntBuffer maxComputeWorkGroupSize() {
-        return new IntBuffer(maxComputeWorkGroupSizeRaw());
-    }
-
-    public void maxComputeWorkGroupSize(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupSize, LAYOUT$maxComputeWorkGroupSize.byteSize());
-    }
-
-    public @unsigned int subPixelPrecisionBits() {
-        return segment.get(LAYOUT$subPixelPrecisionBits, OFFSET$subPixelPrecisionBits);
-    }
-
-    public void subPixelPrecisionBits(@unsigned int value) {
-        segment.set(LAYOUT$subPixelPrecisionBits, OFFSET$subPixelPrecisionBits, value);
-    }
-
-    public @unsigned int subTexelPrecisionBits() {
-        return segment.get(LAYOUT$subTexelPrecisionBits, OFFSET$subTexelPrecisionBits);
-    }
-
-    public void subTexelPrecisionBits(@unsigned int value) {
-        segment.set(LAYOUT$subTexelPrecisionBits, OFFSET$subTexelPrecisionBits, value);
-    }
-
-    public @unsigned int mipmapPrecisionBits() {
-        return segment.get(LAYOUT$mipmapPrecisionBits, OFFSET$mipmapPrecisionBits);
-    }
-
-    public void mipmapPrecisionBits(@unsigned int value) {
-        segment.set(LAYOUT$mipmapPrecisionBits, OFFSET$mipmapPrecisionBits, value);
-    }
-
-    public @unsigned int maxDrawIndexedIndexValue() {
-        return segment.get(LAYOUT$maxDrawIndexedIndexValue, OFFSET$maxDrawIndexedIndexValue);
-    }
-
-    public void maxDrawIndexedIndexValue(@unsigned int value) {
-        segment.set(LAYOUT$maxDrawIndexedIndexValue, OFFSET$maxDrawIndexedIndexValue, value);
-    }
-
-    public @unsigned int maxDrawIndirectCount() {
-        return segment.get(LAYOUT$maxDrawIndirectCount, OFFSET$maxDrawIndirectCount);
-    }
-
-    public void maxDrawIndirectCount(@unsigned int value) {
-        segment.set(LAYOUT$maxDrawIndirectCount, OFFSET$maxDrawIndirectCount, value);
-    }
-
-    public float maxSamplerLodBias() {
-        return segment.get(LAYOUT$maxSamplerLodBias, OFFSET$maxSamplerLodBias);
-    }
-
-    public void maxSamplerLodBias(float value) {
-        segment.set(LAYOUT$maxSamplerLodBias, OFFSET$maxSamplerLodBias, value);
-    }
-
-    public float maxSamplerAnisotropy() {
-        return segment.get(LAYOUT$maxSamplerAnisotropy, OFFSET$maxSamplerAnisotropy);
-    }
-
-    public void maxSamplerAnisotropy(float value) {
-        segment.set(LAYOUT$maxSamplerAnisotropy, OFFSET$maxSamplerAnisotropy, value);
-    }
-
-    public @unsigned int maxViewports() {
-        return segment.get(LAYOUT$maxViewports, OFFSET$maxViewports);
-    }
-
-    public void maxViewports(@unsigned int value) {
-        segment.set(LAYOUT$maxViewports, OFFSET$maxViewports, value);
-    }
-
-    public MemorySegment maxViewportDimensionsRaw() {
-        return segment.asSlice(OFFSET$maxViewportDimensions, LAYOUT$maxViewportDimensions.byteSize());
-    }
-
-    public @unsigned IntBuffer maxViewportDimensions() {
-        return new IntBuffer(maxViewportDimensionsRaw());
-    }
-
-    public void maxViewportDimensions(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxViewportDimensions, LAYOUT$maxViewportDimensions.byteSize());
-    }
-
-    public MemorySegment viewportBoundsRangeRaw() {
-        return segment.asSlice(OFFSET$viewportBoundsRange, LAYOUT$viewportBoundsRange.byteSize());
-    }
-
-    public FloatBuffer viewportBoundsRange() {
-        return new FloatBuffer(viewportBoundsRangeRaw());
-    }
-
-    public void viewportBoundsRange(FloatBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$viewportBoundsRange, LAYOUT$viewportBoundsRange.byteSize());
-    }
-
-    public @unsigned int viewportSubPixelBits() {
-        return segment.get(LAYOUT$viewportSubPixelBits, OFFSET$viewportSubPixelBits);
-    }
-
-    public void viewportSubPixelBits(@unsigned int value) {
-        segment.set(LAYOUT$viewportSubPixelBits, OFFSET$viewportSubPixelBits, value);
-    }
-
-    public @unsigned long minMemoryMapAlignment() {
-            return NativeLayout.readCSizeT(segment, OFFSET$minMemoryMapAlignment);
-        }
-    
-        public void minMemoryMapAlignment(@unsigned long value) {
-            NativeLayout.writeCSizeT(segment, OFFSET$minMemoryMapAlignment, value);
-        }
-
-    public @unsigned long minTexelBufferOffsetAlignment() {
-        return segment.get(LAYOUT$minTexelBufferOffsetAlignment, OFFSET$minTexelBufferOffsetAlignment);
-    }
-
-    public void minTexelBufferOffsetAlignment(@unsigned long value) {
-        segment.set(LAYOUT$minTexelBufferOffsetAlignment, OFFSET$minTexelBufferOffsetAlignment, value);
-    }
-
-    public @unsigned long minUniformBufferOffsetAlignment() {
-        return segment.get(LAYOUT$minUniformBufferOffsetAlignment, OFFSET$minUniformBufferOffsetAlignment);
-    }
-
-    public void minUniformBufferOffsetAlignment(@unsigned long value) {
-        segment.set(LAYOUT$minUniformBufferOffsetAlignment, OFFSET$minUniformBufferOffsetAlignment, value);
-    }
-
-    public @unsigned long minStorageBufferOffsetAlignment() {
-        return segment.get(LAYOUT$minStorageBufferOffsetAlignment, OFFSET$minStorageBufferOffsetAlignment);
-    }
-
-    public void minStorageBufferOffsetAlignment(@unsigned long value) {
-        segment.set(LAYOUT$minStorageBufferOffsetAlignment, OFFSET$minStorageBufferOffsetAlignment, value);
-    }
-
-    public int minTexelOffset() {
-        return segment.get(LAYOUT$minTexelOffset, OFFSET$minTexelOffset);
-    }
-
-    public void minTexelOffset(int value) {
-        segment.set(LAYOUT$minTexelOffset, OFFSET$minTexelOffset, value);
-    }
-
-    public @unsigned int maxTexelOffset() {
-        return segment.get(LAYOUT$maxTexelOffset, OFFSET$maxTexelOffset);
-    }
-
-    public void maxTexelOffset(@unsigned int value) {
-        segment.set(LAYOUT$maxTexelOffset, OFFSET$maxTexelOffset, value);
-    }
-
-    public int minTexelGatherOffset() {
-        return segment.get(LAYOUT$minTexelGatherOffset, OFFSET$minTexelGatherOffset);
-    }
-
-    public void minTexelGatherOffset(int value) {
-        segment.set(LAYOUT$minTexelGatherOffset, OFFSET$minTexelGatherOffset, value);
-    }
-
-    public @unsigned int maxTexelGatherOffset() {
-        return segment.get(LAYOUT$maxTexelGatherOffset, OFFSET$maxTexelGatherOffset);
-    }
-
-    public void maxTexelGatherOffset(@unsigned int value) {
-        segment.set(LAYOUT$maxTexelGatherOffset, OFFSET$maxTexelGatherOffset, value);
-    }
-
-    public float minInterpolationOffset() {
-        return segment.get(LAYOUT$minInterpolationOffset, OFFSET$minInterpolationOffset);
-    }
-
-    public void minInterpolationOffset(float value) {
-        segment.set(LAYOUT$minInterpolationOffset, OFFSET$minInterpolationOffset, value);
-    }
-
-    public float maxInterpolationOffset() {
-        return segment.get(LAYOUT$maxInterpolationOffset, OFFSET$maxInterpolationOffset);
-    }
-
-    public void maxInterpolationOffset(float value) {
-        segment.set(LAYOUT$maxInterpolationOffset, OFFSET$maxInterpolationOffset, value);
-    }
-
-    public @unsigned int subPixelInterpolationOffsetBits() {
-        return segment.get(LAYOUT$subPixelInterpolationOffsetBits, OFFSET$subPixelInterpolationOffsetBits);
-    }
-
-    public void subPixelInterpolationOffsetBits(@unsigned int value) {
-        segment.set(LAYOUT$subPixelInterpolationOffsetBits, OFFSET$subPixelInterpolationOffsetBits, value);
-    }
-
-    public @unsigned int maxFramebufferWidth() {
-        return segment.get(LAYOUT$maxFramebufferWidth, OFFSET$maxFramebufferWidth);
-    }
-
-    public void maxFramebufferWidth(@unsigned int value) {
-        segment.set(LAYOUT$maxFramebufferWidth, OFFSET$maxFramebufferWidth, value);
-    }
-
-    public @unsigned int maxFramebufferHeight() {
-        return segment.get(LAYOUT$maxFramebufferHeight, OFFSET$maxFramebufferHeight);
-    }
-
-    public void maxFramebufferHeight(@unsigned int value) {
-        segment.set(LAYOUT$maxFramebufferHeight, OFFSET$maxFramebufferHeight, value);
-    }
-
-    public @unsigned int maxFramebufferLayers() {
-        return segment.get(LAYOUT$maxFramebufferLayers, OFFSET$maxFramebufferLayers);
-    }
-
-    public void maxFramebufferLayers(@unsigned int value) {
-        segment.set(LAYOUT$maxFramebufferLayers, OFFSET$maxFramebufferLayers, value);
-    }
-
-    public @enumtype(VkSampleCountFlags.class) int framebufferColorSampleCounts() {
-        return segment.get(LAYOUT$framebufferColorSampleCounts, OFFSET$framebufferColorSampleCounts);
-    }
-
-    public void framebufferColorSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
-        segment.set(LAYOUT$framebufferColorSampleCounts, OFFSET$framebufferColorSampleCounts, value);
-    }
-
-    public @enumtype(VkSampleCountFlags.class) int framebufferDepthSampleCounts() {
-        return segment.get(LAYOUT$framebufferDepthSampleCounts, OFFSET$framebufferDepthSampleCounts);
-    }
-
-    public void framebufferDepthSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
-        segment.set(LAYOUT$framebufferDepthSampleCounts, OFFSET$framebufferDepthSampleCounts, value);
-    }
-
-    public @enumtype(VkSampleCountFlags.class) int framebufferStencilSampleCounts() {
-        return segment.get(LAYOUT$framebufferStencilSampleCounts, OFFSET$framebufferStencilSampleCounts);
-    }
-
-    public void framebufferStencilSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
-        segment.set(LAYOUT$framebufferStencilSampleCounts, OFFSET$framebufferStencilSampleCounts, value);
-    }
-
-    public @enumtype(VkSampleCountFlags.class) int framebufferNoAttachmentsSampleCounts() {
-        return segment.get(LAYOUT$framebufferNoAttachmentsSampleCounts, OFFSET$framebufferNoAttachmentsSampleCounts);
-    }
-
-    public void framebufferNoAttachmentsSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
-        segment.set(LAYOUT$framebufferNoAttachmentsSampleCounts, OFFSET$framebufferNoAttachmentsSampleCounts, value);
-    }
-
-    public @unsigned int maxColorAttachments() {
-        return segment.get(LAYOUT$maxColorAttachments, OFFSET$maxColorAttachments);
-    }
-
-    public void maxColorAttachments(@unsigned int value) {
-        segment.set(LAYOUT$maxColorAttachments, OFFSET$maxColorAttachments, value);
-    }
-
-    public @enumtype(VkSampleCountFlags.class) int sampledImageColorSampleCounts() {
-        return segment.get(LAYOUT$sampledImageColorSampleCounts, OFFSET$sampledImageColorSampleCounts);
-    }
-
-    public void sampledImageColorSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
-        segment.set(LAYOUT$sampledImageColorSampleCounts, OFFSET$sampledImageColorSampleCounts, value);
-    }
-
-    public @enumtype(VkSampleCountFlags.class) int sampledImageIntegerSampleCounts() {
-        return segment.get(LAYOUT$sampledImageIntegerSampleCounts, OFFSET$sampledImageIntegerSampleCounts);
-    }
-
-    public void sampledImageIntegerSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
-        segment.set(LAYOUT$sampledImageIntegerSampleCounts, OFFSET$sampledImageIntegerSampleCounts, value);
-    }
-
-    public @enumtype(VkSampleCountFlags.class) int sampledImageDepthSampleCounts() {
-        return segment.get(LAYOUT$sampledImageDepthSampleCounts, OFFSET$sampledImageDepthSampleCounts);
-    }
-
-    public void sampledImageDepthSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
-        segment.set(LAYOUT$sampledImageDepthSampleCounts, OFFSET$sampledImageDepthSampleCounts, value);
-    }
-
-    public @enumtype(VkSampleCountFlags.class) int sampledImageStencilSampleCounts() {
-        return segment.get(LAYOUT$sampledImageStencilSampleCounts, OFFSET$sampledImageStencilSampleCounts);
-    }
-
-    public void sampledImageStencilSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
-        segment.set(LAYOUT$sampledImageStencilSampleCounts, OFFSET$sampledImageStencilSampleCounts, value);
-    }
-
-    public @enumtype(VkSampleCountFlags.class) int storageImageSampleCounts() {
-        return segment.get(LAYOUT$storageImageSampleCounts, OFFSET$storageImageSampleCounts);
-    }
-
-    public void storageImageSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
-        segment.set(LAYOUT$storageImageSampleCounts, OFFSET$storageImageSampleCounts, value);
-    }
-
-    public @unsigned int maxSampleMaskWords() {
-        return segment.get(LAYOUT$maxSampleMaskWords, OFFSET$maxSampleMaskWords);
-    }
-
-    public void maxSampleMaskWords(@unsigned int value) {
-        segment.set(LAYOUT$maxSampleMaskWords, OFFSET$maxSampleMaskWords, value);
-    }
-
-    public @unsigned int timestampComputeAndGraphics() {
-        return segment.get(LAYOUT$timestampComputeAndGraphics, OFFSET$timestampComputeAndGraphics);
-    }
-
-    public void timestampComputeAndGraphics(@unsigned int value) {
-        segment.set(LAYOUT$timestampComputeAndGraphics, OFFSET$timestampComputeAndGraphics, value);
-    }
-
-    public float timestampPeriod() {
-        return segment.get(LAYOUT$timestampPeriod, OFFSET$timestampPeriod);
-    }
-
-    public void timestampPeriod(float value) {
-        segment.set(LAYOUT$timestampPeriod, OFFSET$timestampPeriod, value);
-    }
-
-    public @unsigned int maxClipDistances() {
-        return segment.get(LAYOUT$maxClipDistances, OFFSET$maxClipDistances);
-    }
-
-    public void maxClipDistances(@unsigned int value) {
-        segment.set(LAYOUT$maxClipDistances, OFFSET$maxClipDistances, value);
-    }
-
-    public @unsigned int maxCullDistances() {
-        return segment.get(LAYOUT$maxCullDistances, OFFSET$maxCullDistances);
-    }
-
-    public void maxCullDistances(@unsigned int value) {
-        segment.set(LAYOUT$maxCullDistances, OFFSET$maxCullDistances, value);
-    }
-
-    public @unsigned int maxCombinedClipAndCullDistances() {
-        return segment.get(LAYOUT$maxCombinedClipAndCullDistances, OFFSET$maxCombinedClipAndCullDistances);
-    }
-
-    public void maxCombinedClipAndCullDistances(@unsigned int value) {
-        segment.set(LAYOUT$maxCombinedClipAndCullDistances, OFFSET$maxCombinedClipAndCullDistances, value);
-    }
-
-    public @unsigned int discreteQueuePriorities() {
-        return segment.get(LAYOUT$discreteQueuePriorities, OFFSET$discreteQueuePriorities);
-    }
-
-    public void discreteQueuePriorities(@unsigned int value) {
-        segment.set(LAYOUT$discreteQueuePriorities, OFFSET$discreteQueuePriorities, value);
-    }
-
-    public MemorySegment pointSizeRangeRaw() {
-        return segment.asSlice(OFFSET$pointSizeRange, LAYOUT$pointSizeRange.byteSize());
-    }
-
-    public FloatBuffer pointSizeRange() {
-        return new FloatBuffer(pointSizeRangeRaw());
-    }
-
-    public void pointSizeRange(FloatBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pointSizeRange, LAYOUT$pointSizeRange.byteSize());
-    }
-
-    public MemorySegment lineWidthRangeRaw() {
-        return segment.asSlice(OFFSET$lineWidthRange, LAYOUT$lineWidthRange.byteSize());
-    }
-
-    public FloatBuffer lineWidthRange() {
-        return new FloatBuffer(lineWidthRangeRaw());
-    }
-
-    public void lineWidthRange(FloatBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$lineWidthRange, LAYOUT$lineWidthRange.byteSize());
-    }
-
-    public float pointSizeGranularity() {
-        return segment.get(LAYOUT$pointSizeGranularity, OFFSET$pointSizeGranularity);
-    }
-
-    public void pointSizeGranularity(float value) {
-        segment.set(LAYOUT$pointSizeGranularity, OFFSET$pointSizeGranularity, value);
-    }
-
-    public float lineWidthGranularity() {
-        return segment.get(LAYOUT$lineWidthGranularity, OFFSET$lineWidthGranularity);
-    }
-
-    public void lineWidthGranularity(float value) {
-        segment.set(LAYOUT$lineWidthGranularity, OFFSET$lineWidthGranularity, value);
-    }
-
-    public @unsigned int strictLines() {
-        return segment.get(LAYOUT$strictLines, OFFSET$strictLines);
-    }
-
-    public void strictLines(@unsigned int value) {
-        segment.set(LAYOUT$strictLines, OFFSET$strictLines, value);
-    }
-
-    public @unsigned int standardSampleLocations() {
-        return segment.get(LAYOUT$standardSampleLocations, OFFSET$standardSampleLocations);
-    }
-
-    public void standardSampleLocations(@unsigned int value) {
-        segment.set(LAYOUT$standardSampleLocations, OFFSET$standardSampleLocations, value);
-    }
-
-    public @unsigned long optimalBufferCopyOffsetAlignment() {
-        return segment.get(LAYOUT$optimalBufferCopyOffsetAlignment, OFFSET$optimalBufferCopyOffsetAlignment);
-    }
-
-    public void optimalBufferCopyOffsetAlignment(@unsigned long value) {
-        segment.set(LAYOUT$optimalBufferCopyOffsetAlignment, OFFSET$optimalBufferCopyOffsetAlignment, value);
-    }
-
-    public @unsigned long optimalBufferCopyRowPitchAlignment() {
-        return segment.get(LAYOUT$optimalBufferCopyRowPitchAlignment, OFFSET$optimalBufferCopyRowPitchAlignment);
-    }
-
-    public void optimalBufferCopyRowPitchAlignment(@unsigned long value) {
-        segment.set(LAYOUT$optimalBufferCopyRowPitchAlignment, OFFSET$optimalBufferCopyRowPitchAlignment, value);
-    }
-
-    public @unsigned long nonCoherentAtomSize() {
-        return segment.get(LAYOUT$nonCoherentAtomSize, OFFSET$nonCoherentAtomSize);
-    }
-
-    public void nonCoherentAtomSize(@unsigned long value) {
-        segment.set(LAYOUT$nonCoherentAtomSize, OFFSET$nonCoherentAtomSize, value);
-    }
-
-    public static VkPhysicalDeviceLimits allocate(Arena arena) {
-        return new VkPhysicalDeviceLimits(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPhysicalDeviceLimits[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceLimits[] ret = new VkPhysicalDeviceLimits[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceLimits(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

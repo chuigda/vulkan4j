@@ -1,19 +1,113 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.ByteBuffer;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_MODULE_IDENTIFIER_CREATE_INFO_EXT;
 
-public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPipelineShaderStageModuleIdentifierCreateInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t identifierSize;
+///     const uint8_t* pIdentifier;
+/// } VkPipelineShaderStageModuleIdentifierCreateInfoEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineShaderStageModuleIdentifierCreateInfoEXT.html">VkPipelineShaderStageModuleIdentifierCreateInfoEXT</a>
+public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(MemorySegment segment) implements IPointer {
+    public VkPipelineShaderStageModuleIdentifierCreateInfoEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_MODULE_IDENTIFIER_CREATE_INFO_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int identifierSize() {
+        return segment.get(LAYOUT$identifierSize, OFFSET$identifierSize);
+    }
+
+    public void identifierSize(@unsigned int value) {
+        segment.set(LAYOUT$identifierSize, OFFSET$identifierSize, value);
+    }
+
+    public @pointer(comment="uint8_t*") MemorySegment pIdentifierRaw() {
+        return segment.get(LAYOUT$pIdentifier, OFFSET$pIdentifier);
+    }
+
+    public void pIdentifierRaw(@pointer(comment="uint8_t*") MemorySegment value) {
+        segment.set(LAYOUT$pIdentifier, OFFSET$pIdentifier, value);
+    }
+
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
+    public @nullable @unsigned ByteBuffer pIdentifier() {
+        MemorySegment s = pIdentifierRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
+    }
+
+    public void pIdentifier(@nullable @unsigned ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pIdentifierRaw(s);
+    }
+
+    public static VkPipelineShaderStageModuleIdentifierCreateInfoEXT allocate(Arena arena) {
+        return new VkPipelineShaderStageModuleIdentifierCreateInfoEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkPipelineShaderStageModuleIdentifierCreateInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPipelineShaderStageModuleIdentifierCreateInfoEXT[] ret = new VkPipelineShaderStageModuleIdentifierCreateInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPipelineShaderStageModuleIdentifierCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPipelineShaderStageModuleIdentifierCreateInfoEXT clone(Arena arena, VkPipelineShaderStageModuleIdentifierCreateInfoEXT src) {
+        VkPipelineShaderStageModuleIdentifierCreateInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPipelineShaderStageModuleIdentifierCreateInfoEXT[] clone(Arena arena, VkPipelineShaderStageModuleIdentifierCreateInfoEXT[] src) {
+        VkPipelineShaderStageModuleIdentifierCreateInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,62 +135,4 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(MemorySegment s
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$identifierSize = LAYOUT$identifierSize.byteSize();
     public static final long SIZE$pIdentifier = LAYOUT$pIdentifier.byteSize();
-
-    public VkPipelineShaderStageModuleIdentifierCreateInfoEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_MODULE_IDENTIFIER_CREATE_INFO_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int identifierSize() {
-        return segment.get(LAYOUT$identifierSize, OFFSET$identifierSize);
-    }
-
-    public void identifierSize(@unsigned int value) {
-        segment.set(LAYOUT$identifierSize, OFFSET$identifierSize, value);
-    }
-
-    public @pointer(comment="uint8_t*") MemorySegment pIdentifierRaw() {
-        return segment.get(LAYOUT$pIdentifier, OFFSET$pIdentifier);
-    }
-
-    public void pIdentifierRaw(@pointer(comment="uint8_t*") MemorySegment value) {
-        segment.set(LAYOUT$pIdentifier, OFFSET$pIdentifier, value);
-    }
-    
-    public @unsigned ByteBuffer pIdentifier() {
-        return new ByteBuffer(pIdentifierRaw());
-    }
-
-    public void pIdentifier(@unsigned ByteBuffer value) {
-        pIdentifierRaw(value.segment());
-    }
-
-    public static VkPipelineShaderStageModuleIdentifierCreateInfoEXT allocate(Arena arena) {
-        return new VkPipelineShaderStageModuleIdentifierCreateInfoEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPipelineShaderStageModuleIdentifierCreateInfoEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineShaderStageModuleIdentifierCreateInfoEXT[] ret = new VkPipelineShaderStageModuleIdentifierCreateInfoEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineShaderStageModuleIdentifierCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

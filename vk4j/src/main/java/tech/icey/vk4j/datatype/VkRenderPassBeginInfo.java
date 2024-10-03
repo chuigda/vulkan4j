@@ -1,19 +1,163 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkFramebuffer;
+import tech.icey.vk4j.handle.VkRenderPass;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
 
-public record VkRenderPassBeginInfo(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkRenderPassBeginInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkRenderPass renderPass;
+///     VkFramebuffer framebuffer;
+///     VkRect2D renderArea;
+///     uint32_t clearValueCount;
+///     const VkClearValue* pClearValues;
+/// } VkRenderPassBeginInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRenderPassBeginInfo.html">VkRenderPassBeginInfo</a>
+public record VkRenderPassBeginInfo(MemorySegment segment) implements IPointer {
+    public VkRenderPassBeginInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @nullable VkRenderPass renderPass() {
+        MemorySegment s = segment.get(LAYOUT$renderPass, OFFSET$renderPass);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkRenderPass(s);
+    }
+
+    public void renderPass(@nullable VkRenderPass value) {
+        segment.set(
+            LAYOUT$renderPass,
+            OFFSET$renderPass,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @nullable VkFramebuffer framebuffer() {
+        MemorySegment s = segment.get(LAYOUT$framebuffer, OFFSET$framebuffer);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkFramebuffer(s);
+    }
+
+    public void framebuffer(@nullable VkFramebuffer value) {
+        segment.set(
+            LAYOUT$framebuffer,
+            OFFSET$framebuffer,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public VkRect2D renderArea() {
+        return new VkRect2D(segment.asSlice(OFFSET$renderArea, LAYOUT$renderArea));
+    }
+
+    public void renderArea(VkRect2D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderArea, SIZE$renderArea);
+    }
+
+    public @unsigned int clearValueCount() {
+        return segment.get(LAYOUT$clearValueCount, OFFSET$clearValueCount);
+    }
+
+    public void clearValueCount(@unsigned int value) {
+        segment.set(LAYOUT$clearValueCount, OFFSET$clearValueCount, value);
+    }
+
+    public @pointer(comment="VkClearValue*") MemorySegment pClearValuesRaw() {
+        return segment.get(LAYOUT$pClearValues, OFFSET$pClearValues);
+    }
+
+    public void pClearValuesRaw(@pointer(comment="VkClearValue*") MemorySegment value) {
+        segment.set(LAYOUT$pClearValues, OFFSET$pClearValues, value);
+    }
+
+    public @nullable VkClearValue pClearValues() {
+        MemorySegment s = pClearValuesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkClearValue(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkClearValue[] pClearValues(int assumedCount) {
+        MemorySegment s = pClearValuesRaw().reinterpret(assumedCount * VkClearValue.SIZE);
+        VkClearValue[] arr = new VkClearValue[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkClearValue(s.asSlice(i * VkClearValue.SIZE, VkClearValue.SIZE));
+        }
+        return arr;
+    }
+
+    public void pClearValues(@nullable VkClearValue value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pClearValuesRaw(s);
+    }
+
+    public static VkRenderPassBeginInfo allocate(Arena arena) {
+        return new VkRenderPassBeginInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkRenderPassBeginInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkRenderPassBeginInfo[] ret = new VkRenderPassBeginInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkRenderPassBeginInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkRenderPassBeginInfo clone(Arena arena, VkRenderPassBeginInfo src) {
+        VkRenderPassBeginInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkRenderPassBeginInfo[] clone(Arena arena, VkRenderPassBeginInfo[] src) {
+        VkRenderPassBeginInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -56,91 +200,4 @@ public record VkRenderPassBeginInfo(MemorySegment segment) {
     public static final long SIZE$renderArea = LAYOUT$renderArea.byteSize();
     public static final long SIZE$clearValueCount = LAYOUT$clearValueCount.byteSize();
     public static final long SIZE$pClearValues = LAYOUT$pClearValues.byteSize();
-
-    public VkRenderPassBeginInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public VkRenderPass renderPass() {
-        return new VkRenderPass(segment.get(LAYOUT$renderPass, OFFSET$renderPass));
-    }
-
-    public void renderPass(VkRenderPass value) {
-        segment.set(LAYOUT$renderPass, OFFSET$renderPass, value.segment());
-    }
-
-    public VkFramebuffer framebuffer() {
-        return new VkFramebuffer(segment.get(LAYOUT$framebuffer, OFFSET$framebuffer));
-    }
-
-    public void framebuffer(VkFramebuffer value) {
-        segment.set(LAYOUT$framebuffer, OFFSET$framebuffer, value.segment());
-    }
-
-    public VkRect2D renderArea() {
-        return new VkRect2D(segment.asSlice(OFFSET$renderArea, LAYOUT$renderArea));
-    }
-
-    public void renderArea(VkRect2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderArea, SIZE$renderArea);
-    }
-
-    public @unsigned int clearValueCount() {
-        return segment.get(LAYOUT$clearValueCount, OFFSET$clearValueCount);
-    }
-
-    public void clearValueCount(@unsigned int value) {
-        segment.set(LAYOUT$clearValueCount, OFFSET$clearValueCount, value);
-    }
-
-    public @pointer(comment="VkClearValue*") MemorySegment pClearValuesRaw() {
-        return segment.get(LAYOUT$pClearValues, OFFSET$pClearValues);
-    }
-
-    public void pClearValuesRaw(@pointer(comment="VkClearValue*") MemorySegment value) {
-        segment.set(LAYOUT$pClearValues, OFFSET$pClearValues, value);
-    }
-    
-    public @nullable VkClearValue pClearValues() {
-        MemorySegment s = pClearValuesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkClearValue(s);
-    }
-
-    public void pClearValues(@nullable VkClearValue value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pClearValuesRaw(s);
-    }
-
-    public static VkRenderPassBeginInfo allocate(Arena arena) {
-        return new VkRenderPassBeginInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkRenderPassBeginInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkRenderPassBeginInfo[] ret = new VkRenderPassBeginInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderPassBeginInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

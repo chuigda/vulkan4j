@@ -1,77 +1,34 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
 import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
-public record VkSamplerYcbcrConversionCreateInfo(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("format"),
-        ValueLayout.JAVA_INT.withName("ycbcrModel"),
-        ValueLayout.JAVA_INT.withName("ycbcrRange"),
-        VkComponentMapping.LAYOUT.withName("components"),
-        ValueLayout.JAVA_INT.withName("xChromaOffset"),
-        ValueLayout.JAVA_INT.withName("yChromaOffset"),
-        ValueLayout.JAVA_INT.withName("chromaFilter"),
-        ValueLayout.JAVA_INT.withName("forceExplicitReconstruction")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
+import java.lang.foreign.*;
 
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$format = PathElement.groupElement("format");
-    public static final PathElement PATH$ycbcrModel = PathElement.groupElement("ycbcrModel");
-    public static final PathElement PATH$ycbcrRange = PathElement.groupElement("ycbcrRange");
-    public static final PathElement PATH$components = PathElement.groupElement("components");
-    public static final PathElement PATH$xChromaOffset = PathElement.groupElement("xChromaOffset");
-    public static final PathElement PATH$yChromaOffset = PathElement.groupElement("yChromaOffset");
-    public static final PathElement PATH$chromaFilter = PathElement.groupElement("chromaFilter");
-    public static final PathElement PATH$forceExplicitReconstruction = PathElement.groupElement("forceExplicitReconstruction");
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO;
 
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
-    public static final OfInt LAYOUT$ycbcrModel = (OfInt) LAYOUT.select(PATH$ycbcrModel);
-    public static final OfInt LAYOUT$ycbcrRange = (OfInt) LAYOUT.select(PATH$ycbcrRange);
-    public static final StructLayout LAYOUT$components = (StructLayout) LAYOUT.select(PATH$components);
-    public static final OfInt LAYOUT$xChromaOffset = (OfInt) LAYOUT.select(PATH$xChromaOffset);
-    public static final OfInt LAYOUT$yChromaOffset = (OfInt) LAYOUT.select(PATH$yChromaOffset);
-    public static final OfInt LAYOUT$chromaFilter = (OfInt) LAYOUT.select(PATH$chromaFilter);
-    public static final OfInt LAYOUT$forceExplicitReconstruction = (OfInt) LAYOUT.select(PATH$forceExplicitReconstruction);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
-    public static final long OFFSET$ycbcrModel = LAYOUT.byteOffset(PATH$ycbcrModel);
-    public static final long OFFSET$ycbcrRange = LAYOUT.byteOffset(PATH$ycbcrRange);
-    public static final long OFFSET$components = LAYOUT.byteOffset(PATH$components);
-    public static final long OFFSET$xChromaOffset = LAYOUT.byteOffset(PATH$xChromaOffset);
-    public static final long OFFSET$yChromaOffset = LAYOUT.byteOffset(PATH$yChromaOffset);
-    public static final long OFFSET$chromaFilter = LAYOUT.byteOffset(PATH$chromaFilter);
-    public static final long OFFSET$forceExplicitReconstruction = LAYOUT.byteOffset(PATH$forceExplicitReconstruction);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$format = LAYOUT$format.byteSize();
-    public static final long SIZE$ycbcrModel = LAYOUT$ycbcrModel.byteSize();
-    public static final long SIZE$ycbcrRange = LAYOUT$ycbcrRange.byteSize();
-    public static final long SIZE$components = LAYOUT$components.byteSize();
-    public static final long SIZE$xChromaOffset = LAYOUT$xChromaOffset.byteSize();
-    public static final long SIZE$yChromaOffset = LAYOUT$yChromaOffset.byteSize();
-    public static final long SIZE$chromaFilter = LAYOUT$chromaFilter.byteSize();
-    public static final long SIZE$forceExplicitReconstruction = LAYOUT$forceExplicitReconstruction.byteSize();
-
+/// {@snippet lang=c :
+/// typedef struct VkSamplerYcbcrConversionCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkFormat format;
+///     VkSamplerYcbcrModelConversion ycbcrModel;
+///     VkSamplerYcbcrRange ycbcrRange;
+///     VkComponentMapping components;
+///     VkChromaLocation xChromaOffset;
+///     VkChromaLocation yChromaOffset;
+///     VkFilter chromaFilter;
+///     VkBool32 forceExplicitReconstruction;
+/// } VkSamplerYcbcrConversionCreateInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSamplerYcbcrConversionCreateInfo.html">VkSamplerYcbcrConversionCreateInfo</a>
+public record VkSamplerYcbcrConversionCreateInfo(MemorySegment segment) implements IPointer {
     public VkSamplerYcbcrConversionCreateInfo(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO);
@@ -91,6 +48,10 @@ public record VkSamplerYcbcrConversionCreateInfo(MemorySegment segment) {
 
     public void pNext(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
     }
 
     public @enumtype(VkFormat.class) int format() {
@@ -160,7 +121,7 @@ public record VkSamplerYcbcrConversionCreateInfo(MemorySegment segment) {
     public static VkSamplerYcbcrConversionCreateInfo allocate(Arena arena) {
         return new VkSamplerYcbcrConversionCreateInfo(arena.allocate(LAYOUT));
     }
-    
+
     public static VkSamplerYcbcrConversionCreateInfo[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSamplerYcbcrConversionCreateInfo[] ret = new VkSamplerYcbcrConversionCreateInfo[count];
@@ -169,4 +130,76 @@ public record VkSamplerYcbcrConversionCreateInfo(MemorySegment segment) {
         }
         return ret;
     }
+
+    public static VkSamplerYcbcrConversionCreateInfo clone(Arena arena, VkSamplerYcbcrConversionCreateInfo src) {
+        VkSamplerYcbcrConversionCreateInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSamplerYcbcrConversionCreateInfo[] clone(Arena arena, VkSamplerYcbcrConversionCreateInfo[] src) {
+        VkSamplerYcbcrConversionCreateInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("format"),
+        ValueLayout.JAVA_INT.withName("ycbcrModel"),
+        ValueLayout.JAVA_INT.withName("ycbcrRange"),
+        VkComponentMapping.LAYOUT.withName("components"),
+        ValueLayout.JAVA_INT.withName("xChromaOffset"),
+        ValueLayout.JAVA_INT.withName("yChromaOffset"),
+        ValueLayout.JAVA_INT.withName("chromaFilter"),
+        ValueLayout.JAVA_INT.withName("forceExplicitReconstruction")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$ycbcrModel = PathElement.groupElement("ycbcrModel");
+    public static final PathElement PATH$ycbcrRange = PathElement.groupElement("ycbcrRange");
+    public static final PathElement PATH$components = PathElement.groupElement("components");
+    public static final PathElement PATH$xChromaOffset = PathElement.groupElement("xChromaOffset");
+    public static final PathElement PATH$yChromaOffset = PathElement.groupElement("yChromaOffset");
+    public static final PathElement PATH$chromaFilter = PathElement.groupElement("chromaFilter");
+    public static final PathElement PATH$forceExplicitReconstruction = PathElement.groupElement("forceExplicitReconstruction");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
+    public static final OfInt LAYOUT$ycbcrModel = (OfInt) LAYOUT.select(PATH$ycbcrModel);
+    public static final OfInt LAYOUT$ycbcrRange = (OfInt) LAYOUT.select(PATH$ycbcrRange);
+    public static final StructLayout LAYOUT$components = (StructLayout) LAYOUT.select(PATH$components);
+    public static final OfInt LAYOUT$xChromaOffset = (OfInt) LAYOUT.select(PATH$xChromaOffset);
+    public static final OfInt LAYOUT$yChromaOffset = (OfInt) LAYOUT.select(PATH$yChromaOffset);
+    public static final OfInt LAYOUT$chromaFilter = (OfInt) LAYOUT.select(PATH$chromaFilter);
+    public static final OfInt LAYOUT$forceExplicitReconstruction = (OfInt) LAYOUT.select(PATH$forceExplicitReconstruction);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
+    public static final long OFFSET$ycbcrModel = LAYOUT.byteOffset(PATH$ycbcrModel);
+    public static final long OFFSET$ycbcrRange = LAYOUT.byteOffset(PATH$ycbcrRange);
+    public static final long OFFSET$components = LAYOUT.byteOffset(PATH$components);
+    public static final long OFFSET$xChromaOffset = LAYOUT.byteOffset(PATH$xChromaOffset);
+    public static final long OFFSET$yChromaOffset = LAYOUT.byteOffset(PATH$yChromaOffset);
+    public static final long OFFSET$chromaFilter = LAYOUT.byteOffset(PATH$chromaFilter);
+    public static final long OFFSET$forceExplicitReconstruction = LAYOUT.byteOffset(PATH$forceExplicitReconstruction);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
+    public static final long SIZE$ycbcrModel = LAYOUT$ycbcrModel.byteSize();
+    public static final long SIZE$ycbcrRange = LAYOUT$ycbcrRange.byteSize();
+    public static final long SIZE$components = LAYOUT$components.byteSize();
+    public static final long SIZE$xChromaOffset = LAYOUT$xChromaOffset.byteSize();
+    public static final long SIZE$yChromaOffset = LAYOUT$yChromaOffset.byteSize();
+    public static final long SIZE$chromaFilter = LAYOUT$chromaFilter.byteSize();
+    public static final long SIZE$forceExplicitReconstruction = LAYOUT$forceExplicitReconstruction.byteSize();
 }

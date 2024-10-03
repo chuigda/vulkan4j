@@ -1,19 +1,96 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV;
 
-public record VkPhysicalDeviceMeshShaderFeaturesNV(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceMeshShaderFeaturesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 taskShader;
+///     VkBool32 meshShader;
+/// } VkPhysicalDeviceMeshShaderFeaturesNV;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceMeshShaderFeaturesNV.html">VkPhysicalDeviceMeshShaderFeaturesNV</a>
+public record VkPhysicalDeviceMeshShaderFeaturesNV(MemorySegment segment) implements IPointer {
+    public VkPhysicalDeviceMeshShaderFeaturesNV(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int taskShader() {
+        return segment.get(LAYOUT$taskShader, OFFSET$taskShader);
+    }
+
+    public void taskShader(@unsigned int value) {
+        segment.set(LAYOUT$taskShader, OFFSET$taskShader, value);
+    }
+
+    public @unsigned int meshShader() {
+        return segment.get(LAYOUT$meshShader, OFFSET$meshShader);
+    }
+
+    public void meshShader(@unsigned int value) {
+        segment.set(LAYOUT$meshShader, OFFSET$meshShader, value);
+    }
+
+    public static VkPhysicalDeviceMeshShaderFeaturesNV allocate(Arena arena) {
+        return new VkPhysicalDeviceMeshShaderFeaturesNV(arena.allocate(LAYOUT));
+    }
+
+    public static VkPhysicalDeviceMeshShaderFeaturesNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceMeshShaderFeaturesNV[] ret = new VkPhysicalDeviceMeshShaderFeaturesNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceMeshShaderFeaturesNV(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceMeshShaderFeaturesNV clone(Arena arena, VkPhysicalDeviceMeshShaderFeaturesNV src) {
+        VkPhysicalDeviceMeshShaderFeaturesNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceMeshShaderFeaturesNV[] clone(Arena arena, VkPhysicalDeviceMeshShaderFeaturesNV[] src) {
+        VkPhysicalDeviceMeshShaderFeaturesNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,54 +118,4 @@ public record VkPhysicalDeviceMeshShaderFeaturesNV(MemorySegment segment) {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$taskShader = LAYOUT$taskShader.byteSize();
     public static final long SIZE$meshShader = LAYOUT$meshShader.byteSize();
-
-    public VkPhysicalDeviceMeshShaderFeaturesNV(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int taskShader() {
-        return segment.get(LAYOUT$taskShader, OFFSET$taskShader);
-    }
-
-    public void taskShader(@unsigned int value) {
-        segment.set(LAYOUT$taskShader, OFFSET$taskShader, value);
-    }
-
-    public @unsigned int meshShader() {
-        return segment.get(LAYOUT$meshShader, OFFSET$meshShader);
-    }
-
-    public void meshShader(@unsigned int value) {
-        segment.set(LAYOUT$meshShader, OFFSET$meshShader, value);
-    }
-
-    public static VkPhysicalDeviceMeshShaderFeaturesNV allocate(Arena arena) {
-        return new VkPhysicalDeviceMeshShaderFeaturesNV(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPhysicalDeviceMeshShaderFeaturesNV[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceMeshShaderFeaturesNV[] ret = new VkPhysicalDeviceMeshShaderFeaturesNV[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMeshShaderFeaturesNV(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

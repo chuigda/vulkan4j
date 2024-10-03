@@ -44,20 +44,20 @@ def generate_command_class_file(registry: Registry, commands: list[Command], cla
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.*;
+import tech.icey.panama.FunctionLoader;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.panama.buffer.*;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.util.Function2;
 
 public final class {class_name} {{
 {'\n'.join(command_descriptors)}
 {'\n'.join(command_handles)}
 
-    public {class_name}(Function2<String, FunctionDescriptor, MethodHandle> loader{', Function2<String, FunctionDescriptor, MethodHandle> instanceLoader' if dual_loader else ''}) {{
+    public {class_name}(FunctionLoader loader{', FunctionLoader instanceLoader' if dual_loader else ''}) {{
 {'\n'.join(command_loads)}
     }}
 
@@ -110,6 +110,8 @@ def generate_command_load(registry: Registry, command: Command, dual_loader: boo
 
 
 def generate_command_wrapper(command: Command, param_types: list[CType], result_type: CType) -> str:
+    javadoc = f'/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/{command.name}.html">{command.name}</a>'
+
     params = []
     for (param_type, param) in zip(param_types, command.params):
         params.append(f'{generate_input_output_type(param_type, param.optional)} {param.name}')
@@ -124,7 +126,8 @@ def generate_command_wrapper(command: Command, param_types: list[CType], result_
             )'''
 
     if result_type == CTYPE_VOID:
-        return f'''    public void {command.name}(
+        return f'''    {javadoc}
+    public void {command.name}(
             {',\n            '.join(params)}
     ) {{
         try {{
@@ -134,7 +137,8 @@ def generate_command_wrapper(command: Command, param_types: list[CType], result_
         }}
     }}\n'''
     else:
-        return f'''    public {generate_input_output_type(result_type, False)} {command.name}(
+        return f'''    {javadoc}
+    public {generate_input_output_type(result_type, False)} {command.name}(
             {',\n            '.join(params)}
     ) {{
         try {{
@@ -150,7 +154,9 @@ def generate_input_output_type(type_: CType, optional: bool) -> str:
 
     if isinstance(type_, CPointerType):
         if isinstance(type_.pointee, CNonRefType):
-            return f'{nullable_prefix} {type_.pointee.vk4j_ptr_type()}'
+            return f'{nullable_prefix}{type_.pointee.vk4j_ptr_type()}'
+        elif isinstance(type_.pointee, CEnumType):
+            return f'{nullable_prefix}{type_.pointee.vk4j_array_type()}'
         elif isinstance(type_.pointee, CStructType) \
                 or isinstance(type_.pointee, CUnionType):
             return f'{nullable_prefix}@pointer(target={type_.pointee.java_type()}.class) {type_.pointee.java_type()}'
@@ -176,7 +182,8 @@ def generate_input_convert(type_: CType, param: Param):
     if isinstance(type_, CPointerType):
         if isinstance(type_.pointee, CNonRefType) \
                 or isinstance(type_.pointee, CStructType) \
-                or isinstance(type_.pointee, CUnionType):
+                or isinstance(type_.pointee, CUnionType) \
+                or isinstance(type_.pointee, CEnumType):
             if param.optional:
                 # see https://stackoverflow.com/a/79021315/14312575, type casting is required
                 return f'(MemorySegment) ({param.name} != null ? {param.name}.segment() : MemorySegment.NULL)'

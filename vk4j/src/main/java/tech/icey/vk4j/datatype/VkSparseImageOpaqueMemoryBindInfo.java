@@ -1,19 +1,114 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsafe;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.handle.VkImage;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
 
-public record VkSparseImageOpaqueMemoryBindInfo(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkSparseImageOpaqueMemoryBindInfo {
+///     VkImage image;
+///     uint32_t bindCount;
+///     const VkSparseMemoryBind* pBinds;
+/// } VkSparseImageOpaqueMemoryBindInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSparseImageOpaqueMemoryBindInfo.html">VkSparseImageOpaqueMemoryBindInfo</a>
+public record VkSparseImageOpaqueMemoryBindInfo(MemorySegment segment) implements IPointer {
+    public VkSparseImageOpaqueMemoryBindInfo(MemorySegment segment) {
+        this.segment = segment;
+    }
+
+    public @nullable VkImage image() {
+        MemorySegment s = segment.get(LAYOUT$image, OFFSET$image);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImage(s);
+    }
+
+    public void image(@nullable VkImage value) {
+        segment.set(
+            LAYOUT$image,
+            OFFSET$image,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @unsigned int bindCount() {
+        return segment.get(LAYOUT$bindCount, OFFSET$bindCount);
+    }
+
+    public void bindCount(@unsigned int value) {
+        segment.set(LAYOUT$bindCount, OFFSET$bindCount, value);
+    }
+
+    public @pointer(comment="VkSparseMemoryBind*") MemorySegment pBindsRaw() {
+        return segment.get(LAYOUT$pBinds, OFFSET$pBinds);
+    }
+
+    public void pBindsRaw(@pointer(comment="VkSparseMemoryBind*") MemorySegment value) {
+        segment.set(LAYOUT$pBinds, OFFSET$pBinds, value);
+    }
+
+    public @nullable VkSparseMemoryBind pBinds() {
+        MemorySegment s = pBindsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSparseMemoryBind(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkSparseMemoryBind[] pBinds(int assumedCount) {
+        MemorySegment s = pBindsRaw().reinterpret(assumedCount * VkSparseMemoryBind.SIZE);
+        VkSparseMemoryBind[] arr = new VkSparseMemoryBind[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSparseMemoryBind(s.asSlice(i * VkSparseMemoryBind.SIZE, VkSparseMemoryBind.SIZE));
+        }
+        return arr;
+    }
+
+    public void pBinds(@nullable VkSparseMemoryBind value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pBindsRaw(s);
+    }
+
+    public static VkSparseImageOpaqueMemoryBindInfo allocate(Arena arena) {
+        return new VkSparseImageOpaqueMemoryBindInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkSparseImageOpaqueMemoryBindInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSparseImageOpaqueMemoryBindInfo[] ret = new VkSparseImageOpaqueMemoryBindInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSparseImageOpaqueMemoryBindInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkSparseImageOpaqueMemoryBindInfo clone(Arena arena, VkSparseImageOpaqueMemoryBindInfo src) {
+        VkSparseImageOpaqueMemoryBindInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSparseImageOpaqueMemoryBindInfo[] clone(Arena arena, VkSparseImageOpaqueMemoryBindInfo[] src) {
+        VkSparseImageOpaqueMemoryBindInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withName("image"),
         ValueLayout.JAVA_INT.withName("bindCount"),
@@ -36,58 +131,4 @@ public record VkSparseImageOpaqueMemoryBindInfo(MemorySegment segment) {
     public static final long SIZE$image = LAYOUT$image.byteSize();
     public static final long SIZE$bindCount = LAYOUT$bindCount.byteSize();
     public static final long SIZE$pBinds = LAYOUT$pBinds.byteSize();
-
-    public VkSparseImageOpaqueMemoryBindInfo(MemorySegment segment) {
-        this.segment = segment;
-    }
-
-    public VkImage image() {
-        return new VkImage(segment.get(LAYOUT$image, OFFSET$image));
-    }
-
-    public void image(VkImage value) {
-        segment.set(LAYOUT$image, OFFSET$image, value.segment());
-    }
-
-    public @unsigned int bindCount() {
-        return segment.get(LAYOUT$bindCount, OFFSET$bindCount);
-    }
-
-    public void bindCount(@unsigned int value) {
-        segment.set(LAYOUT$bindCount, OFFSET$bindCount, value);
-    }
-
-    public @pointer(comment="VkSparseMemoryBind*") MemorySegment pBindsRaw() {
-        return segment.get(LAYOUT$pBinds, OFFSET$pBinds);
-    }
-
-    public void pBindsRaw(@pointer(comment="VkSparseMemoryBind*") MemorySegment value) {
-        segment.set(LAYOUT$pBinds, OFFSET$pBinds, value);
-    }
-    
-    public @nullable VkSparseMemoryBind pBinds() {
-        MemorySegment s = pBindsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSparseMemoryBind(s);
-    }
-
-    public void pBinds(@nullable VkSparseMemoryBind value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pBindsRaw(s);
-    }
-
-    public static VkSparseImageOpaqueMemoryBindInfo allocate(Arena arena) {
-        return new VkSparseImageOpaqueMemoryBindInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkSparseImageOpaqueMemoryBindInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSparseImageOpaqueMemoryBindInfo[] ret = new VkSparseImageOpaqueMemoryBindInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkSparseImageOpaqueMemoryBindInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

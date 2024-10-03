@@ -3,14 +3,14 @@ package tech.icey.vk4j.command;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.*;
+import tech.icey.panama.FunctionLoader;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.panama.buffer.*;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.util.Function2;
 
 public final class InstanceCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkDestroyInstance = FunctionDescriptor.ofVoid(
@@ -686,7 +686,7 @@ public final class InstanceCommands {
     public final @nullable MethodHandle HANDLE$vkAcquireDrmDisplayEXT;
     public final @nullable MethodHandle HANDLE$vkGetDrmDisplayEXT;
 
-    public InstanceCommands(Function2<String, FunctionDescriptor, MethodHandle> loader) {
+    public InstanceCommands(FunctionLoader loader) {
         HANDLE$vkDestroyInstance = loader.apply("vkDestroyInstance", DESCRIPTOR$vkDestroyInstance);
         HANDLE$vkEnumeratePhysicalDevices = loader.apply("vkEnumeratePhysicalDevices", DESCRIPTOR$vkEnumeratePhysicalDevices);
         HANDLE$vkGetPhysicalDeviceProperties = loader.apply("vkGetPhysicalDeviceProperties", DESCRIPTOR$vkGetPhysicalDeviceProperties);
@@ -772,6 +772,7 @@ public final class InstanceCommands {
         HANDLE$vkGetDrmDisplayEXT = loader.apply("vkGetDrmDisplayEXT", DESCRIPTOR$vkGetDrmDisplayEXT);
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyInstance.html">vkDestroyInstance</a>
     public void vkDestroyInstance(
             @nullable VkInstance instance,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
@@ -786,9 +787,10 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumeratePhysicalDevices.html">vkEnumeratePhysicalDevices</a>
     public @enumtype(VkResult.class) int vkEnumeratePhysicalDevices(
             VkInstance instance,
-             @unsigned IntBuffer pPhysicalDeviceCount,
+            @unsigned IntBuffer pPhysicalDeviceCount,
             @nullable @pointer(target=VkPhysicalDevice.class) VkPhysicalDevice.Buffer pPhysicalDevices
     ) {
         try {
@@ -802,6 +804,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceProperties.html">vkGetPhysicalDeviceProperties</a>
     public void vkGetPhysicalDeviceProperties(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceProperties.class) VkPhysicalDeviceProperties pProperties
@@ -816,9 +819,10 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceQueueFamilyProperties.html">vkGetPhysicalDeviceQueueFamilyProperties</a>
     public void vkGetPhysicalDeviceQueueFamilyProperties(
             VkPhysicalDevice physicalDevice,
-             @unsigned IntBuffer pQueueFamilyPropertyCount,
+            @unsigned IntBuffer pQueueFamilyPropertyCount,
             @nullable @pointer(target=VkQueueFamilyProperties.class) VkQueueFamilyProperties pQueueFamilyProperties
     ) {
         try {
@@ -832,6 +836,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceMemoryProperties.html">vkGetPhysicalDeviceMemoryProperties</a>
     public void vkGetPhysicalDeviceMemoryProperties(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceMemoryProperties.class) VkPhysicalDeviceMemoryProperties pMemoryProperties
@@ -846,6 +851,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceFeatures.html">vkGetPhysicalDeviceFeatures</a>
     public void vkGetPhysicalDeviceFeatures(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceFeatures.class) VkPhysicalDeviceFeatures pFeatures
@@ -860,6 +866,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceFormatProperties.html">vkGetPhysicalDeviceFormatProperties</a>
     public void vkGetPhysicalDeviceFormatProperties(
             VkPhysicalDevice physicalDevice,
             @enumtype(VkFormat.class) int format,
@@ -876,6 +883,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceImageFormatProperties.html">vkGetPhysicalDeviceImageFormatProperties</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceImageFormatProperties(
             VkPhysicalDevice physicalDevice,
             @enumtype(VkFormat.class) int format,
@@ -900,6 +908,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateDevice.html">vkCreateDevice</a>
     public @enumtype(VkResult.class) int vkCreateDevice(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkDeviceCreateInfo.class) VkDeviceCreateInfo pCreateInfo,
@@ -918,9 +927,10 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumerateDeviceLayerProperties.html">vkEnumerateDeviceLayerProperties</a>
     public @enumtype(VkResult.class) int vkEnumerateDeviceLayerProperties(
             VkPhysicalDevice physicalDevice,
-             @unsigned IntBuffer pPropertyCount,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkLayerProperties.class) VkLayerProperties pProperties
     ) {
         try {
@@ -934,10 +944,11 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumerateDeviceExtensionProperties.html">vkEnumerateDeviceExtensionProperties</a>
     public @enumtype(VkResult.class) int vkEnumerateDeviceExtensionProperties(
             VkPhysicalDevice physicalDevice,
-            @nullable  ByteBuffer pLayerName,
-             @unsigned IntBuffer pPropertyCount,
+            @nullable ByteBuffer pLayerName,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkExtensionProperties.class) VkExtensionProperties pProperties
     ) {
         try {
@@ -952,6 +963,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSparseImageFormatProperties.html">vkGetPhysicalDeviceSparseImageFormatProperties</a>
     public void vkGetPhysicalDeviceSparseImageFormatProperties(
             VkPhysicalDevice physicalDevice,
             @enumtype(VkFormat.class) int format,
@@ -959,7 +971,7 @@ public final class InstanceCommands {
             @enumtype(VkSampleCountFlags.class) int samples,
             @enumtype(VkImageUsageFlags.class) int usage,
             @enumtype(VkImageTiling.class) int tiling,
-             @unsigned IntBuffer pPropertyCount,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkSparseImageFormatProperties.class) VkSparseImageFormatProperties pProperties
     ) {
         try {
@@ -978,6 +990,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateAndroidSurfaceKHR.html">vkCreateAndroidSurfaceKHR</a>
     public @enumtype(VkResult.class) int vkCreateAndroidSurfaceKHR(
             VkInstance instance,
             @pointer(target=VkAndroidSurfaceCreateInfoKHR.class) VkAndroidSurfaceCreateInfoKHR pCreateInfo,
@@ -996,9 +1009,10 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceDisplayPropertiesKHR.html">vkGetPhysicalDeviceDisplayPropertiesKHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayPropertiesKHR(
             VkPhysicalDevice physicalDevice,
-             @unsigned IntBuffer pPropertyCount,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkDisplayPropertiesKHR.class) VkDisplayPropertiesKHR pProperties
     ) {
         try {
@@ -1012,9 +1026,10 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceDisplayPlanePropertiesKHR.html">vkGetPhysicalDeviceDisplayPlanePropertiesKHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
             VkPhysicalDevice physicalDevice,
-             @unsigned IntBuffer pPropertyCount,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkDisplayPlanePropertiesKHR.class) VkDisplayPlanePropertiesKHR pProperties
     ) {
         try {
@@ -1028,10 +1043,11 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDisplayPlaneSupportedDisplaysKHR.html">vkGetDisplayPlaneSupportedDisplaysKHR</a>
     public @enumtype(VkResult.class) int vkGetDisplayPlaneSupportedDisplaysKHR(
             VkPhysicalDevice physicalDevice,
             @unsigned int planeIndex,
-             @unsigned IntBuffer pDisplayCount,
+            @unsigned IntBuffer pDisplayCount,
             @nullable @pointer(target=VkDisplayKHR.class) VkDisplayKHR.Buffer pDisplays
     ) {
         try {
@@ -1046,10 +1062,11 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDisplayModePropertiesKHR.html">vkGetDisplayModePropertiesKHR</a>
     public @enumtype(VkResult.class) int vkGetDisplayModePropertiesKHR(
             VkPhysicalDevice physicalDevice,
             VkDisplayKHR display,
-             @unsigned IntBuffer pPropertyCount,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkDisplayModePropertiesKHR.class) VkDisplayModePropertiesKHR pProperties
     ) {
         try {
@@ -1064,6 +1081,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateDisplayModeKHR.html">vkCreateDisplayModeKHR</a>
     public @enumtype(VkResult.class) int vkCreateDisplayModeKHR(
             VkPhysicalDevice physicalDevice,
             VkDisplayKHR display,
@@ -1084,6 +1102,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDisplayPlaneCapabilitiesKHR.html">vkGetDisplayPlaneCapabilitiesKHR</a>
     public @enumtype(VkResult.class) int vkGetDisplayPlaneCapabilitiesKHR(
             VkPhysicalDevice physicalDevice,
             VkDisplayModeKHR mode,
@@ -1102,6 +1121,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateDisplayPlaneSurfaceKHR.html">vkCreateDisplayPlaneSurfaceKHR</a>
     public @enumtype(VkResult.class) int vkCreateDisplayPlaneSurfaceKHR(
             VkInstance instance,
             @pointer(target=VkDisplaySurfaceCreateInfoKHR.class) VkDisplaySurfaceCreateInfoKHR pCreateInfo,
@@ -1120,6 +1140,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroySurfaceKHR.html">vkDestroySurfaceKHR</a>
     public void vkDestroySurfaceKHR(
             VkInstance instance,
             @nullable VkSurfaceKHR surface,
@@ -1136,11 +1157,12 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfaceSupportKHR.html">vkGetPhysicalDeviceSurfaceSupportKHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceSupportKHR(
             VkPhysicalDevice physicalDevice,
             @unsigned int queueFamilyIndex,
             VkSurfaceKHR surface,
-             @unsigned IntBuffer pSupported
+            @unsigned IntBuffer pSupported
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfaceSupportKHR.invokeExact(
@@ -1154,6 +1176,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfaceCapabilitiesKHR.html">vkGetPhysicalDeviceSurfaceCapabilitiesKHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
             VkPhysicalDevice physicalDevice,
             VkSurfaceKHR surface,
@@ -1170,10 +1193,11 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfaceFormatsKHR.html">vkGetPhysicalDeviceSurfaceFormatsKHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceFormatsKHR(
             VkPhysicalDevice physicalDevice,
             @nullable VkSurfaceKHR surface,
-             @unsigned IntBuffer pSurfaceFormatCount,
+            @unsigned IntBuffer pSurfaceFormatCount,
             @nullable @pointer(target=VkSurfaceFormatKHR.class) VkSurfaceFormatKHR pSurfaceFormats
     ) {
         try {
@@ -1188,24 +1212,26 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfacePresentModesKHR.html">vkGetPhysicalDeviceSurfacePresentModesKHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfacePresentModesKHR(
             VkPhysicalDevice physicalDevice,
             @nullable VkSurfaceKHR surface,
-             @unsigned IntBuffer pPresentModeCount,
-            @pointer(comment="enum VkPresentModeKHR*") MemorySegment pPresentModes
+            @unsigned IntBuffer pPresentModeCount,
+            @nullable @enumtype(VkPresentModeKHR.class) IntBuffer pPresentModes
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfacePresentModesKHR.invokeExact(
                     physicalDevice.segment(),
                     (MemorySegment) (surface != null ? surface.segment() : MemorySegment.NULL),
                     pPresentModeCount.segment(),
-                    pPresentModes
+                    (MemorySegment) (pPresentModes != null ? pPresentModes.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateViSurfaceNN.html">vkCreateViSurfaceNN</a>
     public @enumtype(VkResult.class) int vkCreateViSurfaceNN(
             VkInstance instance,
             @pointer(target=VkViSurfaceCreateInfoNN.class) VkViSurfaceCreateInfoNN pCreateInfo,
@@ -1224,6 +1250,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateWaylandSurfaceKHR.html">vkCreateWaylandSurfaceKHR</a>
     public @enumtype(VkResult.class) int vkCreateWaylandSurfaceKHR(
             VkInstance instance,
             @pointer(target=VkWaylandSurfaceCreateInfoKHR.class) VkWaylandSurfaceCreateInfoKHR pCreateInfo,
@@ -1242,6 +1269,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceWaylandPresentationSupportKHR.html">vkGetPhysicalDeviceWaylandPresentationSupportKHR</a>
     public @unsigned int vkGetPhysicalDeviceWaylandPresentationSupportKHR(
             VkPhysicalDevice physicalDevice,
             @unsigned int queueFamilyIndex,
@@ -1258,6 +1286,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateWin32SurfaceKHR.html">vkCreateWin32SurfaceKHR</a>
     public @enumtype(VkResult.class) int vkCreateWin32SurfaceKHR(
             VkInstance instance,
             @pointer(target=VkWin32SurfaceCreateInfoKHR.class) VkWin32SurfaceCreateInfoKHR pCreateInfo,
@@ -1276,6 +1305,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceWin32PresentationSupportKHR.html">vkGetPhysicalDeviceWin32PresentationSupportKHR</a>
     public @unsigned int vkGetPhysicalDeviceWin32PresentationSupportKHR(
             VkPhysicalDevice physicalDevice,
             @unsigned int queueFamilyIndex
@@ -1290,6 +1320,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateXlibSurfaceKHR.html">vkCreateXlibSurfaceKHR</a>
     public @enumtype(VkResult.class) int vkCreateXlibSurfaceKHR(
             VkInstance instance,
             @pointer(target=VkXlibSurfaceCreateInfoKHR.class) VkXlibSurfaceCreateInfoKHR pCreateInfo,
@@ -1308,6 +1339,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceXlibPresentationSupportKHR.html">vkGetPhysicalDeviceXlibPresentationSupportKHR</a>
     public @unsigned int vkGetPhysicalDeviceXlibPresentationSupportKHR(
             VkPhysicalDevice physicalDevice,
             @unsigned int queueFamilyIndex,
@@ -1326,6 +1358,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateXcbSurfaceKHR.html">vkCreateXcbSurfaceKHR</a>
     public @enumtype(VkResult.class) int vkCreateXcbSurfaceKHR(
             VkInstance instance,
             @pointer(target=VkXcbSurfaceCreateInfoKHR.class) VkXcbSurfaceCreateInfoKHR pCreateInfo,
@@ -1344,6 +1377,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceXcbPresentationSupportKHR.html">vkGetPhysicalDeviceXcbPresentationSupportKHR</a>
     public @unsigned int vkGetPhysicalDeviceXcbPresentationSupportKHR(
             VkPhysicalDevice physicalDevice,
             @unsigned int queueFamilyIndex,
@@ -1362,6 +1396,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateDirectFBSurfaceEXT.html">vkCreateDirectFBSurfaceEXT</a>
     public @enumtype(VkResult.class) int vkCreateDirectFBSurfaceEXT(
             VkInstance instance,
             @pointer(target=VkDirectFBSurfaceCreateInfoEXT.class) VkDirectFBSurfaceCreateInfoEXT pCreateInfo,
@@ -1380,6 +1415,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceDirectFBPresentationSupportEXT.html">vkGetPhysicalDeviceDirectFBPresentationSupportEXT</a>
     public @unsigned int vkGetPhysicalDeviceDirectFBPresentationSupportEXT(
             VkPhysicalDevice physicalDevice,
             @unsigned int queueFamilyIndex,
@@ -1396,6 +1432,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateImagePipeSurfaceFUCHSIA.html">vkCreateImagePipeSurfaceFUCHSIA</a>
     public @enumtype(VkResult.class) int vkCreateImagePipeSurfaceFUCHSIA(
             VkInstance instance,
             @pointer(target=VkImagePipeSurfaceCreateInfoFUCHSIA.class) VkImagePipeSurfaceCreateInfoFUCHSIA pCreateInfo,
@@ -1414,6 +1451,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateStreamDescriptorSurfaceGGP.html">vkCreateStreamDescriptorSurfaceGGP</a>
     public @enumtype(VkResult.class) int vkCreateStreamDescriptorSurfaceGGP(
             VkInstance instance,
             @pointer(target=VkStreamDescriptorSurfaceCreateInfoGGP.class) VkStreamDescriptorSurfaceCreateInfoGGP pCreateInfo,
@@ -1432,6 +1470,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateScreenSurfaceQNX.html">vkCreateScreenSurfaceQNX</a>
     public @enumtype(VkResult.class) int vkCreateScreenSurfaceQNX(
             VkInstance instance,
             @pointer(target=VkScreenSurfaceCreateInfoQNX.class) VkScreenSurfaceCreateInfoQNX pCreateInfo,
@@ -1450,6 +1489,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceScreenPresentationSupportQNX.html">vkGetPhysicalDeviceScreenPresentationSupportQNX</a>
     public @unsigned int vkGetPhysicalDeviceScreenPresentationSupportQNX(
             VkPhysicalDevice physicalDevice,
             @unsigned int queueFamilyIndex,
@@ -1466,6 +1506,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateDebugReportCallbackEXT.html">vkCreateDebugReportCallbackEXT</a>
     public @enumtype(VkResult.class) int vkCreateDebugReportCallbackEXT(
             VkInstance instance,
             @pointer(target=VkDebugReportCallbackCreateInfoEXT.class) VkDebugReportCallbackCreateInfoEXT pCreateInfo,
@@ -1484,6 +1525,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyDebugReportCallbackEXT.html">vkDestroyDebugReportCallbackEXT</a>
     public void vkDestroyDebugReportCallbackEXT(
             VkInstance instance,
             @nullable VkDebugReportCallbackEXT callback,
@@ -1500,6 +1542,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDebugReportMessageEXT.html">vkDebugReportMessageEXT</a>
     public void vkDebugReportMessageEXT(
             VkInstance instance,
             @enumtype(VkDebugReportFlagsEXT.class) int flags,
@@ -1507,8 +1550,8 @@ public final class InstanceCommands {
             @unsigned long object,
             @unsigned long location,
             int messageCode,
-             ByteBuffer pLayerPrefix,
-             ByteBuffer pMessage
+            ByteBuffer pLayerPrefix,
+            ByteBuffer pMessage
     ) {
         try {
             HANDLE$vkDebugReportMessageEXT.invokeExact(
@@ -1526,6 +1569,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceExternalImageFormatPropertiesNV.html">vkGetPhysicalDeviceExternalImageFormatPropertiesNV</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceExternalImageFormatPropertiesNV(
             VkPhysicalDevice physicalDevice,
             @enumtype(VkFormat.class) int format,
@@ -1552,6 +1596,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceFeatures2.html">vkGetPhysicalDeviceFeatures2</a>
     public void vkGetPhysicalDeviceFeatures2(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceFeatures2.class) VkPhysicalDeviceFeatures2 pFeatures
@@ -1566,6 +1611,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceProperties2.html">vkGetPhysicalDeviceProperties2</a>
     public void vkGetPhysicalDeviceProperties2(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceProperties2.class) VkPhysicalDeviceProperties2 pProperties
@@ -1580,6 +1626,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceFormatProperties2.html">vkGetPhysicalDeviceFormatProperties2</a>
     public void vkGetPhysicalDeviceFormatProperties2(
             VkPhysicalDevice physicalDevice,
             @enumtype(VkFormat.class) int format,
@@ -1596,6 +1643,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceImageFormatProperties2.html">vkGetPhysicalDeviceImageFormatProperties2</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceImageFormatProperties2(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceImageFormatInfo2.class) VkPhysicalDeviceImageFormatInfo2 pImageFormatInfo,
@@ -1612,9 +1660,10 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceQueueFamilyProperties2.html">vkGetPhysicalDeviceQueueFamilyProperties2</a>
     public void vkGetPhysicalDeviceQueueFamilyProperties2(
             VkPhysicalDevice physicalDevice,
-             @unsigned IntBuffer pQueueFamilyPropertyCount,
+            @unsigned IntBuffer pQueueFamilyPropertyCount,
             @nullable @pointer(target=VkQueueFamilyProperties2.class) VkQueueFamilyProperties2 pQueueFamilyProperties
     ) {
         try {
@@ -1628,6 +1677,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceMemoryProperties2.html">vkGetPhysicalDeviceMemoryProperties2</a>
     public void vkGetPhysicalDeviceMemoryProperties2(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceMemoryProperties2.class) VkPhysicalDeviceMemoryProperties2 pMemoryProperties
@@ -1642,10 +1692,11 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSparseImageFormatProperties2.html">vkGetPhysicalDeviceSparseImageFormatProperties2</a>
     public void vkGetPhysicalDeviceSparseImageFormatProperties2(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceSparseImageFormatInfo2.class) VkPhysicalDeviceSparseImageFormatInfo2 pFormatInfo,
-             @unsigned IntBuffer pPropertyCount,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkSparseImageFormatProperties2.class) VkSparseImageFormatProperties2 pProperties
     ) {
         try {
@@ -1660,6 +1711,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceExternalBufferProperties.html">vkGetPhysicalDeviceExternalBufferProperties</a>
     public void vkGetPhysicalDeviceExternalBufferProperties(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceExternalBufferInfo.class) VkPhysicalDeviceExternalBufferInfo pExternalBufferInfo,
@@ -1676,6 +1728,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceExternalSemaphoreProperties.html">vkGetPhysicalDeviceExternalSemaphoreProperties</a>
     public void vkGetPhysicalDeviceExternalSemaphoreProperties(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceExternalSemaphoreInfo.class) VkPhysicalDeviceExternalSemaphoreInfo pExternalSemaphoreInfo,
@@ -1692,6 +1745,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceExternalFenceProperties.html">vkGetPhysicalDeviceExternalFenceProperties</a>
     public void vkGetPhysicalDeviceExternalFenceProperties(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceExternalFenceInfo.class) VkPhysicalDeviceExternalFenceInfo pExternalFenceInfo,
@@ -1708,6 +1762,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkReleaseDisplayEXT.html">vkReleaseDisplayEXT</a>
     public @enumtype(VkResult.class) int vkReleaseDisplayEXT(
             VkPhysicalDevice physicalDevice,
             VkDisplayKHR display
@@ -1722,6 +1777,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkAcquireXlibDisplayEXT.html">vkAcquireXlibDisplayEXT</a>
     public @enumtype(VkResult.class) int vkAcquireXlibDisplayEXT(
             VkPhysicalDevice physicalDevice,
             @pointer(comment="void **") MemorySegment dpy,
@@ -1738,6 +1794,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetRandROutputDisplayEXT.html">vkGetRandROutputDisplayEXT</a>
     public @enumtype(VkResult.class) int vkGetRandROutputDisplayEXT(
             VkPhysicalDevice physicalDevice,
             @pointer(comment="void **") MemorySegment dpy,
@@ -1756,6 +1813,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfaceCapabilities2EXT.html">vkGetPhysicalDeviceSurfaceCapabilities2EXT</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceCapabilities2EXT(
             VkPhysicalDevice physicalDevice,
             VkSurfaceKHR surface,
@@ -1772,9 +1830,10 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumeratePhysicalDeviceGroups.html">vkEnumeratePhysicalDeviceGroups</a>
     public @enumtype(VkResult.class) int vkEnumeratePhysicalDeviceGroups(
             VkInstance instance,
-             @unsigned IntBuffer pPhysicalDeviceGroupCount,
+            @unsigned IntBuffer pPhysicalDeviceGroupCount,
             @nullable @pointer(target=VkPhysicalDeviceGroupProperties.class) VkPhysicalDeviceGroupProperties pPhysicalDeviceGroupProperties
     ) {
         try {
@@ -1788,6 +1847,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateIOSSurfaceMVK.html">vkCreateIOSSurfaceMVK</a>
     public @enumtype(VkResult.class) int vkCreateIOSSurfaceMVK(
             VkInstance instance,
             @pointer(target=VkIOSSurfaceCreateInfoMVK.class) VkIOSSurfaceCreateInfoMVK pCreateInfo,
@@ -1806,6 +1866,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateMacOSSurfaceMVK.html">vkCreateMacOSSurfaceMVK</a>
     public @enumtype(VkResult.class) int vkCreateMacOSSurfaceMVK(
             VkInstance instance,
             @pointer(target=VkMacOSSurfaceCreateInfoMVK.class) VkMacOSSurfaceCreateInfoMVK pCreateInfo,
@@ -1824,6 +1885,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateMetalSurfaceEXT.html">vkCreateMetalSurfaceEXT</a>
     public @enumtype(VkResult.class) int vkCreateMetalSurfaceEXT(
             VkInstance instance,
             @pointer(target=VkMetalSurfaceCreateInfoEXT.class) VkMetalSurfaceCreateInfoEXT pCreateInfo,
@@ -1842,6 +1904,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfaceCapabilities2KHR.html">vkGetPhysicalDeviceSurfaceCapabilities2KHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceCapabilities2KHR(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceSurfaceInfo2KHR.class) VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo,
@@ -1858,10 +1921,11 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfaceFormats2KHR.html">vkGetPhysicalDeviceSurfaceFormats2KHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceFormats2KHR(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceSurfaceInfo2KHR.class) VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo,
-             @unsigned IntBuffer pSurfaceFormatCount,
+            @unsigned IntBuffer pSurfaceFormatCount,
             @nullable @pointer(target=VkSurfaceFormat2KHR.class) VkSurfaceFormat2KHR pSurfaceFormats
     ) {
         try {
@@ -1876,9 +1940,10 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceDisplayProperties2KHR.html">vkGetPhysicalDeviceDisplayProperties2KHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayProperties2KHR(
             VkPhysicalDevice physicalDevice,
-             @unsigned IntBuffer pPropertyCount,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkDisplayProperties2KHR.class) VkDisplayProperties2KHR pProperties
     ) {
         try {
@@ -1892,9 +1957,10 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceDisplayPlaneProperties2KHR.html">vkGetPhysicalDeviceDisplayPlaneProperties2KHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
             VkPhysicalDevice physicalDevice,
-             @unsigned IntBuffer pPropertyCount,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkDisplayPlaneProperties2KHR.class) VkDisplayPlaneProperties2KHR pProperties
     ) {
         try {
@@ -1908,10 +1974,11 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDisplayModeProperties2KHR.html">vkGetDisplayModeProperties2KHR</a>
     public @enumtype(VkResult.class) int vkGetDisplayModeProperties2KHR(
             VkPhysicalDevice physicalDevice,
             VkDisplayKHR display,
-             @unsigned IntBuffer pPropertyCount,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkDisplayModeProperties2KHR.class) VkDisplayModeProperties2KHR pProperties
     ) {
         try {
@@ -1926,6 +1993,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDisplayPlaneCapabilities2KHR.html">vkGetDisplayPlaneCapabilities2KHR</a>
     public @enumtype(VkResult.class) int vkGetDisplayPlaneCapabilities2KHR(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkDisplayPlaneInfo2KHR.class) VkDisplayPlaneInfo2KHR pDisplayPlaneInfo,
@@ -1942,6 +2010,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkSetDebugUtilsObjectNameEXT.html">vkSetDebugUtilsObjectNameEXT</a>
     public @enumtype(VkResult.class) int vkSetDebugUtilsObjectNameEXT(
             VkDevice device,
             @pointer(target=VkDebugUtilsObjectNameInfoEXT.class) VkDebugUtilsObjectNameInfoEXT pNameInfo
@@ -1956,6 +2025,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkSetDebugUtilsObjectTagEXT.html">vkSetDebugUtilsObjectTagEXT</a>
     public @enumtype(VkResult.class) int vkSetDebugUtilsObjectTagEXT(
             VkDevice device,
             @pointer(target=VkDebugUtilsObjectTagInfoEXT.class) VkDebugUtilsObjectTagInfoEXT pTagInfo
@@ -1970,6 +2040,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkQueueBeginDebugUtilsLabelEXT.html">vkQueueBeginDebugUtilsLabelEXT</a>
     public void vkQueueBeginDebugUtilsLabelEXT(
             VkQueue queue,
             @pointer(target=VkDebugUtilsLabelEXT.class) VkDebugUtilsLabelEXT pLabelInfo
@@ -1984,6 +2055,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkQueueEndDebugUtilsLabelEXT.html">vkQueueEndDebugUtilsLabelEXT</a>
     public void vkQueueEndDebugUtilsLabelEXT(
             VkQueue queue
     ) {
@@ -1996,6 +2068,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkQueueInsertDebugUtilsLabelEXT.html">vkQueueInsertDebugUtilsLabelEXT</a>
     public void vkQueueInsertDebugUtilsLabelEXT(
             VkQueue queue,
             @pointer(target=VkDebugUtilsLabelEXT.class) VkDebugUtilsLabelEXT pLabelInfo
@@ -2010,6 +2083,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdBeginDebugUtilsLabelEXT.html">vkCmdBeginDebugUtilsLabelEXT</a>
     public void vkCmdBeginDebugUtilsLabelEXT(
             VkCommandBuffer commandBuffer,
             @pointer(target=VkDebugUtilsLabelEXT.class) VkDebugUtilsLabelEXT pLabelInfo
@@ -2024,6 +2098,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdEndDebugUtilsLabelEXT.html">vkCmdEndDebugUtilsLabelEXT</a>
     public void vkCmdEndDebugUtilsLabelEXT(
             VkCommandBuffer commandBuffer
     ) {
@@ -2036,6 +2111,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdInsertDebugUtilsLabelEXT.html">vkCmdInsertDebugUtilsLabelEXT</a>
     public void vkCmdInsertDebugUtilsLabelEXT(
             VkCommandBuffer commandBuffer,
             @pointer(target=VkDebugUtilsLabelEXT.class) VkDebugUtilsLabelEXT pLabelInfo
@@ -2050,6 +2126,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateDebugUtilsMessengerEXT.html">vkCreateDebugUtilsMessengerEXT</a>
     public @enumtype(VkResult.class) int vkCreateDebugUtilsMessengerEXT(
             VkInstance instance,
             @pointer(target=VkDebugUtilsMessengerCreateInfoEXT.class) VkDebugUtilsMessengerCreateInfoEXT pCreateInfo,
@@ -2068,6 +2145,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyDebugUtilsMessengerEXT.html">vkDestroyDebugUtilsMessengerEXT</a>
     public void vkDestroyDebugUtilsMessengerEXT(
             VkInstance instance,
             @nullable VkDebugUtilsMessengerEXT messenger,
@@ -2084,6 +2162,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkSubmitDebugUtilsMessageEXT.html">vkSubmitDebugUtilsMessageEXT</a>
     public void vkSubmitDebugUtilsMessageEXT(
             VkInstance instance,
             @enumtype(VkDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity,
@@ -2102,6 +2181,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateHeadlessSurfaceEXT.html">vkCreateHeadlessSurfaceEXT</a>
     public @enumtype(VkResult.class) int vkCreateHeadlessSurfaceEXT(
             VkInstance instance,
             @pointer(target=VkHeadlessSurfaceCreateInfoEXT.class) VkHeadlessSurfaceCreateInfoEXT pCreateInfo,
@@ -2120,9 +2200,10 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceToolProperties.html">vkGetPhysicalDeviceToolProperties</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceToolProperties(
             VkPhysicalDevice physicalDevice,
-             @unsigned IntBuffer pToolCount,
+            @unsigned IntBuffer pToolCount,
             @nullable @pointer(target=VkPhysicalDeviceToolProperties.class) VkPhysicalDeviceToolProperties pToolProperties
     ) {
         try {
@@ -2136,6 +2217,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkAcquireDrmDisplayEXT.html">vkAcquireDrmDisplayEXT</a>
     public @enumtype(VkResult.class) int vkAcquireDrmDisplayEXT(
             VkPhysicalDevice physicalDevice,
             int drmFd,
@@ -2152,6 +2234,7 @@ public final class InstanceCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDrmDisplayEXT.html">vkGetDrmDisplayEXT</a>
     public @enumtype(VkResult.class) int vkGetDrmDisplayEXT(
             VkPhysicalDevice physicalDevice,
             int drmFd,

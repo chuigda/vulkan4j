@@ -1,19 +1,175 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.IntBuffer;
+import tech.icey.panama.buffer.LongBuffer;
+import tech.icey.vk4j.bitmask.VkShaderStageFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkPipelineLayout;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT;
 
-public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkSetDescriptorBufferOffsetsInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkShaderStageFlags stageFlags;
+///     VkPipelineLayout layout;
+///     uint32_t firstSet;
+///     uint32_t setCount;
+///     const uint32_t* pBufferIndices;
+///     const VkDeviceSize* pOffsets;
+/// } VkSetDescriptorBufferOffsetsInfoEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSetDescriptorBufferOffsetsInfoEXT.html">VkSetDescriptorBufferOffsetsInfoEXT</a>
+public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) implements IPointer {
+    public VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkShaderStageFlags.class) int stageFlags() {
+        return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
+    }
+
+    public void stageFlags(@enumtype(VkShaderStageFlags.class) int value) {
+        segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
+    }
+
+    public @nullable VkPipelineLayout layout() {
+        MemorySegment s = segment.get(LAYOUT$layout, OFFSET$layout);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipelineLayout(s);
+    }
+
+    public void layout(@nullable VkPipelineLayout value) {
+        segment.set(
+            LAYOUT$layout,
+            OFFSET$layout,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @unsigned int firstSet() {
+        return segment.get(LAYOUT$firstSet, OFFSET$firstSet);
+    }
+
+    public void firstSet(@unsigned int value) {
+        segment.set(LAYOUT$firstSet, OFFSET$firstSet, value);
+    }
+
+    public @unsigned int setCount() {
+        return segment.get(LAYOUT$setCount, OFFSET$setCount);
+    }
+
+    public void setCount(@unsigned int value) {
+        segment.set(LAYOUT$setCount, OFFSET$setCount, value);
+    }
+
+    public @pointer(comment="uint32_t*") MemorySegment pBufferIndicesRaw() {
+        return segment.get(LAYOUT$pBufferIndices, OFFSET$pBufferIndices);
+    }
+
+    public void pBufferIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
+        segment.set(LAYOUT$pBufferIndices, OFFSET$pBufferIndices, value);
+    }
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
+    public @nullable @unsigned IntBuffer pBufferIndices() {
+        MemorySegment s = pBufferIndicesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
+    }
+
+    public void pBufferIndices(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pBufferIndicesRaw(s);
+    }
+
+    public @pointer(comment="uint64_t*") MemorySegment pOffsetsRaw() {
+        return segment.get(LAYOUT$pOffsets, OFFSET$pOffsets);
+    }
+
+    public void pOffsetsRaw(@pointer(comment="uint64_t*") MemorySegment value) {
+        segment.set(LAYOUT$pOffsets, OFFSET$pOffsets, value);
+    }
+
+    /// Note: the returned {@link LongBuffer} does not have correct
+    /// {@link LongBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link LongBuffer#reinterpret} to set the size before actually
+    /// {@link LongBuffer#read}ing or
+    /// {@link LongBuffer#write}ing the buffer.
+    public @nullable @unsigned LongBuffer pOffsets() {
+        MemorySegment s = pOffsetsRaw();
+        return s.address() == 0 ? null : new LongBuffer(s);
+    }
+
+    public void pOffsets(@nullable @unsigned LongBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pOffsetsRaw(s);
+    }
+
+    public static VkSetDescriptorBufferOffsetsInfoEXT allocate(Arena arena) {
+        return new VkSetDescriptorBufferOffsetsInfoEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkSetDescriptorBufferOffsetsInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSetDescriptorBufferOffsetsInfoEXT[] ret = new VkSetDescriptorBufferOffsetsInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSetDescriptorBufferOffsetsInfoEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkSetDescriptorBufferOffsetsInfoEXT clone(Arena arena, VkSetDescriptorBufferOffsetsInfoEXT src) {
+        VkSetDescriptorBufferOffsetsInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSetDescriptorBufferOffsetsInfoEXT[] clone(Arena arena, VkSetDescriptorBufferOffsetsInfoEXT[] src) {
+        VkSetDescriptorBufferOffsetsInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -61,102 +217,4 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
     public static final long SIZE$setCount = LAYOUT$setCount.byteSize();
     public static final long SIZE$pBufferIndices = LAYOUT$pBufferIndices.byteSize();
     public static final long SIZE$pOffsets = LAYOUT$pOffsets.byteSize();
-
-    public VkSetDescriptorBufferOffsetsInfoEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkShaderStageFlags.class) int stageFlags() {
-        return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
-    }
-
-    public void stageFlags(@enumtype(VkShaderStageFlags.class) int value) {
-        segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
-    }
-
-    public VkPipelineLayout layout() {
-        return new VkPipelineLayout(segment.get(LAYOUT$layout, OFFSET$layout));
-    }
-
-    public void layout(VkPipelineLayout value) {
-        segment.set(LAYOUT$layout, OFFSET$layout, value.segment());
-    }
-
-    public @unsigned int firstSet() {
-        return segment.get(LAYOUT$firstSet, OFFSET$firstSet);
-    }
-
-    public void firstSet(@unsigned int value) {
-        segment.set(LAYOUT$firstSet, OFFSET$firstSet, value);
-    }
-
-    public @unsigned int setCount() {
-        return segment.get(LAYOUT$setCount, OFFSET$setCount);
-    }
-
-    public void setCount(@unsigned int value) {
-        segment.set(LAYOUT$setCount, OFFSET$setCount, value);
-    }
-
-    public @pointer(comment="uint32_t*") MemorySegment pBufferIndicesRaw() {
-        return segment.get(LAYOUT$pBufferIndices, OFFSET$pBufferIndices);
-    }
-
-    public void pBufferIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
-        segment.set(LAYOUT$pBufferIndices, OFFSET$pBufferIndices, value);
-    }
-    
-    public @unsigned IntBuffer pBufferIndices() {
-        return new IntBuffer(pBufferIndicesRaw());
-    }
-
-    public void pBufferIndices(@unsigned IntBuffer value) {
-        pBufferIndicesRaw(value.segment());
-    }
-
-    public @pointer(comment="uint64_t*") MemorySegment pOffsetsRaw() {
-        return segment.get(LAYOUT$pOffsets, OFFSET$pOffsets);
-    }
-
-    public void pOffsetsRaw(@pointer(comment="uint64_t*") MemorySegment value) {
-        segment.set(LAYOUT$pOffsets, OFFSET$pOffsets, value);
-    }
-    
-    public @unsigned LongBuffer pOffsets() {
-        return new LongBuffer(pOffsetsRaw());
-    }
-
-    public void pOffsets(@unsigned LongBuffer value) {
-        pOffsetsRaw(value.segment());
-    }
-
-    public static VkSetDescriptorBufferOffsetsInfoEXT allocate(Arena arena) {
-        return new VkSetDescriptorBufferOffsetsInfoEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkSetDescriptorBufferOffsetsInfoEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSetDescriptorBufferOffsetsInfoEXT[] ret = new VkSetDescriptorBufferOffsetsInfoEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkSetDescriptorBufferOffsetsInfoEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

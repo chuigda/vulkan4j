@@ -1,19 +1,145 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsafe;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_DEVICE_IMAGE_SUBRESOURCE_INFO_KHR;
 
-public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkDeviceImageSubresourceInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     const VkImageCreateInfo* pCreateInfo;
+///     const VkImageSubresource2KHR* pSubresource;
+/// } VkDeviceImageSubresourceInfoKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceImageSubresourceInfoKHR.html">VkDeviceImageSubresourceInfoKHR</a>
+public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) implements IPointer {
+    public VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_DEVICE_IMAGE_SUBRESOURCE_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @pointer(comment="VkImageCreateInfo*") MemorySegment pCreateInfoRaw() {
+        return segment.get(LAYOUT$pCreateInfo, OFFSET$pCreateInfo);
+    }
+
+    public void pCreateInfoRaw(@pointer(comment="VkImageCreateInfo*") MemorySegment value) {
+        segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
+    }
+
+    public @nullable VkImageCreateInfo pCreateInfo() {
+        MemorySegment s = pCreateInfoRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImageCreateInfo(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkImageCreateInfo[] pCreateInfo(int assumedCount) {
+        MemorySegment s = pCreateInfoRaw().reinterpret(assumedCount * VkImageCreateInfo.SIZE);
+        VkImageCreateInfo[] arr = new VkImageCreateInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkImageCreateInfo(s.asSlice(i * VkImageCreateInfo.SIZE, VkImageCreateInfo.SIZE));
+        }
+        return arr;
+    }
+
+    public void pCreateInfo(@nullable VkImageCreateInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCreateInfoRaw(s);
+    }
+
+    public @pointer(comment="VkImageSubresource2KHR*") MemorySegment pSubresourceRaw() {
+        return segment.get(LAYOUT$pSubresource, OFFSET$pSubresource);
+    }
+
+    public void pSubresourceRaw(@pointer(comment="VkImageSubresource2KHR*") MemorySegment value) {
+        segment.set(LAYOUT$pSubresource, OFFSET$pSubresource, value);
+    }
+
+    public @nullable VkImageSubresource2KHR pSubresource() {
+        MemorySegment s = pSubresourceRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImageSubresource2KHR(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkImageSubresource2KHR[] pSubresource(int assumedCount) {
+        MemorySegment s = pSubresourceRaw().reinterpret(assumedCount * VkImageSubresource2KHR.SIZE);
+        VkImageSubresource2KHR[] arr = new VkImageSubresource2KHR[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkImageSubresource2KHR(s.asSlice(i * VkImageSubresource2KHR.SIZE, VkImageSubresource2KHR.SIZE));
+        }
+        return arr;
+    }
+
+    public void pSubresource(@nullable VkImageSubresource2KHR value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSubresourceRaw(s);
+    }
+
+    public static VkDeviceImageSubresourceInfoKHR allocate(Arena arena) {
+        return new VkDeviceImageSubresourceInfoKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkDeviceImageSubresourceInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDeviceImageSubresourceInfoKHR[] ret = new VkDeviceImageSubresourceInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDeviceImageSubresourceInfoKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkDeviceImageSubresourceInfoKHR clone(Arena arena, VkDeviceImageSubresourceInfoKHR src) {
+        VkDeviceImageSubresourceInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDeviceImageSubresourceInfoKHR[] clone(Arena arena, VkDeviceImageSubresourceInfoKHR[] src) {
+        VkDeviceImageSubresourceInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,80 +167,4 @@ public record VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$pCreateInfo = LAYOUT$pCreateInfo.byteSize();
     public static final long SIZE$pSubresource = LAYOUT$pSubresource.byteSize();
-
-    public VkDeviceImageSubresourceInfoKHR(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_DEVICE_IMAGE_SUBRESOURCE_INFO_KHR);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @pointer(comment="VkImageCreateInfo*") MemorySegment pCreateInfoRaw() {
-        return segment.get(LAYOUT$pCreateInfo, OFFSET$pCreateInfo);
-    }
-
-    public void pCreateInfoRaw(@pointer(comment="VkImageCreateInfo*") MemorySegment value) {
-        segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
-    }
-    
-    public @nullable VkImageCreateInfo pCreateInfo() {
-        MemorySegment s = pCreateInfoRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkImageCreateInfo(s);
-    }
-
-    public void pCreateInfo(@nullable VkImageCreateInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pCreateInfoRaw(s);
-    }
-
-    public @pointer(comment="VkImageSubresource2KHR*") MemorySegment pSubresourceRaw() {
-        return segment.get(LAYOUT$pSubresource, OFFSET$pSubresource);
-    }
-
-    public void pSubresourceRaw(@pointer(comment="VkImageSubresource2KHR*") MemorySegment value) {
-        segment.set(LAYOUT$pSubresource, OFFSET$pSubresource, value);
-    }
-    
-    public @nullable VkImageSubresource2KHR pSubresource() {
-        MemorySegment s = pSubresourceRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkImageSubresource2KHR(s);
-    }
-
-    public void pSubresource(@nullable VkImageSubresource2KHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSubresourceRaw(s);
-    }
-
-    public static VkDeviceImageSubresourceInfoKHR allocate(Arena arena) {
-        return new VkDeviceImageSubresourceInfoKHR(arena.allocate(LAYOUT));
-    }
-    
-    public static VkDeviceImageSubresourceInfoKHR[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDeviceImageSubresourceInfoKHR[] ret = new VkDeviceImageSubresourceInfoKHR[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceImageSubresourceInfoKHR(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

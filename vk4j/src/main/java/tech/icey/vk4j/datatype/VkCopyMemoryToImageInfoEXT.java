@@ -1,19 +1,156 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.vk4j.bitmask.VkHostImageCopyFlagsEXT;
+import tech.icey.vk4j.enumtype.VkImageLayout;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkImage;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_COPY_MEMORY_TO_IMAGE_INFO_EXT;
 
-public record VkCopyMemoryToImageInfoEXT(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkCopyMemoryToImageInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkHostImageCopyFlagsEXT flags;
+///     VkImage dstImage;
+///     VkImageLayout dstImageLayout;
+///     uint32_t regionCount;
+///     const VkMemoryToImageCopyEXT* pRegions;
+/// } VkCopyMemoryToImageInfoEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCopyMemoryToImageInfoEXT.html">VkCopyMemoryToImageInfoEXT</a>
+public record VkCopyMemoryToImageInfoEXT(MemorySegment segment) implements IPointer {
+    public VkCopyMemoryToImageInfoEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_COPY_MEMORY_TO_IMAGE_INFO_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkHostImageCopyFlagsEXT.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkHostImageCopyFlagsEXT.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @nullable VkImage dstImage() {
+        MemorySegment s = segment.get(LAYOUT$dstImage, OFFSET$dstImage);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImage(s);
+    }
+
+    public void dstImage(@nullable VkImage value) {
+        segment.set(
+            LAYOUT$dstImage,
+            OFFSET$dstImage,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @enumtype(VkImageLayout.class) int dstImageLayout() {
+        return segment.get(LAYOUT$dstImageLayout, OFFSET$dstImageLayout);
+    }
+
+    public void dstImageLayout(@enumtype(VkImageLayout.class) int value) {
+        segment.set(LAYOUT$dstImageLayout, OFFSET$dstImageLayout, value);
+    }
+
+    public @unsigned int regionCount() {
+        return segment.get(LAYOUT$regionCount, OFFSET$regionCount);
+    }
+
+    public void regionCount(@unsigned int value) {
+        segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
+    }
+
+    public @pointer(comment="VkMemoryToImageCopyEXT*") MemorySegment pRegionsRaw() {
+        return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
+    }
+
+    public void pRegionsRaw(@pointer(comment="VkMemoryToImageCopyEXT*") MemorySegment value) {
+        segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
+    }
+
+    public @nullable VkMemoryToImageCopyEXT pRegions() {
+        MemorySegment s = pRegionsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkMemoryToImageCopyEXT(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkMemoryToImageCopyEXT[] pRegions(int assumedCount) {
+        MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkMemoryToImageCopyEXT.SIZE);
+        VkMemoryToImageCopyEXT[] arr = new VkMemoryToImageCopyEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkMemoryToImageCopyEXT(s.asSlice(i * VkMemoryToImageCopyEXT.SIZE, VkMemoryToImageCopyEXT.SIZE));
+        }
+        return arr;
+    }
+
+    public void pRegions(@nullable VkMemoryToImageCopyEXT value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pRegionsRaw(s);
+    }
+
+    public static VkCopyMemoryToImageInfoEXT allocate(Arena arena) {
+        return new VkCopyMemoryToImageInfoEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkCopyMemoryToImageInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkCopyMemoryToImageInfoEXT[] ret = new VkCopyMemoryToImageInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkCopyMemoryToImageInfoEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkCopyMemoryToImageInfoEXT clone(Arena arena, VkCopyMemoryToImageInfoEXT src) {
+        VkCopyMemoryToImageInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCopyMemoryToImageInfoEXT[] clone(Arena arena, VkCopyMemoryToImageInfoEXT[] src) {
+        VkCopyMemoryToImageInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -56,91 +193,4 @@ public record VkCopyMemoryToImageInfoEXT(MemorySegment segment) {
     public static final long SIZE$dstImageLayout = LAYOUT$dstImageLayout.byteSize();
     public static final long SIZE$regionCount = LAYOUT$regionCount.byteSize();
     public static final long SIZE$pRegions = LAYOUT$pRegions.byteSize();
-
-    public VkCopyMemoryToImageInfoEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_COPY_MEMORY_TO_IMAGE_INFO_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkHostImageCopyFlagsEXT.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkHostImageCopyFlagsEXT.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public VkImage dstImage() {
-        return new VkImage(segment.get(LAYOUT$dstImage, OFFSET$dstImage));
-    }
-
-    public void dstImage(VkImage value) {
-        segment.set(LAYOUT$dstImage, OFFSET$dstImage, value.segment());
-    }
-
-    public @enumtype(VkImageLayout.class) int dstImageLayout() {
-        return segment.get(LAYOUT$dstImageLayout, OFFSET$dstImageLayout);
-    }
-
-    public void dstImageLayout(@enumtype(VkImageLayout.class) int value) {
-        segment.set(LAYOUT$dstImageLayout, OFFSET$dstImageLayout, value);
-    }
-
-    public @unsigned int regionCount() {
-        return segment.get(LAYOUT$regionCount, OFFSET$regionCount);
-    }
-
-    public void regionCount(@unsigned int value) {
-        segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
-    }
-
-    public @pointer(comment="VkMemoryToImageCopyEXT*") MemorySegment pRegionsRaw() {
-        return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
-    }
-
-    public void pRegionsRaw(@pointer(comment="VkMemoryToImageCopyEXT*") MemorySegment value) {
-        segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
-    }
-    
-    public @nullable VkMemoryToImageCopyEXT pRegions() {
-        MemorySegment s = pRegionsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkMemoryToImageCopyEXT(s);
-    }
-
-    public void pRegions(@nullable VkMemoryToImageCopyEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pRegionsRaw(s);
-    }
-
-    public static VkCopyMemoryToImageInfoEXT allocate(Arena arena) {
-        return new VkCopyMemoryToImageInfoEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkCopyMemoryToImageInfoEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkCopyMemoryToImageInfoEXT[] ret = new VkCopyMemoryToImageInfoEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkCopyMemoryToImageInfoEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

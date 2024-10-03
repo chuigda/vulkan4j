@@ -1,52 +1,30 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkMemoryDecompressionMethodFlagsNV;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
-public record VkDecompressMemoryRegionNV(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_LONG.withName("srcAddress"),
-        ValueLayout.JAVA_LONG.withName("dstAddress"),
-        ValueLayout.JAVA_LONG.withName("compressedSize"),
-        ValueLayout.JAVA_LONG.withName("decompressedSize"),
-        ValueLayout.JAVA_INT.withName("decompressionMethod")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
+import static java.lang.foreign.ValueLayout.OfLong;
+import static java.lang.foreign.ValueLayout.PathElement;
 
-    public static final PathElement PATH$srcAddress = PathElement.groupElement("srcAddress");
-    public static final PathElement PATH$dstAddress = PathElement.groupElement("dstAddress");
-    public static final PathElement PATH$compressedSize = PathElement.groupElement("compressedSize");
-    public static final PathElement PATH$decompressedSize = PathElement.groupElement("decompressedSize");
-    public static final PathElement PATH$decompressionMethod = PathElement.groupElement("decompressionMethod");
-
-    public static final OfLong LAYOUT$srcAddress = (OfLong) LAYOUT.select(PATH$srcAddress);
-    public static final OfLong LAYOUT$dstAddress = (OfLong) LAYOUT.select(PATH$dstAddress);
-    public static final OfLong LAYOUT$compressedSize = (OfLong) LAYOUT.select(PATH$compressedSize);
-    public static final OfLong LAYOUT$decompressedSize = (OfLong) LAYOUT.select(PATH$decompressedSize);
-    public static final OfInt LAYOUT$decompressionMethod = (OfInt) LAYOUT.select(PATH$decompressionMethod);
-
-    public static final long OFFSET$srcAddress = LAYOUT.byteOffset(PATH$srcAddress);
-    public static final long OFFSET$dstAddress = LAYOUT.byteOffset(PATH$dstAddress);
-    public static final long OFFSET$compressedSize = LAYOUT.byteOffset(PATH$compressedSize);
-    public static final long OFFSET$decompressedSize = LAYOUT.byteOffset(PATH$decompressedSize);
-    public static final long OFFSET$decompressionMethod = LAYOUT.byteOffset(PATH$decompressionMethod);
-
-    public static final long SIZE$srcAddress = LAYOUT$srcAddress.byteSize();
-    public static final long SIZE$dstAddress = LAYOUT$dstAddress.byteSize();
-    public static final long SIZE$compressedSize = LAYOUT$compressedSize.byteSize();
-    public static final long SIZE$decompressedSize = LAYOUT$decompressedSize.byteSize();
-    public static final long SIZE$decompressionMethod = LAYOUT$decompressionMethod.byteSize();
-
+/// {@snippet lang=c :
+/// typedef struct VkDecompressMemoryRegionNV {
+///     VkDeviceAddress srcAddress;
+///     VkDeviceAddress dstAddress;
+///     VkDeviceSize compressedSize;
+///     VkDeviceSize decompressedSize;
+///     VkMemoryDecompressionMethodFlagsNV decompressionMethod;
+/// } VkDecompressMemoryRegionNV;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDecompressMemoryRegionNV.html">VkDecompressMemoryRegionNV</a>
+public record VkDecompressMemoryRegionNV(MemorySegment segment) implements IPointer {
     public VkDecompressMemoryRegionNV(MemorySegment segment) {
         this.segment = segment;
     }
@@ -83,18 +61,18 @@ public record VkDecompressMemoryRegionNV(MemorySegment segment) {
         segment.set(LAYOUT$decompressedSize, OFFSET$decompressedSize, value);
     }
 
-    public @enumtype(VkMemoryDecompressionMethodFlagsNV.class) int decompressionMethod() {
+    public @enumtype(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethod() {
         return segment.get(LAYOUT$decompressionMethod, OFFSET$decompressionMethod);
     }
 
-    public void decompressionMethod(@enumtype(VkMemoryDecompressionMethodFlagsNV.class) int value) {
+    public void decompressionMethod(@enumtype(VkMemoryDecompressionMethodFlagsNV.class) long value) {
         segment.set(LAYOUT$decompressionMethod, OFFSET$decompressionMethod, value);
     }
 
     public static VkDecompressMemoryRegionNV allocate(Arena arena) {
         return new VkDecompressMemoryRegionNV(arena.allocate(LAYOUT));
     }
-    
+
     public static VkDecompressMemoryRegionNV[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDecompressMemoryRegionNV[] ret = new VkDecompressMemoryRegionNV[count];
@@ -103,4 +81,51 @@ public record VkDecompressMemoryRegionNV(MemorySegment segment) {
         }
         return ret;
     }
+
+    public static VkDecompressMemoryRegionNV clone(Arena arena, VkDecompressMemoryRegionNV src) {
+        VkDecompressMemoryRegionNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDecompressMemoryRegionNV[] clone(Arena arena, VkDecompressMemoryRegionNV[] src) {
+        VkDecompressMemoryRegionNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("srcAddress"),
+        ValueLayout.JAVA_LONG.withName("dstAddress"),
+        ValueLayout.JAVA_LONG.withName("compressedSize"),
+        ValueLayout.JAVA_LONG.withName("decompressedSize"),
+        ValueLayout.JAVA_LONG.withName("decompressionMethod")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$srcAddress = PathElement.groupElement("srcAddress");
+    public static final PathElement PATH$dstAddress = PathElement.groupElement("dstAddress");
+    public static final PathElement PATH$compressedSize = PathElement.groupElement("compressedSize");
+    public static final PathElement PATH$decompressedSize = PathElement.groupElement("decompressedSize");
+    public static final PathElement PATH$decompressionMethod = PathElement.groupElement("decompressionMethod");
+
+    public static final OfLong LAYOUT$srcAddress = (OfLong) LAYOUT.select(PATH$srcAddress);
+    public static final OfLong LAYOUT$dstAddress = (OfLong) LAYOUT.select(PATH$dstAddress);
+    public static final OfLong LAYOUT$compressedSize = (OfLong) LAYOUT.select(PATH$compressedSize);
+    public static final OfLong LAYOUT$decompressedSize = (OfLong) LAYOUT.select(PATH$decompressedSize);
+    public static final OfLong LAYOUT$decompressionMethod = (OfLong) LAYOUT.select(PATH$decompressionMethod);
+
+    public static final long OFFSET$srcAddress = LAYOUT.byteOffset(PATH$srcAddress);
+    public static final long OFFSET$dstAddress = LAYOUT.byteOffset(PATH$dstAddress);
+    public static final long OFFSET$compressedSize = LAYOUT.byteOffset(PATH$compressedSize);
+    public static final long OFFSET$decompressedSize = LAYOUT.byteOffset(PATH$decompressedSize);
+    public static final long OFFSET$decompressionMethod = LAYOUT.byteOffset(PATH$decompressionMethod);
+
+    public static final long SIZE$srcAddress = LAYOUT$srcAddress.byteSize();
+    public static final long SIZE$dstAddress = LAYOUT$dstAddress.byteSize();
+    public static final long SIZE$compressedSize = LAYOUT$compressedSize.byteSize();
+    public static final long SIZE$decompressedSize = LAYOUT$decompressedSize.byteSize();
+    public static final long SIZE$decompressionMethod = LAYOUT$decompressionMethod.byteSize();
 }

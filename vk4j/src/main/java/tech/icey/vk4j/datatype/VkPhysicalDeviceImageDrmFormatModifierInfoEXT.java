@@ -1,19 +1,131 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.IntBuffer;
+import tech.icey.vk4j.enumtype.VkSharingMode;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceImageDrmFormatModifierInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint64_t drmFormatModifier;
+///     VkSharingMode sharingMode;
+///     uint32_t queueFamilyIndexCount;
+///     const uint32_t* pQueueFamilyIndices;
+/// } VkPhysicalDeviceImageDrmFormatModifierInfoEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceImageDrmFormatModifierInfoEXT.html">VkPhysicalDeviceImageDrmFormatModifierInfoEXT</a>
+public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(MemorySegment segment) implements IPointer {
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT);
+    }
 
-public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(MemorySegment segment) {
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned long drmFormatModifier() {
+        return segment.get(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier);
+    }
+
+    public void drmFormatModifier(@unsigned long value) {
+        segment.set(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier, value);
+    }
+
+    public @enumtype(VkSharingMode.class) int sharingMode() {
+        return segment.get(LAYOUT$sharingMode, OFFSET$sharingMode);
+    }
+
+    public void sharingMode(@enumtype(VkSharingMode.class) int value) {
+        segment.set(LAYOUT$sharingMode, OFFSET$sharingMode, value);
+    }
+
+    public @unsigned int queueFamilyIndexCount() {
+        return segment.get(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount);
+    }
+
+    public void queueFamilyIndexCount(@unsigned int value) {
+        segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
+    }
+
+    public @pointer(comment="uint32_t*") MemorySegment pQueueFamilyIndicesRaw() {
+        return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
+    }
+
+    public void pQueueFamilyIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
+        segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
+    }
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
+    public @nullable @unsigned IntBuffer pQueueFamilyIndices() {
+        MemorySegment s = pQueueFamilyIndicesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
+    }
+
+    public void pQueueFamilyIndices(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pQueueFamilyIndicesRaw(s);
+    }
+
+    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceImageDrmFormatModifierInfoEXT[] ret = new VkPhysicalDeviceImageDrmFormatModifierInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT clone(Arena arena, VkPhysicalDeviceImageDrmFormatModifierInfoEXT src) {
+        VkPhysicalDeviceImageDrmFormatModifierInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT[] clone(Arena arena, VkPhysicalDeviceImageDrmFormatModifierInfoEXT[] src) {
+        VkPhysicalDeviceImageDrmFormatModifierInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -51,78 +163,4 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(MemorySegment segmen
     public static final long SIZE$sharingMode = LAYOUT$sharingMode.byteSize();
     public static final long SIZE$queueFamilyIndexCount = LAYOUT$queueFamilyIndexCount.byteSize();
     public static final long SIZE$pQueueFamilyIndices = LAYOUT$pQueueFamilyIndices.byteSize();
-
-    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned long drmFormatModifier() {
-        return segment.get(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier);
-    }
-
-    public void drmFormatModifier(@unsigned long value) {
-        segment.set(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier, value);
-    }
-
-    public @enumtype(VkSharingMode.class) int sharingMode() {
-        return segment.get(LAYOUT$sharingMode, OFFSET$sharingMode);
-    }
-
-    public void sharingMode(@enumtype(VkSharingMode.class) int value) {
-        segment.set(LAYOUT$sharingMode, OFFSET$sharingMode, value);
-    }
-
-    public @unsigned int queueFamilyIndexCount() {
-        return segment.get(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount);
-    }
-
-    public void queueFamilyIndexCount(@unsigned int value) {
-        segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
-    }
-
-    public @pointer(comment="uint32_t*") MemorySegment pQueueFamilyIndicesRaw() {
-        return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
-    }
-
-    public void pQueueFamilyIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
-        segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
-    }
-    
-    public @unsigned IntBuffer pQueueFamilyIndices() {
-        return new IntBuffer(pQueueFamilyIndicesRaw());
-    }
-
-    public void pQueueFamilyIndices(@unsigned IntBuffer value) {
-        pQueueFamilyIndicesRaw(value.segment());
-    }
-
-    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceImageDrmFormatModifierInfoEXT[] ret = new VkPhysicalDeviceImageDrmFormatModifierInfoEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

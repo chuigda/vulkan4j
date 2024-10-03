@@ -1,19 +1,144 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.vk4j.bitmask.VkImageViewCreateFlags;
+import tech.icey.vk4j.enumtype.VkFormat;
+import tech.icey.vk4j.enumtype.VkImageViewType;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkImage;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
 
-public record VkImageViewCreateInfo(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkImageViewCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkImageViewCreateFlags flags;
+///     VkImage image;
+///     VkImageViewType viewType;
+///     VkFormat format;
+///     VkComponentMapping components;
+///     VkImageSubresourceRange subresourceRange;
+/// } VkImageViewCreateInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageViewCreateInfo.html">VkImageViewCreateInfo</a>
+public record VkImageViewCreateInfo(MemorySegment segment) implements IPointer {
+    public VkImageViewCreateInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkImageViewCreateFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkImageViewCreateFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @nullable VkImage image() {
+        MemorySegment s = segment.get(LAYOUT$image, OFFSET$image);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImage(s);
+    }
+
+    public void image(@nullable VkImage value) {
+        segment.set(
+            LAYOUT$image,
+            OFFSET$image,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @enumtype(VkImageViewType.class) int viewType() {
+        return segment.get(LAYOUT$viewType, OFFSET$viewType);
+    }
+
+    public void viewType(@enumtype(VkImageViewType.class) int value) {
+        segment.set(LAYOUT$viewType, OFFSET$viewType, value);
+    }
+
+    public @enumtype(VkFormat.class) int format() {
+        return segment.get(LAYOUT$format, OFFSET$format);
+    }
+
+    public void format(@enumtype(VkFormat.class) int value) {
+        segment.set(LAYOUT$format, OFFSET$format, value);
+    }
+
+    public VkComponentMapping components() {
+        return new VkComponentMapping(segment.asSlice(OFFSET$components, LAYOUT$components));
+    }
+
+    public void components(VkComponentMapping value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, SIZE$components);
+    }
+
+    public VkImageSubresourceRange subresourceRange() {
+        return new VkImageSubresourceRange(segment.asSlice(OFFSET$subresourceRange, LAYOUT$subresourceRange));
+    }
+
+    public void subresourceRange(VkImageSubresourceRange value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, SIZE$subresourceRange);
+    }
+
+    public static VkImageViewCreateInfo allocate(Arena arena) {
+        return new VkImageViewCreateInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkImageViewCreateInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkImageViewCreateInfo[] ret = new VkImageViewCreateInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkImageViewCreateInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkImageViewCreateInfo clone(Arena arena, VkImageViewCreateInfo src) {
+        VkImageViewCreateInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkImageViewCreateInfo[] clone(Arena arena, VkImageViewCreateInfo[] src) {
+        VkImageViewCreateInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -61,86 +186,4 @@ public record VkImageViewCreateInfo(MemorySegment segment) {
     public static final long SIZE$format = LAYOUT$format.byteSize();
     public static final long SIZE$components = LAYOUT$components.byteSize();
     public static final long SIZE$subresourceRange = LAYOUT$subresourceRange.byteSize();
-
-    public VkImageViewCreateInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkImageViewCreateFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkImageViewCreateFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public VkImage image() {
-        return new VkImage(segment.get(LAYOUT$image, OFFSET$image));
-    }
-
-    public void image(VkImage value) {
-        segment.set(LAYOUT$image, OFFSET$image, value.segment());
-    }
-
-    public @enumtype(VkImageViewType.class) int viewType() {
-        return segment.get(LAYOUT$viewType, OFFSET$viewType);
-    }
-
-    public void viewType(@enumtype(VkImageViewType.class) int value) {
-        segment.set(LAYOUT$viewType, OFFSET$viewType, value);
-    }
-
-    public @enumtype(VkFormat.class) int format() {
-        return segment.get(LAYOUT$format, OFFSET$format);
-    }
-
-    public void format(@enumtype(VkFormat.class) int value) {
-        segment.set(LAYOUT$format, OFFSET$format, value);
-    }
-
-    public VkComponentMapping components() {
-        return new VkComponentMapping(segment.asSlice(OFFSET$components, LAYOUT$components));
-    }
-
-    public void components(VkComponentMapping value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, SIZE$components);
-    }
-
-    public VkImageSubresourceRange subresourceRange() {
-        return new VkImageSubresourceRange(segment.asSlice(OFFSET$subresourceRange, LAYOUT$subresourceRange));
-    }
-
-    public void subresourceRange(VkImageSubresourceRange value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, SIZE$subresourceRange);
-    }
-
-    public static VkImageViewCreateInfo allocate(Arena arena) {
-        return new VkImageViewCreateInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkImageViewCreateInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkImageViewCreateInfo[] ret = new VkImageViewCreateInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageViewCreateInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

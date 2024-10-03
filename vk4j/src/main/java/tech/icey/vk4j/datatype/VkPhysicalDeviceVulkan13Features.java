@@ -1,112 +1,41 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_FEATURES;
 
-public record VkPhysicalDeviceVulkan13Features(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("robustImageAccess"),
-        ValueLayout.JAVA_INT.withName("inlineUniformBlock"),
-        ValueLayout.JAVA_INT.withName("descriptorBindingInlineUniformBlockUpdateAfterBind"),
-        ValueLayout.JAVA_INT.withName("pipelineCreationCacheControl"),
-        ValueLayout.JAVA_INT.withName("privateData"),
-        ValueLayout.JAVA_INT.withName("shaderDemoteToHelperInvocation"),
-        ValueLayout.JAVA_INT.withName("shaderTerminateInvocation"),
-        ValueLayout.JAVA_INT.withName("subgroupSizeControl"),
-        ValueLayout.JAVA_INT.withName("computeFullSubgroups"),
-        ValueLayout.JAVA_INT.withName("synchronization2"),
-        ValueLayout.JAVA_INT.withName("textureCompressionASTC_HDR"),
-        ValueLayout.JAVA_INT.withName("shaderZeroInitializeWorkgroupMemory"),
-        ValueLayout.JAVA_INT.withName("dynamicRendering"),
-        ValueLayout.JAVA_INT.withName("shaderIntegerDotProduct"),
-        ValueLayout.JAVA_INT.withName("maintenance4")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$robustImageAccess = PathElement.groupElement("robustImageAccess");
-    public static final PathElement PATH$inlineUniformBlock = PathElement.groupElement("inlineUniformBlock");
-    public static final PathElement PATH$descriptorBindingInlineUniformBlockUpdateAfterBind = PathElement.groupElement("descriptorBindingInlineUniformBlockUpdateAfterBind");
-    public static final PathElement PATH$pipelineCreationCacheControl = PathElement.groupElement("pipelineCreationCacheControl");
-    public static final PathElement PATH$privateData = PathElement.groupElement("privateData");
-    public static final PathElement PATH$shaderDemoteToHelperInvocation = PathElement.groupElement("shaderDemoteToHelperInvocation");
-    public static final PathElement PATH$shaderTerminateInvocation = PathElement.groupElement("shaderTerminateInvocation");
-    public static final PathElement PATH$subgroupSizeControl = PathElement.groupElement("subgroupSizeControl");
-    public static final PathElement PATH$computeFullSubgroups = PathElement.groupElement("computeFullSubgroups");
-    public static final PathElement PATH$synchronization2 = PathElement.groupElement("synchronization2");
-    public static final PathElement PATH$textureCompressionASTC_HDR = PathElement.groupElement("textureCompressionASTC_HDR");
-    public static final PathElement PATH$shaderZeroInitializeWorkgroupMemory = PathElement.groupElement("shaderZeroInitializeWorkgroupMemory");
-    public static final PathElement PATH$dynamicRendering = PathElement.groupElement("dynamicRendering");
-    public static final PathElement PATH$shaderIntegerDotProduct = PathElement.groupElement("shaderIntegerDotProduct");
-    public static final PathElement PATH$maintenance4 = PathElement.groupElement("maintenance4");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$robustImageAccess = (OfInt) LAYOUT.select(PATH$robustImageAccess);
-    public static final OfInt LAYOUT$inlineUniformBlock = (OfInt) LAYOUT.select(PATH$inlineUniformBlock);
-    public static final OfInt LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind = (OfInt) LAYOUT.select(PATH$descriptorBindingInlineUniformBlockUpdateAfterBind);
-    public static final OfInt LAYOUT$pipelineCreationCacheControl = (OfInt) LAYOUT.select(PATH$pipelineCreationCacheControl);
-    public static final OfInt LAYOUT$privateData = (OfInt) LAYOUT.select(PATH$privateData);
-    public static final OfInt LAYOUT$shaderDemoteToHelperInvocation = (OfInt) LAYOUT.select(PATH$shaderDemoteToHelperInvocation);
-    public static final OfInt LAYOUT$shaderTerminateInvocation = (OfInt) LAYOUT.select(PATH$shaderTerminateInvocation);
-    public static final OfInt LAYOUT$subgroupSizeControl = (OfInt) LAYOUT.select(PATH$subgroupSizeControl);
-    public static final OfInt LAYOUT$computeFullSubgroups = (OfInt) LAYOUT.select(PATH$computeFullSubgroups);
-    public static final OfInt LAYOUT$synchronization2 = (OfInt) LAYOUT.select(PATH$synchronization2);
-    public static final OfInt LAYOUT$textureCompressionASTC_HDR = (OfInt) LAYOUT.select(PATH$textureCompressionASTC_HDR);
-    public static final OfInt LAYOUT$shaderZeroInitializeWorkgroupMemory = (OfInt) LAYOUT.select(PATH$shaderZeroInitializeWorkgroupMemory);
-    public static final OfInt LAYOUT$dynamicRendering = (OfInt) LAYOUT.select(PATH$dynamicRendering);
-    public static final OfInt LAYOUT$shaderIntegerDotProduct = (OfInt) LAYOUT.select(PATH$shaderIntegerDotProduct);
-    public static final OfInt LAYOUT$maintenance4 = (OfInt) LAYOUT.select(PATH$maintenance4);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$robustImageAccess = LAYOUT.byteOffset(PATH$robustImageAccess);
-    public static final long OFFSET$inlineUniformBlock = LAYOUT.byteOffset(PATH$inlineUniformBlock);
-    public static final long OFFSET$descriptorBindingInlineUniformBlockUpdateAfterBind = LAYOUT.byteOffset(PATH$descriptorBindingInlineUniformBlockUpdateAfterBind);
-    public static final long OFFSET$pipelineCreationCacheControl = LAYOUT.byteOffset(PATH$pipelineCreationCacheControl);
-    public static final long OFFSET$privateData = LAYOUT.byteOffset(PATH$privateData);
-    public static final long OFFSET$shaderDemoteToHelperInvocation = LAYOUT.byteOffset(PATH$shaderDemoteToHelperInvocation);
-    public static final long OFFSET$shaderTerminateInvocation = LAYOUT.byteOffset(PATH$shaderTerminateInvocation);
-    public static final long OFFSET$subgroupSizeControl = LAYOUT.byteOffset(PATH$subgroupSizeControl);
-    public static final long OFFSET$computeFullSubgroups = LAYOUT.byteOffset(PATH$computeFullSubgroups);
-    public static final long OFFSET$synchronization2 = LAYOUT.byteOffset(PATH$synchronization2);
-    public static final long OFFSET$textureCompressionASTC_HDR = LAYOUT.byteOffset(PATH$textureCompressionASTC_HDR);
-    public static final long OFFSET$shaderZeroInitializeWorkgroupMemory = LAYOUT.byteOffset(PATH$shaderZeroInitializeWorkgroupMemory);
-    public static final long OFFSET$dynamicRendering = LAYOUT.byteOffset(PATH$dynamicRendering);
-    public static final long OFFSET$shaderIntegerDotProduct = LAYOUT.byteOffset(PATH$shaderIntegerDotProduct);
-    public static final long OFFSET$maintenance4 = LAYOUT.byteOffset(PATH$maintenance4);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$robustImageAccess = LAYOUT$robustImageAccess.byteSize();
-    public static final long SIZE$inlineUniformBlock = LAYOUT$inlineUniformBlock.byteSize();
-    public static final long SIZE$descriptorBindingInlineUniformBlockUpdateAfterBind = LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind.byteSize();
-    public static final long SIZE$pipelineCreationCacheControl = LAYOUT$pipelineCreationCacheControl.byteSize();
-    public static final long SIZE$privateData = LAYOUT$privateData.byteSize();
-    public static final long SIZE$shaderDemoteToHelperInvocation = LAYOUT$shaderDemoteToHelperInvocation.byteSize();
-    public static final long SIZE$shaderTerminateInvocation = LAYOUT$shaderTerminateInvocation.byteSize();
-    public static final long SIZE$subgroupSizeControl = LAYOUT$subgroupSizeControl.byteSize();
-    public static final long SIZE$computeFullSubgroups = LAYOUT$computeFullSubgroups.byteSize();
-    public static final long SIZE$synchronization2 = LAYOUT$synchronization2.byteSize();
-    public static final long SIZE$textureCompressionASTC_HDR = LAYOUT$textureCompressionASTC_HDR.byteSize();
-    public static final long SIZE$shaderZeroInitializeWorkgroupMemory = LAYOUT$shaderZeroInitializeWorkgroupMemory.byteSize();
-    public static final long SIZE$dynamicRendering = LAYOUT$dynamicRendering.byteSize();
-    public static final long SIZE$shaderIntegerDotProduct = LAYOUT$shaderIntegerDotProduct.byteSize();
-    public static final long SIZE$maintenance4 = LAYOUT$maintenance4.byteSize();
-
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceVulkan13Features {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 robustImageAccess;
+///     VkBool32 inlineUniformBlock;
+///     VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
+///     VkBool32 pipelineCreationCacheControl;
+///     VkBool32 privateData;
+///     VkBool32 shaderDemoteToHelperInvocation;
+///     VkBool32 shaderTerminateInvocation;
+///     VkBool32 subgroupSizeControl;
+///     VkBool32 computeFullSubgroups;
+///     VkBool32 synchronization2;
+///     VkBool32 textureCompressionASTC_HDR;
+///     VkBool32 shaderZeroInitializeWorkgroupMemory;
+///     VkBool32 dynamicRendering;
+///     VkBool32 shaderIntegerDotProduct;
+///     VkBool32 maintenance4;
+/// } VkPhysicalDeviceVulkan13Features;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceVulkan13Features.html">VkPhysicalDeviceVulkan13Features</a>
+public record VkPhysicalDeviceVulkan13Features(MemorySegment segment) implements IPointer {
     public VkPhysicalDeviceVulkan13Features(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_FEATURES);
@@ -126,6 +55,10 @@ public record VkPhysicalDeviceVulkan13Features(MemorySegment segment) {
 
     public void pNext(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
     }
 
     public @unsigned int robustImageAccess() {
@@ -251,7 +184,7 @@ public record VkPhysicalDeviceVulkan13Features(MemorySegment segment) {
     public static VkPhysicalDeviceVulkan13Features allocate(Arena arena) {
         return new VkPhysicalDeviceVulkan13Features(arena.allocate(LAYOUT));
     }
-    
+
     public static VkPhysicalDeviceVulkan13Features[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceVulkan13Features[] ret = new VkPhysicalDeviceVulkan13Features[count];
@@ -260,4 +193,111 @@ public record VkPhysicalDeviceVulkan13Features(MemorySegment segment) {
         }
         return ret;
     }
+
+    public static VkPhysicalDeviceVulkan13Features clone(Arena arena, VkPhysicalDeviceVulkan13Features src) {
+        VkPhysicalDeviceVulkan13Features ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceVulkan13Features[] clone(Arena arena, VkPhysicalDeviceVulkan13Features[] src) {
+        VkPhysicalDeviceVulkan13Features[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("robustImageAccess"),
+        ValueLayout.JAVA_INT.withName("inlineUniformBlock"),
+        ValueLayout.JAVA_INT.withName("descriptorBindingInlineUniformBlockUpdateAfterBind"),
+        ValueLayout.JAVA_INT.withName("pipelineCreationCacheControl"),
+        ValueLayout.JAVA_INT.withName("privateData"),
+        ValueLayout.JAVA_INT.withName("shaderDemoteToHelperInvocation"),
+        ValueLayout.JAVA_INT.withName("shaderTerminateInvocation"),
+        ValueLayout.JAVA_INT.withName("subgroupSizeControl"),
+        ValueLayout.JAVA_INT.withName("computeFullSubgroups"),
+        ValueLayout.JAVA_INT.withName("synchronization2"),
+        ValueLayout.JAVA_INT.withName("textureCompressionASTC_HDR"),
+        ValueLayout.JAVA_INT.withName("shaderZeroInitializeWorkgroupMemory"),
+        ValueLayout.JAVA_INT.withName("dynamicRendering"),
+        ValueLayout.JAVA_INT.withName("shaderIntegerDotProduct"),
+        ValueLayout.JAVA_INT.withName("maintenance4")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$robustImageAccess = PathElement.groupElement("robustImageAccess");
+    public static final PathElement PATH$inlineUniformBlock = PathElement.groupElement("inlineUniformBlock");
+    public static final PathElement PATH$descriptorBindingInlineUniformBlockUpdateAfterBind = PathElement.groupElement("descriptorBindingInlineUniformBlockUpdateAfterBind");
+    public static final PathElement PATH$pipelineCreationCacheControl = PathElement.groupElement("pipelineCreationCacheControl");
+    public static final PathElement PATH$privateData = PathElement.groupElement("privateData");
+    public static final PathElement PATH$shaderDemoteToHelperInvocation = PathElement.groupElement("shaderDemoteToHelperInvocation");
+    public static final PathElement PATH$shaderTerminateInvocation = PathElement.groupElement("shaderTerminateInvocation");
+    public static final PathElement PATH$subgroupSizeControl = PathElement.groupElement("subgroupSizeControl");
+    public static final PathElement PATH$computeFullSubgroups = PathElement.groupElement("computeFullSubgroups");
+    public static final PathElement PATH$synchronization2 = PathElement.groupElement("synchronization2");
+    public static final PathElement PATH$textureCompressionASTC_HDR = PathElement.groupElement("textureCompressionASTC_HDR");
+    public static final PathElement PATH$shaderZeroInitializeWorkgroupMemory = PathElement.groupElement("shaderZeroInitializeWorkgroupMemory");
+    public static final PathElement PATH$dynamicRendering = PathElement.groupElement("dynamicRendering");
+    public static final PathElement PATH$shaderIntegerDotProduct = PathElement.groupElement("shaderIntegerDotProduct");
+    public static final PathElement PATH$maintenance4 = PathElement.groupElement("maintenance4");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$robustImageAccess = (OfInt) LAYOUT.select(PATH$robustImageAccess);
+    public static final OfInt LAYOUT$inlineUniformBlock = (OfInt) LAYOUT.select(PATH$inlineUniformBlock);
+    public static final OfInt LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind = (OfInt) LAYOUT.select(PATH$descriptorBindingInlineUniformBlockUpdateAfterBind);
+    public static final OfInt LAYOUT$pipelineCreationCacheControl = (OfInt) LAYOUT.select(PATH$pipelineCreationCacheControl);
+    public static final OfInt LAYOUT$privateData = (OfInt) LAYOUT.select(PATH$privateData);
+    public static final OfInt LAYOUT$shaderDemoteToHelperInvocation = (OfInt) LAYOUT.select(PATH$shaderDemoteToHelperInvocation);
+    public static final OfInt LAYOUT$shaderTerminateInvocation = (OfInt) LAYOUT.select(PATH$shaderTerminateInvocation);
+    public static final OfInt LAYOUT$subgroupSizeControl = (OfInt) LAYOUT.select(PATH$subgroupSizeControl);
+    public static final OfInt LAYOUT$computeFullSubgroups = (OfInt) LAYOUT.select(PATH$computeFullSubgroups);
+    public static final OfInt LAYOUT$synchronization2 = (OfInt) LAYOUT.select(PATH$synchronization2);
+    public static final OfInt LAYOUT$textureCompressionASTC_HDR = (OfInt) LAYOUT.select(PATH$textureCompressionASTC_HDR);
+    public static final OfInt LAYOUT$shaderZeroInitializeWorkgroupMemory = (OfInt) LAYOUT.select(PATH$shaderZeroInitializeWorkgroupMemory);
+    public static final OfInt LAYOUT$dynamicRendering = (OfInt) LAYOUT.select(PATH$dynamicRendering);
+    public static final OfInt LAYOUT$shaderIntegerDotProduct = (OfInt) LAYOUT.select(PATH$shaderIntegerDotProduct);
+    public static final OfInt LAYOUT$maintenance4 = (OfInt) LAYOUT.select(PATH$maintenance4);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$robustImageAccess = LAYOUT.byteOffset(PATH$robustImageAccess);
+    public static final long OFFSET$inlineUniformBlock = LAYOUT.byteOffset(PATH$inlineUniformBlock);
+    public static final long OFFSET$descriptorBindingInlineUniformBlockUpdateAfterBind = LAYOUT.byteOffset(PATH$descriptorBindingInlineUniformBlockUpdateAfterBind);
+    public static final long OFFSET$pipelineCreationCacheControl = LAYOUT.byteOffset(PATH$pipelineCreationCacheControl);
+    public static final long OFFSET$privateData = LAYOUT.byteOffset(PATH$privateData);
+    public static final long OFFSET$shaderDemoteToHelperInvocation = LAYOUT.byteOffset(PATH$shaderDemoteToHelperInvocation);
+    public static final long OFFSET$shaderTerminateInvocation = LAYOUT.byteOffset(PATH$shaderTerminateInvocation);
+    public static final long OFFSET$subgroupSizeControl = LAYOUT.byteOffset(PATH$subgroupSizeControl);
+    public static final long OFFSET$computeFullSubgroups = LAYOUT.byteOffset(PATH$computeFullSubgroups);
+    public static final long OFFSET$synchronization2 = LAYOUT.byteOffset(PATH$synchronization2);
+    public static final long OFFSET$textureCompressionASTC_HDR = LAYOUT.byteOffset(PATH$textureCompressionASTC_HDR);
+    public static final long OFFSET$shaderZeroInitializeWorkgroupMemory = LAYOUT.byteOffset(PATH$shaderZeroInitializeWorkgroupMemory);
+    public static final long OFFSET$dynamicRendering = LAYOUT.byteOffset(PATH$dynamicRendering);
+    public static final long OFFSET$shaderIntegerDotProduct = LAYOUT.byteOffset(PATH$shaderIntegerDotProduct);
+    public static final long OFFSET$maintenance4 = LAYOUT.byteOffset(PATH$maintenance4);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$robustImageAccess = LAYOUT$robustImageAccess.byteSize();
+    public static final long SIZE$inlineUniformBlock = LAYOUT$inlineUniformBlock.byteSize();
+    public static final long SIZE$descriptorBindingInlineUniformBlockUpdateAfterBind = LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind.byteSize();
+    public static final long SIZE$pipelineCreationCacheControl = LAYOUT$pipelineCreationCacheControl.byteSize();
+    public static final long SIZE$privateData = LAYOUT$privateData.byteSize();
+    public static final long SIZE$shaderDemoteToHelperInvocation = LAYOUT$shaderDemoteToHelperInvocation.byteSize();
+    public static final long SIZE$shaderTerminateInvocation = LAYOUT$shaderTerminateInvocation.byteSize();
+    public static final long SIZE$subgroupSizeControl = LAYOUT$subgroupSizeControl.byteSize();
+    public static final long SIZE$computeFullSubgroups = LAYOUT$computeFullSubgroups.byteSize();
+    public static final long SIZE$synchronization2 = LAYOUT$synchronization2.byteSize();
+    public static final long SIZE$textureCompressionASTC_HDR = LAYOUT$textureCompressionASTC_HDR.byteSize();
+    public static final long SIZE$shaderZeroInitializeWorkgroupMemory = LAYOUT$shaderZeroInitializeWorkgroupMemory.byteSize();
+    public static final long SIZE$dynamicRendering = LAYOUT$dynamicRendering.byteSize();
+    public static final long SIZE$shaderIntegerDotProduct = LAYOUT$shaderIntegerDotProduct.byteSize();
+    public static final long SIZE$maintenance4 = LAYOUT$maintenance4.byteSize();
 }

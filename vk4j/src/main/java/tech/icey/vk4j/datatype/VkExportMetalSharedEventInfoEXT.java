@@ -1,19 +1,127 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkEvent;
+import tech.icey.vk4j.handle.VkSemaphore;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_EXPORT_METAL_SHARED_EVENT_INFO_EXT;
 
-public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkExportMetalSharedEventInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkSemaphore semaphore;
+///     VkEvent event;
+///     MTLSharedEvent_id mtlSharedEvent;
+/// } VkExportMetalSharedEventInfoEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkExportMetalSharedEventInfoEXT.html">VkExportMetalSharedEventInfoEXT</a>
+public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) implements IPointer {
+    public VkExportMetalSharedEventInfoEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_EXPORT_METAL_SHARED_EVENT_INFO_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @nullable VkSemaphore semaphore() {
+        MemorySegment s = segment.get(LAYOUT$semaphore, OFFSET$semaphore);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSemaphore(s);
+    }
+
+    public void semaphore(@nullable VkSemaphore value) {
+        segment.set(
+            LAYOUT$semaphore,
+            OFFSET$semaphore,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @nullable VkEvent event() {
+        MemorySegment s = segment.get(LAYOUT$event, OFFSET$event);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkEvent(s);
+    }
+
+    public void event(@nullable VkEvent value) {
+        segment.set(
+            LAYOUT$event,
+            OFFSET$event,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @pointer(comment="void*") MemorySegment mtlSharedEvent() {
+        return segment.get(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent);
+    }
+
+    public void mtlSharedEvent(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent, value);
+    }
+
+    public void mtlSharedEvent(IPointer pointer) {
+        mtlSharedEvent(pointer.segment());
+    }
+
+    public static VkExportMetalSharedEventInfoEXT allocate(Arena arena) {
+        return new VkExportMetalSharedEventInfoEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkExportMetalSharedEventInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkExportMetalSharedEventInfoEXT[] ret = new VkExportMetalSharedEventInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkExportMetalSharedEventInfoEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkExportMetalSharedEventInfoEXT clone(Arena arena, VkExportMetalSharedEventInfoEXT src) {
+        VkExportMetalSharedEventInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkExportMetalSharedEventInfoEXT[] clone(Arena arena, VkExportMetalSharedEventInfoEXT[] src) {
+        VkExportMetalSharedEventInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -46,62 +154,4 @@ public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) {
     public static final long SIZE$semaphore = LAYOUT$semaphore.byteSize();
     public static final long SIZE$event = LAYOUT$event.byteSize();
     public static final long SIZE$mtlSharedEvent = LAYOUT$mtlSharedEvent.byteSize();
-
-    public VkExportMetalSharedEventInfoEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_EXPORT_METAL_SHARED_EVENT_INFO_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public VkSemaphore semaphore() {
-        return new VkSemaphore(segment.get(LAYOUT$semaphore, OFFSET$semaphore));
-    }
-
-    public void semaphore(VkSemaphore value) {
-        segment.set(LAYOUT$semaphore, OFFSET$semaphore, value.segment());
-    }
-
-    public VkEvent event() {
-        return new VkEvent(segment.get(LAYOUT$event, OFFSET$event));
-    }
-
-    public void event(VkEvent value) {
-        segment.set(LAYOUT$event, OFFSET$event, value.segment());
-    }
-
-    public @pointer(comment="void*") MemorySegment mtlSharedEvent() {
-        return segment.get(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent);
-    }
-
-    public void mtlSharedEvent(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent, value);
-    }
-
-    public static VkExportMetalSharedEventInfoEXT allocate(Arena arena) {
-        return new VkExportMetalSharedEventInfoEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkExportMetalSharedEventInfoEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkExportMetalSharedEventInfoEXT[] ret = new VkExportMetalSharedEventInfoEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkExportMetalSharedEventInfoEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

@@ -9,14 +9,21 @@
         <version>${revision}</version>
     </parent>
 
-    <groupId>tech.icey.vk4j</groupId>
     <artifactId>vk4j</artifactId>
-    <version>${revision}</version>
+    <version>${vk4j.revision}</version>
     <packaging>jar</packaging>
 
     <properties>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
+        <maven.compiler.release>22</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>tech.icey</groupId>
+            <artifactId>panama-plus</artifactId>
+            <version>${panama-plus.revision}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>

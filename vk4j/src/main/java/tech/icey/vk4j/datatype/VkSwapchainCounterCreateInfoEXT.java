@@ -1,19 +1,87 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.vk4j.bitmask.VkSurfaceCounterFlagsEXT;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT;
 
-public record VkSwapchainCounterCreateInfoEXT(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkSwapchainCounterCreateInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkSurfaceCounterFlagsEXT surfaceCounters;
+/// } VkSwapchainCounterCreateInfoEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSwapchainCounterCreateInfoEXT.html">VkSwapchainCounterCreateInfoEXT</a>
+public record VkSwapchainCounterCreateInfoEXT(MemorySegment segment) implements IPointer {
+    public VkSwapchainCounterCreateInfoEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkSurfaceCounterFlagsEXT.class) int surfaceCounters() {
+        return segment.get(LAYOUT$surfaceCounters, OFFSET$surfaceCounters);
+    }
+
+    public void surfaceCounters(@enumtype(VkSurfaceCounterFlagsEXT.class) int value) {
+        segment.set(LAYOUT$surfaceCounters, OFFSET$surfaceCounters, value);
+    }
+
+    public static VkSwapchainCounterCreateInfoEXT allocate(Arena arena) {
+        return new VkSwapchainCounterCreateInfoEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkSwapchainCounterCreateInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSwapchainCounterCreateInfoEXT[] ret = new VkSwapchainCounterCreateInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSwapchainCounterCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkSwapchainCounterCreateInfoEXT clone(Arena arena, VkSwapchainCounterCreateInfoEXT src) {
+        VkSwapchainCounterCreateInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSwapchainCounterCreateInfoEXT[] clone(Arena arena, VkSwapchainCounterCreateInfoEXT[] src) {
+        VkSwapchainCounterCreateInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -36,46 +104,4 @@ public record VkSwapchainCounterCreateInfoEXT(MemorySegment segment) {
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$surfaceCounters = LAYOUT$surfaceCounters.byteSize();
-
-    public VkSwapchainCounterCreateInfoEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkSurfaceCounterFlagsEXT.class) int surfaceCounters() {
-        return segment.get(LAYOUT$surfaceCounters, OFFSET$surfaceCounters);
-    }
-
-    public void surfaceCounters(@enumtype(VkSurfaceCounterFlagsEXT.class) int value) {
-        segment.set(LAYOUT$surfaceCounters, OFFSET$surfaceCounters, value);
-    }
-
-    public static VkSwapchainCounterCreateInfoEXT allocate(Arena arena) {
-        return new VkSwapchainCounterCreateInfoEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkSwapchainCounterCreateInfoEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSwapchainCounterCreateInfoEXT[] ret = new VkSwapchainCounterCreateInfoEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkSwapchainCounterCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

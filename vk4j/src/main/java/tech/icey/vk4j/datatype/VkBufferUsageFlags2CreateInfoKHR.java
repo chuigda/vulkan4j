@@ -1,42 +1,26 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.vk4j.bitmask.VkBufferUsageFlags2KHR;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO_KHR;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
-
-public record VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("usage")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$usage = PathElement.groupElement("usage");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$usage = (OfInt) LAYOUT.select(PATH$usage);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$usage = LAYOUT$usage.byteSize();
-
+/// {@snippet lang=c :
+/// typedef struct VkBufferUsageFlags2CreateInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkBufferUsageFlags2KHR usage;
+/// } VkBufferUsageFlags2CreateInfoKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBufferUsageFlags2CreateInfoKHR.html">VkBufferUsageFlags2CreateInfoKHR</a>
+public record VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) implements IPointer {
     public VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO_KHR);
@@ -58,18 +42,22 @@ public record VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public @enumtype(VkBufferUsageFlags2KHR.class) int usage() {
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkBufferUsageFlags2KHR.class) long usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public void usage(@enumtype(VkBufferUsageFlags2KHR.class) int value) {
+    public void usage(@enumtype(VkBufferUsageFlags2KHR.class) long value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
     }
 
     public static VkBufferUsageFlags2CreateInfoKHR allocate(Arena arena) {
         return new VkBufferUsageFlags2CreateInfoKHR(arena.allocate(LAYOUT));
     }
-    
+
     public static VkBufferUsageFlags2CreateInfoKHR[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferUsageFlags2CreateInfoKHR[] ret = new VkBufferUsageFlags2CreateInfoKHR[count];
@@ -78,4 +66,41 @@ public record VkBufferUsageFlags2CreateInfoKHR(MemorySegment segment) {
         }
         return ret;
     }
+
+    public static VkBufferUsageFlags2CreateInfoKHR clone(Arena arena, VkBufferUsageFlags2CreateInfoKHR src) {
+        VkBufferUsageFlags2CreateInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkBufferUsageFlags2CreateInfoKHR[] clone(Arena arena, VkBufferUsageFlags2CreateInfoKHR[] src) {
+        VkBufferUsageFlags2CreateInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("usage")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$usage = PathElement.groupElement("usage");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$usage = (OfLong) LAYOUT.select(PATH$usage);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$usage = LAYOUT$usage.byteSize();
 }

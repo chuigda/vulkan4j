@@ -1,52 +1,28 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.unsigned;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
-public record VkSubresourceLayout(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_LONG.withName("offset"),
-        ValueLayout.JAVA_LONG.withName("size"),
-        ValueLayout.JAVA_LONG.withName("rowPitch"),
-        ValueLayout.JAVA_LONG.withName("arrayPitch"),
-        ValueLayout.JAVA_LONG.withName("depthPitch")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
+import static java.lang.foreign.ValueLayout.OfLong;
+import static java.lang.foreign.ValueLayout.PathElement;
 
-    public static final PathElement PATH$offset = PathElement.groupElement("offset");
-    public static final PathElement PATH$size = PathElement.groupElement("size");
-    public static final PathElement PATH$rowPitch = PathElement.groupElement("rowPitch");
-    public static final PathElement PATH$arrayPitch = PathElement.groupElement("arrayPitch");
-    public static final PathElement PATH$depthPitch = PathElement.groupElement("depthPitch");
-
-    public static final OfLong LAYOUT$offset = (OfLong) LAYOUT.select(PATH$offset);
-    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
-    public static final OfLong LAYOUT$rowPitch = (OfLong) LAYOUT.select(PATH$rowPitch);
-    public static final OfLong LAYOUT$arrayPitch = (OfLong) LAYOUT.select(PATH$arrayPitch);
-    public static final OfLong LAYOUT$depthPitch = (OfLong) LAYOUT.select(PATH$depthPitch);
-
-    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
-    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
-    public static final long OFFSET$rowPitch = LAYOUT.byteOffset(PATH$rowPitch);
-    public static final long OFFSET$arrayPitch = LAYOUT.byteOffset(PATH$arrayPitch);
-    public static final long OFFSET$depthPitch = LAYOUT.byteOffset(PATH$depthPitch);
-
-    public static final long SIZE$offset = LAYOUT$offset.byteSize();
-    public static final long SIZE$size = LAYOUT$size.byteSize();
-    public static final long SIZE$rowPitch = LAYOUT$rowPitch.byteSize();
-    public static final long SIZE$arrayPitch = LAYOUT$arrayPitch.byteSize();
-    public static final long SIZE$depthPitch = LAYOUT$depthPitch.byteSize();
-
+/// {@snippet lang=c :
+/// typedef struct VkSubresourceLayout {
+///     VkDeviceSize offset;
+///     VkDeviceSize size;
+///     VkDeviceSize rowPitch;
+///     VkDeviceSize arrayPitch;
+///     VkDeviceSize depthPitch;
+/// } VkSubresourceLayout;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubresourceLayout.html">VkSubresourceLayout</a>
+public record VkSubresourceLayout(MemorySegment segment) implements IPointer {
     public VkSubresourceLayout(MemorySegment segment) {
         this.segment = segment;
     }
@@ -94,7 +70,7 @@ public record VkSubresourceLayout(MemorySegment segment) {
     public static VkSubresourceLayout allocate(Arena arena) {
         return new VkSubresourceLayout(arena.allocate(LAYOUT));
     }
-    
+
     public static VkSubresourceLayout[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubresourceLayout[] ret = new VkSubresourceLayout[count];
@@ -103,4 +79,51 @@ public record VkSubresourceLayout(MemorySegment segment) {
         }
         return ret;
     }
+
+    public static VkSubresourceLayout clone(Arena arena, VkSubresourceLayout src) {
+        VkSubresourceLayout ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSubresourceLayout[] clone(Arena arena, VkSubresourceLayout[] src) {
+        VkSubresourceLayout[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("offset"),
+        ValueLayout.JAVA_LONG.withName("size"),
+        ValueLayout.JAVA_LONG.withName("rowPitch"),
+        ValueLayout.JAVA_LONG.withName("arrayPitch"),
+        ValueLayout.JAVA_LONG.withName("depthPitch")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$rowPitch = PathElement.groupElement("rowPitch");
+    public static final PathElement PATH$arrayPitch = PathElement.groupElement("arrayPitch");
+    public static final PathElement PATH$depthPitch = PathElement.groupElement("depthPitch");
+
+    public static final OfLong LAYOUT$offset = (OfLong) LAYOUT.select(PATH$offset);
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+    public static final OfLong LAYOUT$rowPitch = (OfLong) LAYOUT.select(PATH$rowPitch);
+    public static final OfLong LAYOUT$arrayPitch = (OfLong) LAYOUT.select(PATH$arrayPitch);
+    public static final OfLong LAYOUT$depthPitch = (OfLong) LAYOUT.select(PATH$depthPitch);
+
+    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+    public static final long OFFSET$rowPitch = LAYOUT.byteOffset(PATH$rowPitch);
+    public static final long OFFSET$arrayPitch = LAYOUT.byteOffset(PATH$arrayPitch);
+    public static final long OFFSET$depthPitch = LAYOUT.byteOffset(PATH$depthPitch);
+
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$rowPitch = LAYOUT$rowPitch.byteSize();
+    public static final long SIZE$arrayPitch = LAYOUT$arrayPitch.byteSize();
+    public static final long SIZE$depthPitch = LAYOUT$depthPitch.byteSize();
 }

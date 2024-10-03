@@ -1,19 +1,145 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.ByteBuffer;
+import tech.icey.vk4j.enumtype.VkPhysicalDeviceType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.VK_MAX_PHYSICAL_DEVICE_NAME_SIZE;
+import static tech.icey.vk4j.Constants.VK_UUID_SIZE;
 
-public record VkPhysicalDeviceProperties(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceProperties {
+///     uint32_t apiVersion;
+///     uint32_t driverVersion;
+///     uint32_t vendorID;
+///     uint32_t deviceID;
+///     VkPhysicalDeviceType deviceType;
+///     char deviceName[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE];
+///     uint8_t pipelineCacheUUID[VK_UUID_SIZE];
+///     VkPhysicalDeviceLimits limits;
+///     VkPhysicalDeviceSparseProperties sparseProperties;
+/// } VkPhysicalDeviceProperties;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceProperties.html">VkPhysicalDeviceProperties</a>
+public record VkPhysicalDeviceProperties(MemorySegment segment) implements IPointer {
+    public VkPhysicalDeviceProperties(MemorySegment segment) {
+        this.segment = segment;
+    }
+
+    public @unsigned int apiVersion() {
+        return segment.get(LAYOUT$apiVersion, OFFSET$apiVersion);
+    }
+
+    public void apiVersion(@unsigned int value) {
+        segment.set(LAYOUT$apiVersion, OFFSET$apiVersion, value);
+    }
+
+    public @unsigned int driverVersion() {
+        return segment.get(LAYOUT$driverVersion, OFFSET$driverVersion);
+    }
+
+    public void driverVersion(@unsigned int value) {
+        segment.set(LAYOUT$driverVersion, OFFSET$driverVersion, value);
+    }
+
+    public @unsigned int vendorID() {
+        return segment.get(LAYOUT$vendorID, OFFSET$vendorID);
+    }
+
+    public void vendorID(@unsigned int value) {
+        segment.set(LAYOUT$vendorID, OFFSET$vendorID, value);
+    }
+
+    public @unsigned int deviceID() {
+        return segment.get(LAYOUT$deviceID, OFFSET$deviceID);
+    }
+
+    public void deviceID(@unsigned int value) {
+        segment.set(LAYOUT$deviceID, OFFSET$deviceID, value);
+    }
+
+    public @enumtype(VkPhysicalDeviceType.class) int deviceType() {
+        return segment.get(LAYOUT$deviceType, OFFSET$deviceType);
+    }
+
+    public void deviceType(@enumtype(VkPhysicalDeviceType.class) int value) {
+        segment.set(LAYOUT$deviceType, OFFSET$deviceType, value);
+    }
+
+    public MemorySegment deviceNameRaw() {
+        return segment.asSlice(OFFSET$deviceName, SIZE$deviceName);
+    }
+
+    public ByteBuffer deviceName() {
+        return new ByteBuffer(deviceNameRaw());
+    }
+
+    public void deviceName(ByteBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceName, SIZE$deviceName);
+    }
+
+    public MemorySegment pipelineCacheUUIDRaw() {
+        return segment.asSlice(OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
+    }
+
+    public @unsigned ByteBuffer pipelineCacheUUID() {
+        return new ByteBuffer(pipelineCacheUUIDRaw());
+    }
+
+    public void pipelineCacheUUID(@unsigned ByteBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
+    }
+
+    public VkPhysicalDeviceLimits limits() {
+        return new VkPhysicalDeviceLimits(segment.asSlice(OFFSET$limits, LAYOUT$limits));
+    }
+
+    public void limits(VkPhysicalDeviceLimits value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$limits, SIZE$limits);
+    }
+
+    public VkPhysicalDeviceSparseProperties sparseProperties() {
+        return new VkPhysicalDeviceSparseProperties(segment.asSlice(OFFSET$sparseProperties, LAYOUT$sparseProperties));
+    }
+
+    public void sparseProperties(VkPhysicalDeviceSparseProperties value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sparseProperties, SIZE$sparseProperties);
+    }
+
+    public static VkPhysicalDeviceProperties allocate(Arena arena) {
+        return new VkPhysicalDeviceProperties(arena.allocate(LAYOUT));
+    }
+
+    public static VkPhysicalDeviceProperties[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceProperties[] ret = new VkPhysicalDeviceProperties[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceProperties(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceProperties clone(Arena arena, VkPhysicalDeviceProperties src) {
+        VkPhysicalDeviceProperties ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceProperties[] clone(Arena arena, VkPhysicalDeviceProperties[] src) {
+        VkPhysicalDeviceProperties[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("apiVersion"),
         ValueLayout.JAVA_INT.withName("driverVersion"),
@@ -66,101 +192,4 @@ public record VkPhysicalDeviceProperties(MemorySegment segment) {
     public static final long SIZE$pipelineCacheUUID = LAYOUT$pipelineCacheUUID.byteSize();
     public static final long SIZE$limits = LAYOUT$limits.byteSize();
     public static final long SIZE$sparseProperties = LAYOUT$sparseProperties.byteSize();
-
-    public VkPhysicalDeviceProperties(MemorySegment segment) {
-        this.segment = segment;
-    }
-
-    public @unsigned int apiVersion() {
-        return segment.get(LAYOUT$apiVersion, OFFSET$apiVersion);
-    }
-
-    public void apiVersion(@unsigned int value) {
-        segment.set(LAYOUT$apiVersion, OFFSET$apiVersion, value);
-    }
-
-    public @unsigned int driverVersion() {
-        return segment.get(LAYOUT$driverVersion, OFFSET$driverVersion);
-    }
-
-    public void driverVersion(@unsigned int value) {
-        segment.set(LAYOUT$driverVersion, OFFSET$driverVersion, value);
-    }
-
-    public @unsigned int vendorID() {
-        return segment.get(LAYOUT$vendorID, OFFSET$vendorID);
-    }
-
-    public void vendorID(@unsigned int value) {
-        segment.set(LAYOUT$vendorID, OFFSET$vendorID, value);
-    }
-
-    public @unsigned int deviceID() {
-        return segment.get(LAYOUT$deviceID, OFFSET$deviceID);
-    }
-
-    public void deviceID(@unsigned int value) {
-        segment.set(LAYOUT$deviceID, OFFSET$deviceID, value);
-    }
-
-    public @enumtype(VkPhysicalDeviceType.class) int deviceType() {
-        return segment.get(LAYOUT$deviceType, OFFSET$deviceType);
-    }
-
-    public void deviceType(@enumtype(VkPhysicalDeviceType.class) int value) {
-        segment.set(LAYOUT$deviceType, OFFSET$deviceType, value);
-    }
-
-    public MemorySegment deviceNameRaw() {
-        return segment.asSlice(OFFSET$deviceName, LAYOUT$deviceName.byteSize());
-    }
-
-    public ByteBuffer deviceName() {
-        return new ByteBuffer(deviceNameRaw());
-    }
-
-    public void deviceName(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceName, LAYOUT$deviceName.byteSize());
-    }
-
-    public MemorySegment pipelineCacheUUIDRaw() {
-        return segment.asSlice(OFFSET$pipelineCacheUUID, LAYOUT$pipelineCacheUUID.byteSize());
-    }
-
-    public @unsigned ByteBuffer pipelineCacheUUID() {
-        return new ByteBuffer(pipelineCacheUUIDRaw());
-    }
-
-    public void pipelineCacheUUID(@unsigned ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, LAYOUT$pipelineCacheUUID.byteSize());
-    }
-
-    public VkPhysicalDeviceLimits limits() {
-        return new VkPhysicalDeviceLimits(segment.asSlice(OFFSET$limits, LAYOUT$limits));
-    }
-
-    public void limits(VkPhysicalDeviceLimits value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$limits, SIZE$limits);
-    }
-
-    public VkPhysicalDeviceSparseProperties sparseProperties() {
-        return new VkPhysicalDeviceSparseProperties(segment.asSlice(OFFSET$sparseProperties, LAYOUT$sparseProperties));
-    }
-
-    public void sparseProperties(VkPhysicalDeviceSparseProperties value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sparseProperties, SIZE$sparseProperties);
-    }
-
-    public static VkPhysicalDeviceProperties allocate(Arena arena) {
-        return new VkPhysicalDeviceProperties(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPhysicalDeviceProperties[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceProperties[] ret = new VkPhysicalDeviceProperties[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceProperties(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

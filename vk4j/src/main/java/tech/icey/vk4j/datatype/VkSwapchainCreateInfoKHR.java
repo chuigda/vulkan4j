@@ -1,19 +1,262 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.IntBuffer;
+import tech.icey.vk4j.bitmask.VkCompositeAlphaFlagsKHR;
+import tech.icey.vk4j.bitmask.VkImageUsageFlags;
+import tech.icey.vk4j.bitmask.VkSurfaceTransformFlagsKHR;
+import tech.icey.vk4j.bitmask.VkSwapchainCreateFlagsKHR;
 import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.vk4j.handle.VkSurfaceKHR;
+import tech.icey.vk4j.handle.VkSwapchainKHR;
 
-public record VkSwapchainCreateInfoKHR(MemorySegment segment) {
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
+
+/// {@snippet lang=c :
+/// typedef struct VkSwapchainCreateInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkSwapchainCreateFlagsKHR flags;
+///     VkSurfaceKHR surface;
+///     uint32_t minImageCount;
+///     VkFormat imageFormat;
+///     VkColorSpaceKHR imageColorSpace;
+///     VkExtent2D imageExtent;
+///     uint32_t imageArrayLayers;
+///     VkImageUsageFlags imageUsage;
+///     VkSharingMode imageSharingMode;
+///     uint32_t queueFamilyIndexCount;
+///     const uint32_t* pQueueFamilyIndices;
+///     VkSurfaceTransformFlagBitsKHR preTransform;
+///     VkCompositeAlphaFlagBitsKHR compositeAlpha;
+///     VkPresentModeKHR presentMode;
+///     VkBool32 clipped;
+///     VkSwapchainKHR oldSwapchain;
+///     VkSwapchainKHR oldSwapchain;
+/// } VkSwapchainCreateInfoKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSwapchainCreateInfoKHR.html">VkSwapchainCreateInfoKHR</a>
+public record VkSwapchainCreateInfoKHR(MemorySegment segment) implements IPointer {
+    public VkSwapchainCreateInfoKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkSwapchainCreateFlagsKHR.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkSwapchainCreateFlagsKHR.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @nullable VkSurfaceKHR surface() {
+        MemorySegment s = segment.get(LAYOUT$surface, OFFSET$surface);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSurfaceKHR(s);
+    }
+
+    public void surface(@nullable VkSurfaceKHR value) {
+        segment.set(
+            LAYOUT$surface,
+            OFFSET$surface,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @unsigned int minImageCount() {
+        return segment.get(LAYOUT$minImageCount, OFFSET$minImageCount);
+    }
+
+    public void minImageCount(@unsigned int value) {
+        segment.set(LAYOUT$minImageCount, OFFSET$minImageCount, value);
+    }
+
+    public @enumtype(VkFormat.class) int imageFormat() {
+        return segment.get(LAYOUT$imageFormat, OFFSET$imageFormat);
+    }
+
+    public void imageFormat(@enumtype(VkFormat.class) int value) {
+        segment.set(LAYOUT$imageFormat, OFFSET$imageFormat, value);
+    }
+
+    public @enumtype(VkColorSpaceKHR.class) int imageColorSpace() {
+        return segment.get(LAYOUT$imageColorSpace, OFFSET$imageColorSpace);
+    }
+
+    public void imageColorSpace(@enumtype(VkColorSpaceKHR.class) int value) {
+        segment.set(LAYOUT$imageColorSpace, OFFSET$imageColorSpace, value);
+    }
+
+    public VkExtent2D imageExtent() {
+        return new VkExtent2D(segment.asSlice(OFFSET$imageExtent, LAYOUT$imageExtent));
+    }
+
+    public void imageExtent(VkExtent2D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
+    }
+
+    public @unsigned int imageArrayLayers() {
+        return segment.get(LAYOUT$imageArrayLayers, OFFSET$imageArrayLayers);
+    }
+
+    public void imageArrayLayers(@unsigned int value) {
+        segment.set(LAYOUT$imageArrayLayers, OFFSET$imageArrayLayers, value);
+    }
+
+    public @enumtype(VkImageUsageFlags.class) int imageUsage() {
+        return segment.get(LAYOUT$imageUsage, OFFSET$imageUsage);
+    }
+
+    public void imageUsage(@enumtype(VkImageUsageFlags.class) int value) {
+        segment.set(LAYOUT$imageUsage, OFFSET$imageUsage, value);
+    }
+
+    public @enumtype(VkSharingMode.class) int imageSharingMode() {
+        return segment.get(LAYOUT$imageSharingMode, OFFSET$imageSharingMode);
+    }
+
+    public void imageSharingMode(@enumtype(VkSharingMode.class) int value) {
+        segment.set(LAYOUT$imageSharingMode, OFFSET$imageSharingMode, value);
+    }
+
+    public @unsigned int queueFamilyIndexCount() {
+        return segment.get(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount);
+    }
+
+    public void queueFamilyIndexCount(@unsigned int value) {
+        segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
+    }
+
+    public @pointer(comment="uint32_t*") MemorySegment pQueueFamilyIndicesRaw() {
+        return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
+    }
+
+    public void pQueueFamilyIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
+        segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
+    }
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
+    public @nullable @unsigned IntBuffer pQueueFamilyIndices() {
+        MemorySegment s = pQueueFamilyIndicesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
+    }
+
+    public void pQueueFamilyIndices(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pQueueFamilyIndicesRaw(s);
+    }
+
+    public @enumtype(VkSurfaceTransformFlagsKHR.class) int preTransform() {
+        return segment.get(LAYOUT$preTransform, OFFSET$preTransform);
+    }
+
+    public void preTransform(@enumtype(VkSurfaceTransformFlagsKHR.class) int value) {
+        segment.set(LAYOUT$preTransform, OFFSET$preTransform, value);
+    }
+
+    public @enumtype(VkCompositeAlphaFlagsKHR.class) int compositeAlpha() {
+        return segment.get(LAYOUT$compositeAlpha, OFFSET$compositeAlpha);
+    }
+
+    public void compositeAlpha(@enumtype(VkCompositeAlphaFlagsKHR.class) int value) {
+        segment.set(LAYOUT$compositeAlpha, OFFSET$compositeAlpha, value);
+    }
+
+    public @enumtype(VkPresentModeKHR.class) int presentMode() {
+        return segment.get(LAYOUT$presentMode, OFFSET$presentMode);
+    }
+
+    public void presentMode(@enumtype(VkPresentModeKHR.class) int value) {
+        segment.set(LAYOUT$presentMode, OFFSET$presentMode, value);
+    }
+
+    public @unsigned int clipped() {
+        return segment.get(LAYOUT$clipped, OFFSET$clipped);
+    }
+
+    public void clipped(@unsigned int value) {
+        segment.set(LAYOUT$clipped, OFFSET$clipped, value);
+    }
+
+    public @nullable VkSwapchainKHR oldSwapchain() {
+        MemorySegment s = segment.get(LAYOUT$oldSwapchain, OFFSET$oldSwapchain);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSwapchainKHR(s);
+    }
+
+    public void oldSwapchain(@nullable VkSwapchainKHR value) {
+        segment.set(
+            LAYOUT$oldSwapchain,
+            OFFSET$oldSwapchain,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public static VkSwapchainCreateInfoKHR allocate(Arena arena) {
+        return new VkSwapchainCreateInfoKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkSwapchainCreateInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSwapchainCreateInfoKHR[] ret = new VkSwapchainCreateInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSwapchainCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkSwapchainCreateInfoKHR clone(Arena arena, VkSwapchainCreateInfoKHR src) {
+        VkSwapchainCreateInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSwapchainCreateInfoKHR[] clone(Arena arena, VkSwapchainCreateInfoKHR[] src) {
+        VkSwapchainCreateInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -111,174 +354,4 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) {
     public static final long SIZE$presentMode = LAYOUT$presentMode.byteSize();
     public static final long SIZE$clipped = LAYOUT$clipped.byteSize();
     public static final long SIZE$oldSwapchain = LAYOUT$oldSwapchain.byteSize();
-
-    public VkSwapchainCreateInfoKHR(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkSwapchainCreateFlagsKHR.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkSwapchainCreateFlagsKHR.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public VkSurfaceKHR surface() {
-        return new VkSurfaceKHR(segment.get(LAYOUT$surface, OFFSET$surface));
-    }
-
-    public void surface(VkSurfaceKHR value) {
-        segment.set(LAYOUT$surface, OFFSET$surface, value.segment());
-    }
-
-    public @unsigned int minImageCount() {
-        return segment.get(LAYOUT$minImageCount, OFFSET$minImageCount);
-    }
-
-    public void minImageCount(@unsigned int value) {
-        segment.set(LAYOUT$minImageCount, OFFSET$minImageCount, value);
-    }
-
-    public @enumtype(VkFormat.class) int imageFormat() {
-        return segment.get(LAYOUT$imageFormat, OFFSET$imageFormat);
-    }
-
-    public void imageFormat(@enumtype(VkFormat.class) int value) {
-        segment.set(LAYOUT$imageFormat, OFFSET$imageFormat, value);
-    }
-
-    public @enumtype(VkColorSpaceKHR.class) int imageColorSpace() {
-        return segment.get(LAYOUT$imageColorSpace, OFFSET$imageColorSpace);
-    }
-
-    public void imageColorSpace(@enumtype(VkColorSpaceKHR.class) int value) {
-        segment.set(LAYOUT$imageColorSpace, OFFSET$imageColorSpace, value);
-    }
-
-    public VkExtent2D imageExtent() {
-        return new VkExtent2D(segment.asSlice(OFFSET$imageExtent, LAYOUT$imageExtent));
-    }
-
-    public void imageExtent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
-    }
-
-    public @unsigned int imageArrayLayers() {
-        return segment.get(LAYOUT$imageArrayLayers, OFFSET$imageArrayLayers);
-    }
-
-    public void imageArrayLayers(@unsigned int value) {
-        segment.set(LAYOUT$imageArrayLayers, OFFSET$imageArrayLayers, value);
-    }
-
-    public @enumtype(VkImageUsageFlags.class) int imageUsage() {
-        return segment.get(LAYOUT$imageUsage, OFFSET$imageUsage);
-    }
-
-    public void imageUsage(@enumtype(VkImageUsageFlags.class) int value) {
-        segment.set(LAYOUT$imageUsage, OFFSET$imageUsage, value);
-    }
-
-    public @enumtype(VkSharingMode.class) int imageSharingMode() {
-        return segment.get(LAYOUT$imageSharingMode, OFFSET$imageSharingMode);
-    }
-
-    public void imageSharingMode(@enumtype(VkSharingMode.class) int value) {
-        segment.set(LAYOUT$imageSharingMode, OFFSET$imageSharingMode, value);
-    }
-
-    public @unsigned int queueFamilyIndexCount() {
-        return segment.get(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount);
-    }
-
-    public void queueFamilyIndexCount(@unsigned int value) {
-        segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
-    }
-
-    public @pointer(comment="uint32_t*") MemorySegment pQueueFamilyIndicesRaw() {
-        return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
-    }
-
-    public void pQueueFamilyIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
-        segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
-    }
-    
-    public @unsigned IntBuffer pQueueFamilyIndices() {
-        return new IntBuffer(pQueueFamilyIndicesRaw());
-    }
-
-    public void pQueueFamilyIndices(@unsigned IntBuffer value) {
-        pQueueFamilyIndicesRaw(value.segment());
-    }
-
-    public @enumtype(VkSurfaceTransformFlagsKHR.class) int preTransform() {
-        return segment.get(LAYOUT$preTransform, OFFSET$preTransform);
-    }
-
-    public void preTransform(@enumtype(VkSurfaceTransformFlagsKHR.class) int value) {
-        segment.set(LAYOUT$preTransform, OFFSET$preTransform, value);
-    }
-
-    public @enumtype(VkCompositeAlphaFlagsKHR.class) int compositeAlpha() {
-        return segment.get(LAYOUT$compositeAlpha, OFFSET$compositeAlpha);
-    }
-
-    public void compositeAlpha(@enumtype(VkCompositeAlphaFlagsKHR.class) int value) {
-        segment.set(LAYOUT$compositeAlpha, OFFSET$compositeAlpha, value);
-    }
-
-    public @enumtype(VkPresentModeKHR.class) int presentMode() {
-        return segment.get(LAYOUT$presentMode, OFFSET$presentMode);
-    }
-
-    public void presentMode(@enumtype(VkPresentModeKHR.class) int value) {
-        segment.set(LAYOUT$presentMode, OFFSET$presentMode, value);
-    }
-
-    public @unsigned int clipped() {
-        return segment.get(LAYOUT$clipped, OFFSET$clipped);
-    }
-
-    public void clipped(@unsigned int value) {
-        segment.set(LAYOUT$clipped, OFFSET$clipped, value);
-    }
-
-    public VkSwapchainKHR oldSwapchain() {
-        return new VkSwapchainKHR(segment.get(LAYOUT$oldSwapchain, OFFSET$oldSwapchain));
-    }
-
-    public void oldSwapchain(VkSwapchainKHR value) {
-        segment.set(LAYOUT$oldSwapchain, OFFSET$oldSwapchain, value.segment());
-    }
-
-    public static VkSwapchainCreateInfoKHR allocate(Arena arena) {
-        return new VkSwapchainCreateInfoKHR(arena.allocate(LAYOUT));
-    }
-    
-    public static VkSwapchainCreateInfoKHR[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSwapchainCreateInfoKHR[] ret = new VkSwapchainCreateInfoKHR[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkSwapchainCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

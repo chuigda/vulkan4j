@@ -1,19 +1,96 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO;
 
-public record VkDeviceGroupBindSparseInfo(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkDeviceGroupBindSparseInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t resourceDeviceIndex;
+///     uint32_t memoryDeviceIndex;
+/// } VkDeviceGroupBindSparseInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceGroupBindSparseInfo.html">VkDeviceGroupBindSparseInfo</a>
+public record VkDeviceGroupBindSparseInfo(MemorySegment segment) implements IPointer {
+    public VkDeviceGroupBindSparseInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int resourceDeviceIndex() {
+        return segment.get(LAYOUT$resourceDeviceIndex, OFFSET$resourceDeviceIndex);
+    }
+
+    public void resourceDeviceIndex(@unsigned int value) {
+        segment.set(LAYOUT$resourceDeviceIndex, OFFSET$resourceDeviceIndex, value);
+    }
+
+    public @unsigned int memoryDeviceIndex() {
+        return segment.get(LAYOUT$memoryDeviceIndex, OFFSET$memoryDeviceIndex);
+    }
+
+    public void memoryDeviceIndex(@unsigned int value) {
+        segment.set(LAYOUT$memoryDeviceIndex, OFFSET$memoryDeviceIndex, value);
+    }
+
+    public static VkDeviceGroupBindSparseInfo allocate(Arena arena) {
+        return new VkDeviceGroupBindSparseInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkDeviceGroupBindSparseInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDeviceGroupBindSparseInfo[] ret = new VkDeviceGroupBindSparseInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDeviceGroupBindSparseInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkDeviceGroupBindSparseInfo clone(Arena arena, VkDeviceGroupBindSparseInfo src) {
+        VkDeviceGroupBindSparseInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDeviceGroupBindSparseInfo[] clone(Arena arena, VkDeviceGroupBindSparseInfo[] src) {
+        VkDeviceGroupBindSparseInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,54 +118,4 @@ public record VkDeviceGroupBindSparseInfo(MemorySegment segment) {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$resourceDeviceIndex = LAYOUT$resourceDeviceIndex.byteSize();
     public static final long SIZE$memoryDeviceIndex = LAYOUT$memoryDeviceIndex.byteSize();
-
-    public VkDeviceGroupBindSparseInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int resourceDeviceIndex() {
-        return segment.get(LAYOUT$resourceDeviceIndex, OFFSET$resourceDeviceIndex);
-    }
-
-    public void resourceDeviceIndex(@unsigned int value) {
-        segment.set(LAYOUT$resourceDeviceIndex, OFFSET$resourceDeviceIndex, value);
-    }
-
-    public @unsigned int memoryDeviceIndex() {
-        return segment.get(LAYOUT$memoryDeviceIndex, OFFSET$memoryDeviceIndex);
-    }
-
-    public void memoryDeviceIndex(@unsigned int value) {
-        segment.set(LAYOUT$memoryDeviceIndex, OFFSET$memoryDeviceIndex, value);
-    }
-
-    public static VkDeviceGroupBindSparseInfo allocate(Arena arena) {
-        return new VkDeviceGroupBindSparseInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkDeviceGroupBindSparseInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDeviceGroupBindSparseInfo[] ret = new VkDeviceGroupBindSparseInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceGroupBindSparseInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

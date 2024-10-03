@@ -541,7 +541,12 @@ def lower_ident_type(registry: Registry, ident_type: IdentifierType) -> CType:
         return CEnumType(ident)
     elif ident in registry.bitmasks:
         bitmask = registry.bitmasks[ident]
-        return CEnumType(ident, bitmask.bitwidth)
+        bitwidth = None
+        if bitmask.bitwidth is not None:
+            bitwidth = bitmask.bitwidth
+        elif bitmask.require_flagbits is not None:
+            bitwidth = registry.bitmasks[bitmask.require_flagbits].bitwidth
+        return CEnumType(ident, bitwidth)
     elif ident in registry.structs:
         return CStructType(ident)
     elif ident in registry.unions:

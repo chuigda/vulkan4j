@@ -1,19 +1,347 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.IntBuffer;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT;
 
-public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceMeshShaderPropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t maxTaskWorkGroupTotalCount;
+///     uint32_t maxTaskWorkGroupCount[3];
+///     uint32_t maxTaskWorkGroupInvocations;
+///     uint32_t maxTaskWorkGroupSize[3];
+///     uint32_t maxTaskPayloadSize;
+///     uint32_t maxTaskSharedMemorySize;
+///     uint32_t maxTaskPayloadAndSharedMemorySize;
+///     uint32_t maxMeshWorkGroupTotalCount;
+///     uint32_t maxMeshWorkGroupCount[3];
+///     uint32_t maxMeshWorkGroupInvocations;
+///     uint32_t maxMeshWorkGroupSize[3];
+///     uint32_t maxMeshSharedMemorySize;
+///     uint32_t maxMeshPayloadAndSharedMemorySize;
+///     uint32_t maxMeshOutputMemorySize;
+///     uint32_t maxMeshPayloadAndOutputMemorySize;
+///     uint32_t maxMeshOutputComponents;
+///     uint32_t maxMeshOutputVertices;
+///     uint32_t maxMeshOutputPrimitives;
+///     uint32_t maxMeshOutputLayers;
+///     uint32_t maxMeshMultiviewViewCount;
+///     uint32_t meshOutputPerVertexGranularity;
+///     uint32_t meshOutputPerPrimitiveGranularity;
+///     uint32_t maxPreferredTaskWorkGroupInvocations;
+///     uint32_t maxPreferredMeshWorkGroupInvocations;
+///     VkBool32 prefersLocalInvocationVertexOutput;
+///     VkBool32 prefersLocalInvocationPrimitiveOutput;
+///     VkBool32 prefersCompactVertexOutput;
+///     VkBool32 prefersCompactPrimitiveOutput;
+/// } VkPhysicalDeviceMeshShaderPropertiesEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceMeshShaderPropertiesEXT.html">VkPhysicalDeviceMeshShaderPropertiesEXT</a>
+public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) implements IPointer {
+    public VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int maxTaskWorkGroupTotalCount() {
+        return segment.get(LAYOUT$maxTaskWorkGroupTotalCount, OFFSET$maxTaskWorkGroupTotalCount);
+    }
+
+    public void maxTaskWorkGroupTotalCount(@unsigned int value) {
+        segment.set(LAYOUT$maxTaskWorkGroupTotalCount, OFFSET$maxTaskWorkGroupTotalCount, value);
+    }
+
+    public MemorySegment maxTaskWorkGroupCountRaw() {
+        return segment.asSlice(OFFSET$maxTaskWorkGroupCount, SIZE$maxTaskWorkGroupCount);
+    }
+
+    public @unsigned IntBuffer maxTaskWorkGroupCount() {
+        return new IntBuffer(maxTaskWorkGroupCountRaw());
+    }
+
+    public void maxTaskWorkGroupCount(@unsigned IntBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTaskWorkGroupCount, SIZE$maxTaskWorkGroupCount);
+    }
+
+    public @unsigned int maxTaskWorkGroupInvocations() {
+        return segment.get(LAYOUT$maxTaskWorkGroupInvocations, OFFSET$maxTaskWorkGroupInvocations);
+    }
+
+    public void maxTaskWorkGroupInvocations(@unsigned int value) {
+        segment.set(LAYOUT$maxTaskWorkGroupInvocations, OFFSET$maxTaskWorkGroupInvocations, value);
+    }
+
+    public MemorySegment maxTaskWorkGroupSizeRaw() {
+        return segment.asSlice(OFFSET$maxTaskWorkGroupSize, SIZE$maxTaskWorkGroupSize);
+    }
+
+    public @unsigned IntBuffer maxTaskWorkGroupSize() {
+        return new IntBuffer(maxTaskWorkGroupSizeRaw());
+    }
+
+    public void maxTaskWorkGroupSize(@unsigned IntBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTaskWorkGroupSize, SIZE$maxTaskWorkGroupSize);
+    }
+
+    public @unsigned int maxTaskPayloadSize() {
+        return segment.get(LAYOUT$maxTaskPayloadSize, OFFSET$maxTaskPayloadSize);
+    }
+
+    public void maxTaskPayloadSize(@unsigned int value) {
+        segment.set(LAYOUT$maxTaskPayloadSize, OFFSET$maxTaskPayloadSize, value);
+    }
+
+    public @unsigned int maxTaskSharedMemorySize() {
+        return segment.get(LAYOUT$maxTaskSharedMemorySize, OFFSET$maxTaskSharedMemorySize);
+    }
+
+    public void maxTaskSharedMemorySize(@unsigned int value) {
+        segment.set(LAYOUT$maxTaskSharedMemorySize, OFFSET$maxTaskSharedMemorySize, value);
+    }
+
+    public @unsigned int maxTaskPayloadAndSharedMemorySize() {
+        return segment.get(LAYOUT$maxTaskPayloadAndSharedMemorySize, OFFSET$maxTaskPayloadAndSharedMemorySize);
+    }
+
+    public void maxTaskPayloadAndSharedMemorySize(@unsigned int value) {
+        segment.set(LAYOUT$maxTaskPayloadAndSharedMemorySize, OFFSET$maxTaskPayloadAndSharedMemorySize, value);
+    }
+
+    public @unsigned int maxMeshWorkGroupTotalCount() {
+        return segment.get(LAYOUT$maxMeshWorkGroupTotalCount, OFFSET$maxMeshWorkGroupTotalCount);
+    }
+
+    public void maxMeshWorkGroupTotalCount(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshWorkGroupTotalCount, OFFSET$maxMeshWorkGroupTotalCount, value);
+    }
+
+    public MemorySegment maxMeshWorkGroupCountRaw() {
+        return segment.asSlice(OFFSET$maxMeshWorkGroupCount, SIZE$maxMeshWorkGroupCount);
+    }
+
+    public @unsigned IntBuffer maxMeshWorkGroupCount() {
+        return new IntBuffer(maxMeshWorkGroupCountRaw());
+    }
+
+    public void maxMeshWorkGroupCount(@unsigned IntBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxMeshWorkGroupCount, SIZE$maxMeshWorkGroupCount);
+    }
+
+    public @unsigned int maxMeshWorkGroupInvocations() {
+        return segment.get(LAYOUT$maxMeshWorkGroupInvocations, OFFSET$maxMeshWorkGroupInvocations);
+    }
+
+    public void maxMeshWorkGroupInvocations(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshWorkGroupInvocations, OFFSET$maxMeshWorkGroupInvocations, value);
+    }
+
+    public MemorySegment maxMeshWorkGroupSizeRaw() {
+        return segment.asSlice(OFFSET$maxMeshWorkGroupSize, SIZE$maxMeshWorkGroupSize);
+    }
+
+    public @unsigned IntBuffer maxMeshWorkGroupSize() {
+        return new IntBuffer(maxMeshWorkGroupSizeRaw());
+    }
+
+    public void maxMeshWorkGroupSize(@unsigned IntBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxMeshWorkGroupSize, SIZE$maxMeshWorkGroupSize);
+    }
+
+    public @unsigned int maxMeshSharedMemorySize() {
+        return segment.get(LAYOUT$maxMeshSharedMemorySize, OFFSET$maxMeshSharedMemorySize);
+    }
+
+    public void maxMeshSharedMemorySize(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshSharedMemorySize, OFFSET$maxMeshSharedMemorySize, value);
+    }
+
+    public @unsigned int maxMeshPayloadAndSharedMemorySize() {
+        return segment.get(LAYOUT$maxMeshPayloadAndSharedMemorySize, OFFSET$maxMeshPayloadAndSharedMemorySize);
+    }
+
+    public void maxMeshPayloadAndSharedMemorySize(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshPayloadAndSharedMemorySize, OFFSET$maxMeshPayloadAndSharedMemorySize, value);
+    }
+
+    public @unsigned int maxMeshOutputMemorySize() {
+        return segment.get(LAYOUT$maxMeshOutputMemorySize, OFFSET$maxMeshOutputMemorySize);
+    }
+
+    public void maxMeshOutputMemorySize(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshOutputMemorySize, OFFSET$maxMeshOutputMemorySize, value);
+    }
+
+    public @unsigned int maxMeshPayloadAndOutputMemorySize() {
+        return segment.get(LAYOUT$maxMeshPayloadAndOutputMemorySize, OFFSET$maxMeshPayloadAndOutputMemorySize);
+    }
+
+    public void maxMeshPayloadAndOutputMemorySize(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshPayloadAndOutputMemorySize, OFFSET$maxMeshPayloadAndOutputMemorySize, value);
+    }
+
+    public @unsigned int maxMeshOutputComponents() {
+        return segment.get(LAYOUT$maxMeshOutputComponents, OFFSET$maxMeshOutputComponents);
+    }
+
+    public void maxMeshOutputComponents(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshOutputComponents, OFFSET$maxMeshOutputComponents, value);
+    }
+
+    public @unsigned int maxMeshOutputVertices() {
+        return segment.get(LAYOUT$maxMeshOutputVertices, OFFSET$maxMeshOutputVertices);
+    }
+
+    public void maxMeshOutputVertices(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshOutputVertices, OFFSET$maxMeshOutputVertices, value);
+    }
+
+    public @unsigned int maxMeshOutputPrimitives() {
+        return segment.get(LAYOUT$maxMeshOutputPrimitives, OFFSET$maxMeshOutputPrimitives);
+    }
+
+    public void maxMeshOutputPrimitives(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshOutputPrimitives, OFFSET$maxMeshOutputPrimitives, value);
+    }
+
+    public @unsigned int maxMeshOutputLayers() {
+        return segment.get(LAYOUT$maxMeshOutputLayers, OFFSET$maxMeshOutputLayers);
+    }
+
+    public void maxMeshOutputLayers(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshOutputLayers, OFFSET$maxMeshOutputLayers, value);
+    }
+
+    public @unsigned int maxMeshMultiviewViewCount() {
+        return segment.get(LAYOUT$maxMeshMultiviewViewCount, OFFSET$maxMeshMultiviewViewCount);
+    }
+
+    public void maxMeshMultiviewViewCount(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshMultiviewViewCount, OFFSET$maxMeshMultiviewViewCount, value);
+    }
+
+    public @unsigned int meshOutputPerVertexGranularity() {
+        return segment.get(LAYOUT$meshOutputPerVertexGranularity, OFFSET$meshOutputPerVertexGranularity);
+    }
+
+    public void meshOutputPerVertexGranularity(@unsigned int value) {
+        segment.set(LAYOUT$meshOutputPerVertexGranularity, OFFSET$meshOutputPerVertexGranularity, value);
+    }
+
+    public @unsigned int meshOutputPerPrimitiveGranularity() {
+        return segment.get(LAYOUT$meshOutputPerPrimitiveGranularity, OFFSET$meshOutputPerPrimitiveGranularity);
+    }
+
+    public void meshOutputPerPrimitiveGranularity(@unsigned int value) {
+        segment.set(LAYOUT$meshOutputPerPrimitiveGranularity, OFFSET$meshOutputPerPrimitiveGranularity, value);
+    }
+
+    public @unsigned int maxPreferredTaskWorkGroupInvocations() {
+        return segment.get(LAYOUT$maxPreferredTaskWorkGroupInvocations, OFFSET$maxPreferredTaskWorkGroupInvocations);
+    }
+
+    public void maxPreferredTaskWorkGroupInvocations(@unsigned int value) {
+        segment.set(LAYOUT$maxPreferredTaskWorkGroupInvocations, OFFSET$maxPreferredTaskWorkGroupInvocations, value);
+    }
+
+    public @unsigned int maxPreferredMeshWorkGroupInvocations() {
+        return segment.get(LAYOUT$maxPreferredMeshWorkGroupInvocations, OFFSET$maxPreferredMeshWorkGroupInvocations);
+    }
+
+    public void maxPreferredMeshWorkGroupInvocations(@unsigned int value) {
+        segment.set(LAYOUT$maxPreferredMeshWorkGroupInvocations, OFFSET$maxPreferredMeshWorkGroupInvocations, value);
+    }
+
+    public @unsigned int prefersLocalInvocationVertexOutput() {
+        return segment.get(LAYOUT$prefersLocalInvocationVertexOutput, OFFSET$prefersLocalInvocationVertexOutput);
+    }
+
+    public void prefersLocalInvocationVertexOutput(@unsigned int value) {
+        segment.set(LAYOUT$prefersLocalInvocationVertexOutput, OFFSET$prefersLocalInvocationVertexOutput, value);
+    }
+
+    public @unsigned int prefersLocalInvocationPrimitiveOutput() {
+        return segment.get(LAYOUT$prefersLocalInvocationPrimitiveOutput, OFFSET$prefersLocalInvocationPrimitiveOutput);
+    }
+
+    public void prefersLocalInvocationPrimitiveOutput(@unsigned int value) {
+        segment.set(LAYOUT$prefersLocalInvocationPrimitiveOutput, OFFSET$prefersLocalInvocationPrimitiveOutput, value);
+    }
+
+    public @unsigned int prefersCompactVertexOutput() {
+        return segment.get(LAYOUT$prefersCompactVertexOutput, OFFSET$prefersCompactVertexOutput);
+    }
+
+    public void prefersCompactVertexOutput(@unsigned int value) {
+        segment.set(LAYOUT$prefersCompactVertexOutput, OFFSET$prefersCompactVertexOutput, value);
+    }
+
+    public @unsigned int prefersCompactPrimitiveOutput() {
+        return segment.get(LAYOUT$prefersCompactPrimitiveOutput, OFFSET$prefersCompactPrimitiveOutput);
+    }
+
+    public void prefersCompactPrimitiveOutput(@unsigned int value) {
+        segment.set(LAYOUT$prefersCompactPrimitiveOutput, OFFSET$prefersCompactPrimitiveOutput, value);
+    }
+
+    public static VkPhysicalDeviceMeshShaderPropertiesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceMeshShaderPropertiesEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkPhysicalDeviceMeshShaderPropertiesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceMeshShaderPropertiesEXT[] ret = new VkPhysicalDeviceMeshShaderPropertiesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceMeshShaderPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceMeshShaderPropertiesEXT clone(Arena arena, VkPhysicalDeviceMeshShaderPropertiesEXT src) {
+        VkPhysicalDeviceMeshShaderPropertiesEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceMeshShaderPropertiesEXT[] clone(Arena arena, VkPhysicalDeviceMeshShaderPropertiesEXT[] src) {
+        VkPhysicalDeviceMeshShaderPropertiesEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -171,278 +499,4 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
     public static final long SIZE$prefersLocalInvocationPrimitiveOutput = LAYOUT$prefersLocalInvocationPrimitiveOutput.byteSize();
     public static final long SIZE$prefersCompactVertexOutput = LAYOUT$prefersCompactVertexOutput.byteSize();
     public static final long SIZE$prefersCompactPrimitiveOutput = LAYOUT$prefersCompactPrimitiveOutput.byteSize();
-
-    public VkPhysicalDeviceMeshShaderPropertiesEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int maxTaskWorkGroupTotalCount() {
-        return segment.get(LAYOUT$maxTaskWorkGroupTotalCount, OFFSET$maxTaskWorkGroupTotalCount);
-    }
-
-    public void maxTaskWorkGroupTotalCount(@unsigned int value) {
-        segment.set(LAYOUT$maxTaskWorkGroupTotalCount, OFFSET$maxTaskWorkGroupTotalCount, value);
-    }
-
-    public MemorySegment maxTaskWorkGroupCountRaw() {
-        return segment.asSlice(OFFSET$maxTaskWorkGroupCount, LAYOUT$maxTaskWorkGroupCount.byteSize());
-    }
-
-    public @unsigned IntBuffer maxTaskWorkGroupCount() {
-        return new IntBuffer(maxTaskWorkGroupCountRaw());
-    }
-
-    public void maxTaskWorkGroupCount(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTaskWorkGroupCount, LAYOUT$maxTaskWorkGroupCount.byteSize());
-    }
-
-    public @unsigned int maxTaskWorkGroupInvocations() {
-        return segment.get(LAYOUT$maxTaskWorkGroupInvocations, OFFSET$maxTaskWorkGroupInvocations);
-    }
-
-    public void maxTaskWorkGroupInvocations(@unsigned int value) {
-        segment.set(LAYOUT$maxTaskWorkGroupInvocations, OFFSET$maxTaskWorkGroupInvocations, value);
-    }
-
-    public MemorySegment maxTaskWorkGroupSizeRaw() {
-        return segment.asSlice(OFFSET$maxTaskWorkGroupSize, LAYOUT$maxTaskWorkGroupSize.byteSize());
-    }
-
-    public @unsigned IntBuffer maxTaskWorkGroupSize() {
-        return new IntBuffer(maxTaskWorkGroupSizeRaw());
-    }
-
-    public void maxTaskWorkGroupSize(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTaskWorkGroupSize, LAYOUT$maxTaskWorkGroupSize.byteSize());
-    }
-
-    public @unsigned int maxTaskPayloadSize() {
-        return segment.get(LAYOUT$maxTaskPayloadSize, OFFSET$maxTaskPayloadSize);
-    }
-
-    public void maxTaskPayloadSize(@unsigned int value) {
-        segment.set(LAYOUT$maxTaskPayloadSize, OFFSET$maxTaskPayloadSize, value);
-    }
-
-    public @unsigned int maxTaskSharedMemorySize() {
-        return segment.get(LAYOUT$maxTaskSharedMemorySize, OFFSET$maxTaskSharedMemorySize);
-    }
-
-    public void maxTaskSharedMemorySize(@unsigned int value) {
-        segment.set(LAYOUT$maxTaskSharedMemorySize, OFFSET$maxTaskSharedMemorySize, value);
-    }
-
-    public @unsigned int maxTaskPayloadAndSharedMemorySize() {
-        return segment.get(LAYOUT$maxTaskPayloadAndSharedMemorySize, OFFSET$maxTaskPayloadAndSharedMemorySize);
-    }
-
-    public void maxTaskPayloadAndSharedMemorySize(@unsigned int value) {
-        segment.set(LAYOUT$maxTaskPayloadAndSharedMemorySize, OFFSET$maxTaskPayloadAndSharedMemorySize, value);
-    }
-
-    public @unsigned int maxMeshWorkGroupTotalCount() {
-        return segment.get(LAYOUT$maxMeshWorkGroupTotalCount, OFFSET$maxMeshWorkGroupTotalCount);
-    }
-
-    public void maxMeshWorkGroupTotalCount(@unsigned int value) {
-        segment.set(LAYOUT$maxMeshWorkGroupTotalCount, OFFSET$maxMeshWorkGroupTotalCount, value);
-    }
-
-    public MemorySegment maxMeshWorkGroupCountRaw() {
-        return segment.asSlice(OFFSET$maxMeshWorkGroupCount, LAYOUT$maxMeshWorkGroupCount.byteSize());
-    }
-
-    public @unsigned IntBuffer maxMeshWorkGroupCount() {
-        return new IntBuffer(maxMeshWorkGroupCountRaw());
-    }
-
-    public void maxMeshWorkGroupCount(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxMeshWorkGroupCount, LAYOUT$maxMeshWorkGroupCount.byteSize());
-    }
-
-    public @unsigned int maxMeshWorkGroupInvocations() {
-        return segment.get(LAYOUT$maxMeshWorkGroupInvocations, OFFSET$maxMeshWorkGroupInvocations);
-    }
-
-    public void maxMeshWorkGroupInvocations(@unsigned int value) {
-        segment.set(LAYOUT$maxMeshWorkGroupInvocations, OFFSET$maxMeshWorkGroupInvocations, value);
-    }
-
-    public MemorySegment maxMeshWorkGroupSizeRaw() {
-        return segment.asSlice(OFFSET$maxMeshWorkGroupSize, LAYOUT$maxMeshWorkGroupSize.byteSize());
-    }
-
-    public @unsigned IntBuffer maxMeshWorkGroupSize() {
-        return new IntBuffer(maxMeshWorkGroupSizeRaw());
-    }
-
-    public void maxMeshWorkGroupSize(@unsigned IntBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxMeshWorkGroupSize, LAYOUT$maxMeshWorkGroupSize.byteSize());
-    }
-
-    public @unsigned int maxMeshSharedMemorySize() {
-        return segment.get(LAYOUT$maxMeshSharedMemorySize, OFFSET$maxMeshSharedMemorySize);
-    }
-
-    public void maxMeshSharedMemorySize(@unsigned int value) {
-        segment.set(LAYOUT$maxMeshSharedMemorySize, OFFSET$maxMeshSharedMemorySize, value);
-    }
-
-    public @unsigned int maxMeshPayloadAndSharedMemorySize() {
-        return segment.get(LAYOUT$maxMeshPayloadAndSharedMemorySize, OFFSET$maxMeshPayloadAndSharedMemorySize);
-    }
-
-    public void maxMeshPayloadAndSharedMemorySize(@unsigned int value) {
-        segment.set(LAYOUT$maxMeshPayloadAndSharedMemorySize, OFFSET$maxMeshPayloadAndSharedMemorySize, value);
-    }
-
-    public @unsigned int maxMeshOutputMemorySize() {
-        return segment.get(LAYOUT$maxMeshOutputMemorySize, OFFSET$maxMeshOutputMemorySize);
-    }
-
-    public void maxMeshOutputMemorySize(@unsigned int value) {
-        segment.set(LAYOUT$maxMeshOutputMemorySize, OFFSET$maxMeshOutputMemorySize, value);
-    }
-
-    public @unsigned int maxMeshPayloadAndOutputMemorySize() {
-        return segment.get(LAYOUT$maxMeshPayloadAndOutputMemorySize, OFFSET$maxMeshPayloadAndOutputMemorySize);
-    }
-
-    public void maxMeshPayloadAndOutputMemorySize(@unsigned int value) {
-        segment.set(LAYOUT$maxMeshPayloadAndOutputMemorySize, OFFSET$maxMeshPayloadAndOutputMemorySize, value);
-    }
-
-    public @unsigned int maxMeshOutputComponents() {
-        return segment.get(LAYOUT$maxMeshOutputComponents, OFFSET$maxMeshOutputComponents);
-    }
-
-    public void maxMeshOutputComponents(@unsigned int value) {
-        segment.set(LAYOUT$maxMeshOutputComponents, OFFSET$maxMeshOutputComponents, value);
-    }
-
-    public @unsigned int maxMeshOutputVertices() {
-        return segment.get(LAYOUT$maxMeshOutputVertices, OFFSET$maxMeshOutputVertices);
-    }
-
-    public void maxMeshOutputVertices(@unsigned int value) {
-        segment.set(LAYOUT$maxMeshOutputVertices, OFFSET$maxMeshOutputVertices, value);
-    }
-
-    public @unsigned int maxMeshOutputPrimitives() {
-        return segment.get(LAYOUT$maxMeshOutputPrimitives, OFFSET$maxMeshOutputPrimitives);
-    }
-
-    public void maxMeshOutputPrimitives(@unsigned int value) {
-        segment.set(LAYOUT$maxMeshOutputPrimitives, OFFSET$maxMeshOutputPrimitives, value);
-    }
-
-    public @unsigned int maxMeshOutputLayers() {
-        return segment.get(LAYOUT$maxMeshOutputLayers, OFFSET$maxMeshOutputLayers);
-    }
-
-    public void maxMeshOutputLayers(@unsigned int value) {
-        segment.set(LAYOUT$maxMeshOutputLayers, OFFSET$maxMeshOutputLayers, value);
-    }
-
-    public @unsigned int maxMeshMultiviewViewCount() {
-        return segment.get(LAYOUT$maxMeshMultiviewViewCount, OFFSET$maxMeshMultiviewViewCount);
-    }
-
-    public void maxMeshMultiviewViewCount(@unsigned int value) {
-        segment.set(LAYOUT$maxMeshMultiviewViewCount, OFFSET$maxMeshMultiviewViewCount, value);
-    }
-
-    public @unsigned int meshOutputPerVertexGranularity() {
-        return segment.get(LAYOUT$meshOutputPerVertexGranularity, OFFSET$meshOutputPerVertexGranularity);
-    }
-
-    public void meshOutputPerVertexGranularity(@unsigned int value) {
-        segment.set(LAYOUT$meshOutputPerVertexGranularity, OFFSET$meshOutputPerVertexGranularity, value);
-    }
-
-    public @unsigned int meshOutputPerPrimitiveGranularity() {
-        return segment.get(LAYOUT$meshOutputPerPrimitiveGranularity, OFFSET$meshOutputPerPrimitiveGranularity);
-    }
-
-    public void meshOutputPerPrimitiveGranularity(@unsigned int value) {
-        segment.set(LAYOUT$meshOutputPerPrimitiveGranularity, OFFSET$meshOutputPerPrimitiveGranularity, value);
-    }
-
-    public @unsigned int maxPreferredTaskWorkGroupInvocations() {
-        return segment.get(LAYOUT$maxPreferredTaskWorkGroupInvocations, OFFSET$maxPreferredTaskWorkGroupInvocations);
-    }
-
-    public void maxPreferredTaskWorkGroupInvocations(@unsigned int value) {
-        segment.set(LAYOUT$maxPreferredTaskWorkGroupInvocations, OFFSET$maxPreferredTaskWorkGroupInvocations, value);
-    }
-
-    public @unsigned int maxPreferredMeshWorkGroupInvocations() {
-        return segment.get(LAYOUT$maxPreferredMeshWorkGroupInvocations, OFFSET$maxPreferredMeshWorkGroupInvocations);
-    }
-
-    public void maxPreferredMeshWorkGroupInvocations(@unsigned int value) {
-        segment.set(LAYOUT$maxPreferredMeshWorkGroupInvocations, OFFSET$maxPreferredMeshWorkGroupInvocations, value);
-    }
-
-    public @unsigned int prefersLocalInvocationVertexOutput() {
-        return segment.get(LAYOUT$prefersLocalInvocationVertexOutput, OFFSET$prefersLocalInvocationVertexOutput);
-    }
-
-    public void prefersLocalInvocationVertexOutput(@unsigned int value) {
-        segment.set(LAYOUT$prefersLocalInvocationVertexOutput, OFFSET$prefersLocalInvocationVertexOutput, value);
-    }
-
-    public @unsigned int prefersLocalInvocationPrimitiveOutput() {
-        return segment.get(LAYOUT$prefersLocalInvocationPrimitiveOutput, OFFSET$prefersLocalInvocationPrimitiveOutput);
-    }
-
-    public void prefersLocalInvocationPrimitiveOutput(@unsigned int value) {
-        segment.set(LAYOUT$prefersLocalInvocationPrimitiveOutput, OFFSET$prefersLocalInvocationPrimitiveOutput, value);
-    }
-
-    public @unsigned int prefersCompactVertexOutput() {
-        return segment.get(LAYOUT$prefersCompactVertexOutput, OFFSET$prefersCompactVertexOutput);
-    }
-
-    public void prefersCompactVertexOutput(@unsigned int value) {
-        segment.set(LAYOUT$prefersCompactVertexOutput, OFFSET$prefersCompactVertexOutput, value);
-    }
-
-    public @unsigned int prefersCompactPrimitiveOutput() {
-        return segment.get(LAYOUT$prefersCompactPrimitiveOutput, OFFSET$prefersCompactPrimitiveOutput);
-    }
-
-    public void prefersCompactPrimitiveOutput(@unsigned int value) {
-        segment.set(LAYOUT$prefersCompactPrimitiveOutput, OFFSET$prefersCompactPrimitiveOutput, value);
-    }
-
-    public static VkPhysicalDeviceMeshShaderPropertiesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceMeshShaderPropertiesEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPhysicalDeviceMeshShaderPropertiesEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceMeshShaderPropertiesEXT[] ret = new VkPhysicalDeviceMeshShaderPropertiesEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMeshShaderPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

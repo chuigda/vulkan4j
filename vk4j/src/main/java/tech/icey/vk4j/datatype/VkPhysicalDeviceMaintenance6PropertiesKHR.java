@@ -1,19 +1,105 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES_KHR;
 
-public record VkPhysicalDeviceMaintenance6PropertiesKHR(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceMaintenance6PropertiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 blockTexelViewCompatibleMultipleLayers;
+///     uint32_t maxCombinedImageSamplerDescriptorCount;
+///     VkBool32 fragmentShadingRateClampCombinerInputs;
+/// } VkPhysicalDeviceMaintenance6PropertiesKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceMaintenance6PropertiesKHR.html">VkPhysicalDeviceMaintenance6PropertiesKHR</a>
+public record VkPhysicalDeviceMaintenance6PropertiesKHR(MemorySegment segment) implements IPointer {
+    public VkPhysicalDeviceMaintenance6PropertiesKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int blockTexelViewCompatibleMultipleLayers() {
+        return segment.get(LAYOUT$blockTexelViewCompatibleMultipleLayers, OFFSET$blockTexelViewCompatibleMultipleLayers);
+    }
+
+    public void blockTexelViewCompatibleMultipleLayers(@unsigned int value) {
+        segment.set(LAYOUT$blockTexelViewCompatibleMultipleLayers, OFFSET$blockTexelViewCompatibleMultipleLayers, value);
+    }
+
+    public @unsigned int maxCombinedImageSamplerDescriptorCount() {
+        return segment.get(LAYOUT$maxCombinedImageSamplerDescriptorCount, OFFSET$maxCombinedImageSamplerDescriptorCount);
+    }
+
+    public void maxCombinedImageSamplerDescriptorCount(@unsigned int value) {
+        segment.set(LAYOUT$maxCombinedImageSamplerDescriptorCount, OFFSET$maxCombinedImageSamplerDescriptorCount, value);
+    }
+
+    public @unsigned int fragmentShadingRateClampCombinerInputs() {
+        return segment.get(LAYOUT$fragmentShadingRateClampCombinerInputs, OFFSET$fragmentShadingRateClampCombinerInputs);
+    }
+
+    public void fragmentShadingRateClampCombinerInputs(@unsigned int value) {
+        segment.set(LAYOUT$fragmentShadingRateClampCombinerInputs, OFFSET$fragmentShadingRateClampCombinerInputs, value);
+    }
+
+    public static VkPhysicalDeviceMaintenance6PropertiesKHR allocate(Arena arena) {
+        return new VkPhysicalDeviceMaintenance6PropertiesKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkPhysicalDeviceMaintenance6PropertiesKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceMaintenance6PropertiesKHR[] ret = new VkPhysicalDeviceMaintenance6PropertiesKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceMaintenance6PropertiesKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceMaintenance6PropertiesKHR clone(Arena arena, VkPhysicalDeviceMaintenance6PropertiesKHR src) {
+        VkPhysicalDeviceMaintenance6PropertiesKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceMaintenance6PropertiesKHR[] clone(Arena arena, VkPhysicalDeviceMaintenance6PropertiesKHR[] src) {
+        VkPhysicalDeviceMaintenance6PropertiesKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -46,62 +132,4 @@ public record VkPhysicalDeviceMaintenance6PropertiesKHR(MemorySegment segment) {
     public static final long SIZE$blockTexelViewCompatibleMultipleLayers = LAYOUT$blockTexelViewCompatibleMultipleLayers.byteSize();
     public static final long SIZE$maxCombinedImageSamplerDescriptorCount = LAYOUT$maxCombinedImageSamplerDescriptorCount.byteSize();
     public static final long SIZE$fragmentShadingRateClampCombinerInputs = LAYOUT$fragmentShadingRateClampCombinerInputs.byteSize();
-
-    public VkPhysicalDeviceMaintenance6PropertiesKHR(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES_KHR);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int blockTexelViewCompatibleMultipleLayers() {
-        return segment.get(LAYOUT$blockTexelViewCompatibleMultipleLayers, OFFSET$blockTexelViewCompatibleMultipleLayers);
-    }
-
-    public void blockTexelViewCompatibleMultipleLayers(@unsigned int value) {
-        segment.set(LAYOUT$blockTexelViewCompatibleMultipleLayers, OFFSET$blockTexelViewCompatibleMultipleLayers, value);
-    }
-
-    public @unsigned int maxCombinedImageSamplerDescriptorCount() {
-        return segment.get(LAYOUT$maxCombinedImageSamplerDescriptorCount, OFFSET$maxCombinedImageSamplerDescriptorCount);
-    }
-
-    public void maxCombinedImageSamplerDescriptorCount(@unsigned int value) {
-        segment.set(LAYOUT$maxCombinedImageSamplerDescriptorCount, OFFSET$maxCombinedImageSamplerDescriptorCount, value);
-    }
-
-    public @unsigned int fragmentShadingRateClampCombinerInputs() {
-        return segment.get(LAYOUT$fragmentShadingRateClampCombinerInputs, OFFSET$fragmentShadingRateClampCombinerInputs);
-    }
-
-    public void fragmentShadingRateClampCombinerInputs(@unsigned int value) {
-        segment.set(LAYOUT$fragmentShadingRateClampCombinerInputs, OFFSET$fragmentShadingRateClampCombinerInputs, value);
-    }
-
-    public static VkPhysicalDeviceMaintenance6PropertiesKHR allocate(Arena arena) {
-        return new VkPhysicalDeviceMaintenance6PropertiesKHR(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPhysicalDeviceMaintenance6PropertiesKHR[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceMaintenance6PropertiesKHR[] ret = new VkPhysicalDeviceMaintenance6PropertiesKHR[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMaintenance6PropertiesKHR(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

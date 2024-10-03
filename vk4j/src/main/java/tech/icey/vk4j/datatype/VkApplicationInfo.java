@@ -1,19 +1,155 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.ByteBuffer;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_APPLICATION_INFO;
 
-public record VkApplicationInfo(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkApplicationInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     const char* pApplicationName;
+///     uint32_t applicationVersion;
+///     const char* pEngineName;
+///     uint32_t engineVersion;
+///     uint32_t apiVersion;
+/// } VkApplicationInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkApplicationInfo.html">VkApplicationInfo</a>
+public record VkApplicationInfo(MemorySegment segment) implements IPointer {
+    public VkApplicationInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_APPLICATION_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @pointer(comment="int8_t*") MemorySegment pApplicationNameRaw() {
+        return segment.get(LAYOUT$pApplicationName, OFFSET$pApplicationName);
+    }
+
+    public void pApplicationNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
+        segment.set(LAYOUT$pApplicationName, OFFSET$pApplicationName, value);
+    }
+
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
+    public @nullable ByteBuffer pApplicationName() {
+        MemorySegment s = pApplicationNameRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
+    }
+
+    public void pApplicationName(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pApplicationNameRaw(s);
+    }
+
+    public @unsigned int applicationVersion() {
+        return segment.get(LAYOUT$applicationVersion, OFFSET$applicationVersion);
+    }
+
+    public void applicationVersion(@unsigned int value) {
+        segment.set(LAYOUT$applicationVersion, OFFSET$applicationVersion, value);
+    }
+
+    public @pointer(comment="int8_t*") MemorySegment pEngineNameRaw() {
+        return segment.get(LAYOUT$pEngineName, OFFSET$pEngineName);
+    }
+
+    public void pEngineNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
+        segment.set(LAYOUT$pEngineName, OFFSET$pEngineName, value);
+    }
+
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
+    public @nullable ByteBuffer pEngineName() {
+        MemorySegment s = pEngineNameRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
+    }
+
+    public void pEngineName(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pEngineNameRaw(s);
+    }
+
+    public @unsigned int engineVersion() {
+        return segment.get(LAYOUT$engineVersion, OFFSET$engineVersion);
+    }
+
+    public void engineVersion(@unsigned int value) {
+        segment.set(LAYOUT$engineVersion, OFFSET$engineVersion, value);
+    }
+
+    public @unsigned int apiVersion() {
+        return segment.get(LAYOUT$apiVersion, OFFSET$apiVersion);
+    }
+
+    public void apiVersion(@unsigned int value) {
+        segment.set(LAYOUT$apiVersion, OFFSET$apiVersion, value);
+    }
+
+    public static VkApplicationInfo allocate(Arena arena) {
+        return new VkApplicationInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkApplicationInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkApplicationInfo[] ret = new VkApplicationInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkApplicationInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkApplicationInfo clone(Arena arena, VkApplicationInfo src) {
+        VkApplicationInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkApplicationInfo[] clone(Arena arena, VkApplicationInfo[] src) {
+        VkApplicationInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -56,94 +192,4 @@ public record VkApplicationInfo(MemorySegment segment) {
     public static final long SIZE$pEngineName = LAYOUT$pEngineName.byteSize();
     public static final long SIZE$engineVersion = LAYOUT$engineVersion.byteSize();
     public static final long SIZE$apiVersion = LAYOUT$apiVersion.byteSize();
-
-    public VkApplicationInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_APPLICATION_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @pointer(comment="int8_t*") MemorySegment pApplicationNameRaw() {
-        return segment.get(LAYOUT$pApplicationName, OFFSET$pApplicationName);
-    }
-
-    public void pApplicationNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
-        segment.set(LAYOUT$pApplicationName, OFFSET$pApplicationName, value);
-    }
-    
-    public ByteBuffer pApplicationName() {
-        return new ByteBuffer(pApplicationNameRaw());
-    }
-
-    public void pApplicationName(ByteBuffer value) {
-        pApplicationNameRaw(value.segment());
-    }
-
-    public @unsigned int applicationVersion() {
-        return segment.get(LAYOUT$applicationVersion, OFFSET$applicationVersion);
-    }
-
-    public void applicationVersion(@unsigned int value) {
-        segment.set(LAYOUT$applicationVersion, OFFSET$applicationVersion, value);
-    }
-
-    public @pointer(comment="int8_t*") MemorySegment pEngineNameRaw() {
-        return segment.get(LAYOUT$pEngineName, OFFSET$pEngineName);
-    }
-
-    public void pEngineNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
-        segment.set(LAYOUT$pEngineName, OFFSET$pEngineName, value);
-    }
-    
-    public ByteBuffer pEngineName() {
-        return new ByteBuffer(pEngineNameRaw());
-    }
-
-    public void pEngineName(ByteBuffer value) {
-        pEngineNameRaw(value.segment());
-    }
-
-    public @unsigned int engineVersion() {
-        return segment.get(LAYOUT$engineVersion, OFFSET$engineVersion);
-    }
-
-    public void engineVersion(@unsigned int value) {
-        segment.set(LAYOUT$engineVersion, OFFSET$engineVersion, value);
-    }
-
-    public @unsigned int apiVersion() {
-        return segment.get(LAYOUT$apiVersion, OFFSET$apiVersion);
-    }
-
-    public void apiVersion(@unsigned int value) {
-        segment.set(LAYOUT$apiVersion, OFFSET$apiVersion, value);
-    }
-
-    public static VkApplicationInfo allocate(Arena arena) {
-        return new VkApplicationInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkApplicationInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkApplicationInfo[] ret = new VkApplicationInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkApplicationInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

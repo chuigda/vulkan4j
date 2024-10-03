@@ -1,19 +1,275 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkSemaphore;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_BIND_SPARSE_INFO;
 
-public record VkBindSparseInfo(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkBindSparseInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t waitSemaphoreCount;
+///     const VkSemaphore* pWaitSemaphores;
+///     uint32_t bufferBindCount;
+///     const VkSparseBufferMemoryBindInfo* pBufferBinds;
+///     uint32_t imageOpaqueBindCount;
+///     const VkSparseImageOpaqueMemoryBindInfo* pImageOpaqueBinds;
+///     uint32_t imageBindCount;
+///     const VkSparseImageMemoryBindInfo* pImageBinds;
+///     uint32_t signalSemaphoreCount;
+///     const VkSemaphore* pSignalSemaphores;
+/// } VkBindSparseInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBindSparseInfo.html">VkBindSparseInfo</a>
+public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
+    public VkBindSparseInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_BIND_SPARSE_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int waitSemaphoreCount() {
+        return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
+    }
+
+    public void waitSemaphoreCount(@unsigned int value) {
+        segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
+    }
+
+    public @pointer(comment="VkSemaphore") MemorySegment pWaitSemaphoresRaw() {
+        return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
+    }
+
+    public void pWaitSemaphoresRaw(@pointer(comment="VkSemaphore") MemorySegment value) {
+        segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
+    }
+
+    /// Note: the returned {@link VkSemaphore.Buffer} does not have correct
+    /// {@link VkSemaphore.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
+    /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
+    /// the buffer.
+    public @nullable VkSemaphore.Buffer pWaitSemaphores() {
+        MemorySegment s = pWaitSemaphoresRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSemaphore.Buffer(s);
+    }
+
+    public void pWaitSemaphores(@nullable VkSemaphore.Buffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pWaitSemaphoresRaw(s);
+    }
+
+    public @unsigned int bufferBindCount() {
+        return segment.get(LAYOUT$bufferBindCount, OFFSET$bufferBindCount);
+    }
+
+    public void bufferBindCount(@unsigned int value) {
+        segment.set(LAYOUT$bufferBindCount, OFFSET$bufferBindCount, value);
+    }
+
+    public @pointer(comment="VkSparseBufferMemoryBindInfo*") MemorySegment pBufferBindsRaw() {
+        return segment.get(LAYOUT$pBufferBinds, OFFSET$pBufferBinds);
+    }
+
+    public void pBufferBindsRaw(@pointer(comment="VkSparseBufferMemoryBindInfo*") MemorySegment value) {
+        segment.set(LAYOUT$pBufferBinds, OFFSET$pBufferBinds, value);
+    }
+
+    public @nullable VkSparseBufferMemoryBindInfo pBufferBinds() {
+        MemorySegment s = pBufferBindsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSparseBufferMemoryBindInfo(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkSparseBufferMemoryBindInfo[] pBufferBinds(int assumedCount) {
+        MemorySegment s = pBufferBindsRaw().reinterpret(assumedCount * VkSparseBufferMemoryBindInfo.SIZE);
+        VkSparseBufferMemoryBindInfo[] arr = new VkSparseBufferMemoryBindInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSparseBufferMemoryBindInfo(s.asSlice(i * VkSparseBufferMemoryBindInfo.SIZE, VkSparseBufferMemoryBindInfo.SIZE));
+        }
+        return arr;
+    }
+
+    public void pBufferBinds(@nullable VkSparseBufferMemoryBindInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pBufferBindsRaw(s);
+    }
+
+    public @unsigned int imageOpaqueBindCount() {
+        return segment.get(LAYOUT$imageOpaqueBindCount, OFFSET$imageOpaqueBindCount);
+    }
+
+    public void imageOpaqueBindCount(@unsigned int value) {
+        segment.set(LAYOUT$imageOpaqueBindCount, OFFSET$imageOpaqueBindCount, value);
+    }
+
+    public @pointer(comment="VkSparseImageOpaqueMemoryBindInfo*") MemorySegment pImageOpaqueBindsRaw() {
+        return segment.get(LAYOUT$pImageOpaqueBinds, OFFSET$pImageOpaqueBinds);
+    }
+
+    public void pImageOpaqueBindsRaw(@pointer(comment="VkSparseImageOpaqueMemoryBindInfo*") MemorySegment value) {
+        segment.set(LAYOUT$pImageOpaqueBinds, OFFSET$pImageOpaqueBinds, value);
+    }
+
+    public @nullable VkSparseImageOpaqueMemoryBindInfo pImageOpaqueBinds() {
+        MemorySegment s = pImageOpaqueBindsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSparseImageOpaqueMemoryBindInfo(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkSparseImageOpaqueMemoryBindInfo[] pImageOpaqueBinds(int assumedCount) {
+        MemorySegment s = pImageOpaqueBindsRaw().reinterpret(assumedCount * VkSparseImageOpaqueMemoryBindInfo.SIZE);
+        VkSparseImageOpaqueMemoryBindInfo[] arr = new VkSparseImageOpaqueMemoryBindInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSparseImageOpaqueMemoryBindInfo(s.asSlice(i * VkSparseImageOpaqueMemoryBindInfo.SIZE, VkSparseImageOpaqueMemoryBindInfo.SIZE));
+        }
+        return arr;
+    }
+
+    public void pImageOpaqueBinds(@nullable VkSparseImageOpaqueMemoryBindInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pImageOpaqueBindsRaw(s);
+    }
+
+    public @unsigned int imageBindCount() {
+        return segment.get(LAYOUT$imageBindCount, OFFSET$imageBindCount);
+    }
+
+    public void imageBindCount(@unsigned int value) {
+        segment.set(LAYOUT$imageBindCount, OFFSET$imageBindCount, value);
+    }
+
+    public @pointer(comment="VkSparseImageMemoryBindInfo*") MemorySegment pImageBindsRaw() {
+        return segment.get(LAYOUT$pImageBinds, OFFSET$pImageBinds);
+    }
+
+    public void pImageBindsRaw(@pointer(comment="VkSparseImageMemoryBindInfo*") MemorySegment value) {
+        segment.set(LAYOUT$pImageBinds, OFFSET$pImageBinds, value);
+    }
+
+    public @nullable VkSparseImageMemoryBindInfo pImageBinds() {
+        MemorySegment s = pImageBindsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSparseImageMemoryBindInfo(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkSparseImageMemoryBindInfo[] pImageBinds(int assumedCount) {
+        MemorySegment s = pImageBindsRaw().reinterpret(assumedCount * VkSparseImageMemoryBindInfo.SIZE);
+        VkSparseImageMemoryBindInfo[] arr = new VkSparseImageMemoryBindInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkSparseImageMemoryBindInfo(s.asSlice(i * VkSparseImageMemoryBindInfo.SIZE, VkSparseImageMemoryBindInfo.SIZE));
+        }
+        return arr;
+    }
+
+    public void pImageBinds(@nullable VkSparseImageMemoryBindInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pImageBindsRaw(s);
+    }
+
+    public @unsigned int signalSemaphoreCount() {
+        return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
+    }
+
+    public void signalSemaphoreCount(@unsigned int value) {
+        segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
+    }
+
+    public @pointer(comment="VkSemaphore") MemorySegment pSignalSemaphoresRaw() {
+        return segment.get(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores);
+    }
+
+    public void pSignalSemaphoresRaw(@pointer(comment="VkSemaphore") MemorySegment value) {
+        segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
+    }
+
+    /// Note: the returned {@link VkSemaphore.Buffer} does not have correct
+    /// {@link VkSemaphore.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
+    /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
+    /// the buffer.
+    public @nullable VkSemaphore.Buffer pSignalSemaphores() {
+        MemorySegment s = pSignalSemaphoresRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSemaphore.Buffer(s);
+    }
+
+    public void pSignalSemaphores(@nullable VkSemaphore.Buffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSignalSemaphoresRaw(s);
+    }
+
+    public static VkBindSparseInfo allocate(Arena arena) {
+        return new VkBindSparseInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkBindSparseInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkBindSparseInfo[] ret = new VkBindSparseInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkBindSparseInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkBindSparseInfo clone(Arena arena, VkBindSparseInfo src) {
+        VkBindSparseInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkBindSparseInfo[] clone(Arena arena, VkBindSparseInfo[] src) {
+        VkBindSparseInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -81,183 +337,4 @@ public record VkBindSparseInfo(MemorySegment segment) {
     public static final long SIZE$pImageBinds = LAYOUT$pImageBinds.byteSize();
     public static final long SIZE$signalSemaphoreCount = LAYOUT$signalSemaphoreCount.byteSize();
     public static final long SIZE$pSignalSemaphores = LAYOUT$pSignalSemaphores.byteSize();
-
-    public VkBindSparseInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_BIND_SPARSE_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int waitSemaphoreCount() {
-        return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
-    }
-
-    public void waitSemaphoreCount(@unsigned int value) {
-        segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
-    }
-
-    public @pointer(comment="VkSemaphore") MemorySegment pWaitSemaphoresRaw() {
-        return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
-    }
-
-    public void pWaitSemaphoresRaw(@pointer(comment="VkSemaphore") MemorySegment value) {
-        segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
-    }
-
-    public @nullable VkSemaphore.Buffer pWaitSemaphores() {
-        MemorySegment s = pWaitSemaphoresRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSemaphore.Buffer(s);
-    }
-
-    public void pWaitSemaphores(@nullable VkSemaphore.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pWaitSemaphoresRaw(s);
-    }
-
-    public @unsigned int bufferBindCount() {
-        return segment.get(LAYOUT$bufferBindCount, OFFSET$bufferBindCount);
-    }
-
-    public void bufferBindCount(@unsigned int value) {
-        segment.set(LAYOUT$bufferBindCount, OFFSET$bufferBindCount, value);
-    }
-
-    public @pointer(comment="VkSparseBufferMemoryBindInfo*") MemorySegment pBufferBindsRaw() {
-        return segment.get(LAYOUT$pBufferBinds, OFFSET$pBufferBinds);
-    }
-
-    public void pBufferBindsRaw(@pointer(comment="VkSparseBufferMemoryBindInfo*") MemorySegment value) {
-        segment.set(LAYOUT$pBufferBinds, OFFSET$pBufferBinds, value);
-    }
-    
-    public @nullable VkSparseBufferMemoryBindInfo pBufferBinds() {
-        MemorySegment s = pBufferBindsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSparseBufferMemoryBindInfo(s);
-    }
-
-    public void pBufferBinds(@nullable VkSparseBufferMemoryBindInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pBufferBindsRaw(s);
-    }
-
-    public @unsigned int imageOpaqueBindCount() {
-        return segment.get(LAYOUT$imageOpaqueBindCount, OFFSET$imageOpaqueBindCount);
-    }
-
-    public void imageOpaqueBindCount(@unsigned int value) {
-        segment.set(LAYOUT$imageOpaqueBindCount, OFFSET$imageOpaqueBindCount, value);
-    }
-
-    public @pointer(comment="VkSparseImageOpaqueMemoryBindInfo*") MemorySegment pImageOpaqueBindsRaw() {
-        return segment.get(LAYOUT$pImageOpaqueBinds, OFFSET$pImageOpaqueBinds);
-    }
-
-    public void pImageOpaqueBindsRaw(@pointer(comment="VkSparseImageOpaqueMemoryBindInfo*") MemorySegment value) {
-        segment.set(LAYOUT$pImageOpaqueBinds, OFFSET$pImageOpaqueBinds, value);
-    }
-    
-    public @nullable VkSparseImageOpaqueMemoryBindInfo pImageOpaqueBinds() {
-        MemorySegment s = pImageOpaqueBindsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSparseImageOpaqueMemoryBindInfo(s);
-    }
-
-    public void pImageOpaqueBinds(@nullable VkSparseImageOpaqueMemoryBindInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pImageOpaqueBindsRaw(s);
-    }
-
-    public @unsigned int imageBindCount() {
-        return segment.get(LAYOUT$imageBindCount, OFFSET$imageBindCount);
-    }
-
-    public void imageBindCount(@unsigned int value) {
-        segment.set(LAYOUT$imageBindCount, OFFSET$imageBindCount, value);
-    }
-
-    public @pointer(comment="VkSparseImageMemoryBindInfo*") MemorySegment pImageBindsRaw() {
-        return segment.get(LAYOUT$pImageBinds, OFFSET$pImageBinds);
-    }
-
-    public void pImageBindsRaw(@pointer(comment="VkSparseImageMemoryBindInfo*") MemorySegment value) {
-        segment.set(LAYOUT$pImageBinds, OFFSET$pImageBinds, value);
-    }
-    
-    public @nullable VkSparseImageMemoryBindInfo pImageBinds() {
-        MemorySegment s = pImageBindsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSparseImageMemoryBindInfo(s);
-    }
-
-    public void pImageBinds(@nullable VkSparseImageMemoryBindInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pImageBindsRaw(s);
-    }
-
-    public @unsigned int signalSemaphoreCount() {
-        return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
-    }
-
-    public void signalSemaphoreCount(@unsigned int value) {
-        segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
-    }
-
-    public @pointer(comment="VkSemaphore") MemorySegment pSignalSemaphoresRaw() {
-        return segment.get(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores);
-    }
-
-    public void pSignalSemaphoresRaw(@pointer(comment="VkSemaphore") MemorySegment value) {
-        segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
-    }
-
-    public @nullable VkSemaphore.Buffer pSignalSemaphores() {
-        MemorySegment s = pSignalSemaphoresRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSemaphore.Buffer(s);
-    }
-
-    public void pSignalSemaphores(@nullable VkSemaphore.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSignalSemaphoresRaw(s);
-    }
-
-    public static VkBindSparseInfo allocate(Arena arena) {
-        return new VkBindSparseInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkBindSparseInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkBindSparseInfo[] ret = new VkBindSparseInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkBindSparseInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

@@ -1,19 +1,96 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES_KHR;
 
-public record VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 shaderSubgroupRotate;
+///     VkBool32 shaderSubgroupRotateClustered;
+/// } VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR.html">VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR</a>
+public record VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(MemorySegment segment) implements IPointer {
+    public VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int shaderSubgroupRotate() {
+        return segment.get(LAYOUT$shaderSubgroupRotate, OFFSET$shaderSubgroupRotate);
+    }
+
+    public void shaderSubgroupRotate(@unsigned int value) {
+        segment.set(LAYOUT$shaderSubgroupRotate, OFFSET$shaderSubgroupRotate, value);
+    }
+
+    public @unsigned int shaderSubgroupRotateClustered() {
+        return segment.get(LAYOUT$shaderSubgroupRotateClustered, OFFSET$shaderSubgroupRotateClustered);
+    }
+
+    public void shaderSubgroupRotateClustered(@unsigned int value) {
+        segment.set(LAYOUT$shaderSubgroupRotateClustered, OFFSET$shaderSubgroupRotateClustered, value);
+    }
+
+    public static VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR allocate(Arena arena) {
+        return new VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR[] ret = new VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR clone(Arena arena, VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR src) {
+        VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR[] clone(Arena arena, VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR[] src) {
+        VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,54 +118,4 @@ public record VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(MemorySegment segm
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$shaderSubgroupRotate = LAYOUT$shaderSubgroupRotate.byteSize();
     public static final long SIZE$shaderSubgroupRotateClustered = LAYOUT$shaderSubgroupRotateClustered.byteSize();
-
-    public VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES_KHR);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int shaderSubgroupRotate() {
-        return segment.get(LAYOUT$shaderSubgroupRotate, OFFSET$shaderSubgroupRotate);
-    }
-
-    public void shaderSubgroupRotate(@unsigned int value) {
-        segment.set(LAYOUT$shaderSubgroupRotate, OFFSET$shaderSubgroupRotate, value);
-    }
-
-    public @unsigned int shaderSubgroupRotateClustered() {
-        return segment.get(LAYOUT$shaderSubgroupRotateClustered, OFFSET$shaderSubgroupRotateClustered);
-    }
-
-    public void shaderSubgroupRotateClustered(@unsigned int value) {
-        segment.set(LAYOUT$shaderSubgroupRotateClustered, OFFSET$shaderSubgroupRotateClustered, value);
-    }
-
-    public static VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR allocate(Arena arena) {
-        return new VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR[] ret = new VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

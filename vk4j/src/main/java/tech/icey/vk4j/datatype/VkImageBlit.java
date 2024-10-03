@@ -1,19 +1,129 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.PathElement;
 
-public record VkImageBlit(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkImageBlit {
+///     VkImageSubresourceLayers srcSubresource;
+///     VkOffset3D srcOffsets[2];
+///     VkImageSubresourceLayers dstSubresource;
+///     VkOffset3D dstOffsets[2];
+/// } VkImageBlit;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageBlit.html">VkImageBlit</a>
+public record VkImageBlit(MemorySegment segment) implements IPointer {
+    public VkImageBlit(MemorySegment segment) {
+        this.segment = segment;
+    }
+
+    public VkImageSubresourceLayers srcSubresource() {
+        return new VkImageSubresourceLayers(segment.asSlice(OFFSET$srcSubresource, LAYOUT$srcSubresource));
+    }
+
+    public void srcSubresource(VkImageSubresourceLayers value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcSubresource, SIZE$srcSubresource);
+    }
+
+    public MemorySegment srcOffsetsRaw() {
+        return segment.asSlice(OFFSET$srcOffsets, SIZE$srcOffsets);
+    }
+
+    public VkOffset3D[] srcOffsets() {
+        MemorySegment s = srcOffsetsRaw();
+        VkOffset3D[] arr = new VkOffset3D[(int)LAYOUT$srcOffsets.elementCount()];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = new VkOffset3D(s.asSlice(i * VkOffset3D.SIZE, VkOffset3D.SIZE));
+        }
+        return arr;
+    }
+
+    public void srcOffsets(VkOffset3D[] value) {
+        MemorySegment s = srcOffsetsRaw();
+        for (int i = 0; i < value.length; i++) {
+            MemorySegment.copy(value[i].segment(), 0, s, i * VkOffset3D.SIZE, VkOffset3D.SIZE);
+        }
+    }
+
+    public VkOffset3D srcOffsetsAt(long index) {
+        MemorySegment s = srcOffsetsRaw();
+        return new VkOffset3D(s.asSlice(index * VkOffset3D.SIZE, VkOffset3D.SIZE));
+    }
+
+    public void srcOffsetsAt(long index, VkOffset3D value) {
+        MemorySegment s = srcOffsetsRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * VkOffset3D.SIZE, VkOffset3D.SIZE);
+    }
+
+    public VkImageSubresourceLayers dstSubresource() {
+        return new VkImageSubresourceLayers(segment.asSlice(OFFSET$dstSubresource, LAYOUT$dstSubresource));
+    }
+
+    public void dstSubresource(VkImageSubresourceLayers value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstSubresource, SIZE$dstSubresource);
+    }
+
+    public MemorySegment dstOffsetsRaw() {
+        return segment.asSlice(OFFSET$dstOffsets, SIZE$dstOffsets);
+    }
+
+    public VkOffset3D[] dstOffsets() {
+        MemorySegment s = dstOffsetsRaw();
+        VkOffset3D[] arr = new VkOffset3D[(int)LAYOUT$dstOffsets.elementCount()];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = new VkOffset3D(s.asSlice(i * VkOffset3D.SIZE, VkOffset3D.SIZE));
+        }
+        return arr;
+    }
+
+    public void dstOffsets(VkOffset3D[] value) {
+        MemorySegment s = dstOffsetsRaw();
+        for (int i = 0; i < value.length; i++) {
+            MemorySegment.copy(value[i].segment(), 0, s, i * VkOffset3D.SIZE, VkOffset3D.SIZE);
+        }
+    }
+
+    public VkOffset3D dstOffsetsAt(long index) {
+        MemorySegment s = dstOffsetsRaw();
+        return new VkOffset3D(s.asSlice(index * VkOffset3D.SIZE, VkOffset3D.SIZE));
+    }
+
+    public void dstOffsetsAt(long index, VkOffset3D value) {
+        MemorySegment s = dstOffsetsRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * VkOffset3D.SIZE, VkOffset3D.SIZE);
+    }
+
+    public static VkImageBlit allocate(Arena arena) {
+        return new VkImageBlit(arena.allocate(LAYOUT));
+    }
+
+    public static VkImageBlit[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkImageBlit[] ret = new VkImageBlit[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkImageBlit(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkImageBlit clone(Arena arena, VkImageBlit src) {
+        VkImageBlit ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkImageBlit[] clone(Arena arena, VkImageBlit[] src) {
+        VkImageBlit[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         VkImageSubresourceLayers.LAYOUT.withName("srcSubresource"),
         MemoryLayout.sequenceLayout(2, VkOffset3D.LAYOUT).withName("srcOffsets"),
@@ -41,95 +151,4 @@ public record VkImageBlit(MemorySegment segment) {
     public static final long SIZE$srcOffsets = LAYOUT$srcOffsets.byteSize();
     public static final long SIZE$dstSubresource = LAYOUT$dstSubresource.byteSize();
     public static final long SIZE$dstOffsets = LAYOUT$dstOffsets.byteSize();
-
-    public VkImageBlit(MemorySegment segment) {
-        this.segment = segment;
-    }
-
-    public VkImageSubresourceLayers srcSubresource() {
-        return new VkImageSubresourceLayers(segment.asSlice(OFFSET$srcSubresource, LAYOUT$srcSubresource));
-    }
-
-    public void srcSubresource(VkImageSubresourceLayers value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcSubresource, SIZE$srcSubresource);
-    }
-
-    public MemorySegment srcOffsetsRaw() {
-        return segment.asSlice(OFFSET$srcOffsets, LAYOUT$srcOffsets.byteSize());
-    }
-
-    public VkOffset3D[] srcOffsets() {
-        MemorySegment s = srcOffsetsRaw();
-        VkOffset3D[] arr = new VkOffset3D[(int)LAYOUT$srcOffsets.elementCount()];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = new VkOffset3D(s.asSlice(i * LAYOUT$srcOffsets.byteSize(), LAYOUT$srcOffsets.byteSize()));
-        }
-        return arr;
-    }
-
-    public void srcOffsets(VkOffset3D[] value) {
-        MemorySegment s = srcOffsetsRaw();
-        for (int i = 0; i < value.length; i++) {
-            MemorySegment.copy(value[i].segment(), 0, s, i * LAYOUT$srcOffsets.byteSize(), LAYOUT$srcOffsets.byteSize());
-        }
-    }
-
-    public VkOffset3D srcOffsetsAt(long index) {
-        MemorySegment s = srcOffsetsRaw();
-        return new VkOffset3D(s.asSlice(index * LAYOUT$srcOffsets.byteSize(), LAYOUT$srcOffsets.byteSize()));
-    }
-
-    public void srcOffsetsAt(long index, VkOffset3D value) {
-        MemorySegment.copy(value.segment(), 0, srcOffsetsRaw(), index * LAYOUT$srcOffsets.byteSize(), LAYOUT$srcOffsets.byteSize());
-    }
-
-    public VkImageSubresourceLayers dstSubresource() {
-        return new VkImageSubresourceLayers(segment.asSlice(OFFSET$dstSubresource, LAYOUT$dstSubresource));
-    }
-
-    public void dstSubresource(VkImageSubresourceLayers value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstSubresource, SIZE$dstSubresource);
-    }
-
-    public MemorySegment dstOffsetsRaw() {
-        return segment.asSlice(OFFSET$dstOffsets, LAYOUT$dstOffsets.byteSize());
-    }
-
-    public VkOffset3D[] dstOffsets() {
-        MemorySegment s = dstOffsetsRaw();
-        VkOffset3D[] arr = new VkOffset3D[(int)LAYOUT$dstOffsets.elementCount()];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = new VkOffset3D(s.asSlice(i * LAYOUT$dstOffsets.byteSize(), LAYOUT$dstOffsets.byteSize()));
-        }
-        return arr;
-    }
-
-    public void dstOffsets(VkOffset3D[] value) {
-        MemorySegment s = dstOffsetsRaw();
-        for (int i = 0; i < value.length; i++) {
-            MemorySegment.copy(value[i].segment(), 0, s, i * LAYOUT$dstOffsets.byteSize(), LAYOUT$dstOffsets.byteSize());
-        }
-    }
-
-    public VkOffset3D dstOffsetsAt(long index) {
-        MemorySegment s = dstOffsetsRaw();
-        return new VkOffset3D(s.asSlice(index * LAYOUT$dstOffsets.byteSize(), LAYOUT$dstOffsets.byteSize()));
-    }
-
-    public void dstOffsetsAt(long index, VkOffset3D value) {
-        MemorySegment.copy(value.segment(), 0, dstOffsetsRaw(), index * LAYOUT$dstOffsets.byteSize(), LAYOUT$dstOffsets.byteSize());
-    }
-
-    public static VkImageBlit allocate(Arena arena) {
-        return new VkImageBlit(arena.allocate(LAYOUT));
-    }
-    
-    public static VkImageBlit[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkImageBlit[] ret = new VkImageBlit[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageBlit(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

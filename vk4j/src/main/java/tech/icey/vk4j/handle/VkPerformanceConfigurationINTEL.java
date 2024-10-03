@@ -1,12 +1,14 @@
 package tech.icey.vk4j.handle;
 
-import tech.icey.vk4j.annotation.unsafe;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.annotation.unsafe;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
-public record VkPerformanceConfigurationINTEL(MemorySegment segment) {
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPerformanceConfigurationINTEL.html">VkPerformanceConfigurationINTEL</a>
+public record VkPerformanceConfigurationINTEL(MemorySegment segment) implements IPointer {
     public record Buffer(MemorySegment segment) {
         public long size() {
             return segment.byteSize() / ValueLayout.ADDRESS.byteSize();
@@ -65,7 +67,7 @@ public record VkPerformanceConfigurationINTEL(MemorySegment segment) {
         }
 
         public static Buffer allocate(Arena arena) {
-            return allocate(arena, 1);
+            return new Buffer(arena.allocate(ValueLayout.ADDRESS));
         }
 
         public static Buffer allocate(Arena arena, long size) {

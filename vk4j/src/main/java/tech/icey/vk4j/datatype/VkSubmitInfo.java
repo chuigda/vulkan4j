@@ -1,19 +1,219 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.IntBuffer;
+import tech.icey.vk4j.bitmask.VkPipelineStageFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkCommandBuffer;
+import tech.icey.vk4j.handle.VkSemaphore;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SUBMIT_INFO;
 
-public record VkSubmitInfo(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkSubmitInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t waitSemaphoreCount;
+///     const VkSemaphore* pWaitSemaphores;
+///     const VkPipelineStageFlags* pWaitDstStageMask;
+///     uint32_t commandBufferCount;
+///     const VkCommandBuffer* pCommandBuffers;
+///     uint32_t signalSemaphoreCount;
+///     const VkSemaphore* pSignalSemaphores;
+/// } VkSubmitInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubmitInfo.html">VkSubmitInfo</a>
+public record VkSubmitInfo(MemorySegment segment) implements IPointer {
+    public VkSubmitInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_SUBMIT_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int waitSemaphoreCount() {
+        return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
+    }
+
+    public void waitSemaphoreCount(@unsigned int value) {
+        segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
+    }
+
+    public @pointer(comment="VkSemaphore") MemorySegment pWaitSemaphoresRaw() {
+        return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
+    }
+
+    public void pWaitSemaphoresRaw(@pointer(comment="VkSemaphore") MemorySegment value) {
+        segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
+    }
+
+    /// Note: the returned {@link VkSemaphore.Buffer} does not have correct
+    /// {@link VkSemaphore.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
+    /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
+    /// the buffer.
+    public @nullable VkSemaphore.Buffer pWaitSemaphores() {
+        MemorySegment s = pWaitSemaphoresRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSemaphore.Buffer(s);
+    }
+
+    public void pWaitSemaphores(@nullable VkSemaphore.Buffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pWaitSemaphoresRaw(s);
+    }
+
+    public @pointer(target=VkPipelineStageFlags.class) MemorySegment pWaitDstStageMaskRaw() {
+        return segment.get(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask);
+    }
+
+    public void pWaitDstStageMaskRaw(@pointer(target=VkPipelineStageFlags.class) MemorySegment value) {
+        segment.set(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask, value);
+    }
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkPipelineStageFlags.class) IntBuffer pWaitDstStageMask() {
+        MemorySegment s = pWaitDstStageMaskRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+
+        return new IntBuffer(s);
+    }
+
+    public void pWaitDstStageMask(@nullable @enumtype(VkPipelineStageFlags.class) IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pWaitDstStageMaskRaw(s);
+    }
+
+    public @unsigned int commandBufferCount() {
+        return segment.get(LAYOUT$commandBufferCount, OFFSET$commandBufferCount);
+    }
+
+    public void commandBufferCount(@unsigned int value) {
+        segment.set(LAYOUT$commandBufferCount, OFFSET$commandBufferCount, value);
+    }
+
+    public @pointer(comment="VkCommandBuffer") MemorySegment pCommandBuffersRaw() {
+        return segment.get(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers);
+    }
+
+    public void pCommandBuffersRaw(@pointer(comment="VkCommandBuffer") MemorySegment value) {
+        segment.set(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers, value);
+    }
+
+    /// Note: the returned {@link VkCommandBuffer.Buffer} does not have correct
+    /// {@link VkCommandBuffer.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkCommandBuffer.Buffer#reinterpret} to set the size before actually
+    /// {@link VkCommandBuffer.Buffer#read}ing or {@link VkCommandBuffer.Buffer#write}ing
+    /// the buffer.
+    public @nullable VkCommandBuffer.Buffer pCommandBuffers() {
+        MemorySegment s = pCommandBuffersRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkCommandBuffer.Buffer(s);
+    }
+
+    public void pCommandBuffers(@nullable VkCommandBuffer.Buffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCommandBuffersRaw(s);
+    }
+
+    public @unsigned int signalSemaphoreCount() {
+        return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
+    }
+
+    public void signalSemaphoreCount(@unsigned int value) {
+        segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
+    }
+
+    public @pointer(comment="VkSemaphore") MemorySegment pSignalSemaphoresRaw() {
+        return segment.get(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores);
+    }
+
+    public void pSignalSemaphoresRaw(@pointer(comment="VkSemaphore") MemorySegment value) {
+        segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
+    }
+
+    /// Note: the returned {@link VkSemaphore.Buffer} does not have correct
+    /// {@link VkSemaphore.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
+    /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
+    /// the buffer.
+    public @nullable VkSemaphore.Buffer pSignalSemaphores() {
+        MemorySegment s = pSignalSemaphoresRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkSemaphore.Buffer(s);
+    }
+
+    public void pSignalSemaphores(@nullable VkSemaphore.Buffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSignalSemaphoresRaw(s);
+    }
+
+    public static VkSubmitInfo allocate(Arena arena) {
+        return new VkSubmitInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkSubmitInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSubmitInfo[] ret = new VkSubmitInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSubmitInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkSubmitInfo clone(Arena arena, VkSubmitInfo src) {
+        VkSubmitInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSubmitInfo[] clone(Arena arena, VkSubmitInfo[] src) {
+        VkSubmitInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -66,147 +266,4 @@ public record VkSubmitInfo(MemorySegment segment) {
     public static final long SIZE$pCommandBuffers = LAYOUT$pCommandBuffers.byteSize();
     public static final long SIZE$signalSemaphoreCount = LAYOUT$signalSemaphoreCount.byteSize();
     public static final long SIZE$pSignalSemaphores = LAYOUT$pSignalSemaphores.byteSize();
-
-    public VkSubmitInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_SUBMIT_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int waitSemaphoreCount() {
-        return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
-    }
-
-    public void waitSemaphoreCount(@unsigned int value) {
-        segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
-    }
-
-    public @pointer(comment="VkSemaphore") MemorySegment pWaitSemaphoresRaw() {
-        return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
-    }
-
-    public void pWaitSemaphoresRaw(@pointer(comment="VkSemaphore") MemorySegment value) {
-        segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
-    }
-
-    public @nullable VkSemaphore.Buffer pWaitSemaphores() {
-        MemorySegment s = pWaitSemaphoresRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSemaphore.Buffer(s);
-    }
-
-    public void pWaitSemaphores(@nullable VkSemaphore.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pWaitSemaphoresRaw(s);
-    }
-
-    public @pointer(target=VkPipelineStageFlags.class) MemorySegment pWaitDstStageMaskRaw() {
-        return segment.get(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask);
-    }
-    
-    public void pWaitDstStageMaskRaw(@pointer(target=VkPipelineStageFlags.class) MemorySegment value) {
-        segment.set(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask, value);
-    }
-    
-    public @nullable IntBuffer pWaitDstStageMask() {
-        MemorySegment s = pWaitDstStageMaskRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        
-        return new IntBuffer(s);
-    }
-    
-    public void pWaitDstStageMask(@nullable IntBuffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pWaitDstStageMaskRaw(s);
-    }
-
-    public @unsigned int commandBufferCount() {
-        return segment.get(LAYOUT$commandBufferCount, OFFSET$commandBufferCount);
-    }
-
-    public void commandBufferCount(@unsigned int value) {
-        segment.set(LAYOUT$commandBufferCount, OFFSET$commandBufferCount, value);
-    }
-
-    public @pointer(comment="VkCommandBuffer") MemorySegment pCommandBuffersRaw() {
-        return segment.get(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers);
-    }
-
-    public void pCommandBuffersRaw(@pointer(comment="VkCommandBuffer") MemorySegment value) {
-        segment.set(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers, value);
-    }
-
-    public @nullable VkCommandBuffer.Buffer pCommandBuffers() {
-        MemorySegment s = pCommandBuffersRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkCommandBuffer.Buffer(s);
-    }
-
-    public void pCommandBuffers(@nullable VkCommandBuffer.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pCommandBuffersRaw(s);
-    }
-
-    public @unsigned int signalSemaphoreCount() {
-        return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
-    }
-
-    public void signalSemaphoreCount(@unsigned int value) {
-        segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
-    }
-
-    public @pointer(comment="VkSemaphore") MemorySegment pSignalSemaphoresRaw() {
-        return segment.get(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores);
-    }
-
-    public void pSignalSemaphoresRaw(@pointer(comment="VkSemaphore") MemorySegment value) {
-        segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
-    }
-
-    public @nullable VkSemaphore.Buffer pSignalSemaphores() {
-        MemorySegment s = pSignalSemaphoresRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSemaphore.Buffer(s);
-    }
-
-    public void pSignalSemaphores(@nullable VkSemaphore.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSignalSemaphoresRaw(s);
-    }
-
-    public static VkSubmitInfo allocate(Arena arena) {
-        return new VkSubmitInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkSubmitInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSubmitInfo[] ret = new VkSubmitInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkSubmitInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

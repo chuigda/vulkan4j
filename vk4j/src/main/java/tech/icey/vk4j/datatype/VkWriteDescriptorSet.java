@@ -1,19 +1,225 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.vk4j.enumtype.VkDescriptorType;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkBufferView;
+import tech.icey.vk4j.handle.VkDescriptorSet;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
 
-public record VkWriteDescriptorSet(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkWriteDescriptorSet {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDescriptorSet dstSet;
+///     uint32_t dstBinding;
+///     uint32_t dstArrayElement;
+///     uint32_t descriptorCount;
+///     VkDescriptorType descriptorType;
+///     const VkDescriptorImageInfo* pImageInfo;
+///     const VkDescriptorBufferInfo* pBufferInfo;
+///     const VkBufferView* pTexelBufferView;
+/// } VkWriteDescriptorSet;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkWriteDescriptorSet.html">VkWriteDescriptorSet</a>
+public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
+    public VkWriteDescriptorSet(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @nullable VkDescriptorSet dstSet() {
+        MemorySegment s = segment.get(LAYOUT$dstSet, OFFSET$dstSet);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDescriptorSet(s);
+    }
+
+    public void dstSet(@nullable VkDescriptorSet value) {
+        segment.set(
+            LAYOUT$dstSet,
+            OFFSET$dstSet,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @unsigned int dstBinding() {
+        return segment.get(LAYOUT$dstBinding, OFFSET$dstBinding);
+    }
+
+    public void dstBinding(@unsigned int value) {
+        segment.set(LAYOUT$dstBinding, OFFSET$dstBinding, value);
+    }
+
+    public @unsigned int dstArrayElement() {
+        return segment.get(LAYOUT$dstArrayElement, OFFSET$dstArrayElement);
+    }
+
+    public void dstArrayElement(@unsigned int value) {
+        segment.set(LAYOUT$dstArrayElement, OFFSET$dstArrayElement, value);
+    }
+
+    public @unsigned int descriptorCount() {
+        return segment.get(LAYOUT$descriptorCount, OFFSET$descriptorCount);
+    }
+
+    public void descriptorCount(@unsigned int value) {
+        segment.set(LAYOUT$descriptorCount, OFFSET$descriptorCount, value);
+    }
+
+    public @enumtype(VkDescriptorType.class) int descriptorType() {
+        return segment.get(LAYOUT$descriptorType, OFFSET$descriptorType);
+    }
+
+    public void descriptorType(@enumtype(VkDescriptorType.class) int value) {
+        segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
+    }
+
+    public @pointer(comment="VkDescriptorImageInfo*") MemorySegment pImageInfoRaw() {
+        return segment.get(LAYOUT$pImageInfo, OFFSET$pImageInfo);
+    }
+
+    public void pImageInfoRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
+        segment.set(LAYOUT$pImageInfo, OFFSET$pImageInfo, value);
+    }
+
+    public @nullable VkDescriptorImageInfo pImageInfo() {
+        MemorySegment s = pImageInfoRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDescriptorImageInfo(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkDescriptorImageInfo[] pImageInfo(int assumedCount) {
+        MemorySegment s = pImageInfoRaw().reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
+        VkDescriptorImageInfo[] arr = new VkDescriptorImageInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.SIZE, VkDescriptorImageInfo.SIZE));
+        }
+        return arr;
+    }
+
+    public void pImageInfo(@nullable VkDescriptorImageInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pImageInfoRaw(s);
+    }
+
+    public @pointer(comment="VkDescriptorBufferInfo*") MemorySegment pBufferInfoRaw() {
+        return segment.get(LAYOUT$pBufferInfo, OFFSET$pBufferInfo);
+    }
+
+    public void pBufferInfoRaw(@pointer(comment="VkDescriptorBufferInfo*") MemorySegment value) {
+        segment.set(LAYOUT$pBufferInfo, OFFSET$pBufferInfo, value);
+    }
+
+    public @nullable VkDescriptorBufferInfo pBufferInfo() {
+        MemorySegment s = pBufferInfoRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDescriptorBufferInfo(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkDescriptorBufferInfo[] pBufferInfo(int assumedCount) {
+        MemorySegment s = pBufferInfoRaw().reinterpret(assumedCount * VkDescriptorBufferInfo.SIZE);
+        VkDescriptorBufferInfo[] arr = new VkDescriptorBufferInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkDescriptorBufferInfo(s.asSlice(i * VkDescriptorBufferInfo.SIZE, VkDescriptorBufferInfo.SIZE));
+        }
+        return arr;
+    }
+
+    public void pBufferInfo(@nullable VkDescriptorBufferInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pBufferInfoRaw(s);
+    }
+
+    public @pointer(comment="VkBufferView") MemorySegment pTexelBufferViewRaw() {
+        return segment.get(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView);
+    }
+
+    public void pTexelBufferViewRaw(@pointer(comment="VkBufferView") MemorySegment value) {
+        segment.set(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView, value);
+    }
+
+    /// Note: the returned {@link VkBufferView.Buffer} does not have correct
+    /// {@link VkBufferView.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkBufferView.Buffer#reinterpret} to set the size before actually
+    /// {@link VkBufferView.Buffer#read}ing or {@link VkBufferView.Buffer#write}ing
+    /// the buffer.
+    public @nullable VkBufferView.Buffer pTexelBufferView() {
+        MemorySegment s = pTexelBufferViewRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBufferView.Buffer(s);
+    }
+
+    public void pTexelBufferView(@nullable VkBufferView.Buffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pTexelBufferViewRaw(s);
+    }
+
+    public static VkWriteDescriptorSet allocate(Arena arena) {
+        return new VkWriteDescriptorSet(arena.allocate(LAYOUT));
+    }
+
+    public static VkWriteDescriptorSet[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkWriteDescriptorSet[] ret = new VkWriteDescriptorSet[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkWriteDescriptorSet(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkWriteDescriptorSet clone(Arena arena, VkWriteDescriptorSet src) {
+        VkWriteDescriptorSet ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkWriteDescriptorSet[] clone(Arena arena, VkWriteDescriptorSet[] src) {
+        VkWriteDescriptorSet[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -71,141 +277,4 @@ public record VkWriteDescriptorSet(MemorySegment segment) {
     public static final long SIZE$pImageInfo = LAYOUT$pImageInfo.byteSize();
     public static final long SIZE$pBufferInfo = LAYOUT$pBufferInfo.byteSize();
     public static final long SIZE$pTexelBufferView = LAYOUT$pTexelBufferView.byteSize();
-
-    public VkWriteDescriptorSet(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public VkDescriptorSet dstSet() {
-        return new VkDescriptorSet(segment.get(LAYOUT$dstSet, OFFSET$dstSet));
-    }
-
-    public void dstSet(VkDescriptorSet value) {
-        segment.set(LAYOUT$dstSet, OFFSET$dstSet, value.segment());
-    }
-
-    public @unsigned int dstBinding() {
-        return segment.get(LAYOUT$dstBinding, OFFSET$dstBinding);
-    }
-
-    public void dstBinding(@unsigned int value) {
-        segment.set(LAYOUT$dstBinding, OFFSET$dstBinding, value);
-    }
-
-    public @unsigned int dstArrayElement() {
-        return segment.get(LAYOUT$dstArrayElement, OFFSET$dstArrayElement);
-    }
-
-    public void dstArrayElement(@unsigned int value) {
-        segment.set(LAYOUT$dstArrayElement, OFFSET$dstArrayElement, value);
-    }
-
-    public @unsigned int descriptorCount() {
-        return segment.get(LAYOUT$descriptorCount, OFFSET$descriptorCount);
-    }
-
-    public void descriptorCount(@unsigned int value) {
-        segment.set(LAYOUT$descriptorCount, OFFSET$descriptorCount, value);
-    }
-
-    public @enumtype(VkDescriptorType.class) int descriptorType() {
-        return segment.get(LAYOUT$descriptorType, OFFSET$descriptorType);
-    }
-
-    public void descriptorType(@enumtype(VkDescriptorType.class) int value) {
-        segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
-    }
-
-    public @pointer(comment="VkDescriptorImageInfo*") MemorySegment pImageInfoRaw() {
-        return segment.get(LAYOUT$pImageInfo, OFFSET$pImageInfo);
-    }
-
-    public void pImageInfoRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
-        segment.set(LAYOUT$pImageInfo, OFFSET$pImageInfo, value);
-    }
-    
-    public @nullable VkDescriptorImageInfo pImageInfo() {
-        MemorySegment s = pImageInfoRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDescriptorImageInfo(s);
-    }
-
-    public void pImageInfo(@nullable VkDescriptorImageInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pImageInfoRaw(s);
-    }
-
-    public @pointer(comment="VkDescriptorBufferInfo*") MemorySegment pBufferInfoRaw() {
-        return segment.get(LAYOUT$pBufferInfo, OFFSET$pBufferInfo);
-    }
-
-    public void pBufferInfoRaw(@pointer(comment="VkDescriptorBufferInfo*") MemorySegment value) {
-        segment.set(LAYOUT$pBufferInfo, OFFSET$pBufferInfo, value);
-    }
-    
-    public @nullable VkDescriptorBufferInfo pBufferInfo() {
-        MemorySegment s = pBufferInfoRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDescriptorBufferInfo(s);
-    }
-
-    public void pBufferInfo(@nullable VkDescriptorBufferInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pBufferInfoRaw(s);
-    }
-
-    public @pointer(comment="VkBufferView") MemorySegment pTexelBufferViewRaw() {
-        return segment.get(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView);
-    }
-
-    public void pTexelBufferViewRaw(@pointer(comment="VkBufferView") MemorySegment value) {
-        segment.set(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView, value);
-    }
-
-    public @nullable VkBufferView.Buffer pTexelBufferView() {
-        MemorySegment s = pTexelBufferViewRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBufferView.Buffer(s);
-    }
-
-    public void pTexelBufferView(@nullable VkBufferView.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pTexelBufferViewRaw(s);
-    }
-
-    public static VkWriteDescriptorSet allocate(Arena arena) {
-        return new VkWriteDescriptorSet(arena.allocate(LAYOUT));
-    }
-    
-    public static VkWriteDescriptorSet[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkWriteDescriptorSet[] ret = new VkWriteDescriptorSet[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkWriteDescriptorSet(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

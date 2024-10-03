@@ -1,19 +1,123 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkBuffer;
+import tech.icey.vk4j.handle.VkDeviceMemory;
+
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+/// {@snippet lang=c :
+/// typedef struct VkBindBufferMemoryInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkBuffer buffer;
+///     VkDeviceMemory memory;
+///     VkDeviceSize memoryOffset;
+/// } VkBindBufferMemoryInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBindBufferMemoryInfo.html">VkBindBufferMemoryInfo</a>
+public record VkBindBufferMemoryInfo(MemorySegment segment) implements IPointer {
+    public VkBindBufferMemoryInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO);
+    }
 
-public record VkBindBufferMemoryInfo(MemorySegment segment) {
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @nullable VkBuffer buffer() {
+        MemorySegment s = segment.get(LAYOUT$buffer, OFFSET$buffer);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer(s);
+    }
+
+    public void buffer(@nullable VkBuffer value) {
+        segment.set(
+            LAYOUT$buffer,
+            OFFSET$buffer,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @nullable VkDeviceMemory memory() {
+        MemorySegment s = segment.get(LAYOUT$memory, OFFSET$memory);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDeviceMemory(s);
+    }
+
+    public void memory(@nullable VkDeviceMemory value) {
+        segment.set(
+            LAYOUT$memory,
+            OFFSET$memory,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @unsigned long memoryOffset() {
+        return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
+    }
+
+    public void memoryOffset(@unsigned long value) {
+        segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
+    }
+
+    public static VkBindBufferMemoryInfo allocate(Arena arena) {
+        return new VkBindBufferMemoryInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkBindBufferMemoryInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkBindBufferMemoryInfo[] ret = new VkBindBufferMemoryInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkBindBufferMemoryInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkBindBufferMemoryInfo clone(Arena arena, VkBindBufferMemoryInfo src) {
+        VkBindBufferMemoryInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkBindBufferMemoryInfo[] clone(Arena arena, VkBindBufferMemoryInfo[] src) {
+        VkBindBufferMemoryInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -46,62 +150,4 @@ public record VkBindBufferMemoryInfo(MemorySegment segment) {
     public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
     public static final long SIZE$memory = LAYOUT$memory.byteSize();
     public static final long SIZE$memoryOffset = LAYOUT$memoryOffset.byteSize();
-
-    public VkBindBufferMemoryInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public VkBuffer buffer() {
-        return new VkBuffer(segment.get(LAYOUT$buffer, OFFSET$buffer));
-    }
-
-    public void buffer(VkBuffer value) {
-        segment.set(LAYOUT$buffer, OFFSET$buffer, value.segment());
-    }
-
-    public VkDeviceMemory memory() {
-        return new VkDeviceMemory(segment.get(LAYOUT$memory, OFFSET$memory));
-    }
-
-    public void memory(VkDeviceMemory value) {
-        segment.set(LAYOUT$memory, OFFSET$memory, value.segment());
-    }
-
-    public @unsigned long memoryOffset() {
-        return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
-    }
-
-    public void memoryOffset(@unsigned long value) {
-        segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
-    }
-
-    public static VkBindBufferMemoryInfo allocate(Arena arena) {
-        return new VkBindBufferMemoryInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkBindBufferMemoryInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkBindBufferMemoryInfo[] ret = new VkBindBufferMemoryInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkBindBufferMemoryInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

@@ -1,19 +1,95 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SCREEN_BUFFER_PROPERTIES_QNX;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+/// {@snippet lang=c :
+/// typedef struct VkScreenBufferPropertiesQNX {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkDeviceSize allocationSize;
+///     uint32_t memoryTypeBits;
+/// } VkScreenBufferPropertiesQNX;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkScreenBufferPropertiesQNX.html">VkScreenBufferPropertiesQNX</a>
+public record VkScreenBufferPropertiesQNX(MemorySegment segment) implements IPointer {
+    public VkScreenBufferPropertiesQNX(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_SCREEN_BUFFER_PROPERTIES_QNX);
+    }
 
-public record VkScreenBufferPropertiesQNX(MemorySegment segment) {
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned long allocationSize() {
+        return segment.get(LAYOUT$allocationSize, OFFSET$allocationSize);
+    }
+
+    public void allocationSize(@unsigned long value) {
+        segment.set(LAYOUT$allocationSize, OFFSET$allocationSize, value);
+    }
+
+    public @unsigned int memoryTypeBits() {
+        return segment.get(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits);
+    }
+
+    public void memoryTypeBits(@unsigned int value) {
+        segment.set(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits, value);
+    }
+
+    public static VkScreenBufferPropertiesQNX allocate(Arena arena) {
+        return new VkScreenBufferPropertiesQNX(arena.allocate(LAYOUT));
+    }
+
+    public static VkScreenBufferPropertiesQNX[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkScreenBufferPropertiesQNX[] ret = new VkScreenBufferPropertiesQNX[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkScreenBufferPropertiesQNX(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkScreenBufferPropertiesQNX clone(Arena arena, VkScreenBufferPropertiesQNX src) {
+        VkScreenBufferPropertiesQNX ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkScreenBufferPropertiesQNX[] clone(Arena arena, VkScreenBufferPropertiesQNX[] src) {
+        VkScreenBufferPropertiesQNX[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,54 +117,4 @@ public record VkScreenBufferPropertiesQNX(MemorySegment segment) {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$allocationSize = LAYOUT$allocationSize.byteSize();
     public static final long SIZE$memoryTypeBits = LAYOUT$memoryTypeBits.byteSize();
-
-    public VkScreenBufferPropertiesQNX(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_SCREEN_BUFFER_PROPERTIES_QNX);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned long allocationSize() {
-        return segment.get(LAYOUT$allocationSize, OFFSET$allocationSize);
-    }
-
-    public void allocationSize(@unsigned long value) {
-        segment.set(LAYOUT$allocationSize, OFFSET$allocationSize, value);
-    }
-
-    public @unsigned int memoryTypeBits() {
-        return segment.get(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits);
-    }
-
-    public void memoryTypeBits(@unsigned int value) {
-        segment.set(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits, value);
-    }
-
-    public static VkScreenBufferPropertiesQNX allocate(Arena arena) {
-        return new VkScreenBufferPropertiesQNX(arena.allocate(LAYOUT));
-    }
-    
-    public static VkScreenBufferPropertiesQNX[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkScreenBufferPropertiesQNX[] ret = new VkScreenBufferPropertiesQNX[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkScreenBufferPropertiesQNX(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

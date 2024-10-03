@@ -1,19 +1,152 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.panama.buffer.IntBuffer;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO;
 
-public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkBindImageMemoryDeviceGroupInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t deviceIndexCount;
+///     const uint32_t* pDeviceIndices;
+///     uint32_t splitInstanceBindRegionCount;
+///     const VkRect2D* pSplitInstanceBindRegions;
+/// } VkBindImageMemoryDeviceGroupInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkBindImageMemoryDeviceGroupInfo.html">VkBindImageMemoryDeviceGroupInfo</a>
+public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) implements IPointer {
+    public VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int deviceIndexCount() {
+        return segment.get(LAYOUT$deviceIndexCount, OFFSET$deviceIndexCount);
+    }
+
+    public void deviceIndexCount(@unsigned int value) {
+        segment.set(LAYOUT$deviceIndexCount, OFFSET$deviceIndexCount, value);
+    }
+
+    public @pointer(comment="uint32_t*") MemorySegment pDeviceIndicesRaw() {
+        return segment.get(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices);
+    }
+
+    public void pDeviceIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
+        segment.set(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices, value);
+    }
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
+    public @nullable @unsigned IntBuffer pDeviceIndices() {
+        MemorySegment s = pDeviceIndicesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
+    }
+
+    public void pDeviceIndices(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDeviceIndicesRaw(s);
+    }
+
+    public @unsigned int splitInstanceBindRegionCount() {
+        return segment.get(LAYOUT$splitInstanceBindRegionCount, OFFSET$splitInstanceBindRegionCount);
+    }
+
+    public void splitInstanceBindRegionCount(@unsigned int value) {
+        segment.set(LAYOUT$splitInstanceBindRegionCount, OFFSET$splitInstanceBindRegionCount, value);
+    }
+
+    public @pointer(comment="VkRect2D*") MemorySegment pSplitInstanceBindRegionsRaw() {
+        return segment.get(LAYOUT$pSplitInstanceBindRegions, OFFSET$pSplitInstanceBindRegions);
+    }
+
+    public void pSplitInstanceBindRegionsRaw(@pointer(comment="VkRect2D*") MemorySegment value) {
+        segment.set(LAYOUT$pSplitInstanceBindRegions, OFFSET$pSplitInstanceBindRegions, value);
+    }
+
+    public @nullable VkRect2D pSplitInstanceBindRegions() {
+        MemorySegment s = pSplitInstanceBindRegionsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkRect2D(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkRect2D[] pSplitInstanceBindRegions(int assumedCount) {
+        MemorySegment s = pSplitInstanceBindRegionsRaw().reinterpret(assumedCount * VkRect2D.SIZE);
+        VkRect2D[] arr = new VkRect2D[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRect2D(s.asSlice(i * VkRect2D.SIZE, VkRect2D.SIZE));
+        }
+        return arr;
+    }
+
+    public void pSplitInstanceBindRegions(@nullable VkRect2D value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSplitInstanceBindRegionsRaw(s);
+    }
+
+    public static VkBindImageMemoryDeviceGroupInfo allocate(Arena arena) {
+        return new VkBindImageMemoryDeviceGroupInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkBindImageMemoryDeviceGroupInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkBindImageMemoryDeviceGroupInfo[] ret = new VkBindImageMemoryDeviceGroupInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkBindImageMemoryDeviceGroupInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkBindImageMemoryDeviceGroupInfo clone(Arena arena, VkBindImageMemoryDeviceGroupInfo src) {
+        VkBindImageMemoryDeviceGroupInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkBindImageMemoryDeviceGroupInfo[] clone(Arena arena, VkBindImageMemoryDeviceGroupInfo[] src) {
+        VkBindImageMemoryDeviceGroupInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -51,91 +184,4 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
     public static final long SIZE$pDeviceIndices = LAYOUT$pDeviceIndices.byteSize();
     public static final long SIZE$splitInstanceBindRegionCount = LAYOUT$splitInstanceBindRegionCount.byteSize();
     public static final long SIZE$pSplitInstanceBindRegions = LAYOUT$pSplitInstanceBindRegions.byteSize();
-
-    public VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int deviceIndexCount() {
-        return segment.get(LAYOUT$deviceIndexCount, OFFSET$deviceIndexCount);
-    }
-
-    public void deviceIndexCount(@unsigned int value) {
-        segment.set(LAYOUT$deviceIndexCount, OFFSET$deviceIndexCount, value);
-    }
-
-    public @pointer(comment="uint32_t*") MemorySegment pDeviceIndicesRaw() {
-        return segment.get(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices);
-    }
-
-    public void pDeviceIndicesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
-        segment.set(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices, value);
-    }
-    
-    public @unsigned IntBuffer pDeviceIndices() {
-        return new IntBuffer(pDeviceIndicesRaw());
-    }
-
-    public void pDeviceIndices(@unsigned IntBuffer value) {
-        pDeviceIndicesRaw(value.segment());
-    }
-
-    public @unsigned int splitInstanceBindRegionCount() {
-        return segment.get(LAYOUT$splitInstanceBindRegionCount, OFFSET$splitInstanceBindRegionCount);
-    }
-
-    public void splitInstanceBindRegionCount(@unsigned int value) {
-        segment.set(LAYOUT$splitInstanceBindRegionCount, OFFSET$splitInstanceBindRegionCount, value);
-    }
-
-    public @pointer(comment="VkRect2D*") MemorySegment pSplitInstanceBindRegionsRaw() {
-        return segment.get(LAYOUT$pSplitInstanceBindRegions, OFFSET$pSplitInstanceBindRegions);
-    }
-
-    public void pSplitInstanceBindRegionsRaw(@pointer(comment="VkRect2D*") MemorySegment value) {
-        segment.set(LAYOUT$pSplitInstanceBindRegions, OFFSET$pSplitInstanceBindRegions, value);
-    }
-    
-    public @nullable VkRect2D pSplitInstanceBindRegions() {
-        MemorySegment s = pSplitInstanceBindRegionsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkRect2D(s);
-    }
-
-    public void pSplitInstanceBindRegions(@nullable VkRect2D value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSplitInstanceBindRegionsRaw(s);
-    }
-
-    public static VkBindImageMemoryDeviceGroupInfo allocate(Arena arena) {
-        return new VkBindImageMemoryDeviceGroupInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkBindImageMemoryDeviceGroupInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkBindImageMemoryDeviceGroupInfo[] ret = new VkBindImageMemoryDeviceGroupInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkBindImageMemoryDeviceGroupInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

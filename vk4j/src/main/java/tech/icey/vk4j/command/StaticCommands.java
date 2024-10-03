@@ -3,14 +3,10 @@ package tech.icey.vk4j.command;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.datatype.*;
+import tech.icey.panama.FunctionLoader;
+import tech.icey.panama.annotation.*;
+import tech.icey.panama.buffer.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.util.Function2;
 
 public final class StaticCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceProcAddr = FunctionDescriptor.of(
@@ -28,14 +24,15 @@ public final class StaticCommands {
     public final @nullable MethodHandle HANDLE$vkGetDeviceProcAddr;
     public final @nullable MethodHandle HANDLE$vkGetInstanceProcAddr;
 
-    public StaticCommands(Function2<String, FunctionDescriptor, MethodHandle> loader) {
+    public StaticCommands(FunctionLoader loader) {
         HANDLE$vkGetDeviceProcAddr = loader.apply("vkGetDeviceProcAddr", DESCRIPTOR$vkGetDeviceProcAddr);
         HANDLE$vkGetInstanceProcAddr = loader.apply("vkGetInstanceProcAddr", DESCRIPTOR$vkGetInstanceProcAddr);
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDeviceProcAddr.html">vkGetDeviceProcAddr</a>
     public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetDeviceProcAddr(
             VkDevice device,
-             ByteBuffer pName
+            ByteBuffer pName
     ) {
         try {
             return (MemorySegment) HANDLE$vkGetDeviceProcAddr.invokeExact(
@@ -47,9 +44,10 @@ public final class StaticCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetInstanceProcAddr.html">vkGetInstanceProcAddr</a>
     public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetInstanceProcAddr(
             @nullable VkInstance instance,
-             ByteBuffer pName
+            ByteBuffer pName
     ) {
         try {
             return (MemorySegment) HANDLE$vkGetInstanceProcAddr.invokeExact(

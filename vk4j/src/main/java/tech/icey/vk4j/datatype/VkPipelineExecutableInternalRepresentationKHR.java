@@ -1,19 +1,137 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.ByteBuffer;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.VK_MAX_DESCRIPTION_SIZE;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_INTERNAL_REPRESENTATION_KHR;
 
-public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPipelineExecutableInternalRepresentationKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     char name[VK_MAX_DESCRIPTION_SIZE];
+///     char description[VK_MAX_DESCRIPTION_SIZE];
+///     VkBool32 isText;
+///     size_t dataSize;
+///     void* pData;
+/// } VkPipelineExecutableInternalRepresentationKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineExecutableInternalRepresentationKHR.html">VkPipelineExecutableInternalRepresentationKHR</a>
+public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segment) implements IPointer {
+    public VkPipelineExecutableInternalRepresentationKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_INTERNAL_REPRESENTATION_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public MemorySegment nameRaw() {
+        return segment.asSlice(OFFSET$name, SIZE$name);
+    }
+
+    public ByteBuffer name() {
+        return new ByteBuffer(nameRaw());
+    }
+
+    public void name(ByteBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
+    }
+
+    public MemorySegment descriptionRaw() {
+        return segment.asSlice(OFFSET$description, SIZE$description);
+    }
+
+    public ByteBuffer description() {
+        return new ByteBuffer(descriptionRaw());
+    }
+
+    public void description(ByteBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+    }
+
+    public @unsigned int isText() {
+        return segment.get(LAYOUT$isText, OFFSET$isText);
+    }
+
+    public void isText(@unsigned int value) {
+        segment.set(LAYOUT$isText, OFFSET$isText, value);
+    }
+
+    public @unsigned long dataSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$dataSize);
+        }
+
+        public void dataSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$dataSize, value);
+        }
+
+    public @pointer(comment="void*") MemorySegment pData() {
+        return segment.get(LAYOUT$pData, OFFSET$pData);
+    }
+
+    public void pData(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pData, OFFSET$pData, value);
+    }
+
+    public void pData(IPointer pointer) {
+        pData(pointer.segment());
+    }
+
+    public static VkPipelineExecutableInternalRepresentationKHR allocate(Arena arena) {
+        return new VkPipelineExecutableInternalRepresentationKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkPipelineExecutableInternalRepresentationKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPipelineExecutableInternalRepresentationKHR[] ret = new VkPipelineExecutableInternalRepresentationKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPipelineExecutableInternalRepresentationKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPipelineExecutableInternalRepresentationKHR clone(Arena arena, VkPipelineExecutableInternalRepresentationKHR src) {
+        VkPipelineExecutableInternalRepresentationKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPipelineExecutableInternalRepresentationKHR[] clone(Arena arena, VkPipelineExecutableInternalRepresentationKHR[] src) {
+        VkPipelineExecutableInternalRepresentationKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -54,86 +172,4 @@ public record VkPipelineExecutableInternalRepresentationKHR(MemorySegment segmen
     public static final long SIZE$description = LAYOUT$description.byteSize();
     public static final long SIZE$isText = LAYOUT$isText.byteSize();
     public static final long SIZE$pData = LAYOUT$pData.byteSize();
-
-    public VkPipelineExecutableInternalRepresentationKHR(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_INTERNAL_REPRESENTATION_KHR);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public MemorySegment nameRaw() {
-        return segment.asSlice(OFFSET$name, LAYOUT$name.byteSize());
-    }
-
-    public ByteBuffer name() {
-        return new ByteBuffer(nameRaw());
-    }
-
-    public void name(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, LAYOUT$name.byteSize());
-    }
-
-    public MemorySegment descriptionRaw() {
-        return segment.asSlice(OFFSET$description, LAYOUT$description.byteSize());
-    }
-
-    public ByteBuffer description() {
-        return new ByteBuffer(descriptionRaw());
-    }
-
-    public void description(ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, LAYOUT$description.byteSize());
-    }
-
-    public @unsigned int isText() {
-        return segment.get(LAYOUT$isText, OFFSET$isText);
-    }
-
-    public void isText(@unsigned int value) {
-        segment.set(LAYOUT$isText, OFFSET$isText, value);
-    }
-
-    public @unsigned long dataSize() {
-            return NativeLayout.readCSizeT(segment, OFFSET$dataSize);
-        }
-    
-        public void dataSize(@unsigned long value) {
-            NativeLayout.writeCSizeT(segment, OFFSET$dataSize, value);
-        }
-
-    public @pointer(comment="void*") MemorySegment pData() {
-        return segment.get(LAYOUT$pData, OFFSET$pData);
-    }
-
-    public void pData(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pData, OFFSET$pData, value);
-    }
-
-    public static VkPipelineExecutableInternalRepresentationKHR allocate(Arena arena) {
-        return new VkPipelineExecutableInternalRepresentationKHR(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPipelineExecutableInternalRepresentationKHR[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineExecutableInternalRepresentationKHR[] ret = new VkPipelineExecutableInternalRepresentationKHR[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineExecutableInternalRepresentationKHR(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

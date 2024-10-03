@@ -1,19 +1,96 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS;
 
-public record VkMemoryDedicatedRequirements(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkMemoryDedicatedRequirements {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 prefersDedicatedAllocation;
+///     VkBool32 requiresDedicatedAllocation;
+/// } VkMemoryDedicatedRequirements;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMemoryDedicatedRequirements.html">VkMemoryDedicatedRequirements</a>
+public record VkMemoryDedicatedRequirements(MemorySegment segment) implements IPointer {
+    public VkMemoryDedicatedRequirements(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int prefersDedicatedAllocation() {
+        return segment.get(LAYOUT$prefersDedicatedAllocation, OFFSET$prefersDedicatedAllocation);
+    }
+
+    public void prefersDedicatedAllocation(@unsigned int value) {
+        segment.set(LAYOUT$prefersDedicatedAllocation, OFFSET$prefersDedicatedAllocation, value);
+    }
+
+    public @unsigned int requiresDedicatedAllocation() {
+        return segment.get(LAYOUT$requiresDedicatedAllocation, OFFSET$requiresDedicatedAllocation);
+    }
+
+    public void requiresDedicatedAllocation(@unsigned int value) {
+        segment.set(LAYOUT$requiresDedicatedAllocation, OFFSET$requiresDedicatedAllocation, value);
+    }
+
+    public static VkMemoryDedicatedRequirements allocate(Arena arena) {
+        return new VkMemoryDedicatedRequirements(arena.allocate(LAYOUT));
+    }
+
+    public static VkMemoryDedicatedRequirements[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkMemoryDedicatedRequirements[] ret = new VkMemoryDedicatedRequirements[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkMemoryDedicatedRequirements(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkMemoryDedicatedRequirements clone(Arena arena, VkMemoryDedicatedRequirements src) {
+        VkMemoryDedicatedRequirements ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkMemoryDedicatedRequirements[] clone(Arena arena, VkMemoryDedicatedRequirements[] src) {
+        VkMemoryDedicatedRequirements[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,54 +118,4 @@ public record VkMemoryDedicatedRequirements(MemorySegment segment) {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$prefersDedicatedAllocation = LAYOUT$prefersDedicatedAllocation.byteSize();
     public static final long SIZE$requiresDedicatedAllocation = LAYOUT$requiresDedicatedAllocation.byteSize();
-
-    public VkMemoryDedicatedRequirements(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int prefersDedicatedAllocation() {
-        return segment.get(LAYOUT$prefersDedicatedAllocation, OFFSET$prefersDedicatedAllocation);
-    }
-
-    public void prefersDedicatedAllocation(@unsigned int value) {
-        segment.set(LAYOUT$prefersDedicatedAllocation, OFFSET$prefersDedicatedAllocation, value);
-    }
-
-    public @unsigned int requiresDedicatedAllocation() {
-        return segment.get(LAYOUT$requiresDedicatedAllocation, OFFSET$requiresDedicatedAllocation);
-    }
-
-    public void requiresDedicatedAllocation(@unsigned int value) {
-        segment.set(LAYOUT$requiresDedicatedAllocation, OFFSET$requiresDedicatedAllocation, value);
-    }
-
-    public static VkMemoryDedicatedRequirements allocate(Arena arena) {
-        return new VkMemoryDedicatedRequirements(arena.allocate(LAYOUT));
-    }
-    
-    public static VkMemoryDedicatedRequirements[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkMemoryDedicatedRequirements[] ret = new VkMemoryDedicatedRequirements[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkMemoryDedicatedRequirements(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

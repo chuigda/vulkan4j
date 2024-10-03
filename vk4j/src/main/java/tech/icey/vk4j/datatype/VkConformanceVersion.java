@@ -1,47 +1,27 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.unsigned;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
-public record VkConformanceVersion(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("major"),
-        ValueLayout.JAVA_BYTE.withName("minor"),
-        ValueLayout.JAVA_BYTE.withName("subminor"),
-        ValueLayout.JAVA_BYTE.withName("patch")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
+import static java.lang.foreign.ValueLayout.OfByte;
+import static java.lang.foreign.ValueLayout.PathElement;
 
-    public static final PathElement PATH$major = PathElement.groupElement("major");
-    public static final PathElement PATH$minor = PathElement.groupElement("minor");
-    public static final PathElement PATH$subminor = PathElement.groupElement("subminor");
-    public static final PathElement PATH$patch = PathElement.groupElement("patch");
-
-    public static final OfByte LAYOUT$major = (OfByte) LAYOUT.select(PATH$major);
-    public static final OfByte LAYOUT$minor = (OfByte) LAYOUT.select(PATH$minor);
-    public static final OfByte LAYOUT$subminor = (OfByte) LAYOUT.select(PATH$subminor);
-    public static final OfByte LAYOUT$patch = (OfByte) LAYOUT.select(PATH$patch);
-
-    public static final long OFFSET$major = LAYOUT.byteOffset(PATH$major);
-    public static final long OFFSET$minor = LAYOUT.byteOffset(PATH$minor);
-    public static final long OFFSET$subminor = LAYOUT.byteOffset(PATH$subminor);
-    public static final long OFFSET$patch = LAYOUT.byteOffset(PATH$patch);
-
-    public static final long SIZE$major = LAYOUT$major.byteSize();
-    public static final long SIZE$minor = LAYOUT$minor.byteSize();
-    public static final long SIZE$subminor = LAYOUT$subminor.byteSize();
-    public static final long SIZE$patch = LAYOUT$patch.byteSize();
-
+/// {@snippet lang=c :
+/// typedef struct VkConformanceVersion {
+///     uint8_t major;
+///     uint8_t minor;
+///     uint8_t subminor;
+///     uint8_t patch;
+/// } VkConformanceVersion;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkConformanceVersion.html">VkConformanceVersion</a>
+public record VkConformanceVersion(MemorySegment segment) implements IPointer {
     public VkConformanceVersion(MemorySegment segment) {
         this.segment = segment;
     }
@@ -81,7 +61,7 @@ public record VkConformanceVersion(MemorySegment segment) {
     public static VkConformanceVersion allocate(Arena arena) {
         return new VkConformanceVersion(arena.allocate(LAYOUT));
     }
-    
+
     public static VkConformanceVersion[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkConformanceVersion[] ret = new VkConformanceVersion[count];
@@ -90,4 +70,46 @@ public record VkConformanceVersion(MemorySegment segment) {
         }
         return ret;
     }
+
+    public static VkConformanceVersion clone(Arena arena, VkConformanceVersion src) {
+        VkConformanceVersion ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkConformanceVersion[] clone(Arena arena, VkConformanceVersion[] src) {
+        VkConformanceVersion[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_BYTE.withName("major"),
+        ValueLayout.JAVA_BYTE.withName("minor"),
+        ValueLayout.JAVA_BYTE.withName("subminor"),
+        ValueLayout.JAVA_BYTE.withName("patch")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$major = PathElement.groupElement("major");
+    public static final PathElement PATH$minor = PathElement.groupElement("minor");
+    public static final PathElement PATH$subminor = PathElement.groupElement("subminor");
+    public static final PathElement PATH$patch = PathElement.groupElement("patch");
+
+    public static final OfByte LAYOUT$major = (OfByte) LAYOUT.select(PATH$major);
+    public static final OfByte LAYOUT$minor = (OfByte) LAYOUT.select(PATH$minor);
+    public static final OfByte LAYOUT$subminor = (OfByte) LAYOUT.select(PATH$subminor);
+    public static final OfByte LAYOUT$patch = (OfByte) LAYOUT.select(PATH$patch);
+
+    public static final long OFFSET$major = LAYOUT.byteOffset(PATH$major);
+    public static final long OFFSET$minor = LAYOUT.byteOffset(PATH$minor);
+    public static final long OFFSET$subminor = LAYOUT.byteOffset(PATH$subminor);
+    public static final long OFFSET$patch = LAYOUT.byteOffset(PATH$patch);
+
+    public static final long SIZE$major = LAYOUT$major.byteSize();
+    public static final long SIZE$minor = LAYOUT$minor.byteSize();
+    public static final long SIZE$subminor = LAYOUT$subminor.byteSize();
+    public static final long SIZE$patch = LAYOUT$patch.byteSize();
 }

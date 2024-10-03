@@ -1,19 +1,131 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsafe;
+import tech.icey.vk4j.bitmask.VkResolveModeFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE;
 
-public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkSubpassDescriptionDepthStencilResolve {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkResolveModeFlagBits depthResolveMode;
+///     VkResolveModeFlagBits stencilResolveMode;
+///     const VkAttachmentReference2* pDepthStencilResolveAttachment;
+/// } VkSubpassDescriptionDepthStencilResolve;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubpassDescriptionDepthStencilResolve.html">VkSubpassDescriptionDepthStencilResolve</a>
+public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) implements IPointer {
+    public VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkResolveModeFlags.class) int depthResolveMode() {
+        return segment.get(LAYOUT$depthResolveMode, OFFSET$depthResolveMode);
+    }
+
+    public void depthResolveMode(@enumtype(VkResolveModeFlags.class) int value) {
+        segment.set(LAYOUT$depthResolveMode, OFFSET$depthResolveMode, value);
+    }
+
+    public @enumtype(VkResolveModeFlags.class) int stencilResolveMode() {
+        return segment.get(LAYOUT$stencilResolveMode, OFFSET$stencilResolveMode);
+    }
+
+    public void stencilResolveMode(@enumtype(VkResolveModeFlags.class) int value) {
+        segment.set(LAYOUT$stencilResolveMode, OFFSET$stencilResolveMode, value);
+    }
+
+    public @pointer(comment="VkAttachmentReference2*") MemorySegment pDepthStencilResolveAttachmentRaw() {
+        return segment.get(LAYOUT$pDepthStencilResolveAttachment, OFFSET$pDepthStencilResolveAttachment);
+    }
+
+    public void pDepthStencilResolveAttachmentRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
+        segment.set(LAYOUT$pDepthStencilResolveAttachment, OFFSET$pDepthStencilResolveAttachment, value);
+    }
+
+    public @nullable VkAttachmentReference2 pDepthStencilResolveAttachment() {
+        MemorySegment s = pDepthStencilResolveAttachmentRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkAttachmentReference2(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkAttachmentReference2[] pDepthStencilResolveAttachment(int assumedCount) {
+        MemorySegment s = pDepthStencilResolveAttachmentRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);
+        VkAttachmentReference2[] arr = new VkAttachmentReference2[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkAttachmentReference2(s.asSlice(i * VkAttachmentReference2.SIZE, VkAttachmentReference2.SIZE));
+        }
+        return arr;
+    }
+
+    public void pDepthStencilResolveAttachment(@nullable VkAttachmentReference2 value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDepthStencilResolveAttachmentRaw(s);
+    }
+
+    public static VkSubpassDescriptionDepthStencilResolve allocate(Arena arena) {
+        return new VkSubpassDescriptionDepthStencilResolve(arena.allocate(LAYOUT));
+    }
+
+    public static VkSubpassDescriptionDepthStencilResolve[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkSubpassDescriptionDepthStencilResolve[] ret = new VkSubpassDescriptionDepthStencilResolve[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkSubpassDescriptionDepthStencilResolve(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkSubpassDescriptionDepthStencilResolve clone(Arena arena, VkSubpassDescriptionDepthStencilResolve src) {
+        VkSubpassDescriptionDepthStencilResolve ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSubpassDescriptionDepthStencilResolve[] clone(Arena arena, VkSubpassDescriptionDepthStencilResolve[] src) {
+        VkSubpassDescriptionDepthStencilResolve[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -46,75 +158,4 @@ public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) {
     public static final long SIZE$depthResolveMode = LAYOUT$depthResolveMode.byteSize();
     public static final long SIZE$stencilResolveMode = LAYOUT$stencilResolveMode.byteSize();
     public static final long SIZE$pDepthStencilResolveAttachment = LAYOUT$pDepthStencilResolveAttachment.byteSize();
-
-    public VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkResolveModeFlags.class) int depthResolveMode() {
-        return segment.get(LAYOUT$depthResolveMode, OFFSET$depthResolveMode);
-    }
-
-    public void depthResolveMode(@enumtype(VkResolveModeFlags.class) int value) {
-        segment.set(LAYOUT$depthResolveMode, OFFSET$depthResolveMode, value);
-    }
-
-    public @enumtype(VkResolveModeFlags.class) int stencilResolveMode() {
-        return segment.get(LAYOUT$stencilResolveMode, OFFSET$stencilResolveMode);
-    }
-
-    public void stencilResolveMode(@enumtype(VkResolveModeFlags.class) int value) {
-        segment.set(LAYOUT$stencilResolveMode, OFFSET$stencilResolveMode, value);
-    }
-
-    public @pointer(comment="VkAttachmentReference2*") MemorySegment pDepthStencilResolveAttachmentRaw() {
-        return segment.get(LAYOUT$pDepthStencilResolveAttachment, OFFSET$pDepthStencilResolveAttachment);
-    }
-
-    public void pDepthStencilResolveAttachmentRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
-        segment.set(LAYOUT$pDepthStencilResolveAttachment, OFFSET$pDepthStencilResolveAttachment, value);
-    }
-    
-    public @nullable VkAttachmentReference2 pDepthStencilResolveAttachment() {
-        MemorySegment s = pDepthStencilResolveAttachmentRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkAttachmentReference2(s);
-    }
-
-    public void pDepthStencilResolveAttachment(@nullable VkAttachmentReference2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDepthStencilResolveAttachmentRaw(s);
-    }
-
-    public static VkSubpassDescriptionDepthStencilResolve allocate(Arena arena) {
-        return new VkSubpassDescriptionDepthStencilResolve(arena.allocate(LAYOUT));
-    }
-    
-    public static VkSubpassDescriptionDepthStencilResolve[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSubpassDescriptionDepthStencilResolve[] ret = new VkSubpassDescriptionDepthStencilResolve[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkSubpassDescriptionDepthStencilResolve(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

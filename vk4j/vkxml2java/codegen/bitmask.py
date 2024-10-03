@@ -1,5 +1,5 @@
-from .ctype import CTYPE_INT64, CTYPE_INT32
-from ..entity import Bitmask, Registry
+from .ctype import CTYPE_INT64, CTYPE_INT32, CType
+from ..entity import Bitmask, Registry, Bitflag
 
 
 def generate_bitmask(registry: Registry, bitmask: Bitmask) -> str:
@@ -25,9 +25,39 @@ def generate_bitmask(registry: Registry, bitmask: Bitmask) -> str:
     else:
         raise ValueError(f'unsupported bitwidth: {content_bitmask.bitwidth}')
 
+    if len(content_bitmask.bitflags) == 0:
+        return f'''package tech.icey.vk4j.bitmask;
+
+public final class {bitmask_name} {{
+}}
+'''
+
     return f'''package tech.icey.vk4j.bitmask;
+
+import tech.icey.panama.annotation.enumtype;
 
 public final class {bitmask_name} {{
 {'\n'.join(f'    public static final {bitmask_type.java_type()} {flag.name} = {flag.value}{postfix};' for flag in content_bitmask.bitflags)}
+
+{generate_bitflags_explain(content_bitmask, bitmask_name, bitmask_type)}
 }}
+'''
+
+
+def generate_bitflags_explain(bitmask: Bitmask, bitmask_name: str, bitmask_type: CType) -> str:
+    return f'''    public static String explain(@enumtype({bitmask_name}.class) {bitmask_type.java_type()} flags) {{
+        StringBuilder sb = new StringBuilder();
+
+{'\n'.join(generate_bitflag_explain(bitflag) for bitflag in bitmask.bitflags)}
+        return sb.toString();
+    }}'''
+
+
+def generate_bitflag_explain(bitflag: Bitflag) -> str:
+    return f'''        if ((flags & {bitflag.name}) != 0) {{
+            if (!sb.isEmpty()) {{
+                sb.append(" | ");
+            }}
+            sb.append("{bitflag.name}");
+        }}
 '''

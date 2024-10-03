@@ -1,19 +1,158 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.ByteBuffer;
+import tech.icey.vk4j.enumtype.VkDeviceFaultVendorBinaryHeaderVersionEXT;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.VK_UUID_SIZE;
 
-public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkDeviceFaultVendorBinaryHeaderVersionOneEXT {
+///     uint32_t headerSize;
+///     VkDeviceFaultVendorBinaryHeaderVersionEXT headerVersion;
+///     uint32_t vendorID;
+///     uint32_t deviceID;
+///     uint32_t driverVersion;
+///     uint8_t pipelineCacheUUID[VK_UUID_SIZE];
+///     uint32_t applicationNameOffset;
+///     uint32_t applicationVersion;
+///     uint32_t engineNameOffset;
+///     uint32_t engineVersion;
+///     uint32_t apiVersion;
+/// } VkDeviceFaultVendorBinaryHeaderVersionOneEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceFaultVendorBinaryHeaderVersionOneEXT.html">VkDeviceFaultVendorBinaryHeaderVersionOneEXT</a>
+public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment) implements IPointer {
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment) {
+        this.segment = segment;
+    }
+
+    public @unsigned int headerSize() {
+        return segment.get(LAYOUT$headerSize, OFFSET$headerSize);
+    }
+
+    public void headerSize(@unsigned int value) {
+        segment.set(LAYOUT$headerSize, OFFSET$headerSize, value);
+    }
+
+    public @enumtype(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int headerVersion() {
+        return segment.get(LAYOUT$headerVersion, OFFSET$headerVersion);
+    }
+
+    public void headerVersion(@enumtype(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int value) {
+        segment.set(LAYOUT$headerVersion, OFFSET$headerVersion, value);
+    }
+
+    public @unsigned int vendorID() {
+        return segment.get(LAYOUT$vendorID, OFFSET$vendorID);
+    }
+
+    public void vendorID(@unsigned int value) {
+        segment.set(LAYOUT$vendorID, OFFSET$vendorID, value);
+    }
+
+    public @unsigned int deviceID() {
+        return segment.get(LAYOUT$deviceID, OFFSET$deviceID);
+    }
+
+    public void deviceID(@unsigned int value) {
+        segment.set(LAYOUT$deviceID, OFFSET$deviceID, value);
+    }
+
+    public @unsigned int driverVersion() {
+        return segment.get(LAYOUT$driverVersion, OFFSET$driverVersion);
+    }
+
+    public void driverVersion(@unsigned int value) {
+        segment.set(LAYOUT$driverVersion, OFFSET$driverVersion, value);
+    }
+
+    public MemorySegment pipelineCacheUUIDRaw() {
+        return segment.asSlice(OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
+    }
+
+    public @unsigned ByteBuffer pipelineCacheUUID() {
+        return new ByteBuffer(pipelineCacheUUIDRaw());
+    }
+
+    public void pipelineCacheUUID(@unsigned ByteBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
+    }
+
+    public @unsigned int applicationNameOffset() {
+        return segment.get(LAYOUT$applicationNameOffset, OFFSET$applicationNameOffset);
+    }
+
+    public void applicationNameOffset(@unsigned int value) {
+        segment.set(LAYOUT$applicationNameOffset, OFFSET$applicationNameOffset, value);
+    }
+
+    public @unsigned int applicationVersion() {
+        return segment.get(LAYOUT$applicationVersion, OFFSET$applicationVersion);
+    }
+
+    public void applicationVersion(@unsigned int value) {
+        segment.set(LAYOUT$applicationVersion, OFFSET$applicationVersion, value);
+    }
+
+    public @unsigned int engineNameOffset() {
+        return segment.get(LAYOUT$engineNameOffset, OFFSET$engineNameOffset);
+    }
+
+    public void engineNameOffset(@unsigned int value) {
+        segment.set(LAYOUT$engineNameOffset, OFFSET$engineNameOffset, value);
+    }
+
+    public @unsigned int engineVersion() {
+        return segment.get(LAYOUT$engineVersion, OFFSET$engineVersion);
+    }
+
+    public void engineVersion(@unsigned int value) {
+        segment.set(LAYOUT$engineVersion, OFFSET$engineVersion, value);
+    }
+
+    public @unsigned int apiVersion() {
+        return segment.get(LAYOUT$apiVersion, OFFSET$apiVersion);
+    }
+
+    public void apiVersion(@unsigned int value) {
+        segment.set(LAYOUT$apiVersion, OFFSET$apiVersion, value);
+    }
+
+    public static VkDeviceFaultVendorBinaryHeaderVersionOneEXT allocate(Arena arena) {
+        return new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkDeviceFaultVendorBinaryHeaderVersionOneEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDeviceFaultVendorBinaryHeaderVersionOneEXT[] ret = new VkDeviceFaultVendorBinaryHeaderVersionOneEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkDeviceFaultVendorBinaryHeaderVersionOneEXT clone(Arena arena, VkDeviceFaultVendorBinaryHeaderVersionOneEXT src) {
+        VkDeviceFaultVendorBinaryHeaderVersionOneEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDeviceFaultVendorBinaryHeaderVersionOneEXT[] clone(Arena arena, VkDeviceFaultVendorBinaryHeaderVersionOneEXT[] src) {
+        VkDeviceFaultVendorBinaryHeaderVersionOneEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("headerSize"),
         ValueLayout.JAVA_INT.withName("headerVersion"),
@@ -76,113 +215,4 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment
     public static final long SIZE$engineNameOffset = LAYOUT$engineNameOffset.byteSize();
     public static final long SIZE$engineVersion = LAYOUT$engineVersion.byteSize();
     public static final long SIZE$apiVersion = LAYOUT$apiVersion.byteSize();
-
-    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT(MemorySegment segment) {
-        this.segment = segment;
-    }
-
-    public @unsigned int headerSize() {
-        return segment.get(LAYOUT$headerSize, OFFSET$headerSize);
-    }
-
-    public void headerSize(@unsigned int value) {
-        segment.set(LAYOUT$headerSize, OFFSET$headerSize, value);
-    }
-
-    public @enumtype(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int headerVersion() {
-        return segment.get(LAYOUT$headerVersion, OFFSET$headerVersion);
-    }
-
-    public void headerVersion(@enumtype(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int value) {
-        segment.set(LAYOUT$headerVersion, OFFSET$headerVersion, value);
-    }
-
-    public @unsigned int vendorID() {
-        return segment.get(LAYOUT$vendorID, OFFSET$vendorID);
-    }
-
-    public void vendorID(@unsigned int value) {
-        segment.set(LAYOUT$vendorID, OFFSET$vendorID, value);
-    }
-
-    public @unsigned int deviceID() {
-        return segment.get(LAYOUT$deviceID, OFFSET$deviceID);
-    }
-
-    public void deviceID(@unsigned int value) {
-        segment.set(LAYOUT$deviceID, OFFSET$deviceID, value);
-    }
-
-    public @unsigned int driverVersion() {
-        return segment.get(LAYOUT$driverVersion, OFFSET$driverVersion);
-    }
-
-    public void driverVersion(@unsigned int value) {
-        segment.set(LAYOUT$driverVersion, OFFSET$driverVersion, value);
-    }
-
-    public MemorySegment pipelineCacheUUIDRaw() {
-        return segment.asSlice(OFFSET$pipelineCacheUUID, LAYOUT$pipelineCacheUUID.byteSize());
-    }
-
-    public @unsigned ByteBuffer pipelineCacheUUID() {
-        return new ByteBuffer(pipelineCacheUUIDRaw());
-    }
-
-    public void pipelineCacheUUID(@unsigned ByteBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, LAYOUT$pipelineCacheUUID.byteSize());
-    }
-
-    public @unsigned int applicationNameOffset() {
-        return segment.get(LAYOUT$applicationNameOffset, OFFSET$applicationNameOffset);
-    }
-
-    public void applicationNameOffset(@unsigned int value) {
-        segment.set(LAYOUT$applicationNameOffset, OFFSET$applicationNameOffset, value);
-    }
-
-    public @unsigned int applicationVersion() {
-        return segment.get(LAYOUT$applicationVersion, OFFSET$applicationVersion);
-    }
-
-    public void applicationVersion(@unsigned int value) {
-        segment.set(LAYOUT$applicationVersion, OFFSET$applicationVersion, value);
-    }
-
-    public @unsigned int engineNameOffset() {
-        return segment.get(LAYOUT$engineNameOffset, OFFSET$engineNameOffset);
-    }
-
-    public void engineNameOffset(@unsigned int value) {
-        segment.set(LAYOUT$engineNameOffset, OFFSET$engineNameOffset, value);
-    }
-
-    public @unsigned int engineVersion() {
-        return segment.get(LAYOUT$engineVersion, OFFSET$engineVersion);
-    }
-
-    public void engineVersion(@unsigned int value) {
-        segment.set(LAYOUT$engineVersion, OFFSET$engineVersion, value);
-    }
-
-    public @unsigned int apiVersion() {
-        return segment.get(LAYOUT$apiVersion, OFFSET$apiVersion);
-    }
-
-    public void apiVersion(@unsigned int value) {
-        segment.set(LAYOUT$apiVersion, OFFSET$apiVersion, value);
-    }
-
-    public static VkDeviceFaultVendorBinaryHeaderVersionOneEXT allocate(Arena arena) {
-        return new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkDeviceFaultVendorBinaryHeaderVersionOneEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDeviceFaultVendorBinaryHeaderVersionOneEXT[] ret = new VkDeviceFaultVendorBinaryHeaderVersionOneEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

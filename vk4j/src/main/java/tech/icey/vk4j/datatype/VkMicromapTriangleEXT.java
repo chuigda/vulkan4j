@@ -1,42 +1,25 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.unsigned;
+
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
-
-public record VkMicromapTriangleEXT(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("dataOffset"),
-        ValueLayout.JAVA_SHORT.withName("subdivisionLevel"),
-        ValueLayout.JAVA_SHORT.withName("format")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$dataOffset = PathElement.groupElement("dataOffset");
-    public static final PathElement PATH$subdivisionLevel = PathElement.groupElement("subdivisionLevel");
-    public static final PathElement PATH$format = PathElement.groupElement("format");
-
-    public static final OfInt LAYOUT$dataOffset = (OfInt) LAYOUT.select(PATH$dataOffset);
-    public static final OfShort LAYOUT$subdivisionLevel = (OfShort) LAYOUT.select(PATH$subdivisionLevel);
-    public static final OfShort LAYOUT$format = (OfShort) LAYOUT.select(PATH$format);
-
-    public static final long OFFSET$dataOffset = LAYOUT.byteOffset(PATH$dataOffset);
-    public static final long OFFSET$subdivisionLevel = LAYOUT.byteOffset(PATH$subdivisionLevel);
-    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
-
-    public static final long SIZE$dataOffset = LAYOUT$dataOffset.byteSize();
-    public static final long SIZE$subdivisionLevel = LAYOUT$subdivisionLevel.byteSize();
-    public static final long SIZE$format = LAYOUT$format.byteSize();
-
+/// {@snippet lang=c :
+/// typedef struct VkMicromapTriangleEXT {
+///     uint32_t dataOffset;
+///     uint16_t subdivisionLevel;
+///     uint16_t format;
+/// } VkMicromapTriangleEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMicromapTriangleEXT.html">VkMicromapTriangleEXT</a>
+public record VkMicromapTriangleEXT(MemorySegment segment) implements IPointer {
     public VkMicromapTriangleEXT(MemorySegment segment) {
         this.segment = segment;
     }
@@ -68,7 +51,7 @@ public record VkMicromapTriangleEXT(MemorySegment segment) {
     public static VkMicromapTriangleEXT allocate(Arena arena) {
         return new VkMicromapTriangleEXT(arena.allocate(LAYOUT));
     }
-    
+
     public static VkMicromapTriangleEXT[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMicromapTriangleEXT[] ret = new VkMicromapTriangleEXT[count];
@@ -77,4 +60,41 @@ public record VkMicromapTriangleEXT(MemorySegment segment) {
         }
         return ret;
     }
+
+    public static VkMicromapTriangleEXT clone(Arena arena, VkMicromapTriangleEXT src) {
+        VkMicromapTriangleEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkMicromapTriangleEXT[] clone(Arena arena, VkMicromapTriangleEXT[] src) {
+        VkMicromapTriangleEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("dataOffset"),
+        ValueLayout.JAVA_SHORT.withName("subdivisionLevel"),
+        ValueLayout.JAVA_SHORT.withName("format")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$dataOffset = PathElement.groupElement("dataOffset");
+    public static final PathElement PATH$subdivisionLevel = PathElement.groupElement("subdivisionLevel");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+
+    public static final OfInt LAYOUT$dataOffset = (OfInt) LAYOUT.select(PATH$dataOffset);
+    public static final OfShort LAYOUT$subdivisionLevel = (OfShort) LAYOUT.select(PATH$subdivisionLevel);
+    public static final OfShort LAYOUT$format = (OfShort) LAYOUT.select(PATH$format);
+
+    public static final long OFFSET$dataOffset = LAYOUT.byteOffset(PATH$dataOffset);
+    public static final long OFFSET$subdivisionLevel = LAYOUT.byteOffset(PATH$subdivisionLevel);
+    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
+
+    public static final long SIZE$dataOffset = LAYOUT$dataOffset.byteSize();
+    public static final long SIZE$subdivisionLevel = LAYOUT$subdivisionLevel.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
 }

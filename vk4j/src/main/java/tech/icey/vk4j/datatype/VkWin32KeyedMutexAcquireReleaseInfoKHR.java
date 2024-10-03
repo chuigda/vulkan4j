@@ -1,19 +1,226 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.IntBuffer;
+import tech.icey.panama.buffer.LongBuffer;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkDeviceMemory;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR;
 
-public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkWin32KeyedMutexAcquireReleaseInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t acquireCount;
+///     const VkDeviceMemory* pAcquireSyncs;
+///     const uint64_t* pAcquireKeys;
+///     const uint32_t* pAcquireTimeouts;
+///     uint32_t releaseCount;
+///     const VkDeviceMemory* pReleaseSyncs;
+///     const uint64_t* pReleaseKeys;
+/// } VkWin32KeyedMutexAcquireReleaseInfoKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkWin32KeyedMutexAcquireReleaseInfoKHR.html">VkWin32KeyedMutexAcquireReleaseInfoKHR</a>
+public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) implements IPointer {
+    public VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int acquireCount() {
+        return segment.get(LAYOUT$acquireCount, OFFSET$acquireCount);
+    }
+
+    public void acquireCount(@unsigned int value) {
+        segment.set(LAYOUT$acquireCount, OFFSET$acquireCount, value);
+    }
+
+    public @pointer(comment="VkDeviceMemory") MemorySegment pAcquireSyncsRaw() {
+        return segment.get(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs);
+    }
+
+    public void pAcquireSyncsRaw(@pointer(comment="VkDeviceMemory") MemorySegment value) {
+        segment.set(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs, value);
+    }
+
+    /// Note: the returned {@link VkDeviceMemory.Buffer} does not have correct
+    /// {@link VkDeviceMemory.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkDeviceMemory.Buffer#reinterpret} to set the size before actually
+    /// {@link VkDeviceMemory.Buffer#read}ing or {@link VkDeviceMemory.Buffer#write}ing
+    /// the buffer.
+    public @nullable VkDeviceMemory.Buffer pAcquireSyncs() {
+        MemorySegment s = pAcquireSyncsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDeviceMemory.Buffer(s);
+    }
+
+    public void pAcquireSyncs(@nullable VkDeviceMemory.Buffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pAcquireSyncsRaw(s);
+    }
+
+    public @pointer(comment="uint64_t*") MemorySegment pAcquireKeysRaw() {
+        return segment.get(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys);
+    }
+
+    public void pAcquireKeysRaw(@pointer(comment="uint64_t*") MemorySegment value) {
+        segment.set(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys, value);
+    }
+
+    /// Note: the returned {@link LongBuffer} does not have correct
+    /// {@link LongBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link LongBuffer#reinterpret} to set the size before actually
+    /// {@link LongBuffer#read}ing or
+    /// {@link LongBuffer#write}ing the buffer.
+    public @nullable @unsigned LongBuffer pAcquireKeys() {
+        MemorySegment s = pAcquireKeysRaw();
+        return s.address() == 0 ? null : new LongBuffer(s);
+    }
+
+    public void pAcquireKeys(@nullable @unsigned LongBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pAcquireKeysRaw(s);
+    }
+
+    public @pointer(comment="uint32_t*") MemorySegment pAcquireTimeoutsRaw() {
+        return segment.get(LAYOUT$pAcquireTimeouts, OFFSET$pAcquireTimeouts);
+    }
+
+    public void pAcquireTimeoutsRaw(@pointer(comment="uint32_t*") MemorySegment value) {
+        segment.set(LAYOUT$pAcquireTimeouts, OFFSET$pAcquireTimeouts, value);
+    }
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
+    public @nullable @unsigned IntBuffer pAcquireTimeouts() {
+        MemorySegment s = pAcquireTimeoutsRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
+    }
+
+    public void pAcquireTimeouts(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pAcquireTimeoutsRaw(s);
+    }
+
+    public @unsigned int releaseCount() {
+        return segment.get(LAYOUT$releaseCount, OFFSET$releaseCount);
+    }
+
+    public void releaseCount(@unsigned int value) {
+        segment.set(LAYOUT$releaseCount, OFFSET$releaseCount, value);
+    }
+
+    public @pointer(comment="VkDeviceMemory") MemorySegment pReleaseSyncsRaw() {
+        return segment.get(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs);
+    }
+
+    public void pReleaseSyncsRaw(@pointer(comment="VkDeviceMemory") MemorySegment value) {
+        segment.set(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs, value);
+    }
+
+    /// Note: the returned {@link VkDeviceMemory.Buffer} does not have correct
+    /// {@link VkDeviceMemory.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkDeviceMemory.Buffer#reinterpret} to set the size before actually
+    /// {@link VkDeviceMemory.Buffer#read}ing or {@link VkDeviceMemory.Buffer#write}ing
+    /// the buffer.
+    public @nullable VkDeviceMemory.Buffer pReleaseSyncs() {
+        MemorySegment s = pReleaseSyncsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDeviceMemory.Buffer(s);
+    }
+
+    public void pReleaseSyncs(@nullable VkDeviceMemory.Buffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pReleaseSyncsRaw(s);
+    }
+
+    public @pointer(comment="uint64_t*") MemorySegment pReleaseKeysRaw() {
+        return segment.get(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys);
+    }
+
+    public void pReleaseKeysRaw(@pointer(comment="uint64_t*") MemorySegment value) {
+        segment.set(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys, value);
+    }
+
+    /// Note: the returned {@link LongBuffer} does not have correct
+    /// {@link LongBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link LongBuffer#reinterpret} to set the size before actually
+    /// {@link LongBuffer#read}ing or
+    /// {@link LongBuffer#write}ing the buffer.
+    public @nullable @unsigned LongBuffer pReleaseKeys() {
+        MemorySegment s = pReleaseKeysRaw();
+        return s.address() == 0 ? null : new LongBuffer(s);
+    }
+
+    public void pReleaseKeys(@nullable @unsigned LongBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pReleaseKeysRaw(s);
+    }
+
+    public static VkWin32KeyedMutexAcquireReleaseInfoKHR allocate(Arena arena) {
+        return new VkWin32KeyedMutexAcquireReleaseInfoKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkWin32KeyedMutexAcquireReleaseInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkWin32KeyedMutexAcquireReleaseInfoKHR[] ret = new VkWin32KeyedMutexAcquireReleaseInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkWin32KeyedMutexAcquireReleaseInfoKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkWin32KeyedMutexAcquireReleaseInfoKHR clone(Arena arena, VkWin32KeyedMutexAcquireReleaseInfoKHR src) {
+        VkWin32KeyedMutexAcquireReleaseInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkWin32KeyedMutexAcquireReleaseInfoKHR[] clone(Arena arena, VkWin32KeyedMutexAcquireReleaseInfoKHR[] src) {
+        VkWin32KeyedMutexAcquireReleaseInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -66,144 +273,4 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) {
     public static final long SIZE$releaseCount = LAYOUT$releaseCount.byteSize();
     public static final long SIZE$pReleaseSyncs = LAYOUT$pReleaseSyncs.byteSize();
     public static final long SIZE$pReleaseKeys = LAYOUT$pReleaseKeys.byteSize();
-
-    public VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int acquireCount() {
-        return segment.get(LAYOUT$acquireCount, OFFSET$acquireCount);
-    }
-
-    public void acquireCount(@unsigned int value) {
-        segment.set(LAYOUT$acquireCount, OFFSET$acquireCount, value);
-    }
-
-    public @pointer(comment="VkDeviceMemory") MemorySegment pAcquireSyncsRaw() {
-        return segment.get(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs);
-    }
-
-    public void pAcquireSyncsRaw(@pointer(comment="VkDeviceMemory") MemorySegment value) {
-        segment.set(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs, value);
-    }
-
-    public @nullable VkDeviceMemory.Buffer pAcquireSyncs() {
-        MemorySegment s = pAcquireSyncsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDeviceMemory.Buffer(s);
-    }
-
-    public void pAcquireSyncs(@nullable VkDeviceMemory.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pAcquireSyncsRaw(s);
-    }
-
-    public @pointer(comment="uint64_t*") MemorySegment pAcquireKeysRaw() {
-        return segment.get(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys);
-    }
-
-    public void pAcquireKeysRaw(@pointer(comment="uint64_t*") MemorySegment value) {
-        segment.set(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys, value);
-    }
-    
-    public @unsigned LongBuffer pAcquireKeys() {
-        return new LongBuffer(pAcquireKeysRaw());
-    }
-
-    public void pAcquireKeys(@unsigned LongBuffer value) {
-        pAcquireKeysRaw(value.segment());
-    }
-
-    public @pointer(comment="uint32_t*") MemorySegment pAcquireTimeoutsRaw() {
-        return segment.get(LAYOUT$pAcquireTimeouts, OFFSET$pAcquireTimeouts);
-    }
-
-    public void pAcquireTimeoutsRaw(@pointer(comment="uint32_t*") MemorySegment value) {
-        segment.set(LAYOUT$pAcquireTimeouts, OFFSET$pAcquireTimeouts, value);
-    }
-    
-    public @unsigned IntBuffer pAcquireTimeouts() {
-        return new IntBuffer(pAcquireTimeoutsRaw());
-    }
-
-    public void pAcquireTimeouts(@unsigned IntBuffer value) {
-        pAcquireTimeoutsRaw(value.segment());
-    }
-
-    public @unsigned int releaseCount() {
-        return segment.get(LAYOUT$releaseCount, OFFSET$releaseCount);
-    }
-
-    public void releaseCount(@unsigned int value) {
-        segment.set(LAYOUT$releaseCount, OFFSET$releaseCount, value);
-    }
-
-    public @pointer(comment="VkDeviceMemory") MemorySegment pReleaseSyncsRaw() {
-        return segment.get(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs);
-    }
-
-    public void pReleaseSyncsRaw(@pointer(comment="VkDeviceMemory") MemorySegment value) {
-        segment.set(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs, value);
-    }
-
-    public @nullable VkDeviceMemory.Buffer pReleaseSyncs() {
-        MemorySegment s = pReleaseSyncsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDeviceMemory.Buffer(s);
-    }
-
-    public void pReleaseSyncs(@nullable VkDeviceMemory.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pReleaseSyncsRaw(s);
-    }
-
-    public @pointer(comment="uint64_t*") MemorySegment pReleaseKeysRaw() {
-        return segment.get(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys);
-    }
-
-    public void pReleaseKeysRaw(@pointer(comment="uint64_t*") MemorySegment value) {
-        segment.set(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys, value);
-    }
-    
-    public @unsigned LongBuffer pReleaseKeys() {
-        return new LongBuffer(pReleaseKeysRaw());
-    }
-
-    public void pReleaseKeys(@unsigned LongBuffer value) {
-        pReleaseKeysRaw(value.segment());
-    }
-
-    public static VkWin32KeyedMutexAcquireReleaseInfoKHR allocate(Arena arena) {
-        return new VkWin32KeyedMutexAcquireReleaseInfoKHR(arena.allocate(LAYOUT));
-    }
-    
-    public static VkWin32KeyedMutexAcquireReleaseInfoKHR[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkWin32KeyedMutexAcquireReleaseInfoKHR[] ret = new VkWin32KeyedMutexAcquireReleaseInfoKHR[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkWin32KeyedMutexAcquireReleaseInfoKHR(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

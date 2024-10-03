@@ -12,6 +12,7 @@ def filter_registry(registry: Registry) -> Registry:
         aliases=registry.aliases,
         bitmasks=iter2dict(filter(filter_supported_entities, map(filter_bitflags, registry.bitmasks.values()))),
         constants=iter2dict(filter(filter_supported_entities, registry.constants.values())),
+        extension_names=registry.extension_names,
         commands=iter2dict(filter(filter_supported_entities, map(filter_params, registry.commands.values()))),
         command_aliases=registry.command_aliases,
         enums=iter2dict(filter(filter_supported_entities, map(filter_variants, registry.enums.values()))),
@@ -41,7 +42,15 @@ def filter_variants(enum: Enum) -> Enum:
 
 def filter_members(structure: Structure) -> Structure:
     members = list(filter(lambda member: member.is_vulkan_api(), structure.members))
-    return Structure(structure.name, structure.api, members, structure.structextends, structure.has_init_, structure.is_union)
+    return Structure(
+        structure.name,
+        structure.api,
+        structure.verbatim,
+        members,
+        structure.structextends,
+        structure.has_init_,
+        structure.is_union
+    )
 
 
 UNSUPPORTED_EXTENSIONS: set[str] = set()

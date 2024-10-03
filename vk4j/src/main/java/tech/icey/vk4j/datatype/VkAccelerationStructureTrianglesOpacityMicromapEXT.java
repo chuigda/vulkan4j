@@ -1,19 +1,195 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.panama.buffer.PointerBuffer;
+import tech.icey.vk4j.enumtype.VkIndexType;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkMicromapEXT;
+
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_EXT;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+/// {@snippet lang=c :
+/// typedef struct VkAccelerationStructureTrianglesOpacityMicromapEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkIndexType indexType;
+///     VkDeviceOrHostAddressConstKHR indexBuffer;
+///     VkDeviceSize indexStride;
+///     uint32_t baseTriangle;
+///     uint32_t usageCountsCount;
+///     const VkMicromapUsageEXT* pUsageCounts;
+///     const VkMicromapUsageEXT* const* ppUsageCounts;
+///     VkMicromapEXT micromap;
+/// } VkAccelerationStructureTrianglesOpacityMicromapEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAccelerationStructureTrianglesOpacityMicromapEXT.html">VkAccelerationStructureTrianglesOpacityMicromapEXT</a>
+public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment segment) implements IPointer {
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_EXT);
+    }
 
-public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment segment) {
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkIndexType.class) int indexType() {
+        return segment.get(LAYOUT$indexType, OFFSET$indexType);
+    }
+
+    public void indexType(@enumtype(VkIndexType.class) int value) {
+        segment.set(LAYOUT$indexType, OFFSET$indexType, value);
+    }
+
+    public VkDeviceOrHostAddressConstKHR indexBuffer() {
+        return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$indexBuffer, LAYOUT$indexBuffer));
+    }
+
+    public void indexBuffer(VkDeviceOrHostAddressConstKHR value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexBuffer, SIZE$indexBuffer);
+    }
+
+    public @unsigned long indexStride() {
+        return segment.get(LAYOUT$indexStride, OFFSET$indexStride);
+    }
+
+    public void indexStride(@unsigned long value) {
+        segment.set(LAYOUT$indexStride, OFFSET$indexStride, value);
+    }
+
+    public @unsigned int baseTriangle() {
+        return segment.get(LAYOUT$baseTriangle, OFFSET$baseTriangle);
+    }
+
+    public void baseTriangle(@unsigned int value) {
+        segment.set(LAYOUT$baseTriangle, OFFSET$baseTriangle, value);
+    }
+
+    public @unsigned int usageCountsCount() {
+        return segment.get(LAYOUT$usageCountsCount, OFFSET$usageCountsCount);
+    }
+
+    public void usageCountsCount(@unsigned int value) {
+        segment.set(LAYOUT$usageCountsCount, OFFSET$usageCountsCount, value);
+    }
+
+    public @pointer(comment="VkMicromapUsageEXT*") MemorySegment pUsageCountsRaw() {
+        return segment.get(LAYOUT$pUsageCounts, OFFSET$pUsageCounts);
+    }
+
+    public void pUsageCountsRaw(@pointer(comment="VkMicromapUsageEXT*") MemorySegment value) {
+        segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
+    }
+
+    public @nullable VkMicromapUsageEXT pUsageCounts() {
+        MemorySegment s = pUsageCountsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkMicromapUsageEXT(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkMicromapUsageEXT[] pUsageCounts(int assumedCount) {
+        MemorySegment s = pUsageCountsRaw().reinterpret(assumedCount * VkMicromapUsageEXT.SIZE);
+        VkMicromapUsageEXT[] arr = new VkMicromapUsageEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkMicromapUsageEXT(s.asSlice(i * VkMicromapUsageEXT.SIZE, VkMicromapUsageEXT.SIZE));
+        }
+        return arr;
+    }
+
+    public void pUsageCounts(@nullable VkMicromapUsageEXT value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pUsageCountsRaw(s);
+    }
+
+    public @pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
+        return segment.get(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts);
+    }
+
+    public void ppUsageCountsRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts, value);
+    }
+
+    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the
+    /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
+    ///
+    /// @see PointerBuffer
+    public PointerBuffer ppUsageCounts() {
+        return new PointerBuffer(ppUsageCountsRaw());
+    }
+
+    public void ppUsageCounts(PointerBuffer value) {
+        ppUsageCountsRaw(value.segment());
+    }
+
+    public @nullable VkMicromapEXT micromap() {
+        MemorySegment s = segment.get(LAYOUT$micromap, OFFSET$micromap);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkMicromapEXT(s);
+    }
+
+    public void micromap(@nullable VkMicromapEXT value) {
+        segment.set(
+            LAYOUT$micromap,
+            OFFSET$micromap,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public static VkAccelerationStructureTrianglesOpacityMicromapEXT allocate(Arena arena) {
+        return new VkAccelerationStructureTrianglesOpacityMicromapEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkAccelerationStructureTrianglesOpacityMicromapEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkAccelerationStructureTrianglesOpacityMicromapEXT[] ret = new VkAccelerationStructureTrianglesOpacityMicromapEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkAccelerationStructureTrianglesOpacityMicromapEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkAccelerationStructureTrianglesOpacityMicromapEXT clone(Arena arena, VkAccelerationStructureTrianglesOpacityMicromapEXT src) {
+        VkAccelerationStructureTrianglesOpacityMicromapEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkAccelerationStructureTrianglesOpacityMicromapEXT[] clone(Arena arena, VkAccelerationStructureTrianglesOpacityMicromapEXT[] src) {
+        VkAccelerationStructureTrianglesOpacityMicromapEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -71,115 +247,4 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment s
     public static final long SIZE$pUsageCounts = LAYOUT$pUsageCounts.byteSize();
     public static final long SIZE$ppUsageCounts = LAYOUT$ppUsageCounts.byteSize();
     public static final long SIZE$micromap = LAYOUT$micromap.byteSize();
-
-    public VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkIndexType.class) int indexType() {
-        return segment.get(LAYOUT$indexType, OFFSET$indexType);
-    }
-
-    public void indexType(@enumtype(VkIndexType.class) int value) {
-        segment.set(LAYOUT$indexType, OFFSET$indexType, value);
-    }
-
-    public VkDeviceOrHostAddressConstKHR indexBuffer() {
-        return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$indexBuffer, LAYOUT$indexBuffer));
-    }
-
-    public void indexBuffer(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexBuffer, SIZE$indexBuffer);
-    }
-
-    public @unsigned long indexStride() {
-        return segment.get(LAYOUT$indexStride, OFFSET$indexStride);
-    }
-
-    public void indexStride(@unsigned long value) {
-        segment.set(LAYOUT$indexStride, OFFSET$indexStride, value);
-    }
-
-    public @unsigned int baseTriangle() {
-        return segment.get(LAYOUT$baseTriangle, OFFSET$baseTriangle);
-    }
-
-    public void baseTriangle(@unsigned int value) {
-        segment.set(LAYOUT$baseTriangle, OFFSET$baseTriangle, value);
-    }
-
-    public @unsigned int usageCountsCount() {
-        return segment.get(LAYOUT$usageCountsCount, OFFSET$usageCountsCount);
-    }
-
-    public void usageCountsCount(@unsigned int value) {
-        segment.set(LAYOUT$usageCountsCount, OFFSET$usageCountsCount, value);
-    }
-
-    public @pointer(comment="VkMicromapUsageEXT*") MemorySegment pUsageCountsRaw() {
-        return segment.get(LAYOUT$pUsageCounts, OFFSET$pUsageCounts);
-    }
-
-    public void pUsageCountsRaw(@pointer(comment="VkMicromapUsageEXT*") MemorySegment value) {
-        segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
-    }
-    
-    public @nullable VkMicromapUsageEXT pUsageCounts() {
-        MemorySegment s = pUsageCountsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkMicromapUsageEXT(s);
-    }
-
-    public void pUsageCounts(@nullable VkMicromapUsageEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pUsageCountsRaw(s);
-    }
-
-    public @pointer(comment="void**") MemorySegment ppUsageCounts() {
-        return segment.get(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts);
-    }
-
-    public void ppUsageCounts(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts, value);
-    }
-
-    public VkMicromapEXT micromap() {
-        return new VkMicromapEXT(segment.get(LAYOUT$micromap, OFFSET$micromap));
-    }
-
-    public void micromap(VkMicromapEXT value) {
-        segment.set(LAYOUT$micromap, OFFSET$micromap, value.segment());
-    }
-
-    public static VkAccelerationStructureTrianglesOpacityMicromapEXT allocate(Arena arena) {
-        return new VkAccelerationStructureTrianglesOpacityMicromapEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkAccelerationStructureTrianglesOpacityMicromapEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkAccelerationStructureTrianglesOpacityMicromapEXT[] ret = new VkAccelerationStructureTrianglesOpacityMicromapEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureTrianglesOpacityMicromapEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

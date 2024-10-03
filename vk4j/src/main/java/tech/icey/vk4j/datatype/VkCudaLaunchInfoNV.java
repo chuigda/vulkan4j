@@ -1,19 +1,204 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkCudaFunctionNV;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_CUDA_LAUNCH_INFO_NV;
 
-public record VkCudaLaunchInfoNV(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkCudaLaunchInfoNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkCudaFunctionNV function;
+///     uint32_t gridDimX;
+///     uint32_t gridDimY;
+///     uint32_t gridDimZ;
+///     uint32_t blockDimX;
+///     uint32_t blockDimY;
+///     uint32_t blockDimZ;
+///     uint32_t sharedMemBytes;
+///     size_t paramCount;
+///     const void* const * pParams;
+///     size_t extraCount;
+///     const void* const * pExtras;
+/// } VkCudaLaunchInfoNV;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCudaLaunchInfoNV.html">VkCudaLaunchInfoNV</a>
+public record VkCudaLaunchInfoNV(MemorySegment segment) implements IPointer {
+    public VkCudaLaunchInfoNV(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_CUDA_LAUNCH_INFO_NV);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @nullable VkCudaFunctionNV function() {
+        MemorySegment s = segment.get(LAYOUT$function, OFFSET$function);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkCudaFunctionNV(s);
+    }
+
+    public void function(@nullable VkCudaFunctionNV value) {
+        segment.set(
+            LAYOUT$function,
+            OFFSET$function,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @unsigned int gridDimX() {
+        return segment.get(LAYOUT$gridDimX, OFFSET$gridDimX);
+    }
+
+    public void gridDimX(@unsigned int value) {
+        segment.set(LAYOUT$gridDimX, OFFSET$gridDimX, value);
+    }
+
+    public @unsigned int gridDimY() {
+        return segment.get(LAYOUT$gridDimY, OFFSET$gridDimY);
+    }
+
+    public void gridDimY(@unsigned int value) {
+        segment.set(LAYOUT$gridDimY, OFFSET$gridDimY, value);
+    }
+
+    public @unsigned int gridDimZ() {
+        return segment.get(LAYOUT$gridDimZ, OFFSET$gridDimZ);
+    }
+
+    public void gridDimZ(@unsigned int value) {
+        segment.set(LAYOUT$gridDimZ, OFFSET$gridDimZ, value);
+    }
+
+    public @unsigned int blockDimX() {
+        return segment.get(LAYOUT$blockDimX, OFFSET$blockDimX);
+    }
+
+    public void blockDimX(@unsigned int value) {
+        segment.set(LAYOUT$blockDimX, OFFSET$blockDimX, value);
+    }
+
+    public @unsigned int blockDimY() {
+        return segment.get(LAYOUT$blockDimY, OFFSET$blockDimY);
+    }
+
+    public void blockDimY(@unsigned int value) {
+        segment.set(LAYOUT$blockDimY, OFFSET$blockDimY, value);
+    }
+
+    public @unsigned int blockDimZ() {
+        return segment.get(LAYOUT$blockDimZ, OFFSET$blockDimZ);
+    }
+
+    public void blockDimZ(@unsigned int value) {
+        segment.set(LAYOUT$blockDimZ, OFFSET$blockDimZ, value);
+    }
+
+    public @unsigned int sharedMemBytes() {
+        return segment.get(LAYOUT$sharedMemBytes, OFFSET$sharedMemBytes);
+    }
+
+    public void sharedMemBytes(@unsigned int value) {
+        segment.set(LAYOUT$sharedMemBytes, OFFSET$sharedMemBytes, value);
+    }
+
+    public @unsigned long paramCount() {
+            return NativeLayout.readCSizeT(segment, OFFSET$paramCount);
+        }
+
+        public void paramCount(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$paramCount, value);
+        }
+
+    public @pointer(comment="void*") MemorySegment pParams() {
+        return segment.get(LAYOUT$pParams, OFFSET$pParams);
+    }
+
+    public void pParams(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pParams, OFFSET$pParams, value);
+    }
+
+    public void pParams(IPointer pointer) {
+        pParams(pointer.segment());
+    }
+
+    public @unsigned long extraCount() {
+            return NativeLayout.readCSizeT(segment, OFFSET$extraCount);
+        }
+
+        public void extraCount(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$extraCount, value);
+        }
+
+    public @pointer(comment="void*") MemorySegment pExtras() {
+        return segment.get(LAYOUT$pExtras, OFFSET$pExtras);
+    }
+
+    public void pExtras(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pExtras, OFFSET$pExtras, value);
+    }
+
+    public void pExtras(IPointer pointer) {
+        pExtras(pointer.segment());
+    }
+
+    public static VkCudaLaunchInfoNV allocate(Arena arena) {
+        return new VkCudaLaunchInfoNV(arena.allocate(LAYOUT));
+    }
+
+    public static VkCudaLaunchInfoNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkCudaLaunchInfoNV[] ret = new VkCudaLaunchInfoNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkCudaLaunchInfoNV(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkCudaLaunchInfoNV clone(Arena arena, VkCudaLaunchInfoNV src) {
+        VkCudaLaunchInfoNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCudaLaunchInfoNV[] clone(Arena arena, VkCudaLaunchInfoNV[] src) {
+        VkCudaLaunchInfoNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -87,134 +272,4 @@ public record VkCudaLaunchInfoNV(MemorySegment segment) {
     public static final long SIZE$sharedMemBytes = LAYOUT$sharedMemBytes.byteSize();
     public static final long SIZE$pParams = LAYOUT$pParams.byteSize();
     public static final long SIZE$pExtras = LAYOUT$pExtras.byteSize();
-
-    public VkCudaLaunchInfoNV(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_CUDA_LAUNCH_INFO_NV);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public VkCudaFunctionNV function() {
-        return new VkCudaFunctionNV(segment.get(LAYOUT$function, OFFSET$function));
-    }
-
-    public void function(VkCudaFunctionNV value) {
-        segment.set(LAYOUT$function, OFFSET$function, value.segment());
-    }
-
-    public @unsigned int gridDimX() {
-        return segment.get(LAYOUT$gridDimX, OFFSET$gridDimX);
-    }
-
-    public void gridDimX(@unsigned int value) {
-        segment.set(LAYOUT$gridDimX, OFFSET$gridDimX, value);
-    }
-
-    public @unsigned int gridDimY() {
-        return segment.get(LAYOUT$gridDimY, OFFSET$gridDimY);
-    }
-
-    public void gridDimY(@unsigned int value) {
-        segment.set(LAYOUT$gridDimY, OFFSET$gridDimY, value);
-    }
-
-    public @unsigned int gridDimZ() {
-        return segment.get(LAYOUT$gridDimZ, OFFSET$gridDimZ);
-    }
-
-    public void gridDimZ(@unsigned int value) {
-        segment.set(LAYOUT$gridDimZ, OFFSET$gridDimZ, value);
-    }
-
-    public @unsigned int blockDimX() {
-        return segment.get(LAYOUT$blockDimX, OFFSET$blockDimX);
-    }
-
-    public void blockDimX(@unsigned int value) {
-        segment.set(LAYOUT$blockDimX, OFFSET$blockDimX, value);
-    }
-
-    public @unsigned int blockDimY() {
-        return segment.get(LAYOUT$blockDimY, OFFSET$blockDimY);
-    }
-
-    public void blockDimY(@unsigned int value) {
-        segment.set(LAYOUT$blockDimY, OFFSET$blockDimY, value);
-    }
-
-    public @unsigned int blockDimZ() {
-        return segment.get(LAYOUT$blockDimZ, OFFSET$blockDimZ);
-    }
-
-    public void blockDimZ(@unsigned int value) {
-        segment.set(LAYOUT$blockDimZ, OFFSET$blockDimZ, value);
-    }
-
-    public @unsigned int sharedMemBytes() {
-        return segment.get(LAYOUT$sharedMemBytes, OFFSET$sharedMemBytes);
-    }
-
-    public void sharedMemBytes(@unsigned int value) {
-        segment.set(LAYOUT$sharedMemBytes, OFFSET$sharedMemBytes, value);
-    }
-
-    public @unsigned long paramCount() {
-            return NativeLayout.readCSizeT(segment, OFFSET$paramCount);
-        }
-    
-        public void paramCount(@unsigned long value) {
-            NativeLayout.writeCSizeT(segment, OFFSET$paramCount, value);
-        }
-
-    public @pointer(comment="void*") MemorySegment pParams() {
-        return segment.get(LAYOUT$pParams, OFFSET$pParams);
-    }
-
-    public void pParams(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pParams, OFFSET$pParams, value);
-    }
-
-    public @unsigned long extraCount() {
-            return NativeLayout.readCSizeT(segment, OFFSET$extraCount);
-        }
-    
-        public void extraCount(@unsigned long value) {
-            NativeLayout.writeCSizeT(segment, OFFSET$extraCount, value);
-        }
-
-    public @pointer(comment="void*") MemorySegment pExtras() {
-        return segment.get(LAYOUT$pExtras, OFFSET$pExtras);
-    }
-
-    public void pExtras(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pExtras, OFFSET$pExtras, value);
-    }
-
-    public static VkCudaLaunchInfoNV allocate(Arena arena) {
-        return new VkCudaLaunchInfoNV(arena.allocate(LAYOUT));
-    }
-    
-    public static VkCudaLaunchInfoNV[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkCudaLaunchInfoNV[] ret = new VkCudaLaunchInfoNV[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkCudaLaunchInfoNV(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

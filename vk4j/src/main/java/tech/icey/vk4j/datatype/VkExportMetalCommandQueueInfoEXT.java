@@ -1,19 +1,109 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkQueue;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_EXPORT_METAL_COMMAND_QUEUE_INFO_EXT;
 
-public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkExportMetalCommandQueueInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkQueue queue;
+///     MTLCommandQueue_id mtlCommandQueue;
+/// } VkExportMetalCommandQueueInfoEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkExportMetalCommandQueueInfoEXT.html">VkExportMetalCommandQueueInfoEXT</a>
+public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) implements IPointer {
+    public VkExportMetalCommandQueueInfoEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_EXPORT_METAL_COMMAND_QUEUE_INFO_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @nullable VkQueue queue() {
+        MemorySegment s = segment.get(LAYOUT$queue, OFFSET$queue);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkQueue(s);
+    }
+
+    public void queue(@nullable VkQueue value) {
+        segment.set(
+            LAYOUT$queue,
+            OFFSET$queue,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @pointer(comment="void*") MemorySegment mtlCommandQueue() {
+        return segment.get(LAYOUT$mtlCommandQueue, OFFSET$mtlCommandQueue);
+    }
+
+    public void mtlCommandQueue(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$mtlCommandQueue, OFFSET$mtlCommandQueue, value);
+    }
+
+    public void mtlCommandQueue(IPointer pointer) {
+        mtlCommandQueue(pointer.segment());
+    }
+
+    public static VkExportMetalCommandQueueInfoEXT allocate(Arena arena) {
+        return new VkExportMetalCommandQueueInfoEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkExportMetalCommandQueueInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkExportMetalCommandQueueInfoEXT[] ret = new VkExportMetalCommandQueueInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkExportMetalCommandQueueInfoEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkExportMetalCommandQueueInfoEXT clone(Arena arena, VkExportMetalCommandQueueInfoEXT src) {
+        VkExportMetalCommandQueueInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkExportMetalCommandQueueInfoEXT[] clone(Arena arena, VkExportMetalCommandQueueInfoEXT[] src) {
+        VkExportMetalCommandQueueInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,54 +131,4 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$queue = LAYOUT$queue.byteSize();
     public static final long SIZE$mtlCommandQueue = LAYOUT$mtlCommandQueue.byteSize();
-
-    public VkExportMetalCommandQueueInfoEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_EXPORT_METAL_COMMAND_QUEUE_INFO_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public VkQueue queue() {
-        return new VkQueue(segment.get(LAYOUT$queue, OFFSET$queue));
-    }
-
-    public void queue(VkQueue value) {
-        segment.set(LAYOUT$queue, OFFSET$queue, value.segment());
-    }
-
-    public @pointer(comment="void*") MemorySegment mtlCommandQueue() {
-        return segment.get(LAYOUT$mtlCommandQueue, OFFSET$mtlCommandQueue);
-    }
-
-    public void mtlCommandQueue(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$mtlCommandQueue, OFFSET$mtlCommandQueue, value);
-    }
-
-    public static VkExportMetalCommandQueueInfoEXT allocate(Arena arena) {
-        return new VkExportMetalCommandQueueInfoEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkExportMetalCommandQueueInfoEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkExportMetalCommandQueueInfoEXT[] ret = new VkExportMetalCommandQueueInfoEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkExportMetalCommandQueueInfoEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

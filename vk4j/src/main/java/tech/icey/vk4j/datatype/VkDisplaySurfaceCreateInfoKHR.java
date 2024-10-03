@@ -1,19 +1,162 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkDisplayPlaneAlphaFlagsKHR;
+import tech.icey.vk4j.bitmask.VkDisplaySurfaceCreateFlagsKHR;
+import tech.icey.vk4j.bitmask.VkSurfaceTransformFlagsKHR;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkDisplayModeKHR;
+
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+/// {@snippet lang=c :
+/// typedef struct VkDisplaySurfaceCreateInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDisplaySurfaceCreateFlagsKHR flags;
+///     VkDisplayModeKHR displayMode;
+///     uint32_t planeIndex;
+///     uint32_t planeStackIndex;
+///     VkSurfaceTransformFlagBitsKHR transform;
+///     float globalAlpha;
+///     VkDisplayPlaneAlphaFlagBitsKHR alphaMode;
+///     VkExtent2D imageExtent;
+/// } VkDisplaySurfaceCreateInfoKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDisplaySurfaceCreateInfoKHR.html">VkDisplaySurfaceCreateInfoKHR</a>
+public record VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) implements IPointer {
+    public VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR);
+    }
 
-public record VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) {
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkDisplaySurfaceCreateFlagsKHR.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkDisplaySurfaceCreateFlagsKHR.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @nullable VkDisplayModeKHR displayMode() {
+        MemorySegment s = segment.get(LAYOUT$displayMode, OFFSET$displayMode);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDisplayModeKHR(s);
+    }
+
+    public void displayMode(@nullable VkDisplayModeKHR value) {
+        segment.set(
+            LAYOUT$displayMode,
+            OFFSET$displayMode,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @unsigned int planeIndex() {
+        return segment.get(LAYOUT$planeIndex, OFFSET$planeIndex);
+    }
+
+    public void planeIndex(@unsigned int value) {
+        segment.set(LAYOUT$planeIndex, OFFSET$planeIndex, value);
+    }
+
+    public @unsigned int planeStackIndex() {
+        return segment.get(LAYOUT$planeStackIndex, OFFSET$planeStackIndex);
+    }
+
+    public void planeStackIndex(@unsigned int value) {
+        segment.set(LAYOUT$planeStackIndex, OFFSET$planeStackIndex, value);
+    }
+
+    public @enumtype(VkSurfaceTransformFlagsKHR.class) int transform() {
+        return segment.get(LAYOUT$transform, OFFSET$transform);
+    }
+
+    public void transform(@enumtype(VkSurfaceTransformFlagsKHR.class) int value) {
+        segment.set(LAYOUT$transform, OFFSET$transform, value);
+    }
+
+    public float globalAlpha() {
+        return segment.get(LAYOUT$globalAlpha, OFFSET$globalAlpha);
+    }
+
+    public void globalAlpha(float value) {
+        segment.set(LAYOUT$globalAlpha, OFFSET$globalAlpha, value);
+    }
+
+    public @enumtype(VkDisplayPlaneAlphaFlagsKHR.class) int alphaMode() {
+        return segment.get(LAYOUT$alphaMode, OFFSET$alphaMode);
+    }
+
+    public void alphaMode(@enumtype(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
+        segment.set(LAYOUT$alphaMode, OFFSET$alphaMode, value);
+    }
+
+    public VkExtent2D imageExtent() {
+        return new VkExtent2D(segment.asSlice(OFFSET$imageExtent, LAYOUT$imageExtent));
+    }
+
+    public void imageExtent(VkExtent2D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
+    }
+
+    public static VkDisplaySurfaceCreateInfoKHR allocate(Arena arena) {
+        return new VkDisplaySurfaceCreateInfoKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkDisplaySurfaceCreateInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDisplaySurfaceCreateInfoKHR[] ret = new VkDisplaySurfaceCreateInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDisplaySurfaceCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkDisplaySurfaceCreateInfoKHR clone(Arena arena, VkDisplaySurfaceCreateInfoKHR src) {
+        VkDisplaySurfaceCreateInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDisplaySurfaceCreateInfoKHR[] clone(Arena arena, VkDisplaySurfaceCreateInfoKHR[] src) {
+        VkDisplaySurfaceCreateInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -71,102 +214,4 @@ public record VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) {
     public static final long SIZE$globalAlpha = LAYOUT$globalAlpha.byteSize();
     public static final long SIZE$alphaMode = LAYOUT$alphaMode.byteSize();
     public static final long SIZE$imageExtent = LAYOUT$imageExtent.byteSize();
-
-    public VkDisplaySurfaceCreateInfoKHR(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkDisplaySurfaceCreateFlagsKHR.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkDisplaySurfaceCreateFlagsKHR.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public VkDisplayModeKHR displayMode() {
-        return new VkDisplayModeKHR(segment.get(LAYOUT$displayMode, OFFSET$displayMode));
-    }
-
-    public void displayMode(VkDisplayModeKHR value) {
-        segment.set(LAYOUT$displayMode, OFFSET$displayMode, value.segment());
-    }
-
-    public @unsigned int planeIndex() {
-        return segment.get(LAYOUT$planeIndex, OFFSET$planeIndex);
-    }
-
-    public void planeIndex(@unsigned int value) {
-        segment.set(LAYOUT$planeIndex, OFFSET$planeIndex, value);
-    }
-
-    public @unsigned int planeStackIndex() {
-        return segment.get(LAYOUT$planeStackIndex, OFFSET$planeStackIndex);
-    }
-
-    public void planeStackIndex(@unsigned int value) {
-        segment.set(LAYOUT$planeStackIndex, OFFSET$planeStackIndex, value);
-    }
-
-    public @enumtype(VkSurfaceTransformFlagsKHR.class) int transform() {
-        return segment.get(LAYOUT$transform, OFFSET$transform);
-    }
-
-    public void transform(@enumtype(VkSurfaceTransformFlagsKHR.class) int value) {
-        segment.set(LAYOUT$transform, OFFSET$transform, value);
-    }
-
-    public float globalAlpha() {
-        return segment.get(LAYOUT$globalAlpha, OFFSET$globalAlpha);
-    }
-
-    public void globalAlpha(float value) {
-        segment.set(LAYOUT$globalAlpha, OFFSET$globalAlpha, value);
-    }
-
-    public @enumtype(VkDisplayPlaneAlphaFlagsKHR.class) int alphaMode() {
-        return segment.get(LAYOUT$alphaMode, OFFSET$alphaMode);
-    }
-
-    public void alphaMode(@enumtype(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
-        segment.set(LAYOUT$alphaMode, OFFSET$alphaMode, value);
-    }
-
-    public VkExtent2D imageExtent() {
-        return new VkExtent2D(segment.asSlice(OFFSET$imageExtent, LAYOUT$imageExtent));
-    }
-
-    public void imageExtent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
-    }
-
-    public static VkDisplaySurfaceCreateInfoKHR allocate(Arena arena) {
-        return new VkDisplaySurfaceCreateInfoKHR(arena.allocate(LAYOUT));
-    }
-    
-    public static VkDisplaySurfaceCreateInfoKHR[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDisplaySurfaceCreateInfoKHR[] ret = new VkDisplaySurfaceCreateInfoKHR[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkDisplaySurfaceCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

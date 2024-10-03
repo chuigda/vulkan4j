@@ -1,19 +1,119 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.buffer.PointerBuffer;
+import tech.icey.vk4j.bitmask.VkXlibSurfaceCreateFlagsKHR;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR;
 
-public record VkXlibSurfaceCreateInfoKHR(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkXlibSurfaceCreateInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkXlibSurfaceCreateFlagsKHR flags;
+///     Display* dpy;
+///     Window window;
+/// } VkXlibSurfaceCreateInfoKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkXlibSurfaceCreateInfoKHR.html">VkXlibSurfaceCreateInfoKHR</a>
+public record VkXlibSurfaceCreateInfoKHR(MemorySegment segment) implements IPointer {
+    public VkXlibSurfaceCreateInfoKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkXlibSurfaceCreateFlagsKHR.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkXlibSurfaceCreateFlagsKHR.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @pointer(comment="void**") MemorySegment dpyRaw() {
+        return segment.get(LAYOUT$dpy, OFFSET$dpy);
+    }
+
+    public void dpyRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$dpy, OFFSET$dpy, value);
+    }
+
+    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the
+    /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
+    ///
+    /// @see PointerBuffer
+    public PointerBuffer dpy() {
+        return new PointerBuffer(dpyRaw());
+    }
+
+    public void dpy(PointerBuffer value) {
+        dpyRaw(value.segment());
+    }
+
+    public long window() {
+            return NativeLayout.readCLong(segment, OFFSET$window);
+        }
+
+        public void window(long value) {
+            NativeLayout.writeCLong(segment, OFFSET$window, value);
+        }
+
+    public static VkXlibSurfaceCreateInfoKHR allocate(Arena arena) {
+        return new VkXlibSurfaceCreateInfoKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkXlibSurfaceCreateInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkXlibSurfaceCreateInfoKHR[] ret = new VkXlibSurfaceCreateInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkXlibSurfaceCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkXlibSurfaceCreateInfoKHR clone(Arena arena, VkXlibSurfaceCreateInfoKHR src) {
+        VkXlibSurfaceCreateInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkXlibSurfaceCreateInfoKHR[] clone(Arena arena, VkXlibSurfaceCreateInfoKHR[] src) {
+        VkXlibSurfaceCreateInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -44,62 +144,4 @@ public record VkXlibSurfaceCreateInfoKHR(MemorySegment segment) {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$dpy = LAYOUT$dpy.byteSize();
-
-    public VkXlibSurfaceCreateInfoKHR(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkXlibSurfaceCreateFlagsKHR.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkXlibSurfaceCreateFlagsKHR.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @pointer(comment="void**") MemorySegment dpy() {
-        return segment.get(LAYOUT$dpy, OFFSET$dpy);
-    }
-
-    public void dpy(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$dpy, OFFSET$dpy, value);
-    }
-
-    public long window() {
-            return NativeLayout.readCLong(segment, OFFSET$window);
-        }
-    
-        public void window(long value) {
-            NativeLayout.writeCLong(segment, OFFSET$window, value);
-        }
-
-    public static VkXlibSurfaceCreateInfoKHR allocate(Arena arena) {
-        return new VkXlibSurfaceCreateInfoKHR(arena.allocate(LAYOUT));
-    }
-    
-    public static VkXlibSurfaceCreateInfoKHR[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkXlibSurfaceCreateInfoKHR[] ret = new VkXlibSurfaceCreateInfoKHR[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkXlibSurfaceCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

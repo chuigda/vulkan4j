@@ -1,19 +1,270 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.panama.buffer.ByteBuffer;
+import tech.icey.vk4j.bitmask.VkDebugUtilsMessengerCallbackDataFlagsEXT;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT;
 
-public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkDebugUtilsMessengerCallbackDataEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDebugUtilsMessengerCallbackDataFlagsEXT flags;
+///     const char* pMessageIdName;
+///     int32_t messageIdNumber;
+///     const char* pMessage;
+///     uint32_t queueLabelCount;
+///     const VkDebugUtilsLabelEXT* pQueueLabels;
+///     uint32_t cmdBufLabelCount;
+///     const VkDebugUtilsLabelEXT* pCmdBufLabels;
+///     uint32_t objectCount;
+///     const VkDebugUtilsObjectNameInfoEXT* pObjects;
+/// } VkDebugUtilsMessengerCallbackDataEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDebugUtilsMessengerCallbackDataEXT.html">VkDebugUtilsMessengerCallbackDataEXT</a>
+public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implements IPointer {
+    public VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @pointer(comment="int8_t*") MemorySegment pMessageIdNameRaw() {
+        return segment.get(LAYOUT$pMessageIdName, OFFSET$pMessageIdName);
+    }
+
+    public void pMessageIdNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
+        segment.set(LAYOUT$pMessageIdName, OFFSET$pMessageIdName, value);
+    }
+
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
+    public @nullable ByteBuffer pMessageIdName() {
+        MemorySegment s = pMessageIdNameRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
+    }
+
+    public void pMessageIdName(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pMessageIdNameRaw(s);
+    }
+
+    public int messageIdNumber() {
+        return segment.get(LAYOUT$messageIdNumber, OFFSET$messageIdNumber);
+    }
+
+    public void messageIdNumber(int value) {
+        segment.set(LAYOUT$messageIdNumber, OFFSET$messageIdNumber, value);
+    }
+
+    public @pointer(comment="int8_t*") MemorySegment pMessageRaw() {
+        return segment.get(LAYOUT$pMessage, OFFSET$pMessage);
+    }
+
+    public void pMessageRaw(@pointer(comment="int8_t*") MemorySegment value) {
+        segment.set(LAYOUT$pMessage, OFFSET$pMessage, value);
+    }
+
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
+    public @nullable ByteBuffer pMessage() {
+        MemorySegment s = pMessageRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
+    }
+
+    public void pMessage(@nullable ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pMessageRaw(s);
+    }
+
+    public @unsigned int queueLabelCount() {
+        return segment.get(LAYOUT$queueLabelCount, OFFSET$queueLabelCount);
+    }
+
+    public void queueLabelCount(@unsigned int value) {
+        segment.set(LAYOUT$queueLabelCount, OFFSET$queueLabelCount, value);
+    }
+
+    public @pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment pQueueLabelsRaw() {
+        return segment.get(LAYOUT$pQueueLabels, OFFSET$pQueueLabels);
+    }
+
+    public void pQueueLabelsRaw(@pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment value) {
+        segment.set(LAYOUT$pQueueLabels, OFFSET$pQueueLabels, value);
+    }
+
+    public @nullable VkDebugUtilsLabelEXT pQueueLabels() {
+        MemorySegment s = pQueueLabelsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDebugUtilsLabelEXT(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkDebugUtilsLabelEXT[] pQueueLabels(int assumedCount) {
+        MemorySegment s = pQueueLabelsRaw().reinterpret(assumedCount * VkDebugUtilsLabelEXT.SIZE);
+        VkDebugUtilsLabelEXT[] arr = new VkDebugUtilsLabelEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkDebugUtilsLabelEXT(s.asSlice(i * VkDebugUtilsLabelEXT.SIZE, VkDebugUtilsLabelEXT.SIZE));
+        }
+        return arr;
+    }
+
+    public void pQueueLabels(@nullable VkDebugUtilsLabelEXT value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pQueueLabelsRaw(s);
+    }
+
+    public @unsigned int cmdBufLabelCount() {
+        return segment.get(LAYOUT$cmdBufLabelCount, OFFSET$cmdBufLabelCount);
+    }
+
+    public void cmdBufLabelCount(@unsigned int value) {
+        segment.set(LAYOUT$cmdBufLabelCount, OFFSET$cmdBufLabelCount, value);
+    }
+
+    public @pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment pCmdBufLabelsRaw() {
+        return segment.get(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels);
+    }
+
+    public void pCmdBufLabelsRaw(@pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment value) {
+        segment.set(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels, value);
+    }
+
+    public @nullable VkDebugUtilsLabelEXT pCmdBufLabels() {
+        MemorySegment s = pCmdBufLabelsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDebugUtilsLabelEXT(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkDebugUtilsLabelEXT[] pCmdBufLabels(int assumedCount) {
+        MemorySegment s = pCmdBufLabelsRaw().reinterpret(assumedCount * VkDebugUtilsLabelEXT.SIZE);
+        VkDebugUtilsLabelEXT[] arr = new VkDebugUtilsLabelEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkDebugUtilsLabelEXT(s.asSlice(i * VkDebugUtilsLabelEXT.SIZE, VkDebugUtilsLabelEXT.SIZE));
+        }
+        return arr;
+    }
+
+    public void pCmdBufLabels(@nullable VkDebugUtilsLabelEXT value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCmdBufLabelsRaw(s);
+    }
+
+    public @unsigned int objectCount() {
+        return segment.get(LAYOUT$objectCount, OFFSET$objectCount);
+    }
+
+    public void objectCount(@unsigned int value) {
+        segment.set(LAYOUT$objectCount, OFFSET$objectCount, value);
+    }
+
+    public @pointer(comment="VkDebugUtilsObjectNameInfoEXT*") MemorySegment pObjectsRaw() {
+        return segment.get(LAYOUT$pObjects, OFFSET$pObjects);
+    }
+
+    public void pObjectsRaw(@pointer(comment="VkDebugUtilsObjectNameInfoEXT*") MemorySegment value) {
+        segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
+    }
+
+    public @nullable VkDebugUtilsObjectNameInfoEXT pObjects() {
+        MemorySegment s = pObjectsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDebugUtilsObjectNameInfoEXT(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkDebugUtilsObjectNameInfoEXT[] pObjects(int assumedCount) {
+        MemorySegment s = pObjectsRaw().reinterpret(assumedCount * VkDebugUtilsObjectNameInfoEXT.SIZE);
+        VkDebugUtilsObjectNameInfoEXT[] arr = new VkDebugUtilsObjectNameInfoEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkDebugUtilsObjectNameInfoEXT(s.asSlice(i * VkDebugUtilsObjectNameInfoEXT.SIZE, VkDebugUtilsObjectNameInfoEXT.SIZE));
+        }
+        return arr;
+    }
+
+    public void pObjects(@nullable VkDebugUtilsObjectNameInfoEXT value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pObjectsRaw(s);
+    }
+
+    public static VkDebugUtilsMessengerCallbackDataEXT allocate(Arena arena) {
+        return new VkDebugUtilsMessengerCallbackDataEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkDebugUtilsMessengerCallbackDataEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDebugUtilsMessengerCallbackDataEXT[] ret = new VkDebugUtilsMessengerCallbackDataEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDebugUtilsMessengerCallbackDataEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkDebugUtilsMessengerCallbackDataEXT clone(Arena arena, VkDebugUtilsMessengerCallbackDataEXT src) {
+        VkDebugUtilsMessengerCallbackDataEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDebugUtilsMessengerCallbackDataEXT[] clone(Arena arena, VkDebugUtilsMessengerCallbackDataEXT[] src) {
+        VkDebugUtilsMessengerCallbackDataEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -81,173 +332,4 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
     public static final long SIZE$pCmdBufLabels = LAYOUT$pCmdBufLabels.byteSize();
     public static final long SIZE$objectCount = LAYOUT$objectCount.byteSize();
     public static final long SIZE$pObjects = LAYOUT$pObjects.byteSize();
-
-    public VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @pointer(comment="int8_t*") MemorySegment pMessageIdNameRaw() {
-        return segment.get(LAYOUT$pMessageIdName, OFFSET$pMessageIdName);
-    }
-
-    public void pMessageIdNameRaw(@pointer(comment="int8_t*") MemorySegment value) {
-        segment.set(LAYOUT$pMessageIdName, OFFSET$pMessageIdName, value);
-    }
-    
-    public ByteBuffer pMessageIdName() {
-        return new ByteBuffer(pMessageIdNameRaw());
-    }
-
-    public void pMessageIdName(ByteBuffer value) {
-        pMessageIdNameRaw(value.segment());
-    }
-
-    public int messageIdNumber() {
-        return segment.get(LAYOUT$messageIdNumber, OFFSET$messageIdNumber);
-    }
-
-    public void messageIdNumber(int value) {
-        segment.set(LAYOUT$messageIdNumber, OFFSET$messageIdNumber, value);
-    }
-
-    public @pointer(comment="int8_t*") MemorySegment pMessageRaw() {
-        return segment.get(LAYOUT$pMessage, OFFSET$pMessage);
-    }
-
-    public void pMessageRaw(@pointer(comment="int8_t*") MemorySegment value) {
-        segment.set(LAYOUT$pMessage, OFFSET$pMessage, value);
-    }
-    
-    public ByteBuffer pMessage() {
-        return new ByteBuffer(pMessageRaw());
-    }
-
-    public void pMessage(ByteBuffer value) {
-        pMessageRaw(value.segment());
-    }
-
-    public @unsigned int queueLabelCount() {
-        return segment.get(LAYOUT$queueLabelCount, OFFSET$queueLabelCount);
-    }
-
-    public void queueLabelCount(@unsigned int value) {
-        segment.set(LAYOUT$queueLabelCount, OFFSET$queueLabelCount, value);
-    }
-
-    public @pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment pQueueLabelsRaw() {
-        return segment.get(LAYOUT$pQueueLabels, OFFSET$pQueueLabels);
-    }
-
-    public void pQueueLabelsRaw(@pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment value) {
-        segment.set(LAYOUT$pQueueLabels, OFFSET$pQueueLabels, value);
-    }
-    
-    public @nullable VkDebugUtilsLabelEXT pQueueLabels() {
-        MemorySegment s = pQueueLabelsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDebugUtilsLabelEXT(s);
-    }
-
-    public void pQueueLabels(@nullable VkDebugUtilsLabelEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pQueueLabelsRaw(s);
-    }
-
-    public @unsigned int cmdBufLabelCount() {
-        return segment.get(LAYOUT$cmdBufLabelCount, OFFSET$cmdBufLabelCount);
-    }
-
-    public void cmdBufLabelCount(@unsigned int value) {
-        segment.set(LAYOUT$cmdBufLabelCount, OFFSET$cmdBufLabelCount, value);
-    }
-
-    public @pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment pCmdBufLabelsRaw() {
-        return segment.get(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels);
-    }
-
-    public void pCmdBufLabelsRaw(@pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment value) {
-        segment.set(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels, value);
-    }
-    
-    public @nullable VkDebugUtilsLabelEXT pCmdBufLabels() {
-        MemorySegment s = pCmdBufLabelsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDebugUtilsLabelEXT(s);
-    }
-
-    public void pCmdBufLabels(@nullable VkDebugUtilsLabelEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pCmdBufLabelsRaw(s);
-    }
-
-    public @unsigned int objectCount() {
-        return segment.get(LAYOUT$objectCount, OFFSET$objectCount);
-    }
-
-    public void objectCount(@unsigned int value) {
-        segment.set(LAYOUT$objectCount, OFFSET$objectCount, value);
-    }
-
-    public @pointer(comment="VkDebugUtilsObjectNameInfoEXT*") MemorySegment pObjectsRaw() {
-        return segment.get(LAYOUT$pObjects, OFFSET$pObjects);
-    }
-
-    public void pObjectsRaw(@pointer(comment="VkDebugUtilsObjectNameInfoEXT*") MemorySegment value) {
-        segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
-    }
-    
-    public @nullable VkDebugUtilsObjectNameInfoEXT pObjects() {
-        MemorySegment s = pObjectsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDebugUtilsObjectNameInfoEXT(s);
-    }
-
-    public void pObjects(@nullable VkDebugUtilsObjectNameInfoEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pObjectsRaw(s);
-    }
-
-    public static VkDebugUtilsMessengerCallbackDataEXT allocate(Arena arena) {
-        return new VkDebugUtilsMessengerCallbackDataEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkDebugUtilsMessengerCallbackDataEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDebugUtilsMessengerCallbackDataEXT[] ret = new VkDebugUtilsMessengerCallbackDataEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkDebugUtilsMessengerCallbackDataEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

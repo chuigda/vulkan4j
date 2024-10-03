@@ -6,6 +6,7 @@ from .datatype.array_accessor import generate_array_accessor
 
 def generate_structure(registry: Registry, structure: Structure) -> str:
     member_types_lowered: list[CType | None] = []
+    verbatim = '\n'.join(map(lambda v: f'///     {v};', structure.verbatim))
 
     struct_layout = generate_structure_layout(
         registry,
@@ -19,24 +20,24 @@ def generate_structure(registry: Registry, structure: Structure) -> str:
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.panama.buffer.*;
 import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
 import static tech.icey.vk4j.Constants.*;
 import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
-public record {structure.name}(MemorySegment segment) {{
-    public static final MemoryLayout LAYOUT = {struct_layout};
-    public static final long SIZE = LAYOUT.byteSize();
-
-{generate_structure_path_element(structure.members)}
-{generate_structure_member_layout(structure.members, member_types_lowered)}
-{generate_structure_member_offset(structure.members)}
-{generate_structure_member_size(structure.members, member_types_lowered)}
+/// {{@snippet lang=c :
+/// typedef {'union' if structure.is_union else 'struct'} {structure.name} {{
+{verbatim}
+/// }} {structure.name};}}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/{structure.name}.html">{structure.name}</a>
+public record {structure.name}(MemorySegment segment) implements IPointer {{
     public {structure.name}(MemorySegment segment) {{
         this.segment = segment;{generate_member_init(structure.members)}
     }}
@@ -44,7 +45,7 @@ public record {structure.name}(MemorySegment segment) {{
 {generate_structure_member_accessor(structure.members, member_types_lowered)}    public static {structure.name} allocate(Arena arena) {{
         return new {structure.name}(arena.allocate(LAYOUT));
     }}
-    
+
     public static {structure.name}[] allocate(Arena arena, int count) {{
         MemorySegment segment = arena.allocate(LAYOUT, count);
         {structure.name}[] ret = new {structure.name}[count];
@@ -53,7 +54,28 @@ public record {structure.name}(MemorySegment segment) {{
         }}
         return ret;
     }}
-}}
+
+    public static {structure.name} clone(Arena arena, {structure.name} src) {{
+        {structure.name} ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }}
+
+    public static {structure.name}[] clone(Arena arena, {structure.name}[] src) {{
+        {structure.name}[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {{
+            ret[i].segment.copyFrom(src[i].segment);
+        }}
+        return ret;
+    }}
+
+    public static final MemoryLayout LAYOUT = {struct_layout};
+    public static final long SIZE = LAYOUT.byteSize();
+
+{generate_structure_path_element(structure.members)}
+{generate_structure_member_layout(structure.members, member_types_lowered)}
+{generate_structure_member_offset(structure.members)}
+{generate_structure_member_size(structure.members, member_types_lowered)}}}
 '''
 
 def generate_structure_layout(

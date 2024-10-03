@@ -1,19 +1,142 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.vk4j.bitmask.VkPipelineCreateFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkPipeline;
+import tech.icey.vk4j.handle.VkPipelineLayout;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO;
 
-public record VkComputePipelineCreateInfo(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkComputePipelineCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineCreateFlags flags;
+///     VkPipelineShaderStageCreateInfo stage;
+///     VkPipelineLayout layout;
+///     VkPipeline basePipelineHandle;
+///     int32_t basePipelineIndex;
+/// } VkComputePipelineCreateInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkComputePipelineCreateInfo.html">VkComputePipelineCreateInfo</a>
+public record VkComputePipelineCreateInfo(MemorySegment segment) implements IPointer {
+    public VkComputePipelineCreateInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkPipelineCreateFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkPipelineCreateFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public VkPipelineShaderStageCreateInfo stage() {
+        return new VkPipelineShaderStageCreateInfo(segment.asSlice(OFFSET$stage, LAYOUT$stage));
+    }
+
+    public void stage(VkPipelineShaderStageCreateInfo value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$stage, SIZE$stage);
+    }
+
+    public @nullable VkPipelineLayout layout() {
+        MemorySegment s = segment.get(LAYOUT$layout, OFFSET$layout);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipelineLayout(s);
+    }
+
+    public void layout(@nullable VkPipelineLayout value) {
+        segment.set(
+            LAYOUT$layout,
+            OFFSET$layout,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @nullable VkPipeline basePipelineHandle() {
+        MemorySegment s = segment.get(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipeline(s);
+    }
+
+    public void basePipelineHandle(@nullable VkPipeline value) {
+        segment.set(
+            LAYOUT$basePipelineHandle,
+            OFFSET$basePipelineHandle,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public int basePipelineIndex() {
+        return segment.get(LAYOUT$basePipelineIndex, OFFSET$basePipelineIndex);
+    }
+
+    public void basePipelineIndex(int value) {
+        segment.set(LAYOUT$basePipelineIndex, OFFSET$basePipelineIndex, value);
+    }
+
+    public static VkComputePipelineCreateInfo allocate(Arena arena) {
+        return new VkComputePipelineCreateInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkComputePipelineCreateInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkComputePipelineCreateInfo[] ret = new VkComputePipelineCreateInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkComputePipelineCreateInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkComputePipelineCreateInfo clone(Arena arena, VkComputePipelineCreateInfo src) {
+        VkComputePipelineCreateInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkComputePipelineCreateInfo[] clone(Arena arena, VkComputePipelineCreateInfo[] src) {
+        VkComputePipelineCreateInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -56,78 +179,4 @@ public record VkComputePipelineCreateInfo(MemorySegment segment) {
     public static final long SIZE$layout = LAYOUT$layout.byteSize();
     public static final long SIZE$basePipelineHandle = LAYOUT$basePipelineHandle.byteSize();
     public static final long SIZE$basePipelineIndex = LAYOUT$basePipelineIndex.byteSize();
-
-    public VkComputePipelineCreateInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkPipelineCreateFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkPipelineCreateFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public VkPipelineShaderStageCreateInfo stage() {
-        return new VkPipelineShaderStageCreateInfo(segment.asSlice(OFFSET$stage, LAYOUT$stage));
-    }
-
-    public void stage(VkPipelineShaderStageCreateInfo value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$stage, SIZE$stage);
-    }
-
-    public VkPipelineLayout layout() {
-        return new VkPipelineLayout(segment.get(LAYOUT$layout, OFFSET$layout));
-    }
-
-    public void layout(VkPipelineLayout value) {
-        segment.set(LAYOUT$layout, OFFSET$layout, value.segment());
-    }
-
-    public VkPipeline basePipelineHandle() {
-        return new VkPipeline(segment.get(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle));
-    }
-
-    public void basePipelineHandle(VkPipeline value) {
-        segment.set(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle, value.segment());
-    }
-
-    public int basePipelineIndex() {
-        return segment.get(LAYOUT$basePipelineIndex, OFFSET$basePipelineIndex);
-    }
-
-    public void basePipelineIndex(int value) {
-        segment.set(LAYOUT$basePipelineIndex, OFFSET$basePipelineIndex, value);
-    }
-
-    public static VkComputePipelineCreateInfo allocate(Arena arena) {
-        return new VkComputePipelineCreateInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkComputePipelineCreateInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkComputePipelineCreateInfo[] ret = new VkComputePipelineCreateInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkComputePipelineCreateInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

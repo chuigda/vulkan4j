@@ -1,42 +1,28 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkRefreshObjectFlagsKHR;
+import tech.icey.vk4j.enumtype.VkObjectType;
+
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+
 import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
-
-public record VkRefreshObjectKHR(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("objectType"),
-        ValueLayout.JAVA_LONG.withName("objectHandle"),
-        ValueLayout.JAVA_INT.withName("flags")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$objectType = PathElement.groupElement("objectType");
-    public static final PathElement PATH$objectHandle = PathElement.groupElement("objectHandle");
-    public static final PathElement PATH$flags = PathElement.groupElement("flags");
-
-    public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
-    public static final OfLong LAYOUT$objectHandle = (OfLong) LAYOUT.select(PATH$objectHandle);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-
-    public static final long OFFSET$objectType = LAYOUT.byteOffset(PATH$objectType);
-    public static final long OFFSET$objectHandle = LAYOUT.byteOffset(PATH$objectHandle);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-
-    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
-    public static final long SIZE$objectHandle = LAYOUT$objectHandle.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
+/// {@snippet lang=c :
+/// typedef struct VkRefreshObjectKHR {
+///     VkObjectType objectType;
+///     uint64_t objectHandle;
+///     VkRefreshObjectFlagsKHR flags;
+/// } VkRefreshObjectKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRefreshObjectKHR.html">VkRefreshObjectKHR</a>
+public record VkRefreshObjectKHR(MemorySegment segment) implements IPointer {
     public VkRefreshObjectKHR(MemorySegment segment) {
         this.segment = segment;
     }
@@ -68,7 +54,7 @@ public record VkRefreshObjectKHR(MemorySegment segment) {
     public static VkRefreshObjectKHR allocate(Arena arena) {
         return new VkRefreshObjectKHR(arena.allocate(LAYOUT));
     }
-    
+
     public static VkRefreshObjectKHR[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRefreshObjectKHR[] ret = new VkRefreshObjectKHR[count];
@@ -77,4 +63,41 @@ public record VkRefreshObjectKHR(MemorySegment segment) {
         }
         return ret;
     }
+
+    public static VkRefreshObjectKHR clone(Arena arena, VkRefreshObjectKHR src) {
+        VkRefreshObjectKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkRefreshObjectKHR[] clone(Arena arena, VkRefreshObjectKHR[] src) {
+        VkRefreshObjectKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("objectType"),
+        ValueLayout.JAVA_LONG.withName("objectHandle"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$objectType = PathElement.groupElement("objectType");
+    public static final PathElement PATH$objectHandle = PathElement.groupElement("objectHandle");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+
+    public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
+    public static final OfLong LAYOUT$objectHandle = (OfLong) LAYOUT.select(PATH$objectHandle);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+
+    public static final long OFFSET$objectType = LAYOUT.byteOffset(PATH$objectType);
+    public static final long OFFSET$objectHandle = LAYOUT.byteOffset(PATH$objectHandle);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+
+    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
+    public static final long SIZE$objectHandle = LAYOUT$objectHandle.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
 }

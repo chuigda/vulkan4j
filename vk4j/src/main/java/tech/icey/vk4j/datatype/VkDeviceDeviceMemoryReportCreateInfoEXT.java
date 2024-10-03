@@ -1,19 +1,113 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.vk4j.bitmask.VkDeviceMemoryReportFlagsEXT;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT;
 
-public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkDeviceDeviceMemoryReportCreateInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkDeviceMemoryReportFlagsEXT flags;
+///     PFN_vkDeviceMemoryReportCallbackEXT pfnUserCallback;
+///     void* pUserData;
+/// } VkDeviceDeviceMemoryReportCreateInfoEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceDeviceMemoryReportCreateInfoEXT.html">VkDeviceDeviceMemoryReportCreateInfoEXT</a>
+public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) implements IPointer {
+    public VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkDeviceMemoryReportFlagsEXT.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkDeviceMemoryReportFlagsEXT.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @pointer(comment="PFN_vkDeviceMemoryReportCallbackEXT") MemorySegment pfnUserCallback() {
+        return segment.get(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback);
+    }
+
+    public void pfnUserCallback(@pointer(comment="PFN_vkDeviceMemoryReportCallbackEXT") MemorySegment value) {
+        segment.set(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback, value);
+    }
+
+    public void pfnUserCallback(IPointer pointer) {
+        pfnUserCallback(pointer.segment());
+    }
+
+    public @pointer(comment="void*") MemorySegment pUserData() {
+        return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
+    }
+
+    public void pUserData(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+    }
+
+    public void pUserData(IPointer pointer) {
+        pUserData(pointer.segment());
+    }
+
+    public static VkDeviceDeviceMemoryReportCreateInfoEXT allocate(Arena arena) {
+        return new VkDeviceDeviceMemoryReportCreateInfoEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkDeviceDeviceMemoryReportCreateInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDeviceDeviceMemoryReportCreateInfoEXT[] ret = new VkDeviceDeviceMemoryReportCreateInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkDeviceDeviceMemoryReportCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkDeviceDeviceMemoryReportCreateInfoEXT clone(Arena arena, VkDeviceDeviceMemoryReportCreateInfoEXT src) {
+        VkDeviceDeviceMemoryReportCreateInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDeviceDeviceMemoryReportCreateInfoEXT[] clone(Arena arena, VkDeviceDeviceMemoryReportCreateInfoEXT[] src) {
+        VkDeviceDeviceMemoryReportCreateInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -46,62 +140,4 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) {
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$pfnUserCallback = LAYOUT$pfnUserCallback.byteSize();
     public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
-
-    public VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkDeviceMemoryReportFlagsEXT.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkDeviceMemoryReportFlagsEXT.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @pointer(comment="PFN_vkDeviceMemoryReportCallbackEXT") MemorySegment pfnUserCallback() {
-        return segment.get(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback);
-    }
-
-    public void pfnUserCallback(@pointer(comment="PFN_vkDeviceMemoryReportCallbackEXT") MemorySegment value) {
-        segment.set(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pUserData() {
-        return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
-    }
-
-    public void pUserData(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
-    }
-
-    public static VkDeviceDeviceMemoryReportCreateInfoEXT allocate(Arena arena) {
-        return new VkDeviceDeviceMemoryReportCreateInfoEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkDeviceDeviceMemoryReportCreateInfoEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDeviceDeviceMemoryReportCreateInfoEXT[] ret = new VkDeviceDeviceMemoryReportCreateInfoEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkDeviceDeviceMemoryReportCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

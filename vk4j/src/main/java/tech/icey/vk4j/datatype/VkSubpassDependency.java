@@ -1,62 +1,34 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkAccessFlags;
+import tech.icey.vk4j.bitmask.VkDependencyFlags;
+import tech.icey.vk4j.bitmask.VkPipelineStageFlags;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
-public record VkSubpassDependency(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("srcSubpass"),
-        ValueLayout.JAVA_INT.withName("dstSubpass"),
-        ValueLayout.JAVA_INT.withName("srcStageMask"),
-        ValueLayout.JAVA_INT.withName("dstStageMask"),
-        ValueLayout.JAVA_INT.withName("srcAccessMask"),
-        ValueLayout.JAVA_INT.withName("dstAccessMask"),
-        ValueLayout.JAVA_INT.withName("dependencyFlags")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
 
-    public static final PathElement PATH$srcSubpass = PathElement.groupElement("srcSubpass");
-    public static final PathElement PATH$dstSubpass = PathElement.groupElement("dstSubpass");
-    public static final PathElement PATH$srcStageMask = PathElement.groupElement("srcStageMask");
-    public static final PathElement PATH$dstStageMask = PathElement.groupElement("dstStageMask");
-    public static final PathElement PATH$srcAccessMask = PathElement.groupElement("srcAccessMask");
-    public static final PathElement PATH$dstAccessMask = PathElement.groupElement("dstAccessMask");
-    public static final PathElement PATH$dependencyFlags = PathElement.groupElement("dependencyFlags");
-
-    public static final OfInt LAYOUT$srcSubpass = (OfInt) LAYOUT.select(PATH$srcSubpass);
-    public static final OfInt LAYOUT$dstSubpass = (OfInt) LAYOUT.select(PATH$dstSubpass);
-    public static final OfInt LAYOUT$srcStageMask = (OfInt) LAYOUT.select(PATH$srcStageMask);
-    public static final OfInt LAYOUT$dstStageMask = (OfInt) LAYOUT.select(PATH$dstStageMask);
-    public static final OfInt LAYOUT$srcAccessMask = (OfInt) LAYOUT.select(PATH$srcAccessMask);
-    public static final OfInt LAYOUT$dstAccessMask = (OfInt) LAYOUT.select(PATH$dstAccessMask);
-    public static final OfInt LAYOUT$dependencyFlags = (OfInt) LAYOUT.select(PATH$dependencyFlags);
-
-    public static final long OFFSET$srcSubpass = LAYOUT.byteOffset(PATH$srcSubpass);
-    public static final long OFFSET$dstSubpass = LAYOUT.byteOffset(PATH$dstSubpass);
-    public static final long OFFSET$srcStageMask = LAYOUT.byteOffset(PATH$srcStageMask);
-    public static final long OFFSET$dstStageMask = LAYOUT.byteOffset(PATH$dstStageMask);
-    public static final long OFFSET$srcAccessMask = LAYOUT.byteOffset(PATH$srcAccessMask);
-    public static final long OFFSET$dstAccessMask = LAYOUT.byteOffset(PATH$dstAccessMask);
-    public static final long OFFSET$dependencyFlags = LAYOUT.byteOffset(PATH$dependencyFlags);
-
-    public static final long SIZE$srcSubpass = LAYOUT$srcSubpass.byteSize();
-    public static final long SIZE$dstSubpass = LAYOUT$dstSubpass.byteSize();
-    public static final long SIZE$srcStageMask = LAYOUT$srcStageMask.byteSize();
-    public static final long SIZE$dstStageMask = LAYOUT$dstStageMask.byteSize();
-    public static final long SIZE$srcAccessMask = LAYOUT$srcAccessMask.byteSize();
-    public static final long SIZE$dstAccessMask = LAYOUT$dstAccessMask.byteSize();
-    public static final long SIZE$dependencyFlags = LAYOUT$dependencyFlags.byteSize();
-
+/// {@snippet lang=c :
+/// typedef struct VkSubpassDependency {
+///     uint32_t srcSubpass;
+///     uint32_t dstSubpass;
+///     VkPipelineStageFlags srcStageMask;
+///     VkPipelineStageFlags dstStageMask;
+///     VkAccessFlags srcAccessMask;
+///     VkAccessFlags dstAccessMask;
+///     VkDependencyFlags dependencyFlags;
+/// } VkSubpassDependency;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSubpassDependency.html">VkSubpassDependency</a>
+public record VkSubpassDependency(MemorySegment segment) implements IPointer {
     public VkSubpassDependency(MemorySegment segment) {
         this.segment = segment;
     }
@@ -120,7 +92,7 @@ public record VkSubpassDependency(MemorySegment segment) {
     public static VkSubpassDependency allocate(Arena arena) {
         return new VkSubpassDependency(arena.allocate(LAYOUT));
     }
-    
+
     public static VkSubpassDependency[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubpassDependency[] ret = new VkSubpassDependency[count];
@@ -129,4 +101,61 @@ public record VkSubpassDependency(MemorySegment segment) {
         }
         return ret;
     }
+
+    public static VkSubpassDependency clone(Arena arena, VkSubpassDependency src) {
+        VkSubpassDependency ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkSubpassDependency[] clone(Arena arena, VkSubpassDependency[] src) {
+        VkSubpassDependency[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("srcSubpass"),
+        ValueLayout.JAVA_INT.withName("dstSubpass"),
+        ValueLayout.JAVA_INT.withName("srcStageMask"),
+        ValueLayout.JAVA_INT.withName("dstStageMask"),
+        ValueLayout.JAVA_INT.withName("srcAccessMask"),
+        ValueLayout.JAVA_INT.withName("dstAccessMask"),
+        ValueLayout.JAVA_INT.withName("dependencyFlags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$srcSubpass = PathElement.groupElement("srcSubpass");
+    public static final PathElement PATH$dstSubpass = PathElement.groupElement("dstSubpass");
+    public static final PathElement PATH$srcStageMask = PathElement.groupElement("srcStageMask");
+    public static final PathElement PATH$dstStageMask = PathElement.groupElement("dstStageMask");
+    public static final PathElement PATH$srcAccessMask = PathElement.groupElement("srcAccessMask");
+    public static final PathElement PATH$dstAccessMask = PathElement.groupElement("dstAccessMask");
+    public static final PathElement PATH$dependencyFlags = PathElement.groupElement("dependencyFlags");
+
+    public static final OfInt LAYOUT$srcSubpass = (OfInt) LAYOUT.select(PATH$srcSubpass);
+    public static final OfInt LAYOUT$dstSubpass = (OfInt) LAYOUT.select(PATH$dstSubpass);
+    public static final OfInt LAYOUT$srcStageMask = (OfInt) LAYOUT.select(PATH$srcStageMask);
+    public static final OfInt LAYOUT$dstStageMask = (OfInt) LAYOUT.select(PATH$dstStageMask);
+    public static final OfInt LAYOUT$srcAccessMask = (OfInt) LAYOUT.select(PATH$srcAccessMask);
+    public static final OfInt LAYOUT$dstAccessMask = (OfInt) LAYOUT.select(PATH$dstAccessMask);
+    public static final OfInt LAYOUT$dependencyFlags = (OfInt) LAYOUT.select(PATH$dependencyFlags);
+
+    public static final long OFFSET$srcSubpass = LAYOUT.byteOffset(PATH$srcSubpass);
+    public static final long OFFSET$dstSubpass = LAYOUT.byteOffset(PATH$dstSubpass);
+    public static final long OFFSET$srcStageMask = LAYOUT.byteOffset(PATH$srcStageMask);
+    public static final long OFFSET$dstStageMask = LAYOUT.byteOffset(PATH$dstStageMask);
+    public static final long OFFSET$srcAccessMask = LAYOUT.byteOffset(PATH$srcAccessMask);
+    public static final long OFFSET$dstAccessMask = LAYOUT.byteOffset(PATH$dstAccessMask);
+    public static final long OFFSET$dependencyFlags = LAYOUT.byteOffset(PATH$dependencyFlags);
+
+    public static final long SIZE$srcSubpass = LAYOUT$srcSubpass.byteSize();
+    public static final long SIZE$dstSubpass = LAYOUT$dstSubpass.byteSize();
+    public static final long SIZE$srcStageMask = LAYOUT$srcStageMask.byteSize();
+    public static final long SIZE$dstStageMask = LAYOUT$dstStageMask.byteSize();
+    public static final long SIZE$srcAccessMask = LAYOUT$srcAccessMask.byteSize();
+    public static final long SIZE$dstAccessMask = LAYOUT$dstAccessMask.byteSize();
+    public static final long SIZE$dependencyFlags = LAYOUT$dependencyFlags.byteSize();
 }

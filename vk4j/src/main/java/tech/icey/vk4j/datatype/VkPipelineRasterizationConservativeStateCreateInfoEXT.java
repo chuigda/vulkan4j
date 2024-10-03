@@ -1,19 +1,105 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.vk4j.bitmask.VkPipelineRasterizationConservativeStateCreateFlagsEXT;
+import tech.icey.vk4j.enumtype.VkConservativeRasterizationModeEXT;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+/// {@snippet lang=c :
+/// typedef struct VkPipelineRasterizationConservativeStateCreateInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineRasterizationConservativeStateCreateFlagsEXT flags;
+///     VkConservativeRasterizationModeEXT conservativeRasterizationMode;
+///     float extraPrimitiveOverestimationSize;
+/// } VkPipelineRasterizationConservativeStateCreateInfoEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineRasterizationConservativeStateCreateInfoEXT.html">VkPipelineRasterizationConservativeStateCreateInfoEXT</a>
+public record VkPipelineRasterizationConservativeStateCreateInfoEXT(MemorySegment segment) implements IPointer {
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT);
+    }
 
-public record VkPipelineRasterizationConservativeStateCreateInfoEXT(MemorySegment segment) {
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkPipelineRasterizationConservativeStateCreateFlagsEXT.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkPipelineRasterizationConservativeStateCreateFlagsEXT.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @enumtype(VkConservativeRasterizationModeEXT.class) int conservativeRasterizationMode() {
+        return segment.get(LAYOUT$conservativeRasterizationMode, OFFSET$conservativeRasterizationMode);
+    }
+
+    public void conservativeRasterizationMode(@enumtype(VkConservativeRasterizationModeEXT.class) int value) {
+        segment.set(LAYOUT$conservativeRasterizationMode, OFFSET$conservativeRasterizationMode, value);
+    }
+
+    public float extraPrimitiveOverestimationSize() {
+        return segment.get(LAYOUT$extraPrimitiveOverestimationSize, OFFSET$extraPrimitiveOverestimationSize);
+    }
+
+    public void extraPrimitiveOverestimationSize(float value) {
+        segment.set(LAYOUT$extraPrimitiveOverestimationSize, OFFSET$extraPrimitiveOverestimationSize, value);
+    }
+
+    public static VkPipelineRasterizationConservativeStateCreateInfoEXT allocate(Arena arena) {
+        return new VkPipelineRasterizationConservativeStateCreateInfoEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkPipelineRasterizationConservativeStateCreateInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPipelineRasterizationConservativeStateCreateInfoEXT[] ret = new VkPipelineRasterizationConservativeStateCreateInfoEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPipelineRasterizationConservativeStateCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPipelineRasterizationConservativeStateCreateInfoEXT clone(Arena arena, VkPipelineRasterizationConservativeStateCreateInfoEXT src) {
+        VkPipelineRasterizationConservativeStateCreateInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPipelineRasterizationConservativeStateCreateInfoEXT[] clone(Arena arena, VkPipelineRasterizationConservativeStateCreateInfoEXT[] src) {
+        VkPipelineRasterizationConservativeStateCreateInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -46,62 +132,4 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(MemorySegmen
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$conservativeRasterizationMode = LAYOUT$conservativeRasterizationMode.byteSize();
     public static final long SIZE$extraPrimitiveOverestimationSize = LAYOUT$extraPrimitiveOverestimationSize.byteSize();
-
-    public VkPipelineRasterizationConservativeStateCreateInfoEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkPipelineRasterizationConservativeStateCreateFlagsEXT.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkPipelineRasterizationConservativeStateCreateFlagsEXT.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @enumtype(VkConservativeRasterizationModeEXT.class) int conservativeRasterizationMode() {
-        return segment.get(LAYOUT$conservativeRasterizationMode, OFFSET$conservativeRasterizationMode);
-    }
-
-    public void conservativeRasterizationMode(@enumtype(VkConservativeRasterizationModeEXT.class) int value) {
-        segment.set(LAYOUT$conservativeRasterizationMode, OFFSET$conservativeRasterizationMode, value);
-    }
-
-    public float extraPrimitiveOverestimationSize() {
-        return segment.get(LAYOUT$extraPrimitiveOverestimationSize, OFFSET$extraPrimitiveOverestimationSize);
-    }
-
-    public void extraPrimitiveOverestimationSize(float value) {
-        segment.set(LAYOUT$extraPrimitiveOverestimationSize, OFFSET$extraPrimitiveOverestimationSize, value);
-    }
-
-    public static VkPipelineRasterizationConservativeStateCreateInfoEXT allocate(Arena arena) {
-        return new VkPipelineRasterizationConservativeStateCreateInfoEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPipelineRasterizationConservativeStateCreateInfoEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineRasterizationConservativeStateCreateInfoEXT[] ret = new VkPipelineRasterizationConservativeStateCreateInfoEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineRasterizationConservativeStateCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

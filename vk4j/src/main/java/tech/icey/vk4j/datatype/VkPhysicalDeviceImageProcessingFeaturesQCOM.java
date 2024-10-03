@@ -1,19 +1,105 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_FEATURES_QCOM;
 
-public record VkPhysicalDeviceImageProcessingFeaturesQCOM(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceImageProcessingFeaturesQCOM {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 textureSampleWeighted;
+///     VkBool32 textureBoxFilter;
+///     VkBool32 textureBlockMatch;
+/// } VkPhysicalDeviceImageProcessingFeaturesQCOM;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceImageProcessingFeaturesQCOM.html">VkPhysicalDeviceImageProcessingFeaturesQCOM</a>
+public record VkPhysicalDeviceImageProcessingFeaturesQCOM(MemorySegment segment) implements IPointer {
+    public VkPhysicalDeviceImageProcessingFeaturesQCOM(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_FEATURES_QCOM);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int textureSampleWeighted() {
+        return segment.get(LAYOUT$textureSampleWeighted, OFFSET$textureSampleWeighted);
+    }
+
+    public void textureSampleWeighted(@unsigned int value) {
+        segment.set(LAYOUT$textureSampleWeighted, OFFSET$textureSampleWeighted, value);
+    }
+
+    public @unsigned int textureBoxFilter() {
+        return segment.get(LAYOUT$textureBoxFilter, OFFSET$textureBoxFilter);
+    }
+
+    public void textureBoxFilter(@unsigned int value) {
+        segment.set(LAYOUT$textureBoxFilter, OFFSET$textureBoxFilter, value);
+    }
+
+    public @unsigned int textureBlockMatch() {
+        return segment.get(LAYOUT$textureBlockMatch, OFFSET$textureBlockMatch);
+    }
+
+    public void textureBlockMatch(@unsigned int value) {
+        segment.set(LAYOUT$textureBlockMatch, OFFSET$textureBlockMatch, value);
+    }
+
+    public static VkPhysicalDeviceImageProcessingFeaturesQCOM allocate(Arena arena) {
+        return new VkPhysicalDeviceImageProcessingFeaturesQCOM(arena.allocate(LAYOUT));
+    }
+
+    public static VkPhysicalDeviceImageProcessingFeaturesQCOM[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceImageProcessingFeaturesQCOM[] ret = new VkPhysicalDeviceImageProcessingFeaturesQCOM[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceImageProcessingFeaturesQCOM(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceImageProcessingFeaturesQCOM clone(Arena arena, VkPhysicalDeviceImageProcessingFeaturesQCOM src) {
+        VkPhysicalDeviceImageProcessingFeaturesQCOM ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceImageProcessingFeaturesQCOM[] clone(Arena arena, VkPhysicalDeviceImageProcessingFeaturesQCOM[] src) {
+        VkPhysicalDeviceImageProcessingFeaturesQCOM[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -46,62 +132,4 @@ public record VkPhysicalDeviceImageProcessingFeaturesQCOM(MemorySegment segment)
     public static final long SIZE$textureSampleWeighted = LAYOUT$textureSampleWeighted.byteSize();
     public static final long SIZE$textureBoxFilter = LAYOUT$textureBoxFilter.byteSize();
     public static final long SIZE$textureBlockMatch = LAYOUT$textureBlockMatch.byteSize();
-
-    public VkPhysicalDeviceImageProcessingFeaturesQCOM(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_FEATURES_QCOM);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int textureSampleWeighted() {
-        return segment.get(LAYOUT$textureSampleWeighted, OFFSET$textureSampleWeighted);
-    }
-
-    public void textureSampleWeighted(@unsigned int value) {
-        segment.set(LAYOUT$textureSampleWeighted, OFFSET$textureSampleWeighted, value);
-    }
-
-    public @unsigned int textureBoxFilter() {
-        return segment.get(LAYOUT$textureBoxFilter, OFFSET$textureBoxFilter);
-    }
-
-    public void textureBoxFilter(@unsigned int value) {
-        segment.set(LAYOUT$textureBoxFilter, OFFSET$textureBoxFilter, value);
-    }
-
-    public @unsigned int textureBlockMatch() {
-        return segment.get(LAYOUT$textureBlockMatch, OFFSET$textureBlockMatch);
-    }
-
-    public void textureBlockMatch(@unsigned int value) {
-        segment.set(LAYOUT$textureBlockMatch, OFFSET$textureBlockMatch, value);
-    }
-
-    public static VkPhysicalDeviceImageProcessingFeaturesQCOM allocate(Arena arena) {
-        return new VkPhysicalDeviceImageProcessingFeaturesQCOM(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPhysicalDeviceImageProcessingFeaturesQCOM[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceImageProcessingFeaturesQCOM[] ret = new VkPhysicalDeviceImageProcessingFeaturesQCOM[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceImageProcessingFeaturesQCOM(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

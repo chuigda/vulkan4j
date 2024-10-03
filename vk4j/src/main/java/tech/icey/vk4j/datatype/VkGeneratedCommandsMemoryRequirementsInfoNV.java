@@ -1,19 +1,134 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkPipelineBindPoint;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkIndirectCommandsLayoutNV;
+import tech.icey.vk4j.handle.VkPipeline;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_NV;
 
-public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkGeneratedCommandsMemoryRequirementsInfoNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineBindPoint pipelineBindPoint;
+///     VkPipeline pipeline;
+///     VkIndirectCommandsLayoutNV indirectCommandsLayout;
+///     uint32_t maxSequencesCount;
+/// } VkGeneratedCommandsMemoryRequirementsInfoNV;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkGeneratedCommandsMemoryRequirementsInfoNV.html">VkGeneratedCommandsMemoryRequirementsInfoNV</a>
+public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment) implements IPointer {
+    public VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_NV);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkPipelineBindPoint.class) int pipelineBindPoint() {
+        return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
+    }
+
+    public void pipelineBindPoint(@enumtype(VkPipelineBindPoint.class) int value) {
+        segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
+    }
+
+    public @nullable VkPipeline pipeline() {
+        MemorySegment s = segment.get(LAYOUT$pipeline, OFFSET$pipeline);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipeline(s);
+    }
+
+    public void pipeline(@nullable VkPipeline value) {
+        segment.set(
+            LAYOUT$pipeline,
+            OFFSET$pipeline,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @nullable VkIndirectCommandsLayoutNV indirectCommandsLayout() {
+        MemorySegment s = segment.get(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkIndirectCommandsLayoutNV(s);
+    }
+
+    public void indirectCommandsLayout(@nullable VkIndirectCommandsLayoutNV value) {
+        segment.set(
+            LAYOUT$indirectCommandsLayout,
+            OFFSET$indirectCommandsLayout,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @unsigned int maxSequencesCount() {
+        return segment.get(LAYOUT$maxSequencesCount, OFFSET$maxSequencesCount);
+    }
+
+    public void maxSequencesCount(@unsigned int value) {
+        segment.set(LAYOUT$maxSequencesCount, OFFSET$maxSequencesCount, value);
+    }
+
+    public static VkGeneratedCommandsMemoryRequirementsInfoNV allocate(Arena arena) {
+        return new VkGeneratedCommandsMemoryRequirementsInfoNV(arena.allocate(LAYOUT));
+    }
+
+    public static VkGeneratedCommandsMemoryRequirementsInfoNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkGeneratedCommandsMemoryRequirementsInfoNV[] ret = new VkGeneratedCommandsMemoryRequirementsInfoNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkGeneratedCommandsMemoryRequirementsInfoNV(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkGeneratedCommandsMemoryRequirementsInfoNV clone(Arena arena, VkGeneratedCommandsMemoryRequirementsInfoNV src) {
+        VkGeneratedCommandsMemoryRequirementsInfoNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkGeneratedCommandsMemoryRequirementsInfoNV[] clone(Arena arena, VkGeneratedCommandsMemoryRequirementsInfoNV[] src) {
+        VkGeneratedCommandsMemoryRequirementsInfoNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -51,70 +166,4 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
     public static final long SIZE$pipeline = LAYOUT$pipeline.byteSize();
     public static final long SIZE$indirectCommandsLayout = LAYOUT$indirectCommandsLayout.byteSize();
     public static final long SIZE$maxSequencesCount = LAYOUT$maxSequencesCount.byteSize();
-
-    public VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_NV);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkPipelineBindPoint.class) int pipelineBindPoint() {
-        return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
-    }
-
-    public void pipelineBindPoint(@enumtype(VkPipelineBindPoint.class) int value) {
-        segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
-    }
-
-    public VkPipeline pipeline() {
-        return new VkPipeline(segment.get(LAYOUT$pipeline, OFFSET$pipeline));
-    }
-
-    public void pipeline(VkPipeline value) {
-        segment.set(LAYOUT$pipeline, OFFSET$pipeline, value.segment());
-    }
-
-    public VkIndirectCommandsLayoutNV indirectCommandsLayout() {
-        return new VkIndirectCommandsLayoutNV(segment.get(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout));
-    }
-
-    public void indirectCommandsLayout(VkIndirectCommandsLayoutNV value) {
-        segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value.segment());
-    }
-
-    public @unsigned int maxSequencesCount() {
-        return segment.get(LAYOUT$maxSequencesCount, OFFSET$maxSequencesCount);
-    }
-
-    public void maxSequencesCount(@unsigned int value) {
-        segment.set(LAYOUT$maxSequencesCount, OFFSET$maxSequencesCount, value);
-    }
-
-    public static VkGeneratedCommandsMemoryRequirementsInfoNV allocate(Arena arena) {
-        return new VkGeneratedCommandsMemoryRequirementsInfoNV(arena.allocate(LAYOUT));
-    }
-    
-    public static VkGeneratedCommandsMemoryRequirementsInfoNV[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkGeneratedCommandsMemoryRequirementsInfoNV[] ret = new VkGeneratedCommandsMemoryRequirementsInfoNV[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkGeneratedCommandsMemoryRequirementsInfoNV(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

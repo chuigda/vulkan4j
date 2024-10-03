@@ -1,19 +1,104 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.ByteBuffer;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_VERSION_INFO_KHR;
 
-public record VkAccelerationStructureVersionInfoKHR(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkAccelerationStructureVersionInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     const uint8_t* pVersionData;
+/// } VkAccelerationStructureVersionInfoKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAccelerationStructureVersionInfoKHR.html">VkAccelerationStructureVersionInfoKHR</a>
+public record VkAccelerationStructureVersionInfoKHR(MemorySegment segment) implements IPointer {
+    public VkAccelerationStructureVersionInfoKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_VERSION_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @pointer(comment="uint8_t*") MemorySegment pVersionDataRaw() {
+        return segment.get(LAYOUT$pVersionData, OFFSET$pVersionData);
+    }
+
+    public void pVersionDataRaw(@pointer(comment="uint8_t*") MemorySegment value) {
+        segment.set(LAYOUT$pVersionData, OFFSET$pVersionData, value);
+    }
+
+    /// Note: the returned {@link ByteBuffer} does not have correct
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ByteBuffer#reinterpret} to set the size before actually
+    /// {@link ByteBuffer#read}ing or
+    /// {@link ByteBuffer#write}ing the buffer.
+    public @nullable @unsigned ByteBuffer pVersionData() {
+        MemorySegment s = pVersionDataRaw();
+        return s.address() == 0 ? null : new ByteBuffer(s);
+    }
+
+    public void pVersionData(@nullable @unsigned ByteBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pVersionDataRaw(s);
+    }
+
+    public static VkAccelerationStructureVersionInfoKHR allocate(Arena arena) {
+        return new VkAccelerationStructureVersionInfoKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkAccelerationStructureVersionInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkAccelerationStructureVersionInfoKHR[] ret = new VkAccelerationStructureVersionInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkAccelerationStructureVersionInfoKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkAccelerationStructureVersionInfoKHR clone(Arena arena, VkAccelerationStructureVersionInfoKHR src) {
+        VkAccelerationStructureVersionInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkAccelerationStructureVersionInfoKHR[] clone(Arena arena, VkAccelerationStructureVersionInfoKHR[] src) {
+        VkAccelerationStructureVersionInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -36,54 +121,4 @@ public record VkAccelerationStructureVersionInfoKHR(MemorySegment segment) {
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$pVersionData = LAYOUT$pVersionData.byteSize();
-
-    public VkAccelerationStructureVersionInfoKHR(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_VERSION_INFO_KHR);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @pointer(comment="uint8_t*") MemorySegment pVersionDataRaw() {
-        return segment.get(LAYOUT$pVersionData, OFFSET$pVersionData);
-    }
-
-    public void pVersionDataRaw(@pointer(comment="uint8_t*") MemorySegment value) {
-        segment.set(LAYOUT$pVersionData, OFFSET$pVersionData, value);
-    }
-    
-    public @unsigned ByteBuffer pVersionData() {
-        return new ByteBuffer(pVersionDataRaw());
-    }
-
-    public void pVersionData(@unsigned ByteBuffer value) {
-        pVersionDataRaw(value.segment());
-    }
-
-    public static VkAccelerationStructureVersionInfoKHR allocate(Arena arena) {
-        return new VkAccelerationStructureVersionInfoKHR(arena.allocate(LAYOUT));
-    }
-    
-    public static VkAccelerationStructureVersionInfoKHR[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkAccelerationStructureVersionInfoKHR[] ret = new VkAccelerationStructureVersionInfoKHR[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkAccelerationStructureVersionInfoKHR(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

@@ -1,19 +1,105 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM;
 
-public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkImageViewSampleWeightCreateInfoQCOM {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkOffset2D filterCenter;
+///     VkExtent2D filterSize;
+///     uint32_t numPhases;
+/// } VkImageViewSampleWeightCreateInfoQCOM;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageViewSampleWeightCreateInfoQCOM.html">VkImageViewSampleWeightCreateInfoQCOM</a>
+public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) implements IPointer {
+    public VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public VkOffset2D filterCenter() {
+        return new VkOffset2D(segment.asSlice(OFFSET$filterCenter, LAYOUT$filterCenter));
+    }
+
+    public void filterCenter(VkOffset2D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$filterCenter, SIZE$filterCenter);
+    }
+
+    public VkExtent2D filterSize() {
+        return new VkExtent2D(segment.asSlice(OFFSET$filterSize, LAYOUT$filterSize));
+    }
+
+    public void filterSize(VkExtent2D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$filterSize, SIZE$filterSize);
+    }
+
+    public @unsigned int numPhases() {
+        return segment.get(LAYOUT$numPhases, OFFSET$numPhases);
+    }
+
+    public void numPhases(@unsigned int value) {
+        segment.set(LAYOUT$numPhases, OFFSET$numPhases, value);
+    }
+
+    public static VkImageViewSampleWeightCreateInfoQCOM allocate(Arena arena) {
+        return new VkImageViewSampleWeightCreateInfoQCOM(arena.allocate(LAYOUT));
+    }
+
+    public static VkImageViewSampleWeightCreateInfoQCOM[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkImageViewSampleWeightCreateInfoQCOM[] ret = new VkImageViewSampleWeightCreateInfoQCOM[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkImageViewSampleWeightCreateInfoQCOM(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkImageViewSampleWeightCreateInfoQCOM clone(Arena arena, VkImageViewSampleWeightCreateInfoQCOM src) {
+        VkImageViewSampleWeightCreateInfoQCOM ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkImageViewSampleWeightCreateInfoQCOM[] clone(Arena arena, VkImageViewSampleWeightCreateInfoQCOM[] src) {
+        VkImageViewSampleWeightCreateInfoQCOM[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -46,62 +132,4 @@ public record VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) {
     public static final long SIZE$filterCenter = LAYOUT$filterCenter.byteSize();
     public static final long SIZE$filterSize = LAYOUT$filterSize.byteSize();
     public static final long SIZE$numPhases = LAYOUT$numPhases.byteSize();
-
-    public VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public VkOffset2D filterCenter() {
-        return new VkOffset2D(segment.asSlice(OFFSET$filterCenter, LAYOUT$filterCenter));
-    }
-
-    public void filterCenter(VkOffset2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$filterCenter, SIZE$filterCenter);
-    }
-
-    public VkExtent2D filterSize() {
-        return new VkExtent2D(segment.asSlice(OFFSET$filterSize, LAYOUT$filterSize));
-    }
-
-    public void filterSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$filterSize, SIZE$filterSize);
-    }
-
-    public @unsigned int numPhases() {
-        return segment.get(LAYOUT$numPhases, OFFSET$numPhases);
-    }
-
-    public void numPhases(@unsigned int value) {
-        segment.set(LAYOUT$numPhases, OFFSET$numPhases, value);
-    }
-
-    public static VkImageViewSampleWeightCreateInfoQCOM allocate(Arena arena) {
-        return new VkImageViewSampleWeightCreateInfoQCOM(arena.allocate(LAYOUT));
-    }
-    
-    public static VkImageViewSampleWeightCreateInfoQCOM[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkImageViewSampleWeightCreateInfoQCOM[] ret = new VkImageViewSampleWeightCreateInfoQCOM[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkImageViewSampleWeightCreateInfoQCOM(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

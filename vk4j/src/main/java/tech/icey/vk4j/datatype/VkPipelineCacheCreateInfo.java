@@ -1,19 +1,111 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkPipelineCacheCreateFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO;
 
-public record VkPipelineCacheCreateInfo(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPipelineCacheCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkPipelineCacheCreateFlags flags;
+///     size_t initialDataSize;
+///     size_t initialDataSize;
+///     const void* pInitialData;
+/// } VkPipelineCacheCreateInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineCacheCreateInfo.html">VkPipelineCacheCreateInfo</a>
+public record VkPipelineCacheCreateInfo(MemorySegment segment) implements IPointer {
+    public VkPipelineCacheCreateInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkPipelineCacheCreateFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkPipelineCacheCreateFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @unsigned long initialDataSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$initialDataSize);
+        }
+
+        public void initialDataSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$initialDataSize, value);
+        }
+
+    public @pointer(comment="void*") MemorySegment pInitialData() {
+        return segment.get(LAYOUT$pInitialData, OFFSET$pInitialData);
+    }
+
+    public void pInitialData(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pInitialData, OFFSET$pInitialData, value);
+    }
+
+    public void pInitialData(IPointer pointer) {
+        pInitialData(pointer.segment());
+    }
+
+    public static VkPipelineCacheCreateInfo allocate(Arena arena) {
+        return new VkPipelineCacheCreateInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkPipelineCacheCreateInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPipelineCacheCreateInfo[] ret = new VkPipelineCacheCreateInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPipelineCacheCreateInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPipelineCacheCreateInfo clone(Arena arena, VkPipelineCacheCreateInfo src) {
+        VkPipelineCacheCreateInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPipelineCacheCreateInfo[] clone(Arena arena, VkPipelineCacheCreateInfo[] src) {
+        VkPipelineCacheCreateInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -44,62 +136,4 @@ public record VkPipelineCacheCreateInfo(MemorySegment segment) {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$pInitialData = LAYOUT$pInitialData.byteSize();
-
-    public VkPipelineCacheCreateInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkPipelineCacheCreateFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkPipelineCacheCreateFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @unsigned long initialDataSize() {
-            return NativeLayout.readCSizeT(segment, OFFSET$initialDataSize);
-        }
-    
-        public void initialDataSize(@unsigned long value) {
-            NativeLayout.writeCSizeT(segment, OFFSET$initialDataSize, value);
-        }
-
-    public @pointer(comment="void*") MemorySegment pInitialData() {
-        return segment.get(LAYOUT$pInitialData, OFFSET$pInitialData);
-    }
-
-    public void pInitialData(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pInitialData, OFFSET$pInitialData, value);
-    }
-
-    public static VkPipelineCacheCreateInfo allocate(Arena arena) {
-        return new VkPipelineCacheCreateInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPipelineCacheCreateInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineCacheCreateInfo[] ret = new VkPipelineCacheCreateInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineCacheCreateInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

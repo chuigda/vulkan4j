@@ -1,57 +1,30 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkLineRasterizationModeKHR;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_KHR;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
-
-public record VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("lineRasterizationMode"),
-        ValueLayout.JAVA_INT.withName("stippledLineEnable"),
-        ValueLayout.JAVA_INT.withName("lineStippleFactor"),
-        ValueLayout.JAVA_SHORT.withName("lineStipplePattern")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$lineRasterizationMode = PathElement.groupElement("lineRasterizationMode");
-    public static final PathElement PATH$stippledLineEnable = PathElement.groupElement("stippledLineEnable");
-    public static final PathElement PATH$lineStippleFactor = PathElement.groupElement("lineStippleFactor");
-    public static final PathElement PATH$lineStipplePattern = PathElement.groupElement("lineStipplePattern");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$lineRasterizationMode = (OfInt) LAYOUT.select(PATH$lineRasterizationMode);
-    public static final OfInt LAYOUT$stippledLineEnable = (OfInt) LAYOUT.select(PATH$stippledLineEnable);
-    public static final OfInt LAYOUT$lineStippleFactor = (OfInt) LAYOUT.select(PATH$lineStippleFactor);
-    public static final OfShort LAYOUT$lineStipplePattern = (OfShort) LAYOUT.select(PATH$lineStipplePattern);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$lineRasterizationMode = LAYOUT.byteOffset(PATH$lineRasterizationMode);
-    public static final long OFFSET$stippledLineEnable = LAYOUT.byteOffset(PATH$stippledLineEnable);
-    public static final long OFFSET$lineStippleFactor = LAYOUT.byteOffset(PATH$lineStippleFactor);
-    public static final long OFFSET$lineStipplePattern = LAYOUT.byteOffset(PATH$lineStipplePattern);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$lineRasterizationMode = LAYOUT$lineRasterizationMode.byteSize();
-    public static final long SIZE$stippledLineEnable = LAYOUT$stippledLineEnable.byteSize();
-    public static final long SIZE$lineStippleFactor = LAYOUT$lineStippleFactor.byteSize();
-    public static final long SIZE$lineStipplePattern = LAYOUT$lineStipplePattern.byteSize();
-
+/// {@snippet lang=c :
+/// typedef struct VkPipelineRasterizationLineStateCreateInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkLineRasterizationModeKHR lineRasterizationMode;
+///     VkBool32 stippledLineEnable;
+///     uint32_t lineStippleFactor;
+///     uint16_t lineStipplePattern;
+/// } VkPipelineRasterizationLineStateCreateInfoKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineRasterizationLineStateCreateInfoKHR.html">VkPipelineRasterizationLineStateCreateInfoKHR</a>
+public record VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segment) implements IPointer {
     public VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_KHR);
@@ -71,6 +44,10 @@ public record VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segmen
 
     public void pNext(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
     }
 
     public @enumtype(VkLineRasterizationModeKHR.class) int lineRasterizationMode() {
@@ -108,7 +85,7 @@ public record VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segmen
     public static VkPipelineRasterizationLineStateCreateInfoKHR allocate(Arena arena) {
         return new VkPipelineRasterizationLineStateCreateInfoKHR(arena.allocate(LAYOUT));
     }
-    
+
     public static VkPipelineRasterizationLineStateCreateInfoKHR[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineRasterizationLineStateCreateInfoKHR[] ret = new VkPipelineRasterizationLineStateCreateInfoKHR[count];
@@ -117,4 +94,56 @@ public record VkPipelineRasterizationLineStateCreateInfoKHR(MemorySegment segmen
         }
         return ret;
     }
+
+    public static VkPipelineRasterizationLineStateCreateInfoKHR clone(Arena arena, VkPipelineRasterizationLineStateCreateInfoKHR src) {
+        VkPipelineRasterizationLineStateCreateInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPipelineRasterizationLineStateCreateInfoKHR[] clone(Arena arena, VkPipelineRasterizationLineStateCreateInfoKHR[] src) {
+        VkPipelineRasterizationLineStateCreateInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("lineRasterizationMode"),
+        ValueLayout.JAVA_INT.withName("stippledLineEnable"),
+        ValueLayout.JAVA_INT.withName("lineStippleFactor"),
+        ValueLayout.JAVA_SHORT.withName("lineStipplePattern")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$lineRasterizationMode = PathElement.groupElement("lineRasterizationMode");
+    public static final PathElement PATH$stippledLineEnable = PathElement.groupElement("stippledLineEnable");
+    public static final PathElement PATH$lineStippleFactor = PathElement.groupElement("lineStippleFactor");
+    public static final PathElement PATH$lineStipplePattern = PathElement.groupElement("lineStipplePattern");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$lineRasterizationMode = (OfInt) LAYOUT.select(PATH$lineRasterizationMode);
+    public static final OfInt LAYOUT$stippledLineEnable = (OfInt) LAYOUT.select(PATH$stippledLineEnable);
+    public static final OfInt LAYOUT$lineStippleFactor = (OfInt) LAYOUT.select(PATH$lineStippleFactor);
+    public static final OfShort LAYOUT$lineStipplePattern = (OfShort) LAYOUT.select(PATH$lineStipplePattern);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$lineRasterizationMode = LAYOUT.byteOffset(PATH$lineRasterizationMode);
+    public static final long OFFSET$stippledLineEnable = LAYOUT.byteOffset(PATH$stippledLineEnable);
+    public static final long OFFSET$lineStippleFactor = LAYOUT.byteOffset(PATH$lineStippleFactor);
+    public static final long OFFSET$lineStipplePattern = LAYOUT.byteOffset(PATH$lineStipplePattern);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$lineRasterizationMode = LAYOUT$lineRasterizationMode.byteSize();
+    public static final long SIZE$stippledLineEnable = LAYOUT$stippledLineEnable.byteSize();
+    public static final long SIZE$lineStippleFactor = LAYOUT$lineStippleFactor.byteSize();
+    public static final long SIZE$lineStipplePattern = LAYOUT$lineStipplePattern.byteSize();
 }

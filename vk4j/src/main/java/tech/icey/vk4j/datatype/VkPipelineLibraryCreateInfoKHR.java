@@ -1,19 +1,116 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkPipeline;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_LIBRARY_CREATE_INFO_KHR;
 
-public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPipelineLibraryCreateInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t libraryCount;
+///     const VkPipeline* pLibraries;
+/// } VkPipelineLibraryCreateInfoKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineLibraryCreateInfoKHR.html">VkPipelineLibraryCreateInfoKHR</a>
+public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) implements IPointer {
+    public VkPipelineLibraryCreateInfoKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PIPELINE_LIBRARY_CREATE_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int libraryCount() {
+        return segment.get(LAYOUT$libraryCount, OFFSET$libraryCount);
+    }
+
+    public void libraryCount(@unsigned int value) {
+        segment.set(LAYOUT$libraryCount, OFFSET$libraryCount, value);
+    }
+
+    public @pointer(comment="VkPipeline") MemorySegment pLibrariesRaw() {
+        return segment.get(LAYOUT$pLibraries, OFFSET$pLibraries);
+    }
+
+    public void pLibrariesRaw(@pointer(comment="VkPipeline") MemorySegment value) {
+        segment.set(LAYOUT$pLibraries, OFFSET$pLibraries, value);
+    }
+
+    /// Note: the returned {@link VkPipeline.Buffer} does not have correct
+    /// {@link VkPipeline.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkPipeline.Buffer#reinterpret} to set the size before actually
+    /// {@link VkPipeline.Buffer#read}ing or {@link VkPipeline.Buffer#write}ing
+    /// the buffer.
+    public @nullable VkPipeline.Buffer pLibraries() {
+        MemorySegment s = pLibrariesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipeline.Buffer(s);
+    }
+
+    public void pLibraries(@nullable VkPipeline.Buffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pLibrariesRaw(s);
+    }
+
+    public static VkPipelineLibraryCreateInfoKHR allocate(Arena arena) {
+        return new VkPipelineLibraryCreateInfoKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkPipelineLibraryCreateInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPipelineLibraryCreateInfoKHR[] ret = new VkPipelineLibraryCreateInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPipelineLibraryCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPipelineLibraryCreateInfoKHR clone(Arena arena, VkPipelineLibraryCreateInfoKHR src) {
+        VkPipelineLibraryCreateInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPipelineLibraryCreateInfoKHR[] clone(Arena arena, VkPipelineLibraryCreateInfoKHR[] src) {
+        VkPipelineLibraryCreateInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,67 +138,4 @@ public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$libraryCount = LAYOUT$libraryCount.byteSize();
     public static final long SIZE$pLibraries = LAYOUT$pLibraries.byteSize();
-
-    public VkPipelineLibraryCreateInfoKHR(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PIPELINE_LIBRARY_CREATE_INFO_KHR);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int libraryCount() {
-        return segment.get(LAYOUT$libraryCount, OFFSET$libraryCount);
-    }
-
-    public void libraryCount(@unsigned int value) {
-        segment.set(LAYOUT$libraryCount, OFFSET$libraryCount, value);
-    }
-
-    public @pointer(comment="VkPipeline") MemorySegment pLibrariesRaw() {
-        return segment.get(LAYOUT$pLibraries, OFFSET$pLibraries);
-    }
-
-    public void pLibrariesRaw(@pointer(comment="VkPipeline") MemorySegment value) {
-        segment.set(LAYOUT$pLibraries, OFFSET$pLibraries, value);
-    }
-
-    public @nullable VkPipeline.Buffer pLibraries() {
-        MemorySegment s = pLibrariesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipeline.Buffer(s);
-    }
-
-    public void pLibraries(@nullable VkPipeline.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pLibrariesRaw(s);
-    }
-
-    public static VkPipelineLibraryCreateInfoKHR allocate(Arena arena) {
-        return new VkPipelineLibraryCreateInfoKHR(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPipelineLibraryCreateInfoKHR[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineLibraryCreateInfoKHR[] ret = new VkPipelineLibraryCreateInfoKHR[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPipelineLibraryCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

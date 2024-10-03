@@ -1,19 +1,221 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.vk4j.bitmask.VkRenderingFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_RENDERING_INFO;
 
-public record VkRenderingInfo(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkRenderingInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkRenderingFlags flags;
+///     VkRect2D renderArea;
+///     uint32_t layerCount;
+///     uint32_t viewMask;
+///     uint32_t colorAttachmentCount;
+///     const VkRenderingAttachmentInfo* pColorAttachments;
+///     const VkRenderingAttachmentInfo* pDepthAttachment;
+///     const VkRenderingAttachmentInfo* pStencilAttachment;
+/// } VkRenderingInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRenderingInfo.html">VkRenderingInfo</a>
+public record VkRenderingInfo(MemorySegment segment) implements IPointer {
+    public VkRenderingInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_RENDERING_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkRenderingFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkRenderingFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public VkRect2D renderArea() {
+        return new VkRect2D(segment.asSlice(OFFSET$renderArea, LAYOUT$renderArea));
+    }
+
+    public void renderArea(VkRect2D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderArea, SIZE$renderArea);
+    }
+
+    public @unsigned int layerCount() {
+        return segment.get(LAYOUT$layerCount, OFFSET$layerCount);
+    }
+
+    public void layerCount(@unsigned int value) {
+        segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
+    }
+
+    public @unsigned int viewMask() {
+        return segment.get(LAYOUT$viewMask, OFFSET$viewMask);
+    }
+
+    public void viewMask(@unsigned int value) {
+        segment.set(LAYOUT$viewMask, OFFSET$viewMask, value);
+    }
+
+    public @unsigned int colorAttachmentCount() {
+        return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
+    }
+
+    public void colorAttachmentCount(@unsigned int value) {
+        segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
+    }
+
+    public @pointer(comment="VkRenderingAttachmentInfo*") MemorySegment pColorAttachmentsRaw() {
+        return segment.get(LAYOUT$pColorAttachments, OFFSET$pColorAttachments);
+    }
+
+    public void pColorAttachmentsRaw(@pointer(comment="VkRenderingAttachmentInfo*") MemorySegment value) {
+        segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
+    }
+
+    public @nullable VkRenderingAttachmentInfo pColorAttachments() {
+        MemorySegment s = pColorAttachmentsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkRenderingAttachmentInfo(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkRenderingAttachmentInfo[] pColorAttachments(int assumedCount) {
+        MemorySegment s = pColorAttachmentsRaw().reinterpret(assumedCount * VkRenderingAttachmentInfo.SIZE);
+        VkRenderingAttachmentInfo[] arr = new VkRenderingAttachmentInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.SIZE, VkRenderingAttachmentInfo.SIZE));
+        }
+        return arr;
+    }
+
+    public void pColorAttachments(@nullable VkRenderingAttachmentInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pColorAttachmentsRaw(s);
+    }
+
+    public @pointer(comment="VkRenderingAttachmentInfo*") MemorySegment pDepthAttachmentRaw() {
+        return segment.get(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment);
+    }
+
+    public void pDepthAttachmentRaw(@pointer(comment="VkRenderingAttachmentInfo*") MemorySegment value) {
+        segment.set(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment, value);
+    }
+
+    public @nullable VkRenderingAttachmentInfo pDepthAttachment() {
+        MemorySegment s = pDepthAttachmentRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkRenderingAttachmentInfo(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkRenderingAttachmentInfo[] pDepthAttachment(int assumedCount) {
+        MemorySegment s = pDepthAttachmentRaw().reinterpret(assumedCount * VkRenderingAttachmentInfo.SIZE);
+        VkRenderingAttachmentInfo[] arr = new VkRenderingAttachmentInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.SIZE, VkRenderingAttachmentInfo.SIZE));
+        }
+        return arr;
+    }
+
+    public void pDepthAttachment(@nullable VkRenderingAttachmentInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDepthAttachmentRaw(s);
+    }
+
+    public @pointer(comment="VkRenderingAttachmentInfo*") MemorySegment pStencilAttachmentRaw() {
+        return segment.get(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment);
+    }
+
+    public void pStencilAttachmentRaw(@pointer(comment="VkRenderingAttachmentInfo*") MemorySegment value) {
+        segment.set(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment, value);
+    }
+
+    public @nullable VkRenderingAttachmentInfo pStencilAttachment() {
+        MemorySegment s = pStencilAttachmentRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkRenderingAttachmentInfo(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkRenderingAttachmentInfo[] pStencilAttachment(int assumedCount) {
+        MemorySegment s = pStencilAttachmentRaw().reinterpret(assumedCount * VkRenderingAttachmentInfo.SIZE);
+        VkRenderingAttachmentInfo[] arr = new VkRenderingAttachmentInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.SIZE, VkRenderingAttachmentInfo.SIZE));
+        }
+        return arr;
+    }
+
+    public void pStencilAttachment(@nullable VkRenderingAttachmentInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pStencilAttachmentRaw(s);
+    }
+
+    public static VkRenderingInfo allocate(Arena arena) {
+        return new VkRenderingInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkRenderingInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkRenderingInfo[] ret = new VkRenderingInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkRenderingInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkRenderingInfo clone(Arena arena, VkRenderingInfo src) {
+        VkRenderingInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkRenderingInfo[] clone(Arena arena, VkRenderingInfo[] src) {
+        VkRenderingInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -71,141 +273,4 @@ public record VkRenderingInfo(MemorySegment segment) {
     public static final long SIZE$pColorAttachments = LAYOUT$pColorAttachments.byteSize();
     public static final long SIZE$pDepthAttachment = LAYOUT$pDepthAttachment.byteSize();
     public static final long SIZE$pStencilAttachment = LAYOUT$pStencilAttachment.byteSize();
-
-    public VkRenderingInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_RENDERING_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkRenderingFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkRenderingFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public VkRect2D renderArea() {
-        return new VkRect2D(segment.asSlice(OFFSET$renderArea, LAYOUT$renderArea));
-    }
-
-    public void renderArea(VkRect2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderArea, SIZE$renderArea);
-    }
-
-    public @unsigned int layerCount() {
-        return segment.get(LAYOUT$layerCount, OFFSET$layerCount);
-    }
-
-    public void layerCount(@unsigned int value) {
-        segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
-    }
-
-    public @unsigned int viewMask() {
-        return segment.get(LAYOUT$viewMask, OFFSET$viewMask);
-    }
-
-    public void viewMask(@unsigned int value) {
-        segment.set(LAYOUT$viewMask, OFFSET$viewMask, value);
-    }
-
-    public @unsigned int colorAttachmentCount() {
-        return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
-    }
-
-    public void colorAttachmentCount(@unsigned int value) {
-        segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
-    }
-
-    public @pointer(comment="VkRenderingAttachmentInfo*") MemorySegment pColorAttachmentsRaw() {
-        return segment.get(LAYOUT$pColorAttachments, OFFSET$pColorAttachments);
-    }
-
-    public void pColorAttachmentsRaw(@pointer(comment="VkRenderingAttachmentInfo*") MemorySegment value) {
-        segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
-    }
-    
-    public @nullable VkRenderingAttachmentInfo pColorAttachments() {
-        MemorySegment s = pColorAttachmentsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkRenderingAttachmentInfo(s);
-    }
-
-    public void pColorAttachments(@nullable VkRenderingAttachmentInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pColorAttachmentsRaw(s);
-    }
-
-    public @pointer(comment="VkRenderingAttachmentInfo*") MemorySegment pDepthAttachmentRaw() {
-        return segment.get(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment);
-    }
-
-    public void pDepthAttachmentRaw(@pointer(comment="VkRenderingAttachmentInfo*") MemorySegment value) {
-        segment.set(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment, value);
-    }
-    
-    public @nullable VkRenderingAttachmentInfo pDepthAttachment() {
-        MemorySegment s = pDepthAttachmentRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkRenderingAttachmentInfo(s);
-    }
-
-    public void pDepthAttachment(@nullable VkRenderingAttachmentInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDepthAttachmentRaw(s);
-    }
-
-    public @pointer(comment="VkRenderingAttachmentInfo*") MemorySegment pStencilAttachmentRaw() {
-        return segment.get(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment);
-    }
-
-    public void pStencilAttachmentRaw(@pointer(comment="VkRenderingAttachmentInfo*") MemorySegment value) {
-        segment.set(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment, value);
-    }
-    
-    public @nullable VkRenderingAttachmentInfo pStencilAttachment() {
-        MemorySegment s = pStencilAttachmentRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkRenderingAttachmentInfo(s);
-    }
-
-    public void pStencilAttachment(@nullable VkRenderingAttachmentInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStencilAttachmentRaw(s);
-    }
-
-    public static VkRenderingInfo allocate(Arena arena) {
-        return new VkRenderingInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkRenderingInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkRenderingInfo[] ret = new VkRenderingInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderingInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

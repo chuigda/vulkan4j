@@ -1,19 +1,129 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.FloatBuffer;
+import tech.icey.vk4j.bitmask.VkSampleCountFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT;
 
-public record VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceSampleLocationsPropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkSampleCountFlags sampleLocationSampleCounts;
+///     VkExtent2D maxSampleLocationGridSize;
+///     float sampleLocationCoordinateRange[2];
+///     uint32_t sampleLocationSubPixelBits;
+///     VkBool32 variableSampleLocations;
+/// } VkPhysicalDeviceSampleLocationsPropertiesEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceSampleLocationsPropertiesEXT.html">VkPhysicalDeviceSampleLocationsPropertiesEXT</a>
+public record VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment) implements IPointer {
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkSampleCountFlags.class) int sampleLocationSampleCounts() {
+        return segment.get(LAYOUT$sampleLocationSampleCounts, OFFSET$sampleLocationSampleCounts);
+    }
+
+    public void sampleLocationSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+        segment.set(LAYOUT$sampleLocationSampleCounts, OFFSET$sampleLocationSampleCounts, value);
+    }
+
+    public VkExtent2D maxSampleLocationGridSize() {
+        return new VkExtent2D(segment.asSlice(OFFSET$maxSampleLocationGridSize, LAYOUT$maxSampleLocationGridSize));
+    }
+
+    public void maxSampleLocationGridSize(VkExtent2D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSampleLocationGridSize, SIZE$maxSampleLocationGridSize);
+    }
+
+    public MemorySegment sampleLocationCoordinateRangeRaw() {
+        return segment.asSlice(OFFSET$sampleLocationCoordinateRange, SIZE$sampleLocationCoordinateRange);
+    }
+
+    public FloatBuffer sampleLocationCoordinateRange() {
+        return new FloatBuffer(sampleLocationCoordinateRangeRaw());
+    }
+
+    public void sampleLocationCoordinateRange(FloatBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationCoordinateRange, SIZE$sampleLocationCoordinateRange);
+    }
+
+    public @unsigned int sampleLocationSubPixelBits() {
+        return segment.get(LAYOUT$sampleLocationSubPixelBits, OFFSET$sampleLocationSubPixelBits);
+    }
+
+    public void sampleLocationSubPixelBits(@unsigned int value) {
+        segment.set(LAYOUT$sampleLocationSubPixelBits, OFFSET$sampleLocationSubPixelBits, value);
+    }
+
+    public @unsigned int variableSampleLocations() {
+        return segment.get(LAYOUT$variableSampleLocations, OFFSET$variableSampleLocations);
+    }
+
+    public void variableSampleLocations(@unsigned int value) {
+        segment.set(LAYOUT$variableSampleLocations, OFFSET$variableSampleLocations, value);
+    }
+
+    public static VkPhysicalDeviceSampleLocationsPropertiesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceSampleLocationsPropertiesEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkPhysicalDeviceSampleLocationsPropertiesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceSampleLocationsPropertiesEXT[] ret = new VkPhysicalDeviceSampleLocationsPropertiesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceSampleLocationsPropertiesEXT clone(Arena arena, VkPhysicalDeviceSampleLocationsPropertiesEXT src) {
+        VkPhysicalDeviceSampleLocationsPropertiesEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceSampleLocationsPropertiesEXT[] clone(Arena arena, VkPhysicalDeviceSampleLocationsPropertiesEXT[] src) {
+        VkPhysicalDeviceSampleLocationsPropertiesEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -56,82 +166,4 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment
     public static final long SIZE$sampleLocationCoordinateRange = LAYOUT$sampleLocationCoordinateRange.byteSize();
     public static final long SIZE$sampleLocationSubPixelBits = LAYOUT$sampleLocationSubPixelBits.byteSize();
     public static final long SIZE$variableSampleLocations = LAYOUT$variableSampleLocations.byteSize();
-
-    public VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkSampleCountFlags.class) int sampleLocationSampleCounts() {
-        return segment.get(LAYOUT$sampleLocationSampleCounts, OFFSET$sampleLocationSampleCounts);
-    }
-
-    public void sampleLocationSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
-        segment.set(LAYOUT$sampleLocationSampleCounts, OFFSET$sampleLocationSampleCounts, value);
-    }
-
-    public VkExtent2D maxSampleLocationGridSize() {
-        return new VkExtent2D(segment.asSlice(OFFSET$maxSampleLocationGridSize, LAYOUT$maxSampleLocationGridSize));
-    }
-
-    public void maxSampleLocationGridSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSampleLocationGridSize, SIZE$maxSampleLocationGridSize);
-    }
-
-    public MemorySegment sampleLocationCoordinateRangeRaw() {
-        return segment.asSlice(OFFSET$sampleLocationCoordinateRange, LAYOUT$sampleLocationCoordinateRange.byteSize());
-    }
-
-    public FloatBuffer sampleLocationCoordinateRange() {
-        return new FloatBuffer(sampleLocationCoordinateRangeRaw());
-    }
-
-    public void sampleLocationCoordinateRange(FloatBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationCoordinateRange, LAYOUT$sampleLocationCoordinateRange.byteSize());
-    }
-
-    public @unsigned int sampleLocationSubPixelBits() {
-        return segment.get(LAYOUT$sampleLocationSubPixelBits, OFFSET$sampleLocationSubPixelBits);
-    }
-
-    public void sampleLocationSubPixelBits(@unsigned int value) {
-        segment.set(LAYOUT$sampleLocationSubPixelBits, OFFSET$sampleLocationSubPixelBits, value);
-    }
-
-    public @unsigned int variableSampleLocations() {
-        return segment.get(LAYOUT$variableSampleLocations, OFFSET$variableSampleLocations);
-    }
-
-    public void variableSampleLocations(@unsigned int value) {
-        segment.set(LAYOUT$variableSampleLocations, OFFSET$variableSampleLocations, value);
-    }
-
-    public static VkPhysicalDeviceSampleLocationsPropertiesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceSampleLocationsPropertiesEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPhysicalDeviceSampleLocationsPropertiesEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceSampleLocationsPropertiesEXT[] ret = new VkPhysicalDeviceSampleLocationsPropertiesEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

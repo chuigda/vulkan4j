@@ -3,14 +3,12 @@ package tech.icey.vk4j.command;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
-import tech.icey.vk4j.NativeLayout;
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
+import tech.icey.panama.FunctionLoader;
+import tech.icey.panama.annotation.*;
+import tech.icey.panama.buffer.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.util.Function2;
 
 public final class EntryCommands {
     public static final FunctionDescriptor DESCRIPTOR$vkCreateInstance = FunctionDescriptor.of(
@@ -43,13 +41,14 @@ public final class EntryCommands {
     public final @nullable MethodHandle HANDLE$vkEnumerateInstanceLayerProperties;
     public final @nullable MethodHandle HANDLE$vkEnumerateInstanceExtensionProperties;
 
-    public EntryCommands(Function2<String, FunctionDescriptor, MethodHandle> loader) {
+    public EntryCommands(FunctionLoader loader) {
         HANDLE$vkCreateInstance = loader.apply("vkCreateInstance", DESCRIPTOR$vkCreateInstance);
         HANDLE$vkEnumerateInstanceVersion = loader.apply("vkEnumerateInstanceVersion", DESCRIPTOR$vkEnumerateInstanceVersion);
         HANDLE$vkEnumerateInstanceLayerProperties = loader.apply("vkEnumerateInstanceLayerProperties", DESCRIPTOR$vkEnumerateInstanceLayerProperties);
         HANDLE$vkEnumerateInstanceExtensionProperties = loader.apply("vkEnumerateInstanceExtensionProperties", DESCRIPTOR$vkEnumerateInstanceExtensionProperties);
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateInstance.html">vkCreateInstance</a>
     public @enumtype(VkResult.class) int vkCreateInstance(
             @pointer(target=VkInstanceCreateInfo.class) VkInstanceCreateInfo pCreateInfo,
             @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
@@ -66,8 +65,9 @@ public final class EntryCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumerateInstanceVersion.html">vkEnumerateInstanceVersion</a>
     public @enumtype(VkResult.class) int vkEnumerateInstanceVersion(
-             @unsigned IntBuffer pApiVersion
+            @unsigned IntBuffer pApiVersion
     ) {
         try {
             return (int) HANDLE$vkEnumerateInstanceVersion.invokeExact(
@@ -78,8 +78,9 @@ public final class EntryCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumerateInstanceLayerProperties.html">vkEnumerateInstanceLayerProperties</a>
     public @enumtype(VkResult.class) int vkEnumerateInstanceLayerProperties(
-             @unsigned IntBuffer pPropertyCount,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkLayerProperties.class) VkLayerProperties pProperties
     ) {
         try {
@@ -92,9 +93,10 @@ public final class EntryCommands {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumerateInstanceExtensionProperties.html">vkEnumerateInstanceExtensionProperties</a>
     public @enumtype(VkResult.class) int vkEnumerateInstanceExtensionProperties(
-            @nullable  ByteBuffer pLayerName,
-             @unsigned IntBuffer pPropertyCount,
+            @nullable ByteBuffer pLayerName,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkExtensionProperties.class) VkExtensionProperties pProperties
     ) {
         try {

@@ -1,19 +1,179 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.IntBuffer;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO;
 
-public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkRenderPassMultiviewCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t subpassCount;
+///     const uint32_t* pViewMasks;
+///     uint32_t dependencyCount;
+///     const int32_t* pViewOffsets;
+///     uint32_t correlationMaskCount;
+///     const uint32_t* pCorrelationMasks;
+/// } VkRenderPassMultiviewCreateInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRenderPassMultiviewCreateInfo.html">VkRenderPassMultiviewCreateInfo</a>
+public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) implements IPointer {
+    public VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int subpassCount() {
+        return segment.get(LAYOUT$subpassCount, OFFSET$subpassCount);
+    }
+
+    public void subpassCount(@unsigned int value) {
+        segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
+    }
+
+    public @pointer(comment="uint32_t*") MemorySegment pViewMasksRaw() {
+        return segment.get(LAYOUT$pViewMasks, OFFSET$pViewMasks);
+    }
+
+    public void pViewMasksRaw(@pointer(comment="uint32_t*") MemorySegment value) {
+        segment.set(LAYOUT$pViewMasks, OFFSET$pViewMasks, value);
+    }
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
+    public @nullable @unsigned IntBuffer pViewMasks() {
+        MemorySegment s = pViewMasksRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
+    }
+
+    public void pViewMasks(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pViewMasksRaw(s);
+    }
+
+    public @unsigned int dependencyCount() {
+        return segment.get(LAYOUT$dependencyCount, OFFSET$dependencyCount);
+    }
+
+    public void dependencyCount(@unsigned int value) {
+        segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
+    }
+
+    public @pointer(comment="int32_t*") MemorySegment pViewOffsetsRaw() {
+        return segment.get(LAYOUT$pViewOffsets, OFFSET$pViewOffsets);
+    }
+
+    public void pViewOffsetsRaw(@pointer(comment="int32_t*") MemorySegment value) {
+        segment.set(LAYOUT$pViewOffsets, OFFSET$pViewOffsets, value);
+    }
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
+    public @nullable IntBuffer pViewOffsets() {
+        MemorySegment s = pViewOffsetsRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
+    }
+
+    public void pViewOffsets(@nullable IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pViewOffsetsRaw(s);
+    }
+
+    public @unsigned int correlationMaskCount() {
+        return segment.get(LAYOUT$correlationMaskCount, OFFSET$correlationMaskCount);
+    }
+
+    public void correlationMaskCount(@unsigned int value) {
+        segment.set(LAYOUT$correlationMaskCount, OFFSET$correlationMaskCount, value);
+    }
+
+    public @pointer(comment="uint32_t*") MemorySegment pCorrelationMasksRaw() {
+        return segment.get(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks);
+    }
+
+    public void pCorrelationMasksRaw(@pointer(comment="uint32_t*") MemorySegment value) {
+        segment.set(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks, value);
+    }
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
+    public @nullable @unsigned IntBuffer pCorrelationMasks() {
+        MemorySegment s = pCorrelationMasksRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
+    }
+
+    public void pCorrelationMasks(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCorrelationMasksRaw(s);
+    }
+
+    public static VkRenderPassMultiviewCreateInfo allocate(Arena arena) {
+        return new VkRenderPassMultiviewCreateInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkRenderPassMultiviewCreateInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkRenderPassMultiviewCreateInfo[] ret = new VkRenderPassMultiviewCreateInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkRenderPassMultiviewCreateInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkRenderPassMultiviewCreateInfo clone(Arena arena, VkRenderPassMultiviewCreateInfo src) {
+        VkRenderPassMultiviewCreateInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkRenderPassMultiviewCreateInfo[] clone(Arena arena, VkRenderPassMultiviewCreateInfo[] src) {
+        VkRenderPassMultiviewCreateInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -61,110 +221,4 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
     public static final long SIZE$pViewOffsets = LAYOUT$pViewOffsets.byteSize();
     public static final long SIZE$correlationMaskCount = LAYOUT$correlationMaskCount.byteSize();
     public static final long SIZE$pCorrelationMasks = LAYOUT$pCorrelationMasks.byteSize();
-
-    public VkRenderPassMultiviewCreateInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int subpassCount() {
-        return segment.get(LAYOUT$subpassCount, OFFSET$subpassCount);
-    }
-
-    public void subpassCount(@unsigned int value) {
-        segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
-    }
-
-    public @pointer(comment="uint32_t*") MemorySegment pViewMasksRaw() {
-        return segment.get(LAYOUT$pViewMasks, OFFSET$pViewMasks);
-    }
-
-    public void pViewMasksRaw(@pointer(comment="uint32_t*") MemorySegment value) {
-        segment.set(LAYOUT$pViewMasks, OFFSET$pViewMasks, value);
-    }
-    
-    public @unsigned IntBuffer pViewMasks() {
-        return new IntBuffer(pViewMasksRaw());
-    }
-
-    public void pViewMasks(@unsigned IntBuffer value) {
-        pViewMasksRaw(value.segment());
-    }
-
-    public @unsigned int dependencyCount() {
-        return segment.get(LAYOUT$dependencyCount, OFFSET$dependencyCount);
-    }
-
-    public void dependencyCount(@unsigned int value) {
-        segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
-    }
-
-    public @pointer(comment="int32_t*") MemorySegment pViewOffsetsRaw() {
-        return segment.get(LAYOUT$pViewOffsets, OFFSET$pViewOffsets);
-    }
-
-    public void pViewOffsetsRaw(@pointer(comment="int32_t*") MemorySegment value) {
-        segment.set(LAYOUT$pViewOffsets, OFFSET$pViewOffsets, value);
-    }
-    
-    public IntBuffer pViewOffsets() {
-        return new IntBuffer(pViewOffsetsRaw());
-    }
-
-    public void pViewOffsets(IntBuffer value) {
-        pViewOffsetsRaw(value.segment());
-    }
-
-    public @unsigned int correlationMaskCount() {
-        return segment.get(LAYOUT$correlationMaskCount, OFFSET$correlationMaskCount);
-    }
-
-    public void correlationMaskCount(@unsigned int value) {
-        segment.set(LAYOUT$correlationMaskCount, OFFSET$correlationMaskCount, value);
-    }
-
-    public @pointer(comment="uint32_t*") MemorySegment pCorrelationMasksRaw() {
-        return segment.get(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks);
-    }
-
-    public void pCorrelationMasksRaw(@pointer(comment="uint32_t*") MemorySegment value) {
-        segment.set(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks, value);
-    }
-    
-    public @unsigned IntBuffer pCorrelationMasks() {
-        return new IntBuffer(pCorrelationMasksRaw());
-    }
-
-    public void pCorrelationMasks(@unsigned IntBuffer value) {
-        pCorrelationMasksRaw(value.segment());
-    }
-
-    public static VkRenderPassMultiviewCreateInfo allocate(Arena arena) {
-        return new VkRenderPassMultiviewCreateInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkRenderPassMultiviewCreateInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkRenderPassMultiviewCreateInfo[] ret = new VkRenderPassMultiviewCreateInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderPassMultiviewCreateInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

@@ -1,19 +1,182 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.panama.buffer.PointerBuffer;
+import tech.icey.vk4j.bitmask.VkInstanceCreateFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
 
-public record VkInstanceCreateInfo(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkInstanceCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkInstanceCreateFlags flags;
+///     const VkApplicationInfo* pApplicationInfo;
+///     uint32_t enabledLayerCount;
+///     const char* const* ppEnabledLayerNames;
+///     uint32_t enabledExtensionCount;
+///     const char* const* ppEnabledExtensionNames;
+/// } VkInstanceCreateInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkInstanceCreateInfo.html">VkInstanceCreateInfo</a>
+public record VkInstanceCreateInfo(MemorySegment segment) implements IPointer {
+    public VkInstanceCreateInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkInstanceCreateFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkInstanceCreateFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @pointer(comment="VkApplicationInfo*") MemorySegment pApplicationInfoRaw() {
+        return segment.get(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo);
+    }
+
+    public void pApplicationInfoRaw(@pointer(comment="VkApplicationInfo*") MemorySegment value) {
+        segment.set(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo, value);
+    }
+
+    public @nullable VkApplicationInfo pApplicationInfo() {
+        MemorySegment s = pApplicationInfoRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkApplicationInfo(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkApplicationInfo[] pApplicationInfo(int assumedCount) {
+        MemorySegment s = pApplicationInfoRaw().reinterpret(assumedCount * VkApplicationInfo.SIZE);
+        VkApplicationInfo[] arr = new VkApplicationInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkApplicationInfo(s.asSlice(i * VkApplicationInfo.SIZE, VkApplicationInfo.SIZE));
+        }
+        return arr;
+    }
+
+    public void pApplicationInfo(@nullable VkApplicationInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pApplicationInfoRaw(s);
+    }
+
+    public @unsigned int enabledLayerCount() {
+        return segment.get(LAYOUT$enabledLayerCount, OFFSET$enabledLayerCount);
+    }
+
+    public void enabledLayerCount(@unsigned int value) {
+        segment.set(LAYOUT$enabledLayerCount, OFFSET$enabledLayerCount, value);
+    }
+
+    public @pointer(comment="void**") MemorySegment ppEnabledLayerNamesRaw() {
+        return segment.get(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames);
+    }
+
+    public void ppEnabledLayerNamesRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames, value);
+    }
+
+    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the
+    /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
+    ///
+    /// @see PointerBuffer
+    public PointerBuffer ppEnabledLayerNames() {
+        return new PointerBuffer(ppEnabledLayerNamesRaw());
+    }
+
+    public void ppEnabledLayerNames(PointerBuffer value) {
+        ppEnabledLayerNamesRaw(value.segment());
+    }
+
+    public @unsigned int enabledExtensionCount() {
+        return segment.get(LAYOUT$enabledExtensionCount, OFFSET$enabledExtensionCount);
+    }
+
+    public void enabledExtensionCount(@unsigned int value) {
+        segment.set(LAYOUT$enabledExtensionCount, OFFSET$enabledExtensionCount, value);
+    }
+
+    public @pointer(comment="void**") MemorySegment ppEnabledExtensionNamesRaw() {
+        return segment.get(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames);
+    }
+
+    public void ppEnabledExtensionNamesRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames, value);
+    }
+
+    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the
+    /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
+    ///
+    /// @see PointerBuffer
+    public PointerBuffer ppEnabledExtensionNames() {
+        return new PointerBuffer(ppEnabledExtensionNamesRaw());
+    }
+
+    public void ppEnabledExtensionNames(PointerBuffer value) {
+        ppEnabledExtensionNamesRaw(value.segment());
+    }
+
+    public static VkInstanceCreateInfo allocate(Arena arena) {
+        return new VkInstanceCreateInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkInstanceCreateInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkInstanceCreateInfo[] ret = new VkInstanceCreateInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkInstanceCreateInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkInstanceCreateInfo clone(Arena arena, VkInstanceCreateInfo src) {
+        VkInstanceCreateInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkInstanceCreateInfo[] clone(Arena arena, VkInstanceCreateInfo[] src) {
+        VkInstanceCreateInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -61,99 +224,4 @@ public record VkInstanceCreateInfo(MemorySegment segment) {
     public static final long SIZE$ppEnabledLayerNames = LAYOUT$ppEnabledLayerNames.byteSize();
     public static final long SIZE$enabledExtensionCount = LAYOUT$enabledExtensionCount.byteSize();
     public static final long SIZE$ppEnabledExtensionNames = LAYOUT$ppEnabledExtensionNames.byteSize();
-
-    public VkInstanceCreateInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkInstanceCreateFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkInstanceCreateFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @pointer(comment="VkApplicationInfo*") MemorySegment pApplicationInfoRaw() {
-        return segment.get(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo);
-    }
-
-    public void pApplicationInfoRaw(@pointer(comment="VkApplicationInfo*") MemorySegment value) {
-        segment.set(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo, value);
-    }
-    
-    public @nullable VkApplicationInfo pApplicationInfo() {
-        MemorySegment s = pApplicationInfoRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkApplicationInfo(s);
-    }
-
-    public void pApplicationInfo(@nullable VkApplicationInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pApplicationInfoRaw(s);
-    }
-
-    public @unsigned int enabledLayerCount() {
-        return segment.get(LAYOUT$enabledLayerCount, OFFSET$enabledLayerCount);
-    }
-
-    public void enabledLayerCount(@unsigned int value) {
-        segment.set(LAYOUT$enabledLayerCount, OFFSET$enabledLayerCount, value);
-    }
-
-    public @pointer(comment="void**") MemorySegment ppEnabledLayerNames() {
-        return segment.get(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames);
-    }
-
-    public void ppEnabledLayerNames(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames, value);
-    }
-
-    public @unsigned int enabledExtensionCount() {
-        return segment.get(LAYOUT$enabledExtensionCount, OFFSET$enabledExtensionCount);
-    }
-
-    public void enabledExtensionCount(@unsigned int value) {
-        segment.set(LAYOUT$enabledExtensionCount, OFFSET$enabledExtensionCount, value);
-    }
-
-    public @pointer(comment="void**") MemorySegment ppEnabledExtensionNames() {
-        return segment.get(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames);
-    }
-
-    public void ppEnabledExtensionNames(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames, value);
-    }
-
-    public static VkInstanceCreateInfo allocate(Arena arena) {
-        return new VkInstanceCreateInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkInstanceCreateInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkInstanceCreateInfo[] ret = new VkInstanceCreateInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkInstanceCreateInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

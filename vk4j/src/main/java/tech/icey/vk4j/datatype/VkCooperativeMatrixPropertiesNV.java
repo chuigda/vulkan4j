@@ -1,77 +1,36 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkComponentTypeKHR;
+import tech.icey.vk4j.enumtype.VkScopeKHR;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_NV;
 
-public record VkCooperativeMatrixPropertiesNV(MemorySegment segment) {
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("MSize"),
-        ValueLayout.JAVA_INT.withName("NSize"),
-        ValueLayout.JAVA_INT.withName("KSize"),
-        ValueLayout.JAVA_INT.withName("AType"),
-        ValueLayout.JAVA_INT.withName("BType"),
-        ValueLayout.JAVA_INT.withName("CType"),
-        ValueLayout.JAVA_INT.withName("DType"),
-        ValueLayout.JAVA_INT.withName("scope")
-    );
-    public static final long SIZE = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
-    public static final PathElement PATH$MSize = PathElement.groupElement("MSize");
-    public static final PathElement PATH$NSize = PathElement.groupElement("NSize");
-    public static final PathElement PATH$KSize = PathElement.groupElement("KSize");
-    public static final PathElement PATH$AType = PathElement.groupElement("AType");
-    public static final PathElement PATH$BType = PathElement.groupElement("BType");
-    public static final PathElement PATH$CType = PathElement.groupElement("CType");
-    public static final PathElement PATH$DType = PathElement.groupElement("DType");
-    public static final PathElement PATH$scope = PathElement.groupElement("scope");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$MSize = (OfInt) LAYOUT.select(PATH$MSize);
-    public static final OfInt LAYOUT$NSize = (OfInt) LAYOUT.select(PATH$NSize);
-    public static final OfInt LAYOUT$KSize = (OfInt) LAYOUT.select(PATH$KSize);
-    public static final OfInt LAYOUT$AType = (OfInt) LAYOUT.select(PATH$AType);
-    public static final OfInt LAYOUT$BType = (OfInt) LAYOUT.select(PATH$BType);
-    public static final OfInt LAYOUT$CType = (OfInt) LAYOUT.select(PATH$CType);
-    public static final OfInt LAYOUT$DType = (OfInt) LAYOUT.select(PATH$DType);
-    public static final OfInt LAYOUT$scope = (OfInt) LAYOUT.select(PATH$scope);
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$MSize = LAYOUT.byteOffset(PATH$MSize);
-    public static final long OFFSET$NSize = LAYOUT.byteOffset(PATH$NSize);
-    public static final long OFFSET$KSize = LAYOUT.byteOffset(PATH$KSize);
-    public static final long OFFSET$AType = LAYOUT.byteOffset(PATH$AType);
-    public static final long OFFSET$BType = LAYOUT.byteOffset(PATH$BType);
-    public static final long OFFSET$CType = LAYOUT.byteOffset(PATH$CType);
-    public static final long OFFSET$DType = LAYOUT.byteOffset(PATH$DType);
-    public static final long OFFSET$scope = LAYOUT.byteOffset(PATH$scope);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$MSize = LAYOUT$MSize.byteSize();
-    public static final long SIZE$NSize = LAYOUT$NSize.byteSize();
-    public static final long SIZE$KSize = LAYOUT$KSize.byteSize();
-    public static final long SIZE$AType = LAYOUT$AType.byteSize();
-    public static final long SIZE$BType = LAYOUT$BType.byteSize();
-    public static final long SIZE$CType = LAYOUT$CType.byteSize();
-    public static final long SIZE$DType = LAYOUT$DType.byteSize();
-    public static final long SIZE$scope = LAYOUT$scope.byteSize();
-
+/// {@snippet lang=c :
+/// typedef struct VkCooperativeMatrixPropertiesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t MSize;
+///     uint32_t NSize;
+///     uint32_t KSize;
+///     VkComponentTypeNV AType;
+///     VkComponentTypeNV BType;
+///     VkComponentTypeNV CType;
+///     VkComponentTypeNV DType;
+///     VkScopeNV scope;
+/// } VkCooperativeMatrixPropertiesNV;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkCooperativeMatrixPropertiesNV.html">VkCooperativeMatrixPropertiesNV</a>
+public record VkCooperativeMatrixPropertiesNV(MemorySegment segment) implements IPointer {
     public VkCooperativeMatrixPropertiesNV(MemorySegment segment) {
         this.segment = segment;
         this.sType(VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_NV);
@@ -91,6 +50,10 @@ public record VkCooperativeMatrixPropertiesNV(MemorySegment segment) {
 
     public void pNext(@pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
     }
 
     public @unsigned int MSize() {
@@ -160,7 +123,7 @@ public record VkCooperativeMatrixPropertiesNV(MemorySegment segment) {
     public static VkCooperativeMatrixPropertiesNV allocate(Arena arena) {
         return new VkCooperativeMatrixPropertiesNV(arena.allocate(LAYOUT));
     }
-    
+
     public static VkCooperativeMatrixPropertiesNV[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCooperativeMatrixPropertiesNV[] ret = new VkCooperativeMatrixPropertiesNV[count];
@@ -169,4 +132,76 @@ public record VkCooperativeMatrixPropertiesNV(MemorySegment segment) {
         }
         return ret;
     }
+
+    public static VkCooperativeMatrixPropertiesNV clone(Arena arena, VkCooperativeMatrixPropertiesNV src) {
+        VkCooperativeMatrixPropertiesNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCooperativeMatrixPropertiesNV[] clone(Arena arena, VkCooperativeMatrixPropertiesNV[] src) {
+        VkCooperativeMatrixPropertiesNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("MSize"),
+        ValueLayout.JAVA_INT.withName("NSize"),
+        ValueLayout.JAVA_INT.withName("KSize"),
+        ValueLayout.JAVA_INT.withName("AType"),
+        ValueLayout.JAVA_INT.withName("BType"),
+        ValueLayout.JAVA_INT.withName("CType"),
+        ValueLayout.JAVA_INT.withName("DType"),
+        ValueLayout.JAVA_INT.withName("scope")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$MSize = PathElement.groupElement("MSize");
+    public static final PathElement PATH$NSize = PathElement.groupElement("NSize");
+    public static final PathElement PATH$KSize = PathElement.groupElement("KSize");
+    public static final PathElement PATH$AType = PathElement.groupElement("AType");
+    public static final PathElement PATH$BType = PathElement.groupElement("BType");
+    public static final PathElement PATH$CType = PathElement.groupElement("CType");
+    public static final PathElement PATH$DType = PathElement.groupElement("DType");
+    public static final PathElement PATH$scope = PathElement.groupElement("scope");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$MSize = (OfInt) LAYOUT.select(PATH$MSize);
+    public static final OfInt LAYOUT$NSize = (OfInt) LAYOUT.select(PATH$NSize);
+    public static final OfInt LAYOUT$KSize = (OfInt) LAYOUT.select(PATH$KSize);
+    public static final OfInt LAYOUT$AType = (OfInt) LAYOUT.select(PATH$AType);
+    public static final OfInt LAYOUT$BType = (OfInt) LAYOUT.select(PATH$BType);
+    public static final OfInt LAYOUT$CType = (OfInt) LAYOUT.select(PATH$CType);
+    public static final OfInt LAYOUT$DType = (OfInt) LAYOUT.select(PATH$DType);
+    public static final OfInt LAYOUT$scope = (OfInt) LAYOUT.select(PATH$scope);
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$MSize = LAYOUT.byteOffset(PATH$MSize);
+    public static final long OFFSET$NSize = LAYOUT.byteOffset(PATH$NSize);
+    public static final long OFFSET$KSize = LAYOUT.byteOffset(PATH$KSize);
+    public static final long OFFSET$AType = LAYOUT.byteOffset(PATH$AType);
+    public static final long OFFSET$BType = LAYOUT.byteOffset(PATH$BType);
+    public static final long OFFSET$CType = LAYOUT.byteOffset(PATH$CType);
+    public static final long OFFSET$DType = LAYOUT.byteOffset(PATH$DType);
+    public static final long OFFSET$scope = LAYOUT.byteOffset(PATH$scope);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$MSize = LAYOUT$MSize.byteSize();
+    public static final long SIZE$NSize = LAYOUT$NSize.byteSize();
+    public static final long SIZE$KSize = LAYOUT$KSize.byteSize();
+    public static final long SIZE$AType = LAYOUT$AType.byteSize();
+    public static final long SIZE$BType = LAYOUT$BType.byteSize();
+    public static final long SIZE$CType = LAYOUT$CType.byteSize();
+    public static final long SIZE$DType = LAYOUT$DType.byteSize();
+    public static final long SIZE$scope = LAYOUT$scope.byteSize();
 }

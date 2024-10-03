@@ -37,9 +37,12 @@ build/
 # Downloaded vk.xml
 /vk4j/vkxml2java/vk.xml
 
-# Generated .java files (temporal, will be removed in the future)
+# Generated auxiliary programs
+*.exe
 
-# nativedrill generated native code
-nativedrill/*.o
-nativedrill/*.so
-nativedrill/*.dll
+# Assembly plugin produced files
+tutorial/dependency-reduced-pom.xml
+
+# Code Generator Input
+codegen/input/*
+!codegen/input/download.sh

@@ -1,19 +1,86 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+/// {@snippet lang=c :
+/// typedef struct VkMemoryOpaqueCaptureAddressAllocateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint64_t opaqueCaptureAddress;
+/// } VkMemoryOpaqueCaptureAddressAllocateInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMemoryOpaqueCaptureAddressAllocateInfo.html">VkMemoryOpaqueCaptureAddressAllocateInfo</a>
+public record VkMemoryOpaqueCaptureAddressAllocateInfo(MemorySegment segment) implements IPointer {
+    public VkMemoryOpaqueCaptureAddressAllocateInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO);
+    }
 
-public record VkMemoryOpaqueCaptureAddressAllocateInfo(MemorySegment segment) {
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned long opaqueCaptureAddress() {
+        return segment.get(LAYOUT$opaqueCaptureAddress, OFFSET$opaqueCaptureAddress);
+    }
+
+    public void opaqueCaptureAddress(@unsigned long value) {
+        segment.set(LAYOUT$opaqueCaptureAddress, OFFSET$opaqueCaptureAddress, value);
+    }
+
+    public static VkMemoryOpaqueCaptureAddressAllocateInfo allocate(Arena arena) {
+        return new VkMemoryOpaqueCaptureAddressAllocateInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkMemoryOpaqueCaptureAddressAllocateInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkMemoryOpaqueCaptureAddressAllocateInfo[] ret = new VkMemoryOpaqueCaptureAddressAllocateInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkMemoryOpaqueCaptureAddressAllocateInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkMemoryOpaqueCaptureAddressAllocateInfo clone(Arena arena, VkMemoryOpaqueCaptureAddressAllocateInfo src) {
+        VkMemoryOpaqueCaptureAddressAllocateInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkMemoryOpaqueCaptureAddressAllocateInfo[] clone(Arena arena, VkMemoryOpaqueCaptureAddressAllocateInfo[] src) {
+        VkMemoryOpaqueCaptureAddressAllocateInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -36,46 +103,4 @@ public record VkMemoryOpaqueCaptureAddressAllocateInfo(MemorySegment segment) {
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$opaqueCaptureAddress = LAYOUT$opaqueCaptureAddress.byteSize();
-
-    public VkMemoryOpaqueCaptureAddressAllocateInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned long opaqueCaptureAddress() {
-        return segment.get(LAYOUT$opaqueCaptureAddress, OFFSET$opaqueCaptureAddress);
-    }
-
-    public void opaqueCaptureAddress(@unsigned long value) {
-        segment.set(LAYOUT$opaqueCaptureAddress, OFFSET$opaqueCaptureAddress, value);
-    }
-
-    public static VkMemoryOpaqueCaptureAddressAllocateInfo allocate(Arena arena) {
-        return new VkMemoryOpaqueCaptureAddressAllocateInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkMemoryOpaqueCaptureAddressAllocateInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkMemoryOpaqueCaptureAddressAllocateInfo[] ret = new VkMemoryOpaqueCaptureAddressAllocateInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkMemoryOpaqueCaptureAddressAllocateInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

@@ -1,19 +1,126 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.ShortBuffer;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR;
 
-public record VkExportSemaphoreWin32HandleInfoKHR(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkExportSemaphoreWin32HandleInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     const SECURITY_ATTRIBUTES* pAttributes;
+///     DWORD dwAccess;
+///     LPCWSTR name;
+/// } VkExportSemaphoreWin32HandleInfoKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkExportSemaphoreWin32HandleInfoKHR.html">VkExportSemaphoreWin32HandleInfoKHR</a>
+public record VkExportSemaphoreWin32HandleInfoKHR(MemorySegment segment) implements IPointer {
+    public VkExportSemaphoreWin32HandleInfoKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @pointer(comment="void*") MemorySegment pAttributes() {
+        return segment.get(LAYOUT$pAttributes, OFFSET$pAttributes);
+    }
+
+    public void pAttributes(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
+    }
+
+    public void pAttributes(IPointer pointer) {
+        pAttributes(pointer.segment());
+    }
+
+    public @unsigned int dwAccess() {
+        return segment.get(LAYOUT$dwAccess, OFFSET$dwAccess);
+    }
+
+    public void dwAccess(@unsigned int value) {
+        segment.set(LAYOUT$dwAccess, OFFSET$dwAccess, value);
+    }
+
+    public @pointer(comment="uint16_t*") MemorySegment nameRaw() {
+        return segment.get(LAYOUT$name, OFFSET$name);
+    }
+
+    public void nameRaw(@pointer(comment="uint16_t*") MemorySegment value) {
+        segment.set(LAYOUT$name, OFFSET$name, value);
+    }
+
+    /// Note: the returned {@link ShortBuffer} does not have correct
+    /// {@link ShortBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link ShortBuffer#reinterpret} to set the size before actually
+    /// {@link ShortBuffer#read}ing or
+    /// {@link ShortBuffer#write}ing the buffer.
+    public @nullable @unsigned ShortBuffer name() {
+        MemorySegment s = nameRaw();
+        return s.address() == 0 ? null : new ShortBuffer(s);
+    }
+
+    public void name(@nullable @unsigned ShortBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nameRaw(s);
+    }
+
+    public static VkExportSemaphoreWin32HandleInfoKHR allocate(Arena arena) {
+        return new VkExportSemaphoreWin32HandleInfoKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkExportSemaphoreWin32HandleInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkExportSemaphoreWin32HandleInfoKHR[] ret = new VkExportSemaphoreWin32HandleInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkExportSemaphoreWin32HandleInfoKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkExportSemaphoreWin32HandleInfoKHR clone(Arena arena, VkExportSemaphoreWin32HandleInfoKHR src) {
+        VkExportSemaphoreWin32HandleInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkExportSemaphoreWin32HandleInfoKHR[] clone(Arena arena, VkExportSemaphoreWin32HandleInfoKHR[] src) {
+        VkExportSemaphoreWin32HandleInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -46,70 +153,4 @@ public record VkExportSemaphoreWin32HandleInfoKHR(MemorySegment segment) {
     public static final long SIZE$pAttributes = LAYOUT$pAttributes.byteSize();
     public static final long SIZE$dwAccess = LAYOUT$dwAccess.byteSize();
     public static final long SIZE$name = LAYOUT$name.byteSize();
-
-    public VkExportSemaphoreWin32HandleInfoKHR(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pAttributes() {
-        return segment.get(LAYOUT$pAttributes, OFFSET$pAttributes);
-    }
-
-    public void pAttributes(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
-    }
-
-    public @unsigned int dwAccess() {
-        return segment.get(LAYOUT$dwAccess, OFFSET$dwAccess);
-    }
-
-    public void dwAccess(@unsigned int value) {
-        segment.set(LAYOUT$dwAccess, OFFSET$dwAccess, value);
-    }
-
-    public @pointer(comment="uint16_t*") MemorySegment nameRaw() {
-        return segment.get(LAYOUT$name, OFFSET$name);
-    }
-
-    public void nameRaw(@pointer(comment="uint16_t*") MemorySegment value) {
-        segment.set(LAYOUT$name, OFFSET$name, value);
-    }
-    
-    public @unsigned ShortBuffer name() {
-        return new ShortBuffer(nameRaw());
-    }
-
-    public void name(@unsigned ShortBuffer value) {
-        nameRaw(value.segment());
-    }
-
-    public static VkExportSemaphoreWin32HandleInfoKHR allocate(Arena arena) {
-        return new VkExportSemaphoreWin32HandleInfoKHR(arena.allocate(LAYOUT));
-    }
-    
-    public static VkExportSemaphoreWin32HandleInfoKHR[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkExportSemaphoreWin32HandleInfoKHR[] ret = new VkExportSemaphoreWin32HandleInfoKHR[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkExportSemaphoreWin32HandleInfoKHR(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

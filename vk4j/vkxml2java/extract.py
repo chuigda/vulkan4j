@@ -73,6 +73,21 @@ def extract_registry(tree: Document) -> Registry:
         extension = extract_extension(extension_node)
         extensions[extension.name] = extension
 
+    extension_names: dict[str, str] = {}
+    for extension_node in tree.getElementsByTagName('extensions')[0].getElementsByTagName('extension'):
+        require_nodes = findall(extension_node, 'require')
+        for require_node in require_nodes:
+            has_found_extension_name = False
+            for enum_node in findall(require_node, 'enum'):
+                if get_attr(enum_node, 'name').endswith('_EXTENSION_NAME'):
+                    name = get_attr(enum_node, 'name')
+                    value = get_attr(enum_node, 'value')
+                    extension_names[name] = value
+                    has_found_extension_name = True
+                    break
+            if has_found_extension_name:
+                break
+
     functions: dict[str, Function] = {}
     for function_node in type_nodes:
         if ('category' in function_node.attributes
@@ -117,6 +132,7 @@ def extract_registry(tree: Document) -> Registry:
         aliases,
         bitmasks,
         constants,
+        extension_names,
         commands,
         command_aliases,
         enums,
@@ -180,6 +196,7 @@ def extract_command(e: Element) -> Command:
     name = get_element_text(find(proto, 'name'))
     api = get_attr(e, 'api')
     params = list(filter(lambda x: x is not None, map(extract_param, findall(e, 'param'))))
+    postprocess_optional_params(params)
     result = extract_type(find(proto, 'type'))
 
     if e.hasAttribute('successcodes'):
@@ -213,6 +230,18 @@ def extract_param(e: Element) -> Param | None:
     optional = e.getAttribute('optional').startswith('true') if e.hasAttribute('optional') else False
 
     return Param(name, api, type_, len_, arglen, optional)
+
+
+def postprocess_optional_params(param_list: list[Param]):
+    for param in param_list:
+        if param.len is not None:
+            has_optional_len = False
+            for tmp in param_list:
+                if tmp is not param and tmp.name == param.len and tmp.optional:
+                    has_optional_len = True
+                    break
+            if has_optional_len:
+                param.optional = True
 
 
 def extract_command_alias(e: Element) -> CommandAlias:
@@ -412,12 +441,36 @@ def extract_handle(e: Element) -> Handle:
 def extract_structure(e: Element) -> Structure:
     name = get_attr(e, 'name')
     api = get_attr(e, 'api')
-    members = list(map(extract_member, findall(e, 'member')))
+    member_nodes = findall(e, 'member')
+    verbatim = list(map(extract_member_verbatim, member_nodes))
+    members = list(map(extract_member, member_nodes))
     structextends = list(
         get_attr(e, 'structextends').split(',')
     ) if 'structextends' in e.attributes else []
 
-    return Structure(name, api, members, structextends)
+    return Structure(name, api, verbatim, members, structextends)
+
+
+def extract_member_verbatim(e: Element) -> str:
+    tmp = ''
+    for child in e.childNodes:
+        if child.nodeType == Node.ELEMENT_NODE:
+            if child.tagName == 'comment':
+                continue
+        tmp += text_content(child, strip=False)
+
+    ret = ''
+    had_whitespace = False
+    for c in tmp.strip():
+        if c == ' ':
+            if not had_whitespace:
+                ret += c
+                had_whitespace = True
+        else:
+            ret += c
+            had_whitespace = False
+
+    return ret
 
 
 BITS_REGEX: Pattern = re.compile(r':(\d+)$')
@@ -461,11 +514,14 @@ def get_element_text(e: Element) -> str:
     return e.childNodes[0].nodeValue.strip()
 
 
-def text_content(e: Node) -> str:
+def text_content(e: Node, strip: bool = True) -> str:
     if e.nodeType == Node.TEXT_NODE:
-        return e.nodeValue.strip()
+        if strip:
+            return e.nodeValue.strip()
+        else:
+            return e.nodeValue
     else:
-        return ''.join(map(text_content, e.childNodes))
+        return ''.join(map(lambda node: text_content(node, strip), e.childNodes))
 
 
 def find(e: Element, tag: str) -> Element:

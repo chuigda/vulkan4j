@@ -1,19 +1,96 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkAcquireProfilingLockFlagsKHR;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_ACQUIRE_PROFILING_LOCK_INFO_KHR;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+/// {@snippet lang=c :
+/// typedef struct VkAcquireProfilingLockInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkAcquireProfilingLockFlagsKHR flags;
+///     uint64_t timeout;
+/// } VkAcquireProfilingLockInfoKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAcquireProfilingLockInfoKHR.html">VkAcquireProfilingLockInfoKHR</a>
+public record VkAcquireProfilingLockInfoKHR(MemorySegment segment) implements IPointer {
+    public VkAcquireProfilingLockInfoKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_ACQUIRE_PROFILING_LOCK_INFO_KHR);
+    }
 
-public record VkAcquireProfilingLockInfoKHR(MemorySegment segment) {
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkAcquireProfilingLockFlagsKHR.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkAcquireProfilingLockFlagsKHR.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @unsigned long timeout() {
+        return segment.get(LAYOUT$timeout, OFFSET$timeout);
+    }
+
+    public void timeout(@unsigned long value) {
+        segment.set(LAYOUT$timeout, OFFSET$timeout, value);
+    }
+
+    public static VkAcquireProfilingLockInfoKHR allocate(Arena arena) {
+        return new VkAcquireProfilingLockInfoKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkAcquireProfilingLockInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkAcquireProfilingLockInfoKHR[] ret = new VkAcquireProfilingLockInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkAcquireProfilingLockInfoKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkAcquireProfilingLockInfoKHR clone(Arena arena, VkAcquireProfilingLockInfoKHR src) {
+        VkAcquireProfilingLockInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkAcquireProfilingLockInfoKHR[] clone(Arena arena, VkAcquireProfilingLockInfoKHR[] src) {
+        VkAcquireProfilingLockInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,54 +118,4 @@ public record VkAcquireProfilingLockInfoKHR(MemorySegment segment) {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$timeout = LAYOUT$timeout.byteSize();
-
-    public VkAcquireProfilingLockInfoKHR(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_ACQUIRE_PROFILING_LOCK_INFO_KHR);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkAcquireProfilingLockFlagsKHR.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkAcquireProfilingLockFlagsKHR.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @unsigned long timeout() {
-        return segment.get(LAYOUT$timeout, OFFSET$timeout);
-    }
-
-    public void timeout(@unsigned long value) {
-        segment.set(LAYOUT$timeout, OFFSET$timeout, value);
-    }
-
-    public static VkAcquireProfilingLockInfoKHR allocate(Arena arena) {
-        return new VkAcquireProfilingLockInfoKHR(arena.allocate(LAYOUT));
-    }
-    
-    public static VkAcquireProfilingLockInfoKHR[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkAcquireProfilingLockInfoKHR[] ret = new VkAcquireProfilingLockInfoKHR[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkAcquireProfilingLockInfoKHR(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

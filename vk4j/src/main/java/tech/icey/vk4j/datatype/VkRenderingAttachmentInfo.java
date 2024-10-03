@@ -1,19 +1,171 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.vk4j.bitmask.VkResolveModeFlags;
+import tech.icey.vk4j.enumtype.VkAttachmentLoadOp;
+import tech.icey.vk4j.enumtype.VkAttachmentStoreOp;
+import tech.icey.vk4j.enumtype.VkImageLayout;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkImageView;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO;
 
-public record VkRenderingAttachmentInfo(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkRenderingAttachmentInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkImageView imageView;
+///     VkImageLayout imageLayout;
+///     VkResolveModeFlagBits resolveMode;
+///     VkImageView resolveImageView;
+///     VkImageLayout resolveImageLayout;
+///     VkAttachmentLoadOp loadOp;
+///     VkAttachmentStoreOp storeOp;
+///     VkClearValue clearValue;
+/// } VkRenderingAttachmentInfo;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRenderingAttachmentInfo.html">VkRenderingAttachmentInfo</a>
+public record VkRenderingAttachmentInfo(MemorySegment segment) implements IPointer {
+    public VkRenderingAttachmentInfo(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @nullable VkImageView imageView() {
+        MemorySegment s = segment.get(LAYOUT$imageView, OFFSET$imageView);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImageView(s);
+    }
+
+    public void imageView(@nullable VkImageView value) {
+        segment.set(
+            LAYOUT$imageView,
+            OFFSET$imageView,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @enumtype(VkImageLayout.class) int imageLayout() {
+        return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
+    }
+
+    public void imageLayout(@enumtype(VkImageLayout.class) int value) {
+        segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
+    }
+
+    public @enumtype(VkResolveModeFlags.class) int resolveMode() {
+        return segment.get(LAYOUT$resolveMode, OFFSET$resolveMode);
+    }
+
+    public void resolveMode(@enumtype(VkResolveModeFlags.class) int value) {
+        segment.set(LAYOUT$resolveMode, OFFSET$resolveMode, value);
+    }
+
+    public @nullable VkImageView resolveImageView() {
+        MemorySegment s = segment.get(LAYOUT$resolveImageView, OFFSET$resolveImageView);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImageView(s);
+    }
+
+    public void resolveImageView(@nullable VkImageView value) {
+        segment.set(
+            LAYOUT$resolveImageView,
+            OFFSET$resolveImageView,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @enumtype(VkImageLayout.class) int resolveImageLayout() {
+        return segment.get(LAYOUT$resolveImageLayout, OFFSET$resolveImageLayout);
+    }
+
+    public void resolveImageLayout(@enumtype(VkImageLayout.class) int value) {
+        segment.set(LAYOUT$resolveImageLayout, OFFSET$resolveImageLayout, value);
+    }
+
+    public @enumtype(VkAttachmentLoadOp.class) int loadOp() {
+        return segment.get(LAYOUT$loadOp, OFFSET$loadOp);
+    }
+
+    public void loadOp(@enumtype(VkAttachmentLoadOp.class) int value) {
+        segment.set(LAYOUT$loadOp, OFFSET$loadOp, value);
+    }
+
+    public @enumtype(VkAttachmentStoreOp.class) int storeOp() {
+        return segment.get(LAYOUT$storeOp, OFFSET$storeOp);
+    }
+
+    public void storeOp(@enumtype(VkAttachmentStoreOp.class) int value) {
+        segment.set(LAYOUT$storeOp, OFFSET$storeOp, value);
+    }
+
+    public VkClearValue clearValue() {
+        return new VkClearValue(segment.asSlice(OFFSET$clearValue, LAYOUT$clearValue));
+    }
+
+    public void clearValue(VkClearValue value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$clearValue, SIZE$clearValue);
+    }
+
+    public static VkRenderingAttachmentInfo allocate(Arena arena) {
+        return new VkRenderingAttachmentInfo(arena.allocate(LAYOUT));
+    }
+
+    public static VkRenderingAttachmentInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkRenderingAttachmentInfo[] ret = new VkRenderingAttachmentInfo[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkRenderingAttachmentInfo(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkRenderingAttachmentInfo clone(Arena arena, VkRenderingAttachmentInfo src) {
+        VkRenderingAttachmentInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkRenderingAttachmentInfo[] clone(Arena arena, VkRenderingAttachmentInfo[] src) {
+        VkRenderingAttachmentInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -71,102 +223,4 @@ public record VkRenderingAttachmentInfo(MemorySegment segment) {
     public static final long SIZE$loadOp = LAYOUT$loadOp.byteSize();
     public static final long SIZE$storeOp = LAYOUT$storeOp.byteSize();
     public static final long SIZE$clearValue = LAYOUT$clearValue.byteSize();
-
-    public VkRenderingAttachmentInfo(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public VkImageView imageView() {
-        return new VkImageView(segment.get(LAYOUT$imageView, OFFSET$imageView));
-    }
-
-    public void imageView(VkImageView value) {
-        segment.set(LAYOUT$imageView, OFFSET$imageView, value.segment());
-    }
-
-    public @enumtype(VkImageLayout.class) int imageLayout() {
-        return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
-    }
-
-    public void imageLayout(@enumtype(VkImageLayout.class) int value) {
-        segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
-    }
-
-    public @enumtype(VkResolveModeFlags.class) int resolveMode() {
-        return segment.get(LAYOUT$resolveMode, OFFSET$resolveMode);
-    }
-
-    public void resolveMode(@enumtype(VkResolveModeFlags.class) int value) {
-        segment.set(LAYOUT$resolveMode, OFFSET$resolveMode, value);
-    }
-
-    public VkImageView resolveImageView() {
-        return new VkImageView(segment.get(LAYOUT$resolveImageView, OFFSET$resolveImageView));
-    }
-
-    public void resolveImageView(VkImageView value) {
-        segment.set(LAYOUT$resolveImageView, OFFSET$resolveImageView, value.segment());
-    }
-
-    public @enumtype(VkImageLayout.class) int resolveImageLayout() {
-        return segment.get(LAYOUT$resolveImageLayout, OFFSET$resolveImageLayout);
-    }
-
-    public void resolveImageLayout(@enumtype(VkImageLayout.class) int value) {
-        segment.set(LAYOUT$resolveImageLayout, OFFSET$resolveImageLayout, value);
-    }
-
-    public @enumtype(VkAttachmentLoadOp.class) int loadOp() {
-        return segment.get(LAYOUT$loadOp, OFFSET$loadOp);
-    }
-
-    public void loadOp(@enumtype(VkAttachmentLoadOp.class) int value) {
-        segment.set(LAYOUT$loadOp, OFFSET$loadOp, value);
-    }
-
-    public @enumtype(VkAttachmentStoreOp.class) int storeOp() {
-        return segment.get(LAYOUT$storeOp, OFFSET$storeOp);
-    }
-
-    public void storeOp(@enumtype(VkAttachmentStoreOp.class) int value) {
-        segment.set(LAYOUT$storeOp, OFFSET$storeOp, value);
-    }
-
-    public VkClearValue clearValue() {
-        return new VkClearValue(segment.asSlice(OFFSET$clearValue, LAYOUT$clearValue));
-    }
-
-    public void clearValue(VkClearValue value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$clearValue, SIZE$clearValue);
-    }
-
-    public static VkRenderingAttachmentInfo allocate(Arena arena) {
-        return new VkRenderingAttachmentInfo(arena.allocate(LAYOUT));
-    }
-    
-    public static VkRenderingAttachmentInfo[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkRenderingAttachmentInfo[] ret = new VkRenderingAttachmentInfo[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkRenderingAttachmentInfo(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

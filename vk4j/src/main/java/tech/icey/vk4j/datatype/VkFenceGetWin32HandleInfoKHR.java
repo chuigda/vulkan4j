@@ -1,19 +1,106 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.vk4j.bitmask.VkExternalFenceHandleTypeFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkFence;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR;
 
-public record VkFenceGetWin32HandleInfoKHR(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkFenceGetWin32HandleInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkFence fence;
+///     VkExternalFenceHandleTypeFlagBits handleType;
+/// } VkFenceGetWin32HandleInfoKHR;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFenceGetWin32HandleInfoKHR.html">VkFenceGetWin32HandleInfoKHR</a>
+public record VkFenceGetWin32HandleInfoKHR(MemorySegment segment) implements IPointer {
+    public VkFenceGetWin32HandleInfoKHR(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @nullable VkFence fence() {
+        MemorySegment s = segment.get(LAYOUT$fence, OFFSET$fence);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkFence(s);
+    }
+
+    public void fence(@nullable VkFence value) {
+        segment.set(
+            LAYOUT$fence,
+            OFFSET$fence,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @enumtype(VkExternalFenceHandleTypeFlags.class) int handleType() {
+        return segment.get(LAYOUT$handleType, OFFSET$handleType);
+    }
+
+    public void handleType(@enumtype(VkExternalFenceHandleTypeFlags.class) int value) {
+        segment.set(LAYOUT$handleType, OFFSET$handleType, value);
+    }
+
+    public static VkFenceGetWin32HandleInfoKHR allocate(Arena arena) {
+        return new VkFenceGetWin32HandleInfoKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkFenceGetWin32HandleInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkFenceGetWin32HandleInfoKHR[] ret = new VkFenceGetWin32HandleInfoKHR[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkFenceGetWin32HandleInfoKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkFenceGetWin32HandleInfoKHR clone(Arena arena, VkFenceGetWin32HandleInfoKHR src) {
+        VkFenceGetWin32HandleInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkFenceGetWin32HandleInfoKHR[] clone(Arena arena, VkFenceGetWin32HandleInfoKHR[] src) {
+        VkFenceGetWin32HandleInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,54 +128,4 @@ public record VkFenceGetWin32HandleInfoKHR(MemorySegment segment) {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$fence = LAYOUT$fence.byteSize();
     public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
-
-    public VkFenceGetWin32HandleInfoKHR(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public VkFence fence() {
-        return new VkFence(segment.get(LAYOUT$fence, OFFSET$fence));
-    }
-
-    public void fence(VkFence value) {
-        segment.set(LAYOUT$fence, OFFSET$fence, value.segment());
-    }
-
-    public @enumtype(VkExternalFenceHandleTypeFlags.class) int handleType() {
-        return segment.get(LAYOUT$handleType, OFFSET$handleType);
-    }
-
-    public void handleType(@enumtype(VkExternalFenceHandleTypeFlags.class) int value) {
-        segment.set(LAYOUT$handleType, OFFSET$handleType, value);
-    }
-
-    public static VkFenceGetWin32HandleInfoKHR allocate(Arena arena) {
-        return new VkFenceGetWin32HandleInfoKHR(arena.allocate(LAYOUT));
-    }
-    
-    public static VkFenceGetWin32HandleInfoKHR[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkFenceGetWin32HandleInfoKHR[] ret = new VkFenceGetWin32HandleInfoKHR[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkFenceGetWin32HandleInfoKHR(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

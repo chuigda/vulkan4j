@@ -1,19 +1,105 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT;
 
-public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 fragmentShaderSampleInterlock;
+///     VkBool32 fragmentShaderPixelInterlock;
+///     VkBool32 fragmentShaderShadingRateInterlock;
+/// } VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.html">VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT</a>
+public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment segment) implements IPointer {
+    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int fragmentShaderSampleInterlock() {
+        return segment.get(LAYOUT$fragmentShaderSampleInterlock, OFFSET$fragmentShaderSampleInterlock);
+    }
+
+    public void fragmentShaderSampleInterlock(@unsigned int value) {
+        segment.set(LAYOUT$fragmentShaderSampleInterlock, OFFSET$fragmentShaderSampleInterlock, value);
+    }
+
+    public @unsigned int fragmentShaderPixelInterlock() {
+        return segment.get(LAYOUT$fragmentShaderPixelInterlock, OFFSET$fragmentShaderPixelInterlock);
+    }
+
+    public void fragmentShaderPixelInterlock(@unsigned int value) {
+        segment.set(LAYOUT$fragmentShaderPixelInterlock, OFFSET$fragmentShaderPixelInterlock, value);
+    }
+
+    public @unsigned int fragmentShaderShadingRateInterlock() {
+        return segment.get(LAYOUT$fragmentShaderShadingRateInterlock, OFFSET$fragmentShaderShadingRateInterlock);
+    }
+
+    public void fragmentShaderShadingRateInterlock(@unsigned int value) {
+        segment.set(LAYOUT$fragmentShaderShadingRateInterlock, OFFSET$fragmentShaderShadingRateInterlock, value);
+    }
+
+    public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT[] ret = new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT clone(Arena arena, VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT src) {
+        VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT[] clone(Arena arena, VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT[] src) {
+        VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -46,62 +132,4 @@ public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment s
     public static final long SIZE$fragmentShaderSampleInterlock = LAYOUT$fragmentShaderSampleInterlock.byteSize();
     public static final long SIZE$fragmentShaderPixelInterlock = LAYOUT$fragmentShaderPixelInterlock.byteSize();
     public static final long SIZE$fragmentShaderShadingRateInterlock = LAYOUT$fragmentShaderShadingRateInterlock.byteSize();
-
-    public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int fragmentShaderSampleInterlock() {
-        return segment.get(LAYOUT$fragmentShaderSampleInterlock, OFFSET$fragmentShaderSampleInterlock);
-    }
-
-    public void fragmentShaderSampleInterlock(@unsigned int value) {
-        segment.set(LAYOUT$fragmentShaderSampleInterlock, OFFSET$fragmentShaderSampleInterlock, value);
-    }
-
-    public @unsigned int fragmentShaderPixelInterlock() {
-        return segment.get(LAYOUT$fragmentShaderPixelInterlock, OFFSET$fragmentShaderPixelInterlock);
-    }
-
-    public void fragmentShaderPixelInterlock(@unsigned int value) {
-        segment.set(LAYOUT$fragmentShaderPixelInterlock, OFFSET$fragmentShaderPixelInterlock, value);
-    }
-
-    public @unsigned int fragmentShaderShadingRateInterlock() {
-        return segment.get(LAYOUT$fragmentShaderShadingRateInterlock, OFFSET$fragmentShaderShadingRateInterlock);
-    }
-
-    public void fragmentShaderShadingRateInterlock(@unsigned int value) {
-        segment.set(LAYOUT$fragmentShaderShadingRateInterlock, OFFSET$fragmentShaderShadingRateInterlock, value);
-    }
-
-    public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT[] ret = new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

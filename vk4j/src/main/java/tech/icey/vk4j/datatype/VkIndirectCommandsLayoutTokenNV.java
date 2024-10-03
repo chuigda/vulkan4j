@@ -1,19 +1,244 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.IntBuffer;
+import tech.icey.vk4j.bitmask.VkIndirectStateFlagsNV;
+import tech.icey.vk4j.bitmask.VkShaderStageFlags;
+import tech.icey.vk4j.enumtype.VkIndexType;
+import tech.icey.vk4j.enumtype.VkIndirectCommandsTokenTypeNV;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkPipelineLayout;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_NV;
 
-public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkIndirectCommandsLayoutTokenNV {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkIndirectCommandsTokenTypeNV tokenType;
+///     uint32_t stream;
+///     uint32_t offset;
+///     uint32_t vertexBindingUnit;
+///     VkBool32 vertexDynamicStride;
+///     VkPipelineLayout pushconstantPipelineLayout;
+///     VkShaderStageFlags pushconstantShaderStageFlags;
+///     uint32_t pushconstantOffset;
+///     uint32_t pushconstantSize;
+///     VkIndirectStateFlagsNV indirectStateFlags;
+///     uint32_t indexTypeCount;
+///     const VkIndexType* pIndexTypes;
+///     const uint32_t* pIndexTypeValues;
+/// } VkIndirectCommandsLayoutTokenNV;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkIndirectCommandsLayoutTokenNV.html">VkIndirectCommandsLayoutTokenNV</a>
+public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements IPointer {
+    public VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_NV);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkIndirectCommandsTokenTypeNV.class) int tokenType() {
+        return segment.get(LAYOUT$tokenType, OFFSET$tokenType);
+    }
+
+    public void tokenType(@enumtype(VkIndirectCommandsTokenTypeNV.class) int value) {
+        segment.set(LAYOUT$tokenType, OFFSET$tokenType, value);
+    }
+
+    public @unsigned int stream() {
+        return segment.get(LAYOUT$stream, OFFSET$stream);
+    }
+
+    public void stream(@unsigned int value) {
+        segment.set(LAYOUT$stream, OFFSET$stream, value);
+    }
+
+    public @unsigned int offset() {
+        return segment.get(LAYOUT$offset, OFFSET$offset);
+    }
+
+    public void offset(@unsigned int value) {
+        segment.set(LAYOUT$offset, OFFSET$offset, value);
+    }
+
+    public @unsigned int vertexBindingUnit() {
+        return segment.get(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit);
+    }
+
+    public void vertexBindingUnit(@unsigned int value) {
+        segment.set(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit, value);
+    }
+
+    public @unsigned int vertexDynamicStride() {
+        return segment.get(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride);
+    }
+
+    public void vertexDynamicStride(@unsigned int value) {
+        segment.set(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride, value);
+    }
+
+    public @nullable VkPipelineLayout pushconstantPipelineLayout() {
+        MemorySegment s = segment.get(LAYOUT$pushconstantPipelineLayout, OFFSET$pushconstantPipelineLayout);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipelineLayout(s);
+    }
+
+    public void pushconstantPipelineLayout(@nullable VkPipelineLayout value) {
+        segment.set(
+            LAYOUT$pushconstantPipelineLayout,
+            OFFSET$pushconstantPipelineLayout,
+            value != null ? value.segment() : MemorySegment.NULL
+        );
+    }
+
+    public @enumtype(VkShaderStageFlags.class) int pushconstantShaderStageFlags() {
+        return segment.get(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags);
+    }
+
+    public void pushconstantShaderStageFlags(@enumtype(VkShaderStageFlags.class) int value) {
+        segment.set(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags, value);
+    }
+
+    public @unsigned int pushconstantOffset() {
+        return segment.get(LAYOUT$pushconstantOffset, OFFSET$pushconstantOffset);
+    }
+
+    public void pushconstantOffset(@unsigned int value) {
+        segment.set(LAYOUT$pushconstantOffset, OFFSET$pushconstantOffset, value);
+    }
+
+    public @unsigned int pushconstantSize() {
+        return segment.get(LAYOUT$pushconstantSize, OFFSET$pushconstantSize);
+    }
+
+    public void pushconstantSize(@unsigned int value) {
+        segment.set(LAYOUT$pushconstantSize, OFFSET$pushconstantSize, value);
+    }
+
+    public @enumtype(VkIndirectStateFlagsNV.class) int indirectStateFlags() {
+        return segment.get(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags);
+    }
+
+    public void indirectStateFlags(@enumtype(VkIndirectStateFlagsNV.class) int value) {
+        segment.set(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags, value);
+    }
+
+    public @unsigned int indexTypeCount() {
+        return segment.get(LAYOUT$indexTypeCount, OFFSET$indexTypeCount);
+    }
+
+    public void indexTypeCount(@unsigned int value) {
+        segment.set(LAYOUT$indexTypeCount, OFFSET$indexTypeCount, value);
+    }
+
+    public @pointer(target=VkIndexType.class) MemorySegment pIndexTypesRaw() {
+        return segment.get(LAYOUT$pIndexTypes, OFFSET$pIndexTypes);
+    }
+
+    public void pIndexTypesRaw(@pointer(target=VkIndexType.class) MemorySegment value) {
+        segment.set(LAYOUT$pIndexTypes, OFFSET$pIndexTypes, value);
+    }
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
+    /// the buffer.
+    public @nullable @enumtype(VkIndexType.class) IntBuffer pIndexTypes() {
+        MemorySegment s = pIndexTypesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+
+        return new IntBuffer(s);
+    }
+
+    public void pIndexTypes(@nullable @enumtype(VkIndexType.class) IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pIndexTypesRaw(s);
+    }
+
+    public @pointer(comment="uint32_t*") MemorySegment pIndexTypeValuesRaw() {
+        return segment.get(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues);
+    }
+
+    public void pIndexTypeValuesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
+        segment.set(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues, value);
+    }
+
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually
+    /// {@link IntBuffer#read}ing or
+    /// {@link IntBuffer#write}ing the buffer.
+    public @nullable @unsigned IntBuffer pIndexTypeValues() {
+        MemorySegment s = pIndexTypeValuesRaw();
+        return s.address() == 0 ? null : new IntBuffer(s);
+    }
+
+    public void pIndexTypeValues(@nullable @unsigned IntBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pIndexTypeValuesRaw(s);
+    }
+
+    public static VkIndirectCommandsLayoutTokenNV allocate(Arena arena) {
+        return new VkIndirectCommandsLayoutTokenNV(arena.allocate(LAYOUT));
+    }
+
+    public static VkIndirectCommandsLayoutTokenNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkIndirectCommandsLayoutTokenNV[] ret = new VkIndirectCommandsLayoutTokenNV[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkIndirectCommandsLayoutTokenNV(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkIndirectCommandsLayoutTokenNV clone(Arena arena, VkIndirectCommandsLayoutTokenNV src) {
+        VkIndirectCommandsLayoutTokenNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkIndirectCommandsLayoutTokenNV[] clone(Arena arena, VkIndirectCommandsLayoutTokenNV[] src) {
+        VkIndirectCommandsLayoutTokenNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -96,164 +321,4 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
     public static final long SIZE$indexTypeCount = LAYOUT$indexTypeCount.byteSize();
     public static final long SIZE$pIndexTypes = LAYOUT$pIndexTypes.byteSize();
     public static final long SIZE$pIndexTypeValues = LAYOUT$pIndexTypeValues.byteSize();
-
-    public VkIndirectCommandsLayoutTokenNV(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_NV);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkIndirectCommandsTokenTypeNV.class) int tokenType() {
-        return segment.get(LAYOUT$tokenType, OFFSET$tokenType);
-    }
-
-    public void tokenType(@enumtype(VkIndirectCommandsTokenTypeNV.class) int value) {
-        segment.set(LAYOUT$tokenType, OFFSET$tokenType, value);
-    }
-
-    public @unsigned int stream() {
-        return segment.get(LAYOUT$stream, OFFSET$stream);
-    }
-
-    public void stream(@unsigned int value) {
-        segment.set(LAYOUT$stream, OFFSET$stream, value);
-    }
-
-    public @unsigned int offset() {
-        return segment.get(LAYOUT$offset, OFFSET$offset);
-    }
-
-    public void offset(@unsigned int value) {
-        segment.set(LAYOUT$offset, OFFSET$offset, value);
-    }
-
-    public @unsigned int vertexBindingUnit() {
-        return segment.get(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit);
-    }
-
-    public void vertexBindingUnit(@unsigned int value) {
-        segment.set(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit, value);
-    }
-
-    public @unsigned int vertexDynamicStride() {
-        return segment.get(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride);
-    }
-
-    public void vertexDynamicStride(@unsigned int value) {
-        segment.set(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride, value);
-    }
-
-    public VkPipelineLayout pushconstantPipelineLayout() {
-        return new VkPipelineLayout(segment.get(LAYOUT$pushconstantPipelineLayout, OFFSET$pushconstantPipelineLayout));
-    }
-
-    public void pushconstantPipelineLayout(VkPipelineLayout value) {
-        segment.set(LAYOUT$pushconstantPipelineLayout, OFFSET$pushconstantPipelineLayout, value.segment());
-    }
-
-    public @enumtype(VkShaderStageFlags.class) int pushconstantShaderStageFlags() {
-        return segment.get(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags);
-    }
-
-    public void pushconstantShaderStageFlags(@enumtype(VkShaderStageFlags.class) int value) {
-        segment.set(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags, value);
-    }
-
-    public @unsigned int pushconstantOffset() {
-        return segment.get(LAYOUT$pushconstantOffset, OFFSET$pushconstantOffset);
-    }
-
-    public void pushconstantOffset(@unsigned int value) {
-        segment.set(LAYOUT$pushconstantOffset, OFFSET$pushconstantOffset, value);
-    }
-
-    public @unsigned int pushconstantSize() {
-        return segment.get(LAYOUT$pushconstantSize, OFFSET$pushconstantSize);
-    }
-
-    public void pushconstantSize(@unsigned int value) {
-        segment.set(LAYOUT$pushconstantSize, OFFSET$pushconstantSize, value);
-    }
-
-    public @enumtype(VkIndirectStateFlagsNV.class) int indirectStateFlags() {
-        return segment.get(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags);
-    }
-
-    public void indirectStateFlags(@enumtype(VkIndirectStateFlagsNV.class) int value) {
-        segment.set(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags, value);
-    }
-
-    public @unsigned int indexTypeCount() {
-        return segment.get(LAYOUT$indexTypeCount, OFFSET$indexTypeCount);
-    }
-
-    public void indexTypeCount(@unsigned int value) {
-        segment.set(LAYOUT$indexTypeCount, OFFSET$indexTypeCount, value);
-    }
-
-    public @pointer(target=VkIndexType.class) MemorySegment pIndexTypesRaw() {
-        return segment.get(LAYOUT$pIndexTypes, OFFSET$pIndexTypes);
-    }
-    
-    public void pIndexTypesRaw(@pointer(target=VkIndexType.class) MemorySegment value) {
-        segment.set(LAYOUT$pIndexTypes, OFFSET$pIndexTypes, value);
-    }
-    
-    public @nullable IntBuffer pIndexTypes() {
-        MemorySegment s = pIndexTypesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        
-        return new IntBuffer(s);
-    }
-    
-    public void pIndexTypes(@nullable IntBuffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pIndexTypesRaw(s);
-    }
-
-    public @pointer(comment="uint32_t*") MemorySegment pIndexTypeValuesRaw() {
-        return segment.get(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues);
-    }
-
-    public void pIndexTypeValuesRaw(@pointer(comment="uint32_t*") MemorySegment value) {
-        segment.set(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues, value);
-    }
-    
-    public @unsigned IntBuffer pIndexTypeValues() {
-        return new IntBuffer(pIndexTypeValuesRaw());
-    }
-
-    public void pIndexTypeValues(@unsigned IntBuffer value) {
-        pIndexTypeValuesRaw(value.segment());
-    }
-
-    public static VkIndirectCommandsLayoutTokenNV allocate(Arena arena) {
-        return new VkIndirectCommandsLayoutTokenNV(arena.allocate(LAYOUT));
-    }
-    
-    public static VkIndirectCommandsLayoutTokenNV[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkIndirectCommandsLayoutTokenNV[] ret = new VkIndirectCommandsLayoutTokenNV[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkIndirectCommandsLayoutTokenNV(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

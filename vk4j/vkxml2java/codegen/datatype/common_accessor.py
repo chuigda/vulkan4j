@@ -19,7 +19,7 @@ def generate_bitfield_accessor(current: Member, next_: Member) -> str:
 
     public void {next_.name}(int value) {{
         int original = segment.get(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name});
-        int newValue = (original & 0xFF00) | value;
+        int newValue = (original & 0xFFFFFF00) | value;
         segment.set(LAYOUT$bitfield${current.name}_{next_.name}, OFFSET$bitfield${current.name}_{next_.name}, newValue);
     }}\n\n'''
 
@@ -56,12 +56,20 @@ def generate_ref_type_accessor(type_: CStructType | CUnionType | CHandleType, me
 
 
 def generate_handle_type_accessor(type_: CHandleType, member: Member) -> str:
-    return f'''    public {type_.java_type()} {member.name}() {{
-        return new {type_.java_type()}(segment.get(LAYOUT${member.name}, OFFSET${member.name}));
+    return f'''    public @nullable {type_.java_type()} {member.name}() {{
+        MemorySegment s = segment.get(LAYOUT${member.name}, OFFSET${member.name});
+        if (s.address() == 0) {{
+            return null;
+        }}
+        return new {type_.java_type()}(s);
     }}
 
-    public void {member.name}({type_.java_type()} value) {{
-        segment.set(LAYOUT${member.name}, OFFSET${member.name}, value.segment());
+    public void {member.name}(@nullable {type_.java_type()} value) {{
+        segment.set(
+            LAYOUT${member.name},
+            OFFSET${member.name},
+            value != null ? value.segment() : MemorySegment.NULL
+        );
     }}\n\n'''
 
 

@@ -1,19 +1,118 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.*;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE;
 
-public record VkPresentTimesInfoGOOGLE(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPresentTimesInfoGOOGLE {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t swapchainCount;
+///     const VkPresentTimeGOOGLE* pTimes;
+/// } VkPresentTimesInfoGOOGLE;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPresentTimesInfoGOOGLE.html">VkPresentTimesInfoGOOGLE</a>
+public record VkPresentTimesInfoGOOGLE(MemorySegment segment) implements IPointer {
+    public VkPresentTimesInfoGOOGLE(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int swapchainCount() {
+        return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
+    }
+
+    public void swapchainCount(@unsigned int value) {
+        segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
+    }
+
+    public @pointer(comment="VkPresentTimeGOOGLE*") MemorySegment pTimesRaw() {
+        return segment.get(LAYOUT$pTimes, OFFSET$pTimes);
+    }
+
+    public void pTimesRaw(@pointer(comment="VkPresentTimeGOOGLE*") MemorySegment value) {
+        segment.set(LAYOUT$pTimes, OFFSET$pTimes, value);
+    }
+
+    public @nullable VkPresentTimeGOOGLE pTimes() {
+        MemorySegment s = pTimesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPresentTimeGOOGLE(s);
+    }
+
+    /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
+    @unsafe
+    public @nullable VkPresentTimeGOOGLE[] pTimes(int assumedCount) {
+        MemorySegment s = pTimesRaw().reinterpret(assumedCount * VkPresentTimeGOOGLE.SIZE);
+        VkPresentTimeGOOGLE[] arr = new VkPresentTimeGOOGLE[assumedCount];
+        for (int i = 0; i < assumedCount; i++) {
+            arr[i] = new VkPresentTimeGOOGLE(s.asSlice(i * VkPresentTimeGOOGLE.SIZE, VkPresentTimeGOOGLE.SIZE));
+        }
+        return arr;
+    }
+
+    public void pTimes(@nullable VkPresentTimeGOOGLE value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pTimesRaw(s);
+    }
+
+    public static VkPresentTimesInfoGOOGLE allocate(Arena arena) {
+        return new VkPresentTimesInfoGOOGLE(arena.allocate(LAYOUT));
+    }
+
+    public static VkPresentTimesInfoGOOGLE[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPresentTimesInfoGOOGLE[] ret = new VkPresentTimesInfoGOOGLE[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPresentTimesInfoGOOGLE(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPresentTimesInfoGOOGLE clone(Arena arena, VkPresentTimesInfoGOOGLE src) {
+        VkPresentTimesInfoGOOGLE ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPresentTimesInfoGOOGLE[] clone(Arena arena, VkPresentTimesInfoGOOGLE[] src) {
+        VkPresentTimesInfoGOOGLE[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,67 +140,4 @@ public record VkPresentTimesInfoGOOGLE(MemorySegment segment) {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$swapchainCount = LAYOUT$swapchainCount.byteSize();
     public static final long SIZE$pTimes = LAYOUT$pTimes.byteSize();
-
-    public VkPresentTimesInfoGOOGLE(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @unsigned int swapchainCount() {
-        return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
-    }
-
-    public void swapchainCount(@unsigned int value) {
-        segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
-    }
-
-    public @pointer(comment="VkPresentTimeGOOGLE*") MemorySegment pTimesRaw() {
-        return segment.get(LAYOUT$pTimes, OFFSET$pTimes);
-    }
-
-    public void pTimesRaw(@pointer(comment="VkPresentTimeGOOGLE*") MemorySegment value) {
-        segment.set(LAYOUT$pTimes, OFFSET$pTimes, value);
-    }
-    
-    public @nullable VkPresentTimeGOOGLE pTimes() {
-        MemorySegment s = pTimesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPresentTimeGOOGLE(s);
-    }
-
-    public void pTimes(@nullable VkPresentTimeGOOGLE value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pTimesRaw(s);
-    }
-
-    public static VkPresentTimesInfoGOOGLE allocate(Arena arena) {
-        return new VkPresentTimesInfoGOOGLE(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPresentTimesInfoGOOGLE[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPresentTimesInfoGOOGLE[] ret = new VkPresentTimesInfoGOOGLE[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPresentTimesInfoGOOGLE(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

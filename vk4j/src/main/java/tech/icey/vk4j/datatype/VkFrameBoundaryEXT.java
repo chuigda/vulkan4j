@@ -1,19 +1,202 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkFrameBoundaryFlagsEXT;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkBuffer;
+import tech.icey.vk4j.handle.VkImage;
+
 import java.lang.foreign.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+/// {@snippet lang=c :
+/// typedef struct VkFrameBoundaryEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkFrameBoundaryFlagsEXT flags;
+///     uint64_t frameID;
+///     uint32_t imageCount;
+///     const VkImage* pImages;
+///     uint32_t bufferCount;
+///     const VkBuffer* pBuffers;
+///     uint64_t tagName;
+///     size_t tagSize;
+///     const void* pTag;
+/// } VkFrameBoundaryEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkFrameBoundaryEXT.html">VkFrameBoundaryEXT</a>
+public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
+    public VkFrameBoundaryEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT);
+    }
 
-public record VkFrameBoundaryEXT(MemorySegment segment) {
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkFrameBoundaryFlagsEXT.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkFrameBoundaryFlagsEXT.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @unsigned long frameID() {
+        return segment.get(LAYOUT$frameID, OFFSET$frameID);
+    }
+
+    public void frameID(@unsigned long value) {
+        segment.set(LAYOUT$frameID, OFFSET$frameID, value);
+    }
+
+    public @unsigned int imageCount() {
+        return segment.get(LAYOUT$imageCount, OFFSET$imageCount);
+    }
+
+    public void imageCount(@unsigned int value) {
+        segment.set(LAYOUT$imageCount, OFFSET$imageCount, value);
+    }
+
+    public @pointer(comment="VkImage") MemorySegment pImagesRaw() {
+        return segment.get(LAYOUT$pImages, OFFSET$pImages);
+    }
+
+    public void pImagesRaw(@pointer(comment="VkImage") MemorySegment value) {
+        segment.set(LAYOUT$pImages, OFFSET$pImages, value);
+    }
+
+    /// Note: the returned {@link VkImage.Buffer} does not have correct
+    /// {@link VkImage.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkImage.Buffer#reinterpret} to set the size before actually
+    /// {@link VkImage.Buffer#read}ing or {@link VkImage.Buffer#write}ing
+    /// the buffer.
+    public @nullable VkImage.Buffer pImages() {
+        MemorySegment s = pImagesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkImage.Buffer(s);
+    }
+
+    public void pImages(@nullable VkImage.Buffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pImagesRaw(s);
+    }
+
+    public @unsigned int bufferCount() {
+        return segment.get(LAYOUT$bufferCount, OFFSET$bufferCount);
+    }
+
+    public void bufferCount(@unsigned int value) {
+        segment.set(LAYOUT$bufferCount, OFFSET$bufferCount, value);
+    }
+
+    public @pointer(comment="VkBuffer") MemorySegment pBuffersRaw() {
+        return segment.get(LAYOUT$pBuffers, OFFSET$pBuffers);
+    }
+
+    public void pBuffersRaw(@pointer(comment="VkBuffer") MemorySegment value) {
+        segment.set(LAYOUT$pBuffers, OFFSET$pBuffers, value);
+    }
+
+    /// Note: the returned {@link VkBuffer.Buffer} does not have correct
+    /// {@link VkBuffer.Buffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link VkBuffer.Buffer#reinterpret} to set the size before actually
+    /// {@link VkBuffer.Buffer#read}ing or {@link VkBuffer.Buffer#write}ing
+    /// the buffer.
+    public @nullable VkBuffer.Buffer pBuffers() {
+        MemorySegment s = pBuffersRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkBuffer.Buffer(s);
+    }
+
+    public void pBuffers(@nullable VkBuffer.Buffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pBuffersRaw(s);
+    }
+
+    public @unsigned long tagName() {
+        return segment.get(LAYOUT$tagName, OFFSET$tagName);
+    }
+
+    public void tagName(@unsigned long value) {
+        segment.set(LAYOUT$tagName, OFFSET$tagName, value);
+    }
+
+    public @unsigned long tagSize() {
+            return NativeLayout.readCSizeT(segment, OFFSET$tagSize);
+        }
+
+        public void tagSize(@unsigned long value) {
+            NativeLayout.writeCSizeT(segment, OFFSET$tagSize, value);
+        }
+
+    public @pointer(comment="void*") MemorySegment pTag() {
+        return segment.get(LAYOUT$pTag, OFFSET$pTag);
+    }
+
+    public void pTag(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pTag, OFFSET$pTag, value);
+    }
+
+    public void pTag(IPointer pointer) {
+        pTag(pointer.segment());
+    }
+
+    public static VkFrameBoundaryEXT allocate(Arena arena) {
+        return new VkFrameBoundaryEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkFrameBoundaryEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkFrameBoundaryEXT[] ret = new VkFrameBoundaryEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkFrameBoundaryEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkFrameBoundaryEXT clone(Arena arena, VkFrameBoundaryEXT src) {
+        VkFrameBoundaryEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkFrameBoundaryEXT[] clone(Arena arena, VkFrameBoundaryEXT[] src) {
+        VkFrameBoundaryEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -74,136 +257,4 @@ public record VkFrameBoundaryEXT(MemorySegment segment) {
     public static final long SIZE$pBuffers = LAYOUT$pBuffers.byteSize();
     public static final long SIZE$tagName = LAYOUT$tagName.byteSize();
     public static final long SIZE$pTag = LAYOUT$pTag.byteSize();
-
-    public VkFrameBoundaryEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public @enumtype(VkFrameBoundaryFlagsEXT.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkFrameBoundaryFlagsEXT.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @unsigned long frameID() {
-        return segment.get(LAYOUT$frameID, OFFSET$frameID);
-    }
-
-    public void frameID(@unsigned long value) {
-        segment.set(LAYOUT$frameID, OFFSET$frameID, value);
-    }
-
-    public @unsigned int imageCount() {
-        return segment.get(LAYOUT$imageCount, OFFSET$imageCount);
-    }
-
-    public void imageCount(@unsigned int value) {
-        segment.set(LAYOUT$imageCount, OFFSET$imageCount, value);
-    }
-
-    public @pointer(comment="VkImage") MemorySegment pImagesRaw() {
-        return segment.get(LAYOUT$pImages, OFFSET$pImages);
-    }
-
-    public void pImagesRaw(@pointer(comment="VkImage") MemorySegment value) {
-        segment.set(LAYOUT$pImages, OFFSET$pImages, value);
-    }
-
-    public @nullable VkImage.Buffer pImages() {
-        MemorySegment s = pImagesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkImage.Buffer(s);
-    }
-
-    public void pImages(@nullable VkImage.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pImagesRaw(s);
-    }
-
-    public @unsigned int bufferCount() {
-        return segment.get(LAYOUT$bufferCount, OFFSET$bufferCount);
-    }
-
-    public void bufferCount(@unsigned int value) {
-        segment.set(LAYOUT$bufferCount, OFFSET$bufferCount, value);
-    }
-
-    public @pointer(comment="VkBuffer") MemorySegment pBuffersRaw() {
-        return segment.get(LAYOUT$pBuffers, OFFSET$pBuffers);
-    }
-
-    public void pBuffersRaw(@pointer(comment="VkBuffer") MemorySegment value) {
-        segment.set(LAYOUT$pBuffers, OFFSET$pBuffers, value);
-    }
-
-    public @nullable VkBuffer.Buffer pBuffers() {
-        MemorySegment s = pBuffersRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBuffer.Buffer(s);
-    }
-
-    public void pBuffers(@nullable VkBuffer.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pBuffersRaw(s);
-    }
-
-    public @unsigned long tagName() {
-        return segment.get(LAYOUT$tagName, OFFSET$tagName);
-    }
-
-    public void tagName(@unsigned long value) {
-        segment.set(LAYOUT$tagName, OFFSET$tagName, value);
-    }
-
-    public @unsigned long tagSize() {
-            return NativeLayout.readCSizeT(segment, OFFSET$tagSize);
-        }
-    
-        public void tagSize(@unsigned long value) {
-            NativeLayout.writeCSizeT(segment, OFFSET$tagSize, value);
-        }
-
-    public @pointer(comment="void*") MemorySegment pTag() {
-        return segment.get(LAYOUT$pTag, OFFSET$pTag);
-    }
-
-    public void pTag(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pTag, OFFSET$pTag, value);
-    }
-
-    public static VkFrameBoundaryEXT allocate(Arena arena) {
-        return new VkFrameBoundaryEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkFrameBoundaryEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkFrameBoundaryEXT[] ret = new VkFrameBoundaryEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkFrameBoundaryEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }

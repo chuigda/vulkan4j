@@ -1,19 +1,106 @@
 package tech.icey.vk4j.datatype;
 
+import tech.icey.panama.IPointer;
+import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.LongBuffer;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
 
-import tech.icey.vk4j.annotation.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.buffer.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import tech.icey.vk4j.NativeLayout;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.VK_MAX_MEMORY_HEAPS;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT;
 
-public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) {
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceMemoryBudgetPropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkDeviceSize heapBudget[VK_MAX_MEMORY_HEAPS];
+///     VkDeviceSize heapUsage[VK_MAX_MEMORY_HEAPS];
+/// } VkPhysicalDeviceMemoryBudgetPropertiesEXT;}
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceMemoryBudgetPropertiesEXT.html">VkPhysicalDeviceMemoryBudgetPropertiesEXT</a>
+public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) implements IPointer {
+    public VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) {
+        this.segment = segment;
+        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public MemorySegment heapBudgetRaw() {
+        return segment.asSlice(OFFSET$heapBudget, SIZE$heapBudget);
+    }
+
+    public @unsigned LongBuffer heapBudget() {
+        return new LongBuffer(heapBudgetRaw());
+    }
+
+    public void heapBudget(@unsigned LongBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapBudget, SIZE$heapBudget);
+    }
+
+    public MemorySegment heapUsageRaw() {
+        return segment.asSlice(OFFSET$heapUsage, SIZE$heapUsage);
+    }
+
+    public @unsigned LongBuffer heapUsage() {
+        return new LongBuffer(heapUsageRaw());
+    }
+
+    public void heapUsage(@unsigned LongBuffer value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapUsage, SIZE$heapUsage);
+    }
+
+    public static VkPhysicalDeviceMemoryBudgetPropertiesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceMemoryBudgetPropertiesEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkPhysicalDeviceMemoryBudgetPropertiesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceMemoryBudgetPropertiesEXT[] ret = new VkPhysicalDeviceMemoryBudgetPropertiesEXT[count];
+        for (int i = 0; i < count; i++) {
+            ret[i] = new VkPhysicalDeviceMemoryBudgetPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceMemoryBudgetPropertiesEXT clone(Arena arena, VkPhysicalDeviceMemoryBudgetPropertiesEXT src) {
+        VkPhysicalDeviceMemoryBudgetPropertiesEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceMemoryBudgetPropertiesEXT[] clone(Arena arena, VkPhysicalDeviceMemoryBudgetPropertiesEXT[] src) {
+        VkPhysicalDeviceMemoryBudgetPropertiesEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
     public static final MemoryLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,62 +128,4 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) {
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$heapBudget = LAYOUT$heapBudget.byteSize();
     public static final long SIZE$heapUsage = LAYOUT$heapUsage.byteSize();
-
-    public VkPhysicalDeviceMemoryBudgetPropertiesEXT(MemorySegment segment) {
-        this.segment = segment;
-        this.sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT);
-    }
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public MemorySegment heapBudgetRaw() {
-        return segment.asSlice(OFFSET$heapBudget, LAYOUT$heapBudget.byteSize());
-    }
-
-    public @unsigned LongBuffer heapBudget() {
-        return new LongBuffer(heapBudgetRaw());
-    }
-
-    public void heapBudget(@unsigned LongBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapBudget, LAYOUT$heapBudget.byteSize());
-    }
-
-    public MemorySegment heapUsageRaw() {
-        return segment.asSlice(OFFSET$heapUsage, LAYOUT$heapUsage.byteSize());
-    }
-
-    public @unsigned LongBuffer heapUsage() {
-        return new LongBuffer(heapUsageRaw());
-    }
-
-    public void heapUsage(@unsigned LongBuffer value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapUsage, LAYOUT$heapUsage.byteSize());
-    }
-
-    public static VkPhysicalDeviceMemoryBudgetPropertiesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceMemoryBudgetPropertiesEXT(arena.allocate(LAYOUT));
-    }
-    
-    public static VkPhysicalDeviceMemoryBudgetPropertiesEXT[] allocate(Arena arena, int count) {
-        MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceMemoryBudgetPropertiesEXT[] ret = new VkPhysicalDeviceMemoryBudgetPropertiesEXT[count];
-        for (int i = 0; i < count; i++) {
-            ret[i] = new VkPhysicalDeviceMemoryBudgetPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
-        }
-        return ret;
-    }
 }
