@@ -72,7 +72,7 @@ private fun generatePNonRefAccessor(pointee: CNonRefType, member: Member): Strin
         }
         
         /// Note: the returned {@link ${pointee.jBufferTypeNoSign}} does not have correct 
-        /// @{@link ${pointee.jBufferTypeNoSign}#size} property. it's up to user to track the size of the buffer,
+        /// {@link ${pointee.jBufferTypeNoSign}#size} property. it's up to user to track the size of the buffer,
         /// and use {@link ${pointee.jBufferTypeNoSign}#reinterpret} to set the size before actually reading from or
         /// writing to the buffer.
         public @nullable ${pointee.jBufferType} ${member.name}() {
@@ -80,7 +80,7 @@ private fun generatePNonRefAccessor(pointee: CNonRefType, member: Member): Strin
             if (s.address() == 0) {
                 return null;
             }
-            return new ${pointee.jBufferType}(s);
+            return new ${pointee.jBufferTypeNoSign}(s);
         }
 
         public void ${member.name}(@nullable ${pointee.jBufferType} value) {
@@ -139,11 +139,11 @@ fun generatePStructureAccessor(pointee: CStructType, member: Member): String =
             }
 
             s = s.reinterpret(assumedCount * ${pointee.name}.SIZE)
-            ${pointee.name}[] array = new ${pointee.name}[assumedCount];
+            ${pointee.name}[] ret = new ${pointee.name}[assumedCount];
             for (int i = 0; i < assumedCount; i++) {
-                array[i] = new ${pointee.name}(s.asSlice(i * ${pointee.name}.SIZE, ${pointee.name}.SIZE));
+                ret[i] = new ${pointee.name}(s.asSlice(i * ${pointee.name}.SIZE, ${pointee.name}.SIZE));
             }
-            return array;
+            return ret;
         }
 
         public void ${member.name}(@nullable ${pointee.name} value) {

@@ -89,7 +89,7 @@ fun generateStructure(
                 MemorySegment segment = arena.allocate(LAYOUT, count);
                 ${structure.name}[] ret = new ${structure.name}[count];
                 for (int i = 0; i < count; i++) {
-                    array[i] = new ${structure.name}(segment.asSlice(i * SIZE, SIZE));
+                    ret[i] = new ${structure.name}(segment.asSlice(i * SIZE, SIZE));
                 }
                 return ret;
             }
@@ -146,7 +146,7 @@ fun generateStructure(
                     continue
                 }
 
-                appendLn(indent("""public static final ${cType.jLayoutType} LAYOUT${current.name} = (${cType.jLayoutType}) LAYOUT.select(PATH$${current.name});""", 1))
+                appendLn(indent("""public static final ${cType.jLayoutType} LAYOUT$${current.name} = (${cType.jLayoutType}) LAYOUT.select(PATH$${current.name});""", 1))
             }
         }
         appendLn()
@@ -173,7 +173,7 @@ fun generateStructure(
                 continue
             }
 
-            appendLn(indent("""public static final SIZE$${current.name} = LAYOUT$${current.name}.byteSize();""", 1))
+            appendLn(indent("""public static final long SIZE$${current.name} = LAYOUT$${current.name}.byteSize();""", 1))
         }
 
         appendLn("}")

@@ -53,7 +53,7 @@ data class CHandleType(val name: String) : CType {
 
 data class CArrayType(val element: CType, val length: String) : CType {
     override val jType: String get() = throw NotImplementedError("should not call `jRawType` on `array`")
-    override val jLayout: String = "ValueLayout.sequenceLayout($length, ${element.jLayout})"
+    override val jLayout: String = "MemoryLayout.sequenceLayout($length, ${element.jLayout})"
     override val jLayoutType: String = "SequenceLayout"
     override val cType: String = "${element.cType}[$length]"
 
