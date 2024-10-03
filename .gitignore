@@ -40,5 +40,9 @@ build/
 # Generated auxiliary programs
 *.exe
 
-# assembly plugin produced files
+# Assembly plugin produced files
 tutorial/dependency-reduced-pom.xml
+
+# Code Generator Input
+codegen/input/*
+!codegen/input/download.sh

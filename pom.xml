@@ -21,5 +21,6 @@
         <module>panama-plus</module>
         <module>vk4j</module>
         <module>tutorial</module>
+        <module>codegen</module>
     </modules>
 </project>
