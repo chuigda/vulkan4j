@@ -15,6 +15,7 @@
 ## Roadmap
 - [x] Generate fundamental Vulkan API bindings using `vkxml2java` from `vk.xml`
 - [x] Take off!
-- [ ] VkCube example implemented with `tech.icey.vk4j`
+- [ ] Vulkan tutorial
+  - [ ] Chinese translation 
 - [ ] Generate or write Vulkan Memory Allocator API bindings
 - [ ] Generate Vulkan Video API bindings
