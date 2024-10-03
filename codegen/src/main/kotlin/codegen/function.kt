@@ -215,7 +215,7 @@ fun generateInputOutputType(type: CType, optional: Boolean): String {
             is CStructType -> "${nullablePrefix}@pointer(target=${type.pointee.name}.class) ${type.pointee.name}"
             is CHandleType -> "${nullablePrefix}@pointer(target=${type.pointee.name}.class) ${type.pointee.name}.Buffer"
             is CPointerType -> "${nullablePrefix}PointerBuffer"
-            is CVoidType -> "@pointer(comment=\"void*\") MemorySegment"
+            is CVoidType -> type.jType
             else -> throw Exception("unsupported pointer type: $type")
         }
         is CHandleType -> "${nullablePrefix}${type.name}"

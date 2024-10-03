@@ -56,7 +56,7 @@ public final class GLFW {
     }
 
     public void glfwInitVulkanLoader(
-            @pointer(comment="void*") MemorySegment loader
+            @pointer(comment="PFN_vkGetInstanceProcAddr") MemorySegment loader
     ) {
         try {
             HANDLE$glfwInitVulkanLoader.invokeExact(
@@ -104,8 +104,8 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetErrorCallback(
-            @pointer(comment="void*") MemorySegment callback
+    public @pointer(comment="GLFWerrorfun") MemorySegment glfwSetErrorCallback(
+            @pointer(comment="GLFWerrorfun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetErrorCallback.invokeExact(
@@ -265,8 +265,8 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetMonitorCallback(
-            @pointer(comment="void*") MemorySegment callback
+    public @pointer(comment="GLFWmonitorfun") MemorySegment glfwSetMonitorCallback(
+            @pointer(comment="GLFWmonitorfun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetMonitorCallback.invokeExact(
@@ -839,9 +839,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetWindowPosCallback(
+    public @pointer(comment="GLFWwindowposfun") MemorySegment glfwSetWindowPosCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWwindowposfun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetWindowPosCallback.invokeExact(
@@ -853,9 +853,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetWindowSizeCallback(
+    public @pointer(comment="GLFWwindowsizefun") MemorySegment glfwSetWindowSizeCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWwindowsizefun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetWindowSizeCallback.invokeExact(
@@ -867,9 +867,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetWindowCloseCallback(
+    public @pointer(comment="GLFWwindowclosefun") MemorySegment glfwSetWindowCloseCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWwindowclosefun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetWindowCloseCallback.invokeExact(
@@ -881,9 +881,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetWindowRefreshCallback(
+    public @pointer(comment="GLFWwindowrefreshfun") MemorySegment glfwSetWindowRefreshCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWwindowrefreshfun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetWindowRefreshCallback.invokeExact(
@@ -895,9 +895,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetWindowFocusCallback(
+    public @pointer(comment="GLFWwindowfocusfun") MemorySegment glfwSetWindowFocusCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWwindowfocusfun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetWindowFocusCallback.invokeExact(
@@ -909,9 +909,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetWindowIconifyCallback(
+    public @pointer(comment="GLFWwindowiconifyfun") MemorySegment glfwSetWindowIconifyCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWwindowiconifyfun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetWindowIconifyCallback.invokeExact(
@@ -923,9 +923,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetWindowMaximizeCallback(
+    public @pointer(comment="GLFWwindowmaximizefun") MemorySegment glfwSetWindowMaximizeCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWwindowmaximizefun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetWindowMaximizeCallback.invokeExact(
@@ -937,9 +937,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetFramebufferSizeCallback(
+    public @pointer(comment="GLFWframebuffersizefun") MemorySegment glfwSetFramebufferSizeCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWframebuffersizefun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetFramebufferSizeCallback.invokeExact(
@@ -951,9 +951,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetWindowContentScaleCallback(
+    public @pointer(comment="GLFWwindowcontentscalefun") MemorySegment glfwSetWindowContentScaleCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWwindowcontentscalefun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetWindowContentScaleCallback.invokeExact(
@@ -1182,9 +1182,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetKeyCallback(
+    public @pointer(comment="GLFWkeyfun") MemorySegment glfwSetKeyCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWkeyfun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetKeyCallback.invokeExact(
@@ -1196,9 +1196,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetCharCallback(
+    public @pointer(comment="GLFWcharfun") MemorySegment glfwSetCharCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWcharfun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetCharCallback.invokeExact(
@@ -1210,9 +1210,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetCharModsCallback(
+    public @pointer(comment="GLFWcharmodsfun") MemorySegment glfwSetCharModsCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWcharmodsfun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetCharModsCallback.invokeExact(
@@ -1224,9 +1224,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetMouseButtonCallback(
+    public @pointer(comment="GLFWmousebuttonfun") MemorySegment glfwSetMouseButtonCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWmousebuttonfun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetMouseButtonCallback.invokeExact(
@@ -1238,9 +1238,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetCursorPosCallback(
+    public @pointer(comment="GLFWcursorposfun") MemorySegment glfwSetCursorPosCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWcursorposfun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetCursorPosCallback.invokeExact(
@@ -1252,9 +1252,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetCursorEnterCallback(
+    public @pointer(comment="GLFWcursorenterfun") MemorySegment glfwSetCursorEnterCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWcursorenterfun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetCursorEnterCallback.invokeExact(
@@ -1266,9 +1266,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetScrollCallback(
+    public @pointer(comment="GLFWscrollfun") MemorySegment glfwSetScrollCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWscrollfun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetScrollCallback.invokeExact(
@@ -1280,9 +1280,9 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetDropCallback(
+    public @pointer(comment="GLFWdropfun") MemorySegment glfwSetDropCallback(
             @nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment callback
+            @pointer(comment="GLFWdropfun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetDropCallback.invokeExact(
@@ -1415,8 +1415,8 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwSetJoystickCallback(
-            @pointer(comment="void*") MemorySegment callback
+    public @pointer(comment="GLFWjoystickfun") MemorySegment glfwSetJoystickCallback(
+            @pointer(comment="GLFWjoystickfun") MemorySegment callback
     ) {
         try {
             return (MemorySegment) HANDLE$glfwSetJoystickCallback.invokeExact(
@@ -1586,7 +1586,7 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetProcAddress(
+    public @pointer(comment="GLFWglproc") MemorySegment glfwGetProcAddress(
             @nullable ByteBuffer procname
     ) {
         try {
@@ -1619,7 +1619,7 @@ public final class GLFW {
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetInstanceProcAddress(
+    public @pointer(comment="GLFWvkproc") MemorySegment glfwGetInstanceProcAddress(
             @nullable VkInstance instance,
             @nullable ByteBuffer procname
     ) {
