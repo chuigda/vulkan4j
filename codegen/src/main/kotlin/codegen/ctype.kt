@@ -1,5 +1,11 @@
 package codegen
 
+import ArrayType
+import IdentifierType
+import PointerType
+import Registry
+import Type
+
 sealed interface CType {
     val jRawType: String
     val jLayout: String
@@ -45,18 +51,23 @@ data class CHandleType(val name: String) : CType {
     override val cType: String = name
 }
 
-sealed class IntOrString {
-    class Int(val value: kotlin.Int) : IntOrString()
-    class String(val value: kotlin.String) : IntOrString()
-}
-
-data class CArrayType(val element: CType, val length: IntOrString) : CType {
+data class CArrayType(val element: CType, val length: String) : CType {
     override val jRawType: String get() = throw NotImplementedError("should not call `jRawType` on `array`")
     override val jLayout: String = "ValueLayout.sequenceLayout($length, ${element.jLayout})"
     override val jLayoutType: String = "SequenceLayout"
     override val cType: String = "${element.cType}[$length]"
 
-    override val jDescriptorParamLayout: String = "ValueLayout.ADDRESS.withElementLayout(${element.jLayout})"
+    override val jDescriptorParamLayout: String = "ValueLayout.ADDRESS.withElementLyout(${element.jLayout})"
+
+    val flattened: CArrayType get() {
+        if (element !is CArrayType) {
+            return this
+        }
+
+        val newElement = element.flattened
+        val newLength = "$length * ${element.length}"
+        return CArrayType(newElement.element, newLength)
+    }
 }
 
 sealed interface CNonRefType : CType {
@@ -267,5 +278,49 @@ private val knownTypes = mapOf(
     "NvSciBufObj" to pvoidType,
     "NvSciSyncAttrList" to pvoidType,
     "NvSciSyncObj" to pvoidType,
-    "NvSciSyncFence" to CArrayType(uint64Type, IntOrString.Int(6)),
+    "NvSciSyncFence" to CArrayType(uint64Type, "6"),
 )
+
+fun lowerType(registry: Registry, type: Type): CType {
+    return when(type) {
+        is ArrayType -> {
+            if (!type.length.isNumeric()) {
+                if (!registry.constants.contains(type.length)) {
+                    throw Exception("array type referred to an unknown constant ${type.length}")
+                }
+            }
+
+            val elementType = lowerType(registry, type.element)
+            CArrayType(elementType, type.length)
+        }
+        is PointerType -> {
+            if (type.pointee is IdentifierType && registry.opaqueTypedefs.contains(type.pointee.ident)) {
+                return CHandleType(type.pointee.ident)
+            }
+
+            val pointee = lowerType(registry, type.pointee)
+            CPointerType(pointee, type.const, comment=null)
+        }
+        is IdentifierType -> lowerIdentifierType(registry, type)
+    }
+}
+
+fun lowerIdentifierType(registry: Registry, type: IdentifierType): CType {
+    return if (registry.structs.contains(type.ident)) {
+        CStructType(type.ident)
+    }
+    else if (registry.handles.contains(type.ident)) {
+        CHandleType(type.ident)
+    }
+    else if (registry.functionTypedefs.contains(type.ident)) {
+        CPointerType(voidType, false, comment=type.ident)
+    }
+    else if (knownTypes.containsKey(type.ident)) {
+        knownTypes[type.ident]!!
+    }
+    else {
+        throw Exception("unknown type: ${type.ident}")
+    }
+}
+
+private fun String.isNumeric() = all { it.isDigit() }

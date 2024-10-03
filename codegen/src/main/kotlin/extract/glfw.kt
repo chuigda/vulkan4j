@@ -16,10 +16,10 @@ import Type
 fun extractGLFWHeader(fileContent: String): Registry {
     val lines = fileContent.split('\n').map(String::trim)
 
-    val constants = mutableListOf<Constant>()
-    val functions = mutableListOf<Function>()
-    val opaqueTypedefs = mutableListOf<OpaqueTypedef>()
-    val functionTypedefs = mutableListOf<FunctionTypedef>()
+    val constants = mutableMapOf<String, Constant>()
+    val functions = mutableMapOf<String, Function>()
+    val opaqueTypedefs = mutableMapOf<String, OpaqueTypedef>()
+    val functionTypedefs = mutableMapOf<String, FunctionTypedef>()
     for (line in lines) {
         if (line.startsWith("#define GLFW_")) {
             val parts = line.split(' ', limit = 3)
@@ -29,28 +29,31 @@ fun extractGLFWHeader(fileContent: String): Registry {
 
             val name = parts[1].trim()
             val value = parts[2].trim()
-            constants.add(Constant(name, expr=value))
+            constants[name] = Constant(name, expr=value)
         }
         else if (line.startsWith("GLFWAPI")) {
-            functions.add(parseCDecl(line.slice(8 until line.length)))
+            val function = parseCDecl(line.slice(8 until line.length))
+            functions[function.name] = function
         }
         else if (line.startsWith("typedef struct") && line.endsWith(";")) {
             val tokens = tokenize(line)
             val aliasName = tokens[2]
-            opaqueTypedefs.add(OpaqueTypedef(aliasName))
+            opaqueTypedefs[aliasName] = OpaqueTypedef(aliasName)
         }
         else if (line.startsWith("typedef" )
                  && (line.contains("proc") || line.contains("fun"))) {
-            functionTypedefs.add(parseFunctionTypedef(line))
+            val functionTypedef = parseFunctionTypedef(line)
+            functionTypedefs[functionTypedef.name] = functionTypedef
         }
     }
 
     return Registry(
-        functions,
-        opaqueTypedefs,
-        handles=listOf(),
-        structures=mutableListOf(),
-        functionTypedefs
+        constants=constants,
+        functions=functions,
+        opaqueTypedefs=opaqueTypedefs,
+        handles=mapOf(),
+        structs=mapOf(),
+        functionTypedefs=functionTypedefs
     )
 }
 
@@ -61,53 +64,60 @@ fun addGLFWStructures(registry: Registry): Registry {
     val floatType = IdentifierType("float")
     val ucharType = IdentifierType("unsigned char")
     val byteArrayType = PointerType(ucharType, const=false)
-    val structures = listOf(Structure(
-        "GLFWvidmode",
-        members=listOf(
-            Member("width", type=intType),
-            Member("height", type=intType),
-            Member("redBits", type=intType),
-            Member("greenBits", type=intType),
-            Member("blueBits", type=intType),
-            Member("refreshRate", type=intType)
+    val structures = mapOf(
+        "GLFWvidmode" to Structure(
+            "GLFWvidmode",
+            members=listOf(
+                Member("width", type=intType),
+                Member("height", type=intType),
+                Member("redBits", type=intType),
+                Member("greenBits", type=intType),
+                Member("blueBits", type=intType),
+                Member("refreshRate", type=intType)
+            )
+        ),
+        "GLFWgammaramp" to Structure(
+            "GLFWgammaramp",
+            members=listOf(
+                Member("red", type=pushortType),
+                Member("green", type=pushortType),
+                Member("blue", type=pushortType),
+                Member("size", type=intType)
+            )
+        ),
+        "GLFWimage" to Structure(
+            "GLFWimage",
+            members=listOf(
+                Member("width", type=intType),
+                Member("height", type=intType),
+                Member("pixels", type=byteArrayType)
+            )
+        ),
+        "GLFWgamepadstate" to Structure(
+            "GLFWgamepadstate",
+            members=listOf(
+                Member("buttons", type=ArrayType(ucharType, "15")),
+                Member("axes", type=ArrayType(floatType, "6"))
+            )
+        ),
+        "GLFWallocator" to Structure(
+            "GLFWallocator",
+            members=listOf(
+                Member("allocate", type=IdentifierType("GLFWallocatefun")),
+                Member("reallocate", type=IdentifierType("GLFWreallocatefun")),
+                Member("deallocate", type=IdentifierType("GLFWdeallocatefun")),
+                Member("user", type=PointerType(IdentifierType("void")))
+            )
         )
-    ), Structure(
-        "GLFWgammaramp",
-        members=listOf(
-            Member("red", type=pushortType),
-            Member("green", type=pushortType),
-            Member("blue", type=pushortType),
-            Member("size", type=intType)
-        )
-    ), Structure(
-        "GLFWimage",
-        members=listOf(
-            Member("width", type=intType),
-            Member("height", type=intType),
-            Member("pixels", type=byteArrayType)
-        )
-    ), Structure(
-        "GLFWgamepadstate",
-        members=listOf(
-            Member("buttons", type=ArrayType(ucharType, "15")),
-            Member("axes", type=ArrayType(floatType, "6"))
-        )
-    ), Structure(
-        "GLFWallocator",
-        members=listOf(
-            Member("allocate", type=IdentifierType("GLFWallocatefun")),
-            Member("reallocate", type=IdentifierType("GLFWreallocatefun")),
-            Member("deallocate", type=IdentifierType("GLFWdeallocatefun")),
-            Member("user", type=PointerType(IdentifierType("void")))
-        )
-    ))
+    )
 
     return Registry(
-        registry.functions,
-        registry.opaqueTypedefs,
-        registry.handles,
-        structures,
-        registry.functionTypedefs
+        constants=registry.constants,
+        functions=registry.functions,
+        opaqueTypedefs=registry.opaqueTypedefs,
+        handles=registry.handles,
+        structs=structures,
+        functionTypedefs=registry.functionTypedefs
     )
 }
 
