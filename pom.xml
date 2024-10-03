@@ -11,8 +11,9 @@
 
     <properties>
         <revision>0.1.0</revision>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
+        <panama-plus.revision>0.1.0</panama-plus.revision>
+        <vk4j.revision>0.1.0</vk4j.revision>
+        <maven.compiler.release>22</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
