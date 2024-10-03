@@ -1,7 +1,12 @@
 package ch00;
 
-import tech.icey.glfwmini.GLFWwindow;
-import tech.icey.glfwmini.LibGLFW;
+import tech.icey.glfw.GLFWConstants;
+import tech.icey.glfw.handle.GLFWwindow;
+import tech.icey.glfw.GLFW;
+import tech.icey.glfw.GLFWLoader;
+import tech.icey.panama.buffer.ByteBuffer;
+
+import java.lang.foreign.Arena;
 
 class Application {
     public void run() {
@@ -12,40 +17,41 @@ class Application {
     }
 
     private void initWindow() {
-        LibGLFW.loadGLFWLibrary();
-        libGLFW = LibGLFW.loadGLFW();
-        if (libGLFW.glfwInit() != LibGLFW.GLFW_TRUE) {
+        GLFWLoader.loadGLFWLibrary();
+        glfw = GLFWLoader.loadGLFW();
+        if (glfw.glfwInit() != GLFWConstants.GLFW_TRUE) {
             throw new RuntimeException("Failed to initialize GLFW");
         }
 
-        if (libGLFW.glfwVulkanSupported() != LibGLFW.GLFW_TRUE) {
+        if (glfw.glfwVulkanSupported() != GLFWConstants.GLFW_TRUE) {
             throw new RuntimeException("Vulkan is not supported");
         }
 
-        libGLFW.glfwWindowHint(LibGLFW.GLFW_CLIENT_API, LibGLFW.GLFW_NO_API);
-        libGLFW.glfwWindowHint(LibGLFW.GLFW_RESIZABLE, LibGLFW.GLFW_FALSE);
-        window = libGLFW.glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", null, null);
+        glfw.glfwWindowHint(GLFWConstants.GLFW_CLIENT_API, GLFWConstants.GLFW_NO_API);
+        glfw.glfwWindowHint(GLFWConstants.GLFW_RESIZABLE, GLFWConstants.GLFW_FALSE);
+        window = glfw.glfwCreateWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
     }
 
     private void initVulkan() {
     }
 
     private void mainLoop() {
-        while (!libGLFW.glfwWindowShouldClose(window)) {
-            libGLFW.glfwPollEvents();
+        while (glfw.glfwWindowShouldClose(window) == GLFWConstants.GLFW_FALSE) {
+            glfw.glfwPollEvents();
         }
     }
 
     private void cleanup() {
-        libGLFW.glfwDestroyWindow(window);
-        libGLFW.glfwTerminate();
+        glfw.glfwDestroyWindow(window);
+        glfw.glfwTerminate();
     }
 
-    private LibGLFW libGLFW;
+    private GLFW glfw;
     private GLFWwindow window;
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
+    private static final ByteBuffer WINDOW_TITLE = ByteBuffer.allocateString(Arena.global(), "Vulkan");
 }
 
 public class Main {

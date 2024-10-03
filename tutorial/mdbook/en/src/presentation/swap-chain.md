@@ -269,7 +269,7 @@ private VkExtent2D chooseSwapExtent(VkSurfaceCapabilitiesKHR capabilities, Arena
         try (var localArena = Arena.ofConfined()) {
             var pWidth = IntBuffer.allocate(localArena);
             var pHeight = IntBuffer.allocate(localArena);
-            libGLFW.glfwGetFramebufferSize(window, pWidth, pHeight);
+            glfw.glfwGetFramebufferSize(window, pWidth, pHeight);
             var width = pWidth.read();
             var height = pHeight.read();
 

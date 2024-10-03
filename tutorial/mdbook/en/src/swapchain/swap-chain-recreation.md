@@ -175,9 +175,9 @@ And, although this is a non-static function which requires an implicit `this` pa
 private void initWindow() {
     // ...
 
-    libGLFW.glfwWindowHint(LibGLFW.GLFW_CLIENT_API, LibGLFW.GLFW_NO_API);
+    glfw.glfwWindowHint(GLFWConstants.GLFW_CLIENT_API, GLFWConstants.GLFW_NO_API);
     // now the line disabling window resizing is removed
-    window = libGLFW.glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", null, null);
+    window = glfw.glfwCreateWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
 
     var callbackDescriptor = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
@@ -192,7 +192,7 @@ private void initWindow() {
         ).bindTo(this); // funny binding mechanism
 
         var upcallStub = Linker.nativeLinker().upcallStub(handle, callbackDescriptor, applicationArena);
-        libGLFW.glfwSetFramebufferSizeCallback(window, upcallStub);
+        glfw.glfwSetFramebufferSizeCallback(window, upcallStub);
     } catch (Exception e) {
         throw new RuntimeException("Failed to find method handle for framebufferResizeCallback", e);
     }
@@ -210,10 +210,10 @@ private void recreateSwapChain() {
     try (var arena = Arena.ofConfined()) {
         var pWidth = IntBuffer.allocate(arena);
         var pHeight = IntBuffer.allocate(arena);
-        libGLFW.glfwGetFramebufferSize(window, pWidth, pHeight);
+        glfw.glfwGetFramebufferSize(window, pWidth, pHeight);
         while (pWidth.read() == 0 || pHeight.read() == 0) {
-            libGLFW.glfwGetFramebufferSize(window, pWidth, pHeight);
-            libGLFW.glfwWaitEvents();
+            glfw.glfwGetFramebufferSize(window, pWidth, pHeight);
+            glfw.glfwWaitEvents();
         }
     }
     

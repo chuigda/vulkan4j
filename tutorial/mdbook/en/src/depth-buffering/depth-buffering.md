@@ -510,10 +510,10 @@ private void recreateSwapChain() {
     try (var arena = Arena.ofConfined()) {
         var pWidth = IntBuffer.allocate(arena);
         var pHeight = IntBuffer.allocate(arena);
-        libGLFW.glfwGetFramebufferSize(window, pWidth, pHeight);
+        glfw.glfwGetFramebufferSize(window, pWidth, pHeight);
         while (pWidth.read() == 0 || pHeight.read() == 0) {
-            libGLFW.glfwGetFramebufferSize(window, pWidth, pHeight);
-            libGLFW.glfwWaitEvents();
+            glfw.glfwGetFramebufferSize(window, pWidth, pHeight);
+            glfw.glfwWaitEvents();
         }
     }
 

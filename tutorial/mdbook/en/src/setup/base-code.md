@@ -68,13 +68,13 @@ private void initWindow() {
 Unlike in LWJGL or some other wrappers, with `vulkan4j`, you need to manually load both library and the library functions. Firstly we need to load GLFW native library into the JVM. This can be done with a single line of code:
 
 ```java
-LibGLFW.loadGLFWLibrary();
+GLFWLoader.loadGLFWLibrary();
 ```
 
 Then we want to load the GLFW functions. Add a private field to the `Application` class:
 
 ```java
-private LibGLFW libGLFW;
+private GLFW glfw;
 ```
 
 And then initialize it in the `initWindow` function:
@@ -82,14 +82,14 @@ And then initialize it in the `initWindow` function:
 ```java
 private void initWindow() {
     // ...
-    libGLFW = LibGLFW.loadGLFW();
+    glfw = GLFWLoader.loadGLFW();
 }
 ```
 
 Then we can call `glfwInit()` to initialize the GLFW library. If it fails, we'll throw an exception:
 
 ```java
-if (libGLFW.glfwInit() != LibGLFW.GLFW_TRUE) {
+if (glfw.glfwInit() != GLFWConstants.GLFW_TRUE) {
     throw new RuntimeException("Failed to initialize GLFW");
 }
 ```
@@ -97,7 +97,7 @@ if (libGLFW.glfwInit() != LibGLFW.GLFW_TRUE) {
 Then we will check Vulkan support with `glfwVulkanSupported()`:
 
 ```java
-if (libGLFW.glfwVulkanSupported() != LibGLFW.GLFW_TRUE) {
+if (glfw.glfwVulkanSupported() != GLFWConstants.GLFW_TRUE) {
     throw new RuntimeException("Vulkan is not supported");
 }
 ```
@@ -105,13 +105,13 @@ if (libGLFW.glfwVulkanSupported() != LibGLFW.GLFW_TRUE) {
 Then we start giving GLFW hints about the window we want to create. Because GLFW was originally designed to create an OpenGL context, we need to tell it to not create an OpenGL context with a subsequent call:
 
 ```java
-libGLFW.glfwWindowHint(LibGLFW.GLFW_CLIENT_API, LibGLFW.GLFW_NO_API);
+glfw.glfwWindowHint(GLFWConstants.GLFW_CLIENT_API, GLFWConstants.GLFW_NO_API);
 ```
 
 Because handling resized windows takes special care that we'll look into later, disable it for now with another window hint call:
 
 ```java
-libGLFW.glfwWindowHint(LibGLFW.GLFW_RESIZABLE, LibGLFW.GLFW_FALSE);
+glfw.glfwWindowHint(GLFWConstants.GLFW_RESIZABLE, GLFWConstants.GLFW_FALSE);
 ```
 
 All that's left now is creating the actual window. Add a private class member to store the window handle:
@@ -123,41 +123,42 @@ private GLFWwindow window;
 And then initialize it with `glfwCreateWindow`:
 
 ```java
-window = libGLFW.glfwCreateWindow(800, 600, "Vulkan", null, null);
+window = glfw.glfwCreateWindow(800, 600, ByteBuffer.allocateString(Arena.global(), "Vulkan"), null, null);
 ```
 
 The first three parameters specify the width, height and title of the window. The fourth parameter allows you to optionally specify a monitor to open the window on and the last parameter is only relevant to OpenGL.
 
-It's a good idea to use constants instead of hardcoded width and height numbers because we'll be referring to these values a couple of times in the future. I've added the following constants in the `Application` class definition:
+It's a good idea to use constants instead of hardcoded width and height numbers because we'll be referring to these values a couple of times in the future. Also, using constants helps reducing expression size. I've added the following constants in the `Application` class definition: 
 
 ```java
 private static final int WIDTH = 800;
 private static final int HEIGHT = 600;
+private static final ByteBuffer WINDOW_TITLE = ByteBuffer.allocateString(Arena.global(), "Vulkan");
 ```
 
 and replaced the window creation call with
 
 ```java
-window = libGLFW.glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", null, null);
+window = glfw.glfwCreateWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
 ```
 
 You should now have a `initWindow` function that looks like this:
 
 ```java
 private void initWindow() {
-    LibGLFW.loadGLFWLibrary();
-    libGLFW = LibGLFW.loadGLFW();
-    if (libGLFW.glfwInit() != LibGLFW.GLFW_TRUE) {
+    GLFWLoader.loadGLFWLibrary();
+    glfw = GLFWLoader.loadGLFW();
+    if (glfw.glfwInit() != GLFWConstants.GLFW_TRUE) {
         throw new RuntimeException("Failed to initialize GLFW");
     }
 
-    if (libGLFW.glfwVulkanSupported() != LibGLFW.GLFW_TRUE) {
+    if (glfw.glfwVulkanSupported() != GLFWConstants.GLFW_TRUE) {
         throw new RuntimeException("Vulkan is not supported");
     }
 
-    libGLFW.glfwWindowHint(LibGLFW.GLFW_CLIENT_API, LibGLFW.GLFW_NO_API);
-    libGLFW.glfwWindowHint(LibGLFW.GLFW_RESIZABLE, LibGLFW.GLFW_FALSE);
-    window = libGLFW.glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", null, null);
+    glfw.glfwWindowHint(GLFWConstants.GLFW_CLIENT_API, GLFWConstants.GLFW_NO_API);
+    glfw.glfwWindowHint(GLFWConstants.GLFW_RESIZABLE, GLFWConstants.GLFW_FALSE);
+    window = glfw.glfwCreateWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
 }
 ```
 
@@ -165,8 +166,8 @@ To keep the application running until either an error occurs or the window is cl
 
 ```java
 private void mainLoop() {
-    while (!libGLFW.glfwWindowShouldClose(window)) {
-        libGLFW.glfwPollEvents();
+    while (glfw.glfwWindowShouldClose(window) == GLFWConstants.GLFW_FALSE) {
+        glfw.glfwPollEvents();
     }
 }
 ```
@@ -177,8 +178,8 @@ Once the window is closed, we need to clean up resources by destroying it and te
 
 ```java
 private void cleanup() {
-    libGLFW.glfwDestroyWindow(window);
-    libGLFW.glfwTerminate();
+    glfw.glfwDestroyWindow(window);
+    glfw.glfwTerminate();
 }
 ```
 

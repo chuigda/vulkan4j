@@ -68,16 +68,18 @@ The first field `pApplicationInfo` is straightforward. The next two fields speci
 
 ```java
 var pGLFWExtensionCount = IntBuffer.allocate(arena);
-var glfwExtensions = libGLFW.glfwGetRequiredInstanceExtensions(pGLFWExtensionCount);
+var glfwExtensions = glfw.glfwGetRequiredInstanceExtensions(pGLFWExtensionCount);
 if (glfwExtensions == null) {
     throw new RuntimeException("Failed to get GLFW required instance extensions");
 }
 
-instanceCreateInfo.enabledExtensionCount(pGLFWExtensionCount.read());
+var glfwExtensionCount = pGLFWExtensionCount.read();
+glfwExtensions = glfwExtensions.reinterpret(glfwExtensionCount);
+instanceCreateInfo.enabledExtensionCount(glfwExtensionCount);
 instanceCreateInfo.ppEnabledExtensionNames(glfwExtensions);
 ```
 
-The last two fields of the struct determine the global validation layers to enable. We'll talk about these more in-depth in the next chapter, so just leave these empty for now.
+> Note: here we call `reinterpret` on the `glfwExtensions` buffer to mark its size as `glfwExtensionCount`. We need to do this on ourselves because the auto-generated bindings don't know how to correctly set the size of the buffer when it's returned from a function. For now this step is not necessary yet, because `vkCreateInstance` doesn't need the size information of our `PointerBuffer` -- it acquires the size from the `VkInstanceCreateInfo::enabledExtensionCount` field instead. However, in the following chapaters we'll read `glfwExtensions` from Java code, and we'll need correct size information. 
 
 ```java
 instanceCreateInfo.enabledLayerCount(0);

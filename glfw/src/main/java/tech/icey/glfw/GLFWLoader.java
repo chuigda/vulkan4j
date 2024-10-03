@@ -1,6 +1,5 @@
 package tech.icey.glfw;
 
-import tech.icey.glfwmini.LibGLFW;
 import tech.icey.panama.FunctionLoader;
 import tech.icey.panama.Loader;
 
@@ -33,7 +32,7 @@ public final class GLFWLoader {
     /// and your own {@link FunctionLoader}.
     ///
     /// @return loaded GLFW functions
-    public static LibGLFW loadGLFW() {
-        return new LibGLFW(Loader::loadFunctionOrNull);
+    public static GLFW loadGLFW() {
+        return new GLFW(Loader::loadFunctionOrNull);
     }
 }

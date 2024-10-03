@@ -23,7 +23,7 @@ Because a window surface is a Vulkan object, it comes with a `VkWin32SurfaceCrea
 ```java
 try (var arena = Arena.ofConfined()) {
     var createInfo = VkWin32SurfaceCreateInfoKHR.allocate(arena)
-            .hwnd(libGLFW.glfwGetWin32Window(window))
+            .hwnd(glfw.glfwGetWin32Window(window))
             .hinstance(libKernel32.GetModuleHandle(null));
 }
 ```
@@ -61,7 +61,7 @@ The GLFW call takes simple parameters instead of a struct which makes the implem
 private void createSurface() {
     try (var arena = Arena.ofConfined()) {
         var pSurface = VkSurfaceKHR.Buffer.allocate(arena);
-        var result = libGLFW.glfwCreateWindowSurface(instance, window, null, pSurface);
+        var result = glfw.glfwCreateWindowSurface(instance, window, null, pSurface);
         if (result != VkResult.VK_SUCCESS) {
             throw new RuntimeException("Failed to create window surface, vulkan error code: " + VkResult.explain(result));
         }

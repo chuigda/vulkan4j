@@ -1,7 +1,9 @@
 package ch19;
 
-import tech.icey.glfwmini.GLFWwindow;
-import tech.icey.glfwmini.LibGLFW;
+import tech.icey.glfw.GLFWConstants;
+import tech.icey.glfw.handle.GLFWwindow;
+import tech.icey.glfw.GLFW;
+import tech.icey.glfw.GLFWLoader;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
 import tech.icey.panama.annotation.pointer;
@@ -33,18 +35,18 @@ class Application {
     }
 
     private void initWindow() {
-        LibGLFW.loadGLFWLibrary();
-        libGLFW = LibGLFW.loadGLFW();
-        if (libGLFW.glfwInit() != LibGLFW.GLFW_TRUE) {
+        GLFWLoader.loadGLFWLibrary();
+        glfw = GLFWLoader.loadGLFW();
+        if (glfw.glfwInit() != GLFWConstants.GLFW_TRUE) {
             throw new RuntimeException("Failed to initialize GLFW");
         }
 
-        if (libGLFW.glfwVulkanSupported() != LibGLFW.GLFW_TRUE) {
+        if (glfw.glfwVulkanSupported() != GLFWConstants.GLFW_TRUE) {
             throw new RuntimeException("Vulkan is not supported");
         }
 
-        libGLFW.glfwWindowHint(LibGLFW.GLFW_CLIENT_API, LibGLFW.GLFW_NO_API);
-        window = libGLFW.glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", null, null);
+        glfw.glfwWindowHint(GLFWConstants.GLFW_CLIENT_API, GLFWConstants.GLFW_NO_API);
+        window = glfw.glfwCreateWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
 
         var callbackDescriptor = FunctionDescriptor.ofVoid(
                 ValueLayout.ADDRESS,
@@ -59,7 +61,7 @@ class Application {
             ).bindTo(this);
 
             var upcallStub = Linker.nativeLinker().upcallStub(handle, callbackDescriptor, applicationArena);
-            libGLFW.glfwSetFramebufferSizeCallback(window, upcallStub);
+            glfw.glfwSetFramebufferSizeCallback(window, upcallStub);
         } catch (Exception e) {
             throw new RuntimeException("Failed to find method handle for framebufferResizeCallback", e);
         }
@@ -87,8 +89,8 @@ class Application {
     }
 
     private void mainLoop() {
-        while (!libGLFW.glfwWindowShouldClose(window)) {
-            libGLFW.glfwPollEvents();
+        while (glfw.glfwWindowShouldClose(window) == GLFWConstants.GLFW_FALSE) {
+            glfw.glfwPollEvents();
             drawFrame();
         }
 
@@ -114,18 +116,18 @@ class Application {
         }
         instanceCommands.vkDestroySurfaceKHR(instance, surface, null);
         instanceCommands.vkDestroyInstance(instance, null);
-        libGLFW.glfwDestroyWindow(window);
-        libGLFW.glfwTerminate();
+        glfw.glfwDestroyWindow(window);
+        glfw.glfwTerminate();
     }
 
     private void recreateSwapChain() {
         try (var arena = Arena.ofConfined()) {
             var pWidth = IntBuffer.allocate(arena);
             var pHeight = IntBuffer.allocate(arena);
-            libGLFW.glfwGetFramebufferSize(window, pWidth, pHeight);
+            glfw.glfwGetFramebufferSize(window, pWidth, pHeight);
             while (pWidth.read() == 0 || pHeight.read() == 0) {
-                libGLFW.glfwGetFramebufferSize(window, pWidth, pHeight);
-                libGLFW.glfwWaitEvents();
+                glfw.glfwGetFramebufferSize(window, pWidth, pHeight);
+                glfw.glfwWaitEvents();
             }
         }
 
@@ -217,7 +219,7 @@ class Application {
     private void createSurface() {
         try (var arena = Arena.ofConfined()) {
             var pSurface = VkSurfaceKHR.Buffer.allocate(arena);
-            var result = libGLFW.glfwCreateWindowSurface(instance, window, null, pSurface);
+            var result = glfw.glfwCreateWindowSurface(instance, window, null, pSurface);
             if (result != VkResult.VK_SUCCESS) {
                 throw new RuntimeException("Failed to create window surface, vulkan error code: " + VkResult.explain(result));
             }
@@ -837,12 +839,13 @@ class Application {
     private PointerBuffer getRequiredExtensions(Arena arena) {
         try (var localArena = Arena.ofConfined()) {
             var pGLFWExtensionCount = IntBuffer.allocate(localArena);
-            var glfwExtensions = libGLFW.glfwGetRequiredInstanceExtensions(pGLFWExtensionCount);
+            var glfwExtensions = glfw.glfwGetRequiredInstanceExtensions(pGLFWExtensionCount);
             if (glfwExtensions == null) {
                 throw new RuntimeException("Failed to get GLFW required instance extensions");
             }
 
             var glfwExtensionCount = pGLFWExtensionCount.read();
+            glfwExtensions = glfwExtensions.reinterpret(glfwExtensionCount);
             if (!ENABLE_VALIDATION_LAYERS) {
                 return glfwExtensions;
             }
@@ -1023,7 +1026,7 @@ class Application {
             try (var localArena = Arena.ofConfined()) {
                 var pWidth = IntBuffer.allocate(localArena);
                 var pHeight = IntBuffer.allocate(localArena);
-                libGLFW.glfwGetFramebufferSize(window, pWidth, pHeight);
+                glfw.glfwGetFramebufferSize(window, pWidth, pHeight);
                 var width = pWidth.read();
                 var height = pHeight.read();
 
@@ -1143,7 +1146,7 @@ class Application {
 
     private Arena applicationArena = Arena.ofShared();
 
-    private LibGLFW libGLFW;
+    private GLFW glfw;
     private GLFWwindow window;
 
     private StaticCommands staticCommands;
@@ -1178,6 +1181,7 @@ class Application {
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
+    private static final ByteBuffer WINDOW_TITLE = ByteBuffer.allocateString(Arena.global(), "Vulkan");
     private static final boolean ENABLE_VALIDATION_LAYERS = System.getProperty("validation") != null;
     private static String VALIDATION_LAYER_NAME = "VK_LAYER_KHRONOS_validation";
     private static final int MAX_FRAMES_IN_FLIGHT = 2;

@@ -4,8 +4,8 @@ This is the chapter where everything is going to come together. We're going to w
 
 ```java
 private void mainLoop() {
-    while (!libGLFW.glfwWindowShouldClose(window)) {
-        libGLFW.glfwPollEvents();
+    while (!glfw.glfwWindowShouldClose(window)) {
+        glfw.glfwPollEvents();
         drawFrame();
     }
 }
@@ -381,8 +381,8 @@ To fix that problem, we should wait for the logical device to finish operations 
 
 ```java
 private void mainLoop() {
-    while (!libGLFW.glfwWindowShouldClose(window)) {
-        libGLFW.glfwPollEvents();
+    while (!glfw.glfwWindowShouldClose(window)) {
+        glfw.glfwPollEvents();
         drawFrame();
     }
 

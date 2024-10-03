@@ -130,12 +130,13 @@ We'll first create a `getRequiredExtensions` function that will return the requi
 private PointerBuffer getRequiredExtensions(Arena arena) {
     try (var localArena = Arena.ofConfined()) {
         var pGLFWExtensionCount = IntBuffer.allocate(localArena);
-        var glfwExtensions = libGLFW.glfwGetRequiredInstanceExtensions(pGLFWExtensionCount);
+        var glfwExtensions = glfw.glfwGetRequiredInstanceExtensions(pGLFWExtensionCount);
         if (glfwExtensions == null) {
             throw new RuntimeException("Failed to get GLFW required instance extensions");
         }
 
         var glfwExtensionCount = pGLFWExtensionCount.read();
+        glfwExtensions = glfwExtensions.reinterpret(glfwExtensionCount);
         if (!ENABLE_VALIDATION_LAYERS) {
             return glfwExtensions;
         }
