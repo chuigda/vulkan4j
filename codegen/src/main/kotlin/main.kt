@@ -1,6 +1,4 @@
-import codegen.generateConstants
-import codegen.generateHandle
-import codegen.generateStructure
+import codegen.*
 import extract.addGLFWStructures
 import extract.extractGLFWHeader
 import java.io.File
@@ -34,4 +32,12 @@ fun main() {
         listOf("tech.icey.vk4j.datatype.*", "tech.icey.vk4j.handle.*")
     )
     File("glfw/src/main/java/tech/icey/glfw/GLFW.java").writeText(commands)
+
+    val functionTypeDefs = generateFunctionDescriptorClassFile(
+        registry,
+        registry.functionTypedefs.values.toList(),
+        "tech.icey.glfw",
+        "GLFWFunctionTypes"
+    )
+    File("glfw/src/main/java/tech/icey/glfw/GLFWFunctionTypes.java").writeText(functionTypeDefs)
 }

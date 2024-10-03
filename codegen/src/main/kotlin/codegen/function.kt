@@ -1,4 +1,10 @@
-import codegen.*
+package codegen
+
+import Function
+import FunctionTypedef
+import Param
+import Registry
+import appendLn
 
 fun generateFunctionClassFile(
     registry: Registry,
@@ -77,36 +83,69 @@ fun generateFunctionClassFile(
     }
 }
 
-private fun generateFunctionDescriptor(registry: Registry, function: Function): Triple<String, List<CType>, CType> {
+fun generateFunctionDescriptorClassFile(
+    registry: Registry,
+    typedefs: List<FunctionTypedef>,
+    packageName: String,
+    className: String
+): String = buildString {
+    appendLn("""
+        package $packageName;
+
+        import java.lang.foreign.*;
+
+        import tech.icey.panama.NativeLayout;
+    """.trimIndent())
+
+    appendLn()
+
+    appendLn("public final class $className {")
+    for (typedef in typedefs) {
+        val retType = if (typedef.result != null) { lowerType(registry, typedef.result) } else { voidType }
+        val paramTypes = typedef.params.map { lowerType(registry, it.type) }
+        val descriptor = impGenerateFunctionDescriptor(typedef.name, retType, paramTypes)
+        appendLn(indent(descriptor, 1))
+    }
+    appendLn("}")
+}
+
+private fun generateFunctionDescriptor(
+    registry: Registry,
+    function: Function
+): Triple<String, List<CType>, CType> {
     val retType = if (function.result != null) { lowerType(registry, function.result) } else { voidType }
     val paramTypes = function.params.map { lowerType(registry, it.type) }
+    val descriptor = impGenerateFunctionDescriptor("DESCRIPTOR$${function.name}", retType, paramTypes)
+    return Triple(descriptor, paramTypes, retType)
+}
 
+private fun impGenerateFunctionDescriptor(
+    descriptorName: String,
+    retType: CType,
+    paramTypes: List<CType>
+): String = buildString {
     val paramTypeLayouts = paramTypes.joinToString(",\n") { it.jLayout }
-    val descriptor = buildString {
-        if (retType is CVoidType) {
-            if (paramTypes.isNotEmpty()) {
-                appendLn("public static final FunctionDescriptor DESCRIPTOR$${function.name} = FunctionDescriptor.ofVoid(")
-            }
-            else {
-                append("public static final FunctionDescriptor DESCRIPTOR$${function.name} = FunctionDescriptor.ofVoid(")
-            }
+    if (retType is CVoidType) {
+        if (paramTypes.isNotEmpty()) {
+            appendLn("public static final FunctionDescriptor $descriptorName = FunctionDescriptor.ofVoid(")
         }
         else {
-            appendLn("public static final FunctionDescriptor DESCRIPTOR$${function.name} = FunctionDescriptor.of(")
-            if (paramTypes.isNotEmpty()) {
-                appendLn(indent("${retType.jLayout},", 2))
-            }
-            else {
-                appendLn(indent(retType.jLayout, 2))
-            }
+            append("public static final FunctionDescriptor $descriptorName = FunctionDescriptor.ofVoid(")
         }
-        if (paramTypes.isNotEmpty()) {
-            appendLn(indent(paramTypeLayouts, 2))
-        }
-        append(");")
     }
-
-    return Triple(descriptor, paramTypes, retType)
+    else {
+        appendLn("public static final FunctionDescriptor $descriptorName = FunctionDescriptor.of(")
+        if (paramTypes.isNotEmpty()) {
+            appendLn(indent("${retType.jLayout},", 2))
+        }
+        else {
+            appendLn(indent(retType.jLayout, 2))
+        }
+    }
+    if (paramTypes.isNotEmpty()) {
+        appendLn(indent(paramTypeLayouts, 2))
+    }
+    append(");")
 }
 
 private fun generateFunctionWrapper(
