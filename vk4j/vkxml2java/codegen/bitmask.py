@@ -25,6 +25,13 @@ def generate_bitmask(registry: Registry, bitmask: Bitmask) -> str:
     else:
         raise ValueError(f'unsupported bitwidth: {content_bitmask.bitwidth}')
 
+    if len(content_bitmask.bitflags) == 0:
+        return f'''package tech.icey.vk4j.bitmask;
+
+public final class {bitmask_name} {{
+}}
+'''
+
     return f'''package tech.icey.vk4j.bitmask;
 
 import tech.icey.panama.annotation.enumtype;

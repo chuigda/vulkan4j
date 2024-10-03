@@ -1,18 +1,18 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
-import tech.icey.panama.annotation.*;
-import tech.icey.panama.buffer.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkSampleCountFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_INFO_EXT;
 
 /// {@snippet lang=c :
 /// typedef struct VkMultisampledRenderToSingleSampledInfoEXT {
@@ -68,7 +68,7 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(MemorySegment segment) 
     public static VkMultisampledRenderToSingleSampledInfoEXT allocate(Arena arena) {
         return new VkMultisampledRenderToSingleSampledInfoEXT(arena.allocate(LAYOUT));
     }
-    
+
     public static VkMultisampledRenderToSingleSampledInfoEXT[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMultisampledRenderToSingleSampledInfoEXT[] ret = new VkMultisampledRenderToSingleSampledInfoEXT[count];

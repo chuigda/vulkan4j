@@ -1,18 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
-import tech.icey.panama.annotation.*;
-import tech.icey.panama.buffer.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.panama.buffer.ByteBuffer;
+import tech.icey.vk4j.enumtype.VkPipelineCacheHeaderVersion;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.Constants.VK_UUID_SIZE;
 
 /// {@snippet lang=c :
 /// typedef struct VkPipelineCacheHeaderVersionOne {
@@ -76,7 +75,7 @@ public record VkPipelineCacheHeaderVersionOne(MemorySegment segment) implements 
     public static VkPipelineCacheHeaderVersionOne allocate(Arena arena) {
         return new VkPipelineCacheHeaderVersionOne(arena.allocate(LAYOUT));
     }
-    
+
     public static VkPipelineCacheHeaderVersionOne[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineCacheHeaderVersionOne[] ret = new VkPipelineCacheHeaderVersionOne[count];

@@ -2,6 +2,13 @@ from ..entity import Enum
 
 
 def generate_enum(enum: Enum) -> str:
+    if len(enum.variants) == 0:
+        return f'''package tech.icey.vk4j.enumtype;
+
+public final class {enum.name} {{
+}}
+'''
+
     return f'''package tech.icey.vk4j.enumtype;
 
 import tech.icey.panama.annotation.enumtype;

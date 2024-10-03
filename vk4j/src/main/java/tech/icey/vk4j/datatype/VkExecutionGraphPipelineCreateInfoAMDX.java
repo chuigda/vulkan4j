@@ -1,18 +1,18 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
-import tech.icey.panama.buffer.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.vk4j.bitmask.VkPipelineCreateFlags;
+import tech.icey.vk4j.enumtype.VkStructureType;
+import tech.icey.vk4j.handle.VkPipeline;
+import tech.icey.vk4j.handle.VkPipelineLayout;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.PathElement;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_EXECUTION_GRAPH_PIPELINE_CREATE_INFO_AMDX;
 
 /// {@snippet lang=c :
 /// typedef struct VkExecutionGraphPipelineCreateInfoAMDX {
@@ -177,7 +177,7 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) impl
     public static VkExecutionGraphPipelineCreateInfoAMDX allocate(Arena arena) {
         return new VkExecutionGraphPipelineCreateInfoAMDX(arena.allocate(LAYOUT));
     }
-    
+
     public static VkExecutionGraphPipelineCreateInfoAMDX[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExecutionGraphPipelineCreateInfoAMDX[] ret = new VkExecutionGraphPipelineCreateInfoAMDX[count];

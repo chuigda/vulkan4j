@@ -45,7 +45,7 @@ public record {structure.name}(MemorySegment segment) implements IPointer {{
 {generate_structure_member_accessor(structure.members, member_types_lowered)}    public static {structure.name} allocate(Arena arena) {{
         return new {structure.name}(arena.allocate(LAYOUT));
     }}
-    
+
     public static {structure.name}[] allocate(Arena arena, int count) {{
         MemorySegment segment = arena.allocate(LAYOUT, count);
         {structure.name}[] ret = new {structure.name}[count];

@@ -1,18 +1,17 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
-import tech.icey.panama.annotation.*;
-import tech.icey.panama.buffer.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.bitmask.VkFormatFeatureFlags2;
 import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID;
 
 /// {@snippet lang=c :
 /// typedef struct VkAndroidHardwareBufferFormatProperties2ANDROID {
@@ -122,7 +121,7 @@ public record VkAndroidHardwareBufferFormatProperties2ANDROID(MemorySegment segm
     public static VkAndroidHardwareBufferFormatProperties2ANDROID allocate(Arena arena) {
         return new VkAndroidHardwareBufferFormatProperties2ANDROID(arena.allocate(LAYOUT));
     }
-    
+
     public static VkAndroidHardwareBufferFormatProperties2ANDROID[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAndroidHardwareBufferFormatProperties2ANDROID[] ret = new VkAndroidHardwareBufferFormatProperties2ANDROID[count];

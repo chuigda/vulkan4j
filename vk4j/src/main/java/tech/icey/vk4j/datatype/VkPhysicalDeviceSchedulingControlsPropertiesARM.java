@@ -1,18 +1,16 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
-import tech.icey.panama.annotation.*;
-import tech.icey.panama.buffer.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.vk4j.bitmask.VkPhysicalDeviceSchedulingControlsFlagsARM;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM;
 
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceSchedulingControlsPropertiesARM {
@@ -59,7 +57,7 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(MemorySegment segm
     public static VkPhysicalDeviceSchedulingControlsPropertiesARM allocate(Arena arena) {
         return new VkPhysicalDeviceSchedulingControlsPropertiesARM(arena.allocate(LAYOUT));
     }
-    
+
     public static VkPhysicalDeviceSchedulingControlsPropertiesARM[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceSchedulingControlsPropertiesARM[] ret = new VkPhysicalDeviceSchedulingControlsPropertiesARM[count];

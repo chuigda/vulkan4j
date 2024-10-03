@@ -1,18 +1,16 @@
 package tech.icey.vk4j.datatype;
 
-import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
-import tech.icey.panama.annotation.*;
-import tech.icey.panama.buffer.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
-import static tech.icey.vk4j.Constants.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.*;
+import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.pointer;
+import tech.icey.panama.annotation.unsigned;
+import tech.icey.vk4j.enumtype.VkStructureType;
+
+import java.lang.foreign.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_PROPERTIES_EXT;
 
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceDescriptorBufferPropertiesEXT {
@@ -155,7 +153,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long bufferCaptureReplayDescriptorDataSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$bufferCaptureReplayDescriptorDataSize);
         }
-    
+
         public void bufferCaptureReplayDescriptorDataSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$bufferCaptureReplayDescriptorDataSize, value);
         }
@@ -163,7 +161,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long imageCaptureReplayDescriptorDataSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$imageCaptureReplayDescriptorDataSize);
         }
-    
+
         public void imageCaptureReplayDescriptorDataSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$imageCaptureReplayDescriptorDataSize, value);
         }
@@ -171,7 +169,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long imageViewCaptureReplayDescriptorDataSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$imageViewCaptureReplayDescriptorDataSize);
         }
-    
+
         public void imageViewCaptureReplayDescriptorDataSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$imageViewCaptureReplayDescriptorDataSize, value);
         }
@@ -179,7 +177,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long samplerCaptureReplayDescriptorDataSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$samplerCaptureReplayDescriptorDataSize);
         }
-    
+
         public void samplerCaptureReplayDescriptorDataSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$samplerCaptureReplayDescriptorDataSize, value);
         }
@@ -187,7 +185,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long accelerationStructureCaptureReplayDescriptorDataSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$accelerationStructureCaptureReplayDescriptorDataSize);
         }
-    
+
         public void accelerationStructureCaptureReplayDescriptorDataSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$accelerationStructureCaptureReplayDescriptorDataSize, value);
         }
@@ -195,7 +193,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long samplerDescriptorSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$samplerDescriptorSize);
         }
-    
+
         public void samplerDescriptorSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$samplerDescriptorSize, value);
         }
@@ -203,7 +201,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long combinedImageSamplerDescriptorSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$combinedImageSamplerDescriptorSize);
         }
-    
+
         public void combinedImageSamplerDescriptorSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$combinedImageSamplerDescriptorSize, value);
         }
@@ -211,7 +209,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long sampledImageDescriptorSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$sampledImageDescriptorSize);
         }
-    
+
         public void sampledImageDescriptorSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$sampledImageDescriptorSize, value);
         }
@@ -219,7 +217,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long storageImageDescriptorSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$storageImageDescriptorSize);
         }
-    
+
         public void storageImageDescriptorSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$storageImageDescriptorSize, value);
         }
@@ -227,7 +225,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long uniformTexelBufferDescriptorSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$uniformTexelBufferDescriptorSize);
         }
-    
+
         public void uniformTexelBufferDescriptorSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$uniformTexelBufferDescriptorSize, value);
         }
@@ -235,7 +233,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long robustUniformTexelBufferDescriptorSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$robustUniformTexelBufferDescriptorSize);
         }
-    
+
         public void robustUniformTexelBufferDescriptorSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$robustUniformTexelBufferDescriptorSize, value);
         }
@@ -243,7 +241,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long storageTexelBufferDescriptorSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$storageTexelBufferDescriptorSize);
         }
-    
+
         public void storageTexelBufferDescriptorSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$storageTexelBufferDescriptorSize, value);
         }
@@ -251,7 +249,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long robustStorageTexelBufferDescriptorSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$robustStorageTexelBufferDescriptorSize);
         }
-    
+
         public void robustStorageTexelBufferDescriptorSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$robustStorageTexelBufferDescriptorSize, value);
         }
@@ -259,7 +257,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long uniformBufferDescriptorSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$uniformBufferDescriptorSize);
         }
-    
+
         public void uniformBufferDescriptorSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$uniformBufferDescriptorSize, value);
         }
@@ -267,7 +265,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long robustUniformBufferDescriptorSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$robustUniformBufferDescriptorSize);
         }
-    
+
         public void robustUniformBufferDescriptorSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$robustUniformBufferDescriptorSize, value);
         }
@@ -275,7 +273,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long storageBufferDescriptorSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$storageBufferDescriptorSize);
         }
-    
+
         public void storageBufferDescriptorSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$storageBufferDescriptorSize, value);
         }
@@ -283,7 +281,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long robustStorageBufferDescriptorSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$robustStorageBufferDescriptorSize);
         }
-    
+
         public void robustStorageBufferDescriptorSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$robustStorageBufferDescriptorSize, value);
         }
@@ -291,7 +289,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long inputAttachmentDescriptorSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$inputAttachmentDescriptorSize);
         }
-    
+
         public void inputAttachmentDescriptorSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$inputAttachmentDescriptorSize, value);
         }
@@ -299,7 +297,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public @unsigned long accelerationStructureDescriptorSize() {
             return NativeLayout.readCSizeT(segment, OFFSET$accelerationStructureDescriptorSize);
         }
-    
+
         public void accelerationStructureDescriptorSize(@unsigned long value) {
             NativeLayout.writeCSizeT(segment, OFFSET$accelerationStructureDescriptorSize, value);
         }
@@ -347,7 +345,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segmen
     public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceDescriptorBufferPropertiesEXT(arena.allocate(LAYOUT));
     }
-    
+
     public static VkPhysicalDeviceDescriptorBufferPropertiesEXT[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceDescriptorBufferPropertiesEXT[] ret = new VkPhysicalDeviceDescriptorBufferPropertiesEXT[count];
