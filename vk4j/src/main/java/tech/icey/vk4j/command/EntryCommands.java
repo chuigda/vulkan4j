@@ -4,10 +4,8 @@ import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
 import tech.icey.panama.FunctionLoader;
-import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
 import tech.icey.panama.buffer.*;
-import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
@@ -69,7 +67,7 @@ public final class EntryCommands {
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumerateInstanceVersion.html">vkEnumerateInstanceVersion</a>
     public @enumtype(VkResult.class) int vkEnumerateInstanceVersion(
-             @unsigned IntBuffer pApiVersion
+            @unsigned IntBuffer pApiVersion
     ) {
         try {
             return (int) HANDLE$vkEnumerateInstanceVersion.invokeExact(
@@ -82,7 +80,7 @@ public final class EntryCommands {
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumerateInstanceLayerProperties.html">vkEnumerateInstanceLayerProperties</a>
     public @enumtype(VkResult.class) int vkEnumerateInstanceLayerProperties(
-             @unsigned IntBuffer pPropertyCount,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkLayerProperties.class) VkLayerProperties pProperties
     ) {
         try {
@@ -97,8 +95,8 @@ public final class EntryCommands {
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumerateInstanceExtensionProperties.html">vkEnumerateInstanceExtensionProperties</a>
     public @enumtype(VkResult.class) int vkEnumerateInstanceExtensionProperties(
-            @nullable  ByteBuffer pLayerName,
-             @unsigned IntBuffer pPropertyCount,
+            @nullable ByteBuffer pLayerName,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkExtensionProperties.class) VkExtensionProperties pProperties
     ) {
         try {

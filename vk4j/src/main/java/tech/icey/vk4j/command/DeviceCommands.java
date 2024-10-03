@@ -4727,7 +4727,7 @@ public final class DeviceCommands {
     public void vkGetDeviceMemoryCommitment(
             VkDevice device,
             VkDeviceMemory memory,
-             @unsigned LongBuffer pCommittedMemoryInBytes
+            @unsigned LongBuffer pCommittedMemoryInBytes
     ) {
         try {
             HANDLE$vkGetDeviceMemoryCommitment.invokeExact(
@@ -4816,7 +4816,7 @@ public final class DeviceCommands {
     public void vkGetImageSparseMemoryRequirements(
             VkDevice device,
             VkImage image,
-             @unsigned IntBuffer pSparseMemoryRequirementCount,
+            @unsigned IntBuffer pSparseMemoryRequirementCount,
             @nullable @pointer(target=VkSparseImageMemoryRequirements.class) VkSparseImageMemoryRequirements pSparseMemoryRequirements
     ) {
         try {
@@ -5377,7 +5377,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPipelineCacheData(
             VkDevice device,
             VkPipelineCache pipelineCache,
-             PointerBuffer pDataSize,
+            PointerBuffer pDataSize,
             @pointer(comment="void*") MemorySegment pData
     ) {
         try {
@@ -5469,7 +5469,7 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkPipelineBinaryDataInfoKHR.class) VkPipelineBinaryDataInfoKHR pInfo,
             @pointer(target=VkPipelineBinaryKeyKHR.class) VkPipelineBinaryKeyKHR pPipelineBinaryKey,
-             PointerBuffer pPipelineBinaryDataSize,
+            PointerBuffer pPipelineBinaryDataSize,
             @pointer(comment="void*") MemorySegment pPipelineBinaryData
     ) {
         try {
@@ -6234,7 +6234,7 @@ public final class DeviceCommands {
             @unsigned int descriptorSetCount,
             @pointer(target=VkDescriptorSet.class) VkDescriptorSet.Buffer pDescriptorSets,
             @unsigned int dynamicOffsetCount,
-            @nullable  @unsigned IntBuffer pDynamicOffsets
+            @nullable @unsigned IntBuffer pDynamicOffsets
     ) {
         try {
             HANDLE$vkCmdBindDescriptorSets.invokeExact(
@@ -6277,7 +6277,7 @@ public final class DeviceCommands {
             @unsigned int firstBinding,
             @unsigned int bindingCount,
             @pointer(target=VkBuffer.class) VkBuffer.Buffer pBuffers,
-             @unsigned LongBuffer pOffsets
+            @unsigned LongBuffer pOffsets
     ) {
         try {
             HANDLE$vkCmdBindVertexBuffers.invokeExact(
@@ -6367,7 +6367,7 @@ public final class DeviceCommands {
             @unsigned int instanceCount,
             @unsigned int firstInstance,
             @unsigned int stride,
-            @nullable  IntBuffer pVertexOffset
+            @nullable IntBuffer pVertexOffset
     ) {
         try {
             HANDLE$vkCmdDrawMultiIndexedEXT.invokeExact(
@@ -7198,7 +7198,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetSwapchainImagesKHR(
             VkDevice device,
             VkSwapchainKHR swapchain,
-             @unsigned IntBuffer pSwapchainImageCount,
+            @unsigned IntBuffer pSwapchainImageCount,
             @nullable @pointer(target=VkImage.class) VkImage.Buffer pSwapchainImages
     ) {
         try {
@@ -7220,7 +7220,7 @@ public final class DeviceCommands {
             @unsigned long timeout,
             @nullable VkSemaphore semaphore,
             @nullable VkFence fence,
-             @unsigned IntBuffer pImageIndex
+            @unsigned IntBuffer pImageIndex
     ) {
         try {
             return (int) HANDLE$vkAcquireNextImageKHR.invokeExact(
@@ -7527,7 +7527,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetMemoryFdKHR(
             VkDevice device,
             @pointer(target=VkMemoryGetFdInfoKHR.class) VkMemoryGetFdInfoKHR pGetFdInfo,
-             IntBuffer pFd
+            IntBuffer pFd
     ) {
         try {
             return (int) HANDLE$vkGetMemoryFdKHR.invokeExact(
@@ -7563,7 +7563,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetMemoryZirconHandleFUCHSIA(
             VkDevice device,
             @pointer(target=VkMemoryGetZirconHandleInfoFUCHSIA.class) VkMemoryGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo,
-             @unsigned IntBuffer pZirconHandle
+            @unsigned IntBuffer pZirconHandle
     ) {
         try {
             return (int) HANDLE$vkGetMemoryZirconHandleFUCHSIA.invokeExact(
@@ -7699,7 +7699,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetSemaphoreFdKHR(
             VkDevice device,
             @pointer(target=VkSemaphoreGetFdInfoKHR.class) VkSemaphoreGetFdInfoKHR pGetFdInfo,
-             IntBuffer pFd
+            IntBuffer pFd
     ) {
         try {
             return (int) HANDLE$vkGetSemaphoreFdKHR.invokeExact(
@@ -7731,7 +7731,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetSemaphoreZirconHandleFUCHSIA(
             VkDevice device,
             @pointer(target=VkSemaphoreGetZirconHandleInfoFUCHSIA.class) VkSemaphoreGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo,
-             @unsigned IntBuffer pZirconHandle
+            @unsigned IntBuffer pZirconHandle
     ) {
         try {
             return (int) HANDLE$vkGetSemaphoreZirconHandleFUCHSIA.invokeExact(
@@ -7795,7 +7795,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetFenceFdKHR(
             VkDevice device,
             @pointer(target=VkFenceGetFdInfoKHR.class) VkFenceGetFdInfoKHR pGetFdInfo,
-             IntBuffer pFd
+            IntBuffer pFd
     ) {
         try {
             return (int) HANDLE$vkGetFenceFdKHR.invokeExact(
@@ -8066,7 +8066,7 @@ public final class DeviceCommands {
             VkDevice device,
             VkSwapchainKHR swapchain,
             @enumtype(VkSurfaceCounterFlagsEXT.class) int counter,
-             @unsigned LongBuffer pCounterValue
+            @unsigned LongBuffer pCounterValue
     ) {
         try {
             return (int) HANDLE$vkGetSwapchainCounterEXT.invokeExact(
@@ -8086,7 +8086,7 @@ public final class DeviceCommands {
             @unsigned int heapIndex,
             @unsigned int localDeviceIndex,
             @unsigned int remoteDeviceIndex,
-             @enumtype(VkPeerMemoryFeatureFlags.class) IntBuffer pPeerMemoryFeatures
+            @enumtype(VkPeerMemoryFeatureFlags.class) IntBuffer pPeerMemoryFeatures
     ) {
         try {
             HANDLE$vkGetDeviceGroupPeerMemoryFeatures.invokeExact(
@@ -8169,7 +8169,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetDeviceGroupSurfacePresentModesKHR(
             VkDevice device,
             VkSurfaceKHR surface,
-             @enumtype(VkDeviceGroupPresentModeFlagsKHR.class) IntBuffer pModes
+            @enumtype(VkDeviceGroupPresentModeFlagsKHR.class) IntBuffer pModes
     ) {
         try {
             return (int) HANDLE$vkGetDeviceGroupSurfacePresentModesKHR.invokeExact(
@@ -8186,7 +8186,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkAcquireNextImage2KHR(
             VkDevice device,
             @pointer(target=VkAcquireNextImageInfoKHR.class) VkAcquireNextImageInfoKHR pAcquireInfo,
-             @unsigned IntBuffer pImageIndex
+            @unsigned IntBuffer pImageIndex
     ) {
         try {
             return (int) HANDLE$vkAcquireNextImage2KHR.invokeExact(
@@ -8228,7 +8228,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDevicePresentRectanglesKHR(
             VkPhysicalDevice physicalDevice,
             VkSurfaceKHR surface,
-             @unsigned IntBuffer pRectCount,
+            @unsigned IntBuffer pRectCount,
             @nullable @pointer(target=VkRect2D.class) VkRect2D pRects
     ) {
         try {
@@ -8374,7 +8374,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPastPresentationTimingGOOGLE(
             VkDevice device,
             VkSwapchainKHR swapchain,
-             @unsigned IntBuffer pPresentationTimingCount,
+            @unsigned IntBuffer pPresentationTimingCount,
             @nullable @pointer(target=VkPastPresentationTimingGOOGLE.class) VkPastPresentationTimingGOOGLE pPresentationTimings
     ) {
         try {
@@ -8527,7 +8527,7 @@ public final class DeviceCommands {
     public void vkGetImageSparseMemoryRequirements2(
             VkDevice device,
             @pointer(target=VkImageSparseMemoryRequirementsInfo2.class) VkImageSparseMemoryRequirementsInfo2 pInfo,
-             @unsigned IntBuffer pSparseMemoryRequirementCount,
+            @unsigned IntBuffer pSparseMemoryRequirementCount,
             @nullable @pointer(target=VkSparseImageMemoryRequirements2.class) VkSparseImageMemoryRequirements2 pSparseMemoryRequirements
     ) {
         try {
@@ -8580,7 +8580,7 @@ public final class DeviceCommands {
     public void vkGetDeviceImageSparseMemoryRequirements(
             VkDevice device,
             @pointer(target=VkDeviceImageMemoryRequirements.class) VkDeviceImageMemoryRequirements pInfo,
-             @unsigned IntBuffer pSparseMemoryRequirementCount,
+            @unsigned IntBuffer pSparseMemoryRequirementCount,
             @nullable @pointer(target=VkSparseImageMemoryRequirements2.class) VkSparseImageMemoryRequirements2 pSparseMemoryRequirements
     ) {
         try {
@@ -8688,7 +8688,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetValidationCacheDataEXT(
             VkDevice device,
             VkValidationCacheEXT validationCache,
-             PointerBuffer pDataSize,
+            PointerBuffer pDataSize,
             @pointer(comment="void*") MemorySegment pData
     ) {
         try {
@@ -8745,7 +8745,7 @@ public final class DeviceCommands {
             VkPipeline pipeline,
             @enumtype(VkShaderStageFlags.class) int shaderStage,
             @enumtype(VkShaderInfoTypeAMD.class) int infoType,
-             PointerBuffer pInfoSize,
+            PointerBuffer pInfoSize,
             @pointer(comment="void*") MemorySegment pInfo
     ) {
         try {
@@ -8782,8 +8782,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceCalibrateableTimeDomainsKHR.html">vkGetPhysicalDeviceCalibrateableTimeDomainsKHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceCalibrateableTimeDomainsKHR(
             VkPhysicalDevice physicalDevice,
-             @unsigned IntBuffer pTimeDomainCount,
-            @nullable  @enumtype(VkTimeDomainKHR.class) IntBuffer pTimeDomains
+            @unsigned IntBuffer pTimeDomainCount,
+            @nullable @enumtype(VkTimeDomainKHR.class) IntBuffer pTimeDomains
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR.invokeExact(
@@ -8801,8 +8801,8 @@ public final class DeviceCommands {
             VkDevice device,
             @unsigned int timestampCount,
             @pointer(target=VkCalibratedTimestampInfoKHR.class) VkCalibratedTimestampInfoKHR pTimestampInfos,
-             @unsigned LongBuffer pTimestamps,
-             @unsigned LongBuffer pMaxDeviation
+            @unsigned LongBuffer pTimestamps,
+            @unsigned LongBuffer pMaxDeviation
     ) {
         try {
             return (int) HANDLE$vkGetCalibratedTimestampsKHR.invokeExact(
@@ -8929,7 +8929,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetSemaphoreCounterValue(
             VkDevice device,
             VkSemaphore semaphore,
-             @unsigned LongBuffer pValue
+            @unsigned LongBuffer pValue
     ) {
         try {
             return (int) HANDLE$vkGetSemaphoreCounterValue.invokeExact(
@@ -9076,7 +9076,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetQueueCheckpointDataNV.html">vkGetQueueCheckpointDataNV</a>
     public void vkGetQueueCheckpointDataNV(
             VkQueue queue,
-             @unsigned IntBuffer pCheckpointDataCount,
+            @unsigned IntBuffer pCheckpointDataCount,
             @nullable @pointer(target=VkCheckpointDataNV.class) VkCheckpointDataNV pCheckpointData
     ) {
         try {
@@ -9096,8 +9096,8 @@ public final class DeviceCommands {
             @unsigned int firstBinding,
             @unsigned int bindingCount,
             @pointer(target=VkBuffer.class) VkBuffer.Buffer pBuffers,
-             @unsigned LongBuffer pOffsets,
-            @nullable  @unsigned LongBuffer pSizes
+            @unsigned LongBuffer pOffsets,
+            @nullable @unsigned LongBuffer pSizes
     ) {
         try {
             HANDLE$vkCmdBindTransformFeedbackBuffersEXT.invokeExact(
@@ -9119,7 +9119,7 @@ public final class DeviceCommands {
             @unsigned int firstCounterBuffer,
             @unsigned int counterBufferCount,
             @nullable @pointer(target=VkBuffer.class) VkBuffer.Buffer pCounterBuffers,
-            @nullable  @unsigned LongBuffer pCounterBufferOffsets
+            @nullable @unsigned LongBuffer pCounterBufferOffsets
     ) {
         try {
             HANDLE$vkCmdBeginTransformFeedbackEXT.invokeExact(
@@ -9140,7 +9140,7 @@ public final class DeviceCommands {
             @unsigned int firstCounterBuffer,
             @unsigned int counterBufferCount,
             @nullable @pointer(target=VkBuffer.class) VkBuffer.Buffer pCounterBuffers,
-            @nullable  @unsigned LongBuffer pCounterBufferOffsets
+            @nullable @unsigned LongBuffer pCounterBufferOffsets
     ) {
         try {
             HANDLE$vkCmdEndTransformFeedbackEXT.invokeExact(
@@ -9244,7 +9244,7 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int firstExclusiveScissor,
             @unsigned int exclusiveScissorCount,
-             @unsigned IntBuffer pExclusiveScissorEnables
+            @unsigned IntBuffer pExclusiveScissorEnables
     ) {
         try {
             HANDLE$vkCmdSetExclusiveScissorEnableNV.invokeExact(
@@ -9961,7 +9961,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceCooperativeMatrixPropertiesNV.html">vkGetPhysicalDeviceCooperativeMatrixPropertiesNV</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(
             VkPhysicalDevice physicalDevice,
-             @unsigned IntBuffer pPropertyCount,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkCooperativeMatrixPropertiesNV.class) VkCooperativeMatrixPropertiesNV pProperties
     ) {
         try {
@@ -10017,7 +10017,7 @@ public final class DeviceCommands {
     public void vkGetDeviceAccelerationStructureCompatibilityKHR(
             VkDevice device,
             @pointer(target=VkAccelerationStructureVersionInfoKHR.class) VkAccelerationStructureVersionInfoKHR pVersionInfo,
-             @enumtype(VkAccelerationStructureCompatibilityKHR.class) IntBuffer pCompatibility
+            @enumtype(VkAccelerationStructureCompatibilityKHR.class) IntBuffer pCompatibility
     ) {
         try {
             HANDLE$vkGetDeviceAccelerationStructureCompatibilityKHR.invokeExact(
@@ -10100,8 +10100,8 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfacePresentModes2EXT(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceSurfaceInfo2KHR.class) VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo,
-             @unsigned IntBuffer pPresentModeCount,
-            @nullable  @enumtype(VkPresentModeKHR.class) IntBuffer pPresentModes
+            @unsigned IntBuffer pPresentModeCount,
+            @nullable @enumtype(VkPresentModeKHR.class) IntBuffer pPresentModes
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfacePresentModes2EXT.invokeExact(
@@ -10119,7 +10119,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetDeviceGroupSurfacePresentModes2EXT(
             VkDevice device,
             @pointer(target=VkPhysicalDeviceSurfaceInfo2KHR.class) VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo,
-             @enumtype(VkDeviceGroupPresentModeFlagsKHR.class) IntBuffer pModes
+            @enumtype(VkDeviceGroupPresentModeFlagsKHR.class) IntBuffer pModes
     ) {
         try {
             return (int) HANDLE$vkGetDeviceGroupSurfacePresentModes2EXT.invokeExact(
@@ -10166,7 +10166,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(
             VkPhysicalDevice physicalDevice,
             @unsigned int queueFamilyIndex,
-             @unsigned IntBuffer pCounterCount,
+            @unsigned IntBuffer pCounterCount,
             @nullable @pointer(target=VkPerformanceCounterKHR.class) VkPerformanceCounterKHR pCounters,
             @nullable @pointer(target=VkPerformanceCounterDescriptionKHR.class) VkPerformanceCounterDescriptionKHR pCounterDescriptions
     ) {
@@ -10187,7 +10187,7 @@ public final class DeviceCommands {
     public void vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkQueryPoolPerformanceCreateInfoKHR.class) VkQueryPoolPerformanceCreateInfoKHR pPerformanceQueryCreateInfo,
-             @unsigned IntBuffer pNumPasses
+            @unsigned IntBuffer pNumPasses
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR.invokeExact(
@@ -10278,7 +10278,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV.html">vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(
             VkPhysicalDevice physicalDevice,
-             @unsigned IntBuffer pCombinationCount,
+            @unsigned IntBuffer pCombinationCount,
             @nullable @pointer(target=VkFramebufferMixedSamplesCombinationNV.class) VkFramebufferMixedSamplesCombinationNV pCombinations
     ) {
         try {
@@ -10448,7 +10448,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPipelineExecutablePropertiesKHR(
             VkDevice device,
             @pointer(target=VkPipelineInfoKHR.class) VkPipelineInfoKHR pPipelineInfo,
-             @unsigned IntBuffer pExecutableCount,
+            @unsigned IntBuffer pExecutableCount,
             @nullable @pointer(target=VkPipelineExecutablePropertiesKHR.class) VkPipelineExecutablePropertiesKHR pProperties
     ) {
         try {
@@ -10467,7 +10467,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPipelineExecutableStatisticsKHR(
             VkDevice device,
             @pointer(target=VkPipelineExecutableInfoKHR.class) VkPipelineExecutableInfoKHR pExecutableInfo,
-             @unsigned IntBuffer pStatisticCount,
+            @unsigned IntBuffer pStatisticCount,
             @nullable @pointer(target=VkPipelineExecutableStatisticKHR.class) VkPipelineExecutableStatisticKHR pStatistics
     ) {
         try {
@@ -10486,7 +10486,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPipelineExecutableInternalRepresentationsKHR(
             VkDevice device,
             @pointer(target=VkPipelineExecutableInfoKHR.class) VkPipelineExecutableInfoKHR pExecutableInfo,
-             @unsigned IntBuffer pInternalRepresentationCount,
+            @unsigned IntBuffer pInternalRepresentationCount,
             @nullable @pointer(target=VkPipelineExecutableInternalRepresentationKHR.class) VkPipelineExecutableInternalRepresentationKHR pInternalRepresentations
     ) {
         try {
@@ -10561,8 +10561,8 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int infoCount,
             @pointer(target=VkAccelerationStructureBuildGeometryInfoKHR.class) VkAccelerationStructureBuildGeometryInfoKHR pInfos,
-             @unsigned LongBuffer pIndirectDeviceAddresses,
-             @unsigned IntBuffer pIndirectStrides,
+            @unsigned LongBuffer pIndirectDeviceAddresses,
+            @unsigned IntBuffer pIndirectStrides,
             @pointer(comment="uint32_t const**") MemorySegment ppMaxPrimitiveCounts
     ) {
         try {
@@ -10847,9 +10847,9 @@ public final class DeviceCommands {
             @unsigned int firstBinding,
             @unsigned int bindingCount,
             @pointer(target=VkBuffer.class) VkBuffer.Buffer pBuffers,
-             @unsigned LongBuffer pOffsets,
-            @nullable  @unsigned LongBuffer pSizes,
-            @nullable  @unsigned LongBuffer pStrides
+            @unsigned LongBuffer pOffsets,
+            @nullable @unsigned LongBuffer pSizes,
+            @nullable @unsigned LongBuffer pStrides
     ) {
         try {
             HANDLE$vkCmdBindVertexBuffers2.invokeExact(
@@ -11103,7 +11103,7 @@ public final class DeviceCommands {
     public void vkCmdSetSampleMaskEXT(
             VkCommandBuffer commandBuffer,
             @enumtype(VkSampleCountFlags.class) int samples,
-             @unsigned IntBuffer pSampleMask
+            @unsigned IntBuffer pSampleMask
     ) {
         try {
             HANDLE$vkCmdSetSampleMaskEXT.invokeExact(
@@ -11166,7 +11166,7 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int firstAttachment,
             @unsigned int attachmentCount,
-             @unsigned IntBuffer pColorBlendEnables
+            @unsigned IntBuffer pColorBlendEnables
     ) {
         try {
             HANDLE$vkCmdSetColorBlendEnableEXT.invokeExact(
@@ -11204,7 +11204,7 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int firstAttachment,
             @unsigned int attachmentCount,
-             @enumtype(VkColorComponentFlags.class) IntBuffer pColorWriteMasks
+            @enumtype(VkColorComponentFlags.class) IntBuffer pColorWriteMasks
     ) {
         try {
             HANDLE$vkCmdSetColorWriteMaskEXT.invokeExact(
@@ -11470,7 +11470,7 @@ public final class DeviceCommands {
     public void vkCmdSetCoverageModulationTableNV(
             VkCommandBuffer commandBuffer,
             @unsigned int coverageModulationTableCount,
-             FloatBuffer pCoverageModulationTable
+            FloatBuffer pCoverageModulationTable
     ) {
         try {
             HANDLE$vkCmdSetCoverageModulationTableNV.invokeExact(
@@ -11591,7 +11591,7 @@ public final class DeviceCommands {
             @enumtype(VkObjectType.class) int objectType,
             @unsigned long objectHandle,
             VkPrivateDataSlot privateDataSlot,
-             @unsigned LongBuffer pData
+            @unsigned LongBuffer pData
     ) {
         try {
             HANDLE$vkGetPrivateData.invokeExact(
@@ -11714,8 +11714,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceRefreshableObjectTypesKHR.html">vkGetPhysicalDeviceRefreshableObjectTypesKHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceRefreshableObjectTypesKHR(
             VkPhysicalDevice physicalDevice,
-             @unsigned IntBuffer pRefreshableObjectTypeCount,
-            @nullable  @enumtype(VkObjectType.class) IntBuffer pRefreshableObjectTypes
+            @unsigned IntBuffer pRefreshableObjectTypeCount,
+            @nullable @enumtype(VkObjectType.class) IntBuffer pRefreshableObjectTypes
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceRefreshableObjectTypesKHR.invokeExact(
@@ -11748,7 +11748,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceFragmentShadingRatesKHR.html">vkGetPhysicalDeviceFragmentShadingRatesKHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceFragmentShadingRatesKHR(
             VkPhysicalDevice physicalDevice,
-             @unsigned IntBuffer pFragmentShadingRateCount,
+            @unsigned IntBuffer pFragmentShadingRateCount,
             @nullable @pointer(target=VkPhysicalDeviceFragmentShadingRateKHR.class) VkPhysicalDeviceFragmentShadingRateKHR pFragmentShadingRates
     ) {
         try {
@@ -11784,7 +11784,7 @@ public final class DeviceCommands {
             VkDevice device,
             @enumtype(VkAccelerationStructureBuildTypeKHR.class) int buildType,
             @pointer(target=VkAccelerationStructureBuildGeometryInfoKHR.class) VkAccelerationStructureBuildGeometryInfoKHR pBuildInfo,
-            @nullable  @unsigned IntBuffer pMaxPrimitiveCounts,
+            @nullable @unsigned IntBuffer pMaxPrimitiveCounts,
             @pointer(target=VkAccelerationStructureBuildSizesInfoKHR.class) VkAccelerationStructureBuildSizesInfoKHR pSizeInfo
     ) {
         try {
@@ -11825,7 +11825,7 @@ public final class DeviceCommands {
     public void vkCmdSetColorWriteEnableEXT(
             VkCommandBuffer commandBuffer,
             @unsigned int attachmentCount,
-             @unsigned IntBuffer pColorWriteEnables
+            @unsigned IntBuffer pColorWriteEnables
     ) {
         try {
             HANDLE$vkCmdSetColorWriteEnableEXT.invokeExact(
@@ -11968,7 +11968,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetQueueCheckpointData2NV.html">vkGetQueueCheckpointData2NV</a>
     public void vkGetQueueCheckpointData2NV(
             VkQueue queue,
-             @unsigned IntBuffer pCheckpointDataCount,
+            @unsigned IntBuffer pCheckpointDataCount,
             @nullable @pointer(target=VkCheckpointData2NV.class) VkCheckpointData2NV pCheckpointData
     ) {
         try {
@@ -12171,7 +12171,7 @@ public final class DeviceCommands {
     public void vkGetDescriptorSetLayoutSizeEXT(
             VkDevice device,
             VkDescriptorSetLayout layout,
-             @unsigned LongBuffer pLayoutSizeInBytes
+            @unsigned LongBuffer pLayoutSizeInBytes
     ) {
         try {
             HANDLE$vkGetDescriptorSetLayoutSizeEXT.invokeExact(
@@ -12189,7 +12189,7 @@ public final class DeviceCommands {
             VkDevice device,
             VkDescriptorSetLayout layout,
             @unsigned int binding,
-             @unsigned LongBuffer pOffset
+            @unsigned LongBuffer pOffset
     ) {
         try {
             HANDLE$vkGetDescriptorSetLayoutBindingOffsetEXT.invokeExact(
@@ -12246,8 +12246,8 @@ public final class DeviceCommands {
             VkPipelineLayout layout,
             @unsigned int firstSet,
             @unsigned int setCount,
-             @unsigned IntBuffer pBufferIndices,
-             @unsigned LongBuffer pOffsets
+            @unsigned IntBuffer pBufferIndices,
+            @unsigned LongBuffer pOffsets
     ) {
         try {
             HANDLE$vkCmdSetDescriptorBufferOffsetsEXT.invokeExact(
@@ -12514,7 +12514,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetCudaModuleCacheNV(
             VkDevice device,
             VkCudaModuleNV module,
-             PointerBuffer pCacheSize,
+            PointerBuffer pCacheSize,
             @pointer(comment="void*") MemorySegment pCacheData
     ) {
         try {
@@ -12879,7 +12879,7 @@ public final class DeviceCommands {
     public void vkGetDeviceMicromapCompatibilityEXT(
             VkDevice device,
             @pointer(target=VkMicromapVersionInfoEXT.class) VkMicromapVersionInfoEXT pVersionInfo,
-             @enumtype(VkAccelerationStructureCompatibilityKHR.class) IntBuffer pCompatibility
+            @enumtype(VkAccelerationStructureCompatibilityKHR.class) IntBuffer pCompatibility
     ) {
         try {
             HANDLE$vkGetDeviceMicromapCompatibilityEXT.invokeExact(
@@ -13000,7 +13000,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetFramebufferTilePropertiesQCOM(
             VkDevice device,
             VkFramebuffer framebuffer,
-             @unsigned IntBuffer pPropertiesCount,
+            @unsigned IntBuffer pPropertiesCount,
             @nullable @pointer(target=VkTilePropertiesQCOM.class) VkTilePropertiesQCOM pProperties
     ) {
         try {
@@ -13036,7 +13036,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceOpticalFlowImageFormatsNV(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkOpticalFlowImageFormatInfoNV.class) VkOpticalFlowImageFormatInfoNV pOpticalFlowImageFormatInfo,
-             @unsigned IntBuffer pFormatCount,
+            @unsigned IntBuffer pFormatCount,
             @nullable @pointer(target=VkOpticalFlowImageFormatPropertiesNV.class) VkOpticalFlowImageFormatPropertiesNV pImageFormatProperties
     ) {
         try {
@@ -13263,7 +13263,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetShaderBinaryDataEXT(
             VkDevice device,
             VkShaderEXT shader,
-             PointerBuffer pDataSize,
+            PointerBuffer pDataSize,
             @pointer(comment="void*") MemorySegment pData
     ) {
         try {
@@ -13282,7 +13282,7 @@ public final class DeviceCommands {
     public void vkCmdBindShadersEXT(
             VkCommandBuffer commandBuffer,
             @unsigned int stageCount,
-             @enumtype(VkShaderStageFlags.class) IntBuffer pStages,
+            @enumtype(VkShaderStageFlags.class) IntBuffer pStages,
             @nullable @pointer(target=VkShaderEXT.class) VkShaderEXT.Buffer pShaders
     ) {
         try {
@@ -13317,7 +13317,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR.html">vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(
             VkPhysicalDevice physicalDevice,
-             @unsigned IntBuffer pPropertyCount,
+            @unsigned IntBuffer pPropertyCount,
             @nullable @pointer(target=VkCooperativeMatrixPropertiesKHR.class) VkCooperativeMatrixPropertiesKHR pProperties
     ) {
         try {
@@ -13353,7 +13353,7 @@ public final class DeviceCommands {
             VkDevice device,
             VkPipeline executionGraph,
             @pointer(target=VkPipelineShaderStageNodeCreateInfoAMDX.class) VkPipelineShaderStageNodeCreateInfoAMDX pNodeInfo,
-             @unsigned IntBuffer pNodeIndex
+            @unsigned IntBuffer pNodeIndex
     ) {
         try {
             return (int) HANDLE$vkGetExecutionGraphPipelineNodeIndexAMDX.invokeExact(

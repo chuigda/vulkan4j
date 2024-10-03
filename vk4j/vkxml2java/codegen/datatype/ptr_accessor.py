@@ -110,7 +110,7 @@ def generate_p_enum_type_accessor(pointee_type: CEnumType, member: Member) -> st
         if (s.address() == 0) {{
             return null;
         }}
-        
+
         return new {int_type.vk4j_ptr_type_no_sign()}(s);
     }}
 

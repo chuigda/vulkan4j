@@ -4,12 +4,8 @@ import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
 import tech.icey.panama.FunctionLoader;
-import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
 import tech.icey.panama.buffer.*;
-import tech.icey.vk4j.bitmask.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;
 
 public final class StaticCommands {
@@ -36,7 +32,7 @@ public final class StaticCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDeviceProcAddr.html">vkGetDeviceProcAddr</a>
     public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetDeviceProcAddr(
             VkDevice device,
-             ByteBuffer pName
+            ByteBuffer pName
     ) {
         try {
             return (MemorySegment) HANDLE$vkGetDeviceProcAddr.invokeExact(
@@ -51,7 +47,7 @@ public final class StaticCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetInstanceProcAddr.html">vkGetInstanceProcAddr</a>
     public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetInstanceProcAddr(
             @nullable VkInstance instance,
-             ByteBuffer pName
+            ByteBuffer pName
     ) {
         try {
             return (MemorySegment) HANDLE$vkGetInstanceProcAddr.invokeExact(

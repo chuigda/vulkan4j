@@ -12,8 +12,8 @@
     <properties>
         <revision>0.1.0</revision>
         <panama-plus.revision>0.1.0</panama-plus.revision>
-        <vk4j.revision>0.1.0-vk1.3</vk4j.revision>
-        <glfw.revision>0.1.0-glfw3.4</glfw.revision>
+        <vk4j.revision>0.1.0</vk4j.revision>
+        <glfw.revision>0.1.0</glfw.revision>
         <maven.compiler.release>22</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

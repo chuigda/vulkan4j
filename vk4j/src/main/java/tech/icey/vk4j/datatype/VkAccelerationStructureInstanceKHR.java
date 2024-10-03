@@ -48,7 +48,7 @@ public record VkAccelerationStructureInstanceKHR(MemorySegment segment) implemen
 
     public void mask(int value) {
         int original = segment.get(LAYOUT$bitfield$instanceCustomIndex_mask, OFFSET$bitfield$instanceCustomIndex_mask);
-        int newValue = (original & 0xFF00) | value;
+        int newValue = (original & 0xFFFFFF00) | value;
         segment.set(LAYOUT$bitfield$instanceCustomIndex_mask, OFFSET$bitfield$instanceCustomIndex_mask, newValue);
     }
 
@@ -68,7 +68,7 @@ public record VkAccelerationStructureInstanceKHR(MemorySegment segment) implemen
 
     public void flags(int value) {
         int original = segment.get(LAYOUT$bitfield$instanceShaderBindingTableRecordOffset_flags, OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags);
-        int newValue = (original & 0xFF00) | value;
+        int newValue = (original & 0xFFFFFF00) | value;
         segment.set(LAYOUT$bitfield$instanceShaderBindingTableRecordOffset_flags, OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags, newValue);
     }
 
