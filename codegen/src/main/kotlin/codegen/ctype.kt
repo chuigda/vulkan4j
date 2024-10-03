@@ -224,6 +224,11 @@ private val knownTypes = mapOf(
 
     // For non-vulkan functions to properly interact with types
     "VkInstance" to CHandleType("VkInstance"),
+    "VkPhysicalDevice" to CHandleType("VkPhysicalDevice"),
+    "VkSurfaceKHR" to CHandleType("VkSurfaceKHR"),
+    "VkAllocationCallbacks" to CStructType("VkAllocationCallbacks"),
+    "VkResult" to int32Type,
+    "PFN_vkGetInstanceProcAddr" to CPointerType(voidType, false, comment="PFN_vkGetInstanceProcAddr"),
 
     // Android
     "ANativeWindow" to pvoidType,
@@ -244,6 +249,7 @@ private val knownTypes = mapOf(
     "MTLDevice_id" to pvoidType,
     "MTLSharedEvent_id" to pvoidType,
     "MTLTexture_id" to pvoidType,
+    "CGDirectDisplayID" to uint32Type,
 
     // QNX
     "_screen_buffer" to pvoidType,
@@ -253,6 +259,7 @@ private val knownTypes = mapOf(
     // Wayland
     "wl_display" to pvoidType,
     "wl_surface" to pvoidType,
+    "wl_output" to voidType,
 
     // Windows
     "DWORD" to uint32Type,
@@ -262,16 +269,28 @@ private val knownTypes = mapOf(
     "HWND" to pvoidType,
     "LPCWSTR" to CPointerType(uint16Type, true, null),
     "SECURITY_ATTRIBUTES" to voidType,
+    "HGLRC" to pvoidType,
 
     // X11
     "Display" to pvoidType,
     "RROutput" to cLongType,
+    "RRCrtc" to cLongType,
     "VisualID" to cLongType,
     "Window" to cLongType,
+    "GLXContext" to pvoidType,
+    "GLXWindow" to cLongType,
     "xcb_connection_t" to voidType,
     "xcb_visualid_t" to uint32Type,
     "xcb_window_t" to uint32Type,
     "xcb_handle_t" to uint32Type,
+
+    // EGL
+    "EGLDisplay" to pvoidType,
+    "EGLContext" to pvoidType,
+    "EGLSurface" to pvoidType,
+
+    // MESA
+    "OSMesaContext" to pvoidType,
 
     // NvSciBuf / NvSciSync
     "NvSciBufAttrList" to pvoidType,

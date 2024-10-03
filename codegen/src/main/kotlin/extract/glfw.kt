@@ -162,7 +162,7 @@ private fun parseCDecl(line: String): Function {
             }
         }
 
-        params.add(Param(paramName, type=paramType))
+        params.add(Param(paramName, type=paramType, optional=true))
         if (tokens[position] == ",") {
             position++
         }
