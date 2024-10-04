@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>vk4j</artifactId>
-    <version>${vk4j.revision}</version>
+    <version>${revision}</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -22,7 +22,7 @@
         <dependency>
             <groupId>tech.icey</groupId>
             <artifactId>panama-plus</artifactId>
-            <version>${panama-plus.revision}</version>
+            <version>${revision}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

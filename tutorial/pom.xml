@@ -30,19 +30,19 @@
         <dependency>
             <groupId>tech.icey</groupId>
             <artifactId>panama-plus</artifactId>
-            <version>${panama-plus.revision}</version>
+            <version>${revision}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>tech.icey</groupId>
             <artifactId>vk4j</artifactId>
-            <version>${vk4j.revision}</version>
+            <version>${revision}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>tech.icey</groupId>
             <artifactId>glfw</artifactId>
-            <version>${glfw.revision}</version>
+            <version>${revision}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

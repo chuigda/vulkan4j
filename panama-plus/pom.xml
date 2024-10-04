@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>panama-plus</artifactId>
-    <version>${panama-plus.revision}</version>
+    <version>0.1.0</version>
     <packaging>jar</packaging>
 
     <properties>
