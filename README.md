@@ -1,10 +1,10 @@
 # vulkan4j
-[Vulkan](https://www.vulkan.org/) Binding for Java using [Project-Panama](https://openjdk.org/projects/panama/) `java.lang.foreign` APIs.
+[Vulkan](https://www.vulkan.org/) Binding for Java using [Project Panama](https://openjdk.org/projects/panama/) `java.lang.foreign` APIs.
 
 *Heavily inspired by the [`vulkanalia`](https://github.com/KyleMayes/vulkanalia) crate.*
 
 ## Features
-- Project-Panama `java.lang.foreign` APIs
+- Project Panama `java.lang.foreign` APIs
 - Clean Vulkan API bindings generated from `vk.xml`
 - Does not require extra native libraries to work
 - Platform-agnostic

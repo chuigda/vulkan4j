@@ -124,7 +124,7 @@ Vulkan API 是用 C 语言定义的。Vulkan API 的规范 —— Vulkan API 注
 
 只有这些函数签名还不足以调用 Vulkan 函数，我们必须先加载这些类型所描述的函数。Vulkan 规范针对这个问题有一个[详细的描述](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization-functionpointers)，但是在这里我会给出一个简化的版本。
 
-第一个要加载的函数是 `vkGetInstanceProcAddr`，我们可以使用 Project-Panama 的 API `NativeLinker` 和 `SymbolLookup` 来加载它。`vulkan4j` 针对这些 API 的加载提供了一个轻量级封装，使得加载过程变得更容易。
+第一个要加载的函数是 `vkGetInstanceProcAddr`，我们可以使用 Project Panama 的 API `NativeLinker` 和 `SymbolLookup` 来加载它。`vulkan4j` 针对这些 API 的加载提供了一个轻量级封装，使得加载过程变得更容易。
 
 然而，取决于系统上的 Vulkan 实现，可能会有多个版本的 Vulkan 函数可用。例如，如果你的系统上有一个独立的 NVIDIA GPU 和一个集成的 Intel GPU，那么可能会有针对每个设备的专用 Vulkan 函数的不同实现，例如 `allocate_memory`。在这种情况下，`vkGetInstanceProcAddr` 会返回一个函数，这个函数会根据使用的设备来分派调用到正确的设备特定函数。
 

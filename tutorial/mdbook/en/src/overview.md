@@ -124,7 +124,7 @@ The types for raw Vulkan commands like `vkCreateInstance` are defined in `vulkan
 
 These function descriptors are not enough on their own to call Vulkan commands, we first need to load the commands described by these types. The Vulkan specification has a [detailed description](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization-functionpointers) of how this is done, but I will present a simplified version here.
 
-The first Vulkan command to load is `vkGetInstanceProcAddr`. We can load it with Java `NativeLinker` and `SymbolLookup` which are part of Project-Panama APIs. `vulkan4j` provided a light-weight encapsulation of these APIs, making command loading much easier.
+The first Vulkan command to load is `vkGetInstanceProcAddr`. We can load it with Java `NativeLinker` and `SymbolLookup` which are part of Project Panama APIs. `vulkan4j` provided a light-weight encapsulation of these APIs, making command loading much easier.
 
 However, there may be multiple versions of Vulkan commands available depending on the Vulkan implementations on your system. For example, if your system has both a dedicated NVIDIA GPU and an integrated Intel GPU, there may be separate implementations of device-specific Vulkan commands like `allocate_memory` for each device. In cases like this, `vkGetInstanceProcAddr` will return a command that will dispatch calls to the appropriate device-specific command depending on the device in use.
 
