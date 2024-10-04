@@ -48,8 +48,8 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkSubmitFlags.class) int flags() {
@@ -96,8 +96,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
     }
 
     public void pWaitSemaphoreInfos(@nullable VkSemaphoreSubmitInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pWaitSemaphoreInfosRaw(s);
+        pWaitSemaphoreInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int commandBufferInfoCount() {
@@ -136,8 +135,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
     }
 
     public void pCommandBufferInfos(@nullable VkCommandBufferSubmitInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pCommandBufferInfosRaw(s);
+        pCommandBufferInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int signalSemaphoreInfoCount() {
@@ -176,8 +174,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
     }
 
     public void pSignalSemaphoreInfos(@nullable VkSemaphoreSubmitInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSignalSemaphoreInfosRaw(s);
+        pSignalSemaphoreInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkSubmitInfo2 allocate(Arena arena) {

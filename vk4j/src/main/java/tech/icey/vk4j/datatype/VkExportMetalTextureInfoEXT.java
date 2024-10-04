@@ -51,8 +51,8 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @nullable VkImage image() {
@@ -119,8 +119,8 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$mtlTexture, OFFSET$mtlTexture, value);
     }
 
-    public void mtlTexture(IPointer pointer) {
-        mtlTexture(pointer.segment());
+    public void mtlTexture(@nullable IPointer pointer) {
+        mtlTexture(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkExportMetalTextureInfoEXT allocate(Arena arena) {

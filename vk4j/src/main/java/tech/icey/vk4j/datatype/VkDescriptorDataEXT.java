@@ -55,8 +55,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pSampler(@nullable VkSampler.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSamplerRaw(s);
+        pSamplerRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkDescriptorImageInfo*") MemorySegment pCombinedImageSamplerRaw() {
@@ -87,8 +86,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pCombinedImageSampler(@nullable VkDescriptorImageInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pCombinedImageSamplerRaw(s);
+        pCombinedImageSamplerRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkDescriptorImageInfo*") MemorySegment pInputAttachmentImageRaw() {
@@ -119,8 +117,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pInputAttachmentImage(@nullable VkDescriptorImageInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pInputAttachmentImageRaw(s);
+        pInputAttachmentImageRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkDescriptorImageInfo*") MemorySegment pSampledImageRaw() {
@@ -151,8 +148,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pSampledImage(@nullable VkDescriptorImageInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSampledImageRaw(s);
+        pSampledImageRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkDescriptorImageInfo*") MemorySegment pStorageImageRaw() {
@@ -183,8 +179,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pStorageImage(@nullable VkDescriptorImageInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStorageImageRaw(s);
+        pStorageImageRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment pUniformTexelBufferRaw() {
@@ -215,8 +210,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pUniformTexelBuffer(@nullable VkDescriptorAddressInfoEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pUniformTexelBufferRaw(s);
+        pUniformTexelBufferRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment pStorageTexelBufferRaw() {
@@ -247,8 +241,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pStorageTexelBuffer(@nullable VkDescriptorAddressInfoEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStorageTexelBufferRaw(s);
+        pStorageTexelBufferRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment pUniformBufferRaw() {
@@ -279,8 +272,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pUniformBuffer(@nullable VkDescriptorAddressInfoEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pUniformBufferRaw(s);
+        pUniformBufferRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment pStorageBufferRaw() {
@@ -311,8 +303,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pStorageBuffer(@nullable VkDescriptorAddressInfoEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStorageBufferRaw(s);
+        pStorageBufferRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned long accelerationStructure() {

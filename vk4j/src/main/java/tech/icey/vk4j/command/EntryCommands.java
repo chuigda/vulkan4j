@@ -4,8 +4,10 @@ import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
 import tech.icey.panama.FunctionLoader;
+import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
 import tech.icey.panama.buffer.*;
+import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.handle.*;

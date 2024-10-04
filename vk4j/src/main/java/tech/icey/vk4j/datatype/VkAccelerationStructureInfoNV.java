@@ -47,8 +47,8 @@ public record VkAccelerationStructureInfoNV(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkAccelerationStructureTypeKHR.class) int type() {
@@ -111,8 +111,7 @@ public record VkAccelerationStructureInfoNV(MemorySegment segment) implements IP
     }
 
     public void pGeometries(@nullable VkGeometryNV value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pGeometriesRaw(s);
+        pGeometriesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkAccelerationStructureInfoNV allocate(Arena arena) {

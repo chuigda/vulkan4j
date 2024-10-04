@@ -43,8 +43,8 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int viewportScissor2D() {
@@ -91,8 +91,7 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
     }
 
     public void pViewportDepths(@nullable VkViewport value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pViewportDepthsRaw(s);
+        pViewportDepthsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkCommandBufferInheritanceViewportScissorInfoNV allocate(Arena arena) {

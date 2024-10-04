@@ -54,8 +54,8 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkSubpassDescriptionFlags.class) int flags() {
@@ -118,8 +118,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
     }
 
     public void pInputAttachments(@nullable VkAttachmentReference2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pInputAttachmentsRaw(s);
+        pInputAttachmentsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int colorAttachmentCount() {
@@ -158,8 +157,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
     }
 
     public void pColorAttachments(@nullable VkAttachmentReference2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pColorAttachmentsRaw(s);
+        pColorAttachmentsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkAttachmentReference2*") MemorySegment pResolveAttachmentsRaw() {
@@ -190,8 +188,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
     }
 
     public void pResolveAttachments(@nullable VkAttachmentReference2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pResolveAttachmentsRaw(s);
+        pResolveAttachmentsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkAttachmentReference2*") MemorySegment pDepthStencilAttachmentRaw() {
@@ -222,8 +219,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
     }
 
     public void pDepthStencilAttachment(@nullable VkAttachmentReference2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDepthStencilAttachmentRaw(s);
+        pDepthStencilAttachmentRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int preserveAttachmentCount() {

@@ -2,6 +2,7 @@ package tech.icey.vk4j.datatype;
 
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.panama.annotation.unsigned;
 
@@ -37,8 +38,8 @@ public record VkPipelineBinaryDataKHR(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 
-    public void pData(IPointer pointer) {
-        pData(pointer.segment());
+    public void pData(@nullable IPointer pointer) {
+        pData(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkPipelineBinaryDataKHR allocate(Arena arena) {

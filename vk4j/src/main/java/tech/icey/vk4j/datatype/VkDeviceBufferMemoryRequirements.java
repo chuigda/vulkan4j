@@ -44,8 +44,8 @@ public record VkDeviceBufferMemoryRequirements(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @pointer(comment="VkBufferCreateInfo*") MemorySegment pCreateInfoRaw() {
@@ -76,8 +76,7 @@ public record VkDeviceBufferMemoryRequirements(MemorySegment segment) implements
     }
 
     public void pCreateInfo(@nullable VkBufferCreateInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pCreateInfoRaw(s);
+        pCreateInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkDeviceBufferMemoryRequirements allocate(Arena arena) {

@@ -53,8 +53,8 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int waitSemaphoreCount() {
@@ -87,8 +87,7 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
     }
 
     public void pWaitSemaphores(@nullable VkSemaphore.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pWaitSemaphoresRaw(s);
+        pWaitSemaphoresRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int swapchainCount() {
@@ -121,8 +120,7 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
     }
 
     public void pSwapchains(@nullable VkSwapchainKHR.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSwapchainsRaw(s);
+        pSwapchainsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="uint32_t*") MemorySegment pImageIndicesRaw() {

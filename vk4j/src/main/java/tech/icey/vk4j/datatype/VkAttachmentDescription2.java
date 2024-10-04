@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.vk4j.bitmask.VkAttachmentDescriptionFlags;
 import tech.icey.vk4j.bitmask.VkSampleCountFlags;
@@ -52,8 +53,8 @@ public record VkAttachmentDescription2(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkAttachmentDescriptionFlags.class) int flags() {

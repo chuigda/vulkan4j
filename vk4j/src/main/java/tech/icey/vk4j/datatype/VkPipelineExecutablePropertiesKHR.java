@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.panama.annotation.unsigned;
 import tech.icey.panama.buffer.ByteBuffer;
@@ -49,8 +50,8 @@ public record VkPipelineExecutablePropertiesKHR(MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkShaderStageFlags.class) int stages() {

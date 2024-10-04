@@ -76,8 +76,7 @@ public record VkCoarseSampleOrderCustomNV(MemorySegment segment) implements IPoi
     }
 
     public void pSampleLocations(@nullable VkCoarseSampleLocationNV value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSampleLocationsRaw(s);
+        pSampleLocationsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkCoarseSampleOrderCustomNV allocate(Arena arena) {

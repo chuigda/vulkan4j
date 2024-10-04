@@ -49,8 +49,8 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public MemorySegment descriptionRaw() {
@@ -93,8 +93,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pAddressInfos(@nullable VkDeviceFaultAddressInfoEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pAddressInfosRaw(s);
+        pAddressInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkDeviceFaultVendorInfoEXT*") MemorySegment pVendorInfosRaw() {
@@ -125,8 +124,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pVendorInfos(@nullable VkDeviceFaultVendorInfoEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pVendorInfosRaw(s);
+        pVendorInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="void*") MemorySegment pVendorBinaryData() {
@@ -137,8 +135,8 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pVendorBinaryData, OFFSET$pVendorBinaryData, value);
     }
 
-    public void pVendorBinaryData(IPointer pointer) {
-        pVendorBinaryData(pointer.segment());
+    public void pVendorBinaryData(@nullable IPointer pointer) {
+        pVendorBinaryData(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkDeviceFaultInfoEXT allocate(Arena arena) {

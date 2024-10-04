@@ -42,8 +42,8 @@ public record VkGetLatencyMarkerInfoNV(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int timingCount() {
@@ -82,8 +82,7 @@ public record VkGetLatencyMarkerInfoNV(MemorySegment segment) implements IPointe
     }
 
     public void pTimings(@nullable VkLatencyTimingsFrameReportNV value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pTimingsRaw(s);
+        pTimingsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkGetLatencyMarkerInfoNV allocate(Arena arena) {

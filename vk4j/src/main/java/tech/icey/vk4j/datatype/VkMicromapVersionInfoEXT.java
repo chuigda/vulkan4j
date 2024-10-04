@@ -45,8 +45,8 @@ public record VkMicromapVersionInfoEXT(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @pointer(comment="uint8_t*") MemorySegment pVersionDataRaw() {

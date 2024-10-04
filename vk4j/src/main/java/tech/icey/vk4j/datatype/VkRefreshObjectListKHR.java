@@ -42,8 +42,8 @@ public record VkRefreshObjectListKHR(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int objectCount() {
@@ -82,8 +82,7 @@ public record VkRefreshObjectListKHR(MemorySegment segment) implements IPointer 
     }
 
     public void pObjects(@nullable VkRefreshObjectKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pObjectsRaw(s);
+        pObjectsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkRefreshObjectListKHR allocate(Arena arena) {

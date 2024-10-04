@@ -1,17 +1,18 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
-import tech.icey.panama.annotation.enumtype;
-import tech.icey.panama.annotation.pointer;
-import tech.icey.panama.annotation.unsigned;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
-import java.lang.foreign.*;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_2_PLANE_444_FORMATS_FEATURES_EXT;
+import tech.icey.panama.annotation.*;
+import tech.icey.panama.buffer.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT {
@@ -43,8 +44,8 @@ public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int ycbcr2plane444Formats() {

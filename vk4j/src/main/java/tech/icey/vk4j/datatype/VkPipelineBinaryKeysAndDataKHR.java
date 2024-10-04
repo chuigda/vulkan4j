@@ -61,8 +61,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) implements I
     }
 
     public void pPipelineBinaryKeys(@nullable VkPipelineBinaryKeyKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPipelineBinaryKeysRaw(s);
+        pPipelineBinaryKeysRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkPipelineBinaryDataKHR*") MemorySegment pPipelineBinaryDataRaw() {
@@ -93,8 +92,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) implements I
     }
 
     public void pPipelineBinaryData(@nullable VkPipelineBinaryDataKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPipelineBinaryDataRaw(s);
+        pPipelineBinaryDataRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkPipelineBinaryKeysAndDataKHR allocate(Arena arena) {

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.panama.buffer.PointerBuffer;
 import tech.icey.vk4j.bitmask.VkXlibSurfaceCreateFlagsKHR;
@@ -46,8 +47,8 @@ public record VkXlibSurfaceCreateInfoKHR(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkXlibSurfaceCreateFlagsKHR.class) int flags() {
@@ -71,12 +72,16 @@ public record VkXlibSurfaceCreateInfoKHR(MemorySegment segment) implements IPoin
     /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
     ///
     /// @see PointerBuffer
-    public PointerBuffer dpy() {
+    public @nullable PointerBuffer dpy() {
+        var s = dpyRaw();
+        if (s.address() == 0) {
+            return null;
+        }
         return new PointerBuffer(dpyRaw());
     }
 
-    public void dpy(PointerBuffer value) {
-        dpyRaw(value.segment());
+    public void dpy(@nullable PointerBuffer value) {
+        dpyRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public long window() {

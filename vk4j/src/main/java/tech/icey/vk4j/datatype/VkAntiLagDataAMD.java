@@ -44,8 +44,8 @@ public record VkAntiLagDataAMD(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkAntiLagModeAMD.class) int mode() {
@@ -92,8 +92,7 @@ public record VkAntiLagDataAMD(MemorySegment segment) implements IPointer {
     }
 
     public void pPresentationInfo(@nullable VkAntiLagPresentationInfoAMD value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPresentationInfoRaw(s);
+        pPresentationInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkAntiLagDataAMD allocate(Arena arena) {

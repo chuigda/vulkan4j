@@ -1,18 +1,18 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
-import tech.icey.panama.annotation.enumtype;
-import tech.icey.panama.annotation.pointer;
-import tech.icey.panama.annotation.unsigned;
-import tech.icey.vk4j.bitmask.VkPipelineDepthStencilStateCreateFlags;
-import tech.icey.vk4j.enumtype.VkCompareOp;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
-import java.lang.foreign.*;
-
-import static java.lang.foreign.ValueLayout.*;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
+import tech.icey.panama.annotation.*;
+import tech.icey.panama.buffer.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 /// {@snippet lang=c :
 /// typedef struct VkPipelineDepthStencilStateCreateInfo {
@@ -53,8 +53,8 @@ public record VkPipelineDepthStencilStateCreateInfo(MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkPipelineDepthStencilStateCreateFlags.class) int flags() {

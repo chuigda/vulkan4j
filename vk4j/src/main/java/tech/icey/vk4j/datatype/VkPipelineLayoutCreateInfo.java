@@ -47,8 +47,8 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkPipelineLayoutCreateFlags.class) int flags() {
@@ -89,8 +89,7 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) implements IPoin
     }
 
     public void pSetLayouts(@nullable VkDescriptorSetLayout.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSetLayoutsRaw(s);
+        pSetLayoutsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int pushConstantRangeCount() {
@@ -129,8 +128,7 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) implements IPoin
     }
 
     public void pPushConstantRanges(@nullable VkPushConstantRange value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPushConstantRangesRaw(s);
+        pPushConstantRangesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkPipelineLayoutCreateInfo allocate(Arena arena) {

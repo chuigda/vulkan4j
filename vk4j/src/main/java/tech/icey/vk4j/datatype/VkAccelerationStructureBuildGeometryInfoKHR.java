@@ -54,8 +54,8 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkAccelerationStructureTypeKHR.class) int type() {
@@ -150,8 +150,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
     }
 
     public void pGeometries(@nullable VkAccelerationStructureGeometryKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pGeometriesRaw(s);
+        pGeometriesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="void**") MemorySegment ppGeometriesRaw() {
@@ -167,12 +166,16 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
     /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
     ///
     /// @see PointerBuffer
-    public PointerBuffer ppGeometries() {
+    public @nullable PointerBuffer ppGeometries() {
+        var s = ppGeometriesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
         return new PointerBuffer(ppGeometriesRaw());
     }
 
-    public void ppGeometries(PointerBuffer value) {
-        ppGeometriesRaw(value.segment());
+    public void ppGeometries(@nullable PointerBuffer value) {
+        ppGeometriesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public VkDeviceOrHostAddressKHR scratchData() {

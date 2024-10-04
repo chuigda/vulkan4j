@@ -49,8 +49,8 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkRenderingFlags.class) int flags() {
@@ -121,8 +121,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pColorAttachments(@nullable VkRenderingAttachmentInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pColorAttachmentsRaw(s);
+        pColorAttachmentsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkRenderingAttachmentInfo*") MemorySegment pDepthAttachmentRaw() {
@@ -153,8 +152,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pDepthAttachment(@nullable VkRenderingAttachmentInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDepthAttachmentRaw(s);
+        pDepthAttachmentRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkRenderingAttachmentInfo*") MemorySegment pStencilAttachmentRaw() {
@@ -185,8 +183,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pStencilAttachment(@nullable VkRenderingAttachmentInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStencilAttachmentRaw(s);
+        pStencilAttachmentRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkRenderingInfo allocate(Arena arena) {

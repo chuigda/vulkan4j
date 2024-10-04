@@ -47,8 +47,8 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public VkImageCreateInfo imageCreateInfo() {
@@ -119,8 +119,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) impleme
     }
 
     public void pColorSpaces(@nullable VkSysmemColorSpaceFUCHSIA value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pColorSpacesRaw(s);
+        pColorSpacesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkImageFormatConstraintsInfoFUCHSIA allocate(Arena arena) {

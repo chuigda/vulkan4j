@@ -1,16 +1,18 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
-import tech.icey.vk4j.bitmask.VkPipelineVertexInputStateCreateFlags;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
-import java.lang.foreign.*;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
+import tech.icey.panama.buffer.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 /// {@snippet lang=c :
 /// typedef struct VkPipelineVertexInputStateCreateInfo {
@@ -46,8 +48,8 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkPipelineVertexInputStateCreateFlags.class) int flags() {
@@ -94,8 +96,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) implem
     }
 
     public void pVertexBindingDescriptions(@nullable VkVertexInputBindingDescription value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pVertexBindingDescriptionsRaw(s);
+        pVertexBindingDescriptionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int vertexAttributeDescriptionCount() {
@@ -134,8 +135,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) implem
     }
 
     public void pVertexAttributeDescriptions(@nullable VkVertexInputAttributeDescription value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pVertexAttributeDescriptionsRaw(s);
+        pVertexAttributeDescriptionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkPipelineVertexInputStateCreateInfo allocate(Arena arena) {

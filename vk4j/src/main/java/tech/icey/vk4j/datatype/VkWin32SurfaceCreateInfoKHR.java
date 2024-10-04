@@ -1,17 +1,18 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
-import tech.icey.panama.annotation.enumtype;
-import tech.icey.panama.annotation.pointer;
-import tech.icey.vk4j.bitmask.VkWin32SurfaceCreateFlagsKHR;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
-import java.lang.foreign.*;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
+import tech.icey.panama.annotation.*;
+import tech.icey.panama.buffer.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 /// {@snippet lang=c :
 /// typedef struct VkWin32SurfaceCreateInfoKHR {
@@ -45,8 +46,8 @@ public record VkWin32SurfaceCreateInfoKHR(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkWin32SurfaceCreateFlagsKHR.class) int flags() {
@@ -65,8 +66,8 @@ public record VkWin32SurfaceCreateInfoKHR(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$hinstance, OFFSET$hinstance, value);
     }
 
-    public void hinstance(IPointer pointer) {
-        hinstance(pointer.segment());
+    public void hinstance(@nullable IPointer pointer) {
+        hinstance(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @pointer(comment="void*") MemorySegment hwnd() {
@@ -77,8 +78,8 @@ public record VkWin32SurfaceCreateInfoKHR(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$hwnd, OFFSET$hwnd, value);
     }
 
-    public void hwnd(IPointer pointer) {
-        hwnd(pointer.segment());
+    public void hwnd(@nullable IPointer pointer) {
+        hwnd(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkWin32SurfaceCreateInfoKHR allocate(Arena arena) {

@@ -48,8 +48,8 @@ public record VkDescriptorSetAllocateInfo(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @nullable VkDescriptorPool descriptorPool() {
@@ -98,8 +98,7 @@ public record VkDescriptorSetAllocateInfo(MemorySegment segment) implements IPoi
     }
 
     public void pSetLayouts(@nullable VkDescriptorSetLayout.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSetLayoutsRaw(s);
+        pSetLayoutsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkDescriptorSetAllocateInfo allocate(Arena arena) {

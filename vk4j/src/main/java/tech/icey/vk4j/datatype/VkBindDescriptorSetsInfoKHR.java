@@ -54,8 +54,8 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkShaderStageFlags.class) int stageFlags() {
@@ -120,8 +120,7 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) implements IPoi
     }
 
     public void pDescriptorSets(@nullable VkDescriptorSet.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDescriptorSetsRaw(s);
+        pDescriptorSetsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int dynamicOffsetCount() {

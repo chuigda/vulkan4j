@@ -50,8 +50,8 @@ public record VkPushConstantsInfoKHR(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @nullable VkPipelineLayout layout() {
@@ -102,8 +102,8 @@ public record VkPushConstantsInfoKHR(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
 
-    public void pValues(IPointer pointer) {
-        pValues(pointer.segment());
+    public void pValues(@nullable IPointer pointer) {
+        pValues(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkPushConstantsInfoKHR allocate(Arena arena) {

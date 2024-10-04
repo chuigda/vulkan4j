@@ -48,8 +48,8 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkRenderPassCreateFlags.class) int flags() {
@@ -96,8 +96,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
     }
 
     public void pAttachments(@nullable VkAttachmentDescription value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pAttachmentsRaw(s);
+        pAttachmentsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int subpassCount() {
@@ -136,8 +135,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
     }
 
     public void pSubpasses(@nullable VkSubpassDescription value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSubpassesRaw(s);
+        pSubpassesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int dependencyCount() {
@@ -176,8 +174,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
     }
 
     public void pDependencies(@nullable VkSubpassDependency value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDependenciesRaw(s);
+        pDependenciesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkRenderPassCreateInfo allocate(Arena arena) {

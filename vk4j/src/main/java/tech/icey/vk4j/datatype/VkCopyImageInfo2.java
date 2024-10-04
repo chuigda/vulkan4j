@@ -48,8 +48,8 @@ public record VkCopyImageInfo2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @nullable VkImage srcImage() {
@@ -136,8 +136,7 @@ public record VkCopyImageInfo2(MemorySegment segment) implements IPointer {
     }
 
     public void pRegions(@nullable VkImageCopy2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pRegionsRaw(s);
+        pRegionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkCopyImageInfo2 allocate(Arena arena) {

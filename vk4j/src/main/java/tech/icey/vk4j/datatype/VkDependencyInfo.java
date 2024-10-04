@@ -48,8 +48,8 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkDependencyFlags.class) int dependencyFlags() {
@@ -96,8 +96,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pMemoryBarriers(@nullable VkMemoryBarrier2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pMemoryBarriersRaw(s);
+        pMemoryBarriersRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int bufferMemoryBarrierCount() {
@@ -136,8 +135,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pBufferMemoryBarriers(@nullable VkBufferMemoryBarrier2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pBufferMemoryBarriersRaw(s);
+        pBufferMemoryBarriersRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int imageMemoryBarrierCount() {
@@ -176,8 +174,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pImageMemoryBarriers(@nullable VkImageMemoryBarrier2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pImageMemoryBarriersRaw(s);
+        pImageMemoryBarriersRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkDependencyInfo allocate(Arena arena) {

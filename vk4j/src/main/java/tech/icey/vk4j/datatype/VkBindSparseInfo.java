@@ -51,8 +51,8 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int waitSemaphoreCount() {
@@ -85,8 +85,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pWaitSemaphores(@nullable VkSemaphore.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pWaitSemaphoresRaw(s);
+        pWaitSemaphoresRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int bufferBindCount() {
@@ -125,8 +124,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pBufferBinds(@nullable VkSparseBufferMemoryBindInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pBufferBindsRaw(s);
+        pBufferBindsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int imageOpaqueBindCount() {
@@ -165,8 +163,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pImageOpaqueBinds(@nullable VkSparseImageOpaqueMemoryBindInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pImageOpaqueBindsRaw(s);
+        pImageOpaqueBindsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int imageBindCount() {
@@ -205,8 +202,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pImageBinds(@nullable VkSparseImageMemoryBindInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pImageBindsRaw(s);
+        pImageBindsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int signalSemaphoreCount() {
@@ -239,8 +235,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pSignalSemaphores(@nullable VkSemaphore.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSignalSemaphoresRaw(s);
+        pSignalSemaphoresRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkBindSparseInfo allocate(Arena arena) {

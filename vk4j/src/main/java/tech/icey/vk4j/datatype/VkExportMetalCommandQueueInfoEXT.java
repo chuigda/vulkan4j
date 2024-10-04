@@ -45,8 +45,8 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @nullable VkQueue queue() {
@@ -73,8 +73,8 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) implements
         segment.set(LAYOUT$mtlCommandQueue, OFFSET$mtlCommandQueue, value);
     }
 
-    public void mtlCommandQueue(IPointer pointer) {
-        mtlCommandQueue(pointer.segment());
+    public void mtlCommandQueue(@nullable IPointer pointer) {
+        mtlCommandQueue(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkExportMetalCommandQueueInfoEXT allocate(Arena arena) {

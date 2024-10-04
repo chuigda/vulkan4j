@@ -31,8 +31,8 @@ def generate_pvoid_accessor(type_: CPointerType, member: Member) -> str:
         segment.set(LAYOUT${member.name}, OFFSET${member.name}, value);
     }}
 
-    public void {member.name}(IPointer pointer) {{
-        {member.name}(pointer.segment());
+    public void {member.name}(@nullable IPointer pointer) {{
+        {member.name}(pointer == null ? MemorySegment.NULL : pointer.segment());
     }}\n\n'''
 
 
@@ -50,12 +50,16 @@ def generate_pp_accessor(member: Member) -> str:
     /// size before actually {{@link PointerBuffer#read}}ing or {{@link PointerBuffer#write}}ing the buffer.
     ///
     /// @see PointerBuffer
-    public PointerBuffer {member.name}() {{
+    public @nullable PointerBuffer {member.name}() {{
+        var s = {member.name}Raw();
+        if (s.address() == 0) {{
+            return null;
+        }}
         return new PointerBuffer({member.name}Raw());
     }}
 
-    public void {member.name}(PointerBuffer value) {{
-        {member.name}Raw(value.segment());
+    public void {member.name}(@nullable PointerBuffer value) {{
+        {member.name}Raw(value == null ? MemorySegment.NULL : value.segment());
     }}\n\n'''
 
 
@@ -149,8 +153,7 @@ def generate_p_ref_type_accessor(pointee_type: CStructType | CUnionType | CHandl
     }}
 
     public void {member.name}(@nullable {pointee_type.java_type()} value) {{
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        {member.name}Raw(s);
+        {member.name}Raw(value == null ? MemorySegment.NULL : value.segment());
     }}\n\n'''
 
 
@@ -177,8 +180,7 @@ def generate_p_handle_type_accessor(pointee_type: CHandleType, member: Member) -
     }}
 
     public void {member.name}(@nullable {pointee_type.java_type()}.Buffer value) {{
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        {member.name}Raw(s);
+        {member.name}Raw(value == null ? MemorySegment.NULL : value.segment());
     }}\n\n'''
 
 

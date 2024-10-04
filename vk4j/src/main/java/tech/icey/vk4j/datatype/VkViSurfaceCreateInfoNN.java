@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.vk4j.bitmask.VkViSurfaceCreateFlagsNN;
 import tech.icey.vk4j.enumtype.VkStructureType;
@@ -44,8 +45,8 @@ public record VkViSurfaceCreateInfoNN(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkViSurfaceCreateFlagsNN.class) int flags() {
@@ -64,8 +65,8 @@ public record VkViSurfaceCreateInfoNN(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$window, OFFSET$window, value);
     }
 
-    public void window(IPointer pointer) {
-        window(pointer.segment());
+    public void window(@nullable IPointer pointer) {
+        window(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkViSurfaceCreateInfoNN allocate(Arena arena) {

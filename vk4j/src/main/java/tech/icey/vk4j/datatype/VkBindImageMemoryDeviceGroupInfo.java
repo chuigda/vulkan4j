@@ -45,8 +45,8 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int deviceIndexCount() {
@@ -116,8 +116,7 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) implements
     }
 
     public void pSplitInstanceBindRegions(@nullable VkRect2D value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSplitInstanceBindRegionsRaw(s);
+        pSplitInstanceBindRegionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkBindImageMemoryDeviceGroupInfo allocate(Arena arena) {

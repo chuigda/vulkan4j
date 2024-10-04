@@ -47,8 +47,8 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @pointer(comment="VkPipelineBinaryKeysAndDataKHR*") MemorySegment pKeysAndDataInfoRaw() {
@@ -79,8 +79,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
     }
 
     public void pKeysAndDataInfo(@nullable VkPipelineBinaryKeysAndDataKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pKeysAndDataInfoRaw(s);
+        pKeysAndDataInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @nullable VkPipeline pipeline() {
@@ -127,8 +126,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
     }
 
     public void pPipelineCreateInfo(@nullable VkPipelineCreateInfoKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPipelineCreateInfoRaw(s);
+        pPipelineCreateInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkPipelineBinaryCreateInfoKHR allocate(Arena arena) {

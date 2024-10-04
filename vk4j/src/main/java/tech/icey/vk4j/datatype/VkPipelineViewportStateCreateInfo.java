@@ -46,8 +46,8 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkPipelineViewportStateCreateFlags.class) int flags() {
@@ -94,8 +94,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implement
     }
 
     public void pViewports(@nullable VkViewport value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pViewportsRaw(s);
+        pViewportsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int scissorCount() {
@@ -134,8 +133,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implement
     }
 
     public void pScissors(@nullable VkRect2D value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pScissorsRaw(s);
+        pScissorsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkPipelineViewportStateCreateInfo allocate(Arena arena) {

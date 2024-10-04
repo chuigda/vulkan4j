@@ -56,8 +56,8 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkPipelineBindPoint.class) int pipelineBindPoint() {
@@ -136,8 +136,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
     }
 
     public void pStreams(@nullable VkIndirectCommandsStreamNV value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStreamsRaw(s);
+        pStreamsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int sequencesCount() {

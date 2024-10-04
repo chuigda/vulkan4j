@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.panama.annotation.unsigned;
 import tech.icey.vk4j.enumtype.VkObjectType;
@@ -47,8 +48,8 @@ public record VkDebugUtilsObjectTagInfoEXT(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkObjectType.class) int objectType() {
@@ -91,8 +92,8 @@ public record VkDebugUtilsObjectTagInfoEXT(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pTag, OFFSET$pTag, value);
     }
 
-    public void pTag(IPointer pointer) {
-        pTag(pointer.segment());
+    public void pTag(@nullable IPointer pointer) {
+        pTag(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkDebugUtilsObjectTagInfoEXT allocate(Arena arena) {

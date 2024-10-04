@@ -53,8 +53,8 @@ public record VkFramebufferCreateInfo(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkFramebufferCreateFlags.class) int flags() {
@@ -111,8 +111,7 @@ public record VkFramebufferCreateInfo(MemorySegment segment) implements IPointer
     }
 
     public void pAttachments(@nullable VkImageView.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pAttachmentsRaw(s);
+        pAttachmentsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int width() {

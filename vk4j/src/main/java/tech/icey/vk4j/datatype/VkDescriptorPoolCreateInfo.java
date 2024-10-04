@@ -45,8 +45,8 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkDescriptorPoolCreateFlags.class) int flags() {
@@ -101,8 +101,7 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) implements IPoin
     }
 
     public void pPoolSizes(@nullable VkDescriptorPoolSize value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPoolSizesRaw(s);
+        pPoolSizesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkDescriptorPoolCreateInfo allocate(Arena arena) {

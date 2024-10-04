@@ -45,8 +45,8 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int formatConstraintsCount() {
@@ -85,8 +85,7 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) implements IP
     }
 
     public void pFormatConstraints(@nullable VkImageFormatConstraintsInfoFUCHSIA value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pFormatConstraintsRaw(s);
+        pFormatConstraintsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints() {

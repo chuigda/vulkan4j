@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.vk4j.bitmask.VkDirectFBSurfaceCreateFlagsEXT;
 import tech.icey.vk4j.enumtype.VkStructureType;
@@ -45,8 +46,8 @@ public record VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkDirectFBSurfaceCreateFlagsEXT.class) int flags() {
@@ -65,8 +66,8 @@ public record VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) implements I
         segment.set(LAYOUT$dfb, OFFSET$dfb, value);
     }
 
-    public void dfb(IPointer pointer) {
-        dfb(pointer.segment());
+    public void dfb(@nullable IPointer pointer) {
+        dfb(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @pointer(comment="void*") MemorySegment surface() {
@@ -77,8 +78,8 @@ public record VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) implements I
         segment.set(LAYOUT$surface, OFFSET$surface, value);
     }
 
-    public void surface(IPointer pointer) {
-        surface(pointer.segment());
+    public void surface(@nullable IPointer pointer) {
+        surface(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkDirectFBSurfaceCreateInfoEXT allocate(Arena arena) {

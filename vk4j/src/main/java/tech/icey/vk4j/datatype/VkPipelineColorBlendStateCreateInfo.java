@@ -49,8 +49,8 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkPipelineColorBlendStateCreateFlags.class) int flags() {
@@ -113,8 +113,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) impleme
     }
 
     public void pAttachments(@nullable VkPipelineColorBlendAttachmentState value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pAttachmentsRaw(s);
+        pAttachmentsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public MemorySegment blendConstantsRaw() {

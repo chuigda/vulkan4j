@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.vk4j.bitmask.VkScreenSurfaceCreateFlagsQNX;
 import tech.icey.vk4j.enumtype.VkStructureType;
@@ -45,8 +46,8 @@ public record VkScreenSurfaceCreateInfoQNX(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkScreenSurfaceCreateFlagsQNX.class) int flags() {
@@ -65,8 +66,8 @@ public record VkScreenSurfaceCreateInfoQNX(MemorySegment segment) implements IPo
         segment.set(LAYOUT$context, OFFSET$context, value);
     }
 
-    public void context(IPointer pointer) {
-        context(pointer.segment());
+    public void context(@nullable IPointer pointer) {
+        context(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @pointer(comment="void*") MemorySegment window() {
@@ -77,8 +78,8 @@ public record VkScreenSurfaceCreateInfoQNX(MemorySegment segment) implements IPo
         segment.set(LAYOUT$window, OFFSET$window, value);
     }
 
-    public void window(IPointer pointer) {
-        window(pointer.segment());
+    public void window(@nullable IPointer pointer) {
+        window(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkScreenSurfaceCreateInfoQNX allocate(Arena arena) {

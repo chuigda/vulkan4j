@@ -84,8 +84,7 @@ public record VkDescriptorSetLayoutBinding(MemorySegment segment) implements IPo
     }
 
     public void pImmutableSamplers(@nullable VkSampler.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pImmutableSamplersRaw(s);
+        pImmutableSamplersRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkDescriptorSetLayoutBinding allocate(Arena arena) {

@@ -42,8 +42,8 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned long drmFormatModifier() {
@@ -90,8 +90,7 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
     }
 
     public void pPlaneLayouts(@nullable VkSubresourceLayout value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPlaneLayoutsRaw(s);
+        pPlaneLayoutsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkImageDrmFormatModifierExplicitCreateInfoEXT allocate(Arena arena) {

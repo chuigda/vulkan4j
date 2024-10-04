@@ -50,8 +50,8 @@ public record VkCopyImageToImageInfoEXT(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkHostImageCopyFlagsEXT.class) int flags() {
@@ -146,8 +146,7 @@ public record VkCopyImageToImageInfoEXT(MemorySegment segment) implements IPoint
     }
 
     public void pRegions(@nullable VkImageCopy2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pRegionsRaw(s);
+        pRegionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkCopyImageToImageInfoEXT allocate(Arena arena) {

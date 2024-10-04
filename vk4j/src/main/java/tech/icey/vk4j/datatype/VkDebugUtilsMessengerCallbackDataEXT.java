@@ -52,8 +52,8 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int flags() {
@@ -154,8 +154,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
     }
 
     public void pQueueLabels(@nullable VkDebugUtilsLabelEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pQueueLabelsRaw(s);
+        pQueueLabelsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int cmdBufLabelCount() {
@@ -194,8 +193,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
     }
 
     public void pCmdBufLabels(@nullable VkDebugUtilsLabelEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pCmdBufLabelsRaw(s);
+        pCmdBufLabelsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int objectCount() {
@@ -234,8 +232,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
     }
 
     public void pObjects(@nullable VkDebugUtilsObjectNameInfoEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pObjectsRaw(s);
+        pObjectsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkDebugUtilsMessengerCallbackDataEXT allocate(Arena arena) {

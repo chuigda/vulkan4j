@@ -42,8 +42,8 @@ public record VkDrmFormatModifierPropertiesListEXT(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int drmFormatModifierCount() {
@@ -82,8 +82,7 @@ public record VkDrmFormatModifierPropertiesListEXT(MemorySegment segment) implem
     }
 
     public void pDrmFormatModifierProperties(@nullable VkDrmFormatModifierPropertiesEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDrmFormatModifierPropertiesRaw(s);
+        pDrmFormatModifierPropertiesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkDrmFormatModifierPropertiesListEXT allocate(Arena arena) {

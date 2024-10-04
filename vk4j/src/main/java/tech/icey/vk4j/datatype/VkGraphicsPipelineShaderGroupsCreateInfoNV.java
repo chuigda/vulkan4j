@@ -45,8 +45,8 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int groupCount() {
@@ -85,8 +85,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
     }
 
     public void pGroups(@nullable VkGraphicsShaderGroupCreateInfoNV value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pGroupsRaw(s);
+        pGroupsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int pipelineCount() {
@@ -119,8 +118,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
     }
 
     public void pPipelines(@nullable VkPipeline.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPipelinesRaw(s);
+        pPipelinesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkGraphicsPipelineShaderGroupsCreateInfoNV allocate(Arena arena) {

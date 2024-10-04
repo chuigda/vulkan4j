@@ -62,8 +62,7 @@ public record VkSpecializationInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pMapEntries(@nullable VkSpecializationMapEntry value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pMapEntriesRaw(s);
+        pMapEntriesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned long dataSize() {
@@ -82,8 +81,8 @@ public record VkSpecializationInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 
-    public void pData(IPointer pointer) {
-        pData(pointer.segment());
+    public void pData(@nullable IPointer pointer) {
+        pData(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkSpecializationInfo allocate(Arena arena) {

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.panama.annotation.unsigned;
 import tech.icey.vk4j.enumtype.VkStructureType;
@@ -44,8 +45,8 @@ public record VkExportMemoryWin32HandleInfoNV(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @pointer(comment="void*") MemorySegment pAttributes() {
@@ -56,8 +57,8 @@ public record VkExportMemoryWin32HandleInfoNV(MemorySegment segment) implements 
         segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
     }
 
-    public void pAttributes(IPointer pointer) {
-        pAttributes(pointer.segment());
+    public void pAttributes(@nullable IPointer pointer) {
+        pAttributes(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int dwAccess() {

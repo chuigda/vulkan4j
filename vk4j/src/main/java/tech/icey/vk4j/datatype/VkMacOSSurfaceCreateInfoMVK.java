@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.vk4j.bitmask.VkMacOSSurfaceCreateFlagsMVK;
 import tech.icey.vk4j.enumtype.VkStructureType;
@@ -44,8 +45,8 @@ public record VkMacOSSurfaceCreateInfoMVK(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkMacOSSurfaceCreateFlagsMVK.class) int flags() {
@@ -64,8 +65,8 @@ public record VkMacOSSurfaceCreateInfoMVK(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pView, OFFSET$pView, value);
     }
 
-    public void pView(IPointer pointer) {
-        pView(pointer.segment());
+    public void pView(@nullable IPointer pointer) {
+        pView(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkMacOSSurfaceCreateInfoMVK allocate(Arena arena) {

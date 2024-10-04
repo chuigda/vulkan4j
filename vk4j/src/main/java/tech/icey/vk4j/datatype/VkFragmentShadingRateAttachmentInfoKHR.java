@@ -45,8 +45,8 @@ public record VkFragmentShadingRateAttachmentInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @pointer(comment="VkAttachmentReference2*") MemorySegment pFragmentShadingRateAttachmentRaw() {
@@ -77,8 +77,7 @@ public record VkFragmentShadingRateAttachmentInfoKHR(MemorySegment segment) impl
     }
 
     public void pFragmentShadingRateAttachment(@nullable VkAttachmentReference2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pFragmentShadingRateAttachmentRaw(s);
+        pFragmentShadingRateAttachmentRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public VkExtent2D shadingRateAttachmentTexelSize() {

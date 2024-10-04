@@ -54,8 +54,8 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int waitSemaphoreCount() {
@@ -88,8 +88,7 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pWaitSemaphores(@nullable VkSemaphore.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pWaitSemaphoresRaw(s);
+        pWaitSemaphoresRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(target=VkPipelineStageFlags.class) MemorySegment pWaitDstStageMaskRaw() {
@@ -149,8 +148,7 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pCommandBuffers(@nullable VkCommandBuffer.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pCommandBuffersRaw(s);
+        pCommandBuffersRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int signalSemaphoreCount() {
@@ -183,8 +181,7 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pSignalSemaphores(@nullable VkSemaphore.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSignalSemaphoresRaw(s);
+        pSignalSemaphoresRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkSubmitInfo allocate(Arena arena) {

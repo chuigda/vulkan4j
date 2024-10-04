@@ -1,17 +1,18 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
-import tech.icey.vk4j.bitmask.VkPipelineDiscardRectangleStateCreateFlagsEXT;
-import tech.icey.vk4j.enumtype.VkDiscardRectangleModeEXT;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
-import java.lang.foreign.*;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT;
+import tech.icey.panama.buffer.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 /// {@snippet lang=c :
 /// typedef struct VkPipelineDiscardRectangleStateCreateInfoEXT {
@@ -46,8 +47,8 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int flags() {
@@ -102,8 +103,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
     }
 
     public void pDiscardRectangles(@nullable VkRect2D value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDiscardRectanglesRaw(s);
+        pDiscardRectanglesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkPipelineDiscardRectangleStateCreateInfoEXT allocate(Arena arena) {

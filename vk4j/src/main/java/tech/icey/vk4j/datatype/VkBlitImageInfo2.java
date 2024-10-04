@@ -50,8 +50,8 @@ public record VkBlitImageInfo2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @nullable VkImage srcImage() {
@@ -138,8 +138,7 @@ public record VkBlitImageInfo2(MemorySegment segment) implements IPointer {
     }
 
     public void pRegions(@nullable VkImageBlit2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pRegionsRaw(s);
+        pRegionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @enumtype(VkFilter.class) int filter() {

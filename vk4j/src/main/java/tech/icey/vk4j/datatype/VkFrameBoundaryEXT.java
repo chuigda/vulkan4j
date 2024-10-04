@@ -54,8 +54,8 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkFrameBoundaryFlagsEXT.class) int flags() {
@@ -104,8 +104,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pImages(@nullable VkImage.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pImagesRaw(s);
+        pImagesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int bufferCount() {
@@ -138,8 +137,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pBuffers(@nullable VkBuffer.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pBuffersRaw(s);
+        pBuffersRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned long tagName() {
@@ -166,8 +164,8 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pTag, OFFSET$pTag, value);
     }
 
-    public void pTag(IPointer pointer) {
-        pTag(pointer.segment());
+    public void pTag(@nullable IPointer pointer) {
+        pTag(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkFrameBoundaryEXT allocate(Arena arena) {

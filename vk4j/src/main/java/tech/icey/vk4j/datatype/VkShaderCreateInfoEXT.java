@@ -57,8 +57,8 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkShaderCreateFlagsEXT.class) int flags() {
@@ -109,8 +109,8 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pCode, OFFSET$pCode, value);
     }
 
-    public void pCode(IPointer pointer) {
-        pCode(pointer.segment());
+    public void pCode(@nullable IPointer pointer) {
+        pCode(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @pointer(comment="int8_t*") MemorySegment pNameRaw() {
@@ -166,8 +166,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pSetLayouts(@nullable VkDescriptorSetLayout.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSetLayoutsRaw(s);
+        pSetLayoutsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int pushConstantRangeCount() {
@@ -206,8 +205,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pPushConstantRanges(@nullable VkPushConstantRange value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPushConstantRangesRaw(s);
+        pPushConstantRangesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkSpecializationInfo*") MemorySegment pSpecializationInfoRaw() {
@@ -238,8 +236,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
     }
 
     public void pSpecializationInfo(@nullable VkSpecializationInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSpecializationInfoRaw(s);
+        pSpecializationInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkShaderCreateInfoEXT allocate(Arena arena) {

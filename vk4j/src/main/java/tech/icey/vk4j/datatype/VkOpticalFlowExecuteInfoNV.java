@@ -44,8 +44,8 @@ public record VkOpticalFlowExecuteInfoNV(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkOpticalFlowExecuteFlagsNV.class) int flags() {
@@ -92,8 +92,7 @@ public record VkOpticalFlowExecuteInfoNV(MemorySegment segment) implements IPoin
     }
 
     public void pRegions(@nullable VkRect2D value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pRegionsRaw(s);
+        pRegionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkOpticalFlowExecuteInfoNV allocate(Arena arena) {

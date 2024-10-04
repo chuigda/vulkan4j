@@ -1,16 +1,18 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
-import tech.icey.vk4j.bitmask.VkPipelineViewportSwizzleStateCreateFlagsNV;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
-import java.lang.foreign.*;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV;
+import tech.icey.panama.buffer.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 /// {@snippet lang=c :
 /// typedef struct VkPipelineViewportSwizzleStateCreateInfoNV {
@@ -44,8 +46,8 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkPipelineViewportSwizzleStateCreateFlagsNV.class) int flags() {
@@ -92,8 +94,7 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
     }
 
     public void pViewportSwizzles(@nullable VkViewportSwizzleNV value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pViewportSwizzlesRaw(s);
+        pViewportSwizzlesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkPipelineViewportSwizzleStateCreateInfoNV allocate(Arena arena) {

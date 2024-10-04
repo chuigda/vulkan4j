@@ -44,8 +44,8 @@ public record VkDescriptorSetLayoutCreateInfo(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkDescriptorSetLayoutCreateFlags.class) int flags() {
@@ -92,8 +92,7 @@ public record VkDescriptorSetLayoutCreateInfo(MemorySegment segment) implements 
     }
 
     public void pBindings(@nullable VkDescriptorSetLayoutBinding value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pBindingsRaw(s);
+        pBindingsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkDescriptorSetLayoutCreateInfo allocate(Arena arena) {

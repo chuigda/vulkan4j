@@ -56,8 +56,8 @@ public record VkCudaLaunchInfoNV(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @nullable VkCudaFunctionNV function() {
@@ -148,8 +148,8 @@ public record VkCudaLaunchInfoNV(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pParams, OFFSET$pParams, value);
     }
 
-    public void pParams(IPointer pointer) {
-        pParams(pointer.segment());
+    public void pParams(@nullable IPointer pointer) {
+        pParams(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned long extraCount() {
@@ -168,8 +168,8 @@ public record VkCudaLaunchInfoNV(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pExtras, OFFSET$pExtras, value);
     }
 
-    public void pExtras(IPointer pointer) {
-        pExtras(pointer.segment());
+    public void pExtras(@nullable IPointer pointer) {
+        pExtras(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkCudaLaunchInfoNV allocate(Arena arena) {

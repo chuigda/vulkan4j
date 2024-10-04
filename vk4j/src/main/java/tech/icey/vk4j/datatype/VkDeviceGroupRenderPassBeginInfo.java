@@ -43,8 +43,8 @@ public record VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int deviceMask() {
@@ -91,8 +91,7 @@ public record VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) implements
     }
 
     public void pDeviceRenderAreas(@nullable VkRect2D value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDeviceRenderAreasRaw(s);
+        pDeviceRenderAreasRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkDeviceGroupRenderPassBeginInfo allocate(Arena arena) {

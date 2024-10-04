@@ -2,6 +2,7 @@ package tech.icey.vk4j.datatype;
 
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.panama.annotation.unsigned;
 
@@ -38,8 +39,8 @@ public record VkDeviceOrHostAddressConstKHR(MemorySegment segment) implements IP
         segment.set(LAYOUT$hostAddress, OFFSET$hostAddress, value);
     }
 
-    public void hostAddress(IPointer pointer) {
-        hostAddress(pointer.segment());
+    public void hostAddress(@nullable IPointer pointer) {
+        hostAddress(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkDeviceOrHostAddressConstKHR allocate(Arena arena) {

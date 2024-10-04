@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.vk4j.bitmask.VkPipelineStageFlags2;
 import tech.icey.vk4j.enumtype.VkStructureType;
@@ -43,8 +44,8 @@ public record VkCheckpointData2NV(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkPipelineStageFlags2.class) long stage() {
@@ -63,8 +64,8 @@ public record VkCheckpointData2NV(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pCheckpointMarker, OFFSET$pCheckpointMarker, value);
     }
 
-    public void pCheckpointMarker(IPointer pointer) {
-        pCheckpointMarker(pointer.segment());
+    public void pCheckpointMarker(@nullable IPointer pointer) {
+        pCheckpointMarker(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkCheckpointData2NV allocate(Arena arena) {

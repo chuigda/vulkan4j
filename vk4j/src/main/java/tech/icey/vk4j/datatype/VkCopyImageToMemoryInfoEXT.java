@@ -48,8 +48,8 @@ public record VkCopyImageToMemoryInfoEXT(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkHostImageCopyFlagsEXT.class) int flags() {
@@ -120,8 +120,7 @@ public record VkCopyImageToMemoryInfoEXT(MemorySegment segment) implements IPoin
     }
 
     public void pRegions(@nullable VkImageToMemoryCopyEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pRegionsRaw(s);
+        pRegionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkCopyImageToMemoryInfoEXT allocate(Arena arena) {

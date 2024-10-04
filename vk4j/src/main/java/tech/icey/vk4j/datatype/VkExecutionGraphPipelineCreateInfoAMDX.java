@@ -50,8 +50,8 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkPipelineCreateFlags.class) int flags() {
@@ -98,8 +98,7 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) impl
     }
 
     public void pStages(@nullable VkPipelineShaderStageCreateInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStagesRaw(s);
+        pStagesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkPipelineLibraryCreateInfoKHR*") MemorySegment pLibraryInfoRaw() {
@@ -130,8 +129,7 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(MemorySegment segment) impl
     }
 
     public void pLibraryInfo(@nullable VkPipelineLibraryCreateInfoKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pLibraryInfoRaw(s);
+        pLibraryInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @nullable VkPipelineLayout layout() {

@@ -52,8 +52,8 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkPipelineCreateFlags.class) int flags() {
@@ -100,8 +100,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
     }
 
     public void pStages(@nullable VkPipelineShaderStageCreateInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStagesRaw(s);
+        pStagesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int groupCount() {
@@ -140,8 +139,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
     }
 
     public void pGroups(@nullable VkRayTracingShaderGroupCreateInfoNV value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pGroupsRaw(s);
+        pGroupsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int maxRecursionDepth() {

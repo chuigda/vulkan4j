@@ -61,8 +61,7 @@ public record VkBaseInStructure(MemorySegment segment) implements IPointer {
     }
 
     public void pNext(@nullable VkBaseInStructure value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pNextRaw(s);
+        pNextRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkBaseInStructure allocate(Arena arena) {

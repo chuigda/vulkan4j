@@ -53,8 +53,8 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkDescriptorUpdateTemplateCreateFlags.class) int flags() {
@@ -101,8 +101,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
     }
 
     public void pDescriptorUpdateEntries(@nullable VkDescriptorUpdateTemplateEntry value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDescriptorUpdateEntriesRaw(s);
+        pDescriptorUpdateEntriesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @enumtype(VkDescriptorUpdateTemplateType.class) int templateType() {

@@ -42,8 +42,8 @@ public record VkPresentRegionsKHR(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int swapchainCount() {
@@ -82,8 +82,7 @@ public record VkPresentRegionsKHR(MemorySegment segment) implements IPointer {
     }
 
     public void pRegions(@nullable VkPresentRegionKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pRegionsRaw(s);
+        pRegionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkPresentRegionsKHR allocate(Arena arena) {

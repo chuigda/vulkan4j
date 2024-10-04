@@ -78,8 +78,7 @@ public record VkSparseImageOpaqueMemoryBindInfo(MemorySegment segment) implement
     }
 
     public void pBinds(@nullable VkSparseMemoryBind value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pBindsRaw(s);
+        pBindsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkSparseImageOpaqueMemoryBindInfo allocate(Arena arena) {

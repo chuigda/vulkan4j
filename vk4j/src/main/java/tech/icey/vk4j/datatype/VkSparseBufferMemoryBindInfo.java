@@ -78,8 +78,7 @@ public record VkSparseBufferMemoryBindInfo(MemorySegment segment) implements IPo
     }
 
     public void pBinds(@nullable VkSparseMemoryBind value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pBindsRaw(s);
+        pBindsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkSparseBufferMemoryBindInfo allocate(Arena arena) {

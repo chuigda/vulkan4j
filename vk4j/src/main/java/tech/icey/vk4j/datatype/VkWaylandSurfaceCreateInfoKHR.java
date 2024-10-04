@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.vk4j.bitmask.VkWaylandSurfaceCreateFlagsKHR;
 import tech.icey.vk4j.enumtype.VkStructureType;
@@ -45,8 +46,8 @@ public record VkWaylandSurfaceCreateInfoKHR(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkWaylandSurfaceCreateFlagsKHR.class) int flags() {
@@ -65,8 +66,8 @@ public record VkWaylandSurfaceCreateInfoKHR(MemorySegment segment) implements IP
         segment.set(LAYOUT$display, OFFSET$display, value);
     }
 
-    public void display(IPointer pointer) {
-        display(pointer.segment());
+    public void display(@nullable IPointer pointer) {
+        display(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @pointer(comment="void*") MemorySegment surface() {
@@ -77,8 +78,8 @@ public record VkWaylandSurfaceCreateInfoKHR(MemorySegment segment) implements IP
         segment.set(LAYOUT$surface, OFFSET$surface, value);
     }
 
-    public void surface(IPointer pointer) {
-        surface(pointer.segment());
+    public void surface(@nullable IPointer pointer) {
+        surface(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkWaylandSurfaceCreateInfoKHR allocate(Arena arena) {

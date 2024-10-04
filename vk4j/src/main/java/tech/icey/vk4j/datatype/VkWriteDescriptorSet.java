@@ -51,8 +51,8 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @nullable VkDescriptorSet dstSet() {
@@ -131,8 +131,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
     }
 
     public void pImageInfo(@nullable VkDescriptorImageInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pImageInfoRaw(s);
+        pImageInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkDescriptorBufferInfo*") MemorySegment pBufferInfoRaw() {
@@ -163,8 +162,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
     }
 
     public void pBufferInfo(@nullable VkDescriptorBufferInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pBufferInfoRaw(s);
+        pBufferInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkBufferView") MemorySegment pTexelBufferViewRaw() {
@@ -189,8 +187,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
     }
 
     public void pTexelBufferView(@nullable VkBufferView.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pTexelBufferViewRaw(s);
+        pTexelBufferViewRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkWriteDescriptorSet allocate(Arena arena) {

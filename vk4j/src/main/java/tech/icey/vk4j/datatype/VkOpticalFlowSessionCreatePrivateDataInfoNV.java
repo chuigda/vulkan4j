@@ -1,17 +1,18 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
-import tech.icey.panama.annotation.enumtype;
-import tech.icey.panama.annotation.pointer;
-import tech.icey.panama.annotation.unsigned;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
-import java.lang.foreign.*;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_OPTICAL_FLOW_SESSION_CREATE_PRIVATE_DATA_INFO_NV;
+import tech.icey.panama.annotation.*;
+import tech.icey.panama.buffer.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 /// {@snippet lang=c :
 /// typedef struct VkOpticalFlowSessionCreatePrivateDataInfoNV {
@@ -45,8 +46,8 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int id() {
@@ -73,8 +74,8 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(MemorySegment segment)
         segment.set(LAYOUT$pPrivateData, OFFSET$pPrivateData, value);
     }
 
-    public void pPrivateData(IPointer pointer) {
-        pPrivateData(pointer.segment());
+    public void pPrivateData(@nullable IPointer pointer) {
+        pPrivateData(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkOpticalFlowSessionCreatePrivateDataInfoNV allocate(Arena arena) {

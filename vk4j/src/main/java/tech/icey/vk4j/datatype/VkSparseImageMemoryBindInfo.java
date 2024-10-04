@@ -78,8 +78,7 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) implements IPoi
     }
 
     public void pBinds(@nullable VkSparseImageMemoryBind value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pBindsRaw(s);
+        pBindsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkSparseImageMemoryBindInfo allocate(Arena arena) {

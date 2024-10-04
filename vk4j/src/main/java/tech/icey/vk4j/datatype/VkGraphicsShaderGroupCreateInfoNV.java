@@ -44,8 +44,8 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int stageCount() {
@@ -84,8 +84,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
     }
 
     public void pStages(@nullable VkPipelineShaderStageCreateInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStagesRaw(s);
+        pStagesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkPipelineVertexInputStateCreateInfo*") MemorySegment pVertexInputStateRaw() {
@@ -116,8 +115,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
     }
 
     public void pVertexInputState(@nullable VkPipelineVertexInputStateCreateInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pVertexInputStateRaw(s);
+        pVertexInputStateRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkPipelineTessellationStateCreateInfo*") MemorySegment pTessellationStateRaw() {
@@ -148,8 +146,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
     }
 
     public void pTessellationState(@nullable VkPipelineTessellationStateCreateInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pTessellationStateRaw(s);
+        pTessellationStateRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkGraphicsShaderGroupCreateInfoNV allocate(Arena arena) {

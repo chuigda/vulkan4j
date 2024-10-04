@@ -47,8 +47,8 @@ public record VkImportFenceSciSyncInfoNV(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @nullable VkFence fence() {
@@ -83,8 +83,8 @@ public record VkImportFenceSciSyncInfoNV(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$handle, OFFSET$handle, value);
     }
 
-    public void handle(IPointer pointer) {
-        handle(pointer.segment());
+    public void handle(@nullable IPointer pointer) {
+        handle(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkImportFenceSciSyncInfoNV allocate(Arena arena) {

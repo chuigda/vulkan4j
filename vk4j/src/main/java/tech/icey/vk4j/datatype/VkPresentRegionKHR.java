@@ -60,8 +60,7 @@ public record VkPresentRegionKHR(MemorySegment segment) implements IPointer {
     }
 
     public void pRectangles(@nullable VkRectLayerKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pRectanglesRaw(s);
+        pRectanglesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkPresentRegionKHR allocate(Arena arena) {

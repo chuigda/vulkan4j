@@ -46,8 +46,8 @@ public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int libraryCount() {
@@ -80,8 +80,7 @@ public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) implements I
     }
 
     public void pLibraries(@nullable VkPipeline.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pLibrariesRaw(s);
+        pLibrariesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkPipelineLibraryCreateInfoKHR allocate(Arena arena) {

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.vk4j.bitmask.VkExternalMemoryHandleTypeFlags;
 import tech.icey.vk4j.enumtype.VkStructureType;
@@ -44,8 +45,8 @@ public record VkImportMemorySciBufInfoNV(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkExternalMemoryHandleTypeFlags.class) int handleType() {
@@ -64,8 +65,8 @@ public record VkImportMemorySciBufInfoNV(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$handle, OFFSET$handle, value);
     }
 
-    public void handle(IPointer pointer) {
-        handle(pointer.segment());
+    public void handle(@nullable IPointer pointer) {
+        handle(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkImportMemorySciBufInfoNV allocate(Arena arena) {

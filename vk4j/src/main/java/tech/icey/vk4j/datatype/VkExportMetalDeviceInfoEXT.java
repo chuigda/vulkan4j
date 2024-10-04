@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.vk4j.enumtype.VkStructureType;
 
@@ -42,8 +43,8 @@ public record VkExportMetalDeviceInfoEXT(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @pointer(comment="void*") MemorySegment mtlDevice() {
@@ -54,8 +55,8 @@ public record VkExportMetalDeviceInfoEXT(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$mtlDevice, OFFSET$mtlDevice, value);
     }
 
-    public void mtlDevice(IPointer pointer) {
-        mtlDevice(pointer.segment());
+    public void mtlDevice(@nullable IPointer pointer) {
+        mtlDevice(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkExportMetalDeviceInfoEXT allocate(Arena arena) {

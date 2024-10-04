@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
+import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.vk4j.bitmask.VkDeviceMemoryReportFlagsEXT;
 import tech.icey.vk4j.enumtype.VkStructureType;
@@ -45,8 +46,8 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkDeviceMemoryReportFlagsEXT.class) int flags() {
@@ -65,8 +66,8 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) imp
         segment.set(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback, value);
     }
 
-    public void pfnUserCallback(IPointer pointer) {
-        pfnUserCallback(pointer.segment());
+    public void pfnUserCallback(@nullable IPointer pointer) {
+        pfnUserCallback(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @pointer(comment="void*") MemorySegment pUserData() {
@@ -77,8 +78,8 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) imp
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
     }
 
-    public void pUserData(IPointer pointer) {
-        pUserData(pointer.segment());
+    public void pUserData(@nullable IPointer pointer) {
+        pUserData(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkDeviceDeviceMemoryReportCreateInfoEXT allocate(Arena arena) {

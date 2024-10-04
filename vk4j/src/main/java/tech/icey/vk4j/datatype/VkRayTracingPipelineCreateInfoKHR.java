@@ -55,8 +55,8 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkPipelineCreateFlags.class) int flags() {
@@ -103,8 +103,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
     }
 
     public void pStages(@nullable VkPipelineShaderStageCreateInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStagesRaw(s);
+        pStagesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int groupCount() {
@@ -143,8 +142,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
     }
 
     public void pGroups(@nullable VkRayTracingShaderGroupCreateInfoKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pGroupsRaw(s);
+        pGroupsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int maxPipelineRayRecursionDepth() {
@@ -183,8 +181,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
     }
 
     public void pLibraryInfo(@nullable VkPipelineLibraryCreateInfoKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pLibraryInfoRaw(s);
+        pLibraryInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkRayTracingPipelineInterfaceCreateInfoKHR*") MemorySegment pLibraryInterfaceRaw() {
@@ -215,8 +212,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
     }
 
     public void pLibraryInterface(@nullable VkRayTracingPipelineInterfaceCreateInfoKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pLibraryInterfaceRaw(s);
+        pLibraryInterfaceRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkPipelineDynamicStateCreateInfo*") MemorySegment pDynamicStateRaw() {
@@ -247,8 +243,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
     }
 
     public void pDynamicState(@nullable VkPipelineDynamicStateCreateInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDynamicStateRaw(s);
+        pDynamicStateRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @nullable VkPipelineLayout layout() {

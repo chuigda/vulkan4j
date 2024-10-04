@@ -1,15 +1,18 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
-import tech.icey.vk4j.enumtype.VkStructureType;
-
-import java.lang.foreign.*;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.PathElement;
-import static tech.icey.vk4j.enumtype.VkStructureType.VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT;
+import tech.icey.panama.buffer.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassSampleLocationsBeginInfoEXT {
@@ -44,8 +47,8 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int attachmentInitialSampleLocationsCount() {
@@ -84,8 +87,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) imp
     }
 
     public void pAttachmentInitialSampleLocations(@nullable VkAttachmentSampleLocationsEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pAttachmentInitialSampleLocationsRaw(s);
+        pAttachmentInitialSampleLocationsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int postSubpassSampleLocationsCount() {
@@ -124,8 +126,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) imp
     }
 
     public void pPostSubpassSampleLocations(@nullable VkSubpassSampleLocationsEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPostSubpassSampleLocationsRaw(s);
+        pPostSubpassSampleLocationsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkRenderPassSampleLocationsBeginInfoEXT allocate(Arena arena) {

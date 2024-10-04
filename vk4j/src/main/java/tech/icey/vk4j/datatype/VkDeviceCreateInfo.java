@@ -50,8 +50,8 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkDeviceCreateFlags.class) int flags() {
@@ -98,8 +98,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pQueueCreateInfos(@nullable VkDeviceQueueCreateInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pQueueCreateInfosRaw(s);
+        pQueueCreateInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int enabledLayerCount() {
@@ -123,12 +122,16 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
     /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
     ///
     /// @see PointerBuffer
-    public PointerBuffer ppEnabledLayerNames() {
+    public @nullable PointerBuffer ppEnabledLayerNames() {
+        var s = ppEnabledLayerNamesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
         return new PointerBuffer(ppEnabledLayerNamesRaw());
     }
 
-    public void ppEnabledLayerNames(PointerBuffer value) {
-        ppEnabledLayerNamesRaw(value.segment());
+    public void ppEnabledLayerNames(@nullable PointerBuffer value) {
+        ppEnabledLayerNamesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @unsigned int enabledExtensionCount() {
@@ -152,12 +155,16 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
     /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
     ///
     /// @see PointerBuffer
-    public PointerBuffer ppEnabledExtensionNames() {
+    public @nullable PointerBuffer ppEnabledExtensionNames() {
+        var s = ppEnabledExtensionNamesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
         return new PointerBuffer(ppEnabledExtensionNamesRaw());
     }
 
-    public void ppEnabledExtensionNames(PointerBuffer value) {
-        ppEnabledExtensionNamesRaw(value.segment());
+    public void ppEnabledExtensionNames(@nullable PointerBuffer value) {
+        ppEnabledExtensionNamesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="VkPhysicalDeviceFeatures*") MemorySegment pEnabledFeaturesRaw() {
@@ -188,8 +195,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
     }
 
     public void pEnabledFeatures(@nullable VkPhysicalDeviceFeatures value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pEnabledFeaturesRaw(s);
+        pEnabledFeaturesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkDeviceCreateInfo allocate(Arena arena) {

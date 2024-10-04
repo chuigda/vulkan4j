@@ -47,8 +47,8 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkShaderStageFlags.class) int stageFlags() {
@@ -119,8 +119,7 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) implements IPoin
     }
 
     public void pDescriptorWrites(@nullable VkWriteDescriptorSet value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDescriptorWritesRaw(s);
+        pDescriptorWritesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkPushDescriptorSetInfoKHR allocate(Arena arena) {

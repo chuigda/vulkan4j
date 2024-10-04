@@ -44,8 +44,8 @@ public record VkDirectDriverLoadingListLUNARG(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkDirectDriverLoadingModeLUNARG.class) int mode() {
@@ -92,8 +92,7 @@ public record VkDirectDriverLoadingListLUNARG(MemorySegment segment) implements 
     }
 
     public void pDrivers(@nullable VkDirectDriverLoadingInfoLUNARG value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDriversRaw(s);
+        pDriversRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkDirectDriverLoadingListLUNARG allocate(Arena arena) {

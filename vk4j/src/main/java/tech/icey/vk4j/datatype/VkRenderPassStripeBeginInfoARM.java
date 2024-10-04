@@ -42,8 +42,8 @@ public record VkRenderPassStripeBeginInfoARM(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int stripeInfoCount() {
@@ -82,8 +82,7 @@ public record VkRenderPassStripeBeginInfoARM(MemorySegment segment) implements I
     }
 
     public void pStripeInfos(@nullable VkRenderPassStripeInfoARM value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStripeInfosRaw(s);
+        pStripeInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkRenderPassStripeBeginInfoARM allocate(Arena arena) {

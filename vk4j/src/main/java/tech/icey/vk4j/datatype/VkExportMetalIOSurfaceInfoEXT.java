@@ -45,8 +45,8 @@ public record VkExportMetalIOSurfaceInfoEXT(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @nullable VkImage image() {
@@ -73,8 +73,8 @@ public record VkExportMetalIOSurfaceInfoEXT(MemorySegment segment) implements IP
         segment.set(LAYOUT$ioSurface, OFFSET$ioSurface, value);
     }
 
-    public void ioSurface(IPointer pointer) {
-        ioSurface(pointer.segment());
+    public void ioSurface(@nullable IPointer pointer) {
+        ioSurface(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public static VkExportMetalIOSurfaceInfoEXT allocate(Arena arena) {

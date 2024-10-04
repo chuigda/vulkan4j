@@ -42,8 +42,8 @@ public record VkFramebufferAttachmentsCreateInfo(MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int attachmentImageInfoCount() {
@@ -82,8 +82,7 @@ public record VkFramebufferAttachmentsCreateInfo(MemorySegment segment) implemen
     }
 
     public void pAttachmentImageInfos(@nullable VkFramebufferAttachmentImageInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pAttachmentImageInfosRaw(s);
+        pAttachmentImageInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkFramebufferAttachmentsCreateInfo allocate(Arena arena) {

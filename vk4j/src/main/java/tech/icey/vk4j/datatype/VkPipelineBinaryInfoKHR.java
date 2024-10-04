@@ -46,8 +46,8 @@ public record VkPipelineBinaryInfoKHR(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @unsigned int binaryCount() {
@@ -80,8 +80,7 @@ public record VkPipelineBinaryInfoKHR(MemorySegment segment) implements IPointer
     }
 
     public void pPipelineBinaries(@nullable VkPipelineBinaryKHR.Buffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPipelineBinariesRaw(s);
+        pPipelineBinariesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public static VkPipelineBinaryInfoKHR allocate(Arena arena) {

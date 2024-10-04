@@ -55,8 +55,8 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@nullable IPointer pointer) {
+        pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
     public @enumtype(VkMicromapTypeEXT.class) int type() {
@@ -135,8 +135,7 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) implements IPointer 
     }
 
     public void pUsageCounts(@nullable VkMicromapUsageEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pUsageCountsRaw(s);
+        pUsageCountsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public @pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
@@ -152,12 +151,16 @@ public record VkMicromapBuildInfoEXT(MemorySegment segment) implements IPointer 
     /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
     ///
     /// @see PointerBuffer
-    public PointerBuffer ppUsageCounts() {
+    public @nullable PointerBuffer ppUsageCounts() {
+        var s = ppUsageCountsRaw();
+        if (s.address() == 0) {
+            return null;
+        }
         return new PointerBuffer(ppUsageCountsRaw());
     }
 
-    public void ppUsageCounts(PointerBuffer value) {
-        ppUsageCountsRaw(value.segment());
+    public void ppUsageCounts(@nullable PointerBuffer value) {
+        ppUsageCountsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
     public VkDeviceOrHostAddressConstKHR data() {
