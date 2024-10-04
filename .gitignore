@@ -43,6 +43,9 @@ build/
 # Assembly plugin produced files
 tutorial/dependency-reduced-pom.xml
 
+# Flatten plugin produced files
+**/.flattened-pom.xml
+
 # Code Generator Input
 codegen/input/*
 !codegen/input/download.sh

@@ -36,7 +36,7 @@
     </scm>
 
     <artifactId>panama-plus</artifactId>
-    <version>0.1.0</version>
+    <version>${revision}</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -77,6 +77,23 @@
                 <configuration>
                     <doclint>all,-missing</doclint>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <flattenMode>ossrh</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
