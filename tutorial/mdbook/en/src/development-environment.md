@@ -4,7 +4,50 @@ In this chapter we'll set up your environment for developing Vulkan applications
 
 ## Maven project
 
-> TODO: Add instructions for setting up a Maven project after we really distribute `vulkan4j` to somewhere.
+Create a Maven project and add the following dependencies to your `pom.xml` file:
+
+```xml
+<dependency>
+    <groupId>tech.icey</groupId>
+    <artifactId>panama-plus</artifactId>
+    <version>0.1.1</version>
+</dependency>
+<dependency>
+    <groupId>tech.icey</groupId>
+    <artifactId>vulkan4j</artifactId>
+    <version>0.1.0</version>
+</dependency>
+<dependency>
+    <groupId>tech.icey</groupId>
+    <artifactId>glfw</artifactId>
+    <version>0.1.2</version>
+</dependency>
+<dependency>
+    <groupId>org.joml</groupId>
+    <artifactId>joml</artifactId>
+    <version>1.10.8</version>
+</dependency>
+<dependency>
+    <groupId>de.javagl</groupId>
+    <artifactId>obj</artifactId>
+    <version>0.4.0</version>
+</dependency>
+```
+
+`tech.icey.vulkan4j` is the Vulkan binding for Java, `tech.icey.panama-plus` is a library that provides a thin wrapper over the Project Panama APIs to make them easier and more type-safe to use. `tech.icey.glfw` is a Java binding for the GLFW library, which we'll use for window creation. `org.joml` is a math library that we'll use for vector and matrix operations. `de.javagl.obj` is a library for loading Wavefront OBJ files, which we'll use for loading 3D models.
+
+## GLFW
+
+Unlike `lwjgl-glfw` and other Java bindings for GLFW, `tech.icey.glfw` does not come up with the native binaries. You'll need to download the GLFW binaries for your operating system and architecture, either from the [official website](https://www.glfw.org/download.html), or using your favorite package manager. 
+
+If you're using a package manager, all things should be set up for you automatically. However, if you're downloading the binaries manually, you'll need a bit more effort to make JVM find the native libraries. There are two ways to do this:
+
+- Copy the native libraries (`glfw3.dll`) to some directory that is included by `PATH` environment variable.
+- Set the `java.library.path` system property to the directory containing the native libraries. This can be done by adding the following line to JVM arguments: `-Djava.library.path=/path/to/glfw/native/libs`. If you're using IDEs, you can usually set this in the run configuration. Consult your IDE documentation for more information.
+
+In realworld production you may want to bundle the native libraries with your application (usually a JAR file), in that case you may use some solution like [native-utils](https://github.com/adamheinrich/native-utils).
+
+> Chuigda did not bundle the native libraries with `tech.icey.glfw` because he doesn't know what's the best practice in Java world, <del>definitely not because he's lazy</del>. If you have a good idea, a pull request is always welcome.
 
 ## Vulkan SDK
 
