@@ -91,6 +91,7 @@ class Application {
         createDescriptorSetLayout();
         createGraphicsPipeline();
         createCommandPool();
+        createColorResources();
         createDepthResources();
         createFramebuffers();
         createTextureImage();
@@ -167,11 +168,15 @@ class Application {
 
         createSwapchain();
         createImageViews();
+        createColorResources();
         createDepthResources();
         createFramebuffers();
     }
 
     private void cleanupSwapChain() {
+        deviceCommands.vkDestroyImageView(device, colorImageView, null);
+        deviceCommands.vkDestroyImage(device, colorImage, null);
+        deviceCommands.vkFreeMemory(device, colorImageMemory, null);
         deviceCommands.vkDestroyImageView(device, depthImageView, null);
         deviceCommands.vkDestroyImage(device, depthImage, null);
         deviceCommands.vkFreeMemory(device, depthImageMemory, null);
@@ -285,6 +290,7 @@ class Application {
             for (var device : devices) {
                 if (isDeviceSuitable(device)) {
                     physicalDevice = device;
+                    msaaSamples = getMaxUsableSampleCount();
                     break;
                 }
             }
@@ -302,6 +308,7 @@ class Application {
         try (var arena = Arena.ofConfined()) {
             var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena);
             deviceFeatures.samplerAnisotropy(Constants.VK_TRUE);
+            deviceFeatures.sampleRateShading(Constants.VK_TRUE);
 
             var deviceCreateInfo = VkDeviceCreateInfo.allocate(arena);
             var pQueuePriorities = FloatBuffer.allocate(arena);
@@ -438,26 +445,36 @@ class Application {
 
     private void createRenderPass() {
         try (var arena = Arena.ofConfined()) {
-            var attachments = VkAttachmentDescription.allocate(arena, 2);
+            var attachments = VkAttachmentDescription.allocate(arena, 3);
             var colorAttachment = attachments[0];
             colorAttachment.format(swapChainImageFormat);
-            colorAttachment.samples(VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT);
+            colorAttachment.samples(msaaSamples);
             colorAttachment.loadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_CLEAR);
             colorAttachment.storeOp(VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_STORE);
             colorAttachment.stencilLoadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_DONT_CARE);
             colorAttachment.stencilStoreOp(VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_DONT_CARE);
             colorAttachment.initialLayout(VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED);
-            colorAttachment.finalLayout(VkImageLayout.VK_IMAGE_LAYOUT_PRESENT_SRC_KHR);
+            colorAttachment.finalLayout(VkImageLayout.VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
 
             var depthAttachment = attachments[1];
             depthAttachment.format(findDepthFormat());
-            depthAttachment.samples(VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT);
+            depthAttachment.samples(msaaSamples);
             depthAttachment.loadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_CLEAR);
             depthAttachment.storeOp(VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_DONT_CARE);
             depthAttachment.stencilLoadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_DONT_CARE);
             depthAttachment.stencilStoreOp(VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_DONT_CARE);
             depthAttachment.initialLayout(VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED);
             depthAttachment.finalLayout(VkImageLayout.VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
+
+            var colorAttachmentResolve = attachments[2];
+            colorAttachmentResolve.format(swapChainImageFormat);
+            colorAttachmentResolve.samples(VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT);
+            colorAttachmentResolve.loadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_DONT_CARE);
+            colorAttachmentResolve.storeOp(VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_STORE);
+            colorAttachmentResolve.stencilLoadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_DONT_CARE);
+            colorAttachmentResolve.stencilStoreOp(VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_DONT_CARE);
+            colorAttachmentResolve.initialLayout(VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED);
+            colorAttachmentResolve.finalLayout(VkImageLayout.VK_IMAGE_LAYOUT_PRESENT_SRC_KHR);
 
             var colorAttachmentRef = VkAttachmentReference.allocate(arena);
             colorAttachmentRef.attachment(0);
@@ -467,11 +484,16 @@ class Application {
             depthAttachmentRef.attachment(1);
             depthAttachmentRef.layout(VkImageLayout.VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
 
+            var colorAttachmentResolveRef = VkAttachmentReference.allocate(arena);
+            colorAttachmentResolveRef.attachment(2);
+            colorAttachmentResolveRef.layout(VkImageLayout.VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
+
             var subpass = VkSubpassDescription.allocate(arena);
             subpass.pipelineBindPoint(VkPipelineBindPoint.VK_PIPELINE_BIND_POINT_GRAPHICS);
             subpass.colorAttachmentCount(1);
             subpass.pColorAttachments(colorAttachmentRef);
             subpass.pDepthStencilAttachment(depthAttachmentRef);
+            subpass.pResolveAttachments(colorAttachmentResolveRef);
 
             var dependency = VkSubpassDependency.allocate(arena);
             dependency.srcSubpass(Constants.VK_SUBPASS_EXTERNAL);
@@ -485,7 +507,7 @@ class Application {
                                      | VkAccessFlags.VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT);
 
             var renderPassInfo = VkRenderPassCreateInfo.allocate(arena);
-            renderPassInfo.attachmentCount(2);
+            renderPassInfo.attachmentCount(3);
             renderPassInfo.pAttachments(attachments[0]);
             renderPassInfo.subpassCount(1);
             renderPassInfo.pSubpasses(subpass);
@@ -585,11 +607,13 @@ class Application {
 
             var multisampling = VkPipelineMultisampleStateCreateInfo.allocate(arena);
             multisampling.sampleShadingEnable(Constants.VK_FALSE);
-            multisampling.rasterizationSamples(VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT);
+            multisampling.rasterizationSamples(msaaSamples);
             multisampling.minSampleShading(1.0f);
             multisampling.pSampleMask(null);
             multisampling.alphaToCoverageEnable(Constants.VK_FALSE);
             multisampling.alphaToOneEnable(Constants.VK_FALSE);
+            multisampling.sampleShadingEnable(Constants.VK_TRUE);
+            multisampling.minSampleShading(0.2f);
 
             var colorBlendAttachment = VkPipelineColorBlendAttachmentState.allocate(arena);
             colorBlendAttachment.colorWriteMask(
@@ -676,13 +700,14 @@ class Application {
 
         for (int i = 0; i < swapChainImageViews.length; i++) {
             try (var arena = Arena.ofConfined()) {
-                var pAttachments = VkImageView.Buffer.allocate(arena, 2);
-                pAttachments.write(0, swapChainImageViews[i]);
+                var pAttachments = VkImageView.Buffer.allocate(arena, 3);
+                pAttachments.write(0, colorImageView);
                 pAttachments.write(1, depthImageView);
+                pAttachments.write(2, swapChainImageViews[i]);
 
                 var framebufferInfo = VkFramebufferCreateInfo.allocate(arena);
                 framebufferInfo.renderPass(renderPass);
-                framebufferInfo.attachmentCount(2);
+                framebufferInfo.attachmentCount(3);
                 framebufferInfo.pAttachments(pAttachments);
                 framebufferInfo.width(swapChainExtent.width());
                 framebufferInfo.height(swapChainExtent.height());
@@ -716,6 +741,25 @@ class Application {
         }
     }
 
+    private void createColorResources() {
+        var colorFormat = swapChainImageFormat;
+
+        var pair = createImage(
+                swapChainExtent.width(),
+                swapChainExtent.height(),
+                1,
+                msaaSamples,
+                colorFormat,
+                VkImageTiling.VK_IMAGE_TILING_OPTIMAL,
+                VkImageUsageFlags.VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT
+                | VkImageUsageFlags.VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT,
+                VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT
+        );
+        colorImage = pair.first;
+        colorImageMemory = pair.second;
+        colorImageView = createImageView(colorImage, colorFormat, VkImageAspectFlags.VK_IMAGE_ASPECT_COLOR_BIT, 1);
+    }
+
     private void createDepthResources() {
         var depthFormat = findDepthFormat();
 
@@ -723,6 +767,7 @@ class Application {
                 swapChainExtent.width(),
                 swapChainExtent.height(),
                 1,
+                msaaSamples,
                 depthFormat,
                 VkImageTiling.VK_IMAGE_TILING_OPTIMAL,
                 VkImageUsageFlags.VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT,
@@ -793,6 +838,7 @@ class Application {
                     width,
                     height,
                     textureMipLevels,
+                    VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT,
                     VkFormat.VK_FORMAT_R8G8B8A8_SRGB,
                     VkImageTiling.VK_IMAGE_TILING_OPTIMAL,
                     VkImageUsageFlags.VK_IMAGE_USAGE_TRANSFER_DST_BIT
@@ -1616,6 +1662,7 @@ class Application {
             int width,
             int height,
             int mipLevels,
+            @enumtype(VkSampleCountFlags.class) int numSamples,
             @enumtype(VkFormat.class) int format,
             @enumtype(VkImageTiling.class) int tiling,
             @enumtype(VkImageUsageFlags.class) int usage,
@@ -1633,7 +1680,7 @@ class Application {
             imageInfo.tiling(tiling);
             imageInfo.initialLayout(VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED);
             imageInfo.usage(usage);
-            imageInfo.samples(VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT);
+            imageInfo.samples(numSamples);
             imageInfo.sharingMode(VkSharingMode.VK_SHARING_MODE_EXCLUSIVE);
 
             var pImage = VkImage.Buffer.allocate(arena);
@@ -2046,6 +2093,37 @@ class Application {
         }
     }
 
+    private @enumtype(VkSampleCountFlags.class) int getMaxUsableSampleCount() {
+        try (var arena = Arena.ofConfined()) {
+            var physicalDeviceProperties = VkPhysicalDeviceProperties.allocate(arena);
+            instanceCommands.vkGetPhysicalDeviceProperties(physicalDevice, physicalDeviceProperties);
+
+            var counts = physicalDeviceProperties.limits().framebufferColorSampleCounts()
+                         & physicalDeviceProperties.limits().framebufferDepthSampleCounts();
+
+            if ((counts & VkSampleCountFlags.VK_SAMPLE_COUNT_64_BIT) != 0) {
+                return VkSampleCountFlags.VK_SAMPLE_COUNT_64_BIT;
+            }
+            if ((counts & VkSampleCountFlags.VK_SAMPLE_COUNT_32_BIT) != 0) {
+                return VkSampleCountFlags.VK_SAMPLE_COUNT_32_BIT;
+            }
+            if ((counts & VkSampleCountFlags.VK_SAMPLE_COUNT_16_BIT) != 0) {
+                return VkSampleCountFlags.VK_SAMPLE_COUNT_16_BIT;
+            }
+            if ((counts & VkSampleCountFlags.VK_SAMPLE_COUNT_8_BIT) != 0) {
+                return VkSampleCountFlags.VK_SAMPLE_COUNT_8_BIT;
+            }
+            if ((counts & VkSampleCountFlags.VK_SAMPLE_COUNT_4_BIT) != 0) {
+                return VkSampleCountFlags.VK_SAMPLE_COUNT_4_BIT;
+            }
+            if ((counts & VkSampleCountFlags.VK_SAMPLE_COUNT_2_BIT) != 0) {
+                return VkSampleCountFlags.VK_SAMPLE_COUNT_2_BIT;
+            }
+
+            return VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT;
+        }
+    }
+
     private Arena applicationArena = Arena.ofShared();
 
     private GLFW glfw;
@@ -2059,6 +2137,7 @@ class Application {
     private VkSurfaceKHR surface;
     private VkPhysicalDevice physicalDevice;
     private VkDevice device;
+    private @enumtype(VkSampleCountFlags.class) int msaaSamples;
     private DeviceCommands deviceCommands;
     private VkQueue graphicsQueue;
     private VkQueue presentQueue;
@@ -2073,6 +2152,9 @@ class Application {
     private VkPipeline graphicsPipeline;
     private VkFramebuffer[] swapChainFramebuffers;
     private VkCommandPool commandPool;
+    private VkImage colorImage;
+    private VkDeviceMemory colorImageMemory;
+    private VkImageView colorImageView;
     private VkImage depthImage;
     private VkDeviceMemory depthImageMemory;
     private VkImageView depthImageView;

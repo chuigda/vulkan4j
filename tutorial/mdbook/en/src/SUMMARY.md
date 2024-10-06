@@ -53,6 +53,7 @@
 - [Loading models](depth-buffering/loading-models.md)
 
 # Rendering quality
-- [Generating mipmaps](./quality/generating-mipmaps.md)
+- [Generating mipmaps](quality/generating-mipmaps.md)
+- [Multisampling](quality/multisampling.md)
 
 # Compute Shader
