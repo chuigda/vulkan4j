@@ -1,5 +1,14 @@
-vk4j/src/main/java/tech/icey/vk4j/bitmask/*.java linguist-vendored
-vk4j/src/main/java/tech/icey/vk4j/command/*.java linguist-vendored
-vk4j/src/main/java/tech/icey/vk4j/datatype/*.java linguist-vendored
-vk4j/src/main/java/tech/icey/vk4j/enumtype/*.java linguist-vendored
-vk4j/src/main/java/tech/icey/vk4j/handle/*.java linguist-vendored
+vk4j/src/main/java/tech/icey/vk4j/bitmask/*.java linguist-generated
+vk4j/src/main/java/tech/icey/vk4j/command/*.java linguist-generated
+vk4j/src/main/java/tech/icey/vk4j/datatype/*.java linguist-generated
+vk4j/src/main/java/tech/icey/vk4j/enumtype/*.java linguist-generated
+vk4j/src/main/java/tech/icey/vk4j/handle/*.java linguist-generated
+
+glfw/src/main/java/tech/icey/glfw/datatype/*.java linguist-generated
+glfw/src/main/java/tech/icey/glfw/handle/*.java linguist-generated
+glfw/src/main/java/tech/icey/glfw/GLFW.java linguist-generated
+glfw/src/main/java/tech/icey/glfw/GLFWConstants.java linguist-generated
+glfw/src/main/java/tech/icey/glfw/GLFWFunctionTypes.java linguist-generated
+
+tutorial/src/main/java/* linguist-documentation
+tutorial/src/main/java/ch28/Main.java -linguist-documentation
