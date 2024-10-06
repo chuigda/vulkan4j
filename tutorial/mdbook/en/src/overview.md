@@ -104,11 +104,19 @@ One little difference is that `vulkan4j` merges `Flags` and `FlagBits` enumerati
 
 ### Structs and unions representation
 
-> TODO
+Structs and unions are represented with Java `record`s. Each `record` instance contains a `MemorySegment` representing the native memory of the struct or union. Calling static method `allocate` will automatically allocate a native memory segment for that struct or union, and create a new instance of the `record` with that memory segment. It also initializes fields like `sType` for you. Manually creating the `record` instance is not recommended but possible via the `record`'s constructor. 
+
+Since the `record` type representing struct or union is already a pointer, command taking struct as parameter and command taking struct pointer as parameter will have no difference on their function signature. In order to distinguish them, `vulkan4j` uses a `@pointer` annotation to mark that a parameter will be passed as a pointer (thus Vulkan may modify its content, and if conforming Vulkan specification, the parameter can be `null`).
+
+The `allocate` method has a overloading that accepts a `count` and returns an Java array of that struct or union. If you want to pass such an array or union to a Vulkan command, just pass the first element of the array. 
 
 ### Handles representation
 
-> TODO
+Handles like `VkInstance`, `VkDevice` or `VkQueue` are represented with Java `record`s as well. Each handle type has a `MemorySegment` field that represents the native handle itself.
+
+When creating a pointer to a handle, you should use the `allocate` static method on the corresponding `Buffer` type such as `VkInstance.Buffer.allocate`. The return type is a `VkInstance.Buffer`. Calling `read` on the buffer will return the handle.
+
+Handles are usually created by Vulkan commands and most time you'll be creating pointers to handles and passing them to Vulkan commands. It's also possible to wrap a raw `MemorySegment` into a handle using the handle's constructor.
 
 ### Enums and bitmasks representation
 
