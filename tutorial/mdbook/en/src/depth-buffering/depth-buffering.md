@@ -121,7 +121,7 @@ private void initVulkan() {
     // ...
     createCommandPool();
     createDepthResources();
-    createTextureImages();
+    createTextureImage();
     // ...
 }
 
