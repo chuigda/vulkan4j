@@ -49,3 +49,4 @@ tutorial/dependency-reduced-pom.xml
 # Code Generator Input
 codegen/input/*
 !codegen/input/download.sh
+!codegen/input/Doxyfile.vma
