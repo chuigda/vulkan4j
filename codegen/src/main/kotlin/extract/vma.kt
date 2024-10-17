@@ -29,17 +29,23 @@ fun extractVMAHeader(fileContent: String): Registry {
             break
         }
 
+        if (lines[i].startsWith("/*")) {
+            while (!lines[i].endsWith("*/")) {
+                i++
+            }
+        }
+
         if (lines[i].startsWith("VK_DEFINE_HANDLE(") && lines[i].endsWith(")")) {
             val name = lines[i].substring(16, lines[i].length - 1)
             handles[name] = Handle(name, dispatchable=true)
+            i++
         }
-
-        if (lines[i].startsWith("VK_DEFINE_NON_DISPATCHABLE_HANDLE(") && lines[i].endsWith(")")) {
+        else if (lines[i].startsWith("VK_DEFINE_NON_DISPATCHABLE_HANDLE(") && lines[i].endsWith(")")) {
             val name = lines[i].substring(34, lines[i].length - 1)
             handles[name] = Handle(name, dispatchable=false)
+            i++
         }
-
-        if (lines[i].startsWith("typedef") && lines[i].contains("VKAPI_PTR") && lines[i].contains("PFN_")) {
+        else if (lines[i].startsWith("typedef") && lines[i].contains("VKAPI_PTR") && lines[i].contains("PFN_")) {
             var j = i
             while (!lines[j].endsWith(");")) {
                 j++
@@ -51,8 +57,20 @@ fun extractVMAHeader(fileContent: String): Registry {
 
             i = j + 1
         }
-
-        i++
+        else if (lines[i].startsWith("typedef enum")) {
+            if (lines[i].contains("FlagBits")) {
+                // this is a bitmask
+                TODO()
+            }
+            else {
+                // this is a regular enum
+                TODO()
+            }
+            i++
+        }
+        else {
+            i++
+        }
     }
 
     return Registry(
@@ -61,7 +79,9 @@ fun extractVMAHeader(fileContent: String): Registry {
         opaqueTypedefs=opaqueTypedefs,
         handles=handles,
         structs=mapOf(),
-        functionTypedefs=functionTypedefs
+        functionTypedefs=functionTypedefs,
+        bitmasks=mapOf(),
+        enums=mapOf()
     )
 }
 

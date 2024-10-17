@@ -5,6 +5,8 @@ data class Registry(
     val handles: Map<String, Handle>,
     val structs: Map<String, Structure>,
     val functionTypedefs: Map<String, FunctionTypedef>,
+    val bitmasks: Map<String, Bitmask>,
+    val enums: Map<String, Enum>,
 
     var constantClassName: String = "Constants"
 )
@@ -16,6 +18,8 @@ fun mergeRegistry(vararg registries: Registry): Registry {
     val handles = mutableMapOf<String, Handle>()
     val structures = mutableMapOf<String, Structure>()
     val functionTypedefs = mutableMapOf<String, FunctionTypedef>()
+    val bitmasks = mutableMapOf<String, Bitmask>()
+    val enums = mutableMapOf<String, Enum>()
 
     for (registry in registries) {
         constants.putAll(registry.constants)
@@ -24,9 +28,20 @@ fun mergeRegistry(vararg registries: Registry): Registry {
         handles.putAll(registry.handles)
         structures.putAll(registry.structs)
         functionTypedefs.putAll(registry.functionTypedefs)
+        bitmasks.putAll(registry.bitmasks)
+        enums.putAll(registry.enums)
     }
 
-    return Registry(constants, functions, opaqueTypedefs, handles, structures, functionTypedefs)
+    return Registry(
+        constants,
+        functions,
+        opaqueTypedefs,
+        handles,
+        structures,
+        functionTypedefs,
+        bitmasks,
+        enums
+    )
 }
 
 abstract class Entity {
@@ -108,4 +123,30 @@ data class Param(
     val len: String? = null,
     val arglen: List<String>? = null,
     val optional: Boolean = false
+) : Entity()
+
+data class Bitmask(
+    override val name: String,
+    override val api: String? = null,
+    val bitflags: List<Bitflag>,
+    val bitwidth: Int? = null,
+    val requireFlagBits: String
+) : Entity()
+
+data class Bitflag(
+    override val name: String,
+    override val api: String? = null,
+    val value: Int
+) : Entity()
+
+data class Enum(
+    override val name: String,
+    override val api: String,
+    val variants: List<Variant>
+) : Entity()
+
+data class Variant(
+    override val name: String,
+    override val api: String? = null,
+    val value: Int
 ) : Entity()
