@@ -21,5 +21,6 @@
         <module>vk4j</module>
         <module>glfw</module>
         <module>tutorial</module>
+        <module>vma</module>
     </modules>
 </project>

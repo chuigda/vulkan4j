@@ -222,13 +222,40 @@ private val knownTypes = mapOf(
     "VkDeviceAddress" to uint64Type,
     "VkRemoteAddressNV" to pvoidType,
 
-    // For non-vulkan functions to properly interact with types
+    // For non-vulkan functions to properly interact with types when we're generating for GLFW or VMA or things like
+    // such. In case of we're generating Vulkan API binding, these will be actually overrided by the entries provided
+    // by vk.xml.
     "VkInstance" to CHandleType("VkInstance"),
     "VkPhysicalDevice" to CHandleType("VkPhysicalDevice"),
     "VkSurfaceKHR" to CHandleType("VkSurfaceKHR"),
     "VkAllocationCallbacks" to CStructType("VkAllocationCallbacks"),
     "VkResult" to int32Type,
     "PFN_vkGetInstanceProcAddr" to CPointerType(voidType, false, comment="PFN_vkGetInstanceProcAddr"),
+    "PFN_vkGetDeviceProcAddr" to CPointerType(voidType, false, comment="PFN_vkGetDeviceProcAddr"),
+    "PFN_vkGetPhysicalDeviceProperties" to CPointerType(voidType, false, comment="PFN_vkGetPhysicalDeviceProperties"),
+    "PFN_vkGetPhysicalDeviceMemoryProperties" to CPointerType(voidType, false, comment="PFN_vkGetPhysicalDeviceMemoryProperties"),
+    "PFN_vkAllocateMemory" to CPointerType(voidType, false, comment="PFN_vkAllocateMemory"),
+    "PFN_vkFreeMemory" to CPointerType(voidType, false, comment="PFN_vkFreeMemory"),
+    "PFN_vkMapMemory" to CPointerType(voidType, false, comment="PFN_vkMapMemory"),
+    "PFN_vkUnmapMemory" to CPointerType(voidType, false, comment="PFN_vkUnmapMemory"),
+    "PFN_vkFlushMappedMemoryRanges" to CPointerType(voidType, false, comment="PFN_vkFlushMappedMemoryRanges"),
+    "PFN_vkInvalidateMappedMemoryRanges" to CPointerType(voidType, false, comment="PFN_vkInvalidateMappedMemoryRanges"),
+    "PFN_vkBindBufferMemory" to CPointerType(voidType, false, comment="PFN_vkBindBufferMemory"),
+    "PFN_vkBindImageMemory" to CPointerType(voidType, false, comment="PFN_vkBindImageMemory"),
+    "PFN_vkGetBufferMemoryRequirements" to CPointerType(voidType, false, comment="PFN_vkGetBufferMemoryRequirements"),
+    "PFN_vkGetImageMemoryRequirements" to CPointerType(voidType, false, comment="PFN_vkGetImageMemoryRequirements"),
+    "PFN_vkCreateBuffer" to CPointerType(voidType, false, comment="PFN_vkCreateBuffer"),
+    "PFN_vkDestroyBuffer" to CPointerType(voidType, false, comment="PFN_vkDestroyBuffer"),
+    "PFN_vkCreateImage" to CPointerType(voidType, false, comment="PFN_vkCreateImage"),
+    "PFN_vkDestroyImage" to CPointerType(voidType, false, comment="PFN_vkDestroyImage"),
+    "PFN_vkCmdCopyBuffer" to CPointerType(voidType, false, comment="PFN_vkCmdCopyBuffer"),
+    "PFN_vkGetBufferMemoryRequirements2KHR" to CPointerType(voidType, false, comment="PFN_vkGetBufferMemoryRequirements2KHR"),
+    "PFN_vkGetImageMemoryRequirements2KHR" to CPointerType(voidType, false, comment="PFN_vkGetImageMemoryRequirements2KHR"),
+    "PFN_vkBindBufferMemory2KHR" to CPointerType(voidType, false, comment="PFN_vkBindBufferMemory2KHR"),
+    "PFN_vkBindImageMemory2KHR" to CPointerType(voidType, false, comment="PFN_vkBindImageMemory2KHR"),
+    "PFN_vkGetPhysicalDeviceMemoryProperties2KHR" to CPointerType(voidType, false, comment="PFN_vkGetPhysicalDeviceMemoryProperties2KHR"),
+    "PFN_vkGetDeviceBufferMemoryRequirementsKHR" to CPointerType(voidType, false, comment="PFN_vkGetDeviceBufferMemoryRequirementsKHR"),
+    "PFN_vkGetDeviceImageMemoryRequirementsKHR" to CPointerType(voidType, false, comment="PFN_vkGetDeviceImageMemoryRequirementsKHR"),
 
     // Android
     "ANativeWindow" to pvoidType,
