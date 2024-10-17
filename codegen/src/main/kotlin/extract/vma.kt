@@ -39,6 +39,19 @@ fun extractVMAHeader(fileContent: String): Registry {
             handles[name] = Handle(name, dispatchable=false)
         }
 
+        if (lines[i].startsWith("typedef") && lines[i].contains("VKAPI_PTR") && lines[i].contains("PFN_")) {
+            var j = i
+            while (!lines[j].endsWith(");")) {
+                j++
+            }
+
+            val functionTypedefString = lines.subList(i, j + 1).joinToString("")
+            val functionTypedef = parseFunctionTypedef(functionTypedefString)
+            functionTypedefs[functionTypedef.name] = functionTypedef
+
+            i = j + 1
+        }
+
         i++
     }
 
@@ -50,4 +63,87 @@ fun extractVMAHeader(fileContent: String): Registry {
         structs=mapOf(),
         functionTypedefs=functionTypedefs
     )
+}
+
+private fun parseFunctionTypedef(line: String): FunctionTypedef {
+    val tokens = tokenize(line)
+    if (tokens[0] != "typedef") {
+        throw RuntimeException("Expected 'typedef'")
+    }
+
+    var (retType, position) = parseType(tokens, 1)
+    if (tokens[position] != "(") {
+        throw RuntimeException("Expected '('")
+    }
+    position++
+
+    if (tokens[position] != "VKAPI_PTR") {
+        throw RuntimeException("Expected 'VKAPI_PTR'")
+    }
+    position++
+
+    if (tokens[position] != "*") {
+        throw RuntimeException("Expected '*'")
+    }
+    position++
+
+    val functionName = tokens[position]
+    position++
+
+    if (tokens[position] != ")") {
+        throw RuntimeException("Expected ')'")
+    }
+    position++
+
+    if (tokens[position] != "(") {
+        throw RuntimeException("Expected '('")
+    }
+    position++
+
+    val params = mutableListOf<Param>()
+    while (tokens[position] != ")") {
+        var (paramType, positionNext) = parseType(tokens, position)
+        position = positionNext
+
+        if (tokens[position] == ")" && paramType is IdentifierType && paramType.ident == "void") {
+            break
+        }
+
+        var optional = false
+        if (tokens[position].startsWith("VMA_") && tokens[position].isAllCapital()) {
+            if (tokens[position].contains("NULLABLE")) {
+                optional = true
+            }
+            position += 1
+        }
+
+        val paramName = tokens[position]
+        position += 1
+
+        if (tokens.getOrNull(position) == "[") {
+            if (tokens.getOrNull(position + 1) == "]") {
+                paramType = PointerType(paramType, false)
+                position += 2
+            }
+            else {
+                val arraySize = tokens[position + 1]
+                if (tokens.getOrNull(position + 2) != "]") {
+                    throw RuntimeException("Expected ']'")
+                }
+                paramType = ArrayType(paramType, arraySize)
+                position += 3
+            }
+        }
+
+        params.add(Param(paramName, optional=optional, type=paramType))
+        if (tokens[position] == ",") {
+            position++
+        }
+    }
+
+    if (tokens[position] != ")") {
+        throw RuntimeException("Expected ')'")
+    }
+
+    return FunctionTypedef(functionName, params=params, result=retType)
 }
