@@ -130,23 +130,23 @@ data class Bitmask(
     override val api: String? = null,
     val bitflags: List<Bitflag>,
     val bitwidth: Int? = null,
-    val requireFlagBits: String
+    val requireFlagBits: String? = null
 ) : Entity()
 
 data class Bitflag(
     override val name: String,
     override val api: String? = null,
-    val value: Int
+    val value: String
 ) : Entity()
 
 data class Enum(
     override val name: String,
-    override val api: String,
+    override val api: String? = null,
     val variants: List<Variant>
 ) : Entity()
 
 data class Variant(
     override val name: String,
     override val api: String? = null,
-    val value: Int
+    val value: String
 ) : Entity()

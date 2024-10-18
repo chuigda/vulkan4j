@@ -1,6 +1,8 @@
 package extract
 
 import ArrayType
+import Bitflag
+import Bitmask
 import Constant
 import Registry
 import Function
@@ -13,6 +15,8 @@ import Param
 import PointerType
 import Structure
 import Type
+import Enum
+import Variant
 
 fun extractVMAHeader(fileContent: String): Registry {
     var lines = fileContent.split('\n').map(String::trim)
@@ -22,6 +26,8 @@ fun extractVMAHeader(fileContent: String): Registry {
     val opaqueTypedefs = mutableMapOf<String, OpaqueTypedef>()
     val handles = mutableMapOf<String, Handle>()
     val functionTypedefs = mutableMapOf<String, FunctionTypedef>()
+    val bitmasks = mutableMapOf<String, Bitmask>()
+    val enums = mutableMapOf<String, Enum>()
 
     var i = 0
     while (i < lines.size) {
@@ -58,20 +64,35 @@ fun extractVMAHeader(fileContent: String): Registry {
             i = j + 1
         }
         else if (lines[i].startsWith("typedef enum")) {
-            if (lines[i].contains("FlagBits")) {
-                // this is a bitmask
-                TODO()
+            val typedefLine = lines[i]
+            assert(lines[i + 1].startsWith("{"))
+
+            val (enumerators, nextLineId) = parseEnum(lines, i + 2)
+            assert(lines[nextLineId].startsWith("}") && lines[nextLineId].endsWith(";"))
+
+            val enumName = typedefLine.split(' ')[2]
+            if (typedefLine.contains("FlagBits")) {
+                bitmasks.put(enumName, Bitmask(
+                    name=enumName,
+                    bitflags=enumerators.map { Bitflag(name=it.first, value=it.second) }
+                ))
             }
             else {
-                // this is a regular enum
-                TODO()
+                enums.put(enumName, Enum(
+                    name=enumName,
+                    variants=enumerators.map { Variant(name=it.first, value=it.second) }
+                ))
             }
-            i++
+
+            i = nextLineId + 1
         }
         else {
             i++
         }
     }
+
+    println(bitmasks)
+    println(enums)
 
     return Registry(
         constants=constants,
@@ -80,8 +101,8 @@ fun extractVMAHeader(fileContent: String): Registry {
         handles=handles,
         structs=mapOf(),
         functionTypedefs=functionTypedefs,
-        bitmasks=mapOf(),
-        enums=mapOf()
+        bitmasks=bitmasks,
+        enums=enums
     )
 }
 
@@ -166,4 +187,54 @@ private fun parseFunctionTypedef(line: String): FunctionTypedef {
     }
 
     return FunctionTypedef(functionName, params=params, result=retType)
+}
+
+private fun parseEnum(lines: List<String>, i: Int): Pair<List<Pair<String, String>>, Int> {
+    var j = i
+    val enumerators = mutableListOf<Pair<String, String>>()
+
+    while (j < lines.size && !lines[j].startsWith("}")) {
+        if (lines[j].startsWith("/*")) {
+            while (!lines[j].endsWith("*/")) {
+                j++
+            }
+            j++
+        }
+        else if (lines[j].startsWith("//") || lines[j].startsWith("#") || lines[j].isBlank()) {
+            j++
+        }
+        else if (lines[j].contains("=")) {
+            val parts = lines[j].split('=')
+            val name = parts[0].trim()
+            val values = mutableListOf<String>()
+            if (parts.size > 1) {
+                values.add(parts[1].trim().replace(",", ""))
+            }
+
+            if (lines[j].endsWith(",")) {
+                j++
+                enumerators.add(Pair(name, values.joinToString(" ")))
+                continue
+            }
+
+            j++
+            while (!lines[j].startsWith("}") && !lines[j].endsWith(",")) {
+                values.add(lines[j].trim())
+                j++
+            }
+            if (lines[j].endsWith(",")) {
+                if (!lines[j].contains("=")) {
+                    values.add(lines[j].substring(0, lines[j].length - 1).trim())
+                    j++
+                }
+            }
+
+            enumerators.add(Pair(name, values.joinToString(" ")))
+        }
+        else {
+            throw RuntimeException("Unexpected line (${j + 1}): ${lines[j]}")
+        }
+    }
+
+    return Pair(enumerators, j)
 }
