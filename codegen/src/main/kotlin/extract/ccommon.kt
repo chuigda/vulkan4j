@@ -24,6 +24,12 @@ fun tokenize(line: String): List<String> {
             }
             tokens.add(line.slice(start until position))
         }
+        else if (c == '"') {
+            position++
+            while (position < line.length && line[position] != '"') {
+                position++
+            }
+        }
         else {
             throw RuntimeException("Unexpected character: $c")
         }
@@ -48,8 +54,13 @@ fun parseType(tokens: List<String>, position: Int): Pair<Type, Int> {
         return parseType(tokens, position + 1)
     }
     else {
+        assert(tokens[position].isValidIdent())
         var type: Type = IdentifierType(tokens[position])
         var positionNext = position + 1
+        while (positionNext < tokens.size && tokens[positionNext].isAllCapital() == true) {
+            // consider this all-capital token as some kind of macro, skipping
+            positionNext++
+        }
         while (tokens.getOrNull(positionNext) == "*") {
             type = PointerType(type, false)
             positionNext++
@@ -75,5 +86,9 @@ fun Char.isIdentStartingChar(): Boolean {
 }
 
 fun String.isAllCapital(): Boolean {
-    return this.all { it.isUpperCase() || it.isDigit() || it == '_' }
+    return this.any { it.isLetter() } && this.filter { it.isLetter() }.all { it.isUpperCase() }
+}
+
+fun String.isValidIdent(): Boolean {
+    return this.isNotEmpty() && this[0].isIdentStartingChar() && this.all { it.isIdentChar() }
 }

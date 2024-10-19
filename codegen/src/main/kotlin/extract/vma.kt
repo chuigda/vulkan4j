@@ -63,6 +63,17 @@ fun extractVMAHeader(fileContent: String): Registry {
 
             i = j + 1
         }
+        else if (lines[i].startsWith("VMA_CALL_PRE") && lines[i].contains("VMA_CALL_POST")) {
+            var j = i
+            while (!lines[j].endsWith(");")) {
+                j++
+            }
+            val functionString = lines.subList(i, j + 1).joinToString("")
+            val function = parseFunction(functionString)
+            functions[function.name] = function
+
+            i = j + 1
+        }
         else if (lines[i].startsWith("typedef enum")) {
             val typedefLine = lines[i]
             assert(lines[i + 1].startsWith("{"))
@@ -73,7 +84,7 @@ fun extractVMAHeader(fileContent: String): Registry {
             val enumName = typedefLine.split(' ')[2]
             if (typedefLine.contains("FlagBits")) {
                 bitmasks.put(enumName, Bitmask(
-                    name=enumName,
+                    name=enumName.replace("FlagBits", "Flags"),
                     bitflags=enumerators.map { Bitflag(name=it.first, value=it.second) }
                 ))
             }
@@ -108,37 +119,26 @@ fun extractVMAHeader(fileContent: String): Registry {
 
 private fun parseFunctionTypedef(line: String): FunctionTypedef {
     val tokens = tokenize(line)
-    if (tokens[0] != "typedef") {
-        throw RuntimeException("Expected 'typedef'")
-    }
+    assert(tokens[0] == "typedef")
 
     var (retType, position) = parseType(tokens, 1)
-    if (tokens[position] != "(") {
-        throw RuntimeException("Expected '('")
-    }
+    assert(tokens[position] == "(")
     position++
 
-    if (tokens[position] != "VKAPI_PTR") {
-        throw RuntimeException("Expected 'VKAPI_PTR'")
-    }
+    assert(tokens[position] == "VKAPI_PTR")
     position++
 
-    if (tokens[position] != "*") {
-        throw RuntimeException("Expected '*'")
-    }
+    assert(tokens[position] == "*")
     position++
 
     val functionName = tokens[position]
+    assert(functionName.isValidIdent())
     position++
 
-    if (tokens[position] != ")") {
-        throw RuntimeException("Expected ')'")
-    }
+    assert(tokens[position] == ")")
     position++
 
-    if (tokens[position] != "(") {
-        throw RuntimeException("Expected '('")
-    }
+    assert(tokens[position] == "(")
     position++
 
     val params = mutableListOf<Param>()
@@ -159,6 +159,7 @@ private fun parseFunctionTypedef(line: String): FunctionTypedef {
         }
 
         val paramName = tokens[position]
+        assert(paramName.isValidIdent())
         position += 1
 
         if (tokens.getOrNull(position) == "[") {
@@ -187,6 +188,74 @@ private fun parseFunctionTypedef(line: String): FunctionTypedef {
     }
 
     return FunctionTypedef(functionName, params=params, result=retType)
+}
+
+private fun parseFunction(line: String): Function {
+    val tokens = tokenize(line)
+    assert(tokens[0] == "VMA_CALL_PRE")
+
+    var (retType, position) = parseType(tokens, 1)
+    assert(tokens[position] == "VMA_CALL_POST")
+    position += 1
+
+    var fName = tokens[position]
+    assert(fName.isValidIdent())
+    position += 1
+
+    assert(tokens[position] == "(")
+    position += 1
+
+    val params = mutableListOf<Param>()
+    while (tokens[position] != ")") {
+        var (paramType, positionNext) = parseType(tokens, position)
+        position = positionNext
+
+        if (tokens[position] == ")" && paramType is IdentifierType && paramType.ident == "void") {
+            break
+        }
+
+        var optional = false
+        if (tokens[position].startsWith("VMA_") && tokens[position].isAllCapital()) {
+            if (tokens[position].contains("NULLABLE")) {
+                optional = true
+            }
+            position += 1
+
+            // VMA function-call alike macro, usually used to indicate length metadata
+            // skip if we get one
+            if (tokens[position] == "(") {
+                position += 1
+                while (tokens[position] != ")") {
+                    position += 1
+                }
+                position += 1
+            }
+        }
+
+        val paramName = tokens[position]
+        position += 1
+
+        if (tokens.getOrNull(position) == "[") {
+            if (tokens.getOrNull(position + 1) == "]") {
+                paramType = PointerType(paramType, false)
+                position += 2
+            }
+            else {
+                val arraySize = tokens[position + 1]
+                assert(tokens[position + 2] == "]")
+                paramType = ArrayType(paramType, arraySize)
+                position += 3
+            }
+        }
+
+        params.add(Param(paramName, optional=optional, type=paramType))
+        if (tokens[position] == ",") {
+            position++
+        }
+        System.err.println(params)
+    }
+
+    return Function(fName, params=params, result=retType)
 }
 
 private fun parseEnum(lines: List<String>, i: Int): Pair<List<Pair<String, String>>, Int> {
