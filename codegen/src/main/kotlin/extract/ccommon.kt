@@ -57,6 +57,13 @@ fun parseType(tokens: List<String>, position: Int): Pair<Type, Int> {
         assert(tokens[position].isValidIdent())
         var type: Type = IdentifierType(tokens[position])
         var positionNext = position + 1
+        if (positionNext < tokens.size && tokens[positionNext].isLikelyMacro()) {
+            if (positionNext + 1 < tokens.size && !tokens[positionNext + 1].isValidIdent()) {
+                // this macro is a highly likely part of the type. skip it
+                positionNext++
+            }
+        }
+
         while (tokens.getOrNull(positionNext) == "*") {
             type = PointerType(type, false)
             positionNext++
@@ -87,4 +94,8 @@ fun String.isAllCapital(): Boolean {
 
 fun String.isValidIdent(): Boolean {
     return this.isNotEmpty() && this[0].isIdentStartingChar() && this.all { it.isIdentChar() }
+}
+
+fun String.isLikelyMacro(): Boolean {
+    return this.isValidIdent() && this.isAllCapital()
 }
