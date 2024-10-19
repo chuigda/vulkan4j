@@ -195,6 +195,7 @@ private fun parseFunction(line: String): Function {
     assert(tokens[0] == "VMA_CALL_PRE")
 
     var (retType, position) = parseType(tokens, 1)
+
     assert(tokens[position] == "VMA_CALL_POST")
     position += 1
 
@@ -233,6 +234,7 @@ private fun parseFunction(line: String): Function {
         }
 
         val paramName = tokens[position]
+        assert(paramName.isValidIdent())
         position += 1
 
         if (tokens.getOrNull(position) == "[") {
@@ -252,7 +254,6 @@ private fun parseFunction(line: String): Function {
         if (tokens[position] == ",") {
             position++
         }
-        System.err.println(params)
     }
 
     return Function(fName, params=params, result=retType)

@@ -57,10 +57,6 @@ fun parseType(tokens: List<String>, position: Int): Pair<Type, Int> {
         assert(tokens[position].isValidIdent())
         var type: Type = IdentifierType(tokens[position])
         var positionNext = position + 1
-        while (positionNext < tokens.size && tokens[positionNext].isAllCapital() == true) {
-            // consider this all-capital token as some kind of macro, skipping
-            positionNext++
-        }
         while (tokens.getOrNull(positionNext) == "*") {
             type = PointerType(type, false)
             positionNext++
