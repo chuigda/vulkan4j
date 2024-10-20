@@ -23,5 +23,6 @@
         <module>glfw</module>
         <module>tutorial</module>
         <module>vma</module>
+        <module>drill</module>
     </modules>
 </project>

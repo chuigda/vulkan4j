@@ -258,7 +258,14 @@ fun generateInputConvert(type: CType, param: Param): String = when (type) {
             else -> throw Exception("unsupported array type: $type")
         }
     }
-    is CNonRefType -> param.name
+    is CNonRefType -> {
+        if (type is CPlatformDependentIntType && type.cType == "size_t") {
+            "MemorySegment.ofAddress(${param.name})"
+        }
+        else {
+            param.name
+        }
+    }
     else -> throw Exception("unsupported parameter type: $type")
 }
 

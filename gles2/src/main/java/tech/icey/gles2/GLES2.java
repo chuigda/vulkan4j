@@ -192,7 +192,7 @@ public final class GLES2 {
         try {
             HANDLE$glBufferData.invokeExact(
                     target,
-                    size,
+                    MemorySegment.ofAddress(size),
                     data,
                     usage
             );
@@ -210,8 +210,8 @@ public final class GLES2 {
         try {
             HANDLE$glBufferSubData.invokeExact(
                     target,
-                    offset,
-                    size,
+                    MemorySegment.ofAddress(offset),
+                    MemorySegment.ofAddress(size),
                     data
             );
         } catch (Throwable t) {
@@ -1479,7 +1479,7 @@ public final class GLES2 {
     public void glShaderSource(
             @unsigned int shader,
             int count,
-            @nullable ByteBuffer string,
+            @nullable PointerBuffer string,
             @nullable IntBuffer length
     ) {
         try {
@@ -2672,7 +2672,7 @@ public final class GLES2 {
     public static final FunctionDescriptor DESCRIPTOR$glShaderSource = FunctionDescriptor.ofVoid(
             ValueLayout.JAVA_INT,
             ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)),
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
     );
     public static final FunctionDescriptor DESCRIPTOR$glStencilFunc = FunctionDescriptor.ofVoid(
