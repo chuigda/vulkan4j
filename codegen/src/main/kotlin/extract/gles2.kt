@@ -103,7 +103,7 @@ private fun extractCommands(commands: Element, allCommands: MutableMap<String, F
 
                         val paramTypeString = getElementTextWithoutName(child)
                         val (paramType, _) = parseType(tokenize(paramTypeString), 0)
-                        params.add(Param(paramName, type=paramType))
+                        params.add(Param(paramName, type=paramType, optional=true))
                     }
                 }
 

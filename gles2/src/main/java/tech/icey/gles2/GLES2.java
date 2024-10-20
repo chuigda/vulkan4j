@@ -38,13 +38,13 @@ public final class GLES2 {
     public void glBindAttribLocation(
             @unsigned int program,
             @unsigned int index,
-            ByteBuffer name
+            @nullable ByteBuffer name
     ) {
         try {
             HANDLE$glBindAttribLocation.invokeExact(
                     program,
                     index,
-                    name.segment()
+                    (MemorySegment) (name != null ? name.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -455,12 +455,12 @@ public final class GLES2 {
 
     public void glDeleteBuffers(
             int n,
-            @unsigned IntBuffer buffers
+            @nullable @unsigned IntBuffer buffers
     ) {
         try {
             HANDLE$glDeleteBuffers.invokeExact(
                     n,
-                    buffers.segment()
+                    (MemorySegment) (buffers != null ? buffers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -469,12 +469,12 @@ public final class GLES2 {
 
     public void glDeleteFramebuffers(
             int n,
-            @unsigned IntBuffer framebuffers
+            @nullable @unsigned IntBuffer framebuffers
     ) {
         try {
             HANDLE$glDeleteFramebuffers.invokeExact(
                     n,
-                    framebuffers.segment()
+                    (MemorySegment) (framebuffers != null ? framebuffers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -495,12 +495,12 @@ public final class GLES2 {
 
     public void glDeleteRenderbuffers(
             int n,
-            @unsigned IntBuffer renderbuffers
+            @nullable @unsigned IntBuffer renderbuffers
     ) {
         try {
             HANDLE$glDeleteRenderbuffers.invokeExact(
                     n,
-                    renderbuffers.segment()
+                    (MemorySegment) (renderbuffers != null ? renderbuffers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -521,12 +521,12 @@ public final class GLES2 {
 
     public void glDeleteTextures(
             int n,
-            @unsigned IntBuffer textures
+            @nullable @unsigned IntBuffer textures
     ) {
         try {
             HANDLE$glDeleteTextures.invokeExact(
                     n,
-                    textures.segment()
+                    (MemorySegment) (textures != null ? textures.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -735,12 +735,12 @@ public final class GLES2 {
 
     public void glGenBuffers(
             int n,
-            @unsigned IntBuffer buffers
+            @nullable @unsigned IntBuffer buffers
     ) {
         try {
             HANDLE$glGenBuffers.invokeExact(
                     n,
-                    buffers.segment()
+                    (MemorySegment) (buffers != null ? buffers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -761,12 +761,12 @@ public final class GLES2 {
 
     public void glGenFramebuffers(
             int n,
-            @unsigned IntBuffer framebuffers
+            @nullable @unsigned IntBuffer framebuffers
     ) {
         try {
             HANDLE$glGenFramebuffers.invokeExact(
                     n,
-                    framebuffers.segment()
+                    (MemorySegment) (framebuffers != null ? framebuffers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -775,12 +775,12 @@ public final class GLES2 {
 
     public void glGenRenderbuffers(
             int n,
-            @unsigned IntBuffer renderbuffers
+            @nullable @unsigned IntBuffer renderbuffers
     ) {
         try {
             HANDLE$glGenRenderbuffers.invokeExact(
                     n,
-                    renderbuffers.segment()
+                    (MemorySegment) (renderbuffers != null ? renderbuffers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -789,12 +789,12 @@ public final class GLES2 {
 
     public void glGenTextures(
             int n,
-            @unsigned IntBuffer textures
+            @nullable @unsigned IntBuffer textures
     ) {
         try {
             HANDLE$glGenTextures.invokeExact(
                     n,
-                    textures.segment()
+                    (MemorySegment) (textures != null ? textures.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -805,20 +805,20 @@ public final class GLES2 {
             @unsigned int program,
             @unsigned int index,
             int bufSize,
-            IntBuffer length,
-            IntBuffer size,
-            IntBuffer type,
-            ByteBuffer name
+            @nullable IntBuffer length,
+            @nullable IntBuffer size,
+            @nullable IntBuffer type,
+            @nullable ByteBuffer name
     ) {
         try {
             HANDLE$glGetActiveAttrib.invokeExact(
                     program,
                     index,
                     bufSize,
-                    length.segment(),
-                    size.segment(),
-                    type.segment(),
-                    name.segment()
+                    (MemorySegment) (length != null ? length.segment() : MemorySegment.NULL),
+                    (MemorySegment) (size != null ? size.segment() : MemorySegment.NULL),
+                    (MemorySegment) (type != null ? type.segment() : MemorySegment.NULL),
+                    (MemorySegment) (name != null ? name.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -829,20 +829,20 @@ public final class GLES2 {
             @unsigned int program,
             @unsigned int index,
             int bufSize,
-            IntBuffer length,
-            IntBuffer size,
-            IntBuffer type,
-            ByteBuffer name
+            @nullable IntBuffer length,
+            @nullable IntBuffer size,
+            @nullable IntBuffer type,
+            @nullable ByteBuffer name
     ) {
         try {
             HANDLE$glGetActiveUniform.invokeExact(
                     program,
                     index,
                     bufSize,
-                    length.segment(),
-                    size.segment(),
-                    type.segment(),
-                    name.segment()
+                    (MemorySegment) (length != null ? length.segment() : MemorySegment.NULL),
+                    (MemorySegment) (size != null ? size.segment() : MemorySegment.NULL),
+                    (MemorySegment) (type != null ? type.segment() : MemorySegment.NULL),
+                    (MemorySegment) (name != null ? name.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -852,15 +852,15 @@ public final class GLES2 {
     public void glGetAttachedShaders(
             @unsigned int program,
             int maxCount,
-            IntBuffer count,
-            @unsigned IntBuffer shaders
+            @nullable IntBuffer count,
+            @nullable @unsigned IntBuffer shaders
     ) {
         try {
             HANDLE$glGetAttachedShaders.invokeExact(
                     program,
                     maxCount,
-                    count.segment(),
-                    shaders.segment()
+                    (MemorySegment) (count != null ? count.segment() : MemorySegment.NULL),
+                    (MemorySegment) (shaders != null ? shaders.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -869,12 +869,12 @@ public final class GLES2 {
 
     public int glGetAttribLocation(
             @unsigned int program,
-            ByteBuffer name
+            @nullable ByteBuffer name
     ) {
         try {
             return (int) HANDLE$glGetAttribLocation.invokeExact(
                     program,
-                    name.segment()
+                    (MemorySegment) (name != null ? name.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -883,12 +883,12 @@ public final class GLES2 {
 
     public void glGetBooleanv(
             int pname,
-            @unsigned ByteBuffer data
+            @nullable @unsigned ByteBuffer data
     ) {
         try {
             HANDLE$glGetBooleanv.invokeExact(
                     pname,
-                    data.segment()
+                    (MemorySegment) (data != null ? data.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -898,13 +898,13 @@ public final class GLES2 {
     public void glGetBufferParameteriv(
             int target,
             int pname,
-            IntBuffer params
+            @nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetBufferParameteriv.invokeExact(
                     target,
                     pname,
-                    params.segment()
+                    (MemorySegment) (params != null ? params.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -921,12 +921,12 @@ public final class GLES2 {
 
     public void glGetFloatv(
             int pname,
-            FloatBuffer data
+            @nullable FloatBuffer data
     ) {
         try {
             HANDLE$glGetFloatv.invokeExact(
                     pname,
-                    data.segment()
+                    (MemorySegment) (data != null ? data.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -937,14 +937,14 @@ public final class GLES2 {
             int target,
             int attachment,
             int pname,
-            IntBuffer params
+            @nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetFramebufferAttachmentParameteriv.invokeExact(
                     target,
                     attachment,
                     pname,
-                    params.segment()
+                    (MemorySegment) (params != null ? params.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -953,12 +953,12 @@ public final class GLES2 {
 
     public void glGetIntegerv(
             int pname,
-            IntBuffer data
+            @nullable IntBuffer data
     ) {
         try {
             HANDLE$glGetIntegerv.invokeExact(
                     pname,
-                    data.segment()
+                    (MemorySegment) (data != null ? data.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -968,13 +968,13 @@ public final class GLES2 {
     public void glGetProgramiv(
             @unsigned int program,
             int pname,
-            IntBuffer params
+            @nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetProgramiv.invokeExact(
                     program,
                     pname,
-                    params.segment()
+                    (MemorySegment) (params != null ? params.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -984,15 +984,15 @@ public final class GLES2 {
     public void glGetProgramInfoLog(
             @unsigned int program,
             int bufSize,
-            IntBuffer length,
-            ByteBuffer infoLog
+            @nullable IntBuffer length,
+            @nullable ByteBuffer infoLog
     ) {
         try {
             HANDLE$glGetProgramInfoLog.invokeExact(
                     program,
                     bufSize,
-                    length.segment(),
-                    infoLog.segment()
+                    (MemorySegment) (length != null ? length.segment() : MemorySegment.NULL),
+                    (MemorySegment) (infoLog != null ? infoLog.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1002,13 +1002,13 @@ public final class GLES2 {
     public void glGetRenderbufferParameteriv(
             int target,
             int pname,
-            IntBuffer params
+            @nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetRenderbufferParameteriv.invokeExact(
                     target,
                     pname,
-                    params.segment()
+                    (MemorySegment) (params != null ? params.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1018,13 +1018,13 @@ public final class GLES2 {
     public void glGetShaderiv(
             @unsigned int shader,
             int pname,
-            IntBuffer params
+            @nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetShaderiv.invokeExact(
                     shader,
                     pname,
-                    params.segment()
+                    (MemorySegment) (params != null ? params.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1034,15 +1034,15 @@ public final class GLES2 {
     public void glGetShaderInfoLog(
             @unsigned int shader,
             int bufSize,
-            IntBuffer length,
-            ByteBuffer infoLog
+            @nullable IntBuffer length,
+            @nullable ByteBuffer infoLog
     ) {
         try {
             HANDLE$glGetShaderInfoLog.invokeExact(
                     shader,
                     bufSize,
-                    length.segment(),
-                    infoLog.segment()
+                    (MemorySegment) (length != null ? length.segment() : MemorySegment.NULL),
+                    (MemorySegment) (infoLog != null ? infoLog.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1052,15 +1052,15 @@ public final class GLES2 {
     public void glGetShaderPrecisionFormat(
             int shadertype,
             int precisiontype,
-            IntBuffer range,
-            IntBuffer precision
+            @nullable IntBuffer range,
+            @nullable IntBuffer precision
     ) {
         try {
             HANDLE$glGetShaderPrecisionFormat.invokeExact(
                     shadertype,
                     precisiontype,
-                    range.segment(),
-                    precision.segment()
+                    (MemorySegment) (range != null ? range.segment() : MemorySegment.NULL),
+                    (MemorySegment) (precision != null ? precision.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1070,15 +1070,15 @@ public final class GLES2 {
     public void glGetShaderSource(
             @unsigned int shader,
             int bufSize,
-            IntBuffer length,
-            ByteBuffer source
+            @nullable IntBuffer length,
+            @nullable ByteBuffer source
     ) {
         try {
             HANDLE$glGetShaderSource.invokeExact(
                     shader,
                     bufSize,
-                    length.segment(),
-                    source.segment()
+                    (MemorySegment) (length != null ? length.segment() : MemorySegment.NULL),
+                    (MemorySegment) (source != null ? source.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1101,13 +1101,13 @@ public final class GLES2 {
     public void glGetTexParameterfv(
             int target,
             int pname,
-            FloatBuffer params
+            @nullable FloatBuffer params
     ) {
         try {
             HANDLE$glGetTexParameterfv.invokeExact(
                     target,
                     pname,
-                    params.segment()
+                    (MemorySegment) (params != null ? params.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1117,13 +1117,13 @@ public final class GLES2 {
     public void glGetTexParameteriv(
             int target,
             int pname,
-            IntBuffer params
+            @nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetTexParameteriv.invokeExact(
                     target,
                     pname,
-                    params.segment()
+                    (MemorySegment) (params != null ? params.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1133,13 +1133,13 @@ public final class GLES2 {
     public void glGetUniformfv(
             @unsigned int program,
             int location,
-            FloatBuffer params
+            @nullable FloatBuffer params
     ) {
         try {
             HANDLE$glGetUniformfv.invokeExact(
                     program,
                     location,
-                    params.segment()
+                    (MemorySegment) (params != null ? params.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1149,13 +1149,13 @@ public final class GLES2 {
     public void glGetUniformiv(
             @unsigned int program,
             int location,
-            IntBuffer params
+            @nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetUniformiv.invokeExact(
                     program,
                     location,
-                    params.segment()
+                    (MemorySegment) (params != null ? params.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1164,12 +1164,12 @@ public final class GLES2 {
 
     public int glGetUniformLocation(
             @unsigned int program,
-            ByteBuffer name
+            @nullable ByteBuffer name
     ) {
         try {
             return (int) HANDLE$glGetUniformLocation.invokeExact(
                     program,
-                    name.segment()
+                    (MemorySegment) (name != null ? name.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1179,13 +1179,13 @@ public final class GLES2 {
     public void glGetVertexAttribfv(
             @unsigned int index,
             int pname,
-            FloatBuffer params
+            @nullable FloatBuffer params
     ) {
         try {
             HANDLE$glGetVertexAttribfv.invokeExact(
                     index,
                     pname,
-                    params.segment()
+                    (MemorySegment) (params != null ? params.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1195,13 +1195,13 @@ public final class GLES2 {
     public void glGetVertexAttribiv(
             @unsigned int index,
             int pname,
-            IntBuffer params
+            @nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetVertexAttribiv.invokeExact(
                     index,
                     pname,
-                    params.segment()
+                    (MemorySegment) (params != null ? params.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1211,13 +1211,13 @@ public final class GLES2 {
     public void glGetVertexAttribPointerv(
             @unsigned int index,
             int pname,
-            PointerBuffer pointer
+            @nullable PointerBuffer pointer
     ) {
         try {
             HANDLE$glGetVertexAttribPointerv.invokeExact(
                     index,
                     pname,
-                    pointer.segment()
+                    (MemorySegment) (pointer != null ? pointer.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1458,7 +1458,7 @@ public final class GLES2 {
 
     public void glShaderBinary(
             int count,
-            @unsigned IntBuffer shaders,
+            @nullable @unsigned IntBuffer shaders,
             int binaryFormat,
             @pointer(comment="void*") MemorySegment binary,
             int length
@@ -1466,7 +1466,7 @@ public final class GLES2 {
         try {
             HANDLE$glShaderBinary.invokeExact(
                     count,
-                    shaders.segment(),
+                    (MemorySegment) (shaders != null ? shaders.segment() : MemorySegment.NULL),
                     binaryFormat,
                     binary,
                     length
@@ -1479,15 +1479,15 @@ public final class GLES2 {
     public void glShaderSource(
             @unsigned int shader,
             int count,
-            ByteBuffer string,
-            IntBuffer length
+            @nullable ByteBuffer string,
+            @nullable IntBuffer length
     ) {
         try {
             HANDLE$glShaderSource.invokeExact(
                     shader,
                     count,
-                    string.segment(),
-                    length.segment()
+                    (MemorySegment) (string != null ? string.segment() : MemorySegment.NULL),
+                    (MemorySegment) (length != null ? length.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1635,13 +1635,13 @@ public final class GLES2 {
     public void glTexParameterfv(
             int target,
             int pname,
-            FloatBuffer params
+            @nullable FloatBuffer params
     ) {
         try {
             HANDLE$glTexParameterfv.invokeExact(
                     target,
                     pname,
-                    params.segment()
+                    (MemorySegment) (params != null ? params.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1667,13 +1667,13 @@ public final class GLES2 {
     public void glTexParameteriv(
             int target,
             int pname,
-            IntBuffer params
+            @nullable IntBuffer params
     ) {
         try {
             HANDLE$glTexParameteriv.invokeExact(
                     target,
                     pname,
-                    params.segment()
+                    (MemorySegment) (params != null ? params.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1725,13 +1725,13 @@ public final class GLES2 {
     public void glUniform1fv(
             int location,
             int count,
-            FloatBuffer value
+            @nullable FloatBuffer value
     ) {
         try {
             HANDLE$glUniform1fv.invokeExact(
                     location,
                     count,
-                    value.segment()
+                    (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1755,13 +1755,13 @@ public final class GLES2 {
     public void glUniform1iv(
             int location,
             int count,
-            IntBuffer value
+            @nullable IntBuffer value
     ) {
         try {
             HANDLE$glUniform1iv.invokeExact(
                     location,
                     count,
-                    value.segment()
+                    (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1787,13 +1787,13 @@ public final class GLES2 {
     public void glUniform2fv(
             int location,
             int count,
-            FloatBuffer value
+            @nullable FloatBuffer value
     ) {
         try {
             HANDLE$glUniform2fv.invokeExact(
                     location,
                     count,
-                    value.segment()
+                    (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1819,13 +1819,13 @@ public final class GLES2 {
     public void glUniform2iv(
             int location,
             int count,
-            IntBuffer value
+            @nullable IntBuffer value
     ) {
         try {
             HANDLE$glUniform2iv.invokeExact(
                     location,
                     count,
-                    value.segment()
+                    (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1853,13 +1853,13 @@ public final class GLES2 {
     public void glUniform3fv(
             int location,
             int count,
-            FloatBuffer value
+            @nullable FloatBuffer value
     ) {
         try {
             HANDLE$glUniform3fv.invokeExact(
                     location,
                     count,
-                    value.segment()
+                    (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1887,13 +1887,13 @@ public final class GLES2 {
     public void glUniform3iv(
             int location,
             int count,
-            IntBuffer value
+            @nullable IntBuffer value
     ) {
         try {
             HANDLE$glUniform3iv.invokeExact(
                     location,
                     count,
-                    value.segment()
+                    (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1923,13 +1923,13 @@ public final class GLES2 {
     public void glUniform4fv(
             int location,
             int count,
-            FloatBuffer value
+            @nullable FloatBuffer value
     ) {
         try {
             HANDLE$glUniform4fv.invokeExact(
                     location,
                     count,
-                    value.segment()
+                    (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1959,13 +1959,13 @@ public final class GLES2 {
     public void glUniform4iv(
             int location,
             int count,
-            IntBuffer value
+            @nullable IntBuffer value
     ) {
         try {
             HANDLE$glUniform4iv.invokeExact(
                     location,
                     count,
-                    value.segment()
+                    (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1976,14 +1976,14 @@ public final class GLES2 {
             int location,
             int count,
             @unsigned byte transpose,
-            FloatBuffer value
+            @nullable FloatBuffer value
     ) {
         try {
             HANDLE$glUniformMatrix2fv.invokeExact(
                     location,
                     count,
                     transpose,
-                    value.segment()
+                    (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -1994,14 +1994,14 @@ public final class GLES2 {
             int location,
             int count,
             @unsigned byte transpose,
-            FloatBuffer value
+            @nullable FloatBuffer value
     ) {
         try {
             HANDLE$glUniformMatrix3fv.invokeExact(
                     location,
                     count,
                     transpose,
-                    value.segment()
+                    (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -2012,14 +2012,14 @@ public final class GLES2 {
             int location,
             int count,
             @unsigned byte transpose,
-            FloatBuffer value
+            @nullable FloatBuffer value
     ) {
         try {
             HANDLE$glUniformMatrix4fv.invokeExact(
                     location,
                     count,
                     transpose,
-                    value.segment()
+                    (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -2066,12 +2066,12 @@ public final class GLES2 {
 
     public void glVertexAttrib1fv(
             @unsigned int index,
-            FloatBuffer v
+            @nullable FloatBuffer v
     ) {
         try {
             HANDLE$glVertexAttrib1fv.invokeExact(
                     index,
-                    v.segment()
+                    (MemorySegment) (v != null ? v.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -2096,12 +2096,12 @@ public final class GLES2 {
 
     public void glVertexAttrib2fv(
             @unsigned int index,
-            FloatBuffer v
+            @nullable FloatBuffer v
     ) {
         try {
             HANDLE$glVertexAttrib2fv.invokeExact(
                     index,
-                    v.segment()
+                    (MemorySegment) (v != null ? v.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -2128,12 +2128,12 @@ public final class GLES2 {
 
     public void glVertexAttrib3fv(
             @unsigned int index,
-            FloatBuffer v
+            @nullable FloatBuffer v
     ) {
         try {
             HANDLE$glVertexAttrib3fv.invokeExact(
                     index,
-                    v.segment()
+                    (MemorySegment) (v != null ? v.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
@@ -2162,12 +2162,12 @@ public final class GLES2 {
 
     public void glVertexAttrib4fv(
             @unsigned int index,
-            FloatBuffer v
+            @nullable FloatBuffer v
     ) {
         try {
             HANDLE$glVertexAttrib4fv.invokeExact(
                     index,
-                    v.segment()
+                    (MemorySegment) (v != null ? v.segment() : MemorySegment.NULL)
             );
         } catch (Throwable t) {
             throw new RuntimeException(t);
