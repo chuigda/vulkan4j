@@ -1,3 +1,5 @@
+package main
+
 import extract.extractVMAHeader
 import java.io.File
 
