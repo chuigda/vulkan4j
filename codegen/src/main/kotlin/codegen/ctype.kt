@@ -214,6 +214,26 @@ private val knownTypes = mapOf(
     "short" to int16Type,
     "unsigned short" to uint16Type,
 
+    // GLES2 base types
+    "GLbyte" to int8Type,
+    "GLubyte" to uint8Type,
+    "GLchar" to int8Type,
+    "GLuchar" to uint8Type,
+    "GLclampf" to floatType,
+    "GLfixed" to int32Type,
+    "GLint" to int32Type,
+    "GLuint" to uint32Type,
+    "GLshort" to int16Type,
+    "Glushort" to uint16Type,
+    "GLfloat" to floatType,
+    "GLvoid" to voidType,
+    "GLenum" to int32Type,
+    "GLsizei" to int32Type,
+    "GLsizeiptr" to cSizeType,
+    "GLintptr" to cSizeType,
+    "GLbitfield" to uint32Type,
+    "GLboolean" to uint8Type,
+
     // Vulkan base types
     "VkBool32" to uint32Type,
     "VkFlags" to uint32Type,

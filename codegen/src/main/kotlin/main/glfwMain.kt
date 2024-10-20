@@ -1,13 +1,18 @@
+package main
+
 import codegen.*
 import extract.addGLFWStructures
 import extract.extractGLFWHeader
+import mergeRegistry
 import java.io.File
 
 fun main() {
-    val registry = addGLFWStructures(mergeRegistry(
-        extractGLFWHeader(File("codegen/input/glfw3.h").readText()),
-        extractGLFWHeader(File("codegen/input/glfw3native.h").readText())
-    ))
+    val registry = addGLFWStructures(
+        mergeRegistry(
+            extractGLFWHeader(File("codegen/input/glfw3.h").readText()),
+            extractGLFWHeader(File("codegen/input/glfw3native.h").readText())
+        )
+    )
     registry.constantClassName = "GLFWConstants"
 
     for (struct in registry.structs) {

@@ -64,10 +64,25 @@ fun parseType(tokens: List<String>, position: Int): Pair<Type, Int> {
             }
         }
 
-        while (tokens.getOrNull(positionNext) == "*") {
-            type = PointerType(type, false)
-            positionNext++
+        var nextPointerIsConst = false
+        while (true) {
+            if (tokens.getOrNull(positionNext) == "const") {
+                nextPointerIsConst = true
+                positionNext++
+            }
+            else if (tokens.getOrNull(positionNext) == "volatile") {
+                positionNext++
+            }
+            else if (tokens.getOrNull(positionNext) == "*") {
+                type = PointerType(type, nextPointerIsConst)
+                nextPointerIsConst = false
+                positionNext++
+            }
+            else {
+                break
+            }
         }
+
         return Pair(type, positionNext)
     }
 }

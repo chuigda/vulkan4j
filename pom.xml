@@ -19,8 +19,10 @@
         <module>panama-plus</module>
         <module>codegen</module>
         <module>vk4j</module>
+        <module>gles2</module>
         <module>glfw</module>
         <module>tutorial</module>
         <module>vma</module>
+        <module>drill</module>
     </modules>
 </project>
