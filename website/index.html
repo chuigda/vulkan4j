@@ -89,6 +89,17 @@ document.getElementById('using-in-maven').innerText = `<dependencies>
         <scope>compile</scope>
     </dependency>
     <!--
+      Optional, add this if you want to use OpenGL ES2 bindings provided by vulkan4j.
+      This can be useful if you want to use OpenGL ES2 as a fallback in case Vulkan
+      is not available.
+    -->
+    <dependency>
+        <groupId>tech.icey</groupId>
+        <artifactId>gles2</artifactId>
+        <version>0.1.0</version>
+        <scope>compile</scope>
+    </dependency>
+    <!--
       Optional, add this if you want to use the GLFW bindings provided by vulkan4j.
       You may also use other existing GLFW bindings like lwjgl-glfw, just take care
       of the interactions between traditional JNI/java.nio and Panama APIs.

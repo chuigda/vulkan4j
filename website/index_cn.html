@@ -93,8 +93,18 @@ document.getElementById('using-in-maven').innerText = `<dependencies>
         <scope>compile</scope>
     </dependency>
     <!--
+      可选，如果你想用 vulkan4j 提供的 OpenGL ES2 绑定就加。
+      在你想把 OpenGL ES2 作为 Vulkan 不可用时的备选方案时会很有用。
+    -->
+    <dependency>
+        <groupId>tech.icey</groupId>
+        <artifactId>gles2</artifactId>
+        <version>0.1.0</version>
+        <scope>compile</scope>
+    </dependency>
+    <!--
       可选，如果你想用 vulkan4j 提供的 GLFW 绑定就加。
-      你也可以用别的 GLFW 绑定，只要处理好传统 JNI/java.nio 和 Panama API 的交互就行
+      你也可以用别的 GLFW 绑定，只要处理好传统 JNI/java.nio 和 Panama API 的交互就行。
     -->
     <dependency>
         <groupId>tech.icey</groupId>
