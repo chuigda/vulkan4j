@@ -6,7 +6,7 @@
     <parent>
         <groupId>tech.icey</groupId>
         <artifactId>root</artifactId>
-        <version>0.1.1</version>
+        <version>${revision}</version>
     </parent>
 
     <name>gles2</name>
@@ -24,6 +24,12 @@
         <developer>
             <name>Cousin Ze</name>
             <email>alex@ckx-ily.cn</email>
+            <organization>7th General Design Group</organization>
+            <organizationUrl>https://self.icey.tech</organizationUrl>
+        </developer>
+        <developer>
+            <name>Chuigda Whitegive</name>
+            <email>icey@icey.tech</email>
             <organization>7th General Design Group</organization>
             <organizationUrl>https://self.icey.tech</organizationUrl>
         </developer>

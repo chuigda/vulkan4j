@@ -6,7 +6,7 @@
     <parent>
         <groupId>tech.icey</groupId>
         <artifactId>root</artifactId>
-        <version>0.1.1</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>drill</artifactId>
