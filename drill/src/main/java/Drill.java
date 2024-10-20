@@ -143,6 +143,9 @@ public final class Drill {
                 glfw.glfwSwapBuffers(window);
                 glfw.glfwPollEvents();
             }
+
+            glfw.glfwDestroyWindow(window);
+            glfw.glfwTerminate();
         }
     }
 }
