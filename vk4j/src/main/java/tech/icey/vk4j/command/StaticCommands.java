@@ -3,7 +3,7 @@ package tech.icey.vk4j.command;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
-import tech.icey.panama.FunctionLoader;
+import tech.icey.panama.RawFunctionLoader;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
 import tech.icey.panama.buffer.*;
@@ -25,12 +25,16 @@ public final class StaticCommands {
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
     );
 
+    public final @nullable MemorySegment SEGMENT$vkGetDeviceProcAddr;
+    public final @nullable MemorySegment SEGMENT$vkGetInstanceProcAddr;
     public final @nullable MethodHandle HANDLE$vkGetDeviceProcAddr;
     public final @nullable MethodHandle HANDLE$vkGetInstanceProcAddr;
 
-    public StaticCommands(FunctionLoader loader) {
-        HANDLE$vkGetDeviceProcAddr = loader.apply("vkGetDeviceProcAddr", DESCRIPTOR$vkGetDeviceProcAddr);
-        HANDLE$vkGetInstanceProcAddr = loader.apply("vkGetInstanceProcAddr", DESCRIPTOR$vkGetInstanceProcAddr);
+    public StaticCommands(RawFunctionLoader loader) {
+        SEGMENT$vkGetDeviceProcAddr = loader.apply("vkGetDeviceProcAddr");
+        HANDLE$vkGetDeviceProcAddr = RawFunctionLoader.link(SEGMENTvkGetDeviceProcAddr, DESCRIPTOR$vkGetDeviceProcAddr);
+        SEGMENT$vkGetInstanceProcAddr = loader.apply("vkGetInstanceProcAddr");
+        HANDLE$vkGetInstanceProcAddr = RawFunctionLoader.link(SEGMENTvkGetInstanceProcAddr, DESCRIPTOR$vkGetInstanceProcAddr);
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDeviceProcAddr.html">vkGetDeviceProcAddr</a>

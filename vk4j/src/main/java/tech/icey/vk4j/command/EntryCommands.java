@@ -3,7 +3,7 @@ package tech.icey.vk4j.command;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
-import tech.icey.panama.FunctionLoader;
+import tech.icey.panama.RawFunctionLoader;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
 import tech.icey.panama.buffer.*;
@@ -38,16 +38,24 @@ public final class EntryCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkExtensionProperties.LAYOUT)
     );
 
+    public final @nullable MemorySegment SEGMENT$vkCreateInstance;
+    public final @nullable MemorySegment SEGMENT$vkEnumerateInstanceVersion;
+    public final @nullable MemorySegment SEGMENT$vkEnumerateInstanceLayerProperties;
+    public final @nullable MemorySegment SEGMENT$vkEnumerateInstanceExtensionProperties;
     public final @nullable MethodHandle HANDLE$vkCreateInstance;
     public final @nullable MethodHandle HANDLE$vkEnumerateInstanceVersion;
     public final @nullable MethodHandle HANDLE$vkEnumerateInstanceLayerProperties;
     public final @nullable MethodHandle HANDLE$vkEnumerateInstanceExtensionProperties;
 
-    public EntryCommands(FunctionLoader loader) {
-        HANDLE$vkCreateInstance = loader.apply("vkCreateInstance", DESCRIPTOR$vkCreateInstance);
-        HANDLE$vkEnumerateInstanceVersion = loader.apply("vkEnumerateInstanceVersion", DESCRIPTOR$vkEnumerateInstanceVersion);
-        HANDLE$vkEnumerateInstanceLayerProperties = loader.apply("vkEnumerateInstanceLayerProperties", DESCRIPTOR$vkEnumerateInstanceLayerProperties);
-        HANDLE$vkEnumerateInstanceExtensionProperties = loader.apply("vkEnumerateInstanceExtensionProperties", DESCRIPTOR$vkEnumerateInstanceExtensionProperties);
+    public EntryCommands(RawFunctionLoader loader) {
+        SEGMENT$vkCreateInstance = loader.apply("vkCreateInstance");
+        HANDLE$vkCreateInstance = RawFunctionLoader.link(SEGMENTvkCreateInstance, DESCRIPTOR$vkCreateInstance);
+        SEGMENT$vkEnumerateInstanceVersion = loader.apply("vkEnumerateInstanceVersion");
+        HANDLE$vkEnumerateInstanceVersion = RawFunctionLoader.link(SEGMENTvkEnumerateInstanceVersion, DESCRIPTOR$vkEnumerateInstanceVersion);
+        SEGMENT$vkEnumerateInstanceLayerProperties = loader.apply("vkEnumerateInstanceLayerProperties");
+        HANDLE$vkEnumerateInstanceLayerProperties = RawFunctionLoader.link(SEGMENTvkEnumerateInstanceLayerProperties, DESCRIPTOR$vkEnumerateInstanceLayerProperties);
+        SEGMENT$vkEnumerateInstanceExtensionProperties = loader.apply("vkEnumerateInstanceExtensionProperties");
+        HANDLE$vkEnumerateInstanceExtensionProperties = RawFunctionLoader.link(SEGMENTvkEnumerateInstanceExtensionProperties, DESCRIPTOR$vkEnumerateInstanceExtensionProperties);
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateInstance.html">vkCreateInstance</a>

@@ -1,15 +1,18 @@
 package tech.icey.vk4j.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
-
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static java.lang.foreign.ValueLayout.OfFloat;
-import static java.lang.foreign.ValueLayout.PathElement;
+import tech.icey.panama.annotation.*;
+import tech.icey.panama.buffer.*;
+import tech.icey.vk4j.bitmask.*;
+import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
+import tech.icey.vk4j.handle.*;
+import static tech.icey.vk4j.Constants.*;
+import static tech.icey.vk4j.enumtype.VkStructureType.*;
 
 /// {@snippet lang=c :
 /// typedef struct VkSRTDataNV {

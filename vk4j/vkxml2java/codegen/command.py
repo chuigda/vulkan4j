@@ -33,6 +33,7 @@ def generate_command_class_file(registry: Registry, commands: list[Command], cla
         command_result_types.append(result_type[0])
 
     command_handles = [generate_command_handle(command) for command in commands]
+    command_segments = [generate_command_segment(command) for command in commands]
     command_loads = [generate_command_load(registry, command, dual_loader) for command in commands]
 
     command_wrappers = []
@@ -44,7 +45,7 @@ def generate_command_class_file(registry: Registry, commands: list[Command], cla
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
-import tech.icey.panama.FunctionLoader;
+import tech.icey.panama.RawFunctionLoader;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
 import tech.icey.panama.buffer.*;
@@ -55,9 +56,10 @@ import tech.icey.vk4j.handle.*;
 
 public final class {class_name} {{
 {'\n'.join(command_descriptors)}
+{'\n'.join(command_segments)}
 {'\n'.join(command_handles)}
 
-    public {class_name}(FunctionLoader loader{', FunctionLoader instanceLoader' if dual_loader else ''}) {{
+    public {class_name}(RawFunctionLoader loader{', RawFunctionLoader instanceLoader' if dual_loader else ''}) {{
 {'\n'.join(command_loads)}
     }}
 
@@ -95,18 +97,25 @@ def generate_command_descriptor(
     );\n'''
 
 
+def generate_command_segment(command: Command) -> str:
+    return f'''    public final @nullable MemorySegment SEGMENT${command.name};'''
+
+
 def generate_command_handle(command: Command) -> str:
     return f'''    public final @nullable MethodHandle HANDLE${command.name};'''
 
 
 def generate_command_load(registry: Registry, command: Command, dual_loader: bool) -> str:
+    ret = ''
     if dual_loader:
         if get_command_type(registry, command) == CommandType.INSTANCE:
-            return f'''        HANDLE${command.name} = instanceLoader.apply(\"{command.name}\", DESCRIPTOR${command.name});'''
+            ret += f'''        SEGMENT${command.name} = instanceLoader.apply(\"{command.name}\");'''
         else:
-            return f'''        HANDLE${command.name} = loader.apply(\"{command.name}\", DESCRIPTOR${command.name});'''
+            ret += f'''        SEGMENT${command.name} = loader.apply(\"{command.name}\");'''
     else:
-        return f'''        HANDLE${command.name} = loader.apply(\"{command.name}\", DESCRIPTOR${command.name});'''
+        ret += f'''        SEGMENT${command.name} = loader.apply(\"{command.name}\");'''
+    ret += f'''\n        HANDLE${command.name} = RawFunctionLoader.link(SEGMENT{command.name}, DESCRIPTOR${command.name});'''
+    return ret
 
 
 def generate_command_wrapper(command: Command, param_types: list[CType], result_type: CType) -> str:
