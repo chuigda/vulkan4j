@@ -11,6 +11,8 @@ For users new to Vulkan, there is a (almost) complete adaptation of [https://vul
 
 [`vk4j`](https://github.com/chuigda/vulkan4j/tree/master/vk4j) is the main library that provides the Vulkan bindings. Bindings are generated from [`vk.xml`](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/vk.xml) using [`vkxml2java`](https://github.com/chuigda/vulkan4j/tree/master/vk4j/vkxml2java) *(we plan to switch to `codegen` module soon)*.
 
+[`vma`](https://github.com/chuigda/vulkan4j/tree/master/vma) is a binding to the Vulkan Memory Allocator library. It is generated from [`vk_mem_alloc.h`](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/blob/master/include/vk_mem_alloc.h) using the `codegen` module.
+
 [`glfw`](https://github.com/chuigda/vulkan4j/tree/master/glfw) is a wrapper around the GLFW library that provides a more Java-friendly API for creating windows and handling input. It is generated from [GLFW header files](https://github.com/glfw/glfw/tree/master/include/GLFW) using the `codegen` module.
 
 [`gles2`](https://github.com/chuigda/vulkan4j/tree/master/gles2) provides OpenGL ES2 bindings. Bindings are generated from [`gl.xml`](https://github.com/KhronosGroup/OpenGL-Registry/blob/main/xml/gl.xml) using the `codegen` module. 
@@ -22,6 +24,6 @@ For users new to Vulkan, there is a (almost) complete adaptation of [https://vul
   - [ ] Chinese translation 
 - [x] Generate GLFW bindings using `codegen`
 - [x] Generate OpenGL ES2 bindings using `codegen`
+- [x] Generate or write Vulkan Memory Allocator API bindings
 - [ ] Switch to `codegen` for Vulkan bindings
-- [ ] Generate or write Vulkan Memory Allocator API bindings
 - [ ] Generate Vulkan Video API bindings
