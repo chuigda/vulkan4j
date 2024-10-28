@@ -32,9 +32,9 @@ public final class StaticCommands {
 
     public StaticCommands(RawFunctionLoader loader) {
         SEGMENT$vkGetDeviceProcAddr = loader.apply("vkGetDeviceProcAddr");
-        HANDLE$vkGetDeviceProcAddr = RawFunctionLoader.link(SEGMENTvkGetDeviceProcAddr, DESCRIPTOR$vkGetDeviceProcAddr);
+        HANDLE$vkGetDeviceProcAddr = RawFunctionLoader.link(SEGMENT$vkGetDeviceProcAddr, DESCRIPTOR$vkGetDeviceProcAddr);
         SEGMENT$vkGetInstanceProcAddr = loader.apply("vkGetInstanceProcAddr");
-        HANDLE$vkGetInstanceProcAddr = RawFunctionLoader.link(SEGMENTvkGetInstanceProcAddr, DESCRIPTOR$vkGetInstanceProcAddr);
+        HANDLE$vkGetInstanceProcAddr = RawFunctionLoader.link(SEGMENT$vkGetInstanceProcAddr, DESCRIPTOR$vkGetInstanceProcAddr);
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetDeviceProcAddr.html">vkGetDeviceProcAddr</a>

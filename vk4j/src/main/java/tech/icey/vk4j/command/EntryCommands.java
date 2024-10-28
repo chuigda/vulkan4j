@@ -49,13 +49,13 @@ public final class EntryCommands {
 
     public EntryCommands(RawFunctionLoader loader) {
         SEGMENT$vkCreateInstance = loader.apply("vkCreateInstance");
-        HANDLE$vkCreateInstance = RawFunctionLoader.link(SEGMENTvkCreateInstance, DESCRIPTOR$vkCreateInstance);
+        HANDLE$vkCreateInstance = RawFunctionLoader.link(SEGMENT$vkCreateInstance, DESCRIPTOR$vkCreateInstance);
         SEGMENT$vkEnumerateInstanceVersion = loader.apply("vkEnumerateInstanceVersion");
-        HANDLE$vkEnumerateInstanceVersion = RawFunctionLoader.link(SEGMENTvkEnumerateInstanceVersion, DESCRIPTOR$vkEnumerateInstanceVersion);
+        HANDLE$vkEnumerateInstanceVersion = RawFunctionLoader.link(SEGMENT$vkEnumerateInstanceVersion, DESCRIPTOR$vkEnumerateInstanceVersion);
         SEGMENT$vkEnumerateInstanceLayerProperties = loader.apply("vkEnumerateInstanceLayerProperties");
-        HANDLE$vkEnumerateInstanceLayerProperties = RawFunctionLoader.link(SEGMENTvkEnumerateInstanceLayerProperties, DESCRIPTOR$vkEnumerateInstanceLayerProperties);
+        HANDLE$vkEnumerateInstanceLayerProperties = RawFunctionLoader.link(SEGMENT$vkEnumerateInstanceLayerProperties, DESCRIPTOR$vkEnumerateInstanceLayerProperties);
         SEGMENT$vkEnumerateInstanceExtensionProperties = loader.apply("vkEnumerateInstanceExtensionProperties");
-        HANDLE$vkEnumerateInstanceExtensionProperties = RawFunctionLoader.link(SEGMENTvkEnumerateInstanceExtensionProperties, DESCRIPTOR$vkEnumerateInstanceExtensionProperties);
+        HANDLE$vkEnumerateInstanceExtensionProperties = RawFunctionLoader.link(SEGMENT$vkEnumerateInstanceExtensionProperties, DESCRIPTOR$vkEnumerateInstanceExtensionProperties);
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateInstance.html">vkCreateInstance</a>

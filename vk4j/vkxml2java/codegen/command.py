@@ -114,7 +114,7 @@ def generate_command_load(registry: Registry, command: Command, dual_loader: boo
             ret += f'''        SEGMENT${command.name} = loader.apply(\"{command.name}\");'''
     else:
         ret += f'''        SEGMENT${command.name} = loader.apply(\"{command.name}\");'''
-    ret += f'''\n        HANDLE${command.name} = RawFunctionLoader.link(SEGMENT{command.name}, DESCRIPTOR${command.name});'''
+    ret += f'''\n        HANDLE${command.name} = RawFunctionLoader.link(SEGMENT${command.name}, DESCRIPTOR${command.name});'''
     return ret
 
 
