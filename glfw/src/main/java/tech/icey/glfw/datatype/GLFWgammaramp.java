@@ -20,7 +20,7 @@ public record GLFWgammaramp(MemorySegment segment) implements IPointer {
     }
 
     /// Note: the returned {@link ShortBuffer} does not have correct 
-    /// {@link ShortBuffer#size} property. it's up to user to track the size of the buffer,
+    /// {@link ShortBuffer#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ShortBuffer#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
     public @nullable @unsigned ShortBuffer red() {
@@ -45,7 +45,7 @@ public record GLFWgammaramp(MemorySegment segment) implements IPointer {
     }
 
     /// Note: the returned {@link ShortBuffer} does not have correct 
-    /// {@link ShortBuffer#size} property. it's up to user to track the size of the buffer,
+    /// {@link ShortBuffer#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ShortBuffer#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
     public @nullable @unsigned ShortBuffer green() {
@@ -70,7 +70,7 @@ public record GLFWgammaramp(MemorySegment segment) implements IPointer {
     }
 
     /// Note: the returned {@link ShortBuffer} does not have correct 
-    /// {@link ShortBuffer#size} property. it's up to user to track the size of the buffer,
+    /// {@link ShortBuffer#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ShortBuffer#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
     public @nullable @unsigned ShortBuffer blue() {

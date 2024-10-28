@@ -36,7 +36,7 @@ public record GLFWimage(MemorySegment segment) implements IPointer {
     }
 
     /// Note: the returned {@link ByteBuffer} does not have correct 
-    /// {@link ByteBuffer#size} property. it's up to user to track the size of the buffer,
+    /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ByteBuffer#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
     public @nullable @unsigned ByteBuffer pixels() {
