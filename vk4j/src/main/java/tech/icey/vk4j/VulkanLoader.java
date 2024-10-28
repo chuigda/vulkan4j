@@ -71,15 +71,9 @@ public final class VulkanLoader {
     /// @param staticCommands static commands, providing the {@code vkGetInstanceProcAddr} function
     /// @return loaded instance commands
     public static InstanceCommands loadInstanceCommands(VkInstance instance, StaticCommands staticCommands) {
-        return new InstanceCommands((name, descriptor) -> {
+        return new InstanceCommands(name -> {
             try (Arena arena = Arena.ofConfined()) {
-                ByteBuffer nameBuffer = ByteBuffer.allocateString(arena, name);
-                MemorySegment s = staticCommands.vkGetInstanceProcAddr(instance, nameBuffer);
-                if (s.address() == 0) {
-                    return null;
-                } else {
-                    return Linker.nativeLinker().downcallHandle(s, descriptor);
-                }
+                return staticCommands.vkGetInstanceProcAddr(instance, ByteBuffer.allocateString(arena, name));
             }
         });
     }
@@ -102,25 +96,13 @@ public final class VulkanLoader {
             VkDevice device,
             StaticCommands staticCommands
     ) {
-        return new DeviceCommands((name, descriptor) -> {
+        return new DeviceCommands(name -> {
             try (Arena arena = Arena.ofConfined()) {
-                ByteBuffer nameBuffer = ByteBuffer.allocateString(arena, name);
-                MemorySegment s = staticCommands.vkGetDeviceProcAddr(device, nameBuffer);
-                if (s.address() == 0) {
-                    return null;
-                } else {
-                    return Linker.nativeLinker().downcallHandle(s, descriptor);
-                }
+                return staticCommands.vkGetDeviceProcAddr(device, ByteBuffer.allocateString(arena, name));
             }
-        }, (name, descriptor) -> {
+        }, name -> {
             try (Arena arena = Arena.ofConfined()) {
-                ByteBuffer nameBuffer = ByteBuffer.allocateString(arena, name);
-                MemorySegment s = staticCommands.vkGetInstanceProcAddr(instance, nameBuffer);
-                if (s.address() == 0) {
-                    return null;
-                } else {
-                    return Linker.nativeLinker().downcallHandle(s, descriptor);
-                }
+                return staticCommands.vkGetInstanceProcAddr(instance, ByteBuffer.allocateString(arena, name));
             }
         });
     }

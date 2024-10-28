@@ -38,6 +38,10 @@ fun main() {
     }
 
     for (bitmask in registry.bitmasks) {
+        if (bitmask.key == "VmaVirtualAllocationCreateFlags") {
+            continue
+        }
+
         val generated = generateBitmask("tech.icey.vma", bitmask.value)
         File("vma/src/main/java/tech/icey/vma/bitmask/${bitmask.key}.java").writeText(generated)
     }

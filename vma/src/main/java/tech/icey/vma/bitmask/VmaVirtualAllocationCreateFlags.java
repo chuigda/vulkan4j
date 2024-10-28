@@ -2,6 +2,8 @@ package tech.icey.vma.bitmask;
 
 import tech.icey.panama.annotation.enumtype;
 
+import static tech.icey.vma.bitmask.VmaAllocationCreateFlags.*;
+
 public final class VmaVirtualAllocationCreateFlags {
     public static final int VMA_VIRTUAL_ALLOCATION_CREATE_UPPER_ADDRESS_BIT = VMA_ALLOCATION_CREATE_UPPER_ADDRESS_BIT;
     public static final int VMA_VIRTUAL_ALLOCATION_CREATE_STRATEGY_MIN_MEMORY_BIT = VMA_ALLOCATION_CREATE_STRATEGY_MIN_MEMORY_BIT;

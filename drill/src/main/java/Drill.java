@@ -32,15 +32,9 @@ public final class Drill {
             }
             glfw.glfwMakeContextCurrent(window);
 
-            var gles2 = new GLES2((name, descriptor) -> {
+            var gles2 = new GLES2(name -> {
                 try (var localArena = Arena.ofConfined()) {
-                    var nameSegment = ByteBuffer.allocateString(localArena, name);
-                    MemorySegment pfn = glfw.glfwGetProcAddress(nameSegment);
-                    if (pfn == null) {
-                        throw new RuntimeException("unable to load function: " + name);
-                    }
-
-                    return Linker.nativeLinker().downcallHandle(pfn, descriptor);
+                    return glfw.glfwGetProcAddress(ByteBuffer.allocateString(localArena, name));
                 }
             });
             var version = gles2.glGetString(GLES2Constants.GL_VERSION);
