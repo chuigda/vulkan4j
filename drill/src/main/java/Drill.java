@@ -8,7 +8,6 @@ import tech.icey.panama.buffer.IntBuffer;
 import tech.icey.panama.buffer.PointerBuffer;
 
 import java.lang.foreign.Arena;
-import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
 
 public final class Drill {
