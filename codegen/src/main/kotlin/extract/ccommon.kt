@@ -2,6 +2,7 @@ package extract
 
 import IdentifierType
 import PointerType
+import Type
 
 fun tokenize(line: String): List<String> {
     var position = 0
@@ -29,6 +30,8 @@ fun tokenize(line: String): List<String> {
             while (position < line.length && line[position] != '"') {
                 position++
             }
+            assert(line[position] == '"')
+            position++
         }
         else {
             throw RuntimeException("Unexpected character: $c")
@@ -53,30 +56,44 @@ fun parseType(tokens: List<String>, position: Int): Pair<Type, Int> {
     else if (tokens[position] == "struct") {
         return parseType(tokens, position + 1)
     }
+    else if (tokens[position].isLikelyMacro()) {
+        return parseType(tokens, position + 1)
+    }
     else {
         assert(tokens[position].isValidIdent())
         var type: Type = IdentifierType(tokens[position])
         var positionNext = position + 1
-        if (positionNext < tokens.size && tokens[positionNext].isLikelyMacro()) {
-            if (positionNext + 1 < tokens.size && !tokens[positionNext + 1].isValidIdent()) {
-                // this macro is a highly likely part of the type. skip it
-                positionNext++
-            }
-        }
 
         var nextPointerIsConst = false
-        while (true) {
-            if (tokens.getOrNull(positionNext) == "const") {
+        while (positionNext < tokens.size) {
+            if (tokens[positionNext] == "const") {
                 nextPointerIsConst = true
                 positionNext++
             }
-            else if (tokens.getOrNull(positionNext) == "volatile") {
+            else if (tokens[positionNext] == "volatile") {
                 positionNext++
             }
-            else if (tokens.getOrNull(positionNext) == "*") {
+            else if (tokens[positionNext] == "*") {
                 type = PointerType(type, nextPointerIsConst)
                 nextPointerIsConst = false
                 positionNext++
+            }
+            else if (tokens[positionNext].isLikelyMacro()) {
+                if (!tokens[positionNext + 1].isValidIdent()) {
+                    // this macro is likely to be part of the type, not a modifier to the identifier
+                    positionNext++
+                    // and if this is a function-call alike macro
+                    if (tokens[positionNext] == "(") {
+                        positionNext++
+                        while (tokens[positionNext] != ")") {
+                            positionNext++
+                        }
+                        positionNext++
+                    }
+                }
+                else {
+                    break
+                }
             }
             else {
                 break

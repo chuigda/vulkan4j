@@ -69,6 +69,7 @@ fun extractVMAHeader(fileContent: String): Registry {
                 j++
             }
             val functionString = lines.subList(i, j + 1).joinToString("")
+            System.err.println("functionString=$functionString")
             val function = parseFunction(functionString)
             functions[function.name] = function
 
@@ -192,7 +193,7 @@ private fun parseFunctionTypedef(line: String): FunctionTypedef {
 
 private fun parseFunction(line: String): Function {
     val tokens = tokenize(line)
-    System.err.println(tokens)
+    System.err.println("tokens=$tokens")
     assert(tokens[0] == "VMA_CALL_PRE")
 
     var (retType, position) = parseType(tokens, 1)
@@ -217,7 +218,7 @@ private fun parseFunction(line: String): Function {
         }
 
         var optional = false
-        if (tokens[position].startsWith("VMA_") && tokens[position].isLikelyMacro()) {
+        while (tokens[position].startsWith("VMA_") && tokens[position].isLikelyMacro()) {
             if (tokens[position].contains("NULLABLE")) {
                 optional = true
             }
@@ -235,8 +236,8 @@ private fun parseFunction(line: String): Function {
         }
 
         val paramName = tokens[position]
-        System.err.println(paramName)
         assert(paramName.isValidIdent())
+        assert(!paramName.isLikelyMacro())
         position += 1
 
         if (tokens.getOrNull(position) == "[") {
@@ -256,6 +257,7 @@ private fun parseFunction(line: String): Function {
         if (tokens[position] == ",") {
             position++
         }
+        System.err.println("params=$params")
     }
 
     return Function(fName, params=params, result=retType)
