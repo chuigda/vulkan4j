@@ -10,17 +10,17 @@ Create a Maven project and add the following dependencies to your `pom.xml` file
 <dependency>
     <groupId>tech.icey</groupId>
     <artifactId>panama-plus</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
 </dependency>
 <dependency>
     <groupId>tech.icey</groupId>
     <artifactId>vulkan4j</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
 </dependency>
 <dependency>
     <groupId>tech.icey</groupId>
     <artifactId>glfw</artifactId>
-    <version>0.1.2</version>
+    <version>0.2.0</version>
 </dependency>
 <dependency>
     <groupId>org.joml</groupId>
