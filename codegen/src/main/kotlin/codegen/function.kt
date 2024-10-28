@@ -272,7 +272,7 @@ fun generateInputConvert(type: CType, param: Param): String = when (type) {
 fun generateResultConvert(retType: CType, fnCall: String): String = when (retType) {
     is CPointerType -> when (retType.pointee) {
         is CNonRefType -> """MemorySegment s = (MemorySegment) ${fnCall};
-return s.address() == 0 ? null : new ${retType.pointee.jBufferTypeNoSign}(s);"""
+return s.address() == 0 ? null : new ${retType.pointee.jBufferTypeNoAnnotation}(s);"""
         is CStructType -> """MemorySegment s = (MemorySegment) ${fnCall};
 return s.address() == 0 ? null : new ${retType.pointee.name}(s);"""
         is CHandleType -> """MemorySegment s = (MemorySegment) ${fnCall};

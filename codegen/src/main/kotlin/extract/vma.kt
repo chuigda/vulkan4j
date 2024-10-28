@@ -14,17 +14,17 @@ import OpaqueTypedef
 import Param
 import PointerType
 import Structure
-import Type
 import Enum
 import Variant
 
 fun extractVMAHeader(fileContent: String): Registry {
-    var lines = fileContent.split('\n').map(String::trim)
+    val lines = fileContent.split('\n').map(String::trim)
 
     val constants = mutableMapOf<String, Constant>()
     val functions = mutableMapOf<String, Function>()
     val opaqueTypedefs = mutableMapOf<String, OpaqueTypedef>()
     val handles = mutableMapOf<String, Handle>()
+    val structs = mutableMapOf<String, Structure>()
     val functionTypedefs = mutableMapOf<String, FunctionTypedef>()
     val bitmasks = mutableMapOf<String, Bitmask>()
     val enums = mutableMapOf<String, Enum>()
@@ -42,7 +42,7 @@ fun extractVMAHeader(fileContent: String): Registry {
         }
 
         if (lines[i].startsWith("VK_DEFINE_HANDLE(") && lines[i].endsWith(")")) {
-            val name = lines[i].substring(16, lines[i].length - 1)
+            val name = lines[i].substring(17, lines[i].length - 1)
             handles[name] = Handle(name, dispatchable=true)
             i++
         }
@@ -69,7 +69,6 @@ fun extractVMAHeader(fileContent: String): Registry {
                 j++
             }
             val functionString = lines.subList(i, j + 1).joinToString("")
-            System.err.println("functionString=$functionString")
             val function = parseFunction(functionString)
             functions[function.name] = function
 
@@ -83,19 +82,31 @@ fun extractVMAHeader(fileContent: String): Registry {
             assert(lines[nextLineId].startsWith("}") && lines[nextLineId].endsWith(";"))
 
             val enumName = typedefLine.split(' ')[2]
+
             if (typedefLine.contains("FlagBits")) {
-                bitmasks.put(enumName, Bitmask(
-                    name=enumName.replace("FlagBits", "Flags"),
+                val flagsName = enumName.replace("FlagBits", "Flags")
+                bitmasks[flagsName] = Bitmask(
+                    name=flagsName,
                     bitflags=enumerators.map { Bitflag(name=it.first, value=it.second) }
-                ))
+                )
             }
             else {
-                enums.put(enumName, Enum(
+                enums[enumName] = Enum(
                     name=enumName,
                     variants=enumerators.map { Variant(name=it.first, value=it.second) }
-                ))
+                )
             }
 
+            i = nextLineId + 1
+        }
+        else if (lines[i].startsWith("typedef struct")) {
+            val structName = lines[i].split(' ')[2]
+            assert(lines[i + 1].startsWith("{"))
+
+            val (members, nextLineId) = parseStruct(lines, i + 2)
+            assert(lines[nextLineId].startsWith("}") && lines[nextLineId].endsWith(";"))
+
+            structs[structName] = Structure(name=structName, members=members)
             i = nextLineId + 1
         }
         else {
@@ -103,15 +114,12 @@ fun extractVMAHeader(fileContent: String): Registry {
         }
     }
 
-    println(bitmasks)
-    println(enums)
-
     return Registry(
         constants=constants,
         functions=functions,
         opaqueTypedefs=opaqueTypedefs,
         handles=handles,
-        structs=mapOf(),
+        structs=structs,
         functionTypedefs=functionTypedefs,
         bitmasks=bitmasks,
         enums=enums
@@ -193,7 +201,6 @@ private fun parseFunctionTypedef(line: String): FunctionTypedef {
 
 private fun parseFunction(line: String): Function {
     val tokens = tokenize(line)
-    System.err.println("tokens=$tokens")
     assert(tokens[0] == "VMA_CALL_PRE")
 
     var (retType, position) = parseType(tokens, 1)
@@ -201,7 +208,7 @@ private fun parseFunction(line: String): Function {
     assert(tokens[position] == "VMA_CALL_POST")
     position += 1
 
-    var fName = tokens[position]
+    val fName = tokens[position]
     assert(fName.isValidIdent())
     position += 1
 
@@ -257,7 +264,6 @@ private fun parseFunction(line: String): Function {
         if (tokens[position] == ",") {
             position++
         }
-        System.err.println("params=$params")
     }
 
     return Function(fName, params=params, result=retType)
@@ -311,4 +317,55 @@ private fun parseEnum(lines: List<String>, i: Int): Pair<List<Pair<String, Strin
     }
 
     return Pair(enumerators, j)
+}
+
+private fun parseStruct(lines: List<String>, i: Int): Pair<List<Member>, Int> {
+    var j = i
+    val members = mutableListOf<Member>()
+
+    while (j < lines.size && !lines[j].startsWith("}")) {
+        if (lines[j].startsWith("/*")) {
+            while (!lines[j].endsWith("*/")) {
+                j++
+            }
+            j++
+        }
+        else if (lines[j].startsWith("//") || lines[j].startsWith("#") || lines[j].isBlank()) {
+            j++
+        }
+        else {
+            assert(lines[j].endsWith(';'))
+            val tokens = tokenize(lines[j])
+            var (memberType, position) = parseType(tokens, 0)
+            // skip VMA_ macros
+
+            var isNullable = false
+            while (tokens[position].startsWith("VMA_") && tokens[position].isLikelyMacro()) {
+                if (tokens[position].contains("NULLABLE")) {
+                    isNullable = true
+                }
+                else if (tokens[position].contains("NOT_NULL")) {
+                    isNullable = false
+                }
+
+                position += 1
+                if (tokens[position] == "(") {
+                    position += 1
+                    while (tokens[position] != ")") {
+                        position += 1
+                    }
+                    position += 1
+                }
+            }
+
+            val memberName = tokens[position]
+            assert(memberName.isValidIdent())
+            assert(!memberName.isLikelyMacro())
+
+            members.add(Member(memberName, type=memberType, optional=isNullable, api=null))
+            j++
+        }
+    }
+
+    return Pair(members, j)
 }

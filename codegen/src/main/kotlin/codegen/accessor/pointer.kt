@@ -10,6 +10,7 @@ fun generatePtrAccessor(type: CPointerType, member: Member): String =
         is CNonRefType -> generatePNonRefAccessor(type.pointee, member)
         is CHandleType -> generatePHandleAccessor(type.pointee, member)
         is CStructType -> generatePStructureAccessor(type.pointee, member)
+        is CEnumType -> generatePEnumAccessor(type.pointee, member)
         is CArrayType -> TODO()
     }
 
@@ -71,16 +72,16 @@ private fun generatePNonRefAccessor(pointee: CNonRefType, member: Member): Strin
             segment.set(LAYOUT$${member.name}, OFFSET$${member.name}, value);
         }
         
-        /// Note: the returned {@link ${pointee.jBufferTypeNoSign}} does not have correct 
-        /// {@link ${pointee.jBufferTypeNoSign}#size} property. it's up to user to track the size of the buffer,
-        /// and use {@link ${pointee.jBufferTypeNoSign}#reinterpret} to set the size before actually reading from or
+        /// Note: the returned {@link ${pointee.jBufferTypeNoAnnotation}} does not have correct 
+        /// {@link ${pointee.jBufferTypeNoAnnotation}#size} property. it's up to user to track the size of the buffer,
+        /// and use {@link ${pointee.jBufferTypeNoAnnotation}#reinterpret} to set the size before actually reading from or
         /// writing to the buffer.
         public @nullable ${pointee.jBufferType} ${member.name}() {
             MemorySegment s = ${member.name}Raw();
             if (s.address() == 0) {
                 return null;
             }
-            return new ${pointee.jBufferTypeNoSign}(s);
+            return new ${pointee.jBufferTypeNoAnnotation}(s);
         }
 
         public void ${member.name}(@nullable ${pointee.jBufferType} value) {
@@ -89,7 +90,7 @@ private fun generatePNonRefAccessor(pointee: CNonRefType, member: Member): Strin
         }
     """.trimIndent()
 
-fun generatePHandleAccessor(pointee: CHandleType, member: Member): String =
+private fun generatePHandleAccessor(pointee: CHandleType, member: Member): String =
     """
         public @pointer(comment="${pointee.cType}*") MemorySegment ${member.name}Raw() {
             return segment.get(LAYOUT$${member.name}, OFFSET$${member.name});
@@ -112,7 +113,7 @@ fun generatePHandleAccessor(pointee: CHandleType, member: Member): String =
         }
     """.trimIndent()
 
-fun generatePStructureAccessor(pointee: CStructType, member: Member): String =
+private fun generatePStructureAccessor(pointee: CStructType, member: Member): String =
     """
         public @pointer(comment="${pointee.name}*") MemorySegment ${member.name}Raw() {
             return segment.get(LAYOUT$${member.name}, OFFSET$${member.name});
@@ -138,7 +139,7 @@ fun generatePStructureAccessor(pointee: CStructType, member: Member): String =
                 return null;
             }
 
-            s = s.reinterpret(assumedCount * ${pointee.name}.SIZE)
+            s = s.reinterpret(assumedCount * ${pointee.name}.SIZE);
             ${pointee.name}[] ret = new ${pointee.name}[assumedCount];
             for (int i = 0; i < assumedCount; i++) {
                 ret[i] = new ${pointee.name}(s.asSlice(i * ${pointee.name}.SIZE, ${pointee.name}.SIZE));
@@ -147,6 +148,35 @@ fun generatePStructureAccessor(pointee: CStructType, member: Member): String =
         }
 
         public void ${member.name}(@nullable ${pointee.name} value) {
+            MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+            ${member.name}Raw(s);
+        }
+    """.trimIndent()
+
+private fun generatePEnumAccessor(pointee: CEnumType, member: Member): String =
+    """
+        public @pointer(comment="${pointee.name}*") MemorySegment ${member.name}Raw() {
+            return segment.get(LAYOUT$${member.name}, OFFSET$${member.name});
+        }
+
+        public void ${member.name}Raw(@pointer(comment="${pointee.name}*") MemorySegment value) {
+            segment.set(LAYOUT$${member.name}, OFFSET$${member.name}, value);
+        }
+        
+        /// Note: the returned {@link ${pointee.jBufferTypeNoAnnotation}} does not have correct
+        /// {@link ${pointee.jBufferTypeNoAnnotation}#size} property. It's up to user to track the size of the buffer,
+        /// and use {@link ${pointee.jBufferTypeNoAnnotation}#reinterpret} to set the size before actually reading from
+        /// or writing to the buffer.
+        public @nullable ${pointee.jBufferType} ${member.name}() {
+            MemorySegment s = ${member.name}Raw();
+            if (s.address() == 0) {
+                return null;
+            }
+            
+            return new ${pointee.jBufferTypeNoAnnotation}(s);
+        }
+
+        public void ${member.name}(@nullable ${pointee.jBufferType} value) {
             MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
             ${member.name}Raw(s);
         }

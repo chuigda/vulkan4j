@@ -13,5 +13,11 @@ glfw/src/main/java/tech/icey/glfw/GLFWFunctionTypes.java linguist-generated
 gles2/src/main/java/tech/icey/gles2/GLES2.java linguist-generated
 gles2/src/main/java/tech/icey/gles2/GLES2Constants.java linguist-generated
 
+vma/src/main/java/tech/icey/vma/VMA.java linguist-generated
+vma/src/main/java/tech/icey/vma/bitmask/*.java linguist-generated
+vma/src/main/java/tech/icey/vma/datatype/*.java linguist-generated
+vma/src/main/java/tech/icey/vma/enumtype/*.java linguist-generated
+vma/src/main/java/tech/icey/vma/handle/*.java linguist-generated
+
 tutorial/src/main/java/* linguist-documentation
 tutorial/src/main/java/ch28/Main.java -linguist-documentation

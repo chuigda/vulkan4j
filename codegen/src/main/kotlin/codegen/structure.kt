@@ -11,7 +11,7 @@ fun generateStructure(
     packageName: String,
     structure: Structure,
     importExtra: List<String> = emptyList(),
-    docLinkGenerator: ((String) -> String)? = null
+    docLinkGenerator: ((String) -> String)? = null,
 ): String {
     val (layout, memberTypesLowered) = generateLayout(registry, structure)
     val verbatim = structure.verbatim.joinToString("\n") { "///     $it" }
@@ -29,8 +29,16 @@ fun generateStructure(
             import tech.icey.panama.buffer.*;
         """.trimIndent())
 
+        if (registry.bitmasks.isNotEmpty()) {
+            appendLn("import $packageName.bitmask.*;")
+        }
+
         if (registry.structs.isNotEmpty()) {
             appendLn("import $packageName.datatype.*;")
+        }
+
+        if (registry.enums.isNotEmpty()) {
+            appendLn("import $packageName.enumtype.*;")
         }
 
         if (registry.handles.isNotEmpty()) {
@@ -173,7 +181,17 @@ fun generateStructure(
                 continue
             }
 
-            appendLn(indent("""public static final long SIZE$${current.name} = LAYOUT$${current.name}.byteSize();""", 1))
+            if (memberTypesLowered[i] is CPlatformDependentIntType) {
+                if (memberTypesLowered[i]!!.cType == "size_t") {
+                    appendLn(indent("""public static final long SIZE$${current.name} = NativeLayout.C_SIZE_T.byteSize();""", 1))
+                }
+                else {
+                    appendLn(indent("""public static final long SIZE$${current.name} = NativeLayout.C_INT.byteSize();""", 1))
+                }
+            }
+            else {
+                appendLn(indent("""public static final long SIZE$${current.name} = LAYOUT$${current.name}.byteSize();""", 1))
+            }
         }
 
         appendLn("}")

@@ -73,7 +73,7 @@ data class CArrayType(val element: CType, val length: String) : CType {
 sealed interface CNonRefType : CType {
     val jTypeNoSign: String
     val jBufferType: String
-    val jBufferTypeNoSign: String
+    val jBufferTypeNoAnnotation: String
 }
 
 data class CFixedIntType(val cName: String, val byteSize: Int, val unsigned: Boolean) : CNonRefType {
@@ -100,8 +100,8 @@ data class CFixedIntType(val cName: String, val byteSize: Int, val unsigned: Boo
         8 -> "long"
         else -> throw NotImplementedError("unsupported byte size: $byteSize")
     }
-    override val jBufferType: String get() = """${if (unsigned) "@unsigned " else ""}$jBufferTypeNoSign"""
-    override val jBufferTypeNoSign: String get() = when (byteSize) {
+    override val jBufferType: String get() = """${if (unsigned) "@unsigned " else ""}$jBufferTypeNoAnnotation"""
+    override val jBufferTypeNoAnnotation: String get() = when (byteSize) {
         1 -> "ByteBuffer"
         2 -> "ShortBuffer"
         4 -> "IntBuffer"
@@ -116,7 +116,7 @@ data class CPlatformDependentIntType(
     override val jLayout: String,
     override val jTypeNoSign: String,
     override val jBufferType: String,
-    override val jBufferTypeNoSign: String
+    override val jBufferTypeNoAnnotation: String
 ) : CNonRefType {
     override val jLayoutType: String get() = throw NotImplementedError("should not call `jLayoutType` on `CPlatformDependentIntType`")
 }
@@ -148,7 +148,7 @@ data class CFloatType(val byteSize: Int) : CNonRefType {
         8 -> "DoubleBuffer"
         else -> throw NotImplementedError("unsupported byte size: $byteSize")
     }
-    override val jBufferTypeNoSign: String get() = jBufferType
+    override val jBufferTypeNoAnnotation: String get() = jBufferType
 }
 
 data class CStructType(val name: String): CType {
@@ -156,6 +156,52 @@ data class CStructType(val name: String): CType {
     override val jLayout: String = "$name.LAYOUT"
     override val jLayoutType: String = "StructLayout"
     override val cType: String = name
+}
+
+data class CEnumType(val name: String, val bitwidth: Int? = null): CNonRefType {
+    override val jType: String get() = when (bitwidth) {
+        null, 32 -> {
+            "@enumtype($name.class) int"
+        }
+        64 -> {
+            "@enumtype($name.class) long"
+        }
+        else -> {
+            throw NotImplementedError("unsupported bitwidth: $bitwidth")
+        }
+    }
+
+    override val jLayout: String get() = when (bitwidth) {
+        null, 32 -> "ValueLayout.JAVA_INT"
+        64 -> "ValueLayout.JAVA_LONG"
+        else -> throw NotImplementedError("unsupported bitwidth: $bitwidth")
+    }
+
+    override val jLayoutType: String = when (bitwidth) {
+        null, 32 -> "OfInt"
+        64 -> "OfLong"
+        else -> throw NotImplementedError("unsupported bitwidth: $bitwidth")
+    }
+
+    override val cType: String = "enum $name"
+
+    override val jTypeNoSign: String get() = when (bitwidth) {
+        null, 32 -> "int"
+        64 -> "long"
+        else -> throw NotImplementedError("unsupported bitwidth: $bitwidth")
+    }
+
+    override val jBufferType: String = when (bitwidth) {
+        null, 32 -> "@enumtype($name.class) IntBuffer"
+        64 -> "@enumtype($name.class) LongBuffer"
+        else -> throw NotImplementedError("unsupported bitwidth: $bitwidth")
+    }
+
+    override val jBufferTypeNoAnnotation: String = when (bitwidth) {
+        null, 32 -> "IntBuffer"
+        64 -> "LongBuffer"
+        else -> throw NotImplementedError("unsupported bitwidth: $bitwidth")
+    }
 }
 
 private val int8Type = CFixedIntType("byte", 1, false)
@@ -249,6 +295,17 @@ private val knownTypes = mapOf(
     "VkPhysicalDevice" to CHandleType("VkPhysicalDevice"),
     "VkSurfaceKHR" to CHandleType("VkSurfaceKHR"),
     "VkAllocationCallbacks" to CStructType("VkAllocationCallbacks"),
+    "VkPhysicalDeviceProperties" to CStructType("VkPhysicalDeviceProperties"),
+    "VkPhysicalDeviceMemoryProperties" to CStructType("VkPhysicalDeviceMemoryProperties"),
+    "VkMemoryPropertyFlags" to CEnumType("VkMemoryPropertyFlags"),
+    "VkBufferCreateInfo" to CStructType("VkBufferCreateInfo"),
+    "VkImageCreateInfo" to CStructType("VkImageCreateInfo"),
+    "VkMemoryRequirements" to CStructType("VkMemoryRequirements"),
+    "VkBuffer" to CHandleType("VkBuffer"),
+    "VkImage" to CHandleType("VkImage"),
+    "VkDevice" to CHandleType("VkDevice"),
+    "VkDeviceMemory" to CHandleType("VkDeviceMemory"),
+    "VkExternalMemoryHandleTypeFlagsKHR" to CEnumType("VkExternalMemoryHandleTypeFlags"),
     "VkResult" to int32Type,
     "PFN_vkGetInstanceProcAddr" to CPointerType(voidType, false, comment="PFN_vkGetInstanceProcAddr"),
     "PFN_vkGetDeviceProcAddr" to CPointerType(voidType, false, comment="PFN_vkGetDeviceProcAddr"),
@@ -374,6 +431,12 @@ fun lowerType(registry: Registry, type: Type): CType {
 fun lowerIdentifierType(registry: Registry, type: IdentifierType): CType {
     return if (registry.structs.contains(type.ident)) {
         CStructType(type.ident)
+    }
+    else if (registry.enums.contains(type.ident)) {
+        CEnumType(type.ident)
+    }
+    else if (registry.bitmasks.contains(type.ident)) {
+        CEnumType(type.ident, bitwidth=registry.bitmasks[type.ident]!!.bitwidth)
     }
     else if (registry.handles.contains(type.ident)) {
         CHandleType(type.ident)

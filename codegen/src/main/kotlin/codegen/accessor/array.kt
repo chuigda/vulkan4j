@@ -22,7 +22,7 @@ private fun generateNonRefArrayAccessor(elementType: CNonRefType, member: Member
         }
 
         public ${elementType.jBufferType} ${member.name}() {
-            return new ${elementType.jBufferTypeNoSign}(${member.name}Raw());
+            return new ${elementType.jBufferTypeNoAnnotation}(${member.name}Raw());
         }
 
         public void ${member.name}(${elementType.jBufferType} value) {
