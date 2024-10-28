@@ -13,14 +13,26 @@ public final class Loader {
     public static MethodHandle loadFunction(String name, FunctionDescriptor descriptor) {
         return loaderLookup.find(name)
                 .or(() -> stdlibLookup.find(name))
-                .map(symbolSegment -> nativeLinker.downcallHandle(symbolSegment, descriptor))
+                .map(segment -> RawFunctionLoader.link(segment, descriptor))
                 .orElseThrow(() -> new RuntimeException("未找到函数 " + name));
     }
 
     public static @nullable MethodHandle loadFunctionOrNull(String name, FunctionDescriptor descriptor) {
         return loaderLookup.find(name)
                 .or(() -> stdlibLookup.find(name))
-                .map(symbolSegment -> nativeLinker.downcallHandle(symbolSegment, descriptor))
+                .map(segment -> RawFunctionLoader.link(segment, descriptor))
+                .orElse(null);
+    }
+
+    public static MemorySegment loadFunction(String name) {
+        return loaderLookup.find(name)
+                .or(() -> stdlibLookup.find(name))
+                .orElseThrow(() -> new RuntimeException("未找到函数 " + name));
+    }
+
+    public static MemorySegment loadFunctionOrNull(String name) {
+        return loaderLookup.find(name)
+                .or(() -> stdlibLookup.find(name))
                 .orElse(null);
     }
 }
