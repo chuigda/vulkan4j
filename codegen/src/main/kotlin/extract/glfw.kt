@@ -133,8 +133,8 @@ private fun parseCDecl(line: String): Function {
     position++
 
     if (tokens[position] != "(") {
-        println(tokens)
-        println(position)
+        System.err.println(tokens)
+        System.err.println(position)
         throw RuntimeException("Expected '('")
     }
     position++

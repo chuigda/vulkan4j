@@ -37,7 +37,7 @@ fun generateFunctionClassFile(
             import java.lang.foreign.*;
             import java.lang.invoke.MethodHandle;
 
-            import tech.icey.panama.FunctionLoader;
+            import tech.icey.panama.RawFunctionLoader;
             import tech.icey.panama.NativeLayout;
             import tech.icey.panama.annotation.*;
             import tech.icey.panama.buffer.*;
@@ -68,15 +68,21 @@ fun generateFunctionClassFile(
         appendLn()
 
         for (function in functions) {
+            appendLn(indent("public final @nullable MemorySegment SEGMENT$${function.name};", 1))
+        }
+        appendLn()
+
+        for (function in functions) {
             appendLn(indent("public final @nullable MethodHandle HANDLE$${function.name};", 1))
         }
         appendLn()
 
         appendLn(indent("""
-            public ${className}(FunctionLoader loader) {
+            public ${className}(RawFunctionLoader loader) {
         """.trimIndent(), 1))
         for (function in functions) {
-            appendLn(indent("HANDLE$${function.name} = loader.apply(\"${function.name}\", DESCRIPTOR$${function.name});", 2))
+            appendLn(indent("SEGMENT$${function.name} = loader.apply(\"${function.name}\");", 2))
+            appendLn(indent("HANDLE$${function.name} = RawFunctionLoader.link(SEGMENT$${function.name}, DESCRIPTOR$${function.name});", 2))
         }
         appendLn(indent("}", 1))
         appendLn("}")

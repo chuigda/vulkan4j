@@ -56,9 +56,6 @@ fun parseType(tokens: List<String>, position: Int): Pair<Type, Int> {
     else if (tokens[position] == "struct") {
         return parseType(tokens, position + 1)
     }
-    else if (tokens[position].isLikelyMacro()) {
-        return parseType(tokens, position + 1)
-    }
     else {
         assert(tokens[position].isValidIdent())
         var type: Type = IdentifierType(tokens[position])

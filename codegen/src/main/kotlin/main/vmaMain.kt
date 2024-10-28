@@ -14,12 +14,13 @@ fun main() {
         "tech.icey.vk4j.handle.*"
     )
 
-    val constants = generateConstants(
-        "tech.icey.vma",
-        registry.constantClassName,
-        registry.constants.values.toList()
-    )
-    File("vma/src/main/java/tech/icey/vma/${registry.constantClassName}.java").writeText(constants)
+    // VMA does not have such constant according to my inspection
+//    val constants = generateConstants(
+//        "tech.icey.vma",
+//        registry.constantClassName,
+//        registry.constants.values.toList()
+//    )
+//    File("vma/src/main/java/tech/icey/vma/${registry.constantClassName}.java").writeText(constants)
 
     for (struct in registry.structs) {
         val generated = generateStructure(
