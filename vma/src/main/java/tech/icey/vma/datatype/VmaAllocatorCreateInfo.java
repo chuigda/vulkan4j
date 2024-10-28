@@ -147,7 +147,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
     }
 
     /// Note: the returned {@link LongBuffer} does not have correct 
-    /// {@link LongBuffer#size} property. it's up to user to track the size of the buffer,
+    /// {@link LongBuffer#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongBuffer#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
     public @nullable @unsigned LongBuffer pHeapSizeLimit() {
@@ -224,18 +224,18 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$vulkanApiVersion, OFFSET$vulkanApiVersion, value);
     }
 
-    public @pointer(comment="enum VkExternalMemoryHandleTypeFlags*") MemorySegment pTypeExternalMemoryHandleTypesRaw() {
+    public @pointer(target=VkExternalMemoryHandleTypeFlags.class) MemorySegment pTypeExternalMemoryHandleTypesRaw() {
         return segment.get(LAYOUT$pTypeExternalMemoryHandleTypes, OFFSET$pTypeExternalMemoryHandleTypes);
     }
 
-    public void pTypeExternalMemoryHandleTypesRaw(@pointer(comment="enum VkExternalMemoryHandleTypeFlags*") MemorySegment value) {
+    public void pTypeExternalMemoryHandleTypesRaw(@pointer(target=VkExternalMemoryHandleTypeFlags.class) MemorySegment value) {
         segment.set(LAYOUT$pTypeExternalMemoryHandleTypes, OFFSET$pTypeExternalMemoryHandleTypes, value);
     }
 
-    /// Note: the returned {@link IntBuffer} does not have correct 
-    /// {@link IntBuffer#size} property. it's up to user to track the size of the buffer,
-    /// and use {@link IntBuffer#reinterpret} to set the size before actually reading from or
-    /// writing to the buffer.
+    /// Note: the returned {@link IntBuffer} does not have correct
+    /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntBuffer#reinterpret} to set the size before actually reading from
+    /// or writing to the buffer.
     public @nullable @enumtype(VkExternalMemoryHandleTypeFlags.class) IntBuffer pTypeExternalMemoryHandleTypes() {
         MemorySegment s = pTypeExternalMemoryHandleTypesRaw();
         if (s.address() == 0) {

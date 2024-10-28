@@ -7,10 +7,10 @@ fun generatePtrAccessor(type: CPointerType, member: Member): String =
     when (type.pointee) {
         is CVoidType -> generatePVoidAccessor(type, member)
         is CPointerType -> generatePPAccessor(type.pointee, member)
+        is CEnumType -> generatePEnumAccessor(type.pointee, member)
         is CNonRefType -> generatePNonRefAccessor(type.pointee, member)
         is CHandleType -> generatePHandleAccessor(type.pointee, member)
         is CStructType -> generatePStructureAccessor(type.pointee, member)
-        is CEnumType -> generatePEnumAccessor(type.pointee, member)
         is CArrayType -> TODO()
     }
 
@@ -73,7 +73,7 @@ private fun generatePNonRefAccessor(pointee: CNonRefType, member: Member): Strin
         }
         
         /// Note: the returned {@link ${pointee.jBufferTypeNoAnnotation}} does not have correct 
-        /// {@link ${pointee.jBufferTypeNoAnnotation}#size} property. it's up to user to track the size of the buffer,
+        /// {@link ${pointee.jBufferTypeNoAnnotation}#size} property. It's up to user to track the size of the buffer,
         /// and use {@link ${pointee.jBufferTypeNoAnnotation}#reinterpret} to set the size before actually reading from or
         /// writing to the buffer.
         public @nullable ${pointee.jBufferType} ${member.name}() {
@@ -155,11 +155,11 @@ private fun generatePStructureAccessor(pointee: CStructType, member: Member): St
 
 private fun generatePEnumAccessor(pointee: CEnumType, member: Member): String =
     """
-        public @pointer(comment="${pointee.name}*") MemorySegment ${member.name}Raw() {
+        public @pointer(target=${pointee.name}.class) MemorySegment ${member.name}Raw() {
             return segment.get(LAYOUT$${member.name}, OFFSET$${member.name});
         }
 
-        public void ${member.name}Raw(@pointer(comment="${pointee.name}*") MemorySegment value) {
+        public void ${member.name}Raw(@pointer(target=${pointee.name}.class) MemorySegment value) {
             segment.set(LAYOUT$${member.name}, OFFSET$${member.name}, value);
         }
         
@@ -172,7 +172,6 @@ private fun generatePEnumAccessor(pointee: CEnumType, member: Member): String =
             if (s.address() == 0) {
                 return null;
             }
-            
             return new ${pointee.jBufferTypeNoAnnotation}(s);
         }
 
