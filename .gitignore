@@ -40,6 +40,13 @@ build/
 # Generated auxiliary programs
 *.exe
 
+# C/C++ build output
+*.o
+*.dll
+*.so
+*.lib
+*.a
+
 # Assembly plugin produced files
 tutorial/dependency-reduced-pom.xml
 
