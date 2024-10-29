@@ -37,7 +37,7 @@
         <dependency>
             <groupId>tech.icey</groupId>
             <artifactId>vma</artifactId>
-            <version>0.1.0</version>
+            <version>0.1.0-alfa</version>
         </dependency>
     </dependencies>
 </project>
