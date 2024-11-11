@@ -57,3 +57,6 @@ tutorial/dependency-reduced-pom.xml
 codegen/input/*
 !codegen/input/download.sh
 !codegen/input/Doxyfile.vma
+
+# VMA build input
+vma/vma_build/vk_mem_alloc.h
