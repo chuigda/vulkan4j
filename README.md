@@ -1,4 +1,7 @@
 # vulkan4j
+
+> [Discord](https://discord.gg/UsmRvrt4gg)
+
 [Vulkan](https://www.vulkan.org/) Binding for Java using [Project Panama](https://openjdk.org/projects/panama/) `java.lang.foreign` APIs.
 
 *Heavily inspired by the [`vulkanalia`](https://github.com/KyleMayes/vulkanalia) crate.*
