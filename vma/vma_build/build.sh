@@ -26,7 +26,7 @@ if [ -z "$VULKAN_SDK_DIR" ] || [ ! -d "$VULKAN_SDK_DIR" ]; then
 fi
 
 # Build without RTTI and exceptions, with optimization
-$CXX -std=c++14 -O2 -fno-rtti -fno-exceptions "-I${VULKAN_SDK_DIR}/Include" -I. -c -o vma.o vma_usage.cc
+$CXX -std=c++14 -O2 -fno-rtti -fno-exceptions -fPIC "-I${VULKAN_SDK_DIR}/Include" -I. -c -o vma.o vma_usage.cc
 
 # Generate shared library file according to the platform, using a environment variable WIN32
 if [ -n "$WIN32" ]; then
