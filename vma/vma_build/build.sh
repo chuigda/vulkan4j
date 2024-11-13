@@ -22,11 +22,19 @@ fi
 
 # if VULKAN_SDK_DIR is not set, or the directory does not exist, give a warn
 if [ -z "$VULKAN_SDK_DIR" ] || [ ! -d "$VULKAN_SDK_DIR" ]; then
-  echo Warning: VULKAN_SDK_DIR is not set or does not exist
+  # if this is on Windows platform, this is likely to be incorrect and give warning
+  if [ -n "$WIN32" ]; then
+    echo Warning: VULKAN_SDK_DIR is not set or does not exist
+  fi
+  $CXX -std=c++17 -O2 -fno-rtti -fno-exceptions -fPIC -I. -c -o vma.o vma_usage.cc
+else
+  $CXX -std=c++17 -O2 -fno-rtti -fno-exceptions -fPIC "-I${VULKAN_SDK_DIR}/Include" -I. -c -o vma.o vma_usage.cc
 fi
 
-# Build without RTTI and exceptions, with optimization
-$CXX -std=c++17 -O2 -fno-rtti -fno-exceptions -fPIC "-I${VULKAN_SDK_DIR}/Include" -I. -c -o vma.o vma_usage.cc
+# If the last command failed, exit
+if [ $? -ne 0 ]; then
+  exit 1
+fi
 
 # Generate shared library file according to the platform, using a environment variable WIN32
 if [ -n "$WIN32" ]; then
