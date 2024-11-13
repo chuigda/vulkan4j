@@ -25,7 +25,7 @@ import tech.icey.vk4j.command.StaticCommands;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
-import tech.icey.vma.JavaTraceUtil;
+import tech.icey.vma.VMAJavaTraceUtil;
 import tech.icey.vma.VMA;
 import tech.icey.vma.VMAUtil;
 import tech.icey.vma.bitmask.VmaAllocationCreateFlags;
@@ -374,7 +374,7 @@ class Application {
     private void createVMA() {
         System.loadLibrary("vma");
         vma = new VMA(Loader::loadFunction);
-        vma.vk4jSetJavaTrace(JavaTraceUtil.PTRACE);
+        VMAJavaTraceUtil.enableJavaTraceForVMA();
 
         try (var arena = Arena.ofConfined()) {
             var vmaVulkanFunctions = VmaVulkanFunctions.allocate(arena);

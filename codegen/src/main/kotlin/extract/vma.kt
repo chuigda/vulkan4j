@@ -114,12 +114,6 @@ fun extractVMAHeader(fileContent: String): Registry {
         }
     }
 
-    functions["vk4jSetJavaTrace"] = Function(
-        name="vk4jSetJavaTrace",
-        params=listOf(Param("javaTrace", type=PointerType(IdentifierType("void"), true))),
-        result=IdentifierType("void")
-    )
-
     return Registry(
         constants=constants,
         functions=functions,
