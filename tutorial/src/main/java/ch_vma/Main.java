@@ -151,6 +151,7 @@ class Application {
         deviceCommands.vkDestroyDescriptorPool(device, descriptorPool, null);
         deviceCommands.vkDestroyDescriptorSetLayout(device, descriptorSetLayout, null);
         deviceCommands.vkDestroyRenderPass(device, renderPass, null);
+        vma.vmaDestroyAllocator(vmaAllocator);
         deviceCommands.vkDestroyDevice(device, null);
         if (ENABLE_VALIDATION_LAYERS) {
             instanceCommands.vkDestroyDebugUtilsMessengerEXT(instance, debugMessenger, null);
@@ -1009,7 +1010,7 @@ class Application {
             vertexBufferAllocation = pair.second;
 
             copyBuffer(stagingBuffer, vertexBuffer, bufferSize);
-            vma.vmaFreeMemory(vmaAllocator, stagingBufferAllocation);
+            vma.vmaDestroyBuffer(vmaAllocator, stagingBuffer, stagingBufferAllocation);
         }
     }
 
@@ -1046,7 +1047,7 @@ class Application {
             indexBufferAllocation = pair.second;
 
             copyBuffer(stagingBuffer, indexBuffer, bufferSize);
-            vma.vmaFreeMemory(vmaAllocator, stagingBufferAllocation);
+            vma.vmaDestroyBuffer(vmaAllocator, stagingBuffer, stagingBufferAllocation);
         }
     }
 
