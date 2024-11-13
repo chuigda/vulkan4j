@@ -139,8 +139,7 @@ class Application {
         cleanupSwapChain();
         deviceCommands.vkDestroySampler(device, textureSampler, null);
         deviceCommands.vkDestroyImageView(device, textureImageView, null);
-        deviceCommands.vkDestroyImage(device, textureImage, null);
-        deviceCommands.vkFreeMemory(device, textureImageMemory, null);
+        vma.vmaDestroyImage(vmaAllocator, textureImage, textureImageAllocation);
         vma.vmaDestroyBuffer(vmaAllocator, vertexBuffer, vertexBufferAllocation);
         vma.vmaDestroyBuffer(vmaAllocator, indexBuffer, indexBufferAllocation);
         deviceCommands.vkDestroyPipeline(device, graphicsPipeline, null);
@@ -186,11 +185,9 @@ class Application {
 
     private void cleanupSwapChain() {
         deviceCommands.vkDestroyImageView(device, colorImageView, null);
-        deviceCommands.vkDestroyImage(device, colorImage, null);
-        deviceCommands.vkFreeMemory(device, colorImageMemory, null);
+        vma.vmaDestroyImage(vmaAllocator, colorImage, colorImageAllocation);
         deviceCommands.vkDestroyImageView(device, depthImageView, null);
-        deviceCommands.vkDestroyImage(device, depthImage, null);
-        deviceCommands.vkFreeMemory(device, depthImageMemory, null);
+        vma.vmaDestroyImage(vmaAllocator, depthImage, depthImageAllocation);
 
         for (var framebuffer : swapChainFramebuffers) {
             deviceCommands.vkDestroyFramebuffer(device, framebuffer, null);
@@ -794,11 +791,10 @@ class Application {
                 colorFormat,
                 VkImageTiling.VK_IMAGE_TILING_OPTIMAL,
                 VkImageUsageFlags.VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT
-                | VkImageUsageFlags.VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT,
-                VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT
+                | VkImageUsageFlags.VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
         );
         colorImage = pair.first;
-        colorImageMemory = pair.second;
+        colorImageAllocation = pair.second;
         colorImageView = createImageView(colorImage, colorFormat, VkImageAspectFlags.VK_IMAGE_ASPECT_COLOR_BIT, 1);
     }
 
@@ -812,11 +808,10 @@ class Application {
                 msaaSamples,
                 depthFormat,
                 VkImageTiling.VK_IMAGE_TILING_OPTIMAL,
-                VkImageUsageFlags.VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT,
-                VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT
+                VkImageUsageFlags.VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT
         );
         depthImage = pair.first;
-        depthImageMemory = pair.second;
+        depthImageAllocation = pair.second;
         depthImageView = createImageView(depthImage, depthFormat, VkImageAspectFlags.VK_IMAGE_ASPECT_DEPTH_BIT, 1);
 
         transitionImageLayout(
@@ -885,11 +880,10 @@ class Application {
                     VkImageTiling.VK_IMAGE_TILING_OPTIMAL,
                     VkImageUsageFlags.VK_IMAGE_USAGE_TRANSFER_DST_BIT
                     | VkImageUsageFlags.VK_IMAGE_USAGE_SAMPLED_BIT
-                    | VkImageUsageFlags.VK_IMAGE_USAGE_TRANSFER_SRC_BIT,
-                    VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT
+                    | VkImageUsageFlags.VK_IMAGE_USAGE_TRANSFER_SRC_BIT
             );
             textureImage = pair2.first;
-            textureImageMemory = pair2.second;
+            textureImageAllocation = pair2.second;
 
             transitionImageLayout(
                     textureImage,
@@ -1670,13 +1664,13 @@ class Application {
             bufferInfo.usage(usage);
             bufferInfo.sharingMode(VkSharingMode.VK_SHARING_MODE_EXCLUSIVE);
 
-            var allocInfo = VmaAllocationCreateInfo.allocate(arena);
-            allocInfo.usage(VmaMemoryUsage.VMA_MEMORY_USAGE_AUTO);
-            allocInfo.flags(properties);
+            var allocationCreateInfo = VmaAllocationCreateInfo.allocate(arena);
+            allocationCreateInfo.usage(VmaMemoryUsage.VMA_MEMORY_USAGE_AUTO);
+            allocationCreateInfo.flags(properties);
 
             var pBuffer = VkBuffer.Buffer.allocate(arena);
             var pAllocation = VmaAllocation.Buffer.allocate(arena);
-            var result = vma.vmaCreateBuffer(vmaAllocator, bufferInfo, allocInfo, pBuffer, pAllocation, allocationInfo);
+            var result = vma.vmaCreateBuffer(vmaAllocator, bufferInfo, allocationCreateInfo, pBuffer, pAllocation, allocationInfo);
             if (result != VkResult.VK_SUCCESS) {
                 throw new RuntimeException("Failed to create buffer, vulkan error code: " + VkResult.explain(result));
             }
@@ -1688,15 +1682,14 @@ class Application {
         }
     }
 
-    private Pair<VkImage, VkDeviceMemory> createImage(
+    private Pair<VkImage, VmaAllocation> createImage(
             int width,
             int height,
             int mipLevels,
             @enumtype(VkSampleCountFlags.class) int numSamples,
             @enumtype(VkFormat.class) int format,
             @enumtype(VkImageTiling.class) int tiling,
-            @enumtype(VkImageUsageFlags.class) int usage,
-            @enumtype(VkMemoryPropertyFlags.class) int properties
+            @enumtype(VkImageUsageFlags.class) int usage
     ) {
         try (var arena = Arena.ofConfined()) {
             var imageInfo = VkImageCreateInfo.allocate(arena);
@@ -1713,29 +1706,19 @@ class Application {
             imageInfo.samples(numSamples);
             imageInfo.sharingMode(VkSharingMode.VK_SHARING_MODE_EXCLUSIVE);
 
+            var allocationCreateInfo = VmaAllocationCreateInfo.allocate(arena);
+            allocationCreateInfo.usage(VmaMemoryUsage.VMA_MEMORY_USAGE_GPU_ONLY);
+
             var pImage = VkImage.Buffer.allocate(arena);
-            var result = deviceCommands.vkCreateImage(device, imageInfo, null, pImage);
+            var pAllocation = VmaAllocation.Buffer.allocate(arena);
+            var result = vma.vmaCreateImage(vmaAllocator, imageInfo, allocationCreateInfo, pImage, pAllocation, null);
             if (result != VkResult.VK_SUCCESS) {
                 throw new RuntimeException("Failed to create image, vulkan error code: " + VkResult.explain(result));
             }
+
             var image = pImage.read();
-
-            var memRequirements = VkMemoryRequirements.allocate(arena);
-            deviceCommands.vkGetImageMemoryRequirements(device, image, memRequirements);
-
-            var allocInfo = VkMemoryAllocateInfo.allocate(arena);
-            allocInfo.allocationSize(memRequirements.size());
-            allocInfo.memoryTypeIndex(findMemoryType(memRequirements.memoryTypeBits(), properties));
-
-            var pMemory = VkDeviceMemory.Buffer.allocate(arena);
-            result = deviceCommands.vkAllocateMemory(device, allocInfo, null, pMemory);
-            if (result != VkResult.VK_SUCCESS) {
-                throw new RuntimeException("Failed to allocate image memory, vulkan error code: " + VkResult.explain(result));
-            }
-            var memory = pMemory.read();
-
-            deviceCommands.vkBindImageMemory(device, image, memory, 0);
-            return new Pair<>(image, memory);
+            var allocation = pAllocation.read();
+            return new Pair<>(image, allocation);
         }
     }
 
@@ -2185,14 +2168,14 @@ class Application {
     private VkFramebuffer[] swapChainFramebuffers;
     private VkCommandPool commandPool;
     private VkImage colorImage;
-    private VkDeviceMemory colorImageMemory;
+    private VmaAllocation colorImageAllocation;
     private VkImageView colorImageView;
     private VkImage depthImage;
-    private VkDeviceMemory depthImageMemory;
+    private VmaAllocation depthImageAllocation;
     private VkImageView depthImageView;
     private int textureMipLevels;
     private VkImage textureImage;
-    private VkDeviceMemory textureImageMemory;
+    private VmaAllocation textureImageAllocation;
     private VkImageView textureImageView;
     private VkSampler textureSampler;
     private float[] vertices;
