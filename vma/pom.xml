@@ -36,7 +36,7 @@
     </scm>
 
     <artifactId>vma</artifactId>
-    <version>0.1.0-alfa</version>
+    <version>0.1.0-bravo</version>
     <packaging>jar</packaging>
 
     <properties>
