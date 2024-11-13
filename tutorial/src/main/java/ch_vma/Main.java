@@ -8,6 +8,7 @@ import tech.icey.glfw.GLFW;
 import tech.icey.glfw.GLFWConstants;
 import tech.icey.glfw.GLFWLoader;
 import tech.icey.glfw.handle.GLFWwindow;
+import tech.icey.panama.Loader;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
 import tech.icey.panama.annotation.pointer;
@@ -23,6 +24,11 @@ import tech.icey.vk4j.command.StaticCommands;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
+import tech.icey.vma.VMA;
+import tech.icey.vma.VMAUtil;
+import tech.icey.vma.datatype.VmaAllocatorCreateInfo;
+import tech.icey.vma.datatype.VmaVulkanFunctions;
+import tech.icey.vma.handle.VmaAllocator;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -85,6 +91,7 @@ class Application {
         createSurface();
         pickPhysicalDevice();
         createLogicalDevice();
+        createVMA();
         createSwapchain();
         createImageViews();
         createRenderPass();
@@ -359,6 +366,37 @@ class Application {
 
             deviceCommands.vkGetDeviceQueue(device, indices.presentFamily(), 0, pQueue);
             presentQueue = pQueue.read();
+        }
+    }
+
+    private void createVMA() {
+        System.loadLibrary("vma");
+        vma = new VMA(Loader::loadFunction);
+
+        try (var arena = Arena.ofConfined()) {
+            var vmaVulkanFunctions = VmaVulkanFunctions.allocate(arena);
+            VMAUtil.fillVulkanFunctions(
+                    vmaVulkanFunctions,
+                    staticCommands,
+                    entryCommands,
+                    instanceCommands,
+                    deviceCommands
+            );
+
+            var vmaCreateInfo = VmaAllocatorCreateInfo.allocate(arena);
+            vmaCreateInfo.instance(instance);
+            vmaCreateInfo.physicalDevice(physicalDevice);
+            vmaCreateInfo.device(device);
+            vmaCreateInfo.pVulkanFunctions(vmaVulkanFunctions);
+            vmaCreateInfo.vulkanApiVersion(Version.VK_API_VERSION_1_1);
+
+            var pVmaAllocator = VmaAllocator.Buffer.allocate(arena);
+            var result = vma.vmaCreateAllocator(vmaCreateInfo, pVmaAllocator);
+            if (result != VkResult.VK_SUCCESS) {
+                throw new RuntimeException("Failed to create VMA allocator, vulkan error code: " + VkResult.explain(result));
+            }
+
+            vmaAllocator = pVmaAllocator.read();
         }
     }
 
@@ -2141,6 +2179,8 @@ class Application {
     private DeviceCommands deviceCommands;
     private VkQueue graphicsQueue;
     private VkQueue presentQueue;
+    private VMA vma;
+    private VmaAllocator vmaAllocator;
     private VkSwapchainKHR swapChain;
     private VkImage[] swapChainImages;
     private @enumtype(VkFormat.class) int swapChainImageFormat;

@@ -45,6 +45,12 @@
             <version>0.2.0</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>tech.icey</groupId>
+            <artifactId>vma</artifactId>
+            <version>0.1.0-alfa</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
