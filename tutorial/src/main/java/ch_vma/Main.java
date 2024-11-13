@@ -25,6 +25,7 @@ import tech.icey.vk4j.command.StaticCommands;
 import tech.icey.vk4j.datatype.*;
 import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
+import tech.icey.vma.JavaTraceUtil;
 import tech.icey.vma.VMA;
 import tech.icey.vma.VMAUtil;
 import tech.icey.vma.bitmask.VmaAllocationCreateFlags;
@@ -373,6 +374,7 @@ class Application {
     private void createVMA() {
         System.loadLibrary("vma");
         vma = new VMA(Loader::loadFunction);
+        vma.vk4jSetJavaTrace(JavaTraceUtil.PTRACE);
 
         try (var arena = Arena.ofConfined()) {
             var vmaVulkanFunctions = VmaVulkanFunctions.allocate(arena);
@@ -1646,7 +1648,7 @@ class Application {
     private Pair<VkBuffer, VmaAllocation> createBuffer(
             int size,
             @enumtype(VkBufferUsageFlags.class) int usage,
-            @enumtype(VmaAllocationCreateFlags.class) int properties,
+            @enumtype(VmaAllocationCreateFlags.class) int vmaAllocationCreationFlags,
             @nullable VmaAllocationInfo allocationInfo
     ) {
         try (var arena = Arena.ofConfined()) {
@@ -1657,7 +1659,7 @@ class Application {
 
             var allocationCreateInfo = VmaAllocationCreateInfo.allocate(arena);
             allocationCreateInfo.usage(VmaMemoryUsage.VMA_MEMORY_USAGE_AUTO);
-            allocationCreateInfo.flags(properties);
+            allocationCreateInfo.flags(vmaAllocationCreationFlags);
 
             var pBuffer = VkBuffer.Buffer.allocate(arena);
             var pAllocation = VmaAllocation.Buffer.allocate(arena);

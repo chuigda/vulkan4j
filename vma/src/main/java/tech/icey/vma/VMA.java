@@ -1168,6 +1168,18 @@ public final class VMA {
         }
     }
 
+    public void vk4jSetJavaTrace(
+            @pointer(comment="void*") MemorySegment javaTrace
+    ) {
+        try {
+            HANDLE$vk4jSetJavaTrace.invokeExact(
+                    javaTrace
+            );
+        } catch (Throwable t) {
+            throw new RuntimeException(t);
+        }
+    }
+
     public static final FunctionDescriptor DESCRIPTOR$vmaCreateAllocator = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS.withTargetLayout(VmaAllocatorCreateInfo.LAYOUT),
@@ -1570,6 +1582,9 @@ public final class VMA {
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
     );
+    public static final FunctionDescriptor DESCRIPTOR$vk4jSetJavaTrace = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+    );
 
     public final @nullable MemorySegment SEGMENT$vmaCreateAllocator;
     public final @nullable MemorySegment SEGMENT$vmaDestroyAllocator;
@@ -1641,6 +1656,7 @@ public final class VMA {
     public final @nullable MemorySegment SEGMENT$vmaFreeVirtualBlockStatsString;
     public final @nullable MemorySegment SEGMENT$vmaBuildStatsString;
     public final @nullable MemorySegment SEGMENT$vmaFreeStatsString;
+    public final @nullable MemorySegment SEGMENT$vk4jSetJavaTrace;
 
     public final @nullable MethodHandle HANDLE$vmaCreateAllocator;
     public final @nullable MethodHandle HANDLE$vmaDestroyAllocator;
@@ -1712,6 +1728,7 @@ public final class VMA {
     public final @nullable MethodHandle HANDLE$vmaFreeVirtualBlockStatsString;
     public final @nullable MethodHandle HANDLE$vmaBuildStatsString;
     public final @nullable MethodHandle HANDLE$vmaFreeStatsString;
+    public final @nullable MethodHandle HANDLE$vk4jSetJavaTrace;
 
     public VMA(RawFunctionLoader loader) {
         SEGMENT$vmaCreateAllocator = loader.apply("vmaCreateAllocator");
@@ -1854,5 +1871,7 @@ public final class VMA {
         HANDLE$vmaBuildStatsString = RawFunctionLoader.link(SEGMENT$vmaBuildStatsString, DESCRIPTOR$vmaBuildStatsString);
         SEGMENT$vmaFreeStatsString = loader.apply("vmaFreeStatsString");
         HANDLE$vmaFreeStatsString = RawFunctionLoader.link(SEGMENT$vmaFreeStatsString, DESCRIPTOR$vmaFreeStatsString);
+        SEGMENT$vk4jSetJavaTrace = loader.apply("vk4jSetJavaTrace");
+        HANDLE$vk4jSetJavaTrace = RawFunctionLoader.link(SEGMENT$vk4jSetJavaTrace, DESCRIPTOR$vk4jSetJavaTrace);
     }
 }
