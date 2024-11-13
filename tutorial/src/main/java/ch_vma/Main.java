@@ -1642,15 +1642,6 @@ class Application {
     }
 
     private record Pair<T1, T2>(T1 first, T2 second) {}
-    private record Tuple<T1, T2, T3>(T1 component1, T2 component2, T3 component3) {
-        public T1 first() {
-            return component1;
-        }
-
-        public T2 second() {
-            return component2;
-        }
-    }
 
     private Pair<VkBuffer, VmaAllocation> createBuffer(
             int size,
