@@ -3,7 +3,7 @@
 VK_MEM_ALLOC_H_URI=https://raw.githubusercontent.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/refs/tags/v3.1.0/include/vk_mem_alloc.h
 
 # if the file does not exist
-  if [ ! -f vk_mem_alloc.h ]; then
+if [ ! -f vk_mem_alloc.h ]; then
   # if wget is installed on this system
   if command -v wget &> /dev/null; then
     echo Downloading VMA header file
@@ -15,12 +15,12 @@ VK_MEM_ALLOC_H_URI=https://raw.githubusercontent.com/GPUOpen-LibrariesAndSDKs/Vu
     echo Error: could not find vk_mem_alloc.h and cannot download it automatically
     exit 1
   fi
-fi
 
-# if last command failed, exit
-if [ $? -ne 0 ]; then
-  echo Error: error downloading vk_mem_alloc.h
-  exit 1
+  # if last command failed, exit
+  if [ $? -ne 0 ]; then
+    echo Error: error downloading vk_mem_alloc.h
+    exit 1
+  fi
 fi
 
 # if the file still does not exist (even if the download command succeeded)
