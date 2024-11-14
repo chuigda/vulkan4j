@@ -235,7 +235,6 @@ fun generateInputOutputType(type: CType, optional: Boolean): String {
         }
         is CStructType -> type.name
         is CNonRefType -> type.jType
-        else -> throw Exception("unsupported type: $type")
     }
 }
 

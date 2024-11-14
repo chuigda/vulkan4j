@@ -11,10 +11,11 @@ import tech.icey.vma.datatype.*;
 import tech.icey.vma.handle.*;
 import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 
 public final class VMA {
-    public int vmaCreateAllocator(
+    public @enumtype(VkResult.class) int vmaCreateAllocator(
             @pointer(target=VmaAllocatorCreateInfo.class) VmaAllocatorCreateInfo pCreateInfo,
             @pointer(target=VmaAllocator.class) VmaAllocator.Buffer pAllocator
     ) {
@@ -140,7 +141,7 @@ public final class VMA {
         }
     }
 
-    public int vmaFindMemoryTypeIndex(
+    public @enumtype(VkResult.class) int vmaFindMemoryTypeIndex(
             VmaAllocator allocator,
             @unsigned int memoryTypeBits,
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pAllocationCreateInfo,
@@ -158,7 +159,7 @@ public final class VMA {
         }
     }
 
-    public int vmaFindMemoryTypeIndexForBufferInfo(
+    public @enumtype(VkResult.class) int vmaFindMemoryTypeIndexForBufferInfo(
             VmaAllocator allocator,
             @pointer(target=VkBufferCreateInfo.class) VkBufferCreateInfo pBufferCreateInfo,
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pAllocationCreateInfo,
@@ -176,7 +177,7 @@ public final class VMA {
         }
     }
 
-    public int vmaFindMemoryTypeIndexForImageInfo(
+    public @enumtype(VkResult.class) int vmaFindMemoryTypeIndexForImageInfo(
             VmaAllocator allocator,
             @pointer(target=VkImageCreateInfo.class) VkImageCreateInfo pImageCreateInfo,
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pAllocationCreateInfo,
@@ -194,7 +195,7 @@ public final class VMA {
         }
     }
 
-    public int vmaCreatePool(
+    public @enumtype(VkResult.class) int vmaCreatePool(
             VmaAllocator allocator,
             @pointer(target=VmaPoolCreateInfo.class) VmaPoolCreateInfo pCreateInfo,
             @pointer(target=VmaPool.class) VmaPool.Buffer pPool
@@ -256,7 +257,7 @@ public final class VMA {
         }
     }
 
-    public int vmaCheckPoolCorruption(
+    public @enumtype(VkResult.class) int vmaCheckPoolCorruption(
             VmaAllocator allocator,
             VmaPool pool
     ) {
@@ -302,7 +303,7 @@ public final class VMA {
         }
     }
 
-    public int vmaAllocateMemory(
+    public @enumtype(VkResult.class) int vmaAllocateMemory(
             VmaAllocator allocator,
             @pointer(target=VkMemoryRequirements.class) VkMemoryRequirements pVkMemoryRequirements,
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pCreateInfo,
@@ -322,7 +323,7 @@ public final class VMA {
         }
     }
 
-    public int vmaAllocateMemoryPages(
+    public @enumtype(VkResult.class) int vmaAllocateMemoryPages(
             VmaAllocator allocator,
             @pointer(target=VkMemoryRequirements.class) VkMemoryRequirements pVkMemoryRequirements,
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pCreateInfo,
@@ -344,7 +345,7 @@ public final class VMA {
         }
     }
 
-    public int vmaAllocateMemoryForBuffer(
+    public @enumtype(VkResult.class) int vmaAllocateMemoryForBuffer(
             VmaAllocator allocator,
             VkBuffer buffer,
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pCreateInfo,
@@ -364,7 +365,7 @@ public final class VMA {
         }
     }
 
-    public int vmaAllocateMemoryForImage(
+    public @enumtype(VkResult.class) int vmaAllocateMemoryForImage(
             VmaAllocator allocator,
             VkImage image,
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pCreateInfo,
@@ -494,7 +495,7 @@ public final class VMA {
         }
     }
 
-    public int vmaMapMemory(
+    public @enumtype(VkResult.class) int vmaMapMemory(
             VmaAllocator allocator,
             VmaAllocation allocation,
             PointerBuffer ppData
@@ -524,7 +525,7 @@ public final class VMA {
         }
     }
 
-    public int vmaFlushAllocation(
+    public @enumtype(VkResult.class) int vmaFlushAllocation(
             VmaAllocator allocator,
             VmaAllocation allocation,
             @unsigned long offset,
@@ -542,7 +543,7 @@ public final class VMA {
         }
     }
 
-    public int vmaInvalidateAllocation(
+    public @enumtype(VkResult.class) int vmaInvalidateAllocation(
             VmaAllocator allocator,
             VmaAllocation allocation,
             @unsigned long offset,
@@ -560,7 +561,7 @@ public final class VMA {
         }
     }
 
-    public int vmaFlushAllocations(
+    public @enumtype(VkResult.class) int vmaFlushAllocations(
             VmaAllocator allocator,
             @unsigned int allocationCount,
             @nullable @pointer(target=VmaAllocation.class) VmaAllocation.Buffer allocations,
@@ -580,7 +581,7 @@ public final class VMA {
         }
     }
 
-    public int vmaInvalidateAllocations(
+    public @enumtype(VkResult.class) int vmaInvalidateAllocations(
             VmaAllocator allocator,
             @unsigned int allocationCount,
             @nullable @pointer(target=VmaAllocation.class) VmaAllocation.Buffer allocations,
@@ -600,7 +601,7 @@ public final class VMA {
         }
     }
 
-    public int vmaCopyMemoryToAllocation(
+    public @enumtype(VkResult.class) int vmaCopyMemoryToAllocation(
             VmaAllocator allocator,
             @pointer(comment="void*") MemorySegment pSrcHostPointer,
             VmaAllocation dstAllocation,
@@ -620,7 +621,7 @@ public final class VMA {
         }
     }
 
-    public int vmaCopyAllocationToMemory(
+    public @enumtype(VkResult.class) int vmaCopyAllocationToMemory(
             VmaAllocator allocator,
             VmaAllocation srcAllocation,
             @unsigned long srcAllocationLocalOffset,
@@ -640,7 +641,7 @@ public final class VMA {
         }
     }
 
-    public int vmaCheckCorruption(
+    public @enumtype(VkResult.class) int vmaCheckCorruption(
             VmaAllocator allocator,
             @unsigned int memoryTypeBits
     ) {
@@ -654,7 +655,7 @@ public final class VMA {
         }
     }
 
-    public int vmaBeginDefragmentation(
+    public @enumtype(VkResult.class) int vmaBeginDefragmentation(
             VmaAllocator allocator,
             @pointer(target=VmaDefragmentationInfo.class) VmaDefragmentationInfo pInfo,
             @pointer(target=VmaDefragmentationContext.class) VmaDefragmentationContext.Buffer pContext
@@ -686,7 +687,7 @@ public final class VMA {
         }
     }
 
-    public int vmaBeginDefragmentationPass(
+    public @enumtype(VkResult.class) int vmaBeginDefragmentationPass(
             VmaAllocator allocator,
             VmaDefragmentationContext context,
             @pointer(target=VmaDefragmentationPassMoveInfo.class) VmaDefragmentationPassMoveInfo pPassInfo
@@ -702,7 +703,7 @@ public final class VMA {
         }
     }
 
-    public int vmaEndDefragmentationPass(
+    public @enumtype(VkResult.class) int vmaEndDefragmentationPass(
             VmaAllocator allocator,
             VmaDefragmentationContext context,
             @pointer(target=VmaDefragmentationPassMoveInfo.class) VmaDefragmentationPassMoveInfo pPassInfo
@@ -718,7 +719,7 @@ public final class VMA {
         }
     }
 
-    public int vmaBindBufferMemory(
+    public @enumtype(VkResult.class) int vmaBindBufferMemory(
             VmaAllocator allocator,
             VmaAllocation allocation,
             VkBuffer buffer
@@ -734,7 +735,7 @@ public final class VMA {
         }
     }
 
-    public int vmaBindBufferMemory2(
+    public @enumtype(VkResult.class) int vmaBindBufferMemory2(
             VmaAllocator allocator,
             VmaAllocation allocation,
             @unsigned long allocationLocalOffset,
@@ -754,7 +755,7 @@ public final class VMA {
         }
     }
 
-    public int vmaBindImageMemory(
+    public @enumtype(VkResult.class) int vmaBindImageMemory(
             VmaAllocator allocator,
             VmaAllocation allocation,
             VkImage image
@@ -770,7 +771,7 @@ public final class VMA {
         }
     }
 
-    public int vmaBindImageMemory2(
+    public @enumtype(VkResult.class) int vmaBindImageMemory2(
             VmaAllocator allocator,
             VmaAllocation allocation,
             @unsigned long allocationLocalOffset,
@@ -790,7 +791,7 @@ public final class VMA {
         }
     }
 
-    public int vmaCreateBuffer(
+    public @enumtype(VkResult.class) int vmaCreateBuffer(
             VmaAllocator allocator,
             @pointer(target=VkBufferCreateInfo.class) VkBufferCreateInfo pBufferCreateInfo,
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pAllocationCreateInfo,
@@ -812,7 +813,7 @@ public final class VMA {
         }
     }
 
-    public int vmaCreateBufferWithAlignment(
+    public @enumtype(VkResult.class) int vmaCreateBufferWithAlignment(
             VmaAllocator allocator,
             @pointer(target=VkBufferCreateInfo.class) VkBufferCreateInfo pBufferCreateInfo,
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pAllocationCreateInfo,
@@ -836,7 +837,7 @@ public final class VMA {
         }
     }
 
-    public int vmaCreateAliasingBuffer(
+    public @enumtype(VkResult.class) int vmaCreateAliasingBuffer(
             VmaAllocator allocator,
             VmaAllocation allocation,
             @pointer(target=VkBufferCreateInfo.class) VkBufferCreateInfo pBufferCreateInfo,
@@ -854,7 +855,7 @@ public final class VMA {
         }
     }
 
-    public int vmaCreateAliasingBuffer2(
+    public @enumtype(VkResult.class) int vmaCreateAliasingBuffer2(
             VmaAllocator allocator,
             VmaAllocation allocation,
             @unsigned long allocationLocalOffset,
@@ -890,7 +891,7 @@ public final class VMA {
         }
     }
 
-    public int vmaCreateImage(
+    public @enumtype(VkResult.class) int vmaCreateImage(
             VmaAllocator allocator,
             @pointer(target=VkImageCreateInfo.class) VkImageCreateInfo pImageCreateInfo,
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pAllocationCreateInfo,
@@ -912,7 +913,7 @@ public final class VMA {
         }
     }
 
-    public int vmaCreateAliasingImage(
+    public @enumtype(VkResult.class) int vmaCreateAliasingImage(
             VmaAllocator allocator,
             VmaAllocation allocation,
             @pointer(target=VkImageCreateInfo.class) VkImageCreateInfo pImageCreateInfo,
@@ -930,7 +931,7 @@ public final class VMA {
         }
     }
 
-    public int vmaCreateAliasingImage2(
+    public @enumtype(VkResult.class) int vmaCreateAliasingImage2(
             VmaAllocator allocator,
             VmaAllocation allocation,
             @unsigned long allocationLocalOffset,
@@ -966,7 +967,7 @@ public final class VMA {
         }
     }
 
-    public int vmaCreateVirtualBlock(
+    public @enumtype(VkResult.class) int vmaCreateVirtualBlock(
             @pointer(target=VmaVirtualBlockCreateInfo.class) VmaVirtualBlockCreateInfo pCreateInfo,
             @pointer(target=VmaVirtualBlock.class) VmaVirtualBlock.Buffer pVirtualBlock
     ) {
@@ -1020,7 +1021,7 @@ public final class VMA {
         }
     }
 
-    public int vmaVirtualAllocate(
+    public @enumtype(VkResult.class) int vmaVirtualAllocate(
             VmaVirtualBlock virtualBlock,
             @pointer(target=VmaVirtualAllocationCreateInfo.class) VmaVirtualAllocationCreateInfo pCreateInfo,
             @pointer(target=VmaVirtualAllocation.class) VmaVirtualAllocation.Buffer pAllocation,

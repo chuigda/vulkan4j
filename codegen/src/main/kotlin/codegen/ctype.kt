@@ -306,7 +306,7 @@ private val knownTypes = mapOf(
     "VkDevice" to CHandleType("VkDevice"),
     "VkDeviceMemory" to CHandleType("VkDeviceMemory"),
     "VkExternalMemoryHandleTypeFlagsKHR" to CEnumType("VkExternalMemoryHandleTypeFlags"),
-    "VkResult" to int32Type,
+    "VkResult" to CEnumType("VkResult"),
     "PFN_vkGetInstanceProcAddr" to CPointerType(voidType, false, comment="PFN_vkGetInstanceProcAddr"),
     "PFN_vkGetDeviceProcAddr" to CPointerType(voidType, false, comment="PFN_vkGetDeviceProcAddr"),
     "PFN_vkGetPhysicalDeviceProperties" to CPointerType(voidType, false, comment="PFN_vkGetPhysicalDeviceProperties"),

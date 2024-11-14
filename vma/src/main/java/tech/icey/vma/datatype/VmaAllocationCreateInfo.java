@@ -13,6 +13,7 @@ import tech.icey.vma.enumtype.*;
 import tech.icey.vma.handle.*;
 import tech.icey.vk4j.bitmask.*;
 import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 
 public record VmaAllocationCreateInfo(MemorySegment segment) implements IPointer {

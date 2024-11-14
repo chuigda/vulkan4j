@@ -11,6 +11,7 @@ fun main() {
     val vkImport = listOf(
         "tech.icey.vk4j.bitmask.*",
         "tech.icey.vk4j.datatype.*",
+        "tech.icey.vk4j.enumtype.*",
         "tech.icey.vk4j.handle.*"
     )
 

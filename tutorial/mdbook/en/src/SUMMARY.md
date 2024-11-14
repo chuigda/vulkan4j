@@ -56,4 +56,5 @@
 - [Generating mipmaps](quality/generating-mipmaps.md)
 - [Multisampling](quality/multisampling.md)
 
-# Compute Shader
+# Advanced topics
+- [Vulkan memory allocator](./advanced-topics/vulkan-memory-allocator.md)
