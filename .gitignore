@@ -60,3 +60,6 @@ codegen/input/*
 
 # VMA build input
 vma/vma_build/vk_mem_alloc.h
+
+# Python __pycache__
+**/__pycache__/
