@@ -30,25 +30,25 @@
         <dependency>
             <groupId>tech.icey</groupId>
             <artifactId>panama-plus</artifactId>
-            <version>0.1.2</version>
+            <version>0.1.3</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>tech.icey</groupId>
             <artifactId>vulkan4j</artifactId>
-            <version>0.2.0</version>
+            <version>0.2.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>tech.icey</groupId>
             <artifactId>glfw</artifactId>
-            <version>0.2.0</version>
+            <version>0.2.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>tech.icey</groupId>
             <artifactId>vma</artifactId>
-            <version>0.1.0-bravo</version>
+            <version>0.1.0-charlie</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
