@@ -1,4 +1,4 @@
-package ch_vma;
+package ch_ex1_vma;
 
 import de.javagl.obj.ObjData;
 import de.javagl.obj.ObjReader;
