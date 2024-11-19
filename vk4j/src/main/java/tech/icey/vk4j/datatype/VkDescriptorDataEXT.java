@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
     /// and use {@link VkSampler.Buffer#reinterpret} to set the size before actually
     /// {@link VkSampler.Buffer#read}ing or {@link VkSampler.Buffer#write}ing
     /// the buffer.
-    public @nullable VkSampler.Buffer pSampler() {
+    public @Nullable VkSampler.Buffer pSampler() {
         MemorySegment s = pSamplerRaw();
         if (s.address() == 0) {
             return null;
@@ -55,7 +56,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return new VkSampler.Buffer(s);
     }
 
-    public void pSampler(@nullable VkSampler.Buffer value) {
+    public void pSampler(@Nullable VkSampler.Buffer value) {
         pSamplerRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -67,7 +68,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pCombinedImageSampler, OFFSET$pCombinedImageSampler, value);
     }
 
-    public @nullable VkDescriptorImageInfo pCombinedImageSampler() {
+    public @Nullable VkDescriptorImageInfo pCombinedImageSampler() {
         MemorySegment s = pCombinedImageSamplerRaw();
         if (s.address() == 0) {
             return null;
@@ -77,7 +78,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDescriptorImageInfo[] pCombinedImageSampler(int assumedCount) {
+    public @Nullable VkDescriptorImageInfo[] pCombinedImageSampler(int assumedCount) {
         MemorySegment s = pCombinedImageSamplerRaw().reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
         VkDescriptorImageInfo[] arr = new VkDescriptorImageInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -86,7 +87,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pCombinedImageSampler(@nullable VkDescriptorImageInfo value) {
+    public void pCombinedImageSampler(@Nullable VkDescriptorImageInfo value) {
         pCombinedImageSamplerRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -98,7 +99,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pInputAttachmentImage, OFFSET$pInputAttachmentImage, value);
     }
 
-    public @nullable VkDescriptorImageInfo pInputAttachmentImage() {
+    public @Nullable VkDescriptorImageInfo pInputAttachmentImage() {
         MemorySegment s = pInputAttachmentImageRaw();
         if (s.address() == 0) {
             return null;
@@ -108,7 +109,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDescriptorImageInfo[] pInputAttachmentImage(int assumedCount) {
+    public @Nullable VkDescriptorImageInfo[] pInputAttachmentImage(int assumedCount) {
         MemorySegment s = pInputAttachmentImageRaw().reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
         VkDescriptorImageInfo[] arr = new VkDescriptorImageInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -117,7 +118,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pInputAttachmentImage(@nullable VkDescriptorImageInfo value) {
+    public void pInputAttachmentImage(@Nullable VkDescriptorImageInfo value) {
         pInputAttachmentImageRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -129,7 +130,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pSampledImage, OFFSET$pSampledImage, value);
     }
 
-    public @nullable VkDescriptorImageInfo pSampledImage() {
+    public @Nullable VkDescriptorImageInfo pSampledImage() {
         MemorySegment s = pSampledImageRaw();
         if (s.address() == 0) {
             return null;
@@ -139,7 +140,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDescriptorImageInfo[] pSampledImage(int assumedCount) {
+    public @Nullable VkDescriptorImageInfo[] pSampledImage(int assumedCount) {
         MemorySegment s = pSampledImageRaw().reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
         VkDescriptorImageInfo[] arr = new VkDescriptorImageInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -148,7 +149,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pSampledImage(@nullable VkDescriptorImageInfo value) {
+    public void pSampledImage(@Nullable VkDescriptorImageInfo value) {
         pSampledImageRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -160,7 +161,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pStorageImage, OFFSET$pStorageImage, value);
     }
 
-    public @nullable VkDescriptorImageInfo pStorageImage() {
+    public @Nullable VkDescriptorImageInfo pStorageImage() {
         MemorySegment s = pStorageImageRaw();
         if (s.address() == 0) {
             return null;
@@ -170,7 +171,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDescriptorImageInfo[] pStorageImage(int assumedCount) {
+    public @Nullable VkDescriptorImageInfo[] pStorageImage(int assumedCount) {
         MemorySegment s = pStorageImageRaw().reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
         VkDescriptorImageInfo[] arr = new VkDescriptorImageInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -179,7 +180,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pStorageImage(@nullable VkDescriptorImageInfo value) {
+    public void pStorageImage(@Nullable VkDescriptorImageInfo value) {
         pStorageImageRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -191,7 +192,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pUniformTexelBuffer, OFFSET$pUniformTexelBuffer, value);
     }
 
-    public @nullable VkDescriptorAddressInfoEXT pUniformTexelBuffer() {
+    public @Nullable VkDescriptorAddressInfoEXT pUniformTexelBuffer() {
         MemorySegment s = pUniformTexelBufferRaw();
         if (s.address() == 0) {
             return null;
@@ -201,7 +202,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDescriptorAddressInfoEXT[] pUniformTexelBuffer(int assumedCount) {
+    public @Nullable VkDescriptorAddressInfoEXT[] pUniformTexelBuffer(int assumedCount) {
         MemorySegment s = pUniformTexelBufferRaw().reinterpret(assumedCount * VkDescriptorAddressInfoEXT.SIZE);
         VkDescriptorAddressInfoEXT[] arr = new VkDescriptorAddressInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -210,7 +211,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pUniformTexelBuffer(@nullable VkDescriptorAddressInfoEXT value) {
+    public void pUniformTexelBuffer(@Nullable VkDescriptorAddressInfoEXT value) {
         pUniformTexelBufferRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -222,7 +223,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pStorageTexelBuffer, OFFSET$pStorageTexelBuffer, value);
     }
 
-    public @nullable VkDescriptorAddressInfoEXT pStorageTexelBuffer() {
+    public @Nullable VkDescriptorAddressInfoEXT pStorageTexelBuffer() {
         MemorySegment s = pStorageTexelBufferRaw();
         if (s.address() == 0) {
             return null;
@@ -232,7 +233,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDescriptorAddressInfoEXT[] pStorageTexelBuffer(int assumedCount) {
+    public @Nullable VkDescriptorAddressInfoEXT[] pStorageTexelBuffer(int assumedCount) {
         MemorySegment s = pStorageTexelBufferRaw().reinterpret(assumedCount * VkDescriptorAddressInfoEXT.SIZE);
         VkDescriptorAddressInfoEXT[] arr = new VkDescriptorAddressInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -241,7 +242,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pStorageTexelBuffer(@nullable VkDescriptorAddressInfoEXT value) {
+    public void pStorageTexelBuffer(@Nullable VkDescriptorAddressInfoEXT value) {
         pStorageTexelBufferRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -253,7 +254,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pUniformBuffer, OFFSET$pUniformBuffer, value);
     }
 
-    public @nullable VkDescriptorAddressInfoEXT pUniformBuffer() {
+    public @Nullable VkDescriptorAddressInfoEXT pUniformBuffer() {
         MemorySegment s = pUniformBufferRaw();
         if (s.address() == 0) {
             return null;
@@ -263,7 +264,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDescriptorAddressInfoEXT[] pUniformBuffer(int assumedCount) {
+    public @Nullable VkDescriptorAddressInfoEXT[] pUniformBuffer(int assumedCount) {
         MemorySegment s = pUniformBufferRaw().reinterpret(assumedCount * VkDescriptorAddressInfoEXT.SIZE);
         VkDescriptorAddressInfoEXT[] arr = new VkDescriptorAddressInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -272,7 +273,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pUniformBuffer(@nullable VkDescriptorAddressInfoEXT value) {
+    public void pUniformBuffer(@Nullable VkDescriptorAddressInfoEXT value) {
         pUniformBufferRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -284,7 +285,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pStorageBuffer, OFFSET$pStorageBuffer, value);
     }
 
-    public @nullable VkDescriptorAddressInfoEXT pStorageBuffer() {
+    public @Nullable VkDescriptorAddressInfoEXT pStorageBuffer() {
         MemorySegment s = pStorageBufferRaw();
         if (s.address() == 0) {
             return null;
@@ -294,7 +295,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDescriptorAddressInfoEXT[] pStorageBuffer(int assumedCount) {
+    public @Nullable VkDescriptorAddressInfoEXT[] pStorageBuffer(int assumedCount) {
         MemorySegment s = pStorageBufferRaw().reinterpret(assumedCount * VkDescriptorAddressInfoEXT.SIZE);
         VkDescriptorAddressInfoEXT[] arr = new VkDescriptorAddressInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -303,7 +304,7 @@ public record VkDescriptorDataEXT(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pStorageBuffer(@nullable VkDescriptorAddressInfoEXT value) {
+    public void pStorageBuffer(@Nullable VkDescriptorAddressInfoEXT value) {
         pStorageBufferRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

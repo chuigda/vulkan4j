@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -53,7 +54,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -78,7 +79,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
     /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
     /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
     /// the buffer.
-    public @nullable VkSemaphore.Buffer pWaitSemaphores() {
+    public @Nullable VkSemaphore.Buffer pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.address() == 0) {
             return null;
@@ -86,7 +87,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         return new VkSemaphore.Buffer(s);
     }
 
-    public void pWaitSemaphores(@nullable VkSemaphore.Buffer value) {
+    public void pWaitSemaphores(@Nullable VkSemaphore.Buffer value) {
         pWaitSemaphoresRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -106,7 +107,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pBufferBinds, OFFSET$pBufferBinds, value);
     }
 
-    public @nullable VkSparseBufferMemoryBindInfo pBufferBinds() {
+    public @Nullable VkSparseBufferMemoryBindInfo pBufferBinds() {
         MemorySegment s = pBufferBindsRaw();
         if (s.address() == 0) {
             return null;
@@ -116,7 +117,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSparseBufferMemoryBindInfo[] pBufferBinds(int assumedCount) {
+    public @Nullable VkSparseBufferMemoryBindInfo[] pBufferBinds(int assumedCount) {
         MemorySegment s = pBufferBindsRaw().reinterpret(assumedCount * VkSparseBufferMemoryBindInfo.SIZE);
         VkSparseBufferMemoryBindInfo[] arr = new VkSparseBufferMemoryBindInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -125,7 +126,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pBufferBinds(@nullable VkSparseBufferMemoryBindInfo value) {
+    public void pBufferBinds(@Nullable VkSparseBufferMemoryBindInfo value) {
         pBufferBindsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -145,7 +146,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pImageOpaqueBinds, OFFSET$pImageOpaqueBinds, value);
     }
 
-    public @nullable VkSparseImageOpaqueMemoryBindInfo pImageOpaqueBinds() {
+    public @Nullable VkSparseImageOpaqueMemoryBindInfo pImageOpaqueBinds() {
         MemorySegment s = pImageOpaqueBindsRaw();
         if (s.address() == 0) {
             return null;
@@ -155,7 +156,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSparseImageOpaqueMemoryBindInfo[] pImageOpaqueBinds(int assumedCount) {
+    public @Nullable VkSparseImageOpaqueMemoryBindInfo[] pImageOpaqueBinds(int assumedCount) {
         MemorySegment s = pImageOpaqueBindsRaw().reinterpret(assumedCount * VkSparseImageOpaqueMemoryBindInfo.SIZE);
         VkSparseImageOpaqueMemoryBindInfo[] arr = new VkSparseImageOpaqueMemoryBindInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -164,7 +165,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pImageOpaqueBinds(@nullable VkSparseImageOpaqueMemoryBindInfo value) {
+    public void pImageOpaqueBinds(@Nullable VkSparseImageOpaqueMemoryBindInfo value) {
         pImageOpaqueBindsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -184,7 +185,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pImageBinds, OFFSET$pImageBinds, value);
     }
 
-    public @nullable VkSparseImageMemoryBindInfo pImageBinds() {
+    public @Nullable VkSparseImageMemoryBindInfo pImageBinds() {
         MemorySegment s = pImageBindsRaw();
         if (s.address() == 0) {
             return null;
@@ -194,7 +195,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSparseImageMemoryBindInfo[] pImageBinds(int assumedCount) {
+    public @Nullable VkSparseImageMemoryBindInfo[] pImageBinds(int assumedCount) {
         MemorySegment s = pImageBindsRaw().reinterpret(assumedCount * VkSparseImageMemoryBindInfo.SIZE);
         VkSparseImageMemoryBindInfo[] arr = new VkSparseImageMemoryBindInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -203,7 +204,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pImageBinds(@nullable VkSparseImageMemoryBindInfo value) {
+    public void pImageBinds(@Nullable VkSparseImageMemoryBindInfo value) {
         pImageBindsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -228,7 +229,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
     /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
     /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
     /// the buffer.
-    public @nullable VkSemaphore.Buffer pSignalSemaphores() {
+    public @Nullable VkSemaphore.Buffer pSignalSemaphores() {
         MemorySegment s = pSignalSemaphoresRaw();
         if (s.address() == 0) {
             return null;
@@ -236,7 +237,7 @@ public record VkBindSparseInfo(MemorySegment segment) implements IPointer {
         return new VkSemaphore.Buffer(s);
     }
 
-    public void pSignalSemaphores(@nullable VkSemaphore.Buffer value) {
+    public void pSignalSemaphores(@Nullable VkSemaphore.Buffer value) {
         pSignalSemaphoresRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

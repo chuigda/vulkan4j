@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -43,7 +44,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) implements I
         segment.set(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys, value);
     }
 
-    public @nullable VkPipelineBinaryKeyKHR pPipelineBinaryKeys() {
+    public @Nullable VkPipelineBinaryKeyKHR pPipelineBinaryKeys() {
         MemorySegment s = pPipelineBinaryKeysRaw();
         if (s.address() == 0) {
             return null;
@@ -53,7 +54,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) implements I
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineBinaryKeyKHR[] pPipelineBinaryKeys(int assumedCount) {
+    public @Nullable VkPipelineBinaryKeyKHR[] pPipelineBinaryKeys(int assumedCount) {
         MemorySegment s = pPipelineBinaryKeysRaw().reinterpret(assumedCount * VkPipelineBinaryKeyKHR.SIZE);
         VkPipelineBinaryKeyKHR[] arr = new VkPipelineBinaryKeyKHR[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -62,7 +63,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) implements I
         return arr;
     }
 
-    public void pPipelineBinaryKeys(@nullable VkPipelineBinaryKeyKHR value) {
+    public void pPipelineBinaryKeys(@Nullable VkPipelineBinaryKeyKHR value) {
         pPipelineBinaryKeysRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -74,7 +75,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) implements I
         segment.set(LAYOUT$pPipelineBinaryData, OFFSET$pPipelineBinaryData, value);
     }
 
-    public @nullable VkPipelineBinaryDataKHR pPipelineBinaryData() {
+    public @Nullable VkPipelineBinaryDataKHR pPipelineBinaryData() {
         MemorySegment s = pPipelineBinaryDataRaw();
         if (s.address() == 0) {
             return null;
@@ -84,7 +85,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) implements I
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineBinaryDataKHR[] pPipelineBinaryData(int assumedCount) {
+    public @Nullable VkPipelineBinaryDataKHR[] pPipelineBinaryData(int assumedCount) {
         MemorySegment s = pPipelineBinaryDataRaw().reinterpret(assumedCount * VkPipelineBinaryDataKHR.SIZE);
         VkPipelineBinaryDataKHR[] arr = new VkPipelineBinaryDataKHR[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -93,7 +94,7 @@ public record VkPipelineBinaryKeysAndDataKHR(MemorySegment segment) implements I
         return arr;
     }
 
-    public void pPipelineBinaryData(@nullable VkPipelineBinaryDataKHR value) {
+    public void pPipelineBinaryData(@Nullable VkPipelineBinaryDataKHR value) {
         pPipelineBinaryDataRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

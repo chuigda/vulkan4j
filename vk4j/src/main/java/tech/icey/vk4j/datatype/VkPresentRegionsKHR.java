@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkPresentRegionsKHR(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -65,7 +66,7 @@ public record VkPresentRegionsKHR(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 
-    public @nullable VkPresentRegionKHR pRegions() {
+    public @Nullable VkPresentRegionKHR pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {
             return null;
@@ -75,7 +76,7 @@ public record VkPresentRegionsKHR(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPresentRegionKHR[] pRegions(int assumedCount) {
+    public @Nullable VkPresentRegionKHR[] pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkPresentRegionKHR.SIZE);
         VkPresentRegionKHR[] arr = new VkPresentRegionKHR[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -84,7 +85,7 @@ public record VkPresentRegionsKHR(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pRegions(@nullable VkPresentRegionKHR value) {
+    public void pRegions(@Nullable VkPresentRegionKHR value) {
         pRegionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

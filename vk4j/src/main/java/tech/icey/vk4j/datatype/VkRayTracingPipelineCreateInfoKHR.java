@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -55,7 +56,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -83,7 +84,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
-    public @nullable VkPipelineShaderStageCreateInfo pStages() {
+    public @Nullable VkPipelineShaderStageCreateInfo pStages() {
         MemorySegment s = pStagesRaw();
         if (s.address() == 0) {
             return null;
@@ -93,7 +94,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
+    public @Nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
         MemorySegment s = pStagesRaw().reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
         VkPipelineShaderStageCreateInfo[] arr = new VkPipelineShaderStageCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -102,7 +103,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         return arr;
     }
 
-    public void pStages(@nullable VkPipelineShaderStageCreateInfo value) {
+    public void pStages(@Nullable VkPipelineShaderStageCreateInfo value) {
         pStagesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -122,7 +123,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
 
-    public @nullable VkRayTracingShaderGroupCreateInfoKHR pGroups() {
+    public @Nullable VkRayTracingShaderGroupCreateInfoKHR pGroups() {
         MemorySegment s = pGroupsRaw();
         if (s.address() == 0) {
             return null;
@@ -132,7 +133,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRayTracingShaderGroupCreateInfoKHR[] pGroups(int assumedCount) {
+    public @Nullable VkRayTracingShaderGroupCreateInfoKHR[] pGroups(int assumedCount) {
         MemorySegment s = pGroupsRaw().reinterpret(assumedCount * VkRayTracingShaderGroupCreateInfoKHR.SIZE);
         VkRayTracingShaderGroupCreateInfoKHR[] arr = new VkRayTracingShaderGroupCreateInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -141,7 +142,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         return arr;
     }
 
-    public void pGroups(@nullable VkRayTracingShaderGroupCreateInfoKHR value) {
+    public void pGroups(@Nullable VkRayTracingShaderGroupCreateInfoKHR value) {
         pGroupsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -161,7 +162,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         segment.set(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo, value);
     }
 
-    public @nullable VkPipelineLibraryCreateInfoKHR pLibraryInfo() {
+    public @Nullable VkPipelineLibraryCreateInfoKHR pLibraryInfo() {
         MemorySegment s = pLibraryInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -171,7 +172,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineLibraryCreateInfoKHR[] pLibraryInfo(int assumedCount) {
+    public @Nullable VkPipelineLibraryCreateInfoKHR[] pLibraryInfo(int assumedCount) {
         MemorySegment s = pLibraryInfoRaw().reinterpret(assumedCount * VkPipelineLibraryCreateInfoKHR.SIZE);
         VkPipelineLibraryCreateInfoKHR[] arr = new VkPipelineLibraryCreateInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -180,7 +181,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         return arr;
     }
 
-    public void pLibraryInfo(@nullable VkPipelineLibraryCreateInfoKHR value) {
+    public void pLibraryInfo(@Nullable VkPipelineLibraryCreateInfoKHR value) {
         pLibraryInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -192,7 +193,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         segment.set(LAYOUT$pLibraryInterface, OFFSET$pLibraryInterface, value);
     }
 
-    public @nullable VkRayTracingPipelineInterfaceCreateInfoKHR pLibraryInterface() {
+    public @Nullable VkRayTracingPipelineInterfaceCreateInfoKHR pLibraryInterface() {
         MemorySegment s = pLibraryInterfaceRaw();
         if (s.address() == 0) {
             return null;
@@ -202,7 +203,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRayTracingPipelineInterfaceCreateInfoKHR[] pLibraryInterface(int assumedCount) {
+    public @Nullable VkRayTracingPipelineInterfaceCreateInfoKHR[] pLibraryInterface(int assumedCount) {
         MemorySegment s = pLibraryInterfaceRaw().reinterpret(assumedCount * VkRayTracingPipelineInterfaceCreateInfoKHR.SIZE);
         VkRayTracingPipelineInterfaceCreateInfoKHR[] arr = new VkRayTracingPipelineInterfaceCreateInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -211,7 +212,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         return arr;
     }
 
-    public void pLibraryInterface(@nullable VkRayTracingPipelineInterfaceCreateInfoKHR value) {
+    public void pLibraryInterface(@Nullable VkRayTracingPipelineInterfaceCreateInfoKHR value) {
         pLibraryInterfaceRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -223,7 +224,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         segment.set(LAYOUT$pDynamicState, OFFSET$pDynamicState, value);
     }
 
-    public @nullable VkPipelineDynamicStateCreateInfo pDynamicState() {
+    public @Nullable VkPipelineDynamicStateCreateInfo pDynamicState() {
         MemorySegment s = pDynamicStateRaw();
         if (s.address() == 0) {
             return null;
@@ -233,7 +234,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineDynamicStateCreateInfo[] pDynamicState(int assumedCount) {
+    public @Nullable VkPipelineDynamicStateCreateInfo[] pDynamicState(int assumedCount) {
         MemorySegment s = pDynamicStateRaw().reinterpret(assumedCount * VkPipelineDynamicStateCreateInfo.SIZE);
         VkPipelineDynamicStateCreateInfo[] arr = new VkPipelineDynamicStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -242,11 +243,11 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         return arr;
     }
 
-    public void pDynamicState(@nullable VkPipelineDynamicStateCreateInfo value) {
+    public void pDynamicState(@Nullable VkPipelineDynamicStateCreateInfo value) {
         pDynamicStateRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
-    public @nullable VkPipelineLayout layout() {
+    public @Nullable VkPipelineLayout layout() {
         MemorySegment s = segment.get(LAYOUT$layout, OFFSET$layout);
         if (s.address() == 0) {
             return null;
@@ -254,7 +255,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@nullable VkPipelineLayout value) {
+    public void layout(@Nullable VkPipelineLayout value) {
         segment.set(
             LAYOUT$layout,
             OFFSET$layout,
@@ -262,7 +263,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         );
     }
 
-    public @nullable VkPipeline basePipelineHandle() {
+    public @Nullable VkPipeline basePipelineHandle() {
         MemorySegment s = segment.get(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle);
         if (s.address() == 0) {
             return null;
@@ -270,7 +271,7 @@ public record VkRayTracingPipelineCreateInfoKHR(MemorySegment segment) implement
         return new VkPipeline(s);
     }
 
-    public void basePipelineHandle(@nullable VkPipeline value) {
+    public void basePipelineHandle(@Nullable VkPipeline value) {
         segment.set(
             LAYOUT$basePipelineHandle,
             OFFSET$basePipelineHandle,

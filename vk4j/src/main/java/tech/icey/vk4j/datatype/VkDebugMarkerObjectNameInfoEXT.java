@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkDebugMarkerObjectNameInfoEXT(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -79,12 +80,12 @@ public record VkDebugMarkerObjectNameInfoEXT(MemorySegment segment) implements I
     /// and use {@link ByteBuffer#reinterpret} to set the size before actually
     /// {@link ByteBuffer#read}ing or
     /// {@link ByteBuffer#write}ing the buffer.
-    public @nullable ByteBuffer pObjectName() {
+    public @Nullable ByteBuffer pObjectName() {
         MemorySegment s = pObjectNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pObjectName(@nullable ByteBuffer value) {
+    public void pObjectName(@Nullable ByteBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pObjectNameRaw(s);
     }

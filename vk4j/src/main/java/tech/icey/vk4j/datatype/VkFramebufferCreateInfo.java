@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -50,7 +51,7 @@ public record VkFramebufferCreateInfo(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -62,7 +63,7 @@ public record VkFramebufferCreateInfo(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @nullable VkRenderPass renderPass() {
+    public @Nullable VkRenderPass renderPass() {
         MemorySegment s = segment.get(LAYOUT$renderPass, OFFSET$renderPass);
         if (s.address() == 0) {
             return null;
@@ -70,7 +71,7 @@ public record VkFramebufferCreateInfo(MemorySegment segment) implements IPointer
         return new VkRenderPass(s);
     }
 
-    public void renderPass(@nullable VkRenderPass value) {
+    public void renderPass(@Nullable VkRenderPass value) {
         segment.set(
             LAYOUT$renderPass,
             OFFSET$renderPass,
@@ -99,7 +100,7 @@ public record VkFramebufferCreateInfo(MemorySegment segment) implements IPointer
     /// and use {@link VkImageView.Buffer#reinterpret} to set the size before actually
     /// {@link VkImageView.Buffer#read}ing or {@link VkImageView.Buffer#write}ing
     /// the buffer.
-    public @nullable VkImageView.Buffer pAttachments() {
+    public @Nullable VkImageView.Buffer pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.address() == 0) {
             return null;
@@ -107,7 +108,7 @@ public record VkFramebufferCreateInfo(MemorySegment segment) implements IPointer
         return new VkImageView.Buffer(s);
     }
 
-    public void pAttachments(@nullable VkImageView.Buffer value) {
+    public void pAttachments(@Nullable VkImageView.Buffer value) {
         pAttachmentsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

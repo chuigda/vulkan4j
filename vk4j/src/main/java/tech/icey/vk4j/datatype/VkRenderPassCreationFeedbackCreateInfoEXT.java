@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -44,7 +45,7 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -56,7 +57,7 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(MemorySegment segment) i
         segment.set(LAYOUT$pRenderPassFeedback, OFFSET$pRenderPassFeedback, value);
     }
 
-    public @nullable VkRenderPassCreationFeedbackInfoEXT pRenderPassFeedback() {
+    public @Nullable VkRenderPassCreationFeedbackInfoEXT pRenderPassFeedback() {
         MemorySegment s = pRenderPassFeedbackRaw();
         if (s.address() == 0) {
             return null;
@@ -66,7 +67,7 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(MemorySegment segment) i
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRenderPassCreationFeedbackInfoEXT[] pRenderPassFeedback(int assumedCount) {
+    public @Nullable VkRenderPassCreationFeedbackInfoEXT[] pRenderPassFeedback(int assumedCount) {
         MemorySegment s = pRenderPassFeedbackRaw().reinterpret(assumedCount * VkRenderPassCreationFeedbackInfoEXT.SIZE);
         VkRenderPassCreationFeedbackInfoEXT[] arr = new VkRenderPassCreationFeedbackInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -75,7 +76,7 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(MemorySegment segment) i
         return arr;
     }
 
-    public void pRenderPassFeedback(@nullable VkRenderPassCreationFeedbackInfoEXT value) {
+    public void pRenderPassFeedback(@Nullable VkRenderPassCreationFeedbackInfoEXT value) {
         pRenderPassFeedbackRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

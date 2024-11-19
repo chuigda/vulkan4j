@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -44,7 +45,7 @@ public record VkDeviceBufferMemoryRequirements(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -56,7 +57,7 @@ public record VkDeviceBufferMemoryRequirements(MemorySegment segment) implements
         segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
 
-    public @nullable VkBufferCreateInfo pCreateInfo() {
+    public @Nullable VkBufferCreateInfo pCreateInfo() {
         MemorySegment s = pCreateInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -66,7 +67,7 @@ public record VkDeviceBufferMemoryRequirements(MemorySegment segment) implements
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkBufferCreateInfo[] pCreateInfo(int assumedCount) {
+    public @Nullable VkBufferCreateInfo[] pCreateInfo(int assumedCount) {
         MemorySegment s = pCreateInfoRaw().reinterpret(assumedCount * VkBufferCreateInfo.SIZE);
         VkBufferCreateInfo[] arr = new VkBufferCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -75,7 +76,7 @@ public record VkDeviceBufferMemoryRequirements(MemorySegment segment) implements
         return arr;
     }
 
-    public void pCreateInfo(@nullable VkBufferCreateInfo value) {
+    public void pCreateInfo(@Nullable VkBufferCreateInfo value) {
         pCreateInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

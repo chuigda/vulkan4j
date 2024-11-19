@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,11 +46,11 @@ public record VkSemaphoreSciSyncCreateInfoNV(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkSemaphoreSciSyncPoolNV semaphorePool() {
+    public @Nullable VkSemaphoreSciSyncPoolNV semaphorePool() {
         MemorySegment s = segment.get(LAYOUT$semaphorePool, OFFSET$semaphorePool);
         if (s.address() == 0) {
             return null;
@@ -57,7 +58,7 @@ public record VkSemaphoreSciSyncCreateInfoNV(MemorySegment segment) implements I
         return new VkSemaphoreSciSyncPoolNV(s);
     }
 
-    public void semaphorePool(@nullable VkSemaphoreSciSyncPoolNV value) {
+    public void semaphorePool(@Nullable VkSemaphoreSciSyncPoolNV value) {
         segment.set(
             LAYOUT$semaphorePool,
             OFFSET$semaphorePool,

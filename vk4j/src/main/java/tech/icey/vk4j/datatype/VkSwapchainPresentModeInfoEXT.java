@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkSwapchainPresentModeInfoEXT(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -70,7 +71,7 @@ public record VkSwapchainPresentModeInfoEXT(MemorySegment segment) implements IP
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
     /// the buffer.
-    public @nullable @enumtype(VkPresentModeKHR.class) IntBuffer pPresentModes() {
+    public @Nullable @enumtype(VkPresentModeKHR.class) IntBuffer pPresentModes() {
         MemorySegment s = pPresentModesRaw();
         if (s.address() == 0) {
             return null;
@@ -79,7 +80,7 @@ public record VkSwapchainPresentModeInfoEXT(MemorySegment segment) implements IP
         return new IntBuffer(s);
     }
 
-    public void pPresentModes(@nullable @enumtype(VkPresentModeKHR.class) IntBuffer value) {
+    public void pPresentModes(@Nullable @enumtype(VkPresentModeKHR.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPresentModesRaw(s);
     }

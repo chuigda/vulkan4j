@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -52,7 +53,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -80,7 +81,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         segment.set(LAYOUT$mode, OFFSET$mode, value);
     }
 
-    public @nullable VkAccelerationStructureKHR srcAccelerationStructure() {
+    public @Nullable VkAccelerationStructureKHR srcAccelerationStructure() {
         MemorySegment s = segment.get(LAYOUT$srcAccelerationStructure, OFFSET$srcAccelerationStructure);
         if (s.address() == 0) {
             return null;
@@ -88,7 +89,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         return new VkAccelerationStructureKHR(s);
     }
 
-    public void srcAccelerationStructure(@nullable VkAccelerationStructureKHR value) {
+    public void srcAccelerationStructure(@Nullable VkAccelerationStructureKHR value) {
         segment.set(
             LAYOUT$srcAccelerationStructure,
             OFFSET$srcAccelerationStructure,
@@ -96,7 +97,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         );
     }
 
-    public @nullable VkAccelerationStructureKHR dstAccelerationStructure() {
+    public @Nullable VkAccelerationStructureKHR dstAccelerationStructure() {
         MemorySegment s = segment.get(LAYOUT$dstAccelerationStructure, OFFSET$dstAccelerationStructure);
         if (s.address() == 0) {
             return null;
@@ -104,7 +105,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         return new VkAccelerationStructureKHR(s);
     }
 
-    public void dstAccelerationStructure(@nullable VkAccelerationStructureKHR value) {
+    public void dstAccelerationStructure(@Nullable VkAccelerationStructureKHR value) {
         segment.set(
             LAYOUT$dstAccelerationStructure,
             OFFSET$dstAccelerationStructure,
@@ -128,7 +129,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
     }
 
-    public @nullable VkAccelerationStructureGeometryKHR pGeometries() {
+    public @Nullable VkAccelerationStructureGeometryKHR pGeometries() {
         MemorySegment s = pGeometriesRaw();
         if (s.address() == 0) {
             return null;
@@ -138,7 +139,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkAccelerationStructureGeometryKHR[] pGeometries(int assumedCount) {
+    public @Nullable VkAccelerationStructureGeometryKHR[] pGeometries(int assumedCount) {
         MemorySegment s = pGeometriesRaw().reinterpret(assumedCount * VkAccelerationStructureGeometryKHR.SIZE);
         VkAccelerationStructureGeometryKHR[] arr = new VkAccelerationStructureGeometryKHR[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -147,7 +148,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         return arr;
     }
 
-    public void pGeometries(@nullable VkAccelerationStructureGeometryKHR value) {
+    public void pGeometries(@Nullable VkAccelerationStructureGeometryKHR value) {
         pGeometriesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -164,7 +165,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
     /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
     ///
     /// @see PointerBuffer
-    public @nullable PointerBuffer ppGeometries() {
+    public @Nullable PointerBuffer ppGeometries() {
         var s = ppGeometriesRaw();
         if (s.address() == 0) {
             return null;
@@ -172,7 +173,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(MemorySegment segment)
         return new PointerBuffer(ppGeometriesRaw());
     }
 
-    public void ppGeometries(@nullable PointerBuffer value) {
+    public void ppGeometries(@Nullable PointerBuffer value) {
         ppGeometriesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

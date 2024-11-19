@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -48,11 +49,11 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkSwapchainKHR swapchain() {
+    public @Nullable VkSwapchainKHR swapchain() {
         MemorySegment s = segment.get(LAYOUT$swapchain, OFFSET$swapchain);
         if (s.address() == 0) {
             return null;
@@ -60,7 +61,7 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) implements IPoint
         return new VkSwapchainKHR(s);
     }
 
-    public void swapchain(@nullable VkSwapchainKHR value) {
+    public void swapchain(@Nullable VkSwapchainKHR value) {
         segment.set(
             LAYOUT$swapchain,
             OFFSET$swapchain,
@@ -76,7 +77,7 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$timeout, OFFSET$timeout, value);
     }
 
-    public @nullable VkSemaphore semaphore() {
+    public @Nullable VkSemaphore semaphore() {
         MemorySegment s = segment.get(LAYOUT$semaphore, OFFSET$semaphore);
         if (s.address() == 0) {
             return null;
@@ -84,7 +85,7 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) implements IPoint
         return new VkSemaphore(s);
     }
 
-    public void semaphore(@nullable VkSemaphore value) {
+    public void semaphore(@Nullable VkSemaphore value) {
         segment.set(
             LAYOUT$semaphore,
             OFFSET$semaphore,
@@ -92,7 +93,7 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) implements IPoint
         );
     }
 
-    public @nullable VkFence fence() {
+    public @Nullable VkFence fence() {
         MemorySegment s = segment.get(LAYOUT$fence, OFFSET$fence);
         if (s.address() == 0) {
             return null;
@@ -100,7 +101,7 @@ public record VkAcquireNextImageInfoKHR(MemorySegment segment) implements IPoint
         return new VkFence(s);
     }
 
-    public void fence(@nullable VkFence value) {
+    public void fence(@Nullable VkFence value) {
         segment.set(
             LAYOUT$fence,
             OFFSET$fence,

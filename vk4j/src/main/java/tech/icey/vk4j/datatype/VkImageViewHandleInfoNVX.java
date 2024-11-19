@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,11 +47,11 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkImageView imageView() {
+    public @Nullable VkImageView imageView() {
         MemorySegment s = segment.get(LAYOUT$imageView, OFFSET$imageView);
         if (s.address() == 0) {
             return null;
@@ -58,7 +59,7 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) implements IPointe
         return new VkImageView(s);
     }
 
-    public void imageView(@nullable VkImageView value) {
+    public void imageView(@Nullable VkImageView value) {
         segment.set(
             LAYOUT$imageView,
             OFFSET$imageView,
@@ -74,7 +75,7 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
     }
 
-    public @nullable VkSampler sampler() {
+    public @Nullable VkSampler sampler() {
         MemorySegment s = segment.get(LAYOUT$sampler, OFFSET$sampler);
         if (s.address() == 0) {
             return null;
@@ -82,7 +83,7 @@ public record VkImageViewHandleInfoNVX(MemorySegment segment) implements IPointe
         return new VkSampler(s);
     }
 
-    public void sampler(@nullable VkSampler value) {
+    public void sampler(@Nullable VkSampler value) {
         segment.set(
             LAYOUT$sampler,
             OFFSET$sampler,

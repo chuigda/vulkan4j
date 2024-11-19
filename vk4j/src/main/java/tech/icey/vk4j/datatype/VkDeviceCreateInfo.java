@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -51,7 +52,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -79,7 +80,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos, value);
     }
 
-    public @nullable VkDeviceQueueCreateInfo pQueueCreateInfos() {
+    public @Nullable VkDeviceQueueCreateInfo pQueueCreateInfos() {
         MemorySegment s = pQueueCreateInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -89,7 +90,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDeviceQueueCreateInfo[] pQueueCreateInfos(int assumedCount) {
+    public @Nullable VkDeviceQueueCreateInfo[] pQueueCreateInfos(int assumedCount) {
         MemorySegment s = pQueueCreateInfosRaw().reinterpret(assumedCount * VkDeviceQueueCreateInfo.SIZE);
         VkDeviceQueueCreateInfo[] arr = new VkDeviceQueueCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -98,7 +99,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pQueueCreateInfos(@nullable VkDeviceQueueCreateInfo value) {
+    public void pQueueCreateInfos(@Nullable VkDeviceQueueCreateInfo value) {
         pQueueCreateInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -123,7 +124,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
     /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
     ///
     /// @see PointerBuffer
-    public @nullable PointerBuffer ppEnabledLayerNames() {
+    public @Nullable PointerBuffer ppEnabledLayerNames() {
         var s = ppEnabledLayerNamesRaw();
         if (s.address() == 0) {
             return null;
@@ -131,7 +132,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
         return new PointerBuffer(ppEnabledLayerNamesRaw());
     }
 
-    public void ppEnabledLayerNames(@nullable PointerBuffer value) {
+    public void ppEnabledLayerNames(@Nullable PointerBuffer value) {
         ppEnabledLayerNamesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -156,7 +157,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
     /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
     ///
     /// @see PointerBuffer
-    public @nullable PointerBuffer ppEnabledExtensionNames() {
+    public @Nullable PointerBuffer ppEnabledExtensionNames() {
         var s = ppEnabledExtensionNamesRaw();
         if (s.address() == 0) {
             return null;
@@ -164,7 +165,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
         return new PointerBuffer(ppEnabledExtensionNamesRaw());
     }
 
-    public void ppEnabledExtensionNames(@nullable PointerBuffer value) {
+    public void ppEnabledExtensionNames(@Nullable PointerBuffer value) {
         ppEnabledExtensionNamesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -176,7 +177,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures, value);
     }
 
-    public @nullable VkPhysicalDeviceFeatures pEnabledFeatures() {
+    public @Nullable VkPhysicalDeviceFeatures pEnabledFeatures() {
         MemorySegment s = pEnabledFeaturesRaw();
         if (s.address() == 0) {
             return null;
@@ -186,7 +187,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPhysicalDeviceFeatures[] pEnabledFeatures(int assumedCount) {
+    public @Nullable VkPhysicalDeviceFeatures[] pEnabledFeatures(int assumedCount) {
         MemorySegment s = pEnabledFeaturesRaw().reinterpret(assumedCount * VkPhysicalDeviceFeatures.SIZE);
         VkPhysicalDeviceFeatures[] arr = new VkPhysicalDeviceFeatures[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -195,7 +196,7 @@ public record VkDeviceCreateInfo(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pEnabledFeatures(@nullable VkPhysicalDeviceFeatures value) {
+    public void pEnabledFeatures(@Nullable VkPhysicalDeviceFeatures value) {
         pEnabledFeaturesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -59,7 +60,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -175,7 +176,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
         segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
     }
 
-    public @nullable VkMicromapUsageEXT pUsageCounts() {
+    public @Nullable VkMicromapUsageEXT pUsageCounts() {
         MemorySegment s = pUsageCountsRaw();
         if (s.address() == 0) {
             return null;
@@ -185,7 +186,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkMicromapUsageEXT[] pUsageCounts(int assumedCount) {
+    public @Nullable VkMicromapUsageEXT[] pUsageCounts(int assumedCount) {
         MemorySegment s = pUsageCountsRaw().reinterpret(assumedCount * VkMicromapUsageEXT.SIZE);
         VkMicromapUsageEXT[] arr = new VkMicromapUsageEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -194,7 +195,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
         return arr;
     }
 
-    public void pUsageCounts(@nullable VkMicromapUsageEXT value) {
+    public void pUsageCounts(@Nullable VkMicromapUsageEXT value) {
         pUsageCountsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -211,7 +212,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
     /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
     ///
     /// @see PointerBuffer
-    public @nullable PointerBuffer ppUsageCounts() {
+    public @Nullable PointerBuffer ppUsageCounts() {
         var s = ppUsageCountsRaw();
         if (s.address() == 0) {
             return null;
@@ -219,11 +220,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
         return new PointerBuffer(ppUsageCountsRaw());
     }
 
-    public void ppUsageCounts(@nullable PointerBuffer value) {
+    public void ppUsageCounts(@Nullable PointerBuffer value) {
         ppUsageCountsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
-    public @nullable VkMicromapEXT micromap() {
+    public @Nullable VkMicromapEXT micromap() {
         MemorySegment s = segment.get(LAYOUT$micromap, OFFSET$micromap);
         if (s.address() == 0) {
             return null;
@@ -231,7 +232,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(MemorySegme
         return new VkMicromapEXT(s);
     }
 
-    public void micromap(@nullable VkMicromapEXT value) {
+    public void micromap(@Nullable VkMicromapEXT value) {
         segment.set(
             LAYOUT$micromap,
             OFFSET$micromap,

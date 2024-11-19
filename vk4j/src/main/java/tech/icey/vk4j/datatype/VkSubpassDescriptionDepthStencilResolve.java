@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -74,7 +75,7 @@ public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) imp
         segment.set(LAYOUT$pDepthStencilResolveAttachment, OFFSET$pDepthStencilResolveAttachment, value);
     }
 
-    public @nullable VkAttachmentReference2 pDepthStencilResolveAttachment() {
+    public @Nullable VkAttachmentReference2 pDepthStencilResolveAttachment() {
         MemorySegment s = pDepthStencilResolveAttachmentRaw();
         if (s.address() == 0) {
             return null;
@@ -84,7 +85,7 @@ public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) imp
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkAttachmentReference2[] pDepthStencilResolveAttachment(int assumedCount) {
+    public @Nullable VkAttachmentReference2[] pDepthStencilResolveAttachment(int assumedCount) {
         MemorySegment s = pDepthStencilResolveAttachmentRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);
         VkAttachmentReference2[] arr = new VkAttachmentReference2[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -93,7 +94,7 @@ public record VkSubpassDescriptionDepthStencilResolve(MemorySegment segment) imp
         return arr;
     }
 
-    public void pDepthStencilResolveAttachment(@nullable VkAttachmentReference2 value) {
+    public void pDepthStencilResolveAttachment(@Nullable VkAttachmentReference2 value) {
         pDepthStencilResolveAttachmentRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,11 +46,11 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkAccelerationStructureKHR accelerationStructure() {
+    public @Nullable VkAccelerationStructureKHR accelerationStructure() {
         MemorySegment s = segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
         if (s.address() == 0) {
             return null;
@@ -57,7 +58,7 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(MemorySegment 
         return new VkAccelerationStructureKHR(s);
     }
 
-    public void accelerationStructure(@nullable VkAccelerationStructureKHR value) {
+    public void accelerationStructure(@Nullable VkAccelerationStructureKHR value) {
         segment.set(
             LAYOUT$accelerationStructure,
             OFFSET$accelerationStructure,
@@ -65,7 +66,7 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(MemorySegment 
         );
     }
 
-    public @nullable VkAccelerationStructureNV accelerationStructureNV() {
+    public @Nullable VkAccelerationStructureNV accelerationStructureNV() {
         MemorySegment s = segment.get(LAYOUT$accelerationStructureNV, OFFSET$accelerationStructureNV);
         if (s.address() == 0) {
             return null;
@@ -73,7 +74,7 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(MemorySegment 
         return new VkAccelerationStructureNV(s);
     }
 
-    public void accelerationStructureNV(@nullable VkAccelerationStructureNV value) {
+    public void accelerationStructureNV(@Nullable VkAccelerationStructureNV value) {
         segment.set(
             LAYOUT$accelerationStructureNV,
             OFFSET$accelerationStructureNV,

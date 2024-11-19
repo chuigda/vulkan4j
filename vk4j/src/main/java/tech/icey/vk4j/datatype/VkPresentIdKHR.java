@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkPresentIdKHR(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -70,12 +71,12 @@ public record VkPresentIdKHR(MemorySegment segment) implements IPointer {
     /// and use {@link LongBuffer#reinterpret} to set the size before actually
     /// {@link LongBuffer#read}ing or
     /// {@link LongBuffer#write}ing the buffer.
-    public @nullable @unsigned LongBuffer pPresentIds() {
+    public @Nullable @unsigned LongBuffer pPresentIds() {
         MemorySegment s = pPresentIdsRaw();
         return s.address() == 0 ? null : new LongBuffer(s);
     }
 
-    public void pPresentIds(@nullable @unsigned LongBuffer value) {
+    public void pPresentIds(@Nullable @unsigned LongBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPresentIdsRaw(s);
     }

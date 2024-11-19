@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -83,7 +84,7 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pPoolSizes, OFFSET$pPoolSizes, value);
     }
 
-    public @nullable VkDescriptorPoolSize pPoolSizes() {
+    public @Nullable VkDescriptorPoolSize pPoolSizes() {
         MemorySegment s = pPoolSizesRaw();
         if (s.address() == 0) {
             return null;
@@ -93,7 +94,7 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) implements IPoin
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDescriptorPoolSize[] pPoolSizes(int assumedCount) {
+    public @Nullable VkDescriptorPoolSize[] pPoolSizes(int assumedCount) {
         MemorySegment s = pPoolSizesRaw().reinterpret(assumedCount * VkDescriptorPoolSize.SIZE);
         VkDescriptorPoolSize[] arr = new VkDescriptorPoolSize[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -102,7 +103,7 @@ public record VkDescriptorPoolCreateInfo(MemorySegment segment) implements IPoin
         return arr;
     }
 
-    public void pPoolSizes(@nullable VkDescriptorPoolSize value) {
+    public void pPoolSizes(@Nullable VkDescriptorPoolSize value) {
         pPoolSizesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

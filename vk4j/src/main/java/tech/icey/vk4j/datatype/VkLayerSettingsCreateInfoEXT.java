@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkLayerSettingsCreateInfoEXT(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -65,7 +66,7 @@ public record VkLayerSettingsCreateInfoEXT(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pSettings, OFFSET$pSettings, value);
     }
 
-    public @nullable VkLayerSettingEXT pSettings() {
+    public @Nullable VkLayerSettingEXT pSettings() {
         MemorySegment s = pSettingsRaw();
         if (s.address() == 0) {
             return null;
@@ -75,7 +76,7 @@ public record VkLayerSettingsCreateInfoEXT(MemorySegment segment) implements IPo
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkLayerSettingEXT[] pSettings(int assumedCount) {
+    public @Nullable VkLayerSettingEXT[] pSettings(int assumedCount) {
         MemorySegment s = pSettingsRaw().reinterpret(assumedCount * VkLayerSettingEXT.SIZE);
         VkLayerSettingEXT[] arr = new VkLayerSettingEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -84,7 +85,7 @@ public record VkLayerSettingsCreateInfoEXT(MemorySegment segment) implements IPo
         return arr;
     }
 
-    public void pSettings(@nullable VkLayerSettingEXT value) {
+    public void pSettings(@Nullable VkLayerSettingEXT value) {
         pSettingsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

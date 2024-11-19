@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -48,11 +49,11 @@ public record VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkAccelerationStructureNV accelerationStructure() {
+    public @Nullable VkAccelerationStructureNV accelerationStructure() {
         MemorySegment s = segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
         if (s.address() == 0) {
             return null;
@@ -60,7 +61,7 @@ public record VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) imp
         return new VkAccelerationStructureNV(s);
     }
 
-    public void accelerationStructure(@nullable VkAccelerationStructureNV value) {
+    public void accelerationStructure(@Nullable VkAccelerationStructureNV value) {
         segment.set(
             LAYOUT$accelerationStructure,
             OFFSET$accelerationStructure,
@@ -68,7 +69,7 @@ public record VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) imp
         );
     }
 
-    public @nullable VkDeviceMemory memory() {
+    public @Nullable VkDeviceMemory memory() {
         MemorySegment s = segment.get(LAYOUT$memory, OFFSET$memory);
         if (s.address() == 0) {
             return null;
@@ -76,7 +77,7 @@ public record VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) imp
         return new VkDeviceMemory(s);
     }
 
-    public void memory(@nullable VkDeviceMemory value) {
+    public void memory(@Nullable VkDeviceMemory value) {
         segment.set(
             LAYOUT$memory,
             OFFSET$memory,
@@ -113,12 +114,12 @@ public record VkBindAccelerationStructureMemoryInfoNV(MemorySegment segment) imp
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pDeviceIndices() {
+    public @Nullable @unsigned IntBuffer pDeviceIndices() {
         MemorySegment s = pDeviceIndicesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pDeviceIndices(@nullable @unsigned IntBuffer value) {
+    public void pDeviceIndices(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDeviceIndicesRaw(s);
     }

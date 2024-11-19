@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -49,7 +50,7 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -74,7 +75,7 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
     /// the buffer.
-    public @nullable @enumtype(VkImageLayout.class) IntBuffer pCopySrcLayouts() {
+    public @Nullable @enumtype(VkImageLayout.class) IntBuffer pCopySrcLayouts() {
         MemorySegment s = pCopySrcLayoutsRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +84,7 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         return new IntBuffer(s);
     }
 
-    public void pCopySrcLayouts(@nullable @enumtype(VkImageLayout.class) IntBuffer value) {
+    public void pCopySrcLayouts(@Nullable @enumtype(VkImageLayout.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopySrcLayoutsRaw(s);
     }
@@ -109,7 +110,7 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
     /// the buffer.
-    public @nullable @enumtype(VkImageLayout.class) IntBuffer pCopyDstLayouts() {
+    public @Nullable @enumtype(VkImageLayout.class) IntBuffer pCopyDstLayouts() {
         MemorySegment s = pCopyDstLayoutsRaw();
         if (s.address() == 0) {
             return null;
@@ -118,7 +119,7 @@ public record VkPhysicalDeviceHostImageCopyPropertiesEXT(MemorySegment segment) 
         return new IntBuffer(s);
     }
 
-    public void pCopyDstLayouts(@nullable @enumtype(VkImageLayout.class) IntBuffer value) {
+    public void pCopyDstLayouts(@Nullable @enumtype(VkImageLayout.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopyDstLayoutsRaw(s);
     }

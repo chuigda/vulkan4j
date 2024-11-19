@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -74,7 +75,7 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
         segment.set(LAYOUT$pViewportDepths, OFFSET$pViewportDepths, value);
     }
 
-    public @nullable VkViewport pViewportDepths() {
+    public @Nullable VkViewport pViewportDepths() {
         MemorySegment s = pViewportDepthsRaw();
         if (s.address() == 0) {
             return null;
@@ -84,7 +85,7 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkViewport[] pViewportDepths(int assumedCount) {
+    public @Nullable VkViewport[] pViewportDepths(int assumedCount) {
         MemorySegment s = pViewportDepthsRaw().reinterpret(assumedCount * VkViewport.SIZE);
         VkViewport[] arr = new VkViewport[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -93,7 +94,7 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(MemorySegment segm
         return arr;
     }
 
-    public void pViewportDepths(@nullable VkViewport value) {
+    public void pViewportDepths(@Nullable VkViewport value) {
         pViewportDepthsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

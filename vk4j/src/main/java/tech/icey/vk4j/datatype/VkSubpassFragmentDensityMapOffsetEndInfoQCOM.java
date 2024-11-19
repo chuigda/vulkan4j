@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -65,7 +66,7 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
         segment.set(LAYOUT$pFragmentDensityOffsets, OFFSET$pFragmentDensityOffsets, value);
     }
 
-    public @nullable VkOffset2D pFragmentDensityOffsets() {
+    public @Nullable VkOffset2D pFragmentDensityOffsets() {
         MemorySegment s = pFragmentDensityOffsetsRaw();
         if (s.address() == 0) {
             return null;
@@ -75,7 +76,7 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkOffset2D[] pFragmentDensityOffsets(int assumedCount) {
+    public @Nullable VkOffset2D[] pFragmentDensityOffsets(int assumedCount) {
         MemorySegment s = pFragmentDensityOffsetsRaw().reinterpret(assumedCount * VkOffset2D.SIZE);
         VkOffset2D[] arr = new VkOffset2D[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -84,7 +85,7 @@ public record VkSubpassFragmentDensityMapOffsetEndInfoQCOM(MemorySegment segment
         return arr;
     }
 
-    public void pFragmentDensityOffsets(@nullable VkOffset2D value) {
+    public void pFragmentDensityOffsets(@Nullable VkOffset2D value) {
         pFragmentDensityOffsetsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

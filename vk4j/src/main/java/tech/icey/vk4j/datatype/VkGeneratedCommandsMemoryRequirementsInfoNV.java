@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -59,7 +60,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
     }
 
-    public @nullable VkPipeline pipeline() {
+    public @Nullable VkPipeline pipeline() {
         MemorySegment s = segment.get(LAYOUT$pipeline, OFFSET$pipeline);
         if (s.address() == 0) {
             return null;
@@ -67,7 +68,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
         return new VkPipeline(s);
     }
 
-    public void pipeline(@nullable VkPipeline value) {
+    public void pipeline(@Nullable VkPipeline value) {
         segment.set(
             LAYOUT$pipeline,
             OFFSET$pipeline,
@@ -75,7 +76,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
         );
     }
 
-    public @nullable VkIndirectCommandsLayoutNV indirectCommandsLayout() {
+    public @Nullable VkIndirectCommandsLayoutNV indirectCommandsLayout() {
         MemorySegment s = segment.get(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout);
         if (s.address() == 0) {
             return null;
@@ -83,7 +84,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(MemorySegment segment)
         return new VkIndirectCommandsLayoutNV(s);
     }
 
-    public void indirectCommandsLayout(@nullable VkIndirectCommandsLayoutNV value) {
+    public void indirectCommandsLayout(@Nullable VkIndirectCommandsLayoutNV value) {
         segment.set(
             LAYOUT$indirectCommandsLayout,
             OFFSET$indirectCommandsLayout,

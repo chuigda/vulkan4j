@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -55,11 +56,11 @@ public record VkCuLaunchInfoNVX(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkCuFunctionNVX function() {
+    public @Nullable VkCuFunctionNVX function() {
         MemorySegment s = segment.get(LAYOUT$function, OFFSET$function);
         if (s.address() == 0) {
             return null;
@@ -67,7 +68,7 @@ public record VkCuLaunchInfoNVX(MemorySegment segment) implements IPointer {
         return new VkCuFunctionNVX(s);
     }
 
-    public void function(@nullable VkCuFunctionNVX value) {
+    public void function(@Nullable VkCuFunctionNVX value) {
         segment.set(
             LAYOUT$function,
             OFFSET$function,
@@ -147,7 +148,7 @@ public record VkCuLaunchInfoNVX(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pParams, OFFSET$pParams, value);
     }
 
-    public void pParams(@nullable IPointer pointer) {
+    public void pParams(@Nullable IPointer pointer) {
         pParams(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -167,7 +168,7 @@ public record VkCuLaunchInfoNVX(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pExtras, OFFSET$pExtras, value);
     }
 
-    public void pExtras(@nullable IPointer pointer) {
+    public void pExtras(@Nullable IPointer pointer) {
         pExtras(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -67,7 +68,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) imp
         segment.set(LAYOUT$pAttachmentInitialSampleLocations, OFFSET$pAttachmentInitialSampleLocations, value);
     }
 
-    public @nullable VkAttachmentSampleLocationsEXT pAttachmentInitialSampleLocations() {
+    public @Nullable VkAttachmentSampleLocationsEXT pAttachmentInitialSampleLocations() {
         MemorySegment s = pAttachmentInitialSampleLocationsRaw();
         if (s.address() == 0) {
             return null;
@@ -77,7 +78,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) imp
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkAttachmentSampleLocationsEXT[] pAttachmentInitialSampleLocations(int assumedCount) {
+    public @Nullable VkAttachmentSampleLocationsEXT[] pAttachmentInitialSampleLocations(int assumedCount) {
         MemorySegment s = pAttachmentInitialSampleLocationsRaw().reinterpret(assumedCount * VkAttachmentSampleLocationsEXT.SIZE);
         VkAttachmentSampleLocationsEXT[] arr = new VkAttachmentSampleLocationsEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -86,7 +87,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) imp
         return arr;
     }
 
-    public void pAttachmentInitialSampleLocations(@nullable VkAttachmentSampleLocationsEXT value) {
+    public void pAttachmentInitialSampleLocations(@Nullable VkAttachmentSampleLocationsEXT value) {
         pAttachmentInitialSampleLocationsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -106,7 +107,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) imp
         segment.set(LAYOUT$pPostSubpassSampleLocations, OFFSET$pPostSubpassSampleLocations, value);
     }
 
-    public @nullable VkSubpassSampleLocationsEXT pPostSubpassSampleLocations() {
+    public @Nullable VkSubpassSampleLocationsEXT pPostSubpassSampleLocations() {
         MemorySegment s = pPostSubpassSampleLocationsRaw();
         if (s.address() == 0) {
             return null;
@@ -116,7 +117,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) imp
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSubpassSampleLocationsEXT[] pPostSubpassSampleLocations(int assumedCount) {
+    public @Nullable VkSubpassSampleLocationsEXT[] pPostSubpassSampleLocations(int assumedCount) {
         MemorySegment s = pPostSubpassSampleLocationsRaw().reinterpret(assumedCount * VkSubpassSampleLocationsEXT.SIZE);
         VkSubpassSampleLocationsEXT[] arr = new VkSubpassSampleLocationsEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -125,7 +126,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(MemorySegment segment) imp
         return arr;
     }
 
-    public void pPostSubpassSampleLocations(@nullable VkSubpassSampleLocationsEXT value) {
+    public void pPostSubpassSampleLocations(@Nullable VkSubpassSampleLocationsEXT value) {
         pPostSubpassSampleLocationsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

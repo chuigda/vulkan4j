@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -55,7 +56,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -107,7 +108,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pCode, OFFSET$pCode, value);
     }
 
-    public void pCode(@nullable IPointer pointer) {
+    public void pCode(@Nullable IPointer pointer) {
         pCode(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -124,12 +125,12 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
     /// and use {@link ByteBuffer#reinterpret} to set the size before actually
     /// {@link ByteBuffer#read}ing or
     /// {@link ByteBuffer#write}ing the buffer.
-    public @nullable ByteBuffer pName() {
+    public @Nullable ByteBuffer pName() {
         MemorySegment s = pNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pName(@nullable ByteBuffer value) {
+    public void pName(@Nullable ByteBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNameRaw(s);
     }
@@ -155,7 +156,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
     /// and use {@link VkDescriptorSetLayout.Buffer#reinterpret} to set the size before actually
     /// {@link VkDescriptorSetLayout.Buffer#read}ing or {@link VkDescriptorSetLayout.Buffer#write}ing
     /// the buffer.
-    public @nullable VkDescriptorSetLayout.Buffer pSetLayouts() {
+    public @Nullable VkDescriptorSetLayout.Buffer pSetLayouts() {
         MemorySegment s = pSetLayoutsRaw();
         if (s.address() == 0) {
             return null;
@@ -163,7 +164,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         return new VkDescriptorSetLayout.Buffer(s);
     }
 
-    public void pSetLayouts(@nullable VkDescriptorSetLayout.Buffer value) {
+    public void pSetLayouts(@Nullable VkDescriptorSetLayout.Buffer value) {
         pSetLayoutsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -183,7 +184,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
 
-    public @nullable VkPushConstantRange pPushConstantRanges() {
+    public @Nullable VkPushConstantRange pPushConstantRanges() {
         MemorySegment s = pPushConstantRangesRaw();
         if (s.address() == 0) {
             return null;
@@ -193,7 +194,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPushConstantRange[] pPushConstantRanges(int assumedCount) {
+    public @Nullable VkPushConstantRange[] pPushConstantRanges(int assumedCount) {
         MemorySegment s = pPushConstantRangesRaw().reinterpret(assumedCount * VkPushConstantRange.SIZE);
         VkPushConstantRange[] arr = new VkPushConstantRange[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -202,7 +203,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pPushConstantRanges(@nullable VkPushConstantRange value) {
+    public void pPushConstantRanges(@Nullable VkPushConstantRange value) {
         pPushConstantRangesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -214,7 +215,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
     }
 
-    public @nullable VkSpecializationInfo pSpecializationInfo() {
+    public @Nullable VkSpecializationInfo pSpecializationInfo() {
         MemorySegment s = pSpecializationInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -224,7 +225,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSpecializationInfo[] pSpecializationInfo(int assumedCount) {
+    public @Nullable VkSpecializationInfo[] pSpecializationInfo(int assumedCount) {
         MemorySegment s = pSpecializationInfoRaw().reinterpret(assumedCount * VkSpecializationInfo.SIZE);
         VkSpecializationInfo[] arr = new VkSpecializationInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -233,7 +234,7 @@ public record VkShaderCreateInfoEXT(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pSpecializationInfo(@nullable VkSpecializationInfo value) {
+    public void pSpecializationInfo(@Nullable VkSpecializationInfo value) {
         pSpecializationInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

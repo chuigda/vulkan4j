@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,11 +46,11 @@ public record VkCuFunctionCreateInfoNVX(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkCuModuleNVX module() {
+    public @Nullable VkCuModuleNVX module() {
         MemorySegment s = segment.get(LAYOUT$module, OFFSET$module);
         if (s.address() == 0) {
             return null;
@@ -57,7 +58,7 @@ public record VkCuFunctionCreateInfoNVX(MemorySegment segment) implements IPoint
         return new VkCuModuleNVX(s);
     }
 
-    public void module(@nullable VkCuModuleNVX value) {
+    public void module(@Nullable VkCuModuleNVX value) {
         segment.set(
             LAYOUT$module,
             OFFSET$module,
@@ -78,12 +79,12 @@ public record VkCuFunctionCreateInfoNVX(MemorySegment segment) implements IPoint
     /// and use {@link ByteBuffer#reinterpret} to set the size before actually
     /// {@link ByteBuffer#read}ing or
     /// {@link ByteBuffer#write}ing the buffer.
-    public @nullable ByteBuffer pName() {
+    public @Nullable ByteBuffer pName() {
         MemorySegment s = pNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pName(@nullable ByteBuffer value) {
+    public void pName(@Nullable ByteBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNameRaw(s);
     }

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -74,7 +75,7 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment 
         segment.set(LAYOUT$pShadingRatePalettes, OFFSET$pShadingRatePalettes, value);
     }
 
-    public @nullable VkShadingRatePaletteNV pShadingRatePalettes() {
+    public @Nullable VkShadingRatePaletteNV pShadingRatePalettes() {
         MemorySegment s = pShadingRatePalettesRaw();
         if (s.address() == 0) {
             return null;
@@ -84,7 +85,7 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment 
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkShadingRatePaletteNV[] pShadingRatePalettes(int assumedCount) {
+    public @Nullable VkShadingRatePaletteNV[] pShadingRatePalettes(int assumedCount) {
         MemorySegment s = pShadingRatePalettesRaw().reinterpret(assumedCount * VkShadingRatePaletteNV.SIZE);
         VkShadingRatePaletteNV[] arr = new VkShadingRatePaletteNV[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -93,7 +94,7 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(MemorySegment 
         return arr;
     }
 
-    public void pShadingRatePalettes(@nullable VkShadingRatePaletteNV value) {
+    public void pShadingRatePalettes(@Nullable VkShadingRatePaletteNV value) {
         pShadingRatePalettesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

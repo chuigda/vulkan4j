@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkXlibSurfaceCreateInfoKHR(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -71,7 +72,7 @@ public record VkXlibSurfaceCreateInfoKHR(MemorySegment segment) implements IPoin
     /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
     ///
     /// @see PointerBuffer
-    public @nullable PointerBuffer dpy() {
+    public @Nullable PointerBuffer dpy() {
         var s = dpyRaw();
         if (s.address() == 0) {
             return null;
@@ -79,7 +80,7 @@ public record VkXlibSurfaceCreateInfoKHR(MemorySegment segment) implements IPoin
         return new PointerBuffer(dpyRaw());
     }
 
-    public void dpy(@nullable PointerBuffer value) {
+    public void dpy(@Nullable PointerBuffer value) {
         dpyRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

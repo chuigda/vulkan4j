@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,11 +48,11 @@ public record VkImportFenceFdInfoKHR(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkFence fence() {
+    public @Nullable VkFence fence() {
         MemorySegment s = segment.get(LAYOUT$fence, OFFSET$fence);
         if (s.address() == 0) {
             return null;
@@ -59,7 +60,7 @@ public record VkImportFenceFdInfoKHR(MemorySegment segment) implements IPointer 
         return new VkFence(s);
     }
 
-    public void fence(@nullable VkFence value) {
+    public void fence(@Nullable VkFence value) {
         segment.set(
             LAYOUT$fence,
             OFFSET$fence,

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -48,7 +49,7 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -60,7 +61,7 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
     }
 
-    public @nullable VkPipelineLayout layout() {
+    public @Nullable VkPipelineLayout layout() {
         MemorySegment s = segment.get(LAYOUT$layout, OFFSET$layout);
         if (s.address() == 0) {
             return null;
@@ -68,7 +69,7 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) implements IPoin
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@nullable VkPipelineLayout value) {
+    public void layout(@Nullable VkPipelineLayout value) {
         segment.set(
             LAYOUT$layout,
             OFFSET$layout,
@@ -100,7 +101,7 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pDescriptorWrites, OFFSET$pDescriptorWrites, value);
     }
 
-    public @nullable VkWriteDescriptorSet pDescriptorWrites() {
+    public @Nullable VkWriteDescriptorSet pDescriptorWrites() {
         MemorySegment s = pDescriptorWritesRaw();
         if (s.address() == 0) {
             return null;
@@ -110,7 +111,7 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) implements IPoin
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkWriteDescriptorSet[] pDescriptorWrites(int assumedCount) {
+    public @Nullable VkWriteDescriptorSet[] pDescriptorWrites(int assumedCount) {
         MemorySegment s = pDescriptorWritesRaw().reinterpret(assumedCount * VkWriteDescriptorSet.SIZE);
         VkWriteDescriptorSet[] arr = new VkWriteDescriptorSet[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -119,7 +120,7 @@ public record VkPushDescriptorSetInfoKHR(MemorySegment segment) implements IPoin
         return arr;
     }
 
-    public void pDescriptorWrites(@nullable VkWriteDescriptorSet value) {
+    public void pDescriptorWrites(@Nullable VkWriteDescriptorSet value) {
         pDescriptorWritesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

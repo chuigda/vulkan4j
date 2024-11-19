@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,11 +48,11 @@ public record VkPushDescriptorSetWithTemplateInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkDescriptorUpdateTemplate descriptorUpdateTemplate() {
+    public @Nullable VkDescriptorUpdateTemplate descriptorUpdateTemplate() {
         MemorySegment s = segment.get(LAYOUT$descriptorUpdateTemplate, OFFSET$descriptorUpdateTemplate);
         if (s.address() == 0) {
             return null;
@@ -59,7 +60,7 @@ public record VkPushDescriptorSetWithTemplateInfoKHR(MemorySegment segment) impl
         return new VkDescriptorUpdateTemplate(s);
     }
 
-    public void descriptorUpdateTemplate(@nullable VkDescriptorUpdateTemplate value) {
+    public void descriptorUpdateTemplate(@Nullable VkDescriptorUpdateTemplate value) {
         segment.set(
             LAYOUT$descriptorUpdateTemplate,
             OFFSET$descriptorUpdateTemplate,
@@ -67,7 +68,7 @@ public record VkPushDescriptorSetWithTemplateInfoKHR(MemorySegment segment) impl
         );
     }
 
-    public @nullable VkPipelineLayout layout() {
+    public @Nullable VkPipelineLayout layout() {
         MemorySegment s = segment.get(LAYOUT$layout, OFFSET$layout);
         if (s.address() == 0) {
             return null;
@@ -75,7 +76,7 @@ public record VkPushDescriptorSetWithTemplateInfoKHR(MemorySegment segment) impl
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@nullable VkPipelineLayout value) {
+    public void layout(@Nullable VkPipelineLayout value) {
         segment.set(
             LAYOUT$layout,
             OFFSET$layout,
@@ -99,7 +100,7 @@ public record VkPushDescriptorSetWithTemplateInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 
-    public void pData(@nullable IPointer pointer) {
+    public void pData(@Nullable IPointer pointer) {
         pData(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 

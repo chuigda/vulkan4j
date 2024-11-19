@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -53,7 +54,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -78,12 +79,12 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
     /// and use {@link ByteBuffer#reinterpret} to set the size before actually
     /// {@link ByteBuffer#read}ing or
     /// {@link ByteBuffer#write}ing the buffer.
-    public @nullable ByteBuffer pMessageIdName() {
+    public @Nullable ByteBuffer pMessageIdName() {
         MemorySegment s = pMessageIdNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pMessageIdName(@nullable ByteBuffer value) {
+    public void pMessageIdName(@Nullable ByteBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMessageIdNameRaw(s);
     }
@@ -109,12 +110,12 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
     /// and use {@link ByteBuffer#reinterpret} to set the size before actually
     /// {@link ByteBuffer#read}ing or
     /// {@link ByteBuffer#write}ing the buffer.
-    public @nullable ByteBuffer pMessage() {
+    public @Nullable ByteBuffer pMessage() {
         MemorySegment s = pMessageRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pMessage(@nullable ByteBuffer value) {
+    public void pMessage(@Nullable ByteBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMessageRaw(s);
     }
@@ -135,7 +136,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
         segment.set(LAYOUT$pQueueLabels, OFFSET$pQueueLabels, value);
     }
 
-    public @nullable VkDebugUtilsLabelEXT pQueueLabels() {
+    public @Nullable VkDebugUtilsLabelEXT pQueueLabels() {
         MemorySegment s = pQueueLabelsRaw();
         if (s.address() == 0) {
             return null;
@@ -145,7 +146,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDebugUtilsLabelEXT[] pQueueLabels(int assumedCount) {
+    public @Nullable VkDebugUtilsLabelEXT[] pQueueLabels(int assumedCount) {
         MemorySegment s = pQueueLabelsRaw().reinterpret(assumedCount * VkDebugUtilsLabelEXT.SIZE);
         VkDebugUtilsLabelEXT[] arr = new VkDebugUtilsLabelEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -154,7 +155,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
         return arr;
     }
 
-    public void pQueueLabels(@nullable VkDebugUtilsLabelEXT value) {
+    public void pQueueLabels(@Nullable VkDebugUtilsLabelEXT value) {
         pQueueLabelsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -174,7 +175,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
         segment.set(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels, value);
     }
 
-    public @nullable VkDebugUtilsLabelEXT pCmdBufLabels() {
+    public @Nullable VkDebugUtilsLabelEXT pCmdBufLabels() {
         MemorySegment s = pCmdBufLabelsRaw();
         if (s.address() == 0) {
             return null;
@@ -184,7 +185,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDebugUtilsLabelEXT[] pCmdBufLabels(int assumedCount) {
+    public @Nullable VkDebugUtilsLabelEXT[] pCmdBufLabels(int assumedCount) {
         MemorySegment s = pCmdBufLabelsRaw().reinterpret(assumedCount * VkDebugUtilsLabelEXT.SIZE);
         VkDebugUtilsLabelEXT[] arr = new VkDebugUtilsLabelEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -193,7 +194,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
         return arr;
     }
 
-    public void pCmdBufLabels(@nullable VkDebugUtilsLabelEXT value) {
+    public void pCmdBufLabels(@Nullable VkDebugUtilsLabelEXT value) {
         pCmdBufLabelsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -213,7 +214,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
         segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
 
-    public @nullable VkDebugUtilsObjectNameInfoEXT pObjects() {
+    public @Nullable VkDebugUtilsObjectNameInfoEXT pObjects() {
         MemorySegment s = pObjectsRaw();
         if (s.address() == 0) {
             return null;
@@ -223,7 +224,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDebugUtilsObjectNameInfoEXT[] pObjects(int assumedCount) {
+    public @Nullable VkDebugUtilsObjectNameInfoEXT[] pObjects(int assumedCount) {
         MemorySegment s = pObjectsRaw().reinterpret(assumedCount * VkDebugUtilsObjectNameInfoEXT.SIZE);
         VkDebugUtilsObjectNameInfoEXT[] arr = new VkDebugUtilsObjectNameInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -232,7 +233,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) implem
         return arr;
     }
 
-    public void pObjects(@nullable VkDebugUtilsObjectNameInfoEXT value) {
+    public void pObjects(@Nullable VkDebugUtilsObjectNameInfoEXT value) {
         pObjectsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

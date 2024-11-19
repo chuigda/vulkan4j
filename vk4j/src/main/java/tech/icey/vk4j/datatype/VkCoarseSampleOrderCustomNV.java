@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -60,7 +61,7 @@ public record VkCoarseSampleOrderCustomNV(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
 
-    public @nullable VkCoarseSampleLocationNV pSampleLocations() {
+    public @Nullable VkCoarseSampleLocationNV pSampleLocations() {
         MemorySegment s = pSampleLocationsRaw();
         if (s.address() == 0) {
             return null;
@@ -70,7 +71,7 @@ public record VkCoarseSampleOrderCustomNV(MemorySegment segment) implements IPoi
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkCoarseSampleLocationNV[] pSampleLocations(int assumedCount) {
+    public @Nullable VkCoarseSampleLocationNV[] pSampleLocations(int assumedCount) {
         MemorySegment s = pSampleLocationsRaw().reinterpret(assumedCount * VkCoarseSampleLocationNV.SIZE);
         VkCoarseSampleLocationNV[] arr = new VkCoarseSampleLocationNV[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -79,7 +80,7 @@ public record VkCoarseSampleOrderCustomNV(MemorySegment segment) implements IPoi
         return arr;
     }
 
-    public void pSampleLocations(@nullable VkCoarseSampleLocationNV value) {
+    public void pSampleLocations(@Nullable VkCoarseSampleLocationNV value) {
         pSampleLocationsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

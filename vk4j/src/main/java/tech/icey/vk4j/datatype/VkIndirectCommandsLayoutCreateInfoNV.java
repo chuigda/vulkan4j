@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -49,7 +50,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -85,7 +86,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) implem
         segment.set(LAYOUT$pTokens, OFFSET$pTokens, value);
     }
 
-    public @nullable VkIndirectCommandsLayoutTokenNV pTokens() {
+    public @Nullable VkIndirectCommandsLayoutTokenNV pTokens() {
         MemorySegment s = pTokensRaw();
         if (s.address() == 0) {
             return null;
@@ -95,7 +96,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) implem
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkIndirectCommandsLayoutTokenNV[] pTokens(int assumedCount) {
+    public @Nullable VkIndirectCommandsLayoutTokenNV[] pTokens(int assumedCount) {
         MemorySegment s = pTokensRaw().reinterpret(assumedCount * VkIndirectCommandsLayoutTokenNV.SIZE);
         VkIndirectCommandsLayoutTokenNV[] arr = new VkIndirectCommandsLayoutTokenNV[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -104,7 +105,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) implem
         return arr;
     }
 
-    public void pTokens(@nullable VkIndirectCommandsLayoutTokenNV value) {
+    public void pTokens(@Nullable VkIndirectCommandsLayoutTokenNV value) {
         pTokensRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -129,12 +130,12 @@ public record VkIndirectCommandsLayoutCreateInfoNV(MemorySegment segment) implem
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pStreamStrides() {
+    public @Nullable @unsigned IntBuffer pStreamStrides() {
         MemorySegment s = pStreamStridesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pStreamStrides(@nullable @unsigned IntBuffer value) {
+    public void pStreamStrides(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStreamStridesRaw(s);
     }

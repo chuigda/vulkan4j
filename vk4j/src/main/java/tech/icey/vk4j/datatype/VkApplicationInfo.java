@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -48,7 +49,7 @@ public record VkApplicationInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -65,12 +66,12 @@ public record VkApplicationInfo(MemorySegment segment) implements IPointer {
     /// and use {@link ByteBuffer#reinterpret} to set the size before actually
     /// {@link ByteBuffer#read}ing or
     /// {@link ByteBuffer#write}ing the buffer.
-    public @nullable ByteBuffer pApplicationName() {
+    public @Nullable ByteBuffer pApplicationName() {
         MemorySegment s = pApplicationNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pApplicationName(@nullable ByteBuffer value) {
+    public void pApplicationName(@Nullable ByteBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pApplicationNameRaw(s);
     }
@@ -96,12 +97,12 @@ public record VkApplicationInfo(MemorySegment segment) implements IPointer {
     /// and use {@link ByteBuffer#reinterpret} to set the size before actually
     /// {@link ByteBuffer#read}ing or
     /// {@link ByteBuffer#write}ing the buffer.
-    public @nullable ByteBuffer pEngineName() {
+    public @Nullable ByteBuffer pEngineName() {
         MemorySegment s = pEngineNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pEngineName(@nullable ByteBuffer value) {
+    public void pEngineName(@Nullable ByteBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pEngineNameRaw(s);
     }

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -26,7 +27,7 @@ public record VkDisplayPlanePropertiesKHR(MemorySegment segment) implements IPoi
         this.segment = segment;
     }
 
-    public @nullable VkDisplayKHR currentDisplay() {
+    public @Nullable VkDisplayKHR currentDisplay() {
         MemorySegment s = segment.get(LAYOUT$currentDisplay, OFFSET$currentDisplay);
         if (s.address() == 0) {
             return null;
@@ -34,7 +35,7 @@ public record VkDisplayPlanePropertiesKHR(MemorySegment segment) implements IPoi
         return new VkDisplayKHR(s);
     }
 
-    public void currentDisplay(@nullable VkDisplayKHR value) {
+    public void currentDisplay(@Nullable VkDisplayKHR value) {
         segment.set(
             LAYOUT$currentDisplay,
             OFFSET$currentDisplay,

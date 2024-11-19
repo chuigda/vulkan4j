@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -49,7 +50,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -69,7 +70,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo, value);
     }
 
-    public @nullable VkApplicationInfo pApplicationInfo() {
+    public @Nullable VkApplicationInfo pApplicationInfo() {
         MemorySegment s = pApplicationInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -79,7 +80,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkApplicationInfo[] pApplicationInfo(int assumedCount) {
+    public @Nullable VkApplicationInfo[] pApplicationInfo(int assumedCount) {
         MemorySegment s = pApplicationInfoRaw().reinterpret(assumedCount * VkApplicationInfo.SIZE);
         VkApplicationInfo[] arr = new VkApplicationInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -88,7 +89,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pApplicationInfo(@nullable VkApplicationInfo value) {
+    public void pApplicationInfo(@Nullable VkApplicationInfo value) {
         pApplicationInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -113,7 +114,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) implements IPointer {
     /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
     ///
     /// @see PointerBuffer
-    public @nullable PointerBuffer ppEnabledLayerNames() {
+    public @Nullable PointerBuffer ppEnabledLayerNames() {
         var s = ppEnabledLayerNamesRaw();
         if (s.address() == 0) {
             return null;
@@ -121,7 +122,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) implements IPointer {
         return new PointerBuffer(ppEnabledLayerNamesRaw());
     }
 
-    public void ppEnabledLayerNames(@nullable PointerBuffer value) {
+    public void ppEnabledLayerNames(@Nullable PointerBuffer value) {
         ppEnabledLayerNamesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -146,7 +147,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) implements IPointer {
     /// size before actually {@link PointerBuffer#read}ing or {@link PointerBuffer#write}ing the buffer.
     ///
     /// @see PointerBuffer
-    public @nullable PointerBuffer ppEnabledExtensionNames() {
+    public @Nullable PointerBuffer ppEnabledExtensionNames() {
         var s = ppEnabledExtensionNamesRaw();
         if (s.address() == 0) {
             return null;
@@ -154,7 +155,7 @@ public record VkInstanceCreateInfo(MemorySegment segment) implements IPointer {
         return new PointerBuffer(ppEnabledExtensionNamesRaw());
     }
 
-    public void ppEnabledExtensionNames(@nullable PointerBuffer value) {
+    public void ppEnabledExtensionNames(@Nullable PointerBuffer value) {
         ppEnabledExtensionNamesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

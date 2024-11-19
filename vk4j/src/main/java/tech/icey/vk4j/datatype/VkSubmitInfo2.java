@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -50,7 +51,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -78,7 +79,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pWaitSemaphoreInfos, OFFSET$pWaitSemaphoreInfos, value);
     }
 
-    public @nullable VkSemaphoreSubmitInfo pWaitSemaphoreInfos() {
+    public @Nullable VkSemaphoreSubmitInfo pWaitSemaphoreInfos() {
         MemorySegment s = pWaitSemaphoreInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -88,7 +89,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSemaphoreSubmitInfo[] pWaitSemaphoreInfos(int assumedCount) {
+    public @Nullable VkSemaphoreSubmitInfo[] pWaitSemaphoreInfos(int assumedCount) {
         MemorySegment s = pWaitSemaphoreInfosRaw().reinterpret(assumedCount * VkSemaphoreSubmitInfo.SIZE);
         VkSemaphoreSubmitInfo[] arr = new VkSemaphoreSubmitInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -97,7 +98,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pWaitSemaphoreInfos(@nullable VkSemaphoreSubmitInfo value) {
+    public void pWaitSemaphoreInfos(@Nullable VkSemaphoreSubmitInfo value) {
         pWaitSemaphoreInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -117,7 +118,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pCommandBufferInfos, OFFSET$pCommandBufferInfos, value);
     }
 
-    public @nullable VkCommandBufferSubmitInfo pCommandBufferInfos() {
+    public @Nullable VkCommandBufferSubmitInfo pCommandBufferInfos() {
         MemorySegment s = pCommandBufferInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -127,7 +128,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkCommandBufferSubmitInfo[] pCommandBufferInfos(int assumedCount) {
+    public @Nullable VkCommandBufferSubmitInfo[] pCommandBufferInfos(int assumedCount) {
         MemorySegment s = pCommandBufferInfosRaw().reinterpret(assumedCount * VkCommandBufferSubmitInfo.SIZE);
         VkCommandBufferSubmitInfo[] arr = new VkCommandBufferSubmitInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -136,7 +137,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pCommandBufferInfos(@nullable VkCommandBufferSubmitInfo value) {
+    public void pCommandBufferInfos(@Nullable VkCommandBufferSubmitInfo value) {
         pCommandBufferInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -156,7 +157,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pSignalSemaphoreInfos, OFFSET$pSignalSemaphoreInfos, value);
     }
 
-    public @nullable VkSemaphoreSubmitInfo pSignalSemaphoreInfos() {
+    public @Nullable VkSemaphoreSubmitInfo pSignalSemaphoreInfos() {
         MemorySegment s = pSignalSemaphoreInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -166,7 +167,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSemaphoreSubmitInfo[] pSignalSemaphoreInfos(int assumedCount) {
+    public @Nullable VkSemaphoreSubmitInfo[] pSignalSemaphoreInfos(int assumedCount) {
         MemorySegment s = pSignalSemaphoreInfosRaw().reinterpret(assumedCount * VkSemaphoreSubmitInfo.SIZE);
         VkSemaphoreSubmitInfo[] arr = new VkSemaphoreSubmitInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -175,7 +176,7 @@ public record VkSubmitInfo2(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pSignalSemaphoreInfos(@nullable VkSemaphoreSubmitInfo value) {
+    public void pSignalSemaphoreInfos(@Nullable VkSemaphoreSubmitInfo value) {
         pSignalSemaphoreInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

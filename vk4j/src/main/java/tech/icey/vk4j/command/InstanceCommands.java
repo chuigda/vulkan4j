@@ -3,6 +3,7 @@ package tech.icey.vk4j.command;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.RawFunctionLoader;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -602,172 +603,172 @@ public final class InstanceCommands {
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
     );
 
-    public final @nullable MemorySegment SEGMENT$vkDestroyInstance;
-    public final @nullable MemorySegment SEGMENT$vkEnumeratePhysicalDevices;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceProperties;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceQueueFamilyProperties;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceMemoryProperties;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceFeatures;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceFormatProperties;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceImageFormatProperties;
-    public final @nullable MemorySegment SEGMENT$vkCreateDevice;
-    public final @nullable MemorySegment SEGMENT$vkEnumerateDeviceLayerProperties;
-    public final @nullable MemorySegment SEGMENT$vkEnumerateDeviceExtensionProperties;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSparseImageFormatProperties;
-    public final @nullable MemorySegment SEGMENT$vkCreateAndroidSurfaceKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceDisplayPropertiesKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceDisplayPlanePropertiesKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetDisplayPlaneSupportedDisplaysKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetDisplayModePropertiesKHR;
-    public final @nullable MemorySegment SEGMENT$vkCreateDisplayModeKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetDisplayPlaneCapabilitiesKHR;
-    public final @nullable MemorySegment SEGMENT$vkCreateDisplayPlaneSurfaceKHR;
-    public final @nullable MemorySegment SEGMENT$vkDestroySurfaceKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfaceSupportKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfaceCapabilitiesKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfaceFormatsKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfacePresentModesKHR;
-    public final @nullable MemorySegment SEGMENT$vkCreateViSurfaceNN;
-    public final @nullable MemorySegment SEGMENT$vkCreateWaylandSurfaceKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceWaylandPresentationSupportKHR;
-    public final @nullable MemorySegment SEGMENT$vkCreateWin32SurfaceKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceWin32PresentationSupportKHR;
-    public final @nullable MemorySegment SEGMENT$vkCreateXlibSurfaceKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceXlibPresentationSupportKHR;
-    public final @nullable MemorySegment SEGMENT$vkCreateXcbSurfaceKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceXcbPresentationSupportKHR;
-    public final @nullable MemorySegment SEGMENT$vkCreateDirectFBSurfaceEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceDirectFBPresentationSupportEXT;
-    public final @nullable MemorySegment SEGMENT$vkCreateImagePipeSurfaceFUCHSIA;
-    public final @nullable MemorySegment SEGMENT$vkCreateStreamDescriptorSurfaceGGP;
-    public final @nullable MemorySegment SEGMENT$vkCreateScreenSurfaceQNX;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceScreenPresentationSupportQNX;
-    public final @nullable MemorySegment SEGMENT$vkCreateDebugReportCallbackEXT;
-    public final @nullable MemorySegment SEGMENT$vkDestroyDebugReportCallbackEXT;
-    public final @nullable MemorySegment SEGMENT$vkDebugReportMessageEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceExternalImageFormatPropertiesNV;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceFeatures2;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceProperties2;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceFormatProperties2;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceImageFormatProperties2;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceQueueFamilyProperties2;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceMemoryProperties2;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSparseImageFormatProperties2;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceExternalBufferProperties;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceExternalSemaphoreProperties;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceExternalFenceProperties;
-    public final @nullable MemorySegment SEGMENT$vkReleaseDisplayEXT;
-    public final @nullable MemorySegment SEGMENT$vkAcquireXlibDisplayEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetRandROutputDisplayEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfaceCapabilities2EXT;
-    public final @nullable MemorySegment SEGMENT$vkEnumeratePhysicalDeviceGroups;
-    public final @nullable MemorySegment SEGMENT$vkCreateIOSSurfaceMVK;
-    public final @nullable MemorySegment SEGMENT$vkCreateMacOSSurfaceMVK;
-    public final @nullable MemorySegment SEGMENT$vkCreateMetalSurfaceEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfaceCapabilities2KHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfaceFormats2KHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceDisplayProperties2KHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceDisplayPlaneProperties2KHR;
-    public final @nullable MemorySegment SEGMENT$vkGetDisplayModeProperties2KHR;
-    public final @nullable MemorySegment SEGMENT$vkGetDisplayPlaneCapabilities2KHR;
-    public final @nullable MemorySegment SEGMENT$vkSetDebugUtilsObjectNameEXT;
-    public final @nullable MemorySegment SEGMENT$vkSetDebugUtilsObjectTagEXT;
-    public final @nullable MemorySegment SEGMENT$vkQueueBeginDebugUtilsLabelEXT;
-    public final @nullable MemorySegment SEGMENT$vkQueueEndDebugUtilsLabelEXT;
-    public final @nullable MemorySegment SEGMENT$vkQueueInsertDebugUtilsLabelEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdBeginDebugUtilsLabelEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdEndDebugUtilsLabelEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdInsertDebugUtilsLabelEXT;
-    public final @nullable MemorySegment SEGMENT$vkCreateDebugUtilsMessengerEXT;
-    public final @nullable MemorySegment SEGMENT$vkDestroyDebugUtilsMessengerEXT;
-    public final @nullable MemorySegment SEGMENT$vkSubmitDebugUtilsMessageEXT;
-    public final @nullable MemorySegment SEGMENT$vkCreateHeadlessSurfaceEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceToolProperties;
-    public final @nullable MemorySegment SEGMENT$vkAcquireDrmDisplayEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetDrmDisplayEXT;
-    public final @nullable MethodHandle HANDLE$vkDestroyInstance;
-    public final @nullable MethodHandle HANDLE$vkEnumeratePhysicalDevices;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceProperties;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceQueueFamilyProperties;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceMemoryProperties;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceFeatures;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceFormatProperties;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceImageFormatProperties;
-    public final @nullable MethodHandle HANDLE$vkCreateDevice;
-    public final @nullable MethodHandle HANDLE$vkEnumerateDeviceLayerProperties;
-    public final @nullable MethodHandle HANDLE$vkEnumerateDeviceExtensionProperties;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties;
-    public final @nullable MethodHandle HANDLE$vkCreateAndroidSurfaceKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceDisplayPropertiesKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceDisplayPlanePropertiesKHR;
-    public final @nullable MethodHandle HANDLE$vkGetDisplayPlaneSupportedDisplaysKHR;
-    public final @nullable MethodHandle HANDLE$vkGetDisplayModePropertiesKHR;
-    public final @nullable MethodHandle HANDLE$vkCreateDisplayModeKHR;
-    public final @nullable MethodHandle HANDLE$vkGetDisplayPlaneCapabilitiesKHR;
-    public final @nullable MethodHandle HANDLE$vkCreateDisplayPlaneSurfaceKHR;
-    public final @nullable MethodHandle HANDLE$vkDestroySurfaceKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfaceSupportKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfaceCapabilitiesKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfaceFormatsKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfacePresentModesKHR;
-    public final @nullable MethodHandle HANDLE$vkCreateViSurfaceNN;
-    public final @nullable MethodHandle HANDLE$vkCreateWaylandSurfaceKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceWaylandPresentationSupportKHR;
-    public final @nullable MethodHandle HANDLE$vkCreateWin32SurfaceKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceWin32PresentationSupportKHR;
-    public final @nullable MethodHandle HANDLE$vkCreateXlibSurfaceKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceXlibPresentationSupportKHR;
-    public final @nullable MethodHandle HANDLE$vkCreateXcbSurfaceKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceXcbPresentationSupportKHR;
-    public final @nullable MethodHandle HANDLE$vkCreateDirectFBSurfaceEXT;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceDirectFBPresentationSupportEXT;
-    public final @nullable MethodHandle HANDLE$vkCreateImagePipeSurfaceFUCHSIA;
-    public final @nullable MethodHandle HANDLE$vkCreateStreamDescriptorSurfaceGGP;
-    public final @nullable MethodHandle HANDLE$vkCreateScreenSurfaceQNX;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceScreenPresentationSupportQNX;
-    public final @nullable MethodHandle HANDLE$vkCreateDebugReportCallbackEXT;
-    public final @nullable MethodHandle HANDLE$vkDestroyDebugReportCallbackEXT;
-    public final @nullable MethodHandle HANDLE$vkDebugReportMessageEXT;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceExternalImageFormatPropertiesNV;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceFeatures2;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceProperties2;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceFormatProperties2;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceImageFormatProperties2;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceQueueFamilyProperties2;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceMemoryProperties2;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties2;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceExternalBufferProperties;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceExternalSemaphoreProperties;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceExternalFenceProperties;
-    public final @nullable MethodHandle HANDLE$vkReleaseDisplayEXT;
-    public final @nullable MethodHandle HANDLE$vkAcquireXlibDisplayEXT;
-    public final @nullable MethodHandle HANDLE$vkGetRandROutputDisplayEXT;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfaceCapabilities2EXT;
-    public final @nullable MethodHandle HANDLE$vkEnumeratePhysicalDeviceGroups;
-    public final @nullable MethodHandle HANDLE$vkCreateIOSSurfaceMVK;
-    public final @nullable MethodHandle HANDLE$vkCreateMacOSSurfaceMVK;
-    public final @nullable MethodHandle HANDLE$vkCreateMetalSurfaceEXT;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfaceCapabilities2KHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfaceFormats2KHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceDisplayProperties2KHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceDisplayPlaneProperties2KHR;
-    public final @nullable MethodHandle HANDLE$vkGetDisplayModeProperties2KHR;
-    public final @nullable MethodHandle HANDLE$vkGetDisplayPlaneCapabilities2KHR;
-    public final @nullable MethodHandle HANDLE$vkSetDebugUtilsObjectNameEXT;
-    public final @nullable MethodHandle HANDLE$vkSetDebugUtilsObjectTagEXT;
-    public final @nullable MethodHandle HANDLE$vkQueueBeginDebugUtilsLabelEXT;
-    public final @nullable MethodHandle HANDLE$vkQueueEndDebugUtilsLabelEXT;
-    public final @nullable MethodHandle HANDLE$vkQueueInsertDebugUtilsLabelEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdBeginDebugUtilsLabelEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdEndDebugUtilsLabelEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdInsertDebugUtilsLabelEXT;
-    public final @nullable MethodHandle HANDLE$vkCreateDebugUtilsMessengerEXT;
-    public final @nullable MethodHandle HANDLE$vkDestroyDebugUtilsMessengerEXT;
-    public final @nullable MethodHandle HANDLE$vkSubmitDebugUtilsMessageEXT;
-    public final @nullable MethodHandle HANDLE$vkCreateHeadlessSurfaceEXT;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceToolProperties;
-    public final @nullable MethodHandle HANDLE$vkAcquireDrmDisplayEXT;
-    public final @nullable MethodHandle HANDLE$vkGetDrmDisplayEXT;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyInstance;
+    public final @Nullable MemorySegment SEGMENT$vkEnumeratePhysicalDevices;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceProperties;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceQueueFamilyProperties;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceMemoryProperties;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceFeatures;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceFormatProperties;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceImageFormatProperties;
+    public final @Nullable MemorySegment SEGMENT$vkCreateDevice;
+    public final @Nullable MemorySegment SEGMENT$vkEnumerateDeviceLayerProperties;
+    public final @Nullable MemorySegment SEGMENT$vkEnumerateDeviceExtensionProperties;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSparseImageFormatProperties;
+    public final @Nullable MemorySegment SEGMENT$vkCreateAndroidSurfaceKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceDisplayPropertiesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceDisplayPlanePropertiesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetDisplayPlaneSupportedDisplaysKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetDisplayModePropertiesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCreateDisplayModeKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetDisplayPlaneCapabilitiesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCreateDisplayPlaneSurfaceKHR;
+    public final @Nullable MemorySegment SEGMENT$vkDestroySurfaceKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfaceSupportKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfaceCapabilitiesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfaceFormatsKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfacePresentModesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCreateViSurfaceNN;
+    public final @Nullable MemorySegment SEGMENT$vkCreateWaylandSurfaceKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceWaylandPresentationSupportKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCreateWin32SurfaceKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceWin32PresentationSupportKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCreateXlibSurfaceKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceXlibPresentationSupportKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCreateXcbSurfaceKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceXcbPresentationSupportKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCreateDirectFBSurfaceEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceDirectFBPresentationSupportEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCreateImagePipeSurfaceFUCHSIA;
+    public final @Nullable MemorySegment SEGMENT$vkCreateStreamDescriptorSurfaceGGP;
+    public final @Nullable MemorySegment SEGMENT$vkCreateScreenSurfaceQNX;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceScreenPresentationSupportQNX;
+    public final @Nullable MemorySegment SEGMENT$vkCreateDebugReportCallbackEXT;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyDebugReportCallbackEXT;
+    public final @Nullable MemorySegment SEGMENT$vkDebugReportMessageEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceExternalImageFormatPropertiesNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceFeatures2;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceProperties2;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceFormatProperties2;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceImageFormatProperties2;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceQueueFamilyProperties2;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceMemoryProperties2;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSparseImageFormatProperties2;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceExternalBufferProperties;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceExternalSemaphoreProperties;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceExternalFenceProperties;
+    public final @Nullable MemorySegment SEGMENT$vkReleaseDisplayEXT;
+    public final @Nullable MemorySegment SEGMENT$vkAcquireXlibDisplayEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetRandROutputDisplayEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfaceCapabilities2EXT;
+    public final @Nullable MemorySegment SEGMENT$vkEnumeratePhysicalDeviceGroups;
+    public final @Nullable MemorySegment SEGMENT$vkCreateIOSSurfaceMVK;
+    public final @Nullable MemorySegment SEGMENT$vkCreateMacOSSurfaceMVK;
+    public final @Nullable MemorySegment SEGMENT$vkCreateMetalSurfaceEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfaceCapabilities2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfaceFormats2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceDisplayProperties2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceDisplayPlaneProperties2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetDisplayModeProperties2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetDisplayPlaneCapabilities2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkSetDebugUtilsObjectNameEXT;
+    public final @Nullable MemorySegment SEGMENT$vkSetDebugUtilsObjectTagEXT;
+    public final @Nullable MemorySegment SEGMENT$vkQueueBeginDebugUtilsLabelEXT;
+    public final @Nullable MemorySegment SEGMENT$vkQueueEndDebugUtilsLabelEXT;
+    public final @Nullable MemorySegment SEGMENT$vkQueueInsertDebugUtilsLabelEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBeginDebugUtilsLabelEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdEndDebugUtilsLabelEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdInsertDebugUtilsLabelEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCreateDebugUtilsMessengerEXT;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyDebugUtilsMessengerEXT;
+    public final @Nullable MemorySegment SEGMENT$vkSubmitDebugUtilsMessageEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCreateHeadlessSurfaceEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceToolProperties;
+    public final @Nullable MemorySegment SEGMENT$vkAcquireDrmDisplayEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetDrmDisplayEXT;
+    public final @Nullable MethodHandle HANDLE$vkDestroyInstance;
+    public final @Nullable MethodHandle HANDLE$vkEnumeratePhysicalDevices;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceProperties;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceQueueFamilyProperties;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceMemoryProperties;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceFeatures;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceFormatProperties;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceImageFormatProperties;
+    public final @Nullable MethodHandle HANDLE$vkCreateDevice;
+    public final @Nullable MethodHandle HANDLE$vkEnumerateDeviceLayerProperties;
+    public final @Nullable MethodHandle HANDLE$vkEnumerateDeviceExtensionProperties;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties;
+    public final @Nullable MethodHandle HANDLE$vkCreateAndroidSurfaceKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceDisplayPropertiesKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceDisplayPlanePropertiesKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetDisplayPlaneSupportedDisplaysKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetDisplayModePropertiesKHR;
+    public final @Nullable MethodHandle HANDLE$vkCreateDisplayModeKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetDisplayPlaneCapabilitiesKHR;
+    public final @Nullable MethodHandle HANDLE$vkCreateDisplayPlaneSurfaceKHR;
+    public final @Nullable MethodHandle HANDLE$vkDestroySurfaceKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfaceSupportKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfaceCapabilitiesKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfaceFormatsKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfacePresentModesKHR;
+    public final @Nullable MethodHandle HANDLE$vkCreateViSurfaceNN;
+    public final @Nullable MethodHandle HANDLE$vkCreateWaylandSurfaceKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceWaylandPresentationSupportKHR;
+    public final @Nullable MethodHandle HANDLE$vkCreateWin32SurfaceKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceWin32PresentationSupportKHR;
+    public final @Nullable MethodHandle HANDLE$vkCreateXlibSurfaceKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceXlibPresentationSupportKHR;
+    public final @Nullable MethodHandle HANDLE$vkCreateXcbSurfaceKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceXcbPresentationSupportKHR;
+    public final @Nullable MethodHandle HANDLE$vkCreateDirectFBSurfaceEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceDirectFBPresentationSupportEXT;
+    public final @Nullable MethodHandle HANDLE$vkCreateImagePipeSurfaceFUCHSIA;
+    public final @Nullable MethodHandle HANDLE$vkCreateStreamDescriptorSurfaceGGP;
+    public final @Nullable MethodHandle HANDLE$vkCreateScreenSurfaceQNX;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceScreenPresentationSupportQNX;
+    public final @Nullable MethodHandle HANDLE$vkCreateDebugReportCallbackEXT;
+    public final @Nullable MethodHandle HANDLE$vkDestroyDebugReportCallbackEXT;
+    public final @Nullable MethodHandle HANDLE$vkDebugReportMessageEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceExternalImageFormatPropertiesNV;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceFeatures2;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceProperties2;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceFormatProperties2;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceImageFormatProperties2;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceQueueFamilyProperties2;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceMemoryProperties2;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties2;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceExternalBufferProperties;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceExternalSemaphoreProperties;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceExternalFenceProperties;
+    public final @Nullable MethodHandle HANDLE$vkReleaseDisplayEXT;
+    public final @Nullable MethodHandle HANDLE$vkAcquireXlibDisplayEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetRandROutputDisplayEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfaceCapabilities2EXT;
+    public final @Nullable MethodHandle HANDLE$vkEnumeratePhysicalDeviceGroups;
+    public final @Nullable MethodHandle HANDLE$vkCreateIOSSurfaceMVK;
+    public final @Nullable MethodHandle HANDLE$vkCreateMacOSSurfaceMVK;
+    public final @Nullable MethodHandle HANDLE$vkCreateMetalSurfaceEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfaceCapabilities2KHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfaceFormats2KHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceDisplayProperties2KHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceDisplayPlaneProperties2KHR;
+    public final @Nullable MethodHandle HANDLE$vkGetDisplayModeProperties2KHR;
+    public final @Nullable MethodHandle HANDLE$vkGetDisplayPlaneCapabilities2KHR;
+    public final @Nullable MethodHandle HANDLE$vkSetDebugUtilsObjectNameEXT;
+    public final @Nullable MethodHandle HANDLE$vkSetDebugUtilsObjectTagEXT;
+    public final @Nullable MethodHandle HANDLE$vkQueueBeginDebugUtilsLabelEXT;
+    public final @Nullable MethodHandle HANDLE$vkQueueEndDebugUtilsLabelEXT;
+    public final @Nullable MethodHandle HANDLE$vkQueueInsertDebugUtilsLabelEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdBeginDebugUtilsLabelEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdEndDebugUtilsLabelEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdInsertDebugUtilsLabelEXT;
+    public final @Nullable MethodHandle HANDLE$vkCreateDebugUtilsMessengerEXT;
+    public final @Nullable MethodHandle HANDLE$vkDestroyDebugUtilsMessengerEXT;
+    public final @Nullable MethodHandle HANDLE$vkSubmitDebugUtilsMessageEXT;
+    public final @Nullable MethodHandle HANDLE$vkCreateHeadlessSurfaceEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceToolProperties;
+    public final @Nullable MethodHandle HANDLE$vkAcquireDrmDisplayEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetDrmDisplayEXT;
 
     public InstanceCommands(RawFunctionLoader loader) {
         SEGMENT$vkDestroyInstance = loader.apply("vkDestroyInstance");
@@ -940,8 +941,8 @@ public final class InstanceCommands {
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyInstance.html">vkDestroyInstance</a>
     public void vkDestroyInstance(
-            @nullable VkInstance instance,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkInstance instance,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyInstance.invokeExact(
@@ -957,7 +958,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkEnumeratePhysicalDevices(
             VkInstance instance,
             @unsigned IntBuffer pPhysicalDeviceCount,
-            @nullable @pointer(target=VkPhysicalDevice.class) VkPhysicalDevice.Buffer pPhysicalDevices
+            @Nullable @pointer(target=VkPhysicalDevice.class) VkPhysicalDevice.Buffer pPhysicalDevices
     ) {
         try {
             return (int) HANDLE$vkEnumeratePhysicalDevices.invokeExact(
@@ -989,7 +990,7 @@ public final class InstanceCommands {
     public void vkGetPhysicalDeviceQueueFamilyProperties(
             VkPhysicalDevice physicalDevice,
             @unsigned IntBuffer pQueueFamilyPropertyCount,
-            @nullable @pointer(target=VkQueueFamilyProperties.class) VkQueueFamilyProperties pQueueFamilyProperties
+            @Nullable @pointer(target=VkQueueFamilyProperties.class) VkQueueFamilyProperties pQueueFamilyProperties
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceQueueFamilyProperties.invokeExact(
@@ -1078,7 +1079,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateDevice(
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkDeviceCreateInfo.class) VkDeviceCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkDevice.class) VkDevice.Buffer pDevice
     ) {
         try {
@@ -1097,7 +1098,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkEnumerateDeviceLayerProperties(
             VkPhysicalDevice physicalDevice,
             @unsigned IntBuffer pPropertyCount,
-            @nullable @pointer(target=VkLayerProperties.class) VkLayerProperties pProperties
+            @Nullable @pointer(target=VkLayerProperties.class) VkLayerProperties pProperties
     ) {
         try {
             return (int) HANDLE$vkEnumerateDeviceLayerProperties.invokeExact(
@@ -1113,9 +1114,9 @@ public final class InstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumerateDeviceExtensionProperties.html">vkEnumerateDeviceExtensionProperties</a>
     public @enumtype(VkResult.class) int vkEnumerateDeviceExtensionProperties(
             VkPhysicalDevice physicalDevice,
-            @nullable ByteBuffer pLayerName,
+            @Nullable ByteBuffer pLayerName,
             @unsigned IntBuffer pPropertyCount,
-            @nullable @pointer(target=VkExtensionProperties.class) VkExtensionProperties pProperties
+            @Nullable @pointer(target=VkExtensionProperties.class) VkExtensionProperties pProperties
     ) {
         try {
             return (int) HANDLE$vkEnumerateDeviceExtensionProperties.invokeExact(
@@ -1138,7 +1139,7 @@ public final class InstanceCommands {
             @enumtype(VkImageUsageFlags.class) int usage,
             @enumtype(VkImageTiling.class) int tiling,
             @unsigned IntBuffer pPropertyCount,
-            @nullable @pointer(target=VkSparseImageFormatProperties.class) VkSparseImageFormatProperties pProperties
+            @Nullable @pointer(target=VkSparseImageFormatProperties.class) VkSparseImageFormatProperties pProperties
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties.invokeExact(
@@ -1160,7 +1161,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateAndroidSurfaceKHR(
             VkInstance instance,
             @pointer(target=VkAndroidSurfaceCreateInfoKHR.class) VkAndroidSurfaceCreateInfoKHR pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer pSurface
     ) {
         try {
@@ -1179,7 +1180,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayPropertiesKHR(
             VkPhysicalDevice physicalDevice,
             @unsigned IntBuffer pPropertyCount,
-            @nullable @pointer(target=VkDisplayPropertiesKHR.class) VkDisplayPropertiesKHR pProperties
+            @Nullable @pointer(target=VkDisplayPropertiesKHR.class) VkDisplayPropertiesKHR pProperties
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceDisplayPropertiesKHR.invokeExact(
@@ -1196,7 +1197,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
             VkPhysicalDevice physicalDevice,
             @unsigned IntBuffer pPropertyCount,
-            @nullable @pointer(target=VkDisplayPlanePropertiesKHR.class) VkDisplayPlanePropertiesKHR pProperties
+            @Nullable @pointer(target=VkDisplayPlanePropertiesKHR.class) VkDisplayPlanePropertiesKHR pProperties
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceDisplayPlanePropertiesKHR.invokeExact(
@@ -1214,7 +1215,7 @@ public final class InstanceCommands {
             VkPhysicalDevice physicalDevice,
             @unsigned int planeIndex,
             @unsigned IntBuffer pDisplayCount,
-            @nullable @pointer(target=VkDisplayKHR.class) VkDisplayKHR.Buffer pDisplays
+            @Nullable @pointer(target=VkDisplayKHR.class) VkDisplayKHR.Buffer pDisplays
     ) {
         try {
             return (int) HANDLE$vkGetDisplayPlaneSupportedDisplaysKHR.invokeExact(
@@ -1233,7 +1234,7 @@ public final class InstanceCommands {
             VkPhysicalDevice physicalDevice,
             VkDisplayKHR display,
             @unsigned IntBuffer pPropertyCount,
-            @nullable @pointer(target=VkDisplayModePropertiesKHR.class) VkDisplayModePropertiesKHR pProperties
+            @Nullable @pointer(target=VkDisplayModePropertiesKHR.class) VkDisplayModePropertiesKHR pProperties
     ) {
         try {
             return (int) HANDLE$vkGetDisplayModePropertiesKHR.invokeExact(
@@ -1252,7 +1253,7 @@ public final class InstanceCommands {
             VkPhysicalDevice physicalDevice,
             VkDisplayKHR display,
             @pointer(target=VkDisplayModeCreateInfoKHR.class) VkDisplayModeCreateInfoKHR pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkDisplayModeKHR.class) VkDisplayModeKHR.Buffer pMode
     ) {
         try {
@@ -1291,7 +1292,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateDisplayPlaneSurfaceKHR(
             VkInstance instance,
             @pointer(target=VkDisplaySurfaceCreateInfoKHR.class) VkDisplaySurfaceCreateInfoKHR pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer pSurface
     ) {
         try {
@@ -1309,8 +1310,8 @@ public final class InstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroySurfaceKHR.html">vkDestroySurfaceKHR</a>
     public void vkDestroySurfaceKHR(
             VkInstance instance,
-            @nullable VkSurfaceKHR surface,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkSurfaceKHR surface,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroySurfaceKHR.invokeExact(
@@ -1362,9 +1363,9 @@ public final class InstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfaceFormatsKHR.html">vkGetPhysicalDeviceSurfaceFormatsKHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfaceFormatsKHR(
             VkPhysicalDevice physicalDevice,
-            @nullable VkSurfaceKHR surface,
+            @Nullable VkSurfaceKHR surface,
             @unsigned IntBuffer pSurfaceFormatCount,
-            @nullable @pointer(target=VkSurfaceFormatKHR.class) VkSurfaceFormatKHR pSurfaceFormats
+            @Nullable @pointer(target=VkSurfaceFormatKHR.class) VkSurfaceFormatKHR pSurfaceFormats
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfaceFormatsKHR.invokeExact(
@@ -1381,9 +1382,9 @@ public final class InstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfacePresentModesKHR.html">vkGetPhysicalDeviceSurfacePresentModesKHR</a>
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceSurfacePresentModesKHR(
             VkPhysicalDevice physicalDevice,
-            @nullable VkSurfaceKHR surface,
+            @Nullable VkSurfaceKHR surface,
             @unsigned IntBuffer pPresentModeCount,
-            @nullable @enumtype(VkPresentModeKHR.class) IntBuffer pPresentModes
+            @Nullable @enumtype(VkPresentModeKHR.class) IntBuffer pPresentModes
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfacePresentModesKHR.invokeExact(
@@ -1401,7 +1402,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateViSurfaceNN(
             VkInstance instance,
             @pointer(target=VkViSurfaceCreateInfoNN.class) VkViSurfaceCreateInfoNN pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer pSurface
     ) {
         try {
@@ -1420,7 +1421,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateWaylandSurfaceKHR(
             VkInstance instance,
             @pointer(target=VkWaylandSurfaceCreateInfoKHR.class) VkWaylandSurfaceCreateInfoKHR pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer pSurface
     ) {
         try {
@@ -1456,7 +1457,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateWin32SurfaceKHR(
             VkInstance instance,
             @pointer(target=VkWin32SurfaceCreateInfoKHR.class) VkWin32SurfaceCreateInfoKHR pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer pSurface
     ) {
         try {
@@ -1490,7 +1491,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateXlibSurfaceKHR(
             VkInstance instance,
             @pointer(target=VkXlibSurfaceCreateInfoKHR.class) VkXlibSurfaceCreateInfoKHR pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer pSurface
     ) {
         try {
@@ -1528,7 +1529,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateXcbSurfaceKHR(
             VkInstance instance,
             @pointer(target=VkXcbSurfaceCreateInfoKHR.class) VkXcbSurfaceCreateInfoKHR pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer pSurface
     ) {
         try {
@@ -1566,7 +1567,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateDirectFBSurfaceEXT(
             VkInstance instance,
             @pointer(target=VkDirectFBSurfaceCreateInfoEXT.class) VkDirectFBSurfaceCreateInfoEXT pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer pSurface
     ) {
         try {
@@ -1602,7 +1603,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateImagePipeSurfaceFUCHSIA(
             VkInstance instance,
             @pointer(target=VkImagePipeSurfaceCreateInfoFUCHSIA.class) VkImagePipeSurfaceCreateInfoFUCHSIA pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer pSurface
     ) {
         try {
@@ -1621,7 +1622,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateStreamDescriptorSurfaceGGP(
             VkInstance instance,
             @pointer(target=VkStreamDescriptorSurfaceCreateInfoGGP.class) VkStreamDescriptorSurfaceCreateInfoGGP pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer pSurface
     ) {
         try {
@@ -1640,7 +1641,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateScreenSurfaceQNX(
             VkInstance instance,
             @pointer(target=VkScreenSurfaceCreateInfoQNX.class) VkScreenSurfaceCreateInfoQNX pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer pSurface
     ) {
         try {
@@ -1676,7 +1677,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateDebugReportCallbackEXT(
             VkInstance instance,
             @pointer(target=VkDebugReportCallbackCreateInfoEXT.class) VkDebugReportCallbackCreateInfoEXT pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkDebugReportCallbackEXT.class) VkDebugReportCallbackEXT.Buffer pCallback
     ) {
         try {
@@ -1694,8 +1695,8 @@ public final class InstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyDebugReportCallbackEXT.html">vkDestroyDebugReportCallbackEXT</a>
     public void vkDestroyDebugReportCallbackEXT(
             VkInstance instance,
-            @nullable VkDebugReportCallbackEXT callback,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkDebugReportCallbackEXT callback,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyDebugReportCallbackEXT.invokeExact(
@@ -1830,7 +1831,7 @@ public final class InstanceCommands {
     public void vkGetPhysicalDeviceQueueFamilyProperties2(
             VkPhysicalDevice physicalDevice,
             @unsigned IntBuffer pQueueFamilyPropertyCount,
-            @nullable @pointer(target=VkQueueFamilyProperties2.class) VkQueueFamilyProperties2 pQueueFamilyProperties
+            @Nullable @pointer(target=VkQueueFamilyProperties2.class) VkQueueFamilyProperties2 pQueueFamilyProperties
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceQueueFamilyProperties2.invokeExact(
@@ -1863,7 +1864,7 @@ public final class InstanceCommands {
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceSparseImageFormatInfo2.class) VkPhysicalDeviceSparseImageFormatInfo2 pFormatInfo,
             @unsigned IntBuffer pPropertyCount,
-            @nullable @pointer(target=VkSparseImageFormatProperties2.class) VkSparseImageFormatProperties2 pProperties
+            @Nullable @pointer(target=VkSparseImageFormatProperties2.class) VkSparseImageFormatProperties2 pProperties
     ) {
         try {
             HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties2.invokeExact(
@@ -2000,7 +2001,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkEnumeratePhysicalDeviceGroups(
             VkInstance instance,
             @unsigned IntBuffer pPhysicalDeviceGroupCount,
-            @nullable @pointer(target=VkPhysicalDeviceGroupProperties.class) VkPhysicalDeviceGroupProperties pPhysicalDeviceGroupProperties
+            @Nullable @pointer(target=VkPhysicalDeviceGroupProperties.class) VkPhysicalDeviceGroupProperties pPhysicalDeviceGroupProperties
     ) {
         try {
             return (int) HANDLE$vkEnumeratePhysicalDeviceGroups.invokeExact(
@@ -2017,7 +2018,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateIOSSurfaceMVK(
             VkInstance instance,
             @pointer(target=VkIOSSurfaceCreateInfoMVK.class) VkIOSSurfaceCreateInfoMVK pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer pSurface
     ) {
         try {
@@ -2036,7 +2037,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateMacOSSurfaceMVK(
             VkInstance instance,
             @pointer(target=VkMacOSSurfaceCreateInfoMVK.class) VkMacOSSurfaceCreateInfoMVK pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer pSurface
     ) {
         try {
@@ -2055,7 +2056,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateMetalSurfaceEXT(
             VkInstance instance,
             @pointer(target=VkMetalSurfaceCreateInfoEXT.class) VkMetalSurfaceCreateInfoEXT pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer pSurface
     ) {
         try {
@@ -2092,7 +2093,7 @@ public final class InstanceCommands {
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceSurfaceInfo2KHR.class) VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo,
             @unsigned IntBuffer pSurfaceFormatCount,
-            @nullable @pointer(target=VkSurfaceFormat2KHR.class) VkSurfaceFormat2KHR pSurfaceFormats
+            @Nullable @pointer(target=VkSurfaceFormat2KHR.class) VkSurfaceFormat2KHR pSurfaceFormats
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfaceFormats2KHR.invokeExact(
@@ -2110,7 +2111,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayProperties2KHR(
             VkPhysicalDevice physicalDevice,
             @unsigned IntBuffer pPropertyCount,
-            @nullable @pointer(target=VkDisplayProperties2KHR.class) VkDisplayProperties2KHR pProperties
+            @Nullable @pointer(target=VkDisplayProperties2KHR.class) VkDisplayProperties2KHR pProperties
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceDisplayProperties2KHR.invokeExact(
@@ -2127,7 +2128,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
             VkPhysicalDevice physicalDevice,
             @unsigned IntBuffer pPropertyCount,
-            @nullable @pointer(target=VkDisplayPlaneProperties2KHR.class) VkDisplayPlaneProperties2KHR pProperties
+            @Nullable @pointer(target=VkDisplayPlaneProperties2KHR.class) VkDisplayPlaneProperties2KHR pProperties
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceDisplayPlaneProperties2KHR.invokeExact(
@@ -2145,7 +2146,7 @@ public final class InstanceCommands {
             VkPhysicalDevice physicalDevice,
             VkDisplayKHR display,
             @unsigned IntBuffer pPropertyCount,
-            @nullable @pointer(target=VkDisplayModeProperties2KHR.class) VkDisplayModeProperties2KHR pProperties
+            @Nullable @pointer(target=VkDisplayModeProperties2KHR.class) VkDisplayModeProperties2KHR pProperties
     ) {
         try {
             return (int) HANDLE$vkGetDisplayModeProperties2KHR.invokeExact(
@@ -2296,7 +2297,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateDebugUtilsMessengerEXT(
             VkInstance instance,
             @pointer(target=VkDebugUtilsMessengerCreateInfoEXT.class) VkDebugUtilsMessengerCreateInfoEXT pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkDebugUtilsMessengerEXT.class) VkDebugUtilsMessengerEXT.Buffer pMessenger
     ) {
         try {
@@ -2314,8 +2315,8 @@ public final class InstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyDebugUtilsMessengerEXT.html">vkDestroyDebugUtilsMessengerEXT</a>
     public void vkDestroyDebugUtilsMessengerEXT(
             VkInstance instance,
-            @nullable VkDebugUtilsMessengerEXT messenger,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkDebugUtilsMessengerEXT messenger,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyDebugUtilsMessengerEXT.invokeExact(
@@ -2351,7 +2352,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkCreateHeadlessSurfaceEXT(
             VkInstance instance,
             @pointer(target=VkHeadlessSurfaceCreateInfoEXT.class) VkHeadlessSurfaceCreateInfoEXT pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer pSurface
     ) {
         try {
@@ -2370,7 +2371,7 @@ public final class InstanceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceToolProperties(
             VkPhysicalDevice physicalDevice,
             @unsigned IntBuffer pToolCount,
-            @nullable @pointer(target=VkPhysicalDeviceToolProperties.class) VkPhysicalDeviceToolProperties pToolProperties
+            @Nullable @pointer(target=VkPhysicalDeviceToolProperties.class) VkPhysicalDeviceToolProperties pToolProperties
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceToolProperties.invokeExact(

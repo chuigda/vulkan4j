@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -44,11 +45,11 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkSampler sampler() {
+    public @Nullable VkSampler sampler() {
         MemorySegment s = segment.get(LAYOUT$sampler, OFFSET$sampler);
         if (s.address() == 0) {
             return null;
@@ -56,7 +57,7 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(MemorySegment segment) imple
         return new VkSampler(s);
     }
 
-    public void sampler(@nullable VkSampler value) {
+    public void sampler(@Nullable VkSampler value) {
         segment.set(
             LAYOUT$sampler,
             OFFSET$sampler,

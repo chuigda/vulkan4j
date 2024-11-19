@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -74,7 +75,7 @@ public record VkDescriptorSetLayoutBinding(MemorySegment segment) implements IPo
     /// and use {@link VkSampler.Buffer#reinterpret} to set the size before actually
     /// {@link VkSampler.Buffer#read}ing or {@link VkSampler.Buffer#write}ing
     /// the buffer.
-    public @nullable VkSampler.Buffer pImmutableSamplers() {
+    public @Nullable VkSampler.Buffer pImmutableSamplers() {
         MemorySegment s = pImmutableSamplersRaw();
         if (s.address() == 0) {
             return null;
@@ -82,7 +83,7 @@ public record VkDescriptorSetLayoutBinding(MemorySegment segment) implements IPo
         return new VkSampler.Buffer(s);
     }
 
-    public void pImmutableSamplers(@nullable VkSampler.Buffer value) {
+    public void pImmutableSamplers(@Nullable VkSampler.Buffer value) {
         pImmutableSamplersRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

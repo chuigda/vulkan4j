@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -50,7 +51,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -78,7 +79,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
-    public @nullable VkAttachmentDescription pAttachments() {
+    public @Nullable VkAttachmentDescription pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.address() == 0) {
             return null;
@@ -88,7 +89,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkAttachmentDescription[] pAttachments(int assumedCount) {
+    public @Nullable VkAttachmentDescription[] pAttachments(int assumedCount) {
         MemorySegment s = pAttachmentsRaw().reinterpret(assumedCount * VkAttachmentDescription.SIZE);
         VkAttachmentDescription[] arr = new VkAttachmentDescription[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -97,7 +98,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
         return arr;
     }
 
-    public void pAttachments(@nullable VkAttachmentDescription value) {
+    public void pAttachments(@Nullable VkAttachmentDescription value) {
         pAttachmentsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -117,7 +118,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pSubpasses, OFFSET$pSubpasses, value);
     }
 
-    public @nullable VkSubpassDescription pSubpasses() {
+    public @Nullable VkSubpassDescription pSubpasses() {
         MemorySegment s = pSubpassesRaw();
         if (s.address() == 0) {
             return null;
@@ -127,7 +128,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSubpassDescription[] pSubpasses(int assumedCount) {
+    public @Nullable VkSubpassDescription[] pSubpasses(int assumedCount) {
         MemorySegment s = pSubpassesRaw().reinterpret(assumedCount * VkSubpassDescription.SIZE);
         VkSubpassDescription[] arr = new VkSubpassDescription[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -136,7 +137,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
         return arr;
     }
 
-    public void pSubpasses(@nullable VkSubpassDescription value) {
+    public void pSubpasses(@Nullable VkSubpassDescription value) {
         pSubpassesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -156,7 +157,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pDependencies, OFFSET$pDependencies, value);
     }
 
-    public @nullable VkSubpassDependency pDependencies() {
+    public @Nullable VkSubpassDependency pDependencies() {
         MemorySegment s = pDependenciesRaw();
         if (s.address() == 0) {
             return null;
@@ -166,7 +167,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSubpassDependency[] pDependencies(int assumedCount) {
+    public @Nullable VkSubpassDependency[] pDependencies(int assumedCount) {
         MemorySegment s = pDependenciesRaw().reinterpret(assumedCount * VkSubpassDependency.SIZE);
         VkSubpassDependency[] arr = new VkSubpassDependency[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -175,7 +176,7 @@ public record VkRenderPassCreateInfo(MemorySegment segment) implements IPointer 
         return arr;
     }
 
-    public void pDependencies(@nullable VkSubpassDependency value) {
+    public void pDependencies(@Nullable VkSubpassDependency value) {
         pDependenciesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

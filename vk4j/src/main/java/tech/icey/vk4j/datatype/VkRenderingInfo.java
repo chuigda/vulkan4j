@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -51,7 +52,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -103,7 +104,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
 
-    public @nullable VkRenderingAttachmentInfo pColorAttachments() {
+    public @Nullable VkRenderingAttachmentInfo pColorAttachments() {
         MemorySegment s = pColorAttachmentsRaw();
         if (s.address() == 0) {
             return null;
@@ -113,7 +114,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRenderingAttachmentInfo[] pColorAttachments(int assumedCount) {
+    public @Nullable VkRenderingAttachmentInfo[] pColorAttachments(int assumedCount) {
         MemorySegment s = pColorAttachmentsRaw().reinterpret(assumedCount * VkRenderingAttachmentInfo.SIZE);
         VkRenderingAttachmentInfo[] arr = new VkRenderingAttachmentInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -122,7 +123,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pColorAttachments(@nullable VkRenderingAttachmentInfo value) {
+    public void pColorAttachments(@Nullable VkRenderingAttachmentInfo value) {
         pColorAttachmentsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -134,7 +135,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment, value);
     }
 
-    public @nullable VkRenderingAttachmentInfo pDepthAttachment() {
+    public @Nullable VkRenderingAttachmentInfo pDepthAttachment() {
         MemorySegment s = pDepthAttachmentRaw();
         if (s.address() == 0) {
             return null;
@@ -144,7 +145,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRenderingAttachmentInfo[] pDepthAttachment(int assumedCount) {
+    public @Nullable VkRenderingAttachmentInfo[] pDepthAttachment(int assumedCount) {
         MemorySegment s = pDepthAttachmentRaw().reinterpret(assumedCount * VkRenderingAttachmentInfo.SIZE);
         VkRenderingAttachmentInfo[] arr = new VkRenderingAttachmentInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -153,7 +154,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pDepthAttachment(@nullable VkRenderingAttachmentInfo value) {
+    public void pDepthAttachment(@Nullable VkRenderingAttachmentInfo value) {
         pDepthAttachmentRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -165,7 +166,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment, value);
     }
 
-    public @nullable VkRenderingAttachmentInfo pStencilAttachment() {
+    public @Nullable VkRenderingAttachmentInfo pStencilAttachment() {
         MemorySegment s = pStencilAttachmentRaw();
         if (s.address() == 0) {
             return null;
@@ -175,7 +176,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRenderingAttachmentInfo[] pStencilAttachment(int assumedCount) {
+    public @Nullable VkRenderingAttachmentInfo[] pStencilAttachment(int assumedCount) {
         MemorySegment s = pStencilAttachmentRaw().reinterpret(assumedCount * VkRenderingAttachmentInfo.SIZE);
         VkRenderingAttachmentInfo[] arr = new VkRenderingAttachmentInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -184,7 +185,7 @@ public record VkRenderingInfo(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pStencilAttachment(@nullable VkRenderingAttachmentInfo value) {
+    public void pStencilAttachment(@Nullable VkRenderingAttachmentInfo value) {
         pStencilAttachmentRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

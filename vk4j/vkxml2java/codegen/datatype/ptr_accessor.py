@@ -31,7 +31,7 @@ def generate_pvoid_accessor(type_: CPointerType, member: Member) -> str:
         segment.set(LAYOUT${member.name}, OFFSET${member.name}, value);
     }}
 
-    public void {member.name}(@nullable IPointer pointer) {{
+    public void {member.name}(@Nullable IPointer pointer) {{
         {member.name}(pointer == null ? MemorySegment.NULL : pointer.segment());
     }}\n\n'''
 
@@ -50,7 +50,7 @@ def generate_pp_accessor(member: Member) -> str:
     /// size before actually {{@link PointerBuffer#read}}ing or {{@link PointerBuffer#write}}ing the buffer.
     ///
     /// @see PointerBuffer
-    public @nullable PointerBuffer {member.name}() {{
+    public @Nullable PointerBuffer {member.name}() {{
         var s = {member.name}Raw();
         if (s.address() == 0) {{
             return null;
@@ -58,7 +58,7 @@ def generate_pp_accessor(member: Member) -> str:
         return new PointerBuffer({member.name}Raw());
     }}
 
-    public void {member.name}(@nullable PointerBuffer value) {{
+    public void {member.name}(@Nullable PointerBuffer value) {{
         {member.name}Raw(value == null ? MemorySegment.NULL : value.segment());
     }}\n\n'''
 
@@ -77,12 +77,12 @@ def generate_p_nonref_type_accessor(pointee_type: CNonRefType, member: Member) -
     /// and use {{@link {pointee_type.vk4j_ptr_type_no_sign()}#reinterpret}} to set the size before actually
     /// {{@link {pointee_type.vk4j_ptr_type_no_sign()}#read}}ing or
     /// {{@link {pointee_type.vk4j_ptr_type_no_sign()}#write}}ing the buffer.
-    public @nullable {pointee_type.vk4j_ptr_type()} {member.name}() {{
+    public @Nullable {pointee_type.vk4j_ptr_type()} {member.name}() {{
         MemorySegment s = {member.name}Raw();
         return s.address() == 0 ? null : new {pointee_type.vk4j_ptr_type_no_sign()}(s);
     }}
 
-    public void {member.name}(@nullable {pointee_type.vk4j_ptr_type()} value) {{
+    public void {member.name}(@Nullable {pointee_type.vk4j_ptr_type()} value) {{
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         {member.name}Raw(s);
     }}\n\n'''
@@ -109,7 +109,7 @@ def generate_p_enum_type_accessor(pointee_type: CEnumType, member: Member) -> st
     /// and use {{@link {int_type.vk4j_ptr_type_no_sign()}#reinterpret}} to set the size before actually
     /// {{@link {int_type.vk4j_ptr_type_no_sign()}#read}}ing or {{@link {int_type.vk4j_ptr_type_no_sign()}#write}}ing
     /// the buffer.
-    public @nullable @enumtype({pointee_type.non_flagbits_type_name()}.class) {int_type.vk4j_ptr_type()} {member.name}() {{
+    public @Nullable @enumtype({pointee_type.non_flagbits_type_name()}.class) {int_type.vk4j_ptr_type()} {member.name}() {{
         MemorySegment s = {member.name}Raw();
         if (s.address() == 0) {{
             return null;
@@ -118,7 +118,7 @@ def generate_p_enum_type_accessor(pointee_type: CEnumType, member: Member) -> st
         return new {int_type.vk4j_ptr_type_no_sign()}(s);
     }}
 
-    public void {member.name}(@nullable @enumtype({pointee_type.non_flagbits_type_name()}.class) {int_type.vk4j_ptr_type()} value) {{
+    public void {member.name}(@Nullable @enumtype({pointee_type.non_flagbits_type_name()}.class) {int_type.vk4j_ptr_type()} value) {{
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         {member.name}Raw(s);
     }}\n\n'''
@@ -133,7 +133,7 @@ def generate_p_ref_type_accessor(pointee_type: CStructType | CUnionType | CHandl
         segment.set(LAYOUT${member.name}, OFFSET${member.name}, value);
     }}
 
-    public @nullable {pointee_type.java_type()} {member.name}() {{
+    public @Nullable {pointee_type.java_type()} {member.name}() {{
         MemorySegment s = {member.name}Raw();
         if (s.address() == 0) {{
             return null;
@@ -143,7 +143,7 @@ def generate_p_ref_type_accessor(pointee_type: CStructType | CUnionType | CHandl
 
     /// Note: this function is {{@link unsafe}} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable {pointee_type.java_type()}[] {member.name}(int assumedCount) {{
+    public @Nullable {pointee_type.java_type()}[] {member.name}(int assumedCount) {{
         MemorySegment s = {member.name}Raw().reinterpret(assumedCount * {pointee_type.java_type()}.SIZE);
         {pointee_type.java_type()}[] arr = new {pointee_type.java_type()}[assumedCount];
         for (int i = 0; i < assumedCount; i++) {{
@@ -152,7 +152,7 @@ def generate_p_ref_type_accessor(pointee_type: CStructType | CUnionType | CHandl
         return arr;
     }}
 
-    public void {member.name}(@nullable {pointee_type.java_type()} value) {{
+    public void {member.name}(@Nullable {pointee_type.java_type()} value) {{
         {member.name}Raw(value == null ? MemorySegment.NULL : value.segment());
     }}\n\n'''
 
@@ -171,7 +171,7 @@ def generate_p_handle_type_accessor(pointee_type: CHandleType, member: Member) -
     /// and use {{@link {pointee_type.java_type()}.Buffer#reinterpret}} to set the size before actually
     /// {{@link {pointee_type.java_type()}.Buffer#read}}ing or {{@link {pointee_type.java_type()}.Buffer#write}}ing
     /// the buffer.
-    public @nullable {pointee_type.java_type()}.Buffer {member.name}() {{
+    public @Nullable {pointee_type.java_type()}.Buffer {member.name}() {{
         MemorySegment s = {member.name}Raw();
         if (s.address() == 0) {{
             return null;
@@ -179,7 +179,7 @@ def generate_p_handle_type_accessor(pointee_type: CHandleType, member: Member) -
         return new {pointee_type.java_type()}.Buffer(s);
     }}
 
-    public void {member.name}(@nullable {pointee_type.java_type()}.Buffer value) {{
+    public void {member.name}(@Nullable {pointee_type.java_type()}.Buffer value) {{
         {member.name}Raw(value == null ? MemorySegment.NULL : value.segment());
     }}\n\n'''
 

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -48,7 +49,7 @@ public record VkCopyMemoryToImageInfoEXT(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -60,7 +61,7 @@ public record VkCopyMemoryToImageInfoEXT(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @nullable VkImage dstImage() {
+    public @Nullable VkImage dstImage() {
         MemorySegment s = segment.get(LAYOUT$dstImage, OFFSET$dstImage);
         if (s.address() == 0) {
             return null;
@@ -68,7 +69,7 @@ public record VkCopyMemoryToImageInfoEXT(MemorySegment segment) implements IPoin
         return new VkImage(s);
     }
 
-    public void dstImage(@nullable VkImage value) {
+    public void dstImage(@Nullable VkImage value) {
         segment.set(
             LAYOUT$dstImage,
             OFFSET$dstImage,
@@ -100,7 +101,7 @@ public record VkCopyMemoryToImageInfoEXT(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 
-    public @nullable VkMemoryToImageCopyEXT pRegions() {
+    public @Nullable VkMemoryToImageCopyEXT pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {
             return null;
@@ -110,7 +111,7 @@ public record VkCopyMemoryToImageInfoEXT(MemorySegment segment) implements IPoin
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkMemoryToImageCopyEXT[] pRegions(int assumedCount) {
+    public @Nullable VkMemoryToImageCopyEXT[] pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkMemoryToImageCopyEXT.SIZE);
         VkMemoryToImageCopyEXT[] arr = new VkMemoryToImageCopyEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -119,7 +120,7 @@ public record VkCopyMemoryToImageInfoEXT(MemorySegment segment) implements IPoin
         return arr;
     }
 
-    public void pRegions(@nullable VkMemoryToImageCopyEXT value) {
+    public void pRegions(@Nullable VkMemoryToImageCopyEXT value) {
         pRegionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

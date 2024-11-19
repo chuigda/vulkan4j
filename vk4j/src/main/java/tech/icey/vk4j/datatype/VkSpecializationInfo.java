@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -44,7 +45,7 @@ public record VkSpecializationInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pMapEntries, OFFSET$pMapEntries, value);
     }
 
-    public @nullable VkSpecializationMapEntry pMapEntries() {
+    public @Nullable VkSpecializationMapEntry pMapEntries() {
         MemorySegment s = pMapEntriesRaw();
         if (s.address() == 0) {
             return null;
@@ -54,7 +55,7 @@ public record VkSpecializationInfo(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSpecializationMapEntry[] pMapEntries(int assumedCount) {
+    public @Nullable VkSpecializationMapEntry[] pMapEntries(int assumedCount) {
         MemorySegment s = pMapEntriesRaw().reinterpret(assumedCount * VkSpecializationMapEntry.SIZE);
         VkSpecializationMapEntry[] arr = new VkSpecializationMapEntry[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -63,7 +64,7 @@ public record VkSpecializationInfo(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pMapEntries(@nullable VkSpecializationMapEntry value) {
+    public void pMapEntries(@Nullable VkSpecializationMapEntry value) {
         pMapEntriesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -83,7 +84,7 @@ public record VkSpecializationInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 
-    public void pData(@nullable IPointer pointer) {
+    public void pData(@Nullable IPointer pointer) {
         pData(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 

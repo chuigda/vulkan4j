@@ -37,6 +37,7 @@ fun generateFunctionClassFile(
             import java.lang.foreign.*;
             import java.lang.invoke.MethodHandle;
 
+            import org.jetbrains.annotations.Nullable;
             import tech.icey.panama.RawFunctionLoader;
             import tech.icey.panama.NativeLayout;
             import tech.icey.panama.annotation.*;
@@ -68,12 +69,12 @@ fun generateFunctionClassFile(
         appendLn()
 
         for (function in functions) {
-            appendLn(indent("public final @nullable MemorySegment SEGMENT$${function.name};", 1))
+            appendLn(indent("public final @Nullable MemorySegment SEGMENT$${function.name};", 1))
         }
         appendLn()
 
         for (function in functions) {
-            appendLn(indent("public final @nullable MethodHandle HANDLE$${function.name};", 1))
+            appendLn(indent("public final @Nullable MethodHandle HANDLE$${function.name};", 1))
         }
         appendLn()
 
@@ -212,7 +213,7 @@ private fun generateFunctionWrapper(
 }
 
 fun generateInputOutputType(type: CType, optional: Boolean): String {
-    val nullablePrefix = if (optional) "@nullable " else ""
+    val nullablePrefix = if (optional) "@Nullable " else ""
 
     return when (type) {
         is CVoidType -> "void"

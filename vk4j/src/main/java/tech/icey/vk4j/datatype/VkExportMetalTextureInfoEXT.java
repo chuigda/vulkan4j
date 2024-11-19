@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -48,11 +49,11 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkImage image() {
+    public @Nullable VkImage image() {
         MemorySegment s = segment.get(LAYOUT$image, OFFSET$image);
         if (s.address() == 0) {
             return null;
@@ -60,7 +61,7 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
         return new VkImage(s);
     }
 
-    public void image(@nullable VkImage value) {
+    public void image(@Nullable VkImage value) {
         segment.set(
             LAYOUT$image,
             OFFSET$image,
@@ -68,7 +69,7 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
         );
     }
 
-    public @nullable VkImageView imageView() {
+    public @Nullable VkImageView imageView() {
         MemorySegment s = segment.get(LAYOUT$imageView, OFFSET$imageView);
         if (s.address() == 0) {
             return null;
@@ -76,7 +77,7 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
         return new VkImageView(s);
     }
 
-    public void imageView(@nullable VkImageView value) {
+    public void imageView(@Nullable VkImageView value) {
         segment.set(
             LAYOUT$imageView,
             OFFSET$imageView,
@@ -84,7 +85,7 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
         );
     }
 
-    public @nullable VkBufferView bufferView() {
+    public @Nullable VkBufferView bufferView() {
         MemorySegment s = segment.get(LAYOUT$bufferView, OFFSET$bufferView);
         if (s.address() == 0) {
             return null;
@@ -92,7 +93,7 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
         return new VkBufferView(s);
     }
 
-    public void bufferView(@nullable VkBufferView value) {
+    public void bufferView(@Nullable VkBufferView value) {
         segment.set(
             LAYOUT$bufferView,
             OFFSET$bufferView,
@@ -116,7 +117,7 @@ public record VkExportMetalTextureInfoEXT(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$mtlTexture, OFFSET$mtlTexture, value);
     }
 
-    public void mtlTexture(@nullable IPointer pointer) {
+    public void mtlTexture(@Nullable IPointer pointer) {
         mtlTexture(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 

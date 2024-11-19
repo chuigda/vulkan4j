@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -58,7 +59,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) implem
         segment.set(LAYOUT$pPipelineCreationFeedback, OFFSET$pPipelineCreationFeedback, value);
     }
 
-    public @nullable VkPipelineCreationFeedback pPipelineCreationFeedback() {
+    public @Nullable VkPipelineCreationFeedback pPipelineCreationFeedback() {
         MemorySegment s = pPipelineCreationFeedbackRaw();
         if (s.address() == 0) {
             return null;
@@ -68,7 +69,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) implem
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineCreationFeedback[] pPipelineCreationFeedback(int assumedCount) {
+    public @Nullable VkPipelineCreationFeedback[] pPipelineCreationFeedback(int assumedCount) {
         MemorySegment s = pPipelineCreationFeedbackRaw().reinterpret(assumedCount * VkPipelineCreationFeedback.SIZE);
         VkPipelineCreationFeedback[] arr = new VkPipelineCreationFeedback[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -77,7 +78,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) implem
         return arr;
     }
 
-    public void pPipelineCreationFeedback(@nullable VkPipelineCreationFeedback value) {
+    public void pPipelineCreationFeedback(@Nullable VkPipelineCreationFeedback value) {
         pPipelineCreationFeedbackRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -97,7 +98,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) implem
         segment.set(LAYOUT$pPipelineStageCreationFeedbacks, OFFSET$pPipelineStageCreationFeedbacks, value);
     }
 
-    public @nullable VkPipelineCreationFeedback pPipelineStageCreationFeedbacks() {
+    public @Nullable VkPipelineCreationFeedback pPipelineStageCreationFeedbacks() {
         MemorySegment s = pPipelineStageCreationFeedbacksRaw();
         if (s.address() == 0) {
             return null;
@@ -107,7 +108,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) implem
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineCreationFeedback[] pPipelineStageCreationFeedbacks(int assumedCount) {
+    public @Nullable VkPipelineCreationFeedback[] pPipelineStageCreationFeedbacks(int assumedCount) {
         MemorySegment s = pPipelineStageCreationFeedbacksRaw().reinterpret(assumedCount * VkPipelineCreationFeedback.SIZE);
         VkPipelineCreationFeedback[] arr = new VkPipelineCreationFeedback[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -116,7 +117,7 @@ public record VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) implem
         return arr;
     }
 
-    public void pPipelineStageCreationFeedbacks(@nullable VkPipelineCreationFeedback value) {
+    public void pPipelineStageCreationFeedbacks(@Nullable VkPipelineCreationFeedback value) {
         pPipelineStageCreationFeedbacksRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -27,7 +28,7 @@ public record VkSparseBufferMemoryBindInfo(MemorySegment segment) implements IPo
         this.segment = segment;
     }
 
-    public @nullable VkBuffer buffer() {
+    public @Nullable VkBuffer buffer() {
         MemorySegment s = segment.get(LAYOUT$buffer, OFFSET$buffer);
         if (s.address() == 0) {
             return null;
@@ -35,7 +36,7 @@ public record VkSparseBufferMemoryBindInfo(MemorySegment segment) implements IPo
         return new VkBuffer(s);
     }
 
-    public void buffer(@nullable VkBuffer value) {
+    public void buffer(@Nullable VkBuffer value) {
         segment.set(
             LAYOUT$buffer,
             OFFSET$buffer,
@@ -59,7 +60,7 @@ public record VkSparseBufferMemoryBindInfo(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pBinds, OFFSET$pBinds, value);
     }
 
-    public @nullable VkSparseMemoryBind pBinds() {
+    public @Nullable VkSparseMemoryBind pBinds() {
         MemorySegment s = pBindsRaw();
         if (s.address() == 0) {
             return null;
@@ -69,7 +70,7 @@ public record VkSparseBufferMemoryBindInfo(MemorySegment segment) implements IPo
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSparseMemoryBind[] pBinds(int assumedCount) {
+    public @Nullable VkSparseMemoryBind[] pBinds(int assumedCount) {
         MemorySegment s = pBindsRaw().reinterpret(assumedCount * VkSparseMemoryBind.SIZE);
         VkSparseMemoryBind[] arr = new VkSparseMemoryBind[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -78,7 +79,7 @@ public record VkSparseBufferMemoryBindInfo(MemorySegment segment) implements IPo
         return arr;
     }
 
-    public void pBinds(@nullable VkSparseMemoryBind value) {
+    public void pBinds(@Nullable VkSparseMemoryBind value) {
         pBindsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

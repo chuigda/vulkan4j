@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,11 +46,11 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkRenderPass renderPass() {
+    public @Nullable VkRenderPass renderPass() {
         MemorySegment s = segment.get(LAYOUT$renderPass, OFFSET$renderPass);
         if (s.address() == 0) {
             return null;
@@ -57,7 +58,7 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(MemorySegment segment) im
         return new VkRenderPass(s);
     }
 
-    public void renderPass(@nullable VkRenderPass value) {
+    public void renderPass(@Nullable VkRenderPass value) {
         segment.set(
             LAYOUT$renderPass,
             OFFSET$renderPass,

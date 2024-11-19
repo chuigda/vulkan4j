@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -66,7 +67,7 @@ public record VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) implements I
         segment.set(LAYOUT$dfb, OFFSET$dfb, value);
     }
 
-    public void dfb(@nullable IPointer pointer) {
+    public void dfb(@Nullable IPointer pointer) {
         dfb(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -78,7 +79,7 @@ public record VkDirectFBSurfaceCreateInfoEXT(MemorySegment segment) implements I
         segment.set(LAYOUT$surface, OFFSET$surface, value);
     }
 
-    public void surface(@nullable IPointer pointer) {
+    public void surface(@Nullable IPointer pointer) {
         surface(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkRefreshObjectListKHR(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -65,7 +66,7 @@ public record VkRefreshObjectListKHR(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
 
-    public @nullable VkRefreshObjectKHR pObjects() {
+    public @Nullable VkRefreshObjectKHR pObjects() {
         MemorySegment s = pObjectsRaw();
         if (s.address() == 0) {
             return null;
@@ -75,7 +76,7 @@ public record VkRefreshObjectListKHR(MemorySegment segment) implements IPointer 
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRefreshObjectKHR[] pObjects(int assumedCount) {
+    public @Nullable VkRefreshObjectKHR[] pObjects(int assumedCount) {
         MemorySegment s = pObjectsRaw().reinterpret(assumedCount * VkRefreshObjectKHR.SIZE);
         VkRefreshObjectKHR[] arr = new VkRefreshObjectKHR[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -84,7 +85,7 @@ public record VkRefreshObjectListKHR(MemorySegment segment) implements IPointer 
         return arr;
     }
 
-    public void pObjects(@nullable VkRefreshObjectKHR value) {
+    public void pObjects(@Nullable VkRefreshObjectKHR value) {
         pObjectsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

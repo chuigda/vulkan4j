@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -71,7 +72,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pAddressInfos, OFFSET$pAddressInfos, value);
     }
 
-    public @nullable VkDeviceFaultAddressInfoEXT pAddressInfos() {
+    public @Nullable VkDeviceFaultAddressInfoEXT pAddressInfos() {
         MemorySegment s = pAddressInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -81,7 +82,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDeviceFaultAddressInfoEXT[] pAddressInfos(int assumedCount) {
+    public @Nullable VkDeviceFaultAddressInfoEXT[] pAddressInfos(int assumedCount) {
         MemorySegment s = pAddressInfosRaw().reinterpret(assumedCount * VkDeviceFaultAddressInfoEXT.SIZE);
         VkDeviceFaultAddressInfoEXT[] arr = new VkDeviceFaultAddressInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -90,7 +91,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pAddressInfos(@nullable VkDeviceFaultAddressInfoEXT value) {
+    public void pAddressInfos(@Nullable VkDeviceFaultAddressInfoEXT value) {
         pAddressInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -102,7 +103,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pVendorInfos, OFFSET$pVendorInfos, value);
     }
 
-    public @nullable VkDeviceFaultVendorInfoEXT pVendorInfos() {
+    public @Nullable VkDeviceFaultVendorInfoEXT pVendorInfos() {
         MemorySegment s = pVendorInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -112,7 +113,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDeviceFaultVendorInfoEXT[] pVendorInfos(int assumedCount) {
+    public @Nullable VkDeviceFaultVendorInfoEXT[] pVendorInfos(int assumedCount) {
         MemorySegment s = pVendorInfosRaw().reinterpret(assumedCount * VkDeviceFaultVendorInfoEXT.SIZE);
         VkDeviceFaultVendorInfoEXT[] arr = new VkDeviceFaultVendorInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -121,7 +122,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pVendorInfos(@nullable VkDeviceFaultVendorInfoEXT value) {
+    public void pVendorInfos(@Nullable VkDeviceFaultVendorInfoEXT value) {
         pVendorInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -133,7 +134,7 @@ public record VkDeviceFaultInfoEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pVendorBinaryData, OFFSET$pVendorBinaryData, value);
     }
 
-    public void pVendorBinaryData(@nullable IPointer pointer) {
+    public void pVendorBinaryData(@Nullable IPointer pointer) {
         pVendorBinaryData(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 

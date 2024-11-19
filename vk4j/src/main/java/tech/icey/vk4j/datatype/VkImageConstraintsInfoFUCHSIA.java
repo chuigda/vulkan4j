@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -67,7 +68,7 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) implements IP
         segment.set(LAYOUT$pFormatConstraints, OFFSET$pFormatConstraints, value);
     }
 
-    public @nullable VkImageFormatConstraintsInfoFUCHSIA pFormatConstraints() {
+    public @Nullable VkImageFormatConstraintsInfoFUCHSIA pFormatConstraints() {
         MemorySegment s = pFormatConstraintsRaw();
         if (s.address() == 0) {
             return null;
@@ -77,7 +78,7 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) implements IP
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkImageFormatConstraintsInfoFUCHSIA[] pFormatConstraints(int assumedCount) {
+    public @Nullable VkImageFormatConstraintsInfoFUCHSIA[] pFormatConstraints(int assumedCount) {
         MemorySegment s = pFormatConstraintsRaw().reinterpret(assumedCount * VkImageFormatConstraintsInfoFUCHSIA.SIZE);
         VkImageFormatConstraintsInfoFUCHSIA[] arr = new VkImageFormatConstraintsInfoFUCHSIA[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -86,7 +87,7 @@ public record VkImageConstraintsInfoFUCHSIA(MemorySegment segment) implements IP
         return arr;
     }
 
-    public void pFormatConstraints(@nullable VkImageFormatConstraintsInfoFUCHSIA value) {
+    public void pFormatConstraints(@Nullable VkImageFormatConstraintsInfoFUCHSIA value) {
         pFormatConstraintsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

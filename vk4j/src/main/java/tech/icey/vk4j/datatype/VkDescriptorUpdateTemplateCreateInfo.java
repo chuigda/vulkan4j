@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -51,7 +52,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -79,7 +80,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
         segment.set(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries, value);
     }
 
-    public @nullable VkDescriptorUpdateTemplateEntry pDescriptorUpdateEntries() {
+    public @Nullable VkDescriptorUpdateTemplateEntry pDescriptorUpdateEntries() {
         MemorySegment s = pDescriptorUpdateEntriesRaw();
         if (s.address() == 0) {
             return null;
@@ -89,7 +90,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDescriptorUpdateTemplateEntry[] pDescriptorUpdateEntries(int assumedCount) {
+    public @Nullable VkDescriptorUpdateTemplateEntry[] pDescriptorUpdateEntries(int assumedCount) {
         MemorySegment s = pDescriptorUpdateEntriesRaw().reinterpret(assumedCount * VkDescriptorUpdateTemplateEntry.SIZE);
         VkDescriptorUpdateTemplateEntry[] arr = new VkDescriptorUpdateTemplateEntry[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -98,7 +99,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
         return arr;
     }
 
-    public void pDescriptorUpdateEntries(@nullable VkDescriptorUpdateTemplateEntry value) {
+    public void pDescriptorUpdateEntries(@Nullable VkDescriptorUpdateTemplateEntry value) {
         pDescriptorUpdateEntriesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -110,7 +111,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
         segment.set(LAYOUT$templateType, OFFSET$templateType, value);
     }
 
-    public @nullable VkDescriptorSetLayout descriptorSetLayout() {
+    public @Nullable VkDescriptorSetLayout descriptorSetLayout() {
         MemorySegment s = segment.get(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout);
         if (s.address() == 0) {
             return null;
@@ -118,7 +119,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
         return new VkDescriptorSetLayout(s);
     }
 
-    public void descriptorSetLayout(@nullable VkDescriptorSetLayout value) {
+    public void descriptorSetLayout(@Nullable VkDescriptorSetLayout value) {
         segment.set(
             LAYOUT$descriptorSetLayout,
             OFFSET$descriptorSetLayout,
@@ -134,7 +135,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
     }
 
-    public @nullable VkPipelineLayout pipelineLayout() {
+    public @Nullable VkPipelineLayout pipelineLayout() {
         MemorySegment s = segment.get(LAYOUT$pipelineLayout, OFFSET$pipelineLayout);
         if (s.address() == 0) {
             return null;
@@ -142,7 +143,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) implem
         return new VkPipelineLayout(s);
     }
 
-    public void pipelineLayout(@nullable VkPipelineLayout value) {
+    public void pipelineLayout(@Nullable VkPipelineLayout value) {
         segment.set(
             LAYOUT$pipelineLayout,
             OFFSET$pipelineLayout,

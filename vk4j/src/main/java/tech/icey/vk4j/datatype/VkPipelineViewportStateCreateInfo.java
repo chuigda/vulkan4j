@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -48,7 +49,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -76,7 +77,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implement
         segment.set(LAYOUT$pViewports, OFFSET$pViewports, value);
     }
 
-    public @nullable VkViewport pViewports() {
+    public @Nullable VkViewport pViewports() {
         MemorySegment s = pViewportsRaw();
         if (s.address() == 0) {
             return null;
@@ -86,7 +87,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implement
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkViewport[] pViewports(int assumedCount) {
+    public @Nullable VkViewport[] pViewports(int assumedCount) {
         MemorySegment s = pViewportsRaw().reinterpret(assumedCount * VkViewport.SIZE);
         VkViewport[] arr = new VkViewport[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -95,7 +96,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implement
         return arr;
     }
 
-    public void pViewports(@nullable VkViewport value) {
+    public void pViewports(@Nullable VkViewport value) {
         pViewportsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -115,7 +116,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implement
         segment.set(LAYOUT$pScissors, OFFSET$pScissors, value);
     }
 
-    public @nullable VkRect2D pScissors() {
+    public @Nullable VkRect2D pScissors() {
         MemorySegment s = pScissorsRaw();
         if (s.address() == 0) {
             return null;
@@ -125,7 +126,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implement
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRect2D[] pScissors(int assumedCount) {
+    public @Nullable VkRect2D[] pScissors(int assumedCount) {
         MemorySegment s = pScissorsRaw().reinterpret(assumedCount * VkRect2D.SIZE);
         VkRect2D[] arr = new VkRect2D[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -134,7 +135,7 @@ public record VkPipelineViewportStateCreateInfo(MemorySegment segment) implement
         return arr;
     }
 
-    public void pScissors(@nullable VkRect2D value) {
+    public void pScissors(@Nullable VkRect2D value) {
         pScissorsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

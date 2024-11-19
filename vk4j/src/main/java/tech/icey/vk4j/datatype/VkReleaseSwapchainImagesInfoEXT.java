@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,11 +47,11 @@ public record VkReleaseSwapchainImagesInfoEXT(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkSwapchainKHR swapchain() {
+    public @Nullable VkSwapchainKHR swapchain() {
         MemorySegment s = segment.get(LAYOUT$swapchain, OFFSET$swapchain);
         if (s.address() == 0) {
             return null;
@@ -58,7 +59,7 @@ public record VkReleaseSwapchainImagesInfoEXT(MemorySegment segment) implements 
         return new VkSwapchainKHR(s);
     }
 
-    public void swapchain(@nullable VkSwapchainKHR value) {
+    public void swapchain(@Nullable VkSwapchainKHR value) {
         segment.set(
             LAYOUT$swapchain,
             OFFSET$swapchain,
@@ -87,12 +88,12 @@ public record VkReleaseSwapchainImagesInfoEXT(MemorySegment segment) implements 
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pImageIndices() {
+    public @Nullable @unsigned IntBuffer pImageIndices() {
         MemorySegment s = pImageIndicesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pImageIndices(@nullable @unsigned IntBuffer value) {
+    public void pImageIndices(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageIndicesRaw(s);
     }

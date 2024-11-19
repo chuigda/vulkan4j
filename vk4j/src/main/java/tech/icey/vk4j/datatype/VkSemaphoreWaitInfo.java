@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -80,7 +81,7 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) implements IPointer {
     /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
     /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
     /// the buffer.
-    public @nullable VkSemaphore.Buffer pSemaphores() {
+    public @Nullable VkSemaphore.Buffer pSemaphores() {
         MemorySegment s = pSemaphoresRaw();
         if (s.address() == 0) {
             return null;
@@ -88,7 +89,7 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) implements IPointer {
         return new VkSemaphore.Buffer(s);
     }
 
-    public void pSemaphores(@nullable VkSemaphore.Buffer value) {
+    public void pSemaphores(@Nullable VkSemaphore.Buffer value) {
         pSemaphoresRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -105,12 +106,12 @@ public record VkSemaphoreWaitInfo(MemorySegment segment) implements IPointer {
     /// and use {@link LongBuffer#reinterpret} to set the size before actually
     /// {@link LongBuffer#read}ing or
     /// {@link LongBuffer#write}ing the buffer.
-    public @nullable @unsigned LongBuffer pValues() {
+    public @Nullable @unsigned LongBuffer pValues() {
         MemorySegment s = pValuesRaw();
         return s.address() == 0 ? null : new LongBuffer(s);
     }
 
-    public void pValues(@nullable @unsigned LongBuffer value) {
+    public void pValues(@Nullable @unsigned LongBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pValuesRaw(s);
     }

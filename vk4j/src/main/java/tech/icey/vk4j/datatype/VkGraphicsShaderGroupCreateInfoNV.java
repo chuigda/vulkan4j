@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -67,7 +68,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
-    public @nullable VkPipelineShaderStageCreateInfo pStages() {
+    public @Nullable VkPipelineShaderStageCreateInfo pStages() {
         MemorySegment s = pStagesRaw();
         if (s.address() == 0) {
             return null;
@@ -77,7 +78,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
+    public @Nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
         MemorySegment s = pStagesRaw().reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
         VkPipelineShaderStageCreateInfo[] arr = new VkPipelineShaderStageCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -86,7 +87,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
         return arr;
     }
 
-    public void pStages(@nullable VkPipelineShaderStageCreateInfo value) {
+    public void pStages(@Nullable VkPipelineShaderStageCreateInfo value) {
         pStagesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -98,7 +99,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
         segment.set(LAYOUT$pVertexInputState, OFFSET$pVertexInputState, value);
     }
 
-    public @nullable VkPipelineVertexInputStateCreateInfo pVertexInputState() {
+    public @Nullable VkPipelineVertexInputStateCreateInfo pVertexInputState() {
         MemorySegment s = pVertexInputStateRaw();
         if (s.address() == 0) {
             return null;
@@ -108,7 +109,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineVertexInputStateCreateInfo[] pVertexInputState(int assumedCount) {
+    public @Nullable VkPipelineVertexInputStateCreateInfo[] pVertexInputState(int assumedCount) {
         MemorySegment s = pVertexInputStateRaw().reinterpret(assumedCount * VkPipelineVertexInputStateCreateInfo.SIZE);
         VkPipelineVertexInputStateCreateInfo[] arr = new VkPipelineVertexInputStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -117,7 +118,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
         return arr;
     }
 
-    public void pVertexInputState(@nullable VkPipelineVertexInputStateCreateInfo value) {
+    public void pVertexInputState(@Nullable VkPipelineVertexInputStateCreateInfo value) {
         pVertexInputStateRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -129,7 +130,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
         segment.set(LAYOUT$pTessellationState, OFFSET$pTessellationState, value);
     }
 
-    public @nullable VkPipelineTessellationStateCreateInfo pTessellationState() {
+    public @Nullable VkPipelineTessellationStateCreateInfo pTessellationState() {
         MemorySegment s = pTessellationStateRaw();
         if (s.address() == 0) {
             return null;
@@ -139,7 +140,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineTessellationStateCreateInfo[] pTessellationState(int assumedCount) {
+    public @Nullable VkPipelineTessellationStateCreateInfo[] pTessellationState(int assumedCount) {
         MemorySegment s = pTessellationStateRaw().reinterpret(assumedCount * VkPipelineTessellationStateCreateInfo.SIZE);
         VkPipelineTessellationStateCreateInfo[] arr = new VkPipelineTessellationStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -148,7 +149,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(MemorySegment segment) implement
         return arr;
     }
 
-    public void pTessellationState(@nullable VkPipelineTessellationStateCreateInfo value) {
+    public void pTessellationState(@Nullable VkPipelineTessellationStateCreateInfo value) {
         pTessellationStateRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkFramebufferAttachmentsCreateInfo(MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -65,7 +66,7 @@ public record VkFramebufferAttachmentsCreateInfo(MemorySegment segment) implemen
         segment.set(LAYOUT$pAttachmentImageInfos, OFFSET$pAttachmentImageInfos, value);
     }
 
-    public @nullable VkFramebufferAttachmentImageInfo pAttachmentImageInfos() {
+    public @Nullable VkFramebufferAttachmentImageInfo pAttachmentImageInfos() {
         MemorySegment s = pAttachmentImageInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -75,7 +76,7 @@ public record VkFramebufferAttachmentsCreateInfo(MemorySegment segment) implemen
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkFramebufferAttachmentImageInfo[] pAttachmentImageInfos(int assumedCount) {
+    public @Nullable VkFramebufferAttachmentImageInfo[] pAttachmentImageInfos(int assumedCount) {
         MemorySegment s = pAttachmentImageInfosRaw().reinterpret(assumedCount * VkFramebufferAttachmentImageInfo.SIZE);
         VkFramebufferAttachmentImageInfo[] arr = new VkFramebufferAttachmentImageInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -84,7 +85,7 @@ public record VkFramebufferAttachmentsCreateInfo(MemorySegment segment) implemen
         return arr;
     }
 
-    public void pAttachmentImageInfos(@nullable VkFramebufferAttachmentImageInfo value) {
+    public void pAttachmentImageInfos(@Nullable VkFramebufferAttachmentImageInfo value) {
         pAttachmentImageInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

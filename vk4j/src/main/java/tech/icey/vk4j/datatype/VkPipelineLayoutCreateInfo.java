@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -48,7 +49,7 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -81,7 +82,7 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) implements IPoin
     /// and use {@link VkDescriptorSetLayout.Buffer#reinterpret} to set the size before actually
     /// {@link VkDescriptorSetLayout.Buffer#read}ing or {@link VkDescriptorSetLayout.Buffer#write}ing
     /// the buffer.
-    public @nullable VkDescriptorSetLayout.Buffer pSetLayouts() {
+    public @Nullable VkDescriptorSetLayout.Buffer pSetLayouts() {
         MemorySegment s = pSetLayoutsRaw();
         if (s.address() == 0) {
             return null;
@@ -89,7 +90,7 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) implements IPoin
         return new VkDescriptorSetLayout.Buffer(s);
     }
 
-    public void pSetLayouts(@nullable VkDescriptorSetLayout.Buffer value) {
+    public void pSetLayouts(@Nullable VkDescriptorSetLayout.Buffer value) {
         pSetLayoutsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -109,7 +110,7 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
 
-    public @nullable VkPushConstantRange pPushConstantRanges() {
+    public @Nullable VkPushConstantRange pPushConstantRanges() {
         MemorySegment s = pPushConstantRangesRaw();
         if (s.address() == 0) {
             return null;
@@ -119,7 +120,7 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) implements IPoin
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPushConstantRange[] pPushConstantRanges(int assumedCount) {
+    public @Nullable VkPushConstantRange[] pPushConstantRanges(int assumedCount) {
         MemorySegment s = pPushConstantRangesRaw().reinterpret(assumedCount * VkPushConstantRange.SIZE);
         VkPushConstantRange[] arr = new VkPushConstantRange[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -128,7 +129,7 @@ public record VkPipelineLayoutCreateInfo(MemorySegment segment) implements IPoin
         return arr;
     }
 
-    public void pPushConstantRanges(@nullable VkPushConstantRange value) {
+    public void pPushConstantRanges(@Nullable VkPushConstantRange value) {
         pPushConstantRangesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

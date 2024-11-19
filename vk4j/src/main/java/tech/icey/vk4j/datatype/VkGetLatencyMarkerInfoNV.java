@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkGetLatencyMarkerInfoNV(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -65,7 +66,7 @@ public record VkGetLatencyMarkerInfoNV(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pTimings, OFFSET$pTimings, value);
     }
 
-    public @nullable VkLatencyTimingsFrameReportNV pTimings() {
+    public @Nullable VkLatencyTimingsFrameReportNV pTimings() {
         MemorySegment s = pTimingsRaw();
         if (s.address() == 0) {
             return null;
@@ -75,7 +76,7 @@ public record VkGetLatencyMarkerInfoNV(MemorySegment segment) implements IPointe
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkLatencyTimingsFrameReportNV[] pTimings(int assumedCount) {
+    public @Nullable VkLatencyTimingsFrameReportNV[] pTimings(int assumedCount) {
         MemorySegment s = pTimingsRaw().reinterpret(assumedCount * VkLatencyTimingsFrameReportNV.SIZE);
         VkLatencyTimingsFrameReportNV[] arr = new VkLatencyTimingsFrameReportNV[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -84,7 +85,7 @@ public record VkGetLatencyMarkerInfoNV(MemorySegment segment) implements IPointe
         return arr;
     }
 
-    public void pTimings(@nullable VkLatencyTimingsFrameReportNV value) {
+    public void pTimings(@Nullable VkLatencyTimingsFrameReportNV value) {
         pTimingsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -49,7 +50,7 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -74,7 +75,7 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
     /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
     /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
     /// the buffer.
-    public @nullable VkSemaphore.Buffer pWaitSemaphores() {
+    public @Nullable VkSemaphore.Buffer pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.address() == 0) {
             return null;
@@ -82,7 +83,7 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
         return new VkSemaphore.Buffer(s);
     }
 
-    public void pWaitSemaphores(@nullable VkSemaphore.Buffer value) {
+    public void pWaitSemaphores(@Nullable VkSemaphore.Buffer value) {
         pWaitSemaphoresRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -107,7 +108,7 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
     /// and use {@link VkSwapchainKHR.Buffer#reinterpret} to set the size before actually
     /// {@link VkSwapchainKHR.Buffer#read}ing or {@link VkSwapchainKHR.Buffer#write}ing
     /// the buffer.
-    public @nullable VkSwapchainKHR.Buffer pSwapchains() {
+    public @Nullable VkSwapchainKHR.Buffer pSwapchains() {
         MemorySegment s = pSwapchainsRaw();
         if (s.address() == 0) {
             return null;
@@ -115,7 +116,7 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
         return new VkSwapchainKHR.Buffer(s);
     }
 
-    public void pSwapchains(@nullable VkSwapchainKHR.Buffer value) {
+    public void pSwapchains(@Nullable VkSwapchainKHR.Buffer value) {
         pSwapchainsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -132,12 +133,12 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pImageIndices() {
+    public @Nullable @unsigned IntBuffer pImageIndices() {
         MemorySegment s = pImageIndicesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pImageIndices(@nullable @unsigned IntBuffer value) {
+    public void pImageIndices(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageIndicesRaw(s);
     }
@@ -155,7 +156,7 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
     /// the buffer.
-    public @nullable @enumtype(VkResult.class) IntBuffer pResults() {
+    public @Nullable @enumtype(VkResult.class) IntBuffer pResults() {
         MemorySegment s = pResultsRaw();
         if (s.address() == 0) {
             return null;
@@ -164,7 +165,7 @@ public record VkPresentInfoKHR(MemorySegment segment) implements IPointer {
         return new IntBuffer(s);
     }
 
-    public void pResults(@nullable @enumtype(VkResult.class) IntBuffer value) {
+    public void pResults(@Nullable @enumtype(VkResult.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResultsRaw(s);
     }

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -49,7 +50,7 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -74,12 +75,12 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) implements 
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pViewMasks() {
+    public @Nullable @unsigned IntBuffer pViewMasks() {
         MemorySegment s = pViewMasksRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pViewMasks(@nullable @unsigned IntBuffer value) {
+    public void pViewMasks(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewMasksRaw(s);
     }
@@ -105,12 +106,12 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) implements 
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable IntBuffer pViewOffsets() {
+    public @Nullable IntBuffer pViewOffsets() {
         MemorySegment s = pViewOffsetsRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pViewOffsets(@nullable IntBuffer value) {
+    public void pViewOffsets(@Nullable IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewOffsetsRaw(s);
     }
@@ -136,12 +137,12 @@ public record VkRenderPassMultiviewCreateInfo(MemorySegment segment) implements 
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pCorrelationMasks() {
+    public @Nullable @unsigned IntBuffer pCorrelationMasks() {
         MemorySegment s = pCorrelationMasksRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pCorrelationMasks(@nullable @unsigned IntBuffer value) {
+    public void pCorrelationMasks(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCorrelationMasksRaw(s);
     }

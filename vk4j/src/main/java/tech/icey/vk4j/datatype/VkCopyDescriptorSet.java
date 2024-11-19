@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -50,11 +51,11 @@ public record VkCopyDescriptorSet(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkDescriptorSet srcSet() {
+    public @Nullable VkDescriptorSet srcSet() {
         MemorySegment s = segment.get(LAYOUT$srcSet, OFFSET$srcSet);
         if (s.address() == 0) {
             return null;
@@ -62,7 +63,7 @@ public record VkCopyDescriptorSet(MemorySegment segment) implements IPointer {
         return new VkDescriptorSet(s);
     }
 
-    public void srcSet(@nullable VkDescriptorSet value) {
+    public void srcSet(@Nullable VkDescriptorSet value) {
         segment.set(
             LAYOUT$srcSet,
             OFFSET$srcSet,
@@ -86,7 +87,7 @@ public record VkCopyDescriptorSet(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$srcArrayElement, OFFSET$srcArrayElement, value);
     }
 
-    public @nullable VkDescriptorSet dstSet() {
+    public @Nullable VkDescriptorSet dstSet() {
         MemorySegment s = segment.get(LAYOUT$dstSet, OFFSET$dstSet);
         if (s.address() == 0) {
             return null;
@@ -94,7 +95,7 @@ public record VkCopyDescriptorSet(MemorySegment segment) implements IPointer {
         return new VkDescriptorSet(s);
     }
 
-    public void dstSet(@nullable VkDescriptorSet value) {
+    public void dstSet(@Nullable VkDescriptorSet value) {
         segment.set(
             LAYOUT$dstSet,
             OFFSET$dstSet,

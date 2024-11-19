@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -44,11 +45,11 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkValidationCacheEXT validationCache() {
+    public @Nullable VkValidationCacheEXT validationCache() {
         MemorySegment s = segment.get(LAYOUT$validationCache, OFFSET$validationCache);
         if (s.address() == 0) {
             return null;
@@ -56,7 +57,7 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(MemorySegment segment) 
         return new VkValidationCacheEXT(s);
     }
 
-    public void validationCache(@nullable VkValidationCacheEXT value) {
+    public void validationCache(@Nullable VkValidationCacheEXT value) {
         segment.set(
             LAYOUT$validationCache,
             OFFSET$validationCache,

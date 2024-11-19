@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -72,12 +73,12 @@ public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) implements IPoint
     /// and use {@link LongBuffer#reinterpret} to set the size before actually
     /// {@link LongBuffer#read}ing or
     /// {@link LongBuffer#write}ing the buffer.
-    public @nullable @unsigned LongBuffer pWaitSemaphoreValues() {
+    public @Nullable @unsigned LongBuffer pWaitSemaphoreValues() {
         MemorySegment s = pWaitSemaphoreValuesRaw();
         return s.address() == 0 ? null : new LongBuffer(s);
     }
 
-    public void pWaitSemaphoreValues(@nullable @unsigned LongBuffer value) {
+    public void pWaitSemaphoreValues(@Nullable @unsigned LongBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoreValuesRaw(s);
     }
@@ -103,12 +104,12 @@ public record VkD3D12FenceSubmitInfoKHR(MemorySegment segment) implements IPoint
     /// and use {@link LongBuffer#reinterpret} to set the size before actually
     /// {@link LongBuffer#read}ing or
     /// {@link LongBuffer#write}ing the buffer.
-    public @nullable @unsigned LongBuffer pSignalSemaphoreValues() {
+    public @Nullable @unsigned LongBuffer pSignalSemaphoreValues() {
         MemorySegment s = pSignalSemaphoreValuesRaw();
         return s.address() == 0 ? null : new LongBuffer(s);
     }
 
-    public void pSignalSemaphoreValues(@nullable @unsigned LongBuffer value) {
+    public void pSignalSemaphoreValues(@Nullable @unsigned LongBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoreValuesRaw(s);
     }
