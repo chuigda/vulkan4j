@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkExportSemaphoreWin32HandleInfoKHR(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -58,7 +59,7 @@ public record VkExportSemaphoreWin32HandleInfoKHR(MemorySegment segment) impleme
         segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
     }
 
-    public void pAttributes(@nullable IPointer pointer) {
+    public void pAttributes(@Nullable IPointer pointer) {
         pAttributes(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -83,12 +84,12 @@ public record VkExportSemaphoreWin32HandleInfoKHR(MemorySegment segment) impleme
     /// and use {@link ShortBuffer#reinterpret} to set the size before actually
     /// {@link ShortBuffer#read}ing or
     /// {@link ShortBuffer#write}ing the buffer.
-    public @nullable @unsigned ShortBuffer name() {
+    public @Nullable @unsigned ShortBuffer name() {
         MemorySegment s = nameRaw();
         return s.address() == 0 ? null : new ShortBuffer(s);
     }
 
-    public void name(@nullable @unsigned ShortBuffer value) {
+    public void name(@Nullable @unsigned ShortBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         nameRaw(s);
     }

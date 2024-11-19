@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -49,7 +50,7 @@ public record VkBufferCreateInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -106,12 +107,12 @@ public record VkBufferCreateInfo(MemorySegment segment) implements IPointer {
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pQueueFamilyIndices() {
+    public @Nullable @unsigned IntBuffer pQueueFamilyIndices() {
         MemorySegment s = pQueueFamilyIndicesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pQueueFamilyIndices(@nullable @unsigned IntBuffer value) {
+    public void pQueueFamilyIndices(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueFamilyIndicesRaw(s);
     }

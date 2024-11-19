@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) implements I
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
     /// the buffer.
-    public @nullable @enumtype(VkDescriptorType.class) IntBuffer pDescriptorTypes() {
+    public @Nullable @enumtype(VkDescriptorType.class) IntBuffer pDescriptorTypes() {
         MemorySegment s = pDescriptorTypesRaw();
         if (s.address() == 0) {
             return null;
@@ -56,7 +57,7 @@ public record VkMutableDescriptorTypeListEXT(MemorySegment segment) implements I
         return new IntBuffer(s);
     }
 
-    public void pDescriptorTypes(@nullable @enumtype(VkDescriptorType.class) IntBuffer value) {
+    public void pDescriptorTypes(@Nullable @enumtype(VkDescriptorType.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorTypesRaw(s);
     }

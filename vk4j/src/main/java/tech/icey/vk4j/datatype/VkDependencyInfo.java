@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -50,7 +51,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -78,7 +79,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers, value);
     }
 
-    public @nullable VkMemoryBarrier2 pMemoryBarriers() {
+    public @Nullable VkMemoryBarrier2 pMemoryBarriers() {
         MemorySegment s = pMemoryBarriersRaw();
         if (s.address() == 0) {
             return null;
@@ -88,7 +89,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkMemoryBarrier2[] pMemoryBarriers(int assumedCount) {
+    public @Nullable VkMemoryBarrier2[] pMemoryBarriers(int assumedCount) {
         MemorySegment s = pMemoryBarriersRaw().reinterpret(assumedCount * VkMemoryBarrier2.SIZE);
         VkMemoryBarrier2[] arr = new VkMemoryBarrier2[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -97,7 +98,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pMemoryBarriers(@nullable VkMemoryBarrier2 value) {
+    public void pMemoryBarriers(@Nullable VkMemoryBarrier2 value) {
         pMemoryBarriersRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -117,7 +118,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers, value);
     }
 
-    public @nullable VkBufferMemoryBarrier2 pBufferMemoryBarriers() {
+    public @Nullable VkBufferMemoryBarrier2 pBufferMemoryBarriers() {
         MemorySegment s = pBufferMemoryBarriersRaw();
         if (s.address() == 0) {
             return null;
@@ -127,7 +128,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkBufferMemoryBarrier2[] pBufferMemoryBarriers(int assumedCount) {
+    public @Nullable VkBufferMemoryBarrier2[] pBufferMemoryBarriers(int assumedCount) {
         MemorySegment s = pBufferMemoryBarriersRaw().reinterpret(assumedCount * VkBufferMemoryBarrier2.SIZE);
         VkBufferMemoryBarrier2[] arr = new VkBufferMemoryBarrier2[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -136,7 +137,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pBufferMemoryBarriers(@nullable VkBufferMemoryBarrier2 value) {
+    public void pBufferMemoryBarriers(@Nullable VkBufferMemoryBarrier2 value) {
         pBufferMemoryBarriersRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -156,7 +157,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers, value);
     }
 
-    public @nullable VkImageMemoryBarrier2 pImageMemoryBarriers() {
+    public @Nullable VkImageMemoryBarrier2 pImageMemoryBarriers() {
         MemorySegment s = pImageMemoryBarriersRaw();
         if (s.address() == 0) {
             return null;
@@ -166,7 +167,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkImageMemoryBarrier2[] pImageMemoryBarriers(int assumedCount) {
+    public @Nullable VkImageMemoryBarrier2[] pImageMemoryBarriers(int assumedCount) {
         MemorySegment s = pImageMemoryBarriersRaw().reinterpret(assumedCount * VkImageMemoryBarrier2.SIZE);
         VkImageMemoryBarrier2[] arr = new VkImageMemoryBarrier2[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -175,7 +176,7 @@ public record VkDependencyInfo(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pImageMemoryBarriers(@nullable VkImageMemoryBarrier2 value) {
+    public void pImageMemoryBarriers(@Nullable VkImageMemoryBarrier2 value) {
         pImageMemoryBarriersRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

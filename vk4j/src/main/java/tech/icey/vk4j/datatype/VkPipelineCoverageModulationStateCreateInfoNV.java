@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -48,7 +49,7 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -97,12 +98,12 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(MemorySegment segmen
     /// and use {@link FloatBuffer#reinterpret} to set the size before actually
     /// {@link FloatBuffer#read}ing or
     /// {@link FloatBuffer#write}ing the buffer.
-    public @nullable FloatBuffer pCoverageModulationTable() {
+    public @Nullable FloatBuffer pCoverageModulationTable() {
         MemorySegment s = pCoverageModulationTableRaw();
         return s.address() == 0 ? null : new FloatBuffer(s);
     }
 
-    public void pCoverageModulationTable(@nullable FloatBuffer value) {
+    public void pCoverageModulationTable(@Nullable FloatBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCoverageModulationTableRaw(s);
     }

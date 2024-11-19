@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,11 +47,11 @@ public record VkCopyAccelerationStructureInfoKHR(MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkAccelerationStructureKHR src() {
+    public @Nullable VkAccelerationStructureKHR src() {
         MemorySegment s = segment.get(LAYOUT$src, OFFSET$src);
         if (s.address() == 0) {
             return null;
@@ -58,7 +59,7 @@ public record VkCopyAccelerationStructureInfoKHR(MemorySegment segment) implemen
         return new VkAccelerationStructureKHR(s);
     }
 
-    public void src(@nullable VkAccelerationStructureKHR value) {
+    public void src(@Nullable VkAccelerationStructureKHR value) {
         segment.set(
             LAYOUT$src,
             OFFSET$src,
@@ -66,7 +67,7 @@ public record VkCopyAccelerationStructureInfoKHR(MemorySegment segment) implemen
         );
     }
 
-    public @nullable VkAccelerationStructureKHR dst() {
+    public @Nullable VkAccelerationStructureKHR dst() {
         MemorySegment s = segment.get(LAYOUT$dst, OFFSET$dst);
         if (s.address() == 0) {
             return null;
@@ -74,7 +75,7 @@ public record VkCopyAccelerationStructureInfoKHR(MemorySegment segment) implemen
         return new VkAccelerationStructureKHR(s);
     }
 
-    public void dst(@nullable VkAccelerationStructureKHR value) {
+    public void dst(@Nullable VkAccelerationStructureKHR value) {
         segment.set(
             LAYOUT$dst,
             OFFSET$dst,

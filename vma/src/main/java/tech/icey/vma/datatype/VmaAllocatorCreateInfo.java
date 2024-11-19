@@ -3,6 +3,7 @@ package tech.icey.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -25,7 +26,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @nullable VkPhysicalDevice physicalDevice() {
+    public @Nullable VkPhysicalDevice physicalDevice() {
         MemorySegment s = segment.asSlice(OFFSET$physicalDevice, SIZE$physicalDevice);
         if (s.address() == 0) {
             return null;
@@ -33,7 +34,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
         return new VkPhysicalDevice(s);
     }
 
-    public void physicalDevice(@nullable VkPhysicalDevice value) {
+    public void physicalDevice(@Nullable VkPhysicalDevice value) {
         segment.set(
             LAYOUT$physicalDevice,
             OFFSET$physicalDevice,
@@ -41,7 +42,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
         );
     }
 
-    public @nullable VkDevice device() {
+    public @Nullable VkDevice device() {
         MemorySegment s = segment.asSlice(OFFSET$device, SIZE$device);
         if (s.address() == 0) {
             return null;
@@ -49,7 +50,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
         return new VkDevice(s);
     }
 
-    public void device(@nullable VkDevice value) {
+    public void device(@Nullable VkDevice value) {
         segment.set(
             LAYOUT$device,
             OFFSET$device,
@@ -73,7 +74,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pAllocationCallbacks, OFFSET$pAllocationCallbacks, value);
     }
 
-    public @nullable VkAllocationCallbacks pAllocationCallbacks() {
+    public @Nullable VkAllocationCallbacks pAllocationCallbacks() {
         MemorySegment s = pAllocationCallbacksRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +84,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
 
     /// Note: this function is {@link unsafe} because it's up to caller to provide the correct count of elements.
     @unsafe
-    public @nullable VkAllocationCallbacks[] pAllocationCallbacks(int assumedCount) {
+    public @Nullable VkAllocationCallbacks[] pAllocationCallbacks(int assumedCount) {
         MemorySegment s = pAllocationCallbacksRaw();
         if (s.address() == 0) {
             return null;
@@ -97,7 +98,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
         return ret;
     }
 
-    public void pAllocationCallbacks(@nullable VkAllocationCallbacks value) {
+    public void pAllocationCallbacks(@Nullable VkAllocationCallbacks value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAllocationCallbacksRaw(s);
     }
@@ -110,7 +111,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pDeviceMemoryCallbacks, OFFSET$pDeviceMemoryCallbacks, value);
     }
 
-    public @nullable VmaDeviceMemoryCallbacks pDeviceMemoryCallbacks() {
+    public @Nullable VmaDeviceMemoryCallbacks pDeviceMemoryCallbacks() {
         MemorySegment s = pDeviceMemoryCallbacksRaw();
         if (s.address() == 0) {
             return null;
@@ -120,7 +121,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
 
     /// Note: this function is {@link unsafe} because it's up to caller to provide the correct count of elements.
     @unsafe
-    public @nullable VmaDeviceMemoryCallbacks[] pDeviceMemoryCallbacks(int assumedCount) {
+    public @Nullable VmaDeviceMemoryCallbacks[] pDeviceMemoryCallbacks(int assumedCount) {
         MemorySegment s = pDeviceMemoryCallbacksRaw();
         if (s.address() == 0) {
             return null;
@@ -134,7 +135,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
         return ret;
     }
 
-    public void pDeviceMemoryCallbacks(@nullable VmaDeviceMemoryCallbacks value) {
+    public void pDeviceMemoryCallbacks(@Nullable VmaDeviceMemoryCallbacks value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDeviceMemoryCallbacksRaw(s);
     }
@@ -151,7 +152,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
     /// {@link LongBuffer#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongBuffer#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @nullable @unsigned LongBuffer pHeapSizeLimit() {
+    public @Nullable @unsigned LongBuffer pHeapSizeLimit() {
         MemorySegment s = pHeapSizeLimitRaw();
         if (s.address() == 0) {
             return null;
@@ -159,7 +160,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
         return new LongBuffer(s);
     }
 
-    public void pHeapSizeLimit(@nullable @unsigned LongBuffer value) {
+    public void pHeapSizeLimit(@Nullable @unsigned LongBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pHeapSizeLimitRaw(s);
     }
@@ -172,7 +173,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pVulkanFunctions, OFFSET$pVulkanFunctions, value);
     }
 
-    public @nullable VmaVulkanFunctions pVulkanFunctions() {
+    public @Nullable VmaVulkanFunctions pVulkanFunctions() {
         MemorySegment s = pVulkanFunctionsRaw();
         if (s.address() == 0) {
             return null;
@@ -182,7 +183,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
 
     /// Note: this function is {@link unsafe} because it's up to caller to provide the correct count of elements.
     @unsafe
-    public @nullable VmaVulkanFunctions[] pVulkanFunctions(int assumedCount) {
+    public @Nullable VmaVulkanFunctions[] pVulkanFunctions(int assumedCount) {
         MemorySegment s = pVulkanFunctionsRaw();
         if (s.address() == 0) {
             return null;
@@ -196,12 +197,12 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
         return ret;
     }
 
-    public void pVulkanFunctions(@nullable VmaVulkanFunctions value) {
+    public void pVulkanFunctions(@Nullable VmaVulkanFunctions value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVulkanFunctionsRaw(s);
     }
 
-    public @nullable VkInstance instance() {
+    public @Nullable VkInstance instance() {
         MemorySegment s = segment.asSlice(OFFSET$instance, SIZE$instance);
         if (s.address() == 0) {
             return null;
@@ -209,7 +210,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
         return new VkInstance(s);
     }
 
-    public void instance(@nullable VkInstance value) {
+    public void instance(@Nullable VkInstance value) {
         segment.set(
             LAYOUT$instance,
             OFFSET$instance,
@@ -237,7 +238,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
     /// {@link IntBuffer#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntBuffer#reinterpret} to set the size before actually reading from
     /// or writing to the buffer.
-    public @nullable @enumtype(VkExternalMemoryHandleTypeFlags.class) IntBuffer pTypeExternalMemoryHandleTypes() {
+    public @Nullable @enumtype(VkExternalMemoryHandleTypeFlags.class) IntBuffer pTypeExternalMemoryHandleTypes() {
         MemorySegment s = pTypeExternalMemoryHandleTypesRaw();
         if (s.address() == 0) {
             return null;
@@ -245,7 +246,7 @@ public record VmaAllocatorCreateInfo(MemorySegment segment) implements IPointer 
         return new IntBuffer(s);
     }
 
-    public void pTypeExternalMemoryHandleTypes(@nullable @enumtype(VkExternalMemoryHandleTypeFlags.class) IntBuffer value) {
+    public void pTypeExternalMemoryHandleTypes(@Nullable @enumtype(VkExternalMemoryHandleTypeFlags.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTypeExternalMemoryHandleTypesRaw(s);
     }

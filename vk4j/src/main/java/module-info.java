@@ -6,6 +6,6 @@ module tech.icey.vk4j {
     exports tech.icey.vk4j.handle;
     exports tech.icey.vk4j.enumtype;
 
-    requires java.base;
     requires tech.icey.panama;
+    requires org.jetbrains.annotations;
 }

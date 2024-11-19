@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,11 +46,11 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkQueue queue() {
+    public @Nullable VkQueue queue() {
         MemorySegment s = segment.get(LAYOUT$queue, OFFSET$queue);
         if (s.address() == 0) {
             return null;
@@ -57,7 +58,7 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) implements
         return new VkQueue(s);
     }
 
-    public void queue(@nullable VkQueue value) {
+    public void queue(@Nullable VkQueue value) {
         segment.set(
             LAYOUT$queue,
             OFFSET$queue,
@@ -73,7 +74,7 @@ public record VkExportMetalCommandQueueInfoEXT(MemorySegment segment) implements
         segment.set(LAYOUT$mtlCommandQueue, OFFSET$mtlCommandQueue, value);
     }
 
-    public void mtlCommandQueue(@nullable IPointer pointer) {
+    public void mtlCommandQueue(@Nullable IPointer pointer) {
         mtlCommandQueue(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 

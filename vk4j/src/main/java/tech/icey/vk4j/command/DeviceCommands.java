@@ -3,6 +3,7 @@ package tech.icey.vk4j.command;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.RawFunctionLoader;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -3510,1028 +3511,1028 @@ public final class DeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkRenderingInputAttachmentIndexInfoKHR.LAYOUT)
     );
 
-    public final @nullable MemorySegment SEGMENT$vkDestroyDevice;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceQueue;
-    public final @nullable MemorySegment SEGMENT$vkQueueSubmit;
-    public final @nullable MemorySegment SEGMENT$vkQueueWaitIdle;
-    public final @nullable MemorySegment SEGMENT$vkDeviceWaitIdle;
-    public final @nullable MemorySegment SEGMENT$vkAllocateMemory;
-    public final @nullable MemorySegment SEGMENT$vkFreeMemory;
-    public final @nullable MemorySegment SEGMENT$vkMapMemory;
-    public final @nullable MemorySegment SEGMENT$vkUnmapMemory;
-    public final @nullable MemorySegment SEGMENT$vkFlushMappedMemoryRanges;
-    public final @nullable MemorySegment SEGMENT$vkInvalidateMappedMemoryRanges;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceMemoryCommitment;
-    public final @nullable MemorySegment SEGMENT$vkGetBufferMemoryRequirements;
-    public final @nullable MemorySegment SEGMENT$vkBindBufferMemory;
-    public final @nullable MemorySegment SEGMENT$vkGetImageMemoryRequirements;
-    public final @nullable MemorySegment SEGMENT$vkBindImageMemory;
-    public final @nullable MemorySegment SEGMENT$vkGetImageSparseMemoryRequirements;
-    public final @nullable MemorySegment SEGMENT$vkQueueBindSparse;
-    public final @nullable MemorySegment SEGMENT$vkCreateFence;
-    public final @nullable MemorySegment SEGMENT$vkDestroyFence;
-    public final @nullable MemorySegment SEGMENT$vkResetFences;
-    public final @nullable MemorySegment SEGMENT$vkGetFenceStatus;
-    public final @nullable MemorySegment SEGMENT$vkWaitForFences;
-    public final @nullable MemorySegment SEGMENT$vkCreateSemaphore;
-    public final @nullable MemorySegment SEGMENT$vkDestroySemaphore;
-    public final @nullable MemorySegment SEGMENT$vkCreateEvent;
-    public final @nullable MemorySegment SEGMENT$vkDestroyEvent;
-    public final @nullable MemorySegment SEGMENT$vkGetEventStatus;
-    public final @nullable MemorySegment SEGMENT$vkSetEvent;
-    public final @nullable MemorySegment SEGMENT$vkResetEvent;
-    public final @nullable MemorySegment SEGMENT$vkCreateQueryPool;
-    public final @nullable MemorySegment SEGMENT$vkDestroyQueryPool;
-    public final @nullable MemorySegment SEGMENT$vkGetQueryPoolResults;
-    public final @nullable MemorySegment SEGMENT$vkResetQueryPool;
-    public final @nullable MemorySegment SEGMENT$vkCreateBuffer;
-    public final @nullable MemorySegment SEGMENT$vkDestroyBuffer;
-    public final @nullable MemorySegment SEGMENT$vkCreateBufferView;
-    public final @nullable MemorySegment SEGMENT$vkDestroyBufferView;
-    public final @nullable MemorySegment SEGMENT$vkCreateImage;
-    public final @nullable MemorySegment SEGMENT$vkDestroyImage;
-    public final @nullable MemorySegment SEGMENT$vkGetImageSubresourceLayout;
-    public final @nullable MemorySegment SEGMENT$vkCreateImageView;
-    public final @nullable MemorySegment SEGMENT$vkDestroyImageView;
-    public final @nullable MemorySegment SEGMENT$vkCreateShaderModule;
-    public final @nullable MemorySegment SEGMENT$vkDestroyShaderModule;
-    public final @nullable MemorySegment SEGMENT$vkCreatePipelineCache;
-    public final @nullable MemorySegment SEGMENT$vkDestroyPipelineCache;
-    public final @nullable MemorySegment SEGMENT$vkGetPipelineCacheData;
-    public final @nullable MemorySegment SEGMENT$vkMergePipelineCaches;
-    public final @nullable MemorySegment SEGMENT$vkCreatePipelineBinariesKHR;
-    public final @nullable MemorySegment SEGMENT$vkDestroyPipelineBinaryKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPipelineKeyKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPipelineBinaryDataKHR;
-    public final @nullable MemorySegment SEGMENT$vkReleaseCapturedPipelineDataKHR;
-    public final @nullable MemorySegment SEGMENT$vkCreateGraphicsPipelines;
-    public final @nullable MemorySegment SEGMENT$vkCreateComputePipelines;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI;
-    public final @nullable MemorySegment SEGMENT$vkDestroyPipeline;
-    public final @nullable MemorySegment SEGMENT$vkCreatePipelineLayout;
-    public final @nullable MemorySegment SEGMENT$vkDestroyPipelineLayout;
-    public final @nullable MemorySegment SEGMENT$vkCreateSampler;
-    public final @nullable MemorySegment SEGMENT$vkDestroySampler;
-    public final @nullable MemorySegment SEGMENT$vkCreateDescriptorSetLayout;
-    public final @nullable MemorySegment SEGMENT$vkDestroyDescriptorSetLayout;
-    public final @nullable MemorySegment SEGMENT$vkCreateDescriptorPool;
-    public final @nullable MemorySegment SEGMENT$vkDestroyDescriptorPool;
-    public final @nullable MemorySegment SEGMENT$vkResetDescriptorPool;
-    public final @nullable MemorySegment SEGMENT$vkAllocateDescriptorSets;
-    public final @nullable MemorySegment SEGMENT$vkFreeDescriptorSets;
-    public final @nullable MemorySegment SEGMENT$vkUpdateDescriptorSets;
-    public final @nullable MemorySegment SEGMENT$vkCreateFramebuffer;
-    public final @nullable MemorySegment SEGMENT$vkDestroyFramebuffer;
-    public final @nullable MemorySegment SEGMENT$vkCreateRenderPass;
-    public final @nullable MemorySegment SEGMENT$vkDestroyRenderPass;
-    public final @nullable MemorySegment SEGMENT$vkGetRenderAreaGranularity;
-    public final @nullable MemorySegment SEGMENT$vkGetRenderingAreaGranularityKHR;
-    public final @nullable MemorySegment SEGMENT$vkCreateCommandPool;
-    public final @nullable MemorySegment SEGMENT$vkDestroyCommandPool;
-    public final @nullable MemorySegment SEGMENT$vkResetCommandPool;
-    public final @nullable MemorySegment SEGMENT$vkAllocateCommandBuffers;
-    public final @nullable MemorySegment SEGMENT$vkFreeCommandBuffers;
-    public final @nullable MemorySegment SEGMENT$vkBeginCommandBuffer;
-    public final @nullable MemorySegment SEGMENT$vkEndCommandBuffer;
-    public final @nullable MemorySegment SEGMENT$vkResetCommandBuffer;
-    public final @nullable MemorySegment SEGMENT$vkCmdBindPipeline;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetAttachmentFeedbackLoopEnableEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetViewport;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetScissor;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetLineWidth;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDepthBias;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetBlendConstants;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDepthBounds;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetStencilCompareMask;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetStencilWriteMask;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetStencilReference;
-    public final @nullable MemorySegment SEGMENT$vkCmdBindDescriptorSets;
-    public final @nullable MemorySegment SEGMENT$vkCmdBindIndexBuffer;
-    public final @nullable MemorySegment SEGMENT$vkCmdBindVertexBuffers;
-    public final @nullable MemorySegment SEGMENT$vkCmdDraw;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawIndexed;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawMultiEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawMultiIndexedEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawIndirect;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawIndexedIndirect;
-    public final @nullable MemorySegment SEGMENT$vkCmdDispatch;
-    public final @nullable MemorySegment SEGMENT$vkCmdDispatchIndirect;
-    public final @nullable MemorySegment SEGMENT$vkCmdSubpassShadingHUAWEI;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawClusterHUAWEI;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawClusterIndirectHUAWEI;
-    public final @nullable MemorySegment SEGMENT$vkCmdUpdatePipelineIndirectBufferNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyBuffer;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyImage;
-    public final @nullable MemorySegment SEGMENT$vkCmdBlitImage;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyBufferToImage;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyImageToBuffer;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyMemoryIndirectNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyMemoryToImageIndirectNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdUpdateBuffer;
-    public final @nullable MemorySegment SEGMENT$vkCmdFillBuffer;
-    public final @nullable MemorySegment SEGMENT$vkCmdClearColorImage;
-    public final @nullable MemorySegment SEGMENT$vkCmdClearDepthStencilImage;
-    public final @nullable MemorySegment SEGMENT$vkCmdClearAttachments;
-    public final @nullable MemorySegment SEGMENT$vkCmdResolveImage;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetEvent;
-    public final @nullable MemorySegment SEGMENT$vkCmdResetEvent;
-    public final @nullable MemorySegment SEGMENT$vkCmdWaitEvents;
-    public final @nullable MemorySegment SEGMENT$vkCmdPipelineBarrier;
-    public final @nullable MemorySegment SEGMENT$vkCmdBeginQuery;
-    public final @nullable MemorySegment SEGMENT$vkCmdEndQuery;
-    public final @nullable MemorySegment SEGMENT$vkCmdBeginConditionalRenderingEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdEndConditionalRenderingEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdResetQueryPool;
-    public final @nullable MemorySegment SEGMENT$vkCmdWriteTimestamp;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyQueryPoolResults;
-    public final @nullable MemorySegment SEGMENT$vkCmdPushConstants;
-    public final @nullable MemorySegment SEGMENT$vkCmdBeginRenderPass;
-    public final @nullable MemorySegment SEGMENT$vkCmdNextSubpass;
-    public final @nullable MemorySegment SEGMENT$vkCmdEndRenderPass;
-    public final @nullable MemorySegment SEGMENT$vkCmdExecuteCommands;
-    public final @nullable MemorySegment SEGMENT$vkCreateSharedSwapchainsKHR;
-    public final @nullable MemorySegment SEGMENT$vkCreateSwapchainKHR;
-    public final @nullable MemorySegment SEGMENT$vkDestroySwapchainKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetSwapchainImagesKHR;
-    public final @nullable MemorySegment SEGMENT$vkAcquireNextImageKHR;
-    public final @nullable MemorySegment SEGMENT$vkQueuePresentKHR;
-    public final @nullable MemorySegment SEGMENT$vkDebugMarkerSetObjectNameEXT;
-    public final @nullable MemorySegment SEGMENT$vkDebugMarkerSetObjectTagEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdDebugMarkerBeginEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdDebugMarkerEndEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdDebugMarkerInsertEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetMemoryWin32HandleNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdExecuteGeneratedCommandsNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdPreprocessGeneratedCommandsNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdBindPipelineShaderGroupNV;
-    public final @nullable MemorySegment SEGMENT$vkGetGeneratedCommandsMemoryRequirementsNV;
-    public final @nullable MemorySegment SEGMENT$vkCreateIndirectCommandsLayoutNV;
-    public final @nullable MemorySegment SEGMENT$vkDestroyIndirectCommandsLayoutNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdPushDescriptorSetKHR;
-    public final @nullable MemorySegment SEGMENT$vkTrimCommandPool;
-    public final @nullable MemorySegment SEGMENT$vkGetMemoryWin32HandleKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetMemoryWin32HandlePropertiesKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetMemoryFdKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetMemoryFdPropertiesKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetMemoryZirconHandleFUCHSIA;
-    public final @nullable MemorySegment SEGMENT$vkGetMemoryZirconHandlePropertiesFUCHSIA;
-    public final @nullable MemorySegment SEGMENT$vkGetMemoryRemoteAddressNV;
-    public final @nullable MemorySegment SEGMENT$vkGetMemorySciBufNV;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSciBufAttributesNV;
-    public final @nullable MemorySegment SEGMENT$vkGetSemaphoreWin32HandleKHR;
-    public final @nullable MemorySegment SEGMENT$vkImportSemaphoreWin32HandleKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetSemaphoreFdKHR;
-    public final @nullable MemorySegment SEGMENT$vkImportSemaphoreFdKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetSemaphoreZirconHandleFUCHSIA;
-    public final @nullable MemorySegment SEGMENT$vkImportSemaphoreZirconHandleFUCHSIA;
-    public final @nullable MemorySegment SEGMENT$vkGetFenceWin32HandleKHR;
-    public final @nullable MemorySegment SEGMENT$vkImportFenceWin32HandleKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetFenceFdKHR;
-    public final @nullable MemorySegment SEGMENT$vkImportFenceFdKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetFenceSciSyncFenceNV;
-    public final @nullable MemorySegment SEGMENT$vkGetFenceSciSyncObjNV;
-    public final @nullable MemorySegment SEGMENT$vkImportFenceSciSyncFenceNV;
-    public final @nullable MemorySegment SEGMENT$vkImportFenceSciSyncObjNV;
-    public final @nullable MemorySegment SEGMENT$vkGetSemaphoreSciSyncObjNV;
-    public final @nullable MemorySegment SEGMENT$vkImportSemaphoreSciSyncObjNV;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSciSyncAttributesNV;
-    public final @nullable MemorySegment SEGMENT$vkCreateSemaphoreSciSyncPoolNV;
-    public final @nullable MemorySegment SEGMENT$vkDestroySemaphoreSciSyncPoolNV;
-    public final @nullable MemorySegment SEGMENT$vkAcquireWinrtDisplayNV;
-    public final @nullable MemorySegment SEGMENT$vkGetWinrtDisplayNV;
-    public final @nullable MemorySegment SEGMENT$vkDisplayPowerControlEXT;
-    public final @nullable MemorySegment SEGMENT$vkRegisterDeviceEventEXT;
-    public final @nullable MemorySegment SEGMENT$vkRegisterDisplayEventEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetSwapchainCounterEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceGroupPeerMemoryFeatures;
-    public final @nullable MemorySegment SEGMENT$vkBindBufferMemory2;
-    public final @nullable MemorySegment SEGMENT$vkBindImageMemory2;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDeviceMask;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceGroupPresentCapabilitiesKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceGroupSurfacePresentModesKHR;
-    public final @nullable MemorySegment SEGMENT$vkAcquireNextImage2KHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdDispatchBase;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDevicePresentRectanglesKHR;
-    public final @nullable MemorySegment SEGMENT$vkCreateDescriptorUpdateTemplate;
-    public final @nullable MemorySegment SEGMENT$vkDestroyDescriptorUpdateTemplate;
-    public final @nullable MemorySegment SEGMENT$vkUpdateDescriptorSetWithTemplate;
-    public final @nullable MemorySegment SEGMENT$vkCmdPushDescriptorSetWithTemplateKHR;
-    public final @nullable MemorySegment SEGMENT$vkSetHdrMetadataEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetSwapchainStatusKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetRefreshCycleDurationGOOGLE;
-    public final @nullable MemorySegment SEGMENT$vkGetPastPresentationTimingGOOGLE;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetViewportWScalingNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDiscardRectangleEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDiscardRectangleEnableEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDiscardRectangleModeEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetSampleLocationsEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceMultisamplePropertiesEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetBufferMemoryRequirements2;
-    public final @nullable MemorySegment SEGMENT$vkGetImageMemoryRequirements2;
-    public final @nullable MemorySegment SEGMENT$vkGetImageSparseMemoryRequirements2;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceBufferMemoryRequirements;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceImageMemoryRequirements;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceImageSparseMemoryRequirements;
-    public final @nullable MemorySegment SEGMENT$vkCreateSamplerYcbcrConversion;
-    public final @nullable MemorySegment SEGMENT$vkDestroySamplerYcbcrConversion;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceQueue2;
-    public final @nullable MemorySegment SEGMENT$vkCreateValidationCacheEXT;
-    public final @nullable MemorySegment SEGMENT$vkDestroyValidationCacheEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetValidationCacheDataEXT;
-    public final @nullable MemorySegment SEGMENT$vkMergeValidationCachesEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetDescriptorSetLayoutSupport;
-    public final @nullable MemorySegment SEGMENT$vkGetShaderInfoAMD;
-    public final @nullable MemorySegment SEGMENT$vkSetLocalDimmingAMD;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetCalibratedTimestampsKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetMemoryHostPointerPropertiesEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdWriteBufferMarkerAMD;
-    public final @nullable MemorySegment SEGMENT$vkCreateRenderPass2;
-    public final @nullable MemorySegment SEGMENT$vkCmdBeginRenderPass2;
-    public final @nullable MemorySegment SEGMENT$vkCmdNextSubpass2;
-    public final @nullable MemorySegment SEGMENT$vkCmdEndRenderPass2;
-    public final @nullable MemorySegment SEGMENT$vkGetSemaphoreCounterValue;
-    public final @nullable MemorySegment SEGMENT$vkWaitSemaphores;
-    public final @nullable MemorySegment SEGMENT$vkSignalSemaphore;
-    public final @nullable MemorySegment SEGMENT$vkGetAndroidHardwareBufferPropertiesANDROID;
-    public final @nullable MemorySegment SEGMENT$vkGetMemoryAndroidHardwareBufferANDROID;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawIndirectCount;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawIndexedIndirectCount;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetCheckpointNV;
-    public final @nullable MemorySegment SEGMENT$vkGetQueueCheckpointDataNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdBindTransformFeedbackBuffersEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdBeginTransformFeedbackEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdEndTransformFeedbackEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdBeginQueryIndexedEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdEndQueryIndexedEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawIndirectByteCountEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetExclusiveScissorNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetExclusiveScissorEnableNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdBindShadingRateImageNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetViewportShadingRatePaletteNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetCoarseSampleOrderNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawMeshTasksNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawMeshTasksIndirectNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawMeshTasksIndirectCountNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawMeshTasksEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawMeshTasksIndirectEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdDrawMeshTasksIndirectCountEXT;
-    public final @nullable MemorySegment SEGMENT$vkCompileDeferredNV;
-    public final @nullable MemorySegment SEGMENT$vkCreateAccelerationStructureNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdBindInvocationMaskHUAWEI;
-    public final @nullable MemorySegment SEGMENT$vkDestroyAccelerationStructureKHR;
-    public final @nullable MemorySegment SEGMENT$vkDestroyAccelerationStructureNV;
-    public final @nullable MemorySegment SEGMENT$vkGetAccelerationStructureMemoryRequirementsNV;
-    public final @nullable MemorySegment SEGMENT$vkBindAccelerationStructureMemoryNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyAccelerationStructureNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyAccelerationStructureKHR;
-    public final @nullable MemorySegment SEGMENT$vkCopyAccelerationStructureKHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyAccelerationStructureToMemoryKHR;
-    public final @nullable MemorySegment SEGMENT$vkCopyAccelerationStructureToMemoryKHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyMemoryToAccelerationStructureKHR;
-    public final @nullable MemorySegment SEGMENT$vkCopyMemoryToAccelerationStructureKHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdWriteAccelerationStructuresPropertiesKHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdWriteAccelerationStructuresPropertiesNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdBuildAccelerationStructureNV;
-    public final @nullable MemorySegment SEGMENT$vkWriteAccelerationStructuresPropertiesKHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdTraceRaysKHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdTraceRaysNV;
-    public final @nullable MemorySegment SEGMENT$vkGetRayTracingShaderGroupHandlesKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetRayTracingCaptureReplayShaderGroupHandlesKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetAccelerationStructureHandleNV;
-    public final @nullable MemorySegment SEGMENT$vkCreateRayTracingPipelinesNV;
-    public final @nullable MemorySegment SEGMENT$vkCreateRayTracingPipelinesKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceCooperativeMatrixPropertiesNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdTraceRaysIndirectKHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdTraceRaysIndirect2KHR;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceAccelerationStructureCompatibilityKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetRayTracingShaderGroupStackSizeKHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetRayTracingPipelineStackSizeKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetImageViewHandleNVX;
-    public final @nullable MemorySegment SEGMENT$vkGetImageViewAddressNVX;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfacePresentModes2EXT;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceGroupSurfacePresentModes2EXT;
-    public final @nullable MemorySegment SEGMENT$vkAcquireFullScreenExclusiveModeEXT;
-    public final @nullable MemorySegment SEGMENT$vkReleaseFullScreenExclusiveModeEXT;
-    public final @nullable MemorySegment SEGMENT$vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR;
-    public final @nullable MemorySegment SEGMENT$vkAcquireProfilingLockKHR;
-    public final @nullable MemorySegment SEGMENT$vkReleaseProfilingLockKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetImageDrmFormatModifierPropertiesEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetBufferOpaqueCaptureAddress;
-    public final @nullable MemorySegment SEGMENT$vkGetBufferDeviceAddress;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV;
-    public final @nullable MemorySegment SEGMENT$vkInitializePerformanceApiINTEL;
-    public final @nullable MemorySegment SEGMENT$vkUninitializePerformanceApiINTEL;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetPerformanceMarkerINTEL;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetPerformanceStreamMarkerINTEL;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetPerformanceOverrideINTEL;
-    public final @nullable MemorySegment SEGMENT$vkAcquirePerformanceConfigurationINTEL;
-    public final @nullable MemorySegment SEGMENT$vkReleasePerformanceConfigurationINTEL;
-    public final @nullable MemorySegment SEGMENT$vkQueueSetPerformanceConfigurationINTEL;
-    public final @nullable MemorySegment SEGMENT$vkGetPerformanceParameterINTEL;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceMemoryOpaqueCaptureAddress;
-    public final @nullable MemorySegment SEGMENT$vkGetPipelineExecutablePropertiesKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPipelineExecutableStatisticsKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPipelineExecutableInternalRepresentationsKHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetLineStippleKHR;
-    public final @nullable MemorySegment SEGMENT$vkCreateAccelerationStructureKHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdBuildAccelerationStructuresKHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdBuildAccelerationStructuresIndirectKHR;
-    public final @nullable MemorySegment SEGMENT$vkBuildAccelerationStructuresKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetAccelerationStructureDeviceAddressKHR;
-    public final @nullable MemorySegment SEGMENT$vkCreateDeferredOperationKHR;
-    public final @nullable MemorySegment SEGMENT$vkDestroyDeferredOperationKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetDeferredOperationMaxConcurrencyKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetDeferredOperationResultKHR;
-    public final @nullable MemorySegment SEGMENT$vkDeferredOperationJoinKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPipelineIndirectMemoryRequirementsNV;
-    public final @nullable MemorySegment SEGMENT$vkGetPipelineIndirectDeviceAddressNV;
-    public final @nullable MemorySegment SEGMENT$vkAntiLagUpdateAMD;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetCullMode;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetFrontFace;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetPrimitiveTopology;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetViewportWithCount;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetScissorWithCount;
-    public final @nullable MemorySegment SEGMENT$vkCmdBindIndexBuffer2KHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdBindVertexBuffers2;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDepthTestEnable;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDepthWriteEnable;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDepthCompareOp;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDepthBoundsTestEnable;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetStencilTestEnable;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetStencilOp;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetPatchControlPointsEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetRasterizerDiscardEnable;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDepthBiasEnable;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetLogicOpEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetPrimitiveRestartEnable;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetTessellationDomainOriginEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDepthClampEnableEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetPolygonModeEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetRasterizationSamplesEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetSampleMaskEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetAlphaToCoverageEnableEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetAlphaToOneEnableEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetLogicOpEnableEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetColorBlendEnableEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetColorBlendEquationEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetColorWriteMaskEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetRasterizationStreamEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetConservativeRasterizationModeEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetExtraPrimitiveOverestimationSizeEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDepthClipEnableEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetSampleLocationsEnableEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetColorBlendAdvancedEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetProvokingVertexModeEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetLineRasterizationModeEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetLineStippleEnableEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDepthClipNegativeOneToOneEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetViewportWScalingEnableNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetViewportSwizzleNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetCoverageToColorEnableNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetCoverageToColorLocationNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetCoverageModulationModeNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetCoverageModulationTableEnableNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetCoverageModulationTableNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetShadingRateImageEnableNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetCoverageReductionModeNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetRepresentativeFragmentTestEnableNV;
-    public final @nullable MemorySegment SEGMENT$vkCreatePrivateDataSlot;
-    public final @nullable MemorySegment SEGMENT$vkDestroyPrivateDataSlot;
-    public final @nullable MemorySegment SEGMENT$vkSetPrivateData;
-    public final @nullable MemorySegment SEGMENT$vkGetPrivateData;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyBuffer2;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyImage2;
-    public final @nullable MemorySegment SEGMENT$vkCmdBlitImage2;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyBufferToImage2;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyImageToBuffer2;
-    public final @nullable MemorySegment SEGMENT$vkCmdResolveImage2;
-    public final @nullable MemorySegment SEGMENT$vkCmdRefreshObjectsKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceRefreshableObjectTypesKHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetFragmentShadingRateKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceFragmentShadingRatesKHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetFragmentShadingRateEnumNV;
-    public final @nullable MemorySegment SEGMENT$vkGetAccelerationStructureBuildSizesKHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetVertexInputEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetColorWriteEnableEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetEvent2;
-    public final @nullable MemorySegment SEGMENT$vkCmdResetEvent2;
-    public final @nullable MemorySegment SEGMENT$vkCmdWaitEvents2;
-    public final @nullable MemorySegment SEGMENT$vkCmdPipelineBarrier2;
-    public final @nullable MemorySegment SEGMENT$vkQueueSubmit2;
-    public final @nullable MemorySegment SEGMENT$vkCmdWriteTimestamp2;
-    public final @nullable MemorySegment SEGMENT$vkCmdWriteBufferMarker2AMD;
-    public final @nullable MemorySegment SEGMENT$vkGetQueueCheckpointData2NV;
-    public final @nullable MemorySegment SEGMENT$vkCopyMemoryToImageEXT;
-    public final @nullable MemorySegment SEGMENT$vkCopyImageToMemoryEXT;
-    public final @nullable MemorySegment SEGMENT$vkCopyImageToImageEXT;
-    public final @nullable MemorySegment SEGMENT$vkTransitionImageLayoutEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdDecompressMemoryNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdDecompressMemoryIndirectCountNV;
-    public final @nullable MemorySegment SEGMENT$vkCreateCuModuleNVX;
-    public final @nullable MemorySegment SEGMENT$vkCreateCuFunctionNVX;
-    public final @nullable MemorySegment SEGMENT$vkDestroyCuModuleNVX;
-    public final @nullable MemorySegment SEGMENT$vkDestroyCuFunctionNVX;
-    public final @nullable MemorySegment SEGMENT$vkCmdCuLaunchKernelNVX;
-    public final @nullable MemorySegment SEGMENT$vkGetDescriptorSetLayoutSizeEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetDescriptorSetLayoutBindingOffsetEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetDescriptorEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdBindDescriptorBuffersEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDescriptorBufferOffsetsEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdBindDescriptorBufferEmbeddedSamplersEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetBufferOpaqueCaptureDescriptorDataEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetImageOpaqueCaptureDescriptorDataEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetImageViewOpaqueCaptureDescriptorDataEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetSamplerOpaqueCaptureDescriptorDataEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT;
-    public final @nullable MemorySegment SEGMENT$vkSetDeviceMemoryPriorityEXT;
-    public final @nullable MemorySegment SEGMENT$vkWaitForPresentKHR;
-    public final @nullable MemorySegment SEGMENT$vkCreateBufferCollectionFUCHSIA;
-    public final @nullable MemorySegment SEGMENT$vkSetBufferCollectionBufferConstraintsFUCHSIA;
-    public final @nullable MemorySegment SEGMENT$vkSetBufferCollectionImageConstraintsFUCHSIA;
-    public final @nullable MemorySegment SEGMENT$vkDestroyBufferCollectionFUCHSIA;
-    public final @nullable MemorySegment SEGMENT$vkGetBufferCollectionPropertiesFUCHSIA;
-    public final @nullable MemorySegment SEGMENT$vkCreateCudaModuleNV;
-    public final @nullable MemorySegment SEGMENT$vkGetCudaModuleCacheNV;
-    public final @nullable MemorySegment SEGMENT$vkCreateCudaFunctionNV;
-    public final @nullable MemorySegment SEGMENT$vkDestroyCudaModuleNV;
-    public final @nullable MemorySegment SEGMENT$vkDestroyCudaFunctionNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdCudaLaunchKernelNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdBeginRendering;
-    public final @nullable MemorySegment SEGMENT$vkCmdEndRendering;
-    public final @nullable MemorySegment SEGMENT$vkGetDescriptorSetLayoutHostMappingInfoVALVE;
-    public final @nullable MemorySegment SEGMENT$vkGetDescriptorSetHostMappingVALVE;
-    public final @nullable MemorySegment SEGMENT$vkCreateMicromapEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdBuildMicromapsEXT;
-    public final @nullable MemorySegment SEGMENT$vkBuildMicromapsEXT;
-    public final @nullable MemorySegment SEGMENT$vkDestroyMicromapEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyMicromapEXT;
-    public final @nullable MemorySegment SEGMENT$vkCopyMicromapEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyMicromapToMemoryEXT;
-    public final @nullable MemorySegment SEGMENT$vkCopyMicromapToMemoryEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdCopyMemoryToMicromapEXT;
-    public final @nullable MemorySegment SEGMENT$vkCopyMemoryToMicromapEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdWriteMicromapsPropertiesEXT;
-    public final @nullable MemorySegment SEGMENT$vkWriteMicromapsPropertiesEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceMicromapCompatibilityEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetMicromapBuildSizesEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetShaderModuleIdentifierEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetShaderModuleCreateInfoIdentifierEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetImageSubresourceLayout2KHR;
-    public final @nullable MemorySegment SEGMENT$vkGetPipelinePropertiesEXT;
-    public final @nullable MemorySegment SEGMENT$vkExportMetalObjectsEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetFramebufferTilePropertiesQCOM;
-    public final @nullable MemorySegment SEGMENT$vkGetDynamicRenderingTilePropertiesQCOM;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceOpticalFlowImageFormatsNV;
-    public final @nullable MemorySegment SEGMENT$vkCreateOpticalFlowSessionNV;
-    public final @nullable MemorySegment SEGMENT$vkDestroyOpticalFlowSessionNV;
-    public final @nullable MemorySegment SEGMENT$vkBindOpticalFlowSessionImageNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdOpticalFlowExecuteNV;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceFaultInfoEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDepthBias2EXT;
-    public final @nullable MemorySegment SEGMENT$vkReleaseSwapchainImagesEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceImageSubresourceLayoutKHR;
-    public final @nullable MemorySegment SEGMENT$vkMapMemory2KHR;
-    public final @nullable MemorySegment SEGMENT$vkUnmapMemory2KHR;
-    public final @nullable MemorySegment SEGMENT$vkCreateShadersEXT;
-    public final @nullable MemorySegment SEGMENT$vkDestroyShaderEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetShaderBinaryDataEXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdBindShadersEXT;
-    public final @nullable MemorySegment SEGMENT$vkGetScreenBufferPropertiesQNX;
-    public final @nullable MemorySegment SEGMENT$vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR;
-    public final @nullable MemorySegment SEGMENT$vkGetExecutionGraphPipelineScratchSizeAMDX;
-    public final @nullable MemorySegment SEGMENT$vkGetExecutionGraphPipelineNodeIndexAMDX;
-    public final @nullable MemorySegment SEGMENT$vkCreateExecutionGraphPipelinesAMDX;
-    public final @nullable MemorySegment SEGMENT$vkCmdInitializeGraphScratchMemoryAMDX;
-    public final @nullable MemorySegment SEGMENT$vkCmdDispatchGraphAMDX;
-    public final @nullable MemorySegment SEGMENT$vkCmdDispatchGraphIndirectAMDX;
-    public final @nullable MemorySegment SEGMENT$vkCmdDispatchGraphIndirectCountAMDX;
-    public final @nullable MemorySegment SEGMENT$vkCmdBindDescriptorSets2KHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdPushConstants2KHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdPushDescriptorSet2KHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdPushDescriptorSetWithTemplate2KHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetDescriptorBufferOffsets2EXT;
-    public final @nullable MemorySegment SEGMENT$vkCmdBindDescriptorBufferEmbeddedSamplers2EXT;
-    public final @nullable MemorySegment SEGMENT$vkSetLatencySleepModeNV;
-    public final @nullable MemorySegment SEGMENT$vkLatencySleepNV;
-    public final @nullable MemorySegment SEGMENT$vkSetLatencyMarkerNV;
-    public final @nullable MemorySegment SEGMENT$vkGetLatencyTimingsNV;
-    public final @nullable MemorySegment SEGMENT$vkQueueNotifyOutOfBandNV;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetRenderingAttachmentLocationsKHR;
-    public final @nullable MemorySegment SEGMENT$vkCmdSetRenderingInputAttachmentIndicesKHR;
-    public final @nullable MethodHandle HANDLE$vkDestroyDevice;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceQueue;
-    public final @nullable MethodHandle HANDLE$vkQueueSubmit;
-    public final @nullable MethodHandle HANDLE$vkQueueWaitIdle;
-    public final @nullable MethodHandle HANDLE$vkDeviceWaitIdle;
-    public final @nullable MethodHandle HANDLE$vkAllocateMemory;
-    public final @nullable MethodHandle HANDLE$vkFreeMemory;
-    public final @nullable MethodHandle HANDLE$vkMapMemory;
-    public final @nullable MethodHandle HANDLE$vkUnmapMemory;
-    public final @nullable MethodHandle HANDLE$vkFlushMappedMemoryRanges;
-    public final @nullable MethodHandle HANDLE$vkInvalidateMappedMemoryRanges;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceMemoryCommitment;
-    public final @nullable MethodHandle HANDLE$vkGetBufferMemoryRequirements;
-    public final @nullable MethodHandle HANDLE$vkBindBufferMemory;
-    public final @nullable MethodHandle HANDLE$vkGetImageMemoryRequirements;
-    public final @nullable MethodHandle HANDLE$vkBindImageMemory;
-    public final @nullable MethodHandle HANDLE$vkGetImageSparseMemoryRequirements;
-    public final @nullable MethodHandle HANDLE$vkQueueBindSparse;
-    public final @nullable MethodHandle HANDLE$vkCreateFence;
-    public final @nullable MethodHandle HANDLE$vkDestroyFence;
-    public final @nullable MethodHandle HANDLE$vkResetFences;
-    public final @nullable MethodHandle HANDLE$vkGetFenceStatus;
-    public final @nullable MethodHandle HANDLE$vkWaitForFences;
-    public final @nullable MethodHandle HANDLE$vkCreateSemaphore;
-    public final @nullable MethodHandle HANDLE$vkDestroySemaphore;
-    public final @nullable MethodHandle HANDLE$vkCreateEvent;
-    public final @nullable MethodHandle HANDLE$vkDestroyEvent;
-    public final @nullable MethodHandle HANDLE$vkGetEventStatus;
-    public final @nullable MethodHandle HANDLE$vkSetEvent;
-    public final @nullable MethodHandle HANDLE$vkResetEvent;
-    public final @nullable MethodHandle HANDLE$vkCreateQueryPool;
-    public final @nullable MethodHandle HANDLE$vkDestroyQueryPool;
-    public final @nullable MethodHandle HANDLE$vkGetQueryPoolResults;
-    public final @nullable MethodHandle HANDLE$vkResetQueryPool;
-    public final @nullable MethodHandle HANDLE$vkCreateBuffer;
-    public final @nullable MethodHandle HANDLE$vkDestroyBuffer;
-    public final @nullable MethodHandle HANDLE$vkCreateBufferView;
-    public final @nullable MethodHandle HANDLE$vkDestroyBufferView;
-    public final @nullable MethodHandle HANDLE$vkCreateImage;
-    public final @nullable MethodHandle HANDLE$vkDestroyImage;
-    public final @nullable MethodHandle HANDLE$vkGetImageSubresourceLayout;
-    public final @nullable MethodHandle HANDLE$vkCreateImageView;
-    public final @nullable MethodHandle HANDLE$vkDestroyImageView;
-    public final @nullable MethodHandle HANDLE$vkCreateShaderModule;
-    public final @nullable MethodHandle HANDLE$vkDestroyShaderModule;
-    public final @nullable MethodHandle HANDLE$vkCreatePipelineCache;
-    public final @nullable MethodHandle HANDLE$vkDestroyPipelineCache;
-    public final @nullable MethodHandle HANDLE$vkGetPipelineCacheData;
-    public final @nullable MethodHandle HANDLE$vkMergePipelineCaches;
-    public final @nullable MethodHandle HANDLE$vkCreatePipelineBinariesKHR;
-    public final @nullable MethodHandle HANDLE$vkDestroyPipelineBinaryKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPipelineKeyKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPipelineBinaryDataKHR;
-    public final @nullable MethodHandle HANDLE$vkReleaseCapturedPipelineDataKHR;
-    public final @nullable MethodHandle HANDLE$vkCreateGraphicsPipelines;
-    public final @nullable MethodHandle HANDLE$vkCreateComputePipelines;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI;
-    public final @nullable MethodHandle HANDLE$vkDestroyPipeline;
-    public final @nullable MethodHandle HANDLE$vkCreatePipelineLayout;
-    public final @nullable MethodHandle HANDLE$vkDestroyPipelineLayout;
-    public final @nullable MethodHandle HANDLE$vkCreateSampler;
-    public final @nullable MethodHandle HANDLE$vkDestroySampler;
-    public final @nullable MethodHandle HANDLE$vkCreateDescriptorSetLayout;
-    public final @nullable MethodHandle HANDLE$vkDestroyDescriptorSetLayout;
-    public final @nullable MethodHandle HANDLE$vkCreateDescriptorPool;
-    public final @nullable MethodHandle HANDLE$vkDestroyDescriptorPool;
-    public final @nullable MethodHandle HANDLE$vkResetDescriptorPool;
-    public final @nullable MethodHandle HANDLE$vkAllocateDescriptorSets;
-    public final @nullable MethodHandle HANDLE$vkFreeDescriptorSets;
-    public final @nullable MethodHandle HANDLE$vkUpdateDescriptorSets;
-    public final @nullable MethodHandle HANDLE$vkCreateFramebuffer;
-    public final @nullable MethodHandle HANDLE$vkDestroyFramebuffer;
-    public final @nullable MethodHandle HANDLE$vkCreateRenderPass;
-    public final @nullable MethodHandle HANDLE$vkDestroyRenderPass;
-    public final @nullable MethodHandle HANDLE$vkGetRenderAreaGranularity;
-    public final @nullable MethodHandle HANDLE$vkGetRenderingAreaGranularityKHR;
-    public final @nullable MethodHandle HANDLE$vkCreateCommandPool;
-    public final @nullable MethodHandle HANDLE$vkDestroyCommandPool;
-    public final @nullable MethodHandle HANDLE$vkResetCommandPool;
-    public final @nullable MethodHandle HANDLE$vkAllocateCommandBuffers;
-    public final @nullable MethodHandle HANDLE$vkFreeCommandBuffers;
-    public final @nullable MethodHandle HANDLE$vkBeginCommandBuffer;
-    public final @nullable MethodHandle HANDLE$vkEndCommandBuffer;
-    public final @nullable MethodHandle HANDLE$vkResetCommandBuffer;
-    public final @nullable MethodHandle HANDLE$vkCmdBindPipeline;
-    public final @nullable MethodHandle HANDLE$vkCmdSetAttachmentFeedbackLoopEnableEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetViewport;
-    public final @nullable MethodHandle HANDLE$vkCmdSetScissor;
-    public final @nullable MethodHandle HANDLE$vkCmdSetLineWidth;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDepthBias;
-    public final @nullable MethodHandle HANDLE$vkCmdSetBlendConstants;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDepthBounds;
-    public final @nullable MethodHandle HANDLE$vkCmdSetStencilCompareMask;
-    public final @nullable MethodHandle HANDLE$vkCmdSetStencilWriteMask;
-    public final @nullable MethodHandle HANDLE$vkCmdSetStencilReference;
-    public final @nullable MethodHandle HANDLE$vkCmdBindDescriptorSets;
-    public final @nullable MethodHandle HANDLE$vkCmdBindIndexBuffer;
-    public final @nullable MethodHandle HANDLE$vkCmdBindVertexBuffers;
-    public final @nullable MethodHandle HANDLE$vkCmdDraw;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawIndexed;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawMultiEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawMultiIndexedEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawIndirect;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawIndexedIndirect;
-    public final @nullable MethodHandle HANDLE$vkCmdDispatch;
-    public final @nullable MethodHandle HANDLE$vkCmdDispatchIndirect;
-    public final @nullable MethodHandle HANDLE$vkCmdSubpassShadingHUAWEI;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawClusterHUAWEI;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawClusterIndirectHUAWEI;
-    public final @nullable MethodHandle HANDLE$vkCmdUpdatePipelineIndirectBufferNV;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyBuffer;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyImage;
-    public final @nullable MethodHandle HANDLE$vkCmdBlitImage;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyBufferToImage;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyImageToBuffer;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyMemoryIndirectNV;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyMemoryToImageIndirectNV;
-    public final @nullable MethodHandle HANDLE$vkCmdUpdateBuffer;
-    public final @nullable MethodHandle HANDLE$vkCmdFillBuffer;
-    public final @nullable MethodHandle HANDLE$vkCmdClearColorImage;
-    public final @nullable MethodHandle HANDLE$vkCmdClearDepthStencilImage;
-    public final @nullable MethodHandle HANDLE$vkCmdClearAttachments;
-    public final @nullable MethodHandle HANDLE$vkCmdResolveImage;
-    public final @nullable MethodHandle HANDLE$vkCmdSetEvent;
-    public final @nullable MethodHandle HANDLE$vkCmdResetEvent;
-    public final @nullable MethodHandle HANDLE$vkCmdWaitEvents;
-    public final @nullable MethodHandle HANDLE$vkCmdPipelineBarrier;
-    public final @nullable MethodHandle HANDLE$vkCmdBeginQuery;
-    public final @nullable MethodHandle HANDLE$vkCmdEndQuery;
-    public final @nullable MethodHandle HANDLE$vkCmdBeginConditionalRenderingEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdEndConditionalRenderingEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdResetQueryPool;
-    public final @nullable MethodHandle HANDLE$vkCmdWriteTimestamp;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyQueryPoolResults;
-    public final @nullable MethodHandle HANDLE$vkCmdPushConstants;
-    public final @nullable MethodHandle HANDLE$vkCmdBeginRenderPass;
-    public final @nullable MethodHandle HANDLE$vkCmdNextSubpass;
-    public final @nullable MethodHandle HANDLE$vkCmdEndRenderPass;
-    public final @nullable MethodHandle HANDLE$vkCmdExecuteCommands;
-    public final @nullable MethodHandle HANDLE$vkCreateSharedSwapchainsKHR;
-    public final @nullable MethodHandle HANDLE$vkCreateSwapchainKHR;
-    public final @nullable MethodHandle HANDLE$vkDestroySwapchainKHR;
-    public final @nullable MethodHandle HANDLE$vkGetSwapchainImagesKHR;
-    public final @nullable MethodHandle HANDLE$vkAcquireNextImageKHR;
-    public final @nullable MethodHandle HANDLE$vkQueuePresentKHR;
-    public final @nullable MethodHandle HANDLE$vkDebugMarkerSetObjectNameEXT;
-    public final @nullable MethodHandle HANDLE$vkDebugMarkerSetObjectTagEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdDebugMarkerBeginEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdDebugMarkerEndEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdDebugMarkerInsertEXT;
-    public final @nullable MethodHandle HANDLE$vkGetMemoryWin32HandleNV;
-    public final @nullable MethodHandle HANDLE$vkCmdExecuteGeneratedCommandsNV;
-    public final @nullable MethodHandle HANDLE$vkCmdPreprocessGeneratedCommandsNV;
-    public final @nullable MethodHandle HANDLE$vkCmdBindPipelineShaderGroupNV;
-    public final @nullable MethodHandle HANDLE$vkGetGeneratedCommandsMemoryRequirementsNV;
-    public final @nullable MethodHandle HANDLE$vkCreateIndirectCommandsLayoutNV;
-    public final @nullable MethodHandle HANDLE$vkDestroyIndirectCommandsLayoutNV;
-    public final @nullable MethodHandle HANDLE$vkCmdPushDescriptorSetKHR;
-    public final @nullable MethodHandle HANDLE$vkTrimCommandPool;
-    public final @nullable MethodHandle HANDLE$vkGetMemoryWin32HandleKHR;
-    public final @nullable MethodHandle HANDLE$vkGetMemoryWin32HandlePropertiesKHR;
-    public final @nullable MethodHandle HANDLE$vkGetMemoryFdKHR;
-    public final @nullable MethodHandle HANDLE$vkGetMemoryFdPropertiesKHR;
-    public final @nullable MethodHandle HANDLE$vkGetMemoryZirconHandleFUCHSIA;
-    public final @nullable MethodHandle HANDLE$vkGetMemoryZirconHandlePropertiesFUCHSIA;
-    public final @nullable MethodHandle HANDLE$vkGetMemoryRemoteAddressNV;
-    public final @nullable MethodHandle HANDLE$vkGetMemorySciBufNV;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceSciBufAttributesNV;
-    public final @nullable MethodHandle HANDLE$vkGetSemaphoreWin32HandleKHR;
-    public final @nullable MethodHandle HANDLE$vkImportSemaphoreWin32HandleKHR;
-    public final @nullable MethodHandle HANDLE$vkGetSemaphoreFdKHR;
-    public final @nullable MethodHandle HANDLE$vkImportSemaphoreFdKHR;
-    public final @nullable MethodHandle HANDLE$vkGetSemaphoreZirconHandleFUCHSIA;
-    public final @nullable MethodHandle HANDLE$vkImportSemaphoreZirconHandleFUCHSIA;
-    public final @nullable MethodHandle HANDLE$vkGetFenceWin32HandleKHR;
-    public final @nullable MethodHandle HANDLE$vkImportFenceWin32HandleKHR;
-    public final @nullable MethodHandle HANDLE$vkGetFenceFdKHR;
-    public final @nullable MethodHandle HANDLE$vkImportFenceFdKHR;
-    public final @nullable MethodHandle HANDLE$vkGetFenceSciSyncFenceNV;
-    public final @nullable MethodHandle HANDLE$vkGetFenceSciSyncObjNV;
-    public final @nullable MethodHandle HANDLE$vkImportFenceSciSyncFenceNV;
-    public final @nullable MethodHandle HANDLE$vkImportFenceSciSyncObjNV;
-    public final @nullable MethodHandle HANDLE$vkGetSemaphoreSciSyncObjNV;
-    public final @nullable MethodHandle HANDLE$vkImportSemaphoreSciSyncObjNV;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceSciSyncAttributesNV;
-    public final @nullable MethodHandle HANDLE$vkCreateSemaphoreSciSyncPoolNV;
-    public final @nullable MethodHandle HANDLE$vkDestroySemaphoreSciSyncPoolNV;
-    public final @nullable MethodHandle HANDLE$vkAcquireWinrtDisplayNV;
-    public final @nullable MethodHandle HANDLE$vkGetWinrtDisplayNV;
-    public final @nullable MethodHandle HANDLE$vkDisplayPowerControlEXT;
-    public final @nullable MethodHandle HANDLE$vkRegisterDeviceEventEXT;
-    public final @nullable MethodHandle HANDLE$vkRegisterDisplayEventEXT;
-    public final @nullable MethodHandle HANDLE$vkGetSwapchainCounterEXT;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceGroupPeerMemoryFeatures;
-    public final @nullable MethodHandle HANDLE$vkBindBufferMemory2;
-    public final @nullable MethodHandle HANDLE$vkBindImageMemory2;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDeviceMask;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceGroupPresentCapabilitiesKHR;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceGroupSurfacePresentModesKHR;
-    public final @nullable MethodHandle HANDLE$vkAcquireNextImage2KHR;
-    public final @nullable MethodHandle HANDLE$vkCmdDispatchBase;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDevicePresentRectanglesKHR;
-    public final @nullable MethodHandle HANDLE$vkCreateDescriptorUpdateTemplate;
-    public final @nullable MethodHandle HANDLE$vkDestroyDescriptorUpdateTemplate;
-    public final @nullable MethodHandle HANDLE$vkUpdateDescriptorSetWithTemplate;
-    public final @nullable MethodHandle HANDLE$vkCmdPushDescriptorSetWithTemplateKHR;
-    public final @nullable MethodHandle HANDLE$vkSetHdrMetadataEXT;
-    public final @nullable MethodHandle HANDLE$vkGetSwapchainStatusKHR;
-    public final @nullable MethodHandle HANDLE$vkGetRefreshCycleDurationGOOGLE;
-    public final @nullable MethodHandle HANDLE$vkGetPastPresentationTimingGOOGLE;
-    public final @nullable MethodHandle HANDLE$vkCmdSetViewportWScalingNV;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDiscardRectangleEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDiscardRectangleEnableEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDiscardRectangleModeEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetSampleLocationsEXT;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceMultisamplePropertiesEXT;
-    public final @nullable MethodHandle HANDLE$vkGetBufferMemoryRequirements2;
-    public final @nullable MethodHandle HANDLE$vkGetImageMemoryRequirements2;
-    public final @nullable MethodHandle HANDLE$vkGetImageSparseMemoryRequirements2;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceBufferMemoryRequirements;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceImageMemoryRequirements;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceImageSparseMemoryRequirements;
-    public final @nullable MethodHandle HANDLE$vkCreateSamplerYcbcrConversion;
-    public final @nullable MethodHandle HANDLE$vkDestroySamplerYcbcrConversion;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceQueue2;
-    public final @nullable MethodHandle HANDLE$vkCreateValidationCacheEXT;
-    public final @nullable MethodHandle HANDLE$vkDestroyValidationCacheEXT;
-    public final @nullable MethodHandle HANDLE$vkGetValidationCacheDataEXT;
-    public final @nullable MethodHandle HANDLE$vkMergeValidationCachesEXT;
-    public final @nullable MethodHandle HANDLE$vkGetDescriptorSetLayoutSupport;
-    public final @nullable MethodHandle HANDLE$vkGetShaderInfoAMD;
-    public final @nullable MethodHandle HANDLE$vkSetLocalDimmingAMD;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR;
-    public final @nullable MethodHandle HANDLE$vkGetCalibratedTimestampsKHR;
-    public final @nullable MethodHandle HANDLE$vkGetMemoryHostPointerPropertiesEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdWriteBufferMarkerAMD;
-    public final @nullable MethodHandle HANDLE$vkCreateRenderPass2;
-    public final @nullable MethodHandle HANDLE$vkCmdBeginRenderPass2;
-    public final @nullable MethodHandle HANDLE$vkCmdNextSubpass2;
-    public final @nullable MethodHandle HANDLE$vkCmdEndRenderPass2;
-    public final @nullable MethodHandle HANDLE$vkGetSemaphoreCounterValue;
-    public final @nullable MethodHandle HANDLE$vkWaitSemaphores;
-    public final @nullable MethodHandle HANDLE$vkSignalSemaphore;
-    public final @nullable MethodHandle HANDLE$vkGetAndroidHardwareBufferPropertiesANDROID;
-    public final @nullable MethodHandle HANDLE$vkGetMemoryAndroidHardwareBufferANDROID;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawIndirectCount;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawIndexedIndirectCount;
-    public final @nullable MethodHandle HANDLE$vkCmdSetCheckpointNV;
-    public final @nullable MethodHandle HANDLE$vkGetQueueCheckpointDataNV;
-    public final @nullable MethodHandle HANDLE$vkCmdBindTransformFeedbackBuffersEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdBeginTransformFeedbackEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdEndTransformFeedbackEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdBeginQueryIndexedEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdEndQueryIndexedEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawIndirectByteCountEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetExclusiveScissorNV;
-    public final @nullable MethodHandle HANDLE$vkCmdSetExclusiveScissorEnableNV;
-    public final @nullable MethodHandle HANDLE$vkCmdBindShadingRateImageNV;
-    public final @nullable MethodHandle HANDLE$vkCmdSetViewportShadingRatePaletteNV;
-    public final @nullable MethodHandle HANDLE$vkCmdSetCoarseSampleOrderNV;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawMeshTasksNV;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawMeshTasksIndirectNV;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawMeshTasksIndirectCountNV;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawMeshTasksEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawMeshTasksIndirectEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdDrawMeshTasksIndirectCountEXT;
-    public final @nullable MethodHandle HANDLE$vkCompileDeferredNV;
-    public final @nullable MethodHandle HANDLE$vkCreateAccelerationStructureNV;
-    public final @nullable MethodHandle HANDLE$vkCmdBindInvocationMaskHUAWEI;
-    public final @nullable MethodHandle HANDLE$vkDestroyAccelerationStructureKHR;
-    public final @nullable MethodHandle HANDLE$vkDestroyAccelerationStructureNV;
-    public final @nullable MethodHandle HANDLE$vkGetAccelerationStructureMemoryRequirementsNV;
-    public final @nullable MethodHandle HANDLE$vkBindAccelerationStructureMemoryNV;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyAccelerationStructureNV;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyAccelerationStructureKHR;
-    public final @nullable MethodHandle HANDLE$vkCopyAccelerationStructureKHR;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyAccelerationStructureToMemoryKHR;
-    public final @nullable MethodHandle HANDLE$vkCopyAccelerationStructureToMemoryKHR;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyMemoryToAccelerationStructureKHR;
-    public final @nullable MethodHandle HANDLE$vkCopyMemoryToAccelerationStructureKHR;
-    public final @nullable MethodHandle HANDLE$vkCmdWriteAccelerationStructuresPropertiesKHR;
-    public final @nullable MethodHandle HANDLE$vkCmdWriteAccelerationStructuresPropertiesNV;
-    public final @nullable MethodHandle HANDLE$vkCmdBuildAccelerationStructureNV;
-    public final @nullable MethodHandle HANDLE$vkWriteAccelerationStructuresPropertiesKHR;
-    public final @nullable MethodHandle HANDLE$vkCmdTraceRaysKHR;
-    public final @nullable MethodHandle HANDLE$vkCmdTraceRaysNV;
-    public final @nullable MethodHandle HANDLE$vkGetRayTracingShaderGroupHandlesKHR;
-    public final @nullable MethodHandle HANDLE$vkGetRayTracingCaptureReplayShaderGroupHandlesKHR;
-    public final @nullable MethodHandle HANDLE$vkGetAccelerationStructureHandleNV;
-    public final @nullable MethodHandle HANDLE$vkCreateRayTracingPipelinesNV;
-    public final @nullable MethodHandle HANDLE$vkCreateRayTracingPipelinesKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesNV;
-    public final @nullable MethodHandle HANDLE$vkCmdTraceRaysIndirectKHR;
-    public final @nullable MethodHandle HANDLE$vkCmdTraceRaysIndirect2KHR;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceAccelerationStructureCompatibilityKHR;
-    public final @nullable MethodHandle HANDLE$vkGetRayTracingShaderGroupStackSizeKHR;
-    public final @nullable MethodHandle HANDLE$vkCmdSetRayTracingPipelineStackSizeKHR;
-    public final @nullable MethodHandle HANDLE$vkGetImageViewHandleNVX;
-    public final @nullable MethodHandle HANDLE$vkGetImageViewAddressNVX;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfacePresentModes2EXT;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceGroupSurfacePresentModes2EXT;
-    public final @nullable MethodHandle HANDLE$vkAcquireFullScreenExclusiveModeEXT;
-    public final @nullable MethodHandle HANDLE$vkReleaseFullScreenExclusiveModeEXT;
-    public final @nullable MethodHandle HANDLE$vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR;
-    public final @nullable MethodHandle HANDLE$vkAcquireProfilingLockKHR;
-    public final @nullable MethodHandle HANDLE$vkReleaseProfilingLockKHR;
-    public final @nullable MethodHandle HANDLE$vkGetImageDrmFormatModifierPropertiesEXT;
-    public final @nullable MethodHandle HANDLE$vkGetBufferOpaqueCaptureAddress;
-    public final @nullable MethodHandle HANDLE$vkGetBufferDeviceAddress;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV;
-    public final @nullable MethodHandle HANDLE$vkInitializePerformanceApiINTEL;
-    public final @nullable MethodHandle HANDLE$vkUninitializePerformanceApiINTEL;
-    public final @nullable MethodHandle HANDLE$vkCmdSetPerformanceMarkerINTEL;
-    public final @nullable MethodHandle HANDLE$vkCmdSetPerformanceStreamMarkerINTEL;
-    public final @nullable MethodHandle HANDLE$vkCmdSetPerformanceOverrideINTEL;
-    public final @nullable MethodHandle HANDLE$vkAcquirePerformanceConfigurationINTEL;
-    public final @nullable MethodHandle HANDLE$vkReleasePerformanceConfigurationINTEL;
-    public final @nullable MethodHandle HANDLE$vkQueueSetPerformanceConfigurationINTEL;
-    public final @nullable MethodHandle HANDLE$vkGetPerformanceParameterINTEL;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceMemoryOpaqueCaptureAddress;
-    public final @nullable MethodHandle HANDLE$vkGetPipelineExecutablePropertiesKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPipelineExecutableStatisticsKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPipelineExecutableInternalRepresentationsKHR;
-    public final @nullable MethodHandle HANDLE$vkCmdSetLineStippleKHR;
-    public final @nullable MethodHandle HANDLE$vkCreateAccelerationStructureKHR;
-    public final @nullable MethodHandle HANDLE$vkCmdBuildAccelerationStructuresKHR;
-    public final @nullable MethodHandle HANDLE$vkCmdBuildAccelerationStructuresIndirectKHR;
-    public final @nullable MethodHandle HANDLE$vkBuildAccelerationStructuresKHR;
-    public final @nullable MethodHandle HANDLE$vkGetAccelerationStructureDeviceAddressKHR;
-    public final @nullable MethodHandle HANDLE$vkCreateDeferredOperationKHR;
-    public final @nullable MethodHandle HANDLE$vkDestroyDeferredOperationKHR;
-    public final @nullable MethodHandle HANDLE$vkGetDeferredOperationMaxConcurrencyKHR;
-    public final @nullable MethodHandle HANDLE$vkGetDeferredOperationResultKHR;
-    public final @nullable MethodHandle HANDLE$vkDeferredOperationJoinKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPipelineIndirectMemoryRequirementsNV;
-    public final @nullable MethodHandle HANDLE$vkGetPipelineIndirectDeviceAddressNV;
-    public final @nullable MethodHandle HANDLE$vkAntiLagUpdateAMD;
-    public final @nullable MethodHandle HANDLE$vkCmdSetCullMode;
-    public final @nullable MethodHandle HANDLE$vkCmdSetFrontFace;
-    public final @nullable MethodHandle HANDLE$vkCmdSetPrimitiveTopology;
-    public final @nullable MethodHandle HANDLE$vkCmdSetViewportWithCount;
-    public final @nullable MethodHandle HANDLE$vkCmdSetScissorWithCount;
-    public final @nullable MethodHandle HANDLE$vkCmdBindIndexBuffer2KHR;
-    public final @nullable MethodHandle HANDLE$vkCmdBindVertexBuffers2;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDepthTestEnable;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDepthWriteEnable;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDepthCompareOp;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDepthBoundsTestEnable;
-    public final @nullable MethodHandle HANDLE$vkCmdSetStencilTestEnable;
-    public final @nullable MethodHandle HANDLE$vkCmdSetStencilOp;
-    public final @nullable MethodHandle HANDLE$vkCmdSetPatchControlPointsEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetRasterizerDiscardEnable;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDepthBiasEnable;
-    public final @nullable MethodHandle HANDLE$vkCmdSetLogicOpEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetPrimitiveRestartEnable;
-    public final @nullable MethodHandle HANDLE$vkCmdSetTessellationDomainOriginEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDepthClampEnableEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetPolygonModeEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetRasterizationSamplesEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetSampleMaskEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetAlphaToCoverageEnableEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetAlphaToOneEnableEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetLogicOpEnableEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetColorBlendEnableEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetColorBlendEquationEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetColorWriteMaskEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetRasterizationStreamEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetConservativeRasterizationModeEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetExtraPrimitiveOverestimationSizeEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDepthClipEnableEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetSampleLocationsEnableEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetColorBlendAdvancedEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetProvokingVertexModeEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetLineRasterizationModeEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetLineStippleEnableEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDepthClipNegativeOneToOneEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetViewportWScalingEnableNV;
-    public final @nullable MethodHandle HANDLE$vkCmdSetViewportSwizzleNV;
-    public final @nullable MethodHandle HANDLE$vkCmdSetCoverageToColorEnableNV;
-    public final @nullable MethodHandle HANDLE$vkCmdSetCoverageToColorLocationNV;
-    public final @nullable MethodHandle HANDLE$vkCmdSetCoverageModulationModeNV;
-    public final @nullable MethodHandle HANDLE$vkCmdSetCoverageModulationTableEnableNV;
-    public final @nullable MethodHandle HANDLE$vkCmdSetCoverageModulationTableNV;
-    public final @nullable MethodHandle HANDLE$vkCmdSetShadingRateImageEnableNV;
-    public final @nullable MethodHandle HANDLE$vkCmdSetCoverageReductionModeNV;
-    public final @nullable MethodHandle HANDLE$vkCmdSetRepresentativeFragmentTestEnableNV;
-    public final @nullable MethodHandle HANDLE$vkCreatePrivateDataSlot;
-    public final @nullable MethodHandle HANDLE$vkDestroyPrivateDataSlot;
-    public final @nullable MethodHandle HANDLE$vkSetPrivateData;
-    public final @nullable MethodHandle HANDLE$vkGetPrivateData;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyBuffer2;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyImage2;
-    public final @nullable MethodHandle HANDLE$vkCmdBlitImage2;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyBufferToImage2;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyImageToBuffer2;
-    public final @nullable MethodHandle HANDLE$vkCmdResolveImage2;
-    public final @nullable MethodHandle HANDLE$vkCmdRefreshObjectsKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceRefreshableObjectTypesKHR;
-    public final @nullable MethodHandle HANDLE$vkCmdSetFragmentShadingRateKHR;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceFragmentShadingRatesKHR;
-    public final @nullable MethodHandle HANDLE$vkCmdSetFragmentShadingRateEnumNV;
-    public final @nullable MethodHandle HANDLE$vkGetAccelerationStructureBuildSizesKHR;
-    public final @nullable MethodHandle HANDLE$vkCmdSetVertexInputEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetColorWriteEnableEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetEvent2;
-    public final @nullable MethodHandle HANDLE$vkCmdResetEvent2;
-    public final @nullable MethodHandle HANDLE$vkCmdWaitEvents2;
-    public final @nullable MethodHandle HANDLE$vkCmdPipelineBarrier2;
-    public final @nullable MethodHandle HANDLE$vkQueueSubmit2;
-    public final @nullable MethodHandle HANDLE$vkCmdWriteTimestamp2;
-    public final @nullable MethodHandle HANDLE$vkCmdWriteBufferMarker2AMD;
-    public final @nullable MethodHandle HANDLE$vkGetQueueCheckpointData2NV;
-    public final @nullable MethodHandle HANDLE$vkCopyMemoryToImageEXT;
-    public final @nullable MethodHandle HANDLE$vkCopyImageToMemoryEXT;
-    public final @nullable MethodHandle HANDLE$vkCopyImageToImageEXT;
-    public final @nullable MethodHandle HANDLE$vkTransitionImageLayoutEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdDecompressMemoryNV;
-    public final @nullable MethodHandle HANDLE$vkCmdDecompressMemoryIndirectCountNV;
-    public final @nullable MethodHandle HANDLE$vkCreateCuModuleNVX;
-    public final @nullable MethodHandle HANDLE$vkCreateCuFunctionNVX;
-    public final @nullable MethodHandle HANDLE$vkDestroyCuModuleNVX;
-    public final @nullable MethodHandle HANDLE$vkDestroyCuFunctionNVX;
-    public final @nullable MethodHandle HANDLE$vkCmdCuLaunchKernelNVX;
-    public final @nullable MethodHandle HANDLE$vkGetDescriptorSetLayoutSizeEXT;
-    public final @nullable MethodHandle HANDLE$vkGetDescriptorSetLayoutBindingOffsetEXT;
-    public final @nullable MethodHandle HANDLE$vkGetDescriptorEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdBindDescriptorBuffersEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDescriptorBufferOffsetsEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdBindDescriptorBufferEmbeddedSamplersEXT;
-    public final @nullable MethodHandle HANDLE$vkGetBufferOpaqueCaptureDescriptorDataEXT;
-    public final @nullable MethodHandle HANDLE$vkGetImageOpaqueCaptureDescriptorDataEXT;
-    public final @nullable MethodHandle HANDLE$vkGetImageViewOpaqueCaptureDescriptorDataEXT;
-    public final @nullable MethodHandle HANDLE$vkGetSamplerOpaqueCaptureDescriptorDataEXT;
-    public final @nullable MethodHandle HANDLE$vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT;
-    public final @nullable MethodHandle HANDLE$vkSetDeviceMemoryPriorityEXT;
-    public final @nullable MethodHandle HANDLE$vkWaitForPresentKHR;
-    public final @nullable MethodHandle HANDLE$vkCreateBufferCollectionFUCHSIA;
-    public final @nullable MethodHandle HANDLE$vkSetBufferCollectionBufferConstraintsFUCHSIA;
-    public final @nullable MethodHandle HANDLE$vkSetBufferCollectionImageConstraintsFUCHSIA;
-    public final @nullable MethodHandle HANDLE$vkDestroyBufferCollectionFUCHSIA;
-    public final @nullable MethodHandle HANDLE$vkGetBufferCollectionPropertiesFUCHSIA;
-    public final @nullable MethodHandle HANDLE$vkCreateCudaModuleNV;
-    public final @nullable MethodHandle HANDLE$vkGetCudaModuleCacheNV;
-    public final @nullable MethodHandle HANDLE$vkCreateCudaFunctionNV;
-    public final @nullable MethodHandle HANDLE$vkDestroyCudaModuleNV;
-    public final @nullable MethodHandle HANDLE$vkDestroyCudaFunctionNV;
-    public final @nullable MethodHandle HANDLE$vkCmdCudaLaunchKernelNV;
-    public final @nullable MethodHandle HANDLE$vkCmdBeginRendering;
-    public final @nullable MethodHandle HANDLE$vkCmdEndRendering;
-    public final @nullable MethodHandle HANDLE$vkGetDescriptorSetLayoutHostMappingInfoVALVE;
-    public final @nullable MethodHandle HANDLE$vkGetDescriptorSetHostMappingVALVE;
-    public final @nullable MethodHandle HANDLE$vkCreateMicromapEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdBuildMicromapsEXT;
-    public final @nullable MethodHandle HANDLE$vkBuildMicromapsEXT;
-    public final @nullable MethodHandle HANDLE$vkDestroyMicromapEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyMicromapEXT;
-    public final @nullable MethodHandle HANDLE$vkCopyMicromapEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyMicromapToMemoryEXT;
-    public final @nullable MethodHandle HANDLE$vkCopyMicromapToMemoryEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdCopyMemoryToMicromapEXT;
-    public final @nullable MethodHandle HANDLE$vkCopyMemoryToMicromapEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdWriteMicromapsPropertiesEXT;
-    public final @nullable MethodHandle HANDLE$vkWriteMicromapsPropertiesEXT;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceMicromapCompatibilityEXT;
-    public final @nullable MethodHandle HANDLE$vkGetMicromapBuildSizesEXT;
-    public final @nullable MethodHandle HANDLE$vkGetShaderModuleIdentifierEXT;
-    public final @nullable MethodHandle HANDLE$vkGetShaderModuleCreateInfoIdentifierEXT;
-    public final @nullable MethodHandle HANDLE$vkGetImageSubresourceLayout2KHR;
-    public final @nullable MethodHandle HANDLE$vkGetPipelinePropertiesEXT;
-    public final @nullable MethodHandle HANDLE$vkExportMetalObjectsEXT;
-    public final @nullable MethodHandle HANDLE$vkGetFramebufferTilePropertiesQCOM;
-    public final @nullable MethodHandle HANDLE$vkGetDynamicRenderingTilePropertiesQCOM;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceOpticalFlowImageFormatsNV;
-    public final @nullable MethodHandle HANDLE$vkCreateOpticalFlowSessionNV;
-    public final @nullable MethodHandle HANDLE$vkDestroyOpticalFlowSessionNV;
-    public final @nullable MethodHandle HANDLE$vkBindOpticalFlowSessionImageNV;
-    public final @nullable MethodHandle HANDLE$vkCmdOpticalFlowExecuteNV;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceFaultInfoEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDepthBias2EXT;
-    public final @nullable MethodHandle HANDLE$vkReleaseSwapchainImagesEXT;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceImageSubresourceLayoutKHR;
-    public final @nullable MethodHandle HANDLE$vkMapMemory2KHR;
-    public final @nullable MethodHandle HANDLE$vkUnmapMemory2KHR;
-    public final @nullable MethodHandle HANDLE$vkCreateShadersEXT;
-    public final @nullable MethodHandle HANDLE$vkDestroyShaderEXT;
-    public final @nullable MethodHandle HANDLE$vkGetShaderBinaryDataEXT;
-    public final @nullable MethodHandle HANDLE$vkCmdBindShadersEXT;
-    public final @nullable MethodHandle HANDLE$vkGetScreenBufferPropertiesQNX;
-    public final @nullable MethodHandle HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR;
-    public final @nullable MethodHandle HANDLE$vkGetExecutionGraphPipelineScratchSizeAMDX;
-    public final @nullable MethodHandle HANDLE$vkGetExecutionGraphPipelineNodeIndexAMDX;
-    public final @nullable MethodHandle HANDLE$vkCreateExecutionGraphPipelinesAMDX;
-    public final @nullable MethodHandle HANDLE$vkCmdInitializeGraphScratchMemoryAMDX;
-    public final @nullable MethodHandle HANDLE$vkCmdDispatchGraphAMDX;
-    public final @nullable MethodHandle HANDLE$vkCmdDispatchGraphIndirectAMDX;
-    public final @nullable MethodHandle HANDLE$vkCmdDispatchGraphIndirectCountAMDX;
-    public final @nullable MethodHandle HANDLE$vkCmdBindDescriptorSets2KHR;
-    public final @nullable MethodHandle HANDLE$vkCmdPushConstants2KHR;
-    public final @nullable MethodHandle HANDLE$vkCmdPushDescriptorSet2KHR;
-    public final @nullable MethodHandle HANDLE$vkCmdPushDescriptorSetWithTemplate2KHR;
-    public final @nullable MethodHandle HANDLE$vkCmdSetDescriptorBufferOffsets2EXT;
-    public final @nullable MethodHandle HANDLE$vkCmdBindDescriptorBufferEmbeddedSamplers2EXT;
-    public final @nullable MethodHandle HANDLE$vkSetLatencySleepModeNV;
-    public final @nullable MethodHandle HANDLE$vkLatencySleepNV;
-    public final @nullable MethodHandle HANDLE$vkSetLatencyMarkerNV;
-    public final @nullable MethodHandle HANDLE$vkGetLatencyTimingsNV;
-    public final @nullable MethodHandle HANDLE$vkQueueNotifyOutOfBandNV;
-    public final @nullable MethodHandle HANDLE$vkCmdSetRenderingAttachmentLocationsKHR;
-    public final @nullable MethodHandle HANDLE$vkCmdSetRenderingInputAttachmentIndicesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyDevice;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceQueue;
+    public final @Nullable MemorySegment SEGMENT$vkQueueSubmit;
+    public final @Nullable MemorySegment SEGMENT$vkQueueWaitIdle;
+    public final @Nullable MemorySegment SEGMENT$vkDeviceWaitIdle;
+    public final @Nullable MemorySegment SEGMENT$vkAllocateMemory;
+    public final @Nullable MemorySegment SEGMENT$vkFreeMemory;
+    public final @Nullable MemorySegment SEGMENT$vkMapMemory;
+    public final @Nullable MemorySegment SEGMENT$vkUnmapMemory;
+    public final @Nullable MemorySegment SEGMENT$vkFlushMappedMemoryRanges;
+    public final @Nullable MemorySegment SEGMENT$vkInvalidateMappedMemoryRanges;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceMemoryCommitment;
+    public final @Nullable MemorySegment SEGMENT$vkGetBufferMemoryRequirements;
+    public final @Nullable MemorySegment SEGMENT$vkBindBufferMemory;
+    public final @Nullable MemorySegment SEGMENT$vkGetImageMemoryRequirements;
+    public final @Nullable MemorySegment SEGMENT$vkBindImageMemory;
+    public final @Nullable MemorySegment SEGMENT$vkGetImageSparseMemoryRequirements;
+    public final @Nullable MemorySegment SEGMENT$vkQueueBindSparse;
+    public final @Nullable MemorySegment SEGMENT$vkCreateFence;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyFence;
+    public final @Nullable MemorySegment SEGMENT$vkResetFences;
+    public final @Nullable MemorySegment SEGMENT$vkGetFenceStatus;
+    public final @Nullable MemorySegment SEGMENT$vkWaitForFences;
+    public final @Nullable MemorySegment SEGMENT$vkCreateSemaphore;
+    public final @Nullable MemorySegment SEGMENT$vkDestroySemaphore;
+    public final @Nullable MemorySegment SEGMENT$vkCreateEvent;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyEvent;
+    public final @Nullable MemorySegment SEGMENT$vkGetEventStatus;
+    public final @Nullable MemorySegment SEGMENT$vkSetEvent;
+    public final @Nullable MemorySegment SEGMENT$vkResetEvent;
+    public final @Nullable MemorySegment SEGMENT$vkCreateQueryPool;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyQueryPool;
+    public final @Nullable MemorySegment SEGMENT$vkGetQueryPoolResults;
+    public final @Nullable MemorySegment SEGMENT$vkResetQueryPool;
+    public final @Nullable MemorySegment SEGMENT$vkCreateBuffer;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyBuffer;
+    public final @Nullable MemorySegment SEGMENT$vkCreateBufferView;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyBufferView;
+    public final @Nullable MemorySegment SEGMENT$vkCreateImage;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyImage;
+    public final @Nullable MemorySegment SEGMENT$vkGetImageSubresourceLayout;
+    public final @Nullable MemorySegment SEGMENT$vkCreateImageView;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyImageView;
+    public final @Nullable MemorySegment SEGMENT$vkCreateShaderModule;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyShaderModule;
+    public final @Nullable MemorySegment SEGMENT$vkCreatePipelineCache;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyPipelineCache;
+    public final @Nullable MemorySegment SEGMENT$vkGetPipelineCacheData;
+    public final @Nullable MemorySegment SEGMENT$vkMergePipelineCaches;
+    public final @Nullable MemorySegment SEGMENT$vkCreatePipelineBinariesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyPipelineBinaryKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPipelineKeyKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPipelineBinaryDataKHR;
+    public final @Nullable MemorySegment SEGMENT$vkReleaseCapturedPipelineDataKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCreateGraphicsPipelines;
+    public final @Nullable MemorySegment SEGMENT$vkCreateComputePipelines;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyPipeline;
+    public final @Nullable MemorySegment SEGMENT$vkCreatePipelineLayout;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyPipelineLayout;
+    public final @Nullable MemorySegment SEGMENT$vkCreateSampler;
+    public final @Nullable MemorySegment SEGMENT$vkDestroySampler;
+    public final @Nullable MemorySegment SEGMENT$vkCreateDescriptorSetLayout;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyDescriptorSetLayout;
+    public final @Nullable MemorySegment SEGMENT$vkCreateDescriptorPool;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyDescriptorPool;
+    public final @Nullable MemorySegment SEGMENT$vkResetDescriptorPool;
+    public final @Nullable MemorySegment SEGMENT$vkAllocateDescriptorSets;
+    public final @Nullable MemorySegment SEGMENT$vkFreeDescriptorSets;
+    public final @Nullable MemorySegment SEGMENT$vkUpdateDescriptorSets;
+    public final @Nullable MemorySegment SEGMENT$vkCreateFramebuffer;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyFramebuffer;
+    public final @Nullable MemorySegment SEGMENT$vkCreateRenderPass;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyRenderPass;
+    public final @Nullable MemorySegment SEGMENT$vkGetRenderAreaGranularity;
+    public final @Nullable MemorySegment SEGMENT$vkGetRenderingAreaGranularityKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCreateCommandPool;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyCommandPool;
+    public final @Nullable MemorySegment SEGMENT$vkResetCommandPool;
+    public final @Nullable MemorySegment SEGMENT$vkAllocateCommandBuffers;
+    public final @Nullable MemorySegment SEGMENT$vkFreeCommandBuffers;
+    public final @Nullable MemorySegment SEGMENT$vkBeginCommandBuffer;
+    public final @Nullable MemorySegment SEGMENT$vkEndCommandBuffer;
+    public final @Nullable MemorySegment SEGMENT$vkResetCommandBuffer;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBindPipeline;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetAttachmentFeedbackLoopEnableEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetViewport;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetScissor;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetLineWidth;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDepthBias;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetBlendConstants;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDepthBounds;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetStencilCompareMask;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetStencilWriteMask;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetStencilReference;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBindDescriptorSets;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBindIndexBuffer;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBindVertexBuffers;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDraw;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawIndexed;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawMultiEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawMultiIndexedEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawIndirect;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawIndexedIndirect;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDispatch;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDispatchIndirect;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSubpassShadingHUAWEI;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawClusterHUAWEI;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawClusterIndirectHUAWEI;
+    public final @Nullable MemorySegment SEGMENT$vkCmdUpdatePipelineIndirectBufferNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyBuffer;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyImage;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBlitImage;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyBufferToImage;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyImageToBuffer;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyMemoryIndirectNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyMemoryToImageIndirectNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdUpdateBuffer;
+    public final @Nullable MemorySegment SEGMENT$vkCmdFillBuffer;
+    public final @Nullable MemorySegment SEGMENT$vkCmdClearColorImage;
+    public final @Nullable MemorySegment SEGMENT$vkCmdClearDepthStencilImage;
+    public final @Nullable MemorySegment SEGMENT$vkCmdClearAttachments;
+    public final @Nullable MemorySegment SEGMENT$vkCmdResolveImage;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetEvent;
+    public final @Nullable MemorySegment SEGMENT$vkCmdResetEvent;
+    public final @Nullable MemorySegment SEGMENT$vkCmdWaitEvents;
+    public final @Nullable MemorySegment SEGMENT$vkCmdPipelineBarrier;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBeginQuery;
+    public final @Nullable MemorySegment SEGMENT$vkCmdEndQuery;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBeginConditionalRenderingEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdEndConditionalRenderingEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdResetQueryPool;
+    public final @Nullable MemorySegment SEGMENT$vkCmdWriteTimestamp;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyQueryPoolResults;
+    public final @Nullable MemorySegment SEGMENT$vkCmdPushConstants;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBeginRenderPass;
+    public final @Nullable MemorySegment SEGMENT$vkCmdNextSubpass;
+    public final @Nullable MemorySegment SEGMENT$vkCmdEndRenderPass;
+    public final @Nullable MemorySegment SEGMENT$vkCmdExecuteCommands;
+    public final @Nullable MemorySegment SEGMENT$vkCreateSharedSwapchainsKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCreateSwapchainKHR;
+    public final @Nullable MemorySegment SEGMENT$vkDestroySwapchainKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetSwapchainImagesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkAcquireNextImageKHR;
+    public final @Nullable MemorySegment SEGMENT$vkQueuePresentKHR;
+    public final @Nullable MemorySegment SEGMENT$vkDebugMarkerSetObjectNameEXT;
+    public final @Nullable MemorySegment SEGMENT$vkDebugMarkerSetObjectTagEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDebugMarkerBeginEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDebugMarkerEndEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDebugMarkerInsertEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetMemoryWin32HandleNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdExecuteGeneratedCommandsNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdPreprocessGeneratedCommandsNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBindPipelineShaderGroupNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetGeneratedCommandsMemoryRequirementsNV;
+    public final @Nullable MemorySegment SEGMENT$vkCreateIndirectCommandsLayoutNV;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyIndirectCommandsLayoutNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdPushDescriptorSetKHR;
+    public final @Nullable MemorySegment SEGMENT$vkTrimCommandPool;
+    public final @Nullable MemorySegment SEGMENT$vkGetMemoryWin32HandleKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetMemoryWin32HandlePropertiesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetMemoryFdKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetMemoryFdPropertiesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetMemoryZirconHandleFUCHSIA;
+    public final @Nullable MemorySegment SEGMENT$vkGetMemoryZirconHandlePropertiesFUCHSIA;
+    public final @Nullable MemorySegment SEGMENT$vkGetMemoryRemoteAddressNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetMemorySciBufNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSciBufAttributesNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetSemaphoreWin32HandleKHR;
+    public final @Nullable MemorySegment SEGMENT$vkImportSemaphoreWin32HandleKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetSemaphoreFdKHR;
+    public final @Nullable MemorySegment SEGMENT$vkImportSemaphoreFdKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetSemaphoreZirconHandleFUCHSIA;
+    public final @Nullable MemorySegment SEGMENT$vkImportSemaphoreZirconHandleFUCHSIA;
+    public final @Nullable MemorySegment SEGMENT$vkGetFenceWin32HandleKHR;
+    public final @Nullable MemorySegment SEGMENT$vkImportFenceWin32HandleKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetFenceFdKHR;
+    public final @Nullable MemorySegment SEGMENT$vkImportFenceFdKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetFenceSciSyncFenceNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetFenceSciSyncObjNV;
+    public final @Nullable MemorySegment SEGMENT$vkImportFenceSciSyncFenceNV;
+    public final @Nullable MemorySegment SEGMENT$vkImportFenceSciSyncObjNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetSemaphoreSciSyncObjNV;
+    public final @Nullable MemorySegment SEGMENT$vkImportSemaphoreSciSyncObjNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSciSyncAttributesNV;
+    public final @Nullable MemorySegment SEGMENT$vkCreateSemaphoreSciSyncPoolNV;
+    public final @Nullable MemorySegment SEGMENT$vkDestroySemaphoreSciSyncPoolNV;
+    public final @Nullable MemorySegment SEGMENT$vkAcquireWinrtDisplayNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetWinrtDisplayNV;
+    public final @Nullable MemorySegment SEGMENT$vkDisplayPowerControlEXT;
+    public final @Nullable MemorySegment SEGMENT$vkRegisterDeviceEventEXT;
+    public final @Nullable MemorySegment SEGMENT$vkRegisterDisplayEventEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetSwapchainCounterEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceGroupPeerMemoryFeatures;
+    public final @Nullable MemorySegment SEGMENT$vkBindBufferMemory2;
+    public final @Nullable MemorySegment SEGMENT$vkBindImageMemory2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDeviceMask;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceGroupPresentCapabilitiesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceGroupSurfacePresentModesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkAcquireNextImage2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDispatchBase;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDevicePresentRectanglesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCreateDescriptorUpdateTemplate;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyDescriptorUpdateTemplate;
+    public final @Nullable MemorySegment SEGMENT$vkUpdateDescriptorSetWithTemplate;
+    public final @Nullable MemorySegment SEGMENT$vkCmdPushDescriptorSetWithTemplateKHR;
+    public final @Nullable MemorySegment SEGMENT$vkSetHdrMetadataEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetSwapchainStatusKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetRefreshCycleDurationGOOGLE;
+    public final @Nullable MemorySegment SEGMENT$vkGetPastPresentationTimingGOOGLE;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetViewportWScalingNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDiscardRectangleEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDiscardRectangleEnableEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDiscardRectangleModeEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetSampleLocationsEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceMultisamplePropertiesEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetBufferMemoryRequirements2;
+    public final @Nullable MemorySegment SEGMENT$vkGetImageMemoryRequirements2;
+    public final @Nullable MemorySegment SEGMENT$vkGetImageSparseMemoryRequirements2;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceBufferMemoryRequirements;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceImageMemoryRequirements;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceImageSparseMemoryRequirements;
+    public final @Nullable MemorySegment SEGMENT$vkCreateSamplerYcbcrConversion;
+    public final @Nullable MemorySegment SEGMENT$vkDestroySamplerYcbcrConversion;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceQueue2;
+    public final @Nullable MemorySegment SEGMENT$vkCreateValidationCacheEXT;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyValidationCacheEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetValidationCacheDataEXT;
+    public final @Nullable MemorySegment SEGMENT$vkMergeValidationCachesEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetDescriptorSetLayoutSupport;
+    public final @Nullable MemorySegment SEGMENT$vkGetShaderInfoAMD;
+    public final @Nullable MemorySegment SEGMENT$vkSetLocalDimmingAMD;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetCalibratedTimestampsKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetMemoryHostPointerPropertiesEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdWriteBufferMarkerAMD;
+    public final @Nullable MemorySegment SEGMENT$vkCreateRenderPass2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBeginRenderPass2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdNextSubpass2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdEndRenderPass2;
+    public final @Nullable MemorySegment SEGMENT$vkGetSemaphoreCounterValue;
+    public final @Nullable MemorySegment SEGMENT$vkWaitSemaphores;
+    public final @Nullable MemorySegment SEGMENT$vkSignalSemaphore;
+    public final @Nullable MemorySegment SEGMENT$vkGetAndroidHardwareBufferPropertiesANDROID;
+    public final @Nullable MemorySegment SEGMENT$vkGetMemoryAndroidHardwareBufferANDROID;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawIndirectCount;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawIndexedIndirectCount;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetCheckpointNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetQueueCheckpointDataNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBindTransformFeedbackBuffersEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBeginTransformFeedbackEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdEndTransformFeedbackEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBeginQueryIndexedEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdEndQueryIndexedEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawIndirectByteCountEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetExclusiveScissorNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetExclusiveScissorEnableNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBindShadingRateImageNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetViewportShadingRatePaletteNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetCoarseSampleOrderNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawMeshTasksNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawMeshTasksIndirectNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawMeshTasksIndirectCountNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawMeshTasksEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawMeshTasksIndirectEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDrawMeshTasksIndirectCountEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCompileDeferredNV;
+    public final @Nullable MemorySegment SEGMENT$vkCreateAccelerationStructureNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBindInvocationMaskHUAWEI;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyAccelerationStructureKHR;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyAccelerationStructureNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetAccelerationStructureMemoryRequirementsNV;
+    public final @Nullable MemorySegment SEGMENT$vkBindAccelerationStructureMemoryNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyAccelerationStructureNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyAccelerationStructureKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCopyAccelerationStructureKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyAccelerationStructureToMemoryKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCopyAccelerationStructureToMemoryKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyMemoryToAccelerationStructureKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCopyMemoryToAccelerationStructureKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdWriteAccelerationStructuresPropertiesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdWriteAccelerationStructuresPropertiesNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBuildAccelerationStructureNV;
+    public final @Nullable MemorySegment SEGMENT$vkWriteAccelerationStructuresPropertiesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdTraceRaysKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdTraceRaysNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetRayTracingShaderGroupHandlesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetRayTracingCaptureReplayShaderGroupHandlesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetAccelerationStructureHandleNV;
+    public final @Nullable MemorySegment SEGMENT$vkCreateRayTracingPipelinesNV;
+    public final @Nullable MemorySegment SEGMENT$vkCreateRayTracingPipelinesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceCooperativeMatrixPropertiesNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdTraceRaysIndirectKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdTraceRaysIndirect2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceAccelerationStructureCompatibilityKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetRayTracingShaderGroupStackSizeKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetRayTracingPipelineStackSizeKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetImageViewHandleNVX;
+    public final @Nullable MemorySegment SEGMENT$vkGetImageViewAddressNVX;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfacePresentModes2EXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceGroupSurfacePresentModes2EXT;
+    public final @Nullable MemorySegment SEGMENT$vkAcquireFullScreenExclusiveModeEXT;
+    public final @Nullable MemorySegment SEGMENT$vkReleaseFullScreenExclusiveModeEXT;
+    public final @Nullable MemorySegment SEGMENT$vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkAcquireProfilingLockKHR;
+    public final @Nullable MemorySegment SEGMENT$vkReleaseProfilingLockKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetImageDrmFormatModifierPropertiesEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetBufferOpaqueCaptureAddress;
+    public final @Nullable MemorySegment SEGMENT$vkGetBufferDeviceAddress;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV;
+    public final @Nullable MemorySegment SEGMENT$vkInitializePerformanceApiINTEL;
+    public final @Nullable MemorySegment SEGMENT$vkUninitializePerformanceApiINTEL;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetPerformanceMarkerINTEL;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetPerformanceStreamMarkerINTEL;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetPerformanceOverrideINTEL;
+    public final @Nullable MemorySegment SEGMENT$vkAcquirePerformanceConfigurationINTEL;
+    public final @Nullable MemorySegment SEGMENT$vkReleasePerformanceConfigurationINTEL;
+    public final @Nullable MemorySegment SEGMENT$vkQueueSetPerformanceConfigurationINTEL;
+    public final @Nullable MemorySegment SEGMENT$vkGetPerformanceParameterINTEL;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceMemoryOpaqueCaptureAddress;
+    public final @Nullable MemorySegment SEGMENT$vkGetPipelineExecutablePropertiesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPipelineExecutableStatisticsKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPipelineExecutableInternalRepresentationsKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetLineStippleKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCreateAccelerationStructureKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBuildAccelerationStructuresKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBuildAccelerationStructuresIndirectKHR;
+    public final @Nullable MemorySegment SEGMENT$vkBuildAccelerationStructuresKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetAccelerationStructureDeviceAddressKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCreateDeferredOperationKHR;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyDeferredOperationKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeferredOperationMaxConcurrencyKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeferredOperationResultKHR;
+    public final @Nullable MemorySegment SEGMENT$vkDeferredOperationJoinKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPipelineIndirectMemoryRequirementsNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetPipelineIndirectDeviceAddressNV;
+    public final @Nullable MemorySegment SEGMENT$vkAntiLagUpdateAMD;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetCullMode;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetFrontFace;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetPrimitiveTopology;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetViewportWithCount;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetScissorWithCount;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBindIndexBuffer2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBindVertexBuffers2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDepthTestEnable;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDepthWriteEnable;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDepthCompareOp;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDepthBoundsTestEnable;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetStencilTestEnable;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetStencilOp;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetPatchControlPointsEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetRasterizerDiscardEnable;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDepthBiasEnable;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetLogicOpEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetPrimitiveRestartEnable;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetTessellationDomainOriginEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDepthClampEnableEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetPolygonModeEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetRasterizationSamplesEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetSampleMaskEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetAlphaToCoverageEnableEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetAlphaToOneEnableEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetLogicOpEnableEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetColorBlendEnableEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetColorBlendEquationEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetColorWriteMaskEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetRasterizationStreamEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetConservativeRasterizationModeEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetExtraPrimitiveOverestimationSizeEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDepthClipEnableEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetSampleLocationsEnableEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetColorBlendAdvancedEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetProvokingVertexModeEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetLineRasterizationModeEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetLineStippleEnableEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDepthClipNegativeOneToOneEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetViewportWScalingEnableNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetViewportSwizzleNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetCoverageToColorEnableNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetCoverageToColorLocationNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetCoverageModulationModeNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetCoverageModulationTableEnableNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetCoverageModulationTableNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetShadingRateImageEnableNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetCoverageReductionModeNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetRepresentativeFragmentTestEnableNV;
+    public final @Nullable MemorySegment SEGMENT$vkCreatePrivateDataSlot;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyPrivateDataSlot;
+    public final @Nullable MemorySegment SEGMENT$vkSetPrivateData;
+    public final @Nullable MemorySegment SEGMENT$vkGetPrivateData;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyBuffer2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyImage2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBlitImage2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyBufferToImage2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyImageToBuffer2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdResolveImage2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdRefreshObjectsKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceRefreshableObjectTypesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetFragmentShadingRateKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceFragmentShadingRatesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetFragmentShadingRateEnumNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetAccelerationStructureBuildSizesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetVertexInputEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetColorWriteEnableEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetEvent2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdResetEvent2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdWaitEvents2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdPipelineBarrier2;
+    public final @Nullable MemorySegment SEGMENT$vkQueueSubmit2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdWriteTimestamp2;
+    public final @Nullable MemorySegment SEGMENT$vkCmdWriteBufferMarker2AMD;
+    public final @Nullable MemorySegment SEGMENT$vkGetQueueCheckpointData2NV;
+    public final @Nullable MemorySegment SEGMENT$vkCopyMemoryToImageEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCopyImageToMemoryEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCopyImageToImageEXT;
+    public final @Nullable MemorySegment SEGMENT$vkTransitionImageLayoutEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDecompressMemoryNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDecompressMemoryIndirectCountNV;
+    public final @Nullable MemorySegment SEGMENT$vkCreateCuModuleNVX;
+    public final @Nullable MemorySegment SEGMENT$vkCreateCuFunctionNVX;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyCuModuleNVX;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyCuFunctionNVX;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCuLaunchKernelNVX;
+    public final @Nullable MemorySegment SEGMENT$vkGetDescriptorSetLayoutSizeEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetDescriptorSetLayoutBindingOffsetEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetDescriptorEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBindDescriptorBuffersEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDescriptorBufferOffsetsEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBindDescriptorBufferEmbeddedSamplersEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetBufferOpaqueCaptureDescriptorDataEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetImageOpaqueCaptureDescriptorDataEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetImageViewOpaqueCaptureDescriptorDataEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetSamplerOpaqueCaptureDescriptorDataEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT;
+    public final @Nullable MemorySegment SEGMENT$vkSetDeviceMemoryPriorityEXT;
+    public final @Nullable MemorySegment SEGMENT$vkWaitForPresentKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCreateBufferCollectionFUCHSIA;
+    public final @Nullable MemorySegment SEGMENT$vkSetBufferCollectionBufferConstraintsFUCHSIA;
+    public final @Nullable MemorySegment SEGMENT$vkSetBufferCollectionImageConstraintsFUCHSIA;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyBufferCollectionFUCHSIA;
+    public final @Nullable MemorySegment SEGMENT$vkGetBufferCollectionPropertiesFUCHSIA;
+    public final @Nullable MemorySegment SEGMENT$vkCreateCudaModuleNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetCudaModuleCacheNV;
+    public final @Nullable MemorySegment SEGMENT$vkCreateCudaFunctionNV;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyCudaModuleNV;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyCudaFunctionNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCudaLaunchKernelNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBeginRendering;
+    public final @Nullable MemorySegment SEGMENT$vkCmdEndRendering;
+    public final @Nullable MemorySegment SEGMENT$vkGetDescriptorSetLayoutHostMappingInfoVALVE;
+    public final @Nullable MemorySegment SEGMENT$vkGetDescriptorSetHostMappingVALVE;
+    public final @Nullable MemorySegment SEGMENT$vkCreateMicromapEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBuildMicromapsEXT;
+    public final @Nullable MemorySegment SEGMENT$vkBuildMicromapsEXT;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyMicromapEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyMicromapEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCopyMicromapEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyMicromapToMemoryEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCopyMicromapToMemoryEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdCopyMemoryToMicromapEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCopyMemoryToMicromapEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdWriteMicromapsPropertiesEXT;
+    public final @Nullable MemorySegment SEGMENT$vkWriteMicromapsPropertiesEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceMicromapCompatibilityEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetMicromapBuildSizesEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetShaderModuleIdentifierEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetShaderModuleCreateInfoIdentifierEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetImageSubresourceLayout2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetPipelinePropertiesEXT;
+    public final @Nullable MemorySegment SEGMENT$vkExportMetalObjectsEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetFramebufferTilePropertiesQCOM;
+    public final @Nullable MemorySegment SEGMENT$vkGetDynamicRenderingTilePropertiesQCOM;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceOpticalFlowImageFormatsNV;
+    public final @Nullable MemorySegment SEGMENT$vkCreateOpticalFlowSessionNV;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyOpticalFlowSessionNV;
+    public final @Nullable MemorySegment SEGMENT$vkBindOpticalFlowSessionImageNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdOpticalFlowExecuteNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceFaultInfoEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDepthBias2EXT;
+    public final @Nullable MemorySegment SEGMENT$vkReleaseSwapchainImagesEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceImageSubresourceLayoutKHR;
+    public final @Nullable MemorySegment SEGMENT$vkMapMemory2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkUnmapMemory2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkCreateShadersEXT;
+    public final @Nullable MemorySegment SEGMENT$vkDestroyShaderEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetShaderBinaryDataEXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBindShadersEXT;
+    public final @Nullable MemorySegment SEGMENT$vkGetScreenBufferPropertiesQNX;
+    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR;
+    public final @Nullable MemorySegment SEGMENT$vkGetExecutionGraphPipelineScratchSizeAMDX;
+    public final @Nullable MemorySegment SEGMENT$vkGetExecutionGraphPipelineNodeIndexAMDX;
+    public final @Nullable MemorySegment SEGMENT$vkCreateExecutionGraphPipelinesAMDX;
+    public final @Nullable MemorySegment SEGMENT$vkCmdInitializeGraphScratchMemoryAMDX;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDispatchGraphAMDX;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDispatchGraphIndirectAMDX;
+    public final @Nullable MemorySegment SEGMENT$vkCmdDispatchGraphIndirectCountAMDX;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBindDescriptorSets2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdPushConstants2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdPushDescriptorSet2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdPushDescriptorSetWithTemplate2KHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetDescriptorBufferOffsets2EXT;
+    public final @Nullable MemorySegment SEGMENT$vkCmdBindDescriptorBufferEmbeddedSamplers2EXT;
+    public final @Nullable MemorySegment SEGMENT$vkSetLatencySleepModeNV;
+    public final @Nullable MemorySegment SEGMENT$vkLatencySleepNV;
+    public final @Nullable MemorySegment SEGMENT$vkSetLatencyMarkerNV;
+    public final @Nullable MemorySegment SEGMENT$vkGetLatencyTimingsNV;
+    public final @Nullable MemorySegment SEGMENT$vkQueueNotifyOutOfBandNV;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetRenderingAttachmentLocationsKHR;
+    public final @Nullable MemorySegment SEGMENT$vkCmdSetRenderingInputAttachmentIndicesKHR;
+    public final @Nullable MethodHandle HANDLE$vkDestroyDevice;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceQueue;
+    public final @Nullable MethodHandle HANDLE$vkQueueSubmit;
+    public final @Nullable MethodHandle HANDLE$vkQueueWaitIdle;
+    public final @Nullable MethodHandle HANDLE$vkDeviceWaitIdle;
+    public final @Nullable MethodHandle HANDLE$vkAllocateMemory;
+    public final @Nullable MethodHandle HANDLE$vkFreeMemory;
+    public final @Nullable MethodHandle HANDLE$vkMapMemory;
+    public final @Nullable MethodHandle HANDLE$vkUnmapMemory;
+    public final @Nullable MethodHandle HANDLE$vkFlushMappedMemoryRanges;
+    public final @Nullable MethodHandle HANDLE$vkInvalidateMappedMemoryRanges;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceMemoryCommitment;
+    public final @Nullable MethodHandle HANDLE$vkGetBufferMemoryRequirements;
+    public final @Nullable MethodHandle HANDLE$vkBindBufferMemory;
+    public final @Nullable MethodHandle HANDLE$vkGetImageMemoryRequirements;
+    public final @Nullable MethodHandle HANDLE$vkBindImageMemory;
+    public final @Nullable MethodHandle HANDLE$vkGetImageSparseMemoryRequirements;
+    public final @Nullable MethodHandle HANDLE$vkQueueBindSparse;
+    public final @Nullable MethodHandle HANDLE$vkCreateFence;
+    public final @Nullable MethodHandle HANDLE$vkDestroyFence;
+    public final @Nullable MethodHandle HANDLE$vkResetFences;
+    public final @Nullable MethodHandle HANDLE$vkGetFenceStatus;
+    public final @Nullable MethodHandle HANDLE$vkWaitForFences;
+    public final @Nullable MethodHandle HANDLE$vkCreateSemaphore;
+    public final @Nullable MethodHandle HANDLE$vkDestroySemaphore;
+    public final @Nullable MethodHandle HANDLE$vkCreateEvent;
+    public final @Nullable MethodHandle HANDLE$vkDestroyEvent;
+    public final @Nullable MethodHandle HANDLE$vkGetEventStatus;
+    public final @Nullable MethodHandle HANDLE$vkSetEvent;
+    public final @Nullable MethodHandle HANDLE$vkResetEvent;
+    public final @Nullable MethodHandle HANDLE$vkCreateQueryPool;
+    public final @Nullable MethodHandle HANDLE$vkDestroyQueryPool;
+    public final @Nullable MethodHandle HANDLE$vkGetQueryPoolResults;
+    public final @Nullable MethodHandle HANDLE$vkResetQueryPool;
+    public final @Nullable MethodHandle HANDLE$vkCreateBuffer;
+    public final @Nullable MethodHandle HANDLE$vkDestroyBuffer;
+    public final @Nullable MethodHandle HANDLE$vkCreateBufferView;
+    public final @Nullable MethodHandle HANDLE$vkDestroyBufferView;
+    public final @Nullable MethodHandle HANDLE$vkCreateImage;
+    public final @Nullable MethodHandle HANDLE$vkDestroyImage;
+    public final @Nullable MethodHandle HANDLE$vkGetImageSubresourceLayout;
+    public final @Nullable MethodHandle HANDLE$vkCreateImageView;
+    public final @Nullable MethodHandle HANDLE$vkDestroyImageView;
+    public final @Nullable MethodHandle HANDLE$vkCreateShaderModule;
+    public final @Nullable MethodHandle HANDLE$vkDestroyShaderModule;
+    public final @Nullable MethodHandle HANDLE$vkCreatePipelineCache;
+    public final @Nullable MethodHandle HANDLE$vkDestroyPipelineCache;
+    public final @Nullable MethodHandle HANDLE$vkGetPipelineCacheData;
+    public final @Nullable MethodHandle HANDLE$vkMergePipelineCaches;
+    public final @Nullable MethodHandle HANDLE$vkCreatePipelineBinariesKHR;
+    public final @Nullable MethodHandle HANDLE$vkDestroyPipelineBinaryKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPipelineKeyKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPipelineBinaryDataKHR;
+    public final @Nullable MethodHandle HANDLE$vkReleaseCapturedPipelineDataKHR;
+    public final @Nullable MethodHandle HANDLE$vkCreateGraphicsPipelines;
+    public final @Nullable MethodHandle HANDLE$vkCreateComputePipelines;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI;
+    public final @Nullable MethodHandle HANDLE$vkDestroyPipeline;
+    public final @Nullable MethodHandle HANDLE$vkCreatePipelineLayout;
+    public final @Nullable MethodHandle HANDLE$vkDestroyPipelineLayout;
+    public final @Nullable MethodHandle HANDLE$vkCreateSampler;
+    public final @Nullable MethodHandle HANDLE$vkDestroySampler;
+    public final @Nullable MethodHandle HANDLE$vkCreateDescriptorSetLayout;
+    public final @Nullable MethodHandle HANDLE$vkDestroyDescriptorSetLayout;
+    public final @Nullable MethodHandle HANDLE$vkCreateDescriptorPool;
+    public final @Nullable MethodHandle HANDLE$vkDestroyDescriptorPool;
+    public final @Nullable MethodHandle HANDLE$vkResetDescriptorPool;
+    public final @Nullable MethodHandle HANDLE$vkAllocateDescriptorSets;
+    public final @Nullable MethodHandle HANDLE$vkFreeDescriptorSets;
+    public final @Nullable MethodHandle HANDLE$vkUpdateDescriptorSets;
+    public final @Nullable MethodHandle HANDLE$vkCreateFramebuffer;
+    public final @Nullable MethodHandle HANDLE$vkDestroyFramebuffer;
+    public final @Nullable MethodHandle HANDLE$vkCreateRenderPass;
+    public final @Nullable MethodHandle HANDLE$vkDestroyRenderPass;
+    public final @Nullable MethodHandle HANDLE$vkGetRenderAreaGranularity;
+    public final @Nullable MethodHandle HANDLE$vkGetRenderingAreaGranularityKHR;
+    public final @Nullable MethodHandle HANDLE$vkCreateCommandPool;
+    public final @Nullable MethodHandle HANDLE$vkDestroyCommandPool;
+    public final @Nullable MethodHandle HANDLE$vkResetCommandPool;
+    public final @Nullable MethodHandle HANDLE$vkAllocateCommandBuffers;
+    public final @Nullable MethodHandle HANDLE$vkFreeCommandBuffers;
+    public final @Nullable MethodHandle HANDLE$vkBeginCommandBuffer;
+    public final @Nullable MethodHandle HANDLE$vkEndCommandBuffer;
+    public final @Nullable MethodHandle HANDLE$vkResetCommandBuffer;
+    public final @Nullable MethodHandle HANDLE$vkCmdBindPipeline;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetAttachmentFeedbackLoopEnableEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetViewport;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetScissor;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetLineWidth;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDepthBias;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetBlendConstants;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDepthBounds;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetStencilCompareMask;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetStencilWriteMask;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetStencilReference;
+    public final @Nullable MethodHandle HANDLE$vkCmdBindDescriptorSets;
+    public final @Nullable MethodHandle HANDLE$vkCmdBindIndexBuffer;
+    public final @Nullable MethodHandle HANDLE$vkCmdBindVertexBuffers;
+    public final @Nullable MethodHandle HANDLE$vkCmdDraw;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawIndexed;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawMultiEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawMultiIndexedEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawIndirect;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawIndexedIndirect;
+    public final @Nullable MethodHandle HANDLE$vkCmdDispatch;
+    public final @Nullable MethodHandle HANDLE$vkCmdDispatchIndirect;
+    public final @Nullable MethodHandle HANDLE$vkCmdSubpassShadingHUAWEI;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawClusterHUAWEI;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawClusterIndirectHUAWEI;
+    public final @Nullable MethodHandle HANDLE$vkCmdUpdatePipelineIndirectBufferNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyBuffer;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyImage;
+    public final @Nullable MethodHandle HANDLE$vkCmdBlitImage;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyBufferToImage;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyImageToBuffer;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyMemoryIndirectNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyMemoryToImageIndirectNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdUpdateBuffer;
+    public final @Nullable MethodHandle HANDLE$vkCmdFillBuffer;
+    public final @Nullable MethodHandle HANDLE$vkCmdClearColorImage;
+    public final @Nullable MethodHandle HANDLE$vkCmdClearDepthStencilImage;
+    public final @Nullable MethodHandle HANDLE$vkCmdClearAttachments;
+    public final @Nullable MethodHandle HANDLE$vkCmdResolveImage;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetEvent;
+    public final @Nullable MethodHandle HANDLE$vkCmdResetEvent;
+    public final @Nullable MethodHandle HANDLE$vkCmdWaitEvents;
+    public final @Nullable MethodHandle HANDLE$vkCmdPipelineBarrier;
+    public final @Nullable MethodHandle HANDLE$vkCmdBeginQuery;
+    public final @Nullable MethodHandle HANDLE$vkCmdEndQuery;
+    public final @Nullable MethodHandle HANDLE$vkCmdBeginConditionalRenderingEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdEndConditionalRenderingEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdResetQueryPool;
+    public final @Nullable MethodHandle HANDLE$vkCmdWriteTimestamp;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyQueryPoolResults;
+    public final @Nullable MethodHandle HANDLE$vkCmdPushConstants;
+    public final @Nullable MethodHandle HANDLE$vkCmdBeginRenderPass;
+    public final @Nullable MethodHandle HANDLE$vkCmdNextSubpass;
+    public final @Nullable MethodHandle HANDLE$vkCmdEndRenderPass;
+    public final @Nullable MethodHandle HANDLE$vkCmdExecuteCommands;
+    public final @Nullable MethodHandle HANDLE$vkCreateSharedSwapchainsKHR;
+    public final @Nullable MethodHandle HANDLE$vkCreateSwapchainKHR;
+    public final @Nullable MethodHandle HANDLE$vkDestroySwapchainKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetSwapchainImagesKHR;
+    public final @Nullable MethodHandle HANDLE$vkAcquireNextImageKHR;
+    public final @Nullable MethodHandle HANDLE$vkQueuePresentKHR;
+    public final @Nullable MethodHandle HANDLE$vkDebugMarkerSetObjectNameEXT;
+    public final @Nullable MethodHandle HANDLE$vkDebugMarkerSetObjectTagEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdDebugMarkerBeginEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdDebugMarkerEndEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdDebugMarkerInsertEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetMemoryWin32HandleNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdExecuteGeneratedCommandsNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdPreprocessGeneratedCommandsNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdBindPipelineShaderGroupNV;
+    public final @Nullable MethodHandle HANDLE$vkGetGeneratedCommandsMemoryRequirementsNV;
+    public final @Nullable MethodHandle HANDLE$vkCreateIndirectCommandsLayoutNV;
+    public final @Nullable MethodHandle HANDLE$vkDestroyIndirectCommandsLayoutNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdPushDescriptorSetKHR;
+    public final @Nullable MethodHandle HANDLE$vkTrimCommandPool;
+    public final @Nullable MethodHandle HANDLE$vkGetMemoryWin32HandleKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetMemoryWin32HandlePropertiesKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetMemoryFdKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetMemoryFdPropertiesKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetMemoryZirconHandleFUCHSIA;
+    public final @Nullable MethodHandle HANDLE$vkGetMemoryZirconHandlePropertiesFUCHSIA;
+    public final @Nullable MethodHandle HANDLE$vkGetMemoryRemoteAddressNV;
+    public final @Nullable MethodHandle HANDLE$vkGetMemorySciBufNV;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSciBufAttributesNV;
+    public final @Nullable MethodHandle HANDLE$vkGetSemaphoreWin32HandleKHR;
+    public final @Nullable MethodHandle HANDLE$vkImportSemaphoreWin32HandleKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetSemaphoreFdKHR;
+    public final @Nullable MethodHandle HANDLE$vkImportSemaphoreFdKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetSemaphoreZirconHandleFUCHSIA;
+    public final @Nullable MethodHandle HANDLE$vkImportSemaphoreZirconHandleFUCHSIA;
+    public final @Nullable MethodHandle HANDLE$vkGetFenceWin32HandleKHR;
+    public final @Nullable MethodHandle HANDLE$vkImportFenceWin32HandleKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetFenceFdKHR;
+    public final @Nullable MethodHandle HANDLE$vkImportFenceFdKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetFenceSciSyncFenceNV;
+    public final @Nullable MethodHandle HANDLE$vkGetFenceSciSyncObjNV;
+    public final @Nullable MethodHandle HANDLE$vkImportFenceSciSyncFenceNV;
+    public final @Nullable MethodHandle HANDLE$vkImportFenceSciSyncObjNV;
+    public final @Nullable MethodHandle HANDLE$vkGetSemaphoreSciSyncObjNV;
+    public final @Nullable MethodHandle HANDLE$vkImportSemaphoreSciSyncObjNV;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSciSyncAttributesNV;
+    public final @Nullable MethodHandle HANDLE$vkCreateSemaphoreSciSyncPoolNV;
+    public final @Nullable MethodHandle HANDLE$vkDestroySemaphoreSciSyncPoolNV;
+    public final @Nullable MethodHandle HANDLE$vkAcquireWinrtDisplayNV;
+    public final @Nullable MethodHandle HANDLE$vkGetWinrtDisplayNV;
+    public final @Nullable MethodHandle HANDLE$vkDisplayPowerControlEXT;
+    public final @Nullable MethodHandle HANDLE$vkRegisterDeviceEventEXT;
+    public final @Nullable MethodHandle HANDLE$vkRegisterDisplayEventEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetSwapchainCounterEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceGroupPeerMemoryFeatures;
+    public final @Nullable MethodHandle HANDLE$vkBindBufferMemory2;
+    public final @Nullable MethodHandle HANDLE$vkBindImageMemory2;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDeviceMask;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceGroupPresentCapabilitiesKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceGroupSurfacePresentModesKHR;
+    public final @Nullable MethodHandle HANDLE$vkAcquireNextImage2KHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdDispatchBase;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDevicePresentRectanglesKHR;
+    public final @Nullable MethodHandle HANDLE$vkCreateDescriptorUpdateTemplate;
+    public final @Nullable MethodHandle HANDLE$vkDestroyDescriptorUpdateTemplate;
+    public final @Nullable MethodHandle HANDLE$vkUpdateDescriptorSetWithTemplate;
+    public final @Nullable MethodHandle HANDLE$vkCmdPushDescriptorSetWithTemplateKHR;
+    public final @Nullable MethodHandle HANDLE$vkSetHdrMetadataEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetSwapchainStatusKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetRefreshCycleDurationGOOGLE;
+    public final @Nullable MethodHandle HANDLE$vkGetPastPresentationTimingGOOGLE;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetViewportWScalingNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDiscardRectangleEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDiscardRectangleEnableEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDiscardRectangleModeEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetSampleLocationsEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceMultisamplePropertiesEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetBufferMemoryRequirements2;
+    public final @Nullable MethodHandle HANDLE$vkGetImageMemoryRequirements2;
+    public final @Nullable MethodHandle HANDLE$vkGetImageSparseMemoryRequirements2;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceBufferMemoryRequirements;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceImageMemoryRequirements;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceImageSparseMemoryRequirements;
+    public final @Nullable MethodHandle HANDLE$vkCreateSamplerYcbcrConversion;
+    public final @Nullable MethodHandle HANDLE$vkDestroySamplerYcbcrConversion;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceQueue2;
+    public final @Nullable MethodHandle HANDLE$vkCreateValidationCacheEXT;
+    public final @Nullable MethodHandle HANDLE$vkDestroyValidationCacheEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetValidationCacheDataEXT;
+    public final @Nullable MethodHandle HANDLE$vkMergeValidationCachesEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetDescriptorSetLayoutSupport;
+    public final @Nullable MethodHandle HANDLE$vkGetShaderInfoAMD;
+    public final @Nullable MethodHandle HANDLE$vkSetLocalDimmingAMD;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetCalibratedTimestampsKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetMemoryHostPointerPropertiesEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdWriteBufferMarkerAMD;
+    public final @Nullable MethodHandle HANDLE$vkCreateRenderPass2;
+    public final @Nullable MethodHandle HANDLE$vkCmdBeginRenderPass2;
+    public final @Nullable MethodHandle HANDLE$vkCmdNextSubpass2;
+    public final @Nullable MethodHandle HANDLE$vkCmdEndRenderPass2;
+    public final @Nullable MethodHandle HANDLE$vkGetSemaphoreCounterValue;
+    public final @Nullable MethodHandle HANDLE$vkWaitSemaphores;
+    public final @Nullable MethodHandle HANDLE$vkSignalSemaphore;
+    public final @Nullable MethodHandle HANDLE$vkGetAndroidHardwareBufferPropertiesANDROID;
+    public final @Nullable MethodHandle HANDLE$vkGetMemoryAndroidHardwareBufferANDROID;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawIndirectCount;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawIndexedIndirectCount;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetCheckpointNV;
+    public final @Nullable MethodHandle HANDLE$vkGetQueueCheckpointDataNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdBindTransformFeedbackBuffersEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdBeginTransformFeedbackEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdEndTransformFeedbackEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdBeginQueryIndexedEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdEndQueryIndexedEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawIndirectByteCountEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetExclusiveScissorNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetExclusiveScissorEnableNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdBindShadingRateImageNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetViewportShadingRatePaletteNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetCoarseSampleOrderNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawMeshTasksNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawMeshTasksIndirectNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawMeshTasksIndirectCountNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawMeshTasksEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawMeshTasksIndirectEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdDrawMeshTasksIndirectCountEXT;
+    public final @Nullable MethodHandle HANDLE$vkCompileDeferredNV;
+    public final @Nullable MethodHandle HANDLE$vkCreateAccelerationStructureNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdBindInvocationMaskHUAWEI;
+    public final @Nullable MethodHandle HANDLE$vkDestroyAccelerationStructureKHR;
+    public final @Nullable MethodHandle HANDLE$vkDestroyAccelerationStructureNV;
+    public final @Nullable MethodHandle HANDLE$vkGetAccelerationStructureMemoryRequirementsNV;
+    public final @Nullable MethodHandle HANDLE$vkBindAccelerationStructureMemoryNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyAccelerationStructureNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyAccelerationStructureKHR;
+    public final @Nullable MethodHandle HANDLE$vkCopyAccelerationStructureKHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyAccelerationStructureToMemoryKHR;
+    public final @Nullable MethodHandle HANDLE$vkCopyAccelerationStructureToMemoryKHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyMemoryToAccelerationStructureKHR;
+    public final @Nullable MethodHandle HANDLE$vkCopyMemoryToAccelerationStructureKHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdWriteAccelerationStructuresPropertiesKHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdWriteAccelerationStructuresPropertiesNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdBuildAccelerationStructureNV;
+    public final @Nullable MethodHandle HANDLE$vkWriteAccelerationStructuresPropertiesKHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdTraceRaysKHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdTraceRaysNV;
+    public final @Nullable MethodHandle HANDLE$vkGetRayTracingShaderGroupHandlesKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetRayTracingCaptureReplayShaderGroupHandlesKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetAccelerationStructureHandleNV;
+    public final @Nullable MethodHandle HANDLE$vkCreateRayTracingPipelinesNV;
+    public final @Nullable MethodHandle HANDLE$vkCreateRayTracingPipelinesKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdTraceRaysIndirectKHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdTraceRaysIndirect2KHR;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceAccelerationStructureCompatibilityKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetRayTracingShaderGroupStackSizeKHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetRayTracingPipelineStackSizeKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetImageViewHandleNVX;
+    public final @Nullable MethodHandle HANDLE$vkGetImageViewAddressNVX;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfacePresentModes2EXT;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceGroupSurfacePresentModes2EXT;
+    public final @Nullable MethodHandle HANDLE$vkAcquireFullScreenExclusiveModeEXT;
+    public final @Nullable MethodHandle HANDLE$vkReleaseFullScreenExclusiveModeEXT;
+    public final @Nullable MethodHandle HANDLE$vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR;
+    public final @Nullable MethodHandle HANDLE$vkAcquireProfilingLockKHR;
+    public final @Nullable MethodHandle HANDLE$vkReleaseProfilingLockKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetImageDrmFormatModifierPropertiesEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetBufferOpaqueCaptureAddress;
+    public final @Nullable MethodHandle HANDLE$vkGetBufferDeviceAddress;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV;
+    public final @Nullable MethodHandle HANDLE$vkInitializePerformanceApiINTEL;
+    public final @Nullable MethodHandle HANDLE$vkUninitializePerformanceApiINTEL;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetPerformanceMarkerINTEL;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetPerformanceStreamMarkerINTEL;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetPerformanceOverrideINTEL;
+    public final @Nullable MethodHandle HANDLE$vkAcquirePerformanceConfigurationINTEL;
+    public final @Nullable MethodHandle HANDLE$vkReleasePerformanceConfigurationINTEL;
+    public final @Nullable MethodHandle HANDLE$vkQueueSetPerformanceConfigurationINTEL;
+    public final @Nullable MethodHandle HANDLE$vkGetPerformanceParameterINTEL;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceMemoryOpaqueCaptureAddress;
+    public final @Nullable MethodHandle HANDLE$vkGetPipelineExecutablePropertiesKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPipelineExecutableStatisticsKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPipelineExecutableInternalRepresentationsKHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetLineStippleKHR;
+    public final @Nullable MethodHandle HANDLE$vkCreateAccelerationStructureKHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdBuildAccelerationStructuresKHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdBuildAccelerationStructuresIndirectKHR;
+    public final @Nullable MethodHandle HANDLE$vkBuildAccelerationStructuresKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetAccelerationStructureDeviceAddressKHR;
+    public final @Nullable MethodHandle HANDLE$vkCreateDeferredOperationKHR;
+    public final @Nullable MethodHandle HANDLE$vkDestroyDeferredOperationKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetDeferredOperationMaxConcurrencyKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetDeferredOperationResultKHR;
+    public final @Nullable MethodHandle HANDLE$vkDeferredOperationJoinKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPipelineIndirectMemoryRequirementsNV;
+    public final @Nullable MethodHandle HANDLE$vkGetPipelineIndirectDeviceAddressNV;
+    public final @Nullable MethodHandle HANDLE$vkAntiLagUpdateAMD;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetCullMode;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetFrontFace;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetPrimitiveTopology;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetViewportWithCount;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetScissorWithCount;
+    public final @Nullable MethodHandle HANDLE$vkCmdBindIndexBuffer2KHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdBindVertexBuffers2;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDepthTestEnable;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDepthWriteEnable;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDepthCompareOp;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDepthBoundsTestEnable;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetStencilTestEnable;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetStencilOp;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetPatchControlPointsEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetRasterizerDiscardEnable;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDepthBiasEnable;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetLogicOpEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetPrimitiveRestartEnable;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetTessellationDomainOriginEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDepthClampEnableEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetPolygonModeEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetRasterizationSamplesEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetSampleMaskEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetAlphaToCoverageEnableEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetAlphaToOneEnableEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetLogicOpEnableEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetColorBlendEnableEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetColorBlendEquationEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetColorWriteMaskEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetRasterizationStreamEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetConservativeRasterizationModeEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetExtraPrimitiveOverestimationSizeEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDepthClipEnableEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetSampleLocationsEnableEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetColorBlendAdvancedEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetProvokingVertexModeEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetLineRasterizationModeEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetLineStippleEnableEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDepthClipNegativeOneToOneEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetViewportWScalingEnableNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetViewportSwizzleNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetCoverageToColorEnableNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetCoverageToColorLocationNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetCoverageModulationModeNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetCoverageModulationTableEnableNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetCoverageModulationTableNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetShadingRateImageEnableNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetCoverageReductionModeNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetRepresentativeFragmentTestEnableNV;
+    public final @Nullable MethodHandle HANDLE$vkCreatePrivateDataSlot;
+    public final @Nullable MethodHandle HANDLE$vkDestroyPrivateDataSlot;
+    public final @Nullable MethodHandle HANDLE$vkSetPrivateData;
+    public final @Nullable MethodHandle HANDLE$vkGetPrivateData;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyBuffer2;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyImage2;
+    public final @Nullable MethodHandle HANDLE$vkCmdBlitImage2;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyBufferToImage2;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyImageToBuffer2;
+    public final @Nullable MethodHandle HANDLE$vkCmdResolveImage2;
+    public final @Nullable MethodHandle HANDLE$vkCmdRefreshObjectsKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceRefreshableObjectTypesKHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetFragmentShadingRateKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceFragmentShadingRatesKHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetFragmentShadingRateEnumNV;
+    public final @Nullable MethodHandle HANDLE$vkGetAccelerationStructureBuildSizesKHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetVertexInputEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetColorWriteEnableEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetEvent2;
+    public final @Nullable MethodHandle HANDLE$vkCmdResetEvent2;
+    public final @Nullable MethodHandle HANDLE$vkCmdWaitEvents2;
+    public final @Nullable MethodHandle HANDLE$vkCmdPipelineBarrier2;
+    public final @Nullable MethodHandle HANDLE$vkQueueSubmit2;
+    public final @Nullable MethodHandle HANDLE$vkCmdWriteTimestamp2;
+    public final @Nullable MethodHandle HANDLE$vkCmdWriteBufferMarker2AMD;
+    public final @Nullable MethodHandle HANDLE$vkGetQueueCheckpointData2NV;
+    public final @Nullable MethodHandle HANDLE$vkCopyMemoryToImageEXT;
+    public final @Nullable MethodHandle HANDLE$vkCopyImageToMemoryEXT;
+    public final @Nullable MethodHandle HANDLE$vkCopyImageToImageEXT;
+    public final @Nullable MethodHandle HANDLE$vkTransitionImageLayoutEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdDecompressMemoryNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdDecompressMemoryIndirectCountNV;
+    public final @Nullable MethodHandle HANDLE$vkCreateCuModuleNVX;
+    public final @Nullable MethodHandle HANDLE$vkCreateCuFunctionNVX;
+    public final @Nullable MethodHandle HANDLE$vkDestroyCuModuleNVX;
+    public final @Nullable MethodHandle HANDLE$vkDestroyCuFunctionNVX;
+    public final @Nullable MethodHandle HANDLE$vkCmdCuLaunchKernelNVX;
+    public final @Nullable MethodHandle HANDLE$vkGetDescriptorSetLayoutSizeEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetDescriptorSetLayoutBindingOffsetEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetDescriptorEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdBindDescriptorBuffersEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDescriptorBufferOffsetsEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdBindDescriptorBufferEmbeddedSamplersEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetBufferOpaqueCaptureDescriptorDataEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetImageOpaqueCaptureDescriptorDataEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetImageViewOpaqueCaptureDescriptorDataEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetSamplerOpaqueCaptureDescriptorDataEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT;
+    public final @Nullable MethodHandle HANDLE$vkSetDeviceMemoryPriorityEXT;
+    public final @Nullable MethodHandle HANDLE$vkWaitForPresentKHR;
+    public final @Nullable MethodHandle HANDLE$vkCreateBufferCollectionFUCHSIA;
+    public final @Nullable MethodHandle HANDLE$vkSetBufferCollectionBufferConstraintsFUCHSIA;
+    public final @Nullable MethodHandle HANDLE$vkSetBufferCollectionImageConstraintsFUCHSIA;
+    public final @Nullable MethodHandle HANDLE$vkDestroyBufferCollectionFUCHSIA;
+    public final @Nullable MethodHandle HANDLE$vkGetBufferCollectionPropertiesFUCHSIA;
+    public final @Nullable MethodHandle HANDLE$vkCreateCudaModuleNV;
+    public final @Nullable MethodHandle HANDLE$vkGetCudaModuleCacheNV;
+    public final @Nullable MethodHandle HANDLE$vkCreateCudaFunctionNV;
+    public final @Nullable MethodHandle HANDLE$vkDestroyCudaModuleNV;
+    public final @Nullable MethodHandle HANDLE$vkDestroyCudaFunctionNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdCudaLaunchKernelNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdBeginRendering;
+    public final @Nullable MethodHandle HANDLE$vkCmdEndRendering;
+    public final @Nullable MethodHandle HANDLE$vkGetDescriptorSetLayoutHostMappingInfoVALVE;
+    public final @Nullable MethodHandle HANDLE$vkGetDescriptorSetHostMappingVALVE;
+    public final @Nullable MethodHandle HANDLE$vkCreateMicromapEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdBuildMicromapsEXT;
+    public final @Nullable MethodHandle HANDLE$vkBuildMicromapsEXT;
+    public final @Nullable MethodHandle HANDLE$vkDestroyMicromapEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyMicromapEXT;
+    public final @Nullable MethodHandle HANDLE$vkCopyMicromapEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyMicromapToMemoryEXT;
+    public final @Nullable MethodHandle HANDLE$vkCopyMicromapToMemoryEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdCopyMemoryToMicromapEXT;
+    public final @Nullable MethodHandle HANDLE$vkCopyMemoryToMicromapEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdWriteMicromapsPropertiesEXT;
+    public final @Nullable MethodHandle HANDLE$vkWriteMicromapsPropertiesEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceMicromapCompatibilityEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetMicromapBuildSizesEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetShaderModuleIdentifierEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetShaderModuleCreateInfoIdentifierEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetImageSubresourceLayout2KHR;
+    public final @Nullable MethodHandle HANDLE$vkGetPipelinePropertiesEXT;
+    public final @Nullable MethodHandle HANDLE$vkExportMetalObjectsEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetFramebufferTilePropertiesQCOM;
+    public final @Nullable MethodHandle HANDLE$vkGetDynamicRenderingTilePropertiesQCOM;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceOpticalFlowImageFormatsNV;
+    public final @Nullable MethodHandle HANDLE$vkCreateOpticalFlowSessionNV;
+    public final @Nullable MethodHandle HANDLE$vkDestroyOpticalFlowSessionNV;
+    public final @Nullable MethodHandle HANDLE$vkBindOpticalFlowSessionImageNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdOpticalFlowExecuteNV;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceFaultInfoEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDepthBias2EXT;
+    public final @Nullable MethodHandle HANDLE$vkReleaseSwapchainImagesEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceImageSubresourceLayoutKHR;
+    public final @Nullable MethodHandle HANDLE$vkMapMemory2KHR;
+    public final @Nullable MethodHandle HANDLE$vkUnmapMemory2KHR;
+    public final @Nullable MethodHandle HANDLE$vkCreateShadersEXT;
+    public final @Nullable MethodHandle HANDLE$vkDestroyShaderEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetShaderBinaryDataEXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdBindShadersEXT;
+    public final @Nullable MethodHandle HANDLE$vkGetScreenBufferPropertiesQNX;
+    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR;
+    public final @Nullable MethodHandle HANDLE$vkGetExecutionGraphPipelineScratchSizeAMDX;
+    public final @Nullable MethodHandle HANDLE$vkGetExecutionGraphPipelineNodeIndexAMDX;
+    public final @Nullable MethodHandle HANDLE$vkCreateExecutionGraphPipelinesAMDX;
+    public final @Nullable MethodHandle HANDLE$vkCmdInitializeGraphScratchMemoryAMDX;
+    public final @Nullable MethodHandle HANDLE$vkCmdDispatchGraphAMDX;
+    public final @Nullable MethodHandle HANDLE$vkCmdDispatchGraphIndirectAMDX;
+    public final @Nullable MethodHandle HANDLE$vkCmdDispatchGraphIndirectCountAMDX;
+    public final @Nullable MethodHandle HANDLE$vkCmdBindDescriptorSets2KHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdPushConstants2KHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdPushDescriptorSet2KHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdPushDescriptorSetWithTemplate2KHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetDescriptorBufferOffsets2EXT;
+    public final @Nullable MethodHandle HANDLE$vkCmdBindDescriptorBufferEmbeddedSamplers2EXT;
+    public final @Nullable MethodHandle HANDLE$vkSetLatencySleepModeNV;
+    public final @Nullable MethodHandle HANDLE$vkLatencySleepNV;
+    public final @Nullable MethodHandle HANDLE$vkSetLatencyMarkerNV;
+    public final @Nullable MethodHandle HANDLE$vkGetLatencyTimingsNV;
+    public final @Nullable MethodHandle HANDLE$vkQueueNotifyOutOfBandNV;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetRenderingAttachmentLocationsKHR;
+    public final @Nullable MethodHandle HANDLE$vkCmdSetRenderingInputAttachmentIndicesKHR;
 
     public DeviceCommands(RawFunctionLoader loader, RawFunctionLoader instanceLoader) {
         SEGMENT$vkDestroyDevice = loader.apply("vkDestroyDevice");
@@ -5560,8 +5561,8 @@ public final class DeviceCommands {
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyDevice.html">vkDestroyDevice</a>
     public void vkDestroyDevice(
-            @nullable VkDevice device,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkDevice device,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyDevice.invokeExact(
@@ -5596,8 +5597,8 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkQueueSubmit(
             VkQueue queue,
             @unsigned int submitCount,
-            @nullable @pointer(target=VkSubmitInfo.class) VkSubmitInfo pSubmits,
-            @nullable VkFence fence
+            @Nullable @pointer(target=VkSubmitInfo.class) VkSubmitInfo pSubmits,
+            @Nullable VkFence fence
     ) {
         try {
             return (int) HANDLE$vkQueueSubmit.invokeExact(
@@ -5641,7 +5642,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkAllocateMemory(
             VkDevice device,
             @pointer(target=VkMemoryAllocateInfo.class) VkMemoryAllocateInfo pAllocateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkDeviceMemory.class) VkDeviceMemory.Buffer pMemory
     ) {
         try {
@@ -5659,8 +5660,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkFreeMemory.html">vkFreeMemory</a>
     public void vkFreeMemory(
             VkDevice device,
-            @nullable VkDeviceMemory memory,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkDeviceMemory memory,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkFreeMemory.invokeExact(
@@ -5839,7 +5840,7 @@ public final class DeviceCommands {
             VkDevice device,
             VkImage image,
             @unsigned IntBuffer pSparseMemoryRequirementCount,
-            @nullable @pointer(target=VkSparseImageMemoryRequirements.class) VkSparseImageMemoryRequirements pSparseMemoryRequirements
+            @Nullable @pointer(target=VkSparseImageMemoryRequirements.class) VkSparseImageMemoryRequirements pSparseMemoryRequirements
     ) {
         try {
             HANDLE$vkGetImageSparseMemoryRequirements.invokeExact(
@@ -5857,8 +5858,8 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkQueueBindSparse(
             VkQueue queue,
             @unsigned int bindInfoCount,
-            @nullable @pointer(target=VkBindSparseInfo.class) VkBindSparseInfo pBindInfo,
-            @nullable VkFence fence
+            @Nullable @pointer(target=VkBindSparseInfo.class) VkBindSparseInfo pBindInfo,
+            @Nullable VkFence fence
     ) {
         try {
             return (int) HANDLE$vkQueueBindSparse.invokeExact(
@@ -5876,7 +5877,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateFence(
             VkDevice device,
             @pointer(target=VkFenceCreateInfo.class) VkFenceCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkFence.class) VkFence.Buffer pFence
     ) {
         try {
@@ -5894,8 +5895,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyFence.html">vkDestroyFence</a>
     public void vkDestroyFence(
             VkDevice device,
-            @nullable VkFence fence,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkFence fence,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyFence.invokeExact(
@@ -5965,7 +5966,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateSemaphore(
             VkDevice device,
             @pointer(target=VkSemaphoreCreateInfo.class) VkSemaphoreCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSemaphore.class) VkSemaphore.Buffer pSemaphore
     ) {
         try {
@@ -5983,8 +5984,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroySemaphore.html">vkDestroySemaphore</a>
     public void vkDestroySemaphore(
             VkDevice device,
-            @nullable VkSemaphore semaphore,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkSemaphore semaphore,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroySemaphore.invokeExact(
@@ -6001,7 +6002,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateEvent(
             VkDevice device,
             @pointer(target=VkEventCreateInfo.class) VkEventCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkEvent.class) VkEvent.Buffer pEvent
     ) {
         try {
@@ -6019,8 +6020,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyEvent.html">vkDestroyEvent</a>
     public void vkDestroyEvent(
             VkDevice device,
-            @nullable VkEvent event,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkEvent event,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyEvent.invokeExact(
@@ -6082,7 +6083,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateQueryPool(
             VkDevice device,
             @pointer(target=VkQueryPoolCreateInfo.class) VkQueryPoolCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkQueryPool.class) VkQueryPool.Buffer pQueryPool
     ) {
         try {
@@ -6100,8 +6101,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyQueryPool.html">vkDestroyQueryPool</a>
     public void vkDestroyQueryPool(
             VkDevice device,
-            @nullable VkQueryPool queryPool,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkQueryPool queryPool,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyQueryPool.invokeExact(
@@ -6164,7 +6165,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateBuffer(
             VkDevice device,
             @pointer(target=VkBufferCreateInfo.class) VkBufferCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkBuffer.class) VkBuffer.Buffer pBuffer
     ) {
         try {
@@ -6182,8 +6183,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyBuffer.html">vkDestroyBuffer</a>
     public void vkDestroyBuffer(
             VkDevice device,
-            @nullable VkBuffer buffer,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkBuffer buffer,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyBuffer.invokeExact(
@@ -6200,7 +6201,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateBufferView(
             VkDevice device,
             @pointer(target=VkBufferViewCreateInfo.class) VkBufferViewCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkBufferView.class) VkBufferView.Buffer pView
     ) {
         try {
@@ -6218,8 +6219,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyBufferView.html">vkDestroyBufferView</a>
     public void vkDestroyBufferView(
             VkDevice device,
-            @nullable VkBufferView bufferView,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkBufferView bufferView,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyBufferView.invokeExact(
@@ -6236,7 +6237,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateImage(
             VkDevice device,
             @pointer(target=VkImageCreateInfo.class) VkImageCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkImage.class) VkImage.Buffer pImage
     ) {
         try {
@@ -6254,8 +6255,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyImage.html">vkDestroyImage</a>
     public void vkDestroyImage(
             VkDevice device,
-            @nullable VkImage image,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkImage image,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyImage.invokeExact(
@@ -6291,7 +6292,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateImageView(
             VkDevice device,
             @pointer(target=VkImageViewCreateInfo.class) VkImageViewCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkImageView.class) VkImageView.Buffer pView
     ) {
         try {
@@ -6309,8 +6310,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyImageView.html">vkDestroyImageView</a>
     public void vkDestroyImageView(
             VkDevice device,
-            @nullable VkImageView imageView,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkImageView imageView,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyImageView.invokeExact(
@@ -6327,7 +6328,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateShaderModule(
             VkDevice device,
             @pointer(target=VkShaderModuleCreateInfo.class) VkShaderModuleCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkShaderModule.class) VkShaderModule.Buffer pShaderModule
     ) {
         try {
@@ -6345,8 +6346,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyShaderModule.html">vkDestroyShaderModule</a>
     public void vkDestroyShaderModule(
             VkDevice device,
-            @nullable VkShaderModule shaderModule,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkShaderModule shaderModule,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyShaderModule.invokeExact(
@@ -6363,7 +6364,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreatePipelineCache(
             VkDevice device,
             @pointer(target=VkPipelineCacheCreateInfo.class) VkPipelineCacheCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkPipelineCache.class) VkPipelineCache.Buffer pPipelineCache
     ) {
         try {
@@ -6381,8 +6382,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyPipelineCache.html">vkDestroyPipelineCache</a>
     public void vkDestroyPipelineCache(
             VkDevice device,
-            @nullable VkPipelineCache pipelineCache,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkPipelineCache pipelineCache,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyPipelineCache.invokeExact(
@@ -6437,7 +6438,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreatePipelineBinariesKHR(
             VkDevice device,
             @pointer(target=VkPipelineBinaryCreateInfoKHR.class) VkPipelineBinaryCreateInfoKHR pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkPipelineBinaryHandlesInfoKHR.class) VkPipelineBinaryHandlesInfoKHR pBinaries
     ) {
         try {
@@ -6455,8 +6456,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyPipelineBinaryKHR.html">vkDestroyPipelineBinaryKHR</a>
     public void vkDestroyPipelineBinaryKHR(
             VkDevice device,
-            @nullable VkPipelineBinaryKHR pipelineBinary,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkPipelineBinaryKHR pipelineBinary,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyPipelineBinaryKHR.invokeExact(
@@ -6472,7 +6473,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPipelineKeyKHR.html">vkGetPipelineKeyKHR</a>
     public @enumtype(VkResult.class) int vkGetPipelineKeyKHR(
             VkDevice device,
-            @nullable @pointer(target=VkPipelineCreateInfoKHR.class) VkPipelineCreateInfoKHR pPipelineCreateInfo,
+            @Nullable @pointer(target=VkPipelineCreateInfoKHR.class) VkPipelineCreateInfoKHR pPipelineCreateInfo,
             @pointer(target=VkPipelineBinaryKeyKHR.class) VkPipelineBinaryKeyKHR pPipelineKey
     ) {
         try {
@@ -6511,7 +6512,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkReleaseCapturedPipelineDataKHR(
             VkDevice device,
             @pointer(target=VkReleaseCapturedPipelineDataInfoKHR.class) VkReleaseCapturedPipelineDataInfoKHR pInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             return (int) HANDLE$vkReleaseCapturedPipelineDataKHR.invokeExact(
@@ -6527,10 +6528,10 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateGraphicsPipelines.html">vkCreateGraphicsPipelines</a>
     public @enumtype(VkResult.class) int vkCreateGraphicsPipelines(
             VkDevice device,
-            @nullable VkPipelineCache pipelineCache,
+            @Nullable VkPipelineCache pipelineCache,
             @unsigned int createInfoCount,
             @pointer(target=VkGraphicsPipelineCreateInfo.class) VkGraphicsPipelineCreateInfo pCreateInfos,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkPipeline.class) VkPipeline.Buffer pPipelines
     ) {
         try {
@@ -6550,10 +6551,10 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateComputePipelines.html">vkCreateComputePipelines</a>
     public @enumtype(VkResult.class) int vkCreateComputePipelines(
             VkDevice device,
-            @nullable VkPipelineCache pipelineCache,
+            @Nullable VkPipelineCache pipelineCache,
             @unsigned int createInfoCount,
             @pointer(target=VkComputePipelineCreateInfo.class) VkComputePipelineCreateInfo pCreateInfos,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkPipeline.class) VkPipeline.Buffer pPipelines
     ) {
         try {
@@ -6590,8 +6591,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyPipeline.html">vkDestroyPipeline</a>
     public void vkDestroyPipeline(
             VkDevice device,
-            @nullable VkPipeline pipeline,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkPipeline pipeline,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyPipeline.invokeExact(
@@ -6608,7 +6609,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreatePipelineLayout(
             VkDevice device,
             @pointer(target=VkPipelineLayoutCreateInfo.class) VkPipelineLayoutCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkPipelineLayout.class) VkPipelineLayout.Buffer pPipelineLayout
     ) {
         try {
@@ -6626,8 +6627,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyPipelineLayout.html">vkDestroyPipelineLayout</a>
     public void vkDestroyPipelineLayout(
             VkDevice device,
-            @nullable VkPipelineLayout pipelineLayout,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkPipelineLayout pipelineLayout,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyPipelineLayout.invokeExact(
@@ -6644,7 +6645,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateSampler(
             VkDevice device,
             @pointer(target=VkSamplerCreateInfo.class) VkSamplerCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSampler.class) VkSampler.Buffer pSampler
     ) {
         try {
@@ -6662,8 +6663,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroySampler.html">vkDestroySampler</a>
     public void vkDestroySampler(
             VkDevice device,
-            @nullable VkSampler sampler,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkSampler sampler,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroySampler.invokeExact(
@@ -6680,7 +6681,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateDescriptorSetLayout(
             VkDevice device,
             @pointer(target=VkDescriptorSetLayoutCreateInfo.class) VkDescriptorSetLayoutCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkDescriptorSetLayout.class) VkDescriptorSetLayout.Buffer pSetLayout
     ) {
         try {
@@ -6698,8 +6699,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyDescriptorSetLayout.html">vkDestroyDescriptorSetLayout</a>
     public void vkDestroyDescriptorSetLayout(
             VkDevice device,
-            @nullable VkDescriptorSetLayout descriptorSetLayout,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkDescriptorSetLayout descriptorSetLayout,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyDescriptorSetLayout.invokeExact(
@@ -6716,7 +6717,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateDescriptorPool(
             VkDevice device,
             @pointer(target=VkDescriptorPoolCreateInfo.class) VkDescriptorPoolCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkDescriptorPool.class) VkDescriptorPool.Buffer pDescriptorPool
     ) {
         try {
@@ -6734,8 +6735,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyDescriptorPool.html">vkDestroyDescriptorPool</a>
     public void vkDestroyDescriptorPool(
             VkDevice device,
-            @nullable VkDescriptorPool descriptorPool,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkDescriptorPool descriptorPool,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyDescriptorPool.invokeExact(
@@ -6805,9 +6806,9 @@ public final class DeviceCommands {
     public void vkUpdateDescriptorSets(
             VkDevice device,
             @unsigned int descriptorWriteCount,
-            @nullable @pointer(target=VkWriteDescriptorSet.class) VkWriteDescriptorSet pDescriptorWrites,
+            @Nullable @pointer(target=VkWriteDescriptorSet.class) VkWriteDescriptorSet pDescriptorWrites,
             @unsigned int descriptorCopyCount,
-            @nullable @pointer(target=VkCopyDescriptorSet.class) VkCopyDescriptorSet pDescriptorCopies
+            @Nullable @pointer(target=VkCopyDescriptorSet.class) VkCopyDescriptorSet pDescriptorCopies
     ) {
         try {
             HANDLE$vkUpdateDescriptorSets.invokeExact(
@@ -6826,7 +6827,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateFramebuffer(
             VkDevice device,
             @pointer(target=VkFramebufferCreateInfo.class) VkFramebufferCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkFramebuffer.class) VkFramebuffer.Buffer pFramebuffer
     ) {
         try {
@@ -6844,8 +6845,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyFramebuffer.html">vkDestroyFramebuffer</a>
     public void vkDestroyFramebuffer(
             VkDevice device,
-            @nullable VkFramebuffer framebuffer,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkFramebuffer framebuffer,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyFramebuffer.invokeExact(
@@ -6862,7 +6863,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateRenderPass(
             VkDevice device,
             @pointer(target=VkRenderPassCreateInfo.class) VkRenderPassCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkRenderPass.class) VkRenderPass.Buffer pRenderPass
     ) {
         try {
@@ -6880,8 +6881,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyRenderPass.html">vkDestroyRenderPass</a>
     public void vkDestroyRenderPass(
             VkDevice device,
-            @nullable VkRenderPass renderPass,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkRenderPass renderPass,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyRenderPass.invokeExact(
@@ -6932,7 +6933,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateCommandPool(
             VkDevice device,
             @pointer(target=VkCommandPoolCreateInfo.class) VkCommandPoolCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkCommandPool.class) VkCommandPool.Buffer pCommandPool
     ) {
         try {
@@ -6950,8 +6951,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyCommandPool.html">vkDestroyCommandPool</a>
     public void vkDestroyCommandPool(
             VkDevice device,
-            @nullable VkCommandPool commandPool,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkCommandPool commandPool,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyCommandPool.invokeExact(
@@ -7256,7 +7257,7 @@ public final class DeviceCommands {
             @unsigned int descriptorSetCount,
             @pointer(target=VkDescriptorSet.class) VkDescriptorSet.Buffer pDescriptorSets,
             @unsigned int dynamicOffsetCount,
-            @nullable @unsigned IntBuffer pDynamicOffsets
+            @Nullable @unsigned IntBuffer pDynamicOffsets
     ) {
         try {
             HANDLE$vkCmdBindDescriptorSets.invokeExact(
@@ -7277,7 +7278,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdBindIndexBuffer.html">vkCmdBindIndexBuffer</a>
     public void vkCmdBindIndexBuffer(
             VkCommandBuffer commandBuffer,
-            @nullable VkBuffer buffer,
+            @Nullable VkBuffer buffer,
             @unsigned long offset,
             @enumtype(VkIndexType.class) int indexType
     ) {
@@ -7362,7 +7363,7 @@ public final class DeviceCommands {
     public void vkCmdDrawMultiEXT(
             VkCommandBuffer commandBuffer,
             @unsigned int drawCount,
-            @nullable @pointer(target=VkMultiDrawInfoEXT.class) VkMultiDrawInfoEXT pVertexInfo,
+            @Nullable @pointer(target=VkMultiDrawInfoEXT.class) VkMultiDrawInfoEXT pVertexInfo,
             @unsigned int instanceCount,
             @unsigned int firstInstance,
             @unsigned int stride
@@ -7385,11 +7386,11 @@ public final class DeviceCommands {
     public void vkCmdDrawMultiIndexedEXT(
             VkCommandBuffer commandBuffer,
             @unsigned int drawCount,
-            @nullable @pointer(target=VkMultiDrawIndexedInfoEXT.class) VkMultiDrawIndexedInfoEXT pIndexInfo,
+            @Nullable @pointer(target=VkMultiDrawIndexedInfoEXT.class) VkMultiDrawIndexedInfoEXT pIndexInfo,
             @unsigned int instanceCount,
             @unsigned int firstInstance,
             @unsigned int stride,
-            @nullable IntBuffer pVertexOffset
+            @Nullable IntBuffer pVertexOffset
     ) {
         try {
             HANDLE$vkCmdDrawMultiIndexedEXT.invokeExact(
@@ -7889,11 +7890,11 @@ public final class DeviceCommands {
             @enumtype(VkPipelineStageFlags.class) int srcStageMask,
             @enumtype(VkPipelineStageFlags.class) int dstStageMask,
             @unsigned int memoryBarrierCount,
-            @nullable @pointer(target=VkMemoryBarrier.class) VkMemoryBarrier pMemoryBarriers,
+            @Nullable @pointer(target=VkMemoryBarrier.class) VkMemoryBarrier pMemoryBarriers,
             @unsigned int bufferMemoryBarrierCount,
-            @nullable @pointer(target=VkBufferMemoryBarrier.class) VkBufferMemoryBarrier pBufferMemoryBarriers,
+            @Nullable @pointer(target=VkBufferMemoryBarrier.class) VkBufferMemoryBarrier pBufferMemoryBarriers,
             @unsigned int imageMemoryBarrierCount,
-            @nullable @pointer(target=VkImageMemoryBarrier.class) VkImageMemoryBarrier pImageMemoryBarriers
+            @Nullable @pointer(target=VkImageMemoryBarrier.class) VkImageMemoryBarrier pImageMemoryBarriers
     ) {
         try {
             HANDLE$vkCmdWaitEvents.invokeExact(
@@ -7921,11 +7922,11 @@ public final class DeviceCommands {
             @enumtype(VkPipelineStageFlags.class) int dstStageMask,
             @enumtype(VkDependencyFlags.class) int dependencyFlags,
             @unsigned int memoryBarrierCount,
-            @nullable @pointer(target=VkMemoryBarrier.class) VkMemoryBarrier pMemoryBarriers,
+            @Nullable @pointer(target=VkMemoryBarrier.class) VkMemoryBarrier pMemoryBarriers,
             @unsigned int bufferMemoryBarrierCount,
-            @nullable @pointer(target=VkBufferMemoryBarrier.class) VkBufferMemoryBarrier pBufferMemoryBarriers,
+            @Nullable @pointer(target=VkBufferMemoryBarrier.class) VkBufferMemoryBarrier pBufferMemoryBarriers,
             @unsigned int imageMemoryBarrierCount,
-            @nullable @pointer(target=VkImageMemoryBarrier.class) VkImageMemoryBarrier pImageMemoryBarriers
+            @Nullable @pointer(target=VkImageMemoryBarrier.class) VkImageMemoryBarrier pImageMemoryBarriers
     ) {
         try {
             HANDLE$vkCmdPipelineBarrier.invokeExact(
@@ -8164,7 +8165,7 @@ public final class DeviceCommands {
             VkDevice device,
             @unsigned int swapchainCount,
             @pointer(target=VkSwapchainCreateInfoKHR.class) VkSwapchainCreateInfoKHR pCreateInfos,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSwapchainKHR.class) VkSwapchainKHR.Buffer pSwapchains
     ) {
         try {
@@ -8184,7 +8185,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateSwapchainKHR(
             VkDevice device,
             @pointer(target=VkSwapchainCreateInfoKHR.class) VkSwapchainCreateInfoKHR pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSwapchainKHR.class) VkSwapchainKHR.Buffer pSwapchain
     ) {
         try {
@@ -8202,8 +8203,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroySwapchainKHR.html">vkDestroySwapchainKHR</a>
     public void vkDestroySwapchainKHR(
             VkDevice device,
-            @nullable VkSwapchainKHR swapchain,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkSwapchainKHR swapchain,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroySwapchainKHR.invokeExact(
@@ -8221,7 +8222,7 @@ public final class DeviceCommands {
             VkDevice device,
             VkSwapchainKHR swapchain,
             @unsigned IntBuffer pSwapchainImageCount,
-            @nullable @pointer(target=VkImage.class) VkImage.Buffer pSwapchainImages
+            @Nullable @pointer(target=VkImage.class) VkImage.Buffer pSwapchainImages
     ) {
         try {
             return (int) HANDLE$vkGetSwapchainImagesKHR.invokeExact(
@@ -8240,8 +8241,8 @@ public final class DeviceCommands {
             VkDevice device,
             VkSwapchainKHR swapchain,
             @unsigned long timeout,
-            @nullable VkSemaphore semaphore,
-            @nullable VkFence fence,
+            @Nullable VkSemaphore semaphore,
+            @Nullable VkFence fence,
             @unsigned IntBuffer pImageIndex
     ) {
         try {
@@ -8437,7 +8438,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateIndirectCommandsLayoutNV(
             VkDevice device,
             @pointer(target=VkIndirectCommandsLayoutCreateInfoNV.class) VkIndirectCommandsLayoutCreateInfoNV pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkIndirectCommandsLayoutNV.class) VkIndirectCommandsLayoutNV.Buffer pIndirectCommandsLayout
     ) {
         try {
@@ -8455,8 +8456,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyIndirectCommandsLayoutNV.html">vkDestroyIndirectCommandsLayoutNV</a>
     public void vkDestroyIndirectCommandsLayoutNV(
             VkDevice device,
-            @nullable VkIndirectCommandsLayoutNV indirectCommandsLayout,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkIndirectCommandsLayoutNV indirectCommandsLayout,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyIndirectCommandsLayoutNV.invokeExact(
@@ -8962,7 +8963,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateSemaphoreSciSyncPoolNV(
             VkDevice device,
             @pointer(target=VkSemaphoreSciSyncPoolCreateInfoNV.class) VkSemaphoreSciSyncPoolCreateInfoNV pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSemaphoreSciSyncPoolNV.class) VkSemaphoreSciSyncPoolNV.Buffer pSemaphorePool
     ) {
         try {
@@ -8980,8 +8981,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroySemaphoreSciSyncPoolNV.html">vkDestroySemaphoreSciSyncPoolNV</a>
     public void vkDestroySemaphoreSciSyncPoolNV(
             VkDevice device,
-            @nullable VkSemaphoreSciSyncPoolNV semaphorePool,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkSemaphoreSciSyncPoolNV semaphorePool,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroySemaphoreSciSyncPoolNV.invokeExact(
@@ -9047,7 +9048,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkRegisterDeviceEventEXT(
             VkDevice device,
             @pointer(target=VkDeviceEventInfoEXT.class) VkDeviceEventInfoEXT pDeviceEventInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkFence.class) VkFence.Buffer pFence
     ) {
         try {
@@ -9067,7 +9068,7 @@ public final class DeviceCommands {
             VkDevice device,
             VkDisplayKHR display,
             @pointer(target=VkDisplayEventInfoEXT.class) VkDisplayEventInfoEXT pDisplayEventInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkFence.class) VkFence.Buffer pFence
     ) {
         try {
@@ -9251,7 +9252,7 @@ public final class DeviceCommands {
             VkPhysicalDevice physicalDevice,
             VkSurfaceKHR surface,
             @unsigned IntBuffer pRectCount,
-            @nullable @pointer(target=VkRect2D.class) VkRect2D pRects
+            @Nullable @pointer(target=VkRect2D.class) VkRect2D pRects
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDevicePresentRectanglesKHR.invokeExact(
@@ -9269,7 +9270,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateDescriptorUpdateTemplate(
             VkDevice device,
             @pointer(target=VkDescriptorUpdateTemplateCreateInfo.class) VkDescriptorUpdateTemplateCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkDescriptorUpdateTemplate.class) VkDescriptorUpdateTemplate.Buffer pDescriptorUpdateTemplate
     ) {
         try {
@@ -9287,8 +9288,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyDescriptorUpdateTemplate.html">vkDestroyDescriptorUpdateTemplate</a>
     public void vkDestroyDescriptorUpdateTemplate(
             VkDevice device,
-            @nullable VkDescriptorUpdateTemplate descriptorUpdateTemplate,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkDescriptorUpdateTemplate descriptorUpdateTemplate,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyDescriptorUpdateTemplate.invokeExact(
@@ -9397,7 +9398,7 @@ public final class DeviceCommands {
             VkDevice device,
             VkSwapchainKHR swapchain,
             @unsigned IntBuffer pPresentationTimingCount,
-            @nullable @pointer(target=VkPastPresentationTimingGOOGLE.class) VkPastPresentationTimingGOOGLE pPresentationTimings
+            @Nullable @pointer(target=VkPastPresentationTimingGOOGLE.class) VkPastPresentationTimingGOOGLE pPresentationTimings
     ) {
         try {
             return (int) HANDLE$vkGetPastPresentationTimingGOOGLE.invokeExact(
@@ -9550,7 +9551,7 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkImageSparseMemoryRequirementsInfo2.class) VkImageSparseMemoryRequirementsInfo2 pInfo,
             @unsigned IntBuffer pSparseMemoryRequirementCount,
-            @nullable @pointer(target=VkSparseImageMemoryRequirements2.class) VkSparseImageMemoryRequirements2 pSparseMemoryRequirements
+            @Nullable @pointer(target=VkSparseImageMemoryRequirements2.class) VkSparseImageMemoryRequirements2 pSparseMemoryRequirements
     ) {
         try {
             HANDLE$vkGetImageSparseMemoryRequirements2.invokeExact(
@@ -9603,7 +9604,7 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkDeviceImageMemoryRequirements.class) VkDeviceImageMemoryRequirements pInfo,
             @unsigned IntBuffer pSparseMemoryRequirementCount,
-            @nullable @pointer(target=VkSparseImageMemoryRequirements2.class) VkSparseImageMemoryRequirements2 pSparseMemoryRequirements
+            @Nullable @pointer(target=VkSparseImageMemoryRequirements2.class) VkSparseImageMemoryRequirements2 pSparseMemoryRequirements
     ) {
         try {
             HANDLE$vkGetDeviceImageSparseMemoryRequirements.invokeExact(
@@ -9621,7 +9622,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateSamplerYcbcrConversion(
             VkDevice device,
             @pointer(target=VkSamplerYcbcrConversionCreateInfo.class) VkSamplerYcbcrConversionCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkSamplerYcbcrConversion.class) VkSamplerYcbcrConversion.Buffer pYcbcrConversion
     ) {
         try {
@@ -9639,8 +9640,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroySamplerYcbcrConversion.html">vkDestroySamplerYcbcrConversion</a>
     public void vkDestroySamplerYcbcrConversion(
             VkDevice device,
-            @nullable VkSamplerYcbcrConversion ycbcrConversion,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkSamplerYcbcrConversion ycbcrConversion,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroySamplerYcbcrConversion.invokeExact(
@@ -9674,7 +9675,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateValidationCacheEXT(
             VkDevice device,
             @pointer(target=VkValidationCacheCreateInfoEXT.class) VkValidationCacheCreateInfoEXT pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkValidationCacheEXT.class) VkValidationCacheEXT.Buffer pValidationCache
     ) {
         try {
@@ -9692,8 +9693,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyValidationCacheEXT.html">vkDestroyValidationCacheEXT</a>
     public void vkDestroyValidationCacheEXT(
             VkDevice device,
-            @nullable VkValidationCacheEXT validationCache,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkValidationCacheEXT validationCache,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyValidationCacheEXT.invokeExact(
@@ -9805,7 +9806,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceCalibrateableTimeDomainsKHR(
             VkPhysicalDevice physicalDevice,
             @unsigned IntBuffer pTimeDomainCount,
-            @nullable @enumtype(VkTimeDomainKHR.class) IntBuffer pTimeDomains
+            @Nullable @enumtype(VkTimeDomainKHR.class) IntBuffer pTimeDomains
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR.invokeExact(
@@ -9883,7 +9884,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateRenderPass2(
             VkDevice device,
             @pointer(target=VkRenderPassCreateInfo2.class) VkRenderPassCreateInfo2 pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkRenderPass.class) VkRenderPass.Buffer pRenderPass
     ) {
         try {
@@ -10099,7 +10100,7 @@ public final class DeviceCommands {
     public void vkGetQueueCheckpointDataNV(
             VkQueue queue,
             @unsigned IntBuffer pCheckpointDataCount,
-            @nullable @pointer(target=VkCheckpointDataNV.class) VkCheckpointDataNV pCheckpointData
+            @Nullable @pointer(target=VkCheckpointDataNV.class) VkCheckpointDataNV pCheckpointData
     ) {
         try {
             HANDLE$vkGetQueueCheckpointDataNV.invokeExact(
@@ -10119,7 +10120,7 @@ public final class DeviceCommands {
             @unsigned int bindingCount,
             @pointer(target=VkBuffer.class) VkBuffer.Buffer pBuffers,
             @unsigned LongBuffer pOffsets,
-            @nullable @unsigned LongBuffer pSizes
+            @Nullable @unsigned LongBuffer pSizes
     ) {
         try {
             HANDLE$vkCmdBindTransformFeedbackBuffersEXT.invokeExact(
@@ -10140,8 +10141,8 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int firstCounterBuffer,
             @unsigned int counterBufferCount,
-            @nullable @pointer(target=VkBuffer.class) VkBuffer.Buffer pCounterBuffers,
-            @nullable @unsigned LongBuffer pCounterBufferOffsets
+            @Nullable @pointer(target=VkBuffer.class) VkBuffer.Buffer pCounterBuffers,
+            @Nullable @unsigned LongBuffer pCounterBufferOffsets
     ) {
         try {
             HANDLE$vkCmdBeginTransformFeedbackEXT.invokeExact(
@@ -10161,8 +10162,8 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int firstCounterBuffer,
             @unsigned int counterBufferCount,
-            @nullable @pointer(target=VkBuffer.class) VkBuffer.Buffer pCounterBuffers,
-            @nullable @unsigned LongBuffer pCounterBufferOffsets
+            @Nullable @pointer(target=VkBuffer.class) VkBuffer.Buffer pCounterBuffers,
+            @Nullable @unsigned LongBuffer pCounterBufferOffsets
     ) {
         try {
             HANDLE$vkCmdEndTransformFeedbackEXT.invokeExact(
@@ -10283,7 +10284,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdBindShadingRateImageNV.html">vkCmdBindShadingRateImageNV</a>
     public void vkCmdBindShadingRateImageNV(
             VkCommandBuffer commandBuffer,
-            @nullable VkImageView imageView,
+            @Nullable VkImageView imageView,
             @enumtype(VkImageLayout.class) int imageLayout
     ) {
         try {
@@ -10321,7 +10322,7 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @enumtype(VkCoarseSampleOrderTypeNV.class) int sampleOrderType,
             @unsigned int customSampleOrderCount,
-            @nullable @pointer(target=VkCoarseSampleOrderCustomNV.class) VkCoarseSampleOrderCustomNV pCustomSampleOrders
+            @Nullable @pointer(target=VkCoarseSampleOrderCustomNV.class) VkCoarseSampleOrderCustomNV pCustomSampleOrders
     ) {
         try {
             HANDLE$vkCmdSetCoarseSampleOrderNV.invokeExact(
@@ -10484,7 +10485,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateAccelerationStructureNV(
             VkDevice device,
             @pointer(target=VkAccelerationStructureCreateInfoNV.class) VkAccelerationStructureCreateInfoNV pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkAccelerationStructureNV.class) VkAccelerationStructureNV.Buffer pAccelerationStructure
     ) {
         try {
@@ -10502,7 +10503,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdBindInvocationMaskHUAWEI.html">vkCmdBindInvocationMaskHUAWEI</a>
     public void vkCmdBindInvocationMaskHUAWEI(
             VkCommandBuffer commandBuffer,
-            @nullable VkImageView imageView,
+            @Nullable VkImageView imageView,
             @enumtype(VkImageLayout.class) int imageLayout
     ) {
         try {
@@ -10519,8 +10520,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyAccelerationStructureKHR.html">vkDestroyAccelerationStructureKHR</a>
     public void vkDestroyAccelerationStructureKHR(
             VkDevice device,
-            @nullable VkAccelerationStructureKHR accelerationStructure,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkAccelerationStructureKHR accelerationStructure,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyAccelerationStructureKHR.invokeExact(
@@ -10536,8 +10537,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyAccelerationStructureNV.html">vkDestroyAccelerationStructureNV</a>
     public void vkDestroyAccelerationStructureNV(
             VkDevice device,
-            @nullable VkAccelerationStructureNV accelerationStructure,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkAccelerationStructureNV accelerationStructure,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyAccelerationStructureNV.invokeExact(
@@ -10621,7 +10622,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCopyAccelerationStructureKHR.html">vkCopyAccelerationStructureKHR</a>
     public @enumtype(VkResult.class) int vkCopyAccelerationStructureKHR(
             VkDevice device,
-            @nullable VkDeferredOperationKHR deferredOperation,
+            @Nullable VkDeferredOperationKHR deferredOperation,
             @pointer(target=VkCopyAccelerationStructureInfoKHR.class) VkCopyAccelerationStructureInfoKHR pInfo
     ) {
         try {
@@ -10653,7 +10654,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCopyAccelerationStructureToMemoryKHR.html">vkCopyAccelerationStructureToMemoryKHR</a>
     public @enumtype(VkResult.class) int vkCopyAccelerationStructureToMemoryKHR(
             VkDevice device,
-            @nullable VkDeferredOperationKHR deferredOperation,
+            @Nullable VkDeferredOperationKHR deferredOperation,
             @pointer(target=VkCopyAccelerationStructureToMemoryInfoKHR.class) VkCopyAccelerationStructureToMemoryInfoKHR pInfo
     ) {
         try {
@@ -10685,7 +10686,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCopyMemoryToAccelerationStructureKHR.html">vkCopyMemoryToAccelerationStructureKHR</a>
     public @enumtype(VkResult.class) int vkCopyMemoryToAccelerationStructureKHR(
             VkDevice device,
-            @nullable VkDeferredOperationKHR deferredOperation,
+            @Nullable VkDeferredOperationKHR deferredOperation,
             @pointer(target=VkCopyMemoryToAccelerationStructureInfoKHR.class) VkCopyMemoryToAccelerationStructureInfoKHR pInfo
     ) {
         try {
@@ -10749,11 +10750,11 @@ public final class DeviceCommands {
     public void vkCmdBuildAccelerationStructureNV(
             VkCommandBuffer commandBuffer,
             @pointer(target=VkAccelerationStructureInfoNV.class) VkAccelerationStructureInfoNV pInfo,
-            @nullable VkBuffer instanceData,
+            @Nullable VkBuffer instanceData,
             @unsigned long instanceOffset,
             @unsigned int update,
             VkAccelerationStructureNV dst,
-            @nullable VkAccelerationStructureNV src,
+            @Nullable VkAccelerationStructureNV src,
             VkBuffer scratch,
             @unsigned long scratchOffset
     ) {
@@ -10831,13 +10832,13 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             VkBuffer raygenShaderBindingTableBuffer,
             @unsigned long raygenShaderBindingOffset,
-            @nullable VkBuffer missShaderBindingTableBuffer,
+            @Nullable VkBuffer missShaderBindingTableBuffer,
             @unsigned long missShaderBindingOffset,
             @unsigned long missShaderBindingStride,
-            @nullable VkBuffer hitShaderBindingTableBuffer,
+            @Nullable VkBuffer hitShaderBindingTableBuffer,
             @unsigned long hitShaderBindingOffset,
             @unsigned long hitShaderBindingStride,
-            @nullable VkBuffer callableShaderBindingTableBuffer,
+            @Nullable VkBuffer callableShaderBindingTableBuffer,
             @unsigned long callableShaderBindingOffset,
             @unsigned long callableShaderBindingStride,
             @unsigned int width,
@@ -10935,10 +10936,10 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateRayTracingPipelinesNV.html">vkCreateRayTracingPipelinesNV</a>
     public @enumtype(VkResult.class) int vkCreateRayTracingPipelinesNV(
             VkDevice device,
-            @nullable VkPipelineCache pipelineCache,
+            @Nullable VkPipelineCache pipelineCache,
             @unsigned int createInfoCount,
             @pointer(target=VkRayTracingPipelineCreateInfoNV.class) VkRayTracingPipelineCreateInfoNV pCreateInfos,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkPipeline.class) VkPipeline.Buffer pPipelines
     ) {
         try {
@@ -10958,11 +10959,11 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateRayTracingPipelinesKHR.html">vkCreateRayTracingPipelinesKHR</a>
     public @enumtype(VkResult.class) int vkCreateRayTracingPipelinesKHR(
             VkDevice device,
-            @nullable VkDeferredOperationKHR deferredOperation,
-            @nullable VkPipelineCache pipelineCache,
+            @Nullable VkDeferredOperationKHR deferredOperation,
+            @Nullable VkPipelineCache pipelineCache,
             @unsigned int createInfoCount,
             @pointer(target=VkRayTracingPipelineCreateInfoKHR.class) VkRayTracingPipelineCreateInfoKHR pCreateInfos,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkPipeline.class) VkPipeline.Buffer pPipelines
     ) {
         try {
@@ -10984,7 +10985,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(
             VkPhysicalDevice physicalDevice,
             @unsigned IntBuffer pPropertyCount,
-            @nullable @pointer(target=VkCooperativeMatrixPropertiesNV.class) VkCooperativeMatrixPropertiesNV pProperties
+            @Nullable @pointer(target=VkCooperativeMatrixPropertiesNV.class) VkCooperativeMatrixPropertiesNV pProperties
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesNV.invokeExact(
@@ -11123,7 +11124,7 @@ public final class DeviceCommands {
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkPhysicalDeviceSurfaceInfo2KHR.class) VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo,
             @unsigned IntBuffer pPresentModeCount,
-            @nullable @enumtype(VkPresentModeKHR.class) IntBuffer pPresentModes
+            @Nullable @enumtype(VkPresentModeKHR.class) IntBuffer pPresentModes
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSurfacePresentModes2EXT.invokeExact(
@@ -11189,8 +11190,8 @@ public final class DeviceCommands {
             VkPhysicalDevice physicalDevice,
             @unsigned int queueFamilyIndex,
             @unsigned IntBuffer pCounterCount,
-            @nullable @pointer(target=VkPerformanceCounterKHR.class) VkPerformanceCounterKHR pCounters,
-            @nullable @pointer(target=VkPerformanceCounterDescriptionKHR.class) VkPerformanceCounterDescriptionKHR pCounterDescriptions
+            @Nullable @pointer(target=VkPerformanceCounterKHR.class) VkPerformanceCounterKHR pCounters,
+            @Nullable @pointer(target=VkPerformanceCounterDescriptionKHR.class) VkPerformanceCounterDescriptionKHR pCounterDescriptions
     ) {
         try {
             return (int) HANDLE$vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR.invokeExact(
@@ -11301,7 +11302,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(
             VkPhysicalDevice physicalDevice,
             @unsigned IntBuffer pCombinationCount,
-            @nullable @pointer(target=VkFramebufferMixedSamplesCombinationNV.class) VkFramebufferMixedSamplesCombinationNV pCombinations
+            @Nullable @pointer(target=VkFramebufferMixedSamplesCombinationNV.class) VkFramebufferMixedSamplesCombinationNV pCombinations
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV.invokeExact(
@@ -11407,7 +11408,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkReleasePerformanceConfigurationINTEL.html">vkReleasePerformanceConfigurationINTEL</a>
     public @enumtype(VkResult.class) int vkReleasePerformanceConfigurationINTEL(
             VkDevice device,
-            @nullable VkPerformanceConfigurationINTEL configuration
+            @Nullable VkPerformanceConfigurationINTEL configuration
     ) {
         try {
             return (int) HANDLE$vkReleasePerformanceConfigurationINTEL.invokeExact(
@@ -11471,7 +11472,7 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkPipelineInfoKHR.class) VkPipelineInfoKHR pPipelineInfo,
             @unsigned IntBuffer pExecutableCount,
-            @nullable @pointer(target=VkPipelineExecutablePropertiesKHR.class) VkPipelineExecutablePropertiesKHR pProperties
+            @Nullable @pointer(target=VkPipelineExecutablePropertiesKHR.class) VkPipelineExecutablePropertiesKHR pProperties
     ) {
         try {
             return (int) HANDLE$vkGetPipelineExecutablePropertiesKHR.invokeExact(
@@ -11490,7 +11491,7 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkPipelineExecutableInfoKHR.class) VkPipelineExecutableInfoKHR pExecutableInfo,
             @unsigned IntBuffer pStatisticCount,
-            @nullable @pointer(target=VkPipelineExecutableStatisticKHR.class) VkPipelineExecutableStatisticKHR pStatistics
+            @Nullable @pointer(target=VkPipelineExecutableStatisticKHR.class) VkPipelineExecutableStatisticKHR pStatistics
     ) {
         try {
             return (int) HANDLE$vkGetPipelineExecutableStatisticsKHR.invokeExact(
@@ -11509,7 +11510,7 @@ public final class DeviceCommands {
             VkDevice device,
             @pointer(target=VkPipelineExecutableInfoKHR.class) VkPipelineExecutableInfoKHR pExecutableInfo,
             @unsigned IntBuffer pInternalRepresentationCount,
-            @nullable @pointer(target=VkPipelineExecutableInternalRepresentationKHR.class) VkPipelineExecutableInternalRepresentationKHR pInternalRepresentations
+            @Nullable @pointer(target=VkPipelineExecutableInternalRepresentationKHR.class) VkPipelineExecutableInternalRepresentationKHR pInternalRepresentations
     ) {
         try {
             return (int) HANDLE$vkGetPipelineExecutableInternalRepresentationsKHR.invokeExact(
@@ -11544,7 +11545,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateAccelerationStructureKHR(
             VkDevice device,
             @pointer(target=VkAccelerationStructureCreateInfoKHR.class) VkAccelerationStructureCreateInfoKHR pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkAccelerationStructureKHR.class) VkAccelerationStructureKHR.Buffer pAccelerationStructure
     ) {
         try {
@@ -11604,7 +11605,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkBuildAccelerationStructuresKHR.html">vkBuildAccelerationStructuresKHR</a>
     public @enumtype(VkResult.class) int vkBuildAccelerationStructuresKHR(
             VkDevice device,
-            @nullable VkDeferredOperationKHR deferredOperation,
+            @Nullable VkDeferredOperationKHR deferredOperation,
             @unsigned int infoCount,
             @pointer(target=VkAccelerationStructureBuildGeometryInfoKHR.class) VkAccelerationStructureBuildGeometryInfoKHR pInfos,
             @pointer(comment="struct VkAccelerationStructureBuildRangeInfoKHR const**") MemorySegment ppBuildRangeInfos
@@ -11640,7 +11641,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateDeferredOperationKHR.html">vkCreateDeferredOperationKHR</a>
     public @enumtype(VkResult.class) int vkCreateDeferredOperationKHR(
             VkDevice device,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkDeferredOperationKHR.class) VkDeferredOperationKHR.Buffer pDeferredOperation
     ) {
         try {
@@ -11657,8 +11658,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyDeferredOperationKHR.html">vkDestroyDeferredOperationKHR</a>
     public void vkDestroyDeferredOperationKHR(
             VkDevice device,
-            @nullable VkDeferredOperationKHR operation,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkDeferredOperationKHR operation,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyDeferredOperationKHR.invokeExact(
@@ -11845,7 +11846,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdBindIndexBuffer2KHR.html">vkCmdBindIndexBuffer2KHR</a>
     public void vkCmdBindIndexBuffer2KHR(
             VkCommandBuffer commandBuffer,
-            @nullable VkBuffer buffer,
+            @Nullable VkBuffer buffer,
             @unsigned long offset,
             @unsigned long size,
             @enumtype(VkIndexType.class) int indexType
@@ -11870,8 +11871,8 @@ public final class DeviceCommands {
             @unsigned int bindingCount,
             @pointer(target=VkBuffer.class) VkBuffer.Buffer pBuffers,
             @unsigned LongBuffer pOffsets,
-            @nullable @unsigned LongBuffer pSizes,
-            @nullable @unsigned LongBuffer pStrides
+            @Nullable @unsigned LongBuffer pSizes,
+            @Nullable @unsigned LongBuffer pStrides
     ) {
         try {
             HANDLE$vkCmdBindVertexBuffers2.invokeExact(
@@ -12554,7 +12555,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreatePrivateDataSlot(
             VkDevice device,
             @pointer(target=VkPrivateDataSlotCreateInfo.class) VkPrivateDataSlotCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkPrivateDataSlot.class) VkPrivateDataSlot.Buffer pPrivateDataSlot
     ) {
         try {
@@ -12572,8 +12573,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyPrivateDataSlot.html">vkDestroyPrivateDataSlot</a>
     public void vkDestroyPrivateDataSlot(
             VkDevice device,
-            @nullable VkPrivateDataSlot privateDataSlot,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkPrivateDataSlot privateDataSlot,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyPrivateDataSlot.invokeExact(
@@ -12737,7 +12738,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceRefreshableObjectTypesKHR(
             VkPhysicalDevice physicalDevice,
             @unsigned IntBuffer pRefreshableObjectTypeCount,
-            @nullable @enumtype(VkObjectType.class) IntBuffer pRefreshableObjectTypes
+            @Nullable @enumtype(VkObjectType.class) IntBuffer pRefreshableObjectTypes
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceRefreshableObjectTypesKHR.invokeExact(
@@ -12771,7 +12772,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceFragmentShadingRatesKHR(
             VkPhysicalDevice physicalDevice,
             @unsigned IntBuffer pFragmentShadingRateCount,
-            @nullable @pointer(target=VkPhysicalDeviceFragmentShadingRateKHR.class) VkPhysicalDeviceFragmentShadingRateKHR pFragmentShadingRates
+            @Nullable @pointer(target=VkPhysicalDeviceFragmentShadingRateKHR.class) VkPhysicalDeviceFragmentShadingRateKHR pFragmentShadingRates
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceFragmentShadingRatesKHR.invokeExact(
@@ -12806,7 +12807,7 @@ public final class DeviceCommands {
             VkDevice device,
             @enumtype(VkAccelerationStructureBuildTypeKHR.class) int buildType,
             @pointer(target=VkAccelerationStructureBuildGeometryInfoKHR.class) VkAccelerationStructureBuildGeometryInfoKHR pBuildInfo,
-            @nullable @unsigned IntBuffer pMaxPrimitiveCounts,
+            @Nullable @unsigned IntBuffer pMaxPrimitiveCounts,
             @pointer(target=VkAccelerationStructureBuildSizesInfoKHR.class) VkAccelerationStructureBuildSizesInfoKHR pSizeInfo
     ) {
         try {
@@ -12826,9 +12827,9 @@ public final class DeviceCommands {
     public void vkCmdSetVertexInputEXT(
             VkCommandBuffer commandBuffer,
             @unsigned int vertexBindingDescriptionCount,
-            @nullable @pointer(target=VkVertexInputBindingDescription2EXT.class) VkVertexInputBindingDescription2EXT pVertexBindingDescriptions,
+            @Nullable @pointer(target=VkVertexInputBindingDescription2EXT.class) VkVertexInputBindingDescription2EXT pVertexBindingDescriptions,
             @unsigned int vertexAttributeDescriptionCount,
-            @nullable @pointer(target=VkVertexInputAttributeDescription2EXT.class) VkVertexInputAttributeDescription2EXT pVertexAttributeDescriptions
+            @Nullable @pointer(target=VkVertexInputAttributeDescription2EXT.class) VkVertexInputAttributeDescription2EXT pVertexAttributeDescriptions
     ) {
         try {
             HANDLE$vkCmdSetVertexInputEXT.invokeExact(
@@ -12932,8 +12933,8 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkQueueSubmit2(
             VkQueue queue,
             @unsigned int submitCount,
-            @nullable @pointer(target=VkSubmitInfo2.class) VkSubmitInfo2 pSubmits,
-            @nullable VkFence fence
+            @Nullable @pointer(target=VkSubmitInfo2.class) VkSubmitInfo2 pSubmits,
+            @Nullable VkFence fence
     ) {
         try {
             return (int) HANDLE$vkQueueSubmit2.invokeExact(
@@ -12991,7 +12992,7 @@ public final class DeviceCommands {
     public void vkGetQueueCheckpointData2NV(
             VkQueue queue,
             @unsigned IntBuffer pCheckpointDataCount,
-            @nullable @pointer(target=VkCheckpointData2NV.class) VkCheckpointData2NV pCheckpointData
+            @Nullable @pointer(target=VkCheckpointData2NV.class) VkCheckpointData2NV pCheckpointData
     ) {
         try {
             HANDLE$vkGetQueueCheckpointData2NV.invokeExact(
@@ -13106,7 +13107,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateCuModuleNVX(
             VkDevice device,
             @pointer(target=VkCuModuleCreateInfoNVX.class) VkCuModuleCreateInfoNVX pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkCuModuleNVX.class) VkCuModuleNVX.Buffer pModule
     ) {
         try {
@@ -13125,7 +13126,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateCuFunctionNVX(
             VkDevice device,
             @pointer(target=VkCuFunctionCreateInfoNVX.class) VkCuFunctionCreateInfoNVX pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkCuFunctionNVX.class) VkCuFunctionNVX.Buffer pFunction
     ) {
         try {
@@ -13144,7 +13145,7 @@ public final class DeviceCommands {
     public void vkDestroyCuModuleNVX(
             VkDevice device,
             VkCuModuleNVX module,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyCuModuleNVX.invokeExact(
@@ -13161,7 +13162,7 @@ public final class DeviceCommands {
     public void vkDestroyCuFunctionNVX(
             VkDevice device,
             VkCuFunctionNVX function,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyCuFunctionNVX.invokeExact(
@@ -13430,7 +13431,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateBufferCollectionFUCHSIA(
             VkDevice device,
             @pointer(target=VkBufferCollectionCreateInfoFUCHSIA.class) VkBufferCollectionCreateInfoFUCHSIA pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkBufferCollectionFUCHSIA.class) VkBufferCollectionFUCHSIA.Buffer pCollection
     ) {
         try {
@@ -13483,7 +13484,7 @@ public final class DeviceCommands {
     public void vkDestroyBufferCollectionFUCHSIA(
             VkDevice device,
             VkBufferCollectionFUCHSIA collection,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyBufferCollectionFUCHSIA.invokeExact(
@@ -13517,7 +13518,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateCudaModuleNV(
             VkDevice device,
             @pointer(target=VkCudaModuleCreateInfoNV.class) VkCudaModuleCreateInfoNV pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkCudaModuleNV.class) VkCudaModuleNV.Buffer pModule
     ) {
         try {
@@ -13555,7 +13556,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateCudaFunctionNV(
             VkDevice device,
             @pointer(target=VkCudaFunctionCreateInfoNV.class) VkCudaFunctionCreateInfoNV pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkCudaFunctionNV.class) VkCudaFunctionNV.Buffer pFunction
     ) {
         try {
@@ -13574,7 +13575,7 @@ public final class DeviceCommands {
     public void vkDestroyCudaModuleNV(
             VkDevice device,
             VkCudaModuleNV module,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyCudaModuleNV.invokeExact(
@@ -13591,7 +13592,7 @@ public final class DeviceCommands {
     public void vkDestroyCudaFunctionNV(
             VkDevice device,
             VkCudaFunctionNV function,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyCudaFunctionNV.invokeExact(
@@ -13685,7 +13686,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateMicromapEXT(
             VkDevice device,
             @pointer(target=VkMicromapCreateInfoEXT.class) VkMicromapCreateInfoEXT pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkMicromapEXT.class) VkMicromapEXT.Buffer pMicromap
     ) {
         try {
@@ -13720,7 +13721,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkBuildMicromapsEXT.html">vkBuildMicromapsEXT</a>
     public @enumtype(VkResult.class) int vkBuildMicromapsEXT(
             VkDevice device,
-            @nullable VkDeferredOperationKHR deferredOperation,
+            @Nullable VkDeferredOperationKHR deferredOperation,
             @unsigned int infoCount,
             @pointer(target=VkMicromapBuildInfoEXT.class) VkMicromapBuildInfoEXT pInfos
     ) {
@@ -13739,8 +13740,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyMicromapEXT.html">vkDestroyMicromapEXT</a>
     public void vkDestroyMicromapEXT(
             VkDevice device,
-            @nullable VkMicromapEXT micromap,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkMicromapEXT micromap,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyMicromapEXT.invokeExact(
@@ -13771,7 +13772,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCopyMicromapEXT.html">vkCopyMicromapEXT</a>
     public @enumtype(VkResult.class) int vkCopyMicromapEXT(
             VkDevice device,
-            @nullable VkDeferredOperationKHR deferredOperation,
+            @Nullable VkDeferredOperationKHR deferredOperation,
             @pointer(target=VkCopyMicromapInfoEXT.class) VkCopyMicromapInfoEXT pInfo
     ) {
         try {
@@ -13803,7 +13804,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCopyMicromapToMemoryEXT.html">vkCopyMicromapToMemoryEXT</a>
     public @enumtype(VkResult.class) int vkCopyMicromapToMemoryEXT(
             VkDevice device,
-            @nullable VkDeferredOperationKHR deferredOperation,
+            @Nullable VkDeferredOperationKHR deferredOperation,
             @pointer(target=VkCopyMicromapToMemoryInfoEXT.class) VkCopyMicromapToMemoryInfoEXT pInfo
     ) {
         try {
@@ -13835,7 +13836,7 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCopyMemoryToMicromapEXT.html">vkCopyMemoryToMicromapEXT</a>
     public @enumtype(VkResult.class) int vkCopyMemoryToMicromapEXT(
             VkDevice device,
-            @nullable VkDeferredOperationKHR deferredOperation,
+            @Nullable VkDeferredOperationKHR deferredOperation,
             @pointer(target=VkCopyMemoryToMicromapInfoEXT.class) VkCopyMemoryToMicromapInfoEXT pInfo
     ) {
         try {
@@ -14023,7 +14024,7 @@ public final class DeviceCommands {
             VkDevice device,
             VkFramebuffer framebuffer,
             @unsigned IntBuffer pPropertiesCount,
-            @nullable @pointer(target=VkTilePropertiesQCOM.class) VkTilePropertiesQCOM pProperties
+            @Nullable @pointer(target=VkTilePropertiesQCOM.class) VkTilePropertiesQCOM pProperties
     ) {
         try {
             return (int) HANDLE$vkGetFramebufferTilePropertiesQCOM.invokeExact(
@@ -14059,7 +14060,7 @@ public final class DeviceCommands {
             VkPhysicalDevice physicalDevice,
             @pointer(target=VkOpticalFlowImageFormatInfoNV.class) VkOpticalFlowImageFormatInfoNV pOpticalFlowImageFormatInfo,
             @unsigned IntBuffer pFormatCount,
-            @nullable @pointer(target=VkOpticalFlowImageFormatPropertiesNV.class) VkOpticalFlowImageFormatPropertiesNV pImageFormatProperties
+            @Nullable @pointer(target=VkOpticalFlowImageFormatPropertiesNV.class) VkOpticalFlowImageFormatPropertiesNV pImageFormatProperties
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceOpticalFlowImageFormatsNV.invokeExact(
@@ -14077,7 +14078,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkCreateOpticalFlowSessionNV(
             VkDevice device,
             @pointer(target=VkOpticalFlowSessionCreateInfoNV.class) VkOpticalFlowSessionCreateInfoNV pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkOpticalFlowSessionNV.class) VkOpticalFlowSessionNV.Buffer pSession
     ) {
         try {
@@ -14096,7 +14097,7 @@ public final class DeviceCommands {
     public void vkDestroyOpticalFlowSessionNV(
             VkDevice device,
             VkOpticalFlowSessionNV session,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyOpticalFlowSessionNV.invokeExact(
@@ -14114,7 +14115,7 @@ public final class DeviceCommands {
             VkDevice device,
             VkOpticalFlowSessionNV session,
             @enumtype(VkOpticalFlowSessionBindingPointNV.class) int bindingPoint,
-            @nullable VkImageView view,
+            @Nullable VkImageView view,
             @enumtype(VkImageLayout.class) int layout
     ) {
         try {
@@ -14151,7 +14152,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetDeviceFaultInfoEXT(
             VkDevice device,
             @pointer(target=VkDeviceFaultCountsEXT.class) VkDeviceFaultCountsEXT pFaultCounts,
-            @nullable @pointer(target=VkDeviceFaultInfoEXT.class) VkDeviceFaultInfoEXT pFaultInfo
+            @Nullable @pointer(target=VkDeviceFaultInfoEXT.class) VkDeviceFaultInfoEXT pFaultInfo
     ) {
         try {
             return (int) HANDLE$vkGetDeviceFaultInfoEXT.invokeExact(
@@ -14248,7 +14249,7 @@ public final class DeviceCommands {
             VkDevice device,
             @unsigned int createInfoCount,
             @pointer(target=VkShaderCreateInfoEXT.class) VkShaderCreateInfoEXT pCreateInfos,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkShaderEXT.class) VkShaderEXT.Buffer pShaders
     ) {
         try {
@@ -14267,8 +14268,8 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkDestroyShaderEXT.html">vkDestroyShaderEXT</a>
     public void vkDestroyShaderEXT(
             VkDevice device,
-            @nullable VkShaderEXT shader,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
+            @Nullable VkShaderEXT shader,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator
     ) {
         try {
             HANDLE$vkDestroyShaderEXT.invokeExact(
@@ -14305,7 +14306,7 @@ public final class DeviceCommands {
             VkCommandBuffer commandBuffer,
             @unsigned int stageCount,
             @enumtype(VkShaderStageFlags.class) IntBuffer pStages,
-            @nullable @pointer(target=VkShaderEXT.class) VkShaderEXT.Buffer pShaders
+            @Nullable @pointer(target=VkShaderEXT.class) VkShaderEXT.Buffer pShaders
     ) {
         try {
             HANDLE$vkCmdBindShadersEXT.invokeExact(
@@ -14340,7 +14341,7 @@ public final class DeviceCommands {
     public @enumtype(VkResult.class) int vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(
             VkPhysicalDevice physicalDevice,
             @unsigned IntBuffer pPropertyCount,
-            @nullable @pointer(target=VkCooperativeMatrixPropertiesKHR.class) VkCooperativeMatrixPropertiesKHR pProperties
+            @Nullable @pointer(target=VkCooperativeMatrixPropertiesKHR.class) VkCooperativeMatrixPropertiesKHR pProperties
     ) {
         try {
             return (int) HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR.invokeExact(
@@ -14392,10 +14393,10 @@ public final class DeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateExecutionGraphPipelinesAMDX.html">vkCreateExecutionGraphPipelinesAMDX</a>
     public @enumtype(VkResult.class) int vkCreateExecutionGraphPipelinesAMDX(
             VkDevice device,
-            @nullable VkPipelineCache pipelineCache,
+            @Nullable VkPipelineCache pipelineCache,
             @unsigned int createInfoCount,
             @pointer(target=VkExecutionGraphPipelineCreateInfoAMDX.class) VkExecutionGraphPipelineCreateInfoAMDX pCreateInfos,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkPipeline.class) VkPipeline.Buffer pPipelines
     ) {
         try {

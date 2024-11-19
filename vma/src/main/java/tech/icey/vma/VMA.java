@@ -3,6 +3,7 @@ package tech.icey.vma;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.RawFunctionLoader;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -30,7 +31,7 @@ public final class VMA {
     }
 
     public void vmaDestroyAllocator(
-            @nullable VmaAllocator allocator
+            @Nullable VmaAllocator allocator
     ) {
         try {
             HANDLE$vmaDestroyAllocator.invokeExact(
@@ -213,7 +214,7 @@ public final class VMA {
 
     public void vmaDestroyPool(
             VmaAllocator allocator,
-            @nullable VmaPool pool
+            @Nullable VmaPool pool
     ) {
         try {
             HANDLE$vmaDestroyPool.invokeExact(
@@ -290,7 +291,7 @@ public final class VMA {
     public void vmaSetPoolName(
             VmaAllocator allocator,
             VmaPool pool,
-            @nullable ByteBuffer pName
+            @Nullable ByteBuffer pName
     ) {
         try {
             HANDLE$vmaSetPoolName.invokeExact(
@@ -308,7 +309,7 @@ public final class VMA {
             @pointer(target=VkMemoryRequirements.class) VkMemoryRequirements pVkMemoryRequirements,
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pCreateInfo,
             @pointer(target=VmaAllocation.class) VmaAllocation.Buffer pAllocation,
-            @nullable @pointer(target=VmaAllocationInfo.class) VmaAllocationInfo pAllocationInfo
+            @Nullable @pointer(target=VmaAllocationInfo.class) VmaAllocationInfo pAllocationInfo
     ) {
         try {
             return (int) HANDLE$vmaAllocateMemory.invokeExact(
@@ -329,7 +330,7 @@ public final class VMA {
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pCreateInfo,
             long allocationCount,
             @pointer(target=VmaAllocation.class) VmaAllocation.Buffer pAllocations,
-            @nullable @pointer(target=VmaAllocationInfo.class) VmaAllocationInfo pAllocationInfo
+            @Nullable @pointer(target=VmaAllocationInfo.class) VmaAllocationInfo pAllocationInfo
     ) {
         try {
             return (int) HANDLE$vmaAllocateMemoryPages.invokeExact(
@@ -350,7 +351,7 @@ public final class VMA {
             VkBuffer buffer,
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pCreateInfo,
             @pointer(target=VmaAllocation.class) VmaAllocation.Buffer pAllocation,
-            @nullable @pointer(target=VmaAllocationInfo.class) VmaAllocationInfo pAllocationInfo
+            @Nullable @pointer(target=VmaAllocationInfo.class) VmaAllocationInfo pAllocationInfo
     ) {
         try {
             return (int) HANDLE$vmaAllocateMemoryForBuffer.invokeExact(
@@ -370,7 +371,7 @@ public final class VMA {
             VkImage image,
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pCreateInfo,
             @pointer(target=VmaAllocation.class) VmaAllocation.Buffer pAllocation,
-            @nullable @pointer(target=VmaAllocationInfo.class) VmaAllocationInfo pAllocationInfo
+            @Nullable @pointer(target=VmaAllocationInfo.class) VmaAllocationInfo pAllocationInfo
     ) {
         try {
             return (int) HANDLE$vmaAllocateMemoryForImage.invokeExact(
@@ -387,7 +388,7 @@ public final class VMA {
 
     public void vmaFreeMemory(
             VmaAllocator allocator,
-            @nullable VmaAllocation allocation
+            @Nullable VmaAllocation allocation
     ) {
         try {
             HANDLE$vmaFreeMemory.invokeExact(
@@ -466,7 +467,7 @@ public final class VMA {
     public void vmaSetAllocationName(
             VmaAllocator allocator,
             VmaAllocation allocation,
-            @nullable ByteBuffer pName
+            @Nullable ByteBuffer pName
     ) {
         try {
             HANDLE$vmaSetAllocationName.invokeExact(
@@ -564,9 +565,9 @@ public final class VMA {
     public @enumtype(VkResult.class) int vmaFlushAllocations(
             VmaAllocator allocator,
             @unsigned int allocationCount,
-            @nullable @pointer(target=VmaAllocation.class) VmaAllocation.Buffer allocations,
-            @nullable @unsigned LongBuffer offsets,
-            @nullable @unsigned LongBuffer sizes
+            @Nullable @pointer(target=VmaAllocation.class) VmaAllocation.Buffer allocations,
+            @Nullable @unsigned LongBuffer offsets,
+            @Nullable @unsigned LongBuffer sizes
     ) {
         try {
             return (int) HANDLE$vmaFlushAllocations.invokeExact(
@@ -584,9 +585,9 @@ public final class VMA {
     public @enumtype(VkResult.class) int vmaInvalidateAllocations(
             VmaAllocator allocator,
             @unsigned int allocationCount,
-            @nullable @pointer(target=VmaAllocation.class) VmaAllocation.Buffer allocations,
-            @nullable @unsigned LongBuffer offsets,
-            @nullable @unsigned LongBuffer sizes
+            @Nullable @pointer(target=VmaAllocation.class) VmaAllocation.Buffer allocations,
+            @Nullable @unsigned LongBuffer offsets,
+            @Nullable @unsigned LongBuffer sizes
     ) {
         try {
             return (int) HANDLE$vmaInvalidateAllocations.invokeExact(
@@ -674,7 +675,7 @@ public final class VMA {
     public void vmaEndDefragmentation(
             VmaAllocator allocator,
             VmaDefragmentationContext context,
-            @nullable @pointer(target=VmaDefragmentationStats.class) VmaDefragmentationStats pStats
+            @Nullable @pointer(target=VmaDefragmentationStats.class) VmaDefragmentationStats pStats
     ) {
         try {
             HANDLE$vmaEndDefragmentation.invokeExact(
@@ -797,7 +798,7 @@ public final class VMA {
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pAllocationCreateInfo,
             @pointer(target=VkBuffer.class) VkBuffer.Buffer pBuffer,
             @pointer(target=VmaAllocation.class) VmaAllocation.Buffer pAllocation,
-            @nullable @pointer(target=VmaAllocationInfo.class) VmaAllocationInfo pAllocationInfo
+            @Nullable @pointer(target=VmaAllocationInfo.class) VmaAllocationInfo pAllocationInfo
     ) {
         try {
             return (int) HANDLE$vmaCreateBuffer.invokeExact(
@@ -820,7 +821,7 @@ public final class VMA {
             @unsigned long minAlignment,
             @pointer(target=VkBuffer.class) VkBuffer.Buffer pBuffer,
             @pointer(target=VmaAllocation.class) VmaAllocation.Buffer pAllocation,
-            @nullable @pointer(target=VmaAllocationInfo.class) VmaAllocationInfo pAllocationInfo
+            @Nullable @pointer(target=VmaAllocationInfo.class) VmaAllocationInfo pAllocationInfo
     ) {
         try {
             return (int) HANDLE$vmaCreateBufferWithAlignment.invokeExact(
@@ -877,8 +878,8 @@ public final class VMA {
 
     public void vmaDestroyBuffer(
             VmaAllocator allocator,
-            @nullable VkBuffer buffer,
-            @nullable VmaAllocation allocation
+            @Nullable VkBuffer buffer,
+            @Nullable VmaAllocation allocation
     ) {
         try {
             HANDLE$vmaDestroyBuffer.invokeExact(
@@ -897,7 +898,7 @@ public final class VMA {
             @pointer(target=VmaAllocationCreateInfo.class) VmaAllocationCreateInfo pAllocationCreateInfo,
             @pointer(target=VkImage.class) VkImage.Buffer pImage,
             @pointer(target=VmaAllocation.class) VmaAllocation.Buffer pAllocation,
-            @nullable @pointer(target=VmaAllocationInfo.class) VmaAllocationInfo pAllocationInfo
+            @Nullable @pointer(target=VmaAllocationInfo.class) VmaAllocationInfo pAllocationInfo
     ) {
         try {
             return (int) HANDLE$vmaCreateImage.invokeExact(
@@ -953,8 +954,8 @@ public final class VMA {
 
     public void vmaDestroyImage(
             VmaAllocator allocator,
-            @nullable VkImage image,
-            @nullable VmaAllocation allocation
+            @Nullable VkImage image,
+            @Nullable VmaAllocation allocation
     ) {
         try {
             HANDLE$vmaDestroyImage.invokeExact(
@@ -982,7 +983,7 @@ public final class VMA {
     }
 
     public void vmaDestroyVirtualBlock(
-            @nullable VmaVirtualBlock virtualBlock
+            @Nullable VmaVirtualBlock virtualBlock
     ) {
         try {
             HANDLE$vmaDestroyVirtualBlock.invokeExact(
@@ -1025,7 +1026,7 @@ public final class VMA {
             VmaVirtualBlock virtualBlock,
             @pointer(target=VmaVirtualAllocationCreateInfo.class) VmaVirtualAllocationCreateInfo pCreateInfo,
             @pointer(target=VmaVirtualAllocation.class) VmaVirtualAllocation.Buffer pAllocation,
-            @nullable @unsigned LongBuffer pOffset
+            @Nullable @unsigned LongBuffer pOffset
     ) {
         try {
             return (int) HANDLE$vmaVirtualAllocate.invokeExact(
@@ -1041,7 +1042,7 @@ public final class VMA {
 
     public void vmaVirtualFree(
             VmaVirtualBlock virtualBlock,
-            @nullable VmaVirtualAllocation allocation
+            @Nullable VmaVirtualAllocation allocation
     ) {
         try {
             HANDLE$vmaVirtualFree.invokeExact(
@@ -1127,7 +1128,7 @@ public final class VMA {
 
     public void vmaFreeVirtualBlockStatsString(
             VmaVirtualBlock virtualBlock,
-            @nullable ByteBuffer pStatsString
+            @Nullable ByteBuffer pStatsString
     ) {
         try {
             HANDLE$vmaFreeVirtualBlockStatsString.invokeExact(
@@ -1157,7 +1158,7 @@ public final class VMA {
 
     public void vmaFreeStatsString(
             VmaAllocator allocator,
-            @nullable ByteBuffer pStatsString
+            @Nullable ByteBuffer pStatsString
     ) {
         try {
             HANDLE$vmaFreeStatsString.invokeExact(
@@ -1572,147 +1573,147 @@ public final class VMA {
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
     );
 
-    public final @nullable MemorySegment SEGMENT$vmaCreateAllocator;
-    public final @nullable MemorySegment SEGMENT$vmaDestroyAllocator;
-    public final @nullable MemorySegment SEGMENT$vmaGetAllocatorInfo;
-    public final @nullable MemorySegment SEGMENT$vmaGetPhysicalDeviceProperties;
-    public final @nullable MemorySegment SEGMENT$vmaGetMemoryProperties;
-    public final @nullable MemorySegment SEGMENT$vmaGetMemoryTypeProperties;
-    public final @nullable MemorySegment SEGMENT$vmaSetCurrentFrameIndex;
-    public final @nullable MemorySegment SEGMENT$vmaCalculateStatistics;
-    public final @nullable MemorySegment SEGMENT$vmaGetHeapBudgets;
-    public final @nullable MemorySegment SEGMENT$vmaFindMemoryTypeIndex;
-    public final @nullable MemorySegment SEGMENT$vmaFindMemoryTypeIndexForBufferInfo;
-    public final @nullable MemorySegment SEGMENT$vmaFindMemoryTypeIndexForImageInfo;
-    public final @nullable MemorySegment SEGMENT$vmaCreatePool;
-    public final @nullable MemorySegment SEGMENT$vmaDestroyPool;
-    public final @nullable MemorySegment SEGMENT$vmaGetPoolStatistics;
-    public final @nullable MemorySegment SEGMENT$vmaCalculatePoolStatistics;
-    public final @nullable MemorySegment SEGMENT$vmaCheckPoolCorruption;
-    public final @nullable MemorySegment SEGMENT$vmaGetPoolName;
-    public final @nullable MemorySegment SEGMENT$vmaSetPoolName;
-    public final @nullable MemorySegment SEGMENT$vmaAllocateMemory;
-    public final @nullable MemorySegment SEGMENT$vmaAllocateMemoryPages;
-    public final @nullable MemorySegment SEGMENT$vmaAllocateMemoryForBuffer;
-    public final @nullable MemorySegment SEGMENT$vmaAllocateMemoryForImage;
-    public final @nullable MemorySegment SEGMENT$vmaFreeMemory;
-    public final @nullable MemorySegment SEGMENT$vmaFreeMemoryPages;
-    public final @nullable MemorySegment SEGMENT$vmaGetAllocationInfo;
-    public final @nullable MemorySegment SEGMENT$vmaGetAllocationInfo2;
-    public final @nullable MemorySegment SEGMENT$vmaSetAllocationUserData;
-    public final @nullable MemorySegment SEGMENT$vmaSetAllocationName;
-    public final @nullable MemorySegment SEGMENT$vmaGetAllocationMemoryProperties;
-    public final @nullable MemorySegment SEGMENT$vmaMapMemory;
-    public final @nullable MemorySegment SEGMENT$vmaUnmapMemory;
-    public final @nullable MemorySegment SEGMENT$vmaFlushAllocation;
-    public final @nullable MemorySegment SEGMENT$vmaInvalidateAllocation;
-    public final @nullable MemorySegment SEGMENT$vmaFlushAllocations;
-    public final @nullable MemorySegment SEGMENT$vmaInvalidateAllocations;
-    public final @nullable MemorySegment SEGMENT$vmaCopyMemoryToAllocation;
-    public final @nullable MemorySegment SEGMENT$vmaCopyAllocationToMemory;
-    public final @nullable MemorySegment SEGMENT$vmaCheckCorruption;
-    public final @nullable MemorySegment SEGMENT$vmaBeginDefragmentation;
-    public final @nullable MemorySegment SEGMENT$vmaEndDefragmentation;
-    public final @nullable MemorySegment SEGMENT$vmaBeginDefragmentationPass;
-    public final @nullable MemorySegment SEGMENT$vmaEndDefragmentationPass;
-    public final @nullable MemorySegment SEGMENT$vmaBindBufferMemory;
-    public final @nullable MemorySegment SEGMENT$vmaBindBufferMemory2;
-    public final @nullable MemorySegment SEGMENT$vmaBindImageMemory;
-    public final @nullable MemorySegment SEGMENT$vmaBindImageMemory2;
-    public final @nullable MemorySegment SEGMENT$vmaCreateBuffer;
-    public final @nullable MemorySegment SEGMENT$vmaCreateBufferWithAlignment;
-    public final @nullable MemorySegment SEGMENT$vmaCreateAliasingBuffer;
-    public final @nullable MemorySegment SEGMENT$vmaCreateAliasingBuffer2;
-    public final @nullable MemorySegment SEGMENT$vmaDestroyBuffer;
-    public final @nullable MemorySegment SEGMENT$vmaCreateImage;
-    public final @nullable MemorySegment SEGMENT$vmaCreateAliasingImage;
-    public final @nullable MemorySegment SEGMENT$vmaCreateAliasingImage2;
-    public final @nullable MemorySegment SEGMENT$vmaDestroyImage;
-    public final @nullable MemorySegment SEGMENT$vmaCreateVirtualBlock;
-    public final @nullable MemorySegment SEGMENT$vmaDestroyVirtualBlock;
-    public final @nullable MemorySegment SEGMENT$vmaIsVirtualBlockEmpty;
-    public final @nullable MemorySegment SEGMENT$vmaGetVirtualAllocationInfo;
-    public final @nullable MemorySegment SEGMENT$vmaVirtualAllocate;
-    public final @nullable MemorySegment SEGMENT$vmaVirtualFree;
-    public final @nullable MemorySegment SEGMENT$vmaClearVirtualBlock;
-    public final @nullable MemorySegment SEGMENT$vmaSetVirtualAllocationUserData;
-    public final @nullable MemorySegment SEGMENT$vmaGetVirtualBlockStatistics;
-    public final @nullable MemorySegment SEGMENT$vmaCalculateVirtualBlockStatistics;
-    public final @nullable MemorySegment SEGMENT$vmaBuildVirtualBlockStatsString;
-    public final @nullable MemorySegment SEGMENT$vmaFreeVirtualBlockStatsString;
-    public final @nullable MemorySegment SEGMENT$vmaBuildStatsString;
-    public final @nullable MemorySegment SEGMENT$vmaFreeStatsString;
+    public final @Nullable MemorySegment SEGMENT$vmaCreateAllocator;
+    public final @Nullable MemorySegment SEGMENT$vmaDestroyAllocator;
+    public final @Nullable MemorySegment SEGMENT$vmaGetAllocatorInfo;
+    public final @Nullable MemorySegment SEGMENT$vmaGetPhysicalDeviceProperties;
+    public final @Nullable MemorySegment SEGMENT$vmaGetMemoryProperties;
+    public final @Nullable MemorySegment SEGMENT$vmaGetMemoryTypeProperties;
+    public final @Nullable MemorySegment SEGMENT$vmaSetCurrentFrameIndex;
+    public final @Nullable MemorySegment SEGMENT$vmaCalculateStatistics;
+    public final @Nullable MemorySegment SEGMENT$vmaGetHeapBudgets;
+    public final @Nullable MemorySegment SEGMENT$vmaFindMemoryTypeIndex;
+    public final @Nullable MemorySegment SEGMENT$vmaFindMemoryTypeIndexForBufferInfo;
+    public final @Nullable MemorySegment SEGMENT$vmaFindMemoryTypeIndexForImageInfo;
+    public final @Nullable MemorySegment SEGMENT$vmaCreatePool;
+    public final @Nullable MemorySegment SEGMENT$vmaDestroyPool;
+    public final @Nullable MemorySegment SEGMENT$vmaGetPoolStatistics;
+    public final @Nullable MemorySegment SEGMENT$vmaCalculatePoolStatistics;
+    public final @Nullable MemorySegment SEGMENT$vmaCheckPoolCorruption;
+    public final @Nullable MemorySegment SEGMENT$vmaGetPoolName;
+    public final @Nullable MemorySegment SEGMENT$vmaSetPoolName;
+    public final @Nullable MemorySegment SEGMENT$vmaAllocateMemory;
+    public final @Nullable MemorySegment SEGMENT$vmaAllocateMemoryPages;
+    public final @Nullable MemorySegment SEGMENT$vmaAllocateMemoryForBuffer;
+    public final @Nullable MemorySegment SEGMENT$vmaAllocateMemoryForImage;
+    public final @Nullable MemorySegment SEGMENT$vmaFreeMemory;
+    public final @Nullable MemorySegment SEGMENT$vmaFreeMemoryPages;
+    public final @Nullable MemorySegment SEGMENT$vmaGetAllocationInfo;
+    public final @Nullable MemorySegment SEGMENT$vmaGetAllocationInfo2;
+    public final @Nullable MemorySegment SEGMENT$vmaSetAllocationUserData;
+    public final @Nullable MemorySegment SEGMENT$vmaSetAllocationName;
+    public final @Nullable MemorySegment SEGMENT$vmaGetAllocationMemoryProperties;
+    public final @Nullable MemorySegment SEGMENT$vmaMapMemory;
+    public final @Nullable MemorySegment SEGMENT$vmaUnmapMemory;
+    public final @Nullable MemorySegment SEGMENT$vmaFlushAllocation;
+    public final @Nullable MemorySegment SEGMENT$vmaInvalidateAllocation;
+    public final @Nullable MemorySegment SEGMENT$vmaFlushAllocations;
+    public final @Nullable MemorySegment SEGMENT$vmaInvalidateAllocations;
+    public final @Nullable MemorySegment SEGMENT$vmaCopyMemoryToAllocation;
+    public final @Nullable MemorySegment SEGMENT$vmaCopyAllocationToMemory;
+    public final @Nullable MemorySegment SEGMENT$vmaCheckCorruption;
+    public final @Nullable MemorySegment SEGMENT$vmaBeginDefragmentation;
+    public final @Nullable MemorySegment SEGMENT$vmaEndDefragmentation;
+    public final @Nullable MemorySegment SEGMENT$vmaBeginDefragmentationPass;
+    public final @Nullable MemorySegment SEGMENT$vmaEndDefragmentationPass;
+    public final @Nullable MemorySegment SEGMENT$vmaBindBufferMemory;
+    public final @Nullable MemorySegment SEGMENT$vmaBindBufferMemory2;
+    public final @Nullable MemorySegment SEGMENT$vmaBindImageMemory;
+    public final @Nullable MemorySegment SEGMENT$vmaBindImageMemory2;
+    public final @Nullable MemorySegment SEGMENT$vmaCreateBuffer;
+    public final @Nullable MemorySegment SEGMENT$vmaCreateBufferWithAlignment;
+    public final @Nullable MemorySegment SEGMENT$vmaCreateAliasingBuffer;
+    public final @Nullable MemorySegment SEGMENT$vmaCreateAliasingBuffer2;
+    public final @Nullable MemorySegment SEGMENT$vmaDestroyBuffer;
+    public final @Nullable MemorySegment SEGMENT$vmaCreateImage;
+    public final @Nullable MemorySegment SEGMENT$vmaCreateAliasingImage;
+    public final @Nullable MemorySegment SEGMENT$vmaCreateAliasingImage2;
+    public final @Nullable MemorySegment SEGMENT$vmaDestroyImage;
+    public final @Nullable MemorySegment SEGMENT$vmaCreateVirtualBlock;
+    public final @Nullable MemorySegment SEGMENT$vmaDestroyVirtualBlock;
+    public final @Nullable MemorySegment SEGMENT$vmaIsVirtualBlockEmpty;
+    public final @Nullable MemorySegment SEGMENT$vmaGetVirtualAllocationInfo;
+    public final @Nullable MemorySegment SEGMENT$vmaVirtualAllocate;
+    public final @Nullable MemorySegment SEGMENT$vmaVirtualFree;
+    public final @Nullable MemorySegment SEGMENT$vmaClearVirtualBlock;
+    public final @Nullable MemorySegment SEGMENT$vmaSetVirtualAllocationUserData;
+    public final @Nullable MemorySegment SEGMENT$vmaGetVirtualBlockStatistics;
+    public final @Nullable MemorySegment SEGMENT$vmaCalculateVirtualBlockStatistics;
+    public final @Nullable MemorySegment SEGMENT$vmaBuildVirtualBlockStatsString;
+    public final @Nullable MemorySegment SEGMENT$vmaFreeVirtualBlockStatsString;
+    public final @Nullable MemorySegment SEGMENT$vmaBuildStatsString;
+    public final @Nullable MemorySegment SEGMENT$vmaFreeStatsString;
 
-    public final @nullable MethodHandle HANDLE$vmaCreateAllocator;
-    public final @nullable MethodHandle HANDLE$vmaDestroyAllocator;
-    public final @nullable MethodHandle HANDLE$vmaGetAllocatorInfo;
-    public final @nullable MethodHandle HANDLE$vmaGetPhysicalDeviceProperties;
-    public final @nullable MethodHandle HANDLE$vmaGetMemoryProperties;
-    public final @nullable MethodHandle HANDLE$vmaGetMemoryTypeProperties;
-    public final @nullable MethodHandle HANDLE$vmaSetCurrentFrameIndex;
-    public final @nullable MethodHandle HANDLE$vmaCalculateStatistics;
-    public final @nullable MethodHandle HANDLE$vmaGetHeapBudgets;
-    public final @nullable MethodHandle HANDLE$vmaFindMemoryTypeIndex;
-    public final @nullable MethodHandle HANDLE$vmaFindMemoryTypeIndexForBufferInfo;
-    public final @nullable MethodHandle HANDLE$vmaFindMemoryTypeIndexForImageInfo;
-    public final @nullable MethodHandle HANDLE$vmaCreatePool;
-    public final @nullable MethodHandle HANDLE$vmaDestroyPool;
-    public final @nullable MethodHandle HANDLE$vmaGetPoolStatistics;
-    public final @nullable MethodHandle HANDLE$vmaCalculatePoolStatistics;
-    public final @nullable MethodHandle HANDLE$vmaCheckPoolCorruption;
-    public final @nullable MethodHandle HANDLE$vmaGetPoolName;
-    public final @nullable MethodHandle HANDLE$vmaSetPoolName;
-    public final @nullable MethodHandle HANDLE$vmaAllocateMemory;
-    public final @nullable MethodHandle HANDLE$vmaAllocateMemoryPages;
-    public final @nullable MethodHandle HANDLE$vmaAllocateMemoryForBuffer;
-    public final @nullable MethodHandle HANDLE$vmaAllocateMemoryForImage;
-    public final @nullable MethodHandle HANDLE$vmaFreeMemory;
-    public final @nullable MethodHandle HANDLE$vmaFreeMemoryPages;
-    public final @nullable MethodHandle HANDLE$vmaGetAllocationInfo;
-    public final @nullable MethodHandle HANDLE$vmaGetAllocationInfo2;
-    public final @nullable MethodHandle HANDLE$vmaSetAllocationUserData;
-    public final @nullable MethodHandle HANDLE$vmaSetAllocationName;
-    public final @nullable MethodHandle HANDLE$vmaGetAllocationMemoryProperties;
-    public final @nullable MethodHandle HANDLE$vmaMapMemory;
-    public final @nullable MethodHandle HANDLE$vmaUnmapMemory;
-    public final @nullable MethodHandle HANDLE$vmaFlushAllocation;
-    public final @nullable MethodHandle HANDLE$vmaInvalidateAllocation;
-    public final @nullable MethodHandle HANDLE$vmaFlushAllocations;
-    public final @nullable MethodHandle HANDLE$vmaInvalidateAllocations;
-    public final @nullable MethodHandle HANDLE$vmaCopyMemoryToAllocation;
-    public final @nullable MethodHandle HANDLE$vmaCopyAllocationToMemory;
-    public final @nullable MethodHandle HANDLE$vmaCheckCorruption;
-    public final @nullable MethodHandle HANDLE$vmaBeginDefragmentation;
-    public final @nullable MethodHandle HANDLE$vmaEndDefragmentation;
-    public final @nullable MethodHandle HANDLE$vmaBeginDefragmentationPass;
-    public final @nullable MethodHandle HANDLE$vmaEndDefragmentationPass;
-    public final @nullable MethodHandle HANDLE$vmaBindBufferMemory;
-    public final @nullable MethodHandle HANDLE$vmaBindBufferMemory2;
-    public final @nullable MethodHandle HANDLE$vmaBindImageMemory;
-    public final @nullable MethodHandle HANDLE$vmaBindImageMemory2;
-    public final @nullable MethodHandle HANDLE$vmaCreateBuffer;
-    public final @nullable MethodHandle HANDLE$vmaCreateBufferWithAlignment;
-    public final @nullable MethodHandle HANDLE$vmaCreateAliasingBuffer;
-    public final @nullable MethodHandle HANDLE$vmaCreateAliasingBuffer2;
-    public final @nullable MethodHandle HANDLE$vmaDestroyBuffer;
-    public final @nullable MethodHandle HANDLE$vmaCreateImage;
-    public final @nullable MethodHandle HANDLE$vmaCreateAliasingImage;
-    public final @nullable MethodHandle HANDLE$vmaCreateAliasingImage2;
-    public final @nullable MethodHandle HANDLE$vmaDestroyImage;
-    public final @nullable MethodHandle HANDLE$vmaCreateVirtualBlock;
-    public final @nullable MethodHandle HANDLE$vmaDestroyVirtualBlock;
-    public final @nullable MethodHandle HANDLE$vmaIsVirtualBlockEmpty;
-    public final @nullable MethodHandle HANDLE$vmaGetVirtualAllocationInfo;
-    public final @nullable MethodHandle HANDLE$vmaVirtualAllocate;
-    public final @nullable MethodHandle HANDLE$vmaVirtualFree;
-    public final @nullable MethodHandle HANDLE$vmaClearVirtualBlock;
-    public final @nullable MethodHandle HANDLE$vmaSetVirtualAllocationUserData;
-    public final @nullable MethodHandle HANDLE$vmaGetVirtualBlockStatistics;
-    public final @nullable MethodHandle HANDLE$vmaCalculateVirtualBlockStatistics;
-    public final @nullable MethodHandle HANDLE$vmaBuildVirtualBlockStatsString;
-    public final @nullable MethodHandle HANDLE$vmaFreeVirtualBlockStatsString;
-    public final @nullable MethodHandle HANDLE$vmaBuildStatsString;
-    public final @nullable MethodHandle HANDLE$vmaFreeStatsString;
+    public final @Nullable MethodHandle HANDLE$vmaCreateAllocator;
+    public final @Nullable MethodHandle HANDLE$vmaDestroyAllocator;
+    public final @Nullable MethodHandle HANDLE$vmaGetAllocatorInfo;
+    public final @Nullable MethodHandle HANDLE$vmaGetPhysicalDeviceProperties;
+    public final @Nullable MethodHandle HANDLE$vmaGetMemoryProperties;
+    public final @Nullable MethodHandle HANDLE$vmaGetMemoryTypeProperties;
+    public final @Nullable MethodHandle HANDLE$vmaSetCurrentFrameIndex;
+    public final @Nullable MethodHandle HANDLE$vmaCalculateStatistics;
+    public final @Nullable MethodHandle HANDLE$vmaGetHeapBudgets;
+    public final @Nullable MethodHandle HANDLE$vmaFindMemoryTypeIndex;
+    public final @Nullable MethodHandle HANDLE$vmaFindMemoryTypeIndexForBufferInfo;
+    public final @Nullable MethodHandle HANDLE$vmaFindMemoryTypeIndexForImageInfo;
+    public final @Nullable MethodHandle HANDLE$vmaCreatePool;
+    public final @Nullable MethodHandle HANDLE$vmaDestroyPool;
+    public final @Nullable MethodHandle HANDLE$vmaGetPoolStatistics;
+    public final @Nullable MethodHandle HANDLE$vmaCalculatePoolStatistics;
+    public final @Nullable MethodHandle HANDLE$vmaCheckPoolCorruption;
+    public final @Nullable MethodHandle HANDLE$vmaGetPoolName;
+    public final @Nullable MethodHandle HANDLE$vmaSetPoolName;
+    public final @Nullable MethodHandle HANDLE$vmaAllocateMemory;
+    public final @Nullable MethodHandle HANDLE$vmaAllocateMemoryPages;
+    public final @Nullable MethodHandle HANDLE$vmaAllocateMemoryForBuffer;
+    public final @Nullable MethodHandle HANDLE$vmaAllocateMemoryForImage;
+    public final @Nullable MethodHandle HANDLE$vmaFreeMemory;
+    public final @Nullable MethodHandle HANDLE$vmaFreeMemoryPages;
+    public final @Nullable MethodHandle HANDLE$vmaGetAllocationInfo;
+    public final @Nullable MethodHandle HANDLE$vmaGetAllocationInfo2;
+    public final @Nullable MethodHandle HANDLE$vmaSetAllocationUserData;
+    public final @Nullable MethodHandle HANDLE$vmaSetAllocationName;
+    public final @Nullable MethodHandle HANDLE$vmaGetAllocationMemoryProperties;
+    public final @Nullable MethodHandle HANDLE$vmaMapMemory;
+    public final @Nullable MethodHandle HANDLE$vmaUnmapMemory;
+    public final @Nullable MethodHandle HANDLE$vmaFlushAllocation;
+    public final @Nullable MethodHandle HANDLE$vmaInvalidateAllocation;
+    public final @Nullable MethodHandle HANDLE$vmaFlushAllocations;
+    public final @Nullable MethodHandle HANDLE$vmaInvalidateAllocations;
+    public final @Nullable MethodHandle HANDLE$vmaCopyMemoryToAllocation;
+    public final @Nullable MethodHandle HANDLE$vmaCopyAllocationToMemory;
+    public final @Nullable MethodHandle HANDLE$vmaCheckCorruption;
+    public final @Nullable MethodHandle HANDLE$vmaBeginDefragmentation;
+    public final @Nullable MethodHandle HANDLE$vmaEndDefragmentation;
+    public final @Nullable MethodHandle HANDLE$vmaBeginDefragmentationPass;
+    public final @Nullable MethodHandle HANDLE$vmaEndDefragmentationPass;
+    public final @Nullable MethodHandle HANDLE$vmaBindBufferMemory;
+    public final @Nullable MethodHandle HANDLE$vmaBindBufferMemory2;
+    public final @Nullable MethodHandle HANDLE$vmaBindImageMemory;
+    public final @Nullable MethodHandle HANDLE$vmaBindImageMemory2;
+    public final @Nullable MethodHandle HANDLE$vmaCreateBuffer;
+    public final @Nullable MethodHandle HANDLE$vmaCreateBufferWithAlignment;
+    public final @Nullable MethodHandle HANDLE$vmaCreateAliasingBuffer;
+    public final @Nullable MethodHandle HANDLE$vmaCreateAliasingBuffer2;
+    public final @Nullable MethodHandle HANDLE$vmaDestroyBuffer;
+    public final @Nullable MethodHandle HANDLE$vmaCreateImage;
+    public final @Nullable MethodHandle HANDLE$vmaCreateAliasingImage;
+    public final @Nullable MethodHandle HANDLE$vmaCreateAliasingImage2;
+    public final @Nullable MethodHandle HANDLE$vmaDestroyImage;
+    public final @Nullable MethodHandle HANDLE$vmaCreateVirtualBlock;
+    public final @Nullable MethodHandle HANDLE$vmaDestroyVirtualBlock;
+    public final @Nullable MethodHandle HANDLE$vmaIsVirtualBlockEmpty;
+    public final @Nullable MethodHandle HANDLE$vmaGetVirtualAllocationInfo;
+    public final @Nullable MethodHandle HANDLE$vmaVirtualAllocate;
+    public final @Nullable MethodHandle HANDLE$vmaVirtualFree;
+    public final @Nullable MethodHandle HANDLE$vmaClearVirtualBlock;
+    public final @Nullable MethodHandle HANDLE$vmaSetVirtualAllocationUserData;
+    public final @Nullable MethodHandle HANDLE$vmaGetVirtualBlockStatistics;
+    public final @Nullable MethodHandle HANDLE$vmaCalculateVirtualBlockStatistics;
+    public final @Nullable MethodHandle HANDLE$vmaBuildVirtualBlockStatsString;
+    public final @Nullable MethodHandle HANDLE$vmaFreeVirtualBlockStatsString;
+    public final @Nullable MethodHandle HANDLE$vmaBuildStatsString;
+    public final @Nullable MethodHandle HANDLE$vmaFreeStatsString;
 
     public VMA(RawFunctionLoader loader) {
         SEGMENT$vmaCreateAllocator = loader.apply("vmaCreateAllocator");

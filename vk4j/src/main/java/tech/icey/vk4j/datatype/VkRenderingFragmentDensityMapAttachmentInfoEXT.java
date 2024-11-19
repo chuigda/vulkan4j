@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,11 +46,11 @@ public record VkRenderingFragmentDensityMapAttachmentInfoEXT(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkImageView imageView() {
+    public @Nullable VkImageView imageView() {
         MemorySegment s = segment.get(LAYOUT$imageView, OFFSET$imageView);
         if (s.address() == 0) {
             return null;
@@ -57,7 +58,7 @@ public record VkRenderingFragmentDensityMapAttachmentInfoEXT(MemorySegment segme
         return new VkImageView(s);
     }
 
-    public void imageView(@nullable VkImageView value) {
+    public void imageView(@Nullable VkImageView value) {
         segment.set(
             LAYOUT$imageView,
             OFFSET$imageView,

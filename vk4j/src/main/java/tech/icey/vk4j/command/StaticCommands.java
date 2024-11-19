@@ -3,6 +3,7 @@ package tech.icey.vk4j.command;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.RawFunctionLoader;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -25,10 +26,10 @@ public final class StaticCommands {
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
     );
 
-    public final @nullable MemorySegment SEGMENT$vkGetDeviceProcAddr;
-    public final @nullable MemorySegment SEGMENT$vkGetInstanceProcAddr;
-    public final @nullable MethodHandle HANDLE$vkGetDeviceProcAddr;
-    public final @nullable MethodHandle HANDLE$vkGetInstanceProcAddr;
+    public final @Nullable MemorySegment SEGMENT$vkGetDeviceProcAddr;
+    public final @Nullable MemorySegment SEGMENT$vkGetInstanceProcAddr;
+    public final @Nullable MethodHandle HANDLE$vkGetDeviceProcAddr;
+    public final @Nullable MethodHandle HANDLE$vkGetInstanceProcAddr;
 
     public StaticCommands(RawFunctionLoader loader) {
         SEGMENT$vkGetDeviceProcAddr = loader.apply("vkGetDeviceProcAddr");
@@ -54,7 +55,7 @@ public final class StaticCommands {
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetInstanceProcAddr.html">vkGetInstanceProcAddr</a>
     public @pointer(comment="PFN_vkVoidFunction") MemorySegment vkGetInstanceProcAddr(
-            @nullable VkInstance instance,
+            @Nullable VkInstance instance,
             ByteBuffer pName
     ) {
         try {

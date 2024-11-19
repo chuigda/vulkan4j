@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkRenderPassStripeBeginInfoARM(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -65,7 +66,7 @@ public record VkRenderPassStripeBeginInfoARM(MemorySegment segment) implements I
         segment.set(LAYOUT$pStripeInfos, OFFSET$pStripeInfos, value);
     }
 
-    public @nullable VkRenderPassStripeInfoARM pStripeInfos() {
+    public @Nullable VkRenderPassStripeInfoARM pStripeInfos() {
         MemorySegment s = pStripeInfosRaw();
         if (s.address() == 0) {
             return null;
@@ -75,7 +76,7 @@ public record VkRenderPassStripeBeginInfoARM(MemorySegment segment) implements I
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRenderPassStripeInfoARM[] pStripeInfos(int assumedCount) {
+    public @Nullable VkRenderPassStripeInfoARM[] pStripeInfos(int assumedCount) {
         MemorySegment s = pStripeInfosRaw().reinterpret(assumedCount * VkRenderPassStripeInfoARM.SIZE);
         VkRenderPassStripeInfoARM[] arr = new VkRenderPassStripeInfoARM[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -84,7 +85,7 @@ public record VkRenderPassStripeBeginInfoARM(MemorySegment segment) implements I
         return arr;
     }
 
-    public void pStripeInfos(@nullable VkRenderPassStripeInfoARM value) {
+    public void pStripeInfos(@Nullable VkRenderPassStripeInfoARM value) {
         pStripeInfosRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

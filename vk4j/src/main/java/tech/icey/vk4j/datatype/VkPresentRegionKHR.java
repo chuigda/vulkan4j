@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -42,7 +43,7 @@ public record VkPresentRegionKHR(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pRectangles, OFFSET$pRectangles, value);
     }
 
-    public @nullable VkRectLayerKHR pRectangles() {
+    public @Nullable VkRectLayerKHR pRectangles() {
         MemorySegment s = pRectanglesRaw();
         if (s.address() == 0) {
             return null;
@@ -52,7 +53,7 @@ public record VkPresentRegionKHR(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRectLayerKHR[] pRectangles(int assumedCount) {
+    public @Nullable VkRectLayerKHR[] pRectangles(int assumedCount) {
         MemorySegment s = pRectanglesRaw().reinterpret(assumedCount * VkRectLayerKHR.SIZE);
         VkRectLayerKHR[] arr = new VkRectLayerKHR[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -61,7 +62,7 @@ public record VkPresentRegionKHR(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pRectangles(@nullable VkRectLayerKHR value) {
+    public void pRectangles(@Nullable VkRectLayerKHR value) {
         pRectanglesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

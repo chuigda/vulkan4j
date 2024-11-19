@@ -3,6 +3,7 @@ package tech.icey.gles2;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.RawFunctionLoader;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -38,7 +39,7 @@ public final class GLES2 {
     public void glBindAttribLocation(
             @unsigned int program,
             @unsigned int index,
-            @nullable ByteBuffer name
+            @Nullable ByteBuffer name
     ) {
         try {
             HANDLE$glBindAttribLocation.invokeExact(
@@ -455,7 +456,7 @@ public final class GLES2 {
 
     public void glDeleteBuffers(
             int n,
-            @nullable @unsigned IntBuffer buffers
+            @Nullable @unsigned IntBuffer buffers
     ) {
         try {
             HANDLE$glDeleteBuffers.invokeExact(
@@ -469,7 +470,7 @@ public final class GLES2 {
 
     public void glDeleteFramebuffers(
             int n,
-            @nullable @unsigned IntBuffer framebuffers
+            @Nullable @unsigned IntBuffer framebuffers
     ) {
         try {
             HANDLE$glDeleteFramebuffers.invokeExact(
@@ -495,7 +496,7 @@ public final class GLES2 {
 
     public void glDeleteRenderbuffers(
             int n,
-            @nullable @unsigned IntBuffer renderbuffers
+            @Nullable @unsigned IntBuffer renderbuffers
     ) {
         try {
             HANDLE$glDeleteRenderbuffers.invokeExact(
@@ -521,7 +522,7 @@ public final class GLES2 {
 
     public void glDeleteTextures(
             int n,
-            @nullable @unsigned IntBuffer textures
+            @Nullable @unsigned IntBuffer textures
     ) {
         try {
             HANDLE$glDeleteTextures.invokeExact(
@@ -735,7 +736,7 @@ public final class GLES2 {
 
     public void glGenBuffers(
             int n,
-            @nullable @unsigned IntBuffer buffers
+            @Nullable @unsigned IntBuffer buffers
     ) {
         try {
             HANDLE$glGenBuffers.invokeExact(
@@ -761,7 +762,7 @@ public final class GLES2 {
 
     public void glGenFramebuffers(
             int n,
-            @nullable @unsigned IntBuffer framebuffers
+            @Nullable @unsigned IntBuffer framebuffers
     ) {
         try {
             HANDLE$glGenFramebuffers.invokeExact(
@@ -775,7 +776,7 @@ public final class GLES2 {
 
     public void glGenRenderbuffers(
             int n,
-            @nullable @unsigned IntBuffer renderbuffers
+            @Nullable @unsigned IntBuffer renderbuffers
     ) {
         try {
             HANDLE$glGenRenderbuffers.invokeExact(
@@ -789,7 +790,7 @@ public final class GLES2 {
 
     public void glGenTextures(
             int n,
-            @nullable @unsigned IntBuffer textures
+            @Nullable @unsigned IntBuffer textures
     ) {
         try {
             HANDLE$glGenTextures.invokeExact(
@@ -805,10 +806,10 @@ public final class GLES2 {
             @unsigned int program,
             @unsigned int index,
             int bufSize,
-            @nullable IntBuffer length,
-            @nullable IntBuffer size,
-            @nullable IntBuffer type,
-            @nullable ByteBuffer name
+            @Nullable IntBuffer length,
+            @Nullable IntBuffer size,
+            @Nullable IntBuffer type,
+            @Nullable ByteBuffer name
     ) {
         try {
             HANDLE$glGetActiveAttrib.invokeExact(
@@ -829,10 +830,10 @@ public final class GLES2 {
             @unsigned int program,
             @unsigned int index,
             int bufSize,
-            @nullable IntBuffer length,
-            @nullable IntBuffer size,
-            @nullable IntBuffer type,
-            @nullable ByteBuffer name
+            @Nullable IntBuffer length,
+            @Nullable IntBuffer size,
+            @Nullable IntBuffer type,
+            @Nullable ByteBuffer name
     ) {
         try {
             HANDLE$glGetActiveUniform.invokeExact(
@@ -852,8 +853,8 @@ public final class GLES2 {
     public void glGetAttachedShaders(
             @unsigned int program,
             int maxCount,
-            @nullable IntBuffer count,
-            @nullable @unsigned IntBuffer shaders
+            @Nullable IntBuffer count,
+            @Nullable @unsigned IntBuffer shaders
     ) {
         try {
             HANDLE$glGetAttachedShaders.invokeExact(
@@ -869,7 +870,7 @@ public final class GLES2 {
 
     public int glGetAttribLocation(
             @unsigned int program,
-            @nullable ByteBuffer name
+            @Nullable ByteBuffer name
     ) {
         try {
             return (int) HANDLE$glGetAttribLocation.invokeExact(
@@ -883,7 +884,7 @@ public final class GLES2 {
 
     public void glGetBooleanv(
             int pname,
-            @nullable @unsigned ByteBuffer data
+            @Nullable @unsigned ByteBuffer data
     ) {
         try {
             HANDLE$glGetBooleanv.invokeExact(
@@ -898,7 +899,7 @@ public final class GLES2 {
     public void glGetBufferParameteriv(
             int target,
             int pname,
-            @nullable IntBuffer params
+            @Nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetBufferParameteriv.invokeExact(
@@ -921,7 +922,7 @@ public final class GLES2 {
 
     public void glGetFloatv(
             int pname,
-            @nullable FloatBuffer data
+            @Nullable FloatBuffer data
     ) {
         try {
             HANDLE$glGetFloatv.invokeExact(
@@ -937,7 +938,7 @@ public final class GLES2 {
             int target,
             int attachment,
             int pname,
-            @nullable IntBuffer params
+            @Nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetFramebufferAttachmentParameteriv.invokeExact(
@@ -953,7 +954,7 @@ public final class GLES2 {
 
     public void glGetIntegerv(
             int pname,
-            @nullable IntBuffer data
+            @Nullable IntBuffer data
     ) {
         try {
             HANDLE$glGetIntegerv.invokeExact(
@@ -968,7 +969,7 @@ public final class GLES2 {
     public void glGetProgramiv(
             @unsigned int program,
             int pname,
-            @nullable IntBuffer params
+            @Nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetProgramiv.invokeExact(
@@ -984,8 +985,8 @@ public final class GLES2 {
     public void glGetProgramInfoLog(
             @unsigned int program,
             int bufSize,
-            @nullable IntBuffer length,
-            @nullable ByteBuffer infoLog
+            @Nullable IntBuffer length,
+            @Nullable ByteBuffer infoLog
     ) {
         try {
             HANDLE$glGetProgramInfoLog.invokeExact(
@@ -1002,7 +1003,7 @@ public final class GLES2 {
     public void glGetRenderbufferParameteriv(
             int target,
             int pname,
-            @nullable IntBuffer params
+            @Nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetRenderbufferParameteriv.invokeExact(
@@ -1018,7 +1019,7 @@ public final class GLES2 {
     public void glGetShaderiv(
             @unsigned int shader,
             int pname,
-            @nullable IntBuffer params
+            @Nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetShaderiv.invokeExact(
@@ -1034,8 +1035,8 @@ public final class GLES2 {
     public void glGetShaderInfoLog(
             @unsigned int shader,
             int bufSize,
-            @nullable IntBuffer length,
-            @nullable ByteBuffer infoLog
+            @Nullable IntBuffer length,
+            @Nullable ByteBuffer infoLog
     ) {
         try {
             HANDLE$glGetShaderInfoLog.invokeExact(
@@ -1052,8 +1053,8 @@ public final class GLES2 {
     public void glGetShaderPrecisionFormat(
             int shadertype,
             int precisiontype,
-            @nullable IntBuffer range,
-            @nullable IntBuffer precision
+            @Nullable IntBuffer range,
+            @Nullable IntBuffer precision
     ) {
         try {
             HANDLE$glGetShaderPrecisionFormat.invokeExact(
@@ -1070,8 +1071,8 @@ public final class GLES2 {
     public void glGetShaderSource(
             @unsigned int shader,
             int bufSize,
-            @nullable IntBuffer length,
-            @nullable ByteBuffer source
+            @Nullable IntBuffer length,
+            @Nullable ByteBuffer source
     ) {
         try {
             HANDLE$glGetShaderSource.invokeExact(
@@ -1085,7 +1086,7 @@ public final class GLES2 {
         }
     }
 
-    public @nullable @unsigned ByteBuffer glGetString(
+    public @Nullable @unsigned ByteBuffer glGetString(
             int name
     ) {
         try {
@@ -1101,7 +1102,7 @@ public final class GLES2 {
     public void glGetTexParameterfv(
             int target,
             int pname,
-            @nullable FloatBuffer params
+            @Nullable FloatBuffer params
     ) {
         try {
             HANDLE$glGetTexParameterfv.invokeExact(
@@ -1117,7 +1118,7 @@ public final class GLES2 {
     public void glGetTexParameteriv(
             int target,
             int pname,
-            @nullable IntBuffer params
+            @Nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetTexParameteriv.invokeExact(
@@ -1133,7 +1134,7 @@ public final class GLES2 {
     public void glGetUniformfv(
             @unsigned int program,
             int location,
-            @nullable FloatBuffer params
+            @Nullable FloatBuffer params
     ) {
         try {
             HANDLE$glGetUniformfv.invokeExact(
@@ -1149,7 +1150,7 @@ public final class GLES2 {
     public void glGetUniformiv(
             @unsigned int program,
             int location,
-            @nullable IntBuffer params
+            @Nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetUniformiv.invokeExact(
@@ -1164,7 +1165,7 @@ public final class GLES2 {
 
     public int glGetUniformLocation(
             @unsigned int program,
-            @nullable ByteBuffer name
+            @Nullable ByteBuffer name
     ) {
         try {
             return (int) HANDLE$glGetUniformLocation.invokeExact(
@@ -1179,7 +1180,7 @@ public final class GLES2 {
     public void glGetVertexAttribfv(
             @unsigned int index,
             int pname,
-            @nullable FloatBuffer params
+            @Nullable FloatBuffer params
     ) {
         try {
             HANDLE$glGetVertexAttribfv.invokeExact(
@@ -1195,7 +1196,7 @@ public final class GLES2 {
     public void glGetVertexAttribiv(
             @unsigned int index,
             int pname,
-            @nullable IntBuffer params
+            @Nullable IntBuffer params
     ) {
         try {
             HANDLE$glGetVertexAttribiv.invokeExact(
@@ -1211,7 +1212,7 @@ public final class GLES2 {
     public void glGetVertexAttribPointerv(
             @unsigned int index,
             int pname,
-            @nullable PointerBuffer pointer
+            @Nullable PointerBuffer pointer
     ) {
         try {
             HANDLE$glGetVertexAttribPointerv.invokeExact(
@@ -1458,7 +1459,7 @@ public final class GLES2 {
 
     public void glShaderBinary(
             int count,
-            @nullable @unsigned IntBuffer shaders,
+            @Nullable @unsigned IntBuffer shaders,
             int binaryFormat,
             @pointer(comment="void*") MemorySegment binary,
             int length
@@ -1479,8 +1480,8 @@ public final class GLES2 {
     public void glShaderSource(
             @unsigned int shader,
             int count,
-            @nullable PointerBuffer string,
-            @nullable IntBuffer length
+            @Nullable PointerBuffer string,
+            @Nullable IntBuffer length
     ) {
         try {
             HANDLE$glShaderSource.invokeExact(
@@ -1635,7 +1636,7 @@ public final class GLES2 {
     public void glTexParameterfv(
             int target,
             int pname,
-            @nullable FloatBuffer params
+            @Nullable FloatBuffer params
     ) {
         try {
             HANDLE$glTexParameterfv.invokeExact(
@@ -1667,7 +1668,7 @@ public final class GLES2 {
     public void glTexParameteriv(
             int target,
             int pname,
-            @nullable IntBuffer params
+            @Nullable IntBuffer params
     ) {
         try {
             HANDLE$glTexParameteriv.invokeExact(
@@ -1725,7 +1726,7 @@ public final class GLES2 {
     public void glUniform1fv(
             int location,
             int count,
-            @nullable FloatBuffer value
+            @Nullable FloatBuffer value
     ) {
         try {
             HANDLE$glUniform1fv.invokeExact(
@@ -1755,7 +1756,7 @@ public final class GLES2 {
     public void glUniform1iv(
             int location,
             int count,
-            @nullable IntBuffer value
+            @Nullable IntBuffer value
     ) {
         try {
             HANDLE$glUniform1iv.invokeExact(
@@ -1787,7 +1788,7 @@ public final class GLES2 {
     public void glUniform2fv(
             int location,
             int count,
-            @nullable FloatBuffer value
+            @Nullable FloatBuffer value
     ) {
         try {
             HANDLE$glUniform2fv.invokeExact(
@@ -1819,7 +1820,7 @@ public final class GLES2 {
     public void glUniform2iv(
             int location,
             int count,
-            @nullable IntBuffer value
+            @Nullable IntBuffer value
     ) {
         try {
             HANDLE$glUniform2iv.invokeExact(
@@ -1853,7 +1854,7 @@ public final class GLES2 {
     public void glUniform3fv(
             int location,
             int count,
-            @nullable FloatBuffer value
+            @Nullable FloatBuffer value
     ) {
         try {
             HANDLE$glUniform3fv.invokeExact(
@@ -1887,7 +1888,7 @@ public final class GLES2 {
     public void glUniform3iv(
             int location,
             int count,
-            @nullable IntBuffer value
+            @Nullable IntBuffer value
     ) {
         try {
             HANDLE$glUniform3iv.invokeExact(
@@ -1923,7 +1924,7 @@ public final class GLES2 {
     public void glUniform4fv(
             int location,
             int count,
-            @nullable FloatBuffer value
+            @Nullable FloatBuffer value
     ) {
         try {
             HANDLE$glUniform4fv.invokeExact(
@@ -1959,7 +1960,7 @@ public final class GLES2 {
     public void glUniform4iv(
             int location,
             int count,
-            @nullable IntBuffer value
+            @Nullable IntBuffer value
     ) {
         try {
             HANDLE$glUniform4iv.invokeExact(
@@ -1976,7 +1977,7 @@ public final class GLES2 {
             int location,
             int count,
             @unsigned byte transpose,
-            @nullable FloatBuffer value
+            @Nullable FloatBuffer value
     ) {
         try {
             HANDLE$glUniformMatrix2fv.invokeExact(
@@ -1994,7 +1995,7 @@ public final class GLES2 {
             int location,
             int count,
             @unsigned byte transpose,
-            @nullable FloatBuffer value
+            @Nullable FloatBuffer value
     ) {
         try {
             HANDLE$glUniformMatrix3fv.invokeExact(
@@ -2012,7 +2013,7 @@ public final class GLES2 {
             int location,
             int count,
             @unsigned byte transpose,
-            @nullable FloatBuffer value
+            @Nullable FloatBuffer value
     ) {
         try {
             HANDLE$glUniformMatrix4fv.invokeExact(
@@ -2066,7 +2067,7 @@ public final class GLES2 {
 
     public void glVertexAttrib1fv(
             @unsigned int index,
-            @nullable FloatBuffer v
+            @Nullable FloatBuffer v
     ) {
         try {
             HANDLE$glVertexAttrib1fv.invokeExact(
@@ -2096,7 +2097,7 @@ public final class GLES2 {
 
     public void glVertexAttrib2fv(
             @unsigned int index,
-            @nullable FloatBuffer v
+            @Nullable FloatBuffer v
     ) {
         try {
             HANDLE$glVertexAttrib2fv.invokeExact(
@@ -2128,7 +2129,7 @@ public final class GLES2 {
 
     public void glVertexAttrib3fv(
             @unsigned int index,
-            @nullable FloatBuffer v
+            @Nullable FloatBuffer v
     ) {
         try {
             HANDLE$glVertexAttrib3fv.invokeExact(
@@ -2162,7 +2163,7 @@ public final class GLES2 {
 
     public void glVertexAttrib4fv(
             @unsigned int index,
-            @nullable FloatBuffer v
+            @Nullable FloatBuffer v
     ) {
         try {
             HANDLE$glVertexAttrib4fv.invokeExact(
@@ -2907,291 +2908,291 @@ public final class GLES2 {
             ValueLayout.JAVA_INT
     );
 
-    public final @nullable MemorySegment SEGMENT$glActiveTexture;
-    public final @nullable MemorySegment SEGMENT$glAttachShader;
-    public final @nullable MemorySegment SEGMENT$glBindAttribLocation;
-    public final @nullable MemorySegment SEGMENT$glBindBuffer;
-    public final @nullable MemorySegment SEGMENT$glBindFramebuffer;
-    public final @nullable MemorySegment SEGMENT$glBindRenderbuffer;
-    public final @nullable MemorySegment SEGMENT$glBindTexture;
-    public final @nullable MemorySegment SEGMENT$glBlendColor;
-    public final @nullable MemorySegment SEGMENT$glBlendEquation;
-    public final @nullable MemorySegment SEGMENT$glBlendEquationSeparate;
-    public final @nullable MemorySegment SEGMENT$glBlendFunc;
-    public final @nullable MemorySegment SEGMENT$glBlendFuncSeparate;
-    public final @nullable MemorySegment SEGMENT$glBufferData;
-    public final @nullable MemorySegment SEGMENT$glBufferSubData;
-    public final @nullable MemorySegment SEGMENT$glCheckFramebufferStatus;
-    public final @nullable MemorySegment SEGMENT$glClear;
-    public final @nullable MemorySegment SEGMENT$glClearColor;
-    public final @nullable MemorySegment SEGMENT$glClearDepthf;
-    public final @nullable MemorySegment SEGMENT$glClearStencil;
-    public final @nullable MemorySegment SEGMENT$glColorMask;
-    public final @nullable MemorySegment SEGMENT$glCompileShader;
-    public final @nullable MemorySegment SEGMENT$glCompressedTexImage2D;
-    public final @nullable MemorySegment SEGMENT$glCompressedTexSubImage2D;
-    public final @nullable MemorySegment SEGMENT$glCopyTexImage2D;
-    public final @nullable MemorySegment SEGMENT$glCopyTexSubImage2D;
-    public final @nullable MemorySegment SEGMENT$glCreateProgram;
-    public final @nullable MemorySegment SEGMENT$glCreateShader;
-    public final @nullable MemorySegment SEGMENT$glCullFace;
-    public final @nullable MemorySegment SEGMENT$glDeleteBuffers;
-    public final @nullable MemorySegment SEGMENT$glDeleteFramebuffers;
-    public final @nullable MemorySegment SEGMENT$glDeleteProgram;
-    public final @nullable MemorySegment SEGMENT$glDeleteRenderbuffers;
-    public final @nullable MemorySegment SEGMENT$glDeleteShader;
-    public final @nullable MemorySegment SEGMENT$glDeleteTextures;
-    public final @nullable MemorySegment SEGMENT$glDepthFunc;
-    public final @nullable MemorySegment SEGMENT$glDepthMask;
-    public final @nullable MemorySegment SEGMENT$glDepthRangef;
-    public final @nullable MemorySegment SEGMENT$glDetachShader;
-    public final @nullable MemorySegment SEGMENT$glDisable;
-    public final @nullable MemorySegment SEGMENT$glDisableVertexAttribArray;
-    public final @nullable MemorySegment SEGMENT$glDrawArrays;
-    public final @nullable MemorySegment SEGMENT$glDrawElements;
-    public final @nullable MemorySegment SEGMENT$glEnable;
-    public final @nullable MemorySegment SEGMENT$glEnableVertexAttribArray;
-    public final @nullable MemorySegment SEGMENT$glFinish;
-    public final @nullable MemorySegment SEGMENT$glFlush;
-    public final @nullable MemorySegment SEGMENT$glFramebufferRenderbuffer;
-    public final @nullable MemorySegment SEGMENT$glFramebufferTexture2D;
-    public final @nullable MemorySegment SEGMENT$glFrontFace;
-    public final @nullable MemorySegment SEGMENT$glGenBuffers;
-    public final @nullable MemorySegment SEGMENT$glGenerateMipmap;
-    public final @nullable MemorySegment SEGMENT$glGenFramebuffers;
-    public final @nullable MemorySegment SEGMENT$glGenRenderbuffers;
-    public final @nullable MemorySegment SEGMENT$glGenTextures;
-    public final @nullable MemorySegment SEGMENT$glGetActiveAttrib;
-    public final @nullable MemorySegment SEGMENT$glGetActiveUniform;
-    public final @nullable MemorySegment SEGMENT$glGetAttachedShaders;
-    public final @nullable MemorySegment SEGMENT$glGetAttribLocation;
-    public final @nullable MemorySegment SEGMENT$glGetBooleanv;
-    public final @nullable MemorySegment SEGMENT$glGetBufferParameteriv;
-    public final @nullable MemorySegment SEGMENT$glGetError;
-    public final @nullable MemorySegment SEGMENT$glGetFloatv;
-    public final @nullable MemorySegment SEGMENT$glGetFramebufferAttachmentParameteriv;
-    public final @nullable MemorySegment SEGMENT$glGetIntegerv;
-    public final @nullable MemorySegment SEGMENT$glGetProgramiv;
-    public final @nullable MemorySegment SEGMENT$glGetProgramInfoLog;
-    public final @nullable MemorySegment SEGMENT$glGetRenderbufferParameteriv;
-    public final @nullable MemorySegment SEGMENT$glGetShaderiv;
-    public final @nullable MemorySegment SEGMENT$glGetShaderInfoLog;
-    public final @nullable MemorySegment SEGMENT$glGetShaderPrecisionFormat;
-    public final @nullable MemorySegment SEGMENT$glGetShaderSource;
-    public final @nullable MemorySegment SEGMENT$glGetString;
-    public final @nullable MemorySegment SEGMENT$glGetTexParameterfv;
-    public final @nullable MemorySegment SEGMENT$glGetTexParameteriv;
-    public final @nullable MemorySegment SEGMENT$glGetUniformfv;
-    public final @nullable MemorySegment SEGMENT$glGetUniformiv;
-    public final @nullable MemorySegment SEGMENT$glGetUniformLocation;
-    public final @nullable MemorySegment SEGMENT$glGetVertexAttribfv;
-    public final @nullable MemorySegment SEGMENT$glGetVertexAttribiv;
-    public final @nullable MemorySegment SEGMENT$glGetVertexAttribPointerv;
-    public final @nullable MemorySegment SEGMENT$glHint;
-    public final @nullable MemorySegment SEGMENT$glIsBuffer;
-    public final @nullable MemorySegment SEGMENT$glIsEnabled;
-    public final @nullable MemorySegment SEGMENT$glIsFramebuffer;
-    public final @nullable MemorySegment SEGMENT$glIsProgram;
-    public final @nullable MemorySegment SEGMENT$glIsRenderbuffer;
-    public final @nullable MemorySegment SEGMENT$glIsShader;
-    public final @nullable MemorySegment SEGMENT$glIsTexture;
-    public final @nullable MemorySegment SEGMENT$glLineWidth;
-    public final @nullable MemorySegment SEGMENT$glLinkProgram;
-    public final @nullable MemorySegment SEGMENT$glPixelStorei;
-    public final @nullable MemorySegment SEGMENT$glPolygonOffset;
-    public final @nullable MemorySegment SEGMENT$glReadPixels;
-    public final @nullable MemorySegment SEGMENT$glReleaseShaderCompiler;
-    public final @nullable MemorySegment SEGMENT$glRenderbufferStorage;
-    public final @nullable MemorySegment SEGMENT$glSampleCoverage;
-    public final @nullable MemorySegment SEGMENT$glScissor;
-    public final @nullable MemorySegment SEGMENT$glShaderBinary;
-    public final @nullable MemorySegment SEGMENT$glShaderSource;
-    public final @nullable MemorySegment SEGMENT$glStencilFunc;
-    public final @nullable MemorySegment SEGMENT$glStencilFuncSeparate;
-    public final @nullable MemorySegment SEGMENT$glStencilMask;
-    public final @nullable MemorySegment SEGMENT$glStencilMaskSeparate;
-    public final @nullable MemorySegment SEGMENT$glStencilOp;
-    public final @nullable MemorySegment SEGMENT$glStencilOpSeparate;
-    public final @nullable MemorySegment SEGMENT$glTexImage2D;
-    public final @nullable MemorySegment SEGMENT$glTexParameterf;
-    public final @nullable MemorySegment SEGMENT$glTexParameterfv;
-    public final @nullable MemorySegment SEGMENT$glTexParameteri;
-    public final @nullable MemorySegment SEGMENT$glTexParameteriv;
-    public final @nullable MemorySegment SEGMENT$glTexSubImage2D;
-    public final @nullable MemorySegment SEGMENT$glUniform1f;
-    public final @nullable MemorySegment SEGMENT$glUniform1fv;
-    public final @nullable MemorySegment SEGMENT$glUniform1i;
-    public final @nullable MemorySegment SEGMENT$glUniform1iv;
-    public final @nullable MemorySegment SEGMENT$glUniform2f;
-    public final @nullable MemorySegment SEGMENT$glUniform2fv;
-    public final @nullable MemorySegment SEGMENT$glUniform2i;
-    public final @nullable MemorySegment SEGMENT$glUniform2iv;
-    public final @nullable MemorySegment SEGMENT$glUniform3f;
-    public final @nullable MemorySegment SEGMENT$glUniform3fv;
-    public final @nullable MemorySegment SEGMENT$glUniform3i;
-    public final @nullable MemorySegment SEGMENT$glUniform3iv;
-    public final @nullable MemorySegment SEGMENT$glUniform4f;
-    public final @nullable MemorySegment SEGMENT$glUniform4fv;
-    public final @nullable MemorySegment SEGMENT$glUniform4i;
-    public final @nullable MemorySegment SEGMENT$glUniform4iv;
-    public final @nullable MemorySegment SEGMENT$glUniformMatrix2fv;
-    public final @nullable MemorySegment SEGMENT$glUniformMatrix3fv;
-    public final @nullable MemorySegment SEGMENT$glUniformMatrix4fv;
-    public final @nullable MemorySegment SEGMENT$glUseProgram;
-    public final @nullable MemorySegment SEGMENT$glValidateProgram;
-    public final @nullable MemorySegment SEGMENT$glVertexAttrib1f;
-    public final @nullable MemorySegment SEGMENT$glVertexAttrib1fv;
-    public final @nullable MemorySegment SEGMENT$glVertexAttrib2f;
-    public final @nullable MemorySegment SEGMENT$glVertexAttrib2fv;
-    public final @nullable MemorySegment SEGMENT$glVertexAttrib3f;
-    public final @nullable MemorySegment SEGMENT$glVertexAttrib3fv;
-    public final @nullable MemorySegment SEGMENT$glVertexAttrib4f;
-    public final @nullable MemorySegment SEGMENT$glVertexAttrib4fv;
-    public final @nullable MemorySegment SEGMENT$glVertexAttribPointer;
-    public final @nullable MemorySegment SEGMENT$glViewport;
+    public final @Nullable MemorySegment SEGMENT$glActiveTexture;
+    public final @Nullable MemorySegment SEGMENT$glAttachShader;
+    public final @Nullable MemorySegment SEGMENT$glBindAttribLocation;
+    public final @Nullable MemorySegment SEGMENT$glBindBuffer;
+    public final @Nullable MemorySegment SEGMENT$glBindFramebuffer;
+    public final @Nullable MemorySegment SEGMENT$glBindRenderbuffer;
+    public final @Nullable MemorySegment SEGMENT$glBindTexture;
+    public final @Nullable MemorySegment SEGMENT$glBlendColor;
+    public final @Nullable MemorySegment SEGMENT$glBlendEquation;
+    public final @Nullable MemorySegment SEGMENT$glBlendEquationSeparate;
+    public final @Nullable MemorySegment SEGMENT$glBlendFunc;
+    public final @Nullable MemorySegment SEGMENT$glBlendFuncSeparate;
+    public final @Nullable MemorySegment SEGMENT$glBufferData;
+    public final @Nullable MemorySegment SEGMENT$glBufferSubData;
+    public final @Nullable MemorySegment SEGMENT$glCheckFramebufferStatus;
+    public final @Nullable MemorySegment SEGMENT$glClear;
+    public final @Nullable MemorySegment SEGMENT$glClearColor;
+    public final @Nullable MemorySegment SEGMENT$glClearDepthf;
+    public final @Nullable MemorySegment SEGMENT$glClearStencil;
+    public final @Nullable MemorySegment SEGMENT$glColorMask;
+    public final @Nullable MemorySegment SEGMENT$glCompileShader;
+    public final @Nullable MemorySegment SEGMENT$glCompressedTexImage2D;
+    public final @Nullable MemorySegment SEGMENT$glCompressedTexSubImage2D;
+    public final @Nullable MemorySegment SEGMENT$glCopyTexImage2D;
+    public final @Nullable MemorySegment SEGMENT$glCopyTexSubImage2D;
+    public final @Nullable MemorySegment SEGMENT$glCreateProgram;
+    public final @Nullable MemorySegment SEGMENT$glCreateShader;
+    public final @Nullable MemorySegment SEGMENT$glCullFace;
+    public final @Nullable MemorySegment SEGMENT$glDeleteBuffers;
+    public final @Nullable MemorySegment SEGMENT$glDeleteFramebuffers;
+    public final @Nullable MemorySegment SEGMENT$glDeleteProgram;
+    public final @Nullable MemorySegment SEGMENT$glDeleteRenderbuffers;
+    public final @Nullable MemorySegment SEGMENT$glDeleteShader;
+    public final @Nullable MemorySegment SEGMENT$glDeleteTextures;
+    public final @Nullable MemorySegment SEGMENT$glDepthFunc;
+    public final @Nullable MemorySegment SEGMENT$glDepthMask;
+    public final @Nullable MemorySegment SEGMENT$glDepthRangef;
+    public final @Nullable MemorySegment SEGMENT$glDetachShader;
+    public final @Nullable MemorySegment SEGMENT$glDisable;
+    public final @Nullable MemorySegment SEGMENT$glDisableVertexAttribArray;
+    public final @Nullable MemorySegment SEGMENT$glDrawArrays;
+    public final @Nullable MemorySegment SEGMENT$glDrawElements;
+    public final @Nullable MemorySegment SEGMENT$glEnable;
+    public final @Nullable MemorySegment SEGMENT$glEnableVertexAttribArray;
+    public final @Nullable MemorySegment SEGMENT$glFinish;
+    public final @Nullable MemorySegment SEGMENT$glFlush;
+    public final @Nullable MemorySegment SEGMENT$glFramebufferRenderbuffer;
+    public final @Nullable MemorySegment SEGMENT$glFramebufferTexture2D;
+    public final @Nullable MemorySegment SEGMENT$glFrontFace;
+    public final @Nullable MemorySegment SEGMENT$glGenBuffers;
+    public final @Nullable MemorySegment SEGMENT$glGenerateMipmap;
+    public final @Nullable MemorySegment SEGMENT$glGenFramebuffers;
+    public final @Nullable MemorySegment SEGMENT$glGenRenderbuffers;
+    public final @Nullable MemorySegment SEGMENT$glGenTextures;
+    public final @Nullable MemorySegment SEGMENT$glGetActiveAttrib;
+    public final @Nullable MemorySegment SEGMENT$glGetActiveUniform;
+    public final @Nullable MemorySegment SEGMENT$glGetAttachedShaders;
+    public final @Nullable MemorySegment SEGMENT$glGetAttribLocation;
+    public final @Nullable MemorySegment SEGMENT$glGetBooleanv;
+    public final @Nullable MemorySegment SEGMENT$glGetBufferParameteriv;
+    public final @Nullable MemorySegment SEGMENT$glGetError;
+    public final @Nullable MemorySegment SEGMENT$glGetFloatv;
+    public final @Nullable MemorySegment SEGMENT$glGetFramebufferAttachmentParameteriv;
+    public final @Nullable MemorySegment SEGMENT$glGetIntegerv;
+    public final @Nullable MemorySegment SEGMENT$glGetProgramiv;
+    public final @Nullable MemorySegment SEGMENT$glGetProgramInfoLog;
+    public final @Nullable MemorySegment SEGMENT$glGetRenderbufferParameteriv;
+    public final @Nullable MemorySegment SEGMENT$glGetShaderiv;
+    public final @Nullable MemorySegment SEGMENT$glGetShaderInfoLog;
+    public final @Nullable MemorySegment SEGMENT$glGetShaderPrecisionFormat;
+    public final @Nullable MemorySegment SEGMENT$glGetShaderSource;
+    public final @Nullable MemorySegment SEGMENT$glGetString;
+    public final @Nullable MemorySegment SEGMENT$glGetTexParameterfv;
+    public final @Nullable MemorySegment SEGMENT$glGetTexParameteriv;
+    public final @Nullable MemorySegment SEGMENT$glGetUniformfv;
+    public final @Nullable MemorySegment SEGMENT$glGetUniformiv;
+    public final @Nullable MemorySegment SEGMENT$glGetUniformLocation;
+    public final @Nullable MemorySegment SEGMENT$glGetVertexAttribfv;
+    public final @Nullable MemorySegment SEGMENT$glGetVertexAttribiv;
+    public final @Nullable MemorySegment SEGMENT$glGetVertexAttribPointerv;
+    public final @Nullable MemorySegment SEGMENT$glHint;
+    public final @Nullable MemorySegment SEGMENT$glIsBuffer;
+    public final @Nullable MemorySegment SEGMENT$glIsEnabled;
+    public final @Nullable MemorySegment SEGMENT$glIsFramebuffer;
+    public final @Nullable MemorySegment SEGMENT$glIsProgram;
+    public final @Nullable MemorySegment SEGMENT$glIsRenderbuffer;
+    public final @Nullable MemorySegment SEGMENT$glIsShader;
+    public final @Nullable MemorySegment SEGMENT$glIsTexture;
+    public final @Nullable MemorySegment SEGMENT$glLineWidth;
+    public final @Nullable MemorySegment SEGMENT$glLinkProgram;
+    public final @Nullable MemorySegment SEGMENT$glPixelStorei;
+    public final @Nullable MemorySegment SEGMENT$glPolygonOffset;
+    public final @Nullable MemorySegment SEGMENT$glReadPixels;
+    public final @Nullable MemorySegment SEGMENT$glReleaseShaderCompiler;
+    public final @Nullable MemorySegment SEGMENT$glRenderbufferStorage;
+    public final @Nullable MemorySegment SEGMENT$glSampleCoverage;
+    public final @Nullable MemorySegment SEGMENT$glScissor;
+    public final @Nullable MemorySegment SEGMENT$glShaderBinary;
+    public final @Nullable MemorySegment SEGMENT$glShaderSource;
+    public final @Nullable MemorySegment SEGMENT$glStencilFunc;
+    public final @Nullable MemorySegment SEGMENT$glStencilFuncSeparate;
+    public final @Nullable MemorySegment SEGMENT$glStencilMask;
+    public final @Nullable MemorySegment SEGMENT$glStencilMaskSeparate;
+    public final @Nullable MemorySegment SEGMENT$glStencilOp;
+    public final @Nullable MemorySegment SEGMENT$glStencilOpSeparate;
+    public final @Nullable MemorySegment SEGMENT$glTexImage2D;
+    public final @Nullable MemorySegment SEGMENT$glTexParameterf;
+    public final @Nullable MemorySegment SEGMENT$glTexParameterfv;
+    public final @Nullable MemorySegment SEGMENT$glTexParameteri;
+    public final @Nullable MemorySegment SEGMENT$glTexParameteriv;
+    public final @Nullable MemorySegment SEGMENT$glTexSubImage2D;
+    public final @Nullable MemorySegment SEGMENT$glUniform1f;
+    public final @Nullable MemorySegment SEGMENT$glUniform1fv;
+    public final @Nullable MemorySegment SEGMENT$glUniform1i;
+    public final @Nullable MemorySegment SEGMENT$glUniform1iv;
+    public final @Nullable MemorySegment SEGMENT$glUniform2f;
+    public final @Nullable MemorySegment SEGMENT$glUniform2fv;
+    public final @Nullable MemorySegment SEGMENT$glUniform2i;
+    public final @Nullable MemorySegment SEGMENT$glUniform2iv;
+    public final @Nullable MemorySegment SEGMENT$glUniform3f;
+    public final @Nullable MemorySegment SEGMENT$glUniform3fv;
+    public final @Nullable MemorySegment SEGMENT$glUniform3i;
+    public final @Nullable MemorySegment SEGMENT$glUniform3iv;
+    public final @Nullable MemorySegment SEGMENT$glUniform4f;
+    public final @Nullable MemorySegment SEGMENT$glUniform4fv;
+    public final @Nullable MemorySegment SEGMENT$glUniform4i;
+    public final @Nullable MemorySegment SEGMENT$glUniform4iv;
+    public final @Nullable MemorySegment SEGMENT$glUniformMatrix2fv;
+    public final @Nullable MemorySegment SEGMENT$glUniformMatrix3fv;
+    public final @Nullable MemorySegment SEGMENT$glUniformMatrix4fv;
+    public final @Nullable MemorySegment SEGMENT$glUseProgram;
+    public final @Nullable MemorySegment SEGMENT$glValidateProgram;
+    public final @Nullable MemorySegment SEGMENT$glVertexAttrib1f;
+    public final @Nullable MemorySegment SEGMENT$glVertexAttrib1fv;
+    public final @Nullable MemorySegment SEGMENT$glVertexAttrib2f;
+    public final @Nullable MemorySegment SEGMENT$glVertexAttrib2fv;
+    public final @Nullable MemorySegment SEGMENT$glVertexAttrib3f;
+    public final @Nullable MemorySegment SEGMENT$glVertexAttrib3fv;
+    public final @Nullable MemorySegment SEGMENT$glVertexAttrib4f;
+    public final @Nullable MemorySegment SEGMENT$glVertexAttrib4fv;
+    public final @Nullable MemorySegment SEGMENT$glVertexAttribPointer;
+    public final @Nullable MemorySegment SEGMENT$glViewport;
 
-    public final @nullable MethodHandle HANDLE$glActiveTexture;
-    public final @nullable MethodHandle HANDLE$glAttachShader;
-    public final @nullable MethodHandle HANDLE$glBindAttribLocation;
-    public final @nullable MethodHandle HANDLE$glBindBuffer;
-    public final @nullable MethodHandle HANDLE$glBindFramebuffer;
-    public final @nullable MethodHandle HANDLE$glBindRenderbuffer;
-    public final @nullable MethodHandle HANDLE$glBindTexture;
-    public final @nullable MethodHandle HANDLE$glBlendColor;
-    public final @nullable MethodHandle HANDLE$glBlendEquation;
-    public final @nullable MethodHandle HANDLE$glBlendEquationSeparate;
-    public final @nullable MethodHandle HANDLE$glBlendFunc;
-    public final @nullable MethodHandle HANDLE$glBlendFuncSeparate;
-    public final @nullable MethodHandle HANDLE$glBufferData;
-    public final @nullable MethodHandle HANDLE$glBufferSubData;
-    public final @nullable MethodHandle HANDLE$glCheckFramebufferStatus;
-    public final @nullable MethodHandle HANDLE$glClear;
-    public final @nullable MethodHandle HANDLE$glClearColor;
-    public final @nullable MethodHandle HANDLE$glClearDepthf;
-    public final @nullable MethodHandle HANDLE$glClearStencil;
-    public final @nullable MethodHandle HANDLE$glColorMask;
-    public final @nullable MethodHandle HANDLE$glCompileShader;
-    public final @nullable MethodHandle HANDLE$glCompressedTexImage2D;
-    public final @nullable MethodHandle HANDLE$glCompressedTexSubImage2D;
-    public final @nullable MethodHandle HANDLE$glCopyTexImage2D;
-    public final @nullable MethodHandle HANDLE$glCopyTexSubImage2D;
-    public final @nullable MethodHandle HANDLE$glCreateProgram;
-    public final @nullable MethodHandle HANDLE$glCreateShader;
-    public final @nullable MethodHandle HANDLE$glCullFace;
-    public final @nullable MethodHandle HANDLE$glDeleteBuffers;
-    public final @nullable MethodHandle HANDLE$glDeleteFramebuffers;
-    public final @nullable MethodHandle HANDLE$glDeleteProgram;
-    public final @nullable MethodHandle HANDLE$glDeleteRenderbuffers;
-    public final @nullable MethodHandle HANDLE$glDeleteShader;
-    public final @nullable MethodHandle HANDLE$glDeleteTextures;
-    public final @nullable MethodHandle HANDLE$glDepthFunc;
-    public final @nullable MethodHandle HANDLE$glDepthMask;
-    public final @nullable MethodHandle HANDLE$glDepthRangef;
-    public final @nullable MethodHandle HANDLE$glDetachShader;
-    public final @nullable MethodHandle HANDLE$glDisable;
-    public final @nullable MethodHandle HANDLE$glDisableVertexAttribArray;
-    public final @nullable MethodHandle HANDLE$glDrawArrays;
-    public final @nullable MethodHandle HANDLE$glDrawElements;
-    public final @nullable MethodHandle HANDLE$glEnable;
-    public final @nullable MethodHandle HANDLE$glEnableVertexAttribArray;
-    public final @nullable MethodHandle HANDLE$glFinish;
-    public final @nullable MethodHandle HANDLE$glFlush;
-    public final @nullable MethodHandle HANDLE$glFramebufferRenderbuffer;
-    public final @nullable MethodHandle HANDLE$glFramebufferTexture2D;
-    public final @nullable MethodHandle HANDLE$glFrontFace;
-    public final @nullable MethodHandle HANDLE$glGenBuffers;
-    public final @nullable MethodHandle HANDLE$glGenerateMipmap;
-    public final @nullable MethodHandle HANDLE$glGenFramebuffers;
-    public final @nullable MethodHandle HANDLE$glGenRenderbuffers;
-    public final @nullable MethodHandle HANDLE$glGenTextures;
-    public final @nullable MethodHandle HANDLE$glGetActiveAttrib;
-    public final @nullable MethodHandle HANDLE$glGetActiveUniform;
-    public final @nullable MethodHandle HANDLE$glGetAttachedShaders;
-    public final @nullable MethodHandle HANDLE$glGetAttribLocation;
-    public final @nullable MethodHandle HANDLE$glGetBooleanv;
-    public final @nullable MethodHandle HANDLE$glGetBufferParameteriv;
-    public final @nullable MethodHandle HANDLE$glGetError;
-    public final @nullable MethodHandle HANDLE$glGetFloatv;
-    public final @nullable MethodHandle HANDLE$glGetFramebufferAttachmentParameteriv;
-    public final @nullable MethodHandle HANDLE$glGetIntegerv;
-    public final @nullable MethodHandle HANDLE$glGetProgramiv;
-    public final @nullable MethodHandle HANDLE$glGetProgramInfoLog;
-    public final @nullable MethodHandle HANDLE$glGetRenderbufferParameteriv;
-    public final @nullable MethodHandle HANDLE$glGetShaderiv;
-    public final @nullable MethodHandle HANDLE$glGetShaderInfoLog;
-    public final @nullable MethodHandle HANDLE$glGetShaderPrecisionFormat;
-    public final @nullable MethodHandle HANDLE$glGetShaderSource;
-    public final @nullable MethodHandle HANDLE$glGetString;
-    public final @nullable MethodHandle HANDLE$glGetTexParameterfv;
-    public final @nullable MethodHandle HANDLE$glGetTexParameteriv;
-    public final @nullable MethodHandle HANDLE$glGetUniformfv;
-    public final @nullable MethodHandle HANDLE$glGetUniformiv;
-    public final @nullable MethodHandle HANDLE$glGetUniformLocation;
-    public final @nullable MethodHandle HANDLE$glGetVertexAttribfv;
-    public final @nullable MethodHandle HANDLE$glGetVertexAttribiv;
-    public final @nullable MethodHandle HANDLE$glGetVertexAttribPointerv;
-    public final @nullable MethodHandle HANDLE$glHint;
-    public final @nullable MethodHandle HANDLE$glIsBuffer;
-    public final @nullable MethodHandle HANDLE$glIsEnabled;
-    public final @nullable MethodHandle HANDLE$glIsFramebuffer;
-    public final @nullable MethodHandle HANDLE$glIsProgram;
-    public final @nullable MethodHandle HANDLE$glIsRenderbuffer;
-    public final @nullable MethodHandle HANDLE$glIsShader;
-    public final @nullable MethodHandle HANDLE$glIsTexture;
-    public final @nullable MethodHandle HANDLE$glLineWidth;
-    public final @nullable MethodHandle HANDLE$glLinkProgram;
-    public final @nullable MethodHandle HANDLE$glPixelStorei;
-    public final @nullable MethodHandle HANDLE$glPolygonOffset;
-    public final @nullable MethodHandle HANDLE$glReadPixels;
-    public final @nullable MethodHandle HANDLE$glReleaseShaderCompiler;
-    public final @nullable MethodHandle HANDLE$glRenderbufferStorage;
-    public final @nullable MethodHandle HANDLE$glSampleCoverage;
-    public final @nullable MethodHandle HANDLE$glScissor;
-    public final @nullable MethodHandle HANDLE$glShaderBinary;
-    public final @nullable MethodHandle HANDLE$glShaderSource;
-    public final @nullable MethodHandle HANDLE$glStencilFunc;
-    public final @nullable MethodHandle HANDLE$glStencilFuncSeparate;
-    public final @nullable MethodHandle HANDLE$glStencilMask;
-    public final @nullable MethodHandle HANDLE$glStencilMaskSeparate;
-    public final @nullable MethodHandle HANDLE$glStencilOp;
-    public final @nullable MethodHandle HANDLE$glStencilOpSeparate;
-    public final @nullable MethodHandle HANDLE$glTexImage2D;
-    public final @nullable MethodHandle HANDLE$glTexParameterf;
-    public final @nullable MethodHandle HANDLE$glTexParameterfv;
-    public final @nullable MethodHandle HANDLE$glTexParameteri;
-    public final @nullable MethodHandle HANDLE$glTexParameteriv;
-    public final @nullable MethodHandle HANDLE$glTexSubImage2D;
-    public final @nullable MethodHandle HANDLE$glUniform1f;
-    public final @nullable MethodHandle HANDLE$glUniform1fv;
-    public final @nullable MethodHandle HANDLE$glUniform1i;
-    public final @nullable MethodHandle HANDLE$glUniform1iv;
-    public final @nullable MethodHandle HANDLE$glUniform2f;
-    public final @nullable MethodHandle HANDLE$glUniform2fv;
-    public final @nullable MethodHandle HANDLE$glUniform2i;
-    public final @nullable MethodHandle HANDLE$glUniform2iv;
-    public final @nullable MethodHandle HANDLE$glUniform3f;
-    public final @nullable MethodHandle HANDLE$glUniform3fv;
-    public final @nullable MethodHandle HANDLE$glUniform3i;
-    public final @nullable MethodHandle HANDLE$glUniform3iv;
-    public final @nullable MethodHandle HANDLE$glUniform4f;
-    public final @nullable MethodHandle HANDLE$glUniform4fv;
-    public final @nullable MethodHandle HANDLE$glUniform4i;
-    public final @nullable MethodHandle HANDLE$glUniform4iv;
-    public final @nullable MethodHandle HANDLE$glUniformMatrix2fv;
-    public final @nullable MethodHandle HANDLE$glUniformMatrix3fv;
-    public final @nullable MethodHandle HANDLE$glUniformMatrix4fv;
-    public final @nullable MethodHandle HANDLE$glUseProgram;
-    public final @nullable MethodHandle HANDLE$glValidateProgram;
-    public final @nullable MethodHandle HANDLE$glVertexAttrib1f;
-    public final @nullable MethodHandle HANDLE$glVertexAttrib1fv;
-    public final @nullable MethodHandle HANDLE$glVertexAttrib2f;
-    public final @nullable MethodHandle HANDLE$glVertexAttrib2fv;
-    public final @nullable MethodHandle HANDLE$glVertexAttrib3f;
-    public final @nullable MethodHandle HANDLE$glVertexAttrib3fv;
-    public final @nullable MethodHandle HANDLE$glVertexAttrib4f;
-    public final @nullable MethodHandle HANDLE$glVertexAttrib4fv;
-    public final @nullable MethodHandle HANDLE$glVertexAttribPointer;
-    public final @nullable MethodHandle HANDLE$glViewport;
+    public final @Nullable MethodHandle HANDLE$glActiveTexture;
+    public final @Nullable MethodHandle HANDLE$glAttachShader;
+    public final @Nullable MethodHandle HANDLE$glBindAttribLocation;
+    public final @Nullable MethodHandle HANDLE$glBindBuffer;
+    public final @Nullable MethodHandle HANDLE$glBindFramebuffer;
+    public final @Nullable MethodHandle HANDLE$glBindRenderbuffer;
+    public final @Nullable MethodHandle HANDLE$glBindTexture;
+    public final @Nullable MethodHandle HANDLE$glBlendColor;
+    public final @Nullable MethodHandle HANDLE$glBlendEquation;
+    public final @Nullable MethodHandle HANDLE$glBlendEquationSeparate;
+    public final @Nullable MethodHandle HANDLE$glBlendFunc;
+    public final @Nullable MethodHandle HANDLE$glBlendFuncSeparate;
+    public final @Nullable MethodHandle HANDLE$glBufferData;
+    public final @Nullable MethodHandle HANDLE$glBufferSubData;
+    public final @Nullable MethodHandle HANDLE$glCheckFramebufferStatus;
+    public final @Nullable MethodHandle HANDLE$glClear;
+    public final @Nullable MethodHandle HANDLE$glClearColor;
+    public final @Nullable MethodHandle HANDLE$glClearDepthf;
+    public final @Nullable MethodHandle HANDLE$glClearStencil;
+    public final @Nullable MethodHandle HANDLE$glColorMask;
+    public final @Nullable MethodHandle HANDLE$glCompileShader;
+    public final @Nullable MethodHandle HANDLE$glCompressedTexImage2D;
+    public final @Nullable MethodHandle HANDLE$glCompressedTexSubImage2D;
+    public final @Nullable MethodHandle HANDLE$glCopyTexImage2D;
+    public final @Nullable MethodHandle HANDLE$glCopyTexSubImage2D;
+    public final @Nullable MethodHandle HANDLE$glCreateProgram;
+    public final @Nullable MethodHandle HANDLE$glCreateShader;
+    public final @Nullable MethodHandle HANDLE$glCullFace;
+    public final @Nullable MethodHandle HANDLE$glDeleteBuffers;
+    public final @Nullable MethodHandle HANDLE$glDeleteFramebuffers;
+    public final @Nullable MethodHandle HANDLE$glDeleteProgram;
+    public final @Nullable MethodHandle HANDLE$glDeleteRenderbuffers;
+    public final @Nullable MethodHandle HANDLE$glDeleteShader;
+    public final @Nullable MethodHandle HANDLE$glDeleteTextures;
+    public final @Nullable MethodHandle HANDLE$glDepthFunc;
+    public final @Nullable MethodHandle HANDLE$glDepthMask;
+    public final @Nullable MethodHandle HANDLE$glDepthRangef;
+    public final @Nullable MethodHandle HANDLE$glDetachShader;
+    public final @Nullable MethodHandle HANDLE$glDisable;
+    public final @Nullable MethodHandle HANDLE$glDisableVertexAttribArray;
+    public final @Nullable MethodHandle HANDLE$glDrawArrays;
+    public final @Nullable MethodHandle HANDLE$glDrawElements;
+    public final @Nullable MethodHandle HANDLE$glEnable;
+    public final @Nullable MethodHandle HANDLE$glEnableVertexAttribArray;
+    public final @Nullable MethodHandle HANDLE$glFinish;
+    public final @Nullable MethodHandle HANDLE$glFlush;
+    public final @Nullable MethodHandle HANDLE$glFramebufferRenderbuffer;
+    public final @Nullable MethodHandle HANDLE$glFramebufferTexture2D;
+    public final @Nullable MethodHandle HANDLE$glFrontFace;
+    public final @Nullable MethodHandle HANDLE$glGenBuffers;
+    public final @Nullable MethodHandle HANDLE$glGenerateMipmap;
+    public final @Nullable MethodHandle HANDLE$glGenFramebuffers;
+    public final @Nullable MethodHandle HANDLE$glGenRenderbuffers;
+    public final @Nullable MethodHandle HANDLE$glGenTextures;
+    public final @Nullable MethodHandle HANDLE$glGetActiveAttrib;
+    public final @Nullable MethodHandle HANDLE$glGetActiveUniform;
+    public final @Nullable MethodHandle HANDLE$glGetAttachedShaders;
+    public final @Nullable MethodHandle HANDLE$glGetAttribLocation;
+    public final @Nullable MethodHandle HANDLE$glGetBooleanv;
+    public final @Nullable MethodHandle HANDLE$glGetBufferParameteriv;
+    public final @Nullable MethodHandle HANDLE$glGetError;
+    public final @Nullable MethodHandle HANDLE$glGetFloatv;
+    public final @Nullable MethodHandle HANDLE$glGetFramebufferAttachmentParameteriv;
+    public final @Nullable MethodHandle HANDLE$glGetIntegerv;
+    public final @Nullable MethodHandle HANDLE$glGetProgramiv;
+    public final @Nullable MethodHandle HANDLE$glGetProgramInfoLog;
+    public final @Nullable MethodHandle HANDLE$glGetRenderbufferParameteriv;
+    public final @Nullable MethodHandle HANDLE$glGetShaderiv;
+    public final @Nullable MethodHandle HANDLE$glGetShaderInfoLog;
+    public final @Nullable MethodHandle HANDLE$glGetShaderPrecisionFormat;
+    public final @Nullable MethodHandle HANDLE$glGetShaderSource;
+    public final @Nullable MethodHandle HANDLE$glGetString;
+    public final @Nullable MethodHandle HANDLE$glGetTexParameterfv;
+    public final @Nullable MethodHandle HANDLE$glGetTexParameteriv;
+    public final @Nullable MethodHandle HANDLE$glGetUniformfv;
+    public final @Nullable MethodHandle HANDLE$glGetUniformiv;
+    public final @Nullable MethodHandle HANDLE$glGetUniformLocation;
+    public final @Nullable MethodHandle HANDLE$glGetVertexAttribfv;
+    public final @Nullable MethodHandle HANDLE$glGetVertexAttribiv;
+    public final @Nullable MethodHandle HANDLE$glGetVertexAttribPointerv;
+    public final @Nullable MethodHandle HANDLE$glHint;
+    public final @Nullable MethodHandle HANDLE$glIsBuffer;
+    public final @Nullable MethodHandle HANDLE$glIsEnabled;
+    public final @Nullable MethodHandle HANDLE$glIsFramebuffer;
+    public final @Nullable MethodHandle HANDLE$glIsProgram;
+    public final @Nullable MethodHandle HANDLE$glIsRenderbuffer;
+    public final @Nullable MethodHandle HANDLE$glIsShader;
+    public final @Nullable MethodHandle HANDLE$glIsTexture;
+    public final @Nullable MethodHandle HANDLE$glLineWidth;
+    public final @Nullable MethodHandle HANDLE$glLinkProgram;
+    public final @Nullable MethodHandle HANDLE$glPixelStorei;
+    public final @Nullable MethodHandle HANDLE$glPolygonOffset;
+    public final @Nullable MethodHandle HANDLE$glReadPixels;
+    public final @Nullable MethodHandle HANDLE$glReleaseShaderCompiler;
+    public final @Nullable MethodHandle HANDLE$glRenderbufferStorage;
+    public final @Nullable MethodHandle HANDLE$glSampleCoverage;
+    public final @Nullable MethodHandle HANDLE$glScissor;
+    public final @Nullable MethodHandle HANDLE$glShaderBinary;
+    public final @Nullable MethodHandle HANDLE$glShaderSource;
+    public final @Nullable MethodHandle HANDLE$glStencilFunc;
+    public final @Nullable MethodHandle HANDLE$glStencilFuncSeparate;
+    public final @Nullable MethodHandle HANDLE$glStencilMask;
+    public final @Nullable MethodHandle HANDLE$glStencilMaskSeparate;
+    public final @Nullable MethodHandle HANDLE$glStencilOp;
+    public final @Nullable MethodHandle HANDLE$glStencilOpSeparate;
+    public final @Nullable MethodHandle HANDLE$glTexImage2D;
+    public final @Nullable MethodHandle HANDLE$glTexParameterf;
+    public final @Nullable MethodHandle HANDLE$glTexParameterfv;
+    public final @Nullable MethodHandle HANDLE$glTexParameteri;
+    public final @Nullable MethodHandle HANDLE$glTexParameteriv;
+    public final @Nullable MethodHandle HANDLE$glTexSubImage2D;
+    public final @Nullable MethodHandle HANDLE$glUniform1f;
+    public final @Nullable MethodHandle HANDLE$glUniform1fv;
+    public final @Nullable MethodHandle HANDLE$glUniform1i;
+    public final @Nullable MethodHandle HANDLE$glUniform1iv;
+    public final @Nullable MethodHandle HANDLE$glUniform2f;
+    public final @Nullable MethodHandle HANDLE$glUniform2fv;
+    public final @Nullable MethodHandle HANDLE$glUniform2i;
+    public final @Nullable MethodHandle HANDLE$glUniform2iv;
+    public final @Nullable MethodHandle HANDLE$glUniform3f;
+    public final @Nullable MethodHandle HANDLE$glUniform3fv;
+    public final @Nullable MethodHandle HANDLE$glUniform3i;
+    public final @Nullable MethodHandle HANDLE$glUniform3iv;
+    public final @Nullable MethodHandle HANDLE$glUniform4f;
+    public final @Nullable MethodHandle HANDLE$glUniform4fv;
+    public final @Nullable MethodHandle HANDLE$glUniform4i;
+    public final @Nullable MethodHandle HANDLE$glUniform4iv;
+    public final @Nullable MethodHandle HANDLE$glUniformMatrix2fv;
+    public final @Nullable MethodHandle HANDLE$glUniformMatrix3fv;
+    public final @Nullable MethodHandle HANDLE$glUniformMatrix4fv;
+    public final @Nullable MethodHandle HANDLE$glUseProgram;
+    public final @Nullable MethodHandle HANDLE$glValidateProgram;
+    public final @Nullable MethodHandle HANDLE$glVertexAttrib1f;
+    public final @Nullable MethodHandle HANDLE$glVertexAttrib1fv;
+    public final @Nullable MethodHandle HANDLE$glVertexAttrib2f;
+    public final @Nullable MethodHandle HANDLE$glVertexAttrib2fv;
+    public final @Nullable MethodHandle HANDLE$glVertexAttrib3f;
+    public final @Nullable MethodHandle HANDLE$glVertexAttrib3fv;
+    public final @Nullable MethodHandle HANDLE$glVertexAttrib4f;
+    public final @Nullable MethodHandle HANDLE$glVertexAttrib4fv;
+    public final @Nullable MethodHandle HANDLE$glVertexAttribPointer;
+    public final @Nullable MethodHandle HANDLE$glViewport;
 
     public GLES2(RawFunctionLoader loader) {
         SEGMENT$glActiveTexture = loader.apply("glActiveTexture");

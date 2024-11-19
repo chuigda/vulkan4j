@@ -3,6 +3,7 @@ package tech.icey.vk4j.command;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.RawFunctionLoader;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -38,14 +39,14 @@ public final class EntryCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkExtensionProperties.LAYOUT)
     );
 
-    public final @nullable MemorySegment SEGMENT$vkCreateInstance;
-    public final @nullable MemorySegment SEGMENT$vkEnumerateInstanceVersion;
-    public final @nullable MemorySegment SEGMENT$vkEnumerateInstanceLayerProperties;
-    public final @nullable MemorySegment SEGMENT$vkEnumerateInstanceExtensionProperties;
-    public final @nullable MethodHandle HANDLE$vkCreateInstance;
-    public final @nullable MethodHandle HANDLE$vkEnumerateInstanceVersion;
-    public final @nullable MethodHandle HANDLE$vkEnumerateInstanceLayerProperties;
-    public final @nullable MethodHandle HANDLE$vkEnumerateInstanceExtensionProperties;
+    public final @Nullable MemorySegment SEGMENT$vkCreateInstance;
+    public final @Nullable MemorySegment SEGMENT$vkEnumerateInstanceVersion;
+    public final @Nullable MemorySegment SEGMENT$vkEnumerateInstanceLayerProperties;
+    public final @Nullable MemorySegment SEGMENT$vkEnumerateInstanceExtensionProperties;
+    public final @Nullable MethodHandle HANDLE$vkCreateInstance;
+    public final @Nullable MethodHandle HANDLE$vkEnumerateInstanceVersion;
+    public final @Nullable MethodHandle HANDLE$vkEnumerateInstanceLayerProperties;
+    public final @Nullable MethodHandle HANDLE$vkEnumerateInstanceExtensionProperties;
 
     public EntryCommands(RawFunctionLoader loader) {
         SEGMENT$vkCreateInstance = loader.apply("vkCreateInstance");
@@ -61,7 +62,7 @@ public final class EntryCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateInstance.html">vkCreateInstance</a>
     public @enumtype(VkResult.class) int vkCreateInstance(
             @pointer(target=VkInstanceCreateInfo.class) VkInstanceCreateInfo pCreateInfo,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
             @pointer(target=VkInstance.class) VkInstance.Buffer pInstance
     ) {
         try {
@@ -91,7 +92,7 @@ public final class EntryCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumerateInstanceLayerProperties.html">vkEnumerateInstanceLayerProperties</a>
     public @enumtype(VkResult.class) int vkEnumerateInstanceLayerProperties(
             @unsigned IntBuffer pPropertyCount,
-            @nullable @pointer(target=VkLayerProperties.class) VkLayerProperties pProperties
+            @Nullable @pointer(target=VkLayerProperties.class) VkLayerProperties pProperties
     ) {
         try {
             return (int) HANDLE$vkEnumerateInstanceLayerProperties.invokeExact(
@@ -105,9 +106,9 @@ public final class EntryCommands {
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkEnumerateInstanceExtensionProperties.html">vkEnumerateInstanceExtensionProperties</a>
     public @enumtype(VkResult.class) int vkEnumerateInstanceExtensionProperties(
-            @nullable ByteBuffer pLayerName,
+            @Nullable ByteBuffer pLayerName,
             @unsigned IntBuffer pPropertyCount,
-            @nullable @pointer(target=VkExtensionProperties.class) VkExtensionProperties pProperties
+            @Nullable @pointer(target=VkExtensionProperties.class) VkExtensionProperties pProperties
     ) {
         try {
             return (int) HANDLE$vkEnumerateInstanceExtensionProperties.invokeExact(

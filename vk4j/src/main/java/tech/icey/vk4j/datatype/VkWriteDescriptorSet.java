@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -51,11 +52,11 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkDescriptorSet dstSet() {
+    public @Nullable VkDescriptorSet dstSet() {
         MemorySegment s = segment.get(LAYOUT$dstSet, OFFSET$dstSet);
         if (s.address() == 0) {
             return null;
@@ -63,7 +64,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
         return new VkDescriptorSet(s);
     }
 
-    public void dstSet(@nullable VkDescriptorSet value) {
+    public void dstSet(@Nullable VkDescriptorSet value) {
         segment.set(
             LAYOUT$dstSet,
             OFFSET$dstSet,
@@ -111,7 +112,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pImageInfo, OFFSET$pImageInfo, value);
     }
 
-    public @nullable VkDescriptorImageInfo pImageInfo() {
+    public @Nullable VkDescriptorImageInfo pImageInfo() {
         MemorySegment s = pImageInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -121,7 +122,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDescriptorImageInfo[] pImageInfo(int assumedCount) {
+    public @Nullable VkDescriptorImageInfo[] pImageInfo(int assumedCount) {
         MemorySegment s = pImageInfoRaw().reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
         VkDescriptorImageInfo[] arr = new VkDescriptorImageInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -130,7 +131,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pImageInfo(@nullable VkDescriptorImageInfo value) {
+    public void pImageInfo(@Nullable VkDescriptorImageInfo value) {
         pImageInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -142,7 +143,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pBufferInfo, OFFSET$pBufferInfo, value);
     }
 
-    public @nullable VkDescriptorBufferInfo pBufferInfo() {
+    public @Nullable VkDescriptorBufferInfo pBufferInfo() {
         MemorySegment s = pBufferInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -152,7 +153,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDescriptorBufferInfo[] pBufferInfo(int assumedCount) {
+    public @Nullable VkDescriptorBufferInfo[] pBufferInfo(int assumedCount) {
         MemorySegment s = pBufferInfoRaw().reinterpret(assumedCount * VkDescriptorBufferInfo.SIZE);
         VkDescriptorBufferInfo[] arr = new VkDescriptorBufferInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -161,7 +162,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pBufferInfo(@nullable VkDescriptorBufferInfo value) {
+    public void pBufferInfo(@Nullable VkDescriptorBufferInfo value) {
         pBufferInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -178,7 +179,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
     /// and use {@link VkBufferView.Buffer#reinterpret} to set the size before actually
     /// {@link VkBufferView.Buffer#read}ing or {@link VkBufferView.Buffer#write}ing
     /// the buffer.
-    public @nullable VkBufferView.Buffer pTexelBufferView() {
+    public @Nullable VkBufferView.Buffer pTexelBufferView() {
         MemorySegment s = pTexelBufferViewRaw();
         if (s.address() == 0) {
             return null;
@@ -186,7 +187,7 @@ public record VkWriteDescriptorSet(MemorySegment segment) implements IPointer {
         return new VkBufferView.Buffer(s);
     }
 
-    public void pTexelBufferView(@nullable VkBufferView.Buffer value) {
+    public void pTexelBufferView(@Nullable VkBufferView.Buffer value) {
         pTexelBufferViewRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

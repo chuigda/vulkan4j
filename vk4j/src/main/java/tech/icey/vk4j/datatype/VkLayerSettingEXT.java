@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -42,12 +43,12 @@ public record VkLayerSettingEXT(MemorySegment segment) implements IPointer {
     /// and use {@link ByteBuffer#reinterpret} to set the size before actually
     /// {@link ByteBuffer#read}ing or
     /// {@link ByteBuffer#write}ing the buffer.
-    public @nullable ByteBuffer pLayerName() {
+    public @Nullable ByteBuffer pLayerName() {
         MemorySegment s = pLayerNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pLayerName(@nullable ByteBuffer value) {
+    public void pLayerName(@Nullable ByteBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLayerNameRaw(s);
     }
@@ -65,12 +66,12 @@ public record VkLayerSettingEXT(MemorySegment segment) implements IPointer {
     /// and use {@link ByteBuffer#reinterpret} to set the size before actually
     /// {@link ByteBuffer#read}ing or
     /// {@link ByteBuffer#write}ing the buffer.
-    public @nullable ByteBuffer pSettingName() {
+    public @Nullable ByteBuffer pSettingName() {
         MemorySegment s = pSettingNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pSettingName(@nullable ByteBuffer value) {
+    public void pSettingName(@Nullable ByteBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSettingNameRaw(s);
     }
@@ -99,7 +100,7 @@ public record VkLayerSettingEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
 
-    public void pValues(@nullable IPointer pointer) {
+    public void pValues(@Nullable IPointer pointer) {
         pValues(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 

@@ -3,6 +3,7 @@ package tech.icey.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -25,7 +26,7 @@ public record VmaDefragmentationMove(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$operation, OFFSET$operation, value);
     }
 
-    public @nullable VmaAllocation srcAllocation() {
+    public @Nullable VmaAllocation srcAllocation() {
         MemorySegment s = segment.asSlice(OFFSET$srcAllocation, SIZE$srcAllocation);
         if (s.address() == 0) {
             return null;
@@ -33,7 +34,7 @@ public record VmaDefragmentationMove(MemorySegment segment) implements IPointer 
         return new VmaAllocation(s);
     }
 
-    public void srcAllocation(@nullable VmaAllocation value) {
+    public void srcAllocation(@Nullable VmaAllocation value) {
         segment.set(
             LAYOUT$srcAllocation,
             OFFSET$srcAllocation,
@@ -41,7 +42,7 @@ public record VmaDefragmentationMove(MemorySegment segment) implements IPointer 
         );
     }
 
-    public @nullable VmaAllocation dstTmpAllocation() {
+    public @Nullable VmaAllocation dstTmpAllocation() {
         MemorySegment s = segment.asSlice(OFFSET$dstTmpAllocation, SIZE$dstTmpAllocation);
         if (s.address() == 0) {
             return null;
@@ -49,7 +50,7 @@ public record VmaDefragmentationMove(MemorySegment segment) implements IPointer 
         return new VmaAllocation(s);
     }
 
-    public void dstTmpAllocation(@nullable VmaAllocation value) {
+    public void dstTmpAllocation(@Nullable VmaAllocation value) {
         segment.set(
             LAYOUT$dstTmpAllocation,
             OFFSET$dstTmpAllocation,

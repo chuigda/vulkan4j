@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -61,7 +62,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -89,7 +90,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
-    public @nullable VkPipelineShaderStageCreateInfo pStages() {
+    public @Nullable VkPipelineShaderStageCreateInfo pStages() {
         MemorySegment s = pStagesRaw();
         if (s.address() == 0) {
             return null;
@@ -99,7 +100,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
+    public @Nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
         MemorySegment s = pStagesRaw().reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
         VkPipelineShaderStageCreateInfo[] arr = new VkPipelineShaderStageCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -108,7 +109,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return arr;
     }
 
-    public void pStages(@nullable VkPipelineShaderStageCreateInfo value) {
+    public void pStages(@Nullable VkPipelineShaderStageCreateInfo value) {
         pStagesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -120,7 +121,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pVertexInputState, OFFSET$pVertexInputState, value);
     }
 
-    public @nullable VkPipelineVertexInputStateCreateInfo pVertexInputState() {
+    public @Nullable VkPipelineVertexInputStateCreateInfo pVertexInputState() {
         MemorySegment s = pVertexInputStateRaw();
         if (s.address() == 0) {
             return null;
@@ -130,7 +131,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineVertexInputStateCreateInfo[] pVertexInputState(int assumedCount) {
+    public @Nullable VkPipelineVertexInputStateCreateInfo[] pVertexInputState(int assumedCount) {
         MemorySegment s = pVertexInputStateRaw().reinterpret(assumedCount * VkPipelineVertexInputStateCreateInfo.SIZE);
         VkPipelineVertexInputStateCreateInfo[] arr = new VkPipelineVertexInputStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -139,7 +140,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return arr;
     }
 
-    public void pVertexInputState(@nullable VkPipelineVertexInputStateCreateInfo value) {
+    public void pVertexInputState(@Nullable VkPipelineVertexInputStateCreateInfo value) {
         pVertexInputStateRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -151,7 +152,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pInputAssemblyState, OFFSET$pInputAssemblyState, value);
     }
 
-    public @nullable VkPipelineInputAssemblyStateCreateInfo pInputAssemblyState() {
+    public @Nullable VkPipelineInputAssemblyStateCreateInfo pInputAssemblyState() {
         MemorySegment s = pInputAssemblyStateRaw();
         if (s.address() == 0) {
             return null;
@@ -161,7 +162,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineInputAssemblyStateCreateInfo[] pInputAssemblyState(int assumedCount) {
+    public @Nullable VkPipelineInputAssemblyStateCreateInfo[] pInputAssemblyState(int assumedCount) {
         MemorySegment s = pInputAssemblyStateRaw().reinterpret(assumedCount * VkPipelineInputAssemblyStateCreateInfo.SIZE);
         VkPipelineInputAssemblyStateCreateInfo[] arr = new VkPipelineInputAssemblyStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -170,7 +171,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return arr;
     }
 
-    public void pInputAssemblyState(@nullable VkPipelineInputAssemblyStateCreateInfo value) {
+    public void pInputAssemblyState(@Nullable VkPipelineInputAssemblyStateCreateInfo value) {
         pInputAssemblyStateRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -182,7 +183,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pTessellationState, OFFSET$pTessellationState, value);
     }
 
-    public @nullable VkPipelineTessellationStateCreateInfo pTessellationState() {
+    public @Nullable VkPipelineTessellationStateCreateInfo pTessellationState() {
         MemorySegment s = pTessellationStateRaw();
         if (s.address() == 0) {
             return null;
@@ -192,7 +193,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineTessellationStateCreateInfo[] pTessellationState(int assumedCount) {
+    public @Nullable VkPipelineTessellationStateCreateInfo[] pTessellationState(int assumedCount) {
         MemorySegment s = pTessellationStateRaw().reinterpret(assumedCount * VkPipelineTessellationStateCreateInfo.SIZE);
         VkPipelineTessellationStateCreateInfo[] arr = new VkPipelineTessellationStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -201,7 +202,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return arr;
     }
 
-    public void pTessellationState(@nullable VkPipelineTessellationStateCreateInfo value) {
+    public void pTessellationState(@Nullable VkPipelineTessellationStateCreateInfo value) {
         pTessellationStateRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -213,7 +214,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pViewportState, OFFSET$pViewportState, value);
     }
 
-    public @nullable VkPipelineViewportStateCreateInfo pViewportState() {
+    public @Nullable VkPipelineViewportStateCreateInfo pViewportState() {
         MemorySegment s = pViewportStateRaw();
         if (s.address() == 0) {
             return null;
@@ -223,7 +224,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineViewportStateCreateInfo[] pViewportState(int assumedCount) {
+    public @Nullable VkPipelineViewportStateCreateInfo[] pViewportState(int assumedCount) {
         MemorySegment s = pViewportStateRaw().reinterpret(assumedCount * VkPipelineViewportStateCreateInfo.SIZE);
         VkPipelineViewportStateCreateInfo[] arr = new VkPipelineViewportStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -232,7 +233,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return arr;
     }
 
-    public void pViewportState(@nullable VkPipelineViewportStateCreateInfo value) {
+    public void pViewportState(@Nullable VkPipelineViewportStateCreateInfo value) {
         pViewportStateRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -244,7 +245,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pRasterizationState, OFFSET$pRasterizationState, value);
     }
 
-    public @nullable VkPipelineRasterizationStateCreateInfo pRasterizationState() {
+    public @Nullable VkPipelineRasterizationStateCreateInfo pRasterizationState() {
         MemorySegment s = pRasterizationStateRaw();
         if (s.address() == 0) {
             return null;
@@ -254,7 +255,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineRasterizationStateCreateInfo[] pRasterizationState(int assumedCount) {
+    public @Nullable VkPipelineRasterizationStateCreateInfo[] pRasterizationState(int assumedCount) {
         MemorySegment s = pRasterizationStateRaw().reinterpret(assumedCount * VkPipelineRasterizationStateCreateInfo.SIZE);
         VkPipelineRasterizationStateCreateInfo[] arr = new VkPipelineRasterizationStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -263,7 +264,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return arr;
     }
 
-    public void pRasterizationState(@nullable VkPipelineRasterizationStateCreateInfo value) {
+    public void pRasterizationState(@Nullable VkPipelineRasterizationStateCreateInfo value) {
         pRasterizationStateRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -275,7 +276,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pMultisampleState, OFFSET$pMultisampleState, value);
     }
 
-    public @nullable VkPipelineMultisampleStateCreateInfo pMultisampleState() {
+    public @Nullable VkPipelineMultisampleStateCreateInfo pMultisampleState() {
         MemorySegment s = pMultisampleStateRaw();
         if (s.address() == 0) {
             return null;
@@ -285,7 +286,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineMultisampleStateCreateInfo[] pMultisampleState(int assumedCount) {
+    public @Nullable VkPipelineMultisampleStateCreateInfo[] pMultisampleState(int assumedCount) {
         MemorySegment s = pMultisampleStateRaw().reinterpret(assumedCount * VkPipelineMultisampleStateCreateInfo.SIZE);
         VkPipelineMultisampleStateCreateInfo[] arr = new VkPipelineMultisampleStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -294,7 +295,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return arr;
     }
 
-    public void pMultisampleState(@nullable VkPipelineMultisampleStateCreateInfo value) {
+    public void pMultisampleState(@Nullable VkPipelineMultisampleStateCreateInfo value) {
         pMultisampleStateRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -306,7 +307,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pDepthStencilState, OFFSET$pDepthStencilState, value);
     }
 
-    public @nullable VkPipelineDepthStencilStateCreateInfo pDepthStencilState() {
+    public @Nullable VkPipelineDepthStencilStateCreateInfo pDepthStencilState() {
         MemorySegment s = pDepthStencilStateRaw();
         if (s.address() == 0) {
             return null;
@@ -316,7 +317,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineDepthStencilStateCreateInfo[] pDepthStencilState(int assumedCount) {
+    public @Nullable VkPipelineDepthStencilStateCreateInfo[] pDepthStencilState(int assumedCount) {
         MemorySegment s = pDepthStencilStateRaw().reinterpret(assumedCount * VkPipelineDepthStencilStateCreateInfo.SIZE);
         VkPipelineDepthStencilStateCreateInfo[] arr = new VkPipelineDepthStencilStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -325,7 +326,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return arr;
     }
 
-    public void pDepthStencilState(@nullable VkPipelineDepthStencilStateCreateInfo value) {
+    public void pDepthStencilState(@Nullable VkPipelineDepthStencilStateCreateInfo value) {
         pDepthStencilStateRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -337,7 +338,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pColorBlendState, OFFSET$pColorBlendState, value);
     }
 
-    public @nullable VkPipelineColorBlendStateCreateInfo pColorBlendState() {
+    public @Nullable VkPipelineColorBlendStateCreateInfo pColorBlendState() {
         MemorySegment s = pColorBlendStateRaw();
         if (s.address() == 0) {
             return null;
@@ -347,7 +348,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineColorBlendStateCreateInfo[] pColorBlendState(int assumedCount) {
+    public @Nullable VkPipelineColorBlendStateCreateInfo[] pColorBlendState(int assumedCount) {
         MemorySegment s = pColorBlendStateRaw().reinterpret(assumedCount * VkPipelineColorBlendStateCreateInfo.SIZE);
         VkPipelineColorBlendStateCreateInfo[] arr = new VkPipelineColorBlendStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -356,7 +357,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return arr;
     }
 
-    public void pColorBlendState(@nullable VkPipelineColorBlendStateCreateInfo value) {
+    public void pColorBlendState(@Nullable VkPipelineColorBlendStateCreateInfo value) {
         pColorBlendStateRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -368,7 +369,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         segment.set(LAYOUT$pDynamicState, OFFSET$pDynamicState, value);
     }
 
-    public @nullable VkPipelineDynamicStateCreateInfo pDynamicState() {
+    public @Nullable VkPipelineDynamicStateCreateInfo pDynamicState() {
         MemorySegment s = pDynamicStateRaw();
         if (s.address() == 0) {
             return null;
@@ -378,7 +379,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineDynamicStateCreateInfo[] pDynamicState(int assumedCount) {
+    public @Nullable VkPipelineDynamicStateCreateInfo[] pDynamicState(int assumedCount) {
         MemorySegment s = pDynamicStateRaw().reinterpret(assumedCount * VkPipelineDynamicStateCreateInfo.SIZE);
         VkPipelineDynamicStateCreateInfo[] arr = new VkPipelineDynamicStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -387,11 +388,11 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return arr;
     }
 
-    public void pDynamicState(@nullable VkPipelineDynamicStateCreateInfo value) {
+    public void pDynamicState(@Nullable VkPipelineDynamicStateCreateInfo value) {
         pDynamicStateRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
-    public @nullable VkPipelineLayout layout() {
+    public @Nullable VkPipelineLayout layout() {
         MemorySegment s = segment.get(LAYOUT$layout, OFFSET$layout);
         if (s.address() == 0) {
             return null;
@@ -399,7 +400,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@nullable VkPipelineLayout value) {
+    public void layout(@Nullable VkPipelineLayout value) {
         segment.set(
             LAYOUT$layout,
             OFFSET$layout,
@@ -407,7 +408,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         );
     }
 
-    public @nullable VkRenderPass renderPass() {
+    public @Nullable VkRenderPass renderPass() {
         MemorySegment s = segment.get(LAYOUT$renderPass, OFFSET$renderPass);
         if (s.address() == 0) {
             return null;
@@ -415,7 +416,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return new VkRenderPass(s);
     }
 
-    public void renderPass(@nullable VkRenderPass value) {
+    public void renderPass(@Nullable VkRenderPass value) {
         segment.set(
             LAYOUT$renderPass,
             OFFSET$renderPass,
@@ -431,7 +432,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         segment.set(LAYOUT$subpass, OFFSET$subpass, value);
     }
 
-    public @nullable VkPipeline basePipelineHandle() {
+    public @Nullable VkPipeline basePipelineHandle() {
         MemorySegment s = segment.get(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle);
         if (s.address() == 0) {
             return null;
@@ -439,7 +440,7 @@ public record VkGraphicsPipelineCreateInfo(MemorySegment segment) implements IPo
         return new VkPipeline(s);
     }
 
-    public void basePipelineHandle(@nullable VkPipeline value) {
+    public void basePipelineHandle(@Nullable VkPipeline value) {
         segment.set(
             LAYOUT$basePipelineHandle,
             OFFSET$basePipelineHandle,

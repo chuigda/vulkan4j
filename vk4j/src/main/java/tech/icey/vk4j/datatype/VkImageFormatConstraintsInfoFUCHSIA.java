@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -49,7 +50,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -101,7 +102,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) impleme
         segment.set(LAYOUT$pColorSpaces, OFFSET$pColorSpaces, value);
     }
 
-    public @nullable VkSysmemColorSpaceFUCHSIA pColorSpaces() {
+    public @Nullable VkSysmemColorSpaceFUCHSIA pColorSpaces() {
         MemorySegment s = pColorSpacesRaw();
         if (s.address() == 0) {
             return null;
@@ -111,7 +112,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) impleme
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSysmemColorSpaceFUCHSIA[] pColorSpaces(int assumedCount) {
+    public @Nullable VkSysmemColorSpaceFUCHSIA[] pColorSpaces(int assumedCount) {
         MemorySegment s = pColorSpacesRaw().reinterpret(assumedCount * VkSysmemColorSpaceFUCHSIA.SIZE);
         VkSysmemColorSpaceFUCHSIA[] arr = new VkSysmemColorSpaceFUCHSIA[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -120,7 +121,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) impleme
         return arr;
     }
 
-    public void pColorSpaces(@nullable VkSysmemColorSpaceFUCHSIA value) {
+    public void pColorSpaces(@Nullable VkSysmemColorSpaceFUCHSIA value) {
         pColorSpacesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

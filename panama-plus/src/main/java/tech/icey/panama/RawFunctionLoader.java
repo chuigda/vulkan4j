@@ -1,6 +1,6 @@
 package tech.icey.panama;
 
-import tech.icey.panama.annotation.nullable;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.Linker;
@@ -13,7 +13,7 @@ public interface RawFunctionLoader {
 
     Linker nativeLinker = Linker.nativeLinker();
 
-    static @nullable MethodHandle link(@nullable MemorySegment segment, FunctionDescriptor descriptor) {
+    static @Nullable MethodHandle link(@Nullable MemorySegment segment, FunctionDescriptor descriptor) {
         if (segment == null) {
             return null;
         }

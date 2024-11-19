@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -74,7 +75,7 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
         segment.set(LAYOUT$pPlaneLayouts, OFFSET$pPlaneLayouts, value);
     }
 
-    public @nullable VkSubresourceLayout pPlaneLayouts() {
+    public @Nullable VkSubresourceLayout pPlaneLayouts() {
         MemorySegment s = pPlaneLayoutsRaw();
         if (s.address() == 0) {
             return null;
@@ -84,7 +85,7 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSubresourceLayout[] pPlaneLayouts(int assumedCount) {
+    public @Nullable VkSubresourceLayout[] pPlaneLayouts(int assumedCount) {
         MemorySegment s = pPlaneLayoutsRaw().reinterpret(assumedCount * VkSubresourceLayout.SIZE);
         VkSubresourceLayout[] arr = new VkSubresourceLayout[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -93,7 +94,7 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(MemorySegment segmen
         return arr;
     }
 
-    public void pPlaneLayouts(@nullable VkSubresourceLayout value) {
+    public void pPlaneLayouts(@Nullable VkSubresourceLayout value) {
         pPlaneLayoutsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

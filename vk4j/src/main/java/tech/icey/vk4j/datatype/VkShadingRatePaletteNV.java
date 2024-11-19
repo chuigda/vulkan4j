@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkShadingRatePaletteNV(MemorySegment segment) implements IPointer 
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
     /// the buffer.
-    public @nullable @enumtype(VkShadingRatePaletteEntryNV.class) IntBuffer pShadingRatePaletteEntries() {
+    public @Nullable @enumtype(VkShadingRatePaletteEntryNV.class) IntBuffer pShadingRatePaletteEntries() {
         MemorySegment s = pShadingRatePaletteEntriesRaw();
         if (s.address() == 0) {
             return null;
@@ -56,7 +57,7 @@ public record VkShadingRatePaletteNV(MemorySegment segment) implements IPointer 
         return new IntBuffer(s);
     }
 
-    public void pShadingRatePaletteEntries(@nullable @enumtype(VkShadingRatePaletteEntryNV.class) IntBuffer value) {
+    public void pShadingRatePaletteEntries(@Nullable @enumtype(VkShadingRatePaletteEntryNV.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pShadingRatePaletteEntriesRaw(s);
     }

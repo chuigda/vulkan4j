@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -44,11 +45,11 @@ public record VkPhysicalDeviceSurfaceInfo2KHR(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkSurfaceKHR surface() {
+    public @Nullable VkSurfaceKHR surface() {
         MemorySegment s = segment.get(LAYOUT$surface, OFFSET$surface);
         if (s.address() == 0) {
             return null;
@@ -56,7 +57,7 @@ public record VkPhysicalDeviceSurfaceInfo2KHR(MemorySegment segment) implements 
         return new VkSurfaceKHR(s);
     }
 
-    public void surface(@nullable VkSurfaceKHR value) {
+    public void surface(@Nullable VkSurfaceKHR value) {
         segment.set(
             LAYOUT$surface,
             OFFSET$surface,

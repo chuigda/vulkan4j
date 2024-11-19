@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -67,7 +68,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
 
-    public @nullable VkGraphicsShaderGroupCreateInfoNV pGroups() {
+    public @Nullable VkGraphicsShaderGroupCreateInfoNV pGroups() {
         MemorySegment s = pGroupsRaw();
         if (s.address() == 0) {
             return null;
@@ -77,7 +78,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkGraphicsShaderGroupCreateInfoNV[] pGroups(int assumedCount) {
+    public @Nullable VkGraphicsShaderGroupCreateInfoNV[] pGroups(int assumedCount) {
         MemorySegment s = pGroupsRaw().reinterpret(assumedCount * VkGraphicsShaderGroupCreateInfoNV.SIZE);
         VkGraphicsShaderGroupCreateInfoNV[] arr = new VkGraphicsShaderGroupCreateInfoNV[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -86,7 +87,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         return arr;
     }
 
-    public void pGroups(@nullable VkGraphicsShaderGroupCreateInfoNV value) {
+    public void pGroups(@Nullable VkGraphicsShaderGroupCreateInfoNV value) {
         pGroupsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -111,7 +112,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
     /// and use {@link VkPipeline.Buffer#reinterpret} to set the size before actually
     /// {@link VkPipeline.Buffer#read}ing or {@link VkPipeline.Buffer#write}ing
     /// the buffer.
-    public @nullable VkPipeline.Buffer pPipelines() {
+    public @Nullable VkPipeline.Buffer pPipelines() {
         MemorySegment s = pPipelinesRaw();
         if (s.address() == 0) {
             return null;
@@ -119,7 +120,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(MemorySegment segment) 
         return new VkPipeline.Buffer(s);
     }
 
-    public void pPipelines(@nullable VkPipeline.Buffer value) {
+    public void pPipelines(@Nullable VkPipeline.Buffer value) {
         pPipelinesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

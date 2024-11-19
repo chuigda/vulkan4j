@@ -3,6 +3,7 @@ package tech.icey.glfw;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.RawFunctionLoader;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -10,6 +11,7 @@ import tech.icey.panama.buffer.*;
 import tech.icey.glfw.datatype.*;
 import tech.icey.glfw.handle.*;
 import tech.icey.vk4j.datatype.*;
+import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 
 public final class GLFW {
@@ -44,7 +46,7 @@ public final class GLFW {
     }
 
     public void glfwInitAllocator(
-            @nullable @pointer(target=GLFWallocator.class) GLFWallocator allocator
+            @Nullable @pointer(target=GLFWallocator.class) GLFWallocator allocator
     ) {
         try {
             HANDLE$glfwInitAllocator.invokeExact(
@@ -68,9 +70,9 @@ public final class GLFW {
     }
 
     public void glfwGetVersion(
-            @nullable IntBuffer major,
-            @nullable IntBuffer minor,
-            @nullable IntBuffer rev
+            @Nullable IntBuffer major,
+            @Nullable IntBuffer minor,
+            @Nullable IntBuffer rev
     ) {
         try {
             HANDLE$glfwGetVersion.invokeExact(
@@ -83,7 +85,7 @@ public final class GLFW {
         }
     }
 
-    public @nullable ByteBuffer glfwGetVersionString() {
+    public @Nullable ByteBuffer glfwGetVersionString() {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetVersionString.invokeExact();
             return s.address() == 0 ? null : new ByteBuffer(s);
@@ -93,7 +95,7 @@ public final class GLFW {
     }
 
     public int glfwGetError(
-            @nullable PointerBuffer description
+            @Nullable PointerBuffer description
     ) {
         try {
             return (int) HANDLE$glfwGetError.invokeExact(
@@ -136,8 +138,8 @@ public final class GLFW {
         }
     }
 
-    public @nullable @pointer(target=GLFWmonitor.class) GLFWmonitor.Buffer glfwGetMonitors(
-            @nullable IntBuffer count
+    public @Nullable @pointer(target=GLFWmonitor.class) GLFWmonitor.Buffer glfwGetMonitors(
+            @Nullable IntBuffer count
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetMonitors.invokeExact(
@@ -149,7 +151,7 @@ public final class GLFW {
         }
     }
 
-    public @nullable GLFWmonitor glfwGetPrimaryMonitor() {
+    public @Nullable GLFWmonitor glfwGetPrimaryMonitor() {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetPrimaryMonitor.invokeExact();
             return s.address() == 0 ? null : new GLFWmonitor(s);
@@ -159,9 +161,9 @@ public final class GLFW {
     }
 
     public void glfwGetMonitorPos(
-            @nullable GLFWmonitor monitor,
-            @nullable IntBuffer xpos,
-            @nullable IntBuffer ypos
+            @Nullable GLFWmonitor monitor,
+            @Nullable IntBuffer xpos,
+            @Nullable IntBuffer ypos
     ) {
         try {
             HANDLE$glfwGetMonitorPos.invokeExact(
@@ -175,11 +177,11 @@ public final class GLFW {
     }
 
     public void glfwGetMonitorWorkarea(
-            @nullable GLFWmonitor monitor,
-            @nullable IntBuffer xpos,
-            @nullable IntBuffer ypos,
-            @nullable IntBuffer width,
-            @nullable IntBuffer height
+            @Nullable GLFWmonitor monitor,
+            @Nullable IntBuffer xpos,
+            @Nullable IntBuffer ypos,
+            @Nullable IntBuffer width,
+            @Nullable IntBuffer height
     ) {
         try {
             HANDLE$glfwGetMonitorWorkarea.invokeExact(
@@ -195,9 +197,9 @@ public final class GLFW {
     }
 
     public void glfwGetMonitorPhysicalSize(
-            @nullable GLFWmonitor monitor,
-            @nullable IntBuffer widthMM,
-            @nullable IntBuffer heightMM
+            @Nullable GLFWmonitor monitor,
+            @Nullable IntBuffer widthMM,
+            @Nullable IntBuffer heightMM
     ) {
         try {
             HANDLE$glfwGetMonitorPhysicalSize.invokeExact(
@@ -211,9 +213,9 @@ public final class GLFW {
     }
 
     public void glfwGetMonitorContentScale(
-            @nullable GLFWmonitor monitor,
-            @nullable FloatBuffer xscale,
-            @nullable FloatBuffer yscale
+            @Nullable GLFWmonitor monitor,
+            @Nullable FloatBuffer xscale,
+            @Nullable FloatBuffer yscale
     ) {
         try {
             HANDLE$glfwGetMonitorContentScale.invokeExact(
@@ -226,8 +228,8 @@ public final class GLFW {
         }
     }
 
-    public @nullable ByteBuffer glfwGetMonitorName(
-            @nullable GLFWmonitor monitor
+    public @Nullable ByteBuffer glfwGetMonitorName(
+            @Nullable GLFWmonitor monitor
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetMonitorName.invokeExact(
@@ -240,7 +242,7 @@ public final class GLFW {
     }
 
     public void glfwSetMonitorUserPointer(
-            @nullable GLFWmonitor monitor,
+            @Nullable GLFWmonitor monitor,
             @pointer(comment="void*") MemorySegment pointer
     ) {
         try {
@@ -254,7 +256,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="void*") MemorySegment glfwGetMonitorUserPointer(
-            @nullable GLFWmonitor monitor
+            @Nullable GLFWmonitor monitor
     ) {
         try {
             return (MemorySegment) HANDLE$glfwGetMonitorUserPointer.invokeExact(
@@ -277,9 +279,9 @@ public final class GLFW {
         }
     }
 
-    public @nullable @pointer(target=GLFWvidmode.class) GLFWvidmode glfwGetVideoModes(
-            @nullable GLFWmonitor monitor,
-            @nullable IntBuffer count
+    public @Nullable @pointer(target=GLFWvidmode.class) GLFWvidmode glfwGetVideoModes(
+            @Nullable GLFWmonitor monitor,
+            @Nullable IntBuffer count
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetVideoModes.invokeExact(
@@ -292,8 +294,8 @@ public final class GLFW {
         }
     }
 
-    public @nullable @pointer(target=GLFWvidmode.class) GLFWvidmode glfwGetVideoMode(
-            @nullable GLFWmonitor monitor
+    public @Nullable @pointer(target=GLFWvidmode.class) GLFWvidmode glfwGetVideoMode(
+            @Nullable GLFWmonitor monitor
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetVideoMode.invokeExact(
@@ -306,7 +308,7 @@ public final class GLFW {
     }
 
     public void glfwSetGamma(
-            @nullable GLFWmonitor monitor,
+            @Nullable GLFWmonitor monitor,
             float gamma
     ) {
         try {
@@ -319,8 +321,8 @@ public final class GLFW {
         }
     }
 
-    public @nullable @pointer(target=GLFWgammaramp.class) GLFWgammaramp glfwGetGammaRamp(
-            @nullable GLFWmonitor monitor
+    public @Nullable @pointer(target=GLFWgammaramp.class) GLFWgammaramp glfwGetGammaRamp(
+            @Nullable GLFWmonitor monitor
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetGammaRamp.invokeExact(
@@ -333,8 +335,8 @@ public final class GLFW {
     }
 
     public void glfwSetGammaRamp(
-            @nullable GLFWmonitor monitor,
-            @nullable @pointer(target=GLFWgammaramp.class) GLFWgammaramp ramp
+            @Nullable GLFWmonitor monitor,
+            @Nullable @pointer(target=GLFWgammaramp.class) GLFWgammaramp ramp
     ) {
         try {
             HANDLE$glfwSetGammaRamp.invokeExact(
@@ -370,7 +372,7 @@ public final class GLFW {
 
     public void glfwWindowHintString(
             int hint,
-            @nullable ByteBuffer value
+            @Nullable ByteBuffer value
     ) {
         try {
             HANDLE$glfwWindowHintString.invokeExact(
@@ -382,12 +384,12 @@ public final class GLFW {
         }
     }
 
-    public @nullable GLFWwindow glfwCreateWindow(
+    public @Nullable GLFWwindow glfwCreateWindow(
             int width,
             int height,
-            @nullable ByteBuffer title,
-            @nullable GLFWmonitor monitor,
-            @nullable GLFWwindow share
+            @Nullable ByteBuffer title,
+            @Nullable GLFWmonitor monitor,
+            @Nullable GLFWwindow share
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwCreateWindow.invokeExact(
@@ -404,7 +406,7 @@ public final class GLFW {
     }
 
     public void glfwDestroyWindow(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             HANDLE$glfwDestroyWindow.invokeExact(
@@ -416,7 +418,7 @@ public final class GLFW {
     }
 
     public int glfwWindowShouldClose(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             return (int) HANDLE$glfwWindowShouldClose.invokeExact(
@@ -428,7 +430,7 @@ public final class GLFW {
     }
 
     public void glfwSetWindowShouldClose(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             int value
     ) {
         try {
@@ -441,8 +443,8 @@ public final class GLFW {
         }
     }
 
-    public @nullable ByteBuffer glfwGetWindowTitle(
-            @nullable GLFWwindow window
+    public @Nullable ByteBuffer glfwGetWindowTitle(
+            @Nullable GLFWwindow window
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetWindowTitle.invokeExact(
@@ -455,8 +457,8 @@ public final class GLFW {
     }
 
     public void glfwSetWindowTitle(
-            @nullable GLFWwindow window,
-            @nullable ByteBuffer title
+            @Nullable GLFWwindow window,
+            @Nullable ByteBuffer title
     ) {
         try {
             HANDLE$glfwSetWindowTitle.invokeExact(
@@ -469,9 +471,9 @@ public final class GLFW {
     }
 
     public void glfwSetWindowIcon(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             int count,
-            @nullable @pointer(target=GLFWimage.class) GLFWimage images
+            @Nullable @pointer(target=GLFWimage.class) GLFWimage images
     ) {
         try {
             HANDLE$glfwSetWindowIcon.invokeExact(
@@ -485,9 +487,9 @@ public final class GLFW {
     }
 
     public void glfwGetWindowPos(
-            @nullable GLFWwindow window,
-            @nullable IntBuffer xpos,
-            @nullable IntBuffer ypos
+            @Nullable GLFWwindow window,
+            @Nullable IntBuffer xpos,
+            @Nullable IntBuffer ypos
     ) {
         try {
             HANDLE$glfwGetWindowPos.invokeExact(
@@ -501,7 +503,7 @@ public final class GLFW {
     }
 
     public void glfwSetWindowPos(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             int xpos,
             int ypos
     ) {
@@ -517,9 +519,9 @@ public final class GLFW {
     }
 
     public void glfwGetWindowSize(
-            @nullable GLFWwindow window,
-            @nullable IntBuffer width,
-            @nullable IntBuffer height
+            @Nullable GLFWwindow window,
+            @Nullable IntBuffer width,
+            @Nullable IntBuffer height
     ) {
         try {
             HANDLE$glfwGetWindowSize.invokeExact(
@@ -533,7 +535,7 @@ public final class GLFW {
     }
 
     public void glfwSetWindowSizeLimits(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             int minwidth,
             int minheight,
             int maxwidth,
@@ -553,7 +555,7 @@ public final class GLFW {
     }
 
     public void glfwSetWindowAspectRatio(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             int numer,
             int denom
     ) {
@@ -569,7 +571,7 @@ public final class GLFW {
     }
 
     public void glfwSetWindowSize(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             int width,
             int height
     ) {
@@ -585,9 +587,9 @@ public final class GLFW {
     }
 
     public void glfwGetFramebufferSize(
-            @nullable GLFWwindow window,
-            @nullable IntBuffer width,
-            @nullable IntBuffer height
+            @Nullable GLFWwindow window,
+            @Nullable IntBuffer width,
+            @Nullable IntBuffer height
     ) {
         try {
             HANDLE$glfwGetFramebufferSize.invokeExact(
@@ -601,11 +603,11 @@ public final class GLFW {
     }
 
     public void glfwGetWindowFrameSize(
-            @nullable GLFWwindow window,
-            @nullable IntBuffer left,
-            @nullable IntBuffer top,
-            @nullable IntBuffer right,
-            @nullable IntBuffer bottom
+            @Nullable GLFWwindow window,
+            @Nullable IntBuffer left,
+            @Nullable IntBuffer top,
+            @Nullable IntBuffer right,
+            @Nullable IntBuffer bottom
     ) {
         try {
             HANDLE$glfwGetWindowFrameSize.invokeExact(
@@ -621,9 +623,9 @@ public final class GLFW {
     }
 
     public void glfwGetWindowContentScale(
-            @nullable GLFWwindow window,
-            @nullable FloatBuffer xscale,
-            @nullable FloatBuffer yscale
+            @Nullable GLFWwindow window,
+            @Nullable FloatBuffer xscale,
+            @Nullable FloatBuffer yscale
     ) {
         try {
             HANDLE$glfwGetWindowContentScale.invokeExact(
@@ -637,7 +639,7 @@ public final class GLFW {
     }
 
     public float glfwGetWindowOpacity(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             return (float) HANDLE$glfwGetWindowOpacity.invokeExact(
@@ -649,7 +651,7 @@ public final class GLFW {
     }
 
     public void glfwSetWindowOpacity(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             float opacity
     ) {
         try {
@@ -663,7 +665,7 @@ public final class GLFW {
     }
 
     public void glfwIconifyWindow(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             HANDLE$glfwIconifyWindow.invokeExact(
@@ -675,7 +677,7 @@ public final class GLFW {
     }
 
     public void glfwRestoreWindow(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             HANDLE$glfwRestoreWindow.invokeExact(
@@ -687,7 +689,7 @@ public final class GLFW {
     }
 
     public void glfwMaximizeWindow(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             HANDLE$glfwMaximizeWindow.invokeExact(
@@ -699,7 +701,7 @@ public final class GLFW {
     }
 
     public void glfwShowWindow(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             HANDLE$glfwShowWindow.invokeExact(
@@ -711,7 +713,7 @@ public final class GLFW {
     }
 
     public void glfwHideWindow(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             HANDLE$glfwHideWindow.invokeExact(
@@ -723,7 +725,7 @@ public final class GLFW {
     }
 
     public void glfwFocusWindow(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             HANDLE$glfwFocusWindow.invokeExact(
@@ -735,7 +737,7 @@ public final class GLFW {
     }
 
     public void glfwRequestWindowAttention(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             HANDLE$glfwRequestWindowAttention.invokeExact(
@@ -746,8 +748,8 @@ public final class GLFW {
         }
     }
 
-    public @nullable GLFWmonitor glfwGetWindowMonitor(
-            @nullable GLFWwindow window
+    public @Nullable GLFWmonitor glfwGetWindowMonitor(
+            @Nullable GLFWwindow window
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetWindowMonitor.invokeExact(
@@ -760,8 +762,8 @@ public final class GLFW {
     }
 
     public void glfwSetWindowMonitor(
-            @nullable GLFWwindow window,
-            @nullable GLFWmonitor monitor,
+            @Nullable GLFWwindow window,
+            @Nullable GLFWmonitor monitor,
             int xpos,
             int ypos,
             int width,
@@ -784,7 +786,7 @@ public final class GLFW {
     }
 
     public int glfwGetWindowAttrib(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             int attrib
     ) {
         try {
@@ -798,7 +800,7 @@ public final class GLFW {
     }
 
     public void glfwSetWindowAttrib(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             int attrib,
             int value
     ) {
@@ -814,7 +816,7 @@ public final class GLFW {
     }
 
     public void glfwSetWindowUserPointer(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="void*") MemorySegment pointer
     ) {
         try {
@@ -828,7 +830,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="void*") MemorySegment glfwGetWindowUserPointer(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             return (MemorySegment) HANDLE$glfwGetWindowUserPointer.invokeExact(
@@ -840,7 +842,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWwindowposfun") MemorySegment glfwSetWindowPosCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWwindowposfun") MemorySegment callback
     ) {
         try {
@@ -854,7 +856,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWwindowsizefun") MemorySegment glfwSetWindowSizeCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWwindowsizefun") MemorySegment callback
     ) {
         try {
@@ -868,7 +870,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWwindowclosefun") MemorySegment glfwSetWindowCloseCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWwindowclosefun") MemorySegment callback
     ) {
         try {
@@ -882,7 +884,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWwindowrefreshfun") MemorySegment glfwSetWindowRefreshCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWwindowrefreshfun") MemorySegment callback
     ) {
         try {
@@ -896,7 +898,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWwindowfocusfun") MemorySegment glfwSetWindowFocusCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWwindowfocusfun") MemorySegment callback
     ) {
         try {
@@ -910,7 +912,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWwindowiconifyfun") MemorySegment glfwSetWindowIconifyCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWwindowiconifyfun") MemorySegment callback
     ) {
         try {
@@ -924,7 +926,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWwindowmaximizefun") MemorySegment glfwSetWindowMaximizeCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWwindowmaximizefun") MemorySegment callback
     ) {
         try {
@@ -938,7 +940,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWframebuffersizefun") MemorySegment glfwSetFramebufferSizeCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWframebuffersizefun") MemorySegment callback
     ) {
         try {
@@ -952,7 +954,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWwindowcontentscalefun") MemorySegment glfwSetWindowContentScaleCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWwindowcontentscalefun") MemorySegment callback
     ) {
         try {
@@ -1002,7 +1004,7 @@ public final class GLFW {
     }
 
     public int glfwGetInputMode(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             int mode
     ) {
         try {
@@ -1016,7 +1018,7 @@ public final class GLFW {
     }
 
     public void glfwSetInputMode(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             int mode,
             int value
     ) {
@@ -1039,7 +1041,7 @@ public final class GLFW {
         }
     }
 
-    public @nullable ByteBuffer glfwGetKeyName(
+    public @Nullable ByteBuffer glfwGetKeyName(
             int key,
             int scancode
     ) {
@@ -1067,7 +1069,7 @@ public final class GLFW {
     }
 
     public int glfwGetKey(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             int key
     ) {
         try {
@@ -1081,7 +1083,7 @@ public final class GLFW {
     }
 
     public int glfwGetMouseButton(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             int button
     ) {
         try {
@@ -1095,9 +1097,9 @@ public final class GLFW {
     }
 
     public void glfwGetCursorPos(
-            @nullable GLFWwindow window,
-            @nullable DoubleBuffer xpos,
-            @nullable DoubleBuffer ypos
+            @Nullable GLFWwindow window,
+            @Nullable DoubleBuffer xpos,
+            @Nullable DoubleBuffer ypos
     ) {
         try {
             HANDLE$glfwGetCursorPos.invokeExact(
@@ -1111,7 +1113,7 @@ public final class GLFW {
     }
 
     public void glfwSetCursorPos(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             double xpos,
             double ypos
     ) {
@@ -1126,8 +1128,8 @@ public final class GLFW {
         }
     }
 
-    public @nullable GLFWcursor glfwCreateCursor(
-            @nullable @pointer(target=GLFWimage.class) GLFWimage image,
+    public @Nullable GLFWcursor glfwCreateCursor(
+            @Nullable @pointer(target=GLFWimage.class) GLFWimage image,
             int xhot,
             int yhot
     ) {
@@ -1143,7 +1145,7 @@ public final class GLFW {
         }
     }
 
-    public @nullable GLFWcursor glfwCreateStandardCursor(
+    public @Nullable GLFWcursor glfwCreateStandardCursor(
             int shape
     ) {
         try {
@@ -1157,7 +1159,7 @@ public final class GLFW {
     }
 
     public void glfwDestroyCursor(
-            @nullable GLFWcursor cursor
+            @Nullable GLFWcursor cursor
     ) {
         try {
             HANDLE$glfwDestroyCursor.invokeExact(
@@ -1169,8 +1171,8 @@ public final class GLFW {
     }
 
     public void glfwSetCursor(
-            @nullable GLFWwindow window,
-            @nullable GLFWcursor cursor
+            @Nullable GLFWwindow window,
+            @Nullable GLFWcursor cursor
     ) {
         try {
             HANDLE$glfwSetCursor.invokeExact(
@@ -1183,7 +1185,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWkeyfun") MemorySegment glfwSetKeyCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWkeyfun") MemorySegment callback
     ) {
         try {
@@ -1197,7 +1199,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWcharfun") MemorySegment glfwSetCharCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWcharfun") MemorySegment callback
     ) {
         try {
@@ -1211,7 +1213,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWcharmodsfun") MemorySegment glfwSetCharModsCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWcharmodsfun") MemorySegment callback
     ) {
         try {
@@ -1225,7 +1227,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWmousebuttonfun") MemorySegment glfwSetMouseButtonCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWmousebuttonfun") MemorySegment callback
     ) {
         try {
@@ -1239,7 +1241,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWcursorposfun") MemorySegment glfwSetCursorPosCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWcursorposfun") MemorySegment callback
     ) {
         try {
@@ -1253,7 +1255,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWcursorenterfun") MemorySegment glfwSetCursorEnterCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWcursorenterfun") MemorySegment callback
     ) {
         try {
@@ -1267,7 +1269,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWscrollfun") MemorySegment glfwSetScrollCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWscrollfun") MemorySegment callback
     ) {
         try {
@@ -1281,7 +1283,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWdropfun") MemorySegment glfwSetDropCallback(
-            @nullable GLFWwindow window,
+            @Nullable GLFWwindow window,
             @pointer(comment="GLFWdropfun") MemorySegment callback
     ) {
         try {
@@ -1306,9 +1308,9 @@ public final class GLFW {
         }
     }
 
-    public @nullable FloatBuffer glfwGetJoystickAxes(
+    public @Nullable FloatBuffer glfwGetJoystickAxes(
             int jid,
-            @nullable IntBuffer count
+            @Nullable IntBuffer count
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetJoystickAxes.invokeExact(
@@ -1321,9 +1323,9 @@ public final class GLFW {
         }
     }
 
-    public @nullable ByteBuffer glfwGetJoystickButtons(
+    public @Nullable ByteBuffer glfwGetJoystickButtons(
             int jid,
-            @nullable IntBuffer count
+            @Nullable IntBuffer count
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetJoystickButtons.invokeExact(
@@ -1336,9 +1338,9 @@ public final class GLFW {
         }
     }
 
-    public @nullable ByteBuffer glfwGetJoystickHats(
+    public @Nullable ByteBuffer glfwGetJoystickHats(
             int jid,
-            @nullable IntBuffer count
+            @Nullable IntBuffer count
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetJoystickHats.invokeExact(
@@ -1351,7 +1353,7 @@ public final class GLFW {
         }
     }
 
-    public @nullable ByteBuffer glfwGetJoystickName(
+    public @Nullable ByteBuffer glfwGetJoystickName(
             int jid
     ) {
         try {
@@ -1364,7 +1366,7 @@ public final class GLFW {
         }
     }
 
-    public @nullable ByteBuffer glfwGetJoystickGUID(
+    public @Nullable ByteBuffer glfwGetJoystickGUID(
             int jid
     ) {
         try {
@@ -1428,7 +1430,7 @@ public final class GLFW {
     }
 
     public int glfwUpdateGamepadMappings(
-            @nullable ByteBuffer string
+            @Nullable ByteBuffer string
     ) {
         try {
             return (int) HANDLE$glfwUpdateGamepadMappings.invokeExact(
@@ -1439,7 +1441,7 @@ public final class GLFW {
         }
     }
 
-    public @nullable ByteBuffer glfwGetGamepadName(
+    public @Nullable ByteBuffer glfwGetGamepadName(
             int jid
     ) {
         try {
@@ -1454,7 +1456,7 @@ public final class GLFW {
 
     public int glfwGetGamepadState(
             int jid,
-            @nullable @pointer(target=GLFWgamepadstate.class) GLFWgamepadstate state
+            @Nullable @pointer(target=GLFWgamepadstate.class) GLFWgamepadstate state
     ) {
         try {
             return (int) HANDLE$glfwGetGamepadState.invokeExact(
@@ -1467,8 +1469,8 @@ public final class GLFW {
     }
 
     public void glfwSetClipboardString(
-            @nullable GLFWwindow window,
-            @nullable ByteBuffer string
+            @Nullable GLFWwindow window,
+            @Nullable ByteBuffer string
     ) {
         try {
             HANDLE$glfwSetClipboardString.invokeExact(
@@ -1480,8 +1482,8 @@ public final class GLFW {
         }
     }
 
-    public @nullable ByteBuffer glfwGetClipboardString(
-            @nullable GLFWwindow window
+    public @Nullable ByteBuffer glfwGetClipboardString(
+            @Nullable GLFWwindow window
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetClipboardString.invokeExact(
@@ -1530,7 +1532,7 @@ public final class GLFW {
     }
 
     public void glfwMakeContextCurrent(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             HANDLE$glfwMakeContextCurrent.invokeExact(
@@ -1541,7 +1543,7 @@ public final class GLFW {
         }
     }
 
-    public @nullable GLFWwindow glfwGetCurrentContext() {
+    public @Nullable GLFWwindow glfwGetCurrentContext() {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetCurrentContext.invokeExact();
             return s.address() == 0 ? null : new GLFWwindow(s);
@@ -1551,7 +1553,7 @@ public final class GLFW {
     }
 
     public void glfwSwapBuffers(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             HANDLE$glfwSwapBuffers.invokeExact(
@@ -1575,7 +1577,7 @@ public final class GLFW {
     }
 
     public int glfwExtensionSupported(
-            @nullable ByteBuffer extension
+            @Nullable ByteBuffer extension
     ) {
         try {
             return (int) HANDLE$glfwExtensionSupported.invokeExact(
@@ -1587,7 +1589,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWglproc") MemorySegment glfwGetProcAddress(
-            @nullable ByteBuffer procname
+            @Nullable ByteBuffer procname
     ) {
         try {
             return (MemorySegment) HANDLE$glfwGetProcAddress.invokeExact(
@@ -1606,8 +1608,8 @@ public final class GLFW {
         }
     }
 
-    public @nullable PointerBuffer glfwGetRequiredInstanceExtensions(
-            @nullable @unsigned IntBuffer count
+    public @Nullable PointerBuffer glfwGetRequiredInstanceExtensions(
+            @Nullable @unsigned IntBuffer count
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetRequiredInstanceExtensions.invokeExact(
@@ -1620,8 +1622,8 @@ public final class GLFW {
     }
 
     public @pointer(comment="GLFWvkproc") MemorySegment glfwGetInstanceProcAddress(
-            @nullable VkInstance instance,
-            @nullable ByteBuffer procname
+            @Nullable VkInstance instance,
+            @Nullable ByteBuffer procname
     ) {
         try {
             return (MemorySegment) HANDLE$glfwGetInstanceProcAddress.invokeExact(
@@ -1634,8 +1636,8 @@ public final class GLFW {
     }
 
     public int glfwGetPhysicalDevicePresentationSupport(
-            @nullable VkInstance instance,
-            @nullable VkPhysicalDevice device,
+            @Nullable VkInstance instance,
+            @Nullable VkPhysicalDevice device,
             @unsigned int queuefamily
     ) {
         try {
@@ -1649,11 +1651,11 @@ public final class GLFW {
         }
     }
 
-    public int glfwCreateWindowSurface(
-            @nullable VkInstance instance,
-            @nullable GLFWwindow window,
-            @nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks allocator,
-            @nullable @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer surface
+    public @enumtype(VkResult.class) int glfwCreateWindowSurface(
+            @Nullable VkInstance instance,
+            @Nullable GLFWwindow window,
+            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks allocator,
+            @Nullable @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer surface
     ) {
         try {
             return (int) HANDLE$glfwCreateWindowSurface.invokeExact(
@@ -1667,8 +1669,8 @@ public final class GLFW {
         }
     }
 
-    public @nullable ByteBuffer glfwGetWin32Adapter(
-            @nullable GLFWmonitor monitor
+    public @Nullable ByteBuffer glfwGetWin32Adapter(
+            @Nullable GLFWmonitor monitor
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetWin32Adapter.invokeExact(
@@ -1680,8 +1682,8 @@ public final class GLFW {
         }
     }
 
-    public @nullable ByteBuffer glfwGetWin32Monitor(
-            @nullable GLFWmonitor monitor
+    public @Nullable ByteBuffer glfwGetWin32Monitor(
+            @Nullable GLFWmonitor monitor
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetWin32Monitor.invokeExact(
@@ -1694,7 +1696,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="void*") MemorySegment glfwGetWin32Window(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             return (MemorySegment) HANDLE$glfwGetWin32Window.invokeExact(
@@ -1706,7 +1708,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="void*") MemorySegment glfwGetWGLContext(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             return (MemorySegment) HANDLE$glfwGetWGLContext.invokeExact(
@@ -1718,7 +1720,7 @@ public final class GLFW {
     }
 
     public @unsigned int glfwGetCocoaMonitor(
-            @nullable GLFWmonitor monitor
+            @Nullable GLFWmonitor monitor
     ) {
         try {
             return (int) HANDLE$glfwGetCocoaMonitor.invokeExact(
@@ -1730,7 +1732,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="void*") MemorySegment glfwGetCocoaWindow(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             return (MemorySegment) HANDLE$glfwGetCocoaWindow.invokeExact(
@@ -1742,7 +1744,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="void*") MemorySegment glfwGetCocoaView(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             return (MemorySegment) HANDLE$glfwGetCocoaView.invokeExact(
@@ -1754,7 +1756,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="void*") MemorySegment glfwGetNSGLContext(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             return (MemorySegment) HANDLE$glfwGetNSGLContext.invokeExact(
@@ -1765,7 +1767,7 @@ public final class GLFW {
         }
     }
 
-    public @nullable PointerBuffer glfwGetX11Display() {
+    public @Nullable PointerBuffer glfwGetX11Display() {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetX11Display.invokeExact();
             return s.address() == 0 ? null : new PointerBuffer(s);
@@ -1775,7 +1777,7 @@ public final class GLFW {
     }
 
     public long glfwGetX11Adapter(
-            @nullable GLFWmonitor monitor
+            @Nullable GLFWmonitor monitor
     ) {
         try {
             return (long) HANDLE$glfwGetX11Adapter.invokeExact(
@@ -1787,7 +1789,7 @@ public final class GLFW {
     }
 
     public long glfwGetX11Monitor(
-            @nullable GLFWmonitor monitor
+            @Nullable GLFWmonitor monitor
     ) {
         try {
             return (long) HANDLE$glfwGetX11Monitor.invokeExact(
@@ -1799,7 +1801,7 @@ public final class GLFW {
     }
 
     public long glfwGetX11Window(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             return (long) HANDLE$glfwGetX11Window.invokeExact(
@@ -1811,7 +1813,7 @@ public final class GLFW {
     }
 
     public void glfwSetX11SelectionString(
-            @nullable ByteBuffer string
+            @Nullable ByteBuffer string
     ) {
         try {
             HANDLE$glfwSetX11SelectionString.invokeExact(
@@ -1822,7 +1824,7 @@ public final class GLFW {
         }
     }
 
-    public @nullable ByteBuffer glfwGetX11SelectionString() {
+    public @Nullable ByteBuffer glfwGetX11SelectionString() {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetX11SelectionString.invokeExact();
             return s.address() == 0 ? null : new ByteBuffer(s);
@@ -1832,7 +1834,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="void*") MemorySegment glfwGetGLXContext(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             return (MemorySegment) HANDLE$glfwGetGLXContext.invokeExact(
@@ -1844,7 +1846,7 @@ public final class GLFW {
     }
 
     public long glfwGetGLXWindow(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             return (long) HANDLE$glfwGetGLXWindow.invokeExact(
@@ -1855,7 +1857,7 @@ public final class GLFW {
         }
     }
 
-    public @nullable PointerBuffer glfwGetWaylandDisplay() {
+    public @Nullable PointerBuffer glfwGetWaylandDisplay() {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetWaylandDisplay.invokeExact();
             return s.address() == 0 ? null : new PointerBuffer(s);
@@ -1865,7 +1867,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="void*") MemorySegment glfwGetWaylandMonitor(
-            @nullable GLFWmonitor monitor
+            @Nullable GLFWmonitor monitor
     ) {
         try {
             return (MemorySegment) HANDLE$glfwGetWaylandMonitor.invokeExact(
@@ -1876,8 +1878,8 @@ public final class GLFW {
         }
     }
 
-    public @nullable PointerBuffer glfwGetWaylandWindow(
-            @nullable GLFWwindow window
+    public @Nullable PointerBuffer glfwGetWaylandWindow(
+            @Nullable GLFWwindow window
     ) {
         try {
             MemorySegment s = (MemorySegment) HANDLE$glfwGetWaylandWindow.invokeExact(
@@ -1898,7 +1900,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="void*") MemorySegment glfwGetEGLContext(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             return (MemorySegment) HANDLE$glfwGetEGLContext.invokeExact(
@@ -1910,7 +1912,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="void*") MemorySegment glfwGetEGLSurface(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             return (MemorySegment) HANDLE$glfwGetEGLSurface.invokeExact(
@@ -1922,11 +1924,11 @@ public final class GLFW {
     }
 
     public int glfwGetOSMesaColorBuffer(
-            @nullable GLFWwindow window,
-            @nullable IntBuffer width,
-            @nullable IntBuffer height,
-            @nullable IntBuffer format,
-            @nullable PointerBuffer buffer
+            @Nullable GLFWwindow window,
+            @Nullable IntBuffer width,
+            @Nullable IntBuffer height,
+            @Nullable IntBuffer format,
+            @Nullable PointerBuffer buffer
     ) {
         try {
             return (int) HANDLE$glfwGetOSMesaColorBuffer.invokeExact(
@@ -1942,11 +1944,11 @@ public final class GLFW {
     }
 
     public int glfwGetOSMesaDepthBuffer(
-            @nullable GLFWwindow window,
-            @nullable IntBuffer width,
-            @nullable IntBuffer height,
-            @nullable IntBuffer bytesPerValue,
-            @nullable PointerBuffer buffer
+            @Nullable GLFWwindow window,
+            @Nullable IntBuffer width,
+            @Nullable IntBuffer height,
+            @Nullable IntBuffer bytesPerValue,
+            @Nullable PointerBuffer buffer
     ) {
         try {
             return (int) HANDLE$glfwGetOSMesaDepthBuffer.invokeExact(
@@ -1962,7 +1964,7 @@ public final class GLFW {
     }
 
     public @pointer(comment="void*") MemorySegment glfwGetOSMesaContext(
-            @nullable GLFWwindow window
+            @Nullable GLFWwindow window
     ) {
         try {
             return (MemorySegment) HANDLE$glfwGetOSMesaContext.invokeExact(
@@ -2601,305 +2603,305 @@ public final class GLFW {
             ValueLayout.ADDRESS
     );
 
-    public final @nullable MemorySegment SEGMENT$glfwInit;
-    public final @nullable MemorySegment SEGMENT$glfwTerminate;
-    public final @nullable MemorySegment SEGMENT$glfwInitHint;
-    public final @nullable MemorySegment SEGMENT$glfwInitAllocator;
-    public final @nullable MemorySegment SEGMENT$glfwInitVulkanLoader;
-    public final @nullable MemorySegment SEGMENT$glfwGetVersion;
-    public final @nullable MemorySegment SEGMENT$glfwGetVersionString;
-    public final @nullable MemorySegment SEGMENT$glfwGetError;
-    public final @nullable MemorySegment SEGMENT$glfwSetErrorCallback;
-    public final @nullable MemorySegment SEGMENT$glfwGetPlatform;
-    public final @nullable MemorySegment SEGMENT$glfwPlatformSupported;
-    public final @nullable MemorySegment SEGMENT$glfwGetMonitors;
-    public final @nullable MemorySegment SEGMENT$glfwGetPrimaryMonitor;
-    public final @nullable MemorySegment SEGMENT$glfwGetMonitorPos;
-    public final @nullable MemorySegment SEGMENT$glfwGetMonitorWorkarea;
-    public final @nullable MemorySegment SEGMENT$glfwGetMonitorPhysicalSize;
-    public final @nullable MemorySegment SEGMENT$glfwGetMonitorContentScale;
-    public final @nullable MemorySegment SEGMENT$glfwGetMonitorName;
-    public final @nullable MemorySegment SEGMENT$glfwSetMonitorUserPointer;
-    public final @nullable MemorySegment SEGMENT$glfwGetMonitorUserPointer;
-    public final @nullable MemorySegment SEGMENT$glfwSetMonitorCallback;
-    public final @nullable MemorySegment SEGMENT$glfwGetVideoModes;
-    public final @nullable MemorySegment SEGMENT$glfwGetVideoMode;
-    public final @nullable MemorySegment SEGMENT$glfwSetGamma;
-    public final @nullable MemorySegment SEGMENT$glfwGetGammaRamp;
-    public final @nullable MemorySegment SEGMENT$glfwSetGammaRamp;
-    public final @nullable MemorySegment SEGMENT$glfwDefaultWindowHints;
-    public final @nullable MemorySegment SEGMENT$glfwWindowHint;
-    public final @nullable MemorySegment SEGMENT$glfwWindowHintString;
-    public final @nullable MemorySegment SEGMENT$glfwCreateWindow;
-    public final @nullable MemorySegment SEGMENT$glfwDestroyWindow;
-    public final @nullable MemorySegment SEGMENT$glfwWindowShouldClose;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowShouldClose;
-    public final @nullable MemorySegment SEGMENT$glfwGetWindowTitle;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowTitle;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowIcon;
-    public final @nullable MemorySegment SEGMENT$glfwGetWindowPos;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowPos;
-    public final @nullable MemorySegment SEGMENT$glfwGetWindowSize;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowSizeLimits;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowAspectRatio;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowSize;
-    public final @nullable MemorySegment SEGMENT$glfwGetFramebufferSize;
-    public final @nullable MemorySegment SEGMENT$glfwGetWindowFrameSize;
-    public final @nullable MemorySegment SEGMENT$glfwGetWindowContentScale;
-    public final @nullable MemorySegment SEGMENT$glfwGetWindowOpacity;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowOpacity;
-    public final @nullable MemorySegment SEGMENT$glfwIconifyWindow;
-    public final @nullable MemorySegment SEGMENT$glfwRestoreWindow;
-    public final @nullable MemorySegment SEGMENT$glfwMaximizeWindow;
-    public final @nullable MemorySegment SEGMENT$glfwShowWindow;
-    public final @nullable MemorySegment SEGMENT$glfwHideWindow;
-    public final @nullable MemorySegment SEGMENT$glfwFocusWindow;
-    public final @nullable MemorySegment SEGMENT$glfwRequestWindowAttention;
-    public final @nullable MemorySegment SEGMENT$glfwGetWindowMonitor;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowMonitor;
-    public final @nullable MemorySegment SEGMENT$glfwGetWindowAttrib;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowAttrib;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowUserPointer;
-    public final @nullable MemorySegment SEGMENT$glfwGetWindowUserPointer;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowPosCallback;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowSizeCallback;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowCloseCallback;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowRefreshCallback;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowFocusCallback;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowIconifyCallback;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowMaximizeCallback;
-    public final @nullable MemorySegment SEGMENT$glfwSetFramebufferSizeCallback;
-    public final @nullable MemorySegment SEGMENT$glfwSetWindowContentScaleCallback;
-    public final @nullable MemorySegment SEGMENT$glfwPollEvents;
-    public final @nullable MemorySegment SEGMENT$glfwWaitEvents;
-    public final @nullable MemorySegment SEGMENT$glfwWaitEventsTimeout;
-    public final @nullable MemorySegment SEGMENT$glfwPostEmptyEvent;
-    public final @nullable MemorySegment SEGMENT$glfwGetInputMode;
-    public final @nullable MemorySegment SEGMENT$glfwSetInputMode;
-    public final @nullable MemorySegment SEGMENT$glfwRawMouseMotionSupported;
-    public final @nullable MemorySegment SEGMENT$glfwGetKeyName;
-    public final @nullable MemorySegment SEGMENT$glfwGetKeyScancode;
-    public final @nullable MemorySegment SEGMENT$glfwGetKey;
-    public final @nullable MemorySegment SEGMENT$glfwGetMouseButton;
-    public final @nullable MemorySegment SEGMENT$glfwGetCursorPos;
-    public final @nullable MemorySegment SEGMENT$glfwSetCursorPos;
-    public final @nullable MemorySegment SEGMENT$glfwCreateCursor;
-    public final @nullable MemorySegment SEGMENT$glfwCreateStandardCursor;
-    public final @nullable MemorySegment SEGMENT$glfwDestroyCursor;
-    public final @nullable MemorySegment SEGMENT$glfwSetCursor;
-    public final @nullable MemorySegment SEGMENT$glfwSetKeyCallback;
-    public final @nullable MemorySegment SEGMENT$glfwSetCharCallback;
-    public final @nullable MemorySegment SEGMENT$glfwSetCharModsCallback;
-    public final @nullable MemorySegment SEGMENT$glfwSetMouseButtonCallback;
-    public final @nullable MemorySegment SEGMENT$glfwSetCursorPosCallback;
-    public final @nullable MemorySegment SEGMENT$glfwSetCursorEnterCallback;
-    public final @nullable MemorySegment SEGMENT$glfwSetScrollCallback;
-    public final @nullable MemorySegment SEGMENT$glfwSetDropCallback;
-    public final @nullable MemorySegment SEGMENT$glfwJoystickPresent;
-    public final @nullable MemorySegment SEGMENT$glfwGetJoystickAxes;
-    public final @nullable MemorySegment SEGMENT$glfwGetJoystickButtons;
-    public final @nullable MemorySegment SEGMENT$glfwGetJoystickHats;
-    public final @nullable MemorySegment SEGMENT$glfwGetJoystickName;
-    public final @nullable MemorySegment SEGMENT$glfwGetJoystickGUID;
-    public final @nullable MemorySegment SEGMENT$glfwSetJoystickUserPointer;
-    public final @nullable MemorySegment SEGMENT$glfwGetJoystickUserPointer;
-    public final @nullable MemorySegment SEGMENT$glfwJoystickIsGamepad;
-    public final @nullable MemorySegment SEGMENT$glfwSetJoystickCallback;
-    public final @nullable MemorySegment SEGMENT$glfwUpdateGamepadMappings;
-    public final @nullable MemorySegment SEGMENT$glfwGetGamepadName;
-    public final @nullable MemorySegment SEGMENT$glfwGetGamepadState;
-    public final @nullable MemorySegment SEGMENT$glfwSetClipboardString;
-    public final @nullable MemorySegment SEGMENT$glfwGetClipboardString;
-    public final @nullable MemorySegment SEGMENT$glfwGetTime;
-    public final @nullable MemorySegment SEGMENT$glfwSetTime;
-    public final @nullable MemorySegment SEGMENT$glfwGetTimerValue;
-    public final @nullable MemorySegment SEGMENT$glfwGetTimerFrequency;
-    public final @nullable MemorySegment SEGMENT$glfwMakeContextCurrent;
-    public final @nullable MemorySegment SEGMENT$glfwGetCurrentContext;
-    public final @nullable MemorySegment SEGMENT$glfwSwapBuffers;
-    public final @nullable MemorySegment SEGMENT$glfwSwapInterval;
-    public final @nullable MemorySegment SEGMENT$glfwExtensionSupported;
-    public final @nullable MemorySegment SEGMENT$glfwGetProcAddress;
-    public final @nullable MemorySegment SEGMENT$glfwVulkanSupported;
-    public final @nullable MemorySegment SEGMENT$glfwGetRequiredInstanceExtensions;
-    public final @nullable MemorySegment SEGMENT$glfwGetInstanceProcAddress;
-    public final @nullable MemorySegment SEGMENT$glfwGetPhysicalDevicePresentationSupport;
-    public final @nullable MemorySegment SEGMENT$glfwCreateWindowSurface;
-    public final @nullable MemorySegment SEGMENT$glfwGetWin32Adapter;
-    public final @nullable MemorySegment SEGMENT$glfwGetWin32Monitor;
-    public final @nullable MemorySegment SEGMENT$glfwGetWin32Window;
-    public final @nullable MemorySegment SEGMENT$glfwGetWGLContext;
-    public final @nullable MemorySegment SEGMENT$glfwGetCocoaMonitor;
-    public final @nullable MemorySegment SEGMENT$glfwGetCocoaWindow;
-    public final @nullable MemorySegment SEGMENT$glfwGetCocoaView;
-    public final @nullable MemorySegment SEGMENT$glfwGetNSGLContext;
-    public final @nullable MemorySegment SEGMENT$glfwGetX11Display;
-    public final @nullable MemorySegment SEGMENT$glfwGetX11Adapter;
-    public final @nullable MemorySegment SEGMENT$glfwGetX11Monitor;
-    public final @nullable MemorySegment SEGMENT$glfwGetX11Window;
-    public final @nullable MemorySegment SEGMENT$glfwSetX11SelectionString;
-    public final @nullable MemorySegment SEGMENT$glfwGetX11SelectionString;
-    public final @nullable MemorySegment SEGMENT$glfwGetGLXContext;
-    public final @nullable MemorySegment SEGMENT$glfwGetGLXWindow;
-    public final @nullable MemorySegment SEGMENT$glfwGetWaylandDisplay;
-    public final @nullable MemorySegment SEGMENT$glfwGetWaylandMonitor;
-    public final @nullable MemorySegment SEGMENT$glfwGetWaylandWindow;
-    public final @nullable MemorySegment SEGMENT$glfwGetEGLDisplay;
-    public final @nullable MemorySegment SEGMENT$glfwGetEGLContext;
-    public final @nullable MemorySegment SEGMENT$glfwGetEGLSurface;
-    public final @nullable MemorySegment SEGMENT$glfwGetOSMesaColorBuffer;
-    public final @nullable MemorySegment SEGMENT$glfwGetOSMesaDepthBuffer;
-    public final @nullable MemorySegment SEGMENT$glfwGetOSMesaContext;
+    public final @Nullable MemorySegment SEGMENT$glfwInit;
+    public final @Nullable MemorySegment SEGMENT$glfwTerminate;
+    public final @Nullable MemorySegment SEGMENT$glfwInitHint;
+    public final @Nullable MemorySegment SEGMENT$glfwInitAllocator;
+    public final @Nullable MemorySegment SEGMENT$glfwInitVulkanLoader;
+    public final @Nullable MemorySegment SEGMENT$glfwGetVersion;
+    public final @Nullable MemorySegment SEGMENT$glfwGetVersionString;
+    public final @Nullable MemorySegment SEGMENT$glfwGetError;
+    public final @Nullable MemorySegment SEGMENT$glfwSetErrorCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwGetPlatform;
+    public final @Nullable MemorySegment SEGMENT$glfwPlatformSupported;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMonitors;
+    public final @Nullable MemorySegment SEGMENT$glfwGetPrimaryMonitor;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorPos;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorWorkarea;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorPhysicalSize;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorContentScale;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorName;
+    public final @Nullable MemorySegment SEGMENT$glfwSetMonitorUserPointer;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorUserPointer;
+    public final @Nullable MemorySegment SEGMENT$glfwSetMonitorCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwGetVideoModes;
+    public final @Nullable MemorySegment SEGMENT$glfwGetVideoMode;
+    public final @Nullable MemorySegment SEGMENT$glfwSetGamma;
+    public final @Nullable MemorySegment SEGMENT$glfwGetGammaRamp;
+    public final @Nullable MemorySegment SEGMENT$glfwSetGammaRamp;
+    public final @Nullable MemorySegment SEGMENT$glfwDefaultWindowHints;
+    public final @Nullable MemorySegment SEGMENT$glfwWindowHint;
+    public final @Nullable MemorySegment SEGMENT$glfwWindowHintString;
+    public final @Nullable MemorySegment SEGMENT$glfwCreateWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwDestroyWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwWindowShouldClose;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowShouldClose;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowTitle;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowTitle;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowIcon;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowPos;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowPos;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowSize;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowSizeLimits;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowAspectRatio;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowSize;
+    public final @Nullable MemorySegment SEGMENT$glfwGetFramebufferSize;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowFrameSize;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowContentScale;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowOpacity;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowOpacity;
+    public final @Nullable MemorySegment SEGMENT$glfwIconifyWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwRestoreWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwMaximizeWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwShowWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwHideWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwFocusWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwRequestWindowAttention;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowMonitor;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowMonitor;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowAttrib;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowAttrib;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowUserPointer;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowUserPointer;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowPosCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowSizeCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowCloseCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowRefreshCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowFocusCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowIconifyCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowMaximizeCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetFramebufferSizeCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowContentScaleCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwPollEvents;
+    public final @Nullable MemorySegment SEGMENT$glfwWaitEvents;
+    public final @Nullable MemorySegment SEGMENT$glfwWaitEventsTimeout;
+    public final @Nullable MemorySegment SEGMENT$glfwPostEmptyEvent;
+    public final @Nullable MemorySegment SEGMENT$glfwGetInputMode;
+    public final @Nullable MemorySegment SEGMENT$glfwSetInputMode;
+    public final @Nullable MemorySegment SEGMENT$glfwRawMouseMotionSupported;
+    public final @Nullable MemorySegment SEGMENT$glfwGetKeyName;
+    public final @Nullable MemorySegment SEGMENT$glfwGetKeyScancode;
+    public final @Nullable MemorySegment SEGMENT$glfwGetKey;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMouseButton;
+    public final @Nullable MemorySegment SEGMENT$glfwGetCursorPos;
+    public final @Nullable MemorySegment SEGMENT$glfwSetCursorPos;
+    public final @Nullable MemorySegment SEGMENT$glfwCreateCursor;
+    public final @Nullable MemorySegment SEGMENT$glfwCreateStandardCursor;
+    public final @Nullable MemorySegment SEGMENT$glfwDestroyCursor;
+    public final @Nullable MemorySegment SEGMENT$glfwSetCursor;
+    public final @Nullable MemorySegment SEGMENT$glfwSetKeyCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetCharCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetCharModsCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetMouseButtonCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetCursorPosCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetCursorEnterCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetScrollCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetDropCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwJoystickPresent;
+    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickAxes;
+    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickButtons;
+    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickHats;
+    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickName;
+    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickGUID;
+    public final @Nullable MemorySegment SEGMENT$glfwSetJoystickUserPointer;
+    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickUserPointer;
+    public final @Nullable MemorySegment SEGMENT$glfwJoystickIsGamepad;
+    public final @Nullable MemorySegment SEGMENT$glfwSetJoystickCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwUpdateGamepadMappings;
+    public final @Nullable MemorySegment SEGMENT$glfwGetGamepadName;
+    public final @Nullable MemorySegment SEGMENT$glfwGetGamepadState;
+    public final @Nullable MemorySegment SEGMENT$glfwSetClipboardString;
+    public final @Nullable MemorySegment SEGMENT$glfwGetClipboardString;
+    public final @Nullable MemorySegment SEGMENT$glfwGetTime;
+    public final @Nullable MemorySegment SEGMENT$glfwSetTime;
+    public final @Nullable MemorySegment SEGMENT$glfwGetTimerValue;
+    public final @Nullable MemorySegment SEGMENT$glfwGetTimerFrequency;
+    public final @Nullable MemorySegment SEGMENT$glfwMakeContextCurrent;
+    public final @Nullable MemorySegment SEGMENT$glfwGetCurrentContext;
+    public final @Nullable MemorySegment SEGMENT$glfwSwapBuffers;
+    public final @Nullable MemorySegment SEGMENT$glfwSwapInterval;
+    public final @Nullable MemorySegment SEGMENT$glfwExtensionSupported;
+    public final @Nullable MemorySegment SEGMENT$glfwGetProcAddress;
+    public final @Nullable MemorySegment SEGMENT$glfwVulkanSupported;
+    public final @Nullable MemorySegment SEGMENT$glfwGetRequiredInstanceExtensions;
+    public final @Nullable MemorySegment SEGMENT$glfwGetInstanceProcAddress;
+    public final @Nullable MemorySegment SEGMENT$glfwGetPhysicalDevicePresentationSupport;
+    public final @Nullable MemorySegment SEGMENT$glfwCreateWindowSurface;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWin32Adapter;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWin32Monitor;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWin32Window;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWGLContext;
+    public final @Nullable MemorySegment SEGMENT$glfwGetCocoaMonitor;
+    public final @Nullable MemorySegment SEGMENT$glfwGetCocoaWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwGetCocoaView;
+    public final @Nullable MemorySegment SEGMENT$glfwGetNSGLContext;
+    public final @Nullable MemorySegment SEGMENT$glfwGetX11Display;
+    public final @Nullable MemorySegment SEGMENT$glfwGetX11Adapter;
+    public final @Nullable MemorySegment SEGMENT$glfwGetX11Monitor;
+    public final @Nullable MemorySegment SEGMENT$glfwGetX11Window;
+    public final @Nullable MemorySegment SEGMENT$glfwSetX11SelectionString;
+    public final @Nullable MemorySegment SEGMENT$glfwGetX11SelectionString;
+    public final @Nullable MemorySegment SEGMENT$glfwGetGLXContext;
+    public final @Nullable MemorySegment SEGMENT$glfwGetGLXWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWaylandDisplay;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWaylandMonitor;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWaylandWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwGetEGLDisplay;
+    public final @Nullable MemorySegment SEGMENT$glfwGetEGLContext;
+    public final @Nullable MemorySegment SEGMENT$glfwGetEGLSurface;
+    public final @Nullable MemorySegment SEGMENT$glfwGetOSMesaColorBuffer;
+    public final @Nullable MemorySegment SEGMENT$glfwGetOSMesaDepthBuffer;
+    public final @Nullable MemorySegment SEGMENT$glfwGetOSMesaContext;
 
-    public final @nullable MethodHandle HANDLE$glfwInit;
-    public final @nullable MethodHandle HANDLE$glfwTerminate;
-    public final @nullable MethodHandle HANDLE$glfwInitHint;
-    public final @nullable MethodHandle HANDLE$glfwInitAllocator;
-    public final @nullable MethodHandle HANDLE$glfwInitVulkanLoader;
-    public final @nullable MethodHandle HANDLE$glfwGetVersion;
-    public final @nullable MethodHandle HANDLE$glfwGetVersionString;
-    public final @nullable MethodHandle HANDLE$glfwGetError;
-    public final @nullable MethodHandle HANDLE$glfwSetErrorCallback;
-    public final @nullable MethodHandle HANDLE$glfwGetPlatform;
-    public final @nullable MethodHandle HANDLE$glfwPlatformSupported;
-    public final @nullable MethodHandle HANDLE$glfwGetMonitors;
-    public final @nullable MethodHandle HANDLE$glfwGetPrimaryMonitor;
-    public final @nullable MethodHandle HANDLE$glfwGetMonitorPos;
-    public final @nullable MethodHandle HANDLE$glfwGetMonitorWorkarea;
-    public final @nullable MethodHandle HANDLE$glfwGetMonitorPhysicalSize;
-    public final @nullable MethodHandle HANDLE$glfwGetMonitorContentScale;
-    public final @nullable MethodHandle HANDLE$glfwGetMonitorName;
-    public final @nullable MethodHandle HANDLE$glfwSetMonitorUserPointer;
-    public final @nullable MethodHandle HANDLE$glfwGetMonitorUserPointer;
-    public final @nullable MethodHandle HANDLE$glfwSetMonitorCallback;
-    public final @nullable MethodHandle HANDLE$glfwGetVideoModes;
-    public final @nullable MethodHandle HANDLE$glfwGetVideoMode;
-    public final @nullable MethodHandle HANDLE$glfwSetGamma;
-    public final @nullable MethodHandle HANDLE$glfwGetGammaRamp;
-    public final @nullable MethodHandle HANDLE$glfwSetGammaRamp;
-    public final @nullable MethodHandle HANDLE$glfwDefaultWindowHints;
-    public final @nullable MethodHandle HANDLE$glfwWindowHint;
-    public final @nullable MethodHandle HANDLE$glfwWindowHintString;
-    public final @nullable MethodHandle HANDLE$glfwCreateWindow;
-    public final @nullable MethodHandle HANDLE$glfwDestroyWindow;
-    public final @nullable MethodHandle HANDLE$glfwWindowShouldClose;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowShouldClose;
-    public final @nullable MethodHandle HANDLE$glfwGetWindowTitle;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowTitle;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowIcon;
-    public final @nullable MethodHandle HANDLE$glfwGetWindowPos;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowPos;
-    public final @nullable MethodHandle HANDLE$glfwGetWindowSize;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowSizeLimits;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowAspectRatio;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowSize;
-    public final @nullable MethodHandle HANDLE$glfwGetFramebufferSize;
-    public final @nullable MethodHandle HANDLE$glfwGetWindowFrameSize;
-    public final @nullable MethodHandle HANDLE$glfwGetWindowContentScale;
-    public final @nullable MethodHandle HANDLE$glfwGetWindowOpacity;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowOpacity;
-    public final @nullable MethodHandle HANDLE$glfwIconifyWindow;
-    public final @nullable MethodHandle HANDLE$glfwRestoreWindow;
-    public final @nullable MethodHandle HANDLE$glfwMaximizeWindow;
-    public final @nullable MethodHandle HANDLE$glfwShowWindow;
-    public final @nullable MethodHandle HANDLE$glfwHideWindow;
-    public final @nullable MethodHandle HANDLE$glfwFocusWindow;
-    public final @nullable MethodHandle HANDLE$glfwRequestWindowAttention;
-    public final @nullable MethodHandle HANDLE$glfwGetWindowMonitor;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowMonitor;
-    public final @nullable MethodHandle HANDLE$glfwGetWindowAttrib;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowAttrib;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowUserPointer;
-    public final @nullable MethodHandle HANDLE$glfwGetWindowUserPointer;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowPosCallback;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowSizeCallback;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowCloseCallback;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowRefreshCallback;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowFocusCallback;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowIconifyCallback;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowMaximizeCallback;
-    public final @nullable MethodHandle HANDLE$glfwSetFramebufferSizeCallback;
-    public final @nullable MethodHandle HANDLE$glfwSetWindowContentScaleCallback;
-    public final @nullable MethodHandle HANDLE$glfwPollEvents;
-    public final @nullable MethodHandle HANDLE$glfwWaitEvents;
-    public final @nullable MethodHandle HANDLE$glfwWaitEventsTimeout;
-    public final @nullable MethodHandle HANDLE$glfwPostEmptyEvent;
-    public final @nullable MethodHandle HANDLE$glfwGetInputMode;
-    public final @nullable MethodHandle HANDLE$glfwSetInputMode;
-    public final @nullable MethodHandle HANDLE$glfwRawMouseMotionSupported;
-    public final @nullable MethodHandle HANDLE$glfwGetKeyName;
-    public final @nullable MethodHandle HANDLE$glfwGetKeyScancode;
-    public final @nullable MethodHandle HANDLE$glfwGetKey;
-    public final @nullable MethodHandle HANDLE$glfwGetMouseButton;
-    public final @nullable MethodHandle HANDLE$glfwGetCursorPos;
-    public final @nullable MethodHandle HANDLE$glfwSetCursorPos;
-    public final @nullable MethodHandle HANDLE$glfwCreateCursor;
-    public final @nullable MethodHandle HANDLE$glfwCreateStandardCursor;
-    public final @nullable MethodHandle HANDLE$glfwDestroyCursor;
-    public final @nullable MethodHandle HANDLE$glfwSetCursor;
-    public final @nullable MethodHandle HANDLE$glfwSetKeyCallback;
-    public final @nullable MethodHandle HANDLE$glfwSetCharCallback;
-    public final @nullable MethodHandle HANDLE$glfwSetCharModsCallback;
-    public final @nullable MethodHandle HANDLE$glfwSetMouseButtonCallback;
-    public final @nullable MethodHandle HANDLE$glfwSetCursorPosCallback;
-    public final @nullable MethodHandle HANDLE$glfwSetCursorEnterCallback;
-    public final @nullable MethodHandle HANDLE$glfwSetScrollCallback;
-    public final @nullable MethodHandle HANDLE$glfwSetDropCallback;
-    public final @nullable MethodHandle HANDLE$glfwJoystickPresent;
-    public final @nullable MethodHandle HANDLE$glfwGetJoystickAxes;
-    public final @nullable MethodHandle HANDLE$glfwGetJoystickButtons;
-    public final @nullable MethodHandle HANDLE$glfwGetJoystickHats;
-    public final @nullable MethodHandle HANDLE$glfwGetJoystickName;
-    public final @nullable MethodHandle HANDLE$glfwGetJoystickGUID;
-    public final @nullable MethodHandle HANDLE$glfwSetJoystickUserPointer;
-    public final @nullable MethodHandle HANDLE$glfwGetJoystickUserPointer;
-    public final @nullable MethodHandle HANDLE$glfwJoystickIsGamepad;
-    public final @nullable MethodHandle HANDLE$glfwSetJoystickCallback;
-    public final @nullable MethodHandle HANDLE$glfwUpdateGamepadMappings;
-    public final @nullable MethodHandle HANDLE$glfwGetGamepadName;
-    public final @nullable MethodHandle HANDLE$glfwGetGamepadState;
-    public final @nullable MethodHandle HANDLE$glfwSetClipboardString;
-    public final @nullable MethodHandle HANDLE$glfwGetClipboardString;
-    public final @nullable MethodHandle HANDLE$glfwGetTime;
-    public final @nullable MethodHandle HANDLE$glfwSetTime;
-    public final @nullable MethodHandle HANDLE$glfwGetTimerValue;
-    public final @nullable MethodHandle HANDLE$glfwGetTimerFrequency;
-    public final @nullable MethodHandle HANDLE$glfwMakeContextCurrent;
-    public final @nullable MethodHandle HANDLE$glfwGetCurrentContext;
-    public final @nullable MethodHandle HANDLE$glfwSwapBuffers;
-    public final @nullable MethodHandle HANDLE$glfwSwapInterval;
-    public final @nullable MethodHandle HANDLE$glfwExtensionSupported;
-    public final @nullable MethodHandle HANDLE$glfwGetProcAddress;
-    public final @nullable MethodHandle HANDLE$glfwVulkanSupported;
-    public final @nullable MethodHandle HANDLE$glfwGetRequiredInstanceExtensions;
-    public final @nullable MethodHandle HANDLE$glfwGetInstanceProcAddress;
-    public final @nullable MethodHandle HANDLE$glfwGetPhysicalDevicePresentationSupport;
-    public final @nullable MethodHandle HANDLE$glfwCreateWindowSurface;
-    public final @nullable MethodHandle HANDLE$glfwGetWin32Adapter;
-    public final @nullable MethodHandle HANDLE$glfwGetWin32Monitor;
-    public final @nullable MethodHandle HANDLE$glfwGetWin32Window;
-    public final @nullable MethodHandle HANDLE$glfwGetWGLContext;
-    public final @nullable MethodHandle HANDLE$glfwGetCocoaMonitor;
-    public final @nullable MethodHandle HANDLE$glfwGetCocoaWindow;
-    public final @nullable MethodHandle HANDLE$glfwGetCocoaView;
-    public final @nullable MethodHandle HANDLE$glfwGetNSGLContext;
-    public final @nullable MethodHandle HANDLE$glfwGetX11Display;
-    public final @nullable MethodHandle HANDLE$glfwGetX11Adapter;
-    public final @nullable MethodHandle HANDLE$glfwGetX11Monitor;
-    public final @nullable MethodHandle HANDLE$glfwGetX11Window;
-    public final @nullable MethodHandle HANDLE$glfwSetX11SelectionString;
-    public final @nullable MethodHandle HANDLE$glfwGetX11SelectionString;
-    public final @nullable MethodHandle HANDLE$glfwGetGLXContext;
-    public final @nullable MethodHandle HANDLE$glfwGetGLXWindow;
-    public final @nullable MethodHandle HANDLE$glfwGetWaylandDisplay;
-    public final @nullable MethodHandle HANDLE$glfwGetWaylandMonitor;
-    public final @nullable MethodHandle HANDLE$glfwGetWaylandWindow;
-    public final @nullable MethodHandle HANDLE$glfwGetEGLDisplay;
-    public final @nullable MethodHandle HANDLE$glfwGetEGLContext;
-    public final @nullable MethodHandle HANDLE$glfwGetEGLSurface;
-    public final @nullable MethodHandle HANDLE$glfwGetOSMesaColorBuffer;
-    public final @nullable MethodHandle HANDLE$glfwGetOSMesaDepthBuffer;
-    public final @nullable MethodHandle HANDLE$glfwGetOSMesaContext;
+    public final @Nullable MethodHandle HANDLE$glfwInit;
+    public final @Nullable MethodHandle HANDLE$glfwTerminate;
+    public final @Nullable MethodHandle HANDLE$glfwInitHint;
+    public final @Nullable MethodHandle HANDLE$glfwInitAllocator;
+    public final @Nullable MethodHandle HANDLE$glfwInitVulkanLoader;
+    public final @Nullable MethodHandle HANDLE$glfwGetVersion;
+    public final @Nullable MethodHandle HANDLE$glfwGetVersionString;
+    public final @Nullable MethodHandle HANDLE$glfwGetError;
+    public final @Nullable MethodHandle HANDLE$glfwSetErrorCallback;
+    public final @Nullable MethodHandle HANDLE$glfwGetPlatform;
+    public final @Nullable MethodHandle HANDLE$glfwPlatformSupported;
+    public final @Nullable MethodHandle HANDLE$glfwGetMonitors;
+    public final @Nullable MethodHandle HANDLE$glfwGetPrimaryMonitor;
+    public final @Nullable MethodHandle HANDLE$glfwGetMonitorPos;
+    public final @Nullable MethodHandle HANDLE$glfwGetMonitorWorkarea;
+    public final @Nullable MethodHandle HANDLE$glfwGetMonitorPhysicalSize;
+    public final @Nullable MethodHandle HANDLE$glfwGetMonitorContentScale;
+    public final @Nullable MethodHandle HANDLE$glfwGetMonitorName;
+    public final @Nullable MethodHandle HANDLE$glfwSetMonitorUserPointer;
+    public final @Nullable MethodHandle HANDLE$glfwGetMonitorUserPointer;
+    public final @Nullable MethodHandle HANDLE$glfwSetMonitorCallback;
+    public final @Nullable MethodHandle HANDLE$glfwGetVideoModes;
+    public final @Nullable MethodHandle HANDLE$glfwGetVideoMode;
+    public final @Nullable MethodHandle HANDLE$glfwSetGamma;
+    public final @Nullable MethodHandle HANDLE$glfwGetGammaRamp;
+    public final @Nullable MethodHandle HANDLE$glfwSetGammaRamp;
+    public final @Nullable MethodHandle HANDLE$glfwDefaultWindowHints;
+    public final @Nullable MethodHandle HANDLE$glfwWindowHint;
+    public final @Nullable MethodHandle HANDLE$glfwWindowHintString;
+    public final @Nullable MethodHandle HANDLE$glfwCreateWindow;
+    public final @Nullable MethodHandle HANDLE$glfwDestroyWindow;
+    public final @Nullable MethodHandle HANDLE$glfwWindowShouldClose;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowShouldClose;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowTitle;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowTitle;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowIcon;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowPos;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowPos;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowSize;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowSizeLimits;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowAspectRatio;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowSize;
+    public final @Nullable MethodHandle HANDLE$glfwGetFramebufferSize;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowFrameSize;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowContentScale;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowOpacity;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowOpacity;
+    public final @Nullable MethodHandle HANDLE$glfwIconifyWindow;
+    public final @Nullable MethodHandle HANDLE$glfwRestoreWindow;
+    public final @Nullable MethodHandle HANDLE$glfwMaximizeWindow;
+    public final @Nullable MethodHandle HANDLE$glfwShowWindow;
+    public final @Nullable MethodHandle HANDLE$glfwHideWindow;
+    public final @Nullable MethodHandle HANDLE$glfwFocusWindow;
+    public final @Nullable MethodHandle HANDLE$glfwRequestWindowAttention;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowMonitor;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowMonitor;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowAttrib;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowAttrib;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowUserPointer;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowUserPointer;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowPosCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowSizeCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowCloseCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowRefreshCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowFocusCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowIconifyCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowMaximizeCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetFramebufferSizeCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowContentScaleCallback;
+    public final @Nullable MethodHandle HANDLE$glfwPollEvents;
+    public final @Nullable MethodHandle HANDLE$glfwWaitEvents;
+    public final @Nullable MethodHandle HANDLE$glfwWaitEventsTimeout;
+    public final @Nullable MethodHandle HANDLE$glfwPostEmptyEvent;
+    public final @Nullable MethodHandle HANDLE$glfwGetInputMode;
+    public final @Nullable MethodHandle HANDLE$glfwSetInputMode;
+    public final @Nullable MethodHandle HANDLE$glfwRawMouseMotionSupported;
+    public final @Nullable MethodHandle HANDLE$glfwGetKeyName;
+    public final @Nullable MethodHandle HANDLE$glfwGetKeyScancode;
+    public final @Nullable MethodHandle HANDLE$glfwGetKey;
+    public final @Nullable MethodHandle HANDLE$glfwGetMouseButton;
+    public final @Nullable MethodHandle HANDLE$glfwGetCursorPos;
+    public final @Nullable MethodHandle HANDLE$glfwSetCursorPos;
+    public final @Nullable MethodHandle HANDLE$glfwCreateCursor;
+    public final @Nullable MethodHandle HANDLE$glfwCreateStandardCursor;
+    public final @Nullable MethodHandle HANDLE$glfwDestroyCursor;
+    public final @Nullable MethodHandle HANDLE$glfwSetCursor;
+    public final @Nullable MethodHandle HANDLE$glfwSetKeyCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetCharCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetCharModsCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetMouseButtonCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetCursorPosCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetCursorEnterCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetScrollCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetDropCallback;
+    public final @Nullable MethodHandle HANDLE$glfwJoystickPresent;
+    public final @Nullable MethodHandle HANDLE$glfwGetJoystickAxes;
+    public final @Nullable MethodHandle HANDLE$glfwGetJoystickButtons;
+    public final @Nullable MethodHandle HANDLE$glfwGetJoystickHats;
+    public final @Nullable MethodHandle HANDLE$glfwGetJoystickName;
+    public final @Nullable MethodHandle HANDLE$glfwGetJoystickGUID;
+    public final @Nullable MethodHandle HANDLE$glfwSetJoystickUserPointer;
+    public final @Nullable MethodHandle HANDLE$glfwGetJoystickUserPointer;
+    public final @Nullable MethodHandle HANDLE$glfwJoystickIsGamepad;
+    public final @Nullable MethodHandle HANDLE$glfwSetJoystickCallback;
+    public final @Nullable MethodHandle HANDLE$glfwUpdateGamepadMappings;
+    public final @Nullable MethodHandle HANDLE$glfwGetGamepadName;
+    public final @Nullable MethodHandle HANDLE$glfwGetGamepadState;
+    public final @Nullable MethodHandle HANDLE$glfwSetClipboardString;
+    public final @Nullable MethodHandle HANDLE$glfwGetClipboardString;
+    public final @Nullable MethodHandle HANDLE$glfwGetTime;
+    public final @Nullable MethodHandle HANDLE$glfwSetTime;
+    public final @Nullable MethodHandle HANDLE$glfwGetTimerValue;
+    public final @Nullable MethodHandle HANDLE$glfwGetTimerFrequency;
+    public final @Nullable MethodHandle HANDLE$glfwMakeContextCurrent;
+    public final @Nullable MethodHandle HANDLE$glfwGetCurrentContext;
+    public final @Nullable MethodHandle HANDLE$glfwSwapBuffers;
+    public final @Nullable MethodHandle HANDLE$glfwSwapInterval;
+    public final @Nullable MethodHandle HANDLE$glfwExtensionSupported;
+    public final @Nullable MethodHandle HANDLE$glfwGetProcAddress;
+    public final @Nullable MethodHandle HANDLE$glfwVulkanSupported;
+    public final @Nullable MethodHandle HANDLE$glfwGetRequiredInstanceExtensions;
+    public final @Nullable MethodHandle HANDLE$glfwGetInstanceProcAddress;
+    public final @Nullable MethodHandle HANDLE$glfwGetPhysicalDevicePresentationSupport;
+    public final @Nullable MethodHandle HANDLE$glfwCreateWindowSurface;
+    public final @Nullable MethodHandle HANDLE$glfwGetWin32Adapter;
+    public final @Nullable MethodHandle HANDLE$glfwGetWin32Monitor;
+    public final @Nullable MethodHandle HANDLE$glfwGetWin32Window;
+    public final @Nullable MethodHandle HANDLE$glfwGetWGLContext;
+    public final @Nullable MethodHandle HANDLE$glfwGetCocoaMonitor;
+    public final @Nullable MethodHandle HANDLE$glfwGetCocoaWindow;
+    public final @Nullable MethodHandle HANDLE$glfwGetCocoaView;
+    public final @Nullable MethodHandle HANDLE$glfwGetNSGLContext;
+    public final @Nullable MethodHandle HANDLE$glfwGetX11Display;
+    public final @Nullable MethodHandle HANDLE$glfwGetX11Adapter;
+    public final @Nullable MethodHandle HANDLE$glfwGetX11Monitor;
+    public final @Nullable MethodHandle HANDLE$glfwGetX11Window;
+    public final @Nullable MethodHandle HANDLE$glfwSetX11SelectionString;
+    public final @Nullable MethodHandle HANDLE$glfwGetX11SelectionString;
+    public final @Nullable MethodHandle HANDLE$glfwGetGLXContext;
+    public final @Nullable MethodHandle HANDLE$glfwGetGLXWindow;
+    public final @Nullable MethodHandle HANDLE$glfwGetWaylandDisplay;
+    public final @Nullable MethodHandle HANDLE$glfwGetWaylandMonitor;
+    public final @Nullable MethodHandle HANDLE$glfwGetWaylandWindow;
+    public final @Nullable MethodHandle HANDLE$glfwGetEGLDisplay;
+    public final @Nullable MethodHandle HANDLE$glfwGetEGLContext;
+    public final @Nullable MethodHandle HANDLE$glfwGetEGLSurface;
+    public final @Nullable MethodHandle HANDLE$glfwGetOSMesaColorBuffer;
+    public final @Nullable MethodHandle HANDLE$glfwGetOSMesaDepthBuffer;
+    public final @Nullable MethodHandle HANDLE$glfwGetOSMesaContext;
 
     public GLFW(RawFunctionLoader loader) {
         SEGMENT$glfwInit = loader.apply("glfwInit");

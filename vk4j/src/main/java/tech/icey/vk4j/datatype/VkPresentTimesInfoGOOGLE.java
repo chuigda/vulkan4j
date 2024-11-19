@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkPresentTimesInfoGOOGLE(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -65,7 +66,7 @@ public record VkPresentTimesInfoGOOGLE(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pTimes, OFFSET$pTimes, value);
     }
 
-    public @nullable VkPresentTimeGOOGLE pTimes() {
+    public @Nullable VkPresentTimeGOOGLE pTimes() {
         MemorySegment s = pTimesRaw();
         if (s.address() == 0) {
             return null;
@@ -75,7 +76,7 @@ public record VkPresentTimesInfoGOOGLE(MemorySegment segment) implements IPointe
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPresentTimeGOOGLE[] pTimes(int assumedCount) {
+    public @Nullable VkPresentTimeGOOGLE[] pTimes(int assumedCount) {
         MemorySegment s = pTimesRaw().reinterpret(assumedCount * VkPresentTimeGOOGLE.SIZE);
         VkPresentTimeGOOGLE[] arr = new VkPresentTimeGOOGLE[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -84,7 +85,7 @@ public record VkPresentTimesInfoGOOGLE(MemorySegment segment) implements IPointe
         return arr;
     }
 
-    public void pTimes(@nullable VkPresentTimeGOOGLE value) {
+    public void pTimes(@Nullable VkPresentTimeGOOGLE value) {
         pTimesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

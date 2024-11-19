@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -52,7 +53,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -93,7 +94,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
     /// and use {@link VkImage.Buffer#reinterpret} to set the size before actually
     /// {@link VkImage.Buffer#read}ing or {@link VkImage.Buffer#write}ing
     /// the buffer.
-    public @nullable VkImage.Buffer pImages() {
+    public @Nullable VkImage.Buffer pImages() {
         MemorySegment s = pImagesRaw();
         if (s.address() == 0) {
             return null;
@@ -101,7 +102,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
         return new VkImage.Buffer(s);
     }
 
-    public void pImages(@nullable VkImage.Buffer value) {
+    public void pImages(@Nullable VkImage.Buffer value) {
         pImagesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -126,7 +127,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
     /// and use {@link VkBuffer.Buffer#reinterpret} to set the size before actually
     /// {@link VkBuffer.Buffer#read}ing or {@link VkBuffer.Buffer#write}ing
     /// the buffer.
-    public @nullable VkBuffer.Buffer pBuffers() {
+    public @Nullable VkBuffer.Buffer pBuffers() {
         MemorySegment s = pBuffersRaw();
         if (s.address() == 0) {
             return null;
@@ -134,7 +135,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
         return new VkBuffer.Buffer(s);
     }
 
-    public void pBuffers(@nullable VkBuffer.Buffer value) {
+    public void pBuffers(@Nullable VkBuffer.Buffer value) {
         pBuffersRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -162,7 +163,7 @@ public record VkFrameBoundaryEXT(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pTag, OFFSET$pTag, value);
     }
 
-    public void pTag(@nullable IPointer pointer) {
+    public void pTag(@Nullable IPointer pointer) {
         pTag(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 

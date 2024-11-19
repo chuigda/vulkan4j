@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -58,7 +59,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
         segment.set(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo, value);
     }
 
-    public @nullable VkPipelineBinaryKeysAndDataKHR pKeysAndDataInfo() {
+    public @Nullable VkPipelineBinaryKeysAndDataKHR pKeysAndDataInfo() {
         MemorySegment s = pKeysAndDataInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -68,7 +69,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineBinaryKeysAndDataKHR[] pKeysAndDataInfo(int assumedCount) {
+    public @Nullable VkPipelineBinaryKeysAndDataKHR[] pKeysAndDataInfo(int assumedCount) {
         MemorySegment s = pKeysAndDataInfoRaw().reinterpret(assumedCount * VkPipelineBinaryKeysAndDataKHR.SIZE);
         VkPipelineBinaryKeysAndDataKHR[] arr = new VkPipelineBinaryKeysAndDataKHR[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -77,11 +78,11 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
         return arr;
     }
 
-    public void pKeysAndDataInfo(@nullable VkPipelineBinaryKeysAndDataKHR value) {
+    public void pKeysAndDataInfo(@Nullable VkPipelineBinaryKeysAndDataKHR value) {
         pKeysAndDataInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
-    public @nullable VkPipeline pipeline() {
+    public @Nullable VkPipeline pipeline() {
         MemorySegment s = segment.get(LAYOUT$pipeline, OFFSET$pipeline);
         if (s.address() == 0) {
             return null;
@@ -89,7 +90,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
         return new VkPipeline(s);
     }
 
-    public void pipeline(@nullable VkPipeline value) {
+    public void pipeline(@Nullable VkPipeline value) {
         segment.set(
             LAYOUT$pipeline,
             OFFSET$pipeline,
@@ -105,7 +106,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
         segment.set(LAYOUT$pPipelineCreateInfo, OFFSET$pPipelineCreateInfo, value);
     }
 
-    public @nullable VkPipelineCreateInfoKHR pPipelineCreateInfo() {
+    public @Nullable VkPipelineCreateInfoKHR pPipelineCreateInfo() {
         MemorySegment s = pPipelineCreateInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -115,7 +116,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineCreateInfoKHR[] pPipelineCreateInfo(int assumedCount) {
+    public @Nullable VkPipelineCreateInfoKHR[] pPipelineCreateInfo(int assumedCount) {
         MemorySegment s = pPipelineCreateInfoRaw().reinterpret(assumedCount * VkPipelineCreateInfoKHR.SIZE);
         VkPipelineCreateInfoKHR[] arr = new VkPipelineCreateInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -124,7 +125,7 @@ public record VkPipelineBinaryCreateInfoKHR(MemorySegment segment) implements IP
         return arr;
     }
 
-    public void pPipelineCreateInfo(@nullable VkPipelineCreateInfoKHR value) {
+    public void pPipelineCreateInfo(@Nullable VkPipelineCreateInfoKHR value) {
         pPipelineCreateInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -48,7 +49,7 @@ public record VkComputePipelineCreateInfo(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -68,7 +69,7 @@ public record VkComputePipelineCreateInfo(MemorySegment segment) implements IPoi
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$stage, SIZE$stage);
     }
 
-    public @nullable VkPipelineLayout layout() {
+    public @Nullable VkPipelineLayout layout() {
         MemorySegment s = segment.get(LAYOUT$layout, OFFSET$layout);
         if (s.address() == 0) {
             return null;
@@ -76,7 +77,7 @@ public record VkComputePipelineCreateInfo(MemorySegment segment) implements IPoi
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@nullable VkPipelineLayout value) {
+    public void layout(@Nullable VkPipelineLayout value) {
         segment.set(
             LAYOUT$layout,
             OFFSET$layout,
@@ -84,7 +85,7 @@ public record VkComputePipelineCreateInfo(MemorySegment segment) implements IPoi
         );
     }
 
-    public @nullable VkPipeline basePipelineHandle() {
+    public @Nullable VkPipeline basePipelineHandle() {
         MemorySegment s = segment.get(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle);
         if (s.address() == 0) {
             return null;
@@ -92,7 +93,7 @@ public record VkComputePipelineCreateInfo(MemorySegment segment) implements IPoi
         return new VkPipeline(s);
     }
 
-    public void basePipelineHandle(@nullable VkPipeline value) {
+    public void basePipelineHandle(@Nullable VkPipeline value) {
         segment.set(
             LAYOUT$basePipelineHandle,
             OFFSET$basePipelineHandle,

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -72,12 +73,12 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) implements
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pDeviceIndices() {
+    public @Nullable @unsigned IntBuffer pDeviceIndices() {
         MemorySegment s = pDeviceIndicesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pDeviceIndices(@nullable @unsigned IntBuffer value) {
+    public void pDeviceIndices(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDeviceIndicesRaw(s);
     }
@@ -98,7 +99,7 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) implements
         segment.set(LAYOUT$pSplitInstanceBindRegions, OFFSET$pSplitInstanceBindRegions, value);
     }
 
-    public @nullable VkRect2D pSplitInstanceBindRegions() {
+    public @Nullable VkRect2D pSplitInstanceBindRegions() {
         MemorySegment s = pSplitInstanceBindRegionsRaw();
         if (s.address() == 0) {
             return null;
@@ -108,7 +109,7 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) implements
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRect2D[] pSplitInstanceBindRegions(int assumedCount) {
+    public @Nullable VkRect2D[] pSplitInstanceBindRegions(int assumedCount) {
         MemorySegment s = pSplitInstanceBindRegionsRaw().reinterpret(assumedCount * VkRect2D.SIZE);
         VkRect2D[] arr = new VkRect2D[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -117,7 +118,7 @@ public record VkBindImageMemoryDeviceGroupInfo(MemorySegment segment) implements
         return arr;
     }
 
-    public void pSplitInstanceBindRegions(@nullable VkRect2D value) {
+    public void pSplitInstanceBindRegions(@Nullable VkRect2D value) {
         pSplitInstanceBindRegionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

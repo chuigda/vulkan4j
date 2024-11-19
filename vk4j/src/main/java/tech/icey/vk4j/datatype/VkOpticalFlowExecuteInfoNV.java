@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkOpticalFlowExecuteInfoNV(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -74,7 +75,7 @@ public record VkOpticalFlowExecuteInfoNV(MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 
-    public @nullable VkRect2D pRegions() {
+    public @Nullable VkRect2D pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {
             return null;
@@ -84,7 +85,7 @@ public record VkOpticalFlowExecuteInfoNV(MemorySegment segment) implements IPoin
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRect2D[] pRegions(int assumedCount) {
+    public @Nullable VkRect2D[] pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkRect2D.SIZE);
         VkRect2D[] arr = new VkRect2D[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -93,7 +94,7 @@ public record VkOpticalFlowExecuteInfoNV(MemorySegment segment) implements IPoin
         return arr;
     }
 
-    public void pRegions(@nullable VkRect2D value) {
+    public void pRegions(@Nullable VkRect2D value) {
         pRegionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

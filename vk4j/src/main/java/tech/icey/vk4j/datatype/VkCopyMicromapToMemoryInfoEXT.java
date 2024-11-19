@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,11 +47,11 @@ public record VkCopyMicromapToMemoryInfoEXT(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkMicromapEXT src() {
+    public @Nullable VkMicromapEXT src() {
         MemorySegment s = segment.get(LAYOUT$src, OFFSET$src);
         if (s.address() == 0) {
             return null;
@@ -58,7 +59,7 @@ public record VkCopyMicromapToMemoryInfoEXT(MemorySegment segment) implements IP
         return new VkMicromapEXT(s);
     }
 
-    public void src(@nullable VkMicromapEXT value) {
+    public void src(@Nullable VkMicromapEXT value) {
         segment.set(
             LAYOUT$src,
             OFFSET$src,

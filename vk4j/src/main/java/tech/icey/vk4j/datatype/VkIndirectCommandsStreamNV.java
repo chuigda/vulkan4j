@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -26,7 +27,7 @@ public record VkIndirectCommandsStreamNV(MemorySegment segment) implements IPoin
         this.segment = segment;
     }
 
-    public @nullable VkBuffer buffer() {
+    public @Nullable VkBuffer buffer() {
         MemorySegment s = segment.get(LAYOUT$buffer, OFFSET$buffer);
         if (s.address() == 0) {
             return null;
@@ -34,7 +35,7 @@ public record VkIndirectCommandsStreamNV(MemorySegment segment) implements IPoin
         return new VkBuffer(s);
     }
 
-    public void buffer(@nullable VkBuffer value) {
+    public void buffer(@Nullable VkBuffer value) {
         segment.set(
             LAYOUT$buffer,
             OFFSET$buffer,

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -70,7 +71,7 @@ public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) implements I
     /// and use {@link VkPipeline.Buffer#reinterpret} to set the size before actually
     /// {@link VkPipeline.Buffer#read}ing or {@link VkPipeline.Buffer#write}ing
     /// the buffer.
-    public @nullable VkPipeline.Buffer pLibraries() {
+    public @Nullable VkPipeline.Buffer pLibraries() {
         MemorySegment s = pLibrariesRaw();
         if (s.address() == 0) {
             return null;
@@ -78,7 +79,7 @@ public record VkPipelineLibraryCreateInfoKHR(MemorySegment segment) implements I
         return new VkPipeline.Buffer(s);
     }
 
-    public void pLibraries(@nullable VkPipeline.Buffer value) {
+    public void pLibraries(@Nullable VkPipeline.Buffer value) {
         pLibrariesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

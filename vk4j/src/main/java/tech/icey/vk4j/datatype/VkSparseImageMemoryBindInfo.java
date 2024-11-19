@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -27,7 +28,7 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) implements IPoi
         this.segment = segment;
     }
 
-    public @nullable VkImage image() {
+    public @Nullable VkImage image() {
         MemorySegment s = segment.get(LAYOUT$image, OFFSET$image);
         if (s.address() == 0) {
             return null;
@@ -35,7 +36,7 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) implements IPoi
         return new VkImage(s);
     }
 
-    public void image(@nullable VkImage value) {
+    public void image(@Nullable VkImage value) {
         segment.set(
             LAYOUT$image,
             OFFSET$image,
@@ -59,7 +60,7 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pBinds, OFFSET$pBinds, value);
     }
 
-    public @nullable VkSparseImageMemoryBind pBinds() {
+    public @Nullable VkSparseImageMemoryBind pBinds() {
         MemorySegment s = pBindsRaw();
         if (s.address() == 0) {
             return null;
@@ -69,7 +70,7 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) implements IPoi
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSparseImageMemoryBind[] pBinds(int assumedCount) {
+    public @Nullable VkSparseImageMemoryBind[] pBinds(int assumedCount) {
         MemorySegment s = pBindsRaw().reinterpret(assumedCount * VkSparseImageMemoryBind.SIZE);
         VkSparseImageMemoryBind[] arr = new VkSparseImageMemoryBind[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -78,7 +79,7 @@ public record VkSparseImageMemoryBindInfo(MemorySegment segment) implements IPoi
         return arr;
     }
 
-    public void pBinds(@nullable VkSparseImageMemoryBind value) {
+    public void pBinds(@Nullable VkSparseImageMemoryBind value) {
         pBindsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

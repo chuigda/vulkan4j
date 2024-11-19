@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkDrmFormatModifierPropertiesList2EXT(MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -65,7 +66,7 @@ public record VkDrmFormatModifierPropertiesList2EXT(MemorySegment segment) imple
         segment.set(LAYOUT$pDrmFormatModifierProperties, OFFSET$pDrmFormatModifierProperties, value);
     }
 
-    public @nullable VkDrmFormatModifierProperties2EXT pDrmFormatModifierProperties() {
+    public @Nullable VkDrmFormatModifierProperties2EXT pDrmFormatModifierProperties() {
         MemorySegment s = pDrmFormatModifierPropertiesRaw();
         if (s.address() == 0) {
             return null;
@@ -75,7 +76,7 @@ public record VkDrmFormatModifierPropertiesList2EXT(MemorySegment segment) imple
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkDrmFormatModifierProperties2EXT[] pDrmFormatModifierProperties(int assumedCount) {
+    public @Nullable VkDrmFormatModifierProperties2EXT[] pDrmFormatModifierProperties(int assumedCount) {
         MemorySegment s = pDrmFormatModifierPropertiesRaw().reinterpret(assumedCount * VkDrmFormatModifierProperties2EXT.SIZE);
         VkDrmFormatModifierProperties2EXT[] arr = new VkDrmFormatModifierProperties2EXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -84,7 +85,7 @@ public record VkDrmFormatModifierPropertiesList2EXT(MemorySegment segment) imple
         return arr;
     }
 
-    public void pDrmFormatModifierProperties(@nullable VkDrmFormatModifierProperties2EXT value) {
+    public void pDrmFormatModifierProperties(@Nullable VkDrmFormatModifierProperties2EXT value) {
         pDrmFormatModifierPropertiesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

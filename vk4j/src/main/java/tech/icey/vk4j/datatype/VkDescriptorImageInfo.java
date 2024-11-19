@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -27,7 +28,7 @@ public record VkDescriptorImageInfo(MemorySegment segment) implements IPointer {
         this.segment = segment;
     }
 
-    public @nullable VkSampler sampler() {
+    public @Nullable VkSampler sampler() {
         MemorySegment s = segment.get(LAYOUT$sampler, OFFSET$sampler);
         if (s.address() == 0) {
             return null;
@@ -35,7 +36,7 @@ public record VkDescriptorImageInfo(MemorySegment segment) implements IPointer {
         return new VkSampler(s);
     }
 
-    public void sampler(@nullable VkSampler value) {
+    public void sampler(@Nullable VkSampler value) {
         segment.set(
             LAYOUT$sampler,
             OFFSET$sampler,
@@ -43,7 +44,7 @@ public record VkDescriptorImageInfo(MemorySegment segment) implements IPointer {
         );
     }
 
-    public @nullable VkImageView imageView() {
+    public @Nullable VkImageView imageView() {
         MemorySegment s = segment.get(LAYOUT$imageView, OFFSET$imageView);
         if (s.address() == 0) {
             return null;
@@ -51,7 +52,7 @@ public record VkDescriptorImageInfo(MemorySegment segment) implements IPointer {
         return new VkImageView(s);
     }
 
-    public void imageView(@nullable VkImageView value) {
+    public void imageView(@Nullable VkImageView value) {
         segment.set(
             LAYOUT$imageView,
             OFFSET$imageView,

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -48,11 +49,11 @@ public record VkRenderPassBeginInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkRenderPass renderPass() {
+    public @Nullable VkRenderPass renderPass() {
         MemorySegment s = segment.get(LAYOUT$renderPass, OFFSET$renderPass);
         if (s.address() == 0) {
             return null;
@@ -60,7 +61,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) implements IPointer {
         return new VkRenderPass(s);
     }
 
-    public void renderPass(@nullable VkRenderPass value) {
+    public void renderPass(@Nullable VkRenderPass value) {
         segment.set(
             LAYOUT$renderPass,
             OFFSET$renderPass,
@@ -68,7 +69,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) implements IPointer {
         );
     }
 
-    public @nullable VkFramebuffer framebuffer() {
+    public @Nullable VkFramebuffer framebuffer() {
         MemorySegment s = segment.get(LAYOUT$framebuffer, OFFSET$framebuffer);
         if (s.address() == 0) {
             return null;
@@ -76,7 +77,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) implements IPointer {
         return new VkFramebuffer(s);
     }
 
-    public void framebuffer(@nullable VkFramebuffer value) {
+    public void framebuffer(@Nullable VkFramebuffer value) {
         segment.set(
             LAYOUT$framebuffer,
             OFFSET$framebuffer,
@@ -108,7 +109,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pClearValues, OFFSET$pClearValues, value);
     }
 
-    public @nullable VkClearValue pClearValues() {
+    public @Nullable VkClearValue pClearValues() {
         MemorySegment s = pClearValuesRaw();
         if (s.address() == 0) {
             return null;
@@ -118,7 +119,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkClearValue[] pClearValues(int assumedCount) {
+    public @Nullable VkClearValue[] pClearValues(int assumedCount) {
         MemorySegment s = pClearValuesRaw().reinterpret(assumedCount * VkClearValue.SIZE);
         VkClearValue[] arr = new VkClearValue[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -127,7 +128,7 @@ public record VkRenderPassBeginInfo(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pClearValues(@nullable VkClearValue value) {
+    public void pClearValues(@Nullable VkClearValue value) {
         pClearValuesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -74,7 +75,7 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
         segment.set(LAYOUT$pViewportSwizzles, OFFSET$pViewportSwizzles, value);
     }
 
-    public @nullable VkViewportSwizzleNV pViewportSwizzles() {
+    public @Nullable VkViewportSwizzleNV pViewportSwizzles() {
         MemorySegment s = pViewportSwizzlesRaw();
         if (s.address() == 0) {
             return null;
@@ -84,7 +85,7 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkViewportSwizzleNV[] pViewportSwizzles(int assumedCount) {
+    public @Nullable VkViewportSwizzleNV[] pViewportSwizzles(int assumedCount) {
         MemorySegment s = pViewportSwizzlesRaw().reinterpret(assumedCount * VkViewportSwizzleNV.SIZE);
         VkViewportSwizzleNV[] arr = new VkViewportSwizzleNV[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -93,7 +94,7 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(MemorySegment segment) 
         return arr;
     }
 
-    public void pViewportSwizzles(@nullable VkViewportSwizzleNV value) {
+    public void pViewportSwizzles(@Nullable VkViewportSwizzleNV value) {
         pViewportSwizzlesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

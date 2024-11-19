@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -49,7 +50,7 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -69,7 +70,7 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) implements 
         segment.set(LAYOUT$stage, OFFSET$stage, value);
     }
 
-    public @nullable VkShaderModule module() {
+    public @Nullable VkShaderModule module() {
         MemorySegment s = segment.get(LAYOUT$module, OFFSET$module);
         if (s.address() == 0) {
             return null;
@@ -77,7 +78,7 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) implements 
         return new VkShaderModule(s);
     }
 
-    public void module(@nullable VkShaderModule value) {
+    public void module(@Nullable VkShaderModule value) {
         segment.set(
             LAYOUT$module,
             OFFSET$module,
@@ -98,12 +99,12 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) implements 
     /// and use {@link ByteBuffer#reinterpret} to set the size before actually
     /// {@link ByteBuffer#read}ing or
     /// {@link ByteBuffer#write}ing the buffer.
-    public @nullable ByteBuffer pName() {
+    public @Nullable ByteBuffer pName() {
         MemorySegment s = pNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void pName(@nullable ByteBuffer value) {
+    public void pName(@Nullable ByteBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNameRaw(s);
     }
@@ -116,7 +117,7 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) implements 
         segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
     }
 
-    public @nullable VkSpecializationInfo pSpecializationInfo() {
+    public @Nullable VkSpecializationInfo pSpecializationInfo() {
         MemorySegment s = pSpecializationInfoRaw();
         if (s.address() == 0) {
             return null;
@@ -126,7 +127,7 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) implements 
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSpecializationInfo[] pSpecializationInfo(int assumedCount) {
+    public @Nullable VkSpecializationInfo[] pSpecializationInfo(int assumedCount) {
         MemorySegment s = pSpecializationInfoRaw().reinterpret(assumedCount * VkSpecializationInfo.SIZE);
         VkSpecializationInfo[] arr = new VkSpecializationInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -135,7 +136,7 @@ public record VkPipelineShaderStageCreateInfo(MemorySegment segment) implements 
         return arr;
     }
 
-    public void pSpecializationInfo(@nullable VkSpecializationInfo value) {
+    public void pSpecializationInfo(@Nullable VkSpecializationInfo value) {
         pSpecializationInfoRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -31,7 +32,7 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) implements IPointer 
         this.segment = segment;
     }
 
-    public @nullable VkDisplayKHR display() {
+    public @Nullable VkDisplayKHR display() {
         MemorySegment s = segment.get(LAYOUT$display, OFFSET$display);
         if (s.address() == 0) {
             return null;
@@ -39,7 +40,7 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) implements IPointer 
         return new VkDisplayKHR(s);
     }
 
-    public void display(@nullable VkDisplayKHR value) {
+    public void display(@Nullable VkDisplayKHR value) {
         segment.set(
             LAYOUT$display,
             OFFSET$display,
@@ -60,12 +61,12 @@ public record VkDisplayPropertiesKHR(MemorySegment segment) implements IPointer 
     /// and use {@link ByteBuffer#reinterpret} to set the size before actually
     /// {@link ByteBuffer#read}ing or
     /// {@link ByteBuffer#write}ing the buffer.
-    public @nullable ByteBuffer displayName() {
+    public @Nullable ByteBuffer displayName() {
         MemorySegment s = displayNameRaw();
         return s.address() == 0 ? null : new ByteBuffer(s);
     }
 
-    public void displayName(@nullable ByteBuffer value) {
+    public void displayName(@Nullable ByteBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         displayNameRaw(s);
     }

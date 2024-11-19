@@ -5,7 +5,7 @@ import codegen.CHandleType
 
 fun generateHandleAccessor(type: CHandleType, member: Member): String =
     """
-        public @nullable ${type.name} ${member.name}() {
+        public @Nullable ${type.name} ${member.name}() {
             MemorySegment s = segment.asSlice(OFFSET$${member.name}, SIZE$${member.name});
             if (s.address() == 0) {
                 return null;
@@ -13,7 +13,7 @@ fun generateHandleAccessor(type: CHandleType, member: Member): String =
             return new ${type.name}(s);
         }
         
-        public void ${member.name}(@nullable ${type.name} value) {
+        public void ${member.name}(@Nullable ${type.name} value) {
             segment.set(
                 LAYOUT$${member.name},
                 OFFSET$${member.name},

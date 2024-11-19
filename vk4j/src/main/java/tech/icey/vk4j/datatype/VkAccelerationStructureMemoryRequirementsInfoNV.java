@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -57,7 +58,7 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(MemorySegment segm
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public @nullable VkAccelerationStructureNV accelerationStructure() {
+    public @Nullable VkAccelerationStructureNV accelerationStructure() {
         MemorySegment s = segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
         if (s.address() == 0) {
             return null;
@@ -65,7 +66,7 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(MemorySegment segm
         return new VkAccelerationStructureNV(s);
     }
 
-    public void accelerationStructure(@nullable VkAccelerationStructureNV value) {
+    public void accelerationStructure(@Nullable VkAccelerationStructureNV value) {
         segment.set(
             LAYOUT$accelerationStructure,
             OFFSET$accelerationStructure,

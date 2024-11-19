@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -38,7 +39,7 @@ public record VkAllocationCallbacks(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
     }
 
-    public void pUserData(@nullable IPointer pointer) {
+    public void pUserData(@Nullable IPointer pointer) {
         pUserData(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -50,7 +51,7 @@ public record VkAllocationCallbacks(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pfnAllocation, OFFSET$pfnAllocation, value);
     }
 
-    public void pfnAllocation(@nullable IPointer pointer) {
+    public void pfnAllocation(@Nullable IPointer pointer) {
         pfnAllocation(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -62,7 +63,7 @@ public record VkAllocationCallbacks(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pfnReallocation, OFFSET$pfnReallocation, value);
     }
 
-    public void pfnReallocation(@nullable IPointer pointer) {
+    public void pfnReallocation(@Nullable IPointer pointer) {
         pfnReallocation(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -74,7 +75,7 @@ public record VkAllocationCallbacks(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pfnFree, OFFSET$pfnFree, value);
     }
 
-    public void pfnFree(@nullable IPointer pointer) {
+    public void pfnFree(@Nullable IPointer pointer) {
         pfnFree(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -86,7 +87,7 @@ public record VkAllocationCallbacks(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pfnInternalAllocation, OFFSET$pfnInternalAllocation, value);
     }
 
-    public void pfnInternalAllocation(@nullable IPointer pointer) {
+    public void pfnInternalAllocation(@Nullable IPointer pointer) {
         pfnInternalAllocation(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -98,7 +99,7 @@ public record VkAllocationCallbacks(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pfnInternalFree, OFFSET$pfnInternalFree, value);
     }
 
-    public void pfnInternalFree(@nullable IPointer pointer) {
+    public void pfnInternalFree(@Nullable IPointer pointer) {
         pfnInternalFree(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 

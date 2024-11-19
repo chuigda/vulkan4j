@@ -47,7 +47,7 @@ private fun generatePPAccessor(pointee: CPointerType, member: Member): String {
         /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
         /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the size before
         /// actually reading from or writing to the buffer.
-        public @nullable PointerBuffer ${member.name}() {
+        public @Nullable PointerBuffer ${member.name}() {
             MemorySegment s = ${member.name}Raw();
             if (s.address() == 0) {
                 return null;
@@ -55,7 +55,7 @@ private fun generatePPAccessor(pointee: CPointerType, member: Member): String {
             return new PointerBuffer(s);
         }
 
-        public void ${member.name}(@nullable PointerBuffer value) {
+        public void ${member.name}(@Nullable PointerBuffer value) {
             MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
             ${member.name}Raw(s);
         }
@@ -76,7 +76,7 @@ private fun generatePNonRefAccessor(pointee: CNonRefType, member: Member): Strin
         /// {@link ${pointee.jBufferTypeNoAnnotation}#size} property. It's up to user to track the size of the buffer,
         /// and use {@link ${pointee.jBufferTypeNoAnnotation}#reinterpret} to set the size before actually reading from or
         /// writing to the buffer.
-        public @nullable ${pointee.jBufferType} ${member.name}() {
+        public @Nullable ${pointee.jBufferType} ${member.name}() {
             MemorySegment s = ${member.name}Raw();
             if (s.address() == 0) {
                 return null;
@@ -84,7 +84,7 @@ private fun generatePNonRefAccessor(pointee: CNonRefType, member: Member): Strin
             return new ${pointee.jBufferTypeNoAnnotation}(s);
         }
 
-        public void ${member.name}(@nullable ${pointee.jBufferType} value) {
+        public void ${member.name}(@Nullable ${pointee.jBufferType} value) {
             MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
             ${member.name}Raw(s);
         }
@@ -104,7 +104,7 @@ private fun generatePHandleAccessor(pointee: CHandleType, member: Member): Strin
         /// property. It's up to user to track the size of the buffer, and use
         /// {@link ${pointee.name}.Buffer#reinterpret} to set the size before actually reading from or writing to the
         /// buffer.
-        public @nullable ${pointee.name}.Buffer ${member.name}() {
+        public @Nullable ${pointee.name}.Buffer ${member.name}() {
             MemorySegment s = ${member.name}Raw();
             if (s.address() == 0) {
                 return null;
@@ -123,7 +123,7 @@ private fun generatePStructureAccessor(pointee: CStructType, member: Member): St
             segment.set(LAYOUT$${member.name}, OFFSET$${member.name}, value);
         }
         
-        public @nullable ${pointee.name} ${member.name}() {
+        public @Nullable ${pointee.name} ${member.name}() {
             MemorySegment s = ${member.name}Raw();
             if (s.address() == 0) {
                 return null;
@@ -133,7 +133,7 @@ private fun generatePStructureAccessor(pointee: CStructType, member: Member): St
         
         /// Note: this function is {@link unsafe} because it's up to caller to provide the correct count of elements.
         @unsafe
-        public @nullable ${pointee.name}[] ${member.name}(int assumedCount) {
+        public @Nullable ${pointee.name}[] ${member.name}(int assumedCount) {
             MemorySegment s = ${member.name}Raw();
             if (s.address() == 0) {
                 return null;
@@ -147,7 +147,7 @@ private fun generatePStructureAccessor(pointee: CStructType, member: Member): St
             return ret;
         }
 
-        public void ${member.name}(@nullable ${pointee.name} value) {
+        public void ${member.name}(@Nullable ${pointee.name} value) {
             MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
             ${member.name}Raw(s);
         }
@@ -167,7 +167,7 @@ private fun generatePEnumAccessor(pointee: CEnumType, member: Member): String =
         /// {@link ${pointee.jBufferTypeNoAnnotation}#size} property. It's up to user to track the size of the buffer,
         /// and use {@link ${pointee.jBufferTypeNoAnnotation}#reinterpret} to set the size before actually reading from
         /// or writing to the buffer.
-        public @nullable ${pointee.jBufferType} ${member.name}() {
+        public @Nullable ${pointee.jBufferType} ${member.name}() {
             MemorySegment s = ${member.name}Raw();
             if (s.address() == 0) {
                 return null;
@@ -175,7 +175,7 @@ private fun generatePEnumAccessor(pointee: CEnumType, member: Member): String =
             return new ${pointee.jBufferTypeNoAnnotation}(s);
         }
 
-        public void ${member.name}(@nullable ${pointee.jBufferType} value) {
+        public void ${member.name}(@Nullable ${pointee.jBufferType} value) {
             MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
             ${member.name}Raw(s);
         }

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -48,7 +49,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -76,7 +77,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) implem
         segment.set(LAYOUT$pVertexBindingDescriptions, OFFSET$pVertexBindingDescriptions, value);
     }
 
-    public @nullable VkVertexInputBindingDescription pVertexBindingDescriptions() {
+    public @Nullable VkVertexInputBindingDescription pVertexBindingDescriptions() {
         MemorySegment s = pVertexBindingDescriptionsRaw();
         if (s.address() == 0) {
             return null;
@@ -86,7 +87,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) implem
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkVertexInputBindingDescription[] pVertexBindingDescriptions(int assumedCount) {
+    public @Nullable VkVertexInputBindingDescription[] pVertexBindingDescriptions(int assumedCount) {
         MemorySegment s = pVertexBindingDescriptionsRaw().reinterpret(assumedCount * VkVertexInputBindingDescription.SIZE);
         VkVertexInputBindingDescription[] arr = new VkVertexInputBindingDescription[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -95,7 +96,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) implem
         return arr;
     }
 
-    public void pVertexBindingDescriptions(@nullable VkVertexInputBindingDescription value) {
+    public void pVertexBindingDescriptions(@Nullable VkVertexInputBindingDescription value) {
         pVertexBindingDescriptionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -115,7 +116,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) implem
         segment.set(LAYOUT$pVertexAttributeDescriptions, OFFSET$pVertexAttributeDescriptions, value);
     }
 
-    public @nullable VkVertexInputAttributeDescription pVertexAttributeDescriptions() {
+    public @Nullable VkVertexInputAttributeDescription pVertexAttributeDescriptions() {
         MemorySegment s = pVertexAttributeDescriptionsRaw();
         if (s.address() == 0) {
             return null;
@@ -125,7 +126,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) implem
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkVertexInputAttributeDescription[] pVertexAttributeDescriptions(int assumedCount) {
+    public @Nullable VkVertexInputAttributeDescription[] pVertexAttributeDescriptions(int assumedCount) {
         MemorySegment s = pVertexAttributeDescriptionsRaw().reinterpret(assumedCount * VkVertexInputAttributeDescription.SIZE);
         VkVertexInputAttributeDescription[] arr = new VkVertexInputAttributeDescription[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -134,7 +135,7 @@ public record VkPipelineVertexInputStateCreateInfo(MemorySegment segment) implem
         return arr;
     }
 
-    public void pVertexAttributeDescriptions(@nullable VkVertexInputAttributeDescription value) {
+    public void pVertexAttributeDescriptions(@Nullable VkVertexInputAttributeDescription value) {
         pVertexAttributeDescriptionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

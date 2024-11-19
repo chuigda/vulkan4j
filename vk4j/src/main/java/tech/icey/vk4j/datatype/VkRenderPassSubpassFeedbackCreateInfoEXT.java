@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -44,7 +45,7 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -56,7 +57,7 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(MemorySegment segment) im
         segment.set(LAYOUT$pSubpassFeedback, OFFSET$pSubpassFeedback, value);
     }
 
-    public @nullable VkRenderPassSubpassFeedbackInfoEXT pSubpassFeedback() {
+    public @Nullable VkRenderPassSubpassFeedbackInfoEXT pSubpassFeedback() {
         MemorySegment s = pSubpassFeedbackRaw();
         if (s.address() == 0) {
             return null;
@@ -66,7 +67,7 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(MemorySegment segment) im
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRenderPassSubpassFeedbackInfoEXT[] pSubpassFeedback(int assumedCount) {
+    public @Nullable VkRenderPassSubpassFeedbackInfoEXT[] pSubpassFeedback(int assumedCount) {
         MemorySegment s = pSubpassFeedbackRaw().reinterpret(assumedCount * VkRenderPassSubpassFeedbackInfoEXT.SIZE);
         VkRenderPassSubpassFeedbackInfoEXT[] arr = new VkRenderPassSubpassFeedbackInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -75,7 +76,7 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(MemorySegment segment) im
         return arr;
     }
 
-    public void pSubpassFeedback(@nullable VkRenderPassSubpassFeedbackInfoEXT value) {
+    public void pSubpassFeedback(@Nullable VkRenderPassSubpassFeedbackInfoEXT value) {
         pSubpassFeedbackRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -50,7 +51,7 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -62,7 +63,7 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
     }
 
-    public @nullable VkPipelineLayout layout() {
+    public @Nullable VkPipelineLayout layout() {
         MemorySegment s = segment.get(LAYOUT$layout, OFFSET$layout);
         if (s.address() == 0) {
             return null;
@@ -70,7 +71,7 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) implements IPoi
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@nullable VkPipelineLayout value) {
+    public void layout(@Nullable VkPipelineLayout value) {
         segment.set(
             LAYOUT$layout,
             OFFSET$layout,
@@ -107,7 +108,7 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) implements IPoi
     /// and use {@link VkDescriptorSet.Buffer#reinterpret} to set the size before actually
     /// {@link VkDescriptorSet.Buffer#read}ing or {@link VkDescriptorSet.Buffer#write}ing
     /// the buffer.
-    public @nullable VkDescriptorSet.Buffer pDescriptorSets() {
+    public @Nullable VkDescriptorSet.Buffer pDescriptorSets() {
         MemorySegment s = pDescriptorSetsRaw();
         if (s.address() == 0) {
             return null;
@@ -115,7 +116,7 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) implements IPoi
         return new VkDescriptorSet.Buffer(s);
     }
 
-    public void pDescriptorSets(@nullable VkDescriptorSet.Buffer value) {
+    public void pDescriptorSets(@Nullable VkDescriptorSet.Buffer value) {
         pDescriptorSetsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -140,12 +141,12 @@ public record VkBindDescriptorSetsInfoKHR(MemorySegment segment) implements IPoi
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pDynamicOffsets() {
+    public @Nullable @unsigned IntBuffer pDynamicOffsets() {
         MemorySegment s = pDynamicOffsetsRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pDynamicOffsets(@nullable @unsigned IntBuffer value) {
+    public void pDynamicOffsets(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDynamicOffsetsRaw(s);
     }

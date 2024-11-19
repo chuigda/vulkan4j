@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -49,7 +50,7 @@ public record VkDeviceGroupSubmitInfo(MemorySegment segment) implements IPointer
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -74,12 +75,12 @@ public record VkDeviceGroupSubmitInfo(MemorySegment segment) implements IPointer
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pWaitSemaphoreDeviceIndices() {
+    public @Nullable @unsigned IntBuffer pWaitSemaphoreDeviceIndices() {
         MemorySegment s = pWaitSemaphoreDeviceIndicesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pWaitSemaphoreDeviceIndices(@nullable @unsigned IntBuffer value) {
+    public void pWaitSemaphoreDeviceIndices(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoreDeviceIndicesRaw(s);
     }
@@ -105,12 +106,12 @@ public record VkDeviceGroupSubmitInfo(MemorySegment segment) implements IPointer
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pCommandBufferDeviceMasks() {
+    public @Nullable @unsigned IntBuffer pCommandBufferDeviceMasks() {
         MemorySegment s = pCommandBufferDeviceMasksRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pCommandBufferDeviceMasks(@nullable @unsigned IntBuffer value) {
+    public void pCommandBufferDeviceMasks(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCommandBufferDeviceMasksRaw(s);
     }
@@ -136,12 +137,12 @@ public record VkDeviceGroupSubmitInfo(MemorySegment segment) implements IPointer
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pSignalSemaphoreDeviceIndices() {
+    public @Nullable @unsigned IntBuffer pSignalSemaphoreDeviceIndices() {
         MemorySegment s = pSignalSemaphoreDeviceIndicesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pSignalSemaphoreDeviceIndices(@nullable @unsigned IntBuffer value) {
+    public void pSignalSemaphoreDeviceIndices(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoreDeviceIndicesRaw(s);
     }

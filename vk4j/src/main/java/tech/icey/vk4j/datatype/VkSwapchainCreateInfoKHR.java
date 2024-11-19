@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -60,7 +61,7 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -72,7 +73,7 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @nullable VkSurfaceKHR surface() {
+    public @Nullable VkSurfaceKHR surface() {
         MemorySegment s = segment.get(LAYOUT$surface, OFFSET$surface);
         if (s.address() == 0) {
             return null;
@@ -80,7 +81,7 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) implements IPointe
         return new VkSurfaceKHR(s);
     }
 
-    public void surface(@nullable VkSurfaceKHR value) {
+    public void surface(@Nullable VkSurfaceKHR value) {
         segment.set(
             LAYOUT$surface,
             OFFSET$surface,
@@ -165,12 +166,12 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) implements IPointe
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pQueueFamilyIndices() {
+    public @Nullable @unsigned IntBuffer pQueueFamilyIndices() {
         MemorySegment s = pQueueFamilyIndicesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pQueueFamilyIndices(@nullable @unsigned IntBuffer value) {
+    public void pQueueFamilyIndices(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueFamilyIndicesRaw(s);
     }
@@ -207,7 +208,7 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$clipped, OFFSET$clipped, value);
     }
 
-    public @nullable VkSwapchainKHR oldSwapchain() {
+    public @Nullable VkSwapchainKHR oldSwapchain() {
         MemorySegment s = segment.get(LAYOUT$oldSwapchain, OFFSET$oldSwapchain);
         if (s.address() == 0) {
             return null;
@@ -215,7 +216,7 @@ public record VkSwapchainCreateInfoKHR(MemorySegment segment) implements IPointe
         return new VkSwapchainKHR(s);
     }
 
-    public void oldSwapchain(@nullable VkSwapchainKHR value) {
+    public void oldSwapchain(@Nullable VkSwapchainKHR value) {
         segment.set(
             LAYOUT$oldSwapchain,
             OFFSET$oldSwapchain,

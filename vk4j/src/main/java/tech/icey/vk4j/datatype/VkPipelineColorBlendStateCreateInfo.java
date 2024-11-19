@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -49,7 +50,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -93,7 +94,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) impleme
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
-    public @nullable VkPipelineColorBlendAttachmentState pAttachments() {
+    public @Nullable VkPipelineColorBlendAttachmentState pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.address() == 0) {
             return null;
@@ -103,7 +104,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) impleme
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineColorBlendAttachmentState[] pAttachments(int assumedCount) {
+    public @Nullable VkPipelineColorBlendAttachmentState[] pAttachments(int assumedCount) {
         MemorySegment s = pAttachmentsRaw().reinterpret(assumedCount * VkPipelineColorBlendAttachmentState.SIZE);
         VkPipelineColorBlendAttachmentState[] arr = new VkPipelineColorBlendAttachmentState[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -112,7 +113,7 @@ public record VkPipelineColorBlendStateCreateInfo(MemorySegment segment) impleme
         return arr;
     }
 
-    public void pAttachments(@nullable VkPipelineColorBlendAttachmentState value) {
+    public void pAttachments(@Nullable VkPipelineColorBlendAttachmentState value) {
         pAttachmentsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

@@ -36,7 +36,7 @@
     </scm>
 
     <artifactId>vulkan4j</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -49,6 +49,12 @@
             <groupId>tech.icey</groupId>
             <artifactId>panama-plus</artifactId>
             <version>0.1.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>24.0.0</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

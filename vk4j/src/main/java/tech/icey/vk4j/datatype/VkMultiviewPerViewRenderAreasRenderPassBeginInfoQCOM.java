@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -65,7 +66,7 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(MemorySegment
         segment.set(LAYOUT$pPerViewRenderAreas, OFFSET$pPerViewRenderAreas, value);
     }
 
-    public @nullable VkRect2D pPerViewRenderAreas() {
+    public @Nullable VkRect2D pPerViewRenderAreas() {
         MemorySegment s = pPerViewRenderAreasRaw();
         if (s.address() == 0) {
             return null;
@@ -75,7 +76,7 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(MemorySegment
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRect2D[] pPerViewRenderAreas(int assumedCount) {
+    public @Nullable VkRect2D[] pPerViewRenderAreas(int assumedCount) {
         MemorySegment s = pPerViewRenderAreasRaw().reinterpret(assumedCount * VkRect2D.SIZE);
         VkRect2D[] arr = new VkRect2D[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -84,7 +85,7 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(MemorySegment
         return arr;
     }
 
-    public void pPerViewRenderAreas(@nullable VkRect2D value) {
+    public void pPerViewRenderAreas(@Nullable VkRect2D value) {
         pPerViewRenderAreasRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

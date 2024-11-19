@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -72,12 +73,12 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) impl
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pColorAttachmentInputIndices() {
+    public @Nullable @unsigned IntBuffer pColorAttachmentInputIndices() {
         MemorySegment s = pColorAttachmentInputIndicesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pColorAttachmentInputIndices(@nullable @unsigned IntBuffer value) {
+    public void pColorAttachmentInputIndices(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentInputIndicesRaw(s);
     }
@@ -95,12 +96,12 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) impl
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pDepthInputAttachmentIndex() {
+    public @Nullable @unsigned IntBuffer pDepthInputAttachmentIndex() {
         MemorySegment s = pDepthInputAttachmentIndexRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pDepthInputAttachmentIndex(@nullable @unsigned IntBuffer value) {
+    public void pDepthInputAttachmentIndex(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDepthInputAttachmentIndexRaw(s);
     }
@@ -118,12 +119,12 @@ public record VkRenderingInputAttachmentIndexInfoKHR(MemorySegment segment) impl
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pStencilInputAttachmentIndex() {
+    public @Nullable @unsigned IntBuffer pStencilInputAttachmentIndex() {
         MemorySegment s = pStencilInputAttachmentIndexRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pStencilInputAttachmentIndex(@nullable @unsigned IntBuffer value) {
+    public void pStencilInputAttachmentIndex(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStencilInputAttachmentIndexRaw(s);
     }

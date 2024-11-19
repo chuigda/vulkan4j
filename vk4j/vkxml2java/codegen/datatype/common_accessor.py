@@ -56,7 +56,7 @@ def generate_ref_type_accessor(type_: CStructType | CUnionType | CHandleType, me
 
 
 def generate_handle_type_accessor(type_: CHandleType, member: Member) -> str:
-    return f'''    public @nullable {type_.java_type()} {member.name}() {{
+    return f'''    public @Nullable {type_.java_type()} {member.name}() {{
         MemorySegment s = segment.get(LAYOUT${member.name}, OFFSET${member.name});
         if (s.address() == 0) {{
             return null;
@@ -64,7 +64,7 @@ def generate_handle_type_accessor(type_: CHandleType, member: Member) -> str:
         return new {type_.java_type()}(s);
     }}
 
-    public void {member.name}(@nullable {type_.java_type()} value) {{
+    public void {member.name}(@Nullable {type_.java_type()} value) {{
         segment.set(
             LAYOUT${member.name},
             OFFSET${member.name},

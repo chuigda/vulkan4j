@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,11 +47,11 @@ public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkSemaphore semaphore() {
+    public @Nullable VkSemaphore semaphore() {
         MemorySegment s = segment.get(LAYOUT$semaphore, OFFSET$semaphore);
         if (s.address() == 0) {
             return null;
@@ -58,7 +59,7 @@ public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) implements 
         return new VkSemaphore(s);
     }
 
-    public void semaphore(@nullable VkSemaphore value) {
+    public void semaphore(@Nullable VkSemaphore value) {
         segment.set(
             LAYOUT$semaphore,
             OFFSET$semaphore,
@@ -66,7 +67,7 @@ public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) implements 
         );
     }
 
-    public @nullable VkEvent event() {
+    public @Nullable VkEvent event() {
         MemorySegment s = segment.get(LAYOUT$event, OFFSET$event);
         if (s.address() == 0) {
             return null;
@@ -74,7 +75,7 @@ public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) implements 
         return new VkEvent(s);
     }
 
-    public void event(@nullable VkEvent value) {
+    public void event(@Nullable VkEvent value) {
         segment.set(
             LAYOUT$event,
             OFFSET$event,
@@ -90,7 +91,7 @@ public record VkExportMetalSharedEventInfoEXT(MemorySegment segment) implements 
         segment.set(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent, value);
     }
 
-    public void mtlSharedEvent(@nullable IPointer pointer) {
+    public void mtlSharedEvent(@Nullable IPointer pointer) {
         mtlSharedEvent(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 

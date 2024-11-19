@@ -1,6 +1,6 @@
 package tech.icey.panama;
 
-import tech.icey.panama.annotation.nullable;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
@@ -17,7 +17,7 @@ public final class Loader {
                 .orElseThrow(() -> new RuntimeException("未找到函数 " + name));
     }
 
-    public static @nullable MethodHandle loadFunctionOrNull(String name, FunctionDescriptor descriptor) {
+    public static @Nullable MethodHandle loadFunctionOrNull(String name, FunctionDescriptor descriptor) {
         return loaderLookup.find(name)
                 .or(() -> stdlibLookup.find(name))
                 .map(segment -> RawFunctionLoader.link(segment, descriptor))

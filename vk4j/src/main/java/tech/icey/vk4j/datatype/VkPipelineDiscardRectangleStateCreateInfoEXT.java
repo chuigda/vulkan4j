@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -83,7 +84,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
         segment.set(LAYOUT$pDiscardRectangles, OFFSET$pDiscardRectangles, value);
     }
 
-    public @nullable VkRect2D pDiscardRectangles() {
+    public @Nullable VkRect2D pDiscardRectangles() {
         MemorySegment s = pDiscardRectanglesRaw();
         if (s.address() == 0) {
             return null;
@@ -93,7 +94,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRect2D[] pDiscardRectangles(int assumedCount) {
+    public @Nullable VkRect2D[] pDiscardRectangles(int assumedCount) {
         MemorySegment s = pDiscardRectanglesRaw().reinterpret(assumedCount * VkRect2D.SIZE);
         VkRect2D[] arr = new VkRect2D[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -102,7 +103,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment
         return arr;
     }
 
-    public void pDiscardRectangles(@nullable VkRect2D value) {
+    public void pDiscardRectangles(@Nullable VkRect2D value) {
         pDiscardRectanglesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

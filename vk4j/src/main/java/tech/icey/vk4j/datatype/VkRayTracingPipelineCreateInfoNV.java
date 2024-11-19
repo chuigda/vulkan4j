@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -52,7 +53,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -80,7 +81,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
-    public @nullable VkPipelineShaderStageCreateInfo pStages() {
+    public @Nullable VkPipelineShaderStageCreateInfo pStages() {
         MemorySegment s = pStagesRaw();
         if (s.address() == 0) {
             return null;
@@ -90,7 +91,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
+    public @Nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
         MemorySegment s = pStagesRaw().reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
         VkPipelineShaderStageCreateInfo[] arr = new VkPipelineShaderStageCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -99,7 +100,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
         return arr;
     }
 
-    public void pStages(@nullable VkPipelineShaderStageCreateInfo value) {
+    public void pStages(@Nullable VkPipelineShaderStageCreateInfo value) {
         pStagesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -119,7 +120,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
 
-    public @nullable VkRayTracingShaderGroupCreateInfoNV pGroups() {
+    public @Nullable VkRayTracingShaderGroupCreateInfoNV pGroups() {
         MemorySegment s = pGroupsRaw();
         if (s.address() == 0) {
             return null;
@@ -129,7 +130,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkRayTracingShaderGroupCreateInfoNV[] pGroups(int assumedCount) {
+    public @Nullable VkRayTracingShaderGroupCreateInfoNV[] pGroups(int assumedCount) {
         MemorySegment s = pGroupsRaw().reinterpret(assumedCount * VkRayTracingShaderGroupCreateInfoNV.SIZE);
         VkRayTracingShaderGroupCreateInfoNV[] arr = new VkRayTracingShaderGroupCreateInfoNV[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -138,7 +139,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
         return arr;
     }
 
-    public void pGroups(@nullable VkRayTracingShaderGroupCreateInfoNV value) {
+    public void pGroups(@Nullable VkRayTracingShaderGroupCreateInfoNV value) {
         pGroupsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -150,7 +151,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
         segment.set(LAYOUT$maxRecursionDepth, OFFSET$maxRecursionDepth, value);
     }
 
-    public @nullable VkPipelineLayout layout() {
+    public @Nullable VkPipelineLayout layout() {
         MemorySegment s = segment.get(LAYOUT$layout, OFFSET$layout);
         if (s.address() == 0) {
             return null;
@@ -158,7 +159,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@nullable VkPipelineLayout value) {
+    public void layout(@Nullable VkPipelineLayout value) {
         segment.set(
             LAYOUT$layout,
             OFFSET$layout,
@@ -166,7 +167,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
         );
     }
 
-    public @nullable VkPipeline basePipelineHandle() {
+    public @Nullable VkPipeline basePipelineHandle() {
         MemorySegment s = segment.get(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle);
         if (s.address() == 0) {
             return null;
@@ -174,7 +175,7 @@ public record VkRayTracingPipelineCreateInfoNV(MemorySegment segment) implements
         return new VkPipeline(s);
     }
 
-    public void basePipelineHandle(@nullable VkPipeline value) {
+    public void basePipelineHandle(@Nullable VkPipeline value) {
         segment.set(
             LAYOUT$basePipelineHandle,
             OFFSET$basePipelineHandle,

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -65,7 +66,7 @@ public record VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segme
         segment.set(LAYOUT$pVertexBindingDivisors, OFFSET$pVertexBindingDivisors, value);
     }
 
-    public @nullable VkVertexInputBindingDivisorDescriptionKHR pVertexBindingDivisors() {
+    public @Nullable VkVertexInputBindingDivisorDescriptionKHR pVertexBindingDivisors() {
         MemorySegment s = pVertexBindingDivisorsRaw();
         if (s.address() == 0) {
             return null;
@@ -75,7 +76,7 @@ public record VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segme
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkVertexInputBindingDivisorDescriptionKHR[] pVertexBindingDivisors(int assumedCount) {
+    public @Nullable VkVertexInputBindingDivisorDescriptionKHR[] pVertexBindingDivisors(int assumedCount) {
         MemorySegment s = pVertexBindingDivisorsRaw().reinterpret(assumedCount * VkVertexInputBindingDivisorDescriptionKHR.SIZE);
         VkVertexInputBindingDivisorDescriptionKHR[] arr = new VkVertexInputBindingDivisorDescriptionKHR[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -84,7 +85,7 @@ public record VkPipelineVertexInputDivisorStateCreateInfoKHR(MemorySegment segme
         return arr;
     }
 
-    public void pVertexBindingDivisors(@nullable VkVertexInputBindingDivisorDescriptionKHR value) {
+    public void pVertexBindingDivisors(@Nullable VkVertexInputBindingDivisorDescriptionKHR value) {
         pVertexBindingDivisorsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

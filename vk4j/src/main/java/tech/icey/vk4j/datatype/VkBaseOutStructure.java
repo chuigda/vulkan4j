@@ -1,8 +1,8 @@
 package tech.icey.vk4j.datatype;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
-import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.vk4j.enumtype.VkStructureType;
 
@@ -46,7 +46,7 @@ public record VkBaseOutStructure(MemorySegment segment) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public @nullable VkBaseOutStructure pNext() {
+    public @Nullable VkBaseOutStructure pNext() {
         MemorySegment s = pNextRaw();
         if (s.address() == 0) {
             return null;
@@ -54,7 +54,7 @@ public record VkBaseOutStructure(MemorySegment segment) {
         return new VkBaseOutStructure(s);
     }
 
-    public void pNext(@nullable VkBaseOutStructure value) {
+    public void pNext(@Nullable VkBaseOutStructure value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNextRaw(s);
     }

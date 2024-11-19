@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,11 +48,11 @@ public record VkGeometryAABBNV(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkBuffer aabbData() {
+    public @Nullable VkBuffer aabbData() {
         MemorySegment s = segment.get(LAYOUT$aabbData, OFFSET$aabbData);
         if (s.address() == 0) {
             return null;
@@ -59,7 +60,7 @@ public record VkGeometryAABBNV(MemorySegment segment) implements IPointer {
         return new VkBuffer(s);
     }
 
-    public void aabbData(@nullable VkBuffer value) {
+    public void aabbData(@Nullable VkBuffer value) {
         segment.set(
             LAYOUT$aabbData,
             OFFSET$aabbData,

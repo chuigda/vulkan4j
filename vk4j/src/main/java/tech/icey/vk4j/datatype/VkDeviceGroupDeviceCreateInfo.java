@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkDeviceGroupDeviceCreateInfo(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -70,7 +71,7 @@ public record VkDeviceGroupDeviceCreateInfo(MemorySegment segment) implements IP
     /// and use {@link VkPhysicalDevice.Buffer#reinterpret} to set the size before actually
     /// {@link VkPhysicalDevice.Buffer#read}ing or {@link VkPhysicalDevice.Buffer#write}ing
     /// the buffer.
-    public @nullable VkPhysicalDevice.Buffer pPhysicalDevices() {
+    public @Nullable VkPhysicalDevice.Buffer pPhysicalDevices() {
         MemorySegment s = pPhysicalDevicesRaw();
         if (s.address() == 0) {
             return null;
@@ -78,7 +79,7 @@ public record VkDeviceGroupDeviceCreateInfo(MemorySegment segment) implements IP
         return new VkPhysicalDevice.Buffer(s);
     }
 
-    public void pPhysicalDevices(@nullable VkPhysicalDevice.Buffer value) {
+    public void pPhysicalDevices(@Nullable VkPhysicalDevice.Buffer value) {
         pPhysicalDevicesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

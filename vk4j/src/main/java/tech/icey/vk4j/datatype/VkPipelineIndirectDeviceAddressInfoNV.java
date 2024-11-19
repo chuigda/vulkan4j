@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,7 +46,7 @@ public record VkPipelineIndirectDeviceAddressInfoNV(MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -57,7 +58,7 @@ public record VkPipelineIndirectDeviceAddressInfoNV(MemorySegment segment) imple
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
     }
 
-    public @nullable VkPipeline pipeline() {
+    public @Nullable VkPipeline pipeline() {
         MemorySegment s = segment.get(LAYOUT$pipeline, OFFSET$pipeline);
         if (s.address() == 0) {
             return null;
@@ -65,7 +66,7 @@ public record VkPipelineIndirectDeviceAddressInfoNV(MemorySegment segment) imple
         return new VkPipeline(s);
     }
 
-    public void pipeline(@nullable VkPipeline value) {
+    public void pipeline(@Nullable VkPipeline value) {
         segment.set(
             LAYOUT$pipeline,
             OFFSET$pipeline,

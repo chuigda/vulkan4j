@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -42,7 +43,7 @@ public record VkBaseInStructure(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public @nullable VkBaseInStructure pNext() {
+    public @Nullable VkBaseInStructure pNext() {
         MemorySegment s = pNextRaw();
         if (s.address() == 0) {
             return null;
@@ -52,7 +53,7 @@ public record VkBaseInStructure(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkBaseInStructure[] pNext(int assumedCount) {
+    public @Nullable VkBaseInStructure[] pNext(int assumedCount) {
         MemorySegment s = pNextRaw().reinterpret(assumedCount * VkBaseInStructure.SIZE);
         VkBaseInStructure[] arr = new VkBaseInStructure[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -61,7 +62,7 @@ public record VkBaseInStructure(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pNext(@nullable VkBaseInStructure value) {
+    public void pNext(@Nullable VkBaseInStructure value) {
         pNextRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

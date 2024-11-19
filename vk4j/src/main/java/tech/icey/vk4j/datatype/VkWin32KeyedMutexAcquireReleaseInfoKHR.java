@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -50,7 +51,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -75,7 +76,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) impl
     /// and use {@link VkDeviceMemory.Buffer#reinterpret} to set the size before actually
     /// {@link VkDeviceMemory.Buffer#read}ing or {@link VkDeviceMemory.Buffer#write}ing
     /// the buffer.
-    public @nullable VkDeviceMemory.Buffer pAcquireSyncs() {
+    public @Nullable VkDeviceMemory.Buffer pAcquireSyncs() {
         MemorySegment s = pAcquireSyncsRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +84,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) impl
         return new VkDeviceMemory.Buffer(s);
     }
 
-    public void pAcquireSyncs(@nullable VkDeviceMemory.Buffer value) {
+    public void pAcquireSyncs(@Nullable VkDeviceMemory.Buffer value) {
         pAcquireSyncsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -100,12 +101,12 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) impl
     /// and use {@link LongBuffer#reinterpret} to set the size before actually
     /// {@link LongBuffer#read}ing or
     /// {@link LongBuffer#write}ing the buffer.
-    public @nullable @unsigned LongBuffer pAcquireKeys() {
+    public @Nullable @unsigned LongBuffer pAcquireKeys() {
         MemorySegment s = pAcquireKeysRaw();
         return s.address() == 0 ? null : new LongBuffer(s);
     }
 
-    public void pAcquireKeys(@nullable @unsigned LongBuffer value) {
+    public void pAcquireKeys(@Nullable @unsigned LongBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAcquireKeysRaw(s);
     }
@@ -123,12 +124,12 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) impl
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pAcquireTimeouts() {
+    public @Nullable @unsigned IntBuffer pAcquireTimeouts() {
         MemorySegment s = pAcquireTimeoutsRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pAcquireTimeouts(@nullable @unsigned IntBuffer value) {
+    public void pAcquireTimeouts(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAcquireTimeoutsRaw(s);
     }
@@ -154,7 +155,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) impl
     /// and use {@link VkDeviceMemory.Buffer#reinterpret} to set the size before actually
     /// {@link VkDeviceMemory.Buffer#read}ing or {@link VkDeviceMemory.Buffer#write}ing
     /// the buffer.
-    public @nullable VkDeviceMemory.Buffer pReleaseSyncs() {
+    public @Nullable VkDeviceMemory.Buffer pReleaseSyncs() {
         MemorySegment s = pReleaseSyncsRaw();
         if (s.address() == 0) {
             return null;
@@ -162,7 +163,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) impl
         return new VkDeviceMemory.Buffer(s);
     }
 
-    public void pReleaseSyncs(@nullable VkDeviceMemory.Buffer value) {
+    public void pReleaseSyncs(@Nullable VkDeviceMemory.Buffer value) {
         pReleaseSyncsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -179,12 +180,12 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(MemorySegment segment) impl
     /// and use {@link LongBuffer#reinterpret} to set the size before actually
     /// {@link LongBuffer#read}ing or
     /// {@link LongBuffer#write}ing the buffer.
-    public @nullable @unsigned LongBuffer pReleaseKeys() {
+    public @Nullable @unsigned LongBuffer pReleaseKeys() {
         MemorySegment s = pReleaseKeysRaw();
         return s.address() == 0 ? null : new LongBuffer(s);
     }
 
-    public void pReleaseKeys(@nullable @unsigned LongBuffer value) {
+    public void pReleaseKeys(@Nullable @unsigned LongBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pReleaseKeysRaw(s);
     }

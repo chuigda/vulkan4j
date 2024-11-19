@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -74,7 +75,7 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
         segment.set(LAYOUT$pCustomSampleOrders, OFFSET$pCustomSampleOrders, value);
     }
 
-    public @nullable VkCoarseSampleOrderCustomNV pCustomSampleOrders() {
+    public @Nullable VkCoarseSampleOrderCustomNV pCustomSampleOrders() {
         MemorySegment s = pCustomSampleOrdersRaw();
         if (s.address() == 0) {
             return null;
@@ -84,7 +85,7 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkCoarseSampleOrderCustomNV[] pCustomSampleOrders(int assumedCount) {
+    public @Nullable VkCoarseSampleOrderCustomNV[] pCustomSampleOrders(int assumedCount) {
         MemorySegment s = pCustomSampleOrdersRaw().reinterpret(assumedCount * VkCoarseSampleOrderCustomNV.SIZE);
         VkCoarseSampleOrderCustomNV[] arr = new VkCoarseSampleOrderCustomNV[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -93,7 +94,7 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(MemorySegment
         return arr;
     }
 
-    public void pCustomSampleOrders(@nullable VkCoarseSampleOrderCustomNV value) {
+    public void pCustomSampleOrders(@Nullable VkCoarseSampleOrderCustomNV value) {
         pCustomSampleOrdersRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

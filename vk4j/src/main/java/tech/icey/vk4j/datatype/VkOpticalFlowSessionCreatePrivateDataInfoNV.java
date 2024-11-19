@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -74,7 +75,7 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(MemorySegment segment)
         segment.set(LAYOUT$pPrivateData, OFFSET$pPrivateData, value);
     }
 
-    public void pPrivateData(@nullable IPointer pointer) {
+    public void pPrivateData(@Nullable IPointer pointer) {
         pPrivateData(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 

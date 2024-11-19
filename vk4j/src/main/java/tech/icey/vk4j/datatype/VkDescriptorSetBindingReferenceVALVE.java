@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,11 +46,11 @@ public record VkDescriptorSetBindingReferenceVALVE(MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkDescriptorSetLayout descriptorSetLayout() {
+    public @Nullable VkDescriptorSetLayout descriptorSetLayout() {
         MemorySegment s = segment.get(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout);
         if (s.address() == 0) {
             return null;
@@ -57,7 +58,7 @@ public record VkDescriptorSetBindingReferenceVALVE(MemorySegment segment) implem
         return new VkDescriptorSetLayout(s);
     }
 
-    public void descriptorSetLayout(@nullable VkDescriptorSetLayout value) {
+    public void descriptorSetLayout(@Nullable VkDescriptorSetLayout value) {
         segment.set(
             LAYOUT$descriptorSetLayout,
             OFFSET$descriptorSetLayout,

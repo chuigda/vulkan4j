@@ -3,6 +3,7 @@ package tech.icey.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -33,7 +34,7 @@ public record VmaDefragmentationPassMoveInfo(MemorySegment segment) implements I
         segment.set(LAYOUT$pMoves, OFFSET$pMoves, value);
     }
 
-    public @nullable VmaDefragmentationMove pMoves() {
+    public @Nullable VmaDefragmentationMove pMoves() {
         MemorySegment s = pMovesRaw();
         if (s.address() == 0) {
             return null;
@@ -43,7 +44,7 @@ public record VmaDefragmentationPassMoveInfo(MemorySegment segment) implements I
 
     /// Note: this function is {@link unsafe} because it's up to caller to provide the correct count of elements.
     @unsafe
-    public @nullable VmaDefragmentationMove[] pMoves(int assumedCount) {
+    public @Nullable VmaDefragmentationMove[] pMoves(int assumedCount) {
         MemorySegment s = pMovesRaw();
         if (s.address() == 0) {
             return null;
@@ -57,7 +58,7 @@ public record VmaDefragmentationPassMoveInfo(MemorySegment segment) implements I
         return ret;
     }
 
-    public void pMoves(@nullable VmaDefragmentationMove value) {
+    public void pMoves(@Nullable VmaDefragmentationMove value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMovesRaw(s);
     }

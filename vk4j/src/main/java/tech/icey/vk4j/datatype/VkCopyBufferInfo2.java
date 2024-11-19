@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,11 +48,11 @@ public record VkCopyBufferInfo2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkBuffer srcBuffer() {
+    public @Nullable VkBuffer srcBuffer() {
         MemorySegment s = segment.get(LAYOUT$srcBuffer, OFFSET$srcBuffer);
         if (s.address() == 0) {
             return null;
@@ -59,7 +60,7 @@ public record VkCopyBufferInfo2(MemorySegment segment) implements IPointer {
         return new VkBuffer(s);
     }
 
-    public void srcBuffer(@nullable VkBuffer value) {
+    public void srcBuffer(@Nullable VkBuffer value) {
         segment.set(
             LAYOUT$srcBuffer,
             OFFSET$srcBuffer,
@@ -67,7 +68,7 @@ public record VkCopyBufferInfo2(MemorySegment segment) implements IPointer {
         );
     }
 
-    public @nullable VkBuffer dstBuffer() {
+    public @Nullable VkBuffer dstBuffer() {
         MemorySegment s = segment.get(LAYOUT$dstBuffer, OFFSET$dstBuffer);
         if (s.address() == 0) {
             return null;
@@ -75,7 +76,7 @@ public record VkCopyBufferInfo2(MemorySegment segment) implements IPointer {
         return new VkBuffer(s);
     }
 
-    public void dstBuffer(@nullable VkBuffer value) {
+    public void dstBuffer(@Nullable VkBuffer value) {
         segment.set(
             LAYOUT$dstBuffer,
             OFFSET$dstBuffer,
@@ -99,7 +100,7 @@ public record VkCopyBufferInfo2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 
-    public @nullable VkBufferCopy2 pRegions() {
+    public @Nullable VkBufferCopy2 pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {
             return null;
@@ -109,7 +110,7 @@ public record VkCopyBufferInfo2(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkBufferCopy2[] pRegions(int assumedCount) {
+    public @Nullable VkBufferCopy2[] pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkBufferCopy2.SIZE);
         VkBufferCopy2[] arr = new VkBufferCopy2[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -118,7 +119,7 @@ public record VkCopyBufferInfo2(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pRegions(@nullable VkBufferCopy2 value) {
+    public void pRegions(@Nullable VkBufferCopy2 value) {
         pRegionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

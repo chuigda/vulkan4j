@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkWin32SurfaceCreateInfoKHR(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -66,7 +67,7 @@ public record VkWin32SurfaceCreateInfoKHR(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$hinstance, OFFSET$hinstance, value);
     }
 
-    public void hinstance(@nullable IPointer pointer) {
+    public void hinstance(@Nullable IPointer pointer) {
         hinstance(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -78,7 +79,7 @@ public record VkWin32SurfaceCreateInfoKHR(MemorySegment segment) implements IPoi
         segment.set(LAYOUT$hwnd, OFFSET$hwnd, value);
     }
 
-    public void hwnd(@nullable IPointer pointer) {
+    public void hwnd(@Nullable IPointer pointer) {
         hwnd(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 

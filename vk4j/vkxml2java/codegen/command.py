@@ -45,6 +45,7 @@ def generate_command_class_file(registry: Registry, commands: list[Command], cla
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.RawFunctionLoader;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -98,11 +99,11 @@ def generate_command_descriptor(
 
 
 def generate_command_segment(command: Command) -> str:
-    return f'''    public final @nullable MemorySegment SEGMENT${command.name};'''
+    return f'''    public final @Nullable MemorySegment SEGMENT${command.name};'''
 
 
 def generate_command_handle(command: Command) -> str:
-    return f'''    public final @nullable MethodHandle HANDLE${command.name};'''
+    return f'''    public final @Nullable MethodHandle HANDLE${command.name};'''
 
 
 def generate_command_load(registry: Registry, command: Command, dual_loader: bool) -> str:
@@ -159,7 +160,7 @@ def generate_command_wrapper(command: Command, param_types: list[CType], result_
 
 
 def generate_input_output_type(type_: CType, optional: bool) -> str:
-    nullable_prefix = '@nullable ' if optional else ''
+    nullable_prefix = '@Nullable ' if optional else ''
 
     if isinstance(type_, CPointerType):
         if isinstance(type_.pointee, CNonRefType):

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -51,7 +52,7 @@ public record VkCommandBufferInheritanceRenderingInfo(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -92,7 +93,7 @@ public record VkCommandBufferInheritanceRenderingInfo(MemorySegment segment) imp
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
     /// the buffer.
-    public @nullable @enumtype(VkFormat.class) IntBuffer pColorAttachmentFormats() {
+    public @Nullable @enumtype(VkFormat.class) IntBuffer pColorAttachmentFormats() {
         MemorySegment s = pColorAttachmentFormatsRaw();
         if (s.address() == 0) {
             return null;
@@ -101,7 +102,7 @@ public record VkCommandBufferInheritanceRenderingInfo(MemorySegment segment) imp
         return new IntBuffer(s);
     }
 
-    public void pColorAttachmentFormats(@nullable @enumtype(VkFormat.class) IntBuffer value) {
+    public void pColorAttachmentFormats(@Nullable @enumtype(VkFormat.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentFormatsRaw(s);
     }

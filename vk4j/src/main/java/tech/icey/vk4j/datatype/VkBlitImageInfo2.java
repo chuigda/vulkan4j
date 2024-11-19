@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -50,11 +51,11 @@ public record VkBlitImageInfo2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkImage srcImage() {
+    public @Nullable VkImage srcImage() {
         MemorySegment s = segment.get(LAYOUT$srcImage, OFFSET$srcImage);
         if (s.address() == 0) {
             return null;
@@ -62,7 +63,7 @@ public record VkBlitImageInfo2(MemorySegment segment) implements IPointer {
         return new VkImage(s);
     }
 
-    public void srcImage(@nullable VkImage value) {
+    public void srcImage(@Nullable VkImage value) {
         segment.set(
             LAYOUT$srcImage,
             OFFSET$srcImage,
@@ -78,7 +79,7 @@ public record VkBlitImageInfo2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$srcImageLayout, OFFSET$srcImageLayout, value);
     }
 
-    public @nullable VkImage dstImage() {
+    public @Nullable VkImage dstImage() {
         MemorySegment s = segment.get(LAYOUT$dstImage, OFFSET$dstImage);
         if (s.address() == 0) {
             return null;
@@ -86,7 +87,7 @@ public record VkBlitImageInfo2(MemorySegment segment) implements IPointer {
         return new VkImage(s);
     }
 
-    public void dstImage(@nullable VkImage value) {
+    public void dstImage(@Nullable VkImage value) {
         segment.set(
             LAYOUT$dstImage,
             OFFSET$dstImage,
@@ -118,7 +119,7 @@ public record VkBlitImageInfo2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 
-    public @nullable VkImageBlit2 pRegions() {
+    public @Nullable VkImageBlit2 pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.address() == 0) {
             return null;
@@ -128,7 +129,7 @@ public record VkBlitImageInfo2(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkImageBlit2[] pRegions(int assumedCount) {
+    public @Nullable VkImageBlit2[] pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw().reinterpret(assumedCount * VkImageBlit2.SIZE);
         VkImageBlit2[] arr = new VkImageBlit2[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -137,7 +138,7 @@ public record VkBlitImageInfo2(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pRegions(@nullable VkImageBlit2 value) {
+    public void pRegions(@Nullable VkImageBlit2 value) {
         pRegionsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,7 +47,7 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -66,7 +67,7 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) imp
         segment.set(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback, value);
     }
 
-    public void pfnUserCallback(@nullable IPointer pointer) {
+    public void pfnUserCallback(@Nullable IPointer pointer) {
         pfnUserCallback(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -78,7 +79,7 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(MemorySegment segment) imp
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
     }
 
-    public void pUserData(@nullable IPointer pointer) {
+    public void pUserData(@Nullable IPointer pointer) {
         pUserData(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 

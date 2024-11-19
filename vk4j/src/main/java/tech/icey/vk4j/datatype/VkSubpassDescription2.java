@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -54,7 +55,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -98,7 +99,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pInputAttachments, OFFSET$pInputAttachments, value);
     }
 
-    public @nullable VkAttachmentReference2 pInputAttachments() {
+    public @Nullable VkAttachmentReference2 pInputAttachments() {
         MemorySegment s = pInputAttachmentsRaw();
         if (s.address() == 0) {
             return null;
@@ -108,7 +109,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkAttachmentReference2[] pInputAttachments(int assumedCount) {
+    public @Nullable VkAttachmentReference2[] pInputAttachments(int assumedCount) {
         MemorySegment s = pInputAttachmentsRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);
         VkAttachmentReference2[] arr = new VkAttachmentReference2[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -117,7 +118,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pInputAttachments(@nullable VkAttachmentReference2 value) {
+    public void pInputAttachments(@Nullable VkAttachmentReference2 value) {
         pInputAttachmentsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -137,7 +138,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
 
-    public @nullable VkAttachmentReference2 pColorAttachments() {
+    public @Nullable VkAttachmentReference2 pColorAttachments() {
         MemorySegment s = pColorAttachmentsRaw();
         if (s.address() == 0) {
             return null;
@@ -147,7 +148,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkAttachmentReference2[] pColorAttachments(int assumedCount) {
+    public @Nullable VkAttachmentReference2[] pColorAttachments(int assumedCount) {
         MemorySegment s = pColorAttachmentsRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);
         VkAttachmentReference2[] arr = new VkAttachmentReference2[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -156,7 +157,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pColorAttachments(@nullable VkAttachmentReference2 value) {
+    public void pColorAttachments(@Nullable VkAttachmentReference2 value) {
         pColorAttachmentsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -168,7 +169,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments, value);
     }
 
-    public @nullable VkAttachmentReference2 pResolveAttachments() {
+    public @Nullable VkAttachmentReference2 pResolveAttachments() {
         MemorySegment s = pResolveAttachmentsRaw();
         if (s.address() == 0) {
             return null;
@@ -178,7 +179,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkAttachmentReference2[] pResolveAttachments(int assumedCount) {
+    public @Nullable VkAttachmentReference2[] pResolveAttachments(int assumedCount) {
         MemorySegment s = pResolveAttachmentsRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);
         VkAttachmentReference2[] arr = new VkAttachmentReference2[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -187,7 +188,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pResolveAttachments(@nullable VkAttachmentReference2 value) {
+    public void pResolveAttachments(@Nullable VkAttachmentReference2 value) {
         pResolveAttachmentsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -199,7 +200,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment, value);
     }
 
-    public @nullable VkAttachmentReference2 pDepthStencilAttachment() {
+    public @Nullable VkAttachmentReference2 pDepthStencilAttachment() {
         MemorySegment s = pDepthStencilAttachmentRaw();
         if (s.address() == 0) {
             return null;
@@ -209,7 +210,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkAttachmentReference2[] pDepthStencilAttachment(int assumedCount) {
+    public @Nullable VkAttachmentReference2[] pDepthStencilAttachment(int assumedCount) {
         MemorySegment s = pDepthStencilAttachmentRaw().reinterpret(assumedCount * VkAttachmentReference2.SIZE);
         VkAttachmentReference2[] arr = new VkAttachmentReference2[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -218,7 +219,7 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
         return arr;
     }
 
-    public void pDepthStencilAttachment(@nullable VkAttachmentReference2 value) {
+    public void pDepthStencilAttachment(@Nullable VkAttachmentReference2 value) {
         pDepthStencilAttachmentRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -243,12 +244,12 @@ public record VkSubpassDescription2(MemorySegment segment) implements IPointer {
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pPreserveAttachments() {
+    public @Nullable @unsigned IntBuffer pPreserveAttachments() {
         MemorySegment s = pPreserveAttachmentsRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pPreserveAttachments(@nullable @unsigned IntBuffer value) {
+    public void pPreserveAttachments(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPreserveAttachmentsRaw(s);
     }

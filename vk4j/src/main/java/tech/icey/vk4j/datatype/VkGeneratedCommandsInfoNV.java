@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -56,7 +57,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -68,7 +69,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
     }
 
-    public @nullable VkPipeline pipeline() {
+    public @Nullable VkPipeline pipeline() {
         MemorySegment s = segment.get(LAYOUT$pipeline, OFFSET$pipeline);
         if (s.address() == 0) {
             return null;
@@ -76,7 +77,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         return new VkPipeline(s);
     }
 
-    public void pipeline(@nullable VkPipeline value) {
+    public void pipeline(@Nullable VkPipeline value) {
         segment.set(
             LAYOUT$pipeline,
             OFFSET$pipeline,
@@ -84,7 +85,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         );
     }
 
-    public @nullable VkIndirectCommandsLayoutNV indirectCommandsLayout() {
+    public @Nullable VkIndirectCommandsLayoutNV indirectCommandsLayout() {
         MemorySegment s = segment.get(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout);
         if (s.address() == 0) {
             return null;
@@ -92,7 +93,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         return new VkIndirectCommandsLayoutNV(s);
     }
 
-    public void indirectCommandsLayout(@nullable VkIndirectCommandsLayoutNV value) {
+    public void indirectCommandsLayout(@Nullable VkIndirectCommandsLayoutNV value) {
         segment.set(
             LAYOUT$indirectCommandsLayout,
             OFFSET$indirectCommandsLayout,
@@ -116,7 +117,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pStreams, OFFSET$pStreams, value);
     }
 
-    public @nullable VkIndirectCommandsStreamNV pStreams() {
+    public @Nullable VkIndirectCommandsStreamNV pStreams() {
         MemorySegment s = pStreamsRaw();
         if (s.address() == 0) {
             return null;
@@ -126,7 +127,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkIndirectCommandsStreamNV[] pStreams(int assumedCount) {
+    public @Nullable VkIndirectCommandsStreamNV[] pStreams(int assumedCount) {
         MemorySegment s = pStreamsRaw().reinterpret(assumedCount * VkIndirectCommandsStreamNV.SIZE);
         VkIndirectCommandsStreamNV[] arr = new VkIndirectCommandsStreamNV[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -135,7 +136,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         return arr;
     }
 
-    public void pStreams(@nullable VkIndirectCommandsStreamNV value) {
+    public void pStreams(@Nullable VkIndirectCommandsStreamNV value) {
         pStreamsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -147,7 +148,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$sequencesCount, OFFSET$sequencesCount, value);
     }
 
-    public @nullable VkBuffer preprocessBuffer() {
+    public @Nullable VkBuffer preprocessBuffer() {
         MemorySegment s = segment.get(LAYOUT$preprocessBuffer, OFFSET$preprocessBuffer);
         if (s.address() == 0) {
             return null;
@@ -155,7 +156,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         return new VkBuffer(s);
     }
 
-    public void preprocessBuffer(@nullable VkBuffer value) {
+    public void preprocessBuffer(@Nullable VkBuffer value) {
         segment.set(
             LAYOUT$preprocessBuffer,
             OFFSET$preprocessBuffer,
@@ -179,7 +180,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$preprocessSize, OFFSET$preprocessSize, value);
     }
 
-    public @nullable VkBuffer sequencesCountBuffer() {
+    public @Nullable VkBuffer sequencesCountBuffer() {
         MemorySegment s = segment.get(LAYOUT$sequencesCountBuffer, OFFSET$sequencesCountBuffer);
         if (s.address() == 0) {
             return null;
@@ -187,7 +188,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         return new VkBuffer(s);
     }
 
-    public void sequencesCountBuffer(@nullable VkBuffer value) {
+    public void sequencesCountBuffer(@Nullable VkBuffer value) {
         segment.set(
             LAYOUT$sequencesCountBuffer,
             OFFSET$sequencesCountBuffer,
@@ -203,7 +204,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$sequencesCountOffset, OFFSET$sequencesCountOffset, value);
     }
 
-    public @nullable VkBuffer sequencesIndexBuffer() {
+    public @Nullable VkBuffer sequencesIndexBuffer() {
         MemorySegment s = segment.get(LAYOUT$sequencesIndexBuffer, OFFSET$sequencesIndexBuffer);
         if (s.address() == 0) {
             return null;
@@ -211,7 +212,7 @@ public record VkGeneratedCommandsInfoNV(MemorySegment segment) implements IPoint
         return new VkBuffer(s);
     }
 
-    public void sequencesIndexBuffer(@nullable VkBuffer value) {
+    public void sequencesIndexBuffer(@Nullable VkBuffer value) {
         segment.set(
             LAYOUT$sequencesIndexBuffer,
             OFFSET$sequencesIndexBuffer,

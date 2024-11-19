@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -47,7 +48,7 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -83,7 +84,7 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) implements IPointe
         segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
 
-    public @nullable VkSampleLocationEXT pSampleLocations() {
+    public @Nullable VkSampleLocationEXT pSampleLocations() {
         MemorySegment s = pSampleLocationsRaw();
         if (s.address() == 0) {
             return null;
@@ -93,7 +94,7 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) implements IPointe
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkSampleLocationEXT[] pSampleLocations(int assumedCount) {
+    public @Nullable VkSampleLocationEXT[] pSampleLocations(int assumedCount) {
         MemorySegment s = pSampleLocationsRaw().reinterpret(assumedCount * VkSampleLocationEXT.SIZE);
         VkSampleLocationEXT[] arr = new VkSampleLocationEXT[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -102,7 +103,7 @@ public record VkSampleLocationsInfoEXT(MemorySegment segment) implements IPointe
         return arr;
     }
 
-    public void pSampleLocations(@nullable VkSampleLocationEXT value) {
+    public void pSampleLocations(@Nullable VkSampleLocationEXT value) {
         pSampleLocationsRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

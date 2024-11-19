@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -56,7 +57,7 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -100,7 +101,7 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements 
         segment.set(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride, value);
     }
 
-    public @nullable VkPipelineLayout pushconstantPipelineLayout() {
+    public @Nullable VkPipelineLayout pushconstantPipelineLayout() {
         MemorySegment s = segment.get(LAYOUT$pushconstantPipelineLayout, OFFSET$pushconstantPipelineLayout);
         if (s.address() == 0) {
             return null;
@@ -108,7 +109,7 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements 
         return new VkPipelineLayout(s);
     }
 
-    public void pushconstantPipelineLayout(@nullable VkPipelineLayout value) {
+    public void pushconstantPipelineLayout(@Nullable VkPipelineLayout value) {
         segment.set(
             LAYOUT$pushconstantPipelineLayout,
             OFFSET$pushconstantPipelineLayout,
@@ -169,7 +170,7 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements 
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
     /// the buffer.
-    public @nullable @enumtype(VkIndexType.class) IntBuffer pIndexTypes() {
+    public @Nullable @enumtype(VkIndexType.class) IntBuffer pIndexTypes() {
         MemorySegment s = pIndexTypesRaw();
         if (s.address() == 0) {
             return null;
@@ -178,7 +179,7 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements 
         return new IntBuffer(s);
     }
 
-    public void pIndexTypes(@nullable @enumtype(VkIndexType.class) IntBuffer value) {
+    public void pIndexTypes(@Nullable @enumtype(VkIndexType.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pIndexTypesRaw(s);
     }
@@ -196,12 +197,12 @@ public record VkIndirectCommandsLayoutTokenNV(MemorySegment segment) implements 
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or
     /// {@link IntBuffer#write}ing the buffer.
-    public @nullable @unsigned IntBuffer pIndexTypeValues() {
+    public @Nullable @unsigned IntBuffer pIndexTypeValues() {
         MemorySegment s = pIndexTypeValuesRaw();
         return s.address() == 0 ? null : new IntBuffer(s);
     }
 
-    public void pIndexTypeValues(@nullable @unsigned IntBuffer value) {
+    public void pIndexTypeValues(@Nullable @unsigned IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pIndexTypeValuesRaw(s);
     }

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -48,7 +49,7 @@ public record VkAccelerationStructureInfoNV(MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -92,7 +93,7 @@ public record VkAccelerationStructureInfoNV(MemorySegment segment) implements IP
         segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
     }
 
-    public @nullable VkGeometryNV pGeometries() {
+    public @Nullable VkGeometryNV pGeometries() {
         MemorySegment s = pGeometriesRaw();
         if (s.address() == 0) {
             return null;
@@ -102,7 +103,7 @@ public record VkAccelerationStructureInfoNV(MemorySegment segment) implements IP
 
     /// Note: this function is {@link unsafe} because it's up to user to provide the correct count of elements.
     @unsafe
-    public @nullable VkGeometryNV[] pGeometries(int assumedCount) {
+    public @Nullable VkGeometryNV[] pGeometries(int assumedCount) {
         MemorySegment s = pGeometriesRaw().reinterpret(assumedCount * VkGeometryNV.SIZE);
         VkGeometryNV[] arr = new VkGeometryNV[assumedCount];
         for (int i = 0; i < assumedCount; i++) {
@@ -111,7 +112,7 @@ public record VkAccelerationStructureInfoNV(MemorySegment segment) implements IP
         return arr;
     }
 
-    public void pGeometries(@nullable VkGeometryNV value) {
+    public void pGeometries(@Nullable VkGeometryNV value) {
         pGeometriesRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

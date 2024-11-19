@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -45,11 +46,11 @@ public record VkImportMemoryBufferCollectionFUCHSIA(MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkBufferCollectionFUCHSIA collection() {
+    public @Nullable VkBufferCollectionFUCHSIA collection() {
         MemorySegment s = segment.get(LAYOUT$collection, OFFSET$collection);
         if (s.address() == 0) {
             return null;
@@ -57,7 +58,7 @@ public record VkImportMemoryBufferCollectionFUCHSIA(MemorySegment segment) imple
         return new VkBufferCollectionFUCHSIA(s);
     }
 
-    public void collection(@nullable VkBufferCollectionFUCHSIA value) {
+    public void collection(@Nullable VkBufferCollectionFUCHSIA value) {
         segment.set(
             LAYOUT$collection,
             OFFSET$collection,

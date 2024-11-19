@@ -3,6 +3,7 @@ package ch_vma;
 import de.javagl.obj.ObjData;
 import de.javagl.obj.ObjReader;
 import de.javagl.obj.ObjUtils;
+import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
 import tech.icey.glfw.GLFW;
 import tech.icey.glfw.GLFWConstants;
@@ -11,7 +12,6 @@ import tech.icey.glfw.handle.GLFWwindow;
 import tech.icey.panama.Loader;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.enumtype;
-import tech.icey.panama.annotation.nullable;
 import tech.icey.panama.annotation.pointer;
 import tech.icey.panama.buffer.*;
 import tech.icey.vk4j.Constants;
@@ -1649,7 +1649,7 @@ class Application {
             int size,
             @enumtype(VkBufferUsageFlags.class) int usage,
             @enumtype(VmaAllocationCreateFlags.class) int vmaAllocationCreationFlags,
-            @nullable VmaAllocationInfo allocationInfo
+            @Nullable VmaAllocationInfo allocationInfo
     ) {
         try (var arena = Arena.ofConfined()) {
             var bufferInfo = VkBufferCreateInfo.allocate(arena);

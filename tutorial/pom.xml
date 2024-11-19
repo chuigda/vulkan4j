@@ -51,6 +51,11 @@
             <version>0.1.0-bravo</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>24.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

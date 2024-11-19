@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -50,7 +51,7 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
@@ -75,7 +76,7 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
     /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
     /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
     /// the buffer.
-    public @nullable VkSemaphore.Buffer pWaitSemaphores() {
+    public @Nullable VkSemaphore.Buffer pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.address() == 0) {
             return null;
@@ -83,7 +84,7 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
         return new VkSemaphore.Buffer(s);
     }
 
-    public void pWaitSemaphores(@nullable VkSemaphore.Buffer value) {
+    public void pWaitSemaphores(@Nullable VkSemaphore.Buffer value) {
         pWaitSemaphoresRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -100,7 +101,7 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
     /// and use {@link IntBuffer#reinterpret} to set the size before actually
     /// {@link IntBuffer#read}ing or {@link IntBuffer#write}ing
     /// the buffer.
-    public @nullable @enumtype(VkPipelineStageFlags.class) IntBuffer pWaitDstStageMask() {
+    public @Nullable @enumtype(VkPipelineStageFlags.class) IntBuffer pWaitDstStageMask() {
         MemorySegment s = pWaitDstStageMaskRaw();
         if (s.address() == 0) {
             return null;
@@ -109,7 +110,7 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
         return new IntBuffer(s);
     }
 
-    public void pWaitDstStageMask(@nullable @enumtype(VkPipelineStageFlags.class) IntBuffer value) {
+    public void pWaitDstStageMask(@Nullable @enumtype(VkPipelineStageFlags.class) IntBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitDstStageMaskRaw(s);
     }
@@ -135,7 +136,7 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
     /// and use {@link VkCommandBuffer.Buffer#reinterpret} to set the size before actually
     /// {@link VkCommandBuffer.Buffer#read}ing or {@link VkCommandBuffer.Buffer#write}ing
     /// the buffer.
-    public @nullable VkCommandBuffer.Buffer pCommandBuffers() {
+    public @Nullable VkCommandBuffer.Buffer pCommandBuffers() {
         MemorySegment s = pCommandBuffersRaw();
         if (s.address() == 0) {
             return null;
@@ -143,7 +144,7 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
         return new VkCommandBuffer.Buffer(s);
     }
 
-    public void pCommandBuffers(@nullable VkCommandBuffer.Buffer value) {
+    public void pCommandBuffers(@Nullable VkCommandBuffer.Buffer value) {
         pCommandBuffersRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 
@@ -168,7 +169,7 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
     /// and use {@link VkSemaphore.Buffer#reinterpret} to set the size before actually
     /// {@link VkSemaphore.Buffer#read}ing or {@link VkSemaphore.Buffer#write}ing
     /// the buffer.
-    public @nullable VkSemaphore.Buffer pSignalSemaphores() {
+    public @Nullable VkSemaphore.Buffer pSignalSemaphores() {
         MemorySegment s = pSignalSemaphoresRaw();
         if (s.address() == 0) {
             return null;
@@ -176,7 +177,7 @@ public record VkSubmitInfo(MemorySegment segment) implements IPointer {
         return new VkSemaphore.Buffer(s);
     }
 
-    public void pSignalSemaphores(@nullable VkSemaphore.Buffer value) {
+    public void pSignalSemaphores(@Nullable VkSemaphore.Buffer value) {
         pSignalSemaphoresRaw(value == null ? MemorySegment.NULL : value.segment());
     }
 

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -48,11 +49,11 @@ public record VkPushConstantsInfoKHR(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkPipelineLayout layout() {
+    public @Nullable VkPipelineLayout layout() {
         MemorySegment s = segment.get(LAYOUT$layout, OFFSET$layout);
         if (s.address() == 0) {
             return null;
@@ -60,7 +61,7 @@ public record VkPushConstantsInfoKHR(MemorySegment segment) implements IPointer 
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@nullable VkPipelineLayout value) {
+    public void layout(@Nullable VkPipelineLayout value) {
         segment.set(
             LAYOUT$layout,
             OFFSET$layout,
@@ -100,7 +101,7 @@ public record VkPushConstantsInfoKHR(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
 
-    public void pValues(@nullable IPointer pointer) {
+    public void pValues(@Nullable IPointer pointer) {
         pValues(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 

@@ -3,6 +3,7 @@ package tech.icey.vk4j.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -46,11 +47,11 @@ public record VkBindImageMemoryInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@nullable IPointer pointer) {
+    public void pNext(@Nullable IPointer pointer) {
         pNext(pointer == null ? MemorySegment.NULL : pointer.segment());
     }
 
-    public @nullable VkImage image() {
+    public @Nullable VkImage image() {
         MemorySegment s = segment.get(LAYOUT$image, OFFSET$image);
         if (s.address() == 0) {
             return null;
@@ -58,7 +59,7 @@ public record VkBindImageMemoryInfo(MemorySegment segment) implements IPointer {
         return new VkImage(s);
     }
 
-    public void image(@nullable VkImage value) {
+    public void image(@Nullable VkImage value) {
         segment.set(
             LAYOUT$image,
             OFFSET$image,
@@ -66,7 +67,7 @@ public record VkBindImageMemoryInfo(MemorySegment segment) implements IPointer {
         );
     }
 
-    public @nullable VkDeviceMemory memory() {
+    public @Nullable VkDeviceMemory memory() {
         MemorySegment s = segment.get(LAYOUT$memory, OFFSET$memory);
         if (s.address() == 0) {
             return null;
@@ -74,7 +75,7 @@ public record VkBindImageMemoryInfo(MemorySegment segment) implements IPointer {
         return new VkDeviceMemory(s);
     }
 
-    public void memory(@nullable VkDeviceMemory value) {
+    public void memory(@Nullable VkDeviceMemory value) {
         segment.set(
             LAYOUT$memory,
             OFFSET$memory,

@@ -1,6 +1,6 @@
 package tech.icey.vma;
 
-import tech.icey.panama.annotation.nullable;
+import org.jetbrains.annotations.Nullable;
 import tech.icey.vk4j.command.DeviceCommands;
 import tech.icey.vk4j.command.EntryCommands;
 import tech.icey.vk4j.command.InstanceCommands;
@@ -53,7 +53,7 @@ public final class VMAUtil {
         functions.vkGetImageMemoryRequirements2KHR(u(deviceCommands.SEGMENT$vkGetImageMemoryRequirements2));
     }
 
-    private static MemorySegment u(@nullable MemorySegment segment) {
+    private static MemorySegment u(@Nullable MemorySegment segment) {
         if (segment == null) {
             return MemorySegment.NULL;
         }

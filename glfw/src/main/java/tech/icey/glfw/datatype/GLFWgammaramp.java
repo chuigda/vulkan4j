@@ -3,6 +3,7 @@ package tech.icey.glfw.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -23,7 +24,7 @@ public record GLFWgammaramp(MemorySegment segment) implements IPointer {
     /// {@link ShortBuffer#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ShortBuffer#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @nullable @unsigned ShortBuffer red() {
+    public @Nullable @unsigned ShortBuffer red() {
         MemorySegment s = redRaw();
         if (s.address() == 0) {
             return null;
@@ -31,7 +32,7 @@ public record GLFWgammaramp(MemorySegment segment) implements IPointer {
         return new ShortBuffer(s);
     }
 
-    public void red(@nullable @unsigned ShortBuffer value) {
+    public void red(@Nullable @unsigned ShortBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         redRaw(s);
     }
@@ -48,7 +49,7 @@ public record GLFWgammaramp(MemorySegment segment) implements IPointer {
     /// {@link ShortBuffer#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ShortBuffer#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @nullable @unsigned ShortBuffer green() {
+    public @Nullable @unsigned ShortBuffer green() {
         MemorySegment s = greenRaw();
         if (s.address() == 0) {
             return null;
@@ -56,7 +57,7 @@ public record GLFWgammaramp(MemorySegment segment) implements IPointer {
         return new ShortBuffer(s);
     }
 
-    public void green(@nullable @unsigned ShortBuffer value) {
+    public void green(@Nullable @unsigned ShortBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         greenRaw(s);
     }
@@ -73,7 +74,7 @@ public record GLFWgammaramp(MemorySegment segment) implements IPointer {
     /// {@link ShortBuffer#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ShortBuffer#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @nullable @unsigned ShortBuffer blue() {
+    public @Nullable @unsigned ShortBuffer blue() {
         MemorySegment s = blueRaw();
         if (s.address() == 0) {
             return null;
@@ -81,7 +82,7 @@ public record GLFWgammaramp(MemorySegment segment) implements IPointer {
         return new ShortBuffer(s);
     }
 
-    public void blue(@nullable @unsigned ShortBuffer value) {
+    public void blue(@Nullable @unsigned ShortBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         blueRaw(s);
     }
