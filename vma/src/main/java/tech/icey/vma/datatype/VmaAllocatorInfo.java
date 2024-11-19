@@ -3,6 +3,7 @@ package tech.icey.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -17,7 +18,7 @@ import tech.icey.vk4j.enumtype.*;
 import tech.icey.vk4j.handle.*;
 
 public record VmaAllocatorInfo(MemorySegment segment) implements IPointer {
-    public @nullable VkInstance instance() {
+    public @Nullable VkInstance instance() {
         MemorySegment s = segment.asSlice(OFFSET$instance, SIZE$instance);
         if (s.address() == 0) {
             return null;
@@ -25,7 +26,7 @@ public record VmaAllocatorInfo(MemorySegment segment) implements IPointer {
         return new VkInstance(s);
     }
 
-    public void instance(@nullable VkInstance value) {
+    public void instance(@Nullable VkInstance value) {
         segment.set(
             LAYOUT$instance,
             OFFSET$instance,
@@ -33,7 +34,7 @@ public record VmaAllocatorInfo(MemorySegment segment) implements IPointer {
         );
     }
 
-    public @nullable VkPhysicalDevice physicalDevice() {
+    public @Nullable VkPhysicalDevice physicalDevice() {
         MemorySegment s = segment.asSlice(OFFSET$physicalDevice, SIZE$physicalDevice);
         if (s.address() == 0) {
             return null;
@@ -41,7 +42,7 @@ public record VmaAllocatorInfo(MemorySegment segment) implements IPointer {
         return new VkPhysicalDevice(s);
     }
 
-    public void physicalDevice(@nullable VkPhysicalDevice value) {
+    public void physicalDevice(@Nullable VkPhysicalDevice value) {
         segment.set(
             LAYOUT$physicalDevice,
             OFFSET$physicalDevice,
@@ -49,7 +50,7 @@ public record VmaAllocatorInfo(MemorySegment segment) implements IPointer {
         );
     }
 
-    public @nullable VkDevice device() {
+    public @Nullable VkDevice device() {
         MemorySegment s = segment.asSlice(OFFSET$device, SIZE$device);
         if (s.address() == 0) {
             return null;
@@ -57,7 +58,7 @@ public record VmaAllocatorInfo(MemorySegment segment) implements IPointer {
         return new VkDevice(s);
     }
 
-    public void device(@nullable VkDevice value) {
+    public void device(@Nullable VkDevice value) {
         segment.set(
             LAYOUT$device,
             OFFSET$device,

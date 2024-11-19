@@ -3,6 +3,7 @@ package tech.icey.glfw.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -39,7 +40,7 @@ public record GLFWimage(MemorySegment segment) implements IPointer {
     /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ByteBuffer#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @nullable @unsigned ByteBuffer pixels() {
+    public @Nullable @unsigned ByteBuffer pixels() {
         MemorySegment s = pixelsRaw();
         if (s.address() == 0) {
             return null;
@@ -47,7 +48,7 @@ public record GLFWimage(MemorySegment segment) implements IPointer {
         return new ByteBuffer(s);
     }
 
-    public void pixels(@nullable @unsigned ByteBuffer value) {
+    public void pixels(@Nullable @unsigned ByteBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pixelsRaw(s);
     }

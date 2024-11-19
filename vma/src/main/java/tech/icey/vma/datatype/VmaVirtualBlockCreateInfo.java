@@ -3,6 +3,7 @@ package tech.icey.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -41,7 +42,7 @@ public record VmaVirtualBlockCreateInfo(MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pAllocationCallbacks, OFFSET$pAllocationCallbacks, value);
     }
 
-    public @nullable VkAllocationCallbacks pAllocationCallbacks() {
+    public @Nullable VkAllocationCallbacks pAllocationCallbacks() {
         MemorySegment s = pAllocationCallbacksRaw();
         if (s.address() == 0) {
             return null;
@@ -51,7 +52,7 @@ public record VmaVirtualBlockCreateInfo(MemorySegment segment) implements IPoint
 
     /// Note: this function is {@link unsafe} because it's up to caller to provide the correct count of elements.
     @unsafe
-    public @nullable VkAllocationCallbacks[] pAllocationCallbacks(int assumedCount) {
+    public @Nullable VkAllocationCallbacks[] pAllocationCallbacks(int assumedCount) {
         MemorySegment s = pAllocationCallbacksRaw();
         if (s.address() == 0) {
             return null;
@@ -65,7 +66,7 @@ public record VmaVirtualBlockCreateInfo(MemorySegment segment) implements IPoint
         return ret;
     }
 
-    public void pAllocationCallbacks(@nullable VkAllocationCallbacks value) {
+    public void pAllocationCallbacks(@Nullable VkAllocationCallbacks value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAllocationCallbacksRaw(s);
     }

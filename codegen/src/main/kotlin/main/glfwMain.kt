@@ -34,7 +34,7 @@ fun main() {
         "tech.icey.glfw",
         "tech.icey.glfw",
         "GLFW",
-        listOf("tech.icey.vk4j.datatype.*", "tech.icey.vk4j.handle.*")
+        listOf("tech.icey.vk4j.datatype.*", "tech.icey.vk4j.enumtype.*", "tech.icey.vk4j.handle.*")
     )
     File("glfw/src/main/java/tech/icey/glfw/GLFW.java").writeText(commands)
 

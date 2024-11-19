@@ -3,6 +3,7 @@ package tech.icey.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -25,7 +26,7 @@ public record VmaDefragmentationInfo(MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @nullable VmaPool pool() {
+    public @Nullable VmaPool pool() {
         MemorySegment s = segment.asSlice(OFFSET$pool, SIZE$pool);
         if (s.address() == 0) {
             return null;
@@ -33,7 +34,7 @@ public record VmaDefragmentationInfo(MemorySegment segment) implements IPointer 
         return new VmaPool(s);
     }
 
-    public void pool(@nullable VmaPool value) {
+    public void pool(@Nullable VmaPool value) {
         segment.set(
             LAYOUT$pool,
             OFFSET$pool,

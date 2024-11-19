@@ -3,6 +3,7 @@ package tech.icey.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 
+import org.jetbrains.annotations.Nullable;
 import tech.icey.panama.IPointer;
 import tech.icey.panama.NativeLayout;
 import tech.icey.panama.annotation.*;
@@ -25,7 +26,7 @@ public record VmaAllocationInfo(MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$memoryType, OFFSET$memoryType, value);
     }
 
-    public @nullable VkDeviceMemory deviceMemory() {
+    public @Nullable VkDeviceMemory deviceMemory() {
         MemorySegment s = segment.asSlice(OFFSET$deviceMemory, SIZE$deviceMemory);
         if (s.address() == 0) {
             return null;
@@ -33,7 +34,7 @@ public record VmaAllocationInfo(MemorySegment segment) implements IPointer {
         return new VkDeviceMemory(s);
     }
 
-    public void deviceMemory(@nullable VkDeviceMemory value) {
+    public void deviceMemory(@Nullable VkDeviceMemory value) {
         segment.set(
             LAYOUT$deviceMemory,
             OFFSET$deviceMemory,
@@ -93,7 +94,7 @@ public record VmaAllocationInfo(MemorySegment segment) implements IPointer {
     /// {@link ByteBuffer#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ByteBuffer#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @nullable ByteBuffer pName() {
+    public @Nullable ByteBuffer pName() {
         MemorySegment s = pNameRaw();
         if (s.address() == 0) {
             return null;
@@ -101,7 +102,7 @@ public record VmaAllocationInfo(MemorySegment segment) implements IPointer {
         return new ByteBuffer(s);
     }
 
-    public void pName(@nullable ByteBuffer value) {
+    public void pName(@Nullable ByteBuffer value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNameRaw(s);
     }
