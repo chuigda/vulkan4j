@@ -1373,8 +1373,6 @@ class Application {
             preImageMemoryBarrier.dstAccessMask(VkAccessFlags.VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT);
             preImageMemoryBarrier.oldLayout(VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED);
             preImageMemoryBarrier.newLayout(VkImageLayout.VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
-            preImageMemoryBarrier.srcQueueFamilyIndex(Constants.VK_QUEUE_FAMILY_IGNORED);
-            preImageMemoryBarrier.dstQueueFamilyIndex(Constants.VK_QUEUE_FAMILY_IGNORED);
             preImageMemoryBarrier.image(swapChainImages[imageIndex]);
             preImageMemoryBarrier.subresourceRange().aspectMask(VkImageAspectFlags.VK_IMAGE_ASPECT_COLOR_BIT);
             preImageMemoryBarrier.subresourceRange().baseMipLevel(0);
@@ -1383,7 +1381,7 @@ class Application {
             preImageMemoryBarrier.subresourceRange().layerCount(1);
             deviceCommands.vkCmdPipelineBarrier(
                     commandBuffer,
-                    VkPipelineStageFlags.VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,
+                    VkPipelineStageFlags.VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT,
                     VkPipelineStageFlags.VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,
                     0,
                     0, null,
@@ -1402,6 +1400,8 @@ class Application {
             colorAttachmentInfo.imageLayout(VkImageLayout.VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
             colorAttachmentInfo.loadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_CLEAR);
             colorAttachmentInfo.storeOp(VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_STORE);
+            colorAttachmentInfo.clearValue().color().float32().write(0, 1.0f);
+            colorAttachmentInfo.clearValue().color().float32().write(3, 1.0f); // rgba(1.0, 0.0, 0.0, 1.0)
             var depthAttachmentInfo = renderingAttachmentInfos[1];
             depthAttachmentInfo.imageView(depthImageView);
             depthAttachmentInfo.imageLayout(VkImageLayout.VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
@@ -1463,8 +1463,6 @@ class Application {
             postImageMemoryBarrier.dstAccessMask(0);
             postImageMemoryBarrier.oldLayout(VkImageLayout.VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
             postImageMemoryBarrier.newLayout(VkImageLayout.VK_IMAGE_LAYOUT_PRESENT_SRC_KHR);
-            postImageMemoryBarrier.srcQueueFamilyIndex(Constants.VK_QUEUE_FAMILY_IGNORED);
-            postImageMemoryBarrier.dstQueueFamilyIndex(Constants.VK_QUEUE_FAMILY_IGNORED);
             postImageMemoryBarrier.image(swapChainImages[imageIndex]);
             postImageMemoryBarrier.subresourceRange().aspectMask(VkImageAspectFlags.VK_IMAGE_ASPECT_COLOR_BIT);
             postImageMemoryBarrier.subresourceRange().baseMipLevel(0);
