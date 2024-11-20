@@ -557,8 +557,6 @@ class Application {
             depthStencil.stencilTestEnable(Constants.VK_FALSE);
 
             var pipelineLayoutInfo = VkPipelineLayoutCreateInfo.allocate(arena);
-            pipelineLayoutInfo.setLayoutCount(0);
-            pipelineLayoutInfo.pSetLayouts(null);
             pipelineLayoutInfo.pushConstantRangeCount(0);
             pipelineLayoutInfo.pPushConstantRanges(null);
             var pDescriptorSetLayout = VkDescriptorSetLayout.Buffer.allocate(arena);
@@ -1367,7 +1365,6 @@ class Application {
                 throw new RuntimeException("Failed to begin recording command buffer, vulkan error code: " + VkResult.explain(result));
             }
 
-            // transform the image from VK_IMAGE_LAYOUT_UNDEFINED to VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL
             var preImageMemoryBarrier = VkImageMemoryBarrier.allocate(arena);
             preImageMemoryBarrier.srcAccessMask(0);
             preImageMemoryBarrier.dstAccessMask(VkAccessFlags.VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT);
@@ -1400,13 +1397,12 @@ class Application {
             colorAttachmentInfo.imageLayout(VkImageLayout.VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
             colorAttachmentInfo.loadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_CLEAR);
             colorAttachmentInfo.storeOp(VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_STORE);
-            colorAttachmentInfo.clearValue().color().float32().write(0, 1.0f);
-            colorAttachmentInfo.clearValue().color().float32().write(3, 1.0f); // rgba(1.0, 0.0, 0.0, 1.0)
             var depthAttachmentInfo = renderingAttachmentInfos[1];
             depthAttachmentInfo.imageView(depthImageView);
             depthAttachmentInfo.imageLayout(VkImageLayout.VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
             depthAttachmentInfo.loadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_CLEAR);
             depthAttachmentInfo.storeOp(VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_DONT_CARE);
+            depthAttachmentInfo.clearValue().depthStencil().depth(1.0f);
 
             renderingInfo.colorAttachmentCount(1);
             renderingInfo.pColorAttachments(colorAttachmentInfo);
