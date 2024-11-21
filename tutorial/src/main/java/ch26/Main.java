@@ -582,8 +582,6 @@ class Application {
             colorBlending.blendConstants().write(3, 0.0f);
 
             var pipelineLayoutInfo = VkPipelineLayoutCreateInfo.allocate(arena);
-            pipelineLayoutInfo.setLayoutCount(0);
-            pipelineLayoutInfo.pSetLayouts(null);
             pipelineLayoutInfo.pushConstantRangeCount(0);
             pipelineLayoutInfo.pPushConstantRanges(null);
             var pDescriptorSetLayout = VkDescriptorSetLayout.Buffer.allocate(arena);

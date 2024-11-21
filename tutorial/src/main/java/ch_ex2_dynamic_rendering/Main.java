@@ -607,8 +607,6 @@ class Application {
             depthStencil.stencilTestEnable(Constants.VK_FALSE);
 
             var pipelineLayoutInfo = VkPipelineLayoutCreateInfo.allocate(arena);
-            pipelineLayoutInfo.setLayoutCount(0);
-            pipelineLayoutInfo.pSetLayouts(null);
             pipelineLayoutInfo.pushConstantRangeCount(0);
             pipelineLayoutInfo.pPushConstantRanges(null);
             var pDescriptorSetLayout = VkDescriptorSetLayout.Buffer.allocate(arena);
