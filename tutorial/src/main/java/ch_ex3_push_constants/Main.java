@@ -143,9 +143,7 @@ class Application {
         vma.vmaDestroyBuffer(vmaAllocator, indexBuffer, indexBufferAllocation);
         deviceCommands.vkDestroyPipeline(device, graphicsPipeline, null);
         deviceCommands.vkDestroyPipelineLayout(device, pipelineLayout, null);
-        for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
-            vma.vmaDestroyBuffer(vmaAllocator, uniformBuffers[i], uniformBuffersAllocation[i]);
-        }
+        vma.vmaDestroyBuffer(vmaAllocator, uniformBuffer, uniformBufferAllocation);
         deviceCommands.vkDestroyDescriptorPool(device, descriptorPool, null);
         deviceCommands.vkDestroyDescriptorSetLayout(device, descriptorSetLayout, null);
         vma.vmaDestroyAllocator(vmaAllocator);
@@ -178,6 +176,8 @@ class Application {
         createImageViews();
         createColorResources();
         createDepthResources();
+
+        updateUniformBuffer();
     }
 
     private void cleanupSwapChain() {
@@ -943,26 +943,22 @@ class Application {
 
     private void createUniformBuffers() {
         var bufferSize = UniformBufferObject.bufferSize();
-        uniformBuffers = new VkBuffer[MAX_FRAMES_IN_FLIGHT];
-        uniformBuffersAllocation = new VmaAllocation[MAX_FRAMES_IN_FLIGHT];
-        uniformBuffersMapped = new FloatBuffer[MAX_FRAMES_IN_FLIGHT];
 
         try (var arena = Arena.ofConfined()) {
             var allocationInfo = VmaAllocationInfo.allocate(arena);
-            for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
-                var pair = createBuffer(
-                        bufferSize * Float.BYTES,
-                        VkBufferUsageFlags.VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
-                        VmaAllocationCreateFlags.VMA_ALLOCATION_CREATE_MAPPED_BIT
-                                | VmaAllocationCreateFlags.VMA_ALLOCATION_CREATE_HOST_ACCESS_RANDOM_BIT,
-                        allocationInfo
-                );
-                uniformBuffers[i] = pair.first;
-                uniformBuffersAllocation[i] = pair.second;
-
-                uniformBuffersMapped[i] = new FloatBuffer(allocationInfo.pMappedData()).reinterpret(bufferSize);
-            }
+            var pair = createBuffer(
+                    bufferSize * Float.BYTES,
+                    VkBufferUsageFlags.VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
+                    VmaAllocationCreateFlags.VMA_ALLOCATION_CREATE_MAPPED_BIT
+                            | VmaAllocationCreateFlags.VMA_ALLOCATION_CREATE_HOST_ACCESS_RANDOM_BIT,
+                    allocationInfo
+            );
+            uniformBuffer = pair.first;
+            uniformBufferAllocation = pair.second;
+            uniformBufferMapped = new FloatBuffer(allocationInfo.pMappedData()).reinterpret(bufferSize);
         }
+
+        updateUniformBuffer();
     }
 
     private void createDescriptorPool() {
@@ -1007,7 +1003,7 @@ class Application {
 
             for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
                 var bufferInfo = VkDescriptorBufferInfo.allocate(arena);
-                bufferInfo.buffer(uniformBuffers[i]);
+                bufferInfo.buffer(uniformBuffer);
                 bufferInfo.offset(0);
                 bufferInfo.range((long) UniformBufferObject.bufferSize() * Float.BYTES);
 
@@ -1115,8 +1111,6 @@ class Application {
 
             deviceCommands.vkResetCommandBuffer(commandBuffer, 0);
             recordCommandBuffer(commandBuffer, imageIndex);
-
-            updateUniformBuffer();
 
             var submitInfo = VkSubmitInfo.allocate(arena);
             var pWaitSemaphores = VkSemaphore.Buffer.allocate(arena);
@@ -1572,7 +1566,7 @@ class Application {
                 true
         );
 
-        new UniformBufferObject(view, proj).writeToBuffer(uniformBuffersMapped[currentFrame]);
+        new UniformBufferObject(view, proj).writeToBuffer(uniformBufferMapped);
     }
 
     private void framebufferResizeCallback(
@@ -2131,9 +2125,9 @@ class Application {
     private VmaAllocation vertexBufferAllocation;
     private VkBuffer indexBuffer;
     private VmaAllocation indexBufferAllocation;
-    private VkBuffer[] uniformBuffers;
-    private VmaAllocation[] uniformBuffersAllocation;
-    private FloatBuffer[] uniformBuffersMapped;
+    private VkBuffer uniformBuffer;
+    private VmaAllocation uniformBufferAllocation;
+    private FloatBuffer uniformBufferMapped;
     private VkDescriptorPool descriptorPool;
     private VkDescriptorSet[] descriptorSets;
     private VkCommandBuffer[] commandBuffers;
