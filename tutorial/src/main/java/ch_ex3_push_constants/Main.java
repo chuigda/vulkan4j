@@ -510,8 +510,7 @@ class Application {
 
     private void createGraphicsPipeline() {
         try (var arena = Arena.ofConfined()) {
-            var vertShaderCode = readShaderFile("/shader/ch27.vert.spv", arena);
-            // We can still use the previous fragment shader
+            var vertShaderCode = readShaderFile("/shader/ch_ex3.vert.spv", arena);
             var fragShaderCode = readShaderFile("/shader/ch26.frag.spv", arena);
 
             var vertexShaderModule = createShaderModule(vertShaderCode);
@@ -607,10 +606,12 @@ class Application {
             depthStencil.stencilTestEnable(Constants.VK_FALSE);
 
             var pipelineLayoutInfo = VkPipelineLayoutCreateInfo.allocate(arena);
-            pipelineLayoutInfo.setLayoutCount(0);
-            pipelineLayoutInfo.pSetLayouts(null);
-            pipelineLayoutInfo.pushConstantRangeCount(0);
-            pipelineLayoutInfo.pPushConstantRanges(null);
+            var pushConstantRange = VkPushConstantRange.allocate(arena);
+            pushConstantRange.stageFlags(VkShaderStageFlags.VK_SHADER_STAGE_VERTEX_BIT);
+            pushConstantRange.offset(0);
+            pushConstantRange.size(16 * Float.BYTES);
+            pipelineLayoutInfo.pushConstantRangeCount(1);
+            pipelineLayoutInfo.pPushConstantRanges(pushConstantRange);
             var pDescriptorSetLayout = VkDescriptorSetLayout.Buffer.allocate(arena);
             pDescriptorSetLayout.write(0, descriptorSetLayout);
             pipelineLayoutInfo.setLayoutCount(1);
@@ -1513,6 +1514,19 @@ class Application {
                     null
             );
 
+            var time = (System.currentTimeMillis() - startTime) / 1000.0f;
+            var model = new Matrix4f().rotate((float) (Math.toRadians(90.0f) * time), 0.0f, 0.0f, 1.0f);
+            var pushConstantBuffer = FloatBuffer.allocate(arena, 16);
+            model.get(pushConstantBuffer.segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+            deviceCommands.vkCmdPushConstants(
+                    commandBuffer,
+                    pipelineLayout,
+                    VkShaderStageFlags.VK_SHADER_STAGE_VERTEX_BIT,
+                    0,
+                    16 * Float.BYTES,
+                    pushConstantBuffer.segment()
+            );
+
             deviceCommands.vkCmdDrawIndexed(commandBuffer, indices.length, 1, 0, 0, 0);
             deviceCommands.vkCmdEndRendering(commandBuffer);
 
@@ -1545,9 +1559,6 @@ class Application {
     }
 
     private void updateUniformBuffer() {
-        var time = (System.currentTimeMillis() - startTime) / 1000.0f;
-
-        var model = new Matrix4f().rotate((float) (Math.toRadians(90.0f) * time), 0.0f, 0.0f, 1.0f);
         var view = new Matrix4f().lookAt(
                 2.0f, 2.0f, 2.0f,
                 0.0f, 0.0f, 0.0f,
@@ -1561,7 +1572,7 @@ class Application {
                 true
         );
 
-        new UniformBufferObject(model, view, proj).writeToBuffer(uniformBuffersMapped[currentFrame]);
+        new UniformBufferObject(view, proj).writeToBuffer(uniformBuffersMapped[currentFrame]);
     }
 
     private void framebufferResizeCallback(
@@ -1672,17 +1683,16 @@ class Application {
         }
     }
 
-    private record UniformBufferObject(Matrix4f model, Matrix4f view, Matrix4f proj) {
+    private record UniformBufferObject(Matrix4f view, Matrix4f proj) {
         public static int bufferSize() {
-            return 16 * 3;
+            return 16 * 2;
         }
 
         public void writeToBuffer(FloatBuffer buffer) {
             assert buffer.size() >= bufferSize();
 
-            model.get(buffer.segment().asByteBuffer().order(ByteOrder.nativeOrder()));
-            view.get(buffer.offset(16).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
-            proj.get(buffer.offset(32).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+            view.get(buffer.offset(0).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+            proj.get(buffer.offset(16).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
         }
     }
 
