@@ -15,12 +15,12 @@ Create a Maven project and add the following dependencies to your `pom.xml` file
 <dependency>
     <groupId>tech.icey</groupId>
     <artifactId>vulkan4j</artifactId>
-    <version>0.2.1</version>
+    <version>0.2.2</version>
 </dependency>
 <dependency>
     <groupId>tech.icey</groupId>
     <artifactId>glfw</artifactId>
-    <version>0.2.1</version>
+    <version>0.2.2</version>
 </dependency>
 <dependency>
     <groupId>org.joml</groupId>

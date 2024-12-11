@@ -36,19 +36,19 @@
         <dependency>
             <groupId>tech.icey</groupId>
             <artifactId>vulkan4j</artifactId>
-            <version>0.2.1</version>
+            <version>0.2.2</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>tech.icey</groupId>
             <artifactId>glfw</artifactId>
-            <version>0.2.1</version>
+            <version>0.2.2</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>tech.icey</groupId>
             <artifactId>vma</artifactId>
-            <version>0.1.0-charlie</version>
+            <version>0.1.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
