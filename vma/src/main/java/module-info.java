@@ -1,4 +1,4 @@
-module vma {
+module tech.icey.vma {
     exports tech.icey.vma;
     exports tech.icey.vma.bitmask;
     exports tech.icey.vma.datatype;
