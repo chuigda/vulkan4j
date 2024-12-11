@@ -96,7 +96,6 @@ public final class Drill {
             gles2.glAttachShader(shaderProgram, vertexShader);
             gles2.glAttachShader(shaderProgram, fragmentShader);
             gles2.glLinkProgram(shaderProgram);
-            gles2.glUseProgram(shaderProgram);
 
             var pWidth = IntBuffer.allocate(arena, 1);
             var pHeight = IntBuffer.allocate(arena, 1);
@@ -112,9 +111,10 @@ public final class Drill {
                 gles2.glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
                 gles2.glClear(GLES2Constants.GL_COLOR_BUFFER_BIT);
 
+                gles2.glUseProgram(shaderProgram);
+
                 gles2.glEnableVertexAttribArray(0);
                 gles2.glEnableVertexAttribArray(1);
-                gles2.glBindBuffer(GLES2Constants.GL_ARRAY_BUFFER, vbo);
                 gles2.glVertexAttribPointer(
                         0,
                         2,
@@ -131,6 +131,8 @@ public final class Drill {
                         5 * Float.BYTES,
                         MemorySegment.ofAddress(2 * Float.BYTES)
                 );
+
+                gles2.glBindBuffer(GLES2Constants.GL_ARRAY_BUFFER, vbo);
                 gles2.glDrawArrays(GLES2Constants.GL_TRIANGLES, 0, 3);
 
                 glfw.glfwSwapBuffers(window);
