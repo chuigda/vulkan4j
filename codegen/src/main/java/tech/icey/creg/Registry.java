@@ -37,13 +37,13 @@ public final class Registry {
     }
 
     public static Registry mergeRegistry(String mergedRegistryName, Registry ...registries) {
-        HashMap <String, Constant> constants = new HashMap<>();
-        HashMap <String, Function> functions = new HashMap<>();
-        HashMap <String, OpaqueTypedef> opaqueTypedefs = new HashMap<>();
-        HashMap <String, OpaqueHandle> opaqueHandles = new HashMap<>();
-        HashMap <String, Structure> structures = new HashMap<>();
-        HashMap <String, Bitmask> bitmasks = new HashMap<>();
-        HashMap <String, Enum> enums = new HashMap<>();
+        HashMap<String, Constant> constants = new HashMap<>();
+        HashMap<String, Function> functions = new HashMap<>();
+        HashMap<String, OpaqueTypedef> opaqueTypedefs = new HashMap<>();
+        HashMap<String, OpaqueHandle> opaqueHandles = new HashMap<>();
+        HashMap<String, Structure> structures = new HashMap<>();
+        HashMap<String, Bitmask> bitmasks = new HashMap<>();
+        HashMap<String, Enum> enums = new HashMap<>();
 
         for (Registry registry : registries) {
             constants.putAll(registry.constants);
