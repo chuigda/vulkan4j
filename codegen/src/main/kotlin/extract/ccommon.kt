@@ -109,22 +109,12 @@ fun skipWhitespace(line: String, position: Int): Int {
     return i
 }
 
-fun Char.isIdentChar(): Boolean {
-    return this.isLetterOrDigit() || this == '_'
-}
+fun Char.isIdentChar(): Boolean = this.isLetterOrDigit() || this == '_'
 
-fun Char.isIdentStartingChar(): Boolean {
-    return this.isLetter() || this == '_'
-}
+fun Char.isIdentStartingChar(): Boolean = this.isLetter() || this == '_'
 
-fun String.isAllCapital(): Boolean {
-    return this.any { it.isLetter() } && this.filter { it.isLetter() }.all { it.isUpperCase() }
-}
+fun String.isAllCapital(): Boolean = this.any { it.isLetter() } && this.filter { it.isLetter() }.all { it.isUpperCase() }
 
-fun String.isValidIdent(): Boolean {
-    return this.isNotEmpty() && this[0].isIdentStartingChar() && this.all { it.isIdentChar() }
-}
+fun String.isValidIdent(): Boolean = this.isNotEmpty() && this[0].isIdentStartingChar() && this.all { it.isIdentChar() }
 
-fun String.isLikelyMacro(): Boolean {
-    return this.isValidIdent() && this.isAllCapital()
-}
+fun String.isLikelyMacro(): Boolean = this.isValidIdent() && this.isAllCapital()
