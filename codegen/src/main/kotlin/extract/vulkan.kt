@@ -135,8 +135,8 @@ fun extractCommand(commandElement: Element): Function {
     postprocessOptionalParams(params)
     val result = extractType(protoElement.getOnlyElementByTagName("type"))
 
-    val successCodes = commandElement.getAttributeNullable("successcodes")?.split(',') ?: null
-    val errorCodes = commandElement.getAttributeNullable("errorcodes")?.split(',') ?: null
+    val successCodes = commandElement.getAttributeNullable("successcodes")?.split(',')
+    val errorCodes = commandElement.getAttributeNullable("errorcodes")?.split(',')
 
     return Function(
         name=name,
