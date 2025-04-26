@@ -131,8 +131,7 @@ data class Param(
     override val api: String? = null,
     val type: Type,
     val len: String? = null,
-    val arglen: List<String>? = null,
-    val optional: Boolean = false
+    var optional: Boolean = false
 ) : Entity()
 
 data class Bitmask(

@@ -1,86 +1,226 @@
 package extract
 
+import ArrayType
 import Bitflag
 import Bitmask
+import Function
 import IdentifierType
+import Param
+import PointerType
 import Registry
+import Type
 import TypeAlias
-import getChildElementTextByTagName
+import getAttributeNonNull
+import getAttributeNullable
+import getElementText
+import getFirstElementByTagName
+import getOnlyElementByTagName
 import org.w3c.dom.Element
-import org.w3c.dom.NodeList
+import org.w3c.dom.Node
 import parseIntOrDefault
 import parseIntOrNull
+import putEntity
+import putEntityIfAbsent
+import toElementList
+import toList
 
 fun extractVulkanRegistry(fileContent: String): Registry {
     val xml = parseXML(fileContent)
-    val childCount = xml.childNodes.length
 
-    val typesNode = xml.getElementsByTagName("types").item(0)
-    if (typesNode !is Element) {
-        throw RuntimeException("types element not found")
-    }
-    val types= typesNode.getElementsByTagName("type")
+    val typesElement = xml.getOnlyElementByTagName("types")
+    val typeElementList= typesElement.getElementsByTagName("type").toElementList()
+    val enumsElementList = xml.getElementsByTagName("enums").toElementList()
+
+    // 抽取：类型别名
 
     val aliases = mutableMapOf<String, TypeAlias>()
-    for (i in 0 until types.length) {
-        val typeNode = types.item(i)
-        if (typeNode !is Element
-            || !typeNode.hasAttribute("alias")
-            || !typeNode.hasAttribute("name")) {
+    for (typeNode in typeElementList) {
+        if (!typeNode.hasAttribute("alias") || !typeNode.hasAttribute("name")) {
             continue
         }
 
-        val opaqueTypedef = extractTypeAlias(typeNode)
-        aliases.put(opaqueTypedef.name, opaqueTypedef)
+        aliases.putEntity(extractTypeAlias(typeNode))
+    }
+
+    // 抽取：位掩模
+
+    val bitmasks = mutableMapOf<String, Bitmask>()
+    for (enumsElement in enumsElementList) {
+        if (!enumsElement.hasAttribute("type")) {
+            continue
+        }
+
+        val enumsElementType = enumsElement.getAttributeNonNull("type")
+        if (enumsElementType == "bitmask") {
+            bitmasks.putEntity(extractBitmask(enumsElement))
+        }
+    }
+
+    for (typeElement in typeElementList) {
+        if (typeElement.getAttributeNullable("category") == "bitmask"
+            && !typeElement.hasAttribute("alias")) {
+            bitmasks.putEntityIfAbsent(extractBitmaskType(typeElement))
+        }
+    }
+
+    // 抽取：函数
+
+    val commandsElement = xml.getOnlyElementByTagName("commands")
+    val commandElementList = commandsElement.getElementsByTagName("command").toElementList()
+    val commands = mutableMapOf<String, Function>()
+
+    for (commandNode in commandElementList) {
+        if (commandNode.hasAttribute("alias")) {
+            continue
+        }
+
+        if (commandNode.hasAttribute("api") && commandNode.getAttributeNonNull("api") != "vulkan") {
+            continue
+        }
+
+        commands.putEntity(extractCommand(commandNode))
     }
 
     TODO()
 }
 
-fun extractTypeAlias(element: Element): TypeAlias = TypeAlias(
-    name=element.getAttribute("name"),
-    api=element.getAttribute("api"),
-    target=IdentifierType(element.getAttribute("alias"))
+fun extractTypeAlias(element: Element) = TypeAlias(
+    name=element.getAttributeNonNull("name"),
+    api=element.getAttributeNullable("api"),
+    target=IdentifierType(element.getAttributeNonNull("alias"))
 )
 
-fun extractBitmask(element: Element): Bitmask = Bitmask(
-    name=element.getChildElementTextByTagName("name"),
-    api=element.getAttribute("api"),
-    bitflags=extractBitflagList(element.getElementsByTagName("enum")),
-    bitwidth=element.getAttribute("bitwidth").parseIntOrNull()
+fun extractBitmask(element: Element) = Bitmask(
+    name=element.getAttributeNonNull("name"),
+    api=element.getAttributeNullable("api"),
+    bitflags=element.getElementsByTagName("enum")
+        .toElementList()
+        .filter { !it.hasAttribute("alias") }
+        .map { extractBitflag(it) },
+    bitwidth=element.getAttributeNullable("bitwidth").parseIntOrNull()
 )
 
-fun extractBitmaskType(element: Element): Bitmask = Bitmask(
-    name=element.getChildElementTextByTagName("name"),
-    api=element.getAttribute("api"),
+fun extractBitmaskType(element: Element) = Bitmask(
+    name=element.getOnlyElementByTagName("name").textContent.trim(),
+    api=element.getAttributeNullable("api"),
     bitflags=emptyList(),
     bitwidth=null,
     requireFlagBits=(if (element.hasAttribute("requires")) {
-        element.getAttribute("requires")
-    } else if (element.hasAttribute("bitpos")) {
-        element.getAttribute("bitpos")
+        element.getAttributeNonNull("requires")
+    } else if (element.hasAttribute("bitvalues")) {
+        element.getAttributeNonNull("bitvalues")
     } else {
         null
     })
 )
 
-fun extractBitflagList(nodeList: NodeList): List<Bitflag> {
-    val bitmasks = mutableListOf<Bitflag>()
-    for (i in 0 until nodeList.length) {
-        val node = nodeList.item(i)
-        if (node !is Element || !node.hasAttribute("alias")) {
+fun extractBitflag(element: Element) = Bitflag(
+    name=element.getAttributeNonNull("name"),
+    value=(if (element.hasAttribute("bitpos")) {
+        1.shl(element.getAttributeNonNull("bitpos").toInt())
+    } else {
+        element.getAttributeNullable("value").parseIntOrDefault(0)
+    }).toString()
+)
+
+fun extractCommand(commandElement: Element): Function {
+    val protoElement = commandElement.getOnlyElementByTagName("proto")
+    val name = commandElement.getFirstElementByTagName("name").textContent.trim()
+    val api = commandElement.getAttributeNullable("api")
+
+    val params = commandElement.getElementsByTagName("param")
+        .toElementList()
+        .filter { it.parentNode.nodeName != "implicitexternsyncparams" }
+        .map { extractParam(it) }
+    postprocessOptionalParams(params)
+    val result = extractType(protoElement.getOnlyElementByTagName("type"))
+
+    val successCodes = commandElement.getAttributeNullable("successcodes")?.split(',') ?: null
+    val errorCodes = commandElement.getAttributeNullable("errorcodes")?.split(',') ?: null
+
+    return Function(
+        name=name,
+        api=api,
+        params=params,
+        result=result,
+        successResult=successCodes,
+        errorResult=errorCodes
+    )
+}
+
+fun extractParam(paramElement: Element) = Param(
+    name = paramElement.getOnlyElementByTagName("name").textContent.trim(),
+    api = paramElement.getAttributeNullable("api"),
+    type = extractType(paramElement.getOnlyElementByTagName("type")),
+    len = paramElement.getAttributeNullable("len"),
+    optional = paramElement.getAttributeNullable("optional")?.startsWith("true") ?: false
+)
+
+fun postprocessOptionalParams(paramList: List<Param>) {
+    for (param in paramList) {
+        if (param.optional || param.len == null) {
             continue
         }
 
+        for (tmp in paramList) {
+            if (tmp != param && tmp.name == param.len && tmp.optional) {
+                param.optional = true
+                break
+            }
+        }
     }
-    return bitmasks
 }
 
-fun extractBitflag(element: Element): Bitflag = Bitflag(
-    name=element.getAttribute("name"),
-    value=(if (element.hasAttribute("bitpos")) {
-        1.shl(element.getAttribute("bitpos").toInt())
+fun extractType(typeElement: Element): Type {
+    fun isPotentialArrayDeclaratorElement(node: Node) = when (node.nodeType) {
+        Node.TEXT_NODE -> {
+            val text = node.textContent.trim()
+            text.startsWith("[") && text.endsWith("]")
+        }
+        Node.ELEMENT_NODE -> node.nodeName == "enum"
+        else -> false
+    }
+
+    fun mapArrayLengthPart(part: String) = if (part.startsWith("[") && part.endsWith("]")) {
+        part.substring(1, part.length - 1).split("][")
     } else {
-        element.getAttribute("value").parseIntOrDefault(0)
-    }).toString()
-)
+        listOf(part)
+    }
+
+    val identifier = typeElement.getElementText()
+
+    val parentNode = typeElement.parentNode
+    if (parentNode != null) {
+        val lengthParts = parentNode.childNodes.toList()
+            .filter { isPotentialArrayDeclaratorElement(it) }
+            .map { it.textContent.trim() }
+
+        if (lengthParts.isNotEmpty()) {
+            val lengths = lengthParts
+                .flatMap { mapArrayLengthPart(it) }
+                .reversed()
+
+            var arrayType = ArrayType(IdentifierType(identifier), lengths[0])
+            for (i in 1 until lengths.size) {
+                arrayType = ArrayType(arrayType, lengths[i])
+            }
+            return arrayType
+        }
+    }
+
+    val nextNodeText = typeElement.nextSibling?.textContent?.trim() ?: ""
+    if (nextNodeText.startsWith('*')) {
+        val const = typeElement.previousSibling?.textContent?.contains("const") ?: false
+        val pointerType = PointerType(IdentifierType(identifier), const)
+
+        return if (nextNodeText.startsWith("* const*")) {
+            PointerType(pointerType, true)
+        } else if (nextNodeText.startsWith("**")) {
+            PointerType(pointerType, false)
+        } else {
+            pointerType
+        }
+    }
+
+    return IdentifierType(identifier)
+}
