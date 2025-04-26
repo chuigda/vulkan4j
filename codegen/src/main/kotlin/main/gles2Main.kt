@@ -1,7 +1,7 @@
 package main
 
 import codegen.generateConstants
-import codegen.generateFunctionClassFile
+import codegen.generateCommandClassFile
 import extract.extractGLES2Registry
 import java.io.File
 
@@ -15,9 +15,9 @@ fun main() {
     )
     File("gles2/src/main/java/tech/icey/gles2/${registry.constantClassName}.java").writeText(constants)
 
-    val commands = generateFunctionClassFile(
+    val commands = generateCommandClassFile(
         registry,
-        registry.functions.values.toList(),
+        registry.commands.values.toList(),
         "tech.icey.gles2",
         "tech.icey.gles2",
         "GLES2",

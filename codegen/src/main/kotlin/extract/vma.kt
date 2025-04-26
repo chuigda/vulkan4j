@@ -5,7 +5,7 @@ import Bitflag
 import Bitmask
 import Constant
 import Registry
-import Function
+import Command
 import FunctionTypedef
 import Handle
 import IdentifierType
@@ -21,7 +21,7 @@ fun extractVMAHeader(fileContent: String): Registry {
     val lines = fileContent.split('\n').map(String::trim)
 
     val constants = mutableMapOf<String, Constant>()
-    val functions = mutableMapOf<String, Function>()
+    val commands = mutableMapOf<String, Command>()
     val opaqueTypedefs = mutableMapOf<String, OpaqueTypedef>()
     val handles = mutableMapOf<String, Handle>()
     val structs = mutableMapOf<String, Structure>()
@@ -69,8 +69,8 @@ fun extractVMAHeader(fileContent: String): Registry {
                 j++
             }
             val functionString = lines.subList(i, j + 1).joinToString("")
-            val function = parseFunction(functionString)
-            functions[function.name] = function
+            val command = parseCommand(functionString)
+            commands[command.name] = command
 
             i = j + 1
         }
@@ -117,7 +117,7 @@ fun extractVMAHeader(fileContent: String): Registry {
     return Registry(
         aliases = emptyMap(),
         constants=constants,
-        functions=functions,
+        commands=commands,
         opaqueTypedefs=opaqueTypedefs,
         handles=handles,
         structs=structs,
@@ -200,7 +200,7 @@ private fun parseFunctionTypedef(line: String): FunctionTypedef {
     return FunctionTypedef(functionName, params=params, result=retType)
 }
 
-private fun parseFunction(line: String): Function {
+private fun parseCommand(line: String): Command {
     val tokens = tokenize(line)
     assert(tokens[0] == "VMA_CALL_PRE")
 
@@ -267,7 +267,7 @@ private fun parseFunction(line: String): Function {
         }
     }
 
-    return Function(fName, params=params, result=retType)
+    return Command(fName, params=params, result=retType)
 }
 
 private fun parseEnum(lines: List<String>, i: Int): Pair<List<Pair<String, String>>, Int> {

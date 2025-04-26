@@ -28,9 +28,9 @@ fun main() {
     val constants = generateConstants("tech.icey.glfw", registry.constantClassName, registry.constants.values.toList())
     File("glfw/src/main/java/tech/icey/glfw/${registry.constantClassName}.java").writeText(constants)
 
-    val commands = generateFunctionClassFile(
+    val commands = generateCommandClassFile(
         registry,
-        registry.functions.values.toList(),
+        registry.commands.values.toList(),
         "tech.icey.glfw",
         "tech.icey.glfw",
         "GLFW",

@@ -1,7 +1,7 @@
 package extract
 
 import Constant
-import Function
+import Command
 import Param
 import Registry
 import org.w3c.dom.Element
@@ -11,7 +11,7 @@ fun extractGLES2Registry(fileContent: String): Registry {
     val childCount = xml.childNodes.length
 
     val allConstants = mutableMapOf<String, Constant>()
-    val allCommands = mutableMapOf<String, Function>()
+    val allCommands = mutableMapOf<String, Command>()
     for (i in 0 until childCount) {
         val child = xml.childNodes.item(i)
         if (child is Element) {
@@ -25,7 +25,7 @@ fun extractGLES2Registry(fileContent: String): Registry {
     }
 
     val requiredConstants = mutableMapOf<String, Constant>()
-    val requiredCommands = mutableMapOf<String, Function>()
+    val requiredCommands = mutableMapOf<String, Command>()
 
     val gles2Feature = findGLES2Feature(xml)
     val requires = gles2Feature.getElementsByTagName("require")
@@ -56,7 +56,7 @@ fun extractGLES2Registry(fileContent: String): Registry {
     return Registry(
         aliases = emptyMap(),
         constants=requiredConstants,
-        functions=requiredCommands,
+        commands=requiredCommands,
         opaqueTypedefs=emptyMap(),
         handles=emptyMap(),
         structs=emptyMap(),
@@ -83,7 +83,7 @@ private fun extractEnumConstants(enums: Element, allConstants: MutableMap<String
     }
 }
 
-private fun extractCommands(commands: Element, allCommands: MutableMap<String, Function>) {
+private fun extractCommands(commands: Element, allCommands: MutableMap<String, Command>) {
     val childCount = commands.childNodes.length
     for (i in 0 until childCount) {
         val command = commands.childNodes.item(i)
@@ -107,7 +107,7 @@ private fun extractCommands(commands: Element, allCommands: MutableMap<String, F
                     }
                 }
 
-                allCommands[name] = Function(name, params=params, result=retType)
+                allCommands[name] = Command(name, params=params, result=retType)
             }
         }
     }

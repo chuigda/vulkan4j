@@ -10,4 +10,3 @@ fun parseXML(s: String): Element {
     return builder.parse(InputSource(StringReader(s))).documentElement
 }
 
-fun Element.getAttributeText(name: String): String? = if (hasAttribute(name)) getAttribute(name) else null

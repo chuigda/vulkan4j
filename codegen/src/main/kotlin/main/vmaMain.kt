@@ -52,9 +52,9 @@ fun main() {
         File("vma/src/main/java/tech/icey/vma/enumtype/${enum.key}.java").writeText(generated)
     }
 
-    val functions = generateFunctionClassFile(
+    val functions = generateCommandClassFile(
         registry,
-        registry.functions.values.toList(),
+        registry.commands.values.toList(),
         "tech.icey.vma",
         "tech.icey.vma",
         "VMA",

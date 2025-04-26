@@ -1,33 +1,33 @@
 package codegen
 
-import Function
+import Command
 import FunctionTypedef
 import Param
 import Registry
 import appendLn
 
-fun generateFunctionClassFile(
+fun generateCommandClassFile(
     registry: Registry,
-    functions: List<Function>,
+    commands: List<Command>,
     packageName: String,
     artifactPackageName: String,
     className: String,
     importExtra: List<String>? = null,
     docLinkGenerator: ((String) -> String)? = null
 ): String {
-    val functionParamTypes = mutableListOf<List<CType>>()
-    val functionRetTypes = mutableListOf<CType>()
-    val functionDescriptors = mutableListOf<String>()
-    val functionWrappers = mutableListOf<String>()
+    val commandParamTypes = mutableListOf<List<CType>>()
+    val commandRetTypes = mutableListOf<CType>()
+    val commandDescriptors = mutableListOf<String>()
+    val commandWrappers = mutableListOf<String>()
 
-    for (function in functions) {
-        val (descriptor, paramTypes, retType) = generateFunctionDescriptor(registry, function)
-        functionDescriptors.add(descriptor)
-        functionParamTypes.add(paramTypes)
-        functionRetTypes.add(retType)
+    for (command in commands) {
+        val (descriptor, paramTypes, retType) = generateFunctionDescriptor(registry, command)
+        commandDescriptors.add(descriptor)
+        commandParamTypes.add(paramTypes)
+        commandRetTypes.add(retType)
 
-        val wrapper = generateFunctionWrapper(function, paramTypes, retType, docLinkGenerator)
-        functionWrappers.add(wrapper)
+        val wrapper = generateFunctionWrapper(command, paramTypes, retType, docLinkGenerator)
+        commandWrappers.add(wrapper)
     }
 
     return buildString {
@@ -59,21 +59,21 @@ fun generateFunctionClassFile(
         appendLn()
 
         appendLn("public final class $className {")
-        for (wrapper in functionWrappers) {
+        for (wrapper in commandWrappers) {
             appendLn(indent(wrapper, 1))
         }
 
-        for (descriptor in functionDescriptors) {
+        for (descriptor in commandDescriptors) {
             appendLn(indent(descriptor, 1))
         }
         appendLn()
 
-        for (function in functions) {
+        for (function in commands) {
             appendLn(indent("public final @Nullable MemorySegment SEGMENT$${function.name};", 1))
         }
         appendLn()
 
-        for (function in functions) {
+        for (function in commands) {
             appendLn(indent("public final @Nullable MethodHandle HANDLE$${function.name};", 1))
         }
         appendLn()
@@ -81,7 +81,7 @@ fun generateFunctionClassFile(
         appendLn(indent("""
             public ${className}(RawFunctionLoader loader) {
         """.trimIndent(), 1))
-        for (function in functions) {
+        for (function in commands) {
             appendLn(indent("SEGMENT$${function.name} = loader.apply(\"${function.name}\");", 2))
             appendLn(indent("HANDLE$${function.name} = RawFunctionLoader.link(SEGMENT$${function.name}, DESCRIPTOR$${function.name});", 2))
         }
@@ -118,11 +118,11 @@ fun generateFunctionDescriptorClassFile(
 
 private fun generateFunctionDescriptor(
     registry: Registry,
-    function: Function
+    command: Command
 ): Triple<String, List<CType>, CType> {
-    val retType = if (function.result != null) { lowerType(registry, function.result) } else { voidType }
-    val paramTypes = function.params.map { lowerType(registry, it.type) }
-    val descriptor = impGenerateFunctionDescriptor("DESCRIPTOR$${function.name}", retType, paramTypes)
+    val retType = if (command.result != null) { lowerType(registry, command.result) } else { voidType }
+    val paramTypes = command.params.map { lowerType(registry, it.type) }
+    val descriptor = impGenerateFunctionDescriptor("DESCRIPTOR$${command.name}", retType, paramTypes)
     return Triple(descriptor, paramTypes, retType)
 }
 
@@ -156,7 +156,7 @@ private fun impGenerateFunctionDescriptor(
 }
 
 private fun generateFunctionWrapper(
-    function: Function,
+    command: Command,
     paramTypes: List<CType>,
     retType: CType,
     docLinkGenerator: ((String) -> String)?
@@ -164,7 +164,7 @@ private fun generateFunctionWrapper(
     val params = mutableListOf<String>()
     val callArgs = mutableListOf<String>()
     for (i in paramTypes.indices) {
-        val param = function.params[i]
+        val param = command.params[i]
         val paramType = paramTypes[i]
 
         val paramIOType = generateInputOutputType(paramType, param.optional)
@@ -175,10 +175,10 @@ private fun generateFunctionWrapper(
     val retIOType = generateInputOutputType(retType, true)
     val callExpr = buildString {
         if (params.isEmpty()) {
-            append("HANDLE$${function.name}.invokeExact()")
+            append("HANDLE$${command.name}.invokeExact()")
         }
         else {
-            appendLn("HANDLE$${function.name}.invokeExact(")
+            appendLn("HANDLE$${command.name}.invokeExact(")
             appendLn(indent(callArgs.joinToString(",\n"), 2))
             append(")")
         }
@@ -186,16 +186,16 @@ private fun generateFunctionWrapper(
 
     return buildString {
         if (docLinkGenerator != null) {
-            appendLn("/// @see ${docLinkGenerator(function.name)}")
+            appendLn("/// @see ${docLinkGenerator(command.name)}")
         }
 
         if (params.isNotEmpty()) {
-            appendLn("public $retIOType ${function.name}(")
+            appendLn("public $retIOType ${command.name}(")
             appendLn(indent(params.joinToString(",\n"), 2))
             appendLn(") {")
         }
         else {
-            appendLn("public $retIOType ${function.name}() {")
+            appendLn("public $retIOType ${command.name}() {")
         }
         appendLn(indent("try {", 1))
         if (retType is CVoidType) {

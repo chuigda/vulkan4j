@@ -3,7 +3,7 @@ package extract
 import ArrayType
 import Bitflag
 import Bitmask
-import Function
+import Command
 import IdentifierType
 import Param
 import PointerType
@@ -67,7 +67,7 @@ fun extractVulkanRegistry(fileContent: String): Registry {
 
     val commandsElement = xml.getOnlyElementByTagName("commands")
     val commandElementList = commandsElement.getElementsByTagName("command").toElementList()
-    val commands = mutableMapOf<String, Function>()
+    val commands = mutableMapOf<String, Command>()
 
     for (commandNode in commandElementList) {
         if (commandNode.hasAttribute("alias")) {
@@ -123,7 +123,7 @@ fun extractBitflag(element: Element) = Bitflag(
     }).toString()
 )
 
-fun extractCommand(commandElement: Element): Function {
+fun extractCommand(commandElement: Element): Command {
     val protoElement = commandElement.getOnlyElementByTagName("proto")
     val name = commandElement.getFirstElementByTagName("name").textContent.trim()
     val api = commandElement.getAttributeNullable("api")
@@ -138,7 +138,7 @@ fun extractCommand(commandElement: Element): Function {
     val successCodes = commandElement.getAttributeNullable("successcodes")?.split(',')
     val errorCodes = commandElement.getAttributeNullable("errorcodes")?.split(',')
 
-    return Function(
+    return Command(
         name=name,
         api=api,
         params=params,

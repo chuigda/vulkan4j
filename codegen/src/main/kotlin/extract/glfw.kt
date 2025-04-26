@@ -3,7 +3,7 @@ package extract
 import ArrayType
 import Constant
 import Registry
-import Function
+import Command
 import FunctionTypedef
 import IdentifierType
 import Member
@@ -11,13 +11,12 @@ import OpaqueTypedef
 import Param
 import PointerType
 import Structure
-import Type
 
 fun extractGLFWHeader(fileContent: String): Registry {
     val lines = fileContent.split('\n').map(String::trim)
 
     val constants = mutableMapOf<String, Constant>()
-    val functions = mutableMapOf<String, Function>()
+    val commands = mutableMapOf<String, Command>()
     val opaqueTypedefs = mutableMapOf<String, OpaqueTypedef>()
     val functionTypedefs = mutableMapOf<String, FunctionTypedef>()
     for (line in lines) {
@@ -32,8 +31,8 @@ fun extractGLFWHeader(fileContent: String): Registry {
             constants[name] = Constant(name, expr=value)
         }
         else if (line.startsWith("GLFWAPI")) {
-            val function = parseCDecl(line.slice(8 until line.length))
-            functions[function.name] = function
+            val command = parseCDecl(line.slice(8 until line.length))
+            commands[command.name] = command
         }
         else if (line.startsWith("typedef struct") && line.endsWith(";")) {
             val tokens = tokenize(line)
@@ -50,7 +49,7 @@ fun extractGLFWHeader(fileContent: String): Registry {
     return Registry(
         aliases = emptyMap(),
         constants=constants,
-        functions=functions,
+        commands=commands,
         opaqueTypedefs=opaqueTypedefs,
         handles=mapOf(),
         structs=mapOf(),
@@ -117,7 +116,7 @@ fun addGLFWStructures(registry: Registry): Registry {
     return Registry(
         aliases = emptyMap(),
         constants=registry.constants,
-        functions=registry.functions,
+        commands=registry.commands,
         opaqueTypedefs=registry.opaqueTypedefs,
         handles=registry.handles,
         structs=structures,
@@ -127,11 +126,11 @@ fun addGLFWStructures(registry: Registry): Registry {
     )
 }
 
-private fun parseCDecl(line: String): Function {
+private fun parseCDecl(line: String): Command {
     val tokens = tokenize(line)
 
     var (retType, position) = parseType(tokens, 0)
-    val functionName = tokens[position]
+    val commandName = tokens[position]
     position++
 
     if (tokens[position] != "(") {
@@ -178,7 +177,7 @@ private fun parseCDecl(line: String): Function {
         throw RuntimeException("Expected ')'")
     }
 
-    return Function(functionName, params=params, result=retType)
+    return Command(commandName, params=params, result=retType)
 }
 
 private fun parseFunctionTypedef(line: String): FunctionTypedef {

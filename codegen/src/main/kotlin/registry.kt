@@ -1,7 +1,7 @@
 data class Registry(
     val aliases: Map<String, TypeAlias>,
     val constants: Map<String, Constant>,
-    val functions: Map<String, Function>,
+    val commands: Map<String, Command>,
     val opaqueTypedefs: Map<String, OpaqueTypedef>,
     val handles: Map<String, Handle>,
     val structs: Map<String, Structure>,
@@ -15,7 +15,7 @@ data class Registry(
 fun mergeRegistry(vararg registries: Registry): Registry {
     val aliases = mutableMapOf<String, TypeAlias>()
     val constants = mutableMapOf<String, Constant>()
-    val functions = mutableMapOf<String, Function>()
+    val functions = mutableMapOf<String, Command>()
     val opaqueTypedefs = mutableMapOf<String, OpaqueTypedef>()
     val handles = mutableMapOf<String, Handle>()
     val structures = mutableMapOf<String, Structure>()
@@ -26,7 +26,7 @@ fun mergeRegistry(vararg registries: Registry): Registry {
     for (registry in registries) {
         aliases.putAll(registry.aliases)
         constants.putAll(registry.constants)
-        functions.putAll(registry.functions)
+        functions.putAll(registry.commands)
         opaqueTypedefs.putAll(registry.opaqueTypedefs)
         handles.putAll(registry.handles)
         structures.putAll(registry.structs)
@@ -79,7 +79,7 @@ data class Constant(
     val type: IdentifierType? = null
 ) : Entity()
 
-data class Function(
+data class Command(
     override val name: String,
     override val api: String? = null,
     val params: List<Param>,
