@@ -4,6 +4,7 @@ import ArrayType
 import Bitflag
 import Bitmask
 import Command
+import Constant
 import IdentifierType
 import Param
 import PointerType
@@ -63,7 +64,7 @@ fun extractVulkanRegistry(fileContent: String): Registry {
         }
     }
 
-    // 抽取：函数
+    // 抽取：命令
 
     val commandsElement = xml.getOnlyElementByTagName("commands")
     val commandElementList = commandsElement.getElementsByTagName("command").toElementList()
@@ -79,6 +80,37 @@ fun extractVulkanRegistry(fileContent: String): Registry {
         }
 
         commands.putEntity(extractCommand(commandNode))
+    }
+
+    // 抽取：命令别名
+    val commandAliases = mutableMapOf<String, String>()
+    for (commandNode in commandElementList) {
+        if (!commandNode.hasAttribute("alias")) {
+            continue
+        }
+
+        val name = commandNode.getAttributeNonNull("name")
+        val alias = commandNode.getAttributeNonNull("alias")
+
+        if (alias !in commands) {
+            throw RuntimeException("Alias target command $alias not found")
+        }
+
+        commandAliases.put(name, alias)
+    }
+
+    // 抽取：常量
+    val constants = mutableMapOf<String, Constant>()
+    for (enumsElement in enumsElementList) {
+        if (enumsElement.getAttributeNullable("name") == "API Constants") {
+            for (constantElement in enumsElement.getElementsByTagName("enum").toElementList()) {
+                if (constantElement.hasAttribute("alias")) {
+                    continue
+                }
+
+                constants.putEntity(extractConstant(constantElement))
+            }
+        }
     }
 
     TODO()
@@ -223,4 +255,25 @@ fun extractType(typeElement: Element): Type {
     }
 
     return IdentifierType(identifier)
+}
+
+fun extractConstant(constantElement: Element): Constant {
+    val name = constantElement.getAttributeNonNull("name")
+    val api = constantElement.getAttributeNullable("api")
+    val value = constantElement.getAttributeNonNull("value")
+    val type = IdentifierType(if (name == "VK_TRUE" || name == "VK_FALSE") {
+        "uint32_t"
+    } else if (name != "WHOLE_SIZE" && (name.startsWith("VK_MAX") || name.endsWith("SIZE"))) {
+        "size_t"
+    } else if ("ULL" in value) {
+        "uint64_t"
+    } else if ("UL" in value) {
+        "uint32_t"
+    } else if ('f' in value || 'F' in value) {
+        "float"
+    } else {
+        "int32_t"
+    })
+
+    return Constant(name=name, api=api, type=type, expr=value)
 }
