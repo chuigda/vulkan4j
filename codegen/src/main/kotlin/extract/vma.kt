@@ -115,9 +115,10 @@ fun extractVMAHeader(fileContent: String): Registry {
     }
 
     return Registry(
-        aliases = emptyMap(),
+        aliases=emptyMap(),
         constants=constants,
         commands=commands,
+        commandAliases=emptyMap(),
         opaqueTypedefs=opaqueTypedefs,
         handles=handles,
         structs=structs,
