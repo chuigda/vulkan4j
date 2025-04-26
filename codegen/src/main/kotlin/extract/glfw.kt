@@ -48,6 +48,7 @@ fun extractGLFWHeader(fileContent: String): Registry {
     }
 
     return Registry(
+        aliases = emptyMap(),
         constants=constants,
         functions=functions,
         opaqueTypedefs=opaqueTypedefs,
@@ -114,6 +115,7 @@ fun addGLFWStructures(registry: Registry): Registry {
     )
 
     return Registry(
+        aliases = emptyMap(),
         constants=registry.constants,
         functions=registry.functions,
         opaqueTypedefs=registry.opaqueTypedefs,

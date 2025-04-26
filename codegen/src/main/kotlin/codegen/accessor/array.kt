@@ -37,7 +37,7 @@ private fun generateStructureArrayAccessor(elementType: CStructType, member: Mem
         }
 
         public ${elementType.name}[] ${member.name}() {
-            MemorySegment s = ${member.name}Raw()
+            MemorySegment s = ${member.name}Raw();
             ${elementType.name}[] arr = new ${elementType.name}[(int) LAYOUT$${member.name}.elementCount()];
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = new ${elementType.name}(s.asSlice(i * ${elementType.name}.SIZE, ${elementType.name}.SIZE));

@@ -8,7 +8,6 @@ import org.w3c.dom.Element
 
 fun extractGLES2Registry(fileContent: String): Registry {
     val xml = parseXML(fileContent)
-
     val childCount = xml.childNodes.length
 
     val allConstants = mutableMapOf<String, Constant>()
@@ -55,6 +54,7 @@ fun extractGLES2Registry(fileContent: String): Registry {
     }
 
     return Registry(
+        aliases = emptyMap(),
         constants=requiredConstants,
         functions=requiredCommands,
         opaqueTypedefs=emptyMap(),
