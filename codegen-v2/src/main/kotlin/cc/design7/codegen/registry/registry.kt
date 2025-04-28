@@ -22,7 +22,7 @@ data class Registry<E: IMergeable<E>>(
     val structures: MutableMap<Identifier, Structure>,
     val unions: MutableMap<Identifier, Structure>,
 
-    var extra: E
+    var ext: E
 ) {
     infix operator fun plus(other: Registry<E>): Registry<E> = Registry(
         aliases = (this.aliases + other.aliases).toMutableMap(),
@@ -34,29 +34,29 @@ data class Registry<E: IMergeable<E>>(
         opaqueHandleTypedefs = (this.opaqueHandleTypedefs + other.opaqueHandleTypedefs).toMutableMap(),
         structures = (this.structures + other.structures).toMutableMap(),
         unions = (this.unions + other.unions).toMutableMap(),
-        extra = this.extra.merge(other.extra)
+        ext = this.ext.merge(other.ext)
     )
 }
 
 abstract class Entity(name: String) {
     val name: Identifier = name.intern()
-    private var _extra: Any? = null
+    private var _ext: Any? = null
 
     constructor(name: String, extra: Any): this(name) {
-        this._extra = extra
+        this._ext = extra
     }
 
     fun <T> setExtra(extra: T) {
-        this._extra = extra
+        this._ext = extra
     }
 
     @Suppress("UNCHECKED_CAST")
-    fun <T> extra(): T = this._extra as T
+    fun <T> ext(): T = this._ext as T
 
     abstract fun toStringImpl(): String
 
-    final override fun toString() = toStringImpl() + if (this._extra != null) {
-        ", extra=$_extra)"
+    final override fun toString() = toStringImpl() + if (this._ext != null) {
+        ", extra=$_ext)"
     } else {
         ")"
     }

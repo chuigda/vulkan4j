@@ -127,3 +127,8 @@ class Extension(
         append(", require=$require")
     }
 }
+
+internal fun Entity.isVulkanAPI(): Boolean {
+    val ext = this.ext<VkCommonMetadata>()
+    return ext.api == null || ext.api.split(",").contains("vulkan")
+}

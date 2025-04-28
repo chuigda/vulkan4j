@@ -6,11 +6,8 @@ import org.w3c.dom.Element
 import org.w3c.dom.Node
 import java.io.File
 import java.math.BigInteger
-import java.util.logging.Logger
 
-private val log = Logger.getLogger("VulkanRegistry")
-
-fun extractVulkanRegistry(): Registry<VulkanRegistryExt> {
+internal fun extractRawVulkanRegistry(): Registry<VulkanRegistryExt> {
     log.info("正在从 Vulkan 核心注册表中抽取数据")
     val coreEntities = File("codegen-v2/input/vk.xml")
         .readText()
@@ -23,6 +20,7 @@ fun extractVulkanRegistry(): Registry<VulkanRegistryExt> {
         .parseXML()
         .extractEntities()
 
+    log.info("合并两个 Vulkan 注册表")
     return coreEntities + videoEntities
 }
 
@@ -101,7 +99,7 @@ private fun Element.extractEntities(): Registry<VulkanRegistryExt> {
         .toMutableMap()
 
     log.info(" - 抽取: 扩展")
-    val extensions = e.query("extensions/extension[@api]")
+    val extensions = e.query("extensions/extension")
         .map(::extractExtension)
         .associateBy { it.name }
         .toMutableMap()
@@ -116,7 +114,7 @@ private fun Element.extractEntities(): Registry<VulkanRegistryExt> {
         opaqueHandleTypedefs = opaqueHandleTypedefs,
         structures = structures,
         unions = unions,
-        extra = VulkanRegistryExt(
+        ext = VulkanRegistryExt(
             commandAliases = commandAliases,
             versions = versions,
             extensions = extensions
@@ -126,11 +124,11 @@ private fun Element.extractEntities(): Registry<VulkanRegistryExt> {
 
 private fun extractBitmask(e: Element) =
     Bitmask(
-        name = e.getAttributeText("name")!!
-            .replace("FlagBits", "flags"),
+        name = e.getAttributeText("name")!!.sanitizeFlagBits(),
         bitflags = e.getElementList("enum")
             .filter { it -> !it.hasAttribute("alias") }
             .map(::extractBitflag)
+            .filter { it.isVulkanAPI() }
             .toMutableList()
     ).apply {
         setExtra(VkCommonMetadata(e.getAttributeText("api")))
@@ -138,8 +136,7 @@ private fun extractBitmask(e: Element) =
 
 private fun extractBitmaskType(e: Element) =
     Bitmask(
-        name = e.getFirstElement("name")!!.textContent
-            .replace("FlagBits", "flags"),
+        name = e.getFirstElement("name")!!.textContent.sanitizeFlagBits(),
         bitflags = mutableListOf()
     ).apply {
         setExtra(VkCommonMetadata(e.getAttributeText("api")))
@@ -147,8 +144,7 @@ private fun extractBitmaskType(e: Element) =
 
 private fun extractBitflag(e: Element) =
     Bitflag(
-        name = e.getAttributeText("name")!!
-            .replace("FlagBits", "flags"),
+        name = e.getAttributeText("name")!!,
         value = e.getAttributeText("bitpos")
             ?.parseDecOrHex()
             ?.let { BigInteger.ONE.shiftLeft(it.toInt()) }
@@ -162,7 +158,8 @@ private fun extractCommand(e: Element): Command {
     return Command(
         name = proto.getFirstElement("name")!!.textContent.trim(),
         params = e.query("param")
-            .map(::extractParam),
+            .map(::extractParam)
+            .filter { it.isVulkanAPI() },
         result = extractType(proto.getFirstElement("type")!!),
         successCodes = e.getAttributeText("successcodes")
             ?.split(",")
@@ -185,7 +182,7 @@ private fun extractParam(e: Element): Param {
         len = len?.intern(),
         argLen = len?.split("->")?.map { it.intern() },
         optional = e.getAttributeText("optional")?.startsWith("true") ?: false,
-    )
+    ).apply { setExtra(VkCommonMetadata(api=e.getAttributeText("api"))) }
 }
 
 private fun extractAlias(e: Element) =
@@ -225,6 +222,7 @@ private fun extractEnumeration(e: Element) =
             e.getElementList("enum")
                 .filter { !it.hasAttribute("alias") }
                 .map(::extractVariant)
+                .filter { it.isVulkanAPI() }
                 .toMutableList(),
     ).apply {
         setExtra(VkCommonMetadata(api=e.getAttributeText("api")))
@@ -269,7 +267,9 @@ private fun extractOpaqueHandleTypedef(e: Element) =
 private fun extractStructure(e: Element) =
     Structure(
         name = e.getAttributeText("name")!!,
-        members = e.getElementList("member").map(::extractMember)
+        members = e.getElementList("member")
+            .map(::extractMember)
+            .filter { it.isVulkanAPI() }
     ).apply {
         setExtra(VkStructureMetadata(
             api = e.getAttributeText("api"),
@@ -306,8 +306,8 @@ private fun extractExtension(e: Element) =
         api = e.getAttributeText("api"),
         number = e.getAttributeText("number")!!.parseDecOrHex(),
         type = e.getAttributeText("type"),
-        author = e.getAttribute("author"),
-        contact = e.getAttribute("contact"),
+        author = e.getAttributeText("author") ?: "",
+        contact = e.getAttributeText("contact") ?: "",
         platform = e.getAttributeText("platform"),
         requires = e.getAttributeText("requires"),
         requiresCore = e.getAttributeText("requiresCore"),
@@ -326,7 +326,7 @@ private fun extractRequire(es: List<Element>): Require {
 
     for (e in es) {
         commands.addAll(e.getElementList("command").map { it.getAttributeText("name")!!.intern() })
-        types.addAll(e.getElementList("type").map { it.getAttributeText("name")!! })
+        types.addAll(e.getElementList("type").map { it.getAttributeText("name")!!.replace("FlagBits", "Flags") })
         values.addAll(
             e.getElementList("enum")
                 .map(::extractRequireValue)
@@ -360,7 +360,7 @@ private fun extractRequireValue(e: Element): RequireValue? {
 }
 
 private fun extractType(e: Element): Type {
-    val identifier = IdentifierType(e.textContent.trim().replace("FlagBits", "Flags").intern())
+    val identifier = IdentifierType(e.textContent.trim().sanitizeFlagBits().intern())
 
     // Array types, e.g.:
     // `<type>float</type> <name>matrix</name>[3][4]`
@@ -401,3 +401,5 @@ private fun extractType(e: Element): Type {
 
     return identifier
 }
+
+private fun String.sanitizeFlagBits() = replace("FlagBits", "Flags")
