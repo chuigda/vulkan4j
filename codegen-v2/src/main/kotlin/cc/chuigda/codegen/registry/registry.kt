@@ -1,6 +1,6 @@
 package cc.chuigda.codegen.registry
 
-import cc.chuigda.codegen.Either
+import cc.chuigda.codegen.util.Either
 import java.math.BigInteger
 
 interface IMergeable {
@@ -36,7 +36,8 @@ data class Registry<E: IMergeable>(
 
     var extra: E
 ) {
-    fun merge(other: Registry<E>) = Registry(
+    @Suppress("UNCHECKED_CAST")
+    infix operator fun plus(other: Registry<E>): Registry<E> = Registry(
         aliases = (this.aliases + other.aliases).toMutableMap(),
         bitmasks = (this.bitmasks + other.bitmasks).toMutableMap(),
         constants = (this.constants + other.constants).toMutableMap(),
@@ -46,7 +47,7 @@ data class Registry<E: IMergeable>(
         opaqueHandleTypedefs = (this.opaqueHandleTypedefs + other.opaqueHandleTypedefs).toMutableMap(),
         structures = (this.structures + other.structures).toMutableMap(),
         unions = (this.unions + other.unions).toMutableMap(),
-        extra = this.extra.merge(other.extra)
+        extra = this.extra.merge(other.extra) as E
     )
 }
 

@@ -1,54 +1,41 @@
 package cc.chuigda.codegen.extract.vulkan
 
-import cc.chuigda.codegen.getAttributeText
-import cc.chuigda.codegen.query
-import cc.chuigda.codegen.registry.Bitmask
-import cc.chuigda.codegen.registry.Registry
-import cc.chuigda.codegen.getElementList
-import cc.chuigda.codegen.getFirstElement
-import cc.chuigda.codegen.parseDecOrHex
-import cc.chuigda.codegen.parseXML
-import cc.chuigda.codegen.registry.ArrayType
-import cc.chuigda.codegen.registry.Bitflag
-import cc.chuigda.codegen.registry.Command
-import cc.chuigda.codegen.registry.Constant
-import cc.chuigda.codegen.registry.EnumVariant
-import cc.chuigda.codegen.registry.Enumeration
-import cc.chuigda.codegen.registry.FunctionTypedef
-import cc.chuigda.codegen.registry.Identifier
-import cc.chuigda.codegen.registry.IdentifierType
-import cc.chuigda.codegen.registry.Member
-import cc.chuigda.codegen.registry.OpaqueHandleTypedef
-import cc.chuigda.codegen.registry.Param
-import cc.chuigda.codegen.registry.PointerType
-import cc.chuigda.codegen.registry.Structure
-import cc.chuigda.codegen.registry.Type
-import cc.chuigda.codegen.registry.Typedef
-import cc.chuigda.codegen.registry.intern
-import cc.chuigda.codegen.registry.putEntityIfAbsent
-import cc.chuigda.codegen.toList
+import cc.chuigda.codegen.registry.*
+import cc.chuigda.codegen.util.*
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 import java.io.File
 import java.math.BigInteger
+import java.util.logging.Logger
 
-fun main() {
+private val log = Logger.getLogger("VulkanRegistry")
+
+fun extractVulkanRegistry(): Registry<VulkanRegistryExt> {
+    log.info("正在从 Vulkan 核心注册表中抽取数据")
     val coreEntities = File("codegen-v2/input/vk.xml")
         .readText()
         .parseXML()
         .extractEntities()
 
+    log.info("正在从 Vulkan 视频扩展注册表中抽取数据")
     val videoEntities = File("codegen-v2/input/video.xml")
         .readText()
         .parseXML()
         .extractEntities()
 
-    println("done")
+    return coreEntities + videoEntities
 }
 
 private fun Element.extractEntities(): Registry<VulkanRegistryExt> {
     val e = this
 
+    log.info(" - 抽取: 类型别名")
+    val aliases = e.query("types/type[@alias and @name]")
+        .map(::extractAlias)
+        .associateBy { it.name }
+        .toMutableMap()
+
+    log.info(" - 抽取: 位掩码")
     val bitmasks = e.query("enums[@type='bitmask']")
         .map(::extractBitmask)
         .associateBy { it.name }
@@ -57,11 +44,49 @@ private fun Element.extractEntities(): Registry<VulkanRegistryExt> {
         .map(::extractBitmaskType)
         .forEach { bitmasks.putEntityIfAbsent(it) }
 
+    log.info(" - 抽取: 命令")
     val commands = e.query("commands/command[not(@alias) and (not(@api) or @api='vulkan')]")
         .map(::extractCommand)
         .associateBy { it.name }
         .toMutableMap()
 
+    log.info(" - 抽取: 常量")
+    val constants = e.query("enums[@name='API Constants']/enum[not(@alias)]")
+        .map(::extractConstant)
+        .associateBy { it.name }
+        .toMutableMap()
+
+    log.info(" - 抽取: 枚举")
+    val enumerations = e.query("enums[@type='enum']")
+        .map(::extractEnumeration)
+        .associateBy { it.name }
+        .toMutableMap()
+
+    log.info(" - 抽取: 函数指针类型")
+    val functionTypedefs = e.query("types/type[@category='funcpointer']")
+        .map(::extractFunctionTypedef)
+        .associateBy { it.name }
+        .toMutableMap()
+
+    log.info(" - 抽取: 句柄类型")
+    val opaqueHandleTypedefs = e.query("types/type[@category='handle' and not(@alias)]")
+        .map(::extractOpaqueHandleTypedef)
+        .associateBy { it.name }
+        .toMutableMap()
+
+    log.info(" - 抽取: 结构体")
+    val structures = e.query("types/type[@category='struct' and not(@alias)]")
+        .map(::extractStructure)
+        .associateBy { it.name }
+        .toMutableMap()
+
+    log.info(" - 抽取: 联合体")
+    val unions = e.query("types/type[@category='union' and not(@alias)]")
+        .map(::extractStructure)
+        .associateBy { it.name }
+        .toMutableMap()
+
+    log.info(" - 抽取: 命令别名")
     val commandAliases = e.query("commands/command[@alias]").associate {
         val name = it.getAttributeText("name")!!.intern()
         val alias = it.getAttributeText("alias")!!.intern()
@@ -69,47 +94,32 @@ private fun Element.extractEntities(): Registry<VulkanRegistryExt> {
         name to alias
     }
 
+    log.info(" - 抽取: Vulkan 版本")
+    val versions = e.query("feature[@api]")
+        .map(::extractVersion)
+        .associateBy { it.name }
+        .toMutableMap()
+
+    log.info(" - 抽取: 扩展")
+    val extensions = e.query("extensions/extension[@api]")
+        .map(::extractExtension)
+        .associateBy { it.name }
+        .toMutableMap()
+
     return Registry(
-        aliases = e.query("types/type[@alias and @name]")
-            .map(::extractAlias)
-            .associateBy { it.name }
-            .toMutableMap(),
+        aliases = aliases,
         bitmasks = bitmasks,
-        constants = e.query("enums[@name='API Constants']/enum[not(@alias)]")
-            .map(::extractConstant)
-            .associateBy { it.name }
-            .toMutableMap(),
+        constants = constants,
         commands = commands,
-        enumerations = e.query("enums[@type='enum']")
-            .map(::extractEnumeration)
-            .associateBy { it.name }
-            .toMutableMap(),
-        functionTypedefs = e.query("types/type[@category='funcpointer']")
-            .map(::extractFunctionTypedef)
-            .associateBy { it.name }
-            .toMutableMap(),
-        opaqueHandleTypedefs = e.query("types/type[@category='handle' and not(@alias)]")
-            .map(::extractOpaqueHandleTypedef)
-            .associateBy { it.name }
-            .toMutableMap(),
-        structures = e.query("types/type[@category='struct' and not(@alias)]")
-            .map(::extractStructure)
-            .associateBy { it.name }
-            .toMutableMap(),
-        unions = e.query("types/type[@category='union' and not(@alias)]")
-            .map(::extractStructure)
-            .associateBy { it.name }
-            .toMutableMap(),
+        enumerations = enumerations,
+        functionTypedefs = functionTypedefs,
+        opaqueHandleTypedefs = opaqueHandleTypedefs,
+        structures = structures,
+        unions = unions,
         extra = VulkanRegistryExt(
             commandAliases = commandAliases,
-            versions = e.query("feature[@api]")
-                .map(::extractVersion)
-                .associateBy { it.name }
-                .toMutableMap(),
-            extensions = e.query("extensions/extension")
-                .map(::extractExtension)
-                .associateBy { it.name }
-                .toMutableMap()
+            versions = versions,
+            extensions = extensions
         )
     )
 }
