@@ -24,30 +24,29 @@ class EmptyMergeable : IMergeable {
 }
 
 data class Registry<E: IMergeable>(
-    val aliases: Map<Identifier, Typedef>,
-    val bitmasks: Map<Identifier, Bitmask>,
-    val constants: Map<Identifier, Constant>,
-    val commands: Map<Identifier, Command>,
-    val enumerations: Map<Identifier, Enumeration>,
-    val functionTypedefs: Map<Identifier, FunctionTypedef>,
-    val opaqueHandleTypedefs: Map<Identifier, OpaqueHandleTypedef>,
-    val structures: Map<Identifier, Structure>,
-    val unions: Map<Identifier, Structure>,
+    val aliases: MutableMap<Identifier, Typedef>,
+    val bitmasks: MutableMap<Identifier, Bitmask>,
+    val constants: MutableMap<Identifier, Constant>,
+    val commands: MutableMap<Identifier, Command>,
+    val enumerations: MutableMap<Identifier, Enumeration>,
+    val functionTypedefs: MutableMap<Identifier, FunctionTypedef>,
+    val opaqueHandleTypedefs: MutableMap<Identifier, OpaqueHandleTypedef>,
+    val structures: MutableMap<Identifier, Structure>,
+    val unions: MutableMap<Identifier, Structure>,
 
-    var extra: E? = null
+    var extra: E
 ) {
     fun merge(other: Registry<E>) = Registry(
-        aliases = this.aliases + other.aliases,
-        bitmasks = this.bitmasks + other.bitmasks,
-        constants = this.constants + other.constants,
-        commands = this.commands + other.commands,
-        enumerations = this.enumerations + other.enumerations,
-        functionTypedefs = this.functionTypedefs + other.functionTypedefs,
-        opaqueHandleTypedefs = this.opaqueHandleTypedefs + other.opaqueHandleTypedefs,
-        structures = this.structures + other.structures,
-        unions = this.unions + other.unions,
-
-        extra = (this.extra as? IMergeable)?.merge(other.extra as? IMergeable)
+        aliases = (this.aliases + other.aliases).toMutableMap(),
+        bitmasks = (this.bitmasks + other.bitmasks).toMutableMap(),
+        constants = (this.constants + other.constants).toMutableMap(),
+        commands = (this.commands + other.commands).toMutableMap(),
+        enumerations = (this.enumerations + other.enumerations).toMutableMap(),
+        functionTypedefs = (this.functionTypedefs + other.functionTypedefs).toMutableMap(),
+        opaqueHandleTypedefs = (this.opaqueHandleTypedefs + other.opaqueHandleTypedefs).toMutableMap(),
+        structures = (this.structures + other.structures).toMutableMap(),
+        unions = (this.unions + other.unions).toMutableMap(),
+        extra = this.extra.merge(other.extra)
     )
 }
 
@@ -77,9 +76,9 @@ abstract class Entity(name: String) {
 
 class Bitmask(
     name: String,
-    val bitflags: List<Bitflag>
+    val bitflags: MutableList<Bitflag>
 ) : Entity(name) {
-    override fun toStringImpl() = "Bitmask(name=$name, bitflags=$bitflags"
+    override fun toStringImpl() = "Bitmask(name=\"$name\", bitflags=$bitflags"
 }
 
 class Bitflag(
@@ -107,7 +106,7 @@ class Command(
     val errorCodes: List<Identifier>?
 ) : Entity(name) {
     override fun toStringImpl() =
-        "Command(name=$name, params=$params, result=$result, successCodes=$successCodes, errorCodes=$errorCodes"
+        "Command(name=\"$name\", params=$params, result=$result, successCodes=$successCodes, errorCodes=$errorCodes"
 }
 
 class Param(
@@ -118,7 +117,7 @@ class Param(
     val optional: Boolean
 ) : Entity(name) {
     override fun toStringImpl() =
-        "Param(name=$name, type=$type, len=$len, argLen=$argLen, optional=$optional"
+        "Param(name=\"$name\", type=$type, len=$len, argLen=$argLen, optional=$optional"
 }
 
 class Constant(
@@ -126,14 +125,14 @@ class Constant(
     val type: IdentifierType,
     val expr: String
 ) : Entity(name) {
-    override fun toStringImpl() = "Constant(name=$name, type=$type, expr=$expr"
+    override fun toStringImpl() = "Constant(name=\"$name\", type=$type, expr=\"$expr\""
 }
 
 class Enumeration(
     name: String,
     val variants: List<EnumVariant>
 ) : Entity(name) {
-    override fun toStringImpl() = "Enumeration(name=$name, variants=$variants)"
+    override fun toStringImpl() = "Enumeration(name=\"$name\", variants=$variants)"
 }
 
 class EnumVariant(
@@ -155,23 +154,23 @@ class EnumVariant(
 
 class FunctionTypedef(
     name: String,
-    val params: List<Param>,
+    val params: List<Type>,
     val result: Type?
 ) : Entity(name) {
-    override fun toStringImpl() = "FunctionTypedef(name=$name, params=$params, result=$result)"
+    override fun toStringImpl() = "FunctionTypedef(name=\"$name\", params=$params, result=$result)"
 }
 
 class OpaqueHandleTypedef(
     name: String
 ) : Entity(name) {
-    override fun toStringImpl() = "OpaqueHandleTypedef(name=$name)"
+    override fun toStringImpl() = "OpaqueHandleTypedef(name=\"$name\")"
 }
 
 class Structure(
     name: String,
     val members: List<Member>
 ) : Entity(name) {
-    override fun toStringImpl() = "Structure(name=$name, members=$members)"
+    override fun toStringImpl() = "Structure(name=\"$name\", members=$members)"
 }
 
 class Member(
@@ -179,19 +178,19 @@ class Member(
     val type: Type,
     val values: Identifier?,
     val len: List<Identifier>?,
-    val altLen: String,
+    val altLen: String?,
     val optional: Boolean,
     val bits: Int?
 ) : Entity(name) {
     override fun toStringImpl() = buildString {
-        append("Member(name=$name, type=$type")
+        append("Member(\"name=$name\", type=$type")
         if (values != null) {
             append(", values=$values")
         }
         if (len != null) {
             append(", len=$len")
         }
-        if (altLen.isNotEmpty()) {
+        if (altLen != null) {
             append(", altLen=$altLen")
         }
         if (optional) {
@@ -207,5 +206,7 @@ class Typedef(
     name: String,
     val type: IdentifierType
 ) : Entity(name) {
-    override fun toStringImpl() = "Typedef(name=$name, type=$type)"
+    override fun toStringImpl() = "Typedef(name=\"$name\", type=$type)"
 }
+
+fun <E: Entity> MutableMap<Identifier, E>.putEntityIfAbsent(e: E) = putIfAbsent(e.name, e)

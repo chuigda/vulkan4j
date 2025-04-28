@@ -1,17 +1,17 @@
-package cc.chuigda.codegen.extract
+package cc.chuigda.codegen.extract.vulkan
 
 import cc.chuigda.codegen.registry.Entity
 import cc.chuigda.codegen.registry.IMergeable
 import cc.chuigda.codegen.registry.Identifier
 
-open class VkCommonMetadata(val api: String? = null) {
+open class VkCommonMetadata(val api: String?) {
     override fun toString(): String {
         return "VkCommonMetadata(api=\"$api\")"
     }
 }
 
 class VkHandleMetadata(
-    api: String? = null,
+    api: String?,
     val dispatchable: Boolean
 ) : VkCommonMetadata(api) {
     override fun toString(): String {
@@ -20,8 +20,8 @@ class VkHandleMetadata(
 }
 
 class VkStructureMetadata(
-    api: String? = null,
-    val structExtends: List<Identifier> = emptyList()
+    api: String?,
+    val structExtends: List<Identifier>?
 ) : VkCommonMetadata(api) {
     override fun toString(): String {
         return "VkStructureMetadata(api=\"$api\", structExtends=$structExtends)"
@@ -46,12 +46,12 @@ data class VulkanRegistryExt(
 
 class VulkanVersion(
     name: String,
-    api: String? = null,
+    api: String?,
     val number: Float,
     val require: Require
 ) : Entity(name, extra=VkCommonMetadata(api)) {
     override fun toStringImpl() =
-        "VulkanVersion(name=$name, number=$number, require=$require"
+        "VulkanVersion(name=\"$name\", number=$number, require=$require"
 }
 
 data class Require(
@@ -62,8 +62,8 @@ data class Require(
 
 class RequireValue(
     name: String,
-    api: String? = null,
-    val extends: Identifier,
+    api: String?,
+    val extends: Identifier?,
     val value: Long?,
     val bitpos: Long?,
     val extNumber: Long?,
@@ -71,7 +71,10 @@ class RequireValue(
     val negative: Boolean
 ) : Entity(name, extra=VkCommonMetadata(api)) {
     override fun toStringImpl() = buildString {
-        append("RequireValue(name=$name, extends=$extends")
+        append("RequireValue(name=\"$name\",")
+        if (extends != null) {
+            append(", extends=\"$extends\"")
+        }
         if (value != null) {
             append(", value=$value")
         }
@@ -90,7 +93,7 @@ class RequireValue(
 
 class Extension(
     name: String,
-    api: String? = null,
+    api: String?,
     val number: Long,
     val type: String?,
     val author: String,
@@ -106,31 +109,31 @@ class Extension(
     val require: Require,
 ) : Entity(name, extra= VkCommonMetadata(api)) {
     override fun toStringImpl() = buildString {
-        append("Extension(name=$name, number=$number")
+        append("Extension(name=\"$name\", number=$number")
         if (type != null) {
             append(", type=$type")
         }
-        append(", author=$author")
-        append(", contact=$contact")
+        append(", author=\"$author\"")
+        append(", contact=\"$contact\"")
         if (platform != null) {
-            append(", platform=$platform")
+            append(", platform=\"$platform\"")
         }
         if (requires != null) {
-            append(", requires=$requires")
+            append(", requires=\"$requires\"")
         }
         if (requiresCore != null) {
-            append(", requiresCore=$requiresCore")
+            append(", requiresCore=\"$requiresCore\"")
         }
         if (deprecatedby != null) {
-            append(", deprecatedby=$deprecatedby")
+            append(", deprecatedby=\"$deprecatedby\"")
         }
         if (obsoletedby != null) {
-            append(", obsoletedby=$obsoletedby")
+            append(", obsoletedby=\"$obsoletedby\"")
         }
         if (promotedto != null) {
-            append(", promotedto=$promotedto")
+            append(", promotedto=\"$promotedto\"")
         }
-        append(", supported=$supported")
+        append(", supported=\"$supported\"")
         append(", provisional=$provisional")
         append(", require=$require")
     }
