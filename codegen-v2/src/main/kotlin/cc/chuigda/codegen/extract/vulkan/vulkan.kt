@@ -347,7 +347,7 @@ private fun extractRequireValue(e: Element): RequireValue? {
 }
 
 private fun extractType(e: Element): Type {
-    val identifier = IdentifierType(e.textContent.trim().intern())
+    val identifier = IdentifierType(e.textContent.trim().replace("FlagBits", "Flags").intern())
 
     // Array types, e.g.:
     // `<type>float</type> <name>matrix</name>[3][4]`
