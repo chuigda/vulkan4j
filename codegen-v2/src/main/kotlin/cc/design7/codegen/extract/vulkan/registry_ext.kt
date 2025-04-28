@@ -40,6 +40,7 @@ class VulkanVersion(
     val number: Float,
     val require: Require
 ) : Entity(name, extra=VkCommonMetadata(api)) {
+
     override fun toStringImpl() = "VulkanVersion(name=\"$name\", number=$number, require=$require"
 }
 

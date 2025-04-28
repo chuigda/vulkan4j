@@ -130,17 +130,13 @@ private fun extractBitmask(e: Element) =
             .map(::extractBitflag)
             .filter { it.isVulkanAPI() }
             .toMutableList()
-    ).apply {
-        setExtra(VkCommonMetadata(e.getAttributeText("api")))
-    }
+    ).apply { setExt(VkCommonMetadata(e.getAttributeText("api"))) }
 
 private fun extractBitmaskType(e: Element) =
     Bitmask(
         name = e.getFirstElement("name")!!.textContent.sanitizeFlagBits(),
         bitflags = mutableListOf()
-    ).apply {
-        setExtra(VkCommonMetadata(e.getAttributeText("api")))
-    }
+    ).apply { setExt(VkCommonMetadata(e.getAttributeText("api"))) }
 
 private fun extractBitflag(e: Element) =
     Bitflag(
@@ -149,9 +145,7 @@ private fun extractBitflag(e: Element) =
             ?.parseDecOrHex()
             ?.let { BigInteger.ONE.shiftLeft(it.toInt()) }
             ?: e.getAttributeText("value")!!.parseDecOrHex().toBigInteger()
-    ).apply {
-        setExtra(VkCommonMetadata(e.getAttributeText("api")))
-    }
+    ).apply { setExt(VkCommonMetadata(e.getAttributeText("api"))) }
 
 private fun extractCommand(e: Element): Command {
     val proto = e.getFirstElement("proto")!!
@@ -169,9 +163,7 @@ private fun extractCommand(e: Element): Command {
             ?.split(",")
             ?.map { it.trim().intern() }
             ?: emptyList()
-    ).apply {
-        setExtra(VkCommonMetadata(e.getAttributeText("api")))
-    }
+    ).apply { setExt(VkCommonMetadata(e.getAttributeText("api"))) }
 }
 
 private fun extractParam(e: Element): Param {
@@ -182,16 +174,14 @@ private fun extractParam(e: Element): Param {
         len = len?.intern(),
         argLen = len?.split("->")?.map { it.intern() },
         optional = e.getAttributeText("optional")?.startsWith("true") ?: false,
-    ).apply { setExtra(VkCommonMetadata(api=e.getAttributeText("api"))) }
+    ).apply { setExt(VkCommonMetadata(api=e.getAttributeText("api"))) }
 }
 
 private fun extractAlias(e: Element) =
     Typedef(
         name = e.getAttributeText("name")!!,
         type = IdentifierType(e.getAttributeText("alias")!!.intern()),
-    ).apply {
-        setExtra(VkCommonMetadata(e.getAttributeText("api")))
-    }
+    ).apply { setExt(VkCommonMetadata(e.getAttributeText("api"))) }
 
 private fun extractConstant(e: Element): Constant {
     val name = e.getAttributeText("name")!!
@@ -210,9 +200,7 @@ private fun extractConstant(e: Element): Constant {
         name = name,
         type = type,
         expr = value
-    ).apply {
-        setExtra(VkCommonMetadata(api=e.getAttributeText("api")))
-    }
+    ).apply { setExt(VkCommonMetadata(api=e.getAttributeText("api"))) }
 }
 
 private fun extractEnumeration(e: Element) =
@@ -224,17 +212,13 @@ private fun extractEnumeration(e: Element) =
                 .map(::extractVariant)
                 .filter { it.isVulkanAPI() }
                 .toMutableList(),
-    ).apply {
-        setExtra(VkCommonMetadata(api=e.getAttributeText("api")))
-    }
+    ).apply { setExt(VkCommonMetadata(api=e.getAttributeText("api"))) }
 
 private fun extractVariant(e: Element) =
     EnumVariant(
         name = e.getAttributeText("name")!!,
         value = e.getAttributeText("value")!!.parseDecOrHex().toBigInteger(),
-    ).apply {
-        setExtra(VkCommonMetadata(api = e.getAttributeText("api")))
-    }
+    ).apply { setExt(VkCommonMetadata(api = e.getAttributeText("api"))) }
 
 private fun extractFunctionTypedef(e: Element) =
     FunctionTypedef(
@@ -248,15 +232,13 @@ private fun extractFunctionTypedef(e: Element) =
                 "PFN_vkVoidFunction" -> IdentifierType("PFN_vkVoidFunction".intern())
                 else -> error("Unsupported function pointer result type ($type).")
             },
-    ).apply {
-        setExtra(VkCommonMetadata(api = e.getAttributeText("api")))
-    }
+    ).apply { setExt(VkCommonMetadata(api = e.getAttributeText("api"))) }
 
 private fun extractOpaqueHandleTypedef(e: Element) =
     OpaqueHandleTypedef(
         name = e.getFirstElement("name")!!.textContent.trim(),
     ).apply {
-        setExtra(VkHandleMetadata(
+        setExt(VkHandleMetadata(
             api = e.getAttributeText("api"),
             dispatchable = !e.getFirstElement("type")!!
                 .textContent
@@ -271,7 +253,7 @@ private fun extractStructure(e: Element) =
             .map(::extractMember)
             .filter { it.isVulkanAPI() }
     ).apply {
-        setExtra(VkStructureMetadata(
+        setExt(VkStructureMetadata(
             api = e.getAttributeText("api"),
             structExtends = e.getAttributeText("structextends")
                 ?.split(",")
@@ -288,9 +270,7 @@ private fun extractMember(e: Element) =
         altLen = e.getAttributeText("altlen"),
         optional = e.getAttributeText("optional") == "true",
         bits = Regex(":(\\d+)$").find(e.textContent)?.let { it.groupValues[1].toInt() },
-    ).apply {
-        setExtra(VkCommonMetadata(api = e.getAttributeText("api")))
-    }
+    ).apply { setExt(VkCommonMetadata(api = e.getAttributeText("api"))) }
 
 private fun extractVersion(e: Element) =
     VulkanVersion(

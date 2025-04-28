@@ -38,15 +38,21 @@ data class Registry<E: IMergeable<E>>(
     )
 }
 
-abstract class Entity(name: String) {
-    val name: Identifier = name.intern()
+abstract class Entity(name: Identifier) {
+    val name: Identifier = name
     private var _ext: Any? = null
 
-    constructor(name: String, extra: Any): this(name) {
+    constructor(name: String) : this(name.intern())
+
+    constructor(name: Identifier, extra: Any?) : this(name) {
         this._ext = extra
     }
 
-    fun <T> setExtra(extra: T) {
+    constructor(name: String, extra: Any?) : this(name) {
+        this._ext = extra
+    }
+
+    fun <T> setExt(extra: T) {
         this._ext = extra
     }
 
@@ -63,19 +69,25 @@ abstract class Entity(name: String) {
 }
 
 class Bitmask(
-    name: String,
+    name: Identifier,
     val bitflags: MutableList<Bitflag>
 ) : Entity(name) {
+    constructor(name: String, bitflags: MutableList<Bitflag>) : this(name.intern(), bitflags)
+
     override fun toStringImpl() = "Bitmask(name=\"$name\", bitflags=$bitflags"
 }
 
 class Bitflag(
-    name: String,
+    name: Identifier,
     val value: Either<BigInteger, List<String>>
 ) : Entity(name) {
-    constructor(name: String, value: BigInteger) : this(name, Either.Left(value))
+    constructor(name: Identifier, value: BigInteger) : this(name, Either.Left(value))
 
-    constructor(name: String, value: List<String>) : this(name, Either.Right(value))
+    constructor(name: Identifier, value: List<String>) : this(name, Either.Right(value))
+
+    constructor(name: String, value: BigInteger) : this(name.intern(), value)
+
+    constructor(name: String, value: List<String>) : this(name.intern(), value)
 
     override fun toStringImpl() = buildString {
         append("Bitflag(name=$name")
@@ -87,49 +99,69 @@ class Bitflag(
 }
 
 class Command(
-    name: String,
+    name: Identifier,
     val params: List<Param>,
     val result: Type,
     val successCodes: List<Identifier>?,
     val errorCodes: List<Identifier>?
 ) : Entity(name) {
+    constructor(
+        name: String,
+        params: List<Param>,
+        result: Type,
+        successCodes: List<Identifier>?,
+        errorCodes: List<Identifier>?
+    ) : this(name.intern(), params, result, successCodes, errorCodes)
+
     override fun toStringImpl() =
         "Command(name=\"$name\", params=$params, result=$result, successCodes=$successCodes, errorCodes=$errorCodes"
 }
 
 class Param(
-    name: String,
+    name: Identifier,
     val type: Type,
     val len: Identifier?,
     val argLen: List<Identifier>?,
     val optional: Boolean
 ) : Entity(name) {
+    constructor(
+        name: String,
+        type: Type,
+        len: Identifier?,
+        argLen: List<Identifier>?,
+        optional: Boolean
+    ) : this(name.intern(), type, len, argLen, optional)
+
     override fun toStringImpl() =
         "Param(name=\"$name\", type=$type, len=$len, argLen=$argLen, optional=$optional"
 }
 
 class Constant(
-    name: String,
+    name: Identifier,
     val type: IdentifierType,
     val expr: String
 ) : Entity(name) {
+    constructor(name: String, type: IdentifierType, expr: String) : this(name.intern(), type, expr)
+
     override fun toStringImpl() = "Constant(name=\"$name\", type=$type, expr=\"$expr\""
 }
 
 class Enumeration(
-    name: String,
-    val variants: List<EnumVariant>
+    name: Identifier,
+    val variants: MutableList<EnumVariant>
 ) : Entity(name) {
+    constructor(name: String, variants: MutableList<EnumVariant>) : this(name.intern(), variants)
+
     override fun toStringImpl() = "Enumeration(name=\"$name\", variants=$variants)"
 }
 
 class EnumVariant(
-    name: String,
+    name: Identifier,
     val value: Either<BigInteger, List<String>>
 ) : Entity(name) {
-    constructor(name: String, value: BigInteger) : this(name, Either.Left(value))
+    constructor(name: String, value: BigInteger) : this(name.intern(), Either.Left(value))
 
-    constructor(name: String, value: List<String>) : this(name, Either.Right(value))
+    constructor(name: String, value: List<String>) : this(name.intern(), Either.Right(value))
 
     override fun toStringImpl() = buildString {
         append("EnumVariant(name=$name")
@@ -141,23 +173,29 @@ class EnumVariant(
 }
 
 class FunctionTypedef(
-    name: String,
+    name: Identifier,
     val params: List<Type>,
     val result: Type?
 ) : Entity(name) {
+    constructor(name: String, params: List<Type>, result: Type?) : this(name.intern(), params, result)
+
     override fun toStringImpl() = "FunctionTypedef(name=\"$name\", params=$params, result=$result)"
 }
 
 class OpaqueHandleTypedef(
-    name: String
+    name: Identifier
 ) : Entity(name) {
+    constructor(name: String) : this(name.intern())
+
     override fun toStringImpl() = "OpaqueHandleTypedef(name=\"$name\")"
 }
 
 class Structure(
-    name: String,
+    name: Identifier,
     val members: List<Member>
 ) : Entity(name) {
+    constructor(name: String, members: List<Member>) : this(name.intern(), members)
+
     override fun toStringImpl() = "Structure(name=\"$name\", members=$members)"
 }
 

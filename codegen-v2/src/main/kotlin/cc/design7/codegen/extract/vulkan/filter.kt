@@ -9,8 +9,7 @@ private const val unsupportedVersionsFile = "codegen-v2/output/vulkan-unsupporte
 
 internal fun Registry<VulkanRegistryExt>.filterEntities(): Registry<VulkanRegistryExt> {
     val unsupportedEntities = getUnsupportedEntities()
-    log.info(" - 已过滤 ${unsupportedEntities.size} 个不支持的实体")
-    log.info(" - 完整列表可参见 $unsupportedEntitiesFile")
+    log.info(" - 已过滤 ${unsupportedEntities.size} 个不支持的实体，完整列表可参见 $unsupportedEntitiesFile")
 
     fun <T: Entity> Map<Identifier, T>.filterSupportedEntities() =
         filter { !unsupportedEntities.contains(it.key) && it.value.isVulkanAPI() }
@@ -24,8 +23,7 @@ internal fun Registry<VulkanRegistryExt>.filterEntities(): Registry<VulkanRegist
 
     val (extensions, unsupportedExtensions) = ext.extensions.values
         .partition { it.supported != "disabled" }
-    log.info(" - 已过滤 ${unsupportedExtensions.size} 个不支持的扩展")
-    log.info(" - 完整列表可参见 $unsupportedExtensionsFile")
+    log.info(" - 已过滤 ${unsupportedExtensions.size} 个不支持的扩展，完整列表可参见 $unsupportedExtensionsFile")
     File(unsupportedExtensionsFile).writeText(buildString {
         for (unsupportedExtension in unsupportedExtensions) {
             appendLine(unsupportedExtension.name)
@@ -34,8 +32,7 @@ internal fun Registry<VulkanRegistryExt>.filterEntities(): Registry<VulkanRegist
 
     val (versions, unsupportedVersions) = ext.versions.values
         .partition { it.isVulkanAPI() }
-    log.info(" - 已过滤 ${unsupportedVersions.size} 个不支持的版本")
-    log.info(" - 完整列表可参见 $unsupportedVersionsFile")
+    log.info(" - 已过滤 ${unsupportedVersions.size} 个不支持的版本，完整列表可参见 $unsupportedVersionsFile")
     File(unsupportedVersionsFile).writeText(buildString {
         for (unsupportedVersion in unsupportedVersions) {
             appendLine(unsupportedVersion.name)
