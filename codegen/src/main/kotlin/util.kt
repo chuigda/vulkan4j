@@ -19,7 +19,7 @@ fun String?.parseIntOrDefault(default: Int): Int = try {
     } else {
         this.toInt()
     }
-} catch (e: NumberFormatException) {
+} catch (_: NumberFormatException) {
     default
 }
 

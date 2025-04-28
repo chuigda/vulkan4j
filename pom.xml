@@ -24,5 +24,6 @@
         <module>tutorial</module>
         <module>vma</module>
         <module>drill</module>
+        <module>codegen-v2</module>
     </modules>
 </project>
