@@ -1,4 +1,4 @@
-package cc.chuigda.codegen.util
+package cc.design7.codegen.util
 
 sealed class Either<T1, T2> {
     class Left<T1, T2>(val value: T1) : Either<T1, T2>()

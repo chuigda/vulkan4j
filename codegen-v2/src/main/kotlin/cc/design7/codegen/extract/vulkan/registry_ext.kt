@@ -1,31 +1,25 @@
-package cc.chuigda.codegen.extract.vulkan
+package cc.design7.codegen.extract.vulkan
 
-import cc.chuigda.codegen.registry.Entity
-import cc.chuigda.codegen.registry.IMergeable
-import cc.chuigda.codegen.registry.Identifier
+import cc.design7.codegen.registry.Entity
+import cc.design7.codegen.registry.IMergeable
+import cc.design7.codegen.registry.Identifier
 
 open class VkCommonMetadata(val api: String?) {
-    override fun toString(): String {
-        return "VkCommonMetadata(api=\"$api\")"
-    }
+    override fun toString(): String = "VkCommonMetadata(api=\"$api\")"
 }
 
 class VkHandleMetadata(
     api: String?,
     val dispatchable: Boolean
 ) : VkCommonMetadata(api) {
-    override fun toString(): String {
-        return "VkHandleMetadata(api=\"$api\", dispatchable=$dispatchable)"
-    }
+    override fun toString() = "VkHandleMetadata(api=\"$api\", dispatchable=$dispatchable)"
 }
 
 class VkStructureMetadata(
     api: String?,
     val structExtends: List<Identifier>?
 ) : VkCommonMetadata(api) {
-    override fun toString(): String {
-        return "VkStructureMetadata(api=\"$api\", structExtends=$structExtends)"
-    }
+    override fun toString(): String = "VkStructureMetadata(api=\"$api\", structExtends=$structExtends)"
 }
 
 data class VulkanRegistryExt(
@@ -46,8 +40,7 @@ class VulkanVersion(
     val number: Float,
     val require: Require
 ) : Entity(name, extra=VkCommonMetadata(api)) {
-    override fun toStringImpl() =
-        "VulkanVersion(name=\"$name\", number=$number, require=$require"
+    override fun toStringImpl() = "VulkanVersion(name=\"$name\", number=$number, require=$require"
 }
 
 data class Require(

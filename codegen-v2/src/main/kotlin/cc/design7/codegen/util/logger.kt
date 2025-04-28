@@ -1,4 +1,4 @@
-package cc.chuigda.codegen.util
+package cc.design7.codegen.util
 
 import java.util.logging.Level
 import java.util.logging.LogManager

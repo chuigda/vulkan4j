@@ -1,6 +1,6 @@
-package cc.chuigda.codegen.registry
+package cc.design7.codegen.registry
 
-import cc.chuigda.codegen.util.Either
+import cc.design7.codegen.util.Either
 import java.math.BigInteger
 
 interface IMergeable<Self: IMergeable<Self>> {

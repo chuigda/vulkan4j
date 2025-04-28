@@ -1,7 +1,7 @@
-package cc.chuigda.codegen.extract.vulkan
+package cc.design7.codegen.extract.vulkan
 
-import cc.chuigda.codegen.registry.*
-import cc.chuigda.codegen.util.*
+import cc.design7.codegen.registry.*
+import cc.design7.codegen.util.*
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 import java.io.File

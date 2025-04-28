@@ -1,4 +1,4 @@
-package cc.chuigda.codegen.util
+package cc.design7.codegen.util
 
 sealed class Doc
 

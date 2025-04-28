@@ -1,4 +1,4 @@
-package cc.chuigda.codegen.registry
+package cc.design7.codegen.registry
 
 // 这部分代码来自于 https://github.com/KyleMayes/vulkanalia/blob/176963f3e5e0108ba963224704f147d2799a615d/generator/src/main/kotlin/com/kylemayes/generator/registry/Extract.kt#L744
 // 主要是 Kyle Mayes 的工作

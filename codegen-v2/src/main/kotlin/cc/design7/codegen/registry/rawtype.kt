@@ -1,4 +1,4 @@
-package cc.chuigda.codegen.registry
+package cc.design7.codegen.registry
 
 sealed interface Type
 
