@@ -53,10 +53,10 @@ fun extractGLFWHeader(fileContent: String): Registry {
         commandAliases=emptyMap(),
         opaqueTypedefs=opaqueTypedefs,
         handles=mapOf(),
-        structs=mapOf(),
+        structures=mapOf(),
         functionTypedefs=functionTypedefs,
         bitmasks=mapOf(),
-        enums=mapOf(),
+        enumerations=mapOf(),
     )
 }
 
@@ -121,10 +121,10 @@ fun addGLFWStructures(registry: Registry): Registry {
         commandAliases=emptyMap(),
         opaqueTypedefs=registry.opaqueTypedefs,
         handles=registry.handles,
-        structs=structures,
+        structures=structures,
         functionTypedefs=registry.functionTypedefs,
         bitmasks=registry.bitmasks,
-        enums=registry.enums
+        enumerations=registry.enumerations
     )
 }
 

@@ -23,7 +23,7 @@ fun main() {
 //    )
 //    File("vma/src/main/java/tech/icey/vma/${registry.constantClassName}.java").writeText(constants)
 
-    for (struct in registry.structs) {
+    for (struct in registry.structures) {
         val generated = generateStructure(
             registry,
             "tech.icey.vma",
@@ -47,7 +47,7 @@ fun main() {
         File("vma/src/main/java/tech/icey/vma/bitmask/${bitmask.key}.java").writeText(generated)
     }
 
-    for (enum in registry.enums) {
+    for (enum in registry.enumerations) {
         val generated = generateEnum("tech.icey.vma", enum.value)
         File("vma/src/main/java/tech/icey/vma/enumtype/${enum.key}.java").writeText(generated)
     }

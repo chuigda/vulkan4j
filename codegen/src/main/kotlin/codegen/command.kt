@@ -44,7 +44,7 @@ fun generateCommandClassFile(
             import tech.icey.panama.buffer.*;
         """.trimIndent())
 
-        if (registry.structs.isNotEmpty()) {
+        if (registry.structures.isNotEmpty()) {
             appendLn("import $artifactPackageName.datatype.*;")
         }
         if (registry.handles.isNotEmpty() || registry.opaqueTypedefs.isNotEmpty()) {

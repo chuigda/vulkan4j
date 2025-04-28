@@ -15,7 +15,7 @@ fun main() {
     )
     registry.constantClassName = "GLFWConstants"
 
-    for (struct in registry.structs) {
+    for (struct in registry.structures) {
         val generated = generateStructure(registry, "tech.icey.glfw", struct.value)
         File("glfw/src/main/java/tech/icey/glfw/datatype/${struct.key}.java").writeText(generated)
     }

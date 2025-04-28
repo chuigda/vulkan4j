@@ -34,11 +34,11 @@ fun generateStructure(
             appendLn("import $packageName.bitmask.*;")
         }
 
-        if (registry.structs.isNotEmpty()) {
+        if (registry.structures.isNotEmpty()) {
             appendLn("import $packageName.datatype.*;")
         }
 
-        if (registry.enums.isNotEmpty()) {
+        if (registry.enumerations.isNotEmpty()) {
             appendLn("import $packageName.enumtype.*;")
         }
 

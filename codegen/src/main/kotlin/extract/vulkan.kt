@@ -5,12 +5,15 @@ import Bitflag
 import Bitmask
 import Command
 import Constant
+import Enumeration
+import FunctionTypedef
 import IdentifierType
 import Param
 import PointerType
 import Registry
 import Type
 import TypeAlias
+import Variant
 import getAttributeNonNull
 import getAttributeNullable
 import getElementText
@@ -111,6 +114,27 @@ fun extractVulkanRegistry(fileContent: String): Registry {
                 constants.putEntity(extractConstant(constantElement))
             }
         }
+    }
+
+    // 抽取：枚举
+
+    val enumerations = mutableMapOf<String, Enumeration>()
+    for (enumsElement in enumsElementList) {
+        if (enumsElement.getAttributeNullable("type") == "enum") {
+            enumerations.putEntity(extractEnumeration(enumsElement))
+        }
+    }
+
+    // 抽取：函数
+
+    val functionTypedefs = mutableMapOf<String, FunctionTypedef>()
+    for (typeElement in typeElementList) {
+        if (typeElement.getAttributeNullable("category") != "funcpointer"
+            || typeElement.hasAttribute("alias")) {
+            continue
+        }
+
+        functionTypedefs.putEntity(extractFunctionTypedef(typeElement))
     }
 
     TODO()
@@ -276,4 +300,42 @@ fun extractConstant(constantElement: Element): Constant {
     })
 
     return Constant(name=name, api=api, type=type, expr=value)
+}
+
+fun extractEnumeration(enumerationElement: Element) = Enumeration(
+    name=enumerationElement.getAttributeNonNull("name"),
+    api=enumerationElement.getAttributeNullable("api"),
+    variants=enumerationElement.getElementsByTagName("enum")
+        .toElementList()
+        .filter { !it.hasAttribute("alias") }
+        .map { Variant(
+            name=it.getAttributeNonNull("name"),
+            api=it.getAttributeNullable("api"),
+            value=it.getAttributeNonNull("value")
+        ) }
+)
+
+fun extractFunctionTypedef(functionTypedefElement: Element): FunctionTypedef {
+    val name = functionTypedefElement.getFirstElementByTagName("name").textContent.trim()
+    val api = functionTypedefElement.getAttributeNullable("api")
+    val params = functionTypedefElement.getElementsByTagName("param")
+        .toElementList()
+        .map { extractParam(it) }
+
+    val textContent = functionTypedefElement.textContent
+    val returnTypeText = textContent.substring(8, textContent.indexOf("(VKAPI_PTR")).trim()
+    val returnType = when (returnTypeText) {
+        "void" -> null
+        "void*" -> PointerType(pointee=IdentifierType("void"), const=false)
+        "VkBool32" -> IdentifierType("VkBool32")
+        "PFN_vkVoidFunction" -> IdentifierType("PFN_vkVoidFunction")
+        else -> throw RuntimeException("Unsupported function pointer result type: ${returnTypeText}")
+    }
+
+    return FunctionTypedef(
+        name=name,
+        api=api,
+        params=params,
+        result=returnType
+    )
 }

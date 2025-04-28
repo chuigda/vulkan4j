@@ -14,7 +14,7 @@ import OpaqueTypedef
 import Param
 import PointerType
 import Structure
-import Enum
+import Enumeration
 import Variant
 
 fun extractVMAHeader(fileContent: String): Registry {
@@ -27,7 +27,7 @@ fun extractVMAHeader(fileContent: String): Registry {
     val structs = mutableMapOf<String, Structure>()
     val functionTypedefs = mutableMapOf<String, FunctionTypedef>()
     val bitmasks = mutableMapOf<String, Bitmask>()
-    val enums = mutableMapOf<String, Enum>()
+    val enums = mutableMapOf<String, Enumeration>()
 
     var i = 0
     while (i < lines.size) {
@@ -91,7 +91,7 @@ fun extractVMAHeader(fileContent: String): Registry {
                 )
             }
             else {
-                enums[enumName] = Enum(
+                enums[enumName] = Enumeration(
                     name=enumName,
                     variants=enumerators.map { Variant(name=it.first, value=it.second) }
                 )
@@ -121,10 +121,10 @@ fun extractVMAHeader(fileContent: String): Registry {
         commandAliases=emptyMap(),
         opaqueTypedefs=opaqueTypedefs,
         handles=handles,
-        structs=structs,
+        structures=structs,
         functionTypedefs=functionTypedefs,
         bitmasks=bitmasks,
-        enums=enums
+        enumerations=enums
     )
 }
 

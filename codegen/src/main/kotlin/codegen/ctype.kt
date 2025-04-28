@@ -429,10 +429,10 @@ fun lowerType(registry: Registry, type: Type): CType {
 }
 
 fun lowerIdentifierType(registry: Registry, type: IdentifierType): CType {
-    return if (registry.structs.contains(type.ident)) {
+    return if (registry.structures.contains(type.ident)) {
         CStructType(type.ident)
     }
-    else if (registry.enums.contains(type.ident)) {
+    else if (registry.enumerations.contains(type.ident)) {
         CEnumType(type.ident)
     }
     else if (registry.bitmasks.contains(type.ident)) {

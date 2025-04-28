@@ -5,10 +5,10 @@ data class Registry(
     val commandAliases: Map<String, String>,
     val opaqueTypedefs: Map<String, OpaqueTypedef>,
     val handles: Map<String, Handle>,
-    val structs: Map<String, Structure>,
+    val structures: Map<String, Structure>,
     val functionTypedefs: Map<String, FunctionTypedef>,
     val bitmasks: Map<String, Bitmask>,
-    val enums: Map<String, Enum>,
+    val enumerations: Map<String, Enumeration>,
 
     var constantClassName: String = "Constants"
 )
@@ -23,7 +23,7 @@ fun mergeRegistry(vararg registries: Registry): Registry {
     val structures = mutableMapOf<String, Structure>()
     val functionTypedefs = mutableMapOf<String, FunctionTypedef>()
     val bitmasks = mutableMapOf<String, Bitmask>()
-    val enums = mutableMapOf<String, Enum>()
+    val enumerations = mutableMapOf<String, Enumeration>()
 
     for (registry in registries) {
         aliases.putAll(registry.aliases)
@@ -32,10 +32,10 @@ fun mergeRegistry(vararg registries: Registry): Registry {
         commandAliases.putAll(registry.commandAliases)
         opaqueTypedefs.putAll(registry.opaqueTypedefs)
         handles.putAll(registry.handles)
-        structures.putAll(registry.structs)
+        structures.putAll(registry.structures)
         functionTypedefs.putAll(registry.functionTypedefs)
         bitmasks.putAll(registry.bitmasks)
-        enums.putAll(registry.enums)
+        enumerations.putAll(registry.enumerations)
     }
 
     return Registry(
@@ -48,7 +48,7 @@ fun mergeRegistry(vararg registries: Registry): Registry {
         structures,
         functionTypedefs,
         bitmasks,
-        enums
+        enumerations
     )
 }
 
@@ -152,7 +152,7 @@ data class Bitflag(
     val value: String
 ) : Entity()
 
-data class Enum(
+data class Enumeration(
     override val name: String,
     override val api: String? = null,
     val variants: List<Variant>

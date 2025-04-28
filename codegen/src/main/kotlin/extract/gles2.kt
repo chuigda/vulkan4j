@@ -60,10 +60,10 @@ fun extractGLES2Registry(fileContent: String): Registry {
         commandAliases=emptyMap(),
         opaqueTypedefs=emptyMap(),
         handles=emptyMap(),
-        structs=emptyMap(),
+        structures=emptyMap(),
         functionTypedefs=emptyMap(),
         bitmasks=emptyMap(),
-        enums=emptyMap(),
+        enumerations=emptyMap(),
 
         constantClassName = "GLES2Constants"
     )
