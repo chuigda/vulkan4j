@@ -32,16 +32,12 @@ data class VulkanRegistryExt(
     val commandAliases: Map<Identifier, Identifier>,
     val versions: Map<Identifier, VulkanVersion>,
     val extensions: Map<Identifier, Extension>,
-) : IMergeable {
-    override fun mergeImpl(other: IMergeable): IMergeable {
-        other as VulkanRegistryExt
-
-        return VulkanRegistryExt(
-            commandAliases = this.commandAliases + other.commandAliases,
-            versions = this.versions + other.versions,
-            extensions = this.extensions + other.extensions
-        )
-    }
+) : IMergeable<VulkanRegistryExt> {
+    override fun merge(other: VulkanRegistryExt): VulkanRegistryExt = VulkanRegistryExt(
+        commandAliases = this.commandAliases + other.commandAliases,
+        versions = this.versions + other.versions,
+        extensions = this.extensions + other.extensions
+    )
 }
 
 class VulkanVersion(

@@ -3,27 +3,15 @@ package cc.chuigda.codegen.registry
 import cc.chuigda.codegen.util.Either
 import java.math.BigInteger
 
-interface IMergeable {
-    fun mergeImpl(other: IMergeable): IMergeable
-
-    fun merge(other: IMergeable?): IMergeable {
-        if (other == null) {
-            return this
-        }
-
-        if (this::class != other::class) {
-            throw IllegalArgumentException("Cannot merge different types: ${this::class} and ${other::class}")
-        }
-
-        return mergeImpl(other)
-    }
+interface IMergeable<Self: IMergeable<Self>> {
+    fun merge(other: Self): Self
 }
 
-class EmptyMergeable : IMergeable {
-    override fun mergeImpl(other: IMergeable) = this
+class EmptyMergeable : IMergeable<EmptyMergeable> {
+    override fun merge(other: EmptyMergeable) = this
 }
 
-data class Registry<E: IMergeable>(
+data class Registry<E: IMergeable<E>>(
     val aliases: MutableMap<Identifier, Typedef>,
     val bitmasks: MutableMap<Identifier, Bitmask>,
     val constants: MutableMap<Identifier, Constant>,
@@ -36,7 +24,6 @@ data class Registry<E: IMergeable>(
 
     var extra: E
 ) {
-    @Suppress("UNCHECKED_CAST")
     infix operator fun plus(other: Registry<E>): Registry<E> = Registry(
         aliases = (this.aliases + other.aliases).toMutableMap(),
         bitmasks = (this.bitmasks + other.bitmasks).toMutableMap(),
@@ -47,7 +34,7 @@ data class Registry<E: IMergeable>(
         opaqueHandleTypedefs = (this.opaqueHandleTypedefs + other.opaqueHandleTypedefs).toMutableMap(),
         structures = (this.structures + other.structures).toMutableMap(),
         unions = (this.unions + other.unions).toMutableMap(),
-        extra = this.extra.merge(other.extra) as E
+        extra = this.extra.merge(other.extra)
     )
 }
 
