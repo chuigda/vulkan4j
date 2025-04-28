@@ -64,7 +64,7 @@ class RequireValue(
     name: String,
     api: String?,
     val extends: Identifier?,
-    val value: Long?,
+    val value: String?,
     val bitpos: Long?,
     val extNumber: Long?,
     val offset: Long?,

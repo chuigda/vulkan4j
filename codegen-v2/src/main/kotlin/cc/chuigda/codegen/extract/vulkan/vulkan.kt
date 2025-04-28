@@ -33,9 +33,17 @@ import java.io.File
 import java.math.BigInteger
 
 fun main() {
-    val coreEntities = File("codegen/input/vk.xml").readText()
+    val coreEntities = File("codegen-v2/input/vk.xml")
+        .readText()
         .parseXML()
         .extractEntities()
+
+    val videoEntities = File("codegen-v2/input/video.xml")
+        .readText()
+        .parseXML()
+        .extractEntities()
+
+    println("done")
 }
 
 private fun Element.extractEntities(): Registry<VulkanRegistryExt> {
@@ -298,7 +306,7 @@ private fun extractExtension(e: Element) =
         promotedto = e.getAttributeText("promotedto"),
         supported = e.getAttributeText("supported")!!,
         provisional = e.getAttributeText("provisional") == "true",
-        require = extractRequire(e.getElementList("require")),
+        require = extractRequire(e.getElementList("require"))
     )
 
 private fun extractRequire(es: List<Element>): Require {
@@ -329,16 +337,11 @@ private fun extractRequireValue(e: Element): RequireValue? {
         return null
     }
 
-    val value = e.getAttributeText("value")
-    if (value != null && value.startsWith('"')) {
-        return null
-    }
-
     return RequireValue(
         name = e.getAttributeText("name")!!,
         api = e.getAttributeText("api"),
         extends = e.getAttributeText("extends")?.intern(),
-        value = value?.parseDecOrHex(),
+        value = e.getAttributeText("value"),
         bitpos = e.getAttributeText("bitpos")?.parseDecOrHex(),
         extNumber = e.getAttributeText("extnumber")?.parseDecOrHex(),
         offset = e.getAttributeText("offset")?.parseDecOrHex(),
