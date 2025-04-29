@@ -1,4 +1,4 @@
-package tech.icey.panama;
+package cc.design7.panama;
 
 import org.jetbrains.annotations.Nullable;
 

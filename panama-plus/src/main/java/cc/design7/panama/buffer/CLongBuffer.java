@@ -1,7 +1,7 @@
-package tech.icey.panama.buffer;
+package cc.design7.panama.buffer;
 
-import tech.icey.panama.IPointer;
-import tech.icey.panama.NativeLayout;
+import cc.design7.panama.IPointer;
+import cc.design7.panama.NativeLayout;
 import tech.icey.panama.annotation.unsafe;
 
 import java.lang.foreign.Arena;

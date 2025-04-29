@@ -1,4 +1,4 @@
-package tech.icey.panama;
+package cc.design7.panama;
 
 import tech.icey.panama.annotation.unsigned;
 

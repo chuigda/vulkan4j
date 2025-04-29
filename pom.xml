@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>tech.icey</groupId>
+    <groupId>cc.design7</groupId>
     <artifactId>root</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
@@ -18,12 +18,13 @@
     <modules>
         <module>panama-plus</module>
         <module>codegen</module>
-        <module>vk4j</module>
+        <module>codegen-v2</module>
+        <module>vulkan</module>
+        <!-- <module>vk4j</module>
         <module>gles2</module>
         <module>glfw</module>
         <module>tutorial</module>
         <module>vma</module>
-        <module>drill</module>
-        <module>codegen-v2</module>
+        -->
     </modules>
 </project>

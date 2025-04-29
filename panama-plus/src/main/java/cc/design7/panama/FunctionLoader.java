@@ -1,4 +1,4 @@
-package tech.icey.panama;
+package cc.design7.panama;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.invoke.MethodHandle;

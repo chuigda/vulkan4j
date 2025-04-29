@@ -108,9 +108,9 @@ data class Structure(
     override val api: String? = null,
     val isUnion: Boolean = false,
     val members: List<Member>,
-    val verbatim: List<String> = listOf(),
+    val verbatim: MutableList<String> = mutableListOf(),
     val structExtends: List<String> = listOf(),
-    var hasInit: Boolean = false
+    var hasInit: Boolean = false,
 ) : Entity()
 
 data class Member(

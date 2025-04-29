@@ -6,11 +6,21 @@
     <parent>
         <groupId>cc.design7</groupId>
         <artifactId>root</artifactId>
-        <version>${revision}</version>
+        <version>0.1.1</version>
     </parent>
 
-    <name>panama-plus</name>
-    <description>Utility library for using Project Panama</description>
+    <artifactId>vulkan</artifactId>
+    <version>0.3.0</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <name>vulkan</name>
+    <description>Java bindings for Vulkan using Project Panama</description>
     <url>https://github.com/chuigda/vulkan4j</url>
 
     <licenses>
@@ -35,16 +45,13 @@
         <url>https://github.com/chuigda/vulkan4j</url>
     </scm>
 
-    <artifactId>panama-plus</artifactId>
-    <version>0.1.4</version>
-    <packaging>jar</packaging>
-
-    <properties>
-        <maven.compiler.release>22</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
     <dependencies>
+        <dependency>
+            <groupId>tech.icey</groupId>
+            <artifactId>panama-plus</artifactId>
+            <version>0.1.2</version>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>

@@ -1,7 +1,7 @@
-module tech.icey.panama {
-    exports tech.icey.panama;
-    exports tech.icey.panama.annotation;
-    exports tech.icey.panama.buffer;
+module cc.design7.panama {
+    exports cc.design7.panama;
+    exports cc.design7.panama.annotation;
+    exports cc.design7.panama.buffer;
 
     requires org.jetbrains.annotations;
 }
