@@ -24,6 +24,11 @@ fun generateConstants(registry: RegistryBase, codegenOptions: CodegenOptions) = 
             .partition { it.type.ident.value == "CONSTANTS_JavaString" }
 
         for (constant in nonStringConstants) {
+            val docLink = codegenOptions.seeLinkProvider(constant)
+            if (docLink != null) {
+                +"/// @see <a href=\"$docLink\">${constant.name}</a>"
+            }
+
             val ctype = lowerIdentifierType(registry, codegenOptions.refRegistries, constant.type)
             +"public static final ${ctype.jType} ${constant.name} = ${constant.expr};"
         }
@@ -33,6 +38,11 @@ fun generateConstants(registry: RegistryBase, codegenOptions: CodegenOptions) = 
         }
 
         for (constant in stringConstants) {
+            val docLink = codegenOptions.seeLinkProvider(constant)
+            if (docLink != null) {
+                +"/// @see <a href=\"$docLink\">${constant.name}</a>"
+            }
+
             +"public static final String ${constant.name} = ${constant.expr};"
         }
 
