@@ -44,7 +44,7 @@ private fun extendBitmask(
     if (bitmask != null && bitpos != null) {
         val value = BigInteger.ONE.shiftLeft(bitpos.toInt())
         val bitflag = Bitflag(name = requireValue.name, value = value)
-        if (addedEntities.putIfAbsent(bitflag, bitmask.name) != null) {
+        if (addedEntities.putIfAbsent(bitflag, bitmask.name) == null) {
             bitmask.bitflags.add(bitflag)
         }
     }
@@ -60,7 +60,7 @@ private fun extendEnum(
     val value = getVariantValue(requireValue, extNumber)
     if (enum != null && value != null) {
         val variant = EnumVariant(name = requireValue.name, value = value)
-        if (addedEntities.putIfAbsent(variant, enum.name) != null) {
+        if (addedEntities.putIfAbsent(variant, enum.name) == null) {
             enum.variants.add(variant)
         }
     }
@@ -90,7 +90,7 @@ private fun extendExtensionNameConstants(
     val originalName = requireValue.name.original
     val value = requireValue.value
 
-    if (originalName.endsWith("_EXTENSION_NAME") && addedEntities.putIfAbsent(requireValue, "Constants".intern()) != null) {
+    if (originalName.endsWith("_EXTENSION_NAME") && addedEntities.putIfAbsent(requireValue, "Constants".intern()) == null) {
         constants.putEntityIfAbsent(Constant(
             requireValue.name,
             IdentifierType("CONSTANTS_JavaString"),

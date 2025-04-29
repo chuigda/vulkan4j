@@ -1,10 +1,9 @@
 package cc.design7.babel.extract.vulkan
 
 import cc.design7.babel.registry.Registry
-import cc.design7.babel.util.setupLog
 import java.util.logging.Logger
 
-internal val log = Logger.getLogger("c.d.c.e.vulkan")
+internal val log = Logger.getLogger("c.d.b.extract.vulkan")
 
 fun extractVulkanRegistry(): Registry<VulkanRegistryExt> {
     log.info("抽取原始注册表")
@@ -21,10 +20,4 @@ fun extractVulkanRegistry(): Registry<VulkanRegistryExt> {
 
     log.info("完成")
     return filteredRegistry
-}
-
-fun main() {
-    setupLog()
-
-    extractVulkanRegistry()
 }

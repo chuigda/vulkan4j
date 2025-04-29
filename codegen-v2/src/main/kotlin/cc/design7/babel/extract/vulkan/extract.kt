@@ -209,7 +209,7 @@ private fun extractConstant(e: Element): Constant {
     return Constant(
         name = name,
         type = type,
-        expr = value
+        expr = value.replace("U", "").replace("LL", "L")
     ).apply { setExt(VkCommonMetadata(api=e.getAttributeText("api"))) }
 }
 
