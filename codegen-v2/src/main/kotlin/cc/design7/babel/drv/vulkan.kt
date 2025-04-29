@@ -29,7 +29,21 @@ internal fun vulkanMain() {
 }
 
 private fun vulkanDocLinkProvider(entity: Entity) = when(entity) {
-    is Bitmask, is Command, is Constant, is Enumeration, is Structure
-        -> "https://registry.khronos.org/vulkan/specs/latest/man/html/${entity.name.original}.html"
+    is Constant -> {
+        val constantName = entity.name.original
+        val typeName = entity.type.ident.value
+        if (constantName.endsWith("_EXTENSION_NAME") && typeName == "CONSTANTS_JavaString") {
+            val constantValueUnquoted = entity.expr.removePrefix("\"").removeSuffix("\"")
+            if (constantValueUnquoted.contains("STD_vulkan_video")) {
+                null
+            } else {
+                "<a href=\"https://registry.khronos.org/vulkan/specs/latest/man/html/$constantValueUnquoted.html\">$constantValueUnquoted</a>"
+            }
+        } else {
+            "<a href=\"https://registry.khronos.org/vulkan/specs/latest/man/html/${entity.name.original}.html\">$constantName</a>"
+        }
+    }
+    is Bitmask, is Command, is Enumeration, is Structure ->
+        "<a href=\"https://registry.khronos.org/vulkan/specs/latest/man/html/${entity.name.original}.html\">${entity.name.original}</a>"
     else -> null
 }
