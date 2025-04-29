@@ -2,7 +2,7 @@ package cc.design7.vulkan;
 
 import cc.design7.ffm.annotation.*;
 
-public final class VulkanConstants {
+public final class VkConstants {
     public static final long MAX_PHYSICAL_DEVICE_NAME_SIZE = 256;
     public static final long UUID_SIZE = 16;
     public static final long LUID_SIZE = 8;
@@ -32,7 +32,7 @@ public final class VulkanConstants {
     public static final long MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR = 7;
     public static final @unsigned int SHADER_INDEX_UNUSED_AMDX = (~0);
     public static final @unsigned int PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV = (~0);
-
+    
     public static final String KHR_SURFACE_EXTENSION_NAME = "VK_KHR_surface";
     public static final String KHR_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_swapchain";
     public static final String KHR_DISPLAY_EXTENSION_NAME = "VK_KHR_display";
@@ -448,7 +448,7 @@ public final class VulkanConstants {
     public static final String STD_VULKAN_VIDEO_CODEC_H265_ENCODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_h265_encode";
     public static final String STD_VULKAN_VIDEO_CODEC_AV1_DECODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_av1_decode";
     public static final String STD_VULKAN_VIDEO_CODEC_AV1_ENCODE_EXTENSION_NAME = "VK_STD_vulkan_video_codec_av1_encode";
-
+    
     /// Constructing this class is nonsense so the constructor is made private.
-    private VulkanConstants() {}
+    private VkConstants() {}
 }

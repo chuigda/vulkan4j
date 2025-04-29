@@ -12,7 +12,7 @@ internal fun vulkanMain() {
     val codegenOptions = CodegenOptions(
         packageName = "cc.design7.vulkan",
         extraImport = mutableListOf(),
-        constantClassName = "VulkanConstants",
+        constantClassName = "VkConstants",
         refRegistries = emptyList()
     )
 
