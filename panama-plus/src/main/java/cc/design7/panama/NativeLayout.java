@@ -1,6 +1,6 @@
 package cc.design7.panama;
 
-import tech.icey.panama.annotation.unsigned;
+import cc.design7.panama.annotation.unsigned;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;

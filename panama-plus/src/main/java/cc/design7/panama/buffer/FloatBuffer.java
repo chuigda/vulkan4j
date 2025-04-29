@@ -1,7 +1,7 @@
 package cc.design7.panama.buffer;
 
 import cc.design7.panama.IPointer;
-import tech.icey.panama.annotation.unsafe;
+import cc.design7.panama.annotation.unsafe;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
