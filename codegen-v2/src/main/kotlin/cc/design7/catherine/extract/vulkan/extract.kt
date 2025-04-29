@@ -88,7 +88,14 @@ private fun Element.extractEntities(): Registry<VulkanRegistryExt> {
     val commandAliases = e.query("commands/command[@alias]").associate {
         val name = it.getAttributeText("name")!!.intern()
         val alias = it.getAttributeText("alias")!!.intern()
-        commands[alias] ?: error("Missing aliased command: $alias")
+        val aliasedCommand = commands[alias] ?: error("Missing aliased command: $alias")
+        commands.putEntityIfAbsent(Command(
+            name = name,
+            params = aliasedCommand.params,
+            result = aliasedCommand.result,
+            successCodes = aliasedCommand.successCodes,
+            errorCodes = aliasedCommand.errorCodes,
+        ).apply { setExt<VkCommonMetadata>(aliasedCommand.ext()) })
         name to alias
     }
 
@@ -179,7 +186,7 @@ private fun extractParam(e: Element): Param {
 
 private fun extractAlias(e: Element) =
     Typedef(
-        name = e.getAttributeText("name")!!,
+        name = e.getAttributeText("name")!!.sanitizeFlagBits(),
         type = IdentifierType(e.getAttributeText("alias")!!.intern()),
     ).apply { setExt(VkCommonMetadata(e.getAttributeText("api"))) }
 
@@ -205,7 +212,7 @@ private fun extractConstant(e: Element): Constant {
 
 private fun extractEnumeration(e: Element) =
     Enumeration(
-        name = e.getAttributeText("name")!!,
+        name = e.getAttributeText("name")!!.sanitizeFlagBits(),
         variants =
             e.getElementList("enum")
                 .filter { !it.hasAttribute("alias") }

@@ -5,10 +5,10 @@ import cc.design7.catherine.util.Either
 import java.io.File
 import java.math.BigInteger
 
-private const val extendingAddedEntitiesFile = "codegen-v2/output/vulkan-extending-added-entities.txt"
+private const val extendingAddedEntitiesFile = "codegen-v2/output/vulkan-extending-added-entities.csv"
 
 internal fun Registry<VulkanRegistryExt>.extendEntities() {
-    val addedEntities = HashSet<Entity>()
+    val addedEntities = HashMap<Entity, Identifier>()
 
     for (version in ext.versions.values) {
         for (requireValue in version.require.values) {
@@ -27,8 +27,9 @@ internal fun Registry<VulkanRegistryExt>.extendEntities() {
 
     log.info(" - 扩展完成，添加了 ${addedEntities.size} 个项目，完整列表可参见 $extendingAddedEntitiesFile")
     File(extendingAddedEntitiesFile).writeText(buildString {
-        for (entity in addedEntities) {
-            appendLine(entity.name)
+        appendLine("name,addedTo")
+        for ((key, value) in addedEntities) {
+            appendLine("${key.name},$value")
         }
     })
 }
@@ -36,14 +37,14 @@ internal fun Registry<VulkanRegistryExt>.extendEntities() {
 private fun extendBitmask(
     requireValue: RequireValue,
     bitmasks: Map<Identifier, Bitmask>,
-    addedEntities: MutableSet<Entity>,
+    addedEntities: MutableMap<Entity, Identifier>,
 ) {
     val bitmask = bitmasks[requireValue.extends]
     val bitpos = requireValue.bitpos
     if (bitmask != null && bitpos != null) {
         val value = BigInteger.ONE.shiftLeft(bitpos.toInt())
         val bitflag = Bitflag(name = requireValue.name, value = value)
-        if (addedEntities.add(bitflag)) {
+        if (addedEntities.putIfAbsent(bitflag, bitmask.name) != null) {
             bitmask.bitflags.add(bitflag)
         }
     }
@@ -52,14 +53,14 @@ private fun extendBitmask(
 private fun extendEnum(
     requireValue: RequireValue,
     enums: Map<Identifier, Enumeration>,
-    addedEntities: MutableSet<Entity>,
+    addedEntities: MutableMap<Entity, Identifier>,
     extNumber: Long? = null,
 ) {
     val enum = enums[requireValue.extends]
     val value = getVariantValue(requireValue, extNumber)
     if (enum != null && value != null) {
         val variant = EnumVariant(name = requireValue.name, value = value)
-        if (addedEntities.add(variant)) {
+        if (addedEntities.putIfAbsent(variant, enum.name) != null) {
             enum.variants.add(variant)
         }
     }
@@ -80,7 +81,7 @@ private fun getVariantValue(requireValue: RequireValue, extNumber: Long?): Eithe
 private fun extendExtensionNameConstants(
     requireValue: RequireValue,
     constants: MutableMap<Identifier, Constant>,
-    addedEntities: MutableSet<Entity>
+    addedEntities: MutableMap<Entity, Identifier>
 ) {
     if (requireValue.extends != null || requireValue.value == null) {
         return
@@ -89,7 +90,7 @@ private fun extendExtensionNameConstants(
     val originalName = requireValue.name.original
     val value = requireValue.value
 
-    if (originalName.endsWith("_EXTENSION_NAME") && addedEntities.add(requireValue)) {
+    if (originalName.endsWith("_EXTENSION_NAME") && addedEntities.putIfAbsent(requireValue, "Constants".intern()) != null) {
         constants.putEntityIfAbsent(Constant(
             requireValue.name,
             IdentifierType("CONSTANTS_JavaString"),

@@ -7,8 +7,6 @@ import java.io.File
 private val renamedEntitiesFile = "codegen-v2/output/vulkan-renamed-entities.csv"
 
 internal fun Registry<VulkanRegistryExt>.renameEntities() {
-    println(ext.commandAliases)
-
     val renamed = mutableMapOf<String, String>()
 
     fun putEntityIfNameReplaced(entity: Entity) {
@@ -24,20 +22,20 @@ internal fun Registry<VulkanRegistryExt>.renameEntities() {
     structures.forEach { it.value.rename(::renameType); putEntityIfNameReplaced(it.value) }
     unions.forEach { it.value.rename(::renameType); putEntityIfNameReplaced(it.value) }
 
-    for (enum in enumerations) {
-        enum.value.rename(::renameType)
-        putEntityIfNameReplaced(enum.value)
-        for (value in enum.value.variants) {
-            value.rename { renameVariantOrBitflag(this, enum.key.original) }
+    for (enum in enumerations.values) {
+        enum.rename(::renameType)
+        putEntityIfNameReplaced(enum)
+        for (value in enum.variants) {
+            value.rename { renameVariantOrBitflag(this, enum.name.value) }
             putEntityIfNameReplaced(value)
         }
     }
 
-    for (bitmask in bitmasks) {
-        bitmask.value.rename(::renameType)
-        putEntityIfNameReplaced(bitmask.value)
-        for (bitflag in bitmask.value.bitflags) {
-            bitflag.rename { renameVariantOrBitflag(this, bitmask.key.original, true) }
+    for (bitmask in bitmasks.values) {
+        bitmask.rename(::renameType)
+        putEntityIfNameReplaced(bitmask)
+        for (bitflag in bitmask.bitflags) {
+            bitflag.rename { renameVariantOrBitflag(this, bitmask.name.value, true) }
             putEntityIfNameReplaced(bitflag)
         }
     }
