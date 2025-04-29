@@ -74,11 +74,21 @@ abstract class Entity(name: Identifier) {
 
 class Bitmask(
     name: Identifier,
+    val bitwidth: Int?,
     val bitflags: MutableList<Bitflag>
 ) : Entity(name) {
-    constructor(name: String, bitflags: MutableList<Bitflag>) : this(name.intern(), bitflags)
+    constructor(
+        name: String,
+        bitwidth: Int?,
+        bitflags: MutableList<Bitflag>
+    ) : this(name.intern(), bitwidth, bitflags)
 
-    override fun toStringImpl() = "Bitmask(name=\"$name\", bitflags=$bitflags"
+    override fun toStringImpl() = buildString {
+        append("Bitmask(name=\"$name\", bitflags=$bitflags")
+        if (bitwidth != null) {
+            append(", bitwidth=$bitwidth")
+        }
+    }
 }
 
 class Bitflag(
