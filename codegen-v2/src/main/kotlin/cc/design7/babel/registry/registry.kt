@@ -85,6 +85,17 @@ abstract class Entity(name: Identifier) {
     } else {
         ")"
     }
+
+    final override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Entity) return false
+
+        return name == other.name
+    }
+
+    final override fun hashCode(): Int {
+        return name.hashCode()
+    }
 }
 
 class Bitmask(

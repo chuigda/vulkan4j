@@ -18,7 +18,6 @@ public final class PipelineCreateFlags2 {
     public static final long DESCRIPTOR_BUFFER_EXT = 0x20000000L;
     public static final long DISABLE_OPTIMIZATION = 0x1L;
     public static final long DISALLOW_OPACITY_MICROMAP_ARM = 0x2000000000L;
-    public static final long DISALLOW_OPACITY_MICROMAP_ARM = 0x2000000000L;
     public static final long DISPATCH_BASE = 0x10L;
     public static final long EARLY_RETURN_ON_FAILURE = 0x200L;
     public static final long ENABLE_LEGACY_DITHERING_EXT = 0x400000000L;
@@ -77,9 +76,6 @@ public final class PipelineCreateFlags2 {
         }
         if ((flags & DISABLE_OPTIMIZATION) != 0) {
             detectedFlagBits.add("VK_PIPELINE_CREATE_2_DISABLE_OPTIMIZATION_BIT");
-        }
-        if ((flags & DISALLOW_OPACITY_MICROMAP_ARM) != 0) {
-            detectedFlagBits.add("VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM");
         }
         if ((flags & DISALLOW_OPACITY_MICROMAP_ARM) != 0) {
             detectedFlagBits.add("VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM");

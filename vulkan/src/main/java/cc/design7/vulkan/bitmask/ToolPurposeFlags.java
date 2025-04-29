@@ -9,8 +9,6 @@ import java.util.List;
 public final class ToolPurposeFlags {
     public static final int ADDITIONAL_FEATURES = 0x8;
     public static final int DEBUG_MARKERS_EXT = 0x40;
-    public static final int DEBUG_MARKERS_EXT = 0x40;
-    public static final int DEBUG_REPORTING_EXT = 0x20;
     public static final int DEBUG_REPORTING_EXT = 0x20;
     public static final int MODIFYING_FEATURES = 0x10;
     public static final int PROFILING = 0x2;
@@ -24,12 +22,6 @@ public final class ToolPurposeFlags {
         }
         if ((flags & DEBUG_MARKERS_EXT) != 0) {
             detectedFlagBits.add("VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT");
-        }
-        if ((flags & DEBUG_MARKERS_EXT) != 0) {
-            detectedFlagBits.add("VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT");
-        }
-        if ((flags & DEBUG_REPORTING_EXT) != 0) {
-            detectedFlagBits.add("VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT");
         }
         if ((flags & DEBUG_REPORTING_EXT) != 0) {
             detectedFlagBits.add("VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT");
