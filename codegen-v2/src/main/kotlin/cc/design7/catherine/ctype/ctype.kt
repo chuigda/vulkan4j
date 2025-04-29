@@ -5,6 +5,7 @@ import cc.design7.catherine.registry.IMergeable
 import cc.design7.catherine.registry.IdentifierType
 import cc.design7.catherine.registry.PointerType
 import cc.design7.catherine.registry.Registry
+import cc.design7.catherine.registry.RegistryBase
 import cc.design7.catherine.registry.Type
 import kotlin.collections.contains
 
@@ -290,52 +291,6 @@ private val knownTypes = mapOf(
     "VkDeviceAddress" to uint64Type,
     "VkRemoteAddressNV" to pvoidType,
 
-    // For non-vulkan functions to properly interact with types when we're generating for GLFW or VMA or things like
-    // such. In case of we're generating Vulkan API binding, these will be actually overrided by the entries provided
-    // by vk.xml.
-    "VkInstance" to CHandleType("VkInstance"),
-    "VkPhysicalDevice" to CHandleType("VkPhysicalDevice"),
-    "VkSurfaceKHR" to CHandleType("VkSurfaceKHR"),
-    "VkAllocationCallbacks" to CStructType("VkAllocationCallbacks"),
-    "VkPhysicalDeviceProperties" to CStructType("VkPhysicalDeviceProperties"),
-    "VkPhysicalDeviceMemoryProperties" to CStructType("VkPhysicalDeviceMemoryProperties"),
-    "VkMemoryPropertyFlags" to CEnumType("VkMemoryPropertyFlags"),
-    "VkBufferCreateInfo" to CStructType("VkBufferCreateInfo"),
-    "VkImageCreateInfo" to CStructType("VkImageCreateInfo"),
-    "VkMemoryRequirements" to CStructType("VkMemoryRequirements"),
-    "VkBuffer" to CHandleType("VkBuffer"),
-    "VkImage" to CHandleType("VkImage"),
-    "VkDevice" to CHandleType("VkDevice"),
-    "VkDeviceMemory" to CHandleType("VkDeviceMemory"),
-    "VkExternalMemoryHandleTypeFlagsKHR" to CEnumType("VkExternalMemoryHandleTypeFlags"),
-    "VkResult" to CEnumType("VkResult"),
-    "PFN_vkGetInstanceProcAddr" to CPointerType(voidType, false, comment="PFN_vkGetInstanceProcAddr"),
-    "PFN_vkGetDeviceProcAddr" to CPointerType(voidType, false, comment="PFN_vkGetDeviceProcAddr"),
-    "PFN_vkGetPhysicalDeviceProperties" to CPointerType(voidType, false, comment="PFN_vkGetPhysicalDeviceProperties"),
-    "PFN_vkGetPhysicalDeviceMemoryProperties" to CPointerType(voidType, false, comment="PFN_vkGetPhysicalDeviceMemoryProperties"),
-    "PFN_vkAllocateMemory" to CPointerType(voidType, false, comment="PFN_vkAllocateMemory"),
-    "PFN_vkFreeMemory" to CPointerType(voidType, false, comment="PFN_vkFreeMemory"),
-    "PFN_vkMapMemory" to CPointerType(voidType, false, comment="PFN_vkMapMemory"),
-    "PFN_vkUnmapMemory" to CPointerType(voidType, false, comment="PFN_vkUnmapMemory"),
-    "PFN_vkFlushMappedMemoryRanges" to CPointerType(voidType, false, comment="PFN_vkFlushMappedMemoryRanges"),
-    "PFN_vkInvalidateMappedMemoryRanges" to CPointerType(voidType, false, comment="PFN_vkInvalidateMappedMemoryRanges"),
-    "PFN_vkBindBufferMemory" to CPointerType(voidType, false, comment="PFN_vkBindBufferMemory"),
-    "PFN_vkBindImageMemory" to CPointerType(voidType, false, comment="PFN_vkBindImageMemory"),
-    "PFN_vkGetBufferMemoryRequirements" to CPointerType(voidType, false, comment="PFN_vkGetBufferMemoryRequirements"),
-    "PFN_vkGetImageMemoryRequirements" to CPointerType(voidType, false, comment="PFN_vkGetImageMemoryRequirements"),
-    "PFN_vkCreateBuffer" to CPointerType(voidType, false, comment="PFN_vkCreateBuffer"),
-    "PFN_vkDestroyBuffer" to CPointerType(voidType, false, comment="PFN_vkDestroyBuffer"),
-    "PFN_vkCreateImage" to CPointerType(voidType, false, comment="PFN_vkCreateImage"),
-    "PFN_vkDestroyImage" to CPointerType(voidType, false, comment="PFN_vkDestroyImage"),
-    "PFN_vkCmdCopyBuffer" to CPointerType(voidType, false, comment="PFN_vkCmdCopyBuffer"),
-    "PFN_vkGetBufferMemoryRequirements2KHR" to CPointerType(voidType, false, comment="PFN_vkGetBufferMemoryRequirements2KHR"),
-    "PFN_vkGetImageMemoryRequirements2KHR" to CPointerType(voidType, false, comment="PFN_vkGetImageMemoryRequirements2KHR"),
-    "PFN_vkBindBufferMemory2KHR" to CPointerType(voidType, false, comment="PFN_vkBindBufferMemory2KHR"),
-    "PFN_vkBindImageMemory2KHR" to CPointerType(voidType, false, comment="PFN_vkBindImageMemory2KHR"),
-    "PFN_vkGetPhysicalDeviceMemoryProperties2KHR" to CPointerType(voidType, false, comment="PFN_vkGetPhysicalDeviceMemoryProperties2KHR"),
-    "PFN_vkGetDeviceBufferMemoryRequirementsKHR" to CPointerType(voidType, false, comment="PFN_vkGetDeviceBufferMemoryRequirementsKHR"),
-    "PFN_vkGetDeviceImageMemoryRequirementsKHR" to CPointerType(voidType, false, comment="PFN_vkGetDeviceImageMemoryRequirementsKHR"),
-
     // Android
     "ANativeWindow" to pvoidType,
     "AHardwareBuffer" to pvoidType,
@@ -406,32 +361,59 @@ private val knownTypes = mapOf(
     "NvSciSyncFence" to CArrayType(uint64Type, "6"),
 )
 
-fun <E: IMergeable<E>> lowerType(registry: Registry<E>, type: Type): CType {
+fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: Type): CType {
     return when(type) {
         is ArrayType -> {
             if (!type.length.value.isNumeric()) {
-                if (!registry.constants.contains(type.length)) {
+                if (!registry.constants.contains(type.length)
+                    && !refRegistries.any { it.constants.contains(type.length) }) {
                     throw Exception("array type referred to an unknown constant ${type.length}")
                 }
             }
 
-            val elementType = lowerType(registry, type.element)
+            val elementType = lowerType(registry, refRegistries, type.element)
             CArrayType(elementType, type.length.value)
         }
         is PointerType -> {
-            if (type.pointee is IdentifierType && registry.opaqueTypedefs.contains(type.pointee.ident)) {
+            if (type.pointee is IdentifierType &&
+                (registry.opaqueTypedefs.contains(type.pointee.ident)
+                 || refRegistries.any { it.opaqueTypedefs.contains(type.pointee.ident) })) {
                 return CHandleType(type.pointee.ident.value)
             }
 
-            val pointee = lowerType(registry, type.pointee)
+            val pointee = lowerType(registry, refRegistries, type.pointee)
             CPointerType(pointee, type.const, comment=null)
         }
-        is IdentifierType -> lowerIdentifierType(registry, type)
+        is IdentifierType -> lowerIdentifierType(registry, refRegistries, type)
     }
 }
 
-fun <E: IMergeable<E>> lowerIdentifierType(registry: Registry<E>, type: IdentifierType): CType {
-    return if (registry.structures.contains(type.ident)) {
+fun lowerIdentifierType(
+    registry: RegistryBase,
+    refRegistries: List<RegistryBase>,
+    type: IdentifierType
+): CType {
+    val lookupResult = identifierTypeLookup(registry, type)
+    if (lookupResult != null) {
+        return lookupResult
+    }
+
+    for (refRegistry in refRegistries) {
+        val lookupResult = identifierTypeLookup(refRegistry, type)
+        if (lookupResult != null) {
+            return lookupResult
+        }
+    }
+
+    return if (knownTypes.containsKey(type.ident.value)) {
+        knownTypes[type.ident.value]!!
+    } else {
+        throw Exception("unknown type ${type.ident.value}")
+    }
+}
+
+fun identifierTypeLookup(registry: RegistryBase, type: IdentifierType) =
+    if (registry.structures.contains(type.ident)) {
         CStructType(type.ident.value)
     }
     else if (registry.enumerations.contains(type.ident)) {
@@ -448,10 +430,8 @@ fun <E: IMergeable<E>> lowerIdentifierType(registry: Registry<E>, type: Identifi
     }
     else if (knownTypes.containsKey(type.ident.value)) {
         knownTypes[type.ident.value]!!
+    } else {
+        null
     }
-    else {
-        throw Exception("unknown type: ${type.ident}")
-    }
-}
 
 private fun String.isNumeric() = all { it.isDigit() }

@@ -11,20 +11,33 @@ class EmptyMergeable : IMergeable<EmptyMergeable> {
     override fun merge(other: EmptyMergeable) = this
 }
 
+abstract class RegistryBase {
+    abstract val aliases: MutableMap<Identifier, Typedef>
+    abstract val bitmasks: MutableMap<Identifier, Bitmask>
+    abstract val constants: MutableMap<Identifier, Constant>
+    abstract val commands: MutableMap<Identifier, Command>
+    abstract val enumerations: MutableMap<Identifier, Enumeration>
+    abstract val functionTypedefs: MutableMap<Identifier, FunctionTypedef>
+    abstract val opaqueHandleTypedefs: MutableMap<Identifier, OpaqueHandleTypedef>
+    abstract val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef>
+    abstract val structures: MutableMap<Identifier, Structure>
+    abstract val unions: MutableMap<Identifier, Structure>
+}
+
 data class Registry<E: IMergeable<E>>(
-    val aliases: MutableMap<Identifier, Typedef>,
-    val bitmasks: MutableMap<Identifier, Bitmask>,
-    val constants: MutableMap<Identifier, Constant>,
-    val commands: MutableMap<Identifier, Command>,
-    val enumerations: MutableMap<Identifier, Enumeration>,
-    val functionTypedefs: MutableMap<Identifier, FunctionTypedef>,
-    val opaqueHandleTypedefs: MutableMap<Identifier, OpaqueHandleTypedef>,
-    val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef>,
-    val structures: MutableMap<Identifier, Structure>,
-    val unions: MutableMap<Identifier, Structure>,
+    override val aliases: MutableMap<Identifier, Typedef>,
+    override val bitmasks: MutableMap<Identifier, Bitmask>,
+    override val constants: MutableMap<Identifier, Constant>,
+    override val commands: MutableMap<Identifier, Command>,
+    override val enumerations: MutableMap<Identifier, Enumeration>,
+    override val functionTypedefs: MutableMap<Identifier, FunctionTypedef>,
+    override val opaqueHandleTypedefs: MutableMap<Identifier, OpaqueHandleTypedef>,
+    override val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef>,
+    override val structures: MutableMap<Identifier, Structure>,
+    override val unions: MutableMap<Identifier, Structure>,
 
     var ext: E
-) {
+) : RegistryBase() {
     infix operator fun plus(other: Registry<E>): Registry<E> = Registry(
         aliases = (this.aliases + other.aliases).toMutableMap(),
         bitmasks = (this.bitmasks + other.bitmasks).toMutableMap(),
