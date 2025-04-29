@@ -10,7 +10,7 @@ public final class CommandBufferUsageFlags {
     public static final int ONE_TIME_SUBMIT = 0x1;
     public static final int RENDER_PASS_CONTINUE = 0x2;
     public static final int SIMULTANEOUS_USE = 0x4;
-    
+
     public static String explain(@enumtype(CommandBufferUsageFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ONE_TIME_SUBMIT) != 0) {
@@ -22,13 +22,13 @@ public final class CommandBufferUsageFlags {
         if ((flags & SIMULTANEOUS_USE) != 0) {
             detectedFlagBits.add("VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private CommandBufferUsageFlags() {}
 }

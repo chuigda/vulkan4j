@@ -9,7 +9,7 @@ import java.util.List;
 public final class PipelineShaderStageCreateFlags {
     public static final int ALLOW_VARYING_SUBGROUP_SIZE = 0x1;
     public static final int REQUIRE_FULL_SUBGROUPS = 0x2;
-    
+
     public static String explain(@enumtype(PipelineShaderStageCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_VARYING_SUBGROUP_SIZE) != 0) {
@@ -18,13 +18,13 @@ public final class PipelineShaderStageCreateFlags {
         if ((flags & REQUIRE_FULL_SUBGROUPS) != 0) {
             detectedFlagBits.add("VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private PipelineShaderStageCreateFlags() {}
 }

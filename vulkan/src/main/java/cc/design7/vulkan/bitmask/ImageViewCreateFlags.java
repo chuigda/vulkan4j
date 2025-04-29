@@ -10,7 +10,7 @@ public final class ImageViewCreateFlags {
     public static final int DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT = 0x4;
     public static final int FRAGMENT_DENSITY_MAP_DEFERRED_EXT = 0x2;
     public static final int FRAGMENT_DENSITY_MAP_DYNAMIC_EXT = 0x1;
-    
+
     public static String explain(@enumtype(ImageViewCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT) != 0) {
@@ -22,13 +22,13 @@ public final class ImageViewCreateFlags {
         if ((flags & FRAGMENT_DENSITY_MAP_DYNAMIC_EXT) != 0) {
             detectedFlagBits.add("VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ImageViewCreateFlags() {}
 }

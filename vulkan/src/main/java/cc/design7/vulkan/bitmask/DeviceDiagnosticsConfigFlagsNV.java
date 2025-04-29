@@ -11,7 +11,7 @@ public final class DeviceDiagnosticsConfigFlagsNV {
     public static final int ENABLE_RESOURCE_TRACKING = 0x2;
     public static final int ENABLE_SHADER_DEBUG_INFO = 0x1;
     public static final int ENABLE_SHADER_ERROR_REPORTING = 0x8;
-    
+
     public static String explain(@enumtype(DeviceDiagnosticsConfigFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ENABLE_AUTOMATIC_CHECKPOINTS) != 0) {
@@ -26,13 +26,13 @@ public final class DeviceDiagnosticsConfigFlagsNV {
         if ((flags & ENABLE_SHADER_ERROR_REPORTING) != 0) {
             detectedFlagBits.add("VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_ERROR_REPORTING_BIT_NV");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private DeviceDiagnosticsConfigFlagsNV() {}
 }

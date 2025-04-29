@@ -12,7 +12,7 @@ public final class VideoEncodeH265RateControlFlagsKHR {
     public static final int VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT = 0x4;
     public static final int VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP = 0x2;
     public static final int VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC = 0x10;
-    
+
     public static String explain(@enumtype(VideoEncodeH265RateControlFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE) != 0) {
@@ -30,13 +30,13 @@ public final class VideoEncodeH265RateControlFlagsKHR {
         if ((flags & VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoEncodeH265RateControlFlagsKHR() {}
 }

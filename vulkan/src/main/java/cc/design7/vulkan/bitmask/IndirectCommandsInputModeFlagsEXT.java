@@ -9,7 +9,7 @@ import java.util.List;
 public final class IndirectCommandsInputModeFlagsEXT {
     public static final int DXGI_INDEX_BUFFER = 0x2;
     public static final int VULKAN_INDEX_BUFFER = 0x1;
-    
+
     public static String explain(@enumtype(IndirectCommandsInputModeFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DXGI_INDEX_BUFFER) != 0) {
@@ -18,13 +18,13 @@ public final class IndirectCommandsInputModeFlagsEXT {
         if ((flags & VULKAN_INDEX_BUFFER) != 0) {
             detectedFlagBits.add("VK_INDIRECT_COMMANDS_INPUT_MODE_VULKAN_INDEX_BUFFER_EXT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private IndirectCommandsInputModeFlagsEXT() {}
 }

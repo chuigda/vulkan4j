@@ -52,7 +52,7 @@ public final class AccessFlags2 {
     public static final long VIDEO_DECODE_WRITE_KHR = 0x1000000000L;
     public static final long VIDEO_ENCODE_READ_KHR = 0x2000000000L;
     public static final long VIDEO_ENCODE_WRITE_KHR = 0x4000000000L;
-    
+
     public static String explain(@enumtype(AccessFlags2.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ACCELERATION_STRUCTURE_READ_KHR) != 0) {
@@ -190,13 +190,13 @@ public final class AccessFlags2 {
         if ((flags & VIDEO_ENCODE_WRITE_KHR) != 0) {
             detectedFlagBits.add("VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private AccessFlags2() {}
 }

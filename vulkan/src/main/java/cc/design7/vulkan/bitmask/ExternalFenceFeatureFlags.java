@@ -9,7 +9,7 @@ import java.util.List;
 public final class ExternalFenceFeatureFlags {
     public static final int EXPORTABLE = 0x1;
     public static final int IMPORTABLE = 0x2;
-    
+
     public static String explain(@enumtype(ExternalFenceFeatureFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & EXPORTABLE) != 0) {
@@ -18,13 +18,13 @@ public final class ExternalFenceFeatureFlags {
         if ((flags & IMPORTABLE) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ExternalFenceFeatureFlags() {}
 }

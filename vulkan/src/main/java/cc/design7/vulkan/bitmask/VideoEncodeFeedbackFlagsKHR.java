@@ -10,7 +10,7 @@ public final class VideoEncodeFeedbackFlagsKHR {
     public static final int BITSTREAM_BUFFER_OFFSET = 0x1;
     public static final int BITSTREAM_BYTES_WRITTEN = 0x2;
     public static final int BITSTREAM_HAS_OVERRIDES = 0x4;
-    
+
     public static String explain(@enumtype(VideoEncodeFeedbackFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & BITSTREAM_BUFFER_OFFSET) != 0) {
@@ -22,13 +22,13 @@ public final class VideoEncodeFeedbackFlagsKHR {
         if ((flags & BITSTREAM_HAS_OVERRIDES) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoEncodeFeedbackFlagsKHR() {}
 }

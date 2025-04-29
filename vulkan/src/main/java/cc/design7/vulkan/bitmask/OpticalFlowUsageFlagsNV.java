@@ -13,7 +13,7 @@ public final class OpticalFlowUsageFlagsNV {
     public static final int INPUT = 0x1;
     public static final int OUTPUT = 0x2;
     public static final int UNKNOWN = 0x0;
-    
+
     public static String explain(@enumtype(OpticalFlowUsageFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & COST) != 0) {
@@ -34,13 +34,13 @@ public final class OpticalFlowUsageFlagsNV {
         if ((flags & UNKNOWN) != 0) {
             detectedFlagBits.add("VK_OPTICAL_FLOW_USAGE_UNKNOWN_NV");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private OpticalFlowUsageFlagsNV() {}
 }

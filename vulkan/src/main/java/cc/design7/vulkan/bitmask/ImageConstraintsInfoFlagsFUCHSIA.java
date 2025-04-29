@@ -12,7 +12,7 @@ public final class ImageConstraintsInfoFlagsFUCHSIA {
     public static final int CPU_WRITE_OFTEN = 0x8;
     public static final int CPU_WRITE_RARELY = 0x4;
     public static final int PROTECTED_OPTIONAL = 0x10;
-    
+
     public static String explain(@enumtype(ImageConstraintsInfoFlagsFUCHSIA.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CPU_READ_OFTEN) != 0) {
@@ -30,13 +30,13 @@ public final class ImageConstraintsInfoFlagsFUCHSIA {
         if ((flags & PROTECTED_OPTIONAL) != 0) {
             detectedFlagBits.add("VK_IMAGE_CONSTRAINTS_INFO_PROTECTED_OPTIONAL_FUCHSIA");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ImageConstraintsInfoFlagsFUCHSIA() {}
 }

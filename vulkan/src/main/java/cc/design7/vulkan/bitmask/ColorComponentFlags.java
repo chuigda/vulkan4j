@@ -11,7 +11,7 @@ public final class ColorComponentFlags {
     public static final int B = 0x4;
     public static final int G = 0x2;
     public static final int R = 0x1;
-    
+
     public static String explain(@enumtype(ColorComponentFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & A) != 0) {
@@ -26,13 +26,13 @@ public final class ColorComponentFlags {
         if ((flags & R) != 0) {
             detectedFlagBits.add("VK_COLOR_COMPONENT_R_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ColorComponentFlags() {}
 }

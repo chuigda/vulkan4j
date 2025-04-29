@@ -25,7 +25,7 @@ public final class ExternalMemoryHandleTypeFlags {
     public static final int SCI_BUF_NV = 0x2000;
     public static final int SCREEN_BUFFER_QNX = 0x4000;
     public static final int ZIRCON_VMO_FUCHSIA = 0x800;
-    
+
     public static String explain(@enumtype(ExternalMemoryHandleTypeFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ANDROID_HARDWARE_BUFFER_ANDROID) != 0) {
@@ -82,13 +82,13 @@ public final class ExternalMemoryHandleTypeFlags {
         if ((flags & ZIRCON_VMO_FUCHSIA) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ExternalMemoryHandleTypeFlags() {}
 }

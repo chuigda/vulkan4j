@@ -53,7 +53,7 @@ public final class FormatFeatureFlags2 {
     public static final long VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_KHR = 0x2000000000000L;
     public static final long WEIGHT_IMAGE_QCOM = 0x400000000L;
     public static final long WEIGHT_SAMPLED_IMAGE_QCOM = 0x800000000L;
-    
+
     public static String explain(@enumtype(FormatFeatureFlags2.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ACCELERATION_STRUCTURE_RADIUS_BUFFER_NV) != 0) {
@@ -194,13 +194,13 @@ public final class FormatFeatureFlags2 {
         if ((flags & WEIGHT_SAMPLED_IMAGE_QCOM) != 0) {
             detectedFlagBits.add("VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private FormatFeatureFlags2() {}
 }

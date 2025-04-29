@@ -10,7 +10,7 @@ public final class PresentGravityFlagsEXT {
     public static final int CENTERED = 0x4;
     public static final int MAX = 0x2;
     public static final int MIN = 0x1;
-    
+
     public static String explain(@enumtype(PresentGravityFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CENTERED) != 0) {
@@ -22,13 +22,13 @@ public final class PresentGravityFlagsEXT {
         if ((flags & MIN) != 0) {
             detectedFlagBits.add("VK_PRESENT_GRAVITY_MIN_BIT_EXT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private PresentGravityFlagsEXT() {}
 }

@@ -13,7 +13,7 @@ public final class ResolveModeFlags {
     public static final int MIN = 0x4;
     public static final int NONE = 0x0;
     public static final int SAMPLE_ZERO = 0x1;
-    
+
     public static String explain(@enumtype(ResolveModeFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & AVERAGE) != 0) {
@@ -34,13 +34,13 @@ public final class ResolveModeFlags {
         if ((flags & SAMPLE_ZERO) != 0) {
             detectedFlagBits.add("VK_RESOLVE_MODE_SAMPLE_ZERO_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ResolveModeFlags() {}
 }

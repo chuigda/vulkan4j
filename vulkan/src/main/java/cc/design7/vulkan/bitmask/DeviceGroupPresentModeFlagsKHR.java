@@ -11,7 +11,7 @@ public final class DeviceGroupPresentModeFlagsKHR {
     public static final int LOCAL_MULTI_DEVICE = 0x8;
     public static final int REMOTE = 0x2;
     public static final int SUM = 0x4;
-    
+
     public static String explain(@enumtype(DeviceGroupPresentModeFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & LOCAL) != 0) {
@@ -26,13 +26,13 @@ public final class DeviceGroupPresentModeFlagsKHR {
         if ((flags & SUM) != 0) {
             detectedFlagBits.add("VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private DeviceGroupPresentModeFlagsKHR() {}
 }

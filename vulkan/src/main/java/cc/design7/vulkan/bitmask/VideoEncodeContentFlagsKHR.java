@@ -11,7 +11,7 @@ public final class VideoEncodeContentFlagsKHR {
     public static final int DEFAULT = 0x0;
     public static final int DESKTOP = 0x2;
     public static final int RENDERED = 0x4;
-    
+
     public static String explain(@enumtype(VideoEncodeContentFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CAMERA) != 0) {
@@ -26,13 +26,13 @@ public final class VideoEncodeContentFlagsKHR {
         if ((flags & RENDERED) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoEncodeContentFlagsKHR() {}
 }

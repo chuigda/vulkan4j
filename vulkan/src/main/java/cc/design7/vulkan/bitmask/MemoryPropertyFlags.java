@@ -16,7 +16,7 @@ public final class MemoryPropertyFlags {
     public static final int LAZILY_ALLOCATED = 0x10;
     public static final int PROTECTED = 0x20;
     public static final int RDMA_CAPABLE_NV = 0x100;
-    
+
     public static String explain(@enumtype(MemoryPropertyFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEVICE_COHERENT_AMD) != 0) {
@@ -46,13 +46,13 @@ public final class MemoryPropertyFlags {
         if ((flags & RDMA_CAPABLE_NV) != 0) {
             detectedFlagBits.add("VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private MemoryPropertyFlags() {}
 }

@@ -27,7 +27,7 @@ public final class VideoEncodeH264StdFlagsKHR {
     public static final int VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT = 0x80;
     public static final int VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_IMPLICIT = 0x100;
     public static final int VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET = 0x40;
-    
+
     public static String explain(@enumtype(VideoEncodeH264StdFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VIDEO_ENCODE_H264_STD_CHROMA_QP_INDEX_OFFSET) != 0) {
@@ -90,13 +90,13 @@ public final class VideoEncodeH264StdFlagsKHR {
         if ((flags & VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoEncodeH264StdFlagsKHR() {}
 }

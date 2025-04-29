@@ -13,7 +13,7 @@ public final class ExternalFenceHandleTypeFlags {
     public static final int SCI_SYNC_FENCE_NV = 0x20;
     public static final int SCI_SYNC_OBJ_NV = 0x10;
     public static final int SYNC_FD = 0x8;
-    
+
     public static String explain(@enumtype(ExternalFenceHandleTypeFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & OPAQUE_FD) != 0) {
@@ -34,13 +34,13 @@ public final class ExternalFenceHandleTypeFlags {
         if ((flags & SYNC_FD) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ExternalFenceHandleTypeFlags() {}
 }

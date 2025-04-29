@@ -33,7 +33,7 @@ public final class PipelineStageFlags {
     public static final int TRANSFORM_FEEDBACK_EXT = 0x1000000;
     public static final int VERTEX_INPUT = 0x4;
     public static final int VERTEX_SHADER = 0x8;
-    
+
     public static String explain(@enumtype(PipelineStageFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ACCELERATION_STRUCTURE_BUILD_KHR) != 0) {
@@ -114,13 +114,13 @@ public final class PipelineStageFlags {
         if ((flags & VERTEX_SHADER) != 0) {
             detectedFlagBits.add("VK_PIPELINE_STAGE_VERTEX_SHADER_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private PipelineStageFlags() {}
 }

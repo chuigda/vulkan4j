@@ -35,7 +35,7 @@ public final class AccessFlags {
     public static final int TRANSFORM_FEEDBACK_WRITE_EXT = 0x2000000;
     public static final int UNIFORM_READ = 0x8;
     public static final int VERTEX_ATTRIBUTE_READ = 0x4;
-    
+
     public static String explain(@enumtype(AccessFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ACCELERATION_STRUCTURE_READ_KHR) != 0) {
@@ -122,13 +122,13 @@ public final class AccessFlags {
         if ((flags & VERTEX_ATTRIBUTE_READ) != 0) {
             detectedFlagBits.add("VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private AccessFlags() {}
 }

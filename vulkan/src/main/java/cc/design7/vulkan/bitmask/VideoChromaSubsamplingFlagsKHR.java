@@ -12,7 +12,7 @@ public final class VideoChromaSubsamplingFlagsKHR {
     public static final int _444 = 0x8;
     public static final int INVALID = 0x0;
     public static final int MONOCHROME = 0x1;
-    
+
     public static String explain(@enumtype(VideoChromaSubsamplingFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _420) != 0) {
@@ -30,13 +30,13 @@ public final class VideoChromaSubsamplingFlagsKHR {
         if ((flags & MONOCHROME) != 0) {
             detectedFlagBits.add("VK_VIDEO_CHROMA_SUBSAMPLING_MONOCHROME_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoChromaSubsamplingFlagsKHR() {}
 }

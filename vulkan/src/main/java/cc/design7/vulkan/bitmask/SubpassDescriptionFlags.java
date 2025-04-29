@@ -16,7 +16,7 @@ public final class SubpassDescriptionFlags {
     public static final int RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_EXT = 0x40;
     public static final int SHADER_RESOLVE_QCOM = 0x8;
     public static final int TILE_SHADING_APRON_QCOM = 0x100;
-    
+
     public static String explain(@enumtype(SubpassDescriptionFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ENABLE_LEGACY_DITHERING_EXT) != 0) {
@@ -46,13 +46,13 @@ public final class SubpassDescriptionFlags {
         if ((flags & TILE_SHADING_APRON_QCOM) != 0) {
             detectedFlagBits.add("VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private SubpassDescriptionFlags() {}
 }

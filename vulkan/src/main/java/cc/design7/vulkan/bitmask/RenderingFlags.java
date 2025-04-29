@@ -12,7 +12,7 @@ public final class RenderingFlags {
     public static final int ENABLE_LEGACY_DITHERING_EXT = 0x8;
     public static final int RESUMING = 0x4;
     public static final int SUSPENDING = 0x2;
-    
+
     public static String explain(@enumtype(RenderingFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CONTENTS_INLINE_KHR) != 0) {
@@ -30,13 +30,13 @@ public final class RenderingFlags {
         if ((flags & SUSPENDING) != 0) {
             detectedFlagBits.add("VK_RENDERING_SUSPENDING_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private RenderingFlags() {}
 }

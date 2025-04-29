@@ -12,7 +12,7 @@ public final class VideoEncodeUsageFlagsKHR {
     public static final int RECORDING = 0x4;
     public static final int STREAMING = 0x2;
     public static final int TRANSCODING = 0x1;
-    
+
     public static String explain(@enumtype(VideoEncodeUsageFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CONFERENCING) != 0) {
@@ -30,13 +30,13 @@ public final class VideoEncodeUsageFlagsKHR {
         if ((flags & TRANSCODING) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_USAGE_TRANSCODING_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoEncodeUsageFlagsKHR() {}
 }

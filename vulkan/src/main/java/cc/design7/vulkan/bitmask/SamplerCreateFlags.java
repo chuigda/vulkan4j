@@ -12,7 +12,7 @@ public final class SamplerCreateFlags {
     public static final int NON_SEAMLESS_CUBE_MAP_EXT = 0x4;
     public static final int SUBSAMPLED_EXT = 0x1;
     public static final int SUBSAMPLED_COARSE_RECONSTRUCTION_EXT = 0x2;
-    
+
     public static String explain(@enumtype(SamplerCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT) != 0) {
@@ -30,13 +30,13 @@ public final class SamplerCreateFlags {
         if ((flags & SUBSAMPLED_COARSE_RECONSTRUCTION_EXT) != 0) {
             detectedFlagBits.add("VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private SamplerCreateFlags() {}
 }

@@ -5,7 +5,7 @@ sealed class Doc
 private val nl: Doc = EmptyLine()
 
 class DocList(val segments: MutableList<Doc>) : Doc() {
-    operator fun String.unaryPlus() = segments.add(DocText(this))
+    operator fun String.unaryPlus() = segments.add(if (this.isEmpty()) nl else DocText(this))
     operator fun Doc.unaryPlus() = segments.add(this)
     fun nl() = segments.add(nl)
 

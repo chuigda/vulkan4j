@@ -11,7 +11,7 @@ public final class VideoComponentBitDepthFlagsKHR {
     public static final int _12 = 0x10;
     public static final int _8 = 0x1;
     public static final int INVALID = 0x0;
-    
+
     public static String explain(@enumtype(VideoComponentBitDepthFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _10) != 0) {
@@ -26,13 +26,13 @@ public final class VideoComponentBitDepthFlagsKHR {
         if ((flags & INVALID) != 0) {
             detectedFlagBits.add("VK_VIDEO_COMPONENT_BIT_DEPTH_INVALID_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoComponentBitDepthFlagsKHR() {}
 }

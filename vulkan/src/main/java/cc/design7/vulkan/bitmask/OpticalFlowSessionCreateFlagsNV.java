@@ -12,7 +12,7 @@ public final class OpticalFlowSessionCreateFlagsNV {
     public static final int ENABLE_COST = 0x2;
     public static final int ENABLE_GLOBAL_FLOW = 0x4;
     public static final int ENABLE_HINT = 0x1;
-    
+
     public static String explain(@enumtype(OpticalFlowSessionCreateFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_REGIONS) != 0) {
@@ -30,13 +30,13 @@ public final class OpticalFlowSessionCreateFlagsNV {
         if ((flags & ENABLE_HINT) != 0) {
             detectedFlagBits.add("VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_HINT_BIT_NV");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private OpticalFlowSessionCreateFlagsNV() {}
 }

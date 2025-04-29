@@ -13,7 +13,7 @@ public final class GeometryInstanceFlagsKHR {
     public static final int FORCE_OPAQUE = 0x4;
     public static final int TRIANGLE_FACING_CULL_DISABLE = 0x1;
     public static final int TRIANGLE_FLIP_FACING = 0x2;
-    
+
     public static String explain(@enumtype(GeometryInstanceFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DISABLE_OPACITY_MICROMAPS_EXT) != 0) {
@@ -34,13 +34,13 @@ public final class GeometryInstanceFlagsKHR {
         if ((flags & TRIANGLE_FLIP_FACING) != 0) {
             detectedFlagBits.add("VK_GEOMETRY_INSTANCE_TRIANGLE_FLIP_FACING_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private GeometryInstanceFlagsKHR() {}
 }

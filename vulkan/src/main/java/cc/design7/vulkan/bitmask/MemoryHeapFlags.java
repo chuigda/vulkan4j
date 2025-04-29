@@ -10,7 +10,7 @@ public final class MemoryHeapFlags {
     public static final int DEVICE_LOCAL = 0x1;
     public static final int MULTI_INSTANCE = 0x2;
     public static final int TILE_MEMORY_QCOM = 0x8;
-    
+
     public static String explain(@enumtype(MemoryHeapFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEVICE_LOCAL) != 0) {
@@ -22,13 +22,13 @@ public final class MemoryHeapFlags {
         if ((flags & TILE_MEMORY_QCOM) != 0) {
             detectedFlagBits.add("VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private MemoryHeapFlags() {}
 }

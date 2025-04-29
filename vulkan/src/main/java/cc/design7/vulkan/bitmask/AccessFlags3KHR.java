@@ -8,19 +8,19 @@ import java.util.List;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccessFlags3KHR.html">VkAccessFlags3KHR</a>
 public final class AccessFlags3KHR {
     public static final long NONE = 0x0L;
-    
+
     public static String explain(@enumtype(AccessFlags3KHR.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & NONE) != 0) {
             detectedFlagBits.add("VK_ACCESS_3_NONE_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private AccessFlags3KHR() {}
 }

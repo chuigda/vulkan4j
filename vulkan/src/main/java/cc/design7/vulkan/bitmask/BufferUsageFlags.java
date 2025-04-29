@@ -34,7 +34,7 @@ public final class BufferUsageFlags {
     public static final int VIDEO_DECODE_SRC_KHR = 0x2000;
     public static final int VIDEO_ENCODE_DST_KHR = 0x8000;
     public static final int VIDEO_ENCODE_SRC_KHR = 0x10000;
-    
+
     public static String explain(@enumtype(BufferUsageFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_KHR) != 0) {
@@ -118,13 +118,13 @@ public final class BufferUsageFlags {
         if ((flags & VIDEO_ENCODE_SRC_KHR) != 0) {
             detectedFlagBits.add("VK_BUFFER_USAGE_VIDEO_ENCODE_SRC_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private BufferUsageFlags() {}
 }

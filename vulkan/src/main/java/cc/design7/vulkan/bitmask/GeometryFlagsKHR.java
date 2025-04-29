@@ -9,7 +9,7 @@ import java.util.List;
 public final class GeometryFlagsKHR {
     public static final int NO_DUPLICATE_ANY_HIT_INVOCATION = 0x2;
     public static final int OPAQUE = 0x1;
-    
+
     public static String explain(@enumtype(GeometryFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & NO_DUPLICATE_ANY_HIT_INVOCATION) != 0) {
@@ -18,13 +18,13 @@ public final class GeometryFlagsKHR {
         if ((flags & OPAQUE) != 0) {
             detectedFlagBits.add("VK_GEOMETRY_OPAQUE_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private GeometryFlagsKHR() {}
 }

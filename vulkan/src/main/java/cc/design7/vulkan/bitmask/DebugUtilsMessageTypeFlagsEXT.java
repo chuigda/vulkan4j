@@ -11,7 +11,7 @@ public final class DebugUtilsMessageTypeFlagsEXT {
     public static final int GENERAL = 0x1;
     public static final int PERFORMANCE = 0x4;
     public static final int VALIDATION = 0x2;
-    
+
     public static String explain(@enumtype(DebugUtilsMessageTypeFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEVICE_ADDRESS_BINDING) != 0) {
@@ -26,13 +26,13 @@ public final class DebugUtilsMessageTypeFlagsEXT {
         if ((flags & VALIDATION) != 0) {
             detectedFlagBits.add("VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private DebugUtilsMessageTypeFlagsEXT() {}
 }

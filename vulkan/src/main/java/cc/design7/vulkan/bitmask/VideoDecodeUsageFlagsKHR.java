@@ -11,7 +11,7 @@ public final class VideoDecodeUsageFlagsKHR {
     public static final int OFFLINE = 0x2;
     public static final int STREAMING = 0x4;
     public static final int TRANSCODING = 0x1;
-    
+
     public static String explain(@enumtype(VideoDecodeUsageFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEFAULT) != 0) {
@@ -26,13 +26,13 @@ public final class VideoDecodeUsageFlagsKHR {
         if ((flags & TRANSCODING) != 0) {
             detectedFlagBits.add("VK_VIDEO_DECODE_USAGE_TRANSCODING_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoDecodeUsageFlagsKHR() {}
 }

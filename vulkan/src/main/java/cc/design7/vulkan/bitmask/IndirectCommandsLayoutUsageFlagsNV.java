@@ -10,7 +10,7 @@ public final class IndirectCommandsLayoutUsageFlagsNV {
     public static final int EXPLICIT_PREPROCESS = 0x1;
     public static final int INDEXED_SEQUENCES = 0x2;
     public static final int UNORDERED_SEQUENCES = 0x4;
-    
+
     public static String explain(@enumtype(IndirectCommandsLayoutUsageFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & EXPLICIT_PREPROCESS) != 0) {
@@ -22,13 +22,13 @@ public final class IndirectCommandsLayoutUsageFlagsNV {
         if ((flags & UNORDERED_SEQUENCES) != 0) {
             detectedFlagBits.add("VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NV");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private IndirectCommandsLayoutUsageFlagsNV() {}
 }

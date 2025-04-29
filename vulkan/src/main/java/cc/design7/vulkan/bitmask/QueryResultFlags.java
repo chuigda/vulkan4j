@@ -12,7 +12,7 @@ public final class QueryResultFlags {
     public static final int WAIT = 0x2;
     public static final int WITH_AVAILABILITY = 0x4;
     public static final int WITH_STATUS_KHR = 0x10;
-    
+
     public static String explain(@enumtype(QueryResultFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _64) != 0) {
@@ -30,13 +30,13 @@ public final class QueryResultFlags {
         if ((flags & WITH_STATUS_KHR) != 0) {
             detectedFlagBits.add("VK_QUERY_RESULT_WITH_STATUS_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private QueryResultFlags() {}
 }

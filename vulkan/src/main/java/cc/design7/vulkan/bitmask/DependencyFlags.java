@@ -12,7 +12,7 @@ public final class DependencyFlags {
     public static final int FEEDBACK_LOOP_EXT = 0x8;
     public static final int QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_KHR = 0x20;
     public static final int VIEW_LOCAL = 0x2;
-    
+
     public static String explain(@enumtype(DependencyFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & BY_REGION) != 0) {
@@ -30,13 +30,13 @@ public final class DependencyFlags {
         if ((flags & VIEW_LOCAL) != 0) {
             detectedFlagBits.add("VK_DEPENDENCY_VIEW_LOCAL_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private DependencyFlags() {}
 }

@@ -16,7 +16,7 @@ public final class SurfaceTransformFlagsKHR {
     public static final int ROTATE_180 = 0x4;
     public static final int ROTATE_270 = 0x8;
     public static final int ROTATE_90 = 0x2;
-    
+
     public static String explain(@enumtype(SurfaceTransformFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & HORIZONTAL_MIRROR) != 0) {
@@ -46,13 +46,13 @@ public final class SurfaceTransformFlagsKHR {
         if ((flags & ROTATE_90) != 0) {
             detectedFlagBits.add("VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private SurfaceTransformFlagsKHR() {}
 }

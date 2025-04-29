@@ -25,7 +25,7 @@ public final class ShaderStageFlags {
     public static final int TESSELLATION_CONTROL = 0x2;
     public static final int TESSELLATION_EVALUATION = 0x4;
     public static final int VERTEX = 0x1;
-    
+
     public static String explain(@enumtype(ShaderStageFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALL) != 0) {
@@ -82,13 +82,13 @@ public final class ShaderStageFlags {
         if ((flags & VERTEX) != 0) {
             detectedFlagBits.add("VK_SHADER_STAGE_VERTEX_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ShaderStageFlags() {}
 }

@@ -11,7 +11,7 @@ public final class DebugUtilsMessageSeverityFlagsEXT {
     public static final int INFO = 0x10;
     public static final int VERBOSE = 0x1;
     public static final int WARNING = 0x100;
-    
+
     public static String explain(@enumtype(DebugUtilsMessageSeverityFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ERROR) != 0) {
@@ -26,13 +26,13 @@ public final class DebugUtilsMessageSeverityFlagsEXT {
         if ((flags & WARNING) != 0) {
             detectedFlagBits.add("VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private DebugUtilsMessageSeverityFlagsEXT() {}
 }

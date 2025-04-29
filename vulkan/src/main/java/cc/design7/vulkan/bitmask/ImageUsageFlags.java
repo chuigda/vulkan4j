@@ -31,7 +31,7 @@ public final class ImageUsageFlags {
     public static final int VIDEO_ENCODE_EMPHASIS_MAP_KHR = 0x4000000;
     public static final int VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_KHR = 0x2000000;
     public static final int VIDEO_ENCODE_SRC_KHR = 0x4000;
-    
+
     public static String explain(@enumtype(ImageUsageFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ATTACHMENT_FEEDBACK_LOOP_EXT) != 0) {
@@ -106,13 +106,13 @@ public final class ImageUsageFlags {
         if ((flags & VIDEO_ENCODE_SRC_KHR) != 0) {
             detectedFlagBits.add("VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ImageUsageFlags() {}
 }

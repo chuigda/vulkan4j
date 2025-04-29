@@ -8,19 +8,19 @@ import java.util.List;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkHostImageCopyFlags.html">VkHostImageCopyFlags</a>
 public final class HostImageCopyFlags {
     public static final int MEMCPY = 0x1;
-    
+
     public static String explain(@enumtype(HostImageCopyFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & MEMCPY) != 0) {
             detectedFlagBits.add("VK_HOST_IMAGE_COPY_MEMCPY");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private HostImageCopyFlags() {}
 }

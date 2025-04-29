@@ -10,7 +10,7 @@ public final class MemoryAllocateFlags {
     public static final int DEVICE_ADDRESS = 0x2;
     public static final int DEVICE_ADDRESS_CAPTURE_REPLAY = 0x4;
     public static final int DEVICE_MASK = 0x1;
-    
+
     public static String explain(@enumtype(MemoryAllocateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEVICE_ADDRESS) != 0) {
@@ -22,13 +22,13 @@ public final class MemoryAllocateFlags {
         if ((flags & DEVICE_MASK) != 0) {
             detectedFlagBits.add("VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private MemoryAllocateFlags() {}
 }

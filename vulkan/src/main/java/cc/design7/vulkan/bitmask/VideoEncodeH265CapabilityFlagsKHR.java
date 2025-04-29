@@ -18,7 +18,7 @@ public final class VideoEncodeH265CapabilityFlagsKHR {
     public static final int VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP = 0x80;
     public static final int VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED = 0x2;
     public static final int VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT = 0x4;
-    
+
     public static String explain(@enumtype(VideoEncodeH265CapabilityFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST) != 0) {
@@ -54,13 +54,13 @@ public final class VideoEncodeH265CapabilityFlagsKHR {
         if ((flags & VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoEncodeH265CapabilityFlagsKHR() {}
 }

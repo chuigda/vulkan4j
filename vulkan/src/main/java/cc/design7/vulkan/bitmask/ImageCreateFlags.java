@@ -27,7 +27,7 @@ public final class ImageCreateFlags {
     public static final int SPLIT_INSTANCE_BIND_REGIONS = 0x40;
     public static final int SUBSAMPLED_EXT = 0x4000;
     public static final int VIDEO_PROFILE_INDEPENDENT_KHR = 0x100000;
-    
+
     public static String explain(@enumtype(ImageCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _2D_ARRAY_COMPATIBLE) != 0) {
@@ -90,13 +90,13 @@ public final class ImageCreateFlags {
         if ((flags & VIDEO_PROFILE_INDEPENDENT_KHR) != 0) {
             detectedFlagBits.add("VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ImageCreateFlags() {}
 }

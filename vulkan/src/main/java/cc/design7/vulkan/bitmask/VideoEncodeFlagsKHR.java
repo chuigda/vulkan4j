@@ -9,7 +9,7 @@ import java.util.List;
 public final class VideoEncodeFlagsKHR {
     public static final int WITH_EMPHASIS_MAP = 0x2;
     public static final int WITH_QUANTIZATION_DELTA_MAP = 0x1;
-    
+
     public static String explain(@enumtype(VideoEncodeFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & WITH_EMPHASIS_MAP) != 0) {
@@ -18,13 +18,13 @@ public final class VideoEncodeFlagsKHR {
         if ((flags & WITH_QUANTIZATION_DELTA_MAP) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_WITH_QUANTIZATION_DELTA_MAP_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoEncodeFlagsKHR() {}
 }

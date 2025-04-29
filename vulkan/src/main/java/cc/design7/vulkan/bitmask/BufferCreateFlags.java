@@ -14,7 +14,7 @@ public final class BufferCreateFlags {
     public static final int SPARSE_BINDING = 0x1;
     public static final int SPARSE_RESIDENCY = 0x2;
     public static final int VIDEO_PROFILE_INDEPENDENT_KHR = 0x40;
-    
+
     public static String explain(@enumtype(BufferCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT) != 0) {
@@ -38,13 +38,13 @@ public final class BufferCreateFlags {
         if ((flags & VIDEO_PROFILE_INDEPENDENT_KHR) != 0) {
             detectedFlagBits.add("VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private BufferCreateFlags() {}
 }

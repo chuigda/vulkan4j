@@ -12,7 +12,7 @@ public final class OpticalFlowGridSizeFlagsNV {
     public static final int _4X4 = 0x4;
     public static final int _8X8 = 0x8;
     public static final int UNKNOWN = 0x0;
-    
+
     public static String explain(@enumtype(OpticalFlowGridSizeFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _1X1) != 0) {
@@ -30,13 +30,13 @@ public final class OpticalFlowGridSizeFlagsNV {
         if ((flags & UNKNOWN) != 0) {
             detectedFlagBits.add("VK_OPTICAL_FLOW_GRID_SIZE_UNKNOWN_NV");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private OpticalFlowGridSizeFlagsNV() {}
 }

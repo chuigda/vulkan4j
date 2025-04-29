@@ -12,7 +12,7 @@ public final class PartitionedAccelerationStructureInstanceFlagsNV {
     public static final int FLAG_FORCE_OPAQUE = 0x4;
     public static final int FLAG_TRIANGLE_FACING_CULL_DISABLE = 0x1;
     public static final int FLAG_TRIANGLE_FLIP_FACING = 0x2;
-    
+
     public static String explain(@enumtype(PartitionedAccelerationStructureInstanceFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & FLAG_ENABLE_EXPLICIT_BOUNDING_BOX) != 0) {
@@ -30,13 +30,13 @@ public final class PartitionedAccelerationStructureInstanceFlagsNV {
         if ((flags & FLAG_TRIANGLE_FLIP_FACING) != 0) {
             detectedFlagBits.add("VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_TRIANGLE_FLIP_FACING_BIT_NV");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private PartitionedAccelerationStructureInstanceFlagsNV() {}
 }

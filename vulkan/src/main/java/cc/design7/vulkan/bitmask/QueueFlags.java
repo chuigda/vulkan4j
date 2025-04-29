@@ -15,7 +15,7 @@ public final class QueueFlags {
     public static final int TRANSFER = 0x4;
     public static final int VIDEO_DECODE_KHR = 0x20;
     public static final int VIDEO_ENCODE_KHR = 0x40;
-    
+
     public static String explain(@enumtype(QueueFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & COMPUTE) != 0) {
@@ -42,13 +42,13 @@ public final class QueueFlags {
         if ((flags & VIDEO_ENCODE_KHR) != 0) {
             detectedFlagBits.add("VK_QUEUE_VIDEO_ENCODE_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private QueueFlags() {}
 }

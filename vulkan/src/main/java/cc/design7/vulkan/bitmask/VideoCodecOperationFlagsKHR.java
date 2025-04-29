@@ -14,7 +14,7 @@ public final class VideoCodecOperationFlagsKHR {
     public static final int ENCODE_H264 = 0x10000;
     public static final int ENCODE_H265 = 0x20000;
     public static final int NONE = 0x0;
-    
+
     public static String explain(@enumtype(VideoCodecOperationFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DECODE_AV1) != 0) {
@@ -38,13 +38,13 @@ public final class VideoCodecOperationFlagsKHR {
         if ((flags & NONE) != 0) {
             detectedFlagBits.add("VK_VIDEO_CODEC_OPERATION_NONE_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoCodecOperationFlagsKHR() {}
 }

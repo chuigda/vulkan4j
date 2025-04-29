@@ -13,7 +13,7 @@ public final class ClusterAccelerationStructureAddressResolutionFlagsNV {
     public static final int INDIRECTED_SCRATCH_DATA = 0x2;
     public static final int INDIRECTED_SRC_INFOS_ARRAY = 0x10;
     public static final int INDIRECTED_SRC_INFOS_COUNT = 0x20;
-    
+
     public static String explain(@enumtype(ClusterAccelerationStructureAddressResolutionFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & INDIRECTED_DST_ADDRESS_ARRAY) != 0) {
@@ -34,13 +34,13 @@ public final class ClusterAccelerationStructureAddressResolutionFlagsNV {
         if ((flags & INDIRECTED_SRC_INFOS_COUNT) != 0) {
             detectedFlagBits.add("VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SRC_INFOS_COUNT_BIT_NV");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ClusterAccelerationStructureAddressResolutionFlagsNV() {}
 }

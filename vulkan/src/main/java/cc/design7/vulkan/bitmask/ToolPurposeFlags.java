@@ -14,7 +14,7 @@ public final class ToolPurposeFlags {
     public static final int PROFILING = 0x2;
     public static final int TRACING = 0x4;
     public static final int VALIDATION = 0x1;
-    
+
     public static String explain(@enumtype(ToolPurposeFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ADDITIONAL_FEATURES) != 0) {
@@ -38,13 +38,13 @@ public final class ToolPurposeFlags {
         if ((flags & VALIDATION) != 0) {
             detectedFlagBits.add("VK_TOOL_PURPOSE_VALIDATION_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ToolPurposeFlags() {}
 }

@@ -8,19 +8,19 @@ import java.util.List;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkConditionalRenderingFlagsEXT.html">VkConditionalRenderingFlagsEXT</a>
 public final class ConditionalRenderingFlagsEXT {
     public static final int INVERTED = 0x1;
-    
+
     public static String explain(@enumtype(ConditionalRenderingFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & INVERTED) != 0) {
             detectedFlagBits.add("VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ConditionalRenderingFlagsEXT() {}
 }

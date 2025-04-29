@@ -18,7 +18,7 @@ public final class BuildAccelerationStructureFlagsKHR {
     public static final int MOTION_NV = 0x20;
     public static final int PREFER_FAST_BUILD = 0x8;
     public static final int PREFER_FAST_TRACE = 0x4;
-    
+
     public static String explain(@enumtype(BuildAccelerationStructureFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_COMPACTION) != 0) {
@@ -54,13 +54,13 @@ public final class BuildAccelerationStructureFlagsKHR {
         if ((flags & PREFER_FAST_TRACE) != 0) {
             detectedFlagBits.add("VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private BuildAccelerationStructureFlagsKHR() {}
 }

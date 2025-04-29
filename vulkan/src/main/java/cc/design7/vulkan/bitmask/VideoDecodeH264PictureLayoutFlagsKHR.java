@@ -10,7 +10,7 @@ public final class VideoDecodeH264PictureLayoutFlagsKHR {
     public static final int VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES = 0x1;
     public static final int VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES = 0x2;
     public static final int VIDEO_DECODE_H264_PICTURE_LAYOUT_PROGRESSIVE = 0x0;
-    
+
     public static String explain(@enumtype(VideoDecodeH264PictureLayoutFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES) != 0) {
@@ -22,13 +22,13 @@ public final class VideoDecodeH264PictureLayoutFlagsKHR {
         if ((flags & VIDEO_DECODE_H264_PICTURE_LAYOUT_PROGRESSIVE) != 0) {
             detectedFlagBits.add("VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_PROGRESSIVE_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoDecodeH264PictureLayoutFlagsKHR() {}
 }

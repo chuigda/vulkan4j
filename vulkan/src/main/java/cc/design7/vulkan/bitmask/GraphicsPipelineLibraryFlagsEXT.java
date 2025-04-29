@@ -11,7 +11,7 @@ public final class GraphicsPipelineLibraryFlagsEXT {
     public static final int FRAGMENT_SHADER = 0x4;
     public static final int PRE_RASTERIZATION_SHADERS = 0x2;
     public static final int VERTEX_INPUT_INTERFACE = 0x1;
-    
+
     public static String explain(@enumtype(GraphicsPipelineLibraryFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & FRAGMENT_OUTPUT_INTERFACE) != 0) {
@@ -26,13 +26,13 @@ public final class GraphicsPipelineLibraryFlagsEXT {
         if ((flags & VERTEX_INPUT_INTERFACE) != 0) {
             detectedFlagBits.add("VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private GraphicsPipelineLibraryFlagsEXT() {}
 }

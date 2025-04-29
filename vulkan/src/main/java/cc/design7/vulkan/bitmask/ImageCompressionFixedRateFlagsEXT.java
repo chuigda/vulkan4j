@@ -32,7 +32,7 @@ public final class ImageCompressionFixedRateFlagsEXT {
     public static final int _8BPC = 0x80;
     public static final int _9BPC = 0x100;
     public static final int NONE = 0x0;
-    
+
     public static String explain(@enumtype(ImageCompressionFixedRateFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _10BPC) != 0) {
@@ -110,13 +110,13 @@ public final class ImageCompressionFixedRateFlagsEXT {
         if ((flags & NONE) != 0) {
             detectedFlagBits.add("VK_IMAGE_COMPRESSION_FIXED_RATE_NONE_EXT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ImageCompressionFixedRateFlagsEXT() {}
 }

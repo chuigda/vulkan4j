@@ -10,7 +10,7 @@ public final class VideoCodingControlFlagsKHR {
     public static final int ENCODE_QUALITY_LEVEL = 0x4;
     public static final int ENCODE_RATE_CONTROL = 0x2;
     public static final int RESET = 0x1;
-    
+
     public static String explain(@enumtype(VideoCodingControlFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ENCODE_QUALITY_LEVEL) != 0) {
@@ -22,13 +22,13 @@ public final class VideoCodingControlFlagsKHR {
         if ((flags & RESET) != 0) {
             detectedFlagBits.add("VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoCodingControlFlagsKHR() {}
 }

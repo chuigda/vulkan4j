@@ -10,7 +10,7 @@ public final class StencilFaceFlags {
     public static final int BACK = 0x2;
     public static final int FRONT_AND_BACK = 0x3;
     public static final int FRONT = 0x1;
-    
+
     public static String explain(@enumtype(StencilFaceFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & BACK) != 0) {
@@ -22,13 +22,13 @@ public final class StencilFaceFlags {
         if ((flags & FRONT) != 0) {
             detectedFlagBits.add("VK_STENCIL_FACE_FRONT_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StencilFaceFlags() {}
 }

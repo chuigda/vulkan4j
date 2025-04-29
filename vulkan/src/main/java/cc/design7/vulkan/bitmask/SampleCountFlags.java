@@ -14,7 +14,7 @@ public final class SampleCountFlags {
     public static final int _4 = 0x4;
     public static final int _64 = 0x40;
     public static final int _8 = 0x8;
-    
+
     public static String explain(@enumtype(SampleCountFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _16) != 0) {
@@ -38,13 +38,13 @@ public final class SampleCountFlags {
         if ((flags & _8) != 0) {
             detectedFlagBits.add("VK_SAMPLE_COUNT_8_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private SampleCountFlags() {}
 }

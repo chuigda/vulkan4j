@@ -11,7 +11,7 @@ public final class ExternalMemoryHandleTypeFlagsNV {
     public static final int D3D11_IMAGE_KMT = 0x8;
     public static final int OPAQUE_WIN32 = 0x1;
     public static final int OPAQUE_WIN32_KMT = 0x2;
-    
+
     public static String explain(@enumtype(ExternalMemoryHandleTypeFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & D3D11_IMAGE) != 0) {
@@ -26,13 +26,13 @@ public final class ExternalMemoryHandleTypeFlagsNV {
         if ((flags & OPAQUE_WIN32_KMT) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_NV");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ExternalMemoryHandleTypeFlagsNV() {}
 }

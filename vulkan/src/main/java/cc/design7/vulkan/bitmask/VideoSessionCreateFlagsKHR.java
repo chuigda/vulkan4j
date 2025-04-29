@@ -13,7 +13,7 @@ public final class VideoSessionCreateFlagsKHR {
     public static final int INLINE_QUERIES = 0x4;
     public static final int INLINE_SESSION_PARAMETERS = 0x20;
     public static final int PROTECTED_CONTENT = 0x1;
-    
+
     public static String explain(@enumtype(VideoSessionCreateFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_ENCODE_EMPHASIS_MAP) != 0) {
@@ -34,13 +34,13 @@ public final class VideoSessionCreateFlagsKHR {
         if ((flags & PROTECTED_CONTENT) != 0) {
             detectedFlagBits.add("VK_VIDEO_SESSION_CREATE_PROTECTED_CONTENT_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoSessionCreateFlagsKHR() {}
 }

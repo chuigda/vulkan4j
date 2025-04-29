@@ -10,7 +10,7 @@ public final class ExternalMemoryFeatureFlagsNV {
     public static final int DEDICATED_ONLY = 0x1;
     public static final int EXPORTABLE = 0x2;
     public static final int IMPORTABLE = 0x4;
-    
+
     public static String explain(@enumtype(ExternalMemoryFeatureFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEDICATED_ONLY) != 0) {
@@ -22,13 +22,13 @@ public final class ExternalMemoryFeatureFlagsNV {
         if ((flags & IMPORTABLE) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_NV");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ExternalMemoryFeatureFlagsNV() {}
 }

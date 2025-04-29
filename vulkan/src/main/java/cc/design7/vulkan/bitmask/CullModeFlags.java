@@ -11,7 +11,7 @@ public final class CullModeFlags {
     public static final int FRONT_AND_BACK = 0x3;
     public static final int FRONT = 0x1;
     public static final int NONE = 0x0;
-    
+
     public static String explain(@enumtype(CullModeFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & BACK) != 0) {
@@ -26,13 +26,13 @@ public final class CullModeFlags {
         if ((flags & NONE) != 0) {
             detectedFlagBits.add("VK_CULL_MODE_NONE");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private CullModeFlags() {}
 }

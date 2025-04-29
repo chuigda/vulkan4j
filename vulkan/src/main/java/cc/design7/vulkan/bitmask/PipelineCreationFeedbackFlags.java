@@ -10,7 +10,7 @@ public final class PipelineCreationFeedbackFlags {
     public static final int APPLICATION_PIPELINE_CACHE_HIT = 0x2;
     public static final int BASE_PIPELINE_ACCELERATION = 0x4;
     public static final int VALID = 0x1;
-    
+
     public static String explain(@enumtype(PipelineCreationFeedbackFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & APPLICATION_PIPELINE_CACHE_HIT) != 0) {
@@ -22,13 +22,13 @@ public final class PipelineCreationFeedbackFlags {
         if ((flags & VALID) != 0) {
             detectedFlagBits.add("VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private PipelineCreationFeedbackFlags() {}
 }

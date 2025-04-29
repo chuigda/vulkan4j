@@ -9,7 +9,7 @@ import java.util.List;
 public final class PipelineCacheCreateFlags {
     public static final int EXTERNALLY_SYNCHRONIZED = 0x1;
     public static final int INTERNALLY_SYNCHRONIZED_MERGE_KHR = 0x8;
-    
+
     public static String explain(@enumtype(PipelineCacheCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & EXTERNALLY_SYNCHRONIZED) != 0) {
@@ -18,13 +18,13 @@ public final class PipelineCacheCreateFlags {
         if ((flags & INTERNALLY_SYNCHRONIZED_MERGE_KHR) != 0) {
             detectedFlagBits.add("VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private PipelineCacheCreateFlags() {}
 }

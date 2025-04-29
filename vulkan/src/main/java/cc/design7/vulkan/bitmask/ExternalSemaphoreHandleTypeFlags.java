@@ -14,7 +14,7 @@ public final class ExternalSemaphoreHandleTypeFlags {
     public static final int SCI_SYNC_OBJ_NV = 0x20;
     public static final int SYNC_FD = 0x10;
     public static final int ZIRCON_EVENT_FUCHSIA = 0x80;
-    
+
     public static String explain(@enumtype(ExternalSemaphoreHandleTypeFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & D3D12_FENCE) != 0) {
@@ -38,13 +38,13 @@ public final class ExternalSemaphoreHandleTypeFlags {
         if ((flags & ZIRCON_EVENT_FUCHSIA) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_BIT_FUCHSIA");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ExternalSemaphoreHandleTypeFlags() {}
 }

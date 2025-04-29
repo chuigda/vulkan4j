@@ -9,7 +9,7 @@ import java.util.List;
 public final class TileShadingRenderPassFlagsQCOM {
     public static final int ENABLE = 0x1;
     public static final int PER_TILE_EXECUTION = 0x2;
-    
+
     public static String explain(@enumtype(TileShadingRenderPassFlagsQCOM.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ENABLE) != 0) {
@@ -18,13 +18,13 @@ public final class TileShadingRenderPassFlagsQCOM {
         if ((flags & PER_TILE_EXECUTION) != 0) {
             detectedFlagBits.add("VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private TileShadingRenderPassFlagsQCOM() {}
 }

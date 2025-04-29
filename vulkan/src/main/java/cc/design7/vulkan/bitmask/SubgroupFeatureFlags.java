@@ -18,7 +18,7 @@ public final class SubgroupFeatureFlags {
     public static final int SHUFFLE = 0x10;
     public static final int SHUFFLE_RELATIVE = 0x20;
     public static final int VOTE = 0x2;
-    
+
     public static String explain(@enumtype(SubgroupFeatureFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ARITHMETIC) != 0) {
@@ -54,13 +54,13 @@ public final class SubgroupFeatureFlags {
         if ((flags & VOTE) != 0) {
             detectedFlagBits.add("VK_SUBGROUP_FEATURE_VOTE_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private SubgroupFeatureFlags() {}
 }

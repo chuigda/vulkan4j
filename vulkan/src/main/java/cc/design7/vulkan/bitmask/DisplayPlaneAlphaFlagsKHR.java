@@ -11,7 +11,7 @@ public final class DisplayPlaneAlphaFlagsKHR {
     public static final int OPAQUE = 0x1;
     public static final int PER_PIXEL = 0x4;
     public static final int PER_PIXEL_PREMULTIPLIED = 0x8;
-    
+
     public static String explain(@enumtype(DisplayPlaneAlphaFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & GLOBAL) != 0) {
@@ -26,13 +26,13 @@ public final class DisplayPlaneAlphaFlagsKHR {
         if ((flags & PER_PIXEL_PREMULTIPLIED) != 0) {
             detectedFlagBits.add("VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private DisplayPlaneAlphaFlagsKHR() {}
 }

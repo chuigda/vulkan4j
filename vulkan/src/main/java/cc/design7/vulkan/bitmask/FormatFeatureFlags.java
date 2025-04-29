@@ -38,7 +38,7 @@ public final class FormatFeatureFlags {
     public static final int VIDEO_DECODE_OUTPUT_KHR = 0x2000000;
     public static final int VIDEO_ENCODE_DPB_KHR = 0x10000000;
     public static final int VIDEO_ENCODE_INPUT_KHR = 0x8000000;
-    
+
     public static String explain(@enumtype(FormatFeatureFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ACCELERATION_STRUCTURE_VERTEX_BUFFER_KHR) != 0) {
@@ -134,13 +134,13 @@ public final class FormatFeatureFlags {
         if ((flags & VIDEO_ENCODE_INPUT_KHR) != 0) {
             detectedFlagBits.add("VK_FORMAT_FEATURE_VIDEO_ENCODE_INPUT_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private FormatFeatureFlags() {}
 }

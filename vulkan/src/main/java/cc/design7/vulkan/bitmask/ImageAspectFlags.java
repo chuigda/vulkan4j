@@ -18,7 +18,7 @@ public final class ImageAspectFlags {
     public static final int PLANE_1 = 0x20;
     public static final int PLANE_2 = 0x40;
     public static final int STENCIL = 0x4;
-    
+
     public static String explain(@enumtype(ImageAspectFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & COLOR) != 0) {
@@ -54,13 +54,13 @@ public final class ImageAspectFlags {
         if ((flags & STENCIL) != 0) {
             detectedFlagBits.add("VK_IMAGE_ASPECT_STENCIL_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ImageAspectFlags() {}
 }

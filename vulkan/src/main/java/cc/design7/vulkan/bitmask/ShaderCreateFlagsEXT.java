@@ -15,7 +15,7 @@ public final class ShaderCreateFlagsEXT {
     public static final int LINK_STAGE = 0x1;
     public static final int NO_TASK_SHADER = 0x8;
     public static final int REQUIRE_FULL_SUBGROUPS = 0x4;
-    
+
     public static String explain(@enumtype(ShaderCreateFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_VARYING_SUBGROUP_SIZE) != 0) {
@@ -42,13 +42,13 @@ public final class ShaderCreateFlagsEXT {
         if ((flags & REQUIRE_FULL_SUBGROUPS) != 0) {
             detectedFlagBits.add("VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private ShaderCreateFlagsEXT() {}
 }

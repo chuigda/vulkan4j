@@ -14,7 +14,7 @@ public final class DescriptorSetLayoutCreateFlags {
     public static final int PER_STAGE_NV = 0x40;
     public static final int PUSH_DESCRIPTOR = 0x1;
     public static final int UPDATE_AFTER_BIND_POOL = 0x2;
-    
+
     public static String explain(@enumtype(DescriptorSetLayoutCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DESCRIPTOR_BUFFER_EXT) != 0) {
@@ -38,13 +38,13 @@ public final class DescriptorSetLayoutCreateFlags {
         if ((flags & UPDATE_AFTER_BIND_POOL) != 0) {
             detectedFlagBits.add("VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private DescriptorSetLayoutCreateFlags() {}
 }

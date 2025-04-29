@@ -9,7 +9,7 @@ import java.util.List;
 public final class PerformanceCounterDescriptionFlagsKHR {
     public static final int CONCURRENTLY_IMPACTED = 0x2;
     public static final int PERFORMANCE_IMPACTING = 0x1;
-    
+
     public static String explain(@enumtype(PerformanceCounterDescriptionFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CONCURRENTLY_IMPACTED) != 0) {
@@ -18,13 +18,13 @@ public final class PerformanceCounterDescriptionFlagsKHR {
         if ((flags & PERFORMANCE_IMPACTING) != 0) {
             detectedFlagBits.add("VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private PerformanceCounterDescriptionFlagsKHR() {}
 }

@@ -11,7 +11,7 @@ public final class VideoEncodeAV1RateControlFlagsKHR {
     public static final int VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_FLAT = 0x4;
     public static final int VIDEO_ENCODE_AV1_RATE_CONTROL_REGULAR_GOP = 0x1;
     public static final int VIDEO_ENCODE_AV1_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC = 0x2;
-    
+
     public static String explain(@enumtype(VideoEncodeAV1RateControlFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_DYADIC) != 0) {
@@ -26,13 +26,13 @@ public final class VideoEncodeAV1RateControlFlagsKHR {
         if ((flags & VIDEO_ENCODE_AV1_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_AV1_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoEncodeAV1RateControlFlagsKHR() {}
 }

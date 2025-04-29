@@ -9,7 +9,7 @@ import java.util.List;
 public final class VideoCapabilityFlagsKHR {
     public static final int PROTECTED_CONTENT = 0x1;
     public static final int SEPARATE_REFERENCE_IMAGES = 0x2;
-    
+
     public static String explain(@enumtype(VideoCapabilityFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & PROTECTED_CONTENT) != 0) {
@@ -18,13 +18,13 @@ public final class VideoCapabilityFlagsKHR {
         if ((flags & SEPARATE_REFERENCE_IMAGES) != 0) {
             detectedFlagBits.add("VK_VIDEO_CAPABILITY_SEPARATE_REFERENCE_IMAGES_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoCapabilityFlagsKHR() {}
 }

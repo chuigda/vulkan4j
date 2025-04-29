@@ -11,7 +11,7 @@ public final class SwapchainCreateFlagsKHR {
     public static final int MUTABLE_FORMAT = 0x4;
     public static final int PROTECTED = 0x2;
     public static final int SPLIT_INSTANCE_BIND_REGIONS = 0x1;
-    
+
     public static String explain(@enumtype(SwapchainCreateFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEFERRED_MEMORY_ALLOCATION_EXT) != 0) {
@@ -26,13 +26,13 @@ public final class SwapchainCreateFlagsKHR {
         if ((flags & SPLIT_INSTANCE_BIND_REGIONS) != 0) {
             detectedFlagBits.add("VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private SwapchainCreateFlagsKHR() {}
 }

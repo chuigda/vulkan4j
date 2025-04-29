@@ -9,7 +9,7 @@ import java.util.List;
 public final class IndirectCommandsLayoutUsageFlagsEXT {
     public static final int EXPLICIT_PREPROCESS = 0x1;
     public static final int UNORDERED_SEQUENCES = 0x2;
-    
+
     public static String explain(@enumtype(IndirectCommandsLayoutUsageFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & EXPLICIT_PREPROCESS) != 0) {
@@ -18,13 +18,13 @@ public final class IndirectCommandsLayoutUsageFlagsEXT {
         if ((flags & UNORDERED_SEQUENCES) != 0) {
             detectedFlagBits.add("VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_EXT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private IndirectCommandsLayoutUsageFlagsEXT() {}
 }

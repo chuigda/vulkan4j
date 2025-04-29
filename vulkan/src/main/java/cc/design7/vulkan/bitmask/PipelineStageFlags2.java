@@ -50,7 +50,7 @@ public final class PipelineStageFlags2 {
     public static final long VERTEX_SHADER = 0x8L;
     public static final long VIDEO_DECODE_KHR = 0x4000000L;
     public static final long VIDEO_ENCODE_KHR = 0x8000000L;
-    
+
     public static String explain(@enumtype(PipelineStageFlags2.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ACCELERATION_STRUCTURE_BUILD_KHR) != 0) {
@@ -182,13 +182,13 @@ public final class PipelineStageFlags2 {
         if ((flags & VIDEO_ENCODE_KHR) != 0) {
             detectedFlagBits.add("VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private PipelineStageFlags2() {}
 }

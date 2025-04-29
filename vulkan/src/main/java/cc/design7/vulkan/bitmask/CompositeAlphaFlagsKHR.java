@@ -11,7 +11,7 @@ public final class CompositeAlphaFlagsKHR {
     public static final int OPAQUE = 0x1;
     public static final int POST_MULTIPLIED = 0x4;
     public static final int PRE_MULTIPLIED = 0x2;
-    
+
     public static String explain(@enumtype(CompositeAlphaFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & INHERIT) != 0) {
@@ -26,13 +26,13 @@ public final class CompositeAlphaFlagsKHR {
         if ((flags & PRE_MULTIPLIED) != 0) {
             detectedFlagBits.add("VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private CompositeAlphaFlagsKHR() {}
 }

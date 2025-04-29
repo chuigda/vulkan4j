@@ -10,7 +10,7 @@ public final class BuildMicromapFlagsEXT {
     public static final int ALLOW_COMPACTION = 0x4;
     public static final int PREFER_FAST_BUILD = 0x2;
     public static final int PREFER_FAST_TRACE = 0x1;
-    
+
     public static String explain(@enumtype(BuildMicromapFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_COMPACTION) != 0) {
@@ -22,13 +22,13 @@ public final class BuildMicromapFlagsEXT {
         if ((flags & PREFER_FAST_TRACE) != 0) {
             detectedFlagBits.add("VK_BUILD_MICROMAP_PREFER_FAST_TRACE_BIT_EXT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private BuildMicromapFlagsEXT() {}
 }

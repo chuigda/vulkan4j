@@ -38,7 +38,7 @@ public final class PipelineCreateFlags {
     public static final int RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_KHR = 0x200000;
     public static final int RETAIN_LINK_TIME_OPTIMIZATION_INFO_EXT = 0x800000;
     public static final int VIEW_INDEX_FROM_DEVICE_INDEX = 0x8;
-    
+
     public static String explain(@enumtype(PipelineCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_DERIVATIVES) != 0) {
@@ -134,13 +134,13 @@ public final class PipelineCreateFlags {
         if ((flags & VIEW_INDEX_FROM_DEVICE_INDEX) != 0) {
             detectedFlagBits.add("VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private PipelineCreateFlags() {}
 }

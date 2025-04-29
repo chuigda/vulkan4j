@@ -9,7 +9,7 @@ import java.util.List;
 public final class VideoDecodeCapabilityFlagsKHR {
     public static final int DPB_AND_OUTPUT_COINCIDE = 0x1;
     public static final int DPB_AND_OUTPUT_DISTINCT = 0x2;
-    
+
     public static String explain(@enumtype(VideoDecodeCapabilityFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DPB_AND_OUTPUT_COINCIDE) != 0) {
@@ -18,13 +18,13 @@ public final class VideoDecodeCapabilityFlagsKHR {
         if ((flags & DPB_AND_OUTPUT_DISTINCT) != 0) {
             detectedFlagBits.add("VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VideoDecodeCapabilityFlagsKHR() {}
 }

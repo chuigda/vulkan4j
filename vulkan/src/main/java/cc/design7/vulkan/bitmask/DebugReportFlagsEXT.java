@@ -12,7 +12,7 @@ public final class DebugReportFlagsEXT {
     public static final int INFORMATION = 0x1;
     public static final int PERFORMANCE_WARNING = 0x4;
     public static final int WARNING = 0x2;
-    
+
     public static String explain(@enumtype(DebugReportFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEBUG) != 0) {
@@ -30,13 +30,13 @@ public final class DebugReportFlagsEXT {
         if ((flags & WARNING) != 0) {
             detectedFlagBits.add("VK_DEBUG_REPORT_WARNING_BIT_EXT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private DebugReportFlagsEXT() {}
 }

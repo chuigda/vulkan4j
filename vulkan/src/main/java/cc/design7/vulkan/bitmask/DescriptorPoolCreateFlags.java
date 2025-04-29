@@ -12,7 +12,7 @@ public final class DescriptorPoolCreateFlags {
     public static final int FREE_DESCRIPTOR_SET = 0x1;
     public static final int HOST_ONLY_EXT = 0x4;
     public static final int UPDATE_AFTER_BIND = 0x2;
-    
+
     public static String explain(@enumtype(DescriptorPoolCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_OVERALLOCATION_POOLS_NV) != 0) {
@@ -30,13 +30,13 @@ public final class DescriptorPoolCreateFlags {
         if ((flags & UPDATE_AFTER_BIND) != 0) {
             detectedFlagBits.add("VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private DescriptorPoolCreateFlags() {}
 }

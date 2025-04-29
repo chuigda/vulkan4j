@@ -21,7 +21,7 @@ public final class QueryPipelineStatisticFlags {
     public static final int TESSELLATION_CONTROL_SHADER_PATCHES = 0x100;
     public static final int TESSELLATION_EVALUATION_SHADER_INVOCATIONS = 0x200;
     public static final int VERTEX_SHADER_INVOCATIONS = 0x4;
-    
+
     public static String explain(@enumtype(QueryPipelineStatisticFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CLIPPING_INVOCATIONS) != 0) {
@@ -66,13 +66,13 @@ public final class QueryPipelineStatisticFlags {
         if ((flags & VERTEX_SHADER_INVOCATIONS) != 0) {
             detectedFlagBits.add("VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private QueryPipelineStatisticFlags() {}
 }

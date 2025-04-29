@@ -9,7 +9,7 @@ import java.util.List;
 public final class PipelineDepthStencilStateCreateFlags {
     public static final int RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_EXT = 0x1;
     public static final int RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_EXT = 0x2;
-    
+
     public static String explain(@enumtype(PipelineDepthStencilStateCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_EXT) != 0) {
@@ -18,13 +18,13 @@ public final class PipelineDepthStencilStateCreateFlags {
         if ((flags & RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_EXT) != 0) {
             detectedFlagBits.add("VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT");
         }
-        
+
         if (detectedFlagBits.isEmpty()) {
             return "NONE";
         }
         return String.join(" | ", detectedFlagBits);
     }
-    
+
     /// Constructing this class is nonsense so the constructor is made private.
     private PipelineDepthStencilStateCreateFlags() {}
 }
