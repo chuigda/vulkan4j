@@ -47,15 +47,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>tech.icey</groupId>
-            <artifactId>panama-plus</artifactId>
-            <version>0.1.2</version>
+            <groupId>cc.design7</groupId>
+            <artifactId>ffm-plus</artifactId>
+            <version>0.1.4</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>24.0.0</version>
+            <version>26.0.2</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

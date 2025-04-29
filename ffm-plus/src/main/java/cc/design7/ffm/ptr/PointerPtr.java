@@ -1,13 +1,15 @@
-package cc.design7.panama.buffer;
+package cc.design7.ffm.ptr;
 
-import cc.design7.panama.IPointer;
-import cc.design7.panama.annotation.unsafe;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.annotation.ValueBasedCandidate;
+import cc.design7.ffm.annotation.unsafe;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
-public record PointerBuffer(MemorySegment segment) implements IPointer {
+@ValueBasedCandidate
+public record PointerPtr(MemorySegment segment) implements IPointer {
     public long size() {
         return segment.byteSize() / ValueLayout.ADDRESS.byteSize();
     }
@@ -37,15 +39,15 @@ public record PointerBuffer(MemorySegment segment) implements IPointer {
     }
 
     @unsafe
-    public PointerBuffer reinterpret(long newSize) {
-        return new PointerBuffer(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
+    public PointerPtr reinterpret(long newSize) {
+        return new PointerPtr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
     }
 
-    public static PointerBuffer allocate(Arena arena) {
-        return new PointerBuffer(arena.allocate(ValueLayout.ADDRESS));
+    public static PointerPtr allocate(Arena arena) {
+        return new PointerPtr(arena.allocate(ValueLayout.ADDRESS));
     }
 
-    public static PointerBuffer allocate(Arena arena, long size) {
-        return new PointerBuffer(arena.allocate(ValueLayout.ADDRESS, size));
+    public static PointerPtr allocate(Arena arena, long size) {
+        return new PointerPtr(arena.allocate(ValueLayout.ADDRESS, size));
     }
 }

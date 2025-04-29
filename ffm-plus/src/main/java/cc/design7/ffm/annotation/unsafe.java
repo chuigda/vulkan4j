@@ -1,4 +1,4 @@
-package cc.design7.panama.annotation;
+package cc.design7.ffm.annotation;
 
 /// A marker annotation to indicate that the annotated method is unsafe.
 ///

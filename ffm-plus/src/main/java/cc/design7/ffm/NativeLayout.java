@@ -1,6 +1,6 @@
-package cc.design7.panama;
+package cc.design7.ffm;
 
-import cc.design7.panama.annotation.unsigned;
+import cc.design7.ffm.annotation.unsigned;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
@@ -27,8 +27,8 @@ public final class NativeLayout {
     public static final ValueLayout C_LONG;
     public static final int C_LONG_SIZE;
 
-    public static final @unsigned int UINT32_MAX = 0xFFFFFFFF;
-    public static final @unsigned long UINT64_MAX = 0xFFFFFFFF_FFFFFFFFL;
+    public static final @unsigned int UINT32_MAX = (~0);
+    public static final @unsigned long UINT64_MAX = (~0L);
 
     static {
         if (POINTER_SIZE == 4) {

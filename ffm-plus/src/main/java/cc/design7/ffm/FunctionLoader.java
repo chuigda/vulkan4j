@@ -1,4 +1,4 @@
-package cc.design7.panama;
+package cc.design7.ffm;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.invoke.MethodHandle;

@@ -16,7 +16,7 @@
     </properties>
 
     <modules>
-        <module>panama-plus</module>
+        <module>ffm-plus</module>
         <module>codegen</module>
         <module>codegen-v2</module>
         <module>vulkan</module>

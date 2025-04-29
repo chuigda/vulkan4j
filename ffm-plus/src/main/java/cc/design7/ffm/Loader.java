@@ -1,4 +1,4 @@
-package cc.design7.panama;
+package cc.design7.ffm;
 
 import org.jetbrains.annotations.Nullable;
 
