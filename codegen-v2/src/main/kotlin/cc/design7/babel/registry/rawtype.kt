@@ -1,4 +1,4 @@
-package cc.design7.catherine.registry
+package cc.design7.babel.registry
 
 sealed interface Type
 

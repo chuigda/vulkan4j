@@ -1,6 +1,6 @@
-package cc.design7.catherine.registry
+package cc.design7.babel.registry
 
-import cc.design7.catherine.util.Either
+import cc.design7.babel.util.Either
 import java.math.BigInteger
 
 interface IMergeable<Self: IMergeable<Self>> {

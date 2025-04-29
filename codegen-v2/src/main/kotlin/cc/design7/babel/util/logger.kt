@@ -1,4 +1,4 @@
-package cc.design7.catherine.util
+package cc.design7.babel.util
 
 import java.util.logging.Level
 import java.util.logging.LogManager

@@ -1,4 +1,4 @@
-package cc.design7.catherine.util
+package cc.design7.babel.util
 
 import org.intellij.lang.annotations.Language
 import org.w3c.dom.Element

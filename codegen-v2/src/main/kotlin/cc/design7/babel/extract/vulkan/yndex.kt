@@ -1,7 +1,7 @@
-package cc.design7.catherine.extract.vulkan
+package cc.design7.babel.extract.vulkan
 
-import cc.design7.catherine.registry.Registry
-import cc.design7.catherine.util.setupLog
+import cc.design7.babel.registry.Registry
+import cc.design7.babel.util.setupLog
 import java.util.logging.Logger
 
 internal val log = Logger.getLogger("c.d.c.e.vulkan")

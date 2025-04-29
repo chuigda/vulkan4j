@@ -1,6 +1,6 @@
-package cc.design7.catherine.codegen
+package cc.design7.babel.codegen
 
-import cc.design7.catherine.registry.RegistryBase
+import cc.design7.babel.registry.RegistryBase
 
 data class CodegenOptions(
     val packageName: String,

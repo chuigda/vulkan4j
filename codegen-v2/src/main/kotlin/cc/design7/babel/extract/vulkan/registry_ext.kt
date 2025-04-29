@@ -1,8 +1,8 @@
-package cc.design7.catherine.extract.vulkan
+package cc.design7.babel.extract.vulkan
 
-import cc.design7.catherine.registry.Entity
-import cc.design7.catherine.registry.IMergeable
-import cc.design7.catherine.registry.Identifier
+import cc.design7.babel.registry.Entity
+import cc.design7.babel.registry.IMergeable
+import cc.design7.babel.registry.Identifier
 
 open class VkCommonMetadata(val api: String?) {
     override fun toString(): String = "VkCommonMetadata(api=\"$api\")"

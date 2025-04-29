@@ -1,7 +1,7 @@
-package cc.design7.catherine.extract.vulkan
+package cc.design7.babel.extract.vulkan
 
-import cc.design7.catherine.registry.*
-import cc.design7.catherine.util.*
+import cc.design7.babel.registry.*
+import cc.design7.babel.util.*
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 import java.io.File

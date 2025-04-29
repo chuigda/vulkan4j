@@ -1,7 +1,7 @@
-package cc.design7.catherine.extract.vulkan
+package cc.design7.babel.extract.vulkan
 
-import cc.design7.catherine.registry.Entity
-import cc.design7.catherine.registry.Registry
+import cc.design7.babel.registry.Entity
+import cc.design7.babel.registry.Registry
 import java.io.File
 
 private val renamedEntitiesFile = "codegen-v2/output/vulkan-renamed-entities.csv"

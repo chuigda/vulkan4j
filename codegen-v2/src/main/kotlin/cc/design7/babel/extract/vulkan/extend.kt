@@ -1,7 +1,7 @@
-package cc.design7.catherine.extract.vulkan
+package cc.design7.babel.extract.vulkan
 
-import cc.design7.catherine.registry.*
-import cc.design7.catherine.util.Either
+import cc.design7.babel.registry.*
+import cc.design7.babel.util.Either
 import java.io.File
 import java.math.BigInteger
 

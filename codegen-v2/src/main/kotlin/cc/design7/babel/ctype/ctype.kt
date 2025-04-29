@@ -1,12 +1,10 @@
-package cc.design7.catherine.ctype
+package cc.design7.babel.ctype
 
-import cc.design7.catherine.registry.ArrayType
-import cc.design7.catherine.registry.IMergeable
-import cc.design7.catherine.registry.IdentifierType
-import cc.design7.catherine.registry.PointerType
-import cc.design7.catherine.registry.Registry
-import cc.design7.catherine.registry.RegistryBase
-import cc.design7.catherine.registry.Type
+import cc.design7.babel.registry.ArrayType
+import cc.design7.babel.registry.IdentifierType
+import cc.design7.babel.registry.PointerType
+import cc.design7.babel.registry.RegistryBase
+import cc.design7.babel.registry.Type
 import kotlin.collections.contains
 
 sealed interface CType {
