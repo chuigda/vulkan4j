@@ -4,22 +4,22 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkComponentTypeKHR.html">VkComponentTypeKHR</a>
 public final class VkComponentTypeKHR {
-    public static final int FLOAT16 = 0;
-    public static final int FLOAT32 = 1;
-    public static final int FLOAT64 = 2;
-    public static final int SINT8 = 3;
-    public static final int SINT16 = 4;
-    public static final int SINT32 = 5;
-    public static final int SINT64 = 6;
-    public static final int UINT8 = 7;
-    public static final int UINT16 = 8;
-    public static final int UINT32 = 9;
-    public static final int UINT64 = 10;
-    public static final int BFLOAT16 = 1000141000;
-    public static final int SINT8_PACKED_NV = 1000491000;
-    public static final int UINT8_PACKED_NV = 1000491001;
-    public static final int FLOAT_E4M3_NV = 1000491002;
-    public static final int FLOAT_E5M2_NV = 1000491003;
+    public static final int FLOAT16 = 0x0;
+    public static final int FLOAT32 = 0x1;
+    public static final int FLOAT64 = 0x2;
+    public static final int SINT8 = 0x3;
+    public static final int SINT16 = 0x4;
+    public static final int SINT32 = 0x5;
+    public static final int SINT64 = 0x6;
+    public static final int UINT8 = 0x7;
+    public static final int UINT16 = 0x8;
+    public static final int UINT32 = 0x9;
+    public static final int UINT64 = 0xa;
+    public static final int BFLOAT16 = 0x3b9cf0c8;
+    public static final int SINT8_PACKED_NV = 0x3ba247f8;
+    public static final int UINT8_PACKED_NV = 0x3ba247f9;
+    public static final int FLOAT_E4M3_NV = 0x3ba247fa;
+    public static final int FLOAT_E5M2_NV = 0x3ba247fb;
 
     public static String explain(@enumtype(VkComponentTypeKHR.class) int value) {
         return switch (value) {

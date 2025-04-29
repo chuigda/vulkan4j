@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineExecutableStatisticFormatKHR.html">VkPipelineExecutableStatisticFormatKHR</a>
 public final class VkPipelineExecutableStatisticFormatKHR {
-    public static final int BOOL32 = 0;
-    public static final int INT64 = 1;
-    public static final int UINT64 = 2;
-    public static final int FLOAT64 = 3;
+    public static final int BOOL32 = 0x0;
+    public static final int INT64 = 0x1;
+    public static final int UINT64 = 0x2;
+    public static final int FLOAT64 = 0x3;
 
     public static String explain(@enumtype(VkPipelineExecutableStatisticFormatKHR.class) int value) {
         return switch (value) {

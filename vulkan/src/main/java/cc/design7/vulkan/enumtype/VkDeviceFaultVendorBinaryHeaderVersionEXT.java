@@ -4,7 +4,7 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultVendorBinaryHeaderVersionEXT.html">VkDeviceFaultVendorBinaryHeaderVersionEXT</a>
 public final class VkDeviceFaultVendorBinaryHeaderVersionEXT {
-    public static final int ONE = 1;
+    public static final int ONE = 0x1;
 
     public static String explain(@enumtype(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int value) {
         return switch (value) {

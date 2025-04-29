@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBlendOverlapEXT.html">VkBlendOverlapEXT</a>
 public final class VkBlendOverlapEXT {
-    public static final int UNCORRELATED = 0;
-    public static final int DISJOINT = 1;
-    public static final int CONJOINT = 2;
+    public static final int UNCORRELATED = 0x0;
+    public static final int DISJOINT = 0x1;
+    public static final int CONJOINT = 0x2;
 
     public static String explain(@enumtype(VkBlendOverlapEXT.class) int value) {
         return switch (value) {

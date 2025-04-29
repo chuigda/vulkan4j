@@ -4,7 +4,7 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayEventTypeEXT.html">VkDisplayEventTypeEXT</a>
 public final class VkDisplayEventTypeEXT {
-    public static final int FIRST_PIXEL_OUT = 0;
+    public static final int FIRST_PIXEL_OUT = 0x0;
 
     public static String explain(@enumtype(VkDisplayEventTypeEXT.class) int value) {
         return switch (value) {

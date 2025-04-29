@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1ChromaSamplePosition.html">StdVideoAV1ChromaSamplePosition</a>
 public final class StdVideoAV1ChromaSamplePosition {
-    public static final int STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_UNKNOWN = 0;
-    public static final int STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_VERTICAL = 1;
-    public static final int STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_COLOCATED = 2;
-    public static final int STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_RESERVED = 3;
-    public static final int STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_INVALID = 2147483647;
+    public static final int STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_UNKNOWN = 0x0;
+    public static final int STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_VERTICAL = 0x1;
+    public static final int STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_COLOCATED = 0x2;
+    public static final int STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_RESERVED = 0x3;
+    public static final int STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoAV1ChromaSamplePosition.class) int value) {
         return switch (value) {

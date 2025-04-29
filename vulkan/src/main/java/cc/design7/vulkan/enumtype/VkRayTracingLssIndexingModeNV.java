@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRayTracingLssIndexingModeNV.html">VkRayTracingLssIndexingModeNV</a>
 public final class VkRayTracingLssIndexingModeNV {
-    public static final int LIST = 0;
-    public static final int SUCCESSIVE = 1;
+    public static final int LIST = 0x0;
+    public static final int SUCCESSIVE = 0x1;
 
     public static String explain(@enumtype(VkRayTracingLssIndexingModeNV.class) int value) {
         return switch (value) {

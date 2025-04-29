@@ -4,14 +4,14 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVendorId.html">VkVendorId</a>
 public final class VkVendorId {
-    public static final int KHRONOS = 65536;
-    public static final int VIV = 65537;
-    public static final int VSI = 65538;
-    public static final int KAZAN = 65539;
-    public static final int CODEPLAY = 65540;
-    public static final int MESA = 65541;
-    public static final int POCL = 65542;
-    public static final int MOBILEYE = 65543;
+    public static final int KHRONOS = 0x10000;
+    public static final int VIV = 0x10001;
+    public static final int VSI = 0x10002;
+    public static final int KAZAN = 0x10003;
+    public static final int CODEPLAY = 0x10004;
+    public static final int MESA = 0x10005;
+    public static final int POCL = 0x10006;
+    public static final int MOBILEYE = 0x10007;
 
     public static String explain(@enumtype(VkVendorId.class) int value) {
         return switch (value) {

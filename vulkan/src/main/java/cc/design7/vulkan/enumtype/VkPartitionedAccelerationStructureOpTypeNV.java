@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPartitionedAccelerationStructureOpTypeNV.html">VkPartitionedAccelerationStructureOpTypeNV</a>
 public final class VkPartitionedAccelerationStructureOpTypeNV {
-    public static final int WRITE_INSTANCE = 0;
-    public static final int UPDATE_INSTANCE = 1;
-    public static final int WRITE_PARTITION_TRANSLATION = 2;
+    public static final int WRITE_INSTANCE = 0x0;
+    public static final int UPDATE_INSTANCE = 0x1;
+    public static final int WRITE_PARTITION_TRANSLATION = 0x2;
 
     public static String explain(@enumtype(VkPartitionedAccelerationStructureOpTypeNV.class) int value) {
         return switch (value) {

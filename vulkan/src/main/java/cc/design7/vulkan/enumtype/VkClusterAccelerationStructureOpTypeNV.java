@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureOpTypeNV.html">VkClusterAccelerationStructureOpTypeNV</a>
 public final class VkClusterAccelerationStructureOpTypeNV {
-    public static final int MOVE_OBJECTS = 0;
-    public static final int BUILD_CLUSTERS_BOTTOM_LEVEL = 1;
-    public static final int BUILD_TRIANGLE_CLUSTER = 2;
-    public static final int BUILD_TRIANGLE_CLUSTER_TEMPLATE = 3;
-    public static final int INSTANTIATE_TRIANGLE_CLUSTER = 4;
+    public static final int MOVE_OBJECTS = 0x0;
+    public static final int BUILD_CLUSTERS_BOTTOM_LEVEL = 0x1;
+    public static final int BUILD_TRIANGLE_CLUSTER = 0x2;
+    public static final int BUILD_TRIANGLE_CLUSTER_TEMPLATE = 0x3;
+    public static final int INSTANTIATE_TRIANGLE_CLUSTER = 0x4;
 
     public static String explain(@enumtype(VkClusterAccelerationStructureOpTypeNV.class) int value) {
         return switch (value) {

@@ -4,22 +4,22 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLogicOp.html">VkLogicOp</a>
 public final class VkLogicOp {
-    public static final int CLEAR = 0;
-    public static final int AND = 1;
-    public static final int AND_REVERSE = 2;
-    public static final int COPY = 3;
-    public static final int AND_INVERTED = 4;
-    public static final int NO_OP = 5;
-    public static final int XOR = 6;
-    public static final int OR = 7;
-    public static final int NOR = 8;
-    public static final int EQUIVALENT = 9;
-    public static final int INVERT = 10;
-    public static final int OR_REVERSE = 11;
-    public static final int COPY_INVERTED = 12;
-    public static final int OR_INVERTED = 13;
-    public static final int NAND = 14;
-    public static final int SET = 15;
+    public static final int CLEAR = 0x0;
+    public static final int AND = 0x1;
+    public static final int AND_REVERSE = 0x2;
+    public static final int COPY = 0x3;
+    public static final int AND_INVERTED = 0x4;
+    public static final int NO_OP = 0x5;
+    public static final int XOR = 0x6;
+    public static final int OR = 0x7;
+    public static final int NOR = 0x8;
+    public static final int EQUIVALENT = 0x9;
+    public static final int INVERT = 0xa;
+    public static final int OR_REVERSE = 0xb;
+    public static final int COPY_INVERTED = 0xc;
+    public static final int OR_INVERTED = 0xd;
+    public static final int NAND = 0xe;
+    public static final int SET = 0xf;
 
     public static String explain(@enumtype(VkLogicOp.class) int value) {
         return switch (value) {

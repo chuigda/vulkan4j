@@ -4,17 +4,17 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterUnitKHR.html">VkPerformanceCounterUnitKHR</a>
 public final class VkPerformanceCounterUnitKHR {
-    public static final int GENERIC = 0;
-    public static final int PERCENTAGE = 1;
-    public static final int NANOSECONDS = 2;
-    public static final int BYTES = 3;
-    public static final int BYTES_PER_SECOND = 4;
-    public static final int KELVIN = 5;
-    public static final int WATTS = 6;
-    public static final int VOLTS = 7;
-    public static final int AMPS = 8;
-    public static final int HERTZ = 9;
-    public static final int CYCLES = 10;
+    public static final int GENERIC = 0x0;
+    public static final int PERCENTAGE = 0x1;
+    public static final int NANOSECONDS = 0x2;
+    public static final int BYTES = 0x3;
+    public static final int BYTES_PER_SECOND = 0x4;
+    public static final int KELVIN = 0x5;
+    public static final int WATTS = 0x6;
+    public static final int VOLTS = 0x7;
+    public static final int AMPS = 0x8;
+    public static final int HERTZ = 0x9;
+    public static final int CYCLES = 0xa;
 
     public static String explain(@enumtype(VkPerformanceCounterUnitKHR.class) int value) {
         return switch (value) {

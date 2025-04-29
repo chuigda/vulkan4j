@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerAddressMode.html">VkSamplerAddressMode</a>
 public final class VkSamplerAddressMode {
-    public static final int REPEAT = 0;
-    public static final int MIRRORED_REPEAT = 1;
-    public static final int CLAMP_TO_EDGE = 2;
-    public static final int CLAMP_TO_BORDER = 3;
-    public static final int MIRROR_CLAMP_TO_EDGE = [4];
+    public static final int REPEAT = 0x0;
+    public static final int MIRRORED_REPEAT = 0x1;
+    public static final int CLAMP_TO_EDGE = 0x2;
+    public static final int CLAMP_TO_BORDER = 0x3;
+    public static final int MIRROR_CLAMP_TO_EDGE = 0x4;
 
     public static String explain(@enumtype(VkSamplerAddressMode.class) int value) {
         return switch (value) {

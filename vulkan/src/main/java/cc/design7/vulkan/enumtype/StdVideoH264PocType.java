@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH264PocType.html">StdVideoH264PocType</a>
 public final class StdVideoH264PocType {
-    public static final int STD_VIDEO_H264_POC_TYPE_0 = 0;
-    public static final int STD_VIDEO_H264_POC_TYPE_1 = 1;
-    public static final int STD_VIDEO_H264_POC_TYPE_2 = 2;
-    public static final int STD_VIDEO_H264_POC_TYPE_INVALID = 2147483647;
+    public static final int STD_VIDEO_H264_POC_TYPE_0 = 0x0;
+    public static final int STD_VIDEO_H264_POC_TYPE_1 = 0x1;
+    public static final int STD_VIDEO_H264_POC_TYPE_2 = 0x2;
+    public static final int STD_VIDEO_H264_POC_TYPE_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoH264PocType.class) int value) {
         return switch (value) {

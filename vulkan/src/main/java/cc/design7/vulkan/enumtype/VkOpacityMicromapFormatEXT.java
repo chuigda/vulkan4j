@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpacityMicromapFormatEXT.html">VkOpacityMicromapFormatEXT</a>
 public final class VkOpacityMicromapFormatEXT {
-    public static final int _2_STATE = 1;
-    public static final int _4_STATE = 2;
+    public static final int _2_STATE = 0x1;
+    public static final int _4_STATE = 0x2;
 
     public static String explain(@enumtype(VkOpacityMicromapFormatEXT.class) int value) {
         return switch (value) {

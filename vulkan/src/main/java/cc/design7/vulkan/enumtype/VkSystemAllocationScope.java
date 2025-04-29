@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSystemAllocationScope.html">VkSystemAllocationScope</a>
 public final class VkSystemAllocationScope {
-    public static final int COMMAND = 0;
-    public static final int OBJECT = 1;
-    public static final int CACHE = 2;
-    public static final int DEVICE = 3;
-    public static final int INSTANCE = 4;
+    public static final int COMMAND = 0x0;
+    public static final int OBJECT = 0x1;
+    public static final int CACHE = 0x2;
+    public static final int DEVICE = 0x3;
+    public static final int INSTANCE = 0x4;
 
     public static String explain(@enumtype(VkSystemAllocationScope.class) int value) {
         return switch (value) {

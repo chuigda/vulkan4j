@@ -4,13 +4,13 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultAddressTypeEXT.html">VkDeviceFaultAddressTypeEXT</a>
 public final class VkDeviceFaultAddressTypeEXT {
-    public static final int NONE = 0;
-    public static final int READ_INVALID = 1;
-    public static final int WRITE_INVALID = 2;
-    public static final int EXECUTE_INVALID = 3;
-    public static final int INSTRUCTION_POINTER_UNKNOWN = 4;
-    public static final int INSTRUCTION_POINTER_INVALID = 5;
-    public static final int INSTRUCTION_POINTER_FAULT = 6;
+    public static final int NONE = 0x0;
+    public static final int READ_INVALID = 0x1;
+    public static final int WRITE_INVALID = 0x2;
+    public static final int EXECUTE_INVALID = 0x3;
+    public static final int INSTRUCTION_POINTER_UNKNOWN = 0x4;
+    public static final int INSTRUCTION_POINTER_INVALID = 0x5;
+    public static final int INSTRUCTION_POINTER_FAULT = 0x6;
 
     public static String explain(@enumtype(VkDeviceFaultAddressTypeEXT.class) int value) {
         return switch (value) {

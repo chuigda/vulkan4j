@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRayTracingShaderGroupTypeKHR.html">VkRayTracingShaderGroupTypeKHR</a>
 public final class VkRayTracingShaderGroupTypeKHR {
-    public static final int GENERAL = 0;
-    public static final int TRIANGLES_HIT_GROUP = 1;
-    public static final int PROCEDURAL_HIT_GROUP = 2;
+    public static final int GENERAL = 0x0;
+    public static final int TRIANGLES_HIT_GROUP = 0x1;
+    public static final int PROCEDURAL_HIT_GROUP = 0x2;
 
     public static String explain(@enumtype(VkRayTracingShaderGroupTypeKHR.class) int value) {
         return switch (value) {

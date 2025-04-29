@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMicromapTypeEXT.html">VkMicromapTypeEXT</a>
 public final class VkMicromapTypeEXT {
-    public static final int OPACITY_MICROMAP = 0;
-    public static final int DISPLACEMENT_MICROMAP_NV = 1000397000;
+    public static final int OPACITY_MICROMAP = 0x0;
+    public static final int DISPLACEMENT_MICROMAP_NV = 0x3ba0d8c8;
 
     public static String explain(@enumtype(VkMicromapTypeEXT.class) int value) {
         return switch (value) {

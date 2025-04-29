@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLayeredApiKHR.html">VkPhysicalDeviceLayeredApiKHR</a>
 public final class VkPhysicalDeviceLayeredApiKHR {
-    public static final int VULKAN = 0;
-    public static final int D3D12 = 1;
-    public static final int METAL = 2;
-    public static final int OPENGL = 3;
-    public static final int OPENGLES = 4;
+    public static final int VULKAN = 0x0;
+    public static final int D3D12 = 0x1;
+    public static final int METAL = 0x2;
+    public static final int OPENGL = 0x3;
+    public static final int OPENGLES = 0x4;
 
     public static String explain(@enumtype(VkPhysicalDeviceLayeredApiKHR.class) int value) {
         return switch (value) {

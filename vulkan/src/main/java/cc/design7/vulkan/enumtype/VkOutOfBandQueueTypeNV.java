@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOutOfBandQueueTypeNV.html">VkOutOfBandQueueTypeNV</a>
 public final class VkOutOfBandQueueTypeNV {
-    public static final int RENDER = 0;
-    public static final int PRESENT = 1;
+    public static final int RENDER = 0x0;
+    public static final int PRESENT = 0x1;
 
     public static String explain(@enumtype(VkOutOfBandQueueTypeNV.class) int value) {
         return switch (value) {

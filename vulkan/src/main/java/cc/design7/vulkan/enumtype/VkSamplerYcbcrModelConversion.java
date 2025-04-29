@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerYcbcrModelConversion.html">VkSamplerYcbcrModelConversion</a>
 public final class VkSamplerYcbcrModelConversion {
-    public static final int RGB_IDENTITY = 0;
-    public static final int YCBCR_IDENTITY = 1;
-    public static final int YCBCR_709 = 2;
-    public static final int YCBCR_601 = 3;
-    public static final int YCBCR_2020 = 4;
+    public static final int RGB_IDENTITY = 0x0;
+    public static final int YCBCR_IDENTITY = 0x1;
+    public static final int YCBCR_709 = 0x2;
+    public static final int YCBCR_601 = 0x3;
+    public static final int YCBCR_2020 = 0x4;
 
     public static String explain(@enumtype(VkSamplerYcbcrModelConversion.class) int value) {
         return switch (value) {

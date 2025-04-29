@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceValueTypeINTEL.html">VkPerformanceValueTypeINTEL</a>
 public final class VkPerformanceValueTypeINTEL {
-    public static final int UINT32 = 0;
-    public static final int UINT64 = 1;
-    public static final int FLOAT = 2;
-    public static final int BOOL = 3;
-    public static final int STRING = 4;
+    public static final int UINT32 = 0x0;
+    public static final int UINT64 = 0x1;
+    public static final int FLOAT = 0x2;
+    public static final int BOOL = 0x3;
+    public static final int STRING = 0x4;
 
     public static String explain(@enumtype(VkPerformanceValueTypeINTEL.class) int value) {
         return switch (value) {

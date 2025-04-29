@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplaySurfaceStereoTypeNV.html">VkDisplaySurfaceStereoTypeNV</a>
 public final class VkDisplaySurfaceStereoTypeNV {
-    public static final int NONE = 0;
-    public static final int ONBOARD_DIN = 1;
-    public static final int HDMI_3D = 2;
-    public static final int INBAND_DISPLAYPORT = 3;
+    public static final int NONE = 0x0;
+    public static final int ONBOARD_DIN = 0x1;
+    public static final int HDMI_3D = 0x2;
+    public static final int INBAND_DISPLAYPORT = 0x3;
 
     public static String explain(@enumtype(VkDisplaySurfaceStereoTypeNV.class) int value) {
         return switch (value) {

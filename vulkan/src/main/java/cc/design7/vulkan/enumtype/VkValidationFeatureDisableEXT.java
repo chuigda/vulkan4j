@@ -4,14 +4,14 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationFeatureDisableEXT.html">VkValidationFeatureDisableEXT</a>
 public final class VkValidationFeatureDisableEXT {
-    public static final int ALL = 0;
-    public static final int SHADERS = 1;
-    public static final int THREAD_SAFETY = 2;
-    public static final int API_PARAMETERS = 3;
-    public static final int OBJECT_LIFETIMES = 4;
-    public static final int CORE_CHECKS = 5;
-    public static final int UNIQUE_HANDLES = 6;
-    public static final int SHADER_VALIDATION_CACHE = 7;
+    public static final int ALL = 0x0;
+    public static final int SHADERS = 0x1;
+    public static final int THREAD_SAFETY = 0x2;
+    public static final int API_PARAMETERS = 0x3;
+    public static final int OBJECT_LIFETIMES = 0x4;
+    public static final int CORE_CHECKS = 0x5;
+    public static final int UNIQUE_HANDLES = 0x6;
+    public static final int SHADER_VALIDATION_CACHE = 0x7;
 
     public static String explain(@enumtype(VkValidationFeatureDisableEXT.class) int value) {
         return switch (value) {

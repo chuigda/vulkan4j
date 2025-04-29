@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentLoadOp.html">VkAttachmentLoadOp</a>
 public final class VkAttachmentLoadOp {
-    public static final int LOAD = 0;
-    public static final int CLEAR = 1;
-    public static final int DONT_CARE = 2;
-    public static final int NONE = 1000400000;
+    public static final int LOAD = 0x0;
+    public static final int CLEAR = 0x1;
+    public static final int DONT_CARE = 0x2;
+    public static final int NONE = 0x3ba0e480;
 
     public static String explain(@enumtype(VkAttachmentLoadOp.class) int value) {
         return switch (value) {

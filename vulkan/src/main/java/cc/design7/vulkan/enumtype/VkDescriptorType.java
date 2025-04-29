@@ -4,24 +4,24 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorType.html">VkDescriptorType</a>
 public final class VkDescriptorType {
-    public static final int SAMPLER = 0;
-    public static final int COMBINED_IMAGE_SAMPLER = 1;
-    public static final int SAMPLED_IMAGE = 2;
-    public static final int STORAGE_IMAGE = 3;
-    public static final int UNIFORM_TEXEL_BUFFER = 4;
-    public static final int STORAGE_TEXEL_BUFFER = 5;
-    public static final int UNIFORM_BUFFER = 6;
-    public static final int STORAGE_BUFFER = 7;
-    public static final int UNIFORM_BUFFER_DYNAMIC = 8;
-    public static final int STORAGE_BUFFER_DYNAMIC = 9;
-    public static final int INPUT_ATTACHMENT = 10;
-    public static final int INLINE_UNIFORM_BLOCK = 1000138000;
-    public static final int ACCELERATION_STRUCTURE_KHR = 1000150000;
-    public static final int ACCELERATION_STRUCTURE_NV = 1000165000;
-    public static final int SAMPLE_WEIGHT_IMAGE_QCOM = 1000440000;
-    public static final int BLOCK_MATCH_IMAGE_QCOM = 1000440001;
-    public static final int MUTABLE_EXT = 1000351000;
-    public static final int PARTITIONED_ACCELERATION_STRUCTURE_NV = 1000570000;
+    public static final int SAMPLER = 0x0;
+    public static final int COMBINED_IMAGE_SAMPLER = 0x1;
+    public static final int SAMPLED_IMAGE = 0x2;
+    public static final int STORAGE_IMAGE = 0x3;
+    public static final int UNIFORM_TEXEL_BUFFER = 0x4;
+    public static final int STORAGE_TEXEL_BUFFER = 0x5;
+    public static final int UNIFORM_BUFFER = 0x6;
+    public static final int STORAGE_BUFFER = 0x7;
+    public static final int UNIFORM_BUFFER_DYNAMIC = 0x8;
+    public static final int STORAGE_BUFFER_DYNAMIC = 0x9;
+    public static final int INPUT_ATTACHMENT = 0xa;
+    public static final int INLINE_UNIFORM_BLOCK = 0x3b9ce510;
+    public static final int ACCELERATION_STRUCTURE_KHR = 0x3b9d13f0;
+    public static final int ACCELERATION_STRUCTURE_NV = 0x3b9d4e88;
+    public static final int SAMPLE_WEIGHT_IMAGE_QCOM = 0x3ba180c0;
+    public static final int BLOCK_MATCH_IMAGE_QCOM = 0x3ba180c1;
+    public static final int MUTABLE_EXT = 0x3ba02518;
+    public static final int PARTITIONED_ACCELERATION_STRUCTURE_NV = 0x3ba37c90;
 
     public static String explain(@enumtype(VkDescriptorType.class) int value) {
         return switch (value) {

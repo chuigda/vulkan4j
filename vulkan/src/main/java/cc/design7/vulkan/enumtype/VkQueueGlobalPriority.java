@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueueGlobalPriority.html">VkQueueGlobalPriority</a>
 public final class VkQueueGlobalPriority {
-    public static final int LOW = 128;
-    public static final int MEDIUM = 256;
-    public static final int HIGH = 512;
-    public static final int REALTIME = 1024;
+    public static final int LOW = 0x80;
+    public static final int MEDIUM = 0x100;
+    public static final int HIGH = 0x200;
+    public static final int REALTIME = 0x400;
 
     public static String explain(@enumtype(VkQueueGlobalPriority.class) int value) {
         return switch (value) {

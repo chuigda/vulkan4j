@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1Profile.html">StdVideoAV1Profile</a>
 public final class StdVideoAV1Profile {
-    public static final int STD_VIDEO_AV1_PROFILE_MAIN = 0;
-    public static final int STD_VIDEO_AV1_PROFILE_HIGH = 1;
-    public static final int STD_VIDEO_AV1_PROFILE_PROFESSIONAL = 2;
-    public static final int STD_VIDEO_AV1_PROFILE_INVALID = 2147483647;
+    public static final int STD_VIDEO_AV1_PROFILE_MAIN = 0x0;
+    public static final int STD_VIDEO_AV1_PROFILE_HIGH = 0x1;
+    public static final int STD_VIDEO_AV1_PROFILE_PROFESSIONAL = 0x2;
+    public static final int STD_VIDEO_AV1_PROFILE_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoAV1Profile.class) int value) {
         return switch (value) {

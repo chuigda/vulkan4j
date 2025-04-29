@@ -4,26 +4,26 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1TransferCharacteristics.html">StdVideoAV1TransferCharacteristics</a>
 public final class StdVideoAV1TransferCharacteristics {
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_RESERVED_0 = 0;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_709 = 1;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_UNSPECIFIED = 2;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_RESERVED_3 = 3;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_470_M = 4;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_470_B_G = 5;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_601 = 6;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_240 = 7;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LINEAR = 8;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LOG_100 = 9;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LOG_100_SQRT10 = 10;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_IEC_61966 = 11;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_1361 = 12;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SRGB = 13;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_2020_10_BIT = 14;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_2020_12_BIT = 15;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_2084 = 16;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_428 = 17;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_HLG = 18;
-    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_INVALID = 2147483647;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_RESERVED_0 = 0x0;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_709 = 0x1;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_UNSPECIFIED = 0x2;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_RESERVED_3 = 0x3;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_470_M = 0x4;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_470_B_G = 0x5;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_601 = 0x6;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_240 = 0x7;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LINEAR = 0x8;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LOG_100 = 0x9;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LOG_100_SQRT10 = 0xa;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_IEC_61966 = 0xb;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_1361 = 0xc;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SRGB = 0xd;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_2020_10_BIT = 0xe;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_2020_12_BIT = 0xf;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_2084 = 0x10;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_428 = 0x11;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_HLG = 0x12;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoAV1TransferCharacteristics.class) int value) {
         return switch (value) {

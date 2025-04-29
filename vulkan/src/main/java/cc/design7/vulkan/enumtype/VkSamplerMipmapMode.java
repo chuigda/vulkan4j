@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerMipmapMode.html">VkSamplerMipmapMode</a>
 public final class VkSamplerMipmapMode {
-    public static final int NEAREST = 0;
-    public static final int LINEAR = 1;
+    public static final int NEAREST = 0x0;
+    public static final int LINEAR = 0x1;
 
     public static String explain(@enumtype(VkSamplerMipmapMode.class) int value) {
         return switch (value) {

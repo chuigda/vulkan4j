@@ -4,33 +4,33 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDriverId.html">VkDriverId</a>
 public final class VkDriverId {
-    public static final int AMD_PROPRIETARY = 1;
-    public static final int AMD_OPEN_SOURCE = 2;
-    public static final int MESA_RADV = 3;
-    public static final int NVIDIA_PROPRIETARY = 4;
-    public static final int INTEL_PROPRIETARY_WINDOWS = 5;
-    public static final int INTEL_OPEN_SOURCE_MESA = 6;
-    public static final int IMAGINATION_PROPRIETARY = 7;
-    public static final int QUALCOMM_PROPRIETARY = 8;
-    public static final int ARM_PROPRIETARY = 9;
-    public static final int GOOGLE_SWIFTSHADER = 10;
-    public static final int GGP_PROPRIETARY = 11;
-    public static final int BROADCOM_PROPRIETARY = 12;
-    public static final int MESA_LLVMPIPE = 13;
-    public static final int MOLTENVK = 14;
-    public static final int COREAVI_PROPRIETARY = 15;
-    public static final int JUICE_PROPRIETARY = 16;
-    public static final int VERISILICON_PROPRIETARY = 17;
-    public static final int MESA_TURNIP = 18;
-    public static final int MESA_V3DV = 19;
-    public static final int MESA_PANVK = 20;
-    public static final int SAMSUNG_PROPRIETARY = 21;
-    public static final int MESA_VENUS = 22;
-    public static final int MESA_DOZEN = 23;
-    public static final int MESA_NVK = 24;
-    public static final int IMAGINATION_OPEN_SOURCE_MESA = 25;
-    public static final int MESA_HONEYKRISP = 26;
-    public static final int VULKAN_SC_EMULATION_ON_VULKAN = 27;
+    public static final int AMD_PROPRIETARY = 0x1;
+    public static final int AMD_OPEN_SOURCE = 0x2;
+    public static final int MESA_RADV = 0x3;
+    public static final int NVIDIA_PROPRIETARY = 0x4;
+    public static final int INTEL_PROPRIETARY_WINDOWS = 0x5;
+    public static final int INTEL_OPEN_SOURCE_MESA = 0x6;
+    public static final int IMAGINATION_PROPRIETARY = 0x7;
+    public static final int QUALCOMM_PROPRIETARY = 0x8;
+    public static final int ARM_PROPRIETARY = 0x9;
+    public static final int GOOGLE_SWIFTSHADER = 0xa;
+    public static final int GGP_PROPRIETARY = 0xb;
+    public static final int BROADCOM_PROPRIETARY = 0xc;
+    public static final int MESA_LLVMPIPE = 0xd;
+    public static final int MOLTENVK = 0xe;
+    public static final int COREAVI_PROPRIETARY = 0xf;
+    public static final int JUICE_PROPRIETARY = 0x10;
+    public static final int VERISILICON_PROPRIETARY = 0x11;
+    public static final int MESA_TURNIP = 0x12;
+    public static final int MESA_V3DV = 0x13;
+    public static final int MESA_PANVK = 0x14;
+    public static final int SAMSUNG_PROPRIETARY = 0x15;
+    public static final int MESA_VENUS = 0x16;
+    public static final int MESA_DOZEN = 0x17;
+    public static final int MESA_NVK = 0x18;
+    public static final int IMAGINATION_OPEN_SOURCE_MESA = 0x19;
+    public static final int MESA_HONEYKRISP = 0x1a;
+    public static final int VULKAN_SC_EMULATION_ON_VULKAN = 0x1b;
 
     public static String explain(@enumtype(VkDriverId.class) int value) {
         return switch (value) {

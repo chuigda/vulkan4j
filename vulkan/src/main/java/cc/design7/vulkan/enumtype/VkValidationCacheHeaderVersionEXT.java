@@ -4,7 +4,7 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationCacheHeaderVersionEXT.html">VkValidationCacheHeaderVersionEXT</a>
 public final class VkValidationCacheHeaderVersionEXT {
-    public static final int ONE = 1;
+    public static final int ONE = 0x1;
 
     public static String explain(@enumtype(VkValidationCacheHeaderVersionEXT.class) int value) {
         return switch (value) {

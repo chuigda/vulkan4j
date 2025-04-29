@@ -4,14 +4,14 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBorderColor.html">VkBorderColor</a>
 public final class VkBorderColor {
-    public static final int FLOAT_TRANSPARENT_BLACK = 0;
-    public static final int INT_TRANSPARENT_BLACK = 1;
-    public static final int FLOAT_OPAQUE_BLACK = 2;
-    public static final int INT_OPAQUE_BLACK = 3;
-    public static final int FLOAT_OPAQUE_WHITE = 4;
-    public static final int INT_OPAQUE_WHITE = 5;
-    public static final int FLOAT_CUSTOM_EXT = 1000287003;
-    public static final int INT_CUSTOM_EXT = 1000287004;
+    public static final int FLOAT_TRANSPARENT_BLACK = 0x0;
+    public static final int INT_TRANSPARENT_BLACK = 0x1;
+    public static final int FLOAT_OPAQUE_BLACK = 0x2;
+    public static final int INT_OPAQUE_BLACK = 0x3;
+    public static final int FLOAT_OPAQUE_WHITE = 0x4;
+    public static final int INT_OPAQUE_WHITE = 0x5;
+    public static final int FLOAT_CUSTOM_EXT = 0x3b9f2b1b;
+    public static final int INT_CUSTOM_EXT = 0x3b9f2b1c;
 
     public static String explain(@enumtype(VkBorderColor.class) int value) {
         return switch (value) {

@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplacementMicromapFormatNV.html">VkDisplacementMicromapFormatNV</a>
 public final class VkDisplacementMicromapFormatNV {
-    public static final int _64_TRIANGLES_64_BYTES = 1;
-    public static final int _256_TRIANGLES_128_BYTES = 2;
-    public static final int _1024_TRIANGLES_128_BYTES = 3;
+    public static final int _64_TRIANGLES_64_BYTES = 0x1;
+    public static final int _256_TRIANGLES_128_BYTES = 0x2;
+    public static final int _1024_TRIANGLES_128_BYTES = 0x3;
 
     public static String explain(@enumtype(VkDisplacementMicromapFormatNV.class) int value) {
         return switch (value) {

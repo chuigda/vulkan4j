@@ -4,13 +4,13 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageViewType.html">VkImageViewType</a>
 public final class VkImageViewType {
-    public static final int _1D = 0;
-    public static final int _2D = 1;
-    public static final int _3D = 2;
-    public static final int CUBE = 3;
-    public static final int _1D_ARRAY = 4;
-    public static final int _2D_ARRAY = 5;
-    public static final int CUBE_ARRAY = 6;
+    public static final int _1D = 0x0;
+    public static final int _2D = 0x1;
+    public static final int _3D = 0x2;
+    public static final int CUBE = 0x3;
+    public static final int _1D_ARRAY = 0x4;
+    public static final int _2D_ARRAY = 0x5;
+    public static final int CUBE_ARRAY = 0x6;
 
     public static String explain(@enumtype(VkImageViewType.class) int value) {
         return switch (value) {

@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPolygonMode.html">VkPolygonMode</a>
 public final class VkPolygonMode {
-    public static final int FILL = 0;
-    public static final int LINE = 1;
-    public static final int POINT = 2;
-    public static final int FILL_RECTANGLE_NV = 1000153000;
+    public static final int FILL = 0x0;
+    public static final int LINE = 0x1;
+    public static final int POINT = 0x2;
+    public static final int FILL_RECTANGLE_NV = 0x3b9d1fa8;
 
     public static String explain(@enumtype(VkPolygonMode.class) int value) {
         return switch (value) {

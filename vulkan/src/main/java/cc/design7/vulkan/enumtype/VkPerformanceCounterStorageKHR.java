@@ -4,12 +4,12 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterStorageKHR.html">VkPerformanceCounterStorageKHR</a>
 public final class VkPerformanceCounterStorageKHR {
-    public static final int INT32 = 0;
-    public static final int INT64 = 1;
-    public static final int UINT32 = 2;
-    public static final int UINT64 = 3;
-    public static final int FLOAT32 = 4;
-    public static final int FLOAT64 = 5;
+    public static final int INT32 = 0x0;
+    public static final int INT64 = 0x1;
+    public static final int UINT32 = 0x2;
+    public static final int UINT64 = 0x3;
+    public static final int FLOAT32 = 0x4;
+    public static final int FLOAT64 = 0x5;
 
     public static String explain(@enumtype(VkPerformanceCounterStorageKHR.class) int value) {
         return switch (value) {

@@ -4,7 +4,7 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceConfigurationTypeINTEL.html">VkPerformanceConfigurationTypeINTEL</a>
 public final class VkPerformanceConfigurationTypeINTEL {
-    public static final int COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED = 0;
+    public static final int COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED = 0x0;
 
     public static String explain(@enumtype(VkPerformanceConfigurationTypeINTEL.class) int value) {
         return switch (value) {

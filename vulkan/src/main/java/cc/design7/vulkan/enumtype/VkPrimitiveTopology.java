@@ -4,17 +4,17 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPrimitiveTopology.html">VkPrimitiveTopology</a>
 public final class VkPrimitiveTopology {
-    public static final int POINT_LIST = 0;
-    public static final int LINE_LIST = 1;
-    public static final int LINE_STRIP = 2;
-    public static final int TRIANGLE_LIST = 3;
-    public static final int TRIANGLE_STRIP = 4;
-    public static final int TRIANGLE_FAN = 5;
-    public static final int LINE_LIST_WITH_ADJACENCY = 6;
-    public static final int LINE_STRIP_WITH_ADJACENCY = 7;
-    public static final int TRIANGLE_LIST_WITH_ADJACENCY = 8;
-    public static final int TRIANGLE_STRIP_WITH_ADJACENCY = 9;
-    public static final int PATCH_LIST = 10;
+    public static final int POINT_LIST = 0x0;
+    public static final int LINE_LIST = 0x1;
+    public static final int LINE_STRIP = 0x2;
+    public static final int TRIANGLE_LIST = 0x3;
+    public static final int TRIANGLE_STRIP = 0x4;
+    public static final int TRIANGLE_FAN = 0x5;
+    public static final int LINE_LIST_WITH_ADJACENCY = 0x6;
+    public static final int LINE_STRIP_WITH_ADJACENCY = 0x7;
+    public static final int TRIANGLE_LIST_WITH_ADJACENCY = 0x8;
+    public static final int TRIANGLE_STRIP_WITH_ADJACENCY = 0x9;
+    public static final int PATCH_LIST = 0xa;
 
     public static String explain(@enumtype(VkPrimitiveTopology.class) int value) {
         return switch (value) {

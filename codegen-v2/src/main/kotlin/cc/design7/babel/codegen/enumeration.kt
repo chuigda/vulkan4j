@@ -2,6 +2,7 @@ package cc.design7.babel.codegen
 
 import cc.design7.babel.registry.Enumeration
 import cc.design7.babel.registry.RegistryBase
+import cc.design7.babel.util.Either
 import cc.design7.babel.util.buildDoc
 
 fun generateEnumeration(
@@ -30,7 +31,23 @@ fun generateEnumeration(
             if (docLink != null) {
                 +"/// @see $docLink"
             }
-            +"public static final int ${variant.name} = ${variant.value};"
+
+            val value = when (variant.value) {
+                is Either.Left -> {
+                    val hexValue = variant.value.value.toUInt().toString(16)
+                    "0x$hexValue"
+                }
+                is Either.Right -> {
+                    val value = variant.value.value
+                    if (value.isEmpty()) {
+                        "0"
+                    } else {
+                        value.joinToString(" | ")
+                    }
+                }
+            }
+
+            +"public static final int ${variant.name} = ${value};"
         }
 
         if (variants.isNotEmpty()) {

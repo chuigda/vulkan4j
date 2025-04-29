@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSemaphoreType.html">VkSemaphoreType</a>
 public final class VkSemaphoreType {
-    public static final int BINARY = 0;
-    public static final int TIMELINE = 1;
+    public static final int BINARY = 0x0;
+    public static final int TIMELINE = 0x1;
 
     public static String explain(@enumtype(VkSemaphoreType.class) int value) {
         return switch (value) {

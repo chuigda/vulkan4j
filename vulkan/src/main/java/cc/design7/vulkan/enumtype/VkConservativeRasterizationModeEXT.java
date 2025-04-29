@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkConservativeRasterizationModeEXT.html">VkConservativeRasterizationModeEXT</a>
 public final class VkConservativeRasterizationModeEXT {
-    public static final int DISABLED = 0;
-    public static final int OVERESTIMATE = 1;
-    public static final int UNDERESTIMATE = 2;
+    public static final int DISABLED = 0x0;
+    public static final int OVERESTIMATE = 0x1;
+    public static final int UNDERESTIMATE = 0x2;
 
     public static String explain(@enumtype(VkConservativeRasterizationModeEXT.class) int value) {
         return switch (value) {

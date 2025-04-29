@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1PredictionModeKHR.html">VkVideoEncodeAV1PredictionModeKHR</a>
 public final class VkVideoEncodeAV1PredictionModeKHR {
-    public static final int VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY = 0;
-    public static final int VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE = 1;
-    public static final int VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND = 2;
-    public static final int VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND = 3;
+    public static final int VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY = 0x0;
+    public static final int VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE = 0x1;
+    public static final int VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND = 0x2;
+    public static final int VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND = 0x3;
 
     public static String explain(@enumtype(VkVideoEncodeAV1PredictionModeKHR.class) int value) {
         return switch (value) {

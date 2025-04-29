@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceParameterTypeINTEL.html">VkPerformanceParameterTypeINTEL</a>
 public final class VkPerformanceParameterTypeINTEL {
-    public static final int HW_COUNTERS_SUPPORTED = 0;
-    public static final int STREAM_MARKER_VALID_BITS = 1;
+    public static final int HW_COUNTERS_SUPPORTED = 0x0;
+    public static final int STREAM_MARKER_VALID_BITS = 0x1;
 
     public static String explain(@enumtype(VkPerformanceParameterTypeINTEL.class) int value) {
         return switch (value) {

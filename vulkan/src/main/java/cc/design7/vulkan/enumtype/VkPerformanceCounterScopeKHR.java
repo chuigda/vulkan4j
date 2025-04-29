@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterScopeKHR.html">VkPerformanceCounterScopeKHR</a>
 public final class VkPerformanceCounterScopeKHR {
-    public static final int COMMAND_BUFFER = 0;
-    public static final int RENDER_PASS = 1;
-    public static final int COMMAND = 2;
+    public static final int COMMAND_BUFFER = 0x0;
+    public static final int RENDER_PASS = 0x1;
+    public static final int COMMAND = 0x2;
 
     public static String explain(@enumtype(VkPerformanceCounterScopeKHR.class) int value) {
         return switch (value) {

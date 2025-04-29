@@ -4,7 +4,7 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCacheHeaderVersion.html">VkPipelineCacheHeaderVersion</a>
 public final class VkPipelineCacheHeaderVersion {
-    public static final int ONE = 1;
+    public static final int ONE = 0x1;
 
     public static String explain(@enumtype(VkPipelineCacheHeaderVersion.class) int value) {
         return switch (value) {

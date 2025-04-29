@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderInfoTypeAMD.html">VkShaderInfoTypeAMD</a>
 public final class VkShaderInfoTypeAMD {
-    public static final int STATISTICS = 0;
-    public static final int BINARY = 1;
-    public static final int DISASSEMBLY = 2;
+    public static final int STATISTICS = 0x0;
+    public static final int BINARY = 0x1;
+    public static final int DISASSEMBLY = 0x2;
 
     public static String explain(@enumtype(VkShaderInfoTypeAMD.class) int value) {
         return switch (value) {

@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH264DisableDeblockingFilterIdc.html">StdVideoH264DisableDeblockingFilterIdc</a>
 public final class StdVideoH264DisableDeblockingFilterIdc {
-    public static final int STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_DISABLED = 0;
-    public static final int STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_ENABLED = 1;
-    public static final int STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_PARTIAL = 2;
-    public static final int STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_INVALID = 2147483647;
+    public static final int STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_DISABLED = 0x0;
+    public static final int STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_ENABLED = 0x1;
+    public static final int STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_PARTIAL = 0x2;
+    public static final int STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoH264DisableDeblockingFilterIdc.class) int value) {
         return switch (value) {

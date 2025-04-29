@@ -4,14 +4,14 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStencilOp.html">VkStencilOp</a>
 public final class VkStencilOp {
-    public static final int KEEP = 0;
-    public static final int ZERO = 1;
-    public static final int REPLACE = 2;
-    public static final int INCREMENT_AND_CLAMP = 3;
-    public static final int DECREMENT_AND_CLAMP = 4;
-    public static final int INVERT = 5;
-    public static final int INCREMENT_AND_WRAP = 6;
-    public static final int DECREMENT_AND_WRAP = 7;
+    public static final int KEEP = 0x0;
+    public static final int ZERO = 0x1;
+    public static final int REPLACE = 0x2;
+    public static final int INCREMENT_AND_CLAMP = 0x3;
+    public static final int DECREMENT_AND_CLAMP = 0x4;
+    public static final int INVERT = 0x5;
+    public static final int INCREMENT_AND_WRAP = 0x6;
+    public static final int DECREMENT_AND_WRAP = 0x7;
 
     public static String explain(@enumtype(VkStencilOp.class) int value) {
         return switch (value) {

@@ -4,15 +4,15 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowSessionBindingPointNV.html">VkOpticalFlowSessionBindingPointNV</a>
 public final class VkOpticalFlowSessionBindingPointNV {
-    public static final int UNKNOWN = 0;
-    public static final int INPUT = 1;
-    public static final int REFERENCE = 2;
-    public static final int HINT = 3;
-    public static final int FLOW_VECTOR = 4;
-    public static final int BACKWARD_FLOW_VECTOR = 5;
-    public static final int COST = 6;
-    public static final int BACKWARD_COST = 7;
-    public static final int GLOBAL_FLOW = 8;
+    public static final int UNKNOWN = 0x0;
+    public static final int INPUT = 0x1;
+    public static final int REFERENCE = 0x2;
+    public static final int HINT = 0x3;
+    public static final int FLOW_VECTOR = 0x4;
+    public static final int BACKWARD_FLOW_VECTOR = 0x5;
+    public static final int COST = 0x6;
+    public static final int BACKWARD_COST = 0x7;
+    public static final int GLOBAL_FLOW = 0x8;
 
     public static String explain(@enumtype(VkOpticalFlowSessionBindingPointNV.class) int value) {
         return switch (value) {

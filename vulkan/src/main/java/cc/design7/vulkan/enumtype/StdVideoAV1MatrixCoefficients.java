@@ -4,22 +4,22 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1MatrixCoefficients.html">StdVideoAV1MatrixCoefficients</a>
 public final class StdVideoAV1MatrixCoefficients {
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_IDENTITY = 0;
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_709 = 1;
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_UNSPECIFIED = 2;
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_RESERVED_3 = 3;
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_FCC = 4;
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_470_B_G = 5;
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_601 = 6;
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_240 = 7;
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_YCGCO = 8;
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_NCL = 9;
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_CL = 10;
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_2085 = 11;
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_CHROMAT_NCL = 12;
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_CHROMAT_CL = 13;
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_ICTCP = 14;
-    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_INVALID = 2147483647;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_IDENTITY = 0x0;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_709 = 0x1;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_UNSPECIFIED = 0x2;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_RESERVED_3 = 0x3;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_FCC = 0x4;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_470_B_G = 0x5;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_601 = 0x6;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_240 = 0x7;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_YCGCO = 0x8;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_NCL = 0x9;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_CL = 0xa;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_2085 = 0xb;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_CHROMAT_NCL = 0xc;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_CHROMAT_CL = 0xd;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_ICTCP = 0xe;
+    public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoAV1MatrixCoefficients.class) int value) {
         return switch (value) {

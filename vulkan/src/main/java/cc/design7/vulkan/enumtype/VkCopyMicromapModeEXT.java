@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyMicromapModeEXT.html">VkCopyMicromapModeEXT</a>
 public final class VkCopyMicromapModeEXT {
-    public static final int CLONE = 0;
-    public static final int SERIALIZE = 1;
-    public static final int DESERIALIZE = 2;
-    public static final int COMPACT = 3;
+    public static final int CLONE = 0x0;
+    public static final int SERIALIZE = 0x1;
+    public static final int DESERIALIZE = 0x2;
+    public static final int COMPACT = 0x3;
 
     public static String explain(@enumtype(VkCopyMicromapModeEXT.class) int value) {
         return switch (value) {

@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineRobustnessBufferBehavior.html">VkPipelineRobustnessBufferBehavior</a>
 public final class VkPipelineRobustnessBufferBehavior {
-    public static final int DEVICE_DEFAULT = 0;
-    public static final int DISABLED = 1;
-    public static final int ROBUST_BUFFER_ACCESS = 2;
-    public static final int ROBUST_BUFFER_ACCESS_2 = 3;
+    public static final int DEVICE_DEFAULT = 0x0;
+    public static final int DISABLED = 0x1;
+    public static final int ROBUST_BUFFER_ACCESS = 0x2;
+    public static final int ROBUST_BUFFER_ACCESS_2 = 0x3;
 
     public static String explain(@enumtype(VkPipelineRobustnessBufferBehavior.class) int value) {
         return switch (value) {

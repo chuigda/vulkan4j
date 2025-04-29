@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationCheckEXT.html">VkValidationCheckEXT</a>
 public final class VkValidationCheckEXT {
-    public static final int ALL = 0;
-    public static final int SHADERS = 1;
+    public static final int ALL = 0x0;
+    public static final int SHADERS = 0x1;
 
     public static String explain(@enumtype(VkValidationCheckEXT.class) int value) {
         return switch (value) {

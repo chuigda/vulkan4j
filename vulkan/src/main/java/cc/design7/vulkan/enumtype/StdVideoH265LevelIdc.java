@@ -4,20 +4,20 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH265LevelIdc.html">StdVideoH265LevelIdc</a>
 public final class StdVideoH265LevelIdc {
-    public static final int STD_VIDEO_H265_LEVEL_IDC_1_0 = 0;
-    public static final int STD_VIDEO_H265_LEVEL_IDC_2_0 = 1;
-    public static final int STD_VIDEO_H265_LEVEL_IDC_2_1 = 2;
-    public static final int STD_VIDEO_H265_LEVEL_IDC_3_0 = 3;
-    public static final int STD_VIDEO_H265_LEVEL_IDC_3_1 = 4;
-    public static final int STD_VIDEO_H265_LEVEL_IDC_4_0 = 5;
-    public static final int STD_VIDEO_H265_LEVEL_IDC_4_1 = 6;
-    public static final int STD_VIDEO_H265_LEVEL_IDC_5_0 = 7;
-    public static final int STD_VIDEO_H265_LEVEL_IDC_5_1 = 8;
-    public static final int STD_VIDEO_H265_LEVEL_IDC_5_2 = 9;
-    public static final int STD_VIDEO_H265_LEVEL_IDC_6_0 = 10;
-    public static final int STD_VIDEO_H265_LEVEL_IDC_6_1 = 11;
-    public static final int STD_VIDEO_H265_LEVEL_IDC_6_2 = 12;
-    public static final int STD_VIDEO_H265_LEVEL_IDC_INVALID = 2147483647;
+    public static final int STD_VIDEO_H265_LEVEL_IDC_1_0 = 0x0;
+    public static final int STD_VIDEO_H265_LEVEL_IDC_2_0 = 0x1;
+    public static final int STD_VIDEO_H265_LEVEL_IDC_2_1 = 0x2;
+    public static final int STD_VIDEO_H265_LEVEL_IDC_3_0 = 0x3;
+    public static final int STD_VIDEO_H265_LEVEL_IDC_3_1 = 0x4;
+    public static final int STD_VIDEO_H265_LEVEL_IDC_4_0 = 0x5;
+    public static final int STD_VIDEO_H265_LEVEL_IDC_4_1 = 0x6;
+    public static final int STD_VIDEO_H265_LEVEL_IDC_5_0 = 0x7;
+    public static final int STD_VIDEO_H265_LEVEL_IDC_5_1 = 0x8;
+    public static final int STD_VIDEO_H265_LEVEL_IDC_5_2 = 0x9;
+    public static final int STD_VIDEO_H265_LEVEL_IDC_6_0 = 0xa;
+    public static final int STD_VIDEO_H265_LEVEL_IDC_6_1 = 0xb;
+    public static final int STD_VIDEO_H265_LEVEL_IDC_6_2 = 0xc;
+    public static final int STD_VIDEO_H265_LEVEL_IDC_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoH265LevelIdc.class) int value) {
         return switch (value) {

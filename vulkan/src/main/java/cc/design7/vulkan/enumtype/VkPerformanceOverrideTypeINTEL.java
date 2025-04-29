@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceOverrideTypeINTEL.html">VkPerformanceOverrideTypeINTEL</a>
 public final class VkPerformanceOverrideTypeINTEL {
-    public static final int NULL_HARDWARE = 0;
-    public static final int FLUSH_GPU_CACHES = 1;
+    public static final int NULL_HARDWARE = 0x0;
+    public static final int FLUSH_GPU_CACHES = 0x1;
 
     public static String explain(@enumtype(VkPerformanceOverrideTypeINTEL.class) int value) {
         return switch (value) {

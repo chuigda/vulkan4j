@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMemoryRequirementsTypeNV.html">VkAccelerationStructureMemoryRequirementsTypeNV</a>
 public final class VkAccelerationStructureMemoryRequirementsTypeNV {
-    public static final int OBJECT = 0;
-    public static final int BUILD_SCRATCH = 1;
-    public static final int UPDATE_SCRATCH = 2;
+    public static final int OBJECT = 0x0;
+    public static final int BUILD_SCRATCH = 0x1;
+    public static final int UPDATE_SCRATCH = 0x2;
 
     public static String explain(@enumtype(VkAccelerationStructureMemoryRequirementsTypeNV.class) int value) {
         return switch (value) {

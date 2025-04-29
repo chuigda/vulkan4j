@@ -4,12 +4,12 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1InterpolationFilter.html">StdVideoAV1InterpolationFilter</a>
 public final class StdVideoAV1InterpolationFilter {
-    public static final int STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP = 0;
-    public static final int STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SMOOTH = 1;
-    public static final int STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SHARP = 2;
-    public static final int STD_VIDEO_AV1_INTERPOLATION_FILTER_BILINEAR = 3;
-    public static final int STD_VIDEO_AV1_INTERPOLATION_FILTER_SWITCHABLE = 4;
-    public static final int STD_VIDEO_AV1_INTERPOLATION_FILTER_INVALID = 2147483647;
+    public static final int STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP = 0x0;
+    public static final int STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SMOOTH = 0x1;
+    public static final int STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SHARP = 0x2;
+    public static final int STD_VIDEO_AV1_INTERPOLATION_FILTER_BILINEAR = 0x3;
+    public static final int STD_VIDEO_AV1_INTERPOLATION_FILTER_SWITCHABLE = 0x4;
+    public static final int STD_VIDEO_AV1_INTERPOLATION_FILTER_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoAV1InterpolationFilter.class) int value) {
         return switch (value) {

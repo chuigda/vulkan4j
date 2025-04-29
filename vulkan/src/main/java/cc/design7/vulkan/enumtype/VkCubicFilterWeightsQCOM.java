@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCubicFilterWeightsQCOM.html">VkCubicFilterWeightsQCOM</a>
 public final class VkCubicFilterWeightsQCOM {
-    public static final int CATMULL_ROM = 0;
-    public static final int ZERO_TANGENT_CARDINAL = 1;
-    public static final int B_SPLINE = 2;
-    public static final int MITCHELL_NETRAVALI = 3;
+    public static final int CATMULL_ROM = 0x0;
+    public static final int ZERO_TANGENT_CARDINAL = 0x1;
+    public static final int B_SPLINE = 0x2;
+    public static final int MITCHELL_NETRAVALI = 0x3;
 
     public static String explain(@enumtype(VkCubicFilterWeightsQCOM.class) int value) {
         return switch (value) {

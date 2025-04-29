@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1FrameType.html">StdVideoAV1FrameType</a>
 public final class StdVideoAV1FrameType {
-    public static final int STD_VIDEO_AV1_FRAME_TYPE_KEY = 0;
-    public static final int STD_VIDEO_AV1_FRAME_TYPE_INTER = 1;
-    public static final int STD_VIDEO_AV1_FRAME_TYPE_INTRA_ONLY = 2;
-    public static final int STD_VIDEO_AV1_FRAME_TYPE_SWITCH = 3;
-    public static final int STD_VIDEO_AV1_FRAME_TYPE_INVALID = 2147483647;
+    public static final int STD_VIDEO_AV1_FRAME_TYPE_KEY = 0x0;
+    public static final int STD_VIDEO_AV1_FRAME_TYPE_INTER = 0x1;
+    public static final int STD_VIDEO_AV1_FRAME_TYPE_INTRA_ONLY = 0x2;
+    public static final int STD_VIDEO_AV1_FRAME_TYPE_SWITCH = 0x3;
+    public static final int STD_VIDEO_AV1_FRAME_TYPE_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoAV1FrameType.class) int value) {
         return switch (value) {

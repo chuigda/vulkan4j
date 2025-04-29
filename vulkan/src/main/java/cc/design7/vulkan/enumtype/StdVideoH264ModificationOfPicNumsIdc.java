@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH264ModificationOfPicNumsIdc.html">StdVideoH264ModificationOfPicNumsIdc</a>
 public final class StdVideoH264ModificationOfPicNumsIdc {
-    public static final int STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_SHORT_TERM_SUBTRACT = 0;
-    public static final int STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_SHORT_TERM_ADD = 1;
-    public static final int STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_LONG_TERM = 2;
-    public static final int STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_END = 3;
-    public static final int STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_INVALID = 2147483647;
+    public static final int STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_SHORT_TERM_SUBTRACT = 0x0;
+    public static final int STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_SHORT_TERM_ADD = 0x1;
+    public static final int STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_LONG_TERM = 0x2;
+    public static final int STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_END = 0x3;
+    public static final int STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoH264ModificationOfPicNumsIdc.class) int value) {
         return switch (value) {

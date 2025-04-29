@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassContents.html">VkSubpassContents</a>
 public final class VkSubpassContents {
-    public static final int INLINE = 0;
-    public static final int SECONDARY_COMMAND_BUFFERS = 1;
-    public static final int INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR = 1000451000;
+    public static final int INLINE = 0x0;
+    public static final int SECONDARY_COMMAND_BUFFERS = 0x1;
+    public static final int INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR = 0x3ba1abb8;
 
     public static String explain(@enumtype(VkSubpassContents.class) int value) {
         return switch (value) {

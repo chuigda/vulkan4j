@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBlockMatchWindowCompareModeQCOM.html">VkBlockMatchWindowCompareModeQCOM</a>
 public final class VkBlockMatchWindowCompareModeQCOM {
-    public static final int MIN = 0;
-    public static final int MAX = 1;
+    public static final int MIN = 0x0;
+    public static final int MAX = 0x1;
 
     public static String explain(@enumtype(VkBlockMatchWindowCompareModeQCOM.class) int value) {
         return switch (value) {

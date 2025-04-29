@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLineRasterizationMode.html">VkLineRasterizationMode</a>
 public final class VkLineRasterizationMode {
-    public static final int DEFAULT = 0;
-    public static final int RECTANGULAR = 1;
-    public static final int BRESENHAM = 2;
-    public static final int RECTANGULAR_SMOOTH = 3;
+    public static final int DEFAULT = 0x0;
+    public static final int RECTANGULAR = 0x1;
+    public static final int BRESENHAM = 0x2;
+    public static final int RECTANGULAR_SMOOTH = 0x3;
 
     public static String explain(@enumtype(VkLineRasterizationMode.class) int value) {
         return switch (value) {

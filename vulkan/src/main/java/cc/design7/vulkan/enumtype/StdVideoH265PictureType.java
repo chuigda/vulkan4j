@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH265PictureType.html">StdVideoH265PictureType</a>
 public final class StdVideoH265PictureType {
-    public static final int STD_VIDEO_H265_PICTURE_TYPE_P = 0;
-    public static final int STD_VIDEO_H265_PICTURE_TYPE_B = 1;
-    public static final int STD_VIDEO_H265_PICTURE_TYPE_I = 2;
-    public static final int STD_VIDEO_H265_PICTURE_TYPE_IDR = 3;
-    public static final int STD_VIDEO_H265_PICTURE_TYPE_INVALID = 2147483647;
+    public static final int STD_VIDEO_H265_PICTURE_TYPE_P = 0x0;
+    public static final int STD_VIDEO_H265_PICTURE_TYPE_B = 0x1;
+    public static final int STD_VIDEO_H265_PICTURE_TYPE_I = 0x2;
+    public static final int STD_VIDEO_H265_PICTURE_TYPE_IDR = 0x3;
+    public static final int STD_VIDEO_H265_PICTURE_TYPE_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoH265PictureType.class) int value) {
         return switch (value) {

@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSharingMode.html">VkSharingMode</a>
 public final class VkSharingMode {
-    public static final int EXCLUSIVE = 0;
-    public static final int CONCURRENT = 1;
+    public static final int EXCLUSIVE = 0x0;
+    public static final int CONCURRENT = 0x1;
 
     public static String explain(@enumtype(VkSharingMode.class) int value) {
         return switch (value) {

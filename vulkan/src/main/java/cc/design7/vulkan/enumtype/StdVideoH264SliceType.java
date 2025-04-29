@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH264SliceType.html">StdVideoH264SliceType</a>
 public final class StdVideoH264SliceType {
-    public static final int STD_VIDEO_H264_SLICE_TYPE_P = 0;
-    public static final int STD_VIDEO_H264_SLICE_TYPE_B = 1;
-    public static final int STD_VIDEO_H264_SLICE_TYPE_I = 2;
-    public static final int STD_VIDEO_H264_SLICE_TYPE_INVALID = 2147483647;
+    public static final int STD_VIDEO_H264_SLICE_TYPE_P = 0x0;
+    public static final int STD_VIDEO_H264_SLICE_TYPE_B = 0x1;
+    public static final int STD_VIDEO_H264_SLICE_TYPE_I = 0x2;
+    public static final int STD_VIDEO_H264_SLICE_TYPE_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoH264SliceType.class) int value) {
         return switch (value) {

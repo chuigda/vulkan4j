@@ -4,14 +4,14 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLayerSettingTypeEXT.html">VkLayerSettingTypeEXT</a>
 public final class VkLayerSettingTypeEXT {
-    public static final int BOOL32 = 0;
-    public static final int INT32 = 1;
-    public static final int INT64 = 2;
-    public static final int UINT32 = 3;
-    public static final int UINT64 = 4;
-    public static final int FLOAT32 = 5;
-    public static final int FLOAT64 = 6;
-    public static final int STRING = 7;
+    public static final int BOOL32 = 0x0;
+    public static final int INT32 = 0x1;
+    public static final int INT64 = 0x2;
+    public static final int UINT32 = 0x3;
+    public static final int UINT64 = 0x4;
+    public static final int FLOAT32 = 0x5;
+    public static final int FLOAT64 = 0x6;
+    public static final int STRING = 0x7;
 
     public static String explain(@enumtype(VkLayerSettingTypeEXT.class) int value) {
         return switch (value) {

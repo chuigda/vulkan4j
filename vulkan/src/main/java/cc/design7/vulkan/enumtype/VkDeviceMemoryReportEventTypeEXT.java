@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceMemoryReportEventTypeEXT.html">VkDeviceMemoryReportEventTypeEXT</a>
 public final class VkDeviceMemoryReportEventTypeEXT {
-    public static final int ALLOCATE = 0;
-    public static final int FREE = 1;
-    public static final int IMPORT = 2;
-    public static final int UNIMPORT = 3;
-    public static final int ALLOCATION_FAILED = 4;
+    public static final int ALLOCATE = 0x0;
+    public static final int FREE = 0x1;
+    public static final int IMPORT = 0x2;
+    public static final int UNIMPORT = 0x3;
+    public static final int ALLOCATION_FAILED = 0x4;
 
     public static String explain(@enumtype(VkDeviceMemoryReportEventTypeEXT.class) int value) {
         return switch (value) {

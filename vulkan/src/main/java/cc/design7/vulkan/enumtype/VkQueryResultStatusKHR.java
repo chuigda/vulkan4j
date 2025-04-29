@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryResultStatusKHR.html">VkQueryResultStatusKHR</a>
 public final class VkQueryResultStatusKHR {
-    public static final int ERROR = -1;
-    public static final int NOT_READY = 0;
-    public static final int COMPLETE = 1;
-    public static final int INSUFFICIENT_BITSTREAM_BUFFER_RANGE = -1000299000;
+    public static final int ERROR = 0xffffffff;
+    public static final int NOT_READY = 0x0;
+    public static final int COMPLETE = 0x1;
+    public static final int INSUFFICIENT_BITSTREAM_BUFFER_RANGE = 0xc460a608;
 
     public static String explain(@enumtype(VkQueryResultStatusKHR.class) int value) {
         return switch (value) {

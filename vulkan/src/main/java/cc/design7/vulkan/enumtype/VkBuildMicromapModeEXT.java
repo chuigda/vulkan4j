@@ -4,7 +4,7 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBuildMicromapModeEXT.html">VkBuildMicromapModeEXT</a>
 public final class VkBuildMicromapModeEXT {
-    public static final int BUILD = 0;
+    public static final int BUILD = 0x0;
 
     public static String explain(@enumtype(VkBuildMicromapModeEXT.class) int value) {
         return switch (value) {

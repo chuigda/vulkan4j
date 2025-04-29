@@ -4,19 +4,19 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1ColorPrimaries.html">StdVideoAV1ColorPrimaries</a>
 public final class StdVideoAV1ColorPrimaries {
-    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709 = 1;
-    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED = 2;
-    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_M = 4;
-    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_B_G = 5;
-    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_601 = 6;
-    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_240 = 7;
-    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_GENERIC_FILM = 8;
-    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_2020 = 9;
-    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_XYZ = 10;
-    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_431 = 11;
-    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_432 = 12;
-    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_EBU_3213 = 22;
-    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_INVALID = 2147483647;
+    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709 = 0x1;
+    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED = 0x2;
+    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_M = 0x4;
+    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_B_G = 0x5;
+    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_601 = 0x6;
+    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_240 = 0x7;
+    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_GENERIC_FILM = 0x8;
+    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_2020 = 0x9;
+    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_XYZ = 0xa;
+    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_431 = 0xb;
+    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_432 = 0xc;
+    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_EBU_3213 = 0x16;
+    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoAV1ColorPrimaries.class) int value) {
         return switch (value) {

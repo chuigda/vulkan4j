@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndexType.html">VkIndexType</a>
 public final class VkIndexType {
-    public static final int UINT16 = 0;
-    public static final int UINT32 = 1;
-    public static final int UINT8 = 1000265000;
-    public static final int NONE_KHR = 1000165000;
+    public static final int UINT16 = 0x0;
+    public static final int UINT32 = 0x1;
+    public static final int UINT8 = 0x3b9ed528;
+    public static final int NONE_KHR = 0x3b9d4e88;
 
     public static String explain(@enumtype(VkIndexType.class) int value) {
         return switch (value) {

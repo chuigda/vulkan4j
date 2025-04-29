@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkChromaLocation.html">VkChromaLocation</a>
 public final class VkChromaLocation {
-    public static final int COSITED_EVEN = 0;
-    public static final int MIDPOINT = 1;
+    public static final int COSITED_EVEN = 0x0;
+    public static final int MIDPOINT = 0x1;
 
     public static String explain(@enumtype(VkChromaLocation.class) int value) {
         return switch (value) {

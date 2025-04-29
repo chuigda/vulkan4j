@@ -4,31 +4,31 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1Level.html">StdVideoAV1Level</a>
 public final class StdVideoAV1Level {
-    public static final int STD_VIDEO_AV1_LEVEL_2_0 = 0;
-    public static final int STD_VIDEO_AV1_LEVEL_2_1 = 1;
-    public static final int STD_VIDEO_AV1_LEVEL_2_2 = 2;
-    public static final int STD_VIDEO_AV1_LEVEL_2_3 = 3;
-    public static final int STD_VIDEO_AV1_LEVEL_3_0 = 4;
-    public static final int STD_VIDEO_AV1_LEVEL_3_1 = 5;
-    public static final int STD_VIDEO_AV1_LEVEL_3_2 = 6;
-    public static final int STD_VIDEO_AV1_LEVEL_3_3 = 7;
-    public static final int STD_VIDEO_AV1_LEVEL_4_0 = 8;
-    public static final int STD_VIDEO_AV1_LEVEL_4_1 = 9;
-    public static final int STD_VIDEO_AV1_LEVEL_4_2 = 10;
-    public static final int STD_VIDEO_AV1_LEVEL_4_3 = 11;
-    public static final int STD_VIDEO_AV1_LEVEL_5_0 = 12;
-    public static final int STD_VIDEO_AV1_LEVEL_5_1 = 13;
-    public static final int STD_VIDEO_AV1_LEVEL_5_2 = 14;
-    public static final int STD_VIDEO_AV1_LEVEL_5_3 = 15;
-    public static final int STD_VIDEO_AV1_LEVEL_6_0 = 16;
-    public static final int STD_VIDEO_AV1_LEVEL_6_1 = 17;
-    public static final int STD_VIDEO_AV1_LEVEL_6_2 = 18;
-    public static final int STD_VIDEO_AV1_LEVEL_6_3 = 19;
-    public static final int STD_VIDEO_AV1_LEVEL_7_0 = 20;
-    public static final int STD_VIDEO_AV1_LEVEL_7_1 = 21;
-    public static final int STD_VIDEO_AV1_LEVEL_7_2 = 22;
-    public static final int STD_VIDEO_AV1_LEVEL_7_3 = 23;
-    public static final int STD_VIDEO_AV1_LEVEL_INVALID = 2147483647;
+    public static final int STD_VIDEO_AV1_LEVEL_2_0 = 0x0;
+    public static final int STD_VIDEO_AV1_LEVEL_2_1 = 0x1;
+    public static final int STD_VIDEO_AV1_LEVEL_2_2 = 0x2;
+    public static final int STD_VIDEO_AV1_LEVEL_2_3 = 0x3;
+    public static final int STD_VIDEO_AV1_LEVEL_3_0 = 0x4;
+    public static final int STD_VIDEO_AV1_LEVEL_3_1 = 0x5;
+    public static final int STD_VIDEO_AV1_LEVEL_3_2 = 0x6;
+    public static final int STD_VIDEO_AV1_LEVEL_3_3 = 0x7;
+    public static final int STD_VIDEO_AV1_LEVEL_4_0 = 0x8;
+    public static final int STD_VIDEO_AV1_LEVEL_4_1 = 0x9;
+    public static final int STD_VIDEO_AV1_LEVEL_4_2 = 0xa;
+    public static final int STD_VIDEO_AV1_LEVEL_4_3 = 0xb;
+    public static final int STD_VIDEO_AV1_LEVEL_5_0 = 0xc;
+    public static final int STD_VIDEO_AV1_LEVEL_5_1 = 0xd;
+    public static final int STD_VIDEO_AV1_LEVEL_5_2 = 0xe;
+    public static final int STD_VIDEO_AV1_LEVEL_5_3 = 0xf;
+    public static final int STD_VIDEO_AV1_LEVEL_6_0 = 0x10;
+    public static final int STD_VIDEO_AV1_LEVEL_6_1 = 0x11;
+    public static final int STD_VIDEO_AV1_LEVEL_6_2 = 0x12;
+    public static final int STD_VIDEO_AV1_LEVEL_6_3 = 0x13;
+    public static final int STD_VIDEO_AV1_LEVEL_7_0 = 0x14;
+    public static final int STD_VIDEO_AV1_LEVEL_7_1 = 0x15;
+    public static final int STD_VIDEO_AV1_LEVEL_7_2 = 0x16;
+    public static final int STD_VIDEO_AV1_LEVEL_7_3 = 0x17;
+    public static final int STD_VIDEO_AV1_LEVEL_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoAV1Level.class) int value) {
         return switch (value) {

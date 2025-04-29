@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureTypeNV.html">VkClusterAccelerationStructureTypeNV</a>
 public final class VkClusterAccelerationStructureTypeNV {
-    public static final int CLUSTERS_BOTTOM_LEVEL = 0;
-    public static final int TRIANGLE_CLUSTER = 1;
-    public static final int TRIANGLE_CLUSTER_TEMPLATE = 2;
+    public static final int CLUSTERS_BOTTOM_LEVEL = 0x0;
+    public static final int TRIANGLE_CLUSTER = 0x1;
+    public static final int TRIANGLE_CLUSTER_TEMPLATE = 0x2;
 
     public static String explain(@enumtype(VkClusterAccelerationStructureTypeNV.class) int value) {
         return switch (value) {

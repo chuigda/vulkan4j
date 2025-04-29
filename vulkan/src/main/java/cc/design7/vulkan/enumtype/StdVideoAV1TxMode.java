@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1TxMode.html">StdVideoAV1TxMode</a>
 public final class StdVideoAV1TxMode {
-    public static final int STD_VIDEO_AV1_TX_MODE_ONLY_4X4 = 0;
-    public static final int STD_VIDEO_AV1_TX_MODE_LARGEST = 1;
-    public static final int STD_VIDEO_AV1_TX_MODE_SELECT = 2;
-    public static final int STD_VIDEO_AV1_TX_MODE_INVALID = 2147483647;
+    public static final int STD_VIDEO_AV1_TX_MODE_ONLY_4X4 = 0x0;
+    public static final int STD_VIDEO_AV1_TX_MODE_LARGEST = 0x1;
+    public static final int STD_VIDEO_AV1_TX_MODE_SELECT = 0x2;
+    public static final int STD_VIDEO_AV1_TX_MODE_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoAV1TxMode.class) int value) {
         return switch (value) {

@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1FrameRestorationType.html">StdVideoAV1FrameRestorationType</a>
 public final class StdVideoAV1FrameRestorationType {
-    public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_NONE = 0;
-    public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_WIENER = 1;
-    public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_SGRPROJ = 2;
-    public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_SWITCHABLE = 3;
-    public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_INVALID = 2147483647;
+    public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_NONE = 0x0;
+    public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_WIENER = 0x1;
+    public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_SGRPROJ = 0x2;
+    public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_SWITCHABLE = 0x3;
+    public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoAV1FrameRestorationType.class) int value) {
         return switch (value) {

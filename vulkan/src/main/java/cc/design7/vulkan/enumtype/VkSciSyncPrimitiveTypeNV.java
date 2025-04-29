@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSciSyncPrimitiveTypeNV.html">VkSciSyncPrimitiveTypeNV</a>
 public final class VkSciSyncPrimitiveTypeNV {
-    public static final int FENCE = 0;
-    public static final int SEMAPHORE = 1;
+    public static final int FENCE = 0x0;
+    public static final int SEMAPHORE = 0x1;
 
     public static String explain(@enumtype(VkSciSyncPrimitiveTypeNV.class) int value) {
         return switch (value) {

@@ -4,12 +4,12 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH265ProfileIdc.html">StdVideoH265ProfileIdc</a>
 public final class StdVideoH265ProfileIdc {
-    public static final int STD_VIDEO_H265_PROFILE_IDC_MAIN = 1;
-    public static final int STD_VIDEO_H265_PROFILE_IDC_MAIN_10 = 2;
-    public static final int STD_VIDEO_H265_PROFILE_IDC_MAIN_STILL_PICTURE = 3;
-    public static final int STD_VIDEO_H265_PROFILE_IDC_FORMAT_RANGE_EXTENSIONS = 4;
-    public static final int STD_VIDEO_H265_PROFILE_IDC_SCC_EXTENSIONS = 9;
-    public static final int STD_VIDEO_H265_PROFILE_IDC_INVALID = 2147483647;
+    public static final int STD_VIDEO_H265_PROFILE_IDC_MAIN = 0x1;
+    public static final int STD_VIDEO_H265_PROFILE_IDC_MAIN_10 = 0x2;
+    public static final int STD_VIDEO_H265_PROFILE_IDC_MAIN_STILL_PICTURE = 0x3;
+    public static final int STD_VIDEO_H265_PROFILE_IDC_FORMAT_RANGE_EXTENSIONS = 0x4;
+    public static final int STD_VIDEO_H265_PROFILE_IDC_SCC_EXTENSIONS = 0x9;
+    public static final int STD_VIDEO_H265_PROFILE_IDC_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoH265ProfileIdc.class) int value) {
         return switch (value) {

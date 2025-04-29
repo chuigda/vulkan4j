@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceType.html">VkPhysicalDeviceType</a>
 public final class VkPhysicalDeviceType {
-    public static final int OTHER = 0;
-    public static final int INTEGRATED_GPU = 1;
-    public static final int DISCRETE_GPU = 2;
-    public static final int VIRTUAL_GPU = 3;
-    public static final int CPU = 4;
+    public static final int OTHER = 0x0;
+    public static final int INTEGRATED_GPU = 0x1;
+    public static final int DISCRETE_GPU = 0x2;
+    public static final int VIRTUAL_GPU = 0x3;
+    public static final int CPU = 0x4;
 
     public static String explain(@enumtype(VkPhysicalDeviceType.class) int value) {
         return switch (value) {

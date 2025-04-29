@@ -4,18 +4,18 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShadingRatePaletteEntryNV.html">VkShadingRatePaletteEntryNV</a>
 public final class VkShadingRatePaletteEntryNV {
-    public static final int NO_INVOCATIONS = 0;
-    public static final int _16_INVOCATIONS_PER_PIXEL = 1;
-    public static final int _8_INVOCATIONS_PER_PIXEL = 2;
-    public static final int _4_INVOCATIONS_PER_PIXEL = 3;
-    public static final int _2_INVOCATIONS_PER_PIXEL = 4;
-    public static final int _1_INVOCATION_PER_PIXEL = 5;
-    public static final int _1_INVOCATION_PER_2X1_PIXELS = 6;
-    public static final int _1_INVOCATION_PER_1X2_PIXELS = 7;
-    public static final int _1_INVOCATION_PER_2X2_PIXELS = 8;
-    public static final int _1_INVOCATION_PER_4X2_PIXELS = 9;
-    public static final int _1_INVOCATION_PER_2X4_PIXELS = 10;
-    public static final int _1_INVOCATION_PER_4X4_PIXELS = 11;
+    public static final int NO_INVOCATIONS = 0x0;
+    public static final int _16_INVOCATIONS_PER_PIXEL = 0x1;
+    public static final int _8_INVOCATIONS_PER_PIXEL = 0x2;
+    public static final int _4_INVOCATIONS_PER_PIXEL = 0x3;
+    public static final int _2_INVOCATIONS_PER_PIXEL = 0x4;
+    public static final int _1_INVOCATION_PER_PIXEL = 0x5;
+    public static final int _1_INVOCATION_PER_2X1_PIXELS = 0x6;
+    public static final int _1_INVOCATION_PER_1X2_PIXELS = 0x7;
+    public static final int _1_INVOCATION_PER_2X2_PIXELS = 0x8;
+    public static final int _1_INVOCATION_PER_4X2_PIXELS = 0x9;
+    public static final int _1_INVOCATION_PER_2X4_PIXELS = 0xa;
+    public static final int _1_INVOCATION_PER_4X4_PIXELS = 0xb;
 
     public static String explain(@enumtype(VkShadingRatePaletteEntryNV.class) int value) {
         return switch (value) {

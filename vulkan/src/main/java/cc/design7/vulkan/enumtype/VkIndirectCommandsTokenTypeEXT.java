@@ -4,21 +4,21 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsTokenTypeEXT.html">VkIndirectCommandsTokenTypeEXT</a>
 public final class VkIndirectCommandsTokenTypeEXT {
-    public static final int EXECUTION_SET = 0;
-    public static final int PUSH_CONSTANT = 1;
-    public static final int SEQUENCE_INDEX = 2;
-    public static final int INDEX_BUFFER = 3;
-    public static final int VERTEX_BUFFER = 4;
-    public static final int DRAW_INDEXED = 5;
-    public static final int DRAW = 6;
-    public static final int DRAW_INDEXED_COUNT = 7;
-    public static final int DRAW_COUNT = 8;
-    public static final int DISPATCH = 9;
-    public static final int DRAW_MESH_TASKS_NV = 1000202002;
-    public static final int DRAW_MESH_TASKS_COUNT_NV = 1000202003;
-    public static final int DRAW_MESH_TASKS = 1000328000;
-    public static final int DRAW_MESH_TASKS_COUNT = 1000328001;
-    public static final int TRACE_RAYS2 = 1000386004;
+    public static final int EXECUTION_SET = 0x0;
+    public static final int PUSH_CONSTANT = 0x1;
+    public static final int SEQUENCE_INDEX = 0x2;
+    public static final int INDEX_BUFFER = 0x3;
+    public static final int VERTEX_BUFFER = 0x4;
+    public static final int DRAW_INDEXED = 0x5;
+    public static final int DRAW = 0x6;
+    public static final int DRAW_INDEXED_COUNT = 0x7;
+    public static final int DRAW_COUNT = 0x8;
+    public static final int DISPATCH = 0x9;
+    public static final int DRAW_MESH_TASKS_NV = 0x3b9ddf12;
+    public static final int DRAW_MESH_TASKS_COUNT_NV = 0x3b9ddf13;
+    public static final int DRAW_MESH_TASKS = 0x3b9fcb40;
+    public static final int DRAW_MESH_TASKS_COUNT = 0x3b9fcb41;
+    public static final int TRACE_RAYS2 = 0x3ba0add4;
 
     public static String explain(@enumtype(VkIndirectCommandsTokenTypeEXT.class) int value) {
         return switch (value) {

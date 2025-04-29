@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFragmentShadingRateCombinerOpKHR.html">VkFragmentShadingRateCombinerOpKHR</a>
 public final class VkFragmentShadingRateCombinerOpKHR {
-    public static final int KEEP = 0;
-    public static final int REPLACE = 1;
-    public static final int MIN = 2;
-    public static final int MAX = 3;
-    public static final int MUL = 4;
+    public static final int KEEP = 0x0;
+    public static final int REPLACE = 0x1;
+    public static final int MIN = 0x2;
+    public static final int MAX = 0x3;
+    public static final int MUL = 0x4;
 
     public static String explain(@enumtype(VkFragmentShadingRateCombinerOpKHR.class) int value) {
         return switch (value) {

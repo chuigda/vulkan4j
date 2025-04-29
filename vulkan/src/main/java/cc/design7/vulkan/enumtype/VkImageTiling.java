@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageTiling.html">VkImageTiling</a>
 public final class VkImageTiling {
-    public static final int OPTIMAL = 0;
-    public static final int LINEAR = 1;
-    public static final int DRM_FORMAT_MODIFIER_EXT = 1000158000;
+    public static final int OPTIMAL = 0x0;
+    public static final int LINEAR = 0x1;
+    public static final int DRM_FORMAT_MODIFIER_EXT = 0x3b9d3330;
 
     public static String explain(@enumtype(VkImageTiling.class) int value) {
         return switch (value) {

@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyAccelerationStructureModeKHR.html">VkCopyAccelerationStructureModeKHR</a>
 public final class VkCopyAccelerationStructureModeKHR {
-    public static final int CLONE = 0;
-    public static final int COMPACT = 1;
-    public static final int SERIALIZE = [2];
-    public static final int DESERIALIZE = [3];
+    public static final int CLONE = 0x0;
+    public static final int COMPACT = 0x1;
+    public static final int SERIALIZE = 0x2;
+    public static final int DESERIALIZE = 0x3;
 
     public static String explain(@enumtype(VkCopyAccelerationStructureModeKHR.class) int value) {
         return switch (value) {

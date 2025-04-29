@@ -4,36 +4,36 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageLayout.html">VkImageLayout</a>
 public final class VkImageLayout {
-    public static final int UNDEFINED = 0;
-    public static final int GENERAL = 1;
-    public static final int COLOR_ATTACHMENT_OPTIMAL = 2;
-    public static final int DEPTH_STENCIL_ATTACHMENT_OPTIMAL = 3;
-    public static final int DEPTH_STENCIL_READ_ONLY_OPTIMAL = 4;
-    public static final int SHADER_READ_ONLY_OPTIMAL = 5;
-    public static final int TRANSFER_SRC_OPTIMAL = 6;
-    public static final int TRANSFER_DST_OPTIMAL = 7;
-    public static final int PREINITIALIZED = 8;
-    public static final int DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL = 1000117000;
-    public static final int DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL = 1000117001;
-    public static final int DEPTH_ATTACHMENT_OPTIMAL = 1000241000;
-    public static final int DEPTH_READ_ONLY_OPTIMAL = 1000241001;
-    public static final int STENCIL_ATTACHMENT_OPTIMAL = 1000241002;
-    public static final int STENCIL_READ_ONLY_OPTIMAL = 1000241003;
-    public static final int READ_ONLY_OPTIMAL = 1000314000;
-    public static final int ATTACHMENT_OPTIMAL = 1000314001;
-    public static final int RENDERING_LOCAL_READ = 1000232000;
-    public static final int PRESENT_SRC_KHR = 1000001002;
-    public static final int VIDEO_DECODE_DST_KHR = 1000024000;
-    public static final int VIDEO_DECODE_SRC_KHR = 1000024001;
-    public static final int VIDEO_DECODE_DPB_KHR = 1000024002;
-    public static final int SHARED_PRESENT_KHR = 1000111000;
-    public static final int FRAGMENT_DENSITY_MAP_OPTIMAL_EXT = 1000218000;
-    public static final int FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR = 1000164003;
-    public static final int VIDEO_ENCODE_DST_KHR = 1000299000;
-    public static final int VIDEO_ENCODE_SRC_KHR = 1000299001;
-    public static final int VIDEO_ENCODE_DPB_KHR = 1000299002;
-    public static final int ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT = 1000339000;
-    public static final int VIDEO_ENCODE_QUANTIZATION_MAP_KHR = 1000553000;
+    public static final int UNDEFINED = 0x0;
+    public static final int GENERAL = 0x1;
+    public static final int COLOR_ATTACHMENT_OPTIMAL = 0x2;
+    public static final int DEPTH_STENCIL_ATTACHMENT_OPTIMAL = 0x3;
+    public static final int DEPTH_STENCIL_READ_ONLY_OPTIMAL = 0x4;
+    public static final int SHADER_READ_ONLY_OPTIMAL = 0x5;
+    public static final int TRANSFER_SRC_OPTIMAL = 0x6;
+    public static final int TRANSFER_DST_OPTIMAL = 0x7;
+    public static final int PREINITIALIZED = 0x8;
+    public static final int DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL = 0x3b9c9308;
+    public static final int DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL = 0x3b9c9309;
+    public static final int DEPTH_ATTACHMENT_OPTIMAL = 0x3b9e7768;
+    public static final int DEPTH_READ_ONLY_OPTIMAL = 0x3b9e7769;
+    public static final int STENCIL_ATTACHMENT_OPTIMAL = 0x3b9e776a;
+    public static final int STENCIL_READ_ONLY_OPTIMAL = 0x3b9e776b;
+    public static final int READ_ONLY_OPTIMAL = 0x3b9f9490;
+    public static final int ATTACHMENT_OPTIMAL = 0x3b9f9491;
+    public static final int RENDERING_LOCAL_READ = 0x3b9e5440;
+    public static final int PRESENT_SRC_KHR = 0x3b9acdea;
+    public static final int VIDEO_DECODE_DST_KHR = 0x3b9b27c0;
+    public static final int VIDEO_DECODE_SRC_KHR = 0x3b9b27c1;
+    public static final int VIDEO_DECODE_DPB_KHR = 0x3b9b27c2;
+    public static final int SHARED_PRESENT_KHR = 0x3b9c7b98;
+    public static final int FRAGMENT_DENSITY_MAP_OPTIMAL_EXT = 0x3b9e1d90;
+    public static final int FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR = 0x3b9d4aa3;
+    public static final int VIDEO_ENCODE_DST_KHR = 0x3b9f59f8;
+    public static final int VIDEO_ENCODE_SRC_KHR = 0x3b9f59f9;
+    public static final int VIDEO_ENCODE_DPB_KHR = 0x3b9f59fa;
+    public static final int ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT = 0x3b9ff638;
+    public static final int VIDEO_ENCODE_QUANTIZATION_MAP_KHR = 0x3ba33a28;
 
     public static String explain(@enumtype(VkImageLayout.class) int value) {
         return switch (value) {

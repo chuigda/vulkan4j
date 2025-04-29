@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDepthClampModeEXT.html">VkDepthClampModeEXT</a>
 public final class VkDepthClampModeEXT {
-    public static final int VIEWPORT_RANGE = 0;
-    public static final int USER_DEFINED_RANGE = 1;
+    public static final int VIEWPORT_RANGE = 0x0;
+    public static final int USER_DEFINED_RANGE = 0x1;
 
     public static String explain(@enumtype(VkDepthClampModeEXT.class) int value) {
         return switch (value) {

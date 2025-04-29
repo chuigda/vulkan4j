@@ -227,7 +227,7 @@ private fun extractEnumeration(e: Element) =
 private fun extractVariant(e: Element) =
     EnumVariant(
         name = e.getAttributeText("name")!!,
-        value = e.getAttributeText("value")!!.parseDecOrHex().toBigInteger(),
+        value = e.getAttributeText("value")!!.parseDecOrHex(),
     ).apply { setExt(VkCommonMetadata(api = e.getAttributeText("api"))) }
 
 private fun extractFunctionTypedef(e: Element) =

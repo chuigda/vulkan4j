@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentStoreOp.html">VkAttachmentStoreOp</a>
 public final class VkAttachmentStoreOp {
-    public static final int STORE = 0;
-    public static final int DONT_CARE = 1;
-    public static final int NONE = 1000301000;
+    public static final int STORE = 0x0;
+    public static final int DONT_CARE = 0x1;
+    public static final int NONE = 0x3b9f61c8;
 
     public static String explain(@enumtype(VkAttachmentStoreOp.class) int value) {
         return switch (value) {

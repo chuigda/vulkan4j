@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCoarseSampleOrderTypeNV.html">VkCoarseSampleOrderTypeNV</a>
 public final class VkCoarseSampleOrderTypeNV {
-    public static final int DEFAULT = 0;
-    public static final int CUSTOM = 1;
-    public static final int PIXEL_MAJOR = 2;
-    public static final int SAMPLE_MAJOR = 3;
+    public static final int DEFAULT = 0x0;
+    public static final int CUSTOM = 0x1;
+    public static final int PIXEL_MAJOR = 0x2;
+    public static final int SAMPLE_MAJOR = 0x3;
 
     public static String explain(@enumtype(VkCoarseSampleOrderTypeNV.class) int value) {
         return switch (value) {

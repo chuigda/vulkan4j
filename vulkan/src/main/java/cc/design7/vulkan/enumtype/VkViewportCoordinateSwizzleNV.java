@@ -4,14 +4,14 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkViewportCoordinateSwizzleNV.html">VkViewportCoordinateSwizzleNV</a>
 public final class VkViewportCoordinateSwizzleNV {
-    public static final int POSITIVE_X = 0;
-    public static final int NEGATIVE_X = 1;
-    public static final int POSITIVE_Y = 2;
-    public static final int NEGATIVE_Y = 3;
-    public static final int POSITIVE_Z = 4;
-    public static final int NEGATIVE_Z = 5;
-    public static final int POSITIVE_W = 6;
-    public static final int NEGATIVE_W = 7;
+    public static final int POSITIVE_X = 0x0;
+    public static final int NEGATIVE_X = 0x1;
+    public static final int POSITIVE_Y = 0x2;
+    public static final int NEGATIVE_Y = 0x3;
+    public static final int POSITIVE_Z = 0x4;
+    public static final int NEGATIVE_Z = 0x5;
+    public static final int POSITIVE_W = 0x6;
+    public static final int NEGATIVE_W = 0x7;
 
     public static String explain(@enumtype(VkViewportCoordinateSwizzleNV.class) int value) {
         return switch (value) {

@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeTuningModeKHR.html">VkVideoEncodeTuningModeKHR</a>
 public final class VkVideoEncodeTuningModeKHR {
-    public static final int DEFAULT = 0;
-    public static final int HIGH_QUALITY = 1;
-    public static final int LOW_LATENCY = 2;
-    public static final int ULTRA_LOW_LATENCY = 3;
-    public static final int LOSSLESS = 4;
+    public static final int DEFAULT = 0x0;
+    public static final int HIGH_QUALITY = 0x1;
+    public static final int LOW_LATENCY = 0x2;
+    public static final int ULTRA_LOW_LATENCY = 0x3;
+    public static final int LOSSLESS = 0x4;
 
     public static String explain(@enumtype(VkVideoEncodeTuningModeKHR.class) int value) {
         return switch (value) {

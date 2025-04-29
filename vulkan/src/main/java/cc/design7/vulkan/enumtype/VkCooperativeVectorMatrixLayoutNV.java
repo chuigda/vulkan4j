@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCooperativeVectorMatrixLayoutNV.html">VkCooperativeVectorMatrixLayoutNV</a>
 public final class VkCooperativeVectorMatrixLayoutNV {
-    public static final int ROW_MAJOR = 0;
-    public static final int COLUMN_MAJOR = 1;
-    public static final int INFERENCING_OPTIMAL = 2;
-    public static final int TRAINING_OPTIMAL = 3;
+    public static final int ROW_MAJOR = 0x0;
+    public static final int COLUMN_MAJOR = 0x1;
+    public static final int INFERENCING_OPTIMAL = 0x2;
+    public static final int TRAINING_OPTIMAL = 0x3;
 
     public static String explain(@enumtype(VkCooperativeVectorMatrixLayoutNV.class) int value) {
         return switch (value) {

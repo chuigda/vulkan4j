@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureTypeKHR.html">VkAccelerationStructureTypeKHR</a>
 public final class VkAccelerationStructureTypeKHR {
-    public static final int TOP_LEVEL = 0;
-    public static final int BOTTOM_LEVEL = 1;
-    public static final int GENERIC = 2;
+    public static final int TOP_LEVEL = 0x0;
+    public static final int BOTTOM_LEVEL = 0x1;
+    public static final int GENERIC = 0x2;
 
     public static String explain(@enumtype(VkAccelerationStructureTypeKHR.class) int value) {
         return switch (value) {

@@ -4,20 +4,20 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassMergeStatusEXT.html">VkSubpassMergeStatusEXT</a>
 public final class VkSubpassMergeStatusEXT {
-    public static final int MERGED = 0;
-    public static final int DISALLOWED = 1;
-    public static final int NOT_MERGED_SIDE_EFFECTS = 2;
-    public static final int NOT_MERGED_SAMPLES_MISMATCH = 3;
-    public static final int NOT_MERGED_VIEWS_MISMATCH = 4;
-    public static final int NOT_MERGED_ALIASING = 5;
-    public static final int NOT_MERGED_DEPENDENCIES = 6;
-    public static final int NOT_MERGED_INCOMPATIBLE_INPUT_ATTACHMENT = 7;
-    public static final int NOT_MERGED_TOO_MANY_ATTACHMENTS = 8;
-    public static final int NOT_MERGED_INSUFFICIENT_STORAGE = 9;
-    public static final int NOT_MERGED_DEPTH_STENCIL_COUNT = 10;
-    public static final int NOT_MERGED_RESOLVE_ATTACHMENT_REUSE = 11;
-    public static final int NOT_MERGED_SINGLE_SUBPASS = 12;
-    public static final int NOT_MERGED_UNSPECIFIED = 13;
+    public static final int MERGED = 0x0;
+    public static final int DISALLOWED = 0x1;
+    public static final int NOT_MERGED_SIDE_EFFECTS = 0x2;
+    public static final int NOT_MERGED_SAMPLES_MISMATCH = 0x3;
+    public static final int NOT_MERGED_VIEWS_MISMATCH = 0x4;
+    public static final int NOT_MERGED_ALIASING = 0x5;
+    public static final int NOT_MERGED_DEPENDENCIES = 0x6;
+    public static final int NOT_MERGED_INCOMPATIBLE_INPUT_ATTACHMENT = 0x7;
+    public static final int NOT_MERGED_TOO_MANY_ATTACHMENTS = 0x8;
+    public static final int NOT_MERGED_INSUFFICIENT_STORAGE = 0x9;
+    public static final int NOT_MERGED_DEPTH_STENCIL_COUNT = 0xa;
+    public static final int NOT_MERGED_RESOLVE_ATTACHMENT_REUSE = 0xb;
+    public static final int NOT_MERGED_SINGLE_SUBPASS = 0xc;
+    public static final int NOT_MERGED_UNSPECIFIED = 0xd;
 
     public static String explain(@enumtype(VkSubpassMergeStatusEXT.class) int value) {
         return switch (value) {

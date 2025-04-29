@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkScopeKHR.html">VkScopeKHR</a>
 public final class VkScopeKHR {
-    public static final int DEVICE = 1;
-    public static final int WORKGROUP = 2;
-    public static final int SUBGROUP = 3;
-    public static final int QUEUE_FAMILY = 5;
+    public static final int DEVICE = 0x1;
+    public static final int WORKGROUP = 0x2;
+    public static final int SUBGROUP = 0x3;
+    public static final int QUEUE_FAMILY = 0x5;
 
     public static String explain(@enumtype(VkScopeKHR.class) int value) {
         return switch (value) {

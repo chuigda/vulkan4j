@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSciSyncClientTypeNV.html">VkSciSyncClientTypeNV</a>
 public final class VkSciSyncClientTypeNV {
-    public static final int SIGNALER = 0;
-    public static final int WAITER = 1;
-    public static final int SIGNALER_WAITER = 2;
+    public static final int SIGNALER = 0x0;
+    public static final int WAITER = 0x1;
+    public static final int SIGNALER_WAITER = 0x2;
 
     public static String explain(@enumtype(VkSciSyncClientTypeNV.class) int value) {
         return switch (value) {

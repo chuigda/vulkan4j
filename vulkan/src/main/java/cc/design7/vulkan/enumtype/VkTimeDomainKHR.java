@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTimeDomainKHR.html">VkTimeDomainKHR</a>
 public final class VkTimeDomainKHR {
-    public static final int DEVICE = 0;
-    public static final int CLOCK_MONOTONIC = 1;
-    public static final int CLOCK_MONOTONIC_RAW = 2;
-    public static final int QUERY_PERFORMANCE_COUNTER = 3;
+    public static final int DEVICE = 0x0;
+    public static final int CLOCK_MONOTONIC = 0x1;
+    public static final int CLOCK_MONOTONIC_RAW = 0x2;
+    public static final int QUERY_PERFORMANCE_COUNTER = 0x3;
 
     public static String explain(@enumtype(VkTimeDomainKHR.class) int value) {
         return switch (value) {

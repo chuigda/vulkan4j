@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPowerStateEXT.html">VkDisplayPowerStateEXT</a>
 public final class VkDisplayPowerStateEXT {
-    public static final int OFF = 0;
-    public static final int SUSPEND = 1;
-    public static final int ON = 2;
+    public static final int OFF = 0x0;
+    public static final int SUSPEND = 0x1;
+    public static final int ON = 0x2;
 
     public static String explain(@enumtype(VkDisplayPowerStateEXT.class) int value) {
         return switch (value) {

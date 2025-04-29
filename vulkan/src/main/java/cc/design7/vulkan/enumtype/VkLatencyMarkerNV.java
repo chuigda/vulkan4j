@@ -4,18 +4,18 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLatencyMarkerNV.html">VkLatencyMarkerNV</a>
 public final class VkLatencyMarkerNV {
-    public static final int SIMULATION_START = 0;
-    public static final int SIMULATION_END = 1;
-    public static final int RENDERSUBMIT_START = 2;
-    public static final int RENDERSUBMIT_END = 3;
-    public static final int PRESENT_START = 4;
-    public static final int PRESENT_END = 5;
-    public static final int INPUT_SAMPLE = 6;
-    public static final int TRIGGER_FLASH = 7;
-    public static final int OUT_OF_BAND_RENDERSUBMIT_START = 8;
-    public static final int OUT_OF_BAND_RENDERSUBMIT_END = 9;
-    public static final int OUT_OF_BAND_PRESENT_START = 10;
-    public static final int OUT_OF_BAND_PRESENT_END = 11;
+    public static final int SIMULATION_START = 0x0;
+    public static final int SIMULATION_END = 0x1;
+    public static final int RENDERSUBMIT_START = 0x2;
+    public static final int RENDERSUBMIT_END = 0x3;
+    public static final int PRESENT_START = 0x4;
+    public static final int PRESENT_END = 0x5;
+    public static final int INPUT_SAMPLE = 0x6;
+    public static final int TRIGGER_FLASH = 0x7;
+    public static final int OUT_OF_BAND_RENDERSUBMIT_START = 0x8;
+    public static final int OUT_OF_BAND_RENDERSUBMIT_END = 0x9;
+    public static final int OUT_OF_BAND_PRESENT_START = 0xa;
+    public static final int OUT_OF_BAND_PRESENT_END = 0xb;
 
     public static String explain(@enumtype(VkLatencyMarkerNV.class) int value) {
         return switch (value) {

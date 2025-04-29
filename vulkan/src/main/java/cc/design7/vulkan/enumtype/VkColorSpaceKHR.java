@@ -4,22 +4,22 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkColorSpaceKHR.html">VkColorSpaceKHR</a>
 public final class VkColorSpaceKHR {
-    public static final int SRGB_NONLINEAR = 0;
-    public static final int DISPLAY_P3_NONLINEAR_EXT = 1000104001;
-    public static final int EXTENDED_SRGB_LINEAR_EXT = 1000104002;
-    public static final int DISPLAY_P3_LINEAR_EXT = 1000104003;
-    public static final int DCI_P3_NONLINEAR_EXT = 1000104004;
-    public static final int BT709_LINEAR_EXT = 1000104005;
-    public static final int BT709_NONLINEAR_EXT = 1000104006;
-    public static final int BT2020_LINEAR_EXT = 1000104007;
-    public static final int HDR10_ST2084_EXT = 1000104008;
-    public static final int DOLBYVISION_EXT = 1000104009;
-    public static final int HDR10_HLG_EXT = 1000104010;
-    public static final int ADOBERGB_LINEAR_EXT = 1000104011;
-    public static final int ADOBERGB_NONLINEAR_EXT = 1000104012;
-    public static final int PASS_THROUGH_EXT = 1000104013;
-    public static final int EXTENDED_SRGB_NONLINEAR_EXT = 1000104014;
-    public static final int DISPLAY_NATIVE_AMD = 1000213000;
+    public static final int SRGB_NONLINEAR = 0x0;
+    public static final int DISPLAY_P3_NONLINEAR_EXT = 0x3b9c6041;
+    public static final int EXTENDED_SRGB_LINEAR_EXT = 0x3b9c6042;
+    public static final int DISPLAY_P3_LINEAR_EXT = 0x3b9c6043;
+    public static final int DCI_P3_NONLINEAR_EXT = 0x3b9c6044;
+    public static final int BT709_LINEAR_EXT = 0x3b9c6045;
+    public static final int BT709_NONLINEAR_EXT = 0x3b9c6046;
+    public static final int BT2020_LINEAR_EXT = 0x3b9c6047;
+    public static final int HDR10_ST2084_EXT = 0x3b9c6048;
+    public static final int DOLBYVISION_EXT = 0x3b9c6049;
+    public static final int HDR10_HLG_EXT = 0x3b9c604a;
+    public static final int ADOBERGB_LINEAR_EXT = 0x3b9c604b;
+    public static final int ADOBERGB_NONLINEAR_EXT = 0x3b9c604c;
+    public static final int PASS_THROUGH_EXT = 0x3b9c604d;
+    public static final int EXTENDED_SRGB_NONLINEAR_EXT = 0x3b9c604e;
+    public static final int DISPLAY_NATIVE_AMD = 0x3b9e0a08;
 
     public static String explain(@enumtype(VkColorSpaceKHR.class) int value) {
         return switch (value) {

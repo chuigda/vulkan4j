@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageType.html">VkImageType</a>
 public final class VkImageType {
-    public static final int _1D = 0;
-    public static final int _2D = 1;
-    public static final int _3D = 2;
+    public static final int _1D = 0x0;
+    public static final int _2D = 0x1;
+    public static final int _3D = 0x2;
 
     public static String explain(@enumtype(VkImageType.class) int value) {
         return switch (value) {

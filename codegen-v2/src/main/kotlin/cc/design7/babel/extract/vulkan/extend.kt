@@ -2,6 +2,7 @@ package cc.design7.babel.extract.vulkan
 
 import cc.design7.babel.registry.*
 import cc.design7.babel.util.Either
+import cc.design7.babel.util.parseDecOrHex
 import java.io.File
 import java.math.BigInteger
 
@@ -66,16 +67,20 @@ private fun extendEnum(
     }
 }
 
-private fun getVariantValue(requireValue: RequireValue, extNumber: Long?): Either<BigInteger, List<String>>? {
+private fun getVariantValue(requireValue: RequireValue, extNumber: Long?): Either<Long, List<String>>? {
     if (requireValue.value != null) {
-        return Either.Right(listOf(requireValue.value))
+        return try {
+            Either.Left(requireValue.value.parseDecOrHex())
+        } catch (_: NumberFormatException) {
+            Either.Right(listOf(requireValue.value))
+        }
     }
 
     // https://www.khronos.org/registry/vulkan/specs/1.2/styleguide.html#_assigning_extension_token_values
     val number = requireValue.extNumber ?: extNumber ?: return null
     val offset = requireValue.offset ?: return null
     val value = 1_000_000_000L + (1_000 * (number - 1)) + offset
-    return Either.Left((if (requireValue.negative) -value else value).toBigInteger())
+    return Either.Left(if (requireValue.negative) -value else value)
 }
 
 private fun extendExtensionNameConstants(

@@ -4,25 +4,25 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBlendFactor.html">VkBlendFactor</a>
 public final class VkBlendFactor {
-    public static final int ZERO = 0;
-    public static final int ONE = 1;
-    public static final int SRC_COLOR = 2;
-    public static final int ONE_MINUS_SRC_COLOR = 3;
-    public static final int DST_COLOR = 4;
-    public static final int ONE_MINUS_DST_COLOR = 5;
-    public static final int SRC_ALPHA = 6;
-    public static final int ONE_MINUS_SRC_ALPHA = 7;
-    public static final int DST_ALPHA = 8;
-    public static final int ONE_MINUS_DST_ALPHA = 9;
-    public static final int CONSTANT_COLOR = 10;
-    public static final int ONE_MINUS_CONSTANT_COLOR = 11;
-    public static final int CONSTANT_ALPHA = 12;
-    public static final int ONE_MINUS_CONSTANT_ALPHA = 13;
-    public static final int SRC_ALPHA_SATURATE = 14;
-    public static final int SRC1_COLOR = 15;
-    public static final int ONE_MINUS_SRC1_COLOR = 16;
-    public static final int SRC1_ALPHA = 17;
-    public static final int ONE_MINUS_SRC1_ALPHA = 18;
+    public static final int ZERO = 0x0;
+    public static final int ONE = 0x1;
+    public static final int SRC_COLOR = 0x2;
+    public static final int ONE_MINUS_SRC_COLOR = 0x3;
+    public static final int DST_COLOR = 0x4;
+    public static final int ONE_MINUS_DST_COLOR = 0x5;
+    public static final int SRC_ALPHA = 0x6;
+    public static final int ONE_MINUS_SRC_ALPHA = 0x7;
+    public static final int DST_ALPHA = 0x8;
+    public static final int ONE_MINUS_DST_ALPHA = 0x9;
+    public static final int CONSTANT_COLOR = 0xa;
+    public static final int ONE_MINUS_CONSTANT_COLOR = 0xb;
+    public static final int CONSTANT_ALPHA = 0xc;
+    public static final int ONE_MINUS_CONSTANT_ALPHA = 0xd;
+    public static final int SRC_ALPHA_SATURATE = 0xe;
+    public static final int SRC1_COLOR = 0xf;
+    public static final int ONE_MINUS_SRC1_COLOR = 0x10;
+    public static final int SRC1_ALPHA = 0x11;
+    public static final int ONE_MINUS_SRC1_ALPHA = 0x12;
 
     public static String explain(@enumtype(VkBlendFactor.class) int value) {
         return switch (value) {

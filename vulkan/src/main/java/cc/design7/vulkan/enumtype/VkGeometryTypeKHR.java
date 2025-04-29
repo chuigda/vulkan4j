@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryTypeKHR.html">VkGeometryTypeKHR</a>
 public final class VkGeometryTypeKHR {
-    public static final int TRIANGLES = 0;
-    public static final int AABBS = 1;
-    public static final int INSTANCES = 2;
-    public static final int SPHERES_NV = 1000429004;
-    public static final int LINEAR_SWEPT_SPHERES_NV = 1000429005;
+    public static final int TRIANGLES = 0x0;
+    public static final int AABBS = 0x1;
+    public static final int INSTANCES = 0x2;
+    public static final int SPHERES_NV = 0x3ba155cc;
+    public static final int LINEAR_SWEPT_SPHERES_NV = 0x3ba155cd;
 
     public static String explain(@enumtype(VkGeometryTypeKHR.class) int value) {
         return switch (value) {

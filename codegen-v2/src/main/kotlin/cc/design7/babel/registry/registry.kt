@@ -197,9 +197,9 @@ class Enumeration(
 
 class EnumVariant(
     name: Identifier,
-    val value: Either<BigInteger, List<String>>
+    val value: Either<Long, List<String>>
 ) : Entity(name) {
-    constructor(name: String, value: BigInteger) : this(name.intern(), Either.Left(value))
+    constructor(name: String, value: Long) : this(name.intern(), Either.Left(value))
 
     constructor(name: String, value: List<String>) : this(name.intern(), Either.Right(value))
 

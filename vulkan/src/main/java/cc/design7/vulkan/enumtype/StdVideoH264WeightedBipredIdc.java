@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH264WeightedBipredIdc.html">StdVideoH264WeightedBipredIdc</a>
 public final class StdVideoH264WeightedBipredIdc {
-    public static final int STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_DEFAULT = 0;
-    public static final int STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_EXPLICIT = 1;
-    public static final int STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_IMPLICIT = 2;
-    public static final int STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_INVALID = 2147483647;
+    public static final int STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_DEFAULT = 0x0;
+    public static final int STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_EXPLICIT = 0x1;
+    public static final int STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_IMPLICIT = 0x2;
+    public static final int STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoH264WeightedBipredIdc.class) int value) {
         return switch (value) {

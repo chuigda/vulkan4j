@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowPerformanceLevelNV.html">VkOpticalFlowPerformanceLevelNV</a>
 public final class VkOpticalFlowPerformanceLevelNV {
-    public static final int UNKNOWN = 0;
-    public static final int SLOW = 1;
-    public static final int MEDIUM = 2;
-    public static final int FAST = 3;
+    public static final int UNKNOWN = 0x0;
+    public static final int SLOW = 0x1;
+    public static final int MEDIUM = 0x2;
+    public static final int FAST = 0x3;
 
     public static String explain(@enumtype(VkOpticalFlowPerformanceLevelNV.class) int value) {
         return switch (value) {

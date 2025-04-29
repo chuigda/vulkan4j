@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLayeredDriverUnderlyingApiMSFT.html">VkLayeredDriverUnderlyingApiMSFT</a>
 public final class VkLayeredDriverUnderlyingApiMSFT {
-    public static final int NONE = 0;
-    public static final int D3D12 = 1;
+    public static final int NONE = 0x0;
+    public static final int D3D12 = 0x1;
 
     public static String explain(@enumtype(VkLayeredDriverUnderlyingApiMSFT.class) int value) {
         return switch (value) {

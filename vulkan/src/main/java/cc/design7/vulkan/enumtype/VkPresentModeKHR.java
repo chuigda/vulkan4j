@@ -4,13 +4,13 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentModeKHR.html">VkPresentModeKHR</a>
 public final class VkPresentModeKHR {
-    public static final int IMMEDIATE = 0;
-    public static final int MAILBOX = 1;
-    public static final int FIFO = 2;
-    public static final int FIFO_RELAXED = 3;
-    public static final int SHARED_DEMAND_REFRESH = 1000111000;
-    public static final int SHARED_CONTINUOUS_REFRESH = 1000111001;
-    public static final int FIFO_LATEST_READY_EXT = 1000361000;
+    public static final int IMMEDIATE = 0x0;
+    public static final int MAILBOX = 0x1;
+    public static final int FIFO = 0x2;
+    public static final int FIFO_RELAXED = 0x3;
+    public static final int SHARED_DEMAND_REFRESH = 0x3b9c7b98;
+    public static final int SHARED_CONTINUOUS_REFRESH = 0x3b9c7b99;
+    public static final int FIFO_LATEST_READY_EXT = 0x3ba04c28;
 
     public static String explain(@enumtype(VkPresentModeKHR.class) int value) {
         return switch (value) {

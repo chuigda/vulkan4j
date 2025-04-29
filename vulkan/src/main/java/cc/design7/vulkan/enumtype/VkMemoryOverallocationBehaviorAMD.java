@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryOverallocationBehaviorAMD.html">VkMemoryOverallocationBehaviorAMD</a>
 public final class VkMemoryOverallocationBehaviorAMD {
-    public static final int DEFAULT = 0;
-    public static final int ALLOWED = 1;
-    public static final int DISALLOWED = 2;
+    public static final int DEFAULT = 0x0;
+    public static final int ALLOWED = 0x1;
+    public static final int DISALLOWED = 0x2;
 
     public static String explain(@enumtype(VkMemoryOverallocationBehaviorAMD.class) int value) {
         return switch (value) {

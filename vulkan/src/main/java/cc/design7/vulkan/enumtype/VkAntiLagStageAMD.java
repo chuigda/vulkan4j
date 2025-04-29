@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAntiLagStageAMD.html">VkAntiLagStageAMD</a>
 public final class VkAntiLagStageAMD {
-    public static final int INPUT = 0;
-    public static final int PRESENT = 1;
+    public static final int INPUT = 0x0;
+    public static final int PRESENT = 0x1;
 
     public static String explain(@enumtype(VkAntiLagStageAMD.class) int value) {
         return switch (value) {

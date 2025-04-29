@@ -4,11 +4,11 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationFeatureEnableEXT.html">VkValidationFeatureEnableEXT</a>
 public final class VkValidationFeatureEnableEXT {
-    public static final int GPU_ASSISTED = 0;
-    public static final int GPU_ASSISTED_RESERVE_BINDING_SLOT = 1;
-    public static final int BEST_PRACTICES = 2;
-    public static final int DEBUG_PRINTF = 3;
-    public static final int SYNCHRONIZATION_VALIDATION = 4;
+    public static final int GPU_ASSISTED = 0x0;
+    public static final int GPU_ASSISTED_RESERVE_BINDING_SLOT = 0x1;
+    public static final int BEST_PRACTICES = 0x2;
+    public static final int DEBUG_PRINTF = 0x3;
+    public static final int SYNCHRONIZATION_VALIDATION = 0x4;
 
     public static String explain(@enumtype(VkValidationFeatureEnableEXT.class) int value) {
         return switch (value) {

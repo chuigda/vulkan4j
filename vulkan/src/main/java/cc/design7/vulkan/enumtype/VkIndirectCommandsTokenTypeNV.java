@@ -4,17 +4,17 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsTokenTypeNV.html">VkIndirectCommandsTokenTypeNV</a>
 public final class VkIndirectCommandsTokenTypeNV {
-    public static final int SHADER_GROUP = 0;
-    public static final int STATE_FLAGS = 1;
-    public static final int INDEX_BUFFER = 2;
-    public static final int VERTEX_BUFFER = 3;
-    public static final int PUSH_CONSTANT = 4;
-    public static final int DRAW_INDEXED = 5;
-    public static final int DRAW = 6;
-    public static final int DRAW_TASKS = 7;
-    public static final int DRAW_MESH_TASKS = 1000328000;
-    public static final int PIPELINE = 1000428003;
-    public static final int DISPATCH = 1000428004;
+    public static final int SHADER_GROUP = 0x0;
+    public static final int STATE_FLAGS = 0x1;
+    public static final int INDEX_BUFFER = 0x2;
+    public static final int VERTEX_BUFFER = 0x3;
+    public static final int PUSH_CONSTANT = 0x4;
+    public static final int DRAW_INDEXED = 0x5;
+    public static final int DRAW = 0x6;
+    public static final int DRAW_TASKS = 0x7;
+    public static final int DRAW_MESH_TASKS = 0x3b9fcb40;
+    public static final int PIPELINE = 0x3ba151e3;
+    public static final int DISPATCH = 0x3ba151e4;
 
     public static String explain(@enumtype(VkIndirectCommandsTokenTypeNV.class) int value) {
         return switch (value) {

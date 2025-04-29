@@ -4,9 +4,9 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMotionInstanceTypeNV.html">VkAccelerationStructureMotionInstanceTypeNV</a>
 public final class VkAccelerationStructureMotionInstanceTypeNV {
-    public static final int STATIC = 0;
-    public static final int MATRIX_MOTION = 1;
-    public static final int SRT_MOTION = 2;
+    public static final int STATIC = 0x0;
+    public static final int MATRIX_MOTION = 0x1;
+    public static final int SRT_MOTION = 0x2;
 
     public static String explain(@enumtype(VkAccelerationStructureMotionInstanceTypeNV.class) int value) {
         return switch (value) {

@@ -4,10 +4,10 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCoverageModulationModeNV.html">VkCoverageModulationModeNV</a>
 public final class VkCoverageModulationModeNV {
-    public static final int NONE = 0;
-    public static final int RGB = 1;
-    public static final int ALPHA = 2;
-    public static final int RGBA = 3;
+    public static final int NONE = 0x0;
+    public static final int RGB = 0x1;
+    public static final int ALPHA = 0x2;
+    public static final int RGBA = 0x3;
 
     public static String explain(@enumtype(VkCoverageModulationModeNV.class) int value) {
         return switch (value) {

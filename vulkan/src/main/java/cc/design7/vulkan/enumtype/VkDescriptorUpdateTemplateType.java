@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorUpdateTemplateType.html">VkDescriptorUpdateTemplateType</a>
 public final class VkDescriptorUpdateTemplateType {
-    public static final int DESCRIPTOR_SET = 0;
-    public static final int PUSH_DESCRIPTORS = [1];
+    public static final int DESCRIPTOR_SET = 0x0;
+    public static final int PUSH_DESCRIPTORS = 0x1;
 
     public static String explain(@enumtype(VkDescriptorUpdateTemplateType.class) int value) {
         return switch (value) {

@@ -4,25 +4,25 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH265AspectRatioIdc.html">StdVideoH265AspectRatioIdc</a>
 public final class StdVideoH265AspectRatioIdc {
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_UNSPECIFIED = 0;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_SQUARE = 1;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_12_11 = 2;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_10_11 = 3;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_16_11 = 4;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_40_33 = 5;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_24_11 = 6;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_20_11 = 7;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_32_11 = 8;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_80_33 = 9;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_18_11 = 10;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_15_11 = 11;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_64_33 = 12;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_160_99 = 13;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_4_3 = 14;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_3_2 = 15;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_2_1 = 16;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_EXTENDED_SAR = 255;
-    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_INVALID = 2147483647;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_UNSPECIFIED = 0x0;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_SQUARE = 0x1;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_12_11 = 0x2;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_10_11 = 0x3;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_16_11 = 0x4;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_40_33 = 0x5;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_24_11 = 0x6;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_20_11 = 0x7;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_32_11 = 0x8;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_80_33 = 0x9;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_18_11 = 0xa;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_15_11 = 0xb;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_64_33 = 0xc;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_160_99 = 0xd;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_4_3 = 0xe;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_3_2 = 0xf;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_2_1 = 0x10;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_EXTENDED_SAR = 0xff;
+    public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_INVALID = 0x7fffffff;
 
     public static String explain(@enumtype(StdVideoH265AspectRatioIdc.class) int value) {
         return switch (value) {

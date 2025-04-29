@@ -4,8 +4,8 @@ import cc.design7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRayTracingLssPrimitiveEndCapsModeNV.html">VkRayTracingLssPrimitiveEndCapsModeNV</a>
 public final class VkRayTracingLssPrimitiveEndCapsModeNV {
-    public static final int NONE = 0;
-    public static final int CHAINED = 1;
+    public static final int NONE = 0x0;
+    public static final int CHAINED = 0x1;
 
     public static String explain(@enumtype(VkRayTracingLssPrimitiveEndCapsModeNV.class) int value) {
         return switch (value) {
