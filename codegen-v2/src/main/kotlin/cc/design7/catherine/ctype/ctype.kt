@@ -419,8 +419,7 @@ fun <E: IMergeable<E>> lowerType(registry: Registry<E>, type: Type): CType {
             CArrayType(elementType, type.length.value)
         }
         is PointerType -> {
-            // TODO opaqueTypedef != opaqueHandleTypedef, one extra field is required in Registry for this
-            if (type.pointee is IdentifierType && registry.opaqueHandleTypedefs.contains(type.pointee.ident)) {
+            if (type.pointee is IdentifierType && registry.opaqueTypedefs.contains(type.pointee.ident)) {
                 return CHandleType(type.pointee.ident.value)
             }
 

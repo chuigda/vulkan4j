@@ -19,6 +19,7 @@ data class Registry<E: IMergeable<E>>(
     val enumerations: MutableMap<Identifier, Enumeration>,
     val functionTypedefs: MutableMap<Identifier, FunctionTypedef>,
     val opaqueHandleTypedefs: MutableMap<Identifier, OpaqueHandleTypedef>,
+    val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef>,
     val structures: MutableMap<Identifier, Structure>,
     val unions: MutableMap<Identifier, Structure>,
 
@@ -32,6 +33,7 @@ data class Registry<E: IMergeable<E>>(
         enumerations = (this.enumerations + other.enumerations).toMutableMap(),
         functionTypedefs = (this.functionTypedefs + other.functionTypedefs).toMutableMap(),
         opaqueHandleTypedefs = (this.opaqueHandleTypedefs + other.opaqueHandleTypedefs).toMutableMap(),
+        opaqueTypedefs = (this.opaqueTypedefs + other.opaqueTypedefs).toMutableMap(),
         structures = (this.structures + other.structures).toMutableMap(),
         unions = (this.unions + other.unions).toMutableMap(),
         ext = this.ext.merge(other.ext)
@@ -193,7 +195,15 @@ class FunctionTypedef(
 ) : Entity(name) {
     constructor(name: String, params: List<Type>, result: Type?) : this(name.intern(), params, result)
 
-    override fun toStringImpl() = "FunctionTypedef(name=\"$name\", params=$params, result=$result)"
+    override fun toStringImpl() = "FunctionTypedef(name=\"$name\", params=$params, result=$result"
+}
+
+class OpaqueTypedef(
+    name: Identifier
+) : Entity(name) {
+    constructor(name: String) : this(name.intern())
+
+    override fun toStringImpl() = "OpaqueTypedef(name=\"$name\""
 }
 
 class OpaqueHandleTypedef(
@@ -201,7 +211,7 @@ class OpaqueHandleTypedef(
 ) : Entity(name) {
     constructor(name: String) : this(name.intern())
 
-    override fun toStringImpl() = "OpaqueHandleTypedef(name=\"$name\")"
+    override fun toStringImpl() = "OpaqueHandleTypedef(name=\"$name\""
 }
 
 class Structure(
@@ -210,7 +220,7 @@ class Structure(
 ) : Entity(name) {
     constructor(name: String, members: List<Member>) : this(name.intern(), members)
 
-    override fun toStringImpl() = "Structure(name=\"$name\", members=$members)"
+    override fun toStringImpl() = "Structure(name=\"$name\", members=$members"
 }
 
 class Member(
@@ -246,7 +256,7 @@ class Typedef(
     name: String,
     val type: IdentifierType
 ) : Entity(name) {
-    override fun toStringImpl() = "Typedef(name=\"$name\", type=$type)"
+    override fun toStringImpl() = "Typedef(name=\"$name\", type=$type"
 }
 
 fun <E: Entity> MutableMap<Identifier, E>.putEntityIfAbsent(e: E) = putIfAbsent(e.name, e)

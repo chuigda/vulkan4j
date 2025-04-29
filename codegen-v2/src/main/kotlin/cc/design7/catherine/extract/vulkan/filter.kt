@@ -47,6 +47,7 @@ internal fun Registry<VulkanRegistryExt>.filterEntities(): Registry<VulkanRegist
         enumerations = enumerations.filterSupportedEntities(),
         functionTypedefs = functionTypedefs.filterSupportedEntities(),
         opaqueHandleTypedefs = opaqueHandleTypedefs.filterSupportedEntities(),
+        opaqueTypedefs = mutableMapOf(),
         structures = structures.filterSupportedEntities(),
         unions = unions.filterSupportedEntities(),
         ext = VulkanRegistryExt(

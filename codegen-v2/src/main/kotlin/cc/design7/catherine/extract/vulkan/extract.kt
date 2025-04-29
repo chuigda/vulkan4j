@@ -119,6 +119,7 @@ private fun Element.extractEntities(): Registry<VulkanRegistryExt> {
         enumerations = enumerations,
         functionTypedefs = functionTypedefs,
         opaqueHandleTypedefs = opaqueHandleTypedefs,
+        opaqueTypedefs = mutableMapOf(),
         structures = structures,
         unions = unions,
         ext = VulkanRegistryExt(
