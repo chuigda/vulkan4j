@@ -1,6 +1,6 @@
-package cc.design7.codegen.registry
+package cc.design7.catherine.registry
 
-import cc.design7.codegen.util.Either
+import cc.design7.catherine.util.Either
 import java.math.BigInteger
 
 interface IMergeable<Self: IMergeable<Self>> {
@@ -51,6 +51,10 @@ abstract class Entity(name: Identifier) {
     constructor(name: String, extra: Any?) : this(name) {
         this._ext = extra
     }
+
+    fun rename(newName: String) = this.name.rename(newName)
+
+    fun rename(renamer: String.() -> String) = this.rename(renamer(this.name.original))
 
     fun <T> setExt(extra: T) {
         this._ext = extra

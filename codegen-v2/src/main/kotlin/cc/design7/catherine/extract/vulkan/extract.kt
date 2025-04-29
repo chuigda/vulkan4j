@@ -1,7 +1,7 @@
-package cc.design7.codegen.extract.vulkan
+package cc.design7.catherine.extract.vulkan
 
-import cc.design7.codegen.registry.*
-import cc.design7.codegen.util.*
+import cc.design7.catherine.registry.*
+import cc.design7.catherine.util.*
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 import java.io.File
@@ -330,7 +330,7 @@ private fun extractRequireValue(e: Element): RequireValue? {
     return RequireValue(
         name = e.getAttributeText("name")!!,
         api = e.getAttributeText("api"),
-        extends = e.getAttributeText("extends")?.intern(),
+        extends = e.getAttributeText("extends")?.sanitizeFlagBits()?.intern(),
         value = e.getAttributeText("value"),
         bitpos = e.getAttributeText("bitpos")?.parseDecOrHex(),
         extNumber = e.getAttributeText("extnumber")?.parseDecOrHex(),

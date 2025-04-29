@@ -1,4 +1,4 @@
-package cc.design7.codegen.util
+package cc.design7.catherine.util
 
 import java.util.logging.Level
 import java.util.logging.LogManager

@@ -1,4 +1,4 @@
-package cc.design7.codegen.util
+package cc.design7.catherine.util
 
 sealed class Doc
 

@@ -1,6 +1,6 @@
-package cc.design7.codegen.extract.vulkan
+package cc.design7.catherine.extract.vulkan
 
-import cc.design7.codegen.registry.*
+import cc.design7.catherine.registry.*
 import java.io.File
 
 private const val unsupportedEntitiesFile = "codegen-v2/output/vulkan-unsupported-entities.txt"

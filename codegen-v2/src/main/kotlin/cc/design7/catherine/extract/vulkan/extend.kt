@@ -1,7 +1,7 @@
-package cc.design7.codegen.extract.vulkan
+package cc.design7.catherine.extract.vulkan
 
-import cc.design7.codegen.registry.*
-import cc.design7.codegen.util.Either
+import cc.design7.catherine.registry.*
+import cc.design7.catherine.util.Either
 import java.io.File
 import java.math.BigInteger
 
@@ -87,7 +87,7 @@ private fun extendExtensionNameConstants(
     }
 
     val originalName = requireValue.name.original
-    val value = requireValue.value!!
+    val value = requireValue.value
 
     if (originalName.endsWith("_EXTENSION_NAME") && addedEntities.add(requireValue)) {
         constants.putEntityIfAbsent(Constant(

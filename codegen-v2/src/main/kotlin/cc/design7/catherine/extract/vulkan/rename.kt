@@ -1,0 +1,148 @@
+package cc.design7.catherine.extract.vulkan
+
+import cc.design7.catherine.registry.Entity
+import cc.design7.catherine.registry.Registry
+import java.io.File
+
+private val renamedEntitiesFile = "codegen-v2/output/vulkan-renamed-entities.csv"
+
+internal fun Registry<VulkanRegistryExt>.renameEntities() {
+    println(ext.commandAliases)
+
+    val renamed = mutableMapOf<String, String>()
+
+    fun putEntityIfNameReplaced(entity: Entity) {
+        if (entity.name.original != entity.name.value) {
+            renamed.putIfAbsent(entity.name.original, entity.name.value)
+        }
+    }
+
+    aliases.forEach { it.value.rename(::renameType); putEntityIfNameReplaced(it.value) }
+    commands.forEach { it.value.rename(::renameCommand); putEntityIfNameReplaced(it.value) }
+    constants.forEach { it.value.rename(::renameConstant); putEntityIfNameReplaced(it.value) }
+    opaqueHandleTypedefs.forEach { it.value.rename(::renameType); putEntityIfNameReplaced(it.value) }
+    structures.forEach { it.value.rename(::renameType); putEntityIfNameReplaced(it.value) }
+    unions.forEach { it.value.rename(::renameType); putEntityIfNameReplaced(it.value) }
+
+    for (enum in enumerations) {
+        enum.value.rename(::renameType)
+        putEntityIfNameReplaced(enum.value)
+        for (value in enum.value.variants) {
+            value.rename { renameVariantOrBitflag(this, enum.key.original) }
+            putEntityIfNameReplaced(value)
+        }
+    }
+
+    for (bitmask in bitmasks) {
+        bitmask.value.rename(::renameType)
+        putEntityIfNameReplaced(bitmask.value)
+        for (bitflag in bitmask.value.bitflags) {
+            bitflag.rename { renameVariantOrBitflag(this, bitmask.key.original, true) }
+            putEntityIfNameReplaced(bitflag)
+        }
+    }
+
+    log.info(" - 重命名完成，重命名了 ${renamed.size} 个项目，完整列表可参见 $renamedEntitiesFile")
+    File(renamedEntitiesFile).writeText(buildString {
+        appendLine("original,new")
+        for ((original, renamed) in renamed) {
+            appendLine("$original,$renamed")
+        }
+    })
+}
+
+private fun renameCommand(name: String) = name.removePrefix("vk").ensureLowerCamelCase()
+
+private fun renameType(name: String) = if (name.startsWith("Vk")) {
+    name.removePrefix("Vk")
+} else if (name.startsWith("StdVideo")) {
+    name.removePrefix("StdVideo")
+} else {
+    name
+}
+
+private fun renameConstant(name: String) = if (name.startsWith("VK_")) {
+    name.removePrefix("VK_")
+} else if (name.startsWith("STD_VIDEO_")) {
+    name.removePrefix("STD_VIDEO_")
+} else {
+    name
+}
+
+// Copied from https://github.com/KyleMayes/vulkanalia/blob/master/generator/src/main/kotlin/com/kylemayes/generator/registry/Rename.kt
+private fun renameVariantOrBitflag(
+    name: String,
+    parent: String,
+    bitflag: Boolean = false,
+): String {
+    // Find the extension author suffix in the parent name, if any.
+    // E.g., `EXT` in `DebugReportObjectTypeEXT`.
+    val extension =
+        parent
+            .reversed()
+            .takeWhile { it.isUpperCase() }
+            .reversed()
+
+    // Determine the prefix to strip from the value name (parent name).
+    // E.g., `DEBUG_REPORT_OBJECT_TYPE_` for `DebugReportObjectTypeEXT` (variant).
+    // E.g., `DEBUG_REPORT_` for `DebugReportFlagsEXT` (bitflag).
+    var prefix =
+        parent
+            .substring(0, parent.length - extension.length)
+            .toSnakeCase()
+            .uppercase()
+    if (bitflag) prefix = prefix.replace(Regex("FLAGS(\\d*)"), "$1")
+    if (!prefix.endsWith('_')) prefix = "${prefix}_"
+
+    // Determine the suffix to strip from the value name (parent extension author).
+    // E.g., `_EXT` for `DebugReportObjectTypeEXT`
+    val suffix = "_$extension".trimEnd('_')
+
+    val renamed =
+        name
+            .removePrefix("VK_")
+            .removePrefix(prefix)
+            .removeSuffix(suffix)
+            // Some value names start with digits after the prefixes have been
+            // stripped which would make them invalid identifiers.
+            .replace(Regex("^([0-9])"), "_$1")
+            // Some value names include lowercase characters that need to be
+            // capitalized (e.g., `VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT`).
+            .uppercase()
+
+    // Remove `BIT` component from bitflag name even when followed by extension author.
+    return if (bitflag) {
+        renamed.replace(Regex("_BIT(_[A-Z]+)?$"), "$1")
+    } else {
+        renamed
+    }
+}
+
+
+private fun String.ensureLowerCamelCase(): String {
+    val firstChar = this[0]
+    if (this.length >= 2) {
+        val secondChar = this[1]
+        if (firstChar.isUpperCase() && secondChar.isUpperCase()) {
+            return this
+        }
+    }
+
+    return firstChar.lowercaseChar() + this.substring(1)
+}
+
+private fun String.toSnakeCase(): String {
+    val result = StringBuilder()
+    for (i in indices) {
+        val c = this[i]
+        if (c.isUpperCase()) {
+            if (i > 0 && this[i - 1].isLowerCase()) {
+                result.append('_')
+            }
+            result.append(c.lowercaseChar())
+        } else {
+            result.append(c)
+        }
+    }
+    return result.toString()
+}

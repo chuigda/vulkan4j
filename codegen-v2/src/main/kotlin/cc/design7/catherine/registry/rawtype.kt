@@ -1,4 +1,4 @@
-package cc.design7.codegen.registry
+package cc.design7.catherine.registry
 
 sealed interface Type
 

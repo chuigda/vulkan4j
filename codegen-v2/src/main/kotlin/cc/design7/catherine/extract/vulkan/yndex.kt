@@ -1,7 +1,7 @@
-package cc.design7.codegen.extract.vulkan
+package cc.design7.catherine.extract.vulkan
 
-import cc.design7.codegen.registry.Registry
-import cc.design7.codegen.util.setupLog
+import cc.design7.catherine.registry.Registry
+import cc.design7.catherine.util.setupLog
 import java.util.logging.Logger
 
 internal val log = Logger.getLogger("c.d.c.e.vulkan")
@@ -15,6 +15,9 @@ fun extractVulkanRegistry(): Registry<VulkanRegistryExt> {
 
     log.info("扩展实体")
     filteredRegistry.extendEntities()
+
+    log.info("执行重命名")
+    filteredRegistry.renameEntities()
 
     log.info("完成")
     return filteredRegistry

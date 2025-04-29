@@ -1,4 +1,4 @@
-package cc.design7.codegen.util
+package cc.design7.catherine.util
 
 import org.intellij.lang.annotations.Language
 import org.w3c.dom.Element

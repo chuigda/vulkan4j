@@ -1,4 +1,4 @@
-package cc.design7.codegen.registry
+package cc.design7.catherine.registry
 
 // 这部分代码来自于 https://github.com/KyleMayes/vulkanalia/blob/176963f3e5e0108ba963224704f147d2799a615d/generator/src/main/kotlin/com/kylemayes/generator/registry/Extract.kt#L744
 // 主要是 Kyle Mayes 的工作
@@ -11,6 +11,10 @@ class Identifier internal constructor(val original: String) : Comparable<Identif
     val renamed get() = _renamed
 
     fun rename(value: String) {
+        if (_renamed && value != _value) {
+            throw IllegalStateException("Identifier $original has already been renamed to $_value, colliding with fresh $value")
+        }
+
         _value = value
         _renamed = true
     }
