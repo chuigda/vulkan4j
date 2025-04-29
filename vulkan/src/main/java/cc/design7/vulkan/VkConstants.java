@@ -61,7 +61,7 @@ public final class VkConstants {
     public static final long UUID_SIZE = 16;
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_WHOLE_SIZE.html">VK_WHOLE_SIZE</a>
     public static final long WHOLE_SIZE = (~0L);
-
+    
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_AMDX_shader_enqueue.html">VK_AMDX_shader_enqueue</a>
     public static final String AMDX_SHADER_ENQUEUE_EXTENSION_NAME = "VK_AMDX_shader_enqueue";
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_AMD_anti_lag.html">VK_AMD_anti_lag</a>
@@ -886,7 +886,7 @@ public final class VkConstants {
     public static final String VALVE_DESCRIPTOR_SET_HOST_MAPPING_EXTENSION_NAME = "VK_VALVE_descriptor_set_host_mapping";
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_VALVE_mutable_descriptor_type.html">VK_VALVE_mutable_descriptor_type</a>
     public static final String VALVE_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_VALVE_mutable_descriptor_type";
-
+    
     /// Constructing this class is nonsense so the constructor is made private.
     private VkConstants() {}
 }

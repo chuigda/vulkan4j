@@ -1,0 +1,34 @@
+package cc.design7.vulkan.bitmask;
+
+import cc.design7.ffm.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentGravityFlagsEXT.html">VkPresentGravityFlagsEXT</a>
+public final class PresentGravityFlagsEXT {
+    public static final int CENTERED = 0x4;
+    public static final int MAX = 0x2;
+    public static final int MIN = 0x1;
+    
+    public static String explain(@enumtype(PresentGravityFlagsEXT.class) int flags) {
+        List<String> detectedFlagBits = new ArrayList<>();
+        if ((flags & CENTERED) != 0) {
+            detectedFlagBits.add("VK_PRESENT_GRAVITY_CENTERED_BIT_EXT");
+        }
+        if ((flags & MAX) != 0) {
+            detectedFlagBits.add("VK_PRESENT_GRAVITY_MAX_BIT_EXT");
+        }
+        if ((flags & MIN) != 0) {
+            detectedFlagBits.add("VK_PRESENT_GRAVITY_MIN_BIT_EXT");
+        }
+        
+        if (detectedFlagBits.isEmpty()) {
+            return "NONE";
+        }
+        return String.join(" | ", detectedFlagBits);
+    }
+    
+    /// Constructing this class is nonsense so the constructor is made private.
+    private PresentGravityFlagsEXT() {}
+}

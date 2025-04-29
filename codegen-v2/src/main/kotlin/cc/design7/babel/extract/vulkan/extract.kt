@@ -133,7 +133,7 @@ private fun Element.extractEntities(): Registry<VulkanRegistryExt> {
 private fun extractBitmask(e: Element) =
     Bitmask(
         name = e.getAttributeText("name")!!.sanitizeFlagBits(),
-        bitwidth = null,
+        bitwidth = e.getAttributeText("bitwidth")?.toInt(),
         bitflags = e.getElementList("enum")
             .filter { it -> !it.hasAttribute("alias") }
             .map(::extractBitflag)
@@ -144,7 +144,7 @@ private fun extractBitmask(e: Element) =
 private fun extractBitmaskType(e: Element) =
     Bitmask(
         name = e.getFirstElement("name")!!.textContent.sanitizeFlagBits(),
-        bitwidth = null,
+        bitwidth = if (e.getFirstElement("type")!!.textContent == "VkFlags64") 64 else 32,
         bitflags = mutableListOf()
     ).apply { setExt(VkCommonMetadata(e.getAttributeText("api"))) }
 

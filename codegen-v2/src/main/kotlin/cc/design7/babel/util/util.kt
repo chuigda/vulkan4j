@@ -12,11 +12,13 @@ class DocList(val segments: MutableList<Doc>) : Doc() {
     fun indent(init: DocList.() -> Unit) {
         val doc = DocList(mutableListOf())
         doc.init()
-        segments.add(doc)
+        segments.add(DocIndent(doc))
     }
 }
 
 class DocText(val text: String) : Doc()
+
+class DocIndent(val inner: Doc): Doc()
 
 private class EmptyLine : Doc()
 
@@ -28,7 +30,7 @@ fun buildDoc(init: DocList.() -> Unit): Doc {
 
 fun render(doc: Doc): String {
     val sb = StringBuilder()
-    renderImpl(sb, doc, -1)
+    renderImpl(sb, doc, 0)
     return sb.toString()
 }
 
@@ -36,7 +38,7 @@ fun renderImpl(sb: StringBuilder, doc: Doc, indent: Int) {
     when(doc) {
         is DocList -> {
             for (segment in doc.segments) {
-                renderImpl(sb, segment, indent + 1)
+                renderImpl(sb, segment, indent)
             }
         }
         is DocText -> {
@@ -45,6 +47,9 @@ fun renderImpl(sb: StringBuilder, doc: Doc, indent: Int) {
             }
             sb.append(doc.text.trim())
             sb.append("\n")
+        }
+        is DocIndent -> {
+            renderImpl(sb, doc.inner, indent + 1)
         }
         is EmptyLine -> sb.append("\n")
     }

@@ -50,8 +50,7 @@ fun generateConstants(registry: RegistryBase, codegenOptions: CodegenOptions) = 
             +""
         }
 
-        +"/// Constructing this class is nonsense so the constructor is made private."
-        +"private ${codegenOptions.constantClassName}() {}"
+        +prohibitUserConstruct(codegenOptions.constantClassName)
     }
     +"}"
 }

@@ -73,8 +73,8 @@ data class CArrayType(val element: CType, val length: String) : CType {
 
 sealed interface CNonRefType : CType {
     val jTypeNoSign: String
-    val jBufferType: String
-    val jBufferTypeNoAnnotation: String
+    val jPtrType: String
+    val jPtrTypeNoAnnotation: String
 }
 
 data class CFixedIntType(val cName: String, val byteSize: Int, val unsigned: Boolean) : CNonRefType {
@@ -101,12 +101,12 @@ data class CFixedIntType(val cName: String, val byteSize: Int, val unsigned: Boo
         8 -> "long"
         else -> throw NotImplementedError("unsupported byte size: $byteSize")
     }
-    override val jBufferType: String get() = """${if (unsigned) "@unsigned " else ""}$jBufferTypeNoAnnotation"""
-    override val jBufferTypeNoAnnotation: String get() = when (byteSize) {
-        1 -> "ByteBuffer"
-        2 -> "ShortBuffer"
-        4 -> "IntBuffer"
-        8 -> "LongBuffer"
+    override val jPtrType: String get() = """${if (unsigned) "@unsigned " else ""}$jPtrTypeNoAnnotation"""
+    override val jPtrTypeNoAnnotation: String get() = when (byteSize) {
+        1 -> "BytePtr"
+        2 -> "ShortPtr"
+        4 -> "IntPtr"
+        8 -> "LongPtr"
         else -> throw NotImplementedError("unsupported byte size: $byteSize")
     }
 }
@@ -116,8 +116,8 @@ data class CPlatformDependentIntType(
     override val jType: String,
     override val jLayout: String,
     override val jTypeNoSign: String,
-    override val jBufferType: String,
-    override val jBufferTypeNoAnnotation: String
+    override val jPtrType: String,
+    override val jPtrTypeNoAnnotation: String
 ) : CNonRefType {
     override val jLayoutType: String get() = throw NotImplementedError("should not call `jLayoutType` on `CPlatformDependentIntType`")
 }
@@ -144,12 +144,12 @@ data class CFloatType(val byteSize: Int) : CNonRefType {
         else -> throw NotImplementedError("unsupported byte size: $byteSize")
     }
     override val jTypeNoSign: String get() = jType
-    override val jBufferType: String get() = when (byteSize) {
-        4 -> "FloatBuffer"
-        8 -> "DoubleBuffer"
+    override val jPtrType: String get() = when (byteSize) {
+        4 -> "FloatPtr"
+        8 -> "DoublePtr"
         else -> throw NotImplementedError("unsupported byte size: $byteSize")
     }
-    override val jBufferTypeNoAnnotation: String get() = jBufferType
+    override val jPtrTypeNoAnnotation: String get() = jPtrType
 }
 
 data class CStructType(val name: String): CType {
@@ -192,15 +192,15 @@ data class CEnumType(val name: String, val bitwidth: Int? = null): CNonRefType {
         else -> throw NotImplementedError("unsupported bitwidth: $bitwidth")
     }
 
-    override val jBufferType: String = when (bitwidth) {
-        null, 32 -> "@enumtype($name.class) IntBuffer"
-        64 -> "@enumtype($name.class) LongBuffer"
+    override val jPtrType: String = when (bitwidth) {
+        null, 32 -> "@enumtype($name.class) IntPtr"
+        64 -> "@enumtype($name.class) LongPtr"
         else -> throw NotImplementedError("unsupported bitwidth: $bitwidth")
     }
 
-    override val jBufferTypeNoAnnotation: String = when (bitwidth) {
-        null, 32 -> "IntBuffer"
-        64 -> "LongBuffer"
+    override val jPtrTypeNoAnnotation: String = when (bitwidth) {
+        null, 32 -> "IntPtr"
+        64 -> "LongPtr"
         else -> throw NotImplementedError("unsupported bitwidth: $bitwidth")
     }
 }
@@ -223,16 +223,16 @@ private val cLongType = CPlatformDependentIntType(
     "long",
     "NativeLayout.C_LONG",
     "long",
-    "CLongBuffer",
-    "CLongBuffer"
+    "CLongPtr",
+    "CLongPtr"
 )
 private val cSizeType = CPlatformDependentIntType(
     "size_t",
     "long",
     "NativeLayout.C_SIZE_T",
     "long",
-    "PointerBuffer",
-    "PointerBuffer"
+    "PointerPtr",
+    "PointerPtr"
 )
 
 private val pvoidType = CPointerType(voidType, false, null)

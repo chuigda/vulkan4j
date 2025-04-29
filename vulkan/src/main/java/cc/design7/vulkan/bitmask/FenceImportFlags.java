@@ -1,0 +1,26 @@
+package cc.design7.vulkan.bitmask;
+
+import cc.design7.ffm.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFenceImportFlags.html">VkFenceImportFlags</a>
+public final class FenceImportFlags {
+    public static final int TEMPORARY = 0x1;
+    
+    public static String explain(@enumtype(FenceImportFlags.class) int flags) {
+        List<String> detectedFlagBits = new ArrayList<>();
+        if ((flags & TEMPORARY) != 0) {
+            detectedFlagBits.add("VK_FENCE_IMPORT_TEMPORARY_BIT");
+        }
+        
+        if (detectedFlagBits.isEmpty()) {
+            return "NONE";
+        }
+        return String.join(" | ", detectedFlagBits);
+    }
+    
+    /// Constructing this class is nonsense so the constructor is made private.
+    private FenceImportFlags() {}
+}
