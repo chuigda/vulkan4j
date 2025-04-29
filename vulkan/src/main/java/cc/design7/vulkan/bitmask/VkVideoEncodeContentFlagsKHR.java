@@ -1,0 +1,38 @@
+package cc.design7.vulkan.bitmask;
+
+import cc.design7.ffm.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeContentFlagsKHR.html">VkVideoEncodeContentFlagsKHR</a>
+public final class VkVideoEncodeContentFlagsKHR {
+    public static final int VIDEO_ENCODE_CONTENT_CAMERA = 0x1;
+    public static final int VIDEO_ENCODE_CONTENT_DEFAULT = 0x0;
+    public static final int VIDEO_ENCODE_CONTENT_DESKTOP = 0x2;
+    public static final int VIDEO_ENCODE_CONTENT_RENDERED = 0x4;
+
+    public static String explain(@enumtype(VkVideoEncodeContentFlagsKHR.class) int flags) {
+        List<String> detectedFlagBits = new ArrayList<>();
+        if ((flags & VIDEO_ENCODE_CONTENT_CAMERA) != 0) {
+            detectedFlagBits.add("VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR");
+        }
+        if ((flags & VIDEO_ENCODE_CONTENT_DEFAULT) != 0) {
+            detectedFlagBits.add("VK_VIDEO_ENCODE_CONTENT_DEFAULT_KHR");
+        }
+        if ((flags & VIDEO_ENCODE_CONTENT_DESKTOP) != 0) {
+            detectedFlagBits.add("VK_VIDEO_ENCODE_CONTENT_DESKTOP_BIT_KHR");
+        }
+        if ((flags & VIDEO_ENCODE_CONTENT_RENDERED) != 0) {
+            detectedFlagBits.add("VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR");
+        }
+
+        if (detectedFlagBits.isEmpty()) {
+            return "NONE";
+        }
+        return String.join(" | ", detectedFlagBits);
+    }
+
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkVideoEncodeContentFlagsKHR() {}
+}

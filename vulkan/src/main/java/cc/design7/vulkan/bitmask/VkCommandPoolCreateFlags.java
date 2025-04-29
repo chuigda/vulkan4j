@@ -1,0 +1,34 @@
+package cc.design7.vulkan.bitmask;
+
+import cc.design7.ffm.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandPoolCreateFlags.html">VkCommandPoolCreateFlags</a>
+public final class VkCommandPoolCreateFlags {
+    public static final int COMMAND_POOL_CREATE_PROTECTED = 0x4;
+    public static final int COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER = 0x2;
+    public static final int COMMAND_POOL_CREATE_TRANSIENT = 0x1;
+
+    public static String explain(@enumtype(VkCommandPoolCreateFlags.class) int flags) {
+        List<String> detectedFlagBits = new ArrayList<>();
+        if ((flags & COMMAND_POOL_CREATE_PROTECTED) != 0) {
+            detectedFlagBits.add("VK_COMMAND_POOL_CREATE_PROTECTED_BIT");
+        }
+        if ((flags & COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER) != 0) {
+            detectedFlagBits.add("VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT");
+        }
+        if ((flags & COMMAND_POOL_CREATE_TRANSIENT) != 0) {
+            detectedFlagBits.add("VK_COMMAND_POOL_CREATE_TRANSIENT_BIT");
+        }
+
+        if (detectedFlagBits.isEmpty()) {
+            return "NONE";
+        }
+        return String.join(" | ", detectedFlagBits);
+    }
+
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkCommandPoolCreateFlags() {}
+}

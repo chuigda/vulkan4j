@@ -1,0 +1,30 @@
+package cc.design7.vulkan.bitmask;
+
+import cc.design7.ffm.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsLayoutUsageFlagsEXT.html">VkIndirectCommandsLayoutUsageFlagsEXT</a>
+public final class VkIndirectCommandsLayoutUsageFlagsEXT {
+    public static final int INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS = 0x1;
+    public static final int INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES = 0x2;
+
+    public static String explain(@enumtype(VkIndirectCommandsLayoutUsageFlagsEXT.class) int flags) {
+        List<String> detectedFlagBits = new ArrayList<>();
+        if ((flags & INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS) != 0) {
+            detectedFlagBits.add("VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT");
+        }
+        if ((flags & INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES) != 0) {
+            detectedFlagBits.add("VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_EXT");
+        }
+
+        if (detectedFlagBits.isEmpty()) {
+            return "NONE";
+        }
+        return String.join(" | ", detectedFlagBits);
+    }
+
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkIndirectCommandsLayoutUsageFlagsEXT() {}
+}

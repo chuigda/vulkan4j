@@ -15,15 +15,10 @@ internal fun Registry<VulkanRegistryExt>.renameEntities() {
         }
     }
 
-    aliases.forEach { it.value.rename(::renameType); putEntityIfNameReplaced(it.value) }
     commands.forEach { it.value.rename(::renameCommand); putEntityIfNameReplaced(it.value) }
     constants.forEach { it.value.rename(::renameConstant); putEntityIfNameReplaced(it.value) }
-    opaqueHandleTypedefs.forEach { it.value.rename(::renameType); putEntityIfNameReplaced(it.value) }
-    structures.forEach { it.value.rename(::renameType); putEntityIfNameReplaced(it.value) }
-    unions.forEach { it.value.rename(::renameType); putEntityIfNameReplaced(it.value) }
 
     for (enum in enumerations.values) {
-        enum.rename(::renameType)
         putEntityIfNameReplaced(enum)
         for (value in enum.variants) {
             value.rename { renameVariantOrBitflag(this, enum.name.value) }
@@ -32,7 +27,6 @@ internal fun Registry<VulkanRegistryExt>.renameEntities() {
     }
 
     for (bitmask in bitmasks.values) {
-        bitmask.rename(::renameType)
         putEntityIfNameReplaced(bitmask)
         for (bitflag in bitmask.bitflags) {
             bitflag.rename { renameVariantOrBitflag(this, bitmask.name.value, true) }
@@ -50,14 +44,6 @@ internal fun Registry<VulkanRegistryExt>.renameEntities() {
 }
 
 private fun renameCommand(name: String) = name.removePrefix("vk").ensureLowerCamelCase()
-
-private fun renameType(name: String) = if (name.startsWith("Vk")) {
-    name.removePrefix("Vk")
-} else if (name.startsWith("StdVideo")) {
-    name.removePrefix("StdVideo")
-} else {
-    name
-}
 
 private fun renameConstant(name: String) = if (name.startsWith("VK_")) {
     name.removePrefix("VK_")

@@ -1,0 +1,194 @@
+package cc.design7.vulkan.bitmask;
+
+import cc.design7.ffm.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineStageFlags2.html">VkPipelineStageFlags2</a>
+public final class VkPipelineStageFlags2 {
+    public static final long PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_KHR = 0x2000000L;
+    public static final long PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_KHR = 0x10000000L;
+    public static final long PIPELINE_STAGE_2_ALL_COMMANDS = 0x10000L;
+    public static final long PIPELINE_STAGE_2_ALL_GRAPHICS = 0x8000L;
+    public static final long PIPELINE_STAGE_2_ALL_TRANSFER = 0x1000L;
+    public static final long PIPELINE_STAGE_2_BLIT = 0x400000000L;
+    public static final long PIPELINE_STAGE_2_BOTTOM_OF_PIPE = 0x2000L;
+    public static final long PIPELINE_STAGE_2_CLEAR = 0x800000000L;
+    public static final long PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_HUAWEI = 0x20000000000L;
+    public static final long PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT = 0x400L;
+    public static final long PIPELINE_STAGE_2_COMMAND_PREPROCESS_EXT = 0x20000L;
+    public static final long PIPELINE_STAGE_2_COMPUTE_SHADER = 0x800L;
+    public static final long PIPELINE_STAGE_2_CONDITIONAL_RENDERING_EXT = 0x40000L;
+    public static final long PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_NV = 0x100000000000L;
+    public static final long PIPELINE_STAGE_2_COPY = 0x100000000L;
+    public static final long PIPELINE_STAGE_2_DRAW_INDIRECT = 0x2L;
+    public static final long PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS = 0x100L;
+    public static final long PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_EXT = 0x800000L;
+    public static final long PIPELINE_STAGE_2_FRAGMENT_SHADER = 0x80L;
+    public static final long PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_KHR = 0x400000L;
+    public static final long PIPELINE_STAGE_2_GEOMETRY_SHADER = 0x40L;
+    public static final long PIPELINE_STAGE_2_HOST = 0x4000L;
+    public static final long PIPELINE_STAGE_2_INDEX_INPUT = 0x1000000000L;
+    public static final long PIPELINE_STAGE_2_INVOCATION_MASK_HUAWEI = 0x10000000000L;
+    public static final long PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS = 0x200L;
+    public static final long PIPELINE_STAGE_2_MESH_SHADER_EXT = 0x100000L;
+    public static final long PIPELINE_STAGE_2_MICROMAP_BUILD_EXT = 0x40000000L;
+    public static final long PIPELINE_STAGE_2_NONE = 0x0L;
+    public static final long PIPELINE_STAGE_2_OPTICAL_FLOW_NV = 0x20000000L;
+    public static final long PIPELINE_STAGE_2_PRE_RASTERIZATION_SHADERS = 0x4000000000L;
+    public static final long PIPELINE_STAGE_2_RAY_TRACING_SHADER_KHR = 0x200000L;
+    public static final long PIPELINE_STAGE_2_RESOLVE = 0x200000000L;
+    public static final long PIPELINE_STAGE_2_SUBPASS_SHADER_HUAWEI = 0x8000000000L;
+    public static final long PIPELINE_STAGE_2_TASK_SHADER_EXT = 0x80000L;
+    public static final long PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER = 0x10L;
+    public static final long PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER = 0x20L;
+    public static final long PIPELINE_STAGE_2_TOP_OF_PIPE = 0x1L;
+    public static final long PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_EXT = 0x1000000L;
+    public static final long PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT = 0x2000000000L;
+    public static final long PIPELINE_STAGE_2_VERTEX_INPUT = 0x4L;
+    public static final long PIPELINE_STAGE_2_VERTEX_SHADER = 0x8L;
+    public static final long PIPELINE_STAGE_2_VIDEO_DECODE_KHR = 0x4000000L;
+    public static final long PIPELINE_STAGE_2_VIDEO_ENCODE_KHR = 0x8000000L;
+
+    public static String explain(@enumtype(VkPipelineStageFlags2.class) long flags) {
+        List<String> detectedFlagBits = new ArrayList<>();
+        if ((flags & PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_KHR) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR");
+        }
+        if ((flags & PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_KHR) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR");
+        }
+        if ((flags & PIPELINE_STAGE_2_ALL_COMMANDS) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_ALL_GRAPHICS) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_ALL_TRANSFER) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_BLIT) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_BLIT_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_BOTTOM_OF_PIPE) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_BOTTOM_OF_PIPE_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_CLEAR) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_CLEAR_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_HUAWEI) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI");
+        }
+        if ((flags & PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_COMMAND_PREPROCESS_EXT) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT");
+        }
+        if ((flags & PIPELINE_STAGE_2_COMPUTE_SHADER) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_CONDITIONAL_RENDERING_EXT) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT");
+        }
+        if ((flags & PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_NV) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV");
+        }
+        if ((flags & PIPELINE_STAGE_2_COPY) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_COPY_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_DRAW_INDIRECT) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_EXT) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT");
+        }
+        if ((flags & PIPELINE_STAGE_2_FRAGMENT_SHADER) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_KHR) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR");
+        }
+        if ((flags & PIPELINE_STAGE_2_GEOMETRY_SHADER) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_HOST) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_HOST_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_INDEX_INPUT) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_INVOCATION_MASK_HUAWEI) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI");
+        }
+        if ((flags & PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_MESH_SHADER_EXT) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT");
+        }
+        if ((flags & PIPELINE_STAGE_2_MICROMAP_BUILD_EXT) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT");
+        }
+        if ((flags & PIPELINE_STAGE_2_NONE) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_NONE");
+        }
+        if ((flags & PIPELINE_STAGE_2_OPTICAL_FLOW_NV) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV");
+        }
+        if ((flags & PIPELINE_STAGE_2_PRE_RASTERIZATION_SHADERS) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_PRE_RASTERIZATION_SHADERS_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_RAY_TRACING_SHADER_KHR) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR");
+        }
+        if ((flags & PIPELINE_STAGE_2_RESOLVE) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_RESOLVE_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_SUBPASS_SHADER_HUAWEI) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI");
+        }
+        if ((flags & PIPELINE_STAGE_2_TASK_SHADER_EXT) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT");
+        }
+        if ((flags & PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_TOP_OF_PIPE) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_EXT) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT");
+        }
+        if ((flags & PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_VERTEX_INPUT) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_VERTEX_SHADER) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT");
+        }
+        if ((flags & PIPELINE_STAGE_2_VIDEO_DECODE_KHR) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR");
+        }
+        if ((flags & PIPELINE_STAGE_2_VIDEO_ENCODE_KHR) != 0) {
+            detectedFlagBits.add("VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR");
+        }
+
+        if (detectedFlagBits.isEmpty()) {
+            return "NONE";
+        }
+        return String.join(" | ", detectedFlagBits);
+    }
+
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkPipelineStageFlags2() {}
+}
