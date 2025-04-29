@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandPoolResetFlags.html">VkCommandPoolResetFlags</a>
 public final class VkCommandPoolResetFlags {
-    public static final int COMMAND_POOL_RESET_RELEASE_RESOURCES = 0x1;
+    public static final int RELEASE_RESOURCES = 0x1;
 
     public static String explain(@enumtype(VkCommandPoolResetFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & COMMAND_POOL_RESET_RELEASE_RESOURCES) != 0) {
+        if ((flags & RELEASE_RESOURCES) != 0) {
             detectedFlagBits.add("VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT");
         }
 

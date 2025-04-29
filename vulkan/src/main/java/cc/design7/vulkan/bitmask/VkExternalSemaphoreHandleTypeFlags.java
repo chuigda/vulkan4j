@@ -7,35 +7,35 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalSemaphoreHandleTypeFlags.html">VkExternalSemaphoreHandleTypeFlags</a>
 public final class VkExternalSemaphoreHandleTypeFlags {
-    public static final int EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE = 0x8;
-    public static final int EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD = 0x1;
-    public static final int EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32 = 0x2;
-    public static final int EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT = 0x4;
-    public static final int EXTERNAL_SEMAPHORE_HANDLE_TYPE_SCI_SYNC_OBJ_NV = 0x20;
-    public static final int EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD = 0x10;
-    public static final int EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_FUCHSIA = 0x80;
+    public static final int D3D12_FENCE = 0x8;
+    public static final int OPAQUE_FD = 0x1;
+    public static final int OPAQUE_WIN32 = 0x2;
+    public static final int OPAQUE_WIN32_KMT = 0x4;
+    public static final int SCI_SYNC_OBJ_NV = 0x20;
+    public static final int SYNC_FD = 0x10;
+    public static final int ZIRCON_EVENT_FUCHSIA = 0x80;
 
     public static String explain(@enumtype(VkExternalSemaphoreHandleTypeFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE) != 0) {
+        if ((flags & D3D12_FENCE) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT");
         }
-        if ((flags & EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD) != 0) {
+        if ((flags & OPAQUE_FD) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT");
         }
-        if ((flags & EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32) != 0) {
+        if ((flags & OPAQUE_WIN32) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT");
         }
-        if ((flags & EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT) != 0) {
+        if ((flags & OPAQUE_WIN32_KMT) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT");
         }
-        if ((flags & EXTERNAL_SEMAPHORE_HANDLE_TYPE_SCI_SYNC_OBJ_NV) != 0) {
+        if ((flags & SCI_SYNC_OBJ_NV) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SCI_SYNC_OBJ_BIT_NV");
         }
-        if ((flags & EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD) != 0) {
+        if ((flags & SYNC_FD) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT");
         }
-        if ((flags & EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_FUCHSIA) != 0) {
+        if ((flags & ZIRCON_EVENT_FUCHSIA) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_BIT_FUCHSIA");
         }
 

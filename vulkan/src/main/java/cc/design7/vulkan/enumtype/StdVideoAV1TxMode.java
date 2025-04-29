@@ -1,0 +1,23 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1TxMode.html">StdVideoAV1TxMode</a>
+public final class StdVideoAV1TxMode {
+    public static final int STD_VIDEO_AV1_TX_MODE_ONLY_4X4 = 0;
+    public static final int STD_VIDEO_AV1_TX_MODE_LARGEST = 1;
+    public static final int STD_VIDEO_AV1_TX_MODE_SELECT = 2;
+    public static final int STD_VIDEO_AV1_TX_MODE_INVALID = 2147483647;
+
+    public static String explain(@enumtype(StdVideoAV1TxMode.class) int value) {
+        return switch (value) {
+            case StdVideoAV1TxMode.STD_VIDEO_AV1_TX_MODE_INVALID -> "STD_VIDEO_AV1_TX_MODE_INVALID";
+            case StdVideoAV1TxMode.STD_VIDEO_AV1_TX_MODE_LARGEST -> "STD_VIDEO_AV1_TX_MODE_LARGEST";
+            case StdVideoAV1TxMode.STD_VIDEO_AV1_TX_MODE_ONLY_4X4 -> "STD_VIDEO_AV1_TX_MODE_ONLY_4X4";
+            case StdVideoAV1TxMode.STD_VIDEO_AV1_TX_MODE_SELECT -> "STD_VIDEO_AV1_TX_MODE_SELECT";
+            default -> "Unknown StdVideoAV1TxMode: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private StdVideoAV1TxMode() {}
+}

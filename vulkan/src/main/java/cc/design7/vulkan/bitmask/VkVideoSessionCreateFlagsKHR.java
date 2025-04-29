@@ -7,31 +7,31 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoSessionCreateFlagsKHR.html">VkVideoSessionCreateFlagsKHR</a>
 public final class VkVideoSessionCreateFlagsKHR {
-    public static final int VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP = 0x10;
-    public static final int VIDEO_SESSION_CREATE_ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS = 0x2;
-    public static final int VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP = 0x8;
-    public static final int VIDEO_SESSION_CREATE_INLINE_QUERIES = 0x4;
-    public static final int VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS = 0x20;
-    public static final int VIDEO_SESSION_CREATE_PROTECTED_CONTENT = 0x1;
+    public static final int ALLOW_ENCODE_EMPHASIS_MAP = 0x10;
+    public static final int ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS = 0x2;
+    public static final int ALLOW_ENCODE_QUANTIZATION_DELTA_MAP = 0x8;
+    public static final int INLINE_QUERIES = 0x4;
+    public static final int INLINE_SESSION_PARAMETERS = 0x20;
+    public static final int PROTECTED_CONTENT = 0x1;
 
     public static String explain(@enumtype(VkVideoSessionCreateFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP) != 0) {
+        if ((flags & ALLOW_ENCODE_EMPHASIS_MAP) != 0) {
             detectedFlagBits.add("VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR");
         }
-        if ((flags & VIDEO_SESSION_CREATE_ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS) != 0) {
+        if ((flags & ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS) != 0) {
             detectedFlagBits.add("VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS_BIT_KHR");
         }
-        if ((flags & VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP) != 0) {
+        if ((flags & ALLOW_ENCODE_QUANTIZATION_DELTA_MAP) != 0) {
             detectedFlagBits.add("VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR");
         }
-        if ((flags & VIDEO_SESSION_CREATE_INLINE_QUERIES) != 0) {
+        if ((flags & INLINE_QUERIES) != 0) {
             detectedFlagBits.add("VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR");
         }
-        if ((flags & VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS) != 0) {
+        if ((flags & INLINE_SESSION_PARAMETERS) != 0) {
             detectedFlagBits.add("VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR");
         }
-        if ((flags & VIDEO_SESSION_CREATE_PROTECTED_CONTENT) != 0) {
+        if ((flags & PROTECTED_CONTENT) != 0) {
             detectedFlagBits.add("VK_VIDEO_SESSION_CREATE_PROTECTED_CONTENT_BIT_KHR");
         }
 

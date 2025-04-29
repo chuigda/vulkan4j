@@ -1,0 +1,17 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationCacheHeaderVersionEXT.html">VkValidationCacheHeaderVersionEXT</a>
+public final class VkValidationCacheHeaderVersionEXT {
+    public static final int ONE = 1;
+
+    public static String explain(@enumtype(VkValidationCacheHeaderVersionEXT.class) int value) {
+        return switch (value) {
+            case VkValidationCacheHeaderVersionEXT.ONE -> "VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT";
+            default -> "Unknown VkValidationCacheHeaderVersionEXT: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkValidationCacheHeaderVersionEXT() {}
+}

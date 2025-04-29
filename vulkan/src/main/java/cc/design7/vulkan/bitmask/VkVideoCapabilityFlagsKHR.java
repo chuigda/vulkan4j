@@ -7,15 +7,15 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoCapabilityFlagsKHR.html">VkVideoCapabilityFlagsKHR</a>
 public final class VkVideoCapabilityFlagsKHR {
-    public static final int VIDEO_CAPABILITY_PROTECTED_CONTENT = 0x1;
-    public static final int VIDEO_CAPABILITY_SEPARATE_REFERENCE_IMAGES = 0x2;
+    public static final int PROTECTED_CONTENT = 0x1;
+    public static final int SEPARATE_REFERENCE_IMAGES = 0x2;
 
     public static String explain(@enumtype(VkVideoCapabilityFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & VIDEO_CAPABILITY_PROTECTED_CONTENT) != 0) {
+        if ((flags & PROTECTED_CONTENT) != 0) {
             detectedFlagBits.add("VK_VIDEO_CAPABILITY_PROTECTED_CONTENT_BIT_KHR");
         }
-        if ((flags & VIDEO_CAPABILITY_SEPARATE_REFERENCE_IMAGES) != 0) {
+        if ((flags & SEPARATE_REFERENCE_IMAGES) != 0) {
             detectedFlagBits.add("VK_VIDEO_CAPABILITY_SEPARATE_REFERENCE_IMAGES_BIT_KHR");
         }
 

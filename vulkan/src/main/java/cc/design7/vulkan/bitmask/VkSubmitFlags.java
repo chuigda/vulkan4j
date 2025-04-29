@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubmitFlags.html">VkSubmitFlags</a>
 public final class VkSubmitFlags {
-    public static final int SUBMIT_PROTECTED = 0x1;
+    public static final int PROTECTED = 0x1;
 
     public static String explain(@enumtype(VkSubmitFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & SUBMIT_PROTECTED) != 0) {
+        if ((flags & PROTECTED) != 0) {
             detectedFlagBits.add("VK_SUBMIT_PROTECTED_BIT");
         }
 

@@ -7,23 +7,23 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGraphicsPipelineLibraryFlagsEXT.html">VkGraphicsPipelineLibraryFlagsEXT</a>
 public final class VkGraphicsPipelineLibraryFlagsEXT {
-    public static final int GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE = 0x8;
-    public static final int GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER = 0x4;
-    public static final int GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS = 0x2;
-    public static final int GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE = 0x1;
+    public static final int FRAGMENT_OUTPUT_INTERFACE = 0x8;
+    public static final int FRAGMENT_SHADER = 0x4;
+    public static final int PRE_RASTERIZATION_SHADERS = 0x2;
+    public static final int VERTEX_INPUT_INTERFACE = 0x1;
 
     public static String explain(@enumtype(VkGraphicsPipelineLibraryFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE) != 0) {
+        if ((flags & FRAGMENT_OUTPUT_INTERFACE) != 0) {
             detectedFlagBits.add("VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT");
         }
-        if ((flags & GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER) != 0) {
+        if ((flags & FRAGMENT_SHADER) != 0) {
             detectedFlagBits.add("VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT");
         }
-        if ((flags & GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS) != 0) {
+        if ((flags & PRE_RASTERIZATION_SHADERS) != 0) {
             detectedFlagBits.add("VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT");
         }
-        if ((flags & GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE) != 0) {
+        if ((flags & VERTEX_INPUT_INTERFACE) != 0) {
             detectedFlagBits.add("VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT");
         }
 

@@ -1,0 +1,23 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineExecutableStatisticFormatKHR.html">VkPipelineExecutableStatisticFormatKHR</a>
+public final class VkPipelineExecutableStatisticFormatKHR {
+    public static final int BOOL32 = 0;
+    public static final int INT64 = 1;
+    public static final int UINT64 = 2;
+    public static final int FLOAT64 = 3;
+
+    public static String explain(@enumtype(VkPipelineExecutableStatisticFormatKHR.class) int value) {
+        return switch (value) {
+            case VkPipelineExecutableStatisticFormatKHR.BOOL32 -> "VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_BOOL32_KHR";
+            case VkPipelineExecutableStatisticFormatKHR.FLOAT64 -> "VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_FLOAT64_KHR";
+            case VkPipelineExecutableStatisticFormatKHR.INT64 -> "VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_INT64_KHR";
+            case VkPipelineExecutableStatisticFormatKHR.UINT64 -> "VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_UINT64_KHR";
+            default -> "Unknown VkPipelineExecutableStatisticFormatKHR: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkPipelineExecutableStatisticFormatKHR() {}
+}

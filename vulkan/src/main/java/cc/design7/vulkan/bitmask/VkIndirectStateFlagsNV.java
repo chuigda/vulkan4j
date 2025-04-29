@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectStateFlagsNV.html">VkIndirectStateFlagsNV</a>
 public final class VkIndirectStateFlagsNV {
-    public static final int INDIRECT_STATE_FLAG_FRONTFACE = 0x1;
+    public static final int FLAG_FRONTFACE = 0x1;
 
     public static String explain(@enumtype(VkIndirectStateFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & INDIRECT_STATE_FLAG_FRONTFACE) != 0) {
+        if ((flags & FLAG_FRONTFACE) != 0) {
             detectedFlagBits.add("VK_INDIRECT_STATE_FLAG_FRONTFACE_BIT_NV");
         }
 

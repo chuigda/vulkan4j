@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkHostImageCopyFlags.html">VkHostImageCopyFlags</a>
 public final class VkHostImageCopyFlags {
-    public static final int HOST_IMAGE_COPY_MEMCPY = 0x1;
+    public static final int MEMCPY = 0x1;
 
     public static String explain(@enumtype(VkHostImageCopyFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & HOST_IMAGE_COPY_MEMCPY) != 0) {
+        if ((flags & MEMCPY) != 0) {
             detectedFlagBits.add("VK_HOST_IMAGE_COPY_MEMCPY");
         }
 

@@ -1,0 +1,31 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCompareOp.html">VkCompareOp</a>
+public final class VkCompareOp {
+    public static final int NEVER = 0;
+    public static final int LESS = 1;
+    public static final int EQUAL = 2;
+    public static final int LESS_OR_EQUAL = 3;
+    public static final int GREATER = 4;
+    public static final int NOT_EQUAL = 5;
+    public static final int GREATER_OR_EQUAL = 6;
+    public static final int ALWAYS = 7;
+
+    public static String explain(@enumtype(VkCompareOp.class) int value) {
+        return switch (value) {
+            case VkCompareOp.ALWAYS -> "VK_COMPARE_OP_ALWAYS";
+            case VkCompareOp.EQUAL -> "VK_COMPARE_OP_EQUAL";
+            case VkCompareOp.GREATER -> "VK_COMPARE_OP_GREATER";
+            case VkCompareOp.GREATER_OR_EQUAL -> "VK_COMPARE_OP_GREATER_OR_EQUAL";
+            case VkCompareOp.LESS -> "VK_COMPARE_OP_LESS";
+            case VkCompareOp.LESS_OR_EQUAL -> "VK_COMPARE_OP_LESS_OR_EQUAL";
+            case VkCompareOp.NEVER -> "VK_COMPARE_OP_NEVER";
+            case VkCompareOp.NOT_EQUAL -> "VK_COMPARE_OP_NOT_EQUAL";
+            default -> "Unknown VkCompareOp: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkCompareOp() {}
+}

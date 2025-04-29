@@ -1,0 +1,29 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentModeKHR.html">VkPresentModeKHR</a>
+public final class VkPresentModeKHR {
+    public static final int IMMEDIATE = 0;
+    public static final int MAILBOX = 1;
+    public static final int FIFO = 2;
+    public static final int FIFO_RELAXED = 3;
+    public static final int SHARED_DEMAND_REFRESH = 1000111000;
+    public static final int SHARED_CONTINUOUS_REFRESH = 1000111001;
+    public static final int FIFO_LATEST_READY_EXT = 1000361000;
+
+    public static String explain(@enumtype(VkPresentModeKHR.class) int value) {
+        return switch (value) {
+            case VkPresentModeKHR.FIFO -> "VK_PRESENT_MODE_FIFO_KHR";
+            case VkPresentModeKHR.FIFO_LATEST_READY_EXT -> "VK_PRESENT_MODE_FIFO_LATEST_READY_EXT";
+            case VkPresentModeKHR.FIFO_RELAXED -> "VK_PRESENT_MODE_FIFO_RELAXED_KHR";
+            case VkPresentModeKHR.IMMEDIATE -> "VK_PRESENT_MODE_IMMEDIATE_KHR";
+            case VkPresentModeKHR.MAILBOX -> "VK_PRESENT_MODE_MAILBOX_KHR";
+            case VkPresentModeKHR.SHARED_CONTINUOUS_REFRESH -> "VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR";
+            case VkPresentModeKHR.SHARED_DEMAND_REFRESH -> "VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR";
+            default -> "Unknown VkPresentModeKHR: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkPresentModeKHR() {}
+}

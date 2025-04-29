@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFramebufferCreateFlags.html">VkFramebufferCreateFlags</a>
 public final class VkFramebufferCreateFlags {
-    public static final int FRAMEBUFFER_CREATE_IMAGELESS = 0x1;
+    public static final int IMAGELESS = 0x1;
 
     public static String explain(@enumtype(VkFramebufferCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & FRAMEBUFFER_CREATE_IMAGELESS) != 0) {
+        if ((flags & IMAGELESS) != 0) {
             detectedFlagBits.add("VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT");
         }
 

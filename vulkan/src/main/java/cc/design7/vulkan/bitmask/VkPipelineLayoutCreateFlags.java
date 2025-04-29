@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineLayoutCreateFlags.html">VkPipelineLayoutCreateFlags</a>
 public final class VkPipelineLayoutCreateFlags {
-    public static final int PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_EXT = 0x2;
+    public static final int INDEPENDENT_SETS_EXT = 0x2;
 
     public static String explain(@enumtype(VkPipelineLayoutCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_EXT) != 0) {
+        if ((flags & INDEPENDENT_SETS_EXT) != 0) {
             detectedFlagBits.add("VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT");
         }
 

@@ -1,0 +1,21 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPowerStateEXT.html">VkDisplayPowerStateEXT</a>
+public final class VkDisplayPowerStateEXT {
+    public static final int OFF = 0;
+    public static final int SUSPEND = 1;
+    public static final int ON = 2;
+
+    public static String explain(@enumtype(VkDisplayPowerStateEXT.class) int value) {
+        return switch (value) {
+            case VkDisplayPowerStateEXT.OFF -> "VK_DISPLAY_POWER_STATE_OFF_EXT";
+            case VkDisplayPowerStateEXT.ON -> "VK_DISPLAY_POWER_STATE_ON_EXT";
+            case VkDisplayPowerStateEXT.SUSPEND -> "VK_DISPLAY_POWER_STATE_SUSPEND_EXT";
+            default -> "Unknown VkDisplayPowerStateEXT: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkDisplayPowerStateEXT() {}
+}

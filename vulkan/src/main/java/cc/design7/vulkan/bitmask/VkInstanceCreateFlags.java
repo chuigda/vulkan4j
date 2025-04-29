@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkInstanceCreateFlags.html">VkInstanceCreateFlags</a>
 public final class VkInstanceCreateFlags {
-    public static final int INSTANCE_CREATE_ENUMERATE_PORTABILITY_KHR = 0x1;
+    public static final int ENUMERATE_PORTABILITY_KHR = 0x1;
 
     public static String explain(@enumtype(VkInstanceCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & INSTANCE_CREATE_ENUMERATE_PORTABILITY_KHR) != 0) {
+        if ((flags & ENUMERATE_PORTABILITY_KHR) != 0) {
             detectedFlagBits.add("VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR");
         }
 

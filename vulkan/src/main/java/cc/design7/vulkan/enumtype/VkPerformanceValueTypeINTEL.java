@@ -1,0 +1,25 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceValueTypeINTEL.html">VkPerformanceValueTypeINTEL</a>
+public final class VkPerformanceValueTypeINTEL {
+    public static final int UINT32 = 0;
+    public static final int UINT64 = 1;
+    public static final int FLOAT = 2;
+    public static final int BOOL = 3;
+    public static final int STRING = 4;
+
+    public static String explain(@enumtype(VkPerformanceValueTypeINTEL.class) int value) {
+        return switch (value) {
+            case VkPerformanceValueTypeINTEL.BOOL -> "VK_PERFORMANCE_VALUE_TYPE_BOOL_INTEL";
+            case VkPerformanceValueTypeINTEL.FLOAT -> "VK_PERFORMANCE_VALUE_TYPE_FLOAT_INTEL";
+            case VkPerformanceValueTypeINTEL.STRING -> "VK_PERFORMANCE_VALUE_TYPE_STRING_INTEL";
+            case VkPerformanceValueTypeINTEL.UINT32 -> "VK_PERFORMANCE_VALUE_TYPE_UINT32_INTEL";
+            case VkPerformanceValueTypeINTEL.UINT64 -> "VK_PERFORMANCE_VALUE_TYPE_UINT64_INTEL";
+            default -> "Unknown VkPerformanceValueTypeINTEL: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkPerformanceValueTypeINTEL() {}
+}

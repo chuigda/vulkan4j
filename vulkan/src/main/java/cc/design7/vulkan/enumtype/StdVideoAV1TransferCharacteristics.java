@@ -1,0 +1,55 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1TransferCharacteristics.html">StdVideoAV1TransferCharacteristics</a>
+public final class StdVideoAV1TransferCharacteristics {
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_RESERVED_0 = 0;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_709 = 1;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_UNSPECIFIED = 2;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_RESERVED_3 = 3;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_470_M = 4;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_470_B_G = 5;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_601 = 6;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_240 = 7;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LINEAR = 8;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LOG_100 = 9;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LOG_100_SQRT10 = 10;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_IEC_61966 = 11;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_1361 = 12;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SRGB = 13;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_2020_10_BIT = 14;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_2020_12_BIT = 15;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_2084 = 16;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_428 = 17;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_HLG = 18;
+    public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_INVALID = 2147483647;
+
+    public static String explain(@enumtype(StdVideoAV1TransferCharacteristics.class) int value) {
+        return switch (value) {
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_1361 -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_1361";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_2020_10_BIT -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_2020_10_BIT";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_2020_12_BIT -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_2020_12_BIT";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_470_B_G -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_470_B_G";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_470_M -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_470_M";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_601 -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_601";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_709 -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_709";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_HLG -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_HLG";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_IEC_61966 -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_IEC_61966";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_INVALID -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_INVALID";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LINEAR -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LINEAR";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LOG_100 -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LOG_100";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LOG_100_SQRT10 -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_LOG_100_SQRT10";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_RESERVED_0 -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_RESERVED_0";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_RESERVED_3 -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_RESERVED_3";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_2084 -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_2084";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_240 -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_240";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_428 -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_428";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SRGB -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SRGB";
+            case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_UNSPECIFIED -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_UNSPECIFIED";
+            default -> "Unknown StdVideoAV1TransferCharacteristics: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private StdVideoAV1TransferCharacteristics() {}
+}

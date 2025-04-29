@@ -7,51 +7,51 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubgroupFeatureFlags.html">VkSubgroupFeatureFlags</a>
 public final class VkSubgroupFeatureFlags {
-    public static final int SUBGROUP_FEATURE_ARITHMETIC = 0x4;
-    public static final int SUBGROUP_FEATURE_BALLOT = 0x8;
-    public static final int SUBGROUP_FEATURE_BASIC = 0x1;
-    public static final int SUBGROUP_FEATURE_CLUSTERED = 0x40;
-    public static final int SUBGROUP_FEATURE_PARTITIONED_NV = 0x100;
-    public static final int SUBGROUP_FEATURE_QUAD = 0x80;
-    public static final int SUBGROUP_FEATURE_ROTATE = 0x200;
-    public static final int SUBGROUP_FEATURE_ROTATE_CLUSTERED = 0x400;
-    public static final int SUBGROUP_FEATURE_SHUFFLE = 0x10;
-    public static final int SUBGROUP_FEATURE_SHUFFLE_RELATIVE = 0x20;
-    public static final int SUBGROUP_FEATURE_VOTE = 0x2;
+    public static final int ARITHMETIC = 0x4;
+    public static final int BALLOT = 0x8;
+    public static final int BASIC = 0x1;
+    public static final int CLUSTERED = 0x40;
+    public static final int PARTITIONED_NV = 0x100;
+    public static final int QUAD = 0x80;
+    public static final int ROTATE = 0x200;
+    public static final int ROTATE_CLUSTERED = 0x400;
+    public static final int SHUFFLE = 0x10;
+    public static final int SHUFFLE_RELATIVE = 0x20;
+    public static final int VOTE = 0x2;
 
     public static String explain(@enumtype(VkSubgroupFeatureFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & SUBGROUP_FEATURE_ARITHMETIC) != 0) {
+        if ((flags & ARITHMETIC) != 0) {
             detectedFlagBits.add("VK_SUBGROUP_FEATURE_ARITHMETIC_BIT");
         }
-        if ((flags & SUBGROUP_FEATURE_BALLOT) != 0) {
+        if ((flags & BALLOT) != 0) {
             detectedFlagBits.add("VK_SUBGROUP_FEATURE_BALLOT_BIT");
         }
-        if ((flags & SUBGROUP_FEATURE_BASIC) != 0) {
+        if ((flags & BASIC) != 0) {
             detectedFlagBits.add("VK_SUBGROUP_FEATURE_BASIC_BIT");
         }
-        if ((flags & SUBGROUP_FEATURE_CLUSTERED) != 0) {
+        if ((flags & CLUSTERED) != 0) {
             detectedFlagBits.add("VK_SUBGROUP_FEATURE_CLUSTERED_BIT");
         }
-        if ((flags & SUBGROUP_FEATURE_PARTITIONED_NV) != 0) {
+        if ((flags & PARTITIONED_NV) != 0) {
             detectedFlagBits.add("VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV");
         }
-        if ((flags & SUBGROUP_FEATURE_QUAD) != 0) {
+        if ((flags & QUAD) != 0) {
             detectedFlagBits.add("VK_SUBGROUP_FEATURE_QUAD_BIT");
         }
-        if ((flags & SUBGROUP_FEATURE_ROTATE) != 0) {
+        if ((flags & ROTATE) != 0) {
             detectedFlagBits.add("VK_SUBGROUP_FEATURE_ROTATE_BIT");
         }
-        if ((flags & SUBGROUP_FEATURE_ROTATE_CLUSTERED) != 0) {
+        if ((flags & ROTATE_CLUSTERED) != 0) {
             detectedFlagBits.add("VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT");
         }
-        if ((flags & SUBGROUP_FEATURE_SHUFFLE) != 0) {
+        if ((flags & SHUFFLE) != 0) {
             detectedFlagBits.add("VK_SUBGROUP_FEATURE_SHUFFLE_BIT");
         }
-        if ((flags & SUBGROUP_FEATURE_SHUFFLE_RELATIVE) != 0) {
+        if ((flags & SHUFFLE_RELATIVE) != 0) {
             detectedFlagBits.add("VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT");
         }
-        if ((flags & SUBGROUP_FEATURE_VOTE) != 0) {
+        if ((flags & VOTE) != 0) {
             detectedFlagBits.add("VK_SUBGROUP_FEATURE_VOTE_BIT");
         }
 

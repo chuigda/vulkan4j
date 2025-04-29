@@ -95,7 +95,7 @@ fun generateBitmask(
             +""
         }
 
-        +prohibitUserConstruct(bitmask.name.value)
+        +prohibitUserConstruct(bitmask.name)
     }
     +"}"
 }

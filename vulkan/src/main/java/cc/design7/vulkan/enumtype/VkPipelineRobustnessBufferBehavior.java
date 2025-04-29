@@ -1,0 +1,23 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineRobustnessBufferBehavior.html">VkPipelineRobustnessBufferBehavior</a>
+public final class VkPipelineRobustnessBufferBehavior {
+    public static final int DEVICE_DEFAULT = 0;
+    public static final int DISABLED = 1;
+    public static final int ROBUST_BUFFER_ACCESS = 2;
+    public static final int ROBUST_BUFFER_ACCESS_2 = 3;
+
+    public static String explain(@enumtype(VkPipelineRobustnessBufferBehavior.class) int value) {
+        return switch (value) {
+            case VkPipelineRobustnessBufferBehavior.DEVICE_DEFAULT -> "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT";
+            case VkPipelineRobustnessBufferBehavior.DISABLED -> "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DISABLED";
+            case VkPipelineRobustnessBufferBehavior.ROBUST_BUFFER_ACCESS -> "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS";
+            case VkPipelineRobustnessBufferBehavior.ROBUST_BUFFER_ACCESS_2 -> "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2";
+            default -> "Unknown VkPipelineRobustnessBufferBehavior: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkPipelineRobustnessBufferBehavior() {}
+}

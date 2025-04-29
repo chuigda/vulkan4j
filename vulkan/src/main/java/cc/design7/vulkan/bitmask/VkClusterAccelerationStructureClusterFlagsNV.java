@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureClusterFlagsNV.html">VkClusterAccelerationStructureClusterFlagsNV</a>
 public final class VkClusterAccelerationStructureClusterFlagsNV {
-    public static final int CLUSTER_ACCELERATION_STRUCTURE_CLUSTER_ALLOW_DISABLE_OPACITY_MICROMAPS = 0x1;
+    public static final int ALLOW_DISABLE_OPACITY_MICROMAPS = 0x1;
 
     public static String explain(@enumtype(VkClusterAccelerationStructureClusterFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & CLUSTER_ACCELERATION_STRUCTURE_CLUSTER_ALLOW_DISABLE_OPACITY_MICROMAPS) != 0) {
+        if ((flags & ALLOW_DISABLE_OPACITY_MICROMAPS) != 0) {
             detectedFlagBits.add("VK_CLUSTER_ACCELERATION_STRUCTURE_CLUSTER_ALLOW_DISABLE_OPACITY_MICROMAPS_NV");
         }
 

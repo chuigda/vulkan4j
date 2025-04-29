@@ -3,6 +3,7 @@ package cc.design7.babel.drv
 import cc.design7.babel.codegen.CodegenOptions
 import cc.design7.babel.codegen.generateBitmask
 import cc.design7.babel.codegen.generateConstants
+import cc.design7.babel.codegen.generateEnumeration
 import cc.design7.babel.extract.vulkan.extractVulkanRegistry
 import cc.design7.babel.registry.Bitmask
 import cc.design7.babel.registry.Command
@@ -32,6 +33,12 @@ internal fun vulkanMain() {
         val bitmaskDoc = generateBitmask(vulkanRegistry, bitmask, codegenOptions)
         File("vulkan/src/main/java/cc/design7/vulkan/bitmask/${bitmask.name}.java")
             .writeText(render(bitmaskDoc))
+    }
+
+    for (enumeration in vulkanRegistry.enumerations.values) {
+        val enumerationDoc = generateEnumeration(vulkanRegistry, enumeration, codegenOptions)
+        File("vulkan/src/main/java/cc/design7/vulkan/enumtype/${enumeration.name}.java")
+            .writeText(render(enumerationDoc))
     }
 }
 

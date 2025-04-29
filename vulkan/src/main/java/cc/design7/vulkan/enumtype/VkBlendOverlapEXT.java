@@ -1,0 +1,21 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBlendOverlapEXT.html">VkBlendOverlapEXT</a>
+public final class VkBlendOverlapEXT {
+    public static final int UNCORRELATED = 0;
+    public static final int DISJOINT = 1;
+    public static final int CONJOINT = 2;
+
+    public static String explain(@enumtype(VkBlendOverlapEXT.class) int value) {
+        return switch (value) {
+            case VkBlendOverlapEXT.CONJOINT -> "VK_BLEND_OVERLAP_CONJOINT_EXT";
+            case VkBlendOverlapEXT.DISJOINT -> "VK_BLEND_OVERLAP_DISJOINT_EXT";
+            case VkBlendOverlapEXT.UNCORRELATED -> "VK_BLEND_OVERLAP_UNCORRELATED_EXT";
+            default -> "Unknown VkBlendOverlapEXT: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkBlendOverlapEXT() {}
+}

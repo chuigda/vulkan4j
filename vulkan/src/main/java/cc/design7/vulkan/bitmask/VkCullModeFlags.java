@@ -7,23 +7,23 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCullModeFlags.html">VkCullModeFlags</a>
 public final class VkCullModeFlags {
-    public static final int CULL_MODE_BACK = 0x2;
-    public static final int CULL_MODE_FRONT_AND_BACK = 0x3;
-    public static final int CULL_MODE_FRONT = 0x1;
-    public static final int CULL_MODE_NONE = 0x0;
+    public static final int BACK = 0x2;
+    public static final int FRONT_AND_BACK = 0x3;
+    public static final int FRONT = 0x1;
+    public static final int NONE = 0x0;
 
     public static String explain(@enumtype(VkCullModeFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & CULL_MODE_BACK) != 0) {
+        if ((flags & BACK) != 0) {
             detectedFlagBits.add("VK_CULL_MODE_BACK_BIT");
         }
-        if ((flags & CULL_MODE_FRONT_AND_BACK) != 0) {
+        if ((flags & FRONT_AND_BACK) != 0) {
             detectedFlagBits.add("VK_CULL_MODE_FRONT_AND_BACK");
         }
-        if ((flags & CULL_MODE_FRONT) != 0) {
+        if ((flags & FRONT) != 0) {
             detectedFlagBits.add("VK_CULL_MODE_FRONT_BIT");
         }
-        if ((flags & CULL_MODE_NONE) != 0) {
+        if ((flags & NONE) != 0) {
             detectedFlagBits.add("VK_CULL_MODE_NONE");
         }
 

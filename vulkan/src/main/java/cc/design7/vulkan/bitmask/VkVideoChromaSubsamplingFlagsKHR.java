@@ -7,27 +7,27 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoChromaSubsamplingFlagsKHR.html">VkVideoChromaSubsamplingFlagsKHR</a>
 public final class VkVideoChromaSubsamplingFlagsKHR {
-    public static final int VIDEO_CHROMA_SUBSAMPLING_420 = 0x2;
-    public static final int VIDEO_CHROMA_SUBSAMPLING_422 = 0x4;
-    public static final int VIDEO_CHROMA_SUBSAMPLING_444 = 0x8;
-    public static final int VIDEO_CHROMA_SUBSAMPLING_INVALID = 0x0;
-    public static final int VIDEO_CHROMA_SUBSAMPLING_MONOCHROME = 0x1;
+    public static final int _420 = 0x2;
+    public static final int _422 = 0x4;
+    public static final int _444 = 0x8;
+    public static final int INVALID = 0x0;
+    public static final int MONOCHROME = 0x1;
 
     public static String explain(@enumtype(VkVideoChromaSubsamplingFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & VIDEO_CHROMA_SUBSAMPLING_420) != 0) {
+        if ((flags & _420) != 0) {
             detectedFlagBits.add("VK_VIDEO_CHROMA_SUBSAMPLING_420_BIT_KHR");
         }
-        if ((flags & VIDEO_CHROMA_SUBSAMPLING_422) != 0) {
+        if ((flags & _422) != 0) {
             detectedFlagBits.add("VK_VIDEO_CHROMA_SUBSAMPLING_422_BIT_KHR");
         }
-        if ((flags & VIDEO_CHROMA_SUBSAMPLING_444) != 0) {
+        if ((flags & _444) != 0) {
             detectedFlagBits.add("VK_VIDEO_CHROMA_SUBSAMPLING_444_BIT_KHR");
         }
-        if ((flags & VIDEO_CHROMA_SUBSAMPLING_INVALID) != 0) {
+        if ((flags & INVALID) != 0) {
             detectedFlagBits.add("VK_VIDEO_CHROMA_SUBSAMPLING_INVALID_KHR");
         }
-        if ((flags & VIDEO_CHROMA_SUBSAMPLING_MONOCHROME) != 0) {
+        if ((flags & MONOCHROME) != 0) {
             detectedFlagBits.add("VK_VIDEO_CHROMA_SUBSAMPLING_MONOCHROME_BIT_KHR");
         }
 

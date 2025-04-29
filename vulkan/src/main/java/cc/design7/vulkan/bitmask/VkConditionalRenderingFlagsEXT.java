@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkConditionalRenderingFlagsEXT.html">VkConditionalRenderingFlagsEXT</a>
 public final class VkConditionalRenderingFlagsEXT {
-    public static final int CONDITIONAL_RENDERING_INVERTED = 0x1;
+    public static final int INVERTED = 0x1;
 
     public static String explain(@enumtype(VkConditionalRenderingFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & CONDITIONAL_RENDERING_INVERTED) != 0) {
+        if ((flags & INVERTED) != 0) {
             detectedFlagBits.add("VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT");
         }
 

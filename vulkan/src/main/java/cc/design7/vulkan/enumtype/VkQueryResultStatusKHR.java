@@ -1,0 +1,23 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryResultStatusKHR.html">VkQueryResultStatusKHR</a>
+public final class VkQueryResultStatusKHR {
+    public static final int ERROR = -1;
+    public static final int NOT_READY = 0;
+    public static final int COMPLETE = 1;
+    public static final int INSUFFICIENT_BITSTREAM_BUFFER_RANGE = -1000299000;
+
+    public static String explain(@enumtype(VkQueryResultStatusKHR.class) int value) {
+        return switch (value) {
+            case VkQueryResultStatusKHR.COMPLETE -> "VK_QUERY_RESULT_STATUS_COMPLETE_KHR";
+            case VkQueryResultStatusKHR.ERROR -> "VK_QUERY_RESULT_STATUS_ERROR_KHR";
+            case VkQueryResultStatusKHR.INSUFFICIENT_BITSTREAM_BUFFER_RANGE -> "VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR";
+            case VkQueryResultStatusKHR.NOT_READY -> "VK_QUERY_RESULT_STATUS_NOT_READY_KHR";
+            default -> "Unknown VkQueryResultStatusKHR: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkQueryResultStatusKHR() {}
+}

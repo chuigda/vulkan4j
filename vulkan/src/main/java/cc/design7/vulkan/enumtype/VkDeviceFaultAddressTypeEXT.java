@@ -1,0 +1,29 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultAddressTypeEXT.html">VkDeviceFaultAddressTypeEXT</a>
+public final class VkDeviceFaultAddressTypeEXT {
+    public static final int NONE = 0;
+    public static final int READ_INVALID = 1;
+    public static final int WRITE_INVALID = 2;
+    public static final int EXECUTE_INVALID = 3;
+    public static final int INSTRUCTION_POINTER_UNKNOWN = 4;
+    public static final int INSTRUCTION_POINTER_INVALID = 5;
+    public static final int INSTRUCTION_POINTER_FAULT = 6;
+
+    public static String explain(@enumtype(VkDeviceFaultAddressTypeEXT.class) int value) {
+        return switch (value) {
+            case VkDeviceFaultAddressTypeEXT.EXECUTE_INVALID -> "VK_DEVICE_FAULT_ADDRESS_TYPE_EXECUTE_INVALID_EXT";
+            case VkDeviceFaultAddressTypeEXT.INSTRUCTION_POINTER_FAULT -> "VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_FAULT_EXT";
+            case VkDeviceFaultAddressTypeEXT.INSTRUCTION_POINTER_INVALID -> "VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_INVALID_EXT";
+            case VkDeviceFaultAddressTypeEXT.INSTRUCTION_POINTER_UNKNOWN -> "VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_UNKNOWN_EXT";
+            case VkDeviceFaultAddressTypeEXT.NONE -> "VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_EXT";
+            case VkDeviceFaultAddressTypeEXT.READ_INVALID -> "VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_EXT";
+            case VkDeviceFaultAddressTypeEXT.WRITE_INVALID -> "VK_DEVICE_FAULT_ADDRESS_TYPE_WRITE_INVALID_EXT";
+            default -> "Unknown VkDeviceFaultAddressTypeEXT: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkDeviceFaultAddressTypeEXT() {}
+}

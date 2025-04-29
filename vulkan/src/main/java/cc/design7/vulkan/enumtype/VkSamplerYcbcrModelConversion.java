@@ -1,0 +1,25 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerYcbcrModelConversion.html">VkSamplerYcbcrModelConversion</a>
+public final class VkSamplerYcbcrModelConversion {
+    public static final int RGB_IDENTITY = 0;
+    public static final int YCBCR_IDENTITY = 1;
+    public static final int YCBCR_709 = 2;
+    public static final int YCBCR_601 = 3;
+    public static final int YCBCR_2020 = 4;
+
+    public static String explain(@enumtype(VkSamplerYcbcrModelConversion.class) int value) {
+        return switch (value) {
+            case VkSamplerYcbcrModelConversion.RGB_IDENTITY -> "VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY";
+            case VkSamplerYcbcrModelConversion.YCBCR_2020 -> "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020";
+            case VkSamplerYcbcrModelConversion.YCBCR_601 -> "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_601";
+            case VkSamplerYcbcrModelConversion.YCBCR_709 -> "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709";
+            case VkSamplerYcbcrModelConversion.YCBCR_IDENTITY -> "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY";
+            default -> "Unknown VkSamplerYcbcrModelConversion: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkSamplerYcbcrModelConversion() {}
+}

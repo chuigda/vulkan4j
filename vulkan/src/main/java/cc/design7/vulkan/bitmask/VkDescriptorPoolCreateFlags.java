@@ -7,27 +7,27 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorPoolCreateFlags.html">VkDescriptorPoolCreateFlags</a>
 public final class VkDescriptorPoolCreateFlags {
-    public static final int DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_NV = 0x10;
-    public static final int DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_NV = 0x8;
-    public static final int DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET = 0x1;
-    public static final int DESCRIPTOR_POOL_CREATE_HOST_ONLY_EXT = 0x4;
-    public static final int DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND = 0x2;
+    public static final int ALLOW_OVERALLOCATION_POOLS_NV = 0x10;
+    public static final int ALLOW_OVERALLOCATION_SETS_NV = 0x8;
+    public static final int FREE_DESCRIPTOR_SET = 0x1;
+    public static final int HOST_ONLY_EXT = 0x4;
+    public static final int UPDATE_AFTER_BIND = 0x2;
 
     public static String explain(@enumtype(VkDescriptorPoolCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_NV) != 0) {
+        if ((flags & ALLOW_OVERALLOCATION_POOLS_NV) != 0) {
             detectedFlagBits.add("VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV");
         }
-        if ((flags & DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_NV) != 0) {
+        if ((flags & ALLOW_OVERALLOCATION_SETS_NV) != 0) {
             detectedFlagBits.add("VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV");
         }
-        if ((flags & DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET) != 0) {
+        if ((flags & FREE_DESCRIPTOR_SET) != 0) {
             detectedFlagBits.add("VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT");
         }
-        if ((flags & DESCRIPTOR_POOL_CREATE_HOST_ONLY_EXT) != 0) {
+        if ((flags & HOST_ONLY_EXT) != 0) {
             detectedFlagBits.add("VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT");
         }
-        if ((flags & DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND) != 0) {
+        if ((flags & UPDATE_AFTER_BIND) != 0) {
             detectedFlagBits.add("VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT");
         }
 

@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentDescriptionFlags.html">VkAttachmentDescriptionFlags</a>
 public final class VkAttachmentDescriptionFlags {
-    public static final int ATTACHMENT_DESCRIPTION_MAY_ALIAS = 0x1;
+    public static final int MAY_ALIAS = 0x1;
 
     public static String explain(@enumtype(VkAttachmentDescriptionFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & ATTACHMENT_DESCRIPTION_MAY_ALIAS) != 0) {
+        if ((flags & MAY_ALIAS) != 0) {
             detectedFlagBits.add("VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT");
         }
 

@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSemaphoreImportFlags.html">VkSemaphoreImportFlags</a>
 public final class VkSemaphoreImportFlags {
-    public static final int SEMAPHORE_IMPORT_TEMPORARY = 0x1;
+    public static final int TEMPORARY = 0x1;
 
     public static String explain(@enumtype(VkSemaphoreImportFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & SEMAPHORE_IMPORT_TEMPORARY) != 0) {
+        if ((flags & TEMPORARY) != 0) {
             detectedFlagBits.add("VK_SEMAPHORE_IMPORT_TEMPORARY_BIT");
         }
 

@@ -192,7 +192,7 @@ class Enumeration(
 ) : Entity(name) {
     constructor(name: String, variants: MutableList<EnumVariant>) : this(name.intern(), variants)
 
-    override fun toStringImpl() = "Enumeration(name=\"$name\", variants=$variants)"
+    override fun toStringImpl() = "Enumeration(name=\"$name\", variants=$variants"
 }
 
 class EnumVariant(
@@ -207,7 +207,7 @@ class EnumVariant(
         append("EnumVariant(name=$name")
         when (value) {
             is Either.Left -> append(", value=${value.value}")
-            is Either.Right -> append(", value=(${value.value.joinToString(" | ") { it }})")
+            is Either.Right -> append(", value=(${value.value.joinToString(" | ") { it }}")
         }
     }
 }

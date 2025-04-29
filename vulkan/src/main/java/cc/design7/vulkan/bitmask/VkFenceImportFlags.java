@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFenceImportFlags.html">VkFenceImportFlags</a>
 public final class VkFenceImportFlags {
-    public static final int FENCE_IMPORT_TEMPORARY = 0x1;
+    public static final int TEMPORARY = 0x1;
 
     public static String explain(@enumtype(VkFenceImportFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & FENCE_IMPORT_TEMPORARY) != 0) {
+        if ((flags & TEMPORARY) != 0) {
             detectedFlagBits.add("VK_FENCE_IMPORT_TEMPORARY_BIT");
         }
 

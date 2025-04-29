@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkEventCreateFlags.html">VkEventCreateFlags</a>
 public final class VkEventCreateFlags {
-    public static final int EVENT_CREATE_DEVICE_ONLY = 0x1;
+    public static final int DEVICE_ONLY = 0x1;
 
     public static String explain(@enumtype(VkEventCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & EVENT_CREATE_DEVICE_ONLY) != 0) {
+        if ((flags & DEVICE_ONLY) != 0) {
             detectedFlagBits.add("VK_EVENT_CREATE_DEVICE_ONLY_BIT");
         }
 

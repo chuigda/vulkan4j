@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccessFlags3KHR.html">VkAccessFlags3KHR</a>
 public final class VkAccessFlags3KHR {
-    public static final long ACCESS_3_NONE = 0x0L;
+    public static final long NONE = 0x0L;
 
     public static String explain(@enumtype(VkAccessFlags3KHR.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & ACCESS_3_NONE) != 0) {
+        if ((flags & NONE) != 0) {
             detectedFlagBits.add("VK_ACCESS_3_NONE_KHR");
         }
 

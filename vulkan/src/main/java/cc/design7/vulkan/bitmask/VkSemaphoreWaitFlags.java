@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSemaphoreWaitFlags.html">VkSemaphoreWaitFlags</a>
 public final class VkSemaphoreWaitFlags {
-    public static final int SEMAPHORE_WAIT_ANY = 0x1;
+    public static final int ANY = 0x1;
 
     public static String explain(@enumtype(VkSemaphoreWaitFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & SEMAPHORE_WAIT_ANY) != 0) {
+        if ((flags & ANY) != 0) {
             detectedFlagBits.add("VK_SEMAPHORE_WAIT_ANY_BIT");
         }
 

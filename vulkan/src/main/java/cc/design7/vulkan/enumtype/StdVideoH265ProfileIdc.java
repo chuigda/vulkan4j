@@ -1,0 +1,27 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH265ProfileIdc.html">StdVideoH265ProfileIdc</a>
+public final class StdVideoH265ProfileIdc {
+    public static final int STD_VIDEO_H265_PROFILE_IDC_MAIN = 1;
+    public static final int STD_VIDEO_H265_PROFILE_IDC_MAIN_10 = 2;
+    public static final int STD_VIDEO_H265_PROFILE_IDC_MAIN_STILL_PICTURE = 3;
+    public static final int STD_VIDEO_H265_PROFILE_IDC_FORMAT_RANGE_EXTENSIONS = 4;
+    public static final int STD_VIDEO_H265_PROFILE_IDC_SCC_EXTENSIONS = 9;
+    public static final int STD_VIDEO_H265_PROFILE_IDC_INVALID = 2147483647;
+
+    public static String explain(@enumtype(StdVideoH265ProfileIdc.class) int value) {
+        return switch (value) {
+            case StdVideoH265ProfileIdc.STD_VIDEO_H265_PROFILE_IDC_FORMAT_RANGE_EXTENSIONS -> "STD_VIDEO_H265_PROFILE_IDC_FORMAT_RANGE_EXTENSIONS";
+            case StdVideoH265ProfileIdc.STD_VIDEO_H265_PROFILE_IDC_INVALID -> "STD_VIDEO_H265_PROFILE_IDC_INVALID";
+            case StdVideoH265ProfileIdc.STD_VIDEO_H265_PROFILE_IDC_MAIN -> "STD_VIDEO_H265_PROFILE_IDC_MAIN";
+            case StdVideoH265ProfileIdc.STD_VIDEO_H265_PROFILE_IDC_MAIN_10 -> "STD_VIDEO_H265_PROFILE_IDC_MAIN_10";
+            case StdVideoH265ProfileIdc.STD_VIDEO_H265_PROFILE_IDC_MAIN_STILL_PICTURE -> "STD_VIDEO_H265_PROFILE_IDC_MAIN_STILL_PICTURE";
+            case StdVideoH265ProfileIdc.STD_VIDEO_H265_PROFILE_IDC_SCC_EXTENSIONS -> "STD_VIDEO_H265_PROFILE_IDC_SCC_EXTENSIONS";
+            default -> "Unknown StdVideoH265ProfileIdc: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private StdVideoH265ProfileIdc() {}
+}

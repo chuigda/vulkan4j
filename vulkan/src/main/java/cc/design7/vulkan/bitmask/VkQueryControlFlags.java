@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryControlFlags.html">VkQueryControlFlags</a>
 public final class VkQueryControlFlags {
-    public static final int QUERY_CONTROL_PRECISE = 0x1;
+    public static final int PRECISE = 0x1;
 
     public static String explain(@enumtype(VkQueryControlFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & QUERY_CONTROL_PRECISE) != 0) {
+        if ((flags & PRECISE) != 0) {
             detectedFlagBits.add("VK_QUERY_CONTROL_PRECISE_BIT");
         }
 

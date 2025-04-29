@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryUnmapFlags.html">VkMemoryUnmapFlags</a>
 public final class VkMemoryUnmapFlags {
-    public static final int MEMORY_UNMAP_RESERVE_EXT = 0x1;
+    public static final int RESERVE_EXT = 0x1;
 
     public static String explain(@enumtype(VkMemoryUnmapFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & MEMORY_UNMAP_RESERVE_EXT) != 0) {
+        if ((flags & RESERVE_EXT) != 0) {
             detectedFlagBits.add("VK_MEMORY_UNMAP_RESERVE_BIT_EXT");
         }
 

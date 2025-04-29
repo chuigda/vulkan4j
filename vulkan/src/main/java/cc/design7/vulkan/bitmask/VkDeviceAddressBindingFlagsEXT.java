@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceAddressBindingFlagsEXT.html">VkDeviceAddressBindingFlagsEXT</a>
 public final class VkDeviceAddressBindingFlagsEXT {
-    public static final int DEVICE_ADDRESS_BINDING_INTERNAL_OBJECT = 0x1;
+    public static final int INTERNAL_OBJECT = 0x1;
 
     public static String explain(@enumtype(VkDeviceAddressBindingFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & DEVICE_ADDRESS_BINDING_INTERNAL_OBJECT) != 0) {
+        if ((flags & INTERNAL_OBJECT) != 0) {
             detectedFlagBits.add("VK_DEVICE_ADDRESS_BINDING_INTERNAL_OBJECT_BIT_EXT");
         }
 

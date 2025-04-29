@@ -7,35 +7,35 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferCreateFlags.html">VkBufferCreateFlags</a>
 public final class VkBufferCreateFlags {
-    public static final int BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT = 0x20;
-    public static final int BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY = 0x10;
-    public static final int BUFFER_CREATE_PROTECTED = 0x8;
-    public static final int BUFFER_CREATE_SPARSE_ALIASED = 0x4;
-    public static final int BUFFER_CREATE_SPARSE_BINDING = 0x1;
-    public static final int BUFFER_CREATE_SPARSE_RESIDENCY = 0x2;
-    public static final int BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_KHR = 0x40;
+    public static final int DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT = 0x20;
+    public static final int DEVICE_ADDRESS_CAPTURE_REPLAY = 0x10;
+    public static final int PROTECTED = 0x8;
+    public static final int SPARSE_ALIASED = 0x4;
+    public static final int SPARSE_BINDING = 0x1;
+    public static final int SPARSE_RESIDENCY = 0x2;
+    public static final int VIDEO_PROFILE_INDEPENDENT_KHR = 0x40;
 
     public static String explain(@enumtype(VkBufferCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT) != 0) {
+        if ((flags & DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT) != 0) {
             detectedFlagBits.add("VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT");
         }
-        if ((flags & BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY) != 0) {
+        if ((flags & DEVICE_ADDRESS_CAPTURE_REPLAY) != 0) {
             detectedFlagBits.add("VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT");
         }
-        if ((flags & BUFFER_CREATE_PROTECTED) != 0) {
+        if ((flags & PROTECTED) != 0) {
             detectedFlagBits.add("VK_BUFFER_CREATE_PROTECTED_BIT");
         }
-        if ((flags & BUFFER_CREATE_SPARSE_ALIASED) != 0) {
+        if ((flags & SPARSE_ALIASED) != 0) {
             detectedFlagBits.add("VK_BUFFER_CREATE_SPARSE_ALIASED_BIT");
         }
-        if ((flags & BUFFER_CREATE_SPARSE_BINDING) != 0) {
+        if ((flags & SPARSE_BINDING) != 0) {
             detectedFlagBits.add("VK_BUFFER_CREATE_SPARSE_BINDING_BIT");
         }
-        if ((flags & BUFFER_CREATE_SPARSE_RESIDENCY) != 0) {
+        if ((flags & SPARSE_RESIDENCY) != 0) {
             detectedFlagBits.add("VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT");
         }
-        if ((flags & BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_KHR) != 0) {
+        if ((flags & VIDEO_PROFILE_INDEPENDENT_KHR) != 0) {
             detectedFlagBits.add("VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR");
         }
 

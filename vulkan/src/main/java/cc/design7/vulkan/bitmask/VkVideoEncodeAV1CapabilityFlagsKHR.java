@@ -7,27 +7,27 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1CapabilityFlagsKHR.html">VkVideoEncodeAV1CapabilityFlagsKHR</a>
 public final class VkVideoEncodeAV1CapabilityFlagsKHR {
-    public static final int VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE = 0x8;
-    public static final int VIDEO_ENCODE_AV1_CAPABILITY_GENERATE_OBU_EXTENSION_HEADER = 0x2;
-    public static final int VIDEO_ENCODE_AV1_CAPABILITY_MOTION_VECTOR_SCALING = 0x10;
-    public static final int VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX = 0x1;
-    public static final int VIDEO_ENCODE_AV1_CAPABILITY_PRIMARY_REFERENCE_CDF_ONLY = 0x4;
+    public static final int VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE = 0x8;
+    public static final int VK_VIDEO_ENCODE_AV1_CAPABILITY_GENERATE_OBU_EXTENSION_HEADER = 0x2;
+    public static final int VK_VIDEO_ENCODE_AV1_CAPABILITY_MOTION_VECTOR_SCALING = 0x10;
+    public static final int VK_VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX = 0x1;
+    public static final int VK_VIDEO_ENCODE_AV1_CAPABILITY_PRIMARY_REFERENCE_CDF_ONLY = 0x4;
 
     public static String explain(@enumtype(VkVideoEncodeAV1CapabilityFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE) != 0) {
+        if ((flags & VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE_BIT_KHR");
         }
-        if ((flags & VIDEO_ENCODE_AV1_CAPABILITY_GENERATE_OBU_EXTENSION_HEADER) != 0) {
+        if ((flags & VK_VIDEO_ENCODE_AV1_CAPABILITY_GENERATE_OBU_EXTENSION_HEADER) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_AV1_CAPABILITY_GENERATE_OBU_EXTENSION_HEADER_BIT_KHR");
         }
-        if ((flags & VIDEO_ENCODE_AV1_CAPABILITY_MOTION_VECTOR_SCALING) != 0) {
+        if ((flags & VK_VIDEO_ENCODE_AV1_CAPABILITY_MOTION_VECTOR_SCALING) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_AV1_CAPABILITY_MOTION_VECTOR_SCALING_BIT_KHR");
         }
-        if ((flags & VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX) != 0) {
+        if ((flags & VK_VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX_BIT_KHR");
         }
-        if ((flags & VIDEO_ENCODE_AV1_CAPABILITY_PRIMARY_REFERENCE_CDF_ONLY) != 0) {
+        if ((flags & VK_VIDEO_ENCODE_AV1_CAPABILITY_PRIMARY_REFERENCE_CDF_ONLY) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_AV1_CAPABILITY_PRIMARY_REFERENCE_CDF_ONLY_BIT_KHR");
         }
 

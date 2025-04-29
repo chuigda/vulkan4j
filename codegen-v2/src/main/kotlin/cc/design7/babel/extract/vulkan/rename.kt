@@ -84,7 +84,6 @@ private fun renameVariantOrBitflag(
 
     val renamed =
         name
-            .removePrefix("VK_")
             .removePrefix(prefix)
             .removeSuffix(suffix)
             // Some value names start with digits after the prefixes have been

@@ -1,0 +1,25 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH265PictureType.html">StdVideoH265PictureType</a>
+public final class StdVideoH265PictureType {
+    public static final int STD_VIDEO_H265_PICTURE_TYPE_P = 0;
+    public static final int STD_VIDEO_H265_PICTURE_TYPE_B = 1;
+    public static final int STD_VIDEO_H265_PICTURE_TYPE_I = 2;
+    public static final int STD_VIDEO_H265_PICTURE_TYPE_IDR = 3;
+    public static final int STD_VIDEO_H265_PICTURE_TYPE_INVALID = 2147483647;
+
+    public static String explain(@enumtype(StdVideoH265PictureType.class) int value) {
+        return switch (value) {
+            case StdVideoH265PictureType.STD_VIDEO_H265_PICTURE_TYPE_B -> "STD_VIDEO_H265_PICTURE_TYPE_B";
+            case StdVideoH265PictureType.STD_VIDEO_H265_PICTURE_TYPE_I -> "STD_VIDEO_H265_PICTURE_TYPE_I";
+            case StdVideoH265PictureType.STD_VIDEO_H265_PICTURE_TYPE_IDR -> "STD_VIDEO_H265_PICTURE_TYPE_IDR";
+            case StdVideoH265PictureType.STD_VIDEO_H265_PICTURE_TYPE_INVALID -> "STD_VIDEO_H265_PICTURE_TYPE_INVALID";
+            case StdVideoH265PictureType.STD_VIDEO_H265_PICTURE_TYPE_P -> "STD_VIDEO_H265_PICTURE_TYPE_P";
+            default -> "Unknown StdVideoH265PictureType: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private StdVideoH265PictureType() {}
+}

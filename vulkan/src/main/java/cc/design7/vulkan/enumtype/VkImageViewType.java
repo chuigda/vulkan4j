@@ -1,0 +1,29 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageViewType.html">VkImageViewType</a>
+public final class VkImageViewType {
+    public static final int _1D = 0;
+    public static final int _2D = 1;
+    public static final int _3D = 2;
+    public static final int CUBE = 3;
+    public static final int _1D_ARRAY = 4;
+    public static final int _2D_ARRAY = 5;
+    public static final int CUBE_ARRAY = 6;
+
+    public static String explain(@enumtype(VkImageViewType.class) int value) {
+        return switch (value) {
+            case VkImageViewType._1D -> "VK_IMAGE_VIEW_TYPE_1D";
+            case VkImageViewType._1D_ARRAY -> "VK_IMAGE_VIEW_TYPE_1D_ARRAY";
+            case VkImageViewType._2D -> "VK_IMAGE_VIEW_TYPE_2D";
+            case VkImageViewType._2D_ARRAY -> "VK_IMAGE_VIEW_TYPE_2D_ARRAY";
+            case VkImageViewType._3D -> "VK_IMAGE_VIEW_TYPE_3D";
+            case VkImageViewType.CUBE -> "VK_IMAGE_VIEW_TYPE_CUBE";
+            case VkImageViewType.CUBE_ARRAY -> "VK_IMAGE_VIEW_TYPE_CUBE_ARRAY";
+            default -> "Unknown VkImageViewType: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkImageViewType() {}
+}

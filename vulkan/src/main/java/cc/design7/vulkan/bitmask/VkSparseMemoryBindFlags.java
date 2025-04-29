@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseMemoryBindFlags.html">VkSparseMemoryBindFlags</a>
 public final class VkSparseMemoryBindFlags {
-    public static final int SPARSE_MEMORY_BIND_METADATA = 0x1;
+    public static final int METADATA = 0x1;
 
     public static String explain(@enumtype(VkSparseMemoryBindFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & SPARSE_MEMORY_BIND_METADATA) != 0) {
+        if ((flags & METADATA) != 0) {
             detectedFlagBits.add("VK_SPARSE_MEMORY_BIND_METADATA_BIT");
         }
 

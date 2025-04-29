@@ -7,15 +7,15 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalSemaphoreFeatureFlags.html">VkExternalSemaphoreFeatureFlags</a>
 public final class VkExternalSemaphoreFeatureFlags {
-    public static final int EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE = 0x1;
-    public static final int EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE = 0x2;
+    public static final int EXPORTABLE = 0x1;
+    public static final int IMPORTABLE = 0x2;
 
     public static String explain(@enumtype(VkExternalSemaphoreFeatureFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE) != 0) {
+        if ((flags & EXPORTABLE) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT");
         }
-        if ((flags & EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE) != 0) {
+        if ((flags & IMPORTABLE) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT");
         }
 

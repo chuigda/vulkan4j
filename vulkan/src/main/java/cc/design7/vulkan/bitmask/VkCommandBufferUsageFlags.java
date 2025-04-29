@@ -7,19 +7,19 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandBufferUsageFlags.html">VkCommandBufferUsageFlags</a>
 public final class VkCommandBufferUsageFlags {
-    public static final int COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT = 0x1;
-    public static final int COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE = 0x2;
-    public static final int COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE = 0x4;
+    public static final int ONE_TIME_SUBMIT = 0x1;
+    public static final int RENDER_PASS_CONTINUE = 0x2;
+    public static final int SIMULTANEOUS_USE = 0x4;
 
     public static String explain(@enumtype(VkCommandBufferUsageFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT) != 0) {
+        if ((flags & ONE_TIME_SUBMIT) != 0) {
             detectedFlagBits.add("VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT");
         }
-        if ((flags & COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE) != 0) {
+        if ((flags & RENDER_PASS_CONTINUE) != 0) {
             detectedFlagBits.add("VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT");
         }
-        if ((flags & COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE) != 0) {
+        if ((flags & SIMULTANEOUS_USE) != 0) {
             detectedFlagBits.add("VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT");
         }
 

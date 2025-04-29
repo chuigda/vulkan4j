@@ -1,0 +1,21 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMotionInstanceTypeNV.html">VkAccelerationStructureMotionInstanceTypeNV</a>
+public final class VkAccelerationStructureMotionInstanceTypeNV {
+    public static final int STATIC = 0;
+    public static final int MATRIX_MOTION = 1;
+    public static final int SRT_MOTION = 2;
+
+    public static String explain(@enumtype(VkAccelerationStructureMotionInstanceTypeNV.class) int value) {
+        return switch (value) {
+            case VkAccelerationStructureMotionInstanceTypeNV.MATRIX_MOTION -> "VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_MATRIX_MOTION_NV";
+            case VkAccelerationStructureMotionInstanceTypeNV.SRT_MOTION -> "VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_SRT_MOTION_NV";
+            case VkAccelerationStructureMotionInstanceTypeNV.STATIC -> "VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_STATIC_NV";
+            default -> "Unknown VkAccelerationStructureMotionInstanceTypeNV: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkAccelerationStructureMotionInstanceTypeNV() {}
+}

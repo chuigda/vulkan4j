@@ -7,15 +7,15 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCacheCreateFlags.html">VkPipelineCacheCreateFlags</a>
 public final class VkPipelineCacheCreateFlags {
-    public static final int PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED = 0x1;
-    public static final int PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_KHR = 0x8;
+    public static final int EXTERNALLY_SYNCHRONIZED = 0x1;
+    public static final int INTERNALLY_SYNCHRONIZED_MERGE_KHR = 0x8;
 
     public static String explain(@enumtype(VkPipelineCacheCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED) != 0) {
+        if ((flags & EXTERNALLY_SYNCHRONIZED) != 0) {
             detectedFlagBits.add("VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT");
         }
-        if ((flags & PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_KHR) != 0) {
+        if ((flags & INTERNALLY_SYNCHRONIZED_MERGE_KHR) != 0) {
             detectedFlagBits.add("VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR");
         }
 

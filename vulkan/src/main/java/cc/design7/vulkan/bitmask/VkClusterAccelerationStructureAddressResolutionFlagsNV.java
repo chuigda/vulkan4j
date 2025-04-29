@@ -7,31 +7,31 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureAddressResolutionFlagsNV.html">VkClusterAccelerationStructureAddressResolutionFlagsNV</a>
 public final class VkClusterAccelerationStructureAddressResolutionFlagsNV {
-    public static final int CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_ADDRESS_ARRAY = 0x4;
-    public static final int CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_IMPLICIT_DATA = 0x1;
-    public static final int CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_SIZES_ARRAY = 0x8;
-    public static final int CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SCRATCH_DATA = 0x2;
-    public static final int CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SRC_INFOS_ARRAY = 0x10;
-    public static final int CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SRC_INFOS_COUNT = 0x20;
+    public static final int INDIRECTED_DST_ADDRESS_ARRAY = 0x4;
+    public static final int INDIRECTED_DST_IMPLICIT_DATA = 0x1;
+    public static final int INDIRECTED_DST_SIZES_ARRAY = 0x8;
+    public static final int INDIRECTED_SCRATCH_DATA = 0x2;
+    public static final int INDIRECTED_SRC_INFOS_ARRAY = 0x10;
+    public static final int INDIRECTED_SRC_INFOS_COUNT = 0x20;
 
     public static String explain(@enumtype(VkClusterAccelerationStructureAddressResolutionFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_ADDRESS_ARRAY) != 0) {
+        if ((flags & INDIRECTED_DST_ADDRESS_ARRAY) != 0) {
             detectedFlagBits.add("VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_ADDRESS_ARRAY_BIT_NV");
         }
-        if ((flags & CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_IMPLICIT_DATA) != 0) {
+        if ((flags & INDIRECTED_DST_IMPLICIT_DATA) != 0) {
             detectedFlagBits.add("VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_IMPLICIT_DATA_BIT_NV");
         }
-        if ((flags & CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_SIZES_ARRAY) != 0) {
+        if ((flags & INDIRECTED_DST_SIZES_ARRAY) != 0) {
             detectedFlagBits.add("VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_SIZES_ARRAY_BIT_NV");
         }
-        if ((flags & CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SCRATCH_DATA) != 0) {
+        if ((flags & INDIRECTED_SCRATCH_DATA) != 0) {
             detectedFlagBits.add("VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SCRATCH_DATA_BIT_NV");
         }
-        if ((flags & CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SRC_INFOS_ARRAY) != 0) {
+        if ((flags & INDIRECTED_SRC_INFOS_ARRAY) != 0) {
             detectedFlagBits.add("VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SRC_INFOS_ARRAY_BIT_NV");
         }
-        if ((flags & CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SRC_INFOS_COUNT) != 0) {
+        if ((flags & INDIRECTED_SRC_INFOS_COUNT) != 0) {
             detectedFlagBits.add("VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SRC_INFOS_COUNT_BIT_NV");
         }
 

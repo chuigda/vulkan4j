@@ -1,0 +1,127 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkObjectType.html">VkObjectType</a>
+public final class VkObjectType {
+    public static final int UNKNOWN = 0;
+    public static final int INSTANCE = 1;
+    public static final int PHYSICAL_DEVICE = 2;
+    public static final int DEVICE = 3;
+    public static final int QUEUE = 4;
+    public static final int SEMAPHORE = 5;
+    public static final int COMMAND_BUFFER = 6;
+    public static final int FENCE = 7;
+    public static final int DEVICE_MEMORY = 8;
+    public static final int BUFFER = 9;
+    public static final int IMAGE = 10;
+    public static final int EVENT = 11;
+    public static final int QUERY_POOL = 12;
+    public static final int BUFFER_VIEW = 13;
+    public static final int IMAGE_VIEW = 14;
+    public static final int SHADER_MODULE = 15;
+    public static final int PIPELINE_CACHE = 16;
+    public static final int PIPELINE_LAYOUT = 17;
+    public static final int RENDER_PASS = 18;
+    public static final int PIPELINE = 19;
+    public static final int DESCRIPTOR_SET_LAYOUT = 20;
+    public static final int SAMPLER = 21;
+    public static final int DESCRIPTOR_POOL = 22;
+    public static final int DESCRIPTOR_SET = 23;
+    public static final int FRAMEBUFFER = 24;
+    public static final int COMMAND_POOL = 25;
+    public static final int SAMPLER_YCBCR_CONVERSION = 1000156000;
+    public static final int DESCRIPTOR_UPDATE_TEMPLATE = 1000085000;
+    public static final int PRIVATE_DATA_SLOT = 1000295000;
+    public static final int SURFACE_KHR = 1000000000;
+    public static final int SWAPCHAIN_KHR = 1000001000;
+    public static final int DISPLAY_KHR = 1000002000;
+    public static final int DISPLAY_MODE_KHR = 1000002001;
+    public static final int DEBUG_REPORT_CALLBACK_EXT = 1000011000;
+    public static final int VIDEO_SESSION_KHR = 1000023000;
+    public static final int VIDEO_SESSION_PARAMETERS_KHR = 1000023001;
+    public static final int CU_MODULE_NVX = 1000029000;
+    public static final int CU_FUNCTION_NVX = 1000029001;
+    public static final int DEBUG_UTILS_MESSENGER_EXT = 1000128000;
+    public static final int ACCELERATION_STRUCTURE_KHR = 1000150000;
+    public static final int VALIDATION_CACHE_EXT = 1000160000;
+    public static final int ACCELERATION_STRUCTURE_NV = 1000165000;
+    public static final int PERFORMANCE_CONFIGURATION_INTEL = 1000210000;
+    public static final int DEFERRED_OPERATION_KHR = 1000268000;
+    public static final int INDIRECT_COMMANDS_LAYOUT_NV = 1000277000;
+    public static final int CUDA_MODULE_NV = 1000307000;
+    public static final int CUDA_FUNCTION_NV = 1000307001;
+    public static final int BUFFER_COLLECTION_FUCHSIA = 1000366000;
+    public static final int MICROMAP_EXT = 1000396000;
+    public static final int OPTICAL_FLOW_SESSION_NV = 1000464000;
+    public static final int SHADER_EXT = 1000482000;
+    public static final int PIPELINE_BINARY_KHR = 1000483000;
+    public static final int SEMAPHORE_SCI_SYNC_POOL_NV = 1000489000;
+    public static final int EXTERNAL_COMPUTE_QUEUE_NV = 1000556000;
+    public static final int INDIRECT_COMMANDS_LAYOUT_EXT = 1000572000;
+    public static final int INDIRECT_EXECUTION_SET_EXT = 1000572001;
+
+    public static String explain(@enumtype(VkObjectType.class) int value) {
+        return switch (value) {
+            case VkObjectType.ACCELERATION_STRUCTURE_KHR -> "VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR";
+            case VkObjectType.ACCELERATION_STRUCTURE_NV -> "VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV";
+            case VkObjectType.BUFFER -> "VK_OBJECT_TYPE_BUFFER";
+            case VkObjectType.BUFFER_COLLECTION_FUCHSIA -> "VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA";
+            case VkObjectType.BUFFER_VIEW -> "VK_OBJECT_TYPE_BUFFER_VIEW";
+            case VkObjectType.COMMAND_BUFFER -> "VK_OBJECT_TYPE_COMMAND_BUFFER";
+            case VkObjectType.COMMAND_POOL -> "VK_OBJECT_TYPE_COMMAND_POOL";
+            case VkObjectType.CUDA_FUNCTION_NV -> "VK_OBJECT_TYPE_CUDA_FUNCTION_NV";
+            case VkObjectType.CUDA_MODULE_NV -> "VK_OBJECT_TYPE_CUDA_MODULE_NV";
+            case VkObjectType.CU_FUNCTION_NVX -> "VK_OBJECT_TYPE_CU_FUNCTION_NVX";
+            case VkObjectType.CU_MODULE_NVX -> "VK_OBJECT_TYPE_CU_MODULE_NVX";
+            case VkObjectType.DEBUG_REPORT_CALLBACK_EXT -> "VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT";
+            case VkObjectType.DEBUG_UTILS_MESSENGER_EXT -> "VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT";
+            case VkObjectType.DEFERRED_OPERATION_KHR -> "VK_OBJECT_TYPE_DEFERRED_OPERATION_KHR";
+            case VkObjectType.DESCRIPTOR_POOL -> "VK_OBJECT_TYPE_DESCRIPTOR_POOL";
+            case VkObjectType.DESCRIPTOR_SET -> "VK_OBJECT_TYPE_DESCRIPTOR_SET";
+            case VkObjectType.DESCRIPTOR_SET_LAYOUT -> "VK_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT";
+            case VkObjectType.DESCRIPTOR_UPDATE_TEMPLATE -> "VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE";
+            case VkObjectType.DEVICE -> "VK_OBJECT_TYPE_DEVICE";
+            case VkObjectType.DEVICE_MEMORY -> "VK_OBJECT_TYPE_DEVICE_MEMORY";
+            case VkObjectType.DISPLAY_KHR -> "VK_OBJECT_TYPE_DISPLAY_KHR";
+            case VkObjectType.DISPLAY_MODE_KHR -> "VK_OBJECT_TYPE_DISPLAY_MODE_KHR";
+            case VkObjectType.EVENT -> "VK_OBJECT_TYPE_EVENT";
+            case VkObjectType.EXTERNAL_COMPUTE_QUEUE_NV -> "VK_OBJECT_TYPE_EXTERNAL_COMPUTE_QUEUE_NV";
+            case VkObjectType.FENCE -> "VK_OBJECT_TYPE_FENCE";
+            case VkObjectType.FRAMEBUFFER -> "VK_OBJECT_TYPE_FRAMEBUFFER";
+            case VkObjectType.IMAGE -> "VK_OBJECT_TYPE_IMAGE";
+            case VkObjectType.IMAGE_VIEW -> "VK_OBJECT_TYPE_IMAGE_VIEW";
+            case VkObjectType.INDIRECT_COMMANDS_LAYOUT_EXT -> "VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT";
+            case VkObjectType.INDIRECT_COMMANDS_LAYOUT_NV -> "VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NV";
+            case VkObjectType.INDIRECT_EXECUTION_SET_EXT -> "VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT";
+            case VkObjectType.INSTANCE -> "VK_OBJECT_TYPE_INSTANCE";
+            case VkObjectType.MICROMAP_EXT -> "VK_OBJECT_TYPE_MICROMAP_EXT";
+            case VkObjectType.OPTICAL_FLOW_SESSION_NV -> "VK_OBJECT_TYPE_OPTICAL_FLOW_SESSION_NV";
+            case VkObjectType.PERFORMANCE_CONFIGURATION_INTEL -> "VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL";
+            case VkObjectType.PHYSICAL_DEVICE -> "VK_OBJECT_TYPE_PHYSICAL_DEVICE";
+            case VkObjectType.PIPELINE -> "VK_OBJECT_TYPE_PIPELINE";
+            case VkObjectType.PIPELINE_BINARY_KHR -> "VK_OBJECT_TYPE_PIPELINE_BINARY_KHR";
+            case VkObjectType.PIPELINE_CACHE -> "VK_OBJECT_TYPE_PIPELINE_CACHE";
+            case VkObjectType.PIPELINE_LAYOUT -> "VK_OBJECT_TYPE_PIPELINE_LAYOUT";
+            case VkObjectType.PRIVATE_DATA_SLOT -> "VK_OBJECT_TYPE_PRIVATE_DATA_SLOT";
+            case VkObjectType.QUERY_POOL -> "VK_OBJECT_TYPE_QUERY_POOL";
+            case VkObjectType.QUEUE -> "VK_OBJECT_TYPE_QUEUE";
+            case VkObjectType.RENDER_PASS -> "VK_OBJECT_TYPE_RENDER_PASS";
+            case VkObjectType.SAMPLER -> "VK_OBJECT_TYPE_SAMPLER";
+            case VkObjectType.SAMPLER_YCBCR_CONVERSION -> "VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION";
+            case VkObjectType.SEMAPHORE -> "VK_OBJECT_TYPE_SEMAPHORE";
+            case VkObjectType.SEMAPHORE_SCI_SYNC_POOL_NV -> "VK_OBJECT_TYPE_SEMAPHORE_SCI_SYNC_POOL_NV";
+            case VkObjectType.SHADER_EXT -> "VK_OBJECT_TYPE_SHADER_EXT";
+            case VkObjectType.SHADER_MODULE -> "VK_OBJECT_TYPE_SHADER_MODULE";
+            case VkObjectType.SURFACE_KHR -> "VK_OBJECT_TYPE_SURFACE_KHR";
+            case VkObjectType.SWAPCHAIN_KHR -> "VK_OBJECT_TYPE_SWAPCHAIN_KHR";
+            case VkObjectType.UNKNOWN -> "VK_OBJECT_TYPE_UNKNOWN";
+            case VkObjectType.VALIDATION_CACHE_EXT -> "VK_OBJECT_TYPE_VALIDATION_CACHE_EXT";
+            case VkObjectType.VIDEO_SESSION_KHR -> "VK_OBJECT_TYPE_VIDEO_SESSION_KHR";
+            case VkObjectType.VIDEO_SESSION_PARAMETERS_KHR -> "VK_OBJECT_TYPE_VIDEO_SESSION_PARAMETERS_KHR";
+            default -> "Unknown VkObjectType: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkObjectType() {}
+}

@@ -7,11 +7,11 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassCreateFlags.html">VkRenderPassCreateFlags</a>
 public final class VkRenderPassCreateFlags {
-    public static final int RENDER_PASS_CREATE_TRANSFORM_QCOM = 0x2;
+    public static final int TRANSFORM_QCOM = 0x2;
 
     public static String explain(@enumtype(VkRenderPassCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & RENDER_PASS_CREATE_TRANSFORM_QCOM) != 0) {
+        if ((flags & TRANSFORM_QCOM) != 0) {
             detectedFlagBits.add("VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM");
         }
 

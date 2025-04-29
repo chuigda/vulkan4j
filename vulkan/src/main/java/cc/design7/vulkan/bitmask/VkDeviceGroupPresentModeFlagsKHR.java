@@ -7,23 +7,23 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceGroupPresentModeFlagsKHR.html">VkDeviceGroupPresentModeFlagsKHR</a>
 public final class VkDeviceGroupPresentModeFlagsKHR {
-    public static final int DEVICE_GROUP_PRESENT_MODE_LOCAL = 0x1;
-    public static final int DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE = 0x8;
-    public static final int DEVICE_GROUP_PRESENT_MODE_REMOTE = 0x2;
-    public static final int DEVICE_GROUP_PRESENT_MODE_SUM = 0x4;
+    public static final int LOCAL = 0x1;
+    public static final int LOCAL_MULTI_DEVICE = 0x8;
+    public static final int REMOTE = 0x2;
+    public static final int SUM = 0x4;
 
     public static String explain(@enumtype(VkDeviceGroupPresentModeFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & DEVICE_GROUP_PRESENT_MODE_LOCAL) != 0) {
+        if ((flags & LOCAL) != 0) {
             detectedFlagBits.add("VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR");
         }
-        if ((flags & DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE) != 0) {
+        if ((flags & LOCAL_MULTI_DEVICE) != 0) {
             detectedFlagBits.add("VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR");
         }
-        if ((flags & DEVICE_GROUP_PRESENT_MODE_REMOTE) != 0) {
+        if ((flags & REMOTE) != 0) {
             detectedFlagBits.add("VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR");
         }
-        if ((flags & DEVICE_GROUP_PRESENT_MODE_SUM) != 0) {
+        if ((flags & SUM) != 0) {
             detectedFlagBits.add("VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR");
         }
 

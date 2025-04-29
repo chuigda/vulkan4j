@@ -1,0 +1,21 @@
+package cc.design7.vulkan.enumtype;
+
+import cc.design7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1RateControlGroupKHR.html">VkVideoEncodeAV1RateControlGroupKHR</a>
+public final class VkVideoEncodeAV1RateControlGroupKHR {
+    public static final int VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA = 0;
+    public static final int VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE = 1;
+    public static final int VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE = 2;
+
+    public static String explain(@enumtype(VkVideoEncodeAV1RateControlGroupKHR.class) int value) {
+        return switch (value) {
+            case VkVideoEncodeAV1RateControlGroupKHR.VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE -> "VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE_KHR";
+            case VkVideoEncodeAV1RateControlGroupKHR.VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA -> "VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA_KHR";
+            case VkVideoEncodeAV1RateControlGroupKHR.VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE -> "VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE_KHR";
+            default -> "Unknown VkVideoEncodeAV1RateControlGroupKHR: " + value;
+        };
+    }
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkVideoEncodeAV1RateControlGroupKHR() {}
+}

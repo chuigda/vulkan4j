@@ -7,19 +7,19 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStencilFaceFlags.html">VkStencilFaceFlags</a>
 public final class VkStencilFaceFlags {
-    public static final int STENCIL_FACE_BACK = 0x2;
-    public static final int STENCIL_FACE_FRONT_AND_BACK = 0x3;
-    public static final int STENCIL_FACE_FRONT = 0x1;
+    public static final int BACK = 0x2;
+    public static final int FRONT_AND_BACK = 0x3;
+    public static final int FRONT = 0x1;
 
     public static String explain(@enumtype(VkStencilFaceFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & STENCIL_FACE_BACK) != 0) {
+        if ((flags & BACK) != 0) {
             detectedFlagBits.add("VK_STENCIL_FACE_BACK_BIT");
         }
-        if ((flags & STENCIL_FACE_FRONT_AND_BACK) != 0) {
+        if ((flags & FRONT_AND_BACK) != 0) {
             detectedFlagBits.add("VK_STENCIL_FACE_FRONT_AND_BACK");
         }
-        if ((flags & STENCIL_FACE_FRONT) != 0) {
+        if ((flags & FRONT) != 0) {
             detectedFlagBits.add("VK_STENCIL_FACE_FRONT_BIT");
         }
 
