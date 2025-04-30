@@ -4,8 +4,9 @@ import cc.design7.ffm.annotation.unsigned;
 
 import java.lang.foreign.AddressLayout;
 import java.lang.foreign.MemorySegment;
+import java.nio.ByteOrder;
 
-public final class BitfieldRead {
+public final class BitfieldUtil {
     public static @unsigned int readBits(
             MemorySegment segment,
             @unsigned int startBit,
@@ -32,17 +33,7 @@ public final class BitfieldRead {
             throw new IllegalArgumentException("endBit must be no bigger than 8");
         }
 
-        return readBitsUnchecked(value, startBit, endBit);
-    }
-
-    public static @unsigned byte readBitsUnchecked(
-            @unsigned byte value,
-            @unsigned int startBit,
-            @unsigned int endBit
-    ) {
-        int shiftRight = Byte.SIZE - endBit;
-        int mask = (1 << (endBit - startBit)) - 1;
-        return (byte) ((value >> shiftRight) & mask);
+        return impl.readBitsUnchecked(value, startBit, endBit);
     }
 
     public static @unsigned short readBits(
@@ -58,19 +49,7 @@ public final class BitfieldRead {
             throw new IllegalArgumentException("endBit must be no bigger than 16");
         }
 
-        int shiftRight = Short.SIZE - endBit;
-        int mask = (1 << (endBit - startBit)) - 1;
-        return (short) ((value >> shiftRight) & mask);
-    }
-
-    public static @unsigned short readBitsUnchecked(
-            @unsigned short value,
-            @unsigned int startBit,
-            @unsigned int endBit
-    ) {
-        int shiftRight = Short.SIZE - endBit;
-        int mask = (1 << (endBit - startBit)) - 1;
-        return (short) ((value >> shiftRight) & mask);
+        return impl.readBitsUnchecked(value, startBit, endBit);
     }
 
     public static @unsigned int readBits(
@@ -86,8 +65,29 @@ public final class BitfieldRead {
             throw new IllegalArgumentException("endBit must be no bigger than 32");
         }
 
-        int shiftRight = Integer.SIZE - endBit;
-        long mask = (1L << (endBit - startBit)) - 1;
-        return (int) ((value >> shiftRight) & mask);
+        return impl.readBitsUnchecked(value, startBit, endBit);
+    }
+
+    private static final IBitfieldUtilImpl impl;
+    static {
+        // on both Windows and System V, bitfields are packed from "right to left"
+        // on ARM, bitfield packing depends on the byte order
+
+        // TODO this may be not very precise, needs refinement
+
+        String osName = System.getProperty("os.name").toLowerCase();
+        String arch = System.getProperty("os.arch").toLowerCase();
+
+        if (osName.contains("windows") || osName.contains("linux")) {
+            impl = new BitfieldUtilImplR2L();
+        } else if (arch.contains("arm") || arch.contains("aarch")) {
+            if (ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN) {
+                impl = new BitfieldUtilImplL2R();
+            } else {
+                impl = new BitfieldUtilImplR2L();
+            }
+        } else {
+            throw new UnsupportedOperationException("Unsupported OS or architecture: " + osName + " " + arch);
+        }
     }
 }
