@@ -14,6 +14,7 @@ public final class VkDirectDriverLoadingModeLUNARG {
             default -> "Unknown VkDirectDriverLoadingModeLUNARG: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkDirectDriverLoadingModeLUNARG() {}
 }

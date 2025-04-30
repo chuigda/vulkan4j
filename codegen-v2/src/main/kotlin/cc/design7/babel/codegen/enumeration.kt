@@ -64,6 +64,7 @@ fun generateEnumeration(
                 +"};"
             }
             +"}"
+            +""
         }
 
         +prohibitUserConstruct(enumeration.name)

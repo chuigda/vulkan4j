@@ -26,6 +26,7 @@ public final class VkViewportCoordinateSwizzleNV {
             default -> "Unknown VkViewportCoordinateSwizzleNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkViewportCoordinateSwizzleNV() {}
 }

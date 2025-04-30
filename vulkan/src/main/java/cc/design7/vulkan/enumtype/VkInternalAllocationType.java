@@ -12,6 +12,7 @@ public final class VkInternalAllocationType {
             default -> "Unknown VkInternalAllocationType: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkInternalAllocationType() {}
 }

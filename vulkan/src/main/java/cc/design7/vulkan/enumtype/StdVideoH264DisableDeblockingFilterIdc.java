@@ -18,6 +18,7 @@ public final class StdVideoH264DisableDeblockingFilterIdc {
             default -> "Unknown StdVideoH264DisableDeblockingFilterIdc: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoH264DisableDeblockingFilterIdc() {}
 }

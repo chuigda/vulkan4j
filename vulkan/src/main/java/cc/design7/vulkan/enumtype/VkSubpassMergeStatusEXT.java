@@ -38,6 +38,7 @@ public final class VkSubpassMergeStatusEXT {
             default -> "Unknown VkSubpassMergeStatusEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkSubpassMergeStatusEXT() {}
 }

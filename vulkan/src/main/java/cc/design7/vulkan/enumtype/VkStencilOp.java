@@ -26,6 +26,7 @@ public final class VkStencilOp {
             default -> "Unknown VkStencilOp: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkStencilOp() {}
 }

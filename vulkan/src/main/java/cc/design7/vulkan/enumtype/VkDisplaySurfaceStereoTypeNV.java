@@ -18,6 +18,7 @@ public final class VkDisplaySurfaceStereoTypeNV {
             default -> "Unknown VkDisplaySurfaceStereoTypeNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkDisplaySurfaceStereoTypeNV() {}
 }

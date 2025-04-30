@@ -18,6 +18,7 @@ public final class VkCubicFilterWeightsQCOM {
             default -> "Unknown VkCubicFilterWeightsQCOM: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkCubicFilterWeightsQCOM() {}
 }

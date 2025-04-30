@@ -20,6 +20,7 @@ public final class VkPerformanceValueTypeINTEL {
             default -> "Unknown VkPerformanceValueTypeINTEL: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkPerformanceValueTypeINTEL() {}
 }

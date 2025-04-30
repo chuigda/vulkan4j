@@ -12,6 +12,7 @@ public final class VkDeviceFaultVendorBinaryHeaderVersionEXT {
             default -> "Unknown VkDeviceFaultVendorBinaryHeaderVersionEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkDeviceFaultVendorBinaryHeaderVersionEXT() {}
 }

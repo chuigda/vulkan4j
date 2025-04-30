@@ -26,6 +26,7 @@ public final class VkVendorId {
             default -> "Unknown VkVendorId: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkVendorId() {}
 }

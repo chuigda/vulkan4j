@@ -14,6 +14,7 @@ public final class VkSharingMode {
             default -> "Unknown VkSharingMode: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkSharingMode() {}
 }

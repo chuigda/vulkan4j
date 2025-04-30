@@ -14,6 +14,7 @@ public final class VkRayTracingInvocationReorderModeNV {
             default -> "Unknown VkRayTracingInvocationReorderModeNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkRayTracingInvocationReorderModeNV() {}
 }

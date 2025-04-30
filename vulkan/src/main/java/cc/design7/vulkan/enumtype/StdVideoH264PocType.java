@@ -18,6 +18,7 @@ public final class StdVideoH264PocType {
             default -> "Unknown StdVideoH264PocType: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoH264PocType() {}
 }

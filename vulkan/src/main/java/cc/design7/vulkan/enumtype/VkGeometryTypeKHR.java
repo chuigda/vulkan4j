@@ -20,6 +20,7 @@ public final class VkGeometryTypeKHR {
             default -> "Unknown VkGeometryTypeKHR: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkGeometryTypeKHR() {}
 }

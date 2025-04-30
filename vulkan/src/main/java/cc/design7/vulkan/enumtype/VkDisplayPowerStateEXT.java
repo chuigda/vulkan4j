@@ -16,6 +16,7 @@ public final class VkDisplayPowerStateEXT {
             default -> "Unknown VkDisplayPowerStateEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkDisplayPowerStateEXT() {}
 }

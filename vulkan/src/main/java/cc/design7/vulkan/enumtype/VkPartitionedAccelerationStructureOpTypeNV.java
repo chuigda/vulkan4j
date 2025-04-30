@@ -16,6 +16,7 @@ public final class VkPartitionedAccelerationStructureOpTypeNV {
             default -> "Unknown VkPartitionedAccelerationStructureOpTypeNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkPartitionedAccelerationStructureOpTypeNV() {}
 }

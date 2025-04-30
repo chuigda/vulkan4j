@@ -26,6 +26,7 @@ public final class StdVideoH264NonVclNaluType {
             default -> "Unknown StdVideoH264NonVclNaluType: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoH264NonVclNaluType() {}
 }

@@ -20,6 +20,7 @@ public final class VkFragmentShadingRateCombinerOpKHR {
             default -> "Unknown VkFragmentShadingRateCombinerOpKHR: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkFragmentShadingRateCombinerOpKHR() {}
 }

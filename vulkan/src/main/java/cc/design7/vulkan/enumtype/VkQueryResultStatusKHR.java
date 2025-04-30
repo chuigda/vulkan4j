@@ -18,6 +18,7 @@ public final class VkQueryResultStatusKHR {
             default -> "Unknown VkQueryResultStatusKHR: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkQueryResultStatusKHR() {}
 }

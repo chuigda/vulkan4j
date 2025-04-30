@@ -14,6 +14,7 @@ public final class VkSciSyncPrimitiveTypeNV {
             default -> "Unknown VkSciSyncPrimitiveTypeNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkSciSyncPrimitiveTypeNV() {}
 }

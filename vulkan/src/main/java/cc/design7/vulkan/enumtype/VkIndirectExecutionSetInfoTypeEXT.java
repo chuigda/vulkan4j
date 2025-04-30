@@ -14,6 +14,7 @@ public final class VkIndirectExecutionSetInfoTypeEXT {
             default -> "Unknown VkIndirectExecutionSetInfoTypeEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkIndirectExecutionSetInfoTypeEXT() {}
 }

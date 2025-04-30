@@ -22,6 +22,7 @@ public final class StdVideoAV1InterpolationFilter {
             default -> "Unknown StdVideoAV1InterpolationFilter: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoAV1InterpolationFilter() {}
 }

@@ -42,6 +42,7 @@ public final class VkLogicOp {
             default -> "Unknown VkLogicOp: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkLogicOp() {}
 }

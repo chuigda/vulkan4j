@@ -18,6 +18,7 @@ public final class StdVideoH264CabacInitIdc {
             default -> "Unknown StdVideoH264CabacInitIdc: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoH264CabacInitIdc() {}
 }

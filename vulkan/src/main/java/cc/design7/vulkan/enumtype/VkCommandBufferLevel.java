@@ -14,6 +14,7 @@ public final class VkCommandBufferLevel {
             default -> "Unknown VkCommandBufferLevel: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkCommandBufferLevel() {}
 }

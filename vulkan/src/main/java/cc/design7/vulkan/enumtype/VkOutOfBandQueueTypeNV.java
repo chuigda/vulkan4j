@@ -14,6 +14,7 @@ public final class VkOutOfBandQueueTypeNV {
             default -> "Unknown VkOutOfBandQueueTypeNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkOutOfBandQueueTypeNV() {}
 }

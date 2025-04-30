@@ -16,6 +16,7 @@ public final class VkConservativeRasterizationModeEXT {
             default -> "Unknown VkConservativeRasterizationModeEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkConservativeRasterizationModeEXT() {}
 }

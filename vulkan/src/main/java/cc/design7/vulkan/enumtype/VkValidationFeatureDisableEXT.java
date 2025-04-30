@@ -26,6 +26,7 @@ public final class VkValidationFeatureDisableEXT {
             default -> "Unknown VkValidationFeatureDisableEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkValidationFeatureDisableEXT() {}
 }

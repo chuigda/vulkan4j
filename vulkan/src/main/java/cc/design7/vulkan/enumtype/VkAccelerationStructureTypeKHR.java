@@ -16,6 +16,7 @@ public final class VkAccelerationStructureTypeKHR {
             default -> "Unknown VkAccelerationStructureTypeKHR: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkAccelerationStructureTypeKHR() {}
 }

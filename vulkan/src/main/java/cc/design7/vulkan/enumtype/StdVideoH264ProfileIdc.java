@@ -20,6 +20,7 @@ public final class StdVideoH264ProfileIdc {
             default -> "Unknown StdVideoH264ProfileIdc: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoH264ProfileIdc() {}
 }

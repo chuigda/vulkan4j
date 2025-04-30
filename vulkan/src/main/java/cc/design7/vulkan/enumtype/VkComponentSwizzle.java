@@ -24,6 +24,7 @@ public final class VkComponentSwizzle {
             default -> "Unknown VkComponentSwizzle: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkComponentSwizzle() {}
 }

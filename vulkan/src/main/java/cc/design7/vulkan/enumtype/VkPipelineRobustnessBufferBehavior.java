@@ -18,6 +18,7 @@ public final class VkPipelineRobustnessBufferBehavior {
             default -> "Unknown VkPipelineRobustnessBufferBehavior: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkPipelineRobustnessBufferBehavior() {}
 }

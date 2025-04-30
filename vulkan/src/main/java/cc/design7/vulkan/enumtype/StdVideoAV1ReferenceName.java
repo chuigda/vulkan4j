@@ -28,6 +28,7 @@ public final class StdVideoAV1ReferenceName {
             default -> "Unknown StdVideoAV1ReferenceName: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoAV1ReferenceName() {}
 }

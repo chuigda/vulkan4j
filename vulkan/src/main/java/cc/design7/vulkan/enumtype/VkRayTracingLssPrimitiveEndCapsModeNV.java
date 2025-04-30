@@ -14,6 +14,7 @@ public final class VkRayTracingLssPrimitiveEndCapsModeNV {
             default -> "Unknown VkRayTracingLssPrimitiveEndCapsModeNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkRayTracingLssPrimitiveEndCapsModeNV() {}
 }

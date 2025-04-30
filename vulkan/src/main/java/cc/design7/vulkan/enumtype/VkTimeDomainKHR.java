@@ -18,6 +18,7 @@ public final class VkTimeDomainKHR {
             default -> "Unknown VkTimeDomainKHR: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkTimeDomainKHR() {}
 }

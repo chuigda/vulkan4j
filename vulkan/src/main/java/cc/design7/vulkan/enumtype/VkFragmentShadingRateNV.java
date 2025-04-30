@@ -34,6 +34,7 @@ public final class VkFragmentShadingRateNV {
             default -> "Unknown VkFragmentShadingRateNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkFragmentShadingRateNV() {}
 }

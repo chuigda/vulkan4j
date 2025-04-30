@@ -18,6 +18,7 @@ public final class VkQueueGlobalPriority {
             default -> "Unknown VkQueueGlobalPriority: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkQueueGlobalPriority() {}
 }

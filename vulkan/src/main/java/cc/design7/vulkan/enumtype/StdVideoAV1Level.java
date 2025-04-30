@@ -60,6 +60,7 @@ public final class StdVideoAV1Level {
             default -> "Unknown StdVideoAV1Level: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoAV1Level() {}
 }

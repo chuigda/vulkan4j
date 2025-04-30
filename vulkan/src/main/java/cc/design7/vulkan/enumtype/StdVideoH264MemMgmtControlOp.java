@@ -26,6 +26,7 @@ public final class StdVideoH264MemMgmtControlOp {
             default -> "Unknown StdVideoH264MemMgmtControlOp: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoH264MemMgmtControlOp() {}
 }

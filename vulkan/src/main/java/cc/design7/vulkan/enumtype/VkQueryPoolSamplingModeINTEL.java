@@ -12,6 +12,7 @@ public final class VkQueryPoolSamplingModeINTEL {
             default -> "Unknown VkQueryPoolSamplingModeINTEL: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkQueryPoolSamplingModeINTEL() {}
 }

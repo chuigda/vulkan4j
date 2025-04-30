@@ -32,6 +32,7 @@ public final class VkPerformanceCounterUnitKHR {
             default -> "Unknown VkPerformanceCounterUnitKHR: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkPerformanceCounterUnitKHR() {}
 }

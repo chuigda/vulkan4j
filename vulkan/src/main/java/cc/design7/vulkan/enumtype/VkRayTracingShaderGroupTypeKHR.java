@@ -16,6 +16,7 @@ public final class VkRayTracingShaderGroupTypeKHR {
             default -> "Unknown VkRayTracingShaderGroupTypeKHR: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkRayTracingShaderGroupTypeKHR() {}
 }

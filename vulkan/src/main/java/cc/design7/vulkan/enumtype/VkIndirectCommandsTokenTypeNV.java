@@ -32,6 +32,7 @@ public final class VkIndirectCommandsTokenTypeNV {
             default -> "Unknown VkIndirectCommandsTokenTypeNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkIndirectCommandsTokenTypeNV() {}
 }

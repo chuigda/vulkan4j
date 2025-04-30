@@ -14,6 +14,7 @@ public final class VkSemaphoreType {
             default -> "Unknown VkSemaphoreType: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkSemaphoreType() {}
 }

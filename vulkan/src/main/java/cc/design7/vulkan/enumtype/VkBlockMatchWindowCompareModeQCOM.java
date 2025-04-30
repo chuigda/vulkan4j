@@ -14,6 +14,7 @@ public final class VkBlockMatchWindowCompareModeQCOM {
             default -> "Unknown VkBlockMatchWindowCompareModeQCOM: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkBlockMatchWindowCompareModeQCOM() {}
 }

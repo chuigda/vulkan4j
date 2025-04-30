@@ -16,6 +16,7 @@ public final class VkMemoryOverallocationBehaviorAMD {
             default -> "Unknown VkMemoryOverallocationBehaviorAMD: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkMemoryOverallocationBehaviorAMD() {}
 }

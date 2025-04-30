@@ -14,6 +14,7 @@ public final class VkDescriptorUpdateTemplateType {
             default -> "Unknown VkDescriptorUpdateTemplateType: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkDescriptorUpdateTemplateType() {}
 }

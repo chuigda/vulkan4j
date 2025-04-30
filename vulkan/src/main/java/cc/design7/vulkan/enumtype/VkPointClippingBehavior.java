@@ -14,6 +14,7 @@ public final class VkPointClippingBehavior {
             default -> "Unknown VkPointClippingBehavior: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkPointClippingBehavior() {}
 }

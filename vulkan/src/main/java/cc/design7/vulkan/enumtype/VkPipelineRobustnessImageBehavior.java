@@ -18,6 +18,7 @@ public final class VkPipelineRobustnessImageBehavior {
             default -> "Unknown VkPipelineRobustnessImageBehavior: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkPipelineRobustnessImageBehavior() {}
 }

@@ -14,6 +14,7 @@ public final class VkTessellationDomainOrigin {
             default -> "Unknown VkTessellationDomainOrigin: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkTessellationDomainOrigin() {}
 }

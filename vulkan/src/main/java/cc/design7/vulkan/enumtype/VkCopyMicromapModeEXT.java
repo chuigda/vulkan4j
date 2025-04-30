@@ -18,6 +18,7 @@ public final class VkCopyMicromapModeEXT {
             default -> "Unknown VkCopyMicromapModeEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkCopyMicromapModeEXT() {}
 }

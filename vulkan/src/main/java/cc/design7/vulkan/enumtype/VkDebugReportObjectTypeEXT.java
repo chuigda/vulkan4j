@@ -92,6 +92,7 @@ public final class VkDebugReportObjectTypeEXT {
             default -> "Unknown VkDebugReportObjectTypeEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkDebugReportObjectTypeEXT() {}
 }

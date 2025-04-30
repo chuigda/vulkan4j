@@ -20,6 +20,7 @@ public final class StdVideoAV1ChromaSamplePosition {
             default -> "Unknown StdVideoAV1ChromaSamplePosition: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoAV1ChromaSamplePosition() {}
 }

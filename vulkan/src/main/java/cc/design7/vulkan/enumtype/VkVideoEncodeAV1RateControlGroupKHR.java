@@ -16,6 +16,7 @@ public final class VkVideoEncodeAV1RateControlGroupKHR {
             default -> "Unknown VkVideoEncodeAV1RateControlGroupKHR: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkVideoEncodeAV1RateControlGroupKHR() {}
 }

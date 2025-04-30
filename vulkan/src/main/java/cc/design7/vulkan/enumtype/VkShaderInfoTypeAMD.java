@@ -16,6 +16,7 @@ public final class VkShaderInfoTypeAMD {
             default -> "Unknown VkShaderInfoTypeAMD: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkShaderInfoTypeAMD() {}
 }

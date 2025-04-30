@@ -20,6 +20,7 @@ public final class VkPhysicalDeviceLayeredApiKHR {
             default -> "Unknown VkPhysicalDeviceLayeredApiKHR: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkPhysicalDeviceLayeredApiKHR() {}
 }

@@ -26,6 +26,7 @@ public final class VkCompareOp {
             default -> "Unknown VkCompareOp: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkCompareOp() {}
 }

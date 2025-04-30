@@ -16,6 +16,7 @@ public final class VkImageTiling {
             default -> "Unknown VkImageTiling: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkImageTiling() {}
 }

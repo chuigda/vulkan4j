@@ -50,6 +50,7 @@ public final class StdVideoH264LevelIdc {
             default -> "Unknown StdVideoH264LevelIdc: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoH264LevelIdc() {}
 }

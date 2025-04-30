@@ -122,6 +122,7 @@ public final class VkObjectType {
             default -> "Unknown VkObjectType: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkObjectType() {}
 }

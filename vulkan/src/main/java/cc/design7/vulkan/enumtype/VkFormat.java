@@ -510,6 +510,7 @@ public final class VkFormat {
             default -> "Unknown VkFormat: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkFormat() {}
 }

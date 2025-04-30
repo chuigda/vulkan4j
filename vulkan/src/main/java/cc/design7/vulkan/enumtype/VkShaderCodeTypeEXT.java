@@ -14,6 +14,7 @@ public final class VkShaderCodeTypeEXT {
             default -> "Unknown VkShaderCodeTypeEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkShaderCodeTypeEXT() {}
 }

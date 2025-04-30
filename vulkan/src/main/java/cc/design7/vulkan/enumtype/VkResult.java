@@ -108,6 +108,7 @@ public final class VkResult {
             default -> "Unknown VkResult: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkResult() {}
 }

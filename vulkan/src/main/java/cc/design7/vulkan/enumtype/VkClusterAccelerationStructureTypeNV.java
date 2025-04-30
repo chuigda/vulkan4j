@@ -16,6 +16,7 @@ public final class VkClusterAccelerationStructureTypeNV {
             default -> "Unknown VkClusterAccelerationStructureTypeNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkClusterAccelerationStructureTypeNV() {}
 }

@@ -20,6 +20,7 @@ public final class StdVideoH264ModificationOfPicNumsIdc {
             default -> "Unknown StdVideoH264ModificationOfPicNumsIdc: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoH264ModificationOfPicNumsIdc() {}
 }

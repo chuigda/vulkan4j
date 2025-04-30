@@ -14,6 +14,7 @@ public final class VkPerformanceOverrideTypeINTEL {
             default -> "Unknown VkPerformanceOverrideTypeINTEL: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkPerformanceOverrideTypeINTEL() {}
 }

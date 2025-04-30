@@ -16,6 +16,7 @@ public final class VkAccelerationStructureMemoryRequirementsTypeNV {
             default -> "Unknown VkAccelerationStructureMemoryRequirementsTypeNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkAccelerationStructureMemoryRequirementsTypeNV() {}
 }

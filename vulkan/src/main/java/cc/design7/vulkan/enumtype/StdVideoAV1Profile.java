@@ -18,6 +18,7 @@ public final class StdVideoAV1Profile {
             default -> "Unknown StdVideoAV1Profile: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoAV1Profile() {}
 }

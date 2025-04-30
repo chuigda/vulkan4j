@@ -14,6 +14,7 @@ public final class VkRayTracingLssIndexingModeNV {
             default -> "Unknown VkRayTracingLssIndexingModeNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkRayTracingLssIndexingModeNV() {}
 }

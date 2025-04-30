@@ -24,6 +24,7 @@ public final class VkPresentModeKHR {
             default -> "Unknown VkPresentModeKHR: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkPresentModeKHR() {}
 }

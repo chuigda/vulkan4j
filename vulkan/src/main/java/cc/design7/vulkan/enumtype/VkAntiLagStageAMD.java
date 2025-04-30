@@ -14,6 +14,7 @@ public final class VkAntiLagStageAMD {
             default -> "Unknown VkAntiLagStageAMD: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkAntiLagStageAMD() {}
 }

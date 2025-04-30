@@ -50,6 +50,7 @@ public final class StdVideoAV1TransferCharacteristics {
             default -> "Unknown StdVideoAV1TransferCharacteristics: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoAV1TransferCharacteristics() {}
 }

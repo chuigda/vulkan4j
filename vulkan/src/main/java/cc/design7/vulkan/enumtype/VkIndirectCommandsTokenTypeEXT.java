@@ -40,6 +40,7 @@ public final class VkIndirectCommandsTokenTypeEXT {
             default -> "Unknown VkIndirectCommandsTokenTypeEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkIndirectCommandsTokenTypeEXT() {}
 }

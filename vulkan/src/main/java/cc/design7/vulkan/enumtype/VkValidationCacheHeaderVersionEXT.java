@@ -12,6 +12,7 @@ public final class VkValidationCacheHeaderVersionEXT {
             default -> "Unknown VkValidationCacheHeaderVersionEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkValidationCacheHeaderVersionEXT() {}
 }

@@ -18,6 +18,7 @@ public final class VkAttachmentLoadOp {
             default -> "Unknown VkAttachmentLoadOp: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkAttachmentLoadOp() {}
 }

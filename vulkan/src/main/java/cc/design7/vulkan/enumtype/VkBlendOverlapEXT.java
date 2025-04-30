@@ -16,6 +16,7 @@ public final class VkBlendOverlapEXT {
             default -> "Unknown VkBlendOverlapEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkBlendOverlapEXT() {}
 }

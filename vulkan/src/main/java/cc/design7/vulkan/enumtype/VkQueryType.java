@@ -44,6 +44,7 @@ public final class VkQueryType {
             default -> "Unknown VkQueryType: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkQueryType() {}
 }

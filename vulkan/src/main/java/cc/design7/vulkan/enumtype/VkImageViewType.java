@@ -24,6 +24,7 @@ public final class VkImageViewType {
             default -> "Unknown VkImageViewType: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkImageViewType() {}
 }

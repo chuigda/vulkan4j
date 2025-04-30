@@ -16,6 +16,7 @@ public final class VkSubpassContents {
             default -> "Unknown VkSubpassContents: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkSubpassContents() {}
 }

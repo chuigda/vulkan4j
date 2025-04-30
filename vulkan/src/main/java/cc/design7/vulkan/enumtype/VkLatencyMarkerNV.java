@@ -34,6 +34,7 @@ public final class VkLatencyMarkerNV {
             default -> "Unknown VkLatencyMarkerNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkLatencyMarkerNV() {}
 }

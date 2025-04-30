@@ -16,6 +16,7 @@ public final class StdVideoDecodeH264FieldOrderCount {
             default -> "Unknown StdVideoDecodeH264FieldOrderCount: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoDecodeH264FieldOrderCount() {}
 }

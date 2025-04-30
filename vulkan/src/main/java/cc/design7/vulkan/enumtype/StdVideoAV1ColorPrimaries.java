@@ -36,6 +36,7 @@ public final class StdVideoAV1ColorPrimaries {
             default -> "Unknown StdVideoAV1ColorPrimaries: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoAV1ColorPrimaries() {}
 }

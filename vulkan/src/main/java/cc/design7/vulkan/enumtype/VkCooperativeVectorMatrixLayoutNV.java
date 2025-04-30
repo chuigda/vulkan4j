@@ -18,6 +18,7 @@ public final class VkCooperativeVectorMatrixLayoutNV {
             default -> "Unknown VkCooperativeVectorMatrixLayoutNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkCooperativeVectorMatrixLayoutNV() {}
 }

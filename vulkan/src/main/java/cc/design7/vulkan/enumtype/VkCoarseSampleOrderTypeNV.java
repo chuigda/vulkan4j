@@ -18,6 +18,7 @@ public final class VkCoarseSampleOrderTypeNV {
             default -> "Unknown VkCoarseSampleOrderTypeNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkCoarseSampleOrderTypeNV() {}
 }

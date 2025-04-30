@@ -42,6 +42,7 @@ public final class VkComponentTypeKHR {
             default -> "Unknown VkComponentTypeKHR: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkComponentTypeKHR() {}
 }

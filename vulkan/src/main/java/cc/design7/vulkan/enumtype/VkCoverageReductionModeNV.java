@@ -14,6 +14,7 @@ public final class VkCoverageReductionModeNV {
             default -> "Unknown VkCoverageReductionModeNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkCoverageReductionModeNV() {}
 }

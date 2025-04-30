@@ -14,6 +14,7 @@ public final class VkSamplerYcbcrRange {
             default -> "Unknown VkSamplerYcbcrRange: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkSamplerYcbcrRange() {}
 }

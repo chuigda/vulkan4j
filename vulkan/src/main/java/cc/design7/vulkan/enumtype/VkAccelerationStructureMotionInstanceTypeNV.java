@@ -16,6 +16,7 @@ public final class VkAccelerationStructureMotionInstanceTypeNV {
             default -> "Unknown VkAccelerationStructureMotionInstanceTypeNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkAccelerationStructureMotionInstanceTypeNV() {}
 }

@@ -16,6 +16,7 @@ public final class VkDisplacementMicromapFormatNV {
             default -> "Unknown VkDisplacementMicromapFormatNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkDisplacementMicromapFormatNV() {}
 }

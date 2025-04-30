@@ -112,6 +112,7 @@ public final class VkBlendOp {
             default -> "Unknown VkBlendOp: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkBlendOp() {}
 }

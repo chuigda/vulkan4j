@@ -34,6 +34,7 @@ public final class VkShadingRatePaletteEntryNV {
             default -> "Unknown VkShadingRatePaletteEntryNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkShadingRatePaletteEntryNV() {}
 }

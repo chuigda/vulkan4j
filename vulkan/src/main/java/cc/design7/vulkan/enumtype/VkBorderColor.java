@@ -26,6 +26,7 @@ public final class VkBorderColor {
             default -> "Unknown VkBorderColor: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkBorderColor() {}
 }

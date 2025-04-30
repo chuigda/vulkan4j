@@ -18,6 +18,7 @@ public final class StdVideoH264WeightedBipredIdc {
             default -> "Unknown StdVideoH264WeightedBipredIdc: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoH264WeightedBipredIdc() {}
 }

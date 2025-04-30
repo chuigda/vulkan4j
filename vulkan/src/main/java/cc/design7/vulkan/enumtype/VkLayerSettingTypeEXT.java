@@ -26,6 +26,7 @@ public final class VkLayerSettingTypeEXT {
             default -> "Unknown VkLayerSettingTypeEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkLayerSettingTypeEXT() {}
 }

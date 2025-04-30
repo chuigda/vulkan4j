@@ -32,6 +32,7 @@ public final class VkPrimitiveTopology {
             default -> "Unknown VkPrimitiveTopology: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkPrimitiveTopology() {}
 }

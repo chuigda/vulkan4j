@@ -18,6 +18,7 @@ public final class VkPolygonMode {
             default -> "Unknown VkPolygonMode: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkPolygonMode() {}
 }

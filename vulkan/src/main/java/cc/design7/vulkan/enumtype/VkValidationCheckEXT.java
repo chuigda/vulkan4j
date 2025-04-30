@@ -14,6 +14,7 @@ public final class VkValidationCheckEXT {
             default -> "Unknown VkValidationCheckEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkValidationCheckEXT() {}
 }

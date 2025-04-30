@@ -12,6 +12,7 @@ public final class VkDisplayEventTypeEXT {
             default -> "Unknown VkDisplayEventTypeEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkDisplayEventTypeEXT() {}
 }

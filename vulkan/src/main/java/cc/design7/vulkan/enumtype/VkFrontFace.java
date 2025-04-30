@@ -14,6 +14,7 @@ public final class VkFrontFace {
             default -> "Unknown VkFrontFace: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkFrontFace() {}
 }

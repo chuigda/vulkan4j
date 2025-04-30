@@ -48,6 +48,7 @@ public final class VkBlendFactor {
             default -> "Unknown VkBlendFactor: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkBlendFactor() {}
 }

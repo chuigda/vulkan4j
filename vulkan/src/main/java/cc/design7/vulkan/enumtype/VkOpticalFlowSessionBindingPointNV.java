@@ -28,6 +28,7 @@ public final class VkOpticalFlowSessionBindingPointNV {
             default -> "Unknown VkOpticalFlowSessionBindingPointNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkOpticalFlowSessionBindingPointNV() {}
 }

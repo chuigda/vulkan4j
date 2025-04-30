@@ -46,6 +46,7 @@ public final class VkDescriptorType {
             default -> "Unknown VkDescriptorType: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkDescriptorType() {}
 }

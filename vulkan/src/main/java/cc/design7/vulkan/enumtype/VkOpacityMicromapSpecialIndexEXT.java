@@ -20,6 +20,7 @@ public final class VkOpacityMicromapSpecialIndexEXT {
             default -> "Unknown VkOpacityMicromapSpecialIndexEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkOpacityMicromapSpecialIndexEXT() {}
 }

@@ -20,6 +20,7 @@ public final class StdVideoAV1FrameRestorationType {
             default -> "Unknown StdVideoAV1FrameRestorationType: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoAV1FrameRestorationType() {}
 }

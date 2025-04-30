@@ -42,6 +42,7 @@ public final class StdVideoAV1MatrixCoefficients {
             default -> "Unknown StdVideoAV1MatrixCoefficients: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoAV1MatrixCoefficients() {}
 }

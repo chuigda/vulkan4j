@@ -14,6 +14,7 @@ public final class VkChromaLocation {
             default -> "Unknown VkChromaLocation: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkChromaLocation() {}
 }

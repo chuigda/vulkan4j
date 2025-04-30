@@ -12,6 +12,7 @@ public final class VkBuildMicromapModeEXT {
             default -> "Unknown VkBuildMicromapModeEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkBuildMicromapModeEXT() {}
 }

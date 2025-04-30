@@ -18,6 +18,7 @@ public final class VkSamplerReductionMode {
             default -> "Unknown VkSamplerReductionMode: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkSamplerReductionMode() {}
 }

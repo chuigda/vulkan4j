@@ -24,6 +24,7 @@ public final class VkDeviceFaultAddressTypeEXT {
             default -> "Unknown VkDeviceFaultAddressTypeEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkDeviceFaultAddressTypeEXT() {}
 }

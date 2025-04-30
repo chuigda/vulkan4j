@@ -14,6 +14,7 @@ public final class VkLayeredDriverUnderlyingApiMSFT {
             default -> "Unknown VkLayeredDriverUnderlyingApiMSFT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkLayeredDriverUnderlyingApiMSFT() {}
 }

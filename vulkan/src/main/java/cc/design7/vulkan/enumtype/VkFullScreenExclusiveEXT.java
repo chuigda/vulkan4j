@@ -18,6 +18,7 @@ public final class VkFullScreenExclusiveEXT {
             default -> "Unknown VkFullScreenExclusiveEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkFullScreenExclusiveEXT() {}
 }

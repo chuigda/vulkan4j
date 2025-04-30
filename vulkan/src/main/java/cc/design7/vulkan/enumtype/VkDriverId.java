@@ -64,6 +64,7 @@ public final class VkDriverId {
             default -> "Unknown VkDriverId: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkDriverId() {}
 }

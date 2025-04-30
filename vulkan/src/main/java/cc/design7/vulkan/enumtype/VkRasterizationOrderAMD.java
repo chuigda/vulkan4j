@@ -14,6 +14,7 @@ public final class VkRasterizationOrderAMD {
             default -> "Unknown VkRasterizationOrderAMD: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkRasterizationOrderAMD() {}
 }

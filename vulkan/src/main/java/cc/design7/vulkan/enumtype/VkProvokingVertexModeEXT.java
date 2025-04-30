@@ -14,6 +14,7 @@ public final class VkProvokingVertexModeEXT {
             default -> "Unknown VkProvokingVertexModeEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkProvokingVertexModeEXT() {}
 }

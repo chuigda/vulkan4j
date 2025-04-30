@@ -18,6 +18,7 @@ public final class VkVideoEncodeAV1PredictionModeKHR {
             default -> "Unknown VkVideoEncodeAV1PredictionModeKHR: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkVideoEncodeAV1PredictionModeKHR() {}
 }

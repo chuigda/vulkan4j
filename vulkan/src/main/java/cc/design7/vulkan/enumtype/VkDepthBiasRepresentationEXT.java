@@ -16,6 +16,7 @@ public final class VkDepthBiasRepresentationEXT {
             default -> "Unknown VkDepthBiasRepresentationEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkDepthBiasRepresentationEXT() {}
 }

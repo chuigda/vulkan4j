@@ -18,6 +18,7 @@ public final class VkOpticalFlowPerformanceLevelNV {
             default -> "Unknown VkOpticalFlowPerformanceLevelNV: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkOpticalFlowPerformanceLevelNV() {}
 }

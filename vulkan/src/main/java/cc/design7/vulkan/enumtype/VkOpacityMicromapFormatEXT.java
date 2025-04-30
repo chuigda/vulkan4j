@@ -14,6 +14,7 @@ public final class VkOpacityMicromapFormatEXT {
             default -> "Unknown VkOpacityMicromapFormatEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkOpacityMicromapFormatEXT() {}
 }

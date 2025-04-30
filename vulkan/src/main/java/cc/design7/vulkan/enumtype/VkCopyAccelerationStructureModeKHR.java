@@ -18,6 +18,7 @@ public final class VkCopyAccelerationStructureModeKHR {
             default -> "Unknown VkCopyAccelerationStructureModeKHR: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkCopyAccelerationStructureModeKHR() {}
 }

@@ -20,6 +20,7 @@ public final class VkDeviceMemoryReportEventTypeEXT {
             default -> "Unknown VkDeviceMemoryReportEventTypeEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkDeviceMemoryReportEventTypeEXT() {}
 }

@@ -20,6 +20,7 @@ public final class VkPipelineBindPoint {
             default -> "Unknown VkPipelineBindPoint: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkPipelineBindPoint() {}
 }

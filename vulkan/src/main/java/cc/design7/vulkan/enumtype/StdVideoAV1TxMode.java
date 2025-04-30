@@ -18,6 +18,7 @@ public final class StdVideoAV1TxMode {
             default -> "Unknown StdVideoAV1TxMode: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoAV1TxMode() {}
 }

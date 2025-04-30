@@ -18,6 +18,7 @@ public final class StdVideoH264SliceType {
             default -> "Unknown StdVideoH264SliceType: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoH264SliceType() {}
 }

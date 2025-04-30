@@ -14,6 +14,7 @@ public final class VkSamplerMipmapMode {
             default -> "Unknown VkSamplerMipmapMode: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkSamplerMipmapMode() {}
 }

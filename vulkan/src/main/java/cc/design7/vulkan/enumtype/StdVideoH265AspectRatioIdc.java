@@ -48,6 +48,7 @@ public final class StdVideoH265AspectRatioIdc {
             default -> "Unknown StdVideoH265AspectRatioIdc: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoH265AspectRatioIdc() {}
 }

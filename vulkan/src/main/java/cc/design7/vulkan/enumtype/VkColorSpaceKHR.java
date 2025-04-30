@@ -42,6 +42,7 @@ public final class VkColorSpaceKHR {
             default -> "Unknown VkColorSpaceKHR: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkColorSpaceKHR() {}
 }

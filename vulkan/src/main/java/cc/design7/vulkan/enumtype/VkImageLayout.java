@@ -70,6 +70,7 @@ public final class VkImageLayout {
             default -> "Unknown VkImageLayout: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkImageLayout() {}
 }

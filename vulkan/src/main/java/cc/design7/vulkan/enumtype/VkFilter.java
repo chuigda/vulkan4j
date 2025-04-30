@@ -16,6 +16,7 @@ public final class VkFilter {
             default -> "Unknown VkFilter: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkFilter() {}
 }

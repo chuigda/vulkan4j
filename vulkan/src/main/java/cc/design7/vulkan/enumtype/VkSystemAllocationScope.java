@@ -20,6 +20,7 @@ public final class VkSystemAllocationScope {
             default -> "Unknown VkSystemAllocationScope: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkSystemAllocationScope() {}
 }

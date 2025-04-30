@@ -156,6 +156,7 @@ public final class VkDynamicState {
             default -> "Unknown VkDynamicState: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkDynamicState() {}
 }

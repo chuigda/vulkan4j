@@ -20,6 +20,7 @@ public final class VkVideoEncodeTuningModeKHR {
             default -> "Unknown VkVideoEncodeTuningModeKHR: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkVideoEncodeTuningModeKHR() {}
 }

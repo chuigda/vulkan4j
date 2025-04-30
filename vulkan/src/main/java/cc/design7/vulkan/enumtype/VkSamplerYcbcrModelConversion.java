@@ -20,6 +20,7 @@ public final class VkSamplerYcbcrModelConversion {
             default -> "Unknown VkSamplerYcbcrModelConversion: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkSamplerYcbcrModelConversion() {}
 }

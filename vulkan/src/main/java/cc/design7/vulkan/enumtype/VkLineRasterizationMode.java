@@ -18,6 +18,7 @@ public final class VkLineRasterizationMode {
             default -> "Unknown VkLineRasterizationMode: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkLineRasterizationMode() {}
 }

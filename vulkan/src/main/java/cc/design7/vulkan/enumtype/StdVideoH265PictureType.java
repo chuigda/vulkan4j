@@ -20,6 +20,7 @@ public final class StdVideoH265PictureType {
             default -> "Unknown StdVideoH265PictureType: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoH265PictureType() {}
 }

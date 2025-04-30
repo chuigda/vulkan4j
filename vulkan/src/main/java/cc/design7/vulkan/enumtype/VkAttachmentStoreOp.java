@@ -16,6 +16,7 @@ public final class VkAttachmentStoreOp {
             default -> "Unknown VkAttachmentStoreOp: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkAttachmentStoreOp() {}
 }

@@ -20,6 +20,7 @@ public final class StdVideoH265ChromaFormatIdc {
             default -> "Unknown StdVideoH265ChromaFormatIdc: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private StdVideoH265ChromaFormatIdc() {}
 }

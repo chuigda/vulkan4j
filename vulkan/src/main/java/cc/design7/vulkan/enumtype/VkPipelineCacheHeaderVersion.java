@@ -12,6 +12,7 @@ public final class VkPipelineCacheHeaderVersion {
             default -> "Unknown VkPipelineCacheHeaderVersion: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkPipelineCacheHeaderVersion() {}
 }

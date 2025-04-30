@@ -16,6 +16,7 @@ public final class VkShaderFloatControlsIndependence {
             default -> "Unknown VkShaderFloatControlsIndependence: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkShaderFloatControlsIndependence() {}
 }

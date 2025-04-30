@@ -14,6 +14,7 @@ public final class VkDepthClampModeEXT {
             default -> "Unknown VkDepthClampModeEXT: " + value;
         };
     }
+
     /// Constructing this class is nonsense so the constructor is made private.
     private VkDepthClampModeEXT() {}
 }
