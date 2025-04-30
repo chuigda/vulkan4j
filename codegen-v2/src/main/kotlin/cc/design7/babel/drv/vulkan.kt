@@ -4,6 +4,7 @@ import cc.design7.babel.codegen.CodegenOptions
 import cc.design7.babel.codegen.generateBitmask
 import cc.design7.babel.codegen.generateConstants
 import cc.design7.babel.codegen.generateEnumeration
+import cc.design7.babel.codegen.generateStructure
 import cc.design7.babel.extract.vulkan.extractVulkanRegistry
 import cc.design7.babel.registry.Bitmask
 import cc.design7.babel.registry.Command
@@ -39,6 +40,14 @@ internal fun vulkanMain() {
         val enumerationDoc = generateEnumeration(vulkanRegistry, enumeration, codegenOptions)
         File("vulkan/src/main/java/cc/design7/vulkan/enumtype/${enumeration.name}.java")
             .writeText(render(enumerationDoc))
+    }
+
+    for (structure in vulkanRegistry.structures.values) {
+        try {
+            generateStructure(vulkanRegistry, structure, codegenOptions)
+        } catch (e: Exception) {
+            log.severe("Failed to generate structure ${structure.name}: ${e.message}")
+        }
     }
 }
 

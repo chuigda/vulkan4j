@@ -190,7 +190,7 @@ private fun extractParam(e: Element): Param {
 private fun extractAlias(e: Element) =
     Typedef(
         name = e.getAttributeText("name")!!.sanitizeFlagBits(),
-        type = IdentifierType(e.getAttributeText("alias")!!.intern()),
+        type = IdentifierType(e.getAttributeText("alias")!!.sanitizeFlagBits().intern()),
     ).apply { setExt(VkCommonMetadata(e.getAttributeText("api"))) }
 
 private fun extractConstant(e: Element): Constant {

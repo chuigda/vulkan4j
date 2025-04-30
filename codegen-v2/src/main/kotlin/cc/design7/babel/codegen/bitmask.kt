@@ -15,13 +15,13 @@ fun generateBitmask(
     val postfix = when (bitmask.bitwidth) {
         null, 32 -> ""
         64 -> "L"
-        else -> throw IllegalArgumentException("unsupported bitwidth: ${bitmask.bitwidth}")
+        else -> error("unsupported bitwidth: ${bitmask.bitwidth}")
     }
 
     val bitflagType = when (bitmask.bitwidth) {
         null, 32 -> "int"
         64 -> "long"
-        else -> throw IllegalArgumentException("unsupported bitwidth: ${bitmask.bitwidth}")
+        else -> error("unsupported bitwidth: ${bitmask.bitwidth}")
     }
 
     val bitflags = bitmask.bitflags.sortedBy { it.name }

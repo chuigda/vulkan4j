@@ -7,7 +7,6 @@ private val nl: Doc = EmptyLine()
 class DocList(val segments: MutableList<Doc>) : Doc() {
     operator fun String.unaryPlus() = segments.add(if (this.isEmpty()) nl else DocText(this))
     operator fun Doc.unaryPlus() = segments.add(this)
-    fun nl() = segments.add(nl)
 
     fun indent(init: DocList.() -> Unit) {
         val doc = DocList(mutableListOf())
@@ -22,7 +21,7 @@ class DocIndent(val inner: Doc): Doc()
 
 private class EmptyLine : Doc()
 
-fun buildDoc(init: DocList.() -> Unit): Doc {
+fun buildDoc(init: DocList.() -> Unit): DocList {
     val doc = DocList(mutableListOf())
     doc.init()
     return doc

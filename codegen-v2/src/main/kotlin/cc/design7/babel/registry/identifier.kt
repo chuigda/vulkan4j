@@ -12,7 +12,7 @@ class Identifier internal constructor(val original: String) : Comparable<Identif
 
     fun rename(value: String) {
         if (_renamed && value != _value) {
-            throw IllegalStateException("Identifier $original has already been renamed to $_value, colliding with fresh $value")
+            error("Identifier $original has already been renamed to $_value, colliding with fresh $value")
         }
 
         _value = value

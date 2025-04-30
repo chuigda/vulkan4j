@@ -18,8 +18,8 @@ sealed interface CType {
 
 class CVoidType : CType {
     override val jType: String = "void"
-    override val jLayout: String get() = throw NotImplementedError("should not call `jLayout` on `void`")
-    override val jLayoutType: String get() = throw NotImplementedError("should not call `jLayoutType` on `void`")
+    override val jLayout: String get() = error("should not call `jLayout` on `void`")
+    override val jLayoutType: String get() = error("should not call `jLayoutType` on `void`")
     override val cType: String = "void"
 }
 
@@ -53,7 +53,7 @@ data class CHandleType(val name: String) : CType {
 }
 
 data class CArrayType(val element: CType, val length: String) : CType {
-    override val jType: String get() = throw NotImplementedError("should not call `jRawType` on `array`")
+    override val jType: String get() = error("should not call `jRawType` on `array`")
     override val jLayout: String = "MemoryLayout.sequenceLayout($length, ${element.jLayout})"
     override val jLayoutType: String = "SequenceLayout"
     override val cType: String = "${element.cType}[$length]"
@@ -77,21 +77,29 @@ sealed interface CNonRefType : CType {
     val jPtrTypeNoAnnotation: String
 }
 
-data class CFixedIntType(val cName: String, val byteSize: Int, val unsigned: Boolean) : CNonRefType {
+sealed interface CFixedSizeType : CNonRefType {
+    val byteSize: Int
+}
+
+data class CFixedIntType(
+    val cName: String,
+    override val byteSize: Int,
+    val unsigned: Boolean
+) : CFixedSizeType {
     override val jType: String get() = """${if (unsigned) "@unsigned " else ""}$jTypeNoSign"""
     override val jLayout: String get() = when (byteSize) {
         1 -> "ValueLayout.JAVA_BYTE"
         2 -> "ValueLayout.JAVA_SHORT"
         4 -> "ValueLayout.JAVA_INT"
         8 -> "ValueLayout.JAVA_LONG"
-        else -> throw NotImplementedError("unsupported byte size: $byteSize")
+        else -> error("unsupported byte size: $byteSize")
     }
     override val jLayoutType: String get() = when (byteSize) {
         1 -> "OfByte"
         2 -> "OfShort"
         4 -> "OfInt"
         8 -> "OfLong"
-        else -> throw NotImplementedError("unsupported byte size: $byteSize")
+        else -> error("unsupported byte size: $byteSize")
     }
     override val cType: String = cName
     override val jTypeNoSign: String get() = when (byteSize) {
@@ -99,7 +107,7 @@ data class CFixedIntType(val cName: String, val byteSize: Int, val unsigned: Boo
         2 -> "short"
         4 -> "int"
         8 -> "long"
-        else -> throw NotImplementedError("unsupported byte size: $byteSize")
+        else -> error("unsupported byte size: $byteSize")
     }
     override val jPtrType: String get() = """${if (unsigned) "@unsigned " else ""}$jPtrTypeNoAnnotation"""
     override val jPtrTypeNoAnnotation: String get() = when (byteSize) {
@@ -107,7 +115,7 @@ data class CFixedIntType(val cName: String, val byteSize: Int, val unsigned: Boo
         2 -> "ShortPtr"
         4 -> "IntPtr"
         8 -> "LongPtr"
-        else -> throw NotImplementedError("unsupported byte size: $byteSize")
+        else -> error("unsupported byte size: $byteSize")
     }
 }
 
@@ -119,35 +127,35 @@ data class CPlatformDependentIntType(
     override val jPtrType: String,
     override val jPtrTypeNoAnnotation: String
 ) : CNonRefType {
-    override val jLayoutType: String get() = throw NotImplementedError("should not call `jLayoutType` on `CPlatformDependentIntType`")
+    override val jLayoutType: String get() = error("should not call `jLayoutType` on `CPlatformDependentIntType`")
 }
 
-data class CFloatType(val byteSize: Int) : CNonRefType {
+data class CFloatType(override val byteSize: Int) : CFixedSizeType {
     override val jType: String get() = when (byteSize) {
         4 -> "float"
         8 -> "double"
-        else -> throw NotImplementedError("unsupported byte size: $byteSize")
+        else -> error("unsupported byte size: $byteSize")
     }
     override val jLayout: String get() = when (byteSize) {
         4 -> "ValueLayout.JAVA_FLOAT"
         8 -> "ValueLayout.JAVA_DOUBLE"
-        else -> throw NotImplementedError("unsupported byte size: $byteSize")
+        else -> error("unsupported byte size: $byteSize")
     }
     override val jLayoutType: String = when (byteSize) {
         4 -> "OfFloat"
         8 -> "OfDouble"
-        else -> throw NotImplementedError("unsupported byte size: $byteSize")
+        else -> error("unsupported byte size: $byteSize")
     }
     override val cType: String = when (byteSize) {
         4 -> "float"
         8 -> "double"
-        else -> throw NotImplementedError("unsupported byte size: $byteSize")
+        else -> error("unsupported byte size: $byteSize")
     }
     override val jTypeNoSign: String get() = jType
     override val jPtrType: String get() = when (byteSize) {
         4 -> "FloatPtr"
         8 -> "DoublePtr"
-        else -> throw NotImplementedError("unsupported byte size: $byteSize")
+        else -> error("unsupported byte size: $byteSize")
     }
     override val jPtrTypeNoAnnotation: String get() = jPtrType
 }
@@ -159,7 +167,7 @@ data class CStructType(val name: String): CType {
     override val cType: String = name
 }
 
-data class CEnumType(val name: String, val bitwidth: Int? = null): CNonRefType {
+data class CEnumType(val name: String, val bitwidth: Int? = null): CFixedSizeType {
     override val jType: String get() = when (bitwidth) {
         null, 32 -> {
             "@enumtype($name.class) int"
@@ -168,20 +176,26 @@ data class CEnumType(val name: String, val bitwidth: Int? = null): CNonRefType {
             "@enumtype($name.class) long"
         }
         else -> {
-            throw NotImplementedError("unsupported bitwidth: $bitwidth")
+            error("unsupported bitwidth: $bitwidth")
         }
+    }
+
+    override val byteSize: Int get() = when (bitwidth) {
+        null, 32 -> 4
+        64 -> 8
+        else -> error("unsupported bitwidth: $bitwidth")
     }
 
     override val jLayout: String get() = when (bitwidth) {
         null, 32 -> "ValueLayout.JAVA_INT"
         64 -> "ValueLayout.JAVA_LONG"
-        else -> throw NotImplementedError("unsupported bitwidth: $bitwidth")
+        else -> error("unsupported bitwidth: $bitwidth")
     }
 
     override val jLayoutType: String = when (bitwidth) {
         null, 32 -> "OfInt"
         64 -> "OfLong"
-        else -> throw NotImplementedError("unsupported bitwidth: $bitwidth")
+        else -> error("unsupported bitwidth: $bitwidth")
     }
 
     override val cType: String = "enum $name"
@@ -189,19 +203,19 @@ data class CEnumType(val name: String, val bitwidth: Int? = null): CNonRefType {
     override val jTypeNoSign: String get() = when (bitwidth) {
         null, 32 -> "int"
         64 -> "long"
-        else -> throw NotImplementedError("unsupported bitwidth: $bitwidth")
+        else -> error("unsupported bitwidth: $bitwidth")
     }
 
     override val jPtrType: String = when (bitwidth) {
         null, 32 -> "@enumtype($name.class) IntPtr"
         64 -> "@enumtype($name.class) LongPtr"
-        else -> throw NotImplementedError("unsupported bitwidth: $bitwidth")
+        else -> error("unsupported bitwidth: $bitwidth")
     }
 
     override val jPtrTypeNoAnnotation: String = when (bitwidth) {
         null, 32 -> "IntPtr"
         64 -> "LongPtr"
-        else -> throw NotImplementedError("unsupported bitwidth: $bitwidth")
+        else -> error("unsupported bitwidth: $bitwidth")
     }
 }
 
@@ -282,6 +296,7 @@ private val knownTypes = mapOf(
     "GLboolean" to uint8Type,
 
     // Vulkan base types
+    "VkSampleMask" to uint32Type,
     "VkBool32" to uint32Type,
     "VkFlags" to uint32Type,
     "VkFlags64" to uint64Type,
@@ -357,6 +372,9 @@ private val knownTypes = mapOf(
     "NvSciSyncAttrList" to pvoidType,
     "NvSciSyncObj" to pvoidType,
     "NvSciSyncFence" to CArrayType(uint64Type, "6"),
+
+    // FUCHSIA
+    "zx_handle_t" to uint32Type,
 )
 
 fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: Type): CType {
@@ -365,7 +383,7 @@ fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: T
             if (!type.length.value.isNumeric()) {
                 if (!registry.constants.contains(type.length)
                     && !refRegistries.any { it.constants.contains(type.length) }) {
-                    throw Exception("array type referred to an unknown constant ${type.length}")
+                    error("array type referred to an unknown constant ${type.length}")
                 }
             }
 
@@ -391,13 +409,13 @@ fun lowerIdentifierType(
     refRegistries: List<RegistryBase>,
     type: IdentifierType
 ): CType {
-    val lookupResult = identifierTypeLookup(registry, type)
+    val lookupResult = identifierTypeLookup(registry, refRegistries, type)
     if (lookupResult != null) {
         return lookupResult
     }
 
     for (refRegistry in refRegistries) {
-        val lookupResult = identifierTypeLookup(refRegistry, type)
+        val lookupResult = identifierTypeLookup(refRegistry, refRegistries, type)
         if (lookupResult != null) {
             return lookupResult
         }
@@ -406,12 +424,15 @@ fun lowerIdentifierType(
     return if (knownTypes.containsKey(type.ident.value)) {
         knownTypes[type.ident.value]!!
     } else {
-        throw Exception("unknown type ${type.ident.value}")
+        error("unknown type ${type.ident.value}")
     }
 }
 
-fun identifierTypeLookup(registry: RegistryBase, type: IdentifierType) =
+fun identifierTypeLookup(registry: RegistryBase, refRegistries: List<RegistryBase>, type: IdentifierType) =
     if (registry.structures.contains(type.ident)) {
+        CStructType(type.ident.value)
+    }
+    else if (registry.unions.contains(type.ident)) {
         CStructType(type.ident.value)
     }
     else if (registry.enumerations.contains(type.ident)) {
@@ -425,6 +446,10 @@ fun identifierTypeLookup(registry: RegistryBase, type: IdentifierType) =
     }
     else if (registry.functionTypedefs.contains(type.ident)) {
         CPointerType(voidType, false, comment=type.ident.value)
+    }
+    else if (registry.aliases.contains(type.ident)) {
+        val alias = registry.aliases[type.ident]!!
+        lowerType(registry, refRegistries, alias.type)
     }
     else if (knownTypes.containsKey(type.ident.value)) {
         knownTypes[type.ident.value]!!
