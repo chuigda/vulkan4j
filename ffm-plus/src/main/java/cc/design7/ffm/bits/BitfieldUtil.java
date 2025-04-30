@@ -70,24 +70,19 @@ public final class BitfieldUtil {
 
     private static final IBitfieldUtilImpl impl;
     static {
-        // on both Windows and System V, bitfields are packed from "right to left"
-        // on ARM, bitfield packing depends on the byte order
+        // On most platforms, the bitfields are packed from right to left. However, on ARM platform,
+        // the bitfields packing depends on the endianness.
 
-        // TODO this may be not very precise, needs refinement
-
-        String osName = System.getProperty("os.name").toLowerCase();
         String arch = System.getProperty("os.arch").toLowerCase();
-
-        if (osName.contains("windows") || osName.contains("linux")) {
-            impl = new BitfieldUtilImplR2L();
-        } else if (arch.contains("arm") || arch.contains("aarch")) {
+        if (arch.contains("arm") || arch.contains("aarch")) {
             if (ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN) {
                 impl = new BitfieldUtilImplL2R();
             } else {
                 impl = new BitfieldUtilImplR2L();
             }
         } else {
-            throw new UnsupportedOperationException("Unsupported OS or architecture: " + osName + " " + arch);
+            // may need future refinement
+            impl = new BitfieldUtilImplR2L();
         }
     }
 }
