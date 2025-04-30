@@ -2,6 +2,7 @@ package cc.design7.babel.extract.vulkan
 
 import cc.design7.babel.registry.*
 import cc.design7.babel.util.*
+import jdk.nashorn.internal.runtime.regexp.joni.constants.NodeType
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 import java.io.File
@@ -271,17 +272,31 @@ private fun extractStructure(e: Element) =
         ))
     }
 
-private fun extractMember(e: Element) =
-    Member(
-        name = e.getFirstElement("name")!!.textContent.trim(),
+private fun extractMember(e: Element): Member {
+    val nameElement = e.getFirstElement("name")!!
+    val nameElementNextSibling = nameElement.nextSibling
+    val bits =
+        if (nameElementNextSibling != null
+            && nameElementNextSibling.nodeType == Node.TEXT_NODE
+            && nameElementNextSibling.textContent.trim().startsWith(":")) {
+            nameElementNextSibling.textContent.trim().substring(1).trim().toInt()
+        } else {
+            null
+        }
+
+    val ret = Member(
+        name = nameElement.textContent.trim(),
         type = extractType(e.getFirstElement("type")!!),
         values = e.getAttributeText("values")?.intern(),
         len = e.getAttributeText("len")?.split(",")?.map { it.intern() },
         altLen = e.getAttributeText("altlen"),
         optional = e.getAttributeText("optional") == "true",
-        // TODO: this is not precise. there's an whitespace between ':' and the number in video.xml, causing this to fail.
-        bits = Regex(":(\\d+)$").find(e.textContent)?.let { it.groupValues[1].toInt() },
-    ).apply { setExt(VkCommonMetadata(api = e.getAttributeText("api"))) }
+        bits = bits
+    )
+    ret.setExt(VkCommonMetadata(api = e.getAttributeText("api")))
+
+    return ret
+}
 
 private fun extractVersion(e: Element) =
     VulkanVersion(

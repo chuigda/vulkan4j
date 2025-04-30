@@ -119,9 +119,6 @@ private fun lowerMemberTypes(
                 memberTypesLowered,
                 memberLayoutNames
             )
-            storageUnitCounter += 1
-
-            println("bitfields starting from ${current.name} used $storageUnitCounter storage units")
         } else {
             val cType = lowerType(registry, codegenOptions.refRegistries, current.type)
             val layoutName = "LAYOUT$${current.name}"
