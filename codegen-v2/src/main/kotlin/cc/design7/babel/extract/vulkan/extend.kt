@@ -13,16 +13,21 @@ internal fun Registry<VulkanRegistryExt>.extendEntities() {
 
     for (version in ext.versions.values) {
         for (requireValue in version.require.values) {
-            extendBitmask(requireValue, bitmasks, addedEntities)
-            extendEnum(requireValue, enumerations, addedEntities)
+            if (requireValue.extends != null) {
+                extendBitmask(requireValue, bitmasks, addedEntities)
+                extendEnum(requireValue, enumerations, addedEntities)
+            }
         }
     }
 
     for (extension in ext.extensions.values) {
         for (requireValue in extension.require.values) {
-            extendBitmask(requireValue, bitmasks, addedEntities)
-            extendEnum(requireValue, enumerations, addedEntities, extension.number)
-            extendExtensionNameConstants(requireValue, constants, addedEntities)
+            if (requireValue.extends != null) {
+                extendBitmask(requireValue, bitmasks, addedEntities)
+                extendEnum(requireValue, enumerations, addedEntities, extension.number)
+            } else {
+                extractConstant(requireValue, constants, addedEntities)
+            }
         }
     }
 
@@ -83,23 +88,43 @@ private fun getVariantValue(requireValue: RequireValue, extNumber: Long?): Eithe
     return Either.Left(if (requireValue.negative) -value else value)
 }
 
-private fun extendExtensionNameConstants(
+private fun extractConstant(
     requireValue: RequireValue,
     constants: MutableMap<Identifier, Constant>,
     addedEntities: MutableMap<Entity, Identifier>
 ) {
-    if (requireValue.extends != null || requireValue.value == null) {
+    if (requireValue.value == null) {
         return
     }
 
     val originalName = requireValue.name.original
     val value = requireValue.value
 
-    if (originalName.endsWith("_EXTENSION_NAME") && addedEntities.putIfAbsent(requireValue, "Constants".intern()) == null) {
-        constants.putEntityIfAbsent(Constant(
+    if (originalName.endsWith("_SPEC_VERSION")) {
+        return
+    }
+
+    if (addedEntities.putIfAbsent(requireValue, "Constants".intern()) != null) {
+        return
+    }
+
+    val constant = if (originalName.endsWith("_EXTENSION_NAME")) {
+        Constant(
             requireValue.name,
             IdentifierType("CONSTANTS_JavaString"),
             value
-        ))
+        )
+    } else {
+        Constant(
+            requireValue.name,
+            IdentifierType(when {
+                originalName.startsWith("VK_MAX") || originalName.endsWith("SIZE") -> "size_t"
+                value.contains("ULL") -> "uint64_t"
+                value.contains("U") -> "uint32_t"
+                else -> "int32_t"
+            }),
+            value
+        )
     }
+    constants.putEntityIfAbsent(constant)
 }
