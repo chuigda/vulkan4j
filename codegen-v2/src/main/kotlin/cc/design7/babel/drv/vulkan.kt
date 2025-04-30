@@ -46,7 +46,10 @@ private fun vulkanDocLinkProvider(entity: Entity) = when(entity) {
     is Constant -> {
         val constantName = entity.name.original
         val typeName = entity.type.ident.value
-        if (constantName.endsWith("_EXTENSION_NAME") && typeName == "CONSTANTS_JavaString") {
+
+        if (constantName.startsWith("STD_VIDEO_")) {
+            null
+        } else if (constantName.endsWith("_EXTENSION_NAME") && typeName == "CONSTANTS_JavaString") {
             val constantValueUnquoted = entity.expr.removePrefix("\"").removeSuffix("\"")
             if (constantValueUnquoted.contains("STD_vulkan_video")) {
                 null
