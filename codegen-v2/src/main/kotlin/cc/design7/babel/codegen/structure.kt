@@ -161,8 +161,12 @@ private fun summarizeBitfieldStorageUnit(
     layoutNames.add(layoutName)
     layouts.add(layout)
 
+    var bitfieldOffset = 0
     for (i in storageUnitBegin..storageUnitEnd) {
         memberTypesLowered.add(null)
-        memberLayoutNames.add(layoutName)
+        memberLayoutNames.add("${layoutName}:${bitfieldOffset}")
+
+        // let's hack this shit in 10 minutes
+        bitfieldOffset += structure.members[i].bits!!
     }
 }
