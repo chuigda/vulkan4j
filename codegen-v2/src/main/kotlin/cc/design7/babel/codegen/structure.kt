@@ -53,6 +53,8 @@ private fun lowerMemberTypes(
             var alreadyStoredBits: Int = current.bits
             i += 1
 
+            var storageUnitCounter = 0
+
             while (true) {
                 if (i >= structure.members.size) {
                     break
@@ -97,6 +99,7 @@ private fun lowerMemberTypes(
                     // begin a new storage unit
                     storageUnitBegin = i
                     alreadyStoredBits = 0
+                    storageUnitCounter += 1
                 }
 
                 alreadyStoredBits += field.bits
@@ -116,6 +119,9 @@ private fun lowerMemberTypes(
                 memberTypesLowered,
                 memberLayoutNames
             )
+            storageUnitCounter += 1
+
+            println("bitfields starting from ${current.name} used $storageUnitCounter storage units")
         } else {
             val cType = lowerType(registry, codegenOptions.refRegistries, current.type)
             val layoutName = "LAYOUT$${current.name}"

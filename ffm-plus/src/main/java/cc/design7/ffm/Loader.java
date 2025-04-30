@@ -35,4 +35,6 @@ public final class Loader {
                 .or(() -> stdlibLookup.find(name))
                 .orElse(null);
     }
+
+    private Loader() {}
 }

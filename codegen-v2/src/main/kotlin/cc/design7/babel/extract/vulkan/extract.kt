@@ -279,6 +279,7 @@ private fun extractMember(e: Element) =
         len = e.getAttributeText("len")?.split(",")?.map { it.intern() },
         altLen = e.getAttributeText("altlen"),
         optional = e.getAttributeText("optional") == "true",
+        // TODO: this is not precise. there's an whitespace between ':' and the number in video.xml, causing this to fail.
         bits = Regex(":(\\d+)$").find(e.textContent)?.let { it.groupValues[1].toInt() },
     ).apply { setExt(VkCommonMetadata(api = e.getAttributeText("api"))) }
 

@@ -116,4 +116,6 @@ public final class NativeLayout {
     public static MemoryLayout unionLayout(MemoryLayout... elements) {
         return MemoryLayout.unionLayout(elements);
     }
+
+    private NativeLayout() {}
 }
