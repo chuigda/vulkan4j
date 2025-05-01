@@ -26,6 +26,21 @@ import cc.design7.ffm.annotation.unsigned;
 /// bits and mask it with 0x07 ({@code = (1 << (endBit - startBit)) - 1}).
 final class BitfieldUtilImplL2R implements IBitfieldUtilImpl {
     @Override
+    public boolean readBitUnchecked(@unsigned byte value, @unsigned int bit) {
+        return ((value >> (Byte.SIZE - bit - 1)) & 0x01) != 0;
+    }
+
+    @Override
+    public boolean readBitUnchecked(@unsigned short value, @unsigned int bit) {
+        return ((value >> (Short.SIZE - bit - 1)) & 0x01) != 0;
+    }
+
+    @Override
+    public boolean readBitUnchecked(@unsigned int value, @unsigned int bit) {
+        return ((value >> (Integer.SIZE - bit - 1)) & 0x01) != 0;
+    }
+
+    @Override
     public @unsigned byte readBitsUnchecked(
             @unsigned byte value,
             @unsigned int startBit,

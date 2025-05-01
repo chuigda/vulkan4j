@@ -24,6 +24,21 @@ package cc.design7.ffm.bits;
 /// and mask it with 0x07 ({@code = (1 << (endBit - startBit)) - 1}).
 final class BitfieldUtilImplR2L implements IBitfieldUtilImpl {
     @Override
+    public boolean readBitUnchecked(byte value, int bit) {
+        return ((value >> bit) & 0x01) != 0;
+    }
+
+    @Override
+    public boolean readBitUnchecked(short value, int bit) {
+        return ((value >> bit) & 0x01) != 0;
+    }
+
+    @Override
+    public boolean readBitUnchecked(int value, int bit) {
+        return ((value >> bit) & 0x01) != 0;
+    }
+
+    @Override
     public byte readBitsUnchecked(byte value, int startBit, int endBit) {
         int mask = (1 << (endBit - startBit)) - 1;
         return (byte) ((value >> startBit) & mask);
