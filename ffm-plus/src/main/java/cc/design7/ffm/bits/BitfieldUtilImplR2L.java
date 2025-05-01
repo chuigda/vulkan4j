@@ -117,7 +117,9 @@ final class BitfieldUtilImplR2L implements IBitfieldUtilImpl {
             @unsigned byte bits
     ) {
         int mask = (1 << (endBit - startBit)) - 1;
-        return (byte) ((value & ~mask) | ((bits << startBit) & mask));
+        int maskShifted = mask << startBit;
+        int bitsShifted = (bits & mask) << startBit;
+        return (byte) ((value & ~maskShifted) | bitsShifted);
     }
 
     @Override
@@ -128,7 +130,9 @@ final class BitfieldUtilImplR2L implements IBitfieldUtilImpl {
             @unsigned short bits
     ) {
         int mask = (1 << (endBit - startBit)) - 1;
-        return (short) ((value & ~mask) | ((bits << startBit) & mask));
+        int maskShifted = mask << startBit;
+        int bitsShifted = (bits & mask) << startBit;
+        return (short) ((value & ~maskShifted) | bitsShifted);
     }
 
     @Override
@@ -139,7 +143,9 @@ final class BitfieldUtilImplR2L implements IBitfieldUtilImpl {
             @unsigned int bits
     ) {
         long mask = (1L << (endBit - startBit)) - 1;
-        return (int) ((value & ~mask) | ((bits << startBit) & mask));
+        long maskShifted = mask << startBit;
+        long bitsShifted = (bits & mask) << startBit;
+        return (int) ((value & ~maskShifted) | bitsShifted);
     }
 
     BitfieldUtilImplR2L() {}

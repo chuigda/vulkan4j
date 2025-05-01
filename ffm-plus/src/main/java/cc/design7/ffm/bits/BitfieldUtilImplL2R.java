@@ -121,7 +121,9 @@ final class BitfieldUtilImplL2R implements IBitfieldUtilImpl {
     ) {
         int shiftLeft = Byte.SIZE - endBit;
         int mask = (1 << (endBit - startBit)) - 1;
-        return (byte) ((value & ~mask) | ((bits & mask) << shiftLeft));
+        int maskShifted = mask << shiftLeft;
+        int bitsShifted = (bits & mask) << shiftLeft;
+        return (byte) ((value & ~maskShifted) | bitsShifted);
     }
 
     @Override
@@ -133,7 +135,9 @@ final class BitfieldUtilImplL2R implements IBitfieldUtilImpl {
     ) {
         int shiftLeft = Short.SIZE - endBit;
         int mask = (1 << (endBit - startBit)) - 1;
-        return (short) ((value & ~mask) | ((bits & mask) << shiftLeft));
+        int maskShifted = mask << shiftLeft;
+        int bitsShifted = (bits & mask) << shiftLeft;
+        return (short) ((value & ~maskShifted) | bitsShifted);
     }
 
     @Override
@@ -145,7 +149,9 @@ final class BitfieldUtilImplL2R implements IBitfieldUtilImpl {
     ) {
         int shiftLeft = Integer.SIZE - endBit;
         long mask = (1L << (endBit - startBit)) - 1;
-        return (int) ((value & ~mask) | ((bits & mask) << shiftLeft));
+        long maskShifted = mask << shiftLeft;
+        long bitsShifted = (bits & mask) << shiftLeft;
+        return (int) ((value & ~maskShifted) | bitsShifted);
     }
 
     BitfieldUtilImplL2R() {}
