@@ -73,5 +73,80 @@ final class BitfieldUtilImplL2R implements IBitfieldUtilImpl {
         return (int) ((value >>> shiftRight) & mask);
     }
 
+    @Override
+    public @unsigned byte writeBitUnchecked(
+            @unsigned byte value,
+            @unsigned int bit,
+            boolean bitValue
+    ) {
+        if (bitValue) {
+            return (byte) (value | (1 << (Byte.SIZE - bit - 1)));
+        } else {
+            return (byte) (value & ~(1 << (Byte.SIZE - bit - 1)));
+        }
+    }
+
+    @Override
+    public @unsigned short writeBitUnchecked(
+            @unsigned short value,
+            @unsigned int bit,
+            boolean bitValue
+    ) {
+        if (bitValue) {
+            return (short) (value | (1 << (Short.SIZE - bit - 1)));
+        } else {
+            return (short) (value & ~(1 << (Short.SIZE - bit - 1)));
+        }
+    }
+
+    @Override
+    public @unsigned int writeBitUnchecked(
+            @unsigned int value,
+            @unsigned int bit,
+            boolean bitValue
+    ) {
+        if (bitValue) {
+            return (value | (1 << (Integer.SIZE - bit - 1)));
+        } else {
+            return (value & ~(1 << (Integer.SIZE - bit - 1)));
+        }
+    }
+
+    @Override
+    public @unsigned byte writeBitsUnchecked(
+            @unsigned byte value,
+            @unsigned int startBit,
+            @unsigned int endBit,
+            @unsigned byte bits
+    ) {
+        int shiftLeft = Byte.SIZE - endBit;
+        int mask = (1 << (endBit - startBit)) - 1;
+        return (byte) ((value & ~mask) | ((bits & mask) << shiftLeft));
+    }
+
+    @Override
+    public @unsigned short writeBitsUnchecked(
+            @unsigned short value,
+            @unsigned int startBit,
+            @unsigned int endBit,
+            @unsigned short bits
+    ) {
+        int shiftLeft = Short.SIZE - endBit;
+        int mask = (1 << (endBit - startBit)) - 1;
+        return (short) ((value & ~mask) | ((bits & mask) << shiftLeft));
+    }
+
+    @Override
+    public @unsigned int writeBitsUnchecked(
+            @unsigned int value,
+            @unsigned int startBit,
+            @unsigned int endBit,
+            @unsigned int bits
+    ) {
+        int shiftLeft = Integer.SIZE - endBit;
+        long mask = (1L << (endBit - startBit)) - 1;
+        return (int) ((value & ~mask) | ((bits & mask) << shiftLeft));
+    }
+
     BitfieldUtilImplL2R() {}
 }

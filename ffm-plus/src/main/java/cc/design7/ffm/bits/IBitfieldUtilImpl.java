@@ -10,4 +10,27 @@ sealed interface IBitfieldUtilImpl permits BitfieldUtilImplL2R, BitfieldUtilImpl
     @unsigned byte readBitsUnchecked(@unsigned byte value, @unsigned int startBit, @unsigned int endBit);
     @unsigned short readBitsUnchecked(@unsigned short value, @unsigned int startBit, @unsigned int endBit);
     @unsigned int readBitsUnchecked(@unsigned int value, @unsigned int startBit, @unsigned int endBit);
+
+    @unsigned byte writeBitUnchecked(@unsigned byte value, @unsigned int bit, boolean bitValue);
+    @unsigned short writeBitUnchecked(@unsigned short value, @unsigned int bit, boolean bitValue);
+    @unsigned int writeBitUnchecked(@unsigned int value, @unsigned int bit, boolean bitValue);
+
+    @unsigned byte writeBitsUnchecked(
+            @unsigned byte value,
+            @unsigned int startBit,
+            @unsigned int endBit,
+            @unsigned byte bits
+    );
+    @unsigned short writeBitsUnchecked(
+            @unsigned short value,
+            @unsigned int startBit,
+            @unsigned int endBit,
+            @unsigned short bits
+    );
+    @unsigned int writeBitsUnchecked(
+            @unsigned int value,
+            @unsigned int startBit,
+            @unsigned int endBit,
+            @unsigned int bits
+    );
 }
