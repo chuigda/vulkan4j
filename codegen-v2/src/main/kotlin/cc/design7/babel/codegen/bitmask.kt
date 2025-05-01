@@ -12,15 +12,9 @@ fun generateBitmask(
 ) = buildDoc {
     val docLink = codegenOptions.seeLinkProvider(bitmask)
 
-    val postfix = when (bitmask.bitwidth) {
-        null, 32 -> ""
-        64 -> "L"
-        else -> error("unsupported bitwidth: ${bitmask.bitwidth}")
-    }
-
-    val (bitflagType, bitflagObjectType) = when (bitmask.bitwidth) {
-        null, 32 -> Pair("int", "Integer")
-        64 -> Pair("long", "Long")
+    val (postfix, bitflagType, bitflagObjectType) = when (bitmask.bitwidth) {
+        null, 32 -> listOf("", "int", "Integer")
+        64 -> listOf("L", "long", "Long")
         else -> error("unsupported bitwidth: ${bitmask.bitwidth}")
     }
 
