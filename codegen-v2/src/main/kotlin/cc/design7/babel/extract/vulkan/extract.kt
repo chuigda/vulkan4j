@@ -202,7 +202,7 @@ private fun extractConstant(e: Element): Constant {
         name != "WHOLE_SIZE" && (name.startsWith("VK_MAX") || name.endsWith("SIZE")) -> "size_t"
         value.contains("ULL") -> "uint64_t"
         value.contains("U") -> "uint32_t"
-        value.contains(Regex("[fF]$")) -> "float"
+        value.contains("f") || value.contains("F") -> "float"
         else -> "int32_t"
     })
 
@@ -375,14 +375,17 @@ private fun extractType(e: Element): Type {
             e.parentNode.childNodes
                 .toList()
                 .filter { it.nodeType == Node.TEXT_NODE || (it is Element && it.tagName == "enum") }
-                .joinToString("") { it.textContent }
-        val lengths =
-            Regex("\\[([^]]+)]")
-                .findAll(contents)
-                .map { it.groups[1]!!.value.intern() }
-                .toList()
+                .joinToString { it.textContent }
+                .trim()
+
+        if (contents.startsWith('[') && contents.endsWith(']')) {
+            val lengths = contents
+                .removePrefix("[")
+                .removePrefix("]")
+                .split("][")
+                .map { it.trim().intern() }
                 .reversed()
-        if (lengths.isNotEmpty()) {
+
             var array = ArrayType(identifier, lengths[0])
             lengths.subList(1, lengths.size).forEach { array = ArrayType(array, it) }
             return array
