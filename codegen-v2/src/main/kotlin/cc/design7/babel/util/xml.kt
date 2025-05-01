@@ -29,6 +29,8 @@ fun Element.getElementList(tag: String) = mutableListOf<Element>().apply {
     }
 }
 
+fun Element.getElementSequence(tag: String) = getElementsByTagName(tag).asSequence().map { it as Element }
+
 fun Node.query(@Language("XPath") xpath: String): List<Element> {
     return (XPathFactory
         .newInstance()
