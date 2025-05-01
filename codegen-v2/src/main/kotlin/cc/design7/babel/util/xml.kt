@@ -43,3 +43,17 @@ fun NodeList.toList() = mutableListOf<Node>().apply {
         add(item(i))
     }
 }
+
+operator fun NodeList.iterator(): Iterator<Node> = object : Iterator<Node> {
+  private var nextIndex = 0
+  
+  override fun next(): Node {
+    val value = this@iterator.item(nextIndex)
+    nextIndex ++
+    return value
+  }
+  
+  override fun hasNext(): Boolean = nextIndex < this@iterator.length
+}
+
+fun NodeList.asSequence(): Sequence<Node> = Sequence { this@asSequence.iterator() }
