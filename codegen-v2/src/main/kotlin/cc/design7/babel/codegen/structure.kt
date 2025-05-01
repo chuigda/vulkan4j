@@ -73,7 +73,9 @@ private fun lowerMemberTypes(
                     )
 
                     if ((fieldTypeLowered as CFixedSizeType).byteSize != cType.byteSize) {
-                        error("Field ${field.name} has different size than previous field ${current.name} (${fieldTypeLowered.byteSize} vs ${cType.byteSize})")
+                        // Quit the loop, summarize the last storage unit. The new bitfield
+                        // would be handled in the next iteration of the outer loop
+                        break
                     }
                 }
 
