@@ -1,5 +1,7 @@
 package cc.design7.ffm.bits;
 
+import cc.design7.ffm.annotation.unsigned;
+
 /// On certain platforms, bitfields are packed from right to left.
 ///
 /// For example, for the following
@@ -24,34 +26,46 @@ package cc.design7.ffm.bits;
 /// and mask it with 0x07 ({@code = (1 << (endBit - startBit)) - 1}).
 final class BitfieldUtilImplR2L implements IBitfieldUtilImpl {
     @Override
-    public boolean readBitUnchecked(byte value, int bit) {
+    public boolean readBitUnchecked(@unsigned byte value, @unsigned int bit) {
         return ((value >>> bit) & 0x01) != 0;
     }
 
     @Override
-    public boolean readBitUnchecked(short value, int bit) {
+    public boolean readBitUnchecked(@unsigned short value, @unsigned int bit) {
         return ((value >>> bit) & 0x01) != 0;
     }
 
     @Override
-    public boolean readBitUnchecked(int value, int bit) {
+    public boolean readBitUnchecked(@unsigned int value, @unsigned int bit) {
         return ((value >>> bit) & 0x01) != 0;
     }
 
     @Override
-    public byte readBitsUnchecked(byte value, int startBit, int endBit) {
+    public byte readBitsUnchecked(
+            @unsigned byte value,
+            @unsigned int startBit,
+            @unsigned int endBit
+    ) {
         int mask = (1 << (endBit - startBit)) - 1;
         return (byte) ((value >>> startBit) & mask);
     }
 
     @Override
-    public short readBitsUnchecked(short value, int startBit, int endBit) {
+    public short readBitsUnchecked(
+            @unsigned short value,
+            @unsigned int startBit,
+            @unsigned int endBit
+    ) {
         int mask = (1 << (endBit - startBit)) - 1;
         return (short) ((value >>> startBit) & mask);
     }
 
     @Override
-    public int readBitsUnchecked(int value, int startBit, int endBit) {
+    public int readBitsUnchecked(
+            @unsigned int value,
+            @unsigned int startBit,
+            @unsigned int endBit
+    ) {
         long mask = (1L << (endBit - startBit)) - 1;
         return (int) ((value >>> startBit) & mask);
     }

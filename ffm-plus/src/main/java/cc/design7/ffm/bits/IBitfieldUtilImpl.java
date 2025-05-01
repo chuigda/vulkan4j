@@ -2,7 +2,7 @@ package cc.design7.ffm.bits;
 
 import cc.design7.ffm.annotation.unsigned;
 
-interface IBitfieldUtilImpl {
+sealed interface IBitfieldUtilImpl permits BitfieldUtilImplL2R, BitfieldUtilImplR2L {
     boolean readBitUnchecked(@unsigned byte value, @unsigned int bit);
     boolean readBitUnchecked(@unsigned short value, @unsigned int bit);
     boolean readBitUnchecked(@unsigned int value, @unsigned int bit);
