@@ -79,6 +79,10 @@ public record IntPtr(MemorySegment segment) implements IPointer {
     /// backing storage does not reside in native memory and does not have a native address. Thus, this method is marked
     /// as {@link unsafe} because it can create inconsistency and cause very difficult to troubleshoot bugs.
     ///
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
+    /// have ever read from the {@link Buffer}, and you want all the contents of the
+    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
+    ///
     /// @param buffer the {@link IntBuffer} to use as the backing storage
     /// @return a new {@link IntPtr} that uses the given {@link IntBuffer} as its backing storage
     @unsafe
