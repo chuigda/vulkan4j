@@ -9,7 +9,7 @@ public final class VkInternalAllocationType {
     public static String explain(@enumtype(VkInternalAllocationType.class) int value) {
         return switch (value) {
             case VkInternalAllocationType.EXECUTABLE -> "VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE";
-            default -> "Unknown VkInternalAllocationType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

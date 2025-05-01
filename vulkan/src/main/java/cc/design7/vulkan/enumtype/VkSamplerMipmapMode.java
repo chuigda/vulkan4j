@@ -11,7 +11,7 @@ public final class VkSamplerMipmapMode {
         return switch (value) {
             case VkSamplerMipmapMode.LINEAR -> "VK_SAMPLER_MIPMAP_MODE_LINEAR";
             case VkSamplerMipmapMode.NEAREST -> "VK_SAMPLER_MIPMAP_MODE_NEAREST";
-            default -> "Unknown VkSamplerMipmapMode: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

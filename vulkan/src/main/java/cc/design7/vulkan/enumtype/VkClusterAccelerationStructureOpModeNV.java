@@ -13,7 +13,7 @@ public final class VkClusterAccelerationStructureOpModeNV {
             case VkClusterAccelerationStructureOpModeNV.COMPUTE_SIZES -> "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV";
             case VkClusterAccelerationStructureOpModeNV.EXPLICIT_DESTINATIONS -> "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_EXPLICIT_DESTINATIONS_NV";
             case VkClusterAccelerationStructureOpModeNV.IMPLICIT_DESTINATIONS -> "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV";
-            default -> "Unknown VkClusterAccelerationStructureOpModeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -11,7 +11,7 @@ public final class VkFrontFace {
         return switch (value) {
             case VkFrontFace.CLOCKWISE -> "VK_FRONT_FACE_CLOCKWISE";
             case VkFrontFace.COUNTER_CLOCKWISE -> "VK_FRONT_FACE_COUNTER_CLOCKWISE";
-            default -> "Unknown VkFrontFace: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

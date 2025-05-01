@@ -15,7 +15,7 @@ public final class VkFullScreenExclusiveEXT {
             case VkFullScreenExclusiveEXT.APPLICATION_CONTROLLED -> "VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT";
             case VkFullScreenExclusiveEXT.DEFAULT -> "VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT";
             case VkFullScreenExclusiveEXT.DISALLOWED -> "VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT";
-            default -> "Unknown VkFullScreenExclusiveEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

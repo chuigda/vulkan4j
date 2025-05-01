@@ -21,7 +21,7 @@ public final class VkPresentModeKHR {
             case VkPresentModeKHR.MAILBOX -> "VK_PRESENT_MODE_MAILBOX_KHR";
             case VkPresentModeKHR.SHARED_CONTINUOUS_REFRESH -> "VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR";
             case VkPresentModeKHR.SHARED_DEMAND_REFRESH -> "VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR";
-            default -> "Unknown VkPresentModeKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

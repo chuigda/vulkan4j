@@ -11,7 +11,7 @@ public final class VkRayTracingLssIndexingModeNV {
         return switch (value) {
             case VkRayTracingLssIndexingModeNV.LIST -> "VK_RAY_TRACING_LSS_INDEXING_MODE_LIST_NV";
             case VkRayTracingLssIndexingModeNV.SUCCESSIVE -> "VK_RAY_TRACING_LSS_INDEXING_MODE_SUCCESSIVE_NV";
-            default -> "Unknown VkRayTracingLssIndexingModeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

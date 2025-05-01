@@ -11,7 +11,7 @@ public final class VkFragmentShadingRateTypeNV {
         return switch (value) {
             case VkFragmentShadingRateTypeNV.ENUMS -> "VK_FRAGMENT_SHADING_RATE_TYPE_ENUMS_NV";
             case VkFragmentShadingRateTypeNV.FRAGMENT_SIZE -> "VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV";
-            default -> "Unknown VkFragmentShadingRateTypeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

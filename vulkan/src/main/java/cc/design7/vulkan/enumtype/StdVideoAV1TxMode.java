@@ -15,7 +15,7 @@ public final class StdVideoAV1TxMode {
             case StdVideoAV1TxMode.STD_VIDEO_AV1_TX_MODE_LARGEST -> "STD_VIDEO_AV1_TX_MODE_LARGEST";
             case StdVideoAV1TxMode.STD_VIDEO_AV1_TX_MODE_ONLY_4X4 -> "STD_VIDEO_AV1_TX_MODE_ONLY_4X4";
             case StdVideoAV1TxMode.STD_VIDEO_AV1_TX_MODE_SELECT -> "STD_VIDEO_AV1_TX_MODE_SELECT";
-            default -> "Unknown StdVideoAV1TxMode: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

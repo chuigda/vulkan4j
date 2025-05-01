@@ -13,7 +13,7 @@ public final class VkImageType {
             case VkImageType._1D -> "VK_IMAGE_TYPE_1D";
             case VkImageType._2D -> "VK_IMAGE_TYPE_2D";
             case VkImageType._3D -> "VK_IMAGE_TYPE_3D";
-            default -> "Unknown VkImageType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

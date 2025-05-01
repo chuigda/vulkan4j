@@ -13,7 +13,7 @@ public final class VkAccelerationStructureBuildTypeKHR {
             case VkAccelerationStructureBuildTypeKHR.DEVICE -> "VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR";
             case VkAccelerationStructureBuildTypeKHR.HOST -> "VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_KHR";
             case VkAccelerationStructureBuildTypeKHR.HOST_OR_DEVICE -> "VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR";
-            default -> "Unknown VkAccelerationStructureBuildTypeKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -61,7 +61,7 @@ public final class VkDriverId {
             case VkDriverId.SAMSUNG_PROPRIETARY -> "VK_DRIVER_ID_SAMSUNG_PROPRIETARY";
             case VkDriverId.VERISILICON_PROPRIETARY -> "VK_DRIVER_ID_VERISILICON_PROPRIETARY";
             case VkDriverId.VULKAN_SC_EMULATION_ON_VULKAN -> "VK_DRIVER_ID_VULKAN_SC_EMULATION_ON_VULKAN";
-            default -> "Unknown VkDriverId: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

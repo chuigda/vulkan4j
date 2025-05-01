@@ -11,7 +11,7 @@ public final class VkRasterizationOrderAMD {
         return switch (value) {
             case VkRasterizationOrderAMD.RELAXED -> "VK_RASTERIZATION_ORDER_RELAXED_AMD";
             case VkRasterizationOrderAMD.STRICT -> "VK_RASTERIZATION_ORDER_STRICT_AMD";
-            default -> "Unknown VkRasterizationOrderAMD: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

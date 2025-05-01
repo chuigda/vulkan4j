@@ -24,7 +24,7 @@ public final class VkPresentScalingFlagsEXT {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE";
+            return "NONE(" + Integer.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

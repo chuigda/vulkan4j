@@ -23,7 +23,7 @@ public final class StdVideoH264NonVclNaluType {
             case StdVideoH264NonVclNaluType.STD_VIDEO_H264_NON_VCL_NALU_TYPE_PRECODED -> "STD_VIDEO_H264_NON_VCL_NALU_TYPE_PRECODED";
             case StdVideoH264NonVclNaluType.STD_VIDEO_H264_NON_VCL_NALU_TYPE_PREFIX -> "STD_VIDEO_H264_NON_VCL_NALU_TYPE_PREFIX";
             case StdVideoH264NonVclNaluType.STD_VIDEO_H264_NON_VCL_NALU_TYPE_SPS -> "STD_VIDEO_H264_NON_VCL_NALU_TYPE_SPS";
-            default -> "Unknown StdVideoH264NonVclNaluType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

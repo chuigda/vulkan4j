@@ -11,7 +11,7 @@ public final class VkSharingMode {
         return switch (value) {
             case VkSharingMode.CONCURRENT -> "VK_SHARING_MODE_CONCURRENT";
             case VkSharingMode.EXCLUSIVE -> "VK_SHARING_MODE_EXCLUSIVE";
-            default -> "Unknown VkSharingMode: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

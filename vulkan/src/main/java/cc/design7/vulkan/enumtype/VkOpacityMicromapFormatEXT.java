@@ -11,7 +11,7 @@ public final class VkOpacityMicromapFormatEXT {
         return switch (value) {
             case VkOpacityMicromapFormatEXT._2_STATE -> "VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT";
             case VkOpacityMicromapFormatEXT._4_STATE -> "VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT";
-            default -> "Unknown VkOpacityMicromapFormatEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

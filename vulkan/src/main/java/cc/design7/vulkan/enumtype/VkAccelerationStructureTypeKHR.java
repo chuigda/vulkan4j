@@ -13,7 +13,7 @@ public final class VkAccelerationStructureTypeKHR {
             case VkAccelerationStructureTypeKHR.BOTTOM_LEVEL -> "VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR";
             case VkAccelerationStructureTypeKHR.GENERIC -> "VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR";
             case VkAccelerationStructureTypeKHR.TOP_LEVEL -> "VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR";
-            default -> "Unknown VkAccelerationStructureTypeKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

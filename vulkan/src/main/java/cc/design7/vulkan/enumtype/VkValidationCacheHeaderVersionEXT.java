@@ -9,7 +9,7 @@ public final class VkValidationCacheHeaderVersionEXT {
     public static String explain(@enumtype(VkValidationCacheHeaderVersionEXT.class) int value) {
         return switch (value) {
             case VkValidationCacheHeaderVersionEXT.ONE -> "VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT";
-            default -> "Unknown VkValidationCacheHeaderVersionEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -11,7 +11,7 @@ public final class VkCoverageReductionModeNV {
         return switch (value) {
             case VkCoverageReductionModeNV.MERGE -> "VK_COVERAGE_REDUCTION_MODE_MERGE_NV";
             case VkCoverageReductionModeNV.TRUNCATE -> "VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV";
-            default -> "Unknown VkCoverageReductionModeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

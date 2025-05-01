@@ -9,7 +9,7 @@ public final class VkPipelineCacheHeaderVersion {
     public static String explain(@enumtype(VkPipelineCacheHeaderVersion.class) int value) {
         return switch (value) {
             case VkPipelineCacheHeaderVersion.ONE -> "VK_PIPELINE_CACHE_HEADER_VERSION_ONE";
-            default -> "Unknown VkPipelineCacheHeaderVersion: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

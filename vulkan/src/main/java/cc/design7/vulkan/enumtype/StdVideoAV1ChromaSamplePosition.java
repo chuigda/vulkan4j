@@ -17,7 +17,7 @@ public final class StdVideoAV1ChromaSamplePosition {
             case StdVideoAV1ChromaSamplePosition.STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_RESERVED -> "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_RESERVED";
             case StdVideoAV1ChromaSamplePosition.STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_UNKNOWN -> "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_UNKNOWN";
             case StdVideoAV1ChromaSamplePosition.STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_VERTICAL -> "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_VERTICAL";
-            default -> "Unknown StdVideoAV1ChromaSamplePosition: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

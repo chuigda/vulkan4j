@@ -13,7 +13,7 @@ public final class VkDisplacementMicromapFormatNV {
             case VkDisplacementMicromapFormatNV._1024_TRIANGLES_128_BYTES -> "VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV";
             case VkDisplacementMicromapFormatNV._256_TRIANGLES_128_BYTES -> "VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV";
             case VkDisplacementMicromapFormatNV._64_TRIANGLES_64_BYTES -> "VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV";
-            default -> "Unknown VkDisplacementMicromapFormatNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

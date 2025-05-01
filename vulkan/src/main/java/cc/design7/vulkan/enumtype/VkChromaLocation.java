@@ -11,7 +11,7 @@ public final class VkChromaLocation {
         return switch (value) {
             case VkChromaLocation.COSITED_EVEN -> "VK_CHROMA_LOCATION_COSITED_EVEN";
             case VkChromaLocation.MIDPOINT -> "VK_CHROMA_LOCATION_MIDPOINT";
-            default -> "Unknown VkChromaLocation: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

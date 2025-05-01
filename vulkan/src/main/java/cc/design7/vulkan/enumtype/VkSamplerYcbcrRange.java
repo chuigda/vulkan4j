@@ -11,7 +11,7 @@ public final class VkSamplerYcbcrRange {
         return switch (value) {
             case VkSamplerYcbcrRange.ITU_FULL -> "VK_SAMPLER_YCBCR_RANGE_ITU_FULL";
             case VkSamplerYcbcrRange.ITU_NARROW -> "VK_SAMPLER_YCBCR_RANGE_ITU_NARROW";
-            default -> "Unknown VkSamplerYcbcrRange: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -9,7 +9,7 @@ public final class VkDeviceEventTypeEXT {
     public static String explain(@enumtype(VkDeviceEventTypeEXT.class) int value) {
         return switch (value) {
             case VkDeviceEventTypeEXT.DISPLAY_HOTPLUG -> "VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT";
-            default -> "Unknown VkDeviceEventTypeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

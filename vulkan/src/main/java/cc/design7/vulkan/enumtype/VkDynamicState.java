@@ -153,7 +153,7 @@ public final class VkDynamicState {
             case VkDynamicState.VIEWPORT_WITH_COUNT -> "VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT";
             case VkDynamicState.VIEWPORT_W_SCALING_ENABLE_NV -> "VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV";
             case VkDynamicState.VIEWPORT_W_SCALING_NV -> "VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV";
-            default -> "Unknown VkDynamicState: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

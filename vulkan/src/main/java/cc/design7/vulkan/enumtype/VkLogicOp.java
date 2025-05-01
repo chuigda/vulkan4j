@@ -39,7 +39,7 @@ public final class VkLogicOp {
             case VkLogicOp.OR_REVERSE -> "VK_LOGIC_OP_OR_REVERSE";
             case VkLogicOp.SET -> "VK_LOGIC_OP_SET";
             case VkLogicOp.XOR -> "VK_LOGIC_OP_XOR";
-            default -> "Unknown VkLogicOp: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

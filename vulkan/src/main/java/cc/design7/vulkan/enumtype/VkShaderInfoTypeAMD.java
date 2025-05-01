@@ -13,7 +13,7 @@ public final class VkShaderInfoTypeAMD {
             case VkShaderInfoTypeAMD.BINARY -> "VK_SHADER_INFO_TYPE_BINARY_AMD";
             case VkShaderInfoTypeAMD.DISASSEMBLY -> "VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD";
             case VkShaderInfoTypeAMD.STATISTICS -> "VK_SHADER_INFO_TYPE_STATISTICS_AMD";
-            default -> "Unknown VkShaderInfoTypeAMD: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -17,7 +17,7 @@ public final class StdVideoH264ChromaFormatIdc {
             case StdVideoH264ChromaFormatIdc.STD_VIDEO_H264_CHROMA_FORMAT_IDC_444 -> "STD_VIDEO_H264_CHROMA_FORMAT_IDC_444";
             case StdVideoH264ChromaFormatIdc.STD_VIDEO_H264_CHROMA_FORMAT_IDC_INVALID -> "STD_VIDEO_H264_CHROMA_FORMAT_IDC_INVALID";
             case StdVideoH264ChromaFormatIdc.STD_VIDEO_H264_CHROMA_FORMAT_IDC_MONOCHROME -> "STD_VIDEO_H264_CHROMA_FORMAT_IDC_MONOCHROME";
-            default -> "Unknown StdVideoH264ChromaFormatIdc: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

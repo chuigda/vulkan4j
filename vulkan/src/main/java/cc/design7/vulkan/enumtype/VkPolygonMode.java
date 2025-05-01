@@ -15,7 +15,7 @@ public final class VkPolygonMode {
             case VkPolygonMode.FILL_RECTANGLE_NV -> "VK_POLYGON_MODE_FILL_RECTANGLE_NV";
             case VkPolygonMode.LINE -> "VK_POLYGON_MODE_LINE";
             case VkPolygonMode.POINT -> "VK_POLYGON_MODE_POINT";
-            default -> "Unknown VkPolygonMode: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

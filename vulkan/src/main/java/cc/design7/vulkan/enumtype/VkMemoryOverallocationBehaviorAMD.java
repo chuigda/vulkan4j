@@ -13,7 +13,7 @@ public final class VkMemoryOverallocationBehaviorAMD {
             case VkMemoryOverallocationBehaviorAMD.ALLOWED -> "VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD";
             case VkMemoryOverallocationBehaviorAMD.DEFAULT -> "VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD";
             case VkMemoryOverallocationBehaviorAMD.DISALLOWED -> "VK_MEMORY_OVERALLOCATION_BEHAVIOR_DISALLOWED_AMD";
-            default -> "Unknown VkMemoryOverallocationBehaviorAMD: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

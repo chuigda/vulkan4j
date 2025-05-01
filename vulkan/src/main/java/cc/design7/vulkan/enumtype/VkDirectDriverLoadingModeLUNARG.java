@@ -11,7 +11,7 @@ public final class VkDirectDriverLoadingModeLUNARG {
         return switch (value) {
             case VkDirectDriverLoadingModeLUNARG.EXCLUSIVE -> "VK_DIRECT_DRIVER_LOADING_MODE_EXCLUSIVE_LUNARG";
             case VkDirectDriverLoadingModeLUNARG.INCLUSIVE -> "VK_DIRECT_DRIVER_LOADING_MODE_INCLUSIVE_LUNARG";
-            default -> "Unknown VkDirectDriverLoadingModeLUNARG: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -11,7 +11,7 @@ public final class VkDepthClampModeEXT {
         return switch (value) {
             case VkDepthClampModeEXT.USER_DEFINED_RANGE -> "VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT";
             case VkDepthClampModeEXT.VIEWPORT_RANGE -> "VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT";
-            default -> "Unknown VkDepthClampModeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

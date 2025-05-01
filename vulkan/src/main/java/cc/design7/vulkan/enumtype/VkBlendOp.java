@@ -109,7 +109,7 @@ public final class VkBlendOp {
             case VkBlendOp.VIVIDLIGHT_EXT -> "VK_BLEND_OP_VIVIDLIGHT_EXT";
             case VkBlendOp.XOR_EXT -> "VK_BLEND_OP_XOR_EXT";
             case VkBlendOp.ZERO_EXT -> "VK_BLEND_OP_ZERO_EXT";
-            default -> "Unknown VkBlendOp: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

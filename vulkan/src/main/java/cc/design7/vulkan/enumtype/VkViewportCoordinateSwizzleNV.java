@@ -23,7 +23,7 @@ public final class VkViewportCoordinateSwizzleNV {
             case VkViewportCoordinateSwizzleNV.POSITIVE_X -> "VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_X_NV";
             case VkViewportCoordinateSwizzleNV.POSITIVE_Y -> "VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Y_NV";
             case VkViewportCoordinateSwizzleNV.POSITIVE_Z -> "VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Z_NV";
-            default -> "Unknown VkViewportCoordinateSwizzleNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

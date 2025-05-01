@@ -23,7 +23,7 @@ public final class VkBorderColor {
             case VkBorderColor.INT_OPAQUE_BLACK -> "VK_BORDER_COLOR_INT_OPAQUE_BLACK";
             case VkBorderColor.INT_OPAQUE_WHITE -> "VK_BORDER_COLOR_INT_OPAQUE_WHITE";
             case VkBorderColor.INT_TRANSPARENT_BLACK -> "VK_BORDER_COLOR_INT_TRANSPARENT_BLACK";
-            default -> "Unknown VkBorderColor: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

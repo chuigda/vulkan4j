@@ -15,7 +15,7 @@ public final class StdVideoH264PocType {
             case StdVideoH264PocType.STD_VIDEO_H264_POC_TYPE_1 -> "STD_VIDEO_H264_POC_TYPE_1";
             case StdVideoH264PocType.STD_VIDEO_H264_POC_TYPE_2 -> "STD_VIDEO_H264_POC_TYPE_2";
             case StdVideoH264PocType.STD_VIDEO_H264_POC_TYPE_INVALID -> "STD_VIDEO_H264_POC_TYPE_INVALID";
-            default -> "Unknown StdVideoH264PocType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -13,7 +13,7 @@ public final class VkAntiLagModeAMD {
             case VkAntiLagModeAMD.DRIVER_CONTROL -> "VK_ANTI_LAG_MODE_DRIVER_CONTROL_AMD";
             case VkAntiLagModeAMD.OFF -> "VK_ANTI_LAG_MODE_OFF_AMD";
             case VkAntiLagModeAMD.ON -> "VK_ANTI_LAG_MODE_ON_AMD";
-            default -> "Unknown VkAntiLagModeAMD: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

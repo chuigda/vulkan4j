@@ -11,7 +11,7 @@ public final class VkPerformanceParameterTypeINTEL {
         return switch (value) {
             case VkPerformanceParameterTypeINTEL.HW_COUNTERS_SUPPORTED -> "VK_PERFORMANCE_PARAMETER_TYPE_HW_COUNTERS_SUPPORTED_INTEL";
             case VkPerformanceParameterTypeINTEL.STREAM_MARKER_VALID_BITS -> "VK_PERFORMANCE_PARAMETER_TYPE_STREAM_MARKER_VALID_BITS_INTEL";
-            default -> "Unknown VkPerformanceParameterTypeINTEL: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

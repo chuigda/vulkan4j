@@ -13,7 +13,7 @@ public final class VkFilter {
             case VkFilter.CUBIC_EXT -> "VK_FILTER_CUBIC_EXT";
             case VkFilter.LINEAR -> "VK_FILTER_LINEAR";
             case VkFilter.NEAREST -> "VK_FILTER_NEAREST";
-            default -> "Unknown VkFilter: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

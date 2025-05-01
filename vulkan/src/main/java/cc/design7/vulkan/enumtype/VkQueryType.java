@@ -41,7 +41,7 @@ public final class VkQueryType {
             case VkQueryType.TIMESTAMP -> "VK_QUERY_TYPE_TIMESTAMP";
             case VkQueryType.TRANSFORM_FEEDBACK_STREAM_EXT -> "VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT";
             case VkQueryType.VIDEO_ENCODE_FEEDBACK_KHR -> "VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR";
-            default -> "Unknown VkQueryType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

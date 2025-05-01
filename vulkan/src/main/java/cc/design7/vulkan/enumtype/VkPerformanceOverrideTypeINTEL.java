@@ -11,7 +11,7 @@ public final class VkPerformanceOverrideTypeINTEL {
         return switch (value) {
             case VkPerformanceOverrideTypeINTEL.FLUSH_GPU_CACHES -> "VK_PERFORMANCE_OVERRIDE_TYPE_FLUSH_GPU_CACHES_INTEL";
             case VkPerformanceOverrideTypeINTEL.NULL_HARDWARE -> "VK_PERFORMANCE_OVERRIDE_TYPE_NULL_HARDWARE_INTEL";
-            default -> "Unknown VkPerformanceOverrideTypeINTEL: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

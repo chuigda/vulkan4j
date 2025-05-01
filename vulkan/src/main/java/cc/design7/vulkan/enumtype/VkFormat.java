@@ -507,7 +507,7 @@ public final class VkFormat {
             case VkFormat.S8_UINT -> "VK_FORMAT_S8_UINT";
             case VkFormat.UNDEFINED -> "VK_FORMAT_UNDEFINED";
             case VkFormat.X8_D24_UNORM_PACK32 -> "VK_FORMAT_X8_D24_UNORM_PACK32";
-            default -> "Unknown VkFormat: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

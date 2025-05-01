@@ -15,7 +15,7 @@ public final class VkCopyMicromapModeEXT {
             case VkCopyMicromapModeEXT.COMPACT -> "VK_COPY_MICROMAP_MODE_COMPACT_EXT";
             case VkCopyMicromapModeEXT.DESERIALIZE -> "VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT";
             case VkCopyMicromapModeEXT.SERIALIZE -> "VK_COPY_MICROMAP_MODE_SERIALIZE_EXT";
-            default -> "Unknown VkCopyMicromapModeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

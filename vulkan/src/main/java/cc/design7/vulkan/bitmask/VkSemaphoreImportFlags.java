@@ -16,7 +16,7 @@ public final class VkSemaphoreImportFlags {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE";
+            return "NONE(" + Integer.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

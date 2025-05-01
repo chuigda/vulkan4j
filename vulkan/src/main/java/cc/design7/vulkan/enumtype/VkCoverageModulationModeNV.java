@@ -15,7 +15,7 @@ public final class VkCoverageModulationModeNV {
             case VkCoverageModulationModeNV.NONE -> "VK_COVERAGE_MODULATION_MODE_NONE_NV";
             case VkCoverageModulationModeNV.RGBA -> "VK_COVERAGE_MODULATION_MODE_RGBA_NV";
             case VkCoverageModulationModeNV.RGB -> "VK_COVERAGE_MODULATION_MODE_RGB_NV";
-            default -> "Unknown VkCoverageModulationModeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

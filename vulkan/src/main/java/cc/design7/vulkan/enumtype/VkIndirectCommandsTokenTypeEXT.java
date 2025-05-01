@@ -37,7 +37,7 @@ public final class VkIndirectCommandsTokenTypeEXT {
             case VkIndirectCommandsTokenTypeEXT.SEQUENCE_INDEX -> "VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT";
             case VkIndirectCommandsTokenTypeEXT.TRACE_RAYS2 -> "VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT";
             case VkIndirectCommandsTokenTypeEXT.VERTEX_BUFFER -> "VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT";
-            default -> "Unknown VkIndirectCommandsTokenTypeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -15,7 +15,7 @@ public final class StdVideoAV1Profile {
             case StdVideoAV1Profile.STD_VIDEO_AV1_PROFILE_INVALID -> "STD_VIDEO_AV1_PROFILE_INVALID";
             case StdVideoAV1Profile.STD_VIDEO_AV1_PROFILE_MAIN -> "STD_VIDEO_AV1_PROFILE_MAIN";
             case StdVideoAV1Profile.STD_VIDEO_AV1_PROFILE_PROFESSIONAL -> "STD_VIDEO_AV1_PROFILE_PROFESSIONAL";
-            default -> "Unknown StdVideoAV1Profile: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

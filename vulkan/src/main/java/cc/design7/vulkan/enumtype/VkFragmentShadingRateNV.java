@@ -31,7 +31,7 @@ public final class VkFragmentShadingRateNV {
             case VkFragmentShadingRateNV._4_INVOCATIONS_PER_PIXEL -> "VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV";
             case VkFragmentShadingRateNV._8_INVOCATIONS_PER_PIXEL -> "VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV";
             case VkFragmentShadingRateNV.NO_INVOCATIONS -> "VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV";
-            default -> "Unknown VkFragmentShadingRateNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

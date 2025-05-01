@@ -15,7 +15,7 @@ public final class VkLineRasterizationMode {
             case VkLineRasterizationMode.DEFAULT -> "VK_LINE_RASTERIZATION_MODE_DEFAULT";
             case VkLineRasterizationMode.RECTANGULAR -> "VK_LINE_RASTERIZATION_MODE_RECTANGULAR";
             case VkLineRasterizationMode.RECTANGULAR_SMOOTH -> "VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH";
-            default -> "Unknown VkLineRasterizationMode: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -13,7 +13,7 @@ public final class VkConservativeRasterizationModeEXT {
             case VkConservativeRasterizationModeEXT.DISABLED -> "VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT";
             case VkConservativeRasterizationModeEXT.OVERESTIMATE -> "VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT";
             case VkConservativeRasterizationModeEXT.UNDERESTIMATE -> "VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT";
-            default -> "Unknown VkConservativeRasterizationModeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

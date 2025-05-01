@@ -33,7 +33,7 @@ public final class StdVideoAV1ColorPrimaries {
             case StdVideoAV1ColorPrimaries.STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_432 -> "STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_432";
             case StdVideoAV1ColorPrimaries.STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED -> "STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED";
             case StdVideoAV1ColorPrimaries.STD_VIDEO_AV1_COLOR_PRIMARIES_XYZ -> "STD_VIDEO_AV1_COLOR_PRIMARIES_XYZ";
-            default -> "Unknown StdVideoAV1ColorPrimaries: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

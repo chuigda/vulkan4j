@@ -13,7 +13,7 @@ public final class VkAttachmentStoreOp {
             case VkAttachmentStoreOp.DONT_CARE -> "VK_ATTACHMENT_STORE_OP_DONT_CARE";
             case VkAttachmentStoreOp.NONE -> "VK_ATTACHMENT_STORE_OP_NONE";
             case VkAttachmentStoreOp.STORE -> "VK_ATTACHMENT_STORE_OP_STORE";
-            default -> "Unknown VkAttachmentStoreOp: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -17,7 +17,7 @@ public final class VkClusterAccelerationStructureOpTypeNV {
             case VkClusterAccelerationStructureOpTypeNV.BUILD_TRIANGLE_CLUSTER_TEMPLATE -> "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_TEMPLATE_NV";
             case VkClusterAccelerationStructureOpTypeNV.INSTANTIATE_TRIANGLE_CLUSTER -> "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_INSTANTIATE_TRIANGLE_CLUSTER_NV";
             case VkClusterAccelerationStructureOpTypeNV.MOVE_OBJECTS -> "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_MOVE_OBJECTS_NV";
-            default -> "Unknown VkClusterAccelerationStructureOpTypeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

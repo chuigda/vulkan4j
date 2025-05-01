@@ -57,7 +57,7 @@ public final class StdVideoAV1Level {
             case StdVideoAV1Level.STD_VIDEO_AV1_LEVEL_7_2 -> "STD_VIDEO_AV1_LEVEL_7_2";
             case StdVideoAV1Level.STD_VIDEO_AV1_LEVEL_7_3 -> "STD_VIDEO_AV1_LEVEL_7_3";
             case StdVideoAV1Level.STD_VIDEO_AV1_LEVEL_INVALID -> "STD_VIDEO_AV1_LEVEL_INVALID";
-            default -> "Unknown StdVideoAV1Level: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

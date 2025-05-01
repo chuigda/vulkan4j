@@ -15,7 +15,7 @@ public final class VkOpticalFlowPerformanceLevelNV {
             case VkOpticalFlowPerformanceLevelNV.MEDIUM -> "VK_OPTICAL_FLOW_PERFORMANCE_LEVEL_MEDIUM_NV";
             case VkOpticalFlowPerformanceLevelNV.SLOW -> "VK_OPTICAL_FLOW_PERFORMANCE_LEVEL_SLOW_NV";
             case VkOpticalFlowPerformanceLevelNV.UNKNOWN -> "VK_OPTICAL_FLOW_PERFORMANCE_LEVEL_UNKNOWN_NV";
-            default -> "Unknown VkOpticalFlowPerformanceLevelNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

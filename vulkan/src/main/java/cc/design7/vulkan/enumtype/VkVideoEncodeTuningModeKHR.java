@@ -17,7 +17,7 @@ public final class VkVideoEncodeTuningModeKHR {
             case VkVideoEncodeTuningModeKHR.LOSSLESS -> "VK_VIDEO_ENCODE_TUNING_MODE_LOSSLESS_KHR";
             case VkVideoEncodeTuningModeKHR.LOW_LATENCY -> "VK_VIDEO_ENCODE_TUNING_MODE_LOW_LATENCY_KHR";
             case VkVideoEncodeTuningModeKHR.ULTRA_LOW_LATENCY -> "VK_VIDEO_ENCODE_TUNING_MODE_ULTRA_LOW_LATENCY_KHR";
-            default -> "Unknown VkVideoEncodeTuningModeKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -17,7 +17,7 @@ public final class VkOpacityMicromapSpecialIndexEXT {
             case VkOpacityMicromapSpecialIndexEXT.FULLY_TRANSPARENT -> "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_TRANSPARENT_EXT";
             case VkOpacityMicromapSpecialIndexEXT.FULLY_UNKNOWN_OPAQUE -> "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE_EXT";
             case VkOpacityMicromapSpecialIndexEXT.FULLY_UNKNOWN_TRANSPARENT -> "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_TRANSPARENT_EXT";
-            default -> "Unknown VkOpacityMicromapSpecialIndexEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

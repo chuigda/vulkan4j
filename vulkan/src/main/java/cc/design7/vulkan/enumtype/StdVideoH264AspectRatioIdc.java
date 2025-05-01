@@ -45,7 +45,7 @@ public final class StdVideoH264AspectRatioIdc {
             case StdVideoH264AspectRatioIdc.STD_VIDEO_H264_ASPECT_RATIO_IDC_INVALID -> "STD_VIDEO_H264_ASPECT_RATIO_IDC_INVALID";
             case StdVideoH264AspectRatioIdc.STD_VIDEO_H264_ASPECT_RATIO_IDC_SQUARE -> "STD_VIDEO_H264_ASPECT_RATIO_IDC_SQUARE";
             case StdVideoH264AspectRatioIdc.STD_VIDEO_H264_ASPECT_RATIO_IDC_UNSPECIFIED -> "STD_VIDEO_H264_ASPECT_RATIO_IDC_UNSPECIFIED";
-            default -> "Unknown StdVideoH264AspectRatioIdc: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -11,7 +11,7 @@ public final class VkValidationCheckEXT {
         return switch (value) {
             case VkValidationCheckEXT.ALL -> "VK_VALIDATION_CHECK_ALL_EXT";
             case VkValidationCheckEXT.SHADERS -> "VK_VALIDATION_CHECK_SHADERS_EXT";
-            default -> "Unknown VkValidationCheckEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

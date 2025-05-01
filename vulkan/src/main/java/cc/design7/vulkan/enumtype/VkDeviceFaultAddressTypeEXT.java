@@ -21,7 +21,7 @@ public final class VkDeviceFaultAddressTypeEXT {
             case VkDeviceFaultAddressTypeEXT.NONE -> "VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_EXT";
             case VkDeviceFaultAddressTypeEXT.READ_INVALID -> "VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_EXT";
             case VkDeviceFaultAddressTypeEXT.WRITE_INVALID -> "VK_DEVICE_FAULT_ADDRESS_TYPE_WRITE_INVALID_EXT";
-            default -> "Unknown VkDeviceFaultAddressTypeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

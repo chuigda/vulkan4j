@@ -67,7 +67,7 @@ public final class VkImageLayout {
             case VkImageLayout.VIDEO_ENCODE_DST_KHR -> "VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR";
             case VkImageLayout.VIDEO_ENCODE_QUANTIZATION_MAP_KHR -> "VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR";
             case VkImageLayout.VIDEO_ENCODE_SRC_KHR -> "VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR";
-            default -> "Unknown VkImageLayout: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

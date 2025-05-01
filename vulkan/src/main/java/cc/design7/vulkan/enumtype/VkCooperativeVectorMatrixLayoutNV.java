@@ -15,7 +15,7 @@ public final class VkCooperativeVectorMatrixLayoutNV {
             case VkCooperativeVectorMatrixLayoutNV.INFERENCING_OPTIMAL -> "VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV";
             case VkCooperativeVectorMatrixLayoutNV.ROW_MAJOR -> "VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_ROW_MAJOR_NV";
             case VkCooperativeVectorMatrixLayoutNV.TRAINING_OPTIMAL -> "VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_TRAINING_OPTIMAL_NV";
-            default -> "Unknown VkCooperativeVectorMatrixLayoutNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

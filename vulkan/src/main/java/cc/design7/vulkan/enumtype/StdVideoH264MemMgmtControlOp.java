@@ -23,7 +23,7 @@ public final class StdVideoH264MemMgmtControlOp {
             case StdVideoH264MemMgmtControlOp.STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_UNMARK_ALL -> "STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_UNMARK_ALL";
             case StdVideoH264MemMgmtControlOp.STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_UNMARK_LONG_TERM -> "STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_UNMARK_LONG_TERM";
             case StdVideoH264MemMgmtControlOp.STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_UNMARK_SHORT_TERM -> "STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_UNMARK_SHORT_TERM";
-            default -> "Unknown StdVideoH264MemMgmtControlOp: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

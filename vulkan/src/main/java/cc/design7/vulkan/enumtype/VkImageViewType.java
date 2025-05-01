@@ -21,7 +21,7 @@ public final class VkImageViewType {
             case VkImageViewType._3D -> "VK_IMAGE_VIEW_TYPE_3D";
             case VkImageViewType.CUBE -> "VK_IMAGE_VIEW_TYPE_CUBE";
             case VkImageViewType.CUBE_ARRAY -> "VK_IMAGE_VIEW_TYPE_CUBE_ARRAY";
-            default -> "Unknown VkImageViewType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -13,7 +13,7 @@ public final class VkPerformanceCounterScopeKHR {
             case VkPerformanceCounterScopeKHR.COMMAND_BUFFER -> "VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR";
             case VkPerformanceCounterScopeKHR.COMMAND -> "VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR";
             case VkPerformanceCounterScopeKHR.RENDER_PASS -> "VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR";
-            default -> "Unknown VkPerformanceCounterScopeKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -31,7 +31,7 @@ public final class VkShadingRatePaletteEntryNV {
             case VkShadingRatePaletteEntryNV._4_INVOCATIONS_PER_PIXEL -> "VK_SHADING_RATE_PALETTE_ENTRY_4_INVOCATIONS_PER_PIXEL_NV";
             case VkShadingRatePaletteEntryNV._8_INVOCATIONS_PER_PIXEL -> "VK_SHADING_RATE_PALETTE_ENTRY_8_INVOCATIONS_PER_PIXEL_NV";
             case VkShadingRatePaletteEntryNV.NO_INVOCATIONS -> "VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV";
-            default -> "Unknown VkShadingRatePaletteEntryNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

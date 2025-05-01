@@ -15,7 +15,7 @@ public final class VkScopeKHR {
             case VkScopeKHR.QUEUE_FAMILY -> "VK_SCOPE_QUEUE_FAMILY_KHR";
             case VkScopeKHR.SUBGROUP -> "VK_SCOPE_SUBGROUP_KHR";
             case VkScopeKHR.WORKGROUP -> "VK_SCOPE_WORKGROUP_KHR";
-            default -> "Unknown VkScopeKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

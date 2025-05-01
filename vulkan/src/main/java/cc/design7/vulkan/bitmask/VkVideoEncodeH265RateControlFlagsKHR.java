@@ -32,7 +32,7 @@ public final class VkVideoEncodeH265RateControlFlagsKHR {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE";
+            return "NONE(" + Integer.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

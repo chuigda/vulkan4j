@@ -17,7 +17,7 @@ public final class StdVideoAV1FrameRestorationType {
             case StdVideoAV1FrameRestorationType.STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_SGRPROJ -> "STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_SGRPROJ";
             case StdVideoAV1FrameRestorationType.STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_SWITCHABLE -> "STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_SWITCHABLE";
             case StdVideoAV1FrameRestorationType.STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_WIENER -> "STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_WIENER";
-            default -> "Unknown StdVideoAV1FrameRestorationType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

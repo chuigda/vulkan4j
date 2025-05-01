@@ -29,7 +29,7 @@ public final class VkPrimitiveTopology {
             case VkPrimitiveTopology.TRIANGLE_LIST_WITH_ADJACENCY -> "VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY";
             case VkPrimitiveTopology.TRIANGLE_STRIP -> "VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP";
             case VkPrimitiveTopology.TRIANGLE_STRIP_WITH_ADJACENCY -> "VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY";
-            default -> "Unknown VkPrimitiveTopology: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

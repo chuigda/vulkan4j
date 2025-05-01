@@ -19,7 +19,7 @@ public final class VkPerformanceCounterStorageKHR {
             case VkPerformanceCounterStorageKHR.INT64 -> "VK_PERFORMANCE_COUNTER_STORAGE_INT64_KHR";
             case VkPerformanceCounterStorageKHR.UINT32 -> "VK_PERFORMANCE_COUNTER_STORAGE_UINT32_KHR";
             case VkPerformanceCounterStorageKHR.UINT64 -> "VK_PERFORMANCE_COUNTER_STORAGE_UINT64_KHR";
-            default -> "Unknown VkPerformanceCounterStorageKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

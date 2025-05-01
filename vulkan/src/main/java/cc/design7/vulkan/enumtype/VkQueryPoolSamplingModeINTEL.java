@@ -9,7 +9,7 @@ public final class VkQueryPoolSamplingModeINTEL {
     public static String explain(@enumtype(VkQueryPoolSamplingModeINTEL.class) int value) {
         return switch (value) {
             case VkQueryPoolSamplingModeINTEL.MANUAL -> "VK_QUERY_POOL_SAMPLING_MODE_MANUAL_INTEL";
-            default -> "Unknown VkQueryPoolSamplingModeINTEL: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

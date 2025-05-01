@@ -11,7 +11,7 @@ public final class VkBlockMatchWindowCompareModeQCOM {
         return switch (value) {
             case VkBlockMatchWindowCompareModeQCOM.MAX -> "VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_QCOM";
             case VkBlockMatchWindowCompareModeQCOM.MIN -> "VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM";
-            default -> "Unknown VkBlockMatchWindowCompareModeQCOM: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

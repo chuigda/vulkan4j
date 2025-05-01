@@ -11,7 +11,7 @@ public final class VkMicromapTypeEXT {
         return switch (value) {
             case VkMicromapTypeEXT.DISPLACEMENT_MICROMAP_NV -> "VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV";
             case VkMicromapTypeEXT.OPACITY_MICROMAP -> "VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT";
-            default -> "Unknown VkMicromapTypeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

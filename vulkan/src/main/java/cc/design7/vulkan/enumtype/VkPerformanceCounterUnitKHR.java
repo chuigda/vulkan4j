@@ -29,7 +29,7 @@ public final class VkPerformanceCounterUnitKHR {
             case VkPerformanceCounterUnitKHR.PERCENTAGE -> "VK_PERFORMANCE_COUNTER_UNIT_PERCENTAGE_KHR";
             case VkPerformanceCounterUnitKHR.VOLTS -> "VK_PERFORMANCE_COUNTER_UNIT_VOLTS_KHR";
             case VkPerformanceCounterUnitKHR.WATTS -> "VK_PERFORMANCE_COUNTER_UNIT_WATTS_KHR";
-            default -> "Unknown VkPerformanceCounterUnitKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

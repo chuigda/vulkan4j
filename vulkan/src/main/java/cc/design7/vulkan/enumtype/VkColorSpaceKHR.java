@@ -39,7 +39,7 @@ public final class VkColorSpaceKHR {
             case VkColorSpaceKHR.HDR10_ST2084_EXT -> "VK_COLOR_SPACE_HDR10_ST2084_EXT";
             case VkColorSpaceKHR.PASS_THROUGH_EXT -> "VK_COLOR_SPACE_PASS_THROUGH_EXT";
             case VkColorSpaceKHR.SRGB_NONLINEAR -> "VK_COLOR_SPACE_SRGB_NONLINEAR_KHR";
-            default -> "Unknown VkColorSpaceKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

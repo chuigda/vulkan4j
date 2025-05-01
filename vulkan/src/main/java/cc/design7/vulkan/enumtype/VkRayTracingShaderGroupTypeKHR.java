@@ -13,7 +13,7 @@ public final class VkRayTracingShaderGroupTypeKHR {
             case VkRayTracingShaderGroupTypeKHR.GENERAL -> "VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR";
             case VkRayTracingShaderGroupTypeKHR.PROCEDURAL_HIT_GROUP -> "VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR";
             case VkRayTracingShaderGroupTypeKHR.TRIANGLES_HIT_GROUP -> "VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR";
-            default -> "Unknown VkRayTracingShaderGroupTypeKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

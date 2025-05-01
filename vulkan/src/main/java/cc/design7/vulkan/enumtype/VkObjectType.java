@@ -119,7 +119,7 @@ public final class VkObjectType {
             case VkObjectType.VALIDATION_CACHE_EXT -> "VK_OBJECT_TYPE_VALIDATION_CACHE_EXT";
             case VkObjectType.VIDEO_SESSION_KHR -> "VK_OBJECT_TYPE_VIDEO_SESSION_KHR";
             case VkObjectType.VIDEO_SESSION_PARAMETERS_KHR -> "VK_OBJECT_TYPE_VIDEO_SESSION_PARAMETERS_KHR";
-            default -> "Unknown VkObjectType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

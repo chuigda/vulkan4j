@@ -17,7 +17,7 @@ public final class StdVideoH264ProfileIdc {
             case StdVideoH264ProfileIdc.STD_VIDEO_H264_PROFILE_IDC_HIGH_444_PREDICTIVE -> "STD_VIDEO_H264_PROFILE_IDC_HIGH_444_PREDICTIVE";
             case StdVideoH264ProfileIdc.STD_VIDEO_H264_PROFILE_IDC_INVALID -> "STD_VIDEO_H264_PROFILE_IDC_INVALID";
             case StdVideoH264ProfileIdc.STD_VIDEO_H264_PROFILE_IDC_MAIN -> "STD_VIDEO_H264_PROFILE_IDC_MAIN";
-            default -> "Unknown StdVideoH264ProfileIdc: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

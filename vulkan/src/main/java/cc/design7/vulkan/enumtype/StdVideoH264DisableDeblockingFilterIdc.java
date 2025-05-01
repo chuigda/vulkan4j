@@ -15,7 +15,7 @@ public final class StdVideoH264DisableDeblockingFilterIdc {
             case StdVideoH264DisableDeblockingFilterIdc.STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_ENABLED -> "STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_ENABLED";
             case StdVideoH264DisableDeblockingFilterIdc.STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_INVALID -> "STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_INVALID";
             case StdVideoH264DisableDeblockingFilterIdc.STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_PARTIAL -> "STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_PARTIAL";
-            default -> "Unknown StdVideoH264DisableDeblockingFilterIdc: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

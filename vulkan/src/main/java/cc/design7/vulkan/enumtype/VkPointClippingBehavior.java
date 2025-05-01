@@ -11,7 +11,7 @@ public final class VkPointClippingBehavior {
         return switch (value) {
             case VkPointClippingBehavior.ALL_CLIP_PLANES -> "VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES";
             case VkPointClippingBehavior.USER_CLIP_PLANES_ONLY -> "VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY";
-            default -> "Unknown VkPointClippingBehavior: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

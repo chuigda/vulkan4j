@@ -9,7 +9,7 @@ public final class VkBuildMicromapModeEXT {
     public static String explain(@enumtype(VkBuildMicromapModeEXT.class) int value) {
         return switch (value) {
             case VkBuildMicromapModeEXT.BUILD -> "VK_BUILD_MICROMAP_MODE_BUILD_EXT";
-            default -> "Unknown VkBuildMicromapModeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

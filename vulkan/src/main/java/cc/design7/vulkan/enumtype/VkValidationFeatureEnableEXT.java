@@ -17,7 +17,7 @@ public final class VkValidationFeatureEnableEXT {
             case VkValidationFeatureEnableEXT.GPU_ASSISTED -> "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT";
             case VkValidationFeatureEnableEXT.GPU_ASSISTED_RESERVE_BINDING_SLOT -> "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT";
             case VkValidationFeatureEnableEXT.SYNCHRONIZATION_VALIDATION -> "VK_VALIDATION_FEATURE_ENABLE_SYNCHRONIZATION_VALIDATION_EXT";
-            default -> "Unknown VkValidationFeatureEnableEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

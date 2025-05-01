@@ -11,7 +11,7 @@ public final class VkSemaphoreType {
         return switch (value) {
             case VkSemaphoreType.BINARY -> "VK_SEMAPHORE_TYPE_BINARY";
             case VkSemaphoreType.TIMELINE -> "VK_SEMAPHORE_TYPE_TIMELINE";
-            default -> "Unknown VkSemaphoreType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

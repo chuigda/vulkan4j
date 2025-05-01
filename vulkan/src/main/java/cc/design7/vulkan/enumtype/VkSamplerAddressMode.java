@@ -17,7 +17,7 @@ public final class VkSamplerAddressMode {
             case VkSamplerAddressMode.MIRRORED_REPEAT -> "VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT";
             case VkSamplerAddressMode.MIRROR_CLAMP_TO_EDGE -> "VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE";
             case VkSamplerAddressMode.REPEAT -> "VK_SAMPLER_ADDRESS_MODE_REPEAT";
-            default -> "Unknown VkSamplerAddressMode: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

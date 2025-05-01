@@ -18,9 +18,9 @@ fun generateBitmask(
         else -> error("unsupported bitwidth: ${bitmask.bitwidth}")
     }
 
-    val bitflagType = when (bitmask.bitwidth) {
-        null, 32 -> "int"
-        64 -> "long"
+    val (bitflagType, bitflagObjectType) = when (bitmask.bitwidth) {
+        null, 32 -> Pair("int", "Integer")
+        64 -> Pair("long", "Long")
         else -> error("unsupported bitwidth: ${bitmask.bitwidth}")
     }
 
@@ -86,7 +86,7 @@ fun generateBitmask(
                 +""
                 +"if (detectedFlagBits.isEmpty()) {"
                 indent {
-                    +"return \"NONE\";"
+                    +"return \"NONE(\" + ${bitflagObjectType}.toBinaryString(flags) + \")\";"
                 }
                 +"}"
                 +"return String.join(\" | \", detectedFlagBits);"

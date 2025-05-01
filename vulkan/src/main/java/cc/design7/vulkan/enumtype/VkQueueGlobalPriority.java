@@ -15,7 +15,7 @@ public final class VkQueueGlobalPriority {
             case VkQueueGlobalPriority.LOW -> "VK_QUEUE_GLOBAL_PRIORITY_LOW";
             case VkQueueGlobalPriority.MEDIUM -> "VK_QUEUE_GLOBAL_PRIORITY_MEDIUM";
             case VkQueueGlobalPriority.REALTIME -> "VK_QUEUE_GLOBAL_PRIORITY_REALTIME";
-            default -> "Unknown VkQueueGlobalPriority: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

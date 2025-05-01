@@ -11,7 +11,7 @@ public final class VkProvokingVertexModeEXT {
         return switch (value) {
             case VkProvokingVertexModeEXT.FIRST_VERTEX -> "VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT";
             case VkProvokingVertexModeEXT.LAST_VERTEX -> "VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT";
-            default -> "Unknown VkProvokingVertexModeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

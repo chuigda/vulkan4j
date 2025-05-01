@@ -15,7 +15,7 @@ public final class VkQueryResultStatusKHR {
             case VkQueryResultStatusKHR.ERROR -> "VK_QUERY_RESULT_STATUS_ERROR_KHR";
             case VkQueryResultStatusKHR.INSUFFICIENT_BITSTREAM_BUFFER_RANGE -> "VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR";
             case VkQueryResultStatusKHR.NOT_READY -> "VK_QUERY_RESULT_STATUS_NOT_READY_KHR";
-            default -> "Unknown VkQueryResultStatusKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

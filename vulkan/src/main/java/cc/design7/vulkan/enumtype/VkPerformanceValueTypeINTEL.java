@@ -17,7 +17,7 @@ public final class VkPerformanceValueTypeINTEL {
             case VkPerformanceValueTypeINTEL.STRING -> "VK_PERFORMANCE_VALUE_TYPE_STRING_INTEL";
             case VkPerformanceValueTypeINTEL.UINT32 -> "VK_PERFORMANCE_VALUE_TYPE_UINT32_INTEL";
             case VkPerformanceValueTypeINTEL.UINT64 -> "VK_PERFORMANCE_VALUE_TYPE_UINT64_INTEL";
-            default -> "Unknown VkPerformanceValueTypeINTEL: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

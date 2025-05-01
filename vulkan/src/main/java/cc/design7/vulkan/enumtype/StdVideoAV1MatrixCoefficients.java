@@ -39,7 +39,7 @@ public final class StdVideoAV1MatrixCoefficients {
             case StdVideoAV1MatrixCoefficients.STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_240 -> "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_240";
             case StdVideoAV1MatrixCoefficients.STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_YCGCO -> "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_YCGCO";
             case StdVideoAV1MatrixCoefficients.STD_VIDEO_AV1_MATRIX_COEFFICIENTS_UNSPECIFIED -> "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_UNSPECIFIED";
-            default -> "Unknown StdVideoAV1MatrixCoefficients: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

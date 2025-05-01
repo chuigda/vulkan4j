@@ -11,7 +11,7 @@ public final class VkRayTracingInvocationReorderModeNV {
         return switch (value) {
             case VkRayTracingInvocationReorderModeNV.NONE -> "VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_NV";
             case VkRayTracingInvocationReorderModeNV.REORDER -> "VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_NV";
-            default -> "Unknown VkRayTracingInvocationReorderModeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

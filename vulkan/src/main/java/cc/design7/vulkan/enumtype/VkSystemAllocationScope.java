@@ -17,7 +17,7 @@ public final class VkSystemAllocationScope {
             case VkSystemAllocationScope.DEVICE -> "VK_SYSTEM_ALLOCATION_SCOPE_DEVICE";
             case VkSystemAllocationScope.INSTANCE -> "VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE";
             case VkSystemAllocationScope.OBJECT -> "VK_SYSTEM_ALLOCATION_SCOPE_OBJECT";
-            default -> "Unknown VkSystemAllocationScope: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

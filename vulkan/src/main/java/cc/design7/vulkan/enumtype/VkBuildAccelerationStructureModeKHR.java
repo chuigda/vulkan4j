@@ -11,7 +11,7 @@ public final class VkBuildAccelerationStructureModeKHR {
         return switch (value) {
             case VkBuildAccelerationStructureModeKHR.BUILD -> "VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR";
             case VkBuildAccelerationStructureModeKHR.UPDATE -> "VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR";
-            default -> "Unknown VkBuildAccelerationStructureModeKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

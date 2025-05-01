@@ -15,7 +15,7 @@ public final class VkAttachmentLoadOp {
             case VkAttachmentLoadOp.DONT_CARE -> "VK_ATTACHMENT_LOAD_OP_DONT_CARE";
             case VkAttachmentLoadOp.LOAD -> "VK_ATTACHMENT_LOAD_OP_LOAD";
             case VkAttachmentLoadOp.NONE -> "VK_ATTACHMENT_LOAD_OP_NONE";
-            default -> "Unknown VkAttachmentLoadOp: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

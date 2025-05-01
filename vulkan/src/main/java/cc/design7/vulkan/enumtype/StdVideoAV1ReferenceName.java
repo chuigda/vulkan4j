@@ -25,7 +25,7 @@ public final class StdVideoAV1ReferenceName {
             case StdVideoAV1ReferenceName.STD_VIDEO_AV1_REFERENCE_NAME_LAST2_FRAME -> "STD_VIDEO_AV1_REFERENCE_NAME_LAST2_FRAME";
             case StdVideoAV1ReferenceName.STD_VIDEO_AV1_REFERENCE_NAME_LAST3_FRAME -> "STD_VIDEO_AV1_REFERENCE_NAME_LAST3_FRAME";
             case StdVideoAV1ReferenceName.STD_VIDEO_AV1_REFERENCE_NAME_LAST_FRAME -> "STD_VIDEO_AV1_REFERENCE_NAME_LAST_FRAME";
-            default -> "Unknown StdVideoAV1ReferenceName: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

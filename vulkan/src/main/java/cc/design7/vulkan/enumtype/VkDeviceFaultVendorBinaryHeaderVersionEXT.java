@@ -9,7 +9,7 @@ public final class VkDeviceFaultVendorBinaryHeaderVersionEXT {
     public static String explain(@enumtype(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int value) {
         return switch (value) {
             case VkDeviceFaultVendorBinaryHeaderVersionEXT.ONE -> "VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT";
-            default -> "Unknown VkDeviceFaultVendorBinaryHeaderVersionEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

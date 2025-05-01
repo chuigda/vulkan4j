@@ -11,7 +11,7 @@ public final class VkTessellationDomainOrigin {
         return switch (value) {
             case VkTessellationDomainOrigin.LOWER_LEFT -> "VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT";
             case VkTessellationDomainOrigin.UPPER_LEFT -> "VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT";
-            default -> "Unknown VkTessellationDomainOrigin: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

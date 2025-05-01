@@ -17,7 +17,7 @@ public final class StdVideoAV1FrameType {
             case StdVideoAV1FrameType.STD_VIDEO_AV1_FRAME_TYPE_INVALID -> "STD_VIDEO_AV1_FRAME_TYPE_INVALID";
             case StdVideoAV1FrameType.STD_VIDEO_AV1_FRAME_TYPE_KEY -> "STD_VIDEO_AV1_FRAME_TYPE_KEY";
             case StdVideoAV1FrameType.STD_VIDEO_AV1_FRAME_TYPE_SWITCH -> "STD_VIDEO_AV1_FRAME_TYPE_SWITCH";
-            default -> "Unknown StdVideoAV1FrameType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

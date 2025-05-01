@@ -11,7 +11,7 @@ public final class VkCommandBufferLevel {
         return switch (value) {
             case VkCommandBufferLevel.PRIMARY -> "VK_COMMAND_BUFFER_LEVEL_PRIMARY";
             case VkCommandBufferLevel.SECONDARY -> "VK_COMMAND_BUFFER_LEVEL_SECONDARY";
-            default -> "Unknown VkCommandBufferLevel: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

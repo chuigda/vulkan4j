@@ -15,7 +15,7 @@ public final class StdVideoH264CabacInitIdc {
             case StdVideoH264CabacInitIdc.STD_VIDEO_H264_CABAC_INIT_IDC_1 -> "STD_VIDEO_H264_CABAC_INIT_IDC_1";
             case StdVideoH264CabacInitIdc.STD_VIDEO_H264_CABAC_INIT_IDC_2 -> "STD_VIDEO_H264_CABAC_INIT_IDC_2";
             case StdVideoH264CabacInitIdc.STD_VIDEO_H264_CABAC_INIT_IDC_INVALID -> "STD_VIDEO_H264_CABAC_INIT_IDC_INVALID";
-            default -> "Unknown StdVideoH264CabacInitIdc: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

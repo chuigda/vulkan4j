@@ -160,7 +160,7 @@ public final class VkPipelineCreateFlags2 {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE";
+            return "NONE(" + Long.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

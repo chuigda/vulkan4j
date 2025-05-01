@@ -124,7 +124,7 @@ public final class VkBufferUsageFlags2 {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE";
+            return "NONE(" + Long.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

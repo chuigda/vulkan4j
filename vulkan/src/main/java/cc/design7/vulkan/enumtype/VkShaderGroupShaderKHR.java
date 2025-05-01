@@ -15,7 +15,7 @@ public final class VkShaderGroupShaderKHR {
             case VkShaderGroupShaderKHR.CLOSEST_HIT -> "VK_SHADER_GROUP_SHADER_CLOSEST_HIT_KHR";
             case VkShaderGroupShaderKHR.GENERAL -> "VK_SHADER_GROUP_SHADER_GENERAL_KHR";
             case VkShaderGroupShaderKHR.INTERSECTION -> "VK_SHADER_GROUP_SHADER_INTERSECTION_KHR";
-            default -> "Unknown VkShaderGroupShaderKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

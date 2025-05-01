@@ -13,7 +13,7 @@ public final class VkVideoEncodeAV1RateControlGroupKHR {
             case VkVideoEncodeAV1RateControlGroupKHR.VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE -> "VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE_KHR";
             case VkVideoEncodeAV1RateControlGroupKHR.VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA -> "VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA_KHR";
             case VkVideoEncodeAV1RateControlGroupKHR.VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE -> "VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE_KHR";
-            default -> "Unknown VkVideoEncodeAV1RateControlGroupKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

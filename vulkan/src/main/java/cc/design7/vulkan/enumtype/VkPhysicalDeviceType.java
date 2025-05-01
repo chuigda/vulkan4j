@@ -17,7 +17,7 @@ public final class VkPhysicalDeviceType {
             case VkPhysicalDeviceType.INTEGRATED_GPU -> "VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU";
             case VkPhysicalDeviceType.OTHER -> "VK_PHYSICAL_DEVICE_TYPE_OTHER";
             case VkPhysicalDeviceType.VIRTUAL_GPU -> "VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU";
-            default -> "Unknown VkPhysicalDeviceType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -15,7 +15,7 @@ public final class VkCubicFilterWeightsQCOM {
             case VkCubicFilterWeightsQCOM.CATMULL_ROM -> "VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM";
             case VkCubicFilterWeightsQCOM.MITCHELL_NETRAVALI -> "VK_CUBIC_FILTER_WEIGHTS_MITCHELL_NETRAVALI_QCOM";
             case VkCubicFilterWeightsQCOM.ZERO_TANGENT_CARDINAL -> "VK_CUBIC_FILTER_WEIGHTS_ZERO_TANGENT_CARDINAL_QCOM";
-            default -> "Unknown VkCubicFilterWeightsQCOM: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

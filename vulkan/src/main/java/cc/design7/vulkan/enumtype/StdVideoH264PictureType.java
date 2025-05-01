@@ -17,7 +17,7 @@ public final class StdVideoH264PictureType {
             case StdVideoH264PictureType.STD_VIDEO_H264_PICTURE_TYPE_IDR -> "STD_VIDEO_H264_PICTURE_TYPE_IDR";
             case StdVideoH264PictureType.STD_VIDEO_H264_PICTURE_TYPE_INVALID -> "STD_VIDEO_H264_PICTURE_TYPE_INVALID";
             case StdVideoH264PictureType.STD_VIDEO_H264_PICTURE_TYPE_P -> "STD_VIDEO_H264_PICTURE_TYPE_P";
-            default -> "Unknown StdVideoH264PictureType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

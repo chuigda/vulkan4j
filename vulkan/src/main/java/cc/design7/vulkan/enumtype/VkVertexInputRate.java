@@ -11,7 +11,7 @@ public final class VkVertexInputRate {
         return switch (value) {
             case VkVertexInputRate.INSTANCE -> "VK_VERTEX_INPUT_RATE_INSTANCE";
             case VkVertexInputRate.VERTEX -> "VK_VERTEX_INPUT_RATE_VERTEX";
-            default -> "Unknown VkVertexInputRate: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -21,7 +21,7 @@ public final class VkComponentSwizzle {
             case VkComponentSwizzle.ONE -> "VK_COMPONENT_SWIZZLE_ONE";
             case VkComponentSwizzle.R -> "VK_COMPONENT_SWIZZLE_R";
             case VkComponentSwizzle.ZERO -> "VK_COMPONENT_SWIZZLE_ZERO";
-            default -> "Unknown VkComponentSwizzle: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

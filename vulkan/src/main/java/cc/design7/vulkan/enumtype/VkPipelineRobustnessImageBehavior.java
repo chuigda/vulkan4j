@@ -15,7 +15,7 @@ public final class VkPipelineRobustnessImageBehavior {
             case VkPipelineRobustnessImageBehavior.DISABLED -> "VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DISABLED";
             case VkPipelineRobustnessImageBehavior.ROBUST_IMAGE_ACCESS -> "VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS";
             case VkPipelineRobustnessImageBehavior.ROBUST_IMAGE_ACCESS_2 -> "VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2";
-            default -> "Unknown VkPipelineRobustnessImageBehavior: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

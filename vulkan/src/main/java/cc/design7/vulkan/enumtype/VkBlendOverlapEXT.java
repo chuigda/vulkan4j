@@ -13,7 +13,7 @@ public final class VkBlendOverlapEXT {
             case VkBlendOverlapEXT.CONJOINT -> "VK_BLEND_OVERLAP_CONJOINT_EXT";
             case VkBlendOverlapEXT.DISJOINT -> "VK_BLEND_OVERLAP_DISJOINT_EXT";
             case VkBlendOverlapEXT.UNCORRELATED -> "VK_BLEND_OVERLAP_UNCORRELATED_EXT";
-            default -> "Unknown VkBlendOverlapEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

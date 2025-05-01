@@ -13,7 +13,7 @@ public final class VkAccelerationStructureMemoryRequirementsTypeNV {
             case VkAccelerationStructureMemoryRequirementsTypeNV.BUILD_SCRATCH -> "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV";
             case VkAccelerationStructureMemoryRequirementsTypeNV.OBJECT -> "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV";
             case VkAccelerationStructureMemoryRequirementsTypeNV.UPDATE_SCRATCH -> "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV";
-            default -> "Unknown VkAccelerationStructureMemoryRequirementsTypeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

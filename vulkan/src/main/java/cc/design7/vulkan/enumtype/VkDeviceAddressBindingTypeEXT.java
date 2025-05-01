@@ -11,7 +11,7 @@ public final class VkDeviceAddressBindingTypeEXT {
         return switch (value) {
             case VkDeviceAddressBindingTypeEXT.BIND -> "VK_DEVICE_ADDRESS_BINDING_TYPE_BIND_EXT";
             case VkDeviceAddressBindingTypeEXT.UNBIND -> "VK_DEVICE_ADDRESS_BINDING_TYPE_UNBIND_EXT";
-            default -> "Unknown VkDeviceAddressBindingTypeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

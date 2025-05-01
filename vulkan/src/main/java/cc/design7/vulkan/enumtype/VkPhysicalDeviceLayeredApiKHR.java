@@ -17,7 +17,7 @@ public final class VkPhysicalDeviceLayeredApiKHR {
             case VkPhysicalDeviceLayeredApiKHR.OPENGLES -> "VK_PHYSICAL_DEVICE_LAYERED_API_OPENGLES_KHR";
             case VkPhysicalDeviceLayeredApiKHR.OPENGL -> "VK_PHYSICAL_DEVICE_LAYERED_API_OPENGL_KHR";
             case VkPhysicalDeviceLayeredApiKHR.VULKAN -> "VK_PHYSICAL_DEVICE_LAYERED_API_VULKAN_KHR";
-            default -> "Unknown VkPhysicalDeviceLayeredApiKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

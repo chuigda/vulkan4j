@@ -11,7 +11,7 @@ public final class VkLayeredDriverUnderlyingApiMSFT {
         return switch (value) {
             case VkLayeredDriverUnderlyingApiMSFT.D3D12 -> "VK_LAYERED_DRIVER_UNDERLYING_API_D3D12_MSFT";
             case VkLayeredDriverUnderlyingApiMSFT.NONE -> "VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT";
-            default -> "Unknown VkLayeredDriverUnderlyingApiMSFT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

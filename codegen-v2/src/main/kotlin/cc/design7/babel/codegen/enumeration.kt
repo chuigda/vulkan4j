@@ -59,7 +59,7 @@ fun generateEnumeration(
                     for (variant in variants) {
                         +"case ${enumeration.name}.${variant.name} -> \"${variant.name.original}\";"
                     }
-                    +"default -> \"Unknown ${enumeration.name}: \" + value;"
+                    +"default -> \"UNKNOWN(\" + value + \")\";"
                 }
                 +"};"
             }

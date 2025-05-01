@@ -11,7 +11,7 @@ public final class VkSciSyncPrimitiveTypeNV {
         return switch (value) {
             case VkSciSyncPrimitiveTypeNV.FENCE -> "VK_SCI_SYNC_PRIMITIVE_TYPE_FENCE_NV";
             case VkSciSyncPrimitiveTypeNV.SEMAPHORE -> "VK_SCI_SYNC_PRIMITIVE_TYPE_SEMAPHORE_NV";
-            default -> "Unknown VkSciSyncPrimitiveTypeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -23,7 +23,7 @@ public final class VkCompareOp {
             case VkCompareOp.LESS_OR_EQUAL -> "VK_COMPARE_OP_LESS_OR_EQUAL";
             case VkCompareOp.NEVER -> "VK_COMPARE_OP_NEVER";
             case VkCompareOp.NOT_EQUAL -> "VK_COMPARE_OP_NOT_EQUAL";
-            default -> "Unknown VkCompareOp: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -17,7 +17,7 @@ public final class VkSamplerYcbcrModelConversion {
             case VkSamplerYcbcrModelConversion.YCBCR_601 -> "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_601";
             case VkSamplerYcbcrModelConversion.YCBCR_709 -> "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709";
             case VkSamplerYcbcrModelConversion.YCBCR_IDENTITY -> "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY";
-            default -> "Unknown VkSamplerYcbcrModelConversion: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

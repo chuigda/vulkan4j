@@ -13,7 +13,7 @@ public final class VkClusterAccelerationStructureTypeNV {
             case VkClusterAccelerationStructureTypeNV.CLUSTERS_BOTTOM_LEVEL -> "VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_CLUSTERS_BOTTOM_LEVEL_NV";
             case VkClusterAccelerationStructureTypeNV.TRIANGLE_CLUSTER -> "VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_TRIANGLE_CLUSTER_NV";
             case VkClusterAccelerationStructureTypeNV.TRIANGLE_CLUSTER_TEMPLATE -> "VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_TRIANGLE_CLUSTER_TEMPLATE_NV";
-            default -> "Unknown VkClusterAccelerationStructureTypeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

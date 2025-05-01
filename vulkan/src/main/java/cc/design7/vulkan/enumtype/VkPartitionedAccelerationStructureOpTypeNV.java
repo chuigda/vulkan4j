@@ -13,7 +13,7 @@ public final class VkPartitionedAccelerationStructureOpTypeNV {
             case VkPartitionedAccelerationStructureOpTypeNV.UPDATE_INSTANCE -> "VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_UPDATE_INSTANCE_NV";
             case VkPartitionedAccelerationStructureOpTypeNV.WRITE_INSTANCE -> "VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_INSTANCE_NV";
             case VkPartitionedAccelerationStructureOpTypeNV.WRITE_PARTITION_TRANSLATION -> "VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_PARTITION_TRANSLATION_NV";
-            default -> "Unknown VkPartitionedAccelerationStructureOpTypeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

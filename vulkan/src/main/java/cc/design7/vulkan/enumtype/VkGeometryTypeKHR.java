@@ -17,7 +17,7 @@ public final class VkGeometryTypeKHR {
             case VkGeometryTypeKHR.LINEAR_SWEPT_SPHERES_NV -> "VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV";
             case VkGeometryTypeKHR.SPHERES_NV -> "VK_GEOMETRY_TYPE_SPHERES_NV";
             case VkGeometryTypeKHR.TRIANGLES -> "VK_GEOMETRY_TYPE_TRIANGLES_KHR";
-            default -> "Unknown VkGeometryTypeKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

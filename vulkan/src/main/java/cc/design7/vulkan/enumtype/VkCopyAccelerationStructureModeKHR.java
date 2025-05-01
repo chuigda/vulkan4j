@@ -15,7 +15,7 @@ public final class VkCopyAccelerationStructureModeKHR {
             case VkCopyAccelerationStructureModeKHR.COMPACT -> "VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR";
             case VkCopyAccelerationStructureModeKHR.DESERIALIZE -> "VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR";
             case VkCopyAccelerationStructureModeKHR.SERIALIZE -> "VK_COPY_ACCELERATION_STRUCTURE_MODE_SERIALIZE_KHR";
-            default -> "Unknown VkCopyAccelerationStructureModeKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

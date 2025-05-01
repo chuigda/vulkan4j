@@ -11,7 +11,7 @@ public final class VkAccelerationStructureCompatibilityKHR {
         return switch (value) {
             case VkAccelerationStructureCompatibilityKHR.COMPATIBLE -> "VK_ACCELERATION_STRUCTURE_COMPATIBILITY_COMPATIBLE_KHR";
             case VkAccelerationStructureCompatibilityKHR.INCOMPATIBLE -> "VK_ACCELERATION_STRUCTURE_COMPATIBILITY_INCOMPATIBLE_KHR";
-            default -> "Unknown VkAccelerationStructureCompatibilityKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

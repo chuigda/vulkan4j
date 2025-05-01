@@ -39,7 +39,7 @@ public final class VkComponentTypeKHR {
             case VkComponentTypeKHR.UINT64 -> "VK_COMPONENT_TYPE_UINT64_KHR";
             case VkComponentTypeKHR.UINT8 -> "VK_COMPONENT_TYPE_UINT8_KHR";
             case VkComponentTypeKHR.UINT8_PACKED_NV -> "VK_COMPONENT_TYPE_UINT8_PACKED_NV";
-            default -> "Unknown VkComponentTypeKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

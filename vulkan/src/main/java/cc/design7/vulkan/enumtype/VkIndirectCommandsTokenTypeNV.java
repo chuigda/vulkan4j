@@ -29,7 +29,7 @@ public final class VkIndirectCommandsTokenTypeNV {
             case VkIndirectCommandsTokenTypeNV.SHADER_GROUP -> "VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV";
             case VkIndirectCommandsTokenTypeNV.STATE_FLAGS -> "VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV";
             case VkIndirectCommandsTokenTypeNV.VERTEX_BUFFER -> "VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV";
-            default -> "Unknown VkIndirectCommandsTokenTypeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

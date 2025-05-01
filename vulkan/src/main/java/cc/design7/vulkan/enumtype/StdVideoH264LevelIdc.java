@@ -47,7 +47,7 @@ public final class StdVideoH264LevelIdc {
             case StdVideoH264LevelIdc.STD_VIDEO_H264_LEVEL_IDC_6_1 -> "STD_VIDEO_H264_LEVEL_IDC_6_1";
             case StdVideoH264LevelIdc.STD_VIDEO_H264_LEVEL_IDC_6_2 -> "STD_VIDEO_H264_LEVEL_IDC_6_2";
             case StdVideoH264LevelIdc.STD_VIDEO_H264_LEVEL_IDC_INVALID -> "STD_VIDEO_H264_LEVEL_IDC_INVALID";
-            default -> "Unknown StdVideoH264LevelIdc: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

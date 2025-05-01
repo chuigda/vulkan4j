@@ -45,7 +45,7 @@ public final class VkBlendFactor {
             case VkBlendFactor.SRC_ALPHA_SATURATE -> "VK_BLEND_FACTOR_SRC_ALPHA_SATURATE";
             case VkBlendFactor.SRC_COLOR -> "VK_BLEND_FACTOR_SRC_COLOR";
             case VkBlendFactor.ZERO -> "VK_BLEND_FACTOR_ZERO";
-            default -> "Unknown VkBlendFactor: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

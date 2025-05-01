@@ -17,7 +17,7 @@ public final class VkFragmentShadingRateCombinerOpKHR {
             case VkFragmentShadingRateCombinerOpKHR.MIN -> "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR";
             case VkFragmentShadingRateCombinerOpKHR.MUL -> "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR";
             case VkFragmentShadingRateCombinerOpKHR.REPLACE -> "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR";
-            default -> "Unknown VkFragmentShadingRateCombinerOpKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

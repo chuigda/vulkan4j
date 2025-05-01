@@ -13,7 +13,7 @@ public final class VkSciSyncClientTypeNV {
             case VkSciSyncClientTypeNV.SIGNALER -> "VK_SCI_SYNC_CLIENT_TYPE_SIGNALER_NV";
             case VkSciSyncClientTypeNV.SIGNALER_WAITER -> "VK_SCI_SYNC_CLIENT_TYPE_SIGNALER_WAITER_NV";
             case VkSciSyncClientTypeNV.WAITER -> "VK_SCI_SYNC_CLIENT_TYPE_WAITER_NV";
-            default -> "Unknown VkSciSyncClientTypeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

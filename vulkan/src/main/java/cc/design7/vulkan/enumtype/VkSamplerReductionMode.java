@@ -15,7 +15,7 @@ public final class VkSamplerReductionMode {
             case VkSamplerReductionMode.MIN -> "VK_SAMPLER_REDUCTION_MODE_MIN";
             case VkSamplerReductionMode.WEIGHTED_AVERAGE -> "VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE";
             case VkSamplerReductionMode.WEIGHTED_AVERAGE_RANGECLAMP_QCOM -> "VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM";
-            default -> "Unknown VkSamplerReductionMode: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

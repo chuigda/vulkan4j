@@ -19,7 +19,7 @@ public final class StdVideoAV1InterpolationFilter {
             case StdVideoAV1InterpolationFilter.STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SMOOTH -> "STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SMOOTH";
             case StdVideoAV1InterpolationFilter.STD_VIDEO_AV1_INTERPOLATION_FILTER_INVALID -> "STD_VIDEO_AV1_INTERPOLATION_FILTER_INVALID";
             case StdVideoAV1InterpolationFilter.STD_VIDEO_AV1_INTERPOLATION_FILTER_SWITCHABLE -> "STD_VIDEO_AV1_INTERPOLATION_FILTER_SWITCHABLE";
-            default -> "Unknown StdVideoAV1InterpolationFilter: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

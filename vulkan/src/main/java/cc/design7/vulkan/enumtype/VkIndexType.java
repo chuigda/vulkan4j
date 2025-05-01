@@ -15,7 +15,7 @@ public final class VkIndexType {
             case VkIndexType.UINT16 -> "VK_INDEX_TYPE_UINT16";
             case VkIndexType.UINT32 -> "VK_INDEX_TYPE_UINT32";
             case VkIndexType.UINT8 -> "VK_INDEX_TYPE_UINT8";
-            default -> "Unknown VkIndexType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

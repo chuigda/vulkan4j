@@ -13,7 +13,7 @@ public final class VkShaderFloatControlsIndependence {
             case VkShaderFloatControlsIndependence._32_BIT_ONLY -> "VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY";
             case VkShaderFloatControlsIndependence.ALL -> "VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_ALL";
             case VkShaderFloatControlsIndependence.NONE -> "VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE";
-            default -> "Unknown VkShaderFloatControlsIndependence: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

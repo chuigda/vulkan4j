@@ -15,7 +15,7 @@ public final class VkPipelineExecutableStatisticFormatKHR {
             case VkPipelineExecutableStatisticFormatKHR.FLOAT64 -> "VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_FLOAT64_KHR";
             case VkPipelineExecutableStatisticFormatKHR.INT64 -> "VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_INT64_KHR";
             case VkPipelineExecutableStatisticFormatKHR.UINT64 -> "VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_UINT64_KHR";
-            default -> "Unknown VkPipelineExecutableStatisticFormatKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

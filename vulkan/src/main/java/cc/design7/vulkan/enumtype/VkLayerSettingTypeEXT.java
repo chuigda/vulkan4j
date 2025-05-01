@@ -23,7 +23,7 @@ public final class VkLayerSettingTypeEXT {
             case VkLayerSettingTypeEXT.STRING -> "VK_LAYER_SETTING_TYPE_STRING_EXT";
             case VkLayerSettingTypeEXT.UINT32 -> "VK_LAYER_SETTING_TYPE_UINT32_EXT";
             case VkLayerSettingTypeEXT.UINT64 -> "VK_LAYER_SETTING_TYPE_UINT64_EXT";
-            default -> "Unknown VkLayerSettingTypeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

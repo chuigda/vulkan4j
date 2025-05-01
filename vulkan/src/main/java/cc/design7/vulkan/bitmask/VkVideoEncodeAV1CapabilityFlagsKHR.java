@@ -32,7 +32,7 @@ public final class VkVideoEncodeAV1CapabilityFlagsKHR {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE";
+            return "NONE(" + Integer.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

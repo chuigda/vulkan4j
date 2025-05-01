@@ -89,7 +89,7 @@ public final class VkDebugReportObjectTypeEXT {
             case VkDebugReportObjectTypeEXT.SWAPCHAIN_KHR -> "VK_DEBUG_REPORT_OBJECT_TYPE_SWAPCHAIN_KHR_EXT";
             case VkDebugReportObjectTypeEXT.UNKNOWN -> "VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT";
             case VkDebugReportObjectTypeEXT.VALIDATION_CACHE_EXT -> "VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT";
-            default -> "Unknown VkDebugReportObjectTypeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

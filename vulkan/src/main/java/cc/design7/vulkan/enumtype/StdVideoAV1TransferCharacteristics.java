@@ -47,7 +47,7 @@ public final class StdVideoAV1TransferCharacteristics {
             case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_428 -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SMPTE_428";
             case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SRGB -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_SRGB";
             case StdVideoAV1TransferCharacteristics.STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_UNSPECIFIED -> "STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_UNSPECIFIED";
-            default -> "Unknown StdVideoAV1TransferCharacteristics: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

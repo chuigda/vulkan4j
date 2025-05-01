@@ -23,7 +23,7 @@ public final class VkValidationFeatureDisableEXT {
             case VkValidationFeatureDisableEXT.SHADER_VALIDATION_CACHE -> "VK_VALIDATION_FEATURE_DISABLE_SHADER_VALIDATION_CACHE_EXT";
             case VkValidationFeatureDisableEXT.THREAD_SAFETY -> "VK_VALIDATION_FEATURE_DISABLE_THREAD_SAFETY_EXT";
             case VkValidationFeatureDisableEXT.UNIQUE_HANDLES -> "VK_VALIDATION_FEATURE_DISABLE_UNIQUE_HANDLES_EXT";
-            default -> "Unknown VkValidationFeatureDisableEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

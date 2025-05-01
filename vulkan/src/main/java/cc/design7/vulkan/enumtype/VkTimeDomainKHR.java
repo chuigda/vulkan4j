@@ -15,7 +15,7 @@ public final class VkTimeDomainKHR {
             case VkTimeDomainKHR.CLOCK_MONOTONIC_RAW -> "VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR";
             case VkTimeDomainKHR.DEVICE -> "VK_TIME_DOMAIN_DEVICE_KHR";
             case VkTimeDomainKHR.QUERY_PERFORMANCE_COUNTER -> "VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR";
-            default -> "Unknown VkTimeDomainKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

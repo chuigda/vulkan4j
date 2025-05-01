@@ -23,7 +23,7 @@ public final class VkStencilOp {
             case VkStencilOp.KEEP -> "VK_STENCIL_OP_KEEP";
             case VkStencilOp.REPLACE -> "VK_STENCIL_OP_REPLACE";
             case VkStencilOp.ZERO -> "VK_STENCIL_OP_ZERO";
-            default -> "Unknown VkStencilOp: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

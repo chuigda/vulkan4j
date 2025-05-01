@@ -9,7 +9,7 @@ public final class VkDisplayEventTypeEXT {
     public static String explain(@enumtype(VkDisplayEventTypeEXT.class) int value) {
         return switch (value) {
             case VkDisplayEventTypeEXT.FIRST_PIXEL_OUT -> "VK_DISPLAY_EVENT_TYPE_FIRST_PIXEL_OUT_EXT";
-            default -> "Unknown VkDisplayEventTypeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

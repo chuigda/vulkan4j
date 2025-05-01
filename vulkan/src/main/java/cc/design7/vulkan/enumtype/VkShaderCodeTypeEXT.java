@@ -11,7 +11,7 @@ public final class VkShaderCodeTypeEXT {
         return switch (value) {
             case VkShaderCodeTypeEXT.BINARY -> "VK_SHADER_CODE_TYPE_BINARY_EXT";
             case VkShaderCodeTypeEXT.SPIRV -> "VK_SHADER_CODE_TYPE_SPIRV_EXT";
-            default -> "Unknown VkShaderCodeTypeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

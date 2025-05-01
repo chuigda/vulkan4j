@@ -11,7 +11,7 @@ public final class VkIndirectExecutionSetInfoTypeEXT {
         return switch (value) {
             case VkIndirectExecutionSetInfoTypeEXT.PIPELINES -> "VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT";
             case VkIndirectExecutionSetInfoTypeEXT.SHADER_OBJECTS -> "VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT";
-            default -> "Unknown VkIndirectExecutionSetInfoTypeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

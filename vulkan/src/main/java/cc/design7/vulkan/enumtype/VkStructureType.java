@@ -2089,7 +2089,7 @@ public final class VkStructureType {
             case VkStructureType.WRITE_INDIRECT_EXECUTION_SET_SHADER_EXT -> "VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_SHADER_EXT";
             case VkStructureType.XCB_SURFACE_CREATE_INFO_KHR -> "VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR";
             case VkStructureType.XLIB_SURFACE_CREATE_INFO_KHR -> "VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR";
-            default -> "Unknown VkStructureType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

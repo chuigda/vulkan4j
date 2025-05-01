@@ -13,7 +13,7 @@ public final class VkSubpassContents {
             case VkSubpassContents.INLINE -> "VK_SUBPASS_CONTENTS_INLINE";
             case VkSubpassContents.INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR -> "VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR";
             case VkSubpassContents.SECONDARY_COMMAND_BUFFERS -> "VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS";
-            default -> "Unknown VkSubpassContents: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

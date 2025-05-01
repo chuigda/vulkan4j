@@ -11,7 +11,7 @@ public final class VkOutOfBandQueueTypeNV {
         return switch (value) {
             case VkOutOfBandQueueTypeNV.PRESENT -> "VK_OUT_OF_BAND_QUEUE_TYPE_PRESENT_NV";
             case VkOutOfBandQueueTypeNV.RENDER -> "VK_OUT_OF_BAND_QUEUE_TYPE_RENDER_NV";
-            default -> "Unknown VkOutOfBandQueueTypeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

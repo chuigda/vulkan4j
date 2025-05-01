@@ -13,7 +13,7 @@ public final class VkImageTiling {
             case VkImageTiling.DRM_FORMAT_MODIFIER_EXT -> "VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT";
             case VkImageTiling.LINEAR -> "VK_IMAGE_TILING_LINEAR";
             case VkImageTiling.OPTIMAL -> "VK_IMAGE_TILING_OPTIMAL";
-            default -> "Unknown VkImageTiling: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

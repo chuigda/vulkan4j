@@ -17,7 +17,7 @@ public final class VkDeviceMemoryReportEventTypeEXT {
             case VkDeviceMemoryReportEventTypeEXT.FREE -> "VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_FREE_EXT";
             case VkDeviceMemoryReportEventTypeEXT.IMPORT -> "VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT";
             case VkDeviceMemoryReportEventTypeEXT.UNIMPORT -> "VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_UNIMPORT_EXT";
-            default -> "Unknown VkDeviceMemoryReportEventTypeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -13,7 +13,7 @@ public final class VkDisplayPowerStateEXT {
             case VkDisplayPowerStateEXT.OFF -> "VK_DISPLAY_POWER_STATE_OFF_EXT";
             case VkDisplayPowerStateEXT.ON -> "VK_DISPLAY_POWER_STATE_ON_EXT";
             case VkDisplayPowerStateEXT.SUSPEND -> "VK_DISPLAY_POWER_STATE_SUSPEND_EXT";
-            default -> "Unknown VkDisplayPowerStateEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

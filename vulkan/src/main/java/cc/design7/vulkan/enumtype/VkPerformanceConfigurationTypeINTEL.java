@@ -9,7 +9,7 @@ public final class VkPerformanceConfigurationTypeINTEL {
     public static String explain(@enumtype(VkPerformanceConfigurationTypeINTEL.class) int value) {
         return switch (value) {
             case VkPerformanceConfigurationTypeINTEL.COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED -> "VK_PERFORMANCE_CONFIGURATION_TYPE_COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED_INTEL";
-            default -> "Unknown VkPerformanceConfigurationTypeINTEL: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

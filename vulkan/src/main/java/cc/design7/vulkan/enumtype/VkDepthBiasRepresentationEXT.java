@@ -13,7 +13,7 @@ public final class VkDepthBiasRepresentationEXT {
             case VkDepthBiasRepresentationEXT.FLOAT -> "VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT";
             case VkDepthBiasRepresentationEXT.LEAST_REPRESENTABLE_VALUE_FORCE_UNORM -> "VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT";
             case VkDepthBiasRepresentationEXT.LEAST_REPRESENTABLE_VALUE_FORMAT -> "VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT";
-            default -> "Unknown VkDepthBiasRepresentationEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

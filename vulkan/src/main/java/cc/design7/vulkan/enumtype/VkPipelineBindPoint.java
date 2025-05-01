@@ -17,7 +17,7 @@ public final class VkPipelineBindPoint {
             case VkPipelineBindPoint.GRAPHICS -> "VK_PIPELINE_BIND_POINT_GRAPHICS";
             case VkPipelineBindPoint.RAY_TRACING_KHR -> "VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR";
             case VkPipelineBindPoint.SUBPASS_SHADING_HUAWEI -> "VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI";
-            default -> "Unknown VkPipelineBindPoint: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

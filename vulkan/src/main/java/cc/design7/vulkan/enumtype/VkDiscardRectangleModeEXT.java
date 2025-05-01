@@ -11,7 +11,7 @@ public final class VkDiscardRectangleModeEXT {
         return switch (value) {
             case VkDiscardRectangleModeEXT.EXCLUSIVE -> "VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT";
             case VkDiscardRectangleModeEXT.INCLUSIVE -> "VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT";
-            default -> "Unknown VkDiscardRectangleModeEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

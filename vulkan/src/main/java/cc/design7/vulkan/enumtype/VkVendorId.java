@@ -23,7 +23,7 @@ public final class VkVendorId {
             case VkVendorId.POCL -> "VK_VENDOR_ID_POCL";
             case VkVendorId.VIV -> "VK_VENDOR_ID_VIV";
             case VkVendorId.VSI -> "VK_VENDOR_ID_VSI";
-            default -> "Unknown VkVendorId: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -11,7 +11,7 @@ public final class VkAntiLagStageAMD {
         return switch (value) {
             case VkAntiLagStageAMD.INPUT -> "VK_ANTI_LAG_STAGE_INPUT_AMD";
             case VkAntiLagStageAMD.PRESENT -> "VK_ANTI_LAG_STAGE_PRESENT_AMD";
-            default -> "Unknown VkAntiLagStageAMD: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

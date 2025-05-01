@@ -31,7 +31,7 @@ public final class VkLatencyMarkerNV {
             case VkLatencyMarkerNV.SIMULATION_END -> "VK_LATENCY_MARKER_SIMULATION_END_NV";
             case VkLatencyMarkerNV.SIMULATION_START -> "VK_LATENCY_MARKER_SIMULATION_START_NV";
             case VkLatencyMarkerNV.TRIGGER_FLASH -> "VK_LATENCY_MARKER_TRIGGER_FLASH_NV";
-            default -> "Unknown VkLatencyMarkerNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -25,7 +25,7 @@ public final class VkOpticalFlowSessionBindingPointNV {
             case VkOpticalFlowSessionBindingPointNV.INPUT -> "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_INPUT_NV";
             case VkOpticalFlowSessionBindingPointNV.REFERENCE -> "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_REFERENCE_NV";
             case VkOpticalFlowSessionBindingPointNV.UNKNOWN -> "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_UNKNOWN_NV";
-            default -> "Unknown VkOpticalFlowSessionBindingPointNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -16,7 +16,7 @@ public final class VkMemoryDecompressionMethodFlagsNV {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE";
+            return "NONE(" + Long.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

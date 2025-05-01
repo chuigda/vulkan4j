@@ -19,7 +19,7 @@ public final class StdVideoH265ProfileIdc {
             case StdVideoH265ProfileIdc.STD_VIDEO_H265_PROFILE_IDC_MAIN_10 -> "STD_VIDEO_H265_PROFILE_IDC_MAIN_10";
             case StdVideoH265ProfileIdc.STD_VIDEO_H265_PROFILE_IDC_MAIN_STILL_PICTURE -> "STD_VIDEO_H265_PROFILE_IDC_MAIN_STILL_PICTURE";
             case StdVideoH265ProfileIdc.STD_VIDEO_H265_PROFILE_IDC_SCC_EXTENSIONS -> "STD_VIDEO_H265_PROFILE_IDC_SCC_EXTENSIONS";
-            default -> "Unknown StdVideoH265ProfileIdc: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

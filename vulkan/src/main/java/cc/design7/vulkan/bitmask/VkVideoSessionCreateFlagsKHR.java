@@ -36,7 +36,7 @@ public final class VkVideoSessionCreateFlagsKHR {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE";
+            return "NONE(" + Integer.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

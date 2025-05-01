@@ -13,7 +13,7 @@ public final class StdVideoDecodeH264FieldOrderCount {
             case StdVideoDecodeH264FieldOrderCount.STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_BOTTOM -> "STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_BOTTOM";
             case StdVideoDecodeH264FieldOrderCount.STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_INVALID -> "STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_INVALID";
             case StdVideoDecodeH264FieldOrderCount.STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_TOP -> "STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_TOP";
-            default -> "Unknown StdVideoDecodeH264FieldOrderCount: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

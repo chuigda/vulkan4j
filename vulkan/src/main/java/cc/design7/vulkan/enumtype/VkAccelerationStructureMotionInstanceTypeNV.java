@@ -13,7 +13,7 @@ public final class VkAccelerationStructureMotionInstanceTypeNV {
             case VkAccelerationStructureMotionInstanceTypeNV.MATRIX_MOTION -> "VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_MATRIX_MOTION_NV";
             case VkAccelerationStructureMotionInstanceTypeNV.SRT_MOTION -> "VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_SRT_MOTION_NV";
             case VkAccelerationStructureMotionInstanceTypeNV.STATIC -> "VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_STATIC_NV";
-            default -> "Unknown VkAccelerationStructureMotionInstanceTypeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

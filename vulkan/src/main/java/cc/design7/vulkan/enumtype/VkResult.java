@@ -105,7 +105,7 @@ public final class VkResult {
             case VkResult.VK_THREAD_DONE_KHR -> "VK_THREAD_DONE_KHR";
             case VkResult.VK_THREAD_IDLE_KHR -> "VK_THREAD_IDLE_KHR";
             case VkResult.VK_TIMEOUT -> "VK_TIMEOUT";
-            default -> "Unknown VkResult: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

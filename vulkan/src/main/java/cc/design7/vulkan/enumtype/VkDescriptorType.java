@@ -43,7 +43,7 @@ public final class VkDescriptorType {
             case VkDescriptorType.UNIFORM_BUFFER -> "VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER";
             case VkDescriptorType.UNIFORM_BUFFER_DYNAMIC -> "VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC";
             case VkDescriptorType.UNIFORM_TEXEL_BUFFER -> "VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER";
-            default -> "Unknown VkDescriptorType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

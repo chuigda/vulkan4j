@@ -15,7 +15,7 @@ public final class VkVideoEncodeAV1PredictionModeKHR {
             case VkVideoEncodeAV1PredictionModeKHR.VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY -> "VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY_KHR";
             case VkVideoEncodeAV1PredictionModeKHR.VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE -> "VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE_KHR";
             case VkVideoEncodeAV1PredictionModeKHR.VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND -> "VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND_KHR";
-            default -> "Unknown VkVideoEncodeAV1PredictionModeKHR: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -15,7 +15,7 @@ public final class StdVideoH264WeightedBipredIdc {
             case StdVideoH264WeightedBipredIdc.STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_EXPLICIT -> "STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_EXPLICIT";
             case StdVideoH264WeightedBipredIdc.STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_IMPLICIT -> "STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_IMPLICIT";
             case StdVideoH264WeightedBipredIdc.STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_INVALID -> "STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_INVALID";
-            default -> "Unknown StdVideoH264WeightedBipredIdc: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

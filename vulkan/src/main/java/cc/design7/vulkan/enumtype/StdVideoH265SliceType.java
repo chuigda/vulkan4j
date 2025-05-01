@@ -15,7 +15,7 @@ public final class StdVideoH265SliceType {
             case StdVideoH265SliceType.STD_VIDEO_H265_SLICE_TYPE_I -> "STD_VIDEO_H265_SLICE_TYPE_I";
             case StdVideoH265SliceType.STD_VIDEO_H265_SLICE_TYPE_INVALID -> "STD_VIDEO_H265_SLICE_TYPE_INVALID";
             case StdVideoH265SliceType.STD_VIDEO_H265_SLICE_TYPE_P -> "STD_VIDEO_H265_SLICE_TYPE_P";
-            default -> "Unknown StdVideoH265SliceType: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

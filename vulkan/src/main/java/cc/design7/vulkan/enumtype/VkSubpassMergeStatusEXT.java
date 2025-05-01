@@ -35,7 +35,7 @@ public final class VkSubpassMergeStatusEXT {
             case VkSubpassMergeStatusEXT.NOT_MERGED_TOO_MANY_ATTACHMENTS -> "VK_SUBPASS_MERGE_STATUS_NOT_MERGED_TOO_MANY_ATTACHMENTS_EXT";
             case VkSubpassMergeStatusEXT.NOT_MERGED_UNSPECIFIED -> "VK_SUBPASS_MERGE_STATUS_NOT_MERGED_UNSPECIFIED_EXT";
             case VkSubpassMergeStatusEXT.NOT_MERGED_VIEWS_MISMATCH -> "VK_SUBPASS_MERGE_STATUS_NOT_MERGED_VIEWS_MISMATCH_EXT";
-            default -> "Unknown VkSubpassMergeStatusEXT: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

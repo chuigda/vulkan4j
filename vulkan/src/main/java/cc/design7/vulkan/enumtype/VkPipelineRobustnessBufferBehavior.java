@@ -15,7 +15,7 @@ public final class VkPipelineRobustnessBufferBehavior {
             case VkPipelineRobustnessBufferBehavior.DISABLED -> "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DISABLED";
             case VkPipelineRobustnessBufferBehavior.ROBUST_BUFFER_ACCESS -> "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS";
             case VkPipelineRobustnessBufferBehavior.ROBUST_BUFFER_ACCESS_2 -> "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2";
-            default -> "Unknown VkPipelineRobustnessBufferBehavior: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

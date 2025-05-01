@@ -15,7 +15,7 @@ public final class VkDisplaySurfaceStereoTypeNV {
             case VkDisplaySurfaceStereoTypeNV.INBAND_DISPLAYPORT -> "VK_DISPLAY_SURFACE_STEREO_TYPE_INBAND_DISPLAYPORT_NV";
             case VkDisplaySurfaceStereoTypeNV.NONE -> "VK_DISPLAY_SURFACE_STEREO_TYPE_NONE_NV";
             case VkDisplaySurfaceStereoTypeNV.ONBOARD_DIN -> "VK_DISPLAY_SURFACE_STEREO_TYPE_ONBOARD_DIN_NV";
-            default -> "Unknown VkDisplaySurfaceStereoTypeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 

@@ -15,7 +15,7 @@ public final class VkCoarseSampleOrderTypeNV {
             case VkCoarseSampleOrderTypeNV.DEFAULT -> "VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV";
             case VkCoarseSampleOrderTypeNV.PIXEL_MAJOR -> "VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV";
             case VkCoarseSampleOrderTypeNV.SAMPLE_MAJOR -> "VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV";
-            default -> "Unknown VkCoarseSampleOrderTypeNV: " + value;
+            default -> "UNKNOWN(" + value + ")";
         };
     }
 
