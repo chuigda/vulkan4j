@@ -7,6 +7,7 @@ import cc.design7.ffm.annotation.unsafe;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.nio.Buffer;
 import java.nio.LongBuffer;
 
 @ValueBasedCandidate
@@ -52,21 +53,18 @@ public record LongPtr(MemorySegment segment) implements IPointer {
         return new LongPtr(arena.allocateFrom(ValueLayout.JAVA_LONG, array));
     }
 
-    public static LongPtr allocate(Arena arena, byte[] bytes) {
-        assert bytes.length % Long.BYTES == 0;
-        var s = arena.allocate(ValueLayout.JAVA_LONG, bytes.length / Long.BYTES);
-        s.copyFrom(MemorySegment.ofArray(bytes));
-        return new LongPtr(s);
-    }
-
     /// Allocate a new {@link LongPtr} in the given {@link Arena} and copy the contents of the given
     /// {@link LongBuffer} into the newly allocated {@link LongPtr}.
+    ///
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
+    /// have ever read from the {@link Buffer}, and you want all the contents of the
+    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
     ///
     /// @param arena the {@link Arena} to allocate the new {@link LongPtr} in
     /// @param buffer the {@link LongBuffer} to copy the contents from
     /// @return a new {@link LongPtr} that contains the contents of the given {@link LongBuffer}
     public static LongPtr allocate(Arena arena, LongBuffer buffer) {
-        var s = arena.allocate(ValueLayout.JAVA_LONG, buffer.capacity());
+        var s = arena.allocate(ValueLayout.JAVA_LONG, buffer.remaining());
         s.copyFrom(MemorySegment.ofBuffer(buffer));
         return new LongPtr(s);
     }
@@ -80,6 +78,10 @@ public record LongPtr(MemorySegment segment) implements IPointer {
     /// native/direct, the created {@link LongPtr} will not be able to be used in FFI operations since the backing
     /// storage does not reside in native memory and does not have a native address. Thus, this method is marked as
     /// {@link unsafe} because it can create inconsistency and cause very difficult to troubleshoot bugs.
+    ///
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
+    /// have ever read from the {@link Buffer}, and you want all the contents of the
+    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
     ///
     /// @param buffer the {@link LongBuffer} to create a new {@link LongPtr} from
     /// @return a new {@link LongPtr} that uses the same backing storage as the given {@link LongBuffer}

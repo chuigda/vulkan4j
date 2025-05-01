@@ -7,6 +7,7 @@ import cc.design7.ffm.annotation.unsafe;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
 @ValueBasedCandidate
@@ -63,11 +64,15 @@ public record BytePtr(MemorySegment segment) implements IPointer {
     /// Allocate a new {@link BytePtr} in the given {@link Arena} and copy the contents of the given
     /// {@link ByteBuffer} into the newly allocated {@link BytePtr}.
     ///
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
+    /// have ever read from the {@link Buffer}, and you want all the contents of the
+    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
+    ///
     /// @param arena the {@link Arena} to allocate the new {@link BytePtr} in
     /// @param buffer the {@link ByteBuffer} to copy the contents from
     /// @return a new {@link BytePtr} that contains the contents of the given {@link ByteBuffer}
     public static BytePtr allocate(Arena arena, ByteBuffer buffer) {
-        var s = arena.allocate(buffer.capacity());
+        var s = arena.allocate(buffer.remaining());
         s.copyFrom(MemorySegment.ofBuffer(buffer));
         return new BytePtr(s);
     }
@@ -89,6 +94,10 @@ public record BytePtr(MemorySegment segment) implements IPointer {
     /// native/direct, the created {@link BytePtr} will not be able to be used in FFI operations since the backing
     /// storage does not reside in native memory and does not have a native address. Thus, this method is marked as
     /// {@link unsafe} because it can create inconsistency and cause very difficult to troubleshoot bugs.
+    ///
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
+    /// have ever read from the {@link Buffer}, and you want all the contents of the
+    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
     ///
     /// @param buffer the {@link ByteBuffer} to use as the backing storage
     /// @return a new {@link BytePtr} that uses the given {@link ByteBuffer} as its backing storage

@@ -7,6 +7,7 @@ import cc.design7.ffm.annotation.unsafe;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.nio.Buffer;
 import java.nio.DoubleBuffer;
 
 @ValueBasedCandidate
@@ -52,21 +53,18 @@ public record DoublePtr(MemorySegment segment) implements IPointer {
         return new DoublePtr(arena.allocateFrom(ValueLayout.JAVA_DOUBLE, array));
     }
 
-    public static DoublePtr allocate(Arena arena, byte[] bytes) {
-        assert bytes.length % Double.BYTES == 0;
-        var s = arena.allocate(ValueLayout.JAVA_DOUBLE, bytes.length / Double.BYTES);
-        s.copyFrom(MemorySegment.ofArray(bytes));
-        return new DoublePtr(s);
-    }
-
-    /// Allocate a new {@link DoublePtr} in the given {@link Arena} and copy the contents of the given
-    /// {@link DoubleBuffer} into the newly allocated {@link DoublePtr}.
+    /// Allocate a new {@link DoublePtr} in the given {@link Arena} and copy the contents of the
+    /// given {@link DoubleBuffer} into the newly allocated {@link DoublePtr}.
+    ///
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
+    /// have ever read from the {@link Buffer}, and you want all the contents of the
+    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
     ///
     /// @param arena The {@link Arena} to allocate the new {@link DoublePtr} in
     /// @param buffer The {@link DoubleBuffer} to copy the contents from
     /// @return A new {@link DoublePtr} that contains the contents of the given {@link DoubleBuffer}
     public static DoublePtr allocate(Arena arena, DoubleBuffer buffer) {
-        var s = arena.allocate(ValueLayout.JAVA_DOUBLE, buffer.capacity());
+        var s = arena.allocate(ValueLayout.JAVA_DOUBLE, buffer.remaining());
         s.copyFrom(MemorySegment.ofBuffer(buffer));
         return new DoublePtr(s);
     }
@@ -80,6 +78,10 @@ public record DoublePtr(MemorySegment segment) implements IPointer {
     /// native/direct, the created {@link DoublePtr} will not be able to be used in FFI operations since the backing
     /// storage does not reside in native memory and does not have a native address. Thus, this method is marked as
     /// {@link unsafe} because it can create inconsistency and cause very difficult to troubleshoot bugs.
+    ///
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
+    /// have ever read from the {@link Buffer}, and you want all the contents of the
+    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
     ///
     /// @param buffer The {@link DoubleBuffer} to use as the backing storage
     /// @return A new {@link DoublePtr} that uses the given {@link DoubleBuffer} as its backing storage

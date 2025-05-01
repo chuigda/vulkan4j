@@ -7,6 +7,7 @@ import cc.design7.ffm.annotation.unsafe;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.nio.Buffer;
 import java.nio.FloatBuffer;
 
 @ValueBasedCandidate
@@ -52,21 +53,18 @@ public record FloatPtr(MemorySegment segment) implements IPointer {
         return new FloatPtr(arena.allocateFrom(ValueLayout.JAVA_FLOAT, array));
     }
 
-    public static FloatPtr allocate(Arena arena, byte[] bytes) {
-        assert bytes.length % Float.BYTES == 0;
-        var s = arena.allocate(ValueLayout.JAVA_FLOAT, bytes.length / Float.BYTES);
-        s.copyFrom(MemorySegment.ofArray(bytes));
-        return new FloatPtr(s);
-    }
-
     /// Allocate a new {@link FloatPtr} in the given {@link Arena} and copy the contents of the given
     /// {@link FloatBuffer} into the newly allocated {@link FloatPtr}.
+    ///
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
+    /// have ever read from the {@link Buffer}, and you want all the contents of the
+    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
     ///
     /// @param arena the {@link Arena} to allocate the new {@link FloatPtr} in
     /// @param buffer the {@link FloatBuffer} to copy the contents from
     /// @return a new {@link FloatPtr} that contains the contents of the given {@link FloatBuffer}
     public static FloatPtr allocate(Arena arena, FloatBuffer buffer) {
-        var s = arena.allocate(ValueLayout.JAVA_FLOAT, buffer.capacity());
+        var s = arena.allocate(ValueLayout.JAVA_FLOAT, buffer.remaining());
         s.copyFrom(MemorySegment.ofBuffer(buffer));
         return new FloatPtr(s);
     }
@@ -80,6 +78,10 @@ public record FloatPtr(MemorySegment segment) implements IPointer {
     /// native/direct, the created {@link FloatPtr} will not be able to be used in FFI operations since the backing
     /// storage does not reside in native memory and does not have a native address. Thus, this method is marked as
     /// {@link unsafe} because it can create inconsistency and cause very difficult to troubleshoot bugs.
+    ///
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
+    /// have ever read from the {@link Buffer}, and you want all the contents of the
+    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
     ///
     /// @param buffer the {@link FloatBuffer} to use for the backing storage
     /// @return a new {@link FloatPtr} that uses the given {@link FloatBuffer} as its backing storage

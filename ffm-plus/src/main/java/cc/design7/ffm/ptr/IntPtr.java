@@ -7,6 +7,7 @@ import cc.design7.ffm.annotation.unsafe;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.nio.Buffer;
 import java.nio.IntBuffer;
 
 @ValueBasedCandidate
@@ -52,21 +53,18 @@ public record IntPtr(MemorySegment segment) implements IPointer {
         return new IntPtr(arena.allocateFrom(ValueLayout.JAVA_INT, array));
     }
 
-    public static IntPtr allocate(Arena arena, byte[] bytes) {
-        assert bytes.length % Integer.BYTES == 0;
-        var s = arena.allocate(ValueLayout.JAVA_INT, bytes.length / Integer.BYTES);
-        s.copyFrom(MemorySegment.ofArray(bytes));
-        return new IntPtr(s);
-    }
-
     /// Allocate a new {@link IntPtr} in the given {@link Arena} and copy the contents of the given
     /// {@link IntBuffer} into the newly allocated {@link IntPtr}.
+    ///
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
+    /// have ever read from the {@link Buffer}, and you want all the contents of the
+    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
     ///
     /// @param arena the {@link Arena} to allocate the new {@link IntPtr} in
     /// @param buffer the {@link IntBuffer} to copy the contents from
     /// @return a new {@link IntPtr} that contains the contents of the given {@link IntBuffer}
     public static IntPtr allocate(Arena arena, IntBuffer buffer) {
-        var s = arena.allocate(ValueLayout.JAVA_INT, buffer.capacity());
+        var s = arena.allocate(ValueLayout.JAVA_INT, buffer.remaining());
         s.copyFrom(MemorySegment.ofBuffer(buffer));
         return new IntPtr(s);
     }

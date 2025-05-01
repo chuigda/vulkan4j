@@ -7,6 +7,7 @@ import cc.design7.ffm.annotation.unsafe;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.nio.Buffer;
 import java.nio.ShortBuffer;
 
 @ValueBasedCandidate
@@ -52,21 +53,18 @@ public record ShortPtr(MemorySegment segment) implements IPointer {
         return new ShortPtr(arena.allocateFrom(ValueLayout.JAVA_SHORT, array));
     }
 
-    public static ShortPtr allocate(Arena arena, byte[] bytes) {
-        assert bytes.length % Short.BYTES == 0;
-        var s = arena.allocate(ValueLayout.JAVA_SHORT, bytes.length / Short.BYTES);
-        s.copyFrom(MemorySegment.ofArray(bytes));
-        return new ShortPtr(s);
-    }
-
-    /// Allocate a new {@link ShortPtr} in the given {@link Arena} and copy the contents of the given
-    /// {@link ShortBuffer} into the newly allocated {@link ShortPtr}.
+    /// Allocate a new {@link ShortPtr} in the given {@link Arena} and copy the contents of the
+    /// given {@link ShortBuffer} into the newly allocated {@link ShortPtr}.
+    ///
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
+    /// have ever read from the {@link Buffer}, and you want all the contents of the
+    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
     ///
     /// @param arena the {@link Arena} to allocate the new {@link ShortPtr} in
     /// @param buffer the {@link ShortBuffer} to copy the contents from
     /// @return a new {@link ShortPtr} that contains the contents of the given {@link ShortBuffer}
     public static ShortPtr allocate(Arena arena, ShortBuffer buffer) {
-        var s = arena.allocate(ValueLayout.JAVA_SHORT, buffer.capacity());
+        var s = arena.allocate(ValueLayout.JAVA_SHORT, buffer.remaining());
         s.copyFrom(MemorySegment.ofBuffer(buffer));
         return new ShortPtr(s);
     }
@@ -80,6 +78,10 @@ public record ShortPtr(MemorySegment segment) implements IPointer {
     /// native/direct, the created {@link ShortPtr} will not be able to be used in FFI operations since the backing
     /// storage does not reside in native memory and does not have a native address. Thus, this method is marked as
     /// {@link unsafe} because it can create inconsistency and cause very difficult to troubleshoot bugs.
+    ///
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
+    /// have ever read from the {@link Buffer}, and you want all the contents of the
+    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
     ///
     /// @param buffer the {@link ShortBuffer} to use as the backing storage
     /// @return a new {@link ShortPtr} that uses the given {@link ShortBuffer} as its backing storage
