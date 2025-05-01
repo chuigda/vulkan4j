@@ -4,7 +4,7 @@ import cc.design7.babel.registry.Entity
 import cc.design7.babel.registry.Registry
 import java.io.File
 
-private val renamedEntitiesFile = "codegen-v2/output/vulkan-renamed-entities.csv"
+private const val renamedEntitiesFile = "codegen-v2/output/vulkan-renamed-entities.csv"
 
 internal fun Registry<VulkanRegistryExt>.renameEntities() {
     val renamed = mutableMapOf<String, String>()

@@ -171,11 +171,11 @@ public final class BitfieldUtil {
     }
 
     private static void checkBitRange(int startBit, int endBit, int size) {
-        if (startBit < 0 || endBit >= size) {
-            throw new IllegalArgumentException("startBit must be no less than 0 and endBit must be less than " + size);
+        if (startBit < 0 || endBit > size) {
+            throw new IllegalArgumentException("startBit must be no less than 0 and endBit must be no more than " + size);
         }
-        if (startBit > endBit) {
-            throw new IllegalArgumentException("startBit must be less than or equal to endBit");
+        if (startBit >= endBit) {
+            throw new IllegalArgumentException("startBit must be less than endBit");
         }
     }
 
@@ -191,7 +191,7 @@ public final class BitfieldUtil {
                 impl = new BitfieldUtilImplR2L();
             }
         } else {
-            // May need future refinement, but adequate
+            // May need future refinement, but adequate for now.
             impl = new BitfieldUtilImplR2L();
         }
     }
