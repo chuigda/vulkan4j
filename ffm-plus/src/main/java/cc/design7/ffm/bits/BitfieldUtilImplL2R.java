@@ -27,17 +27,17 @@ import cc.design7.ffm.annotation.unsigned;
 final class BitfieldUtilImplL2R implements IBitfieldUtilImpl {
     @Override
     public boolean readBitUnchecked(@unsigned byte value, @unsigned int bit) {
-        return ((value >> (Byte.SIZE - bit - 1)) & 0x01) != 0;
+        return ((value >>> (Byte.SIZE - bit - 1)) & 0x01) != 0;
     }
 
     @Override
     public boolean readBitUnchecked(@unsigned short value, @unsigned int bit) {
-        return ((value >> (Short.SIZE - bit - 1)) & 0x01) != 0;
+        return ((value >>> (Short.SIZE - bit - 1)) & 0x01) != 0;
     }
 
     @Override
     public boolean readBitUnchecked(@unsigned int value, @unsigned int bit) {
-        return ((value >> (Integer.SIZE - bit - 1)) & 0x01) != 0;
+        return ((value >>> (Integer.SIZE - bit - 1)) & 0x01) != 0;
     }
 
     @Override
@@ -48,7 +48,7 @@ final class BitfieldUtilImplL2R implements IBitfieldUtilImpl {
     ) {
         int shiftRight = Byte.SIZE - endBit;
         int mask = (1 << (endBit - startBit)) - 1;
-        return (byte) ((value >> shiftRight) & mask);
+        return (byte) ((value >>> shiftRight) & mask);
     }
 
     @Override
@@ -59,7 +59,7 @@ final class BitfieldUtilImplL2R implements IBitfieldUtilImpl {
     ) {
         int shiftRight = Short.SIZE - endBit;
         int mask = (1 << (endBit - startBit)) - 1;
-        return (short) ((value >> shiftRight) & mask);
+        return (short) ((value >>> shiftRight) & mask);
     }
 
     @Override
@@ -70,7 +70,7 @@ final class BitfieldUtilImplL2R implements IBitfieldUtilImpl {
     ) {
         int shiftRight = Integer.SIZE - endBit;
         long mask = (1L << (endBit - startBit)) - 1;
-        return (int) ((value >> shiftRight) & mask);
+        return (int) ((value >>> shiftRight) & mask);
     }
 
     BitfieldUtilImplL2R() {}

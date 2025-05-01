@@ -25,35 +25,35 @@ package cc.design7.ffm.bits;
 final class BitfieldUtilImplR2L implements IBitfieldUtilImpl {
     @Override
     public boolean readBitUnchecked(byte value, int bit) {
-        return ((value >> bit) & 0x01) != 0;
+        return ((value >>> bit) & 0x01) != 0;
     }
 
     @Override
     public boolean readBitUnchecked(short value, int bit) {
-        return ((value >> bit) & 0x01) != 0;
+        return ((value >>> bit) & 0x01) != 0;
     }
 
     @Override
     public boolean readBitUnchecked(int value, int bit) {
-        return ((value >> bit) & 0x01) != 0;
+        return ((value >>> bit) & 0x01) != 0;
     }
 
     @Override
     public byte readBitsUnchecked(byte value, int startBit, int endBit) {
         int mask = (1 << (endBit - startBit)) - 1;
-        return (byte) ((value >> startBit) & mask);
+        return (byte) ((value >>> startBit) & mask);
     }
 
     @Override
     public short readBitsUnchecked(short value, int startBit, int endBit) {
         int mask = (1 << (endBit - startBit)) - 1;
-        return (short) ((value >> startBit) & mask);
+        return (short) ((value >>> startBit) & mask);
     }
 
     @Override
     public int readBitsUnchecked(int value, int startBit, int endBit) {
         long mask = (1L << (endBit - startBit)) - 1;
-        return (int) ((value >> startBit) & mask);
+        return (int) ((value >>> startBit) & mask);
     }
 
     BitfieldUtilImplR2L() {}
