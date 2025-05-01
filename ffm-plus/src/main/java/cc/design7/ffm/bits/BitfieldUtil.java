@@ -112,10 +112,7 @@ public final class BitfieldUtil {
             @unsigned int bit,
             boolean bitValue
     ) {
-        if (bit >= Byte.SIZE) {
-            throw new IllegalArgumentException("bit must be less than " + Byte.SIZE);
-        }
-
+        checkBitRange(bit, Byte.SIZE);
         return impl.writeBitUnchecked(value, bit, bitValue);
     }
 
@@ -124,10 +121,7 @@ public final class BitfieldUtil {
             @unsigned int bit,
             boolean bitValue
     ) {
-        if (bit >= Short.SIZE) {
-            throw new IllegalArgumentException("bit must be less than " + Short.SIZE);
-        }
-
+        checkBitRange(bit, Short.SIZE);
         return impl.writeBitUnchecked(value, bit, bitValue);
     }
 
@@ -136,10 +130,7 @@ public final class BitfieldUtil {
             @unsigned int bit,
             boolean bitValue
     ) {
-        if (bit >= Integer.SIZE) {
-            throw new IllegalArgumentException("bit must be less than " + Integer.SIZE);
-        }
-
+        checkBitRange(bit, Integer.SIZE);
         return impl.writeBitUnchecked(value, bit, bitValue);
     }
 
@@ -149,14 +140,7 @@ public final class BitfieldUtil {
             @unsigned int endBit,
             @unsigned byte bits
     ) {
-        if (startBit > endBit) {
-            throw new IllegalArgumentException("startBit must be less than or equal to endBit");
-        }
-
-        if (startBit < 0 || endBit > Byte.SIZE) {
-            throw new IllegalArgumentException("startBit must be no less than 0 and endBit must be no bigger than " + Byte.SIZE);
-        }
-
+        checkBitRange(startBit, endBit, Byte.SIZE);
         return impl.writeBitsUnchecked(value, startBit, endBit, bits);
     }
 
@@ -166,14 +150,7 @@ public final class BitfieldUtil {
             @unsigned int endBit,
             @unsigned short bits
     ) {
-        if (startBit > endBit) {
-            throw new IllegalArgumentException("startBit must be less than or equal to endBit");
-        }
-
-        if (startBit < 0 || endBit > Short.SIZE) {
-            throw new IllegalArgumentException("startBit must be no less than 0 and endBit must be no bigger than " + Short.SIZE);
-        }
-
+        checkBitRange(startBit, endBit, Short.SIZE);
         return impl.writeBitsUnchecked(value, startBit, endBit, bits);
     }
 
@@ -183,14 +160,7 @@ public final class BitfieldUtil {
             @unsigned int endBit,
             @unsigned int bits
     ) {
-        if (startBit > endBit) {
-            throw new IllegalArgumentException("startBit must be less than or equal to endBit");
-        }
-
-        if (startBit < 0 || endBit > Integer.SIZE) {
-            throw new IllegalArgumentException("startBit must be no less than 0 and endBit must be no bigger than " + Integer.SIZE);
-        }
-
+        checkBitRange(startBit, endBit, Integer.SIZE);
         return impl.writeBitsUnchecked(value, startBit, endBit, bits);
     }
 
