@@ -134,7 +134,7 @@ private fun extractBitmask(e: Element) =
     Bitmask(
         name = e.getAttributeText("name")!!.sanitizeFlagBits(),
         bitwidth = e.getAttributeText("bitwidth")?.toInt(),
-        bitflags = e.getElementList("enum")
+        bitflags = e.getElementSeq("enum")
             .filter { it -> !it.hasAttribute("alias") }
             .map(::extractBitflag)
             .filter { it.isVulkanAPI() }
@@ -163,7 +163,8 @@ private fun extractCommand(e: Element): Command {
         name = proto.getFirstElement("name")!!.textContent.trim(),
         params = e.query("param")
             .map(::extractParam)
-            .filter { it.isVulkanAPI() },
+            .filter { it.isVulkanAPI() }
+            .toList(),
         result = extractType(proto.getFirstElement("type")!!),
         successCodes = e.getAttributeText("successcodes")
             ?.split(",")
@@ -217,7 +218,7 @@ private fun extractEnumeration(e: Element) =
     Enumeration(
         name = e.getAttributeText("name")!!.sanitizeFlagBits(),
         variants =
-            e.getElementList("enum")
+            e.getElementSeq("enum")
                 .filter { !it.hasAttribute("alias") }
                 .map(::extractVariant)
                 .filter { it.isVulkanAPI() }
@@ -233,7 +234,7 @@ private fun extractVariant(e: Element) =
 private fun extractFunctionTypedef(e: Element) =
     FunctionTypedef(
         name = e.getFirstElement("name")!!.textContent.trim(),
-        params = e.getElementList("type").map(::extractType),
+        params = e.getElementSeq("type").map(::extractType).toList(),
         result =
             when (val type = e.textContent.substring(8, e.textContent.indexOf("(VKAPI_PTR")).trim()) {
                 "void" -> null
@@ -259,9 +260,10 @@ private fun extractOpaqueHandleTypedef(e: Element) =
 private fun extractStructure(e: Element) =
     Structure(
         name = e.getAttributeText("name")!!,
-        members = e.getElementList("member")
+        members = e.getElementSeq("member")
             .map(::extractMember)
             .filter { it.isVulkanAPI() }
+            .toList()
     ).apply {
         setExt(VkStructureMetadata(
             api = e.getAttributeText("api"),
@@ -302,7 +304,7 @@ private fun extractVersion(e: Element) =
         name = e.getAttributeText("name")!!,
         api = e.getAttributeText("api"),
         number = e.getAttributeText("number")!!.toFloat(),
-        require = extractRequire(e.getElementList("require"))
+        require = extractRequire(e.getElementSeq("require"))
     )
 
 private fun extractExtension(e: Element) =
@@ -321,19 +323,19 @@ private fun extractExtension(e: Element) =
         promotedto = e.getAttributeText("promotedto"),
         supported = e.getAttributeText("supported")!!,
         provisional = e.getAttributeText("provisional") == "true",
-        require = extractRequire(e.getElementList("require"))
+        require = extractRequire(e.getElementSeq("require"))
     )
 
-private fun extractRequire(es: List<Element>): Require {
+private fun extractRequire(es: Sequence<Element>): Require {
     val commands = mutableSetOf<Identifier>()
     val types = mutableSetOf<String>()
     val values = mutableListOf<RequireValue>()
 
     for (e in es) {
-        commands.addAll(e.getElementList("command").map { it.getAttributeText("name")!!.intern() })
-        types.addAll(e.getElementList("type").map { it.getAttributeText("name")!!.replace("FlagBits", "Flags") })
+        commands.addAll(e.getElementSeq("command").map { it.getAttributeText("name")!!.intern() })
+        types.addAll(e.getElementSeq("type").map { it.getAttributeText("name")!!.replace("FlagBits", "Flags") })
         values.addAll(
-            e.getElementList("enum")
+            e.getElementSeq("enum")
                 .map(::extractRequireValue)
                 .filter { it != null }
                 .map { it!! }

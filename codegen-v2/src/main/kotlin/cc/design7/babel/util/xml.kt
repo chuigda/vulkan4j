@@ -15,28 +15,26 @@ fun String.parseXML(): Element {
     return builder.parse(InputSource(StringReader(this))).documentElement
 }
 
-fun Element.getAttributeText(name: String): String? = if (hasAttribute(name)) getAttribute(name) else null
-
-fun Element.getFirstElement(tag: String): Element? = getElementList(tag).firstOrNull()
-
-fun Element.getElementList(tag: String) = mutableListOf<Element>().apply {
-    val elements = getElementsByTagName(tag)
-    for (i in 0 until elements.length) {
-        val node = elements.item(i)
-        if (node is Element) {
-            add(node)
-        }
+fun Element.getAttributeText(name: String): String? =
+    if (hasAttribute(name)) {
+        getAttribute(name)
+    } else {
+        null
     }
-}
 
-fun Element.getElementSequence(tag: String) = getElementsByTagName(tag).asSequence().map { it as Element }
+fun Element.getFirstElement(tag: String): Element? = getElementSeq(tag).firstOrNull()
 
-fun Node.query(@Language("XPath") xpath: String): List<Element> {
+fun Element.getElementSeq(tag: String) = getElementsByTagName(tag)
+    .asSequence()
+    .filter { it is Element }
+    .map { it as Element }
+
+fun Node.query(@Language("XPath") xpath: String): Sequence<Element> {
     return (XPathFactory
         .newInstance()
         .newXPath()
         .evaluate(xpath, this, XPathConstants.NODESET) as NodeList)
-        .toList()
+        .asSequence()
         .map { it as Element }
 }
 
@@ -47,15 +45,15 @@ fun NodeList.toList() = mutableListOf<Node>().apply {
 }
 
 operator fun NodeList.iterator(): Iterator<Node> = object : Iterator<Node> {
-  private var nextIndex = 0
-  
-  override fun next(): Node {
-    val value = this@iterator.item(nextIndex)
-    nextIndex ++
-    return value
-  }
-  
-  override fun hasNext(): Boolean = nextIndex < this@iterator.length
+    private var nextIndex = 0
+
+    override fun next(): Node {
+        val value = this@iterator.item(nextIndex)
+        nextIndex ++
+        return value
+    }
+
+    override fun hasNext(): Boolean = nextIndex < this@iterator.length
 }
 
 fun NodeList.asSequence(): Sequence<Node> = Sequence { this@asSequence.iterator() }

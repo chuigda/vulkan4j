@@ -2,20 +2,10 @@ package cc.design7.babel.extract.gles2
 
 import cc.design7.babel.extract.parseType
 import cc.design7.babel.extract.tokenize
-import cc.design7.babel.registry.Bitflag
-import cc.design7.babel.registry.Bitmask
-import cc.design7.babel.registry.Command
-import cc.design7.babel.registry.Constant
-import cc.design7.babel.registry.Entity
-import cc.design7.babel.registry.IdentifierType
-import cc.design7.babel.registry.Param
-import cc.design7.babel.registry.Registry
-import cc.design7.babel.registry.Type
-import cc.design7.babel.registry.intern
+import cc.design7.babel.registry.*
 import cc.design7.babel.util.asSequence
 import cc.design7.babel.util.getAttributeText
-import cc.design7.babel.util.getElementSequence
-import cc.design7.babel.util.parseDecOrHex
+import cc.design7.babel.util.getElementSeq
 import cc.design7.babel.util.parseXML
 import cc.design7.babel.util.query
 import org.w3c.dom.Element
@@ -34,45 +24,27 @@ fun extractRawGLESRegistry(): Registry<GLESRegistryExt> {
 private fun Element.extractEntities(): Registry<GLESRegistryExt> {
     val e = this
 
-    val bitmasks = e.query("enums[@type='bitmask']")
-        .map(::extractEnums)
-        .map { it.toBitmask() }
-        .associateByTo(mutableMapOf()) { it.name }
-
     val commands = e.query("commands/command")
         .map(::extractCommand)
         .associateByTo(mutableMapOf()) { it.name }
 
-    val constants = e.query("enums[not(@type)]")
-        .map(::extractEnums)
-        .flatMap { it.fields.map { field -> field.toConstant() } }
-        .associateByTo(mutableMapOf()) { it.name }
-
-    // feature
-    val bitflags = bitmasks.asSequence()
-        .flatMap { it.value.bitflags }
-        .associateBy { it.name }
+    val constants = mutableMapOf<Identifier, Constant>()
+    e.query("enums/enum").forEach { extractEnumConstant(it, constants) }
 
     val featureElement = findGLES2Feature(e)
-    val requires = featureElement.getElementSequence(TAG_REQUIRE)
+    val requires = featureElement.getElementSeq(TAG_REQUIRE)
     val enumRequirements = requires.flatMap {
-        extractEnumRequire(it) { name ->
-            val id = name.intern()
-            bitflags[id] ?: constants[id]
-        }
+        extractEnumRequire(it) { name -> constants[name.intern()] }
     }.associateBy { it.name }
 
     val commandRequirements = requires.flatMap {
-        extractCommandRequire(it) { name ->
-            val id = name.intern()
-            commands[id]
-        }
+        extractCommandRequire(it) { name ->  commands[name.intern()] }
     }.associateByTo(mutableMapOf()) { it.name }
 
     val ext = GLESRegistryExt(enumRequirements, commandRequirements)
     return Registry(
         aliases = mutableMapOf(),
-        bitmasks = bitmasks,
+        bitmasks = mutableMapOf(),
         constants = constants,
         commands = commandRequirements,
         enumerations = mutableMapOf(),
@@ -85,7 +57,6 @@ private fun Element.extractEntities(): Registry<GLESRegistryExt> {
     )
 }
 
-private const val ATTR_GROUP = "group"
 private const val ATTR_VALUE = "value"
 private const val ATTR_NAME = "name"
 private const val ATTR_API = "api"
@@ -97,65 +68,19 @@ private const val TAG_ENUM = "enum"
 private const val TAG_COMMAND = "command"
 private const val TAG_REQUIRE = "require"
 
-/// region enum
-
-private data class EnumDecl(val name: String?, val fields: List<EnumField>)
-private data class EnumField(val name: String, val value: String)
+/// region constant
 
 /**
- * @param e in form of `<enums namespace="..." group="...">`
+ * @param e in form of `<enum value="..." name="...">`
  */
-private fun extractEnums(e: Element): EnumDecl {
-    val group = e.getAttributeText(ATTR_GROUP)
-    val fields = e.getElementSequence(TAG_ENUM)
-        .map(::extractEnum)
-
-    return EnumDecl(group, fields.toList())
-}
-
-/**
- * @param e in form of `<enum value="..." name="..." group="...">`
- */
-private fun extractEnum(e: Element): EnumField {
+private fun extractEnumConstant(e: Element, constants: MutableMap<Identifier, Constant>) {
     val name = e.getAttributeText(ATTR_NAME)!!
     val value = e.getAttributeText(ATTR_VALUE)!!
 
-    return EnumField(name, value)
+    constants.putEntityIfAbsent(Constant(name, IdentifierType("GLenum"), value))
 }
 
-/// endregion enum
-
-/// region bitmask
-
-private fun EnumDecl.toBitmask(): Bitmask {
-    if (this.name == null) throw IllegalArgumentException()
-
-    return Bitmask(
-        name = this.name,
-        bitwidth = null,
-        bitflags = this.fields.mapTo(mutableListOf()) { it.toBitflag() }
-    )
-}
-
-private fun EnumField.toBitflag(): Bitflag {
-    return Bitflag(name = this.name, value = this.value.parseDecOrHex().toBigInteger())
-}
-
-/// endregion bitmask
-
-/// region constant
-
-private const val TYPE_ENUM = "GLenum"
-
-private fun EnumField.toConstant(): Constant {
-    return Constant(
-        name = this.name,
-        type = IdentifierType(TYPE_ENUM),
-        expr = this.value
-    )
-}
-
-/// endregion constants
+/// endregion constant
 
 /// region command
 
@@ -183,7 +108,7 @@ private fun extractCommand(e: Element): Command {
     val rawProto = e.getElementsByTagName(TAG_PROTO).item(0) as Element
     val (name, type) = extractTypeJudgement(rawProto)
 
-    val params = e.getElementSequence(TAG_PARAM)
+    val params = e.getElementSeq(TAG_PARAM)
         .map(::extractParam)
         .toMutableList()
 
@@ -209,7 +134,7 @@ private fun extractParam(e: Element): Param {
 /// region feature requirement
 
 private fun findGLES2Feature(e: Element): Element {
-    return e.getElementSequence(TAG_FEATURE).find {
+    return e.getElementSeq(TAG_FEATURE).find {
         it.getAttributeText(ATTR_API) == "gles2"
     } ?: throw RuntimeException("GLES2 feature not found")
 }
@@ -226,14 +151,10 @@ private fun extractCommandRequire(e: Element, commandGetter: (String) -> Command
  * @param e <require> node
  */
 private fun <E> extractRequire(e: Element, tag: String, getter: (String) -> E?): Sequence<E> {
-    return e.getElementSequence(tag).map {
+    return e.getElementSeq(tag).map {
         val name = it.getAttributeText(ATTR_NAME)!!
-        getter(name) ?: throw RuntimeException("TODO")   // TODO
+        getter(name) ?: error("Cannot find $tag with name $name")
     }
 }
 
 /// endregion feature requirement
-
-fun main() {
-    extractRawGLESRegistry()
-}
