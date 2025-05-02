@@ -1,8 +1,12 @@
 package cc.design7.ffm.ptr;
 
 import cc.design7.ffm.IPointer;
+import cc.design7.ffm.annotation.UnsafeConstructor;
 import cc.design7.ffm.annotation.ValueBasedCandidate;
 import cc.design7.ffm.annotation.unsafe;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
@@ -10,8 +14,19 @@ import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.IntBuffer;
 
+/// Represents a pointer to integer(s) in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// {@link ValueLayout.OfInt#byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators. For
+/// normal users, {@link #checked} is a good safe alternative.
 @ValueBasedCandidate
-public record IntPtr(MemorySegment segment) implements IPointer {
+@UnsafeConstructor
+public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
     public long size() {
         return segment.byteSize() / Integer.BYTES;
     }
@@ -32,61 +47,119 @@ public record IntPtr(MemorySegment segment) implements IPointer {
         segment.set(ValueLayout.JAVA_INT, index * Integer.BYTES, value);
     }
 
+    /// Assume the {@link IntPtr} is capable of holding at least {@code newSize} integers, create
+    /// a new view {@link IntPtr} that uses the same backing storage as this {@link IntPtr}, but
+    /// with the new size. Since there is actually no way to really check whether the new size
+    /// valid, while buffer overflow is undefined behavior, this method is marked as {@link unsafe}.
+    ///
+    /// This method could be useful when handling data returned from some C API, where the size of
+    /// the data is not known in advance.
     @unsafe
-    public IntPtr reinterpret(long newSize) {
+    public @NotNull IntPtr reinterpret(long newSize) {
         return new IntPtr(segment.reinterpret(newSize * Integer.BYTES));
     }
 
-    public IntPtr offset(long offset) {
+    public @NotNull IntPtr offset(long offset) {
         return new IntPtr(segment.asSlice(offset * Integer.BYTES));
     }
 
-    public static IntPtr allocate(Arena arena) {
-        return new IntPtr(arena.allocate(ValueLayout.JAVA_INT));
+    /// Create a new {@link IntPtr} using {@code segment} as backing storage, with argument
+    /// validation.
+    ///
+    /// This function does not ensure {@code segment}'s size to be a multiple of
+    /// {@link Integer#BYTES}, since that several trailing bytes could be automatically ignored by
+    /// {@link #size()} method, and usually these bytes does not interfere with FFI operations.
+    /// If the given segment is not big enough to hold at least one integer, that segment is simply
+    /// considered "empty". See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// @param segment the {@link MemorySegment} to use as the backing storage
+    /// @return {@code null} if {@code segment} is {@code null} or {@link MemorySegment#NULL},
+    /// otherwise a new {@link IntPtr} that uses {@code segment} as backing storage
+    /// @throws IllegalArgumentException if the given {@link MemorySegment} is not native or not
+    /// properly aligned
+    @Contract("null -> null")
+    public static @Nullable IntPtr checked(@Nullable MemorySegment segment) {
+        if (segment == null || segment.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        if (!segment.isNative()) {
+            throw new IllegalArgumentException("Segment must be native");
+        }
+
+        if (segment.address() % ValueLayout.OfInt.JAVA_INT.byteAlignment() != 0) {
+            throw new IllegalArgumentException("Segment address must be aligned to " + ValueLayout.OfInt.JAVA_INT.byteAlignment() + " bytes");
+        }
+
+        return new IntPtr(segment);
     }
 
-    public static IntPtr allocate(Arena arena, long size) {
-        return new IntPtr(arena.allocate(ValueLayout.JAVA_INT, size));
-    }
-
-    public static IntPtr allocate(Arena arena, int[] array) {
-        return new IntPtr(arena.allocateFrom(ValueLayout.JAVA_INT, array));
-    }
-
-    /// Allocate a new {@link IntPtr} in the given {@link Arena} and copy the contents of the given
-    /// {@link IntBuffer} into the newly allocated {@link IntPtr}.
+    /// Create a new {@link IntPtr} using the same backing storage as {@code buffer}, with argument
+    /// validation.
+    ///
+    /// The main difference between this static method and the {@link #allocate(Arena, IntBuffer)}
+    /// method is that this method does not copy the contents of {@code buffer} into a newly
+    /// allocated {@link MemorySegment}. Instead, the newly created {@link IntPtr} will use the same
+    /// backing storage as the given {@link IntBuffer}. Thus, modifications from one side will be
+    /// visible on the other side.
     ///
     /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
     /// have ever read from the {@link Buffer}, and you want all the contents of the
-    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
+    /// {@link Buffer} to be copied, you may want to call {@link Buffer#rewind()}.
+    ///
+    /// When handling data types consisting of multiple bytes, also be careful with endianness and
+    /// {@link IntBuffer#order()} property. {@link IntPtr} always uses the native endianness. So
+    /// if {@code buffer} that uses a different endianness, you may want to convert it to the native
+    /// endianness first.
+    ///
+    /// @param buffer the {@link IntBuffer} to use as the backing storage
+    /// @return a new {@link IntPtr} that uses {@code buffer} as its backing storage
+    /// @throws IllegalArgumentException if the given {@code buffer} is not direct, or its backing
+    /// storage is not properly aligned
+    public static @NotNull IntPtr checked(@NotNull IntBuffer buffer) {
+        if (!buffer.isDirect()) {
+            throw new IllegalArgumentException("Buffer must be direct");
+        }
+
+        MemorySegment segment = MemorySegment.ofBuffer(buffer);
+        if (segment.address() % ValueLayout.OfInt.JAVA_INT.byteAlignment() != 0) {
+            throw new IllegalArgumentException("Buffer address must be aligned to " + ValueLayout.OfInt.JAVA_INT.byteAlignment() + " bytes");
+        }
+
+        return new IntPtr(segment);
+    }
+
+    public static @NotNull IntPtr allocate(@NotNull Arena arena) {
+        return new IntPtr(arena.allocate(ValueLayout.JAVA_INT));
+    }
+
+    public static @NotNull IntPtr allocate(@NotNull Arena arena, long size) {
+        return new IntPtr(arena.allocate(ValueLayout.JAVA_INT, size));
+    }
+
+    public static @NotNull IntPtr allocate(@NotNull Arena arena, int @NotNull [] array) {
+        return new IntPtr(arena.allocateFrom(ValueLayout.JAVA_INT, array));
+    }
+
+    /// Allocate a new {@link IntPtr} in the given {@link Arena} and copy the contents of
+    /// {@code buffer} into the newly allocated {@link IntPtr}.
+    ///
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
+    /// have ever read from {@code buffer}, and you want all the contents of {@code buffer} to be
+    /// copied, you may want to call {@link Buffer#rewind()}.
+    ///
+    /// When handling data types consisting of multiple bytes, also be careful with endianness and
+    /// {@link IntBuffer#order()} property. {@link IntPtr} always uses the native endianness. So
+    /// if {@code buffer} that uses a different endianness, you may want to convert it to the native
+    /// endianness first.
     ///
     /// @param arena the {@link Arena} to allocate the new {@link IntPtr} in
     /// @param buffer the {@link IntBuffer} to copy the contents from
     /// @return a new {@link IntPtr} that contains the contents of the given {@link IntBuffer}
-    public static IntPtr allocate(Arena arena, IntBuffer buffer) {
+    public static @NotNull IntPtr allocate(@NotNull Arena arena, @NotNull IntBuffer buffer) {
         var s = arena.allocate(ValueLayout.JAVA_INT, buffer.remaining());
         s.copyFrom(MemorySegment.ofBuffer(buffer));
-        return new IntPtr(s);
-    }
 
-    /// Create a new {@link IntPtr} using the same backing storage as the given {@link IntBuffer}.
-    ///
-    /// The main difference between this static method and the {@link #allocate(Arena, IntBuffer)} method is
-    /// that this method does not copy the contents of the given {@link IntBuffer} into a newly created
-    /// {@link IntPtr}. Instead, the newly created {@link IntPtr} will use the same backing storage as the
-    /// given {@link IntBuffer}. Please note that if the given {@link IntBuffer} is not
-    /// native/direct, the newly created {@link IntPtr}  will not be able to be used in FFI operations since the
-    /// backing storage does not reside in native memory and does not have a native address. Thus, this method is marked
-    /// as {@link unsafe} because it can create inconsistency and cause very difficult to troubleshoot bugs.
-    ///
-    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
-    /// have ever read from the {@link Buffer}, and you want all the contents of the
-    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
-    ///
-    /// @param buffer the {@link IntBuffer} to use as the backing storage
-    /// @return a new {@link IntPtr} that uses the given {@link IntBuffer} as its backing storage
-    @unsafe
-    public static IntPtr from(IntBuffer buffer) {
-        return new IntPtr(MemorySegment.ofBuffer(buffer));
+        return new IntPtr(s);
     }
 }
