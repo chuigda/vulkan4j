@@ -99,6 +99,9 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
     /// have ever read from the {@link Buffer}, and you want all the contents of the
     /// {@link Buffer} to be copied, you may want to call {@link Buffer#rewind()}.
     ///
+    /// When handling data types consisting of multiple bytes, also be careful with endianness and
+    /// {@link IntBuffer#order()} property.
+    ///
     /// @param buffer the {@link IntBuffer} to use as the backing storage
     /// @return a new {@link IntPtr} that uses the given {@code buffer} as its backing storage
     /// @throws IllegalArgumentException if the given {@link IntBuffer} is not direct
@@ -128,6 +131,9 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
     /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
     /// have ever read from the {@link Buffer}, and you want all the contents of the
     /// {@link Buffer} to be copied, you may want to call {@link Buffer#rewind()}.
+    ///
+    /// When handling data types consisting of multiple bytes, also be careful with endianness and
+    /// {@link IntBuffer#order()} property.
     ///
     /// @param arena the {@link Arena} to allocate the new {@link IntPtr} in
     /// @param buffer the {@link IntBuffer} to copy the contents from
