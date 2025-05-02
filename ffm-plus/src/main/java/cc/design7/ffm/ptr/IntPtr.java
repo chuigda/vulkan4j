@@ -65,8 +65,8 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
     /// This function does not ensure the segment's size is a multiple of {@link Integer#BYTES},
     /// since that several trailing bytes could be automatically ignored by {@link #size()} method,
     /// and usually these bytes does not interfere with FFI operations. If the given segment is even
-    /// not big enough to hold at least one integer, the resulting pointer is simply considered
-    /// "empty". See the documentation of {@link IPointer#segment()} for more details.
+    /// not big enough to hold at least one integer, that segment is simply considered "empty".
+    /// See the documentation of {@link IPointer#segment()} for more details.
     ///
     /// @param segment the {@link MemorySegment} to use as the backing storage
     /// @return {@code null} if the given {@link MemorySegment} is {@code null} or

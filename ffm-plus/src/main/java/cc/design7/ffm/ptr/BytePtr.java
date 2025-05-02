@@ -86,9 +86,8 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer {
     /// Create a new {@link BytePtr} using the given {@link MemorySegment}. {@code null} will be
     /// returned for both {@code null} and {@link MemorySegment#NULL} input.
     ///
-    /// If the given segment is not big enough to hold at least one byte, the resulting pointer is
-    /// simply considered "empty". See the documentation of {@link IPointer#segment()} for more
-    /// details.
+    /// If the given segment is not big enough to hold at least one byte, that segment is simply
+    /// considered "empty". See the documentation of {@link IPointer#segment()} for more details.
     ///
     /// @param segment the {@link MemorySegment} to use as the backing storage
     /// @return {@code null} if the given {@link MemorySegment} is {@code null} or
