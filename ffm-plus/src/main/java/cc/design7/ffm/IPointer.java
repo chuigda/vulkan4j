@@ -18,7 +18,7 @@ public interface IPointer {
     /// 7 bytes. The trailing bytes can be safely ignored by most algorithms and FFI functions.
     ///
     /// If the memory segment is even not big enough to hold a single element of the pointee type,
-    /// the pointer is simply considered "empty". This is just like allocating 0 bytes with C/C++
+    /// the segment is simply considered "empty". This is just like allocating 0 bytes with C/C++
     /// {@code malloc(0)} (on some implementation): the resulting pointer is not null and valid, but
     /// you cannot read or write anything.
     @NotNull MemorySegment segment();
