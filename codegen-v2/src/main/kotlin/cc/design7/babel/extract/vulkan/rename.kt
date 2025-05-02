@@ -1,5 +1,7 @@
 package cc.design7.babel.extract.vulkan
 
+import cc.design7.babel.extract.ensureLowerCamelCase
+import cc.design7.babel.extract.toSnakeCase
 import cc.design7.babel.registry.Entity
 import cc.design7.babel.registry.Registry
 import java.io.File
@@ -99,33 +101,4 @@ private fun renameVariantOrBitflag(
     } else {
         renamed
     }
-}
-
-
-private fun String.ensureLowerCamelCase(): String {
-    val firstChar = this[0]
-    if (this.length >= 2) {
-        val secondChar = this[1]
-        if (firstChar.isUpperCase() && secondChar.isUpperCase()) {
-            return this
-        }
-    }
-
-    return firstChar.lowercaseChar() + this.substring(1)
-}
-
-private fun String.toSnakeCase(): String {
-    val result = StringBuilder()
-    for (i in indices) {
-        val c = this[i]
-        if (c.isUpperCase()) {
-            if (i > 0 && this[i - 1].isLowerCase()) {
-                result.append('_')
-            }
-            result.append(c.lowercaseChar())
-        } else {
-            result.append(c)
-        }
-    }
-    return result.toString()
 }

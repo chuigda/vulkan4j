@@ -4,7 +4,7 @@ import cc.design7.babel.registry.IdentifierType
 import cc.design7.babel.registry.PointerType
 import cc.design7.babel.registry.Type
 
-fun tokenize(line: String): List<String> {
+internal fun tokenize(line: String): List<String> {
     var position = 0
     val tokens = mutableListOf<String>()
     while (position < line.length) {
@@ -41,7 +41,7 @@ fun tokenize(line: String): List<String> {
     return tokens
 }
 
-fun parseType(tokens: List<String>, position: Int): Pair<Type, Int> {
+internal fun parseType(tokens: List<String>, position: Int): Pair<Type, Int> {
     if (tokens[position] == "const") {
         val (pointerType, positionNext) = parseType(tokens, position + 1)
         return if (pointerType is PointerType) {

@@ -9,9 +9,11 @@ import cc.design7.babel.util.getElementSeq
 import cc.design7.babel.util.parseXML
 import cc.design7.babel.util.query
 import org.w3c.dom.Element
+import java.util.logging.Logger
 import kotlin.io.path.Path
 
 private val inputDir = Path("codegen-v2/input")
+internal val log = Logger.getLogger("c.d.b.extract.gles2")
 
 fun extractGLES2Registry(): Registry<EmptyMergeable> {
     val r = inputDir.resolve("gl.xml")
@@ -19,7 +21,7 @@ fun extractGLES2Registry(): Registry<EmptyMergeable> {
         .readText()
         .parseXML()
         .extractEntities()
-
+    r.renameEntities()
     return r
 }
 
