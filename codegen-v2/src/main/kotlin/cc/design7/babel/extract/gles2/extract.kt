@@ -13,47 +13,56 @@ import kotlin.io.path.Path
 
 private val inputDir = Path("codegen-v2/input")
 
-fun extractRawGLESRegistry(): Registry<GLESRegistryExt> {
-    return inputDir.resolve("gl.xml")
+fun extractGLES2Registry(): Registry<EmptyMergeable> {
+    val r = inputDir.resolve("gl.xml")
         .toFile()
         .readText()
         .parseXML()
         .extractEntities()
+
+    return r
 }
 
-private fun Element.extractEntities(): Registry<GLESRegistryExt> {
+private fun Element.extractEntities(): Registry<EmptyMergeable> {
     val e = this
 
-    val commands = e.query("commands/command")
+    val allCommands = e.query("commands/command")
         .map(::extractCommand)
         .associateByTo(mutableMapOf()) { it.name }
 
+    val allConstants = mutableMapOf<Identifier, Constant>()
+    e.query("enums/enum").forEach { extractEnumConstant(it, allConstants) }
+
+    val commands = mutableMapOf<Identifier, Command>()
     val constants = mutableMapOf<Identifier, Constant>()
-    e.query("enums/enum").forEach { extractEnumConstant(it, constants) }
 
-    val featureElement = findGLES2Feature(e)
-    val requires = featureElement.getElementSeq(TAG_REQUIRE)
-    val enumRequirements = requires.flatMap {
-        extractEnumRequire(it) { name -> constants[name.intern()] }
-    }.associateBy { it.name }
+    val featureElement = e.query("feature[@api='gles2' and @number='2.0']").first()
+    for (require in featureElement.getElementSeq(TAG_REQUIRE)) {
+        for (commandRequire in require.getElementSeq(TAG_COMMAND)) {
+            val name = commandRequire.getAttributeText(ATTR_NAME)!!
+            val command = allCommands[name.intern()]!!
+            commands.putEntityIfAbsent(command)
+        }
 
-    val commandRequirements = requires.flatMap {
-        extractCommandRequire(it) { name ->  commands[name.intern()] }
-    }.associateByTo(mutableMapOf()) { it.name }
+        for (enumRequire in require.getElementSeq(TAG_ENUM)) {
+            val name = enumRequire.getAttributeText(ATTR_NAME)!!
+            val constant = allConstants[name.intern()]!!
+            constants.putEntityIfAbsent(constant)
+        }
+    }
 
-    val ext = GLESRegistryExt(enumRequirements, commandRequirements)
     return Registry(
         aliases = mutableMapOf(),
         bitmasks = mutableMapOf(),
         constants = constants,
-        commands = commandRequirements,
+        commands = commands,
         enumerations = mutableMapOf(),
         functionTypedefs = mutableMapOf(),
         opaqueHandleTypedefs = mutableMapOf(),
         opaqueTypedefs = mutableMapOf(),
         structures = mutableMapOf(),
         unions = mutableMapOf(),
-        ext = ext
+        ext = EmptyMergeable()
     )
 }
 
@@ -131,7 +140,7 @@ private fun extractParam(e: Element): Param {
 
 /// endregion command
 
-/// region feature requirement
+/// region feature
 
 private fun findGLES2Feature(e: Element): Element {
     return e.getElementSeq(TAG_FEATURE).find {
@@ -139,22 +148,4 @@ private fun findGLES2Feature(e: Element): Element {
     } ?: throw RuntimeException("GLES2 feature not found")
 }
 
-private fun extractEnumRequire(e: Element, enumGetter: (String) -> Entity?): Sequence<Entity> {
-    return extractRequire(e, TAG_ENUM, enumGetter)
-}
-
-private fun extractCommandRequire(e: Element, commandGetter: (String) -> Command?): Sequence<Command> {
-    return extractRequire(e, TAG_COMMAND, commandGetter)
-}
-
-/**
- * @param e <require> node
- */
-private fun <E> extractRequire(e: Element, tag: String, getter: (String) -> E?): Sequence<E> {
-    return e.getElementSeq(tag).map {
-        val name = it.getAttributeText(ATTR_NAME)!!
-        getter(name) ?: error("Cannot find $tag with name $name")
-    }
-}
-
-/// endregion feature requirement
+/// endregion feature
