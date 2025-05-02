@@ -4,4 +4,8 @@ import java.lang.foreign.MemorySegment;
 
 public interface IPointer {
     MemorySegment segment();
+
+    default boolean isNull() {
+        return segment().equals(MemorySegment.NULL);
+    }
 }

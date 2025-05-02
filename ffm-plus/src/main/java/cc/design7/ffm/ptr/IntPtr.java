@@ -114,4 +114,6 @@ public record IntPtr(MemorySegment segment) implements IPointer {
     public static IntPtr from(IntBuffer buffer) {
         return new IntPtr(MemorySegment.ofBuffer(buffer));
     }
+
+    public static final IntPtr NULL = new IntPtr(MemorySegment.NULL);
 }
