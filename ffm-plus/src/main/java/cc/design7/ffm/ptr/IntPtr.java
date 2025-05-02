@@ -4,6 +4,7 @@ import cc.design7.ffm.IPointer;
 import cc.design7.ffm.annotation.UnsafeConstructor;
 import cc.design7.ffm.annotation.ValueBasedCandidate;
 import cc.design7.ffm.annotation.unsafe;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
@@ -13,13 +14,17 @@ import java.nio.IntBuffer;
 
 /// Represents a pointer to integer(s) in native memory.
 ///
-/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not check
-/// the alignment of the given {@link MemorySegment}. It is the caller's responsibility to ensure
-/// that the given {@link MemorySegment} is correctly aligned to
-/// {@link ValueLayout.OfInt#byteAlignment()} bytes.
+/// The property {@link #segment()} should always be not-null
+/// ({@code segment() != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// {@link ValueLayout.OfInt#byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it neither checks
+/// if the given {@link MemorySegment} is {@code} null {@link MemorySegment#NULL}, nor checks the
+/// alignment of the given {@link MemorySegment}.
 ///
 /// The constructor is still very suitable for automatic code generators. For normal users,
-/// {@link #checked} is a safe alternative.
+/// {@link #checked} is a good safe alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
 public record IntPtr(MemorySegment segment) implements IPointer {
@@ -52,14 +57,21 @@ public record IntPtr(MemorySegment segment) implements IPointer {
         return new IntPtr(segment.asSlice(offset * Integer.BYTES));
     }
 
-    /// Create a new {@link IntPtr} using the given {@link MemorySegment}, checking the alignment
-    /// of the segment to ensure it is suitable for use with integer values.
+    /// Create a new {@link IntPtr} using the given {@link MemorySegment}. If the given
+    /// {@link MemorySegment} is either {@code null} or {@link MemorySegment#NULL}, a {@code null}
+    /// is returned. Otherwise, the given {@link MemorySegment} is checked for alignment, and
+    /// if it is not aligned to {@link ValueLayout.OfInt#byteAlignment()} bytes, an
+    /// {@link IllegalArgumentException} is thrown.
     ///
     /// This function does not ensure the segment's size is a multiple of {@link Integer#BYTES},
     /// since that several trailing bytes could be automatically ignored by {@link #size()} method,
-    /// and usually these bytes does not interfere with FFI operations. If the given segment is not
-    /// big enough to hold at least one integer, then the segment is simply considered empty.
-    public static IntPtr checked(MemorySegment segment) {
+    /// and usually these bytes does not interfere with FFI operations. If the given segment is even
+    /// not big enough to hold at least one integer, the resulting segment is simply considered empty.
+    public static @Nullable IntPtr checked(@Nullable MemorySegment segment) {
+        if (segment == null || segment.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
         if (segment.address() % ValueLayout.OfInt.JAVA_INT.byteAlignment() != 0) {
             throw new IllegalArgumentException("Segment address must be aligned to " + ValueLayout.OfInt.JAVA_INT.byteAlignment() + " bytes");
         }
@@ -114,6 +126,4 @@ public record IntPtr(MemorySegment segment) implements IPointer {
     public static IntPtr from(IntBuffer buffer) {
         return new IntPtr(MemorySegment.ofBuffer(buffer));
     }
-
-    public static final IntPtr NULL = new IntPtr(MemorySegment.NULL);
 }
