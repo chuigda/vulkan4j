@@ -68,11 +68,9 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
 
 private const val ATTR_VALUE = "value"
 private const val ATTR_NAME = "name"
-private const val ATTR_API = "api"
 private const val TAG_PROTO = "proto"
 private const val TAG_NAME = "name"
 private const val TAG_PARAM = "param"
-private const val TAG_FEATURE = "feature"
 private const val TAG_ENUM = "enum"
 private const val TAG_COMMAND = "command"
 private const val TAG_REQUIRE = "require"
@@ -139,13 +137,3 @@ private fun extractParam(e: Element): Param {
 }
 
 /// endregion command
-
-/// region feature
-
-private fun findGLES2Feature(e: Element): Element {
-    return e.getElementSeq(TAG_FEATURE).find {
-        it.getAttributeText(ATTR_API) == "gles2"
-    } ?: throw RuntimeException("GLES2 feature not found")
-}
-
-/// endregion feature
