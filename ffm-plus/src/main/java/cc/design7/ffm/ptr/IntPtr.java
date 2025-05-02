@@ -4,6 +4,7 @@ import cc.design7.ffm.IPointer;
 import cc.design7.ffm.annotation.UnsafeConstructor;
 import cc.design7.ffm.annotation.ValueBasedCandidate;
 import cc.design7.ffm.annotation.unsafe;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -18,14 +19,13 @@ import java.nio.IntBuffer;
 /// The property {@link #segment()} should always be not-null
 /// ({@code segment() != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@link ValueLayout.OfInt#byteAlignment()} bytes. To represent null pointer, you may use a Java
-/// {@code null} instead. See the documentation of {@link IPointer}
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it neither checks
-/// if the given {@link MemorySegment} is {@code} null {@link MemorySegment#NULL}, nor checks the
-/// alignment of the given {@link MemorySegment} (technically, it can not do this).
-///
-/// The constructor is still very suitable for automatic code generators. For normal users,
-/// {@link #checked} is a good safe alternative.
+/// if the given {@link MemorySegment} is {@link MemorySegment#NULL}, nor checks the alignment of
+/// the given {@link MemorySegment} (technically, it can not do this). The constructor is still very
+/// suitable for automatic code generators. For normal users, {@link #checked} is a good safe
+/// alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
 public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
@@ -50,35 +50,39 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
     }
 
     @unsafe
-    public IntPtr reinterpret(long newSize) {
+    public @NotNull IntPtr reinterpret(long newSize) {
         return new IntPtr(segment.reinterpret(newSize * Integer.BYTES));
     }
 
-    public IntPtr offset(long offset) {
+    public @NotNull IntPtr offset(long offset) {
         return new IntPtr(segment.asSlice(offset * Integer.BYTES));
     }
 
     /// Create a new {@link IntPtr} using the given {@link MemorySegment}. The alignment of the
-    /// given {@link MemorySegment} will be checked. {@link MemorySegment#NULL} will be
-    /// automatically converted to {@code null}.
+    /// given {@link MemorySegment} will be checked. {@code null} will be returned for both
+    /// {@code null} and {@link MemorySegment#NULL} input.
     ///
     /// This function does not ensure the segment's size is a multiple of {@link Integer#BYTES},
     /// since that several trailing bytes could be automatically ignored by {@link #size()} method,
     /// and usually these bytes does not interfere with FFI operations. If the given segment is even
-    /// not big enough to hold at least one integer, the resulting segment is simply considered empty.
+    /// not big enough to hold at least one integer, the resulting pointer is simply considered
+    /// "empty". See the documentation of {@link IPointer#segment()} for more details.
     ///
     /// @param segment the {@link MemorySegment} to use as the backing storage
-    /// @return {@code null} if the given {@link MemorySegment} is {@link MemorySegment#NULL},
-    /// otherwise a new {@link IntPtr} that uses the given {@code segment} as its backing storage
+    /// @return {@code null} if the given {@link MemorySegment} is {@code null} or
+    /// {@link MemorySegment#NULL}, otherwise a new {@link IntPtr} that uses the given
+    /// {@code segment} as backing storage
     /// @throws IllegalArgumentException if the given {@link MemorySegment} is not properly aligned
-    public static @Nullable IntPtr checked(@NotNull MemorySegment segment) {
-        if (segment.equals(MemorySegment.NULL)) {
+    @Contract("null -> null")
+    public static @Nullable IntPtr checked(@Nullable MemorySegment segment) {
+        if (segment == null || segment.equals(MemorySegment.NULL)) {
             return null;
         }
 
         if (segment.address() % ValueLayout.OfInt.JAVA_INT.byteAlignment() != 0) {
             throw new IllegalArgumentException("Segment address must be aligned to " + ValueLayout.OfInt.JAVA_INT.byteAlignment() + " bytes");
         }
+
         return new IntPtr(segment);
     }
 
@@ -89,7 +93,7 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
     /// method is that this method does not copy the contents of the given {@link IntBuffer} into a
     /// newly allocated {@link MemorySegment}. Instead, the newly created {@link IntPtr} will use
     /// the same backing storage as the given {@link IntBuffer}. Thus, modifications from one side
-    /// will be reflected on the other side.
+    /// will be visible on the other side.
     ///
     /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
     /// have ever read from the {@link Buffer}, and you want all the contents of the
@@ -102,6 +106,7 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
         if (!buffer.isDirect()) {
             throw new IllegalArgumentException("Buffer must be direct");
         }
+
         return new IntPtr(MemorySegment.ofBuffer(buffer));
     }
 
