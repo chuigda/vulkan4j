@@ -6,7 +6,7 @@ import java.lang.foreign.MemorySegment;
 
 public interface IPointer {
     /// The implementation should always provide a not-null {@link MemorySegment}
-    /// ({@code segment() != NULL && !segment.equals(MemorySegment.NULL)}). The segment must be
+    /// ({@code segment() != null && !segment.equals(MemorySegment.NULL)}). The segment must be
     /// properly aligned according to the type of the pointer. To represent null pointer, user
     /// should use a Java {@code null} {@link IPointer}.
     ///
