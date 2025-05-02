@@ -18,7 +18,7 @@ import java.nio.IntBuffer;
 /// The property {@link #segment()} should always be not-null
 /// ({@code segment() != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@link ValueLayout.OfInt#byteAlignment()} bytes. To represent null pointer, you may use a Java
-/// {@code null} instead.
+/// {@code null} instead. See the documentation of {@link IPointer}
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it neither checks
 /// if the given {@link MemorySegment} is {@code} null {@link MemorySegment#NULL}, nor checks the
