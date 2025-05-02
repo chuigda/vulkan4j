@@ -1,6 +1,7 @@
 package cc.design7.ffm.ptr;
 
 import cc.design7.ffm.IPointer;
+import cc.design7.ffm.annotation.UnsafeConstructor;
 import cc.design7.ffm.annotation.ValueBasedCandidate;
 import cc.design7.ffm.annotation.unsafe;
 
@@ -11,6 +12,7 @@ import java.nio.Buffer;
 import java.nio.DoubleBuffer;
 
 @ValueBasedCandidate
+@UnsafeConstructor
 public record DoublePtr(MemorySegment segment) implements IPointer {
     public long size() {
         return segment.byteSize() / Double.BYTES;

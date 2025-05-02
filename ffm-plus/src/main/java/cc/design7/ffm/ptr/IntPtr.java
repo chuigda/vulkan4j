@@ -1,6 +1,7 @@
 package cc.design7.ffm.ptr;
 
 import cc.design7.ffm.IPointer;
+import cc.design7.ffm.annotation.UnsafeConstructor;
 import cc.design7.ffm.annotation.ValueBasedCandidate;
 import cc.design7.ffm.annotation.unsafe;
 
@@ -10,7 +11,17 @@ import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.IntBuffer;
 
+/// Represents a pointer to integer(s) in native memory.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not check
+/// the alignment of the given {@link MemorySegment}. It is the caller's responsibility to ensure
+/// that the given {@link MemorySegment} is correctly aligned to
+/// {@link ValueLayout.OfInt#byteAlignment()} bytes.
+///
+/// The constructor is still very suitable for automatic code generators. For normal users,
+/// {@link #checked} is a safe alternative.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record IntPtr(MemorySegment segment) implements IPointer {
     public long size() {
         return segment.byteSize() / Integer.BYTES;
@@ -39,6 +50,20 @@ public record IntPtr(MemorySegment segment) implements IPointer {
 
     public IntPtr offset(long offset) {
         return new IntPtr(segment.asSlice(offset * Integer.BYTES));
+    }
+
+    /// Create a new {@link IntPtr} using the given {@link MemorySegment}, checking the alignment
+    /// of the segment to ensure it is suitable for use with integer values.
+    ///
+    /// This function does not ensure the segment's size is a multiple of {@link Integer#BYTES},
+    /// since that several trailing bytes could be automatically ignored by {@link #size()} method,
+    /// and usually these bytes does not interfere with FFI operations. If the given segment is not
+    /// big enough to hold at least one integer, then the segment is simply considered empty.
+    public static IntPtr checked(MemorySegment segment) {
+        if (segment.address() % ValueLayout.OfInt.JAVA_INT.byteAlignment() != 0) {
+            throw new IllegalArgumentException("Segment address must be aligned to " + ValueLayout.OfInt.JAVA_INT.byteAlignment() + " bytes");
+        }
+        return new IntPtr(segment);
     }
 
     public static IntPtr allocate(Arena arena) {

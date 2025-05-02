@@ -1,6 +1,7 @@
 package cc.design7.ffm.ptr;
 
 import cc.design7.ffm.IPointer;
+import cc.design7.ffm.annotation.UnsafeConstructor;
 import cc.design7.ffm.annotation.ValueBasedCandidate;
 import cc.design7.ffm.annotation.unsafe;
 
@@ -9,6 +10,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
 @ValueBasedCandidate
+@UnsafeConstructor
 public record PointerPtr(MemorySegment segment) implements IPointer {
     public long size() {
         return segment.byteSize() / ValueLayout.ADDRESS.byteSize();

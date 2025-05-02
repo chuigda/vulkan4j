@@ -10,6 +10,7 @@ import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
+/// Represents a pointer to byte(s) in native memory.
 @ValueBasedCandidate
 public record BytePtr(MemorySegment segment) implements IPointer {
     public long size() {
@@ -32,8 +33,23 @@ public record BytePtr(MemorySegment segment) implements IPointer {
         segment.set(ValueLayout.JAVA_BYTE, index, value);
     }
 
-    /// Note: this function is unsafe because it technically cannot do any boundary. It just assumes that the pointed
-    /// memory is a null-terminated string and reads it until the first null byte.
+    /// Assume the {@link BytePtr} is a null-terminated string, reads the string from the beginning of the underlying
+    /// memory segment, until the first null byte is encountered or the end of the segment is reached.
+    ///
+    /// This function requires the size of the underlying memory segment to be set correctly. If the size is not
+    /// previously known and correctly set (for example, the {@link BytePtr} or the underlying {@link MemorySegment} is
+    /// returned from some C API), you may use {@link BytePtr#readString} (note that it is {@link unsafe}) instead.
+    public String readStringSafe() {
+        return segment.getString(0);
+    }
+
+    /// Assumes the {@link BytePtr} is a null-terminated string, reads the string from the beginning of the underlying
+    /// memory segment, until the first null byte is encountered.
+    ///
+    /// This function is {@link unsafe} because it does not check the size of the underlying memory segment. This
+    /// function is suitable for the cases that the size of the underlying memory segment is previously known and
+    /// correctly set (for example, the {@link BytePtr} or the underlying {@link MemorySegment} is returned from some
+    /// C API). If the size is previously known and correctly set, you may use {@link BytePtr#readStringSafe} instead.
     @unsafe
     public String readString() {
         MemorySegment reinterpreted = segment.reinterpret(Long.MAX_VALUE);
