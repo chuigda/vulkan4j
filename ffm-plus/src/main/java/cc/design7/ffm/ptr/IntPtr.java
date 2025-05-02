@@ -49,7 +49,7 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
 
     /// Assume the {@link IntPtr} is capable of holding at least {@code newSize} integers, create
     /// a new view {@link IntPtr} that uses the same backing storage as this {@link IntPtr}, but
-    /// with the new size. Since there is actually no way to really check whether the new size
+    /// with the new size. Since there is actually no way to really check whether the new size is
     /// valid, while buffer overflow is undefined behavior, this method is marked as {@link unsafe}.
     ///
     /// This method could be useful when handling data returned from some C API, where the size of
