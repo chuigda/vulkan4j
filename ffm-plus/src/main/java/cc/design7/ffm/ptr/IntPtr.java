@@ -103,9 +103,10 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
     /// backing storage as the given {@link IntBuffer}. Thus, modifications from one side will be
     /// visible on the other side.
     ///
-    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
-    /// have ever read from the {@link Buffer}, and you want all the contents of the
-    /// {@link Buffer} to be copied, you may want to call {@link Buffer#rewind()}.
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: only the
+    /// "remaining" (from {@link Buffer#position()} to {@link Buffer#limit()}) part of
+    /// {@code buffer} will be referred. If you have ever read from {@code buffer}, and you want all
+    /// the contents of {@code buffer} to be referred, you may want to call {@link Buffer#rewind()}.
     ///
     /// When handling data types consisting of multiple bytes, also be careful with endianness and
     /// {@link IntBuffer#order()} property. {@link IntPtr} always uses the native endianness. So
@@ -144,9 +145,10 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
     /// Allocate a new {@link IntPtr} in the given {@link Arena} and copy the contents of
     /// {@code buffer} into the newly allocated {@link IntPtr}.
     ///
-    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
-    /// have ever read from {@code buffer}, and you want all the contents of {@code buffer} to be
-    /// copied, you may want to call {@link Buffer#rewind()}.
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: only the
+    /// "remaining" (from {@link Buffer#position()} to {@link Buffer#limit()}) part of
+    /// {@code buffer} will be copied. If you have ever read from {@code buffer}, and you want all
+    /// the contents of {@code buffer} to be copied, you may want to call {@link Buffer#rewind()}.
     ///
     /// When handling data types consisting of multiple bytes, also be careful with endianness and
     /// {@link IntBuffer#order()} property. {@link IntPtr} always uses the native endianness. So
