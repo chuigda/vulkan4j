@@ -87,8 +87,8 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
             throw new IllegalArgumentException("Segment must be native");
         }
 
-        if (segment.address() % ValueLayout.OfInt.JAVA_INT.byteAlignment() != 0) {
-            throw new IllegalArgumentException("Segment address must be aligned to " + ValueLayout.OfInt.JAVA_INT.byteAlignment() + " bytes");
+        if (segment.address() % ValueLayout.JAVA_INT.byteAlignment() != 0) {
+            throw new IllegalArgumentException("Segment address must be aligned to " + ValueLayout.JAVA_INT.byteAlignment() + " bytes");
         }
 
         return new IntPtr(segment);
@@ -122,8 +122,8 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
         }
 
         MemorySegment segment = MemorySegment.ofBuffer(buffer);
-        if (segment.address() % ValueLayout.OfInt.JAVA_INT.byteAlignment() != 0) {
-            throw new IllegalArgumentException("Buffer address must be aligned to " + ValueLayout.OfInt.JAVA_INT.byteAlignment() + " bytes");
+        if (segment.address() % ValueLayout.JAVA_INT.byteAlignment() != 0) {
+            throw new IllegalArgumentException("Buffer address must be aligned to " + ValueLayout.JAVA_INT.byteAlignment() + " bytes");
         }
 
         return new IntPtr(segment);
