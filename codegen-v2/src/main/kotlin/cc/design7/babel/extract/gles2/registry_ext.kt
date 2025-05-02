@@ -6,13 +6,13 @@ import cc.design7.babel.registry.IMergeable
 import cc.design7.babel.registry.Identifier
 
 data class GLESRegistryExt(
-  val constantRequirements: Map<Identifier, Entity>,
-  val commandRequirements: Map<Identifier, Command>,
+    val constantRequirements: Map<Identifier, Entity>,
+    val commandRequirements: Map<Identifier, Command>,
 ) : IMergeable<GLESRegistryExt> {
-  override fun merge(other: GLESRegistryExt): GLESRegistryExt {
-    return GLESRegistryExt(
-      constantRequirements + other.constantRequirements,
-      commandRequirements + other.commandRequirements
-    )
-  }
+    override fun merge(other: GLESRegistryExt): GLESRegistryExt {
+        return GLESRegistryExt(
+            constantRequirements + other.constantRequirements,
+            commandRequirements + other.commandRequirements
+        )
+    }
 }

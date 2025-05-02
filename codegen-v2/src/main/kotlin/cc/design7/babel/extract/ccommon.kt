@@ -1,4 +1,4 @@
-package cc.design7.babel.extract.gles2
+package cc.design7.babel.extract
 
 import cc.design7.babel.registry.IdentifierType
 import cc.design7.babel.registry.PointerType
