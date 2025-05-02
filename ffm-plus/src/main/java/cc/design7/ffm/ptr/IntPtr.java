@@ -109,7 +109,7 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
     ///
     /// When handling data types consisting of multiple bytes, also be careful with endianness and
     /// {@link IntBuffer#order()} property. {@link IntPtr} always uses the native endianness. So
-    /// if {@code buffer} that uses a different endianness, you may want to convert it to the native
+    /// if {@code buffer} uses a different endianness, you may want to convert it to the native
     /// endianness first.
     ///
     /// @param buffer the {@link IntBuffer} to use as the backing storage
@@ -150,7 +150,7 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
     ///
     /// When handling data types consisting of multiple bytes, also be careful with endianness and
     /// {@link IntBuffer#order()} property. {@link IntPtr} always uses the native endianness. So
-    /// if {@code buffer} that uses a different endianness, you may want to convert it to the native
+    /// if {@code buffer} uses a different endianness, you may want to convert it to the native
     /// endianness first.
     ///
     /// @param arena the {@link Arena} to allocate the new {@link IntPtr} in
