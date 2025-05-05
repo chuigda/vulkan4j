@@ -4,6 +4,9 @@ import cc.design7.ffm.IPointer;
 import cc.design7.ffm.annotation.UnsafeConstructor;
 import cc.design7.ffm.annotation.ValueBasedCandidate;
 import cc.design7.ffm.annotation.unsafe;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
@@ -11,6 +14,16 @@ import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.LongBuffer;
 
+/// Represents a pointer to 64-bit long integer(s) in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// {@link ValueLayout.OfLong#byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators. For
+/// normal users, {@link #checked} is a good safe alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
 public record LongPtr(MemorySegment segment) implements IPointer {
@@ -34,61 +47,124 @@ public record LongPtr(MemorySegment segment) implements IPointer {
         segment.set(ValueLayout.JAVA_LONG, index * Long.BYTES, value);
     }
 
+    /// Assume the {@link LongPtr} is capable of holding at least {@code newSize} long integers,
+    /// create a new view {@link LongPtr} that uses the same backing storage as this
+    /// {@link LongPtr}, but with the new size. Since there is actually no way to really check
+    /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+    /// marked as {@link unsafe}.
+    ///
+    /// This method could be useful when handling data returned from some C API, where the size of
+    /// the data is not known in advance.
     @unsafe
-    public LongPtr reinterpret(long newSize) {
+    public @NotNull LongPtr reinterpret(long newSize) {
         return new LongPtr(segment.reinterpret(newSize * Long.BYTES));
     }
 
-    public LongPtr offset(long offset) {
+    public @NotNull LongPtr offset(long offset) {
         return new LongPtr(segment.asSlice(offset * Long.BYTES));
     }
 
-    public static LongPtr allocate(Arena arena) {
+    /// Create a new {@link LongPtr} using {@code segment} as backing storage, with argument
+    /// validation.
+    ///
+    /// This function does not ensure {@code segment}'s size to be a multiple of
+    /// {@link Long#BYTES}, since that several trailing bytes could be automatically ignored by
+    /// {@link #size()} method, and usually these bytes does not interfere with FFI operations.
+    /// If {@code segment} is not big enough to hold at least one integer, that segment is simply
+    /// considered "empty". See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// @param segment the {@link MemorySegment} to use as the backing storage
+    /// @return {@code null} if {@code segment} is {@code null} or {@link MemorySegment#NULL},
+    /// otherwise a new {@link LongPtr} that uses {@code segment} as backing storage
+    /// @throws IllegalArgumentException if {@code segment} is not native or not properly aligned
+    @Contract("null -> null")
+    public static @Nullable LongPtr checked(@Nullable MemorySegment segment) {
+        if (segment == null || segment.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        if (!segment.isNative()) {
+            throw new IllegalArgumentException("Segment must be native");
+        }
+
+        if (segment.address() % ValueLayout.JAVA_LONG.byteAlignment() != 0) {
+            throw new IllegalArgumentException("Segment address must be aligned to " + ValueLayout.JAVA_LONG.byteAlignment() + " bytes");
+        }
+
+        return new LongPtr(segment);
+    }
+
+    /// Create a new {@link LongPtr} using the same backing storage as {@code buffer}, with argument
+    /// validation.
+    ///
+    /// The main difference between this static method and the {@link #allocate(Arena, LongBuffer)}
+    /// method is that this method does not copy the contents of {@code buffer} into a newly
+    /// allocated {@link MemorySegment}. Instead, the newly created {@link LongPtr} will use the
+    /// same backing storage as {@code buffer}. Thus, modifications from one side will be visible on
+    /// the other side.
+    ///
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: only the
+    /// "remaining" (from {@link Buffer#position()} to {@link Buffer#limit()}) part of
+    /// {@code buffer} will be referred. If you have ever read from {@code buffer}, and you want all
+    /// the contents of {@code buffer} to be referred, you may want to call {@link Buffer#rewind()}.
+    ///
+    /// When handling data types consisting of multiple bytes, also be careful with endianness and
+    /// {@link LongBuffer#order()} property. {@link LongPtr} always uses the native endianness. So
+    /// if {@code buffer} uses a different endianness, you may want to convert it to the native
+    /// endianness first.
+    ///
+    /// @param buffer the {@link LongBuffer} to use as the backing storage
+    /// @return a new {@link LongPtr} that uses {@code buffer} as its backing storage
+    /// @throws IllegalArgumentException if {@code buffer} is not direct, or its backing storage is
+    /// not properly alignd
+    public static @NotNull LongPtr checked(@NotNull LongBuffer buffer) {
+        if (!buffer.isDirect()) {
+            throw new IllegalArgumentException("Buffer must be direct");
+        }
+
+        MemorySegment segment = MemorySegment.ofBuffer(buffer);
+        if (segment.address() % ValueLayout.JAVA_LONG.byteAlignment() != 0) {
+            throw new IllegalArgumentException("Buffer address must be aligned to " + ValueLayout.JAVA_LONG.byteAlignment() + " bytes");
+        }
+
+        return new LongPtr(segment);
+    }
+
+    public static @NotNull LongPtr allocate(@NotNull Arena arena) {
         return new LongPtr(arena.allocate(ValueLayout.JAVA_LONG));
     }
 
-    public static LongPtr allocate(Arena arena, long size) {
+    public static @NotNull LongPtr allocate(@NotNull Arena arena, long size) {
         return new LongPtr(arena.allocate(ValueLayout.JAVA_LONG, size));
     }
 
-    public static LongPtr allocate(Arena arena, long[] array) {
+    public static @NotNull LongPtr allocate(@NotNull Arena arena, long @NotNull [] array) {
         return new LongPtr(arena.allocateFrom(ValueLayout.JAVA_LONG, array));
     }
 
-    /// Allocate a new {@link LongPtr} in the given {@link Arena} and copy the contents of the given
-    /// {@link LongBuffer} into the newly allocated {@link LongPtr}.
+    /// Allocate a new {@link LongPtr} in {@code arena} and copy the contents of {@code buffer} into
+    /// the newly allocated {@link LongPtr}.
     ///
-    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
-    /// have ever read from the {@link Buffer}, and you want all the contents of the
-    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
+    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: only the
+    /// "remaining" (from {@link Buffer#position()} to {@link Buffer#limit()}) part of
+    /// {@code buffer} will be copied. If you have ever read from {@code buffer}, and you want all
+    /// the contents of {@code buffer} to be copied, you may want to call {@link Buffer#rewind()}.
+    ///
+    /// When handling data types consisting of multiple bytes, also be careful with endianness and
+    /// {@link LongBuffer#order()} property. {@link LongPtr} always uses the native endianness. So
+    /// if {@code buffer} uses a different endianness, you may want to convert it to the native
+    /// endianness first.
     ///
     /// @param arena the {@link Arena} to allocate the new {@link LongPtr} in
     /// @param buffer the {@link LongBuffer} to copy the contents from
-    /// @return a new {@link LongPtr} that contains the contents of the given {@link LongBuffer}
-    public static LongPtr allocate(Arena arena, LongBuffer buffer) {
-        var s = arena.allocate(ValueLayout.JAVA_LONG, buffer.remaining());
+    /// @return a new {@link LongPtr} that contains the contents of {@code buffer}
+    public static @NotNull LongPtr allocate(@NotNull Arena arena, @NotNull LongBuffer buffer) {
+        MemorySegment s = arena.allocate(
+                ValueLayout.JAVA_LONG,
+                (long) buffer.remaining() * Long.BYTES
+        );
         s.copyFrom(MemorySegment.ofBuffer(buffer));
-        return new LongPtr(s);
-    }
 
-    /// Create a new {@link LongPtr} using the same backing storage as the given {@link LongBuffer}.
-    ///
-    /// The main difference between this static method and the {@link #allocate(Arena, LongBuffer)} method is
-    /// that this method does not copy the contents of the given {@link LongBuffer} into the newly allocated
-    /// {@link LongPtr}. Instead, the newly allocated {@link LongPtr} will share the same backing storage as
-    /// the given {@link LongBuffer}. Please note that if the given {@link LongBuffer} is not
-    /// native/direct, the created {@link LongPtr} will not be able to be used in FFI operations since the backing
-    /// storage does not reside in native memory and does not have a native address. Thus, this method is marked as
-    /// {@link unsafe} because it can create inconsistency and cause very difficult to troubleshoot bugs.
-    ///
-    /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: if you
-    /// have ever read from the {@link Buffer}, and you want all the contents of the
-    /// {@link Buffer} to be copied, you need to call {@link Buffer#rewind()}
-    ///
-    /// @param buffer the {@link LongBuffer} to create a new {@link LongPtr} from
-    /// @return a new {@link LongPtr} that uses the same backing storage as the given {@link LongBuffer}
-    @unsafe
-    public static LongPtr from(LongBuffer buffer) {
-        return new LongPtr(MemorySegment.ofBuffer(buffer));
+        return new LongPtr(s);
     }
 }

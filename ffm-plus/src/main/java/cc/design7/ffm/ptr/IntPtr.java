@@ -14,7 +14,7 @@ import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.IntBuffer;
 
-/// Represents a pointer to integer(s) in native memory.
+/// Represents a pointer to 32-bit integer(s) in native memory.
 ///
 /// The property {@link #segment()} should always be not-null
 /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
@@ -69,14 +69,13 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
     /// This function does not ensure {@code segment}'s size to be a multiple of
     /// {@link Integer#BYTES}, since that several trailing bytes could be automatically ignored by
     /// {@link #size()} method, and usually these bytes does not interfere with FFI operations.
-    /// If the given segment is not big enough to hold at least one integer, that segment is simply
+    /// If {@code segment} is not big enough to hold at least one integer, that segment is simply
     /// considered "empty". See the documentation of {@link IPointer#segment()} for more details.
     ///
     /// @param segment the {@link MemorySegment} to use as the backing storage
     /// @return {@code null} if {@code segment} is {@code null} or {@link MemorySegment#NULL},
     /// otherwise a new {@link IntPtr} that uses {@code segment} as backing storage
-    /// @throws IllegalArgumentException if the given {@link MemorySegment} is not native or not
-    /// properly aligned
+    /// @throws IllegalArgumentException if {@code segment} is not native or not properly aligned
     @Contract("null -> null")
     public static @Nullable IntPtr checked(@Nullable MemorySegment segment) {
         if (segment == null || segment.equals(MemorySegment.NULL)) {
@@ -100,8 +99,8 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
     /// The main difference between this static method and the {@link #allocate(Arena, IntBuffer)}
     /// method is that this method does not copy the contents of {@code buffer} into a newly
     /// allocated {@link MemorySegment}. Instead, the newly created {@link IntPtr} will use the same
-    /// backing storage as the given {@link IntBuffer}. Thus, modifications from one side will be
-    /// visible on the other side.
+    /// backing storage as {@code buffer}. Thus, modifications from one side will be visible on the
+    /// other side.
     ///
     /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: only the
     /// "remaining" (from {@link Buffer#position()} to {@link Buffer#limit()}) part of
@@ -115,8 +114,8 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
     ///
     /// @param buffer the {@link IntBuffer} to use as the backing storage
     /// @return a new {@link IntPtr} that uses {@code buffer} as its backing storage
-    /// @throws IllegalArgumentException if the given {@code buffer} is not direct, or its backing
-    /// storage is not properly aligned
+    /// @throws IllegalArgumentException if {@code buffer} is not direct, or its backing storage is
+    /// not properly aligned
     public static @NotNull IntPtr checked(@NotNull IntBuffer buffer) {
         if (!buffer.isDirect()) {
             throw new IllegalArgumentException("Buffer must be direct");
@@ -142,8 +141,8 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
         return new IntPtr(arena.allocateFrom(ValueLayout.JAVA_INT, array));
     }
 
-    /// Allocate a new {@link IntPtr} in the given {@link Arena} and copy the contents of
-    /// {@code buffer} into the newly allocated {@link IntPtr}.
+    /// Allocate a new {@link IntPtr} in {@code arena} and copy the contents of {@code buffer} into
+    /// the newly allocated {@link IntPtr}.
     ///
     /// Be careful with {@link java.nio} buffer types' {@link Buffer#position()} property: only the
     /// "remaining" (from {@link Buffer#position()} to {@link Buffer#limit()}) part of
@@ -157,9 +156,9 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
     ///
     /// @param arena the {@link Arena} to allocate the new {@link IntPtr} in
     /// @param buffer the {@link IntBuffer} to copy the contents from
-    /// @return a new {@link IntPtr} that contains the contents of the given {@link IntBuffer}
+    /// @return a new {@link IntPtr} that contains the contents of {@code buffer}
     public static @NotNull IntPtr allocate(@NotNull Arena arena, @NotNull IntBuffer buffer) {
-        var s = arena.allocate(ValueLayout.JAVA_INT, buffer.remaining());
+        MemorySegment s = arena.allocate(ValueLayout.JAVA_INT, buffer.remaining());
         s.copyFrom(MemorySegment.ofBuffer(buffer));
 
         return new IntPtr(s);
