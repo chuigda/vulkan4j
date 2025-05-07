@@ -1,13 +1,17 @@
 package cc.design7.ffm.bits;
 
 import cc.design7.ffm.annotation.unsigned;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.foreign.AddressLayout;
 import java.lang.foreign.MemorySegment;
 import java.nio.ByteOrder;
 
 public final class BitfieldUtil {
-    public static @unsigned boolean readBit(MemorySegment segment, @unsigned int bit) {
+    public static @unsigned boolean readBit(
+            @NotNull MemorySegment segment,
+            @unsigned int bit
+    ) {
         return switch ((int) segment.byteSize()) {
             case 1 -> readBit(segment.get(AddressLayout.JAVA_BYTE, 0), bit);
             case 2 -> readBit(segment.get(AddressLayout.JAVA_SHORT, 0), bit);
@@ -17,7 +21,7 @@ public final class BitfieldUtil {
     }
 
     public static @unsigned int readBits(
-            MemorySegment segment,
+            @NotNull MemorySegment segment,
             @unsigned int startBit,
             @unsigned int endBit
     ) {
@@ -30,7 +34,7 @@ public final class BitfieldUtil {
     }
 
     public static void writeBit(
-            MemorySegment segment,
+            @NotNull MemorySegment segment,
             @unsigned int bit,
             boolean bitValue
     ) {
@@ -43,7 +47,7 @@ public final class BitfieldUtil {
     }
 
     public static void writeBits(
-            MemorySegment segment,
+            @NotNull MemorySegment segment,
             @unsigned int startBit,
             @unsigned int endBit,
             @unsigned int bits
@@ -179,7 +183,7 @@ public final class BitfieldUtil {
         }
     }
 
-    private static final IBitfieldUtilImpl impl;
+    private static final @NotNull IBitfieldUtilImpl impl;
     static {
         // On most platforms, the bitfields are packed from right to left. However, on ARM platform,
         // the bitfields packing depends on the endianness.

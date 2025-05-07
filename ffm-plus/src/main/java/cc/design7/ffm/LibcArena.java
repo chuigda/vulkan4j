@@ -1,5 +1,8 @@
 package cc.design7.ffm;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.lang.foreign.Arena;
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
@@ -24,7 +27,7 @@ public final class LibcArena implements Arena {
 
     private LibcArena() {}
 
-    public void free(MemorySegment ms) {
+    public void free(@NotNull MemorySegment ms) {
         try {
             HANDLE$free.invokeExact(ms);
         } catch (Throwable _) {
@@ -44,7 +47,7 @@ public final class LibcArena implements Arena {
     /// @throws IllegalArgumentException If the byte size or alignment is invalid
     /// @throws OutOfMemoryError If the memory allocation fails
     @Override
-    public MemorySegment allocate(long byteSize, long byteAlignment) {
+    public @NotNull MemorySegment allocate(long byteSize, long byteAlignment) {
         if (byteSize <= 0 || byteAlignment <= 0 || (byteAlignment & (byteAlignment - 1)) != 0) {
             throw new IllegalArgumentException("Invalid byte size or alignment");
         }
@@ -66,7 +69,7 @@ public final class LibcArena implements Arena {
     }
 
     @Override
-    public MemorySegment.Scope scope() {
+    public @Nullable MemorySegment.Scope scope() {
         return null;
     }
 

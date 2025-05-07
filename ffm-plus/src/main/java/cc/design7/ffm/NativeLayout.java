@@ -1,6 +1,7 @@
 package cc.design7.ffm;
 
 import cc.design7.ffm.annotation.unsigned;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
@@ -13,7 +14,7 @@ public final class NativeLayout {
     ///
     /// Currently, this field is set to {@link ValueLayout#ADDRESS}, whose JavaDoc claims that it
     /// has the same size and alignment with a C {@code size_t} type.
-    public static final ValueLayout C_SIZE_T = ValueLayout.ADDRESS;
+    public static final @NotNull ValueLayout C_SIZE_T = ValueLayout.ADDRESS;
     public static final int POINTER_SIZE = (int) C_SIZE_T.byteSize();
 
     /// Memory layout of current JVM platform C {@code long} type.
@@ -24,7 +25,7 @@ public final class NativeLayout {
     ///
     /// The detection algorithm came from LWJGL3.
     /// @see <a href="https://github.com/LWJGL/lwjgl3/blob/813400f21ebfce5a9e1566cbf8ff96ca1d8f4921/modules/lwjgl/core/src/main/java/org/lwjgl/system/Pointer.java">lwjgl/core/src/main/java/org/lwgjl/system/Pointer.java</a>
-    public static final ValueLayout C_LONG;
+    public static final @NotNull ValueLayout C_LONG;
     public static final int C_LONG_SIZE;
 
     public static final @unsigned int UINT32_MAX = (~0);
@@ -51,7 +52,7 @@ public final class NativeLayout {
         C_LONG_SIZE = (int) C_LONG.byteSize();
     }
 
-    public static long readCLong(MemorySegment segment, long offset) {
+    public static long readCLong(@NotNull MemorySegment segment, long offset) {
         if (C_LONG == ValueLayout.JAVA_INT) {
             return segment.get(ValueLayout.JAVA_INT, offset);
         } else {
@@ -59,20 +60,12 @@ public final class NativeLayout {
         }
     }
 
-    public static void writeCLong(MemorySegment segment, long offset, long value) {
+    public static void writeCLong(@NotNull MemorySegment segment, long offset, long value) {
         if (C_LONG == ValueLayout.JAVA_INT) {
             segment.set(ValueLayout.JAVA_INT, offset, (int) value);
         } else {
             segment.set(ValueLayout.JAVA_LONG, offset, value);
         }
-    }
-
-    public static long readCSizeT(MemorySegment segment, long offset) {
-        return segment.get(ValueLayout.ADDRESS, offset).address();
-    }
-
-    public static void writeCSizeT(MemorySegment segment, long offset, long value) {
-        segment.set(ValueLayout.ADDRESS, offset, MemorySegment.ofAddress(value));
     }
 
     /// Unlike {@link MemoryLayout#structLayout MemoryLayout.structLayout}, this function will
@@ -81,7 +74,7 @@ public final class NativeLayout {
     ///
     /// @param elements the elements of the struct
     /// @return the struct layout
-    public static MemoryLayout structLayout(MemoryLayout... elements) {
+    public static @NotNull MemoryLayout structLayout(@NotNull MemoryLayout... elements) {
         long currentSize = 0;
         long maxAlignment = 0;
         List<MemoryLayout> paddedElements = new ArrayList<>();
@@ -113,7 +106,7 @@ public final class NativeLayout {
     }
 
     /// Currently forwards to {@link MemoryLayout#unionLayout}.
-    public static MemoryLayout unionLayout(MemoryLayout... elements) {
+    public static @NotNull MemoryLayout unionLayout(@NotNull MemoryLayout... elements) {
         return MemoryLayout.unionLayout(elements);
     }
 
