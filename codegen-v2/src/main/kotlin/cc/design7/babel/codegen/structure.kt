@@ -122,7 +122,6 @@ private fun lowerMemberTypes(
                 memberLayoutNames
             )
         } else {
-            val cType = lowerType(registry, codegenOptions.refRegistries, current.type)
             val layoutName = "LAYOUT$${current.name}"
             val layout = "${cType.jLayout}.withName(\"${current.name}\")"
 
