@@ -1,3 +1,9 @@
+vulkan/src/main/java/cc/design7/vulkan/bitmask/*.java linguist-generated
+vulkan/src/main/java/cc/design7/vulkan/command/*.java linguist-generated
+vulkan/src/main/java/cc/design7/vulkan/datatype/*.java linguist-generated
+vulkan/src/main/java/cc/design7/vulkan/enumtype/*.java linguist-generated
+vulkan/src/main/java/cc/design7/vulkan/handle/*.java linguist-generated
+
 vk4j/src/main/java/tech/icey/vk4j/bitmask/*.java linguist-generated
 vk4j/src/main/java/tech/icey/vk4j/command/*.java linguist-generated
 vk4j/src/main/java/tech/icey/vk4j/datatype/*.java linguist-generated
