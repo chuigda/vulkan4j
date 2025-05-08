@@ -55,4 +55,21 @@ public class TestIntPtr {
             assertEquals(0x0721_0d00, intArrayBuffer.get(1));
         }
     }
+
+    @Test
+    void testInteract2() {
+        IntBuffer intBuffer = IntBuffer.allocate(1);
+        intBuffer.put(42);
+        intBuffer.rewind();
+
+        try (Arena arena = Arena.ofConfined()) {
+            IntPtr pInt = IntPtr.allocate(arena, intBuffer);
+            assertEquals(1, pInt.size());
+            assertEquals(42, pInt.read());
+
+            pInt.write(507);
+            assertEquals(507, pInt.read());
+            assertEquals(42, intBuffer.get());
+        }
+    }
 }
