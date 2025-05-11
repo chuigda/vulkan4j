@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
 
 import static org.junit.jupiter.api.Assertions.*;
 

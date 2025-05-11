@@ -2,10 +2,12 @@ package cc.design7.ffm.test.ptr;
 
 import cc.design7.ffm.ptr.ShortPtr;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.nio.ShortBuffer;
 import java.lang.foreign.Arena;
+import java.nio.ShortBuffer;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TestShortPtr {
 

@@ -1,12 +1,14 @@
 package cc.design7.ffm.test.ptr;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import cc.design7.ffm.ptr.DoublePtr;
 import org.junit.jupiter.api.Test;
+import org.lwjgl.system.MemoryStack;
 
 import java.lang.foreign.Arena;
 import java.nio.DoubleBuffer;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestDoublePtr {
     @Test
@@ -85,6 +87,23 @@ public class TestDoublePtr {
             assertEquals(1.23, ptr.read(0));
             assertEquals(4.56, ptr.read(1));
             assertEquals(7.89, ptr.read(2));
+        }
+    }
+
+    @Test
+    void testInteract() {
+        double[] data = { 1.0f, 2.0f, 3.0f, 4.0f };
+
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            DoubleBuffer buffer = stack.mallocDouble(4);
+            buffer.put(data);
+            buffer.rewind();
+
+            DoublePtr ptr = DoublePtr.checked(buffer);
+            assertEquals(data.length, ptr.size());
+            for (int i = 0; i < data.length; i++) {
+                assertEquals(data[i], ptr.read(i));
+            }
         }
     }
 }
