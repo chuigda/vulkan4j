@@ -12,6 +12,7 @@ import java.lang.foreign.AddressLayout;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.util.List;
 
 /// Reperesents a pointer to pointer(s) in native memory.
 ///
@@ -79,6 +80,9 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer {
         return new PointerPtr(segment.asSlice(offset * ValueLayout.ADDRESS.byteSize()));
     }
 
+    /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+    /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+    /// (offset + newSize). Be careful with the difference.
     public @NotNull PointerPtr slice(long start, long end) {
         return new PointerPtr(segment.asSlice(
                 start * ValueLayout.ADDRESS.byteSize(),

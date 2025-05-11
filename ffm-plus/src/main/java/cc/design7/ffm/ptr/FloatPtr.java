@@ -13,6 +13,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.FloatBuffer;
+import java.util.List;
 
 /// Represents a pointer to 32-bit float(s) in native memory
 ///
@@ -63,6 +64,9 @@ public record FloatPtr(@NotNull MemorySegment segment) implements IPointer {
         return new FloatPtr(segment.asSlice(offset * Float.BYTES));
     }
 
+    /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+    /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+    /// (offset + newSize). Be careful with the difference.
     public @NotNull FloatPtr slice(long start, long end) {
         return new FloatPtr(segment.asSlice(start * Float.BYTES, (end - start) * Float.BYTES));
     }

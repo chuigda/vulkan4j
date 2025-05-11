@@ -13,6 +13,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.ShortBuffer;
+import java.util.List;
 
 /// Represents a pointer to 16-bit short integer(s) in native memory.
 ///
@@ -64,6 +65,9 @@ public record ShortPtr(@NotNull MemorySegment segment) implements IPointer {
         return new ShortPtr(segment.asSlice(offset * Short.BYTES));
     }
 
+    /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+    /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+    /// (offset + newSize). Be careful with the difference.
     public @NotNull ShortPtr slice(long start, long end) {
         return new ShortPtr(segment.asSlice(start * Short.BYTES, (end - start) * Short.BYTES));
     }

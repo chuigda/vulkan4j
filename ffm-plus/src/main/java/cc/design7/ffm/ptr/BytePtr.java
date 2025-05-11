@@ -13,6 +13,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
+import java.util.List;
 
 /// Represents a pointer to byte(s) in native memory.
 ///
@@ -89,6 +90,9 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer {
         return new BytePtr(segment.asSlice(offset));
     }
 
+    /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+    /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+    /// (offset + newSize). Be careful with the difference.
     public @NotNull BytePtr slice(long start, long end) {
         return new BytePtr(segment.asSlice(start, end - start));
     }

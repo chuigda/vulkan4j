@@ -13,6 +13,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.LongBuffer;
+import java.util.List;
 
 /// Represents a pointer to 64-bit long integer(s) in native memory.
 ///
@@ -64,6 +65,9 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer {
         return new LongPtr(segment.asSlice(offset * Long.BYTES));
     }
 
+    /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+    /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+    /// (offset + newSize). Be careful with the difference.
     public @NotNull LongPtr slice(long start, long end) {
         return new LongPtr(segment.asSlice(start * Long.BYTES, (end - start) * Long.BYTES));
     }

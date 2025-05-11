@@ -13,6 +13,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.DoubleBuffer;
+import java.util.List;
 
 /// Represents a pointer to 64-bit double-precision float(s) in native memory
 ///
@@ -64,6 +65,9 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer {
         return new DoublePtr(segment.asSlice(offset * Double.BYTES));
     }
 
+    /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+    /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+    /// (offset + newSize). Be careful with the difference.
     public @NotNull DoublePtr slice(long start, long end) {
         return new DoublePtr(segment.asSlice(start * Double.BYTES, (end - start) * Double.BYTES));
     }

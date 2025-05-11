@@ -13,6 +13,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.IntBuffer;
+import java.util.List;
 
 /// Represents a pointer to 32-bit integer(s) in native memory.
 ///
@@ -63,6 +64,9 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
         return new IntPtr(segment.asSlice(offset * Integer.BYTES));
     }
 
+    /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+    /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+    /// (offset + newSize). Be careful with the difference.
     public @NotNull IntPtr slice(long start, long end) {
         return new IntPtr(segment.asSlice(start * Integer.BYTES, (end - start) * Integer.BYTES));
     }
