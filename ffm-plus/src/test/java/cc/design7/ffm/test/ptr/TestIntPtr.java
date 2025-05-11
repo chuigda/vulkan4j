@@ -1,5 +1,6 @@
 package cc.design7.ffm.test.ptr;
 
+import cc.design7.ffm.ptr.IntPtr;
 import org.junit.jupiter.api.Test;
 import org.lwjgl.system.MemoryStack;
 
@@ -27,6 +28,37 @@ public class TestIntPtr {
 
             assertEquals(1314_521, pIntArray.read(0));
             assertEquals(0x0721_0d00, pIntArray.read(1));
+        }
+    }
+
+    @Test
+    void testSlice() {
+        try (Arena arena = Arena.ofConfined()) {
+            int[] data = {1, 2, 3, 4, 5, 6, 7, 8};
+            IntPtr pInt = IntPtr.allocate(arena, data);
+            assertEquals(data.length, pInt.size());
+
+            for (int i = 0; i < data.length; i++) {
+                assertEquals(data[i], pInt.read(i));
+            }
+
+            IntPtr p1 = pInt.offset(4);
+            assertEquals(4, p1.size());
+            for (int i = 0; i < 4; i++) {
+                assertEquals(data[i + 4], p1.read(i));
+            }
+
+            IntPtr p2 = pInt.slice(4);
+            assertEquals(4, p2.size());
+            for (int i = 0; i < 4; i++) {
+                assertEquals(data[i], p2.read(i));
+            }
+
+            IntPtr p3 = pInt.slice(2, 6);
+            assertEquals(4, p3.size());
+            for (int i = 0; i < 4; i++) {
+                assertEquals(data[i + 2], p3.read(i));
+            }
         }
     }
 

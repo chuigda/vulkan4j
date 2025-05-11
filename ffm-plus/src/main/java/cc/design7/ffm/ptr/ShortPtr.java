@@ -65,7 +65,7 @@ public record ShortPtr(@NotNull MemorySegment segment) implements IPointer {
     }
 
     public @NotNull ShortPtr slice(long start, long end) {
-        return new ShortPtr(segment.asSlice(start * Short.BYTES, end * Short.BYTES));
+        return new ShortPtr(segment.asSlice(start * Short.BYTES, (end - start) * Short.BYTES));
     }
 
     public @NotNull ShortPtr slice(long end) {

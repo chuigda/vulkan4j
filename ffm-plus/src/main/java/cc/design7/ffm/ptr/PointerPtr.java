@@ -82,7 +82,7 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer {
     public @NotNull PointerPtr slice(long start, long end) {
         return new PointerPtr(segment.asSlice(
                 start * ValueLayout.ADDRESS.byteSize(),
-                end * ValueLayout.ADDRESS.byteSize()
+                (end - start) * ValueLayout.ADDRESS.byteSize()
         ));
     }
 

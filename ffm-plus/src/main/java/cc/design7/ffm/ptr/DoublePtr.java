@@ -65,7 +65,7 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer {
     }
 
     public @NotNull DoublePtr slice(long start, long end) {
-        return new DoublePtr(segment.asSlice(start * Double.BYTES, end * Double.BYTES));
+        return new DoublePtr(segment.asSlice(start * Double.BYTES, (end - start) * Double.BYTES));
     }
 
     public @NotNull DoublePtr slice(long end) {

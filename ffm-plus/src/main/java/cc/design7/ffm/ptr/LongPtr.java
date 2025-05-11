@@ -65,7 +65,7 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer {
     }
 
     public @NotNull LongPtr slice(long start, long end) {
-        return new LongPtr(segment.asSlice(start * Long.BYTES, end * Long.BYTES));
+        return new LongPtr(segment.asSlice(start * Long.BYTES, (end - start) * Long.BYTES));
     }
 
     public @NotNull LongPtr slice(long end) {

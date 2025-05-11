@@ -90,7 +90,7 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer {
     }
 
     public @NotNull BytePtr slice(long start, long end) {
-        return new BytePtr(segment.asSlice(start, end));
+        return new BytePtr(segment.asSlice(start, end - start));
     }
 
     public @NotNull BytePtr slice(long end) {

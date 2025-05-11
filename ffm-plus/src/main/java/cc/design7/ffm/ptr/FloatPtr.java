@@ -64,7 +64,7 @@ public record FloatPtr(@NotNull MemorySegment segment) implements IPointer {
     }
 
     public @NotNull FloatPtr slice(long start, long end) {
-        return new FloatPtr(segment.asSlice(start * Float.BYTES, end * Float.BYTES));
+        return new FloatPtr(segment.asSlice(start * Float.BYTES, (end - start) * Float.BYTES));
     }
 
     public @NotNull FloatPtr slice(long end) {
