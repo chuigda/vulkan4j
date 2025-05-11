@@ -145,6 +145,10 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer {
         return new BytePtr(MemorySegment.ofBuffer(buffer));
     }
 
+    public static @NotNull BytePtr from(@NotNull IPointer ptr) {
+        return new BytePtr(ptr.segment());
+    }
+
     public static @NotNull BytePtr allocate(@NotNull Arena arena) {
         return new BytePtr(arena.allocate(1));
     }
