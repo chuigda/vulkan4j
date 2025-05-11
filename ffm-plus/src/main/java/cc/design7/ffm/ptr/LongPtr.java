@@ -26,7 +26,7 @@ import java.nio.LongBuffer;
 /// normal users, {@link #checked} is a good safe alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record LongPtr(MemorySegment segment) implements IPointer {
+public record LongPtr(@NotNull MemorySegment segment) implements IPointer {
     public long size() {
         return segment.byteSize() / Long.BYTES;
     }
@@ -62,6 +62,14 @@ public record LongPtr(MemorySegment segment) implements IPointer {
 
     public @NotNull LongPtr offset(long offset) {
         return new LongPtr(segment.asSlice(offset * Long.BYTES));
+    }
+
+    public @NotNull LongPtr slice(long start, long end) {
+        return new LongPtr(segment.asSlice(start * Long.BYTES, end * Long.BYTES));
+    }
+
+    public @NotNull LongPtr slice(long end) {
+        return new LongPtr(segment.asSlice(0, end * Long.BYTES));
     }
 
     /// Create a new {@link LongPtr} using {@code segment} as backing storage, with argument

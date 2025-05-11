@@ -26,7 +26,7 @@ import java.nio.DoubleBuffer;
 /// normal users, {@link #checked} is a good safe alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record DoublePtr(MemorySegment segment) implements IPointer {
+public record DoublePtr(@NotNull MemorySegment segment) implements IPointer {
     public long size() {
         return segment.byteSize() / Double.BYTES;
     }
@@ -62,6 +62,14 @@ public record DoublePtr(MemorySegment segment) implements IPointer {
 
     public @NotNull DoublePtr offset(long offset) {
         return new DoublePtr(segment.asSlice(offset * Double.BYTES));
+    }
+
+    public @NotNull DoublePtr slice(long start, long end) {
+        return new DoublePtr(segment.asSlice(start * Double.BYTES, end * Double.BYTES));
+    }
+
+    public @NotNull DoublePtr slice(long end) {
+        return new DoublePtr(segment.asSlice(0, end * Double.BYTES));
     }
 
     /// Create a new {@link DoublePtr} using {@code segment} as backing storage, with argument

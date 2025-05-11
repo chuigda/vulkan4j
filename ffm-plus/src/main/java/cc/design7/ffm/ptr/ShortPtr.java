@@ -26,7 +26,7 @@ import java.nio.ShortBuffer;
 /// normal users, {@link #checked} is a good safe alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record ShortPtr(MemorySegment segment) implements IPointer {
+public record ShortPtr(@NotNull MemorySegment segment) implements IPointer {
     public long size() {
         return segment.byteSize() / Short.BYTES;
     }
@@ -56,12 +56,20 @@ public record ShortPtr(MemorySegment segment) implements IPointer {
     /// This method could be useful when handling data returned from some C API, where the size of
     /// the data is not known in advance.
     @unsafe
-    public ShortPtr reinterpret(long newSize) {
+    public @NotNull ShortPtr reinterpret(long newSize) {
         return new ShortPtr(segment.reinterpret(newSize * Short.BYTES));
     }
 
-    public ShortPtr offset(long offset) {
+    public @NotNull ShortPtr offset(long offset) {
         return new ShortPtr(segment.asSlice(offset * Short.BYTES));
+    }
+
+    public @NotNull ShortPtr slice(long start, long end) {
+        return new ShortPtr(segment.asSlice(start * Short.BYTES, end * Short.BYTES));
+    }
+
+    public @NotNull ShortPtr slice(long end) {
+        return new ShortPtr(segment.asSlice(0, end * Short.BYTES));
     }
 
     /// Create a new {@link ShortPtr} using {@code segment} as backing storage, with argument

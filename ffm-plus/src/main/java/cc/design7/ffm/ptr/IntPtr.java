@@ -63,6 +63,14 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
         return new IntPtr(segment.asSlice(offset * Integer.BYTES));
     }
 
+    public @NotNull IntPtr slice(long start, long end) {
+        return new IntPtr(segment.asSlice(start * Integer.BYTES, end * Integer.BYTES));
+    }
+
+    public @NotNull IntPtr slice(long end) {
+        return new IntPtr(segment.asSlice(0, end * Integer.BYTES));
+    }
+
     /// Create a new {@link IntPtr} using {@code segment} as backing storage, with argument
     /// validation.
     ///

@@ -26,7 +26,7 @@ import java.nio.FloatBuffer;
 /// normal users, {@link #checked} is a good safe alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record FloatPtr(MemorySegment segment) implements IPointer {
+public record FloatPtr(@NotNull MemorySegment segment) implements IPointer {
     public long size() {
         return segment.byteSize() / Float.BYTES;
     }
@@ -61,6 +61,14 @@ public record FloatPtr(MemorySegment segment) implements IPointer {
 
     public @NotNull FloatPtr offset(long offset) {
         return new FloatPtr(segment.asSlice(offset * Float.BYTES));
+    }
+
+    public @NotNull FloatPtr slice(long start, long end) {
+        return new FloatPtr(segment.asSlice(start * Float.BYTES, end * Float.BYTES));
+    }
+
+    public @NotNull FloatPtr slice(long end) {
+        return new FloatPtr(segment.asSlice(0, end * Float.BYTES));
     }
 
     /// Create a new {@link FloatPtr} using {@code segment} as backing storage, with argument

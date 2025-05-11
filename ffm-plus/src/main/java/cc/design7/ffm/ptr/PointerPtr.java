@@ -25,7 +25,7 @@ import java.lang.foreign.ValueLayout;
 /// normal users, {@link #checked} is a good safe alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record PointerPtr(MemorySegment segment) implements IPointer {
+public record PointerPtr(@NotNull MemorySegment segment) implements IPointer {
     public long size() {
         return segment.byteSize() / ValueLayout.ADDRESS.byteSize();
     }
@@ -77,6 +77,17 @@ public record PointerPtr(MemorySegment segment) implements IPointer {
 
     public @NotNull PointerPtr offset(long offset) {
         return new PointerPtr(segment.asSlice(offset * ValueLayout.ADDRESS.byteSize()));
+    }
+
+    public @NotNull PointerPtr slice(long start, long end) {
+        return new PointerPtr(segment.asSlice(
+                start * ValueLayout.ADDRESS.byteSize(),
+                end * ValueLayout.ADDRESS.byteSize()
+        ));
+    }
+
+    public @NotNull PointerPtr slice(long end) {
+        return new PointerPtr(segment.asSlice(0, end * ValueLayout.ADDRESS.byteSize()));
     }
 
     /// Creata a new {@link PointerPtr} using {@code segment} as backing storage, with argument
