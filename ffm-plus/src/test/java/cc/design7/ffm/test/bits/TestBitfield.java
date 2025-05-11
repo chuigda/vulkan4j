@@ -1,4 +1,4 @@
-package cc.design7.ffm.bits;
+package cc.design7.ffm.test.bits;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,3 +1,5 @@
+package cc.design7.ffm.test;
+
 public class Drill {
     public static void main(String[] args) {
 //        int bits = 0b11110000_10101010_10101010_00001111;

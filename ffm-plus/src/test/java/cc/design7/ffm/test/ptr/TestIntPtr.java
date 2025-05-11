@@ -1,4 +1,4 @@
-package cc.design7.ffm.ptr;
+package cc.design7.ffm.test.ptr;
 
 import org.junit.jupiter.api.Test;
 import org.lwjgl.system.MemoryStack;
