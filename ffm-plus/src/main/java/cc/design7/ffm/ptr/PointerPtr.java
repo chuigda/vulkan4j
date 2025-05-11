@@ -71,6 +71,10 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer {
     ///
     /// This method could be useful when handling data returned from some C API, where the size of
     /// the data is not known in advance.
+    ///
+    /// If the size of the underlying segment is actually known in advance and correctly set, and
+    /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+    /// instead.
     @unsafe
     public @NotNull PointerPtr reinterpret(long newSize) {
         return new PointerPtr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
