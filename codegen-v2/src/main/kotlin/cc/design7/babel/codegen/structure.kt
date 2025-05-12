@@ -4,16 +4,33 @@ import cc.design7.babel.ctype.CFixedSizeType
 import cc.design7.babel.ctype.CPlatformDependentIntType
 import cc.design7.babel.ctype.CType
 import cc.design7.babel.ctype.lowerType
+import cc.design7.babel.extract.vulkan.extractVulkanRegistry
 import cc.design7.babel.registry.RegistryBase
 import cc.design7.babel.registry.Structure
 import cc.design7.babel.util.Doc
+import cc.design7.babel.util.DocList
 import cc.design7.babel.util.buildDoc
+import cc.design7.babel.util.render
+import org.intellij.lang.annotations.Language
+
+fun main() {
+    val registry = extractVulkanRegistry()
+    val structure = registry.structures.values.first()
+    val option = CodegenOptions("foo.bar", mutableListOf(), "constants", mutableListOf())
+
+    println(render(generateStructure(registry, structure, option)))
+}
+
+private fun DocList.imports(@Language("Java", prefix = "import ", suffix = ";") path: String, static: Boolean = false) {
+    +"import ${if (static) "static " else ""}$path;"
+}
 
 fun generateStructure(
     registryBase: RegistryBase,
     structure: Structure,
     codegenOptions: CodegenOptions
 ): Doc = buildDoc {
+    val packageName = codegenOptions.packageName
     val layoutTypes = mutableListOf<String>()
     val layoutNames = mutableListOf<String>()
     val layouts = mutableListOf<String>()
@@ -30,6 +47,40 @@ fun generateStructure(
         memberTypesLowered,
         memberLayoutNames
     )
+
+    /// region import
+    +"package ${codegenOptions.packageName}.datatype;"
+    +""
+    imports("java.lang.foreign.*")
+    imports("java.lang.foreign.ValueLayout.*", true)
+    +""
+    imports("org.jetbrains.annotations.Nullable")
+    imports("tech.icey.panama.IPointer")
+    imports("tech.icey.panama.NativeLayout")
+    imports("tech.icey.panama.annotation.*")
+    imports("tech.icey.panama.buffer.*")
+
+    if (registryBase.bitmasks.isNotEmpty()) {
+        imports("$packageName.bitmask.*")
+    }
+
+    if (registryBase.structures.isNotEmpty()) {
+        imports("$packageName.datatype.*;")
+    }
+
+    if (registryBase.enumerations.isNotEmpty()) {
+        imports("$packageName.enumtype.*;")
+    }
+
+    if (registryBase.constants.isNotEmpty()) {
+        imports("$packageName.${codegenOptions.constantClassName}.*;", true)
+    }
+
+    for (extra in codegenOptions.extraImport) {
+        imports(extra)
+    }
+
+    /// endregion import
 
     +"/// dummy, not implemented yet"
 }

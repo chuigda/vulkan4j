@@ -27,6 +27,12 @@ fun buildDoc(init: DocList.() -> Unit): DocList {
     return doc
 }
 
+fun indent(init: DocList.() -> Unit): DocIndent {
+    val doc = DocList(mutableListOf())
+    doc.init()
+    return DocIndent(doc)
+}
+
 fun render(doc: Doc): String {
     val sb = StringBuilder()
     renderImpl(sb, doc, 0)
