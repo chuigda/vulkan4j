@@ -1,14 +1,15 @@
 package cc.design7.babel.codegen
 
-import cc.design7.babel.ctype.CFixedSizeType
-import cc.design7.babel.ctype.CPlatformDependentIntType
-import cc.design7.babel.ctype.CType
+import cc.design7.babel.codegen.accessor.*
+import cc.design7.babel.ctype.*
 import cc.design7.babel.ctype.lowerType
 import cc.design7.babel.extract.vulkan.extractVulkanRegistry
+import cc.design7.babel.registry.Member
 import cc.design7.babel.registry.RegistryBase
 import cc.design7.babel.registry.Structure
 import cc.design7.babel.util.Doc
 import cc.design7.babel.util.DocList
+import cc.design7.babel.util.DocText
 import cc.design7.babel.util.buildDoc
 import cc.design7.babel.util.render
 import org.intellij.lang.annotations.Language
@@ -21,6 +22,26 @@ fun main() {
     println(render(generateStructure(registry, structure, option)))
 }
 
+data class LayoutField(
+    val type: String,
+    val name: String,
+    val value: String,
+    val members: List<Member>
+) {
+    sealed interface Member {
+        data class Typed(val type: CType, val layoutName: String) : Member
+        data class Bitfield(val layoutName: String, val offset: Int) : Member
+    }
+
+    constructor(
+        type: String,
+        name: String,
+        value: String,
+        memberType: CType,
+        memberName: String
+    ) : this(type, name, value, listOf(LayoutField.Member.Typed(memberType, memberName)))
+}
+
 private fun DocList.imports(@Language("Java", prefix = "import ", suffix = ";") path: String, static: Boolean = false) {
     +"import ${if (static) "static " else ""}$path;"
 }
@@ -31,21 +52,14 @@ fun generateStructure(
     codegenOptions: CodegenOptions
 ): Doc = buildDoc {
     val packageName = codegenOptions.packageName
-    val layoutTypes = mutableListOf<String>()
-    val layoutNames = mutableListOf<String>()
-    val layouts = mutableListOf<String>()
-    val memberTypesLowered = mutableListOf<CType?>()
-    val memberLayoutNames = mutableListOf<String>()
+    val className = structure.name
+    val layouts = mutableListOf<LayoutField>()
 
     lowerMemberTypes(
         registryBase,
         codegenOptions,
         structure,
-        layoutTypes,
-        layoutNames,
         layouts,
-        memberTypesLowered,
-        memberLayoutNames
     )
 
     /// region import
@@ -80,6 +94,29 @@ fun generateStructure(
         imports(extra)
     }
 
+    +""
+
+    // TODO: generate document
+    +"public record $className(MemorySegment segment) implements IPointer {"
+
+    indent {
+        structure.members.forEachIndexed { i, current ->
+//            val bits = current.bits
+//            if (bits == 24) {
+//                val next = structure.members[i + 1]
+//                +DocIndent(generateBitfieldAccessor(current, next))
+//            } else if (bits == 8) {
+//                return@forEachIndexed
+//            } else {
+//                val currentType = memberTypesLowered[i]!!
+//                +DocIndent(generateMemberAccessor(current, currentType))
+//            }
+        }
+
+
+    }
+
+    +"}"
     /// endregion import
 
     +"/// dummy, not implemented yet"
@@ -89,11 +126,7 @@ private fun lowerMemberTypes(
     registry: RegistryBase,
     codegenOptions: CodegenOptions,
     structure: Structure,
-    layoutTypes: MutableList<String>,
-    layoutNames: MutableList<String>,
-    layouts: MutableList<String>,
-    memberTypesLowered: MutableList<CType?>,
-    memberLayoutNames: MutableList<String>
+    layouts: MutableList<LayoutField>
 ) {
     var i = 0
     while (i < structure.members.size) {
@@ -143,11 +176,7 @@ private fun lowerMemberTypes(
                         cType,
                         storageUnitBegin,
                         storageUnitEnd,
-                        layoutTypes,
-                        layoutNames,
-                        layouts,
-                        memberTypesLowered,
-                        memberLayoutNames
+                        layouts
                     )
 
                     // begin a new storage unit
@@ -167,28 +196,22 @@ private fun lowerMemberTypes(
                 cType,
                 storageUnitBegin,
                 storageUnitEnd,
-                layoutTypes,
-                layoutNames,
-                layouts,
-                memberTypesLowered,
-                memberLayoutNames
+                layouts
             )
         } else {
             val layoutName = "LAYOUT$${current.name}"
             val layout = "${cType.jLayout}.withName(\"${current.name}\")"
 
-            layoutTypes.add(if (cType is CPlatformDependentIntType) {
+            val layoutTypes = if (cType is CPlatformDependentIntType) {
                 // A layout field is still required to be generated, because it will be used in the
                 // structure's layout calculation. We won't be using it for accessing the field,
                 // of course
                 "ValueLayout"
             } else {
                 cType.jLayoutType
-            })
-            layoutNames.add(layoutName)
-            layouts.add(layout)
-            memberTypesLowered.add(cType)
-            memberLayoutNames.add(layoutName)
+            }
+
+            layouts.add(LayoutField(layoutTypes, layoutName, layout, cType, layoutName))
 
             i += 1
         }
@@ -200,11 +223,7 @@ private fun summarizeBitfieldStorageUnit(
     storageUnitType: CType,
     storageUnitBegin: Int,
     storageUnitEnd: Int,
-    layoutType: MutableList<String>,
-    layoutNames: MutableList<String>,
-    layouts: MutableList<String>,
-    memberTypesLowered: MutableList<CType?>,
-    memberLayoutNames: MutableList<String>,
+    layouts: MutableList<LayoutField>
 ) {
     val storageUnitBeginMemberName = structure.members[storageUnitBegin].name.value
     val storageUnitEndMemberName = structure.members[storageUnitEnd].name.value
@@ -213,16 +232,26 @@ private fun summarizeBitfieldStorageUnit(
     val layoutName = "LAYOUT$$storageUnitName"
     val layout = "${storageUnitType.jLayout}.withName(\"bitfield$$storageUnitName\")"
 
-    layoutType.add(storageUnitType.jLayoutType)
-    layoutNames.add(layoutName)
-    layouts.add(layout)
-
+    val members = mutableListOf<LayoutField.Member>()
     var bitfieldOffset = 0
     for (i in storageUnitBegin..storageUnitEnd) {
-        memberTypesLowered.add(null)
         // Let's hack this shit in 10 minutes, not introducing something else for bitfield offset
-        memberLayoutNames.add("${layoutName}:${bitfieldOffset}")
-
+        members.add(LayoutField.Member.Bitfield(layoutName, bitfieldOffset))
         bitfieldOffset += structure.members[i].bits!!
     }
+
+    layouts.add(LayoutField(storageUnitType.jLayoutType, layoutName, layout, members))
+}
+
+private fun generateMemberAccessor(member: Member, cType: CType): Doc {
+    val accessor = when (cType) {
+        is CArrayType -> generateArrayAccessor(cType, member)
+        is CHandleType -> generateHandleAccessor(cType, member)
+        is CNonRefType -> generateNonRefAccessor(cType, member)
+        is CPointerType -> generatePtrAccessor(cType, member)
+        is CStructType -> generateStructureTypeAccessor(cType, member)
+        is CVoidType -> throw Exception("void type not allowed in struct")
+    }
+
+    return DocText(accessor)
 }
