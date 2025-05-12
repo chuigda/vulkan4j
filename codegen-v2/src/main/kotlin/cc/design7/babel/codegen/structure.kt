@@ -100,20 +100,10 @@ fun generateStructure(
     +"public record $className(MemorySegment segment) implements IPointer {"
 
     indent {
-        structure.members.forEachIndexed { i, current ->
-//            val bits = current.bits
-//            if (bits == 24) {
-//                val next = structure.members[i + 1]
-//                +DocIndent(generateBitfieldAccessor(current, next))
-//            } else if (bits == 8) {
-//                return@forEachIndexed
-//            } else {
-//                val currentType = memberTypesLowered[i]!!
-//                +DocIndent(generateMemberAccessor(current, currentType))
-//            }
+        layouts.forEachIndexed { i, layout ->
+            +"public static final ${layout.type} ${layout.name} = ${layout.value};"
+            // TODO: what about [layout.members]
         }
-
-
     }
 
     +"}"
