@@ -1,10 +1,10 @@
 package cc.design7.babel.util
 
-sealed class Doc
+sealed interface Doc
 
 private val nl: Doc = EmptyLine()
 
-class DocList(val segments: MutableList<Doc>) : Doc() {
+class DocList(val segments: MutableList<Doc>) : Doc {
     operator fun String.unaryPlus() = segments.add(if (this.isEmpty()) nl else DocText(this))
     operator fun Doc.unaryPlus() = segments.add(this)
 
@@ -15,11 +15,11 @@ class DocList(val segments: MutableList<Doc>) : Doc() {
     }
 }
 
-class DocText(val text: String) : Doc()
+class DocText(val text: String) : Doc
 
-class DocIndent(val inner: Doc): Doc()
+class DocIndent(val inner: Doc): Doc
 
-private class EmptyLine : Doc()
+private class EmptyLine : Doc
 
 fun buildDoc(init: DocList.() -> Unit): DocList {
     val doc = DocList(mutableListOf())
@@ -41,9 +41,7 @@ fun renderImpl(sb: StringBuilder, doc: Doc, indent: Int) {
             }
         }
         is DocText -> {
-            for (ignored in 0.rangeUntil(indent)) {
-                sb.append("    ")
-            }
+            sb.repeat("    ", indent)
             sb.append(doc.text.trim())
             sb.append("\n")
         }

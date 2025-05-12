@@ -6,13 +6,14 @@ import cc.design7.babel.ctype.CType
 import cc.design7.babel.ctype.lowerType
 import cc.design7.babel.registry.RegistryBase
 import cc.design7.babel.registry.Structure
+import cc.design7.babel.util.Doc
 import cc.design7.babel.util.buildDoc
 
 fun generateStructure(
     registryBase: RegistryBase,
     structure: Structure,
     codegenOptions: CodegenOptions
-) = buildDoc {
+): Doc = buildDoc {
     val layoutTypes = mutableListOf<String>()
     val layoutNames = mutableListOf<String>()
     val layouts = mutableListOf<String>()
