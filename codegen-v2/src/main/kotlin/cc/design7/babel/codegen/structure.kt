@@ -36,7 +36,11 @@ data class LayoutField(
 
     sealed interface Member
     data class Typed(val type: CType) : Member
-    data class Bitfields(val bitfields: List<Bitfield>) : Member
+
+    /**
+     * The name of [LayoutField] who owns this [Bitfields] is guaranteed to be `[bitfields.first().bitfieldName]_[bitfields.last().bitfieldName]`
+     */
+    data class Bitfields(val bitfields: List<Bitfield>, val length: Int) : Member
     data class Bitfield(val bitfieldName: String, val offset: Int)
 
     constructor(
@@ -123,8 +127,12 @@ fun generateStructure(
                 }
                 is LayoutField.Bitfields -> {
                     member.bitfields.forEach { bitfield ->
-                        constant("long", "OFFSET$${bitfield.bitfieldName}", "${bitfield.offset}")
+                        constant("long", "OFFSET$${bitfield.bitfieldName}", bitfield.offset.toString())
                     }
+
+                    +""
+
+                    generateBitfieldAccessor(layout.layoutName, member)
                 }
             }
 
@@ -244,18 +252,19 @@ private fun summarizeBitfieldStorageUnit(
     val storageUnitEndMemberName = structure.members[storageUnitEnd].name.value
 
     val storageUnitName = "${storageUnitBeginMemberName}_${storageUnitEndMemberName}"
-    val layoutName = "LAYOUT$$storageUnitName"      // TODO: unify with [LayoutField.layoutName]
     val layout = "${storageUnitType.jLayout}.withName(\"bitfield$$storageUnitName\")"
 
     val bitfields = mutableListOf<LayoutField.Bitfield>()
     var bitfieldOffset = 0
     for (i in storageUnitBegin..storageUnitEnd) {
         // Let's hack this shit in 10 minutes, not introducing something else for bitfield offset
-        bitfields.add(LayoutField.Bitfield(layoutName, bitfieldOffset))
-        bitfieldOffset += structure.members[i].bits!!
+        val member = structure.members[i]
+        bitfields.add(LayoutField.Bitfield(member.name.toString(), bitfieldOffset))
+        bitfieldOffset += member.bits!!
     }
 
-    layouts.add(LayoutField(storageUnitType.jLayoutType, storageUnitName, layout, LayoutField.Bitfields(bitfields)))
+    layouts.add(LayoutField(storageUnitType.jLayoutType, storageUnitName, layout,
+        LayoutField.Bitfields(bitfields, bitfieldOffset)))
 }
 
 private fun generateMemberAccessor(member: Member, cType: CType): Doc {

@@ -1,5 +1,7 @@
 package cc.design7.babel.util
 
+import org.intellij.lang.annotations.Language
+
 sealed interface Doc
 
 private val nl: Doc = EmptyLine()

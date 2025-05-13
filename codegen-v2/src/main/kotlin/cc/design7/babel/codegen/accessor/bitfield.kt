@@ -1,35 +1,28 @@
 package cc.design7.babel.codegen.accessor
 
-import cc.design7.babel.registry.Member
+import cc.design7.babel.codegen.LayoutField
 import cc.design7.babel.util.Doc
 import cc.design7.babel.util.buildDoc
 
-fun generateBitfieldAccessor(member: Member, next: Member): Doc {
-    val bitfieldName = "bitfield$${member.name}_${next.name}"
-
+fun generateBitfieldAccessor(layoutName: String, bitfields: LayoutField.Bitfields): Doc {
     return buildDoc {
-        +"public int ${member.name}() {"
-        indent { +"return segment.get(LAYOUT$$bitfieldName, OFFSET$$bitfieldName) >> 8;" }
-        +"}"
+        for (i in bitfields.bitfields.indices) {
+            val member = bitfields.bitfields[i]
+            val memberName = member.bitfieldName
+            val from = member.offset
+            val until = bitfields.bitfields.getOrNull(i + 1)?.offset ?: bitfields.length
 
-        +"public void ${member.name}(int value) {"
-        indent {
-            +"int original = segment.get(LAYOUT$$bitfieldName, OFFSET$$bitfieldName);"
-            +"int newValue = (original & 0xFF) | (value << 8);"
-            +"segment.set(LAYOUT$$bitfieldName, OFFSET$$bitfieldName, newValue);"
+            +"public int ${memberName}() {"
+            indent {
+                +"return BitfieldUtil.readBits(segment, ${from}, ${until})"
+            }
+            +"}"
+
+            +"public void ${memberName}(int value) {"
+            indent {
+                +"BitfieldUtil.writeBits(segment, ${from}, ${until}, value)"
+            }
+            +"}"
         }
-        +"}"
-
-        +"public int ${next.name}() {"
-        indent { +"return segment.get(LAYOUT$$bitfieldName, OFFSET$$bitfieldName) & 0xFF;" }
-        +"}"
-
-        +"public void ${next.name}(int value) {"
-        indent {
-            +"int original = segment.get(LAYOUT$$bitfieldName, OFFSET$$bitfieldName);"
-            +"int newValue = (original & 0xFFFFFF00) | value;"
-            +"segment.set(LAYOUT$$bitfieldName, OFFSET$$bitfieldName, newValue);"
-        }
-        +"}"
     }
 }
