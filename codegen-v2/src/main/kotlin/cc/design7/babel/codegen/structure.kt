@@ -22,28 +22,37 @@ fun main() {
     println(render(generateStructure(registry, structure, option)))
 }
 
+/**
+ * @param name the name of layout, such as "pNext"
+ */
 data class LayoutField(
     val type: String,
     val name: String,
     val value: String,
-    val members: List<Member>
+    val members: Member
 ) {
-    sealed interface Member {
-        data class Typed(val type: CType, val layoutName: String) : Member
-        data class Bitfield(val layoutName: String, val offset: Int) : Member
-    }
+    val layoutName: String = "LAYOUT$$name"
+    val sizeName: String = "SIZE$$name"
+
+    sealed interface Member
+    data class Typed(val type: CType) : Member
+    data class Bitfields(val bitfields: List<Bitfield>) : Member
+    data class Bitfield(val bitfieldName: String, val offset: Int)
 
     constructor(
         type: String,
         name: String,
         value: String,
-        memberType: CType,
-        memberName: String
-    ) : this(type, name, value, listOf(LayoutField.Member.Typed(memberType, memberName)))
+        memberType: CType
+    ) : this(type, name, value, Typed(memberType))
 }
 
 private fun DocList.imports(@Language("Java", prefix = "import ", suffix = ";") path: String, static: Boolean = false) {
     +"import ${if (static) "static " else ""}$path;"
+}
+
+private fun DocList.constant(type: String, name: String, value: String) {
+    +"public static final $type $name = $value;"
 }
 
 fun generateStructure(
@@ -101,8 +110,25 @@ fun generateStructure(
 
     indent {
         layouts.forEachIndexed { i, layout ->
-            +"public static final ${layout.type} ${layout.name} = ${layout.value};"
-            // TODO: what about [layout.members]
+            +"public static final ${layout.type} ${layout.layoutName} = ${layout.value};"
+
+            when (val member = layout.members) {
+                is LayoutField.Typed -> {
+                    val value = if (member.type is CPlatformDependentIntType) {
+                        if (member.type.cType == "size_t") "NativeLayout.C_SIZE_T.byteSize()"
+                        else "NativeLayout.C_INT.byteSize()"
+                    } else "${layout.layoutName}.byteSize()"
+
+                    constant("long", layout.sizeName, value)
+                }
+                is LayoutField.Bitfields -> {
+                    member.bitfields.forEach { bitfield ->
+                        constant("long", "OFFSET$${bitfield.bitfieldName}", "${bitfield.offset}")
+                    }
+                }
+            }
+
+            +""
         }
     }
 
@@ -189,7 +215,6 @@ private fun lowerMemberTypes(
                 layouts
             )
         } else {
-            val layoutName = "LAYOUT$${current.name}"
             val layout = "${cType.jLayout}.withName(\"${current.name}\")"
 
             val layoutTypes = if (cType is CPlatformDependentIntType) {
@@ -201,7 +226,7 @@ private fun lowerMemberTypes(
                 cType.jLayoutType
             }
 
-            layouts.add(LayoutField(layoutTypes, layoutName, layout, cType, layoutName))
+            layouts.add(LayoutField(layoutTypes, current.name.toString(), layout, cType))
 
             i += 1
         }
@@ -219,18 +244,18 @@ private fun summarizeBitfieldStorageUnit(
     val storageUnitEndMemberName = structure.members[storageUnitEnd].name.value
 
     val storageUnitName = "${storageUnitBeginMemberName}_${storageUnitEndMemberName}"
-    val layoutName = "LAYOUT$$storageUnitName"
+    val layoutName = "LAYOUT$$storageUnitName"      // TODO: unify with [LayoutField.layoutName]
     val layout = "${storageUnitType.jLayout}.withName(\"bitfield$$storageUnitName\")"
 
-    val members = mutableListOf<LayoutField.Member>()
+    val bitfields = mutableListOf<LayoutField.Bitfield>()
     var bitfieldOffset = 0
     for (i in storageUnitBegin..storageUnitEnd) {
         // Let's hack this shit in 10 minutes, not introducing something else for bitfield offset
-        members.add(LayoutField.Member.Bitfield(layoutName, bitfieldOffset))
+        bitfields.add(LayoutField.Bitfield(layoutName, bitfieldOffset))
         bitfieldOffset += structure.members[i].bits!!
     }
 
-    layouts.add(LayoutField(storageUnitType.jLayoutType, layoutName, layout, members))
+    layouts.add(LayoutField(storageUnitType.jLayoutType, storageUnitName, layout, LayoutField.Bitfields(bitfields)))
 }
 
 private fun generateMemberAccessor(member: Member, cType: CType): Doc {
