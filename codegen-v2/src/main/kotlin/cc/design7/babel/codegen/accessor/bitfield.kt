@@ -19,9 +19,11 @@ fun generateBitfieldAccessor(layoutName: String, bitfields: LayoutField.Bitfield
             }
             +"}"
 
-            +"public void ${memberName}(int value) {"
+            val value = "value"
+
+            +"public void ${memberName}(int $value) {"
             indent {
-                +BitfieldUtil.writeBits(FIELD_segment, "$from", "$until", "value")
+                +BitfieldUtil.writeBits(FIELD_segment, "$from", "$until", value)
             }
             +"}"
         }

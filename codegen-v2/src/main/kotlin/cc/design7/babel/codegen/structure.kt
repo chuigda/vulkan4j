@@ -36,14 +36,10 @@ data class LayoutField(
 
     sealed interface Member
 
-    /**
-     * A [Typed] represents a struct field that represents by a java field.
-     */
     data class Typed(val type: CType) : Member
 
     /**
-     * A [Bitfields] represents a sequence of struct fields that represents by a java field.
-     * > The name of [LayoutField] who owns this [Bitfields] is guaranteed to be `[bitfields.first().bitfieldName]_[bitfields.last().bitfieldName]`
+     * The name of [LayoutField] who owns this [Bitfields] is guaranteed to be `[bitfields.first().bitfieldName]_[bitfields.last().bitfieldName]`
      */
     data class Bitfields(val bitfields: List<Bitfield>, val length: Int) : Member
     data class Bitfield(val bitfieldName: String, val offset: Int) {
@@ -123,7 +119,7 @@ fun generateStructure(
 
     indent {
         layouts.forEachIndexed { i, layout ->
-            +"public static final ${layout.type} ${layout.layoutName} = ${layout.value};"
+            constant(layout.type, layout.layoutName, layout.value)
 
             when (val member = layout.members) {
                 is LayoutField.Typed -> {
