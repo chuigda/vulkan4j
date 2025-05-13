@@ -9,7 +9,7 @@ fun generateBitfieldAccessor(layoutName: String, bitfields: LayoutField.Bitfield
         for (i in bitfields.bitfields.indices) {
             val member = bitfields.bitfields[i]
             val memberName = member.bitfieldName
-            val from = member.offset
+            val from = member.offset            // TODO: inline or use [member.offsetName]
             val until = bitfields.bitfields.getOrNull(i + 1)?.offset ?: bitfields.length
 
             +"public int ${memberName}() {"

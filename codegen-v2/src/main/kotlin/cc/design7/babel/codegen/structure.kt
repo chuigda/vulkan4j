@@ -41,7 +41,9 @@ data class LayoutField(
      * The name of [LayoutField] who owns this [Bitfields] is guaranteed to be `[bitfields.first().bitfieldName]_[bitfields.last().bitfieldName]`
      */
     data class Bitfields(val bitfields: List<Bitfield>, val length: Int) : Member
-    data class Bitfield(val bitfieldName: String, val offset: Int)
+    data class Bitfield(val bitfieldName: String, val offset: Int) {
+        val offsetName: String = "OFFSET$$bitfieldName"
+    }
 
     constructor(
         type: String,
@@ -124,10 +126,15 @@ fun generateStructure(
                     } else "${layout.layoutName}.byteSize()"
 
                     constant("long", layout.sizeName, value)
+
+                    +""
+
+                    TODO()
+//                    generateMemberAccessor(null, member.type)
                 }
                 is LayoutField.Bitfields -> {
                     member.bitfields.forEach { bitfield ->
-                        constant("long", "OFFSET$${bitfield.bitfieldName}", bitfield.offset.toString())
+                        constant("long", bitfield.offsetName, bitfield.offset.toString())
                     }
 
                     +""
