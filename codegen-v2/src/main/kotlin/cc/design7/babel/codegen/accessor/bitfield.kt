@@ -1,11 +1,12 @@
 package cc.design7.babel.codegen.accessor
 
+import cc.design7.babel.codegen.BitfieldUtil
 import cc.design7.babel.codegen.FIELD_segment
 import cc.design7.babel.codegen.LayoutField
 import cc.design7.babel.util.Doc
 import cc.design7.babel.util.buildDoc
 
-fun generateBitfieldAccessor(layoutName: String, bitfields: LayoutField.Bitfields): Doc {
+fun generateBitfieldAccessor(bitfields: LayoutField.Bitfields): Doc {
     return buildDoc {
         for (i in bitfields.bitfields.indices) {
             val member = bitfields.bitfields[i]

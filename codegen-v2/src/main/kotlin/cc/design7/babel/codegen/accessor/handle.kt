@@ -1,9 +1,12 @@
 package cc.design7.babel.codegen.accessor
 
+import cc.design7.babel.codegen.LayoutField
+import cc.design7.babel.codegen.fn
 import cc.design7.babel.ctype.CHandleType
-import cc.design7.babel.registry.Member
+import cc.design7.babel.util.Doc
+import cc.design7.babel.util.buildDoc
 
-fun generateHandleAccessor(type: CHandleType, member: Member): String =
+fun generateHandleAccessor(type: CHandleType, member: LayoutField.Typed): Doc {
     """
         public @Nullable ${type.name} ${member.name}() {
             MemorySegment s = segment.asSlice(OFFSET$${member.name}, SIZE$${member.name});
@@ -21,3 +24,10 @@ fun generateHandleAccessor(type: CHandleType, member: Member): String =
             );
         }
     """.trimIndent()
+
+    return buildDoc {
+        fn("public", "@Nullable ${type.name}", member.name) {
+            +"MemorySegment s = segment.asSlice(OFFSET)"
+        }
+    }
+}

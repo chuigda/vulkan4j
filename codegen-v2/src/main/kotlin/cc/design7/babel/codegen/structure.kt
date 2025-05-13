@@ -1,15 +1,15 @@
 package cc.design7.babel.codegen
 
-import cc.design7.babel.codegen.accessor.*
-import cc.design7.babel.ctype.*
+import cc.design7.babel.codegen.accessor.generateBitfieldAccessor
+import cc.design7.babel.ctype.CFixedSizeType
+import cc.design7.babel.ctype.CPlatformDependentIntType
+import cc.design7.babel.ctype.CType
 import cc.design7.babel.ctype.lowerType
 import cc.design7.babel.extract.vulkan.extractVulkanRegistry
-import cc.design7.babel.registry.Member
 import cc.design7.babel.registry.RegistryBase
 import cc.design7.babel.registry.Structure
 import cc.design7.babel.util.Doc
 import cc.design7.babel.util.DocList
-import cc.design7.babel.util.DocText
 import cc.design7.babel.util.buildDoc
 import cc.design7.babel.util.render
 import org.intellij.lang.annotations.Language
@@ -25,33 +25,26 @@ fun main() {
 /**
  * @param name the name of the layout, such as "pNext"
  */
-data class LayoutField(
-    val type: String,
+sealed class LayoutField(
+    val jType: String,
     val name: String,
-    val value: String,
-    val members: Member
+    val value: String
 ) {
     val layoutName: String = "LAYOUT$$name"
     val sizeName: String = "SIZE$$name"
 
-    sealed interface Member
-
-    data class Typed(val type: CType) : Member
+    class Typed(jType: String, name: String, value: String, val type: CType) :
+        LayoutField(jType, name, value)
 
     /**
      * The name of [LayoutField] who owns this [Bitfields] is guaranteed to be `[bitfields.first().bitfieldName]_[bitfields.last().bitfieldName]`
      */
-    data class Bitfields(val bitfields: List<Bitfield>, val length: Int) : Member
+    class Bitfields(jType: String, name: String, value: String, val bitfields: List<Bitfield>, val length: Int) :
+        LayoutField(jType, name, value)
+
     data class Bitfield(val bitfieldName: String, val offset: Int) {
         val offsetName: String = "OFFSET$$bitfieldName"
     }
-
-    constructor(
-        type: String,
-        name: String,
-        value: String,
-        memberType: CType
-    ) : this(type, name, value, Typed(memberType))
 }
 
 private fun DocList.imports(@Language("Java", prefix = "import ", suffix = ";") path: String, static: Boolean = false) {
@@ -62,6 +55,7 @@ private fun DocList.constant(type: String, name: String, value: String) {
     +"public static final $type $name = $value;"
 }
 
+private const val TYPE_MemorySegment: String = "MemorySegment"
 internal const val FIELD_segment: String = "segment"
 
 fun generateStructure(
@@ -115,34 +109,39 @@ fun generateStructure(
     +""
 
     // TODO: generate document
-    +"public record $className(MemorySegment $FIELD_segment) implements IPointer {"
+    +"public record $className($TYPE_MemorySegment $FIELD_segment) implements IPointer {"
 
     indent {
         layouts.forEachIndexed { i, layout ->
-            constant(layout.type, layout.layoutName, layout.value)
+            constant(layout.jType, layout.layoutName, layout.value)
+        }
 
-            when (val member = layout.members) {
+        +""
+
+        constant(TYPE_MemorySegment, "LAYOUT", generateLayout1(layouts))
+
+        +""
+
+        layouts.forEachIndexed { i, layout ->
+            when (layout) {
                 is LayoutField.Typed -> {
-                    val value = if (member.type is CPlatformDependentIntType) {
-                        if (member.type.cType == "size_t") "NativeLayout.C_SIZE_T.byteSize()"
+                    val value = if (layout.type is CPlatformDependentIntType) {
+                        if (layout.type.cType == "size_t") "NativeLayout.C_SIZE_T.byteSize()"
                         else "NativeLayout.C_INT.byteSize()"
                     } else "${layout.layoutName}.byteSize()"
 
                     constant("long", layout.sizeName, value)
-
-                    +""
-
-                    TODO()
+//                    TODO()
 //                    generateMemberAccessor(null, member.type)
                 }
                 is LayoutField.Bitfields -> {
-                    member.bitfields.forEach { bitfield ->
+                    layout.bitfields.forEach { bitfield ->
                         constant("long", bitfield.offsetName, bitfield.offset.toString())
                     }
 
                     +""
 
-                    generateBitfieldAccessor(layout.layoutName, member)
+                    generateBitfieldAccessor(layout)
                 }
             }
 
@@ -154,6 +153,15 @@ fun generateStructure(
     /// endregion import
 
     +"/// dummy, not implemented yet"
+}
+
+// 1 means all
+private fun generateLayout1(layouts: List<LayoutField>): String {
+    return buildString {
+        val ctor = "NativeLayout.structLayout"
+        append(ctor)
+        layouts.joinTo(this, prefix = "(", postfix = ")") { it.layoutName }
+    }
 }
 
 private fun lowerMemberTypes(
@@ -244,7 +252,7 @@ private fun lowerMemberTypes(
                 cType.jLayoutType
             }
 
-            layouts.add(LayoutField(layoutTypes, current.name.toString(), layout, cType))
+            layouts.add(LayoutField.Typed(layoutTypes, current.name.toString(), layout, cType))
 
             i += 1
         }
@@ -273,19 +281,19 @@ private fun summarizeBitfieldStorageUnit(
         bitfieldOffset += member.bits!!
     }
 
-    layouts.add(LayoutField(storageUnitType.jLayoutType, storageUnitName, layout,
-        LayoutField.Bitfields(bitfields, bitfieldOffset)))
+    layouts.add(LayoutField.Bitfields(storageUnitType.jLayoutType, storageUnitName, layout,
+        bitfields, bitfieldOffset))
 }
 
-private fun generateMemberAccessor(member: Member, cType: CType): Doc {
-    val accessor = when (cType) {
-        is CArrayType -> generateArrayAccessor(cType, member)
-        is CHandleType -> generateHandleAccessor(cType, member)
-        is CNonRefType -> generateNonRefAccessor(cType, member)
-        is CPointerType -> generatePtrAccessor(cType, member)
-        is CStructType -> generateStructureTypeAccessor(cType, member)
-        is CVoidType -> throw Exception("void type not allowed in struct")
-    }
-
-    return DocText(accessor)
-}
+//private fun generateMemberAccessor(layout: LayoutField.Typed, cType: CType): Doc {
+//    val accessor = when (cType) {
+//        is CArrayType -> generateArrayAccessor(cType, layout)
+//        is CHandleType -> generateHandleAccessor(cType, layout)
+//        is CNonRefType -> generateNonRefAccessor(cType, layout)
+//        is CPointerType -> generatePtrAccessor(cType, layout)
+//        is CStructType -> generateStructureTypeAccessor(cType, layout)
+//        is CVoidType -> throw Exception("void type not allowed in struct")
+//    }
+//
+//    return DocText(accessor)
+//}
