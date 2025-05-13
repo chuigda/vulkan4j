@@ -23,7 +23,7 @@ fun main() {
 }
 
 /**
- * @param name the name of layout, such as "pNext"
+ * @param name the name of the layout, such as "pNext"
  */
 data class LayoutField(
     val type: String,
@@ -35,10 +35,15 @@ data class LayoutField(
     val sizeName: String = "SIZE$$name"
 
     sealed interface Member
+
+    /**
+     * A [Typed] represents a struct field that represents by a java field.
+     */
     data class Typed(val type: CType) : Member
 
     /**
-     * The name of [LayoutField] who owns this [Bitfields] is guaranteed to be `[bitfields.first().bitfieldName]_[bitfields.last().bitfieldName]`
+     * A [Bitfields] represents a sequence of struct fields that represents by a java field.
+     * > The name of [LayoutField] who owns this [Bitfields] is guaranteed to be `[bitfields.first().bitfieldName]_[bitfields.last().bitfieldName]`
      */
     data class Bitfields(val bitfields: List<Bitfield>, val length: Int) : Member
     data class Bitfield(val bitfieldName: String, val offset: Int) {
@@ -60,6 +65,8 @@ private fun DocList.imports(@Language("Java", prefix = "import ", suffix = ";") 
 private fun DocList.constant(type: String, name: String, value: String) {
     +"public static final $type $name = $value;"
 }
+
+internal const val FIELD_segment: String = "segment"
 
 fun generateStructure(
     registryBase: RegistryBase,
@@ -112,7 +119,7 @@ fun generateStructure(
     +""
 
     // TODO: generate document
-    +"public record $className(MemorySegment segment) implements IPointer {"
+    +"public record $className(MemorySegment $FIELD_segment) implements IPointer {"
 
     indent {
         layouts.forEachIndexed { i, layout ->

@@ -1,5 +1,6 @@
 package cc.design7.babel.codegen.accessor
 
+import cc.design7.babel.codegen.FIELD_segment
 import cc.design7.babel.codegen.LayoutField
 import cc.design7.babel.util.Doc
 import cc.design7.babel.util.buildDoc
@@ -14,13 +15,13 @@ fun generateBitfieldAccessor(layoutName: String, bitfields: LayoutField.Bitfield
 
             +"public int ${memberName}() {"
             indent {
-                +"return BitfieldUtil.readBits(segment, ${from}, ${until})"
+                +"return ${BitfieldUtil.readBits(FIELD_segment, "$from", "$until")};"
             }
             +"}"
 
             +"public void ${memberName}(int value) {"
             indent {
-                +"BitfieldUtil.writeBits(segment, ${from}, ${until}, value)"
+                +BitfieldUtil.writeBits(FIELD_segment, "$from", "$until", "value")
             }
             +"}"
         }
