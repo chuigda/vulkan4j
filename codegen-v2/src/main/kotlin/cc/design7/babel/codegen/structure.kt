@@ -32,11 +32,11 @@ sealed class LayoutField(
 ) {
     val layoutName: String = "LAYOUT$$name"
     val sizeName: String = "SIZE$$name"
+    val offsetName: String = "OFFSET$$name"
     abstract val pathName: String
 
     class Typed(jType: String, name: String, value: String, val type: CType) :
         LayoutField(jType, name, value) {
-        val offsetName: String = "OFFSET$$name"
         override val pathName: String = "PATH$$name"
     }
 
@@ -50,7 +50,7 @@ sealed class LayoutField(
     }
 
     data class Bitfield(val bitfieldName: String, val offset: Int) {
-        val offsetName: String = "OFFSET$$bitfieldName"
+        val bitfieldOffsetName: String = "OFFSET$$bitfieldName"
     }
 }
 
@@ -189,25 +189,27 @@ fun generateStructure(
         +""
 
         // offset
-        layouts.forEachIndexed { i, layout ->
-            when (layout) {
-                is LayoutField.Typed -> {
-                    constant("long", layout.offsetName, "LAYOUT.byteOffset(${layout.pathName})")
-                }
+        layouts.forEach { layout ->
+            constant("long", layout.offsetName, "LAYOUT.byteOffset(${layout.pathName})")
 
-                is LayoutField.Bitfields -> {
-                    layout.bitfields.forEach { bitfield ->
-                        constant("long", bitfield.offsetName, bitfield.offset.toString())
-                    }
-
-                    +""
-
-                    generateBitfieldAccessor(layout)
-                }
-            }
-
-            +""
+//            if (layout is LayoutField.Bitfields) {
+//                layout.bitfields.forEach { bitfield ->
+//                    constant("long", bitfield.bitfieldOffsetName, bitfield.offset.toString())
+//                }
+//            }
         }
+
+        +""
+
+        layouts.forEach {
+            if (it is LayoutField.Bitfields) {
+                generateBitfieldAccessor(it)
+            }
+        }
+
+        // don't new line here, generateBitfieldAccessor always ends with a new line
+
+
     }
 
     +"}"
