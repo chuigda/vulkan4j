@@ -1,5 +1,9 @@
 # vulkan4j
 
+> ⚠️ NOTE: UNDERGOING CHANGES
+> 
+> We're about to release the 0.3.0 version of this ecosystem, fixing most issues and make it more human-friendly, and this would cause a **massive changes** on APIs, however. If you're interested you may read some docs and star this, but maybe don't put this into your project at once.
+
 > [Discord](https://discord.gg/UsmRvrt4gg)
 
 [Vulkan](https://www.vulkan.org/) Binding for Java using [Project Panama](https://openjdk.org/projects/panama/) `java.lang.foreign` APIs.
@@ -24,9 +28,9 @@ For users new to Vulkan, there is a (almost) complete adaptation of [https://vul
 - [x] Generate fundamental Vulkan API bindings using `vkxml2java` from `vk.xml`
 - [x] Take off!
 - [x] Vulkan tutorial
-  - [ ] Chinese translation 
+  - [ ] Chinese translation
 - [x] Generate GLFW bindings using `codegen`
 - [x] Generate OpenGL ES2 bindings using `codegen`
 - [x] Generate or write Vulkan Memory Allocator API bindings
-- [ ] Switch to `codegen` for Vulkan bindings
-- [ ] Generate Vulkan Video API bindings
+- [ ] Switch to `codegen` for Vulkan bindings <- Ongoing
+- [ ] Generate Vulkan Video API bindings <- Ongoing
