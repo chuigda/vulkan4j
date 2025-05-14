@@ -88,10 +88,11 @@ fun generateStructure(
     imports("java.lang.foreign.ValueLayout.*", true)
     +""
     imports("org.jetbrains.annotations.Nullable")
-    imports("tech.icey.panama.IPointer")
-    imports("tech.icey.panama.NativeLayout")
-    imports("tech.icey.panama.annotation.*")
-    imports("tech.icey.panama.buffer.*")
+    imports("org.jetbrains.annotations.NotNull")
+    imports("cc.design7.ffm.IPointer")
+    imports("cc.design7.ffm.NativeLayout")
+    imports("cc.design7.ffm.annotation.*")
+    imports("cc.design7.ffm.ptr.*")
 
     if (registryBase.bitmasks.isNotEmpty()) {
         imports("$packageName.bitmask.*")
@@ -116,7 +117,7 @@ fun generateStructure(
     +""
 
     // TODO: generate document
-    +"public record $className($TYPE_MemorySegment $FIELD_segment) implements IPointer {"
+    +"public record $className(@NotNull $TYPE_MemorySegment $FIELD_segment) implements IPointer {"
 
     indent {
         // layouts
