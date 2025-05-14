@@ -121,7 +121,7 @@ fun generateStructure(
 
     indent {
         // layouts
-        layouts.forEachIndexed { i, layout ->
+        layouts.forEach { layout ->
             constant(layout.jType, layout.layoutName, layout.value)
         }
 
@@ -153,7 +153,7 @@ fun generateStructure(
         fn("public static", className, "clone", "Arena arena", "$className src") {
             +"$className ret = allocate(arena);"
             +"ret.segment.copyFrom(src.segment);"
-            +"return ret";
+            +"return ret;"
         }
 
         +""
@@ -216,7 +216,7 @@ fun generateStructure(
     +"/// dummy, not implemented yet"
 }
 
-// 1 means all
+// '1' means all
 private fun generateLayout1(layouts: List<LayoutField>): String {
     return buildString {
         val ctor = "NativeLayout.structLayout"
