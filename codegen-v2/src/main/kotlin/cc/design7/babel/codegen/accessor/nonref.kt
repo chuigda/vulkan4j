@@ -37,8 +37,7 @@ private fun generatePlatformDependentIntAccessor(type: CPlatformDependentIntType
 
                 +""
 
-                // FIXME: no need to be `@unsigned long value`?
-                fn("public", "void", member.name, "long value") {
+                fn("public", "void", member.name, "@unsigned long value") {
                     +"NativeLayout.writeCSizeT($FIELD_segment, ${member.offsetName}, value);"
                 }
             }
