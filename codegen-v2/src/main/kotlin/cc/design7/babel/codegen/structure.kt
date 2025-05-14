@@ -32,9 +32,13 @@ sealed class LayoutField(
 ) {
     val layoutName: String = "LAYOUT$$name"
     val sizeName: String = "SIZE$$name"
+    abstract val pathName: String
 
     class Typed(jType: String, name: String, value: String, val type: CType) :
-        LayoutField(jType, name, value)
+        LayoutField(jType, name, value) {
+        val offsetName: String = "OFFSET$$name"
+        override val pathName: String = "PATH$$name"
+    }
 
     /**
      * The [name] is guaranteed to be `[bitfields.first().bitfieldName]_[bitfields.last().bitfieldName]`
@@ -42,6 +46,7 @@ sealed class LayoutField(
     class Bitfields(jType: String, name: String, value: String, val bitfields: List<Bitfield>, val length: Int) :
         LayoutField(jType, name, value) {
         val bitfieldName: String = "bitfield$$name"
+        override val pathName: String = "PATH$$bitfieldName"
     }
 
     data class Bitfield(val bitfieldName: String, val offset: Int) {
@@ -114,6 +119,7 @@ fun generateStructure(
     +"public record $className($TYPE_MemorySegment $FIELD_segment) implements IPointer {"
 
     indent {
+        // layouts
         layouts.forEachIndexed { i, layout ->
             constant(layout.jType, layout.layoutName, layout.value)
         }
@@ -163,27 +169,30 @@ fun generateStructure(
 
         // PathElement
         layouts.forEach { layout ->
-            val pathName = when (layout) {
-                is LayoutField.Bitfields -> layout.bitfieldName
-                is LayoutField.Typed -> layout.name
-            }
-
-            constant("PathElement", "PATH$$pathName", "PathElement.groupElement(\"$pathName\")")
+            constant("PathElement", layout.pathName, "PathElement.groupElement(\"${layout.pathName}\")")
         }
 
         +""
 
+        // size
+        layouts.forEach { layout ->
+            if (layout is LayoutField.Typed) {
+                val value = if (layout.type is CPlatformDependentIntType) {
+                    if (layout.type.cType == "size_t") "NativeLayout.C_SIZE_T.byteSize()"
+                    else "NativeLayout.C_INT.byteSize()"
+                } else "${layout.layoutName}.byteSize()"
+
+                constant("long", layout.sizeName, value)
+            }
+        }
+
+        +""
+
+        // offset
         layouts.forEachIndexed { i, layout ->
             when (layout) {
                 is LayoutField.Typed -> {
-                    val value = if (layout.type is CPlatformDependentIntType) {
-                        if (layout.type.cType == "size_t") "NativeLayout.C_SIZE_T.byteSize()"
-                        else "NativeLayout.C_INT.byteSize()"
-                    } else "${layout.layoutName}.byteSize()"
-
-                    constant("long", layout.sizeName, value)
-//                    TODO()
-//                    generateMemberAccessor(null, member.type)
+                    constant("long", layout.offsetName, "LAYOUT.byteOffset(${layout.pathName})")
                 }
 
                 is LayoutField.Bitfields -> {
