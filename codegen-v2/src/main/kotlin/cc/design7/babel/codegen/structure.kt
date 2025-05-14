@@ -37,10 +37,12 @@ sealed class LayoutField(
         LayoutField(jType, name, value)
 
     /**
-     * The name of [LayoutField] who owns this [Bitfields] is guaranteed to be `[bitfields.first().bitfieldName]_[bitfields.last().bitfieldName]`
+     * The [name] is guaranteed to be `[bitfields.first().bitfieldName]_[bitfields.last().bitfieldName]`
      */
     class Bitfields(jType: String, name: String, value: String, val bitfields: List<Bitfield>, val length: Int) :
-        LayoutField(jType, name, value)
+        LayoutField(jType, name, value) {
+        val bitfieldName: String = "bitfield$$name"
+    }
 
     data class Bitfield(val bitfieldName: String, val offset: Int) {
         val offsetName: String = "OFFSET$$bitfieldName"
@@ -155,6 +157,18 @@ fun generateStructure(
                 +"ret[i].segment.copyFrom(src[i].segment);"
             }
             +"return ret;"
+        }
+
+        +""
+
+        // PathElement
+        layouts.forEach { layout ->
+            val pathName = when (layout) {
+                is LayoutField.Bitfields -> layout.bitfieldName
+                is LayoutField.Typed -> layout.name
+            }
+
+            constant("PathElement", "PATH$$pathName", "PathElement.groupElement(\"$pathName\")")
         }
 
         +""
