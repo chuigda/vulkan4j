@@ -13,10 +13,15 @@ fun generateBitfieldAccessor(bitfields: LayoutField.Bitfields): Doc {
             val member = bitfields.bitfields[i]
             val memberName = member.bitfieldName
             val from = member.offset
-            val until = bitfields.bitfields.getOrNull(i + 1)?.offset ?: bitfields.length
+            val next = bitfields.bitfields.getOrNull(i + 1)
+            val until = next?.offset ?: bitfields.length
+
+            val s = "s"
+            val sliceSegment = "MemorySegment $s = $FIELD_segment.asSlice(${bitfields.offsetName}, ${bitfields.layoutName});"
 
             fn("public", "int", memberName) {
-                +"return ${BitfieldUtil.readBits(FIELD_segment, "$from", "$until")};"
+                +sliceSegment
+                +"return ${BitfieldUtil.readBits(s, "$from", "$until")};"
             }
 
             val value = "value"
@@ -24,10 +29,11 @@ fun generateBitfieldAccessor(bitfields: LayoutField.Bitfields): Doc {
             +""
 
             fn("public", "void", memberName, "int $value") {
-                +BitfieldUtil.writeBits(FIELD_segment, "$from", "$until", value)
+                +sliceSegment
+                +BitfieldUtil.writeBits(s, "$from", "$until", value)
             }
 
-            +""
+            if (next != null) +""
         }
     }
 }

@@ -204,12 +204,9 @@ fun generateStructure(
         layouts.forEach {
             if (it is LayoutField.Bitfields) {
                 generateBitfieldAccessor(it)
+                +""
             }
         }
-
-        // don't new line here, generateBitfieldAccessor always ends with a new line
-
-
     }
 
     +"}"
