@@ -28,7 +28,7 @@ fun main() {
 sealed class LayoutField(
     val jType: String,
     val name: String,
-    val value: String
+    val value: String,
 ) {
     val layoutName: String = "LAYOUT$$name"
     val sizeName: String = "SIZE$$name"
@@ -61,10 +61,10 @@ internal const val FIELD_segment: String = "segment"
 fun generateStructure(
     registryBase: RegistryBase,
     structure: Structure,
-    codegenOptions: CodegenOptions
+    codegenOptions: CodegenOptions,
 ): Doc = buildDoc {
     val packageName = codegenOptions.packageName
-    val className = structure.name
+    val className = structure.name.toString()
     val layouts = mutableListOf<LayoutField>()
 
     lowerMemberTypes(
@@ -119,6 +119,43 @@ fun generateStructure(
         +""
 
         constant(TYPE_MemorySegment, "LAYOUT", generateLayout1(layouts))
+        constant("long", "SIZE", "LAYOUT.byteSize()")
+
+        +""
+
+        fn("public static", className, "allocate", "Arena arena") {
+            +"return new $className(arena,allocate(LAYOUT));"
+        }
+
+        +""
+
+        fn("public static", "$className[]", "allocate", "Arena arena", "int count") {
+            +"$TYPE_MemorySegment segment = arena.allocate(LAYOUT, count);"
+            +"$className[] ret = new $className[count];"
+            "for (int i = 0; i < count; i ++)" {
+                +"ret[i] = new $className(segment.asSlice(i * SIZE, SIZE));"
+            }
+
+            +"return ret;"
+        }
+
+        +""
+
+        fn("public static", className, "clone", "Arena arena", "$className src") {
+            +"$className ret = allocate(arena);"
+            +"ret.segment.copyFrom(src.segment);"
+            +"return ret";
+        }
+
+        +""
+
+        fn("public static", "$className[]", "clone", "Arena arena", "$className[] src") {
+            +"$className[] ret = allocate(arena, src.length);"
+            "for (int i = 0; i < src.length; i ++)" {
+                +"ret[i].segment.copyFrom(src[i].segment);"
+            }
+            +"return ret;"
+        }
 
         +""
 
@@ -134,6 +171,7 @@ fun generateStructure(
 //                    TODO()
 //                    generateMemberAccessor(null, member.type)
                 }
+
                 is LayoutField.Bitfields -> {
                     layout.bitfields.forEach { bitfield ->
                         constant("long", bitfield.offsetName, bitfield.offset.toString())
@@ -168,7 +206,7 @@ private fun lowerMemberTypes(
     registry: RegistryBase,
     codegenOptions: CodegenOptions,
     structure: Structure,
-    layouts: MutableList<LayoutField>
+    layouts: MutableList<LayoutField>,
 ) {
     var i = 0
     while (i < structure.members.size) {
@@ -264,7 +302,7 @@ private fun summarizeBitfieldStorageUnit(
     storageUnitType: CType,
     storageUnitBegin: Int,
     storageUnitEnd: Int,
-    layouts: MutableList<LayoutField>
+    layouts: MutableList<LayoutField>,
 ) {
     val storageUnitBeginMemberName = structure.members[storageUnitBegin].name.value
     val storageUnitEndMemberName = structure.members[storageUnitEnd].name.value
@@ -281,8 +319,12 @@ private fun summarizeBitfieldStorageUnit(
         bitfieldOffset += member.bits!!
     }
 
-    layouts.add(LayoutField.Bitfields(storageUnitType.jLayoutType, storageUnitName, layout,
-        bitfields, bitfieldOffset))
+    layouts.add(
+        LayoutField.Bitfields(
+            storageUnitType.jLayoutType, storageUnitName, layout,
+            bitfields, bitfieldOffset
+        )
+    )
 }
 
 //private fun generateMemberAccessor(layout: LayoutField.Typed, cType: CType): Doc {

@@ -15,6 +15,12 @@ class DocList(val segments: MutableList<Doc>) : Doc {
         doc.init()
         segments.add(DocIndent(doc))
     }
+
+    inline operator fun String.invoke(block: DocList.() -> Unit) {
+        +"$this {"
+        indent(block)
+        +"}"
+    }
 }
 
 class DocText(val text: String) : Doc
